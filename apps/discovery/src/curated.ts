@@ -19,4 +19,15 @@ export const CURATED_ROWS: CuratedRow[] = [
       "t002-split-glass", "t028-frame-dots", "t017-ribbon-flat", "t092-split-mesh",
     ],
   },
+  // inbox #2 (2026-10-09 00:54 MSK): 21 picks on row 2 (+54°)
+  {
+    row: 2,
+    keep: [
+      "t016-stats-rings", "t012-poster-flat", "t096-stats-dots", "t011-split-stripes", "t071-poster-dots",
+      "t070-prompt-geometric", "t052-split-rings", "t001-poster-mesh", "t112-stats-glass", "t040-dense-mesh",
+      "t051-poster-stripes", "t063-fullbleed-conic", "t094-dense-flat", "t067-ribbon-stripes", "t080-prompt-rings",
+      "t020-fullbleed-stripes", "t061-poster-grain", "t068-editorial-glass", "t062-split-duotone", "t077-ribbon-grain",
+      "t055-airy-conic",
+    ],
+  },
 ];
