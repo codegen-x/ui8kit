@@ -10,7 +10,11 @@ A hand-written app (not generated): a panorama of taste screens on a sphere. Sve
 - `src/tastes.ts` — the taste index: per screen its skin, font pairing, radius, composition, recipe and copy deck.
 - `src/recipes/` — procedural media (mesh, grain, duotone, geometric, glass, flat, rings, stripes, dots, conic); colours
   come from the skin's CSS variables. Gradients, blur and grain live only here, inside media slots.
-- `src/engine/grid.ts` — the card grid on the sphere; `assign.ts` — screens and variations over the cards;
+- `src/engine/grid.ts` — the card grid on the sphere (rows counted from the top for the user: 1 = +60°, 21 = −60°);
+  `assign.ts` — screens and variations over the cards; `curated.ts` + `engine/curate.ts` — the rows the user has
+  curated: on such a row the picked screens stay and the other cards become variations of them (another skin, maybe
+  fonts and radius; no neighbour shares a screen or a skin); every other card stays as `assign.ts` lays it out
+  (`engine/wall.ts` = assign, then curate);
   `snapshot.ts` / `loader.ts` / `cache.ts` — offscreen snapshots (SVG foreignObject → canvas → WebP, IndexedDB cache);
   `panorama.ts` — the Three.js view (drag, inertia, wheel zoom clamped to 75–125 % of the default scale, double-click to pick).
 - `src/picks.svelte.ts` + `parts/send-button.svelte` — the Send button (bottom-right, only while cards are picked):

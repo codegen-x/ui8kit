@@ -40,7 +40,7 @@ export function prng(seed: number): () => number {
 }
 
 /** indices of the cards around `card` that come before it in placement order (left, wrap-around, the row above) */
-function placedNeighbours(card: Card, all: Card[], rowStart: Map<number, number>): number[] {
+export function placedNeighbours(card: Card, all: Card[], rowStart: Map<number, number>): number[] {
   const out: number[] = [];
   if (card.col > 0) out.push(card.index - 1);
   if (card.col > 1) out.push(card.index - 2);
@@ -59,7 +59,7 @@ function placedNeighbours(card: Card, all: Card[], rowStart: Map<number, number>
 
 /** a wider window of placed cards (four to the left, two rows above, three either side) where a repeat of a screen is
     still easy to spot: such repeats are penalised less than a direct neighbour but still avoided */
-function placedWindow(card: Card, all: Card[], rowStart: Map<number, number>): number[] {
+export function placedWindow(card: Card, all: Card[], rowStart: Map<number, number>): number[] {
   const out: number[] = [];
   for (let d = 1; d <= 4; d++) out.push(card.index - card.col + ((card.col - d + card.perRow) % card.perRow));
   for (const up of [1, 2]) {

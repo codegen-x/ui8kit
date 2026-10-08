@@ -30,6 +30,14 @@ export type Card = {
 
 export type Row = { row: number; lat: number; count: number };
 
+/** number of rows (21) */
+export const ROW_COUNT = 2 * Math.round(MAX_LAT_DEG / ROW_STEP_DEG) + 1;
+
+/** the row as the user counts it: 1 is the top row (latitude +60°), ROW_COUNT the bottom one (−60°); `row` is Card.row */
+export const rowFromTop = (row: number): number => ROW_COUNT - row;
+/** Card.row of a row counted from the top */
+export const rowFromBottom = (top: number): number => ROW_COUNT - top;
+
 export function rows(): Row[] {
   const out: Row[] = [];
   const n = Math.round(MAX_LAT_DEG / ROW_STEP_DEG);

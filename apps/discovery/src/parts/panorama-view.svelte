@@ -7,10 +7,10 @@
   import { onMount } from "svelte";
   import { Block } from "@ui8kit/svelte-ui";
   import ui from "../../content/ui.json";
-  import { assign } from "../engine/assign";
   import { skinBackgrounds } from "../engine/colors";
   import { Loader } from "../engine/loader";
   import { Panorama } from "../engine/panorama";
+  import { wall } from "../engine/wall";
   import { picks, pickedScreens, postPicks } from "../picks.svelte";
   import { SCREENS } from "../screens";
   import { variantKey } from "../taste";
@@ -36,7 +36,7 @@
         picks.count = keys.length;
       },
     });
-    const variants = assign(pano.cards, TASTES);
+    const variants = wall(pano.cards, TASTES);
     const loader = new Loader(pano, variants, tastes, SCREENS);
     const radius = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--radius")) || 0.625;
     pano.setRadiusPx(radius * parseFloat(getComputedStyle(document.documentElement).fontSize || "16"));
