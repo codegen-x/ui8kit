@@ -1,17 +1,18 @@
 <!--
   The panorama: the only main landmark. A WebGL stage with nothing on it but the cards: no captions, counters or icons.
   Drag to look around; the wheel zooms (75 % to 125 % of the default scale); double-click a card to outline it (picked); the picks are kept in localStorage by variant key.
-  Send (in the corner, while something is picked) records the picked screens on the preview server and clears the picks.
+  Send (in the corner, while something is picked) records the picked screens and the row they came from on the preview server and clears the picks.
 -->
 <script lang="ts">
   import { onMount } from "svelte";
   import { Block } from "@ui8kit/svelte-ui";
   import ui from "../../content/ui.json";
   import { skinBackgrounds } from "../engine/colors";
+  import { rowFromTop } from "../engine/grid";
   import { Loader } from "../engine/loader";
   import { Panorama } from "../engine/panorama";
   import { wall } from "../engine/wall";
-  import { picks, pickedScreens, postPicks } from "../picks.svelte";
+  import { discoveryBody, picks, pickedCards, postPicks } from "../picks.svelte";
   import { SCREENS } from "../screens";
   import { variantKey } from "../taste";
   import { TASTES } from "../tastes";
@@ -46,10 +47,10 @@
     picks.send = async () => {
       if (sending) return;
       const slots = pano.pickedCards();
-      const ids = pickedScreens(slots, (i) => variants[i]!.screen);
-      if (!ids.length) return;
+      const chosen = pickedCards(slots, (i) => ({ id: variants[i]!.screen, row: rowFromTop(pano.cards[i]!.row) }));
+      if (!chosen.length) return;
       sending = true;
-      const ok = await postPicks(ids);
+      const ok = await postPicks(discoveryBody(chosen));
       sending = false;
       // on failure the picks stay (and so does the button); on success only the cards that were sent are cleared
       if (ok) for (const i of slots) pano.togglePicked(i, false);
