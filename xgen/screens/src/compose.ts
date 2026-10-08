@@ -108,6 +108,7 @@ export function expandComposed(c: ComposedSpec, blocks: BlockSpec[], organisms: 
           use("Group", { props: { Gap: "4", Align: "center" } },
             use("Link", { props: { Href: "/catalog/", Variant: "default", Class: "text-sm font-medium" }, attrs: { "data-testid": "catalog-link" } }, text(TEXT("catalog.title"))),
             use("Link", { props: { Href: "/skins/", Variant: "default", Class: "text-sm font-medium" }, attrs: { "data-testid": "skins-link" } }, text(TEXT("skins.title"))),
+            use("Link", { props: { Href: "/discovery/", Variant: "default", Class: "text-sm font-medium" }, attrs: { "data-testid": "discovery-link" } }, text(TEXT("discovery.title"))),
             use("Button", { props: { Variant: "outline", Size: "sm" }, on: { click: call("actions.toggleTheme") }, attrs: { "data-testid": "theme-toggle" } }, text(TEXT("theme.toggle")))))),
     ];
   } else {

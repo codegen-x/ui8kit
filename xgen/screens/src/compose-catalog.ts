@@ -115,7 +115,7 @@ export function catalog(tree: CatalogTree, blocks: BlockSpec[], org: Record<stri
   return { areas, routes, consts, used: [...used] };
 }
 
-/** the bar above the catalog: the skip link, the brand, the tabs (categories, pages), links to the block gallery and the Skins screen, and the theme button */
+/** the bar above the catalog: the skip link, the brand, the tabs (categories, pages), links to the block gallery, the Skins screen and the Discovery panorama, and the theme button */
 export function catalogChrome(): ViewNode[] {
   const tab = (href: string, key: string, testid: string): ViewNode => use("Link", { props: { Href: href, Variant: "default", Class: "text-sm font-medium" }, attrs: { "data-testid": testid } }, text(TEXT(key)));
   return [
@@ -124,7 +124,7 @@ export function catalogChrome(): ViewNode[] {
       use("Container", { props: { Class: `${wide} flex flex-wrap items-center justify-between gap-4 py-3` } },
         use("Link", { props: { Href: "#/", Variant: "default", Class: "text-lg font-bold" }, attrs: { "data-testid": "brand" } }, text(TEXT("catalog.title"))),
         use("Block", { props: { Tag: "nav", Class: "flex flex-wrap items-center gap-4" }, attrs: { "aria-label": TEXT("catalog.navLabel") } },
-          tab("#/", "catalog.categoriesTab", "tab-categories"), tab("#/pages", "catalog.pagesTitle", "tab-pages"), tab("/blocks/", "blocks.title", "gallery-link"), tab("/skins/", "skins.title", "skins-link"),
+          tab("#/", "catalog.categoriesTab", "tab-categories"), tab("#/pages", "catalog.pagesTitle", "tab-pages"), tab("/blocks/", "blocks.title", "gallery-link"), tab("/skins/", "skins.title", "skins-link"), tab("/discovery/", "discovery.title", "discovery-link"),
           use("Button", { props: { Variant: "outline", Size: "sm" }, on: { click: call("actions.toggleTheme") }, attrs: { "data-testid": "theme-toggle" } }, text(TEXT("theme.toggle")))))),
   ];
 }

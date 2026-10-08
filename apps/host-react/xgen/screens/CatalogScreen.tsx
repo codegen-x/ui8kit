@@ -206,6 +206,9 @@ export function CatalogScreen({ url }: { url: UrlPort }) {
             <Link href="/skins/" variant="default" className="text-sm font-medium" data-testid="skins-link">
               {ui.skins.title}
             </Link>
+            <Link href="/discovery/" variant="default" className="text-sm font-medium" data-testid="discovery-link">
+              {ui.discovery.title}
+            </Link>
             <Button variant="outline" size="sm" data-testid="theme-toggle" onClick={() => actions.toggleTheme()}>
               {ui.theme.toggle}
             </Button>

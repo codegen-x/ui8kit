@@ -226,6 +226,9 @@
       <Link href="/skins/" variant="default" class="text-sm font-medium" data-testid="skins-link">
         {ui.skins.title}
       </Link>
+      <Link href="/discovery/" variant="default" class="text-sm font-medium" data-testid="discovery-link">
+        {ui.discovery.title}
+      </Link>
       <Button variant="outline" size="sm" data-testid="theme-toggle" onclick={() => actions.toggleTheme()}>
         {ui.theme.toggle}
       </Button>

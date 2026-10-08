@@ -2434,5 +2434,8 @@ export const ui = {
         "r16": "16 px"
       }
     }
+  },
+  "discovery": {
+    "title": "Discovery"
   }
 } as const;
