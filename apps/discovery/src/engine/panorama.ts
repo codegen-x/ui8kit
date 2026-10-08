@@ -3,7 +3,9 @@
 // Textures, two tiers:
 //   low  — every card has a 96×72 cell in one of two 2048×2048 atlases (588 cells each), no mipmaps: 2 × 16 MiB
 //   high — a pool of POOL 400×300 textures with mipmaps (≈ 0.64 MiB each, 51 MiB for 80) for the cards nearest the view
-// Rendering is on demand: a frame is drawn only while dragging, during inertia, or after a texture changed.
+// Rendering is on demand: a frame is drawn only while dragging, during inertia, after a zoom, or after a texture changed.
+// Zoom: the camera stays at the centre (there is no distance to move), so the wheel narrows or widens the field of view;
+// the apparent scale of the cards is clamped to ZOOM_MIN..ZOOM_MAX of the default view.
 import * as THREE from "three";
 import { cards as gridCards, cardSize, CARD_H_DEG, MAX_LAT_DEG, RADIUS, type Card } from "./grid";
 
@@ -18,6 +20,11 @@ const ROWS = Math.floor(ATLAS / LOW_H); // 28
 const PER_ATLAS = COLS * ROWS; // 588
 /** horizontal field of view kept on any window shape: about 7.7 columns of 7.5° (vertical follows the aspect) */
 const H_FOV_DEG = 58;
+/** apparent card scale relative to the default view: 0.75 is the farthest (smaller cards), 1.25 the closest */
+export const ZOOM_MIN = 0.75;
+export const ZOOM_MAX = 1.25;
+/** scale change per wheel pixel (one 100 px notch is about 14 %) */
+const ZOOM_PER_PX = 0.0015;
 
 const VERT = /* glsl */ `
 varying vec2 vUv;
@@ -88,6 +95,10 @@ export class Panorama {
   private atlases: Atlas[] = [];
   private yaw = 0;
   private pitch = 0;
+  /** apparent scale, ZOOM_MIN..ZOOM_MAX; 1 is the default view */
+  private zoom = 1;
+  /** the vertical field of view of the default view (degrees), set on resize */
+  private baseFov = 34;
   private vel = { yaw: 0, pitch: 0 };
   private drag: { x: number; y: number; t: number; moved: number; id: number } | null = null;
   private lastMove = 0;
@@ -197,10 +208,34 @@ export class Panorama {
     this.camera.aspect = w / h;
     const hf = THREE.MathUtils.degToRad(H_FOV_DEG);
     const vf = 2 * Math.atan(Math.tan(hf / 2) / this.camera.aspect);
-    this.camera.fov = THREE.MathUtils.clamp(THREE.MathUtils.radToDeg(vf), 30, 60);
+    this.baseFov = THREE.MathUtils.clamp(THREE.MathUtils.radToDeg(vf), 30, 60);
+    this.applyZoom();
+  }
+
+  /**
+   * The field of view for the current zoom. A card's size on screen goes as 1 / tan(fov / 2), so a scale s takes
+   * tan(fov / 2) = tan(baseFov / 2) / s; the outlines stay in screen px and the pitch is re-clamped (a wider view
+   * has less room to tilt inside the card band).
+   */
+  private applyZoom(): void {
+    const half = THREE.MathUtils.degToRad(this.baseFov) / 2;
+    this.camera.fov = THREE.MathUtils.radToDeg(2 * Math.atan(Math.tan(half) / this.zoom));
     this.camera.updateProjectionMatrix();
     this.updateLineWidths();
+    this.rotate(0, 0);
     this.dirty = true;
+  }
+
+  /** set the apparent scale (clamped to ZOOM_MIN..ZOOM_MAX); used by the wheel, tests and screenshots */
+  setZoom(scale: number): void {
+    const next = THREE.MathUtils.clamp(scale, ZOOM_MIN, ZOOM_MAX);
+    if (next === this.zoom) return;
+    this.zoom = next;
+    this.applyZoom();
+  }
+
+  getZoom(): number {
+    return this.zoom;
   }
 
   /** px per world unit at the centre of the view; outline, gap and corner radius are set in screen px */
@@ -353,6 +388,8 @@ export class Panorama {
     el.addEventListener("pointerup", this.onUp);
     el.addEventListener("pointercancel", this.onUp);
     el.addEventListener("dblclick", this.onDbl);
+    // not passive: the wheel zooms the panorama and must never scroll the page
+    el.addEventListener("wheel", this.onWheel, { passive: false });
   }
 
   private radPerPx(): number {
@@ -393,6 +430,14 @@ export class Panorama {
     // inertia only when the pointer was still moving at release
     if (performance.now() - this.lastMove > 60) this.vel = { yaw: 0, pitch: 0 };
     this.drag = null;
+  };
+
+  private onWheel = (e: WheelEvent): void => {
+    e.preventDefault();
+    // deltaY in px whatever the device reports (lines or pages); wheel up (negative) zooms in
+    const unit = e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? this.host.clientHeight || window.innerHeight : 1;
+    const dy = THREE.MathUtils.clamp(e.deltaY * unit, -400, 400);
+    if (dy) this.setZoom(this.zoom * Math.exp(-dy * ZOOM_PER_PX));
   };
 
   private onDbl = (e: MouseEvent): void => {
@@ -488,6 +533,7 @@ export class Panorama {
     el.removeEventListener("pointerup", this.onUp);
     el.removeEventListener("pointercancel", this.onUp);
     el.removeEventListener("dblclick", this.onDbl);
+    el.removeEventListener("wheel", this.onWheel);
     for (const a of this.atlases) a.tex.dispose();
     for (const t of [...this.high.values(), ...this.free]) t.dispose();
     for (const m of this.meshes) (m.material as THREE.Material).dispose();

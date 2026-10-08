@@ -12,5 +12,5 @@ A hand-written app (not generated): a panorama of taste screens on a sphere. Sve
   come from the skin's CSS variables. Gradients, blur and grain live only here, inside media slots.
 - `src/engine/grid.ts` — the card grid on the sphere; `assign.ts` — screens and variations over the cards;
   `snapshot.ts` / `loader.ts` / `cache.ts` — offscreen snapshots (SVG foreignObject → canvas → WebP, IndexedDB cache);
-  `panorama.ts` — the Three.js view (drag, inertia, double-click to pick).
+  `panorama.ts` — the Three.js view (drag, inertia, wheel zoom clamped to 75–125 % of the default scale, double-click to pick).
 - `content/` — copy fixtures (English placeholder copy, invented names).

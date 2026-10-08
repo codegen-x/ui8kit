@@ -1,6 +1,6 @@
 <!--
   The panorama: the only main landmark. A WebGL stage with nothing on it but the cards: no captions, counters or icons.
-  Drag to look around; double-click a card to outline it (picked); the picks are kept in localStorage by variant key.
+  Drag to look around; the wheel zooms (75 % to 125 % of the default scale); double-click a card to outline it (picked); the picks are kept in localStorage by variant key.
 -->
 <script lang="ts">
   import { onMount } from "svelte";
