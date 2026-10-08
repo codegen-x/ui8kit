@@ -1,5 +1,6 @@
 // The Three.js panorama: the camera sits at the centre of the sphere, every card is a textured plane facing it.
-// One ShaderMaterial program draws a card: rounded rectangle (SDF), soft shadow, and a thin outline when picked.
+// One ShaderMaterial program draws a card: rounded rectangle (SDF), soft shadow, a thin outline when picked,
+// and (on a curated row) a small dot in the top-right corner. The dot is drawn here, not into the snapshot.
 // Textures, two tiers:
 //   low  — every card has a 96×72 cell in one of two 2048×2048 atlases (588 cells each), no mipmaps: 2 × 16 MiB
 //   high — a pool of POOL 400×300 textures with mipmaps (≈ 0.64 MiB each, 51 MiB for 80) for the cards nearest the view
@@ -7,7 +8,7 @@
 // Zoom: the camera stays at the centre (there is no distance to move), so the wheel narrows or widens the field of view;
 // the apparent scale of the cards is clamped to ZOOM_MIN..ZOOM_MAX of the default view.
 import * as THREE from "three";
-import { cards as gridCards, cardSize, CARD_H_DEG, MAX_LAT_DEG, RADIUS, type Card } from "./grid";
+import { cards as gridCards, cardSize, CARD_H_DEG, MAX_LAT_DEG, RADIUS, rowFromTop, type Card } from "./grid";
 
 export const LOW_W = 96;
 export const LOW_H = 72;
@@ -43,6 +44,9 @@ uniform vec3 ink;
 uniform float shadow;
 uniform float line;
 uniform float gap;
+uniform float mark;
+uniform float dotR;
+uniform float dotE;
 varying vec2 vUv;
 float sdRound(vec2 p, vec2 b, float r) { vec2 q = abs(p) - b + r; return length(max(q, 0.0)) + min(max(q.x, q.y), 0.0) - r; }
 vec4 over(vec4 a, vec4 b) { float o = a.a + b.a * (1.0 - a.a); return o <= 0.0 ? vec4(0.0) : vec4((a.rgb * a.a + b.rgb * b.a * (1.0 - a.a)) / o, o); }
@@ -58,6 +62,17 @@ void main() {
   float ring = picked * (1.0 - smoothstep(line * 0.5 - aa, line * 0.5 + aa, abs(d - gap - line * 0.5)));
   vec4 c = over(vec4(col, inside), vec4(0.0, 0.0, 0.0, sh));
   c = over(vec4(ink, ring), c);
+  // curated row: a few pixels, light core with a thin dark edge, tucked inside the top-right corner
+  float need = dotR + dotE;
+  vec2 corner = size * 0.5;
+  vec2 arc = corner - vec2(radius);
+  vec2 dotC = min(arc + vec2(0.70710678) * max(radius - need, 0.0), corner - vec2(need));
+  float dd = length(p - dotC);
+  float w = max(aa, 1e-5);
+  float core = 1.0 - smoothstep(dotR - w, dotR + w, dd);
+  float edge = 1.0 - smoothstep(dotR + dotE - w, dotR + dotE + w, dd);
+  vec4 badge = over(vec4(0.96, 0.96, 0.94, core), vec4(0.12, 0.12, 0.13, edge));
+  c = over(vec4(badge.rgb, badge.a * mark * inside), c);
   if (c.a < 0.003) discard;
   gl_FragColor = c;
 }`;
@@ -75,6 +90,11 @@ type Uniforms = {
   shadow: { value: number };
   line: { value: number };
   gap: { value: number };
+  /** 1 when this card's row is listed in curated.ts */
+  mark: { value: number };
+  /** light-core radius and dark-edge thickness, world units (a few screen px) */
+  dotR: { value: number };
+  dotE: { value: number };
 };
 
 type Atlas = { canvas: HTMLCanvasElement; ctx: CanvasRenderingContext2D; tex: THREE.CanvasTexture; dirty: boolean };
@@ -160,6 +180,9 @@ export class Panorama {
         shadow: { value: 0.5 },
         line: { value: 0.01 },
         gap: { value: 0.02 },
+        mark: { value: 0 },
+        dotR: { value: 0.02 },
+        dotE: { value: 0.008 },
       };
       const mat = new THREE.ShaderMaterial({ uniforms: u, vertexShader: VERT, fragmentShader: FRAG, transparent: true, depthWrite: false, depthTest: false });
       const mesh = new THREE.Mesh(geo, mat);
@@ -250,6 +273,9 @@ export class Panorama {
       u.line.value = 2 / px;
       u.gap.value = 3 / px;
       u.radius.value = this.radiusPx / px;
+      // 4 px light core, 1 px dark edge: readable on a card, still just a dot
+      u.dotR.value = 2 / px;
+      u.dotE.value = 1 / px;
     }
   }
 
@@ -455,6 +481,16 @@ export class Panorama {
       return;
     }
   };
+
+  /**
+   * Put the corner dot on every card of these rows. `rowsFromTop` is counted the way curated.ts counts:
+   * 1 is the top row. Rows not listed stay unmarked, so a future row gets the dot by being added there.
+   */
+  markCuratedRows(rowsFromTop: readonly number[]): void {
+    const set = new Set(rowsFromTop);
+    for (const c of this.cards) this.uniforms[c.index]!.mark.value = set.has(rowFromTop(c.row)) ? 1 : 0;
+    this.dirty = true;
+  }
 
   togglePicked(i: number, on?: boolean): void {
     const next = on ?? !this.picked.has(i);

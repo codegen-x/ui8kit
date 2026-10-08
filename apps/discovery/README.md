@@ -17,6 +17,7 @@ A hand-written app (not generated): a panorama of taste screens on a sphere. Sve
   (`engine/wall.ts` = assign, then curate);
   `snapshot.ts` / `loader.ts` / `cache.ts` — offscreen snapshots (SVG foreignObject → canvas → WebP, IndexedDB cache);
   `panorama.ts` — the Three.js view (drag, inertia, wheel zoom clamped to 75–125 % of the default scale, double-click to pick).
+  Every card of a row listed in `curated.ts` gets a small dot in the top-right corner (shader, not the snapshot), including its variations.
 - `src/picks.svelte.ts` + `parts/send-button.svelte` — the Send button (bottom-right, only while cards are picked):
   POST /__discovery `{ ids, row }` (the picked taste screen ids, deduped, and the row they are on, counted from the top)
   to the :5190 preview server; picks spanning several rows go as `{ picks: [{ id, row }] }`. The server appends one
