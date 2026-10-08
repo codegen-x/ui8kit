@@ -1,9 +1,14 @@
 {
-  "name": "xgen-workspace",
+  "name": "ui8kit",
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "description": "Workspace of the xgen slice: xgen (the generation layer, a future standalone repository), generated packages for Svelte, React and Vue, one shared app package, and one host app per runtime that serves every screen spec by name. Bun workspaces.",
+  "description": "ui8kit 2.0 monorepo: xgen (the generation layer: specs, schemas, fixtures and the generator), generated packages for Svelte, React and Vue, one shared app package, and one host app per runtime that serves every screen spec by name. Bun workspaces.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/codegen-x/ui8kit.git"
+  },
   "workspaces": [
     "xgen/schema",
     "xgen/spec",

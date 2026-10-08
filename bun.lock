@@ -3,7 +3,7 @@
   "configVersion": 1,
   "workspaces": {
     "": {
-      "name": "xgen-workspace",
+      "name": "ui8kit",
       "devDependencies": {
         "@types/bun": "^1.4.2",
         "ui8px": "0.2.4",
