@@ -1,0 +1,96 @@
+{
+  "collection": "cart",
+  "kind": "cartline",
+  "entries": [
+    {
+      "id": "cartline-lamp",
+      "kind": "cartline",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "lamp"
+      },
+      "title": {
+        "en": "Arc desk lamp"
+      },
+      "metadata": {
+        "variant": {
+          "value": "Brass"
+        },
+        "price": {
+          "value": 89
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "qty": {
+          "value": 1
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-01T09:00:00Z",
+      "updated_at": "2026-03-02T09:00:00Z",
+      "published_at": "2026-03-02T10:00:00Z"
+    },
+    {
+      "id": "cartline-bag",
+      "kind": "cartline",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "bag"
+      },
+      "title": {
+        "en": "Field backpack"
+      },
+      "metadata": {
+        "variant": {
+          "value": "Olive"
+        },
+        "price": {
+          "value": 129
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "qty": {
+          "value": 1
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-03T09:00:00Z",
+      "updated_at": "2026-03-04T09:00:00Z",
+      "published_at": "2026-03-04T10:00:00Z"
+    },
+    {
+      "id": "cartline-mat",
+      "kind": "cartline",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "mat"
+      },
+      "title": {
+        "en": "Desk mat"
+      },
+      "metadata": {
+        "variant": {
+          "value": "Charcoal"
+        },
+        "price": {
+          "value": 35
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "qty": {
+          "value": 2
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-05T09:00:00Z",
+      "updated_at": "2026-03-06T09:00:00Z",
+      "published_at": "2026-03-06T10:00:00Z"
+    }
+  ]
+}

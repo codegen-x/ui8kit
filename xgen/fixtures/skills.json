@@ -1,0 +1,111 @@
+{
+  "collection": "skills",
+  "kind": "skill",
+  "entries": [
+    {
+      "id": "skill-systems",
+      "kind": "skill",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "systems"
+      },
+      "title": {
+        "en": "Design systems"
+      },
+      "metadata": {
+        "level": {
+          "value": 95
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-02T09:00:00Z",
+      "updated_at": "2026-03-03T09:00:00Z",
+      "published_at": "2026-03-03T10:00:00Z"
+    },
+    {
+      "id": "skill-research",
+      "kind": "skill",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "research"
+      },
+      "title": {
+        "en": "User research"
+      },
+      "metadata": {
+        "level": {
+          "value": 85
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-04T09:00:00Z",
+      "updated_at": "2026-03-05T09:00:00Z",
+      "published_at": "2026-03-05T10:00:00Z"
+    },
+    {
+      "id": "skill-prototyping",
+      "kind": "skill",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "prototyping"
+      },
+      "title": {
+        "en": "Prototyping"
+      },
+      "metadata": {
+        "level": {
+          "value": 90
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-06T09:00:00Z",
+      "updated_at": "2026-03-07T09:00:00Z",
+      "published_at": "2026-03-07T10:00:00Z"
+    },
+    {
+      "id": "skill-frontend",
+      "kind": "skill",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "frontend"
+      },
+      "title": {
+        "en": "Frontend code"
+      },
+      "metadata": {
+        "level": {
+          "value": 70
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-08T09:00:00Z",
+      "updated_at": "2026-03-09T09:00:00Z",
+      "published_at": "2026-03-09T10:00:00Z"
+    },
+    {
+      "id": "skill-writing",
+      "kind": "skill",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "writing"
+      },
+      "title": {
+        "en": "Product writing"
+      },
+      "metadata": {
+        "level": {
+          "value": 80
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-10T09:00:00Z",
+      "updated_at": "2026-03-11T09:00:00Z",
+      "published_at": "2026-03-11T10:00:00Z"
+    }
+  ]
+}

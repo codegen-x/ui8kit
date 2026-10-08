@@ -1,0 +1,27 @@
+logs
+*.log
+node_modules
+dist
+dist-ssr
+*.local
+.DS_Store
+.idea
+.vscode/*
+!.vscode/extensions.json
+
+# never published from this repository
+private/
+shots/
+**/public/p/
+*.fig
+.env
+.env.*
+.manual/
+
+# ui8px: generated reports and learn-mode data (.ui8px/extract carries its own .gitignore: ui8px skips paths of the root .gitignore)
+.ui8px/telemetry/
+.ui8px/reports/
+
+# preview Inspect reports (the Ins button of the :5190 preview); never committed
+backlog/
+backlog-archive/

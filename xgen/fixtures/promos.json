@@ -1,0 +1,57 @@
+{
+  "collection": "promos",
+  "kind": "promo",
+  "entries": [
+    {
+      "id": "promo-welcome",
+      "kind": "promo",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "welcome"
+      },
+      "title": {
+        "en": "WELCOME10"
+      },
+      "metadata": {},
+      "version": 1,
+      "created_at": "2026-03-02T09:00:00Z",
+      "updated_at": "2026-03-03T09:00:00Z",
+      "published_at": "2026-03-03T10:00:00Z"
+    },
+    {
+      "id": "promo-freeship",
+      "kind": "promo",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "freeship"
+      },
+      "title": {
+        "en": "FREESHIP"
+      },
+      "metadata": {},
+      "version": 1,
+      "created_at": "2026-03-04T09:00:00Z",
+      "updated_at": "2026-03-05T09:00:00Z",
+      "published_at": "2026-03-05T10:00:00Z"
+    },
+    {
+      "id": "promo-desk",
+      "kind": "promo",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "desk"
+      },
+      "title": {
+        "en": "DESK15"
+      },
+      "metadata": {},
+      "version": 1,
+      "created_at": "2026-03-06T09:00:00Z",
+      "updated_at": "2026-03-07T09:00:00Z",
+      "published_at": "2026-03-07T10:00:00Z"
+    }
+  ]
+}

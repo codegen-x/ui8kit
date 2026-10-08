@@ -1,0 +1,21 @@
+{
+  "name": "@ui8kit/xgen-tooling",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Gates of the workspace as bins: rule 02 (retag), rules 01 and 03, rule 06 (i18n: no literal text, no Cyrillic), pre-push audit. Run inside an app or a package; baselines live in the root .project/<kind>/<name>/.",
+  "bin": {
+    "xgen-retag": "./bin/retag.ts",
+    "xgen-rules": "./bin/rules.mjs",
+    "xgen-i18n": "./bin/i18n.mjs",
+    "xgen-audit": "./bin/audit.sh"
+  },
+  "exports": {
+    "./app": "./src/app.mjs",
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "svelte": "^5.57.0",
+    "typescript": "~6.0.2"
+  }
+}

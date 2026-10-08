@@ -1,0 +1,168 @@
+{
+  "collection": "cards",
+  "kind": "card",
+  "entries": [
+    {
+      "id": "card-c1",
+      "kind": "card",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "c1"
+      },
+      "title": {
+        "en": "Write the launch post"
+      },
+      "metadata": {
+        "lane": {
+          "value": "todo"
+        },
+        "tag": {
+          "value": "Content"
+        },
+        "who": {
+          "value": "Mara Quinn"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-01T09:00:00Z",
+      "updated_at": "2026-03-02T09:00:00Z",
+      "published_at": "2026-03-02T10:00:00Z"
+    },
+    {
+      "id": "card-c2",
+      "kind": "card",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "c2"
+      },
+      "title": {
+        "en": "Review pricing copy"
+      },
+      "metadata": {
+        "lane": {
+          "value": "todo"
+        },
+        "tag": {
+          "value": "Growth"
+        },
+        "who": {
+          "value": "Jon Ellis"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-03T09:00:00Z",
+      "updated_at": "2026-03-04T09:00:00Z",
+      "published_at": "2026-03-04T10:00:00Z"
+    },
+    {
+      "id": "card-c3",
+      "kind": "card",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "c3"
+      },
+      "title": {
+        "en": "Build the signup flow"
+      },
+      "metadata": {
+        "lane": {
+          "value": "doing"
+        },
+        "tag": {
+          "value": "Product"
+        },
+        "who": {
+          "value": "Aya Tanaka"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-05T09:00:00Z",
+      "updated_at": "2026-03-06T09:00:00Z",
+      "published_at": "2026-03-06T10:00:00Z"
+    },
+    {
+      "id": "card-c4",
+      "kind": "card",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "c4"
+      },
+      "title": {
+        "en": "Fix the cart total"
+      },
+      "metadata": {
+        "lane": {
+          "value": "doing"
+        },
+        "tag": {
+          "value": "Bug"
+        },
+        "who": {
+          "value": "Luis Ortega"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-07T09:00:00Z",
+      "updated_at": "2026-03-08T09:00:00Z",
+      "published_at": "2026-03-08T10:00:00Z"
+    },
+    {
+      "id": "card-c5",
+      "kind": "card",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "c5"
+      },
+      "title": {
+        "en": "Publish the docs"
+      },
+      "metadata": {
+        "lane": {
+          "value": "done"
+        },
+        "tag": {
+          "value": "Docs"
+        },
+        "who": {
+          "value": "Mara Quinn"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-09T09:00:00Z",
+      "updated_at": "2026-03-10T09:00:00Z",
+      "published_at": "2026-03-10T10:00:00Z"
+    },
+    {
+      "id": "card-c6",
+      "kind": "card",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "c6"
+      },
+      "title": {
+        "en": "Ship dark mode"
+      },
+      "metadata": {
+        "lane": {
+          "value": "done"
+        },
+        "tag": {
+          "value": "Design"
+        },
+        "who": {
+          "value": "Aya Tanaka"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-11T09:00:00Z",
+      "updated_at": "2026-03-12T09:00:00Z",
+      "published_at": "2026-03-12T10:00:00Z"
+    }
+  ]
+}

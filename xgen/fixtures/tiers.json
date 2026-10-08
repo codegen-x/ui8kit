@@ -1,0 +1,155 @@
+{
+  "collection": "tiers",
+  "kind": "plan",
+  "entries": [
+    {
+      "id": "plan-solo",
+      "kind": "plan",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "solo"
+      },
+      "title": {
+        "en": "Solo"
+      },
+      "metadata": {
+        "tagline": {
+          "value": "One person, one site"
+        },
+        "price": {
+          "value": 0
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "seats": {
+          "value": 1
+        },
+        "storage": {
+          "value": 2
+        },
+        "highlighted": {
+          "value": false
+        },
+        "status": {
+          "value": "active"
+        },
+        "features": {
+          "value": [
+            "1 site",
+            "Community support",
+            "Basic analytics"
+          ]
+        },
+        "yearly": {
+          "value": 0
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-01T09:00:00Z",
+      "updated_at": "2026-03-11T09:00:00Z",
+      "published_at": "2026-03-11T10:00:00Z"
+    },
+    {
+      "id": "plan-team",
+      "kind": "plan",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "team"
+      },
+      "title": {
+        "en": "Team"
+      },
+      "metadata": {
+        "tagline": {
+          "value": "For a small team"
+        },
+        "price": {
+          "value": 29
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "seats": {
+          "value": 10
+        },
+        "storage": {
+          "value": 50
+        },
+        "highlighted": {
+          "value": true
+        },
+        "status": {
+          "value": "active"
+        },
+        "features": {
+          "value": [
+            "10 sites",
+            "Priority support",
+            "Advanced analytics",
+            "Custom domains"
+          ]
+        },
+        "yearly": {
+          "value": 290
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-02T09:00:00Z",
+      "updated_at": "2026-03-12T09:00:00Z",
+      "published_at": "2026-03-12T10:00:00Z"
+    },
+    {
+      "id": "plan-scale",
+      "kind": "plan",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "scale"
+      },
+      "title": {
+        "en": "Scale"
+      },
+      "metadata": {
+        "tagline": {
+          "value": "For many sites and editors"
+        },
+        "price": {
+          "value": 99
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "seats": {
+          "value": 50
+        },
+        "storage": {
+          "value": 500
+        },
+        "highlighted": {
+          "value": false
+        },
+        "status": {
+          "value": "active"
+        },
+        "features": {
+          "value": [
+            "Unlimited sites",
+            "Dedicated support",
+            "Audit log",
+            "Single sign-on"
+          ]
+        },
+        "yearly": {
+          "value": 990
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-03T09:00:00Z",
+      "updated_at": "2026-03-13T09:00:00Z",
+      "published_at": "2026-03-13T10:00:00Z"
+    }
+  ]
+}

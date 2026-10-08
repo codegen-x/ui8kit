@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://xgen.dev/schemas/collection.schema.json",
+  "title": "xgen fixture: a Codex collection",
+  "type": "object",
+  "properties": {
+    "collection": {
+      "type": "string"
+    },
+    "kind": {
+      "type": "string"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          },
+          "visibility": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "title": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string"
+            }
+          },
+          "metadata": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "value": {
+                  "oneOf": [
+                    {
+                      "type": [
+                        "string",
+                        "number",
+                        "boolean"
+                      ]
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "value"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "version": {
+            "type": "integer"
+          },
+          "created_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          },
+          "published_at": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "kind",
+          "status",
+          "visibility",
+          "slug",
+          "title",
+          "metadata",
+          "version",
+          "created_at",
+          "updated_at",
+          "published_at"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "collection",
+    "kind",
+    "entries"
+  ],
+  "additionalProperties": false
+}

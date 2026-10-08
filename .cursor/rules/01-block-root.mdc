@@ -1,0 +1,77 @@
+---
+description: Block is the only file root, Box is never a wrapper
+alwaysApply: true
+---
+
+# Rule 01. Block is the only root, Box is never a wrapper
+
+Language-agnostic. Applies to any stack and any component syntax.
+
+## Variables
+
+- `{appdir}` is the source root of the app; the shared kit lives in `packages/ui/src`. It depends on the stack:
+  `src` for Vite-style projects, `web` for Go projects, and so on.
+- Primitives live in `packages/ui/src/ui`.
+- Utilities and tag groups live in `packages/ui/src/utils`.
+
+## Goal
+
+The DOM tree must follow HTML5 semantics strictly. Landmarks come only from
+`Block`. Nested structure comes only from layout primitives.
+
+## Rules
+
+1. Every component file opens on `Block`. This is critical and has no
+   exceptions. A file never starts with `Box`, `Stack`, `Group`, `Grid`, `Card`
+   or anything else.
+2. One file has exactly one `Block`.
+3. `Block` is never nested inside another element of the same file.
+   If a nested region needs its own `Block`, move it into a new file and
+   import that component. Composition across files is allowed. Nesting
+   inside one file is not.
+4. `Box` is never a wrapper and never a file root. It appears only inside a
+   `Block`, and only where no specialised primitive fits: `Card`, `Stack`,
+   `Group`, `Grid`, `List`, `Nav`, `Dialog` and the others found in the kit.
+5. `Box` is always a plain nested `div`. It is never a landmark and never
+   imitates another primitive.
+6. Before using `Box`, search `packages/ui/src/ui` for a primitive that expresses
+   the intent. Only if none exists, use `Box`. If the primitive is missing
+   and the intent is repeatable, add it to the kit instead of piling up
+   `Box`.
+
+## Roots by surface
+
+| Surface | Root |
+| --- | --- |
+| Application frame | `Block` without `tag`, a viewport container, not a landmark |
+| Route or view | `Block` with `tag=section` |
+| Page header | `Block` with `tag=header` |
+| Primary content | `Block` with `tag=main` and `id=main-content` |
+| Complementary column | `Block` with `tag=aside` |
+
+- `header` and `main` are siblings inside the application frame.
+- There is exactly one `main` per page.
+- The application frame never takes `tag=main`, `section` or `header`.
+
+## Where to look for tags
+
+1. Find the needed element in `packages/ui/src/ui`.
+2. If it is not there, check the tag groups in `packages/ui/src/utils`.
+3. If it is still missing, extend the kit. Do not write a raw tag in the screen.
+
+## Nested replacements
+
+- Nested navigation or search is `Nav` or `List`, never a nested `Block`.
+- A centered modal is `Dialog`, never `Block` plus a dialog role.
+- A grid is `Grid`, never `Box` with grid classes.
+
+## Validation
+
+A validator must fail when:
+
+- the first element of a file is not `Block`;
+- a file contains more than one `Block`;
+- `Block` is found inside another element of the same file;
+- `Box` is a file root or a direct wrapper around the whole content;
+- the application frame has a landmark `tag`;
+- a page has no `main` or has more than one.

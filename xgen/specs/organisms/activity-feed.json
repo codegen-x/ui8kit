@@ -1,0 +1,272 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "organism.activity-feed",
+  "name": "ActivityFeed",
+  "docs": "A panel with recent events: a timeline with dots on a line, or a list of rows with an icon. Axes: layout (timeline, list), density (default, compact), tone (default, muted).",
+  "records": {
+    "Event": [
+      {
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "name": "title",
+        "type": "string"
+      },
+      {
+        "name": "text",
+        "type": "string"
+      },
+      {
+        "name": "time",
+        "type": "string"
+      },
+      {
+        "name": "tone",
+        "type": "string"
+      }
+    ]
+  },
+  "props": [
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "text",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "events",
+      "type": {
+        "ts": "Event[]"
+      },
+      "required": true
+    },
+    {
+      "name": "layout",
+      "type": {
+        "ts": "\"timeline\" | \"list\""
+      },
+      "default": "timeline"
+    },
+    {
+      "name": "density",
+      "type": {
+        "ts": "\"default\" | \"compact\""
+      },
+      "default": "default"
+    },
+    {
+      "name": "tone",
+      "type": {
+        "ts": "\"default\" | \"muted\""
+      },
+      "default": "default"
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "use": "Container",
+      "props": {
+        "Class": "mx-auto w-full max-w-6xl px-4 py-8"
+      },
+      "attrs": {
+        "data-slot": "container"
+      },
+      "children": [
+        {
+          "organism": "Panel",
+          "props": {
+            "title": {
+              "$": "title"
+            },
+            "description": {
+              "$": "text"
+            },
+            "id": {
+              "$": "id"
+            },
+            "className": {
+              "op": "cond",
+              "args": [
+                {
+                  "op": "eq",
+                  "args": [
+                    {
+                      "$": "tone"
+                    },
+                    "muted"
+                  ]
+                },
+                "bg-muted",
+                ""
+              ]
+            }
+          },
+          "slots": {
+            "children": {
+              "args": [],
+              "do": [
+                {
+                  "when": {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "$": "layout"
+                      },
+                      "timeline"
+                    ]
+                  },
+                  "then": [
+                    {
+                      "organism": "Timeline",
+                      "props": {
+                        "items": {
+                          "$": "events"
+                        }
+                      }
+                    }
+                  ],
+                  "else": [
+                    {
+                      "use": "List",
+                      "props": {
+                        "Class": "m-0 flex list-none flex-col p-0"
+                      },
+                      "attrs": {
+                        "data-testid": "items"
+                      },
+                      "children": [
+                        {
+                          "each": {
+                            "$": "events"
+                          },
+                          "as": "e",
+                          "key": {
+                            "$": "e.id"
+                          },
+                          "do": [
+                            {
+                              "use": "ListItem",
+                              "props": {
+                                "Class": {
+                                  "op": "cn",
+                                  "args": [
+                                    "flex items-start justify-between gap-4 border-b border-border last:border-0",
+                                    {
+                                      "op": "cond",
+                                      "args": [
+                                        {
+                                          "op": "eq",
+                                          "args": [
+                                            {
+                                              "$": "density"
+                                            },
+                                            "compact"
+                                          ]
+                                        },
+                                        "py-2",
+                                        "py-4"
+                                      ]
+                                    }
+                                  ]
+                                }
+                              },
+                              "attrs": {
+                                "data-testid": "item"
+                              },
+                              "children": [
+                                {
+                                  "use": "Stack",
+                                  "props": {
+                                    "Gap": "0"
+                                  },
+                                  "children": [
+                                    {
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "sm",
+                                        "Weight": "semibold"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "e.title"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "when": {
+                                        "op": "eq",
+                                        "args": [
+                                          {
+                                            "$": "density"
+                                          },
+                                          "default"
+                                        ]
+                                      },
+                                      "then": [
+                                        {
+                                          "use": "Text",
+                                          "props": {
+                                            "Size": "sm",
+                                            "Class": "text-muted-foreground"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "e.text"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "use": "Text",
+                                  "props": {
+                                    "Size": "xs",
+                                    "Class": "shrink-0 text-muted-foreground"
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "e.time"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true
+  }
+}

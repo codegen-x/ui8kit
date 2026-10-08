@@ -1,0 +1,111 @@
+{
+  "collection": "subnav",
+  "kind": "subitem",
+  "entries": [
+    {
+      "id": "subitem-all",
+      "kind": "subitem",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "all"
+      },
+      "title": {
+        "en": "All orders"
+      },
+      "metadata": {
+        "icon": {
+          "value": "inbox"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-02T09:00:00Z",
+      "updated_at": "2026-03-03T09:00:00Z",
+      "published_at": "2026-03-03T10:00:00Z"
+    },
+    {
+      "id": "subitem-drafts",
+      "kind": "subitem",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "drafts"
+      },
+      "title": {
+        "en": "Drafts"
+      },
+      "metadata": {
+        "icon": {
+          "value": "file-text"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-04T09:00:00Z",
+      "updated_at": "2026-03-05T09:00:00Z",
+      "published_at": "2026-03-05T10:00:00Z"
+    },
+    {
+      "id": "subitem-shipping",
+      "kind": "subitem",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "shipping"
+      },
+      "title": {
+        "en": "Shipping"
+      },
+      "metadata": {
+        "icon": {
+          "value": "truck"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-06T09:00:00Z",
+      "updated_at": "2026-03-07T09:00:00Z",
+      "published_at": "2026-03-07T10:00:00Z"
+    },
+    {
+      "id": "subitem-returns",
+      "kind": "subitem",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "returns"
+      },
+      "title": {
+        "en": "Returns"
+      },
+      "metadata": {
+        "icon": {
+          "value": "rotate-ccw"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-08T09:00:00Z",
+      "updated_at": "2026-03-09T09:00:00Z",
+      "published_at": "2026-03-09T10:00:00Z"
+    },
+    {
+      "id": "subitem-archive",
+      "kind": "subitem",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "archive"
+      },
+      "title": {
+        "en": "Archive"
+      },
+      "metadata": {
+        "icon": {
+          "value": "package"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-10T09:00:00Z",
+      "updated_at": "2026-03-11T09:00:00Z",
+      "published_at": "2026-03-11T10:00:00Z"
+    }
+  ]
+}

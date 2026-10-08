@@ -1,0 +1,41 @@
+{
+  "name": "xgen-workspace",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "Workspace of the xgen slice: xgen (the generation layer, a future standalone repository), generated packages for Svelte, React and Vue, one shared app package, and one host app per runtime that serves every screen spec by name. Bun workspaces.",
+  "workspaces": [
+    "xgen/schema",
+    "xgen/spec",
+    "xgen/screens",
+    "xgen/generator",
+    "xgen/check",
+    "xgen/cli",
+    "xgen/runtimes/*",
+    "apps/*",
+    "packages/tooling",
+    "packages/shared/*",
+    "packages/svelte/*",
+    "packages/react/*",
+    "packages/vue/*"
+  ],
+  "packageManager": "bun@1.4.2",
+  "scripts": {
+    "build": "bun xgen/cli/src/cli.ts build",
+    "check": "bun xgen/cli/src/cli.ts check",
+    "audit:push": "bash packages/tooling/bin/audit.sh",
+    "build:hosts": "bun run --cwd apps/host-svelte build && bun run --cwd apps/host-react build && bun run --cwd apps/host-vue build",
+    "e2e": "bun xgen/cli/src/cli.ts e2e",
+    "shot": "bun xgen/cli/src/cli.ts shot",
+    "visual": "bun xgen/cli/src/cli.ts visual",
+    "typecheck": "bun run typecheck:xgen && bun run --filter \"@ui8kit/svelte-ui\" --filter \"@ui8kit/react-ui\" --filter \"@ui8kit/vue-ui\" --filter \"@ui8kit/app-shared\" --filter \"host-*\" --parallel check",
+    "test": "bun test xgen",
+    "check:all": "bun run build && bun run check && bun run typecheck && bun run build:hosts && bun run test && bun run lint:px && bun run e2e",
+    "typecheck:xgen": "tsc -p xgen/tsconfig.json",
+    "lint:px": "node packages/tooling/bin/ui8px-gate.mjs"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.4.2",
+    "ui8px": "0.2.4"
+  }
+}

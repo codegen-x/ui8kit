@@ -1,0 +1,102 @@
+{
+  "collection": "steps",
+  "kind": "step",
+  "entries": [
+    {
+      "id": "step-plan",
+      "kind": "step",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "plan"
+      },
+      "title": {
+        "en": "Pick a plan"
+      },
+      "metadata": {
+        "text": {
+          "value": "Start free and upgrade when the team grows."
+        },
+        "icon": {
+          "value": "clipboard-list"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-01T09:00:00Z",
+      "updated_at": "2026-03-02T09:00:00Z",
+      "published_at": "2026-03-02T10:00:00Z"
+    },
+    {
+      "id": "step-connect",
+      "kind": "step",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "connect"
+      },
+      "title": {
+        "en": "Connect your data"
+      },
+      "metadata": {
+        "text": {
+          "value": "Point the site at your collections and content."
+        },
+        "icon": {
+          "value": "database"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-03T09:00:00Z",
+      "updated_at": "2026-03-04T09:00:00Z",
+      "published_at": "2026-03-04T10:00:00Z"
+    },
+    {
+      "id": "step-design",
+      "kind": "step",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "design"
+      },
+      "title": {
+        "en": "Choose the blocks"
+      },
+      "metadata": {
+        "text": {
+          "value": "Compose pages from ready blocks and variants."
+        },
+        "icon": {
+          "value": "layout-grid"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-05T09:00:00Z",
+      "updated_at": "2026-03-06T09:00:00Z",
+      "published_at": "2026-03-06T10:00:00Z"
+    },
+    {
+      "id": "step-launch",
+      "kind": "step",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "launch"
+      },
+      "title": {
+        "en": "Publish"
+      },
+      "metadata": {
+        "text": {
+          "value": "Ship to every runtime with one command."
+        },
+        "icon": {
+          "value": "rocket"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-07T09:00:00Z",
+      "updated_at": "2026-03-08T09:00:00Z",
+      "published_at": "2026-03-08T10:00:00Z"
+    }
+  ]
+}

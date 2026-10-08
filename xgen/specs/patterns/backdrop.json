@@ -1,0 +1,76 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "pattern.backdrop",
+  "name": "Backdrop",
+  "docs": "Something behind the children: a faint full-size picture (image), or nothing (none: the children as they are, no wrapper).",
+  "records": {},
+  "props": [
+    {
+      "name": "kind",
+      "type": {
+        "ts": "\"none\" | \"image\""
+      },
+      "docs": "what is drawn behind",
+      "default": "none"
+    },
+    {
+      "name": "alt",
+      "type": "string",
+      "docs": "accessible name of the picture (image)",
+      "default": ""
+    }
+  ],
+  "children": true,
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "when": {
+        "op": "eq",
+        "args": [
+          {
+            "$": "kind"
+          },
+          "image"
+        ]
+      },
+      "then": [
+        {
+          "use": "Block",
+          "props": {
+            "Tag": "div",
+            "Class": "relative isolate overflow-hidden"
+          },
+          "attrs": {
+            "data-testid": "backdrop"
+          },
+          "children": [
+            {
+              "organism": "MediaFrame",
+              "props": {
+                "alt": {
+                  "$": "alt"
+                },
+                "ratio": "21/9",
+                "className": "absolute inset-0 -z-10 size-full rounded-none opacity-30"
+              }
+            },
+            {
+              "slot": "children"
+            }
+          ]
+        }
+      ],
+      "else": [
+        {
+          "slot": "children"
+        }
+      ]
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true
+  }
+}

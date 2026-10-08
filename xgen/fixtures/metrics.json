@@ -1,0 +1,114 @@
+{
+  "collection": "metrics",
+  "kind": "metric",
+  "entries": [
+    {
+      "id": "metric-revenue",
+      "kind": "metric",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "revenue"
+      },
+      "title": {
+        "en": "Revenue"
+      },
+      "metadata": {
+        "value": {
+          "value": "$48,200"
+        },
+        "icon": {
+          "value": "badge-dollar-sign"
+        },
+        "hint": {
+          "value": "+8% this month"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-01T09:00:00Z",
+      "updated_at": "2026-03-02T09:00:00Z",
+      "published_at": "2026-03-02T10:00:00Z"
+    },
+    {
+      "id": "metric-orders",
+      "kind": "metric",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "orders"
+      },
+      "title": {
+        "en": "Orders"
+      },
+      "metadata": {
+        "value": {
+          "value": "1,284"
+        },
+        "icon": {
+          "value": "shopping-cart"
+        },
+        "hint": {
+          "value": "+3% this month"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-03T09:00:00Z",
+      "updated_at": "2026-03-04T09:00:00Z",
+      "published_at": "2026-03-04T10:00:00Z"
+    },
+    {
+      "id": "metric-visitors",
+      "kind": "metric",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "visitors"
+      },
+      "title": {
+        "en": "Visitors"
+      },
+      "metadata": {
+        "value": {
+          "value": "92,410"
+        },
+        "icon": {
+          "value": "eye"
+        },
+        "hint": {
+          "value": "+12% this month"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-05T09:00:00Z",
+      "updated_at": "2026-03-06T09:00:00Z",
+      "published_at": "2026-03-06T10:00:00Z"
+    },
+    {
+      "id": "metric-churn",
+      "kind": "metric",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "churn"
+      },
+      "title": {
+        "en": "Churn"
+      },
+      "metadata": {
+        "value": {
+          "value": "1.9%"
+        },
+        "icon": {
+          "value": "trending-down"
+        },
+        "hint": {
+          "value": "-0.2% this month"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-07T09:00:00Z",
+      "updated_at": "2026-03-08T09:00:00Z",
+      "published_at": "2026-03-08T10:00:00Z"
+    }
+  ]
+}

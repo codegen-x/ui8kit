@@ -1,0 +1,286 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "organism.proof-band",
+  "name": "ProofBand",
+  "docs": "Customer logos together with the key numbers: logos above the numbers, or beside them. Axes: layout (above, beside), logos (name, icon), tone, density.",
+  "records": {},
+  "props": [
+    {
+      "name": "id",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "title",
+      "type": "string",
+      "required": true
+    },
+    {
+      "name": "logos",
+      "type": {
+        "ts": "Logo[]"
+      },
+      "required": true
+    },
+    {
+      "name": "stats",
+      "type": {
+        "ts": "Stat[]"
+      },
+      "required": true
+    },
+    {
+      "name": "layout",
+      "type": {
+        "ts": "\"above\" | \"beside\""
+      },
+      "default": "above"
+    },
+    {
+      "name": "logoStyle",
+      "type": {
+        "ts": "\"name\" | \"icon\""
+      },
+      "default": "name"
+    },
+    {
+      "name": "tone",
+      "type": {
+        "ts": "\"default\" | \"muted\""
+      },
+      "default": "default"
+    },
+    {
+      "name": "density",
+      "type": {
+        "ts": "\"default\" | \"compact\""
+      },
+      "default": "default"
+    }
+  ],
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "organism": "SectionFrame",
+      "props": {
+        "id": {
+          "$": "id"
+        },
+        "title": {
+          "$": "title"
+        },
+        "tone": {
+          "$": "tone"
+        },
+        "density": {
+          "$": "density"
+        },
+        "align": "center"
+      },
+      "slots": {
+        "children": {
+          "args": [],
+          "do": [
+            {
+              "use": "Grid",
+              "props": {
+                "Cols": {
+                  "op": "cond",
+                  "args": [
+                    {
+                      "op": "eq",
+                      "args": [
+                        {
+                          "$": "layout"
+                        },
+                        "beside"
+                      ]
+                    },
+                    "1-2",
+                    "1"
+                  ]
+                },
+                "Class": "items-center gap-8"
+              },
+              "children": [
+                {
+                  "use": "Group",
+                  "props": {
+                    "Gap": "6",
+                    "Justify": "center",
+                    "Class": "flex-wrap text-muted-foreground"
+                  },
+                  "attrs": {
+                    "data-testid": "logos"
+                  },
+                  "children": [
+                    {
+                      "each": {
+                        "$": "logos"
+                      },
+                      "as": "logo",
+                      "key": {
+                        "$": "logo.id"
+                      },
+                      "do": [
+                        {
+                          "use": "Group",
+                          "props": {
+                            "Gap": "2",
+                            "Align": "center"
+                          },
+                          "attrs": {
+                            "data-testid": "logo"
+                          },
+                          "children": [
+                            {
+                              "use": "LucideIcon",
+                              "props": {
+                                "Name": {
+                                  "$": "logo.icon"
+                                },
+                                "Size": 24
+                              }
+                            },
+                            {
+                              "use": "Text",
+                              "props": {
+                                "Size": "sm",
+                                "Weight": "semibold",
+                                "Class": {
+                                  "op": "cond",
+                                  "args": [
+                                    {
+                                      "op": "eq",
+                                      "args": [
+                                        {
+                                          "$": "logoStyle"
+                                        },
+                                        "icon"
+                                      ]
+                                    },
+                                    "sr-only",
+                                    ""
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "logo.name"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "use": "Grid",
+                  "props": {
+                    "Cols": {
+                      "op": "cond",
+                      "args": [
+                        {
+                          "op": "eq",
+                          "args": [
+                            {
+                              "$": "layout"
+                            },
+                            "beside"
+                          ]
+                        },
+                        "2",
+                        "1-4"
+                      ]
+                    },
+                    "Class": "gap-6 text-center"
+                  },
+                  "attrs": {
+                    "data-testid": "stats"
+                  },
+                  "children": [
+                    {
+                      "each": {
+                        "$": "stats"
+                      },
+                      "as": "stat",
+                      "key": {
+                        "$": "stat.id"
+                      },
+                      "do": [
+                        {
+                          "use": "Stack",
+                          "props": {
+                            "Gap": "0",
+                            "Align": "center"
+                          },
+                          "attrs": {
+                            "data-testid": "stat"
+                          },
+                          "children": [
+                            {
+                              "use": "Text",
+                              "props": {
+                                "Size": "4xl",
+                                "Weight": "bold"
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "stat.value"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "use": "Text",
+                              "props": {
+                                "Size": "sm",
+                                "Class": "text-muted-foreground"
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "stat.label"
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true
+  },
+  "typeImports": [
+    {
+      "from": "LogoCloud",
+      "names": [
+        "Logo"
+      ]
+    },
+    {
+      "from": "StatsBand",
+      "names": [
+        "Stat"
+      ]
+    }
+  ]
+}

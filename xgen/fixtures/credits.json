@@ -1,0 +1,126 @@
+{
+  "collection": "credits",
+  "kind": "pack",
+  "entries": [
+    {
+      "id": "pack-s",
+      "kind": "pack",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "s"
+      },
+      "title": {
+        "en": "100 credits"
+      },
+      "metadata": {
+        "credits": {
+          "value": 100
+        },
+        "price": {
+          "value": 9
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "badge": {
+          "value": ""
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-01T09:00:00Z",
+      "updated_at": "2026-03-02T09:00:00Z",
+      "published_at": "2026-03-02T10:00:00Z"
+    },
+    {
+      "id": "pack-m",
+      "kind": "pack",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "m"
+      },
+      "title": {
+        "en": "500 credits"
+      },
+      "metadata": {
+        "credits": {
+          "value": 500
+        },
+        "price": {
+          "value": 39
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "badge": {
+          "value": "popular"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-03T09:00:00Z",
+      "updated_at": "2026-03-04T09:00:00Z",
+      "published_at": "2026-03-04T10:00:00Z"
+    },
+    {
+      "id": "pack-l",
+      "kind": "pack",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "l"
+      },
+      "title": {
+        "en": "2,000 credits"
+      },
+      "metadata": {
+        "credits": {
+          "value": 2000
+        },
+        "price": {
+          "value": 129
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "badge": {
+          "value": "best"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-05T09:00:00Z",
+      "updated_at": "2026-03-06T09:00:00Z",
+      "published_at": "2026-03-06T10:00:00Z"
+    },
+    {
+      "id": "pack-xl",
+      "kind": "pack",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "xl"
+      },
+      "title": {
+        "en": "10,000 credits"
+      },
+      "metadata": {
+        "credits": {
+          "value": 10000
+        },
+        "price": {
+          "value": 549
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "badge": {
+          "value": ""
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-07T09:00:00Z",
+      "updated_at": "2026-03-08T09:00:00Z",
+      "published_at": "2026-03-08T10:00:00Z"
+    }
+  ]
+}

@@ -1,0 +1,222 @@
+{
+  "collection": "photos",
+  "kind": "photo",
+  "entries": [
+    {
+      "id": "photo-harbor",
+      "kind": "photo",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "harbor"
+      },
+      "title": {
+        "en": "Harbor at dawn"
+      },
+      "metadata": {
+        "tag": {
+          "value": "Travel"
+        },
+        "size": {
+          "value": "large"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-02T09:00:00Z",
+      "updated_at": "2026-03-03T09:00:00Z",
+      "published_at": "2026-03-03T10:00:00Z"
+    },
+    {
+      "id": "photo-studio",
+      "kind": "photo",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "studio"
+      },
+      "title": {
+        "en": "Studio corner"
+      },
+      "metadata": {
+        "tag": {
+          "value": "Interior"
+        },
+        "size": {
+          "value": "small"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-04T09:00:00Z",
+      "updated_at": "2026-03-05T09:00:00Z",
+      "published_at": "2026-03-05T10:00:00Z"
+    },
+    {
+      "id": "photo-market",
+      "kind": "photo",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "market"
+      },
+      "title": {
+        "en": "Morning market"
+      },
+      "metadata": {
+        "tag": {
+          "value": "Street"
+        },
+        "size": {
+          "value": "tall"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-06T09:00:00Z",
+      "updated_at": "2026-03-07T09:00:00Z",
+      "published_at": "2026-03-07T10:00:00Z"
+    },
+    {
+      "id": "photo-ridge",
+      "kind": "photo",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "ridge"
+      },
+      "title": {
+        "en": "Ridge trail"
+      },
+      "metadata": {
+        "tag": {
+          "value": "Nature"
+        },
+        "size": {
+          "value": "wide"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-08T09:00:00Z",
+      "updated_at": "2026-03-09T09:00:00Z",
+      "published_at": "2026-03-09T10:00:00Z"
+    },
+    {
+      "id": "photo-cafe",
+      "kind": "photo",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "cafe"
+      },
+      "title": {
+        "en": "Corner cafe"
+      },
+      "metadata": {
+        "tag": {
+          "value": "Street"
+        },
+        "size": {
+          "value": "small"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-10T09:00:00Z",
+      "updated_at": "2026-03-11T09:00:00Z",
+      "published_at": "2026-03-11T10:00:00Z"
+    },
+    {
+      "id": "photo-dunes",
+      "kind": "photo",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "dunes"
+      },
+      "title": {
+        "en": "Dunes at noon"
+      },
+      "metadata": {
+        "tag": {
+          "value": "Nature"
+        },
+        "size": {
+          "value": "tall"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-12T09:00:00Z",
+      "updated_at": "2026-03-13T09:00:00Z",
+      "published_at": "2026-03-13T10:00:00Z"
+    },
+    {
+      "id": "photo-library",
+      "kind": "photo",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "library"
+      },
+      "title": {
+        "en": "Old library"
+      },
+      "metadata": {
+        "tag": {
+          "value": "Interior"
+        },
+        "size": {
+          "value": "small"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-14T09:00:00Z",
+      "updated_at": "2026-03-15T09:00:00Z",
+      "published_at": "2026-03-15T10:00:00Z"
+    },
+    {
+      "id": "photo-bridge",
+      "kind": "photo",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "bridge"
+      },
+      "title": {
+        "en": "Iron bridge"
+      },
+      "metadata": {
+        "tag": {
+          "value": "Travel"
+        },
+        "size": {
+          "value": "wide"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-16T09:00:00Z",
+      "updated_at": "2026-03-17T09:00:00Z",
+      "published_at": "2026-03-17T10:00:00Z"
+    },
+    {
+      "id": "photo-orchard",
+      "kind": "photo",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "orchard"
+      },
+      "title": {
+        "en": "Orchard rows"
+      },
+      "metadata": {
+        "tag": {
+          "value": "Nature"
+        },
+        "size": {
+          "value": "small"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-18T09:00:00Z",
+      "updated_at": "2026-03-19T09:00:00Z",
+      "published_at": "2026-03-19T10:00:00Z"
+    }
+  ]
+}

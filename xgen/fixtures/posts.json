@@ -1,0 +1,222 @@
+{
+  "collection": "posts",
+  "kind": "post",
+  "entries": [
+    {
+      "id": "post-static-first",
+      "kind": "post",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "static-first"
+      },
+      "title": {
+        "en": "Why static-first pages still win"
+      },
+      "metadata": {
+        "excerpt": {
+          "value": "Less script, less waiting, and pages that keep working offline."
+        },
+        "category": {
+          "value": "Engineering"
+        },
+        "author": {
+          "value": "Mara Quinn"
+        },
+        "date": {
+          "value": "Mar 18, 2026"
+        },
+        "minutes": {
+          "value": 6
+        },
+        "icon": {
+          "value": "zap"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-01T09:00:00Z",
+      "updated_at": "2026-03-02T09:00:00Z",
+      "published_at": "2026-03-02T10:00:00Z"
+    },
+    {
+      "id": "post-design-tokens",
+      "kind": "post",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "design-tokens"
+      },
+      "title": {
+        "en": "Design tokens without the drift"
+      },
+      "metadata": {
+        "excerpt": {
+          "value": "How one list of tokens feeds every runtime and every theme."
+        },
+        "category": {
+          "value": "Design"
+        },
+        "author": {
+          "value": "Aya Tanaka"
+        },
+        "date": {
+          "value": "Mar 11, 2026"
+        },
+        "minutes": {
+          "value": 5
+        },
+        "icon": {
+          "value": "palette"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-03T09:00:00Z",
+      "updated_at": "2026-03-04T09:00:00Z",
+      "published_at": "2026-03-04T10:00:00Z"
+    },
+    {
+      "id": "post-launch-notes",
+      "kind": "post",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "launch-notes"
+      },
+      "title": {
+        "en": "Launch notes for spring"
+      },
+      "metadata": {
+        "excerpt": {
+          "value": "New blocks, faster builds and a calmer dashboard."
+        },
+        "category": {
+          "value": "Product"
+        },
+        "author": {
+          "value": "Jon Ellis"
+        },
+        "date": {
+          "value": "Mar 04, 2026"
+        },
+        "minutes": {
+          "value": 3
+        },
+        "icon": {
+          "value": "megaphone"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-05T09:00:00Z",
+      "updated_at": "2026-03-06T09:00:00Z",
+      "published_at": "2026-03-06T10:00:00Z"
+    },
+    {
+      "id": "post-small-teams",
+      "kind": "post",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "small-teams"
+      },
+      "title": {
+        "en": "Shipping with a small team"
+      },
+      "metadata": {
+        "excerpt": {
+          "value": "A short checklist that keeps a team of four on track."
+        },
+        "category": {
+          "value": "Company"
+        },
+        "author": {
+          "value": "Luis Ortega"
+        },
+        "date": {
+          "value": "Feb 25, 2026"
+        },
+        "minutes": {
+          "value": 4
+        },
+        "icon": {
+          "value": "users"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-07T09:00:00Z",
+      "updated_at": "2026-03-08T09:00:00Z",
+      "published_at": "2026-03-08T10:00:00Z"
+    },
+    {
+      "id": "post-accessible-forms",
+      "kind": "post",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "accessible-forms"
+      },
+      "title": {
+        "en": "Accessible forms in an afternoon"
+      },
+      "metadata": {
+        "excerpt": {
+          "value": "Labels, errors and focus: the three things that matter most."
+        },
+        "category": {
+          "value": "Engineering"
+        },
+        "author": {
+          "value": "Mara Quinn"
+        },
+        "date": {
+          "value": "Feb 14, 2026"
+        },
+        "minutes": {
+          "value": 7
+        },
+        "icon": {
+          "value": "text-cursor-input"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-09T09:00:00Z",
+      "updated_at": "2026-03-10T09:00:00Z",
+      "published_at": "2026-03-10T10:00:00Z"
+    },
+    {
+      "id": "post-pricing-page",
+      "kind": "post",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "pricing-page"
+      },
+      "title": {
+        "en": "What a good pricing page shows"
+      },
+      "metadata": {
+        "excerpt": {
+          "value": "Plans, limits and answers, in that order."
+        },
+        "category": {
+          "value": "Growth"
+        },
+        "author": {
+          "value": "Jon Ellis"
+        },
+        "date": {
+          "value": "Feb 02, 2026"
+        },
+        "minutes": {
+          "value": 5
+        },
+        "icon": {
+          "value": "badge-dollar-sign"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-11T09:00:00Z",
+      "updated_at": "2026-03-12T09:00:00Z",
+      "published_at": "2026-03-12T10:00:00Z"
+    }
+  ]
+}

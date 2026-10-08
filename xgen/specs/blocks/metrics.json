@@ -1,0 +1,91 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.metrics",
+  "name": "Metric tiles",
+  "docs": "Key counters of a dashboard.",
+  "theme": "dashboard",
+  "group": "widgets",
+  "organism": "MetricRow",
+  "axes": {
+    "cols": [
+      "2",
+      "4"
+    ],
+    "item": [
+      "tile",
+      "compact"
+    ],
+    "tone": [
+      "default",
+      "muted"
+    ],
+    "density": [
+      "default",
+      "compact"
+    ]
+  },
+  "defaults": {
+    "cols": "4",
+    "item": "tile",
+    "tone": "default",
+    "density": "default"
+  },
+  "variants": [
+    {
+      "id": "tiles",
+      "set": {}
+    },
+    {
+      "id": "twoUp",
+      "set": {
+        "cols": "2"
+      }
+    },
+    {
+      "id": "compact",
+      "set": {
+        "item": "compact"
+      }
+    },
+    {
+      "id": "muted",
+      "set": {
+        "tone": "muted",
+        "density": "compact",
+        "item": "compact",
+        "cols": "2"
+      }
+    }
+  ],
+  "slots": [
+    "SectionFrame",
+    "StatTile"
+  ],
+  "data": [
+    {
+      "as": "metrics",
+      "collection": "metrics",
+      "kind": "metric",
+      "record": "Stat",
+      "fields": {
+        "id": "id",
+        "label": "title.en",
+        "value": "metadata.value.value",
+        "icon": "metadata.icon.value",
+        "hint": "metadata.hint.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "id": "metrics",
+      "title": {
+        "$": "ui.dashboard.metrics.title"
+      },
+      "metrics": {
+        "$": "metrics"
+      }
+    }
+  }
+}

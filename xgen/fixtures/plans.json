@@ -1,0 +1,601 @@
+{
+  "collection": "plans",
+  "kind": "plan",
+  "entries": [
+    {
+      "id": "plan-free",
+      "kind": "plan",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "free"
+      },
+      "title": {
+        "en": "Free"
+      },
+      "metadata": {
+        "tagline": {
+          "value": "For trying things out"
+        },
+        "price": {
+          "value": 0
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "seats": {
+          "value": 1
+        },
+        "storage": {
+          "value": 1
+        },
+        "highlighted": {
+          "value": false
+        },
+        "status": {
+          "value": "active"
+        },
+        "features": {
+          "value": [
+            "1 project",
+            "Community support",
+            "Basic reports"
+          ]
+        },
+        "yearly": {
+          "value": 0
+        }
+      },
+      "version": 1,
+      "created_at": "2026-01-01T09:00:00Z",
+      "updated_at": "2026-02-01T09:00:00Z",
+      "published_at": "2026-02-01T10:00:00Z"
+    },
+    {
+      "id": "plan-starter",
+      "kind": "plan",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "starter"
+      },
+      "title": {
+        "en": "Starter"
+      },
+      "metadata": {
+        "tagline": {
+          "value": "For a single maker"
+        },
+        "price": {
+          "value": 9
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "seats": {
+          "value": 3
+        },
+        "storage": {
+          "value": 10
+        },
+        "highlighted": {
+          "value": false
+        },
+        "status": {
+          "value": "active"
+        },
+        "features": {
+          "value": [
+            "3 projects",
+            "Email support",
+            "Basic reports",
+            "Export to CSV"
+          ]
+        },
+        "yearly": {
+          "value": 90
+        }
+      },
+      "version": 1,
+      "created_at": "2026-01-02T09:00:00Z",
+      "updated_at": "2026-02-02T09:00:00Z",
+      "published_at": "2026-02-02T10:00:00Z"
+    },
+    {
+      "id": "plan-basic",
+      "kind": "plan",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "basic"
+      },
+      "title": {
+        "en": "Basic"
+      },
+      "metadata": {
+        "tagline": {
+          "value": "For small teams"
+        },
+        "price": {
+          "value": 19
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "seats": {
+          "value": 5
+        },
+        "storage": {
+          "value": 50
+        },
+        "highlighted": {
+          "value": false
+        },
+        "status": {
+          "value": "active"
+        },
+        "features": {
+          "value": [
+            "10 projects",
+            "Email support",
+            "Shared dashboards"
+          ]
+        },
+        "yearly": {
+          "value": 190
+        }
+      },
+      "version": 1,
+      "created_at": "2026-01-03T09:00:00Z",
+      "updated_at": "2026-02-03T09:00:00Z",
+      "published_at": "2026-02-03T10:00:00Z"
+    },
+    {
+      "id": "plan-team",
+      "kind": "plan",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "team"
+      },
+      "title": {
+        "en": "Team"
+      },
+      "metadata": {
+        "tagline": {
+          "value": "For growing teams"
+        },
+        "price": {
+          "value": 39
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "seats": {
+          "value": 15
+        },
+        "storage": {
+          "value": 200
+        },
+        "highlighted": {
+          "value": true
+        },
+        "status": {
+          "value": "active"
+        },
+        "features": {
+          "value": [
+            "Unlimited projects",
+            "Priority support",
+            "Shared dashboards",
+            "Audit log"
+          ]
+        },
+        "yearly": {
+          "value": 390
+        }
+      },
+      "version": 1,
+      "created_at": "2026-01-04T09:00:00Z",
+      "updated_at": "2026-02-04T09:00:00Z",
+      "published_at": "2026-02-04T10:00:00Z"
+    },
+    {
+      "id": "plan-growth",
+      "kind": "plan",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "growth"
+      },
+      "title": {
+        "en": "Growth"
+      },
+      "metadata": {
+        "tagline": {
+          "value": "For teams that ship weekly"
+        },
+        "price": {
+          "value": 59
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "seats": {
+          "value": 25
+        },
+        "storage": {
+          "value": 500
+        },
+        "highlighted": {
+          "value": false
+        },
+        "status": {
+          "value": "active"
+        },
+        "features": {
+          "value": [
+            "Unlimited projects",
+            "Priority support",
+            "Roles and permissions",
+            "Audit log"
+          ]
+        },
+        "yearly": {
+          "value": 590
+        }
+      },
+      "version": 1,
+      "created_at": "2026-01-05T09:00:00Z",
+      "updated_at": "2026-02-05T09:00:00Z",
+      "published_at": "2026-02-05T10:00:00Z"
+    },
+    {
+      "id": "plan-business",
+      "kind": "plan",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "business"
+      },
+      "title": {
+        "en": "Business"
+      },
+      "metadata": {
+        "tagline": {
+          "value": "For departments"
+        },
+        "price": {
+          "value": 99
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "seats": {
+          "value": 50
+        },
+        "storage": {
+          "value": 1000
+        },
+        "highlighted": {
+          "value": false
+        },
+        "status": {
+          "value": "active"
+        },
+        "features": {
+          "value": [
+            "Unlimited projects",
+            "Single sign-on",
+            "Roles and permissions",
+            "Audit log",
+            "Custom domains"
+          ]
+        },
+        "yearly": {
+          "value": 990
+        }
+      },
+      "version": 1,
+      "created_at": "2026-01-06T09:00:00Z",
+      "updated_at": "2026-02-06T09:00:00Z",
+      "published_at": "2026-02-06T10:00:00Z"
+    },
+    {
+      "id": "plan-pro",
+      "kind": "plan",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "pro"
+      },
+      "title": {
+        "en": "Pro"
+      },
+      "metadata": {
+        "tagline": {
+          "value": "For power users"
+        },
+        "price": {
+          "value": 29
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "seats": {
+          "value": 5
+        },
+        "storage": {
+          "value": 250
+        },
+        "highlighted": {
+          "value": false
+        },
+        "status": {
+          "value": "active"
+        },
+        "features": {
+          "value": [
+            "Unlimited projects",
+            "Priority support",
+            "API access"
+          ]
+        },
+        "yearly": {
+          "value": 290
+        }
+      },
+      "version": 1,
+      "created_at": "2026-01-07T09:00:00Z",
+      "updated_at": "2026-02-07T09:00:00Z",
+      "published_at": "2026-02-07T10:00:00Z"
+    },
+    {
+      "id": "plan-scale",
+      "kind": "plan",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "scale"
+      },
+      "title": {
+        "en": "Scale"
+      },
+      "metadata": {
+        "tagline": {
+          "value": "For high traffic"
+        },
+        "price": {
+          "value": 199
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "seats": {
+          "value": 100
+        },
+        "storage": {
+          "value": 2000
+        },
+        "highlighted": {
+          "value": false
+        },
+        "status": {
+          "value": "active"
+        },
+        "features": {
+          "value": [
+            "Unlimited projects",
+            "Single sign-on",
+            "API access",
+            "Dedicated support"
+          ]
+        },
+        "yearly": {
+          "value": 1990
+        }
+      },
+      "version": 1,
+      "created_at": "2026-01-08T09:00:00Z",
+      "updated_at": "2026-02-08T09:00:00Z",
+      "published_at": "2026-02-08T10:00:00Z"
+    },
+    {
+      "id": "plan-studio",
+      "kind": "plan",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "studio"
+      },
+      "title": {
+        "en": "Studio"
+      },
+      "metadata": {
+        "tagline": {
+          "value": "For agencies"
+        },
+        "price": {
+          "value": 149
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "seats": {
+          "value": 40
+        },
+        "storage": {
+          "value": 1500
+        },
+        "highlighted": {
+          "value": false
+        },
+        "status": {
+          "value": "active"
+        },
+        "features": {
+          "value": [
+            "Client workspaces",
+            "White label",
+            "Roles and permissions",
+            "API access"
+          ]
+        },
+        "yearly": {
+          "value": 1490
+        }
+      },
+      "version": 1,
+      "created_at": "2026-01-09T09:00:00Z",
+      "updated_at": "2026-02-09T09:00:00Z",
+      "published_at": "2026-02-09T10:00:00Z"
+    },
+    {
+      "id": "plan-enterprise",
+      "kind": "plan",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "enterprise"
+      },
+      "title": {
+        "en": "Enterprise"
+      },
+      "metadata": {
+        "tagline": {
+          "value": "For large companies"
+        },
+        "price": {
+          "value": 499
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "seats": {
+          "value": 500
+        },
+        "storage": {
+          "value": 10000
+        },
+        "highlighted": {
+          "value": false
+        },
+        "status": {
+          "value": "active"
+        },
+        "features": {
+          "value": [
+            "Unlimited everything",
+            "Single sign-on",
+            "Dedicated manager",
+            "Service level agreement"
+          ]
+        },
+        "yearly": {
+          "value": 4990
+        }
+      },
+      "version": 1,
+      "created_at": "2026-01-10T09:00:00Z",
+      "updated_at": "2026-02-10T09:00:00Z",
+      "published_at": "2026-02-10T10:00:00Z"
+    },
+    {
+      "id": "plan-legacy-starter",
+      "kind": "plan",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "legacy-starter"
+      },
+      "title": {
+        "en": "Legacy Starter"
+      },
+      "metadata": {
+        "tagline": {
+          "value": "Kept for old accounts"
+        },
+        "price": {
+          "value": 5
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "seats": {
+          "value": 2
+        },
+        "storage": {
+          "value": 5
+        },
+        "highlighted": {
+          "value": false
+        },
+        "status": {
+          "value": "legacy"
+        },
+        "features": {
+          "value": [
+            "2 projects",
+            "Email support"
+          ]
+        },
+        "yearly": {
+          "value": 50
+        }
+      },
+      "version": 1,
+      "created_at": "2026-01-11T09:00:00Z",
+      "updated_at": "2026-02-11T09:00:00Z",
+      "published_at": "2026-02-11T10:00:00Z"
+    },
+    {
+      "id": "plan-legacy-team",
+      "kind": "plan",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "legacy-team"
+      },
+      "title": {
+        "en": "Legacy Team"
+      },
+      "metadata": {
+        "tagline": {
+          "value": "Kept for old accounts"
+        },
+        "price": {
+          "value": 25
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "seats": {
+          "value": 10
+        },
+        "storage": {
+          "value": 100
+        },
+        "highlighted": {
+          "value": false
+        },
+        "status": {
+          "value": "legacy"
+        },
+        "features": {
+          "value": [
+            "10 projects",
+            "Email support",
+            "Basic reports"
+          ]
+        },
+        "yearly": {
+          "value": 250
+        }
+      },
+      "version": 1,
+      "created_at": "2026-01-12T09:00:00Z",
+      "updated_at": "2026-02-12T09:00:00Z",
+      "published_at": "2026-02-12T10:00:00Z"
+    }
+  ]
+}

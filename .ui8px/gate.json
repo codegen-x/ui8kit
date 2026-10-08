@@ -1,0 +1,10 @@
+{
+  "max": 25,
+  "blocking": [
+    "UI8PX001",
+    "UI8PX003",
+    "UI8PX005",
+    "GRID"
+  ],
+  "why": "ratchet of blocking ui8px hits over the class sets of xgen/specs; it only goes down. Every remaining hit is listed with its reason in plan/UI8KIT-2.0.md (ui8px section)."
+}

@@ -1,0 +1,157 @@
+{
+  "$schema": "../../schema/schemas/block.schema.json",
+  "specVersion": 1,
+  "id": "block.megamenu",
+  "name": "Mega menu",
+  "docs": "A top bar whose first item opens a wide panel of link groups, with an optional promo card.",
+  "theme": "marketing",
+  "group": "navigation",
+  "organism": "MegaMenu",
+  "axes": {
+    "panel": [
+      "open",
+      "closed"
+    ],
+    "cols": [
+      "2",
+      "3"
+    ],
+    "promo": [
+      "none",
+      "card"
+    ]
+  },
+  "defaults": {
+    "panel": "open",
+    "cols": "3",
+    "promo": "none"
+  },
+  "variants": [
+    {
+      "id": "open",
+      "set": {}
+    },
+    {
+      "id": "closed",
+      "set": {
+        "panel": "closed"
+      }
+    },
+    {
+      "id": "twoCols",
+      "set": {
+        "cols": "2"
+      }
+    },
+    {
+      "id": "promo",
+      "set": {
+        "promo": "card"
+      }
+    }
+  ],
+  "slots": [
+    "MediaFrame"
+  ],
+  "facts": [
+    {
+      "sel": "[data-testid=\"mega-trigger\"]",
+      "n": 1
+    },
+    {
+      "sel": "[data-testid=\"mega-panel\"]",
+      "n": 1,
+      "when": {
+        "panel": "open"
+      }
+    },
+    {
+      "sel": "[data-testid=\"mega-panel\"]",
+      "n": 0,
+      "when": {
+        "panel": "closed"
+      }
+    },
+    {
+      "sel": "[data-testid=\"mega-panel\"] [data-testid=\"item\"]",
+      "n": "@megagroups",
+      "when": {
+        "panel": "open"
+      }
+    },
+    {
+      "sel": "[data-testid=\"mega-panel\"] [data-testid=\"item\"]",
+      "cols": 3,
+      "when": {
+        "panel": "open",
+        "cols": "3"
+      }
+    },
+    {
+      "sel": "[data-testid=\"mega-panel\"] [data-testid=\"item\"]",
+      "cols": 2,
+      "when": {
+        "panel": "open",
+        "cols": "2"
+      }
+    },
+    {
+      "sel": "[data-testid=\"promo\"]",
+      "n": 1,
+      "when": {
+        "panel": "open",
+        "promo": "card"
+      }
+    }
+  ],
+  "data": [
+    {
+      "as": "navlinks",
+      "collection": "navlinks",
+      "kind": "link",
+      "record": "NavLink",
+      "fields": {
+        "id": "id",
+        "name": "title.en",
+        "icon": "metadata.icon.value"
+      }
+    },
+    {
+      "as": "megagroups",
+      "collection": "megagroups",
+      "kind": "group",
+      "record": "MegaGroup",
+      "fields": {
+        "id": "id",
+        "title": "title.en",
+        "icon": "metadata.icon.value",
+        "links": "metadata.links.value"
+      }
+    }
+  ],
+  "sample": {
+    "props": {
+      "label": {
+        "$": "ui.vibe.nav.label"
+      },
+      "brand": {
+        "$": "ui.site.header.brand"
+      },
+      "trigger": {
+        "$": "ui.vibe.mega.trigger"
+      },
+      "links": {
+        "$": "navlinks"
+      },
+      "groups": {
+        "$": "megagroups"
+      },
+      "promoTitle": {
+        "$": "ui.vibe.mega.promoTitle"
+      },
+      "promoText": {
+        "$": "ui.vibe.mega.promoText"
+      }
+    }
+  }
+}

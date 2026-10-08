@@ -1,0 +1,76 @@
+{
+  "$schema": "../../schema/schemas/organism.schema.json",
+  "specVersion": 1,
+  "id": "pattern.over-media",
+  "name": "OverMedia",
+  "docs": "Puts its children over a faded picture (a transparent top bar over a hero image). on false: the children alone, no wrapper.",
+  "records": {},
+  "props": [
+    {
+      "name": "on",
+      "type": "boolean",
+      "default": false
+    },
+    {
+      "name": "alt",
+      "type": "string",
+      "required": true,
+      "docs": "accessible name of the picture"
+    }
+  ],
+  "children": true,
+  "slots": [],
+  "events": [],
+  "view": [
+    {
+      "when": {
+        "$": "on"
+      },
+      "then": [
+        {
+          "use": "Block",
+          "props": {
+            "Tag": "div",
+            "Class": "relative isolate overflow-hidden"
+          },
+          "attrs": {
+            "data-testid": "over"
+          },
+          "children": [
+            {
+              "organism": "MediaFrame",
+              "props": {
+                "alt": {
+                  "$": "alt"
+                },
+                "ratio": "21/9",
+                "className": "absolute inset-0 -z-10 size-full rounded-none opacity-40"
+              }
+            },
+            {
+              "use": "Block",
+              "props": {
+                "Tag": "div",
+                "Class": "[&_header]:border-0 [&_header]:bg-transparent"
+              },
+              "children": [
+                {
+                  "slot": "children"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "else": [
+        {
+          "slot": "children"
+        }
+      ]
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true
+  }
+}

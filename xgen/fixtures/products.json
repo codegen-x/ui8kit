@@ -1,0 +1,258 @@
+{
+  "collection": "products",
+  "kind": "product",
+  "entries": [
+    {
+      "id": "product-lamp",
+      "kind": "product",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "lamp"
+      },
+      "title": {
+        "en": "Arc desk lamp"
+      },
+      "metadata": {
+        "summary": {
+          "value": "Warm, dimmable light with a weighted base."
+        },
+        "price": {
+          "value": 89
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "rating": {
+          "value": 4.5
+        },
+        "reviews": {
+          "value": 128
+        },
+        "badge": {
+          "value": "new"
+        },
+        "category": {
+          "value": "light"
+        },
+        "inStock": {
+          "value": true
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-01T09:00:00Z",
+      "updated_at": "2026-03-02T09:00:00Z",
+      "published_at": "2026-03-02T10:00:00Z"
+    },
+    {
+      "id": "product-bag",
+      "kind": "product",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "bag"
+      },
+      "title": {
+        "en": "Field backpack"
+      },
+      "metadata": {
+        "summary": {
+          "value": "Water-resistant, 22 litres, fits a 16 inch laptop."
+        },
+        "price": {
+          "value": 129
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "rating": {
+          "value": 4.8
+        },
+        "reviews": {
+          "value": 342
+        },
+        "badge": {
+          "value": ""
+        },
+        "category": {
+          "value": "bags"
+        },
+        "inStock": {
+          "value": true
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-03T09:00:00Z",
+      "updated_at": "2026-03-04T09:00:00Z",
+      "published_at": "2026-03-04T10:00:00Z"
+    },
+    {
+      "id": "product-phones",
+      "kind": "product",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "phones"
+      },
+      "title": {
+        "en": "Studio headphones"
+      },
+      "metadata": {
+        "summary": {
+          "value": "Closed-back, 40 hour battery, wired and wireless."
+        },
+        "price": {
+          "value": 199
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "rating": {
+          "value": 4.6
+        },
+        "reviews": {
+          "value": 87
+        },
+        "badge": {
+          "value": "sale"
+        },
+        "category": {
+          "value": "audio"
+        },
+        "inStock": {
+          "value": true
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-05T09:00:00Z",
+      "updated_at": "2026-03-06T09:00:00Z",
+      "published_at": "2026-03-06T10:00:00Z"
+    },
+    {
+      "id": "product-stand",
+      "kind": "product",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "stand"
+      },
+      "title": {
+        "en": "Laptop stand"
+      },
+      "metadata": {
+        "summary": {
+          "value": "Aluminium, folds flat, six heights."
+        },
+        "price": {
+          "value": 49
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "rating": {
+          "value": 4.3
+        },
+        "reviews": {
+          "value": 210
+        },
+        "badge": {
+          "value": ""
+        },
+        "category": {
+          "value": "desk"
+        },
+        "inStock": {
+          "value": false
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-07T09:00:00Z",
+      "updated_at": "2026-03-08T09:00:00Z",
+      "published_at": "2026-03-08T10:00:00Z"
+    },
+    {
+      "id": "product-mat",
+      "kind": "product",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "mat"
+      },
+      "title": {
+        "en": "Desk mat"
+      },
+      "metadata": {
+        "summary": {
+          "value": "Felt top with a non-slip base, 90 by 40 cm."
+        },
+        "price": {
+          "value": 35
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "rating": {
+          "value": 4.4
+        },
+        "reviews": {
+          "value": 64
+        },
+        "badge": {
+          "value": "new"
+        },
+        "category": {
+          "value": "desk"
+        },
+        "inStock": {
+          "value": true
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-09T09:00:00Z",
+      "updated_at": "2026-03-10T09:00:00Z",
+      "published_at": "2026-03-10T10:00:00Z"
+    },
+    {
+      "id": "product-card",
+      "kind": "product",
+      "status": "published",
+      "visibility": "public",
+      "slug": {
+        "en": "card"
+      },
+      "title": {
+        "en": "Gift card"
+      },
+      "metadata": {
+        "summary": {
+          "value": "Delivered by email, never expires."
+        },
+        "price": {
+          "value": 50
+        },
+        "currency": {
+          "value": "USD"
+        },
+        "rating": {
+          "value": 5
+        },
+        "reviews": {
+          "value": 19
+        },
+        "badge": {
+          "value": ""
+        },
+        "category": {
+          "value": "gifts"
+        },
+        "inStock": {
+          "value": true
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-11T09:00:00Z",
+      "updated_at": "2026-03-12T09:00:00Z",
+      "published_at": "2026-03-12T10:00:00Z"
+    }
+  ]
+}
