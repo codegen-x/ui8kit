@@ -1,10 +1,15 @@
-# ui8kit 2.0 on `codegen`
+# ui8kit 2.0 (codegen-x/ui8kit, `main`)
 
 ui8kit 2.0 is the brand-neutral, freely distributable block generator (xgen): specs in, readable static
-Svelte / React / Vue blocks out. Nothing from any private design kit lands here. Kit work stays on private
-branches; `codegen` only receives generic generator changes.
+Svelte / React / Vue blocks out. Nothing from any private design kit lands here. Kit work stays in private
+repositories and branches; `main` of codegen-x/ui8kit only receives generic generator changes.
 
-Safety tag: `codegen-pre-2.0` = `origin/codegen` before this work (`5f74f85`).
+Repository: since 2026-10-08 all work happens in codegen-x/ui8kit on `main`. It started as a history-free snapshot
+(`5139209`, "ui8kit 2.0: initial import") of the old `codegen` branch, which is no longer used. The sections below that
+say "on `codegen`" and list commit SHAs are history of that branch; those commits are not in this repository.
+
+Safety tag (history, old repository only): `codegen-pre-2.0` = the old `codegen` branch before this work (`5f74f85`).
+The tag is not in codegen-x/ui8kit.
 
 ## 1. Clean-up of kit ties
 
@@ -27,7 +32,7 @@ branch. In their place:
 ## 3. Generic improvements ported from the private branch (52 commits)
 
 Ported as one file-level port (tree of the private branch, then the kit content stripped before the first commit), so
-no kit commit enters `codegen` history.
+no kit commit entered `codegen` history (nor enters `main` of codegen-x/ui8kit).
 
 - Screens as data: `xgen/specs/screens/*.json`, one host per runtime (`apps/host-svelte` :5180, `host-react` :5181, `host-vue` :5182), shared `packages/shared/app`.
 - Guard rails in `xgen check`: exact-count hardcode ratchet (every allowance has a `why`), readability (150 lines/file, 600/screen, 8000 bytes, 160 chars/line, 12 props), drift, tier test, Cyrillic.
@@ -96,7 +101,7 @@ Superseded: the polish round brought the count to 25; the current list is in 8.5
 
 ## 5. Checklist
 
-- [x] Tag `codegen-pre-2.0` pushed
+- [x] Tag `codegen-pre-2.0` pushed (old repository; not carried into codegen-x/ui8kit)
 - [x] Inventory (this file)
 - [x] Port generic improvements from the private branch, kit content stripped (`daa2e8e`)
 - [x] Neutral `defaults` preset replaces the kit preset

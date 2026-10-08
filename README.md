@@ -1,11 +1,11 @@
-# xgen workspace (branch `codegen`)
+# ui8kit 2.0 (codegen-x/ui8kit, branch `main`)
 
 One source of truth for UI that has to exist in more than one runtime. The sources are **specs, schemas and fixtures**.
 Everything else (the UI packages, the shared app core, the screens, the organisms, the menus, the two host apps) is **generated** by `xgen`
 for Svelte 5 and React 19. First slice: Svelte and React.
 
 ```
-xgen/        the generation layer: a set of self-contained packages, moves to its own repository later
+xgen/        the generation layer: a set of self-contained packages
 packages/    generated packages  @ui8kit/svelte-ui, @ui8kit/react-ui, @ui8kit/app-shared (dictionary, data, menus, runtime core; emitted once)   (+ tooling: audit, i18n and rules scripts)
 apps/        two host apps       host-svelte, host-react: one per runtime, each renders any screen by name at /<screen>/#/<route>   (the only hand-written file in each: xgen.app.json)
 ```
@@ -120,7 +120,7 @@ Which canary packages xgen generates and how, what is covered, what is left and 
 ## What is in git
 
 Only code, specs, schemas, fixtures, content and docs. Never: `private/`, `shots/`, `.fig`, `public/p/`, images, fonts, secrets.
-`bun run audit:push` checks the diff against `origin/codegen` before each push.
+`bun run audit:push` checks the diff against `origin/main` before each push. License: MIT ([LICENSE](LICENSE)).
 
 ## Host apps (screens as data)
 

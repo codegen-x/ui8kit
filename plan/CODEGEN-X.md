@@ -97,7 +97,8 @@ Preview tech:
 
 ## 6. Roadmap to the first sphere and showcase (agreed 2026-10-08)
 
-1. Move the `codegen` branch into its own repository (history kept, nothing from private kits).
+1. [x] Move the `codegen` branch into its own repository, nothing from private kits: done 2026-10-08 as codegen-x/ui8kit
+   (`main`), a history-free snapshot (`5139209`) instead of keeping history; the old branch is no longer used.
 2. Generate primitives and runtime packages (Svelte, React, Vue).
 3. Build the registry (index + items) and publish it to the CDN.
 4. Site: start by pulling all blocks in Svelte from the registry.

@@ -1,7 +1,7 @@
 # xgen
 
 A generation layer for the intersection of UI runtimes. It lives in the monorepo as a **set of packages that depend only on each other**
-(never on `apps/` or `packages/`), so the folder moves to its own repository without changes.
+(never on `apps/` or `packages/`), so the folder can move to a repository of its own without changes.
 
 ## Flow
 
