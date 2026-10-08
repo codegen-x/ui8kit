@@ -1,0 +1,22 @@
+/* Discovery: the kit (Tailwind v4 + shadcn neutral tokens), the skins, and the few app rules below. */
+@import "@ui8kit/svelte-ui/styles/index.css";
+@import "@ui8kit/app-shared/styles/skins.css";
+
+/* The frame of a taste screen: one desktop first screen. The taste sets data-skin, --radius, --font-sans (body) and
+   --taste-heading (headings) inline on it. */
+.taste-frame {
+  position: relative;
+  width: 1440px;
+  height: 1080px;
+  overflow: hidden;
+  font-family: var(--font-sans);
+  background-color: var(--background);
+  color: var(--foreground);
+}
+.taste-frame :is(h1, h2, h3, h4, h5, h6) { font-family: var(--taste-heading, var(--font-sans)); }
+
+/* The panorama: a full-viewport stage, hand cursor (grabbing while the pointer is down), no text selection on double click. */
+.discovery-stage { position: fixed; inset: 0; cursor: grab; touch-action: none; user-select: none; -webkit-user-select: none; }
+.discovery-stage[data-dragging] { cursor: grabbing; }
+.discovery-stage > canvas { display: block; width: 100%; height: 100%; outline: none; }
+.discovery-corner { position: fixed; right: 16px; bottom: 16px; z-index: 10; }
