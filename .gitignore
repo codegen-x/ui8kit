@@ -25,3 +25,6 @@ shots/
 # preview Inspect reports (the Ins button of the :5190 preview); never committed
 backlog/
 backlog-archive/
+
+# Discovery picks sent from the panorama (the Send button of /discovery on the :5190 preview); never committed
+discovery-inbox/

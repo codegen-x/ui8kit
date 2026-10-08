@@ -5,7 +5,7 @@ import { defineConfig } from "vite";
 
 export default defineConfig({
   plugins: [tailwindcss(), svelte()],
-  server: { host: "127.0.0.1", port: 5183, strictPort: true },
+  server: { host: "127.0.0.1", port: 5183, strictPort: true, proxy: { "/__discovery": "http://127.0.0.1:5190" } },
   preview: { host: "127.0.0.1", port: 5184, strictPort: true },
   build: { chunkSizeWarningLimit: 2000 },
 });

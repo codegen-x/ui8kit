@@ -13,4 +13,7 @@ A hand-written app (not generated): a panorama of taste screens on a sphere. Sve
 - `src/engine/grid.ts` — the card grid on the sphere; `assign.ts` — screens and variations over the cards;
   `snapshot.ts` / `loader.ts` / `cache.ts` — offscreen snapshots (SVG foreignObject → canvas → WebP, IndexedDB cache);
   `panorama.ts` — the Three.js view (drag, inertia, wheel zoom clamped to 75–125 % of the default scale, double-click to pick).
+- `src/picks.svelte.ts` + `parts/send-button.svelte` — the Send button (bottom-right, only while cards are picked):
+  POST /__discovery `{ ids }` (the picked taste screen ids, deduped) to the :5190 preview server, which appends to
+  `discovery-inbox/journal.jsonl` and `journal.md` at the repo root (never committed); the picks clear on success.
 - `content/` — copy fixtures (English placeholder copy, invented names).

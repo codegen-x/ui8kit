@@ -1,6 +1,7 @@
 <!--
   The panorama: the only main landmark. A WebGL stage with nothing on it but the cards: no captions, counters or icons.
   Drag to look around; the wheel zooms (75 % to 125 % of the default scale); double-click a card to outline it (picked); the picks are kept in localStorage by variant key.
+  Send (in the corner, while something is picked) records the picked screens on the preview server and clears the picks.
 -->
 <script lang="ts">
   import { onMount } from "svelte";
@@ -10,6 +11,7 @@
   import { skinBackgrounds } from "../engine/colors";
   import { Loader } from "../engine/loader";
   import { Panorama } from "../engine/panorama";
+  import { picks, pickedScreens, postPicks } from "../picks.svelte";
   import { SCREENS } from "../screens";
   import { variantKey } from "../taste";
   import { TASTES } from "../tastes";
@@ -31,6 +33,7 @@
       onPick: () => {
         const keys = pano.pickedCards().map((i) => variantKey(variants[i]!));
         try { localStorage.setItem(PICKS, JSON.stringify(keys)); } catch { /* storage blocked */ }
+        picks.count = keys.length;
       },
     });
     const variants = assign(pano.cards, TASTES);
@@ -39,6 +42,18 @@
     pano.setRadiusPx(radius * parseFloat(getComputedStyle(document.documentElement).fontSize || "16"));
     const savedSet = new Set(saved);
     variants.forEach((v, i) => { if (savedSet.has(variantKey(v))) pano.togglePicked(i, true); });
+    let sending = false;
+    picks.send = async () => {
+      if (sending) return;
+      const slots = pano.pickedCards();
+      const ids = pickedScreens(slots, (i) => variants[i]!.screen);
+      if (!ids.length) return;
+      sending = true;
+      const ok = await postPicks(ids);
+      sending = false;
+      // on failure the picks stay (and so does the button); on success only the cards that were sent are cleared
+      if (ok) for (const i of slots) pano.togglePicked(i, false);
+    };
 
     const applyTheme = () => {
       const dark = isDark();
@@ -52,7 +67,7 @@
     const mo = new MutationObserver(() => { if (isDark() !== last) { last = isDark(); applyTheme(); } });
     mo.observe(document.documentElement, { attributes: true, attributeFilter: ["class", "data-theme"] });
     (window as unknown as { __discovery: unknown }).__discovery = { pano, loader, variants };
-    return () => { mo.disconnect(); pano.dispose(); };
+    return () => { mo.disconnect(); picks.send = null; picks.count = 0; pano.dispose(); };
   });
 </script>
 
