@@ -59,7 +59,7 @@ derived from measured contrast, hue/saturation, radius, density of the layout an
 
 ### Composition patterns
 
-`src/compositions.ts` tags each of the 120 screens with one primary (optionally a secondary) composition pattern from the beginner's
+`src/compositions.ts` tags each of the 146 screens with one primary (optionally a secondary) composition pattern from the beginner's
 guide to composition, restricted to those meaningful for web screens: rule-of-thirds, diagonal, focal-mass, l-arrangement, radial,
 circular, cross, pyramid (v-arrangement is defined but unused). Tags are assigned by hand from the layout markup, each with a one-line
 note; `weak: true` marks screens that only loosely fit. Golden spiral, golden triangles and compound curve are not screen patterns.

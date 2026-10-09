@@ -1998,5 +1998,731 @@
    "Short",
    "Kind"
   ]
+ },
+ {
+  "brand": "Oakline",
+  "nav": [
+   "Shop",
+   "Categories",
+   "New in",
+   "Deals"
+  ],
+  "eyebrow": "New season",
+  "title": "Find what you will love",
+  "accent": "Everyday things, chosen with care.",
+  "lead": "Explore handpicked collections for home, style and daily life, made to last.",
+  "cta": "Shop collection",
+  "secondary": "See all",
+  "input": "Search products",
+  "note": "Free returns within 30 days",
+  "stats": [
+   {
+    "value": "25K+",
+    "label": "happy customers"
+   },
+   {
+    "value": "4.8",
+    "label": "average rating"
+   },
+   {
+    "value": "120",
+    "label": "new this week"
+   },
+   {
+    "value": "24/7",
+    "label": "support"
+   }
+  ],
+  "items": [
+   {
+    "title": "Free shipping",
+    "text": "On orders over 50"
+   },
+   {
+    "title": "Quality promise",
+    "text": "30-day return policy"
+   },
+   {
+    "title": "Secure payments",
+    "text": "Fully protected"
+   },
+   {
+    "title": "Friendly support",
+    "text": "We are here to help"
+   }
+  ],
+  "tags": [
+   "Women",
+   "Men",
+   "Home",
+   "Sale"
+  ]
+ },
+ {
+  "brand": "Wayline",
+  "nav": [
+   "Home",
+   "Vehicles",
+   "Locations",
+   "Deals"
+  ],
+  "eyebrow": "Rent a car",
+  "title": "Your trip, your way",
+  "accent": "Pick it up in minutes.",
+  "lead": "Clean vehicles, flexible plans and clear prices for every kind of journey.",
+  "cta": "Browse vehicles",
+  "secondary": "How it works",
+  "input": "Select location",
+  "note": "No hidden charges",
+  "stats": [
+   {
+    "value": "25K+",
+    "label": "happy drivers"
+   },
+   {
+    "value": "12K+",
+    "label": "trips booked"
+   },
+   {
+    "value": "90+",
+    "label": "pick-up points"
+   },
+   {
+    "value": "4.9",
+    "label": "average rating"
+   }
+  ],
+  "items": [
+   {
+    "title": "Wide choice",
+    "text": "From compact to roomy"
+   },
+   {
+    "title": "Fair prices",
+    "text": "Clear rates, no extras"
+   },
+   {
+    "title": "Safe and secure",
+    "text": "Insured on every trip"
+   },
+   {
+    "title": "Flexible plans",
+    "text": "By the hour, day or week"
+   }
+  ],
+  "tags": [
+   "City",
+   "Family",
+   "Open road",
+   "Weekend"
+  ]
+ },
+ {
+  "brand": "Plateau",
+  "nav": [
+   "Home",
+   "Menu",
+   "Services",
+   "Reviews"
+  ],
+  "eyebrow": "Welcome",
+  "title": "Enjoy every good meal",
+  "accent": "Fresh, warm and on time.",
+  "lead": "The only thing we love more than food is sharing it. Something for everyone, every day.",
+  "cta": "Order now",
+  "secondary": "Order process",
+  "input": "Search dishes",
+  "note": "Delivery in about 30 minutes",
+  "stats": [
+   {
+    "value": "500K+",
+    "label": "meals served"
+   },
+   {
+    "value": "4.9/5",
+    "label": "average rating"
+   },
+   {
+    "value": "200+",
+    "label": "recipes"
+   },
+   {
+    "value": "98%",
+    "label": "happy guests"
+   }
+  ],
+  "items": [
+   {
+    "title": "Choose",
+    "text": "Pick from the daily menu"
+   },
+   {
+    "title": "Confirm",
+    "text": "Review your basket"
+   },
+   {
+    "title": "Enjoy",
+    "text": "Hot at your door"
+   },
+   {
+    "title": "Rate",
+    "text": "Tell us how it went"
+   }
+  ],
+  "tags": [
+   "Starters",
+   "Mains",
+   "Sides",
+   "Sweets"
+  ]
+ },
+ {
+  "brand": "Autolane",
+  "nav": [
+   "Vehicles",
+   "Energy",
+   "Charging",
+   "Shop"
+  ],
+  "eyebrow": "New arrivals",
+  "title": "A remarkable car, ready for you",
+  "accent": "Instant, accurate and reliable reports.",
+  "lead": "Check the history of any vehicle you want to buy, right at your fingertips.",
+  "cta": "Shop now",
+  "secondary": "Learn more",
+  "input": "Enter the number",
+  "note": "Reports in under a minute",
+  "stats": [
+   {
+    "value": "18%",
+    "label": "average saving"
+   },
+   {
+    "value": "40K",
+    "label": "reports run"
+   },
+   {
+    "value": "3",
+    "label": "simple steps"
+   },
+   {
+    "value": "99%",
+    "label": "match rate"
+   }
+  ],
+  "items": [
+   {
+    "title": "Enter the number",
+    "text": "Find it on the dashboard or the door frame."
+   },
+   {
+    "title": "Run the check",
+    "text": "We compare every public record."
+   },
+   {
+    "title": "Read the report",
+    "text": "Get the full history at once."
+   },
+   {
+    "title": "Decide",
+    "text": "Buy with confidence."
+   }
+  ],
+  "tags": [
+   "Sedan",
+   "Coupe",
+   "Wagon",
+   "Roadster"
+  ]
+ },
+ {
+  "brand": "Housemark",
+  "nav": [
+   "Home",
+   "About",
+   "Collection",
+   "Contact"
+  ],
+  "eyebrow": "Explore premium listings",
+  "title": "Discover the best homes and turn a vision into reality",
+  "accent": "Our story",
+  "lead": "Elevate your lifestyle with residences designed for comfort and calm.",
+  "cta": "Search",
+  "secondary": "Talk to an agent",
+  "input": "Search by city",
+  "note": "Updated every day",
+  "stats": [
+   {
+    "value": "1500+",
+    "label": "projects finished"
+   },
+   {
+    "value": "950+",
+    "label": "global clients"
+   },
+   {
+    "value": "235+",
+    "label": "ready units"
+   },
+   {
+    "value": "$50M+",
+    "label": "in value"
+   }
+  ],
+  "items": [
+   {
+    "title": "Buy",
+    "text": "Find a place to stay for good"
+   },
+   {
+    "title": "Rent",
+    "text": "Flexible terms, clear costs"
+   },
+   {
+    "title": "Sell",
+    "text": "A fair price, handled well"
+   },
+   {
+    "title": "Invest",
+    "text": "Grow with steady returns"
+   }
+  ],
+  "tags": [
+   "Rent or buy",
+   "New York",
+   "Property",
+   "Per month"
+  ]
+ },
+ {
+  "brand": "Trailhead",
+  "nav": [
+   "Home",
+   "Adventures",
+   "Places",
+   "About"
+  ],
+  "eyebrow": "Explore · Discover · Belong",
+  "title": "Adventures beyond limits",
+  "accent": "Guided treks and mountain trips.",
+  "lead": "Guided treks, mountain expeditions and unforgettable experiences for every adventurer.",
+  "cta": "Plan your adventure",
+  "secondary": "Watch our story",
+  "input": "Where to?",
+  "note": "Small groups, local guides",
+  "stats": [
+   {
+    "value": "50+",
+    "label": "destinations"
+   },
+   {
+    "value": "2M",
+    "label": "happy travellers"
+   },
+   {
+    "value": "85%",
+    "label": "satisfaction"
+   },
+   {
+    "value": "90%",
+    "label": "repeat trips"
+   }
+  ],
+  "items": [
+   {
+    "title": "Safe and secure",
+    "text": "Certified guides and careful planning"
+   },
+   {
+    "title": "Expert guides",
+    "text": "Local people who know the trail"
+   },
+   {
+    "title": "Mindful travel",
+    "text": "Light on the places we visit"
+   },
+   {
+    "title": "Made for you",
+    "text": "Trips shaped around your pace"
+   }
+  ],
+  "tags": [
+   "Trekking",
+   "Camping",
+   "Highlands",
+   "Lakes"
+  ]
+ },
+ {
+  "brand": "Velora",
+  "nav": [
+   "Home",
+   "Women",
+   "Men",
+   "Collections"
+  ],
+  "eyebrow": "New collection",
+  "title": "Fashion plus",
+  "accent": "in every style",
+  "lead": "Modern essentials for a confident you. Quality fabrics and timeless cuts.",
+  "cta": "Shop collection",
+  "secondary": "Watch our story",
+  "input": "Search styles",
+  "note": "Free returns",
+  "stats": [
+   {
+    "value": "200K+",
+    "label": "happy customers"
+   },
+   {
+    "value": "500+",
+    "label": "premium styles"
+   },
+   {
+    "value": "4.8",
+    "label": "average rating"
+   }
+  ],
+  "items": [
+   {
+    "title": "Free shipping",
+    "text": "On orders over 50"
+   },
+   {
+    "title": "Easy returns",
+    "text": "Hassle-free exchange"
+   },
+   {
+    "title": "Premium quality",
+    "text": "Made to last"
+   },
+   {
+    "title": "Secure payment",
+    "text": "Safe and protected"
+   }
+  ],
+  "tags": [
+   "All",
+   "Dresses",
+   "Tops",
+   "Jackets",
+   "Coats"
+  ]
+ },
+ {
+  "brand": "Roadhaus",
+  "nav": [
+   "Fleet",
+   "Locations",
+   "Membership",
+   "About"
+  ],
+  "eyebrow": "Premium rental",
+  "title": "Drive beyond the ordinary",
+  "accent": "Every journey, precisely considered",
+  "lead": "Premium vehicles, flexible plans and easy pick-up wherever the road takes you.",
+  "cta": "Explore fleet",
+  "secondary": "Reserve your drive",
+  "input": "Search vehicles or locations",
+  "note": "Available in 18 cities",
+  "stats": [
+   {
+    "value": "120+",
+    "label": "premium vehicles"
+   },
+   {
+    "value": "18",
+    "label": "city locations"
+   },
+   {
+    "value": "24/7",
+    "label": "personal support"
+   }
+  ],
+  "items": [
+   {
+    "title": "Grand touring",
+    "text": "Refined comfort for long journeys"
+   },
+   {
+    "title": "Executive SUV",
+    "text": "Space and presence for every day"
+   },
+   {
+    "title": "Electric performance",
+    "text": "Quiet power for a cleaner tomorrow"
+   },
+   {
+    "title": "City compact",
+    "text": "Easy to park, easy to love"
+   }
+  ],
+  "tags": [
+   "Luxury",
+   "SUV",
+   "Electric",
+   "Sport",
+   "Business",
+   "Weekend",
+   "Long-term"
+  ]
+ },
+ {
+  "brand": "Maison",
+  "nav": [
+   "New in",
+   "Women",
+   "Dresses",
+   "Sale"
+  ],
+  "eyebrow": "New collection",
+  "title": "Fashion",
+  "accent": "Express your style",
+  "lead": "Fashion for a brighter you. Premium quality and everyday confidence.",
+  "cta": "Shop new collection",
+  "secondary": "View all",
+  "input": "Search for dresses, tops, bags",
+  "note": "10K+ happy customers",
+  "stats": [
+   {
+    "value": "10K+",
+    "label": "happy customers"
+   },
+   {
+    "value": "4.9",
+    "label": "average rating"
+   },
+   {
+    "value": "48h",
+    "label": "delivery"
+   }
+  ],
+  "items": [
+   {
+    "title": "Effortless elegance",
+    "text": "Everyday styles for a brighter you."
+   },
+   {
+    "title": "Modern essentials",
+    "text": "Premium pieces for every occasion."
+   },
+   {
+    "title": "Free shipping",
+    "text": "On all orders over 99"
+   },
+   {
+    "title": "Easy returns",
+    "text": "Hassle-free shopping"
+   }
+  ],
+  "tags": [
+   "Dresses",
+   "Tops",
+   "Bottoms",
+   "Bags",
+   "Glasses",
+   "Jewelry",
+   "Beauty",
+   "Shoes"
+  ]
+ },
+ {
+  "brand": "Stockly",
+  "nav": [
+   "Home",
+   "Products",
+   "Customers",
+   "Shop"
+  ],
+  "eyebrow": "Recent products",
+  "title": "Explore new",
+  "accent": "Fresh arrivals this week",
+  "lead": "Browse the newest products and track how they perform.",
+  "cta": "Create",
+  "secondary": "New post",
+  "input": "Search or type a command",
+  "note": "Last 7 days",
+  "stats": [
+   {
+    "value": "256k",
+    "label": "people reached"
+   },
+   {
+    "value": "1.2x",
+    "label": "engagement"
+   },
+   {
+    "value": "10k+",
+    "label": "units sold"
+   }
+  ],
+  "items": [
+   {
+    "title": "Air one",
+    "text": "$149"
+   },
+   {
+    "title": "Air two",
+    "text": "$129"
+   },
+   {
+    "title": "Air three",
+    "text": "$135"
+   },
+   {
+    "title": "Air four",
+    "text": "$119"
+   }
+  ],
+  "tags": [
+   "Home",
+   "Products",
+   "Customers",
+   "Shop",
+   "Promote"
+  ]
+ },
+ {
+  "brand": "Paylane",
+  "nav": [
+   "Features",
+   "Solutions",
+   "Pricing",
+   "Resources"
+  ],
+  "eyebrow": "Secure · Fast · No hidden fees",
+  "title": "The modern way to save, spend and grow your money",
+  "accent": "Everything for smarter banking",
+  "lead": "Take control of your finances with one secure platform. Send money, track spending and manage cards.",
+  "cta": "Get started free",
+  "secondary": "See how it works",
+  "input": "Your email",
+  "note": "Free to start",
+  "stats": [
+   {
+    "value": "30M+",
+    "label": "users worldwide"
+   },
+   {
+    "value": "99%",
+    "label": "uptime"
+   },
+   {
+    "value": "150",
+    "label": "countries"
+   },
+   {
+    "value": "5.0",
+    "label": "average rating"
+   }
+  ],
+  "items": [
+   {
+    "title": "Real-time conversion",
+    "text": "Live exchange rates, instantly."
+   },
+   {
+    "title": "Worldwide users",
+    "text": "Join people in every region."
+   },
+   {
+    "title": "Instant transfers",
+    "text": "Real-time payments with zero delay."
+   },
+   {
+    "title": "Smart wallet",
+    "text": "Track every transaction in one place."
+   },
+   {
+    "title": "Virtual cards",
+    "text": "Pay bills securely with a few taps."
+   },
+   {
+    "title": "Clear insights",
+    "text": "See where your money goes."
+   }
+  ],
+  "tags": [
+   "Northly",
+   "Brightbox",
+   "Lumen",
+   "Quarry",
+   "Tidewell",
+   "Fieldnote"
+  ],
+  "plans": [
+   {
+    "name": "Free plan",
+    "price": "Free",
+    "note": "For getting started",
+    "perks": [
+     "Personal digital wallet",
+     "Virtual debit card",
+     "Basic spending insights",
+     "Email support"
+    ]
+   },
+   {
+    "name": "Professional plan",
+    "price": "$299",
+    "note": "For growing teams",
+    "perks": [
+     "Everything in Free",
+     "Unlimited transfers",
+     "Priority support",
+     "Team accounts"
+    ]
+   },
+   {
+    "name": "Enterprise plan",
+    "price": "$149",
+    "note": "For large companies",
+    "perks": [
+     "Everything in Professional",
+     "Advanced security controls",
+     "Dedicated manager",
+     "Custom limits"
+    ]
+   }
+  ],
+  "quotes": [
+   {
+    "text": "Managing my finances has never been easier. The app is fast, secure and gives me complete control.",
+    "name": "Lian Chen",
+    "role": "Creative lead"
+   },
+   {
+    "text": "This platform has completely changed how I manage my money, from transfers to bill payments.",
+    "name": "Sophia Martinez",
+    "role": "Product designer"
+   },
+   {
+    "text": "The virtual cards and spending insights have transformed how we manage business expenses.",
+    "name": "Ethan Brooks",
+    "role": "Marketing director"
+   }
+  ],
+  "faq": [
+   {
+    "title": "How do I create an account?",
+    "text": "Sign up with your email and confirm it in a minute."
+   },
+   {
+    "title": "Is my money and personal data secure?",
+    "text": "Yes. Everything is encrypted and monitored around the clock."
+   },
+   {
+    "title": "How long do transfers take?",
+    "text": "Most transfers arrive within seconds."
+   },
+   {
+    "title": "Can I send money internationally?",
+    "text": "Yes, to more than 150 countries."
+   },
+   {
+    "title": "What payment methods do you support?",
+    "text": "Cards, bank transfers and wallets."
+   }
+  ]
  }
 ]

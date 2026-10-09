@@ -23,6 +23,10 @@ export type Deck = {
   stats: Stat[];
   items: Item[];
   tags: string[];
+  /** optional extras of the fintech deck: price plans, testimonials, questions */
+  plans?: { name: string; price: string; note: string; perks: string[] }[];
+  quotes?: { text: string; name: string; role: string }[];
+  faq?: Item[];
 };
 
 export const DECKS: Deck[] = decks as Deck[];
