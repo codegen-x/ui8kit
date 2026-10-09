@@ -11,6 +11,7 @@ A style is **included** when its card was outlined in Discovery with `?cards=inc
 - key: `t001-poster-mesh|kodama-grove|montserrat+inter|12`
 - screen id: `t001-poster-mesh`
 - layout: **poster** — Centered poster headline over a full mesh field; one primary action and a quiet secondary link.
+- composition pattern: **focal-mass** — Centred headline and actions float alone in an open mesh field.
 - image recipe: **mesh** — Recipe "mesh": mesh-blur blobs. Soft radial fields of the skin's chart and primary colours, plus blurred orbs.
 - skin: `kodama-grove` (Kodama Grove)
 - font pairing: display Montserrat (`montserrat`), body Inter (`inter`)
@@ -56,6 +57,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t002-split-glass|neo-brutalism|roboto+open-sans|16`
 - screen id: `t002-split-glass`
 - layout: **split** — Split hero: text column at the start, a glass-over-glow media slot at the end; stats under the actions.
+- composition pattern: **l-arrangement** (secondary rule-of-thirds) (weak fit) — Full-height media at the end plus a stats row along the foot of the text column.
 - image recipe: **glass** — Recipe "glass": frosted panels (backdrop blur, a hairline of light) floating over a glow of the primary colour.
 - skin: `neo-brutalism` (Neo Brutalism)
 - font pairing: display Roboto (`roboto`), body Open Sans (`open-sans`)
@@ -101,6 +103,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t002-split-glass|violet-bloom|manrope+manrope|16`
 - screen id: `t002-split-glass`
 - layout: **split** — Split hero: text column at the start, a glass-over-glow media slot at the end; stats under the actions.
+- composition pattern: **l-arrangement** (secondary rule-of-thirds) (weak fit) — Full-height media at the end plus a stats row along the foot of the text column.
 - image recipe: **glass** — Recipe "glass": frosted panels (backdrop blur, a hairline of light) floating over a glow of the primary colour.
 - skin: `violet-bloom` (Violet Bloom)
 - font pairing: display Manrope (`manrope`), body Manrope (`manrope`)
@@ -146,6 +149,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t003-fullbleed-grain|neo-brutalism|rubik+rubik|0`
 - screen id: `t003-fullbleed-grain`
 - layout: **fullbleed** (composition `full-bleed`) — Full-bleed type: a grain band across the width, then the headline set huge to both edges; lead and action under it.
+- composition pattern: **l-arrangement** — A media band across the top and a huge headline plus action row along the bottom.
 - image recipe: **grain** — Recipe "grain": a colour field (two or three skin colours) under monochrome film grain (an feTurbulence data URI).
 - skin: `neo-brutalism` (Neo Brutalism)
 - font pairing: display Rubik (`rubik`), body Rubik (`rubik`)
@@ -191,6 +195,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t004-airy-dots|doom-64|nunito+nunito|8`
 - screen id: `t004-airy-dots`
 - layout: **airy** — Airy: a small centred headline, one button, a dot field fading in from one corner; most of the screen is air.
+- composition pattern: **focal-mass** (secondary diagonal) — A small centred headline and button in a mostly empty screen; dots fade in from a corner.
 - image recipe: **dots** — Recipe "dots": a dot grid fading out (halftone by mask), with a large dot accent.
 - skin: `doom-64` (Doom 64)
 - font pairing: display Nunito (`nunito`), body Nunito (`nunito`)
@@ -236,6 +241,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t005-stats-flat|amber-minimal|golos-text+onest|4`
 - screen id: `t005-stats-flat`
 - layout: **stats** — Stats: a left-aligned headline and lead, a flat-shapes panel at the end, four big figures in a ruled row below.
+- composition pattern: **rule-of-thirds** (secondary l-arrangement) — Headline takes two thirds, a square plate the last third, then a ruled row of four figures.
 - image recipe: **flat** — Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours.
 - skin: `amber-minimal` (Amber Minimal)
 - font pairing: display Golos Text (`golos-text`), body Onest (`onest`)
@@ -281,6 +287,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t005-stats-flat|doom-64|inter+inter|4`
 - screen id: `t005-stats-flat`
 - layout: **stats** — Stats: a left-aligned headline and lead, a flat-shapes panel at the end, four big figures in a ruled row below.
+- composition pattern: **rule-of-thirds** (secondary l-arrangement) — Headline takes two thirds, a square plate the last third, then a ruled row of four figures.
 - image recipe: **flat** — Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours.
 - skin: `doom-64` (Doom 64)
 - font pairing: display Inter (`inter`), body Inter (`inter`)
@@ -326,6 +333,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t006-ribbon-rings|supabase|onest+inter|12`
 - screen id: `t006-ribbon-rings`
 - layout: **ribbon** — Ribbon: a centred hero over a rings field, then the kit LogoRibbon of abstract icon slots across the bottom.
+- composition pattern: **focal-mass** (secondary radial) (weak fit) — A centred hero over a rings field, with the kit logo ribbon along the foot.
 - image recipe: **rings** — Recipe "rings": concentric rings and orbits (repeating radial gradients and outlined circles) with a planet or two.
 - skin: `supabase` (Supabase)
 - font pairing: display Onest (`onest`), body Inter (`inter`)
@@ -371,6 +379,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t010-dense-geometric|amber-minimal|montserrat+open-sans|8`
 - screen id: `t010-dense-geometric`
 - layout: **dense** (composition `dense-grid`) — Dense grid: a bento of six tiles; the large tile is a geometric pattern, the others mix copy, figures and shapes.
+- composition pattern: **rule-of-thirds** (secondary focal-mass) — Bento: the two large tiles take two of three rows, small tiles the last row.
 - image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
 - skin: `amber-minimal` (Amber Minimal)
 - font pairing: display Montserrat (`montserrat`), body Open Sans (`open-sans`)
@@ -416,6 +425,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t010-dense-geometric|neo-brutalism|roboto+roboto|8`
 - screen id: `t010-dense-geometric`
 - layout: **dense** (composition `dense-grid`) — Dense grid: a bento of six tiles; the large tile is a geometric pattern, the others mix copy, figures and shapes.
+- composition pattern: **rule-of-thirds** (secondary focal-mass) — Bento: the two large tiles take two of three rows, small tiles the last row.
 - image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
 - skin: `neo-brutalism` (Neo Brutalism)
 - font pairing: display Roboto (`roboto`), body Roboto (`roboto`)
@@ -461,6 +471,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t010-dense-geometric|violet-bloom|manrope+manrope|8`
 - screen id: `t010-dense-geometric`
 - layout: **dense** (composition `dense-grid`) — Dense grid: a bento of six tiles; the large tile is a geometric pattern, the others mix copy, figures and shapes.
+- composition pattern: **rule-of-thirds** (secondary focal-mass) — Bento: the two large tiles take two of three rows, small tiles the last row.
 - image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
 - skin: `violet-bloom` (Violet Bloom)
 - font pairing: display Manrope (`manrope`), body Manrope (`manrope`)
@@ -506,6 +517,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t011-split-stripes|doom-64|roboto+roboto|0`
 - screen id: `t011-split-stripes`
 - layout: **split** — Split, media first: a full-height stripes panel bleeding off the start edge, the text column at the end.
+- composition pattern: **l-arrangement** (weak fit) — A full-height panel on the start edge with a top bar across the text half forms an L.
 - image recipe: **stripes** — Recipe "stripes": repeating bands: diagonal stripes, vertical bars of rising height, or a fine line field.
 - skin: `doom-64` (Doom 64)
 - font pairing: display Roboto (`roboto`), body Roboto (`roboto`)
@@ -551,6 +563,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t017-ribbon-flat|bubblegum|montserrat+open-sans|12`
 - screen id: `t017-ribbon-flat`
 - layout: **ribbon** — Ribbon: a split hero with a flat-shapes panel, then a full-width strip of eight icon slots on the muted band.
+- composition pattern: **l-arrangement** — Split hero with a full-width icon strip across the foot.
 - image recipe: **flat** — Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours.
 - skin: `bubblegum` (Bubblegum)
 - font pairing: display Montserrat (`montserrat`), body Open Sans (`open-sans`)
@@ -596,6 +609,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t017-ribbon-flat|sky|open-sans+open-sans|12`
 - screen id: `t017-ribbon-flat`
 - layout: **ribbon** — Ribbon: a split hero with a flat-shapes panel, then a full-width strip of eight icon slots on the muted band.
+- composition pattern: **l-arrangement** — Split hero with a full-width icon strip across the foot.
 - image recipe: **flat** — Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours.
 - skin: `sky` (Sky)
 - font pairing: display Open Sans (`open-sans`), body Open Sans (`open-sans`)
@@ -641,6 +655,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t019-dense-duotone|amber-minimal|golos-text+golos-text|4`
 - screen id: `t019-dense-duotone`
 - layout: **dense** (composition `dense-grid`) — Dense grid: a catalogue header row and a 4×2 grid of duotone tiles, each with a short caption under it.
+- composition pattern: **l-arrangement** (weak fit) — Catalogue header row along the top above a four by two tile grid.
 - image recipe: **duotone** — Recipe "duotone": a picture in two skin colours. Even variants use the kit's base64 placeholder (MediaFrame) in grayscale (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
 - skin: `amber-minimal` (Amber Minimal)
 - font pairing: display Golos Text (`golos-text`), body Golos Text (`golos-text`)
@@ -686,6 +701,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t020-fullbleed-stripes|kodama-grove|montserrat+open-sans|0`
 - screen id: `t020-fullbleed-stripes`
 - layout: **fullbleed** (composition `full-bleed`) — Full-bleed: the headline breaks over three huge lines; a stripes band runs behind the middle line edge to edge.
+- composition pattern: **rule-of-thirds** (secondary focal-mass) — The stripes band sits across the middle third and the huge headline runs through it.
 - image recipe: **stripes** — Recipe "stripes": repeating bands: diagonal stripes, vertical bars of rising height, or a fine line field.
 - skin: `kodama-grove` (Kodama Grove)
 - font pairing: display Montserrat (`montserrat`), body Open Sans (`open-sans`)
@@ -731,6 +747,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t020-fullbleed-stripes|neo-brutalism|montserrat+open-sans|0`
 - screen id: `t020-fullbleed-stripes`
 - layout: **fullbleed** (composition `full-bleed`) — Full-bleed: the headline breaks over three huge lines; a stripes band runs behind the middle line edge to edge.
+- composition pattern: **rule-of-thirds** (secondary focal-mass) — The stripes band sits across the middle third and the huge headline runs through it.
 - image recipe: **stripes** — Recipe "stripes": repeating bands: diagonal stripes, vertical bars of rising height, or a fine line field.
 - skin: `neo-brutalism` (Neo Brutalism)
 - font pairing: display Montserrat (`montserrat`), body Open Sans (`open-sans`)
@@ -776,6 +793,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t021-split-dots|amber-minimal|golos-text+golos-text|16`
 - screen id: `t021-split-dots`
 - layout: **split** — Split with a capture form: text and an email field at the start, a dot field with a disc at the end.
+- composition pattern: **rule-of-thirds** (secondary focal-mass) (weak fit) — Copy at the start, a dot field with a disc at the end; balanced halves, only loosely thirds.
 - image recipe: **dots** — Recipe "dots": a dot grid fading out (halftone by mask), with a large dot accent.
 - skin: `amber-minimal` (Amber Minimal)
 - font pairing: display Golos Text (`golos-text`), body Golos Text (`golos-text`)
@@ -821,6 +839,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t022-poster-geometric|claude|nunito+nunito|12`
 - screen id: `t022-poster-geometric`
 - layout: **poster** — Poster in a frame: a geometric border of shapes on all four sides, the headline and one action in the clear centre.
+- composition pattern: **focal-mass** (secondary cross) — Headline and action sit in a clear centre ringed by shape bars on four sides.
 - image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
 - skin: `claude` (Claude)
 - font pairing: display Nunito (`nunito`), body Nunito (`nunito`)
@@ -866,6 +885,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t022-poster-geometric|cosmic-night|nunito+nunito|12`
 - screen id: `t022-poster-geometric`
 - layout: **poster** — Poster in a frame: a geometric border of shapes on all four sides, the headline and one action in the clear centre.
+- composition pattern: **focal-mass** (secondary cross) — Headline and action sit in a clear centre ringed by shape bars on four sides.
 - image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
 - skin: `cosmic-night` (Cosmic Night)
 - font pairing: display Nunito (`nunito`), body Nunito (`nunito`)
@@ -911,6 +931,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t025-stats-mesh|supabase|rubik+rubik|8`
 - screen id: `t025-stats-mesh`
 - layout: **stats** — Stats: the headline at the start; at the end a card of three meters over a mesh plate, with the figures as captions.
+- composition pattern: **diagonal** (weak fit) — Copy top-start; the plate with its meter card pinned bottom-end.
 - image recipe: **mesh** — Recipe "mesh": mesh-blur blobs. Soft radial fields of the skin's chart and primary colours, plus blurred orbs.
 - skin: `supabase` (Supabase)
 - font pairing: display Rubik (`rubik`), body Rubik (`rubik`)
@@ -956,6 +977,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t027-editorial-flat|modern-minimal|montserrat+open-sans|0`
 - screen id: `t027-editorial-flat`
 - layout: **editorial** — Editorial: a giant section number, the headline and lead in a narrow measure, and a flat-shapes column at the end.
+- composition pattern: **diagonal** (weak fit) — Giant section number top-start, narrow text, a shape column at the end; loosely a diagonal.
 - image recipe: **flat** — Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours.
 - skin: `modern-minimal` (Modern Minimal)
 - font pairing: display Montserrat (`montserrat`), body Open Sans (`open-sans`)
@@ -1001,6 +1023,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t027-editorial-flat|modern-minimal|montserrat+open-sans|16`
 - screen id: `t027-editorial-flat`
 - layout: **editorial** — Editorial: a giant section number, the headline and lead in a narrow measure, and a flat-shapes column at the end.
+- composition pattern: **diagonal** (weak fit) — Giant section number top-start, narrow text, a shape column at the end; loosely a diagonal.
 - image recipe: **flat** — Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours.
 - skin: `modern-minimal` (Modern Minimal)
 - font pairing: display Montserrat (`montserrat`), body Open Sans (`open-sans`)
@@ -1046,6 +1069,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t032-poster-duotone|modern-minimal|manrope+manrope|8`
 - screen id: `t032-poster-duotone`
 - layout: **poster** — Poster over a picture: a full-screen procedural duotone landscape, the headline large and centred on it.
+- composition pattern: **rule-of-thirds** (weak fit) — Headline and actions occupy the upper third over a full-screen landscape.
 - image recipe: **duotone** — Recipe "duotone": a picture in two skin colours. Even variants use the kit's base64 placeholder (MediaFrame) in grayscale (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
 - skin: `modern-minimal` (Modern Minimal)
 - font pairing: display Manrope (`manrope`), body Manrope (`manrope`)
@@ -1091,6 +1115,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t033-fullbleed-rings|doom-64|onest+inter|16`
 - screen id: `t033-fullbleed-rings`
 - layout: **fullbleed** (composition `full-bleed`) — Full-bleed: a rings disc sits off the end edge; the headline runs over it in four huge lines, start-aligned.
+- composition pattern: **circular** (secondary rule-of-thirds) — A rings disc off the end edge holds the headline running over it.
 - image recipe: **rings** — Recipe "rings": concentric rings and orbits (repeating radial gradients and outlined circles) with a planet or two.
 - skin: `doom-64` (Doom 64)
 - font pairing: display Onest (`onest`), body Inter (`inter`)
@@ -1136,6 +1161,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t033-fullbleed-rings|supabase|montserrat+inter|0`
 - screen id: `t033-fullbleed-rings`
 - layout: **fullbleed** (composition `full-bleed`) — Full-bleed: a rings disc sits off the end edge; the headline runs over it in four huge lines, start-aligned.
+- composition pattern: **circular** (secondary rule-of-thirds) — A rings disc off the end edge holds the headline running over it.
 - image recipe: **rings** — Recipe "rings": concentric rings and orbits (repeating radial gradients and outlined circles) with a planet or two.
 - skin: `supabase` (Supabase)
 - font pairing: display Montserrat (`montserrat`), body Inter (`inter`)
@@ -1181,6 +1207,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t035-stats-geometric|sky|roboto+roboto|12`
 - screen id: `t035-stats-geometric`
 - layout: **stats** — Stats in shapes: the headline on top, a row of four big geometric tiles each carrying one figure in its corner.
+- composition pattern: **l-arrangement** (weak fit) — Headline top-start with action at the end, four tiles as a base row.
 - image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
 - skin: `sky` (Sky)
 - font pairing: display Roboto (`roboto`), body Roboto (`roboto`)
@@ -1226,6 +1253,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t035-stats-geometric|supabase|roboto+roboto|0`
 - screen id: `t035-stats-geometric`
 - layout: **stats** — Stats in shapes: the headline on top, a row of four big geometric tiles each carrying one figure in its corner.
+- composition pattern: **l-arrangement** (weak fit) — Headline top-start with action at the end, four tiles as a base row.
 - image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
 - skin: `supabase` (Supabase)
 - font pairing: display Roboto (`roboto`), body Roboto (`roboto`)
@@ -1271,6 +1299,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t041-poster-rings|modern-minimal|rubik+nunito|8`
 - screen id: `t041-poster-rings`
 - layout: **poster** — Poster in a dial: a rings field centred behind the headline, a badge above, actions below, three notes at the foot.
+- composition pattern: **radial** (secondary pyramid) — Rings radiate from the centre behind the headline; three notes close the base.
 - image recipe: **rings** — Recipe "rings": concentric rings and orbits (repeating radial gradients and outlined circles) with a planet or two.
 - skin: `modern-minimal` (Modern Minimal)
 - font pairing: display Rubik (`rubik`), body Nunito (`nunito`)
@@ -1316,6 +1345,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t044-dense-conic|violet-bloom|rubik+rubik|4`
 - screen id: `t044-dense-conic`
 - layout: **dense** (composition `dense-grid`) — Dense 3×3: the headline in the centre tile, conic plates in the corners, figures and copy in the edge tiles.
+- composition pattern: **cross** (secondary rule-of-thirds) — Headline in the centre with figure and copy tiles on the four edges, conic plates in the corners.
 - image recipe: **conic** — Recipe "conic": conic sweeps: a sunburst of rays, a colour wheel, or a soft spotlight.
 - skin: `violet-bloom` (Violet Bloom)
 - font pairing: display Rubik (`rubik`), body Rubik (`rubik`)
@@ -1361,6 +1391,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t048-editorial-rings|amber-minimal|golos-text+golos-text|8`
 - screen id: `t048-editorial-rings`
 - layout: **editorial** — Editorial spread: a full-height rings page at the start; a pull quote, the headline and two columns on the end page.
+- composition pattern: **rule-of-thirds** (secondary radial) — A rings page fills the first 5/12 and the text page the rest.
 - image recipe: **rings** — Recipe "rings": concentric rings and orbits (repeating radial gradients and outlined circles) with a planet or two.
 - skin: `amber-minimal` (Amber Minimal)
 - font pairing: display Golos Text (`golos-text`), body Golos Text (`golos-text`)
@@ -1406,6 +1437,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t048-editorial-rings|amber-minimal|roboto+roboto|8`
 - screen id: `t048-editorial-rings`
 - layout: **editorial** — Editorial spread: a full-height rings page at the start; a pull quote, the headline and two columns on the end page.
+- composition pattern: **rule-of-thirds** (secondary radial) — A rings page fills the first 5/12 and the text page the rest.
 - image recipe: **rings** — Recipe "rings": concentric rings and orbits (repeating radial gradients and outlined circles) with a planet or two.
 - skin: `amber-minimal` (Amber Minimal)
 - font pairing: display Roboto (`roboto`), body Roboto (`roboto`)
@@ -1451,6 +1483,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t048-editorial-rings|neo-brutalism|manrope+ibm-plex-sans|8`
 - screen id: `t048-editorial-rings`
 - layout: **editorial** — Editorial spread: a full-height rings page at the start; a pull quote, the headline and two columns on the end page.
+- composition pattern: **rule-of-thirds** (secondary radial) — A rings page fills the first 5/12 and the text page the rest.
 - image recipe: **rings** — Recipe "rings": concentric rings and orbits (repeating radial gradients and outlined circles) with a planet or two.
 - skin: `neo-brutalism` (Neo Brutalism)
 - font pairing: display Manrope (`manrope`), body IBM Plex Sans (`ibm-plex-sans`)
@@ -1496,6 +1529,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t048-editorial-rings|notebook|golos-text+golos-text|0`
 - screen id: `t048-editorial-rings`
 - layout: **editorial** — Editorial spread: a full-height rings page at the start; a pull quote, the headline and two columns on the end page.
+- composition pattern: **rule-of-thirds** (secondary radial) — A rings page fills the first 5/12 and the text page the rest.
 - image recipe: **rings** — Recipe "rings": concentric rings and orbits (repeating radial gradients and outlined circles) with a planet or two.
 - skin: `notebook` (Notebook)
 - font pairing: display Golos Text (`golos-text`), body Golos Text (`golos-text`)
@@ -1541,6 +1575,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t048-editorial-rings|supabase|golos-text+golos-text|0`
 - screen id: `t048-editorial-rings`
 - layout: **editorial** — Editorial spread: a full-height rings page at the start; a pull quote, the headline and two columns on the end page.
+- composition pattern: **rule-of-thirds** (secondary radial) — A rings page fills the first 5/12 and the text page the rest.
 - image recipe: **rings** — Recipe "rings": concentric rings and orbits (repeating radial gradients and outlined circles) with a planet or two.
 - skin: `supabase` (Supabase)
 - font pairing: display Golos Text (`golos-text`), body Golos Text (`golos-text`)
@@ -1586,6 +1621,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t050-prompt-dots|cosmic-night|ibm-plex-sans+ibm-plex-sans|12`
 - screen id: `t050-prompt-dots`
 - layout: **prompt** — Prompt as a sign-up: dots across the end half, the headline and an email row with a consent checkbox at the start.
+- composition pattern: **rule-of-thirds** (weak fit) — Headline and email row at the start, dots on the end half; halves only loosely thirds.
 - image recipe: **dots** — Recipe "dots": a dot grid fading out (halftone by mask), with a large dot accent.
 - skin: `cosmic-night` (Cosmic Night)
 - font pairing: display IBM Plex Sans (`ibm-plex-sans`), body IBM Plex Sans (`ibm-plex-sans`)
@@ -1631,6 +1667,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t050-prompt-dots|doom-64|roboto+open-sans|8`
 - screen id: `t050-prompt-dots`
 - layout: **prompt** — Prompt as a sign-up: dots across the end half, the headline and an email row with a consent checkbox at the start.
+- composition pattern: **rule-of-thirds** (weak fit) — Headline and email row at the start, dots on the end half; halves only loosely thirds.
 - image recipe: **dots** — Recipe "dots": a dot grid fading out (halftone by mask), with a large dot accent.
 - skin: `doom-64` (Doom 64)
 - font pairing: display Roboto (`roboto`), body Open Sans (`open-sans`)
@@ -1676,6 +1713,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t050-prompt-dots|t3-chat|ibm-plex-sans+ibm-plex-sans|4`
 - screen id: `t050-prompt-dots`
 - layout: **prompt** — Prompt as a sign-up: dots across the end half, the headline and an email row with a consent checkbox at the start.
+- composition pattern: **rule-of-thirds** (weak fit) — Headline and email row at the start, dots on the end half; halves only loosely thirds.
 - image recipe: **dots** — Recipe "dots": a dot grid fading out (halftone by mask), with a large dot accent.
 - skin: `t3-chat` (T3 Chat)
 - font pairing: display IBM Plex Sans (`ibm-plex-sans`), body IBM Plex Sans (`ibm-plex-sans`)
@@ -1721,6 +1759,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t051-poster-stripes|sky|golos-text+onest|0`
 - screen id: `t051-poster-stripes`
 - layout: **poster** — Poster block: a fine-line stripes field, the headline set in one solid primary block at the centre.
+- composition pattern: **focal-mass** — A solid primary block at the centre of a fine stripes field is the single mass.
 - image recipe: **stripes** — Recipe "stripes": repeating bands: diagonal stripes, vertical bars of rising height, or a fine line field.
 - skin: `sky` (Sky)
 - font pairing: display Golos Text (`golos-text`), body Onest (`onest`)
@@ -1766,6 +1805,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t051-poster-stripes|violet-bloom|roboto+open-sans|12`
 - screen id: `t051-poster-stripes`
 - layout: **poster** — Poster block: a fine-line stripes field, the headline set in one solid primary block at the centre.
+- composition pattern: **focal-mass** — A solid primary block at the centre of a fine stripes field is the single mass.
 - image recipe: **stripes** — Recipe "stripes": repeating bands: diagonal stripes, vertical bars of rising height, or a fine line field.
 - skin: `violet-bloom` (Violet Bloom)
 - font pairing: display Roboto (`roboto`), body Open Sans (`open-sans`)
@@ -1811,6 +1851,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t053-fullbleed-geometric|amber-minimal|onest+inter|4`
 - screen id: `t053-fullbleed-geometric`
 - layout: **fullbleed** (composition `full-bleed`) — Full-bleed: geometric shapes cover the end half; uppercase type stacked huge at the start runs into the shapes.
+- composition pattern: **rule-of-thirds** (secondary diagonal) (weak fit) — Shapes cover the end half, uppercase type runs from the start into them; closer to halves.
 - image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
 - skin: `amber-minimal` (Amber Minimal)
 - font pairing: display Onest (`onest`), body Inter (`inter`)
@@ -1856,6 +1897,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t053-fullbleed-geometric|claude|onest+inter|8`
 - screen id: `t053-fullbleed-geometric`
 - layout: **fullbleed** (composition `full-bleed`) — Full-bleed: geometric shapes cover the end half; uppercase type stacked huge at the start runs into the shapes.
+- composition pattern: **rule-of-thirds** (secondary diagonal) (weak fit) — Shapes cover the end half, uppercase type runs from the start into them; closer to halves.
 - image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
 - skin: `claude` (Claude)
 - font pairing: display Onest (`onest`), body Inter (`inter`)
@@ -1901,6 +1943,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t053-fullbleed-geometric|perpetuity|onest+inter|4`
 - screen id: `t053-fullbleed-geometric`
 - layout: **fullbleed** (composition `full-bleed`) — Full-bleed: geometric shapes cover the end half; uppercase type stacked huge at the start runs into the shapes.
+- composition pattern: **rule-of-thirds** (secondary diagonal) (weak fit) — Shapes cover the end half, uppercase type runs from the start into them; closer to halves.
 - image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
 - skin: `perpetuity` (Perpetuity)
 - font pairing: display Onest (`onest`), body Inter (`inter`)
@@ -1946,6 +1989,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t053-fullbleed-geometric|supabase|onest+inter|0`
 - screen id: `t053-fullbleed-geometric`
 - layout: **fullbleed** (composition `full-bleed`) — Full-bleed: geometric shapes cover the end half; uppercase type stacked huge at the start runs into the shapes.
+- composition pattern: **rule-of-thirds** (secondary diagonal) (weak fit) — Shapes cover the end half, uppercase type runs from the start into them; closer to halves.
 - image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
 - skin: `supabase` (Supabase)
 - font pairing: display Onest (`onest`), body Inter (`inter`)
@@ -1991,6 +2035,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t055-airy-conic|amber-minimal|onest+onest|0`
 - screen id: `t055-airy-conic`
 - layout: **airy** — Airy: one small colour-wheel disc high in the middle, a short headline under it, a text link; nothing else.
+- composition pattern: **focal-mass** (secondary circular) — A small disc above a short headline on the central axis, nothing else.
 - image recipe: **conic** — Recipe "conic": conic sweeps: a sunburst of rays, a colour wheel, or a soft spotlight.
 - skin: `amber-minimal` (Amber Minimal)
 - font pairing: display Onest (`onest`), body Onest (`onest`)
@@ -2036,6 +2081,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t059-frame-rings|amber-minimal|golos-text+onest|12`
 - screen id: `t059-frame-rings`
 - layout: **frame** — Frame as a dial: a large round window holding rings and a figure, the headline and actions beside it.
+- composition pattern: **circular** (secondary rule-of-thirds) — A large round dial window of rings beside the headline and actions.
 - image recipe: **rings** — Recipe "rings": concentric rings and orbits (repeating radial gradients and outlined circles) with a planet or two.
 - skin: `amber-minimal` (Amber Minimal)
 - font pairing: display Golos Text (`golos-text`), body Onest (`onest`)
@@ -2081,6 +2127,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t059-frame-rings|cosmic-night|montserrat+open-sans|16`
 - screen id: `t059-frame-rings`
 - layout: **frame** — Frame as a dial: a large round window holding rings and a figure, the headline and actions beside it.
+- composition pattern: **circular** (secondary rule-of-thirds) — A large round dial window of rings beside the headline and actions.
 - image recipe: **rings** — Recipe "rings": concentric rings and orbits (repeating radial gradients and outlined circles) with a planet or two.
 - skin: `cosmic-night` (Cosmic Night)
 - font pairing: display Montserrat (`montserrat`), body Open Sans (`open-sans`)
@@ -2126,6 +2173,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t059-frame-rings|modern-minimal|golos-text+onest|4`
 - screen id: `t059-frame-rings`
 - layout: **frame** — Frame as a dial: a large round window holding rings and a figure, the headline and actions beside it.
+- composition pattern: **circular** (secondary rule-of-thirds) — A large round dial window of rings beside the headline and actions.
 - image recipe: **rings** — Recipe "rings": concentric rings and orbits (repeating radial gradients and outlined circles) with a planet or two.
 - skin: `modern-minimal` (Modern Minimal)
 - font pairing: display Golos Text (`golos-text`), body Onest (`onest`)
@@ -2171,6 +2219,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t062-split-duotone|claude|manrope+ibm-plex-sans|0`
 - screen id: `t062-split-duotone`
 - layout: **split** — Split: a rating line and actions at the start; at the end two duotone cards fanned on top of each other.
+- composition pattern: **diagonal** — Two duotone cards fanned at opposite tilts step diagonally against the start-side copy.
 - image recipe: **duotone** — Recipe "duotone": a picture in two skin colours. Even variants use the kit's base64 placeholder (MediaFrame) in grayscale (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
 - skin: `claude` (Claude)
 - font pairing: display Manrope (`manrope`), body IBM Plex Sans (`ibm-plex-sans`)
@@ -2216,6 +2265,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t062-split-duotone|notebook|manrope+ibm-plex-sans|8`
 - screen id: `t062-split-duotone`
 - layout: **split** — Split: a rating line and actions at the start; at the end two duotone cards fanned on top of each other.
+- composition pattern: **diagonal** — Two duotone cards fanned at opposite tilts step diagonally against the start-side copy.
 - image recipe: **duotone** — Recipe "duotone": a picture in two skin colours. Even variants use the kit's base64 placeholder (MediaFrame) in grayscale (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
 - skin: `notebook` (Notebook)
 - font pairing: display Manrope (`manrope`), body IBM Plex Sans (`ibm-plex-sans`)
@@ -2261,6 +2311,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t062-split-duotone|sky|manrope+ibm-plex-sans|0`
 - screen id: `t062-split-duotone`
 - layout: **split** — Split: a rating line and actions at the start; at the end two duotone cards fanned on top of each other.
+- composition pattern: **diagonal** — Two duotone cards fanned at opposite tilts step diagonally against the start-side copy.
 - image recipe: **duotone** — Recipe "duotone": a picture in two skin colours. Even variants use the kit's base64 placeholder (MediaFrame) in grayscale (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
 - skin: `sky` (Sky)
 - font pairing: display Manrope (`manrope`), body IBM Plex Sans (`ibm-plex-sans`)
@@ -2306,6 +2357,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t062-split-duotone|t3-chat|manrope+ibm-plex-sans|0`
 - screen id: `t062-split-duotone`
 - layout: **split** — Split: a rating line and actions at the start; at the end two duotone cards fanned on top of each other.
+- composition pattern: **diagonal** — Two duotone cards fanned at opposite tilts step diagonally against the start-side copy.
 - image recipe: **duotone** — Recipe "duotone": a picture in two skin colours. Even variants use the kit's base64 placeholder (MediaFrame) in grayscale (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
 - skin: `t3-chat` (T3 Chat)
 - font pairing: display Manrope (`manrope`), body IBM Plex Sans (`ibm-plex-sans`)
@@ -2351,6 +2403,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t062-split-duotone|t3-chat|manrope+ibm-plex-sans|12`
 - screen id: `t062-split-duotone`
 - layout: **split** — Split: a rating line and actions at the start; at the end two duotone cards fanned on top of each other.
+- composition pattern: **diagonal** — Two duotone cards fanned at opposite tilts step diagonally against the start-side copy.
 - image recipe: **duotone** — Recipe "duotone": a picture in two skin colours. Even variants use the kit's base64 placeholder (MediaFrame) in grayscale (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
 - skin: `t3-chat` (T3 Chat)
 - font pairing: display Manrope (`manrope`), body IBM Plex Sans (`ibm-plex-sans`)
@@ -2396,6 +2449,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t063-fullbleed-conic|perpetuity|nunito+nunito|16`
 - screen id: `t063-fullbleed-conic`
 - layout: **fullbleed** (composition `full-bleed`) — Full-bleed horizon: conic rays rise from the bottom half like a sunrise; the headline fills the sky above them.
+- composition pattern: **radial** (secondary focal-mass) — Conic rays rise from a horizon like a sunrise under a centred headline.
 - image recipe: **conic** — Recipe "conic": conic sweeps: a sunburst of rays, a colour wheel, or a soft spotlight.
 - skin: `perpetuity` (Perpetuity)
 - font pairing: display Nunito (`nunito`), body Nunito (`nunito`)
@@ -2441,6 +2495,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t067-ribbon-stripes|claude|manrope+manrope|12`
 - screen id: `t067-ribbon-stripes`
 - layout: **ribbon** — Ribbon: a diagonal stripes band at the top, the centred headline, the kit LogoRibbon in a ruled row at the foot.
+- composition pattern: **focal-mass** (weak fit) — A centred headline framed by a stripes band on top and logo ribbon at the foot.
 - image recipe: **stripes** — Recipe "stripes": repeating bands: diagonal stripes, vertical bars of rising height, or a fine line field.
 - skin: `claude` (Claude)
 - font pairing: display Manrope (`manrope`), body Manrope (`manrope`)
@@ -2486,6 +2541,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t069-frame-duotone|cosmic-night|golos-text+onest|0`
 - screen id: `t069-frame-duotone`
 - layout: **frame** — Frame on top: a browser window with a gallery of duotone tiles fills the upper part; the headline sits under it.
+- composition pattern: **l-arrangement** (weak fit) — A wide gallery window across the top and headline row along the foot.
 - image recipe: **duotone** — Recipe "duotone": a picture in two skin colours. Even variants use the kit's base64 placeholder (MediaFrame) in grayscale (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
 - skin: `cosmic-night` (Cosmic Night)
 - font pairing: display Golos Text (`golos-text`), body Onest (`onest`)
@@ -2531,6 +2587,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t069-frame-duotone|neo-brutalism|golos-text+onest|16`
 - screen id: `t069-frame-duotone`
 - layout: **frame** — Frame on top: a browser window with a gallery of duotone tiles fills the upper part; the headline sits under it.
+- composition pattern: **l-arrangement** (weak fit) — A wide gallery window across the top and headline row along the foot.
 - image recipe: **duotone** — Recipe "duotone": a picture in two skin colours. Even variants use the kit's base64 placeholder (MediaFrame) in grayscale (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
 - skin: `neo-brutalism` (Neo Brutalism)
 - font pairing: display Golos Text (`golos-text`), body Onest (`onest`)
@@ -2576,6 +2633,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t069-frame-duotone|t3-chat|inter+inter|16`
 - screen id: `t069-frame-duotone`
 - layout: **frame** — Frame on top: a browser window with a gallery of duotone tiles fills the upper part; the headline sits under it.
+- composition pattern: **l-arrangement** (weak fit) — A wide gallery window across the top and headline row along the foot.
 - image recipe: **duotone** — Recipe "duotone": a picture in two skin colours. Even variants use the kit's base64 placeholder (MediaFrame) in grayscale (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
 - skin: `t3-chat` (T3 Chat)
 - font pairing: display Inter (`inter`), body Inter (`inter`)
@@ -2621,6 +2679,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t070-prompt-geometric|violet-bloom|manrope+ibm-plex-sans|4`
 - screen id: `t070-prompt-geometric`
 - layout: **prompt** — Prompt: geometric columns frame both edges; in the clear middle the headline and a search field with an action.
+- composition pattern: **focal-mass** — Geometric columns fence both edges; headline and search sit in the clear middle.
 - image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
 - skin: `violet-bloom` (Violet Bloom)
 - font pairing: display Manrope (`manrope`), body IBM Plex Sans (`ibm-plex-sans`)
@@ -2666,6 +2725,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t071-poster-dots|amber-minimal|montserrat+open-sans|8`
 - screen id: `t071-poster-dots`
 - layout: **poster** — Poster, start-aligned: a dot field over the whole screen, the headline in two big lines, the action low at the end.
+- composition pattern: **diagonal** (secondary l-arrangement) — Headline mid-start and the action low at the end read along a top-left to bottom-right line.
 - image recipe: **dots** — Recipe "dots": a dot grid fading out (halftone by mask), with a large dot accent.
 - skin: `amber-minimal` (Amber Minimal)
 - font pairing: display Montserrat (`montserrat`), body Open Sans (`open-sans`)
@@ -2711,6 +2771,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t071-poster-dots|bubblegum|montserrat+open-sans|0`
 - screen id: `t071-poster-dots`
 - layout: **poster** — Poster, start-aligned: a dot field over the whole screen, the headline in two big lines, the action low at the end.
+- composition pattern: **diagonal** (secondary l-arrangement) — Headline mid-start and the action low at the end read along a top-left to bottom-right line.
 - image recipe: **dots** — Recipe "dots": a dot grid fading out (halftone by mask), with a large dot accent.
 - skin: `bubblegum` (Bubblegum)
 - font pairing: display Montserrat (`montserrat`), body Open Sans (`open-sans`)
@@ -2756,6 +2817,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t071-poster-dots|kodama-grove|montserrat+open-sans|12`
 - screen id: `t071-poster-dots`
 - layout: **poster** — Poster, start-aligned: a dot field over the whole screen, the headline in two big lines, the action low at the end.
+- composition pattern: **diagonal** (secondary l-arrangement) — Headline mid-start and the action low at the end read along a top-left to bottom-right line.
 - image recipe: **dots** — Recipe "dots": a dot grid fading out (halftone by mask), with a large dot accent.
 - skin: `kodama-grove` (Kodama Grove)
 - font pairing: display Montserrat (`montserrat`), body Open Sans (`open-sans`)
@@ -2801,6 +2863,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t072-split-geometric|amber-minimal|inter+inter|16`
 - screen id: `t072-split-geometric`
 - layout: **split** — Split 40/60: settings-like switches under the headline at the start, a big geometric plate at the end.
+- composition pattern: **rule-of-thirds** — A 2:3 column grid, copy in the first two fifths and a big plate in the last three.
 - image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
 - skin: `amber-minimal` (Amber Minimal)
 - font pairing: display Inter (`inter`), body Inter (`inter`)
@@ -2846,6 +2909,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t073-fullbleed-flat|amber-minimal|golos-text+onest|4`
 - screen id: `t073-fullbleed-flat`
 - layout: **fullbleed** (composition `full-bleed`) — Full-bleed colour: the primary colour fills the screen with a flat disc; the headline is cut out in the page colour.
+- composition pattern: **diagonal** (secondary circular) — A flat disc top-end and the headline bottom-start on a solid colour field.
 - image recipe: **flat** — Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours.
 - skin: `amber-minimal` (Amber Minimal)
 - font pairing: display Golos Text (`golos-text`), body Onest (`onest`)
@@ -2891,6 +2955,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t081-poster-conic|bubblegum|onest+inter|8`
 - screen id: `t081-poster-conic`
 - layout: **poster** — Poster under a spotlight: a conic beam falls from the top centre onto a huge centred headline.
+- composition pattern: **radial** (secondary focal-mass) — A conic beam fans out from the top centre onto the headline.
 - image recipe: **conic** — Recipe "conic": conic sweeps: a sunburst of rays, a colour wheel, or a soft spotlight.
 - skin: `bubblegum` (Bubblegum)
 - font pairing: display Onest (`onest`), body Inter (`inter`)
@@ -2936,6 +3001,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t089-frame-mesh|bubblegum|rubik+rubik|8`
 - screen id: `t089-frame-mesh`
 - layout: **frame** — Frame, three columns: copy at the start, a tall phone frame with a mesh screen in the middle, feature notes at the end.
+- composition pattern: **rule-of-thirds** (secondary focal-mass) — Three equal columns with the phone frame as the middle one.
 - image recipe: **mesh** — Recipe "mesh": mesh-blur blobs. Soft radial fields of the skin's chart and primary colours, plus blurred orbs.
 - skin: `bubblegum` (Bubblegum)
 - font pairing: display Rubik (`rubik`), body Rubik (`rubik`)
@@ -2981,6 +3047,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t089-frame-mesh|sky|rubik+rubik|8`
 - screen id: `t089-frame-mesh`
 - layout: **frame** — Frame, three columns: copy at the start, a tall phone frame with a mesh screen in the middle, feature notes at the end.
+- composition pattern: **rule-of-thirds** (secondary focal-mass) — Three equal columns with the phone frame as the middle one.
 - image recipe: **mesh** — Recipe "mesh": mesh-blur blobs. Soft radial fields of the skin's chart and primary colours, plus blurred orbs.
 - skin: `sky` (Sky)
 - font pairing: display Rubik (`rubik`), body Rubik (`rubik`)
@@ -3026,6 +3093,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t093-fullbleed-dots|neo-brutalism|montserrat+inter|12`
 - screen id: `t093-fullbleed-dots`
 - layout: **fullbleed** (composition `full-bleed`) — Full-bleed figure: a dot field with one giant figure set across it; the headline is small at the bottom start.
+- composition pattern: **focal-mass** — One giant figure dominates the centre of a dot field; small headline at the foot.
 - image recipe: **dots** — Recipe "dots": a dot grid fading out (halftone by mask), with a large dot accent.
 - skin: `neo-brutalism` (Neo Brutalism)
 - font pairing: display Montserrat (`montserrat`), body Inter (`inter`)
@@ -3071,6 +3139,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t093-fullbleed-dots|sky|montserrat+inter|12`
 - screen id: `t093-fullbleed-dots`
 - layout: **fullbleed** (composition `full-bleed`) — Full-bleed figure: a dot field with one giant figure set across it; the headline is small at the bottom start.
+- composition pattern: **focal-mass** — One giant figure dominates the centre of a dot field; small headline at the foot.
 - image recipe: **dots** — Recipe "dots": a dot grid fading out (halftone by mask), with a large dot accent.
 - skin: `sky` (Sky)
 - font pairing: display Montserrat (`montserrat`), body Inter (`inter`)
@@ -3116,6 +3185,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t094-dense-flat|amber-minimal|open-sans+open-sans|4`
 - screen id: `t094-dense-flat`
 - layout: **dense** (composition `dense-grid`) — Dense bento: a four by three grid mixing flat shape tiles, a headline tile, figure tiles and a call tile.
+- composition pattern: **rule-of-thirds** (weak fit) — Bento: the headline tile spans two of three rows beside shape and figure tiles.
 - image recipe: **flat** — Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours.
 - skin: `amber-minimal` (Amber Minimal)
 - font pairing: display Open Sans (`open-sans`), body Open Sans (`open-sans`)
@@ -3161,6 +3231,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t094-dense-flat|claude|montserrat+inter|0`
 - screen id: `t094-dense-flat`
 - layout: **dense** (composition `dense-grid`) — Dense bento: a four by three grid mixing flat shape tiles, a headline tile, figure tiles and a call tile.
+- composition pattern: **rule-of-thirds** (weak fit) — Bento: the headline tile spans two of three rows beside shape and figure tiles.
 - image recipe: **flat** — Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours.
 - skin: `claude` (Claude)
 - font pairing: display Montserrat (`montserrat`), body Inter (`inter`)
@@ -3206,6 +3277,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t094-dense-flat|claude|open-sans+open-sans|8`
 - screen id: `t094-dense-flat`
 - layout: **dense** (composition `dense-grid`) — Dense bento: a four by three grid mixing flat shape tiles, a headline tile, figure tiles and a call tile.
+- composition pattern: **rule-of-thirds** (weak fit) — Bento: the headline tile spans two of three rows beside shape and figure tiles.
 - image recipe: **flat** — Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours.
 - skin: `claude` (Claude)
 - font pairing: display Open Sans (`open-sans`), body Open Sans (`open-sans`)
@@ -3251,6 +3323,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t094-dense-flat|modern-minimal|montserrat+inter|4`
 - screen id: `t094-dense-flat`
 - layout: **dense** (composition `dense-grid`) — Dense bento: a four by three grid mixing flat shape tiles, a headline tile, figure tiles and a call tile.
+- composition pattern: **rule-of-thirds** (weak fit) — Bento: the headline tile spans two of three rows beside shape and figure tiles.
 - image recipe: **flat** — Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours.
 - skin: `modern-minimal` (Modern Minimal)
 - font pairing: display Montserrat (`montserrat`), body Inter (`inter`)
@@ -3296,6 +3369,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t094-dense-flat|modern-minimal|montserrat+open-sans|4`
 - screen id: `t094-dense-flat`
 - layout: **dense** (composition `dense-grid`) — Dense bento: a four by three grid mixing flat shape tiles, a headline tile, figure tiles and a call tile.
+- composition pattern: **rule-of-thirds** (weak fit) — Bento: the headline tile spans two of three rows beside shape and figure tiles.
 - image recipe: **flat** — Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours.
 - skin: `modern-minimal` (Modern Minimal)
 - font pairing: display Montserrat (`montserrat`), body Open Sans (`open-sans`)
@@ -3341,6 +3415,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t098-editorial-geometric|claude|roboto+roboto|16`
 - screen id: `t098-editorial-geometric`
 - layout: **editorial** — Editorial feature: a giant chapter number and headline at the start, a pull quote between rules, a geometric column at the end.
+- composition pattern: **rule-of-thirds** (weak fit) — A 7/5 column split with giant chapter number and quote at the start; close to thirds.
 - image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
 - skin: `claude` (Claude)
 - font pairing: display Roboto (`roboto`), body Roboto (`roboto`)
@@ -3386,6 +3461,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t098-editorial-geometric|t3-chat|roboto+roboto|8`
 - screen id: `t098-editorial-geometric`
 - layout: **editorial** — Editorial feature: a giant chapter number and headline at the start, a pull quote between rules, a geometric column at the end.
+- composition pattern: **rule-of-thirds** (weak fit) — A 7/5 column split with giant chapter number and quote at the start; close to thirds.
 - image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
 - skin: `t3-chat` (T3 Chat)
 - font pairing: display Roboto (`roboto`), body Roboto (`roboto`)
@@ -3431,6 +3507,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t099-frame-geometric|amber-minimal|rubik+rubik|0`
 - screen id: `t099-frame-geometric`
 - layout: **frame** — Frame, tilted: a large tablet frame turned slightly, showing a geometric gallery; the headline overlaps its corner.
+- composition pattern: **diagonal** — A tilted tablet frame rises to the top-end while the headline box sits bottom-start.
 - image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
 - skin: `amber-minimal` (Amber Minimal)
 - font pairing: display Rubik (`rubik`), body Rubik (`rubik`)
@@ -3476,6 +3553,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t099-frame-geometric|cosmic-night|montserrat+inter|0`
 - screen id: `t099-frame-geometric`
 - layout: **frame** — Frame, tilted: a large tablet frame turned slightly, showing a geometric gallery; the headline overlaps its corner.
+- composition pattern: **diagonal** — A tilted tablet frame rises to the top-end while the headline box sits bottom-start.
 - image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
 - skin: `cosmic-night` (Cosmic Night)
 - font pairing: display Montserrat (`montserrat`), body Inter (`inter`)
@@ -3521,6 +3599,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t099-frame-geometric|modern-minimal|golos-text+onest|0`
 - screen id: `t099-frame-geometric`
 - layout: **frame** — Frame, tilted: a large tablet frame turned slightly, showing a geometric gallery; the headline overlaps its corner.
+- composition pattern: **diagonal** — A tilted tablet frame rises to the top-end while the headline box sits bottom-start.
 - image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
 - skin: `modern-minimal` (Modern Minimal)
 - font pairing: display Golos Text (`golos-text`), body Onest (`onest`)
@@ -3566,6 +3645,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t099-frame-geometric|supabase|ibm-plex-sans+ibm-plex-sans|4`
 - screen id: `t099-frame-geometric`
 - layout: **frame** — Frame, tilted: a large tablet frame turned slightly, showing a geometric gallery; the headline overlaps its corner.
+- composition pattern: **diagonal** — A tilted tablet frame rises to the top-end while the headline box sits bottom-start.
 - image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
 - skin: `supabase` (Supabase)
 - font pairing: display IBM Plex Sans (`ibm-plex-sans`), body IBM Plex Sans (`ibm-plex-sans`)
@@ -3611,6 +3691,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t104-split-dots|sky|onest+onest|8`
 - screen id: `t104-split-dots`
 - layout: **split** — Split, media first: a dotted plate with a large badge on it at the start; the end half has the headline and a two-column list.
+- composition pattern: **diagonal** (weak fit) — A badge anchored bottom-start of the plate answers copy at the top-end.
 - image recipe: **dots** — Recipe "dots": a dot grid fading out (halftone by mask), with a large dot accent.
 - skin: `sky` (Sky)
 - font pairing: display Onest (`onest`), body Onest (`onest`)
@@ -3656,6 +3737,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t104-split-dots|supabase|onest+onest|16`
 - screen id: `t104-split-dots`
 - layout: **split** — Split, media first: a dotted plate with a large badge on it at the start; the end half has the headline and a two-column list.
+- composition pattern: **diagonal** (weak fit) — A badge anchored bottom-start of the plate answers copy at the top-end.
 - image recipe: **dots** — Recipe "dots": a dot grid fading out (halftone by mask), with a large dot accent.
 - skin: `supabase` (Supabase)
 - font pairing: display Onest (`onest`), body Onest (`onest`)
@@ -3701,6 +3783,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t105-fullbleed-duotone|claude|onest+inter|16`
 - screen id: `t105-fullbleed-duotone`
 - layout: **fullbleed** (composition `full-bleed`) — Full-bleed picture: a duotone landscape fills the screen; the copy sits in a solid page-coloured box at the bottom start.
+- composition pattern: **rule-of-thirds** (weak fit) — A full picture with the copy box parked at the lower-left third.
 - image recipe: **duotone** — Recipe "duotone": a picture in two skin colours. Even variants use the kit's base64 placeholder (MediaFrame) in grayscale (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
 - skin: `claude` (Claude)
 - font pairing: display Onest (`onest`), body Inter (`inter`)
@@ -3746,6 +3829,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t107-dense-geometric|supabase|golos-text+golos-text|4`
 - screen id: `t107-dense-geometric`
 - layout: **dense** (composition `dense-grid`) — Dense board: three columns of task-like cards, each card with a geometric thumbnail, a title and badges.
+- composition pattern: **rule-of-thirds** (secondary l-arrangement) — Three board columns of equal width.
 - image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
 - skin: `supabase` (Supabase)
 - font pairing: display Golos Text (`golos-text`), body Golos Text (`golos-text`)
@@ -3791,6 +3875,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t110-airy-dots|amber-minimal|onest+inter|12`
 - screen id: `t110-airy-dots`
 - layout: **airy** — Airy: one centred line of headline with a dotted rule beneath it, and nothing else but a quiet link.
+- composition pattern: **focal-mass** (weak fit) — One centred headline with a dotted rule beneath it and nothing else.
 - image recipe: **dots** — Recipe "dots": a dot grid fading out (halftone by mask), with a large dot accent.
 - skin: `amber-minimal` (Amber Minimal)
 - font pairing: display Onest (`onest`), body Inter (`inter`)
@@ -3836,6 +3921,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t114-ribbon-flat|claude|ibm-plex-sans+ibm-plex-sans|8`
 - screen id: `t114-ribbon-flat`
 - layout: **ribbon** — Ribbon of words: the headline above, then a tilted band of huge repeated tags with flat shapes between the words.
+- composition pattern: **diagonal** — A band of huge tags tilted -3 degrees cuts across the page.
 - image recipe: **flat** — Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours.
 - skin: `claude` (Claude)
 - font pairing: display IBM Plex Sans (`ibm-plex-sans`), body IBM Plex Sans (`ibm-plex-sans`)
@@ -3881,6 +3967,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t114-ribbon-flat|supabase|rubik+nunito|8`
 - screen id: `t114-ribbon-flat`
 - layout: **ribbon** — Ribbon of words: the headline above, then a tilted band of huge repeated tags with flat shapes between the words.
+- composition pattern: **diagonal** — A band of huge tags tilted -3 degrees cuts across the page.
 - image recipe: **flat** — Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours.
 - skin: `supabase` (Supabase)
 - font pairing: display Rubik (`rubik`), body Nunito (`nunito`)
@@ -3926,6 +4013,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t115-editorial-duotone|bubblegum|rubik+rubik|16`
 - screen id: `t115-editorial-duotone`
 - layout: **editorial** — Editorial spread: the start page is a full duotone picture; the end page has a byline, headline, a drop-cap paragraph.
+- composition pattern: **focal-mass** (weak fit) — A full-height picture page beside a text page; evenly split, weak fit.
 - image recipe: **duotone** — Recipe "duotone": a picture in two skin colours. Even variants use the kit's base64 placeholder (MediaFrame) in grayscale (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
 - skin: `bubblegum` (Bubblegum)
 - font pairing: display Rubik (`rubik`), body Rubik (`rubik`)
@@ -3971,6 +4059,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t115-editorial-duotone|doom-64|roboto+open-sans|0`
 - screen id: `t115-editorial-duotone`
 - layout: **editorial** — Editorial spread: the start page is a full duotone picture; the end page has a byline, headline, a drop-cap paragraph.
+- composition pattern: **focal-mass** (weak fit) — A full-height picture page beside a text page; evenly split, weak fit.
 - image recipe: **duotone** — Recipe "duotone": a picture in two skin colours. Even variants use the kit's base64 placeholder (MediaFrame) in grayscale (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
 - skin: `doom-64` (Doom 64)
 - font pairing: display Roboto (`roboto`), body Open Sans (`open-sans`)
@@ -4016,6 +4105,7 @@ Future: listed on the Templates tab of the detail page.
 - key: `t115-editorial-duotone|sky|onest+inter|12`
 - screen id: `t115-editorial-duotone`
 - layout: **editorial** — Editorial spread: the start page is a full duotone picture; the end page has a byline, headline, a drop-cap paragraph.
+- composition pattern: **focal-mass** (weak fit) — A full-height picture page beside a text page; evenly split, weak fit.
 - image recipe: **duotone** — Recipe "duotone": a picture in two skin colours. Even variants use the kit's base64 placeholder (MediaFrame) in grayscale (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
 - skin: `sky` (Sky)
 - font pairing: display Onest (`onest`), body Inter (`inter`)

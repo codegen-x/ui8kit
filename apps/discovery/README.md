@@ -57,4 +57,13 @@ and a `journal.md` row whose ids cell lists each card as `id (skin, font, rRADIU
 layout, image recipe, skin, fonts, radius, light/dark primary/background/foreground read from the skin css, a plain-English taste
 derived from measured contrast, hue/saturation, radius, density of the layout and the fonts, and the planned companion blocks and templates.
 
+### Composition patterns
+
+`src/compositions.ts` tags each of the 120 screens with one primary (optionally a secondary) composition pattern from the beginner's
+guide to composition, restricted to those meaningful for web screens: rule-of-thirds, diagonal, focal-mass, l-arrangement, radial,
+circular, cross, pyramid (v-arrangement is defined but unused). Tags are assigned by hand from the layout markup, each with a one-line
+note; `weak: true` marks screens that only loosely fit. Golden spiral, golden triangles and compound curve are not screen patterns.
+`bun run included` prints the pattern per style in `plan/included-styles.md`, `compositionOf()` in `src/included.ts` returns it, and
+`engine/assign.ts` can use it as a soft preference (`PATTERN_WEIGHT`, default 0, so the wall is byte-for-byte unchanged).
+
 In-app links are hash-only (`#/screen/...`, `#/`), so the query survives navigation.

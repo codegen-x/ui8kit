@@ -4,6 +4,7 @@
 // cards already placed around it (same screen, composition, recipe or skin as a neighbour) and that has been used least;
 // then a variation of it whose skin differs from every neighbour's. Every (screen, skin, fonts, radius) is used once.
 import type { Card } from "./grid";
+import { patternOf } from "../compositions";
 import { FONT_IDS, type FontId } from "../fonts";
 import { RADII, SKIN_IDS, variantKey, type FontPair, type Radius, type SkinId, type Taste, type Variant } from "../taste";
 
@@ -72,7 +73,12 @@ export function placedWindow(card: Card, all: Card[], rowStart: Map<number, numb
   return out;
 }
 
-export function assign(cards: Card[], tastes: Taste[], seed = 20261008): Variant[] {
+/** Soft preference for varied composition patterns (compositions.ts): a candidate screen whose pattern equals a placed
+    neighbour's adds `weight` to its clash score, once per such neighbour. It consumes no random numbers and with weight 0
+    (the default, and what wall.ts uses) the placement is exactly what it was before patterns existed. */
+export const PATTERN_WEIGHT = 0;
+
+export function assign(cards: Card[], tastes: Taste[], seed = 20261008, patternWeight = PATTERN_WEIGHT): Variant[] {
   const rnd = prng(seed);
   const byId = new Map(tastes.map((t) => [t.id, t]));
   const rowStart = new Map<number, number>();
@@ -100,6 +106,7 @@ export function assign(cards: Card[], tastes: Taste[], seed = 20261008): Variant
         if (o.id === t.id) clash += 100;
         if (o.composition === t.composition) clash += 6;
         if (o.recipe === t.recipe) clash += 4;
+        if (patternWeight && patternOf(o.id) === patternOf(t.id)) clash += patternWeight;
         if (v.skin === t.skin && u === 0) clash += 3;
       }
       const score = clash * 1000 + u * 10 + rnd();

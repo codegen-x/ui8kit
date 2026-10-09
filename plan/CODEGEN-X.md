@@ -16,6 +16,7 @@ to thousands of design systems without a rewrite.
    Styles the user marks "include" (`?cards=include`, see `plan/included-styles.md`) are the ones that must be in the
    marketplace showcase. Planned: the detail page of such a design shows its sibling blocks in the same design
    (hero, hero-right, features, cta, pricing, testimonials, ...) and a **Templates** tab (blog, store, portfolio, website).
+   Every Discovery screen also carries a **composition pattern** (rule-of-thirds, diagonal, focal-mass, l-arrangement, radial, circular, cross, pyramid; `apps/discovery/src/compositions.ts`), shown per style in `plan/included-styles.md`. It is a tag for the future ranking index; in the wall engine it is only an opt-in soft preference (weight 0, the wall is unchanged).
 2. Every click on a screen or skin is an event sent to Jev. After at least 8 picks Jev has enough signal for intent.
 3. Jev builds a **personal catalog** in marketplace form: relevant categories, collections, blocks, screens, skins, fonts.
 4. **System tab** — a typical design system page (tokens, typography, radii, ...). Switching a skin re-skins the

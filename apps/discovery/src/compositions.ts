@@ -1,0 +1,151 @@
+// Composition pattern of every Discovery screen, from the "beginner's guide to composition" chart, restricted to patterns that
+// are meaningful for web screens. Assigned by hand from each screen's actual layout markup (not from its name). Plain data:
+// read by scripts/included.ts (plan/included-styles.md) and, as a soft preference only, by engine/assign.ts.
+// Golden spiral, golden triangles and compound curve are NOT screen patterns; they may only inspire procedural image recipes.
+
+export const PATTERNS = [
+  "rule-of-thirds", // main masses sit on a 1/3 : 2/3 split or on thirds lines (3 columns, 2/3 + 1/3, content at a third)
+  "diagonal",       // the weight runs along a diagonal (top-start to bottom-end), tilted bands, staircase of cards
+  "focal-mass",     // one dominant mass (card, block, headline, figure) in open space, usually near the centre
+  "l-arrangement",  // heavy elements along two edges forming an L (a side or top band plus a bottom or start band)
+  "radial",         // elements radiate from a point (sunburst, conic rays, concentric rings behind the content)
+  "circular",       // a circle holds or frames the content, or circles are the main motif
+  "cross",          // content on the vertical and horizontal axes around a centre
+  "v-arrangement",  // two arms converging on a point (unused so far: no screen clearly fits)
+  "pyramid",        // narrow apex over a wide base: a short headline over a wider row of cards or tiles
+] as const;
+export type Pattern = (typeof PATTERNS)[number];
+
+export type Composition = {
+  primary: Pattern;
+  secondary?: Pattern;
+  /** one-line rationale based on the layout markup */
+  note: string;
+  /** true when the fit is weak: the screen only loosely matches its primary pattern */
+  weak?: true;
+};
+
+export const COMPOSITION_OF: Record<string, Composition> = {
+  "t001-poster-mesh": { primary: "focal-mass", note: "Centred headline and actions float alone in an open mesh field." },
+  "t002-split-glass": { primary: "l-arrangement", secondary: "rule-of-thirds", note: "Full-height media at the end plus a stats row along the foot of the text column.", weak: true },
+  "t003-fullbleed-grain": { primary: "l-arrangement", note: "A media band across the top and a huge headline plus action row along the bottom." },
+  "t004-airy-dots": { primary: "focal-mass", secondary: "diagonal", note: "A small centred headline and button in a mostly empty screen; dots fade in from a corner." },
+  "t005-stats-flat": { primary: "rule-of-thirds", secondary: "l-arrangement", note: "Headline takes two thirds, a square plate the last third, then a ruled row of four figures." },
+  "t006-ribbon-rings": { primary: "focal-mass", secondary: "radial", note: "A centred hero over a rings field, with the kit logo ribbon along the foot.", weak: true },
+  "t007-editorial-duotone": { primary: "rule-of-thirds", note: "A 3/5/4 twelve-column spread: lead column, headline, tall picture; near thirds." },
+  "t008-frame-conic": { primary: "pyramid", secondary: "radial", note: "Headline above a wide browser window; the page inside is a conic sunburst." },
+  "t009-prompt-mesh": { primary: "focal-mass", note: "Headline, a large input and chips on a central axis in a mesh field." },
+  "t010-dense-geometric": { primary: "rule-of-thirds", secondary: "focal-mass", note: "Bento: the two large tiles take two of three rows, small tiles the last row." },
+  "t011-split-stripes": { primary: "l-arrangement", note: "A full-height panel on the start edge with a top bar across the text half forms an L.", weak: true },
+  "t012-poster-flat": { primary: "focal-mass", note: "One solid card at the exact centre carries the whole message over flat shapes." },
+  "t013-frame-glass": { primary: "pyramid", note: "Centred headline above a wide floating app window." },
+  "t014-editorial-grain": { primary: "l-arrangement", note: "Headline across the top and a plate down the start side with two text columns." },
+  "t015-airy-mesh": { primary: "diagonal", note: "Headline low at the start answers a small mesh card high at the end." },
+  "t016-stats-rings": { primary: "pyramid", note: "Centred headline over three tall stat cards: narrow apex, wide base." },
+  "t017-ribbon-flat": { primary: "l-arrangement", note: "Split hero with a full-width icon strip across the foot." },
+  "t018-prompt-conic": { primary: "radial", secondary: "focal-mass", note: "A conic spotlight fans from the top onto a centred headline and composer." },
+  "t019-dense-duotone": { primary: "l-arrangement", note: "Catalogue header row along the top above a four by two tile grid.", weak: true },
+  "t020-fullbleed-stripes": { primary: "rule-of-thirds", secondary: "focal-mass", note: "The stripes band sits across the middle third and the huge headline runs through it." },
+  "t021-split-dots": { primary: "rule-of-thirds", secondary: "focal-mass", note: "Copy at the start, a dot field with a disc at the end; balanced halves, only loosely thirds.", weak: true },
+  "t022-poster-geometric": { primary: "focal-mass", secondary: "cross", note: "Headline and action sit in a clear centre ringed by shape bars on four sides." },
+  "t023-fullbleed-mesh": { primary: "l-arrangement", note: "A top bar and a giant headline on the bottom edge over a full mesh field." },
+  "t024-airy-geometric": { primary: "focal-mass", note: "Three small marks, a short headline and one button on a centred axis in empty space." },
+  "t025-stats-mesh": { primary: "diagonal", note: "Copy top-start; the plate with its meter card pinned bottom-end.", weak: true },
+  "t026-ribbon-glass": { primary: "pyramid", note: "Centred headline narrows to a point above a wide six-column tile grid." },
+  "t027-editorial-flat": { primary: "diagonal", note: "Giant section number top-start, narrow text, a shape column at the end; loosely a diagonal.", weak: true },
+  "t028-frame-dots": { primary: "rule-of-thirds", note: "Copy at the start and a tall phone card at the end; halves, loosely thirds.", weak: true },
+  "t029-prompt-grain": { primary: "focal-mass", note: "A grain top half with a search card overlapping its edge as the focal piece.", weak: true },
+  "t030-dense-stripes": { primary: "rule-of-thirds", secondary: "l-arrangement", note: "Headline a third, stripes plate two thirds, then a row of four feature cards." },
+  "t031-split-conic": { primary: "radial", note: "A colour-wheel conic plate at the start radiates outward; text and checklist at the end.", weak: true },
+  "t032-poster-duotone": { primary: "rule-of-thirds", note: "Headline and actions occupy the upper third over a full-screen landscape.", weak: true },
+  "t033-fullbleed-rings": { primary: "circular", secondary: "rule-of-thirds", note: "A rings disc off the end edge holds the headline running over it." },
+  "t034-airy-stripes": { primary: "focal-mass", note: "Short centred headline and button with a thin stripes band on the bottom edge." },
+  "t035-stats-geometric": { primary: "l-arrangement", note: "Headline top-start with action at the end, four tiles as a base row.", weak: true },
+  "t036-ribbon-dots": { primary: "rule-of-thirds", note: "Headline spans two columns, a vertical stack of icon slots the last third." },
+  "t037-editorial-mesh": { primary: "pyramid", note: "Centred masthead over a wide plate and a four-column row of copy.", weak: true },
+  "t038-frame-flat": { primary: "rule-of-thirds", note: "Copy at the start and a code window floating over flat shapes at the end.", weak: true },
+  "t039-prompt-glass": { primary: "focal-mass", note: "A chat card is the single central mass on a glass field." },
+  "t040-dense-mesh": { primary: "rule-of-thirds", secondary: "focal-mass", note: "Three masonry columns with the headline card in the middle one." },
+  "t041-poster-rings": { primary: "radial", secondary: "pyramid", note: "Rings radiate from the centre behind the headline; three notes close the base." },
+  "t042-split-grain": { primary: "diagonal", secondary: "rule-of-thirds", note: "Steps top-start, a quote card pinned to the bottom-end corner of the plate." },
+  "t043-fullbleed-duotone": { primary: "rule-of-thirds", secondary: "diagonal", note: "A picture fills the first 60% and the headline crosses onto the plain remainder." },
+  "t044-dense-conic": { primary: "cross", secondary: "rule-of-thirds", note: "Headline in the centre with figure and copy tiles on the four edges, conic plates in the corners." },
+  "t045-airy-glass": { primary: "focal-mass", note: "A single small frosted card in the middle of a soft glow." },
+  "t046-stats-duotone": { primary: "rule-of-thirds", secondary: "l-arrangement", note: "Banner with headline plate in the lower-left, three ruled figure columns in thirds." },
+  "t047-ribbon-conic": { primary: "l-arrangement", secondary: "radial", note: "Headline at the start, icon board at the end and a conic band across the foot." },
+  "t048-editorial-rings": { primary: "rule-of-thirds", secondary: "radial", note: "A rings page fills the first 5/12 and the text page the rest." },
+  "t049-frame-grain": { primary: "pyramid", note: "Centred headline narrows over a wide tablet window with a table." },
+  "t050-prompt-dots": { primary: "rule-of-thirds", note: "Headline and email row at the start, dots on the end half; halves only loosely thirds.", weak: true },
+  "t051-poster-stripes": { primary: "focal-mass", note: "A solid primary block at the centre of a fine stripes field is the single mass." },
+  "t052-split-rings": { primary: "radial", note: "A rings plate at the start with concentric rings; headline and cards stacked at the end.", weak: true },
+  "t053-fullbleed-geometric": { primary: "rule-of-thirds", secondary: "diagonal", note: "Shapes cover the end half, uppercase type runs from the start into them; closer to halves.", weak: true },
+  "t054-dense-glass": { primary: "l-arrangement", note: "A headline tile top-start spans two columns of a four by three frosted grid.", weak: true },
+  "t055-airy-conic": { primary: "focal-mass", secondary: "circular", note: "A small disc above a short headline on the central axis, nothing else." },
+  "t056-stats-grain": { primary: "rule-of-thirds", note: "A tall plate with the lead figure takes one third, the text and chart the other two." },
+  "t057-ribbon-duotone": { primary: "l-arrangement", note: "Headline across the top and a wide banner with an icon strip along its foot." },
+  "t058-editorial-dots": { primary: "rule-of-thirds", secondary: "focal-mass", note: "Three equal broadsheet columns, a dot plate heading the middle one." },
+  "t059-frame-rings": { primary: "circular", secondary: "rule-of-thirds", note: "A large round dial window of rings beside the headline and actions." },
+  "t060-prompt-flat": { primary: "rule-of-thirds", note: "A flat panel takes two fifths, headline and composer three fifths." },
+  "t061-poster-grain": { primary: "focal-mass", note: "A huge centred headline on a dark grain field, nothing competing with it." },
+  "t062-split-duotone": { primary: "diagonal", note: "Two duotone cards fanned at opposite tilts step diagonally against the start-side copy." },
+  "t063-fullbleed-conic": { primary: "radial", secondary: "focal-mass", note: "Conic rays rise from a horizon like a sunrise under a centred headline." },
+  "t064-dense-rings": { primary: "rule-of-thirds", secondary: "l-arrangement", note: "Three-column catalogue under a filter header row.", weak: true },
+  "t065-airy-duotone": { primary: "diagonal", note: "Headline high at the start, picture square low at the end, one button between." },
+  "t066-stats-glass": { primary: "pyramid", note: "Centred headline and actions over a row of four frosted tiles." },
+  "t067-ribbon-stripes": { primary: "focal-mass", note: "A centred headline framed by a stripes band on top and logo ribbon at the foot.", weak: true },
+  "t068-editorial-glass": { primary: "rule-of-thirds", secondary: "l-arrangement", note: "Cover lines take 4/12 and a glass plate 8/12 under the full-width masthead." },
+  "t069-frame-duotone": { primary: "l-arrangement", note: "A wide gallery window across the top and headline row along the foot.", weak: true },
+  "t070-prompt-geometric": { primary: "focal-mass", note: "Geometric columns fence both edges; headline and search sit in the clear middle." },
+  "t071-poster-dots": { primary: "diagonal", secondary: "l-arrangement", note: "Headline mid-start and the action low at the end read along a top-left to bottom-right line." },
+  "t072-split-geometric": { primary: "rule-of-thirds", note: "A 2:3 column grid, copy in the first two fifths and a big plate in the last three." },
+  "t073-fullbleed-flat": { primary: "diagonal", secondary: "circular", note: "A flat disc top-end and the headline bottom-start on a solid colour field." },
+  "t074-dense-grain": { primary: "rule-of-thirds", secondary: "focal-mass", note: "Three plan cards in thirds with the middle one outlined as the focus." },
+  "t075-airy-rings": { primary: "circular", secondary: "focal-mass", note: "One thin ring holds the headline and a link inside it at page centre." },
+  "t076-stats-conic": { primary: "radial", secondary: "l-arrangement", note: "A half-disc conic gauge with the key figure in its centre; other figures listed beside it." },
+  "t077-ribbon-grain": { primary: "rule-of-thirds", note: "A grain field fills the top two thirds; a plain band of big icons the last third." },
+  "t078-editorial-conic": { primary: "rule-of-thirds", secondary: "radial", note: "Contents list and a conic plate with headline in two halves; only loosely thirds.", weak: true },
+  "t079-frame-stripes": { primary: "rule-of-thirds", note: "Copy takes two fifths and a monitor the last three." },
+  "t080-prompt-rings": { primary: "radial", secondary: "focal-mass", note: "A faint rings field radiates behind the headline and composer card." },
+  "t081-poster-conic": { primary: "radial", secondary: "focal-mass", note: "A conic beam fans out from the top centre onto the headline." },
+  "t082-split-flat": { primary: "rule-of-thirds", note: "Shape composition on one half, copy on the other; halves only approximate thirds.", weak: true },
+  "t083-fullbleed-glass": { primary: "rule-of-thirds", secondary: "l-arrangement", note: "Headline spans two of three columns and a frosted card takes the last, bottom row." },
+  "t084-dense-dots": { primary: "l-arrangement", secondary: "rule-of-thirds", note: "A sidebar down the start edge and a header row across the top of the dashboard." },
+  "t085-airy-grain": { primary: "focal-mass", secondary: "circular", note: "A small disc, headline and quiet action spaced along a centred axis.", weak: true },
+  "t086-stats-stripes": { primary: "l-arrangement", note: "Headline across the top, three tall figure columns of unequal bar heights below.", weak: true },
+  "t087-ribbon-geometric": { primary: "pyramid", note: "Centred headline over a wide strip of tiles over a logo row; stacked bands.", weak: true },
+  "t088-editorial-stripes": { primary: "rule-of-thirds", note: "Newspaper masthead rules and three text columns, one with a striped plate." },
+  "t089-frame-mesh": { primary: "rule-of-thirds", secondary: "focal-mass", note: "Three equal columns with the phone frame as the middle one." },
+  "t090-prompt-duotone": { primary: "rule-of-thirds", note: "A picture card at the start and composer at the end; halves, weak fit.", weak: true },
+  "t091-poster-glass": { primary: "focal-mass", note: "One big frosted plate in the middle of a glow field holds headline and action." },
+  "t092-split-mesh": { primary: "l-arrangement", note: "Media bleeds down the start edge while a top bar and form line run along the end side.", weak: true },
+  "t093-fullbleed-dots": { primary: "focal-mass", note: "One giant figure dominates the centre of a dot field; small headline at the foot." },
+  "t094-dense-flat": { primary: "rule-of-thirds", note: "Bento: the headline tile spans two of three rows beside shape and figure tiles.", weak: true },
+  "t095-airy-flat": { primary: "rule-of-thirds", note: "A small shape and headline sit low in the lower-left third; the rest is empty." },
+  "t096-stats-dots": { primary: "rule-of-thirds", note: "Text and meters at the start, a dot plate at the end; halves, only loosely thirds.", weak: true },
+  "t097-ribbon-mesh": { primary: "pyramid", note: "One centred quote over a row of three voices, with a thin mesh band at the top." },
+  "t098-editorial-geometric": { primary: "rule-of-thirds", note: "A 7/5 column split with giant chapter number and quote at the start; close to thirds.", weak: true },
+  "t099-frame-geometric": { primary: "diagonal", note: "A tilted tablet frame rises to the top-end while the headline box sits bottom-start." },
+  "t100-prompt-stripes": { primary: "focal-mass", note: "Centred headline and email field between two stripes bands.", weak: true },
+  "t101-poster-mesh": { primary: "l-arrangement", secondary: "diagonal", note: "Stacked huge words hug the start edge and bottom while lead and action sit bottom-end." },
+  "t102-poster-grain": { primary: "circular", secondary: "focal-mass", note: "An enormous grain disc at the page centre frames the headline and action." },
+  "t103-split-glass": { primary: "diagonal", note: "Frosted notice cards step across the plate in a staircase against the start-side copy.", weak: true },
+  "t104-split-dots": { primary: "diagonal", note: "A badge anchored bottom-start of the plate answers copy at the top-end.", weak: true },
+  "t105-fullbleed-duotone": { primary: "rule-of-thirds", note: "A full picture with the copy box parked at the lower-left third.", weak: true },
+  "t106-fullbleed-stripes": { primary: "focal-mass", note: "A solid band across the middle holds headline and action, the single heavy mass.", weak: true },
+  "t107-dense-geometric": { primary: "rule-of-thirds", secondary: "l-arrangement", note: "Three board columns of equal width." },
+  "t108-dense-conic": { primary: "l-arrangement", note: "A header row above a four by two grid of colour-wheel cards.", weak: true },
+  "t109-airy-rings": { primary: "diagonal", secondary: "circular", note: "A ring quarter peeks bottom-end while a small headline rests high at the start." },
+  "t110-airy-dots": { primary: "focal-mass", note: "One centred headline with a dotted rule beneath it and nothing else.", weak: true },
+  "t111-stats-flat": { primary: "diagonal", note: "Three flat discs growing in size left to right climb along a diagonal under the headline." },
+  "t112-stats-glass": { primary: "rule-of-thirds", secondary: "l-arrangement", note: "A frosted figure card takes the first third, a chart card the other two thirds." },
+  "t113-ribbon-rings": { primary: "circular", secondary: "l-arrangement", note: "A row of six round ring medallions under the headline." },
+  "t114-ribbon-flat": { primary: "diagonal", note: "A band of huge tags tilted -3 degrees cuts across the page." },
+  "t115-editorial-duotone": { primary: "focal-mass", note: "A full-height picture page beside a text page; evenly split, weak fit.", weak: true },
+  "t116-editorial-grain": { primary: "l-arrangement", note: "A wide banner across the top and headline at the start with two text columns." },
+  "t117-frame-conic": { primary: "diagonal", secondary: "pyramid", note: "Code window and an offset picture window step diagonally under centred copy." },
+  "t118-frame-mesh": { primary: "pyramid", secondary: "l-arrangement", note: "Headline above a laptop whose base widens like a trapezoid." },
+  "t119-prompt-geometric": { primary: "focal-mass", note: "A command palette card at the centre of a geometric field." },
+  "t120-prompt-stripes": { primary: "l-arrangement", note: "A striped rail down the start edge with the composer along the bottom." },
+};
+
+export const patternOf = (screenId: string): Pattern | undefined => COMPOSITION_OF[screenId]?.primary;

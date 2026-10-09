@@ -1,6 +1,7 @@
 // The catalog of INCLUDED styles: designs (screen + skin + font pairing + radius, the card's full style) that must be in the
 // future marketplace showcase. Written by `bun run included` (scripts/included.ts) from the Discovery inbox journal
 // (`?cards=include` posts); deduped by full style. Plan: plan/included-styles.md is generated from this file.
+import { COMPOSITION_OF, type Composition } from "./compositions";
 import data from "./included.json";
 
 export type IncludedStyle = {
@@ -18,3 +19,6 @@ export type IncludedStyle = {
 };
 
 export const INCLUDED: IncludedStyle[] = data as IncludedStyle[];
+
+/** the composition pattern (rule-of-thirds, diagonal, focal-mass, ...) of an included style: that of its screen (compositions.ts) */
+export const compositionOf = (s: IncludedStyle): Composition | undefined => COMPOSITION_OF[s.id];

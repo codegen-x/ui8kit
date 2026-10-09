@@ -7,6 +7,7 @@ import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import type { IncludedStyle } from "../src/included";
+import { COMPOSITION_OF } from "../src/compositions";
 import { TASTES } from "../src/tastes";
 
 const APP = resolve(dirname(fileURLToPath(import.meta.url)), "..");
@@ -178,6 +179,8 @@ styles.forEach((s, i) => {
   out.push(`- key: \`${s.key}\``);
   out.push(`- screen id: \`${s.id}\``);
   out.push(`- layout: **${layoutTok}**${t && t.composition !== layoutTok ? ` (composition \`${t.composition}\`)` : ""}${layoutDesc ? ` — ${layoutDesc}` : ""}`);
+  const pat = COMPOSITION_OF[s.id];
+  out.push(`- composition pattern: ${pat ? `**${pat.primary}**${pat.secondary ? ` (secondary ${pat.secondary})` : ""}${pat.weak ? " (weak fit)" : ""} — ${pat.note}` : "_not tagged_"}`);
   out.push(`- image recipe: **${recipe}**${recipeDesc ? ` — ${recipeDesc}` : ""}`);
   out.push(`- skin: \`${s.skin}\` (${k.name})`);
   out.push(`- font pairing: display ${FONT_NAMES[s.fonts.display] ?? s.fonts.display} (\`${s.fonts.display}\`), body ${FONT_NAMES[s.fonts.body] ?? s.fonts.body} (\`${s.fonts.body}\`)`);
