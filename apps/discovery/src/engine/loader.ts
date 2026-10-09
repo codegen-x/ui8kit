@@ -7,6 +7,9 @@ import { deckAt, type Deck } from "../copy";
 import TasteFrame from "../parts/taste-frame.svelte";
 import type { Taste, Variant } from "../taste";
 import { getShot, putShot } from "./cache";
+
+/** bump when the way a snapshot is drawn changes: older cached bitmaps (e.g. cropped ones from WebKit) are then never read */
+const SNAP_VERSION = "s2";
 import { HIGH_H, HIGH_W, type Panorama } from "./panorama";
 import { collectCss, hash, rasterise, resetCss, serialise, toBlob } from "./snapshot";
 
@@ -79,7 +82,7 @@ export class Loader {
     const html = serialise(TasteFrame, { screen, deck: deckAt(taste.deck), skin: v.skin, fonts: v.fonts, radius: v.radius });
     if (!this.cssHash) this.cssHash = hash(collectCss());
     const fonts = [v.fonts.display, v.fonts.body];
-    const key = `${hash(html)}-${hash(html, 0x1234567)}-${this.cssHash}-${this.dark ? "d" : "l"}-${HIGH_W}x${HIGH_H}`;
+    const key = `${SNAP_VERSION}-${hash(html)}-${hash(html, 0x1234567)}-${this.cssHash}-${this.dark ? "d" : "l"}-${HIGH_W}x${HIGH_H}`;
     let blob = await getShot(key);
     if (gen !== this.generation) return;
     if (blob) {

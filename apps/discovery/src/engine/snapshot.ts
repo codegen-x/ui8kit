@@ -1,8 +1,9 @@
 // Snapshot of a taste screen into a bitmap, without a screenshot library: the screen is mounted into a detached element,
 // serialised to XHTML and drawn through an SVG <foreignObject> together with the app's own CSS (collected once from the
 // document) and the latin face of the fonts it uses (embedded as data URLs, fetched once). Everything is a data URL, so the
-// canvas stays untainted and can feed WebGL. The SVG viewBox is the desktop screen (1440×1080) and its size is the texture
-// size, so the browser lays the page out at desktop width and rasterises it straight at texture resolution.
+// canvas stays untainted and can feed WebGL. The SVG is the desktop screen at its natural size (1440×1080, no viewBox, no scaling inside the SVG: WebKit
+// ignores the viewBox scale for foreignObject content and shows only the top-left corner of the screen at 1:1, and the
+// SVG size is also the viewport its media queries see). The downscale to the texture size is done by the canvas drawImage.
 import { mount, unmount, type Component } from "svelte";
 import { FONT_FILES, family, LATIN, type FontId } from "../fonts";
 import { SCREEN_H, SCREEN_W } from "./grid";
@@ -75,7 +76,7 @@ export async function rasterise(html: string, fonts: FontId[], dark: boolean, w:
   const css = xmlEscape(collectCss() + "\n" + faces);
   const theme = dark ? "dark" : "light";
   const svg =
-    `<svg xmlns="http://www.w3.org/2000/svg" width="${w}" height="${h}" viewBox="0 0 ${SCREEN_W} ${SCREEN_H}">` +
+    `<svg xmlns="http://www.w3.org/2000/svg" width="${SCREEN_W}" height="${SCREEN_H}">` +
     `<foreignObject x="0" y="0" width="${SCREEN_W}" height="${SCREEN_H}">` +
     `<div xmlns="http://www.w3.org/1999/xhtml" class="${theme}" data-theme="${theme}" ` +
     `style="width:${SCREEN_W}px;height:${SCREEN_H}px;overflow:hidden;line-height:1.5;color-scheme:${theme}">` +
@@ -88,7 +89,9 @@ export async function rasterise(html: string, fonts: FontId[], dark: boolean, w:
   canvas.width = w;
   canvas.height = h;
   const ctx = canvas.getContext("2d")!;
-  ctx.drawImage(img, 0, 0, w, h);
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = "high";
+  ctx.drawImage(img, 0, 0, SCREEN_W, SCREEN_H, 0, 0, w, h);
   return canvas;
 }
 

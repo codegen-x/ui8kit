@@ -8,8 +8,12 @@ function open(): Promise<IDBDatabase | null> {
   if (dbp) return dbp;
   dbp = new Promise((resolve) => {
     try {
-      const req = indexedDB.open(DB, 1);
-      req.onupgradeneeded = () => req.result.createObjectStore(STORE);
+      const req = indexedDB.open(DB, 2);
+      req.onupgradeneeded = () => {
+        // v2: the snapshots of v1 may be cropped (WebKit viewBox bug); drop them all
+        if (req.result.objectStoreNames.contains(STORE)) req.result.deleteObjectStore(STORE);
+        req.result.createObjectStore(STORE);
+      };
       req.onsuccess = () => resolve(req.result);
       req.onerror = () => resolve(null);
     } catch { resolve(null); }
