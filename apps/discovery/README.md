@@ -18,6 +18,7 @@ A hand-written app (not generated): a panorama of taste screens on a sphere. Sve
   `snapshot.ts` / `loader.ts` / `cache.ts` — offscreen snapshots (SVG foreignObject → canvas → WebP, IndexedDB cache);
   `panorama.ts` — the Three.js view (drag, inertia, wheel zoom clamped to 75–125 % of the default scale, double-click to pick).
   Every card of a row listed in `curated.ts` gets a small dot in the top-right corner (shader, not the snapshot), including its variations.
+- `src/included.ts` + `scripts/included.ts` — the catalog of included styles (see below).
 - `src/picks.svelte.ts` + `parts/send-button.svelte` — the Send button (bottom-right, only while cards are picked):
   POST /__discovery `{ ids, row }` (the picked taste screen ids, deduped, and the row they are on, counted from the top)
   to the :5190 preview server; picks spanning several rows go as `{ picks: [{ id, row }] }`. The server appends one
@@ -25,11 +26,35 @@ A hand-written app (not generated): a panorama of taste screens on a sphere. Sve
   committed); the picks clear on success.
 - `content/` — copy fixtures (English placeholder copy, invented names).
 
-## The `cards` URL parameter
+## The `cards` URL parameter (four modes)
 
-- no `cards` (or an unknown value): double-click only toggles the outline on a card; no Send button, no posting, no curated dots.
-- `/discovery/?cards=all`: outlined cards mean KEEP. Send button, `{ ids, row }` posted to `/__discovery`, dots on curated rows.
-- `/discovery/?cards=exclude`: outlined cards mean EXCLUDE. Send button; the same post with `mode: "exclude"` (mode defaults to `"keep"`;
-  the server records `mode` in `journal.jsonl` and `journal.md`). Exclude picks live under their own localStorage key (`discovery-picked-exclude`).
+| URL | picks mean | Send | POST /__discovery | localStorage |
+|---|---|---|---|---|
+| no `cards` (or unknown) | nothing: double-click only toggles the outline | none | none | `discovery-picked` |
+| `?cards=all` | KEEP | yes | `{ ids, row }` (mode defaults to `"keep"`); dots on curated rows | `discovery-picked` |
+| `?cards=exclude` | EXCLUDE | yes | `{ ids, row, mode: "exclude" }` | `discovery-picked-exclude` |
+| `?cards=include` | INCLUDE the card's exact style in the future marketplace showcase | yes | `{ ids, row, mode: "include", cards: [{ id, skin, font, radius, row, col }] }` | `discovery-picked-include` |
+
+The server records `mode` in `discovery-inbox/journal.jsonl` and `journal.md`. Include never touches the wall: no refill, no curated dots.
+
+Include needs more than ids: a screen id says nothing about the skin, fonts and radius the card was showing (variations share the
+screen). So the client sends one descriptor per outlined card: `id` (taste screen), `skin`, `font` (`"display+body"`), `radius` (px),
+`row` (from the top, 1 = +60°) and `col` (index in the row). `ids` is the deduped list of screen ids; `cards` is not deduped
+(two cards of one style are two descriptors). A post whose cards span several rows is `{ picks, mode, cards }`.
+The server rejects mode include without valid descriptors (400) and writes one journal line per row:
+
+    {"time":"…Z","mode":"include","row":3,"ids":["t001-poster-mesh"],"cards":[{"id":"t001-poster-mesh","skin":"cosmic-night","font":"montserrat+inter","radius":12,"row":3,"col":4}]}
+
+and a `journal.md` row whose ids cell lists each card as `id (skin, font, rRADIUS, col N)`.
+
+### Included styles catalog
+
+    bun run included          # journal (include entries) -> src/included.json + ../../plan/included-styles.md
+    bun run included --dry    # print only, write nothing   (--journal <path> reads another journal)
+
+`src/included.json` (typed by `src/included.ts`) is the committed catalog, deduped by full style `screen|skin|display+body|radius`
+(it grows with every run; the journal itself is never committed). `plan/included-styles.md` is generated from it: per style the screen id,
+layout, image recipe, skin, fonts, radius, light/dark primary/background/foreground read from the skin css, a plain-English taste
+derived from measured contrast, hue/saturation, radius, density of the layout and the fonts, and the planned companion blocks and templates.
 
 In-app links are hash-only (`#/screen/...`, `#/`), so the query survives navigation.

@@ -14,7 +14,7 @@
   import { Loader } from "../engine/loader";
   import { Panorama } from "../engine/panorama";
   import { wall } from "../engine/wall";
-  import { cardsMode, discoveryBody, PICKS_KEY, picks, pickedCards, postPicks } from "../picks.svelte";
+  import { type CardDescriptor, cardsMode, discoveryBody, PICKS_KEY, picks, pickedCards, postPicks } from "../picks.svelte";
   import { SCREENS } from "../screens";
   import { variantKey } from "../taste";
   import { TASTES } from "../tastes";
@@ -37,7 +37,7 @@
       onPick: () => {
         const keys = pano.pickedCards().map((i) => variantKey(variants[i]!));
         try { localStorage.setItem(PICKS, JSON.stringify(keys)); } catch { /* storage blocked */ }
-        picks.count = MODE === "none" ? 0 : keys.length; // no Send button without ?cards=all|exclude
+        picks.count = MODE === "none" ? 0 : keys.length; // no Send button without ?cards=all|exclude|include
       },
     });
     const variants = wall(pano.cards, TASTES);
@@ -54,7 +54,15 @@
       const chosen = pickedCards(slots, (i) => ({ id: variants[i]!.screen, row: rowFromTop(pano.cards[i]!.row) }));
       if (!chosen.length) return;
       sending = true;
-      const ok = await postPicks(discoveryBody(chosen, MODE === "exclude" ? "exclude" : "keep"));
+      const mode = MODE === "exclude" ? "exclude" : MODE === "include" ? "include" : "keep";
+      // include: the full style of every picked card (a descriptor per card, not deduped by screen id)
+      const cards = MODE === "include"
+        ? slots.map((i): CardDescriptor => {
+            const v = variants[i]!;
+            return { id: v.screen, skin: v.skin, font: `${v.fonts.display}+${v.fonts.body}`, radius: v.radius, row: rowFromTop(pano.cards[i]!.row), col: pano.cards[i]!.col };
+          })
+        : undefined;
+      const ok = await postPicks(discoveryBody(chosen, mode, cards));
       sending = false;
       // on failure the picks stay (and so does the button); on success only the cards that were sent are cleared
       if (ok) for (const i of slots) pano.togglePicked(i, false);

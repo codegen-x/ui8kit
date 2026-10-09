@@ -13,6 +13,9 @@ to thousands of design systems without a rewrite.
 ## 1. Product flow (codegen-x.com)
 
 1. **Discovery** — a sphere of hundreds of screens plus a pop-out skins sidebar.
+   Styles the user marks "include" (`?cards=include`, see `plan/included-styles.md`) are the ones that must be in the
+   marketplace showcase. Planned: the detail page of such a design shows its sibling blocks in the same design
+   (hero, hero-right, features, cta, pricing, testimonials, ...) and a **Templates** tab (blog, store, portfolio, website).
 2. Every click on a screen or skin is an event sent to Jev. After at least 8 picks Jev has enough signal for intent.
 3. Jev builds a **personal catalog** in marketplace form: relevant categories, collections, blocks, screens, skins, fonts.
 4. **System tab** — a typical design system page (tokens, typography, radii, ...). Switching a skin re-skins the
