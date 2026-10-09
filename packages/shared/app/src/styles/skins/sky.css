@@ -11,7 +11,7 @@
   --card-foreground: hsl(214.4262 100% 11.9608%);
   --popover: hsl(0 0% 100%);
   --popover-foreground: hsl(214.4262 100% 11.9608%);
-  --primary: hsl(29.1429 100% 51.9608%);
+  --primary: hsl(23.4 100% 39.2%);
   --primary-foreground: hsl(0 0% 100%);
   --secondary: hsl(209.0323 100% 93.9216%);
   --secondary-foreground: hsl(214.4262 100% 11.9608%);
@@ -19,7 +19,7 @@
   --muted-foreground: hsl(215.2941 39.0805% 34.1176%);
   --accent: hsl(209.0323 100% 93.9216%);
   --accent-foreground: hsl(214.4262 100% 11.9608%);
-  --destructive: hsl(0 84.2365% 60.1961%);
+  --destructive: hsl(358 69% 51%);
   --destructive-foreground: hsl(210 40% 98.0392%);
   /* a barely visible hairline: just darker than the card fill (97.6%), so card edges stay faintly readable on white;
      fields keep the stronger line (--input, inset-ring-input in the kit) so they read as fields */
@@ -72,7 +72,7 @@
   --card-foreground: hsl(210 16.6667% 97.6471%);
   --popover: hsl(220 23.0769% 5.098%);
   --popover-foreground: hsl(210 16.6667% 97.6471%);
-  --primary: hsl(24.8908 100% 55.098%);
+  --primary: hsl(21.8 100% 40%);
   --primary-foreground: hsl(0 0% 100%);
   --secondary: hsl(217.2414 32.5843% 17.451%);
   --secondary-foreground: hsl(210 16.6667% 97.6471%);

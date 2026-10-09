@@ -374,7 +374,7 @@
     "src/primitives/title/title.svelte": "5e1deb5e85d135c31640afc9653d43a373aadbb43fe5031d29eb38842f4cce0f",
     "src/styles/index.css": "faab415882b268aae6efcee8a1db1660f9c0db83fdd1fdf23b0a9fd07eb18e93",
     "src/styles/kit.css": "fac8c5a4969748a726f9db2f9163550bb2a334dbcd95f3cd15cec99f88667ceb",
-    "src/styles/theme.css": "0c3fbd40a409785ca6e55a2265e67092c51a1129a5983974339c26b6b0b01653",
+    "src/styles/theme.css": "7c7c42d778a4ecc5ad87aeddf6fefa651f7164c4a24a4c78de2583a9fdfc2897",
     "src/utils/a11y/dismiss.ts": "4857c8d86154e03cce8666a4bee9f169b1912eb37ea617a50e0313af198eb4cd",
     "src/utils/a11y/focus-trap.ts": "48192cd0da3f0e36da6f6270565e86474e09d86dc4939512c5f70197312495b6",
     "src/utils/a11y/focusable.ts": "1c198ba33a0a28cd3fc60b3d0cde564724a0c8a763010cf5d5b1c5749aeea039",

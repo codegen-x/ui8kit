@@ -6,6 +6,7 @@
 import { mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
+import { FIXES, toHslCss } from "./skin-colors";
 
 /** the tweakcn commit the presets are read from */
 const COMMIT = "a3b47b37cba97dd637de517aab52c45ec0f83456";
@@ -139,6 +140,10 @@ async function googleWeights(family: string): Promise<number[] | null> {
 const block = (selector: string, lines: string[]): string => `${selector} {\n${lines.map((l) => `  ${l}`).join("\n")}\n}\n`;
 const DARK = (slug: string): string => `:is(.dark, [data-theme="dark"]) [data-skin="${slug}"],\n[data-skin="${slug}"]:is(.dark, [data-theme="dark"])`;
 
+/** a token as hsl() (old browsers read hsl, not oklch), with the contrast fix of skin-colors.ts FIXES when the token has one */
+const colorOf = (slug: string, theme: "light" | "dark", token: string, value: string): string =>
+  toHslCss(FIXES[slug]?.[theme]?.[token] ?? value, FIXES[slug]?.[theme]?.[token] ? 0.25 : 0.5);
+
 async function skinCss(slug: string, p: Preset): Promise<{ css: string; fonts: string[] }> {
   const { light, dark } = merged(p);
   const fonts: string[] = [];
@@ -154,7 +159,7 @@ async function skinCss(slug: string, p: Preset): Promise<{ css: string; fonts: s
   }
   const tracking = light["letter-spacing"] !== "0em";
   const lightLines = [
-    ...COLORS.map((k) => `--${k}: ${light[k]};`),
+    ...COLORS.map((k) => `--${k}: ${colorOf(slug, "light", k, light[k]!)};`),
     `--font-sans: ${light["font-sans"]};`, `--font-serif: ${light["font-serif"]};`, `--font-mono: ${light["font-mono"]};`,
     ...weightLines,
     `--radius: ${light.radius};`,
@@ -166,7 +171,7 @@ async function skinCss(slug: string, p: Preset): Promise<{ css: string; fonts: s
     ] : []),
   ];
   const darkLines = [
-    ...COLORS.map((k) => `--${k}: ${dark[k]};`),
+    ...COLORS.map((k) => `--${k}: ${colorOf(slug, "dark", k, dark[k]!)};`),
     ...(["font-sans", "font-serif", "font-mono", "radius"] as const).filter((k) => dark[k] !== light[k]).map((k) => `--${k}: ${dark[k]};`),
     ...shadowsOf(dark).map(([k, v]) => `--${k}: ${v};`),
   ];

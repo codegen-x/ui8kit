@@ -46,3 +46,19 @@ test("shadow colours are printed the way tweakcn prints them", () => {
   expect(shadows["shadow-xs"]).toBe("4px 4px 0px 0px hsl(0 0% 0% / 0.50)");
   expect(shadows["shadow-md"]).toBe("4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 2px 4px -1px hsl(0 0% 0% / 1.00)");
 });
+
+test("skin colours are hsl() (old browsers) and the contrast fixes hold", async () => {
+  const { readdirSync, readFileSync } = await import("node:fs");
+  const { contrast, FIXES, parseColor, toHslCss } = await import("../tools/skin-colors");
+  const dir = new URL("../assets/styles/skins/", import.meta.url).pathname;
+  for (const f of readdirSync(dir).filter((x) => x.endsWith(".css"))) {
+    const css = readFileSync(dir + f, "utf8").replace(/\/\*[\s\S]*?\*\//g, "");
+    expect(css, f).not.toMatch(/oklch\(|rgba?\(|#[0-9a-fA-F]{3,8}\b/);
+  }
+  expect(toHslCss("#ffffff")).toBe("hsl(0 0% 100%)");
+  expect(toHslCss("oklch(1 0 0 / 10%)")).toBe("hsl(0 0% 100% / 10%)");
+  // a fixed surface token reaches 4.5:1 under its foreground, rounded hsl included
+  const c = (hex: string) => parseColor(toHslCss(hex, 0.25))!.rgb;
+  expect(contrast(c(FIXES["modern-minimal"]!.light.primary!), c("#ffffff"))).toBeGreaterThanOrEqual(4.5);
+  expect(contrast(c(FIXES["kodama-grove"]!.light["muted-foreground"]!), c("#ffffff"))).toBeGreaterThan(3);
+});
