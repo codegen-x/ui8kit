@@ -1,23 +1,32 @@
 // The wall the panorama shows: assign.ts over every card, then the curated rows (curated.ts) refilled by curate.ts,
 // then the excluded screens (curated.ts) removed from every row the same way (the other screens of the row stay).
-import { CURATED_ROWS, EXCLUDED_SCREENS, type CuratedRow } from "../curated";
+// Later inboxes are laid as a second layer on top of the first, with their own seeds, so adding an exclusion never moves
+// a card of an earlier layer: layer 2 = the curated rows marked `layer: 2` and EXCLUDED_SCREENS_2.
+import { CURATED_ROWS, EXCLUDED_SCREENS, EXCLUDED_SCREENS_2, type CuratedRow } from "../curated";
 import type { Taste, Variant } from "../taste";
 import { assign } from "./assign";
 import { curate } from "./curate";
 import { rowFromTop, type Card } from "./grid";
 
-export function wall(cards: Card[], tastes: Taste[]): Variant[] {
-  const curated = curate(cards, assign(cards, tastes), tastes, CURATED_ROWS);
-  if (!EXCLUDED_SCREENS.length) return curated;
-  const bad = new Set(EXCLUDED_SCREENS);
+/** every card showing a screen of `excluded` is refilled with a variation of the other screens of its row */
+function exclude(cards: Card[], variants: Variant[], tastes: Taste[], excluded: string[], seed?: number): Variant[] {
+  if (!excluded.length) return variants;
+  const bad = new Set(excluded);
   const rows = new Map<number, Set<string>>();
   const hit = new Set<number>();
   for (const c of cards) {
     const r = rowFromTop(c.row);
     if (!rows.has(r)) rows.set(r, new Set());
-    if (bad.has(curated[c.index]!.screen)) hit.add(r);
-    else rows.get(r)!.add(curated[c.index]!.screen);
+    if (bad.has(variants[c.index]!.screen)) hit.add(r);
+    else rows.get(r)!.add(variants[c.index]!.screen);
   }
   const extra: CuratedRow[] = [...hit].sort((a, b) => a - b).map((row) => ({ row, keep: [...rows.get(row)!] }));
-  return curate(cards, curated, tastes, extra);
+  return curate(cards, variants, tastes, extra, seed);
+}
+
+export function wall(cards: Card[], tastes: Taste[]): Variant[] {
+  const layer1 = exclude(cards, curate(cards, assign(cards, tastes), tastes, CURATED_ROWS.filter((r) => !r.layer)), tastes, EXCLUDED_SCREENS);
+  const layer2Rows = CURATED_ROWS.filter((r) => r.layer === 2);
+  const curated = curate(cards, layer1, tastes, layer2Rows, 20261010);
+  return exclude(cards, curated, tastes, EXCLUDED_SCREENS_2, 20261011);
 }
