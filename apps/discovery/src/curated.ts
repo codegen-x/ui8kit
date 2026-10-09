@@ -30,4 +30,21 @@ export const CURATED_ROWS: CuratedRow[] = [
       "t055-airy-conic",
     ],
   },
+  // inbox #3 (2026-10-09 10:22 MSK): exclude on row 19 (-48°, 32 cards): t009-prompt-mesh and t077-ribbon-grain removed; kept = the other screens now on the row
+  {
+    row: 19,
+    keep: [
+      "t056-stats-grain", "t081-poster-conic", "t068-editorial-glass", "t114-ribbon-flat", "t102-poster-grain",
+      "t096-stats-dots", "t055-airy-conic", "t087-ribbon-geometric", "t023-fullbleed-mesh", "t019-dense-duotone",
+      "t059-frame-rings", "t085-airy-grain", "t002-split-glass", "t012-poster-flat", "t117-frame-conic",
+      "t014-editorial-grain", "t113-ribbon-rings", "t051-poster-stripes", "t010-dense-geometric", "t061-poster-grain",
+      "t015-airy-mesh", "t103-split-glass", "t044-dense-conic", "t024-airy-geometric", "t089-frame-mesh",
+      "t018-prompt-conic", "t027-editorial-flat", "t026-ribbon-glass", "t120-prompt-stripes", "t037-editorial-mesh",
+    ],
+  },
 ];
+
+/** Screens the user excluded (inbox #3, 2026-10-09): no card of the wall shows them, on any row. After the curated rows,
+ *  every card with one of these is refilled with a variation of the other screens of its row (engine/wall.ts). Unlike
+ *  CURATED_ROWS this puts no dot on a row. */
+export const EXCLUDED_SCREENS: string[] = ["t009-prompt-mesh", "t077-ribbon-grain"];
