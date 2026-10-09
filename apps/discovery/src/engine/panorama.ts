@@ -120,7 +120,7 @@ export class Panorama {
   /** the vertical field of view of the default view (degrees), set on resize */
   private baseFov = 34;
   private vel = { yaw: 0, pitch: 0 };
-  private drag: { x: number; y: number; t: number; moved: number; id: number } | null = null;
+  private drag: { x: number; y: number; t: number; moved: number; id: number; t0: number } | null = null;
   private lastMove = 0;
   private dirty = true;
   private raf = 0;
@@ -143,9 +143,14 @@ export class Panorama {
   constructor(private host: HTMLElement, private events: PanoramaEvents = {}) {
     this.blobs = new Array(this.cards.length).fill(null);
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: "high-performance", preserveDrawingBuffer: false });
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    this.renderer.setPixelRatio(this.pixelRatio());
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     host.appendChild(this.renderer.domElement);
+    // iOS Safari: 100vh is the tall viewport (toolbars hidden), so size the stage with dvh where it exists; and keep the page
+    // itself from scrolling or rubber-banding under the panorama
+    if (typeof CSS !== "undefined" && CSS.supports("height", "100dvh")) host.style.height = "100dvh";
+    document.documentElement.style.overscrollBehavior = "none";
+    document.body.style.overscrollBehavior = "none";
     this.camera.rotation.order = "YXZ";
 
     for (let a = 0; a * PER_ATLAS < this.cards.length; a++) {
@@ -200,6 +205,12 @@ export class Panorama {
 
     this.ro = new ResizeObserver(() => this.resize());
     this.ro.observe(host);
+    // ResizeObserver alone is not enough on tablets: iOS Safari reports the old size right after a rotation and moves the
+    // visual viewport (toolbars) without resizing the layout; DevTools device mode changes devicePixelRatio too
+    window.addEventListener("resize", this.onWindowResize);
+    window.addEventListener("orientationchange", this.onWindowResize);
+    window.visualViewport?.addEventListener("resize", this.onWindowResize);
+    this.watchPixelRatio();
     this.resize();
     this.bind();
     this.loop = this.loop.bind(this);
@@ -224,9 +235,33 @@ export class Panorama {
     return Math.max(0, MAX_LAT_DEG + CARD_H_DEG / 2 - half - 1);
   }
 
+  /** device pixel ratio, capped at 2 (a 3x phone/tablet panel would cost 2.25x the fill for no visible gain) */
+  private pixelRatio(): number {
+    return Math.min(window.devicePixelRatio || 1, 2);
+  }
+
+  private dprMedia: MediaQueryList | null = null;
+  private watchPixelRatio(): void {
+    this.dprMedia?.removeEventListener("change", this.onWindowResize);
+    this.dprMedia = window.matchMedia(`(resolution: ${window.devicePixelRatio}dppx)`);
+    this.dprMedia.addEventListener("change", this.onWindowResize);
+  }
+
+  private resizeTimer = 0;
+  /** window resize, rotation, visual viewport, pixel ratio change: resize now and once more after the browser settled */
+  private onWindowResize = (): void => {
+    if (this.disposed) return;
+    this.watchPixelRatio();
+    this.resize();
+    clearTimeout(this.resizeTimer);
+    this.resizeTimer = window.setTimeout(() => this.resize(), 250);
+  };
+
   private resize(): void {
-    const w = this.host.clientWidth || window.innerWidth;
-    const h = this.host.clientHeight || window.innerHeight;
+    const r = this.host.getBoundingClientRect();
+    const w = Math.round(r.width) || this.host.clientWidth || window.innerWidth;
+    const h = Math.round(r.height) || this.host.clientHeight || window.innerHeight;
+    this.renderer.setPixelRatio(this.pixelRatio());
     this.renderer.setSize(w, h, false);
     this.camera.aspect = w / h;
     const hf = THREE.MathUtils.degToRad(H_FOV_DEG);
@@ -307,8 +342,19 @@ export class Panorama {
 
   /** card indices sorted by closeness to the view direction (the snapshot queue uses it) */
   rankByView(): number[] {
+    // the cards on screen first (nearest the centre of the screen first), then the rest by angle. Ranking by angle alone
+    // fills a disc around the centre, and on a wide or tall window the corners of the view stay empty cards the longest.
+    this.camera.rotation.set(this.pitch, this.yaw, 0);
+    this.camera.updateMatrixWorld();
     const f = this.forward();
-    const score = this.cards.map((c) => c.dir[0] * f.x + c.dir[1] * f.y + c.dir[2] * f.z);
+    const v = new THREE.Vector3();
+    const score = this.cards.map((c) => {
+      const dot = c.dir[0] * f.x + c.dir[1] * f.y + c.dir[2] * f.z;
+      if (dot <= 0) return -10 - (1 - dot);
+      v.set(c.dir[0], c.dir[1], c.dir[2]).project(this.camera);
+      const m = Math.max(Math.abs(v.x), Math.abs(v.y));
+      return m <= 1.15 ? 10 - m : dot - 1;
+    });
     return this.cards.map((c) => c.index).sort((a, b) => score[b]! - score[a]!);
   }
 
@@ -414,6 +460,8 @@ export class Panorama {
     el.addEventListener("pointerup", this.onUp);
     el.addEventListener("pointercancel", this.onUp);
     el.addEventListener("dblclick", this.onDbl);
+    // iOS Safari's own page pinch (a non-standard event) must not zoom the page; our pinch zooms the panorama
+    el.addEventListener("gesturestart", this.onGesture);
     // not passive: the wheel zooms the panorama and must never scroll the page
     el.addEventListener("wheel", this.onWheel, { passive: false });
   }
@@ -422,15 +470,39 @@ export class Panorama {
     return (this.camera.fov * Math.PI) / 180 / (this.host.clientHeight || window.innerHeight);
   }
 
+  /** the pointers down now (CSS px); two of them make a pinch */
+  private pointers = new Map<number, { x: number; y: number }>();
+  private pinch: { dist: number; zoom: number } | null = null;
+  private lastTap: { t: number; x: number; y: number } | null = null;
+  private lastTouchPick = 0;
+
+  private pinchDist(): number {
+    const [a, b] = [...this.pointers.values()];
+    return Math.max(1, Math.hypot(a!.x - b!.x, a!.y - b!.y));
+  }
+
   private onDown = (e: PointerEvent): void => {
-    if (e.button !== 0) return;
+    if (e.pointerType === "mouse" && e.button !== 0) return;
     this.host.setPointerCapture(e.pointerId);
     this.host.dataset.dragging = "";
-    this.drag = { x: e.clientX, y: e.clientY, t: performance.now(), moved: 0, id: e.pointerId };
+    this.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
     this.vel = { yaw: 0, pitch: 0 };
+    if (this.pointers.size === 2) {
+      // the second finger turns the drag into a pinch (zoom 75..125 %); no inertia from the first finger
+      this.drag = null;
+      this.pinch = { dist: this.pinchDist(), zoom: this.zoom };
+    } else if (this.pointers.size === 1) {
+      this.drag = { x: e.clientX, y: e.clientY, t: performance.now(), moved: 0, id: e.pointerId, t0: performance.now() };
+    }
   };
 
   private onMove = (e: PointerEvent): void => {
+    const p = this.pointers.get(e.pointerId);
+    if (p) { p.x = e.clientX; p.y = e.clientY; }
+    if (this.pinch) {
+      if (this.pointers.size >= 2) this.setZoom(this.pinch.zoom * (this.pinchDist() / this.pinch.dist));
+      return;
+    }
     const d = this.drag;
     if (!d || e.pointerId !== d.id) return;
     const now = performance.now();
@@ -450,13 +522,39 @@ export class Panorama {
   };
 
   private onUp = (e: PointerEvent): void => {
-    if (!this.drag || e.pointerId !== this.drag.id) return;
+    if (!this.pointers.has(e.pointerId)) return;
+    this.pointers.delete(e.pointerId);
     if (this.host.hasPointerCapture(e.pointerId)) this.host.releasePointerCapture(e.pointerId);
+    if (this.pinch) {
+      // one finger left: carry on dragging with it from where it is, without the old velocity
+      if (this.pointers.size < 2) {
+        this.pinch = null;
+        const [id, rest] = [...this.pointers.entries()][0] ?? [];
+        this.drag = rest ? { x: rest.x, y: rest.y, t: performance.now(), moved: 99, id: id!, t0: 0 } : null;
+        this.vel = { yaw: 0, pitch: 0 };
+      }
+      if (!this.pointers.size) delete this.host.dataset.dragging;
+      return;
+    }
+    const d = this.drag;
+    if (!d || e.pointerId !== d.id) return;
     delete this.host.dataset.dragging;
+    const now = performance.now();
     // inertia only when the pointer was still moving at release
-    if (performance.now() - this.lastMove > 60) this.vel = { yaw: 0, pitch: 0 };
+    if (now - this.lastMove > 60) this.vel = { yaw: 0, pitch: 0 };
     this.drag = null;
+    // double tap (touch and pen; a mouse has dblclick): two short still taps close together outline the card
+    if (e.type === "pointerup" && e.pointerType !== "mouse" && d.moved < 12 && now - d.t0 < 350) {
+      const t = this.lastTap;
+      if (t && now - t.t < 400 && Math.hypot(e.clientX - t.x, e.clientY - t.y) < 32) {
+        this.lastTap = null;
+        this.lastTouchPick = now;
+        this.pickAt(e.clientX, e.clientY);
+      } else this.lastTap = { t: now, x: e.clientX, y: e.clientY };
+    }
   };
+
+  private onGesture = (e: Event): void => e.preventDefault();
 
   private onWheel = (e: WheelEvent): void => {
     e.preventDefault();
@@ -467,8 +565,16 @@ export class Panorama {
   };
 
   private onDbl = (e: MouseEvent): void => {
+    // a touch double tap is handled on pointerup; the browser's dblclick that may follow it must not toggle twice
+    if (performance.now() - this.lastTouchPick < 700) return;
+    this.pickAt(e.clientX, e.clientY);
+  };
+
+  private pickAt(clientX: number, clientY: number): void {
     const rect = this.host.getBoundingClientRect();
-    const ndc = new THREE.Vector2(((e.clientX - rect.left) / rect.width) * 2 - 1, -((e.clientY - rect.top) / rect.height) * 2 + 1);
+    const ndc = new THREE.Vector2(((clientX - rect.left) / rect.width) * 2 - 1, -((clientY - rect.top) / rect.height) * 2 + 1);
+    this.camera.rotation.set(this.pitch, this.yaw, 0);
+    this.camera.updateMatrixWorld();
     const ray = new THREE.Raycaster();
     ray.setFromCamera(ndc, this.camera);
     const hits = ray.intersectObjects(this.meshes, false);
@@ -480,7 +586,7 @@ export class Panorama {
       this.togglePicked(i);
       return;
     }
-  };
+  }
 
   /**
    * Put the corner dot on every card of these rows. `rowsFromTop` is counted the way curated.ts counts:
@@ -563,12 +669,18 @@ export class Panorama {
     this.disposed = true;
     cancelAnimationFrame(this.raf);
     this.ro.disconnect();
+    clearTimeout(this.resizeTimer);
+    window.removeEventListener("resize", this.onWindowResize);
+    window.removeEventListener("orientationchange", this.onWindowResize);
+    window.visualViewport?.removeEventListener("resize", this.onWindowResize);
+    this.dprMedia?.removeEventListener("change", this.onWindowResize);
     const el = this.host;
     el.removeEventListener("pointerdown", this.onDown);
     el.removeEventListener("pointermove", this.onMove);
     el.removeEventListener("pointerup", this.onUp);
     el.removeEventListener("pointercancel", this.onUp);
     el.removeEventListener("dblclick", this.onDbl);
+    el.removeEventListener("gesturestart", this.onGesture);
     el.removeEventListener("wheel", this.onWheel);
     for (const a of this.atlases) a.tex.dispose();
     for (const t of [...this.high.values(), ...this.free]) t.dispose();

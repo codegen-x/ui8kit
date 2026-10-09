@@ -27,7 +27,7 @@ export class Loader {
     private variants: Variant[],
     private tastes: Map<string, Taste>,
     private screens: Record<string, Component<{ c: Deck }>>,
-    private concurrency = 2,
+    private concurrency = 3,
   ) {
     this.stats = { done: 0, total: variants.length, rasterised: 0, cached: 0, ms: 0 };
   }
