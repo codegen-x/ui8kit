@@ -1,7 +1,7 @@
 <!-- Split with a capture form: text and an email field at the start, a dot field with a disc at the end. -->
 <script lang="ts">
   import { Block, Box, Button, Grid, Group, Input, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Dots from "../recipes/dots.svelte";
 

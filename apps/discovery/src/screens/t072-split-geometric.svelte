@@ -1,7 +1,7 @@
 <!-- Split 40/60: settings-like switches under the headline at the start, a big geometric plate at the end. -->
 <script lang="ts">
   import { Block, Button, Grid, Group, Label, Stack, Switch, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Geometric from "../recipes/geometric.svelte";
 

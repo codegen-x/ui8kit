@@ -1,7 +1,7 @@
 <!-- Poster on a pane: a glow field, one big frosted plate in the centre carrying a huge headline and the action. -->
 <script lang="ts">
   import { Block, Box, Button, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Glass from "../recipes/glass.svelte";
 

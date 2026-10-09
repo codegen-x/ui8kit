@@ -1,7 +1,7 @@
 <!-- Fintech landing, top: a centred headline with two actions, a wide dotted hero plate carrying a wallet card, a ribbon of company names and three feature cards. -->
 <script lang="ts">
   import { Block, Box, Button, Card, Grid, Group, LogoRibbon, LucideIcon, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import { logos } from "../kit-data";
   import Avatars from "../parts/avatars.svelte";
   import TopBar from "../parts/top-bar.svelte";

@@ -6,8 +6,8 @@
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import type { IncludedStyle } from "../src/included";
-import { COMPOSITION_OF } from "../src/compositions";
+import type { IncludedStyle } from "@ui8kit/taste-data/included";
+import { COMPOSITION_OF } from "@ui8kit/taste-data/compositions";
 import { TASTES } from "../src/tastes";
 
 const APP = resolve(dirname(fileURLToPath(import.meta.url)), "..");

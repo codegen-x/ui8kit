@@ -1,7 +1,7 @@
 <!-- Poster on a disc: one enormous grain circle in the centre of a plain page, the headline and action set on top of it. -->
 <script lang="ts">
   import { Block, Box, Button, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Grain from "../recipes/grain.svelte";
 

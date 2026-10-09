@@ -1,7 +1,7 @@
 <!-- Full-bleed picture: a duotone landscape fills the screen; the copy sits in a solid page-coloured box at the bottom start. -->
 <script lang="ts">
   import { Block, Box, Button, Group, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Duotone from "../recipes/duotone.svelte";
 

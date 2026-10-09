@@ -1,7 +1,7 @@
 <!-- Editorial article: a wide grain banner on top, then the headline at the start and two columns of text with a byline. -->
 <script lang="ts">
   import { Block, Grid, Group, Separator, Stack, Text, Title, Button } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Grain from "../recipes/grain.svelte";
 

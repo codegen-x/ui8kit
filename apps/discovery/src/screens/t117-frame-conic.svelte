@@ -1,7 +1,7 @@
 <!-- Frame pair: a code window and an overlapping picture window with a colour wheel; copy centred above them. -->
 <script lang="ts">
   import { Block, Box, Button, Card, CodeWindow, Group, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Conic from "../recipes/conic.svelte";
 

@@ -1,7 +1,7 @@
 <!-- Centered poster headline over a full mesh field; one primary action and a quiet secondary link. -->
 <script lang="ts">
   import { Block, Button, Badge, Group, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Mesh from "../recipes/mesh.svelte";
 

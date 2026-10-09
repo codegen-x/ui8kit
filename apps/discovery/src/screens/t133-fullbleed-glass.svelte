@@ -1,7 +1,7 @@
 <!-- Estate hero: a dark rounded full-bleed picture with pill navigation, a huge uppercase headline and a glass search bar of four fields and a button. -->
 <script lang="ts">
   import { Block, Box, Button, Group, LucideIcon, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import Field from "../parts/field.svelte";
   import Glass from "../recipes/glass.svelte";
 

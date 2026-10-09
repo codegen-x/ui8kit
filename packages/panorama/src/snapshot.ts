@@ -5,7 +5,7 @@
 // ignores the viewBox scale for foreignObject content and shows only the top-left corner of the screen at 1:1, and the
 // SVG size is also the viewport its media queries see). The downscale to the texture size is done by the canvas drawImage.
 import { mount, unmount, type Component } from "svelte";
-import { FONT_FILES, family, LATIN, type FontId } from "../fonts";
+import { FONT_FILES, family, LATIN, type FontId } from "@ui8kit/taste-data/fonts";
 import { SCREEN_H, SCREEN_W } from "./grid";
 
 let cssText: string | null = null;

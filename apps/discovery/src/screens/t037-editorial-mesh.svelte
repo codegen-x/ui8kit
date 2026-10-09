@@ -1,7 +1,7 @@
 <!-- Editorial front page: a centred masthead headline, a wide mesh plate, and three columns of short copy under it. -->
 <script lang="ts">
   import { Block, Grid, Separator, Stack, Text, Title, Button } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Mesh from "../recipes/mesh.svelte";
 

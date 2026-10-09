@@ -1,7 +1,7 @@
 <!-- Ribbon of voices: a thin mesh band at the top, one centred quote as the headline, a row of named voices beneath. -->
 <script lang="ts">
   import { Block, Box, Button, Grid, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Mesh from "../recipes/mesh.svelte";
 

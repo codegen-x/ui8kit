@@ -1,7 +1,7 @@
 <!-- Store hero: a tinted panel with the headline at the start and a flat plate at the end carrying a floating stats card and category chips; a benefit strip below. -->
 <script lang="ts">
   import { Block, Box, Button, Card, Grid, Group, LucideIcon, Stack, Text, Title, Badge } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import { GLYPHS } from "../kit-data";
   import Avatars from "../parts/avatars.svelte";
   import TopBar from "../parts/top-bar.svelte";

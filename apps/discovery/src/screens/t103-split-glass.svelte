@@ -1,7 +1,7 @@
 <!-- Split: copy at the start; at the end a glow field with a stack of frosted notice cards, slightly offset. -->
 <script lang="ts">
   import { Block, Box, Button, Grid, Group, IconBadge, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import { GLYPHS } from "../kit-data";
   import TopBar from "../parts/top-bar.svelte";
   import Glass from "../recipes/glass.svelte";

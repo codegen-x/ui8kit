@@ -1,7 +1,7 @@
 <!-- Food poster: a big conic plate behind a centred headline, a review chip and a delivery chip on either side, an order-process action and the figures below. -->
 <script lang="ts">
   import { Block, Box, Button, Card, Grid, Group, LucideIcon, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Conic from "../recipes/conic.svelte";
 

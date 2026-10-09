@@ -1,7 +1,7 @@
 <!-- Travel packages: a dark panel with a numbered package list and round arrow actions beside a light column with a picture card and a row of avatars. -->
 <script lang="ts">
   import { Block, Box, Button, Card, Grid, Group, LucideIcon, Separator, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import Avatars from "../parts/avatars.svelte";
   import TopBar from "../parts/top-bar.svelte";
   import Stripes from "../recipes/stripes.svelte";

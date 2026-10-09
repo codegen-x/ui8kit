@@ -1,7 +1,7 @@
 <!-- Dense 3×3: the headline in the centre tile, conic plates in the corners, figures and copy in the edge tiles. -->
 <script lang="ts">
   import { Block, Button, Card, Grid, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Conic from "../recipes/conic.svelte";
 

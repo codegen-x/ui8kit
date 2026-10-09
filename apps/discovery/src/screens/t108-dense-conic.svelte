@@ -1,7 +1,7 @@
 <!-- Dense palette library: a four by two grid of colour-wheel cards with names and a figure each. -->
 <script lang="ts">
   import { Block, Box, Card, Grid, Group, Input, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import { repeat } from "../kit-data";
   import TopBar from "../parts/top-bar.svelte";
   import Conic from "../recipes/conic.svelte";

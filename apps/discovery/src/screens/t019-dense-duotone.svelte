@@ -1,7 +1,7 @@
 <!-- Dense grid: a catalogue header row and a 4×2 grid of duotone tiles, each with a short caption under it. -->
 <script lang="ts">
   import { Block, Button, Grid, Group, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import { repeat } from "../kit-data";
   import TopBar from "../parts/top-bar.svelte";
   import Duotone from "../recipes/duotone.svelte";

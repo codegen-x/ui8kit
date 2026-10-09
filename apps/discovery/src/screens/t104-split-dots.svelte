@@ -1,7 +1,7 @@
 <!-- Split, media first: a dotted plate with a large badge on it at the start; the end half has the headline and a two-column list. -->
 <script lang="ts">
   import { Badge, Block, Box, Button, Grid, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Dots from "../recipes/dots.svelte";
 

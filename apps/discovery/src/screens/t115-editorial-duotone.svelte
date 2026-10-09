@@ -1,7 +1,7 @@
 <!-- Editorial spread: the start page is a full duotone picture; the end page has a byline, headline, a drop-cap paragraph. -->
 <script lang="ts">
   import { Block, Button, Grid, Inline, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import Duotone from "../recipes/duotone.svelte";
 
   let { c }: { c: Deck } = $props();

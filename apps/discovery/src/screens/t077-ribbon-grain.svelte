@@ -1,7 +1,7 @@
 <!-- Ribbon: a grain field holds the headline on the top half; a plain lower band carries a big row of icon slots. -->
 <script lang="ts">
   import { Block, Box, Button, Group, LucideIcon, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import { MARKS } from "../kit-data";
   import TopBar from "../parts/top-bar.svelte";
   import Grain from "../recipes/grain.svelte";

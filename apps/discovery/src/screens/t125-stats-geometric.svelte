@@ -1,7 +1,7 @@
 <!-- Rental feature: a picture plate at the start beside a text column with a check list, and three stat cards under it with the middle one filled. -->
 <script lang="ts">
   import { Block, Box, Button, Card, Grid, Group, LucideIcon, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Geometric from "../recipes/geometric.svelte";
 

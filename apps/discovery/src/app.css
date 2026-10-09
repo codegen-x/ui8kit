@@ -1,6 +1,9 @@
 /* Discovery: the kit (Tailwind v4 + shadcn neutral tokens), the skins, and the few app rules below. */
 @import "@ui8kit/svelte-ui/styles/index.css";
 @import "@ui8kit/app-shared/styles/skins.css";
+/* the engine and the data moved to packages/: keep scanning them so the generated CSS stays identical */
+@source "../../../packages/panorama/src";
+@source "../../../packages/taste-data";
 
 /* The frame of a taste screen: one desktop first screen. The taste sets data-skin, --radius, --font-sans (body) and
    --taste-heading (headings) inline on it. */

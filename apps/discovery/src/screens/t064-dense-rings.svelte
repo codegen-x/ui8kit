@@ -1,7 +1,7 @@
 <!-- Dense catalogue: a filter row of badges, then six product-like cards with a rings plate, a name and a figure. -->
 <script lang="ts">
   import { Badge, Block, Card, Grid, Group, Stack, Text, Title, Button } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import { repeat } from "../kit-data";
   import TopBar from "../parts/top-bar.svelte";
   import Rings from "../recipes/rings.svelte";

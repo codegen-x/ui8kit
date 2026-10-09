@@ -4,9 +4,9 @@
 // cards already placed around it (same screen, composition, recipe or skin as a neighbour) and that has been used least;
 // then a variation of it whose skin differs from every neighbour's. Every (screen, skin, fonts, radius) is used once.
 import type { Card } from "./grid";
-import { patternOf } from "../compositions";
-import { FONT_IDS, type FontId } from "../fonts";
-import { RADII, SKIN_IDS, variantKey, type FontPair, type Radius, type SkinId, type Taste, type Variant } from "../taste";
+import { patternOf } from "@ui8kit/taste-data/compositions";
+import { FONT_IDS, type FontId } from "@ui8kit/taste-data/fonts";
+import { RADII, SKIN_IDS, variantKey, type FontPair, type Radius, type SkinId, type Taste, type Variant } from "@ui8kit/taste-data/taste";
 
 /** the font pairings a variation may switch to (display + body); a pairing of one family means one family for both */
 export const FONT_PAIRS: FontPair[] = [

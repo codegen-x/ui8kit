@@ -15,18 +15,10 @@
     "i18n": "xgen-i18n"
   },
   "dependencies": {
-    "@fontsource-variable/golos-text": "^5.3.0",
-    "@fontsource-variable/ibm-plex-sans": "^5.3.0",
-    "@fontsource-variable/inter": "^5.3.0",
-    "@fontsource-variable/manrope": "^5.3.0",
-    "@fontsource-variable/montserrat": "^5.3.0",
-    "@fontsource-variable/nunito": "^5.3.0",
-    "@fontsource-variable/onest": "^5.3.1",
-    "@fontsource-variable/open-sans": "^5.3.0",
-    "@fontsource-variable/roboto": "^5.3.0",
-    "@fontsource-variable/rubik": "^5.3.0",
     "@ui8kit/app-shared": "workspace:*",
+    "@ui8kit/panorama": "workspace:*",
     "@ui8kit/svelte-ui": "workspace:*",
+    "@ui8kit/taste-data": "workspace:*",
     "svelte": "^5.57.0",
     "three": "^0.186.1"
   },

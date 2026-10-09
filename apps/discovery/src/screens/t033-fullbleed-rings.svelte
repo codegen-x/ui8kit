@@ -1,7 +1,7 @@
 <!-- Full-bleed: a rings disc sits off the end edge; the headline runs over it in four huge lines, start-aligned. -->
 <script lang="ts">
   import { Block, Box, Button, Group, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Rings from "../recipes/rings.svelte";
 

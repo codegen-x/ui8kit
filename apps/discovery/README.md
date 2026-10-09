@@ -6,6 +6,7 @@ A hand-written app (not generated): a panorama of taste screens on a sphere. Sve
     bun run check      # svelte-check
     bun run build      # vite build to dist/
 
+- **Shared packages** (moved verbatim from here, 2026-10-10, step 1 of `plan/MAGAZINE.md`): `packages/panorama` (`@ui8kit/panorama`: the engine — `grid`, `assign`, `curate`, `wave`, `wall`, `colors`, `panorama`, `profile`, `snapshot`, `loader`, `cache`, `taste-frame.svelte`) and `packages/taste-data` (`@ui8kit/taste-data`: `taste`, `tastes`, `compositions`, `curated`, `included` + `included.json`, `fonts`, `copy` + `content/copy.json`, `wave-contrast.json`). Discovery imports them by package name; the code, the wall and the snapshot cache keys (`s2`/`m2`) are unchanged. `app.css` adds `@source` lines for both so Tailwind scans them as before. Paths below that say `src/engine/…`, `src/tastes.ts`, `src/curated.ts`, `src/included.*` now live in those packages.
 - `src/screens/` — the taste screens, one file per screen, built from `@ui8kit/svelte-ui`; the file name is the id.
 - `src/tastes.ts` — the taste index: per screen its skin, font pairing, radius, composition, recipe and copy deck.
 - `src/recipes/` — procedural media (mesh, grain, duotone, geometric, glass, flat, rings, stripes, dots, conic); colours
@@ -52,7 +53,7 @@ and a `journal.md` row whose ids cell lists each card as `id (skin, font, rRADIU
     bun run included          # journal (include entries) -> src/included.json + ../../plan/included-styles.md
     bun run included --dry    # print only, write nothing   (--journal <path> reads another journal)
 
-`src/included.json` (typed by `src/included.ts`) is the committed catalog, deduped by full style `screen|skin|display+body|radius`
+`included.json` (typed by `included.ts`, in `packages/taste-data/src/`) is the committed catalog, deduped by full style `screen|skin|display+body|radius`
 (it grows with every run; the journal itself is never committed). `plan/included-styles.md` is generated from it: per style the screen id,
 layout, image recipe, skin, fonts, radius, light/dark primary/background/foreground read from the skin css, a plain-English taste
 derived from measured contrast, hue/saturation, radius, density of the layout and the fonts, and the planned companion blocks and templates.

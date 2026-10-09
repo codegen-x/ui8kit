@@ -1,6 +1,6 @@
 // Colours read from CSS: any CSS colour string (oklch, hex, rgb) to RGB 0..1 through a 1×1 canvas, and the background of
 // every skin in a theme (the placeholder of a card until its snapshot lands).
-import { SKIN_IDS, type SkinId } from "../taste";
+import { SKIN_IDS, type SkinId } from "@ui8kit/taste-data/taste";
 
 let ctx: CanvasRenderingContext2D | null = null;
 

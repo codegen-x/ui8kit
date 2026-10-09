@@ -1,7 +1,7 @@
 <!-- Airy corner: a quarter of a ring field peeks from the bottom end corner; a small headline rests high at the start. -->
 <script lang="ts">
   import { Block, Box, Button, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Rings from "../recipes/rings.svelte";
 

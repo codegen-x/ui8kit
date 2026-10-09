@@ -5,7 +5,7 @@
 -->
 <script lang="ts">
   import { Block, Button, Box, Group, Inline, Link } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
 
   let { c, layout = "split", tone = "default", action = "default", mark = "square" }: {
     c: Deck;

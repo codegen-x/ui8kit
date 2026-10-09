@@ -1,7 +1,7 @@
 <!-- Prompt: a mesh field, the headline, and one large input with an action as the whole call to action; chips below. -->
 <script lang="ts">
   import { Block, Box, Button, Group, Input, Stack, Text, Title, TopicChips } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import { topics } from "../kit-data";
   import TopBar from "../parts/top-bar.svelte";
   import Mesh from "../recipes/mesh.svelte";

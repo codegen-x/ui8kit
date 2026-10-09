@@ -1,7 +1,7 @@
 <!-- Ribbon: the headline at the start, a 5×2 board of icon slots at the end, and a conic sunburst band across the foot. -->
 <script lang="ts">
   import { Block, Box, Button, Grid, Group, LucideIcon, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import { MARKS } from "../kit-data";
   import TopBar from "../parts/top-bar.svelte";
   import Conic from "../recipes/conic.svelte";

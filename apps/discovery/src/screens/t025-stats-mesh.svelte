@@ -1,7 +1,7 @@
 <!-- Stats: the headline at the start; at the end a card of three meters over a mesh plate, with the figures as captions. -->
 <script lang="ts">
   import { Block, Box, Button, Card, Grid, Group, MeterRow, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Mesh from "../recipes/mesh.svelte";
 

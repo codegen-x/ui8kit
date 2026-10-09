@@ -1,7 +1,7 @@
 <!-- Airy: the headline low at the start, a small mesh card high at the end, one quiet link; wide empty middle. -->
 <script lang="ts">
   import { Block, Box, Button, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Mesh from "../recipes/mesh.svelte";
 

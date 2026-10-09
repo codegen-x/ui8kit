@@ -1,7 +1,7 @@
 <!-- Dense grid: a wide stripes tile with the headline beside it, then the kit FeatureCards in four tiles below. -->
 <script lang="ts">
   import { Block, Button, FeatureCards, Grid, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import { features } from "../kit-data";
   import TopBar from "../parts/top-bar.svelte";
   import Stripes from "../recipes/stripes.svelte";

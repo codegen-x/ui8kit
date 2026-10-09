@@ -7,12 +7,12 @@
 //    every screen+skin+fonts+radius of the wall stays unique, and a new screen is capped at WAVE_CAP cards;
 //  - soft preferences: another composition, recipe and composition pattern than the neighbours, no repeat of a screen or copy
 //    deck in the wider window. Deterministic (seeded PRNG), consumes nothing of the layers below.
-import { patternOf } from "../compositions";
-import { INCLUDED } from "../included";
-import contrast from "../wave-contrast.json";
+import { patternOf } from "@ui8kit/taste-data/compositions";
+import { INCLUDED } from "@ui8kit/taste-data/included";
+import contrast from "@ui8kit/taste-data/wave-contrast.json";
 import { FONT_PAIRS, placedNeighbours, placedWindow, prng } from "./assign";
 import type { Card } from "./grid";
-import { RADII, SKIN_IDS, variantKey, type FontPair, type Radius, type SkinId, type Taste, type Variant } from "../taste";
+import { RADII, SKIN_IDS, variantKey, type FontPair, type Radius, type SkinId, type Taste, type Variant } from "@ui8kit/taste-data/taste";
 
 /** screens of the second wave: t121 and up */
 export const isWave = (id: string): boolean => Number(id.slice(1, 4)) >= 121;

@@ -1,7 +1,7 @@
 <!-- Dense dashboard: a sidebar of links, a row of figure cards, a table of items and a dotted plate card. -->
 <script lang="ts">
   import { Badge, Block, Box, Button, Card, Grid, Group, Inline, LucideIcon, Stack, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import { GLYPHS } from "../kit-data";
   import Dots from "../recipes/dots.svelte";
 

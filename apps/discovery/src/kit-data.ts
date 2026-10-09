@@ -1,6 +1,6 @@
 // Adapters from a copy deck to the record shapes of kit components (LogoRibbon logos, StatsBand stats, FeatureCards
 // features, TopicChips topics, BarChart bars). Icons are Lucide names from the kit set; nothing here is visible text.
-import type { Deck } from "./copy";
+import type { Deck } from "@ui8kit/taste-data/copy";
 
 /** neutral glyphs for icon slots (a ribbon of abstract marks, never real logos) */
 export const MARKS = ["orbit", "layers", "boxes", "blocks", "puzzle", "compass", "mountain", "trees", "zap", "sparkles", "hash", "anchor", "bolt", "globe", "palette", "rocket"];

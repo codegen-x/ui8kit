@@ -1,7 +1,7 @@
 <!-- Poster block: a fine-line stripes field, the headline set in one solid primary block at the centre. -->
 <script lang="ts">
   import { Block, Box, Button, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Stripes from "../recipes/stripes.svelte";
 

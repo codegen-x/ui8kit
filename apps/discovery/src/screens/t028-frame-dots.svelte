@@ -1,7 +1,7 @@
 <!-- Frame: a phone-shaped card standing at the end with a dot field and a list inside; text at the start. -->
 <script lang="ts">
   import { Block, Box, Button, Card, Grid, Group, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Dots from "../recipes/dots.svelte";
 

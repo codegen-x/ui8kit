@@ -1,7 +1,7 @@
 <!-- Full-bleed colour: the primary colour fills the screen with a flat disc; the headline is cut out in the page colour. -->
 <script lang="ts">
   import { Block, Box, Button, Group, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Flat from "../recipes/flat.svelte";
 

@@ -1,7 +1,7 @@
 <!-- Full-bleed horizon: conic rays rise from the bottom half like a sunrise; the headline fills the sky above them. -->
 <script lang="ts">
   import { Block, Button, Group, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Conic from "../recipes/conic.svelte";
 

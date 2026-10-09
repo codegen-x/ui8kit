@@ -1,7 +1,7 @@
 <!-- Prompt as a sign-up: dots across the end half, the headline and an email row with a consent checkbox at the start. -->
 <script lang="ts">
   import { Block, Button, Checkbox, Group, Input, Label, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Dots from "../recipes/dots.svelte";
 

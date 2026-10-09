@@ -6,10 +6,10 @@
 // composition, recipe; the same screen or copy deck a little further off), searched over the whole row, each kept screen
 // filling at most its share of the row, so the refill spreads over the kept screens. Neighbours here look both ways (left and right on the row,
 // wrap-around included, and the rows above and below), since the cards around are fixed. Deterministic (seeded PRNG).
-import type { CuratedRow } from "../curated";
+import type { CuratedRow } from "@ui8kit/taste-data/curated";
 import { FONT_PAIRS, placedNeighbours, placedWindow, prng } from "./assign";
 import { rowFromBottom, type Card } from "./grid";
-import { RADII, SKIN_IDS, variantKey, type FontPair, type Radius, type SkinId, type Taste, type Variant } from "../taste";
+import { RADII, SKIN_IDS, variantKey, type FontPair, type Radius, type SkinId, type Taste, type Variant } from "@ui8kit/taste-data/taste";
 
 /** both directions of a relation that assign.ts only knows towards already placed cards */
 function symmetric(cards: Card[], of: (c: Card, all: Card[], rowStart: Map<number, number>) => number[]): Set<number>[] {

@@ -1,7 +1,7 @@
 <!-- Split, media first: a full-height stripes panel bleeding off the start edge, the text column at the end. -->
 <script lang="ts">
   import { Block, Button, Group, Stack, Text, Title, Badge } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Stripes from "../recipes/stripes.svelte";
 

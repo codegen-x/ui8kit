@@ -1,7 +1,7 @@
 <!-- Fashion poster: a huge condensed headline at the start and a big arch plate at the end, a benefit line, a row of round category discs and two banner cards. -->
 <script lang="ts">
   import { Block, Box, Button, Card, Grid, Group, LucideIcon, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import Avatars from "../parts/avatars.svelte";
   import Flat from "../recipes/flat.svelte";
   import Stripes from "../recipes/stripes.svelte";

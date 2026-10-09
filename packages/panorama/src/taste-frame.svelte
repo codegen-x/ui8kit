@@ -5,9 +5,9 @@
 <script lang="ts">
   import type { Component } from "svelte";
   import { Block } from "@ui8kit/svelte-ui";
-  import { family } from "../fonts";
-  import type { Deck } from "../copy";
-  import type { FontPair, Radius, SkinId } from "../taste";
+  import { family } from "@ui8kit/taste-data/fonts";
+  import type { Deck } from "@ui8kit/taste-data/copy";
+  import type { FontPair, Radius, SkinId } from "@ui8kit/taste-data/taste";
 
   let { screen: Screen, deck, skin, fonts, radius }: {
     screen: Component<{ c: Deck }>;

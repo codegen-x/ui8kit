@@ -1,7 +1,7 @@
 <!-- Fashion hero: a dark rounded full-bleed panel with a huge headline, actions and three figures over a duotone figure plate, a benefit strip overlapping its foot, and a row of category links. -->
 <script lang="ts">
   import { Block, Box, Button, Card, Grid, Group, LucideIcon, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import Duotone from "../recipes/duotone.svelte";
 
   let { c }: { c: Deck } = $props();

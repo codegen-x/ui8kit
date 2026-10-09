@@ -1,7 +1,7 @@
 <!-- Airy: one line of headline, a short lead and a button in the middle, a thin stripes band along the bottom edge. -->
 <script lang="ts">
   import { Block, Button, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Stripes from "../recipes/stripes.svelte";
 

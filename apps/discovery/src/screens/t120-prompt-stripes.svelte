@@ -1,7 +1,7 @@
 <!-- Prompt as a thread: a striped rail at the start; a short message thread and a composer fill the rest of the screen. -->
 <script lang="ts">
   import { Block, Box, Button, Card, Group, Input, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import Stripes from "../recipes/stripes.svelte";
 
   let { c }: { c: Deck } = $props();

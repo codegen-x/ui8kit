@@ -1,7 +1,7 @@
 <!-- Split hero: text column at the start, a glass-over-glow media slot at the end; stats under the actions. -->
 <script lang="ts">
   import { Block, Button, Grid, Group, Stack, Text, Title, Box } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Glass from "../recipes/glass.svelte";
 

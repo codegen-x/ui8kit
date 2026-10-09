@@ -1,7 +1,7 @@
 <!-- Frame, three columns: copy at the start, a tall phone frame with a mesh screen in the middle, feature notes at the end. -->
 <script lang="ts">
   import { Block, Box, Button, Card, Grid, IconBadge, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import { GLYPHS } from "../kit-data";
   import TopBar from "../parts/top-bar.svelte";
   import Mesh from "../recipes/mesh.svelte";

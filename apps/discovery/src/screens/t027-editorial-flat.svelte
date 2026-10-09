@@ -1,7 +1,7 @@
 <!-- Editorial: a giant section number, the headline and lead in a narrow measure, and a flat-shapes column at the end. -->
 <script lang="ts">
   import { Block, Button, Grid, Separator, Stack, Text, Title, Inline } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Flat from "../recipes/flat.svelte";
 

@@ -8,16 +8,16 @@
   import { onMount } from "svelte";
   import { Block } from "@ui8kit/svelte-ui";
   import ui from "../../content/ui.json";
-  import { CURATED_ROWS } from "../curated";
-  import { skinBackgrounds } from "../engine/colors";
-  import { rowFromTop } from "../engine/grid";
-  import { Loader } from "../engine/loader";
-  import { Panorama } from "../engine/panorama";
-  import { wall } from "../engine/wall";
+  import { CURATED_ROWS } from "@ui8kit/taste-data/curated";
+  import { skinBackgrounds } from "@ui8kit/panorama/colors";
+  import { rowFromTop } from "@ui8kit/panorama/grid";
+  import { Loader } from "@ui8kit/panorama/loader";
+  import { Panorama } from "@ui8kit/panorama/panorama";
+  import { wall } from "@ui8kit/panorama/wall";
   import { type CardDescriptor, cardsMode, discoveryBody, PICKS_KEY, picks, pickedCards, postPicks } from "../picks.svelte";
   import { SCREENS } from "../screens";
-  import { variantKey } from "../taste";
-  import { TASTES } from "../tastes";
+  import { variantKey } from "@ui8kit/taste-data/taste";
+  import { TASTES } from "@ui8kit/taste-data/tastes";
 
   const MODE = cardsMode();
   const PICKS = PICKS_KEY[MODE];

@@ -1,7 +1,7 @@
 <!-- Ribbon of tiles: the headline above, one long strip of geometric tiles across the screen, a logo row under it. -->
 <script lang="ts">
   import { Block, Button, Group, LogoRibbon, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import { logos } from "../kit-data";
   import TopBar from "../parts/top-bar.svelte";
   import Geometric from "../recipes/geometric.svelte";

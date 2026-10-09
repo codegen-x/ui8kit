@@ -1,7 +1,7 @@
 <!-- Prompt over rings: a field of rings, the headline, a composer card with suggestion buttons under the input. -->
 <script lang="ts">
   import { Block, Button, Card, Group, Input, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Rings from "../recipes/rings.svelte";
 

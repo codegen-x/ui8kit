@@ -1,7 +1,7 @@
 <!-- Ribbon on glass: a dark glow field, the headline centred, and two rows of glass icon tiles beneath. -->
 <script lang="ts">
   import { Block, Box, Button, Grid, Group, LucideIcon, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import { MARKS } from "../kit-data";
   import TopBar from "../parts/top-bar.svelte";
   import Glass from "../recipes/glass.svelte";

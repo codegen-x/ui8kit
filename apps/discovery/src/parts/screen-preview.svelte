@@ -4,12 +4,12 @@
 -->
 <script lang="ts">
   import { Block } from "@ui8kit/svelte-ui";
-  import { deckAt } from "../copy";
-  import { cards } from "../engine/grid";
-  import { wall } from "../engine/wall";
+  import { deckAt } from "@ui8kit/taste-data/copy";
+  import { cards } from "@ui8kit/panorama/grid";
+  import { wall } from "@ui8kit/panorama/wall";
   import { SCREENS } from "../screens";
-  import { TASTES } from "../tastes";
-  import TasteFrame from "./taste-frame.svelte";
+  import { TASTES } from "@ui8kit/taste-data/tastes";
+  import TasteFrame from "@ui8kit/panorama/taste-frame.svelte";
 
   let { id, slot }: { id: string; slot?: number } = $props();
 

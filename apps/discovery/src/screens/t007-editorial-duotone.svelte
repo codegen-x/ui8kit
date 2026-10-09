@@ -1,7 +1,7 @@
 <!-- Editorial: a masthead rule, a three-column spread: numbered lead column, the headline, a tall duotone picture. -->
 <script lang="ts">
   import { Block, Box, Button, Grid, Inline, Separator, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Duotone from "../recipes/duotone.svelte";
 

@@ -1,7 +1,7 @@
 <!-- Prompt: a chat card on glass: two message bubbles above a textarea and a send action, the headline over it. -->
 <script lang="ts">
   import { Block, Box, Button, Card, Group, Stack, Text, Textarea, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Glass from "../recipes/glass.svelte";
 

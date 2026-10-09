@@ -3,8 +3,8 @@
 // The second wave of screens (wave.ts) is laid last, as a replacement layer.
 // Later inboxes are laid as a second layer on top of the first, with their own seeds, so adding an exclusion never moves
 // a card of an earlier layer: layer 2 = the curated rows marked `layer: 2` and EXCLUDED_SCREENS_2.
-import { CURATED_ROWS, EXCLUDED_SCREENS, EXCLUDED_SCREENS_2, type CuratedRow } from "../curated";
-import type { Taste, Variant } from "../taste";
+import { CURATED_ROWS, EXCLUDED_SCREENS, EXCLUDED_SCREENS_2, type CuratedRow } from "@ui8kit/taste-data/curated";
+import type { Taste, Variant } from "@ui8kit/taste-data/taste";
 import { assign } from "./assign";
 import { curate } from "./curate";
 import { rowFromTop, type Card } from "./grid";

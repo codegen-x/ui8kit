@@ -1,7 +1,7 @@
 <!-- Dense grid: a bento of six tiles; the large tile is a geometric pattern, the others mix copy, figures and shapes. -->
 <script lang="ts">
   import { Block, Button, Card, Grid, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Geometric from "../recipes/geometric.svelte";
 

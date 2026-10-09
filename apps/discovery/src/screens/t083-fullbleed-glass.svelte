@@ -1,7 +1,7 @@
 <!-- Full-bleed glass: glow and frosted panels everywhere; the headline is set huge at the start, a frosted card sits at the end. -->
 <script lang="ts">
   import { Block, Box, Button, Grid, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Glass from "../recipes/glass.svelte";
 

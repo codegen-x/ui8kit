@@ -1,0 +1,39 @@
+{
+  "name": "@ui8kit/taste-data",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "The Discovery taste data shared by the apps: the taste vocabulary (skins, fonts, radii, variantKey), the 146 taste screens index, composition patterns, curated rows, included styles, font files and copy decks. Moved verbatim from apps/discovery; plain TypeScript, no build step.",
+  "exports": {
+    "./taste": "./src/taste.ts",
+    "./tastes": "./src/tastes.ts",
+    "./compositions": "./src/compositions.ts",
+    "./included": "./src/included.ts",
+    "./curated": "./src/curated.ts",
+    "./fonts": "./src/fonts.ts",
+    "./copy": "./src/copy.ts",
+    "./wave-contrast.json": "./src/wave-contrast.json",
+    "./included.json": "./src/included.json",
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "@fontsource-variable/golos-text": "^5.3.0",
+    "@fontsource-variable/ibm-plex-sans": "^5.3.0",
+    "@fontsource-variable/inter": "^5.3.0",
+    "@fontsource-variable/manrope": "^5.3.0",
+    "@fontsource-variable/montserrat": "^5.3.0",
+    "@fontsource-variable/nunito": "^5.3.0",
+    "@fontsource-variable/onest": "^5.3.1",
+    "@fontsource-variable/open-sans": "^5.3.0",
+    "@fontsource-variable/roboto": "^5.3.0",
+    "@fontsource-variable/rubik": "^5.3.0"
+  },
+  "devDependencies": {
+    "@tsconfig/svelte": "^5.0.8",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0"
+  },
+  "scripts": {
+    "check": "tsc --noEmit -p tsconfig.json"
+  }
+}

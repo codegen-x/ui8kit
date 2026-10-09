@@ -1,7 +1,7 @@
 <!-- Split, bleeding media: a mesh field covers the start half to the screen edge; the end half has copy and an email form. -->
 <script lang="ts">
   import { Block, Button, Grid, Group, Input, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Mesh from "../recipes/mesh.svelte";
 

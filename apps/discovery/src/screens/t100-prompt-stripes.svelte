@@ -1,7 +1,7 @@
 <!-- Prompt as a sign-up: striped bands top and bottom, a centred headline and a large email field with the action. -->
 <script lang="ts">
   import { Block, Button, Group, Stack, Text, Title, Input } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Stripes from "../recipes/stripes.svelte";
 

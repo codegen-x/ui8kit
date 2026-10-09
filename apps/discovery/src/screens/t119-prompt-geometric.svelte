@@ -1,7 +1,7 @@
 <!-- Prompt as a palette: a geometric field behind; a command palette card with a search line and a list of suggestions. -->
 <script lang="ts">
   import { Block, Box, Card, Group, Inline, Input, LucideIcon, Separator, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import { GLYPHS } from "../kit-data";
   import TopBar from "../parts/top-bar.svelte";
   import Geometric from "../recipes/geometric.svelte";

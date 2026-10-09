@@ -1,7 +1,7 @@
 <!-- Stats: a tall grain plate at the start carries one huge figure; the headline, two figures and a bar chart at the end. -->
 <script lang="ts">
   import { BarChart, Block, Box, Button, Grid, Stack, Text, Title } from "@ui8kit/svelte-ui";
-  import type { Deck } from "../copy";
+  import type { Deck } from "@ui8kit/taste-data/copy";
   import { bars } from "../kit-data";
   import TopBar from "../parts/top-bar.svelte";
   import Grain from "../recipes/grain.svelte";

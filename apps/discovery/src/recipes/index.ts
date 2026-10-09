@@ -1,6 +1,6 @@
 // The procedural image recipes by id (see taste.ts RECIPES). Every recipe takes `v` (a variant number) and `class`.
 import type { Component } from "svelte";
-import type { Recipe } from "../taste";
+import type { Recipe } from "@ui8kit/taste-data/taste";
 import Conic from "./conic.svelte";
 import Dots from "./dots.svelte";
 import Duotone from "./duotone.svelte";

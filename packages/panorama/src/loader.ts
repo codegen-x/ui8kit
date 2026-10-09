@@ -3,9 +3,9 @@
 // is a lookup in IndexedDB, and only a new or changed one is rasterised. Results go to the panorama: the canvas (or the
 // cached blob) fills the low-tier atlas cell, the WebP blob feeds the high tier.
 import type { Component } from "svelte";
-import { deckAt, type Deck } from "../copy";
-import TasteFrame from "../parts/taste-frame.svelte";
-import type { Taste, Variant } from "../taste";
+import { deckAt, type Deck } from "@ui8kit/taste-data/copy";
+import TasteFrame from "./taste-frame.svelte";
+import type { Taste, Variant } from "@ui8kit/taste-data/taste";
 import { getShot, putShot } from "./cache";
 
 import { HIGH_H, HIGH_W, type Panorama } from "./panorama";

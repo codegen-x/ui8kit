@@ -1,6 +1,6 @@
 // The registry of the taste screens: every .svelte file in this folder, by file name (the taste id in tastes.ts).
 import type { Component } from "svelte";
-import type { Deck } from "../copy";
+import type { Deck } from "@ui8kit/taste-data/copy";
 
 const modules = import.meta.glob<Component<{ c: Deck }>>("./*.svelte", { eager: true, import: "default" });
 

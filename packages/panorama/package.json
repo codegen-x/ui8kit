@@ -1,0 +1,38 @@
+{
+  "name": "@ui8kit/panorama",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "The Discovery panorama engine shared by the apps: the card grid, wall assignment (assign, curate, wave), the Three.js sphere view, snapshot queue, loader, IndexedDB cache and texture profiles. Moved verbatim from apps/discovery/src/engine; no build step.",
+  "exports": {
+    "./grid": "./src/grid.ts",
+    "./panorama": "./src/panorama.ts",
+    "./profile": "./src/profile.ts",
+    "./snapshot": "./src/snapshot.ts",
+    "./loader": "./src/loader.ts",
+    "./cache": "./src/cache.ts",
+    "./assign": "./src/assign.ts",
+    "./curate": "./src/curate.ts",
+    "./wall": "./src/wall.ts",
+    "./wave": "./src/wave.ts",
+    "./colors": "./src/colors.ts",
+    "./taste-frame.svelte": "./src/taste-frame.svelte",
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "@ui8kit/svelte-ui": "workspace:*",
+    "@ui8kit/taste-data": "workspace:*",
+    "svelte": "^5.57.0",
+    "three": "^0.186.1"
+  },
+  "devDependencies": {
+    "@tsconfig/svelte": "^5.0.8",
+    "@types/three": "^0.186.0",
+    "svelte-check": "^4.7.6",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0"
+  },
+  "scripts": {
+    "check": "svelte-check --tsconfig ./tsconfig.json"
+  }
+}
