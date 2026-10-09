@@ -4,6 +4,4054 @@
 
 A style is **included** when its card was outlined in Discovery with `?cards=include` and sent: this exact design (screen + skin + font pairing + radius, the card's full style) must be in the future marketplace showcase. The catalog lives in `apps/discovery/src/included.json` (typed by `included.ts`), deduped by full style `screen|skin|display+body|radius`.
 
-0 included styles.
+90 included styles.
 
-_Nothing included yet._
+## 1. t001-poster-mesh · Kodama Grove · Montserrat + Inter · r12
+
+- key: `t001-poster-mesh|kodama-grove|montserrat+inter|12`
+- screen id: `t001-poster-mesh`
+- layout: **poster** — Centered poster headline over a full mesh field; one primary action and a quiet secondary link.
+- image recipe: **mesh** — Recipe "mesh": mesh-blur blobs. Soft radial fields of the skin's chart and primary colours, plus blurred orbs.
+- skin: `kodama-grove` (Kodama Grove)
+- font pairing: display Montserrat (`montserrat`), body Inter (`inter`)
+- radius: 12px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 2/6
+
+| token | light | dark |
+|---|---|---|
+| primary | `#6b792a` | `#899f7a` |
+| background | `#e4d7af` | `#3a3529` |
+| foreground | `#5b4b3e` | `#ede4d4` |
+
+**Taste.** Gentle-contrast, sparse poster layout: cool green accent, muted; pale surfaces, rounded corners. Type is Montserrat for display (wide geometric sans with urban poster presence) over Inter for text (neutral screen grotesque). The dark theme is a dark mode.
+
+Measured: contrast fg/bg (light, dark) 5.8:1, 9.7:1; primary vs background (light, dark) 3.3:1, 4.2:1; primary hue / saturation / lightness 71° / 49% / 32%; background lightness (light, dark) 79%, 19%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 2. t002-split-glass · Neo Brutalism · Roboto + Open Sans · r16
+
+- key: `t002-split-glass|neo-brutalism|roboto+open-sans|16`
+- screen id: `t002-split-glass`
+- layout: **split** — Split hero: text column at the start, a glass-over-glow media slot at the end; stats under the actions.
+- image recipe: **glass** — Recipe "glass": frosted panels (backdrop blur, a hairline of light) floating over a glow of the primary colour.
+- skin: `neo-brutalism` (Neo Brutalism)
+- font pairing: display Roboto (`roboto`), body Open Sans (`open-sans`)
+- radius: 16px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 6/30
+
+| token | light | dark |
+|---|---|---|
+| primary | `#e90a1d` | `#ff6666` |
+| background | `#ffffff` | `#000000` |
+| foreground | `#000000` | `#ffffff` |
+
+**Taste.** High-contrast, balanced split layout: warm red accent, vivid; bright surfaces, pillowy corners. Type is Roboto for display (familiar mechanical-humanist sans) over Open Sans for text (open, friendly humanist sans). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 21.0:1, 21.0:1; primary vs background (light, dark) 4.6:1, 7.3:1; primary hue / saturation / lightness 355° / 92% / 48%; background lightness (light, dark) 100%, 0%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 3. t002-split-glass · Violet Bloom · Manrope · r16
+
+- key: `t002-split-glass|violet-bloom|manrope+manrope|16`
+- screen id: `t002-split-glass`
+- layout: **split** — Split hero: text column at the start, a glass-over-glow media slot at the end; stats under the actions.
+- image recipe: **glass** — Recipe "glass": frosted panels (backdrop blur, a hairline of light) floating over a glow of the primary colour.
+- skin: `violet-bloom` (Violet Bloom)
+- font pairing: display Manrope (`manrope`), body Manrope (`manrope`)
+- radius: 16px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 1/16
+
+| token | light | dark |
+|---|---|---|
+| primary | `#7033ff` | `#8453f5` |
+| background | `#fcfcfc` | `#1a1b1e` |
+| foreground | `#000000` | `#f0f0f0` |
+
+**Taste.** High-contrast, balanced split layout: cool violet accent, vivid; bright surfaces, pillowy corners. Type is a single family, Manrope: modern semi-rounded geometric sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 20.5:1, 15.1:1; primary vs background (light, dark) 5.7:1, 3.7:1; primary hue / saturation / lightness 258° / 100% / 60%; background lightness (light, dark) 99%, 11%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 4. t003-fullbleed-grain · Neo Brutalism · Rubik · r0
+
+- key: `t003-fullbleed-grain|neo-brutalism|rubik+rubik|0`
+- screen id: `t003-fullbleed-grain`
+- layout: **fullbleed** (composition `full-bleed`) — Full-bleed type: a grain band across the width, then the headline set huge to both edges; lead and action under it.
+- image recipe: **grain** — Recipe "grain": a colour field (two or three skin colours) under monochrome film grain (an feTurbulence data URI).
+- skin: `neo-brutalism` (Neo Brutalism)
+- font pairing: display Rubik (`rubik`), body Rubik (`rubik`)
+- radius: 0px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 4/15
+
+| token | light | dark |
+|---|---|---|
+| primary | `#e90a1d` | `#ff6666` |
+| background | `#ffffff` | `#000000` |
+| foreground | `#000000` | `#ffffff` |
+
+**Taste.** High-contrast, balanced full-bleed layout: warm red accent, vivid; bright surfaces, sharp-cornered corners. Type is a single family, Rubik: slightly rounded blocky sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 21.0:1, 21.0:1; primary vs background (light, dark) 4.6:1, 7.3:1; primary hue / saturation / lightness 355° / 92% / 48%; background lightness (light, dark) 100%, 0%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 5. t004-airy-dots · Doom 64 · Nunito · r8
+
+- key: `t004-airy-dots|doom-64|nunito+nunito|8`
+- screen id: `t004-airy-dots`
+- layout: **airy** — Airy: a small centred headline, one button, a dot field fading in from one corner; most of the screen is air.
+- image recipe: **dots** — Recipe "dots": a dot grid fading out (halftone by mask), with a large dot accent.
+- skin: `doom-64` (Doom 64)
+- font pairing: display Nunito (`nunito`), body Nunito (`nunito`)
+- radius: 8px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 15/15
+
+| token | light | dark |
+|---|---|---|
+| primary | `#b71c1c` | `#dd302e` |
+| background | `#cccccc` | `#1a1a1a` |
+| foreground | `#1f1f1f` | `#e0e0e0` |
+
+**Taste.** Medium-contrast, very sparse airy layout: warm red accent, saturated; pale surfaces, softly rounded corners. Type is a single family, Nunito: soft rounded sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 10.3:1, 13.3:1; primary vs background (light, dark) 4.1:1, 3.8:1; primary hue / saturation / lightness 0° / 74% / 41%; background lightness (light, dark) 80%, 10%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 6. t005-stats-flat · Amber Minimal · Golos Text + Onest · r4
+
+- key: `t005-stats-flat|amber-minimal|golos-text+onest|4`
+- screen id: `t005-stats-flat`
+- layout: **stats** — Stats: a left-aligned headline and lead, a flat-shapes panel at the end, four big figures in a ruled row below.
+- image recipe: **flat** — Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours.
+- skin: `amber-minimal` (Amber Minimal)
+- font pairing: display Golos Text (`golos-text`), body Onest (`onest`)
+- radius: 4px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 3/8
+
+| token | light | dark |
+|---|---|---|
+| primary | `#f59e0b` | `#f59e0b` |
+| background | `#ffffff` | `#171717` |
+| foreground | `#262626` | `#e6e6e6` |
+
+**Taste.** Medium-contrast, medium-dense stats layout: warm orange accent, vivid; bright surfaces, crisp corners. Type is Golos Text for display (calm, even grotesque) over Onest for text (clean contemporary grotesque). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 15.1:1, 14.3:1; primary vs background (light, dark) 2.1:1, 8.4:1; primary hue / saturation / lightness 38° / 92% / 50%; background lightness (light, dark) 100%, 9%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 7. t005-stats-flat · Doom 64 · Inter · r4
+
+- key: `t005-stats-flat|doom-64|inter+inter|4`
+- screen id: `t005-stats-flat`
+- layout: **stats** — Stats: a left-aligned headline and lead, a flat-shapes panel at the end, four big figures in a ruled row below.
+- image recipe: **flat** — Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours.
+- skin: `doom-64` (Doom 64)
+- font pairing: display Inter (`inter`), body Inter (`inter`)
+- radius: 4px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 14/1
+
+| token | light | dark |
+|---|---|---|
+| primary | `#b71c1c` | `#dd302e` |
+| background | `#cccccc` | `#1a1a1a` |
+| foreground | `#1f1f1f` | `#e0e0e0` |
+
+**Taste.** Medium-contrast, medium-dense stats layout: warm red accent, saturated; pale surfaces, crisp corners. Type is a single family, Inter: neutral screen grotesque. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 10.3:1, 13.3:1; primary vs background (light, dark) 4.1:1, 3.8:1; primary hue / saturation / lightness 0° / 74% / 41%; background lightness (light, dark) 80%, 10%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 8. t006-ribbon-rings · Supabase · Onest + Inter · r12
+
+- key: `t006-ribbon-rings|supabase|onest+inter|12`
+- screen id: `t006-ribbon-rings`
+- layout: **ribbon** — Ribbon: a centred hero over a rings field, then the kit LogoRibbon of abstract icon slots across the bottom.
+- image recipe: **rings** — Recipe "rings": concentric rings and orbits (repeating radial gradients and outlined circles) with a planet or two.
+- skin: `supabase` (Supabase)
+- font pairing: display Onest (`onest`), body Inter (`inter`)
+- radius: 12px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 3/6
+
+| token | light | dark |
+|---|---|---|
+| primary | `#72e3ad` | `#006239` |
+| background | `#fcfcfc` | `#121212` |
+| foreground | `#171717` | `#e1e7ef` |
+
+**Taste.** High-contrast, medium ribbon layout: cool green accent, saturated; bright surfaces, rounded corners. Type is Onest for display (clean contemporary grotesque) over Inter for text (neutral screen grotesque). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 17.6:1, 15.1:1; primary vs background (light, dark) 1.5:1, 2.5:1; primary hue / saturation / lightness 151° / 67% / 67%; background lightness (light, dark) 99%, 7%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 9. t010-dense-geometric · Amber Minimal · Montserrat + Open Sans · r8
+
+- key: `t010-dense-geometric|amber-minimal|montserrat+open-sans|8`
+- screen id: `t010-dense-geometric`
+- layout: **dense** (composition `dense-grid`) — Dense grid: a bento of six tiles; the large tile is a geometric pattern, the others mix copy, figures and shapes.
+- image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
+- skin: `amber-minimal` (Amber Minimal)
+- font pairing: display Montserrat (`montserrat`), body Open Sans (`open-sans`)
+- radius: 8px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 15/20
+
+| token | light | dark |
+|---|---|---|
+| primary | `#f59e0b` | `#f59e0b` |
+| background | `#ffffff` | `#171717` |
+| foreground | `#262626` | `#e6e6e6` |
+
+**Taste.** Medium-contrast, dense dense-grid layout: warm orange accent, vivid; bright surfaces, softly rounded corners. Type is Montserrat for display (wide geometric sans with urban poster presence) over Open Sans for text (open, friendly humanist sans). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 15.1:1, 14.3:1; primary vs background (light, dark) 2.1:1, 8.4:1; primary hue / saturation / lightness 38° / 92% / 50%; background lightness (light, dark) 100%, 9%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 10. t010-dense-geometric · Neo Brutalism · Roboto · r8
+
+- key: `t010-dense-geometric|neo-brutalism|roboto+roboto|8`
+- screen id: `t010-dense-geometric`
+- layout: **dense** (composition `dense-grid`) — Dense grid: a bento of six tiles; the large tile is a geometric pattern, the others mix copy, figures and shapes.
+- image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
+- skin: `neo-brutalism` (Neo Brutalism)
+- font pairing: display Roboto (`roboto`), body Roboto (`roboto`)
+- radius: 8px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 17/27
+
+| token | light | dark |
+|---|---|---|
+| primary | `#e90a1d` | `#ff6666` |
+| background | `#ffffff` | `#000000` |
+| foreground | `#000000` | `#ffffff` |
+
+**Taste.** High-contrast, dense dense-grid layout: warm red accent, vivid; bright surfaces, softly rounded corners. Type is a single family, Roboto: familiar mechanical-humanist sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 21.0:1, 21.0:1; primary vs background (light, dark) 4.6:1, 7.3:1; primary hue / saturation / lightness 355° / 92% / 48%; background lightness (light, dark) 100%, 0%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 11. t010-dense-geometric · Violet Bloom · Manrope · r8
+
+- key: `t010-dense-geometric|violet-bloom|manrope+manrope|8`
+- screen id: `t010-dense-geometric`
+- layout: **dense** (composition `dense-grid`) — Dense grid: a bento of six tiles; the large tile is a geometric pattern, the others mix copy, figures and shapes.
+- image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
+- skin: `violet-bloom` (Violet Bloom)
+- font pairing: display Manrope (`manrope`), body Manrope (`manrope`)
+- radius: 8px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 19/19
+
+| token | light | dark |
+|---|---|---|
+| primary | `#7033ff` | `#8453f5` |
+| background | `#fcfcfc` | `#1a1b1e` |
+| foreground | `#000000` | `#f0f0f0` |
+
+**Taste.** High-contrast, dense dense-grid layout: cool violet accent, vivid; bright surfaces, softly rounded corners. Type is a single family, Manrope: modern semi-rounded geometric sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 20.5:1, 15.1:1; primary vs background (light, dark) 5.7:1, 3.7:1; primary hue / saturation / lightness 258° / 100% / 60%; background lightness (light, dark) 99%, 11%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 12. t011-split-stripes · Doom 64 · Roboto · r0
+
+- key: `t011-split-stripes|doom-64|roboto+roboto|0`
+- screen id: `t011-split-stripes`
+- layout: **split** — Split, media first: a full-height stripes panel bleeding off the start edge, the text column at the end.
+- image recipe: **stripes** — Recipe "stripes": repeating bands: diagonal stripes, vertical bars of rising height, or a fine line field.
+- skin: `doom-64` (Doom 64)
+- font pairing: display Roboto (`roboto`), body Roboto (`roboto`)
+- radius: 0px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 2/7
+
+| token | light | dark |
+|---|---|---|
+| primary | `#b71c1c` | `#dd302e` |
+| background | `#cccccc` | `#1a1a1a` |
+| foreground | `#1f1f1f` | `#e0e0e0` |
+
+**Taste.** Medium-contrast, balanced split layout: warm red accent, saturated; pale surfaces, sharp-cornered corners. Type is a single family, Roboto: familiar mechanical-humanist sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 10.3:1, 13.3:1; primary vs background (light, dark) 4.1:1, 3.8:1; primary hue / saturation / lightness 0° / 74% / 41%; background lightness (light, dark) 80%, 10%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 13. t017-ribbon-flat · Bubblegum · Montserrat + Open Sans · r12
+
+- key: `t017-ribbon-flat|bubblegum|montserrat+open-sans|12`
+- screen id: `t017-ribbon-flat`
+- layout: **ribbon** — Ribbon: a split hero with a flat-shapes panel, then a full-width strip of eight icon slots on the muted band.
+- image recipe: **flat** — Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours.
+- skin: `bubblegum` (Bubblegum)
+- font pairing: display Montserrat (`montserrat`), body Open Sans (`open-sans`)
+- radius: 12px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 5/23
+
+| token | light | dark |
+|---|---|---|
+| primary | `#c4448e` | `#fbe2a7` |
+| background | `#f6e6ee` | `#12242e` |
+| foreground | `#5c5c5c` | `#f3e2ea` |
+
+**Taste.** Medium-contrast, medium ribbon layout: warm pink accent, saturated; bright surfaces, rounded corners. Type is Montserrat for display (wide geometric sans with urban poster presence) over Open Sans for text (open, friendly humanist sans). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 5.6:1, 12.9:1; primary vs background (light, dark) 3.8:1, 12.6:1; primary hue / saturation / lightness 325° / 52% / 52%; background lightness (light, dark) 93%, 13%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 14. t017-ribbon-flat · Sky · Open Sans · r12
+
+- key: `t017-ribbon-flat|sky|open-sans+open-sans|12`
+- screen id: `t017-ribbon-flat`
+- layout: **ribbon** — Ribbon: a split hero with a flat-shapes panel, then a full-width strip of eight icon slots on the muted band.
+- image recipe: **flat** — Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours.
+- skin: `sky` (Sky)
+- font pairing: display Open Sans (`open-sans`), body Open Sans (`open-sans`)
+- radius: 12px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 1/9
+
+| token | light | dark |
+|---|---|---|
+| primary | `#c84e00` | `#cc4a00` |
+| background | `#ffffff` | `#0a0c10` |
+| foreground | `#001a3d` | `#f8f9fa` |
+
+**Taste.** High-contrast, medium ribbon layout: warm orange accent, vivid; bright surfaces, rounded corners. Type is a single family, Open Sans: open, friendly humanist sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 17.3:1, 18.6:1; primary vs background (light, dark) 4.6:1, 4.2:1; primary hue / saturation / lightness 23° / 100% / 39%; background lightness (light, dark) 100%, 5%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 15. t019-dense-duotone · Amber Minimal · Golos Text · r4
+
+- key: `t019-dense-duotone|amber-minimal|golos-text+golos-text|4`
+- screen id: `t019-dense-duotone`
+- layout: **dense** (composition `dense-grid`) — Dense grid: a catalogue header row and a 4×2 grid of duotone tiles, each with a short caption under it.
+- image recipe: **duotone** — Recipe "duotone": a picture in two skin colours. Even variants use the kit's base64 placeholder (MediaFrame) in grayscale (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
+- skin: `amber-minimal` (Amber Minimal)
+- font pairing: display Golos Text (`golos-text`), body Golos Text (`golos-text`)
+- radius: 4px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 14/4
+
+| token | light | dark |
+|---|---|---|
+| primary | `#f59e0b` | `#f59e0b` |
+| background | `#ffffff` | `#171717` |
+| foreground | `#262626` | `#e6e6e6` |
+
+**Taste.** Medium-contrast, dense dense-grid layout: warm orange accent, vivid; bright surfaces, crisp corners. Type is a single family, Golos Text: calm, even grotesque. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 15.1:1, 14.3:1; primary vs background (light, dark) 2.1:1, 8.4:1; primary hue / saturation / lightness 38° / 92% / 50%; background lightness (light, dark) 100%, 9%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 16. t020-fullbleed-stripes · Kodama Grove · Montserrat + Open Sans · r0
+
+- key: `t020-fullbleed-stripes|kodama-grove|montserrat+open-sans|0`
+- screen id: `t020-fullbleed-stripes`
+- layout: **fullbleed** (composition `full-bleed`) — Full-bleed: the headline breaks over three huge lines; a stripes band runs behind the middle line edge to edge.
+- image recipe: **stripes** — Recipe "stripes": repeating bands: diagonal stripes, vertical bars of rising height, or a fine line field.
+- skin: `kodama-grove` (Kodama Grove)
+- font pairing: display Montserrat (`montserrat`), body Open Sans (`open-sans`)
+- radius: 0px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 6/17
+
+| token | light | dark |
+|---|---|---|
+| primary | `#6b792a` | `#899f7a` |
+| background | `#e4d7af` | `#3a3529` |
+| foreground | `#5b4b3e` | `#ede4d4` |
+
+**Taste.** Gentle-contrast, balanced full-bleed layout: cool green accent, muted; pale surfaces, sharp-cornered corners. Type is Montserrat for display (wide geometric sans with urban poster presence) over Open Sans for text (open, friendly humanist sans). The dark theme is a dark mode.
+
+Measured: contrast fg/bg (light, dark) 5.8:1, 9.7:1; primary vs background (light, dark) 3.3:1, 4.2:1; primary hue / saturation / lightness 71° / 49% / 32%; background lightness (light, dark) 79%, 19%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 17. t020-fullbleed-stripes · Neo Brutalism · Montserrat + Open Sans · r0
+
+- key: `t020-fullbleed-stripes|neo-brutalism|montserrat+open-sans|0`
+- screen id: `t020-fullbleed-stripes`
+- layout: **fullbleed** (composition `full-bleed`) — Full-bleed: the headline breaks over three huge lines; a stripes band runs behind the middle line edge to edge.
+- image recipe: **stripes** — Recipe "stripes": repeating bands: diagonal stripes, vertical bars of rising height, or a fine line field.
+- skin: `neo-brutalism` (Neo Brutalism)
+- font pairing: display Montserrat (`montserrat`), body Open Sans (`open-sans`)
+- radius: 0px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 2/21
+
+| token | light | dark |
+|---|---|---|
+| primary | `#e90a1d` | `#ff6666` |
+| background | `#ffffff` | `#000000` |
+| foreground | `#000000` | `#ffffff` |
+
+**Taste.** High-contrast, balanced full-bleed layout: warm red accent, vivid; bright surfaces, sharp-cornered corners. Type is Montserrat for display (wide geometric sans with urban poster presence) over Open Sans for text (open, friendly humanist sans). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 21.0:1, 21.0:1; primary vs background (light, dark) 4.6:1, 7.3:1; primary hue / saturation / lightness 355° / 92% / 48%; background lightness (light, dark) 100%, 0%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 18. t021-split-dots · Amber Minimal · Golos Text · r16
+
+- key: `t021-split-dots|amber-minimal|golos-text+golos-text|16`
+- screen id: `t021-split-dots`
+- layout: **split** — Split with a capture form: text and an email field at the start, a dot field with a disc at the end.
+- image recipe: **dots** — Recipe "dots": a dot grid fading out (halftone by mask), with a large dot accent.
+- skin: `amber-minimal` (Amber Minimal)
+- font pairing: display Golos Text (`golos-text`), body Golos Text (`golos-text`)
+- radius: 16px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 4/22
+
+| token | light | dark |
+|---|---|---|
+| primary | `#f59e0b` | `#f59e0b` |
+| background | `#ffffff` | `#171717` |
+| foreground | `#262626` | `#e6e6e6` |
+
+**Taste.** Medium-contrast, balanced split layout: warm orange accent, vivid; bright surfaces, pillowy corners. Type is a single family, Golos Text: calm, even grotesque. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 15.1:1, 14.3:1; primary vs background (light, dark) 2.1:1, 8.4:1; primary hue / saturation / lightness 38° / 92% / 50%; background lightness (light, dark) 100%, 9%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 19. t022-poster-geometric · Claude · Nunito · r12
+
+- key: `t022-poster-geometric|claude|nunito+nunito|12`
+- screen id: `t022-poster-geometric`
+- layout: **poster** — Poster in a frame: a geometric border of shapes on all four sides, the headline and one action in the clear centre.
+- image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
+- skin: `claude` (Claude)
+- font pairing: display Nunito (`nunito`), body Nunito (`nunito`)
+- radius: 12px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 21/22
+
+| token | light | dark |
+|---|---|---|
+| primary | `#bb5836` | `#b8593a` |
+| background | `#faf9f5` | `#262624` |
+| foreground | `#3d3929` | `#c3c0b6` |
+
+**Taste.** Medium-contrast, sparse poster layout: warm orange accent, saturated; bright surfaces, rounded corners. Type is a single family, Nunito: soft rounded sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 10.9:1, 8.4:1; primary vs background (light, dark) 4.4:1, 3.3:1; primary hue / saturation / lightness 15° / 55% / 47%; background lightness (light, dark) 97%, 14%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 20. t022-poster-geometric · Cosmic Night · Nunito · r12
+
+- key: `t022-poster-geometric|cosmic-night|nunito+nunito|12`
+- screen id: `t022-poster-geometric`
+- layout: **poster** — Poster in a frame: a geometric border of shapes on all four sides, the headline and one action in the clear centre.
+- image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
+- skin: `cosmic-night` (Cosmic Night)
+- font pairing: display Nunito (`nunito`), body Nunito (`nunito`)
+- radius: 12px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 10/31
+
+| token | light | dark |
+|---|---|---|
+| primary | `#6e56cf` | `#a38fff` |
+| background | `#f5f5ff` | `#0f0f1a` |
+| foreground | `#2a2a4a` | `#e2e2f5` |
+
+**Taste.** Medium-contrast, sparse poster layout: cool blue accent, saturated; bright surfaces, rounded corners. Type is a single family, Nunito: soft rounded sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 12.7:1, 14.9:1; primary vs background (light, dark) 5.0:1, 7.2:1; primary hue / saturation / lightness 252° / 56% / 57%; background lightness (light, dark) 98%, 8%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 21. t025-stats-mesh · Supabase · Rubik · r8
+
+- key: `t025-stats-mesh|supabase|rubik+rubik|8`
+- screen id: `t025-stats-mesh`
+- layout: **stats** — Stats: the headline at the start; at the end a card of three meters over a mesh plate, with the figures as captions.
+- image recipe: **mesh** — Recipe "mesh": mesh-blur blobs. Soft radial fields of the skin's chart and primary colours, plus blurred orbs.
+- skin: `supabase` (Supabase)
+- font pairing: display Rubik (`rubik`), body Rubik (`rubik`)
+- radius: 8px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 14/19
+
+| token | light | dark |
+|---|---|---|
+| primary | `#72e3ad` | `#006239` |
+| background | `#fcfcfc` | `#121212` |
+| foreground | `#171717` | `#e1e7ef` |
+
+**Taste.** High-contrast, medium-dense stats layout: cool green accent, saturated; bright surfaces, softly rounded corners. Type is a single family, Rubik: slightly rounded blocky sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 17.6:1, 15.1:1; primary vs background (light, dark) 1.5:1, 2.5:1; primary hue / saturation / lightness 151° / 67% / 67%; background lightness (light, dark) 99%, 7%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 22. t027-editorial-flat · Modern Minimal · Montserrat + Open Sans · r0
+
+- key: `t027-editorial-flat|modern-minimal|montserrat+open-sans|0`
+- screen id: `t027-editorial-flat`
+- layout: **editorial** — Editorial: a giant section number, the headline and lead in a narrow measure, and a flat-shapes column at the end.
+- image recipe: **flat** — Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours.
+- skin: `modern-minimal` (Modern Minimal)
+- font pairing: display Montserrat (`montserrat`), body Open Sans (`open-sans`)
+- radius: 0px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 15/9
+
+| token | light | dark |
+|---|---|---|
+| primary | `#2a70e3` | `#2a70e3` |
+| background | `#ffffff` | `#171717` |
+| foreground | `#333333` | `#e6e6e6` |
+
+**Taste.** Medium-contrast, dense editorial layout: cool blue accent, saturated; bright surfaces, sharp-cornered corners. Type is Montserrat for display (wide geometric sans with urban poster presence) over Open Sans for text (open, friendly humanist sans). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 12.6:1, 14.3:1; primary vs background (light, dark) 4.6:1, 3.9:1; primary hue / saturation / lightness 217° / 77% / 53%; background lightness (light, dark) 100%, 9%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 23. t027-editorial-flat · Modern Minimal · Montserrat + Open Sans · r16
+
+- key: `t027-editorial-flat|modern-minimal|montserrat+open-sans|16`
+- screen id: `t027-editorial-flat`
+- layout: **editorial** — Editorial: a giant section number, the headline and lead in a narrow measure, and a flat-shapes column at the end.
+- image recipe: **flat** — Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours.
+- skin: `modern-minimal` (Modern Minimal)
+- font pairing: display Montserrat (`montserrat`), body Open Sans (`open-sans`)
+- radius: 16px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 6/40
+
+| token | light | dark |
+|---|---|---|
+| primary | `#2a70e3` | `#2a70e3` |
+| background | `#ffffff` | `#171717` |
+| foreground | `#333333` | `#e6e6e6` |
+
+**Taste.** Medium-contrast, dense editorial layout: cool blue accent, saturated; bright surfaces, pillowy corners. Type is Montserrat for display (wide geometric sans with urban poster presence) over Open Sans for text (open, friendly humanist sans). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 12.6:1, 14.3:1; primary vs background (light, dark) 4.6:1, 3.9:1; primary hue / saturation / lightness 217° / 77% / 53%; background lightness (light, dark) 100%, 9%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 24. t032-poster-duotone · Modern Minimal · Manrope · r8
+
+- key: `t032-poster-duotone|modern-minimal|manrope+manrope|8`
+- screen id: `t032-poster-duotone`
+- layout: **poster** — Poster over a picture: a full-screen procedural duotone landscape, the headline large and centred on it.
+- image recipe: **duotone** — Recipe "duotone": a picture in two skin colours. Even variants use the kit's base64 placeholder (MediaFrame) in grayscale (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
+- skin: `modern-minimal` (Modern Minimal)
+- font pairing: display Manrope (`manrope`), body Manrope (`manrope`)
+- radius: 8px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 13/9
+
+| token | light | dark |
+|---|---|---|
+| primary | `#2a70e3` | `#2a70e3` |
+| background | `#ffffff` | `#171717` |
+| foreground | `#333333` | `#e6e6e6` |
+
+**Taste.** Medium-contrast, sparse poster layout: cool blue accent, saturated; bright surfaces, softly rounded corners. Type is a single family, Manrope: modern semi-rounded geometric sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 12.6:1, 14.3:1; primary vs background (light, dark) 4.6:1, 3.9:1; primary hue / saturation / lightness 217° / 77% / 53%; background lightness (light, dark) 100%, 9%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 25. t033-fullbleed-rings · Doom 64 · Onest + Inter · r16
+
+- key: `t033-fullbleed-rings|doom-64|onest+inter|16`
+- screen id: `t033-fullbleed-rings`
+- layout: **fullbleed** (composition `full-bleed`) — Full-bleed: a rings disc sits off the end edge; the headline runs over it in four huge lines, start-aligned.
+- image recipe: **rings** — Recipe "rings": concentric rings and orbits (repeating radial gradients and outlined circles) with a planet or two.
+- skin: `doom-64` (Doom 64)
+- font pairing: display Onest (`onest`), body Inter (`inter`)
+- radius: 16px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 11/2
+
+| token | light | dark |
+|---|---|---|
+| primary | `#b71c1c` | `#dd302e` |
+| background | `#cccccc` | `#1a1a1a` |
+| foreground | `#1f1f1f` | `#e0e0e0` |
+
+**Taste.** Medium-contrast, balanced full-bleed layout: warm red accent, saturated; pale surfaces, pillowy corners. Type is Onest for display (clean contemporary grotesque) over Inter for text (neutral screen grotesque). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 10.3:1, 13.3:1; primary vs background (light, dark) 4.1:1, 3.8:1; primary hue / saturation / lightness 0° / 74% / 41%; background lightness (light, dark) 80%, 10%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 26. t033-fullbleed-rings · Supabase · Montserrat + Inter · r0
+
+- key: `t033-fullbleed-rings|supabase|montserrat+inter|0`
+- screen id: `t033-fullbleed-rings`
+- layout: **fullbleed** (composition `full-bleed`) — Full-bleed: a rings disc sits off the end edge; the headline runs over it in four huge lines, start-aligned.
+- image recipe: **rings** — Recipe "rings": concentric rings and orbits (repeating radial gradients and outlined circles) with a planet or two.
+- skin: `supabase` (Supabase)
+- font pairing: display Montserrat (`montserrat`), body Inter (`inter`)
+- radius: 0px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 4/10
+
+| token | light | dark |
+|---|---|---|
+| primary | `#72e3ad` | `#006239` |
+| background | `#fcfcfc` | `#121212` |
+| foreground | `#171717` | `#e1e7ef` |
+
+**Taste.** High-contrast, balanced full-bleed layout: cool green accent, saturated; bright surfaces, sharp-cornered corners. Type is Montserrat for display (wide geometric sans with urban poster presence) over Inter for text (neutral screen grotesque). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 17.6:1, 15.1:1; primary vs background (light, dark) 1.5:1, 2.5:1; primary hue / saturation / lightness 151° / 67% / 67%; background lightness (light, dark) 99%, 7%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 27. t035-stats-geometric · Sky · Roboto · r12
+
+- key: `t035-stats-geometric|sky|roboto+roboto|12`
+- screen id: `t035-stats-geometric`
+- layout: **stats** — Stats in shapes: the headline on top, a row of four big geometric tiles each carrying one figure in its corner.
+- image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
+- skin: `sky` (Sky)
+- font pairing: display Roboto (`roboto`), body Roboto (`roboto`)
+- radius: 12px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 12/0
+
+| token | light | dark |
+|---|---|---|
+| primary | `#c84e00` | `#cc4a00` |
+| background | `#ffffff` | `#0a0c10` |
+| foreground | `#001a3d` | `#f8f9fa` |
+
+**Taste.** High-contrast, medium-dense stats layout: warm orange accent, vivid; bright surfaces, rounded corners. Type is a single family, Roboto: familiar mechanical-humanist sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 17.3:1, 18.6:1; primary vs background (light, dark) 4.6:1, 4.2:1; primary hue / saturation / lightness 23° / 100% / 39%; background lightness (light, dark) 100%, 5%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 28. t035-stats-geometric · Supabase · Roboto · r0
+
+- key: `t035-stats-geometric|supabase|roboto+roboto|0`
+- screen id: `t035-stats-geometric`
+- layout: **stats** — Stats in shapes: the headline on top, a row of four big geometric tiles each carrying one figure in its corner.
+- image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
+- skin: `supabase` (Supabase)
+- font pairing: display Roboto (`roboto`), body Roboto (`roboto`)
+- radius: 0px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 7/17
+
+| token | light | dark |
+|---|---|---|
+| primary | `#72e3ad` | `#006239` |
+| background | `#fcfcfc` | `#121212` |
+| foreground | `#171717` | `#e1e7ef` |
+
+**Taste.** High-contrast, medium-dense stats layout: cool green accent, saturated; bright surfaces, sharp-cornered corners. Type is a single family, Roboto: familiar mechanical-humanist sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 17.6:1, 15.1:1; primary vs background (light, dark) 1.5:1, 2.5:1; primary hue / saturation / lightness 151° / 67% / 67%; background lightness (light, dark) 99%, 7%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 29. t041-poster-rings · Modern Minimal · Rubik + Nunito · r8
+
+- key: `t041-poster-rings|modern-minimal|rubik+nunito|8`
+- screen id: `t041-poster-rings`
+- layout: **poster** — Poster in a dial: a rings field centred behind the headline, a badge above, actions below, three notes at the foot.
+- image recipe: **rings** — Recipe "rings": concentric rings and orbits (repeating radial gradients and outlined circles) with a planet or two.
+- skin: `modern-minimal` (Modern Minimal)
+- font pairing: display Rubik (`rubik`), body Nunito (`nunito`)
+- radius: 8px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 7/15
+
+| token | light | dark |
+|---|---|---|
+| primary | `#2a70e3` | `#2a70e3` |
+| background | `#ffffff` | `#171717` |
+| foreground | `#333333` | `#e6e6e6` |
+
+**Taste.** Medium-contrast, sparse poster layout: cool blue accent, saturated; bright surfaces, softly rounded corners. Type is Rubik for display (slightly rounded blocky sans) over Nunito for text (soft rounded sans). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 12.6:1, 14.3:1; primary vs background (light, dark) 4.6:1, 3.9:1; primary hue / saturation / lightness 217° / 77% / 53%; background lightness (light, dark) 100%, 9%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 30. t044-dense-conic · Violet Bloom · Rubik · r4
+
+- key: `t044-dense-conic|violet-bloom|rubik+rubik|4`
+- screen id: `t044-dense-conic`
+- layout: **dense** (composition `dense-grid`) — Dense 3×3: the headline in the centre tile, conic plates in the corners, figures and copy in the edge tiles.
+- image recipe: **conic** — Recipe "conic": conic sweeps: a sunburst of rays, a colour wheel, or a soft spotlight.
+- skin: `violet-bloom` (Violet Bloom)
+- font pairing: display Rubik (`rubik`), body Rubik (`rubik`)
+- radius: 4px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 14/24
+
+| token | light | dark |
+|---|---|---|
+| primary | `#7033ff` | `#8453f5` |
+| background | `#fcfcfc` | `#1a1b1e` |
+| foreground | `#000000` | `#f0f0f0` |
+
+**Taste.** High-contrast, dense dense-grid layout: cool violet accent, vivid; bright surfaces, crisp corners. Type is a single family, Rubik: slightly rounded blocky sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 20.5:1, 15.1:1; primary vs background (light, dark) 5.7:1, 3.7:1; primary hue / saturation / lightness 258° / 100% / 60%; background lightness (light, dark) 99%, 11%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 31. t048-editorial-rings · Amber Minimal · Golos Text · r8
+
+- key: `t048-editorial-rings|amber-minimal|golos-text+golos-text|8`
+- screen id: `t048-editorial-rings`
+- layout: **editorial** — Editorial spread: a full-height rings page at the start; a pull quote, the headline and two columns on the end page.
+- image recipe: **rings** — Recipe "rings": concentric rings and orbits (repeating radial gradients and outlined circles) with a planet or two.
+- skin: `amber-minimal` (Amber Minimal)
+- font pairing: display Golos Text (`golos-text`), body Golos Text (`golos-text`)
+- radius: 8px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 12/43
+
+| token | light | dark |
+|---|---|---|
+| primary | `#f59e0b` | `#f59e0b` |
+| background | `#ffffff` | `#171717` |
+| foreground | `#262626` | `#e6e6e6` |
+
+**Taste.** Medium-contrast, dense editorial layout: warm orange accent, vivid; bright surfaces, softly rounded corners. Type is a single family, Golos Text: calm, even grotesque. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 15.1:1, 14.3:1; primary vs background (light, dark) 2.1:1, 8.4:1; primary hue / saturation / lightness 38° / 92% / 50%; background lightness (light, dark) 100%, 9%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 32. t048-editorial-rings · Amber Minimal · Roboto · r8
+
+- key: `t048-editorial-rings|amber-minimal|roboto+roboto|8`
+- screen id: `t048-editorial-rings`
+- layout: **editorial** — Editorial spread: a full-height rings page at the start; a pull quote, the headline and two columns on the end page.
+- image recipe: **rings** — Recipe "rings": concentric rings and orbits (repeating radial gradients and outlined circles) with a planet or two.
+- skin: `amber-minimal` (Amber Minimal)
+- font pairing: display Roboto (`roboto`), body Roboto (`roboto`)
+- radius: 8px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 6/2
+
+| token | light | dark |
+|---|---|---|
+| primary | `#f59e0b` | `#f59e0b` |
+| background | `#ffffff` | `#171717` |
+| foreground | `#262626` | `#e6e6e6` |
+
+**Taste.** Medium-contrast, dense editorial layout: warm orange accent, vivid; bright surfaces, softly rounded corners. Type is a single family, Roboto: familiar mechanical-humanist sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 15.1:1, 14.3:1; primary vs background (light, dark) 2.1:1, 8.4:1; primary hue / saturation / lightness 38° / 92% / 50%; background lightness (light, dark) 100%, 9%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 33. t048-editorial-rings · Neo Brutalism · Manrope + IBM Plex Sans · r8
+
+- key: `t048-editorial-rings|neo-brutalism|manrope+ibm-plex-sans|8`
+- screen id: `t048-editorial-rings`
+- layout: **editorial** — Editorial spread: a full-height rings page at the start; a pull quote, the headline and two columns on the end page.
+- image recipe: **rings** — Recipe "rings": concentric rings and orbits (repeating radial gradients and outlined circles) with a planet or two.
+- skin: `neo-brutalism` (Neo Brutalism)
+- font pairing: display Manrope (`manrope`), body IBM Plex Sans (`ibm-plex-sans`)
+- radius: 8px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 14/20
+
+| token | light | dark |
+|---|---|---|
+| primary | `#e90a1d` | `#ff6666` |
+| background | `#ffffff` | `#000000` |
+| foreground | `#000000` | `#ffffff` |
+
+**Taste.** High-contrast, dense editorial layout: warm red accent, vivid; bright surfaces, softly rounded corners. Type is Manrope for display (modern semi-rounded geometric sans) over IBM Plex Sans for text (technical, engineered humanist sans). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 21.0:1, 21.0:1; primary vs background (light, dark) 4.6:1, 7.3:1; primary hue / saturation / lightness 355° / 92% / 48%; background lightness (light, dark) 100%, 0%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 34. t048-editorial-rings · Notebook · Golos Text · r0
+
+- key: `t048-editorial-rings|notebook|golos-text+golos-text|0`
+- screen id: `t048-editorial-rings`
+- layout: **editorial** — Editorial spread: a full-height rings page at the start; a pull quote, the headline and two columns on the end page.
+- image recipe: **rings** — Recipe "rings": concentric rings and orbits (repeating radial gradients and outlined circles) with a planet or two.
+- skin: `notebook` (Notebook)
+- font pairing: display Golos Text (`golos-text`), body Golos Text (`golos-text`)
+- radius: 0px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 8/13
+
+| token | light | dark |
+|---|---|---|
+| primary | `#616161` | `#b0b0b0` |
+| background | `#fafafa` | `#2b2b2b` |
+| foreground | `#3b3b3b` | `#dbdbdb` |
+
+**Taste.** Medium-contrast, dense editorial layout: neutral accent, neutral; bright surfaces, sharp-cornered corners. Type is a single family, Golos Text: calm, even grotesque. The dark theme is a dark mode.
+
+Measured: contrast fg/bg (light, dark) 10.8:1, 10.2:1; primary vs background (light, dark) 5.9:1, 6.5:1; primary hue / saturation / lightness 0° / 0% / 38%; background lightness (light, dark) 98%, 17%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 35. t048-editorial-rings · Supabase · Golos Text · r0
+
+- key: `t048-editorial-rings|supabase|golos-text+golos-text|0`
+- screen id: `t048-editorial-rings`
+- layout: **editorial** — Editorial spread: a full-height rings page at the start; a pull quote, the headline and two columns on the end page.
+- image recipe: **rings** — Recipe "rings": concentric rings and orbits (repeating radial gradients and outlined circles) with a planet or two.
+- skin: `supabase` (Supabase)
+- font pairing: display Golos Text (`golos-text`), body Golos Text (`golos-text`)
+- radius: 0px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 5/8
+
+| token | light | dark |
+|---|---|---|
+| primary | `#72e3ad` | `#006239` |
+| background | `#fcfcfc` | `#121212` |
+| foreground | `#171717` | `#e1e7ef` |
+
+**Taste.** High-contrast, dense editorial layout: cool green accent, saturated; bright surfaces, sharp-cornered corners. Type is a single family, Golos Text: calm, even grotesque. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 17.6:1, 15.1:1; primary vs background (light, dark) 1.5:1, 2.5:1; primary hue / saturation / lightness 151° / 67% / 67%; background lightness (light, dark) 99%, 7%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 36. t050-prompt-dots · Cosmic Night · IBM Plex Sans · r12
+
+- key: `t050-prompt-dots|cosmic-night|ibm-plex-sans+ibm-plex-sans|12`
+- screen id: `t050-prompt-dots`
+- layout: **prompt** — Prompt as a sign-up: dots across the end half, the headline and an email row with a consent checkbox at the start.
+- image recipe: **dots** — Recipe "dots": a dot grid fading out (halftone by mask), with a large dot accent.
+- skin: `cosmic-night` (Cosmic Night)
+- font pairing: display IBM Plex Sans (`ibm-plex-sans`), body IBM Plex Sans (`ibm-plex-sans`)
+- radius: 12px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 5/7
+
+| token | light | dark |
+|---|---|---|
+| primary | `#6e56cf` | `#a38fff` |
+| background | `#f5f5ff` | `#0f0f1a` |
+| foreground | `#2a2a4a` | `#e2e2f5` |
+
+**Taste.** Medium-contrast, sparse prompt layout: cool blue accent, saturated; bright surfaces, rounded corners. Type is a single family, IBM Plex Sans: technical, engineered humanist sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 12.7:1, 14.9:1; primary vs background (light, dark) 5.0:1, 7.2:1; primary hue / saturation / lightness 252° / 56% / 57%; background lightness (light, dark) 98%, 8%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 37. t050-prompt-dots · Doom 64 · Roboto + Open Sans · r8
+
+- key: `t050-prompt-dots|doom-64|roboto+open-sans|8`
+- screen id: `t050-prompt-dots`
+- layout: **prompt** — Prompt as a sign-up: dots across the end half, the headline and an email row with a consent checkbox at the start.
+- image recipe: **dots** — Recipe "dots": a dot grid fading out (halftone by mask), with a large dot accent.
+- skin: `doom-64` (Doom 64)
+- font pairing: display Roboto (`roboto`), body Open Sans (`open-sans`)
+- radius: 8px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 9/3
+
+| token | light | dark |
+|---|---|---|
+| primary | `#b71c1c` | `#dd302e` |
+| background | `#cccccc` | `#1a1a1a` |
+| foreground | `#1f1f1f` | `#e0e0e0` |
+
+**Taste.** Medium-contrast, sparse prompt layout: warm red accent, saturated; pale surfaces, softly rounded corners. Type is Roboto for display (familiar mechanical-humanist sans) over Open Sans for text (open, friendly humanist sans). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 10.3:1, 13.3:1; primary vs background (light, dark) 4.1:1, 3.8:1; primary hue / saturation / lightness 0° / 74% / 41%; background lightness (light, dark) 80%, 10%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 38. t050-prompt-dots · T3 Chat · IBM Plex Sans · r4
+
+- key: `t050-prompt-dots|t3-chat|ibm-plex-sans+ibm-plex-sans|4`
+- screen id: `t050-prompt-dots`
+- layout: **prompt** — Prompt as a sign-up: dots across the end half, the headline and an email row with a consent checkbox at the start.
+- image recipe: **dots** — Recipe "dots": a dot grid fading out (halftone by mask), with a large dot accent.
+- skin: `t3-chat` (T3 Chat)
+- font pairing: display IBM Plex Sans (`ibm-plex-sans`), body IBM Plex Sans (`ibm-plex-sans`)
+- radius: 4px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 1/15
+
+| token | light | dark |
+|---|---|---|
+| primary | `#a84370` | `#a3004c` |
+| background | `#faf5fa` | `#211c26` |
+| foreground | `#501854` | `#d2c4de` |
+
+**Taste.** Medium-contrast, sparse prompt layout: warm pink accent, muted; bright surfaces, crisp corners. Type is a single family, IBM Plex Sans: technical, engineered humanist sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 12.2:1, 10.1:1; primary vs background (light, dark) 5.3:1, 2.1:1; primary hue / saturation / lightness 333° / 43% / 46%; background lightness (light, dark) 97%, 13%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 39. t051-poster-stripes · Sky · Golos Text + Onest · r0
+
+- key: `t051-poster-stripes|sky|golos-text+onest|0`
+- screen id: `t051-poster-stripes`
+- layout: **poster** — Poster block: a fine-line stripes field, the headline set in one solid primary block at the centre.
+- image recipe: **stripes** — Recipe "stripes": repeating bands: diagonal stripes, vertical bars of rising height, or a fine line field.
+- skin: `sky` (Sky)
+- font pairing: display Golos Text (`golos-text`), body Onest (`onest`)
+- radius: 0px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 17/8
+
+| token | light | dark |
+|---|---|---|
+| primary | `#c84e00` | `#cc4a00` |
+| background | `#ffffff` | `#0a0c10` |
+| foreground | `#001a3d` | `#f8f9fa` |
+
+**Taste.** High-contrast, sparse poster layout: warm orange accent, vivid; bright surfaces, sharp-cornered corners. Type is Golos Text for display (calm, even grotesque) over Onest for text (clean contemporary grotesque). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 17.3:1, 18.6:1; primary vs background (light, dark) 4.6:1, 4.2:1; primary hue / saturation / lightness 23° / 100% / 39%; background lightness (light, dark) 100%, 5%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 40. t051-poster-stripes · Violet Bloom · Roboto + Open Sans · r12
+
+- key: `t051-poster-stripes|violet-bloom|roboto+open-sans|12`
+- screen id: `t051-poster-stripes`
+- layout: **poster** — Poster block: a fine-line stripes field, the headline set in one solid primary block at the centre.
+- image recipe: **stripes** — Recipe "stripes": repeating bands: diagonal stripes, vertical bars of rising height, or a fine line field.
+- skin: `violet-bloom` (Violet Bloom)
+- font pairing: display Roboto (`roboto`), body Open Sans (`open-sans`)
+- radius: 12px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 2/15
+
+| token | light | dark |
+|---|---|---|
+| primary | `#7033ff` | `#8453f5` |
+| background | `#fcfcfc` | `#1a1b1e` |
+| foreground | `#000000` | `#f0f0f0` |
+
+**Taste.** High-contrast, sparse poster layout: cool violet accent, vivid; bright surfaces, rounded corners. Type is Roboto for display (familiar mechanical-humanist sans) over Open Sans for text (open, friendly humanist sans). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 20.5:1, 15.1:1; primary vs background (light, dark) 5.7:1, 3.7:1; primary hue / saturation / lightness 258° / 100% / 60%; background lightness (light, dark) 99%, 11%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 41. t053-fullbleed-geometric · Amber Minimal · Onest + Inter · r4
+
+- key: `t053-fullbleed-geometric|amber-minimal|onest+inter|4`
+- screen id: `t053-fullbleed-geometric`
+- layout: **fullbleed** (composition `full-bleed`) — Full-bleed: geometric shapes cover the end half; uppercase type stacked huge at the start runs into the shapes.
+- image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
+- skin: `amber-minimal` (Amber Minimal)
+- font pairing: display Onest (`onest`), body Inter (`inter`)
+- radius: 4px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 12/9
+
+| token | light | dark |
+|---|---|---|
+| primary | `#f59e0b` | `#f59e0b` |
+| background | `#ffffff` | `#171717` |
+| foreground | `#262626` | `#e6e6e6` |
+
+**Taste.** Medium-contrast, balanced full-bleed layout: warm orange accent, vivid; bright surfaces, crisp corners. Type is Onest for display (clean contemporary grotesque) over Inter for text (neutral screen grotesque). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 15.1:1, 14.3:1; primary vs background (light, dark) 2.1:1, 8.4:1; primary hue / saturation / lightness 38° / 92% / 50%; background lightness (light, dark) 100%, 9%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 42. t053-fullbleed-geometric · Claude · Onest + Inter · r8
+
+- key: `t053-fullbleed-geometric|claude|onest+inter|8`
+- screen id: `t053-fullbleed-geometric`
+- layout: **fullbleed** (composition `full-bleed`) — Full-bleed: geometric shapes cover the end half; uppercase type stacked huge at the start runs into the shapes.
+- image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
+- skin: `claude` (Claude)
+- font pairing: display Onest (`onest`), body Inter (`inter`)
+- radius: 8px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 18/19
+
+| token | light | dark |
+|---|---|---|
+| primary | `#bb5836` | `#b8593a` |
+| background | `#faf9f5` | `#262624` |
+| foreground | `#3d3929` | `#c3c0b6` |
+
+**Taste.** Medium-contrast, balanced full-bleed layout: warm orange accent, saturated; bright surfaces, softly rounded corners. Type is Onest for display (clean contemporary grotesque) over Inter for text (neutral screen grotesque). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 10.9:1, 8.4:1; primary vs background (light, dark) 4.4:1, 3.3:1; primary hue / saturation / lightness 15° / 55% / 47%; background lightness (light, dark) 97%, 14%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 43. t053-fullbleed-geometric · Perpetuity · Onest + Inter · r4
+
+- key: `t053-fullbleed-geometric|perpetuity|onest+inter|4`
+- screen id: `t053-fullbleed-geometric`
+- layout: **fullbleed** (composition `full-bleed`) — Full-bleed: geometric shapes cover the end half; uppercase type stacked huge at the start runs into the shapes.
+- image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
+- skin: `perpetuity` (Perpetuity)
+- font pairing: display Onest (`onest`), body Inter (`inter`)
+- radius: 4px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 4/29
+
+| token | light | dark |
+|---|---|---|
+| primary | `#00818a` | `#4fe8e8` |
+| background | `#e9f1f1` | `#0a191f` |
+| foreground | `#0a4a55` | `#4fe8e8` |
+
+**Taste.** Medium-contrast, balanced full-bleed layout: cool teal accent, vivid; bright surfaces, crisp corners. Type is Onest for display (clean contemporary grotesque) over Inter for text (neutral screen grotesque). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 8.6:1, 12.0:1; primary vs background (light, dark) 4.1:1, 12.0:1; primary hue / saturation / lightness 184° / 100% / 27%; background lightness (light, dark) 93%, 8%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 44. t053-fullbleed-geometric · Supabase · Onest + Inter · r0
+
+- key: `t053-fullbleed-geometric|supabase|onest+inter|0`
+- screen id: `t053-fullbleed-geometric`
+- layout: **fullbleed** (composition `full-bleed`) — Full-bleed: geometric shapes cover the end half; uppercase type stacked huge at the start runs into the shapes.
+- image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
+- skin: `supabase` (Supabase)
+- font pairing: display Onest (`onest`), body Inter (`inter`)
+- radius: 0px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 14/26
+
+| token | light | dark |
+|---|---|---|
+| primary | `#72e3ad` | `#006239` |
+| background | `#fcfcfc` | `#121212` |
+| foreground | `#171717` | `#e1e7ef` |
+
+**Taste.** High-contrast, balanced full-bleed layout: cool green accent, saturated; bright surfaces, sharp-cornered corners. Type is Onest for display (clean contemporary grotesque) over Inter for text (neutral screen grotesque). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 17.6:1, 15.1:1; primary vs background (light, dark) 1.5:1, 2.5:1; primary hue / saturation / lightness 151° / 67% / 67%; background lightness (light, dark) 99%, 7%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 45. t055-airy-conic · Amber Minimal · Onest · r0
+
+- key: `t055-airy-conic|amber-minimal|onest+onest|0`
+- screen id: `t055-airy-conic`
+- layout: **airy** — Airy: one small colour-wheel disc high in the middle, a short headline under it, a text link; nothing else.
+- image recipe: **conic** — Recipe "conic": conic sweeps: a sunburst of rays, a colour wheel, or a soft spotlight.
+- skin: `amber-minimal` (Amber Minimal)
+- font pairing: display Onest (`onest`), body Onest (`onest`)
+- radius: 0px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 2/27
+
+| token | light | dark |
+|---|---|---|
+| primary | `#f59e0b` | `#f59e0b` |
+| background | `#ffffff` | `#171717` |
+| foreground | `#262626` | `#e6e6e6` |
+
+**Taste.** Medium-contrast, very sparse airy layout: warm orange accent, vivid; bright surfaces, sharp-cornered corners. Type is a single family, Onest: clean contemporary grotesque. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 15.1:1, 14.3:1; primary vs background (light, dark) 2.1:1, 8.4:1; primary hue / saturation / lightness 38° / 92% / 50%; background lightness (light, dark) 100%, 9%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 46. t059-frame-rings · Amber Minimal · Golos Text + Onest · r12
+
+- key: `t059-frame-rings|amber-minimal|golos-text+onest|12`
+- screen id: `t059-frame-rings`
+- layout: **frame** — Frame as a dial: a large round window holding rings and a figure, the headline and actions beside it.
+- image recipe: **rings** — Recipe "rings": concentric rings and orbits (repeating radial gradients and outlined circles) with a planet or two.
+- skin: `amber-minimal` (Amber Minimal)
+- font pairing: display Golos Text (`golos-text`), body Onest (`onest`)
+- radius: 12px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 9/2
+
+| token | light | dark |
+|---|---|---|
+| primary | `#f59e0b` | `#f59e0b` |
+| background | `#ffffff` | `#171717` |
+| foreground | `#262626` | `#e6e6e6` |
+
+**Taste.** Medium-contrast, balanced frame layout: warm orange accent, vivid; bright surfaces, rounded corners. Type is Golos Text for display (calm, even grotesque) over Onest for text (clean contemporary grotesque). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 15.1:1, 14.3:1; primary vs background (light, dark) 2.1:1, 8.4:1; primary hue / saturation / lightness 38° / 92% / 50%; background lightness (light, dark) 100%, 9%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 47. t059-frame-rings · Cosmic Night · Montserrat + Open Sans · r16
+
+- key: `t059-frame-rings|cosmic-night|montserrat+open-sans|16`
+- screen id: `t059-frame-rings`
+- layout: **frame** — Frame as a dial: a large round window holding rings and a figure, the headline and actions beside it.
+- image recipe: **rings** — Recipe "rings": concentric rings and orbits (repeating radial gradients and outlined circles) with a planet or two.
+- skin: `cosmic-night` (Cosmic Night)
+- font pairing: display Montserrat (`montserrat`), body Open Sans (`open-sans`)
+- radius: 16px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 1/3
+
+| token | light | dark |
+|---|---|---|
+| primary | `#6e56cf` | `#a38fff` |
+| background | `#f5f5ff` | `#0f0f1a` |
+| foreground | `#2a2a4a` | `#e2e2f5` |
+
+**Taste.** Medium-contrast, balanced frame layout: cool blue accent, saturated; bright surfaces, pillowy corners. Type is Montserrat for display (wide geometric sans with urban poster presence) over Open Sans for text (open, friendly humanist sans). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 12.7:1, 14.9:1; primary vs background (light, dark) 5.0:1, 7.2:1; primary hue / saturation / lightness 252° / 56% / 57%; background lightness (light, dark) 98%, 8%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 48. t059-frame-rings · Modern Minimal · Golos Text + Onest · r4
+
+- key: `t059-frame-rings|modern-minimal|golos-text+onest|4`
+- screen id: `t059-frame-rings`
+- layout: **frame** — Frame as a dial: a large round window holding rings and a figure, the headline and actions beside it.
+- image recipe: **rings** — Recipe "rings": concentric rings and orbits (repeating radial gradients and outlined circles) with a planet or two.
+- skin: `modern-minimal` (Modern Minimal)
+- font pairing: display Golos Text (`golos-text`), body Onest (`onest`)
+- radius: 4px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 10/43
+
+| token | light | dark |
+|---|---|---|
+| primary | `#2a70e3` | `#2a70e3` |
+| background | `#ffffff` | `#171717` |
+| foreground | `#333333` | `#e6e6e6` |
+
+**Taste.** Medium-contrast, balanced frame layout: cool blue accent, saturated; bright surfaces, crisp corners. Type is Golos Text for display (calm, even grotesque) over Onest for text (clean contemporary grotesque). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 12.6:1, 14.3:1; primary vs background (light, dark) 4.6:1, 3.9:1; primary hue / saturation / lightness 217° / 77% / 53%; background lightness (light, dark) 100%, 9%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 49. t062-split-duotone · Claude · Manrope + IBM Plex Sans · r0
+
+- key: `t062-split-duotone|claude|manrope+ibm-plex-sans|0`
+- screen id: `t062-split-duotone`
+- layout: **split** — Split: a rating line and actions at the start; at the end two duotone cards fanned on top of each other.
+- image recipe: **duotone** — Recipe "duotone": a picture in two skin colours. Even variants use the kit's base64 placeholder (MediaFrame) in grayscale (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
+- skin: `claude` (Claude)
+- font pairing: display Manrope (`manrope`), body IBM Plex Sans (`ibm-plex-sans`)
+- radius: 0px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 6/9
+
+| token | light | dark |
+|---|---|---|
+| primary | `#bb5836` | `#b8593a` |
+| background | `#faf9f5` | `#262624` |
+| foreground | `#3d3929` | `#c3c0b6` |
+
+**Taste.** Medium-contrast, balanced split layout: warm orange accent, saturated; bright surfaces, sharp-cornered corners. Type is Manrope for display (modern semi-rounded geometric sans) over IBM Plex Sans for text (technical, engineered humanist sans). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 10.9:1, 8.4:1; primary vs background (light, dark) 4.4:1, 3.3:1; primary hue / saturation / lightness 15° / 55% / 47%; background lightness (light, dark) 97%, 14%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 50. t062-split-duotone · Notebook · Manrope + IBM Plex Sans · r8
+
+- key: `t062-split-duotone|notebook|manrope+ibm-plex-sans|8`
+- screen id: `t062-split-duotone`
+- layout: **split** — Split: a rating line and actions at the start; at the end two duotone cards fanned on top of each other.
+- image recipe: **duotone** — Recipe "duotone": a picture in two skin colours. Even variants use the kit's base64 placeholder (MediaFrame) in grayscale (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
+- skin: `notebook` (Notebook)
+- font pairing: display Manrope (`manrope`), body IBM Plex Sans (`ibm-plex-sans`)
+- radius: 8px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 20/13
+
+| token | light | dark |
+|---|---|---|
+| primary | `#616161` | `#b0b0b0` |
+| background | `#fafafa` | `#2b2b2b` |
+| foreground | `#3b3b3b` | `#dbdbdb` |
+
+**Taste.** Medium-contrast, balanced split layout: neutral accent, neutral; bright surfaces, softly rounded corners. Type is Manrope for display (modern semi-rounded geometric sans) over IBM Plex Sans for text (technical, engineered humanist sans). The dark theme is a dark mode.
+
+Measured: contrast fg/bg (light, dark) 10.8:1, 10.2:1; primary vs background (light, dark) 5.9:1, 6.5:1; primary hue / saturation / lightness 0° / 0% / 38%; background lightness (light, dark) 98%, 17%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 51. t062-split-duotone · Sky · Manrope + IBM Plex Sans · r0
+
+- key: `t062-split-duotone|sky|manrope+ibm-plex-sans|0`
+- screen id: `t062-split-duotone`
+- layout: **split** — Split: a rating line and actions at the start; at the end two duotone cards fanned on top of each other.
+- image recipe: **duotone** — Recipe "duotone": a picture in two skin colours. Even variants use the kit's base64 placeholder (MediaFrame) in grayscale (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
+- skin: `sky` (Sky)
+- font pairing: display Manrope (`manrope`), body IBM Plex Sans (`ibm-plex-sans`)
+- radius: 0px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 2/24
+
+| token | light | dark |
+|---|---|---|
+| primary | `#c84e00` | `#cc4a00` |
+| background | `#ffffff` | `#0a0c10` |
+| foreground | `#001a3d` | `#f8f9fa` |
+
+**Taste.** High-contrast, balanced split layout: warm orange accent, vivid; bright surfaces, sharp-cornered corners. Type is Manrope for display (modern semi-rounded geometric sans) over IBM Plex Sans for text (technical, engineered humanist sans). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 17.3:1, 18.6:1; primary vs background (light, dark) 4.6:1, 4.2:1; primary hue / saturation / lightness 23° / 100% / 39%; background lightness (light, dark) 100%, 5%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 52. t062-split-duotone · T3 Chat · Manrope + IBM Plex Sans · r0
+
+- key: `t062-split-duotone|t3-chat|manrope+ibm-plex-sans|0`
+- screen id: `t062-split-duotone`
+- layout: **split** — Split: a rating line and actions at the start; at the end two duotone cards fanned on top of each other.
+- image recipe: **duotone** — Recipe "duotone": a picture in two skin colours. Even variants use the kit's base64 placeholder (MediaFrame) in grayscale (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
+- skin: `t3-chat` (T3 Chat)
+- font pairing: display Manrope (`manrope`), body IBM Plex Sans (`ibm-plex-sans`)
+- radius: 0px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 13/27
+
+| token | light | dark |
+|---|---|---|
+| primary | `#a84370` | `#a3004c` |
+| background | `#faf5fa` | `#211c26` |
+| foreground | `#501854` | `#d2c4de` |
+
+**Taste.** Medium-contrast, balanced split layout: warm pink accent, muted; bright surfaces, sharp-cornered corners. Type is Manrope for display (modern semi-rounded geometric sans) over IBM Plex Sans for text (technical, engineered humanist sans). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 12.2:1, 10.1:1; primary vs background (light, dark) 5.3:1, 2.1:1; primary hue / saturation / lightness 333° / 43% / 46%; background lightness (light, dark) 97%, 13%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 53. t062-split-duotone · T3 Chat · Manrope + IBM Plex Sans · r12
+
+- key: `t062-split-duotone|t3-chat|manrope+ibm-plex-sans|12`
+- screen id: `t062-split-duotone`
+- layout: **split** — Split: a rating line and actions at the start; at the end two duotone cards fanned on top of each other.
+- image recipe: **duotone** — Recipe "duotone": a picture in two skin colours. Even variants use the kit's base64 placeholder (MediaFrame) in grayscale (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
+- skin: `t3-chat` (T3 Chat)
+- font pairing: display Manrope (`manrope`), body IBM Plex Sans (`ibm-plex-sans`)
+- radius: 12px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 16/16
+
+| token | light | dark |
+|---|---|---|
+| primary | `#a84370` | `#a3004c` |
+| background | `#faf5fa` | `#211c26` |
+| foreground | `#501854` | `#d2c4de` |
+
+**Taste.** Medium-contrast, balanced split layout: warm pink accent, muted; bright surfaces, rounded corners. Type is Manrope for display (modern semi-rounded geometric sans) over IBM Plex Sans for text (technical, engineered humanist sans). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 12.2:1, 10.1:1; primary vs background (light, dark) 5.3:1, 2.1:1; primary hue / saturation / lightness 333° / 43% / 46%; background lightness (light, dark) 97%, 13%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 54. t063-fullbleed-conic · Perpetuity · Nunito · r16
+
+- key: `t063-fullbleed-conic|perpetuity|nunito+nunito|16`
+- screen id: `t063-fullbleed-conic`
+- layout: **fullbleed** (composition `full-bleed`) — Full-bleed horizon: conic rays rise from the bottom half like a sunrise; the headline fills the sky above them.
+- image recipe: **conic** — Recipe "conic": conic sweeps: a sunburst of rays, a colour wheel, or a soft spotlight.
+- skin: `perpetuity` (Perpetuity)
+- font pairing: display Nunito (`nunito`), body Nunito (`nunito`)
+- radius: 16px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 2/16
+
+| token | light | dark |
+|---|---|---|
+| primary | `#00818a` | `#4fe8e8` |
+| background | `#e9f1f1` | `#0a191f` |
+| foreground | `#0a4a55` | `#4fe8e8` |
+
+**Taste.** Medium-contrast, balanced full-bleed layout: cool teal accent, vivid; bright surfaces, pillowy corners. Type is a single family, Nunito: soft rounded sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 8.6:1, 12.0:1; primary vs background (light, dark) 4.1:1, 12.0:1; primary hue / saturation / lightness 184° / 100% / 27%; background lightness (light, dark) 93%, 8%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 55. t067-ribbon-stripes · Claude · Manrope · r12
+
+- key: `t067-ribbon-stripes|claude|manrope+manrope|12`
+- screen id: `t067-ribbon-stripes`
+- layout: **ribbon** — Ribbon: a diagonal stripes band at the top, the centred headline, the kit LogoRibbon in a ruled row at the foot.
+- image recipe: **stripes** — Recipe "stripes": repeating bands: diagonal stripes, vertical bars of rising height, or a fine line field.
+- skin: `claude` (Claude)
+- font pairing: display Manrope (`manrope`), body Manrope (`manrope`)
+- radius: 12px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 2/18
+
+| token | light | dark |
+|---|---|---|
+| primary | `#bb5836` | `#b8593a` |
+| background | `#faf9f5` | `#262624` |
+| foreground | `#3d3929` | `#c3c0b6` |
+
+**Taste.** Medium-contrast, medium ribbon layout: warm orange accent, saturated; bright surfaces, rounded corners. Type is a single family, Manrope: modern semi-rounded geometric sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 10.9:1, 8.4:1; primary vs background (light, dark) 4.4:1, 3.3:1; primary hue / saturation / lightness 15° / 55% / 47%; background lightness (light, dark) 97%, 14%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 56. t069-frame-duotone · Cosmic Night · Golos Text + Onest · r0
+
+- key: `t069-frame-duotone|cosmic-night|golos-text+onest|0`
+- screen id: `t069-frame-duotone`
+- layout: **frame** — Frame on top: a browser window with a gallery of duotone tiles fills the upper part; the headline sits under it.
+- image recipe: **duotone** — Recipe "duotone": a picture in two skin colours. Even variants use the kit's base64 placeholder (MediaFrame) in grayscale (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
+- skin: `cosmic-night` (Cosmic Night)
+- font pairing: display Golos Text (`golos-text`), body Onest (`onest`)
+- radius: 0px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 7/16
+
+| token | light | dark |
+|---|---|---|
+| primary | `#6e56cf` | `#a38fff` |
+| background | `#f5f5ff` | `#0f0f1a` |
+| foreground | `#2a2a4a` | `#e2e2f5` |
+
+**Taste.** Medium-contrast, balanced frame layout: cool blue accent, saturated; bright surfaces, sharp-cornered corners. Type is Golos Text for display (calm, even grotesque) over Onest for text (clean contemporary grotesque). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 12.7:1, 14.9:1; primary vs background (light, dark) 5.0:1, 7.2:1; primary hue / saturation / lightness 252° / 56% / 57%; background lightness (light, dark) 98%, 8%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 57. t069-frame-duotone · Neo Brutalism · Golos Text + Onest · r16
+
+- key: `t069-frame-duotone|neo-brutalism|golos-text+onest|16`
+- screen id: `t069-frame-duotone`
+- layout: **frame** — Frame on top: a browser window with a gallery of duotone tiles fills the upper part; the headline sits under it.
+- image recipe: **duotone** — Recipe "duotone": a picture in two skin colours. Even variants use the kit's base64 placeholder (MediaFrame) in grayscale (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
+- skin: `neo-brutalism` (Neo Brutalism)
+- font pairing: display Golos Text (`golos-text`), body Onest (`onest`)
+- radius: 16px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 3/16
+
+| token | light | dark |
+|---|---|---|
+| primary | `#e90a1d` | `#ff6666` |
+| background | `#ffffff` | `#000000` |
+| foreground | `#000000` | `#ffffff` |
+
+**Taste.** High-contrast, balanced frame layout: warm red accent, vivid; bright surfaces, pillowy corners. Type is Golos Text for display (calm, even grotesque) over Onest for text (clean contemporary grotesque). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 21.0:1, 21.0:1; primary vs background (light, dark) 4.6:1, 7.3:1; primary hue / saturation / lightness 355° / 92% / 48%; background lightness (light, dark) 100%, 0%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 58. t069-frame-duotone · T3 Chat · Inter · r16
+
+- key: `t069-frame-duotone|t3-chat|inter+inter|16`
+- screen id: `t069-frame-duotone`
+- layout: **frame** — Frame on top: a browser window with a gallery of duotone tiles fills the upper part; the headline sits under it.
+- image recipe: **duotone** — Recipe "duotone": a picture in two skin colours. Even variants use the kit's base64 placeholder (MediaFrame) in grayscale (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
+- skin: `t3-chat` (T3 Chat)
+- font pairing: display Inter (`inter`), body Inter (`inter`)
+- radius: 16px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 14/15
+
+| token | light | dark |
+|---|---|---|
+| primary | `#a84370` | `#a3004c` |
+| background | `#faf5fa` | `#211c26` |
+| foreground | `#501854` | `#d2c4de` |
+
+**Taste.** Medium-contrast, balanced frame layout: warm pink accent, muted; bright surfaces, pillowy corners. Type is a single family, Inter: neutral screen grotesque. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 12.2:1, 10.1:1; primary vs background (light, dark) 5.3:1, 2.1:1; primary hue / saturation / lightness 333° / 43% / 46%; background lightness (light, dark) 97%, 13%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 59. t070-prompt-geometric · Violet Bloom · Manrope + IBM Plex Sans · r4
+
+- key: `t070-prompt-geometric|violet-bloom|manrope+ibm-plex-sans|4`
+- screen id: `t070-prompt-geometric`
+- layout: **prompt** — Prompt: geometric columns frame both edges; in the clear middle the headline and a search field with an action.
+- image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
+- skin: `violet-bloom` (Violet Bloom)
+- font pairing: display Manrope (`manrope`), body IBM Plex Sans (`ibm-plex-sans`)
+- radius: 4px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 2/9
+
+| token | light | dark |
+|---|---|---|
+| primary | `#7033ff` | `#8453f5` |
+| background | `#fcfcfc` | `#1a1b1e` |
+| foreground | `#000000` | `#f0f0f0` |
+
+**Taste.** High-contrast, sparse prompt layout: cool violet accent, vivid; bright surfaces, crisp corners. Type is Manrope for display (modern semi-rounded geometric sans) over IBM Plex Sans for text (technical, engineered humanist sans). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 20.5:1, 15.1:1; primary vs background (light, dark) 5.7:1, 3.7:1; primary hue / saturation / lightness 258° / 100% / 60%; background lightness (light, dark) 99%, 11%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 60. t071-poster-dots · Amber Minimal · Montserrat + Open Sans · r8
+
+- key: `t071-poster-dots|amber-minimal|montserrat+open-sans|8`
+- screen id: `t071-poster-dots`
+- layout: **poster** — Poster, start-aligned: a dot field over the whole screen, the headline in two big lines, the action low at the end.
+- image recipe: **dots** — Recipe "dots": a dot grid fading out (halftone by mask), with a large dot accent.
+- skin: `amber-minimal` (Amber Minimal)
+- font pairing: display Montserrat (`montserrat`), body Open Sans (`open-sans`)
+- radius: 8px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 14/29
+
+| token | light | dark |
+|---|---|---|
+| primary | `#f59e0b` | `#f59e0b` |
+| background | `#ffffff` | `#171717` |
+| foreground | `#262626` | `#e6e6e6` |
+
+**Taste.** Medium-contrast, sparse poster layout: warm orange accent, vivid; bright surfaces, softly rounded corners. Type is Montserrat for display (wide geometric sans with urban poster presence) over Open Sans for text (open, friendly humanist sans). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 15.1:1, 14.3:1; primary vs background (light, dark) 2.1:1, 8.4:1; primary hue / saturation / lightness 38° / 92% / 50%; background lightness (light, dark) 100%, 9%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 61. t071-poster-dots · Bubblegum · Montserrat + Open Sans · r0
+
+- key: `t071-poster-dots|bubblegum|montserrat+open-sans|0`
+- screen id: `t071-poster-dots`
+- layout: **poster** — Poster, start-aligned: a dot field over the whole screen, the headline in two big lines, the action low at the end.
+- image recipe: **dots** — Recipe "dots": a dot grid fading out (halftone by mask), with a large dot accent.
+- skin: `bubblegum` (Bubblegum)
+- font pairing: display Montserrat (`montserrat`), body Open Sans (`open-sans`)
+- radius: 0px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 2/8
+
+| token | light | dark |
+|---|---|---|
+| primary | `#c4448e` | `#fbe2a7` |
+| background | `#f6e6ee` | `#12242e` |
+| foreground | `#5c5c5c` | `#f3e2ea` |
+
+**Taste.** Medium-contrast, sparse poster layout: warm pink accent, saturated; bright surfaces, sharp-cornered corners. Type is Montserrat for display (wide geometric sans with urban poster presence) over Open Sans for text (open, friendly humanist sans). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 5.6:1, 12.9:1; primary vs background (light, dark) 3.8:1, 12.6:1; primary hue / saturation / lightness 325° / 52% / 52%; background lightness (light, dark) 93%, 13%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 62. t071-poster-dots · Kodama Grove · Montserrat + Open Sans · r12
+
+- key: `t071-poster-dots|kodama-grove|montserrat+open-sans|12`
+- screen id: `t071-poster-dots`
+- layout: **poster** — Poster, start-aligned: a dot field over the whole screen, the headline in two big lines, the action low at the end.
+- image recipe: **dots** — Recipe "dots": a dot grid fading out (halftone by mask), with a large dot accent.
+- skin: `kodama-grove` (Kodama Grove)
+- font pairing: display Montserrat (`montserrat`), body Open Sans (`open-sans`)
+- radius: 12px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 7/26
+
+| token | light | dark |
+|---|---|---|
+| primary | `#6b792a` | `#899f7a` |
+| background | `#e4d7af` | `#3a3529` |
+| foreground | `#5b4b3e` | `#ede4d4` |
+
+**Taste.** Gentle-contrast, sparse poster layout: cool green accent, muted; pale surfaces, rounded corners. Type is Montserrat for display (wide geometric sans with urban poster presence) over Open Sans for text (open, friendly humanist sans). The dark theme is a dark mode.
+
+Measured: contrast fg/bg (light, dark) 5.8:1, 9.7:1; primary vs background (light, dark) 3.3:1, 4.2:1; primary hue / saturation / lightness 71° / 49% / 32%; background lightness (light, dark) 79%, 19%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 63. t072-split-geometric · Amber Minimal · Inter · r16
+
+- key: `t072-split-geometric|amber-minimal|inter+inter|16`
+- screen id: `t072-split-geometric`
+- layout: **split** — Split 40/60: settings-like switches under the headline at the start, a big geometric plate at the end.
+- image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
+- skin: `amber-minimal` (Amber Minimal)
+- font pairing: display Inter (`inter`), body Inter (`inter`)
+- radius: 16px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 4/6
+
+| token | light | dark |
+|---|---|---|
+| primary | `#f59e0b` | `#f59e0b` |
+| background | `#ffffff` | `#171717` |
+| foreground | `#262626` | `#e6e6e6` |
+
+**Taste.** Medium-contrast, balanced split layout: warm orange accent, vivid; bright surfaces, pillowy corners. Type is a single family, Inter: neutral screen grotesque. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 15.1:1, 14.3:1; primary vs background (light, dark) 2.1:1, 8.4:1; primary hue / saturation / lightness 38° / 92% / 50%; background lightness (light, dark) 100%, 9%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 64. t073-fullbleed-flat · Amber Minimal · Golos Text + Onest · r4
+
+- key: `t073-fullbleed-flat|amber-minimal|golos-text+onest|4`
+- screen id: `t073-fullbleed-flat`
+- layout: **fullbleed** (composition `full-bleed`) — Full-bleed colour: the primary colour fills the screen with a flat disc; the headline is cut out in the page colour.
+- image recipe: **flat** — Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours.
+- skin: `amber-minimal` (Amber Minimal)
+- font pairing: display Golos Text (`golos-text`), body Onest (`onest`)
+- radius: 4px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 5/28
+
+| token | light | dark |
+|---|---|---|
+| primary | `#f59e0b` | `#f59e0b` |
+| background | `#ffffff` | `#171717` |
+| foreground | `#262626` | `#e6e6e6` |
+
+**Taste.** Medium-contrast, balanced full-bleed layout: warm orange accent, vivid; bright surfaces, crisp corners. Type is Golos Text for display (calm, even grotesque) over Onest for text (clean contemporary grotesque). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 15.1:1, 14.3:1; primary vs background (light, dark) 2.1:1, 8.4:1; primary hue / saturation / lightness 38° / 92% / 50%; background lightness (light, dark) 100%, 9%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 65. t081-poster-conic · Bubblegum · Onest + Inter · r8
+
+- key: `t081-poster-conic|bubblegum|onest+inter|8`
+- screen id: `t081-poster-conic`
+- layout: **poster** — Poster under a spotlight: a conic beam falls from the top centre onto a huge centred headline.
+- image recipe: **conic** — Recipe "conic": conic sweeps: a sunburst of rays, a colour wheel, or a soft spotlight.
+- skin: `bubblegum` (Bubblegum)
+- font pairing: display Onest (`onest`), body Inter (`inter`)
+- radius: 8px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 18/25
+
+| token | light | dark |
+|---|---|---|
+| primary | `#c4448e` | `#fbe2a7` |
+| background | `#f6e6ee` | `#12242e` |
+| foreground | `#5c5c5c` | `#f3e2ea` |
+
+**Taste.** Medium-contrast, sparse poster layout: warm pink accent, saturated; bright surfaces, softly rounded corners. Type is Onest for display (clean contemporary grotesque) over Inter for text (neutral screen grotesque). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 5.6:1, 12.9:1; primary vs background (light, dark) 3.8:1, 12.6:1; primary hue / saturation / lightness 325° / 52% / 52%; background lightness (light, dark) 93%, 13%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 66. t089-frame-mesh · Bubblegum · Rubik · r8
+
+- key: `t089-frame-mesh|bubblegum|rubik+rubik|8`
+- screen id: `t089-frame-mesh`
+- layout: **frame** — Frame, three columns: copy at the start, a tall phone frame with a mesh screen in the middle, feature notes at the end.
+- image recipe: **mesh** — Recipe "mesh": mesh-blur blobs. Soft radial fields of the skin's chart and primary colours, plus blurred orbs.
+- skin: `bubblegum` (Bubblegum)
+- font pairing: display Rubik (`rubik`), body Rubik (`rubik`)
+- radius: 8px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 3/1
+
+| token | light | dark |
+|---|---|---|
+| primary | `#c4448e` | `#fbe2a7` |
+| background | `#f6e6ee` | `#12242e` |
+| foreground | `#5c5c5c` | `#f3e2ea` |
+
+**Taste.** Medium-contrast, balanced frame layout: warm pink accent, saturated; bright surfaces, softly rounded corners. Type is a single family, Rubik: slightly rounded blocky sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 5.6:1, 12.9:1; primary vs background (light, dark) 3.8:1, 12.6:1; primary hue / saturation / lightness 325° / 52% / 52%; background lightness (light, dark) 93%, 13%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 67. t089-frame-mesh · Sky · Rubik · r8
+
+- key: `t089-frame-mesh|sky|rubik+rubik|8`
+- screen id: `t089-frame-mesh`
+- layout: **frame** — Frame, three columns: copy at the start, a tall phone frame with a mesh screen in the middle, feature notes at the end.
+- image recipe: **mesh** — Recipe "mesh": mesh-blur blobs. Soft radial fields of the skin's chart and primary colours, plus blurred orbs.
+- skin: `sky` (Sky)
+- font pairing: display Rubik (`rubik`), body Rubik (`rubik`)
+- radius: 8px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 15/21
+
+| token | light | dark |
+|---|---|---|
+| primary | `#c84e00` | `#cc4a00` |
+| background | `#ffffff` | `#0a0c10` |
+| foreground | `#001a3d` | `#f8f9fa` |
+
+**Taste.** High-contrast, balanced frame layout: warm orange accent, vivid; bright surfaces, softly rounded corners. Type is a single family, Rubik: slightly rounded blocky sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 17.3:1, 18.6:1; primary vs background (light, dark) 4.6:1, 4.2:1; primary hue / saturation / lightness 23° / 100% / 39%; background lightness (light, dark) 100%, 5%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 68. t093-fullbleed-dots · Neo Brutalism · Montserrat + Inter · r12
+
+- key: `t093-fullbleed-dots|neo-brutalism|montserrat+inter|12`
+- screen id: `t093-fullbleed-dots`
+- layout: **fullbleed** (composition `full-bleed`) — Full-bleed figure: a dot field with one giant figure set across it; the headline is small at the bottom start.
+- image recipe: **dots** — Recipe "dots": a dot grid fading out (halftone by mask), with a large dot accent.
+- skin: `neo-brutalism` (Neo Brutalism)
+- font pairing: display Montserrat (`montserrat`), body Inter (`inter`)
+- radius: 12px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 3/2
+
+| token | light | dark |
+|---|---|---|
+| primary | `#e90a1d` | `#ff6666` |
+| background | `#ffffff` | `#000000` |
+| foreground | `#000000` | `#ffffff` |
+
+**Taste.** High-contrast, balanced full-bleed layout: warm red accent, vivid; bright surfaces, rounded corners. Type is Montserrat for display (wide geometric sans with urban poster presence) over Inter for text (neutral screen grotesque). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 21.0:1, 21.0:1; primary vs background (light, dark) 4.6:1, 7.3:1; primary hue / saturation / lightness 355° / 92% / 48%; background lightness (light, dark) 100%, 0%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 69. t093-fullbleed-dots · Sky · Montserrat + Inter · r12
+
+- key: `t093-fullbleed-dots|sky|montserrat+inter|12`
+- screen id: `t093-fullbleed-dots`
+- layout: **fullbleed** (composition `full-bleed`) — Full-bleed figure: a dot field with one giant figure set across it; the headline is small at the bottom start.
+- image recipe: **dots** — Recipe "dots": a dot grid fading out (halftone by mask), with a large dot accent.
+- skin: `sky` (Sky)
+- font pairing: display Montserrat (`montserrat`), body Inter (`inter`)
+- radius: 12px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 17/28
+
+| token | light | dark |
+|---|---|---|
+| primary | `#c84e00` | `#cc4a00` |
+| background | `#ffffff` | `#0a0c10` |
+| foreground | `#001a3d` | `#f8f9fa` |
+
+**Taste.** High-contrast, balanced full-bleed layout: warm orange accent, vivid; bright surfaces, rounded corners. Type is Montserrat for display (wide geometric sans with urban poster presence) over Inter for text (neutral screen grotesque). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 17.3:1, 18.6:1; primary vs background (light, dark) 4.6:1, 4.2:1; primary hue / saturation / lightness 23° / 100% / 39%; background lightness (light, dark) 100%, 5%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 70. t094-dense-flat · Amber Minimal · Open Sans · r4
+
+- key: `t094-dense-flat|amber-minimal|open-sans+open-sans|4`
+- screen id: `t094-dense-flat`
+- layout: **dense** (composition `dense-grid`) — Dense bento: a four by three grid mixing flat shape tiles, a headline tile, figure tiles and a call tile.
+- image recipe: **flat** — Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours.
+- skin: `amber-minimal` (Amber Minimal)
+- font pairing: display Open Sans (`open-sans`), body Open Sans (`open-sans`)
+- radius: 4px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 2/17
+
+| token | light | dark |
+|---|---|---|
+| primary | `#f59e0b` | `#f59e0b` |
+| background | `#ffffff` | `#171717` |
+| foreground | `#262626` | `#e6e6e6` |
+
+**Taste.** Medium-contrast, dense dense-grid layout: warm orange accent, vivid; bright surfaces, crisp corners. Type is a single family, Open Sans: open, friendly humanist sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 15.1:1, 14.3:1; primary vs background (light, dark) 2.1:1, 8.4:1; primary hue / saturation / lightness 38° / 92% / 50%; background lightness (light, dark) 100%, 9%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 71. t094-dense-flat · Claude · Montserrat + Inter · r0
+
+- key: `t094-dense-flat|claude|montserrat+inter|0`
+- screen id: `t094-dense-flat`
+- layout: **dense** (composition `dense-grid`) — Dense bento: a four by three grid mixing flat shape tiles, a headline tile, figure tiles and a call tile.
+- image recipe: **flat** — Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours.
+- skin: `claude` (Claude)
+- font pairing: display Montserrat (`montserrat`), body Inter (`inter`)
+- radius: 0px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 2/5
+
+| token | light | dark |
+|---|---|---|
+| primary | `#bb5836` | `#b8593a` |
+| background | `#faf9f5` | `#262624` |
+| foreground | `#3d3929` | `#c3c0b6` |
+
+**Taste.** Medium-contrast, dense dense-grid layout: warm orange accent, saturated; bright surfaces, sharp-cornered corners. Type is Montserrat for display (wide geometric sans with urban poster presence) over Inter for text (neutral screen grotesque). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 10.9:1, 8.4:1; primary vs background (light, dark) 4.4:1, 3.3:1; primary hue / saturation / lightness 15° / 55% / 47%; background lightness (light, dark) 97%, 14%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 72. t094-dense-flat · Claude · Open Sans · r8
+
+- key: `t094-dense-flat|claude|open-sans+open-sans|8`
+- screen id: `t094-dense-flat`
+- layout: **dense** (composition `dense-grid`) — Dense bento: a four by three grid mixing flat shape tiles, a headline tile, figure tiles and a call tile.
+- image recipe: **flat** — Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours.
+- skin: `claude` (Claude)
+- font pairing: display Open Sans (`open-sans`), body Open Sans (`open-sans`)
+- radius: 8px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 7/34
+
+| token | light | dark |
+|---|---|---|
+| primary | `#bb5836` | `#b8593a` |
+| background | `#faf9f5` | `#262624` |
+| foreground | `#3d3929` | `#c3c0b6` |
+
+**Taste.** Medium-contrast, dense dense-grid layout: warm orange accent, saturated; bright surfaces, softly rounded corners. Type is a single family, Open Sans: open, friendly humanist sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 10.9:1, 8.4:1; primary vs background (light, dark) 4.4:1, 3.3:1; primary hue / saturation / lightness 15° / 55% / 47%; background lightness (light, dark) 97%, 14%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 73. t094-dense-flat · Modern Minimal · Montserrat + Inter · r4
+
+- key: `t094-dense-flat|modern-minimal|montserrat+inter|4`
+- screen id: `t094-dense-flat`
+- layout: **dense** (composition `dense-grid`) — Dense bento: a four by three grid mixing flat shape tiles, a headline tile, figure tiles and a call tile.
+- image recipe: **flat** — Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours.
+- skin: `modern-minimal` (Modern Minimal)
+- font pairing: display Montserrat (`montserrat`), body Inter (`inter`)
+- radius: 4px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 11/12
+
+| token | light | dark |
+|---|---|---|
+| primary | `#2a70e3` | `#2a70e3` |
+| background | `#ffffff` | `#171717` |
+| foreground | `#333333` | `#e6e6e6` |
+
+**Taste.** Medium-contrast, dense dense-grid layout: cool blue accent, saturated; bright surfaces, crisp corners. Type is Montserrat for display (wide geometric sans with urban poster presence) over Inter for text (neutral screen grotesque). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 12.6:1, 14.3:1; primary vs background (light, dark) 4.6:1, 3.9:1; primary hue / saturation / lightness 217° / 77% / 53%; background lightness (light, dark) 100%, 9%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 74. t094-dense-flat · Modern Minimal · Montserrat + Open Sans · r4
+
+- key: `t094-dense-flat|modern-minimal|montserrat+open-sans|4`
+- screen id: `t094-dense-flat`
+- layout: **dense** (composition `dense-grid`) — Dense bento: a four by three grid mixing flat shape tiles, a headline tile, figure tiles and a call tile.
+- image recipe: **flat** — Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours.
+- skin: `modern-minimal` (Modern Minimal)
+- font pairing: display Montserrat (`montserrat`), body Open Sans (`open-sans`)
+- radius: 4px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 17/16
+
+| token | light | dark |
+|---|---|---|
+| primary | `#2a70e3` | `#2a70e3` |
+| background | `#ffffff` | `#171717` |
+| foreground | `#333333` | `#e6e6e6` |
+
+**Taste.** Medium-contrast, dense dense-grid layout: cool blue accent, saturated; bright surfaces, crisp corners. Type is Montserrat for display (wide geometric sans with urban poster presence) over Open Sans for text (open, friendly humanist sans). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 12.6:1, 14.3:1; primary vs background (light, dark) 4.6:1, 3.9:1; primary hue / saturation / lightness 217° / 77% / 53%; background lightness (light, dark) 100%, 9%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 75. t098-editorial-geometric · Claude · Roboto · r16
+
+- key: `t098-editorial-geometric|claude|roboto+roboto|16`
+- screen id: `t098-editorial-geometric`
+- layout: **editorial** — Editorial feature: a giant chapter number and headline at the start, a pull quote between rules, a geometric column at the end.
+- image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
+- skin: `claude` (Claude)
+- font pairing: display Roboto (`roboto`), body Roboto (`roboto`)
+- radius: 16px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 17/7
+
+| token | light | dark |
+|---|---|---|
+| primary | `#bb5836` | `#b8593a` |
+| background | `#faf9f5` | `#262624` |
+| foreground | `#3d3929` | `#c3c0b6` |
+
+**Taste.** Medium-contrast, dense editorial layout: warm orange accent, saturated; bright surfaces, pillowy corners. Type is a single family, Roboto: familiar mechanical-humanist sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 10.9:1, 8.4:1; primary vs background (light, dark) 4.4:1, 3.3:1; primary hue / saturation / lightness 15° / 55% / 47%; background lightness (light, dark) 97%, 14%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 76. t098-editorial-geometric · T3 Chat · Roboto · r8
+
+- key: `t098-editorial-geometric|t3-chat|roboto+roboto|8`
+- screen id: `t098-editorial-geometric`
+- layout: **editorial** — Editorial feature: a giant chapter number and headline at the start, a pull quote between rules, a geometric column at the end.
+- image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
+- skin: `t3-chat` (T3 Chat)
+- font pairing: display Roboto (`roboto`), body Roboto (`roboto`)
+- radius: 8px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 3/15
+
+| token | light | dark |
+|---|---|---|
+| primary | `#a84370` | `#a3004c` |
+| background | `#faf5fa` | `#211c26` |
+| foreground | `#501854` | `#d2c4de` |
+
+**Taste.** Medium-contrast, dense editorial layout: warm pink accent, muted; bright surfaces, softly rounded corners. Type is a single family, Roboto: familiar mechanical-humanist sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 12.2:1, 10.1:1; primary vs background (light, dark) 5.3:1, 2.1:1; primary hue / saturation / lightness 333° / 43% / 46%; background lightness (light, dark) 97%, 13%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 77. t099-frame-geometric · Amber Minimal · Rubik · r0
+
+- key: `t099-frame-geometric|amber-minimal|rubik+rubik|0`
+- screen id: `t099-frame-geometric`
+- layout: **frame** — Frame, tilted: a large tablet frame turned slightly, showing a geometric gallery; the headline overlaps its corner.
+- image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
+- skin: `amber-minimal` (Amber Minimal)
+- font pairing: display Rubik (`rubik`), body Rubik (`rubik`)
+- radius: 0px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 17/18
+
+| token | light | dark |
+|---|---|---|
+| primary | `#f59e0b` | `#f59e0b` |
+| background | `#ffffff` | `#171717` |
+| foreground | `#262626` | `#e6e6e6` |
+
+**Taste.** Medium-contrast, balanced frame layout: warm orange accent, vivid; bright surfaces, sharp-cornered corners. Type is a single family, Rubik: slightly rounded blocky sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 15.1:1, 14.3:1; primary vs background (light, dark) 2.1:1, 8.4:1; primary hue / saturation / lightness 38° / 92% / 50%; background lightness (light, dark) 100%, 9%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 78. t099-frame-geometric · Cosmic Night · Montserrat + Inter · r0
+
+- key: `t099-frame-geometric|cosmic-night|montserrat+inter|0`
+- screen id: `t099-frame-geometric`
+- layout: **frame** — Frame, tilted: a large tablet frame turned slightly, showing a geometric gallery; the headline overlaps its corner.
+- image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
+- skin: `cosmic-night` (Cosmic Night)
+- font pairing: display Montserrat (`montserrat`), body Inter (`inter`)
+- radius: 0px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 15/28
+
+| token | light | dark |
+|---|---|---|
+| primary | `#6e56cf` | `#a38fff` |
+| background | `#f5f5ff` | `#0f0f1a` |
+| foreground | `#2a2a4a` | `#e2e2f5` |
+
+**Taste.** Medium-contrast, balanced frame layout: cool blue accent, saturated; bright surfaces, sharp-cornered corners. Type is Montserrat for display (wide geometric sans with urban poster presence) over Inter for text (neutral screen grotesque). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 12.7:1, 14.9:1; primary vs background (light, dark) 5.0:1, 7.2:1; primary hue / saturation / lightness 252° / 56% / 57%; background lightness (light, dark) 98%, 8%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 79. t099-frame-geometric · Modern Minimal · Golos Text + Onest · r0
+
+- key: `t099-frame-geometric|modern-minimal|golos-text+onest|0`
+- screen id: `t099-frame-geometric`
+- layout: **frame** — Frame, tilted: a large tablet frame turned slightly, showing a geometric gallery; the headline overlaps its corner.
+- image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
+- skin: `modern-minimal` (Modern Minimal)
+- font pairing: display Golos Text (`golos-text`), body Onest (`onest`)
+- radius: 0px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 5/3
+
+| token | light | dark |
+|---|---|---|
+| primary | `#2a70e3` | `#2a70e3` |
+| background | `#ffffff` | `#171717` |
+| foreground | `#333333` | `#e6e6e6` |
+
+**Taste.** Medium-contrast, balanced frame layout: cool blue accent, saturated; bright surfaces, sharp-cornered corners. Type is Golos Text for display (calm, even grotesque) over Onest for text (clean contemporary grotesque). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 12.6:1, 14.3:1; primary vs background (light, dark) 4.6:1, 3.9:1; primary hue / saturation / lightness 217° / 77% / 53%; background lightness (light, dark) 100%, 9%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 80. t099-frame-geometric · Supabase · IBM Plex Sans · r4
+
+- key: `t099-frame-geometric|supabase|ibm-plex-sans+ibm-plex-sans|4`
+- screen id: `t099-frame-geometric`
+- layout: **frame** — Frame, tilted: a large tablet frame turned slightly, showing a geometric gallery; the headline overlaps its corner.
+- image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
+- skin: `supabase` (Supabase)
+- font pairing: display IBM Plex Sans (`ibm-plex-sans`), body IBM Plex Sans (`ibm-plex-sans`)
+- radius: 4px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 11/45
+
+| token | light | dark |
+|---|---|---|
+| primary | `#72e3ad` | `#006239` |
+| background | `#fcfcfc` | `#121212` |
+| foreground | `#171717` | `#e1e7ef` |
+
+**Taste.** High-contrast, balanced frame layout: cool green accent, saturated; bright surfaces, crisp corners. Type is a single family, IBM Plex Sans: technical, engineered humanist sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 17.6:1, 15.1:1; primary vs background (light, dark) 1.5:1, 2.5:1; primary hue / saturation / lightness 151° / 67% / 67%; background lightness (light, dark) 99%, 7%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 81. t104-split-dots · Sky · Onest · r8
+
+- key: `t104-split-dots|sky|onest+onest|8`
+- screen id: `t104-split-dots`
+- layout: **split** — Split, media first: a dotted plate with a large badge on it at the start; the end half has the headline and a two-column list.
+- image recipe: **dots** — Recipe "dots": a dot grid fading out (halftone by mask), with a large dot accent.
+- skin: `sky` (Sky)
+- font pairing: display Onest (`onest`), body Onest (`onest`)
+- radius: 8px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 20/0
+
+| token | light | dark |
+|---|---|---|
+| primary | `#c84e00` | `#cc4a00` |
+| background | `#ffffff` | `#0a0c10` |
+| foreground | `#001a3d` | `#f8f9fa` |
+
+**Taste.** High-contrast, balanced split layout: warm orange accent, vivid; bright surfaces, softly rounded corners. Type is a single family, Onest: clean contemporary grotesque. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 17.3:1, 18.6:1; primary vs background (light, dark) 4.6:1, 4.2:1; primary hue / saturation / lightness 23° / 100% / 39%; background lightness (light, dark) 100%, 5%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 82. t104-split-dots · Supabase · Onest · r16
+
+- key: `t104-split-dots|supabase|onest+onest|16`
+- screen id: `t104-split-dots`
+- layout: **split** — Split, media first: a dotted plate with a large badge on it at the start; the end half has the headline and a two-column list.
+- image recipe: **dots** — Recipe "dots": a dot grid fading out (halftone by mask), with a large dot accent.
+- skin: `supabase` (Supabase)
+- font pairing: display Onest (`onest`), body Onest (`onest`)
+- radius: 16px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 6/37
+
+| token | light | dark |
+|---|---|---|
+| primary | `#72e3ad` | `#006239` |
+| background | `#fcfcfc` | `#121212` |
+| foreground | `#171717` | `#e1e7ef` |
+
+**Taste.** High-contrast, balanced split layout: cool green accent, saturated; bright surfaces, pillowy corners. Type is a single family, Onest: clean contemporary grotesque. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 17.6:1, 15.1:1; primary vs background (light, dark) 1.5:1, 2.5:1; primary hue / saturation / lightness 151° / 67% / 67%; background lightness (light, dark) 99%, 7%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 83. t105-fullbleed-duotone · Claude · Onest + Inter · r16
+
+- key: `t105-fullbleed-duotone|claude|onest+inter|16`
+- screen id: `t105-fullbleed-duotone`
+- layout: **fullbleed** (composition `full-bleed`) — Full-bleed picture: a duotone landscape fills the screen; the copy sits in a solid page-coloured box at the bottom start.
+- image recipe: **duotone** — Recipe "duotone": a picture in two skin colours. Even variants use the kit's base64 placeholder (MediaFrame) in grayscale (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
+- skin: `claude` (Claude)
+- font pairing: display Onest (`onest`), body Inter (`inter`)
+- radius: 16px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 3/31
+
+| token | light | dark |
+|---|---|---|
+| primary | `#bb5836` | `#b8593a` |
+| background | `#faf9f5` | `#262624` |
+| foreground | `#3d3929` | `#c3c0b6` |
+
+**Taste.** Medium-contrast, balanced full-bleed layout: warm orange accent, saturated; bright surfaces, pillowy corners. Type is Onest for display (clean contemporary grotesque) over Inter for text (neutral screen grotesque). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 10.9:1, 8.4:1; primary vs background (light, dark) 4.4:1, 3.3:1; primary hue / saturation / lightness 15° / 55% / 47%; background lightness (light, dark) 97%, 14%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 84. t107-dense-geometric · Supabase · Golos Text · r4
+
+- key: `t107-dense-geometric|supabase|golos-text+golos-text|4`
+- screen id: `t107-dense-geometric`
+- layout: **dense** (composition `dense-grid`) — Dense board: three columns of task-like cards, each card with a geometric thumbnail, a title and badges.
+- image recipe: **geometric** — Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours.
+- skin: `supabase` (Supabase)
+- font pairing: display Golos Text (`golos-text`), body Golos Text (`golos-text`)
+- radius: 4px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 6/13
+
+| token | light | dark |
+|---|---|---|
+| primary | `#72e3ad` | `#006239` |
+| background | `#fcfcfc` | `#121212` |
+| foreground | `#171717` | `#e1e7ef` |
+
+**Taste.** High-contrast, dense dense-grid layout: cool green accent, saturated; bright surfaces, crisp corners. Type is a single family, Golos Text: calm, even grotesque. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 17.6:1, 15.1:1; primary vs background (light, dark) 1.5:1, 2.5:1; primary hue / saturation / lightness 151° / 67% / 67%; background lightness (light, dark) 99%, 7%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 85. t110-airy-dots · Amber Minimal · Onest + Inter · r12
+
+- key: `t110-airy-dots|amber-minimal|onest+inter|12`
+- screen id: `t110-airy-dots`
+- layout: **airy** — Airy: one centred line of headline with a dotted rule beneath it, and nothing else but a quiet link.
+- image recipe: **dots** — Recipe "dots": a dot grid fading out (halftone by mask), with a large dot accent.
+- skin: `amber-minimal` (Amber Minimal)
+- font pairing: display Onest (`onest`), body Inter (`inter`)
+- radius: 12px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 10/30
+
+| token | light | dark |
+|---|---|---|
+| primary | `#f59e0b` | `#f59e0b` |
+| background | `#ffffff` | `#171717` |
+| foreground | `#262626` | `#e6e6e6` |
+
+**Taste.** Medium-contrast, very sparse airy layout: warm orange accent, vivid; bright surfaces, rounded corners. Type is Onest for display (clean contemporary grotesque) over Inter for text (neutral screen grotesque). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 15.1:1, 14.3:1; primary vs background (light, dark) 2.1:1, 8.4:1; primary hue / saturation / lightness 38° / 92% / 50%; background lightness (light, dark) 100%, 9%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 86. t114-ribbon-flat · Claude · IBM Plex Sans · r8
+
+- key: `t114-ribbon-flat|claude|ibm-plex-sans+ibm-plex-sans|8`
+- screen id: `t114-ribbon-flat`
+- layout: **ribbon** — Ribbon of words: the headline above, then a tilted band of huge repeated tags with flat shapes between the words.
+- image recipe: **flat** — Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours.
+- skin: `claude` (Claude)
+- font pairing: display IBM Plex Sans (`ibm-plex-sans`), body IBM Plex Sans (`ibm-plex-sans`)
+- radius: 8px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 18/23
+
+| token | light | dark |
+|---|---|---|
+| primary | `#bb5836` | `#b8593a` |
+| background | `#faf9f5` | `#262624` |
+| foreground | `#3d3929` | `#c3c0b6` |
+
+**Taste.** Medium-contrast, medium ribbon layout: warm orange accent, saturated; bright surfaces, softly rounded corners. Type is a single family, IBM Plex Sans: technical, engineered humanist sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 10.9:1, 8.4:1; primary vs background (light, dark) 4.4:1, 3.3:1; primary hue / saturation / lightness 15° / 55% / 47%; background lightness (light, dark) 97%, 14%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 87. t114-ribbon-flat · Supabase · Rubik + Nunito · r8
+
+- key: `t114-ribbon-flat|supabase|rubik+nunito|8`
+- screen id: `t114-ribbon-flat`
+- layout: **ribbon** — Ribbon of words: the headline above, then a tilted band of huge repeated tags with flat shapes between the words.
+- image recipe: **flat** — Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours.
+- skin: `supabase` (Supabase)
+- font pairing: display Rubik (`rubik`), body Nunito (`nunito`)
+- radius: 8px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 9/22
+
+| token | light | dark |
+|---|---|---|
+| primary | `#72e3ad` | `#006239` |
+| background | `#fcfcfc` | `#121212` |
+| foreground | `#171717` | `#e1e7ef` |
+
+**Taste.** High-contrast, medium ribbon layout: cool green accent, saturated; bright surfaces, softly rounded corners. Type is Rubik for display (slightly rounded blocky sans) over Nunito for text (soft rounded sans). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 17.6:1, 15.1:1; primary vs background (light, dark) 1.5:1, 2.5:1; primary hue / saturation / lightness 151° / 67% / 67%; background lightness (light, dark) 99%, 7%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 88. t115-editorial-duotone · Bubblegum · Rubik · r16
+
+- key: `t115-editorial-duotone|bubblegum|rubik+rubik|16`
+- screen id: `t115-editorial-duotone`
+- layout: **editorial** — Editorial spread: the start page is a full duotone picture; the end page has a byline, headline, a drop-cap paragraph.
+- image recipe: **duotone** — Recipe "duotone": a picture in two skin colours. Even variants use the kit's base64 placeholder (MediaFrame) in grayscale (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
+- skin: `bubblegum` (Bubblegum)
+- font pairing: display Rubik (`rubik`), body Rubik (`rubik`)
+- radius: 16px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 18/20
+
+| token | light | dark |
+|---|---|---|
+| primary | `#c4448e` | `#fbe2a7` |
+| background | `#f6e6ee` | `#12242e` |
+| foreground | `#5c5c5c` | `#f3e2ea` |
+
+**Taste.** Medium-contrast, dense editorial layout: warm pink accent, saturated; bright surfaces, pillowy corners. Type is a single family, Rubik: slightly rounded blocky sans. The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 5.6:1, 12.9:1; primary vs background (light, dark) 3.8:1, 12.6:1; primary hue / saturation / lightness 325° / 52% / 52%; background lightness (light, dark) 93%, 13%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 89. t115-editorial-duotone · Doom 64 · Roboto + Open Sans · r0
+
+- key: `t115-editorial-duotone|doom-64|roboto+open-sans|0`
+- screen id: `t115-editorial-duotone`
+- layout: **editorial** — Editorial spread: the start page is a full duotone picture; the end page has a byline, headline, a drop-cap paragraph.
+- image recipe: **duotone** — Recipe "duotone": a picture in two skin colours. Even variants use the kit's base64 placeholder (MediaFrame) in grayscale (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
+- skin: `doom-64` (Doom 64)
+- font pairing: display Roboto (`roboto`), body Open Sans (`open-sans`)
+- radius: 0px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 5/12
+
+| token | light | dark |
+|---|---|---|
+| primary | `#b71c1c` | `#dd302e` |
+| background | `#cccccc` | `#1a1a1a` |
+| foreground | `#1f1f1f` | `#e0e0e0` |
+
+**Taste.** Medium-contrast, dense editorial layout: warm red accent, saturated; pale surfaces, sharp-cornered corners. Type is Roboto for display (familiar mechanical-humanist sans) over Open Sans for text (open, friendly humanist sans). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 10.3:1, 13.3:1; primary vs background (light, dark) 4.1:1, 3.8:1; primary hue / saturation / lightness 0° / 74% / 41%; background lightness (light, dark) 80%, 10%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website
+
+## 90. t115-editorial-duotone · Sky · Onest + Inter · r12
+
+- key: `t115-editorial-duotone|sky|onest+inter|12`
+- screen id: `t115-editorial-duotone`
+- layout: **editorial** — Editorial spread: the start page is a full duotone picture; the end page has a byline, headline, a drop-cap paragraph.
+- image recipe: **duotone** — Recipe "duotone": a picture in two skin colours. Even variants use the kit's base64 placeholder (MediaFrame) in grayscale (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
+- skin: `sky` (Sky)
+- font pairing: display Onest (`onest`), body Inter (`inter`)
+- radius: 12px
+- included: first 2026-10-09T08:00:58.717Z; outlined on 1 card (row from top / col): 21/20
+
+| token | light | dark |
+|---|---|---|
+| primary | `#c84e00` | `#cc4a00` |
+| background | `#ffffff` | `#0a0c10` |
+| foreground | `#001a3d` | `#f8f9fa` |
+
+**Taste.** High-contrast, dense editorial layout: warm orange accent, vivid; bright surfaces, rounded corners. Type is Onest for display (clean contemporary grotesque) over Inter for text (neutral screen grotesque). The dark theme is a deep dark mode.
+
+Measured: contrast fg/bg (light, dark) 17.3:1, 18.6:1; primary vs background (light, dark) 4.6:1, 4.2:1; primary hue / saturation / lightness 23° / 100% / 39%; background lightness (light, dark) 100%, 5%.
+
+### Planned companion blocks
+
+Future: the detail page of this design shows its sibling blocks in the same style (same skin, fonts, radius, image recipe).
+
+- [ ] hero (the included screen itself)
+- [ ] hero-right
+- [ ] features
+- [ ] cta
+- [ ] pricing
+- [ ] testimonials
+- [ ] faq
+- [ ] footer
+- [ ] stats
+- [ ] logos
+
+### Planned templates
+
+Future: listed on the Templates tab of the detail page.
+
+- [ ] blog
+- [ ] store
+- [ ] portfolio
+- [ ] website

@@ -1,1 +1,1622 @@
-[]
+[
+  {
+    "key": "t001-poster-mesh|kodama-grove|montserrat+inter|12",
+    "id": "t001-poster-mesh",
+    "skin": "kodama-grove",
+    "fonts": {
+      "display": "montserrat",
+      "body": "inter"
+    },
+    "radius": 12,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 2,
+        "col": 6
+      }
+    ]
+  },
+  {
+    "key": "t002-split-glass|neo-brutalism|roboto+open-sans|16",
+    "id": "t002-split-glass",
+    "skin": "neo-brutalism",
+    "fonts": {
+      "display": "roboto",
+      "body": "open-sans"
+    },
+    "radius": 16,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 6,
+        "col": 30
+      }
+    ]
+  },
+  {
+    "key": "t002-split-glass|violet-bloom|manrope+manrope|16",
+    "id": "t002-split-glass",
+    "skin": "violet-bloom",
+    "fonts": {
+      "display": "manrope",
+      "body": "manrope"
+    },
+    "radius": 16,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 1,
+        "col": 16
+      }
+    ]
+  },
+  {
+    "key": "t003-fullbleed-grain|neo-brutalism|rubik+rubik|0",
+    "id": "t003-fullbleed-grain",
+    "skin": "neo-brutalism",
+    "fonts": {
+      "display": "rubik",
+      "body": "rubik"
+    },
+    "radius": 0,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 4,
+        "col": 15
+      }
+    ]
+  },
+  {
+    "key": "t004-airy-dots|doom-64|nunito+nunito|8",
+    "id": "t004-airy-dots",
+    "skin": "doom-64",
+    "fonts": {
+      "display": "nunito",
+      "body": "nunito"
+    },
+    "radius": 8,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 15,
+        "col": 15
+      }
+    ]
+  },
+  {
+    "key": "t005-stats-flat|amber-minimal|golos-text+onest|4",
+    "id": "t005-stats-flat",
+    "skin": "amber-minimal",
+    "fonts": {
+      "display": "golos-text",
+      "body": "onest"
+    },
+    "radius": 4,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 3,
+        "col": 8
+      }
+    ]
+  },
+  {
+    "key": "t005-stats-flat|doom-64|inter+inter|4",
+    "id": "t005-stats-flat",
+    "skin": "doom-64",
+    "fonts": {
+      "display": "inter",
+      "body": "inter"
+    },
+    "radius": 4,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 14,
+        "col": 1
+      }
+    ]
+  },
+  {
+    "key": "t006-ribbon-rings|supabase|onest+inter|12",
+    "id": "t006-ribbon-rings",
+    "skin": "supabase",
+    "fonts": {
+      "display": "onest",
+      "body": "inter"
+    },
+    "radius": 12,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 3,
+        "col": 6
+      }
+    ]
+  },
+  {
+    "key": "t010-dense-geometric|amber-minimal|montserrat+open-sans|8",
+    "id": "t010-dense-geometric",
+    "skin": "amber-minimal",
+    "fonts": {
+      "display": "montserrat",
+      "body": "open-sans"
+    },
+    "radius": 8,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 15,
+        "col": 20
+      }
+    ]
+  },
+  {
+    "key": "t010-dense-geometric|neo-brutalism|roboto+roboto|8",
+    "id": "t010-dense-geometric",
+    "skin": "neo-brutalism",
+    "fonts": {
+      "display": "roboto",
+      "body": "roboto"
+    },
+    "radius": 8,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 17,
+        "col": 27
+      }
+    ]
+  },
+  {
+    "key": "t010-dense-geometric|violet-bloom|manrope+manrope|8",
+    "id": "t010-dense-geometric",
+    "skin": "violet-bloom",
+    "fonts": {
+      "display": "manrope",
+      "body": "manrope"
+    },
+    "radius": 8,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 19,
+        "col": 19
+      }
+    ]
+  },
+  {
+    "key": "t011-split-stripes|doom-64|roboto+roboto|0",
+    "id": "t011-split-stripes",
+    "skin": "doom-64",
+    "fonts": {
+      "display": "roboto",
+      "body": "roboto"
+    },
+    "radius": 0,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 2,
+        "col": 7
+      }
+    ]
+  },
+  {
+    "key": "t017-ribbon-flat|bubblegum|montserrat+open-sans|12",
+    "id": "t017-ribbon-flat",
+    "skin": "bubblegum",
+    "fonts": {
+      "display": "montserrat",
+      "body": "open-sans"
+    },
+    "radius": 12,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 5,
+        "col": 23
+      }
+    ]
+  },
+  {
+    "key": "t017-ribbon-flat|sky|open-sans+open-sans|12",
+    "id": "t017-ribbon-flat",
+    "skin": "sky",
+    "fonts": {
+      "display": "open-sans",
+      "body": "open-sans"
+    },
+    "radius": 12,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 1,
+        "col": 9
+      }
+    ]
+  },
+  {
+    "key": "t019-dense-duotone|amber-minimal|golos-text+golos-text|4",
+    "id": "t019-dense-duotone",
+    "skin": "amber-minimal",
+    "fonts": {
+      "display": "golos-text",
+      "body": "golos-text"
+    },
+    "radius": 4,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 14,
+        "col": 4
+      }
+    ]
+  },
+  {
+    "key": "t020-fullbleed-stripes|kodama-grove|montserrat+open-sans|0",
+    "id": "t020-fullbleed-stripes",
+    "skin": "kodama-grove",
+    "fonts": {
+      "display": "montserrat",
+      "body": "open-sans"
+    },
+    "radius": 0,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 6,
+        "col": 17
+      }
+    ]
+  },
+  {
+    "key": "t020-fullbleed-stripes|neo-brutalism|montserrat+open-sans|0",
+    "id": "t020-fullbleed-stripes",
+    "skin": "neo-brutalism",
+    "fonts": {
+      "display": "montserrat",
+      "body": "open-sans"
+    },
+    "radius": 0,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 2,
+        "col": 21
+      }
+    ]
+  },
+  {
+    "key": "t021-split-dots|amber-minimal|golos-text+golos-text|16",
+    "id": "t021-split-dots",
+    "skin": "amber-minimal",
+    "fonts": {
+      "display": "golos-text",
+      "body": "golos-text"
+    },
+    "radius": 16,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 4,
+        "col": 22
+      }
+    ]
+  },
+  {
+    "key": "t022-poster-geometric|claude|nunito+nunito|12",
+    "id": "t022-poster-geometric",
+    "skin": "claude",
+    "fonts": {
+      "display": "nunito",
+      "body": "nunito"
+    },
+    "radius": 12,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 21,
+        "col": 22
+      }
+    ]
+  },
+  {
+    "key": "t022-poster-geometric|cosmic-night|nunito+nunito|12",
+    "id": "t022-poster-geometric",
+    "skin": "cosmic-night",
+    "fonts": {
+      "display": "nunito",
+      "body": "nunito"
+    },
+    "radius": 12,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 10,
+        "col": 31
+      }
+    ]
+  },
+  {
+    "key": "t025-stats-mesh|supabase|rubik+rubik|8",
+    "id": "t025-stats-mesh",
+    "skin": "supabase",
+    "fonts": {
+      "display": "rubik",
+      "body": "rubik"
+    },
+    "radius": 8,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 14,
+        "col": 19
+      }
+    ]
+  },
+  {
+    "key": "t027-editorial-flat|modern-minimal|montserrat+open-sans|0",
+    "id": "t027-editorial-flat",
+    "skin": "modern-minimal",
+    "fonts": {
+      "display": "montserrat",
+      "body": "open-sans"
+    },
+    "radius": 0,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 15,
+        "col": 9
+      }
+    ]
+  },
+  {
+    "key": "t027-editorial-flat|modern-minimal|montserrat+open-sans|16",
+    "id": "t027-editorial-flat",
+    "skin": "modern-minimal",
+    "fonts": {
+      "display": "montserrat",
+      "body": "open-sans"
+    },
+    "radius": 16,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 6,
+        "col": 40
+      }
+    ]
+  },
+  {
+    "key": "t032-poster-duotone|modern-minimal|manrope+manrope|8",
+    "id": "t032-poster-duotone",
+    "skin": "modern-minimal",
+    "fonts": {
+      "display": "manrope",
+      "body": "manrope"
+    },
+    "radius": 8,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 13,
+        "col": 9
+      }
+    ]
+  },
+  {
+    "key": "t033-fullbleed-rings|doom-64|onest+inter|16",
+    "id": "t033-fullbleed-rings",
+    "skin": "doom-64",
+    "fonts": {
+      "display": "onest",
+      "body": "inter"
+    },
+    "radius": 16,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 11,
+        "col": 2
+      }
+    ]
+  },
+  {
+    "key": "t033-fullbleed-rings|supabase|montserrat+inter|0",
+    "id": "t033-fullbleed-rings",
+    "skin": "supabase",
+    "fonts": {
+      "display": "montserrat",
+      "body": "inter"
+    },
+    "radius": 0,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 4,
+        "col": 10
+      }
+    ]
+  },
+  {
+    "key": "t035-stats-geometric|sky|roboto+roboto|12",
+    "id": "t035-stats-geometric",
+    "skin": "sky",
+    "fonts": {
+      "display": "roboto",
+      "body": "roboto"
+    },
+    "radius": 12,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 12,
+        "col": 0
+      }
+    ]
+  },
+  {
+    "key": "t035-stats-geometric|supabase|roboto+roboto|0",
+    "id": "t035-stats-geometric",
+    "skin": "supabase",
+    "fonts": {
+      "display": "roboto",
+      "body": "roboto"
+    },
+    "radius": 0,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 7,
+        "col": 17
+      }
+    ]
+  },
+  {
+    "key": "t041-poster-rings|modern-minimal|rubik+nunito|8",
+    "id": "t041-poster-rings",
+    "skin": "modern-minimal",
+    "fonts": {
+      "display": "rubik",
+      "body": "nunito"
+    },
+    "radius": 8,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 7,
+        "col": 15
+      }
+    ]
+  },
+  {
+    "key": "t044-dense-conic|violet-bloom|rubik+rubik|4",
+    "id": "t044-dense-conic",
+    "skin": "violet-bloom",
+    "fonts": {
+      "display": "rubik",
+      "body": "rubik"
+    },
+    "radius": 4,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 14,
+        "col": 24
+      }
+    ]
+  },
+  {
+    "key": "t048-editorial-rings|amber-minimal|golos-text+golos-text|8",
+    "id": "t048-editorial-rings",
+    "skin": "amber-minimal",
+    "fonts": {
+      "display": "golos-text",
+      "body": "golos-text"
+    },
+    "radius": 8,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 12,
+        "col": 43
+      }
+    ]
+  },
+  {
+    "key": "t048-editorial-rings|amber-minimal|roboto+roboto|8",
+    "id": "t048-editorial-rings",
+    "skin": "amber-minimal",
+    "fonts": {
+      "display": "roboto",
+      "body": "roboto"
+    },
+    "radius": 8,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 6,
+        "col": 2
+      }
+    ]
+  },
+  {
+    "key": "t048-editorial-rings|neo-brutalism|manrope+ibm-plex-sans|8",
+    "id": "t048-editorial-rings",
+    "skin": "neo-brutalism",
+    "fonts": {
+      "display": "manrope",
+      "body": "ibm-plex-sans"
+    },
+    "radius": 8,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 14,
+        "col": 20
+      }
+    ]
+  },
+  {
+    "key": "t048-editorial-rings|notebook|golos-text+golos-text|0",
+    "id": "t048-editorial-rings",
+    "skin": "notebook",
+    "fonts": {
+      "display": "golos-text",
+      "body": "golos-text"
+    },
+    "radius": 0,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 8,
+        "col": 13
+      }
+    ]
+  },
+  {
+    "key": "t048-editorial-rings|supabase|golos-text+golos-text|0",
+    "id": "t048-editorial-rings",
+    "skin": "supabase",
+    "fonts": {
+      "display": "golos-text",
+      "body": "golos-text"
+    },
+    "radius": 0,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 5,
+        "col": 8
+      }
+    ]
+  },
+  {
+    "key": "t050-prompt-dots|cosmic-night|ibm-plex-sans+ibm-plex-sans|12",
+    "id": "t050-prompt-dots",
+    "skin": "cosmic-night",
+    "fonts": {
+      "display": "ibm-plex-sans",
+      "body": "ibm-plex-sans"
+    },
+    "radius": 12,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 5,
+        "col": 7
+      }
+    ]
+  },
+  {
+    "key": "t050-prompt-dots|doom-64|roboto+open-sans|8",
+    "id": "t050-prompt-dots",
+    "skin": "doom-64",
+    "fonts": {
+      "display": "roboto",
+      "body": "open-sans"
+    },
+    "radius": 8,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 9,
+        "col": 3
+      }
+    ]
+  },
+  {
+    "key": "t050-prompt-dots|t3-chat|ibm-plex-sans+ibm-plex-sans|4",
+    "id": "t050-prompt-dots",
+    "skin": "t3-chat",
+    "fonts": {
+      "display": "ibm-plex-sans",
+      "body": "ibm-plex-sans"
+    },
+    "radius": 4,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 1,
+        "col": 15
+      }
+    ]
+  },
+  {
+    "key": "t051-poster-stripes|sky|golos-text+onest|0",
+    "id": "t051-poster-stripes",
+    "skin": "sky",
+    "fonts": {
+      "display": "golos-text",
+      "body": "onest"
+    },
+    "radius": 0,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 17,
+        "col": 8
+      }
+    ]
+  },
+  {
+    "key": "t051-poster-stripes|violet-bloom|roboto+open-sans|12",
+    "id": "t051-poster-stripes",
+    "skin": "violet-bloom",
+    "fonts": {
+      "display": "roboto",
+      "body": "open-sans"
+    },
+    "radius": 12,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 2,
+        "col": 15
+      }
+    ]
+  },
+  {
+    "key": "t053-fullbleed-geometric|amber-minimal|onest+inter|4",
+    "id": "t053-fullbleed-geometric",
+    "skin": "amber-minimal",
+    "fonts": {
+      "display": "onest",
+      "body": "inter"
+    },
+    "radius": 4,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 12,
+        "col": 9
+      }
+    ]
+  },
+  {
+    "key": "t053-fullbleed-geometric|claude|onest+inter|8",
+    "id": "t053-fullbleed-geometric",
+    "skin": "claude",
+    "fonts": {
+      "display": "onest",
+      "body": "inter"
+    },
+    "radius": 8,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 18,
+        "col": 19
+      }
+    ]
+  },
+  {
+    "key": "t053-fullbleed-geometric|perpetuity|onest+inter|4",
+    "id": "t053-fullbleed-geometric",
+    "skin": "perpetuity",
+    "fonts": {
+      "display": "onest",
+      "body": "inter"
+    },
+    "radius": 4,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 4,
+        "col": 29
+      }
+    ]
+  },
+  {
+    "key": "t053-fullbleed-geometric|supabase|onest+inter|0",
+    "id": "t053-fullbleed-geometric",
+    "skin": "supabase",
+    "fonts": {
+      "display": "onest",
+      "body": "inter"
+    },
+    "radius": 0,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 14,
+        "col": 26
+      }
+    ]
+  },
+  {
+    "key": "t055-airy-conic|amber-minimal|onest+onest|0",
+    "id": "t055-airy-conic",
+    "skin": "amber-minimal",
+    "fonts": {
+      "display": "onest",
+      "body": "onest"
+    },
+    "radius": 0,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 2,
+        "col": 27
+      }
+    ]
+  },
+  {
+    "key": "t059-frame-rings|amber-minimal|golos-text+onest|12",
+    "id": "t059-frame-rings",
+    "skin": "amber-minimal",
+    "fonts": {
+      "display": "golos-text",
+      "body": "onest"
+    },
+    "radius": 12,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 9,
+        "col": 2
+      }
+    ]
+  },
+  {
+    "key": "t059-frame-rings|cosmic-night|montserrat+open-sans|16",
+    "id": "t059-frame-rings",
+    "skin": "cosmic-night",
+    "fonts": {
+      "display": "montserrat",
+      "body": "open-sans"
+    },
+    "radius": 16,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 1,
+        "col": 3
+      }
+    ]
+  },
+  {
+    "key": "t059-frame-rings|modern-minimal|golos-text+onest|4",
+    "id": "t059-frame-rings",
+    "skin": "modern-minimal",
+    "fonts": {
+      "display": "golos-text",
+      "body": "onest"
+    },
+    "radius": 4,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 10,
+        "col": 43
+      }
+    ]
+  },
+  {
+    "key": "t062-split-duotone|claude|manrope+ibm-plex-sans|0",
+    "id": "t062-split-duotone",
+    "skin": "claude",
+    "fonts": {
+      "display": "manrope",
+      "body": "ibm-plex-sans"
+    },
+    "radius": 0,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 6,
+        "col": 9
+      }
+    ]
+  },
+  {
+    "key": "t062-split-duotone|notebook|manrope+ibm-plex-sans|8",
+    "id": "t062-split-duotone",
+    "skin": "notebook",
+    "fonts": {
+      "display": "manrope",
+      "body": "ibm-plex-sans"
+    },
+    "radius": 8,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 20,
+        "col": 13
+      }
+    ]
+  },
+  {
+    "key": "t062-split-duotone|sky|manrope+ibm-plex-sans|0",
+    "id": "t062-split-duotone",
+    "skin": "sky",
+    "fonts": {
+      "display": "manrope",
+      "body": "ibm-plex-sans"
+    },
+    "radius": 0,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 2,
+        "col": 24
+      }
+    ]
+  },
+  {
+    "key": "t062-split-duotone|t3-chat|manrope+ibm-plex-sans|0",
+    "id": "t062-split-duotone",
+    "skin": "t3-chat",
+    "fonts": {
+      "display": "manrope",
+      "body": "ibm-plex-sans"
+    },
+    "radius": 0,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 13,
+        "col": 27
+      }
+    ]
+  },
+  {
+    "key": "t062-split-duotone|t3-chat|manrope+ibm-plex-sans|12",
+    "id": "t062-split-duotone",
+    "skin": "t3-chat",
+    "fonts": {
+      "display": "manrope",
+      "body": "ibm-plex-sans"
+    },
+    "radius": 12,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 16,
+        "col": 16
+      }
+    ]
+  },
+  {
+    "key": "t063-fullbleed-conic|perpetuity|nunito+nunito|16",
+    "id": "t063-fullbleed-conic",
+    "skin": "perpetuity",
+    "fonts": {
+      "display": "nunito",
+      "body": "nunito"
+    },
+    "radius": 16,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 2,
+        "col": 16
+      }
+    ]
+  },
+  {
+    "key": "t067-ribbon-stripes|claude|manrope+manrope|12",
+    "id": "t067-ribbon-stripes",
+    "skin": "claude",
+    "fonts": {
+      "display": "manrope",
+      "body": "manrope"
+    },
+    "radius": 12,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 2,
+        "col": 18
+      }
+    ]
+  },
+  {
+    "key": "t069-frame-duotone|cosmic-night|golos-text+onest|0",
+    "id": "t069-frame-duotone",
+    "skin": "cosmic-night",
+    "fonts": {
+      "display": "golos-text",
+      "body": "onest"
+    },
+    "radius": 0,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 7,
+        "col": 16
+      }
+    ]
+  },
+  {
+    "key": "t069-frame-duotone|neo-brutalism|golos-text+onest|16",
+    "id": "t069-frame-duotone",
+    "skin": "neo-brutalism",
+    "fonts": {
+      "display": "golos-text",
+      "body": "onest"
+    },
+    "radius": 16,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 3,
+        "col": 16
+      }
+    ]
+  },
+  {
+    "key": "t069-frame-duotone|t3-chat|inter+inter|16",
+    "id": "t069-frame-duotone",
+    "skin": "t3-chat",
+    "fonts": {
+      "display": "inter",
+      "body": "inter"
+    },
+    "radius": 16,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 14,
+        "col": 15
+      }
+    ]
+  },
+  {
+    "key": "t070-prompt-geometric|violet-bloom|manrope+ibm-plex-sans|4",
+    "id": "t070-prompt-geometric",
+    "skin": "violet-bloom",
+    "fonts": {
+      "display": "manrope",
+      "body": "ibm-plex-sans"
+    },
+    "radius": 4,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 2,
+        "col": 9
+      }
+    ]
+  },
+  {
+    "key": "t071-poster-dots|amber-minimal|montserrat+open-sans|8",
+    "id": "t071-poster-dots",
+    "skin": "amber-minimal",
+    "fonts": {
+      "display": "montserrat",
+      "body": "open-sans"
+    },
+    "radius": 8,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 14,
+        "col": 29
+      }
+    ]
+  },
+  {
+    "key": "t071-poster-dots|bubblegum|montserrat+open-sans|0",
+    "id": "t071-poster-dots",
+    "skin": "bubblegum",
+    "fonts": {
+      "display": "montserrat",
+      "body": "open-sans"
+    },
+    "radius": 0,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 2,
+        "col": 8
+      }
+    ]
+  },
+  {
+    "key": "t071-poster-dots|kodama-grove|montserrat+open-sans|12",
+    "id": "t071-poster-dots",
+    "skin": "kodama-grove",
+    "fonts": {
+      "display": "montserrat",
+      "body": "open-sans"
+    },
+    "radius": 12,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 7,
+        "col": 26
+      }
+    ]
+  },
+  {
+    "key": "t072-split-geometric|amber-minimal|inter+inter|16",
+    "id": "t072-split-geometric",
+    "skin": "amber-minimal",
+    "fonts": {
+      "display": "inter",
+      "body": "inter"
+    },
+    "radius": 16,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 4,
+        "col": 6
+      }
+    ]
+  },
+  {
+    "key": "t073-fullbleed-flat|amber-minimal|golos-text+onest|4",
+    "id": "t073-fullbleed-flat",
+    "skin": "amber-minimal",
+    "fonts": {
+      "display": "golos-text",
+      "body": "onest"
+    },
+    "radius": 4,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 5,
+        "col": 28
+      }
+    ]
+  },
+  {
+    "key": "t081-poster-conic|bubblegum|onest+inter|8",
+    "id": "t081-poster-conic",
+    "skin": "bubblegum",
+    "fonts": {
+      "display": "onest",
+      "body": "inter"
+    },
+    "radius": 8,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 18,
+        "col": 25
+      }
+    ]
+  },
+  {
+    "key": "t089-frame-mesh|bubblegum|rubik+rubik|8",
+    "id": "t089-frame-mesh",
+    "skin": "bubblegum",
+    "fonts": {
+      "display": "rubik",
+      "body": "rubik"
+    },
+    "radius": 8,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 3,
+        "col": 1
+      }
+    ]
+  },
+  {
+    "key": "t089-frame-mesh|sky|rubik+rubik|8",
+    "id": "t089-frame-mesh",
+    "skin": "sky",
+    "fonts": {
+      "display": "rubik",
+      "body": "rubik"
+    },
+    "radius": 8,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 15,
+        "col": 21
+      }
+    ]
+  },
+  {
+    "key": "t093-fullbleed-dots|neo-brutalism|montserrat+inter|12",
+    "id": "t093-fullbleed-dots",
+    "skin": "neo-brutalism",
+    "fonts": {
+      "display": "montserrat",
+      "body": "inter"
+    },
+    "radius": 12,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 3,
+        "col": 2
+      }
+    ]
+  },
+  {
+    "key": "t093-fullbleed-dots|sky|montserrat+inter|12",
+    "id": "t093-fullbleed-dots",
+    "skin": "sky",
+    "fonts": {
+      "display": "montserrat",
+      "body": "inter"
+    },
+    "radius": 12,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 17,
+        "col": 28
+      }
+    ]
+  },
+  {
+    "key": "t094-dense-flat|amber-minimal|open-sans+open-sans|4",
+    "id": "t094-dense-flat",
+    "skin": "amber-minimal",
+    "fonts": {
+      "display": "open-sans",
+      "body": "open-sans"
+    },
+    "radius": 4,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 2,
+        "col": 17
+      }
+    ]
+  },
+  {
+    "key": "t094-dense-flat|claude|montserrat+inter|0",
+    "id": "t094-dense-flat",
+    "skin": "claude",
+    "fonts": {
+      "display": "montserrat",
+      "body": "inter"
+    },
+    "radius": 0,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 2,
+        "col": 5
+      }
+    ]
+  },
+  {
+    "key": "t094-dense-flat|claude|open-sans+open-sans|8",
+    "id": "t094-dense-flat",
+    "skin": "claude",
+    "fonts": {
+      "display": "open-sans",
+      "body": "open-sans"
+    },
+    "radius": 8,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 7,
+        "col": 34
+      }
+    ]
+  },
+  {
+    "key": "t094-dense-flat|modern-minimal|montserrat+inter|4",
+    "id": "t094-dense-flat",
+    "skin": "modern-minimal",
+    "fonts": {
+      "display": "montserrat",
+      "body": "inter"
+    },
+    "radius": 4,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 11,
+        "col": 12
+      }
+    ]
+  },
+  {
+    "key": "t094-dense-flat|modern-minimal|montserrat+open-sans|4",
+    "id": "t094-dense-flat",
+    "skin": "modern-minimal",
+    "fonts": {
+      "display": "montserrat",
+      "body": "open-sans"
+    },
+    "radius": 4,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 17,
+        "col": 16
+      }
+    ]
+  },
+  {
+    "key": "t098-editorial-geometric|claude|roboto+roboto|16",
+    "id": "t098-editorial-geometric",
+    "skin": "claude",
+    "fonts": {
+      "display": "roboto",
+      "body": "roboto"
+    },
+    "radius": 16,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 17,
+        "col": 7
+      }
+    ]
+  },
+  {
+    "key": "t098-editorial-geometric|t3-chat|roboto+roboto|8",
+    "id": "t098-editorial-geometric",
+    "skin": "t3-chat",
+    "fonts": {
+      "display": "roboto",
+      "body": "roboto"
+    },
+    "radius": 8,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 3,
+        "col": 15
+      }
+    ]
+  },
+  {
+    "key": "t099-frame-geometric|amber-minimal|rubik+rubik|0",
+    "id": "t099-frame-geometric",
+    "skin": "amber-minimal",
+    "fonts": {
+      "display": "rubik",
+      "body": "rubik"
+    },
+    "radius": 0,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 17,
+        "col": 18
+      }
+    ]
+  },
+  {
+    "key": "t099-frame-geometric|cosmic-night|montserrat+inter|0",
+    "id": "t099-frame-geometric",
+    "skin": "cosmic-night",
+    "fonts": {
+      "display": "montserrat",
+      "body": "inter"
+    },
+    "radius": 0,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 15,
+        "col": 28
+      }
+    ]
+  },
+  {
+    "key": "t099-frame-geometric|modern-minimal|golos-text+onest|0",
+    "id": "t099-frame-geometric",
+    "skin": "modern-minimal",
+    "fonts": {
+      "display": "golos-text",
+      "body": "onest"
+    },
+    "radius": 0,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 5,
+        "col": 3
+      }
+    ]
+  },
+  {
+    "key": "t099-frame-geometric|supabase|ibm-plex-sans+ibm-plex-sans|4",
+    "id": "t099-frame-geometric",
+    "skin": "supabase",
+    "fonts": {
+      "display": "ibm-plex-sans",
+      "body": "ibm-plex-sans"
+    },
+    "radius": 4,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 11,
+        "col": 45
+      }
+    ]
+  },
+  {
+    "key": "t104-split-dots|sky|onest+onest|8",
+    "id": "t104-split-dots",
+    "skin": "sky",
+    "fonts": {
+      "display": "onest",
+      "body": "onest"
+    },
+    "radius": 8,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 20,
+        "col": 0
+      }
+    ]
+  },
+  {
+    "key": "t104-split-dots|supabase|onest+onest|16",
+    "id": "t104-split-dots",
+    "skin": "supabase",
+    "fonts": {
+      "display": "onest",
+      "body": "onest"
+    },
+    "radius": 16,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 6,
+        "col": 37
+      }
+    ]
+  },
+  {
+    "key": "t105-fullbleed-duotone|claude|onest+inter|16",
+    "id": "t105-fullbleed-duotone",
+    "skin": "claude",
+    "fonts": {
+      "display": "onest",
+      "body": "inter"
+    },
+    "radius": 16,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 3,
+        "col": 31
+      }
+    ]
+  },
+  {
+    "key": "t107-dense-geometric|supabase|golos-text+golos-text|4",
+    "id": "t107-dense-geometric",
+    "skin": "supabase",
+    "fonts": {
+      "display": "golos-text",
+      "body": "golos-text"
+    },
+    "radius": 4,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 6,
+        "col": 13
+      }
+    ]
+  },
+  {
+    "key": "t110-airy-dots|amber-minimal|onest+inter|12",
+    "id": "t110-airy-dots",
+    "skin": "amber-minimal",
+    "fonts": {
+      "display": "onest",
+      "body": "inter"
+    },
+    "radius": 12,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 10,
+        "col": 30
+      }
+    ]
+  },
+  {
+    "key": "t114-ribbon-flat|claude|ibm-plex-sans+ibm-plex-sans|8",
+    "id": "t114-ribbon-flat",
+    "skin": "claude",
+    "fonts": {
+      "display": "ibm-plex-sans",
+      "body": "ibm-plex-sans"
+    },
+    "radius": 8,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 18,
+        "col": 23
+      }
+    ]
+  },
+  {
+    "key": "t114-ribbon-flat|supabase|rubik+nunito|8",
+    "id": "t114-ribbon-flat",
+    "skin": "supabase",
+    "fonts": {
+      "display": "rubik",
+      "body": "nunito"
+    },
+    "radius": 8,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 9,
+        "col": 22
+      }
+    ]
+  },
+  {
+    "key": "t115-editorial-duotone|bubblegum|rubik+rubik|16",
+    "id": "t115-editorial-duotone",
+    "skin": "bubblegum",
+    "fonts": {
+      "display": "rubik",
+      "body": "rubik"
+    },
+    "radius": 16,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 18,
+        "col": 20
+      }
+    ]
+  },
+  {
+    "key": "t115-editorial-duotone|doom-64|roboto+open-sans|0",
+    "id": "t115-editorial-duotone",
+    "skin": "doom-64",
+    "fonts": {
+      "display": "roboto",
+      "body": "open-sans"
+    },
+    "radius": 0,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 5,
+        "col": 12
+      }
+    ]
+  },
+  {
+    "key": "t115-editorial-duotone|sky|onest+inter|12",
+    "id": "t115-editorial-duotone",
+    "skin": "sky",
+    "fonts": {
+      "display": "onest",
+      "body": "inter"
+    },
+    "radius": 12,
+    "firstSeen": "2026-10-09T08:00:58.717Z",
+    "sightings": [
+      {
+        "time": "2026-10-09T08:00:58.717Z",
+        "row": 21,
+        "col": 20
+      }
+    ]
+  }
+]
