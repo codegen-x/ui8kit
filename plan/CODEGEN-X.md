@@ -127,3 +127,7 @@ Eleven page references from the user, kept as layout notes only: no brand names,
 9. **Fashion, huge condensed headline** (t143): utility bar, search pill in the header, an enormous uppercase headline with a second line and an avatar proof row, an arch plate at the end, a row of eight round category discs, and two banner cards.
 10. **Shop dashboard** (t144): a left icon rail with labels, a command bar and a primary action on top, a promo card beside a bar chart card, a row of four colourful product tiles, and two stat cards in a right column.
 11. **Fintech landing** (t145, t146): centred hero with a pill kicker and two actions over a wide plate with a wallet card, a ribbon of six company names, three feature cards (middle one filled); a three-tier price table with the dark middle tier, a FAQ column of disclosures beside testimonial strips.
+
+## 8. Magazine app (noted 2026-10-10)
+
+A separate app `apps/magazine` (journal, warehouse and storage of collections, design packs, templates, presets): 10 picks on the Discovery panorama -> Recommendations -> collections, a header ball that re-opens the sphere, a detail page with series blocks, the 10 templates and composition patterns. Design only, not built: see `plan/MAGAZINE.md`. It asks for 10 picks (not 8) before a personal catalog and a shared `packages/panorama`.
