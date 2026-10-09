@@ -106,3 +106,7 @@ Preview tech:
 3. Build the registry (index + items) and publish it to the CDN.
 4. Site: start by pulling all blocks in Svelte from the registry.
 5. Keep a synchronous registry of links between the site and the `cgenx` CLI (same vocabulary, same index).
+
+## Task: Templates tab, HTML5 page layouts (noted 2026-10-09)
+
+The Templates tab needs different semantic HTML5 page markup, one skeleton per layout. Source: the user's "10 common website layouts" reference: classic (header, nav, hero, content, footer), two-column, three-column, sidebar, dashboard, blog, e-commerce, portfolio, SaaS landing, documentation. Each skeleton uses landmarks (`header`, `nav`, `main`, `aside`, `article`, `section`, `footer`), keeps the 8px grid, and is skinned by the chosen style. Not started; comes after the registry and detail pages.
