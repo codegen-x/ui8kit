@@ -1,6 +1,6 @@
 # magazine — design draft (apps/magazine)
 
-Status: design only, nothing is built (2026-10-10). A separate Svelte app next to `apps/discovery`. Reads `plan/CODEGEN-X.md` (§1, §5, §6, layouts list) and reuses the real Discovery data (`tastes.ts`, `compositions.ts`, `curated.ts`, `included.json`, `engine/*`, `plan/included-styles.md`).
+Status: design with decisions closed (§12, 2026-10-10); step 1 of the roadmap (shared packages) is done, the app is not built. A separate Svelte app next to `apps/discovery`. Reads `plan/CODEGEN-X.md` (§1, §5, §6, layouts list) and reuses the real Discovery data (`tastes.ts`, `compositions.ts`, `curated.ts`, `included.json`, `engine/*`, `plan/included-styles.md`).
 
 ## 1. Purpose
 
@@ -15,7 +15,7 @@ User flow (translated from the user's wording):
 5. Recommendations are **cards of screens similar in colour and style**, in **rows that alternate with fonts and skins rows**.
 6. A card's **detail page** shows the other screens of this series (same design in other blocks: hero, features, cta, hero-right, …), the **10 ready-made templates** (blog, store, portfolio, website, dashboard, SaaS landing, docs, … — the 10 layouts in CODEGEN-X.md "Templates tab") and the **composition patterns** of the design.
 
-Note: CODEGEN-X.md says Jev needs ≥ 8 picks; the user now says **10**. `MIN_PICKS = 10` is one constant in the shared vocabulary; update CODEGEN-X.md §1 item 2 when this lands.
+Note: CODEGEN-X.md used to say Jev needs ≥ 8 picks; it is now **10** (§12, decision 4), and CODEGEN-X.md §1 item 2 is updated. `MIN_PICKS = 10` is one constant in the shared vocabulary.
 
 Fixed constraints (not re-opened): Svelte only; previews are CSS-scaled desktop-width (1440×1080) screens in the same DOM, never iframes; no mobile simulator, no container queries; brand-free neutral English copy; ui8kit 2.0 rules (8px step, 4px only inside controls, plain `rounded` tied to `--radius`, no gradients in primitives — gradients/blur/grain only inside procedural media recipes, shadows only on floating surfaces, Tailwind-named size keys); skin = CSS variables (HSL).
 
@@ -61,8 +61,8 @@ Hash routing (as in Discovery: query survives navigation).
 Link from Discovery: `…/magazine/?picks=…` (a normal navigation; the two apps are separate builds). Relation to Discovery's `cards=` modes:
 
 - `cards=all` (keep), `cards=exclude`: unrelated to the magazine; unchanged.
-- `cards=include` stays the curator's tool (marketplace showcase, `included.json`). Magazine picks are a **new, fifth mode `?cards=recommend`** in Discovery: picks are Style descriptors (`screen|skin|font|radius`, same as the include descriptors), stored in `discovery-picked-recommend`, no Send to the :5190 server; the button is **Recommendations**, enabled at exactly ≥ 10 and showing `n/10`. Clearing = a "Clear" link beside the button.
-- Included styles (`included.json`, 90 at the time of writing) are a ranking boost and the seed of the warehouse, not a gate.
+- `cards=include` stays the curator's tool (marketplace showcase, `included.json`). Magazine picks are a **new, fifth mode `?cards=recommend`** in Discovery: picks are Style descriptors (`screen|skin|font|radius`, same as the include descriptors), stored in `discovery-picked-recommend`, no Send to the :5190 server; the button is **Recommendations**, enabled strictly at 10 picks (`MIN_PICKS`, never earlier) and showing `n/10`. Clearing = a "Clear" link beside the button.
+- Included styles (`included.json`, 90 at the time of writing) are a ranking boost and the seed of the warehouse, not a gate for picks; they are the only styles with authored series and templates (§12, decision 3).
 
 ## 4. Data model
 
@@ -126,7 +126,7 @@ The first collection created automatically is "Recommended for these 10" (kind `
 Top to bottom (one scroll):
 
 1. Header: big preview (scaled screen), style name = `screen · skin · fonts · r<radius>`, light/dark toggle, `Add to collection`.
-2. **Series** — the same design in other blocks (hero, hero-right, features, cta, pricing, testimonials, …) as a row of scaled previews. Stub row ("coming") for blocks not yet authored.
+2. **Series** — the same design in other blocks (hero, hero-right, features, cta, pricing, testimonials, …) as a row of scaled previews. Authored only for included styles; any other style shows the series of its nearest included style (labelled as such), a stub row ("coming") where that has no block yet.
 3. **Templates** — the 10 layouts (classic, two-column, three-column, sidebar, dashboard, blog, e-commerce/store, portfolio, SaaS landing, documentation) as semantic HTML5 skeletons skinned by this style; tabs or a grid of 10 scaled previews; open one in a new browser window (no simulator).
 4. **Composition** — pattern name(s) from `compositions.ts` with its one-line note, and a thin overlay of the pattern on the preview (thirds lines, diagonal, L, radial…; SVG overlay, toggle).
 5. **Tokens** — skin colours (swatches, light/dark), font pair specimen, radius, spacing (8px step). Shows planned per-element tokens as disabled rows until they exist.
@@ -135,7 +135,7 @@ Top to bottom (one scroll):
 
 ## 8. Persistence and empty state
 
-- **Now: localStorage** under `magazine:v1:{picks,collections,presets}`; Discovery's `discovery-picked-recommend` is read once and merged. URL `picks=` wins over storage and is written back. A "Reset" in the header menu clears all.
+- **Now: localStorage only** (decision 5; collections are never shared by URL) under `magazine:v1:{picks,collections,presets}`; Discovery's `discovery-picked-recommend` is read once and merged. URL `picks=` wins over storage and is written back. A "Reset" in the header menu clears all.
 - **Later: account** (Jev / registry). Same JSON shapes, synced by `Pick` events (CODEGEN-X.md 2.1); localStorage becomes a cache.
 - **Empty state** (direct open, no picks, no storage): header without a ball; the sphere in `search` fills the page; one neutral line "Pick 10 screens to get recommendations" and the counter. Nothing else is rendered — no collections, no rows, no placeholders. With stored picks but no URL, the page opens on `#/` with the ball already in the header (no flight).
 
@@ -143,14 +143,14 @@ Top to bottom (one scroll):
 
 - Sphere: canvas has an equivalent **list mode** (a toggle: grid of the same cards, keyboard focusable, Space picks) — double-click-only picking is not keyboard reachable. Ball is a `<button aria-label="Open the sphere to change recommendations">`; focus moves to the sphere when expanded and back to the ball on close. Reduced motion respected (§2). Colour is never the only signal: picked cards also carry an outline and a check; contrast of UI text follows the active skin (skins are already contrast-measured, `wave-contrast.json`).
 - Previews: mount only visible cards (IntersectionObserver), `content-visibility: auto`, 1440-wide frame scaled by CSS transform; off-screen cards fall back to the **snapshot** (WebP) from the shared cache.
-- **Profile:** reuse `engine/profile.ts` (`full` vs `light`, prefix `s2`/`m2`, `?profile=` override). The magazine uses the same IndexedDB cache, so a visit after Discovery has the snapshots already (same origin required: serve both apps from one origin, e.g. `/discovery/` and `/magazine/`).
+- **Profile:** reuse `engine/profile.ts` (`full` vs `light`, prefix `s2`/`m2`, `?profile=` override). The magazine uses the same IndexedDB cache, so a visit after Discovery has the snapshots already (decision 1: both apps are served from one origin, `/discovery/` and `/magazine/`).
 - Budget: first rows interactive < 1 s on warm cache; ≤ 36 live DOM previews at once; the ball renders ≤ 48 low atlas cells (64×48 far cells).
 
 ## 10. What must exist first
 
 1. **`packages/panorama`** — extract `engine/{grid,panorama,profile,snapshot,loader,cache}.ts` (and the WebGL-free parts of `wall`/`assign`/`curate`) behind a small API: `new Panorama(canvas, { cards, profile })`, `setMode("sphere"|"ball")`, `fly(to: DOMRect)`, `onPick`. Discovery imports it via a workspace alias; the extraction is **mechanical (move + re-export)**, wall output byte-for-byte unchanged (check: `bun run included --dry` and a wall hash before/after).
 2. **`packages/taste-data`** (or `shared`) — `tastes`, `compositions`, `included`, skin OKLab table, `variantKey`, so both apps read one source.
-3. **Series blocks per style** — authored block screens (hero-right, features, cta, pricing, testimonials, …) for each included style, rendered by the same Svelte screens with skin/fonts/radius variables. Needs an index screen → block family.
+3. **Series blocks per included style** (90 now; the rest derive from the nearest included style, §12) — authored block screens (hero-right, features, cta, pricing, testimonials, …), rendered by the same Svelte screens with skin/fonts/radius variables. Needs an index screen → block family.
 4. **10 template skeletons** (CODEGEN-X.md "Templates tab"), semantic HTML5, 8px grid, skinned by CSS variables.
 5. Per-element radius/density/shadow tokens (dependency, §1) — optional for v1, required for the Tokens panel to be real.
 
@@ -166,10 +166,12 @@ Top to bottom (one scroll):
 8. **Series blocks** for the first included styles, then **10 templates** (one per step each). Check: the detail page shows real series/templates for ≥ 10 styles; a template re-skins on skin switch with no rebuild.
 9. **Presets/packs warehouse and `npx cgenx` export** (after CODEGEN-X.md order step 3). Later: Jev scoring and account sync.
 
-## 12. Open questions
+## 12. Decisions (2026-10-10)
 
-1. Same origin for both apps (`/discovery/`, `/magazine/`) so the snapshot cache is shared — acceptable, or must the magazine live on its own domain?
-2. Should the 10 picks be 10 *Styles* (exact skin + fonts + radius of the card) or 10 *screens* (any variation)? This design assumes Styles, as with `cards=include`.
-3. Series and templates for **all** 146 screens × variations are not realistic; is it enough to author them for the included styles only (90 now), generating the rest on demand from the nearest included style?
-4. Is "Recommendations" allowed at exactly ≥ 10 picks only, or also fewer (with a warning), e.g. for returning visitors?
-5. Should a user's collections be shareable by URL before accounts exist (long `picks=` URL), or only local?
+The open questions of the first draft are closed:
+
+1. **One origin.** `/discovery/` and `/magazine/` are served together from one origin, so both apps share the IndexedDB snapshot cache (`s2` / `m2`). No separate domain.
+2. **The 10 picks are exact Styles.** A pick is `screen|skin|fonts|radius` of the picked card (`StyleKey`, as with `cards=include`), not just a screen. Recommendations diversify around close exact styles.
+3. **Series blocks and templates only for included styles** (90 now, `included.json`). Every other style derives its series and templates from the nearest included style (nearest by `score()` against that style alone); coverage improves later by including more styles.
+4. **Recommendations unlock strictly at 10 picks** (`MIN_PICKS = 10`). Fewer picks never open the feed, so it never looks empty or thin; returning visitors use their stored picks.
+5. **Collections are local only** (`localStorage`, `magazine:v1:collections`). No share-by-URL and no account: a prototype of a future full design store. Only `picks=` (the 10 Styles) travels in a URL, from Discovery to the magazine.

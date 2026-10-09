@@ -17,7 +17,7 @@ to thousands of design systems without a rewrite.
    marketplace showcase. Planned: the detail page of such a design shows its sibling blocks in the same design
    (hero, hero-right, features, cta, pricing, testimonials, ...) and a **Templates** tab (blog, store, portfolio, website).
    Every Discovery screen also carries a **composition pattern** (rule-of-thirds, diagonal, focal-mass, l-arrangement, radial, circular, cross, pyramid; `apps/discovery/src/compositions.ts`), shown per style in `plan/included-styles.md`. It is a tag for the future ranking index; in the wall engine it is only an opt-in soft preference (weight 0, the wall is unchanged).
-2. Every click on a screen or skin is an event sent to Jev. After at least 8 picks Jev has enough signal for intent.
+2. Every click on a screen or skin is an event sent to Jev. After at least 10 picks (exact styles, `MIN_PICKS`) Jev has enough signal for intent.
 3. Jev builds a **personal catalog** in marketplace form: relevant categories, collections, blocks, screens, skins, fonts.
 4. **System tab** — a typical design system page (tokens, typography, radii, ...). Switching a skin re-skins the
    System page and the whole marketplace at once.
@@ -71,7 +71,7 @@ Start: CI publishes packages to GitHub Releases / npm (unpkg, jsDelivr) behind a
 1. Package format + ranking index on one system: ui8kit 2.0 (from xgen specs).
 2. Sphere + skins sidebar on that index (Svelte).
 3. Preset export + `npx cgenx`.
-4. Jev personalisation (8+ picks → personal catalog).
+4. Jev personalisation (10+ picks → personal catalog).
 5. Third-party authors; generated sets.
 
 ## 4. Open questions
@@ -130,4 +130,4 @@ Eleven page references from the user, kept as layout notes only: no brand names,
 
 ## 8. Magazine app (noted 2026-10-10)
 
-A separate app `apps/magazine` (journal, warehouse and storage of collections, design packs, templates, presets): 10 picks on the Discovery panorama -> Recommendations -> collections, a header ball that re-opens the sphere, a detail page with series blocks, the 10 templates and composition patterns. Design only, not built: see `plan/MAGAZINE.md`. It asks for 10 picks (not 8) before a personal catalog and a shared `packages/panorama`.
+A separate app `apps/magazine` (journal, warehouse and storage of collections, design packs, templates, presets): 10 picks on the Discovery panorama -> Recommendations -> collections, a header ball that re-opens the sphere, a detail page with series blocks, the 10 templates and composition patterns. Design only, not built: see `plan/MAGAZINE.md`. Decisions of 2026-10-10 (MAGAZINE.md §12): one origin with `/discovery/` (shared snapshot cache); 10 picks are exact styles and recommendations unlock strictly at 10 (`MIN_PICKS`, not 8); series blocks and templates only for the included styles (90 now), the rest derive from the nearest one; collections are local only (localStorage), a prototype of a future design store. Shared `packages/panorama` and `packages/taste-data` hold the engine and the data.
