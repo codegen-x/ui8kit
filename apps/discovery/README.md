@@ -24,3 +24,12 @@ A hand-written app (not generated): a panorama of taste screens on a sphere. Sve
   `{ time, row, ids }` line per row to `discovery-inbox/journal.jsonl` and a row to `journal.md` at the repo root (never
   committed); the picks clear on success.
 - `content/` — copy fixtures (English placeholder copy, invented names).
+
+## The `cards` URL parameter
+
+- no `cards` (or an unknown value): double-click only toggles the outline on a card; no Send button, no posting, no curated dots.
+- `/discovery/?cards=all`: outlined cards mean KEEP. Send button, `{ ids, row }` posted to `/__discovery`, dots on curated rows.
+- `/discovery/?cards=exclude`: outlined cards mean EXCLUDE. Send button; the same post with `mode: "exclude"` (mode defaults to `"keep"`;
+  the server records `mode` in `journal.jsonl` and `journal.md`). Exclude picks live under their own localStorage key (`discovery-picked-exclude`).
+
+In-app links are hash-only (`#/screen/...`, `#/`), so the query survives navigation.

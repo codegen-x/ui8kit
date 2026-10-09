@@ -14,12 +14,13 @@
   import { Loader } from "../engine/loader";
   import { Panorama } from "../engine/panorama";
   import { wall } from "../engine/wall";
-  import { discoveryBody, picks, pickedCards, postPicks } from "../picks.svelte";
+  import { cardsMode, discoveryBody, PICKS_KEY, picks, pickedCards, postPicks } from "../picks.svelte";
   import { SCREENS } from "../screens";
   import { variantKey } from "../taste";
   import { TASTES } from "../tastes";
 
-  const PICKS = "discovery-picked";
+  const MODE = cardsMode();
+  const PICKS = PICKS_KEY[MODE];
   let stage: HTMLElement;
 
   function stageRef(node: HTMLElement) {
@@ -36,24 +37,24 @@
       onPick: () => {
         const keys = pano.pickedCards().map((i) => variantKey(variants[i]!));
         try { localStorage.setItem(PICKS, JSON.stringify(keys)); } catch { /* storage blocked */ }
-        picks.count = keys.length;
+        picks.count = MODE === "none" ? 0 : keys.length; // no Send button without ?cards=all|exclude
       },
     });
     const variants = wall(pano.cards, TASTES);
     const loader = new Loader(pano, variants, tastes, SCREENS);
     const radius = parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--radius")) || 0.625;
     pano.setRadiusPx(radius * parseFloat(getComputedStyle(document.documentElement).fontSize || "16"));
-    pano.markCuratedRows(CURATED_ROWS.map((r) => r.row));
+    if (MODE === "keep") pano.markCuratedRows(CURATED_ROWS.map((r) => r.row));
     const savedSet = new Set(saved);
     variants.forEach((v, i) => { if (savedSet.has(variantKey(v))) pano.togglePicked(i, true); });
     let sending = false;
-    picks.send = async () => {
+    if (MODE !== "none") picks.send = async () => {
       if (sending) return;
       const slots = pano.pickedCards();
       const chosen = pickedCards(slots, (i) => ({ id: variants[i]!.screen, row: rowFromTop(pano.cards[i]!.row) }));
       if (!chosen.length) return;
       sending = true;
-      const ok = await postPicks(discoveryBody(chosen));
+      const ok = await postPicks(discoveryBody(chosen, MODE === "exclude" ? "exclude" : "keep"));
       sending = false;
       // on failure the picks stay (and so does the button); on success only the cards that were sent are cleared
       if (ok) for (const i of slots) pano.togglePicked(i, false);
