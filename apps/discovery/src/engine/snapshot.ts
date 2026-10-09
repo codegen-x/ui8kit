@@ -95,6 +95,11 @@ export async function rasterise(html: string, fonts: FontId[], dark: boolean, w:
   return canvas;
 }
 
-export function toBlob(canvas: HTMLCanvasElement, type = "image/webp", quality = 0.86): Promise<Blob> {
-  return new Promise((resolve, reject) => canvas.toBlob((b) => (b ? resolve(b) : reject(new Error("toBlob failed"))), type, quality));
+/** WebP at `quality`. A browser without WebP encoding (older Safari) silently returns PNG, which is far bigger: with `jpegFallback` (light profile) JPEG then. */
+export async function toBlob(canvas: HTMLCanvasElement, quality = 0.86, jpegFallback = false): Promise<Blob> {
+  const enc = (type: string, q: number) =>
+    new Promise<Blob>((resolve, reject) => canvas.toBlob((b) => (b ? resolve(b) : reject(new Error("toBlob failed"))), type, q));
+  const webp = await enc("image/webp", quality);
+  if (webp.type === "image/webp" || !jpegFallback) return webp;
+  return enc("image/jpeg", Math.min(quality + 0.05, 0.9));
 }

@@ -4,18 +4,30 @@
 // Textures, two tiers:
 //   low  — every card has a 96×72 cell in one of two 2048×2048 atlases (588 cells each), no mipmaps: 2 × 16 MiB
 //   high — a pool of POOL 400×300 textures with mipmaps (≈ 0.64 MiB each, 51 MiB for 80) for the cards nearest the view
+// (full profile; tablets and phones use the light one of profile.ts: 64×48 cells in a single atlas, 320×240 without mipmaps)
 // Rendering is on demand: a frame is drawn only while dragging, during inertia, after a zoom, or after a texture changed.
 // Zoom: the camera stays at the centre (there is no distance to move), so the wheel narrows or widens the field of view;
 // the apparent scale of the cards is clamped to ZOOM_MIN..ZOOM_MAX of the default view.
 import * as THREE from "three";
 import { cards as gridCards, cardSize, CARD_H_DEG, MAX_LAT_DEG, RADIUS, rowFromTop, type Card } from "./grid";
 
-export const LOW_W = 96;
-export const LOW_H = 72;
-export const ATLAS = 2048;
-export const HIGH_W = 400;
-export const HIGH_H = 300;
-export const POOL = 80;
+import { profile } from "./profile";
+
+// sizes come from the device profile (profile.ts); the numbers below are the full (desktop) profile
+const P = profile();
+export const LOW_W = P.lowW; // 96
+export const LOW_H = P.lowH; // 72
+export const HIGH_W = P.highW; // 400
+export const HIGH_H = P.highH; // 300
+export const POOL = P.pool;
+const NCARDS = gridCards().length;
+/** atlas side: 2048 for the full profile; for the light one the smallest multiple of 128 that holds every cell */
+function atlasSide(): number {
+  if (!P.singleAtlas) return P.atlas;
+  for (let s = 512; s < P.atlas; s += 128) if (Math.floor(s / LOW_W) * Math.floor(s / LOW_H) >= NCARDS) return s;
+  return P.atlas;
+}
+export const ATLAS = atlasSide();
 const COLS = Math.floor(ATLAS / LOW_W); // 21
 const ROWS = Math.floor(ATLAS / LOW_H); // 28
 const PER_ATLAS = COLS * ROWS; // 588
@@ -221,8 +233,8 @@ export class Panorama {
     const t = new THREE.Texture();
     t.flipY = false;
     t.colorSpace = THREE.NoColorSpace;
-    t.generateMipmaps = true;
-    t.minFilter = THREE.LinearMipmapLinearFilter;
+    t.generateMipmaps = P.mipmaps;
+    t.minFilter = P.mipmaps ? THREE.LinearMipmapLinearFilter : THREE.LinearFilter;
     t.magFilter = THREE.LinearFilter;
     return t;
   }
@@ -447,7 +459,7 @@ export class Panorama {
   /** GPU bytes of the textures (mip chains included), for the report */
   textureBudget(): { atlases: number; high: number; total: number } {
     const atlases = this.atlases.length * ATLAS * ATLAS * 4;
-    const high = POOL * Math.round(HIGH_W * HIGH_H * 4 * (4 / 3));
+    const high = POOL * Math.round(HIGH_W * HIGH_H * 4 * (P.mipmaps ? 4 / 3 : 1));
     return { atlases, high, total: atlases + high };
   }
 
