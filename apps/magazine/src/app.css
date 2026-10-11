@@ -1,0 +1,15 @@
+/* Magazine: the same stylesheet as Discovery (the kit, the skins, frame.css, and the same scanned sources), because a snapshot
+   carries the document's CSS and its cache key hashes it: with equal CSS the magazine reuses the snapshots Discovery cached.
+   The magazine's own rules are in magazine.css, injected as a <style data-snapshot-skip> that collectCss() leaves out, and its
+   own markup uses no Tailwind utilities (nothing here is scanned: @source not). */
+@import "@ui8kit/svelte-ui/styles/index.css";
+@import "@ui8kit/app-shared/styles/skins.css";
+@import "@ui8kit/taste-screens/frame.css";
+@source not "../src";
+@source not "../index.html";
+@source not "../content";
+@source "../../../packages/panorama/src";
+@source "../../../packages/taste-data";
+@source "../../../packages/taste-screens/src";
+/* Discovery's own sources mention `blur` (a comment), so its stylesheet has .blur; keep it, or the two cache keys differ */
+@source inline("blur");

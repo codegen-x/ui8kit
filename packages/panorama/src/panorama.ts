@@ -132,6 +132,8 @@ export class Panorama {
   /** the vertical field of view of the default view (degrees), set on resize */
   private baseFov = 34;
   private vel = { yaw: 0, pitch: 0 };
+  /** a constant slow turn about the vertical axis (radians per ms) while nothing is dragged and no inertia is left; 0 = off (Discovery) */
+  private drift = 0;
   private drag: { x: number; y: number; t: number; moved: number; id: number; t0: number } | null = null;
   private lastMove = 0;
   private dirty = true;
@@ -630,6 +632,11 @@ export class Panorama {
     this.dirty = true;
   }
 
+  /** turn slowly by `degPerSec` about the vertical axis when idle (the magazine's resting sphere); 0 stops it */
+  setDrift(degPerSec: number): void {
+    this.drift = THREE.MathUtils.degToRad(degPerSec) / 1000;
+  }
+
   /** set the view (degrees); used by tests and screenshots */
   look(yawDeg: number, pitchDeg: number): void {
     this.yaw = THREE.MathUtils.degToRad(yawDeg);
@@ -656,6 +663,8 @@ export class Panorama {
       this.vel.yaw *= decay;
       this.vel.pitch *= decay;
       if (Math.abs(this.vel.yaw) < 2e-6 && Math.abs(this.vel.pitch) < 2e-6) this.vel = { yaw: 0, pitch: 0 };
+    } else if (!this.drag && this.drift) {
+      this.rotate(this.drift * dt, 0);
     }
     this.camera.rotation.set(this.pitch, this.yaw, 0);
     this.updateHigh();

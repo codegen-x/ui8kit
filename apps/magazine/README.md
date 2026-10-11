@@ -1,0 +1,15 @@
+# magazine
+
+A hand-written app (not generated): the journal of a visitor's taste, design in `plan/MAGAZINE.md`. Svelte 5 + Vite + Three.js, hash router, base `/magazine/`.
+
+    bun run dev          # http://127.0.0.1:5185/magazine/   (?picks=<style keys> opens the recommendations)
+    bun run check        # svelte-check
+    bun run build        # vite build to dist/
+    bun run test         # unit tests of the recommender (packages/taste-data/src/recommend)
+    bun run css-parity   # builds both apps and compares the document CSS byte for byte (see below)
+
+- Opened **directly** (no `?picks=`, nothing stored under `magazine:v1:picks`): the sphere of screens turns slowly (the Discovery panorama engine from `@ui8kit/panorama`, one WebGL context, picking disabled) and one hint: recommendations unlock after picking 10 styles in Discovery.
+- Opened from Discovery's **Recommendations** button (`/discovery/?cards=recommend`, exactly 10 picks): `/magazine/?picks=<keys>`, each key an exact style `screen|skin|display+body|radius` written with `~` for `|` (`decodePicks` in `@ui8kit/taste-data/picks`). Fewer than `MIN_PICKS` valid keys count as no picks. Valid picks are saved in `magazine:v1:picks` (local only) and reopen the recommendations without the URL.
+- Routes (hash, the query survives): `#/` recommendation rows, `#/style/<key>` (a placeholder for now: the key and its tokens; `~` stands for `|`).
+- One origin with Discovery (`/discovery/`, `/magazine/` on the :5190 preview) so both share the IndexedDB snapshot cache (`s2`, `m2`). A snapshot's cache key hashes the document CSS, so **the two apps must ship the same main stylesheet**: `src/app.css` imports the same kit, skins, `frame.css` and scans the same sources (`@source not` for its own, `@source inline("blur")` for what Discovery's sources produce), and the magazine's own rules (`src/magazine.css`) are injected as `<style data-snapshot-skip>`, which `collectCss()` leaves out. Its own markup uses `mg-*` classes, no Tailwind utilities. `bun run css-parity` fails when the stylesheets differ.
+- Screens, recipes and parts are shared with Discovery from `@ui8kit/taste-screens`; the engine from `@ui8kit/panorama`; the vocabulary, picks helpers, skin OKLab table and the recommender from `@ui8kit/taste-data`.

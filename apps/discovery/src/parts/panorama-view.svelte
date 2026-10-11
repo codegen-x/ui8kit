@@ -15,7 +15,7 @@
   import { Panorama } from "@ui8kit/panorama/panorama";
   import { wall } from "@ui8kit/panorama/wall";
   import { type CardDescriptor, cardsMode, discoveryBody, PICKS_KEY, picks, pickedCards, postPicks } from "../picks.svelte";
-  import { SCREENS } from "../screens";
+  import { SCREENS } from "@ui8kit/taste-screens/screens";
   import { variantKey } from "@ui8kit/taste-data/taste";
   import { MIN_PICKS } from "@ui8kit/taste-data/picks";
   import { TASTES } from "@ui8kit/taste-data/tastes";

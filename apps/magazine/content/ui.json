@@ -1,0 +1,22 @@
+{
+  "title": "Magazine",
+  "nav": { "discovery": "Discovery" },
+  "empty": {
+    "hint": "Recommendations unlock after you pick 10 styles in Discovery.",
+    "link": "Open Discovery",
+    "stage": "Taste panorama, turning slowly"
+  },
+  "home": { "heading": "Recommended for your 10 styles" },
+  "rows": {
+    "screens": "Screens close to your picks",
+    "fonts": "Fonts on one screen",
+    "skins": "Skins close to your colours",
+    "radii": "Corner radii on one screen",
+    "compositions": "Compositions of your taste"
+  },
+  "style": {
+    "back": "Back to recommendations",
+    "later": "The detail page comes in a later stage.",
+    "tokens": "Tokens"
+  }
+}

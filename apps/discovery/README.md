@@ -7,7 +7,7 @@ A hand-written app (not generated): a panorama of taste screens on a sphere. Sve
     bun run build      # vite build to dist/
 
 - **Shared packages** (moved verbatim from here, 2026-10-10, step 1 of `plan/MAGAZINE.md`): `packages/panorama` (`@ui8kit/panorama`: the engine — `grid`, `assign`, `curate`, `wave`, `wall`, `colors`, `panorama`, `profile`, `snapshot`, `loader`, `cache`, `taste-frame.svelte`) and `packages/taste-data` (`@ui8kit/taste-data`: `taste`, `tastes`, `compositions`, `curated`, `included` + `included.json`, `fonts`, `copy` + `content/copy.json`, `wave-contrast.json`). Discovery imports them by package name; the code, the wall and the snapshot cache keys (`s2`/`m2`) are unchanged. `app.css` adds `@source` lines for both so Tailwind scans them as before. Paths below that say `src/engine/…`, `src/tastes.ts`, `src/curated.ts`, `src/included.*` now live in those packages.
-- `src/screens/` — the taste screens, one file per screen, built from `@ui8kit/svelte-ui`; the file name is the id.
+- `src/screens/` (now `packages/taste-screens/src/screens`, moved verbatim 2026-10-11 so the magazine renders the same markup; also `recipes/`, `parts/{top-bar,avatars,field}.svelte`, `kit-data.ts` and `frame.css`, the app rules every snapshot hashes) — the taste screens, one file per screen, built from `@ui8kit/svelte-ui`; the file name is the id.
 - `src/tastes.ts` — the taste index: per screen its skin, font pairing, radius, composition, recipe and copy deck.
 - `src/recipes/` — procedural media (mesh, grain, duotone, geometric, glass, flat, rings, stripes, dots, conic); colours
   come from the skin's CSS variables. Gradients, blur and grain live only here, inside media slots.

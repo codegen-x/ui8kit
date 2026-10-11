@@ -1,0 +1,27 @@
+{
+  "name": "@ui8kit/taste-screens",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "The 146 hand-written taste screens, the procedural image recipes and the small parts they share, moved verbatim from apps/discovery/src so that Discovery and the magazine render the same markup (the snapshot cache keys hash it). Plain Svelte, no build step; frame.css holds the app rules the snapshots depend on.",
+  "exports": {
+    "./screens": "./src/screens/index.ts",
+    "./recipes": "./src/recipes/index.ts",
+    "./frame.css": "./src/frame.css",
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "@ui8kit/svelte-ui": "workspace:*",
+    "@ui8kit/taste-data": "workspace:*",
+    "svelte": "^5.57.0"
+  },
+  "devDependencies": {
+    "@tsconfig/svelte": "^5.0.8",
+    "svelte-check": "^4.7.6",
+    "typescript": "~6.0.2",
+    "vite": "^8.3.0"
+  },
+  "scripts": {
+    "check": "svelte-check --tsconfig ./tsconfig.json"
+  }
+}

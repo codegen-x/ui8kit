@@ -11,11 +11,13 @@ import { SCREEN_H, SCREEN_W } from "./grid";
 let cssText: string | null = null;
 const fontData = new Map<FontId, Promise<string>>();
 
-/** the CSS of the document, minus @font-face (a snapshot carries its own faces); computed once per session */
+/** the CSS of the document, minus @font-face (a snapshot carries its own faces) and minus sheets marked data-snapshot-skip; computed once per session */
 export function collectCss(): string {
   if (cssText !== null) return cssText;
   const parts: string[] = [];
   for (const sheet of Array.from(document.styleSheets)) {
+    // an app's own rules that never reach a snapshot (the magazine's chrome) sit in a <style data-snapshot-skip>
+    if (sheet.ownerNode instanceof Element && sheet.ownerNode.hasAttribute("data-snapshot-skip")) continue;
     let rules: CSSRuleList;
     try { rules = sheet.cssRules; } catch { continue; }
     for (const r of Array.from(rules)) if (!(r instanceof CSSFontFaceRule)) parts.push(r.cssText);

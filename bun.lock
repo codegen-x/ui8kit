@@ -86,6 +86,30 @@
         "vue-tsc": "^3.3.12",
       },
     },
+    "apps/magazine": {
+      "name": "magazine",
+      "version": "0.0.0",
+      "dependencies": {
+        "@ui8kit/app-shared": "workspace:*",
+        "@ui8kit/panorama": "workspace:*",
+        "@ui8kit/svelte-ui": "workspace:*",
+        "@ui8kit/taste-data": "workspace:*",
+        "@ui8kit/taste-screens": "workspace:*",
+        "svelte": "^5.57.0",
+        "three": "^0.186.1",
+      },
+      "devDependencies": {
+        "@sveltejs/vite-plugin-svelte": "^7.3.0",
+        "@tailwindcss/vite": "^4.3.3",
+        "@tsconfig/svelte": "^5.0.8",
+        "@types/bun": "^1.4.2",
+        "@types/three": "^0.186.0",
+        "svelte-check": "^4.7.6",
+        "tailwindcss": "^4.3.3",
+        "typescript": "~6.0.2",
+        "vite": "^8.3.0",
+      },
+    },
     "packages/panorama": {
       "name": "@ui8kit/panorama",
       "version": "0.0.0",
@@ -169,6 +193,21 @@
         "@tsconfig/svelte": "^5.0.8",
         "@types/bun": "^1.4.2",
         "svelte": "^5.57.0",
+        "svelte-check": "^4.7.6",
+        "typescript": "~6.0.2",
+        "vite": "^8.3.0",
+      },
+    },
+    "packages/taste-screens": {
+      "name": "@ui8kit/taste-screens",
+      "version": "0.0.0",
+      "dependencies": {
+        "@ui8kit/svelte-ui": "workspace:*",
+        "@ui8kit/taste-data": "workspace:*",
+        "svelte": "^5.57.0",
+      },
+      "devDependencies": {
+        "@tsconfig/svelte": "^5.0.8",
         "svelte-check": "^4.7.6",
         "typescript": "~6.0.2",
         "vite": "^8.3.0",
@@ -444,6 +483,8 @@
 
     "@ui8kit/taste-data": ["@ui8kit/taste-data@workspace:packages/taste-data"],
 
+    "@ui8kit/taste-screens": ["@ui8kit/taste-screens@workspace:packages/taste-screens"],
+
     "@ui8kit/vue-ui": ["@ui8kit/vue-ui@workspace:packages/vue/ui"],
 
     "@ui8kit/xgen": ["@ui8kit/xgen@workspace:xgen/cli"],
@@ -583,6 +624,8 @@
     "lightningcss-win32-x64-msvc": ["lightningcss-win32-x64-msvc@1.33.0", "", { "os": "win32", "cpu": "x64" }, "sha512-OlEICDx/Xl0FqSp4bry8zFnCvGpig3Gl4gCquvYwHuqJKEC1+n9NgDniFvqHGmMv1ZkqDJrDqKKSykTDX+ehuA=="],
 
     "locate-character": ["locate-character@3.0.0", "", {}, "sha512-SW13ws7BjaeJ6p7Q6CO2nchbYEc3X3J6WrmTTDto7yMPqVSZTUyY5Tjbid+Ab8gLnATtygYtiDIJGQRRn2ZOiA=="],
+
+    "magazine": ["magazine@workspace:apps/magazine"],
 
     "magic-string": ["magic-string@0.30.21", "", { "dependencies": { "@jridgewell/sourcemap-codec": "^1.5.5" } }, "sha512-vd2F4YUyEXKGcLHoq+TEyCjxueSeHnFxyyjNp80yg0XV4vUhnDer/lvvlqM/arB5bXQN5K2/3oinyCRyx8T2CQ=="],
 
