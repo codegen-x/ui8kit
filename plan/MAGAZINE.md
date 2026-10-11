@@ -19,7 +19,7 @@ Note: CODEGEN-X.md used to say Jev needs ≥ 8 picks; it is now **10** (§12, de
 
 Fixed constraints (not re-opened): Svelte only; previews are CSS-scaled desktop-width (1440×1080) screens in the same DOM, never iframes; no mobile simulator, no container queries; brand-free neutral English copy; ui8kit 2.0 rules (8px step, 4px only inside controls, plain `rounded` tied to `--radius`, no gradients in primitives — gradients/blur/grain only inside procedural media recipes, shadows only on floating surfaces, Tailwind-named size keys); skin = CSS variables (HSL).
 
-**Dependency (planned separately):** per-element tokens `--radius-button/card/badge/alert/media`, density `compact|default|comfortable`, `--shadow-*`. The magazine's "radius" and a future "density" axis map onto them; until they exist, only the single `--radius` is used (as Discovery does today).
+**Dependency (planned separately, see plan/UI8KIT-2.0.md §11):** per-element tokens `--radius-button/card/badge/alert/media`, density `compact|default|comfortable`, `--shadow-*`. The magazine's "radius" and a future "density" axis map onto them; until they exist, only the single `--radius` is used (as Discovery does today).
 
 ## 2. The sphere: three states
 

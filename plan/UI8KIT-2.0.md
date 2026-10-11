@@ -658,3 +658,25 @@ every `[data-slot="container"]` is the shared one (`max-w-6xl`; the wide hero `m
   the row's reset button goes back to the skin's own. Nothing stored: nothing changes.
 - The Cyrillic specimen of the font tiles is written as `\u` escapes in the dictionary and in `content.ts`, so the sources keep
   no Cyrillic text (check group `text`).
+
+## 11. Theme-level tokens: radius, density, shadow per element (decided 2026-10-09, not built)
+
+Goal: a skin can set rounding, spacing and shadow for each element type separately (badge, button, card, alert, media),
+without breaking the 8+4 spacing policy or the single plain `rounded` class.
+
+- **Radius.** Keep `--radius` as the base. Add per-element variables `--radius-badge`, `--radius-button`, `--radius-card`,
+  `--radius-alert`, `--radius-media`; each defaults to `var(--radius)`. Components read their own variable; the class stays
+  plain `rounded`. A skin may override any of them (for example buttons 0, cards 16, media 8). `rounded-full` stays limited
+  to badges, radio, avatar, switch and status dots.
+- **Density.** One parameter per element with three positions: `compact`, `default`, `comfortable`. Every position picks
+  from the 8px step (and 4px only inside controls): for example `--pad-card` is 16, 24 or 32, and `--pad-button` and
+  `--pad-badge` are 4, 8 or 12 on the vertical axis. No arbitrary values, so the `.ui8px` check stays valid.
+- **Shadow.** Per-element `--shadow-card`, `--shadow-alert`, `--shadow-media` and so on, each defaulting to the shared
+  `--shadow` scale. The rule that shadows live only on floating surfaces stays; a skin that turns a card shadow on is an
+  explicit override, not the default.
+- **Where it lives.** Specs and the generator, so Svelte, React and Vue inherit it. Skins stay CSS variables (HSL). The
+  per-element values are part of a skin and of a Discovery/magazine style identity only when a style overrides them.
+- **Consumers.** The magazine's Design system tab shows these as disabled rows until the tokens exist (plan/MAGAZINE.md §1
+  and §7), then turns them into controls next to skin, font and radius.
+- **Open.** Exact element list (add input, tabs, dialog?), the names of density positions in presets, and whether density
+  also scales type. Decide before implementation.
