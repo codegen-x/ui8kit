@@ -2,11 +2,21 @@
 // The default collection `recommended` ("Recommended") always exists and is where a heart puts a style. Packs and Presets are
 // read-only views over these collections. Reset clears everything the magazine keeps (and Discovery's picks it merges from).
 import { decodePicks, type StyleKey } from "@ui8kit/taste-data/picks";
+import { cleanTokens, type Tokens } from "./design";
 import { clearStore } from "@ui8kit/taste-data/picks-store";
 
 export const COLLECTIONS_KEY = "magazine:v1:collections";
 export const DEFAULT_ID = "recommended";
-export type Collection = { id: string; title: string; kind: "recommended" | "manual" | "pack"; styles: StyleKey[]; created: string };
+export type Collection = { id: string; title: string; kind: "recommended" | "manual" | "pack"; styles: StyleKey[]; created: string;
+  /** per-element token overrides of a saved item (only changed keys), by style key; the key itself never carries them */
+  tokens?: Record<string, Tokens> };
+
+function tokensOf(c: { tokens?: unknown }): { tokens?: Record<string, Tokens> } {
+  if (!c.tokens || typeof c.tokens !== "object") return {};
+  const out: Record<string, Tokens> = {};
+  for (const [k, v] of Object.entries(c.tokens)) { const t = cleanTokens(v); if (Object.keys(t).length) out[k] = t; }
+  return Object.keys(out).length ? { tokens: out } : {};
+}
 
 const fresh = (): Collection => ({ id: DEFAULT_ID, title: "Recommended", kind: "recommended", styles: [], created: new Date().toISOString() });
 
@@ -17,7 +27,7 @@ function load(): Collection[] {
     if (Array.isArray(raw)) {
       list = raw
         .filter((c): c is Collection => !!c && typeof c.id === "string" && typeof c.title === "string" && Array.isArray(c.styles))
-        .map((c) => ({ id: c.id, title: c.title, kind: c.kind === "pack" || c.kind === "manual" ? c.kind : "recommended", created: String(c.created ?? ""), styles: decodePicks(c.styles.join(",").replace(/\|/g, "~")) }));
+        .map((c) => ({ id: c.id, title: c.title, kind: c.kind === "pack" || c.kind === "manual" ? c.kind : "recommended", created: String(c.created ?? ""), styles: decodePicks(c.styles.join(",").replace(/\|/g, "~")), ...tokensOf(c) }));
     }
   } catch { /* nothing usable stored */ }
   if (!list.some((c) => c.id === DEFAULT_ID)) list.unshift(fresh());
@@ -38,10 +48,33 @@ export function toggleHeart(key: StyleKey, id: string = DEFAULT_ID): boolean {
   const c = collectionOf(id);
   if (!c) return false;
   const next = c.styles.includes(key) ? c.styles.filter((k) => k !== key) : [...c.styles, key];
-  lib.collections = lib.collections.map((x) => (x.id === id ? { ...x, styles: next } : x));
+  lib.collections = lib.collections.map((x) => {
+    if (x.id !== id) return x;
+    const { tokens, ...rest } = x;
+    const kept = tokens && next.includes(key) ? tokens : tokens ? Object.fromEntries(Object.entries(tokens).filter(([k]) => k !== key)) : undefined;
+    return { ...rest, styles: next, ...(kept && Object.keys(kept).length ? { tokens: kept } : {}) };
+  });
   save();
   return next.includes(key);
 }
+
+/** Save as collection item: the style is in the collection afterwards, with its token overrides (replaced; none: removed) */
+export function saveStyle(key: StyleKey, tokens: Tokens, id: string = DEFAULT_ID): void {
+  const c = collectionOf(id);
+  if (!c) return;
+  const clean = cleanTokens(tokens);
+  const all = { ...(c.tokens ?? {}) };
+  if (Object.keys(clean).length) all[key] = clean; else delete all[key];
+  lib.collections = lib.collections.map((x) => {
+    if (x.id !== id) return x;
+    const { tokens: _old, ...rest } = x;
+    return { ...rest, styles: x.styles.includes(key) ? x.styles : [...x.styles, key], ...(Object.keys(all).length ? { tokens: all } : {}) };
+  });
+  save();
+}
+
+/** the saved token overrides of a style in any collection ({} when none) */
+export const savedTokens = (key: StyleKey): Tokens => lib.collections.find((c) => c.tokens?.[key])?.tokens?.[key] ?? {};
 
 /** every distinct style in any collection, in collection order */
 export const allStyles = (): StyleKey[] => [...new Set(lib.collections.flatMap((c) => c.styles))];

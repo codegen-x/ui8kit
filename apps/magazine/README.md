@@ -17,3 +17,8 @@ A hand-written app (not generated): the journal of a visitor's taste, design in 
 ## Picks persistence
 
 `?picks=` is the source of truth (first 10 valid styles win and are saved). Without it: `magazine:v1:picks` (`{"v":1,"picks":[10 keys]}`), mirrored to sessionStorage, the `mgpicks` cookie and memory (`@ui8kit/taste-data/picks-store`; only exactly 10 valid distinct keys are accepted, anything else is skipped), then Discovery's `discovery-picked-recommend`. A direct visit with stored picks rewrites the address to `?picks=…` (replaceState, hash kept). Reset clears every mirror. Checks: `bun test packages/taste-data/src/picks-store.test.ts`, and `bun run e2e:persist` against the running :5190 server (headless Chrome, one persistent profile).
+
+## Design system: per-element tokens
+
+The Design system tab (`#/style/<key>/design`) has, next to skin, font and radius, a radius selector for each of badge, button, card, alert and media, a density (compact / default / comfortable) for badge, button, card and alert, and a shadow (style / none / sm / md) for card, alert and media. They only set CSS variables (`--radius-card`, `--shadow-card`) and `data-density-*` attributes on the specimen, the Overview preview and the Templates stage; the rules are in the kit CSS (plan/UI8KIT-2.0.md §11). Only changed keys are kept, as a flat `tokens` object (`{ "radius-button": 0, "density-card": "comfortable", "shadow-card": "sm" }`): "Copy preset" adds it to the preset JSON and "Save as collection item" stores it in the collection item (`Collection.tokens[styleKey]`), never in the style key (the key format is unchanged). Logic and tests: `src/lib/design.ts`, `src/lib/design.test.ts`.
+

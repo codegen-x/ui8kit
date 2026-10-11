@@ -18,14 +18,14 @@
   import TasteFrame from "@ui8kit/panorama/taste-frame.svelte";
   import { SCREENS } from "@ui8kit/taste-screens/screens";
   import ui from "../../content/ui.json";
-  import { hearted, toggleHeart } from "../lib/collections.svelte";
+  import { hearted, saveStyle, toggleHeart } from "../lib/collections.svelte";
   import DesignSystem from "./design-system.svelte";
   import { skinTokens } from "../lib/tokens";
   import type { StyleTab } from "../lib/state.svelte";
   import { TEMPLATES, type TemplateId } from "../templates/registry";
   import TemplateStage from "../templates/stage.svelte";
   import { theme } from "../lib/theme.svelte";
-  import { effective } from "../lib/design";
+  import { effective, setToken, tokenAttrs, tokenStyle, withTokens, type Tokens } from "../lib/design";
   import Card from "./card.svelte";
   import Heart from "./heart.svelte";
 
@@ -36,6 +36,8 @@
   let ovSkin = $state<SkinId | null>(null);
   let ovFont = $state<FontId | null>(null);
   let ovRadius = $state<number | null>(null);
+  // per-element radius, density and shadow (kit CSS variables on a wrapper); only the keys that differ from the style's own
+  let ovTokens = $state<Tokens>({});
   let saved = $state(false);
   // the key a "Save as collection item" just opened: its page shows the Saved message (the key change below clears the other flags)
   let savedFor: string | null = null;
@@ -56,14 +58,17 @@
   const pattern = $derived(parts ? COMPOSITION_OF[parts.screen] : undefined);
   const series = $derived(seriesOf(key));
   const related = $derived(relatedOf(key));
-  const eff = $derived(parts ? effective(parts, { skin: ovSkin, font: ovFont, radius: ovRadius }) : null);
+  const eff = $derived(parts ? effective(parts, { skin: ovSkin, font: ovFont, radius: ovRadius, tokens: ovTokens }) : null);
   const skin = $derived((eff?.skin ?? "sky") as SkinId);
   const font = $derived((ovFont ?? parts?.fonts.body ?? "inter") as FontId);
   const fonts = $derived((eff?.fonts ?? { display: "inter", body: "inter" }) as FontPair);
   const radius = $derived(eff?.radius ?? 0);
+  const tokens_ = $derived(eff?.tokens ?? {});
+  const tstyle = $derived(tokenStyle(tokens_));
+  const tattrs = $derived(tokenAttrs(tokens_));
   const changed = $derived(eff?.changed ?? false);
   const nextKey = $derived(eff?.key ?? key);
-  const preset = $derived(presetOf(nextKey));
+  const preset = $derived((() => { const p = presetOf(nextKey); return p ? withTokens(p, tokens_) : null; })());
   const json = $derived(preset ? JSON.stringify(preset, null, 2) : "");
   const sameFont = $derived(parts ? parts.fonts.display === parts.fonts.body : true);
 
@@ -81,7 +86,7 @@
   $effect(() => { if (parts) tokens = { light: skinTokens(skin, false), dark: skinTokens(skin, true) }; });
   // `route` is a new object on every hash change (a tab switch too): a derived string only notifies when the key itself changes
   const sameKey = $derived(key);
-  $effect(() => { void sameKey; window.scrollTo(0, 0); copied = ""; ovSkin = null; ovFont = null; ovRadius = null; saved = savedFor === sameKey; savedFor = null; });
+  $effect(() => { void sameKey; window.scrollTo(0, 0); copied = ""; ovSkin = null; ovFont = null; ovRadius = null; ovTokens = {}; saved = savedFor === sameKey; savedFor = null; });
 
   async function copy(): Promise<void> {
     try {
@@ -95,12 +100,12 @@
       ta.remove();
     }
   }
-  function reset(): void { ovSkin = null; ovFont = null; ovRadius = null; saved = false; copied = ""; }
+  function reset(): void { ovSkin = null; ovFont = null; ovRadius = null; ovTokens = {}; saved = false; copied = ""; }
   /** the changed style becomes a collection item under its own key; only now does the identity change */
   function save(): void {
     if (!parts) return;
     const k = nextKey;
-    if (!hearted(k)) toggleHeart(k);
+    saveStyle(k, tokens_);
     saved = true;
     savedFor = k;
     if (k !== key) location.hash = "#/style/" + encodePicks([k]) + "/design";
@@ -140,17 +145,17 @@
         </div>
         <p class="mg-tpl-meta"><strong data-testid="tpl-name">{tpl.label}</strong><span class="mg-note">{tpl.note}</span><span class="mg-note" data-testid="tpl-landmarks">{ui.style.templates.landmarks}: {tpl.landmarks}</span></p>
         {#if deck}
-          <TemplateStage template={tpl} c={deck} skin={skin} font={font} radius={radius} label={`${tpl.label}, ${skin}`} />
+          <TemplateStage template={tpl} c={deck} skin={skin} font={font} radius={radius} tokens={tokens_} label={`${tpl.label}, ${skin}`} />
         {/if}
       </section>
     {:else if tab === "design"}
-      <DesignSystem {skin} {font} {radius} own={{ skin: parts.skin, font: parts.fonts.body, radius: parts.radius }} {changed} {tokens} {json} {saved} {copied}
-        onskin={(v) => { ovSkin = v; saved = false; copied = ""; }} onfont={(v) => { ovFont = v; saved = false; copied = ""; }} onradius={(v) => { ovRadius = v; saved = false; copied = ""; }} onreset={reset} onsave={save} oncopy={copy} />
+      <DesignSystem {skin} {font} {radius} own={{ skin: parts.skin, font: parts.fonts.body, radius: parts.radius }} {changed} {tokens} tokenValues={tokens_} {json} {saved} {copied}
+        onskin={(v) => { ovSkin = v; saved = false; copied = ""; }} onfont={(v) => { ovFont = v; saved = false; copied = ""; }} onradius={(v) => { ovRadius = v; saved = false; copied = ""; }} ontoken={(k, v) => { ovTokens = setToken(ovTokens, k, v); saved = false; copied = ""; }} onreset={reset} onsave={save} oncopy={copy} />
     {:else}
     <section class="mg-sec" aria-label={ui.style.preview}>
       <div class="mg-big" bind:this={box} data-testid="style-preview" data-skin={skin} style:height={`${width * 0.75}px`}>
         {#if taste}
-          <div class="mg-live" style:transform={`scale(${width / 1440})`} inert aria-hidden="true">
+          <div class="mg-live" style={tstyle} {...tattrs} style:transform={`scale(${width / 1440})`} inert aria-hidden="true">
             <TasteFrame screen={SCREENS[parts.screen]!} deck={deckAt(taste.deck)} skin={skin} fonts={fonts} radius={radius as Radius} />
           </div>
         {/if}

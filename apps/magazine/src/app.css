@@ -8,6 +8,7 @@
 @source not "../src";
 @source not "../index.html";
 @source not "../content";
+@source not "../README.md";
 @source "../../../packages/panorama/src";
 @source "../../../packages/taste-data";
 @source "../../../packages/taste-screens/src";

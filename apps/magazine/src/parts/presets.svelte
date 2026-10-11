@@ -2,9 +2,10 @@
 <script lang="ts">
   import ui from "../../content/ui.json";
   import { cliLine, presetOf } from "@ui8kit/taste-data/preset";
-  import { allStyles } from "../lib/collections.svelte";
+  import { allStyles, savedTokens } from "../lib/collections.svelte";
+  import { withTokens } from "../lib/design";
 
-  const items = $derived(allStyles().flatMap((k) => { const p = presetOf(k); return p ? [p] : []; }));
+  const items = $derived(allStyles().flatMap((k) => { const p = presetOf(k); return p ? [withTokens(p, savedTokens(k))] : []; }));
   let copied = $state("");
   async function copy(key: string, json: string): Promise<void> {
     try { await navigator.clipboard.writeText(json); } catch {

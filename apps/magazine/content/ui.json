@@ -138,7 +138,7 @@
   },
   "design": {
     "controls": "Playground",
-    "note": "Pick a skin and a font: the specimen, the style preview and the templates change at once, from CSS variables only. Nothing is saved until you say so.",
+    "note": "Pick a skin, a font, a radius, and for each element (badge, button, card, alert, media) its own radius, density and shadow: the specimen, the style preview and the templates change at once, from CSS variables only. Nothing is saved until you say so.",
     "skin": "Skin",
     "font": "Font (one font for the whole design)",
     "own": "this style",
@@ -176,7 +176,26 @@
     "fieldName": "Name",
     "fieldMail": "Email",
     "fieldOff": "Unavailable",
-    "placeholder": "Type here"
+    "placeholder": "Type here",
+    "elementRadius": "Radius per element",
+    "elementDensity": "Density per element",
+    "elementShadow": "Shadow per element (cards, alerts and media are flat by default)",
+    "density": "Density",
+    "shadow": "Shadow",
+    "follow": "style",
+    "pill": "pill",
+    "elements": {
+      "badge": "Badge",
+      "button": "Button",
+      "card": "Card",
+      "alert": "Alert",
+      "media": "Media"
+    },
+    "positions": {
+      "compact": "Compact",
+      "default": "Default",
+      "comfortable": "Comfortable"
+    }
   },
   "find": {
     "heading": "Search styles",
