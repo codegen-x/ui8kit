@@ -46,14 +46,18 @@ export function writePicksToUrl(keys: StyleKey[]): void {
   history.replaceState(null, "", `${location.pathname}?picks=${encodePicks(keys)}${tail ? "&" + tail : ""}${location.hash}`);
 }
 
-/** the route of the hash: home, or one style (`#/style/<key>` with "~" for "|") */
-export type Route = { name: "home" } | { name: "style"; key: StyleKey };
+/** the routes of the hash: home, one style (`#/style/<key>` with "~" for "|"), one collection, and the read-only lists */
+export type Route = { name: "home" } | { name: "style"; key: StyleKey } | { name: "collection"; id: string } | { name: "packs" } | { name: "presets" };
 export function parseRoute(hash: string): Route {
   const m = /^#\/style\/(.+)$/.exec(hash);
   if (m) {
     const key = decodePicks(decodeURIComponent(m[1]!))[0];
     if (key) return { name: "style", key };
   }
+  const c = /^#\/collection\/([A-Za-z0-9_-]+)$/.exec(hash);
+  if (c) return { name: "collection", id: c[1]! };
+  if (hash === "#/packs") return { name: "packs" };
+  if (hash === "#/presets") return { name: "presets" };
   return { name: "home" };
 }
 

@@ -18,9 +18,11 @@
   import TasteFrame from "@ui8kit/panorama/taste-frame.svelte";
   import { SCREENS } from "@ui8kit/taste-screens/screens";
   import ui from "../../content/ui.json";
+  import { hearted, toggleHeart } from "../lib/collections.svelte";
   import { skinTokens } from "../lib/tokens";
   import { theme } from "../lib/theme.svelte";
   import Card from "./card.svelte";
+  import Heart from "./heart.svelte";
 
   let { key }: { key: StyleKey } = $props();
   const parts = $derived(parseStyleKey(key));
@@ -71,6 +73,7 @@
     <div class="mg-titlebar">
       <h1 class="mg-h1" data-testid="style-title">{title(parts)}</h1>
       <span class="mg-spacer"></span>
+      <Heart big on={hearted(key)} onclick={() => toggleHeart(key)} />
       <button class="mg-btn" type="button" aria-pressed={theme.dark} onclick={() => toggleTheme()} data-testid="style-theme">{ui.style.theme}: {theme.dark ? ui.style.dark : ui.style.light}</button>
     </div>
     <p class="mg-note" data-testid="style-key">{key}</p>

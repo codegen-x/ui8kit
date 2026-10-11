@@ -1,7 +1,14 @@
 {
   "title": "Magazine",
   "nav": {
-    "discovery": "Discovery"
+    "discovery": "Discovery",
+    "collections": "Collections",
+    "packs": "Packs",
+    "presets": "Presets",
+    "reset": "Reset",
+    "resetAsk": "Forget everything?",
+    "resetYes": "Yes, reset",
+    "resetNo": "Keep"
   },
   "empty": {
     "hint": "Recommendations unlock after you pick 10 styles in Discovery.",
@@ -77,5 +84,36 @@
     "hint": "Double-click a screen to outline it. Pick exactly 10 styles, then apply.",
     "apply": "Apply recommendations",
     "cancel": "Cancel"
+  },
+  "heart": {
+    "add": "Add to Recommended",
+    "remove": "Remove from Recommended"
+  },
+  "collections": {
+    "heading": "Your collections",
+    "open": "Open",
+    "count": "styles",
+    "empty": "Nothing here yet. Use the heart on a card to add it.",
+    "back": "Back to recommendations",
+    "missing": "This collection does not exist.",
+    "kind": {
+      "recommended": "Default",
+      "manual": "Manual",
+      "pack": "Pack"
+    }
+  },
+  "packs": {
+    "heading": "Packs",
+    "note": "Every collection is a pack: its styles with their skins, fonts and radii. Read-only.",
+    "skins": "skins",
+    "fonts": "fonts",
+    "radii": "radii"
+  },
+  "presets": {
+    "heading": "Presets",
+    "note": "One preset per saved style, ready for the CLI (later). Read-only.",
+    "empty": "No presets yet: heart a style first.",
+    "copy": "Copy preset",
+    "copied": "Copied"
   }
 }

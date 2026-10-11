@@ -12,7 +12,9 @@
   import { TASTES } from "@ui8kit/taste-data/tastes";
   import { SCREENS } from "@ui8kit/taste-screens/screens";
   import TasteFrame from "@ui8kit/panorama/taste-frame.svelte";
+  import { hearted, toggleHeart } from "../lib/collections.svelte";
   import { liveSlots, lookup, make } from "../lib/shots";
+  import Heart from "./heart.svelte";
   import { theme } from "../lib/theme.svelte";
 
   let { card, caption = "" }: { card: Style; caption?: string } = $props();
@@ -57,6 +59,7 @@
   }
 </script>
 
+<div class="mg-cell">
 <a class="mg-card" href={"#/style/" + encodePicks([card.key])} data-testid="card" data-key={card.key} data-live={live ? "1" : "0"} data-shot={url ? "1" : "0"} aria-label={`${card.screen}, ${card.skin}, ${card.fonts.display} ${card.fonts.body}, radius ${card.radius}`}>
   <span class="mg-shot" bind:this={host} data-skin={card.skin}>
     {#if url}
@@ -67,3 +70,5 @@
   </span>
   <span class="mg-caption">{caption || `${card.skin} · ${card.fonts.display === card.fonts.body ? card.fonts.display : card.fonts.display + " + " + card.fonts.body} · r${card.radius}`}</span>
 </a>
+<Heart on={hearted(card.key)} onclick={() => toggleHeart(card.key)} />
+</div>
