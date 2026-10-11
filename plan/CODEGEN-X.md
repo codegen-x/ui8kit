@@ -1,5 +1,7 @@
 # codegen-x.com — structure draft
 
+buildy.tw = future Tailwind-based site builder ("build with tw"); docs on ui.buildy.tw, registry on registry.buildy.tw, site repo ui8kit/site (github.com/ui8kit/site).
+
 Status: discussion draft (2026-10-08). Nothing here is built yet. Goal: lay a low-start structure that scales
 to thousands of design systems without a rewrite.
 
@@ -7,7 +9,7 @@ to thousands of design systems without a rewrite.
 
 | Site | Job |
 |---|---|
-| fastygo + ui8kit docs (own domain) | shadcn-style docs: block pages, iframe previews, code tab, `npx ui8kit add` |
+| fastygo + ui8kit docs (`ui.buildy.tw`) | shadcn-style docs: block pages, code tab, `npx ui8kit add` (live; iframe previews are not part of it) |
 | codegen-x.com | a service: a marketplace of design systems on one light Svelte runtime; pick a taste, export a preset, pull code with `npx cgenx` |
 
 ## 1. Product flow (codegen-x.com)
@@ -62,8 +64,8 @@ Future dashboard / store / promo sets are preset recipes: which screens, which b
 Generation sits on top and needs no new format.
 
 ### 2.6 Distribution
-Start: CI publishes packages to GitHub Releases / npm (unpkg, jsDelivr) behind an own address such as
-`registry.codegen-x.com`. Later: a CDN in front, same address, nothing changes for users. Private systems
+Start: CI publishes packages to GitHub Releases / npm (unpkg, jsDelivr) behind an own address: the ui8kit registry is live at
+`https://registry.buildy.tw/<runtime>` (Vercel, repo ui8kit/site). Later: a CDN in front, same address, nothing changes for users. Private systems
 (e.g. a private design kit) use the same format with a private registry URL and never enter the public registry.
 
 ## 3. Order
