@@ -1,12 +1,16 @@
 {
   "title": "Magazine",
-  "nav": { "discovery": "Discovery" },
+  "nav": {
+    "discovery": "Discovery"
+  },
   "empty": {
     "hint": "Recommendations unlock after you pick 10 styles in Discovery.",
     "link": "Open Discovery",
     "stage": "Taste panorama, turning slowly"
   },
-  "home": { "heading": "Recommended for your 10 styles" },
+  "home": {
+    "heading": "Recommended for your 10 styles"
+  },
   "rows": {
     "screens": "Screens close to your picks",
     "fonts": "Fonts on one screen",
@@ -18,5 +22,13 @@
     "back": "Back to recommendations",
     "later": "The detail page comes in a later stage.",
     "tokens": "Tokens"
+  },
+  "ball": {
+    "label": "Open the sphere to change recommendations"
+  },
+  "search": {
+    "hint": "Double-click a screen to outline it. Pick exactly 10 styles, then apply.",
+    "apply": "Apply recommendations",
+    "cancel": "Cancel"
   }
 }

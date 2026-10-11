@@ -47,6 +47,12 @@ export class Loader {
     for (let i = 0; i < this.concurrency; i++) void this.worker();
   }
 
+  /** stop the workers where they are (the magazine's ball: no new snapshot work); `start` resumes */
+  pause(): void {
+    this.generation++;
+    this.queue = [];
+  }
+
   /** re-sort the queue by closeness to the view (called by the panorama when the view moved; throttled) */
   resort(force = false): void {
     const now = performance.now();

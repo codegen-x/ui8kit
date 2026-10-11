@@ -38,6 +38,10 @@ export const ZOOM_MIN = 0.75;
 export const ZOOM_MAX = 1.25;
 /** scale change per wheel pixel (one 100 px notch is about 14 %) */
 const ZOOM_PER_PX = 0.0015;
+/** the ball: camera distance from the centre, its field of view (the sphere fills about 0.875 of the stage height) and a slight tilt */
+const BALL_DIST = 40;
+const BALL_FOV = 35;
+const BALL_PITCH = 0.28;
 
 const VERT = /* glsl */ `
 varying vec2 vUv;
@@ -64,6 +68,7 @@ float sdRound(vec2 p, vec2 b, float r) { vec2 q = abs(p) - b + r; return length(
 vec4 over(vec4 a, vec4 b) { float o = a.a + b.a * (1.0 - a.a); return o <= 0.0 ? vec4(0.0) : vec4((a.rgb * a.a + b.rgb * b.a * (1.0 - a.a)) / o, o); }
 void main() {
   vec2 p = (vUv - 0.5) * plane;
+  if (!gl_FrontFacing) p.x = -p.x; // the ball shows the cards from outside: the back of a card reads the right way round
   float d = sdRound(p, size * 0.5, radius);
   float aa = fwidth(d);
   float inside = 1.0 - smoothstep(-aa, aa, d);
@@ -117,6 +122,8 @@ export type PanoramaEvents = {
   onPick?: (index: number, picked: boolean) => void;
 };
 
+const dotOf = (c: { dir: [number, number, number] }, f: THREE.Vector3, sign: number): number => sign * (c.dir[0] * f.x + c.dir[1] * f.y + c.dir[2] * f.z);
+
 export class Panorama {
   readonly cards: Card[] = gridCards();
   private renderer: THREE.WebGLRenderer;
@@ -153,11 +160,19 @@ export class Panorama {
   private radiusPx = 10;
   private shadowStrength = 0.5;
   private disposed = false;
+  // the ball (magazine header): 0 = seen from the centre (the sphere), 1 = seen from outside (a ball of screens)
+  private ballT = 0;
+  private renderScale = 1;
+  private minFrameMs = 0;
+  private lastTick = 0;
+  private interactive = true;
+  /** frames actually drawn (tests: the ball idles at about 15 per second) */
+  frames = 0;
 
   constructor(private host: HTMLElement, private events: PanoramaEvents = {}) {
     this.blobs = new Array(this.cards.length).fill(null);
     this.renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false, powerPreference: "high-performance", preserveDrawingBuffer: false });
-    this.renderer.setPixelRatio(this.pixelRatio());
+    this.renderer.setPixelRatio(this.pixelRatio() * this.renderScale);
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     host.appendChild(this.renderer.domElement);
     // iOS Safari: 100vh is the tall viewport (toolbars hidden), so size the stage with dvh where it exists; and keep the page
@@ -203,7 +218,7 @@ export class Panorama {
         dotR: { value: 0.02 },
         dotE: { value: 0.008 },
       };
-      const mat = new THREE.ShaderMaterial({ uniforms: u, vertexShader: VERT, fragmentShader: FRAG, transparent: true, depthWrite: false, depthTest: false });
+      const mat = new THREE.ShaderMaterial({ uniforms: u, vertexShader: VERT, fragmentShader: FRAG, transparent: true, depthWrite: false, depthTest: false, side: THREE.DoubleSide });
       const mesh = new THREE.Mesh(geo, mat);
       const [x, y, z] = card.dir;
       mesh.position.set(x * RADIUS, y * RADIUS, z * RADIUS);
@@ -275,7 +290,7 @@ export class Panorama {
     const r = this.host.getBoundingClientRect();
     const w = Math.round(r.width) || this.host.clientWidth || window.innerWidth;
     const h = Math.round(r.height) || this.host.clientHeight || window.innerHeight;
-    this.renderer.setPixelRatio(this.pixelRatio());
+    this.renderer.setPixelRatio(this.pixelRatio() * this.renderScale);
     this.renderer.setSize(w, h, false);
     this.camera.aspect = w / h;
     const hf = THREE.MathUtils.degToRad(H_FOV_DEG);
@@ -291,7 +306,8 @@ export class Panorama {
    */
   private applyZoom(): void {
     const half = THREE.MathUtils.degToRad(this.baseFov) / 2;
-    this.camera.fov = THREE.MathUtils.radToDeg(2 * Math.atan(Math.tan(half) / this.zoom));
+    const inside = THREE.MathUtils.radToDeg(2 * Math.atan(Math.tan(half) / this.zoom));
+    this.camera.fov = inside * (1 - this.ballT) + BALL_FOV * this.ballT;
     this.camera.updateProjectionMatrix();
     this.updateLineWidths();
     this.rotate(0, 0);
@@ -313,7 +329,7 @@ export class Panorama {
   /** px per world unit at the centre of the view; outline, gap and corner radius are set in screen px */
   private pxPerUnit(): number {
     const h = this.host.clientHeight || window.innerHeight;
-    return h / 2 / Math.tan((this.camera.fov * Math.PI) / 360) / RADIUS;
+    return h / 2 / Math.tan((this.camera.fov * Math.PI) / 360) / (RADIUS * (1 - this.ballT) + (BALL_DIST - RADIUS) * this.ballT);
   }
 
   private updateLineWidths(): void {
@@ -321,7 +337,7 @@ export class Panorama {
     for (const u of this.uniforms) {
       u.line.value = 2 / px;
       u.gap.value = 3 / px;
-      u.radius.value = this.radiusPx / px;
+      u.radius.value = (this.radiusPx * (1 - this.ballT)) / px;
       // 4 px light core, 1 px dark edge: readable on a card, still just a dot
       u.dotR.value = 2 / px;
       u.dotE.value = 1 / px;
@@ -340,7 +356,7 @@ export class Panorama {
     this.shadowStrength = dark ? 0.6 : 0.22;
     for (const u of this.uniforms) {
       u.ink.value.setRGB(dark ? 0.98 : 0.04, dark ? 0.98 : 0.04, dark ? 0.98 : 0.04);
-      u.shadow.value = this.shadowStrength;
+      u.shadow.value = this.shadowStrength * (1 - this.ballT);
     }
     this.dirty = true;
   }
@@ -361,6 +377,10 @@ export class Panorama {
     this.camera.rotation.set(this.pitch, this.yaw, 0);
     this.camera.updateMatrixWorld();
     const f = this.forward();
+    if (this.ballT > 0.3) {
+      // the ball: the camera is behind the view direction, so the cards facing it (and visible) are the ones opposite to `f`
+      return this.cards.map((c) => c.index).sort((a, b) => dotOf(this.cards[b]!, f, -1) - dotOf(this.cards[a]!, f, -1));
+    }
     const v = new THREE.Vector3();
     const score = this.cards.map((c) => {
       const dot = c.dir[0] * f.x + c.dir[1] * f.y + c.dir[2] * f.z;
@@ -496,6 +516,7 @@ export class Panorama {
   }
 
   private onDown = (e: PointerEvent): void => {
+    if (!this.interactive) return;
     if (e.pointerType === "mouse" && e.button !== 0) return;
     this.host.setPointerCapture(e.pointerId);
     this.host.dataset.dragging = "";
@@ -511,6 +532,7 @@ export class Panorama {
   };
 
   private onMove = (e: PointerEvent): void => {
+    if (!this.interactive) return;
     const p = this.pointers.get(e.pointerId);
     if (p) { p.x = e.clientX; p.y = e.clientY; }
     if (this.pinch) {
@@ -571,6 +593,7 @@ export class Panorama {
   private onGesture = (e: Event): void => e.preventDefault();
 
   private onWheel = (e: WheelEvent): void => {
+    if (!this.interactive) return;
     e.preventDefault();
     // deltaY in px whatever the device reports (lines or pages); wheel up (negative) zooms in
     const unit = e.deltaMode === 1 ? 16 : e.deltaMode === 2 ? this.host.clientHeight || window.innerHeight : 1;
@@ -579,6 +602,7 @@ export class Panorama {
   };
 
   private onDbl = (e: MouseEvent): void => {
+    if (!this.interactive) return;
     // a touch double tap is handled on pointerup; the browser's dblclick that may follow it must not toggle twice
     if (performance.now() - this.lastTouchPick < 700) return;
     this.pickAt(e.clientX, e.clientY);
@@ -637,6 +661,62 @@ export class Panorama {
     this.drift = THREE.MathUtils.degToRad(degPerSec) / 1000;
   }
 
+  /**
+   * The ball: 0 is the sphere seen from its centre (everything above), 1 the same cards seen from outside as a ball that turns.
+   * In between the camera backs out along its view direction and the field of view narrows to the ball's, so a tween of this
+   * number is the "dolly out". The caller moves the canvas itself (CSS transform): there is one WebGL context, ever.
+   */
+  setBall(t: number): void {
+    this.ballT = THREE.MathUtils.clamp(t, 0, 1);
+    const { w, h } = cardSize();
+    for (const u of this.uniforms) {
+      u.shadow.value = this.shadowStrength * (1 - this.ballT); // a ball of screens has no drop shadows
+      u.size.value.set(w * (1 + 0.14 * this.ballT), h * (1 + 0.14 * this.ballT)); // and its screens touch: a few px each, no gaps
+    }
+    this.applyZoom();
+  }
+
+  getBall(): number {
+    return this.ballT;
+  }
+
+  /** draw at most `fps` frames a second (0 = every display frame); the ball uses 15 */
+  setFps(fps: number): void {
+    this.minFrameMs = fps > 0 ? 1000 / fps - 4 : 0;
+  }
+
+  /** pointer input on or off (the ball is only a button; the canvas ignores drag, wheel and double click) */
+  setInteractive(on: boolean): void {
+    this.interactive = on;
+    if (!on) { this.drag = null; this.pointers.clear(); this.pinch = null; delete this.host.dataset.dragging; }
+  }
+
+  /** the drawing buffer as a share of the CSS size (the ball is shown at about 1/20 of the stage: it needs no more pixels); draws at once */
+  setRenderScale(k: number): void {
+    if (k === this.renderScale) return;
+    this.renderScale = k;
+    this.resize();
+    this.renderNow();
+  }
+
+  /** draw one frame now, outside the loop (after a buffer resize the canvas would otherwise show one blank frame) */
+  renderNow(): void {
+    this.camera.rotation.set(this.pitch, this.yaw, 0);
+    this.placeCamera();
+    this.camera.updateMatrixWorld();
+    this.renderer.render(this.scene, this.camera);
+    this.dirty = false;
+  }
+
+  /** the camera for the current view and ball: at the centre looking out, or backed out along the view and looking at the centre */
+  private placeCamera(): void {
+    const t = this.ballT;
+    const pitch = this.pitch * (1 - t) + BALL_PITCH * t;
+    this.camera.rotation.set(pitch, this.yaw, 0);
+    const f = new THREE.Vector3(0, 0, -1).applyEuler(this.camera.rotation);
+    this.camera.position.copy(f.multiplyScalar(-BALL_DIST * t));
+  }
+
   /** set the view (degrees); used by tests and screenshots */
   look(yawDeg: number, pitchDeg: number): void {
     this.yaw = THREE.MathUtils.degToRad(yawDeg);
@@ -655,7 +735,10 @@ export class Panorama {
 
   private loop(now: number): void {
     if (this.disposed) return;
-    const dt = Math.min(64, now - (this.lastFrame || now));
+    // a hidden tab draws nothing; a capped loop (the ball) skips the display frames between its own
+    if (document.hidden || (this.minFrameMs && now - this.lastTick < this.minFrameMs)) { this.raf = requestAnimationFrame(this.loop); return; }
+    this.lastTick = now;
+    const dt = Math.min(this.minFrameMs ? 200 : 64, now - (this.lastFrame || now));
     this.lastFrame = now;
     if (!this.drag && (Math.abs(this.vel.yaw) > 1e-6 || Math.abs(this.vel.pitch) > 1e-6)) {
       this.rotate(this.vel.yaw * dt, this.vel.pitch * dt);
@@ -667,15 +750,17 @@ export class Panorama {
       this.rotate(this.drift * dt, 0);
     }
     this.camera.rotation.set(this.pitch, this.yaw, 0);
-    this.updateHigh();
+    if (this.ballT < 1) this.updateHigh();
     if (now - this.lastAtlasUpload > 250) {
       for (const a of this.atlases) if (a.dirty) { a.tex.needsUpdate = true; a.dirty = false; this.dirty = true; }
       this.lastAtlasUpload = now;
     }
     if (this.dirty) {
       this.dirty = false;
+      this.placeCamera();
       this.camera.updateMatrixWorld();
       this.renderer.render(this.scene, this.camera);
+      this.frames++;
     }
     this.raf = requestAnimationFrame(this.loop);
   }

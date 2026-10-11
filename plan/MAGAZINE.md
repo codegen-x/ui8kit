@@ -1,6 +1,6 @@
 # magazine — design draft (apps/magazine)
 
-Status: design with decisions closed (§12, 2026-10-10); roadmap steps 1 (shared packages), 2 (Discovery `?cards=recommend`), 3 (magazine shell, empty state) and 5 (scoring and rows, unit-tested) are built on 2026-10-11; the sphere states (4), the detail page (6), collections (7), series/templates (8) are not. A separate Svelte app next to `apps/discovery`. Reads `plan/CODEGEN-X.md` (§1, §5, §6, layouts list) and reuses the real Discovery data (`tastes.ts`, `compositions.ts`, `curated.ts`, `included.json`, `engine/*`, `plan/included-styles.md`).
+Status: design with decisions closed (§12, 2026-10-10); roadmap steps 1 (shared packages), 2 (Discovery `?cards=recommend`), 3 (magazine shell, empty state) and 5 (scoring and rows, unit-tested) are built on 2026-10-11; the sphere states (4) are built on 2026-10-11 too; the detail page (6), collections (7), series/templates (8) are not. A separate Svelte app next to `apps/discovery`. Reads `plan/CODEGEN-X.md` (§1, §5, §6, layouts list) and reuses the real Discovery data (`tastes.ts`, `compositions.ts`, `curated.ts`, `included.json`, `engine/*`, `plan/included-styles.md`).
 
 ## 1. Purpose
 
@@ -109,7 +109,7 @@ Score runs in the browser, < 20 ms for 146 screens × 15 skins on the ranking in
 
 ## 6. Recommendation rows
 
-Rows alternate, each a horizontal strip of 6 cards (desktop width ≥ 1280 shows 6; narrower, scrolls horizontally; no container queries — fixed card width 240 px + scroll):
+Rows alternate, each a horizontal strip of 6 cards (desktop width ≥ 1280 shows 6; narrower, scrolls horizontally; no container queries — cards grow from 200 to 360 px to fill the row, a row of 6 fits from about 1280 px, narrower it scrolls):
 
 1. **Screens by similarity** — top Styles by `score` (card = scaled 1440×1080 screen with its skin/fonts/radius).
 2. **Fonts** — the best font pairs for the profile, each shown on the same neutral screen (the best-scoring screen) so only type changes.
@@ -177,3 +177,8 @@ The open questions of the first draft are closed:
 3. **Series blocks and templates only for included styles** (90 now, `included.json`). Every other style derives its series and templates from the nearest included style (nearest by `score()` against that style alone); coverage improves later by including more styles.
 4. **Recommendations unlock strictly at 10 picks** (`MIN_PICKS = 10`). Fewer picks never open the feed, so it never looks empty or thin; returning visitors use their stored picks.
 5. **Collections are local only** (`localStorage`, `magazine:v1:collections`). No share-by-URL and no account: a prototype of a future full design store. Only `picks=` (the 10 Styles) travels in a URL, from Discovery to the magazine.
+
+## 13. Built: sphere states (2026-10-11)
+
+One canvas, one WebGL context, four phases (`apps/magazine/src/parts/sphere.svelte`): `empty` (no picks: the full-screen sphere, a slow turn, nothing else), `flying` (arriving with `?picks=`: the stage collapses into the header slot by a CSS transform + clip circle (Web Animations) while the camera backs out, `Panorama.setBall(t)`), `ball` (56 px ball in the header: drawn at ~15 fps into a small buffer (`setFps`, `setRenderScale`), no input, drawing paused while the tab is hidden), `expanding`/`search` (click or Enter on the ball: the reverse flight, the 10 picks outlined, double-click edits, **Apply recommendations** at exactly 10 writes `?picks=` and `magazine:v1:picks` and recomputes the rows, **Cancel**/Esc keeps the old ones). Reduced motion cross-fades instead of flying. Picks: URL wins; else `magazine:v1:picks`; else Discovery's `discovery-picked-recommend` (same origin), merged when each list alone is short. In the ball the cards show from outside (the back of a card is mirrored by the shader), touch each other and have no shadows; the loader keeps filling the cards that face the ball.
+

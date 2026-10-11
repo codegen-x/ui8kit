@@ -1,4 +1,4 @@
-<!-- One row of the feed: a neutral label and a horizontal strip of fixed-width cards (240 px, scrolls when narrower). -->
+<!-- One row of the feed: a neutral label and a horizontal strip of cards that grow from 200 to 360 px to fill the width (a row of 6 fits from about 1280 px; narrower, it scrolls). -->
 <script lang="ts">
   import type { Row } from "@ui8kit/taste-data/recommend";
   import ui from "../../content/ui.json";
