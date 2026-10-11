@@ -17,6 +17,7 @@
   import { type CardDescriptor, cardsMode, discoveryBody, PICKS_KEY, picks, pickedCards, postPicks } from "../picks.svelte";
   import { SCREENS } from "../screens";
   import { variantKey } from "@ui8kit/taste-data/taste";
+  import { MIN_PICKS } from "@ui8kit/taste-data/picks";
   import { TASTES } from "@ui8kit/taste-data/tastes";
 
   const MODE = cardsMode();
@@ -34,9 +35,12 @@
     try { saved = JSON.parse(localStorage.getItem(PICKS) ?? "[]"); } catch { saved = []; }
     const pano: Panorama = new Panorama(stage, {
       onView: () => loader.resort(),
-      onPick: () => {
+      onPick: (index, on) => {
+        // recommend: at most MIN_PICKS exact styles; an eleventh is not taken (the counter would pass n/10 and the button must show at exactly 10)
+        if (MODE === "recommend" && on && pano.pickedCards().length > MIN_PICKS) { pano.togglePicked(index, false); return; }
         const keys = pano.pickedCards().map((i) => variantKey(variants[i]!));
         try { localStorage.setItem(PICKS, JSON.stringify(keys)); } catch { /* storage blocked */ }
+        picks.keys = MODE === "recommend" ? keys : [];
         picks.count = MODE === "none" ? 0 : keys.length; // no Send button without ?cards=all|exclude|include
       },
     });
@@ -48,7 +52,8 @@
     const savedSet = new Set(saved);
     variants.forEach((v, i) => { if (savedSet.has(variantKey(v))) pano.togglePicked(i, true); });
     let sending = false;
-    if (MODE !== "none") picks.send = async () => {
+    if (MODE === "recommend") picks.clear = () => { for (const i of pano.pickedCards()) pano.togglePicked(i, false); };
+    if (MODE !== "none" && MODE !== "recommend") picks.send = async () => {
       if (sending) return;
       const slots = pano.pickedCards();
       const chosen = pickedCards(slots, (i) => ({ id: variants[i]!.screen, row: rowFromTop(pano.cards[i]!.row) }));
@@ -80,7 +85,7 @@
     const mo = new MutationObserver(() => { if (isDark() !== last) { last = isDark(); applyTheme(); } });
     mo.observe(document.documentElement, { attributes: true, attributeFilter: ["class", "data-theme"] });
     (window as unknown as { __discovery: unknown }).__discovery = { pano, loader, variants };
-    return () => { mo.disconnect(); picks.send = null; picks.count = 0; pano.dispose(); };
+    return () => { mo.disconnect(); picks.send = null; picks.clear = null; picks.keys = []; picks.count = 0; pano.dispose(); };
   });
 </script>
 

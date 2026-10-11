@@ -27,7 +27,7 @@ A hand-written app (not generated): a panorama of taste screens on a sphere. Sve
   committed); the picks clear on success.
 - `content/` — copy fixtures (English placeholder copy, invented names).
 
-## The `cards` URL parameter (four modes)
+## The `cards` URL parameter (five modes)
 
 | URL | picks mean | Send | POST /__discovery | localStorage |
 |---|---|---|---|---|
@@ -35,6 +35,9 @@ A hand-written app (not generated): a panorama of taste screens on a sphere. Sve
 | `?cards=all` | KEEP | yes | `{ ids, row }` (mode defaults to `"keep"`); dots on curated rows | `discovery-picked` |
 | `?cards=exclude` | EXCLUDE | yes | `{ ids, row, mode: "exclude" }` | `discovery-picked-exclude` |
 | `?cards=include` | INCLUDE the card's exact style in the future marketplace showcase | yes | `{ ids, row, mode: "include", cards: [{ id, skin, font, radius, row, col }] }` | `discovery-picked-include` |
+| `?cards=recommend` | the visitor's taste: exactly 10 exact styles (`MIN_PICKS`) for the magazine | none: counter `n/10`, a Clear link, and a **Recommendations** link at exactly 10 picks (an eleventh is not taken) | none | `discovery-picked-recommend` (array of style keys) |
+
+`recommend` is the entry to `apps/magazine` (`plan/MAGAZINE.md`): the Recommendations button is a same-origin link to `/magazine/?picks=<keys>`, each key an exact style `screen|skin|display+body|radius` written with `~` for `|` (`encodePicks` / `decodePicks` / `MIN_PICKS` in `packages/taste-data/src/picks.ts`). Nothing is posted to the preview server.
 
 The server records `mode` in `discovery-inbox/journal.jsonl` and `journal.md`. Include never touches the wall: no refill, no curated dots.
 

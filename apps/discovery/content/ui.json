@@ -4,5 +4,10 @@
   },
   "send": {
     "label": "Send"
+  },
+  "recommend": {
+    "label": "Recommendations",
+    "clear": "Clear",
+    "counter": "Picked styles"
   }
 }

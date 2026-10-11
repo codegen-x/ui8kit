@@ -12,6 +12,9 @@
     "./curated": "./src/curated.ts",
     "./fonts": "./src/fonts.ts",
     "./copy": "./src/copy.ts",
+    "./picks": "./src/picks.ts",
+    "./font-ids": "./src/font-ids.ts",
+    "./skin-colors": "./src/skin-colors.ts",
     "./wave-contrast.json": "./src/wave-contrast.json",
     "./included.json": "./src/included.json",
     "./package.json": "./package.json"
@@ -30,10 +33,15 @@
   },
   "devDependencies": {
     "@tsconfig/svelte": "^5.0.8",
+    "@types/bun": "^1.4.2",
+    "svelte": "^5.57.0",
+    "svelte-check": "^4.7.6",
     "typescript": "~6.0.2",
     "vite": "^8.3.0"
   },
   "scripts": {
-    "check": "tsc --noEmit -p tsconfig.json"
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "skin-colors": "bun scripts/skin-colors.ts",
+    "test": "bun test src"
   }
 }

@@ -3,10 +3,18 @@
   import { Block, NavActions } from "@ui8kit/svelte-ui";
   import { ui } from "@ui8kit/app-shared/content";
   import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
+  import { cardsMode } from "../picks.svelte";
+  import RecommendButton from "./recommend-button.svelte";
   import SendButton from "./send-button.svelte";
+
+  const recommend = cardsMode() === "recommend";
 </script>
 
 <Block tag="header" class="discovery-corner">
-  <SendButton />
+  {#if recommend}
+    <RecommendButton />
+  {:else}
+    <SendButton />
+  {/if}
   <NavActions actions="none" themeLabel={ui.theme.toggle} ontheme={() => toggleTheme()} />
 </Block>

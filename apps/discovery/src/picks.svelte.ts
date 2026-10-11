@@ -1,18 +1,20 @@
 // The picks of the panorama, shared with the corner: how many cards are outlined and how to send them.
 // The panorama view owns the cards and registers `send`; the Send button in the corner reads `count`.
 
-export const picks = $state<{ count: number; send: (() => Promise<void>) | null }>({ count: 0, send: null });
+// `keys` are the exact styles outlined in ?cards=recommend (variantKey of each card, in wall order); `clear` unpicks them all.
+export const picks = $state<{ count: number; keys: string[]; send: (() => Promise<void>) | null; clear: (() => void) | null }>({ count: 0, keys: [], send: null, clear: null });
 
 /**
  * the `cards` URL parameter: none = outline only, all = picks mean KEEP, exclude = picks mean EXCLUDE,
- * include = picks mean "this exact style must be in the marketplace showcase"; unknown = none
+ * include = picks mean "this exact style must be in the marketplace showcase",
+ * recommend = picks are the taste of a visitor: exactly MIN_PICKS exact styles unlock the magazine (no Send, no POST); unknown = none
  */
-export type CardsMode = "none" | "keep" | "exclude" | "include";
+export type CardsMode = "none" | "keep" | "exclude" | "include" | "recommend";
 export function cardsMode(search: string = location.search): CardsMode {
   const v = new URLSearchParams(search).get("cards");
-  return v === "all" ? "keep" : v === "exclude" ? "exclude" : v === "include" ? "include" : "none";
+  return v === "all" ? "keep" : v === "exclude" ? "exclude" : v === "include" ? "include" : v === "recommend" ? "recommend" : "none";
 }
-export const PICKS_KEY: Record<CardsMode, string> = { none: "discovery-picked", keep: "discovery-picked", exclude: "discovery-picked-exclude", include: "discovery-picked-include" };
+export const PICKS_KEY: Record<CardsMode, string> = { none: "discovery-picked", keep: "discovery-picked", exclude: "discovery-picked-exclude", include: "discovery-picked-include", recommend: "discovery-picked-recommend" };
 
 /** one picked card: its taste screen and the row it sits on, counted from the top of the panorama */
 export type Pick = { id: string; row: number };

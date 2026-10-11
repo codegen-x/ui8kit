@@ -22,10 +22,8 @@ import robotoCyr from "@fontsource-variable/roboto/files/roboto-cyrillic-wght-no
 import rubikLatin from "@fontsource-variable/rubik/files/rubik-latin-wght-normal.woff2?url";
 import rubikCyr from "@fontsource-variable/rubik/files/rubik-cyrillic-wght-normal.woff2?url";
 
-export const FONT_IDS = [
-  "inter", "roboto", "manrope", "montserrat", "rubik", "nunito", "ibm-plex-sans", "golos-text", "onest", "open-sans",
-] as const;
-export type FontId = (typeof FONT_IDS)[number];
+import { FONT_IDS, type FontId } from "./font-ids";
+export { FONT_IDS, type FontId };
 
 /** the files of a font: latin (embedded in snapshots) and cyrillic (registered for live pages) */
 export const FONT_FILES: Record<FontId, { latin: string; cyrillic: string }> = {
