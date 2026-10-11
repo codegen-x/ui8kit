@@ -2,37 +2,41 @@
 // on this device (`magazine:v1:picks`), else the ones Discovery left in `discovery-picked-recommend` (same origin). Fewer than
 // MIN_PICKS never unlock the feed. Local only (plan/MAGAZINE.md §12, decisions 4-5).
 import { decodePicks, encodePicks, MIN_PICKS, type StyleKey } from "@ui8kit/taste-data/picks";
+import { clearStore, exactPicks, readStore, writeStore } from "@ui8kit/taste-data/picks-store";
 
 export const STORE_PICKS = "magazine:v1:picks";
 export const DISCOVERY_PICKS = "discovery-picked-recommend";
 
-function readList(key: string): StyleKey[] {
+/** Discovery's own list (same origin, localStorage only); [] unless it holds valid styles */
+function readDiscovery(): StyleKey[] {
   try {
-    const raw = JSON.parse(localStorage.getItem(key) ?? "[]");
-    if (!Array.isArray(raw)) return [];
-    return decodePicks(raw.filter((k): k is string => typeof k === "string").join(",").replace(/\|/g, "~"));
+    const raw: unknown = JSON.parse(localStorage.getItem(DISCOVERY_PICKS) ?? "[]");
+    return Array.isArray(raw) ? decodePicks(raw.filter((k): k is string => typeof k === "string").join(",").replace(/\|/g, "~")) : [];
   } catch { return []; }
 }
 
-export function savePicks(keys: StyleKey[]): void {
-  try { localStorage.setItem(STORE_PICKS, JSON.stringify(keys)); } catch { /* storage blocked */ }
-}
+/** save to every mirror (localStorage, sessionStorage, cookie, memory); only exactly MIN_PICKS valid styles are kept */
+export function savePicks(keys: StyleKey[]): void { writeStore(keys); }
+/** forget the saved picks everywhere (Reset) */
+export const forgetPicks = clearStore;
 
 /** where this visit's picks came from: the URL (the sphere flies into the header), storage, Discovery's list, or nowhere */
 export type PicksSource = "url" | "store" | "discovery" | "none";
 
 /**
- * The unlocked picks for this visit. The URL wins and is saved. Without it, the stored picks win when they are complete; else
- * Discovery's own list when it is complete; else the two lists merged (stored first, deduped) when together they reach MIN_PICKS.
+ * The unlocked picks for this visit, decided before anything renders. `?picks=` is the source of truth: with at least MIN_PICKS
+ * valid styles the first 10 win and are written to storage. Otherwise the stored picks (exactly 10 valid, from any mirror; the
+ * mirrors are healed); else Discovery's list when it is exactly 10; else the two lists merged when together they reach 10.
  */
 export function loadPicks(search: string = location.search): { picks: StyleKey[]; source: PicksSource } {
   const fromUrl = decodePicks(new URLSearchParams(search).get("picks"));
-  if (fromUrl.length >= MIN_PICKS) { savePicks(fromUrl); return { picks: fromUrl, source: "url" }; }
-  const stored = readList(STORE_PICKS);
-  if (stored.length >= MIN_PICKS) return { picks: stored, source: "store" };
-  const disc = readList(DISCOVERY_PICKS);
-  if (disc.length >= MIN_PICKS) { savePicks(disc); return { picks: disc, source: "discovery" }; }
-  const merged = [...new Set([...stored, ...disc])];
+  if (fromUrl.length >= MIN_PICKS) { const p = fromUrl.slice(0, MIN_PICKS); savePicks(p); return { picks: p, source: "url" }; }
+  const stored = readStore().picks;
+  if (stored.length) { savePicks(stored); return { picks: stored, source: "store" }; }
+  const disc = readDiscovery();
+  const d = exactPicks(disc);
+  if (d.length) { savePicks(d); return { picks: d, source: "discovery" }; }
+  const merged = [...new Set(disc)];
   if (merged.length >= MIN_PICKS) { const m = merged.slice(0, MIN_PICKS); savePicks(m); return { picks: m, source: "discovery" }; }
   return { picks: [], source: "none" };
 }

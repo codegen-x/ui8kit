@@ -10,7 +10,8 @@
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "test": "bun test src",
-    "css-parity": "bash scripts/css-parity.sh"
+    "css-parity": "bash scripts/css-parity.sh",
+    "e2e:persist": "bun scripts/e2e-persist.mjs"
   },
   "dependencies": {
     "@ui8kit/app-shared": "workspace:*",

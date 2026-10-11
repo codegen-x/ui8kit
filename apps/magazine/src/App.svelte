@@ -5,7 +5,7 @@
   import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
   import ui from "../content/ui.json";
   import { resetAll } from "./lib/collections.svelte";
-  import { ctl, loadPicks, mag, parseRoute } from "./lib/state.svelte";
+  import { ctl, loadPicks, mag, parseRoute, writePicksToUrl } from "./lib/state.svelte";
   import Collection from "./parts/collection.svelte";
   import Packs from "./parts/packs.svelte";
   import Presets from "./parts/presets.svelte";
@@ -15,6 +15,7 @@
 
   const first = loadPicks();
   mag.picks = first.picks;
+  if (first.picks.length > 0 && first.source !== "url") writePicksToUrl(first.picks); // opened without ?picks=: the address becomes shareable (replaceState, hash kept)
   mag.phase = first.picks.length === 0 ? "empty" : first.source === "url" ? "flying" : "ball";
   let hash = $state(location.hash);
   const route = $derived(parseRoute(hash));

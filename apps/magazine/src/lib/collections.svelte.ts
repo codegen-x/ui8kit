@@ -2,6 +2,7 @@
 // The default collection `recommended` ("Recommended") always exists and is where a heart puts a style. Packs and Presets are
 // read-only views over these collections. Reset clears everything the magazine keeps (and Discovery's picks it merges from).
 import { decodePicks, type StyleKey } from "@ui8kit/taste-data/picks";
+import { clearStore } from "@ui8kit/taste-data/picks-store";
 
 export const COLLECTIONS_KEY = "magazine:v1:collections";
 export const DEFAULT_ID = "recommended";
@@ -47,6 +48,7 @@ export const allStyles = (): StyleKey[] => [...new Set(lib.collections.flatMap((
 
 /** Reset: forget picks, collections and presets of the magazine, and the picks Discovery left for it */
 export function resetAll(): void {
+  clearStore(); // the picks, in every mirror (localStorage, sessionStorage, cookie, memory)
   try {
     for (const k of Object.keys(localStorage)) if (k.startsWith("magazine:v1:")) localStorage.removeItem(k);
     localStorage.removeItem("discovery-picked-recommend");
