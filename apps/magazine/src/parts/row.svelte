@@ -1,6 +1,7 @@
 <!-- One row of the feed: a neutral label and a horizontal strip of cards that grow from 200 to 360 px to fill the width (a row of 6 fits from about 1280 px; narrower, it scrolls). -->
 <script lang="ts">
   import type { Row } from "@ui8kit/taste-data/recommend";
+  import { whyLine } from "@ui8kit/taste-data/recommend";
   import ui from "../../content/ui.json";
   import Card from "./card.svelte";
 
@@ -11,7 +12,7 @@
   <h2 class="mg-h2">{ui.rows[row.kind]}</h2>
   <div class="mg-strip">
     {#each row.cards as card (card.key)}
-      <Card {card} caption={row.kind === "compositions" ? card.label : row.kind === "radii" ? `r${card.radius}` : row.kind === "fonts" ? card.fonts.display : row.kind === "skins" ? card.skin : ""} />
+      <Card {card} why={whyLine(card.why)} caption={row.kind === "compositions" ? card.label : row.kind === "radii" ? `r${card.radius}` : row.kind === "fonts" ? card.fonts.display : row.kind === "skins" ? card.skin : ""} />
     {/each}
   </div>
 </section>

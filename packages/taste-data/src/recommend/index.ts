@@ -10,3 +10,4 @@ import type { Card } from "./rows";
 
 /** the styles nearest to one style (the score against this style alone): the first screens row of a feed built from it, six cards, never the style itself */
 export const relatedOf = (key: StyleKey, n = 6): Card[] => feed([key], 1).find((r) => r.kind === "screens")?.cards.slice(0, n) ?? [];
+export { WHY_TERMS, WHY_TEXT, whyLegend, whyLine, type WhyTerm } from "./why";

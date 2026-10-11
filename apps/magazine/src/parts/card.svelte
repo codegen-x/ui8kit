@@ -17,7 +17,7 @@
   import Heart from "./heart.svelte";
   import { theme } from "../lib/theme.svelte";
 
-  let { card, caption = "" }: { card: Style; caption?: string } = $props();
+  let { card, caption = "", why = "", compact = false }: { card: Style; caption?: string; why?: string; compact?: boolean } = $props();
 
   let host: HTMLElement;
   let visible = $state(false);
@@ -59,7 +59,7 @@
   }
 </script>
 
-<div class="mg-cell">
+<div class="mg-cell" class:mg-cell-mini={compact}>
 <a class="mg-card" href={"#/style/" + encodePicks([card.key])} data-testid="card" data-key={card.key} data-live={live ? "1" : "0"} data-shot={url ? "1" : "0"} aria-label={`${card.screen}, ${card.skin}, ${card.fonts.display} ${card.fonts.body}, radius ${card.radius}`}>
   <span class="mg-shot" bind:this={host} data-skin={card.skin}>
     {#if url}
@@ -68,7 +68,10 @@
       <span class="mg-live" style:transform={`scale(${scale})`} inert aria-hidden="true"><TasteFrame screen={SCREENS[card.screen]!} deck={deckAt(taste.deck)} skin={card.skin as SkinId} fonts={card.fonts as FontPair} radius={card.radius as Radius} /></span>
     {/if}
   </span>
-  <span class="mg-caption">{caption || `${card.skin} · ${card.fonts.display === card.fonts.body ? card.fonts.display : card.fonts.display + " + " + card.fonts.body} · r${card.radius}`}</span>
+  {#if !compact}
+    <span class="mg-caption">{caption || `${card.skin} · ${card.fonts.display === card.fonts.body ? card.fonts.display : card.fonts.display + " + " + card.fonts.body} · r${card.radius}`}</span>
+    {#if why}<span class="mg-why" data-testid="why">{why}</span>{/if}
+  {/if}
 </a>
-<Heart on={hearted(card.key)} onclick={() => toggleHeart(card.key)} />
+{#if !compact}<Heart on={hearted(card.key)} onclick={() => toggleHeart(card.key)} />{/if}
 </div>

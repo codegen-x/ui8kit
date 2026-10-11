@@ -4,6 +4,7 @@
   import type { StyleKey } from "@ui8kit/taste-data/picks";
   import { recommend } from "@ui8kit/taste-data/recommend";
   import { lib } from "../lib/collections.svelte";
+  import CollectionHeader from "./collection-header.svelte";
   import Row from "./row.svelte";
 
   let { picks }: { picks: StyleKey[] } = $props();
@@ -17,6 +18,7 @@
     {/each}
   </nav>
   <h1 class="mg-h1">{ui.home.heading}</h1>
+  <CollectionHeader {picks} />
   {#each rows as row, i (i)}
     <Row {row} />
   {/each}

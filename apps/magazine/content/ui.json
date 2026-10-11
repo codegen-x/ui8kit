@@ -16,7 +16,14 @@
     "stage": "Taste panorama, turning slowly"
   },
   "home": {
-    "heading": "Recommended for your 10 styles"
+    "heading": "Recommended for your 10 styles",
+    "collection": {
+      "title": "Collection based on your {n} styles",
+      "note": "The styles you picked, and below them what the recommender found close to them.",
+      "strip": "Your picks",
+      "legend": "Why a card is here",
+      "legendNote": "Each recommended card names the two things it shares most with your picks."
+    }
   },
   "rows": {
     "screens": "Screens close to your picks",
