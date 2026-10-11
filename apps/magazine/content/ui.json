@@ -75,6 +75,18 @@
       "cross": "Cross",
       "v-arrangement": "V arrangement",
       "pyramid": "Pyramid"
+    },
+    "tabs": {
+      "label": "Sections of this style",
+      "overview": "Overview",
+      "templates": "Templates",
+      "design": "Design system"
+    },
+    "templates": {
+      "heading": "Templates",
+      "note": "Ten page layouts as semantic HTML5 skeletons, built from kit blocks and skinned by this style's variables. One is live at a time.",
+      "label": "Template layouts",
+      "landmarks": "Landmarks"
     }
   },
   "ball": {

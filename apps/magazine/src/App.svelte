@@ -56,7 +56,7 @@
       <a class="mg-link" href="/discovery/?cards=recommend">{ui.empty.link}</a>
     </div>
   {:else if route.name === "style"}
-    <StylePage key={route.key} />
+    <StylePage key={route.key} tab={route.tab} />
   {:else if route.name === "collection"}
     <Collection id={route.id} />
   {:else if route.name === "packs"}

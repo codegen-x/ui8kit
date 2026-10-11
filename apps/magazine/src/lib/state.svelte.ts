@@ -51,12 +51,14 @@ export function writePicksToUrl(keys: StyleKey[]): void {
 }
 
 /** the routes of the hash: home, one style (`#/style/<key>` with "~" for "|"), one collection, and the read-only lists */
-export type Route = { name: "home" } | { name: "style"; key: StyleKey } | { name: "collection"; id: string } | { name: "packs" } | { name: "presets" };
+/** the tabs of the detail page: the overview, the 10 templates, the design system */
+export type StyleTab = "overview" | "templates" | "design";
+export type Route = { name: "home" } | { name: "style"; key: StyleKey; tab: StyleTab } | { name: "collection"; id: string } | { name: "packs" } | { name: "presets" };
 export function parseRoute(hash: string): Route {
-  const m = /^#\/style\/(.+)$/.exec(hash);
+  const m = /^#\/style\/([^/]+?)(?:\/(templates|design))?$/.exec(hash);
   if (m) {
     const key = decodePicks(decodeURIComponent(m[1]!))[0];
-    if (key) return { name: "style", key };
+    if (key) return { name: "style", key, tab: (m[2] as StyleTab | undefined) ?? "overview" };
   }
   const c = /^#\/collection\/([A-Za-z0-9_-]+)$/.exec(hash);
   if (c) return { name: "collection", id: c[1]! };

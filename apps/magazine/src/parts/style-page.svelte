@@ -20,13 +20,29 @@
   import ui from "../../content/ui.json";
   import { hearted, toggleHeart } from "../lib/collections.svelte";
   import { skinTokens } from "../lib/tokens";
+  import type { StyleTab } from "../lib/state.svelte";
+  import { TEMPLATES, type TemplateId } from "../templates/registry";
+  import TemplateStage from "../templates/stage.svelte";
   import { theme } from "../lib/theme.svelte";
   import Card from "./card.svelte";
   import Heart from "./heart.svelte";
 
-  let { key }: { key: StyleKey } = $props();
+  let { key, tab = "overview" }: { key: StyleKey; tab?: StyleTab } = $props();
+  let tplId = $state<TemplateId>("classic");
+  const tpl = $derived(TEMPLATES.find((t) => t.id === tplId)!);
+  const tabHref = (t: StyleTab) => "#/style/" + encodePicks([key]) + (t === "overview" ? "" : "/" + t);
+  const tabLabels: Record<StyleTab, string> = { overview: ui.style.tabs.overview, templates: ui.style.tabs.templates, design: ui.style.tabs.design };
+  function tplKey(e: KeyboardEvent): void {
+    const i = TEMPLATES.findIndex((t) => t.id === tplId);
+    const n = e.key === "ArrowRight" ? i + 1 : e.key === "ArrowLeft" ? i - 1 : e.key === "Home" ? 0 : e.key === "End" ? TEMPLATES.length - 1 : -1;
+    if (n < 0) return;
+    e.preventDefault();
+    tplId = TEMPLATES[(n + TEMPLATES.length) % TEMPLATES.length]!.id;
+    queueMicrotask(() => document.getElementById("tpl-tab-" + tplId)?.focus());
+  }
   const parts = $derived(parseStyleKey(key));
   const taste = $derived(parts ? TASTES.find((t) => t.id === parts.screen) : undefined);
+  const deck = $derived(taste ? deckAt(taste.deck) : undefined);
   const pattern = $derived(parts ? COMPOSITION_OF[parts.screen] : undefined);
   const series = $derived(seriesOf(key));
   const related = $derived(relatedOf(key));
@@ -78,6 +94,56 @@
     </div>
     <p class="mg-note" data-testid="style-key">{key}</p>
 
+    <div class="mg-tabs" role="tablist" aria-label={ui.style.tabs.label} data-testid="style-tabs">
+      {#each ["overview", "templates", "design"] as t (t)}
+        <a class="mg-tab" role="tab" id={"style-tab-" + t} aria-selected={tab === t} aria-controls="style-panel" tabindex={tab === t ? 0 : -1} href={tabHref(t as StyleTab)} data-testid={"tab-" + t}>{tabLabels[t as StyleTab]}</a>
+      {/each}
+    </div>
+    <div id="style-panel" role="tabpanel" aria-labelledby={"style-tab-" + tab}>
+    {#if tab === "templates"}
+      <section class="mg-sec" data-testid="style-templates">
+        <h2 class="mg-h2">{ui.style.templates.heading}</h2>
+        <p class="mg-note">{ui.style.templates.note}</p>
+        <div class="mg-tpl-tabs" role="tablist" aria-label={ui.style.templates.label} data-testid="template-tabs">
+          {#each TEMPLATES as t (t.id)}
+            <button class="mg-tpl-tab" type="button" role="tab" id={"tpl-tab-" + t.id} aria-selected={tplId === t.id} tabindex={tplId === t.id ? 0 : -1} onclick={() => (tplId = t.id)} onkeydown={tplKey} data-testid={"tpl-" + t.id}>{t.label}</button>
+          {/each}
+        </div>
+        <p class="mg-tpl-meta"><strong data-testid="tpl-name">{tpl.label}</strong><span class="mg-note">{tpl.note}</span><span class="mg-note" data-testid="tpl-landmarks">{ui.style.templates.landmarks}: {tpl.landmarks}</span></p>
+        {#if deck}
+          <TemplateStage template={tpl} c={deck} skin={parts.skin} font={(parts.fonts as FontPair).body} radius={parts.radius} label={`${tpl.label}, ${parts.skin}`} />
+        {/if}
+      </section>
+    {:else if tab === "design"}
+    <section class="mg-sec" data-testid="style-tokens">
+      <h2 class="mg-h2">{ui.style.tokens}</h2>
+      <h3 class="mg-h3">{ui.style.skinTokens}: {parts.skin}</h3>
+      {#each ([{ mode: "light", list: tokens.light }, { mode: "dark", list: tokens.dark }]) as { mode, list } (mode)}
+        <div class="mg-swatches" data-mode={mode}>
+          <span class="mg-swatch-mode">{mode === "light" ? ui.style.light : ui.style.dark}</span>
+          {#each list as t (t.name)}
+            <span class="mg-swatch" title={`--${t.name}: ${t.value}`}><span class="mg-chip" style:background={t.css}></span><span class="mg-swatch-name">{t.name}</span><code>{t.value}</code></span>
+          {/each}
+        </div>
+      {/each}
+      <h3 class="mg-h3">{ui.style.font}</h3>
+      <p class="mg-specimen" style:font-family={`${family((parts.fonts as FontPair).body)}, sans-serif`} data-testid="style-font"><strong>{parts.fonts.body}</strong> <span>{ui.style.specimen}</span></p>
+      {#if !sameFont}
+        <p class="mg-specimen" style:font-family={`${family((parts.fonts as FontPair).display)}, sans-serif`}><span class="mg-note">{ui.style.headingFont}:</span> <strong>{parts.fonts.display}</strong> <span>{ui.style.specimen}</span></p>
+      {/if}
+      <h3 class="mg-h3">{ui.style.radius}</h3>
+      <p class="mg-radius"><span class="mg-radius-box" style:border-radius={`${parts.radius}px`}></span> <code data-testid="style-radius">{parts.radius}px</code></p>
+    </section>
+
+    <section class="mg-sec" data-testid="style-preset">
+      <h2 class="mg-h2">{ui.style.preset}</h2>
+      <p><button class="mg-btn mg-btn-primary" type="button" onclick={copy} data-testid="copy-preset">{ui.style.copy}</button>
+        <span class="mg-note" role="status" data-testid="copy-status">{copied === "ok" ? ui.style.copied : copied === "fail" ? ui.style.copyFailed : ""}</span></p>
+      <pre class="mg-pre" data-testid="preset-json">{json}</pre>
+      {#if preset}<p class="mg-note">{ui.style.cli}: <code>{cliLine(preset)}</code> <button class="mg-btn" type="button" disabled>{ui.style.cliLater}</button></p>{/if}
+    </section>
+
+    {:else}
     <section class="mg-sec" aria-label={ui.style.preview}>
       <div class="mg-big" bind:this={box} data-testid="style-preview" data-skin={parts.skin} style:height={`${width * 0.75}px`}>
         {#if taste}
@@ -108,34 +174,6 @@
       {/if}
     </section>
 
-    <section class="mg-sec" data-testid="style-tokens">
-      <h2 class="mg-h2">{ui.style.tokens}</h2>
-      <h3 class="mg-h3">{ui.style.skinTokens}: {parts.skin}</h3>
-      {#each ([{ mode: "light", list: tokens.light }, { mode: "dark", list: tokens.dark }]) as { mode, list } (mode)}
-        <div class="mg-swatches" data-mode={mode}>
-          <span class="mg-swatch-mode">{mode === "light" ? ui.style.light : ui.style.dark}</span>
-          {#each list as t (t.name)}
-            <span class="mg-swatch" title={`--${t.name}: ${t.value}`}><span class="mg-chip" style:background={t.css}></span><span class="mg-swatch-name">{t.name}</span><code>{t.value}</code></span>
-          {/each}
-        </div>
-      {/each}
-      <h3 class="mg-h3">{ui.style.font}</h3>
-      <p class="mg-specimen" style:font-family={`${family((parts.fonts as FontPair).body)}, sans-serif`} data-testid="style-font"><strong>{parts.fonts.body}</strong> <span>{ui.style.specimen}</span></p>
-      {#if !sameFont}
-        <p class="mg-specimen" style:font-family={`${family((parts.fonts as FontPair).display)}, sans-serif`}><span class="mg-note">{ui.style.headingFont}:</span> <strong>{parts.fonts.display}</strong> <span>{ui.style.specimen}</span></p>
-      {/if}
-      <h3 class="mg-h3">{ui.style.radius}</h3>
-      <p class="mg-radius"><span class="mg-radius-box" style:border-radius={`${parts.radius}px`}></span> <code data-testid="style-radius">{parts.radius}px</code></p>
-    </section>
-
-    <section class="mg-sec" data-testid="style-preset">
-      <h2 class="mg-h2">{ui.style.preset}</h2>
-      <p><button class="mg-btn mg-btn-primary" type="button" onclick={copy} data-testid="copy-preset">{ui.style.copy}</button>
-        <span class="mg-note" role="status" data-testid="copy-status">{copied === "ok" ? ui.style.copied : copied === "fail" ? ui.style.copyFailed : ""}</span></p>
-      <pre class="mg-pre" data-testid="preset-json">{json}</pre>
-      {#if preset}<p class="mg-note">{ui.style.cli}: <code>{cliLine(preset)}</code> <button class="mg-btn" type="button" disabled>{ui.style.cliLater}</button></p>{/if}
-    </section>
-
     <section class="mg-sec" data-testid="style-related">
       <h2 class="mg-h2">{ui.style.related}</h2>
       <div class="mg-grid">
@@ -144,5 +182,7 @@
         {/each}
       </div>
     </section>
+    {/if}
+    </div>
   {/if}
 </main>
