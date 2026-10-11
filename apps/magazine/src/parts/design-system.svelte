@@ -14,7 +14,7 @@
     skin: SkinId;
     font: FontId;
     radius: number;
-    own: { skin: string; font: string };
+    own: { skin: string; font: string; radius: number };
     changed: boolean;
     tokens: { light: Token[]; dark: Token[] };
     json: string;
@@ -22,11 +22,12 @@
     copied: "" | "ok" | "fail";
     onskin: (s: SkinId) => void;
     onfont: (f: FontId) => void;
+    onradius: (r: number) => void;
     onreset: () => void;
     onsave: () => void;
     oncopy: () => void;
   };
-  let { skin, font, radius, own, changed, tokens, json, saved, copied, onskin, onfont, onreset, onsave, oncopy }: Props = $props();
+  let { skin, font, radius, own, changed, tokens, json, saved, copied, onskin, onfont, onradius, onreset, onsave, oncopy }: Props = $props();
 
   const style = $derived(`--radius:${radius}px;--font-sans:${family(font)},sans-serif;--taste-heading:${family(font)},sans-serif`);
   // the type scale: sizes in px, line heights on the 8px grid
@@ -61,6 +62,16 @@
       {#each FONT_IDS as f (f)}
         <button class="mg-choice" type="button" role="radio" aria-checked={font === f} onclick={() => onfont(f)} style:font-family={`${family(f)}, sans-serif`} data-testid={"ds-font-" + f}>
           {f}{#if f === own.font}<span class="mg-choice-own"> · {ui.design.own}</span>{/if}
+        </button>
+      {/each}
+    </div>
+
+    <h3 class="mg-h3" id="ds-radius-label">{ui.design.radius}: <span data-testid="ds-radius-now">{radius}px</span></h3>
+    <div class="mg-choices" role="radiogroup" aria-labelledby="ds-radius-label" data-testid="ds-radii">
+      {#each RADII as r (r)}
+        <button class="mg-choice mg-tile" type="button" role="radio" aria-checked={radius === r} onclick={() => onradius(r)} data-testid={"ds-radius-" + r} data-default={r === own.radius ? "1" : "0"} aria-label={`${r}px${r === own.radius ? ", " + ui.design.own : ""}`}>
+          <span class="mg-tile-box" style:border-radius={`${r}px`} aria-hidden="true"></span>
+          <span>{r}px{#if r === own.radius}<span class="mg-tile-own"> · {ui.design.own}</span>{/if}</span>
         </button>
       {/each}
     </div>

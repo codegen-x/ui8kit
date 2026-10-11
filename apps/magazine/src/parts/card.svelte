@@ -17,7 +17,7 @@
   import Heart from "./heart.svelte";
   import { theme } from "../lib/theme.svelte";
 
-  let { card, caption = "", why = "", compact = false }: { card: Style; caption?: string; why?: string; compact?: boolean } = $props();
+  let { card, caption = "", why = "", compact = false, dark: forceDark }: { card: Style; caption?: string; why?: string; compact?: boolean; /** preview theme; the page theme when omitted */ dark?: boolean } = $props();
 
   let host: HTMLElement;
   let visible = $state(false);
@@ -37,7 +37,7 @@
 
   // on screen (and again when the theme flips): the snapshot from the cache, else live now and a snapshot made in the background
   $effect(() => {
-    const dark = theme.dark;
+    const dark = forceDark ?? theme.dark;
     if (!visible) { if (live) { liveSlots.release(); live = false; } return; }
     let gone = false;
     (async () => {

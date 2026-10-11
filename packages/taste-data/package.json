@@ -17,6 +17,7 @@
     "./series": "./src/series.ts",
     "./preset": "./src/preset.ts",
     "./recommend": "./src/recommend/index.ts",
+    "./search": "./src/search/index.ts",
     "./font-ids": "./src/font-ids.ts",
     "./skin-colors": "./src/skin-colors.ts",
     "./wave-contrast.json": "./src/wave-contrast.json",

@@ -52,6 +52,7 @@ export function resetAll(): void {
   try {
     for (const k of Object.keys(localStorage)) if (k.startsWith("magazine:v1:")) localStorage.removeItem(k);
     localStorage.removeItem("discovery-picked-recommend");
+    sessionStorage.removeItem("magazine:v1:search-last");
   } catch { /* storage blocked */ }
   lib.collections = [fresh()];
 }

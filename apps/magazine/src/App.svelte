@@ -8,6 +8,7 @@
   import { ctl, loadPicks, mag, parseRoute, writePicksToUrl } from "./lib/state.svelte";
   import Collection from "./parts/collection.svelte";
   import Packs from "./parts/packs.svelte";
+  import Search from "./parts/search.svelte";
   import Presets from "./parts/presets.svelte";
   import Home from "./parts/home.svelte";
   import Sphere from "./parts/sphere.svelte";
@@ -31,6 +32,7 @@
     <span class="mg-spacer"></span>
     {#if mag.phase !== "empty"}
       <nav class="mg-nav" aria-label="Magazine">
+        <a class="mg-link" href="#/search" data-testid="nav-search">{ui.nav.search}</a>
         <a class="mg-link" href="#/packs" data-testid="nav-packs">{ui.nav.packs}</a>
         <a class="mg-link" href="#/presets" data-testid="nav-presets">{ui.nav.presets}</a>
         {#if asking}
@@ -59,6 +61,8 @@
     <StylePage key={route.key} tab={route.tab} />
   {:else if route.name === "collection"}
     <Collection id={route.id} />
+  {:else if route.name === "search"}
+    <Search hash={hash} picks={mag.picks} />
   {:else if route.name === "packs"}
     <Packs />
   {:else if route.name === "presets"}

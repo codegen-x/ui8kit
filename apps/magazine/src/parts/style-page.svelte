@@ -25,6 +25,7 @@
   import { TEMPLATES, type TemplateId } from "../templates/registry";
   import TemplateStage from "../templates/stage.svelte";
   import { theme } from "../lib/theme.svelte";
+  import { effective } from "../lib/design";
   import Card from "./card.svelte";
   import Heart from "./heart.svelte";
 
@@ -34,7 +35,10 @@
   // identity and changes only on "Save as collection item"); the preview, the templates and the specimen read the effective values.
   let ovSkin = $state<SkinId | null>(null);
   let ovFont = $state<FontId | null>(null);
+  let ovRadius = $state<number | null>(null);
   let saved = $state(false);
+  // the key a "Save as collection item" just opened: its page shows the Saved message (the key change below clears the other flags)
+  let savedFor: string | null = null;
   const tpl = $derived(TEMPLATES.find((t) => t.id === tplId)!);
   const tabHref = (t: StyleTab) => "#/style/" + encodePicks([key]) + (t === "overview" ? "" : "/" + t);
   const tabLabels: Record<StyleTab, string> = { overview: ui.style.tabs.overview, templates: ui.style.tabs.templates, design: ui.style.tabs.design };
@@ -52,11 +56,13 @@
   const pattern = $derived(parts ? COMPOSITION_OF[parts.screen] : undefined);
   const series = $derived(seriesOf(key));
   const related = $derived(relatedOf(key));
-  const skin = $derived((ovSkin ?? parts?.skin ?? "sky") as SkinId);
+  const eff = $derived(parts ? effective(parts, { skin: ovSkin, font: ovFont, radius: ovRadius }) : null);
+  const skin = $derived((eff?.skin ?? "sky") as SkinId);
   const font = $derived((ovFont ?? parts?.fonts.body ?? "inter") as FontId);
-  const fonts = $derived((ovFont ? { display: ovFont, body: ovFont } : parts?.fonts ?? { display: "inter", body: "inter" }) as FontPair);
-  const changed = $derived(!!parts && (skin !== parts.skin || (ovFont !== null && (ovFont !== parts.fonts.display || ovFont !== parts.fonts.body))));
-  const nextKey = $derived(parts ? styleKey({ screen: parts.screen, skin, fonts, radius: parts.radius }) : key);
+  const fonts = $derived((eff?.fonts ?? { display: "inter", body: "inter" }) as FontPair);
+  const radius = $derived(eff?.radius ?? 0);
+  const changed = $derived(eff?.changed ?? false);
+  const nextKey = $derived(eff?.key ?? key);
   const preset = $derived(presetOf(nextKey));
   const json = $derived(preset ? JSON.stringify(preset, null, 2) : "");
   const sameFont = $derived(parts ? parts.fonts.display === parts.fonts.body : true);
@@ -75,7 +81,7 @@
   $effect(() => { if (parts) tokens = { light: skinTokens(skin, false), dark: skinTokens(skin, true) }; });
   // `route` is a new object on every hash change (a tab switch too): a derived string only notifies when the key itself changes
   const sameKey = $derived(key);
-  $effect(() => { void sameKey; window.scrollTo(0, 0); copied = ""; ovSkin = null; ovFont = null; saved = false; });
+  $effect(() => { void sameKey; window.scrollTo(0, 0); copied = ""; ovSkin = null; ovFont = null; ovRadius = null; saved = savedFor === sameKey; savedFor = null; });
 
   async function copy(): Promise<void> {
     try {
@@ -89,13 +95,14 @@
       ta.remove();
     }
   }
-  function reset(): void { ovSkin = null; ovFont = null; saved = false; copied = ""; }
+  function reset(): void { ovSkin = null; ovFont = null; ovRadius = null; saved = false; copied = ""; }
   /** the changed style becomes a collection item under its own key; only now does the identity change */
   function save(): void {
     if (!parts) return;
     const k = nextKey;
     if (!hearted(k)) toggleHeart(k);
     saved = true;
+    savedFor = k;
     if (k !== key) location.hash = "#/style/" + encodePicks([k]) + "/design";
   }
   const title = (p: NonNullable<typeof parts>) => `${p.screen} · ${p.skin} · ${p.fonts.display === p.fonts.body ? p.fonts.display : p.fonts.display + " + " + p.fonts.body} · r${p.radius}`;
@@ -133,18 +140,18 @@
         </div>
         <p class="mg-tpl-meta"><strong data-testid="tpl-name">{tpl.label}</strong><span class="mg-note">{tpl.note}</span><span class="mg-note" data-testid="tpl-landmarks">{ui.style.templates.landmarks}: {tpl.landmarks}</span></p>
         {#if deck}
-          <TemplateStage template={tpl} c={deck} skin={skin} font={font} radius={parts.radius} label={`${tpl.label}, ${skin}`} />
+          <TemplateStage template={tpl} c={deck} skin={skin} font={font} radius={radius} label={`${tpl.label}, ${skin}`} />
         {/if}
       </section>
     {:else if tab === "design"}
-      <DesignSystem {skin} {font} radius={parts.radius} own={{ skin: parts.skin, font: parts.fonts.body }} {changed} {tokens} {json} {saved} {copied}
-        onskin={(v) => { ovSkin = v; saved = false; copied = ""; }} onfont={(v) => { ovFont = v; saved = false; copied = ""; }} onreset={reset} onsave={save} oncopy={copy} />
+      <DesignSystem {skin} {font} {radius} own={{ skin: parts.skin, font: parts.fonts.body, radius: parts.radius }} {changed} {tokens} {json} {saved} {copied}
+        onskin={(v) => { ovSkin = v; saved = false; copied = ""; }} onfont={(v) => { ovFont = v; saved = false; copied = ""; }} onradius={(v) => { ovRadius = v; saved = false; copied = ""; }} onreset={reset} onsave={save} oncopy={copy} />
     {:else}
     <section class="mg-sec" aria-label={ui.style.preview}>
       <div class="mg-big" bind:this={box} data-testid="style-preview" data-skin={skin} style:height={`${width * 0.75}px`}>
         {#if taste}
           <div class="mg-live" style:transform={`scale(${width / 1440})`} inert aria-hidden="true">
-            <TasteFrame screen={SCREENS[parts.screen]!} deck={deckAt(taste.deck)} skin={skin} fonts={fonts} radius={parts.radius as Radius} />
+            <TasteFrame screen={SCREENS[parts.screen]!} deck={deckAt(taste.deck)} skin={skin} fonts={fonts} radius={radius as Radius} />
           </div>
         {/if}
       </div>

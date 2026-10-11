@@ -8,7 +8,8 @@
     "reset": "Reset",
     "resetAsk": "Forget everything?",
     "resetYes": "Yes, reset",
-    "resetNo": "Keep"
+    "resetNo": "Keep",
+    "search": "Search"
   },
   "empty": {
     "hint": "Recommendations unlock after you pick 10 styles in Discovery.",
@@ -141,6 +142,7 @@
     "skin": "Skin",
     "font": "Font (one font for the whole design)",
     "own": "this style",
+    "radius": "Radius (corner size, --radius)",
     "reset": "Reset to this style",
     "save": "Save as collection item",
     "copy": "Copy preset",
@@ -175,5 +177,58 @@
     "fieldMail": "Email",
     "fieldOff": "Unavailable",
     "placeholder": "Type here"
+  },
+  "find": {
+    "heading": "Search styles",
+    "note": "Browse every style on the Discovery wall, not only the recommendations. The address keeps your search, so you can share it.",
+    "label": "Search",
+    "placeholder": "Try: dark, warm, blue, poster, mesh, inter, t146",
+    "sort": "Sort",
+    "sorts": {
+      "relevance": "Relevance",
+      "similar": "Similar to your picks",
+      "skin": "Skin",
+      "newest": "Newest screens"
+    },
+    "count": "{n} of {total} styles",
+    "countOne": "1 of {total} styles",
+    "filters": "Filters",
+    "active": "Active filters",
+    "clear": "Clear filters",
+    "clearOne": "Remove",
+    "more": "Show more ({n} left)",
+    "empty": "No style matches these filters.",
+    "emptyHint": "Remove a filter or change the words.",
+    "included": "Included only",
+    "hearted": "Hearted only",
+    "results": "Results",
+    "facets": {
+      "skin": "Skin",
+      "font": "Font",
+      "radius": "Radius",
+      "pattern": "Composition pattern",
+      "layout": "Layout",
+      "recipe": "Image recipe",
+      "theme": "Preview theme",
+      "show": "Show"
+    },
+    "layouts": {
+      "poster": "Poster",
+      "split": "Split",
+      "fullbleed": "Full-bleed",
+      "editorial": "Editorial",
+      "frame": "Frame",
+      "dense": "Dense",
+      "ribbon": "Ribbon",
+      "stats": "Stats",
+      "prompt": "Prompt",
+      "airy": "Airy"
+    },
+    "themes": {
+      "light": "Light",
+      "dark": "Dark"
+    },
+    "radiusLabel": "r{n}",
+    "q": "Text"
   }
 }
