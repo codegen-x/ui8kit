@@ -659,7 +659,7 @@ every `[data-slot="container"]` is the shared one (`max-w-6xl`; the wide hero `m
 - The Cyrillic specimen of the font tiles is written as `\u` escapes in the dictionary and in `content.ts`, so the sources keep
   no Cyrillic text (check group `text`).
 
-## 11. Theme-level tokens: radius, density, shadow per element (decided 2026-10-09, not built)
+## 11. Theme-level tokens: radius, density, shadow per element (decided 2026-10-09, built 2026-10-11 in its smallest form)
 
 Goal: a skin can set rounding, spacing and shadow for each element type separately (badge, button, card, alert, media),
 without breaking the 8+4 spacing policy or the single plain `rounded` class.
@@ -676,7 +676,21 @@ without breaking the 8+4 spacing policy or the single plain `rounded` class.
   explicit override, not the default.
 - **Where it lives.** Specs and the generator, so Svelte, React and Vue inherit it. Skins stay CSS variables (HSL). The
   per-element values are part of a skin and of a Discovery/magazine style identity only when a style overrides them.
-- **Consumers.** The magazine's Design system tab shows these as disabled rows until the tokens exist (plan/MAGAZINE.md §1
-  and §7), then turns them into controls next to skin, font and radius.
-- **Open.** Exact element list (add input, tabs, dialog?), the names of density positions in presets, and whether density
-  also scales type. Decide before implementation.
+- **Consumers.** The magazine's Design system tab turns these into controls next to skin, font and radius (built, see the status below).
+- **Open (decided when built).** Element list: badge, button, card, alert, media. Density positions in presets: `compact`, `default`, `comfortable`. Density does not scale type.
+
+### Status: built (2026-10-11), smallest version, five elements only
+
+Elements: **badge, button, card, alert, media** (`pattern.media-frame`). Nothing else (input, tabs, dialog) knows the tokens.
+
+What exists, all in `xgen/runtimes/core/assets/styles/kit.css` (generated into every runtime's `styles/kit.css`) plus one spec change:
+
+- **Marker.** The specs of Badge, Button (both the `<button>` and the `<a>`), Card and Alert now render `data-slot="badge|button|card|alert"` (MediaFrame already had `data-slot="media-frame"`). So Svelte, React and Vue all inherit it from `xgen/specs/ui/*.json`; the generated packages were regenerated, not edited. The recipes are untouched: the class stays plain `rounded` (and `rounded-full` on the badge); `xgen check` corners still rejects every other `rounded-*`.
+- **Radius.** `--radius-badge|button|card|alert|media`. **No default is declared**: the rule reads `var(--radius-card, var(--radius))`, so an unset token is the plain theme radius and a scope that changes `--radius` (a skin, the magazine specimen) still moves every element. (A `:root` default `--radius-card: var(--radius)` would freeze the root value and ignore a nested `--radius`.) The badge is a pill, so its unset value is the pill (`revert-layer` to `rounded-full`); a badge radius token is an explicit override. Only elements that carry the plain `rounded` class follow the token, so an element a block rounds on purpose keeps its own corner. `xgen check` corners now accepts `var(--radius-<element>, ...)` in kit.css.
+- **Shadow.** `--shadow-card|alert|media`: a full shadow layer written into Tailwind's `--tw-shadow` (so the inset-ring edge stays). Unset: the spec's own (none). `0 0 #0000` is "none". The rule "shadows only on floating surfaces" is unchanged: the defaults are flat, a shadow on a card is an explicit override.
+- **Density.** `data-density-badge|button|card|alert="compact|default|comfortable"` on the element or any ancestor sets `--pad-*` (default = attribute absent): card padding 16/24/32 (cards with the default `p-6`); alert inline padding 8/8/16 and `--min-alert` 24/32/40; button inline 12/16/20 and `--h-button` 32/40/48 (default size); badge inline 8/12/16 and `--h-badge` 20/24/28 (default size). 8px step everywhere; the 4px steps (12, 20, 28, 20) only in button and badge. The `sm`/`lg` sizes and `icon` buttons keep their own size.
+- **Default rendering is unchanged**: with no token set every rule falls through (`revert-layer`) to the utility classes. Verified pixel-identical by `xgen visual` (1188 states, light and dark, 3 runtimes) before and after.
+- **Skins.** The 15 skins are unchanged; a skin may set any of these variables.
+- **Consumer.** The magazine's Design system tab (plan/MAGAZINE.md): per-element radius, density and shadow controls on the specimen, the Overview preview and the Templates stage. Overrides live in the preset and the collection item (`tokens`), never in the style key.
+
+Left out on purpose: `--radius-*` and `--shadow-*` defaults in `:root` (see above); density for input/tabs/dialog and any density that scales type; vertical padding for badge and button (their height is fixed by the size class, so density moves the inline padding and the height together); a per-element shadow for button, badge and floating layers; per-element tokens in any skin file; blocks that apply a recipe to a bare element (no `data-slot`) do not follow the tokens; the `data-slot` on those four primitives changes the DOM of every screen (not its pixels) and therefore Discovery/magazine snapshot keys, see MAGAZINE.md.

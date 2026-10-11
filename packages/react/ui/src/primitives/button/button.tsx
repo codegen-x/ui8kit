@@ -99,6 +99,7 @@ export const Button = forwardRef<HTMLElement, ButtonProps>(function Button(
         ref={ref as Ref<HTMLElementTagNameMap["a"]>}
         href={orUndef(href)}
         className={cls || undefined}
+        data-slot="button"
         target={orUndef(targetValue)}
         rel={orUndef(relValue)}
         aria-disabled={disabled ? "true" : undefined}
@@ -112,6 +113,7 @@ export const Button = forwardRef<HTMLElement, ButtonProps>(function Button(
         ref={ref as Ref<HTMLElementTagNameMap["button"]>}
         type={oneOfOr(type, "button", "submit", "reset")}
         className={cls || undefined}
+        data-slot="button"
         disabled={disabled || undefined}
         {...rest}
       >

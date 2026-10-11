@@ -49,7 +49,7 @@ const cls = computed(() => cn(badgeVariants({ size, variant }), className));
 </script>
 
 <template>
-  <div :class="cls || undefined" v-bind="attrs">
+  <div :class="cls || undefined" data-slot="badge" v-bind="attrs">
     <slot />
   </div>
 </template>

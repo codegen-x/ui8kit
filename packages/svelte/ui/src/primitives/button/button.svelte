@@ -96,6 +96,7 @@
   <a
     href={orUndef(href)}
     {...(cls ? { class: cls } : {})}
+    data-slot="button"
     target={orUndef(targetValue)}
     rel={orUndef(relValue)}
     aria-disabled={disabled ? "true" : undefined}
@@ -108,6 +109,7 @@
   <button
     type={oneOfOr(type, "button", "submit", "reset")}
     {...(cls ? { class: cls } : {})}
+    data-slot="button"
     disabled={disabled || undefined}
     {...rest}
   >

@@ -60,6 +60,11 @@
             "kind": "class"
           },
           {
+            "kind": "static",
+            "name": "data-slot",
+            "value": "badge"
+          },
+          {
             "kind": "rest"
           }
         ],
@@ -83,7 +88,13 @@
         "aria": [],
         "keyboard": []
       },
-      "data": [],
+      "data": [
+        {
+          "name": "data-slot",
+          "kind": "static",
+          "value": "badge"
+        }
+      ],
       "tokens": [
         "--border",
         "--destructive",

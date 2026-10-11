@@ -57,6 +57,7 @@ export const Alert = forwardRef<HTMLDivElement, AlertProps>(function Alert(
     <div
       ref={ref}
       className={cls || undefined}
+      data-slot="alert"
       role={oneOfOr(role, "status", "status", "alert")}
       aria-live={defaultIfEmpty(ariaLive, "polite")}
       {...rest}

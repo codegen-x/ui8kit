@@ -51,6 +51,7 @@
 
 <div
   {...(cls ? { class: cls } : {})}
+  data-slot="alert"
   role={oneOfOr(role, "status", "status", "alert")}
   aria-live={defaultIfEmpty(ariaLive, "polite")}
   {...rest}

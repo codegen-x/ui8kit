@@ -54,6 +54,11 @@
             "kind": "class"
           },
           {
+            "kind": "static",
+            "name": "data-slot",
+            "value": "card"
+          },
+          {
             "kind": "rest"
           }
         ],
@@ -77,7 +82,13 @@
         "aria": [],
         "keyboard": []
       },
-      "data": [],
+      "data": [
+        {
+          "name": "data-slot",
+          "kind": "static",
+          "value": "card"
+        }
+      ],
       "tokens": [
         "--border",
         "--card",

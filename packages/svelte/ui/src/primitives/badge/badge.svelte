@@ -54,6 +54,6 @@
   const cls = $derived(cn(badgeVariants({ size, variant }), className));
 </script>
 
-<div {...(cls ? { class: cls } : {})} {...rest}>
+<div {...(cls ? { class: cls } : {})} data-slot="badge" {...rest}>
   {@render children?.()}
 </div>

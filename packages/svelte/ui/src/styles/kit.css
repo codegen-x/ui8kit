@@ -61,3 +61,34 @@
   background-color: currentColor;
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") center / contain no-repeat;
 }
+
+/* Per-element tokens (UI8KIT-2.0 §11): badge, button, card, alert, media. Nothing is declared by default: an unset token falls through
+   (revert-layer) to the utility classes of the spec, so the default rendering is the plain theme (--radius, p-6, ...) and not a
+   re-statement of it. A skin or a scope (a wrapper, the magazine specimen) sets only the ones it wants.
+   Radius:  --radius-badge|button|card|alert|media   (unset: var(--radius); the badge unset: the pill). Only elements that carry plain `rounded` follow it.
+   Shadow:  --shadow-card|alert|media                (unset: the spec's own: none). A full box-shadow layer, e.g. var(--shadow-sm) or 0 0 #0000.
+   Density: data-density-badge|button|card|alert = compact | default | comfortable, on the element or any ancestor, sets --pad-*:
+            card 16/24/32 (padding of a default card), alert inline 8/8/16 with --min-alert 24/32/40,
+            button inline 12/16/20 and height 32/40/48 (default size), badge inline 8/12/16 and height 20/24/28 (default size).
+            4px steps only inside controls (button, badge); card and alert stay on the 8px step. */
+[data-slot="button"].rounded { border-radius: var(--radius-button, var(--radius)); }
+[data-slot="card"].rounded { border-radius: var(--radius-card, var(--radius)); }
+[data-slot="alert"].rounded { border-radius: var(--radius-alert, var(--radius)); }
+[data-slot="media-frame"].rounded { border-radius: var(--radius-media, var(--radius)); }
+[data-slot="badge"].rounded-full { border-radius: var(--radius-badge, revert-layer); }
+[data-slot="card"] { --tw-shadow: var(--shadow-card, revert-layer); }
+[data-slot="alert"] { --tw-shadow: var(--shadow-alert, revert-layer); }
+[data-slot="media-frame"] { --tw-shadow: var(--shadow-media, revert-layer); }
+[data-slot="card"].p-6 { padding: var(--pad-card, revert-layer); }
+[data-slot="alert"].px-2 { padding-inline: var(--pad-alert, revert-layer); }
+[data-slot="alert"].min-h-8 { min-height: var(--min-alert, revert-layer); }
+[data-slot="button"].px-4.h-10 { padding-inline: var(--pad-button, revert-layer); height: var(--h-button, revert-layer); }
+[data-slot="badge"].px-3.h-6 { padding-inline: var(--pad-badge, revert-layer); height: var(--h-badge, revert-layer); }
+[data-density-card="compact"] { --pad-card: 16px; }
+[data-density-card="comfortable"] { --pad-card: 32px; }
+[data-density-alert="compact"] { --pad-alert: 8px; --min-alert: 24px; }
+[data-density-alert="comfortable"] { --pad-alert: 16px; --min-alert: 40px; }
+[data-density-button="compact"] { --pad-button: 12px; --h-button: 32px; }
+[data-density-button="comfortable"] { --pad-button: 20px; --h-button: 48px; }
+[data-density-badge="compact"] { --pad-badge: 8px; --h-badge: 20px; }
+[data-density-badge="comfortable"] { --pad-badge: 16px; --h-badge: 28px; }

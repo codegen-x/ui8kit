@@ -94,6 +94,7 @@ const relValue = computed(() => (isSetStr(rel) ? rel : ((external || eqStr(targe
   <a v-if="isSetStr(href)"
     :href="orUndef(href)"
     :class="cls || undefined"
+    data-slot="button"
     :target="orUndef(targetValue)"
     :rel="orUndef(relValue)"
     :aria-disabled="disabled ? 'true' : undefined"
@@ -105,6 +106,7 @@ const relValue = computed(() => (isSetStr(rel) ? rel : ((external || eqStr(targe
   <button v-else
     :type="oneOfOr(type, 'button', 'submit', 'reset')"
     :class="cls || undefined"
+    data-slot="button"
     :disabled="disabled || undefined"
     v-bind="attrs"
   >

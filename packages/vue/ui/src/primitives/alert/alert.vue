@@ -45,6 +45,7 @@ const cls = computed(() => cn(alertVariants({ variant }), className));
 <template>
   <div
     :class="cls || undefined"
+    data-slot="alert"
     :role="oneOfOr(role, 'status', 'status', 'alert')"
     :aria-live="defaultIfEmpty(ariaLive, 'polite')"
     v-bind="attrs"

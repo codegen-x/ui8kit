@@ -44,6 +44,6 @@
   const cls = $derived(cn(cardVariants({ variant }), className));
 </script>
 
-<div {...(cls ? { class: cls } : {})} {...rest}>
+<div {...(cls ? { class: cls } : {})} data-slot="card" {...rest}>
   {@render children?.()}
 </div>

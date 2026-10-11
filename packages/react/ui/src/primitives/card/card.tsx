@@ -52,7 +52,7 @@ export const Card = forwardRef<HTMLDivElement, CardProps>(function Card(
     );
   }
   return (
-    <div ref={ref} className={cls || undefined} {...rest}>
+    <div ref={ref} className={cls || undefined} data-slot="card" {...rest}>
       {children}
     </div>
   );

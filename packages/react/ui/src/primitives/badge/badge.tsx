@@ -51,7 +51,7 @@ export const Badge = forwardRef<HTMLDivElement, BadgeProps>(function Badge(
 ) {
   const cls = cn(badgeVariants({ size, variant }), className);
   return (
-    <div ref={ref} className={cls || undefined} {...rest}>
+    <div ref={ref} className={cls || undefined} data-slot="badge" {...rest}>
       {children}
     </div>
   );

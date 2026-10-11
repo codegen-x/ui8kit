@@ -22,7 +22,7 @@ export type Profile = {
   quality: number;
 };
 
-const SNAP = "2";
+const SNAP = "3";
 
 export const FULL: Profile = { id: "full", prefix: "s" + SNAP, highW: 400, highH: 300, lowW: 96, lowH: 72, atlas: 2048, singleAtlas: false, pool: 80, mipmaps: true, quality: 0.86 };
 export const LIGHT: Profile = { id: "light", prefix: "m" + SNAP, highW: 320, highH: 240, lowW: 64, lowH: 48, atlas: 2048, singleAtlas: true, pool: 80, mipmaps: false, quality: 0.65 };

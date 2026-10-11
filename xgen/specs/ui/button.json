@@ -242,6 +242,11 @@
                 "kind": "class"
               },
               {
+                "kind": "static",
+                "name": "data-slot",
+                "value": "button"
+              },
+              {
                 "kind": "expr",
                 "name": "id",
                 "expr": {
@@ -344,6 +349,11 @@
                 "kind": "class"
               },
               {
+                "kind": "static",
+                "name": "data-slot",
+                "value": "button"
+              },
+              {
                 "kind": "bool",
                 "name": "disabled",
                 "expr": {
@@ -435,7 +445,18 @@
         ],
         "keyboard": []
       },
-      "data": [],
+      "data": [
+        {
+          "name": "data-slot",
+          "kind": "static",
+          "value": "button"
+        },
+        {
+          "name": "data-slot",
+          "kind": "static",
+          "value": "button"
+        }
+      ],
       "tokens": [
         "--background",
         "--border",

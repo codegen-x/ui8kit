@@ -39,14 +39,14 @@ export function checkCorners(plan: Plan): CheckResult {
     }
   }
   for (const key of Object.keys(CORNER_ALLOW)) if (!seen.has(key)) problems.push(`xgen/check/src/audit-rules.ts: CORNER_ALLOW names ${key}, which does not exist`);
-  // kit.css: a border-radius is the token (var(--radius), scaled or not) or an allowed exception
+  // kit.css: a border-radius is the token (var(--radius), scaled or not), a per-element token that falls back to it (var(--radius-card, var(--radius))) or an allowed exception
   const kit = join(root, "runtimes", "core", "assets", "styles", "kit.css");
   let utility = "";
   readFileSync(kit, "utf8").split("\n").forEach((l, i) => {
     utility = /@utility\s+([\w-]+)/.exec(l)?.[1] ?? (l.startsWith("}") ? "" : utility);
     for (const m of l.matchAll(/border-radius:\s*([^;}]+)/g)) {
       const v = m[1]!.trim();
-      if (v.includes("var(--radius)") || v === "inherit" || KIT_RADIUS_ALLOW[utility] === v) continue;
+      if (v.includes("var(--radius)") || /^var\(--radius-(badge|button|card|alert|media),/.test(v) || v === "inherit" || KIT_RADIUS_ALLOW[utility] === v) continue;
       problems.push(`xgen/runtimes/core/assets/styles/kit.css:${i + 1}: border-radius ${v}; derive it from var(--radius)`);
     }
   });

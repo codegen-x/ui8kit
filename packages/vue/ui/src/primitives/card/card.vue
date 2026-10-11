@@ -40,7 +40,7 @@ const cls = computed(() => cn(cardVariants({ variant }), className));
 </script>
 
 <template>
-  <div :class="cls || undefined" v-bind="attrs">
+  <div :class="cls || undefined" data-slot="card" v-bind="attrs">
     <slot />
   </div>
 </template>
