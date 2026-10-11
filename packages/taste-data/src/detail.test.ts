@@ -2,7 +2,9 @@ import { describe, expect, test } from "bun:test";
 import { relatedOf } from "./recommend";
 import { presetOf, cliLine } from "./preset";
 import { seriesOf } from "./series";
-import { COMPOSITIONS } from "./taste";
+import { COMPOSITIONS, SKIN_IDS } from "./taste";
+import { FONT_IDS } from "./font-ids";
+import { parseStyleKey, styleKey } from "./picks";
 
 const KEY = "t053-fullbleed-geometric|bubblegum|onest+inter|4";
 
@@ -36,5 +38,17 @@ describe("related", () => {
     expect(r.length).toBe(6);
     expect(r.some((c) => c.key === KEY)).toBe(false);
     expect(relatedOf(KEY).map((c) => c.key)).toEqual(r.map((c) => c.key));
+  });
+});
+
+describe("design system playground: a changed skin and single font make a valid new key and preset", () => {
+  test("every skin and font combination parses back, and the preset follows the change", () => {
+    const own = parseStyleKey("t071-poster-dots|bubblegum|montserrat+open-sans|0")!;
+    for (const skin of SKIN_IDS) for (const font of FONT_IDS) {
+      const key = styleKey({ screen: own.screen, skin, fonts: { display: font, body: font }, radius: own.radius });
+      expect(parseStyleKey(key)).toEqual({ screen: own.screen, skin, fonts: { display: font, body: font }, radius: 0 });
+      const preset = presetOf(key)!;
+      expect([preset.skin, preset.font, preset.style]).toEqual([skin, font, key]);
+    }
   });
 });

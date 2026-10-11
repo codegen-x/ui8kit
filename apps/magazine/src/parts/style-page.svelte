@@ -8,8 +8,8 @@
   import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
   import { deckAt } from "@ui8kit/taste-data/copy";
   import { COMPOSITION_OF } from "@ui8kit/taste-data/compositions";
-  import { family } from "@ui8kit/taste-data/fonts";
-  import { parseStyleKey, encodePicks, type StyleKey } from "@ui8kit/taste-data/picks";
+  import { family, type FontId } from "@ui8kit/taste-data/fonts";
+  import { parseStyleKey, encodePicks, styleKey, type StyleKey } from "@ui8kit/taste-data/picks";
   import { cliLine, presetOf } from "@ui8kit/taste-data/preset";
   import { relatedOf } from "@ui8kit/taste-data/recommend";
   import { seriesOf } from "@ui8kit/taste-data/series";
@@ -19,6 +19,7 @@
   import { SCREENS } from "@ui8kit/taste-screens/screens";
   import ui from "../../content/ui.json";
   import { hearted, toggleHeart } from "../lib/collections.svelte";
+  import DesignSystem from "./design-system.svelte";
   import { skinTokens } from "../lib/tokens";
   import type { StyleTab } from "../lib/state.svelte";
   import { TEMPLATES, type TemplateId } from "../templates/registry";
@@ -29,6 +30,11 @@
 
   let { key, tab = "overview" }: { key: StyleKey; tab?: StyleTab } = $props();
   let tplId = $state<TemplateId>("classic");
+  // the playground: a skin and a font chosen on the Design system tab. They are page state, not part of the key (the key is the style's
+  // identity and changes only on "Save as collection item"); the preview, the templates and the specimen read the effective values.
+  let ovSkin = $state<SkinId | null>(null);
+  let ovFont = $state<FontId | null>(null);
+  let saved = $state(false);
   const tpl = $derived(TEMPLATES.find((t) => t.id === tplId)!);
   const tabHref = (t: StyleTab) => "#/style/" + encodePicks([key]) + (t === "overview" ? "" : "/" + t);
   const tabLabels: Record<StyleTab, string> = { overview: ui.style.tabs.overview, templates: ui.style.tabs.templates, design: ui.style.tabs.design };
@@ -46,7 +52,12 @@
   const pattern = $derived(parts ? COMPOSITION_OF[parts.screen] : undefined);
   const series = $derived(seriesOf(key));
   const related = $derived(relatedOf(key));
-  const preset = $derived(presetOf(key));
+  const skin = $derived((ovSkin ?? parts?.skin ?? "sky") as SkinId);
+  const font = $derived((ovFont ?? parts?.fonts.body ?? "inter") as FontId);
+  const fonts = $derived((ovFont ? { display: ovFont, body: ovFont } : parts?.fonts ?? { display: "inter", body: "inter" }) as FontPair);
+  const changed = $derived(!!parts && (skin !== parts.skin || (ovFont !== null && (ovFont !== parts.fonts.display || ovFont !== parts.fonts.body))));
+  const nextKey = $derived(parts ? styleKey({ screen: parts.screen, skin, fonts, radius: parts.radius }) : key);
+  const preset = $derived(presetOf(nextKey));
   const json = $derived(preset ? JSON.stringify(preset, null, 2) : "");
   const sameFont = $derived(parts ? parts.fonts.display === parts.fonts.body : true);
 
@@ -61,8 +72,10 @@
     return () => ro.disconnect();
   });
   // the tokens of this skin in both themes (read once the skin changes), and back to the top when another style opens
-  $effect(() => { if (parts) tokens = { light: skinTokens(parts.skin, false), dark: skinTokens(parts.skin, true) }; });
-  $effect(() => { void key; window.scrollTo(0, 0); copied = ""; });
+  $effect(() => { if (parts) tokens = { light: skinTokens(skin, false), dark: skinTokens(skin, true) }; });
+  // `route` is a new object on every hash change (a tab switch too): a derived string only notifies when the key itself changes
+  const sameKey = $derived(key);
+  $effect(() => { void sameKey; window.scrollTo(0, 0); copied = ""; ovSkin = null; ovFont = null; saved = false; });
 
   async function copy(): Promise<void> {
     try {
@@ -75,6 +88,15 @@
       copied = document.execCommand("copy") ? "ok" : "fail";
       ta.remove();
     }
+  }
+  function reset(): void { ovSkin = null; ovFont = null; saved = false; copied = ""; }
+  /** the changed style becomes a collection item under its own key; only now does the identity change */
+  function save(): void {
+    if (!parts) return;
+    const k = nextKey;
+    if (!hearted(k)) toggleHeart(k);
+    saved = true;
+    if (k !== key) location.hash = "#/style/" + encodePicks([k]) + "/design";
   }
   const title = (p: NonNullable<typeof parts>) => `${p.screen} · ${p.skin} · ${p.fonts.display === p.fonts.body ? p.fonts.display : p.fonts.display + " + " + p.fonts.body} · r${p.radius}`;
   const famLabel = (f: string) => (ui.style.families as Record<string, string>)[f] ?? f;
@@ -111,44 +133,18 @@
         </div>
         <p class="mg-tpl-meta"><strong data-testid="tpl-name">{tpl.label}</strong><span class="mg-note">{tpl.note}</span><span class="mg-note" data-testid="tpl-landmarks">{ui.style.templates.landmarks}: {tpl.landmarks}</span></p>
         {#if deck}
-          <TemplateStage template={tpl} c={deck} skin={parts.skin} font={(parts.fonts as FontPair).body} radius={parts.radius} label={`${tpl.label}, ${parts.skin}`} />
+          <TemplateStage template={tpl} c={deck} skin={skin} font={font} radius={parts.radius} label={`${tpl.label}, ${skin}`} />
         {/if}
       </section>
     {:else if tab === "design"}
-    <section class="mg-sec" data-testid="style-tokens">
-      <h2 class="mg-h2">{ui.style.tokens}</h2>
-      <h3 class="mg-h3">{ui.style.skinTokens}: {parts.skin}</h3>
-      {#each ([{ mode: "light", list: tokens.light }, { mode: "dark", list: tokens.dark }]) as { mode, list } (mode)}
-        <div class="mg-swatches" data-mode={mode}>
-          <span class="mg-swatch-mode">{mode === "light" ? ui.style.light : ui.style.dark}</span>
-          {#each list as t (t.name)}
-            <span class="mg-swatch" title={`--${t.name}: ${t.value}`}><span class="mg-chip" style:background={t.css}></span><span class="mg-swatch-name">{t.name}</span><code>{t.value}</code></span>
-          {/each}
-        </div>
-      {/each}
-      <h3 class="mg-h3">{ui.style.font}</h3>
-      <p class="mg-specimen" style:font-family={`${family((parts.fonts as FontPair).body)}, sans-serif`} data-testid="style-font"><strong>{parts.fonts.body}</strong> <span>{ui.style.specimen}</span></p>
-      {#if !sameFont}
-        <p class="mg-specimen" style:font-family={`${family((parts.fonts as FontPair).display)}, sans-serif`}><span class="mg-note">{ui.style.headingFont}:</span> <strong>{parts.fonts.display}</strong> <span>{ui.style.specimen}</span></p>
-      {/if}
-      <h3 class="mg-h3">{ui.style.radius}</h3>
-      <p class="mg-radius"><span class="mg-radius-box" style:border-radius={`${parts.radius}px`}></span> <code data-testid="style-radius">{parts.radius}px</code></p>
-    </section>
-
-    <section class="mg-sec" data-testid="style-preset">
-      <h2 class="mg-h2">{ui.style.preset}</h2>
-      <p><button class="mg-btn mg-btn-primary" type="button" onclick={copy} data-testid="copy-preset">{ui.style.copy}</button>
-        <span class="mg-note" role="status" data-testid="copy-status">{copied === "ok" ? ui.style.copied : copied === "fail" ? ui.style.copyFailed : ""}</span></p>
-      <pre class="mg-pre" data-testid="preset-json">{json}</pre>
-      {#if preset}<p class="mg-note">{ui.style.cli}: <code>{cliLine(preset)}</code> <button class="mg-btn" type="button" disabled>{ui.style.cliLater}</button></p>{/if}
-    </section>
-
+      <DesignSystem {skin} {font} radius={parts.radius} own={{ skin: parts.skin, font: parts.fonts.body }} {changed} {tokens} {json} {saved} {copied}
+        onskin={(v) => { ovSkin = v; saved = false; copied = ""; }} onfont={(v) => { ovFont = v; saved = false; copied = ""; }} onreset={reset} onsave={save} oncopy={copy} />
     {:else}
     <section class="mg-sec" aria-label={ui.style.preview}>
-      <div class="mg-big" bind:this={box} data-testid="style-preview" data-skin={parts.skin} style:height={`${width * 0.75}px`}>
+      <div class="mg-big" bind:this={box} data-testid="style-preview" data-skin={skin} style:height={`${width * 0.75}px`}>
         {#if taste}
           <div class="mg-live" style:transform={`scale(${width / 1440})`} inert aria-hidden="true">
-            <TasteFrame screen={SCREENS[parts.screen]!} deck={deckAt(taste.deck)} skin={parts.skin as SkinId} fonts={parts.fonts as FontPair} radius={parts.radius as Radius} />
+            <TasteFrame screen={SCREENS[parts.screen]!} deck={deckAt(taste.deck)} skin={skin} fonts={fonts} radius={parts.radius as Radius} />
           </div>
         {/if}
       </div>

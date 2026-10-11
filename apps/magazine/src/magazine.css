@@ -102,3 +102,35 @@
 .tp-list a { color: var(--foreground); text-underline-offset: 4px; }
 .tp-meta { font-size: 12px; color: var(--muted-foreground); }
 .tp-strong { font-weight: 600; }
+/* Design system tab */
+.mg-choices { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px; }
+.mg-choice { font: inherit; font-size: 14px; display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; border: 1px solid var(--border); border-radius: var(--radius); background: var(--background); color: var(--foreground); cursor: pointer; }
+.mg-choice[aria-checked="true"] { background: var(--primary); color: var(--primary-foreground); border-color: var(--primary); }
+.mg-choice:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+.mg-choice-own { opacity: 0.85; font-size: 12px; }
+.mg-choice-dot { width: 16px; height: 16px; border-radius: 50%; display: inline-block; background: var(--primary); border: 1px solid var(--border); }
+.mg-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin: 0 0 16px; }
+.ds-box { width: 100%; max-width: 1200px; border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; box-sizing: border-box; }
+.ds-frame { font-family: var(--font-sans); background: var(--background); color: var(--foreground); padding: 32px; display: flex; flex-direction: column; gap: 32px; }
+.ds-frame :is(h1, h2, h3, h4, h5, h6) { font-family: var(--taste-heading, var(--font-sans)); }
+.ds-block { display: flex; flex-direction: column; gap: 16px; }
+.ds-two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; align-items: start; }
+.ds-h { margin: 0; font-size: 16px; line-height: 24px; font-weight: 600; }
+.ds-label { font-size: 12px; line-height: 16px; color: var(--muted-foreground); }
+.ds-swatches { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
+.ds-swatches .ds-label { width: 48px; }
+.ds-swatch { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; }
+.ds-swatch code { font-size: 12px; color: var(--muted-foreground); }
+.ds-chip { width: 24px; height: 24px; border-radius: 4px; border: 1px solid var(--border); display: inline-block; }
+.ds-type { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 16px; align-items: baseline; }
+.ds-row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
+.ds-radius, .ds-space { display: inline-flex; flex-direction: column; gap: 8px; }
+.ds-radius-box { width: 64px; height: 48px; background: var(--muted); border: 1px solid var(--border); display: inline-block; box-sizing: border-box; }
+.ds-radius-box.ds-on { background: var(--primary); border-color: var(--primary); }
+.ds-bars { align-items: flex-end; }
+.ds-bar { height: 16px; background: var(--primary); display: inline-block; }
+.ds-stack { display: flex; flex-direction: column; gap: 8px; }
+.ds-form { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.ds-field { display: flex; flex-direction: column; gap: 8px; }
+/* Destructive samples: the kit paints white (or the destructive colour) on the destructive colour, which fails AA on some skins. The specimen keeps the signal in the ring and puts the text on the card colour, which every skin already measures. */
+.ds-frame .ds-danger { background: var(--card) !important; color: var(--foreground) !important; box-shadow: inset 0 0 0 2px var(--destructive) !important; }
