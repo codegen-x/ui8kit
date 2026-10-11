@@ -88,7 +88,7 @@ export class Loader {
     if (!this.cssHash) this.cssHash = hash(collectCss());
     const fonts = [v.fonts.display, v.fonts.body];
     const prof = profile();
-    // the prefix carries the snapshot version and the device profile (s2 desktop, m2 tablets/phones): never mixed
+    // the prefix carries the snapshot version and the device profile (s3 desktop, m3 tablets/phones; 2 before the §11 tokens): never mixed
     const key = `${prof.prefix}-${hash(html)}-${hash(html, 0x1234567)}-${this.cssHash}-${this.dark ? "d" : "l"}-${HIGH_W}x${HIGH_H}`;
     let blob = await getShot(key);
     if (gen !== this.generation) return;

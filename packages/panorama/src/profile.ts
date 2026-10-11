@@ -1,6 +1,6 @@
 // Texture and cache profile. "full" is the desktop output (unchanged: 400×300 near cards with mipmaps, 96×72 far cells in
-// 2048² atlases, WebP 0.86, cache prefix s2). "light" is for tablets and phones (coarse pointer, or a small screen): 320×240
-// near cards without mipmaps, 64×48 far cells in one smaller atlas, WebP 0.65 in IndexedDB, and its own cache prefix (m2)
+// 2048² atlases, WebP 0.86, cache prefix s3). "light" is for tablets and phones (coarse pointer, or a small screen): 320×240
+// near cards without mipmaps, 64×48 far cells in one smaller atlas, WebP 0.65 in IndexedDB, and its own cache prefix (m3)
 // so the two profiles never read or overwrite each other's snapshots. `?profile=light|full` forces one (testing).
 export type Profile = {
   id: "full" | "light";

@@ -1,6 +1,6 @@
 // Snapshots for the cards: the Discovery pipeline (serialise → rasterise → WebP → IndexedDB) with the same content-address key as
 // the Loader of the panorama, so a style Discovery already rendered is a cache lookup here, and the other way round. The key is
-// hash(markup) + hash(document CSS) + theme + size under the profile prefix (s2 desktop, m2 light): equal CSS in both apps (see
+// hash(markup) + hash(document CSS) + theme + size under the profile prefix (s3 desktop, m3 light): equal CSS in both apps (see
 // app.css and `bun run css-parity`) is what makes the entries shared.
 import { deckAt } from "@ui8kit/taste-data/copy";
 import { TASTES } from "@ui8kit/taste-data/tastes";
