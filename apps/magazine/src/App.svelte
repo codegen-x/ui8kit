@@ -19,7 +19,7 @@
 <svelte:window onhashchange={() => (hash = location.hash)} />
 
 <Block class="mg-root">
-  <header class="mg-header">
+  <header class="mg-header" data-phase={mag.phase}>
     <a class="mg-title" href="#/">{ui.title}</a>
     <span class="mg-spacer"></span>
     <a class="mg-link" href="/discovery/?cards=recommend">{ui.nav.discovery}</a>

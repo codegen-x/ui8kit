@@ -7,7 +7,7 @@
   import { onMount } from "svelte";
   import { deckAt } from "@ui8kit/taste-data/copy";
   import { encodePicks } from "@ui8kit/taste-data/picks";
-  import type { Card } from "@ui8kit/taste-data/recommend";
+  import type { Style } from "@ui8kit/taste-data/recommend";
   import type { FontPair, Radius, SkinId } from "@ui8kit/taste-data/taste";
   import { TASTES } from "@ui8kit/taste-data/tastes";
   import { SCREENS } from "@ui8kit/taste-screens/screens";
@@ -15,7 +15,7 @@
   import { liveSlots, lookup, make } from "../lib/shots";
   import { theme } from "../lib/theme.svelte";
 
-  let { card, caption = "" }: { card: Card; caption?: string } = $props();
+  let { card, caption = "" }: { card: Style; caption?: string } = $props();
 
   let host: HTMLElement;
   let visible = $state(false);

@@ -13,6 +13,8 @@
     "./fonts": "./src/fonts.ts",
     "./copy": "./src/copy.ts",
     "./picks": "./src/picks.ts",
+    "./series": "./src/series.ts",
+    "./preset": "./src/preset.ts",
     "./recommend": "./src/recommend/index.ts",
     "./font-ids": "./src/font-ids.ts",
     "./skin-colors": "./src/skin-colors.ts",
