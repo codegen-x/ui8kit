@@ -35,6 +35,8 @@ bun run check:all     # all of the above
 bun run lint:px       # ui8px over the class sets of the specs (8 px grid, 4 px steps only in controls), ratchet in .ui8px/gate.json
 bun run visual -- --out <dir> [--against <dir>]   # pixel gate: every state of every host in light and dark, manifest of PNG hashes
 bun run audit:push    # before every push: nothing private, no images/fonts/.fig, no secrets
+bun run rules          # rules 01/02/03/06 on the composition zone (also a group of bun run check)
+bun run hooks:install  # once per clone: git config core.hooksPath .githooks (pre-push: check + audit)
 ```
 
 `xgen list` prints what there is: bricks, parts, portable counts, targets, and the hand-written files of every app.

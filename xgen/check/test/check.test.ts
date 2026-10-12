@@ -7,7 +7,7 @@ const repo = join(import.meta.dir, "..", "..", "..");
 test("xgen check passes on the workspace", () => {
   const { results } = runChecks(repo);
   expect(results.map((r) => [r.name, r.problems])).toEqual(results.map((r) => [r.name, []]));
-  expect(results.map((r) => r.name)).toEqual(["schema", "props", "a11y", "authored", "coverage", "recipes", "nonportable", "text", "dictionary", "blocks", "registry", "themes", "routes", "structure", "hardcode", "corners", "shadows", "spacing", "readability", "dead", "duplicates", "versions", "tests", "drift"]);
+  expect(results.map((r) => r.name)).toEqual(["schema", "props", "a11y", "authored", "coverage", "recipes", "nonportable", "text", "dictionary", "blocks", "registry", "themes", "routes", "structure", "hardcode", "corners", "shadows", "spacing", "readability", "dead", "duplicates", "versions", "tests", "rules", "drift"]);
 });
 
 test("the blocks check finds a broken block", () => {

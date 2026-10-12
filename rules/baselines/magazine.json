@@ -1,0 +1,66 @@
+{
+  "$comment": "Recorded violations of the rules group (xgen check) in the composition zone, per detector and file. New ones fail; regenerate with: bun run rules:baseline",
+  "package": "apps/magazine",
+  "totals": {
+    "block-root": 11,
+    "raw-html": 0,
+    "dynamic-tag": 0,
+    "raw-native-tag": 311,
+    "reactive-aria": 16,
+    "literal-text": 8
+  },
+  "counts": {
+    "block-root": {
+      "src/templates/blog.svelte": 1,
+      "src/templates/classic.svelte": 1,
+      "src/templates/dashboard.svelte": 1,
+      "src/templates/docs.svelte": 1,
+      "src/templates/ecommerce.svelte": 1,
+      "src/templates/portfolio.svelte": 1,
+      "src/templates/saas.svelte": 1,
+      "src/templates/sidebar.svelte": 1,
+      "src/templates/stage.svelte": 1,
+      "src/templates/three-column.svelte": 1,
+      "src/templates/two-column.svelte": 1
+    },
+    "raw-html": {},
+    "dynamic-tag": {},
+    "raw-native-tag": {
+      "src/App.svelte": 16,
+      "src/parts/card.svelte": 7,
+      "src/parts/collection-header.svelte": 12,
+      "src/parts/collection.svelte": 8,
+      "src/parts/design-system.svelte": 93,
+      "src/parts/heart.svelte": 3,
+      "src/parts/home.svelte": 4,
+      "src/parts/packs.svelte": 13,
+      "src/parts/presets.svelte": 11,
+      "src/parts/row.svelte": 3,
+      "src/parts/search.svelte": 49,
+      "src/parts/sphere.svelte": 6,
+      "src/parts/style-page.svelte": 39,
+      "src/templates/blog.svelte": 2,
+      "src/templates/classic.svelte": 2,
+      "src/templates/dashboard.svelte": 1,
+      "src/templates/docs.svelte": 8,
+      "src/templates/ecommerce.svelte": 2,
+      "src/templates/portfolio.svelte": 2,
+      "src/templates/saas.svelte": 2,
+      "src/templates/sidebar.svelte": 4,
+      "src/templates/stage.svelte": 2,
+      "src/templates/three-column.svelte": 12,
+      "src/templates/two-column.svelte": 10
+    },
+    "reactive-aria": {
+      "src/parts/design-system.svelte": 8,
+      "src/parts/heart.svelte": 1,
+      "src/parts/search.svelte": 4,
+      "src/parts/style-page.svelte": 3
+    },
+    "literal-text": {
+      "src/App.svelte": 1,
+      "src/parts/card.svelte": 2,
+      "src/parts/design-system.svelte": 5
+    }
+  }
+}

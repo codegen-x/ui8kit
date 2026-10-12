@@ -31,7 +31,10 @@
   "scripts": {
     "build": "bun xgen/cli/src/cli.ts build",
     "check": "bun xgen/cli/src/cli.ts check",
+    "rules": "bun xgen/check/tools/rules.ts",
+    "rules:baseline": "bun xgen/check/tools/rules.ts --write",
     "audit:push": "bash packages/tooling/bin/audit.sh",
+    "hooks:install": "git config core.hooksPath .githooks",
     "build:hosts": "bun run --cwd apps/host-svelte build && bun run --cwd apps/host-react build && bun run --cwd apps/host-vue build",
     "e2e": "bun xgen/cli/src/cli.ts e2e",
     "shot": "bun xgen/cli/src/cli.ts shot",

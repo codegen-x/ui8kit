@@ -217,14 +217,9 @@
       "name": "@ui8kit/xgen-tooling",
       "version": "0.0.0",
       "bin": {
-        "xgen-retag": "./bin/retag.ts",
         "xgen-rules": "./bin/rules.mjs",
-        "xgen-i18n": "./bin/i18n.mjs",
         "xgen-audit": "./bin/audit.sh",
-      },
-      "dependencies": {
-        "svelte": "^5.57.0",
-        "typescript": "~6.0.2",
+        "xgen-zones": "./bin/zones.mjs",
       },
     },
     "packages/vue/ui": {
@@ -253,7 +248,10 @@
         "@ui8kit/xgen-schema": "workspace:*",
         "@ui8kit/xgen-screens": "workspace:*",
         "@ui8kit/xgen-spec": "workspace:*",
+        "@vue/compiler-sfc": "^3.5.43",
         "playwright-core": "^1.63.0",
+        "svelte": "^5.57.0",
+        "typescript": "~6.0.2",
       },
     },
     "xgen/cli": {

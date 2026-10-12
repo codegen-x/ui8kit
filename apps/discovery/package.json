@@ -21,9 +21,7 @@
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "included": "bun scripts/included.ts",
-    "retag": "xgen-retag",
-    "rules": "xgen-rules",
-    "i18n": "xgen-i18n"
+    "rules": "xgen-rules"
   },
   "dependencies": {
     "@ui8kit/app-shared": "workspace:*",

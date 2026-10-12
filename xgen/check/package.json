@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "description": "Checks: schema, props, variants, a11y, drift (packages and apps), coverage, portability contract, text and Cyrillic.",
+  "description": "Checks: schema, props, variants, a11y, drift (packages and apps), coverage, portability contract, text and Cyrillic, and the rules group (rules 01/02/03/06 on the composition zone of svelte, react and vue).",
   "main": "./src/index.ts",
   "exports": {
     ".": "./src/index.ts",
@@ -16,7 +16,10 @@
     "@ui8kit/xgen-screens": "workspace:*",
     "@ui8kit/xgen-generator": "workspace:*",
     "playwright-core": "^1.63.0",
-    "@ui8kit/xgen-runtime-core": "workspace:*"
+    "@ui8kit/xgen-runtime-core": "workspace:*",
+    "@vue/compiler-sfc": "^3.5.43",
+    "svelte": "^5.57.0",
+    "typescript": "~6.0.2"
   },
   "scripts": {
     "test": "bun test"

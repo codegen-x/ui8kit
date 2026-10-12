@@ -14,6 +14,7 @@ import { checkCorners } from "./corners";
 import { checkShadows } from "./shadows";
 import { checkSpacing } from "./spacing";
 import { checkReadability } from "./readability";
+import { checkRules } from "./rules";
 
 import { result, type CheckResult } from "./result";
 import { KNOWN_ARIA } from "./aria";
@@ -200,7 +201,7 @@ export function checkNonportable(plan: Plan): CheckResult {
       for (const m of feature.markers) if (f.contents.includes(m)) problems.push(`${t.dir}/${f.path}: uses ${m} (${feature.id}); the contract is: ${feature.replacement}`);
     }
   }
-  return result("nonportable", "generated code uses none of the features that do not carry over (context, $bindable, attach); the replacements are documented", problems);
+  return result("nonportable", "generated code uses none of the features that do not carry over (context, $bindable, attach, raw HTML, v-model); the replacements are documented", problems);
 }
 
 /** text: no Cyrillic anywhere in the sources, the generated code and the content; every content key a view reads exists */
@@ -256,7 +257,7 @@ export function checkText(plan: Plan): CheckResult {
 
 export function runChecks(workspace: string): { results: CheckResult[]; plan: Plan } {
   const plan = planBuild(workspace);
-  const results = [checkSchema(plan), checkProps(plan), checkA11y(plan), checkAuthored(plan), checkCoverage(plan), checkRecipes(plan), checkNonportable(plan), checkText(plan), checkDictionary(plan), checkBlocks(plan), checkRegistry(plan), checkThemes(plan), checkRoutes(plan), checkStructure(plan), checkHardcode(plan), checkCorners(plan), checkShadows(plan), checkSpacing(plan), checkReadability(plan), checkDead(plan), checkDuplicates(plan), checkVersions(plan), checkTests(plan), checkDrift(plan)];
+  const results = [checkSchema(plan), checkProps(plan), checkA11y(plan), checkAuthored(plan), checkCoverage(plan), checkRecipes(plan), checkNonportable(plan), checkText(plan), checkDictionary(plan), checkBlocks(plan), checkRegistry(plan), checkThemes(plan), checkRoutes(plan), checkStructure(plan), checkHardcode(plan), checkCorners(plan), checkShadows(plan), checkSpacing(plan), checkReadability(plan), checkDead(plan), checkDuplicates(plan), checkVersions(plan), checkTests(plan), checkRules(plan.workspace), checkDrift(plan)];
   return { results, plan };
 }
 

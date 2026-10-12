@@ -1,9 +1,0 @@
-{
-  "appdir": "src",
-  "extensions": [".svelte"],
-  "baseline": ".project/retag-baseline.txt",
-  "documentFrame": ["index.html"],
-  "allow": [],
-  "allowTags": [],
-  "exclude": []
-}
