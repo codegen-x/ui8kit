@@ -1,0 +1,618 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Magazine reference catalog v0.1",
+  "type": "object",
+  "required": [
+    "format",
+    "version",
+    "id",
+    "language",
+    "created",
+    "status",
+    "sourceRevision",
+    "purpose",
+    "scope",
+    "provenance",
+    "vocabulary",
+    "families",
+    "concepts",
+    "relations",
+    "fixtures",
+    "scenarios",
+    "reviewProtocol"
+  ],
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "format": {
+      "const": 1
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "id": {
+      "const": "magazine-reference-v0.1"
+    },
+    "language": {
+      "const": "ru"
+    },
+    "created": {
+      "type": "string",
+      "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}$"
+    },
+    "status": {
+      "const": "source-reviewed"
+    },
+    "sourceRevision": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "scope": {
+      "type": "object"
+    },
+    "provenance": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/sourceHash"
+      }
+    },
+    "vocabulary": {
+      "type": "object"
+    },
+    "families": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "role",
+          "conceptIds"
+        ],
+        "properties": {
+          "id": {
+            "$ref": "#/$defs/family"
+          },
+          "role": {
+            "type": "string"
+          },
+          "conceptIds": {
+            "type": "array",
+            "items": {
+              "$ref": "#/$defs/conceptId"
+            }
+          }
+        }
+      }
+    },
+    "concepts": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "items": {
+        "$ref": "#/$defs/concept"
+      }
+    },
+    "relations": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "from",
+          "to",
+          "type",
+          "bidirectional",
+          "shared",
+          "changed",
+          "reason",
+          "status",
+          "condition"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^ref-r[0-9]{2}$"
+          },
+          "from": {
+            "$ref": "#/$defs/conceptId"
+          },
+          "to": {
+            "$ref": "#/$defs/conceptId"
+          },
+          "type": {
+            "enum": [
+              "same-principle",
+              "same-layout-family",
+              "structural-neighbor",
+              "expressive-neighbor",
+              "task-counterexample"
+            ]
+          },
+          "bidirectional": {
+            "const": true
+          },
+          "shared": {
+            "$ref": "#/$defs/strings"
+          },
+          "changed": {
+            "$ref": "#/$defs/strings"
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "const": "source-reviewed"
+          },
+          "condition": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "fixtures": {
+      "type": "object",
+      "required": [
+        "entry",
+        "comparison"
+      ],
+      "properties": {
+        "entry": {
+          "type": "object",
+          "required": [
+            "styleKeys",
+            "query",
+            "route",
+            "sideEffect"
+          ],
+          "properties": {
+            "styleKeys": {
+              "type": "array",
+              "minItems": 10,
+              "maxItems": 10,
+              "uniqueItems": true,
+              "items": {
+                "type": "string"
+              }
+            },
+            "query": {
+              "type": "string"
+            },
+            "route": {
+              "type": "string"
+            },
+            "sideEffect": {
+              "type": "string"
+            }
+          }
+        },
+        "comparison": {
+          "type": "object",
+          "required": [
+            "commonDeckPath",
+            "rendererSupport",
+            "styles"
+          ],
+          "properties": {
+            "rendererSupport": {
+              "enum": [
+                "planned",
+                "implemented-research-only"
+              ]
+            },
+            "styles": {
+              "type": "array",
+              "minItems": 12,
+              "maxItems": 12
+            }
+          }
+        }
+      }
+    },
+    "scenarios": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "title",
+          "mode",
+          "start",
+          "outcome"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^REF-B[1-5]$"
+          },
+          "title": {
+            "type": "string"
+          },
+          "mode": {
+            "const": "human"
+          },
+          "start": {
+            "type": "string"
+          },
+          "outcome": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "reviewProtocol": {
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "conceptId": {
+      "type": "string",
+      "pattern": "^ref-c[0-9]{2}$"
+    },
+    "family": {
+      "enum": [
+        "poster",
+        "split",
+        "full-bleed",
+        "dense-grid",
+        "airy",
+        "stats",
+        "ribbon",
+        "editorial",
+        "frame",
+        "prompt"
+      ]
+    },
+    "strings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sourceHash": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "style": {
+      "type": "object",
+      "required": [
+        "screen",
+        "skin",
+        "fonts",
+        "radius",
+        "key"
+      ],
+      "properties": {
+        "screen": {
+          "type": "string"
+        },
+        "skin": {
+          "type": "string"
+        },
+        "fonts": {
+          "type": "object",
+          "required": [
+            "display",
+            "body"
+          ],
+          "properties": {
+            "display": {
+              "type": "string"
+            },
+            "body": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "radius": {
+          "enum": [
+            0,
+            4,
+            8,
+            12,
+            16
+          ]
+        },
+        "key": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+\\|[a-z0-9-]+\\|[a-z0-9-]+\\+[a-z0-9-]+\\|[0-9]{1,2}$"
+        }
+      },
+      "additionalProperties": false
+    },
+    "concept": {
+      "type": "object",
+      "required": [
+        "id",
+        "title",
+        "layoutFamily",
+        "status",
+        "source",
+        "artDirection",
+        "composition",
+        "invariants",
+        "risks",
+        "distinction",
+        "variants",
+        "templateProbes",
+        "review",
+        "schematic"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/conceptId"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "layoutFamily": {
+          "$ref": "#/$defs/family"
+        },
+        "status": {
+          "const": "source-reviewed"
+        },
+        "source": {
+          "type": "object",
+          "required": [
+            "screen",
+            "path",
+            "sha256",
+            "authoredStyle",
+            "nativeDeckIndex",
+            "legacyComposition",
+            "curation"
+          ],
+          "properties": {
+            "screen": {
+              "type": "string"
+            },
+            "path": {
+              "type": "string"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "authoredStyle": {
+              "$ref": "#/$defs/style"
+            },
+            "nativeDeckIndex": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "legacyComposition": {
+              "type": "object"
+            },
+            "curation": {
+              "type": "object"
+            }
+          }
+        },
+        "artDirection": {
+          "type": "object",
+          "required": [
+            "intent",
+            "task",
+            "focus"
+          ],
+          "properties": {
+            "intent": {
+              "type": "string"
+            },
+            "task": {
+              "type": "string"
+            },
+            "focus": {
+              "type": "string"
+            }
+          }
+        },
+        "composition": {
+          "type": "object",
+          "required": [
+            "contentPattern",
+            "rationale",
+            "mediaRole",
+            "differenceFromLegacy"
+          ],
+          "properties": {
+            "contentPattern": {
+              "type": "string"
+            },
+            "rationale": {
+              "type": "string"
+            },
+            "mediaRole": {
+              "type": "string"
+            },
+            "differenceFromLegacy": {
+              "type": "string"
+            }
+          }
+        },
+        "invariants": {
+          "$ref": "#/$defs/strings"
+        },
+        "risks": {
+          "$ref": "#/$defs/strings"
+        },
+        "distinction": {
+          "type": "object",
+          "required": [
+            "against",
+            "reason"
+          ],
+          "properties": {
+            "against": {
+              "$ref": "#/$defs/conceptId"
+            },
+            "reason": {
+              "type": "string"
+            }
+          }
+        },
+        "variants": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "axis",
+              "style",
+              "expectation",
+              "status"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "axis": {
+                "enum": [
+                  "colour",
+                  "font",
+                  "radius"
+                ]
+              },
+              "style": {
+                "$ref": "#/$defs/style"
+              },
+              "expectation": {
+                "type": "string"
+              },
+              "status": {
+                "enum": [
+                  "unrendered",
+                  "captured"
+                ]
+              }
+            }
+          }
+        },
+        "templateProbes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "status",
+              "preserves"
+            ],
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "status": {
+                "const": "planned"
+              },
+              "preserves": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "review": {
+          "type": "object",
+          "required": [
+            "structure",
+            "visual",
+            "accessibility",
+            "usability"
+          ],
+          "properties": {
+            "structure": {
+              "const": "source-reviewed"
+            },
+            "visual": {
+              "enum": [
+                "pending",
+                "reviewed-with-findings"
+              ]
+            },
+            "accessibility": {
+              "const": "pending"
+            },
+            "usability": {
+              "const": "pending"
+            }
+          }
+        },
+        "schematic": {
+          "type": "object",
+          "required": [
+            "coordinateSpace",
+            "description",
+            "elements"
+          ],
+          "properties": {
+            "coordinateSpace": {
+              "const": [
+                320,
+                240
+              ]
+            },
+            "description": {
+              "type": "string"
+            },
+            "elements": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "prefixItems": [
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number"
+                  },
+                  {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  },
+                  {
+                    "type": "number",
+                    "exclusiveMinimum": 0
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "minItems": 5,
+                "maxItems": 5
+              }
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "format": 1,
+  "status": "not-started",
+  "audience": "designers-and-art-directors",
+  "participantId": null,
+  "role": null,
+  "experience": {"uiYears": null, "designSystems": null, "ui8kitFamiliarity": null},
+  "revision": null,
+  "browser": null,
+  "viewport": null,
+  "recordingConsent": null,
+  "tasks": [
+    {"taskId": "REF-B1", "surface": "magazine", "startAt": null, "endAt": null, "activeDurationMs": null, "outcome": null, "helpCount": null, "backtrackCount": null, "wrongTurnCount": null, "chosenConceptId": null, "alternativeConceptId": null, "explanation": null, "confidence": null, "observations": []},
+    {"taskId": "REF-B2", "surface": "magazine", "expectedVariantId": "ref-c02:font", "startAt": null, "endAt": null, "activeDurationMs": null, "outcome": null, "helpCount": null, "backtrackCount": null, "wrongTurnCount": null, "observedStyleKey": null, "explanation": null, "confidence": null, "observations": []},
+    {"taskId": "REF-B3", "surface": "reference-review", "presentationOrder": null, "startAt": null, "endAt": null, "activeDurationMs": null, "outcome": null, "helpCount": null, "backtrackCount": null, "wrongTurnCount": null, "explanation": null, "confidence": null, "observations": []},
+    {"taskId": "REF-B4", "surface": "magazine", "expectedTemplateId": "blog", "startAt": null, "endAt": null, "activeDurationMs": null, "outcome": null, "helpCount": null, "backtrackCount": null, "wrongTurnCount": null, "observedTemplateId": null, "explanation": null, "confidence": null, "observations": []},
+    {"taskId": "REF-B5", "surface": "magazine", "expectedVariantId": "ref-c05:radius", "startAt": null, "endAt": null, "activeDurationMs": null, "outcome": null, "helpCount": null, "backtrackCount": null, "wrongTurnCount": null, "collectionStyleKey": null, "presetStyleKey": null, "clipboardOutcome": null, "explanation": null, "confidence": null, "observations": []}
+  ]
+}

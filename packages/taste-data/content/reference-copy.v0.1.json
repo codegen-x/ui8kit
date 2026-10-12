@@ -1,0 +1,50 @@
+{
+  "brand": "Studio",
+  "nav": [
+    "Work",
+    "Method",
+    "Notes",
+    "About"
+  ],
+  "eyebrow": "A clear direction",
+  "title": "Shape ideas into useful systems",
+  "accent": "One decision at a time",
+  "lead": "Choose a direction, explore its structure, and make it work for your project.",
+  "cta": "Explore the direction",
+  "secondary": "See the approach",
+  "input": "Describe your project",
+  "note": "Sample content for comparing layouts, not product claims.",
+  "stats": [
+    {
+      "value": "01",
+      "label": "Understand"
+    },
+    {
+      "value": "02",
+      "label": "Compare"
+    },
+    {
+      "value": "03",
+      "label": "Apply"
+    }
+  ],
+  "items": [
+    {
+      "title": "Structure",
+      "text": "Organize the message and the next action."
+    },
+    {
+      "title": "Expression",
+      "text": "Use colour and typography deliberately."
+    },
+    {
+      "title": "Control",
+      "text": "Keep changes visible and reversible."
+    }
+  ],
+  "tags": [
+    "Structure",
+    "Expression",
+    "Control"
+  ]
+}

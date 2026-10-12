@@ -1,0 +1,38 @@
+{
+  "format": 1,
+  "status": "reviewed-with-findings",
+  "scope": "12 reference concepts; not the entire corpus",
+  "reviewer": "assistant visual inspection of actual desktop/narrow screenshots and source structure",
+  "audience": "designers-and-art-directors",
+  "deduplication": {
+    "exactDuplicateFound": false,
+    "claim": "No obvious complete duplicate among these twelve under common copy/tokens; this is an editorial review, not proof of uniqueness across 146 screens or 820 style keys.",
+    "closeGroups": [
+      {"concepts": ["ref-c01", "ref-c04", "ref-c06"], "reason": "Central focal structure; scale, supporting copy/actions and the lower ribbon distinguish treatment. Count as a related group, not three unrelated composition principles."},
+      {"concepts": ["ref-c10", "ref-c11"], "reason": "Same dense-grid family; two large upper masses versus a central cell and surrounding cells."},
+      {"concepts": ["ref-c02", "ref-c05"], "reason": "Related split balance; local stats in the text column versus a separate full-width evidence band."}
+    ]
+  },
+  "concepts": [
+    {"id":"ref-c01","desktop":"Central headline/action structure survives normalized tokens and copy.","narrow":"Authored title fits, but the navigation collides. Longer normalized text and actions exceed the fixed first screen.","decision":"Retain; define mobile header and text length limits."},
+    {"id":"ref-c02","desktop":"Clear text/media balance; supporting stats remain within the text column.","narrow":"Two columns and fixed gaps squeeze text. Media overlays the text/actions; narrow mode is not usable adaptation.","decision":"Retain; mobile requires reordered single-column structure."},
+    {"id":"ref-c03","desktop":"Media band above monumental typography remains distinct from a centred poster.","narrow":"Fixed monumental text size overflows the available width; the frame clips content.","decision":"Retain as desktop poster; responsive type scale is required for mobile."},
+    {"id":"ref-c04","desktop":"Small central message and single action; circle/dots visibly participate in the composition.","narrow":"Core message remains readable, but centered brand/navigation/action overlap in the header. No bounds flag does not mean no overlap.","decision":"Retain as quiet centre; reduce competition between media and message by task context."},
+    {"id":"ref-c05","desktop":"Split thesis/media and separate stats band. The fourth stat repeats the first because the source has three data items.","narrow":"Media compresses and four stats crowd together; long copy overflows.","decision":"Retain; use truthful distinct stats or fewer items, and a mobile evidence layout."},
+    {"id":"ref-c06","desktop":"Central message plus a lower logo ribbon differentiates the evidence layer. Abstract icons are not customer endorsements.","narrow":"Header, central text and lower ribbon exceed or clip within narrow areas.","decision":"Keep within the focal family; justify ribbon by content, not as automatic proof of trust."},
+    {"id":"ref-c07","desktop":"Editorial columns and low middle title remain distinct with common copy.","narrow":"Three columns squeeze copy; central title/media conflict and long text pushes beyond the frame.","decision":"Retain; mobile must specify editorial reading order before stacking."},
+    {"id":"ref-c08","desktop":"Title above a wide browser-like stage remains a clear frame composition.","narrow":"Outer message mostly remains legible with authored copy; the inner specimen clips and navigation overlaps.","decision":"Retain; distinguish product illustration from functional interface and adapt the specimen separately."},
+    {"id":"ref-c09","desktop":"Central input/action differs from a CTA-only hero. Side geometric bands frame the task.","narrow":"Side bands consume most width and conflict with content. The input has a placeholder but no explicit label/ARIA name.","decision":"Retain as input-led concept; label the field and collapse/reduce decorative rails in a mobile adaptation."},
+    {"id":"ref-c10","desktop":"Two large upper masses and four lower slots show a clear modular hierarchy.","narrow":"Four-column structure and fixed row spans squeeze text and controls; media overlaps and content clips.","decision":"Retain; define mobile priorities and card order rather than shrinking the grid."},
+    {"id":"ref-c11","desktop":"Central cell and surrounding metrics/media differ from the hierarchical bento.","narrow":"Three-column cross collapses into narrow strips; text/action no longer carry the intended hierarchy.","decision":"Retain; mobile needs another arrangement preserving the central message."},
+    {"id":"ref-c12","desktop":"Upper-start text and lower-end image establish a diagonal pause with ample empty space.","narrow":"The absolute image covers part of the CTA with authored text and more content with long copy, despite near-zero bounds flags.","decision":"Retain; mobile media should enter content flow or reserve explicit space."}
+  ],
+  "priorities": [
+    {"priority":"P1","topic":"Representation","action":"Label desktop-only style previews accurately. Narrow diagnostics are not supported mobile layouts."},
+    {"priority":"P1","topic":"Adaptive structure","action":"Specify responsive reading order, navigation, type scale and decoration behavior before declaring ready-to-use mobile presets."},
+    {"priority":"P1","topic":"Input semantics","action":"Supply a persistent accessible label for prompt fields before using them as functional examples."},
+    {"priority":"P2","topic":"Catalog uniqueness","action":"Use structural/task passports and related groups; do not count token variants as new concepts."},
+    {"priority":"P2","topic":"Evidence copy","action":"Replace repeated stats and abstract endorsement signals with appropriate real project content."}
+  ],
+  "openChecks": ["Contrast of all text over procedural media and transparent backgrounds", "Dark theme and normal-motion states", "Semantic/accessibility audit beyond basic DOM and keyboard checks", "Human REF-B1–B5 sessions", "Visual review of the rest of the corpus"]
+}

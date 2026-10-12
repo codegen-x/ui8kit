@@ -1,0 +1,938 @@
+[
+  {
+    "id": "ref-c01",
+    "title": "Типографический манифест",
+    "cases": [
+      {
+        "mode": "authored",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      },
+      {
+        "mode": "normalized",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      },
+      {
+        "mode": "authored",
+        "probe": "narrow",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 1
+      },
+      {
+        "mode": "normalized",
+        "probe": "narrow",
+        "outside": 2,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 2
+      },
+      {
+        "mode": "long",
+        "probe": "narrow",
+        "outside": 4,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 4
+      },
+      {
+        "mode": "colour",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      },
+      {
+        "mode": "font",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      },
+      {
+        "mode": "radius",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      }
+    ]
+  },
+  {
+    "id": "ref-c02",
+    "title": "Диалог двух колонок",
+    "cases": [
+      {
+        "mode": "authored",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      },
+      {
+        "mode": "normalized",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      },
+      {
+        "mode": "authored",
+        "probe": "narrow",
+        "outside": 7,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 3
+      },
+      {
+        "mode": "normalized",
+        "probe": "narrow",
+        "outside": 7,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 2
+      },
+      {
+        "mode": "long",
+        "probe": "narrow",
+        "outside": 11,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 4
+      },
+      {
+        "mode": "colour",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      },
+      {
+        "mode": "font",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      },
+      {
+        "mode": "radius",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      }
+    ]
+  },
+  {
+    "id": "ref-c03",
+    "title": "Плакат во всю ширину",
+    "cases": [
+      {
+        "mode": "authored",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 0,
+        "occludedControls": 0
+      },
+      {
+        "mode": "normalized",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 0,
+        "occludedControls": 0
+      },
+      {
+        "mode": "authored",
+        "probe": "narrow",
+        "outside": 3,
+        "textOverflow": 1,
+        "unnamedInputs": 0,
+        "smallTargets": 0,
+        "occludedControls": 0
+      },
+      {
+        "mode": "normalized",
+        "probe": "narrow",
+        "outside": 3,
+        "textOverflow": 1,
+        "unnamedInputs": 0,
+        "smallTargets": 0,
+        "occludedControls": 0
+      },
+      {
+        "mode": "long",
+        "probe": "narrow",
+        "outside": 3,
+        "textOverflow": 1,
+        "unnamedInputs": 0,
+        "smallTargets": 0,
+        "occludedControls": 0
+      },
+      {
+        "mode": "colour",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 0,
+        "occludedControls": 0
+      },
+      {
+        "mode": "font",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 0,
+        "occludedControls": 0
+      },
+      {
+        "mode": "radius",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 0,
+        "occludedControls": 0
+      }
+    ]
+  },
+  {
+    "id": "ref-c04",
+    "title": "Тихий центр",
+    "cases": [
+      {
+        "mode": "authored",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 2,
+        "occludedControls": 0
+      },
+      {
+        "mode": "normalized",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 2,
+        "occludedControls": 0
+      },
+      {
+        "mode": "authored",
+        "probe": "narrow",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 2,
+        "occludedControls": 0
+      },
+      {
+        "mode": "normalized",
+        "probe": "narrow",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 2,
+        "occludedControls": 0
+      },
+      {
+        "mode": "long",
+        "probe": "narrow",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 2,
+        "occludedControls": 2
+      },
+      {
+        "mode": "colour",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 2,
+        "occludedControls": 0
+      },
+      {
+        "mode": "font",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 2,
+        "occludedControls": 0
+      },
+      {
+        "mode": "radius",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 2,
+        "occludedControls": 0
+      }
+    ]
+  },
+  {
+    "id": "ref-c05",
+    "title": "Тезис и доказательства",
+    "cases": [
+      {
+        "mode": "authored",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      },
+      {
+        "mode": "normalized",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      },
+      {
+        "mode": "authored",
+        "probe": "narrow",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 1
+      },
+      {
+        "mode": "normalized",
+        "probe": "narrow",
+        "outside": 1,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 2
+      },
+      {
+        "mode": "long",
+        "probe": "narrow",
+        "outside": 12,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 4
+      },
+      {
+        "mode": "colour",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      },
+      {
+        "mode": "font",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      },
+      {
+        "mode": "radius",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      }
+    ]
+  },
+  {
+    "id": "ref-c06",
+    "title": "Сообщение и лента",
+    "cases": [
+      {
+        "mode": "authored",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      },
+      {
+        "mode": "normalized",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      },
+      {
+        "mode": "authored",
+        "probe": "narrow",
+        "outside": 2,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 1
+      },
+      {
+        "mode": "normalized",
+        "probe": "narrow",
+        "outside": 2,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 2
+      },
+      {
+        "mode": "long",
+        "probe": "narrow",
+        "outside": 5,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 4
+      },
+      {
+        "mode": "colour",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      },
+      {
+        "mode": "font",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      },
+      {
+        "mode": "radius",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      }
+    ]
+  },
+  {
+    "id": "ref-c07",
+    "title": "Редакционный разворот",
+    "cases": [
+      {
+        "mode": "authored",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 2,
+        "occludedControls": 0
+      },
+      {
+        "mode": "normalized",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 2,
+        "occludedControls": 0
+      },
+      {
+        "mode": "authored",
+        "probe": "narrow",
+        "outside": 1,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 2,
+        "occludedControls": 0
+      },
+      {
+        "mode": "normalized",
+        "probe": "narrow",
+        "outside": 3,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 2,
+        "occludedControls": 0
+      },
+      {
+        "mode": "long",
+        "probe": "narrow",
+        "outside": 4,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 2,
+        "occludedControls": 2
+      },
+      {
+        "mode": "colour",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 2,
+        "occludedControls": 0
+      },
+      {
+        "mode": "font",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 2,
+        "occludedControls": 0
+      },
+      {
+        "mode": "radius",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 2,
+        "occludedControls": 0
+      }
+    ]
+  },
+  {
+    "id": "ref-c08",
+    "title": "Демонстрация в окне",
+    "cases": [
+      {
+        "mode": "authored",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      },
+      {
+        "mode": "normalized",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      },
+      {
+        "mode": "authored",
+        "probe": "narrow",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 3
+      },
+      {
+        "mode": "normalized",
+        "probe": "narrow",
+        "outside": 1,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 3
+      },
+      {
+        "mode": "long",
+        "probe": "narrow",
+        "outside": 7,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 4
+      },
+      {
+        "mode": "colour",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      },
+      {
+        "mode": "font",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      },
+      {
+        "mode": "radius",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      }
+    ]
+  },
+  {
+    "id": "ref-c09",
+    "title": "Ввод между рамками",
+    "cases": [
+      {
+        "mode": "authored",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 1,
+        "smallTargets": 2,
+        "occludedControls": 0
+      },
+      {
+        "mode": "normalized",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 1,
+        "smallTargets": 2,
+        "occludedControls": 0
+      },
+      {
+        "mode": "authored",
+        "probe": "narrow",
+        "outside": 3,
+        "textOverflow": 0,
+        "unnamedInputs": 1,
+        "smallTargets": 2,
+        "occludedControls": 0
+      },
+      {
+        "mode": "normalized",
+        "probe": "narrow",
+        "outside": 6,
+        "textOverflow": 0,
+        "unnamedInputs": 1,
+        "smallTargets": 2,
+        "occludedControls": 0
+      },
+      {
+        "mode": "long",
+        "probe": "narrow",
+        "outside": 9,
+        "textOverflow": 0,
+        "unnamedInputs": 1,
+        "smallTargets": 2,
+        "occludedControls": 0
+      },
+      {
+        "mode": "colour",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 1,
+        "smallTargets": 2,
+        "occludedControls": 0
+      },
+      {
+        "mode": "font",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 1,
+        "smallTargets": 2,
+        "occludedControls": 0
+      },
+      {
+        "mode": "radius",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 1,
+        "smallTargets": 2,
+        "occludedControls": 0
+      }
+    ]
+  },
+  {
+    "id": "ref-c10",
+    "title": "Иерархическое бенто",
+    "cases": [
+      {
+        "mode": "authored",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      },
+      {
+        "mode": "normalized",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      },
+      {
+        "mode": "authored",
+        "probe": "narrow",
+        "outside": 5,
+        "textOverflow": 10,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 2
+      },
+      {
+        "mode": "normalized",
+        "probe": "narrow",
+        "outside": 8,
+        "textOverflow": 10,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 3
+      },
+      {
+        "mode": "long",
+        "probe": "narrow",
+        "outside": 12,
+        "textOverflow": 10,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 4
+      },
+      {
+        "mode": "colour",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      },
+      {
+        "mode": "font",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      },
+      {
+        "mode": "radius",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      }
+    ]
+  },
+  {
+    "id": "ref-c11",
+    "title": "Центр и окружение",
+    "cases": [
+      {
+        "mode": "authored",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      },
+      {
+        "mode": "normalized",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      },
+      {
+        "mode": "authored",
+        "probe": "narrow",
+        "outside": 1,
+        "textOverflow": 7,
+        "unnamedInputs": 0,
+        "smallTargets": 3,
+        "occludedControls": 1
+      },
+      {
+        "mode": "normalized",
+        "probe": "narrow",
+        "outside": 2,
+        "textOverflow": 8,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 2
+      },
+      {
+        "mode": "long",
+        "probe": "narrow",
+        "outside": 8,
+        "textOverflow": 8,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 4
+      },
+      {
+        "mode": "colour",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      },
+      {
+        "mode": "font",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      },
+      {
+        "mode": "radius",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 4,
+        "occludedControls": 0
+      }
+    ]
+  },
+  {
+    "id": "ref-c12",
+    "title": "Диагональная пауза",
+    "cases": [
+      {
+        "mode": "authored",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 0,
+        "occludedControls": 0
+      },
+      {
+        "mode": "normalized",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 0,
+        "occludedControls": 0
+      },
+      {
+        "mode": "authored",
+        "probe": "narrow",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 0,
+        "occludedControls": 0
+      },
+      {
+        "mode": "normalized",
+        "probe": "narrow",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 0,
+        "occludedControls": 1
+      },
+      {
+        "mode": "long",
+        "probe": "narrow",
+        "outside": 1,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 0,
+        "occludedControls": 0
+      },
+      {
+        "mode": "colour",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 0,
+        "occludedControls": 0
+      },
+      {
+        "mode": "font",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 0,
+        "occludedControls": 0
+      },
+      {
+        "mode": "radius",
+        "probe": "desktop",
+        "outside": 0,
+        "textOverflow": 0,
+        "unnamedInputs": 0,
+        "smallTargets": 0,
+        "occludedControls": 0
+      }
+    ]
+  }
+]

@@ -28,3 +28,6 @@ backlog-archive/
 
 # Discovery picks sent from the panorama (the Send button of /discovery on the :5190 preview); never committed
 discovery-inbox/
+
+# Reproducible local browser evidence; binary captures are not published
+plan/reference-catalog/captures/

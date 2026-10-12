@@ -22,3 +22,47 @@ A hand-written app (not generated): the journal of a visitor's taste, design in 
 
 The Design system tab (`#/style/<key>/design`) has, next to skin, font and radius, a radius selector for each of badge, button, card, alert and media, a density (compact / default / comfortable) for badge, button, card and alert, and a shadow (style / none / sm / md) for card, alert and media. They only set CSS variables (`--radius-card`, `--shadow-card`) and `data-density-*` attributes on the specimen, the Overview preview and the Templates stage; the rules are in the kit CSS (plan/UI8KIT-2.0.md §11). Only changed keys are kept, as a flat `tokens` object (`{ "radius-button": 0, "density-card": "comfortable", "shadow-card": "sm" }`): "Copy preset" adds it to the preset JSON and "Save as collection item" stores it in the collection item (`Collection.tokens[styleKey]`), never in the style key (the key format is unchanged). Logic and tests: `src/lib/design.ts`, `src/lib/design.test.ts`.
 
+
+## Reference catalog v0.1
+
+[Editorial reference catalog](../../plan/reference-catalog/README.md) and its
+[standalone composition viewer](../../plan/reference-catalog/index.html) cover
+12 concepts, 10 layout families, 36 controlled variants, 20 explained relations,
+and five planned human research scenarios. Data lives in
+[reference-catalog.v0.1.json](../../packages/taste-data/content/reference-catalog.v0.1.json).
+
+Status: source reviewed; visual review completed with findings. Full accessibility and human usability reviews remain open.
+The viewer shows schematic masses, not rendered screen previews. The catalog and
+neutral copy fixture are not connected to the production recommender or renderer.
+Opening the entry fixture's `?picks=` URL replaces locally stored magazine picks;
+use a separate browser profile for research.
+
+From the repository root, check source hashes, style keys and references with:
+
+    bun packages/taste-data/scripts/reference-catalog.ts --check
+
+Regenerate the viewer and catalog documentation with `--render`.
+### Real-screen research renderer
+
+Run `bun run --cwd apps/magazine dev`, then open
+`http://127.0.0.1:5185/magazine/reference.html?concept=ref-c02&mode=normalized`.
+This separate dev entry renders the actual TasteFrame and screen, with local fonts,
+without changing picks. It is not included in the normal production build entry.
+`mode=authored|normalized|long|colour|font|radius`; `probe=narrow` overrides the fixed
+frame to 390 × 844 for diagnostic reflow. Production Overview scales the desktop
+frame; narrow probes do not establish a supported mobile layout.
+
+From the repository root:
+
+    node packages/taste-data/scripts/reference-capture.mjs --variants
+    node packages/taste-data/scripts/reference-review.mjs
+    node packages/taste-data/scripts/reference-contrast.mjs
+
+Capture uses the installed Edge on Windows by default; set `REFERENCE_BROWSER`
+and `REFERENCE_BASE` for another local browser/server. It records light theme,
+DPR 1 and reduced motion. Binary captures stay local under the ignored
+`plan/reference-catalog/captures/`; rerun capture to reproduce them.
+
+[Real-screen comparison](../../plan/reference-catalog/visual-review.html),
+[visual findings](../../plan/reference-catalog/visual-review.md) and
+[research protocol for designers and art directors](../../plan/reference-catalog/research-protocol.md).

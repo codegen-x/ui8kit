@@ -1,0 +1,1897 @@
+{
+  "format": 1,
+  "measuredAt": "2026-10-11T22:25:48.657Z",
+  "browser": "155.0.4283.45",
+  "theme": "light",
+  "viewport": [
+    1440,
+    1080
+  ],
+  "method": "Computed colours of text controls with their own opaque solid background, converted to sRGB using browser canvas; unresolved backgrounds are excluded.",
+  "source": "https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html",
+  "limitations": [
+    "Not a whole-screen accessibility audit.",
+    "Procedural media, transparent backgrounds, states and ancestor opacity need separate review.",
+    "sRGB conversion is 8-bit; values near threshold require more precise confirmation."
+  ],
+  "records": [
+    {
+      "conceptId": "ref-c01",
+      "mode": "authored",
+      "controls": [
+        {
+          "text": "Work",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(106, 106, 136)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Method",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(106, 106, 136)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Notes",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(106, 106, 136)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "About",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(106, 106, 136)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Start building",
+          "status": "above-threshold",
+          "ratio": 5.391370448549172,
+          "threshold": 4.5,
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(110, 86, 207)",
+          "foregroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "backgroundSRGB": [
+            110,
+            86,
+            207,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        },
+        {
+          "text": "Start building",
+          "status": "above-threshold",
+          "ratio": 5.391370448549172,
+          "threshold": 4.5,
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(110, 86, 207)",
+          "foregroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "backgroundSRGB": [
+            110,
+            86,
+            207,
+            255
+          ],
+          "fontSize": 16,
+          "fontWeight": 500
+        },
+        {
+          "text": "See how it works",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(42, 42, 74)",
+          "background": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "conceptId": "ref-c01",
+      "mode": "normalized",
+      "controls": [
+        {
+          "text": "Work",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Method",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Notes",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "About",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Explore the direction",
+          "status": "above-threshold",
+          "ratio": 4.64054908023482,
+          "threshold": 4.5,
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(42, 112, 227)",
+          "foregroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "backgroundSRGB": [
+            42,
+            112,
+            227,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        },
+        {
+          "text": "Explore the direction",
+          "status": "above-threshold",
+          "ratio": 4.64054908023482,
+          "threshold": 4.5,
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(42, 112, 227)",
+          "foregroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "backgroundSRGB": [
+            42,
+            112,
+            227,
+            255
+          ],
+          "fontSize": 16,
+          "fontWeight": 500
+        },
+        {
+          "text": "See the approach",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(51, 51, 51)",
+          "background": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "conceptId": "ref-c02",
+      "mode": "authored",
+      "controls": [
+        {
+          "text": "Product",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(82, 82, 82)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Teams",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(82, 82, 82)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Stories",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(82, 82, 82)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Pricing",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(82, 82, 82)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Get started",
+          "status": "above-threshold",
+          "ratio": 20.46890580796825,
+          "threshold": 4.5,
+          "foreground": "rgb(0, 0, 0)",
+          "background": "rgb(252, 252, 252)",
+          "foregroundSRGB": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "backgroundSRGB": [
+            252,
+            252,
+            252,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        },
+        {
+          "text": "Get started",
+          "status": "above-threshold",
+          "ratio": 5.822853028855187,
+          "threshold": 4.5,
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(112, 51, 255)",
+          "foregroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "backgroundSRGB": [
+            112,
+            51,
+            255,
+            255
+          ],
+          "fontSize": 16,
+          "fontWeight": 500
+        },
+        {
+          "text": "Watch the tour",
+          "status": "above-threshold",
+          "ratio": 20.46890580796825,
+          "threshold": 4.5,
+          "foreground": "rgb(0, 0, 0)",
+          "background": "rgb(252, 252, 252)",
+          "foregroundSRGB": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "backgroundSRGB": [
+            252,
+            252,
+            252,
+            255
+          ],
+          "fontSize": 16,
+          "fontWeight": 500
+        }
+      ]
+    },
+    {
+      "conceptId": "ref-c02",
+      "mode": "normalized",
+      "controls": [
+        {
+          "text": "Work",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Method",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Notes",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "About",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Explore the direction",
+          "status": "above-threshold",
+          "ratio": 12.63465434445799,
+          "threshold": 4.5,
+          "foreground": "rgb(51, 51, 51)",
+          "background": "rgb(255, 255, 255)",
+          "foregroundSRGB": [
+            51,
+            51,
+            51,
+            255
+          ],
+          "backgroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        },
+        {
+          "text": "Explore the direction",
+          "status": "above-threshold",
+          "ratio": 4.64054908023482,
+          "threshold": 4.5,
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(42, 112, 227)",
+          "foregroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "backgroundSRGB": [
+            42,
+            112,
+            227,
+            255
+          ],
+          "fontSize": 16,
+          "fontWeight": 500
+        },
+        {
+          "text": "See the approach",
+          "status": "above-threshold",
+          "ratio": 12.63465434445799,
+          "threshold": 4.5,
+          "foreground": "rgb(51, 51, 51)",
+          "background": "rgb(255, 255, 255)",
+          "foregroundSRGB": [
+            51,
+            51,
+            51,
+            255
+          ],
+          "backgroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "fontSize": 16,
+          "fontWeight": 500
+        }
+      ]
+    },
+    {
+      "conceptId": "ref-c03",
+      "mode": "authored",
+      "controls": [
+        {
+          "text": "Create a space",
+          "status": "above-threshold",
+          "ratio": 19.555999999999997,
+          "threshold": 4.5,
+          "foreground": "rgb(0, 0, 0)",
+          "background": "rgb(255, 255, 0)",
+          "foregroundSRGB": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "backgroundSRGB": [
+            255,
+            255,
+            0,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        },
+        {
+          "text": "Create a space",
+          "status": "above-threshold",
+          "ratio": 4.639975656289585,
+          "threshold": 4.5,
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(233, 10, 29)",
+          "foregroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "backgroundSRGB": [
+            233,
+            10,
+            29,
+            255
+          ],
+          "fontSize": 16,
+          "fontWeight": 500
+        }
+      ]
+    },
+    {
+      "conceptId": "ref-c03",
+      "mode": "normalized",
+      "controls": [
+        {
+          "text": "Explore the direction",
+          "status": "above-threshold",
+          "ratio": 6.86712857158153,
+          "threshold": 4.5,
+          "foreground": "rgb(75, 85, 99)",
+          "background": "rgb(243, 244, 246)",
+          "foregroundSRGB": [
+            75,
+            85,
+            99,
+            255
+          ],
+          "backgroundSRGB": [
+            243,
+            244,
+            246,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        },
+        {
+          "text": "Explore the direction",
+          "status": "above-threshold",
+          "ratio": 4.64054908023482,
+          "threshold": 4.5,
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(42, 112, 227)",
+          "foregroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "backgroundSRGB": [
+            42,
+            112,
+            227,
+            255
+          ],
+          "fontSize": 16,
+          "fontWeight": 500
+        }
+      ]
+    },
+    {
+      "conceptId": "ref-c04",
+      "mode": "authored",
+      "controls": [
+        {
+          "text": "Kit",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(51, 51, 51)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Examples",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(51, 51, 51)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Start a project",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(51, 51, 51)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Start a project",
+          "status": "above-threshold",
+          "ratio": 12.63465434445799,
+          "threshold": 4.5,
+          "foreground": "rgb(51, 51, 51)",
+          "background": "rgb(255, 255, 255)",
+          "foregroundSRGB": [
+            51,
+            51,
+            51,
+            255
+          ],
+          "backgroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        }
+      ]
+    },
+    {
+      "conceptId": "ref-c04",
+      "mode": "normalized",
+      "controls": [
+        {
+          "text": "Work",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(51, 51, 51)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Method",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(51, 51, 51)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Explore the direction",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(51, 51, 51)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Explore the direction",
+          "status": "above-threshold",
+          "ratio": 12.63465434445799,
+          "threshold": 4.5,
+          "foreground": "rgb(51, 51, 51)",
+          "background": "rgb(255, 255, 255)",
+          "foregroundSRGB": [
+            51,
+            51,
+            51,
+            255
+          ],
+          "backgroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        }
+      ]
+    },
+    {
+      "conceptId": "ref-c05",
+      "mode": "authored",
+      "controls": [
+        {
+          "text": "Edit",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Makers",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Journal",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Visit",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Shop the edit",
+          "status": "above-threshold",
+          "ratio": 9.778071798962173,
+          "threshold": 4.5,
+          "foreground": "rgb(0, 0, 0)",
+          "background": "rgb(245, 158, 11)",
+          "foregroundSRGB": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "backgroundSRGB": [
+            245,
+            158,
+            11,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        },
+        {
+          "text": "Shop the edit",
+          "status": "above-threshold",
+          "ratio": 9.778071798962173,
+          "threshold": 4.5,
+          "foreground": "rgb(0, 0, 0)",
+          "background": "rgb(245, 158, 11)",
+          "foregroundSRGB": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "backgroundSRGB": [
+            245,
+            158,
+            11,
+            255
+          ],
+          "fontSize": 16,
+          "fontWeight": 500
+        },
+        {
+          "text": "Our process",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(38, 38, 38)",
+          "background": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "conceptId": "ref-c05",
+      "mode": "normalized",
+      "controls": [
+        {
+          "text": "Work",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Method",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Notes",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "About",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Explore the direction",
+          "status": "above-threshold",
+          "ratio": 4.64054908023482,
+          "threshold": 4.5,
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(42, 112, 227)",
+          "foregroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "backgroundSRGB": [
+            42,
+            112,
+            227,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        },
+        {
+          "text": "Explore the direction",
+          "status": "above-threshold",
+          "ratio": 4.64054908023482,
+          "threshold": 4.5,
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(42, 112, 227)",
+          "foregroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "backgroundSRGB": [
+            42,
+            112,
+            227,
+            255
+          ],
+          "fontSize": 16,
+          "fontWeight": 500
+        },
+        {
+          "text": "See the approach",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(51, 51, 51)",
+          "background": "rgba(0, 0, 0, 0)"
+        }
+      ]
+    },
+    {
+      "conceptId": "ref-c06",
+      "mode": "authored",
+      "controls": [
+        {
+          "text": "Overview",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(32, 32, 32)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Features",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(32, 32, 32)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Customers",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(32, 32, 32)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Pricing",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(32, 32, 32)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Try it free",
+          "status": "above-threshold",
+          "ratio": 17.47444159426303,
+          "threshold": 4.5,
+          "foreground": "rgb(23, 23, 23)",
+          "background": "rgb(252, 252, 252)",
+          "foregroundSRGB": [
+            23,
+            23,
+            23,
+            255
+          ],
+          "backgroundSRGB": [
+            252,
+            252,
+            252,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        },
+        {
+          "text": "Try it free",
+          "status": "above-threshold",
+          "ratio": 9.715063967306866,
+          "threshold": 4.5,
+          "foreground": "rgb(30, 39, 35)",
+          "background": "rgb(114, 227, 173)",
+          "foregroundSRGB": [
+            30,
+            39,
+            35,
+            255
+          ],
+          "backgroundSRGB": [
+            114,
+            227,
+            173,
+            255
+          ],
+          "fontSize": 16,
+          "fontWeight": 500
+        },
+        {
+          "text": "Book a demo",
+          "status": "above-threshold",
+          "ratio": 17.47444159426303,
+          "threshold": 4.5,
+          "foreground": "rgb(23, 23, 23)",
+          "background": "rgb(252, 252, 252)",
+          "foregroundSRGB": [
+            23,
+            23,
+            23,
+            255
+          ],
+          "backgroundSRGB": [
+            252,
+            252,
+            252,
+            255
+          ],
+          "fontSize": 16,
+          "fontWeight": 500
+        }
+      ]
+    },
+    {
+      "conceptId": "ref-c06",
+      "mode": "normalized",
+      "controls": [
+        {
+          "text": "Work",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Method",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Notes",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "About",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Explore the direction",
+          "status": "above-threshold",
+          "ratio": 12.63465434445799,
+          "threshold": 4.5,
+          "foreground": "rgb(51, 51, 51)",
+          "background": "rgb(255, 255, 255)",
+          "foregroundSRGB": [
+            51,
+            51,
+            51,
+            255
+          ],
+          "backgroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        },
+        {
+          "text": "Explore the direction",
+          "status": "above-threshold",
+          "ratio": 4.64054908023482,
+          "threshold": 4.5,
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(42, 112, 227)",
+          "foregroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "backgroundSRGB": [
+            42,
+            112,
+            227,
+            255
+          ],
+          "fontSize": 16,
+          "fontWeight": 500
+        },
+        {
+          "text": "See the approach",
+          "status": "above-threshold",
+          "ratio": 6.86712857158153,
+          "threshold": 4.5,
+          "foreground": "rgb(75, 85, 99)",
+          "background": "rgb(243, 244, 246)",
+          "foregroundSRGB": [
+            75,
+            85,
+            99,
+            255
+          ],
+          "backgroundSRGB": [
+            243,
+            244,
+            246,
+            255
+          ],
+          "fontSize": 16,
+          "fontWeight": 500
+        }
+      ]
+    },
+    {
+      "conceptId": "ref-c07",
+      "mode": "authored",
+      "controls": [
+        {
+          "text": "Plants",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(61, 57, 41)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Seasons",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(61, 57, 41)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Plan my garden",
+          "status": "above-threshold",
+          "ratio": 10.978518197822574,
+          "threshold": 4.5,
+          "foreground": "rgb(61, 57, 41)",
+          "background": "rgb(250, 249, 245)",
+          "foregroundSRGB": [
+            61,
+            57,
+            41,
+            255
+          ],
+          "backgroundSRGB": [
+            250,
+            249,
+            245,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        },
+        {
+          "text": "Plan my garden",
+          "status": "above-threshold",
+          "ratio": 4.603126262626133,
+          "threshold": 4.5,
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(187, 88, 54)",
+          "foregroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "backgroundSRGB": [
+            187,
+            88,
+            54,
+            255
+          ],
+          "fontSize": 16,
+          "fontWeight": 500
+        }
+      ]
+    },
+    {
+      "conceptId": "ref-c07",
+      "mode": "normalized",
+      "controls": [
+        {
+          "text": "Work",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(51, 51, 51)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Method",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(51, 51, 51)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Explore the direction",
+          "status": "above-threshold",
+          "ratio": 12.63465434445799,
+          "threshold": 4.5,
+          "foreground": "rgb(51, 51, 51)",
+          "background": "rgb(255, 255, 255)",
+          "foregroundSRGB": [
+            51,
+            51,
+            51,
+            255
+          ],
+          "backgroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        },
+        {
+          "text": "Explore the direction",
+          "status": "above-threshold",
+          "ratio": 4.64054908023482,
+          "threshold": 4.5,
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(42, 112, 227)",
+          "foregroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "backgroundSRGB": [
+            42,
+            112,
+            227,
+            255
+          ],
+          "fontSize": 16,
+          "fontWeight": 500
+        }
+      ]
+    },
+    {
+      "conceptId": "ref-c08",
+      "mode": "authored",
+      "controls": [
+        {
+          "text": "Metrics",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(93, 93, 93)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Reports",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(93, 93, 93)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Sharing",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(93, 93, 93)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Docs",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(93, 93, 93)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Start measuring",
+          "status": "above-threshold",
+          "ratio": 4.600622015189952,
+          "threshold": 4.5,
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(196, 68, 142)",
+          "foregroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "backgroundSRGB": [
+            196,
+            68,
+            142,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        },
+        {
+          "text": "Start measuring",
+          "status": "above-threshold",
+          "ratio": 4.600622015189952,
+          "threshold": 4.5,
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(196, 68, 142)",
+          "foregroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "backgroundSRGB": [
+            196,
+            68,
+            142,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        },
+        {
+          "text": "View a sample",
+          "status": "above-threshold",
+          "ratio": 5.774186388826491,
+          "threshold": 4.5,
+          "foreground": "rgb(92, 92, 92)",
+          "background": "rgb(253, 237, 201)",
+          "foregroundSRGB": [
+            92,
+            92,
+            92,
+            255
+          ],
+          "backgroundSRGB": [
+            253,
+            237,
+            201,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        },
+        {
+          "text": "Start measuring",
+          "status": "above-threshold",
+          "ratio": 4.600622015189952,
+          "threshold": 4.5,
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(196, 68, 142)",
+          "foregroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "backgroundSRGB": [
+            196,
+            68,
+            142,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        }
+      ]
+    },
+    {
+      "conceptId": "ref-c08",
+      "mode": "normalized",
+      "controls": [
+        {
+          "text": "Work",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Method",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Notes",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "About",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Explore the direction",
+          "status": "above-threshold",
+          "ratio": 4.64054908023482,
+          "threshold": 4.5,
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(42, 112, 227)",
+          "foregroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "backgroundSRGB": [
+            42,
+            112,
+            227,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        },
+        {
+          "text": "Explore the direction",
+          "status": "above-threshold",
+          "ratio": 4.64054908023482,
+          "threshold": 4.5,
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(42, 112, 227)",
+          "foregroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "backgroundSRGB": [
+            42,
+            112,
+            227,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        },
+        {
+          "text": "See the approach",
+          "status": "above-threshold",
+          "ratio": 12.63465434445799,
+          "threshold": 4.5,
+          "foreground": "rgb(51, 51, 51)",
+          "background": "rgb(255, 255, 255)",
+          "foregroundSRGB": [
+            51,
+            51,
+            51,
+            255
+          ],
+          "backgroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        },
+        {
+          "text": "Explore the direction",
+          "status": "above-threshold",
+          "ratio": 4.64054908023482,
+          "threshold": 4.5,
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(42, 112, 227)",
+          "foregroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "backgroundSRGB": [
+            42,
+            112,
+            227,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        }
+      ]
+    },
+    {
+      "conceptId": "ref-c09",
+      "mode": "authored",
+      "controls": [
+        {
+          "text": "Pauses",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(0, 0, 0)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Courses",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(0, 0, 0)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Take a pause",
+          "status": "above-threshold",
+          "ratio": 5.822853028855187,
+          "threshold": 4.5,
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(112, 51, 255)",
+          "foregroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "backgroundSRGB": [
+            112,
+            51,
+            255,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        },
+        {
+          "text": "Take a pause",
+          "status": "above-threshold",
+          "ratio": 5.822853028855187,
+          "threshold": 4.5,
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(112, 51, 255)",
+          "foregroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "backgroundSRGB": [
+            112,
+            51,
+            255,
+            255
+          ],
+          "fontSize": 16,
+          "fontWeight": 500
+        },
+        {
+          "text": "Pause",
+          "status": "above-threshold",
+          "ratio": 20.46890580796825,
+          "threshold": 4.5,
+          "foreground": "rgb(0, 0, 0)",
+          "background": "rgb(252, 252, 252)",
+          "foregroundSRGB": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "backgroundSRGB": [
+            252,
+            252,
+            252,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        },
+        {
+          "text": "Notice",
+          "status": "above-threshold",
+          "ratio": 20.46890580796825,
+          "threshold": 4.5,
+          "foreground": "rgb(0, 0, 0)",
+          "background": "rgb(252, 252, 252)",
+          "foregroundSRGB": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "backgroundSRGB": [
+            252,
+            252,
+            252,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        },
+        {
+          "text": "Return",
+          "status": "above-threshold",
+          "ratio": 20.46890580796825,
+          "threshold": 4.5,
+          "foreground": "rgb(0, 0, 0)",
+          "background": "rgb(252, 252, 252)",
+          "foregroundSRGB": [
+            0,
+            0,
+            0,
+            255
+          ],
+          "backgroundSRGB": [
+            252,
+            252,
+            252,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        }
+      ]
+    },
+    {
+      "conceptId": "ref-c09",
+      "mode": "normalized",
+      "controls": [
+        {
+          "text": "Work",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(51, 51, 51)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Method",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(51, 51, 51)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Explore the direction",
+          "status": "above-threshold",
+          "ratio": 4.64054908023482,
+          "threshold": 4.5,
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(42, 112, 227)",
+          "foregroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "backgroundSRGB": [
+            42,
+            112,
+            227,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        },
+        {
+          "text": "Explore the direction",
+          "status": "above-threshold",
+          "ratio": 4.64054908023482,
+          "threshold": 4.5,
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(42, 112, 227)",
+          "foregroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "backgroundSRGB": [
+            42,
+            112,
+            227,
+            255
+          ],
+          "fontSize": 16,
+          "fontWeight": 500
+        },
+        {
+          "text": "Structure",
+          "status": "above-threshold",
+          "ratio": 12.63465434445799,
+          "threshold": 4.5,
+          "foreground": "rgb(51, 51, 51)",
+          "background": "rgb(255, 255, 255)",
+          "foregroundSRGB": [
+            51,
+            51,
+            51,
+            255
+          ],
+          "backgroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        },
+        {
+          "text": "Expression",
+          "status": "above-threshold",
+          "ratio": 12.63465434445799,
+          "threshold": 4.5,
+          "foreground": "rgb(51, 51, 51)",
+          "background": "rgb(255, 255, 255)",
+          "foregroundSRGB": [
+            51,
+            51,
+            51,
+            255
+          ],
+          "backgroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        },
+        {
+          "text": "Control",
+          "status": "above-threshold",
+          "ratio": 12.63465434445799,
+          "threshold": 4.5,
+          "foreground": "rgb(51, 51, 51)",
+          "background": "rgb(255, 255, 255)",
+          "foregroundSRGB": [
+            51,
+            51,
+            51,
+            255
+          ],
+          "backgroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        }
+      ]
+    },
+    {
+      "conceptId": "ref-c10",
+      "mode": "authored",
+      "controls": [
+        {
+          "text": "Circles",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(98, 84, 73)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Events",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(98, 84, 73)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Stories",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(98, 84, 73)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Join",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(98, 84, 73)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Join a circle",
+          "status": "above-threshold",
+          "ratio": 4.62462411210929,
+          "threshold": 4.5,
+          "foreground": "rgb(253, 251, 247)",
+          "background": "rgb(107, 121, 42)",
+          "foregroundSRGB": [
+            253,
+            251,
+            247,
+            255
+          ],
+          "backgroundSRGB": [
+            107,
+            121,
+            42,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        },
+        {
+          "text": "Join a circle",
+          "status": "above-threshold",
+          "ratio": 4.62462411210929,
+          "threshold": 4.5,
+          "foreground": "rgb(253, 251, 247)",
+          "background": "rgb(107, 121, 42)",
+          "foregroundSRGB": [
+            253,
+            251,
+            247,
+            255
+          ],
+          "backgroundSRGB": [
+            107,
+            121,
+            42,
+            255
+          ],
+          "fontSize": 16,
+          "fontWeight": 500
+        }
+      ]
+    },
+    {
+      "conceptId": "ref-c10",
+      "mode": "normalized",
+      "controls": [
+        {
+          "text": "Work",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Method",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Notes",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "About",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Explore the direction",
+          "status": "above-threshold",
+          "ratio": 4.64054908023482,
+          "threshold": 4.5,
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(42, 112, 227)",
+          "foregroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "backgroundSRGB": [
+            42,
+            112,
+            227,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        },
+        {
+          "text": "Explore the direction",
+          "status": "above-threshold",
+          "ratio": 4.64054908023482,
+          "threshold": 4.5,
+          "foreground": "rgb(255, 255, 255)",
+          "background": "rgb(42, 112, 227)",
+          "foregroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "backgroundSRGB": [
+            42,
+            112,
+            227,
+            255
+          ],
+          "fontSize": 16,
+          "fontWeight": 500
+        }
+      ]
+    },
+    {
+      "conceptId": "ref-c11",
+      "mode": "authored",
+      "controls": [
+        {
+          "text": "Stays",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Hosts",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Stories",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Sign in",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Find a stay",
+          "status": "above-threshold",
+          "ratio": 12.63465434445799,
+          "threshold": 4.5,
+          "foreground": "rgb(51, 51, 51)",
+          "background": "rgb(255, 255, 255)",
+          "foregroundSRGB": [
+            51,
+            51,
+            51,
+            255
+          ],
+          "backgroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        },
+        {
+          "text": "Find a stay",
+          "status": "above-threshold",
+          "ratio": 6.86712857158153,
+          "threshold": 4.5,
+          "foreground": "rgb(75, 85, 99)",
+          "background": "rgb(243, 244, 246)",
+          "foregroundSRGB": [
+            75,
+            85,
+            99,
+            255
+          ],
+          "backgroundSRGB": [
+            243,
+            244,
+            246,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        }
+      ]
+    },
+    {
+      "conceptId": "ref-c11",
+      "mode": "normalized",
+      "controls": [
+        {
+          "text": "Work",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Method",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Notes",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "About",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(107, 114, 128)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Explore the direction",
+          "status": "above-threshold",
+          "ratio": 12.63465434445799,
+          "threshold": 4.5,
+          "foreground": "rgb(51, 51, 51)",
+          "background": "rgb(255, 255, 255)",
+          "foregroundSRGB": [
+            51,
+            51,
+            51,
+            255
+          ],
+          "backgroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        },
+        {
+          "text": "Explore the direction",
+          "status": "above-threshold",
+          "ratio": 6.86712857158153,
+          "threshold": 4.5,
+          "foreground": "rgb(75, 85, 99)",
+          "background": "rgb(243, 244, 246)",
+          "foregroundSRGB": [
+            75,
+            85,
+            99,
+            255
+          ],
+          "backgroundSRGB": [
+            243,
+            244,
+            246,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        }
+      ]
+    },
+    {
+      "conceptId": "ref-c12",
+      "mode": "authored",
+      "controls": [
+        {
+          "text": "Open an account",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(91, 75, 62)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Open an account",
+          "status": "above-threshold",
+          "ratio": 6.066099501243235,
+          "threshold": 4.5,
+          "foreground": "rgb(91, 75, 62)",
+          "background": "rgb(231, 219, 192)",
+          "foregroundSRGB": [
+            91,
+            75,
+            62,
+            255
+          ],
+          "backgroundSRGB": [
+            231,
+            219,
+            192,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        }
+      ]
+    },
+    {
+      "conceptId": "ref-c12",
+      "mode": "normalized",
+      "controls": [
+        {
+          "text": "Explore the direction",
+          "status": "unresolved-background-or-alpha",
+          "foreground": "rgb(51, 51, 51)",
+          "background": "rgba(0, 0, 0, 0)"
+        },
+        {
+          "text": "Explore the direction",
+          "status": "above-threshold",
+          "ratio": 12.63465434445799,
+          "threshold": 4.5,
+          "foreground": "rgb(51, 51, 51)",
+          "background": "rgb(255, 255, 255)",
+          "foregroundSRGB": [
+            51,
+            51,
+            51,
+            255
+          ],
+          "backgroundSRGB": [
+            255,
+            255,
+            255,
+            255
+          ],
+          "fontSize": 14,
+          "fontWeight": 500
+        }
+      ]
+    }
+  ],
+  "catalogSha256": "b6e63ab173e601858f11bff54cd52fba6cd228735c747385a716629c7654e427",
+  "catalogSnapshot": "capture-input.catalog.json"
+}
