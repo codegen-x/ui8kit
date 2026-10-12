@@ -3,7 +3,7 @@
   "target": "apps/host-svelte",
   "files": {
     "index.html": "3a76db9ac0f65b9493e0e821986cc250c8080cb2026275f7609185d3ccdb7e39",
-    "package.json": "b584699d315139f04c3211ec7440d002779aac92c550f99de88c84ef74dcb7d0",
+    "package.json": "8aedaac94c3b568fb93489419591d95ba376216988622aabdd0c69f007cb7a14",
     "src/app.css": "cb42c121e509768f0e9e1cef2f0b159a9b9bbda343d748f73431b5d1261b15e6",
     "src/main.ts": "5cd21eb7803026a6e9381ed3de61b2e3408ba3bc590fb35aacace4138c1bb08a",
     "svelte.config.js": "08b2d9606434101e52faae56bcd81347b2a1c29ed29a8d49140658e02b2ed879",

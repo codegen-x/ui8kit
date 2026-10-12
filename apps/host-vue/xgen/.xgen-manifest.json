@@ -3,7 +3,7 @@
   "target": "apps/host-vue",
   "files": {
     "index.html": "ba8baea33cc2cba03780201dc069f981f4b49a12090b8b2dd39265a4b49ee735",
-    "package.json": "fc1899266f2bc28bd228e16edb517e72f3e10cd611e43ded274805add6e20397",
+    "package.json": "0c64d4a0f39fc15d0c8074348a79b5b64e243d0f351b38f16646b517036c0e14",
     "src/app.css": "78b84c5ca4829304fdc97bd8f0a4adb2da8b85236bc5b060fdc0b0debc6ebf35",
     "src/main.ts": "dfd456a312e284dce711ace6b584c0442655611ee76bb95767e5d181bd20ae39",
     "tsconfig.json": "0cbf54a92e0f3c78ab8fbf11484269710a014612247b34c2c85c07947c469778",

@@ -1,0 +1,34 @@
+---
+description: React 19 (TSX) syntax appendix of rules 00, 01, 02, 03 and 06 for the composition zone
+globs: apps/host-react/xgen/screens/**/*.tsx,packages/react/ui/src/blocks/**/*.tsx,packages/react/ui/src/components/**/*.tsx
+alwaysApply: false
+---
+
+# Runtime appendix: React 19 (TSX)
+
+The rules are in `00-zones.mdc`, `01-block-root.mdc`, `02-no-raw-html.mdc`,
+`03-static-aria.mdc` and `06-fixtures-no-literal-text.mdc`. This file only maps
+their terms to React 19 (TSX) syntax. Files: `*.tsx` inside the composition paths of the
+packages whose `ui8kit.runtime` is `react` (see `rules/zones.json`).
+
+## Paths
+
+| Zone | Paths |
+| --- | --- |
+| Kit | `packages/react/ui/src/primitives`, `src/utils`, `src/styles`; `apps/host-react/xgen/runtime` |
+| Composition | `packages/react/ui/src/blocks`, `src/components`; `apps/host-react/xgen/screens` |
+
+## Syntax
+
+| Term | Forbidden in composition | Use instead |
+| --- | --- | --- |
+| Raw HTML injection | `dangerouslySetInnerHTML={{ __html: markup }}` | kit components built from nodes |
+| Dynamic tag | `createElement(tag, ...)`, `const Tag = cond ? "a" : "span"; <Tag/>` | a kit primitive with a `tag` prop |
+| Raw native tag | `<div>`, `<span>`, `<svg>` and any lowercase JSX element | `Box`, `Text`, `Icon`, ... |
+| Reactive ARIA state | `aria-expanded={open}` | a primitive prop: `<Button pressed={on}>` |
+| Two-way binding | none in React (one-way `value` plus `onChange`) | |
+| Literal text | `<Text>Save</Text>`, `label="Save"`, `{ok ? "Yes" : "No"}` | `{ui.group.key}`, `tpl(ui.group.key, { n })`, props |
+| Component root | the first JSX element of the returned tree, looking through fragments, `&&`, `? :` and `.map()` | |
+
+Allowed structure: `<>...</>`, `Fragment`, conditionals, `.map()`.
+`createContext` / `useContext` are non-portable (`_nonportable.json`).

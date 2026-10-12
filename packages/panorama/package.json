@@ -4,6 +4,14 @@
   "private": true,
   "type": "module",
   "description": "The Discovery panorama engine shared by the apps: the card grid, wall assignment (assign, curate, wave), the Three.js sphere view, snapshot queue, loader, IndexedDB cache and texture profiles. Moved verbatim from apps/discovery/src/engine; no build step.",
+  "ui8kit": {
+    "runtime": "svelte",
+    "kit": [
+      "src"
+    ],
+    "composition": [],
+    "blockRoot": []
+  },
   "exports": {
     "./grid": "./src/grid.ts",
     "./panorama": "./src/panorama.ts",

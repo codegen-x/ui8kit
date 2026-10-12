@@ -1,0 +1,163 @@
+{
+  "version": 1,
+  "packages": [
+    {
+      "name": "discovery",
+      "dir": "apps/discovery",
+      "runtime": "svelte",
+      "generated": false,
+      "kit": [],
+      "composition": [
+        "src/App.svelte",
+        "src/parts"
+      ],
+      "blockRoot": [
+        "src/App.svelte"
+      ]
+    },
+    {
+      "name": "host-react",
+      "dir": "apps/host-react",
+      "runtime": "react",
+      "generated": true,
+      "kit": [
+        "xgen/runtime"
+      ],
+      "composition": [
+        "xgen/screens"
+      ],
+      "blockRoot": [
+        "xgen/screens"
+      ]
+    },
+    {
+      "name": "host-svelte",
+      "dir": "apps/host-svelte",
+      "runtime": "svelte",
+      "generated": true,
+      "kit": [
+        "xgen/runtime"
+      ],
+      "composition": [
+        "xgen/screens"
+      ],
+      "blockRoot": [
+        "xgen/screens"
+      ]
+    },
+    {
+      "name": "host-vue",
+      "dir": "apps/host-vue",
+      "runtime": "vue",
+      "generated": true,
+      "kit": [
+        "xgen/runtime"
+      ],
+      "composition": [
+        "xgen/screens"
+      ],
+      "blockRoot": [
+        "xgen/screens"
+      ]
+    },
+    {
+      "name": "magazine",
+      "dir": "apps/magazine",
+      "runtime": "svelte",
+      "generated": false,
+      "kit": [
+        "src/lib"
+      ],
+      "composition": [
+        "src/App.svelte",
+        "src/parts",
+        "src/templates"
+      ],
+      "blockRoot": [
+        "src/App.svelte",
+        "src/templates"
+      ]
+    },
+    {
+      "name": "@ui8kit/panorama",
+      "dir": "packages/panorama",
+      "runtime": "svelte",
+      "generated": false,
+      "kit": [
+        "src"
+      ],
+      "composition": [],
+      "blockRoot": []
+    },
+    {
+      "name": "@ui8kit/react-ui",
+      "dir": "packages/react/ui",
+      "runtime": "react",
+      "generated": true,
+      "kit": [
+        "src/primitives",
+        "src/utils",
+        "src/styles"
+      ],
+      "composition": [
+        "src/blocks",
+        "src/components"
+      ],
+      "blockRoot": [
+        "src/blocks"
+      ]
+    },
+    {
+      "name": "@ui8kit/svelte-ui",
+      "dir": "packages/svelte/ui",
+      "runtime": "svelte",
+      "generated": true,
+      "kit": [
+        "src/primitives",
+        "src/utils",
+        "src/styles"
+      ],
+      "composition": [
+        "src/blocks",
+        "src/components"
+      ],
+      "blockRoot": [
+        "src/blocks"
+      ]
+    },
+    {
+      "name": "@ui8kit/taste-screens",
+      "dir": "packages/taste-screens",
+      "runtime": "svelte",
+      "generated": false,
+      "kit": [
+        "src/recipes"
+      ],
+      "composition": [
+        "src/screens",
+        "src/parts"
+      ],
+      "blockRoot": [
+        "src/screens"
+      ]
+    },
+    {
+      "name": "@ui8kit/vue-ui",
+      "dir": "packages/vue/ui",
+      "runtime": "vue",
+      "generated": true,
+      "kit": [
+        "src/primitives",
+        "src/utils",
+        "src/styles"
+      ],
+      "composition": [
+        "src/blocks",
+        "src/components"
+      ],
+      "blockRoot": [
+        "src/blocks"
+      ]
+    }
+  ]
+}

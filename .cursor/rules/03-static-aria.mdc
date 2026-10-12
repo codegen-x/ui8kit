@@ -1,80 +1,49 @@
 ---
-description: Static ARIA markup plus external @ui8kit/aria, no reactive ARIA
-alwaysApply: true
+description: ARIA in composition is static; state reaches ARIA only through primitive props
+globs: apps/discovery/src/App.svelte,apps/discovery/src/parts/**,apps/magazine/src/App.svelte,apps/magazine/src/parts/**,apps/magazine/src/templates/**,apps/host-*/xgen/screens/**,packages/*/ui/src/blocks/**,packages/*/ui/src/components/**,packages/taste-screens/src/screens/**,packages/taste-screens/src/parts/**
+alwaysApply: false
 ---
 
-# Rule 03. ARIA is static markup plus external JS
+# Rule 03. ARIA in composition is static
 
-Language-agnostic. Applies to any stack and any component syntax.
-
-## Variables
-
-- `{appdir}` is the source root of the app (`src`, `web`, and so on).
-- Primitives live in `packages/ui/src/ui`.
-- Utilities live in `packages/ui/src/utils`.
-- Behavior library: https://github.com/ui8kit/aria (package `@ui8kit/aria`).
+Language-agnostic. Zones, `{kit}` and "reactive ARIA state" are defined in rule 00.
+The syntax per stack is in the runtime appendix.
 
 ## Goal
 
-Accessibility behavior must not depend on framework state, props or effects.
-Markup is static. Behavior comes from one external script that reads the
-markup contract.
+Accessibility behavior does not depend on framework state computed in screens.
+Composition markup describes structure and naming. The kit owns how a state
+becomes an attribute.
 
 ## Rules
 
 1. Native HTML5 semantics first. Add ARIA only where the native element
    cannot express the role.
-2. Do not use framework reactivity (state, props, effects, watchers,
-   lifecycle hooks, two-way bindings) to set, toggle or sync ARIA
-   attributes such as `aria-expanded`, `aria-hidden`, `aria-selected`,
-   `aria-controls`, focus handling or keyboard handling.
-3. ARIA attributes in components are static. They describe structure and
-   naming, not live state.
-4. State, focus, keyboard and open or close behavior come from
-   `@ui8kit/aria`, attached to the markup through `data-ui8kit*` contract
-   attributes on the host primitive. Do not invent a parallel JS API and do
-   not write a second widget tree.
-5. Contract attributes are produced by helpers in `packages/ui/src/utils` and by
-   the dedicated aria tag (a primitive in `packages/ui/src/ui`) for ui8kit aria.
-   Screens never write `data-ui8kit*` by hand.
-6. Register only the patterns the app uses, in one place (a single aria
-   bootstrap file under `{appdir}`). Keep the pattern list in the project
-   config in sync with it.
-7. The script is loaded once, as a deferred external script or an import in
-   the bootstrap file, and initialised after the document is in the DOM.
-   Runtimes without a client framework call the same init.
-8. Names come from `Label` or `aria-label`. Text and `id` values are passed
-   from the app frame or as props. They are not generated at runtime.
-9. Keep the kit focus ring. Dialogs have a name, a description, an Escape
+2. In composition, an `aria-*` attribute is static: a literal value. It is
+   never an expression of state, props, effects, watchers or bindings.
+3. State reaches ARIA only through a primitive prop: `<Button pressed={on}>`,
+   `<Tab selected={i === current}>`. Passing a value to such a prop is allowed;
+   the primitive in `{kit}` maps it to `aria-pressed`, `aria-selected` and so on.
+   If the primitive has no such prop, add it to the kit (its spec) instead of
+   writing the attribute in the screen.
+4. Names come from `Label`, a naming prop of the primitive (`AriaLabel`,
+   `labelledBy`), or `aria-label` / `aria-labelledby` / `aria-describedby` with a
+   value from content or props. Naming attributes are not state and may be
+   expressions.
+5. Screens never write `data-ui8kit*` contract attributes by hand.
+6. Keep the kit focus ring. Dialogs have a name, a description, an Escape
    close and focus return. One `main` per page with `id=main-content`.
 
-## Pattern contract (minimum set)
+## Future (not in force)
 
-| Pattern | Primitive | Contract |
-| --- | --- | --- |
-| Dialog | `Dialog` | `data-ui8kit=dialog`, open, close and overlay attributes, labelled |
-| Disclosure | `Box` with `Button` | `data-ui8kit=disclosure`, trigger and content pair |
-| Tooltip | `Box` with `Text` or `Inline` | `data-ui8kit=tooltip`, child with `role=tooltip` |
-| Alert | `Alert` | `data-ui8kit=alert`, or `role=alert` when urgent |
-
-Do not put `data-ui8kit=disclosure` on a native `details`. That pattern needs
-a trigger and content pair, not `summary`.
-
-The exact attribute names for each pattern are defined by the library docs
-and the markup notes inside its repository. Check there before adding a new
-pattern.
+A behavior library (`@ui8kit/aria`: `data-ui8kit*` contract attributes, a single
+bootstrap that registers the used patterns, a deferred init) is planned. It
+does not exist in this repo yet, so its rules are not enforced.
 
 ## Validation
 
-A validator must fail when:
-
-- a component sets any `aria-*` attribute from reactive state, a prop-driven
-  expression, an effect or an event handler;
-- a component writes `data-ui8kit*` directly instead of using the util
-  helper or the aria tag;
-- a pattern is used in markup but not registered in the aria bootstrap, or
-  registered but unused;
-- `data-ui8kit=disclosure` is placed on a native `details`;
-- the app has no `main`, or more than one, or `main` lacks
-  `id=main-content`;
-- a dialog has no accessible name.
+`bun run check`, group `rules`, detector `reactive-aria`, fails on a new
+`aria-*` attribute with an expression value in a composition file, except the
+naming attributes `aria-label`, `aria-labelledby`, `aria-describedby`,
+`aria-haspopup`, `aria-roledescription` (rule 4). The spec-level check is the
+`a11y` group (known ARIA names, tables, inputs, sortable headers).

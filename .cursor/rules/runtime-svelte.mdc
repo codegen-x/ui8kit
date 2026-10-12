@@ -1,0 +1,36 @@
+---
+description: Svelte 5 syntax appendix of rules 00, 01, 02, 03 and 06 for the composition zone
+globs: apps/discovery/src/App.svelte,apps/discovery/src/parts/**/*.svelte,apps/magazine/src/App.svelte,apps/magazine/src/parts/**/*.svelte,apps/magazine/src/templates/**/*.svelte,apps/host-svelte/xgen/screens/**/*.svelte,packages/svelte/ui/src/blocks/**/*.svelte,packages/svelte/ui/src/components/**/*.svelte,packages/taste-screens/src/screens/**/*.svelte,packages/taste-screens/src/parts/**/*.svelte
+alwaysApply: false
+---
+
+# Runtime appendix: Svelte 5
+
+The rules are in `00-zones.mdc`, `01-block-root.mdc`, `02-no-raw-html.mdc`,
+`03-static-aria.mdc` and `06-fixtures-no-literal-text.mdc`. This file only maps
+their terms to Svelte 5 syntax. Files: `*.svelte` inside the composition paths of the
+packages whose `ui8kit.runtime` is `svelte` (see `rules/zones.json`).
+
+## Paths
+
+| Zone | Paths |
+| --- | --- |
+| Kit | `packages/svelte/ui/src/primitives`, `src/utils`, `src/styles`; `apps/host-svelte/xgen/runtime`; `apps/magazine/src/lib`; `packages/taste-screens/src/recipes`; `packages/panorama/src` |
+| Composition | `packages/svelte/ui/src/blocks`, `src/components`; `apps/host-svelte/xgen/screens`; `apps/magazine/src/App.svelte`, `src/parts`, `src/templates`; `apps/discovery/src/App.svelte`, `src/parts`; `packages/taste-screens/src/screens`, `src/parts` |
+
+## Syntax
+
+| Term | Forbidden in composition | Use instead |
+| --- | --- | --- |
+| Raw HTML injection | `{@html markup}` | kit components built from nodes |
+| Dynamic tag | `<svelte:element this={tag}>` | a kit primitive with a `tag` prop |
+| Raw native tag | `<div>`, `<span>`, `<svg>` and any lowercase element | `Box`, `Text`, `Icon`, ... |
+| Reactive ARIA state | `aria-expanded={open}`, `aria-current={on ? "page" : undefined}` | a primitive prop: `<Button pressed={on}>` |
+| Two-way binding | `bind:value`, `$bindable` (also `_nonportable.json`) | one-way `value` plus an event prop |
+| Literal text | `<Text>Save</Text>`, `label="Save"`, `{ok ? "Yes" : "No"}` | `{ui.group.key}`, `tpl(ui.group.key, { n })`, props |
+| Component root | first node of the markup after `<script>`/`<style>`, looking through `{#if}`/`{#each}`/`{#key}`/`{#await}` | |
+
+Allowed structure: `{#if}`, `{#each}`, `{#await}`, `{#key}`, `{#snippet}`,
+`{@render}`, `{@const}`, and the special elements that do not choose a host tag:
+`svelte:window`, `svelte:document`, `svelte:body`, `svelte:head`, `svelte:boundary`.
+Do not start a `.svelte` file with a `//` comment: the template shows it as text.

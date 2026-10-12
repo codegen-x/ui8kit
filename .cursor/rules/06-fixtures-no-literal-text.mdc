@@ -1,75 +1,52 @@
 ---
-description: No free-form text in code. All text comes from JSON fixtures. Default language is English. A script enforces it.
-alwaysApply: true
+description: No literal text in composition; words come from content (the ui dictionary) or props. English only, no Cyrillic in code
+globs: apps/discovery/src/App.svelte,apps/discovery/src/parts/**,apps/magazine/src/App.svelte,apps/magazine/src/parts/**,apps/magazine/src/templates/**,apps/host-*/xgen/screens/**,packages/*/ui/src/blocks/**,packages/*/ui/src/components/**,packages/taste-screens/src/screens/**,packages/taste-screens/src/parts/**
+alwaysApply: false
 ---
 
-# Rule 06. Text lives in fixtures, not in code
+# Rule 06. Text lives in content, not in templates
 
-In the monorepo the paths `src/`, `scripts/`, `content/` mean the folders of one app, `apps/<app>/`. The checks run with that app as the working directory (`bun run check:i18n` at the root runs every app).
-
-Rule 05 says a product is data plus components. This rule says where the words are. Components and templates hold structure and technical keys. Every visible or announced string comes from a JSON fixture.
+Language-agnostic. Zones and "literal text" are defined in rule 00. How a
+template reads content in each stack is in the runtime appendix.
 
 ## Language
 
-1. The default language is English. All demo data, all fixtures and all comments are English.
-2. Other languages are separate fixture files (`content/ui/ru.json`, and so on), never code. No Cyrillic in `src/`, `scripts/` or `index.html`, in code, comments or strings.
-3. A locale file has exactly the same keys and the same `{placeholders}` as `content/ui/en.json`. `bun run check:content` fails otherwise.
+1. The default language is English. Demo data, fixtures and comments are English.
+2. Other languages are separate content files, never code. No Cyrillic in
+   code, comments or strings anywhere in `xgen`, `packages` and `apps`
+   (`xgen check`, group `text`).
 
 ## Where text lives
 
 | Text | Where |
 | --- | --- |
-| Interface text: titles, labels, buttons, menu, placeholders, empty states, validation messages, screen-reader text | `content/ui/<locale>.json`, read with `t("group.key")` from `@/app/i18n.svelte` (the app binds its dictionaries to the shared content mechanism) |
-| Counts and plurals | one key with `_one` and `_other` forms, called as `t("pages.count", { n })` |
-| Demo records: pages, posts, media, users, terms, comments, settings, knowledge-base articles | `content/manifest.json` and `content/entries/<id>.json` (see `docs/FIXTURES.md`) |
-| Menu and routes | `src/app/menu.ts` holds keys and hrefs. The labels are `t(key)` |
-| The language of the interface | the site setting `language` in the `setting` entry; `t()` follows it |
+| Interface text: titles, labels, buttons, menus, placeholders, empty states, screen-reader text | `xgen/content/ui/en.json`, generated into `@ui8kit/app-shared/content` as `ui`, read as `ui.group.key`; placeholders through `tpl()` |
+| Demo records | the Codex fixtures in `xgen/fixtures` |
 | Dev diagnostics (`throw new Error`, `console.*`) | code, English, never shown to users |
 
-A block gets text through `t()`, through props filled by its parent, or through data. A block never contains a sentence.
+A block or a composite gets text through props filled by its parent, through
+data, or from the `ui` dictionary. It never contains a sentence.
 
-## What the check forbids in scope
+## What is literal text in composition
 
-The scope is every `.svelte` and `.ts` file under `src/`, minus the paths in `.project/apps/<app>/i18n-allow.json`.
+1. A text node with letters in a template: `<Text>Save</Text>`.
+2. A string literal with letters in a text attribute or prop: `label`, `title`,
+   `text`, `description`, `placeholder`, `hint`, `caption`, `heading`,
+   `subtitle`, `message`, `summary`, `tooltip`, `alt`, `note`, `lead`, `legend`,
+   `eyebrow`, `aria-label`, `aria-description`, `aria-placeholder`,
+   `aria-roledescription`, `aria-valuetext` (and their PascalCase forms).
+3. A string literal with letters as a result of a template expression:
+   `{ok ? "Yes" : "No"}`.
 
-1. A text node with letters between tags: `<Text>Save</Text>`.
-2. A string literal with letters in a text attribute or prop: `label`, `title`, `text`, `description`, `placeholder`, `hint`, `caption`, `heading`, `subtitle`, `message`, `summary`, `tooltip`, `alt`, `note`, `lead`, `meta`, `legend`, `eyebrow`, `aria-label`, `aria-description`, `aria-placeholder`, `aria-roledescription`, `aria-valuetext`. This covers `label="Save"` and `label={on ? "Open" : "Close"}`.
-3. A string literal with letters inside `{expression}` in the markup: `{ok ? "Yes" : "No"}`.
-4. Prose in a static attribute with another name: a capital word followed by more words.
-5. In scripts: a string with letters under one of the names above (`{ label: "Pages" }`), and any prose string (a capital word followed by more words, like `"Page not found"`).
-6. Any Cyrillic letter anywhere in `src/`, `scripts/` and `index.html`.
+## Allowed
 
-## What the check allows
-
-- Technical keys: `class`, `style`, `id`, `href`, `type`, `role`, `name`, `for`, `value`, `variant`, `size`, `tag`, `data-*`, route strings, icon names, CSS, query keys, storage keys, ids, fixture ids.
+- Technical values: `class`, `style`, `id`, `href`, `type`, `role`, `name`,
+  `for`, `value`, `variant`, `size`, `tag`, `data-*`, routes, icon names.
 - Strings with no letters: `/`, `·`, `—`, `12`, `…`.
-- The first argument of `t(...)`, `tp(...)` and `fmt(...)`, with everything inside it (`t(on ? "a.on" : "a.off")`, ``t(`role.${r}`)``).
-- A dotted key-shaped string (`"theme.light"`, `"content.page.title"`) anywhere: it is a fixture key, and the `UiKey` type checks that it exists.
-- A lowercase one-token string as an argument of a call or a comparison operand (`count("pending")`). The same token as a result (`{on ? "yes" : "no"}`) is text and is forbidden.
-- Comparisons (`mode === "list"`), computed keys (`map["key"]`), `case "x":`.
-- `throw new Error(...)`, `console.*`, type-level strings, imports.
-- Anything that comes from a variable: `{item.label}`, `label={labels.save}`.
-- `aria-*` text is allowed when it comes from `t()` or a fixture. Static ARIA structure still follows rule 03.
-
-## Limits
-
-The check reads syntax. It does not know meaning.
-
-- It does not catch text built from pieces that have no letters, or a one-word literal in a prop with an unlisted name. Add the name to `TEXT_NAMES` in `packages/tooling/bin/i18n.mjs` when you find one.
-- A one-word capitalized string outside the listed names is not prose to the script. Do not use that as a loophole.
-- It does not check `public/`, `README.md` or fixtures. `bun run check:content` checks fixtures.
-- A key-shaped string is trusted. If a dotted string is really text (`"e.g.x"`), the script will not see it; review catches that.
-- It does not know whether a key exists in `en.json`. TypeScript does, through `UiKey` (`bun run check`). A key built from a template needs `as UiKey` and a review of the possible values.
-
-## Exceptions
-
-1. Only `.project/<apps|packages>/<name>/i18n-allow.json`. Each entry has a `path` (file or folder), `rules` (`text` or `cyrillic`) and a `reason`. An entry without a reason fails. An entry that allows nothing fails as stale.
-2. An exception is for code inherited from another branch. New product code is never allowed there.
-3. A package (`packages/ui`) has no exceptions at all: a label, a placeholder or an accessible name in the kit always comes in as a prop; the app passes it through `t()`. The check runs inside the package (`bun run check:i18n` in `packages/ui`) and in `packages/tooling` (Cyrillic).
+- Anything that comes from a variable, a prop, a fixture or `ui.*`.
 
 ## Validation
 
-- `bun run check:i18n` prints `file:line:col  rule  message` and exits 1 on any violation. `check:selftest` checks the detectors.
-- `bun run check:content` validates the fixtures and the locale files.
-- `bun run check:selftest` runs the self-tests of the i18n and content checks.
-- All of them run inside `bun run check:all`, and they are gates before every push.
+`bun run check`, group `rules`, detector `literal-text`, scans the templates
+of composition files. Script-level prose is reviewed, not checked.
+Existing violations are in `rules/baselines/<package>.json`; the count may only go down.

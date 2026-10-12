@@ -4,6 +4,19 @@
   "private": true,
   "type": "module",
   "description": "The 146 hand-written taste screens, the procedural image recipes and the small parts they share, moved verbatim from apps/discovery/src so that Discovery and the magazine render the same markup (the snapshot cache keys hash it). Plain Svelte, no build step; frame.css holds the app rules the snapshots depend on.",
+  "ui8kit": {
+    "runtime": "svelte",
+    "kit": [
+      "src/recipes"
+    ],
+    "composition": [
+      "src/screens",
+      "src/parts"
+    ],
+    "blockRoot": [
+      "src/screens"
+    ]
+  },
   "exports": {
     "./screens": "./src/screens/index.ts",
     "./recipes": "./src/recipes/index.ts",

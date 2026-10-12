@@ -1,50 +1,46 @@
 ---
-description: Block is the only file root, Box is never a wrapper
-alwaysApply: true
+description: Blocks and screens open on Block, composite components have no landmark root, Box is never a wrapper
+globs: apps/discovery/src/App.svelte,apps/discovery/src/parts/**,apps/magazine/src/App.svelte,apps/magazine/src/parts/**,apps/magazine/src/templates/**,apps/host-*/xgen/screens/**,packages/*/ui/src/blocks/**,packages/*/ui/src/components/**,packages/taste-screens/src/screens/**,packages/taste-screens/src/parts/**
+alwaysApply: false
 ---
 
-# Rule 01. Block is the only root, Box is never a wrapper
+# Rule 01. Block is the root of blocks and screens, Box is never a wrapper
 
-Language-agnostic. Applies to any stack and any component syntax.
-
-## Variables
-
-- `{appdir}` is the source root of the app; the shared kit lives in `packages/ui/src`. It depends on the stack:
-  `src` for Vite-style projects, `web` for Go projects, and so on.
-- Primitives live in `packages/ui/src/ui`.
-- Utilities and tag groups live in `packages/ui/src/utils`.
+Language-agnostic. Zones, `{kit}` and "component root" are defined in rule 00.
 
 ## Goal
 
-The DOM tree must follow HTML5 semantics strictly. Landmarks come only from
+The DOM tree follows HTML5 semantics strictly. Landmarks come only from
 `Block`. Nested structure comes only from layout primitives.
 
 ## Rules
 
-1. Every component file opens on `Block`. This is critical and has no
-   exceptions. A file never starts with `Box`, `Stack`, `Group`, `Grid`, `Card`
-   or anything else.
-2. One file has exactly one `Block`.
-3. `Block` is never nested inside another element of the same file.
-   If a nested region needs its own `Block`, move it into a new file and
-   import that component. Composition across files is allowed. Nesting
-   inside one file is not.
-4. `Box` is never a wrapper and never a file root. It appears only inside a
-   `Block`, and only where no specialised primitive fits: `Card`, `Stack`,
-   `Group`, `Grid`, `List`, `Nav`, `Dialog` and the others found in the kit.
-5. `Box` is always a plain nested `div`. It is never a landmark and never
+1. A file in the `blockRoot` part of the composition (blocks, app screens,
+   page templates, the app frame) opens on `Block`, or on a composite whose own
+   root is `Block` (a section frame). It never starts with `Box`, `Stack`,
+   `Group`, `Grid`, `Card` or anything else.
+2. A composite component (the rest of the composition) has no landmark root: it
+   does not open on `Block` and does not choose a landmark tag for its root.
+3. One file has at most one `Block`.
+4. `Block` is never nested inside another element of the same file. If a
+   nested region needs its own `Block`, move it into a new file and import
+   that component. Composition across files is allowed. Nesting inside one
+   file is not.
+5. `Box` is never a wrapper and never a file root. It appears only where no
+   specialised primitive fits: `Card`, `Stack`, `Group`, `Grid`, `List`,
+   `Nav`, `Dialog` and the others found in `{kit}`.
+6. `Box` is always a plain nested `div`. It is never a landmark and never
    imitates another primitive.
-6. Before using `Box`, search `packages/ui/src/ui` for a primitive that expresses
-   the intent. Only if none exists, use `Box`. If the primitive is missing
-   and the intent is repeatable, add it to the kit instead of piling up
-   `Box`.
+7. Before using `Box`, search `{kit}` for a primitive that expresses the
+   intent. If the primitive is missing and the intent is repeatable, add it to
+   the kit (its spec, for a generated kit) instead of piling up `Box`.
 
 ## Roots by surface
 
 | Surface | Root |
 | --- | --- |
 | Application frame | `Block` without `tag`, a viewport container, not a landmark |
-| Route or view | `Block` with `tag=section` |
+| Route, view or screen | `Block` with `tag=section` |
 | Page header | `Block` with `tag=header` |
 | Primary content | `Block` with `tag=main` and `id=main-content` |
 | Complementary column | `Block` with `tag=aside` |
@@ -55,8 +51,8 @@ The DOM tree must follow HTML5 semantics strictly. Landmarks come only from
 
 ## Where to look for tags
 
-1. Find the needed element in `packages/ui/src/ui`.
-2. If it is not there, check the tag groups in `packages/ui/src/utils`.
+1. Find the needed element in the primitives of `{kit}`.
+2. If it is not there, check the tag groups in the utils of `{kit}`.
 3. If it is still missing, extend the kit. Do not write a raw tag in the screen.
 
 ## Nested replacements
@@ -67,11 +63,11 @@ The DOM tree must follow HTML5 semantics strictly. Landmarks come only from
 
 ## Validation
 
-A validator must fail when:
+`bun run check`, group `rules`, detector `block-root`, fails when:
 
-- the first element of a file is not `Block`;
-- a file contains more than one `Block`;
-- `Block` is found inside another element of the same file;
-- `Box` is a file root or a direct wrapper around the whole content;
-- the application frame has a landmark `tag`;
-- a page has no `main` or has more than one.
+- the first rendered node of a `blockRoot` file is not `Block` (directly or through a composite whose root is `Block`);
+- a composite component outside `blockRoot` opens on `Block`;
+- a file contains more than one `Block`, or `Block` is nested inside another element of the same file.
+
+Not checked by the tool yet (review): `Box` used as a wrapper, the landmark
+`tag` of the application frame, one `main` per page.

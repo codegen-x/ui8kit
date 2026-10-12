@@ -1,0 +1,34 @@
+---
+description: Vue 3 (SFC) syntax appendix of rules 00, 01, 02, 03 and 06 for the composition zone
+globs: apps/host-vue/xgen/screens/**/*.vue,packages/vue/ui/src/blocks/**/*.vue,packages/vue/ui/src/components/**/*.vue
+alwaysApply: false
+---
+
+# Runtime appendix: Vue 3 (SFC)
+
+The rules are in `00-zones.mdc`, `01-block-root.mdc`, `02-no-raw-html.mdc`,
+`03-static-aria.mdc` and `06-fixtures-no-literal-text.mdc`. This file only maps
+their terms to Vue 3 (SFC) syntax. Files: `*.vue` inside the composition paths of the
+packages whose `ui8kit.runtime` is `vue` (see `rules/zones.json`).
+
+## Paths
+
+| Zone | Paths |
+| --- | --- |
+| Kit | `packages/vue/ui/src/primitives`, `src/utils`, `src/styles`; `apps/host-vue/xgen/runtime` |
+| Composition | `packages/vue/ui/src/blocks`, `src/components`; `apps/host-vue/xgen/screens` |
+
+## Syntax
+
+| Term | Forbidden in composition | Use instead |
+| --- | --- | --- |
+| Raw HTML injection | `v-html="markup"` | kit components built from nodes |
+| Dynamic tag | `<component :is="tag">`, `h(tag, ...)` with a variable tag | a kit primitive with a `tag` prop |
+| Raw native tag | `<div>`, `<span>`, `<svg>` and any lowercase element that is not a Vue built-in | `Box`, `Text`, `Icon`, ... |
+| Reactive ARIA state | `:aria-expanded="open"`, `v-bind:aria-current="..."` | a primitive prop: `<Button :pressed="on">` |
+| Two-way binding | `v-model` (also `_nonportable.json`) | one-way `:value` plus an event prop |
+| Literal text | `<Text>Save</Text>`, `label="Save"`, `{{ ok ? "Yes" : "No" }}` | `{{ ui.group.key }}`, `tpl(ui.group.key, { n })`, props |
+| Component root | first element of `<template>`, looking through `<template v-if>`/`v-for` wrappers | |
+
+Allowed structure: `<template>`, `v-if`/`v-else`/`v-for`, `<slot>`, `<Teleport>`,
+`<Transition>`, `<KeepAlive>`, `<Suspense>`.

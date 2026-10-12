@@ -1,99 +1,65 @@
 ---
-description: No raw HTML outside packages/ui/src/ui. Composition uses kit components.
-alwaysApply: true
+description: No raw HTML in the composition zone, tags only from the kit (primitives and utils)
+globs: apps/discovery/src/App.svelte,apps/discovery/src/parts/**,apps/magazine/src/App.svelte,apps/magazine/src/parts/**,apps/magazine/src/templates/**,apps/host-*/xgen/screens/**,packages/*/ui/src/blocks/**,packages/*/ui/src/components/**,packages/taste-screens/src/screens/**,packages/taste-screens/src/parts/**
+alwaysApply: false
 ---
 
 # Rule 02. No raw HTML tags outside the kit
 
-This repo is a Vite + Svelte 5 app. `svelte.config.js` is only the
-`@sveltejs/vite-plugin-svelte` compiler config. There is no SvelteKit and no
-`src/routes`.
-
-## Paths
-
-- Source root: `src`.
-- Primitives: `packages/ui/src/ui`. Import them with the `@/ui` alias from `vite.config.ts`.
-- Tag groups: `packages/ui/src/utils/tags.ts` (`TagGroup`, `resolveTag`). Host tags inside
-  a primitive are chosen only through `resolveTag`.
-- Document frame: `index.html` at the repo root (Vite entry). Skeleton and the
-  no-flash theme script only.
-- Composition, where raw HTML is forbidden: `src/App.svelte`, `src/blocks/**`,
-  `packages/ui/src/patterns/**`, `src/blocks/**`, and any other `*.svelte` file outside `packages/ui/src/ui`.
+Language-agnostic. Zones, `{kit}` and the terms in this rule are defined in rule 00.
+The syntax of each term per stack is in the runtime appendix.
 
 ## Goal
 
-Atoms emit tags. Screens compose atoms. Only `packages/ui/src/ui` knows which host tag
-is used for which role.
+Atoms emit tags. Screens compose atoms. Only the kit knows which host tag is
+used for which role.
 
 ## Zones
 
 | Zone | Raw HTML |
 | --- | --- |
-| `packages/ui/src/ui/**` | Allowed. Host markup lives here and only here. |
-| `index.html` | Allowed, document skeleton only. |
-| Every other `*.svelte` file | Forbidden. Use components imported from `@/ui`, `@/patterns`, or `@/parts`. |
+| Kit: `{kit}` (`packages/<rt>/ui/src/primitives`, `src/utils`) | Allowed. Host markup lives here and only here. |
+| Document frame (the single entry HTML file of an app) | Allowed, document skeleton only. |
+| Composition (blocks, composite components, screens, templates) | Forbidden. Only components imported from the kit or other composites, plus the structural constructs of the runtime. |
 
 ## Rules
 
-1. Composition files contain zero raw HTML elements for layout, typography,
+1. Composition files contain zero raw native tags for layout, typography,
    lists, forms or controls.
-2. Allowed markup there is a PascalCase component (`Block`, `Button`, …) plus
-   Svelte structure that does not choose a host tag:
-   `{#if}`, `{#each}`, `{#await}`, `{#key}`, `{#snippet}`, `{@render}`,
-   `{@const}`, `{@attach}`, and the special elements `svelte:window`,
-   `svelte:document`, `svelte:body`, `svelte:head`, `svelte:boundary`,
-   `svelte:fragment`, `svelte:options`, `svelte:self`.
-   Contents of `<svelte:head>` are document metadata, same as `index.html`.
-3. Every needed tag is searched in this order:
-   1. `packages/ui/src/ui`
-   2. the matching `TagGroup` in `packages/ui/src/utils/tags.ts`
-   3. if still missing, add and export a new primitive under `packages/ui/src/ui`, then
-      use it. Never fall back to a raw tag in a screen.
-4. Do not fake one primitive with a chain of utility classes on another.
-5. Do not hand-edit generated primitive files (`@ui8kit/codegen`). Change the
-   generator input or the kit source instead.
-
-`<svelte:element>` chooses a host tag. It is allowed only in `packages/ui/src/ui`.
-`{@html}` is forbidden outside the kit.
+2. Only the runtime's own structural constructs are allowed besides components:
+   fragments, slots, conditionals and loops of the current stack.
+3. No raw HTML injection and no dynamic tag in composition. Both choose host
+   markup, which is the kit's job.
+4. Every needed tag is searched in this order:
+   1. the primitives of `{kit}`;
+   2. the tag groups in the utils of `{kit}`;
+   3. if still missing, add and export a new primitive (its spec, for a
+      generated kit), then use it. Never fall back to a raw tag in a screen.
+5. Do not fake one primitive with a chain of utility classes on another.
+6. Do not hand-edit generated files. Change the spec, the authoring builder or
+   the emitter instead.
 
 ## Substitutions
 
 | Instead of raw | Use |
 | --- | --- |
-| `div` | `Box`, `Stack`, `Group`, `Grid` or `Container` |
-| `section`, `article`, `aside`, `header`, `footer`, `main`, `nav`, `figure`, `search` | `Block` with `tag` |
-| `p`, `blockquote`, `pre`, `figcaption`, `address` | `Text` |
-| `span` and other inline phrasing tags | `Inline` |
-| `h1` to `h6` | `Title` |
-| `ul`, `ol`, `dl`, `menu` | `List` (or `Stack` with `tag`) |
-| `li`, `dt`, `dd` | `ListItem` |
-| `form`, `fieldset`, `label`, `legend` | `Form`, `Fieldset`, `Label`, `Legend` |
-| `input`, `textarea`, `select` | `Input`, `Textarea`, `Select` |
-| `button`, `a` | `Button` (`href` renders the anchor) or `Link` |
-| `dialog` | `Dialog` |
-| `img`, `picture`, `source` | `Image`, `Picture`, `Source` |
-| `table` and its parts | `Table`, `TableHead`, `TableBody`, `TableFoot`, `TableRow`, `TableCell`, `TableHeadCell` |
-| `details`, `summary` | `Disclosure`, `Summary` |
-| `hr`, `br` | `Separator`, `Break` |
-| `svg` and paint nodes | `Icon` |
-| card surface | `Card` and `CardHeader`, `CardTitle`, `CardContent`, `CardFooter` |
+| `div` | `Box`, `Stack`, `Group` or `Grid` |
+| `p`, `span`, `h1` to `h6` | `Text`, `Inline`, `Title` |
+| landmarks | `Block` with a required `tag` |
+| `ul`, `ol`, `li` | `List`, `ListItem` |
+| `form`, `label`, `input` | `Form`, `FormItem`, `Label` and the kit input primitives |
+| `button`, `a` styled as a button | `Button` with `variant` and `size` |
+| card surface | `Card` |
 
-These names are the components in `packages/ui/src/ui`. Confirm the file before using one.
+These names are the reference set. Always confirm the real list in `{kit}`.
 
 ## Validation
 
-Run `bun run retag` in the app (`apps/<app>`; it calls the retag tool of the workspace tooling). It scans every
-`*.svelte` file outside `packages/ui/src/ui` and fails when it finds:
+`bun run check`, group `rules`, scans every composition file (never the kit) and fails on a new:
 
-- a lowercase HTML element (`div`, `p`, `span`, `h1`..`h6`, `ul`, `button`,
-  `a`, `section`, `main`, `svg`, …);
-- `<svelte:element>`, including one whose `this` is a string literal;
-- `{@html ...}`.
+- `raw-native-tag`: an element whose tag is a lowercase HTML or SVG element name;
+- `raw-html`: raw HTML injection;
+- `dynamic-tag`: a host tag chosen from a value.
 
-`<script>`, `<style>`, comments, `{expressions}` and the `<svelte:head>` block
-are ignored. `index.html` is not scanned.
-
-The report line is `file:line <tag> → Primitive`. Exit code is non-zero when a
-file has more hits than `.project/apps/<app>/retag-baseline.txt`. Optional overrides live
-in `retag.config.json` (see `packages/tooling/retag.config.example.json`): `allow`,
-`allowTags`, `documentFrame`, `exclude`.
+The report has file, line and the offending tag. Existing violations are in
+`rules/baselines/<package>.json`; the count may only go down.

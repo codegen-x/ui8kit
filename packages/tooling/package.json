@@ -8,10 +8,12 @@
     "xgen-retag": "./bin/retag.ts",
     "xgen-rules": "./bin/rules.mjs",
     "xgen-i18n": "./bin/i18n.mjs",
-    "xgen-audit": "./bin/audit.sh"
+    "xgen-audit": "./bin/audit.sh",
+    "xgen-zones": "./bin/zones.mjs"
   },
   "exports": {
     "./app": "./src/app.mjs",
+    "./zones": "./src/zones.mjs",
     "./package.json": "./package.json"
   },
   "dependencies": {

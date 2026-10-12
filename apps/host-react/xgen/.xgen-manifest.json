@@ -3,7 +3,7 @@
   "target": "apps/host-react",
   "files": {
     "index.html": "740d8d13e5b06127de39f40398a5bdb1e3c4ef182d2e3cc79cd6fedd33930fd4",
-    "package.json": "c6d1b4a92a79b56fc821aac03433403ef9e3e06b9b888b21a296777a48012583",
+    "package.json": "1eb2977e0f97bffa11db618f6fce08171eeeebf45aa1328aaa0d769ccffe55fb",
     "src/app.css": "2fc6677f491351c82a7a4e779eb2c7d9f0e4814c818e5234a86570da51ff52f2",
     "src/main.tsx": "08a0bd4d01fa1878eb2cbfa0cff2fb5275de4124e188e0804e85b039d488c8dc",
     "tsconfig.json": "2ce2853f72df21d5542b45c2112c4eb918e02f7cc4775ac2e5d981a8928b831c",

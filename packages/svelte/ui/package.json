@@ -8,6 +8,22 @@
   "sideEffects": [
     "*.css"
   ],
+  "ui8kit": {
+    "runtime": "svelte",
+    "generated": true,
+    "kit": [
+      "src/primitives",
+      "src/utils",
+      "src/styles"
+    ],
+    "composition": [
+      "src/blocks",
+      "src/components"
+    ],
+    "blockRoot": [
+      "src/blocks"
+    ]
+  },
   "exports": {
     ".": {
       "svelte": "./src/index.ts",
