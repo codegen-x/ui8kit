@@ -99,7 +99,7 @@
                     {
                       "use": "Box",
                       "props": {
-                        "Class": "relative flex w-3 shrink-0 justify-center"
+                        "Class": "relative flex w-2 shrink-0 justify-center"
                       },
                       "children": [
                         {
@@ -140,7 +140,7 @@
                             "Class": {
                               "op": "cn",
                               "args": [
-                                "mt-1.5 size-2.5 rounded-full",
+                                "mt-2 size-2 rounded-full",
                                 {
                                   "op": "at",
                                   "args": [

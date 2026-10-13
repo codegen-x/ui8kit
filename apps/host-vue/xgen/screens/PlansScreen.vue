@@ -115,7 +115,7 @@ const actions = computed(() => screenActions(url, view.value, "plans", (id) => `
                   scope="col"
                   aria-sort="ascending"
                 >
-                  <Button variant="ghost" size="sm" class="-mx-3" @click="() => actions.sort('name')">
+                  <Button variant="ghost" size="sm" class="-mx-2 px-2" @click="() => actions.sort('name')">
                     {{ ui.plans.col.name }}
                   </Button>
                 </TableHeadCell>
@@ -124,12 +124,12 @@ const actions = computed(() => screenActions(url, view.value, "plans", (id) => `
                   scope="col"
                   aria-sort="descending"
                 >
-                  <Button variant="ghost" size="sm" class="-mx-3" @click="() => actions.sort('name')">
+                  <Button variant="ghost" size="sm" class="-mx-2 px-2" @click="() => actions.sort('name')">
                     {{ ui.plans.col.name }}
                   </Button>
                 </TableHeadCell>
                 <TableHeadCell v-else scope="col" aria-sort="none">
-                  <Button variant="ghost" size="sm" class="-mx-3" @click="() => actions.sort('name')">
+                  <Button variant="ghost" size="sm" class="-mx-2 px-2" @click="() => actions.sort('name')">
                     {{ ui.plans.col.name }}
                   </Button>
                 </TableHeadCell>
@@ -139,7 +139,7 @@ const actions = computed(() => screenActions(url, view.value, "plans", (id) => `
                   class="text-right"
                   aria-sort="ascending"
                 >
-                  <Button variant="ghost" size="sm" class="-mx-3 ml-auto" @click="() => actions.sort('price')">
+                  <Button variant="ghost" size="sm" class="-mx-2 ml-auto px-2" @click="() => actions.sort('price')">
                     {{ ui.plans.col.price }}
                   </Button>
                 </TableHeadCell>
@@ -149,12 +149,12 @@ const actions = computed(() => screenActions(url, view.value, "plans", (id) => `
                   class="text-right"
                   aria-sort="descending"
                 >
-                  <Button variant="ghost" size="sm" class="-mx-3 ml-auto" @click="() => actions.sort('price')">
+                  <Button variant="ghost" size="sm" class="-mx-2 ml-auto px-2" @click="() => actions.sort('price')">
                     {{ ui.plans.col.price }}
                   </Button>
                 </TableHeadCell>
                 <TableHeadCell v-else scope="col" class="text-right" aria-sort="none">
-                  <Button variant="ghost" size="sm" class="-mx-3 ml-auto" @click="() => actions.sort('price')">
+                  <Button variant="ghost" size="sm" class="-mx-2 ml-auto px-2" @click="() => actions.sort('price')">
                     {{ ui.plans.col.price }}
                   </Button>
                 </TableHeadCell>
@@ -164,7 +164,7 @@ const actions = computed(() => screenActions(url, view.value, "plans", (id) => `
                   class="text-right"
                   aria-sort="ascending"
                 >
-                  <Button variant="ghost" size="sm" class="-mx-3 ml-auto" @click="() => actions.sort('seats')">
+                  <Button variant="ghost" size="sm" class="-mx-2 ml-auto px-2" @click="() => actions.sort('seats')">
                     {{ ui.plans.col.seats }}
                   </Button>
                 </TableHeadCell>
@@ -174,12 +174,12 @@ const actions = computed(() => screenActions(url, view.value, "plans", (id) => `
                   class="text-right"
                   aria-sort="descending"
                 >
-                  <Button variant="ghost" size="sm" class="-mx-3 ml-auto" @click="() => actions.sort('seats')">
+                  <Button variant="ghost" size="sm" class="-mx-2 ml-auto px-2" @click="() => actions.sort('seats')">
                     {{ ui.plans.col.seats }}
                   </Button>
                 </TableHeadCell>
                 <TableHeadCell v-else scope="col" class="text-right" aria-sort="none">
-                  <Button variant="ghost" size="sm" class="-mx-3 ml-auto" @click="() => actions.sort('seats')">
+                  <Button variant="ghost" size="sm" class="-mx-2 ml-auto px-2" @click="() => actions.sort('seats')">
                     {{ ui.plans.col.seats }}
                   </Button>
                 </TableHeadCell>
@@ -189,7 +189,7 @@ const actions = computed(() => screenActions(url, view.value, "plans", (id) => `
                   class="text-right"
                   aria-sort="ascending"
                 >
-                  <Button variant="ghost" size="sm" class="-mx-3 ml-auto" @click="() => actions.sort('storage')">
+                  <Button variant="ghost" size="sm" class="-mx-2 ml-auto px-2" @click="() => actions.sort('storage')">
                     {{ ui.plans.col.storage }}
                   </Button>
                 </TableHeadCell>
@@ -199,12 +199,12 @@ const actions = computed(() => screenActions(url, view.value, "plans", (id) => `
                   class="text-right"
                   aria-sort="descending"
                 >
-                  <Button variant="ghost" size="sm" class="-mx-3 ml-auto" @click="() => actions.sort('storage')">
+                  <Button variant="ghost" size="sm" class="-mx-2 ml-auto px-2" @click="() => actions.sort('storage')">
                     {{ ui.plans.col.storage }}
                   </Button>
                 </TableHeadCell>
                 <TableHeadCell v-else scope="col" class="text-right" aria-sort="none">
-                  <Button variant="ghost" size="sm" class="-mx-3 ml-auto" @click="() => actions.sort('storage')">
+                  <Button variant="ghost" size="sm" class="-mx-2 ml-auto px-2" @click="() => actions.sort('storage')">
                     {{ ui.plans.col.storage }}
                   </Button>
                 </TableHeadCell>

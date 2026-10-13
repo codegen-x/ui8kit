@@ -119,76 +119,76 @@ export function PlansScreen({ url }: { url: UrlPort }) {
                   <TableRow>
                     {((view.sort.field === "name") && (view.sort.dir === "asc")) ? (
                       <TableHeadCell scope="col" aria-sort="ascending">
-                        <Button variant="ghost" size="sm" className="-mx-3" onClick={() => actions.sort("name")}>
+                        <Button variant="ghost" size="sm" className="-mx-2 px-2" onClick={() => actions.sort("name")}>
                           {ui.plans.col.name}
                         </Button>
                       </TableHeadCell>
                     ) : ((view.sort.field === "name") && (view.sort.dir === "desc")) ? (
                       <TableHeadCell scope="col" aria-sort="descending">
-                        <Button variant="ghost" size="sm" className="-mx-3" onClick={() => actions.sort("name")}>
+                        <Button variant="ghost" size="sm" className="-mx-2 px-2" onClick={() => actions.sort("name")}>
                           {ui.plans.col.name}
                         </Button>
                       </TableHeadCell>
                     ) : (
                       <TableHeadCell scope="col" aria-sort="none">
-                        <Button variant="ghost" size="sm" className="-mx-3" onClick={() => actions.sort("name")}>
+                        <Button variant="ghost" size="sm" className="-mx-2 px-2" onClick={() => actions.sort("name")}>
                           {ui.plans.col.name}
                         </Button>
                       </TableHeadCell>
                     )}
                     {((view.sort.field === "price") && (view.sort.dir === "asc")) ? (
                       <TableHeadCell scope="col" className="text-right" aria-sort="ascending">
-                        <Button variant="ghost" size="sm" className="-mx-3 ml-auto" onClick={() => actions.sort("price")}>
+                        <Button variant="ghost" size="sm" className="-mx-2 ml-auto px-2" onClick={() => actions.sort("price")}>
                           {ui.plans.col.price}
                         </Button>
                       </TableHeadCell>
                     ) : ((view.sort.field === "price") && (view.sort.dir === "desc")) ? (
                       <TableHeadCell scope="col" className="text-right" aria-sort="descending">
-                        <Button variant="ghost" size="sm" className="-mx-3 ml-auto" onClick={() => actions.sort("price")}>
+                        <Button variant="ghost" size="sm" className="-mx-2 ml-auto px-2" onClick={() => actions.sort("price")}>
                           {ui.plans.col.price}
                         </Button>
                       </TableHeadCell>
                     ) : (
                       <TableHeadCell scope="col" className="text-right" aria-sort="none">
-                        <Button variant="ghost" size="sm" className="-mx-3 ml-auto" onClick={() => actions.sort("price")}>
+                        <Button variant="ghost" size="sm" className="-mx-2 ml-auto px-2" onClick={() => actions.sort("price")}>
                           {ui.plans.col.price}
                         </Button>
                       </TableHeadCell>
                     )}
                     {((view.sort.field === "seats") && (view.sort.dir === "asc")) ? (
                       <TableHeadCell scope="col" className="text-right" aria-sort="ascending">
-                        <Button variant="ghost" size="sm" className="-mx-3 ml-auto" onClick={() => actions.sort("seats")}>
+                        <Button variant="ghost" size="sm" className="-mx-2 ml-auto px-2" onClick={() => actions.sort("seats")}>
                           {ui.plans.col.seats}
                         </Button>
                       </TableHeadCell>
                     ) : ((view.sort.field === "seats") && (view.sort.dir === "desc")) ? (
                       <TableHeadCell scope="col" className="text-right" aria-sort="descending">
-                        <Button variant="ghost" size="sm" className="-mx-3 ml-auto" onClick={() => actions.sort("seats")}>
+                        <Button variant="ghost" size="sm" className="-mx-2 ml-auto px-2" onClick={() => actions.sort("seats")}>
                           {ui.plans.col.seats}
                         </Button>
                       </TableHeadCell>
                     ) : (
                       <TableHeadCell scope="col" className="text-right" aria-sort="none">
-                        <Button variant="ghost" size="sm" className="-mx-3 ml-auto" onClick={() => actions.sort("seats")}>
+                        <Button variant="ghost" size="sm" className="-mx-2 ml-auto px-2" onClick={() => actions.sort("seats")}>
                           {ui.plans.col.seats}
                         </Button>
                       </TableHeadCell>
                     )}
                     {((view.sort.field === "storage") && (view.sort.dir === "asc")) ? (
                       <TableHeadCell scope="col" className="text-right" aria-sort="ascending">
-                        <Button variant="ghost" size="sm" className="-mx-3 ml-auto" onClick={() => actions.sort("storage")}>
+                        <Button variant="ghost" size="sm" className="-mx-2 ml-auto px-2" onClick={() => actions.sort("storage")}>
                           {ui.plans.col.storage}
                         </Button>
                       </TableHeadCell>
                     ) : ((view.sort.field === "storage") && (view.sort.dir === "desc")) ? (
                       <TableHeadCell scope="col" className="text-right" aria-sort="descending">
-                        <Button variant="ghost" size="sm" className="-mx-3 ml-auto" onClick={() => actions.sort("storage")}>
+                        <Button variant="ghost" size="sm" className="-mx-2 ml-auto px-2" onClick={() => actions.sort("storage")}>
                           {ui.plans.col.storage}
                         </Button>
                       </TableHeadCell>
                     ) : (
                       <TableHeadCell scope="col" className="text-right" aria-sort="none">
-                        <Button variant="ghost" size="sm" className="-mx-3 ml-auto" onClick={() => actions.sort("storage")}>
+                        <Button variant="ghost" size="sm" className="-mx-2 ml-auto px-2" onClick={() => actions.sort("storage")}>
                           {ui.plans.col.storage}
                         </Button>
                       </TableHeadCell>

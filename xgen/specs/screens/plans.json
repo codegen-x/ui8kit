@@ -305,7 +305,7 @@
                                 "props": {
                                   "Variant": "ghost",
                                   "Size": "sm",
-                                  "Class": "-mx-3"
+                                  "Class": "-mx-2 px-2"
                                 },
                                 "on": {
                                   "click": {
@@ -367,7 +367,7 @@
                                     "props": {
                                       "Variant": "ghost",
                                       "Size": "sm",
-                                      "Class": "-mx-3"
+                                      "Class": "-mx-2 px-2"
                                     },
                                     "on": {
                                       "click": {
@@ -404,7 +404,7 @@
                                     "props": {
                                       "Variant": "ghost",
                                       "Size": "sm",
-                                      "Class": "-mx-3"
+                                      "Class": "-mx-2 px-2"
                                     },
                                     "on": {
                                       "click": {
@@ -468,7 +468,7 @@
                                 "props": {
                                   "Variant": "ghost",
                                   "Size": "sm",
-                                  "Class": "-mx-3 ml-auto"
+                                  "Class": "-mx-2 ml-auto px-2"
                                 },
                                 "on": {
                                   "click": {
@@ -530,7 +530,7 @@
                                     "props": {
                                       "Variant": "ghost",
                                       "Size": "sm",
-                                      "Class": "-mx-3 ml-auto"
+                                      "Class": "-mx-2 ml-auto px-2"
                                     },
                                     "on": {
                                       "click": {
@@ -567,7 +567,7 @@
                                     "props": {
                                       "Variant": "ghost",
                                       "Size": "sm",
-                                      "Class": "-mx-3 ml-auto"
+                                      "Class": "-mx-2 ml-auto px-2"
                                     },
                                     "on": {
                                       "click": {
@@ -631,7 +631,7 @@
                                 "props": {
                                   "Variant": "ghost",
                                   "Size": "sm",
-                                  "Class": "-mx-3 ml-auto"
+                                  "Class": "-mx-2 ml-auto px-2"
                                 },
                                 "on": {
                                   "click": {
@@ -693,7 +693,7 @@
                                     "props": {
                                       "Variant": "ghost",
                                       "Size": "sm",
-                                      "Class": "-mx-3 ml-auto"
+                                      "Class": "-mx-2 ml-auto px-2"
                                     },
                                     "on": {
                                       "click": {
@@ -730,7 +730,7 @@
                                     "props": {
                                       "Variant": "ghost",
                                       "Size": "sm",
-                                      "Class": "-mx-3 ml-auto"
+                                      "Class": "-mx-2 ml-auto px-2"
                                     },
                                     "on": {
                                       "click": {
@@ -794,7 +794,7 @@
                                 "props": {
                                   "Variant": "ghost",
                                   "Size": "sm",
-                                  "Class": "-mx-3 ml-auto"
+                                  "Class": "-mx-2 ml-auto px-2"
                                 },
                                 "on": {
                                   "click": {
@@ -856,7 +856,7 @@
                                     "props": {
                                       "Variant": "ghost",
                                       "Size": "sm",
-                                      "Class": "-mx-3 ml-auto"
+                                      "Class": "-mx-2 ml-auto px-2"
                                     },
                                     "on": {
                                       "click": {
@@ -893,7 +893,7 @@
                                     "props": {
                                       "Variant": "ghost",
                                       "Size": "sm",
-                                      "Class": "-mx-3 ml-auto"
+                                      "Class": "-mx-2 ml-auto px-2"
                                     },
                                     "on": {
                                       "click": {

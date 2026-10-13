@@ -68,7 +68,7 @@ export const part = (name: string): ViewNode => ({ part: name });
 /** a sortable column header: three static aria-sort branches (ascending, descending, none), because ARIA state is never computed */
 export function sortHeader(field: string, label: Value, align: "start" | "end" = "start"): ViewNode {
   const cls = align === "end" ? "text-right" : "";
-  const button = (): ViewNode => use("Button", { props: { Variant: "ghost", Size: "sm", Class: align === "end" ? "-mx-3 ml-auto" : "-mx-3" }, on: { click: call("actions.sort", field) } }, text(label));
+  const button = (): ViewNode => use("Button", { props: { Variant: "ghost", Size: "sm", Class: align === "end" ? "-mx-2 ml-auto px-2" : "-mx-2 px-2" }, on: { click: call("actions.sort", field) } }, text(label));
   const cell = (aria: string): ViewNode => use("TableHeadCell", { props: { Scope: "col", Class: cls }, attrs: { "aria-sort": aria } }, button());
   return when(and(eq(ref("view.sort.field"), field), eq(ref("view.sort.dir"), "asc")), [cell("ascending")],
     [when(and(eq(ref("view.sort.field"), field), eq(ref("view.sort.dir"), "desc")), [cell("descending")], [cell("none")])]);

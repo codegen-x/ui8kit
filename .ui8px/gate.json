@@ -1,10 +1,10 @@
 {
-  "max": 25,
+  "max": 0,
   "blocking": [
     "UI8PX001",
     "UI8PX003",
     "UI8PX005",
     "GRID"
   ],
-  "why": "ratchet of blocking ui8px hits over the class sets of xgen/specs; it only goes down. Every remaining hit is listed with its reason in plan/UI8KIT-2.0.md (ui8px section)."
+  "why": "hard gate: no blocking ui8px hit over the class sets of xgen/specs (8 px steps, 4 px steps only inside controls). Hairlines (gap-px, p-px) and the colour inset-ring-background/30 are allowed utilities, see plan/UI8KIT-2.0.md (ui8px section)."
 }

@@ -437,6 +437,11 @@
     "size-158",
     "size-160",
     "size-full",
-    "size-px"
+    "size-px",
+    "gap-px",
+    "p-px",
+    "inset-ring-background/30",
+    "inset-x-12",
+    "h-lh"
   ]
 }

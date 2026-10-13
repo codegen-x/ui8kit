@@ -233,7 +233,7 @@
                                               "props": {
                                                 "Name": "x",
                                                 "Size": 16,
-                                                "Class": "mt-1 shrink-0"
+                                                "Class": "h-lh shrink-0 text-sm"
                                               }
                                             }
                                           ]
@@ -354,7 +354,7 @@
                                               "props": {
                                                 "Name": "check",
                                                 "Size": 16,
-                                                "Class": "mt-1 shrink-0"
+                                                "Class": "h-lh shrink-0 text-sm"
                                               }
                                             }
                                           ]
@@ -458,7 +458,7 @@
                                       "props": {
                                         "Name": "x",
                                         "Size": 16,
-                                        "Class": "mt-1 shrink-0 text-muted-foreground"
+                                        "Class": "h-lh shrink-0 text-sm text-muted-foreground"
                                       }
                                     }
                                   ]
@@ -502,7 +502,7 @@
                                       "props": {
                                         "Name": "check",
                                         "Size": 16,
-                                        "Class": "mt-1 shrink-0 text-primary"
+                                        "Class": "h-lh shrink-0 text-sm text-primary"
                                       }
                                     }
                                   ]

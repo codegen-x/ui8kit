@@ -65,7 +65,7 @@
             {#each points as p (p.id)}
               <ListItem class="flex items-start gap-4" data-testid="item">
                 {#if ((icons as string) === "show")}
-                  <LucideIcon name="x" size={16} class="mt-1 shrink-0" />
+                  <LucideIcon name="x" size={16} class="h-lh shrink-0 text-sm" />
                 {/if}
                 <Text size="sm">
                   {p.before}
@@ -89,7 +89,7 @@
             {#each points as p (p.id)}
               <ListItem class="flex items-start gap-4" data-testid="item">
                 {#if ((icons as string) === "show")}
-                  <LucideIcon name="check" size={16} class="mt-1 shrink-0" />
+                  <LucideIcon name="check" size={16} class="h-lh shrink-0 text-sm" />
                 {/if}
                 <Text size="sm">
                   {p.after}
@@ -113,7 +113,7 @@
           </Text>
           <Group gap="2" align="start">
             {#if ((icons as string) === "show")}
-              <LucideIcon name="x" size={16} class="mt-1 shrink-0 text-muted-foreground" />
+              <LucideIcon name="x" size={16} class="h-lh shrink-0 text-sm text-muted-foreground" />
             {/if}
             <Text size="sm" class="text-muted-foreground">
               {p.before}
@@ -121,7 +121,7 @@
           </Group>
           <Group gap="2" align="start">
             {#if ((icons as string) === "show")}
-              <LucideIcon name="check" size={16} class="mt-1 shrink-0 text-primary" />
+              <LucideIcon name="check" size={16} class="h-lh shrink-0 text-sm text-primary" />
             {/if}
             <Text size="sm" weight="semibold">
               {p.after}

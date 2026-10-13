@@ -140,13 +140,13 @@ const beforeAfter = spec(`${O}before-after`, "BeforeAfter", "Two columns that se
             heading(ref(`labels.${side}`), "xl"),
             use("List", { props: { Class: "m-0 flex list-none flex-col gap-4 p-0" } },
               each(ref("points"), "p", ref("p.id"), use("ListItem", { props: { Class: "flex items-start gap-4" }, attrs: { "data-testid": "item" } },
-                when(eq(ref("icons"), "show"), [use("LucideIcon", { props: { Name: side === "after" ? "check" : "x", Size: 16, Class: "mt-1 shrink-0" } })]),
+                when(eq(ref("icons"), "show"), [use("LucideIcon", { props: { Name: side === "after" ? "check" : "x", Size: 16, Class: "h-lh shrink-0 text-sm" } })]),
                 use("Text", { props: { Size: "sm" } }, text(ref(`p.${side}`)))))))))) ],
       [use("Stack", { props: { Gap: "2", Align: "stretch" }, attrs: { "data-testid": "rows" } },
         each(ref("points"), "p", ref("p.id"), use("Grid", { props: { Cols: "1-3", Class: cn("items-center gap-4", surface("p-4")) }, attrs: { "data-testid": "item" } },
           strong(ref("p.title")),
-          use("Group", { props: { Gap: "2", Align: "start" } }, when(eq(ref("icons"), "show"), [use("LucideIcon", { props: { Name: "x", Size: 16, Class: "mt-1 shrink-0 text-muted-foreground" } })]), muted(ref("p.before"))),
-          use("Group", { props: { Gap: "2", Align: "start" } }, when(eq(ref("icons"), "show"), [use("LucideIcon", { props: { Name: "check", Size: 16, Class: "mt-1 shrink-0 text-primary" } })]), use("Text", { props: { Size: "sm", Weight: "semibold" } }, text(ref("p.after")))))))]),
+          use("Group", { props: { Gap: "2", Align: "start" } }, when(eq(ref("icons"), "show"), [use("LucideIcon", { props: { Name: "x", Size: 16, Class: "h-lh shrink-0 text-sm text-muted-foreground" } })]), muted(ref("p.before"))),
+          use("Group", { props: { Gap: "2", Align: "start" } }, when(eq(ref("icons"), "show"), [use("LucideIcon", { props: { Name: "check", Size: 16, Class: "h-lh shrink-0 text-sm text-primary" } })]), use("Text", { props: { Size: "sm", Weight: "semibold" } }, text(ref("p.after")))))))]),
   ])],
 });
 

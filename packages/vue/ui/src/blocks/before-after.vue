@@ -62,7 +62,7 @@ const {
           </Title>
           <List class="m-0 flex list-none flex-col gap-4 p-0">
             <ListItem v-for="p in points" :key="p.id" class="flex items-start gap-4" data-testid="item">
-              <LucideIcon v-if="((icons as string) === 'show')" name="x" :size="16" class="mt-1 shrink-0" />
+              <LucideIcon v-if="((icons as string) === 'show')" name="x" :size="16" class="h-lh shrink-0 text-sm" />
               <Text size="sm">
                 {{ p.before }}
               </Text>
@@ -82,7 +82,7 @@ const {
           </Title>
           <List class="m-0 flex list-none flex-col gap-4 p-0">
             <ListItem v-for="p in points" :key="p.id" class="flex items-start gap-4" data-testid="item">
-              <LucideIcon v-if="((icons as string) === 'show')" name="check" :size="16" class="mt-1 shrink-0" />
+              <LucideIcon v-if="((icons as string) === 'show')" name="check" :size="16" class="h-lh shrink-0 text-sm" />
               <Text size="sm">
                 {{ p.after }}
               </Text>
@@ -105,7 +105,7 @@ const {
             v-if="((icons as string) === 'show')"
             name="x"
             :size="16"
-            class="mt-1 shrink-0 text-muted-foreground"
+            class="h-lh shrink-0 text-sm text-muted-foreground"
           />
           <Text size="sm" class="text-muted-foreground">
             {{ p.before }}
@@ -116,7 +116,7 @@ const {
             v-if="((icons as string) === 'show')"
             name="check"
             :size="16"
-            class="mt-1 shrink-0 text-primary"
+            class="h-lh shrink-0 text-sm text-primary"
           />
           <Text size="sm" weight="semibold">
             {{ p.after }}

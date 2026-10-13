@@ -516,6 +516,16 @@ sizes and input adornments are controls, like `search-field` already was). The 2
 | 2 | feature cells `gap-px p-px` | 1 px hairline grid |
 | 1 | post-card `inset-x-12` | not spacing: the title inset over the cover |
 
+Ratchet 25 -> 0 (hard gate, `.ui8px/gate.json` max 0):
+
+- spec changes: before-after icons `mt-1` -> `h-lh text-sm` (the 16 px glyph centred on the 20 px
+  first text line: 2 px higher than before, the row height unchanged); timeline column
+  `w-3` -> `w-2` and dot `mt-1.5 size-2.5` -> `mt-2 size-2` (8 px dot, text 4 px to the left, dot 2 px lower); plans sort
+  headers `-mx-3` -> `-mx-2 px-2` (text still on the column edge, the hover fill 8 px narrower).
+- allowed utilities (not spacing): `gap-px p-px` (border hairlines of the feature cells), `inset-ring-background/30` (a
+  colour, question 2), `inset-x-12` (48 px, on the grid; ui8px has no grammar for `inset-x-<n>`), `h-lh` (one line
+  of the element's own line-height, not a spacing step).
+
 ### 8.6 Questions for the user
 
 1. Text and Title size keys are still pixel-named Tailwind steps (`12 14 16 20 24 36 48`). Rename them to t-shirt names

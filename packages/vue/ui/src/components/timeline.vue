@@ -40,9 +40,9 @@ const { items, class: className } = defineProps<TimelineProps>();
         class="relative flex min-w-0 gap-4 pb-4 last:pb-0"
         :data-event="item.id"
       >
-        <Box class="relative flex w-3 shrink-0 justify-center">
+        <Box class="relative flex w-2 shrink-0 justify-center">
           <Inline v-if="(i < ((items?.length ?? 0) - 1))" class="absolute top-4 -bottom-0 w-px bg-border" />
-          <Inline :class="cn('mt-1.5 size-2.5 rounded-full', at(TONE_DOT, (item.tone ?? 'gray')))" />
+          <Inline :class="cn('mt-2 size-2 rounded-full', at(TONE_DOT, (item.tone ?? 'gray')))" />
         </Box>
         <Box class="flex min-w-0 flex-1 flex-col gap-0">
           <Box class="flex flex-wrap items-baseline justify-between gap-x-4">

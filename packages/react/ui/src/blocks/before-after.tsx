@@ -60,7 +60,7 @@ export function BeforeAfter({
                 {(points ?? []).map((p) => (
                   <ListItem key={p.id} className="flex items-start gap-4" data-testid="item">
                     {((icons as string) === "show") ? (
-                      <LucideIcon name="x" size={16} className="mt-1 shrink-0" />
+                      <LucideIcon name="x" size={16} className="h-lh shrink-0 text-sm" />
                     ) : null}
                     <Text size="sm">
                       {p.before}
@@ -84,7 +84,7 @@ export function BeforeAfter({
                 {(points ?? []).map((p) => (
                   <ListItem key={p.id} className="flex items-start gap-4" data-testid="item">
                     {((icons as string) === "show") ? (
-                      <LucideIcon name="check" size={16} className="mt-1 shrink-0" />
+                      <LucideIcon name="check" size={16} className="h-lh shrink-0 text-sm" />
                     ) : null}
                     <Text size="sm">
                       {p.after}
@@ -108,7 +108,7 @@ export function BeforeAfter({
               </Text>
               <Group gap="2" align="start">
                 {((icons as string) === "show") ? (
-                  <LucideIcon name="x" size={16} className="mt-1 shrink-0 text-muted-foreground" />
+                  <LucideIcon name="x" size={16} className="h-lh shrink-0 text-sm text-muted-foreground" />
                 ) : null}
                 <Text size="sm" className="text-muted-foreground">
                   {p.before}
@@ -116,7 +116,7 @@ export function BeforeAfter({
               </Group>
               <Group gap="2" align="start">
                 {((icons as string) === "show") ? (
-                  <LucideIcon name="check" size={16} className="mt-1 shrink-0 text-primary" />
+                  <LucideIcon name="check" size={16} className="h-lh shrink-0 text-sm text-primary" />
                 ) : null}
                 <Text size="sm" weight="semibold">
                   {p.after}

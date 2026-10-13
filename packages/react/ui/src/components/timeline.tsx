@@ -32,11 +32,11 @@ export function Timeline({ items, className }: TimelineProps) {
       <List className="m-0 flex list-none flex-col p-0">
         {(items ?? []).map((item, i) => (
           <ListItem key={item.id} className="relative flex min-w-0 gap-4 pb-4 last:pb-0" data-event={item.id}>
-            <Box className="relative flex w-3 shrink-0 justify-center">
+            <Box className="relative flex w-2 shrink-0 justify-center">
               {(i < ((items?.length ?? 0) - 1)) ? (
                 <Inline className="absolute top-4 -bottom-0 w-px bg-border" />
               ) : null}
-              <Inline className={cn("mt-1.5 size-2.5 rounded-full", at(TONE_DOT, (item.tone ?? "gray")))} />
+              <Inline className={cn("mt-2 size-2 rounded-full", at(TONE_DOT, (item.tone ?? "gray")))} />
             </Box>
             <Box className="flex min-w-0 flex-1 flex-col gap-0">
               <Box className="flex flex-wrap items-baseline justify-between gap-x-4">
