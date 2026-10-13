@@ -22,6 +22,11 @@ export type IrNode =
   | { kind: "expr"; strings: string[]; line: number }
   /** control flow, fragments, slots: transparent for the root, its children are rendered in place */
   | { kind: "group"; line: number; children: IrNode[] }
+  /** mutually exclusive branches ({#if}/{:else}, a ternary or `&&`, early returns, v-if/v-else): `branches` holds each branch,
+   *  `children` all of them in source order (so a walk still sees every node); an absent branch is an empty list */
+  | { kind: "choice"; line: number; children: IrNode[]; branches: IrNode[][] }
+  /** markup repeated per item ({#each}, .map, v-for) */
+  | { kind: "loop"; line: number; children: IrNode[] }
   /** content rendered from a slot or a snippet: unknown markup, ends the search for a root */
   | { kind: "render"; line: number }
   /** markup that is declared but not rendered at its place (a snippet body, a render function): scanned, never a root */
@@ -75,3 +80,6 @@ export const staticAttr = (name: string, line: number, value?: string): IrAttr =
 export const exprAttr = (name: string, line: number, code: string): IrAttr => ({ name, line, static: LITERAL.test(code.trim()), strings: exprStrings(code) });
 /** an expression that is a constant: {false}, {"true"}, {2} */
 const LITERAL = /^(true|false|null|-?\d+(\.\d+)?|"[^"]*"|'[^']*'|`[^`$]*`)$/;
+
+/** exclusive branches as one node */
+export const choice = (line: number, branches: IrNode[][]): IrNode => ({ kind: "choice", line, branches, children: branches.flat() });

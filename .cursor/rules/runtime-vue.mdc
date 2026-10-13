@@ -29,6 +29,7 @@ packages whose `ui8kit.runtime` is `vue` (see `rules/zones.json`).
 | Two-way binding | `v-model` (also `_nonportable.json`) | one-way `:value` plus an event prop |
 | Literal text | `<Text>Save</Text>`, `label="Save"`, `{{ ok ? "Yes" : "No" }}` | `{{ ui.group.key }}`, `tpl(ui.group.key, { n })`, props |
 | Component root | first element of `<template>`, looking through `<template v-if>`/`v-for` wrappers | |
+| One Block per file (rule 01) | two root-level `Block` in the same branch; `Block` with or inside `v-for`; `Block` inside `Block` | each element of a `v-if` / `v-else-if` / `v-else` chain may be its own single `Block`; any other second `Block` goes to a separate file |
 
 Allowed structure: `<template>`, `v-if`/`v-else`/`v-for`, `<slot>`, `<Teleport>`,
 `<Transition>`, `<KeepAlive>`, `<Suspense>`.

@@ -35,7 +35,7 @@ export function* walk(nodes: IrNode[]): Generator<IrNode> {
 export function rootOf(nodes: IrNode[]): IrNode | undefined {
   for (const n of nodes) {
     if (n.kind === "detached") continue;
-    if (n.kind === "group") { const r = rootOf(n.children); if (r) return r; continue; }
+    if (n.kind === "group" || n.kind === "choice" || n.kind === "loop") { const r = rootOf(n.children); if (r) return r; continue; }
     return n;
   }
   return undefined;
@@ -45,6 +45,35 @@ const attrsOf = (n: IrNode): IrAttr[] => ("attrs" in n ? n.attrs : []);
 const textValue = (s: string): boolean => LETTER.test(s) && !/^[a-z0-9]+([.-][a-z0-9]+)*$/.test(s.trim());
 const where = (n: IrNode): string => ("name" in n ? `<${n.name}>` : n.kind);
 
+/**
+ * Block count of rule 01: the Blocks of one render path. Exclusive branches (choice) are alternatives, so a path takes the branch
+ * with the most Blocks; everything else (siblings, groups, detached markup such as a second component or a snippet) adds up.
+ * A Block inside a loop or inside another Block is reported on its own and not counted on the path.
+ */
+function blockCount(nodes: IrNode[]): Finding[] {
+  const out: Finding[] = [];
+  const path = (list: IrNode[], inLoop: boolean, inBlock: boolean): IrNode[] => {
+    const acc: IrNode[] = [];
+    for (const n of list) {
+      if (n.kind === "component" && n.name === BLOCK) {
+        if (inBlock) out.push({ detector: "block-root", line: n.line, message: "Block nested inside Block" });
+        else if (inLoop) out.push({ detector: "block-root", line: n.line, message: "Block inside a loop renders one Block per item; extract the item into its own file" });
+        else acc.push(n);
+        path(n.children, inLoop, true);
+      } else if (n.kind === "choice") {
+        let best: IrNode[] = [];
+        for (const b of n.branches) { const x = path(b, inLoop, inBlock); if (x.length > best.length) best = x; }
+        acc.push(...best);
+      } else if (n.kind === "loop") path(n.children, true, inBlock);
+      else if ("children" in n) acc.push(...path(n.children, inLoop, inBlock));
+    }
+    return acc;
+  };
+  const top = path(nodes, false, false);
+  if (top.length > 1) out.unshift({ detector: "block-root", line: top[1]!.line, message: `${top.length} Block in one render path (exclusive if/else branches may each have one); extract the second into its own file` });
+  return out;
+}
+
 export function detect(file: IrFile, ctx: FileContext): Finding[] {
   const out: Finding[] = [];
   const all = [...walk(file.nodes)];
@@ -53,9 +82,7 @@ export function detect(file: IrFile, ctx: FileContext): Finding[] {
   const blockLike = (n: IrNode | undefined): boolean => !!n && n.kind === "component" && (n.name === BLOCK || ctx.rootsOnBlock(n.name) === true);
   if (ctx.blockRoot && root && !blockLike(root)) out.push({ detector: "block-root", line: root.line, message: `root is ${where(root)}, not Block` });
   if (!ctx.blockRoot && root && blockLike(root)) out.push({ detector: "block-root", line: root.line, message: `a composite component opens on ${where(root)}: a landmark root belongs to blocks and screens` });
-  const blocks = all.filter((n) => n.kind === "component" && n.name === BLOCK);
-  if (blocks.length > 1) out.push({ detector: "block-root", line: blocks[1]!.line, message: `${blocks.length} Block in one file` });
-  for (const b of blocks) if ("children" in b) for (const x of walk(b.children)) if (x.kind === "component" && x.name === BLOCK) out.push({ detector: "block-root", line: x.line, message: "Block nested inside Block" });
+  out.push(...blockCount(file.nodes));
   for (const n of all) {
     if (n.kind === "raw-html") out.push({ detector: "raw-html", line: n.line, message: `raw HTML injection (${n.name})` });
     if (n.kind === "dynamic") out.push({ detector: "dynamic-tag", line: n.line, message: `dynamic tag ${n.name}` });

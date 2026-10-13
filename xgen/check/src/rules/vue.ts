@@ -1,7 +1,7 @@
 // Vue 3 SFC adapter of the `rules` group: @vue/compiler-sfc (the untransformed template AST) -> the common tree.
 import { parse } from "@vue/compiler-sfc";
 import ts from "typescript";
-import { exprAttr, exprStrings, lineOf, staticAttr, type IrAttr, type IrFile, type IrNode } from "./ir";
+import { choice, exprAttr, exprStrings, lineOf, staticAttr, type IrAttr, type IrFile, type IrNode } from "./ir";
 
 // NodeTypes and ElementTypes of @vue/compiler-core
 const ELEMENT = 1, TEXT = 2, INTERPOLATION = 5, ATTRIBUTE = 6, DIRECTIVE = 7;
@@ -40,12 +40,28 @@ export function vueToIr(src: string): IrFile {
     return [];
   });
   const dir = (n: VNode, name: string): VProp | undefined => (n.props ?? []).find((p) => p.type === DIRECTIVE && p.name === name);
+  /** a list of siblings: a v-if / v-else-if / v-else chain becomes one choice, v-for a loop */
+  function list(nodes: VNode[]): IrNode[] {
+    const out: IrNode[] = [];
+    let chain: IrNode[][] | undefined, at = 0;
+    const close = (): void => { if (chain) { out.push(choice(at, chain.length === 1 ? [...chain, []] : chain)); chain = undefined; } };
+    for (const n of nodes) {
+      if (n.type === 3 || (n.type === TEXT && !String(n.content).trim())) continue; // comments and blank text do not break a chain
+      const one = (): IrNode[] => (n.type === ELEMENT && dir(n, "for") ? [{ kind: "loop", line: n.loc.start.line, children: conv(n) }] : conv(n));
+      if (n.type === ELEMENT && dir(n, "if")) { close(); chain = [one()]; at = n.loc.start.line; continue; }
+      if (n.type === ELEMENT && chain && (dir(n, "else-if") || dir(n, "else"))) { chain.push(one()); if (dir(n, "else")) close(); continue; }
+      close();
+      out.push(...one());
+    }
+    close();
+    return out;
+  }
   function conv(n: VNode): IrNode[] {
     const line = n.loc.start.line;
     if (n.type === TEXT) return String(n.content).trim() ? [{ kind: "text", text: String(n.content), line }] : [];
     if (n.type === INTERPOLATION) return [{ kind: "expr", strings: exprStrings((n.content as { content: string }).content), line }];
     if (n.type !== ELEMENT) return [];
-    const kids = (n.children ?? []).flatMap(conv);
+    const kids = list(n.children ?? []);
     const raw: IrNode[] = dir(n, "html") ? [{ kind: "raw-html", name: "v-html", line }] : [];
     if (n.tagType === TAG_TEMPLATE || n.tagType === TAG_SLOT || BUILTIN.has(n.tag!)) {
       const slotted = n.tagType === TAG_SLOT ? [{ kind: "render" as const, line }] : [];
@@ -55,5 +71,5 @@ export function vueToIr(src: string): IrFile {
     if (n.tagType === TAG_ELEMENT) return [{ kind: "element", name: n.tag!, line, attrs: attrs(n), children: [...raw, ...kids] }];
     return [{ kind: "component", name: n.tag!, line, attrs: attrs(n), children: [...raw, ...kids] }];
   }
-  return { runtime: "vue", nodes: [...(tpl?.children ?? []).flatMap(conv), ...nodes], imports };
+  return { runtime: "vue", nodes: [...list(tpl?.children ?? []), ...nodes], imports };
 }

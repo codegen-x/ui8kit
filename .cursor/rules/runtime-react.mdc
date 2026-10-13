@@ -29,6 +29,7 @@ packages whose `ui8kit.runtime` is `react` (see `rules/zones.json`).
 | Two-way binding | none in React (one-way `value` plus `onChange`) | |
 | Literal text | `<Text>Save</Text>`, `label="Save"`, `{ok ? "Yes" : "No"}` | `{ui.group.key}`, `tpl(ui.group.key, { n })`, props |
 | Component root | the first JSX element of the returned tree, looking through fragments, `&&`, `? :` and `.map()` | |
+| One Block per file (rule 01) | two root-level `Block` in the same render path (siblings, a `Block` after `{a && ...}`); `Block` inside `.map` / `Array.from`; `Block` inside `Block` | each alternative of a ternary, `&&` / `\|\|` / `??` and each early return of the same component may hold its own single `Block`; any other second `Block` goes to a separate file |
 
 Allowed structure: `<>...</>`, `Fragment`, conditionals, `.map()`.
 `createContext` / `useContext` are non-portable (`_nonportable.json`).

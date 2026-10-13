@@ -1,7 +1,7 @@
 // React (TSX) adapter of the `rules` group: the TypeScript parser -> the common tree.
 // The rendered top level is the returned JSX of the first exported PascalCase function; every other JSX of the file is scanned as detached markup.
 import ts from "typescript";
-import { lineOf, resultStringsOf, type IrAttr, type IrFile, type IrNode } from "./ir";
+import { choice, lineOf, resultStringsOf, type IrAttr, type IrFile, type IrNode } from "./ir";
 
 export function reactToIr(src: string): IrFile {
   const sf = ts.createSourceFile("x.tsx", src, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
@@ -57,6 +57,19 @@ export function reactToIr(src: string): IrFile {
       if (a && ts.isIdentifier(a) && /^[A-Z]/.test(a.text) && !valueVars.has(a.text)) return [{ kind: "component", name: a.text, line: line(e), attrs: [], children: kids }];
       return [{ kind: "dynamic", name: a ? a.getText(sf) : "?", line: line(e), attrs: [], children: kids }];
     }
+    // exclusive alternatives: a ? x : y, a && x, a || x, a ?? x
+    const alt = (branches: IrNode[][]): IrNode[] => (branches.some((b) => b.length) ? [choice(line(e), branches)] : []);
+    if (ts.isConditionalExpression(e)) return [...fromExpr(e.condition), ...alt([fromExpr(e.whenTrue), fromExpr(e.whenFalse)])];
+    if (ts.isBinaryExpression(e)) {
+      const k = e.operatorToken.kind;
+      if (k === ts.SyntaxKind.AmpersandAmpersandToken) return [...fromExpr(e.left), ...alt([fromExpr(e.right), []])];
+      if (k === ts.SyntaxKind.BarBarToken || k === ts.SyntaxKind.QuestionQuestionToken) return alt([fromExpr(e.left), fromExpr(e.right)]);
+    }
+    // markup per item: xs.map(...), xs.flatMap(...), Array.from(xs, ...)
+    if (ts.isCallExpression(e) && /(\.(map|flatMap)|^Array\.from)$/.test(e.expression.getText(sf))) {
+      const inner = [...fromExpr(e.expression), ...e.arguments.flatMap(fromExpr)];
+      return inner.length ? [{ kind: "loop", line: line(e), children: inner }] : [];
+    }
     const out: IrNode[] = [];
     ts.forEachChild(e, (c) => { out.push(...fromExpr(c)); });
     return out;
@@ -96,8 +109,9 @@ export function reactToIr(src: string): IrFile {
     const ret: ts.Node[] = [];
     if (!ts.isBlock(body)) ret.push(body);
     else (function find(n: ts.Node): void { if (ts.isReturnStatement(n) && n.expression) ret.push(n.expression); if (ts.isFunctionLike(n)) return; ts.forEachChild(n, find); })(body);
-    const last = ret[ret.length - 1];
-    if (last) { rootNodes = fromExpr(last); break; }
+    // several returns of the same component (early returns) are exclusive alternatives; the final return stays the root, as before
+    if (ret.length === 1) { rootNodes = fromExpr(ret[0]!); break; }
+    if (ret.length > 1) { const bs = [ret[ret.length - 1]!, ...ret.slice(0, -1)].map(fromExpr); rootNodes = bs.some((b) => b.length) ? [choice(line(ret[0]!), bs)] : []; break; }
   }
   // the rest of the JSX in the file
   const detached: IrNode[] = [];

@@ -107,18 +107,28 @@ export function writeBaselines(repo: string): string[] {
   });
 }
 
-/** every detector on one violating and one clean fixture per runtime */
+/** named cases of a detector: rules/fixtures/<runtime>/<detector>.<case>.<ok|bad>.<ext>; a violating case must report this message, and only it */
+export const FIXTURE_CASES: Partial<Record<Detector, Record<string, string>>> = {
+  "block-root": { branches: "", siblings: "Block in one render path", nested: "Block nested inside Block", loop: "Block inside a loop" },
+};
+
+/** every detector on one violating and one clean fixture per runtime, plus the named cases of FIXTURE_CASES */
 export function selfTest(repo: string): string[] {
   const problems: string[] = [];
-  for (const rt of ["svelte", "react", "vue"] as Runtime[]) for (const d of DETECTORS) for (const kind of ["bad", "ok"] as const) {
-    const rel = `rules/fixtures/${rt}/${d}.${kind}${EXT[rt]}`;
-    const abs = join(repo, rel);
-    if (!existsSync(abs)) { problems.push(`${rel}: missing self-test fixture`); continue; }
-    const ir = toIr(rt, readFileSync(abs, "utf8"));
-    if (ir.error) { problems.push(`${rel}: parse error ${ir.error}`); continue; }
-    const n = detect(ir, { blockRoot: true, rootsOnBlock: () => undefined }).filter((f) => f.detector === d).length;
-    if (kind === "bad" && n === 0) problems.push(`${rel}: detector ${d} found nothing in its violating fixture`);
-    if (kind === "ok" && n > 0) problems.push(`${rel}: detector ${d} reports ${n} in its clean fixture`);
+  for (const rt of ["svelte", "react", "vue"] as Runtime[]) for (const d of DETECTORS) {
+    const named = Object.entries(FIXTURE_CASES[d] ?? {});
+    const files: [string, "ok" | "bad", string | undefined][] = [[`${d}.bad`, "bad", undefined], [`${d}.ok`, "ok", undefined], ...named.map(([c, msg]): [string, "ok" | "bad", string] => [`${d}.${c}.${msg ? "bad" : "ok"}`, msg ? "bad" : "ok", msg])];
+    for (const [name, kind, msg] of files) {
+      const rel = `rules/fixtures/${rt}/${name}${EXT[rt]}`;
+      const abs = join(repo, rel);
+      if (!existsSync(abs)) { problems.push(`${rel}: missing self-test fixture`); continue; }
+      const ir = toIr(rt, readFileSync(abs, "utf8"));
+      if (ir.error) { problems.push(`${rel}: parse error ${ir.error}`); continue; }
+      const found = detect(ir, { blockRoot: true, rootsOnBlock: () => undefined }).filter((f) => f.detector === d);
+      if (kind === "bad" && found.length === 0) problems.push(`${rel}: detector ${d} found nothing in its violating fixture`);
+      if (kind === "bad" && msg && !found.every((f) => f.message.includes(msg))) problems.push(`${rel}: expected only "${msg}", got ${found.map((f) => JSON.stringify(f.message)).join(", ")}`);
+      if (kind === "ok" && found.length > 0) problems.push(`${rel}: detector ${d} reports ${found.length} in its clean fixture: ${found.map((f) => f.message).join("; ")}`);
+    }
   }
   return problems;
 }

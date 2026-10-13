@@ -1,6 +1,6 @@
 // Svelte 5 adapter of the `rules` group: svelte/compiler (modern AST) -> the common tree.
 import { parse } from "svelte/compiler";
-import { exprAttr, lineOf, staticAttr, type IrAttr, type IrFile, type IrNode } from "./ir";
+import { choice, exprAttr, lineOf, staticAttr, type IrAttr, type IrFile, type IrNode } from "./ir";
 
 type AnyNode = { type: string; start: number; end: number; name?: string; data?: string; [k: string]: unknown };
 type Frag = { nodes: AnyNode[] } | null | undefined;
@@ -42,9 +42,9 @@ export function svelteToIr(src: string): IrFile {
       case "Component": case "SvelteSelf": return [{ kind: "component", name: n.name!, line: line(n), attrs: attrs(n), children: frag(n.fragment as Frag) }];
       case "SvelteElement": case "SvelteComponent": return [{ kind: "dynamic", name: n.name!, line: line(n), attrs: attrs(n), children: frag(n.fragment as Frag) }];
       case "SnippetBlock": return [{ kind: "detached", line: line(n), children: frag(n.body as Frag) }];
-      case "IfBlock": return [{ kind: "group", line: line(n), children: [...frag(n.consequent as Frag), ...frag(n.alternate as Frag)] }];
-      case "EachBlock": return [{ kind: "group", line: line(n), children: [...frag(n.body as Frag), ...frag(n.fallback as Frag)] }];
-      case "AwaitBlock": return [{ kind: "group", line: line(n), children: [...frag(n.pending as Frag), ...frag(n.then as Frag), ...frag(n.catch as Frag)] }];
+      case "IfBlock": return [choice(line(n), [frag(n.consequent as Frag), frag(n.alternate as Frag)])];
+      case "EachBlock": return [choice(line(n), [[{ kind: "loop", line: line(n), children: frag(n.body as Frag) }], frag(n.fallback as Frag)])];
+      case "AwaitBlock": return [choice(line(n), [frag(n.pending as Frag), frag(n.then as Frag), frag(n.catch as Frag)])];
       default: return [{ kind: "group", line: line(n), children: frag(n.fragment as Frag) }];
     }
   }
