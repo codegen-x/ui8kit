@@ -3,11 +3,11 @@
   "format": 1,
   "version": "0.1.0",
   "id": "magazine-reference-v0.1",
-  "language": "ru",
+  "language": "en",
   "created": "2026-10-12",
   "status": "source-reviewed",
   "sourceRevision": "8efbb7e81376eb7704a43288bca63212bc2b97cd",
-  "purpose": "Редакционный набор для различения концептов, контролируемых вариантов и объяснимых связей. Основа будущего UX benchmark.",
+  "purpose": "An editorial set for telling apart concepts, controlled variants and explainable relations. The basis for a future UX benchmark.",
   "scope": {
     "targetConceptCount": 12,
     "authoredScreenCount": 146,
@@ -28,11 +28,11 @@
     "accountRequired": false,
     "pricing": "free",
     "limitations": [
-      "Сняты 96 реальных кадров; визуальный review завершён с замечаниями. Полная проверка доступности и человеческие исследования ещё не завершены.",
-      "Паспорта опираются на исходники; характер и пригодность — редакционные гипотезы.",
-      "Схемы масс не заменяют отрендеренные превью.",
-      "Связи — редакционные гипотезы; визуальный review охватывает 12 концептов, а не весь корпус.",
-      "Фикстура из десяти стилей проверяет вход; она не описывает реальный вкус участника."
+      "96 real frames captured; visual review completed with findings. Full accessibility checks and human studies are not finished yet.",
+      "Passports rest on the sources; character and fitness are editorial hypotheses.",
+      "Mass schematics do not replace rendered previews.",
+      "Relations are editorial hypotheses; the visual review covers 12 concepts, not the whole corpus.",
+      "The ten-style fixture tests the entry; it does not describe a participant's real taste."
     ]
   },
   "provenance": [
@@ -86,11 +86,11 @@
       "radius"
     ],
     "definitions": {
-      "concept": "Самостоятельное выразительное намерение и организация содержания; различимость требует редакционного и визуального подтверждения.",
-      "variant": "Другой skin/fonts/radius на том же source screen.",
-      "layoutFamily": "Существующая классификация COMPOSITIONS, отдельная от композиции контента.",
-      "mediaRole": "Роль процедурного изображения; не следует автоматически переносить его мотив в layout.",
-      "relation": "Объяснимая редакционная связь с ограничениями и изменёнными признаками."
+      "concept": "A distinct expressive intent and content organization; distinctness needs editorial and visual confirmation.",
+      "variant": "A different skin/fonts/radius on the same source screen.",
+      "layoutFamily": "The existing COMPOSITIONS classification, separate from the content composition.",
+      "mediaRole": "The role of the procedural image; its motif should not be carried into the layout automatically.",
+      "relation": "An explainable editorial relation with limits and changed traits."
     }
   },
   "families": [
@@ -170,7 +170,7 @@
   "concepts": [
     {
       "id": "ref-c01",
-      "title": "Типографический манифест",
+      "title": "Typographic manifesto",
       "layoutFamily": "poster",
       "status": "source-reviewed",
       "source": {
@@ -199,29 +199,29 @@
         }
       },
       "artDirection": {
-        "intent": "Выразить одно сильное обещание через масштаб текста и центральную доминанту.",
-        "task": "Быстро понять главный тезис и перейти к одному основному действию.",
-        "focus": "Крупный центральный заголовок."
+        "intent": "Express one strong promise through text scale and a central focal point.",
+        "task": "Quickly grasp the main claim and move to a single primary action.",
+        "focus": "A large central headline."
       },
       "composition": {
         "contentPattern": "focal-mass",
-        "rationale": "Центральный Stack: badge, заголовок text-8xl, lead и две кнопки. Mesh занимает фон, не определяя порядок чтения.",
-        "mediaRole": "Атмосферное mesh-поле за контентом; фон можно менять без перестройки центральной оси.",
-        "differenceFromLegacy": "Основной тег совпадает с исходной разметкой; mesh оставлен в слое медиа."
+        "rationale": "Central Stack: badge, text-8xl headline, lead and two buttons. The mesh fills the background without setting the reading order.",
+        "mediaRole": "An atmospheric mesh field behind the content; the background can change without rebuilding the central axis.",
+        "differenceFromLegacy": "The primary tag matches the source markup; the mesh stays in the media layer."
       },
       "invariants": [
-        "Центральная ось и порядок badge → title → lead → actions",
-        "Большой масштаб заголовка относительно пояснения",
-        "Главное действие и второстепенная ссылка различимы"
+        "Central axis and the order badge → title → lead → actions",
+        "Large headline scale relative to the explanation",
+        "The primary action and the secondary link are distinguishable"
       ],
       "risks": [
-        "Длинный заголовок может занять большую часть кадра",
-        "Фон обязан сохранять контраст текста",
-        "Форма радиуса мало влияет на общую структуру"
+        "A long headline can take up most of the frame",
+        "The background must keep text contrast",
+        "Radius shape has little effect on the overall structure"
       ],
       "distinction": {
         "against": "ref-c04",
-        "reason": "Оба централизованы, но здесь крупный тезис, пояснение и пара действий; в ref-c04 намеренно малый заголовок и одно действие."
+        "reason": "Both are centered, but here there is a large claim, an explanation and a pair of actions; ref-c04 deliberately uses a small headline and one action."
       },
       "variants": [
         {
@@ -237,7 +237,7 @@
             "radius": 12,
             "key": "t001-poster-mesh|modern-minimal|montserrat+inter|12"
           },
-          "expectation": "Изменяется палитра; структура, media recipe, шрифты и радиус сохраняются.",
+          "expectation": "The palette changes; structure, media recipe, fonts and radius are kept.",
           "status": "captured"
         },
         {
@@ -253,7 +253,7 @@
             "radius": 12,
             "key": "t001-poster-mesh|cosmic-night|inter+inter|12"
           },
-          "expectation": "Изменяется только ось fonts; структура, media recipe, skin и radius сохраняются. Переносы текста могут измениться.",
+          "expectation": "Only the fonts axis changes; structure, media recipe, skin and radius are kept. Text wrapping may change.",
           "status": "captured"
         },
         {
@@ -269,7 +269,7 @@
             "radius": 8,
             "key": "t001-poster-mesh|cosmic-night|montserrat+inter|8"
           },
-          "expectation": "Изменяется только radius; эффект зависит от использования rounded в компонентах.",
+          "expectation": "Only the radius changes; the effect depends on how components use rounded.",
           "status": "captured"
         }
       ],
@@ -277,12 +277,12 @@
         {
           "id": "classic",
           "status": "planned",
-          "preserves": "Проверять применимость токенов; generic template не гарантирует сохранение композиции исходного screen."
+          "preserves": "Check token applicability; a generic template does not guarantee the source screen's composition is kept."
         },
         {
           "id": "saas",
           "status": "planned",
-          "preserves": "Проверять применимость токенов; generic template не гарантирует сохранение композиции исходного screen."
+          "preserves": "Check token applicability; a generic template does not guarantee the source screen's composition is kept."
         }
       ],
       "review": {
@@ -296,7 +296,7 @@
           320,
           240
         ],
-        "description": "Условная схема масс по исходному компоненту; не скриншот и не измеренный layout.",
+        "description": "A schematic of masses based on the source component; not a screenshot and not a measured layout.",
         "elements": [
           [
             12,
@@ -345,7 +345,7 @@
     },
     {
       "id": "ref-c02",
-      "title": "Диалог двух колонок",
+      "title": "Two-column dialogue",
       "layoutFamily": "split",
       "status": "source-reviewed",
       "source": {
@@ -376,29 +376,29 @@
         }
       },
       "artDirection": {
-        "intent": "Сопоставить объяснение и выразительный образ в двух равных частях.",
-        "task": "Прочитать предложение, рассмотреть образ и оценить краткие подтверждения.",
-        "focus": "Связь крупного заголовка слева с высоким медиа справа."
+        "intent": "Pair an explanation with an expressive image in two equal parts.",
+        "task": "Read the offer, look at the image and weigh the short proof points.",
+        "focus": "A large headline on the left tied to tall media on the right."
       },
       "composition": {
         "contentPattern": "asymmetric-balance",
-        "rationale": "Grid cols=2: слева title, lead, две кнопки и stats; справа высокий glass-panel. Нижняя строка stats находится внутри текстовой колонки.",
-        "mediaRole": "Glass-панель с перекрывающимися прямоугольниками и glow; это композиция внутри изображения.",
-        "differenceFromLegacy": "Исходный L-arrangement имеет weak=true. Здесь основной принцип — баланс двух частей; исходный тег сохраняется отдельно."
+        "rationale": "Grid cols=2: title, lead, two buttons and stats on the left; a tall glass-panel on the right. The bottom stats row sits inside the text column.",
+        "mediaRole": "A glass panel with overlapping rectangles and glow; this is composition inside the image.",
+        "differenceFromLegacy": "The source L-arrangement has weak=true. Here the main principle is the balance of two parts; the source tag is kept separately."
       },
       "invariants": [
-        "Две крупные колонки с независимыми ролями",
-        "Stats после действий в текстовой колонке",
-        "Медиа остаётся отдельным, а не фоном текста"
+        "Two large columns with independent roles",
+        "Stats after the actions in the text column",
+        "Media stays separate, not a text background"
       ],
       "risks": [
-        "Структура требует переосмысления на узком экране",
-        "Ширина и высота медиа влияют на равновесие",
-        "Декоративный glass не объясняет полезность продукта"
+        "The structure needs rethinking on a narrow screen",
+        "Media width and height affect the balance",
+        "Decorative glass does not explain the product's value"
       ],
       "distinction": {
         "against": "ref-c12",
-        "reason": "Ref-c02 использует плотные две колонки и stats; ref-c12 связывает малые массы через свободное поле и диагональ."
+        "reason": "Ref-c02 uses dense two columns and stats; ref-c12 links small masses through open space and a diagonal."
       },
       "variants": [
         {
@@ -414,7 +414,7 @@
             "radius": 16,
             "key": "t002-split-glass|modern-minimal|manrope+manrope|16"
           },
-          "expectation": "Изменяется палитра; структура, media recipe, шрифты и радиус сохраняются.",
+          "expectation": "The palette changes; structure, media recipe, fonts and radius are kept.",
           "status": "captured"
         },
         {
@@ -430,7 +430,7 @@
             "radius": 16,
             "key": "t002-split-glass|violet-bloom|inter+inter|16"
           },
-          "expectation": "Изменяется только ось fonts; структура, media recipe, skin и radius сохраняются. Переносы текста могут измениться.",
+          "expectation": "Only the fonts axis changes; structure, media recipe, skin and radius are kept. Text wrapping may change.",
           "status": "captured"
         },
         {
@@ -446,7 +446,7 @@
             "radius": 8,
             "key": "t002-split-glass|violet-bloom|manrope+manrope|8"
           },
-          "expectation": "Изменяется только radius; эффект зависит от использования rounded в компонентах.",
+          "expectation": "Only the radius changes; the effect depends on how components use rounded.",
           "status": "captured"
         }
       ],
@@ -454,12 +454,12 @@
         {
           "id": "saas",
           "status": "planned",
-          "preserves": "Проверять применимость токенов; generic template не гарантирует сохранение композиции исходного screen."
+          "preserves": "Check token applicability; a generic template does not guarantee the source screen's composition is kept."
         },
         {
           "id": "classic",
           "status": "planned",
-          "preserves": "Проверять применимость токенов; generic template не гарантирует сохранение композиции исходного screen."
+          "preserves": "Check token applicability; a generic template does not guarantee the source screen's composition is kept."
         }
       ],
       "review": {
@@ -473,7 +473,7 @@
           320,
           240
         ],
-        "description": "Условная схема масс по исходному компоненту; не скриншот и не измеренный layout.",
+        "description": "A schematic of masses based on the source component; not a screenshot and not a measured layout.",
         "elements": [
           [
             12,
@@ -529,7 +529,7 @@
     },
     {
       "id": "ref-c03",
-      "title": "Плакат во всю ширину",
+      "title": "Full-width poster",
       "layoutFamily": "full-bleed",
       "status": "source-reviewed",
       "source": {
@@ -558,29 +558,29 @@
         }
       },
       "artDirection": {
-        "intent": "Создать плакатный характер через широкий медиа-пояс и предельно крупную строку.",
-        "task": "Считать выразительный тезис, затем пояснение и действие у нижнего края.",
-        "focus": "Заголовок большого масштаба под широким зернистым полем."
+        "intent": "Create a poster feel through a wide media band and an extremely large line.",
+        "task": "Take in the expressive claim, then the explanation and the action at the bottom edge.",
+        "focus": "A large-scale headline under a wide grainy field."
       },
       "composition": {
         "contentPattern": "edge-anchored",
-        "rationale": "Grain-band h-80 над заголовком text-[168px]; под ним lead слева и CTA справа. Массы выстроены горизонтальными слоями.",
-        "mediaRole": "Grain — самостоятельный горизонтальный пояс; он не является full-screen фоном.",
-        "differenceFromLegacy": "Исходный L-arrangement сохранён как legacy; уточнённый принцип описывает верхнюю полосу и нижнюю опору."
+        "rationale": "Grain-band h-80 above a text-[168px] headline; below it, the lead on the left and the CTA on the right. Masses are stacked in horizontal layers.",
+        "mediaRole": "Grain is a standalone horizontal band; it is not a full-screen background.",
+        "differenceFromLegacy": "The source L-arrangement is kept as legacy; the refined principle describes a top band and a bottom base."
       },
       "invariants": [
-        "Широкое медиа над типографикой",
-        "Плакатный масштаб title",
-        "Нижняя связка lead и CTA по противоположным краям"
+        "Wide media above the typography",
+        "Poster-scale title",
+        "A bottom pairing of lead and CTA on opposite edges"
       ],
       "risks": [
-        "Длинный текст меняет плакатное равновесие",
-        "Громкая типографика подходит не каждой задаче",
-        "Название full-bleed не означает фон на весь экран в этом компоненте"
+        "Long text changes the poster balance",
+        "Loud typography does not suit every task",
+        "The name full-bleed does not mean a full-screen background in this component"
       ],
       "distinction": {
         "against": "ref-c07",
-        "reason": "Здесь последовательные горизонтальные пояса; ref-c07 организован в три редакционные колонки с отдельным списком."
+        "reason": "Here the horizontal bands are sequential; ref-c07 is organized into three editorial columns with a separate list."
       },
       "variants": [
         {
@@ -596,7 +596,7 @@
             "radius": 0,
             "key": "t003-fullbleed-grain|modern-minimal|rubik+rubik|0"
           },
-          "expectation": "Изменяется палитра; структура, media recipe, шрифты и радиус сохраняются.",
+          "expectation": "The palette changes; structure, media recipe, fonts and radius are kept.",
           "status": "captured"
         },
         {
@@ -612,7 +612,7 @@
             "radius": 0,
             "key": "t003-fullbleed-grain|neo-brutalism|inter+inter|0"
           },
-          "expectation": "Изменяется только ось fonts; структура, media recipe, skin и radius сохраняются. Переносы текста могут измениться.",
+          "expectation": "Only the fonts axis changes; structure, media recipe, skin and radius are kept. Text wrapping may change.",
           "status": "captured"
         },
         {
@@ -628,7 +628,7 @@
             "radius": 8,
             "key": "t003-fullbleed-grain|neo-brutalism|rubik+rubik|8"
           },
-          "expectation": "Изменяется только radius; эффект зависит от использования rounded в компонентах.",
+          "expectation": "Only the radius changes; the effect depends on how components use rounded.",
           "status": "captured"
         }
       ],
@@ -636,12 +636,12 @@
         {
           "id": "portfolio",
           "status": "planned",
-          "preserves": "Проверять применимость токенов; generic template не гарантирует сохранение композиции исходного screen."
+          "preserves": "Check token applicability; a generic template does not guarantee the source screen's composition is kept."
         },
         {
           "id": "classic",
           "status": "planned",
-          "preserves": "Проверять применимость токенов; generic template не гарантирует сохранение композиции исходного screen."
+          "preserves": "Check token applicability; a generic template does not guarantee the source screen's composition is kept."
         }
       ],
       "review": {
@@ -655,7 +655,7 @@
           320,
           240
         ],
-        "description": "Условная схема масс по исходному компоненту; не скриншот и не измеренный layout.",
+        "description": "A schematic of masses based on the source component; not a screenshot and not a measured layout.",
         "elements": [
           [
             12,
@@ -697,7 +697,7 @@
     },
     {
       "id": "ref-c04",
-      "title": "Тихий центр",
+      "title": "Quiet center",
       "layoutFamily": "airy",
       "status": "source-reviewed",
       "source": {
@@ -727,29 +727,29 @@
         }
       },
       "artDirection": {
-        "intent": "Снизить визуальное давление: небольшое сообщение и одно действие внутри большого свободного поля.",
-        "task": "Быстро понять короткий тезис и выбрать единственный следующий шаг.",
-        "focus": "Небольшой центральный заголовок и единственное действие."
+        "intent": "Lower the visual pressure: a small message and one action inside a large open field.",
+        "task": "Quickly grasp a short claim and pick the single next step.",
+        "focus": "A small central headline and a single action."
       },
       "composition": {
         "contentPattern": "focal-mass",
-        "rationale": "Центральный Stack с eyebrow, title text-5xl и outline-кнопкой. Нет lead и второй основной кнопки.",
-        "mediaRole": "Dots заполняет фон; угловой мотив не переносится в тег композиции содержания.",
-        "differenceFromLegacy": "Исходный secondary=diagonal относится к угловому dots-полю. В композиции содержания фиксируется центральная доминанта."
+        "rationale": "Central Stack with eyebrow, text-5xl title and an outline button. No lead and no second primary button.",
+        "mediaRole": "Dots fill the background; the corner motif is not carried into the content composition tag.",
+        "differenceFromLegacy": "The source secondary=diagonal refers to the corner dots field. The content composition records a central focal point."
       },
       "invariants": [
-        "Большое свободное поле",
-        "Небольшой масштаб текста относительно кадра",
-        "Одно основное действие"
+        "Large open field",
+        "Small text scale relative to the frame",
+        "One primary action"
       ],
       "risks": [
-        "Сложное предложение не помещается в короткую форму",
-        "Редкая информация может казаться пустотой",
-        "Дополнительные CTA разрушат исходную ясность"
+        "A complex offer does not fit the short form",
+        "Sparse information can feel empty",
+        "Extra CTAs would break the original clarity"
       ],
       "distinction": {
         "against": "ref-c12",
-        "reason": "Тихий центр симметричен; диагональная пауза размещает текст и изображение в разных углах."
+        "reason": "The quiet center is symmetric; the diagonal pause places text and image in different corners."
       },
       "variants": [
         {
@@ -765,7 +765,7 @@
             "radius": 8,
             "key": "t004-airy-dots|claude|inter+inter|8"
           },
-          "expectation": "Изменяется палитра; структура, media recipe, шрифты и радиус сохраняются.",
+          "expectation": "The palette changes; structure, media recipe, fonts and radius are kept.",
           "status": "captured"
         },
         {
@@ -781,7 +781,7 @@
             "radius": 8,
             "key": "t004-airy-dots|modern-minimal|manrope+manrope|8"
           },
-          "expectation": "Изменяется только ось fonts; структура, media recipe, skin и radius сохраняются. Переносы текста могут измениться.",
+          "expectation": "Only the fonts axis changes; structure, media recipe, skin and radius are kept. Text wrapping may change.",
           "status": "captured"
         },
         {
@@ -797,7 +797,7 @@
             "radius": 4,
             "key": "t004-airy-dots|modern-minimal|inter+inter|4"
           },
-          "expectation": "Изменяется только radius; эффект зависит от использования rounded в компонентах.",
+          "expectation": "Only the radius changes; the effect depends on how components use rounded.",
           "status": "captured"
         }
       ],
@@ -805,12 +805,12 @@
         {
           "id": "classic",
           "status": "planned",
-          "preserves": "Проверять применимость токенов; generic template не гарантирует сохранение композиции исходного screen."
+          "preserves": "Check token applicability; a generic template does not guarantee the source screen's composition is kept."
         },
         {
           "id": "portfolio",
           "status": "planned",
-          "preserves": "Проверять применимость токенов; generic template не гарантирует сохранение композиции исходного screen."
+          "preserves": "Check token applicability; a generic template does not guarantee the source screen's composition is kept."
         }
       ],
       "review": {
@@ -824,7 +824,7 @@
           320,
           240
         ],
-        "description": "Условная схема масс по исходному компоненту; не скриншот и не измеренный layout.",
+        "description": "A schematic of masses based on the source component; not a screenshot and not a measured layout.",
         "elements": [
           [
             12,
@@ -859,7 +859,7 @@
     },
     {
       "id": "ref-c05",
-      "title": "Тезис и доказательства",
+      "title": "Claim and proof",
       "layoutFamily": "stats",
       "status": "source-reviewed",
       "source": {
@@ -889,29 +889,29 @@
         }
       },
       "artDirection": {
-        "intent": "Соединить главный тезис с читаемым поясом числовых подтверждений.",
-        "task": "Понять предложение и быстро оценить несколько ключевых показателей.",
-        "focus": "Текстовая масса 2/3, затем отдельная строка показателей."
+        "intent": "Join the main claim to a readable band of numeric proof points.",
+        "task": "Understand the offer and quickly assess a few key metrics.",
+        "focus": "A 2/3 text mass, then a separate row of metrics."
       },
       "composition": {
         "contentPattern": "rule-of-thirds",
-        "rationale": "Grid cols=3: текст col-span-2, квадратный Flat — оставшаяся треть; снизу Separator и Grid cols=4 со stats.",
-        "mediaRole": "Flat shapes занимает правую треть; геометрия внутри него вторична к соотношению больших частей.",
-        "differenceFromLegacy": "Трети подтверждены col-span-2 в трёхколоночном Grid. Stats описаны отдельно от композиционного тега."
+        "rationale": "Grid cols=3: text col-span-2, a square Flat in the remaining third; below, a Separator and Grid cols=4 with stats.",
+        "mediaRole": "Flat shapes fill the right third; the geometry inside it is secondary to the ratio of the large parts.",
+        "differenceFromLegacy": "Thirds are confirmed by col-span-2 in a three-column Grid. Stats are described separately from the composition tag."
       },
       "invariants": [
-        "Соотношение верхних частей 2:1",
-        "Отдельный нижний пояс stats",
-        "Визуальное отделение показателей от hero"
+        "A 2:1 ratio of the upper parts",
+        "A separate bottom band of stats",
+        "Metrics visually set apart from the hero"
       ],
       "risks": [
-        "Фикстура повторяет первый stat как четвёртый — это не четыре разных доказательства",
-        "Числа должны иметь контекст и источник в реальном продукте",
-        "Дополнительные метрики могут перегрузить низ"
+        "The fixture repeats the first stat as the fourth, so these are not four different proof points",
+        "Numbers need context and a source in a real product",
+        "Extra metrics can overload the bottom"
       ],
       "distinction": {
         "against": "ref-c10",
-        "reason": "Показатели здесь в отдельном поясе; в бенто информация распределена по карточкам внутри общей сетки."
+        "reason": "Here metrics sit in a separate band; in the bento, information is spread across cards within a shared grid."
       },
       "variants": [
         {
@@ -927,7 +927,7 @@
             "radius": 4,
             "key": "t005-stats-flat|modern-minimal|golos-text+onest|4"
           },
-          "expectation": "Изменяется палитра; структура, media recipe, шрифты и радиус сохраняются.",
+          "expectation": "The palette changes; structure, media recipe, fonts and radius are kept.",
           "status": "captured"
         },
         {
@@ -943,7 +943,7 @@
             "radius": 4,
             "key": "t005-stats-flat|amber-minimal|inter+inter|4"
           },
-          "expectation": "Изменяется только ось fonts; структура, media recipe, skin и radius сохраняются. Переносы текста могут измениться.",
+          "expectation": "Only the fonts axis changes; structure, media recipe, skin and radius are kept. Text wrapping may change.",
           "status": "captured"
         },
         {
@@ -959,7 +959,7 @@
             "radius": 8,
             "key": "t005-stats-flat|amber-minimal|golos-text+onest|8"
           },
-          "expectation": "Изменяется только radius; эффект зависит от использования rounded в компонентах.",
+          "expectation": "Only the radius changes; the effect depends on how components use rounded.",
           "status": "captured"
         }
       ],
@@ -967,12 +967,12 @@
         {
           "id": "saas",
           "status": "planned",
-          "preserves": "Проверять применимость токенов; generic template не гарантирует сохранение композиции исходного screen."
+          "preserves": "Check token applicability; a generic template does not guarantee the source screen's composition is kept."
         },
         {
           "id": "dashboard",
           "status": "planned",
-          "preserves": "Проверять применимость токенов; generic template не гарантирует сохранение композиции исходного screen."
+          "preserves": "Check token applicability; a generic template does not guarantee the source screen's composition is kept."
         }
       ],
       "review": {
@@ -986,7 +986,7 @@
           320,
           240
         ],
-        "description": "Условная схема масс по исходному компоненту; не скриншот и не измеренный layout.",
+        "description": "A schematic of masses based on the source component; not a screenshot and not a measured layout.",
         "elements": [
           [
             12,
@@ -1035,7 +1035,7 @@
     },
     {
       "id": "ref-c06",
-      "title": "Сообщение и лента",
+      "title": "Message and ribbon",
       "layoutFamily": "ribbon",
       "status": "source-reviewed",
       "source": {
@@ -1066,29 +1066,29 @@
         }
       },
       "artDirection": {
-        "intent": "Поддержать центральное обещание отдельной полосой повторяемых знаков.",
-        "task": "Прочитать предложение и увидеть окружающий его контекст или принадлежность.",
-        "focus": "Центральный заголовок; нижняя лента — вспомогательный ритм."
+        "intent": "Support the central promise with a separate strip of repeated marks.",
+        "task": "Read the offer and see the context or affiliation around it.",
+        "focus": "A central headline; the bottom ribbon is a supporting rhythm."
       },
       "composition": {
         "contentPattern": "focal-mass",
-        "rationale": "Центральные title, lead и actions в Stack; LogoRibbon расположен после центрального блока по нижнему краю.",
-        "mediaRole": "Rings располагается за hero; радиальный мотив не означает радиальную навигацию.",
-        "differenceFromLegacy": "Исходный radial относится к Rings; уточнённая композиция контента сохраняет focal-mass."
+        "rationale": "Central title, lead and actions in a Stack; the LogoRibbon follows the central block along the bottom edge.",
+        "mediaRole": "Rings sit behind the hero; the radial motif does not mean radial navigation.",
+        "differenceFromLegacy": "The source radial refers to Rings; the refined content composition keeps focal-mass."
       },
       "invariants": [
-        "Центральный hero отделён от нижней ленты",
-        "Повторяемые знаки образуют ритм",
-        "Лента не конкурирует с главным действием"
+        "The central hero is separated from the bottom ribbon",
+        "Repeated marks form a rhythm",
+        "The ribbon does not compete with the primary action"
       ],
       "risks": [
-        "В исходнике абстрактные icon slots, а не реальные логотипы клиентов",
-        "Лента сама по себе не доказывает доверие",
-        "Кольца фона могут повысить визуальный шум"
+        "The source uses abstract icon slots, not real client logos",
+        "A ribbon alone does not prove trust",
+        "Background rings can add visual noise"
       ],
       "distinction": {
         "against": "ref-c08",
-        "reason": "Лента повторяет небольшие знаки; ref-c08 показывает один крупный объект внутри рамки."
+        "reason": "The ribbon repeats small marks; ref-c08 shows one large object inside a frame."
       },
       "variants": [
         {
@@ -1104,7 +1104,7 @@
             "radius": 12,
             "key": "t006-ribbon-rings|modern-minimal|onest+inter|12"
           },
-          "expectation": "Изменяется палитра; структура, media recipe, шрифты и радиус сохраняются.",
+          "expectation": "The palette changes; structure, media recipe, fonts and radius are kept.",
           "status": "captured"
         },
         {
@@ -1120,7 +1120,7 @@
             "radius": 12,
             "key": "t006-ribbon-rings|supabase|inter+inter|12"
           },
-          "expectation": "Изменяется только ось fonts; структура, media recipe, skin и radius сохраняются. Переносы текста могут измениться.",
+          "expectation": "Only the fonts axis changes; structure, media recipe, skin and radius are kept. Text wrapping may change.",
           "status": "captured"
         },
         {
@@ -1136,7 +1136,7 @@
             "radius": 8,
             "key": "t006-ribbon-rings|supabase|onest+inter|8"
           },
-          "expectation": "Изменяется только radius; эффект зависит от использования rounded в компонентах.",
+          "expectation": "Only the radius changes; the effect depends on how components use rounded.",
           "status": "captured"
         }
       ],
@@ -1144,12 +1144,12 @@
         {
           "id": "saas",
           "status": "planned",
-          "preserves": "Проверять применимость токенов; generic template не гарантирует сохранение композиции исходного screen."
+          "preserves": "Check token applicability; a generic template does not guarantee the source screen's composition is kept."
         },
         {
           "id": "classic",
           "status": "planned",
-          "preserves": "Проверять применимость токенов; generic template не гарантирует сохранение композиции исходного screen."
+          "preserves": "Check token applicability; a generic template does not guarantee the source screen's composition is kept."
         }
       ],
       "review": {
@@ -1163,7 +1163,7 @@
           320,
           240
         ],
-        "description": "Условная схема масс по исходному компоненту; не скриншот и не измеренный layout.",
+        "description": "A schematic of masses based on the source component; not a screenshot and not a measured layout.",
         "elements": [
           [
             12,
@@ -1212,7 +1212,7 @@
     },
     {
       "id": "ref-c07",
-      "title": "Редакционный разворот",
+      "title": "Editorial spread",
       "layoutFamily": "editorial",
       "status": "source-reviewed",
       "source": {
@@ -1241,29 +1241,29 @@
         }
       },
       "artDirection": {
-        "intent": "Дать несколько входов в содержание через типографическую иерархию, номера и отдельное изображение.",
-        "task": "Сканировать темы, прочитать главный материал и выбрать дальнейшее действие.",
-        "focus": "Большой заголовок в средней колонке с поддержкой соседних материалов."
+        "intent": "Offer several entry points into the content through typographic hierarchy, numbers and a separate image.",
+        "task": "Scan the topics, read the main piece and choose the next action.",
+        "focus": "A large headline in the middle column, supported by neighboring pieces."
       },
       "composition": {
         "contentPattern": "editorial-columns",
-        "rationale": "12-колоночный Grid: items col-span-3, headline/lead/action col-span-5, Duotone col-span-4. Центральный текст выровнен к низу.",
-        "mediaRole": "Высокая Duotone v=1 — процедурный пейзаж, отдельный от списка и текста.",
-        "differenceFromLegacy": "Исходный rule-of-thirds — приближение. Здесь фиксируются подтверждённые пропорции 3:5:4 и редакционные колонки."
+        "rationale": "12-column Grid: items col-span-3, headline/lead/action col-span-5, Duotone col-span-4. The central text is bottom-aligned.",
+        "mediaRole": "A tall Duotone v=1 is a procedural landscape, separate from the list and the text.",
+        "differenceFromLegacy": "The source rule-of-thirds is an approximation. Here the confirmed 3:5:4 proportions and editorial columns are recorded."
       },
       "invariants": [
-        "Три колонки 3:5:4 с разными ролями",
-        "Нумерованный список самостоятельных входов",
-        "Линейка после masthead и нижняя опора главного текста"
+        "Three 3:5:4 columns with different roles",
+        "A numbered list of standalone entry points",
+        "A rule after the masthead and a bottom base for the main text"
       ],
       "risks": [
-        "Сложный разворот требует ясного порядка на узком экране",
-        "Визуально крупный заголовок не должен скрывать смысл списка",
-        "Не следует считать 3:5:4 точными третями"
+        "A complex spread needs a clear order on a narrow screen",
+        "A visually large headline should not hide the meaning of the list",
+        "3:5:4 should not be treated as exact thirds"
       ],
       "distinction": {
         "against": "ref-c03",
-        "reason": "Роль каждого столбца различна; ref-c03 строит один плакатный рассказ по вертикали."
+        "reason": "Each column has a different role; ref-c03 builds one vertical poster story."
       },
       "variants": [
         {
@@ -1279,7 +1279,7 @@
             "radius": 0,
             "key": "t007-editorial-duotone|modern-minimal|ibm-plex-sans+ibm-plex-sans|0"
           },
-          "expectation": "Изменяется палитра; структура, media recipe, шрифты и радиус сохраняются.",
+          "expectation": "The palette changes; structure, media recipe, fonts and radius are kept.",
           "status": "captured"
         },
         {
@@ -1295,7 +1295,7 @@
             "radius": 0,
             "key": "t007-editorial-duotone|claude|inter+inter|0"
           },
-          "expectation": "Изменяется только ось fonts; структура, media recipe, skin и radius сохраняются. Переносы текста могут измениться.",
+          "expectation": "Only the fonts axis changes; structure, media recipe, skin and radius are kept. Text wrapping may change.",
           "status": "captured"
         },
         {
@@ -1311,7 +1311,7 @@
             "radius": 8,
             "key": "t007-editorial-duotone|claude|ibm-plex-sans+ibm-plex-sans|8"
           },
-          "expectation": "Изменяется только radius; эффект зависит от использования rounded в компонентах.",
+          "expectation": "Only the radius changes; the effect depends on how components use rounded.",
           "status": "captured"
         }
       ],
@@ -1319,12 +1319,12 @@
         {
           "id": "blog",
           "status": "planned",
-          "preserves": "Проверять применимость токенов; generic template не гарантирует сохранение композиции исходного screen."
+          "preserves": "Check token applicability; a generic template does not guarantee the source screen's composition is kept."
         },
         {
           "id": "three-column",
           "status": "planned",
-          "preserves": "Проверять применимость токенов; generic template не гарантирует сохранение композиции исходного screen."
+          "preserves": "Check token applicability; a generic template does not guarantee the source screen's composition is kept."
         }
       ],
       "review": {
@@ -1338,7 +1338,7 @@
           320,
           240
         ],
-        "description": "Условная схема масс по исходному компоненту; не скриншот и не измеренный layout.",
+        "description": "A schematic of masses based on the source component; not a screenshot and not a measured layout.",
         "elements": [
           [
             12,
@@ -1401,7 +1401,7 @@
     },
     {
       "id": "ref-c08",
-      "title": "Демонстрация в окне",
+      "title": "Windowed demo",
       "layoutFamily": "frame",
       "status": "source-reviewed",
       "source": {
@@ -1431,29 +1431,29 @@
         }
       },
       "artDirection": {
-        "intent": "Объяснить предложение и дать конкретный образ результата в крупной рамке.",
-        "task": "Связать обещание с демонстрацией и перейти к действию.",
-        "focus": "Связка верхнего заголовка с большим демонстрационным окном."
+        "intent": "Explain the offer and give a concrete image of the result in a large frame.",
+        "task": "Link the promise to the demo and move to action.",
+        "focus": "A top headline paired with a large demo window."
       },
       "composition": {
         "contentPattern": "pyramid",
-        "rationale": "Узкий центрированный title/lead/actions сверху, широкая browser-like Card ниже; внутри Conic и центральная Card.",
-        "mediaRole": "Conic остаётся внутри browser-like рамки; небольшой вложенный specimen — отдельная доминанта.",
-        "differenceFromLegacy": "Основной pyramid сохранён; radial описывает Conic внутри окна, а не общую структуру страницы."
+        "rationale": "A narrow centered title/lead/actions on top, a wide browser-like Card below; inside are a Conic and a central Card.",
+        "mediaRole": "The Conic stays inside the browser-like frame; a small nested specimen is a separate focal point.",
+        "differenceFromLegacy": "The primary pyramid is kept; radial describes the Conic inside the window, not the overall page structure."
       },
       "invariants": [
-        "Заголовок уже окна",
-        "Рамка отделяет демонстрацию от основного интерфейса",
-        "Вложенное содержание читается как образец"
+        "The headline is narrower than the window",
+        "The frame separates the demo from the main interface",
+        "Nested content reads as a sample"
       ],
       "risks": [
-        "Демонстрационные кнопки могут быть ошибочно приняты за рабочие",
-        "Внутреннее окно повышает плотность и сложность",
-        "Внешняя тень относится к плавающей поверхности, а не ко всем элементам"
+        "Demo buttons can be mistaken for working ones",
+        "The inner window adds density and complexity",
+        "The outer shadow belongs to the floating surface, not to every element"
       ],
       "distinction": {
         "against": "ref-c11",
-        "reason": "Ref-c08 явно разделяет интерфейс и вложенную демонстрацию; ref-c11 делает сетку самой страницей."
+        "reason": "Ref-c08 clearly separates the interface from the nested demo; ref-c11 makes the grid the page itself."
       },
       "variants": [
         {
@@ -1469,7 +1469,7 @@
             "radius": 16,
             "key": "t008-frame-conic|modern-minimal|nunito+nunito|16"
           },
-          "expectation": "Изменяется палитра; структура, media recipe, шрифты и радиус сохраняются.",
+          "expectation": "The palette changes; structure, media recipe, fonts and radius are kept.",
           "status": "captured"
         },
         {
@@ -1485,7 +1485,7 @@
             "radius": 16,
             "key": "t008-frame-conic|bubblegum|inter+inter|16"
           },
-          "expectation": "Изменяется только ось fonts; структура, media recipe, skin и radius сохраняются. Переносы текста могут измениться.",
+          "expectation": "Only the fonts axis changes; structure, media recipe, skin and radius are kept. Text wrapping may change.",
           "status": "captured"
         },
         {
@@ -1501,7 +1501,7 @@
             "radius": 8,
             "key": "t008-frame-conic|bubblegum|nunito+nunito|8"
           },
-          "expectation": "Изменяется только radius; эффект зависит от использования rounded в компонентах.",
+          "expectation": "Only the radius changes; the effect depends on how components use rounded.",
           "status": "captured"
         }
       ],
@@ -1509,12 +1509,12 @@
         {
           "id": "saas",
           "status": "planned",
-          "preserves": "Проверять применимость токенов; generic template не гарантирует сохранение композиции исходного screen."
+          "preserves": "Check token applicability; a generic template does not guarantee the source screen's composition is kept."
         },
         {
           "id": "docs",
           "status": "planned",
-          "preserves": "Проверять применимость токенов; generic template не гарантирует сохранение композиции исходного screen."
+          "preserves": "Check token applicability; a generic template does not guarantee the source screen's composition is kept."
         }
       ],
       "review": {
@@ -1528,7 +1528,7 @@
           320,
           240
         ],
-        "description": "Условная схема масс по исходному компоненту; не скриншот и не измеренный layout.",
+        "description": "A schematic of masses based on the source component; not a screenshot and not a measured layout.",
         "elements": [
           [
             12,
@@ -1584,7 +1584,7 @@
     },
     {
       "id": "ref-c09",
-      "title": "Ввод между рамками",
+      "title": "Input between frames",
       "layoutFamily": "prompt",
       "status": "source-reviewed",
       "source": {
@@ -1613,29 +1613,29 @@
         }
       },
       "artDirection": {
-        "intent": "Сделать ввод главным центром действия, сохранив выразительное геометрическое обрамление.",
-        "task": "Понять, что вводить, ввести запрос и выбрать действие.",
-        "focus": "Связка объяснения и поля ввода в центральной колонке."
+        "intent": "Make the input the main center of action while keeping an expressive geometric frame.",
+        "task": "Understand what to enter, type a query and choose an action.",
+        "focus": "An explanation paired with an input field in the central column."
       },
       "composition": {
         "contentPattern": "focal-mass",
-        "rationale": "Две Geometric-полосы по краям; средняя колонка mx-60 содержит title, lead, Input+Button и TopicChips.",
-        "mediaRole": "Геометрические края работают как рамки вокруг рабочей области.",
-        "differenceFromLegacy": "Основной focal-mass сохранён; боковые geometric-полосы учитываются как медиа. Снятый с панорамы t009 не используется."
+        "rationale": "Two Geometric bands at the edges; the mx-60 middle column holds title, lead, Input+Button and TopicChips.",
+        "mediaRole": "The geometric edges act as frames around the work area.",
+        "differenceFromLegacy": "The primary focal-mass is kept; the side geometric bands count as media. t009, removed from the panorama, is not used."
       },
       "invariants": [
-        "Содержание остаётся в свободной средней зоне",
-        "Поле ввода и его действие соседствуют",
-        "TopicChips поддерживают ввод, не заменяя его"
+        "Content stays in the open middle zone",
+        "The input field and its action sit side by side",
+        "TopicChips support the input without replacing it"
       ],
       "risks": [
-        "В исходнике Input имеет placeholder, отдельной label не видно",
-        "Пример демонстрирует форму, но не реализует обработку запроса",
-        "Широкие боковые полосы сокращают рабочее поле"
+        "In the source the Input has a placeholder; no separate label is visible",
+        "The example shows the form but does not implement query handling",
+        "Wide side bands shrink the work area"
       ],
       "distinction": {
         "against": "ref-c04",
-        "reason": "Оба используют центр, но здесь есть ввод и выбор тем; ref-c04 предлагает один следующий шаг без ввода."
+        "reason": "Both use the center, but here there is input and topic choice; ref-c04 offers one next step without input."
       },
       "variants": [
         {
@@ -1651,7 +1651,7 @@
             "radius": 4,
             "key": "t070-prompt-geometric|modern-minimal|manrope+ibm-plex-sans|4"
           },
-          "expectation": "Изменяется палитра; структура, media recipe, шрифты и радиус сохраняются.",
+          "expectation": "The palette changes; structure, media recipe, fonts and radius are kept.",
           "status": "captured"
         },
         {
@@ -1667,7 +1667,7 @@
             "radius": 4,
             "key": "t070-prompt-geometric|violet-bloom|inter+inter|4"
           },
-          "expectation": "Изменяется только ось fonts; структура, media recipe, skin и radius сохраняются. Переносы текста могут измениться.",
+          "expectation": "Only the fonts axis changes; structure, media recipe, skin and radius are kept. Text wrapping may change.",
           "status": "captured"
         },
         {
@@ -1683,7 +1683,7 @@
             "radius": 8,
             "key": "t070-prompt-geometric|violet-bloom|manrope+ibm-plex-sans|8"
           },
-          "expectation": "Изменяется только radius; эффект зависит от использования rounded в компонентах.",
+          "expectation": "Only the radius changes; the effect depends on how components use rounded.",
           "status": "captured"
         }
       ],
@@ -1691,12 +1691,12 @@
         {
           "id": "classic",
           "status": "planned",
-          "preserves": "Проверять применимость токенов; generic template не гарантирует сохранение композиции исходного screen."
+          "preserves": "Check token applicability; a generic template does not guarantee the source screen's composition is kept."
         },
         {
           "id": "docs",
           "status": "planned",
-          "preserves": "Проверять применимость токенов; generic template не гарантирует сохранение композиции исходного screen."
+          "preserves": "Check token applicability; a generic template does not guarantee the source screen's composition is kept."
         }
       ],
       "review": {
@@ -1710,7 +1710,7 @@
           320,
           240
         ],
-        "description": "Условная схема масс по исходному компоненту; не скриншот и не измеренный layout.",
+        "description": "A schematic of masses based on the source component; not a screenshot and not a measured layout.",
         "elements": [
           [
             20,
@@ -1773,7 +1773,7 @@
     },
     {
       "id": "ref-c10",
-      "title": "Иерархическое бенто",
+      "title": "Hierarchical bento",
       "layoutFamily": "dense-grid",
       "status": "source-reviewed",
       "source": {
@@ -1803,29 +1803,29 @@
         }
       },
       "artDirection": {
-        "intent": "Собрать разнородное содержание в общую сетку с двумя крупными областями и малым нижним рядом.",
-        "task": "Считать главный тезис и быстро просмотреть вспомогательные показатели.",
-        "focus": "Большой текстовый блок слева; медиа равной площади справа."
+        "intent": "Gather varied content into a shared grid with two large areas and a small bottom row.",
+        "task": "Take in the main claim and quickly scan the supporting metrics.",
+        "focus": "A large text block on the left; media of equal area on the right."
       },
       "composition": {
         "contentPattern": "modular-hierarchy",
-        "rationale": "Grid cols=4, rows=3: hero col-span-2 row-span-2 и Geometric той же площади; нижний ряд — три stats и информационная Card.",
-        "mediaRole": "Geometric — большая самостоятельная область сетки, а не layout всех блоков.",
-        "differenceFromLegacy": "Исходный rule-of-thirds связан с вертикальными двумя из трёх рядов. Каталог использует более точный modular-hierarchy и отмечает 1:1 верхних масс."
+        "rationale": "Grid cols=4, rows=3: hero col-span-2 row-span-2 and a Geometric of the same area; the bottom row has three stats and an info Card.",
+        "mediaRole": "Geometric is a large standalone grid area, not the layout of all blocks.",
+        "differenceFromLegacy": "The source rule-of-thirds refers to two of three rows vertically. The catalog uses the more precise modular-hierarchy and notes the 1:1 upper masses."
       },
       "invariants": [
-        "Крупные верхние области отделены от нижних малых карточек",
-        "Все элементы привязаны к общей сетке",
-        "Размер ячейки сообщает относительную важность"
+        "Large upper areas are separated from small bottom cards",
+        "All elements snap to the shared grid",
+        "Cell size signals relative importance"
       ],
       "risks": [
-        "Верхние области делят ширину пополам, а не на трети",
-        "Равный размер героя и медиа может давать конкурирующие доминанты",
-        "Рост количества карточек меняет приоритеты"
+        "The upper areas split the width in half, not in thirds",
+        "Equal hero and media size can create competing focal points",
+        "More cards shift the priorities"
       ],
       "distinction": {
         "against": "ref-c11",
-        "reason": "Здесь две большие массы и малый нижний ряд; в ref-c11 девять ячеек с доминантой в центре."
+        "reason": "Here there are two large masses and a small bottom row; ref-c11 has nine cells with the focal point in the center."
       },
       "variants": [
         {
@@ -1841,7 +1841,7 @@
             "radius": 8,
             "key": "t010-dense-geometric|modern-minimal|montserrat+open-sans|8"
           },
-          "expectation": "Изменяется палитра; структура, media recipe, шрифты и радиус сохраняются.",
+          "expectation": "The palette changes; structure, media recipe, fonts and radius are kept.",
           "status": "captured"
         },
         {
@@ -1857,7 +1857,7 @@
             "radius": 8,
             "key": "t010-dense-geometric|kodama-grove|inter+inter|8"
           },
-          "expectation": "Изменяется только ось fonts; структура, media recipe, skin и radius сохраняются. Переносы текста могут измениться.",
+          "expectation": "Only the fonts axis changes; structure, media recipe, skin and radius are kept. Text wrapping may change.",
           "status": "captured"
         },
         {
@@ -1873,7 +1873,7 @@
             "radius": 4,
             "key": "t010-dense-geometric|kodama-grove|montserrat+open-sans|4"
           },
-          "expectation": "Изменяется только radius; эффект зависит от использования rounded в компонентах.",
+          "expectation": "Only the radius changes; the effect depends on how components use rounded.",
           "status": "captured"
         }
       ],
@@ -1881,12 +1881,12 @@
         {
           "id": "dashboard",
           "status": "planned",
-          "preserves": "Проверять применимость токенов; generic template не гарантирует сохранение композиции исходного screen."
+          "preserves": "Check token applicability; a generic template does not guarantee the source screen's composition is kept."
         },
         {
           "id": "portfolio",
           "status": "planned",
-          "preserves": "Проверять применимость токенов; generic template не гарантирует сохранение композиции исходного screen."
+          "preserves": "Check token applicability; a generic template does not guarantee the source screen's composition is kept."
         }
       ],
       "review": {
@@ -1900,7 +1900,7 @@
           320,
           240
         ],
-        "description": "Условная схема масс по исходному компоненту; не скриншот и не измеренный layout.",
+        "description": "A schematic of masses based on the source component; not a screenshot and not a measured layout.",
         "elements": [
           [
             12,
@@ -1970,7 +1970,7 @@
     },
     {
       "id": "ref-c11",
-      "title": "Центр и окружение",
+      "title": "Center and surroundings",
       "layoutFamily": "dense-grid",
       "status": "source-reviewed",
       "source": {
@@ -2000,29 +2000,29 @@
         }
       },
       "artDirection": {
-        "intent": "Организовать насыщенное поле вокруг центрального сообщения, используя окружение как поддержку.",
-        "task": "Сначала найти главный тезис, затем исследовать соседние блоки.",
-        "focus": "Акцентная центральная ячейка, поддержанная вертикальной и горизонтальной осями."
+        "intent": "Organize a rich field around a central message, using the surroundings as support.",
+        "task": "First find the main claim, then explore the neighboring blocks.",
+        "focus": "An accented central cell, supported by vertical and horizontal axes."
       },
       "composition": {
         "contentPattern": "cross",
-        "rationale": "Grid cols=3, rows=3: центральная primary-Card с title/action, stats сверху/снизу, текст слева/справа, Conic в четырёх углах.",
-        "mediaRole": "Четыре Conic-поля находятся в углах; радиальный мотив каждого не превращает всю сетку в радиальную.",
-        "differenceFromLegacy": "Исходный cross подтверждается размещением центрального title и четырёх краевых ячеек; Conic вынесен в медиа."
+        "rationale": "Grid cols=3, rows=3: a central primary Card with title/action, stats above/below, text left/right, Conic in the four corners.",
+        "mediaRole": "Four Conic fields sit in the corners; the radial motif of each does not make the whole grid radial.",
+        "differenceFromLegacy": "The source cross is confirmed by the central title and four edge cells; Conic is moved to media."
       },
       "invariants": [
-        "Главная ячейка остаётся в центре",
-        "Четыре ортогональные соседа поддерживают центр",
-        "Медиа в углах не конкурирует с сообщением"
+        "The main cell stays in the center",
+        "Four orthogonal neighbors support the center",
+        "Corner media does not compete with the message"
       ],
       "risks": [
-        "Яркие углы могут перетянуть внимание с центра",
-        "Длинный title должен помещаться в малую центральную карточку",
-        "Сетка требует отдельного порядка чтения на узком экране"
+        "Bright corners can pull attention away from the center",
+        "A long title must fit the small central card",
+        "The grid needs its own reading order on a narrow screen"
       ],
       "distinction": {
         "against": "ref-c10",
-        "reason": "Разница находится в геометрии и приоритете: центральная ячейка вместо большого hero сбоку."
+        "reason": "The difference lies in geometry and priority: a central cell instead of a large side hero."
       },
       "variants": [
         {
@@ -2038,7 +2038,7 @@
             "radius": 8,
             "key": "t044-dense-conic|claude|rubik+rubik|8"
           },
-          "expectation": "Изменяется палитра; структура, media recipe, шрифты и радиус сохраняются.",
+          "expectation": "The palette changes; structure, media recipe, fonts and radius are kept.",
           "status": "captured"
         },
         {
@@ -2054,7 +2054,7 @@
             "radius": 8,
             "key": "t044-dense-conic|modern-minimal|inter+inter|8"
           },
-          "expectation": "Изменяется только ось fonts; структура, media recipe, skin и radius сохраняются. Переносы текста могут измениться.",
+          "expectation": "Only the fonts axis changes; structure, media recipe, skin and radius are kept. Text wrapping may change.",
           "status": "captured"
         },
         {
@@ -2070,7 +2070,7 @@
             "radius": 4,
             "key": "t044-dense-conic|modern-minimal|rubik+rubik|4"
           },
-          "expectation": "Изменяется только radius; эффект зависит от использования rounded в компонентах.",
+          "expectation": "Only the radius changes; the effect depends on how components use rounded.",
           "status": "captured"
         }
       ],
@@ -2078,12 +2078,12 @@
         {
           "id": "dashboard",
           "status": "planned",
-          "preserves": "Проверять применимость токенов; generic template не гарантирует сохранение композиции исходного screen."
+          "preserves": "Check token applicability; a generic template does not guarantee the source screen's composition is kept."
         },
         {
           "id": "portfolio",
           "status": "planned",
-          "preserves": "Проверять применимость токенов; generic template не гарантирует сохранение композиции исходного screen."
+          "preserves": "Check token applicability; a generic template does not guarantee the source screen's composition is kept."
         }
       ],
       "review": {
@@ -2097,7 +2097,7 @@
           320,
           240
         ],
-        "description": "Условная схема масс по исходному компоненту; не скриншот и не измеренный layout.",
+        "description": "A schematic of masses based on the source component; not a screenshot and not a measured layout.",
         "elements": [
           [
             12,
@@ -2174,7 +2174,7 @@
     },
     {
       "id": "ref-c12",
-      "title": "Диагональная пауза",
+      "title": "Diagonal pause",
       "layoutFamily": "airy",
       "status": "source-reviewed",
       "source": {
@@ -2203,29 +2203,29 @@
         }
       },
       "artDirection": {
-        "intent": "Создать спокойное напряжение между небольшим текстом в начале и отдельным изображением в противоположном углу.",
-        "task": "Прочитать короткое сообщение и рассмотреть образ, сохранив ощущение свободного пространства.",
-        "focus": "Отношение верхней текстовой массы и нижнего изображения справа."
+        "intent": "Create calm tension between small text at the start and a separate image in the opposite corner.",
+        "task": "Read a short message and look at the image while keeping a sense of open space.",
+        "focus": "The relation between the upper text mass and the lower-right image."
       },
       "composition": {
         "contentPattern": "diagonal",
-        "rationale": "Title/с.accent/Button в Stack у верхнего start; Duotone size-80 абсолютным блоком right-16 bottom-16.",
-        "mediaRole": "Небольшая Duotone v=0 использует placeholder MediaFrame; форма кадра не определяет диагональ сама по себе.",
-        "differenceFromLegacy": "Основной diagonal подтверждён положением блоков, а не наклоном или цветом изображения."
+        "rationale": "Title/c.accent/Button in a Stack at the top start; Duotone size-80 as an absolute block at right-16 bottom-16.",
+        "mediaRole": "A small Duotone v=0 uses a placeholder MediaFrame; the frame shape alone does not define the diagonal.",
+        "differenceFromLegacy": "The primary diagonal is confirmed by block placement, not by the image's tilt or color."
       },
       "invariants": [
-        "Текст и изображение занимают разные углы",
-        "Большое свободное поле между массами",
-        "Текст остаётся небольшим относительно экрана"
+        "Text and image occupy different corners",
+        "A large open field between the masses",
+        "Text stays small relative to the screen"
       ],
       "risks": [
-        "Абсолютная позиция изображения может пересечься с длинным текстом",
-        "Значение c.accent не равно полному lead",
-        "Композиция не должна заставлять пользователя искать кнопку"
+        "The image's absolute position can overlap long text",
+        "The c.accent value is not a full lead",
+        "The composition should not make the user hunt for the button"
       ],
       "distinction": {
         "against": "ref-c04",
-        "reason": "Оба airy, но симметричный центр заменён диагональной связью двух масс."
+        "reason": "Both are airy, but the symmetric center is replaced by a diagonal link between two masses."
       },
       "variants": [
         {
@@ -2241,7 +2241,7 @@
             "radius": 8,
             "key": "t065-airy-duotone|modern-minimal|montserrat+inter|8"
           },
-          "expectation": "Изменяется палитра; структура, media recipe, шрифты и радиус сохраняются.",
+          "expectation": "The palette changes; structure, media recipe, fonts and radius are kept.",
           "status": "captured"
         },
         {
@@ -2257,7 +2257,7 @@
             "radius": 8,
             "key": "t065-airy-duotone|kodama-grove|inter+inter|8"
           },
-          "expectation": "Изменяется только ось fonts; структура, media recipe, skin и radius сохраняются. Переносы текста могут измениться.",
+          "expectation": "Only the fonts axis changes; structure, media recipe, skin and radius are kept. Text wrapping may change.",
           "status": "captured"
         },
         {
@@ -2273,7 +2273,7 @@
             "radius": 4,
             "key": "t065-airy-duotone|kodama-grove|montserrat+inter|4"
           },
-          "expectation": "Изменяется только radius; эффект зависит от использования rounded в компонентах.",
+          "expectation": "Only the radius changes; the effect depends on how components use rounded.",
           "status": "captured"
         }
       ],
@@ -2281,12 +2281,12 @@
         {
           "id": "portfolio",
           "status": "planned",
-          "preserves": "Проверять применимость токенов; generic template не гарантирует сохранение композиции исходного screen."
+          "preserves": "Check token applicability; a generic template does not guarantee the source screen's composition is kept."
         },
         {
           "id": "two-column",
           "status": "planned",
-          "preserves": "Проверять применимость токенов; generic template не гарантирует сохранение композиции исходного screen."
+          "preserves": "Check token applicability; a generic template does not guarantee the source screen's composition is kept."
         }
       ],
       "review": {
@@ -2300,7 +2300,7 @@
           320,
           240
         ],
-        "description": "Условная схема масс по исходному компоненту; не скриншот и не измеренный layout.",
+        "description": "A schematic of masses based on the source component; not a screenshot and not a measured layout.",
         "elements": [
           [
             12,
@@ -2349,17 +2349,17 @@
       "type": "same-principle",
       "bidirectional": true,
       "shared": [
-        "центральная ось",
-        "одна текстовая доминанта"
+        "central axis",
+        "one text focal point"
       ],
       "changed": [
-        "масштаб",
-        "плотность",
-        "число действий"
+        "scale",
+        "density",
+        "number of actions"
       ],
-      "reason": "Подходит для сравнения двух способов центрального сообщения; одинаковый центр не делает их дублями.",
+      "reason": "Suited to comparing two ways of a central message; a shared center does not make them duplicates.",
       "status": "source-reviewed",
-      "condition": "Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается."
+      "condition": "Compare as a structural/task relation. A color match is not claimed."
     },
     {
       "id": "ref-r02",
@@ -2368,15 +2368,15 @@
       "type": "same-principle",
       "bidirectional": true,
       "shared": [
-        "центральный hero"
+        "central hero"
       ],
       "changed": [
-        "вспомогательная лента",
-        "медиа"
+        "supporting ribbon",
+        "media"
       ],
-      "reason": "Лента добавляет отдельный ритм к центральному сообщению.",
+      "reason": "The ribbon adds a separate rhythm to the central message.",
       "status": "source-reviewed",
-      "condition": "Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается."
+      "condition": "Compare as a structural/task relation. A color match is not claimed."
     },
     {
       "id": "ref-r03",
@@ -2385,15 +2385,15 @@
       "type": "task-counterexample",
       "bidirectional": true,
       "shared": [
-        "центральная ось"
+        "central axis"
       ],
       "changed": [
-        "пользовательская задача",
-        "ввод"
+        "user task",
+        "input"
       ],
-      "reason": "Сходство центра не означает взаимозаменяемость: действие по кнопке и ввод запроса требуют разных сценариев.",
+      "reason": "A similar center does not mean interchangeability: a button action and a query input need different scenarios.",
       "status": "source-reviewed",
-      "condition": "Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается."
+      "condition": "Compare as a structural/task relation. A color match is not claimed."
     },
     {
       "id": "ref-r04",
@@ -2402,17 +2402,17 @@
       "type": "structural-neighbor",
       "bidirectional": true,
       "shared": [
-        "текст слева",
-        "медиа справа",
-        "числовые подтверждения"
+        "text on the left",
+        "media on the right",
+        "numeric proof points"
       ],
       "changed": [
-        "пропорции",
-        "расположение stats"
+        "proportions",
+        "stats placement"
       ],
-      "reason": "Две колонки переходят в явные 2:1 и отдельный нижний пояс.",
+      "reason": "Two columns turn into an explicit 2:1 and a separate bottom band.",
       "status": "source-reviewed",
-      "condition": "Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается."
+      "condition": "Compare as a structural/task relation. A color match is not claimed."
     },
     {
       "id": "ref-r05",
@@ -2421,17 +2421,17 @@
       "type": "expressive-neighbor",
       "bidirectional": true,
       "shared": [
-        "текст в начале",
-        "медиа в конце"
+        "text at the start",
+        "media at the end"
       ],
       "changed": [
-        "плотность",
-        "геометрия",
-        "объём пояснения"
+        "density",
+        "geometry",
+        "amount of explanation"
       ],
-      "reason": "Похожее разделение ролей, но плотная колонная структура сменяется свободной диагональю.",
+      "reason": "A similar split of roles, but the dense column structure gives way to an open diagonal.",
       "status": "source-reviewed",
-      "condition": "Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается."
+      "condition": "Compare as a structural/task relation. A color match is not claimed."
     },
     {
       "id": "ref-r06",
@@ -2440,16 +2440,16 @@
       "type": "expressive-neighbor",
       "bidirectional": true,
       "shared": [
-        "типографическая выразительность",
-        "отдельное медиа"
+        "typographic expressiveness",
+        "separate media"
       ],
       "changed": [
-        "порядок чтения",
-        "редакционные входы"
+        "reading order",
+        "editorial entry points"
       ],
-      "reason": "Плакат и разворот по-разному организуют крупный текст и изображение.",
+      "reason": "The poster and the spread organize large text and image differently.",
       "status": "source-reviewed",
-      "condition": "Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается."
+      "condition": "Compare as a structural/task relation. A color match is not claimed."
     },
     {
       "id": "ref-r07",
@@ -2459,16 +2459,16 @@
       "bidirectional": true,
       "shared": [
         "airy",
-        "свободное пространство",
-        "одно действие"
+        "open space",
+        "one action"
       ],
       "changed": [
-        "композиция контента",
-        "позиция медиа"
+        "content composition",
+        "media position"
       ],
-      "reason": "Контрольная пара: общий layout-family не гарантирует одинаковую композицию.",
+      "reason": "Control pair: a shared layout family does not guarantee the same composition.",
       "status": "source-reviewed",
-      "condition": "Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается."
+      "condition": "Compare as a structural/task relation. A color match is not claimed."
     },
     {
       "id": "ref-r08",
@@ -2477,16 +2477,16 @@
       "type": "structural-neighbor",
       "bidirectional": true,
       "shared": [
-        "главный тезис",
-        "показатели"
+        "main claim",
+        "metrics"
       ],
       "changed": [
-        "группировка",
-        "площадь медиа"
+        "grouping",
+        "media area"
       ],
-      "reason": "Показатели могут быть самостоятельным поясом или малыми ячейками общей сетки.",
+      "reason": "Metrics can be a standalone band or small cells of a shared grid.",
       "status": "source-reviewed",
-      "condition": "Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается."
+      "condition": "Compare as a structural/task relation. A color match is not claimed."
     },
     {
       "id": "ref-r09",
@@ -2495,16 +2495,16 @@
       "type": "expressive-neighbor",
       "bidirectional": true,
       "shared": [
-        "объяснение",
-        "вспомогательная демонстрация"
+        "explanation",
+        "supporting demo"
       ],
       "changed": [
-        "масштаб подтверждений",
-        "рамка"
+        "proof scale",
+        "frame"
       ],
-      "reason": "Лента малых знаков и одно большое окно — разные виды поддержки обещания; доверие не подтверждено.",
+      "reason": "A ribbon of small marks and one large window are different kinds of support for a promise; trust is not confirmed.",
       "status": "source-reviewed",
-      "condition": "Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается."
+      "condition": "Compare as a structural/task relation. A color match is not claimed."
     },
     {
       "id": "ref-r10",
@@ -2513,15 +2513,15 @@
       "type": "expressive-neighbor",
       "bidirectional": true,
       "shared": [
-        "текст и отдельное изображение"
+        "text and a separate image"
       ],
       "changed": [
-        "число входов",
-        "плотность"
+        "number of entry points",
+        "density"
       ],
-      "reason": "Редакционный разворот и разреженное сообщение различаются объёмом содержания.",
+      "reason": "The editorial spread and the sparse message differ in amount of content.",
       "status": "source-reviewed",
-      "condition": "Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается."
+      "condition": "Compare as a structural/task relation. A color match is not claimed."
     },
     {
       "id": "ref-r11",
@@ -2530,15 +2530,15 @@
       "type": "expressive-neighbor",
       "bidirectional": true,
       "shared": [
-        "центральная акцентная карточка"
+        "central accent card"
       ],
       "changed": [
-        "уровень вложенности",
-        "структура окружения"
+        "nesting level",
+        "structure of the surroundings"
       ],
-      "reason": "Центр внутри демонстрационного окна отличается от центра самой страницы.",
+      "reason": "A center inside a demo window differs from the center of the page itself.",
       "status": "source-reviewed",
-      "condition": "Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается."
+      "condition": "Compare as a structural/task relation. A color match is not claimed."
     },
     {
       "id": "ref-r12",
@@ -2548,16 +2548,16 @@
       "bidirectional": true,
       "shared": [
         "dense-grid",
-        "карточная сетка"
+        "card grid"
       ],
       "changed": [
-        "доминанта",
-        "геометрия",
-        "порядок чтения"
+        "focal point",
+        "geometry",
+        "reading order"
       ],
-      "reason": "Контрольная пара: две большие области против центральной ячейки в сетке 3×3.",
+      "reason": "Control pair: two large areas versus a central cell in a 3×3 grid.",
       "status": "source-reviewed",
-      "condition": "Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается."
+      "condition": "Compare as a structural/task relation. A color match is not claimed."
     },
     {
       "id": "ref-r13",
@@ -2566,15 +2566,15 @@
       "type": "task-counterexample",
       "bidirectional": true,
       "shared": [
-        "центральная ось"
+        "central axis"
       ],
       "changed": [
-        "задача",
-        "число управлений"
+        "task",
+        "number of controls"
       ],
-      "reason": "Минимальное сообщение с одним CTA не заменяет интерфейс ввода.",
+      "reason": "A minimal message with one CTA does not replace an input interface.",
       "status": "source-reviewed",
-      "condition": "Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается."
+      "condition": "Compare as a structural/task relation. A color match is not claimed."
     },
     {
       "id": "ref-r14",
@@ -2583,16 +2583,16 @@
       "type": "task-counterexample",
       "bidirectional": true,
       "shared": [
-        "центральное сообщение",
-        "повторяемые малые элементы"
+        "central message",
+        "repeated small elements"
       ],
       "changed": [
-        "функция малых элементов",
-        "ввод"
+        "role of the small elements",
+        "input"
       ],
-      "reason": "LogoRibbon и TopicChips визуально повторяются, но поддерживают разные роли.",
+      "reason": "LogoRibbon and TopicChips repeat visually but serve different roles.",
       "status": "source-reviewed",
-      "condition": "Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается."
+      "condition": "Compare as a structural/task relation. A color match is not claimed."
     },
     {
       "id": "ref-r15",
@@ -2601,16 +2601,16 @@
       "type": "expressive-neighbor",
       "bidirectional": true,
       "shared": [
-        "крупный текст",
-        "отдельная медиа-масса"
+        "large text",
+        "separate media mass"
       ],
       "changed": [
-        "вертикальная последовательность",
-        "колонки"
+        "vertical sequence",
+        "columns"
       ],
-      "reason": "Совместное наличие медиа и текста не означает совпадения layout.",
+      "reason": "Having both media and text does not mean the layouts match.",
       "status": "source-reviewed",
-      "condition": "Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается."
+      "condition": "Compare as a structural/task relation. A color match is not claimed."
     },
     {
       "id": "ref-r16",
@@ -2619,16 +2619,16 @@
       "type": "task-counterexample",
       "bidirectional": true,
       "shared": [
-        "несколько колонок",
-        "поясняющие материалы"
+        "several columns",
+        "explanatory pieces"
       ],
       "changed": [
-        "задача",
-        "скорость и глубина чтения"
+        "task",
+        "reading speed and depth"
       ],
-      "reason": "Сканирование показателей и чтение редакционного списка требуют разных оценок UX.",
+      "reason": "Scanning metrics and reading an editorial list need different UX assessments.",
       "status": "source-reviewed",
-      "condition": "Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается."
+      "condition": "Compare as a structural/task relation. A color match is not claimed."
     },
     {
       "id": "ref-r17",
@@ -2637,15 +2637,15 @@
       "type": "task-counterexample",
       "bidirectional": true,
       "shared": [
-        "объяснение рядом с визуально рабочим объектом"
+        "explanation next to a visually working object"
       ],
       "changed": [
-        "уровень интерактивности",
-        "задача"
+        "level of interactivity",
+        "task"
       ],
-      "reason": "Вложенный specimen — демонстрация; поле ввода относится к основному действию страницы.",
+      "reason": "The nested specimen is a demo; the input field belongs to the page's primary action.",
       "status": "source-reviewed",
-      "condition": "Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается."
+      "condition": "Compare as a structural/task relation. A color match is not claimed."
     },
     {
       "id": "ref-r18",
@@ -2654,16 +2654,16 @@
       "type": "task-counterexample",
       "bidirectional": true,
       "shared": [
-        "геометрический медиа-рецепт"
+        "geometric media recipe"
       ],
       "changed": [
         "layout",
-        "задача",
-        "доминанта"
+        "task",
+        "focal point"
       ],
-      "reason": "Одинаковый recipe=geometric не означает сходный интерфейс.",
+      "reason": "The same recipe=geometric does not mean a similar interface.",
       "status": "source-reviewed",
-      "condition": "Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается."
+      "condition": "Compare as a structural/task relation. A color match is not claimed."
     },
     {
       "id": "ref-r19",
@@ -2672,16 +2672,16 @@
       "type": "expressive-neighbor",
       "bidirectional": true,
       "shared": [
-        "крупная типографика"
+        "large typography"
       ],
       "changed": [
-        "ось",
-        "медиа-пояс",
-        "число пояснений"
+        "axis",
+        "media band",
+        "number of explanations"
       ],
-      "reason": "Разные композиции могут поддерживать одно выразительное намерение.",
+      "reason": "Different compositions can support the same expressive intent.",
       "status": "source-reviewed",
-      "condition": "Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается."
+      "condition": "Compare as a structural/task relation. A color match is not claimed."
     },
     {
       "id": "ref-r20",
@@ -2690,22 +2690,22 @@
       "type": "task-counterexample",
       "bidirectional": true,
       "shared": [
-        "центр как зона внимания"
+        "center as the zone of attention"
       ],
       "changed": [
-        "ввод",
-        "сетка",
-        "функция окружения"
+        "input",
+        "grid",
+        "role of the surroundings"
       ],
-      "reason": "Сходство центрального фокуса не доказывает одинаковую пользовательскую задачу.",
+      "reason": "A similar central focus does not prove the same user task.",
       "status": "source-reviewed",
-      "condition": "Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается."
+      "condition": "Compare as a structural/task relation. A color match is not claimed."
     }
   ],
   "fixtures": {
     "entry": {
       "id": "reference-entry-10",
-      "purpose": "Детерминированный вход в magazine, без утверждения о персональном вкусе.",
+      "purpose": "A deterministic entry into magazine, with no claim about personal taste.",
       "styleKeys": [
         "t001-poster-mesh|cosmic-night|montserrat+inter|12",
         "t002-split-glass|violet-bloom|manrope+manrope|16",
@@ -2720,7 +2720,7 @@
       ],
       "query": "t001-poster-mesh~cosmic-night~montserrat+inter~12,t002-split-glass~violet-bloom~manrope+manrope~16,t003-fullbleed-grain~neo-brutalism~rubik+rubik~0,t004-airy-dots~modern-minimal~inter+inter~8,t005-stats-flat~amber-minimal~golos-text+onest~4,t006-ribbon-rings~supabase~onest+inter~12,t007-editorial-duotone~claude~ibm-plex-sans+ibm-plex-sans~0,t008-frame-conic~bubblegum~nunito+nunito~16,t070-prompt-geometric~violet-bloom~manrope+ibm-plex-sans~4,t010-dense-geometric~kodama-grove~montserrat+open-sans~8",
       "route": "/magazine/?picks=t001-poster-mesh~cosmic-night~montserrat+inter~12,t002-split-glass~violet-bloom~manrope+manrope~16,t003-fullbleed-grain~neo-brutalism~rubik+rubik~0,t004-airy-dots~modern-minimal~inter+inter~8,t005-stats-flat~amber-minimal~golos-text+onest~4,t006-ribbon-rings~supabase~onest+inter~12,t007-editorial-duotone~claude~ibm-plex-sans+ibm-plex-sans~0,t008-frame-conic~bubblegum~nunito+nunito~16,t070-prompt-geometric~violet-bloom~manrope+ibm-plex-sans~4,t010-dense-geometric~kodama-grove~montserrat+open-sans~8",
-      "sideEffect": "При открытии ?picks= magazine заменит сохранённые picks. Использовать отдельный браузерный профиль для исследований.",
+      "sideEffect": "Opening ?picks= makes magazine replace the saved picks. Use a separate browser profile for research.",
       "wallMembership": "not-measured"
     },
     "comparison": {
@@ -2787,16 +2787,16 @@
           "key": "t065-airy-duotone|modern-minimal|inter+inter|8"
         }
       ],
-      "note": "Исследовательский reference.html использует общий deck; пользовательская страница magazine сохраняет authored deck каждого screen."
+      "note": "The research reference.html uses a shared deck; the user-facing magazine page keeps each screen's authored deck."
     }
   },
   "scenarios": [
     {
       "id": "REF-B1",
-      "title": "Выбрать направление",
+      "title": "Choose a direction",
       "mode": "human",
-      "start": "Открыт набор рекомендаций.",
-      "outcome": "Участник выбирает conceptId и объясняет связь со своей задачей.",
+      "start": "A set of recommendations is open.",
+      "outcome": "The participant picks a conceptId and explains how it relates to their task.",
       "candidateConcepts": [
         "ref-c01",
         "ref-c02",
@@ -2811,50 +2811,50 @@
         "ref-c11",
         "ref-c12"
       ],
-      "automation": "Не определять пригодность автоматически."
+      "automation": "Do not judge fitness automatically."
     },
     {
       "id": "REF-B2",
-      "title": "Поменять типографику, сохранить структуру",
+      "title": "Change typography, keep the structure",
       "mode": "human",
-      "start": "Открыт ref-c02 в исходном стиле.",
-      "outcome": "Выбран ref-c02:font; screen, skin и radius совпадают с исходными.",
+      "start": "ref-c02 is open in its source style.",
+      "outcome": "ref-c02:font is selected; screen, skin and radius match the source.",
       "expectedVariantId": "ref-c02:font",
-      "automation": "Только проверка состояния; понимание различий подтверждает участник."
+      "automation": "State check only; the participant confirms understanding of the differences."
     },
     {
       "id": "REF-B3",
-      "title": "Отличить композиции одного семейства",
+      "title": "Tell apart compositions of one family",
       "mode": "human",
-      "start": "Сравниваются ref-c10 и ref-c11.",
-      "outcome": "Участник различает боковую большую доминанту и центральную ячейку.",
+      "start": "ref-c10 and ref-c11 are compared.",
+      "outcome": "The participant distinguishes a large side focal point from a central cell.",
       "candidateConcepts": [
         "ref-c10",
         "ref-c11"
       ],
       "relationId": "ref-r12",
-      "automation": "Не оценивать объяснение по одному совпадению legacy tags."
+      "automation": "Do not judge the explanation by a single legacy tag match."
     },
     {
       "id": "REF-B4",
-      "title": "Проверить токены на шаблоне",
+      "title": "Test tokens on a template",
       "mode": "human",
-      "start": "Открыт ref-c07.",
-      "outcome": "Открыт blog; участник оценивает пригодность токенов и понимает, что layout шаблона отдельный.",
+      "start": "ref-c07 is open.",
+      "outcome": "blog is open; the participant judges token fitness and understands that the template layout is separate.",
       "candidateConcepts": [
         "ref-c07"
       ],
       "templateId": "blog",
-      "automation": "Предпросмотр шаблона не подтверждает перенос исходной композиции."
+      "automation": "A template preview does not confirm the source composition carries over."
     },
     {
       "id": "REF-B5",
-      "title": "Сохранить и получить нужный вариант",
+      "title": "Save and get the right variant",
       "mode": "human",
-      "start": "Открыт ref-c05:radius.",
-      "outcome": "Коллекция и успешно скопированный preset соответствуют ожидаемому style key.",
+      "start": "ref-c05:radius is open.",
+      "outcome": "The collection and the successfully copied preset match the expected style key.",
       "expectedVariantId": "ref-c05:radius",
-      "automation": "Успех clipboard не доказывает интеграцию пресета в проект."
+      "automation": "Clipboard success does not prove the preset is integrated into a project."
     }
   ],
   "reviewProtocol": {
@@ -2866,10 +2866,10 @@
     ],
     "currentGate": "source-reviewed",
     "nextActions": [
-      "Отрендерить authored и controlled variants в одинаковых условиях.",
-      "Проверить long copy, narrow viewport, focus, contrast и reduced motion.",
-      "Провести REF-B1..REF-B5 и отметить observed outcomes.",
-      "При необходимости перегруппировать дубли; не менять критерии задачи после просмотра результатов."
+      "Render authored and controlled variants under identical conditions.",
+      "Check long copy, narrow viewport, focus, contrast and reduced motion.",
+      "Run REF-B1..REF-B5 and record the observed outcomes.",
+      "Regroup duplicates if needed; do not change task criteria after seeing the results."
     ]
   }
 }

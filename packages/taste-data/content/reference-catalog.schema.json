@@ -35,7 +35,7 @@
       "const": "magazine-reference-v0.1"
     },
     "language": {
-      "const": "ru"
+      "const": "en"
     },
     "created": {
       "type": "string",
