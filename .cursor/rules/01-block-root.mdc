@@ -68,6 +68,28 @@ The DOM tree follows HTML5 semantics strictly. Landmarks come only from
 - A centered modal is `Dialog`, never `Block` plus a dialog role.
 - A grid is `Grid`, never `Box` with grid classes.
 
+## How the generator keeps one Block per file
+
+- **Screens.** A screen opens on `Block tag="main" id="main-content"`, exactly one per page.
+  Gallery and catalog pages wrap their content in a page section
+  (`Block tag="section" aria-labelledby="page-title"`, the first level-1 `Title` gets
+  `id="page-title"`). Theme sections inside a page are labelled groups (`Stack role="group"`).
+- **Screen parts.** Chrome that needs its own landmark (the screen header with the skip
+  link inside it) is emitted as a separate file, a screen *part* (`part("ScreenHeader")`),
+  so every file still has one `Block` per render path.
+- **Frames.** Organisms marked `frame: true` (section frame, region, hero head, sidebar
+  panel, shell top bar / sidebar / footer, help and footer cards) are the only composites
+  allowed to open on `Block`; they are counted as block roots, never nested.
+- **Composites.** Every other composite opens on `Box` (role="group" for a panel), `Nav`,
+  `Figure` / `FigureCaption`, `Article` or `Blockquote`, never on `Block`.
+  A composite rendering `nav` uses the `Nav` primitive; the landmark itself comes from the
+  enclosing block, not from a nested `Block`.
+- **Cards** that are whole blocks (pricing, product, post) open on `Block tag="article"`
+  with the card classes (`cardBase()`) and `data-slot="card"`.
+- **Backdrops.** `Backdrop` / `OverMedia` are only a picture layer
+  (`absolute inset-0 -z-10`) placed inside the block root, which `behind()` makes
+  `relative isolate overflow-hidden`; they never wrap the block. Before, the wrapper sat outside the section and the section background covered the picture (it never showed); now the faint picture is visible as designed (deliberate change, hero "over a picture" demo and theme events hero).
+
 ## Validation
 
 `bun run check`, group `rules`, detector `block-root`, fails when:
