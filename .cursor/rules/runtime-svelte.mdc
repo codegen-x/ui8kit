@@ -30,6 +30,7 @@ packages whose `ui8kit.runtime` is `svelte` (see `rules/zones.json`).
 | Literal text | `<Text>Save</Text>`, `label="Save"`, `{ok ? "Yes" : "No"}` | `{ui.group.key}`, `tpl(ui.group.key, { n })`, props |
 | Component root | first node of the markup after `<script>`/`<style>`, looking through `{#if}`/`{#each}`/`{#key}`/`{#await}` | |
 | One Block per file (rule 01) | two root-level `Block` in the same branch; `Block` inside `{#each}`; `Block` inside `Block` | `{#if}` / `{:else if}` / `{:else}` (and `{#await}` states) may each open on their own single `Block`; any other second `Block` goes to a separate file |
+| Block roots (rule 01) | a block or screen file that does not open on `Block`; `Nav`, `Figure`, `Article`, `Header`, `Footer`, `Blockquote` (removed) | any file may open on one `Block` with a semantic tag; a nested or looped `nav` / `figure` / `article` is a separate file rooted on `Block`; quotations and captions are `Text` with `tag` |
 
 Allowed structure: `{#if}`, `{#each}`, `{#await}`, `{#key}`, `{#snippet}`,
 `{@render}`, `{@const}`, and the special elements that do not choose a host tag:

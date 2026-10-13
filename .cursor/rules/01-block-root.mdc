@@ -1,5 +1,5 @@
 ---
-description: Blocks and screens open on Block, composite components have no landmark root, Box is never a wrapper
+description: Any file opens on at most one semantic Block (never nested, never in a loop); blocks and screens must; Box is never a wrapper
 globs: apps/discovery/src/App.svelte,apps/discovery/src/parts/**,apps/magazine/src/App.svelte,apps/magazine/src/reference/**,apps/magazine/src/parts/**,apps/magazine/src/templates/**,apps/host-*/xgen/App.*,apps/host-*/xgen/screens/**,packages/*/ui/src/blocks/**,packages/*/ui/src/components/**,packages/taste-screens/src/screens/**,packages/taste-screens/src/parts/**
 alwaysApply: false
 ---
@@ -19,8 +19,11 @@ The DOM tree follows HTML5 semantics strictly. Landmarks come only from
    page templates, the app frame) opens on `Block`, or on a composite whose own
    root is `Block` (a section frame). It never starts with `Box`, `Stack`,
    `Group`, `Grid`, `Card` or anything else.
-2. A composite component (the rest of the composition) has no landmark root: it
-   does not open on `Block` and does not choose a landmark tag for its root.
+2. Any other file (a composite component, a part, a screen part) may open on
+   exactly one `Block` with a semantic tag (`nav`, `figure`, `article`,
+   `header`, `footer`, `aside`, `section`, ...). Landmarks and sectioning
+   elements come only from `Block`; there is no `Nav`, `Figure`, `Article`,
+   `Header`, `Footer` or `Blockquote` primitive.
 3. One file has at most one `Block`. The only exception is mutually exclusive
    branches of the same component: Svelte `{#if}` / `{:else if}` / `{:else}`,
    React ternary, `&&` / `||` alternatives and early returns, Vue `v-if` /
@@ -35,9 +38,10 @@ The DOM tree follows HTML5 semantics strictly. Landmarks come only from
    not.
 5. `Box` is never a wrapper and never a file root. It appears only where no
    specialised primitive fits: `Card`, `Stack`, `Group`, `Grid`, `List`,
-   `Nav`, `Dialog` and the others found in `{kit}`.
+   `Dialog` and the others found in `{kit}`.
 6. `Box` is always a plain nested `div`. It is never a landmark and never
-   imitates another primitive.
+   imitates another primitive. ARIA (`role="group"`, `role="status"`, ...) goes
+   through `Attrs`; Box has no role prop.
 7. Before using `Box`, search `{kit}` for a primitive that expresses the
    intent. If the primitive is missing and the intent is repeatable, add it to
    the kit (its spec, for a generated kit) instead of piling up `Box`.
@@ -62,9 +66,30 @@ The DOM tree follows HTML5 semantics strictly. Landmarks come only from
 2. If it is not there, check the tag groups in the utils of `{kit}`.
 3. If it is still missing, extend the kit. Do not write a raw tag in the screen.
 
+## Tag-to-primitive map (the codegen model)
+
+| Primitive | Tags |
+| --- | --- |
+| `Block` | `div` (default), `section`, `article`, `aside`, `header`, `footer`, `main`, `nav`, `figure`, `search`, `hgroup`; props `ID`, `Class`, `Tag`, `Attrs`, `Children` |
+| `Box` | `div` only |
+| `Container` | `div`, `main`, `section` |
+| `Stack` | `div`, `ul`, `ol` |
+| `Group` | `div`, `fieldset`, `dl` |
+| `List` / `ListItem` | `ul`, `ol`, `dl`, `menu` / `li`, `dt`, `dd` |
+| `Title` | `h1` to `h6` (`As` 1 to 6) |
+| `Text` | `p` (default), `blockquote`, `figcaption`, `address`, `pre`, and the inline elements (`span`, `strong`, `em`, ...) |
+| `Inline` | `span` |
+
+ARIA goes through `Attrs`. Inside phrasing content (a button, a label, a
+summary) use `Inline` or `Text` with an inline tag, never `Stack` or `Group`.
+
 ## Nested replacements
 
-- Nested navigation or search is `Nav` or `List`, never a nested `Block`.
+- A nested navigation, figure, article, header or footer (inside a card, a
+  block or a loop item) comes from a separate file rooted on `Block` with that
+  tag (generator: `NavBlock`, `FigureBlock`, `ArticleBlock`), never a nested
+  `Block` in the same file.
+- A quotation is `Text tag="blockquote"`; a caption is `Text tag="figcaption"`.
 - A centered modal is `Dialog`, never `Block` plus a dialog role.
 - A grid is `Grid`, never `Box` with grid classes.
 
@@ -78,12 +103,13 @@ The DOM tree follows HTML5 semantics strictly. Landmarks come only from
   link inside it) is emitted as a separate file, a screen *part* (`part("ScreenHeader")`),
   so every file still has one `Block` per render path.
 - **Frames.** Organisms marked `frame: true` (section frame, region, hero head, sidebar
-  panel, shell top bar / sidebar / footer, help and footer cards) are the only composites
-  allowed to open on `Block`; they are counted as block roots, never nested.
-- **Composites.** Every other composite opens on `Box` (role="group" for a panel), `Nav`,
-  `Figure` / `FigureCaption`, `Article`, `Blockquote`, `Header` or `Footer`, never on `Block`. `Header` / `Footer` are the nested (non-landmark) header and footer of a section, article or composite; the page banner / contentinfo stays `Block tag="header"` / `Block tag="footer"`.
-  A composite rendering `nav` uses the `Nav` primitive; the landmark itself comes from the
-  enclosing block, not from a nested `Block`.
+  panel, shell top bar / sidebar / footer, help and footer cards) are checked as block files:
+  they must open on `Block` (the `blockRoot` zone), never nested.
+- **Composites.** A composite opens on `Box` (role="group" through attrs for a panel) or
+  on one `Block` with a semantic tag. A `nav`, `figure` or `article` nested inside a block
+  root or repeated in a loop is the part `NavBlock` / `FigureBlock` / `ArticleBlock`
+  (`xgen/screens/src/authoring/components/landmarks.ts`): its own file, rooted on
+  `Block`, so the parent file still holds one Block and none in a loop.
 - **Cards** that are whole blocks (pricing, product, post) open on `Block tag="article"`
   with the card classes (`cardBase()`) and `data-slot="card"`.
 - **Backdrops.** `Backdrop` / `OverMedia` are only a picture layer
@@ -95,7 +121,6 @@ The DOM tree follows HTML5 semantics strictly. Landmarks come only from
 `bun run check`, group `rules`, detector `block-root`, fails when:
 
 - the first rendered node of a `blockRoot` file is not `Block` (directly or through a composite whose root is `Block`);
-- a composite component outside `blockRoot` opens on `Block`;
 - a render path of the file holds more than one `Block`: exclusive branches are
   alternatives (a path takes one of them), everything else adds up, including
   detached markup such as a second component or a snippet;

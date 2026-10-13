@@ -81,7 +81,7 @@ export function detect(file: IrFile, ctx: FileContext): Finding[] {
   const root = rootOf(file.nodes);
   const blockLike = (n: IrNode | undefined): boolean => !!n && n.kind === "component" && (n.name === BLOCK || ctx.rootsOnBlock(n.name) === true);
   if (ctx.blockRoot && root && !blockLike(root)) out.push({ detector: "block-root", line: root.line, message: `root is ${where(root)}, not Block` });
-  if (!ctx.blockRoot && root && blockLike(root)) out.push({ detector: "block-root", line: root.line, message: `a composite component opens on ${where(root)}: a landmark root belongs to blocks and screens` });
+  // any other file (a composite, a part) may open on one Block with a semantic tag: no finding for its root (rule 01 §2)
   out.push(...blockCount(file.nodes));
   for (const n of all) {
     if (n.kind === "raw-html") out.push({ detector: "raw-html", line: n.line, message: `raw HTML injection (${n.name})` });
