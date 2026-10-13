@@ -127,6 +127,10 @@
         "vite": "^8.3.0",
       },
     },
+    "packages/jinja2/ui": {
+      "name": "@ui8kit/jinja2-ui",
+      "version": "0.0.0",
+    },
     "packages/panorama": {
       "name": "@ui8kit/panorama",
       "version": "0.0.0",
@@ -322,6 +326,7 @@
       "version": "0.0.0",
       "dependencies": {
         "@ui8kit/xgen-runtime-core": "workspace:*",
+        "@ui8kit/xgen-runtime-jinja2": "workspace:*",
         "@ui8kit/xgen-runtime-react": "workspace:*",
         "@ui8kit/xgen-runtime-solid": "workspace:*",
         "@ui8kit/xgen-runtime-svelte": "workspace:*",
@@ -339,6 +344,13 @@
       "dependencies": {
         "@ui8kit/xgen-screens": "workspace:*",
         "@ui8kit/xgen-spec": "workspace:*",
+      },
+    },
+    "xgen/runtimes/jinja2": {
+      "name": "@ui8kit/xgen-runtime-jinja2",
+      "version": "0.0.0",
+      "dependencies": {
+        "@ui8kit/xgen-runtime-twig": "workspace:*",
       },
     },
     "xgen/runtimes/react": {
@@ -613,6 +625,8 @@
 
     "@ui8kit/app-shared": ["@ui8kit/app-shared@workspace:packages/shared/app"],
 
+    "@ui8kit/jinja2-ui": ["@ui8kit/jinja2-ui@workspace:packages/jinja2/ui"],
+
     "@ui8kit/panorama": ["@ui8kit/panorama@workspace:packages/panorama"],
 
     "@ui8kit/react-ui": ["@ui8kit/react-ui@workspace:packages/react/ui"],
@@ -638,6 +652,8 @@
     "@ui8kit/xgen-generator": ["@ui8kit/xgen-generator@workspace:xgen/generator"],
 
     "@ui8kit/xgen-runtime-core": ["@ui8kit/xgen-runtime-core@workspace:xgen/runtimes/core"],
+
+    "@ui8kit/xgen-runtime-jinja2": ["@ui8kit/xgen-runtime-jinja2@workspace:xgen/runtimes/jinja2"],
 
     "@ui8kit/xgen-runtime-react": ["@ui8kit/xgen-runtime-react@workspace:xgen/runtimes/react"],
 

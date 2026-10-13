@@ -10,7 +10,7 @@ test("check passes on the workspace and prints one line per group", () => {
   expect(p.exitCode).toBe(0);
   expect(out).toContain("xgen check: ok");
   expect(out.split("\n").filter((l) => l.startsWith("ok ")).length).toBeGreaterThanOrEqual(15);
-}, 30_000); // every group, the rules group parses about 1600 component files
+}, 120_000); // every group: the rules group parses about 2600 component files, the templ, twig and jinja2 groups render every case
 
 test("an unknown command prints the usage and fails", () => {
   const p = run("nothing");

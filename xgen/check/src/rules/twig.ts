@@ -10,7 +10,7 @@ import { choice, type IrAttr, type IrFile, type IrNode } from "./ir";
 
 const VOID = new Set(["area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "source", "track", "wbr"]);
 const STR = /^'(?:[^'\\]|\\.)*'$|^"(?:[^"\\]|\\.)*"$/;
-const LIT = /^('(?:[^'\\]|\\.)*'|"(?:[^"\\]|\\.)*"|true|false|null|-?\d+(\.\d+)?)$/;
+const LIT = /^('(?:[^'\\]|\\.)*'|"(?:[^"\\]|\\.)*"|true|false|null|none|None|True|False|-?\d+(\.\d+)?)$/;
 const unq = (s: string): string => s.slice(1, -1).replace(/\\(.)/g, "$1");
 const pascal = (path: string): string => basename(path).replace(/\..*$/, "").split(/[-_]/).map((s) => s.charAt(0).toUpperCase() + s.slice(1)).join("");
 
@@ -50,6 +50,8 @@ function twigStrings(v: string): string[] {
   if (STR.test(v)) return [unq(v)];
   const tern = splitTop(v, "?");
   if (tern.length === 2) { const ab = splitTop(tern[1]!, ":"); return ab.flatMap(twigStrings); }
+  const ifElse = /^(.*?)\s+if\s+(.*?)\s+else\s+(.*)$/s.exec(v);
+  if (ifElse && splitTop(v, " if ").length === 2) return [...twigStrings(ifElse[1]!), ...twigStrings(ifElse[3]!)];
   const co = splitTop(v, "??");
   if (co.length > 1) return co.flatMap(twigStrings);
   const m = /^ui_(text|s|str|def|coalesce|or)\((.*)\)$/s.exec(v);
@@ -104,7 +106,12 @@ function closeOf(s: string, i: number, close: string): number {
 
 type Frame = { kind: "root" | "element" | "loop" | "branch" | "capture" | "embed" | "block" | "detached"; list: IrNode[]; node?: IrNode; tag?: string; choice?: IrNode & { kind: "choice" }; name?: string };
 
-export function twigToIr(src: string, _file = ""): IrFile {
+export const twigToIr = (src: string, file = ""): IrFile => templateToIr(src, file, "twig");
+/** Jinja2 reads the same: `elif`, `|safe`, `ui_include(...)`, `p['x']`, `x if c else y`; `{% call m(...) %}` and a macro imported with `{% from %}` are components */
+export const jinjaToIr = (src: string, file = ""): IrFile => templateToIr(src, file, "jinja2");
+
+export function templateToIr(src: string, _file: string, runtime: "twig" | "jinja2"): IrFile {
+  const macros = new Map<string, string>();
   const imports = new Map<string, string>();
   let error: string | undefined;
   const lineAt = (pos: number): number => src.slice(0, pos).split("\n").length;
@@ -126,14 +133,17 @@ export function twigToIr(src: string, _file = ""): IrFile {
   /** an output tag {{ ... }} at a position */
   const output = (code: string, line: number): void => {
     const e = code.trim();
-    const inc = /^include\(\s*('[^']*'|"[^"]*")\s*(?:,\s*([\s\S]*?))?(?:,\s*with_context\s*=\s*\w+)?\s*\)$/.exec(e);
+    const inc = /^(?:ui_)?include\(\s*('[^']*'|"[^"]*")\s*(?:,\s*([\s\S]*?))?(?:,\s*with_context\s*=\s*\w+)?\s*\)$/.exec(e);
     if (inc) { push(component(unq(inc[1]!), inc[2] ?? "{}", line)); return; }
-    if (/^include\(/.test(e)) { push({ kind: "render", line }); return; }
-    const raw = /^([\s\S]*)\|\s*raw$/.exec(e);
+    if (/^(ui_)?include\(/.test(e)) { push({ kind: "render", line }); return; }
+    const mac = /^(\w+)\(([\s\S]*)\)$/.exec(e);
+    if (mac && macros.has(mac[1]!)) { push(component(macros.get(mac[1]!)!, splitTop(mac[2]!, ",")[0] ?? "{}", line)); return; }
+    const raw = /^([\s\S]*)\|\s*(raw|safe)$/.exec(e);
     if (raw) {
       const x = strip(raw[1]!);
-      const operand = strip(splitTop(x, "??")[0] ?? x);
-      if (/^(children|p\.\w+)$/.test(operand)) push({ kind: "render", line });
+      const def = /^ui_def\(([\s\S]*)\)$/.exec(x);
+      const operand = strip(def ? splitTop(def[1]!, ",")[0]! : splitTop(x, "??")[0] ?? x);
+      if (/^(children|p\.\w+|p\['\w+'\])$/.test(operand)) push({ kind: "render", line });
       else if (/^\w+$/.test(operand) && captures.has(operand)) { used.add(operand); push(...[{ kind: "group" as const, line, children: captures.get(operand)! }]); }
       else push({ kind: "raw-html", name: "|raw", line });
       return;
@@ -146,7 +156,7 @@ export function twigToIr(src: string, _file = ""): IrFile {
     const arg = code.trim().slice(kw.length).trim();
     switch (kw) {
       case "if": { const c = choice(line, [[]]) as IrNode & { kind: "choice" }; push(c); stack.push({ kind: "branch", list: c.branches[0]!, choice: c }); return; }
-      case "elseif": case "else": {
+      case "elseif": case "elif": case "else": {
         const f = stack.pop();
         if (f?.kind !== "branch") throw new Error(`{% ${kw} %} outside if at line ${line}`);
         const list: IrNode[] = [];
@@ -185,12 +195,25 @@ export function twigToIr(src: string, _file = ""): IrFile {
         stack.push({ kind: "embed", list: (n as { children: IrNode[] }).children, node: n });
         return;
       }
+      case "call": {
+        const m = /^(?:\([^)]*\)\s*)?(\w+)\(([\s\S]*)\)$/.exec(arg);
+        const n: IrNode = m ? component(macros.get(m[1]!) ?? m[1]!, splitTop(m[2]!, ",")[0] ?? "{}", line) : { kind: "render", line };
+        push(n);
+        stack.push({ kind: "embed", list: "children" in n ? n.children : [], node: n });
+        return;
+      }
+      case "endcall": if (stack.pop()?.kind !== "embed") throw new Error(`{% endcall %} without call at line ${line}`); return;
+      case "from": {
+        const m = /^('[^']*'|"[^"]*")\s+import\s+(.*)$/.exec(arg);
+        if (m) for (const name of m[2]!.split(",").map((x) => x.trim().split(/\s+as\s+/).pop()!)) macros.set(name, unq(m[1]!));
+        return;
+      }
       case "endembed": if (stack.pop()?.kind !== "embed") throw new Error(`{% endembed %} without embed at line ${line}`); return;
       case "block": stack.push({ kind: "block", list: top().list }); return;
       case "endblock": stack.pop(); return;
       case "macro": { const n: IrNode = { kind: "detached", line, children: [] }; push(n); stack.push({ kind: "detached", list: n.children }); return; }
       case "endmacro": stack.pop(); return;
-      case "apply": case "endapply": case "do": case "extends": case "import": case "from": case "use": case "with": case "endwith": return;
+      case "apply": case "endapply": case "do": case "extends": case "import": case "use": case "with": case "endwith": return;
     }
     void at;
   };
@@ -251,5 +274,5 @@ export function twigToIr(src: string, _file = ""): IrFile {
   // captured markup is rendered where it is passed as children; a capture passed anywhere else (a slot fill) is detached
   const nodes = root.list;
   for (const [name, list] of captures) if (!used.has(name) && list.length) nodes.push({ kind: "detached", line: list[0]!.line, children: list });
-  return { runtime: "twig", nodes, imports, ...(error ? { error } : {}) };
+  return { runtime, nodes, imports, ...(error ? { error } : {}) };
 }

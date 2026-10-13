@@ -58,14 +58,14 @@ const BINARY: Record<string, string> = {
 
 export function printValue(v: Value, c: Ctx): string {
   const d = c.d;
-  if (v === null || v === undefined) return "null";
+  if (v === null || v === undefined) return d.nul;
   if (typeof v === "string") return d.str(v);
   if (typeof v === "number" || typeof v === "boolean") return String(v);
   if (isRef(v)) {
     const [head, ...rest] = v.$.split(".");
     let base: string;
     if (c.scope.has(head!)) base = c.scope.get(head!)!;
-    else if (head === "className") base = d.orNull("p.className", "''");
+    else if (head === "className") base = d.orNull(d.field("p", "className"), "''");
     else if (c.org.consts?.[head!]) base = constVar(head!);
     else throw new Error(`${c.org.name}: unknown name ${head}`);
     return rest.length ? `ui_get(${base}, ${d.list(rest.map(d.str))})` : base;
@@ -83,7 +83,7 @@ export function printValue(v: Value, c: Ctx): string {
   switch (v.op) {
     case "ne": return d.not(`ui_eq(${a(0)}, ${a(1)})`);
     case "not": return d.not(`ui_t(${a(0)})`);
-    case "undef": return "null";
+    case "undef": return d.nul;
     case "cond": return d.ternary(`ui_t(${a(0)})`, a(1), a(2));
     case "tpl": return `ui_tpl(${a(0)}, ${d.list(v.args.slice(1).map((x) => printValue(x, c)))})`;
     case "sumBy": return `ui_sum_by(${a(0)}, ${d.str(String(v.args[1]))}, ${d.str(String(v.args[2]))})`;
@@ -190,10 +190,10 @@ function node(n: ViewNode, c: Ctx): string[] {
     }
     const decl = c.org.slots.find((s) => s.name === n.slot);
     if (!decl) throw new Error(`${c.org.name}: unknown slot ${n.slot}`);
-    const slot = `p.${n.slot}`;
+    const slot = d.field("p", n.slot);
     if (!decl.args.length) return [d.raw(d.orNull(slot, "''"))];
     const args = (n.args ?? []).map((a, i): [string, string] => [`a${i}`, printValue(a, c)]);
-    return [d.if(`${d.orNull(slot, "null")} is not null`), `  ${d.includeExpr(`${slot}.t`, d.merge(`${slot}.v`, d.hash(args)))}`, d.endif];
+    return [d.if(d.isNotNull(d.orNull(slot, d.nul))), `  ${d.includeExpr(d.field(slot, "t"), d.merge(d.field(slot, "v"), d.hash(args)))}`, d.endif];
   }
   if ("organism" in n) {
     const other = c.deps.organisms[n.organism];
@@ -204,8 +204,8 @@ function node(n: ViewNode, c: Ctx): string[] {
     const pre: string[] = [];
     for (const [name, sl] of Object.entries(n.slots ?? {})) {
       if (sl.forward !== undefined) {
-        if (name === "children") children = [d.raw(d.orNull(sl.forward === "children" ? "children" : `p.${sl.forward}`, "''"))];
-        else props.push([name, d.orNull(`p.${sl.forward}`, "null")]);
+        if (name === "children") children = [d.raw(d.orNull(sl.forward === "children" ? "children" : d.field("p", sl.forward), "''"))];
+        else props.push([name, d.orNull(d.field("p", sl.forward), d.nul)]);
         continue;
       }
       if (name === "children") { children = walk(sl.do, c); continue; }
@@ -260,11 +260,11 @@ export function emitTwigOrganism(org: OrganismSpec, deps: TwigOrgDeps, source: s
   const top: string[] = [...consts(c)];
   for (const p of org.props) {
     if (!used.has(p.name)) continue;
-    top.push(d.set(local(p.name), p.default !== undefined ? d.orNull(`p.${p.name}`, printValue(p.default as Value, c)) : d.orNull(`p.${p.name}`, "null")));
+    top.push(d.set(local(p.name), p.default !== undefined ? d.orNull(d.field("p", p.name), printValue(p.default as Value, c)) : d.orNull(d.field("p", p.name), d.nul)));
     c.scope.set(p.name, local(p.name));
   }
   // a slot read as a value is whether it was given (`when: actions`)
-  for (const sl of org.slots) if (used.has(sl.name)) c.scope.set(sl.name, `(${d.orNull(`p.${sl.name}`, "null")} is not null)`);
+  for (const sl of org.slots) if (used.has(sl.name)) c.scope.set(sl.name, `(${d.isNotNull(d.orNull(d.field("p", sl.name), d.nul))})`);
   for (const dv of org.derived ?? []) {
     if (!used.has(dv.name)) continue;
     top.push(d.set(local(dv.name), printValue(dv.value, c)));

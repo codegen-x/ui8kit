@@ -7,6 +7,11 @@ export interface Dialect {
   /** template file suffix: `.html.twig`, `.html.j2` */
   ext: string;
   str(s: string): string;
+  /** the null literal */
+  nul: string;
+  /** a key of a map: `p.Title` (Twig), `p['Title']` (Jinja: a dot would find dict methods such as items) */
+  field(base: string, key: string): string;
+  isNotNull(e: string): string;
   hash(entries: Array<[string, string]>): string;
   list(items: string[]): string;
   /** `a ?? b` (b when a is null or missing) */
@@ -43,6 +48,9 @@ export const twig: Dialect = {
   name: "twig",
   ext: ".html.twig",
   str: q,
+  nul: "null",
+  field: (base, key) => `${base}.${key}`,
+  isNotNull: (e) => `${e} is not null`,
   hash: (entries) => `{${entries.map(([k, v]) => `${q(k)}: ${v}`).join(", ")}}`,
   list: (items) => `[${items.join(", ")}]`,
   orNull: (a, b) => `(${a} ?? ${b})`,
@@ -70,6 +78,9 @@ export const jinja: Dialect = {
   ...twig,
   name: "jinja",
   ext: ".html.j2",
+  nul: "none",
+  field: (base, key) => `${base}[${q(key)}]`,
+  isNotNull: (e) => `${e} is not none`,
   hash: (entries) => `{${entries.map(([k, v]) => `${q(k)}: ${v}`).join(", ")}}`,
   orNull: (a, b) => `ui_def(${a}, ${b})`,
   ternary: (c, a, b) => `(${a} if ${c} else ${b})`,

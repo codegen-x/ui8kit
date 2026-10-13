@@ -24,7 +24,7 @@ export function printExpr(e: Expr, c: Ctx): string {
     case "lit": return typeof e.value === "string" ? d.str(e.value) : String(e.value);
     case "prop": {
       const def = c.part.props.find((x) => x.name === e.name)!;
-      return d.orNull(`p.${e.name}`, ZERO[def.type] ?? "null");
+      return d.orNull(d.field("p", e.name), def.type === "attrs" ? "{}" : ZERO[def.type] ?? d.nul);
     }
     case "item": {
       const f = c.env.itemRecord?.fields.find((x) => x.name === e.field);
@@ -63,12 +63,12 @@ function classValue(spec: ClassSpec, c: Ctx): string {
   if (spec.staticBase) tail.push(d.str(spec.staticBase));
   for (const e of spec.extra ?? []) tail.push(printExpr(e, c));
   for (const st of spec.state ?? []) tail.push(d.ternary(printExpr(st.test, c), d.str(st.classes), "''"));
-  if (spec.includeClassProp !== false && c.part.props.some((p) => p.name === "Class")) tail.push(d.orNull("p.Class", "''"));
+  if (spec.includeClassProp !== false && c.part.props.some((p) => p.name === "Class")) tail.push(d.orNull(d.field("p", "Class"), "''"));
   if (spec.recipe) {
     const id = spec.recipeId ?? c.part.recipeId!;
     const file = c.brick.recipeFiles[id];
     if (!file) throw new Error(`${c.part.name}: recipe ${id} has no file`);
-    const sel = Object.entries(spec.recipe).map(([k, src]): [string, string] => [k, typeof src === "string" ? d.orNull(`p.${src}`, "''") : printExpr(src, c)]);
+    const sel = Object.entries(spec.recipe).map(([k, src]): [string, string] => [k, typeof src === "string" ? d.orNull(d.field("p", src), "''") : printExpr(src, c)]);
     return `ui_compose(${d.str(`ui/${c.brick.dir}/${file}`)}, ${d.hash(sel)}, ${d.list(tail)})`;
   }
   return `ui_cn(${d.list(tail)})`;
@@ -94,7 +94,7 @@ function attr(a: AttrSpec, c: Ctx): string {
       if (!spec) throw new Error(`${c.part.name}: class attribute without a contract`);
       return ` class="${d.out(classValue(spec, c))}"`;
     }
-    case "rest": return d.out(`ui_attr_html(${d.orNull("p.Attrs", "{}")})`);
+    case "rest": return d.out(`ui_attr_html(${d.orNull(d.field("p", "Attrs"), "{}")})`);
   }
 }
 
@@ -107,9 +107,9 @@ function element(n: ElementNode, c: Ctx): string[] {
   else {
     tagCode = `tag${++c.tags}`;
     const value = n.tag.kind === "resolved"
-      ? `ui_resolve_tag(${d.orNull(`p.${n.tag.fromProp}`, "''")}, ${d.str(n.tag.fallback)}, ${d.list(allowedTags(n.tag.group).map(d.str))})`
+      ? `ui_resolve_tag(${d.orNull(d.field("p", n.tag.fromProp), "''")}, ${d.str(n.tag.fallback)}, ${d.list(allowedTags(n.tag.group).map(d.str))})`
       : n.tag.kind === "heading"
-        ? `ui_title_tag(${d.orNull(`p.${n.tag.fromProp}`, "0")})`
+        ? `ui_title_tag(${d.orNull(d.field("p", n.tag.fromProp), "0")})`
         : `ui_map_or(${printExpr(n.tag.expr, c)}, ${d.hash(n.tag.tags.map((t) => [t, d.str(t)]))}, ${d.str(n.tag.tags[n.tag.tags.length - 1]!)})`;
     pre.push(d.set(tagCode, value));
     tag = d.out(tagCode);
@@ -150,7 +150,7 @@ function nodes(list: Node[], c: Ctx): string[] {
         if (other?.length) out.push(d.else, ...pad(nodes(other, c)));
         return [...out, d.endif];
       }
-      case "forEach": return [d.forIn("item", d.orNull(`p.${n.itemsProp}`, "[]")), ...pad(nodes(n.body, c)), d.endfor];
+      case "forEach": return [d.forIn("item", d.orNull(d.field("p", n.itemsProp), "[]")), ...pad(nodes(n.body, c)), d.endfor];
     }
   });
 }
