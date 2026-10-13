@@ -12,9 +12,11 @@
       "xgen/runtime"
     ],
     "composition": [
+      "xgen/App.vue",
       "xgen/screens"
     ],
     "blockRoot": [
+      "xgen/App.vue",
       "xgen/screens"
     ]
   },

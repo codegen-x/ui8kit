@@ -102,6 +102,14 @@ Title sizes use the Tailwind type-scale names (`xs sm base lg xl 2xl 3xl 4xl 5xl
 (`0 2 4 6 8 10 12 auto`, `Gap "4"` = `gap-4`); the `spacing` check rejects pixel-named spacing keys. Section 8 of `plan/UI8KIT-2.0.md` lists
 the polish rounds and their breaking changes.
 
+The same four groups (`corners`, `shadows`, `hardcode`, `spacing`) also read the hand-written code of `apps/magazine/src`
+and `packages/panorama/src` (`xgen/check/src/style-zones.ts`): only style text, meaning `class` values and `<style>` of
+`.svelte` files, `.css` files and the class strings of `.ts` files (never shader code or numeric engine constants of the
+panorama canvas). They report a `rounded-*` class or a `border-radius` off `var(--radius)`, a shadow class or drop
+`box-shadow`, gradients, arbitrary values, palette and hex colors, and spacing off the 8 px grid (odd steps, px not a
+multiple of 8; 4 px belongs inside controls). Existing findings are recorded per file in
+`rules/style-baselines/<package>.json`; a new one fails, a fixed one asks for `bun run rules:baseline`.
+
 ```ts
 import { Button, Card, PricingCard } from "@ui8kit/svelte-ui";   // or "@ui8kit/react-ui"
 ```

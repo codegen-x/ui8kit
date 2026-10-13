@@ -4,13 +4,13 @@ import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { xgenPaths } from "@ui8kit/xgen-schema";
 import type { Plan } from "@ui8kit/xgen-generator";
-import { CORNER_DIRS, SHADOW_ALLOW } from "./audit-rules";
+import { CORNER_DIRS, SHADOW_ALLOW, shadowClasses } from "./audit-rules";
+export { shadowClasses };
+import { styleProblems } from "./style-zones";
 import { result, type CheckResult } from "./result";
 
 const walk = (dir: string): string[] => (existsSync(dir) ? readdirSync(dir).flatMap((n) => (statSync(join(dir, n)).isDirectory() ? walk(join(dir, n)) : [join(dir, n)])) : []);
 
-/** every shadow class of a text (shadow, shadow-*, drop-shadow-*, inset-shadow-*, with or without a variant prefix) */
-export const shadowClasses = (text: string): string[] => [...text.matchAll(/(?<![\w-])(?:drop-|inset-)?shadow(?:-(?:\[[^\]\s"]*\]|[a-z0-9]+(?:-[a-z0-9]+)*))?(?![\w-])/g)].map((m) => m[0]);
 
 /** the problems of one spec file against the allowlist */
 export function shadowProblems(key: string, text: string): string[] {
@@ -50,5 +50,6 @@ export function checkShadows(plan: Plan): CheckResult {
       if (parts.some(isDrop)) problems.push(`xgen/runtimes/core/assets/styles/kit.css:${i + 1}: box-shadow ${v}; kit.css draws rings (0 0 0 ...), never a drop shadow`);
     }
   });
+  problems.push(...styleProblems(plan.workspace, "shadows"));
   return result("shadows", "flat surfaces have no shadow; a floating layer has one (shadow-md or shadow-lg), only in the allowlist, each with its reason", problems);
 }

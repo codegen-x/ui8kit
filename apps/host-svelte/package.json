@@ -12,9 +12,11 @@
       "xgen/runtime"
     ],
     "composition": [
+      "xgen/App.svelte",
       "xgen/screens"
     ],
     "blockRoot": [
+      "xgen/App.svelte",
       "xgen/screens"
     ]
   },

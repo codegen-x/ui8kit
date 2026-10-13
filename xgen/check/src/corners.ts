@@ -4,13 +4,13 @@ import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 import { xgenPaths } from "@ui8kit/xgen-schema";
 import type { Plan } from "@ui8kit/xgen-generator";
-import { CORNER_ALLOW, CORNER_DIRS, KIT_RADIUS_ALLOW } from "./audit-rules";
+import { CORNER_ALLOW, CORNER_DIRS, KIT_RADIUS_ALLOW, cornerClasses } from "./audit-rules";
+export { cornerClasses };
+import { styleProblems } from "./style-zones";
 import { result, type CheckResult } from "./result";
 
 const walk = (dir: string): string[] => (existsSync(dir) ? readdirSync(dir).flatMap((n) => (statSync(join(dir, n)).isDirectory() ? walk(join(dir, n)) : [join(dir, n)])) : []);
 
-/** every rounded-* class of a text (with or without a variant prefix such as `open:` or `[&::-webkit-slider-thumb]:`) */
-export const cornerClasses = (text: string): string[] => [...text.matchAll(/(?<![\w-])rounded-(\[[^\]\s"]*\]|[a-z0-9]+(?:-[a-z0-9]+)*)/g)].map((m) => m[0]);
 
 /** the problems of one file: a class other than rounded, rounded-full and rounded-none, or a full/none count that is not the allowed one */
 export function cornerProblems(key: string, text: string): string[] {
@@ -50,5 +50,6 @@ export function checkCorners(plan: Plan): CheckResult {
       problems.push(`xgen/runtimes/core/assets/styles/kit.css:${i + 1}: border-radius ${v}; derive it from var(--radius)`);
     }
   });
+  problems.push(...styleProblems(plan.workspace, "corners"));
   return result("corners", "one corner token: plain `rounded` (var(--radius)) everywhere; rounded-full and rounded-none only in the allowlist, each with its reason", problems);
 }

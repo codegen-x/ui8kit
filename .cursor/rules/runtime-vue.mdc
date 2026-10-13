@@ -1,6 +1,6 @@
 ---
 description: Vue 3 (SFC) syntax appendix of rules 00, 01, 02, 03 and 06 for the composition zone
-globs: apps/host-vue/xgen/screens/**/*.vue,packages/vue/ui/src/blocks/**/*.vue,packages/vue/ui/src/components/**/*.vue
+globs: apps/host-vue/xgen/App.vue,apps/host-vue/xgen/screens/**/*.vue,packages/vue/ui/src/blocks/**/*.vue,packages/vue/ui/src/components/**/*.vue
 alwaysApply: false
 ---
 

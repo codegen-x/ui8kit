@@ -11,11 +11,13 @@
     ],
     "composition": [
       "src/App.svelte",
+      "src/reference",
       "src/parts",
       "src/templates"
     ],
     "blockRoot": [
       "src/App.svelte",
+      "src/reference",
       "src/templates"
     ]
   },

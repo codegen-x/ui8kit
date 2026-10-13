@@ -12,9 +12,11 @@
       "xgen/runtime"
     ],
     "composition": [
+      "xgen/App.tsx",
       "xgen/screens"
     ],
     "blockRoot": [
+      "xgen/App.tsx",
       "xgen/screens"
     ]
   },

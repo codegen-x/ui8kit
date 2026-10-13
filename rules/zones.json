@@ -24,9 +24,11 @@
         "xgen/runtime"
       ],
       "composition": [
+        "xgen/App.tsx",
         "xgen/screens"
       ],
       "blockRoot": [
+        "xgen/App.tsx",
         "xgen/screens"
       ]
     },
@@ -39,9 +41,11 @@
         "xgen/runtime"
       ],
       "composition": [
+        "xgen/App.svelte",
         "xgen/screens"
       ],
       "blockRoot": [
+        "xgen/App.svelte",
         "xgen/screens"
       ]
     },
@@ -54,9 +58,11 @@
         "xgen/runtime"
       ],
       "composition": [
+        "xgen/App.vue",
         "xgen/screens"
       ],
       "blockRoot": [
+        "xgen/App.vue",
         "xgen/screens"
       ]
     },
@@ -70,11 +76,13 @@
       ],
       "composition": [
         "src/App.svelte",
+        "src/reference",
         "src/parts",
         "src/templates"
       ],
       "blockRoot": [
         "src/App.svelte",
+        "src/reference",
         "src/templates"
       ]
     },

@@ -1,6 +1,6 @@
 ---
 description: React 19 (TSX) syntax appendix of rules 00, 01, 02, 03 and 06 for the composition zone
-globs: apps/host-react/xgen/screens/**/*.tsx,packages/react/ui/src/blocks/**/*.tsx,packages/react/ui/src/components/**/*.tsx
+globs: apps/host-react/xgen/App.tsx,apps/host-react/xgen/screens/**/*.tsx,packages/react/ui/src/blocks/**/*.tsx,packages/react/ui/src/components/**/*.tsx
 alwaysApply: false
 ---
 

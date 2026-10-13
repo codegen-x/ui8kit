@@ -3,11 +3,12 @@
 //   bun xgen/check/tools/rules.ts --gate [dir]    the gate of `xgen check` for every package, or for one (apps/discovery); exit 1 on a new finding
 //   bun xgen/check/tools/rules.ts --write         write rules/zones.json and rules/baselines/<package>.json (root script: bun run rules:baseline)
 import { join } from "node:path";
+import { writeStyleBaselines } from "../src/style-zones";
 import { countsOf, DETECTORS, gate, scanRepo, selfTest, writeBaselines } from "../src/rules";
 
 const repo = join(import.meta.dir, "..", "..", "..");
 const args = process.argv.slice(2);
-if (args.includes("--write")) for (const l of writeBaselines(repo)) console.log(l);
+if (args.includes("--write")) for (const l of [...writeBaselines(repo), ...writeStyleBaselines(repo)]) console.log(l);
 else if (args.includes("--gate")) {
   const only = args.find((a) => !a.startsWith("--"));
   const g = gate(repo, only);

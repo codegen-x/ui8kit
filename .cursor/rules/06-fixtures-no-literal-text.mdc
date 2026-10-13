@@ -1,6 +1,6 @@
 ---
 description: No literal text in composition; words come from content (the ui dictionary) or props. English only, no Cyrillic in code
-globs: apps/discovery/src/App.svelte,apps/discovery/src/parts/**,apps/magazine/src/App.svelte,apps/magazine/src/parts/**,apps/magazine/src/templates/**,apps/host-*/xgen/screens/**,packages/*/ui/src/blocks/**,packages/*/ui/src/components/**,packages/taste-screens/src/screens/**,packages/taste-screens/src/parts/**
+globs: apps/discovery/src/App.svelte,apps/discovery/src/parts/**,apps/magazine/src/App.svelte,apps/magazine/src/reference/**,apps/magazine/src/parts/**,apps/magazine/src/templates/**,apps/host-*/xgen/App.*,apps/host-*/xgen/screens/**,packages/*/ui/src/blocks/**,packages/*/ui/src/components/**,packages/taste-screens/src/screens/**,packages/taste-screens/src/parts/**
 alwaysApply: false
 ---
 

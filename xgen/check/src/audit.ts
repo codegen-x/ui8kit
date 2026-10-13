@@ -1,4 +1,5 @@
 // The `structure`, `hardcode` and `dead` groups of `xgen check`: classes of problems the audit found, kept out by a rule so they do not come back.
+import { styleProblems } from "./style-zones";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { dirname, join, relative, resolve } from "node:path";
 import { organismsIn } from "@ui8kit/xgen-screens";
@@ -104,6 +105,7 @@ export function checkHardcode(plan: Plan): CheckResult {
       else if (found.length < allowed) problems.push(`xgen/check/src/audit-rules.ts: ${key} now holds ${found.length} hardcoded values; lower its allowance from ${allowed} to ${found.length}`);
     }
   }
+  problems.push(...styleProblems(plan.workspace, "hardcode"));
   return { name: "hardcode", what: "components and primitives hold no arbitrary size or color, no palette color and no stringified value beyond the counted allowlist", problems };
 }
 

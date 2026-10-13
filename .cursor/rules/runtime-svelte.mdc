@@ -1,6 +1,6 @@
 ---
 description: Svelte 5 syntax appendix of rules 00, 01, 02, 03 and 06 for the composition zone
-globs: apps/discovery/src/App.svelte,apps/discovery/src/parts/**/*.svelte,apps/magazine/src/App.svelte,apps/magazine/src/parts/**/*.svelte,apps/magazine/src/templates/**/*.svelte,apps/host-svelte/xgen/screens/**/*.svelte,packages/svelte/ui/src/blocks/**/*.svelte,packages/svelte/ui/src/components/**/*.svelte,packages/taste-screens/src/screens/**/*.svelte,packages/taste-screens/src/parts/**/*.svelte
+globs: apps/discovery/src/App.svelte,apps/discovery/src/parts/**/*.svelte,apps/magazine/src/App.svelte,apps/magazine/src/reference/**,apps/magazine/src/parts/**/*.svelte,apps/magazine/src/templates/**/*.svelte,apps/host-svelte/xgen/App.svelte,apps/host-svelte/xgen/screens/**/*.svelte,packages/svelte/ui/src/blocks/**/*.svelte,packages/svelte/ui/src/components/**/*.svelte,packages/taste-screens/src/screens/**/*.svelte,packages/taste-screens/src/parts/**/*.svelte
 alwaysApply: false
 ---
 

@@ -4,6 +4,7 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { xgenPaths } from "@ui8kit/xgen-schema";
 import type { Plan } from "@ui8kit/xgen-generator";
+import { styleProblems } from "./style-zones";
 import { result, type CheckResult } from "./result";
 
 /** axes that hold spacing; their numeric keys must be the Tailwind step of the class */
@@ -33,5 +34,6 @@ export function checkSpacing(plan: Plan): CheckResult {
       problems.push(...spacingKeyProblems(`specs/${dir}/${f}`, JSON.parse(readFileSync(join(base, f), "utf8"))));
     }
   }
+  problems.push(...styleProblems(plan.workspace, "spacing"));
   return result("spacing", "layout spacing options (gap, padding, margin, space, inset) are named by their Tailwind step, never by pixels", problems);
 }

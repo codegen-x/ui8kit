@@ -101,3 +101,8 @@ export const HARDCODE_ALLOW: Record<string, { n: number; why: string }> = {
   "specs/parts/pill.json": { n: 48, why: "tones of a status chip are the palette on purpose; shadcn has no tokens for them" },
   "specs/parts/timeline.json": { n: 4, why: "the dots of a timeline are data colors (success, info, warning, danger)" },
 };
+
+/** every rounded-* class of a text (with or without a variant prefix such as `open:` or `[&::-webkit-slider-thumb]:`) */
+export const cornerClasses = (text: string): string[] => [...text.matchAll(/(?<![\w-])rounded-(\[[^\]\s"]*\]|[a-z0-9]+(?:-[a-z0-9]+)*)/g)].map((m) => m[0]);
+/** every shadow class of a text (shadow, shadow-*, drop-shadow-*, inset-shadow-*, with or without a variant prefix) */
+export const shadowClasses = (text: string): string[] => [...text.matchAll(/(?<![\w-])(?:drop-|inset-)?shadow(?:-(?:\[[^\]\s"]*\]|[a-z0-9]+(?:-[a-z0-9]+)*))?(?![\w-])/g)].map((m) => m[0]);

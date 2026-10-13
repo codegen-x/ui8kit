@@ -4,6 +4,7 @@
   import type { Component } from "svelte";
   import { SCREENS } from "@ui8kit/app-shared/screens";
   import type { UrlPort } from "@ui8kit/app-shared/runtime/core";
+  import { Block, Link, List, ListItem, Title } from "@ui8kit/svelte-ui";
   import { url } from "./runtime/url.svelte";
 
   let { screen, title }: { screen: string; title: string } = $props();
@@ -29,17 +30,17 @@
   const load = $derived(LOADERS[screen]);
 </script>
 
-{#if load}
+{#if !load}
+  <Block tag="main" id="main-content" class="mx-auto w-full max-w-3xl px-4 py-12" data-testid="host-index">
+    <Title as={1} size="2xl" weight="semibold">{title}</Title>
+    <List class="mt-6 grid gap-2">
+      {#each SCREENS as s (s.key)}
+        <ListItem><Link class="underline" href={`/${s.key}/`} data-testid="host-screen">{s.key}</Link></ListItem>
+      {/each}
+    </List>
+  </Block>
+{:else}
   {#await load() then mod}
     <mod.default {url} />
   {/await}
-{:else}
-  <main id="main-content" class="mx-auto w-full max-w-3xl px-4 py-12" data-testid="host-index">
-    <h1 class="text-2xl font-semibold">{title}</h1>
-    <ul class="mt-6 grid gap-2">
-      {#each SCREENS as s (s.key)}
-        <li><a class="underline underline-offset-4" href={`/${s.key}/`} data-testid="host-screen">{s.key}</a></li>
-      {/each}
-    </ul>
-  </main>
 {/if}

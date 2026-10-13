@@ -1,6 +1,6 @@
 ---
 description: Zones of the repo (kit vs composition), the shared vocabulary of rules 01, 02, 03 and 06, and where each package declares its paths
-globs: apps/discovery/src/App.svelte,apps/discovery/src/parts/**,apps/magazine/src/App.svelte,apps/magazine/src/parts/**,apps/magazine/src/templates/**,apps/host-*/xgen/screens/**,packages/*/ui/src/blocks/**,packages/*/ui/src/components/**,packages/taste-screens/src/screens/**,packages/taste-screens/src/parts/**,**/package.json
+globs: apps/discovery/src/App.svelte,apps/discovery/src/parts/**,apps/magazine/src/App.svelte,apps/magazine/src/reference/**,apps/magazine/src/parts/**,apps/magazine/src/templates/**,apps/host-*/xgen/App.*,apps/host-*/xgen/screens/**,packages/*/ui/src/blocks/**,packages/*/ui/src/components/**,packages/taste-screens/src/screens/**,packages/taste-screens/src/parts/**,**/package.json
 alwaysApply: false
 ---
 
@@ -42,8 +42,8 @@ Current catalog (see `rules/zones.json` for the source of truth):
 | Package | Runtime | Kit | Composition | Block root |
 | --- | --- | --- | --- | --- |
 | `packages/{svelte,react,vue}/ui` | each | `src/primitives`, `src/utils`, `src/styles` | `src/blocks`, `src/components` | `src/blocks` |
-| `apps/host-{svelte,react,vue}` | each | `xgen/runtime` | `xgen/screens` | `xgen/screens` |
-| `apps/magazine` | svelte | `src/lib` | `src/App.svelte`, `src/parts`, `src/templates` | `src/App.svelte`, `src/templates` |
+| `apps/host-{svelte,react,vue}` | each | `xgen/runtime` | `xgen/App.*` (the host frame), `xgen/screens` | `xgen/App.*`, `xgen/screens` |
+| `apps/magazine` | svelte | `src/lib` (TypeScript only: state, corpus, design, tokens) | `src/App.svelte`, `src/reference`, `src/parts`, `src/templates` | `src/App.svelte`, `src/reference`, `src/templates` |
 | `apps/discovery` | svelte | none | `src/App.svelte`, `src/parts` | `src/App.svelte` |
 | `packages/taste-screens` | svelte | `src/recipes` | `src/screens`, `src/parts` | `src/screens` |
 | `packages/panorama` | svelte | `src` | none | none |
@@ -69,3 +69,10 @@ parse every composition file into one small tree, and shared detectors report
 `block-root`, `raw-html`, `dynamic-tag`, `raw-native-tag`, `reactive-aria` and
 `literal-text`. The kit zone is never scanned. Existing violations are recorded
 per package in `rules/baselines/<package>.json`; a new one fails the check.
+
+The host frame `xgen/App.*` of each host app is composition and block root: it opens on
+`Block tag="main"` and is built from kit primitives; the dynamic screen loader lives in the
+kit zone (`xgen/runtime/ScreenOutlet.*` for React and Vue). In `apps/magazine`, `src/lib`
+holds TypeScript only; markup lives in `src/parts`, `src/templates` and `src/reference`.
+The style groups (`corners`, `shadows`, `hardcode`, `spacing`) also scan magazine and
+panorama style text against `rules/style-baselines/<package>.json`.
