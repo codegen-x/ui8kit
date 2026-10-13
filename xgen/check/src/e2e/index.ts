@@ -14,6 +14,7 @@ import { skinsScenario } from "./skins";
 import type { CatalogTree, SkinsBoard } from "@ui8kit/xgen-screens";
 import { THEME_SCREEN, themeScenario } from "./theme";
 import type { ChildProcess } from "node:child_process";
+import { documentHtml, validateStates, type HtmlStates } from "./html";
 
 export type { E2eResult } from "./common";
 
@@ -23,7 +24,7 @@ const scenarioKind = (screen: string): ScenarioKind => (screen === "screen.site"
 /** the width of the window per scenario, in px: the gallery is wider because its responsive grids reach their widest column count from 1280 px */
 const VIEWPORT: Record<ScenarioKind, number> = { site: 1100, blocks: 1400, catalog: 1400, skins: 1400, theme: 1100, plans: 1100 };
 const VIEWPORT_HEIGHT = 900;
-export interface E2eReport { results: E2eResult[]; pair: { states: number; differences: string[] }; shots: string[] }
+export interface E2eReport { results: E2eResult[]; pair: { states: number; differences: string[] }; html: { states: number; documents: number; problems: string[]; warnings: Record<string, number> }; shots: string[] }
 
 export async function runE2e(workspace: string, shotsDir = join(workspace, "shots")): Promise<E2eReport> {
   const plan = planBuild(workspace);
@@ -34,6 +35,8 @@ export async function runE2e(workspace: string, shotsDir = join(workspace, "shot
   const shots: string[] = [];
   const snaps: Record<string, Record<string, string[]>> = {};
   const screenOf: Record<string, string> = {};
+  const html: HtmlStates = new Map();
+  let htmlStates = 0;
   const coll = (name: string): any[] => (plan.inputs.collections.find((c) => c.value.collection === name)?.value.entries ?? []) as any[];
   const siteData: SiteData = {
     dict: plan.inputs.dictionary.value,
@@ -67,7 +70,7 @@ export async function runE2e(workspace: string, shotsDir = join(workspace, "shot
         snaps[name] = {};
         screenOf[name] = s.id;
         const shot = async (label: string, full = false): Promise<void> => { const f = join(shotsDir, `${name}-${label}.png`); await page.screenshot({ path: f, fullPage: full }); shots.push(f); };
-        const snap = async (label: string): Promise<void> => { snaps[name]![label] = await structure(page); };
+        const snap = async (label: string): Promise<void> => { snaps[name]![label] = await structure(page); const doc = await documentHtml(page); htmlStates++; html.set(doc, [...(html.get(doc) ?? []), `${name} ${label}`]); };
         const r = kind === "site" ? await siteScenario(page, base, siteData, shot, snap)
           : kind === "blocks" ? await blocksScenario(page, base, blocksData, shot, snap)
           : kind === "catalog" ? await catalogScenario(page, base, { dict: siteData.dict, blocks: blocksData.blocks, tree: tree! }, shot, snap)
@@ -97,5 +100,6 @@ export async function runE2e(workspace: string, shotsDir = join(workspace, "shot
       for (let i = 0; i < n && shown < 6; i++) if (x[i] !== y[i]) { differences.push(`${id} ${label} line ${i + 1}:\n    ${a}: ${x[i] ?? "(none)"}\n    ${b}: ${y[i] ?? "(none)"}`); shown++; }
     }
   }
-  return { results, pair: { states, differences }, shots };
+  const checked = await validateStates(workspace, html);
+  return { results, pair: { states, differences }, html: { states: htmlStates, ...checked }, shots };
 }

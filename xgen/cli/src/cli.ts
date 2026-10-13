@@ -82,6 +82,10 @@ async function main(argv: string[]): Promise<number> {
     console.log(`${report.pair.differences.length ? "FAIL" : "ok  "}  pair         DOM of the svelte, react and vue hosts compared in ${report.pair.states} states`);
     for (const d of report.pair.differences) console.log(`        ${d}`);
     bad += report.pair.differences.length;
+    console.log(`${report.html.problems.length ? "FAIL" : "ok  "}  html         HTML5 validity (rules/html-validate.json) of ${report.html.states} states, ${report.html.documents} distinct documents`);
+    for (const d of report.html.problems) console.log(`        ${d}`);
+    for (const [rule, n] of Object.entries(report.html.warnings)) console.log(`  warn  html         ${rule}: ${n} (in states, rules/html-validate.json)`);
+    bad += report.html.problems.length;
     for (const s of report.shots) console.log(`  shot ${s}`);
     console.log(bad ? `xgen e2e: ${bad} problem(s)` : "xgen e2e: ok");
     return bad ? 1 : 0;
@@ -90,7 +94,7 @@ async function main(argv: string[]): Promise<number> {
     "usage: xgen build | check | e2e | shot | list   [--root <workspace>]",
     "  build  regenerate the packages, the shared app package and the host apps from xgen/specs, fixtures and content",
     "  check  schema, props, variants, a11y, authored specs, coverage, portability, text, drift (fails on hand edits)",
-    "  e2e    every screen in every host (/<screen>/): its scenario, screenshots, DOM compare of the hosts",
+    "  e2e    every screen in every host (/<screen>/): its scenario, screenshots, DOM compare of the hosts, HTML5 validity of every state",
     "  shot   one full-page screenshot of a screen: xgen shot site --runtime svelte --width 1600 --out shots/x.png",
     "  visual every route of every screen in both hosts, light 1600 (+390): xgen visual --out shots/visual-base, then --out shots/visual-now --against shots/visual-base",
     "  list   what there is",

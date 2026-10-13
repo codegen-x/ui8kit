@@ -47,6 +47,7 @@
   },
   "devDependencies": {
     "@types/bun": "^1.4.2",
+    "html-validate": "^11.16.2",
     "ui8px": "0.2.4"
   }
 }
