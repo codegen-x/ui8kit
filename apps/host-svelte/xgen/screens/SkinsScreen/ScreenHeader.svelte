@@ -2,7 +2,7 @@
 <!-- Source: xgen/specs/screens/skins.json -->
 <!-- The ScreenHeader part of SkinsScreen: its own file, so each file of the screen opens on one Block. -->
 <script lang="ts">
-  import { Block, Button, Container, Link, LinkPlain, Nav } from "@ui8kit/svelte-ui";
+  import { Block, Button, Container, Link, LinkPlain, NavBlock } from "@ui8kit/svelte-ui";
   import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
   import { ui } from "@ui8kit/app-shared/content";
 
@@ -22,7 +22,7 @@
     <Link href="#/" variant="default" class="text-lg font-bold" data-testid="brand">
       {ui.skins.title}
     </Link>
-    <Nav class="flex flex-wrap items-center gap-4" aria-label={ui.skins.navLabel}>
+    <NavBlock label={ui.skins.navLabel} class="flex flex-wrap items-center gap-4">
       <Link href="/catalog/" variant="default" class="text-sm font-medium" data-testid="catalog-link">
         {ui.catalog.title}
       </Link>
@@ -32,6 +32,6 @@
       <Button variant="outline" size="sm" data-testid="theme-toggle" onclick={() => actions.toggleTheme()}>
         {ui.theme.toggle}
       </Button>
-    </Nav>
+    </NavBlock>
   </Container>
 </Block>

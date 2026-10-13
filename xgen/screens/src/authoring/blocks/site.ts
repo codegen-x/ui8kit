@@ -8,6 +8,7 @@ import { cols, density, id, title, tone, tsOf } from "../props";
 import { frame, wide } from "../components/frames";
 import { layoutOf } from "../presets";
 import { featureRecord, featureItem, featureCards, featureRows } from "../components/features";
+import { navBlockOf } from "../components/landmarks";
 
 const O = "organism.";
 
@@ -28,7 +29,7 @@ const siteHeader = spec(`${O}site-header`, "SiteHeader", "The page header: a ski
       use("LinkPlain", { props: { Href: "#main-content", Class: "sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border" }, attrs: { "data-testid": "skip-link" } }, text(ref("labels.skip"))),
       use("Container", { attrs: { "data-slot": "container" }, props: { Class: cn(wide, "flex flex-wrap gap-4 py-4", cond(eq(ref("layout"), "stacked"), "flex-col items-center", "items-center justify-between")) } },
         use("Link", { props: { Href: "#/", Variant: "default", Class: "text-lg font-medium" }, attrs: { "data-testid": "brand" } }, text(ref("labels.brand"))),
-        use("Nav", { props: {}, attrs: { "aria-label": ref("labels.nav"), "data-testid": "site-nav" } },
+        navBlockOf(ref("labels.nav"), undefined, "site-nav",
           use("Group", { props: { Gap: "4", Align: "center" } },
             use("Link", { props: { Href: "#/", Variant: "default", AriaCurrent: cond(eq(ref("current"), "home"), "page", undef()) }, attrs: { "data-testid": "nav-link" } }, text(ref("labels.home"))),
             use("Link", { props: { Href: "#/pricing", Variant: "default", AriaCurrent: cond(eq(ref("current"), "pricing"), "page", undef()) }, attrs: { "data-testid": "nav-link" } }, text(ref("labels.pricing"))))),
@@ -49,7 +50,7 @@ const siteFooter = spec(`${O}site-footer`, "SiteFooter", "The page footer: the c
     use("Block", { props: { Tag: "footer", Class: "mt-12 border-t border-border" }, attrs: { "data-testid": "site-footer", "data-layout": ref("layout") } },
       use("Container", { attrs: { "data-slot": "container" }, props: { Class: cn(wide, "flex flex-wrap items-center gap-4", cond(eq(ref("density"), "compact"), "py-4", "py-6"), cond(eq(ref("layout"), "centered"), "flex-col text-center", "justify-between")) } },
         use("Text", { props: { Size: "sm", Class: "text-muted-foreground" }, attrs: { "data-testid": "copyright" } }, text(ref("labels.copyright"))),
-        use("Nav", { props: {}, attrs: { "aria-label": ref("labels.nav") } },
+        navBlockOf(ref("labels.nav"), undefined, undefined,
           use("Group", { props: { Gap: "4" } },
             use("Link", { props: { Href: "#/", Variant: "default" } }, text(ref("labels.home"))),
             use("Link", { props: { Href: "#/pricing", Variant: "default" } }, text(ref("labels.pricing"))))))),

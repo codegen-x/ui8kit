@@ -25,7 +25,7 @@ export const footerFigures = spec("pattern.footer-figures", "FooterFigures", "Th
 export const footerGroupCards = spec("pattern.footer-group-cards", "FooterGroupCards", "The link groups of FooterSplit as cards: a glyph and the group title over its links, four across on wide screens.", {
   typeImports: [{ from: "MegaMenu", names: ["MegaGroup"] }],
   props: groupsProp,
-  view: [use("Nav", { props: {}, attrs: { "aria-label": ref("label") } },
+  view: [use("Block", { props: { Tag: "nav" }, attrs: { "aria-label": ref("label") } },
     use("Box", { props: { Class: "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4" } },
       each(ref("groups"), "g", ref("g.id"), use("Stack", { props: { Gap: "4", Align: "stretch", Class: surface("p-6") }, attrs: { "data-testid": "group" } },
         use("Group", { props: { Gap: "2", Align: "center" } }, tile("g.icon"), strong(ref("g.title"), "sm")), links("g.links", "")))))],
@@ -34,7 +34,7 @@ export const footerGroupCards = spec("pattern.footer-group-cards", "FooterGroupC
 export const footerLinkColumns = spec("pattern.footer-link-columns", "FooterLinkColumns", "The first three link groups of FooterSplit as small columns beside each other.", {
   typeImports: [{ from: "MegaMenu", names: ["MegaGroup"] }],
   props: groupsProp,
-  view: [use("Nav", { props: {}, attrs: { "aria-label": ref("label") } },
+  view: [use("Block", { props: { Tag: "nav" }, attrs: { "aria-label": ref("label") } },
     use("Box", { props: { Class: "grid grid-cols-2 gap-8 sm:grid-cols-3" } },
       first("groups", "g", 3, use("Stack", { props: { Gap: "2" }, attrs: { "data-testid": "group" } }, strong(ref("g.title"), "sm"), links("g.links", "")))))],
 });

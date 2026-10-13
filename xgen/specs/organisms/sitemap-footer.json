@@ -423,45 +423,49 @@
                           ]
                         },
                         {
-                          "use": "Nav",
-                          "props": {},
-                          "attrs": {
-                            "aria-label": {
+                          "organism": "NavBlock",
+                          "props": {
+                            "label": {
                               "$": "label"
                             }
                           },
-                          "children": [
-                            {
-                              "use": "Group",
-                              "props": {
-                                "Gap": "4",
-                                "Class": "flex-wrap"
-                              },
-                              "children": [
+                          "slots": {
+                            "children": {
+                              "args": [],
+                              "do": [
                                 {
-                                  "each": {
-                                    "$": "groups"
+                                  "use": "Group",
+                                  "props": {
+                                    "Gap": "4",
+                                    "Class": "flex-wrap"
                                   },
-                                  "as": "g",
-                                  "key": {
-                                    "$": "g.id"
-                                  },
-                                  "do": [
+                                  "children": [
                                     {
-                                      "use": "Link",
-                                      "props": {
-                                        "Href": "#/",
-                                        "Variant": "default",
-                                        "Class": "text-sm"
+                                      "each": {
+                                        "$": "groups"
                                       },
-                                      "attrs": {
-                                        "data-testid": "group"
+                                      "as": "g",
+                                      "key": {
+                                        "$": "g.id"
                                       },
-                                      "children": [
+                                      "do": [
                                         {
-                                          "text": {
-                                            "$": "g.title"
-                                          }
+                                          "use": "Link",
+                                          "props": {
+                                            "Href": "#/",
+                                            "Variant": "default",
+                                            "Class": "text-sm"
+                                          },
+                                          "attrs": {
+                                            "data-testid": "group"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "g.title"
+                                              }
+                                            }
+                                          ]
                                         }
                                       ]
                                     }
@@ -469,7 +473,7 @@
                                 }
                               ]
                             }
-                          ]
+                          }
                         }
                       ]
                     }

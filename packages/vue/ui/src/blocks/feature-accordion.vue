@@ -21,7 +21,6 @@ export type FeatureAccordionProps = {
 
 <script setup lang="ts">
 import Disclosure from "../primitives/disclosure/disclosure.vue";
-import Group from "../primitives/group/group.vue";
 import Inline from "../primitives/inline/inline.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
@@ -60,12 +59,12 @@ const {
         data-testid="item"
       >
         <Summary variant="item">
-          <Group tag="span" gap="4" align="center">
+          <Inline class="flex min-w-0 items-center justify-start gap-4">
             <LucideIcon :name="f.icon" :size="20" />
             <Inline class="text-base font-semibold">
               {{ f.title }}
             </Inline>
-          </Group>
+          </Inline>
         </Summary>
         <Text size="sm" class="pb-4 text-muted-foreground">
           {{ f.text }}

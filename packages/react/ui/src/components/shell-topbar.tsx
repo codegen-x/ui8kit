@@ -13,9 +13,9 @@ import { Link } from "../primitives/link/link";
 import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
-import { Nav } from "../primitives/nav/nav";
 import { Text } from "../primitives/text/text";
 import { MediaFrame } from "../components/media-frame";
+import { NavBlock } from "../components/nav-block";
 import { SearchPalette } from "../components/search-palette";
 import { cn } from "../utils";
 import type { ShellNav } from "../blocks/dashboard-shell.types";
@@ -43,7 +43,7 @@ export function ShellTopbar({ nav, brand = "show", links = "hide", search = "sho
         </Group>
       ) : null}
       {((links as string) === "show") ? (
-        <Nav className="hidden lg:block" aria-label={nav.label}>
+        <NavBlock label={nav.label} className="hidden lg:block">
           <List className="m-0 flex list-none items-center gap-2 p-0">
             {(nav.links ?? []).map((l) => (
               <ListItem key={l.id}>
@@ -67,7 +67,7 @@ export function ShellTopbar({ nav, brand = "show", links = "hide", search = "sho
               </ListItem>
             ))}
           </List>
-        </Nav>
+        </NavBlock>
       ) : null}
       {((search as string) === "show") ? (
         <>

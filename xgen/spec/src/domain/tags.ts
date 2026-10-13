@@ -22,8 +22,10 @@ export const TAG_GROUPS = {
   Media: ["img", "picture", "source"],
   Disclosure: ["details", "summary"],
   Container: ["div", "main", "section"],
-  Stack: ["div", "ul", "ol", "span"],
-  Group: ["div", "fieldset", "dl", "span"],
+  Stack: ["div", "ul", "ol"],
+  Group: ["div", "fieldset", "dl"],
+  // Text: a block of text (p, blockquote, figcaption, address, pre) or an inline element
+  Text: ["p", "blockquote", "figcaption", "address", "pre", "span", "em", "strong", "small", "abbr", "cite", "code", "kbd", "mark", "time", "data", "var", "samp", "sub", "sup", "b", "i", "u", "s", "q", "dfn", "bdo", "bdi", "ins", "del"],
 } as const;
 
 export type TagGroupName = keyof typeof TAG_GROUPS;

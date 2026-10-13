@@ -5,12 +5,12 @@
  * columns, item (card, plain), avatar (none, image), tone, density.
  */
 import { type ReactNode } from "react";
-import { Article } from "../primitives/article/article";
 import { Grid } from "../primitives/grid/grid";
 import { Group } from "../primitives/group/group";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { Title } from "../primitives/title/title";
+import { ArticleBlock } from "../components/article-block";
 import { MediaFrame } from "../components/media-frame";
 import { Rating } from "../components/rating";
 import { SectionFrame } from "../components/section-frame";
@@ -50,7 +50,7 @@ export function ReviewList({
     >
       <Grid cols={(((layout as string) === "grid") ? "1-3" : "1")} className="gap-4" data-testid="items">
         {(reviews ?? []).map((r) => (
-          <Article key={r.id}
+          <ArticleBlock key={r.id}
             className={cn(
               "flex h-full flex-col gap-4",
               (
@@ -58,7 +58,7 @@ export function ReviewList({
                 : "border-b border-border pb-4"
               )
             )}
-            data-testid="item"
+            testid="item"
           >
             <Rating value={r.rating} label={tpl(labels.ratingLabel, r.rating)} size={16} />
             <Title as={3} size="base" weight="bold">
@@ -80,7 +80,7 @@ export function ReviewList({
                 </Text>
               </Stack>
             </Group>
-          </Article>
+          </ArticleBlock>
         ))}
       </Grid>
     </SectionFrame>

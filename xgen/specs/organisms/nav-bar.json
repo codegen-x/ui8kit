@@ -290,30 +290,33 @@
                       },
                       "children": [
                         {
-                          "use": "Nav",
+                          "organism": "NavBlock",
                           "props": {
-                            "Class": "md:justify-self-start"
-                          },
-                          "attrs": {
-                            "aria-label": {
+                            "label": {
                               "$": "label"
                             },
-                            "data-testid": "site-nav"
+                            "className": "md:justify-self-start",
+                            "testid": "site-nav"
                           },
-                          "children": [
-                            {
-                              "organism": "NavLinks",
-                              "props": {
-                                "links": {
-                                  "$": "links"
-                                },
-                                "current": {
-                                  "$": "current"
-                                },
-                                "side": "left"
-                              }
+                          "slots": {
+                            "children": {
+                              "args": [],
+                              "do": [
+                                {
+                                  "organism": "NavLinks",
+                                  "props": {
+                                    "links": {
+                                      "$": "links"
+                                    },
+                                    "current": {
+                                      "$": "current"
+                                    },
+                                    "side": "left"
+                                  }
+                                }
+                              ]
                             }
-                          ]
+                          }
                         },
                         {
                           "use": "Box",
@@ -351,27 +354,31 @@
                           },
                           "children": [
                             {
-                              "use": "Nav",
-                              "props": {},
-                              "attrs": {
-                                "aria-label": {
+                              "organism": "NavBlock",
+                              "props": {
+                                "label": {
                                   "$": "label"
                                 }
                               },
-                              "children": [
-                                {
-                                  "organism": "NavLinks",
-                                  "props": {
-                                    "links": {
-                                      "$": "links"
-                                    },
-                                    "current": {
-                                      "$": "current"
-                                    },
-                                    "side": "right"
-                                  }
+                              "slots": {
+                                "children": {
+                                  "args": [],
+                                  "do": [
+                                    {
+                                      "organism": "NavLinks",
+                                      "props": {
+                                        "links": {
+                                          "$": "links"
+                                        },
+                                        "current": {
+                                          "$": "current"
+                                        },
+                                        "side": "right"
+                                      }
+                                    }
+                                  ]
                                 }
-                              ]
+                              }
                             },
                             {
                               "organism": "NavActions",
@@ -454,30 +461,33 @@
                       ]
                     },
                     {
-                      "use": "Nav",
+                      "organism": "NavBlock",
                       "props": {
-                        "Class": "order-last w-full overflow-x-auto md:order-none md:w-auto [&>div]:flex-nowrap md:[&>div]:flex-wrap [&_a]:shrink-0"
-                      },
-                      "attrs": {
-                        "aria-label": {
+                        "label": {
                           "$": "label"
                         },
-                        "data-testid": "site-nav"
+                        "className": "order-last w-full overflow-x-auto md:order-none md:w-auto [&>div]:flex-nowrap md:[&>div]:flex-wrap [&_a]:shrink-0",
+                        "testid": "site-nav"
                       },
-                      "children": [
-                        {
-                          "organism": "NavLinks",
-                          "props": {
-                            "links": {
-                              "$": "links"
-                            },
-                            "current": {
-                              "$": "current"
-                            },
-                            "side": "all"
-                          }
+                      "slots": {
+                        "children": {
+                          "args": [],
+                          "do": [
+                            {
+                              "organism": "NavLinks",
+                              "props": {
+                                "links": {
+                                  "$": "links"
+                                },
+                                "current": {
+                                  "$": "current"
+                                },
+                                "side": "all"
+                              }
+                            }
+                          ]
                         }
-                      ]
+                      }
                     },
                     {
                       "organism": "NavActions",

@@ -10,7 +10,7 @@ export type QuoteProofProps = {
 </script>
 
 <script setup lang="ts">
-import Figure from "../primitives/figure/figure.vue";
+import Block from "../primitives/block/block.vue";
 import Text from "../primitives/text/text.vue";
 import { cn } from "../utils";
 
@@ -18,12 +18,16 @@ const { quote, quoteBy, center = false } = defineProps<QuoteProofProps>();
 </script>
 
 <template>
-  <Figure :class="cn('flex flex-col gap-2', (center ? 'items-center text-center' : ''))" data-testid="proof">
+  <Block
+    tag="figure"
+    :class="cn('flex flex-col gap-2', (center ? 'items-center text-center' : ''))"
+    data-testid="proof"
+  >
     <Text size="xl">
       {{ quote }}
     </Text>
     <Text size="sm" class="text-muted-foreground">
       {{ quoteBy }}
     </Text>
-  </Figure>
+  </Block>
 </template>

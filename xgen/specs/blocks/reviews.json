@@ -70,6 +70,7 @@
     }
   ],
   "slots": [
+    "ArticleBlock",
     "MediaFrame",
     "Rating",
     "SectionFrame"

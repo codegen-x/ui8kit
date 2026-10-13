@@ -24,11 +24,10 @@ export type VideoGridProps = {
 <script setup lang="ts">
 import Box from "../primitives/box/box.vue";
 import Button from "../primitives/button/button.vue";
-import Figure from "../primitives/figure/figure.vue";
-import FigureCaption from "../primitives/figure/figure-caption.vue";
 import Grid from "../primitives/grid/grid.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Text from "../primitives/text/text.vue";
+import FigureBlock from "../components/figure-block.vue";
 import MediaFrame from "../components/media-frame.vue";
 import SectionFrame from "../components/section-frame.vue";
 import { tpl } from "../utils";
@@ -50,7 +49,7 @@ const emit = defineEmits<{ play: [id: string] }>();
 <template>
   <SectionFrame :id="id" :title="title" :tone="tone" :density="density">
     <Grid :cols="cols" class="gap-4" data-testid="items">
-      <Figure v-for="q in quotes" :key="q.id" class="m-0 flex flex-col gap-4" data-testid="item">
+      <FigureBlock v-for="q in quotes" :key="q.id" class="m-0 flex flex-col gap-4" testid="item">
         <Box class="relative">
           <MediaFrame :alt="q.author" ratio="16/9" />
           <Button
@@ -77,15 +76,15 @@ const emit = defineEmits<{ play: [id: string] }>();
             </Text>
           </Box>
         </Box>
-        <FigureCaption v-if="((caption as string) === 'below')" data-testid="caption">
+        <Text v-if="((caption as string) === 'below')" tag="figcaption" data-testid="caption">
           <Text size="sm" weight="semibold">
             {{ q.author }}
           </Text>
           <Text size="xs" class="text-muted-foreground">
             {{ tpl(byLine, q.role, q.company) }}
           </Text>
-        </FigureCaption>
-      </Figure>
+        </Text>
+      </FigureBlock>
     </Grid>
   </SectionFrame>
 </template>

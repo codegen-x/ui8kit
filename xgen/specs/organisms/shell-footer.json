@@ -74,45 +74,49 @@
           ]
         },
         {
-          "use": "Nav",
-          "props": {},
-          "attrs": {
-            "aria-label": {
+          "organism": "NavBlock",
+          "props": {
+            "label": {
               "$": "nav.footerLabel"
             }
           },
-          "children": [
-            {
-              "use": "List",
-              "props": {
-                "Class": "m-0 flex list-none items-center gap-4 p-0"
-              },
-              "children": [
+          "slots": {
+            "children": {
+              "args": [],
+              "do": [
                 {
-                  "each": {
-                    "$": "nav.footer"
+                  "use": "List",
+                  "props": {
+                    "Class": "m-0 flex list-none items-center gap-4 p-0"
                   },
-                  "as": "f",
-                  "key": {
-                    "$": "f.id"
-                  },
-                  "do": [
+                  "children": [
                     {
-                      "use": "ListItem",
-                      "children": [
+                      "each": {
+                        "$": "nav.footer"
+                      },
+                      "as": "f",
+                      "key": {
+                        "$": "f.id"
+                      },
+                      "do": [
                         {
-                          "use": "Link",
-                          "props": {
-                            "Href": "#/",
-                            "Variant": "muted",
-                            "Size": "sm",
-                            "Class": "text-xs"
-                          },
+                          "use": "ListItem",
                           "children": [
                             {
-                              "text": {
-                                "$": "f.name"
-                              }
+                              "use": "Link",
+                              "props": {
+                                "Href": "#/",
+                                "Variant": "muted",
+                                "Size": "sm",
+                                "Class": "text-xs"
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "f.name"
+                                  }
+                                }
+                              ]
                             }
                           ]
                         }
@@ -122,7 +126,7 @@
                 }
               ]
             }
-          ]
+          }
         }
       ]
     }

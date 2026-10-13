@@ -73,6 +73,7 @@
     }
   ],
   "slots": [
+    "FigureBlock",
     "MediaFrame",
     "SectionFrame"
   ],

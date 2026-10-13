@@ -133,115 +133,118 @@
               ]
             },
             {
-              "use": "Nav",
+              "organism": "NavBlock",
               "props": {
-                "Class": "flex-1"
-              },
-              "attrs": {
-                "aria-label": {
+                "label": {
                   "$": "label"
-                }
+                },
+                "className": "flex-1"
               },
-              "children": [
-                {
-                  "use": "Group",
-                  "props": {
-                    "Gap": "4",
-                    "Align": "center",
-                    "Class": "flex-wrap"
-                  },
-                  "children": [
+              "slots": {
+                "children": {
+                  "args": [],
+                  "do": [
                     {
-                      "use": "ButtonPlain",
+                      "use": "Group",
                       "props": {
-                        "Type": "button",
-                        "Class": "inline-flex items-center gap-2 text-sm font-semibold"
-                      },
-                      "attrs": {
-                        "aria-expanded": {
-                          "op": "cond",
-                          "args": [
-                            {
-                              "op": "eq",
-                              "args": [
-                                {
-                                  "$": "panel"
-                                },
-                                "open"
-                              ]
-                            },
-                            "true",
-                            "false"
-                          ]
-                        },
-                        "data-testid": "mega-trigger"
+                        "Gap": "4",
+                        "Align": "center",
+                        "Class": "flex-wrap"
                       },
                       "children": [
                         {
-                          "text": {
-                            "$": "trigger"
-                          }
-                        },
-                        {
-                          "use": "LucideIcon",
+                          "use": "ButtonPlain",
                           "props": {
-                            "Name": "chevron-down",
-                            "Size": 16
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "each": {
-                        "$": "links"
-                      },
-                      "as": "l",
-                      "key": {
-                        "$": "l.id"
-                      },
-                      "do": [
-                        {
-                          "use": "Link",
-                          "props": {
-                            "Href": {
-                              "op": "coalesce",
-                              "args": [
-                                {
-                                  "$": "l.href"
-                                },
-                                "#/"
-                              ]
-                            },
-                            "Variant": "default",
-                            "AriaCurrent": {
+                            "Type": "button",
+                            "Class": "inline-flex items-center gap-2 text-sm font-semibold"
+                          },
+                          "attrs": {
+                            "aria-expanded": {
                               "op": "cond",
                               "args": [
                                 {
                                   "op": "eq",
                                   "args": [
                                     {
-                                      "$": "l.id"
+                                      "$": "panel"
                                     },
-                                    ""
+                                    "open"
                                   ]
                                 },
-                                "page",
-                                {
-                                  "op": "undef",
-                                  "args": []
-                                }
+                                "true",
+                                "false"
                               ]
                             },
-                            "Class": "text-sm"
-                          },
-                          "attrs": {
-                            "data-testid": "nav-link"
+                            "data-testid": "mega-trigger"
                           },
                           "children": [
                             {
                               "text": {
-                                "$": "l.name"
+                                "$": "trigger"
                               }
+                            },
+                            {
+                              "use": "LucideIcon",
+                              "props": {
+                                "Name": "chevron-down",
+                                "Size": 16
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "each": {
+                            "$": "links"
+                          },
+                          "as": "l",
+                          "key": {
+                            "$": "l.id"
+                          },
+                          "do": [
+                            {
+                              "use": "Link",
+                              "props": {
+                                "Href": {
+                                  "op": "coalesce",
+                                  "args": [
+                                    {
+                                      "$": "l.href"
+                                    },
+                                    "#/"
+                                  ]
+                                },
+                                "Variant": "default",
+                                "AriaCurrent": {
+                                  "op": "cond",
+                                  "args": [
+                                    {
+                                      "op": "eq",
+                                      "args": [
+                                        {
+                                          "$": "l.id"
+                                        },
+                                        ""
+                                      ]
+                                    },
+                                    "page",
+                                    {
+                                      "op": "undef",
+                                      "args": []
+                                    }
+                                  ]
+                                },
+                                "Class": "text-sm"
+                              },
+                              "attrs": {
+                                "data-testid": "nav-link"
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "l.name"
+                                  }
+                                }
+                              ]
                             }
                           ]
                         }
@@ -249,7 +252,7 @@
                     }
                   ]
                 }
-              ]
+              }
             }
           ]
         }

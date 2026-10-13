@@ -41,7 +41,7 @@ export const paymentOptions = spec(`${P}payment-options`, "PaymentOptions", "Way
       use("Label", { props: { Class: "flex items-center gap-4 rounded p-4 inset-ring inset-ring-border has-checked:inset-ring-foreground" }, attrs: { "data-testid": "payment" } },
         use("Radio", { props: { Name: ref("name"), Value: ref("p.id"), Checked: eq(ref("p.id"), ref("checked")) } }),
         use("LucideIcon", { props: { Name: ref("p.icon"), Size: 20, Class: "shrink-0" } }),
-        use("Stack", { props: { Tag: "span", Gap: "0" } }, use("Inline", { props: { Class: "text-sm font-semibold" } }, text(ref("p.title"))), use("Inline", { props: { Class: "text-xs text-muted-foreground" } }, text(ref("p.text"))))))),
+        use("Inline", { props: { Class: "flex flex-col items-start justify-start gap-0" } }, use("Inline", { props: { Class: "text-sm font-semibold" } }, text(ref("p.title"))), use("Inline", { props: { Class: "text-xs text-muted-foreground" } }, text(ref("p.text"))))))),
   ],
 });
 

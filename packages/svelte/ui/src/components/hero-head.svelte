@@ -27,7 +27,7 @@
   import Group from "../primitives/group/group.svelte";
   import Link from "../primitives/link/link.svelte";
   import LinkPlain from "../primitives/link-plain/link-plain.svelte";
-  import Nav from "../primitives/nav/nav.svelte";
+  import NavBlock from "../components/nav-block.svelte";
   import { defaults } from "../presets/defaults";
   import { cn } from "../utils";
 
@@ -67,7 +67,7 @@
   >
     {brand}
   </Link>
-  <Nav aria-label={navLabel} data-testid="site-nav">
+  <NavBlock label={navLabel} testid="site-nav">
     <Group gap="8" align="center" class="flex-wrap">
       {#each links as l (l.id)}
         <Link
@@ -81,7 +81,7 @@
         </Link>
       {/each}
     </Group>
-  </Nav>
+  </NavBlock>
   <Group gap="2" align="center">
     {#if login}
       <Button

@@ -130,81 +130,84 @@
                   },
                   "then": [
                     {
-                      "use": "Nav",
+                      "organism": "NavBlock",
                       "props": {
-                        "Class": "md:sticky md:top-4"
-                      },
-                      "attrs": {
-                        "aria-label": {
+                        "label": {
                           "$": "tocTitle"
                         },
-                        "data-testid": "toc"
+                        "className": "md:sticky md:top-4",
+                        "testid": "toc"
                       },
-                      "children": [
-                        {
-                          "use": "Stack",
-                          "props": {
-                            "Gap": "2"
-                          },
-                          "children": [
+                      "slots": {
+                        "children": {
+                          "args": [],
+                          "do": [
                             {
-                              "use": "Text",
+                              "use": "Stack",
                               "props": {
-                                "Size": "sm",
-                                "Weight": "semibold"
+                                "Gap": "2"
                               },
                               "children": [
                                 {
-                                  "text": {
-                                    "$": "tocTitle"
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "use": "List",
-                              "props": {
-                                "Class": "m-0 flex list-none flex-col gap-2 p-0"
-                              },
-                              "children": [
-                                {
-                                  "each": {
-                                    "$": "sections"
+                                  "use": "Text",
+                                  "props": {
+                                    "Size": "sm",
+                                    "Weight": "semibold"
                                   },
-                                  "as": "s",
-                                  "key": {
-                                    "$": "s.id"
-                                  },
-                                  "do": [
+                                  "children": [
                                     {
-                                      "use": "ListItem",
-                                      "children": [
+                                      "text": {
+                                        "$": "tocTitle"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "use": "List",
+                                  "props": {
+                                    "Class": "m-0 flex list-none flex-col gap-2 p-0"
+                                  },
+                                  "children": [
+                                    {
+                                      "each": {
+                                        "$": "sections"
+                                      },
+                                      "as": "s",
+                                      "key": {
+                                        "$": "s.id"
+                                      },
+                                      "do": [
                                         {
-                                          "use": "Link",
-                                          "props": {
-                                            "Href": {
-                                              "op": "tpl",
-                                              "args": [
-                                                "#{0}-{1}",
-                                                {
-                                                  "$": "id"
-                                                },
-                                                {
-                                                  "$": "s.id"
-                                                }
-                                              ]
-                                            },
-                                            "Variant": "default",
-                                            "Class": "text-sm text-muted-foreground"
-                                          },
-                                          "attrs": {
-                                            "data-testid": "toc-link"
-                                          },
+                                          "use": "ListItem",
                                           "children": [
                                             {
-                                              "text": {
-                                                "$": "s.title"
-                                              }
+                                              "use": "Link",
+                                              "props": {
+                                                "Href": {
+                                                  "op": "tpl",
+                                                  "args": [
+                                                    "#{0}-{1}",
+                                                    {
+                                                      "$": "id"
+                                                    },
+                                                    {
+                                                      "$": "s.id"
+                                                    }
+                                                  ]
+                                                },
+                                                "Variant": "default",
+                                                "Class": "text-sm text-muted-foreground"
+                                              },
+                                              "attrs": {
+                                                "data-testid": "toc-link"
+                                              },
+                                              "children": [
+                                                {
+                                                  "text": {
+                                                    "$": "s.title"
+                                                  }
+                                                }
+                                              ]
                                             }
                                           ]
                                         }
@@ -216,7 +219,7 @@
                             }
                           ]
                         }
-                      ]
+                      }
                     }
                   ]
                 },
@@ -306,8 +309,9 @@
                                   },
                                   "then": [
                                     {
-                                      "use": "Blockquote",
+                                      "use": "Text",
                                       "props": {
+                                        "Tag": "blockquote",
                                         "Class": "m-0 border-l border-border pl-4 text-lg"
                                       },
                                       "attrs": {

@@ -21,16 +21,15 @@
 </script>
 
 <script lang="ts">
-  import Blockquote from "../primitives/blockquote/blockquote.svelte";
   import Box from "../primitives/box/box.svelte";
   import Grid from "../primitives/grid/grid.svelte";
   import Link from "../primitives/link/link.svelte";
   import List from "../primitives/list/list.svelte";
   import ListItem from "../primitives/list/list-item.svelte";
-  import Nav from "../primitives/nav/nav.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
+  import NavBlock from "../components/nav-block.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import { cn, tpl } from "../utils";
 
@@ -54,7 +53,7 @@
     )}
   >
     {#if ((layout as string) === "toc")}
-      <Nav class="md:sticky md:top-4" aria-label={tocTitle} data-testid="toc">
+      <NavBlock label={tocTitle} class="md:sticky md:top-4" testid="toc">
         <Stack gap="2">
           <Text size="sm" weight="semibold">
             {tocTitle}
@@ -74,7 +73,7 @@
             {/each}
           </List>
         </Stack>
-      </Nav>
+      </NavBlock>
     {/if}
     <Stack gap="8" align="stretch" class="mx-auto w-full max-w-2xl min-w-0" data-testid="article">
       {#each sections as s (s.id)}
@@ -87,9 +86,9 @@
           </Text>
           {#if ((quotes as string) === "show")}
             {#if s.quote}
-              <Blockquote class="m-0 border-l border-border pl-4 text-lg" data-testid="quote">
+              <Text tag="blockquote" class="m-0 border-l border-border pl-4 text-lg" data-testid="quote">
                 {s.quote}
-              </Blockquote>
+              </Text>
             {/if}
           {/if}
         </Box>

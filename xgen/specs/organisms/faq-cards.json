@@ -65,128 +65,131 @@
           },
           "do": [
             {
-              "use": "Article",
+              "organism": "ArticleBlock",
               "props": {
-                "Class": "rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-6"
+                "className": "rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-6",
+                "testid": "faq-card"
               },
-              "attrs": {
-                "data-testid": "faq-card"
-              },
-              "children": [
-                {
-                  "when": {
-                    "op": "eq",
-                    "args": [
-                      {
-                        "$": "cards"
+              "slots": {
+                "children": {
+                  "args": [],
+                  "do": [
+                    {
+                      "when": {
+                        "op": "eq",
+                        "args": [
+                          {
+                            "$": "cards"
+                          },
+                          "icons"
+                        ]
                       },
-                      "icons"
-                    ]
-                  },
-                  "then": [
+                      "then": [
+                        {
+                          "use": "Box",
+                          "props": {
+                            "Class": "flex size-10 shrink-0 items-center justify-center rounded bg-muted"
+                          },
+                          "children": [
+                            {
+                              "use": "LucideIcon",
+                              "props": {
+                                "Name": {
+                                  "$": "q.icon"
+                                },
+                                "Size": 20
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "use": "Stack",
+                      "props": {
+                        "Gap": "2"
+                      },
+                      "children": [
+                        {
+                          "use": "Badge",
+                          "props": {
+                            "Variant": "secondary",
+                            "Size": "sm",
+                            "Class": "w-fit"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "q.category"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "use": "Title",
+                          "props": {
+                            "As": 3,
+                            "Size": "base",
+                            "Weight": "semibold"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "q.question"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "use": "Text",
+                          "props": {
+                            "Size": "sm",
+                            "Class": "text-muted-foreground"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "q.answer"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
                     {
                       "use": "Box",
                       "props": {
-                        "Class": "flex size-10 shrink-0 items-center justify-center rounded bg-muted"
+                        "Class": "mt-auto"
                       },
                       "children": [
                         {
-                          "use": "LucideIcon",
+                          "use": "Link",
                           "props": {
-                            "Name": {
-                              "$": "q.icon"
+                            "Href": "#/faq",
+                            "Variant": "default",
+                            "Size": "sm",
+                            "Class": "font-medium"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "labels.more"
+                              }
                             },
-                            "Size": 20
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "use": "Stack",
-                  "props": {
-                    "Gap": "2"
-                  },
-                  "children": [
-                    {
-                      "use": "Badge",
-                      "props": {
-                        "Variant": "secondary",
-                        "Size": "sm",
-                        "Class": "w-fit"
-                      },
-                      "children": [
-                        {
-                          "text": {
-                            "$": "q.category"
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "use": "Title",
-                      "props": {
-                        "As": 3,
-                        "Size": "base",
-                        "Weight": "semibold"
-                      },
-                      "children": [
-                        {
-                          "text": {
-                            "$": "q.question"
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "use": "Text",
-                      "props": {
-                        "Size": "sm",
-                        "Class": "text-muted-foreground"
-                      },
-                      "children": [
-                        {
-                          "text": {
-                            "$": "q.answer"
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "use": "Box",
-                  "props": {
-                    "Class": "mt-auto"
-                  },
-                  "children": [
-                    {
-                      "use": "Link",
-                      "props": {
-                        "Href": "#/faq",
-                        "Variant": "default",
-                        "Size": "sm",
-                        "Class": "font-medium"
-                      },
-                      "children": [
-                        {
-                          "text": {
-                            "$": "labels.more"
-                          }
-                        },
-                        {
-                          "use": "LucideIcon",
-                          "props": {
-                            "Name": "arrow-right",
-                            "Size": 16
-                          }
+                            {
+                              "use": "LucideIcon",
+                              "props": {
+                                "Name": "arrow-right",
+                                "Size": 16
+                              }
+                            }
+                          ]
                         }
                       ]
                     }
                   ]
                 }
-              ]
+              }
             }
           ]
         }

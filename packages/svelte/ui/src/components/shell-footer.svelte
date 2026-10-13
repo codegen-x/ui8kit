@@ -19,8 +19,8 @@
   import Link from "../primitives/link/link.svelte";
   import List from "../primitives/list/list.svelte";
   import ListItem from "../primitives/list/list-item.svelte";
-  import Nav from "../primitives/nav/nav.svelte";
   import Text from "../primitives/text/text.svelte";
+  import NavBlock from "../components/nav-block.svelte";
   import { cn } from "../utils";
 
   let { nav, place = "full" }: ShellFooterProps = $props();
@@ -38,7 +38,7 @@
   <Text size="xs" class="text-muted-foreground">
     {nav.copyright}
   </Text>
-  <Nav aria-label={nav.footerLabel}>
+  <NavBlock label={nav.footerLabel}>
     <List class="m-0 flex list-none items-center gap-4 p-0">
       {#each nav.footer as f (f.id)}
         <ListItem>
@@ -48,5 +48,5 @@
         </ListItem>
       {/each}
     </List>
-  </Nav>
+  </NavBlock>
 </Block>

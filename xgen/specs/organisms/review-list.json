@@ -173,9 +173,9 @@
                   },
                   "do": [
                     {
-                      "use": "Article",
+                      "organism": "ArticleBlock",
                       "props": {
-                        "Class": {
+                        "className": {
                           "op": "cn",
                           "args": [
                             "flex h-full flex-col gap-4",
@@ -196,123 +196,126 @@
                               ]
                             }
                           ]
-                        }
+                        },
+                        "testid": "item"
                       },
-                      "attrs": {
-                        "data-testid": "item"
-                      },
-                      "children": [
-                        {
-                          "organism": "Rating",
-                          "props": {
-                            "value": {
-                              "$": "r.rating"
-                            },
-                            "label": {
-                              "op": "tpl",
-                              "args": [
-                                {
-                                  "$": "labels.ratingLabel"
-                                },
-                                {
+                      "slots": {
+                        "children": {
+                          "args": [],
+                          "do": [
+                            {
+                              "organism": "Rating",
+                              "props": {
+                                "value": {
                                   "$": "r.rating"
-                                }
-                              ]
-                            },
-                            "size": 16
-                          }
-                        },
-                        {
-                          "use": "Title",
-                          "props": {
-                            "As": 3,
-                            "Size": "base",
-                            "Weight": "bold"
-                          },
-                          "children": [
-                            {
-                              "text": {
-                                "$": "r.title"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "use": "Text",
-                          "props": {
-                            "Size": "sm",
-                            "Class": "text-muted-foreground"
-                          },
-                          "children": [
-                            {
-                              "text": {
-                                "$": "r.text"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "use": "Group",
-                          "props": {
-                            "Gap": "4",
-                            "Align": "center",
-                            "Class": "mt-auto"
-                          },
-                          "children": [
-                            {
-                              "when": {
-                                "op": "eq",
-                                "args": [
-                                  {
-                                    "$": "avatar"
-                                  },
-                                  "image"
-                                ]
-                              },
-                              "then": [
-                                {
-                                  "organism": "MediaFrame",
-                                  "props": {
-                                    "alt": {
-                                      "$": "r.author"
+                                },
+                                "label": {
+                                  "op": "tpl",
+                                  "args": [
+                                    {
+                                      "$": "labels.ratingLabel"
                                     },
-                                    "ratio": "1/1",
-                                    "className": "size-10 shrink-0 rounded-full"
+                                    {
+                                      "$": "r.rating"
+                                    }
+                                  ]
+                                },
+                                "size": 16
+                              }
+                            },
+                            {
+                              "use": "Title",
+                              "props": {
+                                "As": 3,
+                                "Size": "base",
+                                "Weight": "bold"
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "r.title"
                                   }
                                 }
                               ]
                             },
                             {
-                              "use": "Stack",
+                              "use": "Text",
                               "props": {
-                                "Gap": "0"
+                                "Size": "sm",
+                                "Class": "text-muted-foreground"
                               },
                               "children": [
                                 {
-                                  "use": "Text",
-                                  "props": {
-                                    "Size": "sm",
-                                    "Weight": "semibold"
+                                  "text": {
+                                    "$": "r.text"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "use": "Group",
+                              "props": {
+                                "Gap": "4",
+                                "Align": "center",
+                                "Class": "mt-auto"
+                              },
+                              "children": [
+                                {
+                                  "when": {
+                                    "op": "eq",
+                                    "args": [
+                                      {
+                                        "$": "avatar"
+                                      },
+                                      "image"
+                                    ]
                                   },
-                                  "children": [
+                                  "then": [
                                     {
-                                      "text": {
-                                        "$": "r.author"
+                                      "organism": "MediaFrame",
+                                      "props": {
+                                        "alt": {
+                                          "$": "r.author"
+                                        },
+                                        "ratio": "1/1",
+                                        "className": "size-10 shrink-0 rounded-full"
                                       }
                                     }
                                   ]
                                 },
                                 {
-                                  "use": "Text",
+                                  "use": "Stack",
                                   "props": {
-                                    "Size": "xs",
-                                    "Class": "text-muted-foreground"
+                                    "Gap": "0"
                                   },
                                   "children": [
                                     {
-                                      "text": {
-                                        "$": "r.date"
-                                      }
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "sm",
+                                        "Weight": "semibold"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "r.author"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "xs",
+                                        "Class": "text-muted-foreground"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "r.date"
+                                          }
+                                        }
+                                      ]
                                     }
                                   ]
                                 }
@@ -320,7 +323,7 @@
                             }
                           ]
                         }
-                      ]
+                      }
                     }
                   ]
                 }

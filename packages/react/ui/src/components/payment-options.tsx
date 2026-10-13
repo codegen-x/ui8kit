@@ -7,7 +7,6 @@ import { Inline } from "../primitives/inline/inline";
 import { Label } from "../primitives/label/label";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Radio } from "../primitives/radio/radio";
-import { Stack } from "../primitives/stack/stack";
 import type { Payment } from "./payment-options.types";
 
 export type PaymentOptionsProps = {
@@ -26,14 +25,14 @@ export function PaymentOptions({ payments, name, checked = "" }: PaymentOptionsP
         >
           <Radio name={name} value={p.id} checked={(p.id === checked)} />
           <LucideIcon name={p.icon} size={20} className="shrink-0" />
-          <Stack tag="span" gap="0">
+          <Inline className="flex flex-col items-start justify-start gap-0">
             <Inline className="text-sm font-semibold">
               {p.title}
             </Inline>
             <Inline className="text-xs text-muted-foreground">
               {p.text}
             </Inline>
-          </Stack>
+          </Inline>
         </Label>
       ))}
     </Grid>

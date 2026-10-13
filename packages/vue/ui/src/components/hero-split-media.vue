@@ -16,11 +16,11 @@ export type HeroSplitMediaProps = {
 
 <script setup lang="ts">
 import Box from "../primitives/box/box.vue";
-import Figure from "../primitives/figure/figure.vue";
 import Group from "../primitives/group/group.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
+import FigureBlock from "../components/figure-block.vue";
 import MediaFrame from "../components/media-frame.vue";
 import OfferMedia from "../components/offer-media.vue";
 import { cn } from "../utils";
@@ -33,12 +33,12 @@ const { content, alt, media = "picture" } = defineProps<HeroSplitMediaProps>();
   <OfferMedia v-if="((media as string) === 'card')" :alt="alt" :card="content.card" />
   <Box v-if="((media as string) === 'grid')" class="grid grid-cols-2 gap-4" data-testid="hero-grid">
     <template v-for="(f, i) in content.features" :key="f.id">
-      <Figure v-if="(i < 4)" class="flex flex-col gap-2" data-testid="hero-tile">
+      <FigureBlock v-if="(i < 4)" class="flex flex-col gap-2" testid="hero-tile">
         <MediaFrame :alt="f.title" ratio="1/1" />
         <Text size="xs" class="text-muted-foreground">
           {{ f.title }}
         </Text>
-      </Figure>
+      </FigureBlock>
     </template>
   </Box>
   <Box v-if="((media as string) === 'plans')" class="relative" data-testid="hero-media">

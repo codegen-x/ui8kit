@@ -5,13 +5,12 @@
  * feature cards, or a quote with its author over three figures.
  */
 import { Fragment, type ReactNode } from "react";
-import { Blockquote } from "../primitives/blockquote/blockquote";
 import { Box } from "../primitives/box/box";
-import { Figure } from "../primitives/figure/figure";
 import { Group } from "../primitives/group/group";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
+import { FigureBlock } from "../components/figure-block";
 import { MediaFrame } from "../components/media-frame";
 import type { HeroContent } from "../blocks/hero-split.types";
 
@@ -90,10 +89,10 @@ export function HeroSplitExtras({ content, extra = "none" }: HeroSplitExtrasProp
           {(content.people ?? []).map((p, i) => (
             <Fragment key={p.id}>
               {(i < 1) ? (
-                <Figure className="flex flex-col gap-4" data-testid="hero-quote">
-                  <Blockquote className="text-lg font-medium">
+                <FigureBlock className="flex flex-col gap-4" testid="hero-quote">
+                  <Text tag="blockquote" className="text-lg font-medium">
                     {p.quote}
-                  </Blockquote>
+                  </Text>
                   <Group gap="4" align="center">
                     <MediaFrame alt={p.author} ratio="1/1" className="size-10 shrink-0 rounded-full" />
                     <Stack gap="0">
@@ -105,7 +104,7 @@ export function HeroSplitExtras({ content, extra = "none" }: HeroSplitExtrasProp
                       </Text>
                     </Stack>
                   </Group>
-                </Figure>
+                </FigureBlock>
               ) : null}
             </Fragment>
           ))}

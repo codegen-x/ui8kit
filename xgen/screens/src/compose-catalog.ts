@@ -5,6 +5,7 @@ import { call, each, op, ref, text, use, tpl } from "./build";
 import type { BlockSpec, CatalogTree, OrganismSpec, ScreenSpec, Value, ViewNode } from "./ir";
 import { blockKey, dictKey, expandUse, hoistShared, labelledGroup, pageSection, skipLink, TEXT, variantSection, type OrganismNode } from "./compose-kit";
 import { wide } from "./authoring/components/frames";
+import { navBlockOf } from "./authoring/components/landmarks";
 
 const CARD = "flex flex-col gap-2 rounded p-4 inset-ring inset-ring-border";
 const page = (...children: ViewNode[]): ViewNode => pageSection(use("Container", { props: { Class: `${wide} py-10` } }, use("Stack", { props: { Gap: "8", Align: "stretch" } }, ...children)));
@@ -120,7 +121,7 @@ export function catalogChrome(): ViewNode[] {
       skipLink("sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:shadow"),
       use("Container", { props: { Class: `${wide} flex flex-wrap items-center justify-between gap-4 py-3` } },
         use("Link", { props: { Href: "#/", Variant: "default", Class: "text-lg font-bold" }, attrs: { "data-testid": "brand" } }, text(TEXT("catalog.title"))),
-        use("Nav", { props: { Class: "flex flex-wrap items-center gap-4" }, attrs: { "aria-label": TEXT("catalog.navLabel") } },
+        navBlockOf(TEXT("catalog.navLabel"), "flex flex-wrap items-center gap-4", undefined,
           tab("#/", "catalog.categoriesTab", "tab-categories"), tab("#/pages", "catalog.pagesTitle", "tab-pages"), tab("/blocks/", "blocks.title", "gallery-link"), tab("/skins/", "skins.title", "skins-link"), tab("/discovery/", "discovery.title", "discovery-link"),
           use("Button", { props: { Variant: "outline", Size: "sm" }, on: { click: call("actions.toggleTheme") }, attrs: { "data-testid": "theme-toggle" } }, text(TEXT("theme.toggle")))))),
   ];

@@ -17,12 +17,12 @@
 </script>
 
 <script lang="ts">
-  import Figure from "../primitives/figure/figure.svelte";
   import Group from "../primitives/group/group.svelte";
   import Inline from "../primitives/inline/inline.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
+  import FigureBlock from "../components/figure-block.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import Rating from "../components/rating.svelte";
   import { cn, tpl } from "../utils";
@@ -30,7 +30,7 @@
   let { q, labels, item, layout = "grid" }: QuoteCardProps = $props();
 </script>
 
-<Figure
+<FigureBlock
   class={cn(
     "m-0 flex flex-col gap-4",
     ((item?.kind === "plain") ? "" : "rounded p-6 inset-ring inset-ring-border bg-card"),
@@ -40,7 +40,7 @@
       : "h-full"
     )
   )}
-  data-testid="item"
+  testid="item"
 >
   {#if (item?.kind === "social")}
     <Group gap="4" align="center">
@@ -86,4 +86,4 @@
       </Stack>
     </Group>
   {/if}
-</Figure>
+</FigureBlock>

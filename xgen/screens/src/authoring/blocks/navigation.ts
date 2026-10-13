@@ -10,6 +10,7 @@ import { emailRow } from "../forms";
 import { heading, muted, strong, surface } from "../ux";
 import { NavLink, Group, link, brandLink, navLinks, navActions, searchPalette, overMedia } from "../components/nav";
 import { footerColumns, footerCard } from "../components/footer";
+import { navBlockOf } from "../components/landmarks";
 
 const O = "organism.";
 const skipLink = (): ViewNode => when(ref("skip"), [use("LinkPlain", { props: { Href: "#main-content", Class: "sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border" }, attrs: { "data-testid": "skip-link" } }, text(ref("skip")))]);
@@ -40,14 +41,14 @@ const navBar = spec(`${O}nav-bar`, "NavBar", "A top bar in four shapes. Axes: la
     const buttons = () => organism("NavActions", { login: ref("actions.login"), loginHref: ref("actions.loginHref"), cta: ref("actions.cta"), ctaHref: ref("actions.href"), actions: ref("actions.mode"), tone: ref("tone"), themeLabel: ref("actions.themeLabel") }, { on: { theme: call("emit.theme") } });
     const inner = [when(eq(ref("layout"), "split"),
       [use("Grid", { props: { Cols: "1-3", Class: "w-full items-center gap-4" } },
-        use("Nav", { props: { Class: "md:justify-self-start" }, attrs: { "aria-label": ref("label"), "data-testid": "site-nav" } }, links("left")),
+        navBlockOf(ref("label"), "md:justify-self-start", "site-nav", links("left")),
         use("Box", { props: { Class: "text-center" } }, brandLink()),
-        use("Group", { props: { Gap: "4", Align: "center", Justify: "end", Class: "flex-wrap md:justify-self-end" } }, use("Nav", { props: {}, attrs: { "aria-label": ref("label") } }, links("right")), buttons()))],
+        use("Group", { props: { Gap: "4", Align: "center", Justify: "end", Class: "flex-wrap md:justify-self-end" } }, navBlockOf(ref("label"), undefined, undefined, links("right")), buttons()))],
       [brandLink(),
        when(eq(ref("layout"), "search"), [organism("SearchPalette", { label: ref("search.label"), shortcut: ref("search.shortcut") })]),
        // below md the links take a row of their own under the brand and the buttons, one line that scrolls sideways
        // instead of wrapping into a block of rows
-       use("Nav", { props: { Class: "order-last w-full overflow-x-auto md:order-none md:w-auto [&>div]:flex-nowrap md:[&>div]:flex-wrap [&_a]:shrink-0" }, attrs: { "aria-label": ref("label"), "data-testid": "site-nav" } }, links("all")),
+       navBlockOf(ref("label"), "order-last w-full overflow-x-auto md:order-none md:w-auto [&>div]:flex-nowrap md:[&>div]:flex-wrap [&_a]:shrink-0", "site-nav", links("all")),
        buttons()])];
     // over a picture: the header itself carries the picture layer (OverMedia) and turns transparent; it stays the root Block
     const bar = use("Block", { props: { Tag: "header", Class: cn("relative", cond(eq(ref("tone"), "inverse"), "border-b border-transparent bg-foreground text-background [&_a]:text-background [&_button]:text-background", "border-b border-border bg-background"), cond(eq(ref("over"), "media"), "isolate overflow-hidden border-0 bg-transparent", "")) }, attrs: { "data-testid": "nav-bar", "data-layout": ref("layout"), "data-tone": ref("tone") } },
@@ -78,7 +79,7 @@ const megaMenu = spec(`${O}mega-menu`, "MegaMenu", "A top bar whose first item o
     use("Block", { props: { Tag: "header", Class: "relative border-b border-border bg-background" }, attrs: { "data-testid": "mega-menu" } },
       use("Container", { props: { Class: cn(wide, "flex flex-wrap items-center gap-6 py-4") }, attrs: { "data-slot": "container" } },
         brandLink(),
-        use("Nav", { props: { Class: "flex-1" }, attrs: { "aria-label": ref("label") } },
+        navBlockOf(ref("label"), "flex-1", undefined,
           use("Group", { props: { Gap: "4", Align: "center", Class: "flex-wrap" } },
             use("ButtonPlain", { props: { Type: "button", Class: "inline-flex items-center gap-2 text-sm font-semibold" }, attrs: { "aria-expanded": cond(eq(ref("panel"), "open"), "true", "false"), "data-testid": "mega-trigger" } },
               text(ref("trigger")), use("LucideIcon", { props: { Name: "chevron-down", Size: 16 } })),
@@ -110,7 +111,7 @@ const sidebarNav = spec(`${O}sidebar-nav`, "SidebarNav", "A vertical navigation:
   view: [
     use("Block", { props: { Tag: "aside", Class: cn("flex min-h-96 flex-col gap-6 rounded bg-card p-4 inset-ring inset-ring-border", cond(eq(ref("width"), "compact"), "w-20 items-center", "w-64")) }, attrs: { "aria-label": ref("brand"), "data-testid": "sidebar", "data-width": ref("width") } },
       use("Group", { props: { Gap: "2", Align: "center" } }, use("LucideIcon", { props: { Name: "layers", Size: 24 } }), use("Text", { props: { Size: "base", Weight: "bold", Class: cond(eq(ref("width"), "compact"), "sr-only", "") } }, text(ref("brand")))),
-      use("Nav", { props: { Class: "flex-1" }, attrs: { "aria-label": ref("label") } },
+      navBlockOf(ref("label"), "flex-1", undefined,
         use("List", { props: { Class: cn("m-0 flex list-none flex-col p-0", cond(eq(ref("density"), "compact"), "gap-0", "gap-2")) }, attrs: { "data-testid": "items" } },
           each(ref("links"), "l", ref("l.id"), use("ListItem", {},
             use("Link", { props: { Href: "#/", Variant: "default", AriaCurrent: cond(eq(ref("l.id"), ref("current")), "page", undef()), Class: cn("flex items-center gap-4 rounded px-4 text-sm", "py-2", cond(eq(ref("l.id"), ref("current")), "bg-muted font-semibold", "")) }, attrs: { "data-testid": "item" } },
@@ -170,7 +171,7 @@ const sitemapFooter = spec(`${O}sitemap-footer`, "SitemapFooter", "A footer with
             use("Box", { props: { Class: "min-w-0 flex-1" } }, organism("FooterColumns", { label: ref("label"), groups: ref("groups") })))],
           [use("Group", { props: { Gap: "6", Align: "center", Justify: "between", Class: "flex-wrap" } },
             strong(ref("brand"), "base", "bold"),
-            use("Nav", { props: {}, attrs: { "aria-label": ref("label") } }, use("Group", { props: { Gap: "4", Class: "flex-wrap" } }, each(ref("groups"), "g", ref("g.id"), use("Link", { props: { Href: "#/", Variant: "default", Class: "text-sm" }, attrs: { "data-testid": "group" } }, text(ref("g.title"))))))) ]),
+            navBlockOf(ref("label"), undefined, undefined, use("Group", { props: { Gap: "4", Class: "flex-wrap" } }, each(ref("groups"), "g", ref("g.id"), use("Link", { props: { Href: "#/", Variant: "default", Class: "text-sm" }, attrs: { "data-testid": "group" } }, text(ref("g.title"))))))) ]),
         use("Group", { props: { Gap: "4", Align: "center", Justify: "between", Class: "flex-wrap border-t border-border pt-6" } },
           muted(ref("copyright")),
           when(eq(ref("status.mode"), "show"), [organism("Pill", { tone: "green", icon: "circle-check" }, kids(text(ref("status.label"))))]))));

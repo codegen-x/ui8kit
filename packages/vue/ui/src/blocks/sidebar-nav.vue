@@ -28,10 +28,10 @@ import Link from "../primitives/link/link.vue";
 import List from "../primitives/list/list.vue";
 import ListItem from "../primitives/list/list-item.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
-import Nav from "../primitives/nav/nav.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import MediaFrame from "../components/media-frame.vue";
+import NavBlock from "../components/nav-block.vue";
 import { cn } from "../utils";
 
 const {
@@ -64,7 +64,7 @@ const {
         {{ brand }}
       </Text>
     </Group>
-    <Nav class="flex-1" :aria-label="label">
+    <NavBlock :label="label" class="flex-1">
       <List
         :class="cn(
           'm-0 flex list-none flex-col p-0',
@@ -91,7 +91,7 @@ const {
           </Link>
         </ListItem>
       </List>
-    </Nav>
+    </NavBlock>
     <Group
       v-if="((user as string) === 'show')"
       gap="4"

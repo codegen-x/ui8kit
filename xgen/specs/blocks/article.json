@@ -51,6 +51,7 @@
     }
   ],
   "slots": [
+    "NavBlock",
     "SectionFrame"
   ],
   "facts": [

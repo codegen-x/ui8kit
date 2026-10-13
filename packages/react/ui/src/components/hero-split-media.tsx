@@ -6,11 +6,11 @@
  */
 import { Fragment, type ReactNode } from "react";
 import { Box } from "../primitives/box/box";
-import { Figure } from "../primitives/figure/figure";
 import { Group } from "../primitives/group/group";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
+import { FigureBlock } from "../components/figure-block";
 import { MediaFrame } from "../components/media-frame";
 import { OfferMedia } from "../components/offer-media";
 import { cn } from "../utils";
@@ -36,12 +36,12 @@ export function HeroSplitMedia({ content, alt, media = "picture" }: HeroSplitMed
           {(content.features ?? []).map((f, i) => (
             <Fragment key={f.id}>
               {(i < 4) ? (
-                <Figure className="flex flex-col gap-2" data-testid="hero-tile">
+                <FigureBlock className="flex flex-col gap-2" testid="hero-tile">
                   <MediaFrame alt={f.title} ratio="1/1" />
                   <Text size="xs" className="text-muted-foreground">
                     {f.title}
                   </Text>
-                </Figure>
+                </FigureBlock>
               ) : null}
             </Fragment>
           ))}

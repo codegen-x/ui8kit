@@ -24,9 +24,9 @@ import Link from "../primitives/link/link.vue";
 import List from "../primitives/list/list.vue";
 import ListItem from "../primitives/list/list-item.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
-import Nav from "../primitives/nav/nav.vue";
 import Text from "../primitives/text/text.vue";
 import MediaFrame from "../components/media-frame.vue";
+import NavBlock from "../components/nav-block.vue";
 import SearchPalette from "../components/search-palette.vue";
 import { cn } from "../utils";
 
@@ -45,7 +45,7 @@ const { nav, brand = "show", links = "hide", search = "show" } = defineProps<She
         {{ nav.brand }}
       </Text>
     </Group>
-    <Nav v-if="((links as string) === 'show')" class="hidden lg:block" :aria-label="nav.label">
+    <NavBlock v-if="((links as string) === 'show')" :label="nav.label" class="hidden lg:block">
       <List class="m-0 flex list-none items-center gap-2 p-0">
         <ListItem v-for="l in nav.links" :key="l.id">
           <Link
@@ -67,7 +67,7 @@ const { nav, brand = "show", links = "hide", search = "show" } = defineProps<She
           </Link>
         </ListItem>
       </List>
-    </Nav>
+    </NavBlock>
     <template v-if="((search as string) === 'show')">
       <Box v-if="((links as string) === 'show')" class="ml-auto hidden w-64 shrink-0 xl:block">
         <SearchPalette :label="nav.search" :shortcut="nav.shortcut" />

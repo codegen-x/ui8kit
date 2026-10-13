@@ -5,6 +5,7 @@ import type { OrganismSpec, ViewNode } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { layoutOf } from "../presets";
 import { tsOf } from "../props";
+import { navBlockOf } from "./landmarks";
 
 const P = "pattern.";
 const onBand = "text-background";
@@ -33,7 +34,7 @@ export const heroHead = spec(`${P}hero-head`, "HeroHead", "The head row of a her
     return [use("Block", { props: { Tag: "header", Class: cn("flex w-full flex-wrap items-center justify-between pr-4", layoutOf("hero.head")) }, attrs: { "data-testid": "hero-head" } },
       when(ref("skip"), [use("LinkPlain", { props: { Href: "#main-content", Class: skipClass }, attrs: { "data-testid": "skip-link" } }, text(ref("skip")))]),
       use("Link", { props: { Href: "#/", Variant: "default", Class: cn(layoutOf("text.small"), `font-medium leading-6 ${onBand}`) }, attrs: { "data-testid": "brand" } }, text(ref("brand"))),
-      use("Nav", { props: {}, attrs: { "aria-label": ref("navLabel"), "data-testid": "site-nav" } },
+      navBlockOf(ref("navLabel"), undefined, "site-nav",
         use("Group", { props: { Gap: "8", Align: "center", Class: "flex-wrap" } }, each(ref("links"), "l", ref("l.id"), link))),
       use("Group", { props: { Gap: "2", Align: "center" } },
         when(ref("login"), [use("Button", { props: { Href: ref("loginHref"), Variant: "ghost", Size: "sm", Class: `${onBand} hover:bg-background/10` }, attrs: { "data-testid": "nav-login" } }, text(ref("login")))]),

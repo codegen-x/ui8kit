@@ -17,7 +17,6 @@ import Inline from "../primitives/inline/inline.vue";
 import Label from "../primitives/label/label.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Radio from "../primitives/radio/radio.vue";
-import Stack from "../primitives/stack/stack.vue";
 
 const { payments, name, checked = "" } = defineProps<PaymentOptionsProps>();
 </script>
@@ -30,14 +29,14 @@ const { payments, name, checked = "" } = defineProps<PaymentOptionsProps>();
     >
       <Radio :name="name" :value="p.id" :checked="(p.id === checked)" />
       <LucideIcon :name="p.icon" :size="20" class="shrink-0" />
-      <Stack tag="span" gap="0">
+      <Inline class="flex flex-col items-start justify-start gap-0">
         <Inline class="text-sm font-semibold">
           {{ p.title }}
         </Inline>
         <Inline class="text-xs text-muted-foreground">
           {{ p.text }}
         </Inline>
-      </Stack>
+      </Inline>
     </Label>
   </Grid>
 </template>

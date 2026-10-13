@@ -5,6 +5,7 @@ import type { ViewNode } from "../../ir";
 import { spec, ts } from "../kit";
 import { tsOf } from "../props";
 import { layoutOf } from "../presets";
+import { figureBlockOf } from "./landmarks";
 
 const P = "pattern.";
 /** one logo of the ribbon: a fixed slot (size from the preset) with a Lucide glyph; the name is for screen readers */
@@ -42,7 +43,7 @@ export const quoteCardView = (): ViewNode => {
   const sizeFor = cond(eq(ref("layout"), "masonry"), "mb-4 break-inside-avoid", cond(eq(ref("layout"), "strip"), "w-80 shrink-0 snap-start", "h-full"));
   const avatar = when(ne(ref("item.avatar"), "none"), [organism("MediaFrame", { alt: ref("q.author"), ratio: "1/1", className: "size-12 shrink-0 rounded-full" })]);
   const rating = when(ne(ref("item.rating"), "hide"), [organism("Rating", { value: ref("q.rating"), label: tpl(ref("labels.rating"), ref("q.rating")), size: 16 })]);
-  return use("Figure", { props: { Class: cn("m-0 flex flex-col gap-4", cardLike, sizeFor) }, attrs: { "data-testid": "item" } },
+  return figureBlockOf(cn("m-0 flex flex-col gap-4", cardLike, sizeFor), "item",
     when(social,
       [use("Group", { props: { Gap: "4", Align: "center" } }, avatar,
         use("Stack", { props: { Gap: "0" } },

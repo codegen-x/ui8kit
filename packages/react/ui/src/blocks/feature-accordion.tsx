@@ -7,7 +7,6 @@
 import { type ReactNode } from "react";
 import { Disclosure } from "../primitives/disclosure/disclosure";
 import { Summary } from "../primitives/disclosure/summary";
-import { Group } from "../primitives/group/group";
 import { Inline } from "../primitives/inline/inline";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
@@ -59,12 +58,12 @@ export function FeatureAccordion({
             data-testid="item"
           >
             <Summary variant="item">
-              <Group tag="span" gap="4" align="center">
+              <Inline className="flex min-w-0 items-center justify-start gap-4">
                 <LucideIcon name={f.icon} size={20} />
                 <Inline className="text-base font-semibold">
                   {f.title}
                 </Inline>
-              </Group>
+              </Inline>
             </Summary>
             <Text size="sm" className="pb-4 text-muted-foreground">
               {f.text}

@@ -18,7 +18,6 @@
   import Label from "../primitives/label/label.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Radio from "../primitives/radio/radio.svelte";
-  import Stack from "../primitives/stack/stack.svelte";
 
   let { payments, name, checked = "" }: PaymentOptionsProps = $props();
 </script>
@@ -31,14 +30,14 @@
     >
       <Radio name={name} value={p.id} checked={(p.id === checked)} />
       <LucideIcon name={p.icon} size={20} class="shrink-0" />
-      <Stack tag="span" gap="0">
+      <Inline class="flex flex-col items-start justify-start gap-0">
         <Inline class="text-sm font-semibold">
           {p.title}
         </Inline>
         <Inline class="text-xs text-muted-foreground">
           {p.text}
         </Inline>
-      </Stack>
+      </Inline>
     </Label>
   {/each}
 </Grid>

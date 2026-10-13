@@ -17,11 +17,11 @@
 
 <script lang="ts">
   import Box from "../primitives/box/box.svelte";
-  import Figure from "../primitives/figure/figure.svelte";
   import Group from "../primitives/group/group.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
+  import FigureBlock from "../components/figure-block.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import OfferMedia from "../components/offer-media.svelte";
   import { cn } from "../utils";
@@ -39,12 +39,12 @@
   <Box class="grid grid-cols-2 gap-4" data-testid="hero-grid">
     {#each content.features as f, i (f.id)}
       {#if (i < 4)}
-        <Figure class="flex flex-col gap-2" data-testid="hero-tile">
+        <FigureBlock class="flex flex-col gap-2" testid="hero-tile">
           <MediaFrame alt={f.title} ratio="1/1" />
           <Text size="xs" class="text-muted-foreground">
             {f.title}
           </Text>
-        </Figure>
+        </FigureBlock>
       {/if}
     {/each}
   </Box>

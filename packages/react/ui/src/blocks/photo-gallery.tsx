@@ -9,11 +9,11 @@ import { type ReactNode } from "react";
 import { Badge } from "../primitives/badge/badge";
 import { Box } from "../primitives/box/box";
 import { Button } from "../primitives/button/button";
-import { Figure } from "../primitives/figure/figure";
 import { Group } from "../primitives/group/group";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
+import { FigureBlock } from "../components/figure-block";
 import { MediaFrame } from "../components/media-frame";
 import { SectionFrame } from "../components/section-frame";
 import { cn, tpl } from "../utils";
@@ -81,14 +81,14 @@ export function PhotoGallery({
           data-testid="items"
         >
           {(photos ?? []).map((p, i) => (
-            <Figure key={p.id}
+            <FigureBlock key={p.id}
               className={cn(
                 "flex flex-col gap-2",
                 (((layout as string) === "masonry") ? "mb-4 break-inside-avoid" : ""),
                 ((((layout as string) === "mosaic") && (i === 0)) ? "col-span-2 row-span-2" : ""),
                 (((layout as string) === "cards") ? "rounded bg-card inset-ring inset-ring-border p-4" : "")
               )}
-              data-testid="item"
+              testid="item"
             >
               <MediaFrame
                 alt={p.title}
@@ -114,7 +114,7 @@ export function PhotoGallery({
                   {p.title}
                 </Box>
               ) : null}
-            </Figure>
+            </FigureBlock>
           ))}
         </Box>
       )}

@@ -15,19 +15,19 @@ export type PageCrumbsProps = {
 
 <script setup lang="ts">
 import { computed } from "vue";
+import Block from "../primitives/block/block.vue";
 import Inline from "../primitives/inline/inline.vue";
 import Link from "../primitives/link/link.vue";
 import List from "../primitives/list/list.vue";
 import ListItem from "../primitives/list/list-item.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
-import Nav from "../primitives/nav/nav.vue";
 
 const { label, crumbs } = defineProps<PageCrumbsProps>();
 const last = computed(() => (crumbs?.length ?? 0) - 1);
 </script>
 
 <template>
-  <Nav :aria-label="label" data-testid="crumbs">
+  <Block tag="nav" :aria-label="label" data-testid="crumbs">
     <List class="m-0 flex list-none flex-wrap items-center gap-2 p-0 text-sm text-muted-foreground">
       <ListItem v-for="(c, i) in crumbs" :key="c.id" class="flex items-center gap-2">
         <template v-if="(i < last)">
@@ -41,5 +41,5 @@ const last = computed(() => (crumbs?.length ?? 0) - 1);
         </Inline>
       </ListItem>
     </List>
-  </Nav>
+  </Block>
 </template>

@@ -22,12 +22,12 @@
 </script>
 
 <script lang="ts">
-  import Article from "../primitives/article/article.svelte";
   import Grid from "../primitives/grid/grid.svelte";
   import Group from "../primitives/group/group.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
+  import ArticleBlock from "../components/article-block.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import Rating from "../components/rating.svelte";
   import SectionFrame from "../components/section-frame.svelte";
@@ -55,7 +55,7 @@
 >
   <Grid cols={(((layout as string) === "grid") ? "1-3" : "1")} class="gap-4" data-testid="items">
     {#each reviews as r (r.id)}
-      <Article
+      <ArticleBlock
         class={cn(
           "flex h-full flex-col gap-4",
           (
@@ -63,7 +63,7 @@
             : "border-b border-border pb-4"
           )
         )}
-        data-testid="item"
+        testid="item"
       >
         <Rating value={r.rating} label={tpl(labels.ratingLabel, r.rating)} size={16} />
         <Title as={3} size="base" weight="bold">
@@ -85,7 +85,7 @@
             </Text>
           </Stack>
         </Group>
-      </Article>
+      </ArticleBlock>
     {/each}
   </Grid>
 </SectionFrame>

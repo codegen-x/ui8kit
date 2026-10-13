@@ -12,7 +12,7 @@ import { Container } from "../primitives/container/container";
 import { Group } from "../primitives/group/group";
 import { LinkPlain } from "../primitives/link-plain/link-plain";
 import { Link } from "../primitives/link/link";
-import { Nav } from "../primitives/nav/nav";
+import { NavBlock } from "../components/nav-block";
 import { cn } from "../utils";
 import type { SiteHeaderLabels } from "./site-header.types";
 
@@ -66,7 +66,7 @@ export function SiteHeader({
         <Link href="#/" variant="default" className="text-lg font-medium" data-testid="brand">
           {labels.brand}
         </Link>
-        <Nav aria-label={labels.nav} data-testid="site-nav">
+        <NavBlock label={labels.nav} testid="site-nav">
           <Group gap="4" align="center">
             <Link
               href="#/"
@@ -85,7 +85,7 @@ export function SiteHeader({
               {labels.pricing}
             </Link>
           </Group>
-        </Nav>
+        </NavBlock>
         <Group gap="4" align="center">
           <Button variant="outline" size="sm" data-testid="theme-toggle" onClick={() => onTheme?.()}>
             {labels.theme}

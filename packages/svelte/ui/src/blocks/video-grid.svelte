@@ -26,11 +26,10 @@
 <script lang="ts">
   import Box from "../primitives/box/box.svelte";
   import Button from "../primitives/button/button.svelte";
-  import Figure from "../primitives/figure/figure.svelte";
-  import FigureCaption from "../primitives/figure/figure-caption.svelte";
   import Grid from "../primitives/grid/grid.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Text from "../primitives/text/text.svelte";
+  import FigureBlock from "../components/figure-block.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import { tpl } from "../utils";
@@ -52,7 +51,7 @@
 <SectionFrame id={id} title={title} tone={tone} density={density}>
   <Grid cols={cols} class="gap-4" data-testid="items">
     {#each quotes as q (q.id)}
-      <Figure class="m-0 flex flex-col gap-4" data-testid="item">
+      <FigureBlock class="m-0 flex flex-col gap-4" testid="item">
         <Box class="relative">
           <MediaFrame alt={q.author} ratio="16/9" />
           <Button
@@ -78,16 +77,16 @@
           {/if}
         </Box>
         {#if ((caption as string) === "below")}
-          <FigureCaption data-testid="caption">
+          <Text tag="figcaption" data-testid="caption">
             <Text size="sm" weight="semibold">
               {q.author}
             </Text>
             <Text size="xs" class="text-muted-foreground">
               {tpl(byLine, q.role, q.company)}
             </Text>
-          </FigureCaption>
+          </Text>
         {/if}
-      </Figure>
+      </FigureBlock>
     {/each}
   </Grid>
 </SectionFrame>

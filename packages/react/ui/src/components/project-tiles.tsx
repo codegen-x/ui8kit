@@ -6,7 +6,6 @@
  * takes a big tile.
  */
 import { type ReactNode } from "react";
-import { Article } from "../primitives/article/article";
 import { Badge } from "../primitives/badge/badge";
 import { Box } from "../primitives/box/box";
 import { Group } from "../primitives/group/group";
@@ -15,6 +14,7 @@ import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { Title } from "../primitives/title/title";
+import { ArticleBlock } from "../components/article-block";
 import { MediaFrame } from "../components/media-frame";
 import { cn, tpl } from "../utils";
 import type { Project, ProjectLabels } from "../blocks/project-grid.types";
@@ -36,13 +36,13 @@ export function ProjectTiles({ projects, labels, layout = "cards" }: ProjectTile
       data-testid="items"
     >
       {(projects ?? []).map((p, i) => (
-        <Article key={p.id}
+        <ArticleBlock key={p.id}
           className={cn(
             "flex flex-col gap-4",
             (over ? "relative" : "rounded bg-card inset-ring inset-ring-border p-4"),
             ((((layout as string) === "bento") && (i === 0)) ? "sm:col-span-2 lg:row-span-2" : "")
           )}
-          data-testid="item"
+          testid="item"
         >
           <Box className={(over ? "h-full" : "relative")}>
             <MediaFrame
@@ -94,7 +94,7 @@ export function ProjectTiles({ projects, labels, layout = "cards" }: ProjectTile
               </>
             ) : null}
           </Stack>
-        </Article>
+        </ArticleBlock>
       ))}
     </Box>
   );

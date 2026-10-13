@@ -12,18 +12,18 @@
 </script>
 
 <script lang="ts">
+  import Block from "../primitives/block/block.svelte";
   import Grid from "../primitives/grid/grid.svelte";
   import Link from "../primitives/link/link.svelte";
   import List from "../primitives/list/list.svelte";
   import ListItem from "../primitives/list/list-item.svelte";
-  import Nav from "../primitives/nav/nav.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
 
   let { label, groups }: FooterColumnsProps = $props();
 </script>
 
-<Nav aria-label={label}>
+<Block tag="nav" aria-label={label}>
   <Grid cols="1" class="grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5" data-testid="footer-groups">
     {#each groups as g (g.id)}
       <Stack gap="2" data-testid="group">
@@ -42,4 +42,4 @@
       </Stack>
     {/each}
   </Grid>
-</Nav>
+</Block>

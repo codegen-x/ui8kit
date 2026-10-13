@@ -2,7 +2,7 @@
 // Source: xgen/screens/src/authoring/components/cta.ts
 /** A customer quote and who said it, as a figure. */
 import { type ReactNode } from "react";
-import { Figure } from "../primitives/figure/figure";
+import { Block } from "../primitives/block/block";
 import { Text } from "../primitives/text/text";
 import { cn } from "../utils";
 
@@ -14,13 +14,17 @@ export type QuoteProofProps = {
 
 export function QuoteProof({ quote, quoteBy, center = false }: QuoteProofProps) {
   return (
-    <Figure className={cn("flex flex-col gap-2", (center ? "items-center text-center" : ""))} data-testid="proof">
+    <Block
+      tag="figure"
+      className={cn("flex flex-col gap-2", (center ? "items-center text-center" : ""))}
+      data-testid="proof"
+    >
       <Text size="xl">
         {quote}
       </Text>
       <Text size="sm" className="text-muted-foreground">
         {quoteBy}
       </Text>
-    </Figure>
+    </Block>
   );
 }

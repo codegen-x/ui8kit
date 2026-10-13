@@ -8,6 +8,7 @@ import { call, each, op, ref, text, use } from "./build";
 import type { ScreenSpec, SkinsBoard, Value, ViewNode } from "./ir";
 import { dictKey, labelledGroup, pageSection, skipLink, TEXT } from "./compose-kit";
 import { wide } from "./authoring/components/frames";
+import { navBlockOf } from "./authoring/components/landmarks";
 
 /** a tile: a plain button with an edge; the pressed one (the current choice) gets a thicker edge in the primary colour */
 const TILE = "group flex w-full cursor-pointer flex-col gap-2 rounded text-start inset-ring inset-ring-border hover:bg-muted aria-pressed:inset-ring-2 aria-pressed:inset-ring-primary";
@@ -86,7 +87,7 @@ export function skinsChrome(): ViewNode[] {
       skipLink("sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:shadow"),
       use("Container", { props: { Class: `${wide} flex flex-wrap items-center justify-between gap-4 py-3` } },
         use("Link", { props: { Href: "#/", Variant: "default", Class: "text-lg font-bold" }, attrs: { "data-testid": "brand" } }, text(TEXT("skins.title"))),
-        use("Nav", { props: { Class: "flex flex-wrap items-center gap-4" }, attrs: { "aria-label": TEXT("skins.navLabel") } },
+        navBlockOf(TEXT("skins.navLabel"), "flex flex-wrap items-center gap-4", undefined,
           link("/catalog/", "catalog.title", "catalog-link"), link("/blocks/", "blocks.title", "gallery-link"),
           use("Button", { props: { Variant: "outline", Size: "sm" }, on: { click: call("actions.toggleTheme") }, attrs: { "data-testid": "theme-toggle" } }, text(TEXT("theme.toggle")))))),
   ];

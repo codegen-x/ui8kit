@@ -16,7 +16,6 @@
 </script>
 
 <script lang="ts">
-  import Article from "../primitives/article/article.svelte";
   import Badge from "../primitives/badge/badge.svelte";
   import Box from "../primitives/box/box.svelte";
   import Link from "../primitives/link/link.svelte";
@@ -24,6 +23,7 @@
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
+  import ArticleBlock from "../components/article-block.svelte";
 
   let { items, labels, cards = "grid3" }: FaqCardsProps = $props();
 </script>
@@ -36,7 +36,7 @@
   data-testid="faq"
 >
   {#each items as q (q.id)}
-    <Article class="rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-6" data-testid="faq-card">
+    <ArticleBlock class="rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-6" testid="faq-card">
       {#if ((cards as string) === "icons")}
         <Box class="flex size-10 shrink-0 items-center justify-center rounded bg-muted">
           <LucideIcon name={q.icon} size={20} />
@@ -59,6 +59,6 @@
           <LucideIcon name="arrow-right" size={16} />
         </Link>
       </Box>
-    </Article>
+    </ArticleBlock>
   {/each}
 </Box>

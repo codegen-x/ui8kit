@@ -35,10 +35,10 @@
   import List from "../primitives/list/list.svelte";
   import ListItem from "../primitives/list/list-item.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
-  import Nav from "../primitives/nav/nav.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
   import MediaFrame from "../components/media-frame.svelte";
+  import NavBlock from "../components/nav-block.svelte";
   import { cn } from "../utils";
 
   let {
@@ -63,7 +63,7 @@
     <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
       {brand}
     </Link>
-    <Nav class="flex-1" aria-label={label}>
+    <NavBlock label={label} class="flex-1">
       <Group gap="4" align="center" class="flex-wrap">
         <ButtonPlain
           type="button"
@@ -86,7 +86,7 @@
           </Link>
         {/each}
       </Group>
-    </Nav>
+    </NavBlock>
   </Container>
 </Block>
 {#if ((panel as string) === "open")}

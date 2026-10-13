@@ -25,11 +25,11 @@ export type PhotoGalleryProps = {
 import Badge from "../primitives/badge/badge.vue";
 import Box from "../primitives/box/box.vue";
 import Button from "../primitives/button/button.vue";
-import Figure from "../primitives/figure/figure.vue";
 import Group from "../primitives/group/group.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
+import FigureBlock from "../components/figure-block.vue";
 import MediaFrame from "../components/media-frame.vue";
 import SectionFrame from "../components/section-frame.vue";
 import { cn, tpl } from "../utils";
@@ -87,14 +87,14 @@ const {
       "
       data-testid="items"
     >
-      <Figure v-for="(p, i) in photos" :key="p.id"
+      <FigureBlock v-for="(p, i) in photos" :key="p.id"
         :class="cn(
           'flex flex-col gap-2',
           (((layout as string) === 'masonry') ? 'mb-4 break-inside-avoid' : ''),
           ((((layout as string) === 'mosaic') && (i === 0)) ? 'col-span-2 row-span-2' : ''),
           (((layout as string) === 'cards') ? 'rounded bg-card inset-ring inset-ring-border p-4' : '')
         )"
-        data-testid="item"
+        testid="item"
       >
         <MediaFrame
           :alt="p.title"
@@ -125,7 +125,7 @@ const {
         >
           {{ p.title }}
         </Box>
-      </Figure>
+      </FigureBlock>
     </Box>
   </SectionFrame>
 </template>

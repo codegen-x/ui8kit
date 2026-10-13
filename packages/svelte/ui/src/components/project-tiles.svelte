@@ -17,7 +17,6 @@
 </script>
 
 <script lang="ts">
-  import Article from "../primitives/article/article.svelte";
   import Badge from "../primitives/badge/badge.svelte";
   import Box from "../primitives/box/box.svelte";
   import Group from "../primitives/group/group.svelte";
@@ -26,6 +25,7 @@
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
+  import ArticleBlock from "../components/article-block.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import { cn, tpl } from "../utils";
 
@@ -44,13 +44,13 @@
   data-testid="items"
 >
   {#each projects as p, i (p.id)}
-    <Article
+    <ArticleBlock
       class={cn(
         "flex flex-col gap-4",
         (over ? "relative" : "rounded bg-card inset-ring inset-ring-border p-4"),
         ((((layout as string) === "bento") && (i === 0)) ? "sm:col-span-2 lg:row-span-2" : "")
       )}
-      data-testid="item"
+      testid="item"
     >
       <Box class={(over ? "h-full" : "relative")}>
         <MediaFrame
@@ -100,6 +100,6 @@
           </Group>
         {/if}
       </Stack>
-    </Article>
+    </ArticleBlock>
   {/each}
 </Box>

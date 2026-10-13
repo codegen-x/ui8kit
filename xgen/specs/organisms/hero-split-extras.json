@@ -352,75 +352,79 @@
                   },
                   "then": [
                     {
-                      "use": "Figure",
+                      "organism": "FigureBlock",
                       "props": {
-                        "Class": "flex flex-col gap-4"
+                        "className": "flex flex-col gap-4",
+                        "testid": "hero-quote"
                       },
-                      "attrs": {
-                        "data-testid": "hero-quote"
-                      },
-                      "children": [
-                        {
-                          "use": "Blockquote",
-                          "props": {
-                            "Class": "text-lg font-medium"
-                          },
-                          "children": [
+                      "slots": {
+                        "children": {
+                          "args": [],
+                          "do": [
                             {
-                              "text": {
-                                "$": "p.quote"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "use": "Group",
-                          "props": {
-                            "Gap": "4",
-                            "Align": "center"
-                          },
-                          "children": [
-                            {
-                              "organism": "MediaFrame",
+                              "use": "Text",
                               "props": {
-                                "alt": {
-                                  "$": "p.author"
-                                },
-                                "ratio": "1/1",
-                                "className": "size-10 shrink-0 rounded-full"
-                              }
-                            },
-                            {
-                              "use": "Stack",
-                              "props": {
-                                "Gap": "0"
+                                "Tag": "blockquote",
+                                "Class": "text-lg font-medium"
                               },
                               "children": [
                                 {
-                                  "use": "Text",
+                                  "text": {
+                                    "$": "p.quote"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "use": "Group",
+                              "props": {
+                                "Gap": "4",
+                                "Align": "center"
+                              },
+                              "children": [
+                                {
+                                  "organism": "MediaFrame",
                                   "props": {
-                                    "Size": "sm",
-                                    "Weight": "semibold"
-                                  },
-                                  "children": [
-                                    {
-                                      "text": {
-                                        "$": "p.author"
-                                      }
-                                    }
-                                  ]
+                                    "alt": {
+                                      "$": "p.author"
+                                    },
+                                    "ratio": "1/1",
+                                    "className": "size-10 shrink-0 rounded-full"
+                                  }
                                 },
                                 {
-                                  "use": "Text",
+                                  "use": "Stack",
                                   "props": {
-                                    "Size": "xs",
-                                    "Class": "text-muted-foreground"
+                                    "Gap": "0"
                                   },
                                   "children": [
                                     {
-                                      "text": {
-                                        "$": "p.role"
-                                      }
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "sm",
+                                        "Weight": "semibold"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "p.author"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "xs",
+                                        "Class": "text-muted-foreground"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "p.role"
+                                          }
+                                        }
+                                      ]
                                     }
                                   ]
                                 }
@@ -428,7 +432,7 @@
                             }
                           ]
                         }
-                      ]
+                      }
                     }
                   ]
                 }

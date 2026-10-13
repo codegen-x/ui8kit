@@ -50,7 +50,9 @@
       }
     }
   ],
-  "slots": [],
+  "slots": [
+    "NavBlock"
+  ],
   "events": {
     "theme": "toggleTheme"
   },

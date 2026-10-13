@@ -129,51 +129,55 @@
               ]
             },
             {
-              "use": "Nav",
-              "props": {},
-              "attrs": {
-                "aria-label": {
+              "organism": "NavBlock",
+              "props": {
+                "label": {
                   "$": "labels.nav"
                 }
               },
-              "children": [
-                {
-                  "use": "Group",
-                  "props": {
-                    "Gap": "4"
-                  },
-                  "children": [
+              "slots": {
+                "children": {
+                  "args": [],
+                  "do": [
                     {
-                      "use": "Link",
+                      "use": "Group",
                       "props": {
-                        "Href": "#/",
-                        "Variant": "default"
+                        "Gap": "4"
                       },
                       "children": [
                         {
-                          "text": {
-                            "$": "labels.home"
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "use": "Link",
-                      "props": {
-                        "Href": "#/pricing",
-                        "Variant": "default"
-                      },
-                      "children": [
+                          "use": "Link",
+                          "props": {
+                            "Href": "#/",
+                            "Variant": "default"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "labels.home"
+                              }
+                            }
+                          ]
+                        },
                         {
-                          "text": {
-                            "$": "labels.pricing"
-                          }
+                          "use": "Link",
+                          "props": {
+                            "Href": "#/pricing",
+                            "Variant": "default"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "labels.pricing"
+                              }
+                            }
+                          ]
                         }
                       ]
                     }
                   ]
                 }
-              ]
+              }
             }
           ]
         }

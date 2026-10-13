@@ -16,12 +16,12 @@ export type QuoteCardProps = {
 </script>
 
 <script setup lang="ts">
-import Figure from "../primitives/figure/figure.vue";
 import Group from "../primitives/group/group.vue";
 import Inline from "../primitives/inline/inline.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
+import FigureBlock from "../components/figure-block.vue";
 import MediaFrame from "../components/media-frame.vue";
 import Rating from "../components/rating.vue";
 import { cn, tpl } from "../utils";
@@ -30,7 +30,7 @@ const { q, labels, item, layout = "grid" } = defineProps<QuoteCardProps>();
 </script>
 
 <template>
-  <Figure
+  <FigureBlock
     :class="cn(
       'm-0 flex flex-col gap-4',
       ((item?.kind === 'plain') ? '' : 'rounded p-6 inset-ring inset-ring-border bg-card'),
@@ -40,7 +40,7 @@ const { q, labels, item, layout = "grid" } = defineProps<QuoteCardProps>();
         : 'h-full'
       )
     )"
-    data-testid="item"
+    testid="item"
   >
     <template v-if="(item?.kind === 'social')">
       <Group gap="4" align="center">
@@ -89,5 +89,5 @@ const { q, labels, item, layout = "grid" } = defineProps<QuoteCardProps>();
         </Stack>
       </Group>
     </template>
-  </Figure>
+  </FigureBlock>
 </template>

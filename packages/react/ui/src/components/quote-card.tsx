@@ -5,12 +5,12 @@
  * stars and a company glyph as `item` says.
  */
 import { type ReactNode } from "react";
-import { Figure } from "../primitives/figure/figure";
 import { Group } from "../primitives/group/group";
 import { Inline } from "../primitives/inline/inline";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
+import { FigureBlock } from "../components/figure-block";
 import { MediaFrame } from "../components/media-frame";
 import { Rating } from "../components/rating";
 import { cn, tpl } from "../utils";
@@ -25,7 +25,7 @@ export type QuoteCardProps = {
 
 export function QuoteCard({ q, labels, item, layout = "grid" }: QuoteCardProps) {
   return (
-    <Figure
+    <FigureBlock
       className={cn(
         "m-0 flex flex-col gap-4",
         ((item?.kind === "plain") ? "" : "rounded p-6 inset-ring inset-ring-border bg-card"),
@@ -35,7 +35,7 @@ export function QuoteCard({ q, labels, item, layout = "grid" }: QuoteCardProps) 
           : "h-full"
         )
       )}
-      data-testid="item"
+      testid="item"
     >
       {(item?.kind === "social") ? (
         <>
@@ -85,6 +85,6 @@ export function QuoteCard({ q, labels, item, layout = "grid" }: QuoteCardProps) 
           </Group>
         </>
       )}
-    </Figure>
+    </FigureBlock>
   );
 }

@@ -4,6 +4,7 @@ import type { OrganismSpec, ViewNode } from "../../ir";
 import { spec, ts } from "../kit";
 import { tsOf } from "../props";
 import { muted, strong, surface } from "../ux";
+import { articleBlockOf } from "./landmarks";
 
 const types = [{ from: "FaqSplit", names: ["Question", "FaqSplitLabels"] }];
 const items = { name: "items", type: ts("Question[]"), required: true };
@@ -28,7 +29,7 @@ export const faqCards = spec("pattern.faq-cards", "FaqCards", "The questions of 
   props: [items, labels, { name: "cards", type: tsOf("grid3", "grid4", "icons"), default: "grid3" }],
   view: [use("Box", { props: { Class: cond(eq(ref("cards"), "grid4"), "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4", "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3") }, attrs: { "data-testid": "faq" } },
     each(ref("items"), "q", ref("q.id"),
-      use("Article", { props: { Class: surface("flex flex-col gap-4 p-6") }, attrs: { "data-testid": "faq-card" } },
+      articleBlockOf(surface("flex flex-col gap-4 p-6"), "faq-card",
         when(eq(ref("cards"), "icons"), [iconSquare("q.icon")]),
         use("Stack", { props: { Gap: "2" } },
           use("Badge", { props: { Variant: "secondary", Size: "sm", Class: "w-fit" } }, text(ref("q.category"))),

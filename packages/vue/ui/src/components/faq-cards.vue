@@ -15,7 +15,6 @@ export type FaqCardsProps = {
 </script>
 
 <script setup lang="ts">
-import Article from "../primitives/article/article.vue";
 import Badge from "../primitives/badge/badge.vue";
 import Box from "../primitives/box/box.vue";
 import Link from "../primitives/link/link.vue";
@@ -23,6 +22,7 @@ import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
+import ArticleBlock from "../components/article-block.vue";
 
 const { items, labels, cards = "grid3" } = defineProps<FaqCardsProps>();
 </script>
@@ -35,11 +35,11 @@ const { items, labels, cards = "grid3" } = defineProps<FaqCardsProps>();
     "
     data-testid="faq"
   >
-    <Article
+    <ArticleBlock
       v-for="q in items"
       :key="q.id"
       class="rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-6"
-      data-testid="faq-card"
+      testid="faq-card"
     >
       <Box
         v-if="((cards as string) === 'icons')"
@@ -64,6 +64,6 @@ const { items, labels, cards = "grid3" } = defineProps<FaqCardsProps>();
           <LucideIcon name="arrow-right" :size="16" />
         </Link>
       </Box>
-    </Article>
+    </ArticleBlock>
   </Box>
 </template>

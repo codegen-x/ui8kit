@@ -5,12 +5,12 @@
  * current page and is not a link.
  */
 import { type ReactNode } from "react";
+import { Block } from "../primitives/block/block";
 import { Inline } from "../primitives/inline/inline";
 import { Link } from "../primitives/link/link";
 import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
-import { Nav } from "../primitives/nav/nav";
 import type { NavLink } from "../blocks/nav-bar.types";
 
 export type PageCrumbsProps = {
@@ -21,7 +21,7 @@ export type PageCrumbsProps = {
 export function PageCrumbs({ label, crumbs }: PageCrumbsProps) {
   const last = (crumbs?.length ?? 0) - 1;
   return (
-    <Nav aria-label={label} data-testid="crumbs">
+    <Block tag="nav" aria-label={label} data-testid="crumbs">
       <List className="m-0 flex list-none flex-wrap items-center gap-2 p-0 text-sm text-muted-foreground">
         {(crumbs ?? []).map((c, i) => (
           <ListItem key={c.id} className="flex items-center gap-2">
@@ -40,6 +40,6 @@ export function PageCrumbs({ label, crumbs }: PageCrumbsProps) {
           </ListItem>
         ))}
       </List>
-    </Nav>
+    </Block>
   );
 }

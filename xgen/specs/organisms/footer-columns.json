@@ -24,8 +24,10 @@
   "events": [],
   "view": [
     {
-      "use": "Nav",
-      "props": {},
+      "use": "Block",
+      "props": {
+        "Tag": "nav"
+      },
       "attrs": {
         "aria-label": {
           "$": "label"

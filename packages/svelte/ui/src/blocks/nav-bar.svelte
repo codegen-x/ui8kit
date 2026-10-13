@@ -33,8 +33,8 @@
   import Group from "../primitives/group/group.svelte";
   import Link from "../primitives/link/link.svelte";
   import LinkPlain from "../primitives/link-plain/link-plain.svelte";
-  import Nav from "../primitives/nav/nav.svelte";
   import NavActions from "../components/nav-actions.svelte";
+  import NavBlock from "../components/nav-block.svelte";
   import NavLinks from "../components/nav-links.svelte";
   import OverMedia from "../components/over-media.svelte";
   import SearchPalette from "../components/search-palette.svelte";
@@ -84,18 +84,18 @@
     <Box class={cn("flex flex-wrap items-center justify-between gap-4", "py-4")}>
       {#if ((layout as string) === "split")}
         <Grid cols="1-3" class="w-full items-center gap-4">
-          <Nav class="md:justify-self-start" aria-label={label} data-testid="site-nav">
+          <NavBlock label={label} class="md:justify-self-start" testid="site-nav">
             <NavLinks links={links} current={current} side="left" />
-          </Nav>
+          </NavBlock>
           <Box class="text-center">
             <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
               {brand}
             </Link>
           </Box>
           <Group gap="4" align="center" justify="end" class="flex-wrap md:justify-self-end">
-            <Nav aria-label={label}>
+            <NavBlock label={label}>
               <NavLinks links={links} current={current} side="right" />
-            </Nav>
+            </NavBlock>
             <NavActions
               login={actions?.login}
               loginHref={actions?.loginHref}
@@ -115,13 +115,13 @@
         {#if ((layout as string) === "search")}
           <SearchPalette label={search.label} shortcut={search.shortcut} />
         {/if}
-        <Nav
+        <NavBlock
+          label={label}
           class={"order-last w-full overflow-x-auto md:order-none md:w-auto [&>div]:flex-nowrap md:[&>div]:flex-wrap [&_a]:shrink-0"}
-          aria-label={label}
-          data-testid="site-nav"
+          testid="site-nav"
         >
           <NavLinks links={links} current={current} side="all" />
-        </Nav>
+        </NavBlock>
         <NavActions
           login={actions?.login}
           loginHref={actions?.loginHref}

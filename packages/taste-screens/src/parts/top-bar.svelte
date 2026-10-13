@@ -4,7 +4,7 @@
   and the action only). `tone="inverse"` sets it on a dark or coloured field.
 -->
 <script lang="ts">
-  import { Header, Button, Box, Group, Inline, Link } from "@ui8kit/svelte-ui";
+  import { Block, Button, Box, Group, Inline, Link } from "@ui8kit/svelte-ui";
   import type { Deck } from "@ui8kit/taste-data/copy";
 
   let { c, layout = "split", tone = "default", action = "default", mark = "square" }: {
@@ -21,7 +21,7 @@
   );
 </script>
 
-<Header class={"relative z-10 flex h-20 w-full items-center px-16 " + (layout === "center" ? "justify-center" : "justify-between")}>
+<Block tag="header" class={"relative z-10 flex h-20 w-full items-center px-16 " + (layout === "center" ? "justify-center" : "justify-between")}>
   {#if layout === "center"}
     <Group gap="8" class={"absolute left-16 " + ink}>
       {#each c.nav.slice(0, 2) as n (n)}
@@ -49,4 +49,4 @@
   {:else}
     <Button size="sm" variant={action}>{c.cta}</Button>
   {/if}
-</Header>
+</Block>

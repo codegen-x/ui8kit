@@ -142,102 +142,105 @@
                   ]
                 },
                 {
-                  "use": "Nav",
+                  "organism": "NavBlock",
                   "props": {
-                    "Class": "min-w-0 flex-1"
-                  },
-                  "attrs": {
-                    "aria-label": {
+                    "label": {
                       "$": "label"
-                    }
+                    },
+                    "className": "min-w-0 flex-1"
                   },
-                  "children": [
-                    {
-                      "use": "Group",
-                      "props": {
-                        "Gap": "0",
-                        "Align": "start",
-                        "Class": {
-                          "op": "cn",
-                          "args": [
-                            "flex w-full flex-nowrap justify-between",
-                            {
-                              "op": "preset",
+                  "slots": {
+                    "children": {
+                      "args": [],
+                      "do": [
+                        {
+                          "use": "Group",
+                          "props": {
+                            "Gap": "0",
+                            "Align": "start",
+                            "Class": {
+                              "op": "cn",
                               "args": [
-                                "defaults",
-                                "footer.groups"
+                                "flex w-full flex-nowrap justify-between",
+                                {
+                                  "op": "preset",
+                                  "args": [
+                                    "defaults",
+                                    "footer.groups"
+                                  ]
+                                }
                               ]
                             }
-                          ]
-                        }
-                      },
-                      "attrs": {
-                        "data-testid": "footer-groups"
-                      },
-                      "children": [
-                        {
-                          "each": {
-                            "$": "groups"
                           },
-                          "as": "g",
-                          "key": {
-                            "$": "g.id"
+                          "attrs": {
+                            "data-testid": "footer-groups"
                           },
-                          "do": [
+                          "children": [
                             {
-                              "use": "Stack",
-                              "props": {
-                                "Gap": "4"
+                              "each": {
+                                "$": "groups"
                               },
-                              "attrs": {
-                                "data-testid": "group"
+                              "as": "g",
+                              "key": {
+                                "$": "g.id"
                               },
-                              "children": [
+                              "do": [
                                 {
-                                  "use": "Text",
+                                  "use": "Stack",
                                   "props": {
-                                    "Size": "xs",
-                                    "Weight": "semibold",
-                                    "Class": "leading-5"
+                                    "Gap": "4"
+                                  },
+                                  "attrs": {
+                                    "data-testid": "group"
                                   },
                                   "children": [
                                     {
-                                      "text": {
-                                        "$": "g.title"
-                                      }
-                                    }
-                                  ]
-                                },
-                                {
-                                  "use": "List",
-                                  "props": {
-                                    "Class": "m-0 flex list-none flex-col gap-4 p-0"
-                                  },
-                                  "children": [
-                                    {
-                                      "each": {
-                                        "$": "g.links"
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "xs",
+                                        "Weight": "semibold",
+                                        "Class": "leading-5"
                                       },
-                                      "as": "item",
-                                      "key": {
-                                        "$": "item"
-                                      },
-                                      "do": [
+                                      "children": [
                                         {
-                                          "use": "ListItem",
-                                          "children": [
+                                          "text": {
+                                            "$": "g.title"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "List",
+                                      "props": {
+                                        "Class": "m-0 flex list-none flex-col gap-4 p-0"
+                                      },
+                                      "children": [
+                                        {
+                                          "each": {
+                                            "$": "g.links"
+                                          },
+                                          "as": "item",
+                                          "key": {
+                                            "$": "item"
+                                          },
+                                          "do": [
                                             {
-                                              "use": "Link",
-                                              "props": {
-                                                "Href": "#/",
-                                                "Variant": "default",
-                                                "Class": "text-xs leading-5 text-muted-foreground"
-                                              },
+                                              "use": "ListItem",
                                               "children": [
                                                 {
-                                                  "text": {
-                                                    "$": "item"
-                                                  }
+                                                  "use": "Link",
+                                                  "props": {
+                                                    "Href": "#/",
+                                                    "Variant": "default",
+                                                    "Class": "text-xs leading-5 text-muted-foreground"
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "text": {
+                                                        "$": "item"
+                                                      }
+                                                    }
+                                                  ]
                                                 }
                                               ]
                                             }
@@ -253,7 +256,7 @@
                         }
                       ]
                     }
-                  ]
+                  }
                 }
               ]
             }

@@ -176,79 +176,45 @@
               ]
             },
             {
-              "use": "Nav",
+              "organism": "NavBlock",
               "props": {
-                "Class": "flex-1"
-              },
-              "attrs": {
-                "aria-label": {
+                "label": {
                   "$": "nav.label"
-                }
+                },
+                "className": "flex-1"
               },
-              "children": [
-                {
-                  "use": "List",
-                  "props": {
-                    "Class": "m-0 flex list-none flex-col gap-2 p-0"
-                  },
-                  "attrs": {
-                    "data-testid": "items"
-                  },
-                  "children": [
+              "slots": {
+                "children": {
+                  "args": [],
+                  "do": [
                     {
-                      "each": {
-                        "$": "nav.links"
+                      "use": "List",
+                      "props": {
+                        "Class": "m-0 flex list-none flex-col gap-2 p-0"
                       },
-                      "as": "l",
-                      "key": {
-                        "$": "l.id"
+                      "attrs": {
+                        "data-testid": "items"
                       },
-                      "do": [
+                      "children": [
                         {
-                          "use": "ListItem",
-                          "children": [
+                          "each": {
+                            "$": "nav.links"
+                          },
+                          "as": "l",
+                          "key": {
+                            "$": "l.id"
+                          },
+                          "do": [
                             {
-                              "use": "Link",
-                              "props": {
-                                "Href": "#/",
-                                "Variant": "default",
-                                "Size": "sm",
-                                "AriaCurrent": {
-                                  "op": "cond",
-                                  "args": [
-                                    {
-                                      "op": "eq",
-                                      "args": [
-                                        {
-                                          "$": "l.id"
-                                        },
-                                        {
-                                          "$": "nav.current"
-                                        }
-                                      ]
-                                    },
-                                    "page",
-                                    {
-                                      "op": "undef",
-                                      "args": []
-                                    }
-                                  ]
-                                },
-                                "Class": {
-                                  "op": "cn",
-                                  "args": [
-                                    "flex items-center gap-4 rounded py-2",
-                                    {
-                                      "op": "cond",
-                                      "args": [
-                                        {
-                                          "$": "named"
-                                        },
-                                        "px-4",
-                                        "justify-center px-2"
-                                      ]
-                                    },
-                                    {
+                              "use": "ListItem",
+                              "children": [
+                                {
+                                  "use": "Link",
+                                  "props": {
+                                    "Href": "#/",
+                                    "Variant": "default",
+                                    "Size": "sm",
+                                    "AriaCurrent": {
                                       "op": "cond",
                                       "args": [
                                         {
@@ -262,45 +228,82 @@
                                             }
                                           ]
                                         },
-                                        "bg-muted font-medium",
-                                        ""
-                                      ]
-                                    }
-                                  ]
-                                }
-                              },
-                              "attrs": {
-                                "data-testid": "item"
-                              },
-                              "children": [
-                                {
-                                  "use": "LucideIcon",
-                                  "props": {
-                                    "Name": {
-                                      "$": "l.icon"
-                                    },
-                                    "Size": 16
-                                  }
-                                },
-                                {
-                                  "use": "Inline",
-                                  "props": {
-                                    "Class": {
-                                      "op": "cond",
-                                      "args": [
+                                        "page",
                                         {
-                                          "$": "named"
+                                          "op": "undef",
+                                          "args": []
+                                        }
+                                      ]
+                                    },
+                                    "Class": {
+                                      "op": "cn",
+                                      "args": [
+                                        "flex items-center gap-4 rounded py-2",
+                                        {
+                                          "op": "cond",
+                                          "args": [
+                                            {
+                                              "$": "named"
+                                            },
+                                            "px-4",
+                                            "justify-center px-2"
+                                          ]
                                         },
-                                        "",
-                                        "sr-only"
+                                        {
+                                          "op": "cond",
+                                          "args": [
+                                            {
+                                              "op": "eq",
+                                              "args": [
+                                                {
+                                                  "$": "l.id"
+                                                },
+                                                {
+                                                  "$": "nav.current"
+                                                }
+                                              ]
+                                            },
+                                            "bg-muted font-medium",
+                                            ""
+                                          ]
+                                        }
                                       ]
                                     }
                                   },
+                                  "attrs": {
+                                    "data-testid": "item"
+                                  },
                                   "children": [
                                     {
-                                      "text": {
-                                        "$": "l.name"
+                                      "use": "LucideIcon",
+                                      "props": {
+                                        "Name": {
+                                          "$": "l.icon"
+                                        },
+                                        "Size": 16
                                       }
+                                    },
+                                    {
+                                      "use": "Inline",
+                                      "props": {
+                                        "Class": {
+                                          "op": "cond",
+                                          "args": [
+                                            {
+                                              "$": "named"
+                                            },
+                                            "",
+                                            "sr-only"
+                                          ]
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "l.name"
+                                          }
+                                        }
+                                      ]
                                     }
                                   ]
                                 }
@@ -312,7 +315,7 @@
                     }
                   ]
                 }
-              ]
+              }
             },
             {
               "when": {
@@ -430,72 +433,41 @@
                   ]
                 },
                 {
-                  "use": "Nav",
-                  "props": {},
-                  "attrs": {
-                    "aria-label": {
+                  "organism": "NavBlock",
+                  "props": {
+                    "label": {
                       "$": "nav.subTitle"
                     }
                   },
-                  "children": [
-                    {
-                      "use": "List",
-                      "props": {
-                        "Class": "m-0 flex list-none flex-col gap-2 p-0"
-                      },
-                      "children": [
+                  "slots": {
+                    "children": {
+                      "args": [],
+                      "do": [
                         {
-                          "each": {
-                            "$": "nav.sub"
+                          "use": "List",
+                          "props": {
+                            "Class": "m-0 flex list-none flex-col gap-2 p-0"
                           },
-                          "as": "s",
-                          "key": {
-                            "$": "s.id"
-                          },
-                          "do": [
+                          "children": [
                             {
-                              "use": "ListItem",
-                              "children": [
+                              "each": {
+                                "$": "nav.sub"
+                              },
+                              "as": "s",
+                              "key": {
+                                "$": "s.id"
+                              },
+                              "do": [
                                 {
-                                  "use": "Link",
-                                  "props": {
-                                    "Href": "#/",
-                                    "Variant": "default",
-                                    "Size": "sm",
-                                    "AriaCurrent": {
-                                      "op": "cond",
-                                      "args": [
-                                        {
-                                          "op": "eq",
-                                          "args": [
-                                            {
-                                              "$": "s.id"
-                                            },
-                                            {
-                                              "$": "nav.subCurrent"
-                                            }
-                                          ]
-                                        },
-                                        "page",
-                                        {
-                                          "op": "undef",
-                                          "args": []
-                                        }
-                                      ]
-                                    },
-                                    "Class": {
-                                      "op": "cn",
-                                      "args": [
-                                        "flex items-center gap-4 rounded py-2",
-                                        {
-                                          "op": "cond",
-                                          "args": [
-                                            true,
-                                            "px-4",
-                                            "justify-center px-2"
-                                          ]
-                                        },
-                                        {
+                                  "use": "ListItem",
+                                  "children": [
+                                    {
+                                      "use": "Link",
+                                      "props": {
+                                        "Href": "#/",
+                                        "Variant": "default",
+                                        "Size": "sm",
+                                        "AriaCurrent": {
                                           "op": "cond",
                                           "args": [
                                             {
@@ -509,43 +481,78 @@
                                                 }
                                               ]
                                             },
-                                            "bg-muted font-medium",
-                                            ""
+                                            "page",
+                                            {
+                                              "op": "undef",
+                                              "args": []
+                                            }
                                           ]
-                                        }
-                                      ]
-                                    }
-                                  },
-                                  "attrs": {
-                                    "data-testid": "item"
-                                  },
-                                  "children": [
-                                    {
-                                      "use": "LucideIcon",
-                                      "props": {
-                                        "Name": {
-                                          "$": "s.icon"
                                         },
-                                        "Size": 16
-                                      }
-                                    },
-                                    {
-                                      "use": "Inline",
-                                      "props": {
                                         "Class": {
-                                          "op": "cond",
+                                          "op": "cn",
                                           "args": [
-                                            true,
-                                            "",
-                                            "sr-only"
+                                            "flex items-center gap-4 rounded py-2",
+                                            {
+                                              "op": "cond",
+                                              "args": [
+                                                true,
+                                                "px-4",
+                                                "justify-center px-2"
+                                              ]
+                                            },
+                                            {
+                                              "op": "cond",
+                                              "args": [
+                                                {
+                                                  "op": "eq",
+                                                  "args": [
+                                                    {
+                                                      "$": "s.id"
+                                                    },
+                                                    {
+                                                      "$": "nav.subCurrent"
+                                                    }
+                                                  ]
+                                                },
+                                                "bg-muted font-medium",
+                                                ""
+                                              ]
+                                            }
                                           ]
                                         }
                                       },
+                                      "attrs": {
+                                        "data-testid": "item"
+                                      },
                                       "children": [
                                         {
-                                          "text": {
-                                            "$": "s.name"
+                                          "use": "LucideIcon",
+                                          "props": {
+                                            "Name": {
+                                              "$": "s.icon"
+                                            },
+                                            "Size": 16
                                           }
+                                        },
+                                        {
+                                          "use": "Inline",
+                                          "props": {
+                                            "Class": {
+                                              "op": "cond",
+                                              "args": [
+                                                true,
+                                                "",
+                                                "sr-only"
+                                              ]
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "s.name"
+                                              }
+                                            }
+                                          ]
                                         }
                                       ]
                                     }
@@ -557,7 +564,7 @@
                         }
                       ]
                     }
-                  ]
+                  }
                 }
               ]
             }

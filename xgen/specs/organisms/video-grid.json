@@ -120,68 +120,134 @@
                   },
                   "do": [
                     {
-                      "use": "Figure",
+                      "organism": "FigureBlock",
                       "props": {
-                        "Class": "m-0 flex flex-col gap-4"
+                        "className": "m-0 flex flex-col gap-4",
+                        "testid": "item"
                       },
-                      "attrs": {
-                        "data-testid": "item"
-                      },
-                      "children": [
-                        {
-                          "use": "Box",
-                          "props": {
-                            "Class": "relative"
-                          },
-                          "children": [
+                      "slots": {
+                        "children": {
+                          "args": [],
+                          "do": [
                             {
-                              "organism": "MediaFrame",
+                              "use": "Box",
                               "props": {
-                                "alt": {
-                                  "$": "q.author"
-                                },
-                                "ratio": "16/9"
-                              }
-                            },
-                            {
-                              "use": "Button",
-                              "props": {
-                                "Variant": "default",
-                                "Size": "default",
-                                "Type": "button",
-                                "Class": "absolute top-1/2 left-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded p-0"
-                              },
-                              "attrs": {
-                                "aria-label": {
-                                  "op": "tpl",
-                                  "args": [
-                                    {
-                                      "$": "playLabel"
-                                    },
-                                    {
-                                      "$": "q.author"
-                                    }
-                                  ]
-                                },
-                                "data-testid": "play"
-                              },
-                              "on": {
-                                "click": {
-                                  "call": "emit.play",
-                                  "args": [
-                                    {
-                                      "$": "q.id"
-                                    }
-                                  ]
-                                }
+                                "Class": "relative"
                               },
                               "children": [
                                 {
-                                  "use": "LucideIcon",
+                                  "organism": "MediaFrame",
                                   "props": {
-                                    "Name": "play",
-                                    "Size": 20
+                                    "alt": {
+                                      "$": "q.author"
+                                    },
+                                    "ratio": "16/9"
                                   }
+                                },
+                                {
+                                  "use": "Button",
+                                  "props": {
+                                    "Variant": "default",
+                                    "Size": "default",
+                                    "Type": "button",
+                                    "Class": "absolute top-1/2 left-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded p-0"
+                                  },
+                                  "attrs": {
+                                    "aria-label": {
+                                      "op": "tpl",
+                                      "args": [
+                                        {
+                                          "$": "playLabel"
+                                        },
+                                        {
+                                          "$": "q.author"
+                                        }
+                                      ]
+                                    },
+                                    "data-testid": "play"
+                                  },
+                                  "on": {
+                                    "click": {
+                                      "call": "emit.play",
+                                      "args": [
+                                        {
+                                          "$": "q.id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "use": "LucideIcon",
+                                      "props": {
+                                        "Name": "play",
+                                        "Size": 20
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "when": {
+                                    "op": "eq",
+                                    "args": [
+                                      {
+                                        "$": "caption"
+                                      },
+                                      "overlay"
+                                    ]
+                                  },
+                                  "then": [
+                                    {
+                                      "use": "Box",
+                                      "props": {
+                                        "Class": "absolute inset-x-0 bottom-0 rounded bg-background p-4"
+                                      },
+                                      "attrs": {
+                                        "data-testid": "caption"
+                                      },
+                                      "children": [
+                                        {
+                                          "use": "Text",
+                                          "props": {
+                                            "Size": "sm",
+                                            "Weight": "semibold"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "q.author"
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "use": "Text",
+                                          "props": {
+                                            "Size": "xs",
+                                            "Class": "text-muted-foreground"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "op": "tpl",
+                                                "args": [
+                                                  {
+                                                    "$": "byLine"
+                                                  },
+                                                  {
+                                                    "$": "q.role"
+                                                  },
+                                                  {
+                                                    "$": "q.company"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
                                 }
                               ]
                             },
@@ -192,14 +258,14 @@
                                   {
                                     "$": "caption"
                                   },
-                                  "overlay"
+                                  "below"
                                 ]
                               },
                               "then": [
                                 {
-                                  "use": "Box",
+                                  "use": "Text",
                                   "props": {
-                                    "Class": "absolute inset-x-0 bottom-0 rounded bg-background p-4"
+                                    "Tag": "figcaption"
                                   },
                                   "attrs": {
                                     "data-testid": "caption"
@@ -249,69 +315,8 @@
                               ]
                             }
                           ]
-                        },
-                        {
-                          "when": {
-                            "op": "eq",
-                            "args": [
-                              {
-                                "$": "caption"
-                              },
-                              "below"
-                            ]
-                          },
-                          "then": [
-                            {
-                              "use": "FigureCaption",
-                              "props": {},
-                              "attrs": {
-                                "data-testid": "caption"
-                              },
-                              "children": [
-                                {
-                                  "use": "Text",
-                                  "props": {
-                                    "Size": "sm",
-                                    "Weight": "semibold"
-                                  },
-                                  "children": [
-                                    {
-                                      "text": {
-                                        "$": "q.author"
-                                      }
-                                    }
-                                  ]
-                                },
-                                {
-                                  "use": "Text",
-                                  "props": {
-                                    "Size": "xs",
-                                    "Class": "text-muted-foreground"
-                                  },
-                                  "children": [
-                                    {
-                                      "text": {
-                                        "op": "tpl",
-                                        "args": [
-                                          {
-                                            "$": "byLine"
-                                          },
-                                          {
-                                            "$": "q.role"
-                                          },
-                                          {
-                                            "$": "q.company"
-                                          }
-                                        ]
-                                      }
-                                    }
-                                  ]
-                                }
-                              ]
-                            }
-                          ]
                         }
-                      ]
+                      }
                     }
                   ]
                 }

@@ -50,6 +50,7 @@ import { mediaListOrganisms } from "./media-list";
 import { featureShowcaseOrganisms } from "./feature-showcase";
 import { storyTabsParts } from "../components/story-tabs-parts";
 import { storyTabsOrganisms } from "./story-tabs";
+import { landmarkParts } from "../components/landmarks";
 
 export const allOrganisms = [
   pricingCard, ...siteOrganisms, ...landingOrganisms, ...pricingOrganisms, ...showcaseOrganisms, ...navigationOrganisms, ...workspaceOrganisms,
@@ -61,5 +62,5 @@ export const allOrganisms = [
   ...postSplitParts, ...postSplitOrganisms, ...footerSplitParts, ...footerSplitOrganisms,
   ...featureSplitParts, ...featureSplitOrganisms, ...pageTrailParts, ...pageTrailOrganisms,
   ...postShowcaseParts, ...postShowcaseOrganisms, ...mediaListParts, ...mediaListOrganisms,
-  ...featureShowcaseOrganisms, ...storyTabsParts, ...storyTabsOrganisms
+  ...featureShowcaseOrganisms, ...storyTabsParts, ...storyTabsOrganisms, ...landmarkParts
 ];

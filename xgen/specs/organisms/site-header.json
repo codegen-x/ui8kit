@@ -190,97 +190,101 @@
               ]
             },
             {
-              "use": "Nav",
-              "props": {},
-              "attrs": {
-                "aria-label": {
+              "organism": "NavBlock",
+              "props": {
+                "label": {
                   "$": "labels.nav"
                 },
-                "data-testid": "site-nav"
+                "testid": "site-nav"
               },
-              "children": [
-                {
-                  "use": "Group",
-                  "props": {
-                    "Gap": "4",
-                    "Align": "center"
-                  },
-                  "children": [
+              "slots": {
+                "children": {
+                  "args": [],
+                  "do": [
                     {
-                      "use": "Link",
+                      "use": "Group",
                       "props": {
-                        "Href": "#/",
-                        "Variant": "default",
-                        "AriaCurrent": {
-                          "op": "cond",
-                          "args": [
-                            {
-                              "op": "eq",
-                              "args": [
-                                {
-                                  "$": "current"
-                                },
-                                "home"
-                              ]
-                            },
-                            "page",
-                            {
-                              "op": "undef",
-                              "args": []
-                            }
-                          ]
-                        }
-                      },
-                      "attrs": {
-                        "data-testid": "nav-link"
+                        "Gap": "4",
+                        "Align": "center"
                       },
                       "children": [
                         {
-                          "text": {
-                            "$": "labels.home"
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "use": "Link",
-                      "props": {
-                        "Href": "#/pricing",
-                        "Variant": "default",
-                        "AriaCurrent": {
-                          "op": "cond",
-                          "args": [
-                            {
-                              "op": "eq",
+                          "use": "Link",
+                          "props": {
+                            "Href": "#/",
+                            "Variant": "default",
+                            "AriaCurrent": {
+                              "op": "cond",
                               "args": [
                                 {
-                                  "$": "current"
+                                  "op": "eq",
+                                  "args": [
+                                    {
+                                      "$": "current"
+                                    },
+                                    "home"
+                                  ]
                                 },
-                                "pricing"
+                                "page",
+                                {
+                                  "op": "undef",
+                                  "args": []
+                                }
                               ]
-                            },
-                            "page",
+                            }
+                          },
+                          "attrs": {
+                            "data-testid": "nav-link"
+                          },
+                          "children": [
                             {
-                              "op": "undef",
-                              "args": []
+                              "text": {
+                                "$": "labels.home"
+                              }
                             }
                           ]
-                        }
-                      },
-                      "attrs": {
-                        "data-testid": "nav-link"
-                      },
-                      "children": [
+                        },
                         {
-                          "text": {
-                            "$": "labels.pricing"
-                          }
+                          "use": "Link",
+                          "props": {
+                            "Href": "#/pricing",
+                            "Variant": "default",
+                            "AriaCurrent": {
+                              "op": "cond",
+                              "args": [
+                                {
+                                  "op": "eq",
+                                  "args": [
+                                    {
+                                      "$": "current"
+                                    },
+                                    "pricing"
+                                  ]
+                                },
+                                "page",
+                                {
+                                  "op": "undef",
+                                  "args": []
+                                }
+                              ]
+                            }
+                          },
+                          "attrs": {
+                            "data-testid": "nav-link"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "labels.pricing"
+                              }
+                            }
+                          ]
                         }
                       ]
                     }
                   ]
                 }
-              ]
+              }
             },
             {
               "use": "Group",

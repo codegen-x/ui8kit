@@ -5,6 +5,7 @@ import type { OrganismSpec, ViewNode } from "../../ir";
 import { spec, ts } from "../kit";
 import { tsOf } from "../props";
 import { muted, strong, surface } from "../ux";
+import { figureBlockOf } from "./landmarks";
 
 const types = [{ from: "HeroSplit", names: ["HeroContent"] }];
 const content = { name: "content", type: ts("HeroContent"), required: true, docs: "the figures, small cards, people, proof line and floating card of the hero" };
@@ -31,8 +32,8 @@ export const heroExtras = spec("pattern.hero-split-extras", "HeroSplitExtras", "
       first("content.features", "f", 2, use("Group", { props: { Gap: "4", Align: "start", Class: surface("p-4") }, attrs: { "data-testid": "hero-mini" } },
         iconSquare("f.icon"), use("Stack", { props: { Gap: "0" } }, strong(ref("f.title"), "sm"), muted(ref("f.text"), "xs")))))]),
     when(eq(ref("extra"), "quote"), [use("Stack", { props: { Gap: "6", Align: "stretch" } },
-      first("content.people", "p", 1, use("Figure", { props: { Class: "flex flex-col gap-4" }, attrs: { "data-testid": "hero-quote" } },
-        use("Blockquote", { props: { Class: "text-lg font-medium" } }, text(ref("p.quote"))),
+      first("content.people", "p", 1, figureBlockOf("flex flex-col gap-4", "hero-quote",
+        use("Text", { props: { Tag: "blockquote", Class: "text-lg font-medium" } }, text(ref("p.quote"))),
         use("Group", { props: { Gap: "4", Align: "center" } },
           organism("MediaFrame", { alt: ref("p.author"), ratio: "1/1", className: "size-10 shrink-0 rounded-full" }),
           use("Stack", { props: { Gap: "0" } }, strong(ref("p.author"), "sm"), muted(ref("p.role"), "xs"))))),
@@ -51,7 +52,7 @@ export const heroMedia = spec("pattern.hero-split-media", "HeroSplitMedia", "Wha
     when(eq(ref("media"), "picture"), [organism("MediaFrame", { alt: ref("alt"), ratio: "4/3" })]),
     when(eq(ref("media"), "card"), [organism("OfferMedia", { alt: ref("alt"), card: ref("content.card") })]),
     when(eq(ref("media"), "grid"), [use("Box", { props: { Class: "grid grid-cols-2 gap-4" }, attrs: { "data-testid": "hero-grid" } },
-      first("content.features", "f", 4, use("Figure", { props: { Class: "flex flex-col gap-2" }, attrs: { "data-testid": "hero-tile" } },
+      first("content.features", "f", 4, figureBlockOf("flex flex-col gap-2", "hero-tile",
         organism("MediaFrame", { alt: ref("f.title"), ratio: "1/1" }), muted(ref("f.title"), "xs"))))]),
     when(eq(ref("media"), "plans"), [use("Box", { props: { Class: "relative" }, attrs: { "data-testid": "hero-media" } },
       organism("MediaFrame", { alt: ref("alt"), ratio: "4/3" }),

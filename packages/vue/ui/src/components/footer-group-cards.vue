@@ -14,6 +14,7 @@ export type FooterGroupCardsProps = {
 </script>
 
 <script setup lang="ts">
+import Block from "../primitives/block/block.vue";
 import Box from "../primitives/box/box.vue";
 import Group from "../primitives/group/group.vue";
 import Inline from "../primitives/inline/inline.vue";
@@ -21,7 +22,6 @@ import Link from "../primitives/link/link.vue";
 import List from "../primitives/list/list.vue";
 import ListItem from "../primitives/list/list-item.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
-import Nav from "../primitives/nav/nav.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 
@@ -29,7 +29,7 @@ const { label, groups } = defineProps<FooterGroupCardsProps>();
 </script>
 
 <template>
-  <Nav :aria-label="label">
+  <Block tag="nav" :aria-label="label">
     <Box class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
       <Stack
         v-for="g in groups"
@@ -56,5 +56,5 @@ const { label, groups } = defineProps<FooterGroupCardsProps>();
         </List>
       </Stack>
     </Box>
-  </Nav>
+  </Block>
 </template>

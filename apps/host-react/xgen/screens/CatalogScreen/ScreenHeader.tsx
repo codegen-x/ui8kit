@@ -2,7 +2,7 @@
 // Source: xgen/specs/screens/catalog.json
 // The ScreenHeader part of CatalogScreen: its own file, so each file of the screen opens on one Block.
 
-import { Block, Button, Container, Link, LinkPlain, Nav } from "@ui8kit/react-ui";
+import { Block, Button, Container, Link, LinkPlain, NavBlock } from "@ui8kit/react-ui";
 import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
 import { ui } from "@ui8kit/app-shared/content";
 
@@ -23,7 +23,7 @@ export function ScreenHeader() {
         <Link href="#/" variant="default" className="text-lg font-bold" data-testid="brand">
           {ui.catalog.title}
         </Link>
-        <Nav className="flex flex-wrap items-center gap-4" aria-label={ui.catalog.navLabel}>
+        <NavBlock label={ui.catalog.navLabel} className="flex flex-wrap items-center gap-4">
           <Link href="#/" variant="default" className="text-sm font-medium" data-testid="tab-categories">
             {ui.catalog.categoriesTab}
           </Link>
@@ -42,7 +42,7 @@ export function ScreenHeader() {
           <Button variant="outline" size="sm" data-testid="theme-toggle" onClick={() => actions.toggleTheme()}>
             {ui.theme.toggle}
           </Button>
-        </Nav>
+        </NavBlock>
       </Container>
     </Block>
   );

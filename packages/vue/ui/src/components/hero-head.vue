@@ -26,7 +26,7 @@ import Button from "../primitives/button/button.vue";
 import Group from "../primitives/group/group.vue";
 import Link from "../primitives/link/link.vue";
 import LinkPlain from "../primitives/link-plain/link-plain.vue";
-import Nav from "../primitives/nav/nav.vue";
+import NavBlock from "../components/nav-block.vue";
 import { defaults } from "../presets/defaults";
 import { cn } from "../utils";
 
@@ -65,7 +65,7 @@ const {
     >
       {{ brand }}
     </Link>
-    <Nav :aria-label="navLabel" data-testid="site-nav">
+    <NavBlock :label="navLabel" testid="site-nav">
       <Group gap="8" align="center" class="flex-wrap">
         <Link v-for="l in links" :key="l.id"
           :href="(l.href ?? '#/')"
@@ -77,7 +77,7 @@ const {
           {{ l.name }}
         </Link>
       </Group>
-    </Nav>
+    </NavBlock>
     <Group gap="2" align="center">
       <Button v-if="login"
         :href="loginHref"

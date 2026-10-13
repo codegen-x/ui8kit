@@ -132,76 +132,80 @@
           ]
         },
         {
-          "use": "Nav",
-          "props": {},
-          "attrs": {
-            "aria-label": {
+          "organism": "NavBlock",
+          "props": {
+            "label": {
               "$": "navLabel"
             },
-            "data-testid": "site-nav"
+            "testid": "site-nav"
           },
-          "children": [
-            {
-              "use": "Group",
-              "props": {
-                "Gap": "8",
-                "Align": "center",
-                "Class": "flex-wrap"
-              },
-              "children": [
+          "slots": {
+            "children": {
+              "args": [],
+              "do": [
                 {
-                  "each": {
-                    "$": "links"
+                  "use": "Group",
+                  "props": {
+                    "Gap": "8",
+                    "Align": "center",
+                    "Class": "flex-wrap"
                   },
-                  "as": "l",
-                  "key": {
-                    "$": "l.id"
-                  },
-                  "do": [
+                  "children": [
                     {
-                      "use": "Link",
-                      "props": {
-                        "Href": {
-                          "op": "coalesce",
-                          "args": [
-                            {
-                              "$": "l.href"
-                            },
-                            "#/"
-                          ]
-                        },
-                        "Variant": "default",
-                        "AriaCurrent": {
-                          "op": "cond",
-                          "args": [
-                            {
-                              "op": "eq",
+                      "each": {
+                        "$": "links"
+                      },
+                      "as": "l",
+                      "key": {
+                        "$": "l.id"
+                      },
+                      "do": [
+                        {
+                          "use": "Link",
+                          "props": {
+                            "Href": {
+                              "op": "coalesce",
                               "args": [
                                 {
-                                  "$": "l.id"
+                                  "$": "l.href"
                                 },
+                                "#/"
+                              ]
+                            },
+                            "Variant": "default",
+                            "AriaCurrent": {
+                              "op": "cond",
+                              "args": [
                                 {
-                                  "$": "current"
+                                  "op": "eq",
+                                  "args": [
+                                    {
+                                      "$": "l.id"
+                                    },
+                                    {
+                                      "$": "current"
+                                    }
+                                  ]
+                                },
+                                "page",
+                                {
+                                  "op": "undef",
+                                  "args": []
                                 }
                               ]
                             },
-                            "page",
+                            "Class": "text-xs font-medium leading-5 text-background"
+                          },
+                          "attrs": {
+                            "data-testid": "nav-link"
+                          },
+                          "children": [
                             {
-                              "op": "undef",
-                              "args": []
+                              "text": {
+                                "$": "l.name"
+                              }
                             }
                           ]
-                        },
-                        "Class": "text-xs font-medium leading-5 text-background"
-                      },
-                      "attrs": {
-                        "data-testid": "nav-link"
-                      },
-                      "children": [
-                        {
-                          "text": {
-                            "$": "l.name"
-                          }
                         }
                       ]
                     }
@@ -209,7 +213,7 @@
                 }
               ]
             }
-          ]
+          }
         },
         {
           "use": "Group",

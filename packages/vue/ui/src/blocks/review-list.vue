@@ -21,12 +21,12 @@ export type ReviewListProps = {
 </script>
 
 <script setup lang="ts">
-import Article from "../primitives/article/article.vue";
 import Grid from "../primitives/grid/grid.vue";
 import Group from "../primitives/group/group.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
+import ArticleBlock from "../components/article-block.vue";
 import MediaFrame from "../components/media-frame.vue";
 import Rating from "../components/rating.vue";
 import SectionFrame from "../components/section-frame.vue";
@@ -54,7 +54,7 @@ const {
     :measure="(((layout as string) === 'list') ? '2xl' : 'default')"
   >
     <Grid :cols="(((layout as string) === 'grid') ? '1-3' : '1')" class="gap-4" data-testid="items">
-      <Article v-for="r in reviews" :key="r.id"
+      <ArticleBlock v-for="r in reviews" :key="r.id"
         :class="cn(
           'flex h-full flex-col gap-4',
           (
@@ -62,7 +62,7 @@ const {
             : 'border-b border-border pb-4'
           )
         )"
-        data-testid="item"
+        testid="item"
       >
         <Rating :value="r.rating" :label="tpl(labels.ratingLabel, r.rating)" :size="16" />
         <Title :as="3" size="base" weight="bold">
@@ -87,7 +87,7 @@ const {
             </Text>
           </Stack>
         </Group>
-      </Article>
+      </ArticleBlock>
     </Grid>
   </SectionFrame>
 </template>

@@ -7,6 +7,7 @@ import { id, title, tone, tsOf, toneLite, denseLite, roomyLite } from "../props"
 import { cartTable } from "../components/cart-table";
 import { numberField } from "../components/number-field";
 import { orderRows, statusTone } from "../components/orders";
+import { articleBlockOf } from "../components/landmarks";
 
 const O = "organism.";
 const common = { id: ref("id"), title: ref("title"), tone: ref("tone"), density: ref("density") };
@@ -177,7 +178,7 @@ const reviewList = spec(`${O}review-list`, "ReviewList", "Customer reviews as ca
   view: [frame({ ...common, measure: cond(eq(ref("layout"), "list"), "2xl", "default") }, [
     use("Grid", { props: { Cols: cond(eq(ref("layout"), "grid"), "1-3", "1"), Class: "gap-4" }, attrs: { "data-testid": "items" } },
       each(ref("reviews"), "r", ref("r.id"),
-        use("Article", { props: { Class: cn("flex h-full flex-col gap-4", cond(eq(ref("item"), "card"), "rounded bg-card p-6 inset-ring inset-ring-border", "border-b border-border pb-4")) }, attrs: { "data-testid": "item" } },
+        articleBlockOf(cn("flex h-full flex-col gap-4", cond(eq(ref("item"), "card"), "rounded bg-card p-6 inset-ring inset-ring-border", "border-b border-border pb-4")), "item",
           organism("Rating", { value: ref("r.rating"), label: tpl(ref("labels.ratingLabel"), ref("r.rating")), size: 16 }),
           use("Title", { props: { As: 3, Size: "base", Weight: "bold" } }, text(ref("r.title"))),
           use("Text", { props: { Size: "sm", Class: "text-muted-foreground" } }, text(ref("r.text"))),

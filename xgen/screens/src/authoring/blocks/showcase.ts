@@ -7,6 +7,7 @@ import { frame } from "../components/frames";
 import { id, title, tone, tsOf, toneLite, denseLite } from "../props";
 import { kids } from "../forms";
 import { fluidCols, heading, muted, strong, strongSpan, surface, fitCols } from "../ux";
+import { figureBlockOf } from "../components/landmarks";
 
 const O = "organism.";
 const base = (extra: Record<string, unknown> = {}) => ({ id: ref("id"), title: ref("title"), tone: ref("tone"), density: ref("density"), ...extra });
@@ -73,7 +74,7 @@ const featureAccordion = spec(`${O}feature-accordion`, "FeatureAccordion", "Feat
     use("Stack", { props: { Gap: "0", Align: "stretch" }, attrs: { "data-testid": "items" } },
       eachAt(ref("features"), "f", "i", ref("f.id"),
         use("Disclosure", { props: { Variant: "item", Name: cond(ref("multiple"), undef(), tpl("{0}-accordion", coalesce(ref("id"), "accordion"))), Open: and(eq(ref("expand"), "first"), eq(ref("i"), 0)) }, attrs: { "data-testid": "item" } },
-          use("Summary", { props: { Variant: "item" } }, use("Group", { props: { Tag: "span", Gap: "4", Align: "center" } }, use("LucideIcon", { props: { Name: ref("f.icon"), Size: 20 } }), strongSpan(ref("f.title")))),
+          use("Summary", { props: { Variant: "item" } }, use("Inline", { props: { Class: "flex min-w-0 items-center justify-start gap-4" } }, use("LucideIcon", { props: { Name: ref("f.icon"), Size: 20 } }), strongSpan(ref("f.title")))),
           use("Text", { props: { Size: "sm", Class: "pb-4 text-muted-foreground" } }, text(ref("f.text")))))),
   ], [organism("MediaFrame", { alt: ref("title"), ratio: "4/3" })])],
 });
@@ -188,13 +189,13 @@ const videoGrid = spec(`${O}video-grid`, "VideoGrid", "Video testimonials as thu
   view: [frame(base(), [
     use("Grid", { props: { Cols: ref("cols"), Class: "gap-4" }, attrs: { "data-testid": "items" } },
       each(ref("quotes"), "q", ref("q.id"),
-        use("Figure", { props: { Class: "m-0 flex flex-col gap-4" }, attrs: { "data-testid": "item" } },
+        figureBlockOf("m-0 flex flex-col gap-4", "item",
           use("Box", { props: { Class: "relative" } },
             organism("MediaFrame", { alt: ref("q.author"), ratio: "16/9" }),
             use("Button", { props: { Variant: "default", Size: "default", Type: "button", Class: "absolute top-1/2 left-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded p-0" }, on: { click: call("emit.play", ref("q.id")) }, attrs: { "aria-label": tpl(ref("playLabel"), ref("q.author")), "data-testid": "play" } },
               use("LucideIcon", { props: { Name: "play", Size: 20 } })),
             when(eq(ref("caption"), "overlay"), [use("Box", { props: { Class: "absolute inset-x-0 bottom-0 rounded bg-background p-4" }, attrs: { "data-testid": "caption" } }, strong(ref("q.author"), "sm"), muted(tpl(ref("byLine"), ref("q.role"), ref("q.company")), "xs"))])),
-          when(eq(ref("caption"), "below"), [use("FigureCaption", { props: {}, attrs: { "data-testid": "caption" } }, strong(ref("q.author"), "sm"), muted(tpl(ref("byLine"), ref("q.role"), ref("q.company")), "xs"))])))),
+          when(eq(ref("caption"), "below"), [use("Text", { props: { Tag: "figcaption" }, attrs: { "data-testid": "caption" } }, strong(ref("q.author"), "sm"), muted(tpl(ref("byLine"), ref("q.role"), ref("q.company")), "xs"))])))),
   ])],
 });
 

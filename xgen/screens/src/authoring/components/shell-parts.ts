@@ -5,6 +5,7 @@ import type { OrganismSpec, Value, ViewNode } from "../../ir";
 import { spec, ts } from "../kit";
 import { tsOf } from "../props";
 import { muted } from "../ux";
+import { navBlockOf } from "./landmarks";
 
 const P = "pattern.";
 const types = [{ from: "DashboardShell", names: ["ShellNav"] }];
@@ -36,7 +37,7 @@ export const shellTopbar = spec(`${P}shell-topbar`, "ShellTopbar", "The top bar 
   ],
   view: [use("Block", { props: { Tag: "header", Class: "flex h-16 shrink-0 items-center gap-6 border-b border-border bg-background px-6" }, attrs: { "data-testid": "topbar" } },
     when(eq(ref("brand"), "show"), [brand(true)]),
-    when(eq(ref("links"), "show"), [use("Nav", { props: { Class: "hidden lg:block" }, attrs: { "aria-label": ref("nav.label") } },
+    when(eq(ref("links"), "show"), [navBlockOf(ref("nav.label"), "hidden lg:block", undefined,
       use("List", { props: { Class: "m-0 flex list-none items-center gap-2 p-0" } }, each(ref("nav.links"), "l", ref("l.id"), item("l", ref("nav.current"), true))))]),
     // beside the links the field keeps a fixed width at the end (from xl); alone it takes the free space up to max-w-sm
     when(eq(ref("search"), "show"), [when(eq(ref("links"), "show"), [use("Box", { props: { Class: "ml-auto hidden w-64 shrink-0 xl:block" } }, palette)], [palette])]),
@@ -60,13 +61,13 @@ export const shellSidebar = spec(`${P}shell-sidebar`, "ShellSidebar", "The sideb
   view: [use("Block", { props: { Tag: "aside", Class: cn("flex shrink-0 bg-card", cond(eq(ref("side"), "end"), "flex-row-reverse border-l border-border", "border-r border-border")) }, attrs: { "aria-label": ref("nav.label"), "data-testid": "sidebar", "data-mode": ref("mode") } },
     use("Box", { props: { Class: cn("flex flex-col gap-6 py-4", cond(ref("named"), "w-64 px-4", "w-16 items-center px-2")) } },
       when(eq(ref("brand"), "show"), [brand(ref("named"))]),
-      use("Nav", { props: { Class: "flex-1" }, attrs: { "aria-label": ref("nav.label") } },
+      navBlockOf(ref("nav.label"), "flex-1", undefined,
         use("List", { props: { Class: "m-0 flex list-none flex-col gap-2 p-0" }, attrs: { "data-testid": "items" } }, each(ref("nav.links"), "l", ref("l.id"), item("l", ref("nav.current"), ref("named"))))),
       when(eq(ref("mode"), "collapsed"), [use("ButtonPlain", { props: { Type: "button", Class: "inline-flex size-10 items-center justify-center rounded text-muted-foreground" }, on: { click: call("emit.toggle") }, attrs: { "aria-label": ref("nav.expand"), "aria-expanded": cond(eq(ref("mode"), "wide"), "true", "false"), "data-testid": "toggle" } },
         use("LucideIcon", { props: { Name: "panel-left", Size: 20 } }))])),
     when(eq(ref("mode"), "twolevel"), [use("Box", { props: { Class: cn("flex w-56 flex-col gap-4 px-4 py-6", cond(eq(ref("side"), "end"), "border-r border-border", "border-l border-border")) }, attrs: { "data-testid": "subnav" } },
       use("Text", { props: { Size: "sm", Weight: "semibold", Class: "px-4" } }, text(ref("nav.subTitle"))),
-      use("Nav", { props: {}, attrs: { "aria-label": ref("nav.subTitle") } },
+      navBlockOf(ref("nav.subTitle"), undefined, undefined,
         use("List", { props: { Class: "m-0 flex list-none flex-col gap-2 p-0" } }, each(ref("nav.sub"), "s", ref("s.id"), item("s", ref("nav.subCurrent"), true)))))]),
   )],
 });
@@ -101,7 +102,7 @@ export const shellFooter = spec(`${P}shell-footer`, "ShellFooter", "The footer o
   props: [nav, { name: "place", type: tsOf("full", "inset"), default: "full" }],
   view: [use("Block", { props: { Tag: "footer", Class: cn("flex shrink-0 flex-wrap items-center justify-between gap-4 border-t border-border px-6 py-4", cond(eq(ref("place"), "full"), "bg-card", "")) }, attrs: { "data-testid": "footer", "data-place": ref("place") } },
     muted(ref("nav.copyright"), "xs"),
-    use("Nav", { props: {}, attrs: { "aria-label": ref("nav.footerLabel") } },
+    navBlockOf(ref("nav.footerLabel"), undefined, undefined,
       use("List", { props: { Class: "m-0 flex list-none items-center gap-4 p-0" } }, each(ref("nav.footer"), "f", ref("f.id"),
         use("ListItem", {}, use("Link", { props: { Href: "#/", Variant: "muted", Size: "sm", Class: "text-xs" } }, text(ref("f.name"))))))),
   )],

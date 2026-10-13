@@ -14,8 +14,8 @@ import { Grid } from "../primitives/grid/grid";
 import { Group } from "../primitives/group/group";
 import { LinkPlain } from "../primitives/link-plain/link-plain";
 import { Link } from "../primitives/link/link";
-import { Nav } from "../primitives/nav/nav";
 import { NavActions } from "../components/nav-actions";
+import { NavBlock } from "../components/nav-block";
 import { NavLinks } from "../components/nav-links";
 import { OverMedia } from "../components/over-media";
 import { SearchPalette } from "../components/search-palette";
@@ -79,18 +79,18 @@ export function NavBar({
         <Box className={cn("flex flex-wrap items-center justify-between gap-4", "py-4")}>
           {((layout as string) === "split") ? (
             <Grid cols="1-3" className="w-full items-center gap-4">
-              <Nav className="md:justify-self-start" aria-label={label} data-testid="site-nav">
+              <NavBlock label={label} className="md:justify-self-start" testid="site-nav">
                 <NavLinks links={links} current={current} side="left" />
-              </Nav>
+              </NavBlock>
               <Box className="text-center">
                 <Link href="#/" variant="default" className="text-lg font-medium" data-testid="brand">
                   {brand}
                 </Link>
               </Box>
               <Group gap="4" align="center" justify="end" className="flex-wrap md:justify-self-end">
-                <Nav aria-label={label}>
+                <NavBlock label={label}>
                   <NavLinks links={links} current={current} side="right" />
-                </Nav>
+                </NavBlock>
                 <NavActions
                   login={actions?.login}
                   loginHref={actions?.loginHref}
@@ -111,13 +111,13 @@ export function NavBar({
               {((layout as string) === "search") ? (
                 <SearchPalette label={search.label} shortcut={search.shortcut} />
               ) : null}
-              <Nav
+              <NavBlock
+                label={label}
                 className={"order-last w-full overflow-x-auto md:order-none md:w-auto [&>div]:flex-nowrap md:[&>div]:flex-wrap [&_a]:shrink-0"}
-                aria-label={label}
-                data-testid="site-nav"
+                testid="site-nav"
               >
                 <NavLinks links={links} current={current} side="all" />
-              </Nav>
+              </NavBlock>
               <NavActions
                 login={actions?.login}
                 loginHref={actions?.loginHref}

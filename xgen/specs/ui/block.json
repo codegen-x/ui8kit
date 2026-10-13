@@ -4,7 +4,7 @@
   "id": "ui.block",
   "tier": "brick",
   "dir": "block",
-  "docs": "Block is a top-level page landmark (main, header, section, nav, …).\nUse for document structure; do not nest Block inside Block.",
+  "docs": "Block is the one semantic root of a file (div, section, article, aside, header, footer, main, nav, figure, search, hgroup).\nAny file (block, composite, screen) may open on one Block; never nest Block inside Block in one file, never repeat it in a loop.",
   "variants": {
     "block": "block.variants.json"
   },
@@ -34,7 +34,7 @@
           "name": "Tag",
           "type": "string",
           "cva": false,
-          "docs": "semantic landmark: main, header, section, footer, nav, article, aside, figure"
+          "docs": "semantic tag: div (default), section, article, aside, header, footer, main, nav, figure, search, hgroup"
         },
         {
           "name": "Attrs",

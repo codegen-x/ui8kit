@@ -368,9 +368,9 @@
                       },
                       "do": [
                         {
-                          "use": "Figure",
+                          "organism": "FigureBlock",
                           "props": {
-                            "Class": {
+                            "className": {
                               "op": "cn",
                               "args": [
                                 "flex flex-col gap-2",
@@ -437,43 +437,31 @@
                                   ]
                                 }
                               ]
-                            }
+                            },
+                            "testid": "item"
                           },
-                          "attrs": {
-                            "data-testid": "item"
-                          },
-                          "children": [
-                            {
-                              "organism": "MediaFrame",
-                              "props": {
-                                "alt": {
-                                  "$": "p.title"
-                                },
-                                "ratio": {
-                                  "op": "cond",
-                                  "args": [
-                                    {
-                                      "op": "eq",
-                                      "args": [
-                                        {
-                                          "$": "layout"
-                                        },
-                                        "masonry"
-                                      ]
+                          "slots": {
+                            "children": {
+                              "args": [],
+                              "do": [
+                                {
+                                  "organism": "MediaFrame",
+                                  "props": {
+                                    "alt": {
+                                      "$": "p.title"
                                     },
-                                    {
+                                    "ratio": {
                                       "op": "cond",
                                       "args": [
                                         {
                                           "op": "eq",
                                           "args": [
                                             {
-                                              "$": "p.size"
+                                              "$": "layout"
                                             },
-                                            "tall"
+                                            "masonry"
                                           ]
                                         },
-                                        "3/4",
                                         {
                                           "op": "cond",
                                           "args": [
@@ -483,10 +471,10 @@
                                                 {
                                                   "$": "p.size"
                                                 },
-                                                "wide"
+                                                "tall"
                                               ]
                                             },
-                                            "16/9",
+                                            "3/4",
                                             {
                                               "op": "cond",
                                               "args": [
@@ -496,18 +484,49 @@
                                                     {
                                                       "$": "p.size"
                                                     },
-                                                    "large"
+                                                    "wide"
                                                   ]
                                                 },
-                                                "4/3",
-                                                "1/1"
+                                                "16/9",
+                                                {
+                                                  "op": "cond",
+                                                  "args": [
+                                                    {
+                                                      "op": "eq",
+                                                      "args": [
+                                                        {
+                                                          "$": "p.size"
+                                                        },
+                                                        "large"
+                                                      ]
+                                                    },
+                                                    "4/3",
+                                                    "1/1"
+                                                  ]
+                                                }
                                               ]
                                             }
+                                          ]
+                                        },
+                                        {
+                                          "op": "cond",
+                                          "args": [
+                                            {
+                                              "op": "eq",
+                                              "args": [
+                                                {
+                                                  "$": "layout"
+                                                },
+                                                "grid"
+                                              ]
+                                            },
+                                            "4/3",
+                                            "1/1"
                                           ]
                                         }
                                       ]
                                     },
-                                    {
+                                    "className": {
                                       "op": "cond",
                                       "args": [
                                         {
@@ -516,71 +535,126 @@
                                             {
                                               "$": "layout"
                                             },
-                                            "grid"
+                                            "mosaic"
                                           ]
                                         },
-                                        "4/3",
-                                        "1/1"
+                                        "h-full",
+                                        ""
+                                      ]
+                                    }
+                                  }
+                                },
+                                {
+                                  "when": {
+                                    "op": "and",
+                                    "args": [
+                                      {
+                                        "op": "eq",
+                                        "args": [
+                                          {
+                                            "$": "captions"
+                                          },
+                                          "show"
+                                        ]
+                                      },
+                                      {
+                                        "op": "eq",
+                                        "args": [
+                                          {
+                                            "$": "layout"
+                                          },
+                                          "cards"
+                                        ]
+                                      }
+                                    ]
+                                  },
+                                  "then": [
+                                    {
+                                      "use": "Group",
+                                      "props": {
+                                        "Gap": "4",
+                                        "Align": "center",
+                                        "Justify": "between"
+                                      },
+                                      "children": [
+                                        {
+                                          "use": "Text",
+                                          "props": {
+                                            "Size": "sm",
+                                            "Weight": "semibold"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "p.title"
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "use": "Badge",
+                                          "props": {
+                                            "Variant": "secondary",
+                                            "Size": "sm"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "p.tag"
+                                              }
+                                            }
+                                          ]
+                                        }
                                       ]
                                     }
                                   ]
                                 },
-                                "className": {
-                                  "op": "cond",
-                                  "args": [
-                                    {
-                                      "op": "eq",
-                                      "args": [
-                                        {
-                                          "$": "layout"
-                                        },
-                                        "mosaic"
-                                      ]
-                                    },
-                                    "h-full",
-                                    ""
-                                  ]
-                                }
-                              }
-                            },
-                            {
-                              "when": {
-                                "op": "and",
-                                "args": [
-                                  {
-                                    "op": "eq",
-                                    "args": [
-                                      {
-                                        "$": "captions"
-                                      },
-                                      "show"
-                                    ]
-                                  },
-                                  {
-                                    "op": "eq",
-                                    "args": [
-                                      {
-                                        "$": "layout"
-                                      },
-                                      "cards"
-                                    ]
-                                  }
-                                ]
-                              },
-                              "then": [
                                 {
-                                  "use": "Group",
-                                  "props": {
-                                    "Gap": "4",
-                                    "Align": "center",
-                                    "Justify": "between"
+                                  "when": {
+                                    "op": "and",
+                                    "args": [
+                                      {
+                                        "op": "eq",
+                                        "args": [
+                                          {
+                                            "$": "captions"
+                                          },
+                                          "show"
+                                        ]
+                                      },
+                                      {
+                                        "op": "or",
+                                        "args": [
+                                          {
+                                            "op": "eq",
+                                            "args": [
+                                              {
+                                                "$": "layout"
+                                              },
+                                              "grid"
+                                            ]
+                                          },
+                                          {
+                                            "op": "eq",
+                                            "args": [
+                                              {
+                                                "$": "layout"
+                                              },
+                                              "masonry"
+                                            ]
+                                          }
+                                        ]
+                                      }
+                                    ]
                                   },
-                                  "children": [
+                                  "then": [
                                     {
-                                      "use": "Text",
+                                      "use": "Box",
                                       "props": {
-                                        "Size": "sm",
-                                        "Weight": "semibold"
+                                        "Class": "text-sm text-muted-foreground"
+                                      },
+                                      "attrs": {
+                                        "data-testid": "caption"
                                       },
                                       "children": [
                                         {
@@ -589,83 +663,12 @@
                                           }
                                         }
                                       ]
-                                    },
-                                    {
-                                      "use": "Badge",
-                                      "props": {
-                                        "Variant": "secondary",
-                                        "Size": "sm"
-                                      },
-                                      "children": [
-                                        {
-                                          "text": {
-                                            "$": "p.tag"
-                                          }
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "when": {
-                                "op": "and",
-                                "args": [
-                                  {
-                                    "op": "eq",
-                                    "args": [
-                                      {
-                                        "$": "captions"
-                                      },
-                                      "show"
-                                    ]
-                                  },
-                                  {
-                                    "op": "or",
-                                    "args": [
-                                      {
-                                        "op": "eq",
-                                        "args": [
-                                          {
-                                            "$": "layout"
-                                          },
-                                          "grid"
-                                        ]
-                                      },
-                                      {
-                                        "op": "eq",
-                                        "args": [
-                                          {
-                                            "$": "layout"
-                                          },
-                                          "masonry"
-                                        ]
-                                      }
-                                    ]
-                                  }
-                                ]
-                              },
-                              "then": [
-                                {
-                                  "use": "Box",
-                                  "props": {
-                                    "Class": "text-sm text-muted-foreground"
-                                  },
-                                  "attrs": {
-                                    "data-testid": "caption"
-                                  },
-                                  "children": [
-                                    {
-                                      "text": {
-                                        "$": "p.title"
-                                      }
                                     }
                                   ]
                                 }
                               ]
                             }
-                          ]
+                          }
                         }
                       ],
                       "index": "i"

@@ -71,6 +71,7 @@
   "slots": [
     "FooterCard",
     "FooterColumns",
+    "NavBlock",
     "Pill"
   ],
   "facts": [

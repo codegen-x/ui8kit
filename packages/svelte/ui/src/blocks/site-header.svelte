@@ -28,7 +28,7 @@
   import Group from "../primitives/group/group.svelte";
   import Link from "../primitives/link/link.svelte";
   import LinkPlain from "../primitives/link-plain/link-plain.svelte";
-  import Nav from "../primitives/nav/nav.svelte";
+  import NavBlock from "../components/nav-block.svelte";
   import { cn } from "../utils";
 
   let {
@@ -71,7 +71,7 @@
     <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
       {labels.brand}
     </Link>
-    <Nav aria-label={labels.nav} data-testid="site-nav">
+    <NavBlock label={labels.nav} testid="site-nav">
       <Group gap="4" align="center">
         <Link
           href="#/"
@@ -90,7 +90,7 @@
           {labels.pricing}
         </Link>
       </Group>
-    </Nav>
+    </NavBlock>
     <Group gap="4" align="center">
       <Button variant="outline" size="sm" data-testid="theme-toggle" onclick={() => ontheme?.()}>
         {labels.theme}

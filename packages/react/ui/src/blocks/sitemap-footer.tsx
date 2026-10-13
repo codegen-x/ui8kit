@@ -16,12 +16,12 @@ import { Group } from "../primitives/group/group";
 import { Input } from "../primitives/input/input";
 import { Label } from "../primitives/label/label";
 import { Link } from "../primitives/link/link";
-import { Nav } from "../primitives/nav/nav";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { Title } from "../primitives/title/title";
 import { FooterCard } from "../components/footer-card";
 import { FooterColumns } from "../components/footer-columns";
+import { NavBlock } from "../components/nav-block";
 import { Pill } from "../components/pill";
 import { cn, tpl } from "../utils";
 import type { FooterSignup, FooterStatus } from "./sitemap-footer.types";
@@ -103,7 +103,7 @@ export function SitemapFooter({
                 <Text size="base" weight="bold">
                   {brand}
                 </Text>
-                <Nav aria-label={label}>
+                <NavBlock label={label}>
                   <Group gap="4" className="flex-wrap">
                     {(groups ?? []).map((g) => (
                       <Link key={g.id} href="#/" variant="default" className="text-sm" data-testid="group">
@@ -111,7 +111,7 @@ export function SitemapFooter({
                       </Link>
                     ))}
                   </Group>
-                </Nav>
+                </NavBlock>
               </Group>
             )}
             <Group gap="4" align="center" justify="between" className="flex-wrap border-t border-border pt-6">

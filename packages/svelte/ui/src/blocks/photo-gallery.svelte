@@ -26,11 +26,11 @@
   import Badge from "../primitives/badge/badge.svelte";
   import Box from "../primitives/box/box.svelte";
   import Button from "../primitives/button/button.svelte";
-  import Figure from "../primitives/figure/figure.svelte";
   import Group from "../primitives/group/group.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
+  import FigureBlock from "../components/figure-block.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import { cn, tpl } from "../utils";
@@ -86,14 +86,14 @@
       data-testid="items"
     >
       {#each photos as p, i (p.id)}
-        <Figure
+        <FigureBlock
           class={cn(
             "flex flex-col gap-2",
             (((layout as string) === "masonry") ? "mb-4 break-inside-avoid" : ""),
             ((((layout as string) === "mosaic") && (i === 0)) ? "col-span-2 row-span-2" : ""),
             (((layout as string) === "cards") ? "rounded bg-card inset-ring inset-ring-border p-4" : "")
           )}
-          data-testid="item"
+          testid="item"
         >
           <MediaFrame
             alt={p.title}
@@ -119,7 +119,7 @@
               {p.title}
             </Box>
           {/if}
-        </Figure>
+        </FigureBlock>
       {/each}
     </Box>
   {/if}

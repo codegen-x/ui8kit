@@ -4,14 +4,14 @@
   "id": "ui.text",
   "tier": "brick",
   "dir": "text",
-  "docs": "Text renders a paragraph of body copy. Use Inline for inline span copy\nand Title (as 1–6) for headings.",
+  "docs": "Text renders body copy: a paragraph by default; Tag picks another text element (blockquote, figcaption, address, pre, or an\ninline element). Title (as 1–6) is for headings.",
   "variants": {
     "text": "text.variants.json"
   },
   "parts": [
     {
       "name": "Text",
-      "docs": "Text renders a p element with body copy classes.",
+      "docs": "Text renders a p element with body copy classes, or the block or inline text element of `Tag`.",
       "recipeId": "text",
       "asChild": true,
       "classes": {
@@ -40,6 +40,12 @@
           "docs": "adds Tailwind utilities"
         },
         {
+          "name": "Tag",
+          "type": "string",
+          "cva": false,
+          "docs": "p (default), blockquote, figcaption, address, pre, or an inline element (span, strong, em, ...)"
+        },
+        {
           "name": "Attrs",
           "type": "attrs",
           "cva": false
@@ -53,8 +59,10 @@
       "render": {
         "kind": "element",
         "tag": {
-          "kind": "static",
-          "tag": "p"
+          "kind": "resolved",
+          "fromProp": "Tag",
+          "fallback": "p",
+          "group": "Text"
         },
         "attrs": [
           {
@@ -78,7 +86,8 @@
       "events": [],
       "a11y": {
         "roots": [
-          "p"
+          "p",
+          "(Text)"
         ],
         "roles": [],
         "aria": [],
@@ -103,6 +112,13 @@
       "id": "code",
       "props": {
         "Class": "text-sm font-mono"
+      }
+    },
+    {
+      "id": "tag.blockquote",
+      "props": {
+        "Tag": "blockquote",
+        "Class": "border-l border-border pl-4"
       }
     }
   ],

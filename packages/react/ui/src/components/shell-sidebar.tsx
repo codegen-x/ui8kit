@@ -15,8 +15,8 @@ import { Link } from "../primitives/link/link";
 import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
-import { Nav } from "../primitives/nav/nav";
 import { Text } from "../primitives/text/text";
+import { NavBlock } from "../components/nav-block";
 import { cn } from "../utils";
 import type { ShellNav } from "../blocks/dashboard-shell.types";
 
@@ -59,7 +59,7 @@ export function ShellSidebar({
             </Text>
           </Group>
         ) : null}
-        <Nav className="flex-1" aria-label={nav.label}>
+        <NavBlock label={nav.label} className="flex-1">
           <List className="m-0 flex list-none flex-col gap-2 p-0" data-testid="items">
             {(nav.links ?? []).map((l) => (
               <ListItem key={l.id}>
@@ -83,7 +83,7 @@ export function ShellSidebar({
               </ListItem>
             ))}
           </List>
-        </Nav>
+        </NavBlock>
         {((mode as string) === "collapsed") ? (
           <ButtonPlain
             type="button"
@@ -108,7 +108,7 @@ export function ShellSidebar({
           <Text size="sm" weight="semibold" className="px-4">
             {nav.subTitle}
           </Text>
-          <Nav aria-label={nav.subTitle}>
+          <NavBlock label={nav.subTitle}>
             <List className="m-0 flex list-none flex-col gap-2 p-0">
               {(nav.sub ?? []).map((s) => (
                 <ListItem key={s.id}>
@@ -132,7 +132,7 @@ export function ShellSidebar({
                 </ListItem>
               ))}
             </List>
-          </Nav>
+          </NavBlock>
         </Box>
       ) : null}
     </Block>

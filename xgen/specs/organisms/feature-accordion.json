@@ -193,11 +193,9 @@
                           },
                           "children": [
                             {
-                              "use": "Group",
+                              "use": "Inline",
                               "props": {
-                                "Tag": "span",
-                                "Gap": "4",
-                                "Align": "center"
+                                "Class": "flex min-w-0 items-center justify-start gap-4"
                               },
                               "children": [
                                 {

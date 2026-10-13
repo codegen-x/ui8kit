@@ -118,38 +118,41 @@
                   },
                   "then": [
                     {
-                      "use": "Figure",
+                      "organism": "FigureBlock",
                       "props": {
-                        "Class": "flex flex-col gap-2"
+                        "className": "flex flex-col gap-2",
+                        "testid": "hero-tile"
                       },
-                      "attrs": {
-                        "data-testid": "hero-tile"
-                      },
-                      "children": [
-                        {
-                          "organism": "MediaFrame",
-                          "props": {
-                            "alt": {
-                              "$": "f.title"
-                            },
-                            "ratio": "1/1"
-                          }
-                        },
-                        {
-                          "use": "Text",
-                          "props": {
-                            "Size": "xs",
-                            "Class": "text-muted-foreground"
-                          },
-                          "children": [
+                      "slots": {
+                        "children": {
+                          "args": [],
+                          "do": [
                             {
-                              "text": {
-                                "$": "f.title"
+                              "organism": "MediaFrame",
+                              "props": {
+                                "alt": {
+                                  "$": "f.title"
+                                },
+                                "ratio": "1/1"
                               }
+                            },
+                            {
+                              "use": "Text",
+                              "props": {
+                                "Size": "xs",
+                                "Class": "text-muted-foreground"
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "f.title"
+                                  }
+                                }
+                              ]
                             }
                           ]
                         }
-                      ]
+                      }
                     }
                   ]
                 }

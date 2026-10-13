@@ -9,8 +9,8 @@ import { Block } from "../primitives/block/block";
 import { Container } from "../primitives/container/container";
 import { Group } from "../primitives/group/group";
 import { Link } from "../primitives/link/link";
-import { Nav } from "../primitives/nav/nav";
 import { Text } from "../primitives/text/text";
+import { NavBlock } from "../components/nav-block";
 import { cn } from "../utils";
 import type { SiteFooterLabels } from "./site-footer.types";
 
@@ -35,7 +35,7 @@ export function SiteFooter({ labels, layout = "minimal", density = "default" }: 
         <Text size="sm" className="text-muted-foreground" data-testid="copyright">
           {labels.copyright}
         </Text>
-        <Nav aria-label={labels.nav}>
+        <NavBlock label={labels.nav}>
           <Group gap="4">
             <Link href="#/" variant="default">
               {labels.home}
@@ -44,7 +44,7 @@ export function SiteFooter({ labels, layout = "minimal", density = "default" }: 
               {labels.pricing}
             </Link>
           </Group>
-        </Nav>
+        </NavBlock>
       </Container>
     </Block>
   );

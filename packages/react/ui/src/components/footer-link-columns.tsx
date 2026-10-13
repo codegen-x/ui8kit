@@ -2,11 +2,11 @@
 // Source: xgen/screens/src/authoring/components/footer-split-parts.ts
 /** The first three link groups of FooterSplit as small columns beside each other. */
 import { Fragment, type ReactNode } from "react";
+import { Block } from "../primitives/block/block";
 import { Box } from "../primitives/box/box";
 import { Link } from "../primitives/link/link";
 import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
-import { Nav } from "../primitives/nav/nav";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import type { MegaGroup } from "../blocks/mega-menu.types";
@@ -18,7 +18,7 @@ export type FooterLinkColumnsProps = {
 
 export function FooterLinkColumns({ label, groups }: FooterLinkColumnsProps) {
   return (
-    <Nav aria-label={label}>
+    <Block tag="nav" aria-label={label}>
       <Box className="grid grid-cols-2 gap-8 sm:grid-cols-3">
         {(groups ?? []).map((g, i) => (
           <Fragment key={g.id}>
@@ -41,6 +41,6 @@ export function FooterLinkColumns({ label, groups }: FooterLinkColumnsProps) {
           </Fragment>
         ))}
       </Box>
-    </Nav>
+    </Block>
   );
 }

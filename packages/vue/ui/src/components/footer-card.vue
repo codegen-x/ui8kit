@@ -21,9 +21,9 @@ import Link from "../primitives/link/link.vue";
 import List from "../primitives/list/list.vue";
 import ListItem from "../primitives/list/list-item.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
-import Nav from "../primitives/nav/nav.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
+import NavBlock from "../components/nav-block.vue";
 import { defaults } from "../presets/defaults";
 import { cn } from "../utils";
 
@@ -45,7 +45,7 @@ const { label, brand, groups } = defineProps<FooterCardProps>();
             {{ brand }}
           </Text>
         </Group>
-        <Nav class="min-w-0 flex-1" :aria-label="label">
+        <NavBlock :label="label" class="min-w-0 flex-1">
           <Group
             gap="0"
             align="start"
@@ -65,7 +65,7 @@ const { label, brand, groups } = defineProps<FooterCardProps>();
               </List>
             </Stack>
           </Group>
-        </Nav>
+        </NavBlock>
       </Box>
     </Container>
   </Block>

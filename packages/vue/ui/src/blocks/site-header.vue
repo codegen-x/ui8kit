@@ -26,7 +26,7 @@ import Container from "../primitives/container/container.vue";
 import Group from "../primitives/group/group.vue";
 import Link from "../primitives/link/link.vue";
 import LinkPlain from "../primitives/link-plain/link-plain.vue";
-import Nav from "../primitives/nav/nav.vue";
+import NavBlock from "../components/nav-block.vue";
 import { cn } from "../utils";
 
 const {
@@ -70,7 +70,7 @@ const emit = defineEmits<{ theme: [] }>();
       <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
         {{ labels.brand }}
       </Link>
-      <Nav :aria-label="labels.nav" data-testid="site-nav">
+      <NavBlock :label="labels.nav" testid="site-nav">
         <Group gap="4" align="center">
           <Link
             href="#/"
@@ -89,7 +89,7 @@ const emit = defineEmits<{ theme: [] }>();
             {{ labels.pricing }}
           </Link>
         </Group>
-      </Nav>
+      </NavBlock>
       <Group gap="4" align="center">
         <Button variant="outline" size="sm" data-testid="theme-toggle" @click="() => emit('theme')">
           {{ labels.theme }}

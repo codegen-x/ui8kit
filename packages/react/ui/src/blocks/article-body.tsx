@@ -6,16 +6,15 @@
  * the section being read is a port contract.
  */
 import { type ReactNode } from "react";
-import { Blockquote } from "../primitives/blockquote/blockquote";
 import { Box } from "../primitives/box/box";
 import { Grid } from "../primitives/grid/grid";
 import { Link } from "../primitives/link/link";
 import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
-import { Nav } from "../primitives/nav/nav";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { Title } from "../primitives/title/title";
+import { NavBlock } from "../components/nav-block";
 import { SectionFrame } from "../components/section-frame";
 import { cn, tpl } from "../utils";
 import type { Section } from "./article-body.types";
@@ -49,7 +48,7 @@ export function ArticleBody({
         )}
       >
         {((layout as string) === "toc") ? (
-          <Nav className="md:sticky md:top-4" aria-label={tocTitle} data-testid="toc">
+          <NavBlock label={tocTitle} className="md:sticky md:top-4" testid="toc">
             <Stack gap="2">
               <Text size="sm" weight="semibold">
                 {tocTitle}
@@ -69,7 +68,7 @@ export function ArticleBody({
                 ))}
               </List>
             </Stack>
-          </Nav>
+          </NavBlock>
         ) : null}
         <Stack gap="8" align="stretch" className="mx-auto w-full max-w-2xl min-w-0" data-testid="article">
           {(sections ?? []).map((s) => (
@@ -83,9 +82,9 @@ export function ArticleBody({
               {((quotes as string) === "show") ? (
                 <>
                   {s.quote ? (
-                    <Blockquote className="m-0 border-l border-border pl-4 text-lg" data-testid="quote">
+                    <Text tag="blockquote" className="m-0 border-l border-border pl-4 text-lg" data-testid="quote">
                       {s.quote}
-                    </Blockquote>
+                    </Text>
                   ) : null}
                 </>
               ) : null}

@@ -16,10 +16,10 @@ import { Link } from "../primitives/link/link";
 import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
-import { Nav } from "../primitives/nav/nav";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { MediaFrame } from "../components/media-frame";
+import { NavBlock } from "../components/nav-block";
 import { cn } from "../utils";
 import type { MegaGroup } from "./mega-menu.types";
 import type { NavLink } from "./nav-bar.types";
@@ -59,7 +59,7 @@ export function MegaMenu({
           <Link href="#/" variant="default" className="text-lg font-medium" data-testid="brand">
             {brand}
           </Link>
-          <Nav className="flex-1" aria-label={label}>
+          <NavBlock label={label} className="flex-1">
             <Group gap="4" align="center" className="flex-wrap">
               <ButtonPlain
                 type="button"
@@ -82,7 +82,7 @@ export function MegaMenu({
                 </Link>
               ))}
             </Group>
-          </Nav>
+          </NavBlock>
         </Container>
       </Block>
       {((panel as string) === "open") ? (

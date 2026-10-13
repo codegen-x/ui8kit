@@ -5,7 +5,6 @@
  * square on top in the icons shape. Shapes: grid3, grid4, icons (three columns).
  */
 import { type ReactNode } from "react";
-import { Article } from "../primitives/article/article";
 import { Badge } from "../primitives/badge/badge";
 import { Box } from "../primitives/box/box";
 import { Link } from "../primitives/link/link";
@@ -13,6 +12,7 @@ import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { Title } from "../primitives/title/title";
+import { ArticleBlock } from "../components/article-block";
 import type { Question, FaqSplitLabels } from "../blocks/faq-split.types";
 
 export type FaqCardsProps = {
@@ -31,9 +31,9 @@ export function FaqCards({ items, labels, cards = "grid3" }: FaqCardsProps) {
       data-testid="faq"
     >
       {(items ?? []).map((q) => (
-        <Article key={q.id}
+        <ArticleBlock key={q.id}
           className="rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-6"
-          data-testid="faq-card"
+          testid="faq-card"
         >
           {((cards as string) === "icons") ? (
             <Box className="flex size-10 shrink-0 items-center justify-center rounded bg-muted">
@@ -57,7 +57,7 @@ export function FaqCards({ items, labels, cards = "grid3" }: FaqCardsProps) {
               <LucideIcon name="arrow-right" size={16} />
             </Link>
           </Box>
-        </Article>
+        </ArticleBlock>
       ))}
     </Box>
   );

@@ -20,8 +20,8 @@
   import Container from "../primitives/container/container.svelte";
   import Group from "../primitives/group/group.svelte";
   import Link from "../primitives/link/link.svelte";
-  import Nav from "../primitives/nav/nav.svelte";
   import Text from "../primitives/text/text.svelte";
+  import NavBlock from "../components/nav-block.svelte";
   import { cn } from "../utils";
 
   let { labels, layout = "minimal", density = "default" }: SiteFooterProps = $props();
@@ -40,7 +40,7 @@
     <Text size="sm" class="text-muted-foreground" data-testid="copyright">
       {labels.copyright}
     </Text>
-    <Nav aria-label={labels.nav}>
+    <NavBlock label={labels.nav}>
       <Group gap="4">
         <Link href="#/" variant="default">
           {labels.home}
@@ -49,6 +49,6 @@
           {labels.pricing}
         </Link>
       </Group>
-    </Nav>
+    </NavBlock>
   </Container>
 </Block>

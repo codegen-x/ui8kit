@@ -48,8 +48,8 @@ const tableColumnTags = new Set(["colgroup", "col"]);
 const mediaTags = new Set(["img", "picture", "source"]);
 const disclosureTags = new Set(["details", "summary"]);
 const containerTags = new Set(["div", "main", "section"]);
-const stackTags = new Set(["div", "ul", "ol", "span"]);
-const groupTags = new Set(["div", "fieldset", "dl", "span"]);
+const stackTags = new Set(["div", "ul", "ol"]);
+const groupTags = new Set(["div", "fieldset", "dl"]);
 
 function oneOf(tag: string, options: Set<string>): boolean {
   return options.has(tag);

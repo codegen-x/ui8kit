@@ -147,90 +147,65 @@
           ]
         },
         {
-          "use": "Nav",
+          "organism": "NavBlock",
           "props": {
-            "Class": "flex-1"
-          },
-          "attrs": {
-            "aria-label": {
+            "label": {
               "$": "label"
-            }
+            },
+            "className": "flex-1"
           },
-          "children": [
-            {
-              "use": "List",
-              "props": {
-                "Class": {
-                  "op": "cn",
-                  "args": [
-                    "m-0 flex list-none flex-col p-0",
-                    {
-                      "op": "cond",
+          "slots": {
+            "children": {
+              "args": [],
+              "do": [
+                {
+                  "use": "List",
+                  "props": {
+                    "Class": {
+                      "op": "cn",
                       "args": [
+                        "m-0 flex list-none flex-col p-0",
                         {
-                          "op": "eq",
+                          "op": "cond",
                           "args": [
                             {
-                              "$": "density"
-                            },
-                            "compact"
-                          ]
-                        },
-                        "gap-0",
-                        "gap-2"
-                      ]
-                    }
-                  ]
-                }
-              },
-              "attrs": {
-                "data-testid": "items"
-              },
-              "children": [
-                {
-                  "each": {
-                    "$": "links"
-                  },
-                  "as": "l",
-                  "key": {
-                    "$": "l.id"
-                  },
-                  "do": [
-                    {
-                      "use": "ListItem",
-                      "children": [
-                        {
-                          "use": "Link",
-                          "props": {
-                            "Href": "#/",
-                            "Variant": "default",
-                            "AriaCurrent": {
-                              "op": "cond",
+                              "op": "eq",
                               "args": [
                                 {
-                                  "op": "eq",
-                                  "args": [
-                                    {
-                                      "$": "l.id"
-                                    },
-                                    {
-                                      "$": "current"
-                                    }
-                                  ]
+                                  "$": "density"
                                 },
-                                "page",
-                                {
-                                  "op": "undef",
-                                  "args": []
-                                }
+                                "compact"
                               ]
                             },
-                            "Class": {
-                              "op": "cn",
-                              "args": [
-                                "flex items-center gap-4 rounded px-4 text-sm",
-                                "py-2",
-                                {
+                            "gap-0",
+                            "gap-2"
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "attrs": {
+                    "data-testid": "items"
+                  },
+                  "children": [
+                    {
+                      "each": {
+                        "$": "links"
+                      },
+                      "as": "l",
+                      "key": {
+                        "$": "l.id"
+                      },
+                      "do": [
+                        {
+                          "use": "ListItem",
+                          "children": [
+                            {
+                              "use": "Link",
+                              "props": {
+                                "Href": "#/",
+                                "Variant": "default",
+                                "AriaCurrent": {
                                   "op": "cond",
                                   "args": [
                                     {
@@ -244,51 +219,79 @@
                                         }
                                       ]
                                     },
-                                    "bg-muted font-semibold",
-                                    ""
-                                  ]
-                                }
-                              ]
-                            }
-                          },
-                          "attrs": {
-                            "data-testid": "item"
-                          },
-                          "children": [
-                            {
-                              "use": "LucideIcon",
-                              "props": {
-                                "Name": {
-                                  "$": "l.icon"
-                                },
-                                "Size": 16
-                              }
-                            },
-                            {
-                              "use": "Inline",
-                              "props": {
-                                "Class": {
-                                  "op": "cond",
-                                  "args": [
+                                    "page",
                                     {
-                                      "op": "eq",
+                                      "op": "undef",
+                                      "args": []
+                                    }
+                                  ]
+                                },
+                                "Class": {
+                                  "op": "cn",
+                                  "args": [
+                                    "flex items-center gap-4 rounded px-4 text-sm",
+                                    "py-2",
+                                    {
+                                      "op": "cond",
                                       "args": [
                                         {
-                                          "$": "width"
+                                          "op": "eq",
+                                          "args": [
+                                            {
+                                              "$": "l.id"
+                                            },
+                                            {
+                                              "$": "current"
+                                            }
+                                          ]
                                         },
-                                        "compact"
+                                        "bg-muted font-semibold",
+                                        ""
                                       ]
-                                    },
-                                    "sr-only",
-                                    ""
+                                    }
                                   ]
                                 }
                               },
+                              "attrs": {
+                                "data-testid": "item"
+                              },
                               "children": [
                                 {
-                                  "text": {
-                                    "$": "l.name"
+                                  "use": "LucideIcon",
+                                  "props": {
+                                    "Name": {
+                                      "$": "l.icon"
+                                    },
+                                    "Size": 16
                                   }
+                                },
+                                {
+                                  "use": "Inline",
+                                  "props": {
+                                    "Class": {
+                                      "op": "cond",
+                                      "args": [
+                                        {
+                                          "op": "eq",
+                                          "args": [
+                                            {
+                                              "$": "width"
+                                            },
+                                            "compact"
+                                          ]
+                                        },
+                                        "sr-only",
+                                        ""
+                                      ]
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "l.name"
+                                      }
+                                    }
+                                  ]
                                 }
                               ]
                             }
@@ -300,7 +303,7 @@
                 }
               ]
             }
-          ]
+          }
         },
         {
           "when": {

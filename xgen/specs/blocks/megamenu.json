@@ -51,7 +51,8 @@
     }
   ],
   "slots": [
-    "MediaFrame"
+    "MediaFrame",
+    "NavBlock"
   ],
   "facts": [
     {
