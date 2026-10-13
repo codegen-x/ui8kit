@@ -1,136 +1,136 @@
-# Исследование magazine: дизайнеры и арт-директора
+# Magazine study: designers and art directors
 
-Статус: **готово к проведению; участники не приглашены, наблюдений нет**.
-Первая группа — дизайнеры и арт-директора, согласно выбору владельца проекта.
+Status: **ready to run; no participants invited, no observations yet**.
+The first group is designers and art directors, as chosen by the project owner.
 
-## Цель
+## Goal
 
-Проверить, помогает ли magazine выбрать и объяснить арт-направление, отличить
-структуру от оформления, исследовать варианты и получить нужный preset.
-Бесплатный доступ и отсутствие авторизации входят в контекст задачи.
+Check whether magazine helps to choose and explain an art direction, to tell
+structure apart from styling, to explore variants and to obtain the right preset.
+Free access and no sign-in are part of the task context.
 
-## Выборка и условия
+## Sample and conditions
 
-Первый качественный раунд: 5–6 участников, например 3 практикующих дизайнера
-и 2–3 арт-директора. Это предложение для выявления проблем, не статистически
-репрезентативная оценка отрасли. Зафиксировать опыт UI, опыт работы с design
-systems и прежнее знакомство с UI8Kit. Основатель продукта не заменяет участника.
+First qualitative round: 5–6 participants, for example 3 practising designers
+and 2–3 art directors. This is a proposal for finding problems, not a statistically
+representative assessment of the industry. Record UI experience, experience with design
+systems and prior familiarity with UI8Kit. The product founder does not replace a participant.
 
-Сессия 30–40 минут. Изолированный профиль браузера, одинаковый revision,
-1440 × 1080, light, одна входная фикстура. Экран участника, его обычный браузер
-и способ управления записать. Не использовать исследовательский renderer
-для оценки всего пользовательского пути: он служит визуальному сравнению.
-Для REF-B1 использовать magazine; для REF-B3 допустим отдельный обозреватель
-с реальными normalized превью. Обязательно отметить, где проходила задача.
+Session of 30–40 minutes. Isolated browser profile, same revision,
+1440 × 1080, light, one entry fixture. Record the participant's screen, their usual browser
+and input method. Do not use the research renderer
+to assess the whole user journey: it serves visual comparison.
+Use magazine for REF-B1; for REF-B3 a separate viewer
+with real normalized previews is acceptable. Always note where the task took place.
 
-Входная фикстура `fixtures.entry.route` заменяет сохранённые picks. Объяснить,
-что набор заранее задан и ещё не выражает индивидуальный вкус участника.
-Исследователь согласует запись; можно вести только письменные заметки.
-Псевдонимы P01…P06, без email и имени в наборе результатов.
+The entry fixture `fixtures.entry.route` replaces the saved picks. Explain
+that the set is predefined and does not yet express the participant's individual taste.
+The researcher agrees on recording; written notes only are allowed.
+Pseudonyms P01…P06, no email or name in the result set.
 
-## Инструкция модератору
+## Moderator instructions
 
-«Перед вами бесплатная библиотека направлений на UI8Kit. Мы проверяем её
-понятность. Вы можете рассуждать вслух, вернуться назад или отказаться от
-варианта. Объясните, когда считаете задачу законченной».
+"In front of you is a free library of directions built on UI8Kit. We are testing how
+understandable it is. You may think aloud, go back or reject a
+variant. Tell us when you consider the task finished."
 
-Не показывать ожидаемый путь, заранее не объяснять различие токенов и
-композиций. Подсказка допустима после явной просьбы или 3 минут без прогресса;
-записать её дословно и отметить assisted. Участник может остановиться раньше.
-Одинаковая задача и критерий завершения для всех участников данного раунда.
+Do not show the expected path, and do not explain the difference between tokens and
+compositions in advance. A hint is allowed after an explicit request or 3 minutes without progress;
+record it verbatim and mark the task assisted. The participant may stop early.
+Same task and completion criterion for all participants in a round.
 
-## REF-B1 — Выбор направления
+## REF-B1 — Choosing a direction
 
-**Задание:** «Нужна первая страница сайта небольшой дизайн-студии. Она должна
-ясно показывать подход студии и давать один понятный следующий шаг.
-Выберите направление, с которого начали бы работу. Покажите ещё один
-рассмотренный вариант и объясните, почему предпочли первый».
+**Task:** "You need the home page of a small design studio. It must
+clearly show the studio's approach and offer one clear next step.
+Choose the direction you would start from. Show one more
+variant you considered and explain why you preferred the first."
 
-**Наблюдать:** какие признаки участник использует, где ищет альтернативы,
-отделяет ли желаемое настроение от структуры и задачи. Нет одного правильного
-conceptId. Модератор фиксирует объяснение, а не объявляет вкус успешным.
+**Observe:** which traits the participant uses, where they look for alternatives,
+whether they separate the desired mood from structure and task. There is no single correct
+conceptId. The moderator records the explanation and does not declare the taste successful.
 
-**Завершение:** названы выбранный вариант и альтернатива, объяснение содержит
-как минимум связь с задачей и наблюдаемый признак. Объяснение оценить после
-сессии двумя reviewer; разногласие сохранить, не скрывать средним баллом.
+**Completion:** the chosen variant and an alternative are named; the explanation contains
+at least a link to the task and an observable trait. Rate the explanation after
+the session with two reviewers; keep disagreement, do not hide it in an average score.
 
-## REF-B2 — Изменение типографики
+## REF-B2 — Changing typography
 
-Начальное состояние: authored ref-c02 на странице Design system.
+Starting state: authored ref-c02 on the Design system page.
 
-**Задание:** «Покажите эту страницу с Inter в заголовках и основном тексте.
-Сохраните её цветовую палитру и радиус элементов. Объясните, что изменилось».
+**Task:** "Show this page with Inter in headings and body text.
+Keep its colour palette and element radius. Explain what changed."
 
-**Завершение:** screen, skin и radius совпадают с базовыми, оба fonts — inter.
-Ожидаемый вариант `ref-c02:font`. Отдельно фиксировать state success и
-понимание: могут измениться переносы и визуальная плотность текста.
+**Completion:** screen, skin and radius match the base; both fonts are inter.
+Expected variant `ref-c02:font`. Record state success and
+understanding separately: line breaks and visual text density may change.
 
-## REF-B3 — Композиции одного семейства
+## REF-B3 — Compositions of one family
 
-Показать normalized ref-c10 и ref-c11. Чередовать левую/правую позицию по
-участникам, порядок записать. Общие текст и токены снимают часть смешения факторов;
-само медиа остаётся частью концепта.
+Show normalized ref-c10 and ref-c11. Alternate the left/right position across
+participants and record the order. Shared copy and tokens remove part of the confounding factors;
+the media itself remains part of the concept.
 
-**Задание:** «Оба экрана принадлежат одной группе. В чём вы видите различие
-их структуры? Для какого типа сообщения выбрали бы каждый?».
+**Task:** "Both screens belong to the same group. What difference do you see in
+their structure? For what kind of message would you choose each?"
 
-**Завершение:** участник указывает конкретное различие доминанты и порядка
-чтения. Связь `ref-r12`; не показывать её объяснение до ответа. Любое
-развёрнутое обоснование пригодности сохранить дословно; не подменять его
-совпадением legacy composition tags.
+**Completion:** the participant names a concrete difference in the dominant element and reading
+order. Relation `ref-r12`; do not show its explanation before the answer. Keep any
+detailed fitness rationale verbatim; do not substitute it with
+matching legacy composition tags.
 
-## REF-B4 — Перенос на шаблон
+## REF-B4 — Carrying over to a template
 
-Начальное состояние: authored ref-c07.
+Starting state: authored ref-c07.
 
-**Задание:** «Посмотрите, как выбранное оформление работает на шаблоне Blog.
-Что вы перенесли бы в проект, а что пришлось бы решить заново?».
+**Task:** "See how the chosen styling works on the Blog template.
+What would you carry over into a project, and what would have to be solved again?"
 
-**Завершение:** открыт blog; отдельно записано, что участник считает
-сохранённым и изменившимся. Поздний вопрос после ответа: «Сохранилась ли здесь
-композиция исходного экрана?». Не задавать его заранее. Открытие шаблона
-подтверждает переход; понимание переноса оценивается отдельно.
+**Completion:** blog is open; what the participant considers
+preserved and changed is recorded separately. Late question after the answer: "Was the
+source screen's composition preserved here?" Do not ask it in advance. Opening the template
+confirms the transition; understanding of the carry-over is assessed separately.
 
-## REF-B5 — Сохранение и preset
+## REF-B5 — Saving and preset
 
-Начальное состояние: ref-c05:radius (`radius=8`).
+Starting state: ref-c05:radius (`radius=8`).
 
-**Задание:** «Сохраните этот вариант в коллекцию и получите preset для
-передачи разработчику. Покажите, как убедились, что получили нужный вариант».
+**Task:** "Save this variant to a collection and get a preset to
+hand over to a developer. Show how you made sure you got the right variant."
 
-**Завершение:** collection item и успешно скопированный JSON совпадают с
-ожидаемым style key. Отказ браузера в clipboard — отдельная ошибка среды.
-Интеграцию в проект не считать выполненной: здесь проверяется получение.
+**Completion:** the collection item and the successfully copied JSON match the
+expected style key. A browser clipboard denial is a separate environment error.
+Do not count integration into a project as done: this checks obtaining the preset.
 
-## Протокол измерений
+## Measurement protocol
 
-Для каждой задачи записать: participantId, taskId, revision, surface, viewport,
+For each task record: participantId, taskId, revision, surface, viewport,
 startAt, endAt, activeDurationMs, outcome, helpCount, backtrackCount,
-wrongTurnCount, chosenConceptId/variantId, ответ, наблюдение и уверенность 1–5.
+wrongTurnCount, chosenConceptId/variantId, answer, observation and confidence 1–5.
 
-- Время начинается после прочтения задания и подтверждения готовности.
-- Останавливается при наблюдаемом завершении, отказе или окончании лимита.
-- Скрытая вкладка и пауза модератора исключаются из activeDurationMs.
-- Outcomes: success, assisted, failed, abandoned, incomplete. Отсутствие
-  записи не означает failed. Assisted не смешивать с самостоятельным успехом.
-- Backtrack — возврат к уже просмотренному состоянию после ухода из него.
-  Он может быть полезным сравнением; причина важнее самого количества.
-- Wrong turn — действие, после которого участник сам сообщает о несоответствии
-  задаче или вынужден исправить состояние. Не выводить его из клика автоматически.
-- Для первого раунда сообщать сырые counts и отдельные времена по задачам;
-  не объявлять 5–6 наблюдений статистически значимым рейтингом дизайнов.
-- Уверенность спрашивать после задачи и сохранять рядом с объяснением.
+- Timing starts after the task is read and readiness is confirmed.
+- It stops at observed completion, abandonment or the end of the time limit.
+- A hidden tab and moderator pauses are excluded from activeDurationMs.
+- Outcomes: success, assisted, failed, abandoned, incomplete. A missing
+  record does not mean failed. Do not mix assisted with independent success.
+- Backtrack — returning to an already viewed state after leaving it.
+  It may be a useful comparison; the reason matters more than the count.
+- Wrong turn — an action after which the participant reports a mismatch with
+  the task or has to correct the state. Do not infer it from a click automatically.
+- For the first round report raw counts and separate times per task;
+  do not present 5–6 observations as a statistically significant design ranking.
+- Ask for confidence after the task and store it next to the explanation.
 
-## Что решить после раунда
+## What to decide after the round
 
-1. Разделить проблемы навигации, языка, сравнения, визуальной иерархии и состояния.
-2. Для каждого вывода указать участников, наблюдение, контекст и ограничение.
-3. Выбрать 2–3 изменения с наибольшим влиянием на выбор/получение варианта.
-4. Повторить те же задачи на следующем revision, сохранив критерии.
-5. После человеческих наблюдений определить, какие события UX harness может
-   достоверно фиксировать автоматически. Объяснение и пригодность остаются
-   человеческими данными.
+1. Separate problems of navigation, language, comparison, visual hierarchy and state.
+2. For each finding name the participants, observation, context and limitation.
+3. Choose 2–3 changes with the greatest impact on choosing/obtaining a variant.
+4. Repeat the same tasks on the next revision, keeping the criteria.
+5. After human observations decide which events the UX harness can
+   reliably record automatically. Explanation and fitness remain
+   human data.
 
-Форма записи: [research-session.template.json](research-session.template.json).
-Заполнять копию, не шаблон. Скриншоты и геометрические флаги сами по себе
-не являются результатами пользовательского исследования.
+Recording form: [research-session.template.json](research-session.template.json).
+Fill in a copy, not the template. Screenshots and geometric flags on their own
+are not user research results.

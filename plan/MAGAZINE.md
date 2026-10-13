@@ -4,12 +4,12 @@ Status: design with decisions closed (§12, 2026-10-10); roadmap steps 1 (shared
 
 ## 1. Purpose
 
-The magazine is the journal, warehouse and storage of everything a visitor collects: collections ("подборки"), design packs, templates, presets. Its goal: **help the user choose a style and a taste, and see that taste in different representations** (other blocks, other templates, other skins/fonts/radii). Discovery is where taste is *searched*; the magazine is where it is *shown, compared and kept*.
+The magazine is the journal, warehouse and storage of everything a visitor collects: collections, design packs, templates, presets. Its goal: **help the user choose a style and a taste, and see that taste in different representations** (other blocks, other templates, other skins/fonts/radii). Discovery is where taste is *searched*; the magazine is where it is *shown, compared and kept*.
 
 User flow (translated from the user's wording):
 
 1. On the Discovery panorama the user selects **10 screens**. A **"Recommendations"** button appears; the selection can be cleared to keep searching.
-2. Pressing it navigates to the magazine, which shows **collections** (подборки).
+2. Pressing it navigates to the magazine, which shows **collections**.
 3. If the magazine is opened **directly** it is **empty**: only the rotating sphere of screens is shown.
 4. After arriving via the button, the sphere **collapses and flies into the header** as a small spinning ball of screens (just a ball, "not magic"). Clicking the ball **expands the sphere again** so the user can redefine the recommendations.
 5. Recommendations are **cards of screens similar in colour and style**, in **rows that alternate with fonts and skins rows**.
