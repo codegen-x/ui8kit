@@ -54,6 +54,15 @@ export interface Dialect {
   merge(a: string, b: string): string;
 }
 
+/** the ui_* helpers that return markup (an attribute string, an SVG, a rendered template): printed unescaped wherever a
+ * dialect cannot mark them safe at registration (Latte escapes inside a tag even an Html value). The PHP extensions and the
+ * Python environment register the same names as safe. */
+export const MARKUP_HELPERS = ["ui_attr_html", "ui_lucide", "ui_include"] as const;
+/** attributes whose value is a URL: Latte checks those at render and would blank the data: URIs the specs pass on, which React prints as given */
+export const URL_ATTRS = ["href", "src", "action", "formaction", "poster", "cite", "data", "srcset"] as const;
+const isMarkup = (e: string): boolean => MARKUP_HELPERS.some((h) => e.startsWith(`${h}(`));
+const isUrlAttr = (name: string): boolean => (URL_ATTRS as readonly string[]).includes(name);
+
 const q = (s: string): string => `'${s.replace(/\\/g, "\\\\").replace(/'/g, "\\'")}'`;
 
 export const twig: Dialect = {
@@ -124,8 +133,7 @@ export const latte: Dialect = {
   and: "&&",
   or: "||",
   contains: (hay, needle) => `str_contains(${hay}, ${needle})`,
-  // the URL check would blank data: URIs the specs pass on to src and href, which React prints as given
-  attrOut: (name, e) => (/^(href|src|action|formaction|poster|cite|data|srcset)$/.test(name) ? `{=${e}|nocheck}` : `{=${e}}`),
+  attrOut: (name, e) => (isUrlAttr(name) ? `{=${e}|nocheck}` : `{=${e}}`),
   dynamicTag: (name, tagVar) => `${name} n:tag="${tagVar}"`,
   hash: (entries) => `[${entries.map(([k, v]) => `${q(k)} => ${v}`).join(", ")}]`,
   list: (items) => `[${items.join(", ")}]`,
@@ -133,8 +141,7 @@ export const latte: Dialect = {
   ternary: (c, a, b) => `(${c} ? ${a} : ${b})`,
   not: (a) => `!(${a})`,
   raw: (e) => `{=${e}|noescape}`,
-  // the ui_* functions that return markup are Html, but Latte escapes inside a tag regardless, so they print unescaped
-  out: (e) => (/^ui_(attr_html|lucide)\(/.test(e) ? `{=${e}|noescape}` : `{=${e}}`),
+  out: (e) => (isMarkup(e) ? `{=${e}|noescape}` : `{=${e}}`),
   comment: (text) => `{* ${text.replace(/\*\}/g, "* }")} *}`,
   set: (name, value) => `{var $${name} = ${value}}`,
   capture: (name) => [`{capture $${name}}`, `{/capture}`],

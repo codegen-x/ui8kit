@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UI8Kit\Twig;
+namespace UI8Kit\{{RUNTIME}};
 
 /**
  * The helpers of the generated templates. Values are the JSON shapes of the TypeScript props (string, int/float,
