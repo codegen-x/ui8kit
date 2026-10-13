@@ -19,7 +19,7 @@ kit zone is never scanned. An adapter per runtime (`svelte.ts`: svelte/compiler,
 
 - Baselines: `rules/baselines/<package>.json`, counts per detector and file. More fails; fewer asks for a new baseline.
 - Style baselines: the `corners`, `shadows`, `hardcode` and `spacing` groups also scan the style text of `apps/magazine/src`
-  and `packages/panorama/src` (`src/style-zones.ts`) against `rules/style-baselines/<package>.json`, written by the same
+  (`src/style-zones.ts`; `packages/panorama`, Three.js and canvas code, is outside every rule zone) against `rules/style-baselines/<package>.json`, written by the same
   `bun run rules:baseline`.
 - Self-test: `rules/fixtures/<runtime>/<detector>.{bad,ok}.<ext>`, run inside the group and in `test/rules.test.ts`.
 - `bun run rules` counts the findings (`--list` prints them), `bun run rules:baseline` writes the catalog and the baselines,

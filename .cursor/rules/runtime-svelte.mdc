@@ -15,7 +15,7 @@ packages whose `ui8kit.runtime` is `svelte` (see `rules/zones.json`).
 
 | Zone | Paths |
 | --- | --- |
-| Kit | `packages/svelte/ui/src/primitives`, `src/utils`, `src/styles`; `apps/host-svelte/xgen/runtime`; `apps/magazine/src/lib`; `packages/taste-screens/src/recipes`; `packages/panorama/src` |
+| Kit | `packages/svelte/ui/src/primitives`, `src/utils`, `src/styles`; `apps/host-svelte/xgen/runtime`; `apps/magazine/src/lib`; `packages/taste-screens/src/recipes` |
 | Composition | `packages/svelte/ui/src/blocks`, `src/components`; `apps/host-svelte/xgen/screens`; `apps/magazine/src/App.svelte`, `src/parts`, `src/templates`; `apps/discovery/src/App.svelte`, `src/parts`; `packages/taste-screens/src/screens`, `src/parts` |
 
 ## Syntax

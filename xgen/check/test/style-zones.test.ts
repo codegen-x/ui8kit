@@ -1,4 +1,4 @@
-// The style rules on hand-written code (magazine, panorama): class text and CSS only, and the committed style baselines hold.
+// The style rules on hand-written code (magazine): class text and CSS only, and the committed style baselines hold.
 import { describe, expect, test } from "bun:test";
 import { join } from "node:path";
 import { styleFindings, styleProblems, STYLE_GROUPS } from "../src/style-zones";
@@ -26,7 +26,7 @@ describe("style rules on hand-written code", () => {
     expect(r.shadows).toEqual([]);
     expect(r.spacing).toEqual(["p-1"]);
   });
-  test("magazine and panorama match their baselines", () => {
+  test("magazine matches their baselines", () => {
     for (const g of STYLE_GROUPS) expect(styleProblems(repo, g)).toEqual([]);
   });
 });

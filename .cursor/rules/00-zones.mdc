@@ -46,7 +46,6 @@ Current catalog (see `rules/zones.json` for the source of truth):
 | `apps/magazine` | svelte | `src/lib` (TypeScript only: state, corpus, design, tokens) | `src/App.svelte`, `src/reference`, `src/parts`, `src/templates` | `src/App.svelte`, `src/reference`, `src/templates` |
 | `apps/discovery` | svelte | none | `src/App.svelte`, `src/parts` | `src/App.svelte` |
 | `packages/taste-screens` | svelte | `src/recipes` | `src/screens`, `src/parts` | `src/screens` |
-| `packages/panorama` | svelte | `src` | none | none |
 
 ## Vocabulary
 
@@ -74,5 +73,12 @@ The host frame `xgen/App.*` of each host app is composition and block root: it o
 `Block tag="main"` and is built from kit primitives; the dynamic screen loader lives in the
 kit zone (`xgen/runtime/ScreenOutlet.*` for React and Vue). In `apps/magazine`, `src/lib`
 holds TypeScript only; markup lives in `src/parts`, `src/templates` and `src/reference`.
-The style groups (`corners`, `shadows`, `hardcode`, `spacing`) also scan magazine and
-panorama style text against `rules/style-baselines/<package>.json`.
+The style groups (`corners`, `shadows`, `hardcode`, `spacing`) also scan the magazine style text
+against `rules/style-baselines/magazine.json`.
+
+## Outside every zone
+
+Three.js and canvas engine code is not UI composition and is out of all rules (00 to 06 and the
+style groups): `packages/panorama` declares no `ui8kit` field, is absent from `rules/zones.json`,
+has no `rules/baselines` or `rules/style-baselines` file, and is never scanned. A Svelte part
+that only mounts such an engine (a canvas host) stays in its app's composition zone.

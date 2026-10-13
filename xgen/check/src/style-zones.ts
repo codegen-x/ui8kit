@@ -1,6 +1,6 @@
 // The style rules of the corners, shadows, hardcode and spacing groups, applied to hand-written app code outside the specs:
-// apps/magazine/src and packages/panorama/src. Only style text is read: the markup and <style> of .svelte files, .css files,
-// and the string literals of .ts files (class strings); numbers in code (engine constants of the canvas) are never read.
+// apps/magazine/src. Only style text is read: the markup and <style> of .svelte files, .css files, and the string literals of
+// .ts files (class strings). Three.js / canvas engine code (packages/panorama) is outside every rule zone (rule 00) and never scanned.
 // Existing violations are recorded per file in rules/style-baselines/<package>.json: more fails, fewer asks for
 // `bun run rules:baseline`, so the list only shrinks.
 import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "node:fs";
@@ -13,7 +13,6 @@ export type StyleGroup = (typeof STYLE_GROUPS)[number];
 /** the hand-written packages under the style rules: name (the baseline file), package dir, scanned dir */
 export const STYLE_PACKAGES = [
   { name: "magazine", dir: "apps/magazine", src: "src" },
-  { name: "panorama", dir: "packages/panorama", src: "src" },
 ] as const;
 const BASELINE_DIR = join("rules", "style-baselines");
 

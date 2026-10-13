@@ -87,17 +87,6 @@
       ]
     },
     {
-      "name": "@ui8kit/panorama",
-      "dir": "packages/panorama",
-      "runtime": "svelte",
-      "generated": false,
-      "kit": [
-        "src"
-      ],
-      "composition": [],
-      "blockRoot": []
-    },
-    {
       "name": "@ui8kit/react-ui",
       "dir": "packages/react/ui",
       "runtime": "react",
