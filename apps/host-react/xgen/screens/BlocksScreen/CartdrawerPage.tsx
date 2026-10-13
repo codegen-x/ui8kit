@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type CartLine,
   type SummaryRow,
 } from "@ui8kit/react-ui";
@@ -87,7 +88,7 @@ export function CartdrawerPage() {
                 drawer={ui.commerce.drawer}
                 state="filled"
                 media="image"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cartdrawer, ui.blocks.variants.cartdrawer.filled)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cartdrawer, ui.blocks.variants.cartdrawer.filled))}
               />
             </Box>
           </Stack>
@@ -112,7 +113,7 @@ export function CartdrawerPage() {
                 drawer={ui.commerce.drawer}
                 state="filled"
                 media="none"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cartdrawer, ui.blocks.variants.cartdrawer.compact)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cartdrawer, ui.blocks.variants.cartdrawer.compact))}
               />
             </Box>
           </Stack>
@@ -137,7 +138,7 @@ export function CartdrawerPage() {
                 drawer={ui.commerce.drawer}
                 state="empty"
                 media="image"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cartdrawer, ui.blocks.variants.cartdrawer.empty)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cartdrawer, ui.blocks.variants.cartdrawer.empty))}
               />
             </Box>
           </Stack>

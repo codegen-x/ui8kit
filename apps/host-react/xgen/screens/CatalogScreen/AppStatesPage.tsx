@@ -14,6 +14,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Line,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -84,7 +85,7 @@ export function AppStatesPage() {
                   actions="button"
                   visual="image"
                   size="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.illustrated)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.illustrated))}
                 />
               </Box>
             </Stack>
@@ -112,7 +113,7 @@ export function AppStatesPage() {
                   visual="icon"
                   size="default"
                   icon="shopping-bag"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.orders)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.orders))}
                 />
               </Box>
             </Stack>
@@ -140,7 +141,7 @@ export function AppStatesPage() {
                   visual="icon"
                   size="default"
                   icon="search"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.results)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.results))}
                 />
               </Box>
             </Stack>
@@ -168,7 +169,7 @@ export function AppStatesPage() {
                   visual="icon"
                   size="default"
                   icon="inbox"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.inbox)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.inbox))}
                 />
               </Box>
             </Stack>
@@ -196,7 +197,7 @@ export function AppStatesPage() {
                   visual="icon"
                   size="compact"
                   icon="inbox"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.compact)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.compact))}
                 />
               </Box>
             </Stack>
@@ -224,7 +225,7 @@ export function AppStatesPage() {
                   visual="icon"
                   size="compact"
                   icon="search"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.plainNoAction)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.plainNoAction))}
                 />
               </Box>
             </Stack>
@@ -265,7 +266,7 @@ export function AppStatesPage() {
                   lines={placeholders}
                   shape="cards"
                   tone="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.cards)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.cards))}
                 />
               </Box>
             </Stack>
@@ -289,7 +290,7 @@ export function AppStatesPage() {
                   lines={placeholders}
                   shape="list"
                   tone="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.list)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.list))}
                 />
               </Box>
             </Stack>
@@ -313,7 +314,7 @@ export function AppStatesPage() {
                   lines={placeholders}
                   shape="article"
                   tone="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.article)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.article))}
                 />
               </Box>
             </Stack>
@@ -337,7 +338,7 @@ export function AppStatesPage() {
                   lines={placeholders}
                   shape="cards"
                   tone="muted"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.muted)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.muted))}
                 />
               </Box>
             </Stack>

@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Category,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -71,7 +72,7 @@ export function CategoriesPage() {
                 count="show"
                 icon="show"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.chips)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.chips))}
               />
             </Box>
           </Stack>
@@ -97,7 +98,7 @@ export function CategoriesPage() {
                 count="show"
                 icon="show"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.bar)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.bar))}
               />
             </Box>
           </Stack>
@@ -123,7 +124,7 @@ export function CategoriesPage() {
                 count="show"
                 icon="show"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.sidebar)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.sidebar))}
               />
             </Box>
           </Stack>
@@ -149,7 +150,7 @@ export function CategoriesPage() {
                 count="hide"
                 icon="hide"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.chipsPlain)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.chipsPlain))}
               />
             </Box>
           </Stack>
@@ -175,7 +176,7 @@ export function CategoriesPage() {
                 count="show"
                 icon="hide"
                 density="compact"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.barCompact)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.barCompact))}
               />
             </Box>
           </Stack>
@@ -201,7 +202,7 @@ export function CategoriesPage() {
                 count="show"
                 icon="show"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.tiles)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.tiles))}
               />
             </Box>
           </Stack>
@@ -227,7 +228,7 @@ export function CategoriesPage() {
                 count="show"
                 icon="hide"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.toolbar)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.toolbar))}
               />
             </Box>
           </Stack>

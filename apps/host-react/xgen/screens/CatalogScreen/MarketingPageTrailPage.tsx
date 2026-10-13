@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type NavLink,
   type Stat,
 } from "@ui8kit/react-ui";
@@ -96,7 +97,7 @@ export function MarketingPageTrailPage() {
                   aside="none"
                   tone="default"
                   level={2}
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pagetrail, ui.blocks.variants.pagetrail.crumbs)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.pagetrail, ui.blocks.variants.pagetrail.crumbs))}
                 />
               </Box>
             </Stack>
@@ -124,7 +125,7 @@ export function MarketingPageTrailPage() {
                   aside="figure"
                   tone="default"
                   level={2}
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pagetrail, ui.blocks.variants.pagetrail.crumbsFigure)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.pagetrail, ui.blocks.variants.pagetrail.crumbsFigure))}
                 />
               </Box>
             </Stack>
@@ -152,7 +153,7 @@ export function MarketingPageTrailPage() {
                   aside="note"
                   tone="default"
                   level={2}
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pagetrail, ui.blocks.variants.pagetrail.crumbsNote)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.pagetrail, ui.blocks.variants.pagetrail.crumbsNote))}
                 />
               </Box>
             </Stack>
@@ -180,7 +181,7 @@ export function MarketingPageTrailPage() {
                   aside="facts"
                   tone="muted"
                   level={2}
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pagetrail, ui.blocks.variants.pagetrail.keyFacts)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.pagetrail, ui.blocks.variants.pagetrail.keyFacts))}
                 />
               </Box>
             </Stack>

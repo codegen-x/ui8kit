@@ -9,6 +9,7 @@ import {
   ProofBand,
   TestimonialGrid,
   tpl,
+  uniqLabel,
   type CodeLine,
   type Feature,
   type Logo,
@@ -79,7 +80,7 @@ const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS);
     item="tile"
     tone="default"
     density="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.iconwall, ui.blocks.variants.iconwall.tiles4)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.iconwall, ui.blocks.variants.iconwall.tiles4))"
   />
   <ProofBand
     id="launch-proof"
@@ -90,7 +91,7 @@ const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS);
     logoStyle="name"
     tone="default"
     density="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.above)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.above))"
   />
   <TestimonialGrid
     id="launch-testimonials"
@@ -106,7 +107,7 @@ const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS);
     :item="{ kind: 'card', avatar: 'image', rating: 'show', mark: 'none' }"
     tone="default"
     density="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.grid3)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.grid3))"
   />
   <CtaBand
     id="launch-cta"
@@ -125,6 +126,6 @@ const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS);
     tone="muted"
     proof="none"
     density="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.form)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.form))"
   />
 </template>

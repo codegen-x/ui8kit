@@ -9,6 +9,7 @@ import {
   LogoCloud,
   QuoteSplit,
   tpl,
+  uniqLabel,
   type FaqTab,
   type Feature,
   type Logo,
@@ -124,7 +125,7 @@ const zones = fromCodex<Zone>(zonesEntries, ZONES_FIELDS);
     item="icon"
     tone="default"
     density="compact"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.row)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.row))"
   />
   <FaqSplit
     id="teams-faqsplit"
@@ -147,7 +148,7 @@ const zones = fromCodex<Zone>(zonesEntries, ZONES_FIELDS);
     cards="grid3"
     mediaSide="end"
     tone="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.faqsplit, ui.blocks.variants.faqsplit.helpCard)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faqsplit, ui.blocks.variants.faqsplit.helpCard))"
   />
   <QuoteSplit
     id="teams-quotesplit"
@@ -177,7 +178,7 @@ const zones = fromCodex<Zone>(zonesEntries, ZONES_FIELDS);
     layout="rating"
     mediaSide="end"
     tone="muted"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.quotesplit, ui.blocks.variants.quotesplit.ratingPanel)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.quotesplit, ui.blocks.variants.quotesplit.ratingPanel))"
   />
   <CtaProof
     id="teams-ctaproof"
@@ -196,6 +197,6 @@ const zones = fromCodex<Zone>(zonesEntries, ZONES_FIELDS);
     proof="stats"
     mediaSide="end"
     tone="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.splitStats)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.splitStats))"
   />
 </template>

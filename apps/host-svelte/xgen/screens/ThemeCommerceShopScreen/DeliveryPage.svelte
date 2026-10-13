@@ -9,6 +9,7 @@
     StoreLocations,
     ZoneTable,
     tpl,
+    uniqLabel,
     type Day,
     type Feature,
     type Store,
@@ -77,7 +78,7 @@
   layout="full"
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.delivery, ui.blocks.variants.delivery.full)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.delivery, ui.blocks.variants.delivery.full))}
 />
 <ZoneTable
   id="delivery-zones"
@@ -88,7 +89,7 @@
   layout="table"
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.zones, ui.blocks.variants.zones.table)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.zones, ui.blocks.variants.zones.table))}
 />
 <SlotBoard
   id="delivery-slots"
@@ -100,7 +101,7 @@
   layout="split"
   item="card"
   tone="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.slots, ui.blocks.variants.slots.split)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.slots, ui.blocks.variants.slots.split))}
 />
 <StoreLocations
   id="delivery-locations"
@@ -111,5 +112,5 @@
   labels={ui.commerce.stores}
   layout="cards"
   tone="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.locations, ui.blocks.variants.locations.cards)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.locations, ui.blocks.variants.locations.cards))}
 />

@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Stat,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -71,7 +72,7 @@ const metrics = fromCodex<Stat>(metricsEntries, METRICS_FIELDS);
               item="tile"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.tiles)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.tiles))"
             />
           </Box>
         </Stack>
@@ -96,7 +97,7 @@ const metrics = fromCodex<Stat>(metricsEntries, METRICS_FIELDS);
               item="tile"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.twoUp)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.twoUp))"
             />
           </Box>
         </Stack>
@@ -121,7 +122,7 @@ const metrics = fromCodex<Stat>(metricsEntries, METRICS_FIELDS);
               item="compact"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.compact)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.compact))"
             />
           </Box>
         </Stack>
@@ -146,7 +147,7 @@ const metrics = fromCodex<Stat>(metricsEntries, METRICS_FIELDS);
               item="compact"
               tone="muted"
               density="compact"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.muted)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.muted))"
             />
           </Box>
         </Stack>

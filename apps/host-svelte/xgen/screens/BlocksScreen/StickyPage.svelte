@@ -13,6 +13,7 @@
     Text,
     Title,
     tpl,
+    uniqLabel,
     type Feature,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -65,7 +66,7 @@
             item="plain"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sticky, ui.blocks.variants.sticky.end)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.sticky, ui.blocks.variants.sticky.end))}
           />
         </Box>
       </Stack>
@@ -91,7 +92,7 @@
             item="plain"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sticky, ui.blocks.variants.sticky.start)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.sticky, ui.blocks.variants.sticky.start))}
           />
         </Box>
       </Stack>
@@ -117,7 +118,7 @@
             item="card"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sticky, ui.blocks.variants.sticky.card)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.sticky, ui.blocks.variants.sticky.card))}
           />
         </Box>
       </Stack>
@@ -143,7 +144,7 @@
             item="plain"
             tone="muted"
             density="compact"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sticky, ui.blocks.variants.sticky.muted)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.sticky, ui.blocks.variants.sticky.muted))}
           />
         </Box>
       </Stack>

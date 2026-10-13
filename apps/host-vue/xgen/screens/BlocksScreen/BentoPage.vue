@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Tile,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -65,7 +66,7 @@ const bento = fromCodex<Tile>(bentoEntries, BENTO_FIELDS);
               media="none"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.bento)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.bento))"
             />
           </Box>
         </Stack>
@@ -90,7 +91,7 @@ const bento = fromCodex<Tile>(bentoEntries, BENTO_FIELDS);
               media="none"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.even)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.even))"
             />
           </Box>
         </Stack>
@@ -115,7 +116,7 @@ const bento = fromCodex<Tile>(bentoEntries, BENTO_FIELDS);
               media="image"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.images)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.images))"
             />
           </Box>
         </Stack>
@@ -140,7 +141,7 @@ const bento = fromCodex<Tile>(bentoEntries, BENTO_FIELDS);
               media="none"
               tone="muted"
               density="compact"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.muted)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.muted))"
             />
           </Box>
         </Stack>

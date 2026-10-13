@@ -2,7 +2,7 @@
 // Source: xgen/specs/screens/theme-dashboard-console.json
 // The shells page of ThemeDashboardConsoleScreen.
 
-import { DashboardShell, PageIntro, tpl, type NavLink } from "@ui8kit/react-ui";
+import { DashboardShell, PageIntro, tpl, uniqLabel, type NavLink } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { sidenav as sidenavEntries } from "@ui8kit/app-shared/data/sidenav";
@@ -55,7 +55,7 @@ export function ShellsPage() {
         side="start"
         footer="none"
         content="grid"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.classic)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.classic))}
       />
       <DashboardShell
         id="shells-dashshell-2"
@@ -82,7 +82,7 @@ export function ShellsPage() {
         side="start"
         footer="inset"
         content="list"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.twoLevel)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.twoLevel))}
       />
       <DashboardShell
         id="shells-dashshell-3"
@@ -109,7 +109,7 @@ export function ShellsPage() {
         side="end"
         footer="full"
         content="split"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.end)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.end))}
       />
     </>
   );

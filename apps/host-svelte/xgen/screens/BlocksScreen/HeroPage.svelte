@@ -14,6 +14,7 @@
     Text,
     Title,
     tpl,
+    uniqLabel,
     type CodeLine,
     type NavLink,
     type Topic,
@@ -85,7 +86,7 @@
             tone="default"
             density="roomy"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.centered)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.centered))}
           />
         </Box>
       </Stack>
@@ -113,7 +114,7 @@
             tone="default"
             density="roomy"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.screenshot)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.screenshot))}
           />
         </Box>
       </Stack>
@@ -141,7 +142,7 @@
             tone="muted"
             density="roomy"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.backdrop)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.backdrop))}
           />
         </Box>
       </Stack>
@@ -169,7 +170,7 @@
             tone="default"
             density="roomy"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.code)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.code))}
           />
         </Box>
       </Stack>
@@ -197,7 +198,7 @@
             tone="default"
             density="roomy"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.cluster)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.cluster))}
           />
         </Box>
       </Stack>
@@ -225,7 +226,7 @@
             tone="default"
             density="roomy"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.display)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.display))}
           />
         </Box>
       </Stack>
@@ -253,7 +254,7 @@
             tone="default"
             density="roomy"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.form)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.form))}
           />
         </Box>
       </Stack>
@@ -288,7 +289,7 @@
             badgeMark={ui.vibe.hero.badgeMark}
             topics={prompts}
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.prompt)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.prompt))}
           />
         </Box>
       </Stack>
@@ -316,7 +317,7 @@
             tone="default"
             density="roomy"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.twoActions)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.twoActions))}
           />
         </Box>
       </Stack>
@@ -344,7 +345,7 @@
             tone="default"
             density="roomy"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.split)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.split))}
           />
         </Box>
       </Stack>
@@ -372,7 +373,7 @@
             tone="default"
             density="roomy"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.splitStart)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.splitStart))}
           />
         </Box>
       </Stack>
@@ -400,7 +401,7 @@
             tone="muted"
             density="default"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.muted)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.muted))}
           />
         </Box>
       </Stack>
@@ -433,7 +434,7 @@
             tone="default"
             density="roomy"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.saas)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.saas))}
           />
         </Box>
       </Stack>
@@ -466,7 +467,7 @@
             tone="muted"
             density="roomy"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.shop)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.shop))}
           />
         </Box>
       </Stack>
@@ -499,7 +500,7 @@
             tone="default"
             density="compact"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.blog)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.blog))}
           />
         </Box>
       </Stack>

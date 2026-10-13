@@ -13,6 +13,7 @@
     Text,
     Title,
     tpl,
+    uniqLabel,
     type SummaryRow,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -72,7 +73,7 @@
             note="show"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.card)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.card))}
           />
         </Box>
       </Stack>
@@ -99,7 +100,7 @@
             note="hide"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.plain)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.plain))}
           />
         </Box>
       </Stack>
@@ -126,7 +127,7 @@
             note="show"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.noCta)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.noCta))}
           />
         </Box>
       </Stack>
@@ -153,7 +154,7 @@
             note="show"
             tone="muted"
             density="compact"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.muted)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.muted))}
           />
         </Box>
       </Stack>

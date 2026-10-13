@@ -26,7 +26,7 @@ import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import NavBlock from "../components/nav-block.vue";
 import { defaults } from "../presets/defaults";
-import { cn, tpl } from "../utils";
+import { cn, tpl, uniqLabel } from "../utils";
 
 const { label, brand, groups, landmarkLabel } = defineProps<FooterCardProps>();
 </script>
@@ -46,7 +46,10 @@ const { label, brand, groups, landmarkLabel } = defineProps<FooterCardProps>();
             {{ brand }}
           </Text>
         </Group>
-        <NavBlock :label="(landmarkLabel ? tpl('{0}, {1}', label, landmarkLabel) : label)" class="min-w-0 flex-1">
+        <NavBlock
+          :label="(landmarkLabel ? uniqLabel(tpl('{0}, {1}', label, landmarkLabel)) : label)"
+          class="min-w-0 flex-1"
+        >
           <Group
             gap="0"
             align="start"

@@ -2,7 +2,7 @@
 // Source: xgen/specs/screens/theme-content-blog.json
 // The archive page of ThemeContentBlogScreen.
 
-import { PageIntro, PostGrid, tpl, type Post, type PostTopic } from "@ui8kit/react-ui";
+import { PageIntro, PostGrid, tpl, uniqLabel, type Post, type PostTopic } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { posts as postsEntries } from "@ui8kit/app-shared/data/posts";
@@ -49,7 +49,7 @@ export function ArchivePage() {
         meta="full"
         tone="default"
         density="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.list)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.list))}
       />
       <PostGrid
         id="archive-posts-2"
@@ -64,7 +64,7 @@ export function ArchivePage() {
         meta="short"
         tone="muted"
         density="compact"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.digest)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.digest))}
       />
       <PostGrid
         id="archive-posts-3"
@@ -79,7 +79,7 @@ export function ArchivePage() {
         meta="full"
         tone="default"
         density="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.textOnly)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.textOnly))}
       />
     </>
   );

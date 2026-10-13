@@ -16,6 +16,7 @@ import {
   Title,
   ZoneTable,
   tpl,
+  uniqLabel,
   type Day,
   type Feature,
   type Store,
@@ -123,7 +124,7 @@ const stores = fromCodex<Store>(storesEntries, STORES_FIELDS);
                 layout="full"
                 tone="default"
                 density="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.delivery, ui.blocks.variants.delivery.full)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.delivery, ui.blocks.variants.delivery.full))"
               />
             </Box>
           </Stack>
@@ -150,7 +151,7 @@ const stores = fromCodex<Store>(storesEntries, STORES_FIELDS);
                 layout="split"
                 tone="default"
                 density="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.delivery, ui.blocks.variants.delivery.split)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.delivery, ui.blocks.variants.delivery.split))"
               />
             </Box>
           </Stack>
@@ -177,7 +178,7 @@ const stores = fromCodex<Store>(storesEntries, STORES_FIELDS);
                 layout="facts"
                 tone="muted"
                 density="compact"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.delivery, ui.blocks.variants.delivery.facts)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.delivery, ui.blocks.variants.delivery.facts))"
               />
             </Box>
           </Stack>
@@ -220,7 +221,7 @@ const stores = fromCodex<Store>(storesEntries, STORES_FIELDS);
                 layout="table"
                 tone="default"
                 density="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.zones, ui.blocks.variants.zones.table)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.zones, ui.blocks.variants.zones.table))"
               />
             </Box>
           </Stack>
@@ -246,7 +247,7 @@ const stores = fromCodex<Store>(storesEntries, STORES_FIELDS);
                 layout="cards"
                 tone="default"
                 density="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.zones, ui.blocks.variants.zones.cards)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.zones, ui.blocks.variants.zones.cards))"
               />
             </Box>
           </Stack>
@@ -272,7 +273,7 @@ const stores = fromCodex<Store>(storesEntries, STORES_FIELDS);
                 layout="table"
                 tone="muted"
                 density="compact"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.zones, ui.blocks.variants.zones.tableMuted)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.zones, ui.blocks.variants.zones.tableMuted))"
               />
             </Box>
           </Stack>
@@ -316,7 +317,7 @@ const stores = fromCodex<Store>(storesEntries, STORES_FIELDS);
                 layout="split"
                 item="card"
                 tone="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.slots, ui.blocks.variants.slots.split)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.slots, ui.blocks.variants.slots.split))"
               />
             </Box>
           </Stack>
@@ -343,7 +344,7 @@ const stores = fromCodex<Store>(storesEntries, STORES_FIELDS);
                 layout="split"
                 item="plain"
                 tone="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.slots, ui.blocks.variants.slots.plain)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.slots, ui.blocks.variants.slots.plain))"
               />
             </Box>
           </Stack>
@@ -370,7 +371,7 @@ const stores = fromCodex<Store>(storesEntries, STORES_FIELDS);
                 layout="stacked"
                 item="card"
                 tone="muted"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.slots, ui.blocks.variants.slots.stacked)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.slots, ui.blocks.variants.slots.stacked))"
               />
             </Box>
           </Stack>
@@ -413,7 +414,7 @@ const stores = fromCodex<Store>(storesEntries, STORES_FIELDS);
                 :labels="ui.commerce.stores"
                 layout="cards"
                 tone="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.locations, ui.blocks.variants.locations.cards)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.locations, ui.blocks.variants.locations.cards))"
               />
             </Box>
           </Stack>
@@ -439,7 +440,7 @@ const stores = fromCodex<Store>(storesEntries, STORES_FIELDS);
                 :labels="ui.commerce.stores"
                 layout="list"
                 tone="muted"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.locations, ui.blocks.variants.locations.list)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.locations, ui.blocks.variants.locations.list))"
               />
             </Box>
           </Stack>
@@ -465,7 +466,7 @@ const stores = fromCodex<Store>(storesEntries, STORES_FIELDS);
                 :labels="ui.commerce.stores"
                 layout="map"
                 tone="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.locations, ui.blocks.variants.locations.map)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.locations, ui.blocks.variants.locations.map))"
               />
             </Box>
           </Stack>

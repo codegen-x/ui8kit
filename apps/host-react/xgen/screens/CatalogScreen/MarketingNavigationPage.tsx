@@ -15,6 +15,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type MegaGroup,
   type NavLink,
 } from "@ui8kit/react-ui";
@@ -91,7 +92,7 @@ export function MarketingNavigationPage() {
                   layout="inline"
                   position="static"
                   actions="none"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.inline)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.inline))}
                   onTheme={() => actions.toggleTheme()}
                 />
               </Box>
@@ -117,7 +118,7 @@ export function MarketingNavigationPage() {
                   layout="stacked"
                   position="static"
                   actions="none"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.stacked)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.stacked))}
                   onTheme={() => actions.toggleTheme()}
                 />
               </Box>
@@ -143,7 +144,7 @@ export function MarketingNavigationPage() {
                   layout="inline"
                   position="sticky"
                   actions="none"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.sticky)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.sticky))}
                   onTheme={() => actions.toggleTheme()}
                 />
               </Box>
@@ -169,7 +170,7 @@ export function MarketingNavigationPage() {
                   layout="inline"
                   position="static"
                   actions="cta"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.withCta)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.withCta))}
                   onTheme={() => actions.toggleTheme()}
                 />
               </Box>
@@ -214,7 +215,7 @@ export function MarketingNavigationPage() {
                   layout="inline"
                   over="none"
                   tone="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.inline)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.inline))}
                   onTheme={() => actions.toggleTheme()}
                 />
               </Box>
@@ -242,7 +243,7 @@ export function MarketingNavigationPage() {
                   layout="split"
                   over="none"
                   tone="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.split)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.split))}
                   onTheme={() => actions.toggleTheme()}
                 />
               </Box>
@@ -270,7 +271,7 @@ export function MarketingNavigationPage() {
                   layout="search"
                   over="none"
                   tone="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.search)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.search))}
                   onTheme={() => actions.toggleTheme()}
                 />
               </Box>
@@ -298,7 +299,7 @@ export function MarketingNavigationPage() {
                   layout="inline"
                   over="media"
                   tone="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.media)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.media))}
                   onTheme={() => actions.toggleTheme()}
                 />
               </Box>
@@ -326,7 +327,7 @@ export function MarketingNavigationPage() {
                   layout="inline"
                   over="none"
                   tone="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.plain)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.plain))}
                   onTheme={() => actions.toggleTheme()}
                 />
               </Box>
@@ -354,7 +355,7 @@ export function MarketingNavigationPage() {
                   layout="inline"
                   over="none"
                   tone="inverse"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.inverse)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.inverse))}
                   onTheme={() => actions.toggleTheme()}
                 />
               </Box>
@@ -400,7 +401,7 @@ export function MarketingNavigationPage() {
                   panel="open"
                   cols="3"
                   promo="none"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.open)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.open))}
                 />
               </Box>
             </Stack>
@@ -428,7 +429,7 @@ export function MarketingNavigationPage() {
                   panel="closed"
                   cols="3"
                   promo="none"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.closed)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.closed))}
                 />
               </Box>
             </Stack>
@@ -456,7 +457,7 @@ export function MarketingNavigationPage() {
                   panel="open"
                   cols="2"
                   promo="none"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.twoCols)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.twoCols))}
                 />
               </Box>
             </Stack>
@@ -484,7 +485,7 @@ export function MarketingNavigationPage() {
                   panel="open"
                   cols="3"
                   promo="card"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.promo)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.promo))}
                 />
               </Box>
             </Stack>

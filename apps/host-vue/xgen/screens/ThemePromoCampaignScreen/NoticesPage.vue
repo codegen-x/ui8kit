@@ -2,7 +2,7 @@
 <!-- Source: xgen/specs/screens/theme-promo-campaign.json -->
 <!-- The notices page of ThemePromoCampaignScreen. -->
 <script setup lang="ts">
-import { AnnouncementBar, CookieBanner, NewsletterForm, PageIntro, tpl } from "@ui8kit/vue-ui";
+import { AnnouncementBar, CookieBanner, NewsletterForm, PageIntro, tpl, uniqLabel } from "@ui8kit/vue-ui";
 import { ui } from "@ui8kit/app-shared/content";
 
 </script>
@@ -30,7 +30,7 @@ import { ui } from "@ui8kit/app-shared/content";
     dismiss="show"
     badge="none"
     position="top"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.dismissible)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.dismissible))"
   />
   <AnnouncementBar
     :label="ui.promo.announcement.label"
@@ -44,7 +44,7 @@ import { ui } from "@ui8kit/app-shared/content";
     dismiss="show"
     badge="none"
     position="bottom"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.bottom)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.bottom))"
   />
   <CookieBanner
     id="notices-cookie-3"
@@ -56,7 +56,7 @@ import { ui } from "@ui8kit/app-shared/content";
     layout="bar"
     actions="three"
     tone="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.settings)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.settings))"
   />
   <CookieBanner
     id="notices-cookie-4"
@@ -68,7 +68,7 @@ import { ui } from "@ui8kit/app-shared/content";
     layout="bar"
     actions="two"
     tone="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.bar)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.bar))"
   />
   <NewsletterForm
     id="notices-newsletter"
@@ -81,6 +81,6 @@ import { ui } from "@ui8kit/app-shared/content";
     terms="show"
     tone="muted"
     align="start"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.muted)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.muted))"
   />
 </template>

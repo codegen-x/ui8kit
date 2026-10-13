@@ -15,6 +15,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Event,
   type Point,
   type Stat,
@@ -103,7 +104,7 @@ export function AppWidgetsPage() {
                   item="tile"
                   tone="default"
                   density="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.tiles)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.tiles))}
                 />
               </Box>
             </Stack>
@@ -128,7 +129,7 @@ export function AppWidgetsPage() {
                   item="tile"
                   tone="default"
                   density="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.twoUp)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.twoUp))}
                 />
               </Box>
             </Stack>
@@ -153,7 +154,7 @@ export function AppWidgetsPage() {
                   item="compact"
                   tone="default"
                   density="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.compact)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.compact))}
                 />
               </Box>
             </Stack>
@@ -178,7 +179,7 @@ export function AppWidgetsPage() {
                   item="compact"
                   tone="muted"
                   density="compact"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.muted)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.muted))}
                 />
               </Box>
             </Stack>
@@ -222,7 +223,7 @@ export function AppWidgetsPage() {
                   chart="bars"
                   size="default"
                   tone="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.bars)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.bars))}
                 />
               </Box>
             </Stack>
@@ -249,7 +250,7 @@ export function AppWidgetsPage() {
                   chart="bars"
                   size="compact"
                   tone="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.short)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.short))}
                 />
               </Box>
             </Stack>
@@ -276,7 +277,7 @@ export function AppWidgetsPage() {
                   chart="meters"
                   size="default"
                   tone="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.meters)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.meters))}
                 />
               </Box>
             </Stack>
@@ -303,7 +304,7 @@ export function AppWidgetsPage() {
                   chart="meters"
                   size="compact"
                   tone="muted"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.muted)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.muted))}
                 />
               </Box>
             </Stack>
@@ -345,7 +346,7 @@ export function AppWidgetsPage() {
                   layout="timeline"
                   density="default"
                   tone="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.activity, ui.blocks.variants.activity.timeline)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.activity, ui.blocks.variants.activity.timeline))}
                 />
               </Box>
             </Stack>
@@ -370,7 +371,7 @@ export function AppWidgetsPage() {
                   layout="list"
                   density="default"
                   tone="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.activity, ui.blocks.variants.activity.list)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.activity, ui.blocks.variants.activity.list))}
                 />
               </Box>
             </Stack>
@@ -395,7 +396,7 @@ export function AppWidgetsPage() {
                   layout="list"
                   density="compact"
                   tone="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.activity, ui.blocks.variants.activity.compact)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.activity, ui.blocks.variants.activity.compact))}
                 />
               </Box>
             </Stack>
@@ -420,7 +421,7 @@ export function AppWidgetsPage() {
                   layout="timeline"
                   density="default"
                   tone="muted"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.activity, ui.blocks.variants.activity.muted)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.activity, ui.blocks.variants.activity.muted))}
                 />
               </Box>
             </Stack>

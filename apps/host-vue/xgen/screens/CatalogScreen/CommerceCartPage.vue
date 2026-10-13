@@ -15,6 +15,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type CartLine,
   type Promo,
   type SummaryRow,
@@ -105,7 +106,7 @@ const promos = fromCodex<Promo>(promosEntries, PROMOS_FIELDS);
                 media="image"
                 tone="default"
                 density="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cart, ui.blocks.variants.cart.table)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cart, ui.blocks.variants.cart.table))"
               />
             </Box>
           </Stack>
@@ -131,7 +132,7 @@ const promos = fromCodex<Promo>(promosEntries, PROMOS_FIELDS);
                 media="image"
                 tone="default"
                 density="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cart, ui.blocks.variants.cart.cards)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cart, ui.blocks.variants.cart.cards))"
               />
             </Box>
           </Stack>
@@ -157,7 +158,7 @@ const promos = fromCodex<Promo>(promosEntries, PROMOS_FIELDS);
                 media="none"
                 tone="default"
                 density="compact"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cart, ui.blocks.variants.cart.tableCompact)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cart, ui.blocks.variants.cart.tableCompact))"
               />
             </Box>
           </Stack>
@@ -183,7 +184,7 @@ const promos = fromCodex<Promo>(promosEntries, PROMOS_FIELDS);
                 media="none"
                 tone="muted"
                 density="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cart, ui.blocks.variants.cart.cardsPlain)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cart, ui.blocks.variants.cart.cardsPlain))"
               />
             </Box>
           </Stack>
@@ -230,7 +231,7 @@ const promos = fromCodex<Promo>(promosEntries, PROMOS_FIELDS);
                 promo="show"
                 progress="show"
                 tone="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cartpage, ui.blocks.variants.cartpage.split)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cartpage, ui.blocks.variants.cartpage.split))"
               />
             </Box>
           </Stack>
@@ -260,7 +261,7 @@ const promos = fromCodex<Promo>(promosEntries, PROMOS_FIELDS);
                 promo="show"
                 progress="show"
                 tone="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cartpage, ui.blocks.variants.cartpage.stacked)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cartpage, ui.blocks.variants.cartpage.stacked))"
               />
             </Box>
           </Stack>
@@ -290,7 +291,7 @@ const promos = fromCodex<Promo>(promosEntries, PROMOS_FIELDS);
                 promo="hide"
                 progress="hide"
                 tone="muted"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cartpage, ui.blocks.variants.cartpage.plain)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cartpage, ui.blocks.variants.cartpage.plain))"
               />
             </Box>
           </Stack>
@@ -332,7 +333,7 @@ const promos = fromCodex<Promo>(promosEntries, PROMOS_FIELDS);
                 :drawer="ui.commerce.drawer"
                 state="filled"
                 media="image"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cartdrawer, ui.blocks.variants.cartdrawer.filled)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cartdrawer, ui.blocks.variants.cartdrawer.filled))"
               />
             </Box>
           </Stack>
@@ -357,7 +358,7 @@ const promos = fromCodex<Promo>(promosEntries, PROMOS_FIELDS);
                 :drawer="ui.commerce.drawer"
                 state="filled"
                 media="none"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cartdrawer, ui.blocks.variants.cartdrawer.compact)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cartdrawer, ui.blocks.variants.cartdrawer.compact))"
               />
             </Box>
           </Stack>
@@ -382,7 +383,7 @@ const promos = fromCodex<Promo>(promosEntries, PROMOS_FIELDS);
                 :drawer="ui.commerce.drawer"
                 state="empty"
                 media="image"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cartdrawer, ui.blocks.variants.cartdrawer.empty)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cartdrawer, ui.blocks.variants.cartdrawer.empty))"
               />
             </Box>
           </Stack>

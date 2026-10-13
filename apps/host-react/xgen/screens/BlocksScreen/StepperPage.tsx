@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Step,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -73,7 +74,7 @@ export function StepperPage() {
                 layout="horizontal"
                 marker="number"
                 summary="show"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.horizontal)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.horizontal))}
               />
             </Box>
           </Stack>
@@ -101,7 +102,7 @@ export function StepperPage() {
                 layout="vertical"
                 marker="number"
                 summary="show"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.vertical)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.vertical))}
               />
             </Box>
           </Stack>
@@ -129,7 +130,7 @@ export function StepperPage() {
                 layout="horizontal"
                 marker="icon"
                 summary="show"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.icons)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.icons))}
               />
             </Box>
           </Stack>
@@ -157,7 +158,7 @@ export function StepperPage() {
                 layout="vertical"
                 marker="icon"
                 summary="hide"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.bare)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.bare))}
               />
             </Box>
           </Stack>

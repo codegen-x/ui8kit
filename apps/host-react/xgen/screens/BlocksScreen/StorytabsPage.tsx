@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Milestone,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -73,7 +74,7 @@ export function StorytabsPage() {
                 labels={ui.company.storyTabs.labels}
                 layout="years"
                 tone="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.storytabs, ui.blocks.variants.storytabs.yearTabs)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.storytabs, ui.blocks.variants.storytabs.yearTabs))}
               />
             </Box>
           </Stack>
@@ -100,7 +101,7 @@ export function StorytabsPage() {
                 labels={ui.company.storyTabs.labels}
                 layout="carousel"
                 tone="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.storytabs, ui.blocks.variants.storytabs.carouselSplit)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.storytabs, ui.blocks.variants.storytabs.carouselSplit))}
               />
             </Box>
           </Stack>
@@ -127,7 +128,7 @@ export function StorytabsPage() {
                 labels={ui.company.storyTabs.labels}
                 layout="years"
                 tone="muted"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.storytabs, ui.blocks.variants.storytabs.yearTabsMuted)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.storytabs, ui.blocks.variants.storytabs.yearTabsMuted))}
               />
             </Box>
           </Stack>

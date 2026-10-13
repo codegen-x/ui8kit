@@ -15,6 +15,7 @@ import {
   Title,
   VideoGrid,
   tpl,
+  uniqLabel,
   type Logo,
   type Quote,
   type Stat,
@@ -102,7 +103,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
                 item="name"
                 tone="default"
                 density="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid4)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid4))"
               />
             </Box>
           </Stack>
@@ -128,7 +129,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
                 item="tile"
                 tone="default"
                 density="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid3)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid3))"
               />
             </Box>
           </Stack>
@@ -154,7 +155,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
                 item="icon"
                 tone="default"
                 density="compact"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.row)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.row))"
               />
             </Box>
           </Stack>
@@ -180,7 +181,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
                 item="icon"
                 tone="muted"
                 density="compact"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.icons)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.icons))"
               />
             </Box>
           </Stack>
@@ -206,7 +207,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
                 item="name"
                 tone="default"
                 density="roomy"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid2)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid2))"
               />
             </Box>
           </Stack>
@@ -232,7 +233,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
                 item="tile"
                 tone="default"
                 density="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.tiles4)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.tiles4))"
               />
             </Box>
           </Stack>
@@ -275,7 +276,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
                 logoStyle="name"
                 tone="default"
                 density="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.above)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.above))"
               />
             </Box>
           </Stack>
@@ -301,7 +302,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
                 logoStyle="name"
                 tone="default"
                 density="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.beside)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.beside))"
               />
             </Box>
           </Stack>
@@ -327,7 +328,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
                 logoStyle="icon"
                 tone="default"
                 density="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.icons)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.icons))"
               />
             </Box>
           </Stack>
@@ -353,7 +354,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
                 logoStyle="name"
                 tone="muted"
                 density="compact"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.muted)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.muted))"
               />
             </Box>
           </Stack>
@@ -397,7 +398,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
                 caption="below"
                 tone="default"
                 density="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.grid3)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.grid3))"
               />
             </Box>
           </Stack>
@@ -424,7 +425,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
                 caption="below"
                 tone="default"
                 density="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.grid2)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.grid2))"
               />
             </Box>
           </Stack>
@@ -451,7 +452,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
                 caption="overlay"
                 tone="default"
                 density="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.overlay)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.overlay))"
               />
             </Box>
           </Stack>
@@ -478,7 +479,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
                 caption="below"
                 tone="muted"
                 density="compact"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.muted)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.muted))"
               />
             </Box>
           </Stack>

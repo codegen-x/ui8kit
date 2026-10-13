@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Line,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -64,7 +65,7 @@ const placeholders = fromCodex<Line>(placeholdersEntries, PLACEHOLDERS_FIELDS);
               :lines="placeholders"
               shape="cards"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.cards)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.cards))"
             />
           </Box>
         </Stack>
@@ -88,7 +89,7 @@ const placeholders = fromCodex<Line>(placeholdersEntries, PLACEHOLDERS_FIELDS);
               :lines="placeholders"
               shape="list"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.list)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.list))"
             />
           </Box>
         </Stack>
@@ -112,7 +113,7 @@ const placeholders = fromCodex<Line>(placeholdersEntries, PLACEHOLDERS_FIELDS);
               :lines="placeholders"
               shape="article"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.article)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.article))"
             />
           </Box>
         </Stack>
@@ -136,7 +137,7 @@ const placeholders = fromCodex<Line>(placeholdersEntries, PLACEHOLDERS_FIELDS);
               :lines="placeholders"
               shape="cards"
               tone="muted"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.muted)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.muted))"
             />
           </Box>
         </Stack>

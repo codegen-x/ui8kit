@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Product,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -80,7 +81,7 @@ const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS);
               tone="default"
               density="default"
               :level="2"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.split)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.split))"
             />
           </Box>
         </Stack>
@@ -109,7 +110,7 @@ const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS);
               tone="default"
               density="default"
               :level="2"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.splitEnd)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.splitEnd))"
             />
           </Box>
         </Stack>
@@ -138,7 +139,7 @@ const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS);
               tone="default"
               density="default"
               :level="2"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.stacked)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.stacked))"
             />
           </Box>
         </Stack>
@@ -167,7 +168,7 @@ const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS);
               tone="default"
               density="default"
               :level="2"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.compact)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.compact))"
             />
           </Box>
         </Stack>
@@ -196,7 +197,7 @@ const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS);
               tone="muted"
               density="roomy"
               :level="2"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.muted)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.muted))"
             />
           </Box>
         </Stack>

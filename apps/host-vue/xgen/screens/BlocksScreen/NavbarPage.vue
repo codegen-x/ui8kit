@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type NavLink,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -71,7 +72,7 @@ const NAVBAR_ACTIONS = { cta: ui.site.header.cta, href: "#/", login: ui.site.hea
               layout="inline"
               over="none"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.inline)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.inline))"
               @theme="() => actions.toggleTheme()"
             />
           </Box>
@@ -99,7 +100,7 @@ const NAVBAR_ACTIONS = { cta: ui.site.header.cta, href: "#/", login: ui.site.hea
               layout="split"
               over="none"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.split)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.split))"
               @theme="() => actions.toggleTheme()"
             />
           </Box>
@@ -127,7 +128,7 @@ const NAVBAR_ACTIONS = { cta: ui.site.header.cta, href: "#/", login: ui.site.hea
               layout="search"
               over="none"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.search)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.search))"
               @theme="() => actions.toggleTheme()"
             />
           </Box>
@@ -155,7 +156,7 @@ const NAVBAR_ACTIONS = { cta: ui.site.header.cta, href: "#/", login: ui.site.hea
               layout="inline"
               over="media"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.media)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.media))"
               @theme="() => actions.toggleTheme()"
             />
           </Box>
@@ -183,7 +184,7 @@ const NAVBAR_ACTIONS = { cta: ui.site.header.cta, href: "#/", login: ui.site.hea
               layout="inline"
               over="none"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.plain)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.plain))"
               @theme="() => actions.toggleTheme()"
             />
           </Box>
@@ -211,7 +212,7 @@ const NAVBAR_ACTIONS = { cta: ui.site.header.cta, href: "#/", login: ui.site.hea
               layout="inline"
               over="none"
               tone="inverse"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.inverse)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.inverse))"
               @theme="() => actions.toggleTheme()"
             />
           </Box>

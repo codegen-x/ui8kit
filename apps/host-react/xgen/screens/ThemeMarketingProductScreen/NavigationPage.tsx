@@ -9,6 +9,7 @@ import {
   SiteFooter,
   SiteHeader,
   tpl,
+  uniqLabel,
   type MegaGroup,
   type NavLink,
 } from "@ui8kit/react-ui";
@@ -46,7 +47,7 @@ export function NavigationPage() {
         layout="stacked"
         position="static"
         actions="none"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.stacked)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.stacked))}
         onTheme={() => actions.toggleTheme()}
       />
       <NavBar
@@ -65,7 +66,7 @@ export function NavigationPage() {
         layout="split"
         over="none"
         tone="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.split)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.split))}
         onTheme={() => actions.toggleTheme()}
       />
       <NavBar
@@ -84,7 +85,7 @@ export function NavigationPage() {
         layout="search"
         over="none"
         tone="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.search)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.search))}
         onTheme={() => actions.toggleTheme()}
       />
       <NavBar
@@ -103,7 +104,7 @@ export function NavigationPage() {
         layout="inline"
         over="media"
         tone="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.media)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.media))}
         onTheme={() => actions.toggleTheme()}
       />
       <MegaMenu
@@ -117,13 +118,13 @@ export function NavigationPage() {
         panel="open"
         cols="2"
         promo="none"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.twoCols)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.twoCols))}
       />
       <SiteFooter
         labels={ui.site.footer}
         layout="centered"
         density="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.footer, ui.blocks.variants.footer.centered)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.footer, ui.blocks.variants.footer.centered))}
       />
     </>
   );

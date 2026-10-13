@@ -8,6 +8,7 @@ import {
   StoreHero,
   UspStrip,
   tpl,
+  uniqLabel,
   type CartLine,
   type Feature,
   type Product,
@@ -80,7 +81,7 @@ const summary = fromCodex<SummaryRow>(summaryEntries, SUMMARY_FIELDS);
     layout="strip"
     tone="default"
     density="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.strip)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.strip))"
   />
   <ProductGrid
     id="offers-products"
@@ -95,7 +96,7 @@ const summary = fromCodex<SummaryRow>(summaryEntries, SUMMARY_FIELDS);
     action="button"
     tone="default"
     density="compact"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.railCompact)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.railCompact))"
   />
   <CartDrawer
     id="offers-cartdrawer"
@@ -105,6 +106,6 @@ const summary = fromCodex<SummaryRow>(summaryEntries, SUMMARY_FIELDS);
     :drawer="ui.commerce.drawer"
     state="filled"
     media="image"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cartdrawer, ui.blocks.variants.cartdrawer.filled)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cartdrawer, ui.blocks.variants.cartdrawer.filled))"
   />
 </template>

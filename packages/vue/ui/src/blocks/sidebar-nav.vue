@@ -33,7 +33,7 @@ import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import MediaFrame from "../components/media-frame.vue";
 import NavBlock from "../components/nav-block.vue";
-import { cn, tpl } from "../utils";
+import { cn, tpl, uniqLabel } from "../utils";
 
 const {
   label,
@@ -66,7 +66,7 @@ const {
         {{ brand }}
       </Text>
     </Group>
-    <NavBlock :label="(landmarkLabel ? tpl('{0}, {1}', label, landmarkLabel) : label)" class="flex-1">
+    <NavBlock :label="(landmarkLabel ? uniqLabel(tpl('{0}, {1}', label, landmarkLabel)) : label)" class="flex-1">
       <List
         :class="cn(
           'm-0 flex list-none flex-col p-0',

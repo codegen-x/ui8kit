@@ -16,7 +16,7 @@ import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { MediaFrame } from "../components/media-frame";
 import { NavBlock } from "../components/nav-block";
-import { cn, tpl } from "../utils";
+import { cn, tpl, uniqLabel } from "../utils";
 import type { NavLink } from "./nav-bar.types";
 
 export type SidebarNavProps = {
@@ -61,7 +61,7 @@ export function SidebarNav({
           {brand}
         </Text>
       </Group>
-      <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", label, landmarkLabel) : label)} className="flex-1">
+      <NavBlock label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", label, landmarkLabel)) : label)} className="flex-1">
         <List
           className={cn(
             "m-0 flex list-none flex-col p-0",

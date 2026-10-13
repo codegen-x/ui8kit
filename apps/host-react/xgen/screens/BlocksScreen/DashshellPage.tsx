@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type NavLink,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -96,7 +97,7 @@ export function DashshellPage() {
                 footer="none"
                 content="grid"
                 level={2}
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.classic)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.classic))}
               />
             </Box>
           </Stack>
@@ -124,7 +125,7 @@ export function DashshellPage() {
                 footer="inset"
                 content="split"
                 level={2}
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.inset)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.inset))}
               />
             </Box>
           </Stack>
@@ -152,7 +153,7 @@ export function DashshellPage() {
                 footer="none"
                 content="list"
                 level={2}
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.rail)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.rail))}
               />
             </Box>
           </Stack>
@@ -180,7 +181,7 @@ export function DashshellPage() {
                 footer="full"
                 content="grid"
                 level={2}
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.railFooter)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.railFooter))}
               />
             </Box>
           </Stack>
@@ -208,7 +209,7 @@ export function DashshellPage() {
                 footer="none"
                 content="split"
                 level={2}
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.collapsed)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.collapsed))}
               />
             </Box>
           </Stack>
@@ -236,7 +237,7 @@ export function DashshellPage() {
                 footer="inset"
                 content="list"
                 level={2}
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.twoLevel)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.twoLevel))}
               />
             </Box>
           </Stack>
@@ -264,7 +265,7 @@ export function DashshellPage() {
                 footer="full"
                 content="split"
                 level={2}
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.twoLevelFull)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.twoLevelFull))}
               />
             </Box>
           </Stack>
@@ -292,7 +293,7 @@ export function DashshellPage() {
                 footer="full"
                 content="split"
                 level={2}
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.end)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.end))}
               />
             </Box>
           </Stack>
@@ -320,7 +321,7 @@ export function DashshellPage() {
                 footer="inset"
                 content="grid"
                 level={2}
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.railEnd)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.railEnd))}
               />
             </Box>
           </Stack>
@@ -348,7 +349,7 @@ export function DashshellPage() {
                 footer="full"
                 content="grid"
                 level={2}
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.topOnly)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.topOnly))}
               />
             </Box>
           </Stack>
@@ -376,7 +377,7 @@ export function DashshellPage() {
                 footer="inset"
                 content="list"
                 level={2}
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.sideOnly)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.sideOnly))}
               />
             </Box>
           </Stack>
@@ -404,7 +405,7 @@ export function DashshellPage() {
                 footer="full"
                 content="split"
                 level={2}
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.collapsedEnd)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.collapsedEnd))}
               />
             </Box>
           </Stack>

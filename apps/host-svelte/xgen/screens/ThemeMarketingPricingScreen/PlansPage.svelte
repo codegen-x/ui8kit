@@ -8,6 +8,7 @@
     PricingCard,
     PricingTiers,
     tpl,
+    uniqLabel,
     type CompareRow,
     type Plan,
   } from "@ui8kit/svelte-ui";
@@ -72,7 +73,7 @@
   billing="off"
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.duo)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.duo))}
 />
 <PricingCard
   plan={tiers.find((i) => i.id === "plan-team")!}
@@ -92,7 +93,7 @@
   billing="off"
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.stack)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.stack))}
 />
 <ComparisonTable
   id="plans-compare"
@@ -102,5 +103,5 @@
   highlight="middle"
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.highlight)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.highlight))}
 />

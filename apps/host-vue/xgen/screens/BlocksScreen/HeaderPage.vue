@@ -2,7 +2,19 @@
 <!-- Source: xgen/specs/screens/blocks.json -->
 <!-- The header page of BlocksScreen. -->
 <script setup lang="ts">
-import { Block, Box, Container, Group, Link, SiteHeader, Stack, Text, Title, tpl } from "@ui8kit/vue-ui";
+import {
+  Block,
+  Box,
+  Container,
+  Group,
+  Link,
+  SiteHeader,
+  Stack,
+  Text,
+  Title,
+  tpl,
+  uniqLabel,
+} from "@ui8kit/vue-ui";
 import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
 import { ui } from "@ui8kit/app-shared/content";
 
@@ -50,7 +62,7 @@ const actions = { toggleTheme };
               layout="inline"
               position="static"
               actions="none"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.inline)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.inline))"
               @theme="() => actions.toggleTheme()"
             />
           </Box>
@@ -76,7 +88,7 @@ const actions = { toggleTheme };
               layout="stacked"
               position="static"
               actions="none"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.stacked)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.stacked))"
               @theme="() => actions.toggleTheme()"
             />
           </Box>
@@ -102,7 +114,7 @@ const actions = { toggleTheme };
               layout="inline"
               position="sticky"
               actions="none"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.sticky)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.sticky))"
               @theme="() => actions.toggleTheme()"
             />
           </Box>
@@ -128,7 +140,7 @@ const actions = { toggleTheme };
               layout="inline"
               position="static"
               actions="cta"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.withCta)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.withCta))"
               @theme="() => actions.toggleTheme()"
             />
           </Box>

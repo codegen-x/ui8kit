@@ -14,6 +14,7 @@
     Text,
     Title,
     tpl,
+    uniqLabel,
     type Faq,
     type FaqTab,
     type Feature,
@@ -112,7 +113,7 @@
               cols="1"
               tone="default"
               density="default"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.list)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.list))}
             />
           </Box>
         </Stack>
@@ -139,7 +140,7 @@
               cols="1"
               tone="default"
               density="default"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.chat)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.chat))}
             />
           </Box>
         </Stack>
@@ -166,7 +167,7 @@
               cols="1"
               tone="default"
               density="default"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.search)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.search))}
             />
           </Box>
         </Stack>
@@ -193,7 +194,7 @@
               cols="1"
               tone="default"
               density="default"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.tabs)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.tabs))}
             />
           </Box>
         </Stack>
@@ -220,7 +221,7 @@
               cols="2"
               tone="default"
               density="default"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.twoColumns)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.twoColumns))}
             />
           </Box>
         </Stack>
@@ -247,7 +248,7 @@
               cols="1"
               tone="muted"
               density="compact"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.muted)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.muted))}
             />
           </Box>
         </Stack>
@@ -274,7 +275,7 @@
               cols="1"
               tone="default"
               density="roomy"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.roomy)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.roomy))}
             />
           </Box>
         </Stack>
@@ -321,7 +322,7 @@
               cards="grid3"
               mediaSide="end"
               tone="default"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faqsplit, ui.blocks.variants.faqsplit.headSplit)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faqsplit, ui.blocks.variants.faqsplit.headSplit))}
             />
           </Box>
         </Stack>
@@ -351,7 +352,7 @@
               cards="grid3"
               mediaSide="end"
               tone="default"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faqsplit, ui.blocks.variants.faqsplit.helpCard)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faqsplit, ui.blocks.variants.faqsplit.helpCard))}
             />
           </Box>
         </Stack>
@@ -381,7 +382,7 @@
               cards="grid3"
               mediaSide="end"
               tone="default"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faqsplit, ui.blocks.variants.faqsplit.picture)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faqsplit, ui.blocks.variants.faqsplit.picture))}
             />
           </Box>
         </Stack>
@@ -411,7 +412,7 @@
               cards="grid3"
               mediaSide="start"
               tone="default"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faqsplit, ui.blocks.variants.faqsplit.finder)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faqsplit, ui.blocks.variants.faqsplit.finder))}
             />
           </Box>
         </Stack>
@@ -441,7 +442,7 @@
               cards="grid3"
               mediaSide="end"
               tone="default"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faqsplit, ui.blocks.variants.faqsplit.cards3)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faqsplit, ui.blocks.variants.faqsplit.cards3))}
             />
           </Box>
         </Stack>
@@ -471,7 +472,7 @@
               cards="grid4"
               mediaSide="end"
               tone="default"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faqsplit, ui.blocks.variants.faqsplit.cards4)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faqsplit, ui.blocks.variants.faqsplit.cards4))}
             />
           </Box>
         </Stack>
@@ -501,7 +502,7 @@
               cards="icons"
               mediaSide="end"
               tone="muted"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faqsplit, ui.blocks.variants.faqsplit.cardsIcons)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faqsplit, ui.blocks.variants.faqsplit.cardsIcons))}
             />
           </Box>
         </Stack>

@@ -10,6 +10,7 @@
     ProductGrid,
     ReviewList,
     tpl,
+    uniqLabel,
     type Category,
     type CodeLine,
     type Product,
@@ -84,7 +85,7 @@
   count="show"
   icon="show"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.chips)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.chips))}
 />
 <ProductGrid
   id="home-products"
@@ -99,7 +100,7 @@
   action="button"
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.grid4)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.grid4))}
 />
 <ReviewList
   id="home-reviews"
@@ -111,7 +112,7 @@
   avatar="none"
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.grid)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.grid))}
 />
 <NewsletterForm
   id="home-newsletter"
@@ -124,7 +125,7 @@
   terms="hide"
   tone="default"
   align="center"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.stacked)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.stacked))}
 />
 <CtaBand
   id="home-cta"
@@ -143,5 +144,5 @@
   tone="default"
   proof="none"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.shop)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.shop))}
 />

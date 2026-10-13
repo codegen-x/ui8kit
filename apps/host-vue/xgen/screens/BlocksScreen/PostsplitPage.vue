@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type NavLink,
   type Post,
 } from "@ui8kit/vue-ui";
@@ -94,7 +95,7 @@ const POSTSPLIT_EXTRAS = {
               actions="pair"
               tone="default"
               :level="2"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.postsplit, ui.blocks.variants.postsplit.centerShare)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.postsplit, ui.blocks.variants.postsplit.centerShare))"
             />
           </Box>
         </Stack>
@@ -123,7 +124,7 @@ const POSTSPLIT_EXTRAS = {
               actions="pair"
               tone="default"
               :level="2"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.postsplit, ui.blocks.variants.postsplit.splitTags)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.postsplit, ui.blocks.variants.postsplit.splitTags))"
             />
           </Box>
         </Stack>
@@ -152,7 +153,7 @@ const POSTSPLIT_EXTRAS = {
               actions="wide"
               tone="default"
               :level="2"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.postsplit, ui.blocks.variants.postsplit.splitBioStart)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.postsplit, ui.blocks.variants.postsplit.splitBioStart))"
             />
           </Box>
         </Stack>
@@ -181,7 +182,7 @@ const POSTSPLIT_EXTRAS = {
               actions="icons"
               tone="default"
               :level="2"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.postsplit, ui.blocks.variants.postsplit.splitSquare)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.postsplit, ui.blocks.variants.postsplit.splitSquare))"
             />
           </Box>
         </Stack>
@@ -210,7 +211,7 @@ const POSTSPLIT_EXTRAS = {
               actions="pair"
               tone="default"
               :level="2"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.postsplit, ui.blocks.variants.postsplit.outlineStart)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.postsplit, ui.blocks.variants.postsplit.outlineStart))"
             />
           </Box>
         </Stack>
@@ -239,7 +240,7 @@ const POSTSPLIT_EXTRAS = {
               actions="pair"
               tone="muted"
               :level="2"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.postsplit, ui.blocks.variants.postsplit.splitStats)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.postsplit, ui.blocks.variants.postsplit.splitStats))"
             />
           </Box>
         </Stack>

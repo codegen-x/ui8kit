@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Feature,
   type Stat,
 } from "@ui8kit/react-ui";
@@ -97,7 +98,7 @@ export function MarketingFeaturesSplitPage() {
                   mediaSide="start"
                   tone="default"
                   level={2}
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featuresplit, ui.blocks.variants.featuresplit.gridStart)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.featuresplit, ui.blocks.variants.featuresplit.gridStart))}
                 />
               </Box>
             </Stack>
@@ -126,7 +127,7 @@ export function MarketingFeaturesSplitPage() {
                   mediaSide="start"
                   tone="default"
                   level={2}
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featuresplit, ui.blocks.variants.featuresplit.statsStart)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.featuresplit, ui.blocks.variants.featuresplit.statsStart))}
                 />
               </Box>
             </Stack>
@@ -155,7 +156,7 @@ export function MarketingFeaturesSplitPage() {
                   mediaSide="end"
                   tone="muted"
                   level={2}
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featuresplit, ui.blocks.variants.featuresplit.gridMuted)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.featuresplit, ui.blocks.variants.featuresplit.gridMuted))}
                 />
               </Box>
             </Stack>
@@ -184,7 +185,7 @@ export function MarketingFeaturesSplitPage() {
                   mediaSide="end"
                   tone="default"
                   level={2}
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featuresplit, ui.blocks.variants.featuresplit.metricCards)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.featuresplit, ui.blocks.variants.featuresplit.metricCards))}
                 />
               </Box>
             </Stack>
@@ -213,7 +214,7 @@ export function MarketingFeaturesSplitPage() {
                   mediaSide="end"
                   tone="default"
                   level={2}
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featuresplit, ui.blocks.variants.featuresplit.featureCards)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.featuresplit, ui.blocks.variants.featuresplit.featureCards))}
                 />
               </Box>
             </Stack>

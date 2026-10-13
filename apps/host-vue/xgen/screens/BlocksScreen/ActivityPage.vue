@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Event,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -71,7 +72,7 @@ const activity = fromCodex<Event>(activityEntries, ACTIVITY_FIELDS);
               layout="timeline"
               density="default"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.activity, ui.blocks.variants.activity.timeline)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.activity, ui.blocks.variants.activity.timeline))"
             />
           </Box>
         </Stack>
@@ -96,7 +97,7 @@ const activity = fromCodex<Event>(activityEntries, ACTIVITY_FIELDS);
               layout="list"
               density="default"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.activity, ui.blocks.variants.activity.list)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.activity, ui.blocks.variants.activity.list))"
             />
           </Box>
         </Stack>
@@ -121,7 +122,7 @@ const activity = fromCodex<Event>(activityEntries, ACTIVITY_FIELDS);
               layout="list"
               density="compact"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.activity, ui.blocks.variants.activity.compact)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.activity, ui.blocks.variants.activity.compact))"
             />
           </Box>
         </Stack>
@@ -146,7 +147,7 @@ const activity = fromCodex<Event>(activityEntries, ACTIVITY_FIELDS);
               layout="timeline"
               density="default"
               tone="muted"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.activity, ui.blocks.variants.activity.muted)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.activity, ui.blocks.variants.activity.muted))"
             />
           </Box>
         </Stack>

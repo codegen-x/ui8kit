@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Feature,
   type Stat,
 } from "@ui8kit/vue-ui";
@@ -70,7 +71,7 @@ const values = fromCodex<Feature>(valuesEntries, VALUES_FIELDS);
               layout="split"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.about, ui.blocks.variants.about.split)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.about, ui.blocks.variants.about.split))"
             />
           </Box>
         </Stack>
@@ -96,7 +97,7 @@ const values = fromCodex<Feature>(valuesEntries, VALUES_FIELDS);
               layout="stacked"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.about, ui.blocks.variants.about.stacked)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.about, ui.blocks.variants.about.stacked))"
             />
           </Box>
         </Stack>
@@ -122,7 +123,7 @@ const values = fromCodex<Feature>(valuesEntries, VALUES_FIELDS);
               layout="split"
               tone="muted"
               density="compact"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.about, ui.blocks.variants.about.muted)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.about, ui.blocks.variants.about.muted))"
             />
           </Box>
         </Stack>

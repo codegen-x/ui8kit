@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type CompareRow,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -73,7 +74,7 @@ export function ComparePage() {
                 highlight="none"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.plans)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.plans))}
               />
             </Box>
           </Stack>
@@ -98,7 +99,7 @@ export function ComparePage() {
                 highlight="middle"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.highlight)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.highlight))}
               />
             </Box>
           </Stack>
@@ -123,7 +124,7 @@ export function ComparePage() {
                 highlight="middle"
                 tone="muted"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.rivals)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.rivals))}
               />
             </Box>
           </Stack>
@@ -148,7 +149,7 @@ export function ComparePage() {
                 highlight="none"
                 tone="muted"
                 density="compact"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.muted)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.muted))}
               />
             </Box>
           </Stack>

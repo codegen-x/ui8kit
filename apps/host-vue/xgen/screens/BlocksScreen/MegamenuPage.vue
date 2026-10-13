@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type MegaGroup,
   type NavLink,
 } from "@ui8kit/vue-ui";
@@ -72,7 +73,7 @@ const megagroups = fromCodex<MegaGroup>(megagroupsEntries, MEGAGROUPS_FIELDS);
               panel="open"
               cols="3"
               promo="none"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.open)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.open))"
             />
           </Box>
         </Stack>
@@ -100,7 +101,7 @@ const megagroups = fromCodex<MegaGroup>(megagroupsEntries, MEGAGROUPS_FIELDS);
               panel="closed"
               cols="3"
               promo="none"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.closed)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.closed))"
             />
           </Box>
         </Stack>
@@ -128,7 +129,7 @@ const megagroups = fromCodex<MegaGroup>(megagroupsEntries, MEGAGROUPS_FIELDS);
               panel="open"
               cols="2"
               promo="none"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.twoCols)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.twoCols))"
             />
           </Box>
         </Stack>
@@ -156,7 +157,7 @@ const megagroups = fromCodex<MegaGroup>(megagroupsEntries, MEGAGROUPS_FIELDS);
               panel="open"
               cols="3"
               promo="card"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.promo)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.promo))"
             />
           </Box>
         </Stack>

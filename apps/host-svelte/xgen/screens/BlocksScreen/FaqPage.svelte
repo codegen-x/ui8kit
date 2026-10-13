@@ -13,6 +13,7 @@
     Text,
     Title,
     tpl,
+    uniqLabel,
     type Faq,
     type FaqTab,
   } from "@ui8kit/svelte-ui";
@@ -72,7 +73,7 @@
             cols="1"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.list)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.list))}
           />
         </Box>
       </Stack>
@@ -99,7 +100,7 @@
             cols="1"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.chat)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.chat))}
           />
         </Box>
       </Stack>
@@ -126,7 +127,7 @@
             cols="1"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.search)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.search))}
           />
         </Box>
       </Stack>
@@ -153,7 +154,7 @@
             cols="1"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.tabs)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.tabs))}
           />
         </Box>
       </Stack>
@@ -180,7 +181,7 @@
             cols="2"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.twoColumns)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.twoColumns))}
           />
         </Box>
       </Stack>
@@ -207,7 +208,7 @@
             cols="1"
             tone="muted"
             density="compact"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.muted)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.muted))}
           />
         </Box>
       </Stack>
@@ -234,7 +235,7 @@
             cols="1"
             tone="default"
             density="roomy"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.roomy)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.roomy))}
           />
         </Box>
       </Stack>

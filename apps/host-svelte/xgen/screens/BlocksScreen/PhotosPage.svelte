@@ -13,6 +13,7 @@
     Text,
     Title,
     tpl,
+    uniqLabel,
     type Photo,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -66,7 +67,7 @@
             captions="show"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.photos, ui.blocks.variants.photos.grid)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.photos, ui.blocks.variants.photos.grid))}
           />
         </Box>
       </Stack>
@@ -93,7 +94,7 @@
             captions="hide"
             tone="muted"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.photos, ui.blocks.variants.photos.gridPlain)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.photos, ui.blocks.variants.photos.gridPlain))}
           />
         </Box>
       </Stack>
@@ -120,7 +121,7 @@
             captions="show"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.photos, ui.blocks.variants.photos.masonry)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.photos, ui.blocks.variants.photos.masonry))}
           />
         </Box>
       </Stack>
@@ -147,7 +148,7 @@
             captions="show"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.photos, ui.blocks.variants.photos.mosaic)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.photos, ui.blocks.variants.photos.mosaic))}
           />
         </Box>
       </Stack>
@@ -174,7 +175,7 @@
             captions="show"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.photos, ui.blocks.variants.photos.featured)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.photos, ui.blocks.variants.photos.featured))}
           />
         </Box>
       </Stack>
@@ -201,7 +202,7 @@
             captions="show"
             tone="default"
             density="compact"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.photos, ui.blocks.variants.photos.cards)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.photos, ui.blocks.variants.photos.cards))}
           />
         </Box>
       </Stack>

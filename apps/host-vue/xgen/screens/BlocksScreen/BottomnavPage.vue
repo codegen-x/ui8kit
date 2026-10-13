@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type NavLink,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -64,7 +65,7 @@ const tabs = fromCodex<NavLink>(tabsEntries, TABS_FIELDS);
               labels="show"
               position="static"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.bottomnav, ui.blocks.variants.bottomnav.labels)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.bottomnav, ui.blocks.variants.bottomnav.labels))"
             />
           </Box>
         </Stack>
@@ -88,7 +89,7 @@ const tabs = fromCodex<NavLink>(tabsEntries, TABS_FIELDS);
               labels="hide"
               position="static"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.bottomnav, ui.blocks.variants.bottomnav.icons)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.bottomnav, ui.blocks.variants.bottomnav.icons))"
             />
           </Box>
         </Stack>
@@ -112,7 +113,7 @@ const tabs = fromCodex<NavLink>(tabsEntries, TABS_FIELDS);
               labels="show"
               position="sticky"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.bottomnav, ui.blocks.variants.bottomnav.sticky)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.bottomnav, ui.blocks.variants.bottomnav.sticky))"
             />
           </Box>
         </Stack>
@@ -136,7 +137,7 @@ const tabs = fromCodex<NavLink>(tabsEntries, TABS_FIELDS);
               labels="show"
               position="static"
               tone="muted"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.bottomnav, ui.blocks.variants.bottomnav.muted)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.bottomnav, ui.blocks.variants.bottomnav.muted))"
             />
           </Box>
         </Stack>

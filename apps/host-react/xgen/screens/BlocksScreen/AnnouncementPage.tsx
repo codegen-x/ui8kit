@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
 } from "@ui8kit/react-ui";
 import { ui } from "@ui8kit/app-shared/content";
 
@@ -62,7 +63,7 @@ export function AnnouncementPage() {
                 dismiss="hide"
                 badge="none"
                 position="top"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.bar)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.bar))}
               />
             </Box>
           </Stack>
@@ -91,7 +92,7 @@ export function AnnouncementPage() {
                 dismiss="hide"
                 badge="show"
                 position="top"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.badge)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.badge))}
               />
             </Box>
           </Stack>
@@ -120,7 +121,7 @@ export function AnnouncementPage() {
                 dismiss="show"
                 badge="none"
                 position="bottom"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.bottom)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.bottom))}
               />
             </Box>
           </Stack>
@@ -149,7 +150,7 @@ export function AnnouncementPage() {
                 dismiss="hide"
                 badge="none"
                 position="top"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.muted)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.muted))}
               />
             </Box>
           </Stack>
@@ -178,7 +179,7 @@ export function AnnouncementPage() {
                 dismiss="hide"
                 badge="none"
                 position="top"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.split)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.split))}
               />
             </Box>
           </Stack>
@@ -207,7 +208,7 @@ export function AnnouncementPage() {
                 dismiss="show"
                 badge="none"
                 position="top"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.dismissible)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.dismissible))}
               />
             </Box>
           </Stack>
@@ -236,7 +237,7 @@ export function AnnouncementPage() {
                 dismiss="show"
                 badge="none"
                 position="top"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.shop)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.shop))}
               />
             </Box>
           </Stack>
@@ -265,7 +266,7 @@ export function AnnouncementPage() {
                 dismiss="hide"
                 badge="none"
                 position="top"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.agency)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.agency))}
               />
             </Box>
           </Stack>

@@ -13,6 +13,7 @@ import {
   Title,
   UspStrip,
   tpl,
+  uniqLabel,
   type Feature,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -68,7 +69,7 @@ export function UspPage() {
                 layout="strip"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.strip)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.strip))}
               />
             </Box>
           </Stack>
@@ -92,7 +93,7 @@ export function UspPage() {
                 tone="default"
                 density="default"
                 title={ui.commerce.usp.title}
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.cards)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.cards))}
               />
             </Box>
           </Stack>
@@ -115,7 +116,7 @@ export function UspPage() {
                 layout="strip"
                 tone="default"
                 density="compact"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.stripCompact)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.stripCompact))}
               />
             </Box>
           </Stack>
@@ -138,7 +139,7 @@ export function UspPage() {
                 layout="bar"
                 tone="default"
                 density="compact"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.bar)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.bar))}
               />
             </Box>
           </Stack>
@@ -161,7 +162,7 @@ export function UspPage() {
                 layout="bar"
                 tone="muted"
                 density="compact"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.barMuted)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.barMuted))}
               />
             </Box>
           </Stack>

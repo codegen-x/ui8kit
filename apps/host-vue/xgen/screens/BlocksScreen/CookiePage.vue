@@ -2,7 +2,19 @@
 <!-- Source: xgen/specs/screens/blocks.json -->
 <!-- The cookie page of BlocksScreen. -->
 <script setup lang="ts">
-import { Block, Box, Container, CookieBanner, Group, Link, Stack, Text, Title, tpl } from "@ui8kit/vue-ui";
+import {
+  Block,
+  Box,
+  Container,
+  CookieBanner,
+  Group,
+  Link,
+  Stack,
+  Text,
+  Title,
+  tpl,
+  uniqLabel,
+} from "@ui8kit/vue-ui";
 import { ui } from "@ui8kit/app-shared/content";
 
 </script>
@@ -50,7 +62,7 @@ import { ui } from "@ui8kit/app-shared/content";
               layout="bar"
               actions="two"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.bar)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.bar))"
             />
           </Box>
         </Stack>
@@ -77,7 +89,7 @@ import { ui } from "@ui8kit/app-shared/content";
               layout="card"
               actions="two"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.card)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.card))"
             />
           </Box>
         </Stack>
@@ -104,7 +116,7 @@ import { ui } from "@ui8kit/app-shared/content";
               layout="bar"
               actions="three"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.settings)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.settings))"
             />
           </Box>
         </Stack>
@@ -131,7 +143,7 @@ import { ui } from "@ui8kit/app-shared/content";
               layout="card"
               actions="three"
               tone="muted"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.muted)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.muted))"
             />
           </Box>
         </Stack>

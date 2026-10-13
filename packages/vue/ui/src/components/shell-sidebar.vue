@@ -30,7 +30,7 @@ import ListItem from "../primitives/list/list-item.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Text from "../primitives/text/text.vue";
 import NavBlock from "../components/nav-block.vue";
-import { cn, tpl } from "../utils";
+import { cn, tpl, uniqLabel } from "../utils";
 
 const {
   nav,
@@ -64,7 +64,10 @@ const named = computed(() => (mode as string) === "wide");
           {{ nav.brand }}
         </Text>
       </Group>
-      <NavBlock :label="(landmarkLabel ? tpl('{0}, {1}', nav.label, landmarkLabel) : nav.label)" class="flex-1">
+      <NavBlock
+        :label="(landmarkLabel ? uniqLabel(tpl('{0}, {1}', nav.label, landmarkLabel)) : nav.label)"
+        class="flex-1"
+      >
         <List class="m-0 flex list-none flex-col gap-2 p-0" data-testid="items">
           <ListItem v-for="l in nav.links" :key="l.id">
             <Link
@@ -108,7 +111,7 @@ const named = computed(() => (mode as string) === "wide");
       <Text size="sm" weight="semibold" class="px-4">
         {{ nav.subTitle }}
       </Text>
-      <NavBlock :label="(landmarkLabel ? tpl('{0}, {1}', nav.subTitle, landmarkLabel) : nav.subTitle)">
+      <NavBlock :label="(landmarkLabel ? uniqLabel(tpl('{0}, {1}', nav.subTitle, landmarkLabel)) : nav.subTitle)">
         <List class="m-0 flex list-none flex-col gap-2 p-0">
           <ListItem v-for="s in nav.sub" :key="s.id">
             <Link

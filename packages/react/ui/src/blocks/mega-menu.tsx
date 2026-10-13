@@ -20,7 +20,7 @@ import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { MediaFrame } from "../components/media-frame";
 import { NavBlock } from "../components/nav-block";
-import { cn, tpl } from "../utils";
+import { cn, tpl, uniqLabel } from "../utils";
 import type { MegaGroup } from "./mega-menu.types";
 import type { NavLink } from "./nav-bar.types";
 
@@ -66,7 +66,7 @@ export function MegaMenu({
           <Link href="#/" variant="default" className="text-lg font-medium" data-testid="brand">
             {brand}
           </Link>
-          <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", label, landmarkLabel) : label)} className="flex-1">
+          <NavBlock label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", label, landmarkLabel)) : label)} className="flex-1">
             <Group gap="4" align="center" className="flex-wrap">
               <ButtonPlain
                 type="button"

@@ -2,7 +2,15 @@
 <!-- Source: xgen/specs/screens/theme-onboarding-flow.json -->
 <!-- The welcome page of ThemeOnboardingFlowScreen. -->
 <script lang="ts">
-  import { Checklist, PageIntro, VideoModal, tpl, type Chapter, type Task } from "@ui8kit/svelte-ui";
+  import {
+    Checklist,
+    PageIntro,
+    VideoModal,
+    tpl,
+    uniqLabel,
+    type Chapter,
+    type Task,
+  } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
   import { ui } from "@ui8kit/app-shared/content";
   import { checklist as checklistEntries } from "@ui8kit/app-shared/data/checklist";
@@ -36,7 +44,7 @@
   size="default"
   outline="none"
   tone="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.default)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.default))}
 />
 <Checklist
   id="welcome-checklist"
@@ -48,5 +56,5 @@
   marker="number"
   detail="always"
   tone="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.numbered)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.numbered))}
 />

@@ -2,7 +2,19 @@
 <!-- Source: xgen/specs/screens/blocks.json -->
 <!-- The auth page of BlocksScreen. -->
 <script setup lang="ts">
-import { AuthCard, Block, Box, Container, Group, Link, Stack, Text, Title, tpl } from "@ui8kit/vue-ui";
+import {
+  AuthCard,
+  Block,
+  Box,
+  Container,
+  Group,
+  Link,
+  Stack,
+  Text,
+  Title,
+  tpl,
+  uniqLabel,
+} from "@ui8kit/vue-ui";
 import { ui } from "@ui8kit/app-shared/content";
 
 </script>
@@ -54,7 +66,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 layout="card"
                 social="none"
                 :level="2"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.signin)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.signin))"
               />
             </Box>
           </Box>
@@ -86,7 +98,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 layout="card"
                 social="none"
                 :level="2"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.magic)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.magic))"
               />
             </Box>
           </Box>
@@ -118,7 +130,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 layout="card"
                 social="first"
                 :level="2"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.socialFirst)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.socialFirst))"
               />
             </Box>
           </Box>
@@ -150,7 +162,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 layout="card"
                 social="none"
                 :level="2"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.signup)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.signup))"
               />
             </Box>
           </Box>
@@ -182,7 +194,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 layout="card"
                 social="none"
                 :level="2"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.reset)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.reset))"
               />
             </Box>
           </Box>
@@ -214,7 +226,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 layout="plain"
                 social="none"
                 :level="2"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.plain)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.plain))"
               />
             </Box>
           </Box>
@@ -246,7 +258,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 layout="card"
                 social="show"
                 :level="2"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.social)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.social))"
               />
             </Box>
           </Box>
@@ -278,7 +290,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 layout="plain"
                 social="show"
                 :level="2"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.signupSocial)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.signupSocial))"
               />
             </Box>
           </Box>

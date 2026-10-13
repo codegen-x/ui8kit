@@ -13,6 +13,7 @@
     Text,
     Title,
     tpl,
+    uniqLabel,
     type Order,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -74,7 +75,7 @@
             pager="show"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.orders, ui.blocks.variants.orders.table)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.orders, ui.blocks.variants.orders.table))}
           />
         </Box>
       </Stack>
@@ -101,7 +102,7 @@
             pager="show"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.orders, ui.blocks.variants.orders.cards)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.orders, ui.blocks.variants.orders.cards))}
           />
         </Box>
       </Stack>
@@ -128,7 +129,7 @@
             pager="hide"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.orders, ui.blocks.variants.orders.noPager)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.orders, ui.blocks.variants.orders.noPager))}
           />
         </Box>
       </Stack>
@@ -155,7 +156,7 @@
             pager="hide"
             tone="muted"
             density="compact"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.orders, ui.blocks.variants.orders.compactMuted)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.orders, ui.blocks.variants.orders.compactMuted))}
           />
         </Box>
       </Stack>

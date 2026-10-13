@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Step,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -66,7 +67,7 @@ const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
               align="start"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.row)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.row))"
             />
           </Box>
         </Stack>
@@ -92,7 +93,7 @@ const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
               align="start"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.rowIcons)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.rowIcons))"
             />
           </Box>
         </Stack>
@@ -118,7 +119,7 @@ const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
               align="start"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.column)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.column))"
             />
           </Box>
         </Stack>
@@ -144,7 +145,7 @@ const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
               align="center"
               tone="muted"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.centered)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.centered))"
             />
           </Box>
         </Stack>
@@ -170,7 +171,7 @@ const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
               align="start"
               tone="default"
               density="roomy"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.columnIcons)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.columnIcons))"
             />
           </Box>
         </Stack>
@@ -196,7 +197,7 @@ const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
               align="start"
               tone="default"
               density="compact"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.compact)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.compact))"
             />
           </Box>
         </Stack>

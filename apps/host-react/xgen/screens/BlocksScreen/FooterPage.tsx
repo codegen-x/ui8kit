@@ -2,7 +2,19 @@
 // Source: xgen/specs/screens/blocks.json
 // The footer page of BlocksScreen.
 
-import { Block, Box, Container, Group, Link, SiteFooter, Stack, Text, Title, tpl } from "@ui8kit/react-ui";
+import {
+  Block,
+  Box,
+  Container,
+  Group,
+  Link,
+  SiteFooter,
+  Stack,
+  Text,
+  Title,
+  tpl,
+  uniqLabel,
+} from "@ui8kit/react-ui";
 import { ui } from "@ui8kit/app-shared/content";
 
 export function FooterPage() {
@@ -48,7 +60,7 @@ export function FooterPage() {
                 labels={ui.site.footer}
                 layout="minimal"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.footer, ui.blocks.variants.footer.minimal)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.footer, ui.blocks.variants.footer.minimal))}
               />
             </Box>
           </Stack>
@@ -69,7 +81,7 @@ export function FooterPage() {
                 labels={ui.site.footer}
                 layout="centered"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.footer, ui.blocks.variants.footer.centered)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.footer, ui.blocks.variants.footer.centered))}
               />
             </Box>
           </Stack>
@@ -90,7 +102,7 @@ export function FooterPage() {
                 labels={ui.site.footer}
                 layout="minimal"
                 density="compact"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.footer, ui.blocks.variants.footer.compact)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.footer, ui.blocks.variants.footer.compact))}
               />
             </Box>
           </Stack>

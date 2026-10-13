@@ -22,7 +22,7 @@ import Group from "../primitives/group/group.vue";
 import Link from "../primitives/link/link.vue";
 import Text from "../primitives/text/text.vue";
 import NavBlock from "../components/nav-block.vue";
-import { cn, tpl } from "../utils";
+import { cn, tpl, uniqLabel } from "../utils";
 
 const { labels, layout = "minimal", density = "default", landmarkLabel } = defineProps<SiteFooterProps>();
 </script>
@@ -47,7 +47,7 @@ const { labels, layout = "minimal", density = "default", landmarkLabel } = defin
       <Text size="sm" class="text-muted-foreground" data-testid="copyright">
         {{ labels.copyright }}
       </Text>
-      <NavBlock :label="(landmarkLabel ? tpl('{0}, {1}', labels.nav, landmarkLabel) : labels.nav)">
+      <NavBlock :label="(landmarkLabel ? uniqLabel(tpl('{0}, {1}', labels.nav, landmarkLabel)) : labels.nav)">
         <Group gap="4">
           <Link href="#/" variant="default">
             {{ labels.home }}

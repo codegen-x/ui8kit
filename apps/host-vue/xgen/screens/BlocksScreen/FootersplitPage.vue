@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Feature,
   type MegaGroup,
   type Stat,
@@ -85,7 +86,7 @@ const FOOTERSPLIT_EXTRAS = { stats, points: features, contacts, channels: commun
               layout="stats"
               mediaSide="end"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.footersplit, ui.blocks.variants.footersplit.statsCards)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.footersplit, ui.blocks.variants.footersplit.statsCards))"
             />
           </Box>
         </Stack>
@@ -114,7 +115,7 @@ const FOOTERSPLIT_EXTRAS = { stats, points: features, contacts, channels: commun
               layout="points"
               mediaSide="end"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.footersplit, ui.blocks.variants.footersplit.splitPoints)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.footersplit, ui.blocks.variants.footersplit.splitPoints))"
             />
           </Box>
         </Stack>
@@ -143,7 +144,7 @@ const FOOTERSPLIT_EXTRAS = { stats, points: features, contacts, channels: commun
               layout="links"
               mediaSide="end"
               tone="muted"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.footersplit, ui.blocks.variants.footersplit.splitLinks)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.footersplit, ui.blocks.variants.footersplit.splitLinks))"
             />
           </Box>
         </Stack>
@@ -172,7 +173,7 @@ const FOOTERSPLIT_EXTRAS = { stats, points: features, contacts, channels: commun
               layout="newsletter"
               mediaSide="start"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.footersplit, ui.blocks.variants.footersplit.newsletterStart)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.footersplit, ui.blocks.variants.footersplit.newsletterStart))"
             />
           </Box>
         </Stack>
@@ -201,7 +202,7 @@ const FOOTERSPLIT_EXTRAS = { stats, points: features, contacts, channels: commun
               layout="contacts"
               mediaSide="end"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.footersplit, ui.blocks.variants.footersplit.splitContacts)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.footersplit, ui.blocks.variants.footersplit.splitContacts))"
             />
           </Box>
         </Stack>
@@ -230,7 +231,7 @@ const FOOTERSPLIT_EXTRAS = { stats, points: features, contacts, channels: commun
               layout="channels"
               mediaSide="start"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.footersplit, ui.blocks.variants.footersplit.channelsStart)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.footersplit, ui.blocks.variants.footersplit.channelsStart))"
             />
           </Box>
         </Stack>

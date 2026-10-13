@@ -13,6 +13,7 @@
     Text,
     Title,
     tpl,
+    uniqLabel,
     type CartLine,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -72,7 +73,7 @@
             media="image"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cart, ui.blocks.variants.cart.table)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cart, ui.blocks.variants.cart.table))}
           />
         </Box>
       </Stack>
@@ -98,7 +99,7 @@
             media="image"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cart, ui.blocks.variants.cart.cards)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cart, ui.blocks.variants.cart.cards))}
           />
         </Box>
       </Stack>
@@ -124,7 +125,7 @@
             media="none"
             tone="default"
             density="compact"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cart, ui.blocks.variants.cart.tableCompact)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cart, ui.blocks.variants.cart.tableCompact))}
           />
         </Box>
       </Stack>
@@ -150,7 +151,7 @@
             media="none"
             tone="muted"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cart, ui.blocks.variants.cart.cardsPlain)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cart, ui.blocks.variants.cart.cardsPlain))}
           />
         </Box>
       </Stack>

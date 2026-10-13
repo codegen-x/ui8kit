@@ -16,7 +16,7 @@ import { Text } from "../primitives/text/text";
 import { Title } from "../primitives/title/title";
 import { NavBlock } from "../components/nav-block";
 import { SectionFrame } from "../components/section-frame";
-import { cn, tpl } from "../utils";
+import { cn, tpl, uniqLabel } from "../utils";
 import type { Section } from "./article-body.types";
 
 export type ArticleBodyProps = {
@@ -51,7 +51,7 @@ export function ArticleBody({
       >
         {((layout as string) === "toc") ? (
           <NavBlock
-            label={(landmarkLabel ? tpl("{0}, {1}", tocTitle, landmarkLabel) : tocTitle)}
+            label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", tocTitle, landmarkLabel)) : tocTitle)}
             className="md:sticky md:top-4"
             testid="toc"
           >

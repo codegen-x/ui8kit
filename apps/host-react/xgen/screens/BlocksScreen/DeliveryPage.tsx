@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Feature,
   type Zone,
 } from "@ui8kit/react-ui";
@@ -86,7 +87,7 @@ export function DeliveryPage() {
                 layout="full"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.delivery, ui.blocks.variants.delivery.full)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.delivery, ui.blocks.variants.delivery.full))}
               />
             </Box>
           </Stack>
@@ -113,7 +114,7 @@ export function DeliveryPage() {
                 layout="split"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.delivery, ui.blocks.variants.delivery.split)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.delivery, ui.blocks.variants.delivery.split))}
               />
             </Box>
           </Stack>
@@ -140,7 +141,7 @@ export function DeliveryPage() {
                 layout="facts"
                 tone="muted"
                 density="compact"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.delivery, ui.blocks.variants.delivery.facts)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.delivery, ui.blocks.variants.delivery.facts))}
               />
             </Box>
           </Stack>

@@ -30,7 +30,7 @@
   import MediaFrame from "../components/media-frame.svelte";
   import NavBlock from "../components/nav-block.svelte";
   import SearchPalette from "../components/search-palette.svelte";
-  import { cn, tpl } from "../utils";
+  import { cn, tpl, uniqLabel } from "../utils";
 
   let { nav, brand = "show", links = "hide", search = "show", landmarkLabel }: ShellTopbarProps = $props();
 </script>
@@ -51,7 +51,7 @@
   {/if}
   {#if ((links as string) === "show")}
     <NavBlock
-      label={(landmarkLabel ? tpl("{0}, {1}", nav.label, landmarkLabel) : nav.label)}
+      label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", nav.label, landmarkLabel)) : nav.label)}
       class="hidden lg:block"
     >
       <List class="m-0 flex list-none items-center gap-2 p-0">

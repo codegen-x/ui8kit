@@ -2,7 +2,19 @@
 // Source: xgen/specs/screens/blocks.json
 // The empty page of BlocksScreen.
 
-import { Block, Box, Container, EmptyPanel, Group, Link, Stack, Text, Title, tpl } from "@ui8kit/react-ui";
+import {
+  Block,
+  Box,
+  Container,
+  EmptyPanel,
+  Group,
+  Link,
+  Stack,
+  Text,
+  Title,
+  tpl,
+  uniqLabel,
+} from "@ui8kit/react-ui";
 import { ui } from "@ui8kit/app-shared/content";
 
 export function EmptyPage() {
@@ -54,7 +66,7 @@ export function EmptyPage() {
                 actions="button"
                 visual="image"
                 size="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.illustrated)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.illustrated))}
               />
             </Box>
           </Stack>
@@ -82,7 +94,7 @@ export function EmptyPage() {
                 visual="icon"
                 size="default"
                 icon="shopping-bag"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.orders)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.orders))}
               />
             </Box>
           </Stack>
@@ -110,7 +122,7 @@ export function EmptyPage() {
                 visual="icon"
                 size="default"
                 icon="search"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.results)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.results))}
               />
             </Box>
           </Stack>
@@ -138,7 +150,7 @@ export function EmptyPage() {
                 visual="icon"
                 size="default"
                 icon="inbox"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.inbox)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.inbox))}
               />
             </Box>
           </Stack>
@@ -166,7 +178,7 @@ export function EmptyPage() {
                 visual="icon"
                 size="compact"
                 icon="inbox"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.compact)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.compact))}
               />
             </Box>
           </Stack>
@@ -194,7 +206,7 @@ export function EmptyPage() {
                 visual="icon"
                 size="compact"
                 icon="search"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.plainNoAction)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.plainNoAction))}
               />
             </Box>
           </Stack>

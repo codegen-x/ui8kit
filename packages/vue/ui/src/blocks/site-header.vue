@@ -28,7 +28,7 @@ import Group from "../primitives/group/group.vue";
 import Link from "../primitives/link/link.vue";
 import LinkPlain from "../primitives/link-plain/link-plain.vue";
 import NavBlock from "../components/nav-block.vue";
-import { cn, tpl } from "../utils";
+import { cn, tpl, uniqLabel } from "../utils";
 
 const {
   labels,
@@ -73,7 +73,10 @@ const emit = defineEmits<{ theme: [] }>();
       <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
         {{ labels.brand }}
       </Link>
-      <NavBlock :label="(landmarkLabel ? tpl('{0}, {1}', labels.nav, landmarkLabel) : labels.nav)" testid="site-nav">
+      <NavBlock
+        :label="(landmarkLabel ? uniqLabel(tpl('{0}, {1}', labels.nav, landmarkLabel)) : labels.nav)"
+        testid="site-nav"
+      >
         <Group gap="4" align="center">
           <Link
             href="#/"

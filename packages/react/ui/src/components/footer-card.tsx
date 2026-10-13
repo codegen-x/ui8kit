@@ -15,7 +15,7 @@ import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { NavBlock } from "../components/nav-block";
 import { defaults } from "../presets/defaults";
-import { cn, tpl } from "../utils";
+import { cn, tpl, uniqLabel } from "../utils";
 import type { MegaGroup } from "../blocks/mega-menu.types";
 
 export type FooterCardProps = {
@@ -44,7 +44,10 @@ export function FooterCard({ label, brand, groups, landmarkLabel }: FooterCardPr
               {brand}
             </Text>
           </Group>
-          <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", label, landmarkLabel) : label)} className="min-w-0 flex-1">
+          <NavBlock
+            label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", label, landmarkLabel)) : label)}
+            className="min-w-0 flex-1"
+          >
             <Group
               gap="0"
               align="start"

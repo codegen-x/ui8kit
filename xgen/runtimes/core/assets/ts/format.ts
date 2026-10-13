@@ -49,3 +49,10 @@ export function fitCols(cols: string, n: number): string {
   for (let h = top; h > lo; h--) if (known.includes(`${lo}-${h}`)) return `${lo}-${h}`;
   return String(Math.min(lo, Math.max(n, 1)));
 }
+
+/** a label of segments joined by ", " without a segment equal (case-insensitive) to the one before it:
+ *  "Footer, Footer, Centered" -> "Footer, Centered" */
+export function uniqLabel(label: string | undefined): string {
+  const parts = (label ?? "").split(", ");
+  return parts.filter((s, i) => i === 0 || s.toLowerCase() !== (parts[i - 1] ?? "").toLowerCase()).join(", ");
+}

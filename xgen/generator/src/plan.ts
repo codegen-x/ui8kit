@@ -109,7 +109,7 @@ function uiPackage(r: Runtime, bricks: LoadedBrick[], inputs: Inputs, parts: Rec
     files.push({ path: `src/${f.path}`, contents: f.contents });
     tier.presets.push(`export { ${p.value.name} } from "./${f.path.replace(/\.ts$/, "")}";`);
   }
-  tier.utils.push(`export { cn, variants, tpl, fmtNumber, fmtMoney, at, pageWindow, fitCols } from "./utils";`);
+  tier.utils.push(`export { cn, variants, tpl, fmtNumber, fmtMoney, at, pageWindow, fitCols, uniqLabel } from "./utils";`);
   const barrel = [`// ${BANNER}`, ...Object.entries(tier).flatMap(([name, rows]) => ["", `// ${name}`, ...rows])];
   files.push({ path: "src/index.ts", contents: barrel.join("\n") + "\n" });
 

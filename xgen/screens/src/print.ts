@@ -17,7 +17,7 @@ export interface PrintCtx {
   rename?: (name: string) => string | undefined;
 }
 
-const HELPER: Record<string, string> = { tpl: "tpl", money: "fmtMoney", num: "fmtNumber", at: "at", pageWindow: "pageWindow", fitCols: "fitCols" };
+const HELPER: Record<string, string> = { tpl: "tpl", money: "fmtMoney", num: "fmtNumber", at: "at", pageWindow: "pageWindow", fitCols: "fitCols", uniq: "uniqLabel" };
 const camel = (s: string): string => s.replace(/-([a-z])/g, (_m, c: string) => c.toUpperCase());
 
 /** a bare prop compared to a literal is read as a plain string: a test in a branch of another test of the same prop must not be flagged as impossible */

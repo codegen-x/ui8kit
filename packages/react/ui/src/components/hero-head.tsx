@@ -12,7 +12,7 @@ import { LinkPlain } from "../primitives/link-plain/link-plain";
 import { Link } from "../primitives/link/link";
 import { NavBlock } from "../components/nav-block";
 import { defaults } from "../presets/defaults";
-import { cn, tpl } from "../utils";
+import { cn, tpl, uniqLabel } from "../utils";
 import type { NavLink } from "../blocks/nav-bar.types";
 
 export type HeroHeadProps = {
@@ -65,7 +65,10 @@ export function HeroHead({
       >
         {brand}
       </Link>
-      <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", navLabel, landmarkLabel) : navLabel)} testid="site-nav">
+      <NavBlock
+        label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", navLabel, landmarkLabel)) : navLabel)}
+        testid="site-nav"
+      >
         <Group gap="8" align="center" className="flex-wrap">
           {(links ?? []).map((l) => (
             <Link key={l.id}

@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Category,
   type Feature,
   type Post,
@@ -113,7 +114,7 @@ const MEDIALIST_EXTRAS = { stats, steps, posts, topics: categories, channels, re
               layout="figures"
               mediaSide="start"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.figuresStart)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.figuresStart))"
             />
           </Box>
         </Stack>
@@ -147,7 +148,7 @@ const MEDIALIST_EXTRAS = { stats, steps, posts, topics: categories, channels, re
               layout="proof"
               mediaSide="end"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.proofReview)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.proofReview))"
             />
           </Box>
         </Stack>
@@ -175,7 +176,7 @@ const MEDIALIST_EXTRAS = { stats, steps, posts, topics: categories, channels, re
               layout="steps"
               mediaSide="end"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.stepsRows)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.stepsRows))"
             />
           </Box>
         </Stack>
@@ -203,7 +204,7 @@ const MEDIALIST_EXTRAS = { stats, steps, posts, topics: categories, channels, re
               layout="posts"
               mediaSide="end"
               tone="muted"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.latestPosts)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.latestPosts))"
             />
           </Box>
         </Stack>
@@ -231,7 +232,7 @@ const MEDIALIST_EXTRAS = { stats, steps, posts, topics: categories, channels, re
               layout="topics"
               mediaSide="end"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.topicRows)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.topicRows))"
             />
           </Box>
         </Stack>
@@ -259,7 +260,7 @@ const MEDIALIST_EXTRAS = { stats, steps, posts, topics: categories, channels, re
               layout="contact"
               mediaSide="start"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.contactStart)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.contactStart))"
             />
           </Box>
         </Stack>

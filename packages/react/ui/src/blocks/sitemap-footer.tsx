@@ -23,7 +23,7 @@ import { FooterCard } from "../components/footer-card";
 import { FooterColumns } from "../components/footer-columns";
 import { NavBlock } from "../components/nav-block";
 import { Pill } from "../components/pill";
-import { cn, tpl } from "../utils";
+import { cn, tpl, uniqLabel } from "../utils";
 import type { FooterSignup, FooterStatus } from "./sitemap-footer.types";
 import type { MegaGroup } from "./mega-menu.types";
 
@@ -111,7 +111,7 @@ export function SitemapFooter({
                 <Text size="base" weight="bold">
                   {brand}
                 </Text>
-                <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", label, landmarkLabel) : label)}>
+                <NavBlock label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", label, landmarkLabel)) : label)}>
                   <Group gap="4" className="flex-wrap">
                     {(groups ?? []).map((g) => (
                       <Link key={g.id} href="#/" variant="default" className="text-sm" data-testid="group">

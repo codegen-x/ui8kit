@@ -31,7 +31,7 @@
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Text from "../primitives/text/text.svelte";
   import NavBlock from "../components/nav-block.svelte";
-  import { cn, tpl } from "../utils";
+  import { cn, tpl, uniqLabel } from "../utils";
 
   let {
     nav,
@@ -66,7 +66,10 @@
         </Text>
       </Group>
     {/if}
-    <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", nav.label, landmarkLabel) : nav.label)} class="flex-1">
+    <NavBlock
+      label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", nav.label, landmarkLabel)) : nav.label)}
+      class="flex-1"
+    >
       <List class="m-0 flex list-none flex-col gap-2 p-0" data-testid="items">
         {#each nav.links as l (l.id)}
           <ListItem>
@@ -115,7 +118,7 @@
       <Text size="sm" weight="semibold" class="px-4">
         {nav.subTitle}
       </Text>
-      <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", nav.subTitle, landmarkLabel) : nav.subTitle)}>
+      <NavBlock label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", nav.subTitle, landmarkLabel)) : nav.subTitle)}>
         <List class="m-0 flex list-none flex-col gap-2 p-0">
           {#each nav.sub as s (s.id)}
             <ListItem>

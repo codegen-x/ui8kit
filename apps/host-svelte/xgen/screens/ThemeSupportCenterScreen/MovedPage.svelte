@@ -2,7 +2,7 @@
 <!-- Source: xgen/specs/screens/theme-support-center.json -->
 <!-- The moved page of ThemeSupportCenterScreen. -->
 <script lang="ts">
-  import { ErrorPage, SupportChannels, tpl, type Feature } from "@ui8kit/svelte-ui";
+  import { ErrorPage, SupportChannels, tpl, uniqLabel, type Feature } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
   import { ui } from "@ui8kit/app-shared/content";
   import { channels as channelsEntries } from "@ui8kit/app-shared/data/channels";
@@ -37,5 +37,5 @@
   cols="1-2"
   action="link"
   tone="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.channels, ui.blocks.variants.channels.twoUp)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.channels, ui.blocks.variants.channels.twoUp))}
 />

@@ -14,6 +14,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Feature,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -86,7 +87,7 @@ export function SupportContactPage() {
                   page="section"
                   tone="default"
                   level={2}
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.single)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.single))}
                 />
               </Box>
             </Stack>
@@ -115,7 +116,7 @@ export function SupportContactPage() {
                   page="full"
                   tone="default"
                   level={2}
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.page)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.page))}
                 />
               </Box>
             </Stack>
@@ -144,7 +145,7 @@ export function SupportContactPage() {
                   page="section"
                   tone="default"
                   level={2}
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.short)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.short))}
                 />
               </Box>
             </Stack>
@@ -173,7 +174,7 @@ export function SupportContactPage() {
                   page="section"
                   tone="default"
                   level={2}
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.split)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.split))}
                 />
               </Box>
             </Stack>
@@ -202,7 +203,7 @@ export function SupportContactPage() {
                   page="section"
                   tone="default"
                   level={2}
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.consent)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.consent))}
                 />
               </Box>
             </Stack>
@@ -231,7 +232,7 @@ export function SupportContactPage() {
                   page="section"
                   tone="muted"
                   level={2}
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.muted)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.muted))}
                 />
               </Box>
             </Stack>
@@ -274,7 +275,7 @@ export function SupportContactPage() {
                   cols="1-3"
                   action="link"
                   tone="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.channels, ui.blocks.variants.channels.grid)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.channels, ui.blocks.variants.channels.grid))}
                 />
               </Box>
             </Stack>
@@ -300,7 +301,7 @@ export function SupportContactPage() {
                   cols="1-2"
                   action="link"
                   tone="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.channels, ui.blocks.variants.channels.twoUp)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.channels, ui.blocks.variants.channels.twoUp))}
                 />
               </Box>
             </Stack>
@@ -326,7 +327,7 @@ export function SupportContactPage() {
                   cols="1-3"
                   action="link"
                   tone="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.channels, ui.blocks.variants.channels.list)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.channels, ui.blocks.variants.channels.list))}
                 />
               </Box>
             </Stack>
@@ -352,7 +353,7 @@ export function SupportContactPage() {
                   cols="1-3"
                   action="none"
                   tone="muted"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.channels, ui.blocks.variants.channels.plain)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.channels, ui.blocks.variants.channels.plain))}
                 />
               </Box>
             </Stack>

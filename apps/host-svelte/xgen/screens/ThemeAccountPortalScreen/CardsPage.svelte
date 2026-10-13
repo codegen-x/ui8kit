@@ -2,7 +2,7 @@
 <!-- Source: xgen/specs/screens/theme-account-portal.json -->
 <!-- The cards page of ThemeAccountPortalScreen. -->
 <script lang="ts">
-  import { AuthCard, PageIntro, tpl } from "@ui8kit/svelte-ui";
+  import { AuthCard, PageIntro, tpl, uniqLabel } from "@ui8kit/svelte-ui";
   import { ui } from "@ui8kit/app-shared/content";
 
 </script>
@@ -29,7 +29,7 @@
   mode="signin"
   layout="card"
   social="none"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.signin)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.signin))}
 />
 <AuthCard
   id="cards-auth-2"
@@ -43,7 +43,7 @@
   mode="signin"
   layout="card"
   social="show"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.social)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.social))}
 />
 <AuthCard
   id="cards-auth-3"
@@ -57,5 +57,5 @@
   mode="signup"
   layout="plain"
   social="show"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.signupSocial)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.signupSocial))}
 />

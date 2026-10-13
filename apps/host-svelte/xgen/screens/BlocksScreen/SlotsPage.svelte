@@ -13,6 +13,7 @@
     Text,
     Title,
     tpl,
+    uniqLabel,
     type Day,
     type Zone,
   } from "@ui8kit/svelte-ui";
@@ -86,7 +87,7 @@
             layout="split"
             item="card"
             tone="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.slots, ui.blocks.variants.slots.split)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.slots, ui.blocks.variants.slots.split))}
           />
         </Box>
       </Stack>
@@ -113,7 +114,7 @@
             layout="split"
             item="plain"
             tone="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.slots, ui.blocks.variants.slots.plain)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.slots, ui.blocks.variants.slots.plain))}
           />
         </Box>
       </Stack>
@@ -140,7 +141,7 @@
             layout="stacked"
             item="card"
             tone="muted"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.slots, ui.blocks.variants.slots.stacked)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.slots, ui.blocks.variants.slots.stacked))}
           />
         </Box>
       </Stack>

@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Category,
   type Feature,
   type Post,
@@ -118,7 +119,7 @@ export function MedialistPage() {
                 layout="figures"
                 mediaSide="start"
                 tone="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.figuresStart)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.figuresStart))}
               />
             </Box>
           </Stack>
@@ -152,7 +153,7 @@ export function MedialistPage() {
                 layout="proof"
                 mediaSide="end"
                 tone="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.proofReview)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.proofReview))}
               />
             </Box>
           </Stack>
@@ -180,7 +181,7 @@ export function MedialistPage() {
                 layout="steps"
                 mediaSide="end"
                 tone="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.stepsRows)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.stepsRows))}
               />
             </Box>
           </Stack>
@@ -208,7 +209,7 @@ export function MedialistPage() {
                 layout="posts"
                 mediaSide="end"
                 tone="muted"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.latestPosts)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.latestPosts))}
               />
             </Box>
           </Stack>
@@ -236,7 +237,7 @@ export function MedialistPage() {
                 layout="topics"
                 mediaSide="end"
                 tone="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.topicRows)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.topicRows))}
               />
             </Box>
           </Stack>
@@ -264,7 +265,7 @@ export function MedialistPage() {
                 layout="contact"
                 mediaSide="start"
                 tone="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.contactStart)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.contactStart))}
               />
             </Box>
           </Stack>

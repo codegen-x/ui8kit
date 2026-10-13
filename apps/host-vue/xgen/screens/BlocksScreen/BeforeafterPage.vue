@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Contrast,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -66,7 +67,7 @@ const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
               icons="show"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.beforeafter, ui.blocks.variants.beforeafter.cards)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.beforeafter, ui.blocks.variants.beforeafter.cards))"
             />
           </Box>
         </Stack>
@@ -92,7 +93,7 @@ const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
               icons="show"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.beforeafter, ui.blocks.variants.beforeafter.rows)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.beforeafter, ui.blocks.variants.beforeafter.rows))"
             />
           </Box>
         </Stack>
@@ -118,7 +119,7 @@ const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
               icons="hide"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.beforeafter, ui.blocks.variants.beforeafter.plain)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.beforeafter, ui.blocks.variants.beforeafter.plain))"
             />
           </Box>
         </Stack>
@@ -144,7 +145,7 @@ const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
               icons="show"
               tone="muted"
               density="compact"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.beforeafter, ui.blocks.variants.beforeafter.muted)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.beforeafter, ui.blocks.variants.beforeafter.muted))"
             />
           </Box>
         </Stack>

@@ -12,6 +12,7 @@
     StepsList,
     TestimonialGrid,
     tpl,
+    uniqLabel,
     type CodeLine,
     type Faq,
     type FaqTab,
@@ -94,7 +95,7 @@
   item="icon"
   tone="default"
   density="compact"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.row)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.row))}
 />
 <FeatureGrid
   id="home-features"
@@ -107,7 +108,7 @@
   mediaSide="alternate"
   tone="muted"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.rowsAlternate)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.rowsAlternate))}
 />
 <StepsList
   id="home-steps"
@@ -118,7 +119,7 @@
   align="start"
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.rowIcons)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.rowIcons))}
 />
 <StatsBand
   id="home-stats"
@@ -131,7 +132,7 @@
   align="start"
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.icons)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.icons))}
 />
 <TestimonialGrid
   id="home-testimonials"
@@ -147,7 +148,7 @@
   item={{ kind: "plain", avatar: "image", rating: "hide", mark: "none" }}
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.single)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.single))}
 />
 <FaqList
   id="home-faq"
@@ -159,7 +160,7 @@
   cols="1"
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.list)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.list))}
 />
 <CtaBand
   id="home-cta"
@@ -178,5 +179,5 @@
   tone="muted"
   proof="none"
   density="roomy"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.band)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.band))}
 />

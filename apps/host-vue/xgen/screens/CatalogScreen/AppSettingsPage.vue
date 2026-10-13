@@ -2,7 +2,19 @@
 <!-- Source: xgen/specs/screens/catalog.json -->
 <!-- The app-settings page of CatalogScreen. -->
 <script setup lang="ts">
-import { Block, Box, Container, Group, Link, ProfileForm, Stack, Text, Title, tpl } from "@ui8kit/vue-ui";
+import {
+  Block,
+  Box,
+  Container,
+  Group,
+  Link,
+  ProfileForm,
+  Stack,
+  Text,
+  Title,
+  tpl,
+  uniqLabel,
+} from "@ui8kit/vue-ui";
 import { ui } from "@ui8kit/app-shared/content";
 
 </script>
@@ -65,7 +77,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 avatar="show"
                 prefs="show"
                 tone="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.stacked)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.stacked))"
               />
             </Box>
           </Stack>
@@ -91,7 +103,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 avatar="show"
                 prefs="show"
                 tone="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.split)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.split))"
               />
             </Box>
           </Stack>
@@ -117,7 +129,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 avatar="hide"
                 prefs="hide"
                 tone="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.minimal)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.minimal))"
               />
             </Box>
           </Stack>
@@ -143,7 +155,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 avatar="show"
                 prefs="show"
                 tone="muted"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.muted)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.muted))"
               />
             </Box>
           </Stack>

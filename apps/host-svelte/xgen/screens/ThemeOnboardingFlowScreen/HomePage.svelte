@@ -2,7 +2,16 @@
 <!-- Source: xgen/specs/screens/theme-onboarding-flow.json -->
 <!-- The home page of ThemeOnboardingFlowScreen. -->
 <script lang="ts">
-  import { Checklist, PageIntro, Stepper, TourCallout, tpl, type Step, type Task } from "@ui8kit/svelte-ui";
+  import {
+    Checklist,
+    PageIntro,
+    Stepper,
+    TourCallout,
+    tpl,
+    uniqLabel,
+    type Step,
+    type Task,
+  } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
   import { ui } from "@ui8kit/app-shared/content";
   import { steps as stepsEntries } from "@ui8kit/app-shared/data/steps";
@@ -36,7 +45,7 @@
   layout="horizontal"
   marker="number"
   summary="show"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.horizontal)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.horizontal))}
 />
 <Checklist
   id="home-checklist"
@@ -48,7 +57,7 @@
   marker="check"
   detail="expand"
   tone="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.expand)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.expand))}
 />
 <TourCallout
   id="home-tour"
@@ -61,5 +70,5 @@
   placement="below"
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.below)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.below))}
 />

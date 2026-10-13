@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Project,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -75,7 +76,7 @@ const projects = fromCodex<Project>(projectsEntries, PROJECTS_FIELDS);
               layout="cards"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.projects, ui.blocks.variants.projects.cards)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.projects, ui.blocks.variants.projects.cards))"
             />
           </Box>
         </Stack>
@@ -101,7 +102,7 @@ const projects = fromCodex<Project>(projectsEntries, PROJECTS_FIELDS);
               layout="compact"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.projects, ui.blocks.variants.projects.compact)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.projects, ui.blocks.variants.projects.compact))"
             />
           </Box>
         </Stack>
@@ -127,7 +128,7 @@ const projects = fromCodex<Project>(projectsEntries, PROJECTS_FIELDS);
               layout="overlay"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.projects, ui.blocks.variants.projects.overlay)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.projects, ui.blocks.variants.projects.overlay))"
             />
           </Box>
         </Stack>
@@ -153,7 +154,7 @@ const projects = fromCodex<Project>(projectsEntries, PROJECTS_FIELDS);
               layout="bento"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.projects, ui.blocks.variants.projects.bento)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.projects, ui.blocks.variants.projects.bento))"
             />
           </Box>
         </Stack>
@@ -179,7 +180,7 @@ const projects = fromCodex<Project>(projectsEntries, PROJECTS_FIELDS);
               layout="list"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.projects, ui.blocks.variants.projects.list)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.projects, ui.blocks.variants.projects.list))"
             />
           </Box>
         </Stack>
@@ -205,7 +206,7 @@ const projects = fromCodex<Project>(projectsEntries, PROJECTS_FIELDS);
               layout="cards"
               tone="muted"
               density="compact"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.projects, ui.blocks.variants.projects.cardsMuted)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.projects, ui.blocks.variants.projects.cardsMuted))"
             />
           </Box>
         </Stack>

@@ -30,7 +30,7 @@
   import LinkPlain from "../primitives/link-plain/link-plain.svelte";
   import NavBlock from "../components/nav-block.svelte";
   import { defaults } from "../presets/defaults";
-  import { cn, tpl } from "../utils";
+  import { cn, tpl, uniqLabel } from "../utils";
 
   let {
     brand,
@@ -70,7 +70,10 @@
   >
     {brand}
   </Link>
-  <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", navLabel, landmarkLabel) : navLabel)} testid="site-nav">
+  <NavBlock
+    label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", navLabel, landmarkLabel)) : navLabel)}
+    testid="site-nav"
+  >
     <Group gap="8" align="center" class="flex-wrap">
       {#each links as l (l.id)}
         <Link

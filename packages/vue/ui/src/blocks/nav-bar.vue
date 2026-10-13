@@ -37,7 +37,7 @@ import NavBlock from "../components/nav-block.vue";
 import NavLinks from "../components/nav-links.vue";
 import OverMedia from "../components/over-media.vue";
 import SearchPalette from "../components/search-palette.vue";
-import { cn, tpl } from "../utils";
+import { cn, tpl, uniqLabel } from "../utils";
 
 const {
   label,
@@ -83,7 +83,7 @@ const emit = defineEmits<{ theme: [] }>();
     <Container class="mx-auto w-full max-w-6xl px-4" data-slot="container">
       <Box :class="cn('flex flex-wrap items-center justify-between gap-4', 'py-4')">
         <NavBlock v-if="((layout as string) === 'split')"
-          :label="(landmarkLabel ? tpl('{0}, {1}', label, landmarkLabel) : label)"
+          :label="(landmarkLabel ? uniqLabel(tpl('{0}, {1}', label, landmarkLabel)) : label)"
           class="w-full"
           testid="site-nav"
         >
@@ -119,7 +119,7 @@ const emit = defineEmits<{ theme: [] }>();
           </Link>
           <SearchPalette v-if="((layout as string) === 'search')" :label="search.label" :shortcut="search.shortcut" />
           <NavBlock
-            :label="(landmarkLabel ? tpl('{0}, {1}', label, landmarkLabel) : label)"
+            :label="(landmarkLabel ? uniqLabel(tpl('{0}, {1}', label, landmarkLabel)) : label)"
             :class="'order-last w-full overflow-x-auto md:order-none md:w-auto [&>div]:flex-nowrap md:[&>div]:flex-wrap [&_a]:shrink-0'"
             testid="site-nav"
           >

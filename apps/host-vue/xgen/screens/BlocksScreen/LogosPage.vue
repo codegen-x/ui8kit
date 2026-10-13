@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Logo,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -66,7 +67,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
               item="name"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid4)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid4))"
             />
           </Box>
         </Stack>
@@ -92,7 +93,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
               item="tile"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid3)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid3))"
             />
           </Box>
         </Stack>
@@ -118,7 +119,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
               item="icon"
               tone="default"
               density="compact"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.row)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.row))"
             />
           </Box>
         </Stack>
@@ -144,7 +145,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
               item="icon"
               tone="muted"
               density="compact"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.icons)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.icons))"
             />
           </Box>
         </Stack>
@@ -170,7 +171,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
               item="name"
               tone="default"
               density="roomy"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid2)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid2))"
             />
           </Box>
         </Stack>
@@ -196,7 +197,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
               item="tile"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.tiles4)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.tiles4))"
             />
           </Box>
         </Stack>

@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Stat,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -84,7 +85,7 @@ export function MarketingStatsPage() {
                   align="center"
                   tone="default"
                   density="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.plain4)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.plain4))}
                 />
               </Box>
             </Stack>
@@ -112,7 +113,7 @@ export function MarketingStatsPage() {
                   align="center"
                   tone="default"
                   density="compact"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.panel)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.panel))}
                 />
               </Box>
             </Stack>
@@ -140,7 +141,7 @@ export function MarketingStatsPage() {
                   align="start"
                   tone="default"
                   density="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.stack)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.stack))}
                 />
               </Box>
             </Stack>
@@ -168,7 +169,7 @@ export function MarketingStatsPage() {
                   align="center"
                   tone="default"
                   density="roomy"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.image)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.image))}
                 />
               </Box>
             </Stack>
@@ -196,7 +197,7 @@ export function MarketingStatsPage() {
                   align="center"
                   tone="default"
                   density="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.cards)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.cards))}
                 />
               </Box>
             </Stack>
@@ -224,7 +225,7 @@ export function MarketingStatsPage() {
                   align="start"
                   tone="default"
                   density="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.icons)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.icons))}
                 />
               </Box>
             </Stack>
@@ -252,7 +253,7 @@ export function MarketingStatsPage() {
                   align="center"
                   tone="muted"
                   density="roomy"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.muted2)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.muted2))}
                 />
               </Box>
             </Stack>
@@ -280,7 +281,7 @@ export function MarketingStatsPage() {
                   align="center"
                   tone="default"
                   density="compact"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.cardsCompact)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.cardsCompact))}
                 />
               </Box>
             </Stack>

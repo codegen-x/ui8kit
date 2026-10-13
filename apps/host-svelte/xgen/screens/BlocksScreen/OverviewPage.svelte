@@ -13,6 +13,7 @@
     Text,
     Title,
     tpl,
+    uniqLabel,
     type Event,
     type Point,
     type Stat,
@@ -89,7 +90,7 @@
             cols="4"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.overview, ui.blocks.variants.overview.split)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.overview, ui.blocks.variants.overview.split))}
           />
         </Box>
       </Stack>
@@ -116,7 +117,7 @@
             cols="4"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.overview, ui.blocks.variants.overview.stacked)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.overview, ui.blocks.variants.overview.stacked))}
           />
         </Box>
       </Stack>
@@ -143,7 +144,7 @@
             cols="2"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.overview, ui.blocks.variants.overview.twoCols)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.overview, ui.blocks.variants.overview.twoCols))}
           />
         </Box>
       </Stack>
@@ -170,7 +171,7 @@
             cols="4"
             tone="muted"
             density="compact"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.overview, ui.blocks.variants.overview.muted)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.overview, ui.blocks.variants.overview.muted))}
           />
         </Box>
       </Stack>

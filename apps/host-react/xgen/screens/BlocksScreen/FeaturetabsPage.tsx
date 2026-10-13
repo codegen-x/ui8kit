@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Feature,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -71,7 +72,7 @@ export function FeaturetabsPage() {
                 panel="split"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featuretabs, ui.blocks.variants.featuretabs.split)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.featuretabs, ui.blocks.variants.featuretabs.split))}
               />
             </Box>
           </Stack>
@@ -97,7 +98,7 @@ export function FeaturetabsPage() {
                 panel="stack"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featuretabs, ui.blocks.variants.featuretabs.stack)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.featuretabs, ui.blocks.variants.featuretabs.stack))}
               />
             </Box>
           </Stack>
@@ -123,7 +124,7 @@ export function FeaturetabsPage() {
                 panel="split"
                 tone="muted"
                 density="compact"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featuretabs, ui.blocks.variants.featuretabs.muted)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.featuretabs, ui.blocks.variants.featuretabs.muted))}
               />
             </Box>
           </Stack>

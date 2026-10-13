@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Feature,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -65,7 +66,7 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
               item="tile"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.iconwall, ui.blocks.variants.iconwall.tiles4)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.iconwall, ui.blocks.variants.iconwall.tiles4))"
             />
           </Box>
         </Stack>
@@ -90,7 +91,7 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
               item="tile"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.iconwall, ui.blocks.variants.iconwall.tiles3)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.iconwall, ui.blocks.variants.iconwall.tiles3))"
             />
           </Box>
         </Stack>
@@ -115,7 +116,7 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
               item="chip"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.iconwall, ui.blocks.variants.iconwall.chips6)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.iconwall, ui.blocks.variants.iconwall.chips6))"
             />
           </Box>
         </Stack>
@@ -140,7 +141,7 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
               item="chip"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.iconwall, ui.blocks.variants.iconwall.chips4)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.iconwall, ui.blocks.variants.iconwall.chips4))"
             />
           </Box>
         </Stack>
@@ -165,7 +166,7 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
               item="tile"
               tone="muted"
               density="compact"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.iconwall, ui.blocks.variants.iconwall.muted)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.iconwall, ui.blocks.variants.iconwall.muted))"
             />
           </Box>
         </Stack>

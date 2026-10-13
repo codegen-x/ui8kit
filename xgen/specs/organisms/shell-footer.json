@@ -91,14 +91,19 @@
                   "$": "landmarkLabel"
                 },
                 {
-                  "op": "tpl",
+                  "op": "uniq",
                   "args": [
-                    "{0}, {1}",
                     {
-                      "$": "nav.footerLabel"
-                    },
-                    {
-                      "$": "landmarkLabel"
+                      "op": "tpl",
+                      "args": [
+                        "{0}, {1}",
+                        {
+                          "$": "nav.footerLabel"
+                        },
+                        {
+                          "$": "landmarkLabel"
+                        }
+                      ]
                     }
                   ]
                 },

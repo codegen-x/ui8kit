@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Logo,
   type Quote,
   type Stat,
@@ -113,7 +114,7 @@ export function MarketingTestimonialsSplitPage() {
                   layout="media"
                   mediaSide="end"
                   tone="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.quotesplit, ui.blocks.variants.quotesplit.quoteCard)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.quotesplit, ui.blocks.variants.quotesplit.quoteCard))}
                 />
               </Box>
             </Stack>
@@ -142,7 +143,7 @@ export function MarketingTestimonialsSplitPage() {
                   layout="logos"
                   mediaSide="start"
                   tone="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.quotesplit, ui.blocks.variants.quotesplit.logoTiles)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.quotesplit, ui.blocks.variants.quotesplit.logoTiles))}
                 />
               </Box>
             </Stack>
@@ -171,7 +172,7 @@ export function MarketingTestimonialsSplitPage() {
                   layout="rating"
                   mediaSide="end"
                   tone="muted"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.quotesplit, ui.blocks.variants.quotesplit.ratingPanel)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.quotesplit, ui.blocks.variants.quotesplit.ratingPanel))}
                 />
               </Box>
             </Stack>
@@ -200,7 +201,7 @@ export function MarketingTestimonialsSplitPage() {
                   layout="stack"
                   mediaSide="start"
                   tone="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.quotesplit, ui.blocks.variants.quotesplit.stackedCards)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.quotesplit, ui.blocks.variants.quotesplit.stackedCards))}
                 />
               </Box>
             </Stack>
@@ -229,7 +230,7 @@ export function MarketingTestimonialsSplitPage() {
                   layout="compact"
                   mediaSide="end"
                   tone="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.quotesplit, ui.blocks.variants.quotesplit.compact4)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.quotesplit, ui.blocks.variants.quotesplit.compact4))}
                 />
               </Box>
             </Stack>
@@ -258,7 +259,7 @@ export function MarketingTestimonialsSplitPage() {
                   layout="bento"
                   mediaSide="end"
                   tone="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.quotesplit, ui.blocks.variants.quotesplit.bentoFigures)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.quotesplit, ui.blocks.variants.quotesplit.bentoFigures))}
                 />
               </Box>
             </Stack>

@@ -10,6 +10,7 @@ import {
   StepsList,
   VideoGrid,
   tpl,
+  uniqLabel,
   type Contrast,
   type Feature,
   type MegaGroup,
@@ -72,7 +73,7 @@ export function TourPage() {
         item="plain"
         tone="default"
         density="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sticky, ui.blocks.variants.sticky.end)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.sticky, ui.blocks.variants.sticky.end))}
       />
       <BeforeAfter
         id="tour-beforeafter"
@@ -83,7 +84,7 @@ export function TourPage() {
         icons="show"
         tone="default"
         density="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.beforeafter, ui.blocks.variants.beforeafter.cards)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.beforeafter, ui.blocks.variants.beforeafter.cards))}
       />
       <StepsList
         id="tour-steps"
@@ -94,7 +95,7 @@ export function TourPage() {
         align="start"
         tone="default"
         density="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.column)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.column))}
       />
       <VideoGrid
         id="tour-videos"
@@ -106,7 +107,7 @@ export function TourPage() {
         caption="below"
         tone="default"
         density="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.grid3)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.grid3))}
       />
       <MegaMenu
         label={ui.vibe.nav.label}
@@ -119,7 +120,7 @@ export function TourPage() {
         panel="open"
         cols="3"
         promo="none"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.open)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.open))}
       />
     </>
   );

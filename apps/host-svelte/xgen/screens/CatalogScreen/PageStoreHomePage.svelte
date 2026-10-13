@@ -17,6 +17,7 @@
     Text,
     UspStrip,
     tpl,
+    uniqLabel,
     type Category,
     type Feature,
     type MegaGroup,
@@ -141,7 +142,7 @@
     action="button"
     tone="default"
     density="default"
-    landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.grid4)}
+    landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.grid4))}
   />
   <ProductGrid
     id="deals"
@@ -156,7 +157,7 @@
     action="button"
     tone="default"
     density="default"
-    landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.rail)}
+    landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.rail))}
   />
   <UspStrip
     id="store-home-usp"

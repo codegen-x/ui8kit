@@ -6,6 +6,7 @@ import {
   CheckoutForm,
   PageIntro,
   tpl,
+  uniqLabel,
   type CartLine,
   type Day,
   type Payment,
@@ -76,6 +77,6 @@ const payments = fromCodex<Payment>(paymentsEntries, PAYMENTS_FIELDS);
     layout="numbered"
     summary="aside"
     tone="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.checkout, ui.blocks.variants.checkout.numbered)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.checkout, ui.blocks.variants.checkout.numbered))"
   />
 </template>

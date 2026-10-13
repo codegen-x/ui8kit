@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type CartLine,
   type Promo,
   type SummaryRow,
@@ -96,7 +97,7 @@ export function CartpagePage() {
                 promo="show"
                 progress="show"
                 tone="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cartpage, ui.blocks.variants.cartpage.split)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cartpage, ui.blocks.variants.cartpage.split))}
               />
             </Box>
           </Stack>
@@ -126,7 +127,7 @@ export function CartpagePage() {
                 promo="show"
                 progress="show"
                 tone="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cartpage, ui.blocks.variants.cartpage.stacked)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cartpage, ui.blocks.variants.cartpage.stacked))}
               />
             </Box>
           </Stack>
@@ -156,7 +157,7 @@ export function CartpagePage() {
                 promo="hide"
                 progress="hide"
                 tone="muted"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cartpage, ui.blocks.variants.cartpage.plain)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cartpage, ui.blocks.variants.cartpage.plain))}
               />
             </Box>
           </Stack>

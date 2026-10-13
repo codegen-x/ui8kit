@@ -29,7 +29,7 @@ import Link from "../primitives/link/link.vue";
 import LinkPlain from "../primitives/link-plain/link-plain.vue";
 import NavBlock from "../components/nav-block.vue";
 import { defaults } from "../presets/defaults";
-import { cn, tpl } from "../utils";
+import { cn, tpl, uniqLabel } from "../utils";
 
 const {
   brand,
@@ -68,7 +68,10 @@ const {
     >
       {{ brand }}
     </Link>
-    <NavBlock :label="(landmarkLabel ? tpl('{0}, {1}', navLabel, landmarkLabel) : navLabel)" testid="site-nav">
+    <NavBlock
+      :label="(landmarkLabel ? uniqLabel(tpl('{0}, {1}', navLabel, landmarkLabel)) : navLabel)"
+      testid="site-nav"
+    >
       <Group gap="8" align="center" class="flex-wrap">
         <Link v-for="l in links" :key="l.id"
           :href="(l.href ?? '#/')"

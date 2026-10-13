@@ -9,6 +9,7 @@
     PricingTiers,
     UsageCalculator,
     tpl,
+    uniqLabel,
     type Pack,
     type Plan,
   } from "@ui8kit/svelte-ui";
@@ -65,7 +66,7 @@
   layout="card"
   ends="show"
   tone="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.usage, ui.blocks.variants.usage.card)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.usage, ui.blocks.variants.usage.card))}
 />
 <CreditPacks
   id="usage-credits-2"
@@ -77,7 +78,7 @@
   item="tile"
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.credits, ui.blocks.variants.credits.tiles4)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.credits, ui.blocks.variants.credits.tiles4))}
 />
 <CreditPacks
   id="usage-credits-3"
@@ -89,7 +90,7 @@
   item="row"
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.credits, ui.blocks.variants.credits.rows)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.credits, ui.blocks.variants.credits.rows))}
 />
 <PricingTiers
   id="usage-pricing"
@@ -103,7 +104,7 @@
   billing="annual"
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.annual)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.annual))}
 />
 <CtaBand
   id="usage-cta"
@@ -122,5 +123,5 @@
   tone="muted"
   proof="none"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.row)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.row))}
 />

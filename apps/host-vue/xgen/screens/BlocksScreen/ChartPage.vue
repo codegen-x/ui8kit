@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Point,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -67,7 +68,7 @@ const series = fromCodex<Point>(seriesEntries, SERIES_FIELDS);
               chart="bars"
               size="default"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.bars)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.bars))"
             />
           </Box>
         </Stack>
@@ -94,7 +95,7 @@ const series = fromCodex<Point>(seriesEntries, SERIES_FIELDS);
               chart="bars"
               size="compact"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.short)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.short))"
             />
           </Box>
         </Stack>
@@ -121,7 +122,7 @@ const series = fromCodex<Point>(seriesEntries, SERIES_FIELDS);
               chart="meters"
               size="default"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.meters)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.meters))"
             />
           </Box>
         </Stack>
@@ -148,7 +149,7 @@ const series = fromCodex<Point>(seriesEntries, SERIES_FIELDS);
               chart="meters"
               size="compact"
               tone="muted"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.muted)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.muted))"
             />
           </Box>
         </Stack>

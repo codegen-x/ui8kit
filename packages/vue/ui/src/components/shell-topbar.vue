@@ -29,7 +29,7 @@ import Text from "../primitives/text/text.vue";
 import MediaFrame from "../components/media-frame.vue";
 import NavBlock from "../components/nav-block.vue";
 import SearchPalette from "../components/search-palette.vue";
-import { cn, tpl } from "../utils";
+import { cn, tpl, uniqLabel } from "../utils";
 
 const {
   nav,
@@ -54,7 +54,7 @@ const {
       </Text>
     </Group>
     <NavBlock v-if="((links as string) === 'show')"
-      :label="(landmarkLabel ? tpl('{0}, {1}', nav.label, landmarkLabel) : nav.label)"
+      :label="(landmarkLabel ? uniqLabel(tpl('{0}, {1}', nav.label, landmarkLabel)) : nav.label)"
       class="hidden lg:block"
     >
       <List class="m-0 flex list-none items-center gap-2 p-0">

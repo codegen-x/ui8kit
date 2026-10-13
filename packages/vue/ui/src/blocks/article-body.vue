@@ -31,7 +31,7 @@ import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
 import NavBlock from "../components/nav-block.vue";
 import SectionFrame from "../components/section-frame.vue";
-import { cn, tpl } from "../utils";
+import { cn, tpl, uniqLabel } from "../utils";
 
 const {
   id,
@@ -55,7 +55,7 @@ const {
       )"
     >
       <NavBlock v-if="((layout as string) === 'toc')"
-        :label="(landmarkLabel ? tpl('{0}, {1}', tocTitle, landmarkLabel) : tocTitle)"
+        :label="(landmarkLabel ? uniqLabel(tpl('{0}, {1}', tocTitle, landmarkLabel)) : tocTitle)"
         class="md:sticky md:top-4"
         testid="toc"
       >

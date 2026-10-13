@@ -13,6 +13,7 @@
     Text,
     Title,
     tpl,
+    uniqLabel,
     type Filter,
     type Template,
   } from "@ui8kit/svelte-ui";
@@ -79,7 +80,7 @@
             cols="1-4"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.templates, ui.blocks.variants.templates.grid4)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.templates, ui.blocks.variants.templates.grid4))}
           />
         </Box>
       </Stack>
@@ -109,7 +110,7 @@
             cols="1-3"
             tone="default"
             density="compact"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.templates, ui.blocks.variants.templates.grid3)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.templates, ui.blocks.variants.templates.grid3))}
           />
         </Box>
       </Stack>
@@ -139,7 +140,7 @@
             cols="1-4"
             tone="muted"
             density="compact"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.templates, ui.blocks.variants.templates.muted)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.templates, ui.blocks.variants.templates.muted))}
           />
         </Box>
       </Stack>
@@ -169,7 +170,7 @@
             cols="1-4"
             tone="default"
             density="roomy"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.templates, ui.blocks.variants.templates.roomy)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.templates, ui.blocks.variants.templates.roomy))}
           />
         </Box>
       </Stack>

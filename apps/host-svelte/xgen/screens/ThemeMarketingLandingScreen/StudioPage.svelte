@@ -9,6 +9,7 @@
     LogoCloud,
     TestimonialGrid,
     tpl,
+    uniqLabel,
     type CodeLine,
     type Feature,
     type Logo,
@@ -75,7 +76,7 @@
   item="name"
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid4)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid4))}
 />
 <FeatureGrid
   id="studio-features"
@@ -88,7 +89,7 @@
   mediaSide="end"
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.tiles4)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.tiles4))}
 />
 <TestimonialGrid
   id="studio-testimonials"
@@ -104,7 +105,7 @@
   item={{ kind: "card", avatar: "image", rating: "hide", mark: "none" }}
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.masonry)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.masonry))}
 />
 <CtaBand
   id="studio-cta"
@@ -123,5 +124,5 @@
   tone="muted"
   proof="none"
   density="roomy"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.band)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.band))}
 />

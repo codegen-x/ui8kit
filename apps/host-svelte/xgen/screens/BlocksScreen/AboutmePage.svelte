@@ -13,6 +13,7 @@
     Text,
     Title,
     tpl,
+    uniqLabel,
     type Skill,
     type Spec,
   } from "@ui8kit/svelte-ui";
@@ -75,7 +76,7 @@
             mediaSide="start"
             tone="default"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.aboutme, ui.blocks.variants.aboutme.facts)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.aboutme, ui.blocks.variants.aboutme.facts))}
           />
         </Box>
       </Stack>
@@ -105,7 +106,7 @@
             mediaSide="end"
             tone="default"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.aboutme, ui.blocks.variants.aboutme.factsEnd)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.aboutme, ui.blocks.variants.aboutme.factsEnd))}
           />
         </Box>
       </Stack>
@@ -135,7 +136,7 @@
             mediaSide="start"
             tone="default"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.aboutme, ui.blocks.variants.aboutme.skills)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.aboutme, ui.blocks.variants.aboutme.skills))}
           />
         </Box>
       </Stack>
@@ -165,7 +166,7 @@
             mediaSide="end"
             tone="muted"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.aboutme, ui.blocks.variants.aboutme.skillsMuted)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.aboutme, ui.blocks.variants.aboutme.skillsMuted))}
           />
         </Box>
       </Stack>

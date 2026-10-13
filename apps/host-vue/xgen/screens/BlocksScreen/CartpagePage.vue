@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type CartLine,
   type Promo,
   type SummaryRow,
@@ -91,7 +92,7 @@ const promos = fromCodex<Promo>(promosEntries, PROMOS_FIELDS);
               promo="show"
               progress="show"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cartpage, ui.blocks.variants.cartpage.split)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cartpage, ui.blocks.variants.cartpage.split))"
             />
           </Box>
         </Stack>
@@ -121,7 +122,7 @@ const promos = fromCodex<Promo>(promosEntries, PROMOS_FIELDS);
               promo="show"
               progress="show"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cartpage, ui.blocks.variants.cartpage.stacked)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cartpage, ui.blocks.variants.cartpage.stacked))"
             />
           </Box>
         </Stack>
@@ -151,7 +152,7 @@ const promos = fromCodex<Promo>(promosEntries, PROMOS_FIELDS);
               promo="hide"
               progress="hide"
               tone="muted"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cartpage, ui.blocks.variants.cartpage.plain)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cartpage, ui.blocks.variants.cartpage.plain))"
             />
           </Box>
         </Stack>

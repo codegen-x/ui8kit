@@ -2,7 +2,15 @@
 <!-- Source: xgen/specs/screens/theme-content-blog.json -->
 <!-- The story page of ThemeContentBlogScreen. -->
 <script setup lang="ts">
-import { ArticleBody, PostSplit, tpl, type NavLink, type Post, type Section } from "@ui8kit/vue-ui";
+import {
+  ArticleBody,
+  PostSplit,
+  tpl,
+  uniqLabel,
+  type NavLink,
+  type Post,
+  type Section,
+} from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { posts as postsEntries } from "@ui8kit/app-shared/data/posts";
@@ -58,6 +66,6 @@ const outline = fromCodex<NavLink>(outlineEntries, OUTLINE_FIELDS);
     layout="column"
     quotes="show"
     tone="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.article, ui.blocks.variants.article.column)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.article, ui.blocks.variants.article.column))"
   />
 </template>

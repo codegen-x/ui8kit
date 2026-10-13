@@ -30,7 +30,7 @@
   import Link from "../primitives/link/link.svelte";
   import LinkPlain from "../primitives/link-plain/link-plain.svelte";
   import NavBlock from "../components/nav-block.svelte";
-  import { cn, tpl } from "../utils";
+  import { cn, tpl, uniqLabel } from "../utils";
 
   let {
     labels,
@@ -74,7 +74,10 @@
     <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
       {labels.brand}
     </Link>
-    <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", labels.nav, landmarkLabel) : labels.nav)} testid="site-nav">
+    <NavBlock
+      label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", labels.nav, landmarkLabel)) : labels.nav)}
+      testid="site-nav"
+    >
       <Group gap="4" align="center">
         <Link
           href="#/"

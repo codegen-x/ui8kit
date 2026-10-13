@@ -13,6 +13,7 @@
     Text,
     Title,
     tpl,
+    uniqLabel,
     type Step,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -67,7 +68,7 @@
             layout="horizontal"
             marker="number"
             summary="show"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.horizontal)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.horizontal))}
           />
         </Box>
       </Stack>
@@ -95,7 +96,7 @@
             layout="vertical"
             marker="number"
             summary="show"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.vertical)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.vertical))}
           />
         </Box>
       </Stack>
@@ -123,7 +124,7 @@
             layout="horizontal"
             marker="icon"
             summary="show"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.icons)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.icons))}
           />
         </Box>
       </Stack>
@@ -151,7 +152,7 @@
             layout="vertical"
             marker="icon"
             summary="hide"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.bare)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.bare))}
           />
         </Box>
       </Stack>

@@ -13,6 +13,7 @@ import {
   Title,
   UsageCalculator,
   tpl,
+  uniqLabel,
 } from "@ui8kit/react-ui";
 import { ui } from "@ui8kit/app-shared/content";
 
@@ -70,7 +71,7 @@ export function UsagePage() {
                 layout="card"
                 ends="show"
                 tone="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.usage, ui.blocks.variants.usage.card)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.usage, ui.blocks.variants.usage.card))}
               />
             </Box>
           </Stack>
@@ -99,7 +100,7 @@ export function UsagePage() {
                 layout="plain"
                 ends="show"
                 tone="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.usage, ui.blocks.variants.usage.plain)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.usage, ui.blocks.variants.usage.plain))}
               />
             </Box>
           </Stack>
@@ -128,7 +129,7 @@ export function UsagePage() {
                 layout="card"
                 ends="hide"
                 tone="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.usage, ui.blocks.variants.usage.noEnds)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.usage, ui.blocks.variants.usage.noEnds))}
               />
             </Box>
           </Stack>
@@ -157,7 +158,7 @@ export function UsagePage() {
                 layout="card"
                 ends="show"
                 tone="muted"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.usage, ui.blocks.variants.usage.muted)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.usage, ui.blocks.variants.usage.muted))}
               />
             </Box>
           </Stack>

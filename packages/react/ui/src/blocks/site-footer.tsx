@@ -11,7 +11,7 @@ import { Group } from "../primitives/group/group";
 import { Link } from "../primitives/link/link";
 import { Text } from "../primitives/text/text";
 import { NavBlock } from "../components/nav-block";
-import { cn, tpl } from "../utils";
+import { cn, tpl, uniqLabel } from "../utils";
 import type { SiteFooterLabels } from "./site-footer.types";
 
 export type SiteFooterProps = {
@@ -47,7 +47,7 @@ export function SiteFooter({
         <Text size="sm" className="text-muted-foreground" data-testid="copyright">
           {labels.copyright}
         </Text>
-        <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", labels.nav, landmarkLabel) : labels.nav)}>
+        <NavBlock label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", labels.nav, landmarkLabel)) : labels.nav)}>
           <Group gap="4">
             <Link href="#/" variant="default">
               {labels.home}

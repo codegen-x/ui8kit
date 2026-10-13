@@ -10,6 +10,7 @@ import {
   StepsList,
   VideoGrid,
   tpl,
+  uniqLabel,
   type Contrast,
   type Feature,
   type MegaGroup,
@@ -71,7 +72,7 @@ const megagroups = fromCodex<MegaGroup>(megagroupsEntries, MEGAGROUPS_FIELDS);
     item="plain"
     tone="default"
     density="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.sticky, ui.blocks.variants.sticky.end)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.sticky, ui.blocks.variants.sticky.end))"
   />
   <BeforeAfter
     id="tour-beforeafter"
@@ -82,7 +83,7 @@ const megagroups = fromCodex<MegaGroup>(megagroupsEntries, MEGAGROUPS_FIELDS);
     icons="show"
     tone="default"
     density="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.beforeafter, ui.blocks.variants.beforeafter.cards)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.beforeafter, ui.blocks.variants.beforeafter.cards))"
   />
   <StepsList
     id="tour-steps"
@@ -93,7 +94,7 @@ const megagroups = fromCodex<MegaGroup>(megagroupsEntries, MEGAGROUPS_FIELDS);
     align="start"
     tone="default"
     density="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.column)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.column))"
   />
   <VideoGrid
     id="tour-videos"
@@ -105,7 +106,7 @@ const megagroups = fromCodex<MegaGroup>(megagroupsEntries, MEGAGROUPS_FIELDS);
     caption="below"
     tone="default"
     density="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.grid3)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.grid3))"
   />
   <MegaMenu
     :label="ui.vibe.nav.label"
@@ -118,6 +119,6 @@ const megagroups = fromCodex<MegaGroup>(megagroupsEntries, MEGAGROUPS_FIELDS);
     panel="open"
     cols="3"
     promo="none"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.open)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.open))"
   />
 </template>

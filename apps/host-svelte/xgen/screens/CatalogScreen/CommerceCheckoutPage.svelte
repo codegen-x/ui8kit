@@ -15,6 +15,7 @@
     Text,
     Title,
     tpl,
+    uniqLabel,
     type CartLine,
     type Day,
     type Payment,
@@ -126,7 +127,7 @@
               layout="cards"
               summary="aside"
               tone="default"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.checkout, ui.blocks.variants.checkout.cards)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.checkout, ui.blocks.variants.checkout.cards))}
             />
           </Box>
         </Stack>
@@ -156,7 +157,7 @@
               layout="numbered"
               summary="aside"
               tone="default"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.checkout, ui.blocks.variants.checkout.numbered)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.checkout, ui.blocks.variants.checkout.numbered))}
             />
           </Box>
         </Stack>
@@ -186,7 +187,7 @@
               layout="cards"
               summary="none"
               tone="muted"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.checkout, ui.blocks.variants.checkout.noSummary)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.checkout, ui.blocks.variants.checkout.noSummary))}
             />
           </Box>
         </Stack>
@@ -230,7 +231,7 @@
               note="show"
               tone="default"
               density="default"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.card)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.card))}
             />
           </Box>
         </Stack>
@@ -257,7 +258,7 @@
               note="hide"
               tone="default"
               density="default"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.plain)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.plain))}
             />
           </Box>
         </Stack>
@@ -284,7 +285,7 @@
               note="show"
               tone="default"
               density="default"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.noCta)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.noCta))}
             />
           </Box>
         </Stack>
@@ -311,7 +312,7 @@
               note="show"
               tone="muted"
               density="compact"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.muted)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.muted))}
             />
           </Box>
         </Stack>
@@ -356,7 +357,7 @@
               layout="horizontal"
               marker="number"
               summary="show"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.horizontal)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.horizontal))}
             />
           </Box>
         </Stack>

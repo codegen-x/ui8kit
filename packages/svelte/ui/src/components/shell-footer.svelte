@@ -22,7 +22,7 @@
   import ListItem from "../primitives/list/list-item.svelte";
   import Text from "../primitives/text/text.svelte";
   import NavBlock from "../components/nav-block.svelte";
-  import { cn, tpl } from "../utils";
+  import { cn, tpl, uniqLabel } from "../utils";
 
   let { nav, place = "full", landmarkLabel }: ShellFooterProps = $props();
 </script>
@@ -40,7 +40,12 @@
   <Text size="xs" class="text-muted-foreground">
     {nav.copyright}
   </Text>
-  <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", nav.footerLabel, landmarkLabel) : nav.footerLabel)}>
+  <NavBlock
+    label={
+      landmarkLabel ? uniqLabel(tpl("{0}, {1}", nav.footerLabel, landmarkLabel))
+      : nav.footerLabel
+    }
+  >
     <List class="m-0 flex list-none items-center gap-4 p-0">
       {#each nav.footer as f (f.id)}
         <ListItem>

@@ -13,6 +13,7 @@
     Text,
     Title,
     tpl,
+    uniqLabel,
     type Review,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -73,7 +74,7 @@
             avatar="none"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.list)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.list))}
           />
         </Box>
       </Stack>
@@ -100,7 +101,7 @@
             avatar="none"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.grid)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.grid))}
           />
         </Box>
       </Stack>
@@ -127,7 +128,7 @@
             avatar="none"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.plain)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.plain))}
           />
         </Box>
       </Stack>
@@ -154,7 +155,7 @@
             avatar="image"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.avatars)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.avatars))}
           />
         </Box>
       </Stack>
@@ -181,7 +182,7 @@
             avatar="image"
             tone="muted"
             density="roomy"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.mutedGrid)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.mutedGrid))}
           />
         </Box>
       </Stack>

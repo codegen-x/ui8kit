@@ -2,7 +2,7 @@
 <!-- Source: xgen/specs/screens/theme-content-blog.json -->
 <!-- The articles page of ThemeContentBlogScreen. -->
 <script lang="ts">
-  import { PageIntro, PostGrid, tpl, type Post, type PostTopic } from "@ui8kit/svelte-ui";
+  import { PageIntro, PostGrid, tpl, uniqLabel, type Post, type PostTopic } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
   import { ui } from "@ui8kit/app-shared/content";
   import { posts as postsEntries } from "@ui8kit/app-shared/data/posts";
@@ -47,7 +47,7 @@
   meta="full"
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.filters)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.filters))}
 />
 <PostGrid
   id="articles-posts-2"
@@ -62,5 +62,5 @@
   meta="full"
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.twoUp)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.twoUp))}
 />

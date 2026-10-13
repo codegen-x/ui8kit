@@ -17,7 +17,7 @@ import { Text } from "../primitives/text/text";
 import { MediaFrame } from "../components/media-frame";
 import { NavBlock } from "../components/nav-block";
 import { SearchPalette } from "../components/search-palette";
-import { cn, tpl } from "../utils";
+import { cn, tpl, uniqLabel } from "../utils";
 import type { ShellNav } from "../blocks/dashboard-shell.types";
 
 export type ShellTopbarProps = {
@@ -52,7 +52,7 @@ export function ShellTopbar({
       ) : null}
       {((links as string) === "show") ? (
         <NavBlock
-          label={(landmarkLabel ? tpl("{0}, {1}", nav.label, landmarkLabel) : nav.label)}
+          label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", nav.label, landmarkLabel)) : nav.label)}
           className="hidden lg:block"
         >
           <List className="m-0 flex list-none items-center gap-2 p-0">

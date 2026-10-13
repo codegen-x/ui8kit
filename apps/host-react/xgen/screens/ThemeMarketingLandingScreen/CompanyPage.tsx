@@ -10,6 +10,7 @@ import {
   StoryTabs,
   TeamGrid,
   tpl,
+  uniqLabel,
   type Department,
   type Feature,
   type Job,
@@ -84,7 +85,7 @@ export function CompanyPage() {
         layout="split"
         tone="default"
         density="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.about, ui.blocks.variants.about.split)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.about, ui.blocks.variants.about.split))}
       />
       <StoryTabs
         id="company-storytabs"
@@ -96,7 +97,7 @@ export function CompanyPage() {
         labels={ui.company.storyTabs.labels}
         layout="years"
         tone="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.storytabs, ui.blocks.variants.storytabs.yearTabs)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.storytabs, ui.blocks.variants.storytabs.yearTabs))}
       />
       <MilestoneTimeline
         id="company-timeline"
@@ -106,7 +107,7 @@ export function CompanyPage() {
         layout="split"
         tone="default"
         density="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.timeline, ui.blocks.variants.timeline.split)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.timeline, ui.blocks.variants.timeline.split))}
       />
       <TeamGrid
         id="company-team"
@@ -118,7 +119,7 @@ export function CompanyPage() {
         cols="1-4"
         tone="default"
         density="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.team, ui.blocks.variants.team.cards4)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.team, ui.blocks.variants.team.cards4))}
       />
       <JobBoard
         id="company-jobs"
@@ -130,7 +131,7 @@ export function CompanyPage() {
         layout="grouped"
         salary="hide"
         tone="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.jobs, ui.blocks.variants.jobs.grouped)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.jobs, ui.blocks.variants.jobs.grouped))}
       />
     </>
   );

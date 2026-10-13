@@ -14,6 +14,7 @@ import {
   TourCallout,
   VideoModal,
   tpl,
+  uniqLabel,
   type Chapter,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -85,7 +86,7 @@ const chapters = fromCodex<Chapter>(chaptersEntries, CHAPTERS_FIELDS);
                 placement="below"
                 tone="default"
                 density="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.below)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.below))"
               />
             </Box>
           </Stack>
@@ -113,7 +114,7 @@ const chapters = fromCodex<Chapter>(chaptersEntries, CHAPTERS_FIELDS);
                 placement="above"
                 tone="default"
                 density="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.above)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.above))"
               />
             </Box>
           </Stack>
@@ -141,7 +142,7 @@ const chapters = fromCodex<Chapter>(chaptersEntries, CHAPTERS_FIELDS);
                 placement="end"
                 tone="default"
                 density="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.end)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.end))"
               />
             </Box>
           </Stack>
@@ -169,7 +170,7 @@ const chapters = fromCodex<Chapter>(chaptersEntries, CHAPTERS_FIELDS);
                 placement="below"
                 tone="muted"
                 density="compact"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.muted)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.muted))"
               />
             </Box>
           </Stack>
@@ -214,7 +215,7 @@ const chapters = fromCodex<Chapter>(chaptersEntries, CHAPTERS_FIELDS);
                 size="default"
                 outline="none"
                 tone="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.default)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.default))"
               />
             </Box>
           </Stack>
@@ -242,7 +243,7 @@ const chapters = fromCodex<Chapter>(chaptersEntries, CHAPTERS_FIELDS);
                 size="wide"
                 outline="none"
                 tone="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.wide)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.wide))"
               />
             </Box>
           </Stack>
@@ -270,7 +271,7 @@ const chapters = fromCodex<Chapter>(chaptersEntries, CHAPTERS_FIELDS);
                 size="default"
                 outline="chapters"
                 tone="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.chapters)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.chapters))"
               />
             </Box>
           </Stack>
@@ -298,7 +299,7 @@ const chapters = fromCodex<Chapter>(chaptersEntries, CHAPTERS_FIELDS);
                 size="default"
                 outline="none"
                 tone="muted"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.muted)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.muted))"
               />
             </Box>
           </Stack>

@@ -6,7 +6,7 @@
 //   so landmarks of one type stay distinct when a page shows the same block more than once (gallery, catalog, themes);
 // - an organism inside passes the label on.
 // Pages that repeat a block (variants) set it from the dictionary; elsewhere it is left out and nothing changes.
-import { coalesce, cond, ref, tpl, undef } from "../build";
+import { coalesce, cond, ref, tpl, undef, uniq } from "../build";
 import type { OrganismSpec, Value, ViewNode } from "../ir";
 
 
@@ -46,7 +46,7 @@ function nameRoot(n: Extract<ViewNode, { use: string }>): void {
 function nameNested(n: Extract<ViewNode, { use: string }>): void {
   const attrs = (n.attrs ??= {});
   const own = attrs["aria-label"];
-  if (own !== undefined) attrs["aria-label"] = cond(label(), tpl("{0}, {1}", own, label()), own);
+  if (own !== undefined) attrs["aria-label"] = cond(label(), uniq(tpl("{0}, {1}", own, label())), own);
 }
 
 function walk(nodes: ViewNode[], root: boolean, labelled: Set<string>): void {
@@ -60,7 +60,7 @@ function walk(nodes: ViewNode[], root: boolean, labelled: Set<string>): void {
       const props = (n.props ??= {});
       // a nested NavBlock (a nav inside a header, a footer, a sidebar) keeps its own name and adds the label after it
       const own = props["label"];
-      if (!root && n.organism === "NavBlock" && own !== undefined) props["label"] = cond(label(), tpl("{0}, {1}", own, label()), own);
+      if (!root && n.organism === "NavBlock" && own !== undefined) props["label"] = cond(label(), uniq(tpl("{0}, {1}", own, label())), own);
       else if (props[PROP] === undefined) props[PROP] = label();
       for (const k of kids(n)) walk(k, false, labelled);
       continue;

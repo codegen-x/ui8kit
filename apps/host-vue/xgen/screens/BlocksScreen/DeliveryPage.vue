@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Feature,
   type Zone,
 } from "@ui8kit/vue-ui";
@@ -81,7 +82,7 @@ const deliveryfacts = fromCodex<Feature>(deliveryfactsEntries, DELIVERYFACTS_FIE
               layout="full"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.delivery, ui.blocks.variants.delivery.full)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.delivery, ui.blocks.variants.delivery.full))"
             />
           </Box>
         </Stack>
@@ -108,7 +109,7 @@ const deliveryfacts = fromCodex<Feature>(deliveryfactsEntries, DELIVERYFACTS_FIE
               layout="split"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.delivery, ui.blocks.variants.delivery.split)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.delivery, ui.blocks.variants.delivery.split))"
             />
           </Box>
         </Stack>
@@ -135,7 +136,7 @@ const deliveryfacts = fromCodex<Feature>(deliveryfactsEntries, DELIVERYFACTS_FIE
               layout="facts"
               tone="muted"
               density="compact"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.delivery, ui.blocks.variants.delivery.facts)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.delivery, ui.blocks.variants.delivery.facts))"
             />
           </Box>
         </Stack>

@@ -207,14 +207,19 @@
                       "$": "landmarkLabel"
                     },
                     {
-                      "op": "tpl",
+                      "op": "uniq",
                       "args": [
-                        "{0}, {1}",
                         {
-                          "$": "labels.nav"
-                        },
-                        {
-                          "$": "landmarkLabel"
+                          "op": "tpl",
+                          "args": [
+                            "{0}, {1}",
+                            {
+                              "$": "labels.nav"
+                            },
+                            {
+                              "$": "landmarkLabel"
+                            }
+                          ]
                         }
                       ]
                     },

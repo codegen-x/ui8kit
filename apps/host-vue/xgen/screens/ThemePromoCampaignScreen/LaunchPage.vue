@@ -9,6 +9,7 @@ import {
   LogoCloud,
   NewsletterForm,
   tpl,
+  uniqLabel,
   type CodeLine,
   type Logo,
 } from "@ui8kit/vue-ui";
@@ -61,7 +62,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
     dismiss="hide"
     badge="none"
     position="top"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.bar)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.bar))"
   />
   <NewsletterForm
     id="launch-newsletter"
@@ -74,7 +75,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
     terms="hide"
     tone="default"
     align="center"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.inline)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.inline))"
   />
   <LogoCloud
     id="launch-logos"
@@ -85,7 +86,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
     item="tile"
     tone="default"
     density="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.tiles4)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.tiles4))"
   />
   <CtaBand
     id="launch-cta"
@@ -104,6 +105,6 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
     tone="muted"
     proof="none"
     density="roomy"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.saas)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.saas))"
   />
 </template>

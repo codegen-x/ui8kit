@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type BoardCard,
   type Lane,
 } from "@ui8kit/react-ui";
@@ -76,7 +77,7 @@ export function KanbanPage() {
                 cols="3"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.kanban, ui.blocks.variants.kanban.detail)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.kanban, ui.blocks.variants.kanban.detail))}
               />
             </Box>
           </Stack>
@@ -103,7 +104,7 @@ export function KanbanPage() {
                 cols="3"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.kanban, ui.blocks.variants.kanban.simple)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.kanban, ui.blocks.variants.kanban.simple))}
               />
             </Box>
           </Stack>
@@ -130,7 +131,7 @@ export function KanbanPage() {
                 cols="2"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.kanban, ui.blocks.variants.kanban.twoCols)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.kanban, ui.blocks.variants.kanban.twoCols))}
               />
             </Box>
           </Stack>
@@ -157,7 +158,7 @@ export function KanbanPage() {
                 cols="3"
                 tone="muted"
                 density="compact"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.kanban, ui.blocks.variants.kanban.muted)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.kanban, ui.blocks.variants.kanban.muted))}
               />
             </Box>
           </Stack>

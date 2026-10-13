@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type NavLink,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -67,7 +68,7 @@ const sidenav = fromCodex<NavLink>(sidenavEntries, SIDENAV_FIELDS);
               width="full"
               user="show"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.sidenav, ui.blocks.variants.sidenav.full)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.sidenav, ui.blocks.variants.sidenav.full))"
             />
           </Box>
         </Stack>
@@ -94,7 +95,7 @@ const sidenav = fromCodex<NavLink>(sidenavEntries, SIDENAV_FIELDS);
               width="compact"
               user="show"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.sidenav, ui.blocks.variants.sidenav.compact)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.sidenav, ui.blocks.variants.sidenav.compact))"
             />
           </Box>
         </Stack>
@@ -121,7 +122,7 @@ const sidenav = fromCodex<NavLink>(sidenavEntries, SIDENAV_FIELDS);
               width="full"
               user="hide"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.sidenav, ui.blocks.variants.sidenav.noUser)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.sidenav, ui.blocks.variants.sidenav.noUser))"
             />
           </Box>
         </Stack>
@@ -148,7 +149,7 @@ const sidenav = fromCodex<NavLink>(sidenavEntries, SIDENAV_FIELDS);
               width="full"
               user="show"
               density="compact"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.sidenav, ui.blocks.variants.sidenav.dense)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.sidenav, ui.blocks.variants.sidenav.dense))"
             />
           </Box>
         </Stack>

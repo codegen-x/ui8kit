@@ -1,6 +1,6 @@
 // The pieces every composed screen is built from: block keys and variants, the props of a use, the node a use draws, the shared values of a
 // block page and the labelled section of one variant. compose.ts (pages, the gallery) and compose-catalog.ts (the catalog) use them.
-import { call, organism, ref, text, tpl, use } from "./build";
+import { call, organism, ref, text, tpl, uniq, use } from "./build";
 import { isGroup, type BlockSpec, type BlockUse, type OrganismSpec, type RecordField, type Value, type ViewNode } from "./ir";
 
 export const blockKey = (b: BlockSpec): string => b.id.slice("block.".length);
@@ -99,7 +99,7 @@ export function expandUse(u: BlockUse, blocks: BlockSpec[], org: Record<string, 
 
 
 /** the name of the landmarks of one variant of a block: "Hero, Centered" (blocks.landmark, from the dictionary) */
-const landmarkName = (key: string, variant: string): Value => tpl(TEXT("blocks.landmark"), TEXT(`blocks.names.${key}`), TEXT(`blocks.variants.${key}.${variant}`));
+const landmarkName = (key: string, variant: string): Value => uniq(tpl(TEXT("blocks.landmark"), TEXT(`blocks.names.${key}`), TEXT(`blocks.variants.${key}.${variant}`)));
 
 export type OrganismNode = Extract<ViewNode, { organism: string }>;
 

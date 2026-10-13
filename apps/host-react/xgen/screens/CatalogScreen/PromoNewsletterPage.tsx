@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
 } from "@ui8kit/react-ui";
 import { ui } from "@ui8kit/app-shared/content";
 
@@ -77,7 +78,7 @@ export function PromoNewsletterPage() {
                   terms="hide"
                   tone="default"
                   align="center"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.inline)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.inline))}
                 />
               </Box>
             </Stack>
@@ -105,7 +106,7 @@ export function PromoNewsletterPage() {
                   terms="hide"
                   tone="default"
                   align="center"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.stacked)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.stacked))}
                 />
               </Box>
             </Stack>
@@ -133,7 +134,7 @@ export function PromoNewsletterPage() {
                   terms="hide"
                   tone="default"
                   align="start"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.split)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.split))}
                 />
               </Box>
             </Stack>
@@ -161,7 +162,7 @@ export function PromoNewsletterPage() {
                   terms="show"
                   tone="default"
                   align="center"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.consent)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.consent))}
                 />
               </Box>
             </Stack>
@@ -189,7 +190,7 @@ export function PromoNewsletterPage() {
                   terms="show"
                   tone="muted"
                   align="start"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.muted)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.muted))}
                 />
               </Box>
             </Stack>

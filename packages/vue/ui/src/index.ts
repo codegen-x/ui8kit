@@ -702,4 +702,4 @@ export type * from "./blocks/zone-table.types";
 export { defaults } from "./presets/defaults";
 
 // utils
-export { cn, variants, tpl, fmtNumber, fmtMoney, at, pageWindow, fitCols } from "./utils";
+export { cn, variants, tpl, fmtNumber, fmtMoney, at, pageWindow, fitCols, uniqLabel } from "./utils";

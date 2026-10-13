@@ -14,6 +14,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Feature,
   type Skill,
   type Spec,
@@ -97,7 +98,7 @@ export function MarketingAboutPage() {
                   layout="split"
                   tone="default"
                   density="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.about, ui.blocks.variants.about.split)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.about, ui.blocks.variants.about.split))}
                 />
               </Box>
             </Stack>
@@ -123,7 +124,7 @@ export function MarketingAboutPage() {
                   layout="stacked"
                   tone="default"
                   density="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.about, ui.blocks.variants.about.stacked)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.about, ui.blocks.variants.about.stacked))}
                 />
               </Box>
             </Stack>
@@ -149,7 +150,7 @@ export function MarketingAboutPage() {
                   layout="split"
                   tone="muted"
                   density="compact"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.about, ui.blocks.variants.about.muted)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.about, ui.blocks.variants.about.muted))}
                 />
               </Box>
             </Stack>
@@ -196,7 +197,7 @@ export function MarketingAboutPage() {
                   mediaSide="start"
                   tone="default"
                   level={2}
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.aboutme, ui.blocks.variants.aboutme.facts)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.aboutme, ui.blocks.variants.aboutme.facts))}
                 />
               </Box>
             </Stack>
@@ -226,7 +227,7 @@ export function MarketingAboutPage() {
                   mediaSide="end"
                   tone="default"
                   level={2}
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.aboutme, ui.blocks.variants.aboutme.factsEnd)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.aboutme, ui.blocks.variants.aboutme.factsEnd))}
                 />
               </Box>
             </Stack>
@@ -256,7 +257,7 @@ export function MarketingAboutPage() {
                   mediaSide="start"
                   tone="default"
                   level={2}
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.aboutme, ui.blocks.variants.aboutme.skills)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.aboutme, ui.blocks.variants.aboutme.skills))}
                 />
               </Box>
             </Stack>
@@ -286,7 +287,7 @@ export function MarketingAboutPage() {
                   mediaSide="end"
                   tone="muted"
                   level={2}
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.aboutme, ui.blocks.variants.aboutme.skillsMuted)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.aboutme, ui.blocks.variants.aboutme.skillsMuted))}
                 />
               </Box>
             </Stack>

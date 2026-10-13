@@ -2,7 +2,19 @@
 // Source: xgen/specs/screens/blocks.json
 // The tour page of BlocksScreen.
 
-import { Block, Box, Container, Group, Link, Stack, Text, Title, TourCallout, tpl } from "@ui8kit/react-ui";
+import {
+  Block,
+  Box,
+  Container,
+  Group,
+  Link,
+  Stack,
+  Text,
+  Title,
+  TourCallout,
+  tpl,
+  uniqLabel,
+} from "@ui8kit/react-ui";
 import { ui } from "@ui8kit/app-shared/content";
 
 export function TourPage() {
@@ -55,7 +67,7 @@ export function TourPage() {
                 placement="below"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.below)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.below))}
               />
             </Box>
           </Stack>
@@ -83,7 +95,7 @@ export function TourPage() {
                 placement="above"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.above)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.above))}
               />
             </Box>
           </Stack>
@@ -111,7 +123,7 @@ export function TourPage() {
                 placement="end"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.end)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.end))}
               />
             </Box>
           </Stack>
@@ -139,7 +151,7 @@ export function TourPage() {
                 placement="below"
                 tone="muted"
                 density="compact"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.muted)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.muted))}
               />
             </Box>
           </Stack>

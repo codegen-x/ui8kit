@@ -9,6 +9,7 @@ import {
   HeroClassic,
   TestimonialGrid,
   tpl,
+  uniqLabel,
   type CodeLine,
   type CompareRow,
   type Faq,
@@ -79,7 +80,7 @@ const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS);
     highlight="middle"
     tone="muted"
     density="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.rivals)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.rivals))"
   />
   <TestimonialGrid
     id="compare-testimonials"
@@ -95,7 +96,7 @@ const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS);
     :item="{ kind: 'plain', avatar: 'image', rating: 'hide', mark: 'icon' }"
     tone="default"
     density="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.featured)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.featured))"
   />
   <FaqList
     id="compare-faq"
@@ -107,7 +108,7 @@ const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS);
     cols="1"
     tone="default"
     density="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.search)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.search))"
   />
   <CtaBand
     id="compare-cta"
@@ -126,6 +127,6 @@ const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS);
     tone="muted"
     proof="quote"
     density="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.quote)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.quote))"
   />
 </template>

@@ -2,7 +2,19 @@
 // Source: xgen/specs/screens/catalog.json
 // The app-settings page of CatalogScreen.
 
-import { Block, Box, Container, Group, Link, ProfileForm, Stack, Text, Title, tpl } from "@ui8kit/react-ui";
+import {
+  Block,
+  Box,
+  Container,
+  Group,
+  Link,
+  ProfileForm,
+  Stack,
+  Text,
+  Title,
+  tpl,
+  uniqLabel,
+} from "@ui8kit/react-ui";
 import { ui } from "@ui8kit/app-shared/content";
 
 export function AppSettingsPage() {
@@ -64,7 +76,7 @@ export function AppSettingsPage() {
                   avatar="show"
                   prefs="show"
                   tone="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.stacked)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.stacked))}
                 />
               </Box>
             </Stack>
@@ -90,7 +102,7 @@ export function AppSettingsPage() {
                   avatar="show"
                   prefs="show"
                   tone="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.split)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.split))}
                 />
               </Box>
             </Stack>
@@ -116,7 +128,7 @@ export function AppSettingsPage() {
                   avatar="hide"
                   prefs="hide"
                   tone="default"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.minimal)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.minimal))}
                 />
               </Box>
             </Stack>
@@ -142,7 +154,7 @@ export function AppSettingsPage() {
                   avatar="show"
                   prefs="show"
                   tone="muted"
-                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.muted)}
+                  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.muted))}
                 />
               </Box>
             </Stack>

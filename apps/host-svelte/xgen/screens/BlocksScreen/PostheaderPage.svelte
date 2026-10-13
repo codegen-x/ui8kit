@@ -13,6 +13,7 @@
     Text,
     Title,
     tpl,
+    uniqLabel,
     type Post,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -74,7 +75,7 @@
             meta="full"
             tone="default"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.postheader, ui.blocks.variants.postheader.start)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.postheader, ui.blocks.variants.postheader.start))}
           />
         </Box>
       </Stack>
@@ -100,7 +101,7 @@
             meta="full"
             tone="default"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.postheader, ui.blocks.variants.postheader.center)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.postheader, ui.blocks.variants.postheader.center))}
           />
         </Box>
       </Stack>
@@ -126,7 +127,7 @@
             meta="full"
             tone="default"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.postheader, ui.blocks.variants.postheader.noCover)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.postheader, ui.blocks.variants.postheader.noCover))}
           />
         </Box>
       </Stack>
@@ -152,7 +153,7 @@
             meta="short"
             tone="muted"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.postheader, ui.blocks.variants.postheader.minimal)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.postheader, ui.blocks.variants.postheader.minimal))}
           />
         </Box>
       </Stack>

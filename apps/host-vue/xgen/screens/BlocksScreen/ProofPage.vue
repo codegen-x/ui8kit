@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Logo,
   type Stat,
 } from "@ui8kit/vue-ui";
@@ -70,7 +71,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
               logoStyle="name"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.above)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.above))"
             />
           </Box>
         </Stack>
@@ -96,7 +97,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
               logoStyle="name"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.beside)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.beside))"
             />
           </Box>
         </Stack>
@@ -122,7 +123,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
               logoStyle="icon"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.icons)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.icons))"
             />
           </Box>
         </Stack>
@@ -148,7 +149,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
               logoStyle="name"
               tone="muted"
               density="compact"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.muted)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.muted))"
             />
           </Box>
         </Stack>

@@ -2,7 +2,16 @@
 <!-- Source: xgen/specs/screens/theme-dashboard-console.json -->
 <!-- The workspace page of ThemeDashboardConsoleScreen. -->
 <script setup lang="ts">
-import { AppShell, PageIntro, tpl, type Event, type NavLink, type Point, type Stat } from "@ui8kit/vue-ui";
+import {
+  AppShell,
+  PageIntro,
+  tpl,
+  uniqLabel,
+  type Event,
+  type NavLink,
+  type Point,
+  type Stat,
+} from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { metrics as metricsEntries } from "@ui8kit/app-shared/data/metrics";
@@ -69,7 +78,7 @@ const sidenav = fromCodex<NavLink>(sidenavEntries, SIDENAV_FIELDS);
     }"
     layout="sidebar"
     density="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.shell, ui.blocks.variants.shell.sidebar)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.shell, ui.blocks.variants.shell.sidebar))"
   />
   <AppShell
     id="workspace-shell-2"
@@ -96,7 +105,7 @@ const sidenav = fromCodex<NavLink>(sidenavEntries, SIDENAV_FIELDS);
     }"
     layout="top"
     density="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.shell, ui.blocks.variants.shell.top)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.shell, ui.blocks.variants.shell.top))"
   />
   <AppShell
     id="workspace-shell-3"
@@ -123,6 +132,6 @@ const sidenav = fromCodex<NavLink>(sidenavEntries, SIDENAV_FIELDS);
     }"
     layout="panes"
     density="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.shell, ui.blocks.variants.shell.panes)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.shell, ui.blocks.variants.shell.panes))"
   />
 </template>

@@ -9,6 +9,7 @@ import {
   LogoCloud,
   QuoteSplit,
   tpl,
+  uniqLabel,
   type FaqTab,
   type Feature,
   type Logo,
@@ -125,7 +126,7 @@ export function TeamsPage() {
         item="icon"
         tone="default"
         density="compact"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.row)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.row))}
       />
       <FaqSplit
         id="teams-faqsplit"
@@ -148,7 +149,7 @@ export function TeamsPage() {
         cards="grid3"
         mediaSide="end"
         tone="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faqsplit, ui.blocks.variants.faqsplit.helpCard)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faqsplit, ui.blocks.variants.faqsplit.helpCard))}
       />
       <QuoteSplit
         id="teams-quotesplit"
@@ -178,7 +179,7 @@ export function TeamsPage() {
         layout="rating"
         mediaSide="end"
         tone="muted"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.quotesplit, ui.blocks.variants.quotesplit.ratingPanel)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.quotesplit, ui.blocks.variants.quotesplit.ratingPanel))}
       />
       <CtaProof
         id="teams-ctaproof"
@@ -197,7 +198,7 @@ export function TeamsPage() {
         proof="stats"
         mediaSide="end"
         tone="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.splitStats)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.splitStats))}
       />
     </>
   );

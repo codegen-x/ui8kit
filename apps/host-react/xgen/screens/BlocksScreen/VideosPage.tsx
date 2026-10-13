@@ -13,6 +13,7 @@ import {
   Title,
   VideoGrid,
   tpl,
+  uniqLabel,
   type Quote,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -82,7 +83,7 @@ export function VideosPage() {
                 caption="below"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.grid3)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.grid3))}
               />
             </Box>
           </Stack>
@@ -109,7 +110,7 @@ export function VideosPage() {
                 caption="below"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.grid2)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.grid2))}
               />
             </Box>
           </Stack>
@@ -136,7 +137,7 @@ export function VideosPage() {
                 caption="overlay"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.overlay)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.overlay))}
               />
             </Box>
           </Stack>
@@ -163,7 +164,7 @@ export function VideosPage() {
                 caption="below"
                 tone="muted"
                 density="compact"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.muted)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.muted))}
               />
             </Box>
           </Stack>

@@ -13,6 +13,7 @@
     Title,
     UsageCalculator,
     tpl,
+    uniqLabel,
   } from "@ui8kit/svelte-ui";
   import { ui } from "@ui8kit/app-shared/content";
 
@@ -64,7 +65,7 @@
             layout="card"
             ends="show"
             tone="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.usage, ui.blocks.variants.usage.card)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.usage, ui.blocks.variants.usage.card))}
           />
         </Box>
       </Stack>
@@ -93,7 +94,7 @@
             layout="plain"
             ends="show"
             tone="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.usage, ui.blocks.variants.usage.plain)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.usage, ui.blocks.variants.usage.plain))}
           />
         </Box>
       </Stack>
@@ -122,7 +123,7 @@
             layout="card"
             ends="hide"
             tone="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.usage, ui.blocks.variants.usage.noEnds)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.usage, ui.blocks.variants.usage.noEnds))}
           />
         </Box>
       </Stack>
@@ -151,7 +152,7 @@
             layout="card"
             ends="show"
             tone="muted"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.usage, ui.blocks.variants.usage.muted)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.usage, ui.blocks.variants.usage.muted))}
           />
         </Box>
       </Stack>

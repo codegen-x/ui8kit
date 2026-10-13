@@ -2,7 +2,7 @@
 // Source: xgen/specs/screens/theme-account-portal.json
 // The join page of ThemeAccountPortalScreen.
 
-import { PageIntro, SignupWizard, tpl, type WizardStep } from "@ui8kit/react-ui";
+import { PageIntro, SignupWizard, tpl, uniqLabel, type WizardStep } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { wizard as wizardEntries } from "@ui8kit/app-shared/data/wizard";
@@ -39,7 +39,7 @@ export function JoinPage() {
         current={1}
         progress="bar"
         layout="card"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.wizard, ui.blocks.variants.wizard.bar)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.wizard, ui.blocks.variants.wizard.bar))}
       />
       <SignupWizard
         id="join-wizard-2"
@@ -49,7 +49,7 @@ export function JoinPage() {
         current={1}
         progress="list"
         layout="card"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.wizard, ui.blocks.variants.wizard.list)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.wizard, ui.blocks.variants.wizard.list))}
       />
     </>
   );

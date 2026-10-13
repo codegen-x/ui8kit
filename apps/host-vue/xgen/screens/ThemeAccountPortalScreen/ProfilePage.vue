@@ -2,7 +2,7 @@
 <!-- Source: xgen/specs/screens/theme-account-portal.json -->
 <!-- The profile page of ThemeAccountPortalScreen. -->
 <script setup lang="ts">
-import { PageIntro, ProfileForm, tpl } from "@ui8kit/vue-ui";
+import { PageIntro, ProfileForm, tpl, uniqLabel } from "@ui8kit/vue-ui";
 import { ui } from "@ui8kit/app-shared/content";
 
 </script>
@@ -27,7 +27,7 @@ import { ui } from "@ui8kit/app-shared/content";
     avatar="show"
     prefs="show"
     tone="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.split)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.split))"
   />
   <ProfileForm
     id="profile-profile-2"
@@ -38,6 +38,6 @@ import { ui } from "@ui8kit/app-shared/content";
     avatar="show"
     prefs="show"
     tone="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.stacked)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.stacked))"
   />
 </template>

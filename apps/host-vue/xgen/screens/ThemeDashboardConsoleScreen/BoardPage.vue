@@ -2,7 +2,7 @@
 <!-- Source: xgen/specs/screens/theme-dashboard-console.json -->
 <!-- The board page of ThemeDashboardConsoleScreen. -->
 <script setup lang="ts">
-import { KanbanBoard, PageIntro, tpl, type BoardCard, type Lane } from "@ui8kit/vue-ui";
+import { KanbanBoard, PageIntro, tpl, uniqLabel, type BoardCard, type Lane } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { lanes as lanesEntries } from "@ui8kit/app-shared/data/lanes";
@@ -36,7 +36,7 @@ const cards = fromCodex<BoardCard>(cardsEntries, CARDS_FIELDS);
     cols="3"
     tone="default"
     density="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.kanban, ui.blocks.variants.kanban.detail)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.kanban, ui.blocks.variants.kanban.detail))"
   />
   <KanbanBoard
     id="board-kanban-2"
@@ -48,6 +48,6 @@ const cards = fromCodex<BoardCard>(cardsEntries, CARDS_FIELDS);
     cols="2"
     tone="default"
     density="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.kanban, ui.blocks.variants.kanban.twoCols)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.kanban, ui.blocks.variants.kanban.twoCols))"
   />
 </template>

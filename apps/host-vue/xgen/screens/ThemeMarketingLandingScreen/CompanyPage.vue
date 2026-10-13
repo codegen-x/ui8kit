@@ -10,6 +10,7 @@ import {
   StoryTabs,
   TeamGrid,
   tpl,
+  uniqLabel,
   type Department,
   type Feature,
   type Job,
@@ -83,7 +84,7 @@ const departments = fromCodex<Department>(departmentsEntries, DEPARTMENTS_FIELDS
     layout="split"
     tone="default"
     density="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.about, ui.blocks.variants.about.split)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.about, ui.blocks.variants.about.split))"
   />
   <StoryTabs
     id="company-storytabs"
@@ -95,7 +96,7 @@ const departments = fromCodex<Department>(departmentsEntries, DEPARTMENTS_FIELDS
     :labels="ui.company.storyTabs.labels"
     layout="years"
     tone="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.storytabs, ui.blocks.variants.storytabs.yearTabs)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.storytabs, ui.blocks.variants.storytabs.yearTabs))"
   />
   <MilestoneTimeline
     id="company-timeline"
@@ -105,7 +106,7 @@ const departments = fromCodex<Department>(departmentsEntries, DEPARTMENTS_FIELDS
     layout="split"
     tone="default"
     density="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.timeline, ui.blocks.variants.timeline.split)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.timeline, ui.blocks.variants.timeline.split))"
   />
   <TeamGrid
     id="company-team"
@@ -117,7 +118,7 @@ const departments = fromCodex<Department>(departmentsEntries, DEPARTMENTS_FIELDS
     cols="1-4"
     tone="default"
     density="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.team, ui.blocks.variants.team.cards4)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.team, ui.blocks.variants.team.cards4))"
   />
   <JobBoard
     id="company-jobs"
@@ -129,6 +130,6 @@ const departments = fromCodex<Department>(departmentsEntries, DEPARTMENTS_FIELDS
     layout="grouped"
     salary="hide"
     tone="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.jobs, ui.blocks.variants.jobs.grouped)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.jobs, ui.blocks.variants.jobs.grouped))"
   />
 </template>

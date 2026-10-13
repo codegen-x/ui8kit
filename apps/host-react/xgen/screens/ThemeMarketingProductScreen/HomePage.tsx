@@ -11,6 +11,7 @@ import {
   FeatureTabs,
   HeroClassic,
   tpl,
+  uniqLabel,
   type CodeLine,
   type Feature,
   type Stat,
@@ -71,7 +72,7 @@ export function HomePage() {
         mediaSide="end"
         tone="default"
         density="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.grid)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.grid))}
       />
       <FeatureSplit
         id="home-featuresplit"
@@ -90,7 +91,7 @@ export function HomePage() {
         layout="metrics"
         mediaSide="end"
         tone="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featuresplit, ui.blocks.variants.featuresplit.metricCards)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.featuresplit, ui.blocks.variants.featuresplit.metricCards))}
       />
       <FeatureShowcase
         id="home-featureshowcase"
@@ -101,7 +102,7 @@ export function HomePage() {
         item="panel"
         cols="4"
         tone="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featureshowcase, ui.blocks.variants.featureshowcase.panelCards4)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.featureshowcase, ui.blocks.variants.featureshowcase.panelCards4))}
       />
       <BentoGrid
         id="home-bento"
@@ -111,7 +112,7 @@ export function HomePage() {
         media="image"
         tone="default"
         density="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.images)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.images))}
       />
       <FeatureTabs
         id="home-featuretabs"
@@ -122,7 +123,7 @@ export function HomePage() {
         panel="split"
         tone="default"
         density="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featuretabs, ui.blocks.variants.featuretabs.split)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.featuretabs, ui.blocks.variants.featuretabs.split))}
       />
       <FeatureAccordion
         id="home-accordion"
@@ -132,7 +133,7 @@ export function HomePage() {
         media="image"
         tone="default"
         density="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.accordion, ui.blocks.variants.accordion.media)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.accordion, ui.blocks.variants.accordion.media))}
       />
     </>
   );

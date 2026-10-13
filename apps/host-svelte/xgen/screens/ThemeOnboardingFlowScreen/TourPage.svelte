@@ -8,6 +8,7 @@
     TourCallout,
     VideoModal,
     tpl,
+    uniqLabel,
     type Chapter,
     type Task,
   } from "@ui8kit/svelte-ui";
@@ -44,7 +45,7 @@
   placement="above"
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.above)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.above))}
 />
 <TourCallout
   id="tour-tour-2"
@@ -57,7 +58,7 @@
   placement="end"
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.end)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.end))}
 />
 <Checklist
   id="tour-checklist"
@@ -69,7 +70,7 @@
   marker="check"
   detail="always"
   tone="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.text)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.text))}
 />
 <VideoModal
   id="tour-videomodal"
@@ -82,5 +83,5 @@
   size="default"
   outline="chapters"
   tone="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.chapters)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.chapters))}
 />

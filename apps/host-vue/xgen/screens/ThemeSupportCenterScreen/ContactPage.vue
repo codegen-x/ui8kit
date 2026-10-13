@@ -2,7 +2,7 @@
 <!-- Source: xgen/specs/screens/theme-support-center.json -->
 <!-- The contact page of ThemeSupportCenterScreen. -->
 <script setup lang="ts">
-import { ContactForm, PageIntro, SupportChannels, tpl, type Feature } from "@ui8kit/vue-ui";
+import { ContactForm, PageIntro, SupportChannels, tpl, uniqLabel, type Feature } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { channels as channelsEntries } from "@ui8kit/app-shared/data/channels";
@@ -34,7 +34,7 @@ const channels = fromCodex<Feature>(channelsEntries, CHANNELS_FIELDS);
     terms="hide"
     page="section"
     tone="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.single)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.single))"
   />
   <SupportChannels
     id="contact-channels"
@@ -45,7 +45,7 @@ const channels = fromCodex<Feature>(channelsEntries, CHANNELS_FIELDS);
     cols="1-3"
     action="link"
     tone="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.channels, ui.blocks.variants.channels.list)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.channels, ui.blocks.variants.channels.list))"
   />
   <ContactForm
     id="contact-contact-3"
@@ -58,6 +58,6 @@ const channels = fromCodex<Feature>(channelsEntries, CHANNELS_FIELDS);
     terms="show"
     page="section"
     tone="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.consent)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.consent))"
   />
 </template>

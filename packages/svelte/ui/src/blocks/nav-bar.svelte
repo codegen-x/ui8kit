@@ -39,7 +39,7 @@
   import NavLinks from "../components/nav-links.svelte";
   import OverMedia from "../components/over-media.svelte";
   import SearchPalette from "../components/search-palette.svelte";
-  import { cn, tpl } from "../utils";
+  import { cn, tpl, uniqLabel } from "../utils";
 
   let {
     label,
@@ -87,7 +87,7 @@
     <Box class={cn("flex flex-wrap items-center justify-between gap-4", "py-4")}>
       {#if ((layout as string) === "split")}
         <NavBlock
-          label={(landmarkLabel ? tpl("{0}, {1}", label, landmarkLabel) : label)}
+          label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", label, landmarkLabel)) : label)}
           class="w-full"
           testid="site-nav"
         >
@@ -125,7 +125,7 @@
           <SearchPalette label={search.label} shortcut={search.shortcut} />
         {/if}
         <NavBlock
-          label={(landmarkLabel ? tpl("{0}, {1}", label, landmarkLabel) : label)}
+          label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", label, landmarkLabel)) : label)}
           class={"order-last w-full overflow-x-auto md:order-none md:w-auto [&>div]:flex-nowrap md:[&>div]:flex-wrap [&_a]:shrink-0"}
           testid="site-nav"
         >

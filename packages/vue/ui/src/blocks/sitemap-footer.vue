@@ -42,7 +42,7 @@ import FooterCard from "../components/footer-card.vue";
 import FooterColumns from "../components/footer-columns.vue";
 import NavBlock from "../components/nav-block.vue";
 import Pill from "../components/pill.vue";
-import { cn, tpl } from "../utils";
+import { cn, tpl, uniqLabel } from "../utils";
 
 const {
   label,
@@ -119,7 +119,7 @@ const {
         <Text size="base" weight="bold">
           {{ brand }}
         </Text>
-        <NavBlock :label="(landmarkLabel ? tpl('{0}, {1}', label, landmarkLabel) : label)">
+        <NavBlock :label="(landmarkLabel ? uniqLabel(tpl('{0}, {1}', label, landmarkLabel)) : label)">
           <Group gap="4" class="flex-wrap">
             <Link v-for="g in groups" :key="g.id" href="#/" variant="default" class="text-sm" data-testid="group">
               {{ g.title }}

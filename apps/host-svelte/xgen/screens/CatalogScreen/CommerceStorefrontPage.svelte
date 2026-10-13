@@ -15,6 +15,7 @@
     Title,
     UspStrip,
     tpl,
+    uniqLabel,
     type CodeLine,
     type Feature,
   } from "@ui8kit/svelte-ui";
@@ -110,7 +111,7 @@
               tone="muted"
               density="roomy"
               level={2}
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.shop)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.shop))}
             />
           </Box>
         </Stack>
@@ -156,7 +157,7 @@
               mediaSide="end"
               tone="default"
               level={2}
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.storehero, ui.blocks.variants.storehero.overlay)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.storehero, ui.blocks.variants.storehero.overlay))}
             />
           </Box>
         </Stack>
@@ -185,7 +186,7 @@
               mediaSide="start"
               tone="default"
               level={2}
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.storehero, ui.blocks.variants.storehero.overlayStart)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.storehero, ui.blocks.variants.storehero.overlayStart))}
             />
           </Box>
         </Stack>
@@ -214,7 +215,7 @@
               mediaSide="end"
               tone="default"
               level={2}
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.storehero, ui.blocks.variants.storehero.backdrop)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.storehero, ui.blocks.variants.storehero.backdrop))}
             />
           </Box>
         </Stack>
@@ -243,7 +244,7 @@
               mediaSide="end"
               tone="muted"
               level={2}
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.storehero, ui.blocks.variants.storehero.muted)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.storehero, ui.blocks.variants.storehero.muted))}
             />
           </Box>
         </Stack>
@@ -283,7 +284,7 @@
               layout="strip"
               tone="default"
               density="default"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.strip)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.strip))}
             />
           </Box>
         </Stack>
@@ -307,7 +308,7 @@
               tone="default"
               density="default"
               title={ui.commerce.usp.title}
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.cards)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.cards))}
             />
           </Box>
         </Stack>
@@ -330,7 +331,7 @@
               layout="strip"
               tone="default"
               density="compact"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.stripCompact)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.stripCompact))}
             />
           </Box>
         </Stack>
@@ -353,7 +354,7 @@
               layout="bar"
               tone="default"
               density="compact"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.bar)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.bar))}
             />
           </Box>
         </Stack>
@@ -376,7 +377,7 @@
               layout="bar"
               tone="muted"
               density="compact"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.barMuted)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.barMuted))}
             />
           </Box>
         </Stack>

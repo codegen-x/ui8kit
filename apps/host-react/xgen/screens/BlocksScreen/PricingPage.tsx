@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Plan,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -101,7 +102,7 @@ export function PricingPage() {
                 billing="off"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.grid)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.grid))}
               />
             </Box>
           </Stack>
@@ -130,7 +131,7 @@ export function PricingPage() {
                 billing="monthly"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.monthly)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.monthly))}
               />
             </Box>
           </Stack>
@@ -159,7 +160,7 @@ export function PricingPage() {
                 billing="annual"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.annual)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.annual))}
               />
             </Box>
           </Stack>
@@ -188,7 +189,7 @@ export function PricingPage() {
                 billing="off"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.duo)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.duo))}
               />
             </Box>
           </Stack>
@@ -217,7 +218,7 @@ export function PricingPage() {
                 billing="off"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.grid2)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.grid2))}
               />
             </Box>
           </Stack>
@@ -246,7 +247,7 @@ export function PricingPage() {
                 billing="off"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.grid4)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.grid4))}
               />
             </Box>
           </Stack>
@@ -275,7 +276,7 @@ export function PricingPage() {
                 billing="off"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.stack)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.stack))}
               />
             </Box>
           </Stack>
@@ -304,7 +305,7 @@ export function PricingPage() {
                 billing="off"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.flat)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.flat))}
               />
             </Box>
           </Stack>
@@ -333,7 +334,7 @@ export function PricingPage() {
                 billing="off"
                 tone="muted"
                 density="compact"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.compactMuted)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.compactMuted))}
               />
             </Box>
           </Stack>
@@ -362,7 +363,7 @@ export function PricingPage() {
                 billing="off"
                 tone="default"
                 density="roomy"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.roomy)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.roomy))}
               />
             </Box>
           </Stack>

@@ -9,6 +9,7 @@
     HeroClassic,
     TestimonialGrid,
     tpl,
+    uniqLabel,
     type CodeLine,
     type CompareRow,
     type Faq,
@@ -78,7 +79,7 @@
   highlight="middle"
   tone="muted"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.rivals)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.rivals))}
 />
 <TestimonialGrid
   id="compare-testimonials"
@@ -94,7 +95,7 @@
   item={{ kind: "plain", avatar: "image", rating: "hide", mark: "icon" }}
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.featured)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.featured))}
 />
 <FaqList
   id="compare-faq"
@@ -106,7 +107,7 @@
   cols="1"
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.search)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.search))}
 />
 <CtaBand
   id="compare-cta"
@@ -125,5 +126,5 @@
   tone="muted"
   proof="quote"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.quote)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.quote))}
 />

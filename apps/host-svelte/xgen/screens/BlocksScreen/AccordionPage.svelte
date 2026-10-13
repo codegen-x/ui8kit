@@ -13,6 +13,7 @@
     Text,
     Title,
     tpl,
+    uniqLabel,
     type Feature,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -64,7 +65,7 @@
             media="none"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.accordion, ui.blocks.variants.accordion.first)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.accordion, ui.blocks.variants.accordion.first))}
           />
         </Box>
       </Stack>
@@ -89,7 +90,7 @@
             media="none"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.accordion, ui.blocks.variants.accordion.closed)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.accordion, ui.blocks.variants.accordion.closed))}
           />
         </Box>
       </Stack>
@@ -114,7 +115,7 @@
             media="image"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.accordion, ui.blocks.variants.accordion.media)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.accordion, ui.blocks.variants.accordion.media))}
           />
         </Box>
       </Stack>
@@ -139,7 +140,7 @@
             media="none"
             tone="muted"
             density="compact"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.accordion, ui.blocks.variants.accordion.muted)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.accordion, ui.blocks.variants.accordion.muted))}
           />
         </Box>
       </Stack>

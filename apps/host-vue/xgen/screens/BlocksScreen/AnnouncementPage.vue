@@ -2,7 +2,19 @@
 <!-- Source: xgen/specs/screens/blocks.json -->
 <!-- The announcement page of BlocksScreen. -->
 <script setup lang="ts">
-import { AnnouncementBar, Block, Box, Container, Group, Link, Stack, Text, Title, tpl } from "@ui8kit/vue-ui";
+import {
+  AnnouncementBar,
+  Block,
+  Box,
+  Container,
+  Group,
+  Link,
+  Stack,
+  Text,
+  Title,
+  tpl,
+  uniqLabel,
+} from "@ui8kit/vue-ui";
 import { ui } from "@ui8kit/app-shared/content";
 
 </script>
@@ -52,7 +64,7 @@ import { ui } from "@ui8kit/app-shared/content";
               dismiss="hide"
               badge="none"
               position="top"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.bar)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.bar))"
             />
           </Box>
         </Stack>
@@ -81,7 +93,7 @@ import { ui } from "@ui8kit/app-shared/content";
               dismiss="hide"
               badge="show"
               position="top"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.badge)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.badge))"
             />
           </Box>
         </Stack>
@@ -110,7 +122,7 @@ import { ui } from "@ui8kit/app-shared/content";
               dismiss="show"
               badge="none"
               position="bottom"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.bottom)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.bottom))"
             />
           </Box>
         </Stack>
@@ -139,7 +151,7 @@ import { ui } from "@ui8kit/app-shared/content";
               dismiss="hide"
               badge="none"
               position="top"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.muted)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.muted))"
             />
           </Box>
         </Stack>
@@ -168,7 +180,7 @@ import { ui } from "@ui8kit/app-shared/content";
               dismiss="hide"
               badge="none"
               position="top"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.split)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.split))"
             />
           </Box>
         </Stack>
@@ -197,7 +209,7 @@ import { ui } from "@ui8kit/app-shared/content";
               dismiss="show"
               badge="none"
               position="top"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.dismissible)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.dismissible))"
             />
           </Box>
         </Stack>
@@ -226,7 +238,7 @@ import { ui } from "@ui8kit/app-shared/content";
               dismiss="show"
               badge="none"
               position="top"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.shop)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.shop))"
             />
           </Box>
         </Stack>
@@ -255,7 +267,7 @@ import { ui } from "@ui8kit/app-shared/content";
               dismiss="hide"
               badge="none"
               position="top"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.agency)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.agency))"
             />
           </Box>
         </Stack>

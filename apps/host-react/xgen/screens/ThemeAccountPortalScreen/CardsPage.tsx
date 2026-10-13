@@ -2,7 +2,7 @@
 // Source: xgen/specs/screens/theme-account-portal.json
 // The cards page of ThemeAccountPortalScreen.
 
-import { AuthCard, PageIntro, tpl } from "@ui8kit/react-ui";
+import { AuthCard, PageIntro, tpl, uniqLabel } from "@ui8kit/react-ui";
 import { ui } from "@ui8kit/app-shared/content";
 
 export function CardsPage() {
@@ -30,7 +30,7 @@ export function CardsPage() {
         mode="signin"
         layout="card"
         social="none"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.signin)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.signin))}
       />
       <AuthCard
         id="cards-auth-2"
@@ -44,7 +44,7 @@ export function CardsPage() {
         mode="signin"
         layout="card"
         social="show"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.social)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.social))}
       />
       <AuthCard
         id="cards-auth-3"
@@ -58,7 +58,7 @@ export function CardsPage() {
         mode="signup"
         layout="plain"
         social="show"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.signupSocial)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.signupSocial))}
       />
     </>
   );

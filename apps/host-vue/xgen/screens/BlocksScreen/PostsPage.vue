@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Post,
   type PostTopic,
 } from "@ui8kit/vue-ui";
@@ -85,7 +86,7 @@ const POSTS_FILTER = { topics, label: ui.vibe.posts.topics, topic: "" } as const
               meta="full"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.grid)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.grid))"
             />
           </Box>
         </Stack>
@@ -115,7 +116,7 @@ const POSTS_FILTER = { topics, label: ui.vibe.posts.topics, topic: "" } as const
               meta="full"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.filters)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.filters))"
             />
           </Box>
         </Stack>
@@ -145,7 +146,7 @@ const POSTS_FILTER = { topics, label: ui.vibe.posts.topics, topic: "" } as const
               meta="full"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.twoUp)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.twoUp))"
             />
           </Box>
         </Stack>
@@ -175,7 +176,7 @@ const POSTS_FILTER = { topics, label: ui.vibe.posts.topics, topic: "" } as const
               meta="full"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.row4)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.row4))"
             />
           </Box>
         </Stack>
@@ -205,7 +206,7 @@ const POSTS_FILTER = { topics, label: ui.vibe.posts.topics, topic: "" } as const
               meta="news"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.news4)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.news4))"
             />
           </Box>
         </Stack>
@@ -235,7 +236,7 @@ const POSTS_FILTER = { topics, label: ui.vibe.posts.topics, topic: "" } as const
               meta="full"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.list)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.list))"
             />
           </Box>
         </Stack>
@@ -265,7 +266,7 @@ const POSTS_FILTER = { topics, label: ui.vibe.posts.topics, topic: "" } as const
               meta="full"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.magazine)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.magazine))"
             />
           </Box>
         </Stack>
@@ -295,7 +296,7 @@ const POSTS_FILTER = { topics, label: ui.vibe.posts.topics, topic: "" } as const
               meta="full"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.textOnly)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.textOnly))"
             />
           </Box>
         </Stack>
@@ -325,7 +326,7 @@ const POSTS_FILTER = { topics, label: ui.vibe.posts.topics, topic: "" } as const
               meta="short"
               tone="muted"
               density="compact"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.digest)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.digest))"
             />
           </Box>
         </Stack>

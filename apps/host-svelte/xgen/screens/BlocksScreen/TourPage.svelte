@@ -13,6 +13,7 @@
     Title,
     TourCallout,
     tpl,
+    uniqLabel,
   } from "@ui8kit/svelte-ui";
   import { ui } from "@ui8kit/app-shared/content";
 
@@ -61,7 +62,7 @@
             placement="below"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.below)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.below))}
           />
         </Box>
       </Stack>
@@ -89,7 +90,7 @@
             placement="above"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.above)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.above))}
           />
         </Box>
       </Stack>
@@ -117,7 +118,7 @@
             placement="end"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.end)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.end))}
           />
         </Box>
       </Stack>
@@ -145,7 +146,7 @@
             placement="below"
             tone="muted"
             density="compact"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.muted)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.muted))}
           />
         </Box>
       </Stack>

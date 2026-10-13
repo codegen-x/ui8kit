@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Feature,
   type Logo,
   type Stat,
@@ -99,7 +100,7 @@ const CTAPROOF_CONTENT = { logos, features, stats, zones } as const;
               proof="logos"
               mediaSide="end"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.centerLogos)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.centerLogos))"
             />
           </Box>
         </Stack>
@@ -127,7 +128,7 @@ const CTAPROOF_CONTENT = { logos, features, stats, zones } as const;
               proof="features"
               mediaSide="end"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.centerFeatures)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.centerFeatures))"
             />
           </Box>
         </Stack>
@@ -155,7 +156,7 @@ const CTAPROOF_CONTENT = { logos, features, stats, zones } as const;
               proof="stats"
               mediaSide="end"
               tone="muted"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.centerStats)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.centerStats))"
             />
           </Box>
         </Stack>
@@ -183,7 +184,7 @@ const CTAPROOF_CONTENT = { logos, features, stats, zones } as const;
               proof="stats"
               mediaSide="end"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.splitStats)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.splitStats))"
             />
           </Box>
         </Stack>
@@ -212,7 +213,7 @@ const CTAPROOF_CONTENT = { logos, features, stats, zones } as const;
               mediaSide="start"
               tone="default"
               :note="ui.marketing.ctaProof.note"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.splitStatsStart)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.splitStatsStart))"
             />
           </Box>
         </Stack>
@@ -240,7 +241,7 @@ const CTAPROOF_CONTENT = { logos, features, stats, zones } as const;
               proof="rows"
               mediaSide="end"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.splitRows)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.splitRows))"
             />
           </Box>
         </Stack>
@@ -268,7 +269,7 @@ const CTAPROOF_CONTENT = { logos, features, stats, zones } as const;
               proof="zones"
               mediaSide="end"
               tone="muted"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.splitZones)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.splitZones))"
             />
           </Box>
         </Stack>

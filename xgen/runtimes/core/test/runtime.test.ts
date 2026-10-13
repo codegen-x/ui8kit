@@ -75,3 +75,11 @@ test("formatters", () => {
   expect(at({ a: "A" }, "a")).toBe("A");
   expect(at({ a: "A" }, "b")).toBe("b");
 });
+
+test("uniqLabel drops a segment equal to the one before it", async () => {
+  const { uniqLabel } = await import("../assets/ts/format");
+  expect(uniqLabel("Footer, Footer, Centered")).toBe("Footer, Centered");
+  expect(uniqLabel("Main navigation, main navigation, Bar")).toBe("Main navigation, Bar");
+  expect(uniqLabel("Footer, Centered, Footer")).toBe("Footer, Centered, Footer");
+  expect(uniqLabel(undefined)).toBe("");
+});

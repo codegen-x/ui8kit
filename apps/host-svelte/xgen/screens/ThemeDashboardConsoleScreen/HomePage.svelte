@@ -9,6 +9,7 @@
     MetricRow,
     PageIntro,
     tpl,
+    uniqLabel,
     type Event,
     type Point,
     type Stat,
@@ -69,7 +70,7 @@
   cols="4"
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.overview, ui.blocks.variants.overview.split)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.overview, ui.blocks.variants.overview.split))}
 />
 <MetricRow
   id="home-metrics"
@@ -79,7 +80,7 @@
   item="tile"
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.tiles)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.tiles))}
 />
 <ChartPanel
   id="home-chart"
@@ -91,7 +92,7 @@
   chart="bars"
   size="default"
   tone="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.bars)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.bars))}
 />
 <ActivityFeed
   id="home-activity"
@@ -101,5 +102,5 @@
   layout="timeline"
   density="default"
   tone="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.activity, ui.blocks.variants.activity.timeline)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.activity, ui.blocks.variants.activity.timeline))}
 />

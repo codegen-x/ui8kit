@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type NavLink,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -72,7 +73,7 @@ export function SidenavPage() {
                 width="full"
                 user="show"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sidenav, ui.blocks.variants.sidenav.full)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.sidenav, ui.blocks.variants.sidenav.full))}
               />
             </Box>
           </Stack>
@@ -99,7 +100,7 @@ export function SidenavPage() {
                 width="compact"
                 user="show"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sidenav, ui.blocks.variants.sidenav.compact)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.sidenav, ui.blocks.variants.sidenav.compact))}
               />
             </Box>
           </Stack>
@@ -126,7 +127,7 @@ export function SidenavPage() {
                 width="full"
                 user="hide"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sidenav, ui.blocks.variants.sidenav.noUser)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.sidenav, ui.blocks.variants.sidenav.noUser))}
               />
             </Box>
           </Stack>
@@ -153,7 +154,7 @@ export function SidenavPage() {
                 width="full"
                 user="show"
                 density="compact"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sidenav, ui.blocks.variants.sidenav.dense)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.sidenav, ui.blocks.variants.sidenav.dense))}
               />
             </Box>
           </Stack>

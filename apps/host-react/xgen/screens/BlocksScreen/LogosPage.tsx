@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Logo,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -71,7 +72,7 @@ export function LogosPage() {
                 item="name"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid4)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid4))}
               />
             </Box>
           </Stack>
@@ -97,7 +98,7 @@ export function LogosPage() {
                 item="tile"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid3)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid3))}
               />
             </Box>
           </Stack>
@@ -123,7 +124,7 @@ export function LogosPage() {
                 item="icon"
                 tone="default"
                 density="compact"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.row)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.row))}
               />
             </Box>
           </Stack>
@@ -149,7 +150,7 @@ export function LogosPage() {
                 item="icon"
                 tone="muted"
                 density="compact"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.icons)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.icons))}
               />
             </Box>
           </Stack>
@@ -175,7 +176,7 @@ export function LogosPage() {
                 item="name"
                 tone="default"
                 density="roomy"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid2)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid2))}
               />
             </Box>
           </Stack>
@@ -201,7 +202,7 @@ export function LogosPage() {
                 item="tile"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.tiles4)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.tiles4))}
               />
             </Box>
           </Stack>

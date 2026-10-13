@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Feature,
   type Stat,
 } from "@ui8kit/react-ui";
@@ -75,7 +76,7 @@ export function AboutPage() {
                 layout="split"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.about, ui.blocks.variants.about.split)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.about, ui.blocks.variants.about.split))}
               />
             </Box>
           </Stack>
@@ -101,7 +102,7 @@ export function AboutPage() {
                 layout="stacked"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.about, ui.blocks.variants.about.stacked)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.about, ui.blocks.variants.about.stacked))}
               />
             </Box>
           </Stack>
@@ -127,7 +128,7 @@ export function AboutPage() {
                 layout="split"
                 tone="muted"
                 density="compact"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.about, ui.blocks.variants.about.muted)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.about, ui.blocks.variants.about.muted))}
               />
             </Box>
           </Stack>

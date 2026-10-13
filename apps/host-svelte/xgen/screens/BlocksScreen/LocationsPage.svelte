@@ -13,6 +13,7 @@
     Text,
     Title,
     tpl,
+    uniqLabel,
     type Store,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -74,7 +75,7 @@
             labels={ui.commerce.stores}
             layout="cards"
             tone="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.locations, ui.blocks.variants.locations.cards)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.locations, ui.blocks.variants.locations.cards))}
           />
         </Box>
       </Stack>
@@ -100,7 +101,7 @@
             labels={ui.commerce.stores}
             layout="list"
             tone="muted"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.locations, ui.blocks.variants.locations.list)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.locations, ui.blocks.variants.locations.list))}
           />
         </Box>
       </Stack>
@@ -126,7 +127,7 @@
             labels={ui.commerce.stores}
             layout="map"
             tone="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.locations, ui.blocks.variants.locations.map)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.locations, ui.blocks.variants.locations.map))}
           />
         </Box>
       </Stack>

@@ -2,7 +2,19 @@
 <!-- Source: xgen/specs/screens/blocks.json -->
 <!-- The cta page of BlocksScreen. -->
 <script lang="ts">
-  import { Block, Box, Container, CtaBand, Group, Link, Stack, Text, Title, tpl } from "@ui8kit/svelte-ui";
+  import {
+    Block,
+    Box,
+    Container,
+    CtaBand,
+    Group,
+    Link,
+    Stack,
+    Text,
+    Title,
+    tpl,
+    uniqLabel,
+  } from "@ui8kit/svelte-ui";
   import { ui } from "@ui8kit/app-shared/content";
 
   const CTA_ACTIONS = {
@@ -56,7 +68,7 @@
             tone="muted"
             proof="none"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.card)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.card))}
           />
         </Box>
       </Stack>
@@ -83,7 +95,7 @@
             tone="muted"
             proof="none"
             density="compact"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.banner)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.banner))}
           />
         </Box>
       </Stack>
@@ -110,7 +122,7 @@
             tone="muted"
             proof="none"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.row)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.row))}
           />
         </Box>
       </Stack>
@@ -137,7 +149,7 @@
             tone="muted"
             proof="none"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.form)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.form))}
           />
         </Box>
       </Stack>
@@ -164,7 +176,7 @@
             tone="muted"
             proof="quote"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.quote)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.quote))}
           />
         </Box>
       </Stack>
@@ -191,7 +203,7 @@
             tone="muted"
             proof="none"
             density="roomy"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.band)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.band))}
           />
         </Box>
       </Stack>
@@ -218,7 +230,7 @@
             tone="default"
             proof="none"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.split)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.split))}
           />
         </Box>
       </Stack>
@@ -245,7 +257,7 @@
             tone="muted"
             proof="none"
             density="compact"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.compact)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.compact))}
           />
         </Box>
       </Stack>
@@ -277,7 +289,7 @@
             tone="muted"
             proof="none"
             density="roomy"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.saas)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.saas))}
           />
         </Box>
       </Stack>
@@ -309,7 +321,7 @@
             tone="default"
             proof="none"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.shop)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.shop))}
           />
         </Box>
       </Stack>
@@ -341,7 +353,7 @@
             tone="muted"
             proof="none"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.agency)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.agency))}
           />
         </Box>
       </Stack>

@@ -2,7 +2,7 @@
 <!-- Source: xgen/specs/screens/theme-dashboard-console.json -->
 <!-- The states page of ThemeDashboardConsoleScreen. -->
 <script setup lang="ts">
-import { EmptyPanel, PageIntro, SkeletonLayout, tpl, type Line } from "@ui8kit/vue-ui";
+import { EmptyPanel, PageIntro, SkeletonLayout, tpl, uniqLabel, type Line } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { placeholders as placeholdersEntries } from "@ui8kit/app-shared/data/placeholders";
@@ -33,7 +33,7 @@ const placeholders = fromCodex<Line>(placeholdersEntries, PLACEHOLDERS_FIELDS);
     actions="button"
     visual="image"
     size="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.illustrated)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.illustrated))"
   />
   <EmptyPanel
     id="states-empty-2"
@@ -46,7 +46,7 @@ const placeholders = fromCodex<Line>(placeholdersEntries, PLACEHOLDERS_FIELDS);
     visual="icon"
     size="default"
     icon="shopping-bag"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.orders)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.orders))"
   />
   <SkeletonLayout
     id="states-skeleton-3"
@@ -55,7 +55,7 @@ const placeholders = fromCodex<Line>(placeholdersEntries, PLACEHOLDERS_FIELDS);
     :lines="placeholders"
     shape="cards"
     tone="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.cards)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.cards))"
   />
   <SkeletonLayout
     id="states-skeleton-4"
@@ -64,6 +64,6 @@ const placeholders = fromCodex<Line>(placeholdersEntries, PLACEHOLDERS_FIELDS);
     :lines="placeholders"
     shape="list"
     tone="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.list)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.list))"
   />
 </template>

@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Product,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -85,7 +86,7 @@ export function ProductPage() {
                 tone="default"
                 density="default"
                 level={2}
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.split)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.split))}
               />
             </Box>
           </Stack>
@@ -114,7 +115,7 @@ export function ProductPage() {
                 tone="default"
                 density="default"
                 level={2}
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.splitEnd)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.splitEnd))}
               />
             </Box>
           </Stack>
@@ -143,7 +144,7 @@ export function ProductPage() {
                 tone="default"
                 density="default"
                 level={2}
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.stacked)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.stacked))}
               />
             </Box>
           </Stack>
@@ -172,7 +173,7 @@ export function ProductPage() {
                 tone="default"
                 density="default"
                 level={2}
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.compact)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.compact))}
               />
             </Box>
           </Stack>
@@ -201,7 +202,7 @@ export function ProductPage() {
                 tone="muted"
                 density="roomy"
                 level={2}
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.muted)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.muted))}
               />
             </Box>
           </Stack>

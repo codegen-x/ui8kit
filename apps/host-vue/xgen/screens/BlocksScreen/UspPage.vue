@@ -13,6 +13,7 @@ import {
   Title,
   UspStrip,
   tpl,
+  uniqLabel,
   type Feature,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -63,7 +64,7 @@ const perks = fromCodex<Feature>(perksEntries, PERKS_FIELDS);
               layout="strip"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.strip)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.strip))"
             />
           </Box>
         </Stack>
@@ -87,7 +88,7 @@ const perks = fromCodex<Feature>(perksEntries, PERKS_FIELDS);
               tone="default"
               density="default"
               :title="ui.commerce.usp.title"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.cards)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.cards))"
             />
           </Box>
         </Stack>
@@ -110,7 +111,7 @@ const perks = fromCodex<Feature>(perksEntries, PERKS_FIELDS);
               layout="strip"
               tone="default"
               density="compact"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.stripCompact)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.stripCompact))"
             />
           </Box>
         </Stack>
@@ -133,7 +134,7 @@ const perks = fromCodex<Feature>(perksEntries, PERKS_FIELDS);
               layout="bar"
               tone="default"
               density="compact"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.bar)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.bar))"
             />
           </Box>
         </Stack>
@@ -156,7 +157,7 @@ const perks = fromCodex<Feature>(perksEntries, PERKS_FIELDS);
               layout="bar"
               tone="muted"
               density="compact"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.barMuted)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.barMuted))"
             />
           </Box>
         </Stack>

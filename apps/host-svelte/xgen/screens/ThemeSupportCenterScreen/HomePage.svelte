@@ -9,6 +9,7 @@
     PageIntro,
     SupportChannels,
     tpl,
+    uniqLabel,
     type Category,
     type Faq,
     type FaqTab,
@@ -83,7 +84,7 @@
   cols="1-3"
   action="link"
   tone="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.channels, ui.blocks.variants.channels.grid)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.channels, ui.blocks.variants.channels.grid))}
 />
 <MediaList
   id="home-medialist"
@@ -103,7 +104,7 @@
   layout="topics"
   mediaSide="end"
   tone="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.topicRows)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.topicRows))}
 />
 <FaqList
   id="home-faq"
@@ -115,7 +116,7 @@
   cols="1"
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.tabs)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.tabs))}
 />
 <ContactForm
   id="home-contact"
@@ -128,5 +129,5 @@
   terms="hide"
   page="section"
   tone="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.split)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.split))}
 />

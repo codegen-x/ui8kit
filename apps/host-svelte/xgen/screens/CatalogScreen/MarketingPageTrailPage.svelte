@@ -13,6 +13,7 @@
     Text,
     Title,
     tpl,
+    uniqLabel,
     type NavLink,
     type Stat,
   } from "@ui8kit/svelte-ui";
@@ -95,7 +96,7 @@
               aside="none"
               tone="default"
               level={2}
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pagetrail, ui.blocks.variants.pagetrail.crumbs)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.pagetrail, ui.blocks.variants.pagetrail.crumbs))}
             />
           </Box>
         </Stack>
@@ -123,7 +124,7 @@
               aside="figure"
               tone="default"
               level={2}
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pagetrail, ui.blocks.variants.pagetrail.crumbsFigure)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.pagetrail, ui.blocks.variants.pagetrail.crumbsFigure))}
             />
           </Box>
         </Stack>
@@ -151,7 +152,7 @@
               aside="note"
               tone="default"
               level={2}
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pagetrail, ui.blocks.variants.pagetrail.crumbsNote)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.pagetrail, ui.blocks.variants.pagetrail.crumbsNote))}
             />
           </Box>
         </Stack>
@@ -179,7 +180,7 @@
               aside="facts"
               tone="muted"
               level={2}
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pagetrail, ui.blocks.variants.pagetrail.keyFacts)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.pagetrail, ui.blocks.variants.pagetrail.keyFacts))}
             />
           </Box>
         </Stack>

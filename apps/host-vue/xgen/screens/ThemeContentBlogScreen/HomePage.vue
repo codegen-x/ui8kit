@@ -8,6 +8,7 @@ import {
   PostGrid,
   PostShowcase,
   tpl,
+  uniqLabel,
   type Post,
   type PostTopic,
 } from "@ui8kit/vue-ui";
@@ -56,7 +57,7 @@ const topics = fromCodex<PostTopic>(topicsEntries, TOPICS_FIELDS);
     meta="full"
     tone="default"
     density="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.magazine)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.magazine))"
   />
   <PostShowcase
     id="home-postshowcase"
@@ -70,7 +71,7 @@ const topics = fromCodex<PostTopic>(topicsEntries, TOPICS_FIELDS);
     cols="3"
     mediaSide="start"
     tone="default"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.postshowcase, ui.blocks.variants.postshowcase.introCards)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.postshowcase, ui.blocks.variants.postshowcase.introCards))"
   />
   <NewsletterForm
     id="home-newsletter"
@@ -83,6 +84,6 @@ const topics = fromCodex<PostTopic>(topicsEntries, TOPICS_FIELDS);
     terms="hide"
     tone="default"
     align="center"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.stacked)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.stacked))"
   />
 </template>

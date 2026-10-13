@@ -2,7 +2,7 @@
 // Source: xgen/specs/screens/theme-onboarding-flow.json
 // The welcome page of ThemeOnboardingFlowScreen.
 
-import { Checklist, PageIntro, VideoModal, tpl, type Chapter, type Task } from "@ui8kit/react-ui";
+import { Checklist, PageIntro, VideoModal, tpl, uniqLabel, type Chapter, type Task } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { checklist as checklistEntries } from "@ui8kit/app-shared/data/checklist";
@@ -38,7 +38,7 @@ export function WelcomePage() {
         size="default"
         outline="none"
         tone="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.default)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.default))}
       />
       <Checklist
         id="welcome-checklist"
@@ -50,7 +50,7 @@ export function WelcomePage() {
         marker="number"
         detail="always"
         tone="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.numbered)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.numbered))}
       />
     </>
   );

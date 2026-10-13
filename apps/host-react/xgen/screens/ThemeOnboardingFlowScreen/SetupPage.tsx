@@ -2,7 +2,16 @@
 // Source: xgen/specs/screens/theme-onboarding-flow.json
 // The setup page of ThemeOnboardingFlowScreen.
 
-import { Checklist, EmptyPanel, PageIntro, Stepper, tpl, type Step, type Task } from "@ui8kit/react-ui";
+import {
+  Checklist,
+  EmptyPanel,
+  PageIntro,
+  Stepper,
+  tpl,
+  uniqLabel,
+  type Step,
+  type Task,
+} from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { steps as stepsEntries } from "@ui8kit/app-shared/data/steps";
@@ -38,7 +47,7 @@ export function SetupPage() {
         layout="vertical"
         marker="number"
         summary="show"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.vertical)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.vertical))}
       />
       <Checklist
         id="setup-checklist"
@@ -50,7 +59,7 @@ export function SetupPage() {
         marker="check"
         detail="always"
         tone="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.card)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.card))}
       />
       <EmptyPanel
         id="setup-empty"
@@ -63,7 +72,7 @@ export function SetupPage() {
         visual="icon"
         size="compact"
         icon="inbox"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.compact)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.compact))}
       />
     </>
   );

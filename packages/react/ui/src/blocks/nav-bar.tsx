@@ -19,7 +19,7 @@ import { NavBlock } from "../components/nav-block";
 import { NavLinks } from "../components/nav-links";
 import { OverMedia } from "../components/over-media";
 import { SearchPalette } from "../components/search-palette";
-import { cn, tpl } from "../utils";
+import { cn, tpl, uniqLabel } from "../utils";
 import type { NavLink, NavBarActions, NavSearch } from "./nav-bar.types";
 
 export type NavBarProps = {
@@ -82,7 +82,7 @@ export function NavBar({
         <Box className={cn("flex flex-wrap items-center justify-between gap-4", "py-4")}>
           {((layout as string) === "split") ? (
             <NavBlock
-              label={(landmarkLabel ? tpl("{0}, {1}", label, landmarkLabel) : label)}
+              label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", label, landmarkLabel)) : label)}
               className="w-full"
               testid="site-nav"
             >
@@ -121,7 +121,7 @@ export function NavBar({
                 <SearchPalette label={search.label} shortcut={search.shortcut} />
               ) : null}
               <NavBlock
-                label={(landmarkLabel ? tpl("{0}, {1}", label, landmarkLabel) : label)}
+                label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", label, landmarkLabel)) : label)}
                 className={"order-last w-full overflow-x-auto md:order-none md:w-auto [&>div]:flex-nowrap md:[&>div]:flex-wrap [&_a]:shrink-0"}
                 testid="site-nav"
               >

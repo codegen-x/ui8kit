@@ -13,6 +13,7 @@
     Text,
     Title,
     tpl,
+    uniqLabel,
     type Feature,
     type Plan,
     type Quote,
@@ -118,7 +119,7 @@
             mediaSide="end"
             tone="default"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.herosplit, ui.blocks.variants.herosplit.statsCards)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosplit, ui.blocks.variants.herosplit.statsCards))}
           />
         </Box>
       </Stack>
@@ -147,7 +148,7 @@
             mediaSide="end"
             tone="default"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.herosplit, ui.blocks.variants.herosplit.avatars)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosplit, ui.blocks.variants.herosplit.avatars))}
           />
         </Box>
       </Stack>
@@ -176,7 +177,7 @@
             mediaSide="end"
             tone="muted"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.herosplit, ui.blocks.variants.herosplit.miniCards)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosplit, ui.blocks.variants.herosplit.miniCards))}
           />
         </Box>
       </Stack>
@@ -205,7 +206,7 @@
             mediaSide="end"
             tone="default"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.herosplit, ui.blocks.variants.herosplit.quoteStats)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosplit, ui.blocks.variants.herosplit.quoteStats))}
           />
         </Box>
       </Stack>
@@ -234,7 +235,7 @@
             mediaSide="start"
             tone="default"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.herosplit, ui.blocks.variants.herosplit.planCards)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosplit, ui.blocks.variants.herosplit.planCards))}
           />
         </Box>
       </Stack>
@@ -263,7 +264,7 @@
             mediaSide="end"
             tone="default"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.herosplit, ui.blocks.variants.herosplit.pictureGrid)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosplit, ui.blocks.variants.herosplit.pictureGrid))}
           />
         </Box>
       </Stack>
@@ -292,7 +293,7 @@
             mediaSide="start"
             tone="default"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.herosplit, ui.blocks.variants.herosplit.pictureGridStart)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosplit, ui.blocks.variants.herosplit.pictureGridStart))}
           />
         </Box>
       </Stack>

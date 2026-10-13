@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Task,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -67,7 +68,7 @@ const checklist = fromCodex<Task>(checklistEntries, CHECKLIST_FIELDS);
               marker="check"
               detail="always"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.card)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.card))"
             />
           </Box>
         </Stack>
@@ -94,7 +95,7 @@ const checklist = fromCodex<Task>(checklistEntries, CHECKLIST_FIELDS);
               marker="check"
               detail="expand"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.expand)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.expand))"
             />
           </Box>
         </Stack>
@@ -121,7 +122,7 @@ const checklist = fromCodex<Task>(checklistEntries, CHECKLIST_FIELDS);
               marker="check"
               detail="always"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.plain)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.plain))"
             />
           </Box>
         </Stack>
@@ -148,7 +149,7 @@ const checklist = fromCodex<Task>(checklistEntries, CHECKLIST_FIELDS);
               marker="check"
               detail="always"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.text)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.text))"
             />
           </Box>
         </Stack>
@@ -175,7 +176,7 @@ const checklist = fromCodex<Task>(checklistEntries, CHECKLIST_FIELDS);
               marker="check"
               detail="always"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.none)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.none))"
             />
           </Box>
         </Stack>
@@ -202,7 +203,7 @@ const checklist = fromCodex<Task>(checklistEntries, CHECKLIST_FIELDS);
               marker="number"
               detail="always"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.numbered)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.numbered))"
             />
           </Box>
         </Stack>
@@ -229,7 +230,7 @@ const checklist = fromCodex<Task>(checklistEntries, CHECKLIST_FIELDS);
               marker="number"
               detail="always"
               tone="muted"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.muted)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.muted))"
             />
           </Box>
         </Stack>

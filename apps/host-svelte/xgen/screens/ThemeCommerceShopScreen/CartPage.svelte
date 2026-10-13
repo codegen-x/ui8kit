@@ -8,6 +8,7 @@
     PageIntro,
     ShoppingCart,
     tpl,
+    uniqLabel,
     type CartLine,
     type Promo,
     type SummaryRow,
@@ -63,7 +64,7 @@
   promo="show"
   progress="show"
   tone="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cartpage, ui.blocks.variants.cartpage.split)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cartpage, ui.blocks.variants.cartpage.split))}
 />
 <CartList
   id="cart-cart"
@@ -74,7 +75,7 @@
   media="image"
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cart, ui.blocks.variants.cart.table)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cart, ui.blocks.variants.cart.table))}
 />
 <OrderSummary
   id="cart-summary"
@@ -86,5 +87,5 @@
   note="show"
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.card)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.card))}
 />

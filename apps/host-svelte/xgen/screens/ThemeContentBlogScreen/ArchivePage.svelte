@@ -2,7 +2,7 @@
 <!-- Source: xgen/specs/screens/theme-content-blog.json -->
 <!-- The archive page of ThemeContentBlogScreen. -->
 <script lang="ts">
-  import { PageIntro, PostGrid, tpl, type Post, type PostTopic } from "@ui8kit/svelte-ui";
+  import { PageIntro, PostGrid, tpl, uniqLabel, type Post, type PostTopic } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
   import { ui } from "@ui8kit/app-shared/content";
   import { posts as postsEntries } from "@ui8kit/app-shared/data/posts";
@@ -47,7 +47,7 @@
   meta="full"
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.list)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.list))}
 />
 <PostGrid
   id="archive-posts-2"
@@ -62,7 +62,7 @@
   meta="short"
   tone="muted"
   density="compact"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.digest)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.digest))}
 />
 <PostGrid
   id="archive-posts-3"
@@ -77,5 +77,5 @@
   meta="full"
   tone="default"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.textOnly)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.textOnly))}
 />

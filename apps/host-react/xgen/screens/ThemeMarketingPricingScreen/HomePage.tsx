@@ -10,6 +10,7 @@ import {
   PageIntro,
   PricingTiers,
   tpl,
+  uniqLabel,
   type CompareRow,
   type Faq,
   type FaqTab,
@@ -73,7 +74,7 @@ export function HomePage() {
         billing="monthly"
         tone="default"
         density="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.monthly)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.monthly))}
       />
       <LogoCloud
         id="home-logos"
@@ -84,7 +85,7 @@ export function HomePage() {
         item="tile"
         tone="default"
         density="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid3)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid3))}
       />
       <ComparisonTable
         id="home-compare"
@@ -94,7 +95,7 @@ export function HomePage() {
         highlight="none"
         tone="default"
         density="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.plans)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.plans))}
       />
       <FaqList
         id="home-faq"
@@ -106,7 +107,7 @@ export function HomePage() {
         cols="2"
         tone="default"
         density="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.twoColumns)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.twoColumns))}
       />
       <CtaBand
         id="home-cta"
@@ -125,7 +126,7 @@ export function HomePage() {
         tone="muted"
         proof="none"
         density="roomy"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.saas)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.saas))}
       />
     </>
   );

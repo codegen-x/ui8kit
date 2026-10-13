@@ -13,6 +13,7 @@
     Text,
     Title,
     tpl,
+    uniqLabel,
     type MegaGroup,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -69,7 +70,7 @@
             status={{ label: ui.vibe.sitemap.status, mode: "none" }}
             layout="columns"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sitemap, ui.blocks.variants.sitemap.columns)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.sitemap, ui.blocks.variants.sitemap.columns))}
           />
         </Box>
       </Stack>
@@ -97,7 +98,7 @@
             status={{ label: ui.vibe.sitemap.status, mode: "none" }}
             layout="card"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sitemap, ui.blocks.variants.sitemap.card)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.sitemap, ui.blocks.variants.sitemap.card))}
           />
         </Box>
       </Stack>
@@ -125,7 +126,7 @@
             status={{ label: ui.vibe.sitemap.status, mode: "none" }}
             layout="row"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sitemap, ui.blocks.variants.sitemap.row)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.sitemap, ui.blocks.variants.sitemap.row))}
           />
         </Box>
       </Stack>
@@ -153,7 +154,7 @@
             status={{ label: ui.vibe.sitemap.status, mode: "none" }}
             layout="columns"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sitemap, ui.blocks.variants.sitemap.newsletter)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.sitemap, ui.blocks.variants.sitemap.newsletter))}
           />
         </Box>
       </Stack>
@@ -181,7 +182,7 @@
             status={{ label: ui.vibe.sitemap.status, mode: "show" }}
             layout="columns"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sitemap, ui.blocks.variants.sitemap.status)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.sitemap, ui.blocks.variants.sitemap.status))}
           />
         </Box>
       </Stack>
@@ -209,7 +210,7 @@
             status={{ label: ui.vibe.sitemap.status, mode: "none" }}
             layout="columns"
             density="compact"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sitemap, ui.blocks.variants.sitemap.compact)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.sitemap, ui.blocks.variants.sitemap.compact))}
           />
         </Box>
       </Stack>

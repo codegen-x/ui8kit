@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Department,
   type Job,
 } from "@ui8kit/vue-ui";
@@ -79,7 +80,7 @@ const departments = fromCodex<Department>(departmentsEntries, DEPARTMENTS_FIELDS
               layout="grid"
               salary="hide"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.jobs, ui.blocks.variants.jobs.grid)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.jobs, ui.blocks.variants.jobs.grid))"
             />
           </Box>
         </Stack>
@@ -106,7 +107,7 @@ const departments = fromCodex<Department>(departmentsEntries, DEPARTMENTS_FIELDS
               layout="grid"
               salary="show"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.jobs, ui.blocks.variants.jobs.salary)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.jobs, ui.blocks.variants.jobs.salary))"
             />
           </Box>
         </Stack>
@@ -133,7 +134,7 @@ const departments = fromCodex<Department>(departmentsEntries, DEPARTMENTS_FIELDS
               layout="grouped"
               salary="hide"
               tone="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.jobs, ui.blocks.variants.jobs.grouped)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.jobs, ui.blocks.variants.jobs.grouped))"
             />
           </Box>
         </Stack>
@@ -160,7 +161,7 @@ const departments = fromCodex<Department>(departmentsEntries, DEPARTMENTS_FIELDS
               layout="table"
               salary="show"
               tone="muted"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.jobs, ui.blocks.variants.jobs.table)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.jobs, ui.blocks.variants.jobs.table))"
             />
           </Box>
         </Stack>

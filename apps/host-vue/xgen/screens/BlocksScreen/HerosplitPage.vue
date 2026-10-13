@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Feature,
   type Plan,
   type Quote,
@@ -119,7 +120,7 @@ const HEROSPLIT_CONTENT = {
               mediaSide="end"
               tone="default"
               :level="2"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.herosplit, ui.blocks.variants.herosplit.statsCards)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosplit, ui.blocks.variants.herosplit.statsCards))"
             />
           </Box>
         </Stack>
@@ -148,7 +149,7 @@ const HEROSPLIT_CONTENT = {
               mediaSide="end"
               tone="default"
               :level="2"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.herosplit, ui.blocks.variants.herosplit.avatars)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosplit, ui.blocks.variants.herosplit.avatars))"
             />
           </Box>
         </Stack>
@@ -177,7 +178,7 @@ const HEROSPLIT_CONTENT = {
               mediaSide="end"
               tone="muted"
               :level="2"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.herosplit, ui.blocks.variants.herosplit.miniCards)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosplit, ui.blocks.variants.herosplit.miniCards))"
             />
           </Box>
         </Stack>
@@ -206,7 +207,7 @@ const HEROSPLIT_CONTENT = {
               mediaSide="end"
               tone="default"
               :level="2"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.herosplit, ui.blocks.variants.herosplit.quoteStats)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosplit, ui.blocks.variants.herosplit.quoteStats))"
             />
           </Box>
         </Stack>
@@ -235,7 +236,7 @@ const HEROSPLIT_CONTENT = {
               mediaSide="start"
               tone="default"
               :level="2"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.herosplit, ui.blocks.variants.herosplit.planCards)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosplit, ui.blocks.variants.herosplit.planCards))"
             />
           </Box>
         </Stack>
@@ -264,7 +265,7 @@ const HEROSPLIT_CONTENT = {
               mediaSide="end"
               tone="default"
               :level="2"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.herosplit, ui.blocks.variants.herosplit.pictureGrid)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosplit, ui.blocks.variants.herosplit.pictureGrid))"
             />
           </Box>
         </Stack>
@@ -293,7 +294,7 @@ const HEROSPLIT_CONTENT = {
               mediaSide="start"
               tone="default"
               :level="2"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.herosplit, ui.blocks.variants.herosplit.pictureGridStart)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.herosplit, ui.blocks.variants.herosplit.pictureGridStart))"
             />
           </Box>
         </Stack>

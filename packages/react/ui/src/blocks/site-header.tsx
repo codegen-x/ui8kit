@@ -13,7 +13,7 @@ import { Group } from "../primitives/group/group";
 import { LinkPlain } from "../primitives/link-plain/link-plain";
 import { Link } from "../primitives/link/link";
 import { NavBlock } from "../components/nav-block";
-import { cn, tpl } from "../utils";
+import { cn, tpl, uniqLabel } from "../utils";
 import type { SiteHeaderLabels } from "./site-header.types";
 
 export type SiteHeaderProps = {
@@ -69,7 +69,10 @@ export function SiteHeader({
         <Link href="#/" variant="default" className="text-lg font-medium" data-testid="brand">
           {labels.brand}
         </Link>
-        <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", labels.nav, landmarkLabel) : labels.nav)} testid="site-nav">
+        <NavBlock
+          label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", labels.nav, landmarkLabel)) : labels.nav)}
+          testid="site-nav"
+        >
           <Group gap="4" align="center">
             <Link
               href="#/"

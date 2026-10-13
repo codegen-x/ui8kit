@@ -2,7 +2,7 @@
 // Source: xgen/specs/screens/theme-promo-campaign.json
 // The offer page of ThemePromoCampaignScreen.
 
-import { AnnouncementBar, CtaBand, NewsletterForm, PageIntro, tpl } from "@ui8kit/react-ui";
+import { AnnouncementBar, CtaBand, NewsletterForm, PageIntro, tpl, uniqLabel } from "@ui8kit/react-ui";
 import { ui } from "@ui8kit/app-shared/content";
 
 export function OfferPage() {
@@ -30,7 +30,7 @@ export function OfferPage() {
         dismiss="hide"
         badge="show"
         position="top"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.badge)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.badge))}
       />
       <AnnouncementBar
         label={ui.promo.announcement.label}
@@ -44,7 +44,7 @@ export function OfferPage() {
         dismiss="hide"
         badge="none"
         position="top"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.split)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.split))}
       />
       <AnnouncementBar
         label={ui.promo.announcement.label}
@@ -58,7 +58,7 @@ export function OfferPage() {
         dismiss="show"
         badge="none"
         position="top"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.shop)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.shop))}
       />
       <CtaBand
         id="offer-cta"
@@ -77,7 +77,7 @@ export function OfferPage() {
         tone="default"
         proof="none"
         density="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.shop)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.shop))}
       />
       <NewsletterForm
         id="offer-newsletter"
@@ -90,7 +90,7 @@ export function OfferPage() {
         terms="show"
         tone="default"
         align="center"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.consent)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.consent))}
       />
     </>
   );

@@ -43,7 +43,7 @@
   import FooterColumns from "../components/footer-columns.svelte";
   import NavBlock from "../components/nav-block.svelte";
   import Pill from "../components/pill.svelte";
-  import { cn, tpl } from "../utils";
+  import { cn, tpl, uniqLabel } from "../utils";
 
   let {
     label,
@@ -115,7 +115,7 @@
           <Text size="base" weight="bold">
             {brand}
           </Text>
-          <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", label, landmarkLabel) : label)}>
+          <NavBlock label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", label, landmarkLabel)) : label)}>
             <Group gap="4" class="flex-wrap">
               {#each groups as g (g.id)}
                 <Link href="#/" variant="default" class="text-sm" data-testid="group">

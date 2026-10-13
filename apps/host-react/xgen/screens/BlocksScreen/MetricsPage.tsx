@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Stat,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -76,7 +77,7 @@ export function MetricsPage() {
                 item="tile"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.tiles)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.tiles))}
               />
             </Box>
           </Stack>
@@ -101,7 +102,7 @@ export function MetricsPage() {
                 item="tile"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.twoUp)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.twoUp))}
               />
             </Box>
           </Stack>
@@ -126,7 +127,7 @@ export function MetricsPage() {
                 item="compact"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.compact)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.compact))}
               />
             </Box>
           </Stack>
@@ -151,7 +152,7 @@ export function MetricsPage() {
                 item="compact"
                 tone="muted"
                 density="compact"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.muted)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.muted))}
               />
             </Box>
           </Stack>

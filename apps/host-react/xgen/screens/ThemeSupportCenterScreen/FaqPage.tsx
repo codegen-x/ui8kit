@@ -2,7 +2,7 @@
 // Source: xgen/specs/screens/theme-support-center.json
 // The faq page of ThemeSupportCenterScreen.
 
-import { FaqList, PageIntro, tpl, type Faq, type FaqTab } from "@ui8kit/react-ui";
+import { FaqList, PageIntro, tpl, uniqLabel, type Faq, type FaqTab } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { faq as faqEntries } from "@ui8kit/app-shared/data/faq";
@@ -37,7 +37,7 @@ export function FaqPage() {
         cols="1"
         tone="default"
         density="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.chat)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.chat))}
       />
       <FaqList
         id="faq-faq-2"
@@ -49,7 +49,7 @@ export function FaqPage() {
         cols="1"
         tone="default"
         density="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.search)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.search))}
       />
     </>
   );

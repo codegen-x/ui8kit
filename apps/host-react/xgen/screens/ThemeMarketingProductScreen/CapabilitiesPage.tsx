@@ -11,6 +11,7 @@ import {
   IconWall,
   PageIntro,
   tpl,
+  uniqLabel,
   type Contrast,
   type Feature,
 } from "@ui8kit/react-ui";
@@ -49,7 +50,7 @@ export function CapabilitiesPage() {
         mediaSide="end"
         tone="default"
         density="roomy"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.grid2)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.grid2))}
       />
       <IconWall
         id="capabilities-iconwall"
@@ -59,7 +60,7 @@ export function CapabilitiesPage() {
         item="chip"
         tone="default"
         density="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.iconwall, ui.blocks.variants.iconwall.chips6)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.iconwall, ui.blocks.variants.iconwall.chips6))}
       />
       <FeatureAccordion
         id="capabilities-accordion"
@@ -69,7 +70,7 @@ export function CapabilitiesPage() {
         media="none"
         tone="default"
         density="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.accordion, ui.blocks.variants.accordion.first)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.accordion, ui.blocks.variants.accordion.first))}
       />
       <BeforeAfter
         id="capabilities-beforeafter"
@@ -80,7 +81,7 @@ export function CapabilitiesPage() {
         icons="show"
         tone="default"
         density="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.beforeafter, ui.blocks.variants.beforeafter.rows)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.beforeafter, ui.blocks.variants.beforeafter.rows))}
       />
       <FeatureSticky
         id="capabilities-sticky"
@@ -91,7 +92,7 @@ export function CapabilitiesPage() {
         item="card"
         tone="default"
         density="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sticky, ui.blocks.variants.sticky.card)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.sticky, ui.blocks.variants.sticky.card))}
       />
       <CtaBand
         id="capabilities-cta"
@@ -110,7 +111,7 @@ export function CapabilitiesPage() {
         tone="muted"
         proof="none"
         density="compact"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.compact)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.compact))}
       />
     </>
   );

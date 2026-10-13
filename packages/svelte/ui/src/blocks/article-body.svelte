@@ -32,7 +32,7 @@
   import Title from "../primitives/title/title.svelte";
   import NavBlock from "../components/nav-block.svelte";
   import SectionFrame from "../components/section-frame.svelte";
-  import { cn, tpl } from "../utils";
+  import { cn, tpl, uniqLabel } from "../utils";
 
   let {
     id,
@@ -56,7 +56,7 @@
   >
     {#if ((layout as string) === "toc")}
       <NavBlock
-        label={(landmarkLabel ? tpl("{0}, {1}", tocTitle, landmarkLabel) : tocTitle)}
+        label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", tocTitle, landmarkLabel)) : tocTitle)}
         class="md:sticky md:top-4"
         testid="toc"
       >

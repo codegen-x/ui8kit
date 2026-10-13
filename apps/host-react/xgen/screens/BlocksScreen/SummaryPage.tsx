@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type SummaryRow,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -78,7 +79,7 @@ export function SummaryPage() {
                 note="show"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.card)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.card))}
               />
             </Box>
           </Stack>
@@ -105,7 +106,7 @@ export function SummaryPage() {
                 note="hide"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.plain)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.plain))}
               />
             </Box>
           </Stack>
@@ -132,7 +133,7 @@ export function SummaryPage() {
                 note="show"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.noCta)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.noCta))}
               />
             </Box>
           </Stack>
@@ -159,7 +160,7 @@ export function SummaryPage() {
                 note="show"
                 tone="muted"
                 density="compact"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.muted)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.muted))}
               />
             </Box>
           </Stack>

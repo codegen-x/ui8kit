@@ -2,7 +2,7 @@
 <!-- Source: xgen/specs/screens/theme-dashboard-console.json -->
 <!-- The shells page of ThemeDashboardConsoleScreen. -->
 <script setup lang="ts">
-import { DashboardShell, PageIntro, tpl, type NavLink } from "@ui8kit/vue-ui";
+import { DashboardShell, PageIntro, tpl, uniqLabel, type NavLink } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { sidenav as sidenavEntries } from "@ui8kit/app-shared/data/sidenav";
@@ -54,7 +54,7 @@ const helplinks = fromCodex<NavLink>(helplinksEntries, HELPLINKS_FIELDS);
     side="start"
     footer="none"
     content="grid"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.classic)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.classic))"
   />
   <DashboardShell
     id="shells-dashshell-2"
@@ -81,7 +81,7 @@ const helplinks = fromCodex<NavLink>(helplinksEntries, HELPLINKS_FIELDS);
     side="start"
     footer="inset"
     content="list"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.twoLevel)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.twoLevel))"
   />
   <DashboardShell
     id="shells-dashshell-3"
@@ -108,6 +108,6 @@ const helplinks = fromCodex<NavLink>(helplinksEntries, HELPLINKS_FIELDS);
     side="end"
     footer="full"
     content="split"
-    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.end)"
+    :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.end))"
   />
 </template>

@@ -9,6 +9,7 @@
     HeroClassic,
     NewsletterForm,
     tpl,
+    uniqLabel,
     type CodeLine,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -56,7 +57,7 @@
   dismiss="hide"
   badge="show"
   position="top"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.badge)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.badge))}
 />
 <NewsletterForm
   id="home-newsletter"
@@ -69,7 +70,7 @@
   terms="hide"
   tone="default"
   align="start"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.split)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.split))}
 />
 <CtaBand
   id="home-cta"
@@ -88,7 +89,7 @@
   tone="muted"
   proof="none"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.form)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.form))}
 />
 <CookieBanner
   id="home-cookie"
@@ -100,5 +101,5 @@
   layout="card"
   actions="two"
   tone="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.card)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.card))}
 />

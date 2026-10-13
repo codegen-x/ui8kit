@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type CompareRow,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -68,7 +69,7 @@ const rivals = fromCodex<CompareRow>(rivalsEntries, RIVALS_FIELDS);
               highlight="none"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.plans)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.plans))"
             />
           </Box>
         </Stack>
@@ -93,7 +94,7 @@ const rivals = fromCodex<CompareRow>(rivalsEntries, RIVALS_FIELDS);
               highlight="middle"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.highlight)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.highlight))"
             />
           </Box>
         </Stack>
@@ -118,7 +119,7 @@ const rivals = fromCodex<CompareRow>(rivalsEntries, RIVALS_FIELDS);
               highlight="middle"
               tone="muted"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.rivals)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.rivals))"
             />
           </Box>
         </Stack>
@@ -143,7 +144,7 @@ const rivals = fromCodex<CompareRow>(rivalsEntries, RIVALS_FIELDS);
               highlight="none"
               tone="muted"
               density="compact"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.muted)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.muted))"
             />
           </Box>
         </Stack>

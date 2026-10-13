@@ -14,6 +14,7 @@
     Text,
     Title,
     tpl,
+    uniqLabel,
     type Filter,
     type Photo,
     type Template,
@@ -97,7 +98,7 @@
               captions="show"
               tone="default"
               density="default"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.photos, ui.blocks.variants.photos.grid)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.photos, ui.blocks.variants.photos.grid))}
             />
           </Box>
         </Stack>
@@ -124,7 +125,7 @@
               captions="hide"
               tone="muted"
               density="default"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.photos, ui.blocks.variants.photos.gridPlain)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.photos, ui.blocks.variants.photos.gridPlain))}
             />
           </Box>
         </Stack>
@@ -151,7 +152,7 @@
               captions="show"
               tone="default"
               density="default"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.photos, ui.blocks.variants.photos.masonry)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.photos, ui.blocks.variants.photos.masonry))}
             />
           </Box>
         </Stack>
@@ -178,7 +179,7 @@
               captions="show"
               tone="default"
               density="default"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.photos, ui.blocks.variants.photos.mosaic)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.photos, ui.blocks.variants.photos.mosaic))}
             />
           </Box>
         </Stack>
@@ -205,7 +206,7 @@
               captions="show"
               tone="default"
               density="default"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.photos, ui.blocks.variants.photos.featured)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.photos, ui.blocks.variants.photos.featured))}
             />
           </Box>
         </Stack>
@@ -232,7 +233,7 @@
               captions="show"
               tone="default"
               density="compact"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.photos, ui.blocks.variants.photos.cards)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.photos, ui.blocks.variants.photos.cards))}
             />
           </Box>
         </Stack>
@@ -279,7 +280,7 @@
               cols="1-4"
               tone="default"
               density="default"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.templates, ui.blocks.variants.templates.grid4)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.templates, ui.blocks.variants.templates.grid4))}
             />
           </Box>
         </Stack>
@@ -309,7 +310,7 @@
               cols="1-3"
               tone="default"
               density="compact"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.templates, ui.blocks.variants.templates.grid3)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.templates, ui.blocks.variants.templates.grid3))}
             />
           </Box>
         </Stack>
@@ -339,7 +340,7 @@
               cols="1-4"
               tone="muted"
               density="compact"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.templates, ui.blocks.variants.templates.muted)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.templates, ui.blocks.variants.templates.muted))}
             />
           </Box>
         </Stack>
@@ -369,7 +370,7 @@
               cols="1-4"
               tone="default"
               density="roomy"
-              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.templates, ui.blocks.variants.templates.roomy)}
+              landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.templates, ui.blocks.variants.templates.roomy))}
             />
           </Box>
         </Stack>

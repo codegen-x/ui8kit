@@ -40,7 +40,7 @@
   import Text from "../primitives/text/text.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import NavBlock from "../components/nav-block.svelte";
-  import { cn, tpl } from "../utils";
+  import { cn, tpl, uniqLabel } from "../utils";
 
   let {
     label,
@@ -70,7 +70,7 @@
     <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
       {brand}
     </Link>
-    <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", label, landmarkLabel) : label)} class="flex-1">
+    <NavBlock label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", label, landmarkLabel)) : label)} class="flex-1">
       <Group gap="4" align="center" class="flex-wrap">
         <ButtonPlain
           type="button"

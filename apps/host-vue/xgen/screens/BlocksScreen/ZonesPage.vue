@@ -13,6 +13,7 @@ import {
   Title,
   ZoneTable,
   tpl,
+  uniqLabel,
   type Zone,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -76,7 +77,7 @@ const zones = fromCodex<Zone>(zonesEntries, ZONES_FIELDS);
               layout="table"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.zones, ui.blocks.variants.zones.table)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.zones, ui.blocks.variants.zones.table))"
             />
           </Box>
         </Stack>
@@ -102,7 +103,7 @@ const zones = fromCodex<Zone>(zonesEntries, ZONES_FIELDS);
               layout="cards"
               tone="default"
               density="default"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.zones, ui.blocks.variants.zones.cards)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.zones, ui.blocks.variants.zones.cards))"
             />
           </Box>
         </Stack>
@@ -128,7 +129,7 @@ const zones = fromCodex<Zone>(zonesEntries, ZONES_FIELDS);
               layout="table"
               tone="muted"
               density="compact"
-              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.zones, ui.blocks.variants.zones.tableMuted)"
+              :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.zones, ui.blocks.variants.zones.tableMuted))"
             />
           </Box>
         </Stack>

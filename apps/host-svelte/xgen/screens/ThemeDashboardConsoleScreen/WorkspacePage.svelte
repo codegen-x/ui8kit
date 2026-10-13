@@ -6,6 +6,7 @@
     AppShell,
     PageIntro,
     tpl,
+    uniqLabel,
     type Event,
     type NavLink,
     type Point,
@@ -76,7 +77,7 @@
   }}
   layout="sidebar"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.shell, ui.blocks.variants.shell.sidebar)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.shell, ui.blocks.variants.shell.sidebar))}
 />
 <AppShell
   id="workspace-shell-2"
@@ -103,7 +104,7 @@
   }}
   layout="top"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.shell, ui.blocks.variants.shell.top)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.shell, ui.blocks.variants.shell.top))}
 />
 <AppShell
   id="workspace-shell-3"
@@ -130,5 +131,5 @@
   }}
   layout="panes"
   density="default"
-  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.shell, ui.blocks.variants.shell.panes)}
+  landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.shell, ui.blocks.variants.shell.panes))}
 />

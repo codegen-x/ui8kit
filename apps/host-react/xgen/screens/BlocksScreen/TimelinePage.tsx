@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Milestone,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -71,7 +72,7 @@ export function TimelinePage() {
                 layout="split"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.timeline, ui.blocks.variants.timeline.split)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.timeline, ui.blocks.variants.timeline.split))}
               />
             </Box>
           </Stack>
@@ -96,7 +97,7 @@ export function TimelinePage() {
                 layout="stacked"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.timeline, ui.blocks.variants.timeline.stacked)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.timeline, ui.blocks.variants.timeline.stacked))}
               />
             </Box>
           </Stack>
@@ -121,7 +122,7 @@ export function TimelinePage() {
                 layout="row"
                 tone="default"
                 density="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.timeline, ui.blocks.variants.timeline.row)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.timeline, ui.blocks.variants.timeline.row))}
               />
             </Box>
           </Stack>
@@ -146,7 +147,7 @@ export function TimelinePage() {
                 layout="row"
                 tone="muted"
                 density="compact"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.timeline, ui.blocks.variants.timeline.rowMuted)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.timeline, ui.blocks.variants.timeline.rowMuted))}
               />
             </Box>
           </Stack>

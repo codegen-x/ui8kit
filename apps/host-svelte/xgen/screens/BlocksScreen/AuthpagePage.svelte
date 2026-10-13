@@ -2,7 +2,19 @@
 <!-- Source: xgen/specs/screens/blocks.json -->
 <!-- The authpage page of BlocksScreen. -->
 <script lang="ts">
-  import { AuthLayout, Block, Box, Container, Group, Link, Stack, Text, Title, tpl } from "@ui8kit/svelte-ui";
+  import {
+    AuthLayout,
+    Block,
+    Box,
+    Container,
+    Group,
+    Link,
+    Stack,
+    Text,
+    Title,
+    tpl,
+    uniqLabel,
+  } from "@ui8kit/svelte-ui";
   import { ui } from "@ui8kit/app-shared/content";
 
   const AUTHPAGE_SWITCH_TO = { text: ui.auth.signin.switchText, link: ui.auth.signin.switchLink, href: "#/" } as const;
@@ -53,7 +65,7 @@
             mode="signin"
             social="none"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.split)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.split))}
           />
         </Box>
       </Stack>
@@ -83,7 +95,7 @@
             mode="signin"
             social="none"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.splitStart)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.splitStart))}
           />
         </Box>
       </Stack>
@@ -113,7 +125,7 @@
             mode="signin"
             social="none"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.centered)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.centered))}
           />
         </Box>
       </Stack>
@@ -143,7 +155,7 @@
             mode="signin"
             social="none"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.minimal)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.minimal))}
           />
         </Box>
       </Stack>
@@ -177,7 +189,7 @@
             mode="signup"
             social="none"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.signup)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.signup))}
           />
         </Box>
       </Stack>
@@ -207,7 +219,7 @@
             mode="reset"
             social="none"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.reset)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.reset))}
           />
         </Box>
       </Stack>
@@ -237,7 +249,7 @@
             mode="magic"
             social="none"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.magic)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.magic))}
           />
         </Box>
       </Stack>
@@ -267,7 +279,7 @@
             mode="signin"
             social="show"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.social)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.social))}
           />
         </Box>
       </Stack>
@@ -297,7 +309,7 @@
             mode="signin"
             social="first"
             level={2}
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.socialFirst)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.socialFirst))}
           />
         </Box>
       </Stack>

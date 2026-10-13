@@ -13,6 +13,7 @@
     Text,
     Title,
     tpl,
+    uniqLabel,
   } from "@ui8kit/svelte-ui";
   import { ui } from "@ui8kit/app-shared/content";
 
@@ -60,7 +61,7 @@
             layout="bar"
             actions="two"
             tone="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.bar)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.bar))}
           />
         </Box>
       </Stack>
@@ -87,7 +88,7 @@
             layout="card"
             actions="two"
             tone="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.card)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.card))}
           />
         </Box>
       </Stack>
@@ -114,7 +115,7 @@
             layout="bar"
             actions="three"
             tone="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.settings)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.settings))}
           />
         </Box>
       </Stack>
@@ -141,7 +142,7 @@
             layout="card"
             actions="three"
             tone="muted"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.muted)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.muted))}
           />
         </Box>
       </Stack>

@@ -13,6 +13,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type CartLine,
   type Day,
   type Payment,
@@ -110,7 +111,7 @@ export function CheckoutPage() {
                 layout="cards"
                 summary="aside"
                 tone="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.checkout, ui.blocks.variants.checkout.cards)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.checkout, ui.blocks.variants.checkout.cards))}
               />
             </Box>
           </Stack>
@@ -140,7 +141,7 @@ export function CheckoutPage() {
                 layout="numbered"
                 summary="aside"
                 tone="default"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.checkout, ui.blocks.variants.checkout.numbered)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.checkout, ui.blocks.variants.checkout.numbered))}
               />
             </Box>
           </Stack>
@@ -170,7 +171,7 @@ export function CheckoutPage() {
                 layout="cards"
                 summary="none"
                 tone="muted"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.checkout, ui.blocks.variants.checkout.noSummary)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.checkout, ui.blocks.variants.checkout.noSummary))}
               />
             </Box>
           </Stack>

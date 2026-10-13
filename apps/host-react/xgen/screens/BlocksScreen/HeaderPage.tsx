@@ -2,7 +2,19 @@
 // Source: xgen/specs/screens/blocks.json
 // The header page of BlocksScreen.
 
-import { Block, Box, Container, Group, Link, SiteHeader, Stack, Text, Title, tpl } from "@ui8kit/react-ui";
+import {
+  Block,
+  Box,
+  Container,
+  Group,
+  Link,
+  SiteHeader,
+  Stack,
+  Text,
+  Title,
+  tpl,
+  uniqLabel,
+} from "@ui8kit/react-ui";
 import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
 import { ui } from "@ui8kit/app-shared/content";
 
@@ -55,7 +67,7 @@ export function HeaderPage() {
                 layout="inline"
                 position="static"
                 actions="none"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.inline)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.inline))}
                 onTheme={() => actions.toggleTheme()}
               />
             </Box>
@@ -81,7 +93,7 @@ export function HeaderPage() {
                 layout="stacked"
                 position="static"
                 actions="none"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.stacked)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.stacked))}
                 onTheme={() => actions.toggleTheme()}
               />
             </Box>
@@ -107,7 +119,7 @@ export function HeaderPage() {
                 layout="inline"
                 position="sticky"
                 actions="none"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.sticky)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.sticky))}
                 onTheme={() => actions.toggleTheme()}
               />
             </Box>
@@ -133,7 +145,7 @@ export function HeaderPage() {
                 layout="inline"
                 position="static"
                 actions="cta"
-                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.withCta)}
+                landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.withCta))}
                 onTheme={() => actions.toggleTheme()}
               />
             </Box>

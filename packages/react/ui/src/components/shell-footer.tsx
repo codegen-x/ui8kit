@@ -11,7 +11,7 @@ import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
 import { Text } from "../primitives/text/text";
 import { NavBlock } from "../components/nav-block";
-import { cn, tpl } from "../utils";
+import { cn, tpl, uniqLabel } from "../utils";
 import type { ShellNav } from "../blocks/dashboard-shell.types";
 
 export type ShellFooterProps = {
@@ -35,7 +35,12 @@ export function ShellFooter({ nav, place = "full", landmarkLabel }: ShellFooterP
       <Text size="xs" className="text-muted-foreground">
         {nav.copyright}
       </Text>
-      <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", nav.footerLabel, landmarkLabel) : nav.footerLabel)}>
+      <NavBlock
+        label={
+          landmarkLabel ? uniqLabel(tpl("{0}, {1}", nav.footerLabel, landmarkLabel))
+          : nav.footerLabel
+        }
+      >
         <List className="m-0 flex list-none items-center gap-4 p-0">
           {(nav.footer ?? []).map((f) => (
             <ListItem key={f.id}>

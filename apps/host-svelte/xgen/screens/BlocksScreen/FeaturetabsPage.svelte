@@ -13,6 +13,7 @@
     Text,
     Title,
     tpl,
+    uniqLabel,
     type Feature,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -65,7 +66,7 @@
             panel="split"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featuretabs, ui.blocks.variants.featuretabs.split)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.featuretabs, ui.blocks.variants.featuretabs.split))}
           />
         </Box>
       </Stack>
@@ -91,7 +92,7 @@
             panel="stack"
             tone="default"
             density="default"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featuretabs, ui.blocks.variants.featuretabs.stack)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.featuretabs, ui.blocks.variants.featuretabs.stack))}
           />
         </Box>
       </Stack>
@@ -117,7 +118,7 @@
             panel="split"
             tone="muted"
             density="compact"
-            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featuretabs, ui.blocks.variants.featuretabs.muted)}
+            landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.featuretabs, ui.blocks.variants.featuretabs.muted))}
           />
         </Box>
       </Stack>

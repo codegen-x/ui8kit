@@ -2,7 +2,19 @@
 <!-- Source: xgen/specs/screens/catalog.json -->
 <!-- The marketing-page-head page of CatalogScreen. -->
 <script setup lang="ts">
-import { Block, Box, Container, Group, Link, PageIntro, Stack, Text, Title, tpl } from "@ui8kit/vue-ui";
+import {
+  Block,
+  Box,
+  Container,
+  Group,
+  Link,
+  PageIntro,
+  Stack,
+  Text,
+  Title,
+  tpl,
+  uniqLabel,
+} from "@ui8kit/vue-ui";
 import { ui } from "@ui8kit/app-shared/content";
 
 </script>
@@ -66,7 +78,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 tone="default"
                 density="default"
                 :level="2"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.pagehead, ui.blocks.variants.pagehead.start)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.pagehead, ui.blocks.variants.pagehead.start))"
               />
             </Box>
           </Stack>
@@ -93,7 +105,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 tone="default"
                 density="default"
                 :level="2"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.pagehead, ui.blocks.variants.pagehead.center)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.pagehead, ui.blocks.variants.pagehead.center))"
               />
             </Box>
           </Stack>
@@ -120,7 +132,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 tone="muted"
                 density="compact"
                 :level="2"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.pagehead, ui.blocks.variants.pagehead.muted)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.pagehead, ui.blocks.variants.pagehead.muted))"
               />
             </Box>
           </Stack>

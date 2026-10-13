@@ -15,6 +15,7 @@ import {
   Text,
   Title,
   tpl,
+  uniqLabel,
   type Detail,
   type Product,
   type Review,
@@ -117,7 +118,7 @@ const specs = fromCodex<Spec>(specsEntries, SPECS_FIELDS);
                 tone="default"
                 density="default"
                 :level="2"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.split)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.split))"
               />
             </Box>
           </Stack>
@@ -146,7 +147,7 @@ const specs = fromCodex<Spec>(specsEntries, SPECS_FIELDS);
                 tone="default"
                 density="default"
                 :level="2"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.splitEnd)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.splitEnd))"
               />
             </Box>
           </Stack>
@@ -175,7 +176,7 @@ const specs = fromCodex<Spec>(specsEntries, SPECS_FIELDS);
                 tone="default"
                 density="default"
                 :level="2"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.stacked)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.stacked))"
               />
             </Box>
           </Stack>
@@ -204,7 +205,7 @@ const specs = fromCodex<Spec>(specsEntries, SPECS_FIELDS);
                 tone="default"
                 density="default"
                 :level="2"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.compact)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.compact))"
               />
             </Box>
           </Stack>
@@ -233,7 +234,7 @@ const specs = fromCodex<Spec>(specsEntries, SPECS_FIELDS);
                 tone="muted"
                 density="roomy"
                 :level="2"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.muted)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.muted))"
               />
             </Box>
           </Stack>
@@ -276,7 +277,7 @@ const specs = fromCodex<Spec>(specsEntries, SPECS_FIELDS);
                 layout="split"
                 expand="first"
                 tone="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.productinfo, ui.blocks.variants.productinfo.split)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.productinfo, ui.blocks.variants.productinfo.split))"
               />
             </Box>
           </Stack>
@@ -302,7 +303,7 @@ const specs = fromCodex<Spec>(specsEntries, SPECS_FIELDS);
                 layout="stacked"
                 expand="first"
                 tone="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.productinfo, ui.blocks.variants.productinfo.stacked)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.productinfo, ui.blocks.variants.productinfo.stacked))"
               />
             </Box>
           </Stack>
@@ -328,7 +329,7 @@ const specs = fromCodex<Spec>(specsEntries, SPECS_FIELDS);
                 layout="split"
                 expand="none"
                 tone="muted"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.productinfo, ui.blocks.variants.productinfo.closed)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.productinfo, ui.blocks.variants.productinfo.closed))"
               />
             </Box>
           </Stack>
@@ -372,7 +373,7 @@ const specs = fromCodex<Spec>(specsEntries, SPECS_FIELDS);
                 avatar="none"
                 tone="default"
                 density="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.list)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.list))"
               />
             </Box>
           </Stack>
@@ -399,7 +400,7 @@ const specs = fromCodex<Spec>(specsEntries, SPECS_FIELDS);
                 avatar="none"
                 tone="default"
                 density="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.grid)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.grid))"
               />
             </Box>
           </Stack>
@@ -426,7 +427,7 @@ const specs = fromCodex<Spec>(specsEntries, SPECS_FIELDS);
                 avatar="none"
                 tone="default"
                 density="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.plain)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.plain))"
               />
             </Box>
           </Stack>
@@ -453,7 +454,7 @@ const specs = fromCodex<Spec>(specsEntries, SPECS_FIELDS);
                 avatar="image"
                 tone="default"
                 density="default"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.avatars)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.avatars))"
               />
             </Box>
           </Stack>
@@ -480,7 +481,7 @@ const specs = fromCodex<Spec>(specsEntries, SPECS_FIELDS);
                 avatar="image"
                 tone="muted"
                 density="roomy"
-                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.mutedGrid)"
+                :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.mutedGrid))"
               />
             </Box>
           </Stack>

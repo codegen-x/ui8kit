@@ -8,6 +8,7 @@ import {
   ProductInfo,
   ReviewList,
   tpl,
+  uniqLabel,
   type Detail,
   type Product,
   type Review,
@@ -72,7 +73,7 @@ export function ProductPage() {
         layout="split"
         expand="first"
         tone="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.productinfo, ui.blocks.variants.productinfo.split)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.productinfo, ui.blocks.variants.productinfo.split))}
       />
       <ReviewList
         id="product-reviews"
@@ -84,7 +85,7 @@ export function ProductPage() {
         avatar="none"
         tone="default"
         density="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.list)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.list))}
       />
       <ProductGrid
         id="product-products"
@@ -99,7 +100,7 @@ export function ProductPage() {
         action="button"
         tone="default"
         density="default"
-        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.grid3)}
+        landmarkLabel={uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.grid3))}
       />
     </>
   );
