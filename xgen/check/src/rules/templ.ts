@@ -78,7 +78,7 @@ type Frame = { kind: "root" | "element" | "component" | "loop" | "branch" | "cas
 
 export function templToIr(src: string, file = ""): IrFile {
   const imports = new Map<string, string>();
-  for (const m of src.matchAll(/^\s*(?:(\w+)\s+)?"([^"]+)"\s*$/gm)) { const alias = m[1] ?? m[2]!.split("/").pop()!.replace(/-/g, ""); imports.set(alias, m[2]!); }
+  for (const m of src.matchAll(/^\s*(?:import\s+)?(?:(\w+)\s+)?"([^"]+)"\s*$/gm)) { const alias = m[1] ?? m[2]!.split("/").pop()!.replace(/-/g, ""); imports.set(alias, m[2]!); }
   const want = basename(file, extname(file)).split(/[-_.]/).map((s) => s.charAt(0).toUpperCase() + s.slice(1)).join("");
   const comps: Array<{ name: string; nodes: IrNode[] }> = [];
   let error: string | undefined;
@@ -169,6 +169,7 @@ export function templToIr(src: string, file = ""): IrFile {
         else push({ kind: "expr", strings: goStrings(code), line });
         i = e + 1; continue;
       }
+      if (c === "<" && s[i + 1] === "!") { i = s.indexOf(">", i) + 1; continue; } // <!doctype html>, <!-- comment -->
       if (c === "<" && s[i + 1] === "/") {
         const e = s.indexOf(">", i);
         const tag = s.slice(i + 2, e).trim();
@@ -202,6 +203,7 @@ export function templToIr(src: string, file = ""): IrFile {
       // text up to the next markup
       let e = i;
       while (e < to && !"<{\n".includes(s[e]!)) e++;
+      if (e === i) e++; // a lone "<" that opens no tag is text
       const text = s.slice(i, e);
       if (text.trim()) push({ kind: "text", text, line });
       i = e;

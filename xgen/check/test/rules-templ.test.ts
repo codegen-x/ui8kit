@@ -30,3 +30,14 @@ test("templ: literal text in markup and in a props literal is found", () => {
   const ir = templToIr(file(`\t@block.Block(block.BlockProps{AriaLabel: "Main card"}) {\n\t\tSave\n\t}`));
   expect(detect(ir, ctx).filter((f) => f.detector === "literal-text").length).toBe(2);
 });
+
+test("templ: a doctype and a lone < do not stop the reader", () => {
+  const ir = templToIr("package x\n\ntempl Page() {\n\t<!doctype html>\n\t<html lang=\"en\"><body>a < b</body></html>\n}\n");
+  expect(ir.error).toBeUndefined();
+  expect(ir.nodes[0]!.kind).toBe("element");
+});
+
+test("templ: a single-line import names its package", () => {
+  const ir = templToIr("package x\n\nimport \"m/ui/block\"\n\ntempl Page() {\n\t@block.Block(block.BlockProps{}) {\n\t}\n}\n");
+  expect(ir.nodes[0]!.kind).toBe("component");
+});
