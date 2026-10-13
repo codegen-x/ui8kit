@@ -1,511 +1,511 @@
-# Эталонный каталог magazine v0.1
+# Magazine reference catalog v0.1
 
-Бесплатная витрина направлений, созданных в UI8Kit. 12 концептов покрывают 10 существующих семейств раскладки. Каждому соответствуют паспорт и три изменения по одной оси: палитра, шрифты, радиус. 20 связей объясняют сходство или полезный контраст.
+A free showcase of directions built in UI8Kit. 12 concepts cover the 10 existing layout families. Each has a passport and three single-axis changes: palette, fonts, radius. 20 relations explain similarity or useful contrast.
 
-## Статус и границы
+## Status and limits
 
-Проверены исходники, кураторские исключения, метаданные и ключи. Визуальный review 12 концептов завершён с замечаниями; accessibility и usability review остаются открытыми. Обязательный gate остаётся **source-reviewed** до устранения замечаний.
+Sources, curated exclusions, metadata and keys are checked. The visual review of 12 concepts is complete with findings; accessibility and usability reviews remain open. The required gate stays **source-reviewed** until the findings are resolved.
 
-- Сняты 96 реальных кадров; визуальный review завершён с замечаниями. Полная проверка доступности и человеческие исследования ещё не завершены.
-- Паспорта опираются на исходники; характер и пригодность — редакционные гипотезы.
-- Схемы масс не заменяют отрендеренные превью.
-- Связи — редакционные гипотезы; визуальный review охватывает 12 концептов, а не весь корпус.
-- Фикстура из десяти стилей проверяет вход; она не описывает реальный вкус участника.
+- 96 real frames captured; visual review completed with findings. Full accessibility checks and human studies are not finished yet.
+- Passports rest on the sources; character and fitness are editorial hypotheses.
+- Mass schematics do not replace rendered previews.
+- Relations are editorial hypotheses; the visual review covers 12 concepts, not the whole corpus.
+- The ten-style fixture tests the entry; it does not describe a participant's real taste.
 
-Семейство раскладки, композиция контента и фоновые мотивы — отдельные признаки. В паспортах сохранена исходная композиционная разметка и дана независимая редакционная интерпретация. Production классификатор и рекомендатель не изменены. 820 ключей стиля панорамы не доказывают наличие 820 уникальных концептов.
+Layout family, content composition and background motifs are separate traits. The passports keep the source composition markup and add an independent editorial interpretation. The production classifier and recommender are unchanged. The panorama's 820 style keys do not prove 820 unique concepts.
 
-## Файлы и команды
+## Files and commands
 
-- [Обозреватель с условными схемами](index.html) — автономный HTML, открыть в браузере.
-- [Каталог JSON](../../packages/taste-data/content/reference-catalog.v0.1.json) — единый источник паспортов, связей и сценариев.
-- [JSON Schema](../../packages/taste-data/content/reference-catalog.schema.json) — контракт структуры для редакторов.
-- [Общий текст](../../packages/taste-data/content/reference-copy.v0.1.json) — фикстура отдельного исследовательского renderer; не изменяет authored deck в magazine.
+- [Browser with schematics](index.html) — standalone HTML, open in a browser.
+- [Catalog JSON](../../packages/taste-data/content/reference-catalog.v0.1.json) — the single source of passports, relations and scenarios.
+- [JSON Schema](../../packages/taste-data/content/reference-catalog.schema.json) — the structure contract for editors.
+- [Shared copy](../../packages/taste-data/content/reference-copy.v0.1.json) — fixture for the separate research renderer; it does not change the authored deck in magazine.
 
-Из корня репозитория:
+From the repository root:
 
 ```powershell
 bun packages/taste-data/scripts/reference-catalog.ts --check
 bun packages/taste-data/scripts/reference-catalog.ts --render
 ```
 
-Первая команда проверяет семантические связи, ключи, одну изменённую ось каждого варианта и SHA256 источников. Это специализированная проверка, не полный JSON Schema validator. Вторая сначала проверяет каталог, затем обновляет этот README и обозреватель. Отредактированные исходники требуют повторного review перед обновлением хешей.
+The first command checks semantic relations, keys, the single changed axis of each variant and the source SHA256 hashes. It is a specialized check, not a full JSON Schema validator. The second checks the catalog first, then updates this README and the browser. Edited sources need another review before the hashes are updated.
 
-## Паспорта
+## Passports
 
-### ref-c01 · Типографический манифест
+### ref-c01 · Typographic manifesto
 
-- Источник: [t001-poster-mesh](../../packages/taste-screens/src/screens/t001-poster-mesh.svelte), deck 0.
-- Семейство: **poster**. Композиция контента: **focal-mass**.
-- Замысел: Выразить одно сильное обещание через масштаб текста и центральную доминанту.
-- Задача: Быстро понять главный тезис и перейти к одному основному действию.
-- Доминанта: Крупный центральный заголовок.
+- Source: [t001-poster-mesh](../../packages/taste-screens/src/screens/t001-poster-mesh.svelte), deck 0.
+- Family: **poster**. Content composition: **focal-mass**.
+- Intent: Express one strong promise through text scale and a central focal point.
+- Task: Quickly grasp the main claim and move to a single primary action.
+- Focal point: A large central headline.
 
-Центральный Stack: badge, заголовок text-8xl, lead и две кнопки. Mesh занимает фон, не определяя порядок чтения.
+Central Stack: badge, text-8xl headline, lead and two buttons. The mesh fills the background without setting the reading order.
 
-Медиа: Атмосферное mesh-поле за контентом; фон можно менять без перестройки центральной оси.
+Media: An atmospheric mesh field behind the content; the background can change without rebuilding the central axis.
 
-Связь с legacy: Основной тег совпадает с исходной разметкой; mesh оставлен в слое медиа.
+Relation to legacy: The primary tag matches the source markup; the mesh stays in the media layer.
 
-**Инварианты**
+**Invariants**
 
-- Центральная ось и порядок badge → title → lead → actions
-- Большой масштаб заголовка относительно пояснения
-- Главное действие и второстепенная ссылка различимы
+- Central axis and the order badge → title → lead → actions
+- Large headline scale relative to the explanation
+- The primary action and the secondary link are distinguishable
 
-**Риски для проверки**
+**Risks to check**
 
-- Длинный заголовок может занять большую часть кадра
-- Фон обязан сохранять контраст текста
-- Форма радиуса мало влияет на общую структуру
+- A long headline can take up most of the frame
+- The background must keep text contrast
+- Radius shape has little effect on the overall structure
 
-**Отличие от ref-c04:** Оба централизованы, но здесь крупный тезис, пояснение и пара действий; в ref-c04 намеренно малый заголовок и одно действие.
+**Difference from ref-c04:** Both are centered, but here there is a large claim, an explanation and a pair of actions; ref-c04 deliberately uses a small headline and one action.
 
-Авторский ключ: `t001-poster-mesh|cosmic-night|montserrat+inter|12`.
+Authored key: `t001-poster-mesh|cosmic-night|montserrat+inter|12`.
 
-- colour: `t001-poster-mesh|modern-minimal|montserrat+inter|12`. Изменяется палитра; структура, media recipe, шрифты и радиус сохраняются.
-- font: `t001-poster-mesh|cosmic-night|inter+inter|12`. Изменяется только ось fonts; структура, media recipe, skin и radius сохраняются. Переносы текста могут измениться.
-- radius: `t001-poster-mesh|cosmic-night|montserrat+inter|8`. Изменяется только radius; эффект зависит от использования rounded в компонентах.
+- colour: `t001-poster-mesh|modern-minimal|montserrat+inter|12`. The palette changes; structure, media recipe, fonts and radius are kept.
+- font: `t001-poster-mesh|cosmic-night|inter+inter|12`. Only the fonts axis changes; structure, media recipe, skin and radius are kept. Text wrapping may change.
+- radius: `t001-poster-mesh|cosmic-night|montserrat+inter|8`. Only the radius changes; the effect depends on how components use rounded.
 
-Пробы шаблонов: classic, saas — planned; композиция исходного screen при переносе токенов не гарантируется.
+Template probes: classic, saas — planned; the source screen's composition is not guaranteed when tokens are carried over.
 
-### ref-c02 · Диалог двух колонок
+### ref-c02 · Two-column dialogue
 
-- Источник: [t002-split-glass](../../packages/taste-screens/src/screens/t002-split-glass.svelte), deck 1.
-- Семейство: **split**. Композиция контента: **asymmetric-balance**.
-- Замысел: Сопоставить объяснение и выразительный образ в двух равных частях.
-- Задача: Прочитать предложение, рассмотреть образ и оценить краткие подтверждения.
-- Доминанта: Связь крупного заголовка слева с высоким медиа справа.
+- Source: [t002-split-glass](../../packages/taste-screens/src/screens/t002-split-glass.svelte), deck 1.
+- Family: **split**. Content composition: **asymmetric-balance**.
+- Intent: Pair an explanation with an expressive image in two equal parts.
+- Task: Read the offer, look at the image and weigh the short proof points.
+- Focal point: A large headline on the left tied to tall media on the right.
 
-Grid cols=2: слева title, lead, две кнопки и stats; справа высокий glass-panel. Нижняя строка stats находится внутри текстовой колонки.
+Grid cols=2: title, lead, two buttons and stats on the left; a tall glass-panel on the right. The bottom stats row sits inside the text column.
 
-Медиа: Glass-панель с перекрывающимися прямоугольниками и glow; это композиция внутри изображения.
+Media: A glass panel with overlapping rectangles and glow; this is composition inside the image.
 
-Связь с legacy: Исходный L-arrangement имеет weak=true. Здесь основной принцип — баланс двух частей; исходный тег сохраняется отдельно.
+Relation to legacy: The source L-arrangement has weak=true. Here the main principle is the balance of two parts; the source tag is kept separately.
 
-**Инварианты**
+**Invariants**
 
-- Две крупные колонки с независимыми ролями
-- Stats после действий в текстовой колонке
-- Медиа остаётся отдельным, а не фоном текста
+- Two large columns with independent roles
+- Stats after the actions in the text column
+- Media stays separate, not a text background
 
-**Риски для проверки**
+**Risks to check**
 
-- Структура требует переосмысления на узком экране
-- Ширина и высота медиа влияют на равновесие
-- Декоративный glass не объясняет полезность продукта
+- The structure needs rethinking on a narrow screen
+- Media width and height affect the balance
+- Decorative glass does not explain the product's value
 
-**Отличие от ref-c12:** Ref-c02 использует плотные две колонки и stats; ref-c12 связывает малые массы через свободное поле и диагональ.
+**Difference from ref-c12:** Ref-c02 uses dense two columns and stats; ref-c12 links small masses through open space and a diagonal.
 
-Авторский ключ: `t002-split-glass|violet-bloom|manrope+manrope|16`.
+Authored key: `t002-split-glass|violet-bloom|manrope+manrope|16`.
 
-- colour: `t002-split-glass|modern-minimal|manrope+manrope|16`. Изменяется палитра; структура, media recipe, шрифты и радиус сохраняются.
-- font: `t002-split-glass|violet-bloom|inter+inter|16`. Изменяется только ось fonts; структура, media recipe, skin и radius сохраняются. Переносы текста могут измениться.
-- radius: `t002-split-glass|violet-bloom|manrope+manrope|8`. Изменяется только radius; эффект зависит от использования rounded в компонентах.
+- colour: `t002-split-glass|modern-minimal|manrope+manrope|16`. The palette changes; structure, media recipe, fonts and radius are kept.
+- font: `t002-split-glass|violet-bloom|inter+inter|16`. Only the fonts axis changes; structure, media recipe, skin and radius are kept. Text wrapping may change.
+- radius: `t002-split-glass|violet-bloom|manrope+manrope|8`. Only the radius changes; the effect depends on how components use rounded.
 
-Пробы шаблонов: saas, classic — planned; композиция исходного screen при переносе токенов не гарантируется.
+Template probes: saas, classic — planned; the source screen's composition is not guaranteed when tokens are carried over.
 
-### ref-c03 · Плакат во всю ширину
+### ref-c03 · Full-width poster
 
-- Источник: [t003-fullbleed-grain](../../packages/taste-screens/src/screens/t003-fullbleed-grain.svelte), deck 2.
-- Семейство: **full-bleed**. Композиция контента: **edge-anchored**.
-- Замысел: Создать плакатный характер через широкий медиа-пояс и предельно крупную строку.
-- Задача: Считать выразительный тезис, затем пояснение и действие у нижнего края.
-- Доминанта: Заголовок большого масштаба под широким зернистым полем.
+- Source: [t003-fullbleed-grain](../../packages/taste-screens/src/screens/t003-fullbleed-grain.svelte), deck 2.
+- Family: **full-bleed**. Content composition: **edge-anchored**.
+- Intent: Create a poster feel through a wide media band and an extremely large line.
+- Task: Take in the expressive claim, then the explanation and the action at the bottom edge.
+- Focal point: A large-scale headline under a wide grainy field.
 
-Grain-band h-80 над заголовком text-[168px]; под ним lead слева и CTA справа. Массы выстроены горизонтальными слоями.
+Grain-band h-80 above a text-[168px] headline; below it, the lead on the left and the CTA on the right. Masses are stacked in horizontal layers.
 
-Медиа: Grain — самостоятельный горизонтальный пояс; он не является full-screen фоном.
+Media: Grain is a standalone horizontal band; it is not a full-screen background.
 
-Связь с legacy: Исходный L-arrangement сохранён как legacy; уточнённый принцип описывает верхнюю полосу и нижнюю опору.
+Relation to legacy: The source L-arrangement is kept as legacy; the refined principle describes a top band and a bottom base.
 
-**Инварианты**
+**Invariants**
 
-- Широкое медиа над типографикой
-- Плакатный масштаб title
-- Нижняя связка lead и CTA по противоположным краям
+- Wide media above the typography
+- Poster-scale title
+- A bottom pairing of lead and CTA on opposite edges
 
-**Риски для проверки**
+**Risks to check**
 
-- Длинный текст меняет плакатное равновесие
-- Громкая типографика подходит не каждой задаче
-- Название full-bleed не означает фон на весь экран в этом компоненте
+- Long text changes the poster balance
+- Loud typography does not suit every task
+- The name full-bleed does not mean a full-screen background in this component
 
-**Отличие от ref-c07:** Здесь последовательные горизонтальные пояса; ref-c07 организован в три редакционные колонки с отдельным списком.
+**Difference from ref-c07:** Here the horizontal bands are sequential; ref-c07 is organized into three editorial columns with a separate list.
 
-Авторский ключ: `t003-fullbleed-grain|neo-brutalism|rubik+rubik|0`.
+Authored key: `t003-fullbleed-grain|neo-brutalism|rubik+rubik|0`.
 
-- colour: `t003-fullbleed-grain|modern-minimal|rubik+rubik|0`. Изменяется палитра; структура, media recipe, шрифты и радиус сохраняются.
-- font: `t003-fullbleed-grain|neo-brutalism|inter+inter|0`. Изменяется только ось fonts; структура, media recipe, skin и radius сохраняются. Переносы текста могут измениться.
-- radius: `t003-fullbleed-grain|neo-brutalism|rubik+rubik|8`. Изменяется только radius; эффект зависит от использования rounded в компонентах.
+- colour: `t003-fullbleed-grain|modern-minimal|rubik+rubik|0`. The palette changes; structure, media recipe, fonts and radius are kept.
+- font: `t003-fullbleed-grain|neo-brutalism|inter+inter|0`. Only the fonts axis changes; structure, media recipe, skin and radius are kept. Text wrapping may change.
+- radius: `t003-fullbleed-grain|neo-brutalism|rubik+rubik|8`. Only the radius changes; the effect depends on how components use rounded.
 
-Пробы шаблонов: portfolio, classic — planned; композиция исходного screen при переносе токенов не гарантируется.
+Template probes: portfolio, classic — planned; the source screen's composition is not guaranteed when tokens are carried over.
 
-### ref-c04 · Тихий центр
+### ref-c04 · Quiet center
 
-- Источник: [t004-airy-dots](../../packages/taste-screens/src/screens/t004-airy-dots.svelte), deck 3.
-- Семейство: **airy**. Композиция контента: **focal-mass**.
-- Замысел: Снизить визуальное давление: небольшое сообщение и одно действие внутри большого свободного поля.
-- Задача: Быстро понять короткий тезис и выбрать единственный следующий шаг.
-- Доминанта: Небольшой центральный заголовок и единственное действие.
+- Source: [t004-airy-dots](../../packages/taste-screens/src/screens/t004-airy-dots.svelte), deck 3.
+- Family: **airy**. Content composition: **focal-mass**.
+- Intent: Lower the visual pressure: a small message and one action inside a large open field.
+- Task: Quickly grasp a short claim and pick the single next step.
+- Focal point: A small central headline and a single action.
 
-Центральный Stack с eyebrow, title text-5xl и outline-кнопкой. Нет lead и второй основной кнопки.
+Central Stack with eyebrow, text-5xl title and an outline button. No lead and no second primary button.
 
-Медиа: Dots заполняет фон; угловой мотив не переносится в тег композиции содержания.
+Media: Dots fill the background; the corner motif is not carried into the content composition tag.
 
-Связь с legacy: Исходный secondary=diagonal относится к угловому dots-полю. В композиции содержания фиксируется центральная доминанта.
+Relation to legacy: The source secondary=diagonal refers to the corner dots field. The content composition records a central focal point.
 
-**Инварианты**
+**Invariants**
 
-- Большое свободное поле
-- Небольшой масштаб текста относительно кадра
-- Одно основное действие
+- Large open field
+- Small text scale relative to the frame
+- One primary action
 
-**Риски для проверки**
+**Risks to check**
 
-- Сложное предложение не помещается в короткую форму
-- Редкая информация может казаться пустотой
-- Дополнительные CTA разрушат исходную ясность
+- A complex offer does not fit the short form
+- Sparse information can feel empty
+- Extra CTAs would break the original clarity
 
-**Отличие от ref-c12:** Тихий центр симметричен; диагональная пауза размещает текст и изображение в разных углах.
+**Difference from ref-c12:** The quiet center is symmetric; the diagonal pause places text and image in different corners.
 
-Авторский ключ: `t004-airy-dots|modern-minimal|inter+inter|8`.
+Authored key: `t004-airy-dots|modern-minimal|inter+inter|8`.
 
-- colour: `t004-airy-dots|claude|inter+inter|8`. Изменяется палитра; структура, media recipe, шрифты и радиус сохраняются.
-- font: `t004-airy-dots|modern-minimal|manrope+manrope|8`. Изменяется только ось fonts; структура, media recipe, skin и radius сохраняются. Переносы текста могут измениться.
-- radius: `t004-airy-dots|modern-minimal|inter+inter|4`. Изменяется только radius; эффект зависит от использования rounded в компонентах.
+- colour: `t004-airy-dots|claude|inter+inter|8`. The palette changes; structure, media recipe, fonts and radius are kept.
+- font: `t004-airy-dots|modern-minimal|manrope+manrope|8`. Only the fonts axis changes; structure, media recipe, skin and radius are kept. Text wrapping may change.
+- radius: `t004-airy-dots|modern-minimal|inter+inter|4`. Only the radius changes; the effect depends on how components use rounded.
 
-Пробы шаблонов: classic, portfolio — planned; композиция исходного screen при переносе токенов не гарантируется.
+Template probes: classic, portfolio — planned; the source screen's composition is not guaranteed when tokens are carried over.
 
-### ref-c05 · Тезис и доказательства
+### ref-c05 · Claim and proof
 
-- Источник: [t005-stats-flat](../../packages/taste-screens/src/screens/t005-stats-flat.svelte), deck 4.
-- Семейство: **stats**. Композиция контента: **rule-of-thirds**.
-- Замысел: Соединить главный тезис с читаемым поясом числовых подтверждений.
-- Задача: Понять предложение и быстро оценить несколько ключевых показателей.
-- Доминанта: Текстовая масса 2/3, затем отдельная строка показателей.
+- Source: [t005-stats-flat](../../packages/taste-screens/src/screens/t005-stats-flat.svelte), deck 4.
+- Family: **stats**. Content composition: **rule-of-thirds**.
+- Intent: Join the main claim to a readable band of numeric proof points.
+- Task: Understand the offer and quickly assess a few key metrics.
+- Focal point: A 2/3 text mass, then a separate row of metrics.
 
-Grid cols=3: текст col-span-2, квадратный Flat — оставшаяся треть; снизу Separator и Grid cols=4 со stats.
+Grid cols=3: text col-span-2, a square Flat in the remaining third; below, a Separator and Grid cols=4 with stats.
 
-Медиа: Flat shapes занимает правую треть; геометрия внутри него вторична к соотношению больших частей.
+Media: Flat shapes fill the right third; the geometry inside it is secondary to the ratio of the large parts.
 
-Связь с legacy: Трети подтверждены col-span-2 в трёхколоночном Grid. Stats описаны отдельно от композиционного тега.
+Relation to legacy: Thirds are confirmed by col-span-2 in a three-column Grid. Stats are described separately from the composition tag.
 
-**Инварианты**
+**Invariants**
 
-- Соотношение верхних частей 2:1
-- Отдельный нижний пояс stats
-- Визуальное отделение показателей от hero
+- A 2:1 ratio of the upper parts
+- A separate bottom band of stats
+- Metrics visually set apart from the hero
 
-**Риски для проверки**
+**Risks to check**
 
-- Фикстура повторяет первый stat как четвёртый — это не четыре разных доказательства
-- Числа должны иметь контекст и источник в реальном продукте
-- Дополнительные метрики могут перегрузить низ
+- The fixture repeats the first stat as the fourth, so these are not four different proof points
+- Numbers need context and a source in a real product
+- Extra metrics can overload the bottom
 
-**Отличие от ref-c10:** Показатели здесь в отдельном поясе; в бенто информация распределена по карточкам внутри общей сетки.
+**Difference from ref-c10:** Here metrics sit in a separate band; in the bento, information is spread across cards within a shared grid.
 
-Авторский ключ: `t005-stats-flat|amber-minimal|golos-text+onest|4`.
+Authored key: `t005-stats-flat|amber-minimal|golos-text+onest|4`.
 
-- colour: `t005-stats-flat|modern-minimal|golos-text+onest|4`. Изменяется палитра; структура, media recipe, шрифты и радиус сохраняются.
-- font: `t005-stats-flat|amber-minimal|inter+inter|4`. Изменяется только ось fonts; структура, media recipe, skin и radius сохраняются. Переносы текста могут измениться.
-- radius: `t005-stats-flat|amber-minimal|golos-text+onest|8`. Изменяется только radius; эффект зависит от использования rounded в компонентах.
+- colour: `t005-stats-flat|modern-minimal|golos-text+onest|4`. The palette changes; structure, media recipe, fonts and radius are kept.
+- font: `t005-stats-flat|amber-minimal|inter+inter|4`. Only the fonts axis changes; structure, media recipe, skin and radius are kept. Text wrapping may change.
+- radius: `t005-stats-flat|amber-minimal|golos-text+onest|8`. Only the radius changes; the effect depends on how components use rounded.
 
-Пробы шаблонов: saas, dashboard — planned; композиция исходного screen при переносе токенов не гарантируется.
+Template probes: saas, dashboard — planned; the source screen's composition is not guaranteed when tokens are carried over.
 
-### ref-c06 · Сообщение и лента
+### ref-c06 · Message and ribbon
 
-- Источник: [t006-ribbon-rings](../../packages/taste-screens/src/screens/t006-ribbon-rings.svelte), deck 5.
-- Семейство: **ribbon**. Композиция контента: **focal-mass**.
-- Замысел: Поддержать центральное обещание отдельной полосой повторяемых знаков.
-- Задача: Прочитать предложение и увидеть окружающий его контекст или принадлежность.
-- Доминанта: Центральный заголовок; нижняя лента — вспомогательный ритм.
+- Source: [t006-ribbon-rings](../../packages/taste-screens/src/screens/t006-ribbon-rings.svelte), deck 5.
+- Family: **ribbon**. Content composition: **focal-mass**.
+- Intent: Support the central promise with a separate strip of repeated marks.
+- Task: Read the offer and see the context or affiliation around it.
+- Focal point: A central headline; the bottom ribbon is a supporting rhythm.
 
-Центральные title, lead и actions в Stack; LogoRibbon расположен после центрального блока по нижнему краю.
+Central title, lead and actions in a Stack; the LogoRibbon follows the central block along the bottom edge.
 
-Медиа: Rings располагается за hero; радиальный мотив не означает радиальную навигацию.
+Media: Rings sit behind the hero; the radial motif does not mean radial navigation.
 
-Связь с legacy: Исходный radial относится к Rings; уточнённая композиция контента сохраняет focal-mass.
+Relation to legacy: The source radial refers to Rings; the refined content composition keeps focal-mass.
 
-**Инварианты**
+**Invariants**
 
-- Центральный hero отделён от нижней ленты
-- Повторяемые знаки образуют ритм
-- Лента не конкурирует с главным действием
+- The central hero is separated from the bottom ribbon
+- Repeated marks form a rhythm
+- The ribbon does not compete with the primary action
 
-**Риски для проверки**
+**Risks to check**
 
-- В исходнике абстрактные icon slots, а не реальные логотипы клиентов
-- Лента сама по себе не доказывает доверие
-- Кольца фона могут повысить визуальный шум
+- The source uses abstract icon slots, not real client logos
+- A ribbon alone does not prove trust
+- Background rings can add visual noise
 
-**Отличие от ref-c08:** Лента повторяет небольшие знаки; ref-c08 показывает один крупный объект внутри рамки.
+**Difference from ref-c08:** The ribbon repeats small marks; ref-c08 shows one large object inside a frame.
 
-Авторский ключ: `t006-ribbon-rings|supabase|onest+inter|12`.
+Authored key: `t006-ribbon-rings|supabase|onest+inter|12`.
 
-- colour: `t006-ribbon-rings|modern-minimal|onest+inter|12`. Изменяется палитра; структура, media recipe, шрифты и радиус сохраняются.
-- font: `t006-ribbon-rings|supabase|inter+inter|12`. Изменяется только ось fonts; структура, media recipe, skin и radius сохраняются. Переносы текста могут измениться.
-- radius: `t006-ribbon-rings|supabase|onest+inter|8`. Изменяется только radius; эффект зависит от использования rounded в компонентах.
+- colour: `t006-ribbon-rings|modern-minimal|onest+inter|12`. The palette changes; structure, media recipe, fonts and radius are kept.
+- font: `t006-ribbon-rings|supabase|inter+inter|12`. Only the fonts axis changes; structure, media recipe, skin and radius are kept. Text wrapping may change.
+- radius: `t006-ribbon-rings|supabase|onest+inter|8`. Only the radius changes; the effect depends on how components use rounded.
 
-Пробы шаблонов: saas, classic — planned; композиция исходного screen при переносе токенов не гарантируется.
+Template probes: saas, classic — planned; the source screen's composition is not guaranteed when tokens are carried over.
 
-### ref-c07 · Редакционный разворот
+### ref-c07 · Editorial spread
 
-- Источник: [t007-editorial-duotone](../../packages/taste-screens/src/screens/t007-editorial-duotone.svelte), deck 6.
-- Семейство: **editorial**. Композиция контента: **editorial-columns**.
-- Замысел: Дать несколько входов в содержание через типографическую иерархию, номера и отдельное изображение.
-- Задача: Сканировать темы, прочитать главный материал и выбрать дальнейшее действие.
-- Доминанта: Большой заголовок в средней колонке с поддержкой соседних материалов.
+- Source: [t007-editorial-duotone](../../packages/taste-screens/src/screens/t007-editorial-duotone.svelte), deck 6.
+- Family: **editorial**. Content composition: **editorial-columns**.
+- Intent: Offer several entry points into the content through typographic hierarchy, numbers and a separate image.
+- Task: Scan the topics, read the main piece and choose the next action.
+- Focal point: A large headline in the middle column, supported by neighboring pieces.
 
-12-колоночный Grid: items col-span-3, headline/lead/action col-span-5, Duotone col-span-4. Центральный текст выровнен к низу.
+12-column Grid: items col-span-3, headline/lead/action col-span-5, Duotone col-span-4. The central text is bottom-aligned.
 
-Медиа: Высокая Duotone v=1 — процедурный пейзаж, отдельный от списка и текста.
+Media: A tall Duotone v=1 is a procedural landscape, separate from the list and the text.
 
-Связь с legacy: Исходный rule-of-thirds — приближение. Здесь фиксируются подтверждённые пропорции 3:5:4 и редакционные колонки.
+Relation to legacy: The source rule-of-thirds is an approximation. Here the confirmed 3:5:4 proportions and editorial columns are recorded.
 
-**Инварианты**
+**Invariants**
 
-- Три колонки 3:5:4 с разными ролями
-- Нумерованный список самостоятельных входов
-- Линейка после masthead и нижняя опора главного текста
+- Three 3:5:4 columns with different roles
+- A numbered list of standalone entry points
+- A rule after the masthead and a bottom base for the main text
 
-**Риски для проверки**
+**Risks to check**
 
-- Сложный разворот требует ясного порядка на узком экране
-- Визуально крупный заголовок не должен скрывать смысл списка
-- Не следует считать 3:5:4 точными третями
+- A complex spread needs a clear order on a narrow screen
+- A visually large headline should not hide the meaning of the list
+- 3:5:4 should not be treated as exact thirds
 
-**Отличие от ref-c03:** Роль каждого столбца различна; ref-c03 строит один плакатный рассказ по вертикали.
+**Difference from ref-c03:** Each column has a different role; ref-c03 builds one vertical poster story.
 
-Авторский ключ: `t007-editorial-duotone|claude|ibm-plex-sans+ibm-plex-sans|0`.
+Authored key: `t007-editorial-duotone|claude|ibm-plex-sans+ibm-plex-sans|0`.
 
-- colour: `t007-editorial-duotone|modern-minimal|ibm-plex-sans+ibm-plex-sans|0`. Изменяется палитра; структура, media recipe, шрифты и радиус сохраняются.
-- font: `t007-editorial-duotone|claude|inter+inter|0`. Изменяется только ось fonts; структура, media recipe, skin и radius сохраняются. Переносы текста могут измениться.
-- radius: `t007-editorial-duotone|claude|ibm-plex-sans+ibm-plex-sans|8`. Изменяется только radius; эффект зависит от использования rounded в компонентах.
+- colour: `t007-editorial-duotone|modern-minimal|ibm-plex-sans+ibm-plex-sans|0`. The palette changes; structure, media recipe, fonts and radius are kept.
+- font: `t007-editorial-duotone|claude|inter+inter|0`. Only the fonts axis changes; structure, media recipe, skin and radius are kept. Text wrapping may change.
+- radius: `t007-editorial-duotone|claude|ibm-plex-sans+ibm-plex-sans|8`. Only the radius changes; the effect depends on how components use rounded.
 
-Пробы шаблонов: blog, three-column — planned; композиция исходного screen при переносе токенов не гарантируется.
+Template probes: blog, three-column — planned; the source screen's composition is not guaranteed when tokens are carried over.
 
-### ref-c08 · Демонстрация в окне
+### ref-c08 · Windowed demo
 
-- Источник: [t008-frame-conic](../../packages/taste-screens/src/screens/t008-frame-conic.svelte), deck 7.
-- Семейство: **frame**. Композиция контента: **pyramid**.
-- Замысел: Объяснить предложение и дать конкретный образ результата в крупной рамке.
-- Задача: Связать обещание с демонстрацией и перейти к действию.
-- Доминанта: Связка верхнего заголовка с большим демонстрационным окном.
+- Source: [t008-frame-conic](../../packages/taste-screens/src/screens/t008-frame-conic.svelte), deck 7.
+- Family: **frame**. Content composition: **pyramid**.
+- Intent: Explain the offer and give a concrete image of the result in a large frame.
+- Task: Link the promise to the demo and move to action.
+- Focal point: A top headline paired with a large demo window.
 
-Узкий центрированный title/lead/actions сверху, широкая browser-like Card ниже; внутри Conic и центральная Card.
+A narrow centered title/lead/actions on top, a wide browser-like Card below; inside are a Conic and a central Card.
 
-Медиа: Conic остаётся внутри browser-like рамки; небольшой вложенный specimen — отдельная доминанта.
+Media: The Conic stays inside the browser-like frame; a small nested specimen is a separate focal point.
 
-Связь с legacy: Основной pyramid сохранён; radial описывает Conic внутри окна, а не общую структуру страницы.
+Relation to legacy: The primary pyramid is kept; radial describes the Conic inside the window, not the overall page structure.
 
-**Инварианты**
+**Invariants**
 
-- Заголовок уже окна
-- Рамка отделяет демонстрацию от основного интерфейса
-- Вложенное содержание читается как образец
+- The headline is narrower than the window
+- The frame separates the demo from the main interface
+- Nested content reads as a sample
 
-**Риски для проверки**
+**Risks to check**
 
-- Демонстрационные кнопки могут быть ошибочно приняты за рабочие
-- Внутреннее окно повышает плотность и сложность
-- Внешняя тень относится к плавающей поверхности, а не ко всем элементам
+- Demo buttons can be mistaken for working ones
+- The inner window adds density and complexity
+- The outer shadow belongs to the floating surface, not to every element
 
-**Отличие от ref-c11:** Ref-c08 явно разделяет интерфейс и вложенную демонстрацию; ref-c11 делает сетку самой страницей.
+**Difference from ref-c11:** Ref-c08 clearly separates the interface from the nested demo; ref-c11 makes the grid the page itself.
 
-Авторский ключ: `t008-frame-conic|bubblegum|nunito+nunito|16`.
+Authored key: `t008-frame-conic|bubblegum|nunito+nunito|16`.
 
-- colour: `t008-frame-conic|modern-minimal|nunito+nunito|16`. Изменяется палитра; структура, media recipe, шрифты и радиус сохраняются.
-- font: `t008-frame-conic|bubblegum|inter+inter|16`. Изменяется только ось fonts; структура, media recipe, skin и radius сохраняются. Переносы текста могут измениться.
-- radius: `t008-frame-conic|bubblegum|nunito+nunito|8`. Изменяется только radius; эффект зависит от использования rounded в компонентах.
+- colour: `t008-frame-conic|modern-minimal|nunito+nunito|16`. The palette changes; structure, media recipe, fonts and radius are kept.
+- font: `t008-frame-conic|bubblegum|inter+inter|16`. Only the fonts axis changes; structure, media recipe, skin and radius are kept. Text wrapping may change.
+- radius: `t008-frame-conic|bubblegum|nunito+nunito|8`. Only the radius changes; the effect depends on how components use rounded.
 
-Пробы шаблонов: saas, docs — planned; композиция исходного screen при переносе токенов не гарантируется.
+Template probes: saas, docs — planned; the source screen's composition is not guaranteed when tokens are carried over.
 
-### ref-c09 · Ввод между рамками
+### ref-c09 · Input between frames
 
-- Источник: [t070-prompt-geometric](../../packages/taste-screens/src/screens/t070-prompt-geometric.svelte), deck 33.
-- Семейство: **prompt**. Композиция контента: **focal-mass**.
-- Замысел: Сделать ввод главным центром действия, сохранив выразительное геометрическое обрамление.
-- Задача: Понять, что вводить, ввести запрос и выбрать действие.
-- Доминанта: Связка объяснения и поля ввода в центральной колонке.
+- Source: [t070-prompt-geometric](../../packages/taste-screens/src/screens/t070-prompt-geometric.svelte), deck 33.
+- Family: **prompt**. Content composition: **focal-mass**.
+- Intent: Make the input the main center of action while keeping an expressive geometric frame.
+- Task: Understand what to enter, type a query and choose an action.
+- Focal point: An explanation paired with an input field in the central column.
 
-Две Geometric-полосы по краям; средняя колонка mx-60 содержит title, lead, Input+Button и TopicChips.
+Two Geometric bands at the edges; the mx-60 middle column holds title, lead, Input+Button and TopicChips.
 
-Медиа: Геометрические края работают как рамки вокруг рабочей области.
+Media: The geometric edges act as frames around the work area.
 
-Связь с legacy: Основной focal-mass сохранён; боковые geometric-полосы учитываются как медиа. Снятый с панорамы t009 не используется.
+Relation to legacy: The primary focal-mass is kept; the side geometric bands count as media. t009, removed from the panorama, is not used.
 
-**Инварианты**
+**Invariants**
 
-- Содержание остаётся в свободной средней зоне
-- Поле ввода и его действие соседствуют
-- TopicChips поддерживают ввод, не заменяя его
+- Content stays in the open middle zone
+- The input field and its action sit side by side
+- TopicChips support the input without replacing it
 
-**Риски для проверки**
+**Risks to check**
 
-- В исходнике Input имеет placeholder, отдельной label не видно
-- Пример демонстрирует форму, но не реализует обработку запроса
-- Широкие боковые полосы сокращают рабочее поле
+- In the source the Input has a placeholder; no separate label is visible
+- The example shows the form but does not implement query handling
+- Wide side bands shrink the work area
 
-**Отличие от ref-c04:** Оба используют центр, но здесь есть ввод и выбор тем; ref-c04 предлагает один следующий шаг без ввода.
+**Difference from ref-c04:** Both use the center, but here there is input and topic choice; ref-c04 offers one next step without input.
 
-Авторский ключ: `t070-prompt-geometric|violet-bloom|manrope+ibm-plex-sans|4`.
+Authored key: `t070-prompt-geometric|violet-bloom|manrope+ibm-plex-sans|4`.
 
-- colour: `t070-prompt-geometric|modern-minimal|manrope+ibm-plex-sans|4`. Изменяется палитра; структура, media recipe, шрифты и радиус сохраняются.
-- font: `t070-prompt-geometric|violet-bloom|inter+inter|4`. Изменяется только ось fonts; структура, media recipe, skin и radius сохраняются. Переносы текста могут измениться.
-- radius: `t070-prompt-geometric|violet-bloom|manrope+ibm-plex-sans|8`. Изменяется только radius; эффект зависит от использования rounded в компонентах.
+- colour: `t070-prompt-geometric|modern-minimal|manrope+ibm-plex-sans|4`. The palette changes; structure, media recipe, fonts and radius are kept.
+- font: `t070-prompt-geometric|violet-bloom|inter+inter|4`. Only the fonts axis changes; structure, media recipe, skin and radius are kept. Text wrapping may change.
+- radius: `t070-prompt-geometric|violet-bloom|manrope+ibm-plex-sans|8`. Only the radius changes; the effect depends on how components use rounded.
 
-Пробы шаблонов: classic, docs — planned; композиция исходного screen при переносе токенов не гарантируется.
+Template probes: classic, docs — planned; the source screen's composition is not guaranteed when tokens are carried over.
 
-### ref-c10 · Иерархическое бенто
+### ref-c10 · Hierarchical bento
 
-- Источник: [t010-dense-geometric](../../packages/taste-screens/src/screens/t010-dense-geometric.svelte), deck 9.
-- Семейство: **dense-grid**. Композиция контента: **modular-hierarchy**.
-- Замысел: Собрать разнородное содержание в общую сетку с двумя крупными областями и малым нижним рядом.
-- Задача: Считать главный тезис и быстро просмотреть вспомогательные показатели.
-- Доминанта: Большой текстовый блок слева; медиа равной площади справа.
+- Source: [t010-dense-geometric](../../packages/taste-screens/src/screens/t010-dense-geometric.svelte), deck 9.
+- Family: **dense-grid**. Content composition: **modular-hierarchy**.
+- Intent: Gather varied content into a shared grid with two large areas and a small bottom row.
+- Task: Take in the main claim and quickly scan the supporting metrics.
+- Focal point: A large text block on the left; media of equal area on the right.
 
-Grid cols=4, rows=3: hero col-span-2 row-span-2 и Geometric той же площади; нижний ряд — три stats и информационная Card.
+Grid cols=4, rows=3: hero col-span-2 row-span-2 and a Geometric of the same area; the bottom row has three stats and an info Card.
 
-Медиа: Geometric — большая самостоятельная область сетки, а не layout всех блоков.
+Media: Geometric is a large standalone grid area, not the layout of all blocks.
 
-Связь с legacy: Исходный rule-of-thirds связан с вертикальными двумя из трёх рядов. Каталог использует более точный modular-hierarchy и отмечает 1:1 верхних масс.
+Relation to legacy: The source rule-of-thirds refers to two of three rows vertically. The catalog uses the more precise modular-hierarchy and notes the 1:1 upper masses.
 
-**Инварианты**
+**Invariants**
 
-- Крупные верхние области отделены от нижних малых карточек
-- Все элементы привязаны к общей сетке
-- Размер ячейки сообщает относительную важность
+- Large upper areas are separated from small bottom cards
+- All elements snap to the shared grid
+- Cell size signals relative importance
 
-**Риски для проверки**
+**Risks to check**
 
-- Верхние области делят ширину пополам, а не на трети
-- Равный размер героя и медиа может давать конкурирующие доминанты
-- Рост количества карточек меняет приоритеты
+- The upper areas split the width in half, not in thirds
+- Equal hero and media size can create competing focal points
+- More cards shift the priorities
 
-**Отличие от ref-c11:** Здесь две большие массы и малый нижний ряд; в ref-c11 девять ячеек с доминантой в центре.
+**Difference from ref-c11:** Here there are two large masses and a small bottom row; ref-c11 has nine cells with the focal point in the center.
 
-Авторский ключ: `t010-dense-geometric|kodama-grove|montserrat+open-sans|8`.
+Authored key: `t010-dense-geometric|kodama-grove|montserrat+open-sans|8`.
 
-- colour: `t010-dense-geometric|modern-minimal|montserrat+open-sans|8`. Изменяется палитра; структура, media recipe, шрифты и радиус сохраняются.
-- font: `t010-dense-geometric|kodama-grove|inter+inter|8`. Изменяется только ось fonts; структура, media recipe, skin и radius сохраняются. Переносы текста могут измениться.
-- radius: `t010-dense-geometric|kodama-grove|montserrat+open-sans|4`. Изменяется только radius; эффект зависит от использования rounded в компонентах.
+- colour: `t010-dense-geometric|modern-minimal|montserrat+open-sans|8`. The palette changes; structure, media recipe, fonts and radius are kept.
+- font: `t010-dense-geometric|kodama-grove|inter+inter|8`. Only the fonts axis changes; structure, media recipe, skin and radius are kept. Text wrapping may change.
+- radius: `t010-dense-geometric|kodama-grove|montserrat+open-sans|4`. Only the radius changes; the effect depends on how components use rounded.
 
-Пробы шаблонов: dashboard, portfolio — planned; композиция исходного screen при переносе токенов не гарантируется.
+Template probes: dashboard, portfolio — planned; the source screen's composition is not guaranteed when tokens are carried over.
 
-### ref-c11 · Центр и окружение
+### ref-c11 · Center and surroundings
 
-- Источник: [t044-dense-conic](../../packages/taste-screens/src/screens/t044-dense-conic.svelte), deck 31.
-- Семейство: **dense-grid**. Композиция контента: **cross**.
-- Замысел: Организовать насыщенное поле вокруг центрального сообщения, используя окружение как поддержку.
-- Задача: Сначала найти главный тезис, затем исследовать соседние блоки.
-- Доминанта: Акцентная центральная ячейка, поддержанная вертикальной и горизонтальной осями.
+- Source: [t044-dense-conic](../../packages/taste-screens/src/screens/t044-dense-conic.svelte), deck 31.
+- Family: **dense-grid**. Content composition: **cross**.
+- Intent: Organize a rich field around a central message, using the surroundings as support.
+- Task: First find the main claim, then explore the neighboring blocks.
+- Focal point: An accented central cell, supported by vertical and horizontal axes.
 
-Grid cols=3, rows=3: центральная primary-Card с title/action, stats сверху/снизу, текст слева/справа, Conic в четырёх углах.
+Grid cols=3, rows=3: a central primary Card with title/action, stats above/below, text left/right, Conic in the four corners.
 
-Медиа: Четыре Conic-поля находятся в углах; радиальный мотив каждого не превращает всю сетку в радиальную.
+Media: Four Conic fields sit in the corners; the radial motif of each does not make the whole grid radial.
 
-Связь с legacy: Исходный cross подтверждается размещением центрального title и четырёх краевых ячеек; Conic вынесен в медиа.
+Relation to legacy: The source cross is confirmed by the central title and four edge cells; Conic is moved to media.
 
-**Инварианты**
+**Invariants**
 
-- Главная ячейка остаётся в центре
-- Четыре ортогональные соседа поддерживают центр
-- Медиа в углах не конкурирует с сообщением
+- The main cell stays in the center
+- Four orthogonal neighbors support the center
+- Corner media does not compete with the message
 
-**Риски для проверки**
+**Risks to check**
 
-- Яркие углы могут перетянуть внимание с центра
-- Длинный title должен помещаться в малую центральную карточку
-- Сетка требует отдельного порядка чтения на узком экране
+- Bright corners can pull attention away from the center
+- A long title must fit the small central card
+- The grid needs its own reading order on a narrow screen
 
-**Отличие от ref-c10:** Разница находится в геометрии и приоритете: центральная ячейка вместо большого hero сбоку.
+**Difference from ref-c10:** The difference lies in geometry and priority: a central cell instead of a large side hero.
 
-Авторский ключ: `t044-dense-conic|modern-minimal|rubik+rubik|8`.
+Authored key: `t044-dense-conic|modern-minimal|rubik+rubik|8`.
 
-- colour: `t044-dense-conic|claude|rubik+rubik|8`. Изменяется палитра; структура, media recipe, шрифты и радиус сохраняются.
-- font: `t044-dense-conic|modern-minimal|inter+inter|8`. Изменяется только ось fonts; структура, media recipe, skin и radius сохраняются. Переносы текста могут измениться.
-- radius: `t044-dense-conic|modern-minimal|rubik+rubik|4`. Изменяется только radius; эффект зависит от использования rounded в компонентах.
+- colour: `t044-dense-conic|claude|rubik+rubik|8`. The palette changes; structure, media recipe, fonts and radius are kept.
+- font: `t044-dense-conic|modern-minimal|inter+inter|8`. Only the fonts axis changes; structure, media recipe, skin and radius are kept. Text wrapping may change.
+- radius: `t044-dense-conic|modern-minimal|rubik+rubik|4`. Only the radius changes; the effect depends on how components use rounded.
 
-Пробы шаблонов: dashboard, portfolio — planned; композиция исходного screen при переносе токенов не гарантируется.
+Template probes: dashboard, portfolio — planned; the source screen's composition is not guaranteed when tokens are carried over.
 
-### ref-c12 · Диагональная пауза
+### ref-c12 · Diagonal pause
 
-- Источник: [t065-airy-duotone](../../packages/taste-screens/src/screens/t065-airy-duotone.svelte), deck 8.
-- Семейство: **airy**. Композиция контента: **diagonal**.
-- Замысел: Создать спокойное напряжение между небольшим текстом в начале и отдельным изображением в противоположном углу.
-- Задача: Прочитать короткое сообщение и рассмотреть образ, сохранив ощущение свободного пространства.
-- Доминанта: Отношение верхней текстовой массы и нижнего изображения справа.
+- Source: [t065-airy-duotone](../../packages/taste-screens/src/screens/t065-airy-duotone.svelte), deck 8.
+- Family: **airy**. Content composition: **diagonal**.
+- Intent: Create calm tension between small text at the start and a separate image in the opposite corner.
+- Task: Read a short message and look at the image while keeping a sense of open space.
+- Focal point: The relation between the upper text mass and the lower-right image.
 
-Title/с.accent/Button в Stack у верхнего start; Duotone size-80 абсолютным блоком right-16 bottom-16.
+Title/c.accent/Button in a Stack at the top start; Duotone size-80 as an absolute block at right-16 bottom-16.
 
-Медиа: Небольшая Duotone v=0 использует placeholder MediaFrame; форма кадра не определяет диагональ сама по себе.
+Media: A small Duotone v=0 uses a placeholder MediaFrame; the frame shape alone does not define the diagonal.
 
-Связь с legacy: Основной diagonal подтверждён положением блоков, а не наклоном или цветом изображения.
+Relation to legacy: The primary diagonal is confirmed by block placement, not by the image's tilt or color.
 
-**Инварианты**
+**Invariants**
 
-- Текст и изображение занимают разные углы
-- Большое свободное поле между массами
-- Текст остаётся небольшим относительно экрана
+- Text and image occupy different corners
+- A large open field between the masses
+- Text stays small relative to the screen
 
-**Риски для проверки**
+**Risks to check**
 
-- Абсолютная позиция изображения может пересечься с длинным текстом
-- Значение c.accent не равно полному lead
-- Композиция не должна заставлять пользователя искать кнопку
+- The image's absolute position can overlap long text
+- The c.accent value is not a full lead
+- The composition should not make the user hunt for the button
 
-**Отличие от ref-c04:** Оба airy, но симметричный центр заменён диагональной связью двух масс.
+**Difference from ref-c04:** Both are airy, but the symmetric center is replaced by a diagonal link between two masses.
 
-Авторский ключ: `t065-airy-duotone|kodama-grove|montserrat+inter|8`.
+Authored key: `t065-airy-duotone|kodama-grove|montserrat+inter|8`.
 
-- colour: `t065-airy-duotone|modern-minimal|montserrat+inter|8`. Изменяется палитра; структура, media recipe, шрифты и радиус сохраняются.
-- font: `t065-airy-duotone|kodama-grove|inter+inter|8`. Изменяется только ось fonts; структура, media recipe, skin и radius сохраняются. Переносы текста могут измениться.
-- radius: `t065-airy-duotone|kodama-grove|montserrat+inter|4`. Изменяется только radius; эффект зависит от использования rounded в компонентах.
+- colour: `t065-airy-duotone|modern-minimal|montserrat+inter|8`. The palette changes; structure, media recipe, fonts and radius are kept.
+- font: `t065-airy-duotone|kodama-grove|inter+inter|8`. Only the fonts axis changes; structure, media recipe, skin and radius are kept. Text wrapping may change.
+- radius: `t065-airy-duotone|kodama-grove|montserrat+inter|4`. Only the radius changes; the effect depends on how components use rounded.
 
-Пробы шаблонов: portfolio, two-column — planned; композиция исходного screen при переносе токенов не гарантируется.
+Template probes: portfolio, two-column — planned; the source screen's composition is not guaranteed when tokens are carried over.
 
-## Связи
+## Relations
 
-Типы не имеют численного ranking и не утверждают пользовательскую пригодность. task-counterexample помогает отличать сходство оформления от совпадения задачи.
+The types have no numeric ranking and do not claim user fitness. task-counterexample helps tell visual similarity apart from a shared task.
 
-- **ref-r01: ref-c01 ↔ ref-c04** (same-principle). Подходит для сравнения двух способов центрального сообщения; одинаковый центр не делает их дублями. Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается.
-- **ref-r02: ref-c01 ↔ ref-c06** (same-principle). Лента добавляет отдельный ритм к центральному сообщению. Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается.
-- **ref-r03: ref-c01 ↔ ref-c09** (task-counterexample). Сходство центра не означает взаимозаменяемость: действие по кнопке и ввод запроса требуют разных сценариев. Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается.
-- **ref-r04: ref-c02 ↔ ref-c05** (structural-neighbor). Две колонки переходят в явные 2:1 и отдельный нижний пояс. Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается.
-- **ref-r05: ref-c02 ↔ ref-c12** (expressive-neighbor). Похожее разделение ролей, но плотная колонная структура сменяется свободной диагональю. Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается.
-- **ref-r06: ref-c03 ↔ ref-c07** (expressive-neighbor). Плакат и разворот по-разному организуют крупный текст и изображение. Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается.
-- **ref-r07: ref-c04 ↔ ref-c12** (same-layout-family). Контрольная пара: общий layout-family не гарантирует одинаковую композицию. Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается.
-- **ref-r08: ref-c05 ↔ ref-c10** (structural-neighbor). Показатели могут быть самостоятельным поясом или малыми ячейками общей сетки. Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается.
-- **ref-r09: ref-c06 ↔ ref-c08** (expressive-neighbor). Лента малых знаков и одно большое окно — разные виды поддержки обещания; доверие не подтверждено. Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается.
-- **ref-r10: ref-c07 ↔ ref-c12** (expressive-neighbor). Редакционный разворот и разреженное сообщение различаются объёмом содержания. Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается.
-- **ref-r11: ref-c08 ↔ ref-c11** (expressive-neighbor). Центр внутри демонстрационного окна отличается от центра самой страницы. Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается.
-- **ref-r12: ref-c10 ↔ ref-c11** (same-layout-family). Контрольная пара: две большие области против центральной ячейки в сетке 3×3. Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается.
-- **ref-r13: ref-c04 ↔ ref-c09** (task-counterexample). Минимальное сообщение с одним CTA не заменяет интерфейс ввода. Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается.
-- **ref-r14: ref-c06 ↔ ref-c09** (task-counterexample). LogoRibbon и TopicChips визуально повторяются, но поддерживают разные роли. Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается.
-- **ref-r15: ref-c02 ↔ ref-c03** (expressive-neighbor). Совместное наличие медиа и текста не означает совпадения layout. Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается.
-- **ref-r16: ref-c05 ↔ ref-c07** (task-counterexample). Сканирование показателей и чтение редакционного списка требуют разных оценок UX. Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается.
-- **ref-r17: ref-c08 ↔ ref-c09** (task-counterexample). Вложенный specimen — демонстрация; поле ввода относится к основному действию страницы. Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается.
-- **ref-r18: ref-c10 ↔ ref-c09** (task-counterexample). Одинаковый recipe=geometric не означает сходный интерфейс. Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается.
-- **ref-r19: ref-c03 ↔ ref-c01** (expressive-neighbor). Разные композиции могут поддерживать одно выразительное намерение. Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается.
-- **ref-r20: ref-c11 ↔ ref-c09** (task-counterexample). Сходство центрального фокуса не доказывает одинаковую пользовательскую задачу. Сравнивать как структурную/задачную связь. Совпадение цвета не утверждается.
+- **ref-r01: ref-c01 ↔ ref-c04** (same-principle). Suited to comparing two ways of a central message; a shared center does not make them duplicates. Compare as a structural/task relation. A color match is not claimed.
+- **ref-r02: ref-c01 ↔ ref-c06** (same-principle). The ribbon adds a separate rhythm to the central message. Compare as a structural/task relation. A color match is not claimed.
+- **ref-r03: ref-c01 ↔ ref-c09** (task-counterexample). A similar center does not mean interchangeability: a button action and a query input need different scenarios. Compare as a structural/task relation. A color match is not claimed.
+- **ref-r04: ref-c02 ↔ ref-c05** (structural-neighbor). Two columns turn into an explicit 2:1 and a separate bottom band. Compare as a structural/task relation. A color match is not claimed.
+- **ref-r05: ref-c02 ↔ ref-c12** (expressive-neighbor). A similar split of roles, but the dense column structure gives way to an open diagonal. Compare as a structural/task relation. A color match is not claimed.
+- **ref-r06: ref-c03 ↔ ref-c07** (expressive-neighbor). The poster and the spread organize large text and image differently. Compare as a structural/task relation. A color match is not claimed.
+- **ref-r07: ref-c04 ↔ ref-c12** (same-layout-family). Control pair: a shared layout family does not guarantee the same composition. Compare as a structural/task relation. A color match is not claimed.
+- **ref-r08: ref-c05 ↔ ref-c10** (structural-neighbor). Metrics can be a standalone band or small cells of a shared grid. Compare as a structural/task relation. A color match is not claimed.
+- **ref-r09: ref-c06 ↔ ref-c08** (expressive-neighbor). A ribbon of small marks and one large window are different kinds of support for a promise; trust is not confirmed. Compare as a structural/task relation. A color match is not claimed.
+- **ref-r10: ref-c07 ↔ ref-c12** (expressive-neighbor). The editorial spread and the sparse message differ in amount of content. Compare as a structural/task relation. A color match is not claimed.
+- **ref-r11: ref-c08 ↔ ref-c11** (expressive-neighbor). A center inside a demo window differs from the center of the page itself. Compare as a structural/task relation. A color match is not claimed.
+- **ref-r12: ref-c10 ↔ ref-c11** (same-layout-family). Control pair: two large areas versus a central cell in a 3×3 grid. Compare as a structural/task relation. A color match is not claimed.
+- **ref-r13: ref-c04 ↔ ref-c09** (task-counterexample). A minimal message with one CTA does not replace an input interface. Compare as a structural/task relation. A color match is not claimed.
+- **ref-r14: ref-c06 ↔ ref-c09** (task-counterexample). LogoRibbon and TopicChips repeat visually but serve different roles. Compare as a structural/task relation. A color match is not claimed.
+- **ref-r15: ref-c02 ↔ ref-c03** (expressive-neighbor). Having both media and text does not mean the layouts match. Compare as a structural/task relation. A color match is not claimed.
+- **ref-r16: ref-c05 ↔ ref-c07** (task-counterexample). Scanning metrics and reading an editorial list need different UX assessments. Compare as a structural/task relation. A color match is not claimed.
+- **ref-r17: ref-c08 ↔ ref-c09** (task-counterexample). The nested specimen is a demo; the input field belongs to the page's primary action. Compare as a structural/task relation. A color match is not claimed.
+- **ref-r18: ref-c10 ↔ ref-c09** (task-counterexample). The same recipe=geometric does not mean a similar interface. Compare as a structural/task relation. A color match is not claimed.
+- **ref-r19: ref-c03 ↔ ref-c01** (expressive-neighbor). Different compositions can support the same expressive intent. Compare as a structural/task relation. A color match is not claimed.
+- **ref-r20: ref-c11 ↔ ref-c09** (task-counterexample). A similar central focus does not prove the same user task. Compare as a structural/task relation. A color match is not claimed.
 
-## Сценарии измерений
+## Measurement scenarios
 
-### REF-B1 · Выбрать направление
+### REF-B1 · Choose a direction
 
-Старт: Открыт набор рекомендаций.
+Start: A set of recommendations is open.
 
-Исход: Участник выбирает conceptId и объясняет связь со своей задачей.
+Outcome: The participant picks a conceptId and explains how it relates to their task.
 
-Полная спецификация:
+Full specification:
 
 ```json
 {
   "id": "REF-B1",
-  "title": "Выбрать направление",
+  "title": "Choose a direction",
   "mode": "human",
-  "start": "Открыт набор рекомендаций.",
-  "outcome": "Участник выбирает conceptId и объясняет связь со своей задачей.",
+  "start": "A set of recommendations is open.",
+  "outcome": "The participant picks a conceptId and explains how it relates to their task.",
   "candidateConcepts": [
     "ref-c01",
     "ref-c02",
@@ -520,118 +520,118 @@ Title/с.accent/Button в Stack у верхнего start; Duotone size-80 аб�
     "ref-c11",
     "ref-c12"
   ],
-  "automation": "Не определять пригодность автоматически."
+  "automation": "Do not judge fitness automatically."
 }
 ```
 
-### REF-B2 · Поменять типографику, сохранить структуру
+### REF-B2 · Change typography, keep the structure
 
-Старт: Открыт ref-c02 в исходном стиле.
+Start: ref-c02 is open in its source style.
 
-Исход: Выбран ref-c02:font; screen, skin и radius совпадают с исходными.
+Outcome: ref-c02:font is selected; screen, skin and radius match the source.
 
-Полная спецификация:
+Full specification:
 
 ```json
 {
   "id": "REF-B2",
-  "title": "Поменять типографику, сохранить структуру",
+  "title": "Change typography, keep the structure",
   "mode": "human",
-  "start": "Открыт ref-c02 в исходном стиле.",
-  "outcome": "Выбран ref-c02:font; screen, skin и radius совпадают с исходными.",
+  "start": "ref-c02 is open in its source style.",
+  "outcome": "ref-c02:font is selected; screen, skin and radius match the source.",
   "expectedVariantId": "ref-c02:font",
-  "automation": "Только проверка состояния; понимание различий подтверждает участник."
+  "automation": "State check only; the participant confirms understanding of the differences."
 }
 ```
 
-### REF-B3 · Отличить композиции одного семейства
+### REF-B3 · Tell apart compositions of one family
 
-Старт: Сравниваются ref-c10 и ref-c11.
+Start: ref-c10 and ref-c11 are compared.
 
-Исход: Участник различает боковую большую доминанту и центральную ячейку.
+Outcome: The participant distinguishes a large side focal point from a central cell.
 
-Полная спецификация:
+Full specification:
 
 ```json
 {
   "id": "REF-B3",
-  "title": "Отличить композиции одного семейства",
+  "title": "Tell apart compositions of one family",
   "mode": "human",
-  "start": "Сравниваются ref-c10 и ref-c11.",
-  "outcome": "Участник различает боковую большую доминанту и центральную ячейку.",
+  "start": "ref-c10 and ref-c11 are compared.",
+  "outcome": "The participant distinguishes a large side focal point from a central cell.",
   "candidateConcepts": [
     "ref-c10",
     "ref-c11"
   ],
   "relationId": "ref-r12",
-  "automation": "Не оценивать объяснение по одному совпадению legacy tags."
+  "automation": "Do not judge the explanation by a single legacy tag match."
 }
 ```
 
-### REF-B4 · Проверить токены на шаблоне
+### REF-B4 · Test tokens on a template
 
-Старт: Открыт ref-c07.
+Start: ref-c07 is open.
 
-Исход: Открыт blog; участник оценивает пригодность токенов и понимает, что layout шаблона отдельный.
+Outcome: blog is open; the participant judges token fitness and understands that the template layout is separate.
 
-Полная спецификация:
+Full specification:
 
 ```json
 {
   "id": "REF-B4",
-  "title": "Проверить токены на шаблоне",
+  "title": "Test tokens on a template",
   "mode": "human",
-  "start": "Открыт ref-c07.",
-  "outcome": "Открыт blog; участник оценивает пригодность токенов и понимает, что layout шаблона отдельный.",
+  "start": "ref-c07 is open.",
+  "outcome": "blog is open; the participant judges token fitness and understands that the template layout is separate.",
   "candidateConcepts": [
     "ref-c07"
   ],
   "templateId": "blog",
-  "automation": "Предпросмотр шаблона не подтверждает перенос исходной композиции."
+  "automation": "A template preview does not confirm the source composition carries over."
 }
 ```
 
-### REF-B5 · Сохранить и получить нужный вариант
+### REF-B5 · Save and get the right variant
 
-Старт: Открыт ref-c05:radius.
+Start: ref-c05:radius is open.
 
-Исход: Коллекция и успешно скопированный preset соответствуют ожидаемому style key.
+Outcome: The collection and the successfully copied preset match the expected style key.
 
-Полная спецификация:
+Full specification:
 
 ```json
 {
   "id": "REF-B5",
-  "title": "Сохранить и получить нужный вариант",
+  "title": "Save and get the right variant",
   "mode": "human",
-  "start": "Открыт ref-c05:radius.",
-  "outcome": "Коллекция и успешно скопированный preset соответствуют ожидаемому style key.",
+  "start": "ref-c05:radius is open.",
+  "outcome": "The collection and the successfully copied preset match the expected style key.",
   "expectedVariantId": "ref-c05:radius",
-  "automation": "Успех clipboard не доказывает интеграцию пресета в проект."
+  "automation": "Clipboard success does not prove the preset is integrated into a project."
 }
 ```
 
-## Реальные превью и исследования
+## Real previews and research
 
-- [Сравнение 96 кадров](visual-review.html).
-- [Визуальные выводы](visual-review.md).
-- [Протокол для дизайнеров и арт-директоров](research-protocol.md).
-- [Условия и наблюдения](capture-results.json).
+- [Comparison of 96 frames](visual-review.html).
+- [Visual findings](visual-review.md).
+- [Protocol for designers and art directors](research-protocol.md).
+- [Conditions and observations](capture-results.json).
 
-Съёмка и отдельный renderer уже реализованы. Команды: запустить magazine dev, затем `node packages/taste-data/scripts/reference-capture.mjs --variants` и `node packages/taste-data/scripts/reference-review.mjs`. PNG остаются локальными в ignored captures/.
+Capture and the separate renderer are already implemented. Commands: start magazine dev, then `node packages/taste-data/scripts/reference-capture.mjs --variants` and `node packages/taste-data/scripts/reference-review.mjs`. PNGs stay local in the ignored captures/.
 
-## Критерии следующего gate
+## Criteria for the next gate
 
-1. Повторять съёмку после изменений: desktop 1440 × 1080 и диагностический узкий кадр 390 × 844; последний не является production mobile layout. Проверить клавиатуру, текстовый контраст, длинный текст, переносы и clipping. Записать viewport, тему, ключ, revision и результат.
-2. Использовать реализованный отдельный renderer с общим deck, не меняющий авторский контент. Для сравнений применить normalized styles из JSON: modern-minimal, inter/inter, radius 8, light. Сравнить с авторскими версиями.
-3. Провести визуальный review сходства; объединить дубли по структуре и задаче. Различие названия, цвета или радиуса не доказывает новый концепт.
-4. Провести человеческие сценарии REF-B1–B5; фиксировать outcome, объяснение, время, возвраты и ошибки. Задавать время отсчёта и критерий завершения заранее; периоды скрытой вкладки исключать. Отделять отказ от неуспеха и незавершённой сессии.
-5. По результатам уточнить паспорта и только затем подключать UX harness и расширять каталог. Успешное копирование preset не считать его применением в проекте.
+1. Repeat the capture after changes: desktop 1440 × 1080 and a diagnostic narrow frame 390 × 844; the latter is not a production mobile layout. Check keyboard, text contrast, long text, wrapping and clipping. Record viewport, theme, key, revision and result.
+2. Use the implemented separate renderer with a shared deck that leaves authored content unchanged. For comparisons apply the normalized styles from the JSON: modern-minimal, inter/inter, radius 8, light. Compare with the authored versions.
+3. Run a visual similarity review; merge duplicates by structure and task. A different name, color or radius does not prove a new concept.
+4. Run the human scenarios REF-B1–B5; record outcome, explanation, time, backtracking and errors. Set the timing start and completion criterion in advance; exclude hidden-tab periods. Distinguish abandonment from failure and from an unfinished session.
+5. Refine the passports based on the results, and only then connect the UX harness and grow the catalog. Do not count a successful preset copy as using it in a project.
 
-## Входная фикстура
+## Entry fixture
 
-Ровно десять валидных picks; служат детерминированным входом, не профилем вкуса. URL из `fixtures.entry.route` заменит локально сохранённые picks magazine. Использовать отдельный браузерный профиль. Принадлежность конкретных стилей текущей стене панорамы пока не измерена.
+Exactly ten valid picks; they serve as a deterministic entry, not a taste profile. The URL from `fixtures.entry.route` will replace the locally saved magazine picks. Use a separate browser profile. Whether specific styles belong to the current panorama wall is not yet measured.
 
-## Воспроизводимость
+## Reproducibility
 
-Источник review: `8efbb7e81376eb7704a43288bca63212bc2b97cd`. Для общих индексных файлов и каждого компонента сохранены SHA256. Документ и HTML генерируются из JSON и не подключены к production runtime.
+Review source: `8efbb7e81376eb7704a43288bca63212bc2b97cd`. SHA256 hashes are stored for the shared index files and for each component. The document and HTML are generated from the JSON and are not wired into the production runtime.

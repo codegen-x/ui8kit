@@ -14,7 +14,8 @@ const catalog = JSON.parse(readFileSync(resolve(root, dataPath), 'utf8'));
 const errors: string[] = [];
 const check = (condition: unknown, message: string) => { if (!condition) errors.push(message); };
 const same = (a: unknown, b: unknown) => JSON.stringify(a) === JSON.stringify(b);
-const hash = (path: string) => createHash('sha256').update(readFileSync(resolve(root, path))).digest('hex');
+// Hash with LF line endings so the check does not depend on the checkout's EOL (core.autocrlf).
+const hash = (path: string) => createHash('sha256').update(readFileSync(resolve(root, path), 'utf8').replace(/\r\n/g, '\n')).digest('hex');
 const unique = (values: string[], label: string) => check(new Set(values).size === values.length, `Duplicate ${label}`);
 const validStyle = (s: any, label: string) => {
   const parsed = parseStyleKey(s.key);

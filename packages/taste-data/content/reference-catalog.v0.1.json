@@ -38,27 +38,27 @@
   "provenance": [
     {
       "path": "packages/taste-data/src/tastes.ts",
-      "sha256": "cbafb6e3d1d322bf5e3ebf6f36b1d0f324490d6c545065aef38deff05a87250f"
+      "sha256": "6011da94baeb3388b4b59351a36f1c53d87162630a196c8e12dbb27f95d0d962"
     },
     {
       "path": "packages/taste-data/src/compositions.ts",
-      "sha256": "006bfbf7199d07d9a81dd0a3dbfb9652b1978c475b39fe93e137bb70bb39cf2a"
+      "sha256": "4ec1af54a390045abe3d62bcf7a95962fbe121f641ab4276514268e2374953ba"
     },
     {
       "path": "packages/taste-data/src/taste.ts",
-      "sha256": "3b8efdb8f3f44fbe607e4767ef8e7885968e1823ba1a9dcc0496471188f5bbbd"
+      "sha256": "57a0f96c266d5b5765e913458e0af488cbabaa30dd4869aab99b51a9da2e2d95"
     },
     {
       "path": "packages/taste-data/src/font-ids.ts",
-      "sha256": "f46d14928a811b0d9eb5f5bd7243cf75cda11acbe49cc96c5cacb3988a568fd1"
+      "sha256": "f4775e5d8c2837c88b21cf0b05fb9f5c941d58e4b71d025b5dd4950be6435186"
     },
     {
       "path": "packages/taste-data/src/curated.ts",
-      "sha256": "23af134ffa80c7dbc506fc1f8266cb392757c6c90bd74a82a46f2526e1c649ca"
+      "sha256": "417d1e498b013482472a74427b8959dc01a604830dd7f2591c09918df7851866"
     },
     {
       "path": "apps/magazine/src/templates/registry.ts",
-      "sha256": "3f70792b43bf17d0f634c4f336c4f88833f6b7a10c3f0994041aef30f61c60c5"
+      "sha256": "45ddfb30813eebf2687478e277ab5c87cbe5465e2d64443219999313b50f30ae"
     }
   ],
   "vocabulary": {
@@ -176,7 +176,7 @@
       "source": {
         "screen": "t001-poster-mesh",
         "path": "packages/taste-screens/src/screens/t001-poster-mesh.svelte",
-        "sha256": "90cf2e573bd53eae927406ca32d286cf473b56667cf4f54b7028eec6bc82737d",
+        "sha256": "f669487bd9cdb30c6edf9d1463db8ca28d0f9a3032a0961c067f5a17b436d4de",
         "authoredStyle": {
           "screen": "t001-poster-mesh",
           "skin": "cosmic-night",
@@ -351,7 +351,7 @@
       "source": {
         "screen": "t002-split-glass",
         "path": "packages/taste-screens/src/screens/t002-split-glass.svelte",
-        "sha256": "177db54bae900d64c9c02c04028952fc13e06ae56a0f0b29c65e52d642eb1220",
+        "sha256": "df4bfe4e5779b26207fd7fcfa74401b7a64ef780d862f89b34e8544b3af599bd",
         "authoredStyle": {
           "screen": "t002-split-glass",
           "skin": "violet-bloom",
@@ -535,7 +535,7 @@
       "source": {
         "screen": "t003-fullbleed-grain",
         "path": "packages/taste-screens/src/screens/t003-fullbleed-grain.svelte",
-        "sha256": "d06c09cbaadaa78dbc4de7a6d45d0a5751396166c9b3c1b4a28a0325997a6e7b",
+        "sha256": "bd6cd512dd0994cba6ff957fbf99bf52bc872613f6afd860e0404de0e912cb97",
         "authoredStyle": {
           "screen": "t003-fullbleed-grain",
           "skin": "neo-brutalism",
@@ -703,7 +703,7 @@
       "source": {
         "screen": "t004-airy-dots",
         "path": "packages/taste-screens/src/screens/t004-airy-dots.svelte",
-        "sha256": "115f8300deb493075fb2a75352c1f29560cf566788295ba1e77309c445c5185a",
+        "sha256": "974f327e205abec4496c0ab7a3cd0d71c960a3fda58aa5a334f2c64eb1b175ae",
         "authoredStyle": {
           "screen": "t004-airy-dots",
           "skin": "modern-minimal",
@@ -865,7 +865,7 @@
       "source": {
         "screen": "t005-stats-flat",
         "path": "packages/taste-screens/src/screens/t005-stats-flat.svelte",
-        "sha256": "2c164650955a78c91d2c8c6a30928527d27d62fc4543ddc8024ad23a2a7c603a",
+        "sha256": "4c135e1cb32400d1696dedab3481a9944cb0bd1d5772274bfe77fabdd44e6b89",
         "authoredStyle": {
           "screen": "t005-stats-flat",
           "skin": "amber-minimal",
@@ -1041,7 +1041,7 @@
       "source": {
         "screen": "t006-ribbon-rings",
         "path": "packages/taste-screens/src/screens/t006-ribbon-rings.svelte",
-        "sha256": "a43f875ab85767afffcd81576d7b7c80e1475b3bff38239bfa36d433a9ef5366",
+        "sha256": "ba7175f20b055d05aaa0d1db6dad4e0112bfd6023360426ddee8ef005222b71b",
         "authoredStyle": {
           "screen": "t006-ribbon-rings",
           "skin": "supabase",
@@ -1218,7 +1218,7 @@
       "source": {
         "screen": "t007-editorial-duotone",
         "path": "packages/taste-screens/src/screens/t007-editorial-duotone.svelte",
-        "sha256": "de178f1f0a1c4b59a9c3ec5a80a99fee4c88846e7d8029f06636ce3eff249120",
+        "sha256": "1b0c35d17b6dc4a5130cd30cd9d0d45252bb28db15e86c460b924514da3c59a0",
         "authoredStyle": {
           "screen": "t007-editorial-duotone",
           "skin": "claude",
@@ -1407,7 +1407,7 @@
       "source": {
         "screen": "t008-frame-conic",
         "path": "packages/taste-screens/src/screens/t008-frame-conic.svelte",
-        "sha256": "ec758f728f8e3ffb81c0dde57130dc194d47e959ab44ea103b9959a3907522e7",
+        "sha256": "67f502a1bdf1dcdea4a2927d6a9c9b7a8dee774ea1c00ea5c770d22bbe49a4bc",
         "authoredStyle": {
           "screen": "t008-frame-conic",
           "skin": "bubblegum",
@@ -1590,7 +1590,7 @@
       "source": {
         "screen": "t070-prompt-geometric",
         "path": "packages/taste-screens/src/screens/t070-prompt-geometric.svelte",
-        "sha256": "209680233f47ee2fe59eba43ad1e8b460385f53e155d8484b0ece9a4e367200b",
+        "sha256": "843e3b6dd3e4566192f0f23a531927548ef260237b9d22494cd0b6622214b7ad",
         "authoredStyle": {
           "screen": "t070-prompt-geometric",
           "skin": "violet-bloom",
@@ -1779,7 +1779,7 @@
       "source": {
         "screen": "t010-dense-geometric",
         "path": "packages/taste-screens/src/screens/t010-dense-geometric.svelte",
-        "sha256": "845954160893682f3dfb1d63bc611c9e233122e0533bd4951e8bef015cca8edf",
+        "sha256": "b3549fc10cd00e35f2510b2feda59cd5b200c42ee753b2f28f6c2fc98f9d2c3c",
         "authoredStyle": {
           "screen": "t010-dense-geometric",
           "skin": "kodama-grove",
@@ -1976,7 +1976,7 @@
       "source": {
         "screen": "t044-dense-conic",
         "path": "packages/taste-screens/src/screens/t044-dense-conic.svelte",
-        "sha256": "ec5094f81cef8df6d480a268d01a27ebab1dd8325f046459f0b2502f88b84c30",
+        "sha256": "6c08352faa94ccd3d04762e48192a0460a031e069135b2a5f6f71864349de34f",
         "authoredStyle": {
           "screen": "t044-dense-conic",
           "skin": "modern-minimal",
@@ -2180,7 +2180,7 @@
       "source": {
         "screen": "t065-airy-duotone",
         "path": "packages/taste-screens/src/screens/t065-airy-duotone.svelte",
-        "sha256": "319d46cb66703170ca5162c3335223af96ea7f031bcd10087e424dc3dbdae5f1",
+        "sha256": "375c6bd22d869b139e95a81557ed7a0b270ae6831430a73f4a9d6f0fa76fe3f1",
         "authoredStyle": {
           "screen": "t065-airy-duotone",
           "skin": "kodama-grove",

@@ -1,7 +1,7 @@
 [
   {
     "id": "ref-c01",
-    "title": "Типографический манифест",
+    "title": "Typographic manifesto",
     "cases": [
       {
         "mode": "authored",
@@ -79,7 +79,7 @@
   },
   {
     "id": "ref-c02",
-    "title": "Диалог двух колонок",
+    "title": "Two-column dialogue",
     "cases": [
       {
         "mode": "authored",
@@ -157,7 +157,7 @@
   },
   {
     "id": "ref-c03",
-    "title": "Плакат во всю ширину",
+    "title": "Full-width poster",
     "cases": [
       {
         "mode": "authored",
@@ -235,7 +235,7 @@
   },
   {
     "id": "ref-c04",
-    "title": "Тихий центр",
+    "title": "Quiet center",
     "cases": [
       {
         "mode": "authored",
@@ -313,7 +313,7 @@
   },
   {
     "id": "ref-c05",
-    "title": "Тезис и доказательства",
+    "title": "Claim and proof",
     "cases": [
       {
         "mode": "authored",
@@ -391,7 +391,7 @@
   },
   {
     "id": "ref-c06",
-    "title": "Сообщение и лента",
+    "title": "Message and ribbon",
     "cases": [
       {
         "mode": "authored",
@@ -469,7 +469,7 @@
   },
   {
     "id": "ref-c07",
-    "title": "Редакционный разворот",
+    "title": "Editorial spread",
     "cases": [
       {
         "mode": "authored",
@@ -547,7 +547,7 @@
   },
   {
     "id": "ref-c08",
-    "title": "Демонстрация в окне",
+    "title": "Windowed demo",
     "cases": [
       {
         "mode": "authored",
@@ -625,7 +625,7 @@
   },
   {
     "id": "ref-c09",
-    "title": "Ввод между рамками",
+    "title": "Input between frames",
     "cases": [
       {
         "mode": "authored",
@@ -703,7 +703,7 @@
   },
   {
     "id": "ref-c10",
-    "title": "Иерархическое бенто",
+    "title": "Hierarchical bento",
     "cases": [
       {
         "mode": "authored",
@@ -781,7 +781,7 @@
   },
   {
     "id": "ref-c11",
-    "title": "Центр и окружение",
+    "title": "Center and surroundings",
     "cases": [
       {
         "mode": "authored",
@@ -859,7 +859,7 @@
   },
   {
     "id": "ref-c12",
-    "title": "Диагональная пауза",
+    "title": "Diagonal pause",
     "cases": [
       {
         "mode": "authored",
