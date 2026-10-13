@@ -59,7 +59,7 @@ export function drift(plan: Plan): string[] {
     if (!existsSync(mp)) out.push(`${t.dir}/${t.manifest}: missing`);
     else if (readFileSync(mp, "utf8") !== manifestOf(t)) out.push(`${t.dir}/${t.manifest}: differs from the plan`);
     const allowed = new Set([...expected.keys(), t.manifest, ...t.handwritten]);
-    for (const f of walk(dir)) if (!allowed.has(f)) out.push(`${t.dir}/${f}: not generated and not an input (hand-written file in a generated ${t.kind}; delete it or move the logic into a spec)`);
+    for (const f of walk(dir)) if (!allowed.has(f) && !t.ignore?.test(f)) out.push(`${t.dir}/${f}: not generated and not an input (hand-written file in a generated ${t.kind}; delete it or move the logic into a spec)`);
     for (const h of t.handwritten) if (!existsSync(join(dir, h))) out.push(`${t.dir}/${h}: missing input`);
   }
   return out;

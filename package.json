@@ -25,7 +25,8 @@
     "packages/shared/*",
     "packages/svelte/*",
     "packages/react/*",
-    "packages/vue/*"
+    "packages/vue/*",
+    "packages/templ/*"
   ],
   "packageManager": "bun@1.4.2",
   "scripts": {

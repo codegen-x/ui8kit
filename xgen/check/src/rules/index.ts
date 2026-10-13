@@ -10,12 +10,13 @@ import type { IrFile, Runtime } from "./ir";
 import { reactToIr } from "./react";
 import { svelteToIr } from "./svelte";
 import { vueToIr } from "./vue";
+import { templToIr } from "./templ";
 import { inBlockRoot, inKit, readZones, ZONES_FILE, zonesText, type Zone } from "./zones";
 
 export { DETECTORS } from "./detectors";
-export const EXT: Record<Runtime, string> = { svelte: ".svelte", react: ".tsx", vue: ".vue" };
-const ADAPTER: Record<Runtime, (src: string) => IrFile> = { svelte: svelteToIr, react: reactToIr, vue: vueToIr };
-export const toIr = (runtime: Runtime, src: string): IrFile => ADAPTER[runtime](src);
+export const EXT: Record<Runtime, string> = { svelte: ".svelte", react: ".tsx", vue: ".vue", templ: ".templ" };
+const ADAPTER: Record<Runtime, (src: string, file?: string) => IrFile> = { svelte: svelteToIr, react: reactToIr, vue: vueToIr, templ: templToIr };
+export const toIr = (runtime: Runtime, src: string, file = ""): IrFile => ADAPTER[runtime](src, file);
 const pascal = (file: string): string => basename(file, extname(file)).split(/[-_.]/).map((s) => s.charAt(0).toUpperCase() + s.slice(1)).join("");
 
 type Counts = Record<string, Record<string, number>>;
@@ -30,13 +31,13 @@ function filesUnder(abs: string, ext: string): string[] {
 /** resolves a component name used by a file to the file that defines it, and tells whether that file opens on Block */
 function makeResolver(repo: string, zones: Zone[]) {
   const ir = new Map<string, IrFile>();
-  const irOf = (abs: string, rt: Runtime): IrFile => { let x = ir.get(abs); if (!x) { x = toIr(rt, readFileSync(abs, "utf8")); ir.set(abs, x); } return x; };
+  const irOf = (abs: string, rt: Runtime): IrFile => { let x = ir.get(abs); if (!x) { x = toIr(rt, readFileSync(abs, "utf8"), abs); ir.set(abs, x); } return x; };
   const composite = new Set<string>();
   const byName = new Map<string, string>(); // `${runtime}:${Name}` -> file of a composite of a ui package
   for (const z of zones) for (const c of z.composition) for (const f of filesUnder(join(repo, z.dir, c), EXT[z.runtime])) {
     composite.add(f);
     if (!z.generated || !z.dir.startsWith("packages/")) continue;
-    const names = z.runtime === "react" ? [...readFileSync(f, "utf8").matchAll(/export function ([A-Z]\w*)/g)].map((m) => m[1]!) : [pascal(f)];
+    const names = z.runtime === "react" ? [...readFileSync(f, "utf8").matchAll(/export function ([A-Z]\w*)/g)].map((m) => m[1]!) : z.runtime === "templ" ? [...readFileSync(f, "utf8").matchAll(/^templ ([A-Z]\w*)\(/gm)].map((m) => m[1]!) : [pascal(f)];
     for (const n of names) byName.set(`${z.runtime}:${n}`, f);
   }
   const memo = new Map<string, boolean>();
@@ -57,7 +58,7 @@ function makeResolver(repo: string, zones: Zone[]) {
       const base = resolve(dirname(from), spec);
       target = [base, base + EXT[rt]].find((p) => existsSync(p) && statSync(p).isFile());
     } else if (spec) target = byName.get(`${rt}:${name}`);
-    else if (rt === "react") target = byName.get(`${rt}:${name}`);
+    else if (rt === "react" || rt === "templ") target = byName.get(`${rt}:${name}`);
     return target ? opensOnBlock(target, rt, stack) : undefined;
   };
   return { irOf, rootsOnBlock: (from: string, rt: Runtime, file: IrFile) => (name: string) => resolveIn(from, rt, file, name, new Set([from])) };
@@ -115,14 +116,14 @@ export const FIXTURE_CASES: Partial<Record<Detector, Record<string, string>>> = 
 /** every detector on one violating and one clean fixture per runtime, plus the named cases of FIXTURE_CASES */
 export function selfTest(repo: string): string[] {
   const problems: string[] = [];
-  for (const rt of ["svelte", "react", "vue"] as Runtime[]) for (const d of DETECTORS) {
+  for (const rt of ["svelte", "react", "vue", "templ"] as Runtime[]) for (const d of DETECTORS) {
     const named = Object.entries(FIXTURE_CASES[d] ?? {});
     const files: [string, "ok" | "bad", string | undefined][] = [[`${d}.bad`, "bad", undefined], [`${d}.ok`, "ok", undefined], ...named.map(([c, msg]): [string, "ok" | "bad", string] => [`${d}.${c}.${msg ? "bad" : "ok"}`, msg ? "bad" : "ok", msg])];
     for (const [name, kind, msg] of files) {
       const rel = `rules/fixtures/${rt}/${name}${EXT[rt]}`;
       const abs = join(repo, rel);
       if (!existsSync(abs)) { problems.push(`${rel}: missing self-test fixture`); continue; }
-      const ir = toIr(rt, readFileSync(abs, "utf8"));
+      const ir = toIr(rt, readFileSync(abs, "utf8"), abs);
       if (ir.error) { problems.push(`${rel}: parse error ${ir.error}`); continue; }
       const found = detect(ir, { blockRoot: true, rootsOnBlock: () => undefined }).filter((f) => f.detector === d);
       if (kind === "bad" && found.length === 0) problems.push(`${rel}: detector ${d} found nothing in its violating fixture`);
@@ -164,5 +165,5 @@ export function checkRules(repo: string): CheckResult {
   problems.push(...selfTest(repo));
   const g = gate(repo);
   problems.push(...g.problems);
-  return result("rules", `rules 01/02/03/06 on the composition zone (${g.files} files, kit never scanned): block-root, raw-html, dynamic-tag, raw-native-tag, reactive-aria, literal-text; ${g.recorded} recorded in rules/baselines, none new; self-test fixtures for svelte, react, vue`, problems);
+  return result("rules", `rules 01/02/03/06 on the composition zone (${g.files} files, kit never scanned): block-root, raw-html, dynamic-tag, raw-native-tag, reactive-aria, literal-text; ${g.recorded} recorded in rules/baselines, none new; self-test fixtures for svelte, react, vue, templ`, problems);
 }

@@ -4,7 +4,7 @@ import { existsSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { xgenPaths } from "@ui8kit/xgen-schema";
 import { planBuild, write } from "@ui8kit/xgen-generator";
-import { runChecks, runE2e, runShot, runVisual } from "@ui8kit/xgen-check";
+import { runChecks, runE2e, runShot, runVisual, templCheck } from "@ui8kit/xgen-check";
 import { writeSpecs } from "@ui8kit/xgen-screens";
 
 /** the workspace is the nearest parent that has an xgen/ folder with specs */
@@ -32,7 +32,10 @@ async function main(argv: string[]): Promise<number> {
     return 0;
   }
   if (cmd === "check") {
-    const { results } = runChecks(workspace);
+    const { results, plan } = runChecks(workspace);
+    // the Go runtime: templ generate, go vet, go build, DOM parity with React, html-validate of every block case
+    const t = await templCheck(workspace, plan.bricks, plan.inputs);
+    results.push({ name: "templ", what: t.skipped ? `skipped: ${t.skipped}` : `templ generate, go vet, go build; ${t.cases} brick cases and ${t.blocks} block cases (${t.organisms} organisms) render the same DOM as React; ${t.documents ?? 0} documents pass html-validate`, problems: t.problems });
     let bad = 0;
     for (const r of results) {
       console.log(`${r.problems.length ? "FAIL" : "ok  "}  ${r.name.padEnd(12)} ${r.what}`);

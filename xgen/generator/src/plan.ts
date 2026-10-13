@@ -26,7 +26,9 @@ export interface Target {
   dir: string;
   kind: "package" | "app";
   /** "core": the shared package, runtime neutral */
-  runtime: Runtime | "core";
+  runtime: Runtime | "core" | "templ";
+  /** build outputs of the target's own tools that the drift check leaves alone (templ generate: *_templ.go) */
+  ignore?: RegExp;
   files: GeneratedFile[];
   /** files in the directory that people write (xgen.app.json) */
   handwritten: string[];
@@ -49,6 +51,7 @@ function banner(path: string, src: string): string {
 }
 
 import { packageReadme } from "./readme";
+import { templFiles, TEMPL_DIR } from "./templ";
 import { authoringIndex, withSource } from "./source";
 const pkgName = (r: Runtime): string => `@ui8kit/${r}-ui`;
 
@@ -193,6 +196,9 @@ export function planBuild(workspace: string, xgenRoot = join(workspace, "xgen"))
   for (const r of UI_RUNTIMES) {
     targets.push({ dir: `packages/${r}/ui`, kind: "package", runtime: r, files: byPath(uiPackage(r, specs.bricks, inputs, parts, xgenRoot)), handwritten: [], manifest: MANIFEST });
   }
+  // the Go templ package; templ generate output (*_templ.go) and go.sum are build outputs the drift check leaves alone
+  const templ = templFiles(specs.bricks, inputs, xgenRoot, problems).sort((a, b) => (a.path < b.path ? -1 : a.path > b.path ? 1 : 0));
+  targets.push({ dir: TEMPL_DIR, kind: "package", runtime: "templ", files: templ, handwritten: [], manifest: ".xgen-manifest.json", ignore: /(_templ\.go|^go\.sum)$/ });
   const all = inputs.screens.map((s) => s.value);
   const apps: Plan["apps"] = [];
   const hosted = new Map<string, ScreenSpec>();

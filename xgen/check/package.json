@@ -23,5 +23,8 @@
   },
   "scripts": {
     "test": "bun test"
+  },
+  "devDependencies": {
+    "parse5": "7"
   }
 }

@@ -17,7 +17,8 @@
     "@ui8kit/xgen-runtime-svelte": "workspace:*",
     "@ui8kit/xgen-runtime-react": "workspace:*",
     "@ui8kit/xgen-runtime-vue": "workspace:*",
-    "@ui8kit/xgen-schema": "workspace:*"
+    "@ui8kit/xgen-schema": "workspace:*",
+    "@ui8kit/xgen-runtime-templ": "workspace:*"
   },
   "scripts": {
     "test": "bun test"

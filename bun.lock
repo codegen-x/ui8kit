@@ -214,6 +214,10 @@
         "vite": "^8.3.0",
       },
     },
+    "packages/templ/ui": {
+      "name": "@ui8kit/templ-ui",
+      "version": "0.0.0",
+    },
     "packages/tooling": {
       "name": "@ui8kit/xgen-tooling",
       "version": "0.0.0",
@@ -254,6 +258,9 @@
         "svelte": "^5.57.0",
         "typescript": "~6.0.2",
       },
+      "devDependencies": {
+        "parse5": "7",
+      },
     },
     "xgen/cli": {
       "name": "@ui8kit/xgen",
@@ -275,6 +282,7 @@
         "@ui8kit/xgen-runtime-core": "workspace:*",
         "@ui8kit/xgen-runtime-react": "workspace:*",
         "@ui8kit/xgen-runtime-svelte": "workspace:*",
+        "@ui8kit/xgen-runtime-templ": "workspace:*",
         "@ui8kit/xgen-runtime-vue": "workspace:*",
         "@ui8kit/xgen-schema": "workspace:*",
         "@ui8kit/xgen-screens": "workspace:*",
@@ -300,6 +308,15 @@
     },
     "xgen/runtimes/svelte": {
       "name": "@ui8kit/xgen-runtime-svelte",
+      "version": "0.0.0",
+      "dependencies": {
+        "@ui8kit/xgen-runtime-core": "workspace:*",
+        "@ui8kit/xgen-screens": "workspace:*",
+        "@ui8kit/xgen-spec": "workspace:*",
+      },
+    },
+    "xgen/runtimes/templ": {
+      "name": "@ui8kit/xgen-runtime-templ",
       "version": "0.0.0",
       "dependencies": {
         "@ui8kit/xgen-runtime-core": "workspace:*",
@@ -488,6 +505,8 @@
 
     "@ui8kit/taste-screens": ["@ui8kit/taste-screens@workspace:packages/taste-screens"],
 
+    "@ui8kit/templ-ui": ["@ui8kit/templ-ui@workspace:packages/templ/ui"],
+
     "@ui8kit/vue-ui": ["@ui8kit/vue-ui@workspace:packages/vue/ui"],
 
     "@ui8kit/xgen": ["@ui8kit/xgen@workspace:xgen/cli"],
@@ -501,6 +520,8 @@
     "@ui8kit/xgen-runtime-react": ["@ui8kit/xgen-runtime-react@workspace:xgen/runtimes/react"],
 
     "@ui8kit/xgen-runtime-svelte": ["@ui8kit/xgen-runtime-svelte@workspace:xgen/runtimes/svelte"],
+
+    "@ui8kit/xgen-runtime-templ": ["@ui8kit/xgen-runtime-templ@workspace:xgen/runtimes/templ"],
 
     "@ui8kit/xgen-runtime-vue": ["@ui8kit/xgen-runtime-vue@workspace:xgen/runtimes/vue"],
 
@@ -570,7 +591,7 @@
 
     "enhanced-resolve": ["enhanced-resolve@5.26.0", "", { "dependencies": { "graceful-fs": "^4.2.4", "tapable": "^2.3.3" } }, "sha512-9vhedylFonb2YGogzUKX6+Ja72gOJbN1QHAqdrvqLwhdl/QWbKopzoUC9EbQNVsAns/bx/4uyqalrQAoy1IByw=="],
 
-    "entities": ["entities@7.0.1", "", {}, "sha512-TWrgLOFUQTH994YUyl1yT4uyavY5nNB5muff+RtWaqNVCAK408b5ZnnbNAUEWLTCpum9w6arT70i1XdQ4UeOPA=="],
+    "entities": ["entities@6.0.1", "", {}, "sha512-aN97NXWF6AWBTahfVOIrB/NShkzi5H7F9r1s9mD3cDj4Ko5f2qhhVoYMibXF7GlLveb/D2ioWay8lxI97Ven3g=="],
 
     "esm-env": ["esm-env@1.2.2", "", {}, "sha512-Epxrv+Nr/CaL4ZcFGPJIYLWFom+YeV1DqMLHJoEd9SYRxNbaFruBwfEX/kkHUJf55j2+TUbmDcmuilbP1TmXHA=="],
 
@@ -647,6 +668,8 @@
     "nanoid": ["nanoid@3.3.19", "", { "bin": { "nanoid": "bin/nanoid.cjs" } }, "sha512-Y2tUNy4ouw6tq5oDSKeQYGOyhkUBhNOcGV/02KC+6kd9eDGqdZd++mjMiIDilrBYvjEnCYvVtsuHCuP+okSfug=="],
 
     "obug": ["obug@2.2.1", "", {}, "sha512-XrsrhT5sybtKI6wakr2SPOlGZWWYbUXZ7a0jT8/QOeAPau+1X/bSegNe5YR75oJmEZQbKningirmGOEJCIk61Q=="],
+
+    "parse5": ["parse5@7.3.0", "", { "dependencies": { "entities": "^6.0.0" } }, "sha512-IInvU7fabl34qmi9gY8XOVxhYyMyuH2xUNpb2q8/Y+7552KlejkRvqvD19nMoUW/uQGGbqNpA6Tufu5FL5BZgw=="],
 
     "path-browserify": ["path-browserify@1.0.1", "", {}, "sha512-b7uo2UCUOYZcnF/3ID0lulOJi/bafxa1xPe7ZPsammBSpjSWQkjNxlt635YGS2MiR9GjvuXCtz2emr3jbsz98g=="],
 
@@ -727,6 +750,8 @@
     "@tailwindcss/oxide-wasm32-wasi/@tybys/wasm-util": ["@tybys/wasm-util@0.10.4", "", { "dependencies": { "tslib": "^2.4.0" }, "bundled": true }, "sha512-W3c4gRigFS0T/Ma4qIYF3GDAc5AQdHb1yL5znJT1Zv1YaD9Kitx656wBjvr19qbiosmZT8lWDM5BEMynUqX65A=="],
 
     "@tailwindcss/oxide-wasm32-wasi/tslib": ["tslib@2.8.1", "", { "bundled": true }, "sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w=="],
+
+    "@vue/compiler-core/entities": ["entities@7.0.1", "", {}, "sha512-TWrgLOFUQTH994YUyl1yT4uyavY5nNB5muff+RtWaqNVCAK408b5ZnnbNAUEWLTCpum9w6arT70i1XdQ4UeOPA=="],
 
     "prompts/kleur": ["kleur@3.0.3", "", {}, "sha512-eTIzlVOSUR+JxdDFepEYcBMtZ9Qqdef+rnzWdRZuMbOywu5tO2w2N7rqjoANZ5k9vywhL6Br1VRjUIgTQx4E8w=="],
 

@@ -282,4 +282,5 @@ export type { LoadedBrick, SpecFile };
 
 export { checkBlocks } from "./blocks";
 export { runE2e, type E2eReport } from "./e2e";
+export { templCheck, type TemplResult } from "./templ";
 export { runShot, type ShotOptions } from "./shots";
