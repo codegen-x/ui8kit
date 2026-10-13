@@ -112,53 +112,6 @@ export const twigToIr = (src: string, file = ""): IrFile => templateToIr(src, fi
 /** Jinja2 reads the same: `elif`, `|safe`, `ui_include(...)`, `p['x']`, `x if c else y`; `{% call m(...) %}` and a macro imported with `{% from %}` are components */
 export const jinjaToIr = (src: string, file = ""): IrFile => templateToIr(src, file, "jinja2");
 
-/** Latte reads as Twig once its tags are rewritten ({=e} and {$x} outputs, {if}/{/if}, {foreach}, {capture $x}, {var}, {* *}); lines are kept */
-export const latteToIr = (src: string, file = ""): IrFile => templateToIr(latteAsTwig(src), file, "latte");
-
-const LATTE_END: Record<string, string> = { if: "endif", foreach: "endfor", for: "endfor", capture: "endset", embed: "endembed", define: "endmacro", block: "endblock" };
-
-export function latteAsTwig(s: string): string {
-  let out = "";
-  let i = 0;
-  while (i < s.length) {
-    const c = s[i]!;
-    if (c !== "{" || /[\s}]/.test(s[i + 1] ?? " ")) { out += c; i++; continue; }
-    if (s[i + 1] === "*") { const e = s.indexOf("*}", i + 2); const end = e < 0 ? s.length : e + 2; out += `{#${s.slice(i + 2, end - 2)}#}`; i = end; continue; }
-    // the matching } outside strings and brackets
-    let k = i + 1, depth = 0, q = "";
-    for (; k < s.length; k++) {
-      const ch = s[k]!;
-      if (q) { if (ch === "\\") { k++; continue; } if (ch === q) q = ""; continue; }
-      if (ch === "'" || ch === '"') { q = ch; continue; }
-      if (depth === 0 && ch === "}") break;
-      if ("([{".includes(ch)) depth++;
-      else if (")]}".includes(ch)) depth--;
-    }
-    const body = s.slice(i + 1, k);
-    i = k + 1;
-    if (body.startsWith("=")) { out += `{{ ${body.slice(1)} }}`; continue; }
-    if (body.startsWith("$")) { out += `{{ ${body} }}`; continue; }
-    if (body.startsWith("/")) { const kw = body.slice(1).trim().split(/\s+/)[0]!; out += `{% ${LATTE_END[kw] ?? `end${kw}`} %}`; continue; }
-    const [kw = "", ...rest] = body.split(/\s+/);
-    const arg = body.slice(kw.length).trim();
-    void rest;
-    switch (kw) {
-      case "foreach": out += `{% for ${arg} %}`; break;
-      case "capture": out += `{% set ${arg.replace(/^\$/, "")} %}`; break;
-      case "var": case "default": out += `{% set ${arg.replace(/^\$/, "")} %}`; break;
-      case "include": case "embed": {
-        const m = /^('[^']*'|"[^"]*")\s*(?:,\s*([\s\S]*))?$/.exec(arg);
-        const vars = m?.[2]?.trim();
-        out += m ? `{% ${kw} ${m[1]}${vars ? ` with ${vars.startsWith("[") ? vars : `[${vars}]`}` : ""} %}` : `{% ${kw} %}`;
-        break;
-      }
-      case "define": out += `{% macro ${arg} %}`; break;
-      default: out += `{% ${body} %}`;
-    }
-  }
-  return out;
-}
-
 export function templateToIr(src: string, _file: string, runtime: "twig" | "jinja2" | "latte"): IrFile {
   const macros = new Map<string, string>();
   const imports = new Map<string, string>();
@@ -301,19 +254,26 @@ export function templateToIr(src: string, _file: string, runtime: "twig" | "jinj
         const tag = dyn ? dyn[1]!.trim() : /^[\w-]+/.exec(open)![0];
         const body = open.slice(dyn ? dyn[0].length : tag.length);
         const attrs: IrAttr[] = [];
-        for (const m of body.matchAll(/([\w:@.-]+)(?:="([^"]*)")?|\{\{[\s\S]*?\}\}/g)) {
+        for (const m of body.matchAll(/([\w:@.-]+)(?:="([^"]*)"|='([^']*)')?|\{\{[\s\S]*?\}\}/g)) {
           if (!m[1]) continue;
-          const v = m[2];
+          const v = m[2] ?? m[3];
           if (v === undefined) attrs.push({ name: m[1], line, static: true, strings: [] });
           else if (!v.includes("{{")) attrs.push({ name: m[1], line, static: true, value: v, strings: [v] });
           else { const x = /^\{\{([\s\S]*)\}\}$/.exec(v.trim()); attrs.push(x ? attr(m[1], line, x[1]!) : { name: m[1], line, static: false, strings: [] }); }
         }
         const self = s[k - 1] === "/";
-        // Latte n:tag renames the element at render: a dynamic tag
-        const ntag = attrs.findIndex((a) => a.name === "n:tag");
-        const node = { kind: (dyn || ntag >= 0 ? "dynamic" : "element") as "element", name: ntag >= 0 ? attrs.splice(ntag, 1)[0]!.value ?? tag : tag, line, attrs, children: [] as IrNode[] };
-        push(node);
-        if (!self && !VOID.has(tag)) stack.push({ kind: "element", list: node.children, node, tag });
+        // Latte n: attributes: n:tag renames the element at render (a dynamic tag); n:if and n:foreach wrap the element in a
+        // choice or a loop, n:inner-foreach repeats its content; the others (n:class, n:attr, ...) are not host attributes
+        const n = Object.fromEntries(attrs.filter((a) => a.name.startsWith("n:")).map((a) => [a.name, a.value ?? ""]));
+        const host = attrs.filter((a) => !a.name.startsWith("n:"));
+        const node = { kind: (dyn || "n:tag" in n ? "dynamic" : "element") as "element", name: "n:tag" in n ? n["n:tag"]! : tag, line, attrs: host, children: [] as IrNode[] };
+        let outer: IrNode = node;
+        if ("n:foreach" in n) outer = { kind: "loop", line, children: [outer] };
+        if ("n:if" in n || "n:ifcontent" in n) outer = choice(line, [[outer], []]);
+        push(outer);
+        let inner = node.children;
+        if ("n:inner-foreach" in n) { const l: IrNode = { kind: "loop", line, children: [] }; node.children.push(l); inner = l.children; }
+        if (!self && !VOID.has(tag)) stack.push({ kind: "element", list: inner, node, tag });
         i = k + 1; continue;
       }
       let e = i;

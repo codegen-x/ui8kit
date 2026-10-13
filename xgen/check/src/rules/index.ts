@@ -12,7 +12,8 @@ import { svelteToIr } from "./svelte";
 import { vueToIr } from "./vue";
 import { templToIr } from "./templ";
 import { solidToIr } from "./solid";
-import { jinjaToIr, latteToIr, twigToIr } from "./twig";
+import { jinjaToIr, twigToIr } from "./twig";
+import { latteToIr } from "./latte";
 import { inBlockRoot, inKit, readZones, ZONES_FILE, zonesText, type Zone } from "./zones";
 
 export { DETECTORS } from "./detectors";
