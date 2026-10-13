@@ -52,7 +52,7 @@ bun run hooks:install  # once per clone: git config core.hooksPath .githooks (pr
 | runtimes | Svelte 5 (`@ui8kit/svelte-ui`, `host-svelte`) and React 19 (`@ui8kit/react-ui`, `host-react`) |
 
 Text is never written in a view: a text is a reference into the content dictionary (or into the `labels` an organism receives).
-Cyrillic is not allowed anywhere in the sources, the generated code or the content (`xgen check`, `text`).
+Cyrillic is not allowed in any tracked file: sources, generated code, content, docs, plans and reports (`xgen check`, `text`, which scans `git ls-files`). Genuine locale files would go in `CYRILLIC_ALLOW` in `xgen/check/src/index.ts`; the list is empty.
 
 ## xgen packages
 

@@ -2,6 +2,7 @@
 import { xgenPaths } from "@ui8kit/xgen-schema";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
+import { execFileSync } from "node:child_process";
 import { validateRegistry, deriveA11y, deriveData, deriveSlots, portableTo, UI_RUNTIMES, type LoadedBrick, type SpecFile, type UiRuntime } from "@ui8kit/xgen-spec";
 import { authored, authoredDirs, screenContentRefs, indexParts, sourcesOf, stringify, fileName, tierDir, validateOrganism, validateScreen, type OrganismSpec } from "@ui8kit/xgen-screens";
 import { drift, planBuild, type Plan } from "@ui8kit/xgen-generator";
@@ -204,17 +205,32 @@ export function checkNonportable(plan: Plan): CheckResult {
   return result("nonportable", "generated code uses none of the features that do not carry over (context, $bindable, attach, raw HTML, v-model); the replacements are documented", problems);
 }
 
-/** text: no Cyrillic anywhere in the sources, the generated code and the content; every content key a view reads exists */
+/** Genuine locale resources that may hold Cyrillic (repo-relative paths). Empty: the repository is English-only. */
+export const CYRILLIC_ALLOW: readonly string[] = [];
+
+/** every tracked file (git ls-files); outside a git checkout, the source roots on disk */
+function trackedFiles(workspace: string): string[] {
+  try {
+    const out = execFileSync("git", ["ls-files", "-z"], { cwd: workspace, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] });
+    return out.split("\0").filter(Boolean).map((f) => join(workspace, f)).filter((f) => existsSync(f));
+  } catch {
+    const skip = new Set(["node_modules", "dist", "shots", ".git", "bun.lock"]);
+    return ["xgen", "packages", "apps", "plan", "docs", "README.md"].map((r) => join(workspace, r)).filter(existsSync).flatMap((r) => (statSync(r).isDirectory() ? files(r, skip) : [r]));
+  }
+}
+
+/** text: no Cyrillic in any tracked file (sources, generated code, content, docs, plans) outside CYRILLIC_ALLOW; every content key a view reads exists */
 export function checkText(plan: Plan): CheckResult {
   const problems: string[] = [];
-  const roots = ["xgen", "packages", "apps", "README.md"].map((r) => join(plan.workspace, r));
-  const skip = new Set(["node_modules", "dist", "shots", ".git", "bun.lock"]);
-  for (const r of roots) {
-    for (const f of statSync(r).isDirectory() ? files(r, skip) : [r]) {
-      if (/\.(png|jpe?g|woff2?|ico)$/.test(f)) continue;
-      const m = readFileSync(f, "utf8").match(CYRILLIC);
-      if (m) problems.push(`${relative(plan.workspace, f)}: Cyrillic text`);
-    }
+  const allow = new Set(CYRILLIC_ALLOW);
+  for (const f of trackedFiles(plan.workspace)) {
+    const rel = relative(plan.workspace, f).split("\\").join("/");
+    if (allow.has(rel)) continue;
+    const buf = readFileSync(f);
+    if (buf.includes(0)) continue; // binary
+    const lines = buf.toString("utf8").split("\n");
+    const i = lines.findIndex((l) => CYRILLIC.test(l));
+    if (i >= 0) problems.push(`${rel}:${i + 1}: Cyrillic text (the repository is English-only; genuine locale files go in CYRILLIC_ALLOW)`);
   }
   const dict = plan.inputs.dictionary.value as Record<string, unknown>;
   const has = (path: string): unknown => path.split(".").reduce<unknown>((o, k) => (o && typeof o === "object" ? (o as Record<string, unknown>)[k] : undefined), dict);
@@ -252,7 +268,7 @@ export function checkText(plan: Plan): CheckResult {
     }
     }
   }
-  return result("text", "no Cyrillic; every text of a view is a key that exists in content/ui/en.json", problems);
+  return result("text", "no Cyrillic in tracked files; every text of a view is a key that exists in content/ui/en.json", problems);
 }
 
 export function runChecks(workspace: string): { results: CheckResult[]; plan: Plan } {
