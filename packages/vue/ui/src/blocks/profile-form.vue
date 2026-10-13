@@ -63,7 +63,7 @@ const {
         :id="id"
         :class="cn((((tone as string) === 'muted') ? 'bg-muted' : ''))"
       >
-        <Form class="gap-6" data-testid="profile-form">
+        <Form method="dialog" class="gap-6" data-testid="profile-form">
           <Grid :cols="(((layout as string) === 'split') ? '1-2' : '1')" class="items-start gap-8">
             <Stack gap="4" align="stretch">
               <Group v-if="((avatar as string) === 'show')" gap="4" align="center" data-testid="avatar">
@@ -101,7 +101,7 @@ const {
             </Stack>
           </Grid>
           <Group gap="2" class="flex-wrap">
-            <Button variant="default" size="default" type="button" data-testid="submit">
+            <Button variant="default" size="default" type="submit" data-testid="submit">
               {{ labels.save }}
             </Button>
             <Button variant="outline" size="default" type="button">

@@ -38,7 +38,7 @@ import CartSummaryCard from "../components/cart-summary-card.vue";
 import MediaFrame from "../components/media-frame.vue";
 import NumberField from "../components/number-field.vue";
 import SectionFrame from "../components/section-frame.vue";
-import { fmtMoney } from "../utils";
+import { fmtMoney, tpl } from "../utils";
 
 const {
   id,
@@ -90,7 +90,7 @@ const {
           </Stack>
           <NumberField
             :value="(line.qty == null ? undefined : String(line.qty))"
-            name="qty"
+            :name="tpl('{0}-qty-{1}', id, line.id)"
             min="1"
             :label="labels.qty"
             :decrease="labels.decrease"
@@ -115,6 +115,7 @@ const {
       </Stack>
       <Box :class="(((layout as string) === 'split') ? 'lg:sticky lg:top-8' : '')" data-testid="aside">
         <CartSummaryCard
+          :field="tpl('{0}-promo', id)"
           :lines="lines"
           :rows="rows"
           :promos="promos"

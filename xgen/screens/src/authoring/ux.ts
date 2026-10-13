@@ -7,6 +7,8 @@ import { kids } from "./forms";
 export const muted = (v: Value, size = "sm", cls = ""): ViewNode => use("Text", { props: { Size: size, Class: cls ? cn("text-muted-foreground", cls) : "text-muted-foreground" } }, text(v));
 /** a strong line */
 export const strong = (v: Value, size = "base", weight = "semibold"): ViewNode => use("Text", { props: { Size: size, Weight: weight } }, text(v));
+/** a strong line inside phrasing content (summary, button, label, span): a span, not a paragraph */
+export const strongSpan = (v: Value, size = "base", weight = "semibold"): ViewNode => use("Inline", { props: { Class: `text-${size} font-${weight}` } }, text(v));
 /** a heading below the section heading */
 export const heading = (v: Value, size = "xl", as = 3): ViewNode => use("Title", { props: { As: as, Size: size, Weight: "bold" } }, text(v));
 /** a card surface: the radius, ring and fill of every boxed block */

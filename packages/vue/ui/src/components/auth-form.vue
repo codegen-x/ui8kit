@@ -30,7 +30,7 @@ const { id, mode = "signin", labels, submit } = defineProps<AuthFormProps>();
 </script>
 
 <template>
-  <Form class="gap-4" data-testid="auth-form">
+  <Form method="dialog" class="gap-4" data-testid="auth-form">
     <Field v-if="((mode as string) === 'signup')" :label="labels.name" :htmlFor="tpl('{0}-name', id)">
       <Input type="text" name="name" autocomplete="name" :id="tpl('{0}-name', id)" data-testid="field" />
     </Field>
@@ -67,7 +67,7 @@ const { id, mode = "signin", labels, submit } = defineProps<AuthFormProps>();
         {{ labels.terms }}
       </Label>
     </Group>
-    <Button variant="default" size="default" type="button" class="w-full" data-testid="submit">
+    <Button variant="default" size="default" type="submit" class="w-full" data-testid="submit">
       {{ submit }}
     </Button>
   </Form>

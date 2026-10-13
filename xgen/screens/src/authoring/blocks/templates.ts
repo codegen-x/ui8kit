@@ -54,11 +54,13 @@ const templateGrid = spec(`${O}template-grid`, "TemplateGrid", "Template gallery
         use("Stack", { props: { Gap: "0", Class: "min-w-0 flex-1" } },
           use("Title", { props: { As: 3, Size: "base", Weight: "semibold", Class: "truncate leading-6" } }, text(ref("t.title"))),
           use("Group", { props: { Gap: "4", Align: "center", Class: "h-4 text-muted-foreground" } },
-            use("Group", { props: { Gap: "2", Align: "center" }, attrs: { "aria-label": ref("viewsLabel") } },
+            use("Group", { props: { Gap: "2", Align: "center" } },
               use("LucideIcon", { props: { Name: "eye", Size: 16 } }),
+              use("Inline", { props: { Class: "sr-only" } }, text(ref("viewsLabel"))),
               use("Text", { props: { Size: "xs", Weight: "bold", Class: "leading-4" } }, text(ref("t.views")))),
-            use("Group", { props: { Gap: "2", Align: "center" }, attrs: { "aria-label": ref("likesLabel") } },
+            use("Group", { props: { Gap: "2", Align: "center" } },
               use("LucideIcon", { props: { Name: "heart", Size: 16 } }),
+              use("Inline", { props: { Class: "sr-only" } }, text(ref("likesLabel"))),
               use("Text", { props: { Size: "xs", Weight: "bold", Class: "leading-4" } }, text(ref("t.likes"))))))));
     return [frame({ id: ref("id"), title: "", tone: ref("tone"), density: ref("density"), measure: "fill", className: "py-0" }, [
       use("Stack", { props: { Gap: "8", Align: "stretch" } },

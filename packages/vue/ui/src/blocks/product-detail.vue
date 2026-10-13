@@ -94,7 +94,7 @@ const emit = defineEmits<{ add: [id: string] }>();
       <Group gap="4" class="flex-wrap">
         <NumberField v-if="((buy as string) === 'full')"
           value="1"
-          name="qty"
+          :name="tpl('{0}-qty', id)"
           min="1"
           :label="labels.qty"
           :decrease="labels.decrease"

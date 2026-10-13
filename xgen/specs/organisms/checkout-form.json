@@ -202,6 +202,7 @@
                 {
                   "use": "Form",
                   "props": {
+                    "Method": "dialog",
                     "Class": {
                       "op": "cond",
                       "args": [
@@ -429,7 +430,7 @@
                                       "props": {
                                         "Type": "text",
                                         "Name": "street",
-                                        "Autocomplete": "street-address"
+                                        "Autocomplete": "address-line1"
                                       },
                                       "attrs": {
                                         "id": {
@@ -823,7 +824,7 @@
                           "props": {
                             "Variant": "default",
                             "Size": "lg",
-                            "Type": "button"
+                            "Type": "submit"
                           },
                           "attrs": {
                             "data-testid": "submit"
@@ -877,6 +878,15 @@
                         {
                           "organism": "CartSummaryCard",
                           "props": {
+                            "field": {
+                              "op": "tpl",
+                              "args": [
+                                "{0}-promo",
+                                {
+                                  "$": "id"
+                                }
+                              ]
+                            },
                             "lines": {
                               "$": "lines"
                             },

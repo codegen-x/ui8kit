@@ -33,6 +33,12 @@
         "ts": "\"default\" | \"compact\""
       },
       "default": "default"
+    },
+    {
+      "name": "field",
+      "type": "string",
+      "default": "qty",
+      "docs": "prefix of the quantity field names (one name per line: <field>-<line id>)"
     }
   ],
   "slots": [],
@@ -320,7 +326,18 @@
                                     }
                                   ]
                                 },
-                                "name": "qty",
+                                "name": {
+                                  "op": "tpl",
+                                  "args": [
+                                    "{0}-{1}",
+                                    {
+                                      "$": "field"
+                                    },
+                                    {
+                                      "$": "line.id"
+                                    }
+                                  ]
+                                },
                                 "min": "1",
                                 "label": {
                                   "$": "labels.qty"

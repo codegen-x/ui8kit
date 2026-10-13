@@ -6,6 +6,7 @@
  */
 import { type ReactNode } from "react";
 import { IconBadge } from "../primitives/iconbadge/iconbadge";
+import { Inline } from "../primitives/inline/inline";
 import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
@@ -67,9 +68,9 @@ export function StepsList({
               {((marker as string) === "icon") ? (
                 <LucideIcon name={step.icon} size={20} />
               ) : (
-                <Text size="base" weight="bold">
+                <Inline className="text-base font-bold">
                   {((i + 1) == null ? undefined : String((i + 1)))}
-                </Text>
+                </Inline>
               )}
             </IconBadge>
             <Stack gap="2" align={(((align as string) === "center") ? "center" : "start")}>

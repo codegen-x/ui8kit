@@ -238,10 +238,9 @@
                               ],
                               "else": [
                                 {
-                                  "use": "Text",
+                                  "use": "Inline",
                                   "props": {
-                                    "Size": "base",
-                                    "Weight": "bold"
+                                    "Class": "text-base font-bold"
                                   },
                                   "children": [
                                     {

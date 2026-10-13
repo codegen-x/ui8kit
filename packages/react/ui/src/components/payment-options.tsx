@@ -3,11 +3,11 @@
 /** Ways to pay as radio cards: icon, name and a line of text; `checked` is the chosen one. Static markup. */
 import { type ReactNode } from "react";
 import { Grid } from "../primitives/grid/grid";
+import { Inline } from "../primitives/inline/inline";
 import { Label } from "../primitives/label/label";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Radio } from "../primitives/radio/radio";
 import { Stack } from "../primitives/stack/stack";
-import { Text } from "../primitives/text/text";
 import type { Payment } from "./payment-options.types";
 
 export type PaymentOptionsProps = {
@@ -26,13 +26,13 @@ export function PaymentOptions({ payments, name, checked = "" }: PaymentOptionsP
         >
           <Radio name={name} value={p.id} checked={(p.id === checked)} />
           <LucideIcon name={p.icon} size={20} className="shrink-0" />
-          <Stack gap="0">
-            <Text size="sm" weight="semibold">
+          <Stack tag="span" gap="0">
+            <Inline className="text-sm font-semibold">
               {p.title}
-            </Text>
-            <Text size="xs" className="text-muted-foreground">
+            </Inline>
+            <Inline className="text-xs text-muted-foreground">
               {p.text}
-            </Text>
+            </Inline>
           </Stack>
         </Label>
       ))}

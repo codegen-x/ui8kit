@@ -39,7 +39,7 @@
   import MediaFrame from "../components/media-frame.svelte";
   import NumberField from "../components/number-field.svelte";
   import SectionFrame from "../components/section-frame.svelte";
-  import { fmtMoney } from "../utils";
+  import { fmtMoney, tpl } from "../utils";
 
   let {
     id,
@@ -91,7 +91,7 @@
           </Stack>
           <NumberField
             value={(line.qty == null ? undefined : String(line.qty))}
-            name="qty"
+            name={tpl("{0}-qty-{1}", id, line.id)}
             min="1"
             label={labels.qty}
             decrease={labels.decrease}
@@ -116,7 +116,15 @@
       </Group>
     </Stack>
     <Box class={(((layout as string) === "split") ? "lg:sticky lg:top-8" : "")} data-testid="aside">
-      <CartSummaryCard lines={lines} rows={rows} promos={promos} labels={totals} promo={promo} progress={progress} />
+      <CartSummaryCard
+        field={tpl("{0}-promo", id)}
+        lines={lines}
+        rows={rows}
+        promos={promos}
+        labels={totals}
+        promo={promo}
+        progress={progress}
+      />
     </Box>
   </Box>
 </SectionFrame>

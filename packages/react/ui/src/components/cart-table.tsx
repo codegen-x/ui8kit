@@ -21,7 +21,7 @@ import { TableRow } from "../primitives/table/table-row";
 import { Text } from "../primitives/text/text";
 import { MediaFrame } from "../components/media-frame";
 import { NumberField } from "../components/number-field";
-import { cn, fmtMoney } from "../utils";
+import { cn, fmtMoney, tpl } from "../utils";
 import type { CartLine, CartLabels } from "../blocks/cart-list.types";
 
 export type CartTableProps = {
@@ -29,10 +29,18 @@ export type CartTableProps = {
   labels: CartLabels;
   media?: "image" | "none";
   density?: "default" | "compact";
+  field?: string;
   onRemove?: (id: string) => void;
 };
 
-export function CartTable({ lines, labels, media = "image", density = "default", onRemove }: CartTableProps) {
+export function CartTable({
+  lines,
+  labels,
+  media = "image",
+  density = "default",
+  field = "qty",
+  onRemove,
+}: CartTableProps) {
   return (
     <>
       <Box className="w-full overflow-x-auto">
@@ -85,7 +93,7 @@ export function CartTable({ lines, labels, media = "image", density = "default",
                 <TableCell>
                   <NumberField
                     value={(line.qty == null ? undefined : String(line.qty))}
-                    name="qty"
+                    name={tpl("{0}-{1}", field, line.id)}
                     min="1"
                     label={labels.qty}
                     decrease={labels.decrease}

@@ -22,6 +22,7 @@
 
 <script lang="ts">
   import IconBadge from "../primitives/iconbadge/icon-badge.svelte";
+  import Inline from "../primitives/inline/inline.svelte";
   import List from "../primitives/list/list.svelte";
   import ListItem from "../primitives/list/list-item.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
@@ -69,9 +70,9 @@
           {#if ((marker as string) === "icon")}
             <LucideIcon name={step.icon} size={20} />
           {:else}
-            <Text size="base" weight="bold">
+            <Inline class="text-base font-bold">
               {((i + 1) == null ? undefined : String((i + 1)))}
-            </Text>
+            </Inline>
           {/if}
         </IconBadge>
         <Stack gap="2" align={(((align as string) === "center") ? "center" : "start")}>

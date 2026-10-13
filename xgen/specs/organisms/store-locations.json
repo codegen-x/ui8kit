@@ -356,7 +356,12 @@
                                       "children": [
                                         {
                                           "text": {
-                                            "$": "s.phone"
+                                            "op": "nbsp",
+                                            "args": [
+                                              {
+                                                "$": "s.phone"
+                                              }
+                                            ]
                                           }
                                         }
                                       ]

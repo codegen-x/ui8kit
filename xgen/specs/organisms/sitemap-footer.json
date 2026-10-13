@@ -223,6 +223,7 @@
                         {
                           "use": "Form",
                           "props": {
+                            "Method": "dialog",
                             "Class": {
                               "op": "cn",
                               "args": [
@@ -297,7 +298,7 @@
                                   "props": {
                                     "Variant": "default",
                                     "Size": "default",
-                                    "Type": "button"
+                                    "Type": "submit"
                                   },
                                   "attrs": {
                                     "data-testid": "submit"

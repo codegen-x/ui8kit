@@ -191,6 +191,7 @@
                     {
                       "use": "Form",
                       "props": {
+                        "Method": "dialog",
                         "Class": "gap-6"
                       },
                       "attrs": {
@@ -561,7 +562,7 @@
                               "props": {
                                 "Variant": "default",
                                 "Size": "default",
-                                "Type": "button"
+                                "Type": "submit"
                               },
                               "attrs": {
                                 "data-testid": "submit"

@@ -1,5 +1,5 @@
 // The table layout of CartList (CartTable): one row per line with its quantity field and a remove button.
-import { call, cn, cond, each, eq, firstOf, gt, len, mul, money, ref, str, sumBy, text, use, when, organism } from "../../build";
+import { call, tpl, cn, cond, each, eq, firstOf, gt, len, mul, money, ref, str, sumBy, text, use, when, organism } from "../../build";
 import { spec, ts } from "../kit";
 import { tsOf, denseLite } from "../props";
 
@@ -11,6 +11,7 @@ export const cartTable = spec("pattern.cart-table", "CartTable", "The lines of a
     { name: "labels", type: ts("CartLabels"), required: true },
     { name: "media", type: tsOf("image", "none"), default: "image" },
     { name: "density", type: denseLite, default: "default" },
+    { name: "field", type: "string", default: "qty", docs: "prefix of the quantity field names (one name per line: <field>-<line id>)" },
   ],
   events: [{ name: "remove", args: [{ name: "id", type: "string" }], docs: "the remove button of a line was pressed" }],
   view: [
@@ -32,7 +33,7 @@ export const cartTable = spec("pattern.cart-table", "CartTable", "The lines of a
               use("Text", { props: { Size: "sm", Weight: "semibold" } }, text(ref("line.name"))),
               use("Text", { props: { Size: "xs", Class: "text-muted-foreground" } }, text(ref("line.variant")))))),
         use("TableCell", { props: { Class: "hidden sm:table-cell" } }, text(money(ref("line.price"), ref("line.currency")))),
-        use("TableCell", { props: { Class: "" } }, organism("NumberField", { value: str(ref("line.qty")), name: "qty", min: "1", label: ref("labels.qty"), decrease: ref("labels.decrease"), increase: ref("labels.increase") })),
+        use("TableCell", { props: { Class: "" } }, organism("NumberField", { value: str(ref("line.qty")), name: tpl("{0}-{1}", ref("field"), ref("line.id")), min: "1", label: ref("labels.qty"), decrease: ref("labels.decrease"), increase: ref("labels.increase") })),
         use("TableCell", { props: { Class: "font-semibold" } }, text(money(mul(ref("line.price"), ref("line.qty")), ref("line.currency")))),
         use("TableCell", { props: { Class: "text-right" } }, use("Button", { props: { Variant: "ghost", Size: "sm", Layout: "icon", AriaLabel: ref("labels.remove") }, on: { click: call("emit.remove", ref("line.id")) }, attrs: { "data-testid": "remove" } }, use("LucideIcon", { props: { Name: "x", Size: 16 } })))))))),
     when(gt(len(ref("lines")), 0), [use("Group", { props: { Gap: "4", Align: "center", Justify: "between", Class: "mt-4 flex-wrap border-t border-border pt-4" }, attrs: { "data-testid": "cart-footer" } },

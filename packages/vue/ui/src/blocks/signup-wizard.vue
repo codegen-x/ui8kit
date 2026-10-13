@@ -22,8 +22,8 @@ export type SignupWizardProps = {
 
 <script setup lang="ts">
 import Block from "../primitives/block/block.vue";
+import Box from "../primitives/box/box.vue";
 import Button from "../primitives/button/button.vue";
-import Form from "../primitives/form/form.vue";
 import Group from "../primitives/group/group.vue";
 import Input from "../primitives/input/input.vue";
 import List from "../primitives/list/list.vue";
@@ -97,14 +97,14 @@ const emit = defineEmits<{ go: [step: number] }>();
         <Text size="sm" class="text-muted-foreground">
           {{ s.text }}
         </Text>
-        <Form class="gap-4">
+        <Box class="grid gap-4">
           <Field :label="s.fieldA" :htmlFor="tpl('{0}-a', id)">
-            <Input type="text" name="a" :id="tpl('{0}-a', id)" data-testid="field" />
+            <Input type="text" :name="tpl('{0}-a', id)" :id="tpl('{0}-a', id)" data-testid="field" />
           </Field>
           <Field :label="s.fieldB" :htmlFor="tpl('{0}-b', id)">
-            <Input type="text" name="b" :id="tpl('{0}-b', id)" data-testid="field" />
+            <Input type="text" :name="tpl('{0}-b', id)" :id="tpl('{0}-b', id)" data-testid="field" />
           </Field>
-        </Form>
+        </Box>
       </Stack>
     </template>
     <Group gap="2" justify="between">

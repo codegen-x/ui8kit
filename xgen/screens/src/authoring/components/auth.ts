@@ -15,7 +15,7 @@ export const authForm = spec(`${P}auth-form`, "AuthForm", "The form of AuthCard:
     { name: "submit", type: "string", required: true, docs: "text of the submit button" },
   ],
   view: [
-    use("Form", { props: { Class: "gap-4" }, attrs: { "data-testid": "auth-form" } },
+    use("Form", { props: { Method: "dialog", Class: "gap-4" }, attrs: { "data-testid": "auth-form" } },
       when(eq(ref("mode"), "signup"), [inputField("name", "text", ref("labels.name"), "name")]),
       inputField("email", "email", ref("labels.email"), "email"),
       when(and(ne(ref("mode"), "reset"), ne(ref("mode"), "magic")), [inputField("password", "password", ref("labels.password"), cond(eq(ref("mode"), "signup"), "new-password", "current-password"))]),
@@ -23,6 +23,6 @@ export const authForm = spec(`${P}auth-form`, "AuthForm", "The form of AuthCard:
         checkRow("remember", ref("labels.remember")),
         use("Link", { props: { Href: "#/", Variant: "default", Class: "text-sm" } }, text(ref("labels.forgot"))))]),
       when(eq(ref("mode"), "signup"), [checkRow("terms", ref("labels.terms"))]),
-      use("Button", { props: { Variant: "default", Size: "default", Type: "button", Class: "w-full" }, attrs: { "data-testid": "submit" } }, text(ref("submit")))),
+      use("Button", { props: { Variant: "default", Size: "default", Type: "submit", Class: "w-full" }, attrs: { "data-testid": "submit" } }, text(ref("submit")))),
   ],
 });

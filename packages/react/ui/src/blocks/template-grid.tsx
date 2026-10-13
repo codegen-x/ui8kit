@@ -10,6 +10,7 @@ import { Button } from "../primitives/button/button";
 import { Grid } from "../primitives/grid/grid";
 import { Group } from "../primitives/group/group";
 import { IconBadge } from "../primitives/iconbadge/iconbadge";
+import { Inline } from "../primitives/inline/inline";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
@@ -95,14 +96,20 @@ export function TemplateGrid({
                     {t.title}
                   </Title>
                   <Group gap="4" align="center" className="h-4 text-muted-foreground">
-                    <Group gap="2" align="center" aria-label={viewsLabel}>
+                    <Group gap="2" align="center">
                       <LucideIcon name="eye" size={16} />
+                      <Inline className="sr-only">
+                        {viewsLabel}
+                      </Inline>
                       <Text size="xs" weight="bold" className="leading-4">
                         {t.views}
                       </Text>
                     </Group>
-                    <Group gap="2" align="center" aria-label={likesLabel}>
+                    <Group gap="2" align="center">
                       <LucideIcon name="heart" size={16} />
+                      <Inline className="sr-only">
+                        {likesLabel}
+                      </Inline>
                       <Text size="xs" weight="bold" className="leading-4">
                         {t.likes}
                       </Text>

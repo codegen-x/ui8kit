@@ -56,9 +56,9 @@ export function ProductInfo({
           {(details ?? []).map((d, i) => (
             <Disclosure key={d.id} variant="item" open={(((expand as string) === "first") && (i === 0))} data-testid="item">
               <Summary variant="item">
-                <Text size="base" weight="semibold">
+                <Inline className="text-base font-semibold">
                   {d.title}
-                </Text>
+                </Inline>
               </Summary>
               <Text size="sm" className="pb-4 text-muted-foreground">
                 {d.text}

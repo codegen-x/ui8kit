@@ -155,7 +155,7 @@ const stepper = spec(`${O}stepper`, "Stepper", "A multi-step form header: the st
         eachAt(ref("steps"), "s", "i", ref("s.id"),
           use("ListItem", { props: { Class: "flex flex-1 items-center gap-4" }, attrs: { "data-testid": "item", "aria-current": cond(eq(add(ref("i"), 1), ref("current")), "step", undef()) } },
             use("IconBadge", { props: { Variant: cond(lt(add(ref("i"), 1), add(ref("current"), 1)), "primary", "outline"), Size: "sm", Class: cond(lt(add(ref("i"), 1), add(ref("current"), 1)), "text-sm", "text-sm text-muted-foreground") } },
-              when(eq(ref("marker"), "icon"), [use("LucideIcon", { props: { Name: ref("s.icon"), Size: 16 } })], [use("Text", { props: { Size: "sm", Weight: "bold" } }, text(str(add(ref("i"), 1))))])),
+              when(eq(ref("marker"), "icon"), [use("LucideIcon", { props: { Name: ref("s.icon"), Size: 16 } })], [use("Inline", { props: { Class: "text-sm font-bold" } }, text(str(add(ref("i"), 1))))])),
             use("Text", { props: { Size: "sm", Weight: cond(eq(add(ref("i"), 1), ref("current")), "bold", "semibold") } }, text(ref("s.title")))))),
       when(eq(ref("summary"), "show"), [
         eachAt(ref("steps"), "s", "i", ref("s.id"), when(eq(add(ref("i"), 1), ref("current")), [

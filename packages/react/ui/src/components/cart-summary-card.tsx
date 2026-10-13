@@ -29,6 +29,7 @@ export type CartSummaryCardProps = {
   labels: CartSummaryLabels;
   items?: "show" | "hide";
   promo?: "show" | "hide";
+  field?: string;
   progress?: "show" | "hide";
   value?: number;
 };
@@ -40,6 +41,7 @@ export function CartSummaryCard({
   labels,
   items = "hide",
   promo = "show",
+  field = "promo",
   progress = "show",
   value = 70,
 }: CartSummaryCardProps) {
@@ -81,7 +83,7 @@ export function CartSummaryCard({
       {((promo as string) === "show") ? (
         <Stack gap="2" align="stretch" data-testid="promo">
           <Group gap="2" align="center">
-            <Input type="text" name="promo" aria-label={labels.promo} placeholder={labels.promo} className="min-w-0 flex-1" />
+            <Input type="text" name={field} aria-label={labels.promo} placeholder={labels.promo} className="min-w-0 flex-1" />
             <Button variant="outline" size="default" type="button">
               {labels.apply}
             </Button>

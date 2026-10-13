@@ -95,6 +95,12 @@
       "default": "show"
     },
     {
+      "name": "field",
+      "type": "string",
+      "default": "promo",
+      "docs": "name of the promo code field (unique on the page)"
+    },
+    {
       "name": "progress",
       "type": {
         "ts": "\"show\" | \"hide\""
@@ -348,7 +354,9 @@
                       "use": "Input",
                       "props": {
                         "Type": "text",
-                        "Name": "promo",
+                        "Name": {
+                          "$": "field"
+                        },
                         "AriaLabel": {
                           "$": "labels.promo"
                         },

@@ -204,10 +204,9 @@
                           },
                           "children": [
                             {
-                              "use": "Text",
+                              "use": "Inline",
                               "props": {
-                                "Size": "sm",
-                                "Weight": "semibold"
+                                "Class": "text-sm font-semibold"
                               },
                               "children": [
                                 {
@@ -218,9 +217,9 @@
                               ]
                             },
                             {
-                              "use": "Text",
+                              "use": "Inline",
                               "props": {
-                                "Size": "xs"
+                                "Class": "text-xs"
                               },
                               "children": [
                                 {

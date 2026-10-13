@@ -96,7 +96,7 @@ export function StoreLocations({
                 <ListItem className="flex items-center gap-2">
                   <LucideIcon name="phone" size={16} />
                   <Link href={tpl("tel:{0}", s.phone)} variant="default">
-                    {s.phone}
+                    {(s.phone ?? "").replaceAll(" ", "\u00a0")}
                   </Link>
                 </ListItem>
               </List>

@@ -26,7 +26,7 @@ const storyTabs = spec("organism.story-tabs", "StoryTabs", "A story in steps (ye
     const on = eq(ref("s.id"), ref("active"));
     const pick = { on: { click: call("emit.select", ref("s.id")) } };
     const tab = use("Button", { props: { Variant: cond(on, "default", "outline"), Size: "lg", Type: "button", Class: "h-auto flex-col items-start gap-0 py-2 text-start" }, attrs: { "data-testid": "story-tab", "data-active": cond(on, "true", "false") }, ...pick },
-      use("Text", { props: { Size: "sm", Weight: "semibold" } }, text(ref("s.date"))), use("Text", { props: { Size: "xs" } }, text(ref("s.tag"))));
+      use("Inline", { props: { Class: "text-sm font-semibold" } }, text(ref("s.date"))), use("Inline", { props: { Class: "text-xs" } }, text(ref("s.tag"))));
     const panel = organism("StoryPanel", { s: ref("s"), index: ref("i"), total: len(ref("steps")), labels: ref("labels") });
     const arrow = (icon: string, label: string): ViewNode => use("Button", { props: { Variant: "outline", Size: "sm", Layout: "icon", Type: "button", AriaLabel: ref(label) }, attrs: { "data-testid": "story-arrow" } }, use("LucideIcon", { props: { Name: icon, Size: 16 } }));
     const dots = organism("StoryDots", { steps: ref("steps"), active: ref("active") });

@@ -13,6 +13,7 @@
     labels: CartLabels;
     media?: "image" | "none";
     density?: "default" | "compact";
+    field?: string;
     onremove?: (id: string) => void;
   };
 </script>
@@ -34,9 +35,16 @@
   import Text from "../primitives/text/text.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import NumberField from "../components/number-field.svelte";
-  import { cn, fmtMoney } from "../utils";
+  import { cn, fmtMoney, tpl } from "../utils";
 
-  let { lines, labels, media = "image", density = "default", onremove }: CartTableProps = $props();
+  let {
+    lines,
+    labels,
+    media = "image",
+    density = "default",
+    field = "qty",
+    onremove,
+  }: CartTableProps = $props();
 </script>
 
 <Box class="w-full overflow-x-auto">
@@ -89,7 +97,7 @@
           <TableCell>
             <NumberField
               value={(line.qty == null ? undefined : String(line.qty))}
-              name="qty"
+              name={tpl("{0}-{1}", field, line.id)}
               min="1"
               label={labels.qty}
               decrease={labels.decrease}

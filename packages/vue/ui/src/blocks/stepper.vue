@@ -26,6 +26,7 @@ export type StepperProps = {
 import Button from "../primitives/button/button.vue";
 import Group from "../primitives/group/group.vue";
 import IconBadge from "../primitives/iconbadge/icon-badge.vue";
+import Inline from "../primitives/inline/inline.vue";
 import List from "../primitives/list/list.vue";
 import ListItem from "../primitives/list/list-item.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
@@ -74,9 +75,9 @@ const {
             :class="(((i + 1) < (current + 1)) ? 'text-sm' : 'text-sm text-muted-foreground')"
           >
             <LucideIcon v-if="((marker as string) === 'icon')" :name="s.icon" :size="16" />
-            <Text v-else size="sm" weight="bold">
+            <Inline v-else class="text-sm font-bold">
               {{ ((i + 1) == null ? undefined : String((i + 1))) }}
-            </Text>
+            </Inline>
           </IconBadge>
           <Text size="sm" :weight="(((i + 1) === current) ? 'bold' : 'semibold')">
             {{ s.title }}

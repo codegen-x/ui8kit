@@ -16,7 +16,7 @@ import { CartSummaryCard } from "../components/cart-summary-card";
 import { MediaFrame } from "../components/media-frame";
 import { NumberField } from "../components/number-field";
 import { SectionFrame } from "../components/section-frame";
-import { fmtMoney } from "../utils";
+import { fmtMoney, tpl } from "../utils";
 import type { ShoppingCartLabels } from "./shopping-cart.types";
 import type { CartLine, CartLabels } from "./cart-list.types";
 import type { SummaryRow } from "./order-summary.types";
@@ -86,7 +86,7 @@ export function ShoppingCart({
               </Stack>
               <NumberField
                 value={(line.qty == null ? undefined : String(line.qty))}
-                name="qty"
+                name={tpl("{0}-qty-{1}", id, line.id)}
                 min="1"
                 label={labels.qty}
                 decrease={labels.decrease}
@@ -111,7 +111,15 @@ export function ShoppingCart({
           </Group>
         </Stack>
         <Box className={(((layout as string) === "split") ? "lg:sticky lg:top-8" : "")} data-testid="aside">
-          <CartSummaryCard lines={lines} rows={rows} promos={promos} labels={totals} promo={promo} progress={progress} />
+          <CartSummaryCard
+            field={tpl("{0}-promo", id)}
+            lines={lines}
+            rows={rows}
+            promos={promos}
+            labels={totals}
+            promo={promo}
+            progress={progress}
+          />
         </Box>
       </Box>
     </SectionFrame>

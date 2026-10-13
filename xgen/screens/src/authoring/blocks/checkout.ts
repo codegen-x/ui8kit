@@ -6,12 +6,12 @@ import { fields, spec, ts } from "../kit";
 import { frame } from "../components/frames";
 import { id, title, tsOf, toneLite } from "../props";
 import { inputField, kids, textField, checkRow } from "../forms";
-import { heading, muted, strong, surface } from "../ux";
+import { heading, muted, strong, strongSpan, surface } from "../ux";
 
 const O = "organism.";
 const step = (n: string, t: string, s: string, ...body: ViewNode[]) =>
   organism("CheckoutStep", { number: n, title: ref(`labels.${t}`), text: ref(`labels.${s}`), layout: ref("layout") }, kids(...body));
-const summaryCard = (items: string) => organism("CartSummaryCard", { lines: ref("lines"), rows: ref("rows"), promos: ref("promos"), labels: ref("totals"), items });
+const summaryCard = (items: string) => organism("CartSummaryCard", { field: tpl("{0}-promo", ref("id")), lines: ref("lines"), rows: ref("rows"), promos: ref("promos"), labels: ref("totals"), items });
 
 const checkoutForm = spec(`${O}checkout-form`, "CheckoutForm", "A checkout on one page: contacts, address, a delivery window, the payment and the consent as stacked steps, beside a sticky order summary with the lines, a promo code and the totals. Static markup. Axes: layout (cards: each step in a card, numbered: numbered steps divided by a line), summary (aside, none), tone.", {
   typeImports: [{ from: "SlotGrid", names: ["Day"] }, { from: "PaymentOptions", names: ["Payment"] }, { from: "CartList", names: ["CartLine"] }, { from: "OrderSummary", names: ["SummaryRow"] }, { from: "CartSummaryCard", names: ["Promo", "CartSummaryLabels"] }],
@@ -32,11 +32,11 @@ const checkoutForm = spec(`${O}checkout-form`, "CheckoutForm", "A checkout on on
   ],
   view: [frame({ id: ref("id"), title: ref("title"), tone: ref("tone"), density: "default" }, [
     use("Box", { props: { Class: "grid grid-cols-1 items-start gap-8 lg:grid-cols-3" } },
-      use("Form", { props: { Class: cond(eq(ref("summary"), "aside"), "flex flex-col gap-6 lg:col-span-2", "flex flex-col gap-6 lg:col-span-3") }, attrs: { "data-testid": "checkout-form" } },
+      use("Form", { props: { Method: "dialog", Class: cond(eq(ref("summary"), "aside"), "flex flex-col gap-6 lg:col-span-2", "flex flex-col gap-6 lg:col-span-3") }, attrs: { "data-testid": "checkout-form" } },
         step("1", "contacts", "contactsText", use("Grid", { props: { Cols: "1-2", Class: "gap-4" } },
           inputField("name", "text", ref("labels.name"), "name"), inputField("phone", "tel", ref("labels.phone"), "tel"), inputField("email", "email", ref("labels.email"), "email"))),
         step("2", "address", "addressText",
-          inputField("street", "text", ref("labels.street"), "street-address"),
+          inputField("street", "text", ref("labels.street"), "address-line1"),
           use("Grid", { props: { Cols: "2-4", Class: "gap-4" } },
             inputField("house", "text", ref("labels.house")), inputField("flat", "text", ref("labels.flat")), inputField("entrance", "text", ref("labels.entrance")), inputField("floor", "text", ref("labels.floor"))),
           textField("comment", ref("labels.comment"))),
@@ -44,7 +44,7 @@ const checkoutForm = spec(`${O}checkout-form`, "CheckoutForm", "A checkout on on
         step("4", "payment", "paymentText", organism("PaymentOptions", { payments: ref("payments"), name: tpl("{0}-payment", ref("id")), checked: "payment-card" })),
         use("Stack", { props: { Gap: "4", Align: "start" } },
           checkRow("consent", ref("labels.consent")),
-          use("Button", { props: { Variant: "default", Size: "lg", Type: "button" }, attrs: { "data-testid": "submit" } }, text(ref("labels.submit"))),
+          use("Button", { props: { Variant: "default", Size: "lg", Type: "submit" }, attrs: { "data-testid": "submit" } }, text(ref("labels.submit"))),
           muted(ref("labels.legal"), "xs"))),
       when(eq(ref("summary"), "aside"), [use("Box", { props: { Class: "lg:sticky lg:top-8" }, attrs: { "data-testid": "aside" } }, summaryCard("show"))])),
   ])],
@@ -73,14 +73,14 @@ const cartPage = spec(`${O}shopping-cart`, "ShoppingCart", "The cart as a page: 
           use("Group", { props: { Gap: "4", Align: "center", Class: surface("flex-wrap p-4") }, attrs: { "data-testid": "item" } },
             organism("MediaFrame", { alt: ref("line.name"), ratio: "1/1", className: "size-20 shrink-0" }),
             use("Stack", { props: { Gap: "0", Class: "min-w-40 flex-1" } }, strong(ref("line.name"), "sm"), muted(ref("line.variant"), "xs"), use("Text", { props: { Size: "sm" } }, text(money(ref("line.price"), ref("line.currency"))))),
-            organism("NumberField", { value: str(ref("line.qty")), name: "qty", min: "1", label: ref("labels.qty"), decrease: ref("labels.decrease"), increase: ref("labels.increase") }),
+            organism("NumberField", { value: str(ref("line.qty")), name: tpl("{0}-qty-{1}", ref("id"), ref("line.id")), min: "1", label: ref("labels.qty"), decrease: ref("labels.decrease"), increase: ref("labels.increase") }),
             use("Text", { props: { Size: "base", Weight: "bold", Class: "w-24 text-right" } }, text(money(mul(ref("line.price"), ref("line.qty")), ref("line.currency")))),
             use("Button", { props: { Variant: "ghost", Size: "sm", Layout: "icon", AriaLabel: ref("labels.remove") }, attrs: { "data-testid": "remove" } }, use("LucideIcon", { props: { Name: "trash", Size: 16 } })))),
         use("Group", { props: { Gap: "4", Justify: "between", Class: "flex-wrap" } },
           use("Button", { props: { Variant: "outline", Size: "default" } }, use("LucideIcon", { props: { Name: "arrow-left", Size: 16 } }), text(ref("actions.back"))),
           use("Button", { props: { Variant: "ghost", Size: "default" } }, text(ref("actions.clear"))))),
       use("Box", { props: { Class: cond(eq(ref("layout"), "split"), "lg:sticky lg:top-8", "") }, attrs: { "data-testid": "aside" } },
-        organism("CartSummaryCard", { lines: ref("lines"), rows: ref("rows"), promos: ref("promos"), labels: ref("totals"), promo: ref("promo"), progress: ref("progress") }))),
+        organism("CartSummaryCard", { field: tpl("{0}-promo", ref("id")), lines: ref("lines"), rows: ref("rows"), promos: ref("promos"), labels: ref("totals"), promo: ref("promo"), progress: ref("progress") }))),
   ])],
 });
 
@@ -101,7 +101,7 @@ const cartDrawer = spec(`${O}cart-drawer`, "CartDrawer", "The cart drawer in its
       use("Box", { props: { Class: "flex min-h-160 overflow-hidden rounded bg-muted inset-ring inset-ring-border" } },
         use("Box", { props: { Class: "hidden flex-1 flex-col gap-4 p-8 sm:flex" }, attrs: { "aria-hidden": "true" } },
           use("Box", { props: { Class: "h-8 w-48 rounded bg-background" } }), use("Box", { props: { Class: "h-40 rounded bg-background" } }), use("Box", { props: { Class: "h-40 rounded bg-background" } })),
-        use("Box", { props: { Class: "flex w-full flex-col bg-background shadow-lg sm:max-w-sm" }, attrs: { "aria-label": ref("drawer.title"), "data-testid": "drawer" } },
+        use("Box", { props: { Class: "flex w-full flex-col bg-background shadow-lg sm:max-w-sm" }, attrs: { role: "group", "aria-label": ref("drawer.title"), "data-testid": "drawer" } },
           use("Group", { props: { Gap: "4", Align: "center", Justify: "between", Class: "border-b border-border p-4" } },
             use("Title", { props: { As: 2, Size: "lg", Weight: "semibold" } }, text(ref("drawer.title"))),
             use("Button", { props: { Variant: "ghost", Size: "sm", Layout: "icon", AriaLabel: ref("drawer.close") } }, use("LucideIcon", { props: { Name: "x", Size: 16 } }))),
@@ -109,7 +109,7 @@ const cartDrawer = spec(`${O}cart-drawer`, "CartDrawer", "The cart drawer in its
             [use("Stack", { props: { Gap: "4", Align: "center", Class: "flex-1 justify-center p-8 text-center" }, attrs: { "data-testid": "empty" } },
               use("LucideIcon", { props: { Name: "shopping-bag", Size: 32 } }), strong(ref("drawer.empty")), muted(ref("drawer.emptyText")),
               use("Button", { props: { Variant: "outline", Size: "default" } }, text(ref("drawer.browse"))))],
-            [organism("DrawerLines", { lines: ref("lines"), rows: ref("rows"), labels: ref("labels"), drawer: ref("drawer"), media: ref("media") })]))))),
+            [organism("DrawerLines", { field: tpl("{0}-qty", ref("id")), lines: ref("lines"), rows: ref("rows"), labels: ref("labels"), drawer: ref("drawer"), media: ref("media") })]))))),
   ],
 });
 
@@ -129,7 +129,7 @@ const productInfo = spec(`${O}product-info`, "ProductInfo", "The details of a pr
       use("Stack", { props: { Gap: "0", Align: "stretch", Class: cond(eq(ref("layout"), "split"), "lg:col-span-2", "") }, attrs: { "data-testid": "items" } },
         eachAt(ref("details"), "d", "i", ref("d.id"),
           use("Disclosure", { props: { Variant: "item", Open: and(eq(ref("expand"), "first"), eq(ref("i"), 0)) }, attrs: { "data-testid": "item" } },
-            use("Summary", { props: { Variant: "item" } }, strong(ref("d.title"))),
+            use("Summary", { props: { Variant: "item" } }, strongSpan(ref("d.title"))),
             use("Text", { props: { Size: "sm", Class: "pb-4 text-muted-foreground" } }, text(ref("d.text")))))),
       use("Stack", { props: { Gap: "4", Align: "stretch", Class: surface("p-6") }, attrs: { "data-testid": "specs" } },
         heading(ref("labels.specs"), "lg"),

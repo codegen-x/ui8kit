@@ -33,6 +33,7 @@
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
   import DrawerLines from "../components/drawer-lines.svelte";
+  import { tpl } from "../utils";
 
   let { id, lines, rows, labels, drawer, state = "filled", media = "image" }: CartDrawerProps = $props();
 </script>
@@ -47,6 +48,7 @@
       </Box>
       <Box
         class="flex w-full flex-col bg-background shadow-lg sm:max-w-sm"
+        role="group"
         aria-label={drawer.title}
         data-testid="drawer"
       >
@@ -72,7 +74,7 @@
             </Button>
           </Stack>
         {:else}
-          <DrawerLines lines={lines} rows={rows} labels={labels} drawer={drawer} media={media} />
+          <DrawerLines field={tpl("{0}-qty", id)} lines={lines} rows={rows} labels={labels} drawer={drawer} media={media} />
         {/if}
       </Box>
     </Box>

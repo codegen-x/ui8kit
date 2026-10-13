@@ -32,7 +32,7 @@
   import MediaFrame from "../components/media-frame.svelte";
   import NumberField from "../components/number-field.svelte";
   import SectionFrame from "../components/section-frame.svelte";
-  import { fmtMoney } from "../utils";
+  import { fmtMoney, tpl } from "../utils";
 
   let {
     id,
@@ -50,6 +50,7 @@
 <SectionFrame id={id} title={title} tone={tone} density={density}>
   {#if ((layout as string) === "table")}
     <CartTable
+      field={tpl("{0}-qty", id)}
       lines={lines}
       labels={labels}
       media={media}
@@ -77,7 +78,7 @@
             </Stack>
             <NumberField
               value={(line.qty == null ? undefined : String(line.qty))}
-              name="qty"
+              name={tpl("{0}-qty-{1}", id, line.id)}
               min="1"
               label={labels.qty}
               decrease={labels.decrease}

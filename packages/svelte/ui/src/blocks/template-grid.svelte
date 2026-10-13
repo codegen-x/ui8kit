@@ -30,6 +30,7 @@
   import Grid from "../primitives/grid/grid.svelte";
   import Group from "../primitives/group/group.svelte";
   import IconBadge from "../primitives/iconbadge/icon-badge.svelte";
+  import Inline from "../primitives/inline/inline.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
@@ -100,14 +101,20 @@
                 {t.title}
               </Title>
               <Group gap="4" align="center" class="h-4 text-muted-foreground">
-                <Group gap="2" align="center" aria-label={viewsLabel}>
+                <Group gap="2" align="center">
                   <LucideIcon name="eye" size={16} />
+                  <Inline class="sr-only">
+                    {viewsLabel}
+                  </Inline>
                   <Text size="xs" weight="bold" class="leading-4">
                     {t.views}
                   </Text>
                 </Group>
-                <Group gap="2" align="center" aria-label={likesLabel}>
+                <Group gap="2" align="center">
                   <LucideIcon name="heart" size={16} />
+                  <Inline class="sr-only">
+                    {likesLabel}
+                  </Inline>
                   <Text size="xs" weight="bold" class="leading-4">
                     {t.likes}
                   </Text>

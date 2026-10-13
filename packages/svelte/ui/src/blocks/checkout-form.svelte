@@ -69,6 +69,7 @@
 <SectionFrame id={id} title={title} tone={tone} density="default">
   <Box class="grid grid-cols-1 items-start gap-8 lg:grid-cols-3">
     <Form
+      method="dialog"
       class={
         (summary as string) === "aside" ? "flex flex-col gap-6 lg:col-span-2"
         : "flex flex-col gap-6 lg:col-span-3"
@@ -90,7 +91,7 @@
       </CheckoutStep>
       <CheckoutStep number="2" title={labels.address} text={labels.addressText} layout={layout}>
         <Field label={labels.street} htmlFor={tpl("{0}-street", id)}>
-          <Input type="text" name="street" autocomplete="street-address" id={tpl("{0}-street", id)} data-testid="field" />
+          <Input type="text" name="street" autocomplete="address-line1" id={tpl("{0}-street", id)} data-testid="field" />
         </Field>
         <Grid cols="2-4" class="gap-4">
           <Field label={labels.house} htmlFor={tpl("{0}-house", id)}>
@@ -123,7 +124,7 @@
             {labels.consent}
           </Label>
         </Group>
-        <Button variant="default" size="lg" type="button" data-testid="submit">
+        <Button variant="default" size="lg" type="submit" data-testid="submit">
           {labels.submit}
         </Button>
         <Text size="xs" class="text-muted-foreground">
@@ -133,7 +134,14 @@
     </Form>
     {#if ((summary as string) === "aside")}
       <Box class="lg:sticky lg:top-8" data-testid="aside">
-        <CartSummaryCard lines={lines} rows={rows} promos={promos} labels={totals} items="show" />
+        <CartSummaryCard
+          field={tpl("{0}-promo", id)}
+          lines={lines}
+          rows={rows}
+          promos={promos}
+          labels={totals}
+          items="show"
+        />
       </Box>
     {/if}
   </Box>

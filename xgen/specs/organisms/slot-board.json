@@ -214,7 +214,15 @@
                                 {
                                   "use": "Select",
                                   "props": {
-                                    "Name": "zone"
+                                    "Name": {
+                                      "op": "tpl",
+                                      "args": [
+                                        "{0}-zone",
+                                        {
+                                          "$": "id"
+                                        }
+                                      ]
+                                    }
                                   },
                                   "attrs": {
                                     "id": {

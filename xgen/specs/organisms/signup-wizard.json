@@ -484,9 +484,9 @@
                       ]
                     },
                     {
-                      "use": "Form",
+                      "use": "Box",
                       "props": {
-                        "Class": "gap-4"
+                        "Class": "grid gap-4"
                       },
                       "children": [
                         {
@@ -513,7 +513,15 @@
                                   "use": "Input",
                                   "props": {
                                     "Type": "text",
-                                    "Name": "a"
+                                    "Name": {
+                                      "op": "tpl",
+                                      "args": [
+                                        "{0}-a",
+                                        {
+                                          "$": "id"
+                                        }
+                                      ]
+                                    }
                                   },
                                   "attrs": {
                                     "id": {
@@ -556,7 +564,15 @@
                                   "use": "Input",
                                   "props": {
                                     "Type": "text",
-                                    "Name": "b"
+                                    "Name": {
+                                      "op": "tpl",
+                                      "args": [
+                                        "{0}-b",
+                                        {
+                                          "$": "id"
+                                        }
+                                      ]
+                                    }
                                   },
                                   "attrs": {
                                     "id": {

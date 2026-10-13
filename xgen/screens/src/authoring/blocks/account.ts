@@ -62,7 +62,7 @@ const profileForm = spec(`${O}profile-form`, "ProfileForm", "An account settings
   view: [
     panelSection(use("Container", { props: { Class: `${wide} py-8` }, attrs: { "data-slot": "container" } },
       organism("Panel", { title: ref("title"), description: ref("text"), id: ref("id"), className: cn(cond(eq(ref("tone"), "muted"), "bg-muted", "")) }, kids(
-        use("Form", { props: { Class: "gap-6" }, attrs: { "data-testid": "profile-form" } },
+        use("Form", { props: { Method: "dialog", Class: "gap-6" }, attrs: { "data-testid": "profile-form" } },
           use("Grid", { props: { Cols: cond(eq(ref("layout"), "split"), "1-2", "1"), Class: "items-start gap-8" } },
             use("Stack", { props: { Gap: "4", Align: "stretch" } },
               when(eq(ref("avatar"), "show"), [use("Group", { props: { Gap: "4", Align: "center" }, attrs: { "data-testid": "avatar" } },
@@ -76,7 +76,7 @@ const profileForm = spec(`${O}profile-form`, "ProfileForm", "An account settings
               switchRow("updates", ref("labels.updates")),
               switchRow("alerts", ref("labels.alerts")))])),
           use("Group", { props: { Gap: "2", Class: "flex-wrap" } },
-            use("Button", { props: { Variant: "default", Size: "default", Type: "button" }, attrs: { "data-testid": "submit" } }, text(ref("labels.save"))),
+            use("Button", { props: { Variant: "default", Size: "default", Type: "submit" }, attrs: { "data-testid": "submit" } }, text(ref("labels.save"))),
             use("Button", { props: { Variant: "outline", Size: "default", Type: "button" } }, text(ref("labels.cancel"))))))))),
   ],
 });

@@ -66,9 +66,9 @@ const {
           data-testid="item"
         >
           <Summary variant="item">
-            <Text size="base" weight="semibold">
+            <Inline class="text-base font-semibold">
               {{ d.title }}
-            </Text>
+            </Inline>
           </Summary>
           <Text size="sm" class="pb-4 text-muted-foreground">
             {{ d.text }}

@@ -29,6 +29,7 @@ import Button from "../primitives/button/button.vue";
 import Grid from "../primitives/grid/grid.vue";
 import Group from "../primitives/group/group.vue";
 import IconBadge from "../primitives/iconbadge/icon-badge.vue";
+import Inline from "../primitives/inline/inline.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
@@ -103,14 +104,20 @@ const {
                 {{ t.title }}
               </Title>
               <Group gap="4" align="center" class="h-4 text-muted-foreground">
-                <Group gap="2" align="center" :aria-label="viewsLabel">
+                <Group gap="2" align="center">
                   <LucideIcon name="eye" :size="16" />
+                  <Inline class="sr-only">
+                    {{ viewsLabel }}
+                  </Inline>
                   <Text size="xs" weight="bold" class="leading-4">
                     {{ t.views }}
                   </Text>
                 </Group>
-                <Group gap="2" align="center" :aria-label="likesLabel">
+                <Group gap="2" align="center">
                   <LucideIcon name="heart" :size="16" />
+                  <Inline class="sr-only">
+                    {{ likesLabel }}
+                  </Inline>
                   <Text size="xs" weight="bold" class="leading-4">
                     {{ t.likes }}
                   </Text>

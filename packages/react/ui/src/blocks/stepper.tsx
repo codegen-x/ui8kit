@@ -9,6 +9,7 @@ import { Fragment, type ReactNode } from "react";
 import { Button } from "../primitives/button/button";
 import { Group } from "../primitives/group/group";
 import { IconBadge } from "../primitives/iconbadge/iconbadge";
+import { Inline } from "../primitives/inline/inline";
 import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
@@ -72,9 +73,9 @@ export function Stepper({
                 {((marker as string) === "icon") ? (
                   <LucideIcon name={s.icon} size={16} />
                 ) : (
-                  <Text size="sm" weight="bold">
+                  <Inline className="text-sm font-bold">
                     {((i + 1) == null ? undefined : String((i + 1)))}
-                  </Text>
+                  </Inline>
                 )}
               </IconBadge>
               <Text size="sm" weight={(((i + 1) === current) ? "bold" : "semibold")}>

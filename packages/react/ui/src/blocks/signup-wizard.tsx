@@ -7,8 +7,8 @@
  */
 import { Fragment, type ReactNode } from "react";
 import { Block } from "../primitives/block/block";
+import { Box } from "../primitives/box/box";
 import { Button } from "../primitives/button/button";
-import { Form } from "../primitives/form/form";
 import { Progress } from "../primitives/form/progress";
 import { Group } from "../primitives/group/group";
 import { Input } from "../primitives/input/input";
@@ -96,14 +96,14 @@ export function SignupWizard({
               <Text size="sm" className="text-muted-foreground">
                 {s.text}
               </Text>
-              <Form className="gap-4">
+              <Box className="grid gap-4">
                 <Field label={s.fieldA} htmlFor={tpl("{0}-a", id)}>
-                  <Input type="text" name="a" id={tpl("{0}-a", id)} data-testid="field" />
+                  <Input type="text" name={tpl("{0}-a", id)} id={tpl("{0}-a", id)} data-testid="field" />
                 </Field>
                 <Field label={s.fieldB} htmlFor={tpl("{0}-b", id)}>
-                  <Input type="text" name="b" id={tpl("{0}-b", id)} data-testid="field" />
+                  <Input type="text" name={tpl("{0}-b", id)} id={tpl("{0}-b", id)} data-testid="field" />
                 </Field>
-              </Form>
+              </Box>
             </Stack>
           ) : null}
         </Fragment>

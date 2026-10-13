@@ -32,6 +32,7 @@ import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
 import DrawerLines from "../components/drawer-lines.vue";
+import { tpl } from "../utils";
 
 const { id, lines, rows, labels, drawer, state = "filled", media = "image" } = defineProps<CartDrawerProps>();
 </script>
@@ -47,6 +48,7 @@ const { id, lines, rows, labels, drawer, state = "filled", media = "image" } = d
         </Box>
         <Box
           class="flex w-full flex-col bg-background shadow-lg sm:max-w-sm"
+          role="group"
           :aria-label="drawer.title"
           data-testid="drawer"
         >
@@ -76,7 +78,14 @@ const { id, lines, rows, labels, drawer, state = "filled", media = "image" } = d
               {{ drawer.browse }}
             </Button>
           </Stack>
-          <DrawerLines v-else :lines="lines" :rows="rows" :labels="labels" :drawer="drawer" :media="media" />
+          <DrawerLines v-else
+            :field="tpl('{0}-qty', id)"
+            :lines="lines"
+            :rows="rows"
+            :labels="labels"
+            :drawer="drawer"
+            :media="media"
+          />
         </Box>
       </Box>
     </Container>

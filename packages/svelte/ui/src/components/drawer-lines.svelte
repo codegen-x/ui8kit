@@ -16,6 +16,7 @@
     labels: CartLabels;
     drawer: DrawerLabels;
     media?: "image" | "none";
+    field?: string;
   };
 </script>
 
@@ -30,9 +31,9 @@
   import Text from "../primitives/text/text.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import NumberField from "../components/number-field.svelte";
-  import { fmtMoney } from "../utils";
+  import { fmtMoney, tpl } from "../utils";
 
-  let { lines, rows, labels, drawer, media = "image" }: DrawerLinesProps = $props();
+  let { lines, rows, labels, drawer, media = "image", field = "qty" }: DrawerLinesProps = $props();
 </script>
 
 <Stack gap="4" align="stretch" class="flex-1 p-4" data-testid="lines">
@@ -55,7 +56,7 @@
         </Text>
         <NumberField
           value={(line.qty == null ? undefined : String(line.qty))}
-          name="qty"
+          name={tpl("{0}-{1}", field, line.id)}
           min="1"
           label={labels.qty}
           decrease={labels.decrease}

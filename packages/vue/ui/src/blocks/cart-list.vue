@@ -30,7 +30,7 @@ import CartTable from "../components/cart-table.vue";
 import MediaFrame from "../components/media-frame.vue";
 import NumberField from "../components/number-field.vue";
 import SectionFrame from "../components/section-frame.vue";
-import { fmtMoney } from "../utils";
+import { fmtMoney, tpl } from "../utils";
 
 const {
   id,
@@ -48,6 +48,7 @@ const emit = defineEmits<{ remove: [id: string] }>();
 <template>
   <SectionFrame :id="id" :title="title" :tone="tone" :density="density">
     <CartTable v-if="((layout as string) === 'table')"
+      :field="tpl('{0}-qty', id)"
       :lines="lines"
       :labels="labels"
       :media="media"
@@ -71,7 +72,7 @@ const emit = defineEmits<{ remove: [id: string] }>();
           </Stack>
           <NumberField
             :value="(line.qty == null ? undefined : String(line.qty))"
-            name="qty"
+            :name="tpl('{0}-qty-{1}', id, line.id)"
             min="1"
             :label="labels.qty"
             :decrease="labels.decrease"

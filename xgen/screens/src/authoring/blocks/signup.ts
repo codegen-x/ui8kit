@@ -68,7 +68,7 @@ const signupWizard = spec(`${O}signup-wizard`, "SignupWizard", "A sign-up in ste
           use("LucideIcon", { props: { Name: cond(lt(add(ref("i"), 1), ref("current")), "circle-check", ref("s.icon")), Size: 16 } }), text(ref("s.title")))))]),
       eachAt(ref("steps"), "s", "i", ref("s.id"), when(eq(add(ref("i"), 1), ref("current")), [use("Stack", { props: { Gap: "4", Align: "stretch" }, attrs: { "data-testid": "step" } },
         heading(ref("s.title"), "xl", 3), muted(ref("s.text")),
-        use("Form", { props: { Class: "gap-4" } }, inputField(`a`, "text", ref("s.fieldA")), inputField("b", "text", ref("s.fieldB"))))])),
+        use("Box", { props: { Class: "grid gap-4" } }, inputField("a", "text", ref("s.fieldA"), undefined, true), inputField("b", "text", ref("s.fieldB"), undefined, true)))])),
       use("Group", { props: { Gap: "2", Justify: "between" } },
         use("Button", { props: { Variant: "outline", Size: "default", Type: "button", Disabled: lt(ref("current"), 2) }, on: { click: { call: "emit.go", args: [sub(ref("current"), 1)] } }, attrs: { "data-testid": "wizard-back" } }, text(ref("labels.back"))),
         use("Button", { props: { Variant: "default", Size: "default", Type: "button" }, on: { click: { call: "emit.go", args: [add(ref("current"), 1)] } }, attrs: { "data-testid": "wizard-next" } }, text(cond(ge(ref("current"), len(ref("steps"))), ref("labels.finish"), ref("labels.next")))))),

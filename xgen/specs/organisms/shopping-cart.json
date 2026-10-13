@@ -267,7 +267,18 @@
                                     }
                                   ]
                                 },
-                                "name": "qty",
+                                "name": {
+                                  "op": "tpl",
+                                  "args": [
+                                    "{0}-qty-{1}",
+                                    {
+                                      "$": "id"
+                                    },
+                                    {
+                                      "$": "line.id"
+                                    }
+                                  ]
+                                },
                                 "min": "1",
                                 "label": {
                                   "$": "labels.qty"
@@ -412,6 +423,15 @@
                     {
                       "organism": "CartSummaryCard",
                       "props": {
+                        "field": {
+                          "op": "tpl",
+                          "args": [
+                            "{0}-promo",
+                            {
+                              "$": "id"
+                            }
+                          ]
+                        },
                         "lines": {
                           "$": "lines"
                         },

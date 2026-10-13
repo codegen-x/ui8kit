@@ -111,14 +111,14 @@
                 {
                   "use": "Stack",
                   "props": {
+                    "Tag": "span",
                     "Gap": "0"
                   },
                   "children": [
                     {
-                      "use": "Text",
+                      "use": "Inline",
                       "props": {
-                        "Size": "sm",
-                        "Weight": "semibold"
+                        "Class": "text-sm font-semibold"
                       },
                       "children": [
                         {
@@ -129,10 +129,9 @@
                       ]
                     },
                     {
-                      "use": "Text",
+                      "use": "Inline",
                       "props": {
-                        "Size": "xs",
-                        "Class": "text-muted-foreground"
+                        "Class": "text-xs text-muted-foreground"
                       },
                       "children": [
                         {

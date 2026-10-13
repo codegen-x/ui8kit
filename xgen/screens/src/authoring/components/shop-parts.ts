@@ -1,6 +1,6 @@
 // The parts of the shop blocks that are too long to sit inside them: the offer picture of the store hero, the table of delivery
 // zones, and the filled body of the cart drawer.
-import { cond, each, eachAt, eq, money, mul, ref, str, text, use, when, organism } from "../../build";
+import { cond, tpl, each, eachAt, eq, money, mul, ref, str, text, use, when, organism } from "../../build";
 import type { OrganismSpec } from "../../ir";
 import { spec, ts } from "../kit";
 import { tsOf } from "../props";
@@ -55,6 +55,7 @@ const drawerLines = spec("pattern.drawer-lines", "DrawerLines", "The filled body
     { name: "labels", type: ts("CartLabels"), required: true },
     { name: "drawer", type: ts("DrawerLabels"), required: true },
     { name: "media", type: tsOf("image", "none"), default: "image" },
+    { name: "field", type: "string", default: "qty", docs: "prefix of the quantity field names (one name per line: <field>-<line id>)" },
   ],
   view: [use("Stack", { props: { Gap: "4", Align: "stretch", Class: "flex-1 p-4" }, attrs: { "data-testid": "lines" } },
     each(ref("lines"), "line", ref("line.id"),
@@ -63,7 +64,7 @@ const drawerLines = spec("pattern.drawer-lines", "DrawerLines", "The filled body
         use("Stack", { props: { Gap: "2", Align: "stretch", Class: "flex-1" } },
           use("Group", { props: { Gap: "2", Justify: "between", Align: "start" } }, strong(ref("line.name"), "sm"), use("Inline", { props: { Class: "text-sm font-medium" } }, text(money(mul(ref("line.price"), ref("line.qty")), ref("line.currency"))))),
           muted(ref("line.variant"), "xs"),
-          organism("NumberField", { value: str(ref("line.qty")), name: "qty", min: "1", label: ref("labels.qty"), decrease: ref("labels.decrease"), increase: ref("labels.increase") }))))),
+          organism("NumberField", { value: str(ref("line.qty")), name: tpl("{0}-{1}", ref("field"), ref("line.id")), min: "1", label: ref("labels.qty"), decrease: ref("labels.decrease"), increase: ref("labels.increase") }))))),
             use("Stack", { props: { Gap: "4", Align: "stretch", Class: "border-t border-border p-4" } },
     use("Stack", { props: { Gap: "2", Align: "stretch", Class: "rounded bg-muted p-4" }, attrs: { "data-testid": "progress" } },
       use("Text", { props: { Size: "sm" } }, text(ref("drawer.progress"))), use("Progress", { props: { Value: "96", Max: "100" }, attrs: { "aria-label": ref("drawer.progress") } })),

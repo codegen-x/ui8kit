@@ -105,7 +105,7 @@ export function ProductDetail({
           {((buy as string) === "full") ? (
             <NumberField
               value="1"
-              name="qty"
+              name={tpl("{0}-qty", id)}
               min="1"
               label={labels.qty}
               decrease={labels.decrease}

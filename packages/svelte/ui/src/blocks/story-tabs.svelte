@@ -28,9 +28,9 @@
   import Box from "../primitives/box/box.svelte";
   import Button from "../primitives/button/button.svelte";
   import Group from "../primitives/group/group.svelte";
+  import Inline from "../primitives/inline/inline.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Stack from "../primitives/stack/stack.svelte";
-  import Text from "../primitives/text/text.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import StoryDots from "../components/story-dots.svelte";
@@ -63,12 +63,12 @@
           data-active={((s.id === active) ? "true" : "false")}
           onclick={() => onselect?.(s.id)}
         >
-          <Text size="sm" weight="semibold">
+          <Inline class="text-sm font-semibold">
             {s.date}
-          </Text>
-          <Text size="xs">
+          </Inline>
+          <Inline class="text-xs">
             {s.tag}
-          </Text>
+          </Inline>
         </Button>
       {/each}
     </Box>

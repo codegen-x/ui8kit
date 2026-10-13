@@ -417,11 +417,6 @@
                                             "Gap": "2",
                                             "Align": "center"
                                           },
-                                          "attrs": {
-                                            "aria-label": {
-                                              "$": "viewsLabel"
-                                            }
-                                          },
                                           "children": [
                                             {
                                               "use": "LucideIcon",
@@ -429,6 +424,19 @@
                                                 "Name": "eye",
                                                 "Size": 16
                                               }
+                                            },
+                                            {
+                                              "use": "Inline",
+                                              "props": {
+                                                "Class": "sr-only"
+                                              },
+                                              "children": [
+                                                {
+                                                  "text": {
+                                                    "$": "viewsLabel"
+                                                  }
+                                                }
+                                              ]
                                             },
                                             {
                                               "use": "Text",
@@ -453,11 +461,6 @@
                                             "Gap": "2",
                                             "Align": "center"
                                           },
-                                          "attrs": {
-                                            "aria-label": {
-                                              "$": "likesLabel"
-                                            }
-                                          },
                                           "children": [
                                             {
                                               "use": "LucideIcon",
@@ -465,6 +468,19 @@
                                                 "Name": "heart",
                                                 "Size": 16
                                               }
+                                            },
+                                            {
+                                              "use": "Inline",
+                                              "props": {
+                                                "Class": "sr-only"
+                                              },
+                                              "children": [
+                                                {
+                                                  "text": {
+                                                    "$": "likesLabel"
+                                                  }
+                                                }
+                                              ]
                                             },
                                             {
                                               "use": "Text",

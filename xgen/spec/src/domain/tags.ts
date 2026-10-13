@@ -22,8 +22,8 @@ export const TAG_GROUPS = {
   Media: ["img", "picture", "source"],
   Disclosure: ["details", "summary"],
   Container: ["div", "main", "section"],
-  Stack: ["div", "ul", "ol"],
-  Group: ["div", "fieldset", "dl"],
+  Stack: ["div", "ul", "ol", "span"],
+  Group: ["div", "fieldset", "dl", "span"],
 } as const;
 
 export type TagGroupName = keyof typeof TAG_GROUPS;

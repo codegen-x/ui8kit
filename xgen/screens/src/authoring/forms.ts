@@ -7,8 +7,9 @@ export const kids = (...n: ViewNode[]) => ({ slots: { children: { args: [] as st
 /** the id of a control: `<id>-<name>` */
 export const fid = (name: string): Value => tpl(`{0}-${name}`, ref("id"));
 /** a labelled single-line field */
-export const inputField = (name: string, type: string, label: Value, auto?: Value): ViewNode =>
-  organism("Field", { label, htmlFor: fid(name) }, kids(use("Input", { props: { Type: type, Name: name, ...(auto === undefined ? {} : { Autocomplete: auto }) }, attrs: { id: fid(name), "data-testid": "field" } })));
+export const inputField = (name: string, type: string, label: Value, auto?: Value, scoped = false): ViewNode =>
+  organism("Field", { label, htmlFor: fid(name) }, kids(use("Input", { props: { Type: type, Name: scoped ? fid(name) : name, ...(auto === undefined ? {} : { Autocomplete: auto }) }, attrs: { id: fid(name), "data-testid": "field" } })));
+/** (a field outside a form takes its id as its name, `scoped`, so the name stays unique on the page) */
 /** a labelled multi-line field */
 export const textField = (name: string, label: Value): ViewNode =>
   organism("Field", { label, htmlFor: fid(name) }, kids(use("Textarea", { props: { Rows: 4, Name: name }, attrs: { id: fid(name), "data-testid": "field" } })));
@@ -25,8 +26,8 @@ export const switchRow = (name: string, label: Value): ViewNode =>
 
 /** an email field and a button on one row (or a column): the sign-up used by the hero, the call to action and the footer */
 export const emailRow = (label: Value, submit: Value, center: Value) =>
-  use("Form", { props: { Class: cn("w-full max-w-md", cond(center, "mx-auto", "")) }, attrs: { "data-testid": "email-form" } },
+  use("Form", { props: { Method: "dialog", Class: cn("w-full max-w-md", cond(center, "mx-auto", "")) }, attrs: { "data-testid": "email-form" } },
     use("Label", { props: { HTMLFor: fid("email"), Class: "sr-only" } }, text(label)),
     use("Group", { props: { Gap: "2", Align: "start", Class: "w-full flex-wrap" } },
       use("Input", { props: { Type: "email", Name: "email", Class: "min-w-0 flex-1" }, attrs: { id: fid("email"), "data-testid": "field" } }),
-      use("Button", { props: { Variant: "default", Size: "default", Type: "button" }, attrs: { "data-testid": "submit" } }, text(submit))));
+      use("Button", { props: { Variant: "default", Size: "default", Type: "submit" }, attrs: { "data-testid": "submit" } }, text(submit))));

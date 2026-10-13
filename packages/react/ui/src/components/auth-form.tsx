@@ -25,7 +25,7 @@ export type AuthFormProps = {
 
 export function AuthForm({ id, mode = "signin", labels, submit }: AuthFormProps) {
   return (
-    <Form className="gap-4" data-testid="auth-form">
+    <Form method="dialog" className="gap-4" data-testid="auth-form">
       {((mode as string) === "signup") ? (
         <Field label={labels.name} htmlFor={tpl("{0}-name", id)}>
           <Input type="text" name="name" autoComplete="name" id={tpl("{0}-name", id)} data-testid="field" />
@@ -66,7 +66,7 @@ export function AuthForm({ id, mode = "signin", labels, submit }: AuthFormProps)
           </Label>
         </Group>
       ) : null}
-      <Button variant="default" size="default" type="button" className="w-full" data-testid="submit">
+      <Button variant="default" size="default" type="submit" className="w-full" data-testid="submit">
         {submit}
       </Button>
     </Form>

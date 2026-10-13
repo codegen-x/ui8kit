@@ -24,8 +24,8 @@
 
 <script lang="ts">
   import Block from "../primitives/block/block.svelte";
+  import Box from "../primitives/box/box.svelte";
   import Button from "../primitives/button/button.svelte";
-  import Form from "../primitives/form/form.svelte";
   import Group from "../primitives/group/group.svelte";
   import Input from "../primitives/input/input.svelte";
   import List from "../primitives/list/list.svelte";
@@ -100,14 +100,14 @@
         <Text size="sm" class="text-muted-foreground">
           {s.text}
         </Text>
-        <Form class="gap-4">
+        <Box class="grid gap-4">
           <Field label={s.fieldA} htmlFor={tpl("{0}-a", id)}>
-            <Input type="text" name="a" id={tpl("{0}-a", id)} data-testid="field" />
+            <Input type="text" name={tpl("{0}-a", id)} id={tpl("{0}-a", id)} data-testid="field" />
           </Field>
           <Field label={s.fieldB} htmlFor={tpl("{0}-b", id)}>
-            <Input type="text" name="b" id={tpl("{0}-b", id)} data-testid="field" />
+            <Input type="text" name={tpl("{0}-b", id)} id={tpl("{0}-b", id)} data-testid="field" />
           </Field>
-        </Form>
+        </Box>
       </Stack>
     {/if}
   {/each}

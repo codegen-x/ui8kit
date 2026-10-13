@@ -16,6 +16,7 @@ import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { Title } from "../primitives/title/title";
 import { DrawerLines } from "../components/drawer-lines";
+import { tpl } from "../utils";
 import type { DrawerLabels } from "./cart-drawer.types";
 import type { CartLine, CartLabels } from "./cart-list.types";
 import type { SummaryRow } from "./order-summary.types";
@@ -50,6 +51,7 @@ export function CartDrawer({
           </Box>
           <Box
             className="flex w-full flex-col bg-background shadow-lg sm:max-w-sm"
+            role="group"
             aria-label={drawer.title}
             data-testid="drawer"
           >
@@ -75,7 +77,7 @@ export function CartDrawer({
                 </Button>
               </Stack>
             ) : (
-              <DrawerLines lines={lines} rows={rows} labels={labels} drawer={drawer} media={media} />
+              <DrawerLines field={tpl("{0}-qty", id)} lines={lines} rows={rows} labels={labels} drawer={drawer} media={media} />
             )}
           </Box>
         </Box>

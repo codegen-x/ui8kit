@@ -1,5 +1,5 @@
 // Delivery: the zones and their prices, the delivery windows to pick from, the delivery facts, and the stores where an order can be picked up.
-import { at, cn, cond, each, eq, ne, money, ref, text, tpl, use, when, organism } from "../../build";
+import { at, nbsp, cn, cond, each, eq, ne, money, ref, text, tpl, use, when, organism } from "../../build";
 import type { OrganismSpec, Value } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { frame } from "../components/frames";
@@ -62,7 +62,7 @@ const slotBoard = spec(`${O}slot-board`, "SlotBoard", "Pick a delivery window: t
         organism("SlotGrid", { days: ref("days"), name: tpl("{0}-slot", ref("id")), item: ref("item") })),
       when(eq(ref("layout"), "split"), [use("Stack", { props: { Gap: "4", Align: "stretch", Class: surface("p-6") }, attrs: { "data-testid": "aside" } },
         organism("Field", { label: ref("labels.zone"), htmlFor: tpl("{0}-zone", ref("id")) }, { slots: { children: { args: [], do: [
-          use("Select", { props: { Name: "zone" }, attrs: { id: tpl("{0}-zone", ref("id")) } }, use("SelectOption", { props: { Value: ref("zone.id"), Label: ref("zone.name"), Selected: true } }))] } } }),
+          use("Select", { props: { Name: tpl("{0}-zone", ref("id")) }, attrs: { id: tpl("{0}-zone", ref("id")) } }, use("SelectOption", { props: { Value: ref("zone.id"), Label: ref("zone.name"), Selected: true } }))] } } }),
         use("List", { props: { Tag: "ul", Class: "flex flex-col gap-2" } },
           pair(ref("labels.price"), money(ref("zone.price"), ref("zone.currency"))),
           pair(ref("labels.freeFrom"), money(ref("zone.freeFrom"), ref("zone.currency"))),
@@ -121,7 +121,7 @@ const storeLocations = spec(`${O}store-locations`, "StoreLocations", "The stores
             use("List", { props: { Tag: "ul", Class: cond(eq(ref("layout"), "list"), "flex flex-wrap gap-x-8 gap-y-2 text-sm", "flex flex-col gap-2 text-sm") } },
               use("ListItem", { props: { Class: "flex items-center gap-2" } }, use("LucideIcon", { props: { Name: "map-pin", Size: 16 } }), use("Inline", {}, text(ref("s.address")))),
               use("ListItem", { props: { Class: "flex items-center gap-2" } }, use("LucideIcon", { props: { Name: "clock", Size: 16 } }), use("Inline", {}, text(ref("s.hours")))),
-              use("ListItem", { props: { Class: "flex items-center gap-2" } }, use("LucideIcon", { props: { Name: "phone", Size: 16 } }), use("Link", { props: { Href: tpl("tel:{0}", ref("s.phone")), Variant: "default" } }, text(ref("s.phone"))))),
+              use("ListItem", { props: { Class: "flex items-center gap-2" } }, use("LucideIcon", { props: { Name: "phone", Size: 16 } }), use("Link", { props: { Href: tpl("tel:{0}", ref("s.phone")), Variant: "default" } }, text(nbsp(ref("s.phone")))))),
             when(eq(ref("layout"), "cards"), [muted(ref("s.note")),
               use("Group", { props: { Gap: "2", Class: "flex-wrap" } }, each(ref("s.services"), "v", ref("v"), use("Badge", { props: { Variant: "secondary", Size: "default" } }, text(ref("v")))))])))),
       when(eq(ref("layout"), "map"), [use("Box", { props: { Class: "md:sticky md:top-8" } }, organism("MediaFrame", { alt: ref("labels.map"), ratio: "1/1" }))])),

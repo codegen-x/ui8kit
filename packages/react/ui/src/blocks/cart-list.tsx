@@ -15,7 +15,7 @@ import { CartTable } from "../components/cart-table";
 import { MediaFrame } from "../components/media-frame";
 import { NumberField } from "../components/number-field";
 import { SectionFrame } from "../components/section-frame";
-import { fmtMoney } from "../utils";
+import { fmtMoney, tpl } from "../utils";
 import type { CartLine, CartLabels } from "./cart-list.types";
 
 export type CartListProps = {
@@ -45,6 +45,7 @@ export function CartList({
     <SectionFrame id={id} title={title} tone={tone} density={density}>
       {((layout as string) === "table") ? (
         <CartTable
+          field={tpl("{0}-qty", id)}
           lines={lines}
           labels={labels}
           media={media}
@@ -72,7 +73,7 @@ export function CartList({
                 </Stack>
                 <NumberField
                   value={(line.qty == null ? undefined : String(line.qty))}
-                  name="qty"
+                  name={tpl("{0}-qty-{1}", id, line.id)}
                   min="1"
                   label={labels.qty}
                   decrease={labels.decrease}

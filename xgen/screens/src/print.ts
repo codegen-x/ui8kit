@@ -84,6 +84,7 @@ export function printValue(v: Value, ctx: PrintCtx): string {
     case "cond": return `(${a[0]} ? ${a[1]} : ${a[2]})`;
     case "len": return `(${a[0]}?.length ?? 0)`;
     case "words": return `(${a[0]} ?? "").split(" ")`;
+    case "nbsp": return `(${a[0]} ?? "").replaceAll(" ", "\\u00a0")`;
     case "nth": return `${a[0]}?.[${a[1]}]`;
     case "list": return `[${a.join(", ")}]`;
     default: {

@@ -126,7 +126,7 @@ const stepsList = spec(`${O}steps-list`, "StepsList", "How it works: numbered or
           use("IconBadge", { props: { Variant: "primary" }, attrs: { "data-slot": "marker" } },
             when(eq(ref("marker"), "icon"),
               [use("LucideIcon", { props: { Name: ref("step.icon"), Size: 20 } })],
-              [use("Text", { props: { Size: "base", Weight: "bold" } }, text(str(add(ref("i"), 1))))])),
+              [use("Inline", { props: { Class: "text-base font-bold" } }, text(str(add(ref("i"), 1))))])),
           use("Stack", { props: { Gap: "2", Align: cond(eq(ref("align"), "center"), "center", "start") } },
             use("Title", { props: { As: 3, Size: "xl", Weight: "bold" } }, text(ref("step.title"))),
             use("Text", { props: { Size: "sm", Class: "text-muted-foreground" } }, text(ref("step.text"))))))),

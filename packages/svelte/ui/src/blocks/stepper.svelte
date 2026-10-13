@@ -27,6 +27,7 @@
   import Button from "../primitives/button/button.svelte";
   import Group from "../primitives/group/group.svelte";
   import IconBadge from "../primitives/iconbadge/icon-badge.svelte";
+  import Inline from "../primitives/inline/inline.svelte";
   import List from "../primitives/list/list.svelte";
   import ListItem from "../primitives/list/list-item.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
@@ -77,9 +78,9 @@
             {#if ((marker as string) === "icon")}
               <LucideIcon name={s.icon} size={16} />
             {:else}
-              <Text size="sm" weight="bold">
+              <Inline class="text-sm font-bold">
                 {((i + 1) == null ? undefined : String((i + 1)))}
-              </Text>
+              </Inline>
             {/if}
           </IconBadge>
           <Text size="sm" weight={(((i + 1) === current) ? "bold" : "semibold")}>

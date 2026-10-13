@@ -9,9 +9,9 @@ import { Fragment, type ReactNode } from "react";
 import { Box } from "../primitives/box/box";
 import { Button } from "../primitives/button/button";
 import { Group } from "../primitives/group/group";
+import { Inline } from "../primitives/inline/inline";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
-import { Text } from "../primitives/text/text";
 import { MediaFrame } from "../components/media-frame";
 import { SectionFrame } from "../components/section-frame";
 import { StoryDots } from "../components/story-dots";
@@ -59,12 +59,12 @@ export function StoryTabs({
                 data-active={((s.id === active) ? "true" : "false")}
                 onClick={() => onSelect?.(s.id)}
               >
-                <Text size="sm" weight="semibold">
+                <Inline className="text-sm font-semibold">
                   {s.date}
-                </Text>
-                <Text size="xs">
+                </Inline>
+                <Inline className="text-xs">
                   {s.tag}
-                </Text>
+                </Inline>
               </Button>
             ))}
           </Box>

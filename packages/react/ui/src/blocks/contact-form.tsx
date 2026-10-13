@@ -62,7 +62,7 @@ export function ContactForm({
       measure={(((layout as string) === "single") ? "xl" : "default")}
     >
       <Grid cols={(((layout as string) === "split") ? "1-2" : "1")} className="items-start gap-8">
-        <Form className="w-full gap-4" data-testid="contact-form">
+        <Form method="dialog" className="w-full gap-4" data-testid="contact-form">
           {((fields as string) === "full") ? (
             <Field label={labels.name} htmlFor={tpl("{0}-name", id)}>
               <Input type="text" name="name" autoComplete="name" id={tpl("{0}-name", id)} data-testid="field" />
@@ -87,7 +87,7 @@ export function ContactForm({
               </Label>
             </Group>
           ) : null}
-          <Button variant="default" size="default" type="button" className="w-fit" data-testid="submit">
+          <Button variant="default" size="default" type="submit" className="w-fit" data-testid="submit">
             {labels.submit}
           </Button>
         </Form>

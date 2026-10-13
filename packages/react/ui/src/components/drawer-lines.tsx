@@ -15,7 +15,7 @@ import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { MediaFrame } from "../components/media-frame";
 import { NumberField } from "../components/number-field";
-import { fmtMoney } from "../utils";
+import { fmtMoney, tpl } from "../utils";
 import type { CartLine, CartLabels } from "../blocks/cart-list.types";
 import type { SummaryRow } from "../blocks/order-summary.types";
 import type { DrawerLabels } from "../blocks/cart-drawer.types";
@@ -26,9 +26,17 @@ export type DrawerLinesProps = {
   labels: CartLabels;
   drawer: DrawerLabels;
   media?: "image" | "none";
+  field?: string;
 };
 
-export function DrawerLines({ lines, rows, labels, drawer, media = "image" }: DrawerLinesProps) {
+export function DrawerLines({
+  lines,
+  rows,
+  labels,
+  drawer,
+  media = "image",
+  field = "qty",
+}: DrawerLinesProps) {
   return (
     <>
       <Stack gap="4" align="stretch" className="flex-1 p-4" data-testid="lines">
@@ -51,7 +59,7 @@ export function DrawerLines({ lines, rows, labels, drawer, media = "image" }: Dr
               </Text>
               <NumberField
                 value={(line.qty == null ? undefined : String(line.qty))}
-                name="qty"
+                name={tpl("{0}-{1}", field, line.id)}
                 min="1"
                 label={labels.qty}
                 decrease={labels.decrease}

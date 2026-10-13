@@ -21,6 +21,7 @@ export type StepsListProps = {
 
 <script setup lang="ts">
 import IconBadge from "../primitives/iconbadge/icon-badge.vue";
+import Inline from "../primitives/inline/inline.vue";
 import List from "../primitives/list/list.vue";
 import ListItem from "../primitives/list/list-item.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
@@ -66,9 +67,9 @@ const {
       >
         <IconBadge variant="primary" data-slot="marker">
           <LucideIcon v-if="((marker as string) === 'icon')" :name="step.icon" :size="20" />
-          <Text v-else size="base" weight="bold">
+          <Inline v-else class="text-base font-bold">
             {{ ((i + 1) == null ? undefined : String((i + 1))) }}
-          </Text>
+          </Inline>
         </IconBadge>
         <Stack gap="2" :align="(((align as string) === 'center') ? 'center' : 'start')">
           <Title :as="3" size="xl" weight="bold">

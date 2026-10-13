@@ -39,6 +39,7 @@
     {
       "use": "Form",
       "props": {
+        "Method": "dialog",
         "Class": "gap-4"
       },
       "attrs": {
@@ -398,7 +399,7 @@
           "props": {
             "Variant": "default",
             "Size": "default",
-            "Type": "button",
+            "Type": "submit",
             "Class": "w-full"
           },
           "attrs": {

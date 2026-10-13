@@ -75,13 +75,13 @@
           <Title as={3} size="xl" weight="bold">
             {signup?.title}
           </Title>
-          <Form class={cn("w-full max-w-md", (false ? "mx-auto" : ""))} data-testid="email-form">
+          <Form method="dialog" class={cn("w-full max-w-md", (false ? "mx-auto" : ""))} data-testid="email-form">
             <Label for={tpl("{0}-email", id)} class="sr-only">
               {signup?.label}
             </Label>
             <Group gap="2" align="start" class="w-full flex-wrap">
               <Input type="email" name="email" class="min-w-0 flex-1" id={tpl("{0}-email", id)} data-testid="field" />
-              <Button variant="default" size="default" type="button" data-testid="submit">
+              <Button variant="default" size="default" type="submit" data-testid="submit">
                 {signup?.submit}
               </Button>
             </Group>

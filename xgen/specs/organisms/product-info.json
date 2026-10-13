@@ -210,10 +210,9 @@
                               },
                               "children": [
                                 {
-                                  "use": "Text",
+                                  "use": "Inline",
                                   "props": {
-                                    "Size": "base",
-                                    "Weight": "semibold"
+                                    "Class": "text-base font-semibold"
                                   },
                                   "children": [
                                     {

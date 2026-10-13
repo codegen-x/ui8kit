@@ -65,7 +65,7 @@ const {
         data-testid="aside"
       >
         <Field :label="labels.zone" :htmlFor="tpl('{0}-zone', id)">
-          <Select name="zone" :id="tpl('{0}-zone', id)">
+          <Select :name="tpl('{0}-zone', id)" :id="tpl('{0}-zone', id)">
             <SelectOption :value="zone.id" :label="zone.name" :selected="true" />
           </Select>
         </Field>

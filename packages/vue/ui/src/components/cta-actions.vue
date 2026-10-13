@@ -29,6 +29,7 @@ const { id, actions, center = false } = defineProps<CtaActionsProps>();
 <template>
   <Form
     v-if="(actions.mode === 'form')"
+    method="dialog"
     :class="cn('w-full max-w-md', (center ? 'mx-auto' : ''))"
     data-testid="email-form"
   >
@@ -37,7 +38,7 @@ const { id, actions, center = false } = defineProps<CtaActionsProps>();
     </Label>
     <Group gap="2" align="start" class="w-full flex-wrap">
       <Input type="email" name="email" class="min-w-0 flex-1" :id="tpl('{0}-email', id)" data-testid="field" />
-      <Button variant="default" size="default" type="button" data-testid="submit">
+      <Button variant="default" size="default" type="submit" data-testid="submit">
         {{ actions.cta }}
       </Button>
     </Group>

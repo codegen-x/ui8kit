@@ -55,6 +55,7 @@ export function NewsletterForm({
       )}
     >
       <Form
+        method="dialog"
         className={cn("w-full max-w-md", (((align as string) === "center") ? "mx-auto" : ""))}
         data-testid="newsletter-form"
       >
@@ -70,7 +71,7 @@ export function NewsletterForm({
           )}
         >
           <Input type="email" name="email" className="min-w-0 flex-1" id={tpl("{0}-email", id)} data-testid="field" />
-          <Button variant="default" size="default" type="button" data-testid="submit">
+          <Button variant="default" size="default" type="submit" data-testid="submit">
             {submit}
           </Button>
         </Group>

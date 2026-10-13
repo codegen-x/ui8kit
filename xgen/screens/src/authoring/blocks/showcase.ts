@@ -6,7 +6,7 @@ import { fields, spec, ts } from "../kit";
 import { frame } from "../components/frames";
 import { id, title, tone, tsOf, toneLite, denseLite } from "../props";
 import { kids } from "../forms";
-import { fluidCols, heading, muted, strong, surface, fitCols } from "../ux";
+import { fluidCols, heading, muted, strong, strongSpan, surface, fitCols } from "../ux";
 
 const O = "organism.";
 const base = (extra: Record<string, unknown> = {}) => ({ id: ref("id"), title: ref("title"), tone: ref("tone"), density: ref("density"), ...extra });
@@ -73,7 +73,7 @@ const featureAccordion = spec(`${O}feature-accordion`, "FeatureAccordion", "Feat
     use("Stack", { props: { Gap: "0", Align: "stretch" }, attrs: { "data-testid": "items" } },
       eachAt(ref("features"), "f", "i", ref("f.id"),
         use("Disclosure", { props: { Variant: "item", Name: cond(ref("multiple"), undef(), tpl("{0}-accordion", coalesce(ref("id"), "accordion"))), Open: and(eq(ref("expand"), "first"), eq(ref("i"), 0)) }, attrs: { "data-testid": "item" } },
-          use("Summary", { props: { Variant: "item" } }, use("Group", { props: { Gap: "4", Align: "center" } }, use("LucideIcon", { props: { Name: ref("f.icon"), Size: 20 } }), strong(ref("f.title")))),
+          use("Summary", { props: { Variant: "item" } }, use("Group", { props: { Tag: "span", Gap: "4", Align: "center" } }, use("LucideIcon", { props: { Name: ref("f.icon"), Size: 20 } }), strongSpan(ref("f.title")))),
           use("Text", { props: { Size: "sm", Class: "pb-4 text-muted-foreground" } }, text(ref("f.text")))))),
   ], [organism("MediaFrame", { alt: ref("title"), ratio: "4/3" })])],
 });

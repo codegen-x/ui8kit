@@ -26,9 +26,9 @@ export type StoryTabsProps = {
 import Box from "../primitives/box/box.vue";
 import Button from "../primitives/button/button.vue";
 import Group from "../primitives/group/group.vue";
+import Inline from "../primitives/inline/inline.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
-import Text from "../primitives/text/text.vue";
 import MediaFrame from "../components/media-frame.vue";
 import SectionFrame from "../components/section-frame.vue";
 import StoryDots from "../components/story-dots.vue";
@@ -67,12 +67,12 @@ const emit = defineEmits<{ select: [id: string] }>();
         :data-active="((s.id === active) ? 'true' : 'false')"
         @click="() => emit('select', s.id)"
       >
-        <Text size="sm" weight="semibold">
+        <Inline class="text-sm font-semibold">
           {{ s.date }}
-        </Text>
-        <Text size="xs">
+        </Inline>
+        <Inline class="text-xs">
           {{ s.tag }}
-        </Text>
+        </Inline>
       </Button>
     </Box>
     <template v-for="(s, i) in steps" :key="s.id">

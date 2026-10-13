@@ -15,6 +15,7 @@ export type DrawerLinesProps = {
   labels: CartLabels;
   drawer: DrawerLabels;
   media?: "image" | "none";
+  field?: string;
 };
 </script>
 
@@ -29,9 +30,9 @@ import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import MediaFrame from "../components/media-frame.vue";
 import NumberField from "../components/number-field.vue";
-import { fmtMoney } from "../utils";
+import { fmtMoney, tpl } from "../utils";
 
-const { lines, rows, labels, drawer, media = "image" } = defineProps<DrawerLinesProps>();
+const { lines, rows, labels, drawer, media = "image", field = "qty" } = defineProps<DrawerLinesProps>();
 </script>
 
 <template>
@@ -52,7 +53,7 @@ const { lines, rows, labels, drawer, media = "image" } = defineProps<DrawerLines
         </Text>
         <NumberField
           :value="(line.qty == null ? undefined : String(line.qty))"
-          name="qty"
+          :name="tpl('{0}-{1}', field, line.id)"
           min="1"
           :label="labels.qty"
           :decrease="labels.decrease"

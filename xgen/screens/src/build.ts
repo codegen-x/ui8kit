@@ -34,6 +34,7 @@ export const preset = (name: string, path: string): Value => op("preset", name, 
 export const coalesce = (...a: Value[]) => op("coalesce", ...a);
 export const str = (a: Value) => op("str", a);
 export const words = (a: Value) => op("words", a);
+export const nbsp = (a: Value) => op("nbsp", a);
 export const nth = (a: Value, i: Value) => op("nth", a, i);
 export const has = (a: Value) => op("has", a);
 export const undef = (): Value => op("undef");

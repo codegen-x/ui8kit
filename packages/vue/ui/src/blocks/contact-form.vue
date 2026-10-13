@@ -67,7 +67,7 @@ const {
     :measure="(((layout as string) === 'single') ? 'xl' : 'default')"
   >
     <Grid :cols="(((layout as string) === 'split') ? '1-2' : '1')" class="items-start gap-8">
-      <Form class="w-full gap-4" data-testid="contact-form">
+      <Form method="dialog" class="w-full gap-4" data-testid="contact-form">
         <Field v-if="((fields as string) === 'full')" :label="labels.name" :htmlFor="tpl('{0}-name', id)">
           <Input type="text" name="name" autocomplete="name" :id="tpl('{0}-name', id)" data-testid="field" />
         </Field>
@@ -86,7 +86,7 @@ const {
             {{ labels.consent }}
           </Label>
         </Group>
-        <Button variant="default" size="default" type="button" class="w-fit" data-testid="submit">
+        <Button variant="default" size="default" type="submit" class="w-fit" data-testid="submit">
           {{ labels.submit }}
         </Button>
       </Form>

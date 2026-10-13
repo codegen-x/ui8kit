@@ -71,13 +71,13 @@ export function SitemapFooter({
                 <Title as={3} size="xl" weight="bold">
                   {signup?.title}
                 </Title>
-                <Form className={cn("w-full max-w-md", (false ? "mx-auto" : ""))} data-testid="email-form">
+                <Form method="dialog" className={cn("w-full max-w-md", (false ? "mx-auto" : ""))} data-testid="email-form">
                   <Label htmlFor={tpl("{0}-email", id)} className="sr-only">
                     {signup?.label}
                   </Label>
                   <Group gap="2" align="start" className="w-full flex-wrap">
                     <Input type="email" name="email" className="min-w-0 flex-1" id={tpl("{0}-email", id)} data-testid="field" />
-                    <Button variant="default" size="default" type="button" data-testid="submit">
+                    <Button variant="default" size="default" type="submit" data-testid="submit">
                       {signup?.submit}
                     </Button>
                   </Group>

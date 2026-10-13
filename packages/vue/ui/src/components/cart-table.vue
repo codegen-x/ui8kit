@@ -12,6 +12,7 @@ export type CartTableProps = {
   labels: CartLabels;
   media?: "image" | "none";
   density?: "default" | "compact";
+  field?: string;
 };
 </script>
 
@@ -32,9 +33,9 @@ import TableRow from "../primitives/table/table-row.vue";
 import Text from "../primitives/text/text.vue";
 import MediaFrame from "../components/media-frame.vue";
 import NumberField from "../components/number-field.vue";
-import { cn, fmtMoney } from "../utils";
+import { cn, fmtMoney, tpl } from "../utils";
 
-const { lines, labels, media = "image", density = "default" } = defineProps<CartTableProps>();
+const { lines, labels, media = "image", density = "default", field = "qty" } = defineProps<CartTableProps>();
 const emit = defineEmits<{ remove: [id: string] }>();
 </script>
 
@@ -91,7 +92,7 @@ const emit = defineEmits<{ remove: [id: string] }>();
           <TableCell>
             <NumberField
               :value="(line.qty == null ? undefined : String(line.qty))"
-              name="qty"
+              :name="tpl('{0}-{1}', field, line.id)"
               min="1"
               :label="labels.qty"
               :decrease="labels.decrease"

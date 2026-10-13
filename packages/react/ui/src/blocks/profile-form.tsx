@@ -58,7 +58,7 @@ export function ProfileForm({
           id={id}
           className={cn((((tone as string) === "muted") ? "bg-muted" : ""))}
         >
-          <Form className="gap-6" data-testid="profile-form">
+          <Form method="dialog" className="gap-6" data-testid="profile-form">
             <Grid cols={(((layout as string) === "split") ? "1-2" : "1")} className="items-start gap-8">
               <Stack gap="4" align="stretch">
                 {((avatar as string) === "show") ? (
@@ -100,7 +100,7 @@ export function ProfileForm({
               ) : null}
             </Grid>
             <Group gap="2" className="flex-wrap">
-              <Button variant="default" size="default" type="button" data-testid="submit">
+              <Button variant="default" size="default" type="submit" data-testid="submit">
                 {labels.save}
               </Button>
               <Button variant="outline" size="default" type="button">

@@ -13,11 +13,11 @@ export type PaymentOptionsProps = {
 
 <script setup lang="ts">
 import Grid from "../primitives/grid/grid.vue";
+import Inline from "../primitives/inline/inline.vue";
 import Label from "../primitives/label/label.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Radio from "../primitives/radio/radio.vue";
 import Stack from "../primitives/stack/stack.vue";
-import Text from "../primitives/text/text.vue";
 
 const { payments, name, checked = "" } = defineProps<PaymentOptionsProps>();
 </script>
@@ -30,13 +30,13 @@ const { payments, name, checked = "" } = defineProps<PaymentOptionsProps>();
     >
       <Radio :name="name" :value="p.id" :checked="(p.id === checked)" />
       <LucideIcon :name="p.icon" :size="20" class="shrink-0" />
-      <Stack gap="0">
-        <Text size="sm" weight="semibold">
+      <Stack tag="span" gap="0">
+        <Inline class="text-sm font-semibold">
           {{ p.title }}
-        </Text>
-        <Text size="xs" class="text-muted-foreground">
+        </Inline>
+        <Inline class="text-xs text-muted-foreground">
           {{ p.text }}
-        </Text>
+        </Inline>
       </Stack>
     </Label>
   </Grid>

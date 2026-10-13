@@ -40,6 +40,7 @@ export const OPS: Record<string, number | "n"> = {
   max: "n", min: "n", round: 1, coalesce: "n",
   /** String(x), undefined stays undefined */ str: 1,
   /** x != null */ has: 1,
+  /** a text that does not wrap at its spaces (each space becomes U+00A0): phone numbers; nbsp("+1 555 0145") */ nbsp: 1,
   /** the words of a text: words("Build your next page") -> ["Build", "your", "next", "page"] */ words: 1,
   /** the item at an index of a list, undefined past the end: nth(weights, i) -> weights?.[i] */ nth: 2,
   /** the literal `undefined` (an attribute that is left out) */ undef: 0,

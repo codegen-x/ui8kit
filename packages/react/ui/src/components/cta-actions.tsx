@@ -24,13 +24,13 @@ export function CtaActions({ id, actions, center = false }: CtaActionsProps) {
   return (
     <>
       {(actions.mode === "form") ? (
-        <Form className={cn("w-full max-w-md", (center ? "mx-auto" : ""))} data-testid="email-form">
+        <Form method="dialog" className={cn("w-full max-w-md", (center ? "mx-auto" : ""))} data-testid="email-form">
           <Label htmlFor={tpl("{0}-email", id)} className="sr-only">
             {actions.emailLabel}
           </Label>
           <Group gap="2" align="start" className="w-full flex-wrap">
             <Input type="email" name="email" className="min-w-0 flex-1" id={tpl("{0}-email", id)} data-testid="field" />
-            <Button variant="default" size="default" type="button" data-testid="submit">
+            <Button variant="default" size="default" type="submit" data-testid="submit">
               {actions.cta}
             </Button>
           </Group>

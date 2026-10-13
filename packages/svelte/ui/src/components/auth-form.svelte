@@ -30,7 +30,7 @@
   let { id, mode = "signin", labels, submit }: AuthFormProps = $props();
 </script>
 
-<Form class="gap-4" data-testid="auth-form">
+<Form method="dialog" class="gap-4" data-testid="auth-form">
   {#if ((mode as string) === "signup")}
     <Field label={labels.name} htmlFor={tpl("{0}-name", id)}>
       <Input type="text" name="name" autocomplete="name" id={tpl("{0}-name", id)} data-testid="field" />
@@ -71,7 +71,7 @@
       </Label>
     </Group>
   {/if}
-  <Button variant="default" size="default" type="button" class="w-full" data-testid="submit">
+  <Button variant="default" size="default" type="submit" class="w-full" data-testid="submit">
     {submit}
   </Button>
 </Form>

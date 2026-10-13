@@ -371,7 +371,15 @@
                           "organism": "NumberField",
                           "props": {
                             "value": "1",
-                            "name": "qty",
+                            "name": {
+                              "op": "tpl",
+                              "args": [
+                                "{0}-qty",
+                                {
+                                  "$": "id"
+                                }
+                              ]
+                            },
                             "min": "1",
                             "label": {
                               "$": "labels.qty"
