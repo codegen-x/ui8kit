@@ -88,7 +88,6 @@
 .tp-frame { position: absolute; left: 0; top: 0; width: 1440px; transform-origin: 0 0; font-family: var(--font-sans); background-color: var(--background); color: var(--foreground); pointer-events: none; }
 .tp-frame :is(h1, h2, h3, h4, h5, h6) { font-family: var(--taste-heading, var(--font-sans)); }
 .tp-page { display: flex; flex-direction: column; min-height: 960px; background: var(--background); color: var(--foreground); }
-.tp-page-app { min-height: 960px; }
 .tp-main { flex: 1; }
 .tp-cols { display: grid; gap: 32px; padding: 32px 48px; align-items: start; flex: 1; width: 100%; box-sizing: border-box; }
 .tp-cols-2 { grid-template-columns: minmax(0, 1fr) 360px; }

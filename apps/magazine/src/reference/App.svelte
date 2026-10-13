@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount, tick } from 'svelte';
+  import { Block } from '@ui8kit/svelte-ui';
   import TasteFrame from '@ui8kit/panorama/taste-frame.svelte';
   import { SCREENS } from '@ui8kit/taste-screens/screens';
   import { deckAt, type Deck } from '@ui8kit/taste-data/copy';
@@ -38,17 +39,17 @@
 </script>
 
 {#if concept && parts && deck}
-  <div id="capture" data-concept={concept.id} data-key={key} data-mode={mode} data-probe={narrow ? 'narrow-reflow' : 'native-desktop'} class:narrow>
+  <Block tag="main" id="capture" data-concept={concept.id} data-key={key} data-mode={mode} data-probe={narrow ? 'narrow-reflow' : 'native-desktop'} class={narrow ? "narrow" : undefined}>
     <TasteFrame screen={SCREENS[parts.screen]!} {deck} skin={parts.skin as SkinId} fonts={parts.fonts as FontPair} radius={parts.radius as Radius} />
-  </div>
+  </Block>
 {:else}
-  <p role="alert">Unknown reference concept or style.</p>
+  <Block tag="main"><p role="alert">Unknown reference concept or style.</p></Block>
 {/if}
 
 <style>
   :global(html), :global(body) { margin:0; padding:0; }
-  #capture { width:1440px; height:1080px; }
-  #capture.narrow { width:390px; height:844px; }
+  :global(#capture) { width:1440px; height:1080px; }
+  :global(#capture.narrow) { width:390px; height:844px; }
   /* A diagnostic width override, not an adaptation of the production screen. */
-  #capture.narrow :global(.taste-frame) { width:390px; height:844px; }
+  :global(#capture.narrow .taste-frame) { width:390px; height:844px; }
 </style>

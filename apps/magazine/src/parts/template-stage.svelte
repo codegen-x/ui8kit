@@ -8,7 +8,7 @@
   import { family, type FontId } from "@ui8kit/taste-data/fonts";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { tokenAttrs, tokenStyle, type Tokens } from "../lib/design";
-  import type { TemplateDef } from "./registry";
+  import type { TemplateDef } from "../templates/registry";
 
   let { template, c, skin, font, radius, tokens = {}, label }: { template: TemplateDef; c: Deck; skin: string; font: FontId; radius: number; tokens?: Tokens; label: string } = $props();
 
@@ -32,7 +32,7 @@
 </script>
 
 <div class="tp-box" bind:this={box} style:height={`${height * (width / 1440)}px`} data-testid="template-stage" data-template={template.id} data-skin={skin} role="img" aria-label={label}>
-  <div class="tp-frame" bind:this={frame} data-skin={skin} {style} {...attrs} style:transform={`scale(${width / 1440})`} inert aria-hidden="true">
+  <div class="tp-frame tp-page" bind:this={frame} data-skin={skin} {style} {...attrs} style:transform={`scale(${width / 1440})`} inert aria-hidden="true">
     <Page {c} />
   </div>
 </div>

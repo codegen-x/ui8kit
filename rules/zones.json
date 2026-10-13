@@ -12,7 +12,9 @@
         "src/parts"
       ],
       "blockRoot": [
-        "src/App.svelte"
+        "src/parts/panorama-view.svelte",
+        "src/parts/screen-preview.svelte",
+        "src/parts/theme-corner.svelte"
       ]
     },
     {

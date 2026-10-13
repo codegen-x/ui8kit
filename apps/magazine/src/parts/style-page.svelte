@@ -23,7 +23,7 @@
   import { skinTokens } from "../lib/tokens";
   import type { StyleTab } from "../lib/state.svelte";
   import { TEMPLATES, type TemplateId } from "../templates/registry";
-  import TemplateStage from "../templates/stage.svelte";
+  import TemplateStage from "./template-stage.svelte";
   import { theme } from "../lib/theme.svelte";
   import { effective, setToken, tokenAttrs, tokenStyle, withTokens, type Tokens } from "../lib/design";
   import Card from "./card.svelte";
