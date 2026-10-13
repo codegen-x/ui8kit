@@ -1,0 +1,88 @@
+{
+  "$schema": "../../schema/schemas/spec.schema.json",
+  "specVersion": 1,
+  "id": "ui.header",
+  "tier": "brick",
+  "dir": "header",
+  "docs": "Header is the header of a section, an article or a composite: introductory content that is not the root of a block. A page-level banner or contentinfo landmark is Block tag=header; Header is the nested one (rule 01).",
+  "variants": {
+    "header": "header.variants.json"
+  },
+  "parts": [
+    {
+      "name": "Header",
+      "docs": "Header renders a header element.",
+      "recipeId": "header",
+      "asChild": true,
+      "classes": {
+        "recipe": {}
+      },
+      "props": [
+        {
+          "name": "Class",
+          "type": "string",
+          "cva": false,
+          "docs": "adds Tailwind utilities"
+        },
+        {
+          "name": "Attrs",
+          "type": "attrs",
+          "cva": false
+        },
+        {
+          "name": "Children",
+          "type": "children",
+          "cva": false
+        }
+      ],
+      "render": {
+        "kind": "element",
+        "tag": {
+          "kind": "static",
+          "tag": "header"
+        },
+        "attrs": [
+          {
+            "kind": "class"
+          },
+          {
+            "kind": "rest"
+          }
+        ],
+        "children": [
+          {
+            "kind": "slot"
+          }
+        ]
+      },
+      "slots": [
+        {
+          "name": "children"
+        }
+      ],
+      "events": [],
+      "a11y": {
+        "roots": [
+          "header"
+        ],
+        "roles": [],
+        "aria": [],
+        "keyboard": []
+      },
+      "data": [],
+      "tokens": []
+    }
+  ],
+  "examples": [
+    {
+      "id": "class.padded",
+      "props": {
+        "Class": "p-4 rounded border border-border"
+      }
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true
+  }
+}

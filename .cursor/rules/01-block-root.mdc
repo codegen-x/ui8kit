@@ -81,7 +81,7 @@ The DOM tree follows HTML5 semantics strictly. Landmarks come only from
   panel, shell top bar / sidebar / footer, help and footer cards) are the only composites
   allowed to open on `Block`; they are counted as block roots, never nested.
 - **Composites.** Every other composite opens on `Box` (role="group" for a panel), `Nav`,
-  `Figure` / `FigureCaption`, `Article` or `Blockquote`, never on `Block`.
+  `Figure` / `FigureCaption`, `Article`, `Blockquote`, `Header` or `Footer`, never on `Block`. `Header` / `Footer` are the nested (non-landmark) header and footer of a section, article or composite; the page banner / contentinfo stays `Block tag="header"` / `Block tag="footer"`.
   A composite rendering `nav` uses the `Nav` primitive; the landmark itself comes from the
   enclosing block, not from a nested `Block`.
 - **Cards** that are whole blocks (pricing, product, post) open on `Block tag="article"`

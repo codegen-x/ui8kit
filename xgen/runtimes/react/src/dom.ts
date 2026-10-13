@@ -50,6 +50,8 @@ export const REACT_ATTR_TYPES: Record<string, [string, string]> = {
   ul: ["HTMLAttributes", "HTMLUListElement"],
   ol: ["OlHTMLAttributes", "HTMLOListElement"],
   nav: ["HTMLAttributes", "HTMLElement"],
+  header: ["HTMLAttributes", "HTMLElement"],
+  footer: ["HTMLAttributes", "HTMLElement"],
   article: ["HTMLAttributes", "HTMLElement"],
   figure: ["HTMLAttributes", "HTMLElement"],
   figcaption: ["HTMLAttributes", "HTMLElement"],
