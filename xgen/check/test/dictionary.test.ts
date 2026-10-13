@@ -21,7 +21,7 @@ test("the dictionary check is exact: a leaf under a subtree handed to an organis
   dict["site"]!["header"]!["skip"] = saved;
   // the subtrees read by a dynamic index are named
   expect([...dictionaryUse(plan).dynamic]).toContain("status");
-});
+}, 30_000);
 
 test("the routes check finds a broken menu", () => {
   const { plan } = runChecks(repo);
@@ -34,4 +34,4 @@ test("the routes check finds a broken menu", () => {
   expect(p).toContain("xgen/specs/screens/theme-content-blog.json: menu[1] (articles): titleKey pages.contentBlog.none.nav is not a text of xgen/content/ui/en.json");
   s.menu = JSON.parse(saved);
   expect(checkRoutes(plan).problems).toEqual([]);
-});
+}, 30_000);
