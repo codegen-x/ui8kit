@@ -103,3 +103,32 @@ cart layouts named "Your cart"). Making the names unique without changing visibl
 needs a landmark-name prop (`label`) on every block whose root is a landmark, forwarded
 to its frame, and set per variant by the gallery and the theme pages. Until then the rule
 reports as a warning and does not fail e2e.
+
+## Revert to the codegen tag model
+
+The kit is back on the minimal tag-to-primitive model of `ui8kit/codegen`:
+
+| Primitive | Tags |
+|---|---|
+| Block | div (default), section, article, aside, header, footer, main, nav, figure, search, hgroup |
+| Box | div only (ARIA, `role="group"` included, through attrs) |
+| Container | div, main, section |
+| Stack | div, ul, ol |
+| Group | div, fieldset, dl |
+| List / ListItem | ul, ol, dl, menu / li, dt, dd |
+| Title | h1 to h6 |
+| Text | p, blockquote, figcaption, address, pre, and the inline elements |
+
+Removed primitives: Header, Footer, Nav, Article, Figure, FigureCaption, Blockquote.
+Stack and Group no longer render a span; the two places that did (a payment option
+label, a disclosure summary) use Inline with the same classes.
+
+Rule 01 now lets any file (block, composite, part, screen) open on exactly one Block
+with a semantic tag; the detector no longer reports a composite that opens on Block.
+A nav, figure or article nested inside a block root or repeated in a loop is a separate
+file rooted on Block: the parts `NavBlock`, `FigureBlock`, `ArticleBlock`
+(`xgen/screens/src/authoring/components/landmarks.ts`). Quotations and captions are
+`Text tag="blockquote"` / `Text tag="figcaption"`.
+
+Result: block-root 0 in every zone, html-validate 0 errors in 570 states, warnings
+unique-landmark 1740 only (unchanged open item above).
