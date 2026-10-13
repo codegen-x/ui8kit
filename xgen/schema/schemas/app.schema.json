@@ -19,7 +19,8 @@
       "enum": [
         "svelte",
         "react",
-        "vue"
+        "vue",
+        "solid"
       ]
     },
     "screens": {

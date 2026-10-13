@@ -8,7 +8,7 @@ import { printClassString } from "./variant-table";
 export interface PartRef { brick: BrickDef; part: PartDef }
 
 export interface Syntax {
-  runtime: "svelte" | "react" | "vue";
+  runtime: "svelte" | "react" | "vue" | "solid";
   /** name of a prop of a part in this runtime, from its canonical name */
   propName(part: PartRef, canonical: string): string;
   eventProp(event: string): string;

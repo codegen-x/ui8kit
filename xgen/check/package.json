@@ -25,6 +25,10 @@
     "test": "bun test"
   },
   "devDependencies": {
-    "parse5": "7"
+    "@babel/core": "^7",
+    "@babel/preset-typescript": "^7",
+    "babel-preset-solid": "^1.9",
+    "parse5": "7",
+    "solid-js": "^1.9"
   }
 }

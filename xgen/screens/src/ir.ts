@@ -176,7 +176,7 @@ export interface AppSpec {
   specVersion: 1;
   /** package name of the host app */
   name: string;
-  runtime: "svelte" | "react" | "vue";
+  runtime: "svelte" | "react" | "vue" | "solid";
   /** screen spec ids the host serves; `["*"]`: every screen portable to the runtime */
   screens: string[];
   title: string;

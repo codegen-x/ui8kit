@@ -1,5 +1,5 @@
 // Zones catalog: every workspace declares its own zones in the "ui8kit" field of its package.json.
-//   runtime      svelte | react | vue
+//   runtime      svelte | react | vue | solid | templ
 //   kit          primitives and utils: raw host markup is allowed, the composition rules never scan it
 //   composition  blocks, composite components, app screens: rules 01, 02, 03 and 06 apply
 //   blockRoot    the part of the composition whose files must open on Block (blocks and screens)

@@ -4,11 +4,13 @@ import type { PartDef } from "./domain/model";
 
 export type PortableFlag = true | { portable: false; reason: string };
 /** the runtimes xgen emits ui packages and hosts for */
-export const UI_RUNTIMES = ["svelte", "react", "vue"] as const;
+export const UI_RUNTIMES = ["svelte", "react", "vue", "solid"] as const;
 export type UiRuntime = (typeof UI_RUNTIMES)[number];
 /** the portability of a spec to a runtime. Vue shares the template model of Svelte (blocks, slots, attributes): a spec
- * that says nothing about Vue follows its Svelte flag, a spec that does not carry over says so with its own `vue` flag. */
-export const portableTo = (p: { svelte: PortableFlag; react: PortableFlag; vue?: PortableFlag }, rt: UiRuntime): PortableFlag => (rt === "vue" ? p.vue ?? p.svelte : p[rt]);
+ * that says nothing about Vue follows its Svelte flag, a spec that does not carry over says so with its own `vue` flag. Solid shares
+ * the JSX model of React (render props, no snippets): a spec that says nothing about Solid follows its React flag. */
+export const portableTo = (p: { svelte: PortableFlag; react: PortableFlag; vue?: PortableFlag; solid?: PortableFlag }, rt: UiRuntime): PortableFlag =>
+  rt === "vue" ? p.vue ?? p.svelte : rt === "solid" ? p.solid ?? p.react : p[rt];
 
 export interface SlotInfo { name: string; docs?: string; /** arguments of a render-prop slot */ args?: string[] }
 export interface EventInfo { name: string; payload?: string; docs?: string }

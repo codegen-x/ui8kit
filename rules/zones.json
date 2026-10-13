@@ -35,6 +35,23 @@
       ]
     },
     {
+      "name": "host-solid",
+      "dir": "apps/host-solid",
+      "runtime": "solid",
+      "generated": true,
+      "kit": [
+        "xgen/runtime"
+      ],
+      "composition": [
+        "xgen/App.tsx",
+        "xgen/screens"
+      ],
+      "blockRoot": [
+        "xgen/App.tsx",
+        "xgen/screens"
+      ]
+    },
+    {
       "name": "host-svelte",
       "dir": "apps/host-svelte",
       "runtime": "svelte",
@@ -92,6 +109,33 @@
       "name": "@ui8kit/react-ui",
       "dir": "packages/react/ui",
       "runtime": "react",
+      "generated": true,
+      "kit": [
+        "src/primitives",
+        "src/utils",
+        "src/styles"
+      ],
+      "composition": [
+        "src/blocks",
+        "src/components"
+      ],
+      "blockRoot": [
+        "src/blocks",
+        "src/components/faq-help.tsx",
+        "src/components/footer-card.tsx",
+        "src/components/hero-head.tsx",
+        "src/components/region.tsx",
+        "src/components/section-frame.tsx",
+        "src/components/shell-footer.tsx",
+        "src/components/shell-sidebar.tsx",
+        "src/components/shell-topbar.tsx",
+        "src/components/sidebar-panel.tsx"
+      ]
+    },
+    {
+      "name": "@ui8kit/solid-ui",
+      "dir": "packages/solid/ui",
+      "runtime": "solid",
       "generated": true,
       "kit": [
         "src/primitives",

@@ -4,6 +4,11 @@ import ts from "typescript";
 import { choice, lineOf, resultStringsOf, type IrAttr, type IrFile, type IrNode } from "./ir";
 
 export function reactToIr(src: string): IrFile {
+  return jsxToIr(src, "react");
+}
+
+/** the TSX adapter of React and Solid; Solid adds its control flow (Show, Switch/Match: choices; For, Index: loops; Dynamic: a dynamic tag) */
+export function jsxToIr(src: string, runtime: "react" | "solid"): IrFile {
   const sf = ts.createSourceFile("x.tsx", src, ts.ScriptTarget.Latest, true, ts.ScriptKind.TSX);
   const line = (n: ts.Node): number => lineOf(src, n.getStart(sf));
   const imports = new Map<string, string>();
@@ -81,14 +86,40 @@ export function reactToIr(src: string): IrFile {
         if (!c.expression) return [];
         const strings = resultStringsOf(c.expression);
         const inner = fromExpr(c.expression);
-        if (ts.isIdentifier(c.expression) && c.expression.text === "children") return [{ kind: "render", line: line(c) }];
+        if ((ts.isIdentifier(c.expression) && c.expression.text === "children") || (runtime === "solid" && /^(local|props)\.children$/.test(c.expression.getText(sf)))) return [{ kind: "render", line: line(c) }];
         return [...(strings.length ? [{ kind: "expr" as const, strings, line: line(c) }] : []), ...(inner.length ? [{ kind: "group" as const, line: line(c), children: inner }] : [{ kind: "render" as const, line: line(c) }])];
       }
       return jsx(c);
     });
   }
+  const fromSolid = (name: string): boolean => runtime === "solid" && imports.get(name)?.startsWith("solid-js") === true;
+  /** the expression of a JSX attribute (`fallback={...}`, `when={...}`) */
+  const attrExpr = (a: ts.JsxAttributes, name: string): ts.Expression | undefined => {
+    for (const p of a.properties) if (ts.isJsxAttribute(p) && p.name.getText(sf) === name && p.initializer && ts.isJsxExpression(p.initializer)) return p.initializer.expression;
+    return undefined;
+  };
+  /** a Solid control-flow element as the common tree, or undefined for any other tag */
+  function solidFlow(n: ts.JsxElement | ts.JsxSelfClosingElement): IrNode[] | undefined {
+    const open = ts.isJsxElement(n) ? n.openingElement : n;
+    const name = open.tagName.getText(sf);
+    if (!fromSolid(name)) return undefined;
+    const kids = ts.isJsxElement(n) ? children(n.children) : [];
+    const fb = attrExpr(open.attributes, "fallback");
+    const fallback = fb ? fromExpr(fb) : [];
+    if (name === "Show") return [...(attrExpr(open.attributes, "when") ? fromExpr(attrExpr(open.attributes, "when")!) : []), choice(line(n), [kids, fallback])];
+    if (name === "Switch") {
+      const matches = ts.isJsxElement(n) ? n.children.filter((c): c is ts.JsxElement | ts.JsxSelfClosingElement => ts.isJsxElement(c) || ts.isJsxSelfClosingElement(c)) : [];
+      const branches = matches.map((m) => { seen.add(m); return ts.isJsxElement(m) ? children(m.children) : []; });
+      return [choice(line(n), [...branches, fallback])];
+    }
+    if (name === "Match") return [choice(line(n), [kids, []])];
+    if (name === "For" || name === "Index") return kids.length ? [{ kind: "loop", line: line(n), children: kids }] : [];
+    if (name === "Dynamic") return [{ kind: "dynamic", name, line: line(n), attrs: attrs(open.attributes), children: kids }];
+    return undefined;
+  }
   function jsx(n: ts.Node): IrNode[] {
     seen.add(n);
+    if (ts.isJsxElement(n) || ts.isJsxSelfClosingElement(n)) { const flow = solidFlow(n); if (flow) return flow; }
     if (ts.isJsxFragment(n)) return [{ kind: "group", line: line(n), children: children(n.children) }];
     if (ts.isJsxSelfClosingElement(n)) return [tagNode(n.tagName, n, n.attributes, [])];
     if (ts.isJsxElement(n)) {
@@ -120,5 +151,5 @@ export function reactToIr(src: string): IrFile {
     if (ts.isJsxElement(n) || ts.isJsxSelfClosingElement(n) || ts.isJsxFragment(n) || (ts.isCallExpression(n) && /(^|\.)createElement$/.test(n.expression.getText(sf)))) { const x = fromExpr(n); if (x.length) detached.push({ kind: "detached", line: line(n), children: x }); return; }
     ts.forEachChild(n, rest);
   })(sf);
-  return { runtime: "react", nodes: [...rootNodes, ...detached], imports };
+  return { runtime, nodes: [...rootNodes, ...detached], imports };
 }

@@ -8,7 +8,7 @@ test("every kind has its schema file", () => {
 test("an app is accepted when whole and rejected with a path when a field is wrong", () => {
   const app = { specVersion: 1, name: "x-svelte", runtime: "svelte", screens: ["screen.x"], title: "X", port: 5300, locale: "en", theme: "light" };
   expect(validate("app", app)).toEqual([]);
-  const bad = validate("app", { ...app, runtime: "solid" });
+  const bad = validate("app", { ...app, runtime: "angular" });
   expect(bad.length).toBeGreaterThan(0);
   expect(bad.join("\n")).toContain("runtime");
 });

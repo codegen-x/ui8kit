@@ -12,7 +12,7 @@ export interface PrintCtx {
   /** presets the printed code read (`preset` op): their constant names, for the imports */
   presets?: Set<string>;
   /** the style attribute is a string in Svelte and Vue and an object in React; Vue emits events with `emit("name", ...)` */
-  runtime?: "svelte" | "react" | "vue";
+  runtime?: "svelte" | "react" | "vue" | "solid";
   /** another text for a scope name (Vue: a slot is `$slots.icon`, a computed read in the script is `total.value`) */
   rename?: (name: string) => string | undefined;
 }

@@ -158,8 +158,8 @@ export function checkDrift(plan: Plan): CheckResult {
 export function checkCoverage(plan: Plan): CheckResult {
   const problems: string[] = [];
   const generated = (runtime: UiRuntime): Set<string> => new Set(plan.targets.find((t) => t.dir === `packages/${runtime}/ui`)!.files.map((f) => f.path));
-  const have = { svelte: generated("svelte"), react: generated("react"), vue: generated("vue") };
-  const EXT = { svelte: "svelte", react: "tsx", vue: "vue" } as const;
+  const have = { svelte: generated("svelte"), react: generated("react"), vue: generated("vue"), solid: generated("solid") };
+  const EXT = { svelte: "svelte", react: "tsx", vue: "vue", solid: "tsx" } as const;
   const all = [
     ...plan.bricks.map((b) => ({ id: b.brick.id, portable: b.spec.portable, parts: b.brick.parts.map((p) => p.name), dir: b.brick.dir, file: b.brick.file ?? b.brick.dir })),
     ...plan.inputs.organisms.map((o) => ({ id: o.value.id, portable: o.value.portable, parts: [o.value.name], dir: "", file: o.value.name })),
@@ -178,15 +178,15 @@ export function checkCoverage(plan: Plan): CheckResult {
           if (!have[rt].has(`src/${tierDir(e.id)}/${fileName(e.parts[0]!)}.${EXT[rt]}`)) problems.push(`${e.id}: marked portable for ${rt} but not generated`);
         } else {
           // one file per part (Svelte, Vue, and React for a brick of several parts), else one React file per brick
-          const ok = rt !== "react" || e.parts.length > 1
+          const ok = (rt !== "react" && rt !== "solid") || e.parts.length > 1
             ? e.parts.every((p) => have[rt].has(`src/primitives/${e.dir}/${fileName(p)}.${EXT[rt]}`))
-            : have.react.has(`src/primitives/${e.dir}/${e.file}.tsx`);
+            : have[rt].has(`src/primitives/${e.dir}/${e.file}.tsx`);
           if (!ok) problems.push(`${e.id}: marked portable for ${rt} but not generated`);
         }
       } else if (!flag || flag.portable !== false || !flag.reason || flag.reason.length < 8) problems.push(`${e.id}: ${rt} is neither generated nor marked { "portable": false, "reason": "..." }`);
     }
   }
-  return result("coverage", "every spec is generated for every runtime (svelte, react, vue), or says why not", problems);
+  return result("coverage", `every spec is generated for every runtime (${UI_RUNTIMES.join(", ")}), or says why not`, problems);
 }
 
 export function checkNonportable(plan: Plan): CheckResult {
@@ -283,4 +283,5 @@ export type { LoadedBrick, SpecFile };
 export { checkBlocks } from "./blocks";
 export { runE2e, type E2eReport } from "./e2e";
 export { templCheck, type TemplResult } from "./templ";
+export { solidCheck, type SolidResult } from "./solid";
 export { runShot, type ShotOptions } from "./shots";

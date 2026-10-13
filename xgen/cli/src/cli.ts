@@ -4,7 +4,7 @@ import { existsSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { xgenPaths } from "@ui8kit/xgen-schema";
 import { planBuild, write } from "@ui8kit/xgen-generator";
-import { runChecks, runE2e, runShot, runVisual, templCheck } from "@ui8kit/xgen-check";
+import { runChecks, runE2e, runShot, runVisual, solidCheck, templCheck } from "@ui8kit/xgen-check";
 import { writeSpecs } from "@ui8kit/xgen-screens";
 
 /** the workspace is the nearest parent that has an xgen/ folder with specs */
@@ -36,6 +36,9 @@ async function main(argv: string[]): Promise<number> {
     // the Go runtime: templ generate, go vet, go build, DOM parity with React, html-validate of every block case
     const t = await templCheck(workspace, plan.bricks, plan.inputs);
     results.push({ name: "templ", what: t.skipped ? `skipped: ${t.skipped}` : `templ generate, go vet, go build; ${t.cases} brick cases and ${t.blocks} block cases (${t.organisms} organisms) render the same DOM as React; ${t.documents ?? 0} documents pass html-validate`, problems: t.problems });
+    // the Solid runtime: server render of every brick and block case against React, html-validate of every block case
+    const so = await solidCheck(workspace, plan.bricks, plan.inputs);
+    results.push({ name: "solid", what: `${so.cases} brick cases and ${so.blocks} block cases (${so.organisms} organisms) render the same DOM as React on the server; ${so.documents ?? 0} documents pass html-validate`, problems: so.problems });
     let bad = 0;
     for (const r of results) {
       console.log(`${r.problems.length ? "FAIL" : "ok  "}  ${r.name.padEnd(12)} ${r.what}`);
@@ -82,7 +85,7 @@ async function main(argv: string[]): Promise<number> {
       for (const f of r.failures) console.log(`        ${f}`);
       bad += r.failures.length;
     }
-    console.log(`${report.pair.differences.length ? "FAIL" : "ok  "}  pair         DOM of the svelte, react and vue hosts compared in ${report.pair.states} states`);
+    console.log(`${report.pair.differences.length ? "FAIL" : "ok  "}  pair         DOM of the svelte, react, vue and solid hosts compared in ${report.pair.states} states`);
     for (const d of report.pair.differences) console.log(`        ${d}`);
     bad += report.pair.differences.length;
     console.log(`${report.html.problems.length ? "FAIL" : "ok  "}  html         HTML5 validity (rules/html-validate.json) of ${report.html.states} states, ${report.html.documents} distinct documents`);
