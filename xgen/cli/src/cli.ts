@@ -45,6 +45,10 @@ async function main(argv: string[]): Promise<number> {
     // the Jinja2 runtime: real Jinja2 (a Python venv) renders every brick and block case against React, html-validate of every block case
     const jj = await jinja2Check(workspace, plan.bricks, plan.inputs);
     results.push({ name: "jinja2", what: jj.skipped ? `skipped: ${jj.skipped}` : `Python ${jj.python} + Jinja2 ${jj.jinja2}: ${jj.cases} brick cases and ${jj.blocks} block cases (${jj.organisms} organisms) render the same DOM as React; ${jj.documents ?? 0} documents pass html-validate`, problems: jj.problems });
+    // CI sets UI8KIT_REQUIRE_ALL_RUNTIMES=1: a runtime group that skipped (no Go, PHP or Python there) is a failure, not a pass
+    if (process.env.UI8KIT_REQUIRE_ALL_RUNTIMES === "1") {
+      for (const r of results) if (r.what.startsWith("skipped:")) r.problems.push(`${r.name} skipped (${r.what.slice(9).trim()}) but UI8KIT_REQUIRE_ALL_RUNTIMES=1 requires it`);
+    }
     let bad = 0;
     for (const r of results) {
       console.log(`${r.problems.length ? "FAIL" : "ok  "}  ${r.name.padEnd(12)} ${r.what}`);
