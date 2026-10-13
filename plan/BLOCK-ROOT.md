@@ -75,11 +75,31 @@ Block), taste-screens 1 (`top-bar` part opens on Block).
 |---|---|---|
 | apps/host-svelte / host-react / host-vue | 760 each | 0 each |
 | packages/svelte / react / vue ui | 81 each | 0 each |
-| apps/discovery | 3 | 3 (not in scope of this pass) |
-| apps/magazine | 12 | 12 (hand-written templates, not generated) |
-| packages/taste-screens | 1 | 1 |
+| apps/discovery | 3 | 0 (frame is a Box; header and the two mains are the block roots) |
+| apps/magazine | 12 | 0 (templates: header part, main Block, footer part; stage moved to parts) |
+| packages/taste-screens | 1 | 0 (top bar opens on the new Header primitive) |
 
 New primitives: Nav, Figure (+FigureCaption), Article, Blockquote. Panel became a
 `Box role="group"`. Backdrop / OverMedia became a picture layer inside the block root.
 Screen chrome moved into a screen part (`ScreenHeader`); the gallery header wraps at
 390px, which removes the pre-existing sideways scroll on blocks pages.
+
+## HTML5 validity (xgen e2e, group html)
+
+Every state the e2e scenarios read, in every runtime (570 states), is validated with
+html-validate (`rules/html-validate.json`, recommended preset, markup-style rules off).
+Errors: 0. Fixed in the generator: phrasing content in summary/button/label/span,
+demo forms (method=dialog, a real submit button), unique field names, non-wrapping phone
+numbers, autocomplete tokens, aria-label only on elements that take it.
+
+Backdrop decision: the faint backdrop picture is now visible (it was hidden under the
+section background before); kept as designed.
+
+### Open item: unique-landmark (warning, 1740 in states)
+
+The gallery, the catalog and the theme showcase pages show the same block in several
+variants on one page, so the same section, nav or aside name repeats (for example three
+cart layouts named "Your cart"). Making the names unique without changing visible text
+needs a landmark-name prop (`label`) on every block whose root is a landmark, forwarded
+to its frame, and set per variant by the gallery and the theme pages. Until then the rule
+reports as a warning and does not fail e2e.
