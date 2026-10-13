@@ -1,4 +1,4 @@
-// Turns a view tree (organism or screen) into markup. The walk is shared; what differs between Svelte, React and Vue is a `Syntax`:
+// Turns a view tree (organism or screen) into markup. The walk is shared; what differs between Svelte, React, Vue and Solid is a `Syntax`:
 // blocks (`{#if}`, a ternary, `v-if`), loops, render-prop slots, event and prop names. Everything else is the same text.
 import type { Handler, OrganismSpec, PropType, Value, ViewNode } from "@ui8kit/xgen-screens";
 import { handlerUsesEvent, printCall, printValue, typesPath, type PrintCtx } from "@ui8kit/xgen-screens";

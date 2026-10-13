@@ -997,7 +997,7 @@ export const ui = {
     },
     "heroSplit": {
       "title": "Ship pages your team can trust",
-      "lead": "Plain blocks, one dictionary of texts and three runtimes from the same specs.",
+      "lead": "Plain blocks, one dictionary of texts and eight runtimes from the same specs.",
       "badge": "New in 2.0",
       "cta": "Start free",
       "secondary": "See the features",
@@ -2355,7 +2355,7 @@ export const ui = {
     },
     "timeline": {
       "title": "Our story so far",
-      "lead": "From a list of blocks to a kit in three runtimes."
+      "lead": "From a list of blocks to a kit in eight runtimes."
     },
     "pages": {
       "companyTitle": "About the company",

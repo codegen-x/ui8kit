@@ -1,7 +1,8 @@
 # ui8kit 2.0 (codegen-x/ui8kit, `main`)
 
 ui8kit 2.0 is the brand-neutral, freely distributable block generator (xgen): specs in, readable static
-Svelte / React / Vue blocks out. Nothing from any private design kit lands here. Kit work stays in private
+Svelte / React / Vue / Solid blocks out, plus server templates (Go templ, Twig, Jinja2, Latte) held to DOM parity with React.
+Author guide: `docs/specs-guide.md`. Nothing from any private design kit lands here. Kit work stays in private
 repositories and branches; `main` of codegen-x/ui8kit only receives generic generator changes.
 
 Repository: since 2026-10-08 all work happens in codegen-x/ui8kit on `main`. It started as a history-free snapshot
@@ -51,6 +52,9 @@ no kit commit entered `codegen` history (nor enters `main` of codegen-x/ui8kit).
 
 ## 4. ui8px
 
+Current state (2026-10-13): **0 blocking hits, ratchet `max: 0`** in `.ui8px/gate.json` (a hard gate). The counts and
+lists below are the history of how it got there.
+
 `ui8px` 0.2.4 (root dev dependency) lints utility classes. It reads only `.html`, `.css`, `.templ`, `.go`, so
 `bun run lint:px` (`packages/tooling/bin/ui8px-gate.mjs`):
 
@@ -94,7 +98,7 @@ Report only now: UI8PX002 495, UI8PX004 59.
   Superseded in 8.7: the keys are now Tailwind steps `0, 2, 4, 6, 8, 10, 12, auto` (same classes).
 - Preset: the kit preset is gone; blocks read `defaults` (`presets/defaults.ts`), text keys `micro / tiny / caption / small`.
 
-### Remaining 80 blocking hits (deferred, with reasons)
+### Remaining 80 blocking hits (history: deferred, with reasons)
 
 Superseded: the polish round brought the count to 25; the current list is in 8.5.
 

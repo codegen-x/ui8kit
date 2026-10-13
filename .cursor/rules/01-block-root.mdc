@@ -1,6 +1,6 @@
 ---
 description: Any file opens on at most one semantic Block (never nested, never in a loop); blocks and screens must; Box is never a wrapper
-globs: apps/discovery/src/App.svelte,apps/discovery/src/parts/**,apps/magazine/src/App.svelte,apps/magazine/src/reference/**,apps/magazine/src/parts/**,apps/magazine/src/templates/**,apps/host-*/xgen/App.*,apps/host-*/xgen/screens/**,packages/*/ui/src/blocks/**,packages/*/ui/src/components/**,packages/taste-screens/src/screens/**,packages/taste-screens/src/parts/**
+globs: apps/discovery/src/App.svelte,apps/discovery/src/parts/**,apps/magazine/src/App.svelte,apps/magazine/src/reference/**,apps/magazine/src/parts/**,apps/magazine/src/templates/**,apps/host-*/xgen/App.*,apps/host-*/xgen/screens/**,packages/*/ui/src/blocks/**,packages/*/ui/src/components/**,packages/*/ui/blocks/**,packages/taste-screens/src/screens/**,packages/taste-screens/src/parts/**
 alwaysApply: false
 ---
 
@@ -26,8 +26,8 @@ The DOM tree follows HTML5 semantics strictly. Landmarks come only from
    `Header`, `Footer` or `Blockquote` primitive.
 3. One file has at most one `Block`. The only exception is mutually exclusive
    branches of the same component: Svelte `{#if}` / `{:else if}` / `{:else}`,
-   React ternary, `&&` / `||` alternatives and early returns, Vue `v-if` /
-   `v-else-if` / `v-else`. Each branch may have its own single root-level
+   React and Solid ternary, `&&` / `||` alternatives and early returns, Vue `v-if` /
+   `v-else-if` / `v-else`, templ/Twig/Jinja2/Latte `if` / `else if` / `else`. Each branch may have its own single root-level
    `Block`, because only one of them renders. If a second `Block` is needed
    anywhere else (a sibling, after an `{#if}`, in another component or
    snippet of the same file), extract it into a separate file and import it.

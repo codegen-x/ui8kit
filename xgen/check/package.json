@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "description": "Checks: schema, props, variants, a11y, drift (packages and apps), coverage, portability contract, text and Cyrillic, and the rules group (rules 01/02/03/06 on the composition zone of svelte, react and vue).",
+  "description": "Checks: schema, props, variants, a11y, drift (packages and apps), coverage, portability contract, text and Cyrillic, and the rules group (rules 01/02/03/06 on the composition zone of every runtime: svelte, react, vue, solid, templ, twig, jinja2, latte), and the real-engine parity gates of the template runtimes.",
   "main": "./src/index.ts",
   "exports": {
     ".": "./src/index.ts",

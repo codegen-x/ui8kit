@@ -169,7 +169,7 @@ export function coverageMarkdown(blocks: BlockSpec[]): string {
     `| A new block, plus a contract for motion | ${n("new block + contract")} |`,
     `| **All** | **${vibeCoverage.length}** |`,
     "",
-    `${n("variant + contract") + n("new block + contract")} layouts need a contract (${new Set(vibeCoverage.flatMap((r) => r.refs.filter(isContract))).size} patterns: marquee, carousel, count-up, typing text, video embed, animated backdrop, scroll spy, sortable list). A contract is a pattern with a props interface and slots, generated for both runtimes as a typed port; it has no animation of its own, and the static variant named next to it is what the page shows without the port.`,
+    `${n("variant + contract") + n("new block + contract")} layouts need a contract (${new Set(vibeCoverage.flatMap((r) => r.refs.filter(isContract))).size} patterns: marquee, carousel, count-up, typing text, video embed, animated backdrop, scroll spy, sortable list). A contract is a pattern with a props interface and slots, generated for every runtime as a typed port; it has no animation of its own, and the static variant named next to it is what the page shows without the port.`,
     "",
     "Rules every row obeys: no gradients, no animation variants, icons from Lucide, pictures as embedded placeholders, tokens of shadcn, text from the English dictionary.",
     "",

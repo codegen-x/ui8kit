@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "description": "ui8kit 2.0 monorepo: xgen (the generation layer: specs, schemas, fixtures and the generator), generated packages for Svelte, React, Vue and Solid (and Go templ, Twig and Jinja2), one shared app package, and one host app per runtime that serves every screen spec by name. Bun workspaces.",
+  "description": "ui8kit 2.0 monorepo: xgen (the generation layer: specs, schemas, fixtures and the generator), generated packages for Svelte, React, Vue and Solid (and the server templates Go templ, Twig, Jinja2 and Latte), one shared app package, and one host app per runtime that serves every screen spec by name. Bun workspaces.",
   "license": "MIT",
   "repository": {
     "type": "git",

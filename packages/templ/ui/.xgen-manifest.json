@@ -242,7 +242,7 @@
     "cmd/parity/main.go": "e54d112f3b8c161ad11906f820686dfc50dfa4c92b7b8e92bf92bb549ce50cac",
     "go.mod": "b6c4f9ba5679d98c868357765e37db60bd059d8d7892bed780a7d775b482895b",
     "package.json": "d5e94a8f77bfa9368f2e809f14e78efd2ab5a83e790e8aa78963f956f60b0593",
-    "README.md": "5165dd72b92890ce3728d1ce59c975c261ec200fe01a13ba6e42672ff4139b95",
+    "README.md": "f01ad48c269625900af6a0bc5f75fd0f524685d11d10f471e78f7e12c6c7b16f",
     "ui/alert/alert_gen.go": "0a36e225400b35adbdd51249249372815e65ac8d6a82402554263bf09cf83c57",
     "ui/alert/alert.templ": "f5efb55f712b675b5e30f02c13756d70adc5b260cb5206f18ba1623dcf3d8fa8",
     "ui/alert/alert.variants.json": "cefdda02dd06430011d612938ba847d6303e9996fdcab107817e0d8009ad426d",

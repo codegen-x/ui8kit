@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "description": "The xgen command: build, check, list.",
+  "description": "The xgen command: build, check, e2e, shot, visual, list.",
   "exports": {
     "./package.json": "./package.json"
   },

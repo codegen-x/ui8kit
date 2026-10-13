@@ -15,4 +15,4 @@ import "github.com/codegen-x/ui8kit/packages/templ/ui/ui/button"
 @button.Button(button.ButtonProps{Variant: "outline"}) { Save }
 ```
 
-The classes are the same Tailwind v4 utilities as the Svelte, React and Vue packages: import their `styles/index.css` (theme and kit) in the app CSS and add `@source` for this folder.
+The classes are the same Tailwind v4 utilities as the Svelte, React, Vue and Solid packages: import their `styles/index.css` (theme and kit) in the app CSS and add `@source` for this folder.

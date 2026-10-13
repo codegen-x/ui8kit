@@ -1,4 +1,4 @@
-// The shared detectors of the `rules` group. They read the common tree only (ir.ts), so one detector covers Svelte, React and Vue.
+// The shared detectors of the `rules` group. They read the common tree only (ir.ts), so one detector covers every runtime (Svelte, React, Vue, Solid, templ, Twig, Jinja2, Latte).
 import type { IrAttr, IrFile, IrNode } from "./ir";
 
 export const DETECTORS = ["block-root", "raw-html", "dynamic-tag", "raw-native-tag", "reactive-aria", "literal-text"] as const;

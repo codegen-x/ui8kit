@@ -97,5 +97,5 @@ one h1 (equal to the title of the page), one main, heading order, unique ids, na
 every axis value shown by some variant, slots equal to the patterns of the organism, events and actions, fixtures and their fields, the picked plan,
 texts and labels present in `content/ui/en.json`, no Cyrillic, no gradients, composed uses that name real blocks and variants, a gallery section for every variant.
 
-`xgen e2e` runs one gallery scenario in both runtimes (the index by theme; the facts of every variant: counts, columns, media side, tone, sticky header, disclosures, theme; the container of every block at 1400 and 390 px: centered, one width, no sideways scroll; only data-URI pictures),
-compares the DOM of both runtimes in the same states and writes light and dark screenshots to `shots/blocks-<runtime>-<block>-<light|dark>.png`.
+`xgen e2e` runs one gallery scenario in every host runtime (the index by theme; the facts of every variant: counts, columns, media side, tone, sticky header, disclosures, theme; the container of every block at 1400 and 390 px: centered, one width, no sideways scroll; only data-URI pictures),
+compares the DOM of the hosts in the same states and writes light and dark screenshots to `shots/blocks-<runtime>-<block>-<light|dark>.png`.

@@ -1,4 +1,4 @@
-// The theme apps: each one is a composed screen (routes and areas made of blocks) that becomes a generated app in both runtimes.
+// The theme apps: each one is a composed screen (routes and areas made of blocks) that becomes a generated app in every host runtime.
 // A page is a lead block (the one with the h1), a list of blocks `block.variant`, and the words of its head. The head texts
 // are written to the dictionary under `pages.<app>.<page>` by screens/tools/author-theme-texts.ts; nothing else is written by hand.
 import { ref } from "../../build";

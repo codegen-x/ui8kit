@@ -15,12 +15,16 @@ apps/host-*/xgen.app.json ─────┘                                  �
 xgen/screens/src/authoring ──► xgen/specs/organisms, xgen/specs/screens   (JSON, stored and checked)
 ```
 
+The drawing shows the first two targets. Today the generator writes eight packages (`packages/{svelte,react,vue,solid}/ui`,
+`packages/{templ,twig,jinja2,latte}/ui`), the shared app and four host apps (`apps/host-{svelte,react,vue,solid}`).
+For authors: [../docs/specs-guide.md](../docs/specs-guide.md).
+
 ## What people write
 
 | input | where | schema |
 |---|---|---|
 | brick spec: props, variants, slots, events, a11y, data attributes, tokens, examples, `portable` | `specs/ui/<brick>.json`, `<brick>.variants.json` | `schema/schemas/spec`, `variants` |
-| organism and screen: built from primitives with the builder | `screens/src/authoring/*.ts` -> `specs/organisms`, `specs/screens` | `organism`, `screen` |
+| organism, part, pattern, block, preset and screen: built from primitives with the builder | `screens/src/authoring/*.ts` -> `specs/{organisms,parts,patterns,blocks,presets,screens}` | `organism`, `block`, `screen` |
 | data | `fixtures/<collection>.json` (Codex entries) | `collection` |
 | text | `content/ui/en.json` | `dictionary` |
 | a host app | `apps/host-<runtime>/xgen.app.json` (name, runtime, screens (`["*"]` = every portable screen), title, port, locale, theme, hand) | `app` |
@@ -39,12 +43,16 @@ a computed ARIA state, a reference out of scope, a wrong op arity, an unknown ha
 ## Checks (`xgen check`)
 
 `schema` (all JSON against the schemas, contract metadata equals the render tree) - `props` (examples, tokens, views) - `a11y` -
-`authored` (stored JSON equals the builder) - `coverage` (every spec generated for both runtimes or `portable:false` with a reason) -
+`authored` (stored JSON equals the builder) - `coverage` (every spec generated for every runtime or `portable:false` with a reason) -
 `nonportable` (no `setContext`, `$bindable`, `{@attach` in Svelte, no `createContext` in React) - `text` (no Cyrillic, every content key exists) -
-`drift` (the disk equals the regeneration; no hand-written file in a generated package or app; the header is on every file).
+the catalog, style and rule groups (`dictionary`, `blocks`, `registry`, `themes`, `routes`, `structure`, `hardcode`, `corners`, `shadows`,
+`spacing`, `readability`, `dead`, `duplicates`, `versions`, `tests`, `rules`) -
+`drift` (the disk equals the regeneration; no hand-written file in a generated package or app; the header is on every file) -
+real-engine parity of `templ`, `solid`, `twig`, `jinja2` and `latte` (every brick and block case renders the same DOM as React; html-validate).
+The output of `bun run check` lists every group with its one-line summary.
 
-`xgen e2e` serves both built hosts and runs the scenario of every screen at `/<screen>/` (plans: sort, search, pager, record, history, theme; site; themes; gallery),
-takes light and dark screenshots into `shots/` and compares the DOM of the two runtimes state by state. `xgen shot <screen>` takes one full-page screenshot.
+`xgen e2e` serves the built hosts and runs the scenario of every screen at `/<screen>/` (plans: sort, search, pager, record, history, theme; site; themes; gallery),
+takes light and dark screenshots into `shots/` and compares the DOM of the svelte, react, vue and solid hosts state by state. `xgen shot <screen>` takes one full-page screenshot.
 
 ## Moving out
 
@@ -54,7 +62,7 @@ and `bun` workspaces. Nothing in xgen imports from `apps/` or `packages/`.
 ## Host apps
 
 A landing, a theme, the gallery: each is a **screen spec** (`specs/screens/*.json`), never an app.
-There is one host app per runtime (`apps/host-svelte`, `apps/host-react`, `apps/host-vue`). The host front controller (`src/`) reads the screen key
+There is one host app per TypeScript runtime (`apps/host-svelte`, `apps/host-react`, `apps/host-vue`, `apps/host-solid`); the template runtimes have none. The host front controller (`src/`) reads the screen key
 from the path (`/<screen>/#/<route>` or `?screen=<key>`), sets the skin and title, and lazy-loads the screen chunk from `xgen/screens/`.
 The shared outputs (dictionary, data, menus, runtime core, skins) are emitted once into `packages/shared/app`. Every generated file says DO NOT EDIT.
 To add a screen: write it in `screens/src/authoring`, run `bun run build`; every host serves it, no app directory appears.
