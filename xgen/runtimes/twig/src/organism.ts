@@ -65,8 +65,8 @@ export function printValue(v: Value, c: Ctx): string {
     const [head, ...rest] = v.$.split(".");
     let base: string;
     if (c.scope.has(head!)) base = c.scope.get(head!)!;
-    else if (head === "className") base = d.orNull(d.field("p", "className"), "''");
-    else if (c.org.consts?.[head!]) base = constVar(head!);
+    else if (head === "className") base = d.orNull(d.field(d.v("p"), "className"), "''");
+    else if (c.org.consts?.[head!]) base = d.v(constVar(head!));
     else throw new Error(`${c.org.name}: unknown name ${head}`);
     return rest.length ? `ui_get(${base}, ${d.list(rest.map(d.str))})` : base;
   }
@@ -140,7 +140,7 @@ function call(template: string, props: Array<[string, string]>, children: string
     const name = `c_${++c.n}`;
     const [open, close] = d.capture(name);
     pre.push(open, ...pad(children), close);
-    vars.push(["children", name]);
+    vars.push(["children", d.v(name)]);
   }
   return [...pre, dynamic ? d.includeExpr(template, d.hash(vars)) : d.include(template, d.hash(vars))];
 }
@@ -178,7 +178,7 @@ function node(n: ViewNode, c: Ctx): string[] {
     return [...out, d.endif];
   }
   if ("each" in n) {
-    const names: Array<[string, string]> = [[n.as, local(n.as)], ...(n.index ? [[n.index, local(n.index)] as [string, string]] : [])];
+    const names: Array<[string, string]> = [[n.as, d.v(local(n.as))], ...(n.index ? [[n.index, d.v(local(n.index))] as [string, string]] : [])];
     const list = printValue(n.each, c);
     const body = withScope(c, names, () => walk(n.do, c));
     return [d.forIn(local(n.as), `ui_l(${list})`), ...(n.index ? [`  ${d.set(local(n.index), d.loopIndex)}`] : []), ...pad(body), d.endfor];
@@ -186,11 +186,11 @@ function node(n: ViewNode, c: Ctx): string[] {
   if ("slot" in n) {
     if (n.slot === "children") {
       if (c.inFill) throw new Error(`${c.org.name}: children rendered inside a slot fill`);
-      return [d.raw(d.orNull("children", "''"))];
+      return [d.raw(d.orNull(d.v("children"), "''"))];
     }
     const decl = c.org.slots.find((s) => s.name === n.slot);
     if (!decl) throw new Error(`${c.org.name}: unknown slot ${n.slot}`);
-    const slot = d.field("p", n.slot);
+    const slot = d.field(d.v("p"), n.slot);
     if (!decl.args.length) return [d.raw(d.orNull(slot, "''"))];
     const args = (n.args ?? []).map((a, i): [string, string] => [`a${i}`, printValue(a, c)]);
     return [d.if(d.isNotNull(d.orNull(slot, d.nul))), `  ${d.includeExpr(d.field(slot, "t"), d.merge(d.field(slot, "v"), d.hash(args)))}`, d.endif];
@@ -204,8 +204,8 @@ function node(n: ViewNode, c: Ctx): string[] {
     const pre: string[] = [];
     for (const [name, sl] of Object.entries(n.slots ?? {})) {
       if (sl.forward !== undefined) {
-        if (name === "children") children = [d.raw(d.orNull(sl.forward === "children" ? "children" : d.field("p", sl.forward), "''"))];
-        else props.push([name, d.orNull(d.field("p", sl.forward), d.nul)]);
+        if (name === "children") children = [d.raw(d.orNull(sl.forward === "children" ? d.v("children") : d.field(d.v("p"), sl.forward), "''"))];
+        else props.push([name, d.orNull(d.field(d.v("p"), sl.forward), d.nul)]);
         continue;
       }
       if (name === "children") { children = walk(sl.do, c); continue; }
@@ -228,23 +228,23 @@ function fill(sl: SlotFill, arity: number, c: Ctx, pre: string[]): string {
       const name = `f_${++c.n}`;
       const [open, close] = d.capture(name);
       pre.push(open, ...pad(walk(sl.do, c)), close);
-      return name;
+      return d.v(name);
     }
     const used = refHeads(sl.do);
     const captured = [...c.scope.entries()].filter(([k]) => used.has(k) && !sl.args.includes(k));
-    const passed = captured.filter(([, code]) => /^[A-Za-z_]\w*$/.test(code));
+    const passed = captured.filter(([, code]) => /^\$?[A-Za-z_]\w*$/.test(code));
     const path = `blocks/${fileName(c.org.name)}.fill${c.fills.length + 1}${d.ext}`;
     c.fills.push({ path, contents: "" });
     const at = c.fills.length - 1;
-    const body = withScope(c, sl.args.map((a): [string, string] => [a, local(a)]), () => walk(sl.do, c));
+    const body = withScope(c, sl.args.map((a): [string, string] => [a, d.v(local(a))]), () => walk(sl.do, c));
     const lines = [
       header(d, c.source, `${c.org.name}: the fill of a slot (${sl.args.join(", ")}); vars: p, the values it reads, the slot arguments as a0, a1...`),
       ...consts(c),
-      ...sl.args.map((a, i) => d.set(local(a), `a${i}`)),
+      ...sl.args.map((a, i) => d.set(local(a), d.v(`a${i}`))),
       ...body,
     ];
     c.fills[at] = { path, contents: lines.join("\n") + "\n" };
-    return d.hash([["t", d.str(path)], ["v", d.hash([["p", "p"], ...passed.map(([, code]): [string, string] => [code, code])])]]);
+    return d.hash([["t", d.str(path)], ["v", d.hash([["p", d.v("p")], ...passed.map(([, code]): [string, string] => [code.replace(/^\$/, ""), code])])]]);
   } finally {
     c.inFill = prevFill;
   }
@@ -260,15 +260,15 @@ export function emitTwigOrganism(org: OrganismSpec, deps: TwigOrgDeps, source: s
   const top: string[] = [...consts(c)];
   for (const p of org.props) {
     if (!used.has(p.name)) continue;
-    top.push(d.set(local(p.name), p.default !== undefined ? d.orNull(d.field("p", p.name), printValue(p.default as Value, c)) : d.orNull(d.field("p", p.name), d.nul)));
-    c.scope.set(p.name, local(p.name));
+    top.push(d.set(local(p.name), p.default !== undefined ? d.orNull(d.field(d.v("p"), p.name), printValue(p.default as Value, c)) : d.orNull(d.field(d.v("p"), p.name), d.nul)));
+    c.scope.set(p.name, d.v(local(p.name)));
   }
   // a slot read as a value is whether it was given (`when: actions`)
-  for (const sl of org.slots) if (used.has(sl.name)) c.scope.set(sl.name, `(${d.isNotNull(d.orNull(d.field("p", sl.name), d.nul))})`);
+  for (const sl of org.slots) if (used.has(sl.name)) c.scope.set(sl.name, `(${d.isNotNull(d.orNull(d.field(d.v("p"), sl.name), d.nul))})`);
   for (const dv of org.derived ?? []) {
     if (!used.has(dv.name)) continue;
     top.push(d.set(local(dv.name), printValue(dv.value, c)));
-    c.scope.set(dv.name, local(dv.name));
+    c.scope.set(dv.name, d.v(local(dv.name)));
   }
   const body = walk(org.view, c);
   const props = [...org.props.map((p) => p.name), ...(org.className ? ["className"] : []), ...org.slots.map((s) => `${s.name} (slot${s.args.length ? `: ${s.args.map((a) => a.name).join(", ")}` : ""})`)];

@@ -287,3 +287,4 @@ export { solidCheck, type SolidResult } from "./solid";
 export { runShot, type ShotOptions } from "./shots";
 export { twigCheck, type TwigResult } from "./twig";
 export { jinja2Check, type Jinja2Result } from "./jinja2";
+export { latteCheck } from "./latte";

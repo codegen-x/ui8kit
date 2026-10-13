@@ -28,7 +28,7 @@ export interface Target {
   dir: string;
   kind: "package" | "app";
   /** "core": the shared package, runtime neutral */
-  runtime: Runtime | "core" | "templ" | "twig" | "jinja2";
+  runtime: Runtime | "core" | "templ" | "twig" | "jinja2" | "latte";
   /** build outputs of the target's own tools that the drift check leaves alone (templ generate: *_templ.go) */
   ignore?: RegExp;
   files: GeneratedFile[];
@@ -56,6 +56,7 @@ import { packageReadme } from "./readme";
 import { templFiles, TEMPL_DIR } from "./templ";
 import { twigFiles, TWIG_DIR } from "./twig";
 import { jinja2Files, JINJA2_DIR } from "./jinja2";
+import { latteFiles, LATTE_DIR } from "./latte";
 import { authoringIndex, withSource } from "./source";
 const pkgName = (r: Runtime): string => `@ui8kit/${r}-ui`;
 
@@ -212,6 +213,7 @@ export function planBuild(workspace: string, xgenRoot = join(workspace, "xgen"))
   targets.push({ dir: TWIG_DIR, kind: "package", runtime: "twig", files: twigFiles(specs.bricks, inputs, xgenRoot, problems), handwritten: [], manifest: ".xgen-manifest.json", ignore: /^(vendor\/|composer\.lock$)/ });
   // the Jinja2 package; the virtual environment of the check (.venv/) and Python caches are build outputs the drift check leaves alone
   targets.push({ dir: JINJA2_DIR, kind: "package", runtime: "jinja2", files: jinja2Files(specs.bricks, inputs, xgenRoot, problems), handwritten: [], manifest: ".xgen-manifest.json", ignore: /(^\.venv\/|__pycache__\/)/ });
+  targets.push({ dir: LATTE_DIR, kind: "package", runtime: "latte", files: latteFiles(specs.bricks, inputs, xgenRoot, problems), handwritten: [], manifest: ".xgen-manifest.json", ignore: /^(vendor\/|composer\.lock$)/ });
   const all = inputs.screens.map((s) => s.value);
   const apps: Plan["apps"] = [];
   const hosted = new Map<string, ScreenSpec>();

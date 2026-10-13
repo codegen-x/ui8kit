@@ -8,7 +8,7 @@ const repo = join(import.meta.dir, "..", "..", "..");
 test("the plan has the four UI packages, the Go templ package, the Twig package, the Jinja2 package, the shared app package and one host per runtime, and no problem", () => {
   const plan = planBuild(repo);
   expect(plan.problems).toEqual([]);
-  expect(plan.targets.filter((t) => t.kind === "package").map((t) => t.dir)).toEqual(["packages/svelte/ui", "packages/react/ui", "packages/vue/ui", "packages/solid/ui", "packages/templ/ui", "packages/twig/ui", "packages/jinja2/ui", "packages/shared/app"]);
+  expect(plan.targets.filter((t) => t.kind === "package").map((t) => t.dir)).toEqual(["packages/svelte/ui", "packages/react/ui", "packages/vue/ui", "packages/solid/ui", "packages/templ/ui", "packages/twig/ui", "packages/jinja2/ui", "packages/latte/ui", "packages/shared/app"]);
   expect(plan.targets.filter((t) => t.kind === "app").length).toBe(plan.apps.length);
   expect(plan.apps.map((a) => a.app.runtime).sort()).toEqual(["react", "solid", "svelte", "vue"]);
 });

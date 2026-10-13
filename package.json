@@ -29,7 +29,8 @@
     "packages/solid/*",
     "packages/templ/*",
     "packages/twig/*",
-    "packages/jinja2/*"
+    "packages/jinja2/*",
+    "packages/latte/*"
   ],
   "packageManager": "bun@1.4.2",
   "scripts": {

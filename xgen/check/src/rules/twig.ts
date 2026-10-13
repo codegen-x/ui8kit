@@ -62,9 +62,11 @@ function twigStrings(v: string): string[] {
 /** the entries of a hash literal {'k': v, k: v} */
 function hashEntries(code: string): Array<[string, string]> {
   const s = strip(code);
-  if (!s.startsWith("{")) return [];
+  // Latte (PHP) arrays: ['k' => v], named arguments k: v
+  if (!s.startsWith("{") && !s.startsWith("[")) return [];
   return splitTop(s.slice(1, -1), ",").flatMap((e): Array<[string, string]> => {
-    const kv = splitTop(e, ":");
+    const arrow = splitTop(e, "=>");
+    const kv = arrow.length > 1 ? arrow : splitTop(e, ":");
     if (kv.length < 2) return [];
     const k = kv[0]!.trim();
     return [[STR.test(k) ? unq(k) : k, e.slice(e.indexOf(kv[1]!))]];
@@ -110,7 +112,54 @@ export const twigToIr = (src: string, file = ""): IrFile => templateToIr(src, fi
 /** Jinja2 reads the same: `elif`, `|safe`, `ui_include(...)`, `p['x']`, `x if c else y`; `{% call m(...) %}` and a macro imported with `{% from %}` are components */
 export const jinjaToIr = (src: string, file = ""): IrFile => templateToIr(src, file, "jinja2");
 
-export function templateToIr(src: string, _file: string, runtime: "twig" | "jinja2"): IrFile {
+/** Latte reads as Twig once its tags are rewritten ({=e} and {$x} outputs, {if}/{/if}, {foreach}, {capture $x}, {var}, {* *}); lines are kept */
+export const latteToIr = (src: string, file = ""): IrFile => templateToIr(latteAsTwig(src), file, "latte");
+
+const LATTE_END: Record<string, string> = { if: "endif", foreach: "endfor", for: "endfor", capture: "endset", embed: "endembed", define: "endmacro", block: "endblock" };
+
+export function latteAsTwig(s: string): string {
+  let out = "";
+  let i = 0;
+  while (i < s.length) {
+    const c = s[i]!;
+    if (c !== "{" || /[\s}]/.test(s[i + 1] ?? " ")) { out += c; i++; continue; }
+    if (s[i + 1] === "*") { const e = s.indexOf("*}", i + 2); const end = e < 0 ? s.length : e + 2; out += `{#${s.slice(i + 2, end - 2)}#}`; i = end; continue; }
+    // the matching } outside strings and brackets
+    let k = i + 1, depth = 0, q = "";
+    for (; k < s.length; k++) {
+      const ch = s[k]!;
+      if (q) { if (ch === "\\") { k++; continue; } if (ch === q) q = ""; continue; }
+      if (ch === "'" || ch === '"') { q = ch; continue; }
+      if (depth === 0 && ch === "}") break;
+      if ("([{".includes(ch)) depth++;
+      else if (")]}".includes(ch)) depth--;
+    }
+    const body = s.slice(i + 1, k);
+    i = k + 1;
+    if (body.startsWith("=")) { out += `{{ ${body.slice(1)} }}`; continue; }
+    if (body.startsWith("$")) { out += `{{ ${body} }}`; continue; }
+    if (body.startsWith("/")) { const kw = body.slice(1).trim().split(/\s+/)[0]!; out += `{% ${LATTE_END[kw] ?? `end${kw}`} %}`; continue; }
+    const [kw = "", ...rest] = body.split(/\s+/);
+    const arg = body.slice(kw.length).trim();
+    void rest;
+    switch (kw) {
+      case "foreach": out += `{% for ${arg} %}`; break;
+      case "capture": out += `{% set ${arg.replace(/^\$/, "")} %}`; break;
+      case "var": case "default": out += `{% set ${arg.replace(/^\$/, "")} %}`; break;
+      case "include": case "embed": {
+        const m = /^('[^']*'|"[^"]*")\s*(?:,\s*([\s\S]*))?$/.exec(arg);
+        const vars = m?.[2]?.trim();
+        out += m ? `{% ${kw} ${m[1]}${vars ? ` with ${vars.startsWith("[") ? vars : `[${vars}]`}` : ""} %}` : `{% ${kw} %}`;
+        break;
+      }
+      case "define": out += `{% macro ${arg} %}`; break;
+      default: out += `{% ${body} %}`;
+    }
+  }
+  return out;
+}
+
+export function templateToIr(src: string, _file: string, runtime: "twig" | "jinja2" | "latte"): IrFile {
   const macros = new Map<string, string>();
   const imports = new Map<string, string>();
   let error: string | undefined;
@@ -126,23 +175,26 @@ export function templateToIr(src: string, _file: string, runtime: "twig" | "jinj
     imports.set(name, path);
     const { attrs, children } = propsOf(vars, line);
     const node: IrNode = { kind: "component", name, line, attrs, children: [] };
-    if (children && /^\w+$/.test(children)) { used.add(children); node.children.push(...(captures.get(children) ?? [{ kind: "render", line }])); }
+    const cap = children?.replace(/^\$/, "");
+    if (cap && /^\w+$/.test(cap) && cap !== "children") { used.add(cap); node.children.push(...(captures.get(cap) ?? [{ kind: "render", line }])); }
     else if (children) node.children.push({ kind: "render", line });
     return node;
   };
   /** an output tag {{ ... }} at a position */
   const output = (code: string, line: number): void => {
-    const e = code.trim();
+    const e0 = code.trim().replace(/\|\s*nocheck$/, "");
+    // Latte prints an included template's markup with |noescape
+    const e = /^(?:ui_)?include\(/.test(e0) ? e0.replace(/\|\s*noescape$/, "") : e0;
     const inc = /^(?:ui_)?include\(\s*('[^']*'|"[^"]*")\s*(?:,\s*([\s\S]*?))?(?:,\s*with_context\s*=\s*\w+)?\s*\)$/.exec(e);
     if (inc) { push(component(unq(inc[1]!), inc[2] ?? "{}", line)); return; }
     if (/^(ui_)?include\(/.test(e)) { push({ kind: "render", line }); return; }
     const mac = /^(\w+)\(([\s\S]*)\)$/.exec(e);
     if (mac && macros.has(mac[1]!)) { push(component(macros.get(mac[1]!)!, splitTop(mac[2]!, ",")[0] ?? "{}", line)); return; }
-    const raw = /^([\s\S]*)\|\s*(raw|safe)$/.exec(e);
+    const raw = /^([\s\S]*)\|\s*(raw|safe|noescape)$/.exec(e);
     if (raw) {
       const x = strip(raw[1]!);
       const def = /^ui_def\(([\s\S]*)\)$/.exec(x);
-      const operand = strip(def ? splitTop(def[1]!, ",")[0]! : splitTop(x, "??")[0] ?? x);
+      const operand = strip(def ? splitTop(def[1]!, ",")[0]! : splitTop(x, "??")[0] ?? x).replace(/^\$/, "");
       if (/^(children|p\.\w+|p\['\w+'\])$/.test(operand)) push({ kind: "render", line });
       else if (/^\w+$/.test(operand) && captures.has(operand)) { used.add(operand); push(...[{ kind: "group" as const, line, children: captures.get(operand)! }]); }
       else push({ kind: "raw-html", name: "|raw", line });
@@ -257,7 +309,9 @@ export function templateToIr(src: string, _file: string, runtime: "twig" | "jinj
           else { const x = /^\{\{([\s\S]*)\}\}$/.exec(v.trim()); attrs.push(x ? attr(m[1], line, x[1]!) : { name: m[1], line, static: false, strings: [] }); }
         }
         const self = s[k - 1] === "/";
-        const node = { kind: (dyn ? "dynamic" : "element") as "element", name: tag, line, attrs, children: [] as IrNode[] };
+        // Latte n:tag renames the element at render: a dynamic tag
+        const ntag = attrs.findIndex((a) => a.name === "n:tag");
+        const node = { kind: (dyn || ntag >= 0 ? "dynamic" : "element") as "element", name: ntag >= 0 ? attrs.splice(ntag, 1)[0]!.value ?? tag : tag, line, attrs, children: [] as IrNode[] };
         push(node);
         if (!self && !VOID.has(tag)) stack.push({ kind: "element", list: node.children, node, tag });
         i = k + 1; continue;

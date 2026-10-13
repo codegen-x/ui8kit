@@ -4,7 +4,7 @@ import { existsSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { xgenPaths } from "@ui8kit/xgen-schema";
 import { planBuild, write } from "@ui8kit/xgen-generator";
-import { runChecks, runE2e, runShot, runVisual, solidCheck, templCheck, twigCheck, jinja2Check } from "@ui8kit/xgen-check";
+import { runChecks, runE2e, runShot, runVisual, solidCheck, templCheck, twigCheck, jinja2Check, latteCheck } from "@ui8kit/xgen-check";
 import { writeSpecs } from "@ui8kit/xgen-screens";
 
 /** the workspace is the nearest parent that has an xgen/ folder with specs */
@@ -45,6 +45,9 @@ async function main(argv: string[]): Promise<number> {
     // the Jinja2 runtime: real Jinja2 (a Python venv) renders every brick and block case against React, html-validate of every block case
     const jj = await jinja2Check(workspace, plan.bricks, plan.inputs);
     results.push({ name: "jinja2", what: jj.skipped ? `skipped: ${jj.skipped}` : `Python ${jj.python} + Jinja2 ${jj.jinja2}: ${jj.cases} brick cases and ${jj.blocks} block cases (${jj.organisms} organisms) render the same DOM as React; ${jj.documents ?? 0} documents pass html-validate`, problems: jj.problems });
+    // the Latte runtime: real Latte (PHP + latte/latte via composer), the same parity and html-validate gates as Twig
+    const lt = await latteCheck(workspace, plan.bricks, plan.inputs);
+    results.push({ name: "latte", what: lt.skipped ? `skipped: ${lt.skipped}` : `PHP ${lt.php} + latte/latte: ${lt.cases} brick cases and ${lt.blocks} block cases (${lt.organisms} organisms) render the same DOM as React; ${lt.documents ?? 0} documents pass html-validate`, problems: lt.problems });
     // CI sets UI8KIT_REQUIRE_ALL_RUNTIMES=1: a runtime group that skipped (no Go, PHP or Python there) is a failure, not a pass
     if (process.env.UI8KIT_REQUIRE_ALL_RUNTIMES === "1") {
       for (const r of results) if (r.what.startsWith("skipped:")) r.problems.push(`${r.name} skipped (${r.what.slice(9).trim()}) but UI8KIT_REQUIRE_ALL_RUNTIMES=1 requires it`);

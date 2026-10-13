@@ -44,6 +44,8 @@ no kit commit entered `codegen` history (nor enters `main` of codegen-x/ui8kit).
   - Go templ (`packages/templ/ui`): done; skips without Go.
   - Twig (`xgen/runtimes/twig`, `packages/twig/ui`, PHP helpers `UI8Kit\\Twig`): done 2026-10-13; real Twig via PHP and composer; skips without PHP.
   - Jinja2 (`xgen/runtimes/jinja2`, `packages/jinja2/ui`, Python helpers `ui8kit_jinja`): done 2026-10-13; the Twig emitters printed through the jinja dialect; real Jinja2 in a Python venv; skips without Python.
+  - Latte (`xgen/runtimes/latte`, `packages/latte/ui`, the Twig PHP helpers as `UI8Kit\\Latte` with a Latte extension): done 2026-10-13; the Twig emitters printed through the latte dialect (`n:tag` for dynamic elements, `|nocheck` on URL attributes); real Latte 3 via composer; skips without PHP.
+  - CI (`.github/workflows/ci.yml`, prepared but not yet in the repo: pushing a workflow file needs the `workflow` token scope) installs Go, PHP 8.4 + composer and Python 3.13 and sets `UI8KIT_REQUIRE_ALL_RUNTIMES=1`, which turns a skipped runtime group into a failure.
   - Each has a rules adapter, fixtures and a baseline equal to the other runtimes. Not in the site registry or the CLI yet.
 - Presets as the only home of layout geometry (`specs/presets/*`, the `preset` op); here only neutral presets.
 

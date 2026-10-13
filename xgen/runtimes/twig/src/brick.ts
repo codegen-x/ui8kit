@@ -14,7 +14,7 @@ const pad = (lines: string[], n = 1): string[] => lines.map((l) => (l ? `${"  ".
 
 interface Ctx { brick: BrickDef; part: PartDef; env: TypeEnv; d: Dialect; tag?: string; tags: number }
 
-const ZERO: Record<string, string> = { string: "''", bool: "false", int: "0", items: "[]", attrs: "{}" };
+const ZERO: Record<string, string> = { string: "''", bool: "false", int: "0", items: "[]" };
 
 /** an IR expression in the dialect */
 export function printExpr(e: Expr, c: Ctx): string {
@@ -24,24 +24,24 @@ export function printExpr(e: Expr, c: Ctx): string {
     case "lit": return typeof e.value === "string" ? d.str(e.value) : String(e.value);
     case "prop": {
       const def = c.part.props.find((x) => x.name === e.name)!;
-      return d.orNull(d.field("p", e.name), def.type === "attrs" ? "{}" : ZERO[def.type] ?? d.nul);
+      return d.orNull(d.field(d.v("p"), e.name), def.type === "attrs" ? d.emptyHash : ZERO[def.type] ?? d.nul);
     }
     case "item": {
       const f = c.env.itemRecord?.fields.find((x) => x.name === e.field);
-      return `ui_field(item, ${d.str(e.field)}, ${f?.type === "bool" ? "false" : "''"})`;
+      return `ui_field(${d.v("item")}, ${d.str(e.field)}, ${f?.type === "bool" ? "false" : "''"})`;
     }
-    case "derivedRef": return `d_${e.name}`;
+    case "derivedRef": return d.v(`d_${e.name}`);
     case "resolvedTag": {
       if (!c.tag) throw new Error(`${c.part.name}: resolvedTag outside a dynamic tag`);
-      return c.tag;
+      return d.v(c.tag);
     }
     case "defaultIfEmpty": return `ui_default_if_empty(${p(e.expr)}, ${d.str(e.fallback)})`;
     case "mapOr": return `ui_map_or(${p(e.expr)}, ${d.hash(Object.entries(e.mapping).map(([k, v]) => [k, d.str(v)]))}, ${d.str(e.fallback)}${e.lower ? ", true" : ""})`;
-    case "intMapOr": return `ui_int_map_or(${p(e.expr)}, {${Object.entries(e.mapping).map(([k, v]) => `${k}: ${d.str(v)}`).join(", ")}}, ${d.str(e.fallback)})`;
+    case "intMapOr": return `ui_int_map_or(${p(e.expr)}, ${d.intHash(Object.entries(e.mapping).map(([k, v]): [string, string] => [k, d.str(v)]))}, ${d.str(e.fallback)})`;
     case "cond": return d.ternary(p(e.test), p(e.then), p(e.else));
     case "eq": return `ui_eq(${p(e.left)}, ${p(e.right)})`;
-    case "and": return `(${e.exprs.map(p).join(" and ")})`;
-    case "or": return `(${e.exprs.map(p).join(" or ")})`;
+    case "and": return `(${e.exprs.map(p).join(` ${d.and} `)})`;
+    case "or": return `(${e.exprs.map(p).join(` ${d.or} `)})`;
     case "not": return d.not(p(e.expr));
     case "isSet": {
       const t = exprType(e.expr, c.env);
@@ -49,7 +49,7 @@ export function printExpr(e: Expr, c: Ctx): string {
       if (t === "int") return `(${p(e.expr)} > 0)`;
       return p(e.expr);
     }
-    case "contains": return `(${d.str(e.substring)} in ${p(e.expr)})`;
+    case "contains": return d.contains(p(e.expr), d.str(e.substring));
     case "concat": return `ui_concat_trim(${d.list(e.parts.map(p))})`;
     case "boolToString": return `ui_bool_str(${p(e.expr)})`;
     case "intToString": return `ui_s(${p(e.expr)})`;
@@ -63,12 +63,12 @@ function classValue(spec: ClassSpec, c: Ctx): string {
   if (spec.staticBase) tail.push(d.str(spec.staticBase));
   for (const e of spec.extra ?? []) tail.push(printExpr(e, c));
   for (const st of spec.state ?? []) tail.push(d.ternary(printExpr(st.test, c), d.str(st.classes), "''"));
-  if (spec.includeClassProp !== false && c.part.props.some((p) => p.name === "Class")) tail.push(d.orNull(d.field("p", "Class"), "''"));
+  if (spec.includeClassProp !== false && c.part.props.some((p) => p.name === "Class")) tail.push(d.orNull(d.field(d.v("p"), "Class"), "''"));
   if (spec.recipe) {
     const id = spec.recipeId ?? c.part.recipeId!;
     const file = c.brick.recipeFiles[id];
     if (!file) throw new Error(`${c.part.name}: recipe ${id} has no file`);
-    const sel = Object.entries(spec.recipe).map(([k, src]): [string, string] => [k, typeof src === "string" ? d.orNull(d.field("p", src), "''") : printExpr(src, c)]);
+    const sel = Object.entries(spec.recipe).map(([k, src]): [string, string] => [k, typeof src === "string" ? d.orNull(d.field(d.v("p"), src), "''") : printExpr(src, c)]);
     return `ui_compose(${d.str(`ui/${c.brick.dir}/${file}`)}, ${d.hash(sel)}, ${d.list(tail)})`;
   }
   return `ui_cn(${d.list(tail)})`;
@@ -83,7 +83,7 @@ function attr(a: AttrSpec, c: Ctx): string {
     case "expr": {
       const v = printExpr(a.expr, c);
       const t = exprType(a.expr, c.env);
-      const set = a.expr.kind === "lit" ? ` ${a.name}="${esc(String(a.expr.value))}"` : ` ${a.name}="${d.out(v)}"`;
+      const set = a.expr.kind === "lit" ? ` ${a.name}="${esc(String(a.expr.value))}"` : ` ${a.name}="${d.attrOut ? d.attrOut(a.name, v) : d.out(v)}"`;
       if (a.when) return `${d.if(printExpr(a.when, c))}${set}${d.endif}`;
       if (a.keepEmpty || t !== "string" || neverEmptyString(a.expr, c.env)) return set;
       return `${d.if(`ui_is_set_str(${v})`)}${set}${d.endif}`;
@@ -94,7 +94,7 @@ function attr(a: AttrSpec, c: Ctx): string {
       if (!spec) throw new Error(`${c.part.name}: class attribute without a contract`);
       return ` class="${d.out(classValue(spec, c))}"`;
     }
-    case "rest": return d.out(`ui_attr_html(${d.orNull(d.field("p", "Attrs"), "{}")})`);
+    case "rest": return d.out(`ui_attr_html(${d.orNull(d.field(d.v("p"), "Attrs"), d.emptyHash)})`);
   }
 }
 
@@ -103,16 +103,21 @@ function element(n: ElementNode, c: Ctx): string[] {
   const pre: string[] = [];
   let tag: string;
   let tagCode: string | undefined;
+  let close: string | undefined;
   if (n.tag.kind === "static") tag = n.tag.tag;
   else {
     tagCode = `tag${++c.tags}`;
     const value = n.tag.kind === "resolved"
-      ? `ui_resolve_tag(${d.orNull(d.field("p", n.tag.fromProp), "''")}, ${d.str(n.tag.fallback)}, ${d.list(allowedTags(n.tag.group).map(d.str))})`
+      ? `ui_resolve_tag(${d.orNull(d.field(d.v("p"), n.tag.fromProp), "''")}, ${d.str(n.tag.fallback)}, ${d.list(allowedTags(n.tag.group).map(d.str))})`
       : n.tag.kind === "heading"
-        ? `ui_title_tag(${d.orNull(d.field("p", n.tag.fromProp), "0")})`
+        ? `ui_title_tag(${d.orNull(d.field(d.v("p"), n.tag.fromProp), "0")})`
         : `ui_map_or(${printExpr(n.tag.expr, c)}, ${d.hash(n.tag.tags.map((t) => [t, d.str(t)]))}, ${d.str(n.tag.tags[n.tag.tags.length - 1]!)})`;
     pre.push(d.set(tagCode, value));
-    tag = d.out(tagCode);
+    tag = d.out(d.v(tagCode));
+    if (d.dynamicTag) {
+      const name = n.tag.kind === "resolved" ? n.tag.fallback : n.tag.kind === "heading" ? "h2" : n.tag.tags[n.tag.tags.length - 1]!;
+      [tag, close] = [d.dynamicTag(name, d.v(tagCode)), name];
+    }
   }
   const outer = c.tag;
   if (tagCode) c.tag = tagCode;
@@ -124,9 +129,9 @@ function element(n: ElementNode, c: Ctx): string[] {
     if (inline) {
       const body = n.children.map((k) => nodes([k], c).join("")).join("");
       const last = open.pop()!;
-      return [...pre, ...open, `${last}${body}</${tag}>`];
+      return [...pre, ...open, `${last}${body}</${close ?? tag}>`];
     }
-    return [...pre, ...open, ...pad(nodes(n.children, c)), `</${tag}>`];
+    return [...pre, ...open, ...pad(nodes(n.children, c)), `</${close ?? tag}>`];
   } finally {
     c.tag = outer;
   }
@@ -137,7 +142,7 @@ function nodes(list: Node[], c: Ctx): string[] {
   return list.flatMap((n): string[] => {
     switch (n.kind) {
       case "element": return element(n, c);
-      case "slot": return [d.raw(d.orNull("children", "''"))];
+      case "slot": return [d.raw(d.orNull(d.v("children"), "''"))];
       case "text": return [d.out(printExpr(n.expr, c))];
       case "when": {
         const out = [d.if(printExpr(n.test, c)), ...pad(nodes(n.then, c))];
@@ -150,7 +155,7 @@ function nodes(list: Node[], c: Ctx): string[] {
         if (other?.length) out.push(d.else, ...pad(nodes(other, c)));
         return [...out, d.endif];
       }
-      case "forEach": return [d.forIn("item", d.orNull(d.field("p", n.itemsProp), "[]")), ...pad(nodes(n.body, c)), d.endfor];
+      case "forEach": return [d.forIn("item", d.orNull(d.field(d.v("p"), n.itemsProp), "[]")), ...pad(nodes(n.body, c)), d.endfor];
     }
   });
 }

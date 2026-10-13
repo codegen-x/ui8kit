@@ -327,6 +327,7 @@
       "dependencies": {
         "@ui8kit/xgen-runtime-core": "workspace:*",
         "@ui8kit/xgen-runtime-jinja2": "workspace:*",
+        "@ui8kit/xgen-runtime-latte": "workspace:*",
         "@ui8kit/xgen-runtime-react": "workspace:*",
         "@ui8kit/xgen-runtime-solid": "workspace:*",
         "@ui8kit/xgen-runtime-svelte": "workspace:*",
@@ -348,6 +349,13 @@
     },
     "xgen/runtimes/jinja2": {
       "name": "@ui8kit/xgen-runtime-jinja2",
+      "version": "0.0.0",
+      "dependencies": {
+        "@ui8kit/xgen-runtime-twig": "workspace:*",
+      },
+    },
+    "xgen/runtimes/latte": {
+      "name": "@ui8kit/xgen-runtime-latte",
       "version": "0.0.0",
       "dependencies": {
         "@ui8kit/xgen-runtime-twig": "workspace:*",
@@ -654,6 +662,8 @@
     "@ui8kit/xgen-runtime-core": ["@ui8kit/xgen-runtime-core@workspace:xgen/runtimes/core"],
 
     "@ui8kit/xgen-runtime-jinja2": ["@ui8kit/xgen-runtime-jinja2@workspace:xgen/runtimes/jinja2"],
+
+    "@ui8kit/xgen-runtime-latte": ["@ui8kit/xgen-runtime-latte@workspace:xgen/runtimes/latte"],
 
     "@ui8kit/xgen-runtime-react": ["@ui8kit/xgen-runtime-react@workspace:xgen/runtimes/react"],
 

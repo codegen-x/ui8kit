@@ -3,7 +3,7 @@
 // Dialect object over the same brick and organism emitters, with a Python port of the ui_* helpers.
 
 export interface Dialect {
-  name: "twig" | "jinja";
+  name: "twig" | "jinja" | "latte";
   /** template file suffix: `.html.twig`, `.html.j2` */
   ext: string;
   str(s: string): string;
@@ -12,6 +12,18 @@ export interface Dialect {
   /** a key of a map: `p.Title` (Twig), `p['Title']` (Jinja: a dot would find dict methods such as items) */
   field(base: string, key: string): string;
   isNotNull(e: string): string;
+  /** a variable read: `x` (Twig, Jinja), `$x` (Latte); declarations take the bare name */
+  v(name: string): string;
+  emptyHash: string;
+  /** a map with integer keys */
+  intHash(entries: Array<[string, string]>): string;
+  and: string;
+  or: string;
+  contains(hay: string, needle: string): string;
+  /** an element whose name is a variable, opened as a static name rewritten at render (Latte n:tag: a printed name cannot be followed by a line break, and a void name would need no close) */
+  dynamicTag?(name: string, tagVar: string): string;
+  /** an attribute value, when the dialect treats some attributes apart (Latte checks URLs in href and src) */
+  attrOut?(name: string, e: string): string;
   hash(entries: Array<[string, string]>): string;
   list(items: string[]): string;
   /** `a ?? b` (b when a is null or missing) */
@@ -51,6 +63,12 @@ export const twig: Dialect = {
   nul: "null",
   field: (base, key) => `${base}.${key}`,
   isNotNull: (e) => `${e} is not null`,
+  v: (name) => name,
+  emptyHash: "{}",
+  intHash: (entries) => `{${entries.map(([k, v]) => `${k}: ${v}`).join(", ")}}`,
+  and: "and",
+  or: "or",
+  contains: (hay, needle) => `(${needle} in ${hay})`,
   hash: (entries) => `{${entries.map(([k, v]) => `${q(k)}: ${v}`).join(", ")}}`,
   list: (items) => `[${items.join(", ")}]`,
   orNull: (a, b) => `(${a} ?? ${b})`,
@@ -90,4 +108,44 @@ export const jinja: Dialect = {
   include: (template, vars) => `{{ ui_include(${q(template)}, ${vars}) }}`,
   includeExpr: (template, vars) => `{{ ui_include(${template}, ${vars}) }}`,
   merge: (a, b) => `ui_merge(${a}, ${b})`,
+};
+
+/** Latte 3 (PHP expressions, `$` variables, `{tag}` syntax); includes go through ui_include, which renders a template to Html */
+export const latte: Dialect = {
+  name: "latte",
+  ext: ".latte",
+  str: q,
+  nul: "null",
+  field: (base, key) => `${base}[${q(key)}]`,
+  isNotNull: (e) => `(${e} !== null)`,
+  v: (name) => `$${name}`,
+  emptyHash: "[]",
+  intHash: (entries) => `[${entries.map(([k, v]) => `${k} => ${v}`).join(", ")}]`,
+  and: "&&",
+  or: "||",
+  contains: (hay, needle) => `str_contains(${hay}, ${needle})`,
+  // the URL check would blank data: URIs the specs pass on to src and href, which React prints as given
+  attrOut: (name, e) => (/^(href|src|action|formaction|poster|cite|data|srcset)$/.test(name) ? `{=${e}|nocheck}` : `{=${e}}`),
+  dynamicTag: (name, tagVar) => `${name} n:tag="${tagVar}"`,
+  hash: (entries) => `[${entries.map(([k, v]) => `${q(k)} => ${v}`).join(", ")}]`,
+  list: (items) => `[${items.join(", ")}]`,
+  orNull: (a, b) => `(${a} ?? ${b})`,
+  ternary: (c, a, b) => `(${c} ? ${a} : ${b})`,
+  not: (a) => `!(${a})`,
+  raw: (e) => `{=${e}|noescape}`,
+  // the ui_* functions that return markup are Html, but Latte escapes inside a tag regardless, so they print unescaped
+  out: (e) => (/^ui_(attr_html|lucide)\(/.test(e) ? `{=${e}|noescape}` : `{=${e}}`),
+  comment: (text) => `{* ${text.replace(/\*\}/g, "* }")} *}`,
+  set: (name, value) => `{var $${name} = ${value}}`,
+  capture: (name) => [`{capture $${name}}`, `{/capture}`],
+  if: (test) => `{if ${test}}`,
+  elseif: (test) => `{elseif ${test}}`,
+  else: `{else}`,
+  endif: `{/if}`,
+  forIn: (item, list) => `{foreach ${list} as $${item}}`,
+  loopIndex: "$iterator->counter0",
+  endfor: `{/foreach}`,
+  include: (template, vars) => `{=ui_include(${q(template)}, ${vars})|noescape}`,
+  includeExpr: (template, vars) => `{=ui_include(${template}, ${vars})|noescape}`,
+  merge: (a, b) => `array_merge(${a}, ${b})`,
 };

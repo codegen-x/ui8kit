@@ -12,12 +12,12 @@ import { svelteToIr } from "./svelte";
 import { vueToIr } from "./vue";
 import { templToIr } from "./templ";
 import { solidToIr } from "./solid";
-import { jinjaToIr, twigToIr } from "./twig";
+import { jinjaToIr, latteToIr, twigToIr } from "./twig";
 import { inBlockRoot, inKit, readZones, ZONES_FILE, zonesText, type Zone } from "./zones";
 
 export { DETECTORS } from "./detectors";
-export const EXT: Record<Runtime, string> = { svelte: ".svelte", react: ".tsx", vue: ".vue", templ: ".templ", solid: ".tsx", twig: ".html.twig", jinja2: ".html.j2" };
-const ADAPTER: Record<Runtime, (src: string, file?: string) => IrFile> = { svelte: svelteToIr, react: reactToIr, vue: vueToIr, templ: templToIr, solid: solidToIr, twig: twigToIr, jinja2: jinjaToIr };
+export const EXT: Record<Runtime, string> = { svelte: ".svelte", react: ".tsx", vue: ".vue", templ: ".templ", solid: ".tsx", twig: ".html.twig", jinja2: ".html.j2", latte: ".latte" };
+const ADAPTER: Record<Runtime, (src: string, file?: string) => IrFile> = { svelte: svelteToIr, react: reactToIr, vue: vueToIr, templ: templToIr, solid: solidToIr, twig: twigToIr, jinja2: jinjaToIr, latte: latteToIr };
 export const toIr = (runtime: Runtime, src: string, file = ""): IrFile => ADAPTER[runtime](src, file);
 const pascal = (file: string): string => basename(file).replace(/\.html\.(twig|j2)$/, "").replace(/\.[^.]*$/, "").split(/[-_.]/).map((s) => s.charAt(0).toUpperCase() + s.slice(1)).join("");
 
@@ -118,7 +118,7 @@ export const FIXTURE_CASES: Partial<Record<Detector, Record<string, string>>> = 
 /** every detector on one violating and one clean fixture per runtime, plus the named cases of FIXTURE_CASES */
 export function selfTest(repo: string): string[] {
   const problems: string[] = [];
-  for (const rt of ["svelte", "react", "vue", "templ", "solid", "twig", "jinja2"] as Runtime[]) for (const d of DETECTORS) {
+  for (const rt of ["svelte", "react", "vue", "templ", "solid", "twig", "jinja2", "latte"] as Runtime[]) for (const d of DETECTORS) {
     const named = Object.entries(FIXTURE_CASES[d] ?? {});
     const files: [string, "ok" | "bad", string | undefined][] = [[`${d}.bad`, "bad", undefined], [`${d}.ok`, "ok", undefined], ...named.map(([c, msg]): [string, "ok" | "bad", string] => [`${d}.${c}.${msg ? "bad" : "ok"}`, msg ? "bad" : "ok", msg])];
     for (const [name, kind, msg] of files) {
@@ -167,5 +167,5 @@ export function checkRules(repo: string): CheckResult {
   problems.push(...selfTest(repo));
   const g = gate(repo);
   problems.push(...g.problems);
-  return result("rules", `rules 01/02/03/06 on the composition zone (${g.files} files, kit never scanned): block-root, raw-html, dynamic-tag, raw-native-tag, reactive-aria, literal-text; ${g.recorded} recorded in rules/baselines, none new; self-test fixtures for svelte, react, vue, templ, solid, twig, jinja2`, problems);
+  return result("rules", `rules 01/02/03/06 on the composition zone (${g.files} files, kit never scanned): block-root, raw-html, dynamic-tag, raw-native-tag, reactive-aria, literal-text; ${g.recorded} recorded in rules/baselines, none new; self-test fixtures for svelte, react, vue, templ, solid, twig, jinja2, latte`, problems);
 }

@@ -33,7 +33,12 @@ function quiet<T>(f: () => T): T {
 const differs = (label: string, a: string, b: string, rt: string): string => `${label}: DOM differs\n${firstDiff(a, b).replace("    templ:", `    ${rt}: `)}`;
 
 export async function twigCheck(workspace: string, bricks: LoadedBrick[], inputs: Inputs): Promise<TwigResult> {
-  const dir = join(workspace, TWIG_DIR);
+  return phpTemplateCheck(workspace, TWIG_DIR, bricks, inputs, twig);
+}
+
+/** a PHP template package (Twig, Latte): composer install, php -l of its helpers, then parity through its bin/parity.php */
+export async function phpTemplateCheck(workspace: string, pkgDir: string, bricks: LoadedBrick[], inputs: Inputs, d: Dialect): Promise<TwigResult> {
+  const dir = join(workspace, pkgDir);
   const none = { cases: 0, blocks: 0, organisms: 0 };
   const php = run("php", ["-r", "echo PHP_VERSION;"], ".");
   if (!php.ok) return { ok: true, problems: [], ...none, skipped: "no PHP" };
@@ -50,7 +55,7 @@ export async function twigCheck(workspace: string, bricks: LoadedBrick[], inputs
     if (!r.ok) return `php bin/parity.php: ${r.err.trim().split("\n").slice(-12).join("\n")}`;
     return JSON.parse(r.out) as string[];
   };
-  return { ...(await templateParity(workspace, dir, bricks, inputs, twig, render)), php: php.out.trim() };
+  return { ...(await templateParity(workspace, dir, bricks, inputs, d, render)), php: php.out.trim() };
 }
 
 /** every brick and block case rendered by a template runtime (render: requests -> HTML, or an error text), DOM parity with React, html-validate of the block cases */
