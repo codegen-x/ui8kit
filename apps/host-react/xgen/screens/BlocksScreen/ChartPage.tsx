@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Point,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -71,6 +72,7 @@ export function ChartPage() {
                 chart="bars"
                 size="default"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.bars)}
               />
             </Box>
           </Stack>
@@ -97,6 +99,7 @@ export function ChartPage() {
                 chart="bars"
                 size="compact"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.short)}
               />
             </Box>
           </Stack>
@@ -123,6 +126,7 @@ export function ChartPage() {
                 chart="meters"
                 size="default"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.meters)}
               />
             </Box>
           </Stack>
@@ -149,6 +153,7 @@ export function ChartPage() {
                 chart="meters"
                 size="compact"
                 tone="muted"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.muted)}
               />
             </Box>
           </Stack>

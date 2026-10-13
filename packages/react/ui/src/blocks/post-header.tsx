@@ -22,6 +22,7 @@ export type PostHeaderProps = {
   cover?: "show" | "hide";
   meta?: "full" | "short";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 
 export function PostHeader({
@@ -33,6 +34,7 @@ export function PostHeader({
   cover = "show",
   meta = "full",
   tone = "default",
+  landmarkLabel,
 }: PostHeaderProps) {
   return (
     <SectionFrame
@@ -43,6 +45,7 @@ export function PostHeader({
       align={layout}
       tone={tone}
       media={{ show: ((cover as string) === "show") }}
+      landmarkLabel={landmarkLabel}
       aside={(
         <MediaFrame alt={post.title} ratio="21/9" />
       )}

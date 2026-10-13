@@ -6,6 +6,7 @@ import {
   AboutMe,
   PhotoGallery,
   ProjectGrid,
+  tpl,
   type Photo,
   type Project,
   type Skill,
@@ -68,6 +69,7 @@ export function WorkPage() {
         layout="cards"
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.projects, ui.blocks.variants.projects.cards)}
       />
       <PhotoGallery
         id="work-photos"
@@ -79,6 +81,7 @@ export function WorkPage() {
         captions="show"
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.photos, ui.blocks.variants.photos.masonry)}
       />
     </>
   );

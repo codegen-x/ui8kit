@@ -2,7 +2,7 @@
 // Source: xgen/specs/screens/theme-support-center.json
 // The contact page of ThemeSupportCenterScreen.
 
-import { ContactForm, PageIntro, SupportChannels, type Feature } from "@ui8kit/react-ui";
+import { ContactForm, PageIntro, SupportChannels, tpl, type Feature } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { channels as channelsEntries } from "@ui8kit/app-shared/data/channels";
@@ -35,6 +35,7 @@ export function ContactPage() {
         terms="hide"
         page="section"
         tone="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.single)}
       />
       <SupportChannels
         id="contact-channels"
@@ -45,6 +46,7 @@ export function ContactPage() {
         cols="1-3"
         action="link"
         tone="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.channels, ui.blocks.variants.channels.list)}
       />
       <ContactForm
         id="contact-contact-3"
@@ -57,6 +59,7 @@ export function ContactPage() {
         terms="show"
         page="section"
         tone="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.consent)}
       />
     </>
   );

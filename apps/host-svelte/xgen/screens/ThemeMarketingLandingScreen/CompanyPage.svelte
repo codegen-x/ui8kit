@@ -9,6 +9,7 @@
     PageIntro,
     StoryTabs,
     TeamGrid,
+    tpl,
     type Department,
     type Feature,
     type Job,
@@ -81,6 +82,7 @@
   layout="split"
   tone="default"
   density="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.about, ui.blocks.variants.about.split)}
 />
 <StoryTabs
   id="company-storytabs"
@@ -92,6 +94,7 @@
   labels={ui.company.storyTabs.labels}
   layout="years"
   tone="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.storytabs, ui.blocks.variants.storytabs.yearTabs)}
 />
 <MilestoneTimeline
   id="company-timeline"
@@ -101,6 +104,7 @@
   layout="split"
   tone="default"
   density="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.timeline, ui.blocks.variants.timeline.split)}
 />
 <TeamGrid
   id="company-team"
@@ -112,6 +116,7 @@
   cols="1-4"
   tone="default"
   density="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.team, ui.blocks.variants.team.cards4)}
 />
 <JobBoard
   id="company-jobs"
@@ -123,4 +128,5 @@
   layout="grouped"
   salary="hide"
   tone="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.jobs, ui.blocks.variants.jobs.grouped)}
 />

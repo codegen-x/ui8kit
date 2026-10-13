@@ -18,6 +18,7 @@
     marker?: "check" | "number";
     detail?: "always" | "expand";
     tone?: "default" | "muted";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -44,10 +45,11 @@
     marker = "check",
     detail = "always",
     tone = "default",
+    landmarkLabel,
   }: ChecklistProps = $props();
 </script>
 
-<SectionFrame id={id} title={title} tone={tone} measure="2xl">
+<SectionFrame id={id} title={title} tone={tone} measure="2xl" landmarkLabel={landmarkLabel}>
   <Stack
     gap="4"
     align="stretch"

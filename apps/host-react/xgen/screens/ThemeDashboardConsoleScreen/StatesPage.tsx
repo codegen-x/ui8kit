@@ -2,7 +2,7 @@
 // Source: xgen/specs/screens/theme-dashboard-console.json
 // The states page of ThemeDashboardConsoleScreen.
 
-import { EmptyPanel, PageIntro, SkeletonLayout, type Line } from "@ui8kit/react-ui";
+import { EmptyPanel, PageIntro, SkeletonLayout, tpl, type Line } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { placeholders as placeholdersEntries } from "@ui8kit/app-shared/data/placeholders";
@@ -34,6 +34,7 @@ export function StatesPage() {
         actions="button"
         visual="image"
         size="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.illustrated)}
       />
       <EmptyPanel
         id="states-empty-2"
@@ -46,6 +47,7 @@ export function StatesPage() {
         visual="icon"
         size="default"
         icon="shopping-bag"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.orders)}
       />
       <SkeletonLayout
         id="states-skeleton-3"
@@ -54,6 +56,7 @@ export function StatesPage() {
         lines={placeholders}
         shape="cards"
         tone="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.cards)}
       />
       <SkeletonLayout
         id="states-skeleton-4"
@@ -62,6 +65,7 @@ export function StatesPage() {
         lines={placeholders}
         shape="list"
         tone="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.list)}
       />
     </>
   );

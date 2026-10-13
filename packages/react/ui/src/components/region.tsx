@@ -9,13 +9,14 @@ import { Block } from "../primitives/block/block";
 
 export type RegionProps = {
   tag: "header" | "nav" | "section" | "aside" | "footer" | "article" | "figure" | "main" | "search" | "div";
+  landmarkLabel?: string;
   className?: string;
   children?: ReactNode;
 };
 
-export function Region({ tag, className, children }: RegionProps) {
+export function Region({ tag, landmarkLabel, className, children }: RegionProps) {
   return (
-    <Block tag={tag} className={className}>
+    <Block tag={tag} className={className} aria-label={landmarkLabel}>
       {children}
     </Block>
   );

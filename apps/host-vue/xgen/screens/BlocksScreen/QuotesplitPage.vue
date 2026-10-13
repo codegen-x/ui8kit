@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Logo,
   type Quote,
   type Stat,
@@ -96,6 +97,7 @@ const QUOTESPLIT_ACTIONS = {
               layout="media"
               mediaSide="end"
               tone="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.quotesplit, ui.blocks.variants.quotesplit.quoteCard)"
             />
           </Box>
         </Stack>
@@ -124,6 +126,7 @@ const QUOTESPLIT_ACTIONS = {
               layout="logos"
               mediaSide="start"
               tone="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.quotesplit, ui.blocks.variants.quotesplit.logoTiles)"
             />
           </Box>
         </Stack>
@@ -152,6 +155,7 @@ const QUOTESPLIT_ACTIONS = {
               layout="rating"
               mediaSide="end"
               tone="muted"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.quotesplit, ui.blocks.variants.quotesplit.ratingPanel)"
             />
           </Box>
         </Stack>
@@ -180,6 +184,7 @@ const QUOTESPLIT_ACTIONS = {
               layout="stack"
               mediaSide="start"
               tone="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.quotesplit, ui.blocks.variants.quotesplit.stackedCards)"
             />
           </Box>
         </Stack>
@@ -208,6 +213,7 @@ const QUOTESPLIT_ACTIONS = {
               layout="compact"
               mediaSide="end"
               tone="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.quotesplit, ui.blocks.variants.quotesplit.compact4)"
             />
           </Box>
         </Stack>
@@ -236,6 +242,7 @@ const QUOTESPLIT_ACTIONS = {
               layout="bento"
               mediaSide="end"
               tone="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.quotesplit, ui.blocks.variants.quotesplit.bentoFigures)"
             />
           </Box>
         </Stack>

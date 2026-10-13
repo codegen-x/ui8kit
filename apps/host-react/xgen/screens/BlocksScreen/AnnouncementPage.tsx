@@ -2,7 +2,18 @@
 // Source: xgen/specs/screens/blocks.json
 // The announcement page of BlocksScreen.
 
-import { AnnouncementBar, Block, Box, Container, Group, Link, Stack, Text, Title } from "@ui8kit/react-ui";
+import {
+  AnnouncementBar,
+  Block,
+  Box,
+  Container,
+  Group,
+  Link,
+  Stack,
+  Text,
+  Title,
+  tpl,
+} from "@ui8kit/react-ui";
 import { ui } from "@ui8kit/app-shared/content";
 
 export function AnnouncementPage() {
@@ -51,6 +62,7 @@ export function AnnouncementPage() {
                 dismiss="hide"
                 badge="none"
                 position="top"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.bar)}
               />
             </Box>
           </Stack>
@@ -79,6 +91,7 @@ export function AnnouncementPage() {
                 dismiss="hide"
                 badge="show"
                 position="top"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.badge)}
               />
             </Box>
           </Stack>
@@ -107,6 +120,7 @@ export function AnnouncementPage() {
                 dismiss="show"
                 badge="none"
                 position="bottom"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.bottom)}
               />
             </Box>
           </Stack>
@@ -135,6 +149,7 @@ export function AnnouncementPage() {
                 dismiss="hide"
                 badge="none"
                 position="top"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.muted)}
               />
             </Box>
           </Stack>
@@ -163,6 +178,7 @@ export function AnnouncementPage() {
                 dismiss="hide"
                 badge="none"
                 position="top"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.split)}
               />
             </Box>
           </Stack>
@@ -191,6 +207,7 @@ export function AnnouncementPage() {
                 dismiss="show"
                 badge="none"
                 position="top"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.dismissible)}
               />
             </Box>
           </Stack>
@@ -219,6 +236,7 @@ export function AnnouncementPage() {
                 dismiss="show"
                 badge="none"
                 position="top"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.shop)}
               />
             </Box>
           </Stack>
@@ -247,6 +265,7 @@ export function AnnouncementPage() {
                 dismiss="hide"
                 badge="none"
                 position="top"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.agency)}
               />
             </Box>
           </Stack>

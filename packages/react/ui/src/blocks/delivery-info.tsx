@@ -30,6 +30,7 @@ export type DeliveryInfoProps = {
   layout?: "full" | "facts" | "split";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function DeliveryInfo({
@@ -42,9 +43,10 @@ export function DeliveryInfo({
   layout = "full",
   tone = "default",
   density = "default",
+  landmarkLabel,
 }: DeliveryInfoProps) {
   return (
-    <SectionFrame id={id} title={title} lead={lead} tone={tone} density={density}>
+    <SectionFrame id={id} title={title} lead={lead} tone={tone} density={density} landmarkLabel={landmarkLabel}>
       <Box
         className={cn(
           "grid grid-cols-1 gap-8",

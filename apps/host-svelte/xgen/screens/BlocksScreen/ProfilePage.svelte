@@ -2,7 +2,18 @@
 <!-- Source: xgen/specs/screens/blocks.json -->
 <!-- The profile page of BlocksScreen. -->
 <script lang="ts">
-  import { Block, Box, Container, Group, Link, ProfileForm, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import {
+    Block,
+    Box,
+    Container,
+    Group,
+    Link,
+    ProfileForm,
+    Stack,
+    Text,
+    Title,
+    tpl,
+  } from "@ui8kit/svelte-ui";
   import { ui } from "@ui8kit/app-shared/content";
 
 </script>
@@ -48,6 +59,7 @@
             avatar="show"
             prefs="show"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.stacked)}
           />
         </Box>
       </Stack>
@@ -73,6 +85,7 @@
             avatar="show"
             prefs="show"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.split)}
           />
         </Box>
       </Stack>
@@ -98,6 +111,7 @@
             avatar="hide"
             prefs="hide"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.minimal)}
           />
         </Box>
       </Stack>
@@ -123,6 +137,7 @@
             avatar="show"
             prefs="show"
             tone="muted"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.muted)}
           />
         </Box>
       </Stack>

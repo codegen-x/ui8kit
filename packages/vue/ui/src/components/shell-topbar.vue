@@ -12,6 +12,7 @@ export type ShellTopbarProps = {
   brand?: "show" | "hide";
   links?: "show" | "hide";
   search?: "show" | "hide";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -28,9 +29,15 @@ import Text from "../primitives/text/text.vue";
 import MediaFrame from "../components/media-frame.vue";
 import NavBlock from "../components/nav-block.vue";
 import SearchPalette from "../components/search-palette.vue";
-import { cn } from "../utils";
+import { cn, tpl } from "../utils";
 
-const { nav, brand = "show", links = "hide", search = "show" } = defineProps<ShellTopbarProps>();
+const {
+  nav,
+  brand = "show",
+  links = "hide",
+  search = "show",
+  landmarkLabel,
+} = defineProps<ShellTopbarProps>();
 </script>
 
 <template>
@@ -38,6 +45,7 @@ const { nav, brand = "show", links = "hide", search = "show" } = defineProps<She
     tag="header"
     class="flex h-16 shrink-0 items-center gap-6 border-b border-border bg-background px-6"
     data-testid="topbar"
+    :aria-label="landmarkLabel"
   >
     <Group v-if="((brand as string) === 'show')" gap="2" align="center" class="shrink-0" data-testid="brand">
       <LucideIcon name="layers" :size="24" />
@@ -45,7 +53,10 @@ const { nav, brand = "show", links = "hide", search = "show" } = defineProps<She
         {{ nav.brand }}
       </Text>
     </Group>
-    <NavBlock v-if="((links as string) === 'show')" :label="nav.label" class="hidden lg:block">
+    <NavBlock v-if="((links as string) === 'show')"
+      :label="(landmarkLabel ? tpl('{0}, {1}', nav.label, landmarkLabel) : nav.label)"
+      class="hidden lg:block"
+    >
       <List class="m-0 flex list-none items-center gap-2 p-0">
         <ListItem v-for="l in nav.links" :key="l.id">
           <Link

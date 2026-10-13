@@ -17,6 +17,7 @@ export type OrderSummaryProps = {
   note?: "show" | "hide";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -41,11 +42,19 @@ const {
   note = "show",
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<OrderSummaryProps>();
 </script>
 
 <template>
-  <SectionFrame :id="id" :title="title" :tone="tone" :density="density" measure="md">
+  <SectionFrame
+    :id="id"
+    :title="title"
+    :tone="tone"
+    :density="density"
+    measure="md"
+    :landmarkLabel="landmarkLabel"
+  >
     <Box
       :class="cn(
         (((layout as string) === 'card') ? 'rounded bg-card p-6 inset-ring inset-ring-border' : '')

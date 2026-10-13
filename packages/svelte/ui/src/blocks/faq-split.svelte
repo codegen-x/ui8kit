@@ -24,6 +24,7 @@
     cards?: "grid3" | "grid4" | "icons";
     mediaSide?: "end" | "start";
     tone?: "default" | "muted";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -51,11 +52,12 @@
     cards = "grid3",
     mediaSide = "end",
     tone = "default",
+    landmarkLabel,
   }: FaqSplitProps = $props();
 </script>
 
 {#if ((layout as string) === "cards")}
-  <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone} density="default">
+  <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone} landmarkLabel={landmarkLabel}>
     <FaqCards items={items} labels={labels} cards={cards} />
   </SectionFrame>
 {/if}
@@ -66,9 +68,9 @@
     lead={lead}
     heading={{ badge }}
     tone={tone}
-    density="default"
     layout="split"
     media={{ show: true, side: "end", align: "start" }}
+    landmarkLabel={landmarkLabel}
   >
     <Box>
       <Button variant="default" size="default" href="#/contact" data-testid="faq-cta">
@@ -87,13 +89,13 @@
     lead={lead}
     heading={{ badge }}
     tone={tone}
-    density="default"
     layout="split"
     media={{ show: true, side: "end", align: "start" }}
+    landmarkLabel={landmarkLabel}
   >
     <FaqDisclosures items={items} name={tpl("{0}-faq", id)} />
     {#snippet aside()}
-      <FaqHelp labels={labels} channels={channels} />
+      <FaqHelp labels={labels} channels={channels} landmarkLabel={landmarkLabel} />
     {/snippet}
   </SectionFrame>
 {/if}
@@ -104,9 +106,9 @@
     lead={lead}
     heading={{ badge }}
     tone={tone}
-    density="default"
     layout="split"
     media={{ show: true, side: mediaSide, align: "start" }}
+    landmarkLabel={landmarkLabel}
   >
     <FaqDisclosures items={items} name={tpl("{0}-faq", id)} />
     <Box>
@@ -126,9 +128,9 @@
     lead={lead}
     heading={{ badge }}
     tone={tone}
-    density="default"
     layout="split"
     media={{ show: true, side: mediaSide }}
+    landmarkLabel={landmarkLabel}
   >
     <FaqFinder items={items} labels={labels} topics={topics} />
     {#snippet aside()}

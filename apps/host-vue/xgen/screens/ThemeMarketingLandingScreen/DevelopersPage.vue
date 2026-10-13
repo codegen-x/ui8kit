@@ -9,6 +9,7 @@ import {
   FeatureGrid,
   HeroClassic,
   TemplateGrid,
+  tpl,
   type CodeLine,
   type Faq,
   type FaqTab,
@@ -83,6 +84,7 @@ const templateFilters = fromCodex<Filter>(templateFiltersEntries, TEMPLATEFILTER
     media="none"
     tone="default"
     density="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.bento)"
   />
   <TemplateGrid
     id="developers-templates"
@@ -97,6 +99,7 @@ const templateFilters = fromCodex<Filter>(templateFiltersEntries, TEMPLATEFILTER
     cols="1-4"
     tone="default"
     density="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.templates, ui.blocks.variants.templates.grid4)"
   />
   <FeatureGrid
     id="developers-features"
@@ -109,6 +112,7 @@ const templateFilters = fromCodex<Filter>(templateFiltersEntries, TEMPLATEFILTER
     mediaSide="end"
     tone="default"
     density="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.tiles4)"
   />
   <FaqList
     id="developers-faq"
@@ -120,6 +124,7 @@ const templateFilters = fromCodex<Filter>(templateFiltersEntries, TEMPLATEFILTER
     cols="1"
     tone="default"
     density="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.tabs)"
   />
   <CtaBand
     id="developers-cta"
@@ -138,5 +143,6 @@ const templateFilters = fromCodex<Filter>(templateFiltersEntries, TEMPLATEFILTER
     tone="default"
     proof="none"
     density="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.split)"
   />
 </template>

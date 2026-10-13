@@ -27,6 +27,7 @@
     layout?: "figures" | "proof" | "steps" | "posts" | "topics" | "contact";
     mediaSide?: "end" | "start";
     tone?: "default" | "muted";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -52,6 +53,7 @@
     layout = "figures",
     mediaSide = "end",
     tone = "default",
+    landmarkLabel,
   }: MediaListProps = $props();
 </script>
 
@@ -63,6 +65,7 @@
   tone={tone}
   layout="split"
   media={{ show: true, side: mediaSide }}
+  landmarkLabel={landmarkLabel}
 >
   {#if (((layout as string) === "figures") || ((layout as string) === "proof"))}
     <MediaFigures extras={extras} mode={(((layout as string) === "proof") ? "row" : "grid")} />
@@ -88,7 +91,6 @@
       primaryHref={actions.href}
       secondary={((actions.mode === "two") ? actions.secondary : undefined)}
       secondaryHref={actions.secondaryHref}
-      align="start"
     />
   {/if}
   {#snippet aside()}

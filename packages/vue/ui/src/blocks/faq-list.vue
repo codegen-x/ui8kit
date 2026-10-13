@@ -20,6 +20,7 @@ export type FaqListProps = {
   multiple?: boolean;
   tone?: "default" | "muted";
   density?: "roomy" | "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -48,6 +49,7 @@ const {
   multiple = false,
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<FaqListProps>();
 const emit = defineEmits<{ query: [text: string], category: [value: string] }>();
 const inCategory = computed(() => items.filter((i) => !filter?.category || i["category"] === filter?.category));
@@ -63,6 +65,7 @@ const shown = computed(() =>
     :tone="tone"
     :density="density"
     :measure="(((layout as string) === 'chat') ? '2xl' : 'default')"
+    :landmarkLabel="landmarkLabel"
   >
     <SearchField v-if="(search?.mode === 'field')"
       :label="(search?.label ?? '')"

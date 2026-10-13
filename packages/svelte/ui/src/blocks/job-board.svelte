@@ -19,6 +19,7 @@
     layout?: "grid" | "grouped" | "table";
     salary?: "show" | "hide";
     tone?: "default" | "muted";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -45,6 +46,7 @@
     layout = "grid",
     salary = "hide",
     tone = "default",
+    landmarkLabel,
   }: JobBoardProps = $props();
 </script>
 
@@ -53,8 +55,8 @@
   title={title}
   lead={lead}
   tone={tone}
-  density="default"
   measure={(((layout as string) === "grouped") ? "3xl" : "default")}
+  landmarkLabel={landmarkLabel}
 >
   {#if ((layout as string) === "grouped")}
     <Stack gap="8" align="stretch" data-testid="groups">

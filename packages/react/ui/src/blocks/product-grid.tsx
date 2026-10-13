@@ -24,6 +24,7 @@ export type ProductGridProps = {
   action?: "button" | "none";
   tone?: "default" | "muted";
   density?: "roomy" | "default" | "compact";
+  landmarkLabel?: string;
   onAdd?: (id: string) => void;
 };
 
@@ -40,10 +41,11 @@ export function ProductGrid({
   action = "button",
   tone = "default",
   density = "default",
+  landmarkLabel,
   onAdd,
 }: ProductGridProps) {
   return (
-    <SectionFrame id={id} title={title} tone={tone} density={density}>
+    <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
       {((layout as string) === "rail") ? (
         <Box className="flex snap-x gap-4 overflow-x-auto pb-4" data-testid="items">
           {(products ?? []).map((p) => (

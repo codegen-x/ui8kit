@@ -25,6 +25,7 @@ export type TeamGridProps = {
   cols?: "1-3" | "1-4";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function TeamGrid({
@@ -37,6 +38,7 @@ export function TeamGrid({
   cols = "1-4",
   tone = "default",
   density = "default",
+  landmarkLabel,
 }: TeamGridProps) {
   return (
     <SectionFrame
@@ -47,6 +49,7 @@ export function TeamGrid({
       density={density}
       layout={(((layout as string) === "list") ? "split" : "stack")}
       media={{ show: ((layout as string) === "list"), side: "start", align: "start" }}
+      landmarkLabel={landmarkLabel}
       aside={(
         <MediaFrame alt={title} ratio="3/4" />
       )}

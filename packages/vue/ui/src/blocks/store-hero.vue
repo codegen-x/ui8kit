@@ -22,6 +22,7 @@ export type StoreHeroProps = {
   layout?: "overlay" | "backdrop";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -49,6 +50,7 @@ const {
   layout = "overlay",
   mediaSide = "end",
   tone = "default",
+  landmarkLabel,
 } = defineProps<StoreHeroProps>();
 </script>
 
@@ -62,6 +64,7 @@ const {
     density="roomy"
     measure="3xl"
     :class="(('image' === 'image') ? 'relative isolate overflow-hidden' : '')"
+    :landmarkLabel="landmarkLabel"
   >
     <Backdrop kind="image" :alt="title" />
     <ActionGroup
@@ -69,7 +72,6 @@ const {
       :primaryHref="actions.href"
       :secondary="((actions.mode === 'two') ? actions.secondary : undefined)"
       :secondaryHref="actions.secondaryHref"
-      align="start"
     />
     <Grid cols="1-3" class="gap-4" data-testid="perks">
       <template v-for="(p, i) in perks" :key="p.id">
@@ -97,14 +99,13 @@ const {
     layout="split"
     :media="{ show: true, side: mediaSide }"
     :tone="tone"
-    density="default"
+    :landmarkLabel="landmarkLabel"
   >
     <ActionGroup
       :primary="actions.cta"
       :primaryHref="actions.href"
       :secondary="((actions.mode === 'two') ? actions.secondary : undefined)"
       :secondaryHref="actions.secondaryHref"
-      align="start"
     />
     <Grid cols="1-3" class="gap-4" data-testid="perks">
       <template v-for="(p, i) in perks" :key="p.id">

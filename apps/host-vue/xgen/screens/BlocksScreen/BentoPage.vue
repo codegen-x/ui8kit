@@ -2,7 +2,19 @@
 <!-- Source: xgen/specs/screens/blocks.json -->
 <!-- The bento page of BlocksScreen. -->
 <script setup lang="ts">
-import { BentoGrid, Block, Box, Container, Group, Link, Stack, Text, Title, type Tile } from "@ui8kit/vue-ui";
+import {
+  BentoGrid,
+  Block,
+  Box,
+  Container,
+  Group,
+  Link,
+  Stack,
+  Text,
+  Title,
+  tpl,
+  type Tile,
+} from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { bento as bentoEntries } from "@ui8kit/app-shared/data/bento";
@@ -53,6 +65,7 @@ const bento = fromCodex<Tile>(bentoEntries, BENTO_FIELDS);
               media="none"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.bento)"
             />
           </Box>
         </Stack>
@@ -77,6 +90,7 @@ const bento = fromCodex<Tile>(bentoEntries, BENTO_FIELDS);
               media="none"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.even)"
             />
           </Box>
         </Stack>
@@ -101,6 +115,7 @@ const bento = fromCodex<Tile>(bentoEntries, BENTO_FIELDS);
               media="image"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.images)"
             />
           </Box>
         </Stack>
@@ -125,6 +140,7 @@ const bento = fromCodex<Tile>(bentoEntries, BENTO_FIELDS);
               media="none"
               tone="muted"
               density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.muted)"
             />
           </Box>
         </Stack>

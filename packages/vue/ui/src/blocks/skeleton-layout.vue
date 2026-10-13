@@ -15,6 +15,7 @@ export type SkeletonLayoutProps = {
   lines: Line[];
   shape?: "cards" | "list" | "article";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -26,11 +27,19 @@ import Skeleton from "../primitives/skeleton/skeleton.vue";
 import Stack from "../primitives/stack/stack.vue";
 import SectionFrame from "../components/section-frame.vue";
 
-const { id, title, label, lines, shape = "cards", tone = "default" } = defineProps<SkeletonLayoutProps>();
+const {
+  id,
+  title,
+  label,
+  lines,
+  shape = "cards",
+  tone = "default",
+  landmarkLabel,
+} = defineProps<SkeletonLayoutProps>();
 </script>
 
 <template>
-  <SectionFrame :id="id" :title="title" :tone="tone" density="default">
+  <SectionFrame :id="id" :title="title" :tone="tone" :landmarkLabel="landmarkLabel">
     <Block tag="div" class="w-full" role="status" :aria-label="label" data-testid="skeleton" :data-shape="shape">
       <Grid v-if="((shape as string) === 'cards')" cols="1-3" class="gap-4">
         <Stack

@@ -2,7 +2,7 @@
 <!-- Source: xgen/specs/screens/theme-support-center.json -->
 <!-- The moved page of ThemeSupportCenterScreen. -->
 <script setup lang="ts">
-import { ErrorPage, SupportChannels, type Feature } from "@ui8kit/vue-ui";
+import { ErrorPage, SupportChannels, tpl, type Feature } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { channels as channelsEntries } from "@ui8kit/app-shared/data/channels";
@@ -38,5 +38,6 @@ const channels = fromCodex<Feature>(channelsEntries, CHANNELS_FIELDS);
     cols="1-2"
     action="link"
     tone="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.channels, ui.blocks.variants.channels.twoUp)"
   />
 </template>

@@ -12,6 +12,7 @@
     Stack,
     Text,
     Title,
+    tpl,
     type Line,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -62,6 +63,7 @@
             lines={placeholders}
             shape="cards"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.cards)}
           />
         </Box>
       </Stack>
@@ -85,6 +87,7 @@
             lines={placeholders}
             shape="list"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.list)}
           />
         </Box>
       </Stack>
@@ -108,6 +111,7 @@
             lines={placeholders}
             shape="article"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.article)}
           />
         </Box>
       </Stack>
@@ -131,6 +135,7 @@
             lines={placeholders}
             shape="cards"
             tone="muted"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.muted)}
           />
         </Box>
       </Stack>

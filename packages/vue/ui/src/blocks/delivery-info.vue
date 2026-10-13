@@ -20,6 +20,7 @@ export type DeliveryInfoProps = {
   layout?: "full" | "facts" | "split";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -45,11 +46,19 @@ const {
   layout = "full",
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<DeliveryInfoProps>();
 </script>
 
 <template>
-  <SectionFrame :id="id" :title="title" :lead="lead" :tone="tone" :density="density">
+  <SectionFrame
+    :id="id"
+    :title="title"
+    :lead="lead"
+    :tone="tone"
+    :density="density"
+    :landmarkLabel="landmarkLabel"
+  >
     <Box
       :class="cn(
         'grid grid-cols-1 gap-8',

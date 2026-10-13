@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Logo,
   type Stat,
 } from "@ui8kit/react-ui";
@@ -74,6 +75,7 @@ export function ProofPage() {
                 logoStyle="name"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.above)}
               />
             </Box>
           </Stack>
@@ -99,6 +101,7 @@ export function ProofPage() {
                 logoStyle="name"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.beside)}
               />
             </Box>
           </Stack>
@@ -124,6 +127,7 @@ export function ProofPage() {
                 logoStyle="icon"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.icons)}
               />
             </Box>
           </Stack>
@@ -149,6 +153,7 @@ export function ProofPage() {
                 logoStyle="name"
                 tone="muted"
                 density="compact"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.muted)}
               />
             </Box>
           </Stack>

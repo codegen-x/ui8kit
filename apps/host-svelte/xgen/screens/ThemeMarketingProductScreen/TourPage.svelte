@@ -9,6 +9,7 @@
     PageIntro,
     StepsList,
     VideoGrid,
+    tpl,
     type Contrast,
     type Feature,
     type MegaGroup,
@@ -69,6 +70,7 @@
   item="plain"
   tone="default"
   density="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sticky, ui.blocks.variants.sticky.end)}
 />
 <BeforeAfter
   id="tour-beforeafter"
@@ -79,6 +81,7 @@
   icons="show"
   tone="default"
   density="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.beforeafter, ui.blocks.variants.beforeafter.cards)}
 />
 <StepsList
   id="tour-steps"
@@ -89,6 +92,7 @@
   align="start"
   tone="default"
   density="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.column)}
 />
 <VideoGrid
   id="tour-videos"
@@ -100,6 +104,7 @@
   caption="below"
   tone="default"
   density="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.grid3)}
 />
 <MegaMenu
   label={ui.vibe.nav.label}
@@ -112,4 +117,5 @@
   panel="open"
   cols="3"
   promo="none"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.open)}
 />

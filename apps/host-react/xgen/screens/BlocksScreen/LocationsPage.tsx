@@ -12,6 +12,7 @@ import {
   StoreLocations,
   Text,
   Title,
+  tpl,
   type Store,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -79,6 +80,7 @@ export function LocationsPage() {
                 labels={ui.commerce.stores}
                 layout="cards"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.locations, ui.blocks.variants.locations.cards)}
               />
             </Box>
           </Stack>
@@ -104,6 +106,7 @@ export function LocationsPage() {
                 labels={ui.commerce.stores}
                 layout="list"
                 tone="muted"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.locations, ui.blocks.variants.locations.list)}
               />
             </Box>
           </Stack>
@@ -129,6 +132,7 @@ export function LocationsPage() {
                 labels={ui.commerce.stores}
                 layout="map"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.locations, ui.blocks.variants.locations.map)}
               />
             </Box>
           </Stack>

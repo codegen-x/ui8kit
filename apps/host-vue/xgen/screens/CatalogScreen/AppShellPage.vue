@@ -117,6 +117,7 @@ const SHELL_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboard.
                 :activity="SHELL_ACTIVITY"
                 layout="sidebar"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.shell, ui.blocks.variants.shell.sidebar)"
               />
             </Box>
           </Stack>
@@ -144,6 +145,7 @@ const SHELL_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboard.
                 :activity="SHELL_ACTIVITY"
                 layout="top"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.shell, ui.blocks.variants.shell.top)"
               />
             </Box>
           </Stack>
@@ -171,6 +173,7 @@ const SHELL_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboard.
                 :activity="SHELL_ACTIVITY"
                 layout="panes"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.shell, ui.blocks.variants.shell.panes)"
               />
             </Box>
           </Stack>
@@ -198,6 +201,7 @@ const SHELL_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboard.
                 :activity="SHELL_ACTIVITY"
                 layout="sidebar"
                 density="compact"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.shell, ui.blocks.variants.shell.dense)"
               />
             </Box>
           </Stack>
@@ -241,6 +245,7 @@ const SHELL_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboard.
                 width="full"
                 user="show"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.sidenav, ui.blocks.variants.sidenav.full)"
               />
             </Box>
           </Stack>
@@ -267,6 +272,7 @@ const SHELL_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboard.
                 width="compact"
                 user="show"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.sidenav, ui.blocks.variants.sidenav.compact)"
               />
             </Box>
           </Stack>
@@ -293,6 +299,7 @@ const SHELL_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboard.
                 width="full"
                 user="hide"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.sidenav, ui.blocks.variants.sidenav.noUser)"
               />
             </Box>
           </Stack>
@@ -319,6 +326,7 @@ const SHELL_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboard.
                 width="full"
                 user="show"
                 density="compact"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.sidenav, ui.blocks.variants.sidenav.dense)"
               />
             </Box>
           </Stack>
@@ -359,6 +367,7 @@ const SHELL_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboard.
                 labels="show"
                 position="static"
                 tone="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.bottomnav, ui.blocks.variants.bottomnav.labels)"
               />
             </Box>
           </Stack>
@@ -382,6 +391,7 @@ const SHELL_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboard.
                 labels="hide"
                 position="static"
                 tone="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.bottomnav, ui.blocks.variants.bottomnav.icons)"
               />
             </Box>
           </Stack>
@@ -405,6 +415,7 @@ const SHELL_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboard.
                 labels="show"
                 position="sticky"
                 tone="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.bottomnav, ui.blocks.variants.bottomnav.sticky)"
               />
             </Box>
           </Stack>
@@ -428,6 +439,7 @@ const SHELL_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboard.
                 labels="show"
                 position="static"
                 tone="muted"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.bottomnav, ui.blocks.variants.bottomnav.muted)"
               />
             </Box>
           </Stack>

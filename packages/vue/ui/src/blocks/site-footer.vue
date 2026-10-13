@@ -11,6 +11,7 @@ export type SiteFooterProps = {
   labels: SiteFooterLabels;
   layout?: "minimal" | "centered";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -21,13 +22,19 @@ import Group from "../primitives/group/group.vue";
 import Link from "../primitives/link/link.vue";
 import Text from "../primitives/text/text.vue";
 import NavBlock from "../components/nav-block.vue";
-import { cn } from "../utils";
+import { cn, tpl } from "../utils";
 
-const { labels, layout = "minimal", density = "default" } = defineProps<SiteFooterProps>();
+const { labels, layout = "minimal", density = "default", landmarkLabel } = defineProps<SiteFooterProps>();
 </script>
 
 <template>
-  <Block tag="footer" class="mt-12 border-t border-border" data-testid="site-footer" :data-layout="layout">
+  <Block
+    tag="footer"
+    class="mt-12 border-t border-border"
+    data-testid="site-footer"
+    :data-layout="layout"
+    :aria-label="landmarkLabel"
+  >
     <Container
       :class="cn(
         'mx-auto w-full max-w-6xl px-4',
@@ -40,7 +47,7 @@ const { labels, layout = "minimal", density = "default" } = defineProps<SiteFoot
       <Text size="sm" class="text-muted-foreground" data-testid="copyright">
         {{ labels.copyright }}
       </Text>
-      <NavBlock :label="labels.nav">
+      <NavBlock :label="(landmarkLabel ? tpl('{0}, {1}', labels.nav, landmarkLabel) : labels.nav)">
         <Group gap="4">
           <Link href="#/" variant="default">
             {{ labels.home }}

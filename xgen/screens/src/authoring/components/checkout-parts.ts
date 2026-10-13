@@ -5,6 +5,7 @@ import type { OrganismSpec } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { tsOf } from "../props";
 import { muted, strong, surface } from "../ux";
+import { checkRow } from "../forms";
 
 const P = "pattern.";
 /** a radio inside its label, drawn as a chip; `has-checked` marks the chosen one */
@@ -109,4 +110,18 @@ export const cartSummaryCard = spec(`${P}cart-summary-card`, "CartSummaryCard", 
   ],
 });
 
-export const checkoutParts: OrganismSpec[] = [slotGrid, paymentOptions, checkoutStep, cartSummaryCard];
+/** the end of the checkout form: the consent checkbox, the submit button and the legal line */
+const checkoutSubmit = spec("pattern.checkout-submit", "CheckoutSubmit", "The end of the checkout form: the consent checkbox, the submit button and the legal line.", {
+  props: [
+    { name: "id", type: "string", required: true, docs: "id of the form block (the checkbox id is <id>-consent)" },
+    { name: "consent", type: "string", required: true },
+    { name: "submit", type: "string", required: true },
+    { name: "legal", type: "string", required: true },
+  ],
+  view: [use("Stack", { props: { Gap: "4", Align: "start" } },
+    checkRow("consent", ref("consent")),
+    use("Button", { props: { Variant: "default", Size: "lg", Type: "submit" }, attrs: { "data-testid": "submit" } }, text(ref("submit"))),
+    muted(ref("legal"), "xs"))],
+});
+
+export const checkoutParts: OrganismSpec[] = [checkoutSubmit, slotGrid, paymentOptions, checkoutStep, cartSummaryCard];

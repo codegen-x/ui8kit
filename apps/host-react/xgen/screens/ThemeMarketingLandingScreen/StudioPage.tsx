@@ -8,6 +8,7 @@ import {
   HeroClassic,
   LogoCloud,
   TestimonialGrid,
+  tpl,
   type CodeLine,
   type Feature,
   type Logo,
@@ -76,6 +77,7 @@ export function StudioPage() {
         item="name"
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid4)}
       />
       <FeatureGrid
         id="studio-features"
@@ -88,6 +90,7 @@ export function StudioPage() {
         mediaSide="end"
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.tiles4)}
       />
       <TestimonialGrid
         id="studio-testimonials"
@@ -103,6 +106,7 @@ export function StudioPage() {
         item={{ kind: "card", avatar: "image", rating: "hide", mark: "none" }}
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.masonry)}
       />
       <CtaBand
         id="studio-cta"
@@ -121,6 +125,7 @@ export function StudioPage() {
         tone="muted"
         proof="none"
         density="roomy"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.band)}
       />
     </>
   );

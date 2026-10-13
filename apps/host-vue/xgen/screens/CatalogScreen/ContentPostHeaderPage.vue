@@ -91,6 +91,7 @@ const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS);
                 meta="full"
                 tone="default"
                 :level="2"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.postheader, ui.blocks.variants.postheader.start)"
               />
             </Box>
           </Stack>
@@ -116,6 +117,7 @@ const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS);
                 meta="full"
                 tone="default"
                 :level="2"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.postheader, ui.blocks.variants.postheader.center)"
               />
             </Box>
           </Stack>
@@ -141,6 +143,7 @@ const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS);
                 meta="full"
                 tone="default"
                 :level="2"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.postheader, ui.blocks.variants.postheader.noCover)"
               />
             </Box>
           </Stack>
@@ -166,6 +169,7 @@ const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS);
                 meta="short"
                 tone="muted"
                 :level="2"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.postheader, ui.blocks.variants.postheader.minimal)"
               />
             </Box>
           </Stack>

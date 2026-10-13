@@ -40,10 +40,11 @@ const navBar = spec(`${O}nav-bar`, "NavBar", "A top bar in four shapes. Axes: la
     const links = (side: "all" | "left" | "right") => organism("NavLinks", { links: ref("links"), current: ref("current"), side });
     const buttons = () => organism("NavActions", { login: ref("actions.login"), loginHref: ref("actions.loginHref"), cta: ref("actions.cta"), ctaHref: ref("actions.href"), actions: ref("actions.mode"), tone: ref("tone"), themeLabel: ref("actions.themeLabel") }, { on: { theme: call("emit.theme") } });
     const inner = [when(eq(ref("layout"), "split"),
-      [use("Grid", { props: { Cols: "1-3", Class: "w-full items-center gap-4" } },
-        navBlockOf(ref("label"), "md:justify-self-start", "site-nav", links("left")),
+      // one navigation split around the brand: one NavBlock (one landmark), the halves are plain boxes
+      [navBlockOf(ref("label"), "w-full", "site-nav", use("Grid", { props: { Cols: "1-3", Class: "w-full items-center gap-4" } },
+        use("Box", { props: { Class: "md:justify-self-start" } }, links("left")),
         use("Box", { props: { Class: "text-center" } }, brandLink()),
-        use("Group", { props: { Gap: "4", Align: "center", Justify: "end", Class: "flex-wrap md:justify-self-end" } }, navBlockOf(ref("label"), undefined, undefined, links("right")), buttons()))],
+        use("Group", { props: { Gap: "4", Align: "center", Justify: "end", Class: "flex-wrap md:justify-self-end" } }, use("Box", {}, links("right")), buttons())))],
       [brandLink(),
        when(eq(ref("layout"), "search"), [organism("SearchPalette", { label: ref("search.label"), shortcut: ref("search.shortcut") })]),
        // below md the links take a row of their own under the brand and the buttons, one line that scrolls sideways

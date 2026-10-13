@@ -2,7 +2,7 @@
 <!-- Source: xgen/specs/screens/blocks.json -->
 <!-- The empty page of BlocksScreen. -->
 <script setup lang="ts">
-import { Block, Box, Container, EmptyPanel, Group, Link, Stack, Text, Title } from "@ui8kit/vue-ui";
+import { Block, Box, Container, EmptyPanel, Group, Link, Stack, Text, Title, tpl } from "@ui8kit/vue-ui";
 import { ui } from "@ui8kit/app-shared/content";
 
 </script>
@@ -50,6 +50,7 @@ import { ui } from "@ui8kit/app-shared/content";
               actions="button"
               visual="image"
               size="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.illustrated)"
             />
           </Box>
         </Stack>
@@ -77,6 +78,7 @@ import { ui } from "@ui8kit/app-shared/content";
               visual="icon"
               size="default"
               icon="shopping-bag"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.orders)"
             />
           </Box>
         </Stack>
@@ -104,6 +106,7 @@ import { ui } from "@ui8kit/app-shared/content";
               visual="icon"
               size="default"
               icon="search"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.results)"
             />
           </Box>
         </Stack>
@@ -131,6 +134,7 @@ import { ui } from "@ui8kit/app-shared/content";
               visual="icon"
               size="default"
               icon="inbox"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.inbox)"
             />
           </Box>
         </Stack>
@@ -158,6 +162,7 @@ import { ui } from "@ui8kit/app-shared/content";
               visual="icon"
               size="compact"
               icon="inbox"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.compact)"
             />
           </Box>
         </Stack>
@@ -185,6 +190,7 @@ import { ui } from "@ui8kit/app-shared/content";
               visual="icon"
               size="compact"
               icon="search"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.plainNoAction)"
             />
           </Box>
         </Stack>

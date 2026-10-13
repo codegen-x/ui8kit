@@ -26,6 +26,7 @@ export type CookieBannerProps = {
   layout?: "bar" | "card";
   actions?: "two" | "three";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 
 export function CookieBanner({
@@ -38,9 +39,16 @@ export function CookieBanner({
   layout = "bar",
   actions = "two",
   tone = "default",
+  landmarkLabel,
 }: CookieBannerProps) {
   return (
-    <Block tag="section" aria-labelledby={tpl("{0}-title", id)} data-testid="cookie" data-layout={layout}>
+    <Block
+      tag="section"
+      aria-labelledby={(landmarkLabel ? undefined : tpl("{0}-title", id))}
+      data-testid="cookie"
+      data-layout={layout}
+      aria-label={landmarkLabel}
+    >
       <Container className={cn("mx-auto w-full max-w-6xl px-4", "py-4")} data-slot="container">
         <Box
           className={cn(

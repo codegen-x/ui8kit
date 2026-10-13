@@ -20,6 +20,7 @@ export type MegaMenuProps = {
   panel?: "open" | "closed";
   cols?: "2" | "3";
   promo?: "none" | "card";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -38,7 +39,7 @@ import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import MediaFrame from "../components/media-frame.vue";
 import NavBlock from "../components/nav-block.vue";
-import { cn } from "../utils";
+import { cn, tpl } from "../utils";
 
 const {
   label,
@@ -51,11 +52,17 @@ const {
   panel = "open",
   cols = "3",
   promo = "none",
+  landmarkLabel,
 } = defineProps<MegaMenuProps>();
 </script>
 
 <template>
-  <Block tag="header" class="relative border-b border-border bg-background" data-testid="mega-menu">
+  <Block
+    tag="header"
+    class="relative border-b border-border bg-background"
+    data-testid="mega-menu"
+    :aria-label="landmarkLabel"
+  >
     <Container
       :class="cn('mx-auto w-full max-w-6xl px-4', 'flex flex-wrap items-center gap-6 py-4')"
       data-slot="container"
@@ -63,7 +70,7 @@ const {
       <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
         {{ brand }}
       </Link>
-      <NavBlock :label="label" class="flex-1">
+      <NavBlock :label="(landmarkLabel ? tpl('{0}, {1}', label, landmarkLabel) : label)" class="flex-1">
         <Group gap="4" align="center" class="flex-wrap">
           <ButtonPlain
             type="button"

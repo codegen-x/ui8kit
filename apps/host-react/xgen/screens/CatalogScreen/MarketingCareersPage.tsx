@@ -95,6 +95,7 @@ export function MarketingCareersPage() {
                   layout="grid"
                   salary="hide"
                   tone="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.jobs, ui.blocks.variants.jobs.grid)}
                 />
               </Box>
             </Stack>
@@ -121,6 +122,7 @@ export function MarketingCareersPage() {
                   layout="grid"
                   salary="show"
                   tone="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.jobs, ui.blocks.variants.jobs.salary)}
                 />
               </Box>
             </Stack>
@@ -147,6 +149,7 @@ export function MarketingCareersPage() {
                   layout="grouped"
                   salary="hide"
                   tone="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.jobs, ui.blocks.variants.jobs.grouped)}
                 />
               </Box>
             </Stack>
@@ -173,6 +176,7 @@ export function MarketingCareersPage() {
                   layout="table"
                   salary="show"
                   tone="muted"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.jobs, ui.blocks.variants.jobs.table)}
                 />
               </Box>
             </Stack>

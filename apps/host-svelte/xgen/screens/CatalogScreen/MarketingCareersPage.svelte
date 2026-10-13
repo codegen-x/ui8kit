@@ -94,6 +94,7 @@
               layout="grid"
               salary="hide"
               tone="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.jobs, ui.blocks.variants.jobs.grid)}
             />
           </Box>
         </Stack>
@@ -120,6 +121,7 @@
               layout="grid"
               salary="show"
               tone="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.jobs, ui.blocks.variants.jobs.salary)}
             />
           </Box>
         </Stack>
@@ -146,6 +148,7 @@
               layout="grouped"
               salary="hide"
               tone="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.jobs, ui.blocks.variants.jobs.grouped)}
             />
           </Box>
         </Stack>
@@ -172,6 +175,7 @@
               layout="table"
               salary="show"
               tone="muted"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.jobs, ui.blocks.variants.jobs.table)}
             />
           </Box>
         </Stack>

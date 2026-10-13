@@ -12,6 +12,7 @@ import {
   StoreHero,
   Text,
   Title,
+  tpl,
   type Feature,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -76,6 +77,7 @@ const STOREHERO_ACTIONS = {
               mediaSide="end"
               tone="default"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.storehero, ui.blocks.variants.storehero.overlay)"
             />
           </Box>
         </Stack>
@@ -104,6 +106,7 @@ const STOREHERO_ACTIONS = {
               mediaSide="start"
               tone="default"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.storehero, ui.blocks.variants.storehero.overlayStart)"
             />
           </Box>
         </Stack>
@@ -132,6 +135,7 @@ const STOREHERO_ACTIONS = {
               mediaSide="end"
               tone="default"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.storehero, ui.blocks.variants.storehero.backdrop)"
             />
           </Box>
         </Stack>
@@ -160,6 +164,7 @@ const STOREHERO_ACTIONS = {
               mediaSide="end"
               tone="muted"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.storehero, ui.blocks.variants.storehero.muted)"
             />
           </Box>
         </Stack>

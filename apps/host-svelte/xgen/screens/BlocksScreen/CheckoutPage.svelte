@@ -12,6 +12,7 @@
     Stack,
     Text,
     Title,
+    tpl,
     type CartLine,
     type Day,
     type Payment,
@@ -103,6 +104,7 @@
             layout="cards"
             summary="aside"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.checkout, ui.blocks.variants.checkout.cards)}
           />
         </Box>
       </Stack>
@@ -132,6 +134,7 @@
             layout="numbered"
             summary="aside"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.checkout, ui.blocks.variants.checkout.numbered)}
           />
         </Box>
       </Stack>
@@ -161,6 +164,7 @@
             layout="cards"
             summary="none"
             tone="muted"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.checkout, ui.blocks.variants.checkout.noSummary)}
           />
         </Box>
       </Stack>

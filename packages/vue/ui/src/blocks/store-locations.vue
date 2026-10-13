@@ -16,6 +16,7 @@ export type StoreLocationsProps = {
   labels: StoreLabels;
   layout?: "cards" | "list" | "map";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -44,11 +45,12 @@ const {
   labels,
   layout = "cards",
   tone = "default",
+  landmarkLabel,
 } = defineProps<StoreLocationsProps>();
 </script>
 
 <template>
-  <SectionFrame :id="id" :title="title" :lead="lead" :tone="tone" density="default">
+  <SectionFrame :id="id" :title="title" :lead="lead" :tone="tone" :landmarkLabel="landmarkLabel">
     <Box
       :class="cn(
         'grid grid-cols-1 gap-8',

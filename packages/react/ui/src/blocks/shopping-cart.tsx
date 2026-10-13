@@ -35,6 +35,7 @@ export type ShoppingCartProps = {
   promo?: "show" | "hide";
   progress?: "show" | "hide";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 
 export function ShoppingCart({
@@ -50,9 +51,10 @@ export function ShoppingCart({
   promo = "show",
   progress = "show",
   tone = "default",
+  landmarkLabel,
 }: ShoppingCartProps) {
   return (
-    <SectionFrame id={id} title={title} tone={tone} density="default">
+    <SectionFrame id={id} title={title} tone={tone} landmarkLabel={landmarkLabel}>
       <Box
         className={
           (layout as string) === "split" ? "grid grid-cols-1 items-start gap-8 lg:grid-cols-3"

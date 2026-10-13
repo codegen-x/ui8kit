@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Feature,
   type Logo,
   type Stat,
@@ -103,6 +104,7 @@ export function CtaproofPage() {
                 proof="logos"
                 mediaSide="end"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.centerLogos)}
               />
             </Box>
           </Stack>
@@ -130,6 +132,7 @@ export function CtaproofPage() {
                 proof="features"
                 mediaSide="end"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.centerFeatures)}
               />
             </Box>
           </Stack>
@@ -157,6 +160,7 @@ export function CtaproofPage() {
                 proof="stats"
                 mediaSide="end"
                 tone="muted"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.centerStats)}
               />
             </Box>
           </Stack>
@@ -184,6 +188,7 @@ export function CtaproofPage() {
                 proof="stats"
                 mediaSide="end"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.splitStats)}
               />
             </Box>
           </Stack>
@@ -212,6 +217,7 @@ export function CtaproofPage() {
                 mediaSide="start"
                 tone="default"
                 note={ui.marketing.ctaProof.note}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.splitStatsStart)}
               />
             </Box>
           </Stack>
@@ -239,6 +245,7 @@ export function CtaproofPage() {
                 proof="rows"
                 mediaSide="end"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.splitRows)}
               />
             </Box>
           </Stack>
@@ -266,6 +273,7 @@ export function CtaproofPage() {
                 proof="zones"
                 mediaSide="end"
                 tone="muted"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.splitZones)}
               />
             </Box>
           </Stack>

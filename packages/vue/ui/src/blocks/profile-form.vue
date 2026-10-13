@@ -17,6 +17,7 @@ export type ProfileFormProps = {
   avatar?: "show" | "hide";
   prefs?: "show" | "hide";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -47,14 +48,16 @@ const {
   avatar = "show",
   prefs = "show",
   tone = "default",
+  landmarkLabel,
 } = defineProps<ProfileFormProps>();
 </script>
 
 <template>
   <Block
     tag="section"
-    :aria-labelledby="((title && id) ? tpl('{0}-t', id) : undefined)"
+    :aria-labelledby="(landmarkLabel ? undefined : ((title && id) ? tpl('{0}-t', id) : undefined))"
     data-testid="panel-section"
+    :aria-label="landmarkLabel"
   >
     <Container class="mx-auto w-full max-w-6xl px-4 py-8" data-slot="container">
       <Panel

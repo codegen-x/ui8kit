@@ -21,6 +21,7 @@ export type ContactFormProps = {
   level?: 1 | 2;
   page?: "section" | "full";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -52,6 +53,7 @@ const {
   level = 2,
   page = "section",
   tone = "default",
+  landmarkLabel,
 } = defineProps<ContactFormProps>();
 </script>
 
@@ -65,6 +67,7 @@ const {
     :density="(((page as string) === 'full') ? 'roomy' : 'default')"
     :align="(((page as string) === 'full') ? 'center' : 'start')"
     :measure="(((layout as string) === 'single') ? 'xl' : 'default')"
+    :landmarkLabel="landmarkLabel"
   >
     <Grid :cols="(((layout as string) === 'split') ? '1-2' : '1')" class="items-start gap-8">
       <Form method="dialog" class="w-full gap-4" data-testid="contact-form">

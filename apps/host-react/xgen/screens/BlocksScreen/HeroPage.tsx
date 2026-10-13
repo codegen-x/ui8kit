@@ -13,6 +13,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type CodeLine,
   type NavLink,
   type Topic,
@@ -90,6 +91,7 @@ export function HeroPage() {
                 tone="default"
                 density="roomy"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.centered)}
               />
             </Box>
           </Stack>
@@ -117,6 +119,7 @@ export function HeroPage() {
                 tone="default"
                 density="roomy"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.screenshot)}
               />
             </Box>
           </Stack>
@@ -144,6 +147,7 @@ export function HeroPage() {
                 tone="muted"
                 density="roomy"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.backdrop)}
               />
             </Box>
           </Stack>
@@ -171,6 +175,7 @@ export function HeroPage() {
                 tone="default"
                 density="roomy"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.code)}
               />
             </Box>
           </Stack>
@@ -198,6 +203,7 @@ export function HeroPage() {
                 tone="default"
                 density="roomy"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.cluster)}
               />
             </Box>
           </Stack>
@@ -225,6 +231,7 @@ export function HeroPage() {
                 tone="default"
                 density="roomy"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.display)}
               />
             </Box>
           </Stack>
@@ -252,6 +259,7 @@ export function HeroPage() {
                 tone="default"
                 density="roomy"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.form)}
               />
             </Box>
           </Stack>
@@ -286,6 +294,7 @@ export function HeroPage() {
                 badgeMark={ui.vibe.hero.badgeMark}
                 topics={prompts}
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.prompt)}
               />
             </Box>
           </Stack>
@@ -313,6 +322,7 @@ export function HeroPage() {
                 tone="default"
                 density="roomy"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.twoActions)}
               />
             </Box>
           </Stack>
@@ -340,6 +350,7 @@ export function HeroPage() {
                 tone="default"
                 density="roomy"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.split)}
               />
             </Box>
           </Stack>
@@ -367,6 +378,7 @@ export function HeroPage() {
                 tone="default"
                 density="roomy"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.splitStart)}
               />
             </Box>
           </Stack>
@@ -394,6 +406,7 @@ export function HeroPage() {
                 tone="muted"
                 density="default"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.muted)}
               />
             </Box>
           </Stack>
@@ -426,6 +439,7 @@ export function HeroPage() {
                 tone="default"
                 density="roomy"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.saas)}
               />
             </Box>
           </Stack>
@@ -458,6 +472,7 @@ export function HeroPage() {
                 tone="muted"
                 density="roomy"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.shop)}
               />
             </Box>
           </Stack>
@@ -490,6 +505,7 @@ export function HeroPage() {
                 tone="default"
                 density="compact"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.blog)}
               />
             </Box>
           </Stack>

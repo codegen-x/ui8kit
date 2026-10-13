@@ -31,6 +31,7 @@ export type VideoModalProps = {
   size?: "default" | "wide";
   outline?: "none" | "chapters";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 
 export function VideoModal({
@@ -44,9 +45,10 @@ export function VideoModal({
   size = "default",
   outline = "none",
   tone = "default",
+  landmarkLabel,
 }: VideoModalProps) {
   return (
-    <SectionFrame id={id} title={title} tone={tone} density="default">
+    <SectionFrame id={id} title={title} tone={tone} landmarkLabel={landmarkLabel}>
       <Stack
         gap="4"
         align="stretch"
@@ -75,7 +77,7 @@ export function VideoModal({
           </Button>
         </Group>
         <Box className="relative" data-testid="player">
-          <MediaFrame alt={title} ratio="16/9" />
+          <MediaFrame alt={title} />
           <Button
             variant="default"
             size="default"

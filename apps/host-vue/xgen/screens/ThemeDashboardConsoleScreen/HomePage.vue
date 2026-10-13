@@ -8,6 +8,7 @@ import {
   DashboardOverview,
   MetricRow,
   PageIntro,
+  tpl,
   type Event,
   type Point,
   type Stat,
@@ -69,6 +70,7 @@ const activity = fromCodex<Event>(activityEntries, ACTIVITY_FIELDS);
     cols="4"
     tone="default"
     density="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.overview, ui.blocks.variants.overview.split)"
   />
   <MetricRow
     id="home-metrics"
@@ -78,6 +80,7 @@ const activity = fromCodex<Event>(activityEntries, ACTIVITY_FIELDS);
     item="tile"
     tone="default"
     density="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.tiles)"
   />
   <ChartPanel
     id="home-chart"
@@ -89,6 +92,7 @@ const activity = fromCodex<Event>(activityEntries, ACTIVITY_FIELDS);
     chart="bars"
     size="default"
     tone="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.bars)"
   />
   <ActivityFeed
     id="home-activity"
@@ -98,5 +102,6 @@ const activity = fromCodex<Event>(activityEntries, ACTIVITY_FIELDS);
     layout="timeline"
     density="default"
     tone="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.activity, ui.blocks.variants.activity.timeline)"
   />
 </template>

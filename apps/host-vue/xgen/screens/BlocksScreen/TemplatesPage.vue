@@ -12,6 +12,7 @@ import {
   TemplateGrid,
   Text,
   Title,
+  tpl,
   type Filter,
   type Template,
 } from "@ui8kit/vue-ui";
@@ -79,6 +80,7 @@ const templateFilters = fromCodex<Filter>(templateFiltersEntries, TEMPLATEFILTER
               cols="1-4"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.templates, ui.blocks.variants.templates.grid4)"
             />
           </Box>
         </Stack>
@@ -108,6 +110,7 @@ const templateFilters = fromCodex<Filter>(templateFiltersEntries, TEMPLATEFILTER
               cols="1-3"
               tone="default"
               density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.templates, ui.blocks.variants.templates.grid3)"
             />
           </Box>
         </Stack>
@@ -137,6 +140,7 @@ const templateFilters = fromCodex<Filter>(templateFiltersEntries, TEMPLATEFILTER
               cols="1-4"
               tone="muted"
               density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.templates, ui.blocks.variants.templates.muted)"
             />
           </Box>
         </Stack>
@@ -166,6 +170,7 @@ const templateFilters = fromCodex<Filter>(templateFiltersEntries, TEMPLATEFILTER
               cols="1-4"
               tone="default"
               density="roomy"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.templates, ui.blocks.variants.templates.roomy)"
             />
           </Box>
         </Stack>

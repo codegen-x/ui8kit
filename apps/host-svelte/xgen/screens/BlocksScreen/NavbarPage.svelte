@@ -12,6 +12,7 @@
     Stack,
     Text,
     Title,
+    tpl,
     type NavLink,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -69,6 +70,7 @@
             layout="inline"
             over="none"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.inline)}
             ontheme={() => actions.toggleTheme()}
           />
         </Box>
@@ -96,6 +98,7 @@
             layout="split"
             over="none"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.split)}
             ontheme={() => actions.toggleTheme()}
           />
         </Box>
@@ -123,6 +126,7 @@
             layout="search"
             over="none"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.search)}
             ontheme={() => actions.toggleTheme()}
           />
         </Box>
@@ -150,6 +154,7 @@
             layout="inline"
             over="media"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.media)}
             ontheme={() => actions.toggleTheme()}
           />
         </Box>
@@ -177,6 +182,7 @@
             layout="inline"
             over="none"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.plain)}
             ontheme={() => actions.toggleTheme()}
           />
         </Box>
@@ -204,6 +210,7 @@
             layout="inline"
             over="none"
             tone="inverse"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.inverse)}
             ontheme={() => actions.toggleTheme()}
           />
         </Box>

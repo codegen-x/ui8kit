@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Event,
   type Point,
   type Stat,
@@ -89,6 +90,7 @@ const OVERVIEW_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboa
               cols="4"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.overview, ui.blocks.variants.overview.split)"
             />
           </Box>
         </Stack>
@@ -115,6 +117,7 @@ const OVERVIEW_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboa
               cols="4"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.overview, ui.blocks.variants.overview.stacked)"
             />
           </Box>
         </Stack>
@@ -141,6 +144,7 @@ const OVERVIEW_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboa
               cols="2"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.overview, ui.blocks.variants.overview.twoCols)"
             />
           </Box>
         </Stack>
@@ -167,6 +171,7 @@ const OVERVIEW_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboa
               cols="4"
               tone="muted"
               density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.overview, ui.blocks.variants.overview.muted)"
             />
           </Box>
         </Stack>

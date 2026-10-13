@@ -23,6 +23,7 @@
     side?: "end" | "start";
     mode?: "signin" | "signup" | "reset" | "magic";
     social?: "none" | "show" | "first";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -51,6 +52,7 @@
     side = "end",
     mode = "signin",
     social = "none",
+    landmarkLabel,
   }: AuthLayoutProps = $props();
 </script>
 
@@ -72,6 +74,7 @@
             layout="plain"
             social={social}
             level={level}
+            landmarkLabel={landmarkLabel}
           />
         </Box>
         <Stack
@@ -104,9 +107,9 @@
           switchHref={switchTo.href}
           labels={labels}
           mode={mode}
-          layout="card"
           social={social}
           level={level}
+          landmarkLabel={landmarkLabel}
         />
       </Box>
     {:else}
@@ -124,6 +127,7 @@
           layout="plain"
           social={social}
           level={level}
+          landmarkLabel={landmarkLabel}
         />
       </Box>
     {/if}

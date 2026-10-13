@@ -21,6 +21,7 @@ export type PageTrailProps = {
   aside?: "none" | "figure" | "note" | "facts";
   level?: 1 | 2;
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -46,6 +47,7 @@ const {
   aside = "none",
   level = 1,
   tone = "default",
+  landmarkLabel,
 } = defineProps<PageTrailProps>();
 const titleId = computed(() => id + "-title");
 </script>
@@ -54,13 +56,14 @@ const titleId = computed(() => id + "-title");
   <Block
     tag="section"
     :class="cn('py-8', (((tone as string) === 'muted') ? 'bg-muted' : ''))"
-    :aria-labelledby="titleId"
+    :aria-labelledby="(landmarkLabel ? undefined : titleId)"
     data-testid="section"
     :data-tone="tone"
     :data-aside="aside"
+    :aria-label="landmarkLabel"
   >
     <Container :class="cn('mx-auto w-full max-w-6xl px-4', 'flex flex-col gap-6')" data-slot="container">
-      <PageCrumbs :label="label" :crumbs="crumbs" />
+      <PageCrumbs :label="label" :crumbs="crumbs" :landmarkLabel="landmarkLabel" />
       <Box
         :class="
           (aside as string) === 'facts' ? 'grid grid-cols-1 items-center gap-8 lg:grid-cols-2'

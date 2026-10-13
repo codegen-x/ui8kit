@@ -12,7 +12,7 @@ import { LinkPlain } from "../primitives/link-plain/link-plain";
 import { Link } from "../primitives/link/link";
 import { NavBlock } from "../components/nav-block";
 import { defaults } from "../presets/defaults";
-import { cn } from "../utils";
+import { cn, tpl } from "../utils";
 import type { NavLink } from "../blocks/nav-bar.types";
 
 export type HeroHeadProps = {
@@ -25,6 +25,7 @@ export type HeroHeadProps = {
   href?: string;
   skip?: string;
   navLabel?: string;
+  landmarkLabel?: string;
 };
 
 export function HeroHead({
@@ -37,12 +38,14 @@ export function HeroHead({
   href,
   skip,
   navLabel,
+  landmarkLabel,
 }: HeroHeadProps) {
   return (
     <Block
       tag="header"
       className={cn("flex w-full flex-wrap items-center justify-between pr-4", defaults.hero.head)}
       data-testid="hero-head"
+      aria-label={landmarkLabel}
     >
       {skip ? (
         <LinkPlain
@@ -62,7 +65,7 @@ export function HeroHead({
       >
         {brand}
       </Link>
-      <NavBlock label={navLabel} testid="site-nav">
+      <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", navLabel, landmarkLabel) : navLabel)} testid="site-nav">
         <Group gap="8" align="center" className="flex-wrap">
           {(links ?? []).map((l) => (
             <Link key={l.id}

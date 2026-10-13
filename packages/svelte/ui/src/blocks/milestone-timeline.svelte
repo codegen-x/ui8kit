@@ -17,6 +17,7 @@
     layout?: "split" | "stacked" | "row";
     tone?: "default" | "muted";
     density?: "default" | "compact";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -39,6 +40,7 @@
     layout = "split",
     tone = "default",
     density = "default",
+    landmarkLabel,
   }: MilestoneTimelineProps = $props();
 </script>
 
@@ -51,6 +53,7 @@
   layout={(((layout as string) === "split") ? "split" : "stack")}
   media={{ show: ((layout as string) === "split"), side: "start", align: "start" }}
   measure={(((layout as string) === "stacked") ? "2xl" : "default")}
+  landmarkLabel={landmarkLabel}
 >
   <List
     tag="ol"

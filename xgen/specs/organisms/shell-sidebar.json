@@ -35,6 +35,11 @@
         "ts": "\"show\" | \"hide\""
       },
       "default": "show"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
     }
   ],
   "derived": [
@@ -89,7 +94,15 @@
       },
       "attrs": {
         "aria-label": {
-          "$": "nav.label"
+          "op": "coalesce",
+          "args": [
+            {
+              "$": "landmarkLabel"
+            },
+            {
+              "$": "nav.label"
+            }
+          ]
         },
         "data-testid": "sidebar",
         "data-mode": {
@@ -179,7 +192,27 @@
               "organism": "NavBlock",
               "props": {
                 "label": {
-                  "$": "nav.label"
+                  "op": "cond",
+                  "args": [
+                    {
+                      "$": "landmarkLabel"
+                    },
+                    {
+                      "op": "tpl",
+                      "args": [
+                        "{0}, {1}",
+                        {
+                          "$": "nav.label"
+                        },
+                        {
+                          "$": "landmarkLabel"
+                        }
+                      ]
+                    },
+                    {
+                      "$": "nav.label"
+                    }
+                  ]
                 },
                 "className": "flex-1"
               },
@@ -436,7 +469,27 @@
                   "organism": "NavBlock",
                   "props": {
                     "label": {
-                      "$": "nav.subTitle"
+                      "op": "cond",
+                      "args": [
+                        {
+                          "$": "landmarkLabel"
+                        },
+                        {
+                          "op": "tpl",
+                          "args": [
+                            "{0}, {1}",
+                            {
+                              "$": "nav.subTitle"
+                            },
+                            {
+                              "$": "landmarkLabel"
+                            }
+                          ]
+                        },
+                        {
+                          "$": "nav.subTitle"
+                        }
+                      ]
                     }
                   },
                   "slots": {

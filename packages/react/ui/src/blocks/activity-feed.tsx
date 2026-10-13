@@ -24,6 +24,7 @@ export type ActivityFeedProps = {
   layout?: "timeline" | "list";
   density?: "default" | "compact";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 
 export function ActivityFeed({
@@ -34,12 +35,14 @@ export function ActivityFeed({
   layout = "timeline",
   density = "default",
   tone = "default",
+  landmarkLabel,
 }: ActivityFeedProps) {
   return (
     <Block
       tag="section"
-      aria-labelledby={((title && id) ? tpl("{0}-t", id) : undefined)}
+      aria-labelledby={(landmarkLabel ? undefined : ((title && id) ? tpl("{0}-t", id) : undefined))}
       data-testid="panel-section"
+      aria-label={landmarkLabel}
     >
       <Container className="mx-auto w-full max-w-6xl px-4 py-8" data-slot="container">
         <Panel title={title} description={text} id={id} className={(((tone as string) === "muted") ? "bg-muted" : "")}>

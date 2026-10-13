@@ -33,6 +33,7 @@ export type SlotBoardProps = {
   layout?: "split" | "stacked";
   item?: "card" | "plain";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 
 export function SlotBoard({
@@ -45,9 +46,10 @@ export function SlotBoard({
   layout = "split",
   item = "card",
   tone = "default",
+  landmarkLabel,
 }: SlotBoardProps) {
   return (
-    <SectionFrame id={id} title={title} lead={lead} tone={tone} density="default">
+    <SectionFrame id={id} title={title} lead={lead} tone={tone} landmarkLabel={landmarkLabel}>
       <Box className="grid grid-cols-1 items-start gap-8 lg:grid-cols-3">
         <Box className={(((layout as string) === "split") ? "lg:col-span-2" : "lg:col-span-3")}>
           <SlotGrid days={days} name={tpl("{0}-slot", id)} item={item} />

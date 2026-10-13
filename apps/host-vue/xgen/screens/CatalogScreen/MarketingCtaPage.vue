@@ -73,6 +73,7 @@ const CTA_ACTIONS = {
                 tone="muted"
                 proof="none"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.card)"
               />
             </Box>
           </Stack>
@@ -99,6 +100,7 @@ const CTA_ACTIONS = {
                 tone="muted"
                 proof="none"
                 density="compact"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.banner)"
               />
             </Box>
           </Stack>
@@ -125,6 +127,7 @@ const CTA_ACTIONS = {
                 tone="muted"
                 proof="none"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.row)"
               />
             </Box>
           </Stack>
@@ -151,6 +154,7 @@ const CTA_ACTIONS = {
                 tone="muted"
                 proof="none"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.form)"
               />
             </Box>
           </Stack>
@@ -177,6 +181,7 @@ const CTA_ACTIONS = {
                 tone="muted"
                 proof="quote"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.quote)"
               />
             </Box>
           </Stack>
@@ -203,6 +208,7 @@ const CTA_ACTIONS = {
                 tone="muted"
                 proof="none"
                 density="roomy"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.band)"
               />
             </Box>
           </Stack>
@@ -229,6 +235,7 @@ const CTA_ACTIONS = {
                 tone="default"
                 proof="none"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.split)"
               />
             </Box>
           </Stack>
@@ -255,6 +262,7 @@ const CTA_ACTIONS = {
                 tone="muted"
                 proof="none"
                 density="compact"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.compact)"
               />
             </Box>
           </Stack>
@@ -286,6 +294,7 @@ const CTA_ACTIONS = {
                 tone="muted"
                 proof="none"
                 density="roomy"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.saas)"
               />
             </Box>
           </Stack>
@@ -317,6 +326,7 @@ const CTA_ACTIONS = {
                 tone="default"
                 proof="none"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.shop)"
               />
             </Box>
           </Stack>
@@ -348,6 +358,7 @@ const CTA_ACTIONS = {
                 tone="muted"
                 proof="none"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.agency)"
               />
             </Box>
           </Stack>

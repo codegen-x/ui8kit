@@ -2,7 +2,7 @@
 <!-- Source: xgen/specs/screens/theme-account-portal.json -->
 <!-- The join page of ThemeAccountPortalScreen. -->
 <script setup lang="ts">
-import { PageIntro, SignupWizard, type WizardStep } from "@ui8kit/vue-ui";
+import { PageIntro, SignupWizard, tpl, type WizardStep } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { wizard as wizardEntries } from "@ui8kit/app-shared/data/wizard";
@@ -38,6 +38,7 @@ const wizard = fromCodex<WizardStep>(wizardEntries, WIZARD_FIELDS);
     :current="1"
     progress="bar"
     layout="card"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.wizard, ui.blocks.variants.wizard.bar)"
   />
   <SignupWizard
     id="join-wizard-2"
@@ -47,5 +48,6 @@ const wizard = fromCodex<WizardStep>(wizardEntries, WIZARD_FIELDS);
     :current="1"
     progress="list"
     layout="card"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.wizard, ui.blocks.variants.wizard.list)"
   />
 </template>

@@ -20,6 +20,7 @@ export type DashboardOverviewProps = {
   cols?: "2" | "4";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -44,11 +45,12 @@ const {
   cols = "4",
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<DashboardOverviewProps>();
 </script>
 
 <template>
-  <SectionFrame :id="id" :title="title" :tone="tone" :density="density">
+  <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
     <Stack gap="6" align="stretch">
       <Grid :cols="(((cols as string) === '2') ? '1-2' : '1-4')" class="gap-4" data-testid="items">
         <Box v-for="m in metrics" :key="m.id" data-testid="item">

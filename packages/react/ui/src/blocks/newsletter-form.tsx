@@ -27,6 +27,7 @@ export type NewsletterFormProps = {
   terms?: "show" | "hide";
   tone?: "default" | "muted";
   align?: "start" | "center";
+  landmarkLabel?: string;
 };
 
 export function NewsletterForm({
@@ -40,6 +41,7 @@ export function NewsletterForm({
   terms = "hide",
   tone = "default",
   align = "center",
+  landmarkLabel,
 }: NewsletterFormProps) {
   return (
     <SectionFrame
@@ -50,6 +52,7 @@ export function NewsletterForm({
       align={align}
       layout={(((layout as string) === "split") ? "split" : "stack")}
       media={{ show: ((layout as string) === "split") }}
+      landmarkLabel={landmarkLabel}
       aside={(
         <MediaFrame alt={title} ratio="4/3" />
       )}

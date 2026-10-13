@@ -85,6 +85,7 @@ export function MarketingFeatureCardsPage() {
                   item="picture"
                   cols="3"
                   tone="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featureshowcase, ui.blocks.variants.featureshowcase.pictureCards3)}
                 />
               </Box>
             </Stack>
@@ -110,6 +111,7 @@ export function MarketingFeatureCardsPage() {
                   item="panel"
                   cols="4"
                   tone="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featureshowcase, ui.blocks.variants.featureshowcase.panelCards4)}
                 />
               </Box>
             </Stack>
@@ -135,6 +137,7 @@ export function MarketingFeatureCardsPage() {
                   item="picture"
                   cols="4"
                   tone="muted"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featureshowcase, ui.blocks.variants.featureshowcase.pictureCards4)}
                 />
               </Box>
             </Stack>
@@ -160,6 +163,7 @@ export function MarketingFeatureCardsPage() {
                   item="panel"
                   cols="3"
                   tone="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featureshowcase, ui.blocks.variants.featureshowcase.panelCards3)}
                 />
               </Box>
             </Stack>

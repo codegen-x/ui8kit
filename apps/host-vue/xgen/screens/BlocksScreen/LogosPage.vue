@@ -2,7 +2,19 @@
 <!-- Source: xgen/specs/screens/blocks.json -->
 <!-- The logos page of BlocksScreen. -->
 <script setup lang="ts">
-import { Block, Box, Container, Group, Link, LogoCloud, Stack, Text, Title, type Logo } from "@ui8kit/vue-ui";
+import {
+  Block,
+  Box,
+  Container,
+  Group,
+  Link,
+  LogoCloud,
+  Stack,
+  Text,
+  Title,
+  tpl,
+  type Logo,
+} from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { logos as logosEntries } from "@ui8kit/app-shared/data/logos";
@@ -54,6 +66,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
               item="name"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid4)"
             />
           </Box>
         </Stack>
@@ -79,6 +92,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
               item="tile"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid3)"
             />
           </Box>
         </Stack>
@@ -104,6 +118,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
               item="icon"
               tone="default"
               density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.row)"
             />
           </Box>
         </Stack>
@@ -129,6 +144,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
               item="icon"
               tone="muted"
               density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.icons)"
             />
           </Box>
         </Stack>
@@ -154,6 +170,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
               item="name"
               tone="default"
               density="roomy"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid2)"
             />
           </Box>
         </Stack>
@@ -179,6 +196,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
               item="tile"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.tiles4)"
             />
           </Box>
         </Stack>

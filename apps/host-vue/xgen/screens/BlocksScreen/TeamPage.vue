@@ -12,6 +12,7 @@ import {
   TeamGrid,
   Text,
   Title,
+  tpl,
   type Member,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -74,6 +75,7 @@ const members = fromCodex<Member>(membersEntries, MEMBERS_FIELDS);
               cols="1-4"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.team, ui.blocks.variants.team.cards4)"
             />
           </Box>
         </Stack>
@@ -100,6 +102,7 @@ const members = fromCodex<Member>(membersEntries, MEMBERS_FIELDS);
               cols="1-3"
               tone="muted"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.team, ui.blocks.variants.team.cards3)"
             />
           </Box>
         </Stack>
@@ -126,6 +129,7 @@ const members = fromCodex<Member>(membersEntries, MEMBERS_FIELDS);
               cols="1-4"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.team, ui.blocks.variants.team.minimal)"
             />
           </Box>
         </Stack>
@@ -152,6 +156,7 @@ const members = fromCodex<Member>(membersEntries, MEMBERS_FIELDS);
               cols="1-3"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.team, ui.blocks.variants.team.detailed)"
             />
           </Box>
         </Stack>
@@ -178,6 +183,7 @@ const members = fromCodex<Member>(membersEntries, MEMBERS_FIELDS);
               cols="1-4"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.team, ui.blocks.variants.team.list)"
             />
           </Box>
         </Stack>
@@ -204,6 +210,7 @@ const members = fromCodex<Member>(membersEntries, MEMBERS_FIELDS);
               cols="1-4"
               tone="default"
               density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.team, ui.blocks.variants.team.directory)"
             />
           </Box>
         </Stack>

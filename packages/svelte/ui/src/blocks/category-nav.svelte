@@ -18,6 +18,7 @@
     icon?: "show" | "hide";
     density?: "default" | "compact";
     tools?: CategoryTools;
+    landmarkLabel?: string;
   };
 </script>
 
@@ -45,6 +46,7 @@
     icon = "show",
     density = "default",
     tools,
+    landmarkLabel,
   }: CategoryNavProps = $props();
   const chipLike = $derived(((layout as string) === "chips") || ((layout as string) === "toolbar"));
   const tiles = $derived((layout as string) === "tiles");
@@ -69,7 +71,7 @@
   );
 </script>
 
-<Block tag="nav" aria-label={label} data-testid="category-nav" data-layout={layout}>
+<Block tag="nav" aria-label={(landmarkLabel ?? label)} data-testid="category-nav" data-layout={layout}>
   <Container
     class={cn("mx-auto w-full max-w-6xl px-4", (((density as string) === "compact") ? "py-2" : "py-4"))}
     data-slot="container"

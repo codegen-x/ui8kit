@@ -81,6 +81,7 @@
               count="show"
               icon="show"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.chips)}
             />
           </Box>
         </Stack>
@@ -106,6 +107,7 @@
               count="show"
               icon="show"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.bar)}
             />
           </Box>
         </Stack>
@@ -131,6 +133,7 @@
               count="show"
               icon="show"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.sidebar)}
             />
           </Box>
         </Stack>
@@ -156,6 +159,7 @@
               count="hide"
               icon="hide"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.chipsPlain)}
             />
           </Box>
         </Stack>
@@ -181,6 +185,7 @@
               count="show"
               icon="hide"
               density="compact"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.barCompact)}
             />
           </Box>
         </Stack>
@@ -206,6 +211,7 @@
               count="show"
               icon="show"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.tiles)}
             />
           </Box>
         </Stack>
@@ -231,6 +237,7 @@
               count="show"
               icon="hide"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.toolbar)}
             />
           </Box>
         </Stack>

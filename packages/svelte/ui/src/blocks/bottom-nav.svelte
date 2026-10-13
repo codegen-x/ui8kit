@@ -15,6 +15,7 @@
     labels?: "show" | "hide";
     position?: "static" | "sticky";
     tone?: "default" | "muted";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -34,6 +35,7 @@
     labels = "show",
     position = "static",
     tone = "default",
+    landmarkLabel,
   }: BottomNavProps = $props();
 </script>
 
@@ -44,7 +46,7 @@
     (((tone as string) === "muted") ? "bg-muted" : "bg-background"),
     (((position as string) === "sticky") ? "sticky bottom-0 z-40" : "")
   )}
-  aria-label={label}
+  aria-label={(landmarkLabel ?? label)}
   data-testid="bottom-nav"
   data-position={position}
 >

@@ -2,7 +2,7 @@
 // Source: xgen/specs/screens/theme-account-portal.json
 // The profile page of ThemeAccountPortalScreen.
 
-import { PageIntro, ProfileForm } from "@ui8kit/react-ui";
+import { PageIntro, ProfileForm, tpl } from "@ui8kit/react-ui";
 import { ui } from "@ui8kit/app-shared/content";
 
 export function ProfilePage() {
@@ -27,6 +27,7 @@ export function ProfilePage() {
         avatar="show"
         prefs="show"
         tone="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.split)}
       />
       <ProfileForm
         id="profile-profile-2"
@@ -37,6 +38,7 @@ export function ProfilePage() {
         avatar="show"
         prefs="show"
         tone="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.stacked)}
       />
     </>
   );

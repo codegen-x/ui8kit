@@ -32,6 +32,7 @@ export type AuthLayoutProps = {
   side?: "end" | "start";
   mode?: "signin" | "signup" | "reset" | "magic";
   social?: "none" | "show" | "first";
+  landmarkLabel?: string;
 };
 
 export function AuthLayout({
@@ -47,6 +48,7 @@ export function AuthLayout({
   side = "end",
   mode = "signin",
   social = "none",
+  landmarkLabel,
 }: AuthLayoutProps) {
   return (
     <Block tag="div" className="w-full" data-testid="auth-layout" data-layout={layout}>
@@ -67,6 +69,7 @@ export function AuthLayout({
                 layout="plain"
                 social={social}
                 level={level}
+                landmarkLabel={landmarkLabel}
               />
             </Box>
             <Stack
@@ -99,9 +102,9 @@ export function AuthLayout({
               switchHref={switchTo.href}
               labels={labels}
               mode={mode}
-              layout="card"
               social={social}
               level={level}
+              landmarkLabel={landmarkLabel}
             />
           </Box>
         ) : (
@@ -119,6 +122,7 @@ export function AuthLayout({
               layout="plain"
               social={social}
               level={level}
+              landmarkLabel={landmarkLabel}
             />
           </Box>
         )}

@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Feature,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -68,6 +69,7 @@ const channels = fromCodex<Feature>(channelsEntries, CHANNELS_FIELDS);
               page="section"
               tone="default"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.single)"
             />
           </Box>
         </Stack>
@@ -96,6 +98,7 @@ const channels = fromCodex<Feature>(channelsEntries, CHANNELS_FIELDS);
               page="full"
               tone="default"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.page)"
             />
           </Box>
         </Stack>
@@ -124,6 +127,7 @@ const channels = fromCodex<Feature>(channelsEntries, CHANNELS_FIELDS);
               page="section"
               tone="default"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.short)"
             />
           </Box>
         </Stack>
@@ -152,6 +156,7 @@ const channels = fromCodex<Feature>(channelsEntries, CHANNELS_FIELDS);
               page="section"
               tone="default"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.split)"
             />
           </Box>
         </Stack>
@@ -180,6 +185,7 @@ const channels = fromCodex<Feature>(channelsEntries, CHANNELS_FIELDS);
               page="section"
               tone="default"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.consent)"
             />
           </Box>
         </Stack>
@@ -208,6 +214,7 @@ const channels = fromCodex<Feature>(channelsEntries, CHANNELS_FIELDS);
               page="section"
               tone="muted"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.muted)"
             />
           </Box>
         </Stack>

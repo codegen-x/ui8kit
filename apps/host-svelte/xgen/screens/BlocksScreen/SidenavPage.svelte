@@ -12,6 +12,7 @@
     Stack,
     Text,
     Title,
+    tpl,
     type NavLink,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -65,6 +66,7 @@
             width="full"
             user="show"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sidenav, ui.blocks.variants.sidenav.full)}
           />
         </Box>
       </Stack>
@@ -91,6 +93,7 @@
             width="compact"
             user="show"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sidenav, ui.blocks.variants.sidenav.compact)}
           />
         </Box>
       </Stack>
@@ -117,6 +120,7 @@
             width="full"
             user="hide"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sidenav, ui.blocks.variants.sidenav.noUser)}
           />
         </Box>
       </Stack>
@@ -143,6 +147,7 @@
             width="full"
             user="show"
             density="compact"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sidenav, ui.blocks.variants.sidenav.dense)}
           />
         </Box>
       </Stack>

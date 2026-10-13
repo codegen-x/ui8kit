@@ -83,6 +83,7 @@
               actions="button"
               visual="image"
               size="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.illustrated)}
             />
           </Box>
         </Stack>
@@ -110,6 +111,7 @@
               visual="icon"
               size="default"
               icon="shopping-bag"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.orders)}
             />
           </Box>
         </Stack>
@@ -137,6 +139,7 @@
               visual="icon"
               size="default"
               icon="search"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.results)}
             />
           </Box>
         </Stack>
@@ -164,6 +167,7 @@
               visual="icon"
               size="default"
               icon="inbox"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.inbox)}
             />
           </Box>
         </Stack>
@@ -191,6 +195,7 @@
               visual="icon"
               size="compact"
               icon="inbox"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.compact)}
             />
           </Box>
         </Stack>
@@ -218,6 +223,7 @@
               visual="icon"
               size="compact"
               icon="search"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.empty, ui.blocks.variants.empty.plainNoAction)}
             />
           </Box>
         </Stack>
@@ -258,6 +264,7 @@
               lines={placeholders}
               shape="cards"
               tone="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.cards)}
             />
           </Box>
         </Stack>
@@ -281,6 +288,7 @@
               lines={placeholders}
               shape="list"
               tone="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.list)}
             />
           </Box>
         </Stack>
@@ -304,6 +312,7 @@
               lines={placeholders}
               shape="article"
               tone="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.article)}
             />
           </Box>
         </Stack>
@@ -327,6 +336,7 @@
               lines={placeholders}
               shape="cards"
               tone="muted"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.muted)}
             />
           </Box>
         </Stack>

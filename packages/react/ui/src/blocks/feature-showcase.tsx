@@ -26,6 +26,7 @@ export type FeatureShowcaseProps = {
   item?: "picture" | "panel";
   cols?: "3" | "4";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 
 export function FeatureShowcase({
@@ -37,9 +38,10 @@ export function FeatureShowcase({
   item = "picture",
   cols = "3",
   tone = "default",
+  landmarkLabel,
 }: FeatureShowcaseProps) {
   return (
-    <SectionFrame id={id} title={title} lead={lead} tone={tone} align="center">
+    <SectionFrame id={id} title={title} lead={lead} tone={tone} align="center" landmarkLabel={landmarkLabel}>
       <Box
         className={
           (cols as string) === "4" ? "grid grid-cols-1 gap-6 text-start sm:grid-cols-2 lg:grid-cols-4"
@@ -49,7 +51,7 @@ export function FeatureShowcase({
         {(features ?? []).map((f) => (
           <Card key={f.id} variant="default" className="h-full gap-4 overflow-hidden" data-testid="showcase-card">
             {((item as string) === "picture") ? (
-              <MediaFrame alt={f.title} ratio="16/9" />
+              <MediaFrame alt={f.title} />
             ) : (
               <Box
                 className="flex aspect-video items-center justify-center rounded bg-muted text-foreground"

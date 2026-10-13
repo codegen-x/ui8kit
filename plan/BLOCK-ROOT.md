@@ -95,7 +95,7 @@ numbers, autocomplete tokens, aria-label only on elements that take it.
 Backdrop decision: the faint backdrop picture is now visible (it was hidden under the
 section background before); kept as designed.
 
-### Open item: unique-landmark (warning, 1740 in states)
+### Resolved: unique-landmark (was a warning, 1740 in states; now an error, 0)
 
 The gallery, the catalog and the theme showcase pages show the same block in several
 variants on one page, so the same section, nav or aside name repeats (for example three
@@ -132,3 +132,16 @@ file rooted on Block: the parts `NavBlock`, `FigureBlock`, `ArticleBlock`
 
 Result: block-root 0 in every zone, html-validate 0 errors in 570 states, warnings
 unique-landmark 1740 only (unchanged open item above).
+
+## Landmark names (unique-landmark: error, 0)
+
+Every organism that holds a landmark (a Block with a section, nav, aside, header or footer
+tag, or an organism that holds one) takes the optional prop `landmarkLabel`
+(`xgen/screens/src/authoring/landmarks.ts`). The root landmark takes it as `aria-label`
+in place of its default name; a nested NavBlock keeps its own name and adds the label
+after it ("Main navigation, Navigation bar, Brand in the middle"). The gallery and the
+catalog set it per variant from the dictionary (`blocks.landmark` = "{0}, {1}": the block
+name, the variant name); a composed page sets it on a block used twice, and the theme
+pages (`nameLandmarks`) on every block after the lead. Elsewhere nothing changes.
+The split nav bar is one NavBlock around the grid instead of two navs with one name.
+`rules/html-validate.json` now reports unique-landmark as an error.

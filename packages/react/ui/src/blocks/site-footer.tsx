@@ -11,18 +11,30 @@ import { Group } from "../primitives/group/group";
 import { Link } from "../primitives/link/link";
 import { Text } from "../primitives/text/text";
 import { NavBlock } from "../components/nav-block";
-import { cn } from "../utils";
+import { cn, tpl } from "../utils";
 import type { SiteFooterLabels } from "./site-footer.types";
 
 export type SiteFooterProps = {
   labels: SiteFooterLabels;
   layout?: "minimal" | "centered";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 
-export function SiteFooter({ labels, layout = "minimal", density = "default" }: SiteFooterProps) {
+export function SiteFooter({
+  labels,
+  layout = "minimal",
+  density = "default",
+  landmarkLabel,
+}: SiteFooterProps) {
   return (
-    <Block tag="footer" className="mt-12 border-t border-border" data-testid="site-footer" data-layout={layout}>
+    <Block
+      tag="footer"
+      className="mt-12 border-t border-border"
+      data-testid="site-footer"
+      data-layout={layout}
+      aria-label={landmarkLabel}
+    >
       <Container
         className={cn(
           "mx-auto w-full max-w-6xl px-4",
@@ -35,7 +47,7 @@ export function SiteFooter({ labels, layout = "minimal", density = "default" }: 
         <Text size="sm" className="text-muted-foreground" data-testid="copyright">
           {labels.copyright}
         </Text>
-        <NavBlock label={labels.nav}>
+        <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", labels.nav, landmarkLabel) : labels.nav)}>
           <Group gap="4">
             <Link href="#/" variant="default">
               {labels.home}

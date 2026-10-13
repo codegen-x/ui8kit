@@ -16,6 +16,7 @@ export type ArticleBodyProps = {
   layout?: "column" | "toc";
   quotes?: "show" | "hide";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -40,11 +41,12 @@ const {
   layout = "column",
   quotes = "show",
   tone = "default",
+  landmarkLabel,
 } = defineProps<ArticleBodyProps>();
 </script>
 
 <template>
-  <SectionFrame :id="id" :title="title" :tone="tone" density="default">
+  <SectionFrame :id="id" :title="title" :tone="tone" :landmarkLabel="landmarkLabel">
     <Grid
       cols="1"
       :class="cn(
@@ -52,7 +54,11 @@ const {
         (((layout as string) === 'toc') ? 'md:grid-cols-[14rem_minmax(0,1fr)]' : '')
       )"
     >
-      <NavBlock v-if="((layout as string) === 'toc')" :label="tocTitle" class="md:sticky md:top-4" testid="toc">
+      <NavBlock v-if="((layout as string) === 'toc')"
+        :label="(landmarkLabel ? tpl('{0}, {1}', tocTitle, landmarkLabel) : tocTitle)"
+        class="md:sticky md:top-4"
+        testid="toc"
+      >
         <Stack gap="2">
           <Text size="sm" weight="semibold">
             {{ tocTitle }}

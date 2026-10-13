@@ -19,17 +19,19 @@ export const sidebarPanelVariants = variants({
 
 export type SidebarPanelProps = {
   variant?: "chat" | "creator";
+  landmarkLabel?: string;
   className?: string;
   children?: ReactNode;
 };
 
-export function SidebarPanel({ variant, className, children }: SidebarPanelProps) {
+export function SidebarPanel({ variant, landmarkLabel, className, children }: SidebarPanelProps) {
   return (
     <Block
       tag="aside"
       className={cn(sidebarPanelVariants({ variant: variant }), className)}
       data-slot="sidebar-panel"
       data-variant={(variant ?? "chat")}
+      aria-label={landmarkLabel}
     >
       {children}
     </Block>

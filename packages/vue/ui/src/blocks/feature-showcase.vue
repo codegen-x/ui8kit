@@ -17,6 +17,7 @@ export type FeatureShowcaseProps = {
   item?: "picture" | "panel";
   cols?: "3" | "4";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -40,11 +41,12 @@ const {
   item = "picture",
   cols = "3",
   tone = "default",
+  landmarkLabel,
 } = defineProps<FeatureShowcaseProps>();
 </script>
 
 <template>
-  <SectionFrame :id="id" :title="title" :lead="lead" :tone="tone" align="center">
+  <SectionFrame :id="id" :title="title" :lead="lead" :tone="tone" align="center" :landmarkLabel="landmarkLabel">
     <Box
       :class="
         (cols as string) === '4' ? 'grid grid-cols-1 gap-6 text-start sm:grid-cols-2 lg:grid-cols-4'
@@ -58,7 +60,7 @@ const {
         class="h-full gap-4 overflow-hidden"
         data-testid="showcase-card"
       >
-        <MediaFrame v-if="((item as string) === 'picture')" :alt="f.title" ratio="16/9" />
+        <MediaFrame v-if="((item as string) === 'picture')" :alt="f.title" />
         <Box v-else
           class="flex aspect-video items-center justify-center rounded bg-muted text-foreground"
           data-testid="showcase-panel"

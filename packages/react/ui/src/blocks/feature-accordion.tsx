@@ -25,6 +25,7 @@ export type FeatureAccordionProps = {
   multiple?: boolean;
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function FeatureAccordion({
@@ -36,6 +37,7 @@ export function FeatureAccordion({
   multiple = false,
   tone = "default",
   density = "default",
+  landmarkLabel,
 }: FeatureAccordionProps) {
   return (
     <SectionFrame
@@ -45,6 +47,7 @@ export function FeatureAccordion({
       density={density}
       layout={(((media as string) === "image") ? "split" : "stack")}
       media={{ show: ((media as string) === "image") }}
+      landmarkLabel={landmarkLabel}
       aside={(
         <MediaFrame alt={title} ratio="4/3" />
       )}

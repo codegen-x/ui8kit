@@ -2,7 +2,7 @@
 <!-- Source: xgen/specs/screens/theme-account-portal.json -->
 <!-- The cards page of ThemeAccountPortalScreen. -->
 <script setup lang="ts">
-import { AuthCard, PageIntro } from "@ui8kit/vue-ui";
+import { AuthCard, PageIntro, tpl } from "@ui8kit/vue-ui";
 import { ui } from "@ui8kit/app-shared/content";
 
 </script>
@@ -30,6 +30,7 @@ import { ui } from "@ui8kit/app-shared/content";
     mode="signin"
     layout="card"
     social="none"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.signin)"
   />
   <AuthCard
     id="cards-auth-2"
@@ -43,6 +44,7 @@ import { ui } from "@ui8kit/app-shared/content";
     mode="signin"
     layout="card"
     social="show"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.social)"
   />
   <AuthCard
     id="cards-auth-3"
@@ -56,5 +58,6 @@ import { ui } from "@ui8kit/app-shared/content";
     mode="signup"
     layout="plain"
     social="show"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.signupSocial)"
   />
 </template>

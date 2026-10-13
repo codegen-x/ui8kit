@@ -21,6 +21,7 @@ export type PostShowcaseProps = {
   cols?: "2" | "3";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -46,6 +47,7 @@ const {
   cols = "3",
   mediaSide = "start",
   tone = "default",
+  landmarkLabel,
 } = defineProps<PostShowcaseProps>();
 </script>
 
@@ -58,6 +60,7 @@ const {
     :tone="tone"
     layout="split"
     :media="{ show: true, side: mediaSide }"
+    :landmarkLabel="landmarkLabel"
   >
     <Link :href="action.href" size="sm" data-testid="section-action">
       {{ action.label }}
@@ -79,6 +82,7 @@ const {
     :tone="tone"
     layout="split"
     :media="{ show: true, side: mediaSide }"
+    :landmarkLabel="landmarkLabel"
   >
     <template v-for="(p, i) in posts" :key="p.id">
       <PostFeature v-if="(i < 1)" :p="p" :labels="labels" />
@@ -87,7 +91,14 @@ const {
       <MediaFrame :alt="title" ratio="4/3" />
     </template>
   </SectionFrame>
-  <SectionFrame v-else :id="id" :title="title" :lead="lead" :heading="{ badge }" :tone="tone">
+  <SectionFrame v-else
+    :id="id"
+    :title="title"
+    :lead="lead"
+    :heading="{ badge }"
+    :tone="tone"
+    :landmarkLabel="landmarkLabel"
+  >
     <Box
       :class="
         (cols as string) === '2' ? 'grid grid-cols-1 gap-6 md:grid-cols-2'

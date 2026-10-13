@@ -23,6 +23,7 @@ export type ProofBandProps = {
   logoStyle?: "name" | "icon";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function ProofBand({
@@ -34,9 +35,10 @@ export function ProofBand({
   logoStyle = "name",
   tone = "default",
   density = "default",
+  landmarkLabel,
 }: ProofBandProps) {
   return (
-    <SectionFrame id={id} title={title} tone={tone} density={density} align="center">
+    <SectionFrame id={id} title={title} tone={tone} density={density} align="center" landmarkLabel={landmarkLabel}>
       <Grid cols={(((layout as string) === "beside") ? "1-2" : "1")} className="items-center gap-8">
         <Group gap="6" justify="center" className="flex-wrap text-muted-foreground" data-testid="logos">
           {(logos ?? []).map((logo) => (

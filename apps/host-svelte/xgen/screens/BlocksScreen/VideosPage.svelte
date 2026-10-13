@@ -12,6 +12,7 @@
     Text,
     Title,
     VideoGrid,
+    tpl,
     type Quote,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -75,6 +76,7 @@
             caption="below"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.grid3)}
           />
         </Box>
       </Stack>
@@ -101,6 +103,7 @@
             caption="below"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.grid2)}
           />
         </Box>
       </Stack>
@@ -127,6 +130,7 @@
             caption="overlay"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.overlay)}
           />
         </Box>
       </Stack>
@@ -153,6 +157,7 @@
             caption="below"
             tone="muted"
             density="compact"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.muted)}
           />
         </Box>
       </Stack>

@@ -2,7 +2,19 @@
 <!-- Source: xgen/specs/screens/blocks.json -->
 <!-- The stats page of BlocksScreen. -->
 <script setup lang="ts">
-import { Block, Box, Container, Group, Link, Stack, StatsBand, Text, Title, type Stat } from "@ui8kit/vue-ui";
+import {
+  Block,
+  Box,
+  Container,
+  Group,
+  Link,
+  Stack,
+  StatsBand,
+  Text,
+  Title,
+  tpl,
+  type Stat,
+} from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { stats as statsEntries } from "@ui8kit/app-shared/data/stats";
@@ -56,6 +68,7 @@ const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
               align="center"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.plain4)"
             />
           </Box>
         </Stack>
@@ -83,6 +96,7 @@ const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
               align="center"
               tone="default"
               density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.panel)"
             />
           </Box>
         </Stack>
@@ -110,6 +124,7 @@ const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
               align="start"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.stack)"
             />
           </Box>
         </Stack>
@@ -137,6 +152,7 @@ const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
               align="center"
               tone="default"
               density="roomy"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.image)"
             />
           </Box>
         </Stack>
@@ -164,6 +180,7 @@ const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
               align="center"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.cards)"
             />
           </Box>
         </Stack>
@@ -191,6 +208,7 @@ const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
               align="start"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.icons)"
             />
           </Box>
         </Stack>
@@ -218,6 +236,7 @@ const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
               align="center"
               tone="muted"
               density="roomy"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.muted2)"
             />
           </Box>
         </Stack>
@@ -245,6 +264,7 @@ const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
               align="center"
               tone="default"
               density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.cardsCompact)"
             />
           </Box>
         </Stack>

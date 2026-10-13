@@ -88,6 +88,7 @@ export function MarketingShowcasesPage() {
                   media="none"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.bento)}
                 />
               </Box>
             </Stack>
@@ -112,6 +113,7 @@ export function MarketingShowcasesPage() {
                   media="none"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.even)}
                 />
               </Box>
             </Stack>
@@ -136,6 +138,7 @@ export function MarketingShowcasesPage() {
                   media="image"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.images)}
                 />
               </Box>
             </Stack>
@@ -160,6 +163,7 @@ export function MarketingShowcasesPage() {
                   media="none"
                   tone="muted"
                   density="compact"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.muted)}
                 />
               </Box>
             </Stack>
@@ -202,6 +206,7 @@ export function MarketingShowcasesPage() {
                   panel="split"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featuretabs, ui.blocks.variants.featuretabs.split)}
                 />
               </Box>
             </Stack>
@@ -227,6 +232,7 @@ export function MarketingShowcasesPage() {
                   panel="stack"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featuretabs, ui.blocks.variants.featuretabs.stack)}
                 />
               </Box>
             </Stack>
@@ -252,6 +258,7 @@ export function MarketingShowcasesPage() {
                   panel="split"
                   tone="muted"
                   density="compact"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featuretabs, ui.blocks.variants.featuretabs.muted)}
                 />
               </Box>
             </Stack>
@@ -293,6 +300,7 @@ export function MarketingShowcasesPage() {
                   media="none"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.accordion, ui.blocks.variants.accordion.first)}
                 />
               </Box>
             </Stack>
@@ -317,6 +325,7 @@ export function MarketingShowcasesPage() {
                   media="none"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.accordion, ui.blocks.variants.accordion.closed)}
                 />
               </Box>
             </Stack>
@@ -341,6 +350,7 @@ export function MarketingShowcasesPage() {
                   media="image"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.accordion, ui.blocks.variants.accordion.media)}
                 />
               </Box>
             </Stack>
@@ -365,6 +375,7 @@ export function MarketingShowcasesPage() {
                   media="none"
                   tone="muted"
                   density="compact"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.accordion, ui.blocks.variants.accordion.muted)}
                 />
               </Box>
             </Stack>
@@ -407,6 +418,7 @@ export function MarketingShowcasesPage() {
                   item="plain"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sticky, ui.blocks.variants.sticky.end)}
                 />
               </Box>
             </Stack>
@@ -432,6 +444,7 @@ export function MarketingShowcasesPage() {
                   item="plain"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sticky, ui.blocks.variants.sticky.start)}
                 />
               </Box>
             </Stack>
@@ -457,6 +470,7 @@ export function MarketingShowcasesPage() {
                   item="card"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sticky, ui.blocks.variants.sticky.card)}
                 />
               </Box>
             </Stack>
@@ -482,6 +496,7 @@ export function MarketingShowcasesPage() {
                   item="plain"
                   tone="muted"
                   density="compact"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sticky, ui.blocks.variants.sticky.muted)}
                 />
               </Box>
             </Stack>

@@ -58,6 +58,11 @@
         "ts": "\"default\" | \"compact\""
       },
       "default": "default"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
     }
   ],
   "slots": [],
@@ -92,7 +97,15 @@
       },
       "attrs": {
         "aria-label": {
-          "$": "brand"
+          "op": "coalesce",
+          "args": [
+            {
+              "$": "landmarkLabel"
+            },
+            {
+              "$": "brand"
+            }
+          ]
         },
         "data-testid": "sidebar",
         "data-width": {
@@ -150,7 +163,27 @@
           "organism": "NavBlock",
           "props": {
             "label": {
-              "$": "label"
+              "op": "cond",
+              "args": [
+                {
+                  "$": "landmarkLabel"
+                },
+                {
+                  "op": "tpl",
+                  "args": [
+                    "{0}, {1}",
+                    {
+                      "$": "label"
+                    },
+                    {
+                      "$": "landmarkLabel"
+                    }
+                  ]
+                },
+                {
+                  "$": "label"
+                }
+              ]
             },
             "className": "flex-1"
           },

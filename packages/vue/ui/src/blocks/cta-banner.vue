@@ -9,6 +9,7 @@ export type CtaBannerProps = {
   cta: string;
   href: string;
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -21,17 +22,18 @@ import Title from "../primitives/title/title.vue";
 import { defaults } from "../presets/defaults";
 import { cn, tpl } from "../utils";
 
-const { id, title, text, cta, href, tone = "muted" } = defineProps<CtaBannerProps>();
+const { id, title, text, cta, href, tone = "muted", landmarkLabel } = defineProps<CtaBannerProps>();
 </script>
 
 <template>
   <Block
     tag="section"
     class="w-full py-0"
-    :aria-labelledby="tpl('{0}-title', id)"
+    :aria-labelledby="(landmarkLabel ? undefined : tpl('{0}-title', id))"
     data-testid="section"
     :data-tone="tone"
     data-density="compact"
+    :aria-label="landmarkLabel"
   >
     <Box
       :class="cn('flex w-full flex-col items-center gap-10 bg-muted px-6 text-center', defaults.cta.panel)"

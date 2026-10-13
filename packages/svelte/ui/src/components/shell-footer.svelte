@@ -11,6 +11,7 @@
   export type ShellFooterProps = {
     nav: ShellNav;
     place?: "full" | "inset";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -21,9 +22,9 @@
   import ListItem from "../primitives/list/list-item.svelte";
   import Text from "../primitives/text/text.svelte";
   import NavBlock from "../components/nav-block.svelte";
-  import { cn } from "../utils";
+  import { cn, tpl } from "../utils";
 
-  let { nav, place = "full" }: ShellFooterProps = $props();
+  let { nav, place = "full", landmarkLabel }: ShellFooterProps = $props();
 </script>
 
 <Block
@@ -34,11 +35,12 @@
   )}
   data-testid="footer"
   data-place={place}
+  aria-label={landmarkLabel}
 >
   <Text size="xs" class="text-muted-foreground">
     {nav.copyright}
   </Text>
-  <NavBlock label={nav.footerLabel}>
+  <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", nav.footerLabel, landmarkLabel) : nav.footerLabel)}>
     <List class="m-0 flex list-none items-center gap-4 p-0">
       {#each nav.footer as f (f.id)}
         <ListItem>

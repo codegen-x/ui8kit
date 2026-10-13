@@ -69,6 +69,7 @@
               mode="signin"
               social="none"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.split)}
             />
           </Box>
         </Stack>
@@ -98,6 +99,7 @@
               mode="signin"
               social="none"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.splitStart)}
             />
           </Box>
         </Stack>
@@ -127,6 +129,7 @@
               mode="signin"
               social="none"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.centered)}
             />
           </Box>
         </Stack>
@@ -156,6 +159,7 @@
               mode="signin"
               social="none"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.minimal)}
             />
           </Box>
         </Stack>
@@ -189,6 +193,7 @@
               mode="signup"
               social="none"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.signup)}
             />
           </Box>
         </Stack>
@@ -218,6 +223,7 @@
               mode="reset"
               social="none"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.reset)}
             />
           </Box>
         </Stack>
@@ -247,6 +253,7 @@
               mode="magic"
               social="none"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.magic)}
             />
           </Box>
         </Stack>
@@ -276,6 +283,7 @@
               mode="signin"
               social="show"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.social)}
             />
           </Box>
         </Stack>
@@ -305,6 +313,7 @@
               mode="signin"
               social="first"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.socialFirst)}
             />
           </Box>
         </Stack>

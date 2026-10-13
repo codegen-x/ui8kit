@@ -101,6 +101,7 @@ export function ContentBlogPage() {
                   meta="full"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.grid)}
                 />
               </Box>
             </Stack>
@@ -130,6 +131,7 @@ export function ContentBlogPage() {
                   meta="full"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.filters)}
                 />
               </Box>
             </Stack>
@@ -159,6 +161,7 @@ export function ContentBlogPage() {
                   meta="full"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.twoUp)}
                 />
               </Box>
             </Stack>
@@ -188,6 +191,7 @@ export function ContentBlogPage() {
                   meta="full"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.row4)}
                 />
               </Box>
             </Stack>
@@ -217,6 +221,7 @@ export function ContentBlogPage() {
                   meta="news"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.news4)}
                 />
               </Box>
             </Stack>
@@ -246,6 +251,7 @@ export function ContentBlogPage() {
                   meta="full"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.list)}
                 />
               </Box>
             </Stack>
@@ -275,6 +281,7 @@ export function ContentBlogPage() {
                   meta="full"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.magazine)}
                 />
               </Box>
             </Stack>
@@ -304,6 +311,7 @@ export function ContentBlogPage() {
                   meta="full"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.textOnly)}
                 />
               </Box>
             </Stack>
@@ -333,6 +341,7 @@ export function ContentBlogPage() {
                   meta="short"
                   tone="muted"
                   density="compact"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.digest)}
                 />
               </Box>
             </Stack>

@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type MegaGroup,
   type NavLink,
 } from "@ui8kit/react-ui";
@@ -76,6 +77,7 @@ export function MegamenuPage() {
                 panel="open"
                 cols="3"
                 promo="none"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.open)}
               />
             </Box>
           </Stack>
@@ -103,6 +105,7 @@ export function MegamenuPage() {
                 panel="closed"
                 cols="3"
                 promo="none"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.closed)}
               />
             </Box>
           </Stack>
@@ -130,6 +133,7 @@ export function MegamenuPage() {
                 panel="open"
                 cols="2"
                 promo="none"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.twoCols)}
               />
             </Box>
           </Stack>
@@ -157,6 +161,7 @@ export function MegamenuPage() {
                 panel="open"
                 cols="3"
                 promo="card"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.promo)}
               />
             </Box>
           </Stack>

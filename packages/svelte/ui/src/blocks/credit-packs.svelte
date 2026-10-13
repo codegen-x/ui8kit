@@ -18,6 +18,7 @@
     item?: "tile" | "row";
     tone?: "default" | "muted";
     density?: "default" | "compact";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -44,6 +45,7 @@
     item = "tile",
     tone = "default",
     density = "default",
+    landmarkLabel,
   }: CreditPacksProps = $props();
 </script>
 
@@ -53,6 +55,7 @@
   tone={tone}
   density={density}
   measure={(((item as string) === "row") ? "2xl" : "default")}
+  landmarkLabel={landmarkLabel}
 >
   <Grid
     cols={

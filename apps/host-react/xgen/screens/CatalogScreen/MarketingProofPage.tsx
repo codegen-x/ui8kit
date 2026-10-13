@@ -102,6 +102,7 @@ export function MarketingProofPage() {
                   item="name"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid4)}
                 />
               </Box>
             </Stack>
@@ -127,6 +128,7 @@ export function MarketingProofPage() {
                   item="tile"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid3)}
                 />
               </Box>
             </Stack>
@@ -152,6 +154,7 @@ export function MarketingProofPage() {
                   item="icon"
                   tone="default"
                   density="compact"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.row)}
                 />
               </Box>
             </Stack>
@@ -177,6 +180,7 @@ export function MarketingProofPage() {
                   item="icon"
                   tone="muted"
                   density="compact"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.icons)}
                 />
               </Box>
             </Stack>
@@ -202,6 +206,7 @@ export function MarketingProofPage() {
                   item="name"
                   tone="default"
                   density="roomy"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid2)}
                 />
               </Box>
             </Stack>
@@ -227,6 +232,7 @@ export function MarketingProofPage() {
                   item="tile"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.tiles4)}
                 />
               </Box>
             </Stack>
@@ -269,6 +275,7 @@ export function MarketingProofPage() {
                   logoStyle="name"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.above)}
                 />
               </Box>
             </Stack>
@@ -294,6 +301,7 @@ export function MarketingProofPage() {
                   logoStyle="name"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.beside)}
                 />
               </Box>
             </Stack>
@@ -319,6 +327,7 @@ export function MarketingProofPage() {
                   logoStyle="icon"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.icons)}
                 />
               </Box>
             </Stack>
@@ -344,6 +353,7 @@ export function MarketingProofPage() {
                   logoStyle="name"
                   tone="muted"
                   density="compact"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.muted)}
                 />
               </Box>
             </Stack>
@@ -387,6 +397,7 @@ export function MarketingProofPage() {
                   caption="below"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.grid3)}
                 />
               </Box>
             </Stack>
@@ -413,6 +424,7 @@ export function MarketingProofPage() {
                   caption="below"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.grid2)}
                 />
               </Box>
             </Stack>
@@ -439,6 +451,7 @@ export function MarketingProofPage() {
                   caption="overlay"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.overlay)}
                 />
               </Box>
             </Stack>
@@ -465,6 +478,7 @@ export function MarketingProofPage() {
                   caption="below"
                   tone="muted"
                   density="compact"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.muted)}
                 />
               </Box>
             </Stack>

@@ -50,6 +50,11 @@
       "name": "navLabel",
       "type": "string",
       "docs": "accessible name of the menu"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
     }
   ],
   "slots": [],
@@ -74,7 +79,10 @@
         }
       },
       "attrs": {
-        "data-testid": "hero-head"
+        "data-testid": "hero-head",
+        "aria-label": {
+          "$": "landmarkLabel"
+        }
       },
       "children": [
         {
@@ -135,7 +143,27 @@
           "organism": "NavBlock",
           "props": {
             "label": {
-              "$": "navLabel"
+              "op": "cond",
+              "args": [
+                {
+                  "$": "landmarkLabel"
+                },
+                {
+                  "op": "tpl",
+                  "args": [
+                    "{0}, {1}",
+                    {
+                      "$": "navLabel"
+                    },
+                    {
+                      "$": "landmarkLabel"
+                    }
+                  ]
+                },
+                {
+                  "$": "navLabel"
+                }
+              ]
             },
             "testid": "site-nav"
           },

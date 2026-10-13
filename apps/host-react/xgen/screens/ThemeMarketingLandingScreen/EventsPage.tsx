@@ -8,6 +8,7 @@ import {
   StatsBand,
   TestimonialGrid,
   VideoGrid,
+  tpl,
   type CodeLine,
   type Quote,
   type Stat,
@@ -74,6 +75,7 @@ export function EventsPage() {
         align="center"
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.cards)}
       />
       <TestimonialGrid
         id="events-testimonials"
@@ -89,6 +91,7 @@ export function EventsPage() {
         item={{ kind: "card", avatar: "none", rating: "show", mark: "none" }}
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.strip)}
       />
       <VideoGrid
         id="events-videos"
@@ -100,6 +103,7 @@ export function EventsPage() {
         caption="overlay"
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videos, ui.blocks.variants.videos.overlay)}
       />
       <CtaBand
         id="events-cta"
@@ -118,6 +122,7 @@ export function EventsPage() {
         tone="muted"
         proof="none"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.agency)}
       />
     </>
   );

@@ -19,6 +19,7 @@
     layout?: "centered" | "split";
     code?: "show" | "hide";
     tone?: "default" | "muted";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -39,6 +40,7 @@
     layout = "centered",
     code = "show",
     tone = "default",
+    landmarkLabel,
   }: ErrorPageProps = $props();
 </script>
 
@@ -52,6 +54,7 @@
   align={(((layout as string) === "split") ? "start" : "center")}
   tone={tone}
   density="roomy"
+  landmarkLabel={landmarkLabel}
 >
   {#if ((code as string) === "show")}
     <Text

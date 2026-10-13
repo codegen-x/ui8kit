@@ -12,6 +12,11 @@
         "ts": "\"chat\" | \"creator\""
       },
       "docs": "sidebar type"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
     }
   ],
   "className": true,
@@ -55,6 +60,9 @@
             },
             "chat"
           ]
+        },
+        "aria-label": {
+          "$": "landmarkLabel"
         }
       },
       "children": [

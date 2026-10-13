@@ -28,6 +28,7 @@ export type BeforeAfterProps = {
   icons?: "show" | "hide";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function BeforeAfter({
@@ -39,9 +40,10 @@ export function BeforeAfter({
   icons = "show",
   tone = "default",
   density = "default",
+  landmarkLabel,
 }: BeforeAfterProps) {
   return (
-    <SectionFrame id={id} title={title} tone={tone} density={density}>
+    <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
       {((layout as string) === "cards") ? (
         <Grid cols="1-2" className="items-stretch gap-4" data-testid="sides">
           <Card

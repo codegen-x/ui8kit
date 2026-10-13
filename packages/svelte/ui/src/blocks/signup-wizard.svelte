@@ -18,6 +18,7 @@
     level?: 1 | 2;
     progress?: "bar" | "list";
     layout?: "card" | "plain";
+    landmarkLabel?: string;
     ongo?: (step: number) => void;
   };
 </script>
@@ -47,6 +48,7 @@
     level = 2,
     progress = "bar",
     layout = "card",
+    landmarkLabel,
     ongo,
   }: SignupWizardProps = $props();
 </script>
@@ -57,9 +59,10 @@
     "mx-auto flex w-full max-w-lg flex-col gap-6 px-4 py-8",
     (((layout as string) === "card") ? "rounded bg-card p-6 inset-ring inset-ring-border" : "")
   )}
-  aria-labelledby={tpl("{0}-title", id)}
+  aria-labelledby={(landmarkLabel ? undefined : tpl("{0}-title", id))}
   data-testid="wizard"
   data-current={(current == null ? undefined : String(current))}
+  aria-label={landmarkLabel}
 >
   <Title as={level} size="2xl" weight="bold" id={tpl("{0}-title", id)}>
     {title}

@@ -8,13 +8,14 @@ import { cn } from "../utils";
 export type NavBlockProps = {
   label?: string;
   testid?: string;
+  landmarkLabel?: string;
   className?: string;
   children?: ReactNode;
 };
 
-export function NavBlock({ label, testid, className, children }: NavBlockProps) {
+export function NavBlock({ label, testid, landmarkLabel, className, children }: NavBlockProps) {
   return (
-    <Block tag="nav" className={cn(className)} aria-label={label} data-testid={testid}>
+    <Block tag="nav" className={cn(className)} aria-label={(landmarkLabel ?? label)} data-testid={testid}>
       {children}
     </Block>
   );

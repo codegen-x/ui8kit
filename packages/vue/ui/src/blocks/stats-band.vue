@@ -19,6 +19,7 @@ export type StatsBandProps = {
   align?: "start" | "center";
   tone?: "default" | "muted";
   density?: "roomy" | "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -41,6 +42,7 @@ const {
   align = "center",
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<StatsBandProps>();
 </script>
 
@@ -63,6 +65,7 @@ const {
         : ''
       )
     )"
+    :landmarkLabel="landmarkLabel"
   >
     <Backdrop :kind="(((surface as string) === 'image') ? 'image' : 'none')" :alt="title" />
     <Grid v-if="((surface as string) === 'panel')"

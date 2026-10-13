@@ -6,6 +6,7 @@ import {
   CategoryNav,
   PageTrail,
   ProductGrid,
+  tpl,
   type Category,
   type NavLink,
   type Product,
@@ -67,6 +68,7 @@ const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
     count="show"
     icon="show"
     density="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.sidebar)"
   />
   <ProductGrid
     id="catalog-products"
@@ -81,5 +83,6 @@ const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
     action="button"
     tone="default"
     density="compact"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.catalog)"
   />
 </template>

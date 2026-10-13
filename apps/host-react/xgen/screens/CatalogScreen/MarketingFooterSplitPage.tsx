@@ -101,6 +101,7 @@ export function MarketingFooterSplitPage() {
                   layout="stats"
                   mediaSide="end"
                   tone="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.footersplit, ui.blocks.variants.footersplit.statsCards)}
                 />
               </Box>
             </Stack>
@@ -129,6 +130,7 @@ export function MarketingFooterSplitPage() {
                   layout="points"
                   mediaSide="end"
                   tone="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.footersplit, ui.blocks.variants.footersplit.splitPoints)}
                 />
               </Box>
             </Stack>
@@ -157,6 +159,7 @@ export function MarketingFooterSplitPage() {
                   layout="links"
                   mediaSide="end"
                   tone="muted"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.footersplit, ui.blocks.variants.footersplit.splitLinks)}
                 />
               </Box>
             </Stack>
@@ -185,6 +188,7 @@ export function MarketingFooterSplitPage() {
                   layout="newsletter"
                   mediaSide="start"
                   tone="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.footersplit, ui.blocks.variants.footersplit.newsletterStart)}
                 />
               </Box>
             </Stack>
@@ -213,6 +217,7 @@ export function MarketingFooterSplitPage() {
                   layout="contacts"
                   mediaSide="end"
                   tone="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.footersplit, ui.blocks.variants.footersplit.splitContacts)}
                 />
               </Box>
             </Stack>
@@ -241,6 +246,7 @@ export function MarketingFooterSplitPage() {
                   layout="channels"
                   mediaSide="start"
                   tone="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.footersplit, ui.blocks.variants.footersplit.channelsStart)}
                 />
               </Box>
             </Stack>

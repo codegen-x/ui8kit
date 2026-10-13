@@ -17,6 +17,7 @@
     layout?: "bar" | "card";
     actions?: "two" | "three";
     tone?: "default" | "muted";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -42,10 +43,17 @@
     layout = "bar",
     actions = "two",
     tone = "default",
+    landmarkLabel,
   }: CookieBannerProps = $props();
 </script>
 
-<Block tag="section" aria-labelledby={tpl("{0}-title", id)} data-testid="cookie" data-layout={layout}>
+<Block
+  tag="section"
+  aria-labelledby={(landmarkLabel ? undefined : tpl("{0}-title", id))}
+  data-testid="cookie"
+  data-layout={layout}
+  aria-label={landmarkLabel}
+>
   <Container class={cn("mx-auto w-full max-w-6xl px-4", "py-4")} data-slot="container">
     <Box
       class={cn(

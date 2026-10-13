@@ -67,6 +67,7 @@ const ERRORPAGE_ACTIONS = { cta: ui.vibe.error.cta, href: "#/", secondary: ui.vi
                 code="show"
                 tone="default"
                 :level="2"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.errorpage, ui.blocks.variants.errorpage.centered)"
               />
             </Box>
           </Stack>
@@ -93,6 +94,7 @@ const ERRORPAGE_ACTIONS = { cta: ui.vibe.error.cta, href: "#/", secondary: ui.vi
                 code="show"
                 tone="default"
                 :level="2"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.errorpage, ui.blocks.variants.errorpage.split)"
               />
             </Box>
           </Stack>
@@ -119,6 +121,7 @@ const ERRORPAGE_ACTIONS = { cta: ui.vibe.error.cta, href: "#/", secondary: ui.vi
                 code="hide"
                 tone="default"
                 :level="2"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.errorpage, ui.blocks.variants.errorpage.noCode)"
               />
             </Box>
           </Stack>
@@ -145,6 +148,7 @@ const ERRORPAGE_ACTIONS = { cta: ui.vibe.error.cta, href: "#/", secondary: ui.vi
                 code="show"
                 tone="default"
                 :level="2"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.errorpage, ui.blocks.variants.errorpage.two)"
               />
             </Box>
           </Stack>
@@ -171,6 +175,7 @@ const ERRORPAGE_ACTIONS = { cta: ui.vibe.error.cta, href: "#/", secondary: ui.vi
                 code="show"
                 tone="muted"
                 :level="2"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.errorpage, ui.blocks.variants.errorpage.muted)"
               />
             </Box>
           </Stack>

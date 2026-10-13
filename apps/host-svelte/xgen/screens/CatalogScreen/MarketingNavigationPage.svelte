@@ -90,6 +90,7 @@
               layout="inline"
               position="static"
               actions="none"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.inline)}
               ontheme={() => actions.toggleTheme()}
             />
           </Box>
@@ -115,6 +116,7 @@
               layout="stacked"
               position="static"
               actions="none"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.stacked)}
               ontheme={() => actions.toggleTheme()}
             />
           </Box>
@@ -140,6 +142,7 @@
               layout="inline"
               position="sticky"
               actions="none"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.sticky)}
               ontheme={() => actions.toggleTheme()}
             />
           </Box>
@@ -165,6 +168,7 @@
               layout="inline"
               position="static"
               actions="cta"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.withCta)}
               ontheme={() => actions.toggleTheme()}
             />
           </Box>
@@ -209,6 +213,7 @@
               layout="inline"
               over="none"
               tone="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.inline)}
               ontheme={() => actions.toggleTheme()}
             />
           </Box>
@@ -236,6 +241,7 @@
               layout="split"
               over="none"
               tone="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.split)}
               ontheme={() => actions.toggleTheme()}
             />
           </Box>
@@ -263,6 +269,7 @@
               layout="search"
               over="none"
               tone="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.search)}
               ontheme={() => actions.toggleTheme()}
             />
           </Box>
@@ -290,6 +297,7 @@
               layout="inline"
               over="media"
               tone="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.media)}
               ontheme={() => actions.toggleTheme()}
             />
           </Box>
@@ -317,6 +325,7 @@
               layout="inline"
               over="none"
               tone="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.plain)}
               ontheme={() => actions.toggleTheme()}
             />
           </Box>
@@ -344,6 +353,7 @@
               layout="inline"
               over="none"
               tone="inverse"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.inverse)}
               ontheme={() => actions.toggleTheme()}
             />
           </Box>
@@ -389,6 +399,7 @@
               panel="open"
               cols="3"
               promo="none"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.open)}
             />
           </Box>
         </Stack>
@@ -416,6 +427,7 @@
               panel="closed"
               cols="3"
               promo="none"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.closed)}
             />
           </Box>
         </Stack>
@@ -443,6 +455,7 @@
               panel="open"
               cols="2"
               promo="none"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.twoCols)}
             />
           </Box>
         </Stack>
@@ -470,6 +483,7 @@
               panel="open"
               cols="3"
               promo="card"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.promo)}
             />
           </Box>
         </Stack>

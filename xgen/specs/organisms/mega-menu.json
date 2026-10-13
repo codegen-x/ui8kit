@@ -84,6 +84,11 @@
         "ts": "\"none\" | \"card\""
       },
       "default": "none"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
     }
   ],
   "slots": [],
@@ -96,7 +101,10 @@
         "Class": "relative border-b border-border bg-background"
       },
       "attrs": {
-        "data-testid": "mega-menu"
+        "data-testid": "mega-menu",
+        "aria-label": {
+          "$": "landmarkLabel"
+        }
       },
       "children": [
         {
@@ -136,7 +144,27 @@
               "organism": "NavBlock",
               "props": {
                 "label": {
-                  "$": "label"
+                  "op": "cond",
+                  "args": [
+                    {
+                      "$": "landmarkLabel"
+                    },
+                    {
+                      "op": "tpl",
+                      "args": [
+                        "{0}, {1}",
+                        {
+                          "$": "label"
+                        },
+                        {
+                          "$": "landmarkLabel"
+                        }
+                      ]
+                    },
+                    {
+                      "$": "label"
+                    }
+                  ]
                 },
                 "className": "flex-1"
               },

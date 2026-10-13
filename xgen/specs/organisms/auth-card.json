@@ -115,6 +115,11 @@
         "ts": "1 | 2"
       },
       "default": 2
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
     }
   ],
   "slots": [],
@@ -149,17 +154,32 @@
       },
       "attrs": {
         "aria-labelledby": {
-          "op": "tpl",
+          "op": "cond",
           "args": [
-            "{0}-title",
             {
-              "$": "id"
+              "$": "landmarkLabel"
+            },
+            {
+              "op": "undef",
+              "args": []
+            },
+            {
+              "op": "tpl",
+              "args": [
+                "{0}-title",
+                {
+                  "$": "id"
+                }
+              ]
             }
           ]
         },
         "data-testid": "auth-card",
         "data-mode": {
           "$": "mode"
+        },
+        "aria-label": {
+          "$": "landmarkLabel"
         }
       },
       "children": [

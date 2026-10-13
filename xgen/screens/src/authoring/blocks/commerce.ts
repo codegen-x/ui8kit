@@ -151,7 +151,7 @@ const productDetail = spec(`${O}product-detail`, "ProductDetail", "A product pag
         text(cond(ref("product.inStock"), ref("labels.inStock"), ref("labels.soldOut")))),
       use("Group", { props: { Gap: "4", Class: "flex-wrap" } },
         when(eq(ref("buy"), "full"), [organism("NumberField", { value: "1", name: tpl("{0}-qty", ref("id")), min: "1", label: ref("labels.qty"), decrease: ref("labels.decrease"), increase: ref("labels.increase") })]),
-        use("Button", { props: { Variant: "default", Size: "default", Disabled: not(ref("product.inStock")) }, on: { click: call("emit.add", ref("product.id")) }, attrs: { "data-testid": "add" } }, text(ref("labels.add")))),
+        use("Button", { props: { Disabled: not(ref("product.inStock")) }, on: { click: call("emit.add", ref("product.id")) }, attrs: { "data-testid": "add" } }, text(ref("labels.add")))),
       when(eq(ref("buy"), "full"), [use("List", { props: { Tag: "ul", Class: "flex flex-col gap-2 text-sm text-muted-foreground" } },
         use("ListItem", { props: { Class: "flex items-center gap-2" } }, use("LucideIcon", { props: { Name: "truck", Size: 16 } }), use("Inline", {}, text(ref("labels.shipping")))),
         use("ListItem", { props: { Class: "flex items-center gap-2" } }, use("LucideIcon", { props: { Name: "shield-check", Size: 16 } }), use("Inline", {}, text(ref("labels.returns")))))]))],

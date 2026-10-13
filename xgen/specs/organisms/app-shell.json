@@ -111,6 +111,11 @@
         "ts": "\"default\" | \"compact\""
       },
       "default": "default"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
     }
   ],
   "slots": [],
@@ -124,17 +129,32 @@
       },
       "attrs": {
         "aria-labelledby": {
-          "op": "tpl",
+          "op": "cond",
           "args": [
-            "{0}-title",
             {
-              "$": "id"
+              "$": "landmarkLabel"
+            },
+            {
+              "op": "undef",
+              "args": []
+            },
+            {
+              "op": "tpl",
+              "args": [
+                "{0}-title",
+                {
+                  "$": "id"
+                }
+              ]
             }
           ]
         },
         "data-testid": "app-shell",
         "data-layout": {
           "$": "layout"
+        },
+        "aria-label": {
+          "$": "landmarkLabel"
         }
       },
       "children": [
@@ -178,7 +198,9 @@
                       "mode": "none"
                     },
                     "layout": "search",
-                    "over": "none"
+                    "landmarkLabel": {
+                      "$": "landmarkLabel"
+                    }
                   }
                 },
                 {
@@ -280,10 +302,11 @@
                             "userEmail": {
                               "$": "user.email"
                             },
-                            "width": "full",
-                            "user": "show",
                             "density": {
                               "$": "density"
+                            },
+                            "landmarkLabel": {
+                              "$": "landmarkLabel"
                             }
                           }
                         },
@@ -302,7 +325,6 @@
                             "chart": {
                               "$": "chart"
                             },
-                            "cols": "1-2",
                             "activity": {
                               "$": "activity"
                             },
@@ -344,9 +366,11 @@
                               "$": "user.email"
                             },
                             "width": "compact",
-                            "user": "show",
                             "density": {
                               "$": "density"
+                            },
+                            "landmarkLabel": {
+                              "$": "landmarkLabel"
                             }
                           }
                         },
@@ -453,7 +477,6 @@
                             "chart": {
                               "$": "chart"
                             },
-                            "cols": "1-2",
                             "density": "compact"
                           }
                         }

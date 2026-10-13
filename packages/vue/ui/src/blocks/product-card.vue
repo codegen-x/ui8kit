@@ -83,7 +83,7 @@ const emit = defineEmits<{ add: [id: string] }>();
         {{ product.name }}
       </Title>
       <Group v-if="((rating as string) === 'show')" gap="2">
-        <Rating :value="product.rating" :label="tpl(labels.ratingLabel, product.rating)" :size="16" />
+        <Rating :value="product.rating" :label="tpl(labels.ratingLabel, product.rating)" />
         <Text size="xs" class="text-muted-foreground">
           {{ tpl(labels.reviews, product.reviews) }}
         </Text>

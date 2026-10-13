@@ -22,6 +22,7 @@
     buy?: "full" | "compact";
     tone?: "default" | "muted";
     density?: "default" | "roomy";
+    landmarkLabel?: string;
     onadd?: (id: string) => void;
   };
 </script>
@@ -55,6 +56,7 @@
     buy = "full",
     tone = "default",
     density = "default",
+    landmarkLabel,
     onadd,
   }: ProductDetailProps = $props();
 </script>
@@ -68,6 +70,7 @@
   media={{ show: true, side: mediaSide, align: "start" }}
   tone={tone}
   density={density}
+  landmarkLabel={landmarkLabel}
 >
   <Stack gap="4" align="stretch" data-testid="buy-box">
     <Group gap="4" align="center" class="flex-wrap">
@@ -81,7 +84,7 @@
       {/if}
     </Group>
     <Group gap="2">
-      <Rating value={product.rating} label={tpl(labels.ratingLabel, product.rating)} size={16} />
+      <Rating value={product.rating} label={tpl(labels.ratingLabel, product.rating)} />
       <Text size="sm" class="text-muted-foreground">
         {tpl(labels.reviews, product.reviews)}
       </Text>
@@ -105,13 +108,7 @@
           increase={labels.increase}
         />
       {/if}
-      <Button
-        variant="default"
-        size="default"
-        disabled={!product.inStock}
-        data-testid="add"
-        onclick={() => onadd?.(product.id)}
-      >
+      <Button disabled={!product.inStock} data-testid="add" onclick={() => onadd?.(product.id)}>
         {labels.add}
       </Button>
     </Group>

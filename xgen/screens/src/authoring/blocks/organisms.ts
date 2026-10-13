@@ -1,3 +1,7 @@
+import { dropDefaultProps, withLandmarkLabels } from "../landmarks";
+import { parts } from "../components/parts";
+import { patterns } from "../components/patterns";
+import { framePatterns } from "../components/frames";
 // Every organism of the catalog, in one list. The blocks read their axes from these specs.
 import { pricingCard } from "./pricing-card";
 import { siteOrganisms } from "./site";
@@ -64,3 +68,7 @@ export const allOrganisms = [
   ...postShowcaseParts, ...postShowcaseOrganisms, ...mediaListParts, ...mediaListOrganisms,
   ...featureShowcaseOrganisms, ...storyTabsParts, ...storyTabsOrganisms, ...landmarkParts
 ];
+
+// every organism that holds a landmark takes `landmarkLabel` (authoring/landmarks.ts); run once, before any page composes them
+withLandmarkLabels([...allOrganisms, ...parts, ...patterns, ...framePatterns]);
+dropDefaultProps([...allOrganisms, ...parts, ...patterns, ...framePatterns]);

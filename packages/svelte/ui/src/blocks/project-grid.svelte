@@ -18,6 +18,7 @@
     layout?: "cards" | "compact" | "overlay" | "bento" | "list";
     tone?: "default" | "muted";
     density?: "default" | "compact";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -39,6 +40,7 @@
     layout = "cards",
     tone = "default",
     density = "default",
+    landmarkLabel,
   }: ProjectGridProps = $props();
 </script>
 
@@ -50,6 +52,7 @@
   density={density}
   layout={(((layout as string) === "list") ? "split" : "stack")}
   media={{ show: ((layout as string) === "list"), align: "start" }}
+  landmarkLabel={landmarkLabel}
 >
   {#if ((layout as string) === "list")}
     <Stack gap="4" align="stretch" data-testid="items">

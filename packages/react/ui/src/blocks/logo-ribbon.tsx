@@ -17,11 +17,27 @@ export type LogoRibbonProps = {
   logos: Logo[];
   tone?: "default" | "muted";
   density?: "roomy" | "default" | "compact";
+  landmarkLabel?: string;
 };
 
-export function LogoRibbon({ id, title, logos, tone = "default", density = "default" }: LogoRibbonProps) {
+export function LogoRibbon({
+  id,
+  title,
+  logos,
+  tone = "default",
+  density = "default",
+  landmarkLabel,
+}: LogoRibbonProps) {
   return (
-    <SectionFrame id={id} title="" tone={tone} density={density} measure="fill" align="center" className="py-0">
+    <SectionFrame
+      id={id}
+      tone={tone}
+      density={density}
+      measure="fill"
+      align="center"
+      className="py-0"
+      landmarkLabel={landmarkLabel}
+    >
       <Stack gap="6" align="center" data-testid="logos-block">
         <Title as={2} size="xl" weight="semibold" className="leading-7" id={(id + "-title")}>
           {title}

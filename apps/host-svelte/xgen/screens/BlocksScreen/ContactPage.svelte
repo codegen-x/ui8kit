@@ -12,6 +12,7 @@
     Stack,
     Text,
     Title,
+    tpl,
     type Feature,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -67,6 +68,7 @@
             page="section"
             tone="default"
             level={2}
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.single)}
           />
         </Box>
       </Stack>
@@ -95,6 +97,7 @@
             page="full"
             tone="default"
             level={2}
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.page)}
           />
         </Box>
       </Stack>
@@ -123,6 +126,7 @@
             page="section"
             tone="default"
             level={2}
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.short)}
           />
         </Box>
       </Stack>
@@ -151,6 +155,7 @@
             page="section"
             tone="default"
             level={2}
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.split)}
           />
         </Box>
       </Stack>
@@ -179,6 +184,7 @@
             page="section"
             tone="default"
             level={2}
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.consent)}
           />
         </Box>
       </Stack>
@@ -207,6 +213,7 @@
             page="section"
             tone="muted"
             level={2}
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.muted)}
           />
         </Box>
       </Stack>

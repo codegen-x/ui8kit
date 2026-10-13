@@ -36,6 +36,7 @@ export type ProductDetailProps = {
   buy?: "full" | "compact";
   tone?: "default" | "muted";
   density?: "default" | "roomy";
+  landmarkLabel?: string;
   onAdd?: (id: string) => void;
 };
 
@@ -51,6 +52,7 @@ export function ProductDetail({
   buy = "full",
   tone = "default",
   density = "default",
+  landmarkLabel,
   onAdd,
 }: ProductDetailProps) {
   return (
@@ -63,6 +65,7 @@ export function ProductDetail({
       media={{ show: true, side: mediaSide, align: "start" }}
       tone={tone}
       density={density}
+      landmarkLabel={landmarkLabel}
       aside={(
         <Stack gap="4" align="stretch" data-testid="gallery">
           <MediaFrame alt={product.name} ratio="1/1" />
@@ -88,7 +91,7 @@ export function ProductDetail({
           ) : null}
         </Group>
         <Group gap="2">
-          <Rating value={product.rating} label={tpl(labels.ratingLabel, product.rating)} size={16} />
+          <Rating value={product.rating} label={tpl(labels.ratingLabel, product.rating)} />
           <Text size="sm" className="text-muted-foreground">
             {tpl(labels.reviews, product.reviews)}
           </Text>
@@ -112,13 +115,7 @@ export function ProductDetail({
               increase={labels.increase}
             />
           ) : null}
-          <Button
-            variant="default"
-            size="default"
-            disabled={!product.inStock}
-            data-testid="add"
-            onClick={() => onAdd?.(product.id)}
-          >
+          <Button disabled={!product.inStock} data-testid="add" onClick={() => onAdd?.(product.id)}>
             {labels.add}
           </Button>
         </Group>

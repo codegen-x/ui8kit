@@ -7,6 +7,7 @@
 <script lang="ts">
 export type RegionProps = {
   tag: "header" | "nav" | "section" | "aside" | "footer" | "article" | "figure" | "main" | "search" | "div";
+  landmarkLabel?: string;
   class?: string;
 };
 </script>
@@ -14,12 +15,12 @@ export type RegionProps = {
 <script setup lang="ts">
 import Block from "../primitives/block/block.vue";
 
-const { tag, class: className } = defineProps<RegionProps>();
+const { tag, landmarkLabel, class: className } = defineProps<RegionProps>();
 defineSlots<{ default?(): unknown }>();
 </script>
 
 <template>
-  <Block :tag="tag" :class="className">
+  <Block :tag="tag" :class="className" :aria-label="landmarkLabel">
     <slot />
   </Block>
 </template>

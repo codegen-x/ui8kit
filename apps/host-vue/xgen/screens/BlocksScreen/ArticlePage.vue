@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Section,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -64,6 +65,7 @@ const article = fromCodex<Section>(articleEntries, ARTICLE_FIELDS);
               layout="column"
               quotes="show"
               tone="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.article, ui.blocks.variants.article.column)"
             />
           </Box>
         </Stack>
@@ -88,6 +90,7 @@ const article = fromCodex<Section>(articleEntries, ARTICLE_FIELDS);
               layout="toc"
               quotes="show"
               tone="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.article, ui.blocks.variants.article.toc)"
             />
           </Box>
         </Stack>
@@ -112,6 +115,7 @@ const article = fromCodex<Section>(articleEntries, ARTICLE_FIELDS);
               layout="column"
               quotes="hide"
               tone="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.article, ui.blocks.variants.article.plain)"
             />
           </Box>
         </Stack>
@@ -136,6 +140,7 @@ const article = fromCodex<Section>(articleEntries, ARTICLE_FIELDS);
               layout="column"
               quotes="show"
               tone="muted"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.article, ui.blocks.variants.article.muted)"
             />
           </Box>
         </Stack>

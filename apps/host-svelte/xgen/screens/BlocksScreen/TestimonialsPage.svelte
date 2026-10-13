@@ -12,6 +12,7 @@
     TestimonialGrid,
     Text,
     Title,
+    tpl,
     type Quote,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -77,6 +78,7 @@
             item={{ kind: "card", avatar: "image", rating: "show", mark: "none" }}
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.grid3)}
           />
         </Box>
       </Stack>
@@ -103,6 +105,7 @@
             item={{ kind: "card", avatar: "image", rating: "hide", mark: "none" }}
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.masonry)}
           />
         </Box>
       </Stack>
@@ -129,6 +132,7 @@
             item={{ kind: "card", avatar: "none", rating: "show", mark: "none" }}
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.strip)}
           />
         </Box>
       </Stack>
@@ -155,6 +159,7 @@
             item={{ kind: "social", avatar: "image", rating: "hide", mark: "none" }}
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.social)}
           />
         </Box>
       </Stack>
@@ -181,6 +186,7 @@
             item={{ kind: "plain", avatar: "image", rating: "hide", mark: "icon" }}
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.featured)}
           />
         </Box>
       </Stack>
@@ -207,6 +213,7 @@
             item={{ kind: "card", avatar: "image", rating: "show", mark: "none" }}
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.grid2)}
           />
         </Box>
       </Stack>
@@ -233,6 +240,7 @@
             item={{ kind: "plain", avatar: "image", rating: "hide", mark: "none" }}
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.single)}
           />
         </Box>
       </Stack>
@@ -259,6 +267,7 @@
             item={{ kind: "card", avatar: "none", rating: "show", mark: "none" }}
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.stack)}
           />
         </Box>
       </Stack>
@@ -285,6 +294,7 @@
             item={{ kind: "plain", avatar: "none", rating: "show", mark: "none" }}
             tone="muted"
             density="compact"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.plain)}
           />
         </Box>
       </Stack>
@@ -311,6 +321,7 @@
             item={{ kind: "card", avatar: "image", rating: "hide", mark: "none" }}
             tone="default"
             density="roomy"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.noRating)}
           />
         </Box>
       </Stack>

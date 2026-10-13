@@ -18,6 +18,7 @@ export type JobBoardProps = {
   layout?: "grid" | "grouped" | "table";
   salary?: "show" | "hide";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -44,6 +45,7 @@ const {
   layout = "grid",
   salary = "hide",
   tone = "default",
+  landmarkLabel,
 } = defineProps<JobBoardProps>();
 </script>
 
@@ -53,8 +55,8 @@ const {
     :title="title"
     :lead="lead"
     :tone="tone"
-    density="default"
     :measure="(((layout as string) === 'grouped') ? '3xl' : 'default')"
+    :landmarkLabel="landmarkLabel"
   >
     <Stack v-if="((layout as string) === 'grouped')" gap="8" align="stretch" data-testid="groups">
       <Stack v-for="d in departments" :key="d.id" gap="2" align="stretch" data-testid="group">

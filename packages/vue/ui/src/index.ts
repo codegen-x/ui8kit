@@ -189,6 +189,8 @@ export { default as CartTable } from "./components/cart-table.vue";
 export type { CartTableProps } from "./components/cart-table.vue";
 export { default as CheckoutStep } from "./components/checkout-step.vue";
 export type { CheckoutStepProps } from "./components/checkout-step.vue";
+export { default as CheckoutSubmit } from "./components/checkout-submit.vue";
+export type { CheckoutSubmitProps } from "./components/checkout-submit.vue";
 export { default as CompareMark } from "./components/compare-mark.vue";
 export type { CompareMarkProps } from "./components/compare-mark.vue";
 export { default as CtaActions } from "./components/cta-actions.vue";

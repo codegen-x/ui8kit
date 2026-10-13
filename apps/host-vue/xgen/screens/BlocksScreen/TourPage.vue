@@ -2,7 +2,7 @@
 <!-- Source: xgen/specs/screens/blocks.json -->
 <!-- The tour page of BlocksScreen. -->
 <script setup lang="ts">
-import { Block, Box, Container, Group, Link, Stack, Text, Title, TourCallout } from "@ui8kit/vue-ui";
+import { Block, Box, Container, Group, Link, Stack, Text, Title, TourCallout, tpl } from "@ui8kit/vue-ui";
 import { ui } from "@ui8kit/app-shared/content";
 
 </script>
@@ -51,6 +51,7 @@ import { ui } from "@ui8kit/app-shared/content";
               placement="below"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.below)"
             />
           </Box>
         </Stack>
@@ -78,6 +79,7 @@ import { ui } from "@ui8kit/app-shared/content";
               placement="above"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.above)"
             />
           </Box>
         </Stack>
@@ -105,6 +107,7 @@ import { ui } from "@ui8kit/app-shared/content";
               placement="end"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.end)"
             />
           </Box>
         </Stack>
@@ -132,6 +135,7 @@ import { ui } from "@ui8kit/app-shared/content";
               placement="below"
               tone="muted"
               density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.muted)"
             />
           </Box>
         </Stack>

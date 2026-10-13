@@ -2,7 +2,7 @@
 <!-- Source: xgen/specs/screens/theme-promo-campaign.json -->
 <!-- The offer page of ThemePromoCampaignScreen. -->
 <script lang="ts">
-  import { AnnouncementBar, CtaBand, NewsletterForm, PageIntro } from "@ui8kit/svelte-ui";
+  import { AnnouncementBar, CtaBand, NewsletterForm, PageIntro, tpl } from "@ui8kit/svelte-ui";
   import { ui } from "@ui8kit/app-shared/content";
 
 </script>
@@ -29,6 +29,7 @@
   dismiss="hide"
   badge="show"
   position="top"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.badge)}
 />
 <AnnouncementBar
   label={ui.promo.announcement.label}
@@ -42,6 +43,7 @@
   dismiss="hide"
   badge="none"
   position="top"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.split)}
 />
 <AnnouncementBar
   label={ui.promo.announcement.label}
@@ -55,6 +57,7 @@
   dismiss="show"
   badge="none"
   position="top"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.shop)}
 />
 <CtaBand
   id="offer-cta"
@@ -73,6 +76,7 @@
   tone="default"
   proof="none"
   density="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.shop)}
 />
 <NewsletterForm
   id="offer-newsletter"
@@ -85,4 +89,5 @@
   terms="show"
   tone="default"
   align="center"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.consent)}
 />

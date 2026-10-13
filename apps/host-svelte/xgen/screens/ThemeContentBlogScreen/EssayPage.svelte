@@ -2,7 +2,7 @@
 <!-- Source: xgen/specs/screens/theme-content-blog.json -->
 <!-- The essay page of ThemeContentBlogScreen. -->
 <script lang="ts">
-  import { ArticleBody, NewsletterForm, PostHeader, type Post, type Section } from "@ui8kit/svelte-ui";
+  import { ArticleBody, NewsletterForm, PostHeader, tpl, type Post, type Section } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
   import { ui } from "@ui8kit/app-shared/content";
   import { posts as postsEntries } from "@ui8kit/app-shared/data/posts";
@@ -41,6 +41,7 @@
   layout="column"
   quotes="show"
   tone="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.article, ui.blocks.variants.article.column)}
 />
 <NewsletterForm
   id="essay-newsletter"
@@ -53,4 +54,5 @@
   terms="hide"
   tone="default"
   align="center"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.inline)}
 />

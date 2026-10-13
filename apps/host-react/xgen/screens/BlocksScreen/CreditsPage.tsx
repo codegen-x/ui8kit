@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Pack,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -78,6 +79,7 @@ export function CreditsPage() {
                 item="tile"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.credits, ui.blocks.variants.credits.tiles4)}
               />
             </Box>
           </Stack>
@@ -104,6 +106,7 @@ export function CreditsPage() {
                 item="tile"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.credits, ui.blocks.variants.credits.tiles2)}
               />
             </Box>
           </Stack>
@@ -130,6 +133,7 @@ export function CreditsPage() {
                 item="row"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.credits, ui.blocks.variants.credits.rows)}
               />
             </Box>
           </Stack>
@@ -156,6 +160,7 @@ export function CreditsPage() {
                 item="tile"
                 tone="muted"
                 density="compact"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.credits, ui.blocks.variants.credits.muted)}
               />
             </Box>
           </Stack>

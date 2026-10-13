@@ -24,6 +24,7 @@ export type FooterSplitProps = {
   layout?: "stats" | "points" | "links" | "newsletter" | "contacts" | "channels";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -60,6 +61,7 @@ const {
   layout = "stats",
   mediaSide = "end",
   tone = "default",
+  landmarkLabel,
 } = defineProps<FooterSplitProps>();
 </script>
 
@@ -69,6 +71,7 @@ const {
     :class="cn('border-t border-border', (((tone as string) === 'muted') ? 'bg-muted' : ''))"
     data-testid="footer-split"
     :data-layout="layout"
+    :aria-label="landmarkLabel"
   >
     <Container :class="cn('mx-auto w-full max-w-6xl px-4', 'py-12')" data-slot="container">
       <Stack v-if="((layout as string) === 'stats')" gap="8" align="stretch">
@@ -82,7 +85,7 @@ const {
             {{ labels.sitemap }}
           </Link>
         </Group>
-        <FooterGroupCards :label="label" :groups="groups" />
+        <FooterGroupCards :label="label" :groups="groups" :landmarkLabel="landmarkLabel" />
         <Box class="border-t border-border pt-6">
           <Text size="sm" class="text-muted-foreground">
             {{ copyright }}
@@ -111,16 +114,11 @@ const {
             v-if="(((layout as string) === 'links') || ((layout as string) === 'newsletter'))"
             :label="label"
             :groups="groups"
+            :landmarkLabel="landmarkLabel"
           />
           <template v-if="((layout as string) === 'contacts')">
             <FooterContacts :extras="extras" />
-            <ActionGroup
-              :primary="labels.cta"
-              primaryHref="#/contact"
-              :secondary="labels.secondary"
-              secondaryHref="#/work"
-              align="start"
-            />
+            <ActionGroup :primary="labels.cta" primaryHref="#/contact" :secondary="labels.secondary" secondaryHref="#/work" />
           </template>
           <template v-if="((layout as string) === 'channels')">
             <FooterChannels :extras="extras" />

@@ -19,6 +19,7 @@ export type CtaBandProps = {
   tone?: "default" | "muted";
   proof?: "none" | "quote";
   density?: "roomy" | "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -48,27 +49,29 @@ const {
   tone = "muted",
   proof = "none",
   density = "default",
+  landmarkLabel,
 } = defineProps<CtaBandProps>();
 const center = computed(() => ((layout as string) === "band") || ((layout as string) === "banner"));
 </script>
 
 <template>
-  <CtaBanner
-    v-if="((layout as string) === 'banner')"
+  <CtaBanner v-if="((layout as string) === 'banner')"
     :id="id"
     :title="title"
     :text="text"
     :cta="actions.cta"
     :href="actions.href"
     :tone="tone"
+    :landmarkLabel="landmarkLabel"
   />
   <Block v-else-if="((layout as string) === 'row')"
     tag="section"
     class="py-8"
-    :aria-labelledby="tpl('{0}-title', id)"
+    :aria-labelledby="(landmarkLabel ? undefined : tpl('{0}-title', id))"
     data-testid="section"
     :data-tone="tone"
     :data-density="density"
+    :aria-label="landmarkLabel"
   >
     <Container class="mx-auto w-full max-w-6xl px-4" data-slot="container">
       <Card variant="muted">
@@ -102,6 +105,7 @@ const center = computed(() => ((layout as string) === "band") || ((layout as str
     :media="{ show: ((layout as string) === 'split') }"
     :tone="tone"
     :density="density"
+    :landmarkLabel="landmarkLabel"
   >
     <QuoteProof
       v-if="((proof as string) === 'quote')"

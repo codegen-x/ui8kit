@@ -19,14 +19,15 @@ import type { Feature } from "../blocks/feature-grid.types";
 export type FaqHelpProps = {
   labels: FaqSplitLabels;
   channels: Feature[];
+  landmarkLabel?: string;
 };
 
-export function FaqHelp({ labels, channels }: FaqHelpProps) {
+export function FaqHelp({ labels, channels, landmarkLabel }: FaqHelpProps) {
   return (
     <Block
       tag="aside"
       className="rounded bg-card inset-ring inset-ring-border flex flex-col gap-6 p-6"
-      aria-label={labels.asideTitle}
+      aria-label={(landmarkLabel ?? labels.asideTitle)}
       data-testid="faq-help"
     >
       <Stack gap="2">

@@ -12,6 +12,7 @@ import {
   StepsList,
   Text,
   Title,
+  tpl,
   type Step,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -70,6 +71,7 @@ export function StepsPage() {
                 align="start"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.row)}
               />
             </Box>
           </Stack>
@@ -95,6 +97,7 @@ export function StepsPage() {
                 align="start"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.rowIcons)}
               />
             </Box>
           </Stack>
@@ -120,6 +123,7 @@ export function StepsPage() {
                 align="start"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.column)}
               />
             </Box>
           </Stack>
@@ -145,6 +149,7 @@ export function StepsPage() {
                 align="center"
                 tone="muted"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.centered)}
               />
             </Box>
           </Stack>
@@ -170,6 +175,7 @@ export function StepsPage() {
                 align="start"
                 tone="default"
                 density="roomy"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.columnIcons)}
               />
             </Box>
           </Stack>
@@ -195,6 +201,7 @@ export function StepsPage() {
                 align="start"
                 tone="default"
                 density="compact"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.compact)}
               />
             </Box>
           </Stack>

@@ -7,6 +7,7 @@ import {
   OrderSummary,
   PageIntro,
   ShoppingCart,
+  tpl,
   type CartLine,
   type Promo,
   type SummaryRow,
@@ -64,6 +65,7 @@ export function CartPage() {
         promo="show"
         progress="show"
         tone="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cartpage, ui.blocks.variants.cartpage.split)}
       />
       <CartList
         id="cart-cart"
@@ -74,6 +76,7 @@ export function CartPage() {
         media="image"
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cart, ui.blocks.variants.cart.table)}
       />
       <OrderSummary
         id="cart-summary"
@@ -85,6 +88,7 @@ export function CartPage() {
         note="show"
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.card)}
       />
     </>
   );

@@ -84,6 +84,7 @@
               placement="below"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.below)}
             />
           </Box>
         </Stack>
@@ -111,6 +112,7 @@
               placement="above"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.above)}
             />
           </Box>
         </Stack>
@@ -138,6 +140,7 @@
               placement="end"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.end)}
             />
           </Box>
         </Stack>
@@ -165,6 +168,7 @@
               placement="below"
               tone="muted"
               density="compact"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.muted)}
             />
           </Box>
         </Stack>
@@ -209,6 +213,7 @@
               size="default"
               outline="none"
               tone="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.default)}
             />
           </Box>
         </Stack>
@@ -236,6 +241,7 @@
               size="wide"
               outline="none"
               tone="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.wide)}
             />
           </Box>
         </Stack>
@@ -263,6 +269,7 @@
               size="default"
               outline="chapters"
               tone="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.chapters)}
             />
           </Box>
         </Stack>
@@ -290,6 +297,7 @@
               size="default"
               outline="none"
               tone="muted"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.muted)}
             />
           </Box>
         </Stack>

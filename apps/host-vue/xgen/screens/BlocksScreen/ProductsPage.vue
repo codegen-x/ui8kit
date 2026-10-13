@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Product,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -80,6 +81,7 @@ const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS);
               action="button"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.grid3)"
             />
           </Box>
         </Stack>
@@ -109,6 +111,7 @@ const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS);
               action="button"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.grid4)"
             />
           </Box>
         </Stack>
@@ -138,6 +141,7 @@ const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS);
               action="button"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.grid2)"
             />
           </Box>
         </Stack>
@@ -167,6 +171,7 @@ const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS);
               action="button"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.list)"
             />
           </Box>
         </Stack>
@@ -196,6 +201,7 @@ const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS);
               action="button"
               tone="default"
               density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.catalog)"
             />
           </Box>
         </Stack>
@@ -225,6 +231,7 @@ const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS);
               action="none"
               tone="muted"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.browse)"
             />
           </Box>
         </Stack>
@@ -254,6 +261,7 @@ const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS);
               action="button"
               tone="default"
               density="roomy"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.showcase)"
             />
           </Box>
         </Stack>
@@ -283,6 +291,7 @@ const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS);
               action="button"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.rail)"
             />
           </Box>
         </Stack>
@@ -312,6 +321,7 @@ const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS);
               action="button"
               tone="default"
               density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.railCompact)"
             />
           </Box>
         </Stack>

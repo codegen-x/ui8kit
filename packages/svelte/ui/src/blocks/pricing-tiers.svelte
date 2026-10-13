@@ -22,6 +22,7 @@
     billing?: "off" | "monthly" | "annual";
     tone?: "default" | "muted";
     density?: "roomy" | "default" | "compact";
+    landmarkLabel?: string;
     onselect?: (id: string) => void;
     onbilling?: (period: string) => void;
   };
@@ -49,6 +50,7 @@
     billing = "off",
     tone = "default",
     density = "default",
+    landmarkLabel,
     onselect,
     onbilling,
   }: PricingTiersProps = $props();
@@ -60,6 +62,7 @@
   tone={tone}
   density={density}
   measure={(((layout as string) === "stack") ? "md" : "default")}
+  landmarkLabel={landmarkLabel}
 >
   {#if ((billing as string) !== "off")}
     <Group gap="4" align="center" justify="center" class="flex-wrap" data-testid="billing">

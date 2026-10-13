@@ -109,6 +109,7 @@
               actions="pair"
               tone="default"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.postsplit, ui.blocks.variants.postsplit.centerShare)}
             />
           </Box>
         </Stack>
@@ -137,6 +138,7 @@
               actions="pair"
               tone="default"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.postsplit, ui.blocks.variants.postsplit.splitTags)}
             />
           </Box>
         </Stack>
@@ -165,6 +167,7 @@
               actions="wide"
               tone="default"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.postsplit, ui.blocks.variants.postsplit.splitBioStart)}
             />
           </Box>
         </Stack>
@@ -193,6 +196,7 @@
               actions="icons"
               tone="default"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.postsplit, ui.blocks.variants.postsplit.splitSquare)}
             />
           </Box>
         </Stack>
@@ -221,6 +225,7 @@
               actions="pair"
               tone="default"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.postsplit, ui.blocks.variants.postsplit.outlineStart)}
             />
           </Box>
         </Stack>
@@ -249,6 +254,7 @@
               actions="pair"
               tone="muted"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.postsplit, ui.blocks.variants.postsplit.splitStats)}
             />
           </Box>
         </Stack>

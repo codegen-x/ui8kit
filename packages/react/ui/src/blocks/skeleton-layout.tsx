@@ -21,6 +21,7 @@ export type SkeletonLayoutProps = {
   lines: Line[];
   shape?: "cards" | "list" | "article";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 
 export function SkeletonLayout({
@@ -30,9 +31,10 @@ export function SkeletonLayout({
   lines,
   shape = "cards",
   tone = "default",
+  landmarkLabel,
 }: SkeletonLayoutProps) {
   return (
-    <SectionFrame id={id} title={title} tone={tone} density="default">
+    <SectionFrame id={id} title={title} tone={tone} landmarkLabel={landmarkLabel}>
       <Block tag="div" className="w-full" role="status" aria-label={label} data-testid="skeleton" data-shape={shape}>
         {((shape as string) === "cards") ? (
           <Grid cols="1-3" className="gap-4">

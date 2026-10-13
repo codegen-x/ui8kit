@@ -111,6 +111,11 @@
         "record": "CategoryTools"
       },
       "docs": "the toolbar layout: labels of the search, the sort and the number shown"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
     }
   ],
   "derived": [
@@ -299,7 +304,15 @@
       },
       "attrs": {
         "aria-label": {
-          "$": "label"
+          "op": "coalesce",
+          "args": [
+            {
+              "$": "landmarkLabel"
+            },
+            {
+              "$": "label"
+            }
+          ]
         },
         "data-testid": "category-nav",
         "data-layout": {

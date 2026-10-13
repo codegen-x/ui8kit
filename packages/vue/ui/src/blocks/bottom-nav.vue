@@ -14,6 +14,7 @@ export type BottomNavProps = {
   labels?: "show" | "hide";
   position?: "static" | "sticky";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -33,6 +34,7 @@ const {
   labels = "show",
   position = "static",
   tone = "default",
+  landmarkLabel,
 } = defineProps<BottomNavProps>();
 </script>
 
@@ -44,7 +46,7 @@ const {
       (((tone as string) === 'muted') ? 'bg-muted' : 'bg-background'),
       (((position as string) === 'sticky') ? 'sticky bottom-0 z-40' : '')
     )"
-    :aria-label="label"
+    :aria-label="(landmarkLabel ?? label)"
     data-testid="bottom-nav"
     :data-position="position"
   >

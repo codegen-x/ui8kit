@@ -27,6 +27,7 @@ export type UsageCalculatorProps = {
   layout?: "card" | "plain";
   ends?: "show" | "hide";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
   onUsage?: (value: string) => void;
 };
 
@@ -42,10 +43,11 @@ export function UsageCalculator({
   layout = "card",
   ends = "show",
   tone = "default",
+  landmarkLabel,
   onUsage,
 }: UsageCalculatorProps) {
   return (
-    <SectionFrame id={id} title={title} lead={text} tone={tone} align="center">
+    <SectionFrame id={id} title={title} lead={text} tone={tone} align="center" landmarkLabel={landmarkLabel}>
       <Stack
         gap="4"
         align="stretch"

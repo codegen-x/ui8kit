@@ -90,6 +90,7 @@
               cols="1-4"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.team, ui.blocks.variants.team.cards4)}
             />
           </Box>
         </Stack>
@@ -116,6 +117,7 @@
               cols="1-3"
               tone="muted"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.team, ui.blocks.variants.team.cards3)}
             />
           </Box>
         </Stack>
@@ -142,6 +144,7 @@
               cols="1-4"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.team, ui.blocks.variants.team.minimal)}
             />
           </Box>
         </Stack>
@@ -168,6 +171,7 @@
               cols="1-3"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.team, ui.blocks.variants.team.detailed)}
             />
           </Box>
         </Stack>
@@ -194,6 +198,7 @@
               cols="1-4"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.team, ui.blocks.variants.team.list)}
             />
           </Box>
         </Stack>
@@ -220,6 +225,7 @@
               cols="1-4"
               tone="default"
               density="compact"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.team, ui.blocks.variants.team.directory)}
             />
           </Box>
         </Stack>

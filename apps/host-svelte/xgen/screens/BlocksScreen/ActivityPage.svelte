@@ -12,6 +12,7 @@
     Stack,
     Text,
     Title,
+    tpl,
     type Event,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -69,6 +70,7 @@
             layout="timeline"
             density="default"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.activity, ui.blocks.variants.activity.timeline)}
           />
         </Box>
       </Stack>
@@ -93,6 +95,7 @@
             layout="list"
             density="default"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.activity, ui.blocks.variants.activity.list)}
           />
         </Box>
       </Stack>
@@ -117,6 +120,7 @@
             layout="list"
             density="compact"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.activity, ui.blocks.variants.activity.compact)}
           />
         </Box>
       </Stack>
@@ -141,6 +145,7 @@
             layout="timeline"
             density="default"
             tone="muted"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.activity, ui.blocks.variants.activity.muted)}
           />
         </Box>
       </Stack>

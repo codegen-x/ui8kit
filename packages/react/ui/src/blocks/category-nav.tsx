@@ -30,6 +30,7 @@ export type CategoryNavProps = {
   icon?: "show" | "hide";
   density?: "default" | "compact";
   tools?: CategoryTools;
+  landmarkLabel?: string;
 };
 
 export function CategoryNav({
@@ -41,6 +42,7 @@ export function CategoryNav({
   icon = "show",
   density = "default",
   tools,
+  landmarkLabel,
 }: CategoryNavProps) {
   const chipLike = ((layout as string) === "chips") || ((layout as string) === "toolbar");
   const tiles = (layout as string) === "tiles";
@@ -61,7 +63,7 @@ export function CategoryNav({
     : tiles ? "grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6"
     : "flex flex-wrap gap-2";
   return (
-    <Block tag="nav" aria-label={label} data-testid="category-nav" data-layout={layout}>
+    <Block tag="nav" aria-label={(landmarkLabel ?? label)} data-testid="category-nav" data-layout={layout}>
       <Container
         className={cn(
           "mx-auto w-full max-w-6xl px-4",

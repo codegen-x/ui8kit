@@ -16,7 +16,7 @@ import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { MediaFrame } from "../components/media-frame";
 import { NavBlock } from "../components/nav-block";
-import { cn } from "../utils";
+import { cn, tpl } from "../utils";
 import type { NavLink } from "./nav-bar.types";
 
 export type SidebarNavProps = {
@@ -29,6 +29,7 @@ export type SidebarNavProps = {
   width?: "full" | "compact";
   user?: "show" | "hide";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function SidebarNav({
@@ -41,6 +42,7 @@ export function SidebarNav({
   width = "full",
   user = "show",
   density = "default",
+  landmarkLabel,
 }: SidebarNavProps) {
   return (
     <Block
@@ -49,7 +51,7 @@ export function SidebarNav({
         "flex min-h-96 flex-col gap-6 rounded bg-card p-4 inset-ring inset-ring-border",
         (((width as string) === "compact") ? "w-20 items-center" : "w-64")
       )}
-      aria-label={brand}
+      aria-label={(landmarkLabel ?? brand)}
       data-testid="sidebar"
       data-width={width}
     >
@@ -59,7 +61,7 @@ export function SidebarNav({
           {brand}
         </Text>
       </Group>
-      <NavBlock label={label} className="flex-1">
+      <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", label, landmarkLabel) : label)} className="flex-1">
         <List
           className={cn(
             "m-0 flex list-none flex-col p-0",

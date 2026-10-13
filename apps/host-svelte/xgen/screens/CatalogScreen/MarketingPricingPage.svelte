@@ -112,6 +112,7 @@
               billing="off"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.grid)}
             />
           </Box>
         </Stack>
@@ -140,6 +141,7 @@
               billing="monthly"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.monthly)}
             />
           </Box>
         </Stack>
@@ -168,6 +170,7 @@
               billing="annual"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.annual)}
             />
           </Box>
         </Stack>
@@ -196,6 +199,7 @@
               billing="off"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.duo)}
             />
           </Box>
         </Stack>
@@ -224,6 +228,7 @@
               billing="off"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.grid2)}
             />
           </Box>
         </Stack>
@@ -252,6 +257,7 @@
               billing="off"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.grid4)}
             />
           </Box>
         </Stack>
@@ -280,6 +286,7 @@
               billing="off"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.stack)}
             />
           </Box>
         </Stack>
@@ -308,6 +315,7 @@
               billing="off"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.flat)}
             />
           </Box>
         </Stack>
@@ -336,6 +344,7 @@
               billing="off"
               tone="muted"
               density="compact"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.compactMuted)}
             />
           </Box>
         </Stack>
@@ -364,6 +373,7 @@
               billing="off"
               tone="default"
               density="roomy"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.roomy)}
             />
           </Box>
         </Stack>

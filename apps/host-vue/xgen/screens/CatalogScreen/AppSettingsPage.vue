@@ -65,6 +65,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 avatar="show"
                 prefs="show"
                 tone="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.stacked)"
               />
             </Box>
           </Stack>
@@ -90,6 +91,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 avatar="show"
                 prefs="show"
                 tone="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.split)"
               />
             </Box>
           </Stack>
@@ -115,6 +117,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 avatar="hide"
                 prefs="hide"
                 tone="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.minimal)"
               />
             </Box>
           </Stack>
@@ -140,6 +143,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 avatar="show"
                 prefs="show"
                 tone="muted"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.muted)"
               />
             </Box>
           </Stack>

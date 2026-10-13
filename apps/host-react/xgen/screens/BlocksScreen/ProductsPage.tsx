@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Product,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -85,6 +86,7 @@ export function ProductsPage() {
                 action="button"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.grid3)}
               />
             </Box>
           </Stack>
@@ -114,6 +116,7 @@ export function ProductsPage() {
                 action="button"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.grid4)}
               />
             </Box>
           </Stack>
@@ -143,6 +146,7 @@ export function ProductsPage() {
                 action="button"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.grid2)}
               />
             </Box>
           </Stack>
@@ -172,6 +176,7 @@ export function ProductsPage() {
                 action="button"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.list)}
               />
             </Box>
           </Stack>
@@ -201,6 +206,7 @@ export function ProductsPage() {
                 action="button"
                 tone="default"
                 density="compact"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.catalog)}
               />
             </Box>
           </Stack>
@@ -230,6 +236,7 @@ export function ProductsPage() {
                 action="none"
                 tone="muted"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.browse)}
               />
             </Box>
           </Stack>
@@ -259,6 +266,7 @@ export function ProductsPage() {
                 action="button"
                 tone="default"
                 density="roomy"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.showcase)}
               />
             </Box>
           </Stack>
@@ -288,6 +296,7 @@ export function ProductsPage() {
                 action="button"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.rail)}
               />
             </Box>
           </Stack>
@@ -317,6 +326,7 @@ export function ProductsPage() {
                 action="button"
                 tone="default"
                 density="compact"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.railCompact)}
               />
             </Box>
           </Stack>

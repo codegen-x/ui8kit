@@ -9,6 +9,7 @@ import {
   MetricRow,
   PageIntro,
   SidebarNav,
+  tpl,
   type Event,
   type NavLink,
   type Point,
@@ -69,6 +70,7 @@ export function LayoutsPage() {
         width="full"
         user="show"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sidenav, ui.blocks.variants.sidenav.full)}
       />
       <SidebarNav
         label={ui.vibe.sidebar.label}
@@ -80,6 +82,7 @@ export function LayoutsPage() {
         width="compact"
         user="show"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sidenav, ui.blocks.variants.sidenav.compact)}
       />
       <BottomNav
         label={ui.vibe.bottom.label}
@@ -88,6 +91,7 @@ export function LayoutsPage() {
         labels="show"
         position="static"
         tone="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.bottomnav, ui.blocks.variants.bottomnav.labels)}
       />
       <MetricRow
         id="layouts-metrics"
@@ -97,6 +101,7 @@ export function LayoutsPage() {
         item="compact"
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.compact)}
       />
       <ChartPanel
         id="layouts-chart"
@@ -108,6 +113,7 @@ export function LayoutsPage() {
         chart="meters"
         size="default"
         tone="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.meters)}
       />
       <DashboardOverview
         id="layouts-overview"
@@ -128,6 +134,7 @@ export function LayoutsPage() {
         cols="4"
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.overview, ui.blocks.variants.overview.stacked)}
       />
     </>
   );

@@ -32,6 +32,7 @@ export type AuthCardProps = {
   layout?: "card" | "plain";
   social?: "none" | "show" | "first";
   level?: 1 | 2;
+  landmarkLabel?: string;
 };
 
 export function AuthCard({
@@ -47,6 +48,7 @@ export function AuthCard({
   layout = "card",
   social = "none",
   level = 2,
+  landmarkLabel,
 }: AuthCardProps) {
   return (
     <Block
@@ -55,9 +57,10 @@ export function AuthCard({
         "flex w-full flex-col gap-6",
         (((layout as string) === "card") ? "rounded bg-card p-6 inset-ring inset-ring-border" : "")
       )}
-      aria-labelledby={tpl("{0}-title", id)}
+      aria-labelledby={(landmarkLabel ? undefined : tpl("{0}-title", id))}
       data-testid="auth-card"
       data-mode={mode}
+      aria-label={landmarkLabel}
     >
       <Stack gap="2">
         <Title as={level} size="2xl" weight="bold" id={tpl("{0}-title", id)}>

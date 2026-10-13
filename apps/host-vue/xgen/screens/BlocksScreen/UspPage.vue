@@ -12,6 +12,7 @@ import {
   Text,
   Title,
   UspStrip,
+  tpl,
   type Feature,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -56,7 +57,14 @@ const perks = fromCodex<Feature>(perksEntries, PERKS_FIELDS);
             {{ ui.blocks.variants.usp.strip }}
           </Title>
           <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-            <UspStrip id="usp-strip" :perks="perks" layout="strip" tone="default" density="default" />
+            <UspStrip
+              id="usp-strip"
+              :perks="perks"
+              layout="strip"
+              tone="default"
+              density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.strip)"
+            />
           </Box>
         </Stack>
         <Stack
@@ -79,6 +87,7 @@ const perks = fromCodex<Feature>(perksEntries, PERKS_FIELDS);
               tone="default"
               density="default"
               :title="ui.commerce.usp.title"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.cards)"
             />
           </Box>
         </Stack>
@@ -95,7 +104,14 @@ const perks = fromCodex<Feature>(perksEntries, PERKS_FIELDS);
             {{ ui.blocks.variants.usp.stripCompact }}
           </Title>
           <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-            <UspStrip id="usp-stripCompact" :perks="perks" layout="strip" tone="default" density="compact" />
+            <UspStrip
+              id="usp-stripCompact"
+              :perks="perks"
+              layout="strip"
+              tone="default"
+              density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.stripCompact)"
+            />
           </Box>
         </Stack>
         <Stack
@@ -111,7 +127,14 @@ const perks = fromCodex<Feature>(perksEntries, PERKS_FIELDS);
             {{ ui.blocks.variants.usp.bar }}
           </Title>
           <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-            <UspStrip id="usp-bar" :perks="perks" layout="bar" tone="default" density="compact" />
+            <UspStrip
+              id="usp-bar"
+              :perks="perks"
+              layout="bar"
+              tone="default"
+              density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.bar)"
+            />
           </Box>
         </Stack>
         <Stack
@@ -127,7 +150,14 @@ const perks = fromCodex<Feature>(perksEntries, PERKS_FIELDS);
             {{ ui.blocks.variants.usp.barMuted }}
           </Title>
           <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-            <UspStrip id="usp-barMuted" :perks="perks" layout="bar" tone="muted" density="compact" />
+            <UspStrip
+              id="usp-barMuted"
+              :perks="perks"
+              layout="bar"
+              tone="muted"
+              density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.barMuted)"
+            />
           </Box>
         </Stack>
       </Stack>

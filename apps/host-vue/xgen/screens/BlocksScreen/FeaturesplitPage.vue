@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Feature,
   type Stat,
 } from "@ui8kit/vue-ui";
@@ -80,6 +81,7 @@ const FEATURESPLIT_ACTIONS = {
               mediaSide="start"
               tone="default"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.featuresplit, ui.blocks.variants.featuresplit.gridStart)"
             />
           </Box>
         </Stack>
@@ -108,6 +110,7 @@ const FEATURESPLIT_ACTIONS = {
               mediaSide="start"
               tone="default"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.featuresplit, ui.blocks.variants.featuresplit.statsStart)"
             />
           </Box>
         </Stack>
@@ -136,6 +139,7 @@ const FEATURESPLIT_ACTIONS = {
               mediaSide="end"
               tone="muted"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.featuresplit, ui.blocks.variants.featuresplit.gridMuted)"
             />
           </Box>
         </Stack>
@@ -164,6 +168,7 @@ const FEATURESPLIT_ACTIONS = {
               mediaSide="end"
               tone="default"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.featuresplit, ui.blocks.variants.featuresplit.metricCards)"
             />
           </Box>
         </Stack>
@@ -192,6 +197,7 @@ const FEATURESPLIT_ACTIONS = {
               mediaSide="end"
               tone="default"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.featuresplit, ui.blocks.variants.featuresplit.featureCards)"
             />
           </Box>
         </Stack>

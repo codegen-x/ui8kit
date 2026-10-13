@@ -9,6 +9,7 @@
     FeatureGrid,
     HeroClassic,
     TemplateGrid,
+    tpl,
     type CodeLine,
     type Faq,
     type FaqTab,
@@ -82,6 +83,7 @@
   media="none"
   tone="default"
   density="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.bento)}
 />
 <TemplateGrid
   id="developers-templates"
@@ -96,6 +98,7 @@
   cols="1-4"
   tone="default"
   density="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.templates, ui.blocks.variants.templates.grid4)}
 />
 <FeatureGrid
   id="developers-features"
@@ -108,6 +111,7 @@
   mediaSide="end"
   tone="default"
   density="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.tiles4)}
 />
 <FaqList
   id="developers-faq"
@@ -119,6 +123,7 @@
   cols="1"
   tone="default"
   density="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.tabs)}
 />
 <CtaBand
   id="developers-cta"
@@ -137,4 +142,5 @@
   tone="default"
   proof="none"
   density="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.split)}
 />

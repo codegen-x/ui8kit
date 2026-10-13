@@ -5,6 +5,7 @@
 export type NavBlockProps = {
   label?: string;
   testid?: string;
+  landmarkLabel?: string;
   class?: string;
 };
 </script>
@@ -13,12 +14,12 @@ export type NavBlockProps = {
 import Block from "../primitives/block/block.vue";
 import { cn } from "../utils";
 
-const { label, testid, class: className } = defineProps<NavBlockProps>();
+const { label, testid, landmarkLabel, class: className } = defineProps<NavBlockProps>();
 defineSlots<{ default?(): unknown }>();
 </script>
 
 <template>
-  <Block tag="nav" :class="cn(className)" :aria-label="label" :data-testid="testid">
+  <Block tag="nav" :class="cn(className)" :aria-label="(landmarkLabel ?? label)" :data-testid="testid">
     <slot />
   </Block>
 </template>

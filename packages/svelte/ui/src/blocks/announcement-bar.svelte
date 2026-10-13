@@ -20,6 +20,7 @@
     badgeLabel?: string;
     badge?: "none" | "show";
     position?: "top" | "bottom";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -47,6 +48,7 @@
     badgeLabel,
     badge = "none",
     position = "top",
+    landmarkLabel,
   }: AnnouncementBarProps = $props();
 </script>
 
@@ -60,7 +62,7 @@
       : "bg-primary text-primary-foreground"
     )
   )}
-  aria-label={label}
+  aria-label={(landmarkLabel ?? label)}
   data-testid="announcement"
   data-layout={layout}
 >

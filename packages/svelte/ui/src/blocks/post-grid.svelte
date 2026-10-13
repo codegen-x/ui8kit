@@ -24,6 +24,7 @@
     meta?: "full" | "short" | "news";
     tone?: "default" | "muted";
     density?: "default" | "compact";
+    landmarkLabel?: string;
     ontopic?: (value: string) => void;
   };
 </script>
@@ -50,6 +51,7 @@
     meta = "full",
     tone = "default",
     density = "default",
+    landmarkLabel,
     ontopic,
   }: PostGridProps = $props();
 </script>
@@ -62,6 +64,7 @@
   density={(((density as string) === "compact") ? "compact" : "default")}
   measure={(((meta as string) === "news") ? "fill" : "default")}
   class={(((meta as string) === "news") ? "py-0" : "")}
+  landmarkLabel={landmarkLabel}
 >
   {#if (filter?.mode === "topics")}
     <Switcher label={filter?.label}>
@@ -82,7 +85,7 @@
       <Grid cols={cols} class="gap-6">
         {#each posts.filter((i) => !filter?.topic || i["category"] === filter?.topic) as p, i (p.id)}
           {#if (i > 0)}
-            <PostCard post={p} labels={labels} layout="vertical" media={media} meta={meta} density={density} />
+            <PostCard post={p} labels={labels} media={media} meta={meta} density={density} />
           {/if}
         {/each}
       </Grid>

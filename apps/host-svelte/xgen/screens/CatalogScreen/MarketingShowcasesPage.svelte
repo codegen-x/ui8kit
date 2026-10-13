@@ -87,6 +87,7 @@
               media="none"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.bento)}
             />
           </Box>
         </Stack>
@@ -111,6 +112,7 @@
               media="none"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.even)}
             />
           </Box>
         </Stack>
@@ -135,6 +137,7 @@
               media="image"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.images)}
             />
           </Box>
         </Stack>
@@ -159,6 +162,7 @@
               media="none"
               tone="muted"
               density="compact"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.muted)}
             />
           </Box>
         </Stack>
@@ -201,6 +205,7 @@
               panel="split"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featuretabs, ui.blocks.variants.featuretabs.split)}
             />
           </Box>
         </Stack>
@@ -226,6 +231,7 @@
               panel="stack"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featuretabs, ui.blocks.variants.featuretabs.stack)}
             />
           </Box>
         </Stack>
@@ -251,6 +257,7 @@
               panel="split"
               tone="muted"
               density="compact"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featuretabs, ui.blocks.variants.featuretabs.muted)}
             />
           </Box>
         </Stack>
@@ -292,6 +299,7 @@
               media="none"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.accordion, ui.blocks.variants.accordion.first)}
             />
           </Box>
         </Stack>
@@ -316,6 +324,7 @@
               media="none"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.accordion, ui.blocks.variants.accordion.closed)}
             />
           </Box>
         </Stack>
@@ -340,6 +349,7 @@
               media="image"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.accordion, ui.blocks.variants.accordion.media)}
             />
           </Box>
         </Stack>
@@ -364,6 +374,7 @@
               media="none"
               tone="muted"
               density="compact"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.accordion, ui.blocks.variants.accordion.muted)}
             />
           </Box>
         </Stack>
@@ -406,6 +417,7 @@
               item="plain"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sticky, ui.blocks.variants.sticky.end)}
             />
           </Box>
         </Stack>
@@ -431,6 +443,7 @@
               item="plain"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sticky, ui.blocks.variants.sticky.start)}
             />
           </Box>
         </Stack>
@@ -456,6 +469,7 @@
               item="card"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sticky, ui.blocks.variants.sticky.card)}
             />
           </Box>
         </Stack>
@@ -481,6 +495,7 @@
               item="plain"
               tone="muted"
               density="compact"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sticky, ui.blocks.variants.sticky.muted)}
             />
           </Box>
         </Stack>

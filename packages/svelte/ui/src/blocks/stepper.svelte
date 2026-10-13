@@ -20,6 +20,7 @@
     layout?: "horizontal" | "vertical";
     marker?: "number" | "icon";
     summary?: "show" | "hide";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -48,10 +49,11 @@
     layout = "horizontal",
     marker = "number",
     summary = "show",
+    landmarkLabel,
   }: StepperProps = $props();
 </script>
 
-<SectionFrame id={id} title={title} measure="3xl">
+<SectionFrame id={id} title={title} measure="3xl" landmarkLabel={landmarkLabel}>
   <Stack gap="6" align="stretch" data-testid="stepper">
     <Text size="sm" class="text-muted-foreground">
       {tpl(stepLabel, current, (steps?.length ?? 0))}

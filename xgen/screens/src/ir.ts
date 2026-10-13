@@ -296,6 +296,9 @@ export interface ComposedSpec {
   chunks?: boolean;
   /** every area must hold exactly one level 1 heading (an h1 per page) */
   requireH1?: boolean;
+  /** every block of an area after the lead is named after its block and variant (`landmarkLabel`): different blocks of one page
+   *  may share a heading or a nav name (the theme pages) and landmark names must stay unique */
+  nameLandmarks?: boolean;
   /** the frame reads the menu: `nav.links` (from `menu`) and `nav.current` (the id of the current route) */
   nav?: boolean;
   /** the menu of the screen, in order; required when `nav` is set */

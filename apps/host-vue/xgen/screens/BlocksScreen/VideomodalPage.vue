@@ -12,6 +12,7 @@ import {
   Text,
   Title,
   VideoModal,
+  tpl,
   type Chapter,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -67,6 +68,7 @@ const chapters = fromCodex<Chapter>(chaptersEntries, CHAPTERS_FIELDS);
               size="default"
               outline="none"
               tone="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.default)"
             />
           </Box>
         </Stack>
@@ -94,6 +96,7 @@ const chapters = fromCodex<Chapter>(chaptersEntries, CHAPTERS_FIELDS);
               size="wide"
               outline="none"
               tone="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.wide)"
             />
           </Box>
         </Stack>
@@ -121,6 +124,7 @@ const chapters = fromCodex<Chapter>(chaptersEntries, CHAPTERS_FIELDS);
               size="default"
               outline="chapters"
               tone="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.chapters)"
             />
           </Box>
         </Stack>
@@ -148,6 +152,7 @@ const chapters = fromCodex<Chapter>(chaptersEntries, CHAPTERS_FIELDS);
               size="default"
               outline="none"
               tone="muted"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.muted)"
             />
           </Box>
         </Stack>

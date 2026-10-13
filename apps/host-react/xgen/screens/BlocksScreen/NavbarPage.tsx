@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type NavLink,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -75,6 +76,7 @@ export function NavbarPage() {
                 layout="inline"
                 over="none"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.inline)}
                 onTheme={() => actions.toggleTheme()}
               />
             </Box>
@@ -102,6 +104,7 @@ export function NavbarPage() {
                 layout="split"
                 over="none"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.split)}
                 onTheme={() => actions.toggleTheme()}
               />
             </Box>
@@ -129,6 +132,7 @@ export function NavbarPage() {
                 layout="search"
                 over="none"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.search)}
                 onTheme={() => actions.toggleTheme()}
               />
             </Box>
@@ -156,6 +160,7 @@ export function NavbarPage() {
                 layout="inline"
                 over="media"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.media)}
                 onTheme={() => actions.toggleTheme()}
               />
             </Box>
@@ -183,6 +188,7 @@ export function NavbarPage() {
                 layout="inline"
                 over="none"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.plain)}
                 onTheme={() => actions.toggleTheme()}
               />
             </Box>
@@ -210,6 +216,7 @@ export function NavbarPage() {
                 layout="inline"
                 over="none"
                 tone="inverse"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.inverse)}
                 onTheme={() => actions.toggleTheme()}
               />
             </Box>

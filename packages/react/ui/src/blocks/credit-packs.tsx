@@ -28,6 +28,7 @@ export type CreditPacksProps = {
   item?: "tile" | "row";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function CreditPacks({
@@ -40,6 +41,7 @@ export function CreditPacks({
   item = "tile",
   tone = "default",
   density = "default",
+  landmarkLabel,
 }: CreditPacksProps) {
   return (
     <SectionFrame
@@ -48,6 +50,7 @@ export function CreditPacks({
       tone={tone}
       density={density}
       measure={(((item as string) === "row") ? "2xl" : "default")}
+      landmarkLabel={landmarkLabel}
     >
       <Grid
         cols={

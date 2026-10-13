@@ -10,6 +10,7 @@
     FeatureSplit,
     FeatureTabs,
     HeroClassic,
+    tpl,
     type CodeLine,
     type Feature,
     type Stat,
@@ -68,6 +69,7 @@
   mediaSide="end"
   tone="default"
   density="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.grid)}
 />
 <FeatureSplit
   id="home-featuresplit"
@@ -86,6 +88,7 @@
   layout="metrics"
   mediaSide="end"
   tone="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featuresplit, ui.blocks.variants.featuresplit.metricCards)}
 />
 <FeatureShowcase
   id="home-featureshowcase"
@@ -96,6 +99,7 @@
   item="panel"
   cols="4"
   tone="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featureshowcase, ui.blocks.variants.featureshowcase.panelCards4)}
 />
 <BentoGrid
   id="home-bento"
@@ -105,6 +109,7 @@
   media="image"
   tone="default"
   density="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.images)}
 />
 <FeatureTabs
   id="home-featuretabs"
@@ -115,6 +120,7 @@
   panel="split"
   tone="default"
   density="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featuretabs, ui.blocks.variants.featuretabs.split)}
 />
 <FeatureAccordion
   id="home-accordion"
@@ -124,4 +130,5 @@
   media="image"
   tone="default"
   density="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.accordion, ui.blocks.variants.accordion.media)}
 />

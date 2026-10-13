@@ -8,6 +8,7 @@
     PageIntro,
     SiteFooter,
     SiteHeader,
+    tpl,
     type MegaGroup,
     type NavLink,
   } from "@ui8kit/svelte-ui";
@@ -43,6 +44,7 @@
   layout="stacked"
   position="static"
   actions="none"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.stacked)}
   ontheme={() => actions.toggleTheme()}
 />
 <NavBar
@@ -61,6 +63,7 @@
   layout="split"
   over="none"
   tone="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.split)}
   ontheme={() => actions.toggleTheme()}
 />
 <NavBar
@@ -79,6 +82,7 @@
   layout="search"
   over="none"
   tone="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.search)}
   ontheme={() => actions.toggleTheme()}
 />
 <NavBar
@@ -97,6 +101,7 @@
   layout="inline"
   over="media"
   tone="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.media)}
   ontheme={() => actions.toggleTheme()}
 />
 <MegaMenu
@@ -110,5 +115,11 @@
   panel="open"
   cols="2"
   promo="none"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.twoCols)}
 />
-<SiteFooter labels={ui.site.footer} layout="centered" density="default" />
+<SiteFooter
+  labels={ui.site.footer}
+  layout="centered"
+  density="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.footer, ui.blocks.variants.footer.centered)}
+/>

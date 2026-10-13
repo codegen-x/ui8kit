@@ -22,6 +22,7 @@
     cols?: "2" | "3";
     mediaSide?: "end" | "start";
     tone?: "default" | "muted";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -47,6 +48,7 @@
     cols = "3",
     mediaSide = "start",
     tone = "default",
+    landmarkLabel,
   }: PostShowcaseProps = $props();
 </script>
 
@@ -59,6 +61,7 @@
     tone={tone}
     layout="split"
     media={{ show: true, side: mediaSide }}
+    landmarkLabel={landmarkLabel}
   >
     <Link href={action.href} size="sm" data-testid="section-action">
       {action.label}
@@ -83,6 +86,7 @@
     tone={tone}
     layout="split"
     media={{ show: true, side: mediaSide }}
+    landmarkLabel={landmarkLabel}
   >
     {#each posts as p, i (p.id)}
       {#if (i < 1)}
@@ -94,7 +98,7 @@
     {/snippet}
   </SectionFrame>
 {:else}
-  <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone}>
+  <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone} landmarkLabel={landmarkLabel}>
     <Box
       class={
         (cols as string) === "2" ? "grid grid-cols-1 gap-6 md:grid-cols-2"

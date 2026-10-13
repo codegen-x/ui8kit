@@ -95,6 +95,7 @@ const wizard = fromCodex<WizardStep>(wizardEntries, WIZARD_FIELDS);
                   layout="card"
                   social="none"
                   :level="2"
+                  :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.signin)"
                 />
               </Box>
             </Box>
@@ -126,6 +127,7 @@ const wizard = fromCodex<WizardStep>(wizardEntries, WIZARD_FIELDS);
                   layout="card"
                   social="none"
                   :level="2"
+                  :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.magic)"
                 />
               </Box>
             </Box>
@@ -157,6 +159,7 @@ const wizard = fromCodex<WizardStep>(wizardEntries, WIZARD_FIELDS);
                   layout="card"
                   social="first"
                   :level="2"
+                  :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.socialFirst)"
                 />
               </Box>
             </Box>
@@ -188,6 +191,7 @@ const wizard = fromCodex<WizardStep>(wizardEntries, WIZARD_FIELDS);
                   layout="card"
                   social="none"
                   :level="2"
+                  :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.signup)"
                 />
               </Box>
             </Box>
@@ -219,6 +223,7 @@ const wizard = fromCodex<WizardStep>(wizardEntries, WIZARD_FIELDS);
                   layout="card"
                   social="none"
                   :level="2"
+                  :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.reset)"
                 />
               </Box>
             </Box>
@@ -250,6 +255,7 @@ const wizard = fromCodex<WizardStep>(wizardEntries, WIZARD_FIELDS);
                   layout="plain"
                   social="none"
                   :level="2"
+                  :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.plain)"
                 />
               </Box>
             </Box>
@@ -281,6 +287,7 @@ const wizard = fromCodex<WizardStep>(wizardEntries, WIZARD_FIELDS);
                   layout="card"
                   social="show"
                   :level="2"
+                  :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.social)"
                 />
               </Box>
             </Box>
@@ -312,6 +319,7 @@ const wizard = fromCodex<WizardStep>(wizardEntries, WIZARD_FIELDS);
                   layout="plain"
                   social="show"
                   :level="2"
+                  :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.signupSocial)"
                 />
               </Box>
             </Box>
@@ -355,6 +363,7 @@ const wizard = fromCodex<WizardStep>(wizardEntries, WIZARD_FIELDS);
                 progress="bar"
                 layout="card"
                 :level="2"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.wizard, ui.blocks.variants.wizard.bar)"
               />
             </Box>
           </Stack>
@@ -380,6 +389,7 @@ const wizard = fromCodex<WizardStep>(wizardEntries, WIZARD_FIELDS);
                 progress="list"
                 layout="card"
                 :level="2"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.wizard, ui.blocks.variants.wizard.list)"
               />
             </Box>
           </Stack>
@@ -405,6 +415,7 @@ const wizard = fromCodex<WizardStep>(wizardEntries, WIZARD_FIELDS);
                 progress="bar"
                 layout="plain"
                 :level="2"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.wizard, ui.blocks.variants.wizard.plain)"
               />
             </Box>
           </Stack>
@@ -430,6 +441,7 @@ const wizard = fromCodex<WizardStep>(wizardEntries, WIZARD_FIELDS);
                 progress="list"
                 layout="plain"
                 :level="2"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.wizard, ui.blocks.variants.wizard.second)"
               />
             </Box>
           </Stack>

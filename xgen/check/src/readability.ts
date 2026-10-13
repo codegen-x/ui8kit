@@ -37,7 +37,7 @@ export function measure(plan: Plan): Record<string, Measure> {
       put(key, m);
     }
   }
-  for (const o of plan.inputs.organisms) if (o.value.props.length > READABILITY.props) put(kebab(o.value.name), { props: o.value.props.length });
+  for (const o of plan.inputs.organisms) { const n = o.value.props.filter((p) => p.name !== "landmarkLabel").length; if (n > READABILITY.props) put(kebab(o.value.name), { props: n }); }
   for (const { brick } of plan.bricks) for (const p of brick.parts) {
     const n = p.props.filter((x) => !["Class", "Attrs", "Children"].includes(x.name)).length;
     if (n > READABILITY.props) put(kebab(p.name), { props: n });

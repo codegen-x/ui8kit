@@ -21,6 +21,7 @@ export type IconWallProps = {
   item?: "tile" | "chip";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function IconWall({
@@ -31,6 +32,7 @@ export function IconWall({
   item = "tile",
   tone = "default",
   density = "default",
+  landmarkLabel,
 }: IconWallProps) {
   const askedCols =
     ((item as string) === "chip") && ((cols as string) === "6") ? "2-6"
@@ -40,7 +42,7 @@ export function IconWall({
     : "3-6";
   const wallCols = fitCols(askedCols, (features?.length ?? 0));
   return (
-    <SectionFrame id={id} title={title} tone={tone} density={density}>
+    <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
       <Grid cols={wallCols} className="gap-4" data-testid="items">
         {(features ?? []).map((f) => (
           <Box key={f.id}

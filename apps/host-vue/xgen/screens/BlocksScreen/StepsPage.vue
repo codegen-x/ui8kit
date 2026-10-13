@@ -2,7 +2,19 @@
 <!-- Source: xgen/specs/screens/blocks.json -->
 <!-- The steps page of BlocksScreen. -->
 <script setup lang="ts">
-import { Block, Box, Container, Group, Link, Stack, StepsList, Text, Title, type Step } from "@ui8kit/vue-ui";
+import {
+  Block,
+  Box,
+  Container,
+  Group,
+  Link,
+  Stack,
+  StepsList,
+  Text,
+  Title,
+  tpl,
+  type Step,
+} from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { steps as stepsEntries } from "@ui8kit/app-shared/data/steps";
@@ -54,6 +66,7 @@ const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
               align="start"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.row)"
             />
           </Box>
         </Stack>
@@ -79,6 +92,7 @@ const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
               align="start"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.rowIcons)"
             />
           </Box>
         </Stack>
@@ -104,6 +118,7 @@ const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
               align="start"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.column)"
             />
           </Box>
         </Stack>
@@ -129,6 +144,7 @@ const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
               align="center"
               tone="muted"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.centered)"
             />
           </Box>
         </Stack>
@@ -154,6 +170,7 @@ const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
               align="start"
               tone="default"
               density="roomy"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.columnIcons)"
             />
           </Box>
         </Stack>
@@ -179,6 +196,7 @@ const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
               align="start"
               tone="default"
               density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.compact)"
             />
           </Box>
         </Stack>

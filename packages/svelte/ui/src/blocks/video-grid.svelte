@@ -19,6 +19,7 @@
     caption?: "below" | "overlay";
     tone?: "default" | "muted";
     density?: "default" | "compact";
+    landmarkLabel?: string;
     onplay?: (id: string) => void;
   };
 </script>
@@ -44,16 +45,17 @@
     caption = "below",
     tone = "default",
     density = "default",
+    landmarkLabel,
     onplay,
   }: VideoGridProps = $props();
 </script>
 
-<SectionFrame id={id} title={title} tone={tone} density={density}>
+<SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
   <Grid cols={cols} class="gap-4" data-testid="items">
     {#each quotes as q (q.id)}
       <FigureBlock class="m-0 flex flex-col gap-4" testid="item">
         <Box class="relative">
-          <MediaFrame alt={q.author} ratio="16/9" />
+          <MediaFrame alt={q.author} />
           <Button
             variant="default"
             size="default"

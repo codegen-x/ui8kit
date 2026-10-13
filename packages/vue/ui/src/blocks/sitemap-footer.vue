@@ -21,6 +21,7 @@ export type SitemapFooterProps = {
   id?: string;
   layout?: "columns" | "row" | "card";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -54,17 +55,24 @@ const {
   id = "footer",
   layout = "columns",
   density = "default",
+  landmarkLabel,
 } = defineProps<SitemapFooterProps>();
 </script>
 
 <template>
-  <FooterCard v-if="((layout as string) === 'card')" :label="label" :brand="brand" :groups="groups" />
-  <Block
-    v-else
+  <FooterCard
+    v-if="((layout as string) === 'card')"
+    :label="label"
+    :brand="brand"
+    :groups="groups"
+    :landmarkLabel="landmarkLabel"
+  />
+  <Block v-else
     tag="footer"
     class="mt-12 border-t border-border"
     data-testid="site-footer"
     :data-layout="layout"
+    :aria-label="landmarkLabel"
   >
     <Container
       :class="cn(
@@ -104,14 +112,14 @@ const {
           </Text>
         </Stack>
         <Box class="min-w-0 flex-1">
-          <FooterColumns :label="label" :groups="groups" />
+          <FooterColumns :label="label" :groups="groups" :landmarkLabel="landmarkLabel" />
         </Box>
       </Box>
       <Group v-else gap="6" align="center" justify="between" class="flex-wrap">
         <Text size="base" weight="bold">
           {{ brand }}
         </Text>
-        <NavBlock :label="label">
+        <NavBlock :label="(landmarkLabel ? tpl('{0}, {1}', label, landmarkLabel) : label)">
           <Group gap="4" class="flex-wrap">
             <Link v-for="g in groups" :key="g.id" href="#/" variant="default" class="text-sm" data-testid="group">
               {{ g.title }}

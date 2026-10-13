@@ -25,6 +25,7 @@ export type QuoteSplitProps = {
   layout?: "media" | "logos" | "rating" | "stack" | "compact" | "bento";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -51,18 +52,18 @@ const {
   layout = "media",
   mediaSide = "end",
   tone = "default",
+  landmarkLabel,
 } = defineProps<QuoteSplitProps>();
 </script>
 
 <template>
-  <SectionFrame
-    v-if="(((layout as string) === 'compact') || ((layout as string) === 'bento'))"
+  <SectionFrame v-if="(((layout as string) === 'compact') || ((layout as string) === 'bento'))"
     :id="id"
     :title="title"
     :lead="lead"
     :heading="{ badge }"
     :tone="tone"
-    density="default"
+    :landmarkLabel="landmarkLabel"
   >
     <QuoteFigures v-if="((layout as string) === 'bento')" :extras="extras" />
     <Box
@@ -74,7 +75,6 @@ const {
       <QuoteSlot v-for="(q, i) in quotes" :key="q.id"
         :q="q"
         :labels="labels"
-        kind="card"
         :layout="((((layout as string) === 'bento') && (i === 0)) ? 'single' : 'grid')"
         :class="((((layout as string) === 'bento') && (i === 0)) ? 'lg:row-span-3' : '')"
       />
@@ -86,9 +86,9 @@ const {
     :lead="lead"
     :heading="{ badge }"
     :tone="tone"
-    density="default"
     layout="split"
     :media="{ show: true, side: mediaSide }"
+    :landmarkLabel="landmarkLabel"
   >
     <template v-if="(((layout as string) === 'media') || ((layout as string) === 'logos') || ((layout as string) === 'rating'))">
       <template v-for="(q, i) in quotes" :key="q.id">
@@ -104,7 +104,7 @@ const {
     <QuoteLogoTiles v-if="((layout as string) === 'logos')" :extras="extras" />
     <Stack v-if="((layout as string) === 'stack')" gap="4" align="stretch">
       <template v-for="(q, i) in quotes" :key="q.id">
-        <QuoteSlot v-if="(i < 3)" :q="q" :labels="labels" kind="card" layout="stack" class="" />
+        <QuoteSlot v-if="(i < 3)" :q="q" :labels="labels" layout="stack" class="" />
       </template>
     </Stack>
     <ActionGroup v-if="(((layout as string) === 'media') || ((layout as string) === 'logos') || ((layout as string) === 'rating'))"
@@ -112,7 +112,6 @@ const {
       :primaryHref="actions.href"
       :secondary="((actions.mode === 'two') ? actions.secondary : undefined)"
       :secondaryHref="actions.secondaryHref"
-      align="start"
     />
     <template #aside>
       <QuoteRatingPanel v-if="((layout as string) === 'rating')" :extras="extras" :labels="labels" />

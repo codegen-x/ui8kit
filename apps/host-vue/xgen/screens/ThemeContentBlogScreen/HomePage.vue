@@ -2,7 +2,15 @@
 <!-- Source: xgen/specs/screens/theme-content-blog.json -->
 <!-- The home page of ThemeContentBlogScreen. -->
 <script setup lang="ts">
-import { NewsletterForm, PageIntro, PostGrid, PostShowcase, type Post, type PostTopic } from "@ui8kit/vue-ui";
+import {
+  NewsletterForm,
+  PageIntro,
+  PostGrid,
+  PostShowcase,
+  tpl,
+  type Post,
+  type PostTopic,
+} from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { posts as postsEntries } from "@ui8kit/app-shared/data/posts";
@@ -48,6 +56,7 @@ const topics = fromCodex<PostTopic>(topicsEntries, TOPICS_FIELDS);
     meta="full"
     tone="default"
     density="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.magazine)"
   />
   <PostShowcase
     id="home-postshowcase"
@@ -61,6 +70,7 @@ const topics = fromCodex<PostTopic>(topicsEntries, TOPICS_FIELDS);
     cols="3"
     mediaSide="start"
     tone="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.postshowcase, ui.blocks.variants.postshowcase.introCards)"
   />
   <NewsletterForm
     id="home-newsletter"
@@ -73,5 +83,6 @@ const topics = fromCodex<PostTopic>(topicsEntries, TOPICS_FIELDS);
     terms="hide"
     tone="default"
     align="center"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.stacked)"
   />
 </template>

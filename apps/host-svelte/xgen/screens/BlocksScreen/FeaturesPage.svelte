@@ -12,6 +12,7 @@
     Stack,
     Text,
     Title,
+    tpl,
     type Feature,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -66,6 +67,7 @@
             mediaSide="end"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.grid)}
           />
         </Box>
       </Stack>
@@ -93,6 +95,7 @@
             mediaSide="end"
             tone="default"
             density="roomy"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.grid2)}
           />
         </Box>
       </Stack>
@@ -120,6 +123,7 @@
             mediaSide="end"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.tiles4)}
           />
         </Box>
       </Stack>
@@ -147,6 +151,7 @@
             mediaSide="end"
             tone="default"
             density="compact"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.cells4)}
           />
         </Box>
       </Stack>
@@ -174,6 +179,7 @@
             mediaSide="end"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.rows)}
           />
         </Box>
       </Stack>
@@ -201,6 +207,7 @@
             mediaSide="start"
             tone="default"
             density="compact"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.rowsStart)}
           />
         </Box>
       </Stack>
@@ -228,6 +235,7 @@
             mediaSide="alternate"
             tone="muted"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.rowsAlternate)}
           />
         </Box>
       </Stack>
@@ -255,6 +263,7 @@
             mediaSide="end"
             tone="muted"
             density="compact"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.tilesMuted)}
           />
         </Box>
       </Stack>

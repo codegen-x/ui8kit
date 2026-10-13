@@ -19,6 +19,7 @@
     terms?: "show" | "hide";
     tone?: "default" | "muted";
     align?: "start" | "center";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -44,6 +45,7 @@
     terms = "hide",
     tone = "default",
     align = "center",
+    landmarkLabel,
   }: NewsletterFormProps = $props();
 </script>
 
@@ -55,6 +57,7 @@
   align={align}
   layout={(((layout as string) === "split") ? "split" : "stack")}
   media={{ show: ((layout as string) === "split") }}
+  landmarkLabel={landmarkLabel}
 >
   <Form
     method="dialog"

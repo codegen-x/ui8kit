@@ -2,7 +2,7 @@
 <!-- Source: xgen/specs/screens/theme-account-portal.json -->
 <!-- The profile page of ThemeAccountPortalScreen. -->
 <script lang="ts">
-  import { PageIntro, ProfileForm } from "@ui8kit/svelte-ui";
+  import { PageIntro, ProfileForm, tpl } from "@ui8kit/svelte-ui";
   import { ui } from "@ui8kit/app-shared/content";
 
 </script>
@@ -26,6 +26,7 @@
   avatar="show"
   prefs="show"
   tone="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.split)}
 />
 <ProfileForm
   id="profile-profile-2"
@@ -36,4 +37,5 @@
   avatar="show"
   prefs="show"
   tone="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.profile, ui.blocks.variants.profile.stacked)}
 />

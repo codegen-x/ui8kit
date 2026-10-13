@@ -70,6 +70,7 @@ export function AppAuthPagesPage() {
                   mode="signin"
                   social="none"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.split)}
                 />
               </Box>
             </Stack>
@@ -99,6 +100,7 @@ export function AppAuthPagesPage() {
                   mode="signin"
                   social="none"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.splitStart)}
                 />
               </Box>
             </Stack>
@@ -128,6 +130,7 @@ export function AppAuthPagesPage() {
                   mode="signin"
                   social="none"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.centered)}
                 />
               </Box>
             </Stack>
@@ -157,6 +160,7 @@ export function AppAuthPagesPage() {
                   mode="signin"
                   social="none"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.minimal)}
                 />
               </Box>
             </Stack>
@@ -190,6 +194,7 @@ export function AppAuthPagesPage() {
                   mode="signup"
                   social="none"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.signup)}
                 />
               </Box>
             </Stack>
@@ -219,6 +224,7 @@ export function AppAuthPagesPage() {
                   mode="reset"
                   social="none"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.reset)}
                 />
               </Box>
             </Stack>
@@ -248,6 +254,7 @@ export function AppAuthPagesPage() {
                   mode="magic"
                   social="none"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.magic)}
                 />
               </Box>
             </Stack>
@@ -277,6 +284,7 @@ export function AppAuthPagesPage() {
                   mode="signin"
                   social="show"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.social)}
                 />
               </Box>
             </Stack>
@@ -306,6 +314,7 @@ export function AppAuthPagesPage() {
                   mode="signin"
                   social="first"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.authpage, ui.blocks.variants.authpage.socialFirst)}
                 />
               </Box>
             </Stack>

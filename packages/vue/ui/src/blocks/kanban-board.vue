@@ -18,6 +18,7 @@ export type KanbanBoardProps = {
   cols?: "2" | "3";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -43,11 +44,12 @@ const {
   cols = "3",
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<KanbanBoardProps>();
 </script>
 
 <template>
-  <SectionFrame :id="id" :title="title" :tone="tone" :density="density">
+  <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
     <Grid :cols="(((cols as string) === '2') ? '1-2' : '1-3')" class="items-start gap-4" data-testid="lanes">
       <Stack
         v-for="lane in lanes"

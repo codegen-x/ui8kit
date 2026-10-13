@@ -16,6 +16,7 @@ export type FeatureAccordionProps = {
   multiple?: boolean;
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -39,6 +40,7 @@ const {
   multiple = false,
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<FeatureAccordionProps>();
 </script>
 
@@ -50,6 +52,7 @@ const {
     :density="density"
     :layout="(((media as string) === 'image') ? 'split' : 'stack')"
     :media="{ show: ((media as string) === 'image') }"
+    :landmarkLabel="landmarkLabel"
   >
     <Stack gap="0" align="stretch" data-testid="items">
       <Disclosure v-for="(f, i) in features" :key="f.id"

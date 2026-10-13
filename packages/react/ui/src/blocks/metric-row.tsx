@@ -23,6 +23,7 @@ export type MetricRowProps = {
   item?: "tile" | "compact";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function MetricRow({
@@ -33,9 +34,10 @@ export function MetricRow({
   item = "tile",
   tone = "default",
   density = "default",
+  landmarkLabel,
 }: MetricRowProps) {
   return (
-    <SectionFrame id={id} title={title} tone={tone} density={density}>
+    <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
       <Grid cols={(((cols as string) === "2") ? "1-2" : "1-4")} className="gap-4" data-testid="items">
         {(metrics ?? []).map((m) => (
           <Fragment key={m.id}>

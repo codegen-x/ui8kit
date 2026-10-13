@@ -138,6 +138,11 @@
         "ts": "\"window\" | \"page\""
       },
       "default": "window"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
     }
   ],
   "derived": [
@@ -183,7 +188,19 @@
           "$": "id"
         },
         "aria-labelledby": {
-          "$": "titleId"
+          "op": "cond",
+          "args": [
+            {
+              "$": "landmarkLabel"
+            },
+            {
+              "op": "undef",
+              "args": []
+            },
+            {
+              "$": "titleId"
+            }
+          ]
         },
         "data-testid": "dashboard-shell",
         "data-topbar": {
@@ -194,6 +211,9 @@
         },
         "data-footer": {
           "$": "footer"
+        },
+        "aria-label": {
+          "$": "landmarkLabel"
         }
       },
       "children": [
@@ -265,7 +285,6 @@
                         "nav": {
                           "$": "nav"
                         },
-                        "brand": "show",
                         "links": {
                           "op": "cond",
                           "args": [
@@ -284,6 +303,9 @@
                         },
                         "search": {
                           "$": "search"
+                        },
+                        "landmarkLabel": {
+                          "$": "landmarkLabel"
                         }
                       }
                     }
@@ -354,6 +376,9 @@
                                 "hide",
                                 "show"
                               ]
+                            },
+                            "landmarkLabel": {
+                              "$": "landmarkLabel"
                             }
                           }
                         }
@@ -416,6 +441,9 @@
                                 },
                                 "search": {
                                   "$": "search"
+                                },
+                                "landmarkLabel": {
+                                  "$": "landmarkLabel"
                                 }
                               }
                             }
@@ -455,7 +483,10 @@
                                 "nav": {
                                   "$": "nav"
                                 },
-                                "place": "inset"
+                                "place": "inset",
+                                "landmarkLabel": {
+                                  "$": "landmarkLabel"
+                                }
                               }
                             }
                           ]
@@ -481,7 +512,9 @@
                         "nav": {
                           "$": "nav"
                         },
-                        "place": "full"
+                        "landmarkLabel": {
+                          "$": "landmarkLabel"
+                        }
                       }
                     }
                   ]

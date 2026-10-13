@@ -12,6 +12,7 @@
   export type FaqHelpProps = {
     labels: FaqSplitLabels;
     channels: Feature[];
+    landmarkLabel?: string;
   };
 </script>
 
@@ -25,13 +26,13 @@
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
 
-  let { labels, channels }: FaqHelpProps = $props();
+  let { labels, channels, landmarkLabel }: FaqHelpProps = $props();
 </script>
 
 <Block
   tag="aside"
   class="rounded bg-card inset-ring inset-ring-border flex flex-col gap-6 p-6"
-  aria-label={labels.asideTitle}
+  aria-label={(landmarkLabel ?? labels.asideTitle)}
   data-testid="faq-help"
 >
   <Stack gap="2">

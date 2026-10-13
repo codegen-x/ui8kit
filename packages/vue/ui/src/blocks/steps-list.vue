@@ -16,6 +16,7 @@ export type StepsListProps = {
   align?: "start" | "center";
   tone?: "default" | "muted";
   density?: "roomy" | "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -40,6 +41,7 @@ const {
   align = "start",
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<StepsListProps>();
 </script>
 
@@ -51,6 +53,7 @@ const {
     :density="density"
     :align="align"
     :measure="(((layout as string) === 'row') ? 'default' : '2xl')"
+    :landmarkLabel="landmarkLabel"
   >
     <List
       tag="ol"

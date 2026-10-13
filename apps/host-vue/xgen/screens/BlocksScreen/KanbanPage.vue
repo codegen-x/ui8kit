@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type BoardCard,
   type Lane,
 } from "@ui8kit/vue-ui";
@@ -70,6 +71,7 @@ const cards = fromCodex<BoardCard>(cardsEntries, CARDS_FIELDS);
               cols="3"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.kanban, ui.blocks.variants.kanban.detail)"
             />
           </Box>
         </Stack>
@@ -96,6 +98,7 @@ const cards = fromCodex<BoardCard>(cardsEntries, CARDS_FIELDS);
               cols="3"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.kanban, ui.blocks.variants.kanban.simple)"
             />
           </Box>
         </Stack>
@@ -122,6 +125,7 @@ const cards = fromCodex<BoardCard>(cardsEntries, CARDS_FIELDS);
               cols="2"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.kanban, ui.blocks.variants.kanban.twoCols)"
             />
           </Box>
         </Stack>
@@ -148,6 +152,7 @@ const cards = fromCodex<BoardCard>(cardsEntries, CARDS_FIELDS);
               cols="3"
               tone="muted"
               density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.kanban, ui.blocks.variants.kanban.muted)"
             />
           </Box>
         </Stack>

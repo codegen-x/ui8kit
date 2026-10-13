@@ -2,7 +2,7 @@
 // Source: xgen/specs/screens/theme-commerce-shop.json
 // The orders page of ThemeCommerceShopScreen.
 
-import { OrderTable, PageIntro, type Order } from "@ui8kit/react-ui";
+import { OrderTable, PageIntro, tpl, type Order } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { orders as ordersEntries } from "@ui8kit/app-shared/data/orders";
@@ -42,6 +42,7 @@ export function OrdersPage() {
         pager="show"
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.orders, ui.blocks.variants.orders.table)}
       />
       <OrderTable
         id="orders-orders-2"
@@ -53,6 +54,7 @@ export function OrdersPage() {
         pager="show"
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.orders, ui.blocks.variants.orders.cards)}
       />
     </>
   );

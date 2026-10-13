@@ -18,6 +18,7 @@
     panel?: "split" | "stack";
     tone?: "default" | "muted";
     density?: "default" | "compact";
+    landmarkLabel?: string;
     onselect?: (id: string) => void;
   };
 </script>
@@ -42,11 +43,12 @@
     panel = "split",
     tone = "default",
     density = "default",
+    landmarkLabel,
     onselect,
   }: FeatureTabsProps = $props();
 </script>
 
-<SectionFrame id={id} title={title} tone={tone} density={density}>
+<SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
   <Stack gap="6" align="stretch">
     <Switcher label={tabsLabel} class="w-fit max-w-full flex-wrap">
       {#each features as f, i (f.id)}

@@ -18,6 +18,7 @@
     item?: "plain" | "card";
     tone?: "default" | "muted";
     density?: "default" | "compact";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -41,10 +42,11 @@
     item = "plain",
     tone = "default",
     density = "default",
+    landmarkLabel,
   }: FeatureStickyProps = $props();
 </script>
 
-<SectionFrame id={id} title={title} tone={tone} density={density}>
+<SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
   <Grid cols="1-2" class="items-start gap-8" data-testid="sticky">
     <Box
       class={cn(

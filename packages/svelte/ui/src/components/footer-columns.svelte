@@ -8,6 +8,7 @@
   export type FooterColumnsProps = {
     label: string;
     groups: MegaGroup[];
+    landmarkLabel?: string;
   };
 </script>
 
@@ -20,10 +21,10 @@
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
 
-  let { label, groups }: FooterColumnsProps = $props();
+  let { label, groups, landmarkLabel }: FooterColumnsProps = $props();
 </script>
 
-<Block tag="nav" aria-label={label}>
+<Block tag="nav" aria-label={(landmarkLabel ?? label)}>
   <Grid cols="1" class="grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5" data-testid="footer-groups">
     {#each groups as g (g.id)}
       <Stack gap="2" data-testid="group">

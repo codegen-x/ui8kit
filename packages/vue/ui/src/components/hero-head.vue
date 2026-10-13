@@ -17,6 +17,7 @@ export type HeroHeadProps = {
   href?: string;
   skip?: string;
   navLabel?: string;
+  landmarkLabel?: string;
 };
 </script>
 
@@ -28,7 +29,7 @@ import Link from "../primitives/link/link.vue";
 import LinkPlain from "../primitives/link-plain/link-plain.vue";
 import NavBlock from "../components/nav-block.vue";
 import { defaults } from "../presets/defaults";
-import { cn } from "../utils";
+import { cn, tpl } from "../utils";
 
 const {
   brand,
@@ -40,6 +41,7 @@ const {
   href,
   skip,
   navLabel,
+  landmarkLabel,
 } = defineProps<HeroHeadProps>();
 </script>
 
@@ -48,6 +50,7 @@ const {
     tag="header"
     :class="cn('flex w-full flex-wrap items-center justify-between pr-4', defaults.hero.head)"
     data-testid="hero-head"
+    :aria-label="landmarkLabel"
   >
     <LinkPlain v-if="skip"
       href="#main-content"
@@ -65,7 +68,7 @@ const {
     >
       {{ brand }}
     </Link>
-    <NavBlock :label="navLabel" testid="site-nav">
+    <NavBlock :label="(landmarkLabel ? tpl('{0}, {1}', navLabel, landmarkLabel) : navLabel)" testid="site-nav">
       <Group gap="8" align="center" class="flex-wrap">
         <Link v-for="l in links" :key="l.id"
           :href="(l.href ?? '#/')"

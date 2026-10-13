@@ -16,6 +16,7 @@
     item?: "tile" | "chip";
     tone?: "default" | "muted";
     density?: "default" | "compact";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -35,6 +36,7 @@
     item = "tile",
     tone = "default",
     density = "default",
+    landmarkLabel,
   }: IconWallProps = $props();
   const askedCols = $derived(
     ((item as string) === "chip") && ((cols as string) === "6") ? "2-6"
@@ -46,7 +48,7 @@
   const wallCols = $derived(fitCols(askedCols, (features?.length ?? 0)));
 </script>
 
-<SectionFrame id={id} title={title} tone={tone} density={density}>
+<SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
   <Grid cols={wallCols} class="gap-4" data-testid="items">
     {#each features as f (f.id)}
       <Box

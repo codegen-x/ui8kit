@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Feature,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -67,6 +68,7 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
               mediaSide="end"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.grid)"
             />
           </Box>
         </Stack>
@@ -94,6 +96,7 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
               mediaSide="end"
               tone="default"
               density="roomy"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.grid2)"
             />
           </Box>
         </Stack>
@@ -121,6 +124,7 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
               mediaSide="end"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.tiles4)"
             />
           </Box>
         </Stack>
@@ -148,6 +152,7 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
               mediaSide="end"
               tone="default"
               density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.cells4)"
             />
           </Box>
         </Stack>
@@ -175,6 +180,7 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
               mediaSide="end"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.rows)"
             />
           </Box>
         </Stack>
@@ -202,6 +208,7 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
               mediaSide="start"
               tone="default"
               density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.rowsStart)"
             />
           </Box>
         </Stack>
@@ -229,6 +236,7 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
               mediaSide="alternate"
               tone="muted"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.rowsAlternate)"
             />
           </Box>
         </Stack>
@@ -256,6 +264,7 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
               mediaSide="end"
               tone="muted"
               density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.tilesMuted)"
             />
           </Box>
         </Stack>

@@ -21,6 +21,7 @@ export type PricingTiersProps = {
   billing?: "off" | "monthly" | "annual";
   tone?: "default" | "muted";
   density?: "roomy" | "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -46,6 +47,7 @@ const {
   billing = "off",
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<PricingTiersProps>();
 const emit = defineEmits<{ select: [id: string], billing: [period: string] }>();
 </script>
@@ -57,6 +59,7 @@ const emit = defineEmits<{ select: [id: string], billing: [period: string] }>();
     :tone="tone"
     :density="density"
     :measure="(((layout as string) === 'stack') ? 'md' : 'default')"
+    :landmarkLabel="landmarkLabel"
   >
     <Group
       v-if="((billing as string) !== 'off')"

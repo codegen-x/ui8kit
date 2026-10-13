@@ -12,6 +12,7 @@
     Stack,
     Text,
     Title,
+    tpl,
     type Logo,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -64,6 +65,7 @@
             item="name"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid4)}
           />
         </Box>
       </Stack>
@@ -89,6 +91,7 @@
             item="tile"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid3)}
           />
         </Box>
       </Stack>
@@ -114,6 +117,7 @@
             item="icon"
             tone="default"
             density="compact"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.row)}
           />
         </Box>
       </Stack>
@@ -139,6 +143,7 @@
             item="icon"
             tone="muted"
             density="compact"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.icons)}
           />
         </Box>
       </Stack>
@@ -164,6 +169,7 @@
             item="name"
             tone="default"
             density="roomy"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid2)}
           />
         </Box>
       </Stack>
@@ -189,6 +195,7 @@
             item="tile"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.tiles4)}
           />
         </Box>
       </Stack>

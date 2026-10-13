@@ -28,7 +28,7 @@
         <Text size="sm" weight="medium">
           {labels.featured}
         </Text>
-        <Rating value={r.rating} label={tpl(labels.rating, r.rating)} size={16} />
+        <Rating value={r.rating} label={tpl(labels.rating, r.rating)} />
       </Group>
       <Text size="base">
         {tpl("“{0}”", r.text)}

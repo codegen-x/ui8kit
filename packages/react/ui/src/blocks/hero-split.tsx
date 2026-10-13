@@ -31,6 +31,7 @@ export type HeroSplitProps = {
   media?: "picture" | "card" | "grid" | "plans";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 
 export function HeroSplit({
@@ -45,6 +46,7 @@ export function HeroSplit({
   media = "picture",
   mediaSide = "end",
   tone = "default",
+  landmarkLabel,
 }: HeroSplitProps) {
   return (
     <SectionFrame
@@ -55,7 +57,7 @@ export function HeroSplit({
       layout="split"
       media={{ show: true, side: mediaSide }}
       tone={tone}
-      density="default"
+      landmarkLabel={landmarkLabel}
       aside={(
         <HeroSplitMedia content={content} alt={title} media={media} />
       )}
@@ -66,7 +68,6 @@ export function HeroSplit({
         primaryHref={actions.href}
         secondary={((actions.mode === "two") ? actions.secondary : undefined)}
         secondaryHref={actions.secondaryHref}
-        align="start"
       />
     </SectionFrame>
   );

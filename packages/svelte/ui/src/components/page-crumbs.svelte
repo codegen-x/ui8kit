@@ -11,6 +11,7 @@
   export type PageCrumbsProps = {
     label: string;
     crumbs: NavLink[];
+    landmarkLabel?: string;
   };
 </script>
 
@@ -22,11 +23,11 @@
   import ListItem from "../primitives/list/list-item.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
 
-  let { label, crumbs }: PageCrumbsProps = $props();
+  let { label, crumbs, landmarkLabel }: PageCrumbsProps = $props();
   const last = $derived((crumbs?.length ?? 0) - 1);
 </script>
 
-<Block tag="nav" aria-label={label} data-testid="crumbs">
+<Block tag="nav" aria-label={(landmarkLabel ?? label)} data-testid="crumbs">
   <List class="m-0 flex list-none flex-wrap items-center gap-2 p-0 text-sm text-muted-foreground">
     {#each crumbs as c, i (c.id)}
       <ListItem class="flex items-center gap-2">

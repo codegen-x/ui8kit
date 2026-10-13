@@ -25,6 +25,7 @@ export type CtaProofProps = {
   proof?: "logos" | "features" | "stats" | "rows" | "zones";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -47,6 +48,7 @@ const {
   proof = "stats",
   mediaSide = "end",
   tone = "default",
+  landmarkLabel,
 } = defineProps<CtaProofProps>();
 </script>
 
@@ -57,10 +59,10 @@ const {
     :lead="lead"
     :heading="{ badge }"
     :tone="tone"
-    density="default"
     :align="(((layout as string) === 'center') ? 'center' : 'start')"
     :layout="(((layout as string) === 'center') ? 'stack' : 'split')"
     :media="{ show: ((layout as string) === 'split'), side: mediaSide }"
+    :landmarkLabel="landmarkLabel"
   >
     <CtaProofItems :content="content" :proof="proof" :center="((layout as string) === 'center')" />
     <ActionGroup

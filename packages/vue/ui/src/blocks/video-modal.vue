@@ -19,6 +19,7 @@ export type VideoModalProps = {
   size?: "default" | "wide";
   outline?: "none" | "chapters";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -47,11 +48,12 @@ const {
   size = "default",
   outline = "none",
   tone = "default",
+  landmarkLabel,
 } = defineProps<VideoModalProps>();
 </script>
 
 <template>
-  <SectionFrame :id="id" :title="title" :tone="tone" density="default">
+  <SectionFrame :id="id" :title="title" :tone="tone" :landmarkLabel="landmarkLabel">
     <Stack
       gap="4"
       align="stretch"
@@ -73,7 +75,7 @@ const {
         </Button>
       </Group>
       <Box class="relative" data-testid="player">
-        <MediaFrame :alt="title" ratio="16/9" />
+        <MediaFrame :alt="title" />
         <Button
           variant="default"
           size="default"

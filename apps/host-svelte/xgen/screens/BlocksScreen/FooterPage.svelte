@@ -2,7 +2,7 @@
 <!-- Source: xgen/specs/screens/blocks.json -->
 <!-- The footer page of BlocksScreen. -->
 <script lang="ts">
-  import { Block, Box, Container, Group, Link, SiteFooter, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Container, Group, Link, SiteFooter, Stack, Text, Title, tpl } from "@ui8kit/svelte-ui";
   import { ui } from "@ui8kit/app-shared/content";
 
 </script>
@@ -39,7 +39,12 @@
           {ui.blocks.variants.footer.minimal}
         </Title>
         <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-          <SiteFooter labels={ui.site.footer} layout="minimal" density="default" />
+          <SiteFooter
+            labels={ui.site.footer}
+            layout="minimal"
+            density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.footer, ui.blocks.variants.footer.minimal)}
+          />
         </Box>
       </Stack>
       <Stack
@@ -55,7 +60,12 @@
           {ui.blocks.variants.footer.centered}
         </Title>
         <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-          <SiteFooter labels={ui.site.footer} layout="centered" density="default" />
+          <SiteFooter
+            labels={ui.site.footer}
+            layout="centered"
+            density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.footer, ui.blocks.variants.footer.centered)}
+          />
         </Box>
       </Stack>
       <Stack
@@ -71,7 +81,12 @@
           {ui.blocks.variants.footer.compact}
         </Title>
         <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-          <SiteFooter labels={ui.site.footer} layout="minimal" density="compact" />
+          <SiteFooter
+            labels={ui.site.footer}
+            layout="minimal"
+            density="compact"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.footer, ui.blocks.variants.footer.compact)}
+          />
         </Box>
       </Stack>
     </Stack>

@@ -12,6 +12,7 @@
     Stack,
     Text,
     Title,
+    tpl,
     type Skill,
     type Spec,
   } from "@ui8kit/svelte-ui";
@@ -74,6 +75,7 @@
             mediaSide="start"
             tone="default"
             level={2}
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.aboutme, ui.blocks.variants.aboutme.facts)}
           />
         </Box>
       </Stack>
@@ -103,6 +105,7 @@
             mediaSide="end"
             tone="default"
             level={2}
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.aboutme, ui.blocks.variants.aboutme.factsEnd)}
           />
         </Box>
       </Stack>
@@ -132,6 +135,7 @@
             mediaSide="start"
             tone="default"
             level={2}
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.aboutme, ui.blocks.variants.aboutme.skills)}
           />
         </Box>
       </Stack>
@@ -161,6 +165,7 @@
             mediaSide="end"
             tone="muted"
             level={2}
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.aboutme, ui.blocks.variants.aboutme.skillsMuted)}
           />
         </Box>
       </Stack>

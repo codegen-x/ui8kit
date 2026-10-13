@@ -16,6 +16,7 @@ export type LogoCloudProps = {
   item?: "name" | "icon" | "tile";
   tone?: "default" | "muted";
   density?: "roomy" | "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -37,19 +38,27 @@ const {
   item = "name",
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<LogoCloudProps>();
 </script>
 
 <template>
-  <LogoRibbon
-    v-if="((layout as string) === 'row')"
+  <LogoRibbon v-if="((layout as string) === 'row')"
     :id="id"
     :title="title"
     :logos="logos"
     :tone="tone"
     :density="density"
+    :landmarkLabel="landmarkLabel"
   />
-  <SectionFrame v-else :id="id" :title="title" :tone="tone" :density="density" align="center">
+  <SectionFrame v-else
+    :id="id"
+    :title="title"
+    :tone="tone"
+    :density="density"
+    align="center"
+    :landmarkLabel="landmarkLabel"
+  >
     <Grid
       :cols="
         (cols as string) === '2' ? '2'

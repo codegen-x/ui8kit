@@ -18,6 +18,7 @@ export type PageIntroProps = {
   align?: "start" | "center";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function PageIntro({
@@ -30,9 +31,19 @@ export function PageIntro({
   align = "start",
   tone = "default",
   density = "default",
+  landmarkLabel,
 }: PageIntroProps) {
   return (
-    <SectionFrame id={id} title={title} lead={text} heading={{ level }} align={align} tone={tone} density={density}>
+    <SectionFrame
+      id={id}
+      title={title}
+      lead={text}
+      heading={{ level }}
+      align={align}
+      tone={tone}
+      density={density}
+      landmarkLabel={landmarkLabel}
+    >
       {cta ? (
         <ActionGroup primary={cta} primaryHref={href} align={align} />
       ) : null}

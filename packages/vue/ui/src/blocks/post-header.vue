@@ -16,6 +16,7 @@ export type PostHeaderProps = {
   cover?: "show" | "hide";
   meta?: "full" | "short";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -36,6 +37,7 @@ const {
   cover = "show",
   meta = "full",
   tone = "default",
+  landmarkLabel,
 } = defineProps<PostHeaderProps>();
 </script>
 
@@ -48,6 +50,7 @@ const {
     :align="layout"
     :tone="tone"
     :media="{ show: ((cover as string) === 'show') }"
+    :landmarkLabel="landmarkLabel"
   >
     <Group
       gap="4"

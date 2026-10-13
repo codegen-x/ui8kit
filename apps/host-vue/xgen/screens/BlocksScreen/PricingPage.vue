@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Plan,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -95,6 +96,7 @@ const duo = fromCodex<Plan>(duoEntries, DUO_FIELDS);
               billing="off"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.grid)"
             />
           </Box>
         </Stack>
@@ -123,6 +125,7 @@ const duo = fromCodex<Plan>(duoEntries, DUO_FIELDS);
               billing="monthly"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.monthly)"
             />
           </Box>
         </Stack>
@@ -151,6 +154,7 @@ const duo = fromCodex<Plan>(duoEntries, DUO_FIELDS);
               billing="annual"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.annual)"
             />
           </Box>
         </Stack>
@@ -179,6 +183,7 @@ const duo = fromCodex<Plan>(duoEntries, DUO_FIELDS);
               billing="off"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.duo)"
             />
           </Box>
         </Stack>
@@ -207,6 +212,7 @@ const duo = fromCodex<Plan>(duoEntries, DUO_FIELDS);
               billing="off"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.grid2)"
             />
           </Box>
         </Stack>
@@ -235,6 +241,7 @@ const duo = fromCodex<Plan>(duoEntries, DUO_FIELDS);
               billing="off"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.grid4)"
             />
           </Box>
         </Stack>
@@ -263,6 +270,7 @@ const duo = fromCodex<Plan>(duoEntries, DUO_FIELDS);
               billing="off"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.stack)"
             />
           </Box>
         </Stack>
@@ -291,6 +299,7 @@ const duo = fromCodex<Plan>(duoEntries, DUO_FIELDS);
               billing="off"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.flat)"
             />
           </Box>
         </Stack>
@@ -319,6 +328,7 @@ const duo = fromCodex<Plan>(duoEntries, DUO_FIELDS);
               billing="off"
               tone="muted"
               density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.compactMuted)"
             />
           </Box>
         </Stack>
@@ -347,6 +357,7 @@ const duo = fromCodex<Plan>(duoEntries, DUO_FIELDS);
               billing="off"
               tone="default"
               density="roomy"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.roomy)"
             />
           </Box>
         </Stack>

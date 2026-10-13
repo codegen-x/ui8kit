@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Post,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -74,6 +75,7 @@ export function PostheaderPage() {
                 meta="full"
                 tone="default"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.postheader, ui.blocks.variants.postheader.start)}
               />
             </Box>
           </Stack>
@@ -99,6 +101,7 @@ export function PostheaderPage() {
                 meta="full"
                 tone="default"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.postheader, ui.blocks.variants.postheader.center)}
               />
             </Box>
           </Stack>
@@ -124,6 +127,7 @@ export function PostheaderPage() {
                 meta="full"
                 tone="default"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.postheader, ui.blocks.variants.postheader.noCover)}
               />
             </Box>
           </Stack>
@@ -149,6 +153,7 @@ export function PostheaderPage() {
                 meta="short"
                 tone="muted"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.postheader, ui.blocks.variants.postheader.minimal)}
               />
             </Box>
           </Stack>

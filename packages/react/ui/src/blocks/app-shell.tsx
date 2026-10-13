@@ -36,6 +36,7 @@ export type AppShellProps = {
   activity: OverviewActivity;
   layout?: "sidebar" | "top" | "panes";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function AppShell({
@@ -49,14 +50,16 @@ export function AppShell({
   activity,
   layout = "sidebar",
   density = "default",
+  landmarkLabel,
 }: AppShellProps) {
   return (
     <Block
       tag="section"
       className="bg-background"
-      aria-labelledby={tpl("{0}-title", id)}
+      aria-labelledby={(landmarkLabel ? undefined : tpl("{0}-title", id))}
       data-testid="app-shell"
       data-layout={layout}
+      aria-label={landmarkLabel}
     >
       {((layout as string) === "top") ? (
         <Stack gap="6" align="stretch">
@@ -68,7 +71,7 @@ export function AppShell({
             search={search}
             actions={{ mode: "none" }}
             layout="search"
-            over="none"
+            landmarkLabel={landmarkLabel}
           />
           <Container className={cn("mx-auto w-full max-w-6xl px-4", "pb-8")} data-slot="container">
             <AppMain id={id} title={title} metrics={metrics} chart={chart} cols="1-4" activity={activity} density={density} />
@@ -85,11 +88,10 @@ export function AppShell({
                 current={nav.current}
                 userName={user.name}
                 userEmail={user.email}
-                width="full"
-                user="show"
                 density={density}
+                landmarkLabel={landmarkLabel}
               />
-              <AppMain id={id} title={title} metrics={metrics} chart={chart} cols="1-2" activity={activity} density={density} />
+              <AppMain id={id} title={title} metrics={metrics} chart={chart} activity={activity} density={density} />
             </Grid>
           ) : (
             <Grid cols="1-3" className="items-start gap-4">
@@ -101,8 +103,8 @@ export function AppShell({
                 userName={user.name}
                 userEmail={user.email}
                 width="compact"
-                user="show"
                 density={density}
+                landmarkLabel={landmarkLabel}
               />
               <Panel title={activity.title} description={activity.text} id={tpl("{0}-list", id)}>
                 <List className="m-0 flex list-none flex-col gap-4 p-0" data-testid="items">
@@ -118,7 +120,7 @@ export function AppShell({
                   ))}
                 </List>
               </Panel>
-              <AppMain id={id} title={title} metrics={metrics} chart={chart} cols="1-2" density="compact" />
+              <AppMain id={id} title={title} metrics={metrics} chart={chart} density="compact" />
             </Grid>
           )}
         </Container>

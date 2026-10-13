@@ -16,6 +16,7 @@ export type SupportChannelsProps = {
   cols?: "1-2" | "1-3";
   action?: "link" | "none";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -40,11 +41,12 @@ const {
   cols = "1-3",
   action = "link",
   tone = "default",
+  landmarkLabel,
 } = defineProps<SupportChannelsProps>();
 </script>
 
 <template>
-  <SectionFrame :id="id" :title="title" :tone="tone">
+  <SectionFrame :id="id" :title="title" :tone="tone" :landmarkLabel="landmarkLabel">
     <Grid :cols="(((layout as string) === 'list') ? '1' : cols)" class="gap-4" data-testid="items">
       <Card v-for="c in channels" :key="c.id"
         variant="default"

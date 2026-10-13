@@ -23,6 +23,7 @@
     layout?: "grid" | "cards" | "stats" | "metrics";
     mediaSide?: "end" | "start";
     tone?: "default" | "muted";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -47,6 +48,7 @@
     layout = "grid",
     mediaSide = "end",
     tone = "default",
+    landmarkLabel,
   }: FeatureSplitProps = $props();
 </script>
 
@@ -58,6 +60,7 @@
   tone={tone}
   layout="split"
   media={{ show: true, side: mediaSide }}
+  landmarkLabel={landmarkLabel}
 >
   {#if ((layout as string) === "grid")}
     <FeaturePairs features={features} />
@@ -77,7 +80,6 @@
       primaryHref={actions.href}
       secondary={((actions.mode === "two") ? actions.secondary : undefined)}
       secondaryHref={actions.secondaryHref}
-      align="start"
     />
   {/if}
   {#snippet aside()}

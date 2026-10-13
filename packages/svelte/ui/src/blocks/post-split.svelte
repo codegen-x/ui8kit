@@ -24,6 +24,7 @@
     cover?: "wide" | "square";
     actions?: "pair" | "wide" | "icons";
     tone?: "default" | "muted";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -48,6 +49,7 @@
     cover = "wide",
     actions = "pair",
     tone = "default",
+    landmarkLabel,
   }: PostSplitProps = $props();
 </script>
 
@@ -60,6 +62,7 @@
     tone={tone}
     media={{ show: true }}
     align="center"
+    landmarkLabel={landmarkLabel}
   >
     <PostTags tags={extras.tags} align="center" />
     <PostStats post={post} extras={extras} labels={labels} align="center" />
@@ -91,6 +94,7 @@
     tone={tone}
     media={{ show: true, side: mediaSide }}
     layout="split"
+    landmarkLabel={landmarkLabel}
   >
     {#if ((layout as string) === "outline")}
       <PostOutline post={post} extras={extras} labels={labels} />
@@ -99,7 +103,7 @@
       {#if ((author as string) !== "line")}
         <PostStats post={post} extras={extras} labels={labels} />
       {/if}
-      <PostTags tags={extras.tags} align="start" />
+      <PostTags tags={extras.tags} />
     {/if}
     <PostActions labels={labels} mode={actions} />
     {#snippet aside()}

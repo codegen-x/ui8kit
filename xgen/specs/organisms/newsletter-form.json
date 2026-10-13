@@ -64,6 +64,11 @@
         "ts": "\"start\" | \"center\""
       },
       "default": "center"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
     }
   ],
   "slots": [],
@@ -113,6 +118,9 @@
               "split"
             ]
           }
+        },
+        "landmarkLabel": {
+          "$": "landmarkLabel"
         }
       },
       "slots": {

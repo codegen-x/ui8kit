@@ -20,7 +20,7 @@ import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { MediaFrame } from "../components/media-frame";
 import { NavBlock } from "../components/nav-block";
-import { cn } from "../utils";
+import { cn, tpl } from "../utils";
 import type { MegaGroup } from "./mega-menu.types";
 import type { NavLink } from "./nav-bar.types";
 
@@ -35,6 +35,7 @@ export type MegaMenuProps = {
   panel?: "open" | "closed";
   cols?: "2" | "3";
   promo?: "none" | "card";
+  landmarkLabel?: string;
 };
 
 export function MegaMenu({
@@ -48,10 +49,16 @@ export function MegaMenu({
   panel = "open",
   cols = "3",
   promo = "none",
+  landmarkLabel,
 }: MegaMenuProps) {
   return (
     <>
-      <Block tag="header" className="relative border-b border-border bg-background" data-testid="mega-menu">
+      <Block
+        tag="header"
+        className="relative border-b border-border bg-background"
+        data-testid="mega-menu"
+        aria-label={landmarkLabel}
+      >
         <Container
           className={cn("mx-auto w-full max-w-6xl px-4", "flex flex-wrap items-center gap-6 py-4")}
           data-slot="container"
@@ -59,7 +66,7 @@ export function MegaMenu({
           <Link href="#/" variant="default" className="text-lg font-medium" data-testid="brand">
             {brand}
           </Link>
-          <NavBlock label={label} className="flex-1">
+          <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", label, landmarkLabel) : label)} className="flex-1">
             <Group gap="4" align="center" className="flex-wrap">
               <ButtonPlain
                 type="button"

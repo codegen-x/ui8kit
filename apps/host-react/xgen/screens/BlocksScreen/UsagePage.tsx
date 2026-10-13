@@ -2,7 +2,18 @@
 // Source: xgen/specs/screens/blocks.json
 // The usage page of BlocksScreen.
 
-import { Block, Box, Container, Group, Link, Stack, Text, Title, UsageCalculator } from "@ui8kit/react-ui";
+import {
+  Block,
+  Box,
+  Container,
+  Group,
+  Link,
+  Stack,
+  Text,
+  Title,
+  UsageCalculator,
+  tpl,
+} from "@ui8kit/react-ui";
 import { ui } from "@ui8kit/app-shared/content";
 
 const USAGE_SLIDER = { min: 100, max: 10000, label: ui.vibe.usage.slider, unit: ui.vibe.usage.unit } as const;
@@ -59,6 +70,7 @@ export function UsagePage() {
                 layout="card"
                 ends="show"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.usage, ui.blocks.variants.usage.card)}
               />
             </Box>
           </Stack>
@@ -87,6 +99,7 @@ export function UsagePage() {
                 layout="plain"
                 ends="show"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.usage, ui.blocks.variants.usage.plain)}
               />
             </Box>
           </Stack>
@@ -115,6 +128,7 @@ export function UsagePage() {
                 layout="card"
                 ends="hide"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.usage, ui.blocks.variants.usage.noEnds)}
               />
             </Box>
           </Stack>
@@ -143,6 +157,7 @@ export function UsagePage() {
                 layout="card"
                 ends="show"
                 tone="muted"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.usage, ui.blocks.variants.usage.muted)}
               />
             </Box>
           </Stack>

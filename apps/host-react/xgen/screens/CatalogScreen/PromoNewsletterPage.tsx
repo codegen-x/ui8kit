@@ -77,6 +77,7 @@ export function PromoNewsletterPage() {
                   terms="hide"
                   tone="default"
                   align="center"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.inline)}
                 />
               </Box>
             </Stack>
@@ -104,6 +105,7 @@ export function PromoNewsletterPage() {
                   terms="hide"
                   tone="default"
                   align="center"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.stacked)}
                 />
               </Box>
             </Stack>
@@ -131,6 +133,7 @@ export function PromoNewsletterPage() {
                   terms="hide"
                   tone="default"
                   align="start"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.split)}
                 />
               </Box>
             </Stack>
@@ -158,6 +161,7 @@ export function PromoNewsletterPage() {
                   terms="show"
                   tone="default"
                   align="center"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.consent)}
                 />
               </Box>
             </Stack>
@@ -185,6 +189,7 @@ export function PromoNewsletterPage() {
                   terms="show"
                   tone="muted"
                   align="start"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.muted)}
                 />
               </Box>
             </Stack>

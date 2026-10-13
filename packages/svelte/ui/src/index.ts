@@ -189,6 +189,8 @@ export { default as CartTable } from "./components/cart-table.svelte";
 export type { CartTableProps } from "./components/cart-table.svelte";
 export { default as CheckoutStep } from "./components/checkout-step.svelte";
 export type { CheckoutStepProps } from "./components/checkout-step.svelte";
+export { default as CheckoutSubmit } from "./components/checkout-submit.svelte";
+export type { CheckoutSubmitProps } from "./components/checkout-submit.svelte";
 export { default as CompareMark } from "./components/compare-mark.svelte";
 export type { CompareMarkProps } from "./components/compare-mark.svelte";
 export { default as CtaActions } from "./components/cta-actions.svelte";

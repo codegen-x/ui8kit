@@ -25,6 +25,7 @@ export type StatsBandProps = {
   align?: "start" | "center";
   tone?: "default" | "muted";
   density?: "roomy" | "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function StatsBand({
@@ -38,6 +39,7 @@ export function StatsBand({
   align = "center",
   tone = "default",
   density = "default",
+  landmarkLabel,
 }: StatsBandProps) {
   return (
     <SectionFrame
@@ -58,6 +60,7 @@ export function StatsBand({
           : ""
         )
       )}
+      landmarkLabel={landmarkLabel}
     >
       <Backdrop kind={(((surface as string) === "image") ? "image" : "none")} alt={title} />
       {((surface as string) === "panel") ? (

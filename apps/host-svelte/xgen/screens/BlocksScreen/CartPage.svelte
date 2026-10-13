@@ -12,6 +12,7 @@
     Stack,
     Text,
     Title,
+    tpl,
     type CartLine,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -71,6 +72,7 @@
             media="image"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cart, ui.blocks.variants.cart.table)}
           />
         </Box>
       </Stack>
@@ -96,6 +98,7 @@
             media="image"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cart, ui.blocks.variants.cart.cards)}
           />
         </Box>
       </Stack>
@@ -121,6 +124,7 @@
             media="none"
             tone="default"
             density="compact"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cart, ui.blocks.variants.cart.tableCompact)}
           />
         </Box>
       </Stack>
@@ -146,6 +150,7 @@
             media="none"
             tone="muted"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cart, ui.blocks.variants.cart.cardsPlain)}
           />
         </Box>
       </Stack>

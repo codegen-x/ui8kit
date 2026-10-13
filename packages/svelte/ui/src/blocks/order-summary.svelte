@@ -18,6 +18,7 @@
     note?: "show" | "hide";
     tone?: "default" | "muted";
     density?: "default" | "compact";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -42,10 +43,11 @@
     note = "show",
     tone = "default",
     density = "default",
+    landmarkLabel,
   }: OrderSummaryProps = $props();
 </script>
 
-<SectionFrame id={id} title={title} tone={tone} density={density} measure="md">
+<SectionFrame id={id} title={title} tone={tone} density={density} measure="md" landmarkLabel={landmarkLabel}>
   <Box
     class={cn(
       (((layout as string) === "card") ? "rounded bg-card p-6 inset-ring inset-ring-border" : "")

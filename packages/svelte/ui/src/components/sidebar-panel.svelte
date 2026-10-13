@@ -19,6 +19,7 @@
 
   export type SidebarPanelProps = {
     variant?: "chat" | "creator";
+    landmarkLabel?: string;
     class?: string;
     children?: Snippet;
   };
@@ -28,7 +29,7 @@
   import Block from "../primitives/block/block.svelte";
   import { cn } from "../utils";
 
-  let { variant, class: className, children }: SidebarPanelProps = $props();
+  let { variant, landmarkLabel, class: className, children }: SidebarPanelProps = $props();
 </script>
 
 <Block
@@ -36,6 +37,7 @@
   class={cn(sidebarPanelVariants({ variant: variant }), className)}
   data-slot="sidebar-panel"
   data-variant={(variant ?? "chat")}
+  aria-label={landmarkLabel}
 >
   {@render children?.()}
 </Block>

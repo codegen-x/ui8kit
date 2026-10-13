@@ -23,6 +23,7 @@ export type TestimonialGridProps = {
   item?: QuoteItem;
   tone?: "default" | "muted";
   density?: "roomy" | "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function TestimonialGrid({
@@ -35,6 +36,7 @@ export function TestimonialGrid({
   item,
   tone = "default",
   density = "default",
+  landmarkLabel,
 }: TestimonialGridProps) {
   return (
     <SectionFrame
@@ -44,6 +46,7 @@ export function TestimonialGrid({
       density={density}
       align={(((layout as string) === "single") ? "center" : "start")}
       measure={(((layout as string) === "grid") ? "default" : "2xl")}
+      landmarkLabel={landmarkLabel}
     >
       {(((layout as string) === "masonry") || ((layout as string) === "strip")) ? (
         <Block

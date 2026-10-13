@@ -85,6 +85,7 @@ export function AppGuidancePage() {
                   placement="below"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.below)}
                 />
               </Box>
             </Stack>
@@ -112,6 +113,7 @@ export function AppGuidancePage() {
                   placement="above"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.above)}
                 />
               </Box>
             </Stack>
@@ -139,6 +141,7 @@ export function AppGuidancePage() {
                   placement="end"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.end)}
                 />
               </Box>
             </Stack>
@@ -166,6 +169,7 @@ export function AppGuidancePage() {
                   placement="below"
                   tone="muted"
                   density="compact"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.muted)}
                 />
               </Box>
             </Stack>
@@ -210,6 +214,7 @@ export function AppGuidancePage() {
                   size="default"
                   outline="none"
                   tone="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.default)}
                 />
               </Box>
             </Stack>
@@ -237,6 +242,7 @@ export function AppGuidancePage() {
                   size="wide"
                   outline="none"
                   tone="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.wide)}
                 />
               </Box>
             </Stack>
@@ -264,6 +270,7 @@ export function AppGuidancePage() {
                   size="default"
                   outline="chapters"
                   tone="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.chapters)}
                 />
               </Box>
             </Stack>
@@ -291,6 +298,7 @@ export function AppGuidancePage() {
                   size="default"
                   outline="none"
                   tone="muted"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.muted)}
                 />
               </Box>
             </Stack>

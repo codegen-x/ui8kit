@@ -17,6 +17,7 @@ export type SidebarNavProps = {
   width?: "full" | "compact";
   user?: "show" | "hide";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -32,7 +33,7 @@ import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import MediaFrame from "../components/media-frame.vue";
 import NavBlock from "../components/nav-block.vue";
-import { cn } from "../utils";
+import { cn, tpl } from "../utils";
 
 const {
   label,
@@ -44,6 +45,7 @@ const {
   width = "full",
   user = "show",
   density = "default",
+  landmarkLabel,
 } = defineProps<SidebarNavProps>();
 </script>
 
@@ -54,7 +56,7 @@ const {
       'flex min-h-96 flex-col gap-6 rounded bg-card p-4 inset-ring inset-ring-border',
       (((width as string) === 'compact') ? 'w-20 items-center' : 'w-64')
     )"
-    :aria-label="brand"
+    :aria-label="(landmarkLabel ?? brand)"
     data-testid="sidebar"
     :data-width="width"
   >
@@ -64,7 +66,7 @@ const {
         {{ brand }}
       </Text>
     </Group>
-    <NavBlock :label="label" class="flex-1">
+    <NavBlock :label="(landmarkLabel ? tpl('{0}, {1}', label, landmarkLabel) : label)" class="flex-1">
       <List
         :class="cn(
           'm-0 flex list-none flex-col p-0',

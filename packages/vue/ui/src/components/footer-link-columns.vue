@@ -7,6 +7,7 @@ import type { MegaGroup } from "../blocks/mega-menu.types";
 export type FooterLinkColumnsProps = {
   label: string;
   groups: MegaGroup[];
+  landmarkLabel?: string;
 };
 </script>
 
@@ -19,11 +20,11 @@ import ListItem from "../primitives/list/list-item.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 
-const { label, groups } = defineProps<FooterLinkColumnsProps>();
+const { label, groups, landmarkLabel } = defineProps<FooterLinkColumnsProps>();
 </script>
 
 <template>
-  <Block tag="nav" :aria-label="label">
+  <Block tag="nav" :aria-label="(landmarkLabel ?? label)">
     <Box class="grid grid-cols-2 gap-8 sm:grid-cols-3">
       <template v-for="(g, i) in groups" :key="g.id">
         <Stack v-if="(i < 3)" gap="2" data-testid="group">

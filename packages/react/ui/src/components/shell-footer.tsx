@@ -11,15 +11,16 @@ import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
 import { Text } from "../primitives/text/text";
 import { NavBlock } from "../components/nav-block";
-import { cn } from "../utils";
+import { cn, tpl } from "../utils";
 import type { ShellNav } from "../blocks/dashboard-shell.types";
 
 export type ShellFooterProps = {
   nav: ShellNav;
   place?: "full" | "inset";
+  landmarkLabel?: string;
 };
 
-export function ShellFooter({ nav, place = "full" }: ShellFooterProps) {
+export function ShellFooter({ nav, place = "full", landmarkLabel }: ShellFooterProps) {
   return (
     <Block
       tag="footer"
@@ -29,11 +30,12 @@ export function ShellFooter({ nav, place = "full" }: ShellFooterProps) {
       )}
       data-testid="footer"
       data-place={place}
+      aria-label={landmarkLabel}
     >
       <Text size="xs" className="text-muted-foreground">
         {nav.copyright}
       </Text>
-      <NavBlock label={nav.footerLabel}>
+      <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", nav.footerLabel, landmarkLabel) : nav.footerLabel)}>
         <List className="m-0 flex list-none items-center gap-4 p-0">
           {(nav.footer ?? []).map((f) => (
             <ListItem key={f.id}>

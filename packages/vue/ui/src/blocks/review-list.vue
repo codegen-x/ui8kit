@@ -17,6 +17,7 @@ export type ReviewListProps = {
   avatar?: "none" | "image";
   tone?: "default" | "muted";
   density?: "default" | "roomy";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -42,6 +43,7 @@ const {
   avatar = "none",
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<ReviewListProps>();
 </script>
 
@@ -52,6 +54,7 @@ const {
     :tone="tone"
     :density="density"
     :measure="(((layout as string) === 'list') ? '2xl' : 'default')"
+    :landmarkLabel="landmarkLabel"
   >
     <Grid :cols="(((layout as string) === 'grid') ? '1-3' : '1')" class="gap-4" data-testid="items">
       <ArticleBlock v-for="r in reviews" :key="r.id"
@@ -64,7 +67,7 @@ const {
         )"
         testid="item"
       >
-        <Rating :value="r.rating" :label="tpl(labels.ratingLabel, r.rating)" :size="16" />
+        <Rating :value="r.rating" :label="tpl(labels.ratingLabel, r.rating)" />
         <Title :as="3" size="base" weight="bold">
           {{ r.title }}
         </Title>

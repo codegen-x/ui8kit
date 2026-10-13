@@ -2,7 +2,7 @@
 <!-- Source: xgen/specs/screens/blocks.json -->
 <!-- The pagehead page of BlocksScreen. -->
 <script lang="ts">
-  import { Block, Box, Container, Group, Link, PageIntro, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Container, Group, Link, PageIntro, Stack, Text, Title, tpl } from "@ui8kit/svelte-ui";
   import { ui } from "@ui8kit/app-shared/content";
 
 </script>
@@ -49,6 +49,7 @@
             tone="default"
             density="default"
             level={2}
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pagehead, ui.blocks.variants.pagehead.start)}
           />
         </Box>
       </Stack>
@@ -75,6 +76,7 @@
             tone="default"
             density="default"
             level={2}
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pagehead, ui.blocks.variants.pagehead.center)}
           />
         </Box>
       </Stack>
@@ -101,6 +103,7 @@
             tone="muted"
             density="compact"
             level={2}
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pagehead, ui.blocks.variants.pagehead.muted)}
           />
         </Box>
       </Stack>

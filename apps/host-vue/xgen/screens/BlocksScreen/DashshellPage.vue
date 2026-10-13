@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type NavLink,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -90,6 +91,7 @@ const DASHSHELL_NAV = {
               footer="none"
               content="grid"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.classic)"
             />
           </Box>
         </Stack>
@@ -117,6 +119,7 @@ const DASHSHELL_NAV = {
               footer="inset"
               content="split"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.inset)"
             />
           </Box>
         </Stack>
@@ -144,6 +147,7 @@ const DASHSHELL_NAV = {
               footer="none"
               content="list"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.rail)"
             />
           </Box>
         </Stack>
@@ -171,6 +175,7 @@ const DASHSHELL_NAV = {
               footer="full"
               content="grid"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.railFooter)"
             />
           </Box>
         </Stack>
@@ -198,6 +203,7 @@ const DASHSHELL_NAV = {
               footer="none"
               content="split"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.collapsed)"
             />
           </Box>
         </Stack>
@@ -225,6 +231,7 @@ const DASHSHELL_NAV = {
               footer="inset"
               content="list"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.twoLevel)"
             />
           </Box>
         </Stack>
@@ -252,6 +259,7 @@ const DASHSHELL_NAV = {
               footer="full"
               content="split"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.twoLevelFull)"
             />
           </Box>
         </Stack>
@@ -279,6 +287,7 @@ const DASHSHELL_NAV = {
               footer="full"
               content="split"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.end)"
             />
           </Box>
         </Stack>
@@ -306,6 +315,7 @@ const DASHSHELL_NAV = {
               footer="inset"
               content="grid"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.railEnd)"
             />
           </Box>
         </Stack>
@@ -333,6 +343,7 @@ const DASHSHELL_NAV = {
               footer="full"
               content="grid"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.topOnly)"
             />
           </Box>
         </Stack>
@@ -360,6 +371,7 @@ const DASHSHELL_NAV = {
               footer="inset"
               content="list"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.sideOnly)"
             />
           </Box>
         </Stack>
@@ -387,6 +399,7 @@ const DASHSHELL_NAV = {
               footer="full"
               content="split"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.collapsedEnd)"
             />
           </Box>
         </Stack>

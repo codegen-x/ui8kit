@@ -7,6 +7,7 @@
     PageIntro,
     PostGrid,
     PostShowcase,
+    tpl,
     type Post,
     type PostTopic,
   } from "@ui8kit/svelte-ui";
@@ -54,6 +55,7 @@
   meta="full"
   tone="default"
   density="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.magazine)}
 />
 <PostShowcase
   id="home-postshowcase"
@@ -67,6 +69,7 @@
   cols="3"
   mediaSide="start"
   tone="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.postshowcase, ui.blocks.variants.postshowcase.introCards)}
 />
 <NewsletterForm
   id="home-newsletter"
@@ -79,4 +82,5 @@
   terms="hide"
   tone="default"
   align="center"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.stacked)}
 />

@@ -23,6 +23,7 @@ export type ErrorPageProps = {
   layout?: "centered" | "split";
   code?: "show" | "hide";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 
 export function ErrorPage({
@@ -35,6 +36,7 @@ export function ErrorPage({
   layout = "centered",
   code = "show",
   tone = "default",
+  landmarkLabel,
 }: ErrorPageProps) {
   return (
     <SectionFrame
@@ -47,6 +49,7 @@ export function ErrorPage({
       align={(((layout as string) === "split") ? "start" : "center")}
       tone={tone}
       density="roomy"
+      landmarkLabel={landmarkLabel}
       aside={(
         <MediaFrame alt={title} ratio="4/3" />
       )}

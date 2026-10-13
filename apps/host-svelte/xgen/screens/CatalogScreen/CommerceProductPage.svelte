@@ -116,6 +116,7 @@
               tone="default"
               density="default"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.split)}
             />
           </Box>
         </Stack>
@@ -144,6 +145,7 @@
               tone="default"
               density="default"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.splitEnd)}
             />
           </Box>
         </Stack>
@@ -172,6 +174,7 @@
               tone="default"
               density="default"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.stacked)}
             />
           </Box>
         </Stack>
@@ -200,6 +203,7 @@
               tone="default"
               density="default"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.compact)}
             />
           </Box>
         </Stack>
@@ -228,6 +232,7 @@
               tone="muted"
               density="roomy"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.product, ui.blocks.variants.product.muted)}
             />
           </Box>
         </Stack>
@@ -270,6 +275,7 @@
               layout="split"
               expand="first"
               tone="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.productinfo, ui.blocks.variants.productinfo.split)}
             />
           </Box>
         </Stack>
@@ -295,6 +301,7 @@
               layout="stacked"
               expand="first"
               tone="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.productinfo, ui.blocks.variants.productinfo.stacked)}
             />
           </Box>
         </Stack>
@@ -320,6 +327,7 @@
               layout="split"
               expand="none"
               tone="muted"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.productinfo, ui.blocks.variants.productinfo.closed)}
             />
           </Box>
         </Stack>
@@ -363,6 +371,7 @@
               avatar="none"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.list)}
             />
           </Box>
         </Stack>
@@ -389,6 +398,7 @@
               avatar="none"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.grid)}
             />
           </Box>
         </Stack>
@@ -415,6 +425,7 @@
               avatar="none"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.plain)}
             />
           </Box>
         </Stack>
@@ -441,6 +452,7 @@
               avatar="image"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.avatars)}
             />
           </Box>
         </Stack>
@@ -467,6 +479,7 @@
               avatar="image"
               tone="muted"
               density="roomy"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.mutedGrid)}
             />
           </Box>
         </Stack>

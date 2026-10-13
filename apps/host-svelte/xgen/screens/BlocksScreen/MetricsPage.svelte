@@ -12,6 +12,7 @@
     Stack,
     Text,
     Title,
+    tpl,
     type Stat,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -69,6 +70,7 @@
             item="tile"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.tiles)}
           />
         </Box>
       </Stack>
@@ -93,6 +95,7 @@
             item="tile"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.twoUp)}
           />
         </Box>
       </Stack>
@@ -117,6 +120,7 @@
             item="compact"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.compact)}
           />
         </Box>
       </Stack>
@@ -141,6 +145,7 @@
             item="compact"
             tone="muted"
             density="compact"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.muted)}
           />
         </Box>
       </Stack>

@@ -18,6 +18,7 @@ export type ErrorPageProps = {
   layout?: "centered" | "split";
   code?: "show" | "hide";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -38,6 +39,7 @@ const {
   layout = "centered",
   code = "show",
   tone = "default",
+  landmarkLabel,
 } = defineProps<ErrorPageProps>();
 </script>
 
@@ -52,6 +54,7 @@ const {
     :align="(((layout as string) === 'split') ? 'start' : 'center')"
     :tone="tone"
     density="roomy"
+    :landmarkLabel="landmarkLabel"
   >
     <Text v-if="((code as string) === 'show')"
       size="4xl"

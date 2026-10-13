@@ -2,7 +2,7 @@
 <!-- Source: xgen/specs/screens/theme-promo-campaign.json -->
 <!-- The offer page of ThemePromoCampaignScreen. -->
 <script setup lang="ts">
-import { AnnouncementBar, CtaBand, NewsletterForm, PageIntro } from "@ui8kit/vue-ui";
+import { AnnouncementBar, CtaBand, NewsletterForm, PageIntro, tpl } from "@ui8kit/vue-ui";
 import { ui } from "@ui8kit/app-shared/content";
 
 </script>
@@ -30,6 +30,7 @@ import { ui } from "@ui8kit/app-shared/content";
     dismiss="hide"
     badge="show"
     position="top"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.badge)"
   />
   <AnnouncementBar
     :label="ui.promo.announcement.label"
@@ -43,6 +44,7 @@ import { ui } from "@ui8kit/app-shared/content";
     dismiss="hide"
     badge="none"
     position="top"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.split)"
   />
   <AnnouncementBar
     :label="ui.promo.announcement.label"
@@ -56,6 +58,7 @@ import { ui } from "@ui8kit/app-shared/content";
     dismiss="show"
     badge="none"
     position="top"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.shop)"
   />
   <CtaBand
     id="offer-cta"
@@ -74,6 +77,7 @@ import { ui } from "@ui8kit/app-shared/content";
     tone="default"
     proof="none"
     density="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.shop)"
   />
   <NewsletterForm
     id="offer-newsletter"
@@ -86,5 +90,6 @@ import { ui } from "@ui8kit/app-shared/content";
     terms="show"
     tone="default"
     align="center"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.consent)"
   />
 </template>

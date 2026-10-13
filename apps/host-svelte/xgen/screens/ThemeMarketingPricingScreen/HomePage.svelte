@@ -9,6 +9,7 @@
     LogoCloud,
     PageIntro,
     PricingTiers,
+    tpl,
     type CompareRow,
     type Faq,
     type FaqTab,
@@ -70,6 +71,7 @@
   billing="monthly"
   tone="default"
   density="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.monthly)}
 />
 <LogoCloud
   id="home-logos"
@@ -80,6 +82,7 @@
   item="tile"
   tone="default"
   density="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid3)}
 />
 <ComparisonTable
   id="home-compare"
@@ -89,6 +92,7 @@
   highlight="none"
   tone="default"
   density="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.plans)}
 />
 <FaqList
   id="home-faq"
@@ -100,6 +104,7 @@
   cols="2"
   tone="default"
   density="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.twoColumns)}
 />
 <CtaBand
   id="home-cta"
@@ -118,4 +123,5 @@
   tone="muted"
   proof="none"
   density="roomy"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.saas)}
 />

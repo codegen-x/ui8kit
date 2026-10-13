@@ -78,6 +78,11 @@
         "ts": "\"roomy\" | \"default\" | \"compact\""
       },
       "default": "default"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
     }
   ],
   "derived": [
@@ -142,6 +147,9 @@
             },
             "tone": {
               "$": "tone"
+            },
+            "landmarkLabel": {
+              "$": "landmarkLabel"
             }
           }
         }
@@ -166,11 +174,23 @@
               },
               "attrs": {
                 "aria-labelledby": {
-                  "op": "tpl",
+                  "op": "cond",
                   "args": [
-                    "{0}-title",
                     {
-                      "$": "id"
+                      "$": "landmarkLabel"
+                    },
+                    {
+                      "op": "undef",
+                      "args": []
+                    },
+                    {
+                      "op": "tpl",
+                      "args": [
+                        "{0}-title",
+                        {
+                          "$": "id"
+                        }
+                      ]
                     }
                   ]
                 },
@@ -180,6 +200,9 @@
                 },
                 "data-density": {
                   "$": "density"
+                },
+                "aria-label": {
+                  "$": "landmarkLabel"
                 }
               },
               "children": [
@@ -367,6 +390,9 @@
                 },
                 "density": {
                   "$": "density"
+                },
+                "landmarkLabel": {
+                  "$": "landmarkLabel"
                 }
               },
               "slots": {

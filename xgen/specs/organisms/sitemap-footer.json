@@ -108,6 +108,11 @@
         "ts": "\"default\" | \"compact\""
       },
       "default": "default"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
     }
   ],
   "slots": [],
@@ -135,6 +140,9 @@
             },
             "groups": {
               "$": "groups"
+            },
+            "landmarkLabel": {
+              "$": "landmarkLabel"
             }
           }
         }
@@ -150,6 +158,9 @@
             "data-testid": "site-footer",
             "data-layout": {
               "$": "layout"
+            },
+            "aria-label": {
+              "$": "landmarkLabel"
             }
           },
           "children": [
@@ -390,6 +401,9 @@
                                 },
                                 "groups": {
                                   "$": "groups"
+                                },
+                                "landmarkLabel": {
+                                  "$": "landmarkLabel"
                                 }
                               }
                             }
@@ -426,7 +440,27 @@
                           "organism": "NavBlock",
                           "props": {
                             "label": {
-                              "$": "label"
+                              "op": "cond",
+                              "args": [
+                                {
+                                  "$": "landmarkLabel"
+                                },
+                                {
+                                  "op": "tpl",
+                                  "args": [
+                                    "{0}, {1}",
+                                    {
+                                      "$": "label"
+                                    },
+                                    {
+                                      "$": "landmarkLabel"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "$": "label"
+                                }
+                              ]
                             }
                           },
                           "slots": {

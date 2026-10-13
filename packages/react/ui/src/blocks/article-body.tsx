@@ -27,6 +27,7 @@ export type ArticleBodyProps = {
   layout?: "column" | "toc";
   quotes?: "show" | "hide";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 
 export function ArticleBody({
@@ -37,9 +38,10 @@ export function ArticleBody({
   layout = "column",
   quotes = "show",
   tone = "default",
+  landmarkLabel,
 }: ArticleBodyProps) {
   return (
-    <SectionFrame id={id} title={title} tone={tone} density="default">
+    <SectionFrame id={id} title={title} tone={tone} landmarkLabel={landmarkLabel}>
       <Grid
         cols="1"
         className={cn(
@@ -48,7 +50,11 @@ export function ArticleBody({
         )}
       >
         {((layout as string) === "toc") ? (
-          <NavBlock label={tocTitle} className="md:sticky md:top-4" testid="toc">
+          <NavBlock
+            label={(landmarkLabel ? tpl("{0}, {1}", tocTitle, landmarkLabel) : tocTitle)}
+            className="md:sticky md:top-4"
+            testid="toc"
+          >
             <Stack gap="2">
               <Text size="sm" weight="semibold">
                 {tocTitle}

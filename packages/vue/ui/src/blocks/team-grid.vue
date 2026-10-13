@@ -18,6 +18,7 @@ export type TeamGridProps = {
   cols?: "1-3" | "1-4";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -40,6 +41,7 @@ const {
   cols = "1-4",
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<TeamGridProps>();
 </script>
 
@@ -52,6 +54,7 @@ const {
     :density="density"
     :layout="(((layout as string) === 'list') ? 'split' : 'stack')"
     :media="{ show: ((layout as string) === 'list'), side: 'start', align: 'start' }"
+    :landmarkLabel="landmarkLabel"
   >
     <Box
       :class="

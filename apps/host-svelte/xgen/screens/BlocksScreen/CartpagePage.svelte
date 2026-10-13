@@ -12,6 +12,7 @@
     Stack,
     Text,
     Title,
+    tpl,
     type CartLine,
     type Promo,
     type SummaryRow,
@@ -89,6 +90,7 @@
             promo="show"
             progress="show"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cartpage, ui.blocks.variants.cartpage.split)}
           />
         </Box>
       </Stack>
@@ -118,6 +120,7 @@
             promo="show"
             progress="show"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cartpage, ui.blocks.variants.cartpage.stacked)}
           />
         </Box>
       </Stack>
@@ -147,6 +150,7 @@
             promo="hide"
             progress="hide"
             tone="muted"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cartpage, ui.blocks.variants.cartpage.plain)}
           />
         </Box>
       </Stack>

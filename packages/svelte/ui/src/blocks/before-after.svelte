@@ -17,6 +17,7 @@
     icons?: "show" | "hide";
     tone?: "default" | "muted";
     density?: "default" | "compact";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -43,10 +44,11 @@
     icons = "show",
     tone = "default",
     density = "default",
+    landmarkLabel,
   }: BeforeAfterProps = $props();
 </script>
 
-<SectionFrame id={id} title={title} tone={tone} density={density}>
+<SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
   {#if ((layout as string) === "cards")}
     <Grid cols="1-2" class="items-stretch gap-4" data-testid="sides">
       <Card

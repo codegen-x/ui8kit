@@ -12,6 +12,7 @@ import {
   StoreLocations,
   Text,
   Title,
+  tpl,
   type Store,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -74,6 +75,7 @@ const stores = fromCodex<Store>(storesEntries, STORES_FIELDS);
               :labels="ui.commerce.stores"
               layout="cards"
               tone="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.locations, ui.blocks.variants.locations.cards)"
             />
           </Box>
         </Stack>
@@ -99,6 +101,7 @@ const stores = fromCodex<Store>(storesEntries, STORES_FIELDS);
               :labels="ui.commerce.stores"
               layout="list"
               tone="muted"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.locations, ui.blocks.variants.locations.list)"
             />
           </Box>
         </Stack>
@@ -124,6 +127,7 @@ const stores = fromCodex<Store>(storesEntries, STORES_FIELDS);
               :labels="ui.commerce.stores"
               layout="map"
               tone="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.locations, ui.blocks.variants.locations.map)"
             />
           </Box>
         </Stack>

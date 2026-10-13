@@ -23,6 +23,7 @@ export type AboutMeProps = {
   layout?: "facts" | "skills";
   mediaSide?: "start" | "end";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -51,6 +52,7 @@ const {
   layout = "facts",
   mediaSide = "start",
   tone = "default",
+  landmarkLabel,
 } = defineProps<AboutMeProps>();
 </script>
 
@@ -63,7 +65,7 @@ const {
     layout="split"
     :media="{ show: true, side: mediaSide }"
     :tone="tone"
-    density="default"
+    :landmarkLabel="landmarkLabel"
   >
     <List
       v-if="((layout as string) === 'facts')"
@@ -103,7 +105,6 @@ const {
       :primaryHref="actions.href"
       :secondary="((actions.mode === 'two') ? actions.secondary : undefined)"
       :secondaryHref="actions.secondaryHref"
-      align="start"
     />
     <template #aside>
       <MediaFrame :alt="title" ratio="3/4" />

@@ -27,6 +27,7 @@ export type ProductInfoProps = {
   layout?: "split" | "stacked";
   expand?: "first" | "none";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 
 export function ProductInfo({
@@ -38,9 +39,10 @@ export function ProductInfo({
   layout = "split",
   expand = "first",
   tone = "default",
+  landmarkLabel,
 }: ProductInfoProps) {
   return (
-    <SectionFrame id={id} title={title} tone={tone} density="default">
+    <SectionFrame id={id} title={title} tone={tone} landmarkLabel={landmarkLabel}>
       <Box
         className={
           (layout as string) === "split" ? "grid grid-cols-1 items-start gap-8 lg:grid-cols-3"

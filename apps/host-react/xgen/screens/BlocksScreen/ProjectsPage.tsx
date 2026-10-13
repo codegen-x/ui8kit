@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Project,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -79,6 +80,7 @@ export function ProjectsPage() {
                 layout="cards"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.projects, ui.blocks.variants.projects.cards)}
               />
             </Box>
           </Stack>
@@ -104,6 +106,7 @@ export function ProjectsPage() {
                 layout="compact"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.projects, ui.blocks.variants.projects.compact)}
               />
             </Box>
           </Stack>
@@ -129,6 +132,7 @@ export function ProjectsPage() {
                 layout="overlay"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.projects, ui.blocks.variants.projects.overlay)}
               />
             </Box>
           </Stack>
@@ -154,6 +158,7 @@ export function ProjectsPage() {
                 layout="bento"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.projects, ui.blocks.variants.projects.bento)}
               />
             </Box>
           </Stack>
@@ -179,6 +184,7 @@ export function ProjectsPage() {
                 layout="list"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.projects, ui.blocks.variants.projects.list)}
               />
             </Box>
           </Stack>
@@ -204,6 +210,7 @@ export function ProjectsPage() {
                 layout="cards"
                 tone="muted"
                 density="compact"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.projects, ui.blocks.variants.projects.cardsMuted)}
               />
             </Box>
           </Stack>

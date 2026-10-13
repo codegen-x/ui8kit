@@ -81,6 +81,7 @@ export function ContentArticlePage() {
                   layout="column"
                   quotes="show"
                   tone="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.article, ui.blocks.variants.article.column)}
                 />
               </Box>
             </Stack>
@@ -105,6 +106,7 @@ export function ContentArticlePage() {
                   layout="toc"
                   quotes="show"
                   tone="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.article, ui.blocks.variants.article.toc)}
                 />
               </Box>
             </Stack>
@@ -129,6 +131,7 @@ export function ContentArticlePage() {
                   layout="column"
                   quotes="hide"
                   tone="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.article, ui.blocks.variants.article.plain)}
                 />
               </Box>
             </Stack>
@@ -153,6 +156,7 @@ export function ContentArticlePage() {
                   layout="column"
                   quotes="show"
                   tone="muted"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.article, ui.blocks.variants.article.muted)}
                 />
               </Box>
             </Stack>

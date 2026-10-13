@@ -75,7 +75,7 @@ export function ProductCard({
         </Title>
         {((rating as string) === "show") ? (
           <Group gap="2">
-            <Rating value={product.rating} label={tpl(labels.ratingLabel, product.rating)} size={16} />
+            <Rating value={product.rating} label={tpl(labels.ratingLabel, product.rating)} />
             <Text size="xs" className="text-muted-foreground">
               {tpl(labels.reviews, product.reviews)}
             </Text>

@@ -19,6 +19,7 @@
     cols?: "1-3" | "1-4";
     tone?: "default" | "muted";
     density?: "default" | "compact";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -41,6 +42,7 @@
     cols = "1-4",
     tone = "default",
     density = "default",
+    landmarkLabel,
   }: TeamGridProps = $props();
 </script>
 
@@ -52,6 +54,7 @@
   density={density}
   layout={(((layout as string) === "list") ? "split" : "stack")}
   media={{ show: ((layout as string) === "list"), side: "start", align: "start" }}
+  landmarkLabel={landmarkLabel}
 >
   <Box
     class={

@@ -20,6 +20,7 @@ export type UsageCalculatorProps = {
   layout?: "card" | "plain";
   ends?: "show" | "hide";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -44,12 +45,13 @@ const {
   layout = "card",
   ends = "show",
   tone = "default",
+  landmarkLabel,
 } = defineProps<UsageCalculatorProps>();
 const emit = defineEmits<{ usage: [value: string] }>();
 </script>
 
 <template>
-  <SectionFrame :id="id" :title="title" :lead="text" :tone="tone" align="center">
+  <SectionFrame :id="id" :title="title" :lead="text" :tone="tone" align="center" :landmarkLabel="landmarkLabel">
     <Stack
       gap="4"
       align="stretch"

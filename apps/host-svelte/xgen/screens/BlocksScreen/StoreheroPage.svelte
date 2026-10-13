@@ -12,6 +12,7 @@
     StoreHero,
     Text,
     Title,
+    tpl,
     type Feature,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -75,6 +76,7 @@
             mediaSide="end"
             tone="default"
             level={2}
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.storehero, ui.blocks.variants.storehero.overlay)}
           />
         </Box>
       </Stack>
@@ -103,6 +105,7 @@
             mediaSide="start"
             tone="default"
             level={2}
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.storehero, ui.blocks.variants.storehero.overlayStart)}
           />
         </Box>
       </Stack>
@@ -131,6 +134,7 @@
             mediaSide="end"
             tone="default"
             level={2}
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.storehero, ui.blocks.variants.storehero.backdrop)}
           />
         </Box>
       </Stack>
@@ -159,6 +163,7 @@
             mediaSide="end"
             tone="muted"
             level={2}
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.storehero, ui.blocks.variants.storehero.muted)}
           />
         </Box>
       </Stack>

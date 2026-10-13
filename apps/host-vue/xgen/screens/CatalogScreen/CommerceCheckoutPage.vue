@@ -127,6 +127,7 @@ const payments = fromCodex<Payment>(paymentsEntries, PAYMENTS_FIELDS);
                 layout="cards"
                 summary="aside"
                 tone="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.checkout, ui.blocks.variants.checkout.cards)"
               />
             </Box>
           </Stack>
@@ -156,6 +157,7 @@ const payments = fromCodex<Payment>(paymentsEntries, PAYMENTS_FIELDS);
                 layout="numbered"
                 summary="aside"
                 tone="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.checkout, ui.blocks.variants.checkout.numbered)"
               />
             </Box>
           </Stack>
@@ -185,6 +187,7 @@ const payments = fromCodex<Payment>(paymentsEntries, PAYMENTS_FIELDS);
                 layout="cards"
                 summary="none"
                 tone="muted"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.checkout, ui.blocks.variants.checkout.noSummary)"
               />
             </Box>
           </Stack>
@@ -228,6 +231,7 @@ const payments = fromCodex<Payment>(paymentsEntries, PAYMENTS_FIELDS);
                 note="show"
                 tone="default"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.card)"
               />
             </Box>
           </Stack>
@@ -254,6 +258,7 @@ const payments = fromCodex<Payment>(paymentsEntries, PAYMENTS_FIELDS);
                 note="hide"
                 tone="default"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.plain)"
               />
             </Box>
           </Stack>
@@ -280,6 +285,7 @@ const payments = fromCodex<Payment>(paymentsEntries, PAYMENTS_FIELDS);
                 note="show"
                 tone="default"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.noCta)"
               />
             </Box>
           </Stack>
@@ -306,6 +312,7 @@ const payments = fromCodex<Payment>(paymentsEntries, PAYMENTS_FIELDS);
                 note="show"
                 tone="muted"
                 density="compact"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.muted)"
               />
             </Box>
           </Stack>
@@ -350,6 +357,7 @@ const payments = fromCodex<Payment>(paymentsEntries, PAYMENTS_FIELDS);
                 layout="horizontal"
                 marker="number"
                 summary="show"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.horizontal)"
               />
             </Box>
           </Stack>

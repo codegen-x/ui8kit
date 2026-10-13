@@ -86,6 +86,7 @@ export function SupportContactPage() {
                   page="section"
                   tone="default"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.single)}
                 />
               </Box>
             </Stack>
@@ -114,6 +115,7 @@ export function SupportContactPage() {
                   page="full"
                   tone="default"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.page)}
                 />
               </Box>
             </Stack>
@@ -142,6 +144,7 @@ export function SupportContactPage() {
                   page="section"
                   tone="default"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.short)}
                 />
               </Box>
             </Stack>
@@ -170,6 +173,7 @@ export function SupportContactPage() {
                   page="section"
                   tone="default"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.split)}
                 />
               </Box>
             </Stack>
@@ -198,6 +202,7 @@ export function SupportContactPage() {
                   page="section"
                   tone="default"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.consent)}
                 />
               </Box>
             </Stack>
@@ -226,6 +231,7 @@ export function SupportContactPage() {
                   page="section"
                   tone="muted"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.contact, ui.blocks.variants.contact.muted)}
                 />
               </Box>
             </Stack>
@@ -268,6 +274,7 @@ export function SupportContactPage() {
                   cols="1-3"
                   action="link"
                   tone="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.channels, ui.blocks.variants.channels.grid)}
                 />
               </Box>
             </Stack>
@@ -293,6 +300,7 @@ export function SupportContactPage() {
                   cols="1-2"
                   action="link"
                   tone="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.channels, ui.blocks.variants.channels.twoUp)}
                 />
               </Box>
             </Stack>
@@ -318,6 +326,7 @@ export function SupportContactPage() {
                   cols="1-3"
                   action="link"
                   tone="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.channels, ui.blocks.variants.channels.list)}
                 />
               </Box>
             </Stack>
@@ -343,6 +352,7 @@ export function SupportContactPage() {
                   cols="1-3"
                   action="none"
                   tone="muted"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.channels, ui.blocks.variants.channels.plain)}
                 />
               </Box>
             </Stack>

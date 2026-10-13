@@ -195,6 +195,7 @@ export const themeComposed: ComposedSpec[] = themeApps.map((app) => ({
   areas: Object.fromEntries(app.pages.map((p, i) => [areaOf(p.path), page(app, i)])),
   chunks: true,
   requireH1: true,
+  nameLandmarks: true,
   nav: true,
   menu: themeRoutes(app),
   portable: { svelte: true, react: true },

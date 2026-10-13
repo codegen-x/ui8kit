@@ -8,6 +8,7 @@ import {
   FaqList,
   HeroClassic,
   TestimonialGrid,
+  tpl,
   type CodeLine,
   type CompareRow,
   type Faq,
@@ -79,6 +80,7 @@ export function ComparePage() {
         highlight="middle"
         tone="muted"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.rivals)}
       />
       <TestimonialGrid
         id="compare-testimonials"
@@ -94,6 +96,7 @@ export function ComparePage() {
         item={{ kind: "plain", avatar: "image", rating: "hide", mark: "icon" }}
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.featured)}
       />
       <FaqList
         id="compare-faq"
@@ -105,6 +108,7 @@ export function ComparePage() {
         cols="1"
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.search)}
       />
       <CtaBand
         id="compare-cta"
@@ -123,6 +127,7 @@ export function ComparePage() {
         tone="muted"
         proof="quote"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.quote)}
       />
     </>
   );

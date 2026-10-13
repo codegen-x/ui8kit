@@ -13,6 +13,7 @@ export type ShellSidebarProps = {
   mode?: "wide" | "rail" | "collapsed" | "twolevel" | "none";
   side?: "start" | "end";
   brand?: "show" | "hide";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -29,9 +30,15 @@ import ListItem from "../primitives/list/list-item.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Text from "../primitives/text/text.vue";
 import NavBlock from "../components/nav-block.vue";
-import { cn } from "../utils";
+import { cn, tpl } from "../utils";
 
-const { nav, mode = "wide", side = "start", brand = "show" } = defineProps<ShellSidebarProps>();
+const {
+  nav,
+  mode = "wide",
+  side = "start",
+  brand = "show",
+  landmarkLabel,
+} = defineProps<ShellSidebarProps>();
 const emit = defineEmits<{ toggle: [] }>();
 const named = computed(() => (mode as string) === "wide");
 </script>
@@ -46,7 +53,7 @@ const named = computed(() => (mode as string) === "wide");
         : 'border-r border-border'
       )
     )"
-    :aria-label="nav.label"
+    :aria-label="(landmarkLabel ?? nav.label)"
     data-testid="sidebar"
     :data-mode="mode"
   >
@@ -57,7 +64,7 @@ const named = computed(() => (mode as string) === "wide");
           {{ nav.brand }}
         </Text>
       </Group>
-      <NavBlock :label="nav.label" class="flex-1">
+      <NavBlock :label="(landmarkLabel ? tpl('{0}, {1}', nav.label, landmarkLabel) : nav.label)" class="flex-1">
         <List class="m-0 flex list-none flex-col gap-2 p-0" data-testid="items">
           <ListItem v-for="l in nav.links" :key="l.id">
             <Link
@@ -101,7 +108,7 @@ const named = computed(() => (mode as string) === "wide");
       <Text size="sm" weight="semibold" class="px-4">
         {{ nav.subTitle }}
       </Text>
-      <NavBlock :label="nav.subTitle">
+      <NavBlock :label="(landmarkLabel ? tpl('{0}, {1}', nav.subTitle, landmarkLabel) : nav.subTitle)">
         <List class="m-0 flex list-none flex-col gap-2 p-0">
           <ListItem v-for="s in nav.sub" :key="s.id">
             <Link

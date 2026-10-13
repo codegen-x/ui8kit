@@ -26,6 +26,7 @@
     layout?: "media" | "logos" | "rating" | "stack" | "compact" | "bento";
     mediaSide?: "end" | "start";
     tone?: "default" | "muted";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -52,11 +53,12 @@
     layout = "media",
     mediaSide = "end",
     tone = "default",
+    landmarkLabel,
   }: QuoteSplitProps = $props();
 </script>
 
 {#if (((layout as string) === "compact") || ((layout as string) === "bento"))}
-  <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone} density="default">
+  <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone} landmarkLabel={landmarkLabel}>
     {#if ((layout as string) === "bento")}
       <QuoteFigures extras={extras} />
     {/if}
@@ -70,7 +72,6 @@
         <QuoteSlot
           q={q}
           labels={labels}
-          kind="card"
           layout={((((layout as string) === "bento") && (i === 0)) ? "single" : "grid")}
           class={((((layout as string) === "bento") && (i === 0)) ? "lg:row-span-3" : "")}
         />
@@ -84,9 +85,9 @@
     lead={lead}
     heading={{ badge }}
     tone={tone}
-    density="default"
     layout="split"
     media={{ show: true, side: mediaSide }}
+    landmarkLabel={landmarkLabel}
   >
     {#if (((layout as string) === "media") || ((layout as string) === "logos") || ((layout as string) === "rating"))}
       {#each quotes as q, i (q.id)}
@@ -108,7 +109,7 @@
       <Stack gap="4" align="stretch">
         {#each quotes as q, i (q.id)}
           {#if (i < 3)}
-            <QuoteSlot q={q} labels={labels} kind="card" layout="stack" class="" />
+            <QuoteSlot q={q} labels={labels} layout="stack" class="" />
           {/if}
         {/each}
       </Stack>
@@ -119,7 +120,6 @@
         primaryHref={actions.href}
         secondary={((actions.mode === "two") ? actions.secondary : undefined)}
         secondaryHref={actions.secondaryHref}
-        align="start"
       />
     {/if}
     {#snippet aside()}

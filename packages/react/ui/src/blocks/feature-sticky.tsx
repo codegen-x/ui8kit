@@ -26,6 +26,7 @@ export type FeatureStickyProps = {
   item?: "plain" | "card";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function FeatureSticky({
@@ -37,9 +38,10 @@ export function FeatureSticky({
   item = "plain",
   tone = "default",
   density = "default",
+  landmarkLabel,
 }: FeatureStickyProps) {
   return (
-    <SectionFrame id={id} title={title} tone={tone} density={density}>
+    <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
       <Grid cols="1-2" className="items-start gap-8" data-testid="sticky">
         <Box
           className={cn(

@@ -10,6 +10,7 @@ import type { NavLink } from "../blocks/nav-bar.types";
 export type PageCrumbsProps = {
   label: string;
   crumbs: NavLink[];
+  landmarkLabel?: string;
 };
 </script>
 
@@ -22,12 +23,12 @@ import List from "../primitives/list/list.vue";
 import ListItem from "../primitives/list/list-item.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 
-const { label, crumbs } = defineProps<PageCrumbsProps>();
+const { label, crumbs, landmarkLabel } = defineProps<PageCrumbsProps>();
 const last = computed(() => (crumbs?.length ?? 0) - 1);
 </script>
 
 <template>
-  <Block tag="nav" :aria-label="label" data-testid="crumbs">
+  <Block tag="nav" :aria-label="(landmarkLabel ?? label)" data-testid="crumbs">
     <List class="m-0 flex list-none flex-wrap items-center gap-2 p-0 text-sm text-muted-foreground">
       <ListItem v-for="(c, i) in crumbs" :key="c.id" class="flex items-center gap-2">
         <template v-if="(i < last)">

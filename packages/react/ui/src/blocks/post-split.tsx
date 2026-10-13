@@ -30,6 +30,7 @@ export type PostSplitProps = {
   cover?: "wide" | "square";
   actions?: "pair" | "wide" | "icons";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 
 export function PostSplit({
@@ -44,6 +45,7 @@ export function PostSplit({
   cover = "wide",
   actions = "pair",
   tone = "default",
+  landmarkLabel,
 }: PostSplitProps) {
   return (
     <>
@@ -56,6 +58,7 @@ export function PostSplit({
           tone={tone}
           media={{ show: true }}
           align="center"
+          landmarkLabel={landmarkLabel}
           aside={(
             <MediaFrame
               alt={post.title}
@@ -87,6 +90,7 @@ export function PostSplit({
           tone={tone}
           media={{ show: true, side: mediaSide }}
           layout="split"
+          landmarkLabel={landmarkLabel}
           aside={(
             <MediaFrame
               alt={post.title}
@@ -106,7 +110,7 @@ export function PostSplit({
               {((author as string) !== "line") ? (
                 <PostStats post={post} extras={extras} labels={labels} />
               ) : null}
-              <PostTags tags={extras.tags} align="start" />
+              <PostTags tags={extras.tags} />
             </>
           )}
           <PostActions labels={labels} mode={actions} />

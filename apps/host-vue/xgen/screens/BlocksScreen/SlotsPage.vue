@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Day,
   type Zone,
 } from "@ui8kit/vue-ui";
@@ -86,6 +87,7 @@ const zones = fromCodex<Zone>(zonesEntries, ZONES_FIELDS);
               layout="split"
               item="card"
               tone="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.slots, ui.blocks.variants.slots.split)"
             />
           </Box>
         </Stack>
@@ -112,6 +114,7 @@ const zones = fromCodex<Zone>(zonesEntries, ZONES_FIELDS);
               layout="split"
               item="plain"
               tone="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.slots, ui.blocks.variants.slots.plain)"
             />
           </Box>
         </Stack>
@@ -138,6 +141,7 @@ const zones = fromCodex<Zone>(zonesEntries, ZONES_FIELDS);
               layout="stacked"
               item="card"
               tone="muted"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.slots, ui.blocks.variants.slots.stacked)"
             />
           </Box>
         </Stack>

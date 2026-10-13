@@ -53,7 +53,7 @@ const {
     data-meta="news"
   >
     <Box :class="cn('relative shrink-0 overflow-hidden', defaults.news.cover)" data-testid="news-cover">
-      <MediaFrame :alt="post.title" ratio="16/9" :class="cn('size-full', defaults.media.rounded)" />
+      <MediaFrame :alt="post.title" :class="cn('size-full', defaults.media.rounded)" />
       <Title
         :as="3"
         size="xs"
@@ -98,7 +98,7 @@ const {
       v-if="((media as string) === 'image')"
       :class="cn('relative shrink-0', (((layout as string) === 'horizontal') ? 'sm:w-64' : ''))"
     >
-      <MediaFrame :alt="post.title" ratio="16/9" class="h-full" />
+      <MediaFrame :alt="post.title" class="h-full" />
     </Box>
     <CardContent class="flex flex-1 flex-col gap-2">
       <Group v-if="((meta as string) !== 'news')" gap="2" align="center">

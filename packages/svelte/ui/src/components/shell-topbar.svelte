@@ -13,6 +13,7 @@
     brand?: "show" | "hide";
     links?: "show" | "hide";
     search?: "show" | "hide";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -29,15 +30,16 @@
   import MediaFrame from "../components/media-frame.svelte";
   import NavBlock from "../components/nav-block.svelte";
   import SearchPalette from "../components/search-palette.svelte";
-  import { cn } from "../utils";
+  import { cn, tpl } from "../utils";
 
-  let { nav, brand = "show", links = "hide", search = "show" }: ShellTopbarProps = $props();
+  let { nav, brand = "show", links = "hide", search = "show", landmarkLabel }: ShellTopbarProps = $props();
 </script>
 
 <Block
   tag="header"
   class="flex h-16 shrink-0 items-center gap-6 border-b border-border bg-background px-6"
   data-testid="topbar"
+  aria-label={landmarkLabel}
 >
   {#if ((brand as string) === "show")}
     <Group gap="2" align="center" class="shrink-0" data-testid="brand">
@@ -48,7 +50,10 @@
     </Group>
   {/if}
   {#if ((links as string) === "show")}
-    <NavBlock label={nav.label} class="hidden lg:block">
+    <NavBlock
+      label={(landmarkLabel ? tpl("{0}, {1}", nav.label, landmarkLabel) : nav.label)}
+      class="hidden lg:block"
+    >
       <List class="m-0 flex list-none items-center gap-2 p-0">
         {#each nav.links as l (l.id)}
           <ListItem>

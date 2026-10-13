@@ -12,6 +12,7 @@
     Stepper,
     Text,
     Title,
+    tpl,
     type Step,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -66,6 +67,7 @@
             layout="horizontal"
             marker="number"
             summary="show"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.horizontal)}
           />
         </Box>
       </Stack>
@@ -93,6 +95,7 @@
             layout="vertical"
             marker="number"
             summary="show"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.vertical)}
           />
         </Box>
       </Stack>
@@ -120,6 +123,7 @@
             layout="horizontal"
             marker="icon"
             summary="show"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.icons)}
           />
         </Box>
       </Stack>
@@ -147,6 +151,7 @@
             layout="vertical"
             marker="icon"
             summary="hide"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.bare)}
           />
         </Box>
       </Stack>

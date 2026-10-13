@@ -21,6 +21,7 @@
     action?: "button" | "none";
     tone?: "default" | "muted";
     density?: "roomy" | "default" | "compact";
+    landmarkLabel?: string;
     onadd?: (id: string) => void;
   };
 </script>
@@ -44,11 +45,12 @@
     action = "button",
     tone = "default",
     density = "default",
+    landmarkLabel,
     onadd,
   }: ProductGridProps = $props();
 </script>
 
-<SectionFrame id={id} title={title} tone={tone} density={density}>
+<SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
   {#if ((layout as string) === "rail")}
     <Box class="flex snap-x gap-4 overflow-x-auto pb-4" data-testid="items">
       {#each products as p (p.id)}

@@ -19,6 +19,7 @@ export type TestimonialGridProps = {
   item?: QuoteItem;
   tone?: "default" | "muted";
   density?: "roomy" | "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -38,6 +39,7 @@ const {
   item,
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<TestimonialGridProps>();
 </script>
 
@@ -49,6 +51,7 @@ const {
     :density="density"
     :align="(((layout as string) === 'single') ? 'center' : 'start')"
     :measure="(((layout as string) === 'grid') ? 'default' : '2xl')"
+    :landmarkLabel="landmarkLabel"
   >
     <Block v-if="(((layout as string) === 'masonry') || ((layout as string) === 'strip'))"
       tag="div"

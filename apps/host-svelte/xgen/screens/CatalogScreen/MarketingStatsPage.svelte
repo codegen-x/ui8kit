@@ -83,6 +83,7 @@
               align="center"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.plain4)}
             />
           </Box>
         </Stack>
@@ -110,6 +111,7 @@
               align="center"
               tone="default"
               density="compact"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.panel)}
             />
           </Box>
         </Stack>
@@ -137,6 +139,7 @@
               align="start"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.stack)}
             />
           </Box>
         </Stack>
@@ -164,6 +167,7 @@
               align="center"
               tone="default"
               density="roomy"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.image)}
             />
           </Box>
         </Stack>
@@ -191,6 +195,7 @@
               align="center"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.cards)}
             />
           </Box>
         </Stack>
@@ -218,6 +223,7 @@
               align="start"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.icons)}
             />
           </Box>
         </Stack>
@@ -245,6 +251,7 @@
               align="center"
               tone="muted"
               density="roomy"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.muted2)}
             />
           </Box>
         </Stack>
@@ -272,6 +279,7 @@
               align="center"
               tone="default"
               density="compact"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.cardsCompact)}
             />
           </Box>
         </Stack>

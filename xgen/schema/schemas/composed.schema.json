@@ -374,6 +374,9 @@
     "requireH1": {
       "type": "boolean"
     },
+    "nameLandmarks": {
+      "type": "boolean"
+    },
     "nav": {
       "type": "boolean"
     },

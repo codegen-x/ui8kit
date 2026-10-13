@@ -80,6 +80,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 dismiss="hide"
                 badge="none"
                 position="top"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.bar)"
               />
             </Box>
           </Stack>
@@ -108,6 +109,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 dismiss="hide"
                 badge="show"
                 position="top"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.badge)"
               />
             </Box>
           </Stack>
@@ -136,6 +138,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 dismiss="show"
                 badge="none"
                 position="bottom"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.bottom)"
               />
             </Box>
           </Stack>
@@ -164,6 +167,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 dismiss="hide"
                 badge="none"
                 position="top"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.muted)"
               />
             </Box>
           </Stack>
@@ -192,6 +196,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 dismiss="hide"
                 badge="none"
                 position="top"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.split)"
               />
             </Box>
           </Stack>
@@ -220,6 +225,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 dismiss="show"
                 badge="none"
                 position="top"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.dismissible)"
               />
             </Box>
           </Stack>
@@ -248,6 +254,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 dismiss="show"
                 badge="none"
                 position="top"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.shop)"
               />
             </Box>
           </Stack>
@@ -276,6 +283,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 dismiss="hide"
                 badge="none"
                 position="top"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.agency)"
               />
             </Box>
           </Stack>
@@ -319,6 +327,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 layout="bar"
                 actions="two"
                 tone="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.bar)"
               />
             </Box>
           </Stack>
@@ -345,6 +354,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 layout="card"
                 actions="two"
                 tone="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.card)"
               />
             </Box>
           </Stack>
@@ -371,6 +381,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 layout="bar"
                 actions="three"
                 tone="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.settings)"
               />
             </Box>
           </Stack>
@@ -397,6 +408,7 @@ import { ui } from "@ui8kit/app-shared/content";
                 layout="card"
                 actions="three"
                 tone="muted"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.muted)"
               />
             </Box>
           </Stack>

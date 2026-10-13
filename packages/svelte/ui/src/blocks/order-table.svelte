@@ -18,6 +18,7 @@
     pager?: "show" | "hide";
     tone?: "default" | "muted";
     density?: "default" | "compact";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -42,10 +43,11 @@
     pager = "show",
     tone = "default",
     density = "default",
+    landmarkLabel,
   }: OrderTableProps = $props();
 </script>
 
-<SectionFrame id={id} title={title} tone={tone} density={density}>
+<SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
   <Stack gap="4" align="stretch">
     {#if ((layout as string) === "table")}
       <OrderRows orders={orders} statuses={statuses} labels={labels} density={density} />

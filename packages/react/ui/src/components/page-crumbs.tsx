@@ -16,12 +16,13 @@ import type { NavLink } from "../blocks/nav-bar.types";
 export type PageCrumbsProps = {
   label: string;
   crumbs: NavLink[];
+  landmarkLabel?: string;
 };
 
-export function PageCrumbs({ label, crumbs }: PageCrumbsProps) {
+export function PageCrumbs({ label, crumbs, landmarkLabel }: PageCrumbsProps) {
   const last = (crumbs?.length ?? 0) - 1;
   return (
-    <Block tag="nav" aria-label={label} data-testid="crumbs">
+    <Block tag="nav" aria-label={(landmarkLabel ?? label)} data-testid="crumbs">
       <List className="m-0 flex list-none flex-wrap items-center gap-2 p-0 text-sm text-muted-foreground">
         {(crumbs ?? []).map((c, i) => (
           <ListItem key={c.id} className="flex items-center gap-2">

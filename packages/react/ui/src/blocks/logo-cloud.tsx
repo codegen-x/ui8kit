@@ -23,6 +23,7 @@ export type LogoCloudProps = {
   item?: "name" | "icon" | "tile";
   tone?: "default" | "muted";
   density?: "roomy" | "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function LogoCloud({
@@ -34,13 +35,14 @@ export function LogoCloud({
   item = "name",
   tone = "default",
   density = "default",
+  landmarkLabel,
 }: LogoCloudProps) {
   return (
     <>
       {((layout as string) === "row") ? (
-        <LogoRibbon id={id} title={title} logos={logos} tone={tone} density={density} />
+        <LogoRibbon id={id} title={title} logos={logos} tone={tone} density={density} landmarkLabel={landmarkLabel} />
       ) : (
-        <SectionFrame id={id} title={title} tone={tone} density={density} align="center">
+        <SectionFrame id={id} title={title} tone={tone} density={density} align="center" landmarkLabel={landmarkLabel}>
           <Grid
             cols={
               (cols as string) === "2" ? "2"

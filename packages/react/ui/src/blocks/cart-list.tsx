@@ -27,6 +27,7 @@ export type CartListProps = {
   media?: "image" | "none";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
   onRemove?: (id: string) => void;
 };
 
@@ -39,10 +40,11 @@ export function CartList({
   media = "image",
   tone = "default",
   density = "default",
+  landmarkLabel,
   onRemove,
 }: CartListProps) {
   return (
-    <SectionFrame id={id} title={title} tone={tone} density={density}>
+    <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
       {((layout as string) === "table") ? (
         <CartTable
           field={tpl("{0}-qty", id)}

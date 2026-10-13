@@ -12,6 +12,7 @@ import {
   TestimonialGrid,
   Text,
   Title,
+  tpl,
   type Quote,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -78,6 +79,7 @@ const TESTIMONIALS_LABELS = { rating: ui.testimonials.rating, byLine: ui.testimo
               :item="{ kind: 'card', avatar: 'image', rating: 'show', mark: 'none' }"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.grid3)"
             />
           </Box>
         </Stack>
@@ -104,6 +106,7 @@ const TESTIMONIALS_LABELS = { rating: ui.testimonials.rating, byLine: ui.testimo
               :item="{ kind: 'card', avatar: 'image', rating: 'hide', mark: 'none' }"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.masonry)"
             />
           </Box>
         </Stack>
@@ -130,6 +133,7 @@ const TESTIMONIALS_LABELS = { rating: ui.testimonials.rating, byLine: ui.testimo
               :item="{ kind: 'card', avatar: 'none', rating: 'show', mark: 'none' }"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.strip)"
             />
           </Box>
         </Stack>
@@ -156,6 +160,7 @@ const TESTIMONIALS_LABELS = { rating: ui.testimonials.rating, byLine: ui.testimo
               :item="{ kind: 'social', avatar: 'image', rating: 'hide', mark: 'none' }"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.social)"
             />
           </Box>
         </Stack>
@@ -182,6 +187,7 @@ const TESTIMONIALS_LABELS = { rating: ui.testimonials.rating, byLine: ui.testimo
               :item="{ kind: 'plain', avatar: 'image', rating: 'hide', mark: 'icon' }"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.featured)"
             />
           </Box>
         </Stack>
@@ -208,6 +214,7 @@ const TESTIMONIALS_LABELS = { rating: ui.testimonials.rating, byLine: ui.testimo
               :item="{ kind: 'card', avatar: 'image', rating: 'show', mark: 'none' }"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.grid2)"
             />
           </Box>
         </Stack>
@@ -234,6 +241,7 @@ const TESTIMONIALS_LABELS = { rating: ui.testimonials.rating, byLine: ui.testimo
               :item="{ kind: 'plain', avatar: 'image', rating: 'hide', mark: 'none' }"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.single)"
             />
           </Box>
         </Stack>
@@ -260,6 +268,7 @@ const TESTIMONIALS_LABELS = { rating: ui.testimonials.rating, byLine: ui.testimo
               :item="{ kind: 'card', avatar: 'none', rating: 'show', mark: 'none' }"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.stack)"
             />
           </Box>
         </Stack>
@@ -286,6 +295,7 @@ const TESTIMONIALS_LABELS = { rating: ui.testimonials.rating, byLine: ui.testimo
               :item="{ kind: 'plain', avatar: 'none', rating: 'show', mark: 'none' }"
               tone="muted"
               density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.plain)"
             />
           </Box>
         </Stack>
@@ -312,6 +322,7 @@ const TESTIMONIALS_LABELS = { rating: ui.testimonials.rating, byLine: ui.testimo
               :item="{ kind: 'card', avatar: 'image', rating: 'hide', mark: 'none' }"
               tone="default"
               density="roomy"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.noRating)"
             />
           </Box>
         </Stack>

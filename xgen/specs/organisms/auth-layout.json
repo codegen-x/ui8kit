@@ -116,6 +116,11 @@
         "ts": "\"none\" | \"show\" | \"first\""
       },
       "default": "none"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
     }
   ],
   "slots": [],
@@ -209,6 +214,9 @@
                             },
                             "level": {
                               "$": "level"
+                            },
+                            "landmarkLabel": {
+                              "$": "landmarkLabel"
                             }
                           }
                         }
@@ -337,12 +345,14 @@
                             "mode": {
                               "$": "mode"
                             },
-                            "layout": "card",
                             "social": {
                               "$": "social"
                             },
                             "level": {
                               "$": "level"
+                            },
+                            "landmarkLabel": {
+                              "$": "landmarkLabel"
                             }
                           }
                         }
@@ -392,6 +402,9 @@
                             },
                             "level": {
                               "$": "level"
+                            },
+                            "landmarkLabel": {
+                              "$": "landmarkLabel"
                             }
                           }
                         }

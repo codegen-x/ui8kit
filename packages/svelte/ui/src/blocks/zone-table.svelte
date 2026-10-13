@@ -17,6 +17,7 @@
     layout?: "table" | "cards";
     tone?: "default" | "muted";
     density?: "default" | "compact";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -42,10 +43,11 @@
     layout = "table",
     tone = "default",
     density = "default",
+    landmarkLabel,
   }: ZoneTableProps = $props();
 </script>
 
-<SectionFrame id={id} title={title} lead={lead} tone={tone} density={density}>
+<SectionFrame id={id} title={title} lead={lead} tone={tone} density={density} landmarkLabel={landmarkLabel}>
   {#if ((layout as string) === "table")}
     <ZoneRows zones={zones} labels={labels} />
   {:else}

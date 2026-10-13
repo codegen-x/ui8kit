@@ -142,6 +142,11 @@
         "ts": "\"default\" | \"muted\""
       },
       "default": "default"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
     }
   ],
   "slots": [],
@@ -178,7 +183,9 @@
             "tone": {
               "$": "tone"
             },
-            "density": "default"
+            "landmarkLabel": {
+              "$": "landmarkLabel"
+            }
           },
           "slots": {
             "children": {
@@ -235,12 +242,14 @@
             "tone": {
               "$": "tone"
             },
-            "density": "default",
             "layout": "split",
             "media": {
               "show": true,
               "side": "end",
               "align": "start"
+            },
+            "landmarkLabel": {
+              "$": "landmarkLabel"
             }
           },
           "slots": {
@@ -329,12 +338,14 @@
             "tone": {
               "$": "tone"
             },
-            "density": "default",
             "layout": "split",
             "media": {
               "show": true,
               "side": "end",
               "align": "start"
+            },
+            "landmarkLabel": {
+              "$": "landmarkLabel"
             }
           },
           "slots": {
@@ -371,6 +382,9 @@
                     },
                     "channels": {
                       "$": "channels"
+                    },
+                    "landmarkLabel": {
+                      "$": "landmarkLabel"
                     }
                   }
                 }
@@ -411,7 +425,6 @@
             "tone": {
               "$": "tone"
             },
-            "density": "default",
             "layout": "split",
             "media": {
               "show": true,
@@ -419,6 +432,9 @@
                 "$": "mediaSide"
               },
               "align": "start"
+            },
+            "landmarkLabel": {
+              "$": "landmarkLabel"
             }
           },
           "slots": {
@@ -516,13 +532,15 @@
             "tone": {
               "$": "tone"
             },
-            "density": "default",
             "layout": "split",
             "media": {
               "show": true,
               "side": {
                 "$": "mediaSide"
               }
+            },
+            "landmarkLabel": {
+              "$": "landmarkLabel"
             }
           },
           "slots": {

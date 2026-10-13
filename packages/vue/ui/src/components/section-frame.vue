@@ -45,6 +45,7 @@ export type SectionFrameProps = {
   density?: "roomy" | "default" | "compact" | "flush";
   align?: "start" | "center";
   measure?: "default" | "landing" | "fill" | "xs" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl";
+  landmarkLabel?: string;
   class?: string;
 };
 </script>
@@ -75,6 +76,7 @@ const {
   density = "default",
   align = "start",
   measure = "default",
+  landmarkLabel,
   class: className,
 } = defineProps<SectionFrameProps>();
 defineSlots<{ default?(): unknown, aside?(): unknown }>();
@@ -87,8 +89,8 @@ const center = computed(() => (align as string) === "center");
   <Block
     tag="section"
     :class="cn(sectionFrameVariants({ tone: sectionTone, density: density, align: align }), className)"
-    :aria-labelledby="(((title as string) !== '') ? titleId : undefined)"
-    :aria-label="(((title as string) === '') ? id : undefined)"
+    :aria-labelledby="(landmarkLabel ? undefined : (((title as string) !== '') ? titleId : undefined))"
+    :aria-label="(landmarkLabel ?? (((title as string) === '') ? id : undefined))"
     data-testid="section"
     :data-tone="tone"
     :data-density="density"

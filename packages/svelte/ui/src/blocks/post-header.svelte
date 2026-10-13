@@ -17,6 +17,7 @@
     cover?: "show" | "hide";
     meta?: "full" | "short";
     tone?: "default" | "muted";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -37,6 +38,7 @@
     cover = "show",
     meta = "full",
     tone = "default",
+    landmarkLabel,
   }: PostHeaderProps = $props();
 </script>
 
@@ -48,6 +50,7 @@
   align={layout}
   tone={tone}
   media={{ show: ((cover as string) === "show") }}
+  landmarkLabel={landmarkLabel}
 >
   <Group
     gap="4"

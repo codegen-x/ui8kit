@@ -21,6 +21,7 @@
     multiple?: boolean;
     tone?: "default" | "muted";
     density?: "roomy" | "default" | "compact";
+    landmarkLabel?: string;
     onquery?: (text: string) => void;
     oncategory?: (value: string) => void;
   };
@@ -50,6 +51,7 @@
     multiple = false,
     tone = "default",
     density = "default",
+    landmarkLabel,
     onquery,
     oncategory,
   }: FaqListProps = $props();
@@ -63,6 +65,7 @@
   tone={tone}
   density={density}
   measure={(((layout as string) === "chat") ? "2xl" : "default")}
+  landmarkLabel={landmarkLabel}
 >
   {#if (search?.mode === "field")}
     <SearchField

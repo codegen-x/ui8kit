@@ -25,6 +25,7 @@ export type TourCalloutProps = {
   placement?: "below" | "above" | "end";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function TourCallout({
@@ -38,9 +39,10 @@ export function TourCallout({
   placement = "below",
   tone = "default",
   density = "default",
+  landmarkLabel,
 }: TourCalloutProps) {
   return (
-    <SectionFrame id={id} title={title} tone={tone} density={density}>
+    <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
       <Block
         tag="div"
         className={cn(

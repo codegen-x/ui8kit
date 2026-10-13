@@ -11,6 +11,7 @@
   export type FooterGroupCardsProps = {
     label: string;
     groups: MegaGroup[];
+    landmarkLabel?: string;
   };
 </script>
 
@@ -26,10 +27,10 @@
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
 
-  let { label, groups }: FooterGroupCardsProps = $props();
+  let { label, groups, landmarkLabel }: FooterGroupCardsProps = $props();
 </script>
 
-<Block tag="nav" aria-label={label}>
+<Block tag="nav" aria-label={(landmarkLabel ?? label)}>
   <Box class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
     {#each groups as g (g.id)}
       <Stack gap="4" align="stretch" class="rounded bg-card inset-ring inset-ring-border p-6" data-testid="group">

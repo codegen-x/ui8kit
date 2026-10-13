@@ -20,6 +20,7 @@
     size?: "default" | "wide";
     outline?: "none" | "chapters";
     tone?: "default" | "muted";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -48,10 +49,11 @@
     size = "default",
     outline = "none",
     tone = "default",
+    landmarkLabel,
   }: VideoModalProps = $props();
 </script>
 
-<SectionFrame id={id} title={title} tone={tone} density="default">
+<SectionFrame id={id} title={title} tone={tone} landmarkLabel={landmarkLabel}>
   <Stack
     gap="4"
     align="stretch"
@@ -73,7 +75,7 @@
       </Button>
     </Group>
     <Box class="relative" data-testid="player">
-      <MediaFrame alt={title} ratio="16/9" />
+      <MediaFrame alt={title} />
       <Button
         variant="default"
         size="default"

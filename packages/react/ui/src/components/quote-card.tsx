@@ -60,7 +60,7 @@ export function QuoteCard({ q, labels, item, layout = "grid" }: QuoteCardProps) 
       ) : (
         <>
           {(item?.rating !== "hide") ? (
-            <Rating value={q.rating} label={tpl(labels.rating, q.rating)} size={16} />
+            <Rating value={q.rating} label={tpl(labels.rating, q.rating)} />
           ) : null}
           {(item?.mark === "icon") ? (
             <Inline className="text-muted-foreground" data-testid="mark">

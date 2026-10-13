@@ -20,6 +20,7 @@ export type ProductGridProps = {
   action?: "button" | "none";
   tone?: "default" | "muted";
   density?: "roomy" | "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -42,12 +43,13 @@ const {
   action = "button",
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<ProductGridProps>();
 const emit = defineEmits<{ add: [id: string] }>();
 </script>
 
 <template>
-  <SectionFrame :id="id" :title="title" :tone="tone" :density="density">
+  <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
     <Box
       v-if="((layout as string) === 'rail')"
       class="flex snap-x gap-4 overflow-x-auto pb-4"

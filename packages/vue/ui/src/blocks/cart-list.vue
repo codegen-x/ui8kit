@@ -16,6 +16,7 @@ export type CartListProps = {
   media?: "image" | "none";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -41,12 +42,13 @@ const {
   media = "image",
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<CartListProps>();
 const emit = defineEmits<{ remove: [id: string] }>();
 </script>
 
 <template>
-  <SectionFrame :id="id" :title="title" :tone="tone" :density="density">
+  <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
     <CartTable v-if="((layout as string) === 'table')"
       :field="tpl('{0}-qty', id)"
       :lines="lines"

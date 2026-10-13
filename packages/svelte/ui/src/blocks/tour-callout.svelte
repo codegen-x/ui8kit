@@ -19,6 +19,7 @@
     placement?: "below" | "above" | "end";
     tone?: "default" | "muted";
     density?: "default" | "compact";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -42,10 +43,11 @@
     placement = "below",
     tone = "default",
     density = "default",
+    landmarkLabel,
   }: TourCalloutProps = $props();
 </script>
 
-<SectionFrame id={id} title={title} tone={tone} density={density}>
+<SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
   <Block
     tag="div"
     class={cn(

@@ -20,6 +20,7 @@ export type FeatureGridProps = {
   mediaSide?: "end" | "start" | "alternate";
   tone?: "default" | "muted";
   density?: "roomy" | "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -44,18 +45,18 @@ const {
   mediaSide = "end",
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<FeatureGridProps>();
 </script>
 
 <template>
-  <SectionFrame
-    v-if="((item as string) === 'cell')"
+  <SectionFrame v-if="((item as string) === 'cell')"
     :id="id"
-    title=""
     :tone="tone"
     :density="density"
     measure="fill"
     class="py-0"
+    :landmarkLabel="landmarkLabel"
   >
     <Group gap="4" align="center" justify="between" class="w-full">
       <Title :as="2" size="sm" weight="semibold" class="leading-7" :id="(id + '-title')">
@@ -72,7 +73,14 @@ const {
     </Group>
     <FeatureCards :features="features" :cols="cols" :item="item" />
   </SectionFrame>
-  <SectionFrame v-else :id="id" :title="title" :action="action" :tone="tone" :density="density">
+  <SectionFrame v-else
+    :id="id"
+    :title="title"
+    :action="action"
+    :tone="tone"
+    :density="density"
+    :landmarkLabel="landmarkLabel"
+  >
     <FeatureRows v-if="((layout as string) === 'rows')" :features="features" :mediaSide="mediaSide" />
     <FeatureCards v-else :features="features" :cols="cols" :item="item" />
   </SectionFrame>

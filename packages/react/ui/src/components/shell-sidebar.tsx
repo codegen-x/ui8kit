@@ -17,7 +17,7 @@ import { ListItem } from "../primitives/list/list-item";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Text } from "../primitives/text/text";
 import { NavBlock } from "../components/nav-block";
-import { cn } from "../utils";
+import { cn, tpl } from "../utils";
 import type { ShellNav } from "../blocks/dashboard-shell.types";
 
 export type ShellSidebarProps = {
@@ -25,6 +25,7 @@ export type ShellSidebarProps = {
   mode?: "wide" | "rail" | "collapsed" | "twolevel" | "none";
   side?: "start" | "end";
   brand?: "show" | "hide";
+  landmarkLabel?: string;
   onToggle?: () => void;
 };
 
@@ -33,6 +34,7 @@ export function ShellSidebar({
   mode = "wide",
   side = "start",
   brand = "show",
+  landmarkLabel,
   onToggle,
 }: ShellSidebarProps) {
   const named = (mode as string) === "wide";
@@ -46,7 +48,7 @@ export function ShellSidebar({
           : "border-r border-border"
         )
       )}
-      aria-label={nav.label}
+      aria-label={(landmarkLabel ?? nav.label)}
       data-testid="sidebar"
       data-mode={mode}
     >
@@ -59,7 +61,7 @@ export function ShellSidebar({
             </Text>
           </Group>
         ) : null}
-        <NavBlock label={nav.label} className="flex-1">
+        <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", nav.label, landmarkLabel) : nav.label)} className="flex-1">
           <List className="m-0 flex list-none flex-col gap-2 p-0" data-testid="items">
             {(nav.links ?? []).map((l) => (
               <ListItem key={l.id}>
@@ -108,7 +110,7 @@ export function ShellSidebar({
           <Text size="sm" weight="semibold" className="px-4">
             {nav.subTitle}
           </Text>
-          <NavBlock label={nav.subTitle}>
+          <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", nav.subTitle, landmarkLabel) : nav.subTitle)}>
             <List className="m-0 flex list-none flex-col gap-2 p-0">
               {(nav.sub ?? []).map((s) => (
                 <ListItem key={s.id}>

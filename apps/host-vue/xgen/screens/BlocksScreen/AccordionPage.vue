@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Feature,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -64,6 +65,7 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
               media="none"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.accordion, ui.blocks.variants.accordion.first)"
             />
           </Box>
         </Stack>
@@ -88,6 +90,7 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
               media="none"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.accordion, ui.blocks.variants.accordion.closed)"
             />
           </Box>
         </Stack>
@@ -112,6 +115,7 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
               media="image"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.accordion, ui.blocks.variants.accordion.media)"
             />
           </Box>
         </Stack>
@@ -136,6 +140,7 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
               media="none"
               tone="muted"
               density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.accordion, ui.blocks.variants.accordion.muted)"
             />
           </Box>
         </Stack>

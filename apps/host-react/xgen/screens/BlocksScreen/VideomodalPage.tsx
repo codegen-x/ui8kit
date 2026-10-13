@@ -12,6 +12,7 @@ import {
   Text,
   Title,
   VideoModal,
+  tpl,
   type Chapter,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -72,6 +73,7 @@ export function VideomodalPage() {
                 size="default"
                 outline="none"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.default)}
               />
             </Box>
           </Stack>
@@ -99,6 +101,7 @@ export function VideomodalPage() {
                 size="wide"
                 outline="none"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.wide)}
               />
             </Box>
           </Stack>
@@ -126,6 +129,7 @@ export function VideomodalPage() {
                 size="default"
                 outline="chapters"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.chapters)}
               />
             </Box>
           </Stack>
@@ -153,6 +157,7 @@ export function VideomodalPage() {
                 size="default"
                 outline="none"
                 tone="muted"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.muted)}
               />
             </Box>
           </Stack>

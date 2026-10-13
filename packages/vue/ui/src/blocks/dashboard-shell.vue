@@ -23,6 +23,7 @@ export type DashboardShellProps = {
   footer?: "full" | "inset" | "none";
   content?: "grid" | "split" | "list";
   frame?: "window" | "page";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -48,6 +49,7 @@ const {
   footer = "none",
   content = "grid",
   frame = "window",
+  landmarkLabel,
 } = defineProps<DashboardShellProps>();
 const titleId = computed(() => tpl("{0}-title", id));
 </script>
@@ -57,11 +59,12 @@ const titleId = computed(() => tpl("{0}-title", id));
     tag="section"
     :class="(((frame as string) === 'window') ? 'bg-background py-12' : 'bg-background')"
     :id="id"
-    :aria-labelledby="titleId"
+    :aria-labelledby="(landmarkLabel ? undefined : titleId)"
     data-testid="dashboard-shell"
     :data-topbar="topbar"
     :data-sidebar="sidebar"
     :data-footer="footer"
+    :aria-label="landmarkLabel"
   >
     <Box :class="(((frame as string) === 'window') ? 'mx-auto w-full max-w-6xl px-4' : '')">
       <Box
@@ -73,9 +76,9 @@ const titleId = computed(() => tpl("{0}-title", id));
       >
         <ShellTopbar v-if="((topbar as string) === 'full')"
           :nav="nav"
-          brand="show"
           :links="(((sidebar as string) === 'none') ? 'show' : 'hide')"
           :search="search"
+          :landmarkLabel="landmarkLabel"
         />
         <Box :class="cn('flex min-h-0 flex-1', (((side as string) === 'end') ? 'flex-row-reverse' : ''))">
           <ShellSidebar v-if="((sidebar as string) !== 'none')"
@@ -83,6 +86,7 @@ const titleId = computed(() => tpl("{0}-title", id));
             :mode="sidebar"
             :side="side"
             :brand="(((topbar as string) === 'full') ? 'hide' : 'show')"
+            :landmarkLabel="landmarkLabel"
           />
           <Box class="flex min-w-0 flex-1 flex-col">
             <ShellTopbar v-if="((topbar as string) === 'inset')"
@@ -90,12 +94,18 @@ const titleId = computed(() => tpl("{0}-title", id));
               :brand="(((sidebar as string) === 'none') ? 'show' : 'hide')"
               :links="(((sidebar as string) === 'none') ? 'show' : 'hide')"
               :search="search"
+              :landmarkLabel="landmarkLabel"
             />
             <ShellContent :title="title" :titleId="titleId" :level="level" :content="content" />
-            <ShellFooter v-if="((footer as string) === 'inset')" :nav="nav" place="inset" />
+            <ShellFooter
+              v-if="((footer as string) === 'inset')"
+              :nav="nav"
+              place="inset"
+              :landmarkLabel="landmarkLabel"
+            />
           </Box>
         </Box>
-        <ShellFooter v-if="((footer as string) === 'full')" :nav="nav" place="full" />
+        <ShellFooter v-if="((footer as string) === 'full')" :nav="nav" :landmarkLabel="landmarkLabel" />
       </Box>
     </Box>
   </Block>

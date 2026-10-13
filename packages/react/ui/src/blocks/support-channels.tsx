@@ -26,6 +26,7 @@ export type SupportChannelsProps = {
   cols?: "1-2" | "1-3";
   action?: "link" | "none";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 
 export function SupportChannels({
@@ -37,9 +38,10 @@ export function SupportChannels({
   cols = "1-3",
   action = "link",
   tone = "default",
+  landmarkLabel,
 }: SupportChannelsProps) {
   return (
-    <SectionFrame id={id} title={title} tone={tone}>
+    <SectionFrame id={id} title={title} tone={tone} landmarkLabel={landmarkLabel}>
       <Grid cols={(((layout as string) === "list") ? "1" : cols)} className="gap-4" data-testid="items">
         {(channels ?? []).map((c) => (
           <Card key={c.id}

@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Skill,
   type Spec,
 } from "@ui8kit/react-ui";
@@ -80,6 +81,7 @@ export function AboutmePage() {
                 mediaSide="start"
                 tone="default"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.aboutme, ui.blocks.variants.aboutme.facts)}
               />
             </Box>
           </Stack>
@@ -109,6 +111,7 @@ export function AboutmePage() {
                 mediaSide="end"
                 tone="default"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.aboutme, ui.blocks.variants.aboutme.factsEnd)}
               />
             </Box>
           </Stack>
@@ -138,6 +141,7 @@ export function AboutmePage() {
                 mediaSide="start"
                 tone="default"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.aboutme, ui.blocks.variants.aboutme.skills)}
               />
             </Box>
           </Stack>
@@ -167,6 +171,7 @@ export function AboutmePage() {
                 mediaSide="end"
                 tone="muted"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.aboutme, ui.blocks.variants.aboutme.skillsMuted)}
               />
             </Box>
           </Stack>

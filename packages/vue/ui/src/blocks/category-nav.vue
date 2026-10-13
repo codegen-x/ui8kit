@@ -17,6 +17,7 @@ export type CategoryNavProps = {
   icon?: "show" | "hide";
   density?: "default" | "compact";
   tools?: CategoryTools;
+  landmarkLabel?: string;
 };
 </script>
 
@@ -45,6 +46,7 @@ const {
   icon = "show",
   density = "default",
   tools,
+  landmarkLabel,
 } = defineProps<CategoryNavProps>();
 const chipLike = computed(() => ((layout as string) === "chips") || ((layout as string) === "toolbar"));
 const tiles = computed(() => (layout as string) === "tiles");
@@ -70,7 +72,7 @@ const listShape = computed(() =>
 </script>
 
 <template>
-  <Block tag="nav" :aria-label="label" data-testid="category-nav" :data-layout="layout">
+  <Block tag="nav" :aria-label="(landmarkLabel ?? label)" data-testid="category-nav" :data-layout="layout">
     <Container
       :class="cn('mx-auto w-full max-w-6xl px-4', (((density as string) === 'compact') ? 'py-2' : 'py-4'))"
       data-slot="container"

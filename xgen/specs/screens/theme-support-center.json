@@ -195,6 +195,7 @@
   },
   "chunks": true,
   "requireH1": true,
+  "nameLandmarks": true,
   "nav": true,
   "menu": [
     {

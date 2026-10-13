@@ -2,7 +2,7 @@
 <!-- Source: xgen/specs/screens/theme-content-blog.json -->
 <!-- The articles page of ThemeContentBlogScreen. -->
 <script setup lang="ts">
-import { PageIntro, PostGrid, type Post, type PostTopic } from "@ui8kit/vue-ui";
+import { PageIntro, PostGrid, tpl, type Post, type PostTopic } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { posts as postsEntries } from "@ui8kit/app-shared/data/posts";
@@ -48,6 +48,7 @@ const topics = fromCodex<PostTopic>(topicsEntries, TOPICS_FIELDS);
     meta="full"
     tone="default"
     density="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.filters)"
   />
   <PostGrid
     id="articles-posts-2"
@@ -62,5 +63,6 @@ const topics = fromCodex<PostTopic>(topicsEntries, TOPICS_FIELDS);
     meta="full"
     tone="default"
     density="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.twoUp)"
   />
 </template>

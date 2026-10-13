@@ -33,6 +33,7 @@ export type AboutMeProps = {
   layout?: "facts" | "skills";
   mediaSide?: "start" | "end";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 
 export function AboutMe({
@@ -48,6 +49,7 @@ export function AboutMe({
   layout = "facts",
   mediaSide = "start",
   tone = "default",
+  landmarkLabel,
 }: AboutMeProps) {
   return (
     <SectionFrame
@@ -58,7 +60,7 @@ export function AboutMe({
       layout="split"
       media={{ show: true, side: mediaSide }}
       tone={tone}
-      density="default"
+      landmarkLabel={landmarkLabel}
       aside={(
         <MediaFrame alt={title} ratio="3/4" />
       )}
@@ -98,7 +100,6 @@ export function AboutMe({
         primaryHref={actions.href}
         secondary={((actions.mode === "two") ? actions.secondary : undefined)}
         secondaryHref={actions.secondaryHref}
-        align="start"
       />
     </SectionFrame>
   );

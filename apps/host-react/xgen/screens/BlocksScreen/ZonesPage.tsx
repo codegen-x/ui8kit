@@ -12,6 +12,7 @@ import {
   Text,
   Title,
   ZoneTable,
+  tpl,
   type Zone,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -80,6 +81,7 @@ export function ZonesPage() {
                 layout="table"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.zones, ui.blocks.variants.zones.table)}
               />
             </Box>
           </Stack>
@@ -105,6 +107,7 @@ export function ZonesPage() {
                 layout="cards"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.zones, ui.blocks.variants.zones.cards)}
               />
             </Box>
           </Stack>
@@ -130,6 +133,7 @@ export function ZonesPage() {
                 layout="table"
                 tone="muted"
                 density="compact"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.zones, ui.blocks.variants.zones.tableMuted)}
               />
             </Box>
           </Stack>

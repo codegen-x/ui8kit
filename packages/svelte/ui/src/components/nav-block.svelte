@@ -7,6 +7,7 @@
   export type NavBlockProps = {
     label?: string;
     testid?: string;
+    landmarkLabel?: string;
     class?: string;
     children?: Snippet;
   };
@@ -16,9 +17,9 @@
   import Block from "../primitives/block/block.svelte";
   import { cn } from "../utils";
 
-  let { label, testid, class: className, children }: NavBlockProps = $props();
+  let { label, testid, landmarkLabel, class: className, children }: NavBlockProps = $props();
 </script>
 
-<Block tag="nav" class={cn(className)} aria-label={label} data-testid={testid}>
+<Block tag="nav" class={cn(className)} aria-label={(landmarkLabel ?? label)} data-testid={testid}>
   {@render children?.()}
 </Block>

@@ -18,6 +18,7 @@
     logoStyle?: "name" | "icon";
     tone?: "default" | "muted";
     density?: "default" | "compact";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -38,10 +39,11 @@
     logoStyle = "name",
     tone = "default",
     density = "default",
+    landmarkLabel,
   }: ProofBandProps = $props();
 </script>
 
-<SectionFrame id={id} title={title} tone={tone} density={density} align="center">
+<SectionFrame id={id} title={title} tone={tone} density={density} align="center" landmarkLabel={landmarkLabel}>
   <Grid cols={(((layout as string) === "beside") ? "1-2" : "1")} class="items-center gap-8">
     <Group gap="6" justify="center" class="flex-wrap text-muted-foreground" data-testid="logos">
       {#each logos as logo (logo.id)}

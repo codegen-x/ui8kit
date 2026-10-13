@@ -2,7 +2,7 @@
 // Source: xgen/specs/screens/theme-promo-campaign.json
 // The notices page of ThemePromoCampaignScreen.
 
-import { AnnouncementBar, CookieBanner, NewsletterForm, PageIntro } from "@ui8kit/react-ui";
+import { AnnouncementBar, CookieBanner, NewsletterForm, PageIntro, tpl } from "@ui8kit/react-ui";
 import { ui } from "@ui8kit/app-shared/content";
 
 export function NoticesPage() {
@@ -30,6 +30,7 @@ export function NoticesPage() {
         dismiss="show"
         badge="none"
         position="top"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.dismissible)}
       />
       <AnnouncementBar
         label={ui.promo.announcement.label}
@@ -43,6 +44,7 @@ export function NoticesPage() {
         dismiss="show"
         badge="none"
         position="bottom"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.announcement, ui.blocks.variants.announcement.bottom)}
       />
       <CookieBanner
         id="notices-cookie-3"
@@ -54,6 +56,7 @@ export function NoticesPage() {
         layout="bar"
         actions="three"
         tone="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.settings)}
       />
       <CookieBanner
         id="notices-cookie-4"
@@ -65,6 +68,7 @@ export function NoticesPage() {
         layout="bar"
         actions="two"
         tone="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.bar)}
       />
       <NewsletterForm
         id="notices-newsletter"
@@ -77,6 +81,7 @@ export function NoticesPage() {
         terms="show"
         tone="muted"
         align="start"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.muted)}
       />
     </>
   );

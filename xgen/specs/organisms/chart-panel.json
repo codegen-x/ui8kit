@@ -76,6 +76,11 @@
         "ts": "\"default\" | \"muted\""
       },
       "default": "default"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
     }
   ],
   "slots": [],
@@ -91,32 +96,47 @@
           "op": "cond",
           "args": [
             {
-              "op": "and",
-              "args": [
-                {
-                  "$": "title"
-                },
-                {
-                  "$": "id"
-                }
-              ]
-            },
-            {
-              "op": "tpl",
-              "args": [
-                "{0}-t",
-                {
-                  "$": "id"
-                }
-              ]
+              "$": "landmarkLabel"
             },
             {
               "op": "undef",
               "args": []
+            },
+            {
+              "op": "cond",
+              "args": [
+                {
+                  "op": "and",
+                  "args": [
+                    {
+                      "$": "title"
+                    },
+                    {
+                      "$": "id"
+                    }
+                  ]
+                },
+                {
+                  "op": "tpl",
+                  "args": [
+                    "{0}-t",
+                    {
+                      "$": "id"
+                    }
+                  ]
+                },
+                {
+                  "op": "undef",
+                  "args": []
+                }
+              ]
             }
           ]
         },
-        "data-testid": "panel-section"
+        "data-testid": "panel-section",
+        "aria-label": {
+          "$": "landmarkLabel"
+        }
       },
       "children": [
         {

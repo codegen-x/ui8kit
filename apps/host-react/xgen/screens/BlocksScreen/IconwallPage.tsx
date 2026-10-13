@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Feature,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -69,6 +70,7 @@ export function IconwallPage() {
                 item="tile"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.iconwall, ui.blocks.variants.iconwall.tiles4)}
               />
             </Box>
           </Stack>
@@ -93,6 +95,7 @@ export function IconwallPage() {
                 item="tile"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.iconwall, ui.blocks.variants.iconwall.tiles3)}
               />
             </Box>
           </Stack>
@@ -117,6 +120,7 @@ export function IconwallPage() {
                 item="chip"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.iconwall, ui.blocks.variants.iconwall.chips6)}
               />
             </Box>
           </Stack>
@@ -141,6 +145,7 @@ export function IconwallPage() {
                 item="chip"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.iconwall, ui.blocks.variants.iconwall.chips4)}
               />
             </Box>
           </Stack>
@@ -165,6 +170,7 @@ export function IconwallPage() {
                 item="tile"
                 tone="muted"
                 density="compact"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.iconwall, ui.blocks.variants.iconwall.muted)}
               />
             </Box>
           </Stack>

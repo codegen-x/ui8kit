@@ -90,6 +90,7 @@ const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
                 mediaSide="end"
                 tone="default"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.grid)"
               />
             </Box>
           </Stack>
@@ -117,6 +118,7 @@ const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
                 mediaSide="end"
                 tone="default"
                 density="roomy"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.grid2)"
               />
             </Box>
           </Stack>
@@ -144,6 +146,7 @@ const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
                 mediaSide="end"
                 tone="default"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.tiles4)"
               />
             </Box>
           </Stack>
@@ -171,6 +174,7 @@ const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
                 mediaSide="end"
                 tone="default"
                 density="compact"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.cells4)"
               />
             </Box>
           </Stack>
@@ -198,6 +202,7 @@ const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
                 mediaSide="end"
                 tone="default"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.rows)"
               />
             </Box>
           </Stack>
@@ -225,6 +230,7 @@ const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
                 mediaSide="start"
                 tone="default"
                 density="compact"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.rowsStart)"
               />
             </Box>
           </Stack>
@@ -252,6 +258,7 @@ const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
                 mediaSide="alternate"
                 tone="muted"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.rowsAlternate)"
               />
             </Box>
           </Stack>
@@ -279,6 +286,7 @@ const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
                 mediaSide="end"
                 tone="muted"
                 density="compact"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.tilesMuted)"
               />
             </Box>
           </Stack>
@@ -320,6 +328,7 @@ const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
                 item="tile"
                 tone="default"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.iconwall, ui.blocks.variants.iconwall.tiles4)"
               />
             </Box>
           </Stack>
@@ -344,6 +353,7 @@ const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
                 item="tile"
                 tone="default"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.iconwall, ui.blocks.variants.iconwall.tiles3)"
               />
             </Box>
           </Stack>
@@ -368,6 +378,7 @@ const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
                 item="chip"
                 tone="default"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.iconwall, ui.blocks.variants.iconwall.chips6)"
               />
             </Box>
           </Stack>
@@ -392,6 +403,7 @@ const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
                 item="chip"
                 tone="default"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.iconwall, ui.blocks.variants.iconwall.chips4)"
               />
             </Box>
           </Stack>
@@ -416,6 +428,7 @@ const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
                 item="tile"
                 tone="muted"
                 density="compact"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.iconwall, ui.blocks.variants.iconwall.muted)"
               />
             </Box>
           </Stack>
@@ -458,6 +471,7 @@ const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
                 icons="show"
                 tone="default"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.beforeafter, ui.blocks.variants.beforeafter.cards)"
               />
             </Box>
           </Stack>
@@ -483,6 +497,7 @@ const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
                 icons="show"
                 tone="default"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.beforeafter, ui.blocks.variants.beforeafter.rows)"
               />
             </Box>
           </Stack>
@@ -508,6 +523,7 @@ const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
                 icons="hide"
                 tone="default"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.beforeafter, ui.blocks.variants.beforeafter.plain)"
               />
             </Box>
           </Stack>
@@ -533,6 +549,7 @@ const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
                 icons="show"
                 tone="muted"
                 density="compact"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.beforeafter, ui.blocks.variants.beforeafter.muted)"
               />
             </Box>
           </Stack>

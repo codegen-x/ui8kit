@@ -27,6 +27,7 @@ export type HeroSplitProps = {
   media?: "picture" | "card" | "grid" | "plans";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -48,6 +49,7 @@ const {
   media = "picture",
   mediaSide = "end",
   tone = "default",
+  landmarkLabel,
 } = defineProps<HeroSplitProps>();
 </script>
 
@@ -60,7 +62,7 @@ const {
     layout="split"
     :media="{ show: true, side: mediaSide }"
     :tone="tone"
-    density="default"
+    :landmarkLabel="landmarkLabel"
   >
     <HeroSplitExtras :content="content" :extra="extra" />
     <ActionGroup
@@ -68,7 +70,6 @@ const {
       :primaryHref="actions.href"
       :secondary="((actions.mode === 'two') ? actions.secondary : undefined)"
       :secondaryHref="actions.secondaryHref"
-      align="start"
     />
     <template #aside>
       <HeroSplitMedia :content="content" :alt="title" :media="media" />

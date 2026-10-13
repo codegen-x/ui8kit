@@ -17,6 +17,7 @@
     actions?: "none" | "cta";
     cta?: string;
     ctaHref?: string;
+    landmarkLabel?: string;
     ontheme?: () => void;
   };
 </script>
@@ -29,7 +30,7 @@
   import Link from "../primitives/link/link.svelte";
   import LinkPlain from "../primitives/link-plain/link-plain.svelte";
   import NavBlock from "../components/nav-block.svelte";
-  import { cn } from "../utils";
+  import { cn, tpl } from "../utils";
 
   let {
     labels,
@@ -39,6 +40,7 @@
     actions = "none",
     cta,
     ctaHref,
+    landmarkLabel,
     ontheme,
   }: SiteHeaderProps = $props();
 </script>
@@ -51,6 +53,7 @@
   )}
   data-testid="site-header"
   data-layout={layout}
+  aria-label={landmarkLabel}
 >
   <LinkPlain
     href="#main-content"
@@ -71,7 +74,7 @@
     <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
       {labels.brand}
     </Link>
-    <NavBlock label={labels.nav} testid="site-nav">
+    <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", labels.nav, landmarkLabel) : labels.nav)} testid="site-nav">
       <Group gap="4" align="center">
         <Link
           href="#/"

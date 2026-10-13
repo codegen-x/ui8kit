@@ -32,6 +32,7 @@ export type FaqSplitProps = {
   cards?: "grid3" | "grid4" | "icons";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 
 export function FaqSplit({
@@ -47,11 +48,12 @@ export function FaqSplit({
   cards = "grid3",
   mediaSide = "end",
   tone = "default",
+  landmarkLabel,
 }: FaqSplitProps) {
   return (
     <>
       {((layout as string) === "cards") ? (
-        <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone} density="default">
+        <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone} landmarkLabel={landmarkLabel}>
           <FaqCards items={items} labels={labels} cards={cards} />
         </SectionFrame>
       ) : null}
@@ -62,9 +64,9 @@ export function FaqSplit({
           lead={lead}
           heading={{ badge }}
           tone={tone}
-          density="default"
           layout="split"
           media={{ show: true, side: "end", align: "start" }}
+          landmarkLabel={landmarkLabel}
           aside={(
             <FaqDisclosures items={items} name={tpl("{0}-faq", id)} />
           )}
@@ -83,11 +85,11 @@ export function FaqSplit({
           lead={lead}
           heading={{ badge }}
           tone={tone}
-          density="default"
           layout="split"
           media={{ show: true, side: "end", align: "start" }}
+          landmarkLabel={landmarkLabel}
           aside={(
-            <FaqHelp labels={labels} channels={channels} />
+            <FaqHelp labels={labels} channels={channels} landmarkLabel={landmarkLabel} />
           )}
         >
           <FaqDisclosures items={items} name={tpl("{0}-faq", id)} />
@@ -100,9 +102,9 @@ export function FaqSplit({
           lead={lead}
           heading={{ badge }}
           tone={tone}
-          density="default"
           layout="split"
           media={{ show: true, side: mediaSide, align: "start" }}
+          landmarkLabel={landmarkLabel}
           aside={(
             <MediaFrame alt={title} ratio="4/3" />
           )}
@@ -122,9 +124,9 @@ export function FaqSplit({
           lead={lead}
           heading={{ badge }}
           tone={tone}
-          density="default"
           layout="split"
           media={{ show: true, side: mediaSide }}
+          landmarkLabel={landmarkLabel}
           aside={(
             <MediaFrame alt={title} ratio="4/3" />
           )}

@@ -7,23 +7,18 @@
  */
 import { type ReactNode } from "react";
 import { Box } from "../primitives/box/box";
-import { Button } from "../primitives/button/button";
-import { Checkbox } from "../primitives/checkbox/checkbox";
 import { Form } from "../primitives/form/form";
 import { Grid } from "../primitives/grid/grid";
-import { Group } from "../primitives/group/group";
 import { Input } from "../primitives/input/input";
-import { Label } from "../primitives/label/label";
-import { Stack } from "../primitives/stack/stack";
-import { Text } from "../primitives/text/text";
 import { Textarea } from "../primitives/textarea/textarea";
 import { CartSummaryCard } from "../components/cart-summary-card";
 import { CheckoutStep } from "../components/checkout-step";
+import { CheckoutSubmit } from "../components/checkout-submit";
 import { Field } from "../components/field";
 import { PaymentOptions } from "../components/payment-options";
 import { SectionFrame } from "../components/section-frame";
 import { SlotGrid } from "../components/slot-grid";
-import { cn, tpl } from "../utils";
+import { tpl } from "../utils";
 import type { CheckoutLabels } from "./checkout-form.types";
 import type { Day } from "../components/slot-grid.types";
 import type { Payment } from "../components/payment-options.types";
@@ -44,6 +39,7 @@ export type CheckoutFormProps = {
   layout?: "cards" | "numbered";
   summary?: "aside" | "none";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 
 export function CheckoutForm({
@@ -59,9 +55,10 @@ export function CheckoutForm({
   layout = "cards",
   summary = "aside",
   tone = "default",
+  landmarkLabel,
 }: CheckoutFormProps) {
   return (
-    <SectionFrame id={id} title={title} tone={tone} density="default">
+    <SectionFrame id={id} title={title} tone={tone} landmarkLabel={landmarkLabel}>
       <Box className="grid grid-cols-1 items-start gap-8 lg:grid-cols-3">
         <Form
           method="dialog"
@@ -112,20 +109,7 @@ export function CheckoutForm({
           <CheckoutStep number="4" title={labels.payment} text={labels.paymentText} layout={layout}>
             <PaymentOptions payments={payments} name={tpl("{0}-payment", id)} checked="payment-card" />
           </CheckoutStep>
-          <Stack gap="4" align="start">
-            <Group gap="2" align="center" className={cn("w-fit", "")}>
-              <Checkbox name="consent" id={tpl("{0}-consent", id)} />
-              <Label htmlFor={tpl("{0}-consent", id)} className="text-sm">
-                {labels.consent}
-              </Label>
-            </Group>
-            <Button variant="default" size="lg" type="submit" data-testid="submit">
-              {labels.submit}
-            </Button>
-            <Text size="xs" className="text-muted-foreground">
-              {labels.legal}
-            </Text>
-          </Stack>
+          <CheckoutSubmit id={id} consent={labels.consent} submit={labels.submit} legal={labels.legal} />
         </Form>
         {((summary as string) === "aside") ? (
           <Box className="lg:sticky lg:top-8" data-testid="aside">

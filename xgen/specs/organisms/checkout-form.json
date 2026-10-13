@@ -170,6 +170,11 @@
         "ts": "\"default\" | \"muted\""
       },
       "default": "default"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
     }
   ],
   "slots": [],
@@ -187,7 +192,9 @@
         "tone": {
           "$": "tone"
         },
-        "density": "default"
+        "landmarkLabel": {
+          "$": "landmarkLabel"
+        }
       },
       "slots": {
         "children": {
@@ -758,100 +765,21 @@
                       }
                     },
                     {
-                      "use": "Stack",
+                      "organism": "CheckoutSubmit",
                       "props": {
-                        "Gap": "4",
-                        "Align": "start"
-                      },
-                      "children": [
-                        {
-                          "use": "Group",
-                          "props": {
-                            "Gap": "2",
-                            "Align": "center",
-                            "Class": {
-                              "op": "cn",
-                              "args": [
-                                "w-fit",
-                                ""
-                              ]
-                            }
-                          },
-                          "children": [
-                            {
-                              "use": "Checkbox",
-                              "props": {
-                                "Name": "consent"
-                              },
-                              "attrs": {
-                                "id": {
-                                  "op": "tpl",
-                                  "args": [
-                                    "{0}-consent",
-                                    {
-                                      "$": "id"
-                                    }
-                                  ]
-                                }
-                              }
-                            },
-                            {
-                              "use": "Label",
-                              "props": {
-                                "HTMLFor": {
-                                  "op": "tpl",
-                                  "args": [
-                                    "{0}-consent",
-                                    {
-                                      "$": "id"
-                                    }
-                                  ]
-                                },
-                                "Class": "text-sm"
-                              },
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "labels.consent"
-                                  }
-                                }
-                              ]
-                            }
-                          ]
+                        "id": {
+                          "$": "id"
                         },
-                        {
-                          "use": "Button",
-                          "props": {
-                            "Variant": "default",
-                            "Size": "lg",
-                            "Type": "submit"
-                          },
-                          "attrs": {
-                            "data-testid": "submit"
-                          },
-                          "children": [
-                            {
-                              "text": {
-                                "$": "labels.submit"
-                              }
-                            }
-                          ]
+                        "consent": {
+                          "$": "labels.consent"
                         },
-                        {
-                          "use": "Text",
-                          "props": {
-                            "Size": "xs",
-                            "Class": "text-muted-foreground"
-                          },
-                          "children": [
-                            {
-                              "text": {
-                                "$": "labels.legal"
-                              }
-                            }
-                          ]
+                        "submit": {
+                          "$": "labels.submit"
+                        },
+                        "legal": {
+                          "$": "labels.legal"
                         }
-                      ]
+                      }
                     }
                   ]
                 },

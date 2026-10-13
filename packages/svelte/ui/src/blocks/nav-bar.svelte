@@ -21,6 +21,7 @@
     layout?: "inline" | "split" | "search";
     over?: "none" | "media";
     skip?: string;
+    landmarkLabel?: string;
     ontheme?: () => void;
   };
 </script>
@@ -38,7 +39,7 @@
   import NavLinks from "../components/nav-links.svelte";
   import OverMedia from "../components/over-media.svelte";
   import SearchPalette from "../components/search-palette.svelte";
-  import { cn } from "../utils";
+  import { cn, tpl } from "../utils";
 
   let {
     label,
@@ -51,6 +52,7 @@
     layout = "inline",
     over = "none",
     skip,
+    landmarkLabel,
     ontheme,
   }: NavBarProps = $props();
 </script>
@@ -68,6 +70,7 @@
   data-testid="nav-bar"
   data-layout={layout}
   data-tone={tone}
+  aria-label={landmarkLabel}
 >
   <OverMedia on={((over as string) === "media")} alt={brand} />
   {#if skip}
@@ -83,31 +86,37 @@
   <Container class="mx-auto w-full max-w-6xl px-4" data-slot="container">
     <Box class={cn("flex flex-wrap items-center justify-between gap-4", "py-4")}>
       {#if ((layout as string) === "split")}
-        <Grid cols="1-3" class="w-full items-center gap-4">
-          <NavBlock label={label} class="md:justify-self-start" testid="site-nav">
-            <NavLinks links={links} current={current} side="left" />
-          </NavBlock>
-          <Box class="text-center">
-            <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
-              {brand}
-            </Link>
-          </Box>
-          <Group gap="4" align="center" justify="end" class="flex-wrap md:justify-self-end">
-            <NavBlock label={label}>
-              <NavLinks links={links} current={current} side="right" />
-            </NavBlock>
-            <NavActions
-              login={actions?.login}
-              loginHref={actions?.loginHref}
-              cta={actions?.cta}
-              ctaHref={actions?.href}
-              actions={actions?.mode}
-              tone={tone}
-              themeLabel={actions?.themeLabel}
-              ontheme={() => ontheme?.()}
-            />
-          </Group>
-        </Grid>
+        <NavBlock
+          label={(landmarkLabel ? tpl("{0}, {1}", label, landmarkLabel) : label)}
+          class="w-full"
+          testid="site-nav"
+        >
+          <Grid cols="1-3" class="w-full items-center gap-4">
+            <Box class="md:justify-self-start">
+              <NavLinks links={links} current={current} side="left" />
+            </Box>
+            <Box class="text-center">
+              <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
+                {brand}
+              </Link>
+            </Box>
+            <Group gap="4" align="center" justify="end" class="flex-wrap md:justify-self-end">
+              <Box>
+                <NavLinks links={links} current={current} side="right" />
+              </Box>
+              <NavActions
+                login={actions?.login}
+                loginHref={actions?.loginHref}
+                cta={actions?.cta}
+                ctaHref={actions?.href}
+                actions={actions?.mode}
+                tone={tone}
+                themeLabel={actions?.themeLabel}
+                ontheme={() => ontheme?.()}
+              />
+            </Group>
+          </Grid>
+        </NavBlock>
       {:else}
         <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
           {brand}
@@ -116,11 +125,11 @@
           <SearchPalette label={search.label} shortcut={search.shortcut} />
         {/if}
         <NavBlock
-          label={label}
+          label={(landmarkLabel ? tpl("{0}, {1}", label, landmarkLabel) : label)}
           class={"order-last w-full overflow-x-auto md:order-none md:w-auto [&>div]:flex-nowrap md:[&>div]:flex-wrap [&_a]:shrink-0"}
           testid="site-nav"
         >
-          <NavLinks links={links} current={current} side="all" />
+          <NavLinks links={links} current={current} />
         </NavBlock>
         <NavActions
           login={actions?.login}

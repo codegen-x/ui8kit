@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type CartLine,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -72,6 +73,7 @@ const cart = fromCodex<CartLine>(cartEntries, CART_FIELDS);
               media="image"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cart, ui.blocks.variants.cart.table)"
             />
           </Box>
         </Stack>
@@ -97,6 +99,7 @@ const cart = fromCodex<CartLine>(cartEntries, CART_FIELDS);
               media="image"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cart, ui.blocks.variants.cart.cards)"
             />
           </Box>
         </Stack>
@@ -122,6 +125,7 @@ const cart = fromCodex<CartLine>(cartEntries, CART_FIELDS);
               media="none"
               tone="default"
               density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cart, ui.blocks.variants.cart.tableCompact)"
             />
           </Box>
         </Stack>
@@ -147,6 +151,7 @@ const cart = fromCodex<CartLine>(cartEntries, CART_FIELDS);
               media="none"
               tone="muted"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cart, ui.blocks.variants.cart.cardsPlain)"
             />
           </Box>
         </Stack>

@@ -30,6 +30,7 @@ export type CtaProofProps = {
   proof?: "logos" | "features" | "stats" | "rows" | "zones";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 
 export function CtaProof({
@@ -44,6 +45,7 @@ export function CtaProof({
   proof = "stats",
   mediaSide = "end",
   tone = "default",
+  landmarkLabel,
 }: CtaProofProps) {
   return (
     <SectionFrame
@@ -52,10 +54,10 @@ export function CtaProof({
       lead={lead}
       heading={{ badge }}
       tone={tone}
-      density="default"
       align={(((layout as string) === "center") ? "center" : "start")}
       layout={(((layout as string) === "center") ? "stack" : "split")}
       media={{ show: ((layout as string) === "split"), side: mediaSide }}
+      landmarkLabel={landmarkLabel}
       aside={(
         <MediaFrame alt={title} ratio="4/3" />
       )}

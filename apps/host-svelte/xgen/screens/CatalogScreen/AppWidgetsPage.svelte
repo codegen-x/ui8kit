@@ -102,6 +102,7 @@
               item="tile"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.tiles)}
             />
           </Box>
         </Stack>
@@ -126,6 +127,7 @@
               item="tile"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.twoUp)}
             />
           </Box>
         </Stack>
@@ -150,6 +152,7 @@
               item="compact"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.compact)}
             />
           </Box>
         </Stack>
@@ -174,6 +177,7 @@
               item="compact"
               tone="muted"
               density="compact"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.muted)}
             />
           </Box>
         </Stack>
@@ -217,6 +221,7 @@
               chart="bars"
               size="default"
               tone="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.bars)}
             />
           </Box>
         </Stack>
@@ -243,6 +248,7 @@
               chart="bars"
               size="compact"
               tone="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.short)}
             />
           </Box>
         </Stack>
@@ -269,6 +275,7 @@
               chart="meters"
               size="default"
               tone="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.meters)}
             />
           </Box>
         </Stack>
@@ -295,6 +302,7 @@
               chart="meters"
               size="compact"
               tone="muted"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.muted)}
             />
           </Box>
         </Stack>
@@ -336,6 +344,7 @@
               layout="timeline"
               density="default"
               tone="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.activity, ui.blocks.variants.activity.timeline)}
             />
           </Box>
         </Stack>
@@ -360,6 +369,7 @@
               layout="list"
               density="default"
               tone="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.activity, ui.blocks.variants.activity.list)}
             />
           </Box>
         </Stack>
@@ -384,6 +394,7 @@
               layout="list"
               density="compact"
               tone="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.activity, ui.blocks.variants.activity.compact)}
             />
           </Box>
         </Stack>
@@ -408,6 +419,7 @@
               layout="timeline"
               density="default"
               tone="muted"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.activity, ui.blocks.variants.activity.muted)}
             />
           </Box>
         </Stack>

@@ -70,7 +70,7 @@ export function catalog(tree: CatalogTree, blocks: BlockSpec[], org: Record<stri
   const pages = tree.pages.map((p) => {
     const id = `page-${p.id}`;
     routes.push({ path: id, area: id });
-    const out = p.uses.map((u, i) => expandUse(u, blocks, org, `${where}.pages.${p.id}[${i}]`, `${p.id}-${u.block}${p.uses.filter((x) => x.block === u.block).length > 1 ? `-${i}` : ""}`, problems));
+    const out = p.uses.map((u, i) => expandUse(u, blocks, org, `${where}.pages.${p.id}[${i}]`, `${p.id}-${u.block}${p.uses.filter((x) => x.block === u.block).length > 1 ? `-${i}` : ""}`, problems, p.uses.filter((x) => x.block === u.block).length > 1));
     for (const u of p.uses) { const b = byKey.get(u.block); if (b) used.add(b); }
     if (out.filter((x) => x.h1).length !== 1) problems.push(`${where}: page ${p.id} needs exactly one level 1 heading (found ${out.filter((x) => x.h1).length})`);
     areas[id] = [

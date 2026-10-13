@@ -6,6 +6,7 @@
     ArticleBody,
     PostGrid,
     PostHeader,
+    tpl,
     type Post,
     type PostTopic,
     type Section,
@@ -51,6 +52,7 @@
   layout="column"
   quotes="hide"
   tone="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.article, ui.blocks.variants.article.plain)}
 />
 <PostGrid
   id="plain-posts"
@@ -65,4 +67,5 @@
   meta="full"
   tone="default"
   density="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.grid)}
 />

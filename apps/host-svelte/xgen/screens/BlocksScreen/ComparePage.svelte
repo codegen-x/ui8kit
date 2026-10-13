@@ -12,6 +12,7 @@
     Stack,
     Text,
     Title,
+    tpl,
     type CompareRow,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -66,6 +67,7 @@
             highlight="none"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.plans)}
           />
         </Box>
       </Stack>
@@ -90,6 +92,7 @@
             highlight="middle"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.highlight)}
           />
         </Box>
       </Stack>
@@ -114,6 +117,7 @@
             highlight="middle"
             tone="muted"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.rivals)}
           />
         </Box>
       </Stack>
@@ -138,6 +142,7 @@
             highlight="none"
             tone="muted"
             density="compact"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.muted)}
           />
         </Box>
       </Stack>

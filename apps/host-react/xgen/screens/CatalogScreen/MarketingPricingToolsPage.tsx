@@ -100,6 +100,7 @@ export function MarketingPricingToolsPage() {
                   highlight="none"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.plans)}
                 />
               </Box>
             </Stack>
@@ -124,6 +125,7 @@ export function MarketingPricingToolsPage() {
                   highlight="middle"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.highlight)}
                 />
               </Box>
             </Stack>
@@ -148,6 +150,7 @@ export function MarketingPricingToolsPage() {
                   highlight="middle"
                   tone="muted"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.rivals)}
                 />
               </Box>
             </Stack>
@@ -172,6 +175,7 @@ export function MarketingPricingToolsPage() {
                   highlight="none"
                   tone="muted"
                   density="compact"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.compare, ui.blocks.variants.compare.muted)}
                 />
               </Box>
             </Stack>
@@ -215,6 +219,7 @@ export function MarketingPricingToolsPage() {
                   item="tile"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.credits, ui.blocks.variants.credits.tiles4)}
                 />
               </Box>
             </Stack>
@@ -241,6 +246,7 @@ export function MarketingPricingToolsPage() {
                   item="tile"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.credits, ui.blocks.variants.credits.tiles2)}
                 />
               </Box>
             </Stack>
@@ -267,6 +273,7 @@ export function MarketingPricingToolsPage() {
                   item="row"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.credits, ui.blocks.variants.credits.rows)}
                 />
               </Box>
             </Stack>
@@ -293,6 +300,7 @@ export function MarketingPricingToolsPage() {
                   item="tile"
                   tone="muted"
                   density="compact"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.credits, ui.blocks.variants.credits.muted)}
                 />
               </Box>
             </Stack>
@@ -338,6 +346,7 @@ export function MarketingPricingToolsPage() {
                   layout="card"
                   ends="show"
                   tone="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.usage, ui.blocks.variants.usage.card)}
                 />
               </Box>
             </Stack>
@@ -366,6 +375,7 @@ export function MarketingPricingToolsPage() {
                   layout="plain"
                   ends="show"
                   tone="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.usage, ui.blocks.variants.usage.plain)}
                 />
               </Box>
             </Stack>
@@ -394,6 +404,7 @@ export function MarketingPricingToolsPage() {
                   layout="card"
                   ends="hide"
                   tone="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.usage, ui.blocks.variants.usage.noEnds)}
                 />
               </Box>
             </Stack>
@@ -422,6 +433,7 @@ export function MarketingPricingToolsPage() {
                   layout="card"
                   ends="show"
                   tone="muted"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.usage, ui.blocks.variants.usage.muted)}
                 />
               </Box>
             </Stack>

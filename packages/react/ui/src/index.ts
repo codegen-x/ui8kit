@@ -79,6 +79,7 @@ export * from "./components/cart-summary-card";
 export type * from "./components/cart-summary-card.types";
 export * from "./components/cart-table";
 export * from "./components/checkout-step";
+export * from "./components/checkout-submit";
 export * from "./components/compare-mark";
 export * from "./components/cta-actions";
 export type * from "./components/cta-actions.types";

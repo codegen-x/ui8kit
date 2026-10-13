@@ -24,6 +24,7 @@ export type UspStripProps = {
   layout?: "strip" | "cards" | "bar";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function UspStrip({
@@ -33,9 +34,10 @@ export function UspStrip({
   layout = "strip",
   tone = "default",
   density = "default",
+  landmarkLabel,
 }: UspStripProps) {
   return (
-    <SectionFrame id={id} title={title} tone={tone} density={density}>
+    <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
       {((layout as string) === "bar") ? (
         <List tag="ul" className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4" data-testid="items">
           {(perks ?? []).map((p) => (

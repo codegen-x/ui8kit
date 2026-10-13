@@ -2,7 +2,19 @@
 // Source: xgen/specs/screens/blocks.json
 // The stepper page of BlocksScreen.
 
-import { Block, Box, Container, Group, Link, Stack, Stepper, Text, Title, type Step } from "@ui8kit/react-ui";
+import {
+  Block,
+  Box,
+  Container,
+  Group,
+  Link,
+  Stack,
+  Stepper,
+  Text,
+  Title,
+  tpl,
+  type Step,
+} from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { steps as stepsEntries } from "@ui8kit/app-shared/data/steps";
@@ -61,6 +73,7 @@ export function StepperPage() {
                 layout="horizontal"
                 marker="number"
                 summary="show"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.horizontal)}
               />
             </Box>
           </Stack>
@@ -88,6 +101,7 @@ export function StepperPage() {
                 layout="vertical"
                 marker="number"
                 summary="show"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.vertical)}
               />
             </Box>
           </Stack>
@@ -115,6 +129,7 @@ export function StepperPage() {
                 layout="horizontal"
                 marker="icon"
                 summary="show"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.icons)}
               />
             </Box>
           </Stack>
@@ -142,6 +157,7 @@ export function StepperPage() {
                 layout="vertical"
                 marker="icon"
                 summary="hide"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.bare)}
               />
             </Box>
           </Stack>

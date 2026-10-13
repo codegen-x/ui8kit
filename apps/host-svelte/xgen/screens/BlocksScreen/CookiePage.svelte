@@ -2,7 +2,18 @@
 <!-- Source: xgen/specs/screens/blocks.json -->
 <!-- The cookie page of BlocksScreen. -->
 <script lang="ts">
-  import { Block, Box, Container, CookieBanner, Group, Link, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import {
+    Block,
+    Box,
+    Container,
+    CookieBanner,
+    Group,
+    Link,
+    Stack,
+    Text,
+    Title,
+    tpl,
+  } from "@ui8kit/svelte-ui";
   import { ui } from "@ui8kit/app-shared/content";
 
 </script>
@@ -49,6 +60,7 @@
             layout="bar"
             actions="two"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.bar)}
           />
         </Box>
       </Stack>
@@ -75,6 +87,7 @@
             layout="card"
             actions="two"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.card)}
           />
         </Box>
       </Stack>
@@ -101,6 +114,7 @@
             layout="bar"
             actions="three"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.settings)}
           />
         </Box>
       </Stack>
@@ -127,6 +141,7 @@
             layout="card"
             actions="three"
             tone="muted"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.muted)}
           />
         </Box>
       </Stack>

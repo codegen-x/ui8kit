@@ -2,7 +2,19 @@
 <!-- Source: xgen/specs/screens/blocks.json -->
 <!-- The stepper page of BlocksScreen. -->
 <script setup lang="ts">
-import { Block, Box, Container, Group, Link, Stack, Stepper, Text, Title, type Step } from "@ui8kit/vue-ui";
+import {
+  Block,
+  Box,
+  Container,
+  Group,
+  Link,
+  Stack,
+  Stepper,
+  Text,
+  Title,
+  tpl,
+  type Step,
+} from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { steps as stepsEntries } from "@ui8kit/app-shared/data/steps";
@@ -56,6 +68,7 @@ const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
               layout="horizontal"
               marker="number"
               summary="show"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.horizontal)"
             />
           </Box>
         </Stack>
@@ -83,6 +96,7 @@ const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
               layout="vertical"
               marker="number"
               summary="show"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.vertical)"
             />
           </Box>
         </Stack>
@@ -110,6 +124,7 @@ const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
               layout="horizontal"
               marker="icon"
               summary="show"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.icons)"
             />
           </Box>
         </Stack>
@@ -137,6 +152,7 @@ const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
               layout="vertical"
               marker="icon"
               summary="hide"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.stepper, ui.blocks.variants.stepper.bare)"
             />
           </Box>
         </Stack>

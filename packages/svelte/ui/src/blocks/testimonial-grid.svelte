@@ -20,6 +20,7 @@
     item?: QuoteItem;
     tone?: "default" | "muted";
     density?: "roomy" | "default" | "compact";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -39,6 +40,7 @@
     item,
     tone = "default",
     density = "default",
+    landmarkLabel,
   }: TestimonialGridProps = $props();
 </script>
 
@@ -49,6 +51,7 @@
   density={density}
   align={(((layout as string) === "single") ? "center" : "start")}
   measure={(((layout as string) === "grid") ? "default" : "2xl")}
+  landmarkLabel={landmarkLabel}
 >
   {#if (((layout as string) === "masonry") || ((layout as string) === "strip"))}
     <Block

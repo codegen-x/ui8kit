@@ -18,6 +18,7 @@
     avatar?: "show" | "hide";
     prefs?: "show" | "hide";
     tone?: "default" | "muted";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -48,13 +49,15 @@
     avatar = "show",
     prefs = "show",
     tone = "default",
+    landmarkLabel,
   }: ProfileFormProps = $props();
 </script>
 
 <Block
   tag="section"
-  aria-labelledby={((title && id) ? tpl("{0}-t", id) : undefined)}
+  aria-labelledby={(landmarkLabel ? undefined : ((title && id) ? tpl("{0}-t", id) : undefined))}
   data-testid="panel-section"
+  aria-label={landmarkLabel}
 >
   <Container class="mx-auto w-full max-w-6xl px-4 py-8" data-slot="container">
     <Panel title={title} description={text} id={id} class={cn((((tone as string) === "muted") ? "bg-muted" : ""))}>

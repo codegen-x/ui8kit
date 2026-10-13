@@ -35,6 +35,7 @@ export type ContactFormProps = {
   level?: 1 | 2;
   page?: "section" | "full";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 
 export function ContactForm({
@@ -49,6 +50,7 @@ export function ContactForm({
   level = 2,
   page = "section",
   tone = "default",
+  landmarkLabel,
 }: ContactFormProps) {
   return (
     <SectionFrame
@@ -60,6 +62,7 @@ export function ContactForm({
       density={(((page as string) === "full") ? "roomy" : "default")}
       align={(((page as string) === "full") ? "center" : "start")}
       measure={(((layout as string) === "single") ? "xl" : "default")}
+      landmarkLabel={landmarkLabel}
     >
       <Grid cols={(((layout as string) === "split") ? "1-2" : "1")} className="items-start gap-8">
         <Form method="dialog" className="w-full gap-4" data-testid="contact-form">

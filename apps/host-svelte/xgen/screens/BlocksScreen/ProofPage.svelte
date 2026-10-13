@@ -12,6 +12,7 @@
     Stack,
     Text,
     Title,
+    tpl,
     type Logo,
     type Stat,
   } from "@ui8kit/svelte-ui";
@@ -68,6 +69,7 @@
             logoStyle="name"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.above)}
           />
         </Box>
       </Stack>
@@ -93,6 +95,7 @@
             logoStyle="name"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.beside)}
           />
         </Box>
       </Stack>
@@ -118,6 +121,7 @@
             logoStyle="icon"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.icons)}
           />
         </Box>
       </Stack>
@@ -143,6 +147,7 @@
             logoStyle="name"
             tone="muted"
             density="compact"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.muted)}
           />
         </Box>
       </Stack>

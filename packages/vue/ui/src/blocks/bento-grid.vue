@@ -16,6 +16,7 @@ export type BentoGridProps = {
   media?: "none" | "image";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -43,11 +44,12 @@ const {
   media = "none",
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<BentoGridProps>();
 </script>
 
 <template>
-  <SectionFrame :id="id" :title="title" :tone="tone" :density="density">
+  <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
     <Grid cols="1-4" class="auto-rows-fr gap-4" data-testid="items">
       <Card v-for="tile in tiles" :key="tile.id"
         variant="default"

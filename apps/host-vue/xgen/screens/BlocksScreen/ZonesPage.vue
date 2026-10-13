@@ -2,7 +2,19 @@
 <!-- Source: xgen/specs/screens/blocks.json -->
 <!-- The zones page of BlocksScreen. -->
 <script setup lang="ts">
-import { Block, Box, Container, Group, Link, Stack, Text, Title, ZoneTable, type Zone } from "@ui8kit/vue-ui";
+import {
+  Block,
+  Box,
+  Container,
+  Group,
+  Link,
+  Stack,
+  Text,
+  Title,
+  ZoneTable,
+  tpl,
+  type Zone,
+} from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { zones as zonesEntries } from "@ui8kit/app-shared/data/zones";
@@ -64,6 +76,7 @@ const zones = fromCodex<Zone>(zonesEntries, ZONES_FIELDS);
               layout="table"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.zones, ui.blocks.variants.zones.table)"
             />
           </Box>
         </Stack>
@@ -89,6 +102,7 @@ const zones = fromCodex<Zone>(zonesEntries, ZONES_FIELDS);
               layout="cards"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.zones, ui.blocks.variants.zones.cards)"
             />
           </Box>
         </Stack>
@@ -114,6 +128,7 @@ const zones = fromCodex<Zone>(zonesEntries, ZONES_FIELDS);
               layout="table"
               tone="muted"
               density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.zones, ui.blocks.variants.zones.tableMuted)"
             />
           </Box>
         </Stack>

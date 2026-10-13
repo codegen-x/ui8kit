@@ -9,6 +9,7 @@
 
   export type RegionProps = {
     tag: "header" | "nav" | "section" | "aside" | "footer" | "article" | "figure" | "main" | "search" | "div";
+    landmarkLabel?: string;
     class?: string;
     children?: Snippet;
   };
@@ -17,9 +18,9 @@
 <script lang="ts">
   import Block from "../primitives/block/block.svelte";
 
-  let { tag, class: className, children }: RegionProps = $props();
+  let { tag, landmarkLabel, class: className, children }: RegionProps = $props();
 </script>
 
-<Block tag={tag} class={className}>
+<Block tag={tag} class={className} aria-label={landmarkLabel}>
   {@render children?.()}
 </Block>

@@ -17,6 +17,7 @@ export type ProofBandProps = {
   logoStyle?: "name" | "icon";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -37,11 +38,19 @@ const {
   logoStyle = "name",
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<ProofBandProps>();
 </script>
 
 <template>
-  <SectionFrame :id="id" :title="title" :tone="tone" :density="density" align="center">
+  <SectionFrame
+    :id="id"
+    :title="title"
+    :tone="tone"
+    :density="density"
+    align="center"
+    :landmarkLabel="landmarkLabel"
+  >
     <Grid :cols="(((layout as string) === 'beside') ? '1-2' : '1')" class="items-center gap-8">
       <Group gap="6" justify="center" class="flex-wrap text-muted-foreground" data-testid="logos">
         <Group v-for="logo in logos" :key="logo.id" gap="2" align="center" data-testid="logo">

@@ -14,6 +14,7 @@
     mode?: "wide" | "rail" | "collapsed" | "twolevel" | "none";
     side?: "start" | "end";
     brand?: "show" | "hide";
+    landmarkLabel?: string;
     ontoggle?: () => void;
   };
 </script>
@@ -30,9 +31,16 @@
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Text from "../primitives/text/text.svelte";
   import NavBlock from "../components/nav-block.svelte";
-  import { cn } from "../utils";
+  import { cn, tpl } from "../utils";
 
-  let { nav, mode = "wide", side = "start", brand = "show", ontoggle }: ShellSidebarProps = $props();
+  let {
+    nav,
+    mode = "wide",
+    side = "start",
+    brand = "show",
+    landmarkLabel,
+    ontoggle,
+  }: ShellSidebarProps = $props();
   const named = $derived((mode as string) === "wide");
 </script>
 
@@ -45,7 +53,7 @@
       : "border-r border-border"
     )
   )}
-  aria-label={nav.label}
+  aria-label={(landmarkLabel ?? nav.label)}
   data-testid="sidebar"
   data-mode={mode}
 >
@@ -58,7 +66,7 @@
         </Text>
       </Group>
     {/if}
-    <NavBlock label={nav.label} class="flex-1">
+    <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", nav.label, landmarkLabel) : nav.label)} class="flex-1">
       <List class="m-0 flex list-none flex-col gap-2 p-0" data-testid="items">
         {#each nav.links as l (l.id)}
           <ListItem>
@@ -107,7 +115,7 @@
       <Text size="sm" weight="semibold" class="px-4">
         {nav.subTitle}
       </Text>
-      <NavBlock label={nav.subTitle}>
+      <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", nav.subTitle, landmarkLabel) : nav.subTitle)}>
         <List class="m-0 flex list-none flex-col gap-2 p-0">
           {#each nav.sub as s (s.id)}
             <ListItem>

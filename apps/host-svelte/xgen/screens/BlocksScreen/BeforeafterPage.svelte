@@ -12,6 +12,7 @@
     Stack,
     Text,
     Title,
+    tpl,
     type Contrast,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -64,6 +65,7 @@
             icons="show"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.beforeafter, ui.blocks.variants.beforeafter.cards)}
           />
         </Box>
       </Stack>
@@ -89,6 +91,7 @@
             icons="show"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.beforeafter, ui.blocks.variants.beforeafter.rows)}
           />
         </Box>
       </Stack>
@@ -114,6 +117,7 @@
             icons="hide"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.beforeafter, ui.blocks.variants.beforeafter.plain)}
           />
         </Box>
       </Stack>
@@ -139,6 +143,7 @@
             icons="show"
             tone="muted"
             density="compact"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.beforeafter, ui.blocks.variants.beforeafter.muted)}
           />
         </Box>
       </Stack>

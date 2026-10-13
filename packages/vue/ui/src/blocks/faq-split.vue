@@ -23,6 +23,7 @@ export type FaqSplitProps = {
   cards?: "grid3" | "grid4" | "icons";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -50,18 +51,18 @@ const {
   cards = "grid3",
   mediaSide = "end",
   tone = "default",
+  landmarkLabel,
 } = defineProps<FaqSplitProps>();
 </script>
 
 <template>
-  <SectionFrame
-    v-if="((layout as string) === 'cards')"
+  <SectionFrame v-if="((layout as string) === 'cards')"
     :id="id"
     :title="title"
     :lead="lead"
     :heading="{ badge }"
     :tone="tone"
-    density="default"
+    :landmarkLabel="landmarkLabel"
   >
     <FaqCards :items="items" :labels="labels" :cards="cards" />
   </SectionFrame>
@@ -71,9 +72,9 @@ const {
     :lead="lead"
     :heading="{ badge }"
     :tone="tone"
-    density="default"
     layout="split"
     :media="{ show: true, side: 'end', align: 'start' }"
+    :landmarkLabel="landmarkLabel"
   >
     <Box>
       <Button variant="default" size="default" href="#/contact" data-testid="faq-cta">
@@ -90,13 +91,13 @@ const {
     :lead="lead"
     :heading="{ badge }"
     :tone="tone"
-    density="default"
     layout="split"
     :media="{ show: true, side: 'end', align: 'start' }"
+    :landmarkLabel="landmarkLabel"
   >
     <FaqDisclosures :items="items" :name="tpl('{0}-faq', id)" />
     <template #aside>
-      <FaqHelp :labels="labels" :channels="channels" />
+      <FaqHelp :labels="labels" :channels="channels" :landmarkLabel="landmarkLabel" />
     </template>
   </SectionFrame>
   <SectionFrame v-if="((layout as string) === 'media')"
@@ -105,9 +106,9 @@ const {
     :lead="lead"
     :heading="{ badge }"
     :tone="tone"
-    density="default"
     layout="split"
     :media="{ show: true, side: mediaSide, align: 'start' }"
+    :landmarkLabel="landmarkLabel"
   >
     <FaqDisclosures :items="items" :name="tpl('{0}-faq', id)" />
     <Box>
@@ -125,9 +126,9 @@ const {
     :lead="lead"
     :heading="{ badge }"
     :tone="tone"
-    density="default"
     layout="split"
     :media="{ show: true, side: mediaSide }"
+    :landmarkLabel="landmarkLabel"
   >
     <FaqFinder :items="items" :labels="labels" :topics="topics" />
     <template #aside>

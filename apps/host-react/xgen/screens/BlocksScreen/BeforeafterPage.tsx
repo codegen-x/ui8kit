@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Contrast,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -70,6 +71,7 @@ export function BeforeafterPage() {
                 icons="show"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.beforeafter, ui.blocks.variants.beforeafter.cards)}
               />
             </Box>
           </Stack>
@@ -95,6 +97,7 @@ export function BeforeafterPage() {
                 icons="show"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.beforeafter, ui.blocks.variants.beforeafter.rows)}
               />
             </Box>
           </Stack>
@@ -120,6 +123,7 @@ export function BeforeafterPage() {
                 icons="hide"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.beforeafter, ui.blocks.variants.beforeafter.plain)}
               />
             </Box>
           </Stack>
@@ -145,6 +149,7 @@ export function BeforeafterPage() {
                 icons="show"
                 tone="muted"
                 density="compact"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.beforeafter, ui.blocks.variants.beforeafter.muted)}
               />
             </Box>
           </Stack>

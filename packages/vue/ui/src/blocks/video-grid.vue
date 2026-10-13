@@ -18,6 +18,7 @@ export type VideoGridProps = {
   caption?: "below" | "overlay";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -42,16 +43,17 @@ const {
   caption = "below",
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<VideoGridProps>();
 const emit = defineEmits<{ play: [id: string] }>();
 </script>
 
 <template>
-  <SectionFrame :id="id" :title="title" :tone="tone" :density="density">
+  <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
     <Grid :cols="cols" class="gap-4" data-testid="items">
       <FigureBlock v-for="q in quotes" :key="q.id" class="m-0 flex flex-col gap-4" testid="item">
         <Box class="relative">
-          <MediaFrame :alt="q.author" ratio="16/9" />
+          <MediaFrame :alt="q.author" />
           <Button
             variant="default"
             size="default"

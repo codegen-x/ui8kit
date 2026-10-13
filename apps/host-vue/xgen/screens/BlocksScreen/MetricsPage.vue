@@ -2,7 +2,19 @@
 <!-- Source: xgen/specs/screens/blocks.json -->
 <!-- The metrics page of BlocksScreen. -->
 <script setup lang="ts">
-import { Block, Box, Container, Group, Link, MetricRow, Stack, Text, Title, type Stat } from "@ui8kit/vue-ui";
+import {
+  Block,
+  Box,
+  Container,
+  Group,
+  Link,
+  MetricRow,
+  Stack,
+  Text,
+  Title,
+  tpl,
+  type Stat,
+} from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { metrics as metricsEntries } from "@ui8kit/app-shared/data/metrics";
@@ -59,6 +71,7 @@ const metrics = fromCodex<Stat>(metricsEntries, METRICS_FIELDS);
               item="tile"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.tiles)"
             />
           </Box>
         </Stack>
@@ -83,6 +96,7 @@ const metrics = fromCodex<Stat>(metricsEntries, METRICS_FIELDS);
               item="tile"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.twoUp)"
             />
           </Box>
         </Stack>
@@ -107,6 +121,7 @@ const metrics = fromCodex<Stat>(metricsEntries, METRICS_FIELDS);
               item="compact"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.compact)"
             />
           </Box>
         </Stack>
@@ -131,6 +146,7 @@ const metrics = fromCodex<Stat>(metricsEntries, METRICS_FIELDS);
               item="compact"
               tone="muted"
               density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.metrics, ui.blocks.variants.metrics.muted)"
             />
           </Box>
         </Stack>

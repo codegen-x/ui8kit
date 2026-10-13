@@ -8,6 +8,7 @@ import {
   PageIntro,
   SiteFooter,
   SiteHeader,
+  tpl,
   type MegaGroup,
   type NavLink,
 } from "@ui8kit/vue-ui";
@@ -44,6 +45,7 @@ const actions = { toggleTheme };
     layout="stacked"
     position="static"
     actions="none"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.stacked)"
     @theme="() => actions.toggleTheme()"
   />
   <NavBar
@@ -62,6 +64,7 @@ const actions = { toggleTheme };
     layout="split"
     over="none"
     tone="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.split)"
     @theme="() => actions.toggleTheme()"
   />
   <NavBar
@@ -80,6 +83,7 @@ const actions = { toggleTheme };
     layout="search"
     over="none"
     tone="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.search)"
     @theme="() => actions.toggleTheme()"
   />
   <NavBar
@@ -98,6 +102,7 @@ const actions = { toggleTheme };
     layout="inline"
     over="media"
     tone="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.media)"
     @theme="() => actions.toggleTheme()"
   />
   <MegaMenu
@@ -111,6 +116,12 @@ const actions = { toggleTheme };
     panel="open"
     cols="2"
     promo="none"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.twoCols)"
   />
-  <SiteFooter :labels="ui.site.footer" layout="centered" density="default" />
+  <SiteFooter
+    :labels="ui.site.footer"
+    layout="centered"
+    density="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.footer, ui.blocks.variants.footer.centered)"
+  />
 </template>

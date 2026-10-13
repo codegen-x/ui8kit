@@ -22,6 +22,7 @@
     id?: string;
     layout?: "columns" | "row" | "card";
     density?: "default" | "compact";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -55,13 +56,20 @@
     id = "footer",
     layout = "columns",
     density = "default",
+    landmarkLabel,
   }: SitemapFooterProps = $props();
 </script>
 
 {#if ((layout as string) === "card")}
-  <FooterCard label={label} brand={brand} groups={groups} />
+  <FooterCard label={label} brand={brand} groups={groups} landmarkLabel={landmarkLabel} />
 {:else}
-  <Block tag="footer" class="mt-12 border-t border-border" data-testid="site-footer" data-layout={layout}>
+  <Block
+    tag="footer"
+    class="mt-12 border-t border-border"
+    data-testid="site-footer"
+    data-layout={layout}
+    aria-label={landmarkLabel}
+  >
     <Container
       class={cn(
         "mx-auto w-full max-w-6xl px-4",
@@ -99,7 +107,7 @@
             </Text>
           </Stack>
           <Box class="min-w-0 flex-1">
-            <FooterColumns label={label} groups={groups} />
+            <FooterColumns label={label} groups={groups} landmarkLabel={landmarkLabel} />
           </Box>
         </Box>
       {:else}
@@ -107,7 +115,7 @@
           <Text size="base" weight="bold">
             {brand}
           </Text>
-          <NavBlock label={label}>
+          <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", label, landmarkLabel) : label)}>
             <Group gap="4" class="flex-wrap">
               {#each groups as g (g.id)}
                 <Link href="#/" variant="default" class="text-sm" data-testid="group">

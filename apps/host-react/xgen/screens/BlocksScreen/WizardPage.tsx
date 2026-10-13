@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type WizardStep,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -72,6 +73,7 @@ export function WizardPage() {
                 progress="bar"
                 layout="card"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.wizard, ui.blocks.variants.wizard.bar)}
               />
             </Box>
           </Stack>
@@ -97,6 +99,7 @@ export function WizardPage() {
                 progress="list"
                 layout="card"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.wizard, ui.blocks.variants.wizard.list)}
               />
             </Box>
           </Stack>
@@ -122,6 +125,7 @@ export function WizardPage() {
                 progress="bar"
                 layout="plain"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.wizard, ui.blocks.variants.wizard.plain)}
               />
             </Box>
           </Stack>
@@ -147,6 +151,7 @@ export function WizardPage() {
                 progress="list"
                 layout="plain"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.wizard, ui.blocks.variants.wizard.second)}
               />
             </Box>
           </Stack>

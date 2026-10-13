@@ -10,6 +10,7 @@ import type { MegaGroup } from "../blocks/mega-menu.types";
 export type FooterGroupCardsProps = {
   label: string;
   groups: MegaGroup[];
+  landmarkLabel?: string;
 };
 </script>
 
@@ -25,11 +26,11 @@ import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 
-const { label, groups } = defineProps<FooterGroupCardsProps>();
+const { label, groups, landmarkLabel } = defineProps<FooterGroupCardsProps>();
 </script>
 
 <template>
-  <Block tag="nav" :aria-label="label">
+  <Block tag="nav" :aria-label="(landmarkLabel ?? label)">
     <Box class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
       <Stack
         v-for="g in groups"

@@ -43,6 +43,7 @@ export type FooterSplitProps = {
   layout?: "stats" | "points" | "links" | "newsletter" | "contacts" | "channels";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 
 export function FooterSplit({
@@ -57,6 +58,7 @@ export function FooterSplit({
   layout = "stats",
   mediaSide = "end",
   tone = "default",
+  landmarkLabel,
 }: FooterSplitProps) {
   return (
     <Block
@@ -64,6 +66,7 @@ export function FooterSplit({
       className={cn("border-t border-border", (((tone as string) === "muted") ? "bg-muted" : ""))}
       data-testid="footer-split"
       data-layout={layout}
+      aria-label={landmarkLabel}
     >
       <Container className={cn("mx-auto w-full max-w-6xl px-4", "py-12")} data-slot="container">
         {((layout as string) === "stats") ? (
@@ -78,7 +81,7 @@ export function FooterSplit({
                 {labels.sitemap}
               </Link>
             </Group>
-            <FooterGroupCards label={label} groups={groups} />
+            <FooterGroupCards label={label} groups={groups} landmarkLabel={landmarkLabel} />
             <Box className="border-t border-border pt-6">
               <Text size="sm" className="text-muted-foreground">
                 {copyright}
@@ -110,18 +113,12 @@ export function FooterSplit({
                 <FooterSignupCard id={id} labels={labels} />
               ) : null}
               {(((layout as string) === "links") || ((layout as string) === "newsletter")) ? (
-                <FooterLinkColumns label={label} groups={groups} />
+                <FooterLinkColumns label={label} groups={groups} landmarkLabel={landmarkLabel} />
               ) : null}
               {((layout as string) === "contacts") ? (
                 <>
                   <FooterContacts extras={extras} />
-                  <ActionGroup
-                    primary={labels.cta}
-                    primaryHref="#/contact"
-                    secondary={labels.secondary}
-                    secondaryHref="#/work"
-                    align="start"
-                  />
+                  <ActionGroup primary={labels.cta} primaryHref="#/contact" secondary={labels.secondary} secondaryHref="#/work" />
                 </>
               ) : null}
               {((layout as string) === "channels") ? (

@@ -2,7 +2,7 @@
 <!-- Source: xgen/specs/screens/blocks.json -->
 <!-- The header page of BlocksScreen. -->
 <script lang="ts">
-  import { Block, Box, Container, Group, Link, SiteHeader, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Container, Group, Link, SiteHeader, Stack, Text, Title, tpl } from "@ui8kit/svelte-ui";
   import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
   import { ui } from "@ui8kit/app-shared/content";
 
@@ -49,6 +49,7 @@
             layout="inline"
             position="static"
             actions="none"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.inline)}
             ontheme={() => actions.toggleTheme()}
           />
         </Box>
@@ -74,6 +75,7 @@
             layout="stacked"
             position="static"
             actions="none"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.stacked)}
             ontheme={() => actions.toggleTheme()}
           />
         </Box>
@@ -99,6 +101,7 @@
             layout="inline"
             position="sticky"
             actions="none"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.sticky)}
             ontheme={() => actions.toggleTheme()}
           />
         </Box>
@@ -124,6 +127,7 @@
             layout="inline"
             position="static"
             actions="cta"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.header, ui.blocks.variants.header.withCta)}
             ontheme={() => actions.toggleTheme()}
           />
         </Box>

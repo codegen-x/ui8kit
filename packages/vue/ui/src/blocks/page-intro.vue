@@ -15,6 +15,7 @@ export type PageIntroProps = {
   align?: "start" | "center";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -32,6 +33,7 @@ const {
   align = "start",
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<PageIntroProps>();
 </script>
 
@@ -44,6 +46,7 @@ const {
     :align="align"
     :tone="tone"
     :density="density"
+    :landmarkLabel="landmarkLabel"
   >
     <ActionGroup v-if="cta" :primary="cta" :primaryHref="href" :align="align" />
   </SectionFrame>

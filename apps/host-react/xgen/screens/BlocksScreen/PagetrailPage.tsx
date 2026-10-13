@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type NavLink,
   type Stat,
 } from "@ui8kit/react-ui";
@@ -84,6 +85,7 @@ export function PagetrailPage() {
                 aside="none"
                 tone="default"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pagetrail, ui.blocks.variants.pagetrail.crumbs)}
               />
             </Box>
           </Stack>
@@ -111,6 +113,7 @@ export function PagetrailPage() {
                 aside="figure"
                 tone="default"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pagetrail, ui.blocks.variants.pagetrail.crumbsFigure)}
               />
             </Box>
           </Stack>
@@ -138,6 +141,7 @@ export function PagetrailPage() {
                 aside="note"
                 tone="default"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pagetrail, ui.blocks.variants.pagetrail.crumbsNote)}
               />
             </Box>
           </Stack>
@@ -165,6 +169,7 @@ export function PagetrailPage() {
                 aside="facts"
                 tone="muted"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pagetrail, ui.blocks.variants.pagetrail.keyFacts)}
               />
             </Box>
           </Stack>

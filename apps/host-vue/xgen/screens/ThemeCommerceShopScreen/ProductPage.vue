@@ -7,6 +7,7 @@ import {
   ProductGrid,
   ProductInfo,
   ReviewList,
+  tpl,
   type Detail,
   type Product,
   type Review,
@@ -70,6 +71,7 @@ const specs = fromCodex<Spec>(specsEntries, SPECS_FIELDS);
     layout="split"
     expand="first"
     tone="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.productinfo, ui.blocks.variants.productinfo.split)"
   />
   <ReviewList
     id="product-reviews"
@@ -81,6 +83,7 @@ const specs = fromCodex<Spec>(specsEntries, SPECS_FIELDS);
     avatar="none"
     tone="default"
     density="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.list)"
   />
   <ProductGrid
     id="product-products"
@@ -95,5 +98,6 @@ const specs = fromCodex<Spec>(specsEntries, SPECS_FIELDS);
     action="button"
     tone="default"
     density="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.grid3)"
   />
 </template>

@@ -23,6 +23,11 @@
         "ts": "MegaGroup[]"
       },
       "required": true
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
     }
   ],
   "slots": [],
@@ -36,7 +41,10 @@
       },
       "attrs": {
         "data-testid": "site-footer",
-        "data-layout": "card"
+        "data-layout": "card",
+        "aria-label": {
+          "$": "landmarkLabel"
+        }
       },
       "children": [
         {
@@ -145,7 +153,27 @@
                   "organism": "NavBlock",
                   "props": {
                     "label": {
-                      "$": "label"
+                      "op": "cond",
+                      "args": [
+                        {
+                          "$": "landmarkLabel"
+                        },
+                        {
+                          "op": "tpl",
+                          "args": [
+                            "{0}, {1}",
+                            {
+                              "$": "label"
+                            },
+                            {
+                              "$": "landmarkLabel"
+                            }
+                          ]
+                        },
+                        {
+                          "$": "label"
+                        }
+                      ]
                     },
                     "className": "min-w-0 flex-1"
                   },

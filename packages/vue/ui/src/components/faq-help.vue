@@ -11,6 +11,7 @@ import type { Feature } from "../blocks/feature-grid.types";
 export type FaqHelpProps = {
   labels: FaqSplitLabels;
   channels: Feature[];
+  landmarkLabel?: string;
 };
 </script>
 
@@ -24,14 +25,14 @@ import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 
-const { labels, channels } = defineProps<FaqHelpProps>();
+const { labels, channels, landmarkLabel } = defineProps<FaqHelpProps>();
 </script>
 
 <template>
   <Block
     tag="aside"
     class="rounded bg-card inset-ring inset-ring-border flex flex-col gap-6 p-6"
-    :aria-label="labels.asideTitle"
+    :aria-label="(landmarkLabel ?? labels.asideTitle)"
     data-testid="faq-help"
   >
     <Stack gap="2">

@@ -35,6 +35,7 @@ export type MediaListProps = {
   layout?: "figures" | "proof" | "steps" | "posts" | "topics" | "contact";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 
 export function MediaList({
@@ -48,6 +49,7 @@ export function MediaList({
   layout = "figures",
   mediaSide = "end",
   tone = "default",
+  landmarkLabel,
 }: MediaListProps) {
   return (
     <SectionFrame
@@ -58,6 +60,7 @@ export function MediaList({
       tone={tone}
       layout="split"
       media={{ show: true, side: mediaSide }}
+      landmarkLabel={landmarkLabel}
       aside={(
         <MediaFrame
           alt={title}
@@ -89,7 +92,6 @@ export function MediaList({
           primaryHref={actions.href}
           secondary={((actions.mode === "two") ? actions.secondary : undefined)}
           secondaryHref={actions.secondaryHref}
-          align="start"
         />
       ) : null}
     </SectionFrame>

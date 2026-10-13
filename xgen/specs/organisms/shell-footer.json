@@ -20,6 +20,11 @@
         "ts": "\"full\" | \"inset\""
       },
       "default": "full"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
     }
   ],
   "slots": [],
@@ -56,6 +61,9 @@
         "data-testid": "footer",
         "data-place": {
           "$": "place"
+        },
+        "aria-label": {
+          "$": "landmarkLabel"
         }
       },
       "children": [
@@ -77,7 +85,27 @@
           "organism": "NavBlock",
           "props": {
             "label": {
-              "$": "nav.footerLabel"
+              "op": "cond",
+              "args": [
+                {
+                  "$": "landmarkLabel"
+                },
+                {
+                  "op": "tpl",
+                  "args": [
+                    "{0}, {1}",
+                    {
+                      "$": "nav.footerLabel"
+                    },
+                    {
+                      "$": "landmarkLabel"
+                    }
+                  ]
+                },
+                {
+                  "$": "nav.footerLabel"
+                }
+              ]
             }
           },
           "slots": {

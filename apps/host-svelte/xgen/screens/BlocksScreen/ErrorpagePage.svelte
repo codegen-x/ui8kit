@@ -2,7 +2,7 @@
 <!-- Source: xgen/specs/screens/blocks.json -->
 <!-- The errorpage page of BlocksScreen. -->
 <script lang="ts">
-  import { Block, Box, Container, ErrorPage, Group, Link, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Container, ErrorPage, Group, Link, Stack, Text, Title, tpl } from "@ui8kit/svelte-ui";
   import { ui } from "@ui8kit/app-shared/content";
 
   const ERRORPAGE_ACTIONS = { cta: ui.vibe.error.cta, href: "#/", secondary: ui.vibe.error.secondary, secondaryHref: "#/" } as const;
@@ -50,6 +50,7 @@
             code="show"
             tone="default"
             level={2}
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.errorpage, ui.blocks.variants.errorpage.centered)}
           />
         </Box>
       </Stack>
@@ -76,6 +77,7 @@
             code="show"
             tone="default"
             level={2}
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.errorpage, ui.blocks.variants.errorpage.split)}
           />
         </Box>
       </Stack>
@@ -102,6 +104,7 @@
             code="hide"
             tone="default"
             level={2}
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.errorpage, ui.blocks.variants.errorpage.noCode)}
           />
         </Box>
       </Stack>
@@ -128,6 +131,7 @@
             code="show"
             tone="default"
             level={2}
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.errorpage, ui.blocks.variants.errorpage.two)}
           />
         </Box>
       </Stack>
@@ -154,6 +158,7 @@
             code="show"
             tone="muted"
             level={2}
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.errorpage, ui.blocks.variants.errorpage.muted)}
           />
         </Box>
       </Stack>

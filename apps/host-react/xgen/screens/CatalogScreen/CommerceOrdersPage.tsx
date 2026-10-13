@@ -91,6 +91,7 @@ export function CommerceOrdersPage() {
                   pager="show"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.orders, ui.blocks.variants.orders.table)}
                 />
               </Box>
             </Stack>
@@ -117,6 +118,7 @@ export function CommerceOrdersPage() {
                   pager="show"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.orders, ui.blocks.variants.orders.cards)}
                 />
               </Box>
             </Stack>
@@ -143,6 +145,7 @@ export function CommerceOrdersPage() {
                   pager="hide"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.orders, ui.blocks.variants.orders.noPager)}
                 />
               </Box>
             </Stack>
@@ -169,6 +172,7 @@ export function CommerceOrdersPage() {
                   pager="hide"
                   tone="muted"
                   density="compact"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.orders, ui.blocks.variants.orders.compactMuted)}
                 />
               </Box>
             </Stack>

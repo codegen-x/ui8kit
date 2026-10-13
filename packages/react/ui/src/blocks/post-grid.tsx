@@ -30,6 +30,7 @@ export type PostGridProps = {
   meta?: "full" | "short" | "news";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
   onTopic?: (value: string) => void;
 };
 
@@ -46,6 +47,7 @@ export function PostGrid({
   meta = "full",
   tone = "default",
   density = "default",
+  landmarkLabel,
   onTopic,
 }: PostGridProps) {
   return (
@@ -57,6 +59,7 @@ export function PostGrid({
       density={(((density as string) === "compact") ? "compact" : "default")}
       measure={(((meta as string) === "news") ? "fill" : "default")}
       className={(((meta as string) === "news") ? "py-0" : "")}
+      landmarkLabel={landmarkLabel}
     >
       {(filter?.mode === "topics") ? (
         <Switcher label={filter?.label}>
@@ -80,7 +83,7 @@ export function PostGrid({
             {(posts.filter((i) => !filter?.topic || i["category"] === filter?.topic) ?? []).map((p, i) => (
               <Fragment key={p.id}>
                 {(i > 0) ? (
-                  <PostCard post={p} labels={labels} layout="vertical" media={media} meta={meta} density={density} />
+                  <PostCard post={p} labels={labels} media={media} meta={meta} density={density} />
                 ) : null}
               </Fragment>
             ))}

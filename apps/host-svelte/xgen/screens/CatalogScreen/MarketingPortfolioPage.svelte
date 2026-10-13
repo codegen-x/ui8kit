@@ -90,6 +90,7 @@
               layout="cards"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.projects, ui.blocks.variants.projects.cards)}
             />
           </Box>
         </Stack>
@@ -115,6 +116,7 @@
               layout="compact"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.projects, ui.blocks.variants.projects.compact)}
             />
           </Box>
         </Stack>
@@ -140,6 +142,7 @@
               layout="overlay"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.projects, ui.blocks.variants.projects.overlay)}
             />
           </Box>
         </Stack>
@@ -165,6 +168,7 @@
               layout="bento"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.projects, ui.blocks.variants.projects.bento)}
             />
           </Box>
         </Stack>
@@ -190,6 +194,7 @@
               layout="list"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.projects, ui.blocks.variants.projects.list)}
             />
           </Box>
         </Stack>
@@ -215,6 +220,7 @@
               layout="cards"
               tone="muted"
               density="compact"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.projects, ui.blocks.variants.projects.cardsMuted)}
             />
           </Box>
         </Stack>

@@ -8,6 +8,7 @@ import {
   IconWall,
   ProofBand,
   TestimonialGrid,
+  tpl,
   type CodeLine,
   type Feature,
   type Logo,
@@ -79,6 +80,7 @@ export function LaunchPage() {
         item="tile"
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.iconwall, ui.blocks.variants.iconwall.tiles4)}
       />
       <ProofBand
         id="launch-proof"
@@ -89,6 +91,7 @@ export function LaunchPage() {
         logoStyle="name"
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.proof, ui.blocks.variants.proof.above)}
       />
       <TestimonialGrid
         id="launch-testimonials"
@@ -104,6 +107,7 @@ export function LaunchPage() {
         item={{ kind: "card", avatar: "image", rating: "show", mark: "none" }}
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.grid3)}
       />
       <CtaBand
         id="launch-cta"
@@ -122,6 +126,7 @@ export function LaunchPage() {
         tone="muted"
         proof="none"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.form)}
       />
     </>
   );

@@ -32,6 +32,7 @@ export type CtaBandProps = {
   tone?: "default" | "muted";
   proof?: "none" | "quote";
   density?: "roomy" | "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function CtaBand({
@@ -44,20 +45,30 @@ export function CtaBand({
   tone = "muted",
   proof = "none",
   density = "default",
+  landmarkLabel,
 }: CtaBandProps) {
   const center = ((layout as string) === "band") || ((layout as string) === "banner");
   return (
     <>
       {((layout as string) === "banner") ? (
-        <CtaBanner id={id} title={title} text={text} cta={actions.cta} href={actions.href} tone={tone} />
+        <CtaBanner
+          id={id}
+          title={title}
+          text={text}
+          cta={actions.cta}
+          href={actions.href}
+          tone={tone}
+          landmarkLabel={landmarkLabel}
+        />
       ) : ((layout as string) === "row") ? (
         <Block
           tag="section"
           className="py-8"
-          aria-labelledby={tpl("{0}-title", id)}
+          aria-labelledby={(landmarkLabel ? undefined : tpl("{0}-title", id))}
           data-testid="section"
           data-tone={tone}
           data-density={density}
+          aria-label={landmarkLabel}
         >
           <Container className="mx-auto w-full max-w-6xl px-4" data-slot="container">
             <Card variant="muted">
@@ -89,6 +100,7 @@ export function CtaBand({
           media={{ show: ((layout as string) === "split") }}
           tone={tone}
           density={density}
+          landmarkLabel={landmarkLabel}
           aside={(
             <MediaFrame alt={title} ratio="4/3" />
           )}

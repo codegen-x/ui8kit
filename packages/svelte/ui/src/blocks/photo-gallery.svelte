@@ -19,6 +19,7 @@
     captions?: "show" | "hide";
     tone?: "default" | "muted";
     density?: "default" | "compact";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -45,13 +46,14 @@
     captions = "show",
     tone = "default",
     density = "default",
+    landmarkLabel,
   }: PhotoGalleryProps = $props();
 </script>
 
-<SectionFrame id={id} title={title} lead={lead} tone={tone} density={density}>
+<SectionFrame id={id} title={title} lead={lead} tone={tone} density={density} landmarkLabel={landmarkLabel}>
   {#if ((layout as string) === "featured")}
     <Stack gap="4" align="stretch" data-testid="featured">
-      <MediaFrame alt={title} ratio="16/9" />
+      <MediaFrame alt={title} />
       <Group gap="4" align="center" justify="between">
         <Stack gap="0">
           <Text size="base" weight="semibold">

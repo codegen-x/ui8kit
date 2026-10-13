@@ -12,6 +12,7 @@
     Stack,
     Text,
     Title,
+    tpl,
     type Event,
     type Point,
     type Stat,
@@ -88,6 +89,7 @@
             cols="4"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.overview, ui.blocks.variants.overview.split)}
           />
         </Box>
       </Stack>
@@ -114,6 +116,7 @@
             cols="4"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.overview, ui.blocks.variants.overview.stacked)}
           />
         </Box>
       </Stack>
@@ -140,6 +143,7 @@
             cols="2"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.overview, ui.blocks.variants.overview.twoCols)}
           />
         </Box>
       </Stack>
@@ -166,6 +170,7 @@
             cols="4"
             tone="muted"
             density="compact"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.overview, ui.blocks.variants.overview.muted)}
           />
         </Box>
       </Stack>

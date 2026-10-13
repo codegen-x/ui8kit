@@ -19,6 +19,7 @@ export type StoryTabsProps = {
   labels: StoryLabels;
   layout?: "years" | "carousel";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -44,18 +45,19 @@ const {
   labels,
   layout = "years",
   tone = "default",
+  landmarkLabel,
 } = defineProps<StoryTabsProps>();
 const emit = defineEmits<{ select: [id: string] }>();
 </script>
 
 <template>
-  <SectionFrame
-    v-if="((layout as string) === 'years')"
+  <SectionFrame v-if="((layout as string) === 'years')"
     :id="id"
     :title="title"
     :lead="lead"
     :heading="{ badge }"
     :tone="tone"
+    :landmarkLabel="landmarkLabel"
   >
     <Box class="grid grid-cols-2 gap-2 sm:grid-cols-4" data-testid="story-tabs">
       <Button v-for="s in steps" :key="s.id"
@@ -87,6 +89,7 @@ const emit = defineEmits<{ select: [id: string] }>();
     :tone="tone"
     layout="split"
     :media="{ show: true }"
+    :landmarkLabel="landmarkLabel"
   >
     <template #aside>
       <Stack gap="4" align="stretch">

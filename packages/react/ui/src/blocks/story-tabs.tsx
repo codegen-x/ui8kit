@@ -29,6 +29,7 @@ export type StoryTabsProps = {
   labels: StoryLabels;
   layout?: "years" | "carousel";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
   onSelect?: (id: string) => void;
 };
 
@@ -42,12 +43,13 @@ export function StoryTabs({
   labels,
   layout = "years",
   tone = "default",
+  landmarkLabel,
   onSelect,
 }: StoryTabsProps) {
   return (
     <>
       {((layout as string) === "years") ? (
-        <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone}>
+        <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone} landmarkLabel={landmarkLabel}>
           <Box className="grid grid-cols-2 gap-2 sm:grid-cols-4" data-testid="story-tabs">
             {(steps ?? []).map((s) => (
               <Button key={s.id}
@@ -85,6 +87,7 @@ export function StoryTabs({
           tone={tone}
           layout="split"
           media={{ show: true }}
+          landmarkLabel={landmarkLabel}
           aside={(
             <Stack gap="4" align="stretch">
               <MediaFrame alt={title} ratio="4/3" />

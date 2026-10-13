@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type CartLine,
   type SummaryRow,
 } from "@ui8kit/vue-ui";
@@ -81,6 +82,7 @@ const summary = fromCodex<SummaryRow>(summaryEntries, SUMMARY_FIELDS);
               :drawer="ui.commerce.drawer"
               state="filled"
               media="image"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cartdrawer, ui.blocks.variants.cartdrawer.filled)"
             />
           </Box>
         </Stack>
@@ -105,6 +107,7 @@ const summary = fromCodex<SummaryRow>(summaryEntries, SUMMARY_FIELDS);
               :drawer="ui.commerce.drawer"
               state="filled"
               media="none"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cartdrawer, ui.blocks.variants.cartdrawer.compact)"
             />
           </Box>
         </Stack>
@@ -129,6 +132,7 @@ const summary = fromCodex<SummaryRow>(summaryEntries, SUMMARY_FIELDS);
               :drawer="ui.commerce.drawer"
               state="empty"
               media="image"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cartdrawer, ui.blocks.variants.cartdrawer.empty)"
             />
           </Box>
         </Stack>

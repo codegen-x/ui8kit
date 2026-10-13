@@ -26,6 +26,7 @@ export type StepsListProps = {
   align?: "start" | "center";
   tone?: "default" | "muted";
   density?: "roomy" | "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function StepsList({
@@ -37,6 +38,7 @@ export function StepsList({
   align = "start",
   tone = "default",
   density = "default",
+  landmarkLabel,
 }: StepsListProps) {
   return (
     <SectionFrame
@@ -46,6 +48,7 @@ export function StepsList({
       density={density}
       align={align}
       measure={(((layout as string) === "row") ? "default" : "2xl")}
+      landmarkLabel={landmarkLabel}
     >
       <List
         tag="ol"

@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Day,
   type Zone,
 } from "@ui8kit/react-ui";
@@ -91,6 +92,7 @@ export function SlotsPage() {
                 layout="split"
                 item="card"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.slots, ui.blocks.variants.slots.split)}
               />
             </Box>
           </Stack>
@@ -117,6 +119,7 @@ export function SlotsPage() {
                 layout="split"
                 item="plain"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.slots, ui.blocks.variants.slots.plain)}
               />
             </Box>
           </Stack>
@@ -143,6 +146,7 @@ export function SlotsPage() {
                 layout="stacked"
                 item="card"
                 tone="muted"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.slots, ui.blocks.variants.slots.stacked)}
               />
             </Box>
           </Stack>

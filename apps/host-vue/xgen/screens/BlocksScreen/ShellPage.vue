@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Event,
   type NavLink,
   type Point,
@@ -95,6 +96,7 @@ const SHELL_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboard.
               :activity="SHELL_ACTIVITY"
               layout="sidebar"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.shell, ui.blocks.variants.shell.sidebar)"
             />
           </Box>
         </Stack>
@@ -122,6 +124,7 @@ const SHELL_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboard.
               :activity="SHELL_ACTIVITY"
               layout="top"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.shell, ui.blocks.variants.shell.top)"
             />
           </Box>
         </Stack>
@@ -149,6 +152,7 @@ const SHELL_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboard.
               :activity="SHELL_ACTIVITY"
               layout="panes"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.shell, ui.blocks.variants.shell.panes)"
             />
           </Box>
         </Stack>
@@ -176,6 +180,7 @@ const SHELL_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboard.
               :activity="SHELL_ACTIVITY"
               layout="sidebar"
               density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.shell, ui.blocks.variants.shell.dense)"
             />
           </Box>
         </Stack>

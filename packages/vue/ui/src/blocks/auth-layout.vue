@@ -22,6 +22,7 @@ export type AuthLayoutProps = {
   side?: "end" | "start";
   mode?: "signin" | "signup" | "reset" | "magic";
   social?: "none" | "show" | "first";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -50,6 +51,7 @@ const {
   side = "end",
   mode = "signin",
   social = "none",
+  landmarkLabel,
 } = defineProps<AuthLayoutProps>();
 </script>
 
@@ -71,6 +73,7 @@ const {
             layout="plain"
             :social="social"
             :level="level"
+            :landmarkLabel="landmarkLabel"
           />
         </Box>
         <Stack
@@ -102,9 +105,9 @@ const {
           :switchHref="switchTo.href"
           :labels="labels"
           :mode="mode"
-          layout="card"
           :social="social"
           :level="level"
+          :landmarkLabel="landmarkLabel"
         />
       </Box>
       <Box v-else class="mx-auto w-full max-w-sm">
@@ -121,6 +124,7 @@ const {
           layout="plain"
           :social="social"
           :level="level"
+          :landmarkLabel="landmarkLabel"
         />
       </Box>
     </Container>

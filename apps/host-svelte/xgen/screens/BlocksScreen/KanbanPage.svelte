@@ -12,6 +12,7 @@
     Stack,
     Text,
     Title,
+    tpl,
     type BoardCard,
     type Lane,
   } from "@ui8kit/svelte-ui";
@@ -69,6 +70,7 @@
             cols="3"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.kanban, ui.blocks.variants.kanban.detail)}
           />
         </Box>
       </Stack>
@@ -95,6 +97,7 @@
             cols="3"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.kanban, ui.blocks.variants.kanban.simple)}
           />
         </Box>
       </Stack>
@@ -121,6 +124,7 @@
             cols="2"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.kanban, ui.blocks.variants.kanban.twoCols)}
           />
         </Box>
       </Stack>
@@ -147,6 +151,7 @@
             cols="3"
             tone="muted"
             density="compact"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.kanban, ui.blocks.variants.kanban.muted)}
           />
         </Box>
       </Stack>

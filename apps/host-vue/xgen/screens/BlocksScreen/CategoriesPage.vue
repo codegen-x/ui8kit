@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Category,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -65,6 +66,7 @@ const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS);
               count="show"
               icon="show"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.chips)"
             />
           </Box>
         </Stack>
@@ -90,6 +92,7 @@ const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS);
               count="show"
               icon="show"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.bar)"
             />
           </Box>
         </Stack>
@@ -115,6 +118,7 @@ const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS);
               count="show"
               icon="show"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.sidebar)"
             />
           </Box>
         </Stack>
@@ -140,6 +144,7 @@ const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS);
               count="hide"
               icon="hide"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.chipsPlain)"
             />
           </Box>
         </Stack>
@@ -165,6 +170,7 @@ const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS);
               count="show"
               icon="hide"
               density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.barCompact)"
             />
           </Box>
         </Stack>
@@ -190,6 +196,7 @@ const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS);
               count="show"
               icon="show"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.tiles)"
             />
           </Box>
         </Stack>
@@ -215,6 +222,7 @@ const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS);
               count="show"
               icon="hide"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.toolbar)"
             />
           </Box>
         </Stack>

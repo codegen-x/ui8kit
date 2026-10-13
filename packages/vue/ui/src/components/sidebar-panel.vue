@@ -18,6 +18,7 @@ export const sidebarPanelVariants = variants({
 
 export type SidebarPanelProps = {
   variant?: "chat" | "creator";
+  landmarkLabel?: string;
   class?: string;
 };
 </script>
@@ -26,7 +27,7 @@ export type SidebarPanelProps = {
 import Block from "../primitives/block/block.vue";
 import { cn } from "../utils";
 
-const { variant, class: className } = defineProps<SidebarPanelProps>();
+const { variant, landmarkLabel, class: className } = defineProps<SidebarPanelProps>();
 defineSlots<{ default?(): unknown }>();
 </script>
 
@@ -36,6 +37,7 @@ defineSlots<{ default?(): unknown }>();
     :class="cn(sidebarPanelVariants({ variant: variant }), className)"
     data-slot="sidebar-panel"
     :data-variant="(variant ?? 'chat')"
+    :aria-label="landmarkLabel"
   >
     <slot />
   </Block>

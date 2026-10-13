@@ -34,6 +34,7 @@ export type QuoteSplitProps = {
   layout?: "media" | "logos" | "rating" | "stack" | "compact" | "bento";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 
 export function QuoteSplit({
@@ -48,11 +49,12 @@ export function QuoteSplit({
   layout = "media",
   mediaSide = "end",
   tone = "default",
+  landmarkLabel,
 }: QuoteSplitProps) {
   return (
     <>
       {(((layout as string) === "compact") || ((layout as string) === "bento")) ? (
-        <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone} density="default">
+        <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone} landmarkLabel={landmarkLabel}>
           {((layout as string) === "bento") ? (
             <QuoteFigures extras={extras} />
           ) : null}
@@ -66,7 +68,6 @@ export function QuoteSplit({
               <QuoteSlot key={q.id}
                 q={q}
                 labels={labels}
-                kind="card"
                 layout={((((layout as string) === "bento") && (i === 0)) ? "single" : "grid")}
                 className={((((layout as string) === "bento") && (i === 0)) ? "lg:row-span-3" : "")}
               />
@@ -80,9 +81,9 @@ export function QuoteSplit({
           lead={lead}
           heading={{ badge }}
           tone={tone}
-          density="default"
           layout="split"
           media={{ show: true, side: mediaSide }}
+          landmarkLabel={landmarkLabel}
           aside={(
             <>
               {((layout as string) === "rating") ? (
@@ -118,7 +119,7 @@ export function QuoteSplit({
               {(quotes ?? []).map((q, i) => (
                 <Fragment key={q.id}>
                   {(i < 3) ? (
-                    <QuoteSlot q={q} labels={labels} kind="card" layout="stack" className="" />
+                    <QuoteSlot q={q} labels={labels} layout="stack" className="" />
                   ) : null}
                 </Fragment>
               ))}
@@ -130,7 +131,6 @@ export function QuoteSplit({
               primaryHref={actions.href}
               secondary={((actions.mode === "two") ? actions.secondary : undefined)}
               secondaryHref={actions.secondaryHref}
-              align="start"
             />
           ) : null}
         </SectionFrame>

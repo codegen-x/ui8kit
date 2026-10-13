@@ -16,6 +16,7 @@ export type SiteHeaderProps = {
   actions?: "none" | "cta";
   cta?: string;
   ctaHref?: string;
+  landmarkLabel?: string;
 };
 </script>
 
@@ -27,7 +28,7 @@ import Group from "../primitives/group/group.vue";
 import Link from "../primitives/link/link.vue";
 import LinkPlain from "../primitives/link-plain/link-plain.vue";
 import NavBlock from "../components/nav-block.vue";
-import { cn } from "../utils";
+import { cn, tpl } from "../utils";
 
 const {
   labels,
@@ -37,6 +38,7 @@ const {
   actions = "none",
   cta,
   ctaHref,
+  landmarkLabel,
 } = defineProps<SiteHeaderProps>();
 const emit = defineEmits<{ theme: [] }>();
 </script>
@@ -50,6 +52,7 @@ const emit = defineEmits<{ theme: [] }>();
     )"
     data-testid="site-header"
     :data-layout="layout"
+    :aria-label="landmarkLabel"
   >
     <LinkPlain
       href="#main-content"
@@ -70,7 +73,7 @@ const emit = defineEmits<{ theme: [] }>();
       <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
         {{ labels.brand }}
       </Link>
-      <NavBlock :label="labels.nav" testid="site-nav">
+      <NavBlock :label="(landmarkLabel ? tpl('{0}, {1}', labels.nav, landmarkLabel) : labels.nav)" testid="site-nav">
         <Group gap="4" align="center">
           <Link
             href="#/"

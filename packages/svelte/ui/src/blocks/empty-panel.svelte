@@ -18,6 +18,7 @@
     actions?: "button" | "none";
     visual?: "icon" | "image";
     size?: "default" | "compact";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -43,10 +44,11 @@
     actions = "button",
     visual = "icon",
     size = "default",
+    landmarkLabel,
   }: EmptyPanelProps = $props();
 </script>
 
-<Block tag="section" aria-label={title} data-testid="empty">
+<Block tag="section" aria-label={(landmarkLabel ?? title)} data-testid="empty">
   <Container
     class={cn("mx-auto w-full max-w-6xl px-4", (((size as string) === "compact") ? "py-4" : "py-8"))}
     data-slot="container"

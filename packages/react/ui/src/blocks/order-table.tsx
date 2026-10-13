@@ -26,6 +26,7 @@ export type OrderTableProps = {
   pager?: "show" | "hide";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function OrderTable({
@@ -38,9 +39,10 @@ export function OrderTable({
   pager = "show",
   tone = "default",
   density = "default",
+  landmarkLabel,
 }: OrderTableProps) {
   return (
-    <SectionFrame id={id} title={title} tone={tone} density={density}>
+    <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
       <Stack gap="4" align="stretch">
         {((layout as string) === "table") ? (
           <OrderRows orders={orders} statuses={statuses} labels={labels} density={density} />

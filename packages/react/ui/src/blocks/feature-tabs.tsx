@@ -26,6 +26,7 @@ export type FeatureTabsProps = {
   panel?: "split" | "stack";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
   onSelect?: (id: string) => void;
 };
 
@@ -38,10 +39,11 @@ export function FeatureTabs({
   panel = "split",
   tone = "default",
   density = "default",
+  landmarkLabel,
   onSelect,
 }: FeatureTabsProps) {
   return (
-    <SectionFrame id={id} title={title} tone={tone} density={density}>
+    <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
       <Stack gap="6" align="stretch">
         <Switcher label={tabsLabel} className="w-fit max-w-full flex-wrap">
           {(features ?? []).map((f, i) => (

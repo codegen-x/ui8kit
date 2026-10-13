@@ -32,6 +32,7 @@ export type StoreHeroProps = {
   layout?: "overlay" | "backdrop";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 
 export function StoreHero({
@@ -46,6 +47,7 @@ export function StoreHero({
   layout = "overlay",
   mediaSide = "end",
   tone = "default",
+  landmarkLabel,
 }: StoreHeroProps) {
   return (
     <>
@@ -59,6 +61,7 @@ export function StoreHero({
           density="roomy"
           measure="3xl"
           className={(("image" === "image") ? "relative isolate overflow-hidden" : "")}
+          landmarkLabel={landmarkLabel}
         >
           <Backdrop kind="image" alt={title} />
           <ActionGroup
@@ -66,7 +69,6 @@ export function StoreHero({
             primaryHref={actions.href}
             secondary={((actions.mode === "two") ? actions.secondary : undefined)}
             secondaryHref={actions.secondaryHref}
-            align="start"
           />
           <Grid cols="1-3" className="gap-4" data-testid="perks">
             {(perks ?? []).map((p, i) => (
@@ -99,7 +101,7 @@ export function StoreHero({
           layout="split"
           media={{ show: true, side: mediaSide }}
           tone={tone}
-          density="default"
+          landmarkLabel={landmarkLabel}
           aside={(
             <OfferMedia alt={title} card={card} />
           )}
@@ -109,7 +111,6 @@ export function StoreHero({
             primaryHref={actions.href}
             secondary={((actions.mode === "two") ? actions.secondary : undefined)}
             secondaryHref={actions.secondaryHref}
-            align="start"
           />
           <Grid cols="1-3" className="gap-4" data-testid="perks">
             {(perks ?? []).map((p, i) => (

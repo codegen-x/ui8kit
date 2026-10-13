@@ -2,7 +2,7 @@
 <!-- Source: xgen/specs/screens/blocks.json -->
 <!-- The footer page of BlocksScreen. -->
 <script setup lang="ts">
-import { Block, Box, Container, Group, Link, SiteFooter, Stack, Text, Title } from "@ui8kit/vue-ui";
+import { Block, Box, Container, Group, Link, SiteFooter, Stack, Text, Title, tpl } from "@ui8kit/vue-ui";
 import { ui } from "@ui8kit/app-shared/content";
 
 </script>
@@ -40,7 +40,12 @@ import { ui } from "@ui8kit/app-shared/content";
             {{ ui.blocks.variants.footer.minimal }}
           </Title>
           <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-            <SiteFooter :labels="ui.site.footer" layout="minimal" density="default" />
+            <SiteFooter
+              :labels="ui.site.footer"
+              layout="minimal"
+              density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.footer, ui.blocks.variants.footer.minimal)"
+            />
           </Box>
         </Stack>
         <Stack
@@ -56,7 +61,12 @@ import { ui } from "@ui8kit/app-shared/content";
             {{ ui.blocks.variants.footer.centered }}
           </Title>
           <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-            <SiteFooter :labels="ui.site.footer" layout="centered" density="default" />
+            <SiteFooter
+              :labels="ui.site.footer"
+              layout="centered"
+              density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.footer, ui.blocks.variants.footer.centered)"
+            />
           </Box>
         </Stack>
         <Stack
@@ -72,7 +82,12 @@ import { ui } from "@ui8kit/app-shared/content";
             {{ ui.blocks.variants.footer.compact }}
           </Title>
           <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-            <SiteFooter :labels="ui.site.footer" layout="minimal" density="compact" />
+            <SiteFooter
+              :labels="ui.site.footer"
+              layout="minimal"
+              density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.footer, ui.blocks.variants.footer.compact)"
+            />
           </Box>
         </Stack>
       </Stack>

@@ -111,6 +111,7 @@ const STOREHERO_ACTIONS = {
                 tone="muted"
                 density="roomy"
                 :level="2"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.hero, ui.blocks.variants.hero.shop)"
               />
             </Box>
           </Stack>
@@ -156,6 +157,7 @@ const STOREHERO_ACTIONS = {
                 mediaSide="end"
                 tone="default"
                 :level="2"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.storehero, ui.blocks.variants.storehero.overlay)"
               />
             </Box>
           </Stack>
@@ -184,6 +186,7 @@ const STOREHERO_ACTIONS = {
                 mediaSide="start"
                 tone="default"
                 :level="2"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.storehero, ui.blocks.variants.storehero.overlayStart)"
               />
             </Box>
           </Stack>
@@ -212,6 +215,7 @@ const STOREHERO_ACTIONS = {
                 mediaSide="end"
                 tone="default"
                 :level="2"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.storehero, ui.blocks.variants.storehero.backdrop)"
               />
             </Box>
           </Stack>
@@ -240,6 +244,7 @@ const STOREHERO_ACTIONS = {
                 mediaSide="end"
                 tone="muted"
                 :level="2"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.storehero, ui.blocks.variants.storehero.muted)"
               />
             </Box>
           </Stack>
@@ -273,7 +278,14 @@ const STOREHERO_ACTIONS = {
               {{ ui.blocks.variants.usp.strip }}
             </Title>
             <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <UspStrip id="usp-strip" :perks="perks" layout="strip" tone="default" density="default" />
+              <UspStrip
+                id="usp-strip"
+                :perks="perks"
+                layout="strip"
+                tone="default"
+                density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.strip)"
+              />
             </Box>
           </Stack>
           <Stack
@@ -296,6 +308,7 @@ const STOREHERO_ACTIONS = {
                 tone="default"
                 density="default"
                 :title="ui.commerce.usp.title"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.cards)"
               />
             </Box>
           </Stack>
@@ -312,7 +325,14 @@ const STOREHERO_ACTIONS = {
               {{ ui.blocks.variants.usp.stripCompact }}
             </Title>
             <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <UspStrip id="usp-stripCompact" :perks="perks" layout="strip" tone="default" density="compact" />
+              <UspStrip
+                id="usp-stripCompact"
+                :perks="perks"
+                layout="strip"
+                tone="default"
+                density="compact"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.stripCompact)"
+              />
             </Box>
           </Stack>
           <Stack
@@ -328,7 +348,14 @@ const STOREHERO_ACTIONS = {
               {{ ui.blocks.variants.usp.bar }}
             </Title>
             <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <UspStrip id="usp-bar" :perks="perks" layout="bar" tone="default" density="compact" />
+              <UspStrip
+                id="usp-bar"
+                :perks="perks"
+                layout="bar"
+                tone="default"
+                density="compact"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.bar)"
+              />
             </Box>
           </Stack>
           <Stack
@@ -344,7 +371,14 @@ const STOREHERO_ACTIONS = {
               {{ ui.blocks.variants.usp.barMuted }}
             </Title>
             <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <UspStrip id="usp-barMuted" :perks="perks" layout="bar" tone="muted" density="compact" />
+              <UspStrip
+                id="usp-barMuted"
+                :perks="perks"
+                layout="bar"
+                tone="muted"
+                density="compact"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.usp, ui.blocks.variants.usp.barMuted)"
+              />
             </Box>
           </Stack>
         </Stack>

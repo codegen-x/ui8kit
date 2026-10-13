@@ -8,6 +8,7 @@ import {
   PageIntro,
   PricingTiers,
   UsageCalculator,
+  tpl,
   type Pack,
   type Plan,
 } from "@ui8kit/vue-ui";
@@ -65,6 +66,7 @@ const credits = fromCodex<Pack>(creditsEntries, CREDITS_FIELDS);
     layout="card"
     ends="show"
     tone="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.usage, ui.blocks.variants.usage.card)"
   />
   <CreditPacks
     id="usage-credits-2"
@@ -76,6 +78,7 @@ const credits = fromCodex<Pack>(creditsEntries, CREDITS_FIELDS);
     item="tile"
     tone="default"
     density="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.credits, ui.blocks.variants.credits.tiles4)"
   />
   <CreditPacks
     id="usage-credits-3"
@@ -87,6 +90,7 @@ const credits = fromCodex<Pack>(creditsEntries, CREDITS_FIELDS);
     item="row"
     tone="default"
     density="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.credits, ui.blocks.variants.credits.rows)"
   />
   <PricingTiers
     id="usage-pricing"
@@ -100,6 +104,7 @@ const credits = fromCodex<Pack>(creditsEntries, CREDITS_FIELDS);
     billing="annual"
     tone="default"
     density="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.annual)"
   />
   <CtaBand
     id="usage-cta"
@@ -118,5 +123,6 @@ const credits = fromCodex<Pack>(creditsEntries, CREDITS_FIELDS);
     tone="muted"
     proof="none"
     density="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.row)"
   />
 </template>

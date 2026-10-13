@@ -12,6 +12,7 @@ import {
   SupportChannels,
   Text,
   Title,
+  tpl,
   type Feature,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -65,6 +66,7 @@ export function ChannelsPage() {
                 cols="1-3"
                 action="link"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.channels, ui.blocks.variants.channels.grid)}
               />
             </Box>
           </Stack>
@@ -90,6 +92,7 @@ export function ChannelsPage() {
                 cols="1-2"
                 action="link"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.channels, ui.blocks.variants.channels.twoUp)}
               />
             </Box>
           </Stack>
@@ -115,6 +118,7 @@ export function ChannelsPage() {
                 cols="1-3"
                 action="link"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.channels, ui.blocks.variants.channels.list)}
               />
             </Box>
           </Stack>
@@ -140,6 +144,7 @@ export function ChannelsPage() {
                 cols="1-3"
                 action="none"
                 tone="muted"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.channels, ui.blocks.variants.channels.plain)}
               />
             </Box>
           </Stack>

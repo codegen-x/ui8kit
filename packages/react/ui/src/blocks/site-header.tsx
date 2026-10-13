@@ -13,7 +13,7 @@ import { Group } from "../primitives/group/group";
 import { LinkPlain } from "../primitives/link-plain/link-plain";
 import { Link } from "../primitives/link/link";
 import { NavBlock } from "../components/nav-block";
-import { cn } from "../utils";
+import { cn, tpl } from "../utils";
 import type { SiteHeaderLabels } from "./site-header.types";
 
 export type SiteHeaderProps = {
@@ -24,6 +24,7 @@ export type SiteHeaderProps = {
   actions?: "none" | "cta";
   cta?: string;
   ctaHref?: string;
+  landmarkLabel?: string;
   onTheme?: () => void;
 };
 
@@ -35,6 +36,7 @@ export function SiteHeader({
   actions = "none",
   cta,
   ctaHref,
+  landmarkLabel,
   onTheme,
 }: SiteHeaderProps) {
   return (
@@ -46,6 +48,7 @@ export function SiteHeader({
       )}
       data-testid="site-header"
       data-layout={layout}
+      aria-label={landmarkLabel}
     >
       <LinkPlain
         href="#main-content"
@@ -66,7 +69,7 @@ export function SiteHeader({
         <Link href="#/" variant="default" className="text-lg font-medium" data-testid="brand">
           {labels.brand}
         </Link>
-        <NavBlock label={labels.nav} testid="site-nav">
+        <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", labels.nav, landmarkLabel) : labels.nav)} testid="site-nav">
           <Group gap="4" align="center">
             <Link
               href="#/"

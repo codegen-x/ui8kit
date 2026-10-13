@@ -27,6 +27,7 @@ export type VideoGridProps = {
   caption?: "below" | "overlay";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
   onPlay?: (id: string) => void;
 };
 
@@ -40,15 +41,16 @@ export function VideoGrid({
   caption = "below",
   tone = "default",
   density = "default",
+  landmarkLabel,
   onPlay,
 }: VideoGridProps) {
   return (
-    <SectionFrame id={id} title={title} tone={tone} density={density}>
+    <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
       <Grid cols={cols} className="gap-4" data-testid="items">
         {(quotes ?? []).map((q) => (
           <FigureBlock key={q.id} className="m-0 flex flex-col gap-4" testid="item">
             <Box className="relative">
-              <MediaFrame alt={q.author} ratio="16/9" />
+              <MediaFrame alt={q.author} />
               <Button
                 variant="default"
                 size="default"

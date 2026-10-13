@@ -106,6 +106,7 @@
               footer="none"
               content="grid"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.classic)}
             />
           </Box>
         </Stack>
@@ -133,6 +134,7 @@
               footer="inset"
               content="split"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.inset)}
             />
           </Box>
         </Stack>
@@ -160,6 +162,7 @@
               footer="none"
               content="list"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.rail)}
             />
           </Box>
         </Stack>
@@ -187,6 +190,7 @@
               footer="full"
               content="grid"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.railFooter)}
             />
           </Box>
         </Stack>
@@ -214,6 +218,7 @@
               footer="none"
               content="split"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.collapsed)}
             />
           </Box>
         </Stack>
@@ -241,6 +246,7 @@
               footer="inset"
               content="list"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.twoLevel)}
             />
           </Box>
         </Stack>
@@ -268,6 +274,7 @@
               footer="full"
               content="split"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.twoLevelFull)}
             />
           </Box>
         </Stack>
@@ -295,6 +302,7 @@
               footer="full"
               content="split"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.end)}
             />
           </Box>
         </Stack>
@@ -322,6 +330,7 @@
               footer="inset"
               content="grid"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.railEnd)}
             />
           </Box>
         </Stack>
@@ -349,6 +358,7 @@
               footer="full"
               content="grid"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.topOnly)}
             />
           </Box>
         </Stack>
@@ -376,6 +386,7 @@
               footer="inset"
               content="list"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.sideOnly)}
             />
           </Box>
         </Stack>
@@ -403,6 +414,7 @@
               footer="full"
               content="split"
               level={2}
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.dashshell, ui.blocks.variants.dashshell.collapsedEnd)}
             />
           </Box>
         </Stack>

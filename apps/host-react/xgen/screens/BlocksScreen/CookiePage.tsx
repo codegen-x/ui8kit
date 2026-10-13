@@ -2,7 +2,7 @@
 // Source: xgen/specs/screens/blocks.json
 // The cookie page of BlocksScreen.
 
-import { Block, Box, Container, CookieBanner, Group, Link, Stack, Text, Title } from "@ui8kit/react-ui";
+import { Block, Box, Container, CookieBanner, Group, Link, Stack, Text, Title, tpl } from "@ui8kit/react-ui";
 import { ui } from "@ui8kit/app-shared/content";
 
 export function CookiePage() {
@@ -49,6 +49,7 @@ export function CookiePage() {
                 layout="bar"
                 actions="two"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.bar)}
               />
             </Box>
           </Stack>
@@ -75,6 +76,7 @@ export function CookiePage() {
                 layout="card"
                 actions="two"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.card)}
               />
             </Box>
           </Stack>
@@ -101,6 +103,7 @@ export function CookiePage() {
                 layout="bar"
                 actions="three"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.settings)}
               />
             </Box>
           </Stack>
@@ -127,6 +130,7 @@ export function CookiePage() {
                 layout="card"
                 actions="three"
                 tone="muted"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cookie, ui.blocks.variants.cookie.muted)}
               />
             </Box>
           </Stack>

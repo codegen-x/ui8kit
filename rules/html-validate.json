@@ -10,6 +10,6 @@
     "no-trailing-whitespace": "off",
     "doctype-style": "off",
     "void-style": "off",
-    "unique-landmark": "warn"
+    "unique-landmark": "error"
   }
 }

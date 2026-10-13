@@ -15,18 +15,19 @@ import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { NavBlock } from "../components/nav-block";
 import { defaults } from "../presets/defaults";
-import { cn } from "../utils";
+import { cn, tpl } from "../utils";
 import type { MegaGroup } from "../blocks/mega-menu.types";
 
 export type FooterCardProps = {
   label: string;
   brand: string;
   groups: MegaGroup[];
+  landmarkLabel?: string;
 };
 
-export function FooterCard({ label, brand, groups }: FooterCardProps) {
+export function FooterCard({ label, brand, groups, landmarkLabel }: FooterCardProps) {
   return (
-    <Block tag="footer" className="py-8" data-testid="site-footer" data-layout="card">
+    <Block tag="footer" className="py-8" data-testid="site-footer" data-layout="card" aria-label={landmarkLabel}>
       <Container className={cn(cn("mx-auto w-full px-4", defaults.section.landing), "px-0")} data-slot="container">
         <Box
           className={cn(
@@ -43,7 +44,7 @@ export function FooterCard({ label, brand, groups }: FooterCardProps) {
               {brand}
             </Text>
           </Group>
-          <NavBlock label={label} className="min-w-0 flex-1">
+          <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", label, landmarkLabel) : label)} className="min-w-0 flex-1">
             <Group
               gap="0"
               align="start"

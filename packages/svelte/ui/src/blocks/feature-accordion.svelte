@@ -17,6 +17,7 @@
     multiple?: boolean;
     tone?: "default" | "muted";
     density?: "default" | "compact";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -40,6 +41,7 @@
     multiple = false,
     tone = "default",
     density = "default",
+    landmarkLabel,
   }: FeatureAccordionProps = $props();
 </script>
 
@@ -50,6 +52,7 @@
   density={density}
   layout={(((media as string) === "image") ? "split" : "stack")}
   media={{ show: ((media as string) === "image") }}
+  landmarkLabel={landmarkLabel}
 >
   <Stack gap="0" align="stretch" data-testid="items">
     {#each features as f, i (f.id)}

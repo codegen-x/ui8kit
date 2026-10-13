@@ -114,6 +114,7 @@
               cols="4"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.overview, ui.blocks.variants.overview.split)}
             />
           </Box>
         </Stack>
@@ -140,6 +141,7 @@
               cols="4"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.overview, ui.blocks.variants.overview.stacked)}
             />
           </Box>
         </Stack>
@@ -166,6 +168,7 @@
               cols="2"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.overview, ui.blocks.variants.overview.twoCols)}
             />
           </Box>
         </Stack>
@@ -192,6 +195,7 @@
               cols="4"
               tone="muted"
               density="compact"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.overview, ui.blocks.variants.overview.muted)}
             />
           </Box>
         </Stack>
@@ -235,6 +239,7 @@
               cols="3"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.kanban, ui.blocks.variants.kanban.detail)}
             />
           </Box>
         </Stack>
@@ -261,6 +266,7 @@
               cols="3"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.kanban, ui.blocks.variants.kanban.simple)}
             />
           </Box>
         </Stack>
@@ -287,6 +293,7 @@
               cols="2"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.kanban, ui.blocks.variants.kanban.twoCols)}
             />
           </Box>
         </Stack>
@@ -313,6 +320,7 @@
               cols="3"
               tone="muted"
               density="compact"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.kanban, ui.blocks.variants.kanban.muted)}
             />
           </Box>
         </Stack>

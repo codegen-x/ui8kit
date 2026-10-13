@@ -30,6 +30,7 @@ export type StoreLocationsProps = {
   labels: StoreLabels;
   layout?: "cards" | "list" | "map";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 
 export function StoreLocations({
@@ -41,9 +42,10 @@ export function StoreLocations({
   labels,
   layout = "cards",
   tone = "default",
+  landmarkLabel,
 }: StoreLocationsProps) {
   return (
-    <SectionFrame id={id} title={title} lead={lead} tone={tone} density="default">
+    <SectionFrame id={id} title={title} lead={lead} tone={tone} landmarkLabel={landmarkLabel}>
       <Box
         className={cn(
           "grid grid-cols-1 gap-8",

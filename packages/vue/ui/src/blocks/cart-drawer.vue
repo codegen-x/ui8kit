@@ -18,6 +18,7 @@ export type CartDrawerProps = {
   drawer: DrawerLabels;
   state?: "filled" | "empty";
   media?: "image" | "none";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -34,11 +35,20 @@ import Title from "../primitives/title/title.vue";
 import DrawerLines from "../components/drawer-lines.vue";
 import { tpl } from "../utils";
 
-const { id, lines, rows, labels, drawer, state = "filled", media = "image" } = defineProps<CartDrawerProps>();
+const {
+  id,
+  lines,
+  rows,
+  labels,
+  drawer,
+  state = "filled",
+  media = "image",
+  landmarkLabel,
+} = defineProps<CartDrawerProps>();
 </script>
 
 <template>
-  <Block tag="section" class="py-8" :aria-label="drawer.title" data-testid="section">
+  <Block tag="section" class="py-8" :aria-label="(landmarkLabel ?? drawer.title)" data-testid="section">
     <Container class="mx-auto w-full max-w-6xl px-4" data-slot="container">
       <Box class="flex min-h-160 overflow-hidden rounded bg-muted inset-ring inset-ring-border">
         <Box class="hidden flex-1 flex-col gap-4 p-8 sm:flex" aria-hidden="true">

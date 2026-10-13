@@ -2,7 +2,7 @@
 // Source: xgen/specs/screens/blocks.json
 // The pagehead page of BlocksScreen.
 
-import { Block, Box, Container, Group, Link, PageIntro, Stack, Text, Title } from "@ui8kit/react-ui";
+import { Block, Box, Container, Group, Link, PageIntro, Stack, Text, Title, tpl } from "@ui8kit/react-ui";
 import { ui } from "@ui8kit/app-shared/content";
 
 export function PageheadPage() {
@@ -54,6 +54,7 @@ export function PageheadPage() {
                 tone="default"
                 density="default"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pagehead, ui.blocks.variants.pagehead.start)}
               />
             </Box>
           </Stack>
@@ -80,6 +81,7 @@ export function PageheadPage() {
                 tone="default"
                 density="default"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pagehead, ui.blocks.variants.pagehead.center)}
               />
             </Box>
           </Stack>
@@ -106,6 +108,7 @@ export function PageheadPage() {
                 tone="muted"
                 density="compact"
                 level={2}
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.pagehead, ui.blocks.variants.pagehead.muted)}
               />
             </Box>
           </Stack>

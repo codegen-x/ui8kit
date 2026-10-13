@@ -17,6 +17,7 @@ export type NewsletterFormProps = {
   terms?: "show" | "hide";
   tone?: "default" | "muted";
   align?: "start" | "center";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -42,6 +43,7 @@ const {
   terms = "hide",
   tone = "default",
   align = "center",
+  landmarkLabel,
 } = defineProps<NewsletterFormProps>();
 </script>
 
@@ -54,6 +56,7 @@ const {
     :align="align"
     :layout="(((layout as string) === 'split') ? 'split' : 'stack')"
     :media="{ show: ((layout as string) === 'split') }"
+    :landmarkLabel="landmarkLabel"
   >
     <Form
       method="dialog"

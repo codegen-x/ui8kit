@@ -82,6 +82,7 @@ const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
                 align="start"
                 tone="default"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.row)"
               />
             </Box>
           </Stack>
@@ -107,6 +108,7 @@ const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
                 align="start"
                 tone="default"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.rowIcons)"
               />
             </Box>
           </Stack>
@@ -132,6 +134,7 @@ const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
                 align="start"
                 tone="default"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.column)"
               />
             </Box>
           </Stack>
@@ -157,6 +160,7 @@ const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
                 align="center"
                 tone="muted"
                 density="default"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.centered)"
               />
             </Box>
           </Stack>
@@ -182,6 +186,7 @@ const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
                 align="start"
                 tone="default"
                 density="roomy"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.columnIcons)"
               />
             </Box>
           </Stack>
@@ -207,6 +212,7 @@ const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
                 align="start"
                 tone="default"
                 density="compact"
+                :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.compact)"
               />
             </Box>
           </Stack>

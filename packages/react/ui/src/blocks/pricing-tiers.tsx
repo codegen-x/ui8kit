@@ -29,6 +29,7 @@ export type PricingTiersProps = {
   billing?: "off" | "monthly" | "annual";
   tone?: "default" | "muted";
   density?: "roomy" | "default" | "compact";
+  landmarkLabel?: string;
   onSelect?: (id: string) => void;
   onBilling?: (period: string) => void;
 };
@@ -45,6 +46,7 @@ export function PricingTiers({
   billing = "off",
   tone = "default",
   density = "default",
+  landmarkLabel,
   onSelect,
   onBilling,
 }: PricingTiersProps) {
@@ -55,6 +57,7 @@ export function PricingTiers({
       tone={tone}
       density={density}
       measure={(((layout as string) === "stack") ? "md" : "default")}
+      landmarkLabel={landmarkLabel}
     >
       {((billing as string) !== "off") ? (
         <Group gap="4" align="center" justify="center" className="flex-wrap" data-testid="billing">

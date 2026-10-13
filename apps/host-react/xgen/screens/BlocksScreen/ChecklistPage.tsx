@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Task,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -71,6 +72,7 @@ export function ChecklistPage() {
                 marker="check"
                 detail="always"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.card)}
               />
             </Box>
           </Stack>
@@ -97,6 +99,7 @@ export function ChecklistPage() {
                 marker="check"
                 detail="expand"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.expand)}
               />
             </Box>
           </Stack>
@@ -123,6 +126,7 @@ export function ChecklistPage() {
                 marker="check"
                 detail="always"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.plain)}
               />
             </Box>
           </Stack>
@@ -149,6 +153,7 @@ export function ChecklistPage() {
                 marker="check"
                 detail="always"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.text)}
               />
             </Box>
           </Stack>
@@ -175,6 +180,7 @@ export function ChecklistPage() {
                 marker="check"
                 detail="always"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.none)}
               />
             </Box>
           </Stack>
@@ -201,6 +207,7 @@ export function ChecklistPage() {
                 marker="number"
                 detail="always"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.numbered)}
               />
             </Box>
           </Stack>
@@ -227,6 +234,7 @@ export function ChecklistPage() {
                 marker="number"
                 detail="always"
                 tone="muted"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.muted)}
               />
             </Box>
           </Stack>

@@ -23,6 +23,7 @@ export type PostGridProps = {
   meta?: "full" | "short" | "news";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -48,6 +49,7 @@ const {
   meta = "full",
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<PostGridProps>();
 const emit = defineEmits<{ topic: [value: string] }>();
 </script>
@@ -61,6 +63,7 @@ const emit = defineEmits<{ topic: [value: string] }>();
     :density="(((density as string) === 'compact') ? 'compact' : 'default')"
     :measure="(((meta as string) === 'news') ? 'fill' : 'default')"
     :class="(((meta as string) === 'news') ? 'py-0' : '')"
+    :landmarkLabel="landmarkLabel"
   >
     <Switcher v-if="(filter?.mode === 'topics')" :label="filter?.label">
       <SwitcherItem
@@ -86,15 +89,7 @@ const emit = defineEmits<{ topic: [value: string] }>();
       </template>
       <Grid :cols="cols" class="gap-6">
         <template v-for="(p, i) in posts.filter((i) => !filter?.topic || i['category'] === filter?.topic)" :key="p.id">
-          <PostCard
-            v-if="(i > 0)"
-            :post="p"
-            :labels="labels"
-            layout="vertical"
-            :media="media"
-            :meta="meta"
-            :density="density"
-          />
+          <PostCard v-if="(i > 0)" :post="p" :labels="labels" :media="media" :meta="meta" :density="density" />
         </template>
       </Grid>
     </Stack>

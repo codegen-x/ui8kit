@@ -25,6 +25,7 @@ export type MilestoneTimelineProps = {
   layout?: "split" | "stacked" | "row";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function MilestoneTimeline({
@@ -35,6 +36,7 @@ export function MilestoneTimeline({
   layout = "split",
   tone = "default",
   density = "default",
+  landmarkLabel,
 }: MilestoneTimelineProps) {
   return (
     <SectionFrame
@@ -46,6 +48,7 @@ export function MilestoneTimeline({
       layout={(((layout as string) === "split") ? "split" : "stack")}
       media={{ show: ((layout as string) === "split"), side: "start", align: "start" }}
       measure={(((layout as string) === "stacked") ? "2xl" : "default")}
+      landmarkLabel={landmarkLabel}
       aside={(
         <MediaFrame alt={title} ratio="3/4" />
       )}

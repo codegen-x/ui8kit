@@ -27,6 +27,7 @@ export type ZoneTableProps = {
   layout?: "table" | "cards";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function ZoneTable({
@@ -38,9 +39,10 @@ export function ZoneTable({
   layout = "table",
   tone = "default",
   density = "default",
+  landmarkLabel,
 }: ZoneTableProps) {
   return (
-    <SectionFrame id={id} title={title} lead={lead} tone={tone} density={density}>
+    <SectionFrame id={id} title={title} lead={lead} tone={tone} density={density} landmarkLabel={landmarkLabel}>
       {((layout as string) === "table") ? (
         <ZoneRows zones={zones} labels={labels} />
       ) : (

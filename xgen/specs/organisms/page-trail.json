@@ -92,6 +92,11 @@
         "ts": "\"default\" | \"muted\""
       },
       "default": "default"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
     }
   ],
   "derived": [
@@ -140,7 +145,19 @@
       },
       "attrs": {
         "aria-labelledby": {
-          "$": "titleId"
+          "op": "cond",
+          "args": [
+            {
+              "$": "landmarkLabel"
+            },
+            {
+              "op": "undef",
+              "args": []
+            },
+            {
+              "$": "titleId"
+            }
+          ]
         },
         "data-testid": "section",
         "data-tone": {
@@ -148,6 +165,9 @@
         },
         "data-aside": {
           "$": "aside"
+        },
+        "aria-label": {
+          "$": "landmarkLabel"
         }
       },
       "children": [
@@ -174,6 +194,9 @@
                 },
                 "crumbs": {
                   "$": "crumbs"
+                },
+                "landmarkLabel": {
+                  "$": "landmarkLabel"
                 }
               }
             },

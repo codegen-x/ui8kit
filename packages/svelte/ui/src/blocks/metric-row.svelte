@@ -16,6 +16,7 @@
     item?: "tile" | "compact";
     tone?: "default" | "muted";
     density?: "default" | "compact";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -37,10 +38,11 @@
     item = "tile",
     tone = "default",
     density = "default",
+    landmarkLabel,
   }: MetricRowProps = $props();
 </script>
 
-<SectionFrame id={id} title={title} tone={tone} density={density}>
+<SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
   <Grid cols={(((cols as string) === "2") ? "1-2" : "1-4")} class="gap-4" data-testid="items">
     {#each metrics as m (m.id)}
       {#if ((item as string) === "tile")}

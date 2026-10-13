@@ -17,6 +17,7 @@
     align?: "start" | "center";
     tone?: "default" | "muted";
     density?: "default" | "compact";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -34,10 +35,20 @@
     align = "start",
     tone = "default",
     density = "default",
+    landmarkLabel,
   }: PageIntroProps = $props();
 </script>
 
-<SectionFrame id={id} title={title} lead={text} heading={{ level }} align={align} tone={tone} density={density}>
+<SectionFrame
+  id={id}
+  title={title}
+  lead={text}
+  heading={{ level }}
+  align={align}
+  tone={tone}
+  density={density}
+  landmarkLabel={landmarkLabel}
+>
   {#if cta}
     <ActionGroup primary={cta} primaryHref={href} align={align} />
   {/if}

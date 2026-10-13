@@ -2,7 +2,7 @@
 // Source: xgen/specs/screens/theme-content-blog.json
 // The articles page of ThemeContentBlogScreen.
 
-import { PageIntro, PostGrid, type Post, type PostTopic } from "@ui8kit/react-ui";
+import { PageIntro, PostGrid, tpl, type Post, type PostTopic } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { posts as postsEntries } from "@ui8kit/app-shared/data/posts";
@@ -49,6 +49,7 @@ export function ArticlesPage() {
         meta="full"
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.filters)}
       />
       <PostGrid
         id="articles-posts-2"
@@ -63,6 +64,7 @@ export function ArticlesPage() {
         meta="full"
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.twoUp)}
       />
     </>
   );

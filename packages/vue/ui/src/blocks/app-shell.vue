@@ -24,6 +24,7 @@ export type AppShellProps = {
   activity: OverviewActivity;
   layout?: "sidebar" | "top" | "panes";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -52,6 +53,7 @@ const {
   activity,
   layout = "sidebar",
   density = "default",
+  landmarkLabel,
 } = defineProps<AppShellProps>();
 </script>
 
@@ -59,9 +61,10 @@ const {
   <Block
     tag="section"
     class="bg-background"
-    :aria-labelledby="tpl('{0}-title', id)"
+    :aria-labelledby="(landmarkLabel ? undefined : tpl('{0}-title', id))"
     data-testid="app-shell"
     :data-layout="layout"
+    :aria-label="landmarkLabel"
   >
     <Stack v-if="((layout as string) === 'top')" gap="6" align="stretch">
       <NavBar
@@ -72,7 +75,7 @@ const {
         :search="search"
         :actions="{ mode: 'none' }"
         layout="search"
-        over="none"
+        :landmarkLabel="landmarkLabel"
       />
       <Container :class="cn('mx-auto w-full max-w-6xl px-4', 'pb-8')" data-slot="container">
         <AppMain
@@ -99,19 +102,10 @@ const {
           :current="nav.current"
           :userName="user.name"
           :userEmail="user.email"
-          width="full"
-          user="show"
           :density="density"
+          :landmarkLabel="landmarkLabel"
         />
-        <AppMain
-          :id="id"
-          :title="title"
-          :metrics="metrics"
-          :chart="chart"
-          cols="1-2"
-          :activity="activity"
-          :density="density"
-        />
+        <AppMain :id="id" :title="title" :metrics="metrics" :chart="chart" :activity="activity" :density="density" />
       </Grid>
       <Grid v-else cols="1-3" class="items-start gap-4">
         <SidebarNav
@@ -122,8 +116,8 @@ const {
           :userName="user.name"
           :userEmail="user.email"
           width="compact"
-          user="show"
           :density="density"
+          :landmarkLabel="landmarkLabel"
         />
         <Panel :title="activity.title" :description="activity.text" :id="tpl('{0}-list', id)">
           <List class="m-0 flex list-none flex-col gap-4 p-0" data-testid="items">
@@ -137,7 +131,7 @@ const {
             </ListItem>
           </List>
         </Panel>
-        <AppMain :id="id" :title="title" :metrics="metrics" :chart="chart" cols="1-2" density="compact" />
+        <AppMain :id="id" :title="title" :metrics="metrics" :chart="chart" density="compact" />
       </Grid>
     </Container>
   </Block>

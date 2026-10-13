@@ -29,6 +29,7 @@ export type JobBoardProps = {
   layout?: "grid" | "grouped" | "table";
   salary?: "show" | "hide";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 
 export function JobBoard({
@@ -41,6 +42,7 @@ export function JobBoard({
   layout = "grid",
   salary = "hide",
   tone = "default",
+  landmarkLabel,
 }: JobBoardProps) {
   return (
     <SectionFrame
@@ -48,8 +50,8 @@ export function JobBoard({
       title={title}
       lead={lead}
       tone={tone}
-      density="default"
       measure={(((layout as string) === "grouped") ? "3xl" : "default")}
+      landmarkLabel={landmarkLabel}
     >
       {((layout as string) === "grouped") ? (
         <Stack gap="8" align="stretch" data-testid="groups">

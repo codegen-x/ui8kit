@@ -20,6 +20,7 @@
     labels: StoryLabels;
     layout?: "years" | "carousel";
     tone?: "default" | "muted";
+    landmarkLabel?: string;
     onselect?: (id: string) => void;
   };
 </script>
@@ -46,12 +47,13 @@
     labels,
     layout = "years",
     tone = "default",
+    landmarkLabel,
     onselect,
   }: StoryTabsProps = $props();
 </script>
 
 {#if ((layout as string) === "years")}
-  <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone}>
+  <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone} landmarkLabel={landmarkLabel}>
     <Box class="grid grid-cols-2 gap-2 sm:grid-cols-4" data-testid="story-tabs">
       {#each steps as s (s.id)}
         <Button
@@ -87,6 +89,7 @@
     tone={tone}
     layout="split"
     media={{ show: true }}
+    landmarkLabel={landmarkLabel}
   >
     {#snippet aside()}
       <Stack gap="4" align="stretch">

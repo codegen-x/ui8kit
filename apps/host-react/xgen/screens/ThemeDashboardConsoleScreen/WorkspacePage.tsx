@@ -2,7 +2,7 @@
 // Source: xgen/specs/screens/theme-dashboard-console.json
 // The workspace page of ThemeDashboardConsoleScreen.
 
-import { AppShell, PageIntro, type Event, type NavLink, type Point, type Stat } from "@ui8kit/react-ui";
+import { AppShell, PageIntro, tpl, type Event, type NavLink, type Point, type Stat } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { metrics as metricsEntries } from "@ui8kit/app-shared/data/metrics";
@@ -70,6 +70,7 @@ export function WorkspacePage() {
         }}
         layout="sidebar"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.shell, ui.blocks.variants.shell.sidebar)}
       />
       <AppShell
         id="workspace-shell-2"
@@ -96,6 +97,7 @@ export function WorkspacePage() {
         }}
         layout="top"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.shell, ui.blocks.variants.shell.top)}
       />
       <AppShell
         id="workspace-shell-3"
@@ -122,6 +124,7 @@ export function WorkspacePage() {
         }}
         layout="panes"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.shell, ui.blocks.variants.shell.panes)}
       />
     </>
   );

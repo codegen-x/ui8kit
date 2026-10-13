@@ -76,7 +76,12 @@ export function MarketingFooterPage() {
                 {ui.blocks.variants.footer.minimal}
               </Title>
               <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <SiteFooter labels={ui.site.footer} layout="minimal" density="default" />
+                <SiteFooter
+                  labels={ui.site.footer}
+                  layout="minimal"
+                  density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.footer, ui.blocks.variants.footer.minimal)}
+                />
               </Box>
             </Stack>
             <Stack
@@ -92,7 +97,12 @@ export function MarketingFooterPage() {
                 {ui.blocks.variants.footer.centered}
               </Title>
               <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <SiteFooter labels={ui.site.footer} layout="centered" density="default" />
+                <SiteFooter
+                  labels={ui.site.footer}
+                  layout="centered"
+                  density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.footer, ui.blocks.variants.footer.centered)}
+                />
               </Box>
             </Stack>
             <Stack
@@ -108,7 +118,12 @@ export function MarketingFooterPage() {
                 {ui.blocks.variants.footer.compact}
               </Title>
               <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <SiteFooter labels={ui.site.footer} layout="minimal" density="compact" />
+                <SiteFooter
+                  labels={ui.site.footer}
+                  layout="minimal"
+                  density="compact"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.footer, ui.blocks.variants.footer.compact)}
+                />
               </Box>
             </Stack>
           </Stack>
@@ -152,6 +167,7 @@ export function MarketingFooterPage() {
                   status={{ label: ui.vibe.sitemap.status, mode: "none" }}
                   layout="columns"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sitemap, ui.blocks.variants.sitemap.columns)}
                 />
               </Box>
             </Stack>
@@ -179,6 +195,7 @@ export function MarketingFooterPage() {
                   status={{ label: ui.vibe.sitemap.status, mode: "none" }}
                   layout="card"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sitemap, ui.blocks.variants.sitemap.card)}
                 />
               </Box>
             </Stack>
@@ -206,6 +223,7 @@ export function MarketingFooterPage() {
                   status={{ label: ui.vibe.sitemap.status, mode: "none" }}
                   layout="row"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sitemap, ui.blocks.variants.sitemap.row)}
                 />
               </Box>
             </Stack>
@@ -233,6 +251,7 @@ export function MarketingFooterPage() {
                   status={{ label: ui.vibe.sitemap.status, mode: "none" }}
                   layout="columns"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sitemap, ui.blocks.variants.sitemap.newsletter)}
                 />
               </Box>
             </Stack>
@@ -260,6 +279,7 @@ export function MarketingFooterPage() {
                   status={{ label: ui.vibe.sitemap.status, mode: "show" }}
                   layout="columns"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sitemap, ui.blocks.variants.sitemap.status)}
                 />
               </Box>
             </Stack>
@@ -287,6 +307,7 @@ export function MarketingFooterPage() {
                   status={{ label: ui.vibe.sitemap.status, mode: "none" }}
                   layout="columns"
                   density="compact"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.sitemap, ui.blocks.variants.sitemap.compact)}
                 />
               </Box>
             </Stack>

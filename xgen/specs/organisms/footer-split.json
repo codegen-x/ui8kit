@@ -151,6 +151,11 @@
         "ts": "\"default\" | \"muted\""
       },
       "default": "default"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
     }
   ],
   "slots": [],
@@ -187,6 +192,9 @@
         "data-testid": "footer-split",
         "data-layout": {
           "$": "layout"
+        },
+        "aria-label": {
+          "$": "landmarkLabel"
         }
       },
       "children": [
@@ -294,6 +302,9 @@
                         },
                         "groups": {
                           "$": "groups"
+                        },
+                        "landmarkLabel": {
+                          "$": "landmarkLabel"
                         }
                       }
                     },
@@ -584,6 +595,9 @@
                                 },
                                 "groups": {
                                   "$": "groups"
+                                },
+                                "landmarkLabel": {
+                                  "$": "landmarkLabel"
                                 }
                               }
                             }
@@ -618,8 +632,7 @@
                                 "secondary": {
                                   "$": "labels.secondary"
                                 },
-                                "secondaryHref": "#/work",
-                                "align": "start"
+                                "secondaryHref": "#/work"
                               }
                             }
                           ]

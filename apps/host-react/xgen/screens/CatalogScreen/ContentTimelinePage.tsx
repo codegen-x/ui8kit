@@ -87,6 +87,7 @@ export function ContentTimelinePage() {
                   layout="split"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.timeline, ui.blocks.variants.timeline.split)}
                 />
               </Box>
             </Stack>
@@ -111,6 +112,7 @@ export function ContentTimelinePage() {
                   layout="stacked"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.timeline, ui.blocks.variants.timeline.stacked)}
                 />
               </Box>
             </Stack>
@@ -135,6 +137,7 @@ export function ContentTimelinePage() {
                   layout="row"
                   tone="default"
                   density="default"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.timeline, ui.blocks.variants.timeline.row)}
                 />
               </Box>
             </Stack>
@@ -159,6 +162,7 @@ export function ContentTimelinePage() {
                   layout="row"
                   tone="muted"
                   density="compact"
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.timeline, ui.blocks.variants.timeline.rowMuted)}
                 />
               </Box>
             </Stack>

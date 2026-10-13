@@ -8,6 +8,7 @@ export type FooterCardProps = {
   label: string;
   brand: string;
   groups: MegaGroup[];
+  landmarkLabel?: string;
 };
 </script>
 
@@ -25,13 +26,13 @@ import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import NavBlock from "../components/nav-block.vue";
 import { defaults } from "../presets/defaults";
-import { cn } from "../utils";
+import { cn, tpl } from "../utils";
 
-const { label, brand, groups } = defineProps<FooterCardProps>();
+const { label, brand, groups, landmarkLabel } = defineProps<FooterCardProps>();
 </script>
 
 <template>
-  <Block tag="footer" class="py-8" data-testid="site-footer" data-layout="card">
+  <Block tag="footer" class="py-8" data-testid="site-footer" data-layout="card" :aria-label="landmarkLabel">
     <Container :class="cn(cn('mx-auto w-full px-4', defaults.section.landing), 'px-0')" data-slot="container">
       <Box
         :class="cn('flex w-full flex-row items-start overflow-hidden bg-muted p-10', defaults.footer.card)"
@@ -45,7 +46,7 @@ const { label, brand, groups } = defineProps<FooterCardProps>();
             {{ brand }}
           </Text>
         </Group>
-        <NavBlock :label="label" class="min-w-0 flex-1">
+        <NavBlock :label="(landmarkLabel ? tpl('{0}, {1}', label, landmarkLabel) : label)" class="min-w-0 flex-1">
           <Group
             gap="0"
             align="start"

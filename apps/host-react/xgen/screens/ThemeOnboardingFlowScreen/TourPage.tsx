@@ -2,7 +2,15 @@
 // Source: xgen/specs/screens/theme-onboarding-flow.json
 // The tour page of ThemeOnboardingFlowScreen.
 
-import { Checklist, PageIntro, TourCallout, VideoModal, type Chapter, type Task } from "@ui8kit/react-ui";
+import {
+  Checklist,
+  PageIntro,
+  TourCallout,
+  VideoModal,
+  tpl,
+  type Chapter,
+  type Task,
+} from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { checklist as checklistEntries } from "@ui8kit/app-shared/data/checklist";
@@ -38,6 +46,7 @@ export function TourPage() {
         placement="above"
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.above)}
       />
       <TourCallout
         id="tour-tour-2"
@@ -50,6 +59,7 @@ export function TourPage() {
         placement="end"
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.tour, ui.blocks.variants.tour.end)}
       />
       <Checklist
         id="tour-checklist"
@@ -61,6 +71,7 @@ export function TourPage() {
         marker="check"
         detail="always"
         tone="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.checklist, ui.blocks.variants.checklist.text)}
       />
       <VideoModal
         id="tour-videomodal"
@@ -73,6 +84,7 @@ export function TourPage() {
         size="default"
         outline="chapters"
         tone="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.videomodal, ui.blocks.variants.videomodal.chapters)}
       />
     </>
   );

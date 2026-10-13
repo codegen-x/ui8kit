@@ -24,6 +24,7 @@
     footer?: "full" | "inset" | "none";
     content?: "grid" | "split" | "list";
     frame?: "window" | "page";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -48,6 +49,7 @@
     footer = "none",
     content = "grid",
     frame = "window",
+    landmarkLabel,
   }: DashboardShellProps = $props();
   const titleId = $derived(tpl("{0}-title", id));
 </script>
@@ -56,11 +58,12 @@
   tag="section"
   class={(((frame as string) === "window") ? "bg-background py-12" : "bg-background")}
   id={id}
-  aria-labelledby={titleId}
+  aria-labelledby={(landmarkLabel ? undefined : titleId)}
   data-testid="dashboard-shell"
   data-topbar={topbar}
   data-sidebar={sidebar}
   data-footer={footer}
+  aria-label={landmarkLabel}
 >
   <Box class={(((frame as string) === "window") ? "mx-auto w-full max-w-6xl px-4" : "")}>
     <Box
@@ -73,14 +76,20 @@
       {#if ((topbar as string) === "full")}
         <ShellTopbar
           nav={nav}
-          brand="show"
           links={(((sidebar as string) === "none") ? "show" : "hide")}
           search={search}
+          landmarkLabel={landmarkLabel}
         />
       {/if}
       <Box class={cn("flex min-h-0 flex-1", (((side as string) === "end") ? "flex-row-reverse" : ""))}>
         {#if ((sidebar as string) !== "none")}
-          <ShellSidebar nav={nav} mode={sidebar} side={side} brand={(((topbar as string) === "full") ? "hide" : "show")} />
+          <ShellSidebar
+            nav={nav}
+            mode={sidebar}
+            side={side}
+            brand={(((topbar as string) === "full") ? "hide" : "show")}
+            landmarkLabel={landmarkLabel}
+          />
         {/if}
         <Box class="flex min-w-0 flex-1 flex-col">
           {#if ((topbar as string) === "inset")}
@@ -89,16 +98,17 @@
               brand={(((sidebar as string) === "none") ? "show" : "hide")}
               links={(((sidebar as string) === "none") ? "show" : "hide")}
               search={search}
+              landmarkLabel={landmarkLabel}
             />
           {/if}
           <ShellContent title={title} titleId={titleId} level={level} content={content} />
           {#if ((footer as string) === "inset")}
-            <ShellFooter nav={nav} place="inset" />
+            <ShellFooter nav={nav} place="inset" landmarkLabel={landmarkLabel} />
           {/if}
         </Box>
       </Box>
       {#if ((footer as string) === "full")}
-        <ShellFooter nav={nav} place="full" />
+        <ShellFooter nav={nav} landmarkLabel={landmarkLabel} />
       {/if}
     </Box>
   </Box>

@@ -8,6 +8,7 @@ import {
   HeroClassic,
   LogoCloud,
   TestimonialGrid,
+  tpl,
   type CodeLine,
   type Feature,
   type Logo,
@@ -75,6 +76,7 @@ const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS);
     item="name"
     tone="default"
     density="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.grid4)"
   />
   <FeatureGrid
     id="studio-features"
@@ -87,6 +89,7 @@ const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS);
     mediaSide="end"
     tone="default"
     density="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.tiles4)"
   />
   <TestimonialGrid
     id="studio-testimonials"
@@ -102,6 +105,7 @@ const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS);
     :item="{ kind: 'card', avatar: 'image', rating: 'hide', mark: 'none' }"
     tone="default"
     density="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.masonry)"
   />
   <CtaBand
     id="studio-cta"
@@ -120,5 +124,6 @@ const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS);
     tone="muted"
     proof="none"
     density="roomy"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.band)"
   />
 </template>

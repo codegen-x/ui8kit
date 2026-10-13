@@ -14,6 +14,7 @@ export type UspStripProps = {
   layout?: "strip" | "cards" | "bar";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -36,11 +37,12 @@ const {
   layout = "strip",
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<UspStripProps>();
 </script>
 
 <template>
-  <SectionFrame :id="id" :title="title" :tone="tone" :density="density">
+  <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
     <List
       v-if="((layout as string) === 'bar')"
       tag="ul"

@@ -17,7 +17,7 @@ import { Text } from "../primitives/text/text";
 import { MediaFrame } from "../components/media-frame";
 import { NavBlock } from "../components/nav-block";
 import { SearchPalette } from "../components/search-palette";
-import { cn } from "../utils";
+import { cn, tpl } from "../utils";
 import type { ShellNav } from "../blocks/dashboard-shell.types";
 
 export type ShellTopbarProps = {
@@ -25,14 +25,22 @@ export type ShellTopbarProps = {
   brand?: "show" | "hide";
   links?: "show" | "hide";
   search?: "show" | "hide";
+  landmarkLabel?: string;
 };
 
-export function ShellTopbar({ nav, brand = "show", links = "hide", search = "show" }: ShellTopbarProps) {
+export function ShellTopbar({
+  nav,
+  brand = "show",
+  links = "hide",
+  search = "show",
+  landmarkLabel,
+}: ShellTopbarProps) {
   return (
     <Block
       tag="header"
       className="flex h-16 shrink-0 items-center gap-6 border-b border-border bg-background px-6"
       data-testid="topbar"
+      aria-label={landmarkLabel}
     >
       {((brand as string) === "show") ? (
         <Group gap="2" align="center" className="shrink-0" data-testid="brand">
@@ -43,7 +51,10 @@ export function ShellTopbar({ nav, brand = "show", links = "hide", search = "sho
         </Group>
       ) : null}
       {((links as string) === "show") ? (
-        <NavBlock label={nav.label} className="hidden lg:block">
+        <NavBlock
+          label={(landmarkLabel ? tpl("{0}, {1}", nav.label, landmarkLabel) : nav.label)}
+          className="hidden lg:block"
+        >
           <List className="m-0 flex list-none items-center gap-2 p-0">
             {(nav.links ?? []).map((l) => (
               <ListItem key={l.id}>

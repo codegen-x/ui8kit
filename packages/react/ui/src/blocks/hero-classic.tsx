@@ -36,6 +36,7 @@ export type HeroClassicProps = {
   scale?: "default" | "display";
   tone?: "default" | "muted" | "inverse";
   density?: "roomy" | "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function HeroClassic({
@@ -51,6 +52,7 @@ export function HeroClassic({
   scale = "default",
   tone = "default",
   density = "roomy",
+  landmarkLabel,
 }: HeroClassicProps) {
   const mediaKind = media?.kind ?? "none";
   const mediaSide = media?.side ?? "end";
@@ -72,6 +74,7 @@ export function HeroClassic({
         (((mediaKind as string) === "backdrop") ? "image" : "none") === "image" ? "relative isolate overflow-hidden"
         : ""
       }
+      landmarkLabel={landmarkLabel}
       aside={(
         <>
           {(((mediaKind as string) === "code") && media?.lines && media?.codeTitle && media?.prompt) ? (

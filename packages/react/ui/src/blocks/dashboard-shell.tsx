@@ -30,6 +30,7 @@ export type DashboardShellProps = {
   footer?: "full" | "inset" | "none";
   content?: "grid" | "split" | "list";
   frame?: "window" | "page";
+  landmarkLabel?: string;
 };
 
 export function DashboardShell({
@@ -44,6 +45,7 @@ export function DashboardShell({
   footer = "none",
   content = "grid",
   frame = "window",
+  landmarkLabel,
 }: DashboardShellProps) {
   const titleId = tpl("{0}-title", id);
   return (
@@ -51,11 +53,12 @@ export function DashboardShell({
       tag="section"
       className={(((frame as string) === "window") ? "bg-background py-12" : "bg-background")}
       id={id}
-      aria-labelledby={titleId}
+      aria-labelledby={(landmarkLabel ? undefined : titleId)}
       data-testid="dashboard-shell"
       data-topbar={topbar}
       data-sidebar={sidebar}
       data-footer={footer}
+      aria-label={landmarkLabel}
     >
       <Box className={(((frame as string) === "window") ? "mx-auto w-full max-w-6xl px-4" : "")}>
         <Box
@@ -68,14 +71,20 @@ export function DashboardShell({
           {((topbar as string) === "full") ? (
             <ShellTopbar
               nav={nav}
-              brand="show"
               links={(((sidebar as string) === "none") ? "show" : "hide")}
               search={search}
+              landmarkLabel={landmarkLabel}
             />
           ) : null}
           <Box className={cn("flex min-h-0 flex-1", (((side as string) === "end") ? "flex-row-reverse" : ""))}>
             {((sidebar as string) !== "none") ? (
-              <ShellSidebar nav={nav} mode={sidebar} side={side} brand={(((topbar as string) === "full") ? "hide" : "show")} />
+              <ShellSidebar
+                nav={nav}
+                mode={sidebar}
+                side={side}
+                brand={(((topbar as string) === "full") ? "hide" : "show")}
+                landmarkLabel={landmarkLabel}
+              />
             ) : null}
             <Box className="flex min-w-0 flex-1 flex-col">
               {((topbar as string) === "inset") ? (
@@ -84,16 +93,17 @@ export function DashboardShell({
                   brand={(((sidebar as string) === "none") ? "show" : "hide")}
                   links={(((sidebar as string) === "none") ? "show" : "hide")}
                   search={search}
+                  landmarkLabel={landmarkLabel}
                 />
               ) : null}
               <ShellContent title={title} titleId={titleId} level={level} content={content} />
               {((footer as string) === "inset") ? (
-                <ShellFooter nav={nav} place="inset" />
+                <ShellFooter nav={nav} place="inset" landmarkLabel={landmarkLabel} />
               ) : null}
             </Box>
           </Box>
           {((footer as string) === "full") ? (
-            <ShellFooter nav={nav} place="full" />
+            <ShellFooter nav={nav} landmarkLabel={landmarkLabel} />
           ) : null}
         </Box>
       </Box>

@@ -20,6 +20,7 @@
     tone?: "default" | "muted";
     proof?: "none" | "quote";
     density?: "roomy" | "default" | "compact";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -48,20 +49,30 @@
     tone = "muted",
     proof = "none",
     density = "default",
+    landmarkLabel,
   }: CtaBandProps = $props();
   const center = $derived(((layout as string) === "band") || ((layout as string) === "banner"));
 </script>
 
 {#if ((layout as string) === "banner")}
-  <CtaBanner id={id} title={title} text={text} cta={actions.cta} href={actions.href} tone={tone} />
+  <CtaBanner
+    id={id}
+    title={title}
+    text={text}
+    cta={actions.cta}
+    href={actions.href}
+    tone={tone}
+    landmarkLabel={landmarkLabel}
+  />
 {:else if ((layout as string) === "row")}
   <Block
     tag="section"
     class="py-8"
-    aria-labelledby={tpl("{0}-title", id)}
+    aria-labelledby={(landmarkLabel ? undefined : tpl("{0}-title", id))}
     data-testid="section"
     data-tone={tone}
     data-density={density}
+    aria-label={landmarkLabel}
   >
     <Container class="mx-auto w-full max-w-6xl px-4" data-slot="container">
       <Card variant="muted">
@@ -93,6 +104,7 @@
     media={{ show: ((layout as string) === "split") }}
     tone={tone}
     density={density}
+    landmarkLabel={landmarkLabel}
   >
     {#if ((proof as string) === "quote")}
       <QuoteProof quote={quote?.text} quoteBy={quote?.by} center={center} />

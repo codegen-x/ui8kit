@@ -15,6 +15,7 @@ export type MetricRowProps = {
   item?: "tile" | "compact";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -36,11 +37,12 @@ const {
   item = "tile",
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<MetricRowProps>();
 </script>
 
 <template>
-  <SectionFrame :id="id" :title="title" :tone="tone" :density="density">
+  <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
     <Grid :cols="(((cols as string) === '2') ? '1-2' : '1-4')" class="gap-4" data-testid="items">
       <template v-for="m in metrics" :key="m.id">
         <Box v-if="((item as string) === 'tile')" data-testid="item">

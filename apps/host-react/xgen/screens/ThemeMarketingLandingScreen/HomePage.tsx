@@ -11,6 +11,7 @@ import {
   StatsBand,
   StepsList,
   TestimonialGrid,
+  tpl,
   type CodeLine,
   type Faq,
   type FaqTab,
@@ -95,6 +96,7 @@ export function HomePage() {
         item="icon"
         tone="default"
         density="compact"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.logos, ui.blocks.variants.logos.row)}
       />
       <FeatureGrid
         id="home-features"
@@ -107,6 +109,7 @@ export function HomePage() {
         mediaSide="alternate"
         tone="muted"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.rowsAlternate)}
       />
       <StepsList
         id="home-steps"
@@ -117,6 +120,7 @@ export function HomePage() {
         align="start"
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.steps, ui.blocks.variants.steps.rowIcons)}
       />
       <StatsBand
         id="home-stats"
@@ -129,6 +133,7 @@ export function HomePage() {
         align="start"
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.stats, ui.blocks.variants.stats.icons)}
       />
       <TestimonialGrid
         id="home-testimonials"
@@ -144,6 +149,7 @@ export function HomePage() {
         item={{ kind: "plain", avatar: "image", rating: "hide", mark: "none" }}
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.testimonials, ui.blocks.variants.testimonials.single)}
       />
       <FaqList
         id="home-faq"
@@ -155,6 +161,7 @@ export function HomePage() {
         cols="1"
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faq, ui.blocks.variants.faq.list)}
       />
       <CtaBand
         id="home-cta"
@@ -173,6 +180,7 @@ export function HomePage() {
         tone="muted"
         proof="none"
         density="roomy"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.band)}
       />
     </>
   );

@@ -14,11 +14,12 @@ import type { MegaGroup } from "../blocks/mega-menu.types";
 export type FooterColumnsProps = {
   label: string;
   groups: MegaGroup[];
+  landmarkLabel?: string;
 };
 
-export function FooterColumns({ label, groups }: FooterColumnsProps) {
+export function FooterColumns({ label, groups, landmarkLabel }: FooterColumnsProps) {
   return (
-    <Block tag="nav" aria-label={label}>
+    <Block tag="nav" aria-label={(landmarkLabel ?? label)}>
       <Grid cols="1" className="grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5" data-testid="footer-groups">
         {(groups ?? []).map((g) => (
           <Stack key={g.id} gap="2" data-testid="group">

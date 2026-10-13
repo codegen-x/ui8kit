@@ -23,6 +23,7 @@ export type HeroClassicProps = {
   scale?: "default" | "display";
   tone?: "default" | "muted" | "inverse";
   density?: "roomy" | "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -55,6 +56,7 @@ const {
   scale = "default",
   tone = "default",
   density = "roomy",
+  landmarkLabel,
 } = defineProps<HeroClassicProps>();
 const mediaKind = computed(() => media?.kind ?? "none");
 const mediaSide = computed(() => media?.side ?? "end");
@@ -78,6 +80,7 @@ const mediaSide = computed(() => media?.side ?? "end");
       (((mediaKind as string) === 'backdrop') ? 'image' : 'none') === 'image' ? 'relative isolate overflow-hidden'
       : ''
     "
+    :landmarkLabel="landmarkLabel"
   >
     <Backdrop :kind="(((mediaKind as string) === 'backdrop') ? 'image' : 'none')" :alt="title" />
     <template v-if="actions?.cta">

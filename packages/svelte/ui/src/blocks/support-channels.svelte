@@ -17,6 +17,7 @@
     cols?: "1-2" | "1-3";
     action?: "link" | "none";
     tone?: "default" | "muted";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -41,10 +42,11 @@
     cols = "1-3",
     action = "link",
     tone = "default",
+    landmarkLabel,
   }: SupportChannelsProps = $props();
 </script>
 
-<SectionFrame id={id} title={title} tone={tone}>
+<SectionFrame id={id} title={title} tone={tone} landmarkLabel={landmarkLabel}>
   <Grid cols={(((layout as string) === "list") ? "1" : cols)} class="gap-4" data-testid="items">
     {#each channels as c (c.id)}
       <Card

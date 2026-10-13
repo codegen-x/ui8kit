@@ -17,6 +17,7 @@ export type AboutCompanyProps = {
   layout?: "split" | "stacked";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -40,6 +41,7 @@ const {
   layout = "split",
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<AboutCompanyProps>();
 </script>
 
@@ -52,6 +54,7 @@ const {
     :density="density"
     :layout="(((layout as string) === 'split') ? 'split' : 'stack')"
     :media="{ show: true, side: 'start' }"
+    :landmarkLabel="landmarkLabel"
   >
     <Grid cols="2-4" class="gap-4" data-testid="stats">
       <Stack v-for="s in stats" :key="s.id" gap="0" data-testid="stat">

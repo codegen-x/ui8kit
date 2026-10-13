@@ -12,6 +12,7 @@
     labels: SiteFooterLabels;
     layout?: "minimal" | "centered";
     density?: "default" | "compact";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -22,12 +23,18 @@
   import Link from "../primitives/link/link.svelte";
   import Text from "../primitives/text/text.svelte";
   import NavBlock from "../components/nav-block.svelte";
-  import { cn } from "../utils";
+  import { cn, tpl } from "../utils";
 
-  let { labels, layout = "minimal", density = "default" }: SiteFooterProps = $props();
+  let { labels, layout = "minimal", density = "default", landmarkLabel }: SiteFooterProps = $props();
 </script>
 
-<Block tag="footer" class="mt-12 border-t border-border" data-testid="site-footer" data-layout={layout}>
+<Block
+  tag="footer"
+  class="mt-12 border-t border-border"
+  data-testid="site-footer"
+  data-layout={layout}
+  aria-label={landmarkLabel}
+>
   <Container
     class={cn(
       "mx-auto w-full max-w-6xl px-4",
@@ -40,7 +47,7 @@
     <Text size="sm" class="text-muted-foreground" data-testid="copyright">
       {labels.copyright}
     </Text>
-    <NavBlock label={labels.nav}>
+    <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", labels.nav, landmarkLabel) : labels.nav)}>
       <Group gap="4">
         <Link href="#/" variant="default">
           {labels.home}

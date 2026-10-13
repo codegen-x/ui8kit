@@ -17,6 +17,7 @@ export type CreditPacksProps = {
   item?: "tile" | "row";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -43,6 +44,7 @@ const {
   item = "tile",
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<CreditPacksProps>();
 </script>
 
@@ -53,6 +55,7 @@ const {
     :tone="tone"
     :density="density"
     :measure="(((item as string) === 'row') ? '2xl' : 'default')"
+    :landmarkLabel="landmarkLabel"
   >
     <Grid
       :cols="

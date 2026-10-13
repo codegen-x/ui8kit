@@ -17,17 +17,19 @@ export type CtaBannerProps = {
   cta: string;
   href: string;
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 
-export function CtaBanner({ id, title, text, cta, href, tone = "muted" }: CtaBannerProps) {
+export function CtaBanner({ id, title, text, cta, href, tone = "muted", landmarkLabel }: CtaBannerProps) {
   return (
     <Block
       tag="section"
       className="w-full py-0"
-      aria-labelledby={tpl("{0}-title", id)}
+      aria-labelledby={(landmarkLabel ? undefined : tpl("{0}-title", id))}
       data-testid="section"
       data-tone={tone}
       data-density="compact"
+      aria-label={landmarkLabel}
     >
       <Box
         className={cn(

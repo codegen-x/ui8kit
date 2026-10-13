@@ -12,6 +12,7 @@
     Stack,
     Text,
     Title,
+    tpl,
     type FaqTab,
     type Feature,
     type Question,
@@ -92,6 +93,7 @@
             cards="grid3"
             mediaSide="end"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faqsplit, ui.blocks.variants.faqsplit.headSplit)}
           />
         </Box>
       </Stack>
@@ -121,6 +123,7 @@
             cards="grid3"
             mediaSide="end"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faqsplit, ui.blocks.variants.faqsplit.helpCard)}
           />
         </Box>
       </Stack>
@@ -150,6 +153,7 @@
             cards="grid3"
             mediaSide="end"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faqsplit, ui.blocks.variants.faqsplit.picture)}
           />
         </Box>
       </Stack>
@@ -179,6 +183,7 @@
             cards="grid3"
             mediaSide="start"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faqsplit, ui.blocks.variants.faqsplit.finder)}
           />
         </Box>
       </Stack>
@@ -208,6 +213,7 @@
             cards="grid3"
             mediaSide="end"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faqsplit, ui.blocks.variants.faqsplit.cards3)}
           />
         </Box>
       </Stack>
@@ -237,6 +243,7 @@
             cards="grid4"
             mediaSide="end"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faqsplit, ui.blocks.variants.faqsplit.cards4)}
           />
         </Box>
       </Stack>
@@ -266,6 +273,7 @@
             cards="icons"
             mediaSide="end"
             tone="muted"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.faqsplit, ui.blocks.variants.faqsplit.cardsIcons)}
           />
         </Box>
       </Stack>

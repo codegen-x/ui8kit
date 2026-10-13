@@ -12,6 +12,7 @@
     Stack,
     Text,
     Title,
+    tpl,
     type MegaGroup,
     type NavLink,
   } from "@ui8kit/svelte-ui";
@@ -70,6 +71,7 @@
             panel="open"
             cols="3"
             promo="none"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.open)}
           />
         </Box>
       </Stack>
@@ -97,6 +99,7 @@
             panel="closed"
             cols="3"
             promo="none"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.closed)}
           />
         </Box>
       </Stack>
@@ -124,6 +127,7 @@
             panel="open"
             cols="2"
             promo="none"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.twoCols)}
           />
         </Box>
       </Stack>
@@ -151,6 +155,7 @@
             panel="open"
             cols="3"
             promo="card"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.megamenu, ui.blocks.variants.megamenu.promo)}
           />
         </Box>
       </Stack>

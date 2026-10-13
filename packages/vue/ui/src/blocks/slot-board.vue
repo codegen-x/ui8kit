@@ -20,6 +20,7 @@ export type SlotBoardProps = {
   layout?: "split" | "stacked";
   item?: "card" | "plain";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -48,11 +49,12 @@ const {
   layout = "split",
   item = "card",
   tone = "default",
+  landmarkLabel,
 } = defineProps<SlotBoardProps>();
 </script>
 
 <template>
-  <SectionFrame :id="id" :title="title" :lead="lead" :tone="tone" density="default">
+  <SectionFrame :id="id" :title="title" :lead="lead" :tone="tone" :landmarkLabel="landmarkLabel">
     <Box class="grid grid-cols-1 items-start gap-8 lg:grid-cols-3">
       <Box :class="(((layout as string) === 'split') ? 'lg:col-span-2' : 'lg:col-span-3')">
         <SlotGrid :days="days" :name="tpl('{0}-slot', id)" :item="item" />

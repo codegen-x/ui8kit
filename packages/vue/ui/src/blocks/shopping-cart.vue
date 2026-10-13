@@ -24,6 +24,7 @@ export type ShoppingCartProps = {
   promo?: "show" | "hide";
   progress?: "show" | "hide";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -53,11 +54,12 @@ const {
   promo = "show",
   progress = "show",
   tone = "default",
+  landmarkLabel,
 } = defineProps<ShoppingCartProps>();
 </script>
 
 <template>
-  <SectionFrame :id="id" :title="title" :tone="tone" density="default">
+  <SectionFrame :id="id" :title="title" :tone="tone" :landmarkLabel="landmarkLabel">
     <Box
       :class="
         (layout as string) === 'split' ? 'grid grid-cols-1 items-start gap-8 lg:grid-cols-3'

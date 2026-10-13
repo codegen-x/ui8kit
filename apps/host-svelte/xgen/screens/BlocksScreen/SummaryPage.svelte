@@ -12,6 +12,7 @@
     Stack,
     Text,
     Title,
+    tpl,
     type SummaryRow,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -71,6 +72,7 @@
             note="show"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.card)}
           />
         </Box>
       </Stack>
@@ -97,6 +99,7 @@
             note="hide"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.plain)}
           />
         </Box>
       </Stack>
@@ -123,6 +126,7 @@
             note="show"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.noCta)}
           />
         </Box>
       </Stack>
@@ -149,6 +153,7 @@
             note="show"
             tone="muted"
             density="compact"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.summary, ui.blocks.variants.summary.muted)}
           />
         </Box>
       </Stack>

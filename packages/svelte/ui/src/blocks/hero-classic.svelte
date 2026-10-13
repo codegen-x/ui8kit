@@ -24,6 +24,7 @@
     scale?: "default" | "display";
     tone?: "default" | "muted" | "inverse";
     density?: "roomy" | "default" | "compact";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -55,6 +56,7 @@
     scale = "default",
     tone = "default",
     density = "roomy",
+    landmarkLabel,
   }: HeroClassicProps = $props();
   const mediaKind = $derived(media?.kind ?? "none");
   const mediaSide = $derived(media?.side ?? "end");
@@ -77,6 +79,7 @@
     (((mediaKind as string) === "backdrop") ? "image" : "none") === "image" ? "relative isolate overflow-hidden"
     : ""
   }
+  landmarkLabel={landmarkLabel}
 >
   <Backdrop kind={(((mediaKind as string) === "backdrop") ? "image" : "none")} alt={title} />
   {#if actions?.cta}

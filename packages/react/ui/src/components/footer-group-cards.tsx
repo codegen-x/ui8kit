@@ -20,11 +20,12 @@ import type { MegaGroup } from "../blocks/mega-menu.types";
 export type FooterGroupCardsProps = {
   label: string;
   groups: MegaGroup[];
+  landmarkLabel?: string;
 };
 
-export function FooterGroupCards({ label, groups }: FooterGroupCardsProps) {
+export function FooterGroupCards({ label, groups, landmarkLabel }: FooterGroupCardsProps) {
   return (
-    <Block tag="nav" aria-label={label}>
+    <Block tag="nav" aria-label={(landmarkLabel ?? label)}>
       <Box className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {(groups ?? []).map((g) => (
           <Stack key={g.id} gap="4" align="stretch" className="rounded bg-card inset-ring inset-ring-border p-6" data-testid="group">

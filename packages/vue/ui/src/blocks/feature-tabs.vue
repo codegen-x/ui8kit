@@ -17,6 +17,7 @@ export type FeatureTabsProps = {
   panel?: "split" | "stack";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -40,12 +41,13 @@ const {
   panel = "split",
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<FeatureTabsProps>();
 const emit = defineEmits<{ select: [id: string] }>();
 </script>
 
 <template>
-  <SectionFrame :id="id" :title="title" :tone="tone" :density="density">
+  <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
     <Stack gap="6" align="stretch">
       <Switcher :label="tabsLabel" class="w-fit max-w-full flex-wrap">
         <SwitcherItem v-for="(f, i) in features" :key="f.id"

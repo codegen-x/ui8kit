@@ -62,7 +62,7 @@
     </Text>
   {:else}
     {#if (item?.rating !== "hide")}
-      <Rating value={q.rating} label={tpl(labels.rating, q.rating)} size={16} />
+      <Rating value={q.rating} label={tpl(labels.rating, q.rating)} />
     {/if}
     {#if (item?.mark === "icon")}
       <Inline class="text-muted-foreground" data-testid="mark">

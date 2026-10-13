@@ -18,6 +18,7 @@
     layout?: "split" | "stacked";
     tone?: "default" | "muted";
     density?: "default" | "compact";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -41,6 +42,7 @@
     layout = "split",
     tone = "default",
     density = "default",
+    landmarkLabel,
   }: AboutCompanyProps = $props();
 </script>
 
@@ -52,6 +54,7 @@
   density={density}
   layout={(((layout as string) === "split") ? "split" : "stack")}
   media={{ show: true, side: "start" }}
+  landmarkLabel={landmarkLabel}
 >
   <Grid cols="2-4" class="gap-4" data-testid="stats">
     {#each stats as s (s.id)}

@@ -16,6 +16,7 @@
     lines: Line[];
     shape?: "cards" | "list" | "article";
     tone?: "default" | "muted";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -27,10 +28,18 @@
   import Stack from "../primitives/stack/stack.svelte";
   import SectionFrame from "../components/section-frame.svelte";
 
-  let { id, title, label, lines, shape = "cards", tone = "default" }: SkeletonLayoutProps = $props();
+  let {
+    id,
+    title,
+    label,
+    lines,
+    shape = "cards",
+    tone = "default",
+    landmarkLabel,
+  }: SkeletonLayoutProps = $props();
 </script>
 
-<SectionFrame id={id} title={title} tone={tone} density="default">
+<SectionFrame id={id} title={title} tone={tone} landmarkLabel={landmarkLabel}>
   <Block tag="div" class="w-full" role="status" aria-label={label} data-testid="skeleton" data-shape={shape}>
     {#if ((shape as string) === "cards")}
       <Grid cols="1-3" class="gap-4">

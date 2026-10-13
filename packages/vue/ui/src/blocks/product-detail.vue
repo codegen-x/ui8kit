@@ -21,6 +21,7 @@ export type ProductDetailProps = {
   buy?: "full" | "compact";
   tone?: "default" | "muted";
   density?: "default" | "roomy";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -53,6 +54,7 @@ const {
   buy = "full",
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<ProductDetailProps>();
 const emit = defineEmits<{ add: [id: string] }>();
 </script>
@@ -67,6 +69,7 @@ const emit = defineEmits<{ add: [id: string] }>();
     :media="{ show: true, side: mediaSide, align: 'start' }"
     :tone="tone"
     :density="density"
+    :landmarkLabel="landmarkLabel"
   >
     <Stack gap="4" align="stretch" data-testid="buy-box">
       <Group gap="4" align="center" class="flex-wrap">
@@ -78,7 +81,7 @@ const emit = defineEmits<{ add: [id: string] }>();
         </Badge>
       </Group>
       <Group gap="2">
-        <Rating :value="product.rating" :label="tpl(labels.ratingLabel, product.rating)" :size="16" />
+        <Rating :value="product.rating" :label="tpl(labels.ratingLabel, product.rating)" />
         <Text size="sm" class="text-muted-foreground">
           {{ tpl(labels.reviews, product.reviews) }}
         </Text>
@@ -100,13 +103,7 @@ const emit = defineEmits<{ add: [id: string] }>();
           :decrease="labels.decrease"
           :increase="labels.increase"
         />
-        <Button
-          variant="default"
-          size="default"
-          :disabled="!product.inStock"
-          data-testid="add"
-          @click="() => emit('add', product.id)"
-        >
+        <Button :disabled="!product.inStock" data-testid="add" @click="() => emit('add', product.id)">
           {{ labels.add }}
         </Button>
       </Group>

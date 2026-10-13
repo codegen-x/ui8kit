@@ -19,6 +19,7 @@
     drawer: DrawerLabels;
     state?: "filled" | "empty";
     media?: "image" | "none";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -35,10 +36,19 @@
   import DrawerLines from "../components/drawer-lines.svelte";
   import { tpl } from "../utils";
 
-  let { id, lines, rows, labels, drawer, state = "filled", media = "image" }: CartDrawerProps = $props();
+  let {
+    id,
+    lines,
+    rows,
+    labels,
+    drawer,
+    state = "filled",
+    media = "image",
+    landmarkLabel,
+  }: CartDrawerProps = $props();
 </script>
 
-<Block tag="section" class="py-8" aria-label={drawer.title} data-testid="section">
+<Block tag="section" class="py-8" aria-label={(landmarkLabel ?? drawer.title)} data-testid="section">
   <Container class="mx-auto w-full max-w-6xl px-4" data-slot="container">
     <Box class="flex min-h-160 overflow-hidden rounded bg-muted inset-ring inset-ring-border">
       <Box class="hidden flex-1 flex-col gap-4 p-8 sm:flex" aria-hidden="true">

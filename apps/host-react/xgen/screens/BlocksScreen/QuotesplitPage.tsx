@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Logo,
   type Quote,
   type Stat,
@@ -101,6 +102,7 @@ export function QuotesplitPage() {
                 layout="media"
                 mediaSide="end"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.quotesplit, ui.blocks.variants.quotesplit.quoteCard)}
               />
             </Box>
           </Stack>
@@ -129,6 +131,7 @@ export function QuotesplitPage() {
                 layout="logos"
                 mediaSide="start"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.quotesplit, ui.blocks.variants.quotesplit.logoTiles)}
               />
             </Box>
           </Stack>
@@ -157,6 +160,7 @@ export function QuotesplitPage() {
                 layout="rating"
                 mediaSide="end"
                 tone="muted"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.quotesplit, ui.blocks.variants.quotesplit.ratingPanel)}
               />
             </Box>
           </Stack>
@@ -185,6 +189,7 @@ export function QuotesplitPage() {
                 layout="stack"
                 mediaSide="start"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.quotesplit, ui.blocks.variants.quotesplit.stackedCards)}
               />
             </Box>
           </Stack>
@@ -213,6 +218,7 @@ export function QuotesplitPage() {
                 layout="compact"
                 mediaSide="end"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.quotesplit, ui.blocks.variants.quotesplit.compact4)}
               />
             </Box>
           </Stack>
@@ -241,6 +247,7 @@ export function QuotesplitPage() {
                 layout="bento"
                 mediaSide="end"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.quotesplit, ui.blocks.variants.quotesplit.bentoFigures)}
               />
             </Box>
           </Stack>

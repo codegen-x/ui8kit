@@ -17,6 +17,7 @@
     media?: "image" | "none";
     tone?: "default" | "muted";
     density?: "default" | "compact";
+    landmarkLabel?: string;
     onremove?: (id: string) => void;
   };
 </script>
@@ -43,11 +44,12 @@
     media = "image",
     tone = "default",
     density = "default",
+    landmarkLabel,
     onremove,
   }: CartListProps = $props();
 </script>
 
-<SectionFrame id={id} title={title} tone={tone} density={density}>
+<SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
   {#if ((layout as string) === "table")}
     <CartTable
       field={tpl("{0}-qty", id)}

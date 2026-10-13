@@ -7,6 +7,7 @@ import {
   PageIntro,
   PostGrid,
   PostShowcase,
+  tpl,
   type Post,
   type PostTopic,
 } from "@ui8kit/react-ui";
@@ -56,6 +57,7 @@ export function HomePage() {
         meta="full"
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.magazine)}
       />
       <PostShowcase
         id="home-postshowcase"
@@ -69,6 +71,7 @@ export function HomePage() {
         cols="3"
         mediaSide="start"
         tone="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.postshowcase, ui.blocks.variants.postshowcase.introCards)}
       />
       <NewsletterForm
         id="home-newsletter"
@@ -81,6 +84,7 @@ export function HomePage() {
         terms="hide"
         tone="default"
         align="center"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.stacked)}
       />
     </>
   );

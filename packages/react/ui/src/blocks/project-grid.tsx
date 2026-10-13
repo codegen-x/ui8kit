@@ -24,6 +24,7 @@ export type ProjectGridProps = {
   layout?: "cards" | "compact" | "overlay" | "bento" | "list";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function ProjectGrid({
@@ -35,6 +36,7 @@ export function ProjectGrid({
   layout = "cards",
   tone = "default",
   density = "default",
+  landmarkLabel,
 }: ProjectGridProps) {
   return (
     <SectionFrame
@@ -45,6 +47,7 @@ export function ProjectGrid({
       density={density}
       layout={(((layout as string) === "list") ? "split" : "stack")}
       media={{ show: ((layout as string) === "list"), align: "start" }}
+      landmarkLabel={landmarkLabel}
       aside={(
         <Box className="grid grid-cols-2 gap-4" data-testid="collage">
           <MediaFrame alt={title} ratio="3/4" />

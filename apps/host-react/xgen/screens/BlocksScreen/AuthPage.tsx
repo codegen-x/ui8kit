@@ -2,7 +2,7 @@
 // Source: xgen/specs/screens/blocks.json
 // The auth page of BlocksScreen.
 
-import { AuthCard, Block, Box, Container, Group, Link, Stack, Text, Title } from "@ui8kit/react-ui";
+import { AuthCard, Block, Box, Container, Group, Link, Stack, Text, Title, tpl } from "@ui8kit/react-ui";
 import { ui } from "@ui8kit/app-shared/content";
 
 export function AuthPage() {
@@ -53,6 +53,7 @@ export function AuthPage() {
                   layout="card"
                   social="none"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.signin)}
                 />
               </Box>
             </Box>
@@ -84,6 +85,7 @@ export function AuthPage() {
                   layout="card"
                   social="none"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.magic)}
                 />
               </Box>
             </Box>
@@ -115,6 +117,7 @@ export function AuthPage() {
                   layout="card"
                   social="first"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.socialFirst)}
                 />
               </Box>
             </Box>
@@ -146,6 +149,7 @@ export function AuthPage() {
                   layout="card"
                   social="none"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.signup)}
                 />
               </Box>
             </Box>
@@ -177,6 +181,7 @@ export function AuthPage() {
                   layout="card"
                   social="none"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.reset)}
                 />
               </Box>
             </Box>
@@ -208,6 +213,7 @@ export function AuthPage() {
                   layout="plain"
                   social="none"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.plain)}
                 />
               </Box>
             </Box>
@@ -239,6 +245,7 @@ export function AuthPage() {
                   layout="card"
                   social="show"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.social)}
                 />
               </Box>
             </Box>
@@ -270,6 +277,7 @@ export function AuthPage() {
                   layout="plain"
                   social="show"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.auth, ui.blocks.variants.auth.signupSocial)}
                 />
               </Box>
             </Box>

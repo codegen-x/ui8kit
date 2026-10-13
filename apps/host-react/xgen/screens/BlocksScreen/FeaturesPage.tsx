@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Feature,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -72,6 +73,7 @@ export function FeaturesPage() {
                 mediaSide="end"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.grid)}
               />
             </Box>
           </Stack>
@@ -99,6 +101,7 @@ export function FeaturesPage() {
                 mediaSide="end"
                 tone="default"
                 density="roomy"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.grid2)}
               />
             </Box>
           </Stack>
@@ -126,6 +129,7 @@ export function FeaturesPage() {
                 mediaSide="end"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.tiles4)}
               />
             </Box>
           </Stack>
@@ -153,6 +157,7 @@ export function FeaturesPage() {
                 mediaSide="end"
                 tone="default"
                 density="compact"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.cells4)}
               />
             </Box>
           </Stack>
@@ -180,6 +185,7 @@ export function FeaturesPage() {
                 mediaSide="end"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.rows)}
               />
             </Box>
           </Stack>
@@ -207,6 +213,7 @@ export function FeaturesPage() {
                 mediaSide="start"
                 tone="default"
                 density="compact"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.rowsStart)}
               />
             </Box>
           </Stack>
@@ -234,6 +241,7 @@ export function FeaturesPage() {
                 mediaSide="alternate"
                 tone="muted"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.rowsAlternate)}
               />
             </Box>
           </Stack>
@@ -261,6 +269,7 @@ export function FeaturesPage() {
                 mediaSide="end"
                 tone="muted"
                 density="compact"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.features, ui.blocks.variants.features.tilesMuted)}
               />
             </Box>
           </Stack>

@@ -16,6 +16,7 @@ export type ZoneTableProps = {
   layout?: "table" | "cards";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -41,11 +42,19 @@ const {
   layout = "table",
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<ZoneTableProps>();
 </script>
 
 <template>
-  <SectionFrame :id="id" :title="title" :lead="lead" :tone="tone" :density="density">
+  <SectionFrame
+    :id="id"
+    :title="title"
+    :lead="lead"
+    :tone="tone"
+    :density="density"
+    :landmarkLabel="landmarkLabel"
+  >
     <ZoneRows v-if="((layout as string) === 'table')" :zones="zones" :labels="labels" />
     <Grid v-else cols="1-3" class="gap-4" data-testid="items">
       <Stack

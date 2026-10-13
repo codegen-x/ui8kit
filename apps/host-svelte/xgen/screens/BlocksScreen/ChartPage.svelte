@@ -12,6 +12,7 @@
     Stack,
     Text,
     Title,
+    tpl,
     type Point,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -65,6 +66,7 @@
             chart="bars"
             size="default"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.bars)}
           />
         </Box>
       </Stack>
@@ -91,6 +93,7 @@
             chart="bars"
             size="compact"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.short)}
           />
         </Box>
       </Stack>
@@ -117,6 +120,7 @@
             chart="meters"
             size="default"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.meters)}
           />
         </Box>
       </Stack>
@@ -143,6 +147,7 @@
             chart="meters"
             size="compact"
             tone="muted"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.chart, ui.blocks.variants.chart.muted)}
           />
         </Box>
       </Stack>

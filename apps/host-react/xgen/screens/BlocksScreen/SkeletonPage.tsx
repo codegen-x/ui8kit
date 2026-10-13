@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Line,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -68,6 +69,7 @@ export function SkeletonPage() {
                 lines={placeholders}
                 shape="cards"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.cards)}
               />
             </Box>
           </Stack>
@@ -91,6 +93,7 @@ export function SkeletonPage() {
                 lines={placeholders}
                 shape="list"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.list)}
               />
             </Box>
           </Stack>
@@ -114,6 +117,7 @@ export function SkeletonPage() {
                 lines={placeholders}
                 shape="article"
                 tone="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.article)}
               />
             </Box>
           </Stack>
@@ -137,6 +141,7 @@ export function SkeletonPage() {
                 lines={placeholders}
                 shape="cards"
                 tone="muted"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.skeleton, ui.blocks.variants.skeleton.muted)}
               />
             </Box>
           </Stack>

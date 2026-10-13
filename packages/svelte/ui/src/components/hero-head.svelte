@@ -18,6 +18,7 @@
     href?: string;
     skip?: string;
     navLabel?: string;
+    landmarkLabel?: string;
   };
 </script>
 
@@ -29,7 +30,7 @@
   import LinkPlain from "../primitives/link-plain/link-plain.svelte";
   import NavBlock from "../components/nav-block.svelte";
   import { defaults } from "../presets/defaults";
-  import { cn } from "../utils";
+  import { cn, tpl } from "../utils";
 
   let {
     brand,
@@ -41,6 +42,7 @@
     href,
     skip,
     navLabel,
+    landmarkLabel,
   }: HeroHeadProps = $props();
 </script>
 
@@ -48,6 +50,7 @@
   tag="header"
   class={cn("flex w-full flex-wrap items-center justify-between pr-4", defaults.hero.head)}
   data-testid="hero-head"
+  aria-label={landmarkLabel}
 >
   {#if skip}
     <LinkPlain
@@ -67,7 +70,7 @@
   >
     {brand}
   </Link>
-  <NavBlock label={navLabel} testid="site-nav">
+  <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", navLabel, landmarkLabel) : navLabel)} testid="site-nav">
     <Group gap="8" align="center" class="flex-wrap">
       {#each links as l (l.id)}
         <Link

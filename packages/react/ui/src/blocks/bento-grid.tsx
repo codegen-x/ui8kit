@@ -31,6 +31,7 @@ export type BentoGridProps = {
   media?: "none" | "image";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function BentoGrid({
@@ -41,9 +42,10 @@ export function BentoGrid({
   media = "none",
   tone = "default",
   density = "default",
+  landmarkLabel,
 }: BentoGridProps) {
   return (
-    <SectionFrame id={id} title={title} tone={tone} density={density}>
+    <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
       <Grid cols="1-4" className="auto-rows-fr gap-4" data-testid="items">
         {(tiles ?? []).map((tile) => (
           <Card key={tile.id}

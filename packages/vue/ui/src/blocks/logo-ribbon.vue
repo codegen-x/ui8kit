@@ -10,6 +10,7 @@ export type LogoRibbonProps = {
   logos: Logo[];
   tone?: "default" | "muted";
   density?: "roomy" | "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -22,11 +23,26 @@ import SectionFrame from "../components/section-frame.vue";
 import { defaults } from "../presets/defaults";
 import { cn } from "../utils";
 
-const { id, title, logos, tone = "default", density = "default" } = defineProps<LogoRibbonProps>();
+const {
+  id,
+  title,
+  logos,
+  tone = "default",
+  density = "default",
+  landmarkLabel,
+} = defineProps<LogoRibbonProps>();
 </script>
 
 <template>
-  <SectionFrame :id="id" title="" :tone="tone" :density="density" measure="fill" align="center" class="py-0">
+  <SectionFrame
+    :id="id"
+    :tone="tone"
+    :density="density"
+    measure="fill"
+    align="center"
+    class="py-0"
+    :landmarkLabel="landmarkLabel"
+  >
     <Stack gap="6" align="center" data-testid="logos-block">
       <Title :as="2" size="xl" weight="semibold" class="leading-7" :id="(id + '-title')">
         {{ title }}

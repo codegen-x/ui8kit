@@ -17,6 +17,7 @@ export type ProductInfoProps = {
   layout?: "split" | "stacked";
   expand?: "first" | "none";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -41,11 +42,12 @@ const {
   layout = "split",
   expand = "first",
   tone = "default",
+  landmarkLabel,
 } = defineProps<ProductInfoProps>();
 </script>
 
 <template>
-  <SectionFrame :id="id" :title="title" :tone="tone" density="default">
+  <SectionFrame :id="id" :title="title" :tone="tone" :landmarkLabel="landmarkLabel">
     <Box
       :class="
         (layout as string) === 'split' ? 'grid grid-cols-1 items-start gap-8 lg:grid-cols-3'

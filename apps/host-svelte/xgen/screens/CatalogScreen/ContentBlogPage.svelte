@@ -100,6 +100,7 @@
               meta="full"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.grid)}
             />
           </Box>
         </Stack>
@@ -129,6 +130,7 @@
               meta="full"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.filters)}
             />
           </Box>
         </Stack>
@@ -158,6 +160,7 @@
               meta="full"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.twoUp)}
             />
           </Box>
         </Stack>
@@ -187,6 +190,7 @@
               meta="full"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.row4)}
             />
           </Box>
         </Stack>
@@ -216,6 +220,7 @@
               meta="news"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.news4)}
             />
           </Box>
         </Stack>
@@ -245,6 +250,7 @@
               meta="full"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.list)}
             />
           </Box>
         </Stack>
@@ -274,6 +280,7 @@
               meta="full"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.magazine)}
             />
           </Box>
         </Stack>
@@ -303,6 +310,7 @@
               meta="full"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.textOnly)}
             />
           </Box>
         </Stack>
@@ -332,6 +340,7 @@
               meta="short"
               tone="muted"
               density="compact"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.digest)}
             />
           </Box>
         </Stack>

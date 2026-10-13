@@ -20,6 +20,7 @@ export type HeroPromptProps = {
   nav?: HeroNav;
   topics?: Topic[];
   density?: "roomy" | "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -46,6 +47,7 @@ const {
   nav,
   topics,
   density = "roomy",
+  landmarkLabel,
 } = defineProps<HeroPromptProps>();
 </script>
 
@@ -56,11 +58,12 @@ const {
       'flex w-full flex-col bg-foreground text-background py-8 [&_.text-muted-foreground]:text-background/70',
       defaults.hero.band
     )"
-    aria-labelledby="home-hero-title"
+    :aria-labelledby="(landmarkLabel ? undefined : 'home-hero-title')"
     data-testid="section"
     data-tone="inverse"
     :data-density="density"
     data-chrome="nav"
+    :aria-label="landmarkLabel"
   >
     <Container :class="cn('mx-auto w-full px-8', defaults.hero.container)" data-slot="container">
       <Stack gap="0" align="stretch">
@@ -74,6 +77,7 @@ const {
           :navLabel="nav?.label"
           :cta="actions?.cta"
           :href="actions?.href"
+          :landmarkLabel="landmarkLabel"
         />
         <Stack
           gap="0"

@@ -29,6 +29,7 @@ export type DashboardOverviewProps = {
   cols?: "2" | "4";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function DashboardOverview({
@@ -41,9 +42,10 @@ export function DashboardOverview({
   cols = "4",
   tone = "default",
   density = "default",
+  landmarkLabel,
 }: DashboardOverviewProps) {
   return (
-    <SectionFrame id={id} title={title} tone={tone} density={density}>
+    <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
       <Stack gap="6" align="stretch">
         <Grid cols={(((cols as string) === "2") ? "1-2" : "1-4")} className="gap-4" data-testid="items">
           {(metrics ?? []).map((m) => (

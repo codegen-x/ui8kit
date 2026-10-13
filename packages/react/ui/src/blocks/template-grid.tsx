@@ -34,6 +34,7 @@ export type TemplateGridProps = {
   cols?: "1-3" | "1-4";
   tone?: "default" | "muted";
   density?: "roomy" | "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function TemplateGrid({
@@ -49,9 +50,17 @@ export function TemplateGrid({
   cols = "1-4",
   tone = "default",
   density = "compact",
+  landmarkLabel,
 }: TemplateGridProps) {
   return (
-    <SectionFrame id={id} title="" tone={tone} density={density} measure="fill" className="py-0">
+    <SectionFrame
+      id={id}
+      tone={tone}
+      density={density}
+      measure="fill"
+      className="py-0"
+      landmarkLabel={landmarkLabel}
+    >
       <Stack gap="8" align="stretch">
         <Group gap="4" align="center" justify="between" className="h-8 w-full flex-wrap">
           <Title as={2} size="2xl" weight="semibold" className="leading-9" id={(id + "-title")}>
@@ -85,7 +94,7 @@ export function TemplateGrid({
               data-testid="template-card"
             >
               <Box className={cn("shrink-0 overflow-hidden", defaults.templates.image)}>
-                <MediaFrame alt={t.title} ratio="16/9" className={cn("size-full", defaults.media.rounded)} />
+                <MediaFrame alt={t.title} className={cn("size-full", defaults.media.rounded)} />
               </Box>
               <Group gap="4" align="center" className={cn("w-full", defaults.templates.footer)} data-testid="template-footer">
                 <IconBadge size="sm" className="overflow-hidden" data-testid="template-avatar">

@@ -12,6 +12,7 @@
     Stack,
     Text,
     Title,
+    tpl,
     type Feature,
     type Zone,
   } from "@ui8kit/svelte-ui";
@@ -79,6 +80,7 @@
             layout="full"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.delivery, ui.blocks.variants.delivery.full)}
           />
         </Box>
       </Stack>
@@ -105,6 +107,7 @@
             layout="split"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.delivery, ui.blocks.variants.delivery.split)}
           />
         </Box>
       </Stack>
@@ -131,6 +134,7 @@
             layout="facts"
             tone="muted"
             density="compact"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.delivery, ui.blocks.variants.delivery.facts)}
           />
         </Box>
       </Stack>

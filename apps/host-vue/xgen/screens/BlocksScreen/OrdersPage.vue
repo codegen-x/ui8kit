@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Order,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -74,6 +75,7 @@ const orders = fromCodex<Order>(ordersEntries, ORDERS_FIELDS);
               pager="show"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.orders, ui.blocks.variants.orders.table)"
             />
           </Box>
         </Stack>
@@ -100,6 +102,7 @@ const orders = fromCodex<Order>(ordersEntries, ORDERS_FIELDS);
               pager="show"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.orders, ui.blocks.variants.orders.cards)"
             />
           </Box>
         </Stack>
@@ -126,6 +129,7 @@ const orders = fromCodex<Order>(ordersEntries, ORDERS_FIELDS);
               pager="hide"
               tone="default"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.orders, ui.blocks.variants.orders.noPager)"
             />
           </Box>
         </Stack>
@@ -152,6 +156,7 @@ const orders = fromCodex<Order>(ordersEntries, ORDERS_FIELDS);
               pager="hide"
               tone="muted"
               density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.orders, ui.blocks.variants.orders.compactMuted)"
             />
           </Box>
         </Stack>

@@ -17,6 +17,7 @@ export type ProjectGridProps = {
   layout?: "cards" | "compact" | "overlay" | "bento" | "list";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -38,6 +39,7 @@ const {
   layout = "cards",
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<ProjectGridProps>();
 </script>
 
@@ -50,6 +52,7 @@ const {
     :density="density"
     :layout="(((layout as string) === 'list') ? 'split' : 'stack')"
     :media="{ show: ((layout as string) === 'list'), align: 'start' }"
+    :landmarkLabel="landmarkLabel"
   >
     <Stack v-if="((layout as string) === 'list')" gap="4" align="stretch" data-testid="items">
       <Group

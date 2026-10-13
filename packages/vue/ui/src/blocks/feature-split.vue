@@ -22,6 +22,7 @@ export type FeatureSplitProps = {
   layout?: "grid" | "cards" | "stats" | "metrics";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -46,6 +47,7 @@ const {
   layout = "grid",
   mediaSide = "end",
   tone = "default",
+  landmarkLabel,
 } = defineProps<FeatureSplitProps>();
 </script>
 
@@ -58,6 +60,7 @@ const {
     :tone="tone"
     layout="split"
     :media="{ show: true, side: mediaSide }"
+    :landmarkLabel="landmarkLabel"
   >
     <FeaturePairs v-if="((layout as string) === 'grid')" :features="features" />
     <FeatureCards v-if="((layout as string) === 'cards')" :features="features" cols="1-2" item="tile" />
@@ -68,7 +71,6 @@ const {
       :primaryHref="actions.href"
       :secondary="((actions.mode === 'two') ? actions.secondary : undefined)"
       :secondaryHref="actions.secondaryHref"
-      align="start"
     />
     <template #aside>
       <MediaFrame :alt="title" :ratio="(((layout as string) === 'stats') ? '1/1' : '4/3')" />

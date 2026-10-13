@@ -1,6 +1,6 @@
 // The pieces every composed screen is built from: block keys and variants, the props of a use, the node a use draws, the shared values of a
 // block page and the labelled section of one variant. compose.ts (pages, the gallery) and compose-catalog.ts (the catalog) use them.
-import { call, organism, ref, text, use } from "./build";
+import { call, organism, ref, text, tpl, use } from "./build";
 import { isGroup, type BlockSpec, type BlockUse, type OrganismSpec, type RecordField, type Value, type ViewNode } from "./ir";
 
 export const blockKey = (b: BlockSpec): string => b.id.slice("block.".length);
@@ -77,7 +77,8 @@ export function blockNode(b: BlockSpec, variant: BlockSpec["variants"][number], 
 export const dictKey = (id: string): string => id.replace(/-([a-z0-9])/g, (_m, c: string) => c.toUpperCase());
 export const TEXT = (key: string): Value => ref(`ui.${key}`);
 
-export function expandUse(u: BlockUse, blocks: BlockSpec[], org: Record<string, OrganismSpec>, where: string, autoId: string, problems: string[]): { nodes: ViewNode[]; h1: boolean } {
+/** `repeated`: the page uses this block more than once, so its landmarks are named after the block and the variant */
+export function expandUse(u: BlockUse, blocks: BlockSpec[], org: Record<string, OrganismSpec>, where: string, autoId: string, problems: string[], repeated = false): { nodes: ViewNode[]; h1: boolean } {
   const b = blocks.find((x) => blockKey(x) === u.block);
   if (!b) { problems.push(`${where}: no block ${u.block}`); return { nodes: [], h1: false }; }
   const variant = variantOf(b, u.variant);
@@ -90,11 +91,15 @@ export function expandUse(u: BlockUse, blocks: BlockSpec[], org: Record<string, 
   const o = org[drawnBy(b, variant)];
   const extra: Record<string, Value> = { ...(u.props ?? {}) };
   if (o?.props.some((p) => p.name === "id") && extra["id"] === undefined) extra["id"] = autoId;
+  if (repeated && o?.props.some((p) => p.name === "landmarkLabel") && extra["landmarkLabel"] === undefined) extra["landmarkLabel"] = landmarkName(blockKey(b), variant.id);
   const levelProp = o?.props.find((p) => p.name === "level");
   const level = extra["level"] ?? variant.props?.["level"] ?? levelProp?.default;
   return { nodes: [blockNode(b, variant, extra, org)], h1: levelProp !== undefined && level === 1 };
 }
 
+
+/** the name of the landmarks of one variant of a block: "Hero, Centered" (blocks.landmark, from the dictionary) */
+const landmarkName = (key: string, variant: string): Value => tpl(TEXT("blocks.landmark"), TEXT(`blocks.names.${key}`), TEXT(`blocks.variants.${key}.${variant}`));
 
 export type OrganismNode = Extract<ViewNode, { organism: string }>;
 
@@ -134,6 +139,8 @@ export function variantSection(b: BlockSpec, v: BlockSpec["variants"][number], o
   const extra: Record<string, Value> = {};
   if (o?.props.some((p) => p.name === "id")) extra["id"] = `${key}-${v.id}`;
   if (o?.props.some((p) => p.name === "level")) extra["level"] = 2;
+  // the same block in several variants on one page: its landmarks are named after the block and the variant ("Hero, Centered")
+  if (o?.props.some((p) => p.name === "landmarkLabel")) extra["landmarkLabel"] = landmarkName(key, v.id);
   const node = blockNode(b, v, extra, org) as OrganismNode;
   drawn.push(node);
   // a labelled group inside the page section, not a landmark of its own: the page file holds one Block (rule 01)

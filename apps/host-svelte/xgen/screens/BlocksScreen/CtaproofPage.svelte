@@ -12,6 +12,7 @@
     Stack,
     Text,
     Title,
+    tpl,
     type Feature,
     type Logo,
     type Stat,
@@ -97,6 +98,7 @@
             proof="logos"
             mediaSide="end"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.centerLogos)}
           />
         </Box>
       </Stack>
@@ -124,6 +126,7 @@
             proof="features"
             mediaSide="end"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.centerFeatures)}
           />
         </Box>
       </Stack>
@@ -151,6 +154,7 @@
             proof="stats"
             mediaSide="end"
             tone="muted"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.centerStats)}
           />
         </Box>
       </Stack>
@@ -178,6 +182,7 @@
             proof="stats"
             mediaSide="end"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.splitStats)}
           />
         </Box>
       </Stack>
@@ -206,6 +211,7 @@
             mediaSide="start"
             tone="default"
             note={ui.marketing.ctaProof.note}
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.splitStatsStart)}
           />
         </Box>
       </Stack>
@@ -233,6 +239,7 @@
             proof="rows"
             mediaSide="end"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.splitRows)}
           />
         </Box>
       </Stack>
@@ -260,6 +267,7 @@
             proof="zones"
             mediaSide="end"
             tone="muted"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.ctaproof, ui.blocks.variants.ctaproof.splitZones)}
           />
         </Box>
       </Stack>

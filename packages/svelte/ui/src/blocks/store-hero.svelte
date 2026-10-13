@@ -23,6 +23,7 @@
     layout?: "overlay" | "backdrop";
     mediaSide?: "end" | "start";
     tone?: "default" | "muted";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -50,6 +51,7 @@
     layout = "overlay",
     mediaSide = "end",
     tone = "default",
+    landmarkLabel,
   }: StoreHeroProps = $props();
 </script>
 
@@ -63,6 +65,7 @@
     density="roomy"
     measure="3xl"
     class={(("image" === "image") ? "relative isolate overflow-hidden" : "")}
+    landmarkLabel={landmarkLabel}
   >
     <Backdrop kind="image" alt={title} />
     <ActionGroup
@@ -70,7 +73,6 @@
       primaryHref={actions.href}
       secondary={((actions.mode === "two") ? actions.secondary : undefined)}
       secondaryHref={actions.secondaryHref}
-      align="start"
     />
     <Grid cols="1-3" class="gap-4" data-testid="perks">
       {#each perks as p, i (p.id)}
@@ -101,14 +103,13 @@
     layout="split"
     media={{ show: true, side: mediaSide }}
     tone={tone}
-    density="default"
+    landmarkLabel={landmarkLabel}
   >
     <ActionGroup
       primary={actions.cta}
       primaryHref={actions.href}
       secondary={((actions.mode === "two") ? actions.secondary : undefined)}
       secondaryHref={actions.secondaryHref}
-      align="start"
     />
     <Grid cols="1-3" class="gap-4" data-testid="perks">
       {#each perks as p, i (p.id)}

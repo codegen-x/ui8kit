@@ -17,6 +17,7 @@
     layout?: "column" | "toc";
     quotes?: "show" | "hide";
     tone?: "default" | "muted";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -41,10 +42,11 @@
     layout = "column",
     quotes = "show",
     tone = "default",
+    landmarkLabel,
   }: ArticleBodyProps = $props();
 </script>
 
-<SectionFrame id={id} title={title} tone={tone} density="default">
+<SectionFrame id={id} title={title} tone={tone} landmarkLabel={landmarkLabel}>
   <Grid
     cols="1"
     class={cn(
@@ -53,7 +55,11 @@
     )}
   >
     {#if ((layout as string) === "toc")}
-      <NavBlock label={tocTitle} class="md:sticky md:top-4" testid="toc">
+      <NavBlock
+        label={(landmarkLabel ? tpl("{0}, {1}", tocTitle, landmarkLabel) : tocTitle)}
+        class="md:sticky md:top-4"
+        testid="toc"
+      >
         <Stack gap="2">
           <Text size="sm" weight="semibold">
             {tocTitle}

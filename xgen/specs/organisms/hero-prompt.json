@@ -118,6 +118,11 @@
       },
       "default": "roomy",
       "docs": "named on the section (data-density) like every section; the band keeps the frame's padding"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
     }
   ],
   "slots": [],
@@ -142,13 +147,28 @@
         }
       },
       "attrs": {
-        "aria-labelledby": "home-hero-title",
+        "aria-labelledby": {
+          "op": "cond",
+          "args": [
+            {
+              "$": "landmarkLabel"
+            },
+            {
+              "op": "undef",
+              "args": []
+            },
+            "home-hero-title"
+          ]
+        },
         "data-testid": "section",
         "data-tone": "inverse",
         "data-density": {
           "$": "density"
         },
-        "data-chrome": "nav"
+        "data-chrome": "nav",
+        "aria-label": {
+          "$": "landmarkLabel"
+        }
       },
       "children": [
         {
@@ -208,6 +228,9 @@
                     },
                     "href": {
                       "$": "actions.href"
+                    },
+                    "landmarkLabel": {
+                      "$": "landmarkLabel"
                     }
                   }
                 },

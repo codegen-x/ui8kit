@@ -110,6 +110,7 @@ export function ContentPostHeaderSplitPage() {
                   actions="pair"
                   tone="default"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.postsplit, ui.blocks.variants.postsplit.centerShare)}
                 />
               </Box>
             </Stack>
@@ -138,6 +139,7 @@ export function ContentPostHeaderSplitPage() {
                   actions="pair"
                   tone="default"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.postsplit, ui.blocks.variants.postsplit.splitTags)}
                 />
               </Box>
             </Stack>
@@ -166,6 +168,7 @@ export function ContentPostHeaderSplitPage() {
                   actions="wide"
                   tone="default"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.postsplit, ui.blocks.variants.postsplit.splitBioStart)}
                 />
               </Box>
             </Stack>
@@ -194,6 +197,7 @@ export function ContentPostHeaderSplitPage() {
                   actions="icons"
                   tone="default"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.postsplit, ui.blocks.variants.postsplit.splitSquare)}
                 />
               </Box>
             </Stack>
@@ -222,6 +226,7 @@ export function ContentPostHeaderSplitPage() {
                   actions="pair"
                   tone="default"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.postsplit, ui.blocks.variants.postsplit.outlineStart)}
                 />
               </Box>
             </Stack>
@@ -250,6 +255,7 @@ export function ContentPostHeaderSplitPage() {
                   actions="pair"
                   tone="muted"
                   level={2}
+                  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.postsplit, ui.blocks.variants.postsplit.splitStats)}
                 />
               </Box>
             </Stack>

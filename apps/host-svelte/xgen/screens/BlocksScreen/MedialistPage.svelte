@@ -12,6 +12,7 @@
     Stack,
     Text,
     Title,
+    tpl,
     type Category,
     type Feature,
     type Post,
@@ -111,6 +112,7 @@
             layout="figures"
             mediaSide="start"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.figuresStart)}
           />
         </Box>
       </Stack>
@@ -144,6 +146,7 @@
             layout="proof"
             mediaSide="end"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.proofReview)}
           />
         </Box>
       </Stack>
@@ -171,6 +174,7 @@
             layout="steps"
             mediaSide="end"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.stepsRows)}
           />
         </Box>
       </Stack>
@@ -198,6 +202,7 @@
             layout="posts"
             mediaSide="end"
             tone="muted"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.latestPosts)}
           />
         </Box>
       </Stack>
@@ -225,6 +230,7 @@
             layout="topics"
             mediaSide="end"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.topicRows)}
           />
         </Box>
       </Stack>
@@ -252,6 +258,7 @@
             layout="contact"
             mediaSide="start"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.medialist, ui.blocks.variants.medialist.contactStart)}
           />
         </Box>
       </Stack>

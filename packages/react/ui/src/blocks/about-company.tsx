@@ -26,6 +26,7 @@ export type AboutCompanyProps = {
   layout?: "split" | "stacked";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function AboutCompany({
@@ -37,6 +38,7 @@ export function AboutCompany({
   layout = "split",
   tone = "default",
   density = "default",
+  landmarkLabel,
 }: AboutCompanyProps) {
   return (
     <SectionFrame
@@ -47,6 +49,7 @@ export function AboutCompany({
       density={density}
       layout={(((layout as string) === "split") ? "split" : "stack")}
       media={{ show: true, side: "start" }}
+      landmarkLabel={landmarkLabel}
       aside={(
         <Box className="grid grid-cols-3 gap-4" data-testid="strip">
           <MediaFrame alt={title} ratio="3/4" />

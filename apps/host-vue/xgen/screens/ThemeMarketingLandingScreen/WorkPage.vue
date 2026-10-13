@@ -6,6 +6,7 @@ import {
   AboutMe,
   PhotoGallery,
   ProjectGrid,
+  tpl,
   type Photo,
   type Project,
   type Skill,
@@ -67,6 +68,7 @@ const photos = fromCodex<Photo>(photosEntries, PHOTOS_FIELDS);
     layout="cards"
     tone="default"
     density="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.projects, ui.blocks.variants.projects.cards)"
   />
   <PhotoGallery
     id="work-photos"
@@ -78,5 +80,6 @@ const photos = fromCodex<Photo>(photosEntries, PHOTOS_FIELDS);
     captions="show"
     tone="default"
     density="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.photos, ui.blocks.variants.photos.masonry)"
   />
 </template>

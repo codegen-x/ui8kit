@@ -29,6 +29,7 @@ export type CartDrawerProps = {
   drawer: DrawerLabels;
   state?: "filled" | "empty";
   media?: "image" | "none";
+  landmarkLabel?: string;
 };
 
 export function CartDrawer({
@@ -39,9 +40,10 @@ export function CartDrawer({
   drawer,
   state = "filled",
   media = "image",
+  landmarkLabel,
 }: CartDrawerProps) {
   return (
-    <Block tag="section" className="py-8" aria-label={drawer.title} data-testid="section">
+    <Block tag="section" className="py-8" aria-label={(landmarkLabel ?? drawer.title)} data-testid="section">
       <Container className="mx-auto w-full max-w-6xl px-4" data-slot="container">
         <Box className="flex min-h-160 overflow-hidden rounded bg-muted inset-ring inset-ring-border">
           <Box className="hidden flex-1 flex-col gap-4 p-8 sm:flex" aria-hidden="true">

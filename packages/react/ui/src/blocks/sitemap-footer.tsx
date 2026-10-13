@@ -38,6 +38,7 @@ export type SitemapFooterProps = {
   id?: string;
   layout?: "columns" | "row" | "card";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function SitemapFooter({
@@ -51,13 +52,20 @@ export function SitemapFooter({
   id = "footer",
   layout = "columns",
   density = "default",
+  landmarkLabel,
 }: SitemapFooterProps) {
   return (
     <>
       {((layout as string) === "card") ? (
-        <FooterCard label={label} brand={brand} groups={groups} />
+        <FooterCard label={label} brand={brand} groups={groups} landmarkLabel={landmarkLabel} />
       ) : (
-        <Block tag="footer" className="mt-12 border-t border-border" data-testid="site-footer" data-layout={layout}>
+        <Block
+          tag="footer"
+          className="mt-12 border-t border-border"
+          data-testid="site-footer"
+          data-layout={layout}
+          aria-label={landmarkLabel}
+        >
           <Container
             className={cn(
               "mx-auto w-full max-w-6xl px-4",
@@ -95,7 +103,7 @@ export function SitemapFooter({
                   </Text>
                 </Stack>
                 <Box className="min-w-0 flex-1">
-                  <FooterColumns label={label} groups={groups} />
+                  <FooterColumns label={label} groups={groups} landmarkLabel={landmarkLabel} />
                 </Box>
               </Box>
             ) : (
@@ -103,7 +111,7 @@ export function SitemapFooter({
                 <Text size="base" weight="bold">
                   {brand}
                 </Text>
-                <NavBlock label={label}>
+                <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", label, landmarkLabel) : label)}>
                   <Group gap="4" className="flex-wrap">
                     {(groups ?? []).map((g) => (
                       <Link key={g.id} href="#/" variant="default" className="text-sm" data-testid="group">

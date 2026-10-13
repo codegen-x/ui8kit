@@ -27,28 +27,24 @@
     layout?: "cards" | "numbered";
     summary?: "aside" | "none";
     tone?: "default" | "muted";
+    landmarkLabel?: string;
   };
 </script>
 
 <script lang="ts">
   import Box from "../primitives/box/box.svelte";
-  import Button from "../primitives/button/button.svelte";
-  import Checkbox from "../primitives/checkbox/checkbox.svelte";
   import Form from "../primitives/form/form.svelte";
   import Grid from "../primitives/grid/grid.svelte";
-  import Group from "../primitives/group/group.svelte";
   import Input from "../primitives/input/input.svelte";
-  import Label from "../primitives/label/label.svelte";
-  import Stack from "../primitives/stack/stack.svelte";
-  import Text from "../primitives/text/text.svelte";
   import Textarea from "../primitives/textarea/textarea.svelte";
   import CartSummaryCard from "../components/cart-summary-card.svelte";
   import CheckoutStep from "../components/checkout-step.svelte";
+  import CheckoutSubmit from "../components/checkout-submit.svelte";
   import Field from "../components/field.svelte";
   import PaymentOptions from "../components/payment-options.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import SlotGrid from "../components/slot-grid.svelte";
-  import { cn, tpl } from "../utils";
+  import { tpl } from "../utils";
 
   let {
     id,
@@ -63,10 +59,11 @@
     layout = "cards",
     summary = "aside",
     tone = "default",
+    landmarkLabel,
   }: CheckoutFormProps = $props();
 </script>
 
-<SectionFrame id={id} title={title} tone={tone} density="default">
+<SectionFrame id={id} title={title} tone={tone} landmarkLabel={landmarkLabel}>
   <Box class="grid grid-cols-1 items-start gap-8 lg:grid-cols-3">
     <Form
       method="dialog"
@@ -117,20 +114,7 @@
       <CheckoutStep number="4" title={labels.payment} text={labels.paymentText} layout={layout}>
         <PaymentOptions payments={payments} name={tpl("{0}-payment", id)} checked="payment-card" />
       </CheckoutStep>
-      <Stack gap="4" align="start">
-        <Group gap="2" align="center" class={cn("w-fit", "")}>
-          <Checkbox name="consent" id={tpl("{0}-consent", id)} />
-          <Label for={tpl("{0}-consent", id)} class="text-sm">
-            {labels.consent}
-          </Label>
-        </Group>
-        <Button variant="default" size="lg" type="submit" data-testid="submit">
-          {labels.submit}
-        </Button>
-        <Text size="xs" class="text-muted-foreground">
-          {labels.legal}
-        </Text>
-      </Stack>
+      <CheckoutSubmit id={id} consent={labels.consent} submit={labels.submit} legal={labels.legal} />
     </Form>
     {#if ((summary as string) === "aside")}
       <Box class="lg:sticky lg:top-8" data-testid="aside">

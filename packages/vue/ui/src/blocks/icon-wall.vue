@@ -15,6 +15,7 @@ export type IconWallProps = {
   item?: "tile" | "chip";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -35,6 +36,7 @@ const {
   item = "tile",
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<IconWallProps>();
 const askedCols = computed(() =>
   ((item as string) === "chip") && ((cols as string) === "6") ? "2-6"
@@ -47,7 +49,7 @@ const wallCols = computed(() => fitCols(askedCols.value, (features?.length ?? 0)
 </script>
 
 <template>
-  <SectionFrame :id="id" :title="title" :tone="tone" :density="density">
+  <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
     <Grid :cols="wallCols" class="gap-4" data-testid="items">
       <Box v-for="f in features" :key="f.id"
         :class="cn(

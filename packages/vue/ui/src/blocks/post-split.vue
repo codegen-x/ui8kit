@@ -23,6 +23,7 @@ export type PostSplitProps = {
   cover?: "wide" | "square";
   actions?: "pair" | "wide" | "icons";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -47,6 +48,7 @@ const {
   cover = "wide",
   actions = "pair",
   tone = "default",
+  landmarkLabel,
 } = defineProps<PostSplitProps>();
 </script>
 
@@ -59,6 +61,7 @@ const {
     :tone="tone"
     :media="{ show: true }"
     align="center"
+    :landmarkLabel="landmarkLabel"
   >
     <PostTags :tags="extras.tags" align="center" />
     <PostStats :post="post" :extras="extras" :labels="labels" align="center" />
@@ -89,12 +92,13 @@ const {
     :tone="tone"
     :media="{ show: true, side: mediaSide }"
     layout="split"
+    :landmarkLabel="landmarkLabel"
   >
     <PostOutline v-if="((layout as string) === 'outline')" :post="post" :extras="extras" :labels="labels" />
     <template v-else>
       <PostAuthor :post="post" :extras="extras" :labels="labels" :mode="author" />
       <PostStats v-if="((author as string) !== 'line')" :post="post" :extras="extras" :labels="labels" />
-      <PostTags :tags="extras.tags" align="start" />
+      <PostTags :tags="extras.tags" />
     </template>
     <PostActions :labels="labels" :mode="actions" />
     <template #aside>

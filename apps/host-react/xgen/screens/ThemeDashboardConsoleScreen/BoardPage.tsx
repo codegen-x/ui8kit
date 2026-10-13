@@ -2,7 +2,7 @@
 // Source: xgen/specs/screens/theme-dashboard-console.json
 // The board page of ThemeDashboardConsoleScreen.
 
-import { KanbanBoard, PageIntro, type BoardCard, type Lane } from "@ui8kit/react-ui";
+import { KanbanBoard, PageIntro, tpl, type BoardCard, type Lane } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { lanes as lanesEntries } from "@ui8kit/app-shared/data/lanes";
@@ -37,6 +37,7 @@ export function BoardPage() {
         cols="3"
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.kanban, ui.blocks.variants.kanban.detail)}
       />
       <KanbanBoard
         id="board-kanban-2"
@@ -48,6 +49,7 @@ export function BoardPage() {
         cols="2"
         tone="default"
         density="default"
+        landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.kanban, ui.blocks.variants.kanban.twoCols)}
       />
     </>
   );

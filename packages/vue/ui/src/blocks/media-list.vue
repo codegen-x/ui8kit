@@ -26,6 +26,7 @@ export type MediaListProps = {
   layout?: "figures" | "proof" | "steps" | "posts" | "topics" | "contact";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -51,6 +52,7 @@ const {
   layout = "figures",
   mediaSide = "end",
   tone = "default",
+  landmarkLabel,
 } = defineProps<MediaListProps>();
 </script>
 
@@ -63,6 +65,7 @@ const {
     :tone="tone"
     layout="split"
     :media="{ show: true, side: mediaSide }"
+    :landmarkLabel="landmarkLabel"
   >
     <MediaFigures
       v-if="(((layout as string) === 'figures') || ((layout as string) === 'proof'))"
@@ -79,7 +82,6 @@ const {
       :primaryHref="actions.href"
       :secondary="((actions.mode === 'two') ? actions.secondary : undefined)"
       :secondaryHref="actions.secondaryHref"
-      align="start"
     />
     <template #aside>
       <MediaFrame

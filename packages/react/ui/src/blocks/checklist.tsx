@@ -28,6 +28,7 @@ export type ChecklistProps = {
   marker?: "check" | "number";
   detail?: "always" | "expand";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 
 export function Checklist({
@@ -40,9 +41,10 @@ export function Checklist({
   marker = "check",
   detail = "always",
   tone = "default",
+  landmarkLabel,
 }: ChecklistProps) {
   return (
-    <SectionFrame id={id} title={title} tone={tone} measure="2xl">
+    <SectionFrame id={id} title={title} tone={tone} measure="2xl" landmarkLabel={landmarkLabel}>
       <Stack
         gap="4"
         align="stretch"

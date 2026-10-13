@@ -2,7 +2,19 @@
 <!-- Source: xgen/specs/screens/blocks.json -->
 <!-- The navbar page of BlocksScreen. -->
 <script setup lang="ts">
-import { Block, Box, Container, Group, Link, NavBar, Stack, Text, Title, type NavLink } from "@ui8kit/vue-ui";
+import {
+  Block,
+  Box,
+  Container,
+  Group,
+  Link,
+  NavBar,
+  Stack,
+  Text,
+  Title,
+  tpl,
+  type NavLink,
+} from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
 import { ui } from "@ui8kit/app-shared/content";
@@ -59,6 +71,7 @@ const NAVBAR_ACTIONS = { cta: ui.site.header.cta, href: "#/", login: ui.site.hea
               layout="inline"
               over="none"
               tone="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.inline)"
               @theme="() => actions.toggleTheme()"
             />
           </Box>
@@ -86,6 +99,7 @@ const NAVBAR_ACTIONS = { cta: ui.site.header.cta, href: "#/", login: ui.site.hea
               layout="split"
               over="none"
               tone="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.split)"
               @theme="() => actions.toggleTheme()"
             />
           </Box>
@@ -113,6 +127,7 @@ const NAVBAR_ACTIONS = { cta: ui.site.header.cta, href: "#/", login: ui.site.hea
               layout="search"
               over="none"
               tone="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.search)"
               @theme="() => actions.toggleTheme()"
             />
           </Box>
@@ -140,6 +155,7 @@ const NAVBAR_ACTIONS = { cta: ui.site.header.cta, href: "#/", login: ui.site.hea
               layout="inline"
               over="media"
               tone="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.media)"
               @theme="() => actions.toggleTheme()"
             />
           </Box>
@@ -167,6 +183,7 @@ const NAVBAR_ACTIONS = { cta: ui.site.header.cta, href: "#/", login: ui.site.hea
               layout="inline"
               over="none"
               tone="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.plain)"
               @theme="() => actions.toggleTheme()"
             />
           </Box>
@@ -194,6 +211,7 @@ const NAVBAR_ACTIONS = { cta: ui.site.header.cta, href: "#/", login: ui.site.hea
               layout="inline"
               over="none"
               tone="inverse"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.navbar, ui.blocks.variants.navbar.inverse)"
               @theme="() => actions.toggleTheme()"
             />
           </Box>

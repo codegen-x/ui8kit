@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Post,
   type PostTopic,
 } from "@ui8kit/react-ui";
@@ -84,6 +85,7 @@ export function PostsPage() {
                 meta="full"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.grid)}
               />
             </Box>
           </Stack>
@@ -113,6 +115,7 @@ export function PostsPage() {
                 meta="full"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.filters)}
               />
             </Box>
           </Stack>
@@ -142,6 +145,7 @@ export function PostsPage() {
                 meta="full"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.twoUp)}
               />
             </Box>
           </Stack>
@@ -171,6 +175,7 @@ export function PostsPage() {
                 meta="full"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.row4)}
               />
             </Box>
           </Stack>
@@ -200,6 +205,7 @@ export function PostsPage() {
                 meta="news"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.news4)}
               />
             </Box>
           </Stack>
@@ -229,6 +235,7 @@ export function PostsPage() {
                 meta="full"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.list)}
               />
             </Box>
           </Stack>
@@ -258,6 +265,7 @@ export function PostsPage() {
                 meta="full"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.magazine)}
               />
             </Box>
           </Stack>
@@ -287,6 +295,7 @@ export function PostsPage() {
                 meta="full"
                 tone="default"
                 density="default"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.textOnly)}
               />
             </Box>
           </Stack>
@@ -316,6 +325,7 @@ export function PostsPage() {
                 meta="short"
                 tone="muted"
                 density="compact"
+                landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.posts, ui.blocks.variants.posts.digest)}
               />
             </Box>
           </Stack>

@@ -31,6 +31,7 @@ export type StepperProps = {
   layout?: "horizontal" | "vertical";
   marker?: "number" | "icon";
   summary?: "show" | "hide";
+  landmarkLabel?: string;
 };
 
 export function Stepper({
@@ -44,9 +45,10 @@ export function Stepper({
   layout = "horizontal",
   marker = "number",
   summary = "show",
+  landmarkLabel,
 }: StepperProps) {
   return (
-    <SectionFrame id={id} title={title} measure="3xl">
+    <SectionFrame id={id} title={title} measure="3xl" landmarkLabel={landmarkLabel}>
       <Stack gap="6" align="stretch" data-testid="stepper">
         <Text size="sm" className="text-muted-foreground">
           {tpl(stepLabel, current, (steps?.length ?? 0))}

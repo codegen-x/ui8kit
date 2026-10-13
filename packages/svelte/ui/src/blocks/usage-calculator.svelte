@@ -21,6 +21,7 @@
     layout?: "card" | "plain";
     ends?: "show" | "hide";
     tone?: "default" | "muted";
+    landmarkLabel?: string;
     onusage?: (value: string) => void;
   };
 </script>
@@ -46,11 +47,12 @@
     layout = "card",
     ends = "show",
     tone = "default",
+    landmarkLabel,
     onusage,
   }: UsageCalculatorProps = $props();
 </script>
 
-<SectionFrame id={id} title={title} lead={text} tone={tone} align="center">
+<SectionFrame id={id} title={title} lead={text} tone={tone} align="center" landmarkLabel={landmarkLabel}>
   <Stack
     gap="4"
     align="stretch"

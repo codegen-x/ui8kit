@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type Skill,
   type Spec,
 } from "@ui8kit/vue-ui";
@@ -75,6 +76,7 @@ const ABOUTME_ACTIONS = { mode: "two", cta: ui.company.aboutMe.cta, href: "#/wor
               mediaSide="start"
               tone="default"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.aboutme, ui.blocks.variants.aboutme.facts)"
             />
           </Box>
         </Stack>
@@ -104,6 +106,7 @@ const ABOUTME_ACTIONS = { mode: "two", cta: ui.company.aboutMe.cta, href: "#/wor
               mediaSide="end"
               tone="default"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.aboutme, ui.blocks.variants.aboutme.factsEnd)"
             />
           </Box>
         </Stack>
@@ -133,6 +136,7 @@ const ABOUTME_ACTIONS = { mode: "two", cta: ui.company.aboutMe.cta, href: "#/wor
               mediaSide="start"
               tone="default"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.aboutme, ui.blocks.variants.aboutme.skills)"
             />
           </Box>
         </Stack>
@@ -162,6 +166,7 @@ const ABOUTME_ACTIONS = { mode: "two", cta: ui.company.aboutMe.cta, href: "#/wor
               mediaSide="end"
               tone="muted"
               :level="2"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.aboutme, ui.blocks.variants.aboutme.skillsMuted)"
             />
           </Box>
         </Stack>

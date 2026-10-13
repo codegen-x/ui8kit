@@ -9,6 +9,7 @@ import {
   NewsletterForm,
   ProductGrid,
   ReviewList,
+  tpl,
   type Category,
   type CodeLine,
   type Product,
@@ -84,6 +85,7 @@ const reviews = fromCodex<Review>(reviewsEntries, REVIEWS_FIELDS);
     count="show"
     icon="show"
     density="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.chips)"
   />
   <ProductGrid
     id="home-products"
@@ -98,6 +100,7 @@ const reviews = fromCodex<Review>(reviewsEntries, REVIEWS_FIELDS);
     action="button"
     tone="default"
     density="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.grid4)"
   />
   <ReviewList
     id="home-reviews"
@@ -109,6 +112,7 @@ const reviews = fromCodex<Review>(reviewsEntries, REVIEWS_FIELDS);
     avatar="none"
     tone="default"
     density="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.reviews, ui.blocks.variants.reviews.grid)"
   />
   <NewsletterForm
     id="home-newsletter"
@@ -121,6 +125,7 @@ const reviews = fromCodex<Review>(reviewsEntries, REVIEWS_FIELDS);
     terms="hide"
     tone="default"
     align="center"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.newsletter, ui.blocks.variants.newsletter.stacked)"
   />
   <CtaBand
     id="home-cta"
@@ -139,5 +144,6 @@ const reviews = fromCodex<Review>(reviewsEntries, REVIEWS_FIELDS);
     tone="default"
     proof="none"
     density="default"
+    :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.cta, ui.blocks.variants.cta.shop)"
   />
 </template>

@@ -34,6 +34,11 @@
         "ts": "\"show\" | \"hide\""
       },
       "default": "show"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
     }
   ],
   "slots": [],
@@ -46,7 +51,10 @@
         "Class": "flex h-16 shrink-0 items-center gap-6 border-b border-border bg-background px-6"
       },
       "attrs": {
-        "data-testid": "topbar"
+        "data-testid": "topbar",
+        "aria-label": {
+          "$": "landmarkLabel"
+        }
       },
       "children": [
         {
@@ -119,7 +127,27 @@
               "organism": "NavBlock",
               "props": {
                 "label": {
-                  "$": "nav.label"
+                  "op": "cond",
+                  "args": [
+                    {
+                      "$": "landmarkLabel"
+                    },
+                    {
+                      "op": "tpl",
+                      "args": [
+                        "{0}, {1}",
+                        {
+                          "$": "nav.label"
+                        },
+                        {
+                          "$": "landmarkLabel"
+                        }
+                      ]
+                    },
+                    {
+                      "$": "nav.label"
+                    }
+                  ]
                 },
                 "className": "hidden lg:block"
               },

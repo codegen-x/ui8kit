@@ -2,7 +2,7 @@
 <!-- Source: xgen/specs/screens/theme-commerce-shop.json -->
 <!-- The browse page of ThemeCommerceShopScreen. -->
 <script lang="ts">
-  import { CategoryNav, PageIntro, ProductGrid, type Category, type Product } from "@ui8kit/svelte-ui";
+  import { CategoryNav, PageIntro, ProductGrid, tpl, type Category, type Product } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
   import { ui } from "@ui8kit/app-shared/content";
   import { categories as categoriesEntries } from "@ui8kit/app-shared/data/categories";
@@ -45,6 +45,7 @@
   count="show"
   icon="show"
   density="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.categories, ui.blocks.variants.categories.bar)}
 />
 <ProductGrid
   id="browse-products-2"
@@ -59,6 +60,7 @@
   action="none"
   tone="muted"
   density="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.browse)}
 />
 <ProductGrid
   id="browse-products-3"
@@ -73,6 +75,7 @@
   action="button"
   tone="default"
   density="roomy"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.showcase)}
 />
 <ProductGrid
   id="browse-products-4"
@@ -87,4 +90,5 @@
   action="button"
   tone="default"
   density="default"
+  landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.products, ui.blocks.variants.products.list)}
 />

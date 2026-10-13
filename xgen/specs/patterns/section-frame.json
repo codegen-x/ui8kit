@@ -150,6 +150,11 @@
       },
       "docs": "default: max-w-6xl; landing: the landing column of the preset; fill: full width of parent; xs to 3xl: a narrow body, the heading and the body one column of that width centred in the default container",
       "default": "default"
+    },
+    {
+      "name": "landmarkLabel",
+      "type": "string",
+      "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
     }
   ],
   "className": true,
@@ -243,41 +248,61 @@
           "op": "cond",
           "args": [
             {
-              "op": "ne",
-              "args": [
-                {
-                  "$": "title"
-                },
-                ""
-              ]
-            },
-            {
-              "$": "titleId"
+              "$": "landmarkLabel"
             },
             {
               "op": "undef",
               "args": []
+            },
+            {
+              "op": "cond",
+              "args": [
+                {
+                  "op": "ne",
+                  "args": [
+                    {
+                      "$": "title"
+                    },
+                    ""
+                  ]
+                },
+                {
+                  "$": "titleId"
+                },
+                {
+                  "op": "undef",
+                  "args": []
+                }
+              ]
             }
           ]
         },
         "aria-label": {
-          "op": "cond",
+          "op": "coalesce",
           "args": [
             {
-              "op": "eq",
+              "$": "landmarkLabel"
+            },
+            {
+              "op": "cond",
               "args": [
                 {
-                  "$": "title"
+                  "op": "eq",
+                  "args": [
+                    {
+                      "$": "title"
+                    },
+                    ""
+                  ]
                 },
-                ""
+                {
+                  "$": "id"
+                },
+                {
+                  "op": "undef",
+                  "args": []
+                }
               ]
-            },
-            {
-              "$": "id"
-            },
-            {
-              "op": "undef",
-              "args": []
             }
           ]
         },

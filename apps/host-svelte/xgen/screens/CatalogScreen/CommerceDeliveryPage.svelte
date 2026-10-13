@@ -122,6 +122,7 @@
               layout="full"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.delivery, ui.blocks.variants.delivery.full)}
             />
           </Box>
         </Stack>
@@ -148,6 +149,7 @@
               layout="split"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.delivery, ui.blocks.variants.delivery.split)}
             />
           </Box>
         </Stack>
@@ -174,6 +176,7 @@
               layout="facts"
               tone="muted"
               density="compact"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.delivery, ui.blocks.variants.delivery.facts)}
             />
           </Box>
         </Stack>
@@ -216,6 +219,7 @@
               layout="table"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.zones, ui.blocks.variants.zones.table)}
             />
           </Box>
         </Stack>
@@ -241,6 +245,7 @@
               layout="cards"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.zones, ui.blocks.variants.zones.cards)}
             />
           </Box>
         </Stack>
@@ -266,6 +271,7 @@
               layout="table"
               tone="muted"
               density="compact"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.zones, ui.blocks.variants.zones.tableMuted)}
             />
           </Box>
         </Stack>
@@ -309,6 +315,7 @@
               layout="split"
               item="card"
               tone="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.slots, ui.blocks.variants.slots.split)}
             />
           </Box>
         </Stack>
@@ -335,6 +342,7 @@
               layout="split"
               item="plain"
               tone="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.slots, ui.blocks.variants.slots.plain)}
             />
           </Box>
         </Stack>
@@ -361,6 +369,7 @@
               layout="stacked"
               item="card"
               tone="muted"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.slots, ui.blocks.variants.slots.stacked)}
             />
           </Box>
         </Stack>
@@ -403,6 +412,7 @@
               labels={ui.commerce.stores}
               layout="cards"
               tone="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.locations, ui.blocks.variants.locations.cards)}
             />
           </Box>
         </Stack>
@@ -428,6 +438,7 @@
               labels={ui.commerce.stores}
               layout="list"
               tone="muted"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.locations, ui.blocks.variants.locations.list)}
             />
           </Box>
         </Stack>
@@ -453,6 +464,7 @@
               labels={ui.commerce.stores}
               layout="map"
               tone="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.locations, ui.blocks.variants.locations.map)}
             />
           </Box>
         </Stack>

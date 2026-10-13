@@ -26,6 +26,7 @@ export type EmptyPanelProps = {
   actions?: "button" | "none";
   visual?: "icon" | "image";
   size?: "default" | "compact";
+  landmarkLabel?: string;
 };
 
 export function EmptyPanel({
@@ -39,9 +40,10 @@ export function EmptyPanel({
   actions = "button",
   visual = "icon",
   size = "default",
+  landmarkLabel,
 }: EmptyPanelProps) {
   return (
-    <Block tag="section" aria-label={title} data-testid="empty">
+    <Block tag="section" aria-label={(landmarkLabel ?? title)} data-testid="empty">
       <Container
         className={cn(
           "mx-auto w-full max-w-6xl px-4",

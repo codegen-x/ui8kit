@@ -24,6 +24,7 @@
     layout?: "facts" | "skills";
     mediaSide?: "start" | "end";
     tone?: "default" | "muted";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -52,6 +53,7 @@
     layout = "facts",
     mediaSide = "start",
     tone = "default",
+    landmarkLabel,
   }: AboutMeProps = $props();
 </script>
 
@@ -63,7 +65,7 @@
   layout="split"
   media={{ show: true, side: mediaSide }}
   tone={tone}
-  density="default"
+  landmarkLabel={landmarkLabel}
 >
   {#if ((layout as string) === "facts")}
     <List tag="ul" class="grid grid-cols-1 gap-4 sm:grid-cols-2" data-testid="facts">
@@ -100,7 +102,6 @@
     primaryHref={actions.href}
     secondary={((actions.mode === "two") ? actions.secondary : undefined)}
     secondaryHref={actions.secondaryHref}
-    align="start"
   />
   {#snippet aside()}
     <MediaFrame alt={title} ratio="3/4" />

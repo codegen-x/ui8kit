@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type CartLine,
   type Day,
   type Payment,
@@ -104,6 +105,7 @@ const payments = fromCodex<Payment>(paymentsEntries, PAYMENTS_FIELDS);
               layout="cards"
               summary="aside"
               tone="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.checkout, ui.blocks.variants.checkout.cards)"
             />
           </Box>
         </Stack>
@@ -133,6 +135,7 @@ const payments = fromCodex<Payment>(paymentsEntries, PAYMENTS_FIELDS);
               layout="numbered"
               summary="aside"
               tone="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.checkout, ui.blocks.variants.checkout.numbered)"
             />
           </Box>
         </Stack>
@@ -162,6 +165,7 @@ const payments = fromCodex<Payment>(paymentsEntries, PAYMENTS_FIELDS);
               layout="cards"
               summary="none"
               tone="muted"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.checkout, ui.blocks.variants.checkout.noSummary)"
             />
           </Box>
         </Stack>

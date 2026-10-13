@@ -12,6 +12,7 @@
     Stack,
     Text,
     Title,
+    tpl,
     type Tile,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -63,6 +64,7 @@
             media="none"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.bento)}
           />
         </Box>
       </Stack>
@@ -87,6 +89,7 @@
             media="none"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.even)}
           />
         </Box>
       </Stack>
@@ -111,6 +114,7 @@
             media="image"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.images)}
           />
         </Box>
       </Stack>
@@ -135,6 +139,7 @@
             media="none"
             tone="muted"
             density="compact"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.bento, ui.blocks.variants.bento.muted)}
           />
         </Box>
       </Stack>

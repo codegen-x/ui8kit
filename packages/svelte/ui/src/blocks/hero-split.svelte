@@ -28,6 +28,7 @@
     media?: "picture" | "card" | "grid" | "plans";
     mediaSide?: "end" | "start";
     tone?: "default" | "muted";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -49,6 +50,7 @@
     media = "picture",
     mediaSide = "end",
     tone = "default",
+    landmarkLabel,
   }: HeroSplitProps = $props();
 </script>
 
@@ -60,7 +62,7 @@
   layout="split"
   media={{ show: true, side: mediaSide }}
   tone={tone}
-  density="default"
+  landmarkLabel={landmarkLabel}
 >
   <HeroSplitExtras content={content} extra={extra} />
   <ActionGroup
@@ -68,7 +70,6 @@
     primaryHref={actions.href}
     secondary={((actions.mode === "two") ? actions.secondary : undefined)}
     secondaryHref={actions.secondaryHref}
-    align="start"
   />
   {#snippet aside()}
     <HeroSplitMedia content={content} alt={title} media={media} />

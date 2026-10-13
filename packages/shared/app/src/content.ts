@@ -941,6 +941,7 @@ export const ui = {
         "yearTabsMuted": "Year tabs, muted"
       }
     },
+    "landmark": "{0}, {1}",
     "themes": {
       "marketing": {
         "title": "Marketing",

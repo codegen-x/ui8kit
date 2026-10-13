@@ -20,6 +20,7 @@ export type NavBarProps = {
   layout?: "inline" | "split" | "search";
   over?: "none" | "media";
   skip?: string;
+  landmarkLabel?: string;
 };
 </script>
 
@@ -36,7 +37,7 @@ import NavBlock from "../components/nav-block.vue";
 import NavLinks from "../components/nav-links.vue";
 import OverMedia from "../components/over-media.vue";
 import SearchPalette from "../components/search-palette.vue";
-import { cn } from "../utils";
+import { cn, tpl } from "../utils";
 
 const {
   label,
@@ -49,6 +50,7 @@ const {
   layout = "inline",
   over = "none",
   skip,
+  landmarkLabel,
 } = defineProps<NavBarProps>();
 const emit = defineEmits<{ theme: [] }>();
 </script>
@@ -67,6 +69,7 @@ const emit = defineEmits<{ theme: [] }>();
     data-testid="nav-bar"
     :data-layout="layout"
     :data-tone="tone"
+    :aria-label="landmarkLabel"
   >
     <OverMedia :on="((over as string) === 'media')" :alt="brand" />
     <LinkPlain v-if="skip"
@@ -79,42 +82,48 @@ const emit = defineEmits<{ theme: [] }>();
     </LinkPlain>
     <Container class="mx-auto w-full max-w-6xl px-4" data-slot="container">
       <Box :class="cn('flex flex-wrap items-center justify-between gap-4', 'py-4')">
-        <Grid v-if="((layout as string) === 'split')" cols="1-3" class="w-full items-center gap-4">
-          <NavBlock :label="label" class="md:justify-self-start" testid="site-nav">
-            <NavLinks :links="links" :current="current" side="left" />
-          </NavBlock>
-          <Box class="text-center">
-            <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
-              {{ brand }}
-            </Link>
-          </Box>
-          <Group gap="4" align="center" justify="end" class="flex-wrap md:justify-self-end">
-            <NavBlock :label="label">
-              <NavLinks :links="links" :current="current" side="right" />
-            </NavBlock>
-            <NavActions
-              :login="actions?.login"
-              :loginHref="actions?.loginHref"
-              :cta="actions?.cta"
-              :ctaHref="actions?.href"
-              :actions="actions?.mode"
-              :tone="tone"
-              :themeLabel="actions?.themeLabel"
-              @theme="() => emit('theme')"
-            />
-          </Group>
-        </Grid>
+        <NavBlock v-if="((layout as string) === 'split')"
+          :label="(landmarkLabel ? tpl('{0}, {1}', label, landmarkLabel) : label)"
+          class="w-full"
+          testid="site-nav"
+        >
+          <Grid cols="1-3" class="w-full items-center gap-4">
+            <Box class="md:justify-self-start">
+              <NavLinks :links="links" :current="current" side="left" />
+            </Box>
+            <Box class="text-center">
+              <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
+                {{ brand }}
+              </Link>
+            </Box>
+            <Group gap="4" align="center" justify="end" class="flex-wrap md:justify-self-end">
+              <Box>
+                <NavLinks :links="links" :current="current" side="right" />
+              </Box>
+              <NavActions
+                :login="actions?.login"
+                :loginHref="actions?.loginHref"
+                :cta="actions?.cta"
+                :ctaHref="actions?.href"
+                :actions="actions?.mode"
+                :tone="tone"
+                :themeLabel="actions?.themeLabel"
+                @theme="() => emit('theme')"
+              />
+            </Group>
+          </Grid>
+        </NavBlock>
         <template v-else>
           <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
             {{ brand }}
           </Link>
           <SearchPalette v-if="((layout as string) === 'search')" :label="search.label" :shortcut="search.shortcut" />
           <NavBlock
-            :label="label"
+            :label="(landmarkLabel ? tpl('{0}, {1}', label, landmarkLabel) : label)"
             :class="'order-last w-full overflow-x-auto md:order-none md:w-auto [&>div]:flex-nowrap md:[&>div]:flex-wrap [&_a]:shrink-0'"
             testid="site-nav"
           >
-            <NavLinks :links="links" :current="current" side="all" />
+            <NavLinks :links="links" :current="current" />
           </NavBlock>
           <NavActions
             :login="actions?.login"

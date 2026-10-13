@@ -166,7 +166,6 @@
                     "alt": {
                       "$": "post.title"
                     },
-                    "ratio": "16/9",
                     "className": {
                       "op": "cn",
                       "args": [
@@ -371,7 +370,6 @@
                         "alt": {
                           "$": "post.title"
                         },
-                        "ratio": "16/9",
                         "className": "h-full"
                       }
                     }

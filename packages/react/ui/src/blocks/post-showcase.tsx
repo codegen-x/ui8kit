@@ -29,6 +29,7 @@ export type PostShowcaseProps = {
   cols?: "2" | "3";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  landmarkLabel?: string;
 };
 
 export function PostShowcase({
@@ -43,6 +44,7 @@ export function PostShowcase({
   cols = "3",
   mediaSide = "start",
   tone = "default",
+  landmarkLabel,
 }: PostShowcaseProps) {
   return (
     <>
@@ -55,6 +57,7 @@ export function PostShowcase({
           tone={tone}
           layout="split"
           media={{ show: true, side: mediaSide }}
+          landmarkLabel={landmarkLabel}
           aside={(
             <Box className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {(posts ?? []).map((p, i) => (
@@ -81,6 +84,7 @@ export function PostShowcase({
           tone={tone}
           layout="split"
           media={{ show: true, side: mediaSide }}
+          landmarkLabel={landmarkLabel}
           aside={(
             <MediaFrame alt={title} ratio="4/3" />
           )}
@@ -94,7 +98,7 @@ export function PostShowcase({
           ))}
         </SectionFrame>
       ) : (
-        <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone}>
+        <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone} landmarkLabel={landmarkLabel}>
           <Box
             className={
               (cols as string) === "2" ? "grid grid-cols-1 gap-6 md:grid-cols-2"

@@ -20,6 +20,7 @@
     align?: "start" | "center";
     tone?: "default" | "muted";
     density?: "roomy" | "default" | "compact";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -42,6 +43,7 @@
     align = "center",
     tone = "default",
     density = "default",
+    landmarkLabel,
   }: StatsBandProps = $props();
 </script>
 
@@ -63,6 +65,7 @@
       : ""
     )
   )}
+  landmarkLabel={landmarkLabel}
 >
   <Backdrop kind={(((surface as string) === "image") ? "image" : "none")} alt={title} />
   {#if ((surface as string) === "panel")}

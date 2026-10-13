@@ -12,6 +12,7 @@
     Text,
     Title,
     ZoneTable,
+    tpl,
     type Zone,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -74,6 +75,7 @@
             layout="table"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.zones, ui.blocks.variants.zones.table)}
           />
         </Box>
       </Stack>
@@ -99,6 +101,7 @@
             layout="cards"
             tone="default"
             density="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.zones, ui.blocks.variants.zones.cards)}
           />
         </Box>
       </Stack>
@@ -124,6 +127,7 @@
             layout="table"
             tone="muted"
             density="compact"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.zones, ui.blocks.variants.zones.tableMuted)}
           />
         </Box>
       </Stack>

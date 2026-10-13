@@ -112,8 +112,10 @@ export function expandComposed(c: ComposedSpec, blocks: BlockSpec[], organisms: 
     ];
   } else {
     remember(c.frame.before); remember(c.frame.after);
-    const run = (us: BlockUse[], at: string, prefix: string): { nodes: ViewNode[]; h1: number } => {
-      const out = us.map((u, i) => expandUse(u, blocks, organisms, `${where}.${at}[${i}]`, `${prefix}-${u.block}${us.filter((x) => x.block === u.block).length > 1 ? `-${i}` : ""}`, problems));
+    // landmark names stay unique on a page: a block used twice is named after its variant, and in an area every block after the
+    // first (the lead with the h1) is too on screens that ask for it (nameLandmarks), since different blocks may share a heading (cart, summary) or a nav name with the frame
+    const run = (us: BlockUse[], at: string, prefix: string, area = false): { nodes: ViewNode[]; h1: number } => {
+      const out = us.map((u, i) => expandUse(u, blocks, organisms, `${where}.${at}[${i}]`, `${prefix}-${u.block}${us.filter((x) => x.block === u.block).length > 1 ? `-${i}` : ""}`, problems, us.filter((x) => x.block === u.block).length > 1 || (area && i > 0)));
       return { nodes: out.flatMap((x) => x.nodes), h1: out.filter((x) => x.h1).length };
     };
     const fb = run(c.frame.before, "frame.before", "before"), fa = run(c.frame.after, "frame.after", "after");
@@ -121,7 +123,7 @@ export function expandComposed(c: ComposedSpec, blocks: BlockSpec[], organisms: 
     if (fb.h1 + fa.h1) problems.push(`${where}: the frame holds a level 1 heading; a page has one h1 and it belongs to the area`);
     for (const [area, uses] of Object.entries(c.areas)) {
       remember(uses);
-      const r = run(uses, area, area);
+      const r = run(uses, area, area, c.nameLandmarks === true);
       areas[area] = r.nodes;
       if (c.requireH1 && r.h1 !== 1) problems.push(`${where}.${area}: the page needs exactly one level 1 heading (found ${r.h1})`);
     }

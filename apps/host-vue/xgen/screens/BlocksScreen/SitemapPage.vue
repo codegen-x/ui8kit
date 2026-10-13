@@ -12,6 +12,7 @@ import {
   Stack,
   Text,
   Title,
+  tpl,
   type MegaGroup,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -69,6 +70,7 @@ const SITEMAP_SIGNUP = { title: ui.vibe.sitemap.signupTitle, label: ui.vibe.site
               :status="{ label: ui.vibe.sitemap.status, mode: 'none' }"
               layout="columns"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.sitemap, ui.blocks.variants.sitemap.columns)"
             />
           </Box>
         </Stack>
@@ -96,6 +98,7 @@ const SITEMAP_SIGNUP = { title: ui.vibe.sitemap.signupTitle, label: ui.vibe.site
               :status="{ label: ui.vibe.sitemap.status, mode: 'none' }"
               layout="card"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.sitemap, ui.blocks.variants.sitemap.card)"
             />
           </Box>
         </Stack>
@@ -123,6 +126,7 @@ const SITEMAP_SIGNUP = { title: ui.vibe.sitemap.signupTitle, label: ui.vibe.site
               :status="{ label: ui.vibe.sitemap.status, mode: 'none' }"
               layout="row"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.sitemap, ui.blocks.variants.sitemap.row)"
             />
           </Box>
         </Stack>
@@ -150,6 +154,7 @@ const SITEMAP_SIGNUP = { title: ui.vibe.sitemap.signupTitle, label: ui.vibe.site
               :status="{ label: ui.vibe.sitemap.status, mode: 'none' }"
               layout="columns"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.sitemap, ui.blocks.variants.sitemap.newsletter)"
             />
           </Box>
         </Stack>
@@ -177,6 +182,7 @@ const SITEMAP_SIGNUP = { title: ui.vibe.sitemap.signupTitle, label: ui.vibe.site
               :status="{ label: ui.vibe.sitemap.status, mode: 'show' }"
               layout="columns"
               density="default"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.sitemap, ui.blocks.variants.sitemap.status)"
             />
           </Box>
         </Stack>
@@ -204,6 +210,7 @@ const SITEMAP_SIGNUP = { title: ui.vibe.sitemap.signupTitle, label: ui.vibe.site
               :status="{ label: ui.vibe.sitemap.status, mode: 'none' }"
               layout="columns"
               density="compact"
+              :landmarkLabel="tpl(ui.blocks.landmark, ui.blocks.names.sitemap, ui.blocks.variants.sitemap.compact)"
             />
           </Box>
         </Stack>

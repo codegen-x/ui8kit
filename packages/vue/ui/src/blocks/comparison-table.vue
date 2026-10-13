@@ -16,6 +16,7 @@ export type ComparisonTableProps = {
   highlight?: "none" | "middle";
   tone?: "default" | "muted";
   density?: "default" | "compact";
+  landmarkLabel?: string;
 };
 </script>
 
@@ -40,11 +41,12 @@ const {
   highlight = "none",
   tone = "default",
   density = "default",
+  landmarkLabel,
 } = defineProps<ComparisonTableProps>();
 </script>
 
 <template>
-  <SectionFrame :id="id" :title="title" :tone="tone" :density="density">
+  <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
     <Box class="relative w-full overflow-x-auto">
       <Table class="w-full text-left text-sm" data-testid="compare">
         <TableCaption class="sr-only">

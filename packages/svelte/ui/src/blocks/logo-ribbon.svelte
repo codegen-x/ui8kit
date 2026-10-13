@@ -11,6 +11,7 @@
     logos: Logo[];
     tone?: "default" | "muted";
     density?: "roomy" | "default" | "compact";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -23,10 +24,18 @@
   import { defaults } from "../presets/defaults";
   import { cn } from "../utils";
 
-  let { id, title, logos, tone = "default", density = "default" }: LogoRibbonProps = $props();
+  let { id, title, logos, tone = "default", density = "default", landmarkLabel }: LogoRibbonProps = $props();
 </script>
 
-<SectionFrame id={id} title="" tone={tone} density={density} measure="fill" align="center" class="py-0">
+<SectionFrame
+  id={id}
+  tone={tone}
+  density={density}
+  measure="fill"
+  align="center"
+  class="py-0"
+  landmarkLabel={landmarkLabel}
+>
   <Stack gap="6" align="center" data-testid="logos-block">
     <Title as={2} size="xl" weight="semibold" class="leading-7" id={(id + "-title")}>
       {title}

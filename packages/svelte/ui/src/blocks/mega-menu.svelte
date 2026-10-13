@@ -21,6 +21,7 @@
     panel?: "open" | "closed";
     cols?: "2" | "3";
     promo?: "none" | "card";
+    landmarkLabel?: string;
   };
 </script>
 
@@ -39,7 +40,7 @@
   import Text from "../primitives/text/text.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import NavBlock from "../components/nav-block.svelte";
-  import { cn } from "../utils";
+  import { cn, tpl } from "../utils";
 
   let {
     label,
@@ -52,10 +53,16 @@
     panel = "open",
     cols = "3",
     promo = "none",
+    landmarkLabel,
   }: MegaMenuProps = $props();
 </script>
 
-<Block tag="header" class="relative border-b border-border bg-background" data-testid="mega-menu">
+<Block
+  tag="header"
+  class="relative border-b border-border bg-background"
+  data-testid="mega-menu"
+  aria-label={landmarkLabel}
+>
   <Container
     class={cn("mx-auto w-full max-w-6xl px-4", "flex flex-wrap items-center gap-6 py-4")}
     data-slot="container"
@@ -63,7 +70,7 @@
     <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
       {brand}
     </Link>
-    <NavBlock label={label} class="flex-1">
+    <NavBlock label={(landmarkLabel ? tpl("{0}, {1}", label, landmarkLabel) : label)} class="flex-1">
       <Group gap="4" align="center" class="flex-wrap">
         <ButtonPlain
           type="button"

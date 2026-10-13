@@ -31,6 +31,7 @@ export type FaqListProps = {
   multiple?: boolean;
   tone?: "default" | "muted";
   density?: "roomy" | "default" | "compact";
+  landmarkLabel?: string;
   onQuery?: (text: string) => void;
   onCategory?: (value: string) => void;
 };
@@ -46,6 +47,7 @@ export function FaqList({
   multiple = false,
   tone = "default",
   density = "default",
+  landmarkLabel,
   onQuery,
   onCategory,
 }: FaqListProps) {
@@ -58,6 +60,7 @@ export function FaqList({
       tone={tone}
       density={density}
       measure={(((layout as string) === "chat") ? "2xl" : "default")}
+      landmarkLabel={landmarkLabel}
     >
       {(search?.mode === "field") ? (
         <SearchField

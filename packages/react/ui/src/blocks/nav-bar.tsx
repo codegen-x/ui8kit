@@ -19,7 +19,7 @@ import { NavBlock } from "../components/nav-block";
 import { NavLinks } from "../components/nav-links";
 import { OverMedia } from "../components/over-media";
 import { SearchPalette } from "../components/search-palette";
-import { cn } from "../utils";
+import { cn, tpl } from "../utils";
 import type { NavLink, NavBarActions, NavSearch } from "./nav-bar.types";
 
 export type NavBarProps = {
@@ -33,6 +33,7 @@ export type NavBarProps = {
   layout?: "inline" | "split" | "search";
   over?: "none" | "media";
   skip?: string;
+  landmarkLabel?: string;
   onTheme?: () => void;
 };
 
@@ -47,6 +48,7 @@ export function NavBar({
   layout = "inline",
   over = "none",
   skip,
+  landmarkLabel,
   onTheme,
 }: NavBarProps) {
   return (
@@ -63,6 +65,7 @@ export function NavBar({
       data-testid="nav-bar"
       data-layout={layout}
       data-tone={tone}
+      aria-label={landmarkLabel}
     >
       <OverMedia on={((over as string) === "media")} alt={brand} />
       {skip ? (
@@ -78,31 +81,37 @@ export function NavBar({
       <Container className="mx-auto w-full max-w-6xl px-4" data-slot="container">
         <Box className={cn("flex flex-wrap items-center justify-between gap-4", "py-4")}>
           {((layout as string) === "split") ? (
-            <Grid cols="1-3" className="w-full items-center gap-4">
-              <NavBlock label={label} className="md:justify-self-start" testid="site-nav">
-                <NavLinks links={links} current={current} side="left" />
-              </NavBlock>
-              <Box className="text-center">
-                <Link href="#/" variant="default" className="text-lg font-medium" data-testid="brand">
-                  {brand}
-                </Link>
-              </Box>
-              <Group gap="4" align="center" justify="end" className="flex-wrap md:justify-self-end">
-                <NavBlock label={label}>
-                  <NavLinks links={links} current={current} side="right" />
-                </NavBlock>
-                <NavActions
-                  login={actions?.login}
-                  loginHref={actions?.loginHref}
-                  cta={actions?.cta}
-                  ctaHref={actions?.href}
-                  actions={actions?.mode}
-                  tone={tone}
-                  themeLabel={actions?.themeLabel}
-                  onTheme={() => onTheme?.()}
-                />
-              </Group>
-            </Grid>
+            <NavBlock
+              label={(landmarkLabel ? tpl("{0}, {1}", label, landmarkLabel) : label)}
+              className="w-full"
+              testid="site-nav"
+            >
+              <Grid cols="1-3" className="w-full items-center gap-4">
+                <Box className="md:justify-self-start">
+                  <NavLinks links={links} current={current} side="left" />
+                </Box>
+                <Box className="text-center">
+                  <Link href="#/" variant="default" className="text-lg font-medium" data-testid="brand">
+                    {brand}
+                  </Link>
+                </Box>
+                <Group gap="4" align="center" justify="end" className="flex-wrap md:justify-self-end">
+                  <Box>
+                    <NavLinks links={links} current={current} side="right" />
+                  </Box>
+                  <NavActions
+                    login={actions?.login}
+                    loginHref={actions?.loginHref}
+                    cta={actions?.cta}
+                    ctaHref={actions?.href}
+                    actions={actions?.mode}
+                    tone={tone}
+                    themeLabel={actions?.themeLabel}
+                    onTheme={() => onTheme?.()}
+                  />
+                </Group>
+              </Grid>
+            </NavBlock>
           ) : (
             <>
               <Link href="#/" variant="default" className="text-lg font-medium" data-testid="brand">
@@ -112,11 +121,11 @@ export function NavBar({
                 <SearchPalette label={search.label} shortcut={search.shortcut} />
               ) : null}
               <NavBlock
-                label={label}
+                label={(landmarkLabel ? tpl("{0}, {1}", label, landmarkLabel) : label)}
                 className={"order-last w-full overflow-x-auto md:order-none md:w-auto [&>div]:flex-nowrap md:[&>div]:flex-wrap [&_a]:shrink-0"}
                 testid="site-nav"
               >
-                <NavLinks links={links} current={current} side="all" />
+                <NavLinks links={links} current={current} />
               </NavBlock>
               <NavActions
                 login={actions?.login}

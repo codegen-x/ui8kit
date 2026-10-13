@@ -12,6 +12,7 @@
     Stack,
     Text,
     Title,
+    tpl,
     type Feature,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
@@ -67,6 +68,7 @@
             item="picture"
             cols="3"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featureshowcase, ui.blocks.variants.featureshowcase.pictureCards3)}
           />
         </Box>
       </Stack>
@@ -92,6 +94,7 @@
             item="panel"
             cols="4"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featureshowcase, ui.blocks.variants.featureshowcase.panelCards4)}
           />
         </Box>
       </Stack>
@@ -117,6 +120,7 @@
             item="picture"
             cols="4"
             tone="muted"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featureshowcase, ui.blocks.variants.featureshowcase.pictureCards4)}
           />
         </Box>
       </Stack>
@@ -142,6 +146,7 @@
             item="panel"
             cols="3"
             tone="default"
+            landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.featureshowcase, ui.blocks.variants.featureshowcase.panelCards3)}
           />
         </Box>
       </Stack>

@@ -86,6 +86,7 @@
               layout="split"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.timeline, ui.blocks.variants.timeline.split)}
             />
           </Box>
         </Stack>
@@ -110,6 +111,7 @@
               layout="stacked"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.timeline, ui.blocks.variants.timeline.stacked)}
             />
           </Box>
         </Stack>
@@ -134,6 +136,7 @@
               layout="row"
               tone="default"
               density="default"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.timeline, ui.blocks.variants.timeline.row)}
             />
           </Box>
         </Stack>
@@ -158,6 +161,7 @@
               layout="row"
               tone="muted"
               density="compact"
+              landmarkLabel={tpl(ui.blocks.landmark, ui.blocks.names.timeline, ui.blocks.variants.timeline.rowMuted)}
             />
           </Box>
         </Stack>
