@@ -19,8 +19,8 @@ export type PostCardProps = {
 </script>
 
 <script setup lang="ts">
+import Block from "../primitives/block/block.vue";
 import Box from "../primitives/box/box.vue";
-import Card from "../primitives/card/card.vue";
 import CardContent from "../primitives/card/card-content.vue";
 import Group from "../primitives/group/group.vue";
 import Link from "../primitives/link/link.vue";
@@ -42,7 +42,8 @@ const {
 </script>
 
 <template>
-  <Box v-if="((meta as string) === 'news')"
+  <Block v-if="((meta as string) === 'news')"
+    tag="article"
     :class="cn(
       'flex flex-col gap-2 overflow-hidden rounded p-0 inset-ring inset-ring-border',
       defaults.news.card
@@ -80,13 +81,15 @@ const {
         {{ post.category }}
       </Text>
     </Group>
-  </Box>
-  <Card v-else
-    variant="default"
+  </Block>
+  <Block v-else
+    tag="article"
     :class="cn(
+      'flex flex-col gap-8 bg-card p-6 text-card-foreground inset-ring inset-ring-border rounded',
       'h-full gap-4 overflow-hidden',
       (((layout as string) === 'horizontal') ? 'flex flex-col sm:flex-row' : 'flex flex-col')
     )"
+    data-slot="card"
     data-testid="item"
     :data-layout="layout"
     :data-meta="meta"
@@ -129,5 +132,5 @@ const {
         {{ labels.read }}
       </Link>
     </CardContent>
-  </Card>
+  </Block>
 </template>

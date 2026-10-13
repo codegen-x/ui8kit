@@ -59,6 +59,8 @@ export const eachAt = (items: Value, as: string, index: string, key: Value, ...b
 export const slot = (name: string, ...args: Value[]): ViewNode => ({ slot: name, ...(args.length ? { args } : {}) });
 export const organism = (name: string, props: Record<string, Value>, extra: { on?: Record<string, Handler>; slots?: Record<string, SlotFill> } = {}): ViewNode => ({ organism: name, props, ...(extra.on ? { on: extra.on } : {}), ...(extra.slots ? { slots: extra.slots } : {}) });
 export const outlet = (): ViewNode => ({ outlet: true });
+/** a part of the screen layout (ScreenSpec.parts): its own file next to the screen */
+export const part = (name: string): ViewNode => ({ part: name });
 
 /** a sortable column header: three static aria-sort branches (ascending, descending, none), because ARIA state is never computed */
 export function sortHeader(field: string, label: Value, align: "start" | "end" = "start"): ViewNode {

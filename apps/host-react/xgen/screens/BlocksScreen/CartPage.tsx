@@ -31,37 +31,39 @@ const cart = fromCodex<CartLine>(cartEntries, CART_FIELDS);
 
 export function CartPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text
-            size="sm"
-            className="font-medium text-muted-foreground"
-            data-testid="block-theme"
-            data-theme-id="commerce"
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text
+              size="sm"
+              className="font-medium text-muted-foreground"
+              data-testid="block-theme"
+              data-theme-id="commerce"
+            >
+              {ui.blocks.themes.commerce.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.cart}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.cart}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="cart-table-label"
+            data-testid="variant"
+            data-block="cart"
+            data-variant="table"
           >
-            {ui.blocks.themes.commerce.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.cart}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.cart}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="cart-table-label"
-          data-testid="variant"
-          data-block="cart"
-          data-variant="table"
-        >
-          <Stack gap="4" align="stretch">
             <Title as={2} size="base" weight="bold" id="cart-table-label" data-testid="variant-label">
               {ui.blocks.variants.cart.table}
             </Title>
@@ -78,15 +80,15 @@ export function CartPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="cart-cards-label"
-          data-testid="variant"
-          data-block="cart"
-          data-variant="cards"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="cart-cards-label"
+            data-testid="variant"
+            data-block="cart"
+            data-variant="cards"
+          >
             <Title as={2} size="base" weight="bold" id="cart-cards-label" data-testid="variant-label">
               {ui.blocks.variants.cart.cards}
             </Title>
@@ -103,15 +105,15 @@ export function CartPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="cart-tableCompact-label"
-          data-testid="variant"
-          data-block="cart"
-          data-variant="tableCompact"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="cart-tableCompact-label"
+            data-testid="variant"
+            data-block="cart"
+            data-variant="tableCompact"
+          >
             <Title as={2} size="base" weight="bold" id="cart-tableCompact-label" data-testid="variant-label">
               {ui.blocks.variants.cart.tableCompact}
             </Title>
@@ -128,15 +130,15 @@ export function CartPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="cart-cardsPlain-label"
-          data-testid="variant"
-          data-block="cart"
-          data-variant="cardsPlain"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="cart-cardsPlain-label"
+            data-testid="variant"
+            data-block="cart"
+            data-variant="cardsPlain"
+          >
             <Title as={2} size="base" weight="bold" id="cart-cardsPlain-label" data-testid="variant-label">
               {ui.blocks.variants.cart.cardsPlain}
             </Title>
@@ -153,8 +155,8 @@ export function CartPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

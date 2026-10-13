@@ -17,7 +17,6 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
   import Box from "../primitives/box/box.svelte";
   import Inline from "../primitives/inline/inline.svelte";
   import List from "../primitives/list/list.svelte";
@@ -28,7 +27,7 @@
   let { title, prompt, lines, class: className }: CodeWindowProps = $props();
 </script>
 
-<Block
+<Box
   class={cn(
     "w-full overflow-hidden rounded bg-card text-left inset-ring inset-ring-border",
     className
@@ -59,4 +58,4 @@
       </ListItem>
     {/each}
   </List>
-</Block>
+</Box>

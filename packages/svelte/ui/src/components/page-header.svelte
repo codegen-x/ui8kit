@@ -13,7 +13,6 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
   import Box from "../primitives/box/box.svelte";
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
@@ -21,7 +20,7 @@
   let { title, summary, id, actions }: PageHeaderProps = $props();
 </script>
 
-<Block class="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
+<Box class="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
   <Box class="flex min-w-0 flex-col gap-2">
     <Title as={1} size="xl" weight="bold" class="m-0" id={id}>
       {title}
@@ -37,4 +36,4 @@
       {@render actions?.()}
     </Box>
   {/if}
-</Block>
+</Box>

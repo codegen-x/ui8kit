@@ -39,26 +39,33 @@
   const POSTS_FILTER = { topics, label: ui.vibe.posts.topics, topic: "" } as const;
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.catalog.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-        {ui.catalog.sections.content.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="category-title">
-        {ui.catalog.categories.contentBlog}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {tpl(ui.catalog.count, 1, 9)}
-      </Text>
-    </Stack>
-    <Block tag="section" aria-labelledby="catalog-posts-title" data-testid="catalog-block" data-block="posts">
-      <Stack gap="6" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.catalog.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+          {ui.catalog.sections.content.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="category-title">
+          {ui.catalog.categories.contentBlog}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {tpl(ui.catalog.count, 1, 9)}
+        </Text>
+      </Stack>
+      <Stack
+        gap="6"
+        align="stretch"
+        role="group"
+        aria-labelledby="catalog-posts-title"
+        data-testid="catalog-block"
+        data-block="posts"
+      >
         <Stack gap="2" align="stretch">
           <Title as={2} size="2xl" weight="bold" id="catalog-posts-title">
             {ui.blocks.names.posts}
@@ -67,268 +74,268 @@
             {ui.blocks.docs.posts}
           </Text>
         </Stack>
-        <Block
-          tag="section"
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="posts-grid-label"
           data-testid="variant"
           data-block="posts"
           data-variant="grid"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="posts-grid-label" data-testid="variant-label">
-              {ui.blocks.variants.posts.grid}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <PostGrid
-                id="posts-grid"
-                title={ui.content.posts.title}
-                posts={posts}
-                labels={ui.content.labels}
-                filter={{ ...POSTS_FILTER, mode: "none" }}
-                action={{ label: ui.content.posts.action, href: "#/" }}
-                layout="grid"
-                cols="1-3"
-                media="image"
-                meta="full"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="posts-grid-label" data-testid="variant-label">
+            {ui.blocks.variants.posts.grid}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <PostGrid
+              id="posts-grid"
+              title={ui.content.posts.title}
+              posts={posts}
+              labels={ui.content.labels}
+              filter={{ ...POSTS_FILTER, mode: "none" }}
+              action={{ label: ui.content.posts.action, href: "#/" }}
+              layout="grid"
+              cols="1-3"
+              media="image"
+              meta="full"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="posts-filters-label"
           data-testid="variant"
           data-block="posts"
           data-variant="filters"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="posts-filters-label" data-testid="variant-label">
-              {ui.blocks.variants.posts.filters}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <PostGrid
-                id="posts-filters"
-                title={ui.content.posts.title}
-                posts={posts}
-                labels={ui.content.labels}
-                filter={{ ...POSTS_FILTER, topic: "Design", mode: "topics" }}
-                action={{ label: ui.content.posts.action, href: "#/" }}
-                layout="grid"
-                cols="1-3"
-                media="image"
-                meta="full"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="posts-filters-label" data-testid="variant-label">
+            {ui.blocks.variants.posts.filters}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <PostGrid
+              id="posts-filters"
+              title={ui.content.posts.title}
+              posts={posts}
+              labels={ui.content.labels}
+              filter={{ ...POSTS_FILTER, topic: "Design", mode: "topics" }}
+              action={{ label: ui.content.posts.action, href: "#/" }}
+              layout="grid"
+              cols="1-3"
+              media="image"
+              meta="full"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="posts-twoUp-label"
           data-testid="variant"
           data-block="posts"
           data-variant="twoUp"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="posts-twoUp-label" data-testid="variant-label">
-              {ui.blocks.variants.posts.twoUp}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <PostGrid
-                id="posts-twoUp"
-                title={ui.content.posts.title}
-                posts={posts}
-                labels={ui.content.labels}
-                filter={{ ...POSTS_FILTER, mode: "none" }}
-                action={{ label: ui.content.posts.action, href: "#/" }}
-                layout="grid"
-                cols="1-2"
-                media="image"
-                meta="full"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="posts-twoUp-label" data-testid="variant-label">
+            {ui.blocks.variants.posts.twoUp}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <PostGrid
+              id="posts-twoUp"
+              title={ui.content.posts.title}
+              posts={posts}
+              labels={ui.content.labels}
+              filter={{ ...POSTS_FILTER, mode: "none" }}
+              action={{ label: ui.content.posts.action, href: "#/" }}
+              layout="grid"
+              cols="1-2"
+              media="image"
+              meta="full"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="posts-row4-label"
           data-testid="variant"
           data-block="posts"
           data-variant="row4"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="posts-row4-label" data-testid="variant-label">
-              {ui.blocks.variants.posts.row4}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <PostGrid
-                id="posts-row4"
-                title={ui.content.posts.title}
-                posts={posts}
-                labels={ui.content.labels}
-                filter={{ ...POSTS_FILTER, mode: "none" }}
-                action={{ label: ui.content.posts.action, href: "#/" }}
-                layout="grid"
-                cols="1-4"
-                media="image"
-                meta="full"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="posts-row4-label" data-testid="variant-label">
+            {ui.blocks.variants.posts.row4}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <PostGrid
+              id="posts-row4"
+              title={ui.content.posts.title}
+              posts={posts}
+              labels={ui.content.labels}
+              filter={{ ...POSTS_FILTER, mode: "none" }}
+              action={{ label: ui.content.posts.action, href: "#/" }}
+              layout="grid"
+              cols="1-4"
+              media="image"
+              meta="full"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="posts-news4-label"
           data-testid="variant"
           data-block="posts"
           data-variant="news4"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="posts-news4-label" data-testid="variant-label">
-              {ui.blocks.variants.posts.news4}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <PostGrid
-                id="posts-news4"
-                title={ui.content.posts.title}
-                posts={posts}
-                labels={ui.content.labels}
-                filter={{ ...POSTS_FILTER, mode: "none" }}
-                action={{ label: ui.content.posts.action, href: "#/" }}
-                layout="grid"
-                cols="1-4"
-                media="image"
-                meta="news"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="posts-news4-label" data-testid="variant-label">
+            {ui.blocks.variants.posts.news4}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <PostGrid
+              id="posts-news4"
+              title={ui.content.posts.title}
+              posts={posts}
+              labels={ui.content.labels}
+              filter={{ ...POSTS_FILTER, mode: "none" }}
+              action={{ label: ui.content.posts.action, href: "#/" }}
+              layout="grid"
+              cols="1-4"
+              media="image"
+              meta="news"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="posts-list-label"
           data-testid="variant"
           data-block="posts"
           data-variant="list"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="posts-list-label" data-testid="variant-label">
-              {ui.blocks.variants.posts.list}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <PostGrid
-                id="posts-list"
-                title={ui.content.posts.title}
-                posts={posts}
-                labels={ui.content.labels}
-                filter={{ ...POSTS_FILTER, mode: "none" }}
-                action={{ label: ui.content.posts.action, href: "#/" }}
-                layout="list"
-                cols="1-3"
-                media="image"
-                meta="full"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="posts-list-label" data-testid="variant-label">
+            {ui.blocks.variants.posts.list}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <PostGrid
+              id="posts-list"
+              title={ui.content.posts.title}
+              posts={posts}
+              labels={ui.content.labels}
+              filter={{ ...POSTS_FILTER, mode: "none" }}
+              action={{ label: ui.content.posts.action, href: "#/" }}
+              layout="list"
+              cols="1-3"
+              media="image"
+              meta="full"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="posts-magazine-label"
           data-testid="variant"
           data-block="posts"
           data-variant="magazine"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="posts-magazine-label" data-testid="variant-label">
-              {ui.blocks.variants.posts.magazine}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <PostGrid
-                id="posts-magazine"
-                title={ui.content.posts.title}
-                posts={posts}
-                labels={ui.content.labels}
-                filter={{ ...POSTS_FILTER, mode: "none" }}
-                action={{ label: ui.content.posts.action, href: "#/" }}
-                layout="magazine"
-                cols="1-3"
-                media="image"
-                meta="full"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="posts-magazine-label" data-testid="variant-label">
+            {ui.blocks.variants.posts.magazine}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <PostGrid
+              id="posts-magazine"
+              title={ui.content.posts.title}
+              posts={posts}
+              labels={ui.content.labels}
+              filter={{ ...POSTS_FILTER, mode: "none" }}
+              action={{ label: ui.content.posts.action, href: "#/" }}
+              layout="magazine"
+              cols="1-3"
+              media="image"
+              meta="full"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="posts-textOnly-label"
           data-testid="variant"
           data-block="posts"
           data-variant="textOnly"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="posts-textOnly-label" data-testid="variant-label">
-              {ui.blocks.variants.posts.textOnly}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <PostGrid
-                id="posts-textOnly"
-                title={ui.content.posts.title}
-                posts={posts}
-                labels={ui.content.labels}
-                filter={{ ...POSTS_FILTER, mode: "none" }}
-                action={{ label: ui.content.posts.action, href: "#/" }}
-                layout="grid"
-                cols="1-3"
-                media="none"
-                meta="full"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="posts-textOnly-label" data-testid="variant-label">
+            {ui.blocks.variants.posts.textOnly}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <PostGrid
+              id="posts-textOnly"
+              title={ui.content.posts.title}
+              posts={posts}
+              labels={ui.content.labels}
+              filter={{ ...POSTS_FILTER, mode: "none" }}
+              action={{ label: ui.content.posts.action, href: "#/" }}
+              layout="grid"
+              cols="1-3"
+              media="none"
+              meta="full"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="posts-digest-label"
           data-testid="variant"
           data-block="posts"
           data-variant="digest"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="posts-digest-label" data-testid="variant-label">
-              {ui.blocks.variants.posts.digest}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <PostGrid
-                id="posts-digest"
-                title={ui.content.posts.title}
-                posts={posts}
-                labels={ui.content.labels}
-                filter={{ ...POSTS_FILTER, mode: "none" }}
-                action={{ label: ui.content.posts.action, href: "#/" }}
-                layout="grid"
-                cols="1-3"
-                media="none"
-                meta="short"
-                tone="muted"
-                density="compact"
-              />
-            </Box>
-          </Stack>
-        </Block>
+          <Title as={3} size="base" weight="bold" id="posts-digest-label" data-testid="variant-label">
+            {ui.blocks.variants.posts.digest}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <PostGrid
+              id="posts-digest"
+              title={ui.content.posts.title}
+              posts={posts}
+              labels={ui.content.labels}
+              filter={{ ...POSTS_FILTER, mode: "none" }}
+              action={{ label: ui.content.posts.action, href: "#/" }}
+              layout="grid"
+              cols="1-3"
+              media="none"
+              meta="short"
+              tone="muted"
+              density="compact"
+            />
+          </Box>
+        </Stack>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

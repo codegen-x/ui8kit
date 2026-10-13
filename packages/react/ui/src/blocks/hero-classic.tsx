@@ -55,83 +55,86 @@ export function HeroClassic({
   const mediaKind = media?.kind ?? "none";
   const mediaSide = media?.side ?? "end";
   return (
-    <Backdrop kind={(((mediaKind as string) === "backdrop") ? "image" : "none")} alt={title}>
-      <SectionFrame
-        id={id}
-        title={title}
-        lead={text}
-        heading={{ level, scale, badge }}
-        layout={(((layout as string) === "split") ? "split" : "stack")}
-        align={(((layout as string) === "split") ? "start" : "center")}
-        media={{
-          show: (((mediaKind as string) === "image") || ((mediaKind as string) === "code") || ((mediaKind as string) === "cluster")),
-          side: mediaSide,
-        }}
-        tone={tone}
-        density={density}
-        aside={(
-          <>
-            {(((mediaKind as string) === "code") && media?.lines && media?.codeTitle && media?.prompt) ? (
-              <CodeWindow title={media?.codeTitle} prompt={media?.prompt} lines={media?.lines} />
-            ) : null}
-            {((mediaKind as string) === "cluster") ? (
-              <Grid cols="3" className="items-end gap-4" data-testid="cluster">
-                <Box className={cn("w-full", "")}>
-                  <MediaFrame alt={title} ratio="3/4" />
-                </Box>
-                <Box className={cn("w-full", "-translate-y-4")}>
-                  <MediaFrame alt={title} ratio="4/3" />
-                </Box>
-                <Box className={cn("w-full", "")}>
-                  <MediaFrame alt={title} ratio="3/4" />
-                </Box>
-              </Grid>
-            ) : null}
-            {(((mediaKind as string) === "image")) ? (
-              <MediaFrame alt={title} ratio="4/3" />
-            ) : null}
-          </>
-        )}
-      >
-        {actions?.cta ? (
-          <>
-            {(actions?.mode === "form") ? (
-              <Box
-                className={cn("w-full max-w-xl", (((layout as string) === "centered") ? "mx-auto" : ""))}
-                data-testid="email-form"
-              >
-                <Label htmlFor={tpl("{0}-email", id)} className="sr-only">
-                  {actions?.emailLabel}
-                </Label>
-                <Group gap="2" align="start" className="w-full flex-wrap">
-                  <Input
-                    type="text"
-                    name="prompt"
-                    className="min-w-0 flex-1"
-                    placeholder={actions?.emailLabel}
-                    id={tpl("{0}-email", id)}
-                    data-testid="field"
-                  />
-                  <Button variant="default" size="default" href={(actions?.href ?? "#/")} data-testid="submit">
-                    {actions?.cta}
-                  </Button>
-                </Group>
+    <SectionFrame
+      id={id}
+      title={title}
+      lead={text}
+      heading={{ level, scale, badge }}
+      layout={(((layout as string) === "split") ? "split" : "stack")}
+      align={(((layout as string) === "split") ? "start" : "center")}
+      media={{
+        show: (((mediaKind as string) === "image") || ((mediaKind as string) === "code") || ((mediaKind as string) === "cluster")),
+        side: mediaSide,
+      }}
+      tone={tone}
+      density={density}
+      className={
+        (((mediaKind as string) === "backdrop") ? "image" : "none") === "image" ? "relative isolate overflow-hidden"
+        : ""
+      }
+      aside={(
+        <>
+          {(((mediaKind as string) === "code") && media?.lines && media?.codeTitle && media?.prompt) ? (
+            <CodeWindow title={media?.codeTitle} prompt={media?.prompt} lines={media?.lines} />
+          ) : null}
+          {((mediaKind as string) === "cluster") ? (
+            <Grid cols="3" className="items-end gap-4" data-testid="cluster">
+              <Box className={cn("w-full", "")}>
+                <MediaFrame alt={title} ratio="3/4" />
               </Box>
-            ) : (
-              <ActionGroup
-                primary={actions?.cta}
-                primaryHref={actions?.href}
-                secondary={((actions?.mode === "two") ? actions?.secondary : undefined)}
-                secondaryHref={actions?.secondaryHref}
-                align={(((layout as string) === "centered") ? "center" : "start")}
-              />
-            )}
-          </>
-        ) : null}
-        {topics ? (
-          <TopicChips topics={topics} />
-        ) : null}
-      </SectionFrame>
-    </Backdrop>
+              <Box className={cn("w-full", "-translate-y-4")}>
+                <MediaFrame alt={title} ratio="4/3" />
+              </Box>
+              <Box className={cn("w-full", "")}>
+                <MediaFrame alt={title} ratio="3/4" />
+              </Box>
+            </Grid>
+          ) : null}
+          {(((mediaKind as string) === "image")) ? (
+            <MediaFrame alt={title} ratio="4/3" />
+          ) : null}
+        </>
+      )}
+    >
+      <Backdrop kind={(((mediaKind as string) === "backdrop") ? "image" : "none")} alt={title} />
+      {actions?.cta ? (
+        <>
+          {(actions?.mode === "form") ? (
+            <Box
+              className={cn("w-full max-w-xl", (((layout as string) === "centered") ? "mx-auto" : ""))}
+              data-testid="email-form"
+            >
+              <Label htmlFor={tpl("{0}-email", id)} className="sr-only">
+                {actions?.emailLabel}
+              </Label>
+              <Group gap="2" align="start" className="w-full flex-wrap">
+                <Input
+                  type="text"
+                  name="prompt"
+                  className="min-w-0 flex-1"
+                  placeholder={actions?.emailLabel}
+                  id={tpl("{0}-email", id)}
+                  data-testid="field"
+                />
+                <Button variant="default" size="default" href={(actions?.href ?? "#/")} data-testid="submit">
+                  {actions?.cta}
+                </Button>
+              </Group>
+            </Box>
+          ) : (
+            <ActionGroup
+              primary={actions?.cta}
+              primaryHref={actions?.href}
+              secondary={((actions?.mode === "two") ? actions?.secondary : undefined)}
+              secondaryHref={actions?.secondaryHref}
+              align={(((layout as string) === "centered") ? "center" : "start")}
+            />
+          )}
+        </>
+      ) : null}
+      {topics ? (
+        <TopicChips topics={topics} />
+      ) : null}
+    </SectionFrame>
   );
 }

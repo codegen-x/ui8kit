@@ -2,7 +2,8 @@
 <!-- Source: xgen/screens/src/authoring/components/parts.ts -->
 <!--
   A titled card (surface bg-card, hairline ring): the content panel of a page. An optional title, description
-  and header actions. Pass `id` to name the section by its title.
+  and header actions. Pass `id` to name the panel by its title. Not a landmark: a labelled group inside the
+  Block of its block (rule 01).
 -->
 <script lang="ts" module>
   import type { Snippet } from "svelte";
@@ -18,7 +19,6 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
   import Box from "../primitives/box/box.svelte";
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
@@ -27,12 +27,12 @@
   let { title, description, id, class: className, children, actions }: PanelProps = $props();
 </script>
 
-<Block
-  tag="section"
+<Box
   class={cn(
     "flex min-w-0 flex-col gap-4 rounded bg-card p-6 inset-ring inset-ring-border",
     className
   )}
+  role="group"
   aria-labelledby={((title && id) ? tpl("{0}-t", id) : undefined)}
 >
   {#if (title || actions)}
@@ -53,4 +53,4 @@
     </Box>
   {/if}
   {@render children?.()}
-</Block>
+</Box>

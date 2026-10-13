@@ -29,7 +29,9 @@ export type ViewNode =
   /** an organism of xgen/specs/organisms; `slots` fill its render-prop slots */
   | { organism: string; props?: Record<string, Value>; on?: Record<string, Handler>; slots?: Record<string, SlotFill> }
   /** where the routed area of a screen goes */
-  | { outlet: true };
+  | { outlet: true }
+  /** a part of a screen layout (`ScreenSpec.parts`), emitted as its own file next to the screen: one Block per file (rule 01) */
+  | { part: string };
 
 export const OPS: Record<string, number | "n"> = {
   eq: 2, ne: 2, not: 1, and: "n", or: "n", gt: 2, lt: 2, ge: 2, le: 2, add: 2, sub: 2, mul: 2, div: 2, cond: 3, len: 1, at: 2, tpl: "n", money: 2, num: 1,
@@ -95,6 +97,12 @@ export interface OrganismSpec {
   /** callbacks: `select` becomes onselect (Svelte) and onSelect (React) */
   events: Array<{ name: string; args: Array<{ name: string; type: PropType }>; docs?: string }>;
   view: ViewNode[];
+  /**
+   * a frame: a part whose whole job is the landmark of a region (the section frame of the blocks, the shell header, sidebar and
+   * footer). It opens on one Block with a landmark tag and is checked as a block file (the `blockRoot` zone, rule 01); any other
+   * part or pattern never opens on Block
+   */
+  frame?: true;
   /** `vue` defaults to the Svelte flag (portableTo in xgen-spec) */
   portable: { svelte: true | { portable: false; reason: string }; react: true | { portable: false; reason: string }; vue?: true | { portable: false; reason: string } };
 }
@@ -148,6 +156,10 @@ export interface ScreenSpec {
   /** the menu of the screen (the links of its navigation bar), in order; every path is one of `routes` */
   menu?: MenuRoute[];
   organisms: string[];
+  /** named pieces of the layout, each emitted as its own component file next to the screen (`BlocksScreen/ScreenHeader`) and placed
+   *  with a `{ part }` node: a second landmark of the frame (the header beside the main) lives in its own file, so every file of
+   *  the screen opens on one Block (rule 01). A part reads `ui`, the named values and `actions` only (not the route). */
+  parts?: Record<string, ViewNode[]>;
   layout: ViewNode[];
   areas: Record<string, ViewNode[]>;
   /** page screens: every area is its own component file next to the screen (the gallery: one file per block page) */

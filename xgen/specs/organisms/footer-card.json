@@ -142,9 +142,8 @@
                   ]
                 },
                 {
-                  "use": "Block",
+                  "use": "Nav",
                   "props": {
-                    "Tag": "nav",
                     "Class": "min-w-0 flex-1"
                   },
                   "attrs": {
@@ -267,6 +266,7 @@
     "svelte": true,
     "react": true
   },
+  "frame": true,
   "typeImports": [
     {
       "from": "MegaMenu",

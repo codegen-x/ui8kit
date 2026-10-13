@@ -18,7 +18,7 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
+  import Box from "../primitives/box/box.svelte";
   import Label from "../primitives/label/label.svelte";
   import Text from "../primitives/text/text.svelte";
   import { cn } from "../utils";
@@ -26,7 +26,7 @@
   let { label, htmlFor, hint, error, class: className, children }: FieldProps = $props();
 </script>
 
-<Block class={cn("flex min-w-0 flex-col gap-2", className)}>
+<Box class={cn("flex min-w-0 flex-col gap-2", className)}>
   <Label class="text-xs font-bold text-foreground" for={htmlFor}>
     {label}
   </Label>
@@ -40,4 +40,4 @@
       {hint}
     </Text>
   {/if}
-</Block>
+</Box>

@@ -5,7 +5,7 @@
  * from the utils to the keydown (vertical, no loop).
  */
 import { type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
+import { Box } from "../primitives/box/box";
 import { cn } from "../utils";
 
 export type FileTreeProps = {
@@ -16,13 +16,8 @@ export type FileTreeProps = {
 
 export function FileTree({ label, className, children }: FileTreeProps) {
   return (
-    <Block
-      className={cn("flex flex-col gap-2 p-2", className)}
-      role="tree"
-      aria-label={label}
-      data-slot="file-tree"
-    >
+    <Box className={cn("flex flex-col gap-2 p-2", className)} role="tree" aria-label={label} data-slot="file-tree">
       {children}
-    </Block>
+    </Box>
   );
 }

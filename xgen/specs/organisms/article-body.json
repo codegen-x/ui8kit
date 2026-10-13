@@ -130,9 +130,8 @@
                   },
                   "then": [
                     {
-                      "use": "Block",
+                      "use": "Nav",
                       "props": {
-                        "Tag": "nav",
                         "Class": "md:sticky md:top-4"
                       },
                       "attrs": {
@@ -242,9 +241,8 @@
                       },
                       "do": [
                         {
-                          "use": "Block",
+                          "use": "Box",
                           "props": {
-                            "Tag": "div",
                             "Class": "flex flex-col gap-4"
                           },
                           "attrs": {
@@ -308,9 +306,8 @@
                                   },
                                   "then": [
                                     {
-                                      "use": "Block",
+                                      "use": "Blockquote",
                                       "props": {
-                                        "Tag": "blockquote",
                                         "Class": "m-0 border-l border-border pl-4 text-lg"
                                       },
                                       "attrs": {

@@ -23,7 +23,7 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
+  import Box from "../primitives/box/box.svelte";
   import Button from "../primitives/button/button.svelte";
   import Inline from "../primitives/inline/inline.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
@@ -44,7 +44,7 @@
   const numbers = $derived(pageWindow(page, pages));
 </script>
 
-<Block
+<Box
   class={"flex flex-wrap items-center justify-between gap-4 text-xs font-semibold text-muted-foreground"}
   data-testid="pager"
 >
@@ -114,4 +114,4 @@
       <LucideIcon name="chevron-right" size={16} />
     </Button>
   </Inline>
-</Block>
+</Box>

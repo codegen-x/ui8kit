@@ -44,26 +44,33 @@ const USAGE_PRICE = { rate: 0.01, currency: ui.vibe.usage.currency, label: ui.vi
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.catalog.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-          {{ ui.catalog.sections.marketing.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="category-title">
-          {{ ui.catalog.categories.marketingPricingTools }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ tpl(ui.catalog.count, 3, 12) }}
-        </Text>
-      </Stack>
-      <Block tag="section" aria-labelledby="catalog-compare-title" data-testid="catalog-block" data-block="compare">
-        <Stack gap="6" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.catalog.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+            {{ ui.catalog.sections.marketing.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="category-title">
+            {{ ui.catalog.categories.marketingPricingTools }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ tpl(ui.catalog.count, 3, 12) }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="6"
+          align="stretch"
+          role="group"
+          aria-labelledby="catalog-compare-title"
+          data-testid="catalog-block"
+          data-block="compare"
+        >
           <Stack gap="2" align="stretch">
             <Title :as="2" size="2xl" weight="bold" id="catalog-compare-title">
               {{ ui.blocks.names.compare }}
@@ -72,106 +79,111 @@ const USAGE_PRICE = { rate: 0.01, currency: ui.vibe.usage.currency, label: ui.vi
               {{ ui.blocks.docs.compare }}
             </Text>
           </Stack>
-          <Block
-            tag="section"
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="compare-plans-label"
             data-testid="variant"
             data-block="compare"
             data-variant="plans"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="compare-plans-label" data-testid="variant-label">
-                {{ ui.blocks.variants.compare.plans }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <ComparisonTable
-                  id="compare-plans"
-                  :title="ui.vibe.compare.title"
-                  :rows="compare"
-                  :labels="ui.vibe.compare.labels"
-                  highlight="none"
-                  tone="default"
-                  density="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="compare-plans-label" data-testid="variant-label">
+              {{ ui.blocks.variants.compare.plans }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <ComparisonTable
+                id="compare-plans"
+                :title="ui.vibe.compare.title"
+                :rows="compare"
+                :labels="ui.vibe.compare.labels"
+                highlight="none"
+                tone="default"
+                density="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="compare-highlight-label"
             data-testid="variant"
             data-block="compare"
             data-variant="highlight"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="compare-highlight-label" data-testid="variant-label">
-                {{ ui.blocks.variants.compare.highlight }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <ComparisonTable
-                  id="compare-highlight"
-                  :title="ui.vibe.compare.title"
-                  :rows="compare"
-                  :labels="ui.vibe.compare.labels"
-                  highlight="middle"
-                  tone="default"
-                  density="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="compare-highlight-label" data-testid="variant-label">
+              {{ ui.blocks.variants.compare.highlight }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <ComparisonTable
+                id="compare-highlight"
+                :title="ui.vibe.compare.title"
+                :rows="compare"
+                :labels="ui.vibe.compare.labels"
+                highlight="middle"
+                tone="default"
+                density="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="compare-rivals-label"
             data-testid="variant"
             data-block="compare"
             data-variant="rivals"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="compare-rivals-label" data-testid="variant-label">
-                {{ ui.blocks.variants.compare.rivals }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <ComparisonTable
-                  id="compare-rivals"
-                  :title="ui.vibe.rivals.title"
-                  :rows="rivals"
-                  :labels="ui.vibe.rivals.labels"
-                  highlight="middle"
-                  tone="muted"
-                  density="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="compare-rivals-label" data-testid="variant-label">
+              {{ ui.blocks.variants.compare.rivals }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <ComparisonTable
+                id="compare-rivals"
+                :title="ui.vibe.rivals.title"
+                :rows="rivals"
+                :labels="ui.vibe.rivals.labels"
+                highlight="middle"
+                tone="muted"
+                density="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="compare-muted-label"
             data-testid="variant"
             data-block="compare"
             data-variant="muted"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="compare-muted-label" data-testid="variant-label">
-                {{ ui.blocks.variants.compare.muted }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <ComparisonTable
-                  id="compare-muted"
-                  :title="ui.vibe.compare.title"
-                  :rows="compare"
-                  :labels="ui.vibe.compare.labels"
-                  highlight="none"
-                  tone="muted"
-                  density="compact"
-                />
-              </Box>
-            </Stack>
-          </Block>
+            <Title :as="3" size="base" weight="bold" id="compare-muted-label" data-testid="variant-label">
+              {{ ui.blocks.variants.compare.muted }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <ComparisonTable
+                id="compare-muted"
+                :title="ui.vibe.compare.title"
+                :rows="compare"
+                :labels="ui.vibe.compare.labels"
+                highlight="none"
+                tone="muted"
+                density="compact"
+              />
+            </Box>
+          </Stack>
         </Stack>
-      </Block>
-      <Block tag="section" aria-labelledby="catalog-credits-title" data-testid="catalog-block" data-block="credits">
-        <Stack gap="6" align="stretch">
+        <Stack
+          gap="6"
+          align="stretch"
+          role="group"
+          aria-labelledby="catalog-credits-title"
+          data-testid="catalog-block"
+          data-block="credits"
+        >
           <Stack gap="2" align="stretch">
             <Title :as="2" size="2xl" weight="bold" id="catalog-credits-title">
               {{ ui.blocks.names.credits }}
@@ -180,114 +192,119 @@ const USAGE_PRICE = { rate: 0.01, currency: ui.vibe.usage.currency, label: ui.vi
               {{ ui.blocks.docs.credits }}
             </Text>
           </Stack>
-          <Block
-            tag="section"
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="credits-tiles4-label"
             data-testid="variant"
             data-block="credits"
             data-variant="tiles4"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="credits-tiles4-label" data-testid="variant-label">
-                {{ ui.blocks.variants.credits.tiles4 }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <CreditPacks
-                  id="credits-tiles4"
-                  :title="ui.vibe.credits.title"
-                  :packs="credits"
-                  :badges="ui.vibe.credits.badges"
-                  :buy="ui.vibe.credits.buy"
-                  cols="4"
-                  item="tile"
-                  tone="default"
-                  density="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="credits-tiles4-label" data-testid="variant-label">
+              {{ ui.blocks.variants.credits.tiles4 }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <CreditPacks
+                id="credits-tiles4"
+                :title="ui.vibe.credits.title"
+                :packs="credits"
+                :badges="ui.vibe.credits.badges"
+                :buy="ui.vibe.credits.buy"
+                cols="4"
+                item="tile"
+                tone="default"
+                density="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="credits-tiles2-label"
             data-testid="variant"
             data-block="credits"
             data-variant="tiles2"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="credits-tiles2-label" data-testid="variant-label">
-                {{ ui.blocks.variants.credits.tiles2 }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <CreditPacks
-                  id="credits-tiles2"
-                  :title="ui.vibe.credits.title"
-                  :packs="credits"
-                  :badges="ui.vibe.credits.badges"
-                  :buy="ui.vibe.credits.buy"
-                  cols="2"
-                  item="tile"
-                  tone="default"
-                  density="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="credits-tiles2-label" data-testid="variant-label">
+              {{ ui.blocks.variants.credits.tiles2 }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <CreditPacks
+                id="credits-tiles2"
+                :title="ui.vibe.credits.title"
+                :packs="credits"
+                :badges="ui.vibe.credits.badges"
+                :buy="ui.vibe.credits.buy"
+                cols="2"
+                item="tile"
+                tone="default"
+                density="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="credits-rows-label"
             data-testid="variant"
             data-block="credits"
             data-variant="rows"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="credits-rows-label" data-testid="variant-label">
-                {{ ui.blocks.variants.credits.rows }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <CreditPacks
-                  id="credits-rows"
-                  :title="ui.vibe.credits.title"
-                  :packs="credits"
-                  :badges="ui.vibe.credits.badges"
-                  :buy="ui.vibe.credits.buy"
-                  cols="4"
-                  item="row"
-                  tone="default"
-                  density="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="credits-rows-label" data-testid="variant-label">
+              {{ ui.blocks.variants.credits.rows }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <CreditPacks
+                id="credits-rows"
+                :title="ui.vibe.credits.title"
+                :packs="credits"
+                :badges="ui.vibe.credits.badges"
+                :buy="ui.vibe.credits.buy"
+                cols="4"
+                item="row"
+                tone="default"
+                density="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="credits-muted-label"
             data-testid="variant"
             data-block="credits"
             data-variant="muted"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="credits-muted-label" data-testid="variant-label">
-                {{ ui.blocks.variants.credits.muted }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <CreditPacks
-                  id="credits-muted"
-                  :title="ui.vibe.credits.title"
-                  :packs="credits"
-                  :badges="ui.vibe.credits.badges"
-                  :buy="ui.vibe.credits.buy"
-                  cols="4"
-                  item="tile"
-                  tone="muted"
-                  density="compact"
-                />
-              </Box>
-            </Stack>
-          </Block>
+            <Title :as="3" size="base" weight="bold" id="credits-muted-label" data-testid="variant-label">
+              {{ ui.blocks.variants.credits.muted }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <CreditPacks
+                id="credits-muted"
+                :title="ui.vibe.credits.title"
+                :packs="credits"
+                :badges="ui.vibe.credits.badges"
+                :buy="ui.vibe.credits.buy"
+                cols="4"
+                item="tile"
+                tone="muted"
+                density="compact"
+              />
+            </Box>
+          </Stack>
         </Stack>
-      </Block>
-      <Block tag="section" aria-labelledby="catalog-usage-title" data-testid="catalog-block" data-block="usage">
-        <Stack gap="6" align="stretch">
+        <Stack
+          gap="6"
+          align="stretch"
+          role="group"
+          aria-labelledby="catalog-usage-title"
+          data-testid="catalog-block"
+          data-block="usage"
+        >
           <Stack gap="2" align="stretch">
             <Title :as="2" size="2xl" weight="bold" id="catalog-usage-title">
               {{ ui.blocks.names.usage }}
@@ -296,120 +313,120 @@ const USAGE_PRICE = { rate: 0.01, currency: ui.vibe.usage.currency, label: ui.vi
               {{ ui.blocks.docs.usage }}
             </Text>
           </Stack>
-          <Block
-            tag="section"
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="usage-card-label"
             data-testid="variant"
             data-block="usage"
             data-variant="card"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="usage-card-label" data-testid="variant-label">
-                {{ ui.blocks.variants.usage.card }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <UsageCalculator
-                  id="usage-card"
-                  :title="ui.vibe.usage.title"
-                  :text="ui.vibe.usage.text"
-                  :usage="5000"
-                  :slider="USAGE_SLIDER"
-                  :price="USAGE_PRICE"
-                  :cta="ui.vibe.usage.cta"
-                  href="#/"
-                  layout="card"
-                  ends="show"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="usage-card-label" data-testid="variant-label">
+              {{ ui.blocks.variants.usage.card }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <UsageCalculator
+                id="usage-card"
+                :title="ui.vibe.usage.title"
+                :text="ui.vibe.usage.text"
+                :usage="5000"
+                :slider="USAGE_SLIDER"
+                :price="USAGE_PRICE"
+                :cta="ui.vibe.usage.cta"
+                href="#/"
+                layout="card"
+                ends="show"
+                tone="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="usage-plain-label"
             data-testid="variant"
             data-block="usage"
             data-variant="plain"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="usage-plain-label" data-testid="variant-label">
-                {{ ui.blocks.variants.usage.plain }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <UsageCalculator
-                  id="usage-plain"
-                  :title="ui.vibe.usage.title"
-                  :text="ui.vibe.usage.text"
-                  :usage="5000"
-                  :slider="USAGE_SLIDER"
-                  :price="USAGE_PRICE"
-                  :cta="ui.vibe.usage.cta"
-                  href="#/"
-                  layout="plain"
-                  ends="show"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="usage-plain-label" data-testid="variant-label">
+              {{ ui.blocks.variants.usage.plain }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <UsageCalculator
+                id="usage-plain"
+                :title="ui.vibe.usage.title"
+                :text="ui.vibe.usage.text"
+                :usage="5000"
+                :slider="USAGE_SLIDER"
+                :price="USAGE_PRICE"
+                :cta="ui.vibe.usage.cta"
+                href="#/"
+                layout="plain"
+                ends="show"
+                tone="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="usage-noEnds-label"
             data-testid="variant"
             data-block="usage"
             data-variant="noEnds"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="usage-noEnds-label" data-testid="variant-label">
-                {{ ui.blocks.variants.usage.noEnds }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <UsageCalculator
-                  id="usage-noEnds"
-                  :title="ui.vibe.usage.title"
-                  :text="ui.vibe.usage.text"
-                  :usage="5000"
-                  :slider="USAGE_SLIDER"
-                  :price="USAGE_PRICE"
-                  :cta="ui.vibe.usage.cta"
-                  href="#/"
-                  layout="card"
-                  ends="hide"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="usage-noEnds-label" data-testid="variant-label">
+              {{ ui.blocks.variants.usage.noEnds }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <UsageCalculator
+                id="usage-noEnds"
+                :title="ui.vibe.usage.title"
+                :text="ui.vibe.usage.text"
+                :usage="5000"
+                :slider="USAGE_SLIDER"
+                :price="USAGE_PRICE"
+                :cta="ui.vibe.usage.cta"
+                href="#/"
+                layout="card"
+                ends="hide"
+                tone="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="usage-muted-label"
             data-testid="variant"
             data-block="usage"
             data-variant="muted"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="usage-muted-label" data-testid="variant-label">
-                {{ ui.blocks.variants.usage.muted }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <UsageCalculator
-                  id="usage-muted"
-                  :title="ui.vibe.usage.title"
-                  :text="ui.vibe.usage.text"
-                  :usage="5000"
-                  :slider="USAGE_SLIDER"
-                  :price="USAGE_PRICE"
-                  :cta="ui.vibe.usage.cta"
-                  href="#/"
-                  layout="card"
-                  ends="show"
-                  tone="muted"
-                />
-              </Box>
-            </Stack>
-          </Block>
+            <Title :as="3" size="base" weight="bold" id="usage-muted-label" data-testid="variant-label">
+              {{ ui.blocks.variants.usage.muted }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <UsageCalculator
+                id="usage-muted"
+                :title="ui.vibe.usage.title"
+                :text="ui.vibe.usage.text"
+                :usage="5000"
+                :slider="USAGE_SLIDER"
+                :price="USAGE_PRICE"
+                :cta="ui.vibe.usage.cta"
+                href="#/"
+                layout="card"
+                ends="show"
+                tone="muted"
+              />
+            </Box>
+          </Stack>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

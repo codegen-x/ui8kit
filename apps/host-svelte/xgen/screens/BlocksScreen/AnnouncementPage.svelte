@@ -7,32 +7,34 @@
 
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.blocks.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="promo">
-        {ui.blocks.themes.promo.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-        {ui.blocks.names.announcement}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {ui.blocks.docs.announcement}
-      </Text>
-    </Stack>
-    <Block
-      tag="section"
-      aria-labelledby="announcement-bar-label"
-      data-testid="variant"
-      data-block="announcement"
-      data-variant="bar"
-    >
-      <Stack gap="4" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.blocks.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="promo">
+          {ui.blocks.themes.promo.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+          {ui.blocks.names.announcement}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {ui.blocks.docs.announcement}
+        </Text>
+      </Stack>
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="announcement-bar-label"
+        data-testid="variant"
+        data-block="announcement"
+        data-variant="bar"
+      >
         <Title as={2} size="base" weight="bold" id="announcement-bar-label" data-testid="variant-label">
           {ui.blocks.variants.announcement.bar}
         </Title>
@@ -52,15 +54,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="announcement-badge-label"
-      data-testid="variant"
-      data-block="announcement"
-      data-variant="badge"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="announcement-badge-label"
+        data-testid="variant"
+        data-block="announcement"
+        data-variant="badge"
+      >
         <Title as={2} size="base" weight="bold" id="announcement-badge-label" data-testid="variant-label">
           {ui.blocks.variants.announcement.badge}
         </Title>
@@ -80,15 +82,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="announcement-bottom-label"
-      data-testid="variant"
-      data-block="announcement"
-      data-variant="bottom"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="announcement-bottom-label"
+        data-testid="variant"
+        data-block="announcement"
+        data-variant="bottom"
+      >
         <Title as={2} size="base" weight="bold" id="announcement-bottom-label" data-testid="variant-label">
           {ui.blocks.variants.announcement.bottom}
         </Title>
@@ -108,15 +110,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="announcement-muted-label"
-      data-testid="variant"
-      data-block="announcement"
-      data-variant="muted"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="announcement-muted-label"
+        data-testid="variant"
+        data-block="announcement"
+        data-variant="muted"
+      >
         <Title as={2} size="base" weight="bold" id="announcement-muted-label" data-testid="variant-label">
           {ui.blocks.variants.announcement.muted}
         </Title>
@@ -136,15 +138,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="announcement-split-label"
-      data-testid="variant"
-      data-block="announcement"
-      data-variant="split"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="announcement-split-label"
+        data-testid="variant"
+        data-block="announcement"
+        data-variant="split"
+      >
         <Title as={2} size="base" weight="bold" id="announcement-split-label" data-testid="variant-label">
           {ui.blocks.variants.announcement.split}
         </Title>
@@ -164,15 +166,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="announcement-dismissible-label"
-      data-testid="variant"
-      data-block="announcement"
-      data-variant="dismissible"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="announcement-dismissible-label"
+        data-testid="variant"
+        data-block="announcement"
+        data-variant="dismissible"
+      >
         <Title as={2} size="base" weight="bold" id="announcement-dismissible-label" data-testid="variant-label">
           {ui.blocks.variants.announcement.dismissible}
         </Title>
@@ -192,15 +194,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="announcement-shop-label"
-      data-testid="variant"
-      data-block="announcement"
-      data-variant="shop"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="announcement-shop-label"
+        data-testid="variant"
+        data-block="announcement"
+        data-variant="shop"
+      >
         <Title as={2} size="base" weight="bold" id="announcement-shop-label" data-testid="variant-label">
           {ui.blocks.variants.announcement.shop}
         </Title>
@@ -220,15 +222,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="announcement-agency-label"
-      data-testid="variant"
-      data-block="announcement"
-      data-variant="agency"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="announcement-agency-label"
+        data-testid="variant"
+        data-block="announcement"
+        data-variant="agency"
+      >
         <Title as={2} size="base" weight="bold" id="announcement-agency-label" data-testid="variant-label">
           {ui.blocks.variants.announcement.agency}
         </Title>
@@ -248,6 +250,6 @@
           />
         </Box>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

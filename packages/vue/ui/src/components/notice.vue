@@ -11,7 +11,7 @@ export type NoticeProps = {
 </script>
 
 <script setup lang="ts">
-import Block from "../primitives/block/block.vue";
+import Box from "../primitives/box/box.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Text from "../primitives/text/text.vue";
 
@@ -19,7 +19,7 @@ const { text } = defineProps<NoticeProps>();
 </script>
 
 <template>
-  <Block class="contents" role="status" data-testid="notice">
+  <Box class="contents" role="status" data-testid="notice">
     <Text v-if="text"
       :class="'fixed right-4 bottom-4 z-40 m-0 flex items-center gap-2 rounded bg-foreground p-4 text-xs font-bold ' +
         'text-background shadow-lg'"
@@ -27,5 +27,5 @@ const { text } = defineProps<NoticeProps>();
       <LucideIcon name="circle-check" :size="16" />
       {{ text }}
     </Text>
-  </Block>
+  </Box>
 </template>

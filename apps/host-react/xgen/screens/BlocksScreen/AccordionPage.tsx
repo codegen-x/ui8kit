@@ -24,37 +24,39 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
 
 export function AccordionPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text
-            size="sm"
-            className="font-medium text-muted-foreground"
-            data-testid="block-theme"
-            data-theme-id="marketing"
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text
+              size="sm"
+              className="font-medium text-muted-foreground"
+              data-testid="block-theme"
+              data-theme-id="marketing"
+            >
+              {ui.blocks.themes.marketing.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.accordion}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.accordion}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="accordion-first-label"
+            data-testid="variant"
+            data-block="accordion"
+            data-variant="first"
           >
-            {ui.blocks.themes.marketing.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.accordion}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.accordion}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="accordion-first-label"
-          data-testid="variant"
-          data-block="accordion"
-          data-variant="first"
-        >
-          <Stack gap="4" align="stretch">
             <Title as={2} size="base" weight="bold" id="accordion-first-label" data-testid="variant-label">
               {ui.blocks.variants.accordion.first}
             </Title>
@@ -70,15 +72,15 @@ export function AccordionPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="accordion-closed-label"
-          data-testid="variant"
-          data-block="accordion"
-          data-variant="closed"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="accordion-closed-label"
+            data-testid="variant"
+            data-block="accordion"
+            data-variant="closed"
+          >
             <Title as={2} size="base" weight="bold" id="accordion-closed-label" data-testid="variant-label">
               {ui.blocks.variants.accordion.closed}
             </Title>
@@ -94,15 +96,15 @@ export function AccordionPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="accordion-media-label"
-          data-testid="variant"
-          data-block="accordion"
-          data-variant="media"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="accordion-media-label"
+            data-testid="variant"
+            data-block="accordion"
+            data-variant="media"
+          >
             <Title as={2} size="base" weight="bold" id="accordion-media-label" data-testid="variant-label">
               {ui.blocks.variants.accordion.media}
             </Title>
@@ -118,15 +120,15 @@ export function AccordionPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="accordion-muted-label"
-          data-testid="variant"
-          data-block="accordion"
-          data-variant="muted"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="accordion-muted-label"
+            data-testid="variant"
+            data-block="accordion"
+            data-variant="muted"
+          >
             <Title as={2} size="base" weight="bold" id="accordion-muted-label" data-testid="variant-label">
               {ui.blocks.variants.accordion.muted}
             </Title>
@@ -142,8 +144,8 @@ export function AccordionPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

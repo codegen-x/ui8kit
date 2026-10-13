@@ -2,7 +2,7 @@
 // scoped slots (`<slot name="item" :item>` / `<template #item="{ item }">`), events are `defineEmits`, derived values `computed`.
 import { fileName, presetFile, printBare, printValue, tierDir, typesPath, type OrganismSpec, type ScreenSpec } from "@ui8kit/xgen-screens";
 import { htmlPropName } from "@ui8kit/xgen-spec";
-import { assetFile, assetTables, BANNER, chainLines, chunksOf, cnLines, pageSources, optionalGroups, printVariantTable, wrapList, wrapText, screenModel, type ChunkModel, type RecipeLike, typeName, walkNodes, recordTypes, type GeneratedFile, type PartRef, type Syntax, type WalkEnv } from "@ui8kit/xgen-runtime-core";
+import { assetFile, assetTables, BANNER, chainLines, chunksOf, partsOf, cnLines, pageSources, optionalGroups, printVariantTable, wrapList, wrapText, screenModel, type ChunkModel, type RecipeLike, typeName, walkNodes, recordTypes, type GeneratedFile, type PartRef, type Syntax, type WalkEnv } from "@ui8kit/xgen-runtime-core";
 import { attrExpr, each, ifChain, slotName, vueAttr } from "./template";
 
 const pad = (lines: string[], n = 1): string[] => lines.map((l) => (l ? "  ".repeat(n) + l : l));
@@ -173,6 +173,8 @@ function emitPage(s: ScreenSpec, deps: ScreenDeps): GeneratedFile {
   const m = screenModel(s);
   const env = envFor(deps, [], { computed: ["route", "nav"] });
   const chunks = new Map(chunksOf(s).map((c) => [c.area, c]));
+  const parts = partsOf(s);
+  env.part = (name) => [`<${name} />`];
   const areaLines = (a: string): string[] => (chunks.has(a) ? [`<${chunks.get(a)!.name} />`] : walkNodes(s.areas[a] ?? [], env));
   env.outlet = () => ifChain(m.otherAreas.map((a): [string, string[]] => [`route.area === ${JSON.stringify(a)}`, areaLines(a)]), areaLines(m.listArea));
   const markup = walkNodes(s.layout, env);
@@ -185,7 +187,7 @@ function emitPage(s: ScreenSpec, deps: ScreenDeps): GeneratedFile {
     `<script setup lang="ts">`,
     `import { computed } from "vue";`,
     wrapList("import {", [...imports, ...types], `} from "${deps.ui}";`, 110),
-    ...[...chunks.values()].map((c) => `import ${c.name} from "./${c.dir}/${c.name}.vue";`),
+    ...[...chunks.values(), ...parts].map((c) => `import ${c.name} from "./${c.dir}/${c.name}.vue";`),
     `import { fromCodex, matchRoute, type UrlPort } from "${deps.shared}/runtime/core";`,
     `import { toggleTheme } from "${deps.shared}/runtime/theme";`,
     `import { ui } from "${deps.shared}/content";`,
@@ -214,12 +216,12 @@ function emitPage(s: ScreenSpec, deps: ScreenDeps): GeneratedFile {
 /** one area of a chunked page as its own component: it imports only the data it shows */
 function emitChunk(s: ScreenSpec, c: ChunkModel, deps: ScreenDeps): GeneratedFile {
   const env = envFor(deps);
-  const markup = walkNodes(s.areas[c.area] ?? [], env);
+  const markup = walkNodes(c.nodes, env);
   const imports = [...env.usedParts, ...env.usedOrganisms, ...env.print.helpers].sort();
   const types = [...new Set(c.sources.map((x) => x.record))].sort().map((r) => `type ${r}`);
   const contents = [
     header,
-    `<!-- The ${c.area} page of ${s.name}. -->`,
+    `<!-- ${c.doc} -->`,
     `<script setup lang="ts">`,
     wrapList("import {", [...imports, ...types], `} from "${deps.ui}";`, 110),
     ...(c.sources.length ? [`import { fromCodex } from "${deps.shared}/runtime/core";`] : []),
@@ -241,9 +243,9 @@ function emitChunk(s: ScreenSpec, c: ChunkModel, deps: ScreenDeps): GeneratedFil
   return { path: `screens/${c.dir}/${c.name}.vue`, contents };
 }
 
-/** the area files of a screen with `chunks` (none otherwise) */
+/** the area files of a screen with `chunks`, and the part files of a page screen with `parts` */
 export function emitChunks(s: ScreenSpec, deps: ScreenDeps): GeneratedFile[] {
-  return chunksOf(s).map((c) => emitChunk(s, c, deps));
+  return [...chunksOf(s), ...partsOf(s)].map((c) => emitChunk(s, c, deps));
 }
 
 export function emitScreen(s: ScreenSpec, deps: ScreenDeps): GeneratedFile {

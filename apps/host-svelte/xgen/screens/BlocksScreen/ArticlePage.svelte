@@ -23,32 +23,34 @@
   const article = fromCodex<Section>(articleEntries, ARTICLE_FIELDS);
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.blocks.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="content">
-        {ui.blocks.themes.content.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-        {ui.blocks.names.article}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {ui.blocks.docs.article}
-      </Text>
-    </Stack>
-    <Block
-      tag="section"
-      aria-labelledby="article-column-label"
-      data-testid="variant"
-      data-block="article"
-      data-variant="column"
-    >
-      <Stack gap="4" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.blocks.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="content">
+          {ui.blocks.themes.content.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+          {ui.blocks.names.article}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {ui.blocks.docs.article}
+        </Text>
+      </Stack>
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="article-column-label"
+        data-testid="variant"
+        data-block="article"
+        data-variant="column"
+      >
         <Title as={2} size="base" weight="bold" id="article-column-label" data-testid="variant-label">
           {ui.blocks.variants.article.column}
         </Title>
@@ -64,15 +66,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="article-toc-label"
-      data-testid="variant"
-      data-block="article"
-      data-variant="toc"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="article-toc-label"
+        data-testid="variant"
+        data-block="article"
+        data-variant="toc"
+      >
         <Title as={2} size="base" weight="bold" id="article-toc-label" data-testid="variant-label">
           {ui.blocks.variants.article.toc}
         </Title>
@@ -88,15 +90,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="article-plain-label"
-      data-testid="variant"
-      data-block="article"
-      data-variant="plain"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="article-plain-label"
+        data-testid="variant"
+        data-block="article"
+        data-variant="plain"
+      >
         <Title as={2} size="base" weight="bold" id="article-plain-label" data-testid="variant-label">
           {ui.blocks.variants.article.plain}
         </Title>
@@ -112,15 +114,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="article-muted-label"
-      data-testid="variant"
-      data-block="article"
-      data-variant="muted"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="article-muted-label"
+        data-testid="variant"
+        data-block="article"
+        data-variant="muted"
+      >
         <Title as={2} size="base" weight="bold" id="article-muted-label" data-testid="variant-label">
           {ui.blocks.variants.article.muted}
         </Title>
@@ -136,6 +138,6 @@
           />
         </Box>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

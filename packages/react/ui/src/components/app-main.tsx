@@ -5,7 +5,7 @@
  * when `activity` is given).
  */
 import { type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
+import { Box } from "../primitives/box/box";
 import { Grid } from "../primitives/grid/grid";
 import { Stack } from "../primitives/stack/stack";
 import { Title } from "../primitives/title/title";
@@ -50,9 +50,9 @@ export function AppMain({
       </Title>
       <Grid cols={cols} className="gap-4" data-testid="items">
         {(metrics ?? []).map((m) => (
-          <Block key={m.id} tag="div" data-testid="item">
+          <Box key={m.id} data-testid="item">
             <StatTile label={m.label} value={m.value} icon={m.icon} hint={m.hint} />
-          </Block>
+          </Box>
         ))}
       </Grid>
       {activity ? (

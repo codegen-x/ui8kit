@@ -32,32 +32,34 @@
   const stores = fromCodex<Store>(storesEntries, STORES_FIELDS);
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.blocks.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="commerce">
-        {ui.blocks.themes.commerce.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-        {ui.blocks.names.locations}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {ui.blocks.docs.locations}
-      </Text>
-    </Stack>
-    <Block
-      tag="section"
-      aria-labelledby="locations-cards-label"
-      data-testid="variant"
-      data-block="locations"
-      data-variant="cards"
-    >
-      <Stack gap="4" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.blocks.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="commerce">
+          {ui.blocks.themes.commerce.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+          {ui.blocks.names.locations}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {ui.blocks.docs.locations}
+        </Text>
+      </Stack>
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="locations-cards-label"
+        data-testid="variant"
+        data-block="locations"
+        data-variant="cards"
+      >
         <Title as={2} size="base" weight="bold" id="locations-cards-label" data-testid="variant-label">
           {ui.blocks.variants.locations.cards}
         </Title>
@@ -74,15 +76,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="locations-list-label"
-      data-testid="variant"
-      data-block="locations"
-      data-variant="list"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="locations-list-label"
+        data-testid="variant"
+        data-block="locations"
+        data-variant="list"
+      >
         <Title as={2} size="base" weight="bold" id="locations-list-label" data-testid="variant-label">
           {ui.blocks.variants.locations.list}
         </Title>
@@ -99,15 +101,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="locations-map-label"
-      data-testid="variant"
-      data-block="locations"
-      data-variant="map"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="locations-map-label"
+        data-testid="variant"
+        data-block="locations"
+        data-variant="map"
+      >
         <Title as={2} size="base" weight="bold" id="locations-map-label" data-testid="variant-label">
           {ui.blocks.variants.locations.map}
         </Title>
@@ -124,6 +126,6 @@
           />
         </Box>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

@@ -6,8 +6,8 @@
  * density.
  */
 import { type ReactNode } from "react";
+import { Block } from "../primitives/block/block";
 import { Box } from "../primitives/box/box";
-import { Card } from "../primitives/card/card";
 import { CardContent } from "../primitives/card/card-content";
 import { Group } from "../primitives/group/group";
 import { Link } from "../primitives/link/link";
@@ -39,7 +39,8 @@ export function PostCard({
   return (
     <>
       {((meta as string) === "news") ? (
-        <Box
+        <Block
+          tag="article"
           className={cn(
             "flex flex-col gap-2 overflow-hidden rounded p-0 inset-ring inset-ring-border",
             defaults.news.card
@@ -79,14 +80,16 @@ export function PostCard({
               </Text>
             ) : null}
           </Group>
-        </Box>
+        </Block>
       ) : (
-        <Card
-          variant="default"
+        <Block
+          tag="article"
           className={cn(
+            "flex flex-col gap-8 bg-card p-6 text-card-foreground inset-ring inset-ring-border rounded",
             "h-full gap-4 overflow-hidden",
             (((layout as string) === "horizontal") ? "flex flex-col sm:flex-row" : "flex flex-col")
           )}
+          data-slot="card"
           data-testid="item"
           data-layout={layout}
           data-meta={meta}
@@ -136,7 +139,7 @@ export function PostCard({
               </Link>
             ) : null}
           </CardContent>
-        </Card>
+        </Block>
       )}
     </>
   );

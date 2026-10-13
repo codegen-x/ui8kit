@@ -32,37 +32,39 @@ const STOREHERO_ACTIONS = {
 
 export function StoreheroPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text
-            size="sm"
-            className="font-medium text-muted-foreground"
-            data-testid="block-theme"
-            data-theme-id="commerce"
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text
+              size="sm"
+              className="font-medium text-muted-foreground"
+              data-testid="block-theme"
+              data-theme-id="commerce"
+            >
+              {ui.blocks.themes.commerce.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.storehero}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.storehero}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="storehero-overlay-label"
+            data-testid="variant"
+            data-block="storehero"
+            data-variant="overlay"
           >
-            {ui.blocks.themes.commerce.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.storehero}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.storehero}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="storehero-overlay-label"
-          data-testid="variant"
-          data-block="storehero"
-          data-variant="overlay"
-        >
-          <Stack gap="4" align="stretch">
             <Title as={2} size="base" weight="bold" id="storehero-overlay-label" data-testid="variant-label">
               {ui.blocks.variants.storehero.overlay}
             </Title>
@@ -82,15 +84,15 @@ export function StoreheroPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="storehero-overlayStart-label"
-          data-testid="variant"
-          data-block="storehero"
-          data-variant="overlayStart"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="storehero-overlayStart-label"
+            data-testid="variant"
+            data-block="storehero"
+            data-variant="overlayStart"
+          >
             <Title as={2} size="base" weight="bold" id="storehero-overlayStart-label" data-testid="variant-label">
               {ui.blocks.variants.storehero.overlayStart}
             </Title>
@@ -110,15 +112,15 @@ export function StoreheroPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="storehero-backdrop-label"
-          data-testid="variant"
-          data-block="storehero"
-          data-variant="backdrop"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="storehero-backdrop-label"
+            data-testid="variant"
+            data-block="storehero"
+            data-variant="backdrop"
+          >
             <Title as={2} size="base" weight="bold" id="storehero-backdrop-label" data-testid="variant-label">
               {ui.blocks.variants.storehero.backdrop}
             </Title>
@@ -138,15 +140,15 @@ export function StoreheroPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="storehero-muted-label"
-          data-testid="variant"
-          data-block="storehero"
-          data-variant="muted"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="storehero-muted-label"
+            data-testid="variant"
+            data-block="storehero"
+            data-variant="muted"
+          >
             <Title as={2} size="base" weight="bold" id="storehero-muted-label" data-testid="variant-label">
               {ui.blocks.variants.storehero.muted}
             </Title>
@@ -166,8 +168,8 @@ export function StoreheroPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

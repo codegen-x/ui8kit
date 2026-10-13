@@ -58,32 +58,34 @@
   const payments = fromCodex<Payment>(paymentsEntries, PAYMENTS_FIELDS);
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.blocks.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="commerce">
-        {ui.blocks.themes.commerce.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-        {ui.blocks.names.checkout}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {ui.blocks.docs.checkout}
-      </Text>
-    </Stack>
-    <Block
-      tag="section"
-      aria-labelledby="checkout-cards-label"
-      data-testid="variant"
-      data-block="checkout"
-      data-variant="cards"
-    >
-      <Stack gap="4" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.blocks.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="commerce">
+          {ui.blocks.themes.commerce.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+          {ui.blocks.names.checkout}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {ui.blocks.docs.checkout}
+        </Text>
+      </Stack>
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="checkout-cards-label"
+        data-testid="variant"
+        data-block="checkout"
+        data-variant="cards"
+      >
         <Title as={2} size="base" weight="bold" id="checkout-cards-label" data-testid="variant-label">
           {ui.blocks.variants.checkout.cards}
         </Title>
@@ -104,15 +106,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="checkout-numbered-label"
-      data-testid="variant"
-      data-block="checkout"
-      data-variant="numbered"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="checkout-numbered-label"
+        data-testid="variant"
+        data-block="checkout"
+        data-variant="numbered"
+      >
         <Title as={2} size="base" weight="bold" id="checkout-numbered-label" data-testid="variant-label">
           {ui.blocks.variants.checkout.numbered}
         </Title>
@@ -133,15 +135,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="checkout-noSummary-label"
-      data-testid="variant"
-      data-block="checkout"
-      data-variant="noSummary"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="checkout-noSummary-label"
+        data-testid="variant"
+        data-block="checkout"
+        data-variant="noSummary"
+      >
         <Title as={2} size="base" weight="bold" id="checkout-noSummary-label" data-testid="variant-label">
           {ui.blocks.variants.checkout.noSummary}
         </Title>
@@ -162,6 +164,6 @@
           />
         </Box>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

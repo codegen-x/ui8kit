@@ -20,8 +20,8 @@
 </script>
 
 <script lang="ts">
+  import Block from "../primitives/block/block.svelte";
   import Box from "../primitives/box/box.svelte";
-  import Card from "../primitives/card/card.svelte";
   import CardContent from "../primitives/card/card-content.svelte";
   import Group from "../primitives/group/group.svelte";
   import Link from "../primitives/link/link.svelte";
@@ -43,7 +43,8 @@
 </script>
 
 {#if ((meta as string) === "news")}
-  <Box
+  <Block
+    tag="article"
     class={cn(
       "flex flex-col gap-2 overflow-hidden rounded p-0 inset-ring inset-ring-border",
       defaults.news.card
@@ -83,14 +84,16 @@
         </Text>
       {/if}
     </Group>
-  </Box>
+  </Block>
 {:else}
-  <Card
-    variant="default"
+  <Block
+    tag="article"
     class={cn(
+      "flex flex-col gap-8 bg-card p-6 text-card-foreground inset-ring inset-ring-border rounded",
       "h-full gap-4 overflow-hidden",
       (((layout as string) === "horizontal") ? "flex flex-col sm:flex-row" : "flex flex-col")
     )}
+    data-slot="card"
     data-testid="item"
     data-layout={layout}
     data-meta={meta}
@@ -140,5 +143,5 @@
         </Link>
       {/if}
     </CardContent>
-  </Card>
+  </Block>
 {/if}

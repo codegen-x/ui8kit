@@ -73,32 +73,34 @@
   } as const;
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.blocks.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
-        {ui.blocks.themes.marketing.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-        {ui.blocks.names.herosplit}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {ui.blocks.docs.herosplit}
-      </Text>
-    </Stack>
-    <Block
-      tag="section"
-      aria-labelledby="herosplit-statsCards-label"
-      data-testid="variant"
-      data-block="herosplit"
-      data-variant="statsCards"
-    >
-      <Stack gap="4" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.blocks.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
+          {ui.blocks.themes.marketing.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+          {ui.blocks.names.herosplit}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {ui.blocks.docs.herosplit}
+        </Text>
+      </Stack>
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="herosplit-statsCards-label"
+        data-testid="variant"
+        data-block="herosplit"
+        data-variant="statsCards"
+      >
         <Title as={2} size="base" weight="bold" id="herosplit-statsCards-label" data-testid="variant-label">
           {ui.blocks.variants.herosplit.statsCards}
         </Title>
@@ -118,15 +120,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="herosplit-avatars-label"
-      data-testid="variant"
-      data-block="herosplit"
-      data-variant="avatars"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="herosplit-avatars-label"
+        data-testid="variant"
+        data-block="herosplit"
+        data-variant="avatars"
+      >
         <Title as={2} size="base" weight="bold" id="herosplit-avatars-label" data-testid="variant-label">
           {ui.blocks.variants.herosplit.avatars}
         </Title>
@@ -146,15 +148,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="herosplit-miniCards-label"
-      data-testid="variant"
-      data-block="herosplit"
-      data-variant="miniCards"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="herosplit-miniCards-label"
+        data-testid="variant"
+        data-block="herosplit"
+        data-variant="miniCards"
+      >
         <Title as={2} size="base" weight="bold" id="herosplit-miniCards-label" data-testid="variant-label">
           {ui.blocks.variants.herosplit.miniCards}
         </Title>
@@ -174,15 +176,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="herosplit-quoteStats-label"
-      data-testid="variant"
-      data-block="herosplit"
-      data-variant="quoteStats"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="herosplit-quoteStats-label"
+        data-testid="variant"
+        data-block="herosplit"
+        data-variant="quoteStats"
+      >
         <Title as={2} size="base" weight="bold" id="herosplit-quoteStats-label" data-testid="variant-label">
           {ui.blocks.variants.herosplit.quoteStats}
         </Title>
@@ -202,15 +204,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="herosplit-planCards-label"
-      data-testid="variant"
-      data-block="herosplit"
-      data-variant="planCards"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="herosplit-planCards-label"
+        data-testid="variant"
+        data-block="herosplit"
+        data-variant="planCards"
+      >
         <Title as={2} size="base" weight="bold" id="herosplit-planCards-label" data-testid="variant-label">
           {ui.blocks.variants.herosplit.planCards}
         </Title>
@@ -230,15 +232,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="herosplit-pictureGrid-label"
-      data-testid="variant"
-      data-block="herosplit"
-      data-variant="pictureGrid"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="herosplit-pictureGrid-label"
+        data-testid="variant"
+        data-block="herosplit"
+        data-variant="pictureGrid"
+      >
         <Title as={2} size="base" weight="bold" id="herosplit-pictureGrid-label" data-testid="variant-label">
           {ui.blocks.variants.herosplit.pictureGrid}
         </Title>
@@ -258,15 +260,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="herosplit-pictureGridStart-label"
-      data-testid="variant"
-      data-block="herosplit"
-      data-variant="pictureGridStart"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="herosplit-pictureGridStart-label"
+        data-testid="variant"
+        data-block="herosplit"
+        data-variant="pictureGridStart"
+      >
         <Title as={2} size="base" weight="bold" id="herosplit-pictureGridStart-label" data-testid="variant-label">
           {ui.blocks.variants.herosplit.pictureGridStart}
         </Title>
@@ -286,6 +288,6 @@
           />
         </Box>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

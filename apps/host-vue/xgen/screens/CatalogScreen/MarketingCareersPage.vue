@@ -37,26 +37,33 @@ const departments = fromCodex<Department>(departmentsEntries, DEPARTMENTS_FIELDS
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.catalog.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-          {{ ui.catalog.sections.marketing.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="category-title">
-          {{ ui.catalog.categories.marketingCareers }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ tpl(ui.catalog.count, 1, 4) }}
-        </Text>
-      </Stack>
-      <Block tag="section" aria-labelledby="catalog-jobs-title" data-testid="catalog-block" data-block="jobs">
-        <Stack gap="6" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.catalog.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+            {{ ui.catalog.sections.marketing.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="category-title">
+            {{ ui.catalog.categories.marketingCareers }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ tpl(ui.catalog.count, 1, 4) }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="6"
+          align="stretch"
+          role="group"
+          aria-labelledby="catalog-jobs-title"
+          data-testid="catalog-block"
+          data-block="jobs"
+        >
           <Stack gap="2" align="stretch">
             <Title :as="2" size="2xl" weight="bold" id="catalog-jobs-title">
               {{ ui.blocks.names.jobs }}
@@ -65,112 +72,112 @@ const departments = fromCodex<Department>(departmentsEntries, DEPARTMENTS_FIELDS
               {{ ui.blocks.docs.jobs }}
             </Text>
           </Stack>
-          <Block
-            tag="section"
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="jobs-grid-label"
             data-testid="variant"
             data-block="jobs"
             data-variant="grid"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="jobs-grid-label" data-testid="variant-label">
-                {{ ui.blocks.variants.jobs.grid }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <JobBoard
-                  id="jobs-grid"
-                  :title="ui.company.jobs.title"
-                  :lead="ui.company.jobs.lead"
-                  :jobs="jobs"
-                  :departments="departments"
-                  :labels="ui.company.jobs"
-                  layout="grid"
-                  salary="hide"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="jobs-grid-label" data-testid="variant-label">
+              {{ ui.blocks.variants.jobs.grid }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <JobBoard
+                id="jobs-grid"
+                :title="ui.company.jobs.title"
+                :lead="ui.company.jobs.lead"
+                :jobs="jobs"
+                :departments="departments"
+                :labels="ui.company.jobs"
+                layout="grid"
+                salary="hide"
+                tone="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="jobs-salary-label"
             data-testid="variant"
             data-block="jobs"
             data-variant="salary"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="jobs-salary-label" data-testid="variant-label">
-                {{ ui.blocks.variants.jobs.salary }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <JobBoard
-                  id="jobs-salary"
-                  :title="ui.company.jobs.title"
-                  :lead="ui.company.jobs.lead"
-                  :jobs="jobs"
-                  :departments="departments"
-                  :labels="ui.company.jobs"
-                  layout="grid"
-                  salary="show"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="jobs-salary-label" data-testid="variant-label">
+              {{ ui.blocks.variants.jobs.salary }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <JobBoard
+                id="jobs-salary"
+                :title="ui.company.jobs.title"
+                :lead="ui.company.jobs.lead"
+                :jobs="jobs"
+                :departments="departments"
+                :labels="ui.company.jobs"
+                layout="grid"
+                salary="show"
+                tone="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="jobs-grouped-label"
             data-testid="variant"
             data-block="jobs"
             data-variant="grouped"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="jobs-grouped-label" data-testid="variant-label">
-                {{ ui.blocks.variants.jobs.grouped }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <JobBoard
-                  id="jobs-grouped"
-                  :title="ui.company.jobs.title"
-                  :lead="ui.company.jobs.lead"
-                  :jobs="jobs"
-                  :departments="departments"
-                  :labels="ui.company.jobs"
-                  layout="grouped"
-                  salary="hide"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="jobs-grouped-label" data-testid="variant-label">
+              {{ ui.blocks.variants.jobs.grouped }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <JobBoard
+                id="jobs-grouped"
+                :title="ui.company.jobs.title"
+                :lead="ui.company.jobs.lead"
+                :jobs="jobs"
+                :departments="departments"
+                :labels="ui.company.jobs"
+                layout="grouped"
+                salary="hide"
+                tone="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="jobs-table-label"
             data-testid="variant"
             data-block="jobs"
             data-variant="table"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="jobs-table-label" data-testid="variant-label">
-                {{ ui.blocks.variants.jobs.table }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <JobBoard
-                  id="jobs-table"
-                  :title="ui.company.jobs.title"
-                  :lead="ui.company.jobs.lead"
-                  :jobs="jobs"
-                  :departments="departments"
-                  :labels="ui.company.jobs"
-                  layout="table"
-                  salary="show"
-                  tone="muted"
-                />
-              </Box>
-            </Stack>
-          </Block>
+            <Title :as="3" size="base" weight="bold" id="jobs-table-label" data-testid="variant-label">
+              {{ ui.blocks.variants.jobs.table }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <JobBoard
+                id="jobs-table"
+                :title="ui.company.jobs.title"
+                :lead="ui.company.jobs.lead"
+                :jobs="jobs"
+                :departments="departments"
+                :labels="ui.company.jobs"
+                layout="table"
+                salary="show"
+                tone="muted"
+              />
+            </Box>
+          </Stack>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

@@ -188,13 +188,13 @@ const videoGrid = spec(`${O}video-grid`, "VideoGrid", "Video testimonials as thu
   view: [frame(base(), [
     use("Grid", { props: { Cols: ref("cols"), Class: "gap-4" }, attrs: { "data-testid": "items" } },
       each(ref("quotes"), "q", ref("q.id"),
-        use("Block", { props: { Tag: "figure", Class: "m-0 flex flex-col gap-4" }, attrs: { "data-testid": "item" } },
+        use("Figure", { props: { Class: "m-0 flex flex-col gap-4" }, attrs: { "data-testid": "item" } },
           use("Box", { props: { Class: "relative" } },
             organism("MediaFrame", { alt: ref("q.author"), ratio: "16/9" }),
             use("Button", { props: { Variant: "default", Size: "default", Type: "button", Class: "absolute top-1/2 left-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded p-0" }, on: { click: call("emit.play", ref("q.id")) }, attrs: { "aria-label": tpl(ref("playLabel"), ref("q.author")), "data-testid": "play" } },
               use("LucideIcon", { props: { Name: "play", Size: 20 } })),
             when(eq(ref("caption"), "overlay"), [use("Box", { props: { Class: "absolute inset-x-0 bottom-0 rounded bg-background p-4" }, attrs: { "data-testid": "caption" } }, strong(ref("q.author"), "sm"), muted(tpl(ref("byLine"), ref("q.role"), ref("q.company")), "xs"))])),
-          when(eq(ref("caption"), "below"), [use("Block", { props: { Tag: "figcaption" }, attrs: { "data-testid": "caption" } }, strong(ref("q.author"), "sm"), muted(tpl(ref("byLine"), ref("q.role"), ref("q.company")), "xs"))])))),
+          when(eq(ref("caption"), "below"), [use("FigureCaption", { props: {}, attrs: { "data-testid": "caption" } }, strong(ref("q.author"), "sm"), muted(tpl(ref("byLine"), ref("q.role"), ref("q.company")), "xs"))])))),
   ])],
 });
 

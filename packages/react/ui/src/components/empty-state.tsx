@@ -2,7 +2,7 @@
 // Source: xgen/screens/src/authoring/components/parts.ts
 /** Empty list or nothing found: a round icon, a title, a hint and an optional action. */
 import { type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
+import { Box } from "../primitives/box/box";
 import { IconBadge } from "../primitives/iconbadge/iconbadge";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Text } from "../primitives/text/text";
@@ -18,7 +18,7 @@ export type EmptyStateProps = {
 
 export function EmptyState({ icon = "inbox", title, text, className, action }: EmptyStateProps) {
   return (
-    <Block
+    <Box
       className={cn(
         "flex min-w-0 flex-col items-center gap-4 rounded bg-card px-6 py-14 text-center inset-ring inset-ring-border",
         className
@@ -37,6 +37,6 @@ export function EmptyState({ icon = "inbox", title, text, className, action }: E
         </Text>
       ) : null}
       {action}
-    </Block>
+    </Box>
   );
 }

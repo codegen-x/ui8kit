@@ -1,6 +1,7 @@
 // The PricingCard organism, built from primitives: Card, Title, Badge, Text, List, Button.
 import { and, call, cn, cond, eq, each, ref, slot, text, tpl, use, when, op } from "../../build";
 import type { OrganismSpec } from "../../ir";
+import { cardBase } from "../kit";
 
 export const pricingCard: OrganismSpec = {
   $schema: "../../schema/schemas/organism.schema.json",
@@ -36,7 +37,7 @@ export const pricingCard: OrganismSpec = {
   slots: [{ name: "footer", args: [{ name: "plan", type: { record: "Plan" } }], docs: "more content in the footer; receives the plan" }],
   events: [{ name: "select", args: [{ name: "id", type: "string" }], docs: "the call to action was pressed" }],
   view: [
-    use("Card", { props: { Variant: "default", Class: "flex h-full flex-col" }, attrs: { "data-highlighted": cond(ref("stand"), "true", "false"), "data-current": cond(ref("current"), "true", "false") } },
+    use("Block", { props: { Tag: "article", Class: cn(cardBase(), "flex h-full flex-col") }, attrs: { "data-slot": "card", "data-highlighted": cond(ref("stand"), "true", "false"), "data-current": cond(ref("current"), "true", "false") } },
       use("CardHeader", { props: { Class: "flex flex-col gap-2" } },
         use("Box", { props: { Class: "flex min-h-6 items-center" }, attrs: { "data-slot": "badge-slot" } },
           when(ref("stand"), [use("Badge", { props: { Variant: "default", Size: "default" } }, text(ref("labels.popular")))])),

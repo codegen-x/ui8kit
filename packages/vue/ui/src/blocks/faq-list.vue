@@ -25,7 +25,7 @@ export type FaqListProps = {
 
 <script setup lang="ts">
 import { computed } from "vue";
-import Block from "../primitives/block/block.vue";
+import Box from "../primitives/box/box.vue";
 import Disclosure from "../primitives/disclosure/disclosure.vue";
 import Grid from "../primitives/grid/grid.vue";
 import Stack from "../primitives/stack/stack.vue";
@@ -82,16 +82,16 @@ const shown = computed(() =>
     </Switcher>
     <Stack v-if="((layout as string) === 'chat')" gap="4" align="stretch" data-testid="faq">
       <Stack v-for="item in shown" :key="item.id" gap="2" align="stretch" data-testid="faq-item">
-        <Block tag="div" class="ml-auto max-w-xs sm:max-w-md rounded bg-primary px-4 py-4 text-primary-foreground">
+        <Box class="ml-auto max-w-xs sm:max-w-md rounded bg-primary px-4 py-4 text-primary-foreground">
           <Text size="sm" weight="semibold">
             {{ item.question }}
           </Text>
-        </Block>
-        <Block tag="div" class="mr-auto max-w-xs sm:max-w-md rounded bg-muted px-4 py-4">
+        </Box>
+        <Box class="mr-auto max-w-xs sm:max-w-md rounded bg-muted px-4 py-4">
           <Text size="sm">
             {{ item.answer }}
           </Text>
-        </Block>
+        </Box>
       </Stack>
     </Stack>
     <Grid v-else :cols="(((cols as string) === '2') ? '1-2' : '1')" class="items-start gap-x-8" data-testid="faq">

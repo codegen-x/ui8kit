@@ -5,7 +5,6 @@
  * `href` the whole row is a link.
  */
 import { type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
 import { Box } from "../primitives/box/box";
 import { Progress } from "../primitives/form/progress";
 import { Link } from "../primitives/link/link";
@@ -23,7 +22,7 @@ export type MeterRowProps = {
 
 export function MeterRow({ label, value, caption, hint, href, className }: MeterRowProps) {
   return (
-    <Block className={cn("min-w-0", className)} data-slot="meter-row">
+    <Box className={cn("min-w-0", className)} data-slot="meter-row">
       {href ? (
         <Link
           href={href}
@@ -63,6 +62,6 @@ export function MeterRow({ label, value, caption, hint, href, className }: Meter
           ) : null}
         </Box>
       )}
-    </Block>
+    </Box>
   );
 }

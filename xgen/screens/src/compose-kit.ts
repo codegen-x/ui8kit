@@ -136,8 +136,28 @@ export function variantSection(b: BlockSpec, v: BlockSpec["variants"][number], o
   if (o?.props.some((p) => p.name === "level")) extra["level"] = 2;
   const node = blockNode(b, v, extra, org) as OrganismNode;
   drawn.push(node);
-  return use("Block", { props: { Tag: "section" }, attrs: { "aria-labelledby": `${key}-${v.id}-label`, "data-testid": "variant", "data-block": key, "data-variant": v.id } },
-    use("Stack", { props: { Gap: "4", Align: "stretch" } },
-      use("Title", { props: { As: labelLevel, Size: "base", Weight: "bold" }, attrs: { id: `${key}-${v.id}-label`, "data-testid": "variant-label" } }, text(TEXT(`blocks.variants.${key}.${v.id}`))),
-      use("Box", { props: { Class: "overflow-clip rounded-xl inset-ring inset-ring-border" }, attrs: { "data-testid": "variant-body" } }, b.fit === "card" ? use("Box", { props: { Class: "mx-auto w-full max-w-sm px-4 py-6" }, attrs: { "data-slot": "container" } }, node) : node)));
+  // a labelled group inside the page section, not a landmark of its own: the page file holds one Block (rule 01)
+  return use("Stack", { props: { Gap: "4", Align: "stretch" }, attrs: { role: "group", "aria-labelledby": `${key}-${v.id}-label`, "data-testid": "variant", "data-block": key, "data-variant": v.id } },
+    use("Title", { props: { As: labelLevel, Size: "base", Weight: "bold" }, attrs: { id: `${key}-${v.id}-label`, "data-testid": "variant-label" } }, text(TEXT(`blocks.variants.${key}.${v.id}`))),
+    use("Box", { props: { Class: "overflow-clip rounded-xl inset-ring inset-ring-border" }, attrs: { "data-testid": "variant-body" } }, b.fit === "card" ? use("Box", { props: { Class: "mx-auto w-full max-w-sm px-4 py-6" }, attrs: { "data-slot": "container" } }, node) : node));
 }
+
+/** a page of a screen (an area): its one Block, a section named by the level 1 heading of the page (given the id `page-title`),
+ *  then the container; the screen's main holds it */
+export function pageSection(container: ViewNode): ViewNode {
+  const h1 = (n: ViewNode): boolean => {
+    if ("use" in n && n.use === "Title" && n.props?.["As"] === 1) { n.attrs = { id: PAGE_TITLE, ...(n.attrs ?? {}) }; return true; }
+    return "children" in n && Array.isArray(n.children) ? n.children.some(h1) : false;
+  };
+  if (!h1(container)) throw new Error("pageSection: the page has no level 1 heading to name its section");
+  return use("Block", { props: { Tag: "section" }, attrs: { "aria-labelledby": PAGE_TITLE, "data-testid": "page" } }, container);
+}
+const PAGE_TITLE = "page-title";
+
+/** a labelled group of a page (a topic, a category, a row of tiles): a Stack with role group, never a nested Block (rule 01) */
+export const labelledGroup = (gap: "4" | "6", labelledBy: Value, attrs: Record<string, Value>, ...children: ViewNode[]): ViewNode =>
+  use("Stack", { props: { Gap: gap, Align: "stretch" }, attrs: { role: "group", "aria-labelledby": labelledBy, ...attrs } }, ...children);
+
+/** the skip link, first in the header of a screen frame (the header part opens on its Block, rule 01) */
+export const skipLink = (cls: string): ViewNode =>
+  use("LinkPlain", { props: { Href: "#main-content", Class: cls }, attrs: { "data-testid": "skip-link" } }, text(TEXT("site.header.skip")));

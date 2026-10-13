@@ -40,31 +40,33 @@
   const FOOTERSPLIT_EXTRAS = { stats, points: features, contacts, channels: community } as const;
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.catalog.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-        {ui.catalog.sections.marketing.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="category-title">
-        {ui.catalog.categories.marketingFooterSplit}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {tpl(ui.catalog.count, 1, 6)}
-      </Text>
-    </Stack>
-    <Block
-      tag="section"
-      aria-labelledby="catalog-footersplit-title"
-      data-testid="catalog-block"
-      data-block="footersplit"
-    >
-      <Stack gap="6" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.catalog.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+          {ui.catalog.sections.marketing.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="category-title">
+          {ui.catalog.categories.marketingFooterSplit}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {tpl(ui.catalog.count, 1, 6)}
+        </Text>
+      </Stack>
+      <Stack
+        gap="6"
+        align="stretch"
+        role="group"
+        aria-labelledby="catalog-footersplit-title"
+        data-testid="catalog-block"
+        data-block="footersplit"
+      >
         <Stack gap="2" align="stretch">
           <Title as={2} size="2xl" weight="bold" id="catalog-footersplit-title">
             {ui.blocks.names.footersplit}
@@ -73,175 +75,175 @@
             {ui.blocks.docs.footersplit}
           </Text>
         </Stack>
-        <Block
-          tag="section"
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="footersplit-statsCards-label"
           data-testid="variant"
           data-block="footersplit"
           data-variant="statsCards"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="footersplit-statsCards-label" data-testid="variant-label">
-              {ui.blocks.variants.footersplit.statsCards}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <FooterSplit
-                id="footersplit-statsCards"
-                label={ui.vibe.sitemap.label}
-                brand={ui.site.header.brand}
-                tagline={ui.marketing.footerSplit.tagline}
-                copyright={ui.marketing.footerSplit.copyright}
-                groups={sitemap}
-                extras={FOOTERSPLIT_EXTRAS}
-                labels={ui.marketing.footerSplit.labels}
-                layout="stats"
-                mediaSide="end"
-                tone="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="footersplit-statsCards-label" data-testid="variant-label">
+            {ui.blocks.variants.footersplit.statsCards}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <FooterSplit
+              id="footersplit-statsCards"
+              label={ui.vibe.sitemap.label}
+              brand={ui.site.header.brand}
+              tagline={ui.marketing.footerSplit.tagline}
+              copyright={ui.marketing.footerSplit.copyright}
+              groups={sitemap}
+              extras={FOOTERSPLIT_EXTRAS}
+              labels={ui.marketing.footerSplit.labels}
+              layout="stats"
+              mediaSide="end"
+              tone="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="footersplit-splitPoints-label"
           data-testid="variant"
           data-block="footersplit"
           data-variant="splitPoints"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="footersplit-splitPoints-label" data-testid="variant-label">
-              {ui.blocks.variants.footersplit.splitPoints}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <FooterSplit
-                id="footersplit-splitPoints"
-                label={ui.vibe.sitemap.label}
-                brand={ui.site.header.brand}
-                tagline={ui.marketing.footerSplit.tagline}
-                copyright={ui.marketing.footerSplit.copyright}
-                groups={sitemap}
-                extras={FOOTERSPLIT_EXTRAS}
-                labels={ui.marketing.footerSplit.labels}
-                layout="points"
-                mediaSide="end"
-                tone="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="footersplit-splitPoints-label" data-testid="variant-label">
+            {ui.blocks.variants.footersplit.splitPoints}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <FooterSplit
+              id="footersplit-splitPoints"
+              label={ui.vibe.sitemap.label}
+              brand={ui.site.header.brand}
+              tagline={ui.marketing.footerSplit.tagline}
+              copyright={ui.marketing.footerSplit.copyright}
+              groups={sitemap}
+              extras={FOOTERSPLIT_EXTRAS}
+              labels={ui.marketing.footerSplit.labels}
+              layout="points"
+              mediaSide="end"
+              tone="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="footersplit-splitLinks-label"
           data-testid="variant"
           data-block="footersplit"
           data-variant="splitLinks"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="footersplit-splitLinks-label" data-testid="variant-label">
-              {ui.blocks.variants.footersplit.splitLinks}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <FooterSplit
-                id="footersplit-splitLinks"
-                label={ui.vibe.sitemap.label}
-                brand={ui.site.header.brand}
-                tagline={ui.marketing.footerSplit.tagline}
-                copyright={ui.marketing.footerSplit.copyright}
-                groups={sitemap}
-                extras={FOOTERSPLIT_EXTRAS}
-                labels={ui.marketing.footerSplit.labels}
-                layout="links"
-                mediaSide="end"
-                tone="muted"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="footersplit-splitLinks-label" data-testid="variant-label">
+            {ui.blocks.variants.footersplit.splitLinks}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <FooterSplit
+              id="footersplit-splitLinks"
+              label={ui.vibe.sitemap.label}
+              brand={ui.site.header.brand}
+              tagline={ui.marketing.footerSplit.tagline}
+              copyright={ui.marketing.footerSplit.copyright}
+              groups={sitemap}
+              extras={FOOTERSPLIT_EXTRAS}
+              labels={ui.marketing.footerSplit.labels}
+              layout="links"
+              mediaSide="end"
+              tone="muted"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="footersplit-newsletterStart-label"
           data-testid="variant"
           data-block="footersplit"
           data-variant="newsletterStart"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="footersplit-newsletterStart-label" data-testid="variant-label">
-              {ui.blocks.variants.footersplit.newsletterStart}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <FooterSplit
-                id="footersplit-newsletterStart"
-                label={ui.vibe.sitemap.label}
-                brand={ui.site.header.brand}
-                tagline={ui.marketing.footerSplit.tagline}
-                copyright={ui.marketing.footerSplit.copyright}
-                groups={sitemap}
-                extras={FOOTERSPLIT_EXTRAS}
-                labels={ui.marketing.footerSplit.labels}
-                layout="newsletter"
-                mediaSide="start"
-                tone="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="footersplit-newsletterStart-label" data-testid="variant-label">
+            {ui.blocks.variants.footersplit.newsletterStart}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <FooterSplit
+              id="footersplit-newsletterStart"
+              label={ui.vibe.sitemap.label}
+              brand={ui.site.header.brand}
+              tagline={ui.marketing.footerSplit.tagline}
+              copyright={ui.marketing.footerSplit.copyright}
+              groups={sitemap}
+              extras={FOOTERSPLIT_EXTRAS}
+              labels={ui.marketing.footerSplit.labels}
+              layout="newsletter"
+              mediaSide="start"
+              tone="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="footersplit-splitContacts-label"
           data-testid="variant"
           data-block="footersplit"
           data-variant="splitContacts"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="footersplit-splitContacts-label" data-testid="variant-label">
-              {ui.blocks.variants.footersplit.splitContacts}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <FooterSplit
-                id="footersplit-splitContacts"
-                label={ui.vibe.sitemap.label}
-                brand={ui.site.header.brand}
-                tagline={ui.marketing.footerSplit.tagline}
-                copyright={ui.marketing.footerSplit.copyright}
-                groups={sitemap}
-                extras={FOOTERSPLIT_EXTRAS}
-                labels={ui.marketing.footerSplit.labels}
-                layout="contacts"
-                mediaSide="end"
-                tone="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="footersplit-splitContacts-label" data-testid="variant-label">
+            {ui.blocks.variants.footersplit.splitContacts}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <FooterSplit
+              id="footersplit-splitContacts"
+              label={ui.vibe.sitemap.label}
+              brand={ui.site.header.brand}
+              tagline={ui.marketing.footerSplit.tagline}
+              copyright={ui.marketing.footerSplit.copyright}
+              groups={sitemap}
+              extras={FOOTERSPLIT_EXTRAS}
+              labels={ui.marketing.footerSplit.labels}
+              layout="contacts"
+              mediaSide="end"
+              tone="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="footersplit-channelsStart-label"
           data-testid="variant"
           data-block="footersplit"
           data-variant="channelsStart"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="footersplit-channelsStart-label" data-testid="variant-label">
-              {ui.blocks.variants.footersplit.channelsStart}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <FooterSplit
-                id="footersplit-channelsStart"
-                label={ui.vibe.sitemap.label}
-                brand={ui.site.header.brand}
-                tagline={ui.marketing.footerSplit.tagline}
-                copyright={ui.marketing.footerSplit.copyright}
-                groups={sitemap}
-                extras={FOOTERSPLIT_EXTRAS}
-                labels={ui.marketing.footerSplit.labels}
-                layout="channels"
-                mediaSide="start"
-                tone="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
+          <Title as={3} size="base" weight="bold" id="footersplit-channelsStart-label" data-testid="variant-label">
+            {ui.blocks.variants.footersplit.channelsStart}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <FooterSplit
+              id="footersplit-channelsStart"
+              label={ui.vibe.sitemap.label}
+              brand={ui.site.header.brand}
+              tagline={ui.marketing.footerSplit.tagline}
+              copyright={ui.marketing.footerSplit.copyright}
+              groups={sitemap}
+              extras={FOOTERSPLIT_EXTRAS}
+              labels={ui.marketing.footerSplit.labels}
+              layout="channels"
+              mediaSide="start"
+              tone="default"
+            />
+          </Box>
+        </Stack>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

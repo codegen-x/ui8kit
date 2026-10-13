@@ -23,32 +23,34 @@
   const channels = fromCodex<Feature>(channelsEntries, CHANNELS_FIELDS);
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.blocks.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="support">
-        {ui.blocks.themes.support.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-        {ui.blocks.names.contact}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {ui.blocks.docs.contact}
-      </Text>
-    </Stack>
-    <Block
-      tag="section"
-      aria-labelledby="contact-single-label"
-      data-testid="variant"
-      data-block="contact"
-      data-variant="single"
-    >
-      <Stack gap="4" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.blocks.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="support">
+          {ui.blocks.themes.support.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+          {ui.blocks.names.contact}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {ui.blocks.docs.contact}
+        </Text>
+      </Stack>
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="contact-single-label"
+        data-testid="variant"
+        data-block="contact"
+        data-variant="single"
+      >
         <Title as={2} size="base" weight="bold" id="contact-single-label" data-testid="variant-label">
           {ui.blocks.variants.contact.single}
         </Title>
@@ -68,15 +70,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="contact-page-label"
-      data-testid="variant"
-      data-block="contact"
-      data-variant="page"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="contact-page-label"
+        data-testid="variant"
+        data-block="contact"
+        data-variant="page"
+      >
         <Title as={2} size="base" weight="bold" id="contact-page-label" data-testid="variant-label">
           {ui.blocks.variants.contact.page}
         </Title>
@@ -96,15 +98,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="contact-short-label"
-      data-testid="variant"
-      data-block="contact"
-      data-variant="short"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="contact-short-label"
+        data-testid="variant"
+        data-block="contact"
+        data-variant="short"
+      >
         <Title as={2} size="base" weight="bold" id="contact-short-label" data-testid="variant-label">
           {ui.blocks.variants.contact.short}
         </Title>
@@ -124,15 +126,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="contact-split-label"
-      data-testid="variant"
-      data-block="contact"
-      data-variant="split"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="contact-split-label"
+        data-testid="variant"
+        data-block="contact"
+        data-variant="split"
+      >
         <Title as={2} size="base" weight="bold" id="contact-split-label" data-testid="variant-label">
           {ui.blocks.variants.contact.split}
         </Title>
@@ -152,15 +154,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="contact-consent-label"
-      data-testid="variant"
-      data-block="contact"
-      data-variant="consent"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="contact-consent-label"
+        data-testid="variant"
+        data-block="contact"
+        data-variant="consent"
+      >
         <Title as={2} size="base" weight="bold" id="contact-consent-label" data-testid="variant-label">
           {ui.blocks.variants.contact.consent}
         </Title>
@@ -180,15 +182,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="contact-muted-label"
-      data-testid="variant"
-      data-block="contact"
-      data-variant="muted"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="contact-muted-label"
+        data-testid="variant"
+        data-block="contact"
+        data-variant="muted"
+      >
         <Title as={2} size="base" weight="bold" id="contact-muted-label" data-testid="variant-label">
           {ui.blocks.variants.contact.muted}
         </Title>
@@ -208,6 +210,6 @@
           />
         </Box>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

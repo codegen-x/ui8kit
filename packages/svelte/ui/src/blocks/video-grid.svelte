@@ -24,9 +24,10 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
   import Box from "../primitives/box/box.svelte";
   import Button from "../primitives/button/button.svelte";
+  import Figure from "../primitives/figure/figure.svelte";
+  import FigureCaption from "../primitives/figure/figure-caption.svelte";
   import Grid from "../primitives/grid/grid.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Text from "../primitives/text/text.svelte";
@@ -51,7 +52,7 @@
 <SectionFrame id={id} title={title} tone={tone} density={density}>
   <Grid cols={cols} class="gap-4" data-testid="items">
     {#each quotes as q (q.id)}
-      <Block tag="figure" class="m-0 flex flex-col gap-4" data-testid="item">
+      <Figure class="m-0 flex flex-col gap-4" data-testid="item">
         <Box class="relative">
           <MediaFrame alt={q.author} ratio="16/9" />
           <Button
@@ -77,16 +78,16 @@
           {/if}
         </Box>
         {#if ((caption as string) === "below")}
-          <Block tag="figcaption" data-testid="caption">
+          <FigureCaption data-testid="caption">
             <Text size="sm" weight="semibold">
               {q.author}
             </Text>
             <Text size="xs" class="text-muted-foreground">
               {tpl(byLine, q.role, q.company)}
             </Text>
-          </Block>
+          </FigureCaption>
         {/if}
-      </Block>
+      </Figure>
     {/each}
   </Grid>
 </SectionFrame>

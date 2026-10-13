@@ -5,7 +5,7 @@
  * themselves are decoration.
  */
 import { type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
+import { Box } from "../primitives/box/box";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { cn } from "../utils";
 
@@ -20,7 +20,7 @@ export type RatingProps = {
 export function Rating({ value, label, max = 5, size = 16, className }: RatingProps) {
   const full = Math.round(Math.min(max, Math.max(0, value)));
   return (
-    <Block
+    <Box
       className={cn("inline-flex items-center gap-0", className)}
       role="img"
       aria-label={label}
@@ -34,6 +34,6 @@ export function Rating({ value, label, max = 5, size = 16, className }: RatingPr
           className={((i < full) ? "fill-foreground text-foreground" : "text-border")}
         />
       ))}
-    </Block>
+    </Box>
   );
 }

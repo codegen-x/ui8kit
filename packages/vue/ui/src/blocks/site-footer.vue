@@ -19,6 +19,7 @@ import Block from "../primitives/block/block.vue";
 import Container from "../primitives/container/container.vue";
 import Group from "../primitives/group/group.vue";
 import Link from "../primitives/link/link.vue";
+import Nav from "../primitives/nav/nav.vue";
 import Text from "../primitives/text/text.vue";
 import { cn } from "../utils";
 
@@ -39,7 +40,7 @@ const { labels, layout = "minimal", density = "default" } = defineProps<SiteFoot
       <Text size="sm" class="text-muted-foreground" data-testid="copyright">
         {{ labels.copyright }}
       </Text>
-      <Block tag="nav" :aria-label="labels.nav">
+      <Nav :aria-label="labels.nav">
         <Group gap="4">
           <Link href="#/" variant="default">
             {{ labels.home }}
@@ -48,7 +49,7 @@ const { labels, layout = "minimal", density = "default" } = defineProps<SiteFoot
             {{ labels.pricing }}
           </Link>
         </Group>
-      </Block>
+      </Nav>
     </Container>
   </Block>
 </template>

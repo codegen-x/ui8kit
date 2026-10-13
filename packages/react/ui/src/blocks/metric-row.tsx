@@ -5,7 +5,7 @@
  * columns (2, 4), item (tile, compact), tone (default, muted), density (default, compact).
  */
 import { Fragment, type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
+import { Box } from "../primitives/box/box";
 import { Grid } from "../primitives/grid/grid";
 import { Group } from "../primitives/group/group";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
@@ -40,9 +40,9 @@ export function MetricRow({
         {(metrics ?? []).map((m) => (
           <Fragment key={m.id}>
             {((item as string) === "tile") ? (
-              <Block tag="div" data-testid="item">
+              <Box data-testid="item">
                 <StatTile label={m.label} value={m.value} icon={m.icon} hint={m.hint} />
-              </Block>
+              </Box>
             ) : (
               <Stack gap="0" className="rounded bg-card p-4 inset-ring inset-ring-border" data-testid="item">
                 <Group gap="2" align="center" className="text-muted-foreground">

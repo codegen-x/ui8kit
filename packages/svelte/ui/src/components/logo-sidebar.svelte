@@ -30,14 +30,14 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
+  import Box from "../primitives/box/box.svelte";
   import Inline from "../primitives/inline/inline.svelte";
   import { cn } from "../utils";
 
   let { variant = "chat", name, class: className, mark, actions }: LogoSidebarProps = $props();
 </script>
 
-<Block
+<Box
   class={cn(
     logoSidebarVariants({ variant: variant }),
     "in-data-[nav=collapsed]:w-full in-data-[nav=collapsed]:justify-center in-data-[nav=collapsed]:p-0",
@@ -56,4 +56,4 @@
       {@render actions?.()}
     </Inline>
   {/if}
-</Block>
+</Box>

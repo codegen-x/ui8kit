@@ -36,17 +36,17 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
+  import Box from "../primitives/box/box.svelte";
   import { cn } from "../utils";
 
   let { size = "default", layout = "text", label, class: className, children }: SwitcherProps = $props();
 </script>
 
-<Block
+<Box
   class={cn(switcherVariants({ size: size, layout: layout }), className)}
   role="tablist"
   aria-label={label}
   data-slot="switcher"
 >
   {@render children?.()}
-</Block>
+</Box>

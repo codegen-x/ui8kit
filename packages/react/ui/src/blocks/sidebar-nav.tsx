@@ -12,6 +12,7 @@ import { Link } from "../primitives/link/link";
 import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
+import { Nav } from "../primitives/nav/nav";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { MediaFrame } from "../components/media-frame";
@@ -58,7 +59,7 @@ export function SidebarNav({
           {brand}
         </Text>
       </Group>
-      <Block tag="nav" className="flex-1" aria-label={label}>
+      <Nav className="flex-1" aria-label={label}>
         <List
           className={cn(
             "m-0 flex list-none flex-col p-0",
@@ -87,7 +88,7 @@ export function SidebarNav({
             </ListItem>
           ))}
         </List>
-      </Block>
+      </Nav>
       {((user as string) === "show") ? (
         <Group gap="4" align="center" className="border-t border-border pt-4" data-testid="user">
           <MediaFrame alt={userName} ratio="1/1" className="size-10 shrink-0 rounded-full" />

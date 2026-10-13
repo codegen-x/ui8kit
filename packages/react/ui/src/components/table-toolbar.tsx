@@ -5,7 +5,7 @@
  * (`actions`). One tab stop group (role toolbar).
  */
 import { type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
+import { Box } from "../primitives/box/box";
 import { Inline } from "../primitives/inline/inline";
 import { cn } from "../utils";
 
@@ -18,7 +18,7 @@ export type TableToolbarProps = {
 
 export function TableToolbar({ label, className, children, actions }: TableToolbarProps) {
   return (
-    <Block
+    <Box
       className={cn("flex flex-wrap items-center justify-between gap-2", className)}
       role="toolbar"
       aria-label={label}
@@ -30,6 +30,6 @@ export function TableToolbar({ label, className, children, actions }: TableToolb
       <Inline className="flex flex-wrap items-center gap-2">
         {actions}
       </Inline>
-    </Block>
+    </Box>
   );
 }

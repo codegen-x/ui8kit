@@ -36,31 +36,33 @@
   const TESTIMONIALS_LABELS = { rating: ui.testimonials.rating, byLine: ui.testimonials.byLine, handleLine: ui.testimonials.handleLine } as const;
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.catalog.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-        {ui.catalog.sections.marketing.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="category-title">
-        {ui.catalog.categories.marketingTestimonials}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {tpl(ui.catalog.count, 1, 10)}
-      </Text>
-    </Stack>
-    <Block
-      tag="section"
-      aria-labelledby="catalog-testimonials-title"
-      data-testid="catalog-block"
-      data-block="testimonials"
-    >
-      <Stack gap="6" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.catalog.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+          {ui.catalog.sections.marketing.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="category-title">
+          {ui.catalog.categories.marketingTestimonials}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {tpl(ui.catalog.count, 1, 10)}
+        </Text>
+      </Stack>
+      <Stack
+        gap="6"
+        align="stretch"
+        role="group"
+        aria-labelledby="catalog-testimonials-title"
+        data-testid="catalog-block"
+        data-block="testimonials"
+      >
         <Stack gap="2" align="stretch">
           <Title as={2} size="2xl" weight="bold" id="catalog-testimonials-title">
             {ui.blocks.names.testimonials}
@@ -69,267 +71,267 @@
             {ui.blocks.docs.testimonials}
           </Text>
         </Stack>
-        <Block
-          tag="section"
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="testimonials-grid3-label"
           data-testid="variant"
           data-block="testimonials"
           data-variant="grid3"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="testimonials-grid3-label" data-testid="variant-label">
-              {ui.blocks.variants.testimonials.grid3}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <TestimonialGrid
-                id="testimonials-grid3"
-                title={ui.marketing.testimonials.title}
-                quotes={testimonials}
-                labels={TESTIMONIALS_LABELS}
-                layout="grid"
-                cols="1-3"
-                item={{ kind: "card", avatar: "image", rating: "show", mark: "none" }}
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="testimonials-grid3-label" data-testid="variant-label">
+            {ui.blocks.variants.testimonials.grid3}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <TestimonialGrid
+              id="testimonials-grid3"
+              title={ui.marketing.testimonials.title}
+              quotes={testimonials}
+              labels={TESTIMONIALS_LABELS}
+              layout="grid"
+              cols="1-3"
+              item={{ kind: "card", avatar: "image", rating: "show", mark: "none" }}
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="testimonials-masonry-label"
           data-testid="variant"
           data-block="testimonials"
           data-variant="masonry"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="testimonials-masonry-label" data-testid="variant-label">
-              {ui.blocks.variants.testimonials.masonry}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <TestimonialGrid
-                id="testimonials-masonry"
-                title={ui.marketing.testimonials.title}
-                quotes={testimonials}
-                labels={TESTIMONIALS_LABELS}
-                layout="masonry"
-                cols="1-3"
-                item={{ kind: "card", avatar: "image", rating: "hide", mark: "none" }}
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="testimonials-masonry-label" data-testid="variant-label">
+            {ui.blocks.variants.testimonials.masonry}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <TestimonialGrid
+              id="testimonials-masonry"
+              title={ui.marketing.testimonials.title}
+              quotes={testimonials}
+              labels={TESTIMONIALS_LABELS}
+              layout="masonry"
+              cols="1-3"
+              item={{ kind: "card", avatar: "image", rating: "hide", mark: "none" }}
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="testimonials-strip-label"
           data-testid="variant"
           data-block="testimonials"
           data-variant="strip"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="testimonials-strip-label" data-testid="variant-label">
-              {ui.blocks.variants.testimonials.strip}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <TestimonialGrid
-                id="testimonials-strip"
-                title={ui.marketing.testimonials.title}
-                quotes={testimonials}
-                labels={TESTIMONIALS_LABELS}
-                layout="strip"
-                cols="1-3"
-                item={{ kind: "card", avatar: "none", rating: "show", mark: "none" }}
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="testimonials-strip-label" data-testid="variant-label">
+            {ui.blocks.variants.testimonials.strip}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <TestimonialGrid
+              id="testimonials-strip"
+              title={ui.marketing.testimonials.title}
+              quotes={testimonials}
+              labels={TESTIMONIALS_LABELS}
+              layout="strip"
+              cols="1-3"
+              item={{ kind: "card", avatar: "none", rating: "show", mark: "none" }}
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="testimonials-social-label"
           data-testid="variant"
           data-block="testimonials"
           data-variant="social"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="testimonials-social-label" data-testid="variant-label">
-              {ui.blocks.variants.testimonials.social}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <TestimonialGrid
-                id="testimonials-social"
-                title={ui.marketing.testimonials.title}
-                quotes={testimonials}
-                labels={TESTIMONIALS_LABELS}
-                layout="masonry"
-                cols="1-3"
-                item={{ kind: "social", avatar: "image", rating: "hide", mark: "none" }}
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="testimonials-social-label" data-testid="variant-label">
+            {ui.blocks.variants.testimonials.social}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <TestimonialGrid
+              id="testimonials-social"
+              title={ui.marketing.testimonials.title}
+              quotes={testimonials}
+              labels={TESTIMONIALS_LABELS}
+              layout="masonry"
+              cols="1-3"
+              item={{ kind: "social", avatar: "image", rating: "hide", mark: "none" }}
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="testimonials-featured-label"
           data-testid="variant"
           data-block="testimonials"
           data-variant="featured"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="testimonials-featured-label" data-testid="variant-label">
-              {ui.blocks.variants.testimonials.featured}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <TestimonialGrid
-                id="testimonials-featured"
-                title={ui.marketing.testimonials.title}
-                quotes={testimonials}
-                labels={TESTIMONIALS_LABELS}
-                layout="single"
-                cols="1-3"
-                item={{ kind: "plain", avatar: "image", rating: "hide", mark: "icon" }}
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="testimonials-featured-label" data-testid="variant-label">
+            {ui.blocks.variants.testimonials.featured}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <TestimonialGrid
+              id="testimonials-featured"
+              title={ui.marketing.testimonials.title}
+              quotes={testimonials}
+              labels={TESTIMONIALS_LABELS}
+              layout="single"
+              cols="1-3"
+              item={{ kind: "plain", avatar: "image", rating: "hide", mark: "icon" }}
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="testimonials-grid2-label"
           data-testid="variant"
           data-block="testimonials"
           data-variant="grid2"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="testimonials-grid2-label" data-testid="variant-label">
-              {ui.blocks.variants.testimonials.grid2}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <TestimonialGrid
-                id="testimonials-grid2"
-                title={ui.marketing.testimonials.title}
-                quotes={testimonials}
-                labels={TESTIMONIALS_LABELS}
-                layout="grid"
-                cols="1-2"
-                item={{ kind: "card", avatar: "image", rating: "show", mark: "none" }}
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="testimonials-grid2-label" data-testid="variant-label">
+            {ui.blocks.variants.testimonials.grid2}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <TestimonialGrid
+              id="testimonials-grid2"
+              title={ui.marketing.testimonials.title}
+              quotes={testimonials}
+              labels={TESTIMONIALS_LABELS}
+              layout="grid"
+              cols="1-2"
+              item={{ kind: "card", avatar: "image", rating: "show", mark: "none" }}
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="testimonials-single-label"
           data-testid="variant"
           data-block="testimonials"
           data-variant="single"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="testimonials-single-label" data-testid="variant-label">
-              {ui.blocks.variants.testimonials.single}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <TestimonialGrid
-                id="testimonials-single"
-                title={ui.marketing.testimonials.title}
-                quotes={testimonials}
-                labels={TESTIMONIALS_LABELS}
-                layout="single"
-                cols="1-3"
-                item={{ kind: "plain", avatar: "image", rating: "hide", mark: "none" }}
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="testimonials-single-label" data-testid="variant-label">
+            {ui.blocks.variants.testimonials.single}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <TestimonialGrid
+              id="testimonials-single"
+              title={ui.marketing.testimonials.title}
+              quotes={testimonials}
+              labels={TESTIMONIALS_LABELS}
+              layout="single"
+              cols="1-3"
+              item={{ kind: "plain", avatar: "image", rating: "hide", mark: "none" }}
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="testimonials-stack-label"
           data-testid="variant"
           data-block="testimonials"
           data-variant="stack"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="testimonials-stack-label" data-testid="variant-label">
-              {ui.blocks.variants.testimonials.stack}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <TestimonialGrid
-                id="testimonials-stack"
-                title={ui.marketing.testimonials.title}
-                quotes={testimonials}
-                labels={TESTIMONIALS_LABELS}
-                layout="stack"
-                cols="1-3"
-                item={{ kind: "card", avatar: "none", rating: "show", mark: "none" }}
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="testimonials-stack-label" data-testid="variant-label">
+            {ui.blocks.variants.testimonials.stack}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <TestimonialGrid
+              id="testimonials-stack"
+              title={ui.marketing.testimonials.title}
+              quotes={testimonials}
+              labels={TESTIMONIALS_LABELS}
+              layout="stack"
+              cols="1-3"
+              item={{ kind: "card", avatar: "none", rating: "show", mark: "none" }}
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="testimonials-plain-label"
           data-testid="variant"
           data-block="testimonials"
           data-variant="plain"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="testimonials-plain-label" data-testid="variant-label">
-              {ui.blocks.variants.testimonials.plain}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <TestimonialGrid
-                id="testimonials-plain"
-                title={ui.marketing.testimonials.title}
-                quotes={testimonials}
-                labels={TESTIMONIALS_LABELS}
-                layout="grid"
-                cols="1-3"
-                item={{ kind: "plain", avatar: "none", rating: "show", mark: "none" }}
-                tone="muted"
-                density="compact"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="testimonials-plain-label" data-testid="variant-label">
+            {ui.blocks.variants.testimonials.plain}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <TestimonialGrid
+              id="testimonials-plain"
+              title={ui.marketing.testimonials.title}
+              quotes={testimonials}
+              labels={TESTIMONIALS_LABELS}
+              layout="grid"
+              cols="1-3"
+              item={{ kind: "plain", avatar: "none", rating: "show", mark: "none" }}
+              tone="muted"
+              density="compact"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="testimonials-noRating-label"
           data-testid="variant"
           data-block="testimonials"
           data-variant="noRating"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="testimonials-noRating-label" data-testid="variant-label">
-              {ui.blocks.variants.testimonials.noRating}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <TestimonialGrid
-                id="testimonials-noRating"
-                title={ui.marketing.testimonials.title}
-                quotes={testimonials}
-                labels={TESTIMONIALS_LABELS}
-                layout="grid"
-                cols="1-3"
-                item={{ kind: "card", avatar: "image", rating: "hide", mark: "none" }}
-                tone="default"
-                density="roomy"
-              />
-            </Box>
-          </Stack>
-        </Block>
+          <Title as={3} size="base" weight="bold" id="testimonials-noRating-label" data-testid="variant-label">
+            {ui.blocks.variants.testimonials.noRating}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <TestimonialGrid
+              id="testimonials-noRating"
+              title={ui.marketing.testimonials.title}
+              quotes={testimonials}
+              labels={TESTIMONIALS_LABELS}
+              layout="grid"
+              cols="1-3"
+              item={{ kind: "card", avatar: "image", rating: "hide", mark: "none" }}
+              tone="default"
+              density="roomy"
+            />
+          </Box>
+        </Stack>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

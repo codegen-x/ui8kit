@@ -20,7 +20,7 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
+  import Box from "../primitives/box/box.svelte";
   import Grid from "../primitives/grid/grid.svelte";
   import Group from "../primitives/group/group.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
@@ -44,9 +44,9 @@
   <Grid cols={(((cols as string) === "2") ? "1-2" : "1-4")} class="gap-4" data-testid="items">
     {#each metrics as m (m.id)}
       {#if ((item as string) === "tile")}
-        <Block tag="div" data-testid="item">
+        <Box data-testid="item">
           <StatTile label={m.label} value={m.value} icon={m.icon} hint={m.hint} />
-        </Block>
+        </Box>
       {:else}
         <Stack gap="0" class="rounded bg-card p-4 inset-ring inset-ring-border" data-testid="item">
           <Group gap="2" align="center" class="text-muted-foreground">

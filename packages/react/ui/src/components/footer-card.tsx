@@ -11,6 +11,7 @@ import { Link } from "../primitives/link/link";
 import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
+import { Nav } from "../primitives/nav/nav";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { defaults } from "../presets/defaults";
@@ -42,7 +43,7 @@ export function FooterCard({ label, brand, groups }: FooterCardProps) {
               {brand}
             </Text>
           </Group>
-          <Block tag="nav" className="min-w-0 flex-1" aria-label={label}>
+          <Nav className="min-w-0 flex-1" aria-label={label}>
             <Group
               gap="0"
               align="start"
@@ -66,7 +67,7 @@ export function FooterCard({ label, brand, groups }: FooterCardProps) {
                 </Stack>
               ))}
             </Group>
-          </Block>
+          </Nav>
         </Box>
       </Container>
     </Block>

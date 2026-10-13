@@ -94,9 +94,8 @@
           },
           "do": [
             {
-              "use": "Block",
+              "use": "Article",
               "props": {
-                "Tag": "article",
                 "Class": {
                   "op": "cn",
                   "args": [

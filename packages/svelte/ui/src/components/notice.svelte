@@ -13,14 +13,14 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
+  import Box from "../primitives/box/box.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Text from "../primitives/text/text.svelte";
 
   let { text }: NoticeProps = $props();
 </script>
 
-<Block class="contents" role="status" data-testid="notice">
+<Box class="contents" role="status" data-testid="notice">
   {#if text}
     <Text
       class={"fixed right-4 bottom-4 z-40 m-0 flex items-center gap-2 rounded bg-foreground p-4 text-xs font-bold " +
@@ -30,4 +30,4 @@
       {text}
     </Text>
   {/if}
-</Block>
+</Box>

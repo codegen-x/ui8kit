@@ -9,32 +9,34 @@ const AUTHPAGE_SWITCH_TO = { text: ui.auth.signin.switchText, link: ui.auth.sign
 
 export function AuthpagePage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text size="sm" className="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="account">
-            {ui.blocks.themes.account.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.authpage}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.authpage}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="authpage-split-label"
-          data-testid="variant"
-          data-block="authpage"
-          data-variant="split"
-        >
-          <Stack gap="4" align="stretch">
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text size="sm" className="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="account">
+              {ui.blocks.themes.account.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.authpage}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.authpage}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="authpage-split-label"
+            data-testid="variant"
+            data-block="authpage"
+            data-variant="split"
+          >
             <Title as={2} size="base" weight="bold" id="authpage-split-label" data-testid="variant-label">
               {ui.blocks.variants.authpage.split}
             </Title>
@@ -55,15 +57,15 @@ export function AuthpagePage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="authpage-splitStart-label"
-          data-testid="variant"
-          data-block="authpage"
-          data-variant="splitStart"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="authpage-splitStart-label"
+            data-testid="variant"
+            data-block="authpage"
+            data-variant="splitStart"
+          >
             <Title as={2} size="base" weight="bold" id="authpage-splitStart-label" data-testid="variant-label">
               {ui.blocks.variants.authpage.splitStart}
             </Title>
@@ -84,15 +86,15 @@ export function AuthpagePage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="authpage-centered-label"
-          data-testid="variant"
-          data-block="authpage"
-          data-variant="centered"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="authpage-centered-label"
+            data-testid="variant"
+            data-block="authpage"
+            data-variant="centered"
+          >
             <Title as={2} size="base" weight="bold" id="authpage-centered-label" data-testid="variant-label">
               {ui.blocks.variants.authpage.centered}
             </Title>
@@ -113,15 +115,15 @@ export function AuthpagePage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="authpage-minimal-label"
-          data-testid="variant"
-          data-block="authpage"
-          data-variant="minimal"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="authpage-minimal-label"
+            data-testid="variant"
+            data-block="authpage"
+            data-variant="minimal"
+          >
             <Title as={2} size="base" weight="bold" id="authpage-minimal-label" data-testid="variant-label">
               {ui.blocks.variants.authpage.minimal}
             </Title>
@@ -142,15 +144,15 @@ export function AuthpagePage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="authpage-signup-label"
-          data-testid="variant"
-          data-block="authpage"
-          data-variant="signup"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="authpage-signup-label"
+            data-testid="variant"
+            data-block="authpage"
+            data-variant="signup"
+          >
             <Title as={2} size="base" weight="bold" id="authpage-signup-label" data-testid="variant-label">
               {ui.blocks.variants.authpage.signup}
             </Title>
@@ -175,15 +177,15 @@ export function AuthpagePage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="authpage-reset-label"
-          data-testid="variant"
-          data-block="authpage"
-          data-variant="reset"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="authpage-reset-label"
+            data-testid="variant"
+            data-block="authpage"
+            data-variant="reset"
+          >
             <Title as={2} size="base" weight="bold" id="authpage-reset-label" data-testid="variant-label">
               {ui.blocks.variants.authpage.reset}
             </Title>
@@ -204,15 +206,15 @@ export function AuthpagePage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="authpage-magic-label"
-          data-testid="variant"
-          data-block="authpage"
-          data-variant="magic"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="authpage-magic-label"
+            data-testid="variant"
+            data-block="authpage"
+            data-variant="magic"
+          >
             <Title as={2} size="base" weight="bold" id="authpage-magic-label" data-testid="variant-label">
               {ui.blocks.variants.authpage.magic}
             </Title>
@@ -233,15 +235,15 @@ export function AuthpagePage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="authpage-social-label"
-          data-testid="variant"
-          data-block="authpage"
-          data-variant="social"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="authpage-social-label"
+            data-testid="variant"
+            data-block="authpage"
+            data-variant="social"
+          >
             <Title as={2} size="base" weight="bold" id="authpage-social-label" data-testid="variant-label">
               {ui.blocks.variants.authpage.social}
             </Title>
@@ -262,15 +264,15 @@ export function AuthpagePage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="authpage-socialFirst-label"
-          data-testid="variant"
-          data-block="authpage"
-          data-variant="socialFirst"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="authpage-socialFirst-label"
+            data-testid="variant"
+            data-block="authpage"
+            data-variant="socialFirst"
+          >
             <Title as={2} size="base" weight="bold" id="authpage-socialFirst-label" data-testid="variant-label">
               {ui.blocks.variants.authpage.socialFirst}
             </Title>
@@ -291,8 +293,8 @@ export function AuthpagePage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

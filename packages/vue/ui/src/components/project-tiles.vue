@@ -17,8 +17,8 @@ export type ProjectTilesProps = {
 
 <script setup lang="ts">
 import { computed } from "vue";
+import Article from "../primitives/article/article.vue";
 import Badge from "../primitives/badge/badge.vue";
-import Block from "../primitives/block/block.vue";
 import Box from "../primitives/box/box.vue";
 import Group from "../primitives/group/group.vue";
 import Link from "../primitives/link/link.vue";
@@ -44,8 +44,7 @@ const over = computed(() =>
     "
     data-testid="items"
   >
-    <Block v-for="(p, i) in projects" :key="p.id"
-      tag="article"
+    <Article v-for="(p, i) in projects" :key="p.id"
       :class="cn(
         'flex flex-col gap-4',
         (over ? 'relative' : 'rounded bg-card inset-ring inset-ring-border p-4'),
@@ -101,6 +100,6 @@ const over = computed(() =>
           </Group>
         </template>
       </Stack>
-    </Block>
+    </Article>
   </Box>
 </template>

@@ -7,7 +7,7 @@
  * by `filter.category`), density, tone.
  */
 import { type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
+import { Box } from "../primitives/box/box";
 import { Disclosure } from "../primitives/disclosure/disclosure";
 import { Summary } from "../primitives/disclosure/summary";
 import { Grid } from "../primitives/grid/grid";
@@ -80,16 +80,16 @@ export function FaqList({
         <Stack gap="4" align="stretch" data-testid="faq">
           {(shown ?? []).map((item) => (
             <Stack key={item.id} gap="2" align="stretch" data-testid="faq-item">
-              <Block tag="div" className="ml-auto max-w-xs sm:max-w-md rounded bg-primary px-4 py-4 text-primary-foreground">
+              <Box className="ml-auto max-w-xs sm:max-w-md rounded bg-primary px-4 py-4 text-primary-foreground">
                 <Text size="sm" weight="semibold">
                   {item.question}
                 </Text>
-              </Block>
-              <Block tag="div" className="mr-auto max-w-xs sm:max-w-md rounded bg-muted px-4 py-4">
+              </Box>
+              <Box className="mr-auto max-w-xs sm:max-w-md rounded bg-muted px-4 py-4">
                 <Text size="sm">
                   {item.answer}
                 </Text>
-              </Block>
+              </Box>
             </Stack>
           ))}
         </Stack>

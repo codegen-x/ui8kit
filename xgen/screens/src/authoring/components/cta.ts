@@ -17,7 +17,7 @@ export const ctaActions = spec(`${P}cta-actions`, "CtaActions", "The actions of 
 /** a customer quote under a call to action */
 export const quoteProof = spec(`${P}quote-proof`, "QuoteProof", "A customer quote and who said it, as a figure.", {
   props: [{ name: "quote", type: "string" }, { name: "quoteBy", type: "string" }, { name: "center", type: "boolean", default: false }],
-  view: [use("Block", { props: { Tag: "figure", Class: cn("flex flex-col gap-2", cond(ref("center"), "items-center text-center", "")) }, attrs: { "data-testid": "proof" } },
+  view: [use("Figure", { props: { Class: cn("flex flex-col gap-2", cond(ref("center"), "items-center text-center", "")) }, attrs: { "data-testid": "proof" } },
     use("Text", { props: { Size: "xl" } }, text(ref("quote"))), muted(ref("quoteBy")))],
 });
 

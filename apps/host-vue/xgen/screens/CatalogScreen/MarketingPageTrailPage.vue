@@ -37,31 +37,33 @@ const PAGETRAIL_EXTRAS = {
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.catalog.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-          {{ ui.catalog.sections.marketing.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="category-title">
-          {{ ui.catalog.categories.marketingPageTrail }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ tpl(ui.catalog.count, 1, 4) }}
-        </Text>
-      </Stack>
-      <Block
-        tag="section"
-        aria-labelledby="catalog-pagetrail-title"
-        data-testid="catalog-block"
-        data-block="pagetrail"
-      >
-        <Stack gap="6" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.catalog.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+            {{ ui.catalog.sections.marketing.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="category-title">
+            {{ ui.catalog.categories.marketingPageTrail }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ tpl(ui.catalog.count, 1, 4) }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="6"
+          align="stretch"
+          role="group"
+          aria-labelledby="catalog-pagetrail-title"
+          data-testid="catalog-block"
+          data-block="pagetrail"
+        >
           <Stack gap="2" align="stretch">
             <Title :as="2" size="2xl" weight="bold" id="catalog-pagetrail-title">
               {{ ui.blocks.names.pagetrail }}
@@ -70,116 +72,116 @@ const PAGETRAIL_EXTRAS = {
               {{ ui.blocks.docs.pagetrail }}
             </Text>
           </Stack>
-          <Block
-            tag="section"
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="pagetrail-crumbs-label"
             data-testid="variant"
             data-block="pagetrail"
             data-variant="crumbs"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="pagetrail-crumbs-label" data-testid="variant-label">
-                {{ ui.blocks.variants.pagetrail.crumbs }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <PageTrail
-                  id="pagetrail-crumbs"
-                  :title="ui.marketing.pageTrail.title"
-                  :lead="ui.marketing.pageTrail.lead"
-                  :badge="ui.marketing.pageTrail.badge"
-                  :label="ui.marketing.pageTrail.label"
-                  :crumbs="crumbs"
-                  :extras="PAGETRAIL_EXTRAS"
-                  aside="none"
-                  tone="default"
-                  :level="2"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="pagetrail-crumbs-label" data-testid="variant-label">
+              {{ ui.blocks.variants.pagetrail.crumbs }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <PageTrail
+                id="pagetrail-crumbs"
+                :title="ui.marketing.pageTrail.title"
+                :lead="ui.marketing.pageTrail.lead"
+                :badge="ui.marketing.pageTrail.badge"
+                :label="ui.marketing.pageTrail.label"
+                :crumbs="crumbs"
+                :extras="PAGETRAIL_EXTRAS"
+                aside="none"
+                tone="default"
+                :level="2"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="pagetrail-crumbsFigure-label"
             data-testid="variant"
             data-block="pagetrail"
             data-variant="crumbsFigure"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="pagetrail-crumbsFigure-label" data-testid="variant-label">
-                {{ ui.blocks.variants.pagetrail.crumbsFigure }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <PageTrail
-                  id="pagetrail-crumbsFigure"
-                  :title="ui.marketing.pageTrail.title"
-                  :lead="ui.marketing.pageTrail.lead"
-                  :badge="ui.marketing.pageTrail.badge"
-                  :label="ui.marketing.pageTrail.label"
-                  :crumbs="crumbs"
-                  :extras="PAGETRAIL_EXTRAS"
-                  aside="figure"
-                  tone="default"
-                  :level="2"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="pagetrail-crumbsFigure-label" data-testid="variant-label">
+              {{ ui.blocks.variants.pagetrail.crumbsFigure }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <PageTrail
+                id="pagetrail-crumbsFigure"
+                :title="ui.marketing.pageTrail.title"
+                :lead="ui.marketing.pageTrail.lead"
+                :badge="ui.marketing.pageTrail.badge"
+                :label="ui.marketing.pageTrail.label"
+                :crumbs="crumbs"
+                :extras="PAGETRAIL_EXTRAS"
+                aside="figure"
+                tone="default"
+                :level="2"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="pagetrail-crumbsNote-label"
             data-testid="variant"
             data-block="pagetrail"
             data-variant="crumbsNote"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="pagetrail-crumbsNote-label" data-testid="variant-label">
-                {{ ui.blocks.variants.pagetrail.crumbsNote }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <PageTrail
-                  id="pagetrail-crumbsNote"
-                  :title="ui.marketing.pageTrail.title"
-                  :lead="ui.marketing.pageTrail.lead"
-                  :badge="ui.marketing.pageTrail.badge"
-                  :label="ui.marketing.pageTrail.label"
-                  :crumbs="crumbs"
-                  :extras="PAGETRAIL_EXTRAS"
-                  aside="note"
-                  tone="default"
-                  :level="2"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="pagetrail-crumbsNote-label" data-testid="variant-label">
+              {{ ui.blocks.variants.pagetrail.crumbsNote }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <PageTrail
+                id="pagetrail-crumbsNote"
+                :title="ui.marketing.pageTrail.title"
+                :lead="ui.marketing.pageTrail.lead"
+                :badge="ui.marketing.pageTrail.badge"
+                :label="ui.marketing.pageTrail.label"
+                :crumbs="crumbs"
+                :extras="PAGETRAIL_EXTRAS"
+                aside="note"
+                tone="default"
+                :level="2"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="pagetrail-keyFacts-label"
             data-testid="variant"
             data-block="pagetrail"
             data-variant="keyFacts"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="pagetrail-keyFacts-label" data-testid="variant-label">
-                {{ ui.blocks.variants.pagetrail.keyFacts }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <PageTrail
-                  id="pagetrail-keyFacts"
-                  :title="ui.marketing.pageTrail.title"
-                  :lead="ui.marketing.pageTrail.lead"
-                  :badge="ui.marketing.pageTrail.badge"
-                  :label="ui.marketing.pageTrail.label"
-                  :crumbs="crumbs"
-                  :extras="PAGETRAIL_EXTRAS"
-                  aside="facts"
-                  tone="muted"
-                  :level="2"
-                />
-              </Box>
-            </Stack>
-          </Block>
+            <Title :as="3" size="base" weight="bold" id="pagetrail-keyFacts-label" data-testid="variant-label">
+              {{ ui.blocks.variants.pagetrail.keyFacts }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <PageTrail
+                id="pagetrail-keyFacts"
+                :title="ui.marketing.pageTrail.title"
+                :lead="ui.marketing.pageTrail.lead"
+                :badge="ui.marketing.pageTrail.badge"
+                :label="ui.marketing.pageTrail.label"
+                :crumbs="crumbs"
+                :extras="PAGETRAIL_EXTRAS"
+                aside="facts"
+                tone="muted"
+                :level="2"
+              />
+            </Box>
+          </Stack>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

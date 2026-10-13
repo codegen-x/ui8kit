@@ -24,32 +24,34 @@ const chapters = fromCodex<Chapter>(chaptersEntries, CHAPTERS_FIELDS);
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.blocks.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="onboarding">
-          {{ ui.blocks.themes.onboarding.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="block-title">
-          {{ ui.blocks.names.videomodal }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ ui.blocks.docs.videomodal }}
-        </Text>
-      </Stack>
-      <Block
-        tag="section"
-        aria-labelledby="videomodal-default-label"
-        data-testid="variant"
-        data-block="videomodal"
-        data-variant="default"
-      >
-        <Stack gap="4" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.blocks.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="onboarding">
+            {{ ui.blocks.themes.onboarding.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="block-title">
+            {{ ui.blocks.names.videomodal }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ ui.blocks.docs.videomodal }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="videomodal-default-label"
+          data-testid="variant"
+          data-block="videomodal"
+          data-variant="default"
+        >
           <Title :as="2" size="base" weight="bold" id="videomodal-default-label" data-testid="variant-label">
             {{ ui.blocks.variants.videomodal.default }}
           </Title>
@@ -68,15 +70,15 @@ const chapters = fromCodex<Chapter>(chaptersEntries, CHAPTERS_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="videomodal-wide-label"
-        data-testid="variant"
-        data-block="videomodal"
-        data-variant="wide"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="videomodal-wide-label"
+          data-testid="variant"
+          data-block="videomodal"
+          data-variant="wide"
+        >
           <Title :as="2" size="base" weight="bold" id="videomodal-wide-label" data-testid="variant-label">
             {{ ui.blocks.variants.videomodal.wide }}
           </Title>
@@ -95,15 +97,15 @@ const chapters = fromCodex<Chapter>(chaptersEntries, CHAPTERS_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="videomodal-chapters-label"
-        data-testid="variant"
-        data-block="videomodal"
-        data-variant="chapters"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="videomodal-chapters-label"
+          data-testid="variant"
+          data-block="videomodal"
+          data-variant="chapters"
+        >
           <Title :as="2" size="base" weight="bold" id="videomodal-chapters-label" data-testid="variant-label">
             {{ ui.blocks.variants.videomodal.chapters }}
           </Title>
@@ -122,15 +124,15 @@ const chapters = fromCodex<Chapter>(chaptersEntries, CHAPTERS_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="videomodal-muted-label"
-        data-testid="variant"
-        data-block="videomodal"
-        data-variant="muted"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="videomodal-muted-label"
+          data-testid="variant"
+          data-block="videomodal"
+          data-variant="muted"
+        >
           <Title :as="2" size="base" weight="bold" id="videomodal-muted-label" data-testid="variant-label">
             {{ ui.blocks.variants.videomodal.muted }}
           </Title>
@@ -149,7 +151,7 @@ const chapters = fromCodex<Chapter>(chaptersEntries, CHAPTERS_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

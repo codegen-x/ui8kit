@@ -20,7 +20,7 @@ export type PagerProps = {
 
 <script setup lang="ts">
 import { computed } from "vue";
-import Block from "../primitives/block/block.vue";
+import Box from "../primitives/box/box.vue";
 import Button from "../primitives/button/button.vue";
 import Inline from "../primitives/inline/inline.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
@@ -41,7 +41,7 @@ const numbers = computed(() => pageWindow(page, pages));
 </script>
 
 <template>
-  <Block
+  <Box
     :class="'flex flex-wrap items-center justify-between gap-4 text-xs font-semibold text-muted-foreground'"
     data-testid="pager"
   >
@@ -111,5 +111,5 @@ const numbers = computed(() => pageWindow(page, pages));
         <LucideIcon name="chevron-right" :size="16" />
       </Button>
     </Inline>
-  </Block>
+  </Box>
 </template>

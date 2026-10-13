@@ -56,26 +56,33 @@
   const specs = fromCodex<Spec>(specsEntries, SPECS_FIELDS);
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.catalog.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-        {ui.catalog.sections.commerce.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="category-title">
-        {ui.catalog.categories.commerceProduct}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {tpl(ui.catalog.count, 3, 13)}
-      </Text>
-    </Stack>
-    <Block tag="section" aria-labelledby="catalog-product-title" data-testid="catalog-block" data-block="product">
-      <Stack gap="6" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.catalog.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+          {ui.catalog.sections.commerce.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="category-title">
+          {ui.catalog.categories.commerceProduct}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {tpl(ui.catalog.count, 3, 13)}
+        </Text>
+      </Stack>
+      <Stack
+        gap="6"
+        align="stretch"
+        role="group"
+        aria-labelledby="catalog-product-title"
+        data-testid="catalog-block"
+        data-block="product"
+      >
         <Stack gap="2" align="stretch">
           <Title as={2} size="2xl" weight="bold" id="catalog-product-title">
             {ui.blocks.names.product}
@@ -84,155 +91,155 @@
             {ui.blocks.docs.product}
           </Text>
         </Stack>
-        <Block
-          tag="section"
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="product-split-label"
           data-testid="variant"
           data-block="product"
           data-variant="split"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="product-split-label" data-testid="variant-label">
-              {ui.blocks.variants.product.split}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <ProductDetail
-                id="product-split"
-                product={products.find((i) => i.id === "product-lamp")!}
-                labels={ui.commerce.detail}
-                badges={ui.commerce.badges}
-                layout="split"
-                mediaSide="start"
-                thumbs="below"
-                buy="full"
-                tone="default"
-                density="default"
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="product-split-label" data-testid="variant-label">
+            {ui.blocks.variants.product.split}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <ProductDetail
+              id="product-split"
+              product={products.find((i) => i.id === "product-lamp")!}
+              labels={ui.commerce.detail}
+              badges={ui.commerce.badges}
+              layout="split"
+              mediaSide="start"
+              thumbs="below"
+              buy="full"
+              tone="default"
+              density="default"
+              level={2}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="product-splitEnd-label"
           data-testid="variant"
           data-block="product"
           data-variant="splitEnd"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="product-splitEnd-label" data-testid="variant-label">
-              {ui.blocks.variants.product.splitEnd}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <ProductDetail
-                id="product-splitEnd"
-                product={products.find((i) => i.id === "product-lamp")!}
-                labels={ui.commerce.detail}
-                badges={ui.commerce.badges}
-                layout="split"
-                mediaSide="end"
-                thumbs="below"
-                buy="full"
-                tone="default"
-                density="default"
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="product-splitEnd-label" data-testid="variant-label">
+            {ui.blocks.variants.product.splitEnd}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <ProductDetail
+              id="product-splitEnd"
+              product={products.find((i) => i.id === "product-lamp")!}
+              labels={ui.commerce.detail}
+              badges={ui.commerce.badges}
+              layout="split"
+              mediaSide="end"
+              thumbs="below"
+              buy="full"
+              tone="default"
+              density="default"
+              level={2}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="product-stacked-label"
           data-testid="variant"
           data-block="product"
           data-variant="stacked"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="product-stacked-label" data-testid="variant-label">
-              {ui.blocks.variants.product.stacked}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <ProductDetail
-                id="product-stacked"
-                product={products.find((i) => i.id === "product-lamp")!}
-                labels={ui.commerce.detail}
-                badges={ui.commerce.badges}
-                layout="stacked"
-                mediaSide="start"
-                thumbs="none"
-                buy="full"
-                tone="default"
-                density="default"
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="product-stacked-label" data-testid="variant-label">
+            {ui.blocks.variants.product.stacked}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <ProductDetail
+              id="product-stacked"
+              product={products.find((i) => i.id === "product-lamp")!}
+              labels={ui.commerce.detail}
+              badges={ui.commerce.badges}
+              layout="stacked"
+              mediaSide="start"
+              thumbs="none"
+              buy="full"
+              tone="default"
+              density="default"
+              level={2}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="product-compact-label"
           data-testid="variant"
           data-block="product"
           data-variant="compact"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="product-compact-label" data-testid="variant-label">
-              {ui.blocks.variants.product.compact}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <ProductDetail
-                id="product-compact"
-                product={products.find((i) => i.id === "product-lamp")!}
-                labels={ui.commerce.detail}
-                badges={ui.commerce.badges}
-                layout="split"
-                mediaSide="start"
-                thumbs="none"
-                buy="compact"
-                tone="default"
-                density="default"
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="product-compact-label" data-testid="variant-label">
+            {ui.blocks.variants.product.compact}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <ProductDetail
+              id="product-compact"
+              product={products.find((i) => i.id === "product-lamp")!}
+              labels={ui.commerce.detail}
+              badges={ui.commerce.badges}
+              layout="split"
+              mediaSide="start"
+              thumbs="none"
+              buy="compact"
+              tone="default"
+              density="default"
+              level={2}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="product-muted-label"
           data-testid="variant"
           data-block="product"
           data-variant="muted"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="product-muted-label" data-testid="variant-label">
-              {ui.blocks.variants.product.muted}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <ProductDetail
-                id="product-muted"
-                product={products.find((i) => i.id === "product-lamp")!}
-                labels={ui.commerce.detail}
-                badges={ui.commerce.badges}
-                layout="split"
-                mediaSide="start"
-                thumbs="below"
-                buy="full"
-                tone="muted"
-                density="roomy"
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
+          <Title as={3} size="base" weight="bold" id="product-muted-label" data-testid="variant-label">
+            {ui.blocks.variants.product.muted}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <ProductDetail
+              id="product-muted"
+              product={products.find((i) => i.id === "product-lamp")!}
+              labels={ui.commerce.detail}
+              badges={ui.commerce.badges}
+              layout="split"
+              mediaSide="start"
+              thumbs="below"
+              buy="full"
+              tone="muted"
+              density="roomy"
+              level={2}
+            />
+          </Box>
+        </Stack>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="catalog-productinfo-title"
-      data-testid="catalog-block"
-      data-block="productinfo"
-    >
-      <Stack gap="6" align="stretch">
+      <Stack
+        gap="6"
+        align="stretch"
+        role="group"
+        aria-labelledby="catalog-productinfo-title"
+        data-testid="catalog-block"
+        data-block="productinfo"
+      >
         <Stack gap="2" align="stretch">
           <Title as={2} size="2xl" weight="bold" id="catalog-productinfo-title">
             {ui.blocks.names.productinfo}
@@ -241,85 +248,90 @@
             {ui.blocks.docs.productinfo}
           </Text>
         </Stack>
-        <Block
-          tag="section"
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="productinfo-split-label"
           data-testid="variant"
           data-block="productinfo"
           data-variant="split"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="productinfo-split-label" data-testid="variant-label">
-              {ui.blocks.variants.productinfo.split}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <ProductInfo
-                id="productinfo-split"
-                title={ui.commerce.info.title}
-                details={details}
-                specs={specs}
-                labels={ui.commerce.info}
-                layout="split"
-                expand="first"
-                tone="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="productinfo-split-label" data-testid="variant-label">
+            {ui.blocks.variants.productinfo.split}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <ProductInfo
+              id="productinfo-split"
+              title={ui.commerce.info.title}
+              details={details}
+              specs={specs}
+              labels={ui.commerce.info}
+              layout="split"
+              expand="first"
+              tone="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="productinfo-stacked-label"
           data-testid="variant"
           data-block="productinfo"
           data-variant="stacked"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="productinfo-stacked-label" data-testid="variant-label">
-              {ui.blocks.variants.productinfo.stacked}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <ProductInfo
-                id="productinfo-stacked"
-                title={ui.commerce.info.title}
-                details={details}
-                specs={specs}
-                labels={ui.commerce.info}
-                layout="stacked"
-                expand="first"
-                tone="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="productinfo-stacked-label" data-testid="variant-label">
+            {ui.blocks.variants.productinfo.stacked}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <ProductInfo
+              id="productinfo-stacked"
+              title={ui.commerce.info.title}
+              details={details}
+              specs={specs}
+              labels={ui.commerce.info}
+              layout="stacked"
+              expand="first"
+              tone="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="productinfo-closed-label"
           data-testid="variant"
           data-block="productinfo"
           data-variant="closed"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="productinfo-closed-label" data-testid="variant-label">
-              {ui.blocks.variants.productinfo.closed}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <ProductInfo
-                id="productinfo-closed"
-                title={ui.commerce.info.title}
-                details={details}
-                specs={specs}
-                labels={ui.commerce.info}
-                layout="split"
-                expand="none"
-                tone="muted"
-              />
-            </Box>
-          </Stack>
-        </Block>
+          <Title as={3} size="base" weight="bold" id="productinfo-closed-label" data-testid="variant-label">
+            {ui.blocks.variants.productinfo.closed}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <ProductInfo
+              id="productinfo-closed"
+              title={ui.commerce.info.title}
+              details={details}
+              specs={specs}
+              labels={ui.commerce.info}
+              layout="split"
+              expand="none"
+              tone="muted"
+            />
+          </Box>
+        </Stack>
       </Stack>
-    </Block>
-    <Block tag="section" aria-labelledby="catalog-reviews-title" data-testid="catalog-block" data-block="reviews">
-      <Stack gap="6" align="stretch">
+      <Stack
+        gap="6"
+        align="stretch"
+        role="group"
+        aria-labelledby="catalog-reviews-title"
+        data-testid="catalog-block"
+        data-block="reviews"
+      >
         <Stack gap="2" align="stretch">
           <Title as={2} size="2xl" weight="bold" id="catalog-reviews-title">
             {ui.blocks.names.reviews}
@@ -328,137 +340,137 @@
             {ui.blocks.docs.reviews}
           </Text>
         </Stack>
-        <Block
-          tag="section"
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="reviews-list-label"
           data-testid="variant"
           data-block="reviews"
           data-variant="list"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="reviews-list-label" data-testid="variant-label">
-              {ui.blocks.variants.reviews.list}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <ReviewList
-                id="reviews-list"
-                title={ui.commerce.reviews.title}
-                reviews={reviews}
-                labels={ui.commerce.reviewLabels}
-                layout="list"
-                item="card"
-                avatar="none"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="reviews-list-label" data-testid="variant-label">
+            {ui.blocks.variants.reviews.list}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <ReviewList
+              id="reviews-list"
+              title={ui.commerce.reviews.title}
+              reviews={reviews}
+              labels={ui.commerce.reviewLabels}
+              layout="list"
+              item="card"
+              avatar="none"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="reviews-grid-label"
           data-testid="variant"
           data-block="reviews"
           data-variant="grid"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="reviews-grid-label" data-testid="variant-label">
-              {ui.blocks.variants.reviews.grid}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <ReviewList
-                id="reviews-grid"
-                title={ui.commerce.reviews.title}
-                reviews={reviews}
-                labels={ui.commerce.reviewLabels}
-                layout="grid"
-                item="card"
-                avatar="none"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="reviews-grid-label" data-testid="variant-label">
+            {ui.blocks.variants.reviews.grid}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <ReviewList
+              id="reviews-grid"
+              title={ui.commerce.reviews.title}
+              reviews={reviews}
+              labels={ui.commerce.reviewLabels}
+              layout="grid"
+              item="card"
+              avatar="none"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="reviews-plain-label"
           data-testid="variant"
           data-block="reviews"
           data-variant="plain"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="reviews-plain-label" data-testid="variant-label">
-              {ui.blocks.variants.reviews.plain}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <ReviewList
-                id="reviews-plain"
-                title={ui.commerce.reviews.title}
-                reviews={reviews}
-                labels={ui.commerce.reviewLabels}
-                layout="list"
-                item="plain"
-                avatar="none"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="reviews-plain-label" data-testid="variant-label">
+            {ui.blocks.variants.reviews.plain}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <ReviewList
+              id="reviews-plain"
+              title={ui.commerce.reviews.title}
+              reviews={reviews}
+              labels={ui.commerce.reviewLabels}
+              layout="list"
+              item="plain"
+              avatar="none"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="reviews-avatars-label"
           data-testid="variant"
           data-block="reviews"
           data-variant="avatars"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="reviews-avatars-label" data-testid="variant-label">
-              {ui.blocks.variants.reviews.avatars}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <ReviewList
-                id="reviews-avatars"
-                title={ui.commerce.reviews.title}
-                reviews={reviews}
-                labels={ui.commerce.reviewLabels}
-                layout="list"
-                item="card"
-                avatar="image"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="reviews-avatars-label" data-testid="variant-label">
+            {ui.blocks.variants.reviews.avatars}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <ReviewList
+              id="reviews-avatars"
+              title={ui.commerce.reviews.title}
+              reviews={reviews}
+              labels={ui.commerce.reviewLabels}
+              layout="list"
+              item="card"
+              avatar="image"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="reviews-mutedGrid-label"
           data-testid="variant"
           data-block="reviews"
           data-variant="mutedGrid"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="reviews-mutedGrid-label" data-testid="variant-label">
-              {ui.blocks.variants.reviews.mutedGrid}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <ReviewList
-                id="reviews-mutedGrid"
-                title={ui.commerce.reviews.title}
-                reviews={reviews}
-                labels={ui.commerce.reviewLabels}
-                layout="grid"
-                item="card"
-                avatar="image"
-                tone="muted"
-                density="roomy"
-              />
-            </Box>
-          </Stack>
-        </Block>
+          <Title as={3} size="base" weight="bold" id="reviews-mutedGrid-label" data-testid="variant-label">
+            {ui.blocks.variants.reviews.mutedGrid}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <ReviewList
+              id="reviews-mutedGrid"
+              title={ui.commerce.reviews.title}
+              reviews={reviews}
+              labels={ui.commerce.reviewLabels}
+              layout="grid"
+              item="card"
+              avatar="image"
+              tone="muted"
+              density="roomy"
+            />
+          </Box>
+        </Stack>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

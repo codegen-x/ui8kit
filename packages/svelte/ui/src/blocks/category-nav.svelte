@@ -69,11 +69,11 @@
   );
 </script>
 
-<Container
-  class={cn("mx-auto w-full max-w-6xl px-4", (((density as string) === "compact") ? "py-2" : "py-4"))}
-  data-slot="container"
->
-  <Block tag="nav" aria-label={label} data-testid="category-nav" data-layout={layout}>
+<Block tag="nav" aria-label={label} data-testid="category-nav" data-layout={layout}>
+  <Container
+    class={cn("mx-auto w-full max-w-6xl px-4", (((density as string) === "compact") ? "py-2" : "py-4"))}
+    data-slot="container"
+  >
     {#if ((layout as string) === "toolbar")}
       <Group gap="4" align="center" class="mb-4 flex-wrap" data-testid="toolbar">
         <SearchField value={(tools?.query ?? "")} label={(tools?.search ?? "")} placeholder={tools?.search} />
@@ -116,5 +116,5 @@
         </ListItem>
       {/each}
     </List>
-  </Block>
-</Container>
+  </Container>
+</Block>

@@ -57,26 +57,33 @@ const OVERVIEW_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboa
 
 export function AppBoardsPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.catalog.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text size="sm" className="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-            {ui.catalog.sections.app.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="category-title">
-            {ui.catalog.categories.appBoards}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {tpl(ui.catalog.count, 2, 8)}
-          </Text>
-        </Stack>
-        <Block tag="section" aria-labelledby="catalog-overview-title" data-testid="catalog-block" data-block="overview">
-          <Stack gap="6" align="stretch">
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.catalog.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text size="sm" className="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+              {ui.catalog.sections.app.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="category-title">
+              {ui.catalog.categories.appBoards}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {tpl(ui.catalog.count, 2, 8)}
+            </Text>
+          </Stack>
+          <Stack
+            gap="6"
+            align="stretch"
+            role="group"
+            aria-labelledby="catalog-overview-title"
+            data-testid="catalog-block"
+            data-block="overview"
+          >
             <Stack gap="2" align="stretch">
               <Title as={2} size="2xl" weight="bold" id="catalog-overview-title">
                 {ui.blocks.names.overview}
@@ -85,114 +92,119 @@ export function AppBoardsPage() {
                 {ui.blocks.docs.overview}
               </Text>
             </Stack>
-            <Block
-              tag="section"
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="overview-split-label"
               data-testid="variant"
               data-block="overview"
               data-variant="split"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="overview-split-label" data-testid="variant-label">
-                  {ui.blocks.variants.overview.split}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <DashboardOverview
-                    id="overview-split"
-                    title={ui.vibe.overview.title}
-                    metrics={metrics}
-                    chart={OVERVIEW_CHART}
-                    activity={OVERVIEW_ACTIVITY}
-                    layout="split"
-                    cols="4"
-                    tone="default"
-                    density="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="overview-split-label" data-testid="variant-label">
+                {ui.blocks.variants.overview.split}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <DashboardOverview
+                  id="overview-split"
+                  title={ui.vibe.overview.title}
+                  metrics={metrics}
+                  chart={OVERVIEW_CHART}
+                  activity={OVERVIEW_ACTIVITY}
+                  layout="split"
+                  cols="4"
+                  tone="default"
+                  density="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="overview-stacked-label"
               data-testid="variant"
               data-block="overview"
               data-variant="stacked"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="overview-stacked-label" data-testid="variant-label">
-                  {ui.blocks.variants.overview.stacked}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <DashboardOverview
-                    id="overview-stacked"
-                    title={ui.vibe.overview.title}
-                    metrics={metrics}
-                    chart={OVERVIEW_CHART}
-                    activity={OVERVIEW_ACTIVITY}
-                    layout="stacked"
-                    cols="4"
-                    tone="default"
-                    density="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="overview-stacked-label" data-testid="variant-label">
+                {ui.blocks.variants.overview.stacked}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <DashboardOverview
+                  id="overview-stacked"
+                  title={ui.vibe.overview.title}
+                  metrics={metrics}
+                  chart={OVERVIEW_CHART}
+                  activity={OVERVIEW_ACTIVITY}
+                  layout="stacked"
+                  cols="4"
+                  tone="default"
+                  density="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="overview-twoCols-label"
               data-testid="variant"
               data-block="overview"
               data-variant="twoCols"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="overview-twoCols-label" data-testid="variant-label">
-                  {ui.blocks.variants.overview.twoCols}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <DashboardOverview
-                    id="overview-twoCols"
-                    title={ui.vibe.overview.title}
-                    metrics={metrics}
-                    chart={OVERVIEW_CHART}
-                    activity={OVERVIEW_ACTIVITY}
-                    layout="split"
-                    cols="2"
-                    tone="default"
-                    density="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="overview-twoCols-label" data-testid="variant-label">
+                {ui.blocks.variants.overview.twoCols}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <DashboardOverview
+                  id="overview-twoCols"
+                  title={ui.vibe.overview.title}
+                  metrics={metrics}
+                  chart={OVERVIEW_CHART}
+                  activity={OVERVIEW_ACTIVITY}
+                  layout="split"
+                  cols="2"
+                  tone="default"
+                  density="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="overview-muted-label"
               data-testid="variant"
               data-block="overview"
               data-variant="muted"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="overview-muted-label" data-testid="variant-label">
-                  {ui.blocks.variants.overview.muted}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <DashboardOverview
-                    id="overview-muted"
-                    title={ui.vibe.overview.title}
-                    metrics={metrics}
-                    chart={OVERVIEW_CHART}
-                    activity={OVERVIEW_ACTIVITY}
-                    layout="split"
-                    cols="4"
-                    tone="muted"
-                    density="compact"
-                  />
-                </Box>
-              </Stack>
-            </Block>
+              <Title as={3} size="base" weight="bold" id="overview-muted-label" data-testid="variant-label">
+                {ui.blocks.variants.overview.muted}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <DashboardOverview
+                  id="overview-muted"
+                  title={ui.vibe.overview.title}
+                  metrics={metrics}
+                  chart={OVERVIEW_CHART}
+                  activity={OVERVIEW_ACTIVITY}
+                  layout="split"
+                  cols="4"
+                  tone="muted"
+                  density="compact"
+                />
+              </Box>
+            </Stack>
           </Stack>
-        </Block>
-        <Block tag="section" aria-labelledby="catalog-kanban-title" data-testid="catalog-block" data-block="kanban">
-          <Stack gap="6" align="stretch">
+          <Stack
+            gap="6"
+            align="stretch"
+            role="group"
+            aria-labelledby="catalog-kanban-title"
+            data-testid="catalog-block"
+            data-block="kanban"
+          >
             <Stack gap="2" align="stretch">
               <Title as={2} size="2xl" weight="bold" id="catalog-kanban-title">
                 {ui.blocks.names.kanban}
@@ -201,113 +213,113 @@ export function AppBoardsPage() {
                 {ui.blocks.docs.kanban}
               </Text>
             </Stack>
-            <Block
-              tag="section"
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="kanban-detail-label"
               data-testid="variant"
               data-block="kanban"
               data-variant="detail"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="kanban-detail-label" data-testid="variant-label">
-                  {ui.blocks.variants.kanban.detail}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <KanbanBoard
-                    id="kanban-detail"
-                    title={ui.vibe.kanban.title}
-                    lanes={lanes}
-                    cards={cards}
-                    countLabel={ui.vibe.kanban.count}
-                    card="detail"
-                    cols="3"
-                    tone="default"
-                    density="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="kanban-detail-label" data-testid="variant-label">
+                {ui.blocks.variants.kanban.detail}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <KanbanBoard
+                  id="kanban-detail"
+                  title={ui.vibe.kanban.title}
+                  lanes={lanes}
+                  cards={cards}
+                  countLabel={ui.vibe.kanban.count}
+                  card="detail"
+                  cols="3"
+                  tone="default"
+                  density="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="kanban-simple-label"
               data-testid="variant"
               data-block="kanban"
               data-variant="simple"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="kanban-simple-label" data-testid="variant-label">
-                  {ui.blocks.variants.kanban.simple}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <KanbanBoard
-                    id="kanban-simple"
-                    title={ui.vibe.kanban.title}
-                    lanes={lanes}
-                    cards={cards}
-                    countLabel={ui.vibe.kanban.count}
-                    card="simple"
-                    cols="3"
-                    tone="default"
-                    density="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="kanban-simple-label" data-testid="variant-label">
+                {ui.blocks.variants.kanban.simple}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <KanbanBoard
+                  id="kanban-simple"
+                  title={ui.vibe.kanban.title}
+                  lanes={lanes}
+                  cards={cards}
+                  countLabel={ui.vibe.kanban.count}
+                  card="simple"
+                  cols="3"
+                  tone="default"
+                  density="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="kanban-twoCols-label"
               data-testid="variant"
               data-block="kanban"
               data-variant="twoCols"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="kanban-twoCols-label" data-testid="variant-label">
-                  {ui.blocks.variants.kanban.twoCols}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <KanbanBoard
-                    id="kanban-twoCols"
-                    title={ui.vibe.kanban.title}
-                    lanes={lanes}
-                    cards={cards}
-                    countLabel={ui.vibe.kanban.count}
-                    card="detail"
-                    cols="2"
-                    tone="default"
-                    density="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="kanban-twoCols-label" data-testid="variant-label">
+                {ui.blocks.variants.kanban.twoCols}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <KanbanBoard
+                  id="kanban-twoCols"
+                  title={ui.vibe.kanban.title}
+                  lanes={lanes}
+                  cards={cards}
+                  countLabel={ui.vibe.kanban.count}
+                  card="detail"
+                  cols="2"
+                  tone="default"
+                  density="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="kanban-muted-label"
               data-testid="variant"
               data-block="kanban"
               data-variant="muted"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="kanban-muted-label" data-testid="variant-label">
-                  {ui.blocks.variants.kanban.muted}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <KanbanBoard
-                    id="kanban-muted"
-                    title={ui.vibe.kanban.title}
-                    lanes={lanes}
-                    cards={cards}
-                    countLabel={ui.vibe.kanban.count}
-                    card="detail"
-                    cols="3"
-                    tone="muted"
-                    density="compact"
-                  />
-                </Box>
-              </Stack>
-            </Block>
+              <Title as={3} size="base" weight="bold" id="kanban-muted-label" data-testid="variant-label">
+                {ui.blocks.variants.kanban.muted}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <KanbanBoard
+                  id="kanban-muted"
+                  title={ui.vibe.kanban.title}
+                  lanes={lanes}
+                  cards={cards}
+                  countLabel={ui.vibe.kanban.count}
+                  card="detail"
+                  cols="3"
+                  tone="muted"
+                  density="compact"
+                />
+              </Box>
+            </Stack>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

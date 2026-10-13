@@ -35,37 +35,39 @@ const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS);
 
 export function ProductsPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text
-            size="sm"
-            className="font-medium text-muted-foreground"
-            data-testid="block-theme"
-            data-theme-id="commerce"
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text
+              size="sm"
+              className="font-medium text-muted-foreground"
+              data-testid="block-theme"
+              data-theme-id="commerce"
+            >
+              {ui.blocks.themes.commerce.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.products}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.products}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="products-grid3-label"
+            data-testid="variant"
+            data-block="products"
+            data-variant="grid3"
           >
-            {ui.blocks.themes.commerce.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.products}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.products}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="products-grid3-label"
-          data-testid="variant"
-          data-block="products"
-          data-variant="grid3"
-        >
-          <Stack gap="4" align="stretch">
             <Title as={2} size="base" weight="bold" id="products-grid3-label" data-testid="variant-label">
               {ui.blocks.variants.products.grid3}
             </Title>
@@ -86,15 +88,15 @@ export function ProductsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="products-grid4-label"
-          data-testid="variant"
-          data-block="products"
-          data-variant="grid4"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="products-grid4-label"
+            data-testid="variant"
+            data-block="products"
+            data-variant="grid4"
+          >
             <Title as={2} size="base" weight="bold" id="products-grid4-label" data-testid="variant-label">
               {ui.blocks.variants.products.grid4}
             </Title>
@@ -115,15 +117,15 @@ export function ProductsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="products-grid2-label"
-          data-testid="variant"
-          data-block="products"
-          data-variant="grid2"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="products-grid2-label"
+            data-testid="variant"
+            data-block="products"
+            data-variant="grid2"
+          >
             <Title as={2} size="base" weight="bold" id="products-grid2-label" data-testid="variant-label">
               {ui.blocks.variants.products.grid2}
             </Title>
@@ -144,15 +146,15 @@ export function ProductsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="products-list-label"
-          data-testid="variant"
-          data-block="products"
-          data-variant="list"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="products-list-label"
+            data-testid="variant"
+            data-block="products"
+            data-variant="list"
+          >
             <Title as={2} size="base" weight="bold" id="products-list-label" data-testid="variant-label">
               {ui.blocks.variants.products.list}
             </Title>
@@ -173,15 +175,15 @@ export function ProductsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="products-catalog-label"
-          data-testid="variant"
-          data-block="products"
-          data-variant="catalog"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="products-catalog-label"
+            data-testid="variant"
+            data-block="products"
+            data-variant="catalog"
+          >
             <Title as={2} size="base" weight="bold" id="products-catalog-label" data-testid="variant-label">
               {ui.blocks.variants.products.catalog}
             </Title>
@@ -202,15 +204,15 @@ export function ProductsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="products-browse-label"
-          data-testid="variant"
-          data-block="products"
-          data-variant="browse"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="products-browse-label"
+            data-testid="variant"
+            data-block="products"
+            data-variant="browse"
+          >
             <Title as={2} size="base" weight="bold" id="products-browse-label" data-testid="variant-label">
               {ui.blocks.variants.products.browse}
             </Title>
@@ -231,15 +233,15 @@ export function ProductsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="products-showcase-label"
-          data-testid="variant"
-          data-block="products"
-          data-variant="showcase"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="products-showcase-label"
+            data-testid="variant"
+            data-block="products"
+            data-variant="showcase"
+          >
             <Title as={2} size="base" weight="bold" id="products-showcase-label" data-testid="variant-label">
               {ui.blocks.variants.products.showcase}
             </Title>
@@ -260,15 +262,15 @@ export function ProductsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="products-rail-label"
-          data-testid="variant"
-          data-block="products"
-          data-variant="rail"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="products-rail-label"
+            data-testid="variant"
+            data-block="products"
+            data-variant="rail"
+          >
             <Title as={2} size="base" weight="bold" id="products-rail-label" data-testid="variant-label">
               {ui.blocks.variants.products.rail}
             </Title>
@@ -289,15 +291,15 @@ export function ProductsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="products-railCompact-label"
-          data-testid="variant"
-          data-block="products"
-          data-variant="railCompact"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="products-railCompact-label"
+            data-testid="variant"
+            data-block="products"
+            data-variant="railCompact"
+          >
             <Title as={2} size="base" weight="bold" id="products-railCompact-label" data-testid="variant-label">
               {ui.blocks.variants.products.railCompact}
             </Title>
@@ -318,8 +320,8 @@ export function ProductsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

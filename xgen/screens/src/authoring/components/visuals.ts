@@ -14,7 +14,7 @@ const codeWindow = spec(`${P}code-window`, "CodeWindow", "A terminal or code win
   ],
   className: true,
   view: [
-    use("Block", { props: { Class: cn("w-full overflow-hidden rounded bg-card text-left inset-ring inset-ring-border", ref("className")) }, attrs: { role: "group", "aria-label": ref("title"), "data-slot": "code-window" } },
+    use("Box", { props: { Class: cn("w-full overflow-hidden rounded bg-card text-left inset-ring inset-ring-border", ref("className")) }, attrs: { role: "group", "aria-label": ref("title"), "data-slot": "code-window" } },
       use("Box", { props: { Class: "flex items-center border-b border-border px-4 py-2" } },
         use("Text", { props: { Size: "xs", Class: "text-muted-foreground" } }, text(ref("title")))),
       use("List", { props: { Class: "m-0 flex list-none flex-col gap-2 p-4 font-mono text-sm" } },

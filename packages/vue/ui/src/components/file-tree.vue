@@ -12,7 +12,7 @@ export type FileTreeProps = {
 </script>
 
 <script setup lang="ts">
-import Block from "../primitives/block/block.vue";
+import Box from "../primitives/box/box.vue";
 import { cn } from "../utils";
 
 const { label, class: className } = defineProps<FileTreeProps>();
@@ -20,7 +20,7 @@ defineSlots<{ default?(): unknown }>();
 </script>
 
 <template>
-  <Block :class="cn('flex flex-col gap-2 p-2', className)" role="tree" :aria-label="label" data-slot="file-tree">
+  <Box :class="cn('flex flex-col gap-2 p-2', className)" role="tree" :aria-label="label" data-slot="file-tree">
     <slot />
-  </Block>
+  </Box>
 </template>

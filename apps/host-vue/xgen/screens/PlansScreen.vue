@@ -8,6 +8,7 @@
 import { computed } from "vue";
 import {
   Badge,
+  Block,
   Button,
   Container,
   Group,
@@ -59,211 +60,213 @@ const actions = computed(() => screenActions(url, view.value, "plans", (id) => `
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-8">
-    <Stack gap="6">
-      <Group gap="4" align="center" justify="between">
-        <Title :as="1" size="2xl" weight="bold">
-          {{ ui.app.title }}
-        </Title>
-        <Button variant="outline" size="sm" data-testid="theme-toggle" @click="() => actions.toggleTheme()">
-          {{ ui.theme.toggle }}
-        </Button>
-      </Group>
-      <Stack v-if="route.area === 'record'" gap="4">
-        <Group>
-          <Button variant="ghost" size="sm" data-testid="back" @click="() => actions.back()">
-            {{ ui.record.back }}
+  <Block tag="main" id="main-content" :tabindex="-1" data-testid="main">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-8">
+      <Stack gap="6">
+        <Group gap="4" align="center" justify="between">
+          <Title :as="1" size="2xl" weight="bold">
+            {{ ui.app.title }}
+          </Title>
+          <Button variant="outline" size="sm" data-testid="theme-toggle" @click="() => actions.toggleTheme()">
+            {{ ui.theme.toggle }}
           </Button>
         </Group>
-        <PricingCard v-if="record" :plan="record" :labels="ui.pricing" :current="true" @select="() => actions.back()">
-          <template #footer="{ plan }">
-            <Text size="sm" class="text-muted-foreground" data-testid="record-id">
-              {{ tpl(ui.record.id, plan.id) }}
-            </Text>
-          </template>
-        </PricingCard>
-        <Text v-else class="text-muted-foreground" data-testid="missing">
-          {{ ui.record.missing }}
-        </Text>
-      </Stack>
-      <Stack v-else gap="4">
-        <Group gap="4" align="center" justify="between" class="flex-wrap">
-          <Input
-            type="search"
-            size="default"
-            :value="view.q"
-            :placeholder="ui.plans.search"
-            :aria-label="ui.plans.search"
-            class="max-w-xs"
-            data-testid="search"
-            @input="(event: Event & { currentTarget: HTMLInputElement }) => actions.search(event.currentTarget.value)"
-          />
-          <Text size="sm" class="text-muted-foreground" data-testid="count">
-            {{ tpl(ui.plans.count, view.total) }}
-          </Text>
-        </Group>
-        <Table class="w-full text-sm" data-testid="plans-table">
-          <TableCaption class="sr-only">
-            {{ ui.plans.caption }}
-          </TableCaption>
-          <TableHead>
-            <TableRow>
-              <TableHeadCell
-                v-if="((view.sort.field === 'name') && (view.sort.dir === 'asc'))"
-                scope="col"
-                aria-sort="ascending"
-              >
-                <Button variant="ghost" size="sm" class="-mx-3" @click="() => actions.sort('name')">
-                  {{ ui.plans.col.name }}
-                </Button>
-              </TableHeadCell>
-              <TableHeadCell
-                v-else-if="((view.sort.field === 'name') && (view.sort.dir === 'desc'))"
-                scope="col"
-                aria-sort="descending"
-              >
-                <Button variant="ghost" size="sm" class="-mx-3" @click="() => actions.sort('name')">
-                  {{ ui.plans.col.name }}
-                </Button>
-              </TableHeadCell>
-              <TableHeadCell v-else scope="col" aria-sort="none">
-                <Button variant="ghost" size="sm" class="-mx-3" @click="() => actions.sort('name')">
-                  {{ ui.plans.col.name }}
-                </Button>
-              </TableHeadCell>
-              <TableHeadCell
-                v-if="((view.sort.field === 'price') && (view.sort.dir === 'asc'))"
-                scope="col"
-                class="text-right"
-                aria-sort="ascending"
-              >
-                <Button variant="ghost" size="sm" class="-mx-3 ml-auto" @click="() => actions.sort('price')">
-                  {{ ui.plans.col.price }}
-                </Button>
-              </TableHeadCell>
-              <TableHeadCell
-                v-else-if="((view.sort.field === 'price') && (view.sort.dir === 'desc'))"
-                scope="col"
-                class="text-right"
-                aria-sort="descending"
-              >
-                <Button variant="ghost" size="sm" class="-mx-3 ml-auto" @click="() => actions.sort('price')">
-                  {{ ui.plans.col.price }}
-                </Button>
-              </TableHeadCell>
-              <TableHeadCell v-else scope="col" class="text-right" aria-sort="none">
-                <Button variant="ghost" size="sm" class="-mx-3 ml-auto" @click="() => actions.sort('price')">
-                  {{ ui.plans.col.price }}
-                </Button>
-              </TableHeadCell>
-              <TableHeadCell
-                v-if="((view.sort.field === 'seats') && (view.sort.dir === 'asc'))"
-                scope="col"
-                class="text-right"
-                aria-sort="ascending"
-              >
-                <Button variant="ghost" size="sm" class="-mx-3 ml-auto" @click="() => actions.sort('seats')">
-                  {{ ui.plans.col.seats }}
-                </Button>
-              </TableHeadCell>
-              <TableHeadCell
-                v-else-if="((view.sort.field === 'seats') && (view.sort.dir === 'desc'))"
-                scope="col"
-                class="text-right"
-                aria-sort="descending"
-              >
-                <Button variant="ghost" size="sm" class="-mx-3 ml-auto" @click="() => actions.sort('seats')">
-                  {{ ui.plans.col.seats }}
-                </Button>
-              </TableHeadCell>
-              <TableHeadCell v-else scope="col" class="text-right" aria-sort="none">
-                <Button variant="ghost" size="sm" class="-mx-3 ml-auto" @click="() => actions.sort('seats')">
-                  {{ ui.plans.col.seats }}
-                </Button>
-              </TableHeadCell>
-              <TableHeadCell
-                v-if="((view.sort.field === 'storage') && (view.sort.dir === 'asc'))"
-                scope="col"
-                class="text-right"
-                aria-sort="ascending"
-              >
-                <Button variant="ghost" size="sm" class="-mx-3 ml-auto" @click="() => actions.sort('storage')">
-                  {{ ui.plans.col.storage }}
-                </Button>
-              </TableHeadCell>
-              <TableHeadCell
-                v-else-if="((view.sort.field === 'storage') && (view.sort.dir === 'desc'))"
-                scope="col"
-                class="text-right"
-                aria-sort="descending"
-              >
-                <Button variant="ghost" size="sm" class="-mx-3 ml-auto" @click="() => actions.sort('storage')">
-                  {{ ui.plans.col.storage }}
-                </Button>
-              </TableHeadCell>
-              <TableHeadCell v-else scope="col" class="text-right" aria-sort="none">
-                <Button variant="ghost" size="sm" class="-mx-3 ml-auto" @click="() => actions.sort('storage')">
-                  {{ ui.plans.col.storage }}
-                </Button>
-              </TableHeadCell>
-              <TableHeadCell scope="col">
-                {{ ui.plans.col.status }}
-              </TableHeadCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <TableRow v-for="row in view.rows" :key="row.id" data-testid="plan-row">
-              <TableCell>
-                <Link :href="(('#/plans/' + row.id) + view.qs)" variant="default" data-testid="open-record">
-                  {{ row.name }}
-                </Link>
-              </TableCell>
-              <TableCell class="text-right">
-                {{ fmtMoney(row.price, row.currency) }}
-              </TableCell>
-              <TableCell class="text-right">
-                {{ row.seats }}
-              </TableCell>
-              <TableCell class="text-right">
-                {{ row.storage }}
-              </TableCell>
-              <TableCell>
-                <Badge :variant="((row.status === 'active') ? 'default' : 'secondary')" size="default">
-                  {{ at(ui.status, row.status) }}
-                </Badge>
-              </TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-        <Text v-if="(view.total === 0)" class="text-muted-foreground" data-testid="empty">
-          {{ ui.plans.empty }}
-        </Text>
-        <Group gap="4" align="center" justify="between" class="flex-wrap">
-          <Text size="sm" class="text-muted-foreground">
-            {{ tpl(ui.pager.showing, view.from, view.to, view.total) }}
-          </Text>
-          <Group gap="2">
-            <Button
-              variant="outline"
-              size="sm"
-              :disabled="!(view.page > 1)"
-              data-testid="prev"
-              @click="() => actions.page((view.page + -1))"
-            >
-              {{ ui.pager.previous }}
-            </Button>
-            <Button
-              variant="outline"
-              size="sm"
-              :disabled="!(view.page < view.pages)"
-              data-testid="next"
-              @click="() => actions.page((view.page + 1))"
-            >
-              {{ ui.pager.next }}
+        <Stack v-if="route.area === 'record'" gap="4">
+          <Group>
+            <Button variant="ghost" size="sm" data-testid="back" @click="() => actions.back()">
+              {{ ui.record.back }}
             </Button>
           </Group>
-        </Group>
+          <PricingCard v-if="record" :plan="record" :labels="ui.pricing" :current="true" @select="() => actions.back()">
+            <template #footer="{ plan }">
+              <Text size="sm" class="text-muted-foreground" data-testid="record-id">
+                {{ tpl(ui.record.id, plan.id) }}
+              </Text>
+            </template>
+          </PricingCard>
+          <Text v-else class="text-muted-foreground" data-testid="missing">
+            {{ ui.record.missing }}
+          </Text>
+        </Stack>
+        <Stack v-else gap="4">
+          <Group gap="4" align="center" justify="between" class="flex-wrap">
+            <Input
+              type="search"
+              size="default"
+              :value="view.q"
+              :placeholder="ui.plans.search"
+              :aria-label="ui.plans.search"
+              class="max-w-xs"
+              data-testid="search"
+              @input="(event: Event & { currentTarget: HTMLInputElement }) => actions.search(event.currentTarget.value)"
+            />
+            <Text size="sm" class="text-muted-foreground" data-testid="count">
+              {{ tpl(ui.plans.count, view.total) }}
+            </Text>
+          </Group>
+          <Table class="w-full text-sm" data-testid="plans-table">
+            <TableCaption class="sr-only">
+              {{ ui.plans.caption }}
+            </TableCaption>
+            <TableHead>
+              <TableRow>
+                <TableHeadCell
+                  v-if="((view.sort.field === 'name') && (view.sort.dir === 'asc'))"
+                  scope="col"
+                  aria-sort="ascending"
+                >
+                  <Button variant="ghost" size="sm" class="-mx-3" @click="() => actions.sort('name')">
+                    {{ ui.plans.col.name }}
+                  </Button>
+                </TableHeadCell>
+                <TableHeadCell
+                  v-else-if="((view.sort.field === 'name') && (view.sort.dir === 'desc'))"
+                  scope="col"
+                  aria-sort="descending"
+                >
+                  <Button variant="ghost" size="sm" class="-mx-3" @click="() => actions.sort('name')">
+                    {{ ui.plans.col.name }}
+                  </Button>
+                </TableHeadCell>
+                <TableHeadCell v-else scope="col" aria-sort="none">
+                  <Button variant="ghost" size="sm" class="-mx-3" @click="() => actions.sort('name')">
+                    {{ ui.plans.col.name }}
+                  </Button>
+                </TableHeadCell>
+                <TableHeadCell
+                  v-if="((view.sort.field === 'price') && (view.sort.dir === 'asc'))"
+                  scope="col"
+                  class="text-right"
+                  aria-sort="ascending"
+                >
+                  <Button variant="ghost" size="sm" class="-mx-3 ml-auto" @click="() => actions.sort('price')">
+                    {{ ui.plans.col.price }}
+                  </Button>
+                </TableHeadCell>
+                <TableHeadCell
+                  v-else-if="((view.sort.field === 'price') && (view.sort.dir === 'desc'))"
+                  scope="col"
+                  class="text-right"
+                  aria-sort="descending"
+                >
+                  <Button variant="ghost" size="sm" class="-mx-3 ml-auto" @click="() => actions.sort('price')">
+                    {{ ui.plans.col.price }}
+                  </Button>
+                </TableHeadCell>
+                <TableHeadCell v-else scope="col" class="text-right" aria-sort="none">
+                  <Button variant="ghost" size="sm" class="-mx-3 ml-auto" @click="() => actions.sort('price')">
+                    {{ ui.plans.col.price }}
+                  </Button>
+                </TableHeadCell>
+                <TableHeadCell
+                  v-if="((view.sort.field === 'seats') && (view.sort.dir === 'asc'))"
+                  scope="col"
+                  class="text-right"
+                  aria-sort="ascending"
+                >
+                  <Button variant="ghost" size="sm" class="-mx-3 ml-auto" @click="() => actions.sort('seats')">
+                    {{ ui.plans.col.seats }}
+                  </Button>
+                </TableHeadCell>
+                <TableHeadCell
+                  v-else-if="((view.sort.field === 'seats') && (view.sort.dir === 'desc'))"
+                  scope="col"
+                  class="text-right"
+                  aria-sort="descending"
+                >
+                  <Button variant="ghost" size="sm" class="-mx-3 ml-auto" @click="() => actions.sort('seats')">
+                    {{ ui.plans.col.seats }}
+                  </Button>
+                </TableHeadCell>
+                <TableHeadCell v-else scope="col" class="text-right" aria-sort="none">
+                  <Button variant="ghost" size="sm" class="-mx-3 ml-auto" @click="() => actions.sort('seats')">
+                    {{ ui.plans.col.seats }}
+                  </Button>
+                </TableHeadCell>
+                <TableHeadCell
+                  v-if="((view.sort.field === 'storage') && (view.sort.dir === 'asc'))"
+                  scope="col"
+                  class="text-right"
+                  aria-sort="ascending"
+                >
+                  <Button variant="ghost" size="sm" class="-mx-3 ml-auto" @click="() => actions.sort('storage')">
+                    {{ ui.plans.col.storage }}
+                  </Button>
+                </TableHeadCell>
+                <TableHeadCell
+                  v-else-if="((view.sort.field === 'storage') && (view.sort.dir === 'desc'))"
+                  scope="col"
+                  class="text-right"
+                  aria-sort="descending"
+                >
+                  <Button variant="ghost" size="sm" class="-mx-3 ml-auto" @click="() => actions.sort('storage')">
+                    {{ ui.plans.col.storage }}
+                  </Button>
+                </TableHeadCell>
+                <TableHeadCell v-else scope="col" class="text-right" aria-sort="none">
+                  <Button variant="ghost" size="sm" class="-mx-3 ml-auto" @click="() => actions.sort('storage')">
+                    {{ ui.plans.col.storage }}
+                  </Button>
+                </TableHeadCell>
+                <TableHeadCell scope="col">
+                  {{ ui.plans.col.status }}
+                </TableHeadCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableRow v-for="row in view.rows" :key="row.id" data-testid="plan-row">
+                <TableCell>
+                  <Link :href="(('#/plans/' + row.id) + view.qs)" variant="default" data-testid="open-record">
+                    {{ row.name }}
+                  </Link>
+                </TableCell>
+                <TableCell class="text-right">
+                  {{ fmtMoney(row.price, row.currency) }}
+                </TableCell>
+                <TableCell class="text-right">
+                  {{ row.seats }}
+                </TableCell>
+                <TableCell class="text-right">
+                  {{ row.storage }}
+                </TableCell>
+                <TableCell>
+                  <Badge :variant="((row.status === 'active') ? 'default' : 'secondary')" size="default">
+                    {{ at(ui.status, row.status) }}
+                  </Badge>
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+          <Text v-if="(view.total === 0)" class="text-muted-foreground" data-testid="empty">
+            {{ ui.plans.empty }}
+          </Text>
+          <Group gap="4" align="center" justify="between" class="flex-wrap">
+            <Text size="sm" class="text-muted-foreground">
+              {{ tpl(ui.pager.showing, view.from, view.to, view.total) }}
+            </Text>
+            <Group gap="2">
+              <Button
+                variant="outline"
+                size="sm"
+                :disabled="!(view.page > 1)"
+                data-testid="prev"
+                @click="() => actions.page((view.page + -1))"
+              >
+                {{ ui.pager.previous }}
+              </Button>
+              <Button
+                variant="outline"
+                size="sm"
+                :disabled="!(view.page < view.pages)"
+                data-testid="next"
+                @click="() => actions.page((view.page + 1))"
+              >
+                {{ ui.pager.next }}
+              </Button>
+            </Group>
+          </Group>
+        </Stack>
       </Stack>
-    </Stack>
-  </Container>
+    </Container>
+  </Block>
 </template>

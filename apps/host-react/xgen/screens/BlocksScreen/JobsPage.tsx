@@ -36,37 +36,39 @@ const departments = fromCodex<Department>(departmentsEntries, DEPARTMENTS_FIELDS
 
 export function JobsPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text
-            size="sm"
-            className="font-medium text-muted-foreground"
-            data-testid="block-theme"
-            data-theme-id="marketing"
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text
+              size="sm"
+              className="font-medium text-muted-foreground"
+              data-testid="block-theme"
+              data-theme-id="marketing"
+            >
+              {ui.blocks.themes.marketing.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.jobs}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.jobs}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="jobs-grid-label"
+            data-testid="variant"
+            data-block="jobs"
+            data-variant="grid"
           >
-            {ui.blocks.themes.marketing.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.jobs}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.jobs}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="jobs-grid-label"
-          data-testid="variant"
-          data-block="jobs"
-          data-variant="grid"
-        >
-          <Stack gap="4" align="stretch">
             <Title as={2} size="base" weight="bold" id="jobs-grid-label" data-testid="variant-label">
               {ui.blocks.variants.jobs.grid}
             </Title>
@@ -84,15 +86,15 @@ export function JobsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="jobs-salary-label"
-          data-testid="variant"
-          data-block="jobs"
-          data-variant="salary"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="jobs-salary-label"
+            data-testid="variant"
+            data-block="jobs"
+            data-variant="salary"
+          >
             <Title as={2} size="base" weight="bold" id="jobs-salary-label" data-testid="variant-label">
               {ui.blocks.variants.jobs.salary}
             </Title>
@@ -110,15 +112,15 @@ export function JobsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="jobs-grouped-label"
-          data-testid="variant"
-          data-block="jobs"
-          data-variant="grouped"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="jobs-grouped-label"
+            data-testid="variant"
+            data-block="jobs"
+            data-variant="grouped"
+          >
             <Title as={2} size="base" weight="bold" id="jobs-grouped-label" data-testid="variant-label">
               {ui.blocks.variants.jobs.grouped}
             </Title>
@@ -136,15 +138,15 @@ export function JobsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="jobs-table-label"
-          data-testid="variant"
-          data-block="jobs"
-          data-variant="table"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="jobs-table-label"
+            data-testid="variant"
+            data-block="jobs"
+            data-variant="table"
+          >
             <Title as={2} size="base" weight="bold" id="jobs-table-label" data-testid="variant-label">
               {ui.blocks.variants.jobs.table}
             </Title>
@@ -162,8 +164,8 @@ export function JobsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

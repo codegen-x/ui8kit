@@ -101,7 +101,7 @@ const cartDrawer = spec(`${O}cart-drawer`, "CartDrawer", "The cart drawer in its
       use("Box", { props: { Class: "flex min-h-160 overflow-hidden rounded bg-muted inset-ring inset-ring-border" } },
         use("Box", { props: { Class: "hidden flex-1 flex-col gap-4 p-8 sm:flex" }, attrs: { "aria-hidden": "true" } },
           use("Box", { props: { Class: "h-8 w-48 rounded bg-background" } }), use("Box", { props: { Class: "h-40 rounded bg-background" } }), use("Box", { props: { Class: "h-40 rounded bg-background" } })),
-        use("Block", { props: { Tag: "aside", Class: "flex w-full flex-col bg-background shadow-lg sm:max-w-sm" }, attrs: { "aria-label": ref("drawer.title"), "data-testid": "drawer" } },
+        use("Box", { props: { Class: "flex w-full flex-col bg-background shadow-lg sm:max-w-sm" }, attrs: { "aria-label": ref("drawer.title"), "data-testid": "drawer" } },
           use("Group", { props: { Gap: "4", Align: "center", Justify: "between", Class: "border-b border-border p-4" } },
             use("Title", { props: { As: 2, Size: "lg", Weight: "semibold" } }, text(ref("drawer.title"))),
             use("Button", { props: { Variant: "ghost", Size: "sm", Layout: "icon", AriaLabel: ref("drawer.close") } }, use("LucideIcon", { props: { Name: "x", Size: 16 } }))),

@@ -48,8 +48,7 @@ export function CartDrawer({
             <Box className="h-40 rounded bg-background" />
             <Box className="h-40 rounded bg-background" />
           </Box>
-          <Block
-            tag="aside"
+          <Box
             className="flex w-full flex-col bg-background shadow-lg sm:max-w-sm"
             aria-label={drawer.title}
             data-testid="drawer"
@@ -78,7 +77,7 @@ export function CartDrawer({
             ) : (
               <DrawerLines lines={lines} rows={rows} labels={labels} drawer={drawer} media={media} />
             )}
-          </Block>
+          </Box>
         </Box>
       </Container>
     </Block>

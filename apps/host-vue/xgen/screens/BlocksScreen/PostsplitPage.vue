@@ -49,32 +49,34 @@ const POSTSPLIT_EXTRAS = {
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.blocks.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="content">
-          {{ ui.blocks.themes.content.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="block-title">
-          {{ ui.blocks.names.postsplit }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ ui.blocks.docs.postsplit }}
-        </Text>
-      </Stack>
-      <Block
-        tag="section"
-        aria-labelledby="postsplit-centerShare-label"
-        data-testid="variant"
-        data-block="postsplit"
-        data-variant="centerShare"
-      >
-        <Stack gap="4" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.blocks.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="content">
+            {{ ui.blocks.themes.content.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="block-title">
+            {{ ui.blocks.names.postsplit }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ ui.blocks.docs.postsplit }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="postsplit-centerShare-label"
+          data-testid="variant"
+          data-block="postsplit"
+          data-variant="centerShare"
+        >
           <Title :as="2" size="base" weight="bold" id="postsplit-centerShare-label" data-testid="variant-label">
             {{ ui.blocks.variants.postsplit.centerShare }}
           </Title>
@@ -94,15 +96,15 @@ const POSTSPLIT_EXTRAS = {
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="postsplit-splitTags-label"
-        data-testid="variant"
-        data-block="postsplit"
-        data-variant="splitTags"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="postsplit-splitTags-label"
+          data-testid="variant"
+          data-block="postsplit"
+          data-variant="splitTags"
+        >
           <Title :as="2" size="base" weight="bold" id="postsplit-splitTags-label" data-testid="variant-label">
             {{ ui.blocks.variants.postsplit.splitTags }}
           </Title>
@@ -122,15 +124,15 @@ const POSTSPLIT_EXTRAS = {
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="postsplit-splitBioStart-label"
-        data-testid="variant"
-        data-block="postsplit"
-        data-variant="splitBioStart"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="postsplit-splitBioStart-label"
+          data-testid="variant"
+          data-block="postsplit"
+          data-variant="splitBioStart"
+        >
           <Title :as="2" size="base" weight="bold" id="postsplit-splitBioStart-label" data-testid="variant-label">
             {{ ui.blocks.variants.postsplit.splitBioStart }}
           </Title>
@@ -150,15 +152,15 @@ const POSTSPLIT_EXTRAS = {
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="postsplit-splitSquare-label"
-        data-testid="variant"
-        data-block="postsplit"
-        data-variant="splitSquare"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="postsplit-splitSquare-label"
+          data-testid="variant"
+          data-block="postsplit"
+          data-variant="splitSquare"
+        >
           <Title :as="2" size="base" weight="bold" id="postsplit-splitSquare-label" data-testid="variant-label">
             {{ ui.blocks.variants.postsplit.splitSquare }}
           </Title>
@@ -178,15 +180,15 @@ const POSTSPLIT_EXTRAS = {
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="postsplit-outlineStart-label"
-        data-testid="variant"
-        data-block="postsplit"
-        data-variant="outlineStart"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="postsplit-outlineStart-label"
+          data-testid="variant"
+          data-block="postsplit"
+          data-variant="outlineStart"
+        >
           <Title :as="2" size="base" weight="bold" id="postsplit-outlineStart-label" data-testid="variant-label">
             {{ ui.blocks.variants.postsplit.outlineStart }}
           </Title>
@@ -206,15 +208,15 @@ const POSTSPLIT_EXTRAS = {
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="postsplit-splitStats-label"
-        data-testid="variant"
-        data-block="postsplit"
-        data-variant="splitStats"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="postsplit-splitStats-label"
+          data-testid="variant"
+          data-block="postsplit"
+          data-variant="splitStats"
+        >
           <Title :as="2" size="base" weight="bold" id="postsplit-splitStats-label" data-testid="variant-label">
             {{ ui.blocks.variants.postsplit.splitStats }}
           </Title>
@@ -234,7 +236,7 @@ const POSTSPLIT_EXTRAS = {
             />
           </Box>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

@@ -24,32 +24,34 @@ const tabs = fromCodex<NavLink>(tabsEntries, TABS_FIELDS);
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.blocks.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="dashboard">
-          {{ ui.blocks.themes.dashboard.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="block-title">
-          {{ ui.blocks.names.bottomnav }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ ui.blocks.docs.bottomnav }}
-        </Text>
-      </Stack>
-      <Block
-        tag="section"
-        aria-labelledby="bottomnav-labels-label"
-        data-testid="variant"
-        data-block="bottomnav"
-        data-variant="labels"
-      >
-        <Stack gap="4" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.blocks.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="dashboard">
+            {{ ui.blocks.themes.dashboard.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="block-title">
+            {{ ui.blocks.names.bottomnav }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ ui.blocks.docs.bottomnav }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="bottomnav-labels-label"
+          data-testid="variant"
+          data-block="bottomnav"
+          data-variant="labels"
+        >
           <Title :as="2" size="base" weight="bold" id="bottomnav-labels-label" data-testid="variant-label">
             {{ ui.blocks.variants.bottomnav.labels }}
           </Title>
@@ -64,15 +66,15 @@ const tabs = fromCodex<NavLink>(tabsEntries, TABS_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="bottomnav-icons-label"
-        data-testid="variant"
-        data-block="bottomnav"
-        data-variant="icons"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="bottomnav-icons-label"
+          data-testid="variant"
+          data-block="bottomnav"
+          data-variant="icons"
+        >
           <Title :as="2" size="base" weight="bold" id="bottomnav-icons-label" data-testid="variant-label">
             {{ ui.blocks.variants.bottomnav.icons }}
           </Title>
@@ -87,15 +89,15 @@ const tabs = fromCodex<NavLink>(tabsEntries, TABS_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="bottomnav-sticky-label"
-        data-testid="variant"
-        data-block="bottomnav"
-        data-variant="sticky"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="bottomnav-sticky-label"
+          data-testid="variant"
+          data-block="bottomnav"
+          data-variant="sticky"
+        >
           <Title :as="2" size="base" weight="bold" id="bottomnav-sticky-label" data-testid="variant-label">
             {{ ui.blocks.variants.bottomnav.sticky }}
           </Title>
@@ -110,15 +112,15 @@ const tabs = fromCodex<NavLink>(tabsEntries, TABS_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="bottomnav-muted-label"
-        data-testid="variant"
-        data-block="bottomnav"
-        data-variant="muted"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="bottomnav-muted-label"
+          data-testid="variant"
+          data-block="bottomnav"
+          data-variant="muted"
+        >
           <Title :as="2" size="base" weight="bold" id="bottomnav-muted-label" data-testid="variant-label">
             {{ ui.blocks.variants.bottomnav.muted }}
           </Title>
@@ -133,7 +135,7 @@ const tabs = fromCodex<NavLink>(tabsEntries, TABS_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

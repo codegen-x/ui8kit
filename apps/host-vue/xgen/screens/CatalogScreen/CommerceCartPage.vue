@@ -48,26 +48,33 @@ const promos = fromCodex<Promo>(promosEntries, PROMOS_FIELDS);
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.catalog.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-          {{ ui.catalog.sections.commerce.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="category-title">
-          {{ ui.catalog.categories.commerceCart }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ tpl(ui.catalog.count, 3, 10) }}
-        </Text>
-      </Stack>
-      <Block tag="section" aria-labelledby="catalog-cart-title" data-testid="catalog-block" data-block="cart">
-        <Stack gap="6" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.catalog.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+            {{ ui.catalog.sections.commerce.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="category-title">
+            {{ ui.catalog.categories.commerceCart }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ tpl(ui.catalog.count, 3, 10) }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="6"
+          align="stretch"
+          role="group"
+          aria-labelledby="catalog-cart-title"
+          data-testid="catalog-block"
+          data-block="cart"
+        >
           <Stack gap="2" align="stretch">
             <Title :as="2" size="2xl" weight="bold" id="catalog-cart-title">
               {{ ui.blocks.names.cart }}
@@ -76,110 +83,115 @@ const promos = fromCodex<Promo>(promosEntries, PROMOS_FIELDS);
               {{ ui.blocks.docs.cart }}
             </Text>
           </Stack>
-          <Block
-            tag="section"
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="cart-table-label"
             data-testid="variant"
             data-block="cart"
             data-variant="table"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="cart-table-label" data-testid="variant-label">
-                {{ ui.blocks.variants.cart.table }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <CartList
-                  id="cart-table"
-                  :title="ui.commerce.cart.title"
-                  :lines="cart"
-                  :labels="ui.commerce.cart"
-                  layout="table"
-                  media="image"
-                  tone="default"
-                  density="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="cart-table-label" data-testid="variant-label">
+              {{ ui.blocks.variants.cart.table }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <CartList
+                id="cart-table"
+                :title="ui.commerce.cart.title"
+                :lines="cart"
+                :labels="ui.commerce.cart"
+                layout="table"
+                media="image"
+                tone="default"
+                density="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="cart-cards-label"
             data-testid="variant"
             data-block="cart"
             data-variant="cards"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="cart-cards-label" data-testid="variant-label">
-                {{ ui.blocks.variants.cart.cards }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <CartList
-                  id="cart-cards"
-                  :title="ui.commerce.cart.title"
-                  :lines="cart"
-                  :labels="ui.commerce.cart"
-                  layout="cards"
-                  media="image"
-                  tone="default"
-                  density="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="cart-cards-label" data-testid="variant-label">
+              {{ ui.blocks.variants.cart.cards }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <CartList
+                id="cart-cards"
+                :title="ui.commerce.cart.title"
+                :lines="cart"
+                :labels="ui.commerce.cart"
+                layout="cards"
+                media="image"
+                tone="default"
+                density="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="cart-tableCompact-label"
             data-testid="variant"
             data-block="cart"
             data-variant="tableCompact"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="cart-tableCompact-label" data-testid="variant-label">
-                {{ ui.blocks.variants.cart.tableCompact }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <CartList
-                  id="cart-tableCompact"
-                  :title="ui.commerce.cart.title"
-                  :lines="cart"
-                  :labels="ui.commerce.cart"
-                  layout="table"
-                  media="none"
-                  tone="default"
-                  density="compact"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="cart-tableCompact-label" data-testid="variant-label">
+              {{ ui.blocks.variants.cart.tableCompact }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <CartList
+                id="cart-tableCompact"
+                :title="ui.commerce.cart.title"
+                :lines="cart"
+                :labels="ui.commerce.cart"
+                layout="table"
+                media="none"
+                tone="default"
+                density="compact"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="cart-cardsPlain-label"
             data-testid="variant"
             data-block="cart"
             data-variant="cardsPlain"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="cart-cardsPlain-label" data-testid="variant-label">
-                {{ ui.blocks.variants.cart.cardsPlain }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <CartList
-                  id="cart-cardsPlain"
-                  :title="ui.commerce.cart.title"
-                  :lines="cart"
-                  :labels="ui.commerce.cart"
-                  layout="cards"
-                  media="none"
-                  tone="muted"
-                  density="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
+            <Title :as="3" size="base" weight="bold" id="cart-cardsPlain-label" data-testid="variant-label">
+              {{ ui.blocks.variants.cart.cardsPlain }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <CartList
+                id="cart-cardsPlain"
+                :title="ui.commerce.cart.title"
+                :lines="cart"
+                :labels="ui.commerce.cart"
+                layout="cards"
+                media="none"
+                tone="muted"
+                density="default"
+              />
+            </Box>
+          </Stack>
         </Stack>
-      </Block>
-      <Block tag="section" aria-labelledby="catalog-cartpage-title" data-testid="catalog-block" data-block="cartpage">
-        <Stack gap="6" align="stretch">
+        <Stack
+          gap="6"
+          align="stretch"
+          role="group"
+          aria-labelledby="catalog-cartpage-title"
+          data-testid="catalog-block"
+          data-block="cartpage"
+        >
           <Stack gap="2" align="stretch">
             <Title :as="2" size="2xl" weight="bold" id="catalog-cartpage-title">
               {{ ui.blocks.names.cartpage }}
@@ -188,102 +200,102 @@ const promos = fromCodex<Promo>(promosEntries, PROMOS_FIELDS);
               {{ ui.blocks.docs.cartpage }}
             </Text>
           </Stack>
-          <Block
-            tag="section"
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="cartpage-split-label"
             data-testid="variant"
             data-block="cartpage"
             data-variant="split"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="cartpage-split-label" data-testid="variant-label">
-                {{ ui.blocks.variants.cartpage.split }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <ShoppingCart
-                  id="cartpage-split"
-                  :title="ui.commerce.cartPage.title"
-                  :lines="cart"
-                  :rows="summary"
-                  :promos="promos"
-                  :labels="ui.commerce.cart"
-                  :totals="ui.commerce.totals"
-                  :actions="ui.commerce.cartPage"
-                  layout="split"
-                  promo="show"
-                  progress="show"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="cartpage-split-label" data-testid="variant-label">
+              {{ ui.blocks.variants.cartpage.split }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <ShoppingCart
+                id="cartpage-split"
+                :title="ui.commerce.cartPage.title"
+                :lines="cart"
+                :rows="summary"
+                :promos="promos"
+                :labels="ui.commerce.cart"
+                :totals="ui.commerce.totals"
+                :actions="ui.commerce.cartPage"
+                layout="split"
+                promo="show"
+                progress="show"
+                tone="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="cartpage-stacked-label"
             data-testid="variant"
             data-block="cartpage"
             data-variant="stacked"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="cartpage-stacked-label" data-testid="variant-label">
-                {{ ui.blocks.variants.cartpage.stacked }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <ShoppingCart
-                  id="cartpage-stacked"
-                  :title="ui.commerce.cartPage.title"
-                  :lines="cart"
-                  :rows="summary"
-                  :promos="promos"
-                  :labels="ui.commerce.cart"
-                  :totals="ui.commerce.totals"
-                  :actions="ui.commerce.cartPage"
-                  layout="stacked"
-                  promo="show"
-                  progress="show"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="cartpage-stacked-label" data-testid="variant-label">
+              {{ ui.blocks.variants.cartpage.stacked }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <ShoppingCart
+                id="cartpage-stacked"
+                :title="ui.commerce.cartPage.title"
+                :lines="cart"
+                :rows="summary"
+                :promos="promos"
+                :labels="ui.commerce.cart"
+                :totals="ui.commerce.totals"
+                :actions="ui.commerce.cartPage"
+                layout="stacked"
+                promo="show"
+                progress="show"
+                tone="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="cartpage-plain-label"
             data-testid="variant"
             data-block="cartpage"
             data-variant="plain"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="cartpage-plain-label" data-testid="variant-label">
-                {{ ui.blocks.variants.cartpage.plain }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <ShoppingCart
-                  id="cartpage-plain"
-                  :title="ui.commerce.cartPage.title"
-                  :lines="cart"
-                  :rows="summary"
-                  :promos="promos"
-                  :labels="ui.commerce.cart"
-                  :totals="ui.commerce.totals"
-                  :actions="ui.commerce.cartPage"
-                  layout="split"
-                  promo="hide"
-                  progress="hide"
-                  tone="muted"
-                />
-              </Box>
-            </Stack>
-          </Block>
+            <Title :as="3" size="base" weight="bold" id="cartpage-plain-label" data-testid="variant-label">
+              {{ ui.blocks.variants.cartpage.plain }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <ShoppingCart
+                id="cartpage-plain"
+                :title="ui.commerce.cartPage.title"
+                :lines="cart"
+                :rows="summary"
+                :promos="promos"
+                :labels="ui.commerce.cart"
+                :totals="ui.commerce.totals"
+                :actions="ui.commerce.cartPage"
+                layout="split"
+                promo="hide"
+                progress="hide"
+                tone="muted"
+              />
+            </Box>
+          </Stack>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="catalog-cartdrawer-title"
-        data-testid="catalog-block"
-        data-block="cartdrawer"
-      >
-        <Stack gap="6" align="stretch">
+        <Stack
+          gap="6"
+          align="stretch"
+          role="group"
+          aria-labelledby="catalog-cartdrawer-title"
+          data-testid="catalog-block"
+          data-block="cartdrawer"
+        >
           <Stack gap="2" align="stretch">
             <Title :as="2" size="2xl" weight="bold" id="catalog-cartdrawer-title">
               {{ ui.blocks.names.cartdrawer }}
@@ -292,80 +304,80 @@ const promos = fromCodex<Promo>(promosEntries, PROMOS_FIELDS);
               {{ ui.blocks.docs.cartdrawer }}
             </Text>
           </Stack>
-          <Block
-            tag="section"
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="cartdrawer-filled-label"
             data-testid="variant"
             data-block="cartdrawer"
             data-variant="filled"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="cartdrawer-filled-label" data-testid="variant-label">
-                {{ ui.blocks.variants.cartdrawer.filled }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <CartDrawer
-                  id="cartdrawer-filled"
-                  :lines="cart"
-                  :rows="summary"
-                  :labels="ui.commerce.cart"
-                  :drawer="ui.commerce.drawer"
-                  state="filled"
-                  media="image"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="cartdrawer-filled-label" data-testid="variant-label">
+              {{ ui.blocks.variants.cartdrawer.filled }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <CartDrawer
+                id="cartdrawer-filled"
+                :lines="cart"
+                :rows="summary"
+                :labels="ui.commerce.cart"
+                :drawer="ui.commerce.drawer"
+                state="filled"
+                media="image"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="cartdrawer-compact-label"
             data-testid="variant"
             data-block="cartdrawer"
             data-variant="compact"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="cartdrawer-compact-label" data-testid="variant-label">
-                {{ ui.blocks.variants.cartdrawer.compact }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <CartDrawer
-                  id="cartdrawer-compact"
-                  :lines="cart"
-                  :rows="summary"
-                  :labels="ui.commerce.cart"
-                  :drawer="ui.commerce.drawer"
-                  state="filled"
-                  media="none"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="cartdrawer-compact-label" data-testid="variant-label">
+              {{ ui.blocks.variants.cartdrawer.compact }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <CartDrawer
+                id="cartdrawer-compact"
+                :lines="cart"
+                :rows="summary"
+                :labels="ui.commerce.cart"
+                :drawer="ui.commerce.drawer"
+                state="filled"
+                media="none"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="cartdrawer-empty-label"
             data-testid="variant"
             data-block="cartdrawer"
             data-variant="empty"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="cartdrawer-empty-label" data-testid="variant-label">
-                {{ ui.blocks.variants.cartdrawer.empty }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <CartDrawer
-                  id="cartdrawer-empty"
-                  :lines="cart"
-                  :rows="summary"
-                  :labels="ui.commerce.cart"
-                  :drawer="ui.commerce.drawer"
-                  state="empty"
-                  media="image"
-                />
-              </Box>
-            </Stack>
-          </Block>
+            <Title :as="3" size="base" weight="bold" id="cartdrawer-empty-label" data-testid="variant-label">
+              {{ ui.blocks.variants.cartdrawer.empty }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <CartDrawer
+                id="cartdrawer-empty"
+                :lines="cart"
+                :rows="summary"
+                :labels="ui.commerce.cart"
+                :drawer="ui.commerce.drawer"
+                state="empty"
+                media="image"
+              />
+            </Box>
+          </Stack>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

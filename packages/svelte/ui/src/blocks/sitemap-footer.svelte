@@ -35,6 +35,7 @@
   import Input from "../primitives/input/input.svelte";
   import Label from "../primitives/label/label.svelte";
   import Link from "../primitives/link/link.svelte";
+  import Nav from "../primitives/nav/nav.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
@@ -106,7 +107,7 @@
           <Text size="base" weight="bold">
             {brand}
           </Text>
-          <Block tag="nav" aria-label={label}>
+          <Nav aria-label={label}>
             <Group gap="4" class="flex-wrap">
               {#each groups as g (g.id)}
                 <Link href="#/" variant="default" class="text-sm" data-testid="group">
@@ -114,7 +115,7 @@
                 </Link>
               {/each}
             </Group>
-          </Block>
+          </Nav>
         </Group>
       {/if}
       <Group gap="4" align="center" justify="between" class="flex-wrap border-t border-border pt-6">

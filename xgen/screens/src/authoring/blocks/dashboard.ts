@@ -2,7 +2,7 @@
 import { add, cn, cond, div, count, each, eachAt, eq, len, lt, mul, ref, round, str, text, tpl, undef, use, when, organism } from "../../build";
 import type { OrganismSpec } from "../../ir";
 import { fields, spec, ts } from "../kit";
-import { frame, wide } from "../components/frames";
+import { frame, panelSection, wide } from "../components/frames";
 import { id, title, tsOf, toneLite, denseLite } from "../props";
 import { fid, kids } from "../forms";
 
@@ -22,7 +22,7 @@ const metricRow = spec(`${O}metric-row`, "MetricRow", "Dashboard counters in a r
     use("Grid", { props: { Cols: cond(eq(ref("cols"), "2"), "1-2", "1-4"), Class: "gap-4" }, attrs: { "data-testid": "items" } },
       each(ref("metrics"), "m", ref("m.id"),
         when(eq(ref("item"), "tile"),
-          [use("Block", { props: { Tag: "div" }, attrs: { "data-testid": "item" } }, organism("StatTile", { label: ref("m.label"), value: ref("m.value"), icon: ref("m.icon"), hint: ref("m.hint") }))],
+          [use("Box", { props: {}, attrs: { "data-testid": "item" } }, organism("StatTile", { label: ref("m.label"), value: ref("m.value"), icon: ref("m.icon"), hint: ref("m.hint") }))],
           [use("Stack", { props: { Gap: "0", Class: "rounded bg-card p-4 inset-ring inset-ring-border" }, attrs: { "data-testid": "item" } },
             use("Group", { props: { Gap: "2", Align: "center", Class: "text-muted-foreground" } }, use("LucideIcon", { props: { Name: ref("m.icon"), Size: 16 } }), use("Text", { props: { Size: "xs" } }, text(ref("m.label")))),
             use("Text", { props: { Size: "2xl", Weight: "bold" } }, text(ref("m.value"))),
@@ -43,12 +43,12 @@ const chartPanel = spec(`${O}chart-panel`, "ChartPanel", "A panel with a chart o
     { name: "tone", type: toneLite, default: "default" },
   ],
   view: [
-    use("Container", { props: { Class: `${wide} py-8` }, attrs: { "data-slot": "container" } },
+    panelSection(use("Container", { props: { Class: `${wide} py-8` }, attrs: { "data-slot": "container" } },
       organism("Panel", { title: ref("title"), description: ref("text"), id: ref("id"), className: cond(eq(ref("tone"), "muted"), "bg-muted", "") }, kids(
         when(eq(ref("chart"), "bars"),
           [organism("BarChart", { bars: ref("series"), label: ref("summary"), height: cond(eq(ref("size"), "compact"), 96, 176) })],
           [use("Stack", { props: { Gap: cond(eq(ref("size"), "compact"), "0", "2"), Align: "stretch" }, attrs: { "data-testid": "items" } },
-            each(ref("series"), "s", ref("s.id"), organism("MeterRow", { label: ref("s.label"), value: ref("s.value"), caption: tpl(ref("percent"), ref("s.value")) })))])))),
+            each(ref("series"), "s", ref("s.id"), organism("MeterRow", { label: ref("s.label"), value: ref("s.value"), caption: tpl(ref("percent"), ref("s.value")) })))]))))),
   ],
 });
 
@@ -63,7 +63,7 @@ const activityFeed = spec(`${O}activity-feed`, "ActivityFeed", "A panel with rec
     { name: "tone", type: toneLite, default: "default" },
   ],
   view: [
-    use("Container", { props: { Class: `${wide} py-8` }, attrs: { "data-slot": "container" } },
+    panelSection(use("Container", { props: { Class: `${wide} py-8` }, attrs: { "data-slot": "container" } },
       organism("Panel", { title: ref("title"), description: ref("text"), id: ref("id"), className: cond(eq(ref("tone"), "muted"), "bg-muted", "") }, kids(
         when(eq(ref("layout"), "timeline"),
           [organism("Timeline", { items: ref("events") })],
@@ -73,7 +73,7 @@ const activityFeed = spec(`${O}activity-feed`, "ActivityFeed", "A panel with rec
                 use("Stack", { props: { Gap: "0" } },
                   use("Text", { props: { Size: "sm", Weight: "semibold" } }, text(ref("e.title"))),
                   when(eq(ref("density"), "default"), [use("Text", { props: { Size: "sm", Class: "text-muted-foreground" } }, text(ref("e.text")))])),
-                use("Text", { props: { Size: "xs", Class: "shrink-0 text-muted-foreground" } }, text(ref("e.time"))))))])))),
+                use("Text", { props: { Size: "xs", Class: "shrink-0 text-muted-foreground" } }, text(ref("e.time"))))))]))))),
   ],
 });
 

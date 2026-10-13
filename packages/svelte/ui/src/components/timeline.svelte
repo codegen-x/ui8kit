@@ -15,7 +15,6 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
   import Box from "../primitives/box/box.svelte";
   import Inline from "../primitives/inline/inline.svelte";
   import List from "../primitives/list/list.svelte";
@@ -33,7 +32,7 @@
   let { items, class: className }: TimelineProps = $props();
 </script>
 
-<Block class={cn("min-w-0", className)} data-slot="timeline">
+<Box class={cn("min-w-0", className)} data-slot="timeline">
   <List class="m-0 flex list-none flex-col p-0">
     {#each items as item, i (item.id)}
       <ListItem class="relative flex min-w-0 gap-4 pb-4 last:pb-0" data-event={item.id}>
@@ -61,4 +60,4 @@
       </ListItem>
     {/each}
   </List>
-</Block>
+</Box>

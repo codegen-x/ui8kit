@@ -5,8 +5,9 @@
  * feature cards, or a quote with its author over three figures.
  */
 import { Fragment, type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
+import { Blockquote } from "../primitives/blockquote/blockquote";
 import { Box } from "../primitives/box/box";
+import { Figure } from "../primitives/figure/figure";
 import { Group } from "../primitives/group/group";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
@@ -89,10 +90,10 @@ export function HeroSplitExtras({ content, extra = "none" }: HeroSplitExtrasProp
           {(content.people ?? []).map((p, i) => (
             <Fragment key={p.id}>
               {(i < 1) ? (
-                <Block tag="figure" className="flex flex-col gap-4" data-testid="hero-quote">
-                  <Block tag="blockquote" className="text-lg font-medium">
+                <Figure className="flex flex-col gap-4" data-testid="hero-quote">
+                  <Blockquote className="text-lg font-medium">
                     {p.quote}
-                  </Block>
+                  </Blockquote>
                   <Group gap="4" align="center">
                     <MediaFrame alt={p.author} ratio="1/1" className="size-10 shrink-0 rounded-full" />
                     <Stack gap="0">
@@ -104,7 +105,7 @@ export function HeroSplitExtras({ content, extra = "none" }: HeroSplitExtrasProp
                       </Text>
                     </Stack>
                   </Group>
-                </Block>
+                </Figure>
               ) : null}
             </Fragment>
           ))}

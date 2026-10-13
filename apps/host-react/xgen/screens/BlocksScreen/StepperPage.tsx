@@ -13,37 +13,39 @@ const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
 
 export function StepperPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text
-            size="sm"
-            className="font-medium text-muted-foreground"
-            data-testid="block-theme"
-            data-theme-id="onboarding"
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text
+              size="sm"
+              className="font-medium text-muted-foreground"
+              data-testid="block-theme"
+              data-theme-id="onboarding"
+            >
+              {ui.blocks.themes.onboarding.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.stepper}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.stepper}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="stepper-horizontal-label"
+            data-testid="variant"
+            data-block="stepper"
+            data-variant="horizontal"
           >
-            {ui.blocks.themes.onboarding.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.stepper}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.stepper}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="stepper-horizontal-label"
-          data-testid="variant"
-          data-block="stepper"
-          data-variant="horizontal"
-        >
-          <Stack gap="4" align="stretch">
             <Title as={2} size="base" weight="bold" id="stepper-horizontal-label" data-testid="variant-label">
               {ui.blocks.variants.stepper.horizontal}
             </Title>
@@ -62,15 +64,15 @@ export function StepperPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="stepper-vertical-label"
-          data-testid="variant"
-          data-block="stepper"
-          data-variant="vertical"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="stepper-vertical-label"
+            data-testid="variant"
+            data-block="stepper"
+            data-variant="vertical"
+          >
             <Title as={2} size="base" weight="bold" id="stepper-vertical-label" data-testid="variant-label">
               {ui.blocks.variants.stepper.vertical}
             </Title>
@@ -89,15 +91,15 @@ export function StepperPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="stepper-icons-label"
-          data-testid="variant"
-          data-block="stepper"
-          data-variant="icons"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="stepper-icons-label"
+            data-testid="variant"
+            data-block="stepper"
+            data-variant="icons"
+          >
             <Title as={2} size="base" weight="bold" id="stepper-icons-label" data-testid="variant-label">
               {ui.blocks.variants.stepper.icons}
             </Title>
@@ -116,15 +118,15 @@ export function StepperPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="stepper-bare-label"
-          data-testid="variant"
-          data-block="stepper"
-          data-variant="bare"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="stepper-bare-label"
+            data-testid="variant"
+            data-block="stepper"
+            data-variant="bare"
+          >
             <Title as={2} size="base" weight="bold" id="stepper-bare-label" data-testid="variant-label">
               {ui.blocks.variants.stepper.bare}
             </Title>
@@ -143,8 +145,8 @@ export function StepperPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

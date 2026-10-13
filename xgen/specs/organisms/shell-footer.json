@@ -74,10 +74,8 @@
           ]
         },
         {
-          "use": "Block",
-          "props": {
-            "Tag": "nav"
-          },
+          "use": "Nav",
+          "props": {},
           "attrs": {
             "aria-label": {
               "$": "nav.footerLabel"
@@ -133,6 +131,7 @@
     "svelte": true,
     "react": true
   },
+  "frame": true,
   "typeImports": [
     {
       "from": "DashboardShell",

@@ -26,37 +26,39 @@ const SITEMAP_SIGNUP = { title: ui.vibe.sitemap.signupTitle, label: ui.vibe.site
 
 export function SitemapPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text
-            size="sm"
-            className="font-medium text-muted-foreground"
-            data-testid="block-theme"
-            data-theme-id="marketing"
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text
+              size="sm"
+              className="font-medium text-muted-foreground"
+              data-testid="block-theme"
+              data-theme-id="marketing"
+            >
+              {ui.blocks.themes.marketing.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.sitemap}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.sitemap}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="sitemap-columns-label"
+            data-testid="variant"
+            data-block="sitemap"
+            data-variant="columns"
           >
-            {ui.blocks.themes.marketing.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.sitemap}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.sitemap}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="sitemap-columns-label"
-          data-testid="variant"
-          data-block="sitemap"
-          data-variant="columns"
-        >
-          <Stack gap="4" align="stretch">
             <Title as={2} size="base" weight="bold" id="sitemap-columns-label" data-testid="variant-label">
               {ui.blocks.variants.sitemap.columns}
             </Title>
@@ -75,15 +77,15 @@ export function SitemapPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="sitemap-card-label"
-          data-testid="variant"
-          data-block="sitemap"
-          data-variant="card"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="sitemap-card-label"
+            data-testid="variant"
+            data-block="sitemap"
+            data-variant="card"
+          >
             <Title as={2} size="base" weight="bold" id="sitemap-card-label" data-testid="variant-label">
               {ui.blocks.variants.sitemap.card}
             </Title>
@@ -102,15 +104,15 @@ export function SitemapPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="sitemap-row-label"
-          data-testid="variant"
-          data-block="sitemap"
-          data-variant="row"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="sitemap-row-label"
+            data-testid="variant"
+            data-block="sitemap"
+            data-variant="row"
+          >
             <Title as={2} size="base" weight="bold" id="sitemap-row-label" data-testid="variant-label">
               {ui.blocks.variants.sitemap.row}
             </Title>
@@ -129,15 +131,15 @@ export function SitemapPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="sitemap-newsletter-label"
-          data-testid="variant"
-          data-block="sitemap"
-          data-variant="newsletter"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="sitemap-newsletter-label"
+            data-testid="variant"
+            data-block="sitemap"
+            data-variant="newsletter"
+          >
             <Title as={2} size="base" weight="bold" id="sitemap-newsletter-label" data-testid="variant-label">
               {ui.blocks.variants.sitemap.newsletter}
             </Title>
@@ -156,15 +158,15 @@ export function SitemapPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="sitemap-status-label"
-          data-testid="variant"
-          data-block="sitemap"
-          data-variant="status"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="sitemap-status-label"
+            data-testid="variant"
+            data-block="sitemap"
+            data-variant="status"
+          >
             <Title as={2} size="base" weight="bold" id="sitemap-status-label" data-testid="variant-label">
               {ui.blocks.variants.sitemap.status}
             </Title>
@@ -183,15 +185,15 @@ export function SitemapPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="sitemap-compact-label"
-          data-testid="variant"
-          data-block="sitemap"
-          data-variant="compact"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="sitemap-compact-label"
+            data-testid="variant"
+            data-block="sitemap"
+            data-variant="compact"
+          >
             <Title as={2} size="base" weight="bold" id="sitemap-compact-label" data-testid="variant-label">
               {ui.blocks.variants.sitemap.compact}
             </Title>
@@ -210,8 +212,8 @@ export function SitemapPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

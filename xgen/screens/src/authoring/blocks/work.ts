@@ -37,10 +37,10 @@ const photoGallery = spec(`${O}photo-gallery`, "PhotoGallery", "Photos in a grid
             organism("MediaFrame", { alt: ref("p.title"), ratio: "1/1", className: cond(eq(ref("i"), 0), "ring-2 ring-foreground", "") }))))],
       [use("Box", { props: { Class: cond(eq(ref("layout"), "masonry"), "columns-1 gap-4 sm:columns-2 lg:columns-3", cond(eq(ref("layout"), "mosaic"), "grid grid-cols-2 gap-4 md:grid-cols-4", "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3")) }, attrs: { "data-testid": "items" } },
         eachAt(ref("photos"), "p", "i", ref("p.id"),
-          use("Block", { props: { Tag: "figure", Class: cn("flex flex-col gap-2", cond(eq(ref("layout"), "masonry"), "mb-4 break-inside-avoid", ""), cond(and(eq(ref("layout"), "mosaic"), eq(ref("i"), 0)), "col-span-2 row-span-2", ""), cond(eq(ref("layout"), "cards"), surface("p-4"), "")) }, attrs: { "data-testid": "item" } },
+          use("Figure", { props: { Class: cn("flex flex-col gap-2", cond(eq(ref("layout"), "masonry"), "mb-4 break-inside-avoid", ""), cond(and(eq(ref("layout"), "mosaic"), eq(ref("i"), 0)), "col-span-2 row-span-2", ""), cond(eq(ref("layout"), "cards"), surface("p-4"), "")) }, attrs: { "data-testid": "item" } },
             organism("MediaFrame", { alt: ref("p.title"), ratio: cond(eq(ref("layout"), "masonry"), ratioOf(ref("p.size")), cond(eq(ref("layout"), "grid"), "4/3", "1/1")), className: cond(eq(ref("layout"), "mosaic"), "h-full", "") }),
             when(and(eq(ref("captions"), "show"), eq(ref("layout"), "cards")), [use("Group", { props: { Gap: "4", Align: "center", Justify: "between" } }, strong(ref("p.title"), "sm"), use("Badge", { props: { Variant: "secondary", Size: "sm" } }, text(ref("p.tag"))))]),
-            when(and(eq(ref("captions"), "show"), or(eq(ref("layout"), "grid"), eq(ref("layout"), "masonry"))), [use("Block", { props: { Class: "text-sm text-muted-foreground" }, attrs: { "data-testid": "caption" } }, text(ref("p.title")))]))))]),
+            when(and(eq(ref("captions"), "show"), or(eq(ref("layout"), "grid"), eq(ref("layout"), "masonry"))), [use("Box", { props: { Class: "text-sm text-muted-foreground" }, attrs: { "data-testid": "caption" } }, text(ref("p.title")))]))))]),
   ])],
 });
 

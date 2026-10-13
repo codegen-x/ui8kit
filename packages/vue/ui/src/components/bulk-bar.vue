@@ -13,7 +13,7 @@ export type BulkBarProps = {
 </script>
 
 <script setup lang="ts">
-import Block from "../primitives/block/block.vue";
+import Box from "../primitives/box/box.vue";
 import Button from "../primitives/button/button.vue";
 import Inline from "../primitives/inline/inline.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
@@ -25,7 +25,7 @@ defineSlots<{ default?(): unknown }>();
 </script>
 
 <template>
-  <Block
+  <Box
     :class="cn(
       'flex flex-wrap items-center gap-2 rounded bg-foreground px-4 py-2 text-xs font-bold text-background',
       className
@@ -53,5 +53,5 @@ defineSlots<{ default?(): unknown }>();
     <Inline class="ml-auto flex flex-wrap items-center gap-2">
       <slot />
     </Inline>
-  </Block>
+  </Box>
 </template>

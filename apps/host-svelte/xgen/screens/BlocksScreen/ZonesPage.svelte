@@ -33,32 +33,34 @@
   const zones = fromCodex<Zone>(zonesEntries, ZONES_FIELDS);
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.blocks.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="commerce">
-        {ui.blocks.themes.commerce.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-        {ui.blocks.names.zones}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {ui.blocks.docs.zones}
-      </Text>
-    </Stack>
-    <Block
-      tag="section"
-      aria-labelledby="zones-table-label"
-      data-testid="variant"
-      data-block="zones"
-      data-variant="table"
-    >
-      <Stack gap="4" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.blocks.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="commerce">
+          {ui.blocks.themes.commerce.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+          {ui.blocks.names.zones}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {ui.blocks.docs.zones}
+        </Text>
+      </Stack>
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="zones-table-label"
+        data-testid="variant"
+        data-block="zones"
+        data-variant="table"
+      >
         <Title as={2} size="base" weight="bold" id="zones-table-label" data-testid="variant-label">
           {ui.blocks.variants.zones.table}
         </Title>
@@ -75,15 +77,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="zones-cards-label"
-      data-testid="variant"
-      data-block="zones"
-      data-variant="cards"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="zones-cards-label"
+        data-testid="variant"
+        data-block="zones"
+        data-variant="cards"
+      >
         <Title as={2} size="base" weight="bold" id="zones-cards-label" data-testid="variant-label">
           {ui.blocks.variants.zones.cards}
         </Title>
@@ -100,15 +102,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="zones-tableMuted-label"
-      data-testid="variant"
-      data-block="zones"
-      data-variant="tableMuted"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="zones-tableMuted-label"
+        data-testid="variant"
+        data-block="zones"
+        data-variant="tableMuted"
+      >
         <Title as={2} size="base" weight="bold" id="zones-tableMuted-label" data-testid="variant-label">
           {ui.blocks.variants.zones.tableMuted}
         </Title>
@@ -125,6 +127,6 @@
           />
         </Box>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

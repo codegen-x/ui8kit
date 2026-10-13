@@ -21,7 +21,7 @@ export type ReviewListProps = {
 </script>
 
 <script setup lang="ts">
-import Block from "../primitives/block/block.vue";
+import Article from "../primitives/article/article.vue";
 import Grid from "../primitives/grid/grid.vue";
 import Group from "../primitives/group/group.vue";
 import Stack from "../primitives/stack/stack.vue";
@@ -54,8 +54,7 @@ const {
     :measure="(((layout as string) === 'list') ? '2xl' : 'default')"
   >
     <Grid :cols="(((layout as string) === 'grid') ? '1-3' : '1')" class="gap-4" data-testid="items">
-      <Block v-for="r in reviews" :key="r.id"
-        tag="article"
+      <Article v-for="r in reviews" :key="r.id"
         :class="cn(
           'flex h-full flex-col gap-4',
           (
@@ -88,7 +87,7 @@ const {
             </Text>
           </Stack>
         </Group>
-      </Block>
+      </Article>
     </Grid>
   </SectionFrame>
 </template>

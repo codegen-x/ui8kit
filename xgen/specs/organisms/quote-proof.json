@@ -24,9 +24,8 @@
   "events": [],
   "view": [
     {
-      "use": "Block",
+      "use": "Figure",
       "props": {
-        "Tag": "figure",
         "Class": {
           "op": "cn",
           "args": [

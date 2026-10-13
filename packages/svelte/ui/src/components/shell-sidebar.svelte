@@ -28,6 +28,7 @@
   import List from "../primitives/list/list.svelte";
   import ListItem from "../primitives/list/list-item.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
+  import Nav from "../primitives/nav/nav.svelte";
   import Text from "../primitives/text/text.svelte";
   import { cn } from "../utils";
 
@@ -57,7 +58,7 @@
         </Text>
       </Group>
     {/if}
-    <Block tag="nav" class="flex-1" aria-label={nav.label}>
+    <Nav class="flex-1" aria-label={nav.label}>
       <List class="m-0 flex list-none flex-col gap-2 p-0" data-testid="items">
         {#each nav.links as l (l.id)}
           <ListItem>
@@ -81,7 +82,7 @@
           </ListItem>
         {/each}
       </List>
-    </Block>
+    </Nav>
     {#if ((mode as string) === "collapsed")}
       <ButtonPlain
         type="button"
@@ -106,7 +107,7 @@
       <Text size="sm" weight="semibold" class="px-4">
         {nav.subTitle}
       </Text>
-      <Block tag="nav" aria-label={nav.subTitle}>
+      <Nav aria-label={nav.subTitle}>
         <List class="m-0 flex list-none flex-col gap-2 p-0">
           {#each nav.sub as s (s.id)}
             <ListItem>
@@ -130,7 +131,7 @@
             </ListItem>
           {/each}
         </List>
-      </Block>
+      </Nav>
     </Box>
   {/if}
 </Block>

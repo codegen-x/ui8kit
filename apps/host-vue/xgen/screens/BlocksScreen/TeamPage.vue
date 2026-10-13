@@ -32,32 +32,34 @@ const members = fromCodex<Member>(membersEntries, MEMBERS_FIELDS);
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.blocks.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
-          {{ ui.blocks.themes.marketing.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="block-title">
-          {{ ui.blocks.names.team }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ ui.blocks.docs.team }}
-        </Text>
-      </Stack>
-      <Block
-        tag="section"
-        aria-labelledby="team-cards4-label"
-        data-testid="variant"
-        data-block="team"
-        data-variant="cards4"
-      >
-        <Stack gap="4" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.blocks.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
+            {{ ui.blocks.themes.marketing.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="block-title">
+            {{ ui.blocks.names.team }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ ui.blocks.docs.team }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="team-cards4-label"
+          data-testid="variant"
+          data-block="team"
+          data-variant="cards4"
+        >
           <Title :as="2" size="base" weight="bold" id="team-cards4-label" data-testid="variant-label">
             {{ ui.blocks.variants.team.cards4 }}
           </Title>
@@ -75,15 +77,15 @@ const members = fromCodex<Member>(membersEntries, MEMBERS_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="team-cards3-label"
-        data-testid="variant"
-        data-block="team"
-        data-variant="cards3"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="team-cards3-label"
+          data-testid="variant"
+          data-block="team"
+          data-variant="cards3"
+        >
           <Title :as="2" size="base" weight="bold" id="team-cards3-label" data-testid="variant-label">
             {{ ui.blocks.variants.team.cards3 }}
           </Title>
@@ -101,15 +103,15 @@ const members = fromCodex<Member>(membersEntries, MEMBERS_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="team-minimal-label"
-        data-testid="variant"
-        data-block="team"
-        data-variant="minimal"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="team-minimal-label"
+          data-testid="variant"
+          data-block="team"
+          data-variant="minimal"
+        >
           <Title :as="2" size="base" weight="bold" id="team-minimal-label" data-testid="variant-label">
             {{ ui.blocks.variants.team.minimal }}
           </Title>
@@ -127,15 +129,15 @@ const members = fromCodex<Member>(membersEntries, MEMBERS_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="team-detailed-label"
-        data-testid="variant"
-        data-block="team"
-        data-variant="detailed"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="team-detailed-label"
+          data-testid="variant"
+          data-block="team"
+          data-variant="detailed"
+        >
           <Title :as="2" size="base" weight="bold" id="team-detailed-label" data-testid="variant-label">
             {{ ui.blocks.variants.team.detailed }}
           </Title>
@@ -153,15 +155,15 @@ const members = fromCodex<Member>(membersEntries, MEMBERS_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="team-list-label"
-        data-testid="variant"
-        data-block="team"
-        data-variant="list"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="team-list-label"
+          data-testid="variant"
+          data-block="team"
+          data-variant="list"
+        >
           <Title :as="2" size="base" weight="bold" id="team-list-label" data-testid="variant-label">
             {{ ui.blocks.variants.team.list }}
           </Title>
@@ -179,15 +181,15 @@ const members = fromCodex<Member>(membersEntries, MEMBERS_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="team-directory-label"
-        data-testid="variant"
-        data-block="team"
-        data-variant="directory"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="team-directory-label"
+          data-testid="variant"
+          data-block="team"
+          data-variant="directory"
+        >
           <Title :as="2" size="base" weight="bold" id="team-directory-label" data-testid="variant-label">
             {{ ui.blocks.variants.team.directory }}
           </Title>
@@ -205,7 +207,7 @@ const members = fromCodex<Member>(membersEntries, MEMBERS_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

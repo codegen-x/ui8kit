@@ -34,31 +34,33 @@ const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS);
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.catalog.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-          {{ ui.catalog.sections.content.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="category-title">
-          {{ ui.catalog.categories.contentPostHeader }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ tpl(ui.catalog.count, 1, 4) }}
-        </Text>
-      </Stack>
-      <Block
-        tag="section"
-        aria-labelledby="catalog-postheader-title"
-        data-testid="catalog-block"
-        data-block="postheader"
-      >
-        <Stack gap="6" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.catalog.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+            {{ ui.catalog.sections.content.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="category-title">
+            {{ ui.catalog.categories.contentPostHeader }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ tpl(ui.catalog.count, 1, 4) }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="6"
+          align="stretch"
+          role="group"
+          aria-labelledby="catalog-postheader-title"
+          data-testid="catalog-block"
+          data-block="postheader"
+        >
           <Stack gap="2" align="stretch">
             <Title :as="2" size="2xl" weight="bold" id="catalog-postheader-title">
               {{ ui.blocks.names.postheader }}
@@ -67,108 +69,108 @@ const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS);
               {{ ui.blocks.docs.postheader }}
             </Text>
           </Stack>
-          <Block
-            tag="section"
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="postheader-start-label"
             data-testid="variant"
             data-block="postheader"
             data-variant="start"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="postheader-start-label" data-testid="variant-label">
-                {{ ui.blocks.variants.postheader.start }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <PostHeader
-                  id="postheader-start"
-                  :post="posts.find((i) => i.id === 'post-static-first')!"
-                  :labels="ui.content.labels"
-                  layout="start"
-                  cover="show"
-                  meta="full"
-                  tone="default"
-                  :level="2"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="postheader-start-label" data-testid="variant-label">
+              {{ ui.blocks.variants.postheader.start }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <PostHeader
+                id="postheader-start"
+                :post="posts.find((i) => i.id === 'post-static-first')!"
+                :labels="ui.content.labels"
+                layout="start"
+                cover="show"
+                meta="full"
+                tone="default"
+                :level="2"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="postheader-center-label"
             data-testid="variant"
             data-block="postheader"
             data-variant="center"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="postheader-center-label" data-testid="variant-label">
-                {{ ui.blocks.variants.postheader.center }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <PostHeader
-                  id="postheader-center"
-                  :post="posts.find((i) => i.id === 'post-static-first')!"
-                  :labels="ui.content.labels"
-                  layout="center"
-                  cover="show"
-                  meta="full"
-                  tone="default"
-                  :level="2"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="postheader-center-label" data-testid="variant-label">
+              {{ ui.blocks.variants.postheader.center }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <PostHeader
+                id="postheader-center"
+                :post="posts.find((i) => i.id === 'post-static-first')!"
+                :labels="ui.content.labels"
+                layout="center"
+                cover="show"
+                meta="full"
+                tone="default"
+                :level="2"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="postheader-noCover-label"
             data-testid="variant"
             data-block="postheader"
             data-variant="noCover"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="postheader-noCover-label" data-testid="variant-label">
-                {{ ui.blocks.variants.postheader.noCover }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <PostHeader
-                  id="postheader-noCover"
-                  :post="posts.find((i) => i.id === 'post-static-first')!"
-                  :labels="ui.content.labels"
-                  layout="start"
-                  cover="hide"
-                  meta="full"
-                  tone="default"
-                  :level="2"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="postheader-noCover-label" data-testid="variant-label">
+              {{ ui.blocks.variants.postheader.noCover }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <PostHeader
+                id="postheader-noCover"
+                :post="posts.find((i) => i.id === 'post-static-first')!"
+                :labels="ui.content.labels"
+                layout="start"
+                cover="hide"
+                meta="full"
+                tone="default"
+                :level="2"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="postheader-minimal-label"
             data-testid="variant"
             data-block="postheader"
             data-variant="minimal"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="postheader-minimal-label" data-testid="variant-label">
-                {{ ui.blocks.variants.postheader.minimal }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <PostHeader
-                  id="postheader-minimal"
-                  :post="posts.find((i) => i.id === 'post-static-first')!"
-                  :labels="ui.content.labels"
-                  layout="center"
-                  cover="hide"
-                  meta="short"
-                  tone="muted"
-                  :level="2"
-                />
-              </Box>
-            </Stack>
-          </Block>
+            <Title :as="3" size="base" weight="bold" id="postheader-minimal-label" data-testid="variant-label">
+              {{ ui.blocks.variants.postheader.minimal }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <PostHeader
+                id="postheader-minimal"
+                :post="posts.find((i) => i.id === 'post-static-first')!"
+                :labels="ui.content.labels"
+                layout="center"
+                cover="hide"
+                meta="short"
+                tone="muted"
+                :level="2"
+              />
+            </Box>
+          </Stack>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

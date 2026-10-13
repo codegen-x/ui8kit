@@ -422,10 +422,8 @@
                           ]
                         },
                         {
-                          "use": "Block",
-                          "props": {
-                            "Tag": "nav"
-                          },
+                          "use": "Nav",
+                          "props": {},
                           "attrs": {
                             "aria-label": {
                               "$": "label"

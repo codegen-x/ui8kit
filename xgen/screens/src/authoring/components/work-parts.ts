@@ -19,7 +19,7 @@ export const projectTiles = spec("pattern.project-tiles", "ProjectTiles", "The p
   ],
   view: [use("Box", { props: { Class: cond(eq(ref("layout"), "compact"), "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4", "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3") }, attrs: { "data-testid": "items" } },
     eachAt(ref("projects"), "p", "i", ref("p.id"),
-      use("Block", { props: { Tag: "article", Class: cn("flex flex-col gap-4", cond(ref("over"), "relative", surface("p-4")), cond(and(eq(ref("layout"), "bento"), eq(ref("i"), 0)), "sm:col-span-2 lg:row-span-2", "")) }, attrs: { "data-testid": "item" } },
+      use("Article", { props: { Class: cn("flex flex-col gap-4", cond(ref("over"), "relative", surface("p-4")), cond(and(eq(ref("layout"), "bento"), eq(ref("i"), 0)), "sm:col-span-2 lg:row-span-2", "")) }, attrs: { "data-testid": "item" } },
         use("Box", { props: { Class: cond(ref("over"), "h-full", "relative") } },
           organism("MediaFrame", { alt: ref("p.title"), ratio: cond(eq(ref("layout"), "compact"), "1/1", cond(ref("over"), "3/4", "4/3")), className: cond(ref("over"), "h-full", "") }),
           when(and(ref("p.featured"), ne(ref("layout"), "compact")), [use("Badge", { props: { Variant: "default", Size: "default", Class: "absolute left-4 top-4" }, attrs: { "data-testid": "featured" } }, text(ref("labels.featured")))])),

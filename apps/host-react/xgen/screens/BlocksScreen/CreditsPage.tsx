@@ -31,37 +31,39 @@ const credits = fromCodex<Pack>(creditsEntries, CREDITS_FIELDS);
 
 export function CreditsPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text
-            size="sm"
-            className="font-medium text-muted-foreground"
-            data-testid="block-theme"
-            data-theme-id="marketing"
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text
+              size="sm"
+              className="font-medium text-muted-foreground"
+              data-testid="block-theme"
+              data-theme-id="marketing"
+            >
+              {ui.blocks.themes.marketing.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.credits}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.credits}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="credits-tiles4-label"
+            data-testid="variant"
+            data-block="credits"
+            data-variant="tiles4"
           >
-            {ui.blocks.themes.marketing.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.credits}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.credits}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="credits-tiles4-label"
-          data-testid="variant"
-          data-block="credits"
-          data-variant="tiles4"
-        >
-          <Stack gap="4" align="stretch">
             <Title as={2} size="base" weight="bold" id="credits-tiles4-label" data-testid="variant-label">
               {ui.blocks.variants.credits.tiles4}
             </Title>
@@ -79,15 +81,15 @@ export function CreditsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="credits-tiles2-label"
-          data-testid="variant"
-          data-block="credits"
-          data-variant="tiles2"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="credits-tiles2-label"
+            data-testid="variant"
+            data-block="credits"
+            data-variant="tiles2"
+          >
             <Title as={2} size="base" weight="bold" id="credits-tiles2-label" data-testid="variant-label">
               {ui.blocks.variants.credits.tiles2}
             </Title>
@@ -105,15 +107,15 @@ export function CreditsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="credits-rows-label"
-          data-testid="variant"
-          data-block="credits"
-          data-variant="rows"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="credits-rows-label"
+            data-testid="variant"
+            data-block="credits"
+            data-variant="rows"
+          >
             <Title as={2} size="base" weight="bold" id="credits-rows-label" data-testid="variant-label">
               {ui.blocks.variants.credits.rows}
             </Title>
@@ -131,15 +133,15 @@ export function CreditsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="credits-muted-label"
-          data-testid="variant"
-          data-block="credits"
-          data-variant="muted"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="credits-muted-label"
+            data-testid="variant"
+            data-block="credits"
+            data-variant="muted"
+          >
             <Title as={2} size="base" weight="bold" id="credits-muted-label" data-testid="variant-label">
               {ui.blocks.variants.credits.muted}
             </Title>
@@ -157,8 +159,8 @@ export function CreditsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

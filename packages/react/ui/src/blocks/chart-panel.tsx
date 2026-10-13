@@ -5,6 +5,7 @@
  * (bars, meters), size (default, compact), tone (default, muted).
  */
 import { type ReactNode } from "react";
+import { Block } from "../primitives/block/block";
 import { Container } from "../primitives/container/container";
 import { Stack } from "../primitives/stack/stack";
 import { BarChart } from "../components/bar-chart";
@@ -37,18 +38,24 @@ export function ChartPanel({
   tone = "default",
 }: ChartPanelProps) {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-8" data-slot="container">
-      <Panel title={title} description={text} id={id} className={(((tone as string) === "muted") ? "bg-muted" : "")}>
-        {((chart as string) === "bars") ? (
-          <BarChart bars={series} label={summary} height={(((size as string) === "compact") ? 96 : 176)} />
-        ) : (
-          <Stack gap={(((size as string) === "compact") ? "0" : "2")} align="stretch" data-testid="items">
-            {(series ?? []).map((s) => (
-              <MeterRow key={s.id} label={s.label} value={s.value} caption={tpl(percent, s.value)} />
-            ))}
-          </Stack>
-        )}
-      </Panel>
-    </Container>
+    <Block
+      tag="section"
+      aria-labelledby={((title && id) ? tpl("{0}-t", id) : undefined)}
+      data-testid="panel-section"
+    >
+      <Container className="mx-auto w-full max-w-6xl px-4 py-8" data-slot="container">
+        <Panel title={title} description={text} id={id} className={(((tone as string) === "muted") ? "bg-muted" : "")}>
+          {((chart as string) === "bars") ? (
+            <BarChart bars={series} label={summary} height={(((size as string) === "compact") ? 96 : 176)} />
+          ) : (
+            <Stack gap={(((size as string) === "compact") ? "0" : "2")} align="stretch" data-testid="items">
+              {(series ?? []).map((s) => (
+                <MeterRow key={s.id} label={s.label} value={s.value} caption={tpl(percent, s.value)} />
+              ))}
+            </Stack>
+          )}
+        </Panel>
+      </Container>
+    </Block>
   );
 }

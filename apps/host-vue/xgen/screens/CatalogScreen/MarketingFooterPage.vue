@@ -28,26 +28,33 @@ const SITEMAP_SIGNUP = { title: ui.vibe.sitemap.signupTitle, label: ui.vibe.site
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.catalog.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-          {{ ui.catalog.sections.marketing.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="category-title">
-          {{ ui.catalog.categories.marketingFooter }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ tpl(ui.catalog.count, 2, 9) }}
-        </Text>
-      </Stack>
-      <Block tag="section" aria-labelledby="catalog-footer-title" data-testid="catalog-block" data-block="footer">
-        <Stack gap="6" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.catalog.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+            {{ ui.catalog.sections.marketing.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="category-title">
+            {{ ui.catalog.categories.marketingFooter }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ tpl(ui.catalog.count, 2, 9) }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="6"
+          align="stretch"
+          role="group"
+          aria-labelledby="catalog-footer-title"
+          data-testid="catalog-block"
+          data-block="footer"
+        >
           <Stack gap="2" align="stretch">
             <Title :as="2" size="2xl" weight="bold" id="catalog-footer-title">
               {{ ui.blocks.names.footer }}
@@ -56,58 +63,63 @@ const SITEMAP_SIGNUP = { title: ui.vibe.sitemap.signupTitle, label: ui.vibe.site
               {{ ui.blocks.docs.footer }}
             </Text>
           </Stack>
-          <Block
-            tag="section"
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="footer-minimal-label"
             data-testid="variant"
             data-block="footer"
             data-variant="minimal"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="footer-minimal-label" data-testid="variant-label">
-                {{ ui.blocks.variants.footer.minimal }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <SiteFooter :labels="ui.site.footer" layout="minimal" density="default" />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="footer-minimal-label" data-testid="variant-label">
+              {{ ui.blocks.variants.footer.minimal }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <SiteFooter :labels="ui.site.footer" layout="minimal" density="default" />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="footer-centered-label"
             data-testid="variant"
             data-block="footer"
             data-variant="centered"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="footer-centered-label" data-testid="variant-label">
-                {{ ui.blocks.variants.footer.centered }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <SiteFooter :labels="ui.site.footer" layout="centered" density="default" />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="footer-centered-label" data-testid="variant-label">
+              {{ ui.blocks.variants.footer.centered }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <SiteFooter :labels="ui.site.footer" layout="centered" density="default" />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="footer-compact-label"
             data-testid="variant"
             data-block="footer"
             data-variant="compact"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="footer-compact-label" data-testid="variant-label">
-                {{ ui.blocks.variants.footer.compact }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <SiteFooter :labels="ui.site.footer" layout="minimal" density="compact" />
-              </Box>
-            </Stack>
-          </Block>
+            <Title :as="3" size="base" weight="bold" id="footer-compact-label" data-testid="variant-label">
+              {{ ui.blocks.variants.footer.compact }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <SiteFooter :labels="ui.site.footer" layout="minimal" density="compact" />
+            </Box>
+          </Stack>
         </Stack>
-      </Block>
-      <Block tag="section" aria-labelledby="catalog-sitemap-title" data-testid="catalog-block" data-block="sitemap">
-        <Stack gap="6" align="stretch">
+        <Stack
+          gap="6"
+          align="stretch"
+          role="group"
+          aria-labelledby="catalog-sitemap-title"
+          data-testid="catalog-block"
+          data-block="sitemap"
+        >
           <Stack gap="2" align="stretch">
             <Title :as="2" size="2xl" weight="bold" id="catalog-sitemap-title">
               {{ ui.blocks.names.sitemap }}
@@ -116,170 +128,170 @@ const SITEMAP_SIGNUP = { title: ui.vibe.sitemap.signupTitle, label: ui.vibe.site
               {{ ui.blocks.docs.sitemap }}
             </Text>
           </Stack>
-          <Block
-            tag="section"
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="sitemap-columns-label"
             data-testid="variant"
             data-block="sitemap"
             data-variant="columns"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="sitemap-columns-label" data-testid="variant-label">
-                {{ ui.blocks.variants.sitemap.columns }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <SitemapFooter
-                  id="sitemap-columns"
-                  :label="ui.vibe.sitemap.label"
-                  :brand="ui.site.header.brand"
-                  :tagline="ui.vibe.sitemap.tagline"
-                  :copyright="ui.vibe.sitemap.copyright"
-                  :groups="sitemap"
-                  :signup="{ ...SITEMAP_SIGNUP, mode: 'none' }"
-                  :status="{ label: ui.vibe.sitemap.status, mode: 'none' }"
-                  layout="columns"
-                  density="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="sitemap-columns-label" data-testid="variant-label">
+              {{ ui.blocks.variants.sitemap.columns }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <SitemapFooter
+                id="sitemap-columns"
+                :label="ui.vibe.sitemap.label"
+                :brand="ui.site.header.brand"
+                :tagline="ui.vibe.sitemap.tagline"
+                :copyright="ui.vibe.sitemap.copyright"
+                :groups="sitemap"
+                :signup="{ ...SITEMAP_SIGNUP, mode: 'none' }"
+                :status="{ label: ui.vibe.sitemap.status, mode: 'none' }"
+                layout="columns"
+                density="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="sitemap-card-label"
             data-testid="variant"
             data-block="sitemap"
             data-variant="card"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="sitemap-card-label" data-testid="variant-label">
-                {{ ui.blocks.variants.sitemap.card }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <SitemapFooter
-                  id="sitemap-card"
-                  :label="ui.vibe.sitemap.label"
-                  :brand="ui.site.header.brand"
-                  :tagline="ui.vibe.sitemap.tagline"
-                  :copyright="ui.vibe.sitemap.copyright"
-                  :groups="sitemap"
-                  :signup="{ ...SITEMAP_SIGNUP, mode: 'none' }"
-                  :status="{ label: ui.vibe.sitemap.status, mode: 'none' }"
-                  layout="card"
-                  density="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="sitemap-card-label" data-testid="variant-label">
+              {{ ui.blocks.variants.sitemap.card }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <SitemapFooter
+                id="sitemap-card"
+                :label="ui.vibe.sitemap.label"
+                :brand="ui.site.header.brand"
+                :tagline="ui.vibe.sitemap.tagline"
+                :copyright="ui.vibe.sitemap.copyright"
+                :groups="sitemap"
+                :signup="{ ...SITEMAP_SIGNUP, mode: 'none' }"
+                :status="{ label: ui.vibe.sitemap.status, mode: 'none' }"
+                layout="card"
+                density="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="sitemap-row-label"
             data-testid="variant"
             data-block="sitemap"
             data-variant="row"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="sitemap-row-label" data-testid="variant-label">
-                {{ ui.blocks.variants.sitemap.row }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <SitemapFooter
-                  id="sitemap-row"
-                  :label="ui.vibe.sitemap.label"
-                  :brand="ui.site.header.brand"
-                  :tagline="ui.vibe.sitemap.tagline"
-                  :copyright="ui.vibe.sitemap.copyright"
-                  :groups="sitemap"
-                  :signup="{ ...SITEMAP_SIGNUP, mode: 'none' }"
-                  :status="{ label: ui.vibe.sitemap.status, mode: 'none' }"
-                  layout="row"
-                  density="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="sitemap-row-label" data-testid="variant-label">
+              {{ ui.blocks.variants.sitemap.row }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <SitemapFooter
+                id="sitemap-row"
+                :label="ui.vibe.sitemap.label"
+                :brand="ui.site.header.brand"
+                :tagline="ui.vibe.sitemap.tagline"
+                :copyright="ui.vibe.sitemap.copyright"
+                :groups="sitemap"
+                :signup="{ ...SITEMAP_SIGNUP, mode: 'none' }"
+                :status="{ label: ui.vibe.sitemap.status, mode: 'none' }"
+                layout="row"
+                density="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="sitemap-newsletter-label"
             data-testid="variant"
             data-block="sitemap"
             data-variant="newsletter"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="sitemap-newsletter-label" data-testid="variant-label">
-                {{ ui.blocks.variants.sitemap.newsletter }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <SitemapFooter
-                  id="sitemap-newsletter"
-                  :label="ui.vibe.sitemap.label"
-                  :brand="ui.site.header.brand"
-                  :tagline="ui.vibe.sitemap.tagline"
-                  :copyright="ui.vibe.sitemap.copyright"
-                  :groups="sitemap"
-                  :signup="{ ...SITEMAP_SIGNUP, mode: 'first' }"
-                  :status="{ label: ui.vibe.sitemap.status, mode: 'none' }"
-                  layout="columns"
-                  density="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="sitemap-newsletter-label" data-testid="variant-label">
+              {{ ui.blocks.variants.sitemap.newsletter }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <SitemapFooter
+                id="sitemap-newsletter"
+                :label="ui.vibe.sitemap.label"
+                :brand="ui.site.header.brand"
+                :tagline="ui.vibe.sitemap.tagline"
+                :copyright="ui.vibe.sitemap.copyright"
+                :groups="sitemap"
+                :signup="{ ...SITEMAP_SIGNUP, mode: 'first' }"
+                :status="{ label: ui.vibe.sitemap.status, mode: 'none' }"
+                layout="columns"
+                density="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="sitemap-status-label"
             data-testid="variant"
             data-block="sitemap"
             data-variant="status"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="sitemap-status-label" data-testid="variant-label">
-                {{ ui.blocks.variants.sitemap.status }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <SitemapFooter
-                  id="sitemap-status"
-                  :label="ui.vibe.sitemap.label"
-                  :brand="ui.site.header.brand"
-                  :tagline="ui.vibe.sitemap.tagline"
-                  :copyright="ui.vibe.sitemap.copyright"
-                  :groups="sitemap"
-                  :signup="{ ...SITEMAP_SIGNUP, mode: 'none' }"
-                  :status="{ label: ui.vibe.sitemap.status, mode: 'show' }"
-                  layout="columns"
-                  density="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="sitemap-status-label" data-testid="variant-label">
+              {{ ui.blocks.variants.sitemap.status }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <SitemapFooter
+                id="sitemap-status"
+                :label="ui.vibe.sitemap.label"
+                :brand="ui.site.header.brand"
+                :tagline="ui.vibe.sitemap.tagline"
+                :copyright="ui.vibe.sitemap.copyright"
+                :groups="sitemap"
+                :signup="{ ...SITEMAP_SIGNUP, mode: 'none' }"
+                :status="{ label: ui.vibe.sitemap.status, mode: 'show' }"
+                layout="columns"
+                density="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="sitemap-compact-label"
             data-testid="variant"
             data-block="sitemap"
             data-variant="compact"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="sitemap-compact-label" data-testid="variant-label">
-                {{ ui.blocks.variants.sitemap.compact }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <SitemapFooter
-                  id="sitemap-compact"
-                  :label="ui.vibe.sitemap.label"
-                  :brand="ui.site.header.brand"
-                  :tagline="ui.vibe.sitemap.tagline"
-                  :copyright="ui.vibe.sitemap.copyright"
-                  :groups="sitemap"
-                  :signup="{ ...SITEMAP_SIGNUP, mode: 'none' }"
-                  :status="{ label: ui.vibe.sitemap.status, mode: 'none' }"
-                  layout="columns"
-                  density="compact"
-                />
-              </Box>
-            </Stack>
-          </Block>
+            <Title :as="3" size="base" weight="bold" id="sitemap-compact-label" data-testid="variant-label">
+              {{ ui.blocks.variants.sitemap.compact }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <SitemapFooter
+                id="sitemap-compact"
+                :label="ui.vibe.sitemap.label"
+                :brand="ui.site.header.brand"
+                :tagline="ui.vibe.sitemap.tagline"
+                :copyright="ui.vibe.sitemap.copyright"
+                :groups="sitemap"
+                :signup="{ ...SITEMAP_SIGNUP, mode: 'none' }"
+                :status="{ label: ui.vibe.sitemap.status, mode: 'none' }"
+                layout="columns"
+                density="compact"
+              />
+            </Box>
+          </Stack>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

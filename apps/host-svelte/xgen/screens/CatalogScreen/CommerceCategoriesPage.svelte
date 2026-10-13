@@ -24,31 +24,33 @@
   const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS);
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.catalog.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-        {ui.catalog.sections.commerce.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="category-title">
-        {ui.catalog.categories.commerceCategories}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {tpl(ui.catalog.count, 1, 7)}
-      </Text>
-    </Stack>
-    <Block
-      tag="section"
-      aria-labelledby="catalog-categories-title"
-      data-testid="catalog-block"
-      data-block="categories"
-    >
-      <Stack gap="6" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.catalog.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+          {ui.catalog.sections.commerce.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="category-title">
+          {ui.catalog.categories.commerceCategories}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {tpl(ui.catalog.count, 1, 7)}
+        </Text>
+      </Stack>
+      <Stack
+        gap="6"
+        align="stretch"
+        role="group"
+        aria-labelledby="catalog-categories-title"
+        data-testid="catalog-block"
+        data-block="categories"
+      >
         <Stack gap="2" align="stretch">
           <Title as={2} size="2xl" weight="bold" id="catalog-categories-title">
             {ui.blocks.names.categories}
@@ -57,182 +59,182 @@
             {ui.blocks.docs.categories}
           </Text>
         </Stack>
-        <Block
-          tag="section"
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="categories-chips-label"
           data-testid="variant"
           data-block="categories"
           data-variant="chips"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="categories-chips-label" data-testid="variant-label">
-              {ui.blocks.variants.categories.chips}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <CategoryNav
-                label={ui.commerce.nav.label}
-                categories={categories}
-                current="category-all"
-                tools={ui.commerce.tools}
-                layout="chips"
-                count="show"
-                icon="show"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="categories-chips-label" data-testid="variant-label">
+            {ui.blocks.variants.categories.chips}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <CategoryNav
+              label={ui.commerce.nav.label}
+              categories={categories}
+              current="category-all"
+              tools={ui.commerce.tools}
+              layout="chips"
+              count="show"
+              icon="show"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="categories-bar-label"
           data-testid="variant"
           data-block="categories"
           data-variant="bar"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="categories-bar-label" data-testid="variant-label">
-              {ui.blocks.variants.categories.bar}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <CategoryNav
-                label={ui.commerce.nav.label}
-                categories={categories}
-                current="category-all"
-                tools={ui.commerce.tools}
-                layout="bar"
-                count="show"
-                icon="show"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="categories-bar-label" data-testid="variant-label">
+            {ui.blocks.variants.categories.bar}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <CategoryNav
+              label={ui.commerce.nav.label}
+              categories={categories}
+              current="category-all"
+              tools={ui.commerce.tools}
+              layout="bar"
+              count="show"
+              icon="show"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="categories-sidebar-label"
           data-testid="variant"
           data-block="categories"
           data-variant="sidebar"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="categories-sidebar-label" data-testid="variant-label">
-              {ui.blocks.variants.categories.sidebar}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <CategoryNav
-                label={ui.commerce.nav.label}
-                categories={categories}
-                current="category-all"
-                tools={ui.commerce.tools}
-                layout="sidebar"
-                count="show"
-                icon="show"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="categories-sidebar-label" data-testid="variant-label">
+            {ui.blocks.variants.categories.sidebar}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <CategoryNav
+              label={ui.commerce.nav.label}
+              categories={categories}
+              current="category-all"
+              tools={ui.commerce.tools}
+              layout="sidebar"
+              count="show"
+              icon="show"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="categories-chipsPlain-label"
           data-testid="variant"
           data-block="categories"
           data-variant="chipsPlain"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="categories-chipsPlain-label" data-testid="variant-label">
-              {ui.blocks.variants.categories.chipsPlain}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <CategoryNav
-                label={ui.commerce.nav.label}
-                categories={categories}
-                current="category-all"
-                tools={ui.commerce.tools}
-                layout="chips"
-                count="hide"
-                icon="hide"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="categories-chipsPlain-label" data-testid="variant-label">
+            {ui.blocks.variants.categories.chipsPlain}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <CategoryNav
+              label={ui.commerce.nav.label}
+              categories={categories}
+              current="category-all"
+              tools={ui.commerce.tools}
+              layout="chips"
+              count="hide"
+              icon="hide"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="categories-barCompact-label"
           data-testid="variant"
           data-block="categories"
           data-variant="barCompact"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="categories-barCompact-label" data-testid="variant-label">
-              {ui.blocks.variants.categories.barCompact}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <CategoryNav
-                label={ui.commerce.nav.label}
-                categories={categories}
-                current="category-all"
-                tools={ui.commerce.tools}
-                layout="bar"
-                count="show"
-                icon="hide"
-                density="compact"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="categories-barCompact-label" data-testid="variant-label">
+            {ui.blocks.variants.categories.barCompact}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <CategoryNav
+              label={ui.commerce.nav.label}
+              categories={categories}
+              current="category-all"
+              tools={ui.commerce.tools}
+              layout="bar"
+              count="show"
+              icon="hide"
+              density="compact"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="categories-tiles-label"
           data-testid="variant"
           data-block="categories"
           data-variant="tiles"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="categories-tiles-label" data-testid="variant-label">
-              {ui.blocks.variants.categories.tiles}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <CategoryNav
-                label={ui.commerce.nav.label}
-                categories={categories}
-                current="category-all"
-                tools={ui.commerce.tools}
-                layout="tiles"
-                count="show"
-                icon="show"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="categories-tiles-label" data-testid="variant-label">
+            {ui.blocks.variants.categories.tiles}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <CategoryNav
+              label={ui.commerce.nav.label}
+              categories={categories}
+              current="category-all"
+              tools={ui.commerce.tools}
+              layout="tiles"
+              count="show"
+              icon="show"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="categories-toolbar-label"
           data-testid="variant"
           data-block="categories"
           data-variant="toolbar"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="categories-toolbar-label" data-testid="variant-label">
-              {ui.blocks.variants.categories.toolbar}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <CategoryNav
-                label={ui.commerce.nav.label}
-                categories={categories}
-                current="category-all"
-                tools={ui.commerce.tools}
-                layout="toolbar"
-                count="show"
-                icon="hide"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
+          <Title as={3} size="base" weight="bold" id="categories-toolbar-label" data-testid="variant-label">
+            {ui.blocks.variants.categories.toolbar}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <CategoryNav
+              label={ui.commerce.nav.label}
+              categories={categories}
+              current="category-all"
+              tools={ui.commerce.tools}
+              layout="toolbar"
+              count="show"
+              icon="hide"
+              density="default"
+            />
+          </Box>
+        </Stack>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

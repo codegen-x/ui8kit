@@ -23,9 +23,9 @@ export type ProductCardProps = {
 
 <script setup lang="ts">
 import Badge from "../primitives/badge/badge.vue";
+import Block from "../primitives/block/block.vue";
 import Box from "../primitives/box/box.vue";
 import Button from "../primitives/button/button.vue";
-import Card from "../primitives/card/card.vue";
 import CardContent from "../primitives/card/card-content.vue";
 import Group from "../primitives/group/group.vue";
 import Text from "../primitives/text/text.vue";
@@ -49,12 +49,14 @@ const emit = defineEmits<{ add: [id: string] }>();
 </script>
 
 <template>
-  <Card
-    variant="default"
+  <Block
+    tag="article"
     :class="cn(
+      'flex flex-col gap-8 bg-card p-6 text-card-foreground inset-ring inset-ring-border rounded',
       'h-full gap-4 overflow-hidden',
       (((layout as string) === 'horizontal') ? 'flex flex-col sm:flex-row' : 'flex flex-col')
     )"
+    data-slot="card"
     data-testid="item"
     :data-layout="layout"
   >
@@ -104,5 +106,5 @@ const emit = defineEmits<{ add: [id: string] }>();
         </Button>
       </Group>
     </CardContent>
-  </Card>
+  </Block>
 </template>

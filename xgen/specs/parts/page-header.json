@@ -31,7 +31,7 @@
   "events": [],
   "view": [
     {
-      "use": "Block",
+      "use": "Box",
       "props": {
         "Class": "flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between"
       },

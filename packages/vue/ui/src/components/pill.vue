@@ -10,7 +10,7 @@ export type PillProps = {
 </script>
 
 <script setup lang="ts">
-import Block from "../primitives/block/block.vue";
+import Box from "../primitives/box/box.vue";
 import Inline from "../primitives/inline/inline.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import { at, cn } from "../utils";
@@ -31,7 +31,7 @@ defineSlots<{ default?(): unknown }>();
 </script>
 
 <template>
-  <Block class="contents">
+  <Box class="contents">
     <Inline
       :class="cn(
         'inline-flex h-6 shrink-0 items-center gap-1 rounded-full px-3 text-xs font-medium whitespace-nowrap inset-ring',
@@ -43,5 +43,5 @@ defineSlots<{ default?(): unknown }>();
       <LucideIcon v-if="icon" :name="icon" :size="12" />
       <slot />
     </Inline>
-  </Block>
+  </Box>
 </template>

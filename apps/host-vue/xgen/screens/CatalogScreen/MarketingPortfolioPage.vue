@@ -34,26 +34,33 @@ const projects = fromCodex<Project>(projectsEntries, PROJECTS_FIELDS);
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.catalog.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-          {{ ui.catalog.sections.marketing.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="category-title">
-          {{ ui.catalog.categories.marketingPortfolio }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ tpl(ui.catalog.count, 1, 6) }}
-        </Text>
-      </Stack>
-      <Block tag="section" aria-labelledby="catalog-projects-title" data-testid="catalog-block" data-block="projects">
-        <Stack gap="6" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.catalog.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+            {{ ui.catalog.sections.marketing.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="category-title">
+            {{ ui.catalog.categories.marketingPortfolio }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ tpl(ui.catalog.count, 1, 6) }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="6"
+          align="stretch"
+          role="group"
+          aria-labelledby="catalog-projects-title"
+          data-testid="catalog-block"
+          data-block="projects"
+        >
           <Stack gap="2" align="stretch">
             <Title :as="2" size="2xl" weight="bold" id="catalog-projects-title">
               {{ ui.blocks.names.projects }}
@@ -62,158 +69,158 @@ const projects = fromCodex<Project>(projectsEntries, PROJECTS_FIELDS);
               {{ ui.blocks.docs.projects }}
             </Text>
           </Stack>
-          <Block
-            tag="section"
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="projects-cards-label"
             data-testid="variant"
             data-block="projects"
             data-variant="cards"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="projects-cards-label" data-testid="variant-label">
-                {{ ui.blocks.variants.projects.cards }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <ProjectGrid
-                  id="projects-cards"
-                  :title="ui.company.projects.title"
-                  :lead="ui.company.projects.lead"
-                  :projects="projects"
-                  :labels="ui.company.projects"
-                  layout="cards"
-                  tone="default"
-                  density="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="projects-cards-label" data-testid="variant-label">
+              {{ ui.blocks.variants.projects.cards }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <ProjectGrid
+                id="projects-cards"
+                :title="ui.company.projects.title"
+                :lead="ui.company.projects.lead"
+                :projects="projects"
+                :labels="ui.company.projects"
+                layout="cards"
+                tone="default"
+                density="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="projects-compact-label"
             data-testid="variant"
             data-block="projects"
             data-variant="compact"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="projects-compact-label" data-testid="variant-label">
-                {{ ui.blocks.variants.projects.compact }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <ProjectGrid
-                  id="projects-compact"
-                  :title="ui.company.projects.title"
-                  :lead="ui.company.projects.lead"
-                  :projects="projects"
-                  :labels="ui.company.projects"
-                  layout="compact"
-                  tone="default"
-                  density="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="projects-compact-label" data-testid="variant-label">
+              {{ ui.blocks.variants.projects.compact }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <ProjectGrid
+                id="projects-compact"
+                :title="ui.company.projects.title"
+                :lead="ui.company.projects.lead"
+                :projects="projects"
+                :labels="ui.company.projects"
+                layout="compact"
+                tone="default"
+                density="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="projects-overlay-label"
             data-testid="variant"
             data-block="projects"
             data-variant="overlay"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="projects-overlay-label" data-testid="variant-label">
-                {{ ui.blocks.variants.projects.overlay }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <ProjectGrid
-                  id="projects-overlay"
-                  :title="ui.company.projects.title"
-                  :lead="ui.company.projects.lead"
-                  :projects="projects"
-                  :labels="ui.company.projects"
-                  layout="overlay"
-                  tone="default"
-                  density="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="projects-overlay-label" data-testid="variant-label">
+              {{ ui.blocks.variants.projects.overlay }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <ProjectGrid
+                id="projects-overlay"
+                :title="ui.company.projects.title"
+                :lead="ui.company.projects.lead"
+                :projects="projects"
+                :labels="ui.company.projects"
+                layout="overlay"
+                tone="default"
+                density="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="projects-bento-label"
             data-testid="variant"
             data-block="projects"
             data-variant="bento"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="projects-bento-label" data-testid="variant-label">
-                {{ ui.blocks.variants.projects.bento }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <ProjectGrid
-                  id="projects-bento"
-                  :title="ui.company.projects.title"
-                  :lead="ui.company.projects.lead"
-                  :projects="projects"
-                  :labels="ui.company.projects"
-                  layout="bento"
-                  tone="default"
-                  density="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="projects-bento-label" data-testid="variant-label">
+              {{ ui.blocks.variants.projects.bento }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <ProjectGrid
+                id="projects-bento"
+                :title="ui.company.projects.title"
+                :lead="ui.company.projects.lead"
+                :projects="projects"
+                :labels="ui.company.projects"
+                layout="bento"
+                tone="default"
+                density="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="projects-list-label"
             data-testid="variant"
             data-block="projects"
             data-variant="list"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="projects-list-label" data-testid="variant-label">
-                {{ ui.blocks.variants.projects.list }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <ProjectGrid
-                  id="projects-list"
-                  :title="ui.company.projects.title"
-                  :lead="ui.company.projects.lead"
-                  :projects="projects"
-                  :labels="ui.company.projects"
-                  layout="list"
-                  tone="default"
-                  density="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="projects-list-label" data-testid="variant-label">
+              {{ ui.blocks.variants.projects.list }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <ProjectGrid
+                id="projects-list"
+                :title="ui.company.projects.title"
+                :lead="ui.company.projects.lead"
+                :projects="projects"
+                :labels="ui.company.projects"
+                layout="list"
+                tone="default"
+                density="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="projects-cardsMuted-label"
             data-testid="variant"
             data-block="projects"
             data-variant="cardsMuted"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="projects-cardsMuted-label" data-testid="variant-label">
-                {{ ui.blocks.variants.projects.cardsMuted }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <ProjectGrid
-                  id="projects-cardsMuted"
-                  :title="ui.company.projects.title"
-                  :lead="ui.company.projects.lead"
-                  :projects="projects"
-                  :labels="ui.company.projects"
-                  layout="cards"
-                  tone="muted"
-                  density="compact"
-                />
-              </Box>
-            </Stack>
-          </Block>
+            <Title :as="3" size="base" weight="bold" id="projects-cardsMuted-label" data-testid="variant-label">
+              {{ ui.blocks.variants.projects.cardsMuted }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <ProjectGrid
+                id="projects-cardsMuted"
+                :title="ui.company.projects.title"
+                :lead="ui.company.projects.lead"
+                :projects="projects"
+                :labels="ui.company.projects"
+                layout="cards"
+                tone="muted"
+                density="compact"
+              />
+            </Box>
+          </Stack>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

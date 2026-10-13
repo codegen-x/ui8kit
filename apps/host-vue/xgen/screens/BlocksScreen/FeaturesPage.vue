@@ -24,32 +24,34 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.blocks.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
-          {{ ui.blocks.themes.marketing.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="block-title">
-          {{ ui.blocks.names.features }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ ui.blocks.docs.features }}
-        </Text>
-      </Stack>
-      <Block
-        tag="section"
-        aria-labelledby="features-grid-label"
-        data-testid="variant"
-        data-block="features"
-        data-variant="grid"
-      >
-        <Stack gap="4" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.blocks.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
+            {{ ui.blocks.themes.marketing.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="block-title">
+            {{ ui.blocks.names.features }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ ui.blocks.docs.features }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="features-grid-label"
+          data-testid="variant"
+          data-block="features"
+          data-variant="grid"
+        >
           <Title :as="2" size="base" weight="bold" id="features-grid-label" data-testid="variant-label">
             {{ ui.blocks.variants.features.grid }}
           </Title>
@@ -68,15 +70,15 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="features-grid2-label"
-        data-testid="variant"
-        data-block="features"
-        data-variant="grid2"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="features-grid2-label"
+          data-testid="variant"
+          data-block="features"
+          data-variant="grid2"
+        >
           <Title :as="2" size="base" weight="bold" id="features-grid2-label" data-testid="variant-label">
             {{ ui.blocks.variants.features.grid2 }}
           </Title>
@@ -95,15 +97,15 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="features-tiles4-label"
-        data-testid="variant"
-        data-block="features"
-        data-variant="tiles4"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="features-tiles4-label"
+          data-testid="variant"
+          data-block="features"
+          data-variant="tiles4"
+        >
           <Title :as="2" size="base" weight="bold" id="features-tiles4-label" data-testid="variant-label">
             {{ ui.blocks.variants.features.tiles4 }}
           </Title>
@@ -122,15 +124,15 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="features-cells4-label"
-        data-testid="variant"
-        data-block="features"
-        data-variant="cells4"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="features-cells4-label"
+          data-testid="variant"
+          data-block="features"
+          data-variant="cells4"
+        >
           <Title :as="2" size="base" weight="bold" id="features-cells4-label" data-testid="variant-label">
             {{ ui.blocks.variants.features.cells4 }}
           </Title>
@@ -149,15 +151,15 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="features-rows-label"
-        data-testid="variant"
-        data-block="features"
-        data-variant="rows"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="features-rows-label"
+          data-testid="variant"
+          data-block="features"
+          data-variant="rows"
+        >
           <Title :as="2" size="base" weight="bold" id="features-rows-label" data-testid="variant-label">
             {{ ui.blocks.variants.features.rows }}
           </Title>
@@ -176,15 +178,15 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="features-rowsStart-label"
-        data-testid="variant"
-        data-block="features"
-        data-variant="rowsStart"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="features-rowsStart-label"
+          data-testid="variant"
+          data-block="features"
+          data-variant="rowsStart"
+        >
           <Title :as="2" size="base" weight="bold" id="features-rowsStart-label" data-testid="variant-label">
             {{ ui.blocks.variants.features.rowsStart }}
           </Title>
@@ -203,15 +205,15 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="features-rowsAlternate-label"
-        data-testid="variant"
-        data-block="features"
-        data-variant="rowsAlternate"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="features-rowsAlternate-label"
+          data-testid="variant"
+          data-block="features"
+          data-variant="rowsAlternate"
+        >
           <Title :as="2" size="base" weight="bold" id="features-rowsAlternate-label" data-testid="variant-label">
             {{ ui.blocks.variants.features.rowsAlternate }}
           </Title>
@@ -230,15 +232,15 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="features-tilesMuted-label"
-        data-testid="variant"
-        data-block="features"
-        data-variant="tilesMuted"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="features-tilesMuted-label"
+          data-testid="variant"
+          data-block="features"
+          data-variant="tilesMuted"
+        >
           <Title :as="2" size="base" weight="bold" id="features-tilesMuted-label" data-testid="variant-label">
             {{ ui.blocks.variants.features.tilesMuted }}
           </Title>
@@ -257,7 +259,7 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

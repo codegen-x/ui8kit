@@ -5,7 +5,6 @@
  * for assistive technology: `label` carries the summary, the bar values are in the captions and titles.
  */
 import { type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
 import { Box } from "../primitives/box/box";
 import { Text } from "../primitives/text/text";
 import { cn } from "../utils";
@@ -22,7 +21,7 @@ export type BarChartProps = {
 export function BarChart({ bars, label, max, height = 160, className }: BarChartProps) {
   const top = Math.max(1, (max ?? bars.reduce((m, i) => Math.max(m, i.value), 0)));
   return (
-    <Block className={cn("min-w-0", className)} data-slot="bar-chart">
+    <Box className={cn("min-w-0", className)} data-slot="bar-chart">
       <Box className="flex min-w-0 items-end gap-2" role="img" aria-label={label} style={{ height: `${height}px` }}>
         {(bars ?? []).map((b) => (
           <Box key={b.id} className="flex h-full min-w-0 flex-1 items-end" title={(b.title ?? b.label)}>
@@ -43,6 +42,6 @@ export function BarChart({ bars, label, max, height = 160, className }: BarChart
           </Box>
         ))}
       </Box>
-    </Block>
+    </Box>
   );
 }

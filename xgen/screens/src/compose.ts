@@ -1,8 +1,8 @@
 // Composed screens: a page that is a list of block uses. The expansion turns it into an ordinary page screen
 // (organism nodes with the axes of the variant as literal props), so the emitters, the validators and the drift check see one thing.
-import { call, each, op, ref, text, use, outlet } from "./build";
+import { call, each, op, ref, text, use, outlet, part } from "./build";
 import { type BlockSpec, type BlockUse, type ComposedSpec, type OrganismSpec, type ScreenSpec, type Value, type ViewNode } from "./ir";
-import { blockKey, blockNode, drawnBy, expandUse, galleryOf, hoistShared, TEXT, THEMES, variantSection, type OrganismNode } from "./compose-kit";
+import { blockKey, blockNode, drawnBy, expandUse, galleryOf, hoistShared, labelledGroup, pageSection, skipLink, TEXT, THEMES, variantSection, type OrganismNode } from "./compose-kit";
 export * from "./compose-kit";
 
 function sourcesOfBlocks(used: BlockSpec[], problems: string[], where: string): NonNullable<ScreenSpec["sources"]> {
@@ -31,30 +31,29 @@ function gallery(c: ComposedSpec, blocks: BlockSpec[], org: Record<string, Organ
       key: blockKey(b), href: `#/${blockKey(b)}`, name: TEXT(`blocks.names.${blockKey(b)}`), docs: TEXT(`blocks.docs.${blockKey(b)}`),
     }))),
   })));
-  const index: ViewNode[] = [
+  const index: ViewNode[] = [pageSection(
     use("Container", { props: { Class: `${wide} py-10` } },
       use("Stack", { props: { Gap: "8", Align: "stretch" } },
         use("Stack", { props: { Gap: "4", Align: "stretch" } },
           use("Title", { props: { As: 1, Size: "4xl", Weight: "bold" }, attrs: { "data-testid": "gallery-title" } }, text(TEXT("blocks.title"))),
           use("Text", { props: { Class: "max-w-2xl text-muted-foreground" } }, text(TEXT("blocks.intro")))),
         each(ref("TOPICS"), "topic", ref("topic.id"),
-          use("Block", { props: { Tag: "section" }, attrs: { "aria-labelledby": ref("topic.titleId"), "data-testid": "theme-section", "data-theme-id": ref("topic.id") } },
-            use("Stack", { props: { Gap: "4", Align: "stretch" } },
-              use("Stack", { props: { Gap: "2", Align: "stretch" } },
-                use("Title", { props: { As: 2, Size: "2xl", Weight: "bold" }, attrs: { id: ref("topic.titleId") } }, text(ref("topic.title"))),
-                use("Text", { props: { Size: "sm", Class: "max-w-2xl text-muted-foreground" } }, text(ref("topic.text")))),
-              use("List", { props: { Tag: "ul", Class: "grid gap-4 sm:grid-cols-2 lg:grid-cols-3" }, attrs: { "data-testid": "block-list" } },
-                each(ref("topic.blocks"), "block", ref("block.key"),
-                  use("ListItem", { props: { Class: "flex flex-col gap-1 rounded-xl p-4 inset-ring inset-ring-border" } },
-                    use("Link", { props: { Href: ref("block.href"), Variant: "default", Class: "font-bold" }, attrs: { "data-testid": "block-link", "data-block": ref("block.key"), "data-theme-id": ref("topic.id") } }, text(ref("block.name"))),
-                    use("Text", { props: { Size: "sm", Class: "text-muted-foreground" } }, text(ref("block.docs"))))))))))),
-  ];
+          labelledGroup("4", ref("topic.titleId"), { "data-testid": "theme-section", "data-theme-id": ref("topic.id") },
+            use("Stack", { props: { Gap: "2", Align: "stretch" } },
+              use("Title", { props: { As: 2, Size: "2xl", Weight: "bold" }, attrs: { id: ref("topic.titleId") } }, text(ref("topic.title"))),
+              use("Text", { props: { Size: "sm", Class: "max-w-2xl text-muted-foreground" } }, text(ref("topic.text")))),
+            use("List", { props: { Tag: "ul", Class: "grid gap-4 sm:grid-cols-2 lg:grid-cols-3" }, attrs: { "data-testid": "block-list" } },
+              each(ref("topic.blocks"), "block", ref("block.key"),
+                use("ListItem", { props: { Class: "flex flex-col gap-1 rounded-xl p-4 inset-ring inset-ring-border" } },
+                  use("Link", { props: { Href: ref("block.href"), Variant: "default", Class: "font-bold" }, attrs: { "data-testid": "block-link", "data-block": ref("block.key"), "data-theme-id": ref("topic.id") } }, text(ref("block.name"))),
+                  use("Text", { props: { Size: "sm", Class: "text-muted-foreground" } }, text(ref("block.docs")))))))))),
+  )];
   const areas: Record<string, ViewNode[]> = { index };
   const consts: Record<string, Value> = { TOPICS: topics };
   for (const b of list) {
     const key = blockKey(b);
     const drawn: OrganismNode[] = [];
-    areas[key] = [
+    areas[key] = [pageSection(
       use("Container", { props: { Class: `${wide} py-10` } },
         use("Stack", { props: { Gap: "8", Align: "stretch" } },
           use("Group", {}, use("Link", { props: { Href: "#/", Variant: "default" }, attrs: { "data-testid": "back" } }, text(TEXT("blocks.back")))),
@@ -63,15 +62,15 @@ function gallery(c: ComposedSpec, blocks: BlockSpec[], org: Record<string, Organ
             use("Title", { props: { As: 1, Size: "4xl", Weight: "bold" }, attrs: { "data-testid": "block-title" } }, text(TEXT(`blocks.names.${key}`))),
             use("Text", { props: { Class: "max-w-2xl text-muted-foreground" } }, text(TEXT(`blocks.docs.${key}`)))),
           ...b.variants.map((v) => variantSection(b, v, org, drawn, 2)))),
-    ];
+    )];
     hoistShared(b, drawn, consts);
   }
-  areas["notfound"] = [
+  areas["notfound"] = [pageSection(
     use("Container", { props: { Class: `${wide} py-10` } },
       use("Stack", { props: { Gap: "4", Align: "stretch" } },
         use("Title", { props: { As: 1, Size: "4xl", Weight: "bold" } }, text(TEXT("site.notFound.title"))),
         use("Group", {}, use("Button", { props: { Variant: "default", Size: "default", Href: "#/" } }, text(TEXT("blocks.back")))))),
-  ];
+  )];
   void c;
   return { areas, routes, consts };
 }
@@ -101,11 +100,11 @@ export function expandComposed(c: ComposedSpec, blocks: BlockSpec[], organisms: 
     const g = gallery(c, blocks, organisms);
     areas = g.areas; routes = g.routes; consts = g.consts; blocks.forEach((b) => used.add(b));
     chrome = [
-      use("LinkPlain", { props: { Href: "#main-content", Class: "sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded-md focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:shadow" }, attrs: { "data-testid": "skip-link" } }, text(TEXT("site.header.skip"))),
       use("Block", { props: { Tag: "header", Class: "border-b border-border" } },
-        use("Container", { props: { Class: `${wide} flex items-center justify-between gap-4 py-3` } },
+        skipLink("sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded-md focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:shadow"),
+        use("Container", { props: { Class: `${wide} flex flex-wrap items-center justify-between gap-4 py-3` } },
           use("Link", { props: { Href: "#/", Variant: "default", Class: "text-lg font-bold" }, attrs: { "data-testid": "brand" } }, text(TEXT("blocks.title"))),
-          use("Group", { props: { Gap: "4", Align: "center" } },
+          use("Group", { props: { Gap: "4", Align: "center", Class: "flex-wrap" } },
             use("Link", { props: { Href: "/catalog/", Variant: "default", Class: "text-sm font-medium" }, attrs: { "data-testid": "catalog-link" } }, text(TEXT("catalog.title"))),
             use("Link", { props: { Href: "/skins/", Variant: "default", Class: "text-sm font-medium" }, attrs: { "data-testid": "skins-link" } }, text(TEXT("skins.title"))),
             use("Link", { props: { Href: "/discovery/", Variant: "default", Class: "text-sm font-medium" }, attrs: { "data-testid": "discovery-link" } }, text(TEXT("discovery.title"))),
@@ -129,17 +128,20 @@ export function expandComposed(c: ComposedSpec, blocks: BlockSpec[], organisms: 
     for (const r of c.routes) if (!(r.area in c.areas)) problems.push(`${where}: route ${r.path} points to the missing area ${r.area}`);
   }
   const main = use("Block", { props: { Tag: "main", ID: "main-content" }, attrs: { tabindex: -1, "data-testid": "main" } }, outlet());
-  const layout = chrome ? [...chrome.slice(0, 2), main] : [...before, main, ...after];
+  // a frame chrome (the header of the gallery, the catalog, the Skins screen) is a part: its own file opening on its Block, so the
+  // screen file opens on that part and holds one Block, the main (rule 01)
+  const parts: Record<string, ViewNode[]> | undefined = chrome ? { ScreenHeader: chrome } : undefined;
+  const layout = chrome ? [part("ScreenHeader"), main] : [...before, main, ...after];
   const orgNames = new Set<string>();
   const scan = (n: unknown): void => { if (Array.isArray(n)) n.forEach(scan); else if (n && typeof n === "object") { const o = n as Record<string, unknown>; if (typeof o["organism"] === "string") orgNames.add(o["organism"]); Object.values(o).forEach(scan); } };
-  scan(layout); scan(areas);
+  scan(layout); scan(parts ?? {}); scan(areas);
   // a source is read only when a node refers to it: a block whose data the use replaced (the menu of a theme app) does not pull its fixture in
-  const roots = new Set([...JSON.stringify([layout, areas, consts ?? {}]).matchAll(/"\$":"([A-Za-z0-9_]+)/g)].map((m) => m[1]!));
+  const roots = new Set([...JSON.stringify([layout, parts ?? {}, areas, consts ?? {}]).matchAll(/"\$":"([A-Za-z0-9_]+)/g)].map((m) => m[1]!));
   const sources = sourcesOfBlocks([...used], problems, where).filter((x) => roots.has(x.as));
   const screen: ScreenSpec = {
     specVersion: 1, id: c.id, name: c.name, docs: c.docs, kind: "page", sources,
-    routes, ...(c.nav ? { nav: true } : {}), ...(c.menu ? { menu: c.menu } : {}), organisms: [...orgNames].sort(), layout, areas,
-    ...(c.gallery || c.catalog || c.chunks ? { chunks: true } : {}), ...(consts ? { consts } : {}), portable: c.portable,
+    routes, ...(c.nav ? { nav: true } : {}), ...(c.menu ? { menu: c.menu } : {}), organisms: [...orgNames].sort(), layout, ...(parts ? { parts } : {}), areas,
+    ...(c.gallery || c.catalog || c.skins || c.chunks ? { chunks: true } : {}), ...(consts ? { consts } : {}), portable: c.portable,
   };
   return { screen, problems };
 }

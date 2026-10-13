@@ -48,37 +48,39 @@ const FAQSPLIT_LABELS = {
 
 export function FaqsplitPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text
-            size="sm"
-            className="font-medium text-muted-foreground"
-            data-testid="block-theme"
-            data-theme-id="marketing"
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text
+              size="sm"
+              className="font-medium text-muted-foreground"
+              data-testid="block-theme"
+              data-theme-id="marketing"
+            >
+              {ui.blocks.themes.marketing.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.faqsplit}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.faqsplit}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="faqsplit-headSplit-label"
+            data-testid="variant"
+            data-block="faqsplit"
+            data-variant="headSplit"
           >
-            {ui.blocks.themes.marketing.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.faqsplit}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.faqsplit}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="faqsplit-headSplit-label"
-          data-testid="variant"
-          data-block="faqsplit"
-          data-variant="headSplit"
-        >
-          <Stack gap="4" align="stretch">
             <Title as={2} size="base" weight="bold" id="faqsplit-headSplit-label" data-testid="variant-label">
               {ui.blocks.variants.faqsplit.headSplit}
             </Title>
@@ -99,15 +101,15 @@ export function FaqsplitPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="faqsplit-helpCard-label"
-          data-testid="variant"
-          data-block="faqsplit"
-          data-variant="helpCard"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="faqsplit-helpCard-label"
+            data-testid="variant"
+            data-block="faqsplit"
+            data-variant="helpCard"
+          >
             <Title as={2} size="base" weight="bold" id="faqsplit-helpCard-label" data-testid="variant-label">
               {ui.blocks.variants.faqsplit.helpCard}
             </Title>
@@ -128,15 +130,15 @@ export function FaqsplitPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="faqsplit-picture-label"
-          data-testid="variant"
-          data-block="faqsplit"
-          data-variant="picture"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="faqsplit-picture-label"
+            data-testid="variant"
+            data-block="faqsplit"
+            data-variant="picture"
+          >
             <Title as={2} size="base" weight="bold" id="faqsplit-picture-label" data-testid="variant-label">
               {ui.blocks.variants.faqsplit.picture}
             </Title>
@@ -157,15 +159,15 @@ export function FaqsplitPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="faqsplit-finder-label"
-          data-testid="variant"
-          data-block="faqsplit"
-          data-variant="finder"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="faqsplit-finder-label"
+            data-testid="variant"
+            data-block="faqsplit"
+            data-variant="finder"
+          >
             <Title as={2} size="base" weight="bold" id="faqsplit-finder-label" data-testid="variant-label">
               {ui.blocks.variants.faqsplit.finder}
             </Title>
@@ -186,15 +188,15 @@ export function FaqsplitPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="faqsplit-cards3-label"
-          data-testid="variant"
-          data-block="faqsplit"
-          data-variant="cards3"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="faqsplit-cards3-label"
+            data-testid="variant"
+            data-block="faqsplit"
+            data-variant="cards3"
+          >
             <Title as={2} size="base" weight="bold" id="faqsplit-cards3-label" data-testid="variant-label">
               {ui.blocks.variants.faqsplit.cards3}
             </Title>
@@ -215,15 +217,15 @@ export function FaqsplitPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="faqsplit-cards4-label"
-          data-testid="variant"
-          data-block="faqsplit"
-          data-variant="cards4"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="faqsplit-cards4-label"
+            data-testid="variant"
+            data-block="faqsplit"
+            data-variant="cards4"
+          >
             <Title as={2} size="base" weight="bold" id="faqsplit-cards4-label" data-testid="variant-label">
               {ui.blocks.variants.faqsplit.cards4}
             </Title>
@@ -244,15 +246,15 @@ export function FaqsplitPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="faqsplit-cardsIcons-label"
-          data-testid="variant"
-          data-block="faqsplit"
-          data-variant="cardsIcons"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="faqsplit-cardsIcons-label"
+            data-testid="variant"
+            data-block="faqsplit"
+            data-variant="cardsIcons"
+          >
             <Title as={2} size="base" weight="bold" id="faqsplit-cardsIcons-label" data-testid="variant-label">
               {ui.blocks.variants.faqsplit.cardsIcons}
             </Title>
@@ -273,8 +275,8 @@ export function FaqsplitPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

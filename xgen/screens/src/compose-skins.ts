@@ -6,7 +6,7 @@
 // clicks, keeps the choice in localStorage for every screen and reload, and marks the current tile with aria-pressed.
 import { call, each, op, ref, text, use } from "./build";
 import type { ScreenSpec, SkinsBoard, Value, ViewNode } from "./ir";
-import { dictKey, TEXT } from "./compose-kit";
+import { dictKey, labelledGroup, pageSection, skipLink, TEXT } from "./compose-kit";
 import { wide } from "./authoring/components/frames";
 
 /** a tile: a plain button with an edge; the pressed one (the current choice) gets a thicker edge in the primary colour */
@@ -48,14 +48,13 @@ const radiusTile = use("ListItem", { props: { Class: "flex" } },
 
 /** one row of tiles: a heading with a note and a button back to the skin's own choice, then the grid */
 const row = (id: "skins" | "fonts" | "radius", grid: string, body: ViewNode): ViewNode =>
-  use("Block", { props: { Tag: "section" }, attrs: { "aria-labelledby": `skins-${id}-title`, "data-testid": "skins-row", "data-row": id } },
-    use("Stack", { props: { Gap: "4", Align: "stretch" } },
-      use("Box", { props: { Class: "flex flex-wrap items-end justify-between gap-4" } },
-        use("Stack", { props: { Gap: "2", Align: "stretch" } },
-          use("Title", { props: { As: 2, Size: "2xl", Weight: "bold" }, attrs: { id: `skins-${id}-title` } }, text(TEXT(`skins.${id}.title`))),
-          use("Text", { props: { Size: "sm", Class: "max-w-2xl text-muted-foreground" } }, text(TEXT(`skins.${id}.text`)))),
-        use("Button", { props: { Variant: "outline", Size: "sm" }, attrs: { "data-look-reset": id === "skins" ? "skin" : id === "fonts" ? "font" : "radius", "data-testid": `reset-${id}` } }, text(TEXT(`skins.${id}.reset`)))),
-      use("List", { props: { Tag: "ul", Class: `grid gap-4 ${grid}` }, attrs: { "data-testid": `${id}-list` } }, body)));
+  labelledGroup("4", `skins-${id}-title`, { "data-testid": "skins-row", "data-row": id },
+    use("Box", { props: { Class: "flex flex-wrap items-end justify-between gap-4" } },
+      use("Stack", { props: { Gap: "2", Align: "stretch" } },
+        use("Title", { props: { As: 2, Size: "2xl", Weight: "bold" }, attrs: { id: `skins-${id}-title` } }, text(TEXT(`skins.${id}.title`))),
+        use("Text", { props: { Size: "sm", Class: "max-w-2xl text-muted-foreground" } }, text(TEXT(`skins.${id}.text`)))),
+      use("Button", { props: { Variant: "outline", Size: "sm" }, attrs: { "data-look-reset": id === "skins" ? "skin" : id === "fonts" ? "font" : "radius", "data-testid": `reset-${id}` } }, text(TEXT(`skins.${id}.reset`)))),
+    use("List", { props: { Tag: "ul", Class: `grid gap-4 ${grid}` }, attrs: { "data-testid": `${id}-list` } }, body));
 
 export function skinsBoard(board: SkinsBoard, problems: string[], where: string): { areas: Record<string, ViewNode[]>; routes: ScreenSpec["routes"]; consts: Record<string, Value> } {
   if (board.skins[0] !== "default") problems.push(`${where}: the first skin tile is "default"`);
@@ -64,30 +63,30 @@ export function skinsBoard(board: SkinsBoard, problems: string[], where: string)
     FONTS: op("list", ...board.fonts.map((f) => ({ id: f.id, family: f.family, name: TEXT(`skins.fonts.names.${dictKey(f.id)}`) }))),
     RADII: op("list", ...board.radii.map((r) => ({ id: r.id, value: r.value, name: TEXT(`skins.radius.names.${dictKey(r.id)}`) }))),
   };
-  const index = use("Container", { props: { Class: `${wide} py-10` } },
+  const index = pageSection(use("Container", { props: { Class: `${wide} py-10` } },
     use("Stack", { props: { Gap: "8", Align: "stretch" } },
       use("Stack", { props: { Gap: "2", Align: "stretch" } },
         use("Title", { props: { As: 1, Size: "4xl", Weight: "bold" }, attrs: { "data-testid": "skins-title" } }, text(TEXT("skins.title"))),
         use("Text", { props: { Class: "max-w-2xl text-muted-foreground" } }, text(TEXT("skins.intro")))),
       row("skins", "sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5", each(ref("SKINS"), "s", ref("s.id"), skinTile)),
       row("fonts", "sm:grid-cols-2 lg:grid-cols-5", each(ref("FONTS"), "f", ref("f.id"), fontTile)),
-      row("radius", "grid-cols-2 sm:grid-cols-5", each(ref("RADII"), "r", ref("r.id"), radiusTile))));
-  const notfound = use("Container", { props: { Class: `${wide} py-10` } },
+      row("radius", "grid-cols-2 sm:grid-cols-5", each(ref("RADII"), "r", ref("r.id"), radiusTile)))));
+  const notfound = pageSection(use("Container", { props: { Class: `${wide} py-10` } },
     use("Stack", { props: { Gap: "4", Align: "stretch" } },
       use("Title", { props: { As: 1, Size: "4xl", Weight: "bold" } }, text(TEXT("site.notFound.title"))),
-      use("Group", {}, use("Button", { props: { Variant: "default", Size: "default", Href: "#/" } }, text(TEXT("skins.back"))))));
+      use("Group", {}, use("Button", { props: { Variant: "default", Size: "default", Href: "#/" } }, text(TEXT("skins.back")))))));
   return { areas: { index: [index], notfound: [notfound] }, routes: [{ path: "", area: "index" }], consts };
 }
 
-/** the bar above the Skins screen: the skip link, the brand, links to the catalog and the block gallery, and the theme button */
+/** the header part of the Skins screen: the skip link, the brand, links to the catalog and the block gallery, and the theme button */
 export function skinsChrome(): ViewNode[] {
   const link = (href: string, key: string, testid: string): ViewNode => use("Link", { props: { Href: href, Variant: "default", Class: "text-sm font-medium" }, attrs: { "data-testid": testid } }, text(TEXT(key)));
   return [
-    use("LinkPlain", { props: { Href: "#main-content", Class: "sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:shadow" }, attrs: { "data-testid": "skip-link" } }, text(TEXT("site.header.skip"))),
     use("Block", { props: { Tag: "header", Class: "border-b border-border" } },
+      skipLink("sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:shadow"),
       use("Container", { props: { Class: `${wide} flex flex-wrap items-center justify-between gap-4 py-3` } },
         use("Link", { props: { Href: "#/", Variant: "default", Class: "text-lg font-bold" }, attrs: { "data-testid": "brand" } }, text(TEXT("skins.title"))),
-        use("Block", { props: { Tag: "nav", Class: "flex flex-wrap items-center gap-4" }, attrs: { "aria-label": TEXT("skins.navLabel") } },
+        use("Nav", { props: { Class: "flex flex-wrap items-center gap-4" }, attrs: { "aria-label": TEXT("skins.navLabel") } },
           link("/catalog/", "catalog.title", "catalog-link"), link("/blocks/", "blocks.title", "gallery-link"),
           use("Button", { props: { Variant: "outline", Size: "sm" }, on: { click: call("actions.toggleTheme") }, attrs: { "data-testid": "theme-toggle" } }, text(TEXT("theme.toggle")))))),
   ];

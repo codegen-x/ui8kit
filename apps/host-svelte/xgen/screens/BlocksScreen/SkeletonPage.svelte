@@ -23,32 +23,34 @@
   const placeholders = fromCodex<Line>(placeholdersEntries, PLACEHOLDERS_FIELDS);
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.blocks.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="dashboard">
-        {ui.blocks.themes.dashboard.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-        {ui.blocks.names.skeleton}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {ui.blocks.docs.skeleton}
-      </Text>
-    </Stack>
-    <Block
-      tag="section"
-      aria-labelledby="skeleton-cards-label"
-      data-testid="variant"
-      data-block="skeleton"
-      data-variant="cards"
-    >
-      <Stack gap="4" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.blocks.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="dashboard">
+          {ui.blocks.themes.dashboard.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+          {ui.blocks.names.skeleton}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {ui.blocks.docs.skeleton}
+        </Text>
+      </Stack>
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="skeleton-cards-label"
+        data-testid="variant"
+        data-block="skeleton"
+        data-variant="cards"
+      >
         <Title as={2} size="base" weight="bold" id="skeleton-cards-label" data-testid="variant-label">
           {ui.blocks.variants.skeleton.cards}
         </Title>
@@ -63,15 +65,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="skeleton-list-label"
-      data-testid="variant"
-      data-block="skeleton"
-      data-variant="list"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="skeleton-list-label"
+        data-testid="variant"
+        data-block="skeleton"
+        data-variant="list"
+      >
         <Title as={2} size="base" weight="bold" id="skeleton-list-label" data-testid="variant-label">
           {ui.blocks.variants.skeleton.list}
         </Title>
@@ -86,15 +88,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="skeleton-article-label"
-      data-testid="variant"
-      data-block="skeleton"
-      data-variant="article"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="skeleton-article-label"
+        data-testid="variant"
+        data-block="skeleton"
+        data-variant="article"
+      >
         <Title as={2} size="base" weight="bold" id="skeleton-article-label" data-testid="variant-label">
           {ui.blocks.variants.skeleton.article}
         </Title>
@@ -109,15 +111,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="skeleton-muted-label"
-      data-testid="variant"
-      data-block="skeleton"
-      data-variant="muted"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="skeleton-muted-label"
+        data-testid="variant"
+        data-block="skeleton"
+        data-variant="muted"
+      >
         <Title as={2} size="base" weight="bold" id="skeleton-muted-label" data-testid="variant-label">
           {ui.blocks.variants.skeleton.muted}
         </Title>
@@ -132,6 +134,6 @@
           />
         </Box>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

@@ -30,32 +30,34 @@ const milestones = fromCodex<Milestone>(milestonesEntries, MILESTONES_FIELDS);
 
 export function TimelinePage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text size="sm" className="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="content">
-            {ui.blocks.themes.content.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.timeline}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.timeline}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="timeline-split-label"
-          data-testid="variant"
-          data-block="timeline"
-          data-variant="split"
-        >
-          <Stack gap="4" align="stretch">
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text size="sm" className="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="content">
+              {ui.blocks.themes.content.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.timeline}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.timeline}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="timeline-split-label"
+            data-testid="variant"
+            data-block="timeline"
+            data-variant="split"
+          >
             <Title as={2} size="base" weight="bold" id="timeline-split-label" data-testid="variant-label">
               {ui.blocks.variants.timeline.split}
             </Title>
@@ -71,15 +73,15 @@ export function TimelinePage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="timeline-stacked-label"
-          data-testid="variant"
-          data-block="timeline"
-          data-variant="stacked"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="timeline-stacked-label"
+            data-testid="variant"
+            data-block="timeline"
+            data-variant="stacked"
+          >
             <Title as={2} size="base" weight="bold" id="timeline-stacked-label" data-testid="variant-label">
               {ui.blocks.variants.timeline.stacked}
             </Title>
@@ -95,15 +97,15 @@ export function TimelinePage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="timeline-row-label"
-          data-testid="variant"
-          data-block="timeline"
-          data-variant="row"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="timeline-row-label"
+            data-testid="variant"
+            data-block="timeline"
+            data-variant="row"
+          >
             <Title as={2} size="base" weight="bold" id="timeline-row-label" data-testid="variant-label">
               {ui.blocks.variants.timeline.row}
             </Title>
@@ -119,15 +121,15 @@ export function TimelinePage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="timeline-rowMuted-label"
-          data-testid="variant"
-          data-block="timeline"
-          data-variant="rowMuted"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="timeline-rowMuted-label"
+            data-testid="variant"
+            data-block="timeline"
+            data-variant="rowMuted"
+          >
             <Title as={2} size="base" weight="bold" id="timeline-rowMuted-label" data-testid="variant-label">
               {ui.blocks.variants.timeline.rowMuted}
             </Title>
@@ -143,8 +145,8 @@ export function TimelinePage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

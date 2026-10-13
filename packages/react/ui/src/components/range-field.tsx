@@ -5,7 +5,7 @@
  * sliders sit above the inputs. Each control has its own accessible name; every change reports both ends.
  */
 import { type ChangeEvent, type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
+import { Box } from "../primitives/box/box";
 import { Inline } from "../primitives/inline/inline";
 import { Input } from "../primitives/input/input";
 import { Range } from "../primitives/range/range";
@@ -35,7 +35,7 @@ export function RangeField({
   onChange,
 }: RangeFieldProps) {
   return (
-    <Block className={cn("flex flex-col gap-2", className)} data-slot="range-field">
+    <Box className={cn("flex flex-col gap-2", className)} data-slot="range-field">
       {(((type as string) === "number") && (min != null) && (max != null) && (min < max)) ? (
         <>
           <Range
@@ -79,6 +79,6 @@ export function RangeField({
           onChange={(event: ChangeEvent<HTMLInputElement>) => onChange?.(from, event.currentTarget.value)}
         />
       </Inline>
-    </Block>
+    </Box>
   );
 }

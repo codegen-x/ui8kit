@@ -2,7 +2,8 @@
 <!-- Source: xgen/screens/src/authoring/components/parts.ts -->
 <!--
   A titled card (surface bg-card, hairline ring): the content panel of a page. An optional title, description
-  and header actions. Pass `id` to name the section by its title.
+  and header actions. Pass `id` to name the panel by its title. Not a landmark: a labelled group inside the
+  Block of its block (rule 01).
 -->
 <script lang="ts">
 export type PanelProps = {
@@ -14,7 +15,6 @@ export type PanelProps = {
 </script>
 
 <script setup lang="ts">
-import Block from "../primitives/block/block.vue";
 import Box from "../primitives/box/box.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
@@ -25,12 +25,12 @@ defineSlots<{ default?(): unknown, actions?(): unknown }>();
 </script>
 
 <template>
-  <Block
-    tag="section"
+  <Box
     :class="cn(
       'flex min-w-0 flex-col gap-4 rounded bg-card p-6 inset-ring inset-ring-border',
       className
     )"
+    role="group"
     :aria-labelledby="((title && id) ? tpl('{0}-t', id) : undefined)"
   >
     <Box v-if="(title || $slots.actions)" class="flex items-start justify-between gap-4">
@@ -45,5 +45,5 @@ defineSlots<{ default?(): unknown, actions?(): unknown }>();
       <slot name="actions" />
     </Box>
     <slot />
-  </Block>
+  </Box>
 </template>

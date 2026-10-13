@@ -9,32 +9,34 @@
   const USAGE_PRICE = { rate: 0.01, currency: ui.vibe.usage.currency, label: ui.vibe.usage.estimate } as const;
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.blocks.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
-        {ui.blocks.themes.marketing.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-        {ui.blocks.names.usage}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {ui.blocks.docs.usage}
-      </Text>
-    </Stack>
-    <Block
-      tag="section"
-      aria-labelledby="usage-card-label"
-      data-testid="variant"
-      data-block="usage"
-      data-variant="card"
-    >
-      <Stack gap="4" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.blocks.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
+          {ui.blocks.themes.marketing.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+          {ui.blocks.names.usage}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {ui.blocks.docs.usage}
+        </Text>
+      </Stack>
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="usage-card-label"
+        data-testid="variant"
+        data-block="usage"
+        data-variant="card"
+      >
         <Title as={2} size="base" weight="bold" id="usage-card-label" data-testid="variant-label">
           {ui.blocks.variants.usage.card}
         </Title>
@@ -54,15 +56,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="usage-plain-label"
-      data-testid="variant"
-      data-block="usage"
-      data-variant="plain"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="usage-plain-label"
+        data-testid="variant"
+        data-block="usage"
+        data-variant="plain"
+      >
         <Title as={2} size="base" weight="bold" id="usage-plain-label" data-testid="variant-label">
           {ui.blocks.variants.usage.plain}
         </Title>
@@ -82,15 +84,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="usage-noEnds-label"
-      data-testid="variant"
-      data-block="usage"
-      data-variant="noEnds"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="usage-noEnds-label"
+        data-testid="variant"
+        data-block="usage"
+        data-variant="noEnds"
+      >
         <Title as={2} size="base" weight="bold" id="usage-noEnds-label" data-testid="variant-label">
           {ui.blocks.variants.usage.noEnds}
         </Title>
@@ -110,15 +112,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="usage-muted-label"
-      data-testid="variant"
-      data-block="usage"
-      data-variant="muted"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="usage-muted-label"
+        data-testid="variant"
+        data-block="usage"
+        data-variant="muted"
+      >
         <Title as={2} size="base" weight="bold" id="usage-muted-label" data-testid="variant-label">
           {ui.blocks.variants.usage.muted}
         </Title>
@@ -138,6 +140,6 @@
           />
         </Box>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

@@ -6,7 +6,7 @@
  * (horizontal, activate).
  */
 import { type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
+import { Box } from "../primitives/box/box";
 import { cn, variants } from "../utils";
 
 /** Switcher: the classes of each value (shadcn/cva style). */
@@ -36,13 +36,13 @@ export type SwitcherProps = {
 
 export function Switcher({ size = "default", layout = "text", label, className, children }: SwitcherProps) {
   return (
-    <Block
+    <Box
       className={cn(switcherVariants({ size: size, layout: layout }), className)}
       role="tablist"
       aria-label={label}
       data-slot="switcher"
     >
       {children}
-    </Block>
+    </Box>
   );
 }

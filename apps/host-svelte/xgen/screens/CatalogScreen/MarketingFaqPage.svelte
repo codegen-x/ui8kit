@@ -54,26 +54,33 @@
   } as const;
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.catalog.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-        {ui.catalog.sections.marketing.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="category-title">
-        {ui.catalog.categories.marketingFaq}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {tpl(ui.catalog.count, 2, 14)}
-      </Text>
-    </Stack>
-    <Block tag="section" aria-labelledby="catalog-faq-title" data-testid="catalog-block" data-block="faq">
-      <Stack gap="6" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.catalog.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+          {ui.catalog.sections.marketing.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="category-title">
+          {ui.catalog.categories.marketingFaq}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {tpl(ui.catalog.count, 2, 14)}
+        </Text>
+      </Stack>
+      <Stack
+        gap="6"
+        align="stretch"
+        role="group"
+        aria-labelledby="catalog-faq-title"
+        data-testid="catalog-block"
+        data-block="faq"
+      >
         <Stack gap="2" align="stretch">
           <Title as={2} size="2xl" weight="bold" id="catalog-faq-title">
             {ui.blocks.names.faq}
@@ -82,192 +89,197 @@
             {ui.blocks.docs.faq}
           </Text>
         </Stack>
-        <Block
-          tag="section"
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="faq-list-label"
           data-testid="variant"
           data-block="faq"
           data-variant="list"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="faq-list-label" data-testid="variant-label">
-              {ui.blocks.variants.faq.list}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <FaqList
-                id="faq-list"
-                title={ui.site.pricing.faqTitle}
-                items={faq}
-                search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
-                filter={{ ...FAQ_FILTER, mode: "none" }}
-                layout="accordion"
-                cols="1"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="faq-list-label" data-testid="variant-label">
+            {ui.blocks.variants.faq.list}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <FaqList
+              id="faq-list"
+              title={ui.site.pricing.faqTitle}
+              items={faq}
+              search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
+              filter={{ ...FAQ_FILTER, mode: "none" }}
+              layout="accordion"
+              cols="1"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="faq-chat-label"
           data-testid="variant"
           data-block="faq"
           data-variant="chat"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="faq-chat-label" data-testid="variant-label">
-              {ui.blocks.variants.faq.chat}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <FaqList
-                id="faq-chat"
-                title={ui.site.pricing.faqTitle}
-                items={faq}
-                search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
-                filter={{ ...FAQ_FILTER, mode: "none" }}
-                layout="chat"
-                cols="1"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="faq-chat-label" data-testid="variant-label">
+            {ui.blocks.variants.faq.chat}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <FaqList
+              id="faq-chat"
+              title={ui.site.pricing.faqTitle}
+              items={faq}
+              search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
+              filter={{ ...FAQ_FILTER, mode: "none" }}
+              layout="chat"
+              cols="1"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="faq-search-label"
           data-testid="variant"
           data-block="faq"
           data-variant="search"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="faq-search-label" data-testid="variant-label">
-              {ui.blocks.variants.faq.search}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <FaqList
-                id="faq-search"
-                title={ui.site.pricing.faqTitle}
-                items={faq}
-                search={{ label: ui.vibe.faq.search, query: "", mode: "field" }}
-                filter={{ ...FAQ_FILTER, mode: "none" }}
-                layout="accordion"
-                cols="1"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="faq-search-label" data-testid="variant-label">
+            {ui.blocks.variants.faq.search}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <FaqList
+              id="faq-search"
+              title={ui.site.pricing.faqTitle}
+              items={faq}
+              search={{ label: ui.vibe.faq.search, query: "", mode: "field" }}
+              filter={{ ...FAQ_FILTER, mode: "none" }}
+              layout="accordion"
+              cols="1"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="faq-tabs-label"
           data-testid="variant"
           data-block="faq"
           data-variant="tabs"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="faq-tabs-label" data-testid="variant-label">
-              {ui.blocks.variants.faq.tabs}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <FaqList
-                id="faq-tabs"
-                title={ui.site.pricing.faqTitle}
-                items={faq}
-                search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
-                filter={{ ...FAQ_FILTER, category: "billing", mode: "categories" }}
-                layout="accordion"
-                cols="1"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="faq-tabs-label" data-testid="variant-label">
+            {ui.blocks.variants.faq.tabs}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <FaqList
+              id="faq-tabs"
+              title={ui.site.pricing.faqTitle}
+              items={faq}
+              search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
+              filter={{ ...FAQ_FILTER, category: "billing", mode: "categories" }}
+              layout="accordion"
+              cols="1"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="faq-twoColumns-label"
           data-testid="variant"
           data-block="faq"
           data-variant="twoColumns"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="faq-twoColumns-label" data-testid="variant-label">
-              {ui.blocks.variants.faq.twoColumns}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <FaqList
-                id="faq-twoColumns"
-                title={ui.site.pricing.faqTitle}
-                items={faq}
-                search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
-                filter={{ ...FAQ_FILTER, mode: "none" }}
-                layout="accordion"
-                cols="2"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="faq-twoColumns-label" data-testid="variant-label">
+            {ui.blocks.variants.faq.twoColumns}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <FaqList
+              id="faq-twoColumns"
+              title={ui.site.pricing.faqTitle}
+              items={faq}
+              search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
+              filter={{ ...FAQ_FILTER, mode: "none" }}
+              layout="accordion"
+              cols="2"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="faq-muted-label"
           data-testid="variant"
           data-block="faq"
           data-variant="muted"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="faq-muted-label" data-testid="variant-label">
-              {ui.blocks.variants.faq.muted}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <FaqList
-                id="faq-muted"
-                title={ui.site.pricing.faqTitle}
-                items={faq}
-                search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
-                filter={{ ...FAQ_FILTER, mode: "none" }}
-                layout="accordion"
-                cols="1"
-                tone="muted"
-                density="compact"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="faq-muted-label" data-testid="variant-label">
+            {ui.blocks.variants.faq.muted}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <FaqList
+              id="faq-muted"
+              title={ui.site.pricing.faqTitle}
+              items={faq}
+              search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
+              filter={{ ...FAQ_FILTER, mode: "none" }}
+              layout="accordion"
+              cols="1"
+              tone="muted"
+              density="compact"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="faq-roomy-label"
           data-testid="variant"
           data-block="faq"
           data-variant="roomy"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="faq-roomy-label" data-testid="variant-label">
-              {ui.blocks.variants.faq.roomy}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <FaqList
-                id="faq-roomy"
-                title={ui.site.pricing.faqTitle}
-                items={faq}
-                search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
-                filter={{ ...FAQ_FILTER, mode: "none" }}
-                layout="accordion"
-                cols="1"
-                tone="default"
-                density="roomy"
-              />
-            </Box>
-          </Stack>
-        </Block>
+          <Title as={3} size="base" weight="bold" id="faq-roomy-label" data-testid="variant-label">
+            {ui.blocks.variants.faq.roomy}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <FaqList
+              id="faq-roomy"
+              title={ui.site.pricing.faqTitle}
+              items={faq}
+              search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
+              filter={{ ...FAQ_FILTER, mode: "none" }}
+              layout="accordion"
+              cols="1"
+              tone="default"
+              density="roomy"
+            />
+          </Box>
+        </Stack>
       </Stack>
-    </Block>
-    <Block tag="section" aria-labelledby="catalog-faqsplit-title" data-testid="catalog-block" data-block="faqsplit">
-      <Stack gap="6" align="stretch">
+      <Stack
+        gap="6"
+        align="stretch"
+        role="group"
+        aria-labelledby="catalog-faqsplit-title"
+        data-testid="catalog-block"
+        data-block="faqsplit"
+      >
         <Stack gap="2" align="stretch">
           <Title as={2} size="2xl" weight="bold" id="catalog-faqsplit-title">
             {ui.blocks.names.faqsplit}
@@ -276,210 +288,210 @@
             {ui.blocks.docs.faqsplit}
           </Text>
         </Stack>
-        <Block
-          tag="section"
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="faqsplit-headSplit-label"
           data-testid="variant"
           data-block="faqsplit"
           data-variant="headSplit"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="faqsplit-headSplit-label" data-testid="variant-label">
-              {ui.blocks.variants.faqsplit.headSplit}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <FaqSplit
-                id="faqsplit-headSplit"
-                title={ui.marketing.faqSplit.title}
-                lead={ui.marketing.faqSplit.lead}
-                badge={ui.marketing.faqSplit.badge}
-                items={questions}
-                channels={channels}
-                topics={faqtabs}
-                labels={FAQSPLIT_LABELS}
-                layout="head"
-                cards="grid3"
-                mediaSide="end"
-                tone="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="faqsplit-headSplit-label" data-testid="variant-label">
+            {ui.blocks.variants.faqsplit.headSplit}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <FaqSplit
+              id="faqsplit-headSplit"
+              title={ui.marketing.faqSplit.title}
+              lead={ui.marketing.faqSplit.lead}
+              badge={ui.marketing.faqSplit.badge}
+              items={questions}
+              channels={channels}
+              topics={faqtabs}
+              labels={FAQSPLIT_LABELS}
+              layout="head"
+              cards="grid3"
+              mediaSide="end"
+              tone="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="faqsplit-helpCard-label"
           data-testid="variant"
           data-block="faqsplit"
           data-variant="helpCard"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="faqsplit-helpCard-label" data-testid="variant-label">
-              {ui.blocks.variants.faqsplit.helpCard}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <FaqSplit
-                id="faqsplit-helpCard"
-                title={ui.marketing.faqSplit.title}
-                lead={ui.marketing.faqSplit.lead}
-                badge={ui.marketing.faqSplit.badge}
-                items={questions}
-                channels={channels}
-                topics={faqtabs}
-                labels={FAQSPLIT_LABELS}
-                layout="aside"
-                cards="grid3"
-                mediaSide="end"
-                tone="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="faqsplit-helpCard-label" data-testid="variant-label">
+            {ui.blocks.variants.faqsplit.helpCard}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <FaqSplit
+              id="faqsplit-helpCard"
+              title={ui.marketing.faqSplit.title}
+              lead={ui.marketing.faqSplit.lead}
+              badge={ui.marketing.faqSplit.badge}
+              items={questions}
+              channels={channels}
+              topics={faqtabs}
+              labels={FAQSPLIT_LABELS}
+              layout="aside"
+              cards="grid3"
+              mediaSide="end"
+              tone="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="faqsplit-picture-label"
           data-testid="variant"
           data-block="faqsplit"
           data-variant="picture"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="faqsplit-picture-label" data-testid="variant-label">
-              {ui.blocks.variants.faqsplit.picture}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <FaqSplit
-                id="faqsplit-picture"
-                title={ui.marketing.faqSplit.title}
-                lead={ui.marketing.faqSplit.lead}
-                badge={ui.marketing.faqSplit.badge}
-                items={questions}
-                channels={channels}
-                topics={faqtabs}
-                labels={FAQSPLIT_LABELS}
-                layout="media"
-                cards="grid3"
-                mediaSide="end"
-                tone="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="faqsplit-picture-label" data-testid="variant-label">
+            {ui.blocks.variants.faqsplit.picture}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <FaqSplit
+              id="faqsplit-picture"
+              title={ui.marketing.faqSplit.title}
+              lead={ui.marketing.faqSplit.lead}
+              badge={ui.marketing.faqSplit.badge}
+              items={questions}
+              channels={channels}
+              topics={faqtabs}
+              labels={FAQSPLIT_LABELS}
+              layout="media"
+              cards="grid3"
+              mediaSide="end"
+              tone="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="faqsplit-finder-label"
           data-testid="variant"
           data-block="faqsplit"
           data-variant="finder"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="faqsplit-finder-label" data-testid="variant-label">
-              {ui.blocks.variants.faqsplit.finder}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <FaqSplit
-                id="faqsplit-finder"
-                title={ui.marketing.faqSplit.title}
-                lead={ui.marketing.faqSplit.lead}
-                badge={ui.marketing.faqSplit.badge}
-                items={questions}
-                channels={channels}
-                topics={faqtabs}
-                labels={FAQSPLIT_LABELS}
-                layout="search"
-                cards="grid3"
-                mediaSide="start"
-                tone="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="faqsplit-finder-label" data-testid="variant-label">
+            {ui.blocks.variants.faqsplit.finder}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <FaqSplit
+              id="faqsplit-finder"
+              title={ui.marketing.faqSplit.title}
+              lead={ui.marketing.faqSplit.lead}
+              badge={ui.marketing.faqSplit.badge}
+              items={questions}
+              channels={channels}
+              topics={faqtabs}
+              labels={FAQSPLIT_LABELS}
+              layout="search"
+              cards="grid3"
+              mediaSide="start"
+              tone="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="faqsplit-cards3-label"
           data-testid="variant"
           data-block="faqsplit"
           data-variant="cards3"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="faqsplit-cards3-label" data-testid="variant-label">
-              {ui.blocks.variants.faqsplit.cards3}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <FaqSplit
-                id="faqsplit-cards3"
-                title={ui.marketing.faqSplit.title}
-                lead={ui.marketing.faqSplit.lead}
-                badge={ui.marketing.faqSplit.badge}
-                items={questions}
-                channels={channels}
-                topics={faqtabs}
-                labels={FAQSPLIT_LABELS}
-                layout="cards"
-                cards="grid3"
-                mediaSide="end"
-                tone="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="faqsplit-cards3-label" data-testid="variant-label">
+            {ui.blocks.variants.faqsplit.cards3}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <FaqSplit
+              id="faqsplit-cards3"
+              title={ui.marketing.faqSplit.title}
+              lead={ui.marketing.faqSplit.lead}
+              badge={ui.marketing.faqSplit.badge}
+              items={questions}
+              channels={channels}
+              topics={faqtabs}
+              labels={FAQSPLIT_LABELS}
+              layout="cards"
+              cards="grid3"
+              mediaSide="end"
+              tone="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="faqsplit-cards4-label"
           data-testid="variant"
           data-block="faqsplit"
           data-variant="cards4"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="faqsplit-cards4-label" data-testid="variant-label">
-              {ui.blocks.variants.faqsplit.cards4}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <FaqSplit
-                id="faqsplit-cards4"
-                title={ui.marketing.faqSplit.title}
-                lead={ui.marketing.faqSplit.lead}
-                badge={ui.marketing.faqSplit.badge}
-                items={questions}
-                channels={channels}
-                topics={faqtabs}
-                labels={FAQSPLIT_LABELS}
-                layout="cards"
-                cards="grid4"
-                mediaSide="end"
-                tone="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="faqsplit-cards4-label" data-testid="variant-label">
+            {ui.blocks.variants.faqsplit.cards4}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <FaqSplit
+              id="faqsplit-cards4"
+              title={ui.marketing.faqSplit.title}
+              lead={ui.marketing.faqSplit.lead}
+              badge={ui.marketing.faqSplit.badge}
+              items={questions}
+              channels={channels}
+              topics={faqtabs}
+              labels={FAQSPLIT_LABELS}
+              layout="cards"
+              cards="grid4"
+              mediaSide="end"
+              tone="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="faqsplit-cardsIcons-label"
           data-testid="variant"
           data-block="faqsplit"
           data-variant="cardsIcons"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="faqsplit-cardsIcons-label" data-testid="variant-label">
-              {ui.blocks.variants.faqsplit.cardsIcons}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <FaqSplit
-                id="faqsplit-cardsIcons"
-                title={ui.marketing.faqSplit.title}
-                lead={ui.marketing.faqSplit.lead}
-                badge={ui.marketing.faqSplit.badge}
-                items={questions}
-                channels={channels}
-                topics={faqtabs}
-                labels={FAQSPLIT_LABELS}
-                layout="cards"
-                cards="icons"
-                mediaSide="end"
-                tone="muted"
-              />
-            </Box>
-          </Stack>
-        </Block>
+          <Title as={3} size="base" weight="bold" id="faqsplit-cardsIcons-label" data-testid="variant-label">
+            {ui.blocks.variants.faqsplit.cardsIcons}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <FaqSplit
+              id="faqsplit-cardsIcons"
+              title={ui.marketing.faqSplit.title}
+              lead={ui.marketing.faqSplit.lead}
+              badge={ui.marketing.faqSplit.badge}
+              items={questions}
+              channels={channels}
+              topics={faqtabs}
+              labels={FAQSPLIT_LABELS}
+              layout="cards"
+              cards="icons"
+              mediaSide="end"
+              tone="muted"
+            />
+          </Box>
+        </Stack>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

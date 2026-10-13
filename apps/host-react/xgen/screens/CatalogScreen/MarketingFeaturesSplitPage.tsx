@@ -37,31 +37,33 @@ const FEATURESPLIT_ACTIONS = {
 
 export function MarketingFeaturesSplitPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.catalog.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text size="sm" className="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-            {ui.catalog.sections.marketing.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="category-title">
-            {ui.catalog.categories.marketingFeaturesSplit}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {tpl(ui.catalog.count, 1, 5)}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="catalog-featuresplit-title"
-          data-testid="catalog-block"
-          data-block="featuresplit"
-        >
-          <Stack gap="6" align="stretch">
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.catalog.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text size="sm" className="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+              {ui.catalog.sections.marketing.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="category-title">
+              {ui.catalog.categories.marketingFeaturesSplit}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {tpl(ui.catalog.count, 1, 5)}
+            </Text>
+          </Stack>
+          <Stack
+            gap="6"
+            align="stretch"
+            role="group"
+            aria-labelledby="catalog-featuresplit-title"
+            data-testid="catalog-block"
+            data-block="featuresplit"
+          >
             <Stack gap="2" align="stretch">
               <Title as={2} size="2xl" weight="bold" id="catalog-featuresplit-title">
                 {ui.blocks.names.featuresplit}
@@ -70,149 +72,149 @@ export function MarketingFeaturesSplitPage() {
                 {ui.blocks.docs.featuresplit}
               </Text>
             </Stack>
-            <Block
-              tag="section"
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="featuresplit-gridStart-label"
               data-testid="variant"
               data-block="featuresplit"
               data-variant="gridStart"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="featuresplit-gridStart-label" data-testid="variant-label">
-                  {ui.blocks.variants.featuresplit.gridStart}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <FeatureSplit
-                    id="featuresplit-gridStart"
-                    title={ui.marketing.featureSplit.title}
-                    lead={ui.marketing.featureSplit.lead}
-                    badge={ui.marketing.featureSplit.badge}
-                    features={features}
-                    stats={stats}
-                    actions={FEATURESPLIT_ACTIONS}
-                    layout="grid"
-                    mediaSide="start"
-                    tone="default"
-                    level={2}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="featuresplit-gridStart-label" data-testid="variant-label">
+                {ui.blocks.variants.featuresplit.gridStart}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <FeatureSplit
+                  id="featuresplit-gridStart"
+                  title={ui.marketing.featureSplit.title}
+                  lead={ui.marketing.featureSplit.lead}
+                  badge={ui.marketing.featureSplit.badge}
+                  features={features}
+                  stats={stats}
+                  actions={FEATURESPLIT_ACTIONS}
+                  layout="grid"
+                  mediaSide="start"
+                  tone="default"
+                  level={2}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="featuresplit-statsStart-label"
               data-testid="variant"
               data-block="featuresplit"
               data-variant="statsStart"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="featuresplit-statsStart-label" data-testid="variant-label">
-                  {ui.blocks.variants.featuresplit.statsStart}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <FeatureSplit
-                    id="featuresplit-statsStart"
-                    title={ui.marketing.featureSplit.title}
-                    lead={ui.marketing.featureSplit.lead}
-                    badge={ui.marketing.featureSplit.badge}
-                    features={features}
-                    stats={stats}
-                    actions={FEATURESPLIT_ACTIONS}
-                    layout="stats"
-                    mediaSide="start"
-                    tone="default"
-                    level={2}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="featuresplit-statsStart-label" data-testid="variant-label">
+                {ui.blocks.variants.featuresplit.statsStart}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <FeatureSplit
+                  id="featuresplit-statsStart"
+                  title={ui.marketing.featureSplit.title}
+                  lead={ui.marketing.featureSplit.lead}
+                  badge={ui.marketing.featureSplit.badge}
+                  features={features}
+                  stats={stats}
+                  actions={FEATURESPLIT_ACTIONS}
+                  layout="stats"
+                  mediaSide="start"
+                  tone="default"
+                  level={2}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="featuresplit-gridMuted-label"
               data-testid="variant"
               data-block="featuresplit"
               data-variant="gridMuted"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="featuresplit-gridMuted-label" data-testid="variant-label">
-                  {ui.blocks.variants.featuresplit.gridMuted}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <FeatureSplit
-                    id="featuresplit-gridMuted"
-                    title={ui.marketing.featureSplit.title}
-                    lead={ui.marketing.featureSplit.lead}
-                    badge={ui.marketing.featureSplit.badge}
-                    features={features}
-                    stats={stats}
-                    actions={FEATURESPLIT_ACTIONS}
-                    layout="grid"
-                    mediaSide="end"
-                    tone="muted"
-                    level={2}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="featuresplit-gridMuted-label" data-testid="variant-label">
+                {ui.blocks.variants.featuresplit.gridMuted}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <FeatureSplit
+                  id="featuresplit-gridMuted"
+                  title={ui.marketing.featureSplit.title}
+                  lead={ui.marketing.featureSplit.lead}
+                  badge={ui.marketing.featureSplit.badge}
+                  features={features}
+                  stats={stats}
+                  actions={FEATURESPLIT_ACTIONS}
+                  layout="grid"
+                  mediaSide="end"
+                  tone="muted"
+                  level={2}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="featuresplit-metricCards-label"
               data-testid="variant"
               data-block="featuresplit"
               data-variant="metricCards"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="featuresplit-metricCards-label" data-testid="variant-label">
-                  {ui.blocks.variants.featuresplit.metricCards}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <FeatureSplit
-                    id="featuresplit-metricCards"
-                    title={ui.marketing.featureSplit.title}
-                    lead={ui.marketing.featureSplit.lead}
-                    badge={ui.marketing.featureSplit.badge}
-                    features={features}
-                    stats={stats}
-                    actions={FEATURESPLIT_ACTIONS}
-                    layout="metrics"
-                    mediaSide="end"
-                    tone="default"
-                    level={2}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="featuresplit-metricCards-label" data-testid="variant-label">
+                {ui.blocks.variants.featuresplit.metricCards}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <FeatureSplit
+                  id="featuresplit-metricCards"
+                  title={ui.marketing.featureSplit.title}
+                  lead={ui.marketing.featureSplit.lead}
+                  badge={ui.marketing.featureSplit.badge}
+                  features={features}
+                  stats={stats}
+                  actions={FEATURESPLIT_ACTIONS}
+                  layout="metrics"
+                  mediaSide="end"
+                  tone="default"
+                  level={2}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="featuresplit-featureCards-label"
               data-testid="variant"
               data-block="featuresplit"
               data-variant="featureCards"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="featuresplit-featureCards-label" data-testid="variant-label">
-                  {ui.blocks.variants.featuresplit.featureCards}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <FeatureSplit
-                    id="featuresplit-featureCards"
-                    title={ui.marketing.featureSplit.title}
-                    lead={ui.marketing.featureSplit.lead}
-                    badge={ui.marketing.featureSplit.badge}
-                    features={features}
-                    stats={stats}
-                    actions={FEATURESPLIT_ACTIONS}
-                    layout="cards"
-                    mediaSide="end"
-                    tone="default"
-                    level={2}
-                  />
-                </Box>
-              </Stack>
-            </Block>
+              <Title as={3} size="base" weight="bold" id="featuresplit-featureCards-label" data-testid="variant-label">
+                {ui.blocks.variants.featuresplit.featureCards}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <FeatureSplit
+                  id="featuresplit-featureCards"
+                  title={ui.marketing.featureSplit.title}
+                  lead={ui.marketing.featureSplit.lead}
+                  badge={ui.marketing.featureSplit.badge}
+                  features={features}
+                  stats={stats}
+                  actions={FEATURESPLIT_ACTIONS}
+                  layout="cards"
+                  mediaSide="end"
+                  tone="default"
+                  level={2}
+                />
+              </Box>
+            </Stack>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

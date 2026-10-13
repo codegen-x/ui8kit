@@ -5,7 +5,7 @@
  * variant picks the padding (recipe).
  */
 import { type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
+import { Box } from "../primitives/box/box";
 import { Inline } from "../primitives/inline/inline";
 import { cn, variants } from "../utils";
 
@@ -31,7 +31,7 @@ export type LogoSidebarProps = {
 
 export function LogoSidebar({ variant = "chat", name, className, mark, actions }: LogoSidebarProps) {
   return (
-    <Block
+    <Box
       className={cn(
         logoSidebarVariants({ variant: variant }),
         "in-data-[nav=collapsed]:w-full in-data-[nav=collapsed]:justify-center in-data-[nav=collapsed]:p-0",
@@ -53,6 +53,6 @@ export function LogoSidebar({ variant = "chat", name, className, mark, actions }
           {actions}
         </Inline>
       ) : null}
-    </Block>
+    </Box>
   );
 }

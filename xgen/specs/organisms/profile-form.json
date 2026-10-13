@@ -104,450 +104,490 @@
   "events": [],
   "view": [
     {
-      "use": "Container",
+      "use": "Block",
       "props": {
-        "Class": "mx-auto w-full max-w-6xl px-4 py-8"
+        "Tag": "section"
       },
       "attrs": {
-        "data-slot": "container"
+        "aria-labelledby": {
+          "op": "cond",
+          "args": [
+            {
+              "op": "and",
+              "args": [
+                {
+                  "$": "title"
+                },
+                {
+                  "$": "id"
+                }
+              ]
+            },
+            {
+              "op": "tpl",
+              "args": [
+                "{0}-t",
+                {
+                  "$": "id"
+                }
+              ]
+            },
+            {
+              "op": "undef",
+              "args": []
+            }
+          ]
+        },
+        "data-testid": "panel-section"
       },
       "children": [
         {
-          "organism": "Panel",
+          "use": "Container",
           "props": {
-            "title": {
-              "$": "title"
-            },
-            "description": {
-              "$": "text"
-            },
-            "id": {
-              "$": "id"
-            },
-            "className": {
-              "op": "cn",
-              "args": [
-                {
-                  "op": "cond",
+            "Class": "mx-auto w-full max-w-6xl px-4 py-8"
+          },
+          "attrs": {
+            "data-slot": "container"
+          },
+          "children": [
+            {
+              "organism": "Panel",
+              "props": {
+                "title": {
+                  "$": "title"
+                },
+                "description": {
+                  "$": "text"
+                },
+                "id": {
+                  "$": "id"
+                },
+                "className": {
+                  "op": "cn",
                   "args": [
                     {
-                      "op": "eq",
+                      "op": "cond",
                       "args": [
                         {
-                          "$": "tone"
-                        },
-                        "muted"
-                      ]
-                    },
-                    "bg-muted",
-                    ""
-                  ]
-                }
-              ]
-            }
-          },
-          "slots": {
-            "children": {
-              "args": [],
-              "do": [
-                {
-                  "use": "Form",
-                  "props": {
-                    "Class": "gap-6"
-                  },
-                  "attrs": {
-                    "data-testid": "profile-form"
-                  },
-                  "children": [
-                    {
-                      "use": "Grid",
-                      "props": {
-                        "Cols": {
-                          "op": "cond",
+                          "op": "eq",
                           "args": [
                             {
-                              "op": "eq",
-                              "args": [
-                                {
-                                  "$": "layout"
-                                },
-                                "split"
-                              ]
+                              "$": "tone"
                             },
-                            "1-2",
-                            "1"
+                            "muted"
                           ]
                         },
-                        "Class": "items-start gap-8"
+                        "bg-muted",
+                        ""
+                      ]
+                    }
+                  ]
+                }
+              },
+              "slots": {
+                "children": {
+                  "args": [],
+                  "do": [
+                    {
+                      "use": "Form",
+                      "props": {
+                        "Class": "gap-6"
+                      },
+                      "attrs": {
+                        "data-testid": "profile-form"
                       },
                       "children": [
                         {
-                          "use": "Stack",
+                          "use": "Grid",
                           "props": {
-                            "Gap": "4",
-                            "Align": "stretch"
-                          },
-                          "children": [
-                            {
-                              "when": {
-                                "op": "eq",
-                                "args": [
-                                  {
-                                    "$": "avatar"
-                                  },
-                                  "show"
-                                ]
-                              },
-                              "then": [
+                            "Cols": {
+                              "op": "cond",
+                              "args": [
                                 {
-                                  "use": "Group",
-                                  "props": {
-                                    "Gap": "4",
-                                    "Align": "center"
-                                  },
-                                  "attrs": {
-                                    "data-testid": "avatar"
-                                  },
-                                  "children": [
+                                  "op": "eq",
+                                  "args": [
                                     {
-                                      "organism": "MediaFrame",
-                                      "props": {
-                                        "alt": {
-                                          "$": "labels.picture"
-                                        },
-                                        "ratio": "1/1",
-                                        "className": "size-16 shrink-0 rounded-full"
-                                      }
+                                      "$": "layout"
                                     },
-                                    {
-                                      "use": "Button",
-                                      "props": {
-                                        "Variant": "outline",
-                                        "Size": "sm",
-                                        "Type": "button"
-                                      },
-                                      "children": [
-                                        {
-                                          "text": {
-                                            "$": "labels.change"
-                                          }
-                                        }
-                                      ]
-                                    }
+                                    "split"
                                   ]
-                                }
+                                },
+                                "1-2",
+                                "1"
                               ]
                             },
-                            {
-                              "organism": "Field",
-                              "props": {
-                                "label": {
-                                  "$": "labels.name"
-                                },
-                                "htmlFor": {
-                                  "op": "tpl",
-                                  "args": [
-                                    "{0}-name",
-                                    {
-                                      "$": "id"
-                                    }
-                                  ]
-                                }
-                              },
-                              "slots": {
-                                "children": {
-                                  "args": [],
-                                  "do": [
-                                    {
-                                      "use": "Input",
-                                      "props": {
-                                        "Type": "text",
-                                        "Name": "name",
-                                        "Autocomplete": "name"
-                                      },
-                                      "attrs": {
-                                        "id": {
-                                          "op": "tpl",
-                                          "args": [
-                                            "{0}-name",
-                                            {
-                                              "$": "id"
-                                            }
-                                          ]
-                                        },
-                                        "data-testid": "field"
-                                      }
-                                    }
-                                  ]
-                                }
-                              }
-                            },
-                            {
-                              "organism": "Field",
-                              "props": {
-                                "label": {
-                                  "$": "labels.email"
-                                },
-                                "htmlFor": {
-                                  "op": "tpl",
-                                  "args": [
-                                    "{0}-email",
-                                    {
-                                      "$": "id"
-                                    }
-                                  ]
-                                }
-                              },
-                              "slots": {
-                                "children": {
-                                  "args": [],
-                                  "do": [
-                                    {
-                                      "use": "Input",
-                                      "props": {
-                                        "Type": "email",
-                                        "Name": "email",
-                                        "Autocomplete": "email"
-                                      },
-                                      "attrs": {
-                                        "id": {
-                                          "op": "tpl",
-                                          "args": [
-                                            "{0}-email",
-                                            {
-                                              "$": "id"
-                                            }
-                                          ]
-                                        },
-                                        "data-testid": "field"
-                                      }
-                                    }
-                                  ]
-                                }
-                              }
-                            },
-                            {
-                              "organism": "Field",
-                              "props": {
-                                "label": {
-                                  "$": "labels.bio"
-                                },
-                                "htmlFor": {
-                                  "op": "tpl",
-                                  "args": [
-                                    "{0}-bio",
-                                    {
-                                      "$": "id"
-                                    }
-                                  ]
-                                }
-                              },
-                              "slots": {
-                                "children": {
-                                  "args": [],
-                                  "do": [
-                                    {
-                                      "use": "Textarea",
-                                      "props": {
-                                        "Rows": 4,
-                                        "Name": "bio"
-                                      },
-                                      "attrs": {
-                                        "id": {
-                                          "op": "tpl",
-                                          "args": [
-                                            "{0}-bio",
-                                            {
-                                              "$": "id"
-                                            }
-                                          ]
-                                        },
-                                        "data-testid": "field"
-                                      }
-                                    }
-                                  ]
-                                }
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "when": {
-                            "op": "eq",
-                            "args": [
-                              {
-                                "$": "prefs"
-                              },
-                              "show"
-                            ]
+                            "Class": "items-start gap-8"
                           },
-                          "then": [
+                          "children": [
                             {
                               "use": "Stack",
                               "props": {
                                 "Gap": "4",
                                 "Align": "stretch"
                               },
-                              "attrs": {
-                                "data-testid": "prefs"
-                              },
                               "children": [
                                 {
-                                  "use": "Title",
-                                  "props": {
-                                    "As": 3,
-                                    "Size": "base",
-                                    "Weight": "bold"
+                                  "when": {
+                                    "op": "eq",
+                                    "args": [
+                                      {
+                                        "$": "avatar"
+                                      },
+                                      "show"
+                                    ]
                                   },
-                                  "children": [
+                                  "then": [
                                     {
-                                      "text": {
-                                        "$": "labels.prefs"
-                                      }
+                                      "use": "Group",
+                                      "props": {
+                                        "Gap": "4",
+                                        "Align": "center"
+                                      },
+                                      "attrs": {
+                                        "data-testid": "avatar"
+                                      },
+                                      "children": [
+                                        {
+                                          "organism": "MediaFrame",
+                                          "props": {
+                                            "alt": {
+                                              "$": "labels.picture"
+                                            },
+                                            "ratio": "1/1",
+                                            "className": "size-16 shrink-0 rounded-full"
+                                          }
+                                        },
+                                        {
+                                          "use": "Button",
+                                          "props": {
+                                            "Variant": "outline",
+                                            "Size": "sm",
+                                            "Type": "button"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "labels.change"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
                                     }
                                   ]
                                 },
                                 {
-                                  "use": "Group",
+                                  "organism": "Field",
+                                  "props": {
+                                    "label": {
+                                      "$": "labels.name"
+                                    },
+                                    "htmlFor": {
+                                      "op": "tpl",
+                                      "args": [
+                                        "{0}-name",
+                                        {
+                                          "$": "id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "slots": {
+                                    "children": {
+                                      "args": [],
+                                      "do": [
+                                        {
+                                          "use": "Input",
+                                          "props": {
+                                            "Type": "text",
+                                            "Name": "name",
+                                            "Autocomplete": "name"
+                                          },
+                                          "attrs": {
+                                            "id": {
+                                              "op": "tpl",
+                                              "args": [
+                                                "{0}-name",
+                                                {
+                                                  "$": "id"
+                                                }
+                                              ]
+                                            },
+                                            "data-testid": "field"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                },
+                                {
+                                  "organism": "Field",
+                                  "props": {
+                                    "label": {
+                                      "$": "labels.email"
+                                    },
+                                    "htmlFor": {
+                                      "op": "tpl",
+                                      "args": [
+                                        "{0}-email",
+                                        {
+                                          "$": "id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "slots": {
+                                    "children": {
+                                      "args": [],
+                                      "do": [
+                                        {
+                                          "use": "Input",
+                                          "props": {
+                                            "Type": "email",
+                                            "Name": "email",
+                                            "Autocomplete": "email"
+                                          },
+                                          "attrs": {
+                                            "id": {
+                                              "op": "tpl",
+                                              "args": [
+                                                "{0}-email",
+                                                {
+                                                  "$": "id"
+                                                }
+                                              ]
+                                            },
+                                            "data-testid": "field"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                },
+                                {
+                                  "organism": "Field",
+                                  "props": {
+                                    "label": {
+                                      "$": "labels.bio"
+                                    },
+                                    "htmlFor": {
+                                      "op": "tpl",
+                                      "args": [
+                                        "{0}-bio",
+                                        {
+                                          "$": "id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "slots": {
+                                    "children": {
+                                      "args": [],
+                                      "do": [
+                                        {
+                                          "use": "Textarea",
+                                          "props": {
+                                            "Rows": 4,
+                                            "Name": "bio"
+                                          },
+                                          "attrs": {
+                                            "id": {
+                                              "op": "tpl",
+                                              "args": [
+                                                "{0}-bio",
+                                                {
+                                                  "$": "id"
+                                                }
+                                              ]
+                                            },
+                                            "data-testid": "field"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "when": {
+                                "op": "eq",
+                                "args": [
+                                  {
+                                    "$": "prefs"
+                                  },
+                                  "show"
+                                ]
+                              },
+                              "then": [
+                                {
+                                  "use": "Stack",
                                   "props": {
                                     "Gap": "4",
-                                    "Align": "center",
-                                    "Justify": "between"
+                                    "Align": "stretch"
+                                  },
+                                  "attrs": {
+                                    "data-testid": "prefs"
                                   },
                                   "children": [
                                     {
-                                      "use": "Label",
+                                      "use": "Title",
                                       "props": {
-                                        "HTMLFor": {
-                                          "op": "tpl",
-                                          "args": [
-                                            "{0}-updates",
-                                            {
-                                              "$": "id"
-                                            }
-                                          ]
-                                        },
-                                        "Class": "text-sm"
+                                        "As": 3,
+                                        "Size": "base",
+                                        "Weight": "bold"
                                       },
                                       "children": [
                                         {
                                           "text": {
-                                            "$": "labels.updates"
+                                            "$": "labels.prefs"
                                           }
                                         }
                                       ]
                                     },
                                     {
-                                      "use": "Switch",
+                                      "use": "Group",
                                       "props": {
-                                        "Name": "updates"
-                                      },
-                                      "attrs": {
-                                        "id": {
-                                          "op": "tpl",
-                                          "args": [
-                                            "{0}-updates",
-                                            {
-                                              "$": "id"
-                                            }
-                                          ]
-                                        }
-                                      }
-                                    }
-                                  ]
-                                },
-                                {
-                                  "use": "Group",
-                                  "props": {
-                                    "Gap": "4",
-                                    "Align": "center",
-                                    "Justify": "between"
-                                  },
-                                  "children": [
-                                    {
-                                      "use": "Label",
-                                      "props": {
-                                        "HTMLFor": {
-                                          "op": "tpl",
-                                          "args": [
-                                            "{0}-alerts",
-                                            {
-                                              "$": "id"
-                                            }
-                                          ]
-                                        },
-                                        "Class": "text-sm"
+                                        "Gap": "4",
+                                        "Align": "center",
+                                        "Justify": "between"
                                       },
                                       "children": [
                                         {
-                                          "text": {
-                                            "$": "labels.alerts"
+                                          "use": "Label",
+                                          "props": {
+                                            "HTMLFor": {
+                                              "op": "tpl",
+                                              "args": [
+                                                "{0}-updates",
+                                                {
+                                                  "$": "id"
+                                                }
+                                              ]
+                                            },
+                                            "Class": "text-sm"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "labels.updates"
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "use": "Switch",
+                                          "props": {
+                                            "Name": "updates"
+                                          },
+                                          "attrs": {
+                                            "id": {
+                                              "op": "tpl",
+                                              "args": [
+                                                "{0}-updates",
+                                                {
+                                                  "$": "id"
+                                                }
+                                              ]
+                                            }
                                           }
                                         }
                                       ]
                                     },
                                     {
-                                      "use": "Switch",
+                                      "use": "Group",
                                       "props": {
-                                        "Name": "alerts"
+                                        "Gap": "4",
+                                        "Align": "center",
+                                        "Justify": "between"
                                       },
-                                      "attrs": {
-                                        "id": {
-                                          "op": "tpl",
-                                          "args": [
-                                            "{0}-alerts",
+                                      "children": [
+                                        {
+                                          "use": "Label",
+                                          "props": {
+                                            "HTMLFor": {
+                                              "op": "tpl",
+                                              "args": [
+                                                "{0}-alerts",
+                                                {
+                                                  "$": "id"
+                                                }
+                                              ]
+                                            },
+                                            "Class": "text-sm"
+                                          },
+                                          "children": [
                                             {
-                                              "$": "id"
+                                              "text": {
+                                                "$": "labels.alerts"
+                                              }
                                             }
                                           ]
+                                        },
+                                        {
+                                          "use": "Switch",
+                                          "props": {
+                                            "Name": "alerts"
+                                          },
+                                          "attrs": {
+                                            "id": {
+                                              "op": "tpl",
+                                              "args": [
+                                                "{0}-alerts",
+                                                {
+                                                  "$": "id"
+                                                }
+                                              ]
+                                            }
+                                          }
                                         }
-                                      }
+                                      ]
                                     }
                                   ]
                                 }
                               ]
                             }
                           ]
-                        }
-                      ]
-                    },
-                    {
-                      "use": "Group",
-                      "props": {
-                        "Gap": "2",
-                        "Class": "flex-wrap"
-                      },
-                      "children": [
-                        {
-                          "use": "Button",
-                          "props": {
-                            "Variant": "default",
-                            "Size": "default",
-                            "Type": "button"
-                          },
-                          "attrs": {
-                            "data-testid": "submit"
-                          },
-                          "children": [
-                            {
-                              "text": {
-                                "$": "labels.save"
-                              }
-                            }
-                          ]
                         },
                         {
-                          "use": "Button",
+                          "use": "Group",
                           "props": {
-                            "Variant": "outline",
-                            "Size": "default",
-                            "Type": "button"
+                            "Gap": "2",
+                            "Class": "flex-wrap"
                           },
                           "children": [
                             {
-                              "text": {
-                                "$": "labels.cancel"
-                              }
+                              "use": "Button",
+                              "props": {
+                                "Variant": "default",
+                                "Size": "default",
+                                "Type": "button"
+                              },
+                              "attrs": {
+                                "data-testid": "submit"
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "labels.save"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "use": "Button",
+                              "props": {
+                                "Variant": "outline",
+                                "Size": "default",
+                                "Type": "button"
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "labels.cancel"
+                                  }
+                                }
+                              ]
                             }
                           ]
                         }
@@ -555,9 +595,9 @@
                     }
                   ]
                 }
-              ]
+              }
             }
-          }
+          ]
         }
       ]
     }

@@ -36,32 +36,34 @@ const tiers = fromCodex<Plan>(tiersEntries, TIERS_FIELDS);
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.blocks.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
-          {{ ui.blocks.themes.marketing.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="block-title">
-          {{ ui.blocks.names.plan }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ ui.blocks.docs.plan }}
-        </Text>
-      </Stack>
-      <Block
-        tag="section"
-        aria-labelledby="plan-standard-label"
-        data-testid="variant"
-        data-block="plan"
-        data-variant="standard"
-      >
-        <Stack gap="4" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.blocks.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
+            {{ ui.blocks.themes.marketing.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="block-title">
+            {{ ui.blocks.names.plan }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ ui.blocks.docs.plan }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="plan-standard-label"
+          data-testid="variant"
+          data-block="plan"
+          data-variant="standard"
+        >
           <Title :as="2" size="base" weight="bold" id="plan-standard-label" data-testid="variant-label">
             {{ ui.blocks.variants.plan.standard }}
           </Title>
@@ -76,15 +78,15 @@ const tiers = fromCodex<Plan>(tiersEntries, TIERS_FIELDS);
             </Box>
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="plan-flat-label"
-        data-testid="variant"
-        data-block="plan"
-        data-variant="flat"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="plan-flat-label"
+          data-testid="variant"
+          data-block="plan"
+          data-variant="flat"
+        >
           <Title :as="2" size="base" weight="bold" id="plan-flat-label" data-testid="variant-label">
             {{ ui.blocks.variants.plan.flat }}
           </Title>
@@ -99,15 +101,15 @@ const tiers = fromCodex<Plan>(tiersEntries, TIERS_FIELDS);
             </Box>
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="plan-compact-label"
-        data-testid="variant"
-        data-block="plan"
-        data-variant="compact"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="plan-compact-label"
+          data-testid="variant"
+          data-block="plan"
+          data-variant="compact"
+        >
           <Title :as="2" size="base" weight="bold" id="plan-compact-label" data-testid="variant-label">
             {{ ui.blocks.variants.plan.compact }}
           </Title>
@@ -122,7 +124,7 @@ const tiers = fromCodex<Plan>(tiersEntries, TIERS_FIELDS);
             </Box>
           </Box>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

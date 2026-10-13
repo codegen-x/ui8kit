@@ -149,6 +149,7 @@ function walk(n: ViewNode, sc: Scope, names: Set<string>, out: string[]): void {
     return;
   }
   if ("outlet" in n && !sc.allowOutlet) out.push(`${sc.where}: outlet is only for screen layouts`);
+  if ("part" in n && !sc.allowOutlet) out.push(`${sc.where}: a part is placed only by a screen layout`);
 }
 
 const ORGANISM_NAMES = (o: OrganismSpec): Set<string> => new Set([...o.props.map((p) => p.name), ...o.slots.map((s) => s.name), ...(o.children ? ["children"] : []), ...(o.className ? ["className"] : []), ...Object.keys(o.consts ?? {}), ...(o.derived ?? []).map((d) => d.name)]);
@@ -221,6 +222,13 @@ export function validateScreen(s: ScreenSpec, parts: Parts, organisms: Record<st
   const sc: Scope = { names, handlers, organisms, allowOutlet: true, slots: {}, where: s.name, parts };
   for (const n of s.layout) walk(n, sc, names, out);
   const noOutlet = { ...sc, allowOutlet: false };
+  const placed = new Set([...JSON.stringify(s.layout).matchAll(/"part":"([A-Za-z0-9]+)"/g)].map((m) => m[1]!));
+  for (const p of placed) if (!s.parts?.[p]) out.push(`${s.name}: the layout places the missing part ${p}`);
+  for (const [p, nodes] of Object.entries(s.parts ?? {})) {
+    if (!/^[A-Z][A-Za-z0-9]*$/.test(p)) out.push(`${s.name}: part ${p} is not PascalCase`);
+    if (!placed.has(p)) out.push(`${s.name}: part ${p} is not placed by the layout`);
+    for (const n of nodes) walk(n, { ...noOutlet, where: `${s.name}.parts.${p}` }, new Set([...names].filter((x) => x !== "route" && x !== "nav")), out);
+  }
   for (const [area, nodes] of Object.entries(s.areas)) for (const n of nodes) walk(n, { ...noOutlet, where: `${s.name}.${area}` }, names, out);
   for (const r of s.routes) if (!(r.area in s.areas)) out.push(`${s.name}: route ${r.path} points to the missing area ${r.area}`);
   for (const o of s.organisms) if (!organisms[o]) out.push(`${s.name}: no organism ${o}`);
@@ -242,7 +250,7 @@ export function validateScreen(s: ScreenSpec, parts: Parts, organisms: Record<st
 
 /** every `ui.x.y` reference of a screen: its layout, its areas and its named values */
 export const screenContentRefs = (s: ScreenSpec): Set<string> =>
-  contentRefs([...s.layout, ...Object.values(s.areas).flat(), ...Object.values(s.consts ?? {}).map((v) => ({ text: v }))]);
+  contentRefs([...s.layout, ...Object.values(s.parts ?? {}).flat(), ...Object.values(s.areas).flat(), ...Object.values(s.consts ?? {}).map((v) => ({ text: v }))]);
 
 /** every `ui.x.y` reference of a view tree (content keys the dictionary must have) */
 export function contentRefs(nodes: ViewNode[], into = new Set<string>()): Set<string> {

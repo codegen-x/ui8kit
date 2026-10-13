@@ -12,7 +12,7 @@ export type IconTabsProps = {
 </script>
 
 <script setup lang="ts">
-import Block from "../primitives/block/block.vue";
+import Box from "../primitives/box/box.vue";
 import { cn } from "../utils";
 
 const { label, class: className } = defineProps<IconTabsProps>();
@@ -20,12 +20,7 @@ defineSlots<{ default?(): unknown }>();
 </script>
 
 <template>
-  <Block
-    :class="cn('flex items-center gap-2', className)"
-    role="tablist"
-    :aria-label="label"
-    data-slot="icon-tabs"
-  >
+  <Box :class="cn('flex items-center gap-2', className)" role="tablist" :aria-label="label" data-slot="icon-tabs">
     <slot />
-  </Block>
+  </Box>
 </template>

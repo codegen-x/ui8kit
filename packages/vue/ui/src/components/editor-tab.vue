@@ -16,7 +16,7 @@ export type EditorTabProps = {
 </script>
 
 <script setup lang="ts">
-import Block from "../primitives/block/block.vue";
+import Box from "../primitives/box/box.vue";
 import Button from "../primitives/button/button.vue";
 import Inline from "../primitives/inline/inline.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
@@ -34,7 +34,7 @@ defineSlots<{ icon?(): unknown }>();
 </script>
 
 <template>
-  <Block
+  <Box
     :class="cn(
       'flex h-10 shrink-0 cursor-pointer flex-col justify-center data-[state=active]:bg-card ' +
         '[&_svg]:text-muted-foreground',
@@ -69,5 +69,5 @@ defineSlots<{ icon?(): unknown }>();
         <LucideIcon name="x" :size="16" />
       </Button>
     </Inline>
-  </Block>
+  </Box>
 </template>

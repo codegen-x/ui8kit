@@ -35,32 +35,34 @@
   const TESTIMONIALS_LABELS = { rating: ui.testimonials.rating, byLine: ui.testimonials.byLine, handleLine: ui.testimonials.handleLine } as const;
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.blocks.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
-        {ui.blocks.themes.marketing.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-        {ui.blocks.names.testimonials}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {ui.blocks.docs.testimonials}
-      </Text>
-    </Stack>
-    <Block
-      tag="section"
-      aria-labelledby="testimonials-grid3-label"
-      data-testid="variant"
-      data-block="testimonials"
-      data-variant="grid3"
-    >
-      <Stack gap="4" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.blocks.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
+          {ui.blocks.themes.marketing.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+          {ui.blocks.names.testimonials}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {ui.blocks.docs.testimonials}
+        </Text>
+      </Stack>
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="testimonials-grid3-label"
+        data-testid="variant"
+        data-block="testimonials"
+        data-variant="grid3"
+      >
         <Title as={2} size="base" weight="bold" id="testimonials-grid3-label" data-testid="variant-label">
           {ui.blocks.variants.testimonials.grid3}
         </Title>
@@ -78,15 +80,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="testimonials-masonry-label"
-      data-testid="variant"
-      data-block="testimonials"
-      data-variant="masonry"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="testimonials-masonry-label"
+        data-testid="variant"
+        data-block="testimonials"
+        data-variant="masonry"
+      >
         <Title as={2} size="base" weight="bold" id="testimonials-masonry-label" data-testid="variant-label">
           {ui.blocks.variants.testimonials.masonry}
         </Title>
@@ -104,15 +106,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="testimonials-strip-label"
-      data-testid="variant"
-      data-block="testimonials"
-      data-variant="strip"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="testimonials-strip-label"
+        data-testid="variant"
+        data-block="testimonials"
+        data-variant="strip"
+      >
         <Title as={2} size="base" weight="bold" id="testimonials-strip-label" data-testid="variant-label">
           {ui.blocks.variants.testimonials.strip}
         </Title>
@@ -130,15 +132,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="testimonials-social-label"
-      data-testid="variant"
-      data-block="testimonials"
-      data-variant="social"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="testimonials-social-label"
+        data-testid="variant"
+        data-block="testimonials"
+        data-variant="social"
+      >
         <Title as={2} size="base" weight="bold" id="testimonials-social-label" data-testid="variant-label">
           {ui.blocks.variants.testimonials.social}
         </Title>
@@ -156,15 +158,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="testimonials-featured-label"
-      data-testid="variant"
-      data-block="testimonials"
-      data-variant="featured"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="testimonials-featured-label"
+        data-testid="variant"
+        data-block="testimonials"
+        data-variant="featured"
+      >
         <Title as={2} size="base" weight="bold" id="testimonials-featured-label" data-testid="variant-label">
           {ui.blocks.variants.testimonials.featured}
         </Title>
@@ -182,15 +184,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="testimonials-grid2-label"
-      data-testid="variant"
-      data-block="testimonials"
-      data-variant="grid2"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="testimonials-grid2-label"
+        data-testid="variant"
+        data-block="testimonials"
+        data-variant="grid2"
+      >
         <Title as={2} size="base" weight="bold" id="testimonials-grid2-label" data-testid="variant-label">
           {ui.blocks.variants.testimonials.grid2}
         </Title>
@@ -208,15 +210,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="testimonials-single-label"
-      data-testid="variant"
-      data-block="testimonials"
-      data-variant="single"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="testimonials-single-label"
+        data-testid="variant"
+        data-block="testimonials"
+        data-variant="single"
+      >
         <Title as={2} size="base" weight="bold" id="testimonials-single-label" data-testid="variant-label">
           {ui.blocks.variants.testimonials.single}
         </Title>
@@ -234,15 +236,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="testimonials-stack-label"
-      data-testid="variant"
-      data-block="testimonials"
-      data-variant="stack"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="testimonials-stack-label"
+        data-testid="variant"
+        data-block="testimonials"
+        data-variant="stack"
+      >
         <Title as={2} size="base" weight="bold" id="testimonials-stack-label" data-testid="variant-label">
           {ui.blocks.variants.testimonials.stack}
         </Title>
@@ -260,15 +262,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="testimonials-plain-label"
-      data-testid="variant"
-      data-block="testimonials"
-      data-variant="plain"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="testimonials-plain-label"
+        data-testid="variant"
+        data-block="testimonials"
+        data-variant="plain"
+      >
         <Title as={2} size="base" weight="bold" id="testimonials-plain-label" data-testid="variant-label">
           {ui.blocks.variants.testimonials.plain}
         </Title>
@@ -286,15 +288,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="testimonials-noRating-label"
-      data-testid="variant"
-      data-block="testimonials"
-      data-variant="noRating"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="testimonials-noRating-label"
+        data-testid="variant"
+        data-block="testimonials"
+        data-variant="noRating"
+      >
         <Title as={2} size="base" weight="bold" id="testimonials-noRating-label" data-testid="variant-label">
           {ui.blocks.variants.testimonials.noRating}
         </Title>
@@ -312,6 +314,6 @@
           />
         </Box>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

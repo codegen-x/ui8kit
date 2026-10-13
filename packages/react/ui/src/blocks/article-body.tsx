@@ -6,11 +6,13 @@
  * the section being read is a port contract.
  */
 import { type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
+import { Blockquote } from "../primitives/blockquote/blockquote";
+import { Box } from "../primitives/box/box";
 import { Grid } from "../primitives/grid/grid";
 import { Link } from "../primitives/link/link";
 import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
+import { Nav } from "../primitives/nav/nav";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { Title } from "../primitives/title/title";
@@ -47,7 +49,7 @@ export function ArticleBody({
         )}
       >
         {((layout as string) === "toc") ? (
-          <Block tag="nav" className="md:sticky md:top-4" aria-label={tocTitle} data-testid="toc">
+          <Nav className="md:sticky md:top-4" aria-label={tocTitle} data-testid="toc">
             <Stack gap="2">
               <Text size="sm" weight="semibold">
                 {tocTitle}
@@ -67,11 +69,11 @@ export function ArticleBody({
                 ))}
               </List>
             </Stack>
-          </Block>
+          </Nav>
         ) : null}
         <Stack gap="8" align="stretch" className="mx-auto w-full max-w-2xl min-w-0" data-testid="article">
           {(sections ?? []).map((s) => (
-            <Block key={s.id} tag="div" className="flex flex-col gap-4" id={tpl("{0}-{1}", id, s.id)} data-testid="item">
+            <Box key={s.id} className="flex flex-col gap-4" id={tpl("{0}-{1}", id, s.id)} data-testid="item">
               <Title as={3} size="2xl" weight="bold">
                 {s.title}
               </Title>
@@ -81,13 +83,13 @@ export function ArticleBody({
               {((quotes as string) === "show") ? (
                 <>
                   {s.quote ? (
-                    <Block tag="blockquote" className="m-0 border-l border-border pl-4 text-lg" data-testid="quote">
+                    <Blockquote className="m-0 border-l border-border pl-4 text-lg" data-testid="quote">
                       {s.quote}
-                    </Block>
+                    </Blockquote>
                   ) : null}
                 </>
               ) : null}
-            </Block>
+            </Box>
           ))}
         </Stack>
       </Grid>

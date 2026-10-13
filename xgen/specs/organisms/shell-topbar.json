@@ -116,9 +116,8 @@
           },
           "then": [
             {
-              "use": "Block",
+              "use": "Nav",
               "props": {
-                "Tag": "nav",
                 "Class": "hidden lg:block"
               },
               "attrs": {
@@ -375,6 +374,7 @@
     "svelte": true,
     "react": true
   },
+  "frame": true,
   "typeImports": [
     {
       "from": "DashboardShell",

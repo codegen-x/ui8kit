@@ -27,7 +27,7 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
+  import Box from "../primitives/box/box.svelte";
   import Disclosure from "../primitives/disclosure/disclosure.svelte";
   import Grid from "../primitives/grid/grid.svelte";
   import Stack from "../primitives/stack/stack.svelte";
@@ -85,16 +85,16 @@
     <Stack gap="4" align="stretch" data-testid="faq">
       {#each shown as item (item.id)}
         <Stack gap="2" align="stretch" data-testid="faq-item">
-          <Block tag="div" class="ml-auto max-w-xs sm:max-w-md rounded bg-primary px-4 py-4 text-primary-foreground">
+          <Box class="ml-auto max-w-xs sm:max-w-md rounded bg-primary px-4 py-4 text-primary-foreground">
             <Text size="sm" weight="semibold">
               {item.question}
             </Text>
-          </Block>
-          <Block tag="div" class="mr-auto max-w-xs sm:max-w-md rounded bg-muted px-4 py-4">
+          </Box>
+          <Box class="mr-auto max-w-xs sm:max-w-md rounded bg-muted px-4 py-4">
             <Text size="sm">
               {item.answer}
             </Text>
-          </Block>
+          </Box>
         </Stack>
       {/each}
     </Stack>

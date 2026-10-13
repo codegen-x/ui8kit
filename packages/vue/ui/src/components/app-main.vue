@@ -22,7 +22,7 @@ export type AppMainProps = {
 </script>
 
 <script setup lang="ts">
-import Block from "../primitives/block/block.vue";
+import Box from "../primitives/box/box.vue";
 import Grid from "../primitives/grid/grid.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Title from "../primitives/title/title.vue";
@@ -54,9 +54,9 @@ const {
       {{ title }}
     </Title>
     <Grid :cols="cols" class="gap-4" data-testid="items">
-      <Block v-for="m in metrics" :key="m.id" tag="div" data-testid="item">
+      <Box v-for="m in metrics" :key="m.id" data-testid="item">
         <StatTile :label="m.label" :value="m.value" :icon="m.icon" :hint="m.hint" />
-      </Block>
+      </Box>
     </Grid>
     <Grid v-if="activity" cols="1-2" class="items-stretch gap-4">
       <Panel :title="chart.title" :description="chart.text" :id="tpl('{0}-chart', id)" class="h-full">

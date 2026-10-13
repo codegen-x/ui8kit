@@ -14,7 +14,7 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
+  import Box from "../primitives/box/box.svelte";
   import IconBadge from "../primitives/iconbadge/icon-badge.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Text from "../primitives/text/text.svelte";
@@ -23,7 +23,7 @@
   let { icon = "inbox", title, text, class: className, action }: EmptyStateProps = $props();
 </script>
 
-<Block
+<Box
   class={cn(
     "flex min-w-0 flex-col items-center gap-4 rounded bg-card px-6 py-14 text-center inset-ring inset-ring-border",
     className
@@ -42,4 +42,4 @@
     </Text>
   {/if}
   {@render action?.()}
-</Block>
+</Box>

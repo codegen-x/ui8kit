@@ -19,6 +19,7 @@ export type ActivityFeedProps = {
 </script>
 
 <script setup lang="ts">
+import Block from "../primitives/block/block.vue";
 import Container from "../primitives/container/container.vue";
 import List from "../primitives/list/list.vue";
 import ListItem from "../primitives/list/list-item.vue";
@@ -26,7 +27,7 @@ import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import Panel from "../components/panel.vue";
 import Timeline from "../components/timeline.vue";
-import { cn } from "../utils";
+import { cn, tpl } from "../utils";
 
 const {
   id,
@@ -40,30 +41,36 @@ const {
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-8" data-slot="container">
-    <Panel :title="title" :description="text" :id="id" :class="(((tone as string) === 'muted') ? 'bg-muted' : '')">
-      <Timeline v-if="((layout as string) === 'timeline')" :items="events" />
-      <List v-else class="m-0 flex list-none flex-col p-0" data-testid="items">
-        <ListItem v-for="e in events" :key="e.id"
-          :class="cn(
-            'flex items-start justify-between gap-4 border-b border-border last:border-0',
-            (((density as string) === 'compact') ? 'py-2' : 'py-4')
-          )"
-          data-testid="item"
-        >
-          <Stack gap="0">
-            <Text size="sm" weight="semibold">
-              {{ e.title }}
+  <Block
+    tag="section"
+    :aria-labelledby="((title && id) ? tpl('{0}-t', id) : undefined)"
+    data-testid="panel-section"
+  >
+    <Container class="mx-auto w-full max-w-6xl px-4 py-8" data-slot="container">
+      <Panel :title="title" :description="text" :id="id" :class="(((tone as string) === 'muted') ? 'bg-muted' : '')">
+        <Timeline v-if="((layout as string) === 'timeline')" :items="events" />
+        <List v-else class="m-0 flex list-none flex-col p-0" data-testid="items">
+          <ListItem v-for="e in events" :key="e.id"
+            :class="cn(
+              'flex items-start justify-between gap-4 border-b border-border last:border-0',
+              (((density as string) === 'compact') ? 'py-2' : 'py-4')
+            )"
+            data-testid="item"
+          >
+            <Stack gap="0">
+              <Text size="sm" weight="semibold">
+                {{ e.title }}
+              </Text>
+              <Text v-if="((density as string) === 'default')" size="sm" class="text-muted-foreground">
+                {{ e.text }}
+              </Text>
+            </Stack>
+            <Text size="xs" class="shrink-0 text-muted-foreground">
+              {{ e.time }}
             </Text>
-            <Text v-if="((density as string) === 'default')" size="sm" class="text-muted-foreground">
-              {{ e.text }}
-            </Text>
-          </Stack>
-          <Text size="xs" class="shrink-0 text-muted-foreground">
-            {{ e.time }}
-          </Text>
-        </ListItem>
-      </List>
-    </Panel>
-  </Container>
+          </ListItem>
+        </List>
+      </Panel>
+    </Container>
+  </Block>
 </template>

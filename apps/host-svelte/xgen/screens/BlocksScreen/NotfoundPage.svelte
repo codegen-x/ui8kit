@@ -2,20 +2,22 @@
 <!-- Source: xgen/specs/screens/blocks.json -->
 <!-- The notfound page of BlocksScreen. -->
 <script lang="ts">
-  import { Button, Container, Group, Stack, Title } from "@ui8kit/svelte-ui";
+  import { Block, Button, Container, Group, Stack, Title } from "@ui8kit/svelte-ui";
   import { ui } from "@ui8kit/app-shared/content";
 
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="4" align="stretch">
-    <Title as={1} size="4xl" weight="bold">
-      {ui.site.notFound.title}
-    </Title>
-    <Group>
-      <Button variant="default" size="default" href="#/">
-        {ui.blocks.back}
-      </Button>
-    </Group>
-  </Stack>
-</Container>
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="4" align="stretch">
+      <Title as={1} size="4xl" weight="bold" id="page-title">
+        {ui.site.notFound.title}
+      </Title>
+      <Group>
+        <Button variant="default" size="default" href="#/">
+          {ui.blocks.back}
+        </Button>
+      </Group>
+    </Stack>
+  </Container>
+</Block>

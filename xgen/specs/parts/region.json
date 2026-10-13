@@ -40,5 +40,6 @@
   "portable": {
     "svelte": true,
     "react": true
-  }
+  },
+  "frame": true
 }

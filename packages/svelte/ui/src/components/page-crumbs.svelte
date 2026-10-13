@@ -15,18 +15,18 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
   import Inline from "../primitives/inline/inline.svelte";
   import Link from "../primitives/link/link.svelte";
   import List from "../primitives/list/list.svelte";
   import ListItem from "../primitives/list/list-item.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
+  import Nav from "../primitives/nav/nav.svelte";
 
   let { label, crumbs }: PageCrumbsProps = $props();
   const last = $derived((crumbs?.length ?? 0) - 1);
 </script>
 
-<Block tag="nav" aria-label={label} data-testid="crumbs">
+<Nav aria-label={label} data-testid="crumbs">
   <List class="m-0 flex list-none flex-wrap items-center gap-2 p-0 text-sm text-muted-foreground">
     {#each crumbs as c, i (c.id)}
       <ListItem class="flex items-center gap-2">
@@ -43,4 +43,4 @@
       </ListItem>
     {/each}
   </List>
-</Block>
+</Nav>

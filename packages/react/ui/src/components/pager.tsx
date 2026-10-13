@@ -6,7 +6,7 @@
  * aria-current="page"; the others are buttons. All text comes in through props.
  */
 import { Fragment, type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
+import { Box } from "../primitives/box/box";
 import { Button } from "../primitives/button/button";
 import { Inline } from "../primitives/inline/inline";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
@@ -39,7 +39,7 @@ export function Pager({
 }: PagerProps) {
   const numbers = pageWindow(page, pages);
   return (
-    <Block
+    <Box
       className={"flex flex-wrap items-center justify-between gap-4 text-xs font-semibold text-muted-foreground"}
       data-testid="pager"
     >
@@ -113,6 +113,6 @@ export function Pager({
           <LucideIcon name="chevron-right" size={16} />
         </Button>
       </Inline>
-    </Block>
+    </Box>
   );
 }

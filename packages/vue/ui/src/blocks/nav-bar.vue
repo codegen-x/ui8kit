@@ -31,6 +31,7 @@ import Grid from "../primitives/grid/grid.vue";
 import Group from "../primitives/group/group.vue";
 import Link from "../primitives/link/link.vue";
 import LinkPlain from "../primitives/link-plain/link-plain.vue";
+import Nav from "../primitives/nav/nav.vue";
 import NavActions from "../components/nav-actions.vue";
 import NavLinks from "../components/nav-links.vue";
 import OverMedia from "../components/over-media.vue";
@@ -53,68 +54,44 @@ const emit = defineEmits<{ theme: [] }>();
 </script>
 
 <template>
-  <OverMedia :on="((over as string) === 'media')" :alt="brand">
-    <Block
-      tag="header"
-      :class="cn(
-        'relative',
-        (
-          (tone as string) === 'inverse' ? 'border-b border-transparent bg-foreground text-background [&_a]:text-background [&_button]:text-background'
-          : 'border-b border-border bg-background'
-        )
-      )"
-      data-testid="nav-bar"
-      :data-layout="layout"
-      :data-tone="tone"
+  <Block
+    tag="header"
+    :class="cn(
+      'relative',
+      (
+        (tone as string) === 'inverse' ? 'border-b border-transparent bg-foreground text-background [&_a]:text-background [&_button]:text-background'
+        : 'border-b border-border bg-background'
+      ),
+      (((over as string) === 'media') ? 'isolate overflow-hidden border-0 bg-transparent' : '')
+    )"
+    data-testid="nav-bar"
+    :data-layout="layout"
+    :data-tone="tone"
+  >
+    <OverMedia :on="((over as string) === 'media')" :alt="brand" />
+    <LinkPlain v-if="skip"
+      href="#main-content"
+      :class="'sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background ' +
+        'focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border'"
+      data-testid="skip-link"
     >
-      <LinkPlain v-if="skip"
-        href="#main-content"
-        :class="'sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background ' +
-          'focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border'"
-        data-testid="skip-link"
-      >
-        {{ skip }}
-      </LinkPlain>
-      <Container class="mx-auto w-full max-w-6xl px-4" data-slot="container">
-        <Box :class="cn('flex flex-wrap items-center justify-between gap-4', 'py-4')">
-          <Grid v-if="((layout as string) === 'split')" cols="1-3" class="w-full items-center gap-4">
-            <Block tag="nav" class="md:justify-self-start" :aria-label="label" data-testid="site-nav">
-              <NavLinks :links="links" :current="current" side="left" />
-            </Block>
-            <Box class="text-center">
-              <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
-                {{ brand }}
-              </Link>
-            </Box>
-            <Group gap="4" align="center" justify="end" class="flex-wrap md:justify-self-end">
-              <Block tag="nav" :aria-label="label">
-                <NavLinks :links="links" :current="current" side="right" />
-              </Block>
-              <NavActions
-                :login="actions?.login"
-                :loginHref="actions?.loginHref"
-                :cta="actions?.cta"
-                :ctaHref="actions?.href"
-                :actions="actions?.mode"
-                :tone="tone"
-                :themeLabel="actions?.themeLabel"
-                @theme="() => emit('theme')"
-              />
-            </Group>
-          </Grid>
-          <template v-else>
+      {{ skip }}
+    </LinkPlain>
+    <Container class="mx-auto w-full max-w-6xl px-4" data-slot="container">
+      <Box :class="cn('flex flex-wrap items-center justify-between gap-4', 'py-4')">
+        <Grid v-if="((layout as string) === 'split')" cols="1-3" class="w-full items-center gap-4">
+          <Nav class="md:justify-self-start" :aria-label="label" data-testid="site-nav">
+            <NavLinks :links="links" :current="current" side="left" />
+          </Nav>
+          <Box class="text-center">
             <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
               {{ brand }}
             </Link>
-            <SearchPalette v-if="((layout as string) === 'search')" :label="search.label" :shortcut="search.shortcut" />
-            <Block
-              tag="nav"
-              :class="'order-last w-full overflow-x-auto md:order-none md:w-auto [&>div]:flex-nowrap md:[&>div]:flex-wrap [&_a]:shrink-0'"
-              :aria-label="label"
-              data-testid="site-nav"
-            >
-              <NavLinks :links="links" :current="current" side="all" />
-            </Block>
+          </Box>
+          <Group gap="4" align="center" justify="end" class="flex-wrap md:justify-self-end">
+            <Nav :aria-label="label">
+              <NavLinks :links="links" :current="current" side="right" />
+            </Nav>
             <NavActions
               :login="actions?.login"
               :loginHref="actions?.loginHref"
@@ -125,9 +102,32 @@ const emit = defineEmits<{ theme: [] }>();
               :themeLabel="actions?.themeLabel"
               @theme="() => emit('theme')"
             />
-          </template>
-        </Box>
-      </Container>
-    </Block>
-  </OverMedia>
+          </Group>
+        </Grid>
+        <template v-else>
+          <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
+            {{ brand }}
+          </Link>
+          <SearchPalette v-if="((layout as string) === 'search')" :label="search.label" :shortcut="search.shortcut" />
+          <Nav
+            :class="'order-last w-full overflow-x-auto md:order-none md:w-auto [&>div]:flex-nowrap md:[&>div]:flex-wrap [&_a]:shrink-0'"
+            :aria-label="label"
+            data-testid="site-nav"
+          >
+            <NavLinks :links="links" :current="current" side="all" />
+          </Nav>
+          <NavActions
+            :login="actions?.login"
+            :loginHref="actions?.loginHref"
+            :cta="actions?.cta"
+            :ctaHref="actions?.href"
+            :actions="actions?.mode"
+            :tone="tone"
+            :themeLabel="actions?.themeLabel"
+            @theme="() => emit('theme')"
+          />
+        </template>
+      </Box>
+    </Container>
+  </Block>
 </template>

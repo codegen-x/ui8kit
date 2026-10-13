@@ -25,6 +25,7 @@
   import List from "../primitives/list/list.svelte";
   import ListItem from "../primitives/list/list-item.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
+  import Nav from "../primitives/nav/nav.svelte";
   import Text from "../primitives/text/text.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import SearchPalette from "../components/search-palette.svelte";
@@ -47,7 +48,7 @@
     </Group>
   {/if}
   {#if ((links as string) === "show")}
-    <Block tag="nav" class="hidden lg:block" aria-label={nav.label}>
+    <Nav class="hidden lg:block" aria-label={nav.label}>
       <List class="m-0 flex list-none items-center gap-2 p-0">
         {#each nav.links as l (l.id)}
           <ListItem>
@@ -71,7 +72,7 @@
           </ListItem>
         {/each}
       </List>
-    </Block>
+    </Nav>
   {/if}
   {#if ((search as string) === "show")}
     {#if ((links as string) === "show")}

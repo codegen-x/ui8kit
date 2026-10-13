@@ -18,7 +18,7 @@ export type RangeFieldProps = {
 </script>
 
 <script setup lang="ts">
-import Block from "../primitives/block/block.vue";
+import Box from "../primitives/box/box.vue";
 import Inline from "../primitives/inline/inline.vue";
 import Input from "../primitives/input/input.vue";
 import Range from "../primitives/range/range.vue";
@@ -29,7 +29,7 @@ const emit = defineEmits<{ change: [from: string, to: string] }>();
 </script>
 
 <template>
-  <Block :class="cn('flex flex-col gap-2', className)" data-slot="range-field">
+  <Box :class="cn('flex flex-col gap-2', className)" data-slot="range-field">
     <template v-if="(((type as string) === 'number') && (min != null) && (max != null) && (min < max))">
       <Range
         :min="min"
@@ -71,5 +71,5 @@ const emit = defineEmits<{ change: [from: string, to: string] }>();
         @input="(event: Event & { currentTarget: HTMLInputElement }) => emit('change', from, event.currentTarget.value)"
       />
     </Inline>
-  </Block>
+  </Box>
 </template>

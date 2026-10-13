@@ -22,9 +22,9 @@
 
 <script lang="ts">
   import Badge from "../primitives/badge/badge.svelte";
+  import Block from "../primitives/block/block.svelte";
   import Box from "../primitives/box/box.svelte";
   import Button from "../primitives/button/button.svelte";
-  import Card from "../primitives/card/card.svelte";
   import CardContent from "../primitives/card/card-content.svelte";
   import CardDescription from "../primitives/card/card-description.svelte";
   import CardFooter from "../primitives/card/card-footer.svelte";
@@ -52,9 +52,13 @@
   const amount = $derived(yearlyOn ? plan.yearly : plan.price);
 </script>
 
-<Card
-  variant="default"
-  class="flex h-full flex-col"
+<Block
+  tag="article"
+  class={cn(
+    "flex flex-col gap-8 bg-card p-6 text-card-foreground inset-ring inset-ring-border rounded",
+    "flex h-full flex-col"
+  )}
+  data-slot="card"
   data-highlighted={(stand ? "true" : "false")}
   data-current={(current ? "true" : "false")}
 >
@@ -113,4 +117,4 @@
     </Button>
     {@render footer?.(plan)}
   </CardFooter>
-</Card>
+</Block>

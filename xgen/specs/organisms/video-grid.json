@@ -120,9 +120,8 @@
                   },
                   "do": [
                     {
-                      "use": "Block",
+                      "use": "Figure",
                       "props": {
-                        "Tag": "figure",
                         "Class": "m-0 flex flex-col gap-4"
                       },
                       "attrs": {
@@ -263,10 +262,8 @@
                           },
                           "then": [
                             {
-                              "use": "Block",
-                              "props": {
-                                "Tag": "figcaption"
-                              },
+                              "use": "FigureCaption",
+                              "props": {},
                               "attrs": {
                                 "data-testid": "caption"
                               },

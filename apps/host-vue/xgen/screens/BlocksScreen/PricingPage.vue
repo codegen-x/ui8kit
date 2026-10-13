@@ -51,32 +51,34 @@ const duo = fromCodex<Plan>(duoEntries, DUO_FIELDS);
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.blocks.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
-          {{ ui.blocks.themes.marketing.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="block-title">
-          {{ ui.blocks.names.pricing }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ ui.blocks.docs.pricing }}
-        </Text>
-      </Stack>
-      <Block
-        tag="section"
-        aria-labelledby="pricing-grid-label"
-        data-testid="variant"
-        data-block="pricing"
-        data-variant="grid"
-      >
-        <Stack gap="4" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.blocks.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
+            {{ ui.blocks.themes.marketing.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="block-title">
+            {{ ui.blocks.names.pricing }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ ui.blocks.docs.pricing }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="pricing-grid-label"
+          data-testid="variant"
+          data-block="pricing"
+          data-variant="grid"
+        >
           <Title :as="2" size="base" weight="bold" id="pricing-grid-label" data-testid="variant-label">
             {{ ui.blocks.variants.pricing.grid }}
           </Title>
@@ -96,15 +98,15 @@ const duo = fromCodex<Plan>(duoEntries, DUO_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="pricing-monthly-label"
-        data-testid="variant"
-        data-block="pricing"
-        data-variant="monthly"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="pricing-monthly-label"
+          data-testid="variant"
+          data-block="pricing"
+          data-variant="monthly"
+        >
           <Title :as="2" size="base" weight="bold" id="pricing-monthly-label" data-testid="variant-label">
             {{ ui.blocks.variants.pricing.monthly }}
           </Title>
@@ -124,15 +126,15 @@ const duo = fromCodex<Plan>(duoEntries, DUO_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="pricing-annual-label"
-        data-testid="variant"
-        data-block="pricing"
-        data-variant="annual"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="pricing-annual-label"
+          data-testid="variant"
+          data-block="pricing"
+          data-variant="annual"
+        >
           <Title :as="2" size="base" weight="bold" id="pricing-annual-label" data-testid="variant-label">
             {{ ui.blocks.variants.pricing.annual }}
           </Title>
@@ -152,15 +154,15 @@ const duo = fromCodex<Plan>(duoEntries, DUO_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="pricing-duo-label"
-        data-testid="variant"
-        data-block="pricing"
-        data-variant="duo"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="pricing-duo-label"
+          data-testid="variant"
+          data-block="pricing"
+          data-variant="duo"
+        >
           <Title :as="2" size="base" weight="bold" id="pricing-duo-label" data-testid="variant-label">
             {{ ui.blocks.variants.pricing.duo }}
           </Title>
@@ -180,15 +182,15 @@ const duo = fromCodex<Plan>(duoEntries, DUO_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="pricing-grid2-label"
-        data-testid="variant"
-        data-block="pricing"
-        data-variant="grid2"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="pricing-grid2-label"
+          data-testid="variant"
+          data-block="pricing"
+          data-variant="grid2"
+        >
           <Title :as="2" size="base" weight="bold" id="pricing-grid2-label" data-testid="variant-label">
             {{ ui.blocks.variants.pricing.grid2 }}
           </Title>
@@ -208,15 +210,15 @@ const duo = fromCodex<Plan>(duoEntries, DUO_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="pricing-grid4-label"
-        data-testid="variant"
-        data-block="pricing"
-        data-variant="grid4"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="pricing-grid4-label"
+          data-testid="variant"
+          data-block="pricing"
+          data-variant="grid4"
+        >
           <Title :as="2" size="base" weight="bold" id="pricing-grid4-label" data-testid="variant-label">
             {{ ui.blocks.variants.pricing.grid4 }}
           </Title>
@@ -236,15 +238,15 @@ const duo = fromCodex<Plan>(duoEntries, DUO_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="pricing-stack-label"
-        data-testid="variant"
-        data-block="pricing"
-        data-variant="stack"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="pricing-stack-label"
+          data-testid="variant"
+          data-block="pricing"
+          data-variant="stack"
+        >
           <Title :as="2" size="base" weight="bold" id="pricing-stack-label" data-testid="variant-label">
             {{ ui.blocks.variants.pricing.stack }}
           </Title>
@@ -264,15 +266,15 @@ const duo = fromCodex<Plan>(duoEntries, DUO_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="pricing-flat-label"
-        data-testid="variant"
-        data-block="pricing"
-        data-variant="flat"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="pricing-flat-label"
+          data-testid="variant"
+          data-block="pricing"
+          data-variant="flat"
+        >
           <Title :as="2" size="base" weight="bold" id="pricing-flat-label" data-testid="variant-label">
             {{ ui.blocks.variants.pricing.flat }}
           </Title>
@@ -292,15 +294,15 @@ const duo = fromCodex<Plan>(duoEntries, DUO_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="pricing-compactMuted-label"
-        data-testid="variant"
-        data-block="pricing"
-        data-variant="compactMuted"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="pricing-compactMuted-label"
+          data-testid="variant"
+          data-block="pricing"
+          data-variant="compactMuted"
+        >
           <Title :as="2" size="base" weight="bold" id="pricing-compactMuted-label" data-testid="variant-label">
             {{ ui.blocks.variants.pricing.compactMuted }}
           </Title>
@@ -320,15 +322,15 @@ const duo = fromCodex<Plan>(duoEntries, DUO_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="pricing-roomy-label"
-        data-testid="variant"
-        data-block="pricing"
-        data-variant="roomy"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="pricing-roomy-label"
+          data-testid="variant"
+          data-block="pricing"
+          data-variant="roomy"
+        >
           <Title :as="2" size="base" weight="bold" id="pricing-roomy-label" data-testid="variant-label">
             {{ ui.blocks.variants.pricing.roomy }}
           </Title>
@@ -348,7 +350,7 @@ const duo = fromCodex<Plan>(duoEntries, DUO_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

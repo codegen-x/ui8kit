@@ -28,37 +28,39 @@ const megagroups = fromCodex<MegaGroup>(megagroupsEntries, MEGAGROUPS_FIELDS);
 
 export function MegamenuPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text
-            size="sm"
-            className="font-medium text-muted-foreground"
-            data-testid="block-theme"
-            data-theme-id="marketing"
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text
+              size="sm"
+              className="font-medium text-muted-foreground"
+              data-testid="block-theme"
+              data-theme-id="marketing"
+            >
+              {ui.blocks.themes.marketing.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.megamenu}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.megamenu}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="megamenu-open-label"
+            data-testid="variant"
+            data-block="megamenu"
+            data-variant="open"
           >
-            {ui.blocks.themes.marketing.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.megamenu}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.megamenu}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="megamenu-open-label"
-          data-testid="variant"
-          data-block="megamenu"
-          data-variant="open"
-        >
-          <Stack gap="4" align="stretch">
             <Title as={2} size="base" weight="bold" id="megamenu-open-label" data-testid="variant-label">
               {ui.blocks.variants.megamenu.open}
             </Title>
@@ -77,15 +79,15 @@ export function MegamenuPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="megamenu-closed-label"
-          data-testid="variant"
-          data-block="megamenu"
-          data-variant="closed"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="megamenu-closed-label"
+            data-testid="variant"
+            data-block="megamenu"
+            data-variant="closed"
+          >
             <Title as={2} size="base" weight="bold" id="megamenu-closed-label" data-testid="variant-label">
               {ui.blocks.variants.megamenu.closed}
             </Title>
@@ -104,15 +106,15 @@ export function MegamenuPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="megamenu-twoCols-label"
-          data-testid="variant"
-          data-block="megamenu"
-          data-variant="twoCols"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="megamenu-twoCols-label"
+            data-testid="variant"
+            data-block="megamenu"
+            data-variant="twoCols"
+          >
             <Title as={2} size="base" weight="bold" id="megamenu-twoCols-label" data-testid="variant-label">
               {ui.blocks.variants.megamenu.twoCols}
             </Title>
@@ -131,15 +133,15 @@ export function MegamenuPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="megamenu-promo-label"
-          data-testid="variant"
-          data-block="megamenu"
-          data-variant="promo"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="megamenu-promo-label"
+            data-testid="variant"
+            data-block="megamenu"
+            data-variant="promo"
+          >
             <Title as={2} size="base" weight="bold" id="megamenu-promo-label" data-testid="variant-label">
               {ui.blocks.variants.megamenu.promo}
             </Title>
@@ -158,8 +160,8 @@ export function MegamenuPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

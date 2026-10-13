@@ -22,6 +22,7 @@
   import List from "../primitives/list/list.svelte";
   import ListItem from "../primitives/list/list-item.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
+  import Nav from "../primitives/nav/nav.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
   import { defaults } from "../presets/defaults";
@@ -44,7 +45,7 @@
           {brand}
         </Text>
       </Group>
-      <Block tag="nav" class="min-w-0 flex-1" aria-label={label}>
+      <Nav class="min-w-0 flex-1" aria-label={label}>
         <Group
           gap="0"
           align="start"
@@ -68,7 +69,7 @@
             </Stack>
           {/each}
         </Group>
-      </Block>
+      </Nav>
     </Box>
   </Container>
 </Block>

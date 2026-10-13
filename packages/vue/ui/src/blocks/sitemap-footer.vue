@@ -34,6 +34,7 @@ import Group from "../primitives/group/group.vue";
 import Input from "../primitives/input/input.vue";
 import Label from "../primitives/label/label.vue";
 import Link from "../primitives/link/link.vue";
+import Nav from "../primitives/nav/nav.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
@@ -110,13 +111,13 @@ const {
         <Text size="base" weight="bold">
           {{ brand }}
         </Text>
-        <Block tag="nav" :aria-label="label">
+        <Nav :aria-label="label">
           <Group gap="4" class="flex-wrap">
             <Link v-for="g in groups" :key="g.id" href="#/" variant="default" class="text-sm" data-testid="group">
               {{ g.title }}
             </Link>
           </Group>
-        </Block>
+        </Nav>
       </Group>
       <Group gap="4" align="center" justify="between" class="flex-wrap border-t border-border pt-6">
         <Text size="sm" class="text-muted-foreground">

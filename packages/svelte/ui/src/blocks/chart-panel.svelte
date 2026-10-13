@@ -22,6 +22,7 @@
 </script>
 
 <script lang="ts">
+  import Block from "../primitives/block/block.svelte";
   import Container from "../primitives/container/container.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import BarChart from "../components/bar-chart.svelte";
@@ -42,16 +43,22 @@
   }: ChartPanelProps = $props();
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-8" data-slot="container">
-  <Panel title={title} description={text} id={id} class={(((tone as string) === "muted") ? "bg-muted" : "")}>
-    {#if ((chart as string) === "bars")}
-      <BarChart bars={series} label={summary} height={(((size as string) === "compact") ? 96 : 176)} />
-    {:else}
-      <Stack gap={(((size as string) === "compact") ? "0" : "2")} align="stretch" data-testid="items">
-        {#each series as s (s.id)}
-          <MeterRow label={s.label} value={s.value} caption={tpl(percent, s.value)} />
-        {/each}
-      </Stack>
-    {/if}
-  </Panel>
-</Container>
+<Block
+  tag="section"
+  aria-labelledby={((title && id) ? tpl("{0}-t", id) : undefined)}
+  data-testid="panel-section"
+>
+  <Container class="mx-auto w-full max-w-6xl px-4 py-8" data-slot="container">
+    <Panel title={title} description={text} id={id} class={(((tone as string) === "muted") ? "bg-muted" : "")}>
+      {#if ((chart as string) === "bars")}
+        <BarChart bars={series} label={summary} height={(((size as string) === "compact") ? 96 : 176)} />
+      {:else}
+        <Stack gap={(((size as string) === "compact") ? "0" : "2")} align="stretch" data-testid="items">
+          {#each series as s (s.id)}
+            <MeterRow label={s.label} value={s.value} caption={tpl(percent, s.value)} />
+          {/each}
+        </Stack>
+      {/if}
+    </Panel>
+  </Container>
+</Block>

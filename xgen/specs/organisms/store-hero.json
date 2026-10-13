@@ -109,11 +109,43 @@
       },
       "then": [
         {
-          "organism": "Backdrop",
+          "organism": "SectionFrame",
           "props": {
-            "kind": "image",
-            "alt": {
+            "id": {
+              "$": "id"
+            },
+            "title": {
               "$": "title"
+            },
+            "lead": {
+              "$": "lead"
+            },
+            "heading": {
+              "badge": {
+                "$": "badge"
+              },
+              "level": {
+                "$": "level"
+              }
+            },
+            "tone": {
+              "$": "tone"
+            },
+            "density": "roomy",
+            "measure": "3xl",
+            "className": {
+              "op": "cond",
+              "args": [
+                {
+                  "op": "eq",
+                  "args": [
+                    "image",
+                    "image"
+                  ]
+                },
+                "relative isolate overflow-hidden",
+                ""
+              ]
             }
           },
           "slots": {
@@ -121,176 +153,151 @@
               "args": [],
               "do": [
                 {
-                  "organism": "SectionFrame",
+                  "organism": "Backdrop",
                   "props": {
-                    "id": {
-                      "$": "id"
-                    },
-                    "title": {
+                    "kind": "image",
+                    "alt": {
                       "$": "title"
+                    }
+                  }
+                },
+                {
+                  "organism": "ActionGroup",
+                  "props": {
+                    "primary": {
+                      "$": "actions.cta"
                     },
-                    "lead": {
-                      "$": "lead"
+                    "primaryHref": {
+                      "$": "actions.href"
                     },
-                    "heading": {
-                      "badge": {
-                        "$": "badge"
-                      },
-                      "level": {
-                        "$": "level"
-                      }
+                    "secondary": {
+                      "op": "cond",
+                      "args": [
+                        {
+                          "op": "eq",
+                          "args": [
+                            {
+                              "$": "actions.mode"
+                            },
+                            "two"
+                          ]
+                        },
+                        {
+                          "$": "actions.secondary"
+                        },
+                        {
+                          "op": "undef",
+                          "args": []
+                        }
+                      ]
                     },
-                    "tone": {
-                      "$": "tone"
+                    "secondaryHref": {
+                      "$": "actions.secondaryHref"
                     },
-                    "density": "roomy",
-                    "measure": "3xl"
+                    "align": "start"
+                  }
+                },
+                {
+                  "use": "Grid",
+                  "props": {
+                    "Cols": "1-3",
+                    "Class": "gap-4"
                   },
-                  "slots": {
-                    "children": {
-                      "args": [],
+                  "attrs": {
+                    "data-testid": "perks"
+                  },
+                  "children": [
+                    {
+                      "each": {
+                        "$": "perks"
+                      },
+                      "as": "p",
+                      "key": {
+                        "$": "p.id"
+                      },
                       "do": [
                         {
-                          "organism": "ActionGroup",
-                          "props": {
-                            "primary": {
-                              "$": "actions.cta"
-                            },
-                            "primaryHref": {
-                              "$": "actions.href"
-                            },
-                            "secondary": {
-                              "op": "cond",
-                              "args": [
+                          "when": {
+                            "op": "lt",
+                            "args": [
+                              {
+                                "$": "i"
+                              },
+                              3
+                            ]
+                          },
+                          "then": [
+                            {
+                              "use": "Group",
+                              "props": {
+                                "Gap": "4",
+                                "Align": "start"
+                              },
+                              "attrs": {
+                                "data-testid": "perk"
+                              },
+                              "children": [
                                 {
-                                  "op": "eq",
-                                  "args": [
+                                  "use": "Box",
+                                  "props": {
+                                    "Class": "flex size-10 shrink-0 items-center justify-center rounded bg-muted"
+                                  },
+                                  "children": [
                                     {
-                                      "$": "actions.mode"
-                                    },
-                                    "two"
+                                      "use": "LucideIcon",
+                                      "props": {
+                                        "Name": {
+                                          "$": "p.icon"
+                                        },
+                                        "Size": 20
+                                      }
+                                    }
                                   ]
                                 },
                                 {
-                                  "$": "actions.secondary"
-                                },
-                                {
-                                  "op": "undef",
-                                  "args": []
-                                }
-                              ]
-                            },
-                            "secondaryHref": {
-                              "$": "actions.secondaryHref"
-                            },
-                            "align": "start"
-                          }
-                        },
-                        {
-                          "use": "Grid",
-                          "props": {
-                            "Cols": "1-3",
-                            "Class": "gap-4"
-                          },
-                          "attrs": {
-                            "data-testid": "perks"
-                          },
-                          "children": [
-                            {
-                              "each": {
-                                "$": "perks"
-                              },
-                              "as": "p",
-                              "key": {
-                                "$": "p.id"
-                              },
-                              "do": [
-                                {
-                                  "when": {
-                                    "op": "lt",
-                                    "args": [
-                                      {
-                                        "$": "i"
-                                      },
-                                      3
-                                    ]
+                                  "use": "Stack",
+                                  "props": {
+                                    "Gap": "0"
                                   },
-                                  "then": [
+                                  "children": [
                                     {
-                                      "use": "Group",
+                                      "use": "Text",
                                       "props": {
-                                        "Gap": "4",
-                                        "Align": "start"
-                                      },
-                                      "attrs": {
-                                        "data-testid": "perk"
+                                        "Size": "sm",
+                                        "Weight": "semibold"
                                       },
                                       "children": [
                                         {
-                                          "use": "Box",
-                                          "props": {
-                                            "Class": "flex size-10 shrink-0 items-center justify-center rounded bg-muted"
-                                          },
-                                          "children": [
-                                            {
-                                              "use": "LucideIcon",
-                                              "props": {
-                                                "Name": {
-                                                  "$": "p.icon"
-                                                },
-                                                "Size": 20
-                                              }
-                                            }
-                                          ]
-                                        },
+                                          "text": {
+                                            "$": "p.title"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "xs",
+                                        "Class": "text-muted-foreground"
+                                      },
+                                      "children": [
                                         {
-                                          "use": "Stack",
-                                          "props": {
-                                            "Gap": "0"
-                                          },
-                                          "children": [
-                                            {
-                                              "use": "Text",
-                                              "props": {
-                                                "Size": "sm",
-                                                "Weight": "semibold"
-                                              },
-                                              "children": [
-                                                {
-                                                  "text": {
-                                                    "$": "p.title"
-                                                  }
-                                                }
-                                              ]
-                                            },
-                                            {
-                                              "use": "Text",
-                                              "props": {
-                                                "Size": "xs",
-                                                "Class": "text-muted-foreground"
-                                              },
-                                              "children": [
-                                                {
-                                                  "text": {
-                                                    "$": "p.text"
-                                                  }
-                                                }
-                                              ]
-                                            }
-                                          ]
+                                          "text": {
+                                            "$": "p.text"
+                                          }
                                         }
                                       ]
                                     }
                                   ]
                                 }
-                              ],
-                              "index": "i"
+                              ]
                             }
                           ]
                         }
-                      ]
+                      ],
+                      "index": "i"
                     }
-                  }
+                  ]
                 }
               ]
             }

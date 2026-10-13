@@ -20,6 +20,7 @@
 </script>
 
 <script lang="ts">
+  import Block from "../primitives/block/block.svelte";
   import Container from "../primitives/container/container.svelte";
   import List from "../primitives/list/list.svelte";
   import ListItem from "../primitives/list/list-item.svelte";
@@ -27,7 +28,7 @@
   import Text from "../primitives/text/text.svelte";
   import Panel from "../components/panel.svelte";
   import Timeline from "../components/timeline.svelte";
-  import { cn } from "../utils";
+  import { cn, tpl } from "../utils";
 
   let {
     id,
@@ -40,36 +41,42 @@
   }: ActivityFeedProps = $props();
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-8" data-slot="container">
-  <Panel title={title} description={text} id={id} class={(((tone as string) === "muted") ? "bg-muted" : "")}>
-    {#if ((layout as string) === "timeline")}
-      <Timeline items={events} />
-    {:else}
-      <List class="m-0 flex list-none flex-col p-0" data-testid="items">
-        {#each events as e (e.id)}
-          <ListItem
-            class={cn(
-              "flex items-start justify-between gap-4 border-b border-border last:border-0",
-              (((density as string) === "compact") ? "py-2" : "py-4")
-            )}
-            data-testid="item"
-          >
-            <Stack gap="0">
-              <Text size="sm" weight="semibold">
-                {e.title}
-              </Text>
-              {#if ((density as string) === "default")}
-                <Text size="sm" class="text-muted-foreground">
-                  {e.text}
+<Block
+  tag="section"
+  aria-labelledby={((title && id) ? tpl("{0}-t", id) : undefined)}
+  data-testid="panel-section"
+>
+  <Container class="mx-auto w-full max-w-6xl px-4 py-8" data-slot="container">
+    <Panel title={title} description={text} id={id} class={(((tone as string) === "muted") ? "bg-muted" : "")}>
+      {#if ((layout as string) === "timeline")}
+        <Timeline items={events} />
+      {:else}
+        <List class="m-0 flex list-none flex-col p-0" data-testid="items">
+          {#each events as e (e.id)}
+            <ListItem
+              class={cn(
+                "flex items-start justify-between gap-4 border-b border-border last:border-0",
+                (((density as string) === "compact") ? "py-2" : "py-4")
+              )}
+              data-testid="item"
+            >
+              <Stack gap="0">
+                <Text size="sm" weight="semibold">
+                  {e.title}
                 </Text>
-              {/if}
-            </Stack>
-            <Text size="xs" class="shrink-0 text-muted-foreground">
-              {e.time}
-            </Text>
-          </ListItem>
-        {/each}
-      </List>
-    {/if}
-  </Panel>
-</Container>
+                {#if ((density as string) === "default")}
+                  <Text size="sm" class="text-muted-foreground">
+                    {e.text}
+                  </Text>
+                {/if}
+              </Stack>
+              <Text size="xs" class="shrink-0 text-muted-foreground">
+                {e.time}
+              </Text>
+            </ListItem>
+          {/each}
+        </List>
+      {/if}
+    </Panel>
+  </Container>
+</Block>

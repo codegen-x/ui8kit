@@ -39,26 +39,33 @@ const STOREHERO_ACTIONS = {
 
 export function CommerceStorefrontPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.catalog.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text size="sm" className="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-            {ui.catalog.sections.commerce.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="category-title">
-            {ui.catalog.categories.commerceStorefront}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {tpl(ui.catalog.count, 3, 10)}
-          </Text>
-        </Stack>
-        <Block tag="section" aria-labelledby="catalog-hero-title" data-testid="catalog-block" data-block="hero">
-          <Stack gap="6" align="stretch">
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.catalog.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text size="sm" className="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+              {ui.catalog.sections.commerce.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="category-title">
+              {ui.catalog.categories.commerceStorefront}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {tpl(ui.catalog.count, 3, 10)}
+            </Text>
+          </Stack>
+          <Stack
+            gap="6"
+            align="stretch"
+            role="group"
+            aria-labelledby="catalog-hero-title"
+            data-testid="catalog-block"
+            data-block="hero"
+          >
             <Stack gap="2" align="stretch">
               <Title as={2} size="2xl" weight="bold" id="catalog-hero-title">
                 {ui.blocks.names.hero}
@@ -67,55 +74,55 @@ export function CommerceStorefrontPage() {
                 {ui.blocks.docs.hero}
               </Text>
             </Stack>
-            <Block
-              tag="section"
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="hero-shop-label"
               data-testid="variant"
               data-block="hero"
               data-variant="shop"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="hero-shop-label" data-testid="variant-label">
-                  {ui.blocks.variants.hero.shop}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <HeroClassic
-                    id="hero-shop"
-                    title={ui.cases.shop.hero.title}
-                    text={ui.cases.shop.hero.text}
-                    actions={{
-                      cta: ui.cases.shop.hero.cta,
-                      href: "#/pricing",
-                      secondary: ui.cases.shop.hero.secondary,
-                      secondaryHref: "#/pricing",
-                      emailLabel: ui.promo.newsletter.label,
-                      mode: "one",
-                    }}
-                    media={{
-                      codeTitle: ui.vibe.code.title,
-                      prompt: ui.vibe.code.prompt,
-                      lines: terminal,
-                      kind: "image",
-                      side: "start",
-                    }}
-                    layout="split"
-                    scale="default"
-                    tone="muted"
-                    density="roomy"
-                    level={2}
-                  />
-                </Box>
-              </Stack>
-            </Block>
+              <Title as={3} size="base" weight="bold" id="hero-shop-label" data-testid="variant-label">
+                {ui.blocks.variants.hero.shop}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <HeroClassic
+                  id="hero-shop"
+                  title={ui.cases.shop.hero.title}
+                  text={ui.cases.shop.hero.text}
+                  actions={{
+                    cta: ui.cases.shop.hero.cta,
+                    href: "#/pricing",
+                    secondary: ui.cases.shop.hero.secondary,
+                    secondaryHref: "#/pricing",
+                    emailLabel: ui.promo.newsletter.label,
+                    mode: "one",
+                  }}
+                  media={{
+                    codeTitle: ui.vibe.code.title,
+                    prompt: ui.vibe.code.prompt,
+                    lines: terminal,
+                    kind: "image",
+                    side: "start",
+                  }}
+                  layout="split"
+                  scale="default"
+                  tone="muted"
+                  density="roomy"
+                  level={2}
+                />
+              </Box>
+            </Stack>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="catalog-storehero-title"
-          data-testid="catalog-block"
-          data-block="storehero"
-        >
-          <Stack gap="6" align="stretch">
+          <Stack
+            gap="6"
+            align="stretch"
+            role="group"
+            aria-labelledby="catalog-storehero-title"
+            data-testid="catalog-block"
+            data-block="storehero"
+          >
             <Stack gap="2" align="stretch">
               <Title as={2} size="2xl" weight="bold" id="catalog-storehero-title">
                 {ui.blocks.names.storehero}
@@ -124,122 +131,127 @@ export function CommerceStorefrontPage() {
                 {ui.blocks.docs.storehero}
               </Text>
             </Stack>
-            <Block
-              tag="section"
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="storehero-overlay-label"
               data-testid="variant"
               data-block="storehero"
               data-variant="overlay"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="storehero-overlay-label" data-testid="variant-label">
-                  {ui.blocks.variants.storehero.overlay}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <StoreHero
-                    id="storehero-overlay"
-                    title={ui.commerce.storeHero.title}
-                    lead={ui.commerce.storeHero.lead}
-                    badge={ui.commerce.storeHero.badge}
-                    perks={perks}
-                    card={ui.commerce.storeHero.card}
-                    actions={STOREHERO_ACTIONS}
-                    layout="overlay"
-                    mediaSide="end"
-                    tone="default"
-                    level={2}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="storehero-overlay-label" data-testid="variant-label">
+                {ui.blocks.variants.storehero.overlay}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <StoreHero
+                  id="storehero-overlay"
+                  title={ui.commerce.storeHero.title}
+                  lead={ui.commerce.storeHero.lead}
+                  badge={ui.commerce.storeHero.badge}
+                  perks={perks}
+                  card={ui.commerce.storeHero.card}
+                  actions={STOREHERO_ACTIONS}
+                  layout="overlay"
+                  mediaSide="end"
+                  tone="default"
+                  level={2}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="storehero-overlayStart-label"
               data-testid="variant"
               data-block="storehero"
               data-variant="overlayStart"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="storehero-overlayStart-label" data-testid="variant-label">
-                  {ui.blocks.variants.storehero.overlayStart}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <StoreHero
-                    id="storehero-overlayStart"
-                    title={ui.commerce.storeHero.title}
-                    lead={ui.commerce.storeHero.lead}
-                    badge={ui.commerce.storeHero.badge}
-                    perks={perks}
-                    card={ui.commerce.storeHero.card}
-                    actions={STOREHERO_ACTIONS}
-                    layout="overlay"
-                    mediaSide="start"
-                    tone="default"
-                    level={2}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="storehero-overlayStart-label" data-testid="variant-label">
+                {ui.blocks.variants.storehero.overlayStart}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <StoreHero
+                  id="storehero-overlayStart"
+                  title={ui.commerce.storeHero.title}
+                  lead={ui.commerce.storeHero.lead}
+                  badge={ui.commerce.storeHero.badge}
+                  perks={perks}
+                  card={ui.commerce.storeHero.card}
+                  actions={STOREHERO_ACTIONS}
+                  layout="overlay"
+                  mediaSide="start"
+                  tone="default"
+                  level={2}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="storehero-backdrop-label"
               data-testid="variant"
               data-block="storehero"
               data-variant="backdrop"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="storehero-backdrop-label" data-testid="variant-label">
-                  {ui.blocks.variants.storehero.backdrop}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <StoreHero
-                    id="storehero-backdrop"
-                    title={ui.commerce.storeHero.title}
-                    lead={ui.commerce.storeHero.lead}
-                    badge={ui.commerce.storeHero.badge}
-                    perks={perks}
-                    card={ui.commerce.storeHero.card}
-                    actions={STOREHERO_ACTIONS}
-                    layout="backdrop"
-                    mediaSide="end"
-                    tone="default"
-                    level={2}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="storehero-backdrop-label" data-testid="variant-label">
+                {ui.blocks.variants.storehero.backdrop}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <StoreHero
+                  id="storehero-backdrop"
+                  title={ui.commerce.storeHero.title}
+                  lead={ui.commerce.storeHero.lead}
+                  badge={ui.commerce.storeHero.badge}
+                  perks={perks}
+                  card={ui.commerce.storeHero.card}
+                  actions={STOREHERO_ACTIONS}
+                  layout="backdrop"
+                  mediaSide="end"
+                  tone="default"
+                  level={2}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="storehero-muted-label"
               data-testid="variant"
               data-block="storehero"
               data-variant="muted"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="storehero-muted-label" data-testid="variant-label">
-                  {ui.blocks.variants.storehero.muted}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <StoreHero
-                    id="storehero-muted"
-                    title={ui.commerce.storeHero.title}
-                    lead={ui.commerce.storeHero.lead}
-                    badge={ui.commerce.storeHero.badge}
-                    perks={perks}
-                    card={ui.commerce.storeHero.card}
-                    actions={{ ...STOREHERO_ACTIONS, mode: "one" }}
-                    layout="overlay"
-                    mediaSide="end"
-                    tone="muted"
-                    level={2}
-                  />
-                </Box>
-              </Stack>
-            </Block>
+              <Title as={3} size="base" weight="bold" id="storehero-muted-label" data-testid="variant-label">
+                {ui.blocks.variants.storehero.muted}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <StoreHero
+                  id="storehero-muted"
+                  title={ui.commerce.storeHero.title}
+                  lead={ui.commerce.storeHero.lead}
+                  badge={ui.commerce.storeHero.badge}
+                  perks={perks}
+                  card={ui.commerce.storeHero.card}
+                  actions={{ ...STOREHERO_ACTIONS, mode: "one" }}
+                  layout="overlay"
+                  mediaSide="end"
+                  tone="muted"
+                  level={2}
+                />
+              </Box>
+            </Stack>
           </Stack>
-        </Block>
-        <Block tag="section" aria-labelledby="catalog-usp-title" data-testid="catalog-block" data-block="usp">
-          <Stack gap="6" align="stretch">
+          <Stack
+            gap="6"
+            align="stretch"
+            role="group"
+            aria-labelledby="catalog-usp-title"
+            data-testid="catalog-block"
+            data-block="usp"
+          >
             <Stack gap="2" align="stretch">
               <Title as={2} size="2xl" weight="bold" id="catalog-usp-title">
                 {ui.blocks.names.usp}
@@ -248,90 +260,96 @@ export function CommerceStorefrontPage() {
                 {ui.blocks.docs.usp}
               </Text>
             </Stack>
-            <Block
-              tag="section"
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="usp-strip-label"
               data-testid="variant"
               data-block="usp"
               data-variant="strip"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="usp-strip-label" data-testid="variant-label">
-                  {ui.blocks.variants.usp.strip}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <UspStrip id="usp-strip" perks={perks} layout="strip" tone="default" density="default" />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="usp-strip-label" data-testid="variant-label">
+                {ui.blocks.variants.usp.strip}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <UspStrip id="usp-strip" perks={perks} layout="strip" tone="default" density="default" />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="usp-cards-label"
               data-testid="variant"
               data-block="usp"
               data-variant="cards"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="usp-cards-label" data-testid="variant-label">
-                  {ui.blocks.variants.usp.cards}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <UspStrip
-                    id="usp-cards"
-                    perks={perks}
-                    layout="cards"
-                    tone="default"
-                    density="default"
-                    title={ui.commerce.usp.title}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="usp-cards-label" data-testid="variant-label">
+                {ui.blocks.variants.usp.cards}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <UspStrip
+                  id="usp-cards"
+                  perks={perks}
+                  layout="cards"
+                  tone="default"
+                  density="default"
+                  title={ui.commerce.usp.title}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="usp-stripCompact-label"
               data-testid="variant"
               data-block="usp"
               data-variant="stripCompact"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="usp-stripCompact-label" data-testid="variant-label">
-                  {ui.blocks.variants.usp.stripCompact}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <UspStrip id="usp-stripCompact" perks={perks} layout="strip" tone="default" density="compact" />
-                </Box>
-              </Stack>
-            </Block>
-            <Block tag="section" aria-labelledby="usp-bar-label" data-testid="variant" data-block="usp" data-variant="bar">
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="usp-bar-label" data-testid="variant-label">
-                  {ui.blocks.variants.usp.bar}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <UspStrip id="usp-bar" perks={perks} layout="bar" tone="default" density="compact" />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="usp-stripCompact-label" data-testid="variant-label">
+                {ui.blocks.variants.usp.stripCompact}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <UspStrip id="usp-stripCompact" perks={perks} layout="strip" tone="default" density="compact" />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
+              aria-labelledby="usp-bar-label"
+              data-testid="variant"
+              data-block="usp"
+              data-variant="bar"
+            >
+              <Title as={3} size="base" weight="bold" id="usp-bar-label" data-testid="variant-label">
+                {ui.blocks.variants.usp.bar}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <UspStrip id="usp-bar" perks={perks} layout="bar" tone="default" density="compact" />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="usp-barMuted-label"
               data-testid="variant"
               data-block="usp"
               data-variant="barMuted"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="usp-barMuted-label" data-testid="variant-label">
-                  {ui.blocks.variants.usp.barMuted}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <UspStrip id="usp-barMuted" perks={perks} layout="bar" tone="muted" density="compact" />
-                </Box>
-              </Stack>
-            </Block>
+              <Title as={3} size="base" weight="bold" id="usp-barMuted-label" data-testid="variant-label">
+                {ui.blocks.variants.usp.barMuted}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <UspStrip id="usp-barMuted" perks={perks} layout="bar" tone="muted" density="compact" />
+              </Box>
+            </Stack>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

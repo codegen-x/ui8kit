@@ -45,54 +45,56 @@
   }: StatsBandProps = $props();
 </script>
 
-<Backdrop kind={(((surface as string) === "image") ? "image" : "none")} alt={title}>
-  <SectionFrame
-    id={id}
-    title={title}
-    tone={tone}
-    density={density}
-    align={align}
-    measure={
-      (surface as string) === "panel" ? "fill"
-      : (layout as string) === "stack" ? "xs"
-      : "default"
-    }
-    class={cn(
-      (((surface as string) === "image") ? "bg-transparent" : ""),
-      (((surface as string) === "panel") ? "py-0" : "")
-    )}
-  >
-    {#if ((surface as string) === "panel")}
-      <Grid
-        cols={
-          (cols as string) === "2" ? "2"
-          : (cols as string) === "3" ? "2-3"
-          : (cols as string) === "4" ? "2-4"
-          : "3-6"
-        }
-        class={cn("w-full items-center bg-muted px-6", defaults.stats.panel)}
-        data-testid="items"
-      >
-        {#each stats as stat (stat.id)}
-          <StatFigure stat={stat} item={item} align={align} />
-        {/each}
-      </Grid>
-    {:else}
-      <Grid
-        cols={
-          (layout as string) === "stack" ? "1"
-          : (cols as string) === "2" ? "2"
-          : (cols as string) === "3" ? "2-3"
-          : (cols as string) === "4" ? "2-4"
-          : "3-6"
-        }
-        class="gap-6"
-        data-testid="items"
-      >
-        {#each stats as stat (stat.id)}
-          <StatFigure stat={stat} item={item} align={align} />
-        {/each}
-      </Grid>
-    {/if}
-  </SectionFrame>
-</Backdrop>
+<SectionFrame
+  id={id}
+  title={title}
+  tone={tone}
+  density={density}
+  align={align}
+  measure={
+    (surface as string) === "panel" ? "fill"
+    : (layout as string) === "stack" ? "xs"
+    : "default"
+  }
+  class={cn(
+    cn((((surface as string) === "image") ? "bg-transparent" : ""), (((surface as string) === "panel") ? "py-0" : "")),
+    (
+      (((surface as string) === "image") ? "image" : "none") === "image" ? "relative isolate overflow-hidden"
+      : ""
+    )
+  )}
+>
+  <Backdrop kind={(((surface as string) === "image") ? "image" : "none")} alt={title} />
+  {#if ((surface as string) === "panel")}
+    <Grid
+      cols={
+        (cols as string) === "2" ? "2"
+        : (cols as string) === "3" ? "2-3"
+        : (cols as string) === "4" ? "2-4"
+        : "3-6"
+      }
+      class={cn("w-full items-center bg-muted px-6", defaults.stats.panel)}
+      data-testid="items"
+    >
+      {#each stats as stat (stat.id)}
+        <StatFigure stat={stat} item={item} align={align} />
+      {/each}
+    </Grid>
+  {:else}
+    <Grid
+      cols={
+        (layout as string) === "stack" ? "1"
+        : (cols as string) === "2" ? "2"
+        : (cols as string) === "3" ? "2-3"
+        : (cols as string) === "4" ? "2-4"
+        : "3-6"
+      }
+      class="gap-6"
+      data-testid="items"
+    >
+      {#each stats as stat (stat.id)}
+        <StatFigure stat={stat} item={item} align={align} />
+      {/each}
+    </Grid>
+  {/if}
+</SectionFrame>

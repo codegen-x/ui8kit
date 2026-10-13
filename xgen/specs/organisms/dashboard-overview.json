@@ -173,10 +173,8 @@
                       },
                       "do": [
                         {
-                          "use": "Block",
-                          "props": {
-                            "Tag": "div"
-                          },
+                          "use": "Box",
+                          "props": {},
                           "attrs": {
                             "data-testid": "item"
                           },

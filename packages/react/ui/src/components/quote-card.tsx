@@ -5,7 +5,7 @@
  * stars and a company glyph as `item` says.
  */
 import { type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
+import { Figure } from "../primitives/figure/figure";
 import { Group } from "../primitives/group/group";
 import { Inline } from "../primitives/inline/inline";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
@@ -25,8 +25,7 @@ export type QuoteCardProps = {
 
 export function QuoteCard({ q, labels, item, layout = "grid" }: QuoteCardProps) {
   return (
-    <Block
-      tag="figure"
+    <Figure
       className={cn(
         "m-0 flex flex-col gap-4",
         ((item?.kind === "plain") ? "" : "rounded p-6 inset-ring inset-ring-border bg-card"),
@@ -86,6 +85,6 @@ export function QuoteCard({ q, labels, item, layout = "grid" }: QuoteCardProps) 
           </Group>
         </>
       )}
-    </Block>
+    </Figure>
   );
 }

@@ -30,37 +30,39 @@ const summary = fromCodex<SummaryRow>(summaryEntries, SUMMARY_FIELDS);
 
 export function SummaryPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text
-            size="sm"
-            className="font-medium text-muted-foreground"
-            data-testid="block-theme"
-            data-theme-id="commerce"
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text
+              size="sm"
+              className="font-medium text-muted-foreground"
+              data-testid="block-theme"
+              data-theme-id="commerce"
+            >
+              {ui.blocks.themes.commerce.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.summary}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.summary}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="summary-card-label"
+            data-testid="variant"
+            data-block="summary"
+            data-variant="card"
           >
-            {ui.blocks.themes.commerce.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.summary}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.summary}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="summary-card-label"
-          data-testid="variant"
-          data-block="summary"
-          data-variant="card"
-        >
-          <Stack gap="4" align="stretch">
             <Title as={2} size="base" weight="bold" id="summary-card-label" data-testid="variant-label">
               {ui.blocks.variants.summary.card}
             </Title>
@@ -78,15 +80,15 @@ export function SummaryPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="summary-plain-label"
-          data-testid="variant"
-          data-block="summary"
-          data-variant="plain"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="summary-plain-label"
+            data-testid="variant"
+            data-block="summary"
+            data-variant="plain"
+          >
             <Title as={2} size="base" weight="bold" id="summary-plain-label" data-testid="variant-label">
               {ui.blocks.variants.summary.plain}
             </Title>
@@ -104,15 +106,15 @@ export function SummaryPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="summary-noCta-label"
-          data-testid="variant"
-          data-block="summary"
-          data-variant="noCta"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="summary-noCta-label"
+            data-testid="variant"
+            data-block="summary"
+            data-variant="noCta"
+          >
             <Title as={2} size="base" weight="bold" id="summary-noCta-label" data-testid="variant-label">
               {ui.blocks.variants.summary.noCta}
             </Title>
@@ -130,15 +132,15 @@ export function SummaryPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="summary-muted-label"
-          data-testid="variant"
-          data-block="summary"
-          data-variant="muted"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="summary-muted-label"
+            data-testid="variant"
+            data-block="summary"
+            data-variant="muted"
+          >
             <Title as={2} size="base" weight="bold" id="summary-muted-label" data-testid="variant-label">
               {ui.blocks.variants.summary.muted}
             </Title>
@@ -156,8 +158,8 @@ export function SummaryPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

@@ -33,26 +33,33 @@ const wizard = fromCodex<WizardStep>(wizardEntries, WIZARD_FIELDS);
 
 export function AppAuthPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.catalog.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text size="sm" className="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-            {ui.catalog.sections.app.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="category-title">
-            {ui.catalog.categories.appAuth}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {tpl(ui.catalog.count, 2, 12)}
-          </Text>
-        </Stack>
-        <Block tag="section" aria-labelledby="catalog-auth-title" data-testid="catalog-block" data-block="auth">
-          <Stack gap="6" align="stretch">
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.catalog.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text size="sm" className="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+              {ui.catalog.sections.app.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="category-title">
+              {ui.catalog.categories.appAuth}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {tpl(ui.catalog.count, 2, 12)}
+            </Text>
+          </Stack>
+          <Stack
+            gap="6"
+            align="stretch"
+            role="group"
+            aria-labelledby="catalog-auth-title"
+            data-testid="catalog-block"
+            data-block="auth"
+          >
             <Stack gap="2" align="stretch">
               <Title as={2} size="2xl" weight="bold" id="catalog-auth-title">
                 {ui.blocks.names.auth}
@@ -61,258 +68,263 @@ export function AppAuthPage() {
                 {ui.blocks.docs.auth}
               </Text>
             </Stack>
-            <Block
-              tag="section"
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="auth-signin-label"
               data-testid="variant"
               data-block="auth"
               data-variant="signin"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="auth-signin-label" data-testid="variant-label">
-                  {ui.blocks.variants.auth.signin}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <Box className="mx-auto w-full max-w-sm px-4 py-6" data-slot="container">
-                    <AuthCard
-                      id="auth-signin"
-                      title={ui.auth.signin.title}
-                      text={ui.auth.signin.text}
-                      submit={ui.auth.signin.submit}
-                      switchText={ui.auth.signin.switchText}
-                      switchLink={ui.auth.signin.switchLink}
-                      switchHref="#/"
-                      labels={ui.auth.labels}
-                      mode="signin"
-                      layout="card"
-                      social="none"
-                      level={2}
-                    />
-                  </Box>
+              <Title as={3} size="base" weight="bold" id="auth-signin-label" data-testid="variant-label">
+                {ui.blocks.variants.auth.signin}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <Box className="mx-auto w-full max-w-sm px-4 py-6" data-slot="container">
+                  <AuthCard
+                    id="auth-signin"
+                    title={ui.auth.signin.title}
+                    text={ui.auth.signin.text}
+                    submit={ui.auth.signin.submit}
+                    switchText={ui.auth.signin.switchText}
+                    switchLink={ui.auth.signin.switchLink}
+                    switchHref="#/"
+                    labels={ui.auth.labels}
+                    mode="signin"
+                    layout="card"
+                    social="none"
+                    level={2}
+                  />
                 </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="auth-magic-label"
               data-testid="variant"
               data-block="auth"
               data-variant="magic"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="auth-magic-label" data-testid="variant-label">
-                  {ui.blocks.variants.auth.magic}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <Box className="mx-auto w-full max-w-sm px-4 py-6" data-slot="container">
-                    <AuthCard
-                      id="auth-magic"
-                      title={ui.auth.magic.title}
-                      text={ui.auth.magic.text}
-                      submit={ui.auth.magic.submit}
-                      switchText={ui.auth.magic.switchText}
-                      switchLink={ui.auth.magic.switchLink}
-                      switchHref="#/"
-                      labels={ui.auth.labels}
-                      mode="magic"
-                      layout="card"
-                      social="none"
-                      level={2}
-                    />
-                  </Box>
+              <Title as={3} size="base" weight="bold" id="auth-magic-label" data-testid="variant-label">
+                {ui.blocks.variants.auth.magic}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <Box className="mx-auto w-full max-w-sm px-4 py-6" data-slot="container">
+                  <AuthCard
+                    id="auth-magic"
+                    title={ui.auth.magic.title}
+                    text={ui.auth.magic.text}
+                    submit={ui.auth.magic.submit}
+                    switchText={ui.auth.magic.switchText}
+                    switchLink={ui.auth.magic.switchLink}
+                    switchHref="#/"
+                    labels={ui.auth.labels}
+                    mode="magic"
+                    layout="card"
+                    social="none"
+                    level={2}
+                  />
                 </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="auth-socialFirst-label"
               data-testid="variant"
               data-block="auth"
               data-variant="socialFirst"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="auth-socialFirst-label" data-testid="variant-label">
-                  {ui.blocks.variants.auth.socialFirst}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <Box className="mx-auto w-full max-w-sm px-4 py-6" data-slot="container">
-                    <AuthCard
-                      id="auth-socialFirst"
-                      title={ui.auth.signin.title}
-                      text={ui.auth.signin.text}
-                      submit={ui.auth.signin.submit}
-                      switchText={ui.auth.signin.switchText}
-                      switchLink={ui.auth.signin.switchLink}
-                      switchHref="#/"
-                      labels={ui.auth.labels}
-                      mode="signin"
-                      layout="card"
-                      social="first"
-                      level={2}
-                    />
-                  </Box>
+              <Title as={3} size="base" weight="bold" id="auth-socialFirst-label" data-testid="variant-label">
+                {ui.blocks.variants.auth.socialFirst}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <Box className="mx-auto w-full max-w-sm px-4 py-6" data-slot="container">
+                  <AuthCard
+                    id="auth-socialFirst"
+                    title={ui.auth.signin.title}
+                    text={ui.auth.signin.text}
+                    submit={ui.auth.signin.submit}
+                    switchText={ui.auth.signin.switchText}
+                    switchLink={ui.auth.signin.switchLink}
+                    switchHref="#/"
+                    labels={ui.auth.labels}
+                    mode="signin"
+                    layout="card"
+                    social="first"
+                    level={2}
+                  />
                 </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="auth-signup-label"
               data-testid="variant"
               data-block="auth"
               data-variant="signup"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="auth-signup-label" data-testid="variant-label">
-                  {ui.blocks.variants.auth.signup}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <Box className="mx-auto w-full max-w-sm px-4 py-6" data-slot="container">
-                    <AuthCard
-                      id="auth-signup"
-                      title={ui.auth.signup.title}
-                      text={ui.auth.signup.text}
-                      submit={ui.auth.signup.submit}
-                      switchText={ui.auth.signup.switchText}
-                      switchLink={ui.auth.signup.switchLink}
-                      switchHref="#/"
-                      labels={ui.auth.labels}
-                      mode="signup"
-                      layout="card"
-                      social="none"
-                      level={2}
-                    />
-                  </Box>
+              <Title as={3} size="base" weight="bold" id="auth-signup-label" data-testid="variant-label">
+                {ui.blocks.variants.auth.signup}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <Box className="mx-auto w-full max-w-sm px-4 py-6" data-slot="container">
+                  <AuthCard
+                    id="auth-signup"
+                    title={ui.auth.signup.title}
+                    text={ui.auth.signup.text}
+                    submit={ui.auth.signup.submit}
+                    switchText={ui.auth.signup.switchText}
+                    switchLink={ui.auth.signup.switchLink}
+                    switchHref="#/"
+                    labels={ui.auth.labels}
+                    mode="signup"
+                    layout="card"
+                    social="none"
+                    level={2}
+                  />
                 </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="auth-reset-label"
               data-testid="variant"
               data-block="auth"
               data-variant="reset"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="auth-reset-label" data-testid="variant-label">
-                  {ui.blocks.variants.auth.reset}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <Box className="mx-auto w-full max-w-sm px-4 py-6" data-slot="container">
-                    <AuthCard
-                      id="auth-reset"
-                      title={ui.auth.reset.title}
-                      text={ui.auth.reset.text}
-                      submit={ui.auth.reset.submit}
-                      switchText={ui.auth.reset.switchText}
-                      switchLink={ui.auth.reset.switchLink}
-                      switchHref="#/"
-                      labels={ui.auth.labels}
-                      mode="reset"
-                      layout="card"
-                      social="none"
-                      level={2}
-                    />
-                  </Box>
+              <Title as={3} size="base" weight="bold" id="auth-reset-label" data-testid="variant-label">
+                {ui.blocks.variants.auth.reset}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <Box className="mx-auto w-full max-w-sm px-4 py-6" data-slot="container">
+                  <AuthCard
+                    id="auth-reset"
+                    title={ui.auth.reset.title}
+                    text={ui.auth.reset.text}
+                    submit={ui.auth.reset.submit}
+                    switchText={ui.auth.reset.switchText}
+                    switchLink={ui.auth.reset.switchLink}
+                    switchHref="#/"
+                    labels={ui.auth.labels}
+                    mode="reset"
+                    layout="card"
+                    social="none"
+                    level={2}
+                  />
                 </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="auth-plain-label"
               data-testid="variant"
               data-block="auth"
               data-variant="plain"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="auth-plain-label" data-testid="variant-label">
-                  {ui.blocks.variants.auth.plain}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <Box className="mx-auto w-full max-w-sm px-4 py-6" data-slot="container">
-                    <AuthCard
-                      id="auth-plain"
-                      title={ui.auth.signin.title}
-                      text={ui.auth.signin.text}
-                      submit={ui.auth.signin.submit}
-                      switchText={ui.auth.signin.switchText}
-                      switchLink={ui.auth.signin.switchLink}
-                      switchHref="#/"
-                      labels={ui.auth.labels}
-                      mode="signin"
-                      layout="plain"
-                      social="none"
-                      level={2}
-                    />
-                  </Box>
+              <Title as={3} size="base" weight="bold" id="auth-plain-label" data-testid="variant-label">
+                {ui.blocks.variants.auth.plain}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <Box className="mx-auto w-full max-w-sm px-4 py-6" data-slot="container">
+                  <AuthCard
+                    id="auth-plain"
+                    title={ui.auth.signin.title}
+                    text={ui.auth.signin.text}
+                    submit={ui.auth.signin.submit}
+                    switchText={ui.auth.signin.switchText}
+                    switchLink={ui.auth.signin.switchLink}
+                    switchHref="#/"
+                    labels={ui.auth.labels}
+                    mode="signin"
+                    layout="plain"
+                    social="none"
+                    level={2}
+                  />
                 </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="auth-social-label"
               data-testid="variant"
               data-block="auth"
               data-variant="social"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="auth-social-label" data-testid="variant-label">
-                  {ui.blocks.variants.auth.social}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <Box className="mx-auto w-full max-w-sm px-4 py-6" data-slot="container">
-                    <AuthCard
-                      id="auth-social"
-                      title={ui.auth.signin.title}
-                      text={ui.auth.signin.text}
-                      submit={ui.auth.signin.submit}
-                      switchText={ui.auth.signin.switchText}
-                      switchLink={ui.auth.signin.switchLink}
-                      switchHref="#/"
-                      labels={ui.auth.labels}
-                      mode="signin"
-                      layout="card"
-                      social="show"
-                      level={2}
-                    />
-                  </Box>
+              <Title as={3} size="base" weight="bold" id="auth-social-label" data-testid="variant-label">
+                {ui.blocks.variants.auth.social}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <Box className="mx-auto w-full max-w-sm px-4 py-6" data-slot="container">
+                  <AuthCard
+                    id="auth-social"
+                    title={ui.auth.signin.title}
+                    text={ui.auth.signin.text}
+                    submit={ui.auth.signin.submit}
+                    switchText={ui.auth.signin.switchText}
+                    switchLink={ui.auth.signin.switchLink}
+                    switchHref="#/"
+                    labels={ui.auth.labels}
+                    mode="signin"
+                    layout="card"
+                    social="show"
+                    level={2}
+                  />
                 </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="auth-signupSocial-label"
               data-testid="variant"
               data-block="auth"
               data-variant="signupSocial"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="auth-signupSocial-label" data-testid="variant-label">
-                  {ui.blocks.variants.auth.signupSocial}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <Box className="mx-auto w-full max-w-sm px-4 py-6" data-slot="container">
-                    <AuthCard
-                      id="auth-signupSocial"
-                      title={ui.auth.signup.title}
-                      text={ui.auth.signup.text}
-                      submit={ui.auth.signup.submit}
-                      switchText={ui.auth.signup.switchText}
-                      switchLink={ui.auth.signup.switchLink}
-                      switchHref="#/"
-                      labels={ui.auth.labels}
-                      mode="signup"
-                      layout="plain"
-                      social="show"
-                      level={2}
-                    />
-                  </Box>
+              <Title as={3} size="base" weight="bold" id="auth-signupSocial-label" data-testid="variant-label">
+                {ui.blocks.variants.auth.signupSocial}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <Box className="mx-auto w-full max-w-sm px-4 py-6" data-slot="container">
+                  <AuthCard
+                    id="auth-signupSocial"
+                    title={ui.auth.signup.title}
+                    text={ui.auth.signup.text}
+                    submit={ui.auth.signup.submit}
+                    switchText={ui.auth.signup.switchText}
+                    switchLink={ui.auth.signup.switchLink}
+                    switchHref="#/"
+                    labels={ui.auth.labels}
+                    mode="signup"
+                    layout="plain"
+                    social="show"
+                    level={2}
+                  />
                 </Box>
-              </Stack>
-            </Block>
+              </Box>
+            </Stack>
           </Stack>
-        </Block>
-        <Block tag="section" aria-labelledby="catalog-wizard-title" data-testid="catalog-block" data-block="wizard">
-          <Stack gap="6" align="stretch">
+          <Stack
+            gap="6"
+            align="stretch"
+            role="group"
+            aria-labelledby="catalog-wizard-title"
+            data-testid="catalog-block"
+            data-block="wizard"
+          >
             <Stack gap="2" align="stretch">
               <Title as={2} size="2xl" weight="bold" id="catalog-wizard-title">
                 {ui.blocks.names.wizard}
@@ -321,109 +333,109 @@ export function AppAuthPage() {
                 {ui.blocks.docs.wizard}
               </Text>
             </Stack>
-            <Block
-              tag="section"
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="wizard-bar-label"
               data-testid="variant"
               data-block="wizard"
               data-variant="bar"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="wizard-bar-label" data-testid="variant-label">
-                  {ui.blocks.variants.wizard.bar}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <SignupWizard
-                    id="wizard-bar"
-                    title={ui.vibe.wizard.title}
-                    steps={wizard}
-                    labels={ui.vibe.wizard.labels}
-                    current={1}
-                    progress="bar"
-                    layout="card"
-                    level={2}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="wizard-bar-label" data-testid="variant-label">
+                {ui.blocks.variants.wizard.bar}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <SignupWizard
+                  id="wizard-bar"
+                  title={ui.vibe.wizard.title}
+                  steps={wizard}
+                  labels={ui.vibe.wizard.labels}
+                  current={1}
+                  progress="bar"
+                  layout="card"
+                  level={2}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="wizard-list-label"
               data-testid="variant"
               data-block="wizard"
               data-variant="list"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="wizard-list-label" data-testid="variant-label">
-                  {ui.blocks.variants.wizard.list}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <SignupWizard
-                    id="wizard-list"
-                    title={ui.vibe.wizard.title}
-                    steps={wizard}
-                    labels={ui.vibe.wizard.labels}
-                    current={1}
-                    progress="list"
-                    layout="card"
-                    level={2}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="wizard-list-label" data-testid="variant-label">
+                {ui.blocks.variants.wizard.list}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <SignupWizard
+                  id="wizard-list"
+                  title={ui.vibe.wizard.title}
+                  steps={wizard}
+                  labels={ui.vibe.wizard.labels}
+                  current={1}
+                  progress="list"
+                  layout="card"
+                  level={2}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="wizard-plain-label"
               data-testid="variant"
               data-block="wizard"
               data-variant="plain"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="wizard-plain-label" data-testid="variant-label">
-                  {ui.blocks.variants.wizard.plain}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <SignupWizard
-                    id="wizard-plain"
-                    title={ui.vibe.wizard.title}
-                    steps={wizard}
-                    labels={ui.vibe.wizard.labels}
-                    current={1}
-                    progress="bar"
-                    layout="plain"
-                    level={2}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="wizard-plain-label" data-testid="variant-label">
+                {ui.blocks.variants.wizard.plain}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <SignupWizard
+                  id="wizard-plain"
+                  title={ui.vibe.wizard.title}
+                  steps={wizard}
+                  labels={ui.vibe.wizard.labels}
+                  current={1}
+                  progress="bar"
+                  layout="plain"
+                  level={2}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="wizard-second-label"
               data-testid="variant"
               data-block="wizard"
               data-variant="second"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="wizard-second-label" data-testid="variant-label">
-                  {ui.blocks.variants.wizard.second}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <SignupWizard
-                    id="wizard-second"
-                    title={ui.vibe.wizard.title}
-                    steps={wizard}
-                    labels={ui.vibe.wizard.labels}
-                    current={2}
-                    progress="list"
-                    layout="plain"
-                    level={2}
-                  />
-                </Box>
-              </Stack>
-            </Block>
+              <Title as={3} size="base" weight="bold" id="wizard-second-label" data-testid="variant-label">
+                {ui.blocks.variants.wizard.second}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <SignupWizard
+                  id="wizard-second"
+                  title={ui.vibe.wizard.title}
+                  steps={wizard}
+                  labels={ui.vibe.wizard.labels}
+                  current={2}
+                  progress="list"
+                  layout="plain"
+                  level={2}
+                />
+              </Box>
+            </Stack>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

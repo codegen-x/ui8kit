@@ -30,37 +30,39 @@ const activity = fromCodex<Event>(activityEntries, ACTIVITY_FIELDS);
 
 export function ActivityPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text
-            size="sm"
-            className="font-medium text-muted-foreground"
-            data-testid="block-theme"
-            data-theme-id="dashboard"
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text
+              size="sm"
+              className="font-medium text-muted-foreground"
+              data-testid="block-theme"
+              data-theme-id="dashboard"
+            >
+              {ui.blocks.themes.dashboard.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.activity}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.activity}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="activity-timeline-label"
+            data-testid="variant"
+            data-block="activity"
+            data-variant="timeline"
           >
-            {ui.blocks.themes.dashboard.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.activity}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.activity}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="activity-timeline-label"
-          data-testid="variant"
-          data-block="activity"
-          data-variant="timeline"
-        >
-          <Stack gap="4" align="stretch">
             <Title as={2} size="base" weight="bold" id="activity-timeline-label" data-testid="variant-label">
               {ui.blocks.variants.activity.timeline}
             </Title>
@@ -76,15 +78,15 @@ export function ActivityPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="activity-list-label"
-          data-testid="variant"
-          data-block="activity"
-          data-variant="list"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="activity-list-label"
+            data-testid="variant"
+            data-block="activity"
+            data-variant="list"
+          >
             <Title as={2} size="base" weight="bold" id="activity-list-label" data-testid="variant-label">
               {ui.blocks.variants.activity.list}
             </Title>
@@ -100,15 +102,15 @@ export function ActivityPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="activity-compact-label"
-          data-testid="variant"
-          data-block="activity"
-          data-variant="compact"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="activity-compact-label"
+            data-testid="variant"
+            data-block="activity"
+            data-variant="compact"
+          >
             <Title as={2} size="base" weight="bold" id="activity-compact-label" data-testid="variant-label">
               {ui.blocks.variants.activity.compact}
             </Title>
@@ -124,15 +126,15 @@ export function ActivityPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="activity-muted-label"
-          data-testid="variant"
-          data-block="activity"
-          data-variant="muted"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="activity-muted-label"
+            data-testid="variant"
+            data-block="activity"
+            data-variant="muted"
+          >
             <Title as={2} size="base" weight="bold" id="activity-muted-label" data-testid="variant-label">
               {ui.blocks.variants.activity.muted}
             </Title>
@@ -148,8 +150,8 @@ export function ActivityPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

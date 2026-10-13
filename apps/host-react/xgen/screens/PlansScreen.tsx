@@ -7,6 +7,7 @@
 import { type ChangeEvent } from "react";
 import {
   Badge,
+  Block,
   Button,
   Container,
   Group,
@@ -57,204 +58,206 @@ export function PlansScreen({ url }: { url: UrlPort }) {
   const record = route.area === "record" ? ROWS.find((r) => r.id === route.params.id) : undefined;
   const actions = screenActions(url, view, "plans", (id: string) => `plans/${id}`, toggleTheme);
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-8">
-      <Stack gap="6">
-        <Group gap="4" align="center" justify="between">
-          <Title as={1} size="2xl" weight="bold">
-            {ui.app.title}
-          </Title>
-          <Button variant="outline" size="sm" data-testid="theme-toggle" onClick={() => actions.toggleTheme()}>
-            {ui.theme.toggle}
-          </Button>
-        </Group>
-        {route.area === "record" ? (
-          <Stack gap="4">
-            <Group>
-              <Button variant="ghost" size="sm" data-testid="back" onClick={() => actions.back()}>
-                {ui.record.back}
-              </Button>
-            </Group>
-            {record ? (
-              <PricingCard
-                plan={record}
-                labels={ui.pricing}
-                current={true}
-                onSelect={() => actions.back()}
-                footer={(plan: Plan) => (
-                  <Text size="sm" className="text-muted-foreground" data-testid="record-id">
-                    {tpl(ui.record.id, plan.id)}
-                  </Text>
-                )}
-              />
-            ) : (
-              <Text className="text-muted-foreground" data-testid="missing">
-                {ui.record.missing}
-              </Text>
-            )}
-          </Stack>
-        ) : (
-          <Stack gap="4">
-            <Group gap="4" align="center" justify="between" className="flex-wrap">
-              <Input
-                type="search"
-                size="default"
-                value={view.q}
-                placeholder={ui.plans.search}
-                aria-label={ui.plans.search}
-                className="max-w-xs"
-                data-testid="search"
-                onChange={(event: ChangeEvent<HTMLInputElement>) => actions.search(event.currentTarget.value)}
-              />
-              <Text size="sm" className="text-muted-foreground" data-testid="count">
-                {tpl(ui.plans.count, view.total)}
-              </Text>
-            </Group>
-            <Table className="w-full text-sm" data-testid="plans-table">
-              <TableCaption className="sr-only">
-                {ui.plans.caption}
-              </TableCaption>
-              <TableHead>
-                <TableRow>
-                  {((view.sort.field === "name") && (view.sort.dir === "asc")) ? (
-                    <TableHeadCell scope="col" aria-sort="ascending">
-                      <Button variant="ghost" size="sm" className="-mx-3" onClick={() => actions.sort("name")}>
-                        {ui.plans.col.name}
-                      </Button>
-                    </TableHeadCell>
-                  ) : ((view.sort.field === "name") && (view.sort.dir === "desc")) ? (
-                    <TableHeadCell scope="col" aria-sort="descending">
-                      <Button variant="ghost" size="sm" className="-mx-3" onClick={() => actions.sort("name")}>
-                        {ui.plans.col.name}
-                      </Button>
-                    </TableHeadCell>
-                  ) : (
-                    <TableHeadCell scope="col" aria-sort="none">
-                      <Button variant="ghost" size="sm" className="-mx-3" onClick={() => actions.sort("name")}>
-                        {ui.plans.col.name}
-                      </Button>
-                    </TableHeadCell>
-                  )}
-                  {((view.sort.field === "price") && (view.sort.dir === "asc")) ? (
-                    <TableHeadCell scope="col" className="text-right" aria-sort="ascending">
-                      <Button variant="ghost" size="sm" className="-mx-3 ml-auto" onClick={() => actions.sort("price")}>
-                        {ui.plans.col.price}
-                      </Button>
-                    </TableHeadCell>
-                  ) : ((view.sort.field === "price") && (view.sort.dir === "desc")) ? (
-                    <TableHeadCell scope="col" className="text-right" aria-sort="descending">
-                      <Button variant="ghost" size="sm" className="-mx-3 ml-auto" onClick={() => actions.sort("price")}>
-                        {ui.plans.col.price}
-                      </Button>
-                    </TableHeadCell>
-                  ) : (
-                    <TableHeadCell scope="col" className="text-right" aria-sort="none">
-                      <Button variant="ghost" size="sm" className="-mx-3 ml-auto" onClick={() => actions.sort("price")}>
-                        {ui.plans.col.price}
-                      </Button>
-                    </TableHeadCell>
-                  )}
-                  {((view.sort.field === "seats") && (view.sort.dir === "asc")) ? (
-                    <TableHeadCell scope="col" className="text-right" aria-sort="ascending">
-                      <Button variant="ghost" size="sm" className="-mx-3 ml-auto" onClick={() => actions.sort("seats")}>
-                        {ui.plans.col.seats}
-                      </Button>
-                    </TableHeadCell>
-                  ) : ((view.sort.field === "seats") && (view.sort.dir === "desc")) ? (
-                    <TableHeadCell scope="col" className="text-right" aria-sort="descending">
-                      <Button variant="ghost" size="sm" className="-mx-3 ml-auto" onClick={() => actions.sort("seats")}>
-                        {ui.plans.col.seats}
-                      </Button>
-                    </TableHeadCell>
-                  ) : (
-                    <TableHeadCell scope="col" className="text-right" aria-sort="none">
-                      <Button variant="ghost" size="sm" className="-mx-3 ml-auto" onClick={() => actions.sort("seats")}>
-                        {ui.plans.col.seats}
-                      </Button>
-                    </TableHeadCell>
-                  )}
-                  {((view.sort.field === "storage") && (view.sort.dir === "asc")) ? (
-                    <TableHeadCell scope="col" className="text-right" aria-sort="ascending">
-                      <Button variant="ghost" size="sm" className="-mx-3 ml-auto" onClick={() => actions.sort("storage")}>
-                        {ui.plans.col.storage}
-                      </Button>
-                    </TableHeadCell>
-                  ) : ((view.sort.field === "storage") && (view.sort.dir === "desc")) ? (
-                    <TableHeadCell scope="col" className="text-right" aria-sort="descending">
-                      <Button variant="ghost" size="sm" className="-mx-3 ml-auto" onClick={() => actions.sort("storage")}>
-                        {ui.plans.col.storage}
-                      </Button>
-                    </TableHeadCell>
-                  ) : (
-                    <TableHeadCell scope="col" className="text-right" aria-sort="none">
-                      <Button variant="ghost" size="sm" className="-mx-3 ml-auto" onClick={() => actions.sort("storage")}>
-                        {ui.plans.col.storage}
-                      </Button>
-                    </TableHeadCell>
-                  )}
-                  <TableHeadCell scope="col">
-                    {ui.plans.col.status}
-                  </TableHeadCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {(view.rows ?? []).map((row) => (
-                  <TableRow key={row.id} data-testid="plan-row">
-                    <TableCell>
-                      <Link href={(("#/plans/" + row.id) + view.qs)} variant="default" data-testid="open-record">
-                        {row.name}
-                      </Link>
-                    </TableCell>
-                    <TableCell className="text-right">
-                      {fmtMoney(row.price, row.currency)}
-                    </TableCell>
-                    <TableCell className="text-right">
-                      {row.seats}
-                    </TableCell>
-                    <TableCell className="text-right">
-                      {row.storage}
-                    </TableCell>
-                    <TableCell>
-                      <Badge variant={((row.status === "active") ? "default" : "secondary")} size="default">
-                        {at(ui.status, row.status)}
-                      </Badge>
-                    </TableCell>
-                  </TableRow>
-                ))}
-              </TableBody>
-            </Table>
-            {(view.total === 0) ? (
-              <Text className="text-muted-foreground" data-testid="empty">
-                {ui.plans.empty}
-              </Text>
-            ) : null}
-            <Group gap="4" align="center" justify="between" className="flex-wrap">
-              <Text size="sm" className="text-muted-foreground">
-                {tpl(ui.pager.showing, view.from, view.to, view.total)}
-              </Text>
-              <Group gap="2">
-                <Button
-                  variant="outline"
-                  size="sm"
-                  disabled={!(view.page > 1)}
-                  data-testid="prev"
-                  onClick={() => actions.page((view.page + -1))}
-                >
-                  {ui.pager.previous}
-                </Button>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  disabled={!(view.page < view.pages)}
-                  data-testid="next"
-                  onClick={() => actions.page((view.page + 1))}
-                >
-                  {ui.pager.next}
+    <Block tag="main" id="main-content" tabIndex={-1} data-testid="main">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-8">
+        <Stack gap="6">
+          <Group gap="4" align="center" justify="between">
+            <Title as={1} size="2xl" weight="bold">
+              {ui.app.title}
+            </Title>
+            <Button variant="outline" size="sm" data-testid="theme-toggle" onClick={() => actions.toggleTheme()}>
+              {ui.theme.toggle}
+            </Button>
+          </Group>
+          {route.area === "record" ? (
+            <Stack gap="4">
+              <Group>
+                <Button variant="ghost" size="sm" data-testid="back" onClick={() => actions.back()}>
+                  {ui.record.back}
                 </Button>
               </Group>
-            </Group>
-          </Stack>
-        )}
-      </Stack>
-    </Container>
+              {record ? (
+                <PricingCard
+                  plan={record}
+                  labels={ui.pricing}
+                  current={true}
+                  onSelect={() => actions.back()}
+                  footer={(plan: Plan) => (
+                    <Text size="sm" className="text-muted-foreground" data-testid="record-id">
+                      {tpl(ui.record.id, plan.id)}
+                    </Text>
+                  )}
+                />
+              ) : (
+                <Text className="text-muted-foreground" data-testid="missing">
+                  {ui.record.missing}
+                </Text>
+              )}
+            </Stack>
+          ) : (
+            <Stack gap="4">
+              <Group gap="4" align="center" justify="between" className="flex-wrap">
+                <Input
+                  type="search"
+                  size="default"
+                  value={view.q}
+                  placeholder={ui.plans.search}
+                  aria-label={ui.plans.search}
+                  className="max-w-xs"
+                  data-testid="search"
+                  onChange={(event: ChangeEvent<HTMLInputElement>) => actions.search(event.currentTarget.value)}
+                />
+                <Text size="sm" className="text-muted-foreground" data-testid="count">
+                  {tpl(ui.plans.count, view.total)}
+                </Text>
+              </Group>
+              <Table className="w-full text-sm" data-testid="plans-table">
+                <TableCaption className="sr-only">
+                  {ui.plans.caption}
+                </TableCaption>
+                <TableHead>
+                  <TableRow>
+                    {((view.sort.field === "name") && (view.sort.dir === "asc")) ? (
+                      <TableHeadCell scope="col" aria-sort="ascending">
+                        <Button variant="ghost" size="sm" className="-mx-3" onClick={() => actions.sort("name")}>
+                          {ui.plans.col.name}
+                        </Button>
+                      </TableHeadCell>
+                    ) : ((view.sort.field === "name") && (view.sort.dir === "desc")) ? (
+                      <TableHeadCell scope="col" aria-sort="descending">
+                        <Button variant="ghost" size="sm" className="-mx-3" onClick={() => actions.sort("name")}>
+                          {ui.plans.col.name}
+                        </Button>
+                      </TableHeadCell>
+                    ) : (
+                      <TableHeadCell scope="col" aria-sort="none">
+                        <Button variant="ghost" size="sm" className="-mx-3" onClick={() => actions.sort("name")}>
+                          {ui.plans.col.name}
+                        </Button>
+                      </TableHeadCell>
+                    )}
+                    {((view.sort.field === "price") && (view.sort.dir === "asc")) ? (
+                      <TableHeadCell scope="col" className="text-right" aria-sort="ascending">
+                        <Button variant="ghost" size="sm" className="-mx-3 ml-auto" onClick={() => actions.sort("price")}>
+                          {ui.plans.col.price}
+                        </Button>
+                      </TableHeadCell>
+                    ) : ((view.sort.field === "price") && (view.sort.dir === "desc")) ? (
+                      <TableHeadCell scope="col" className="text-right" aria-sort="descending">
+                        <Button variant="ghost" size="sm" className="-mx-3 ml-auto" onClick={() => actions.sort("price")}>
+                          {ui.plans.col.price}
+                        </Button>
+                      </TableHeadCell>
+                    ) : (
+                      <TableHeadCell scope="col" className="text-right" aria-sort="none">
+                        <Button variant="ghost" size="sm" className="-mx-3 ml-auto" onClick={() => actions.sort("price")}>
+                          {ui.plans.col.price}
+                        </Button>
+                      </TableHeadCell>
+                    )}
+                    {((view.sort.field === "seats") && (view.sort.dir === "asc")) ? (
+                      <TableHeadCell scope="col" className="text-right" aria-sort="ascending">
+                        <Button variant="ghost" size="sm" className="-mx-3 ml-auto" onClick={() => actions.sort("seats")}>
+                          {ui.plans.col.seats}
+                        </Button>
+                      </TableHeadCell>
+                    ) : ((view.sort.field === "seats") && (view.sort.dir === "desc")) ? (
+                      <TableHeadCell scope="col" className="text-right" aria-sort="descending">
+                        <Button variant="ghost" size="sm" className="-mx-3 ml-auto" onClick={() => actions.sort("seats")}>
+                          {ui.plans.col.seats}
+                        </Button>
+                      </TableHeadCell>
+                    ) : (
+                      <TableHeadCell scope="col" className="text-right" aria-sort="none">
+                        <Button variant="ghost" size="sm" className="-mx-3 ml-auto" onClick={() => actions.sort("seats")}>
+                          {ui.plans.col.seats}
+                        </Button>
+                      </TableHeadCell>
+                    )}
+                    {((view.sort.field === "storage") && (view.sort.dir === "asc")) ? (
+                      <TableHeadCell scope="col" className="text-right" aria-sort="ascending">
+                        <Button variant="ghost" size="sm" className="-mx-3 ml-auto" onClick={() => actions.sort("storage")}>
+                          {ui.plans.col.storage}
+                        </Button>
+                      </TableHeadCell>
+                    ) : ((view.sort.field === "storage") && (view.sort.dir === "desc")) ? (
+                      <TableHeadCell scope="col" className="text-right" aria-sort="descending">
+                        <Button variant="ghost" size="sm" className="-mx-3 ml-auto" onClick={() => actions.sort("storage")}>
+                          {ui.plans.col.storage}
+                        </Button>
+                      </TableHeadCell>
+                    ) : (
+                      <TableHeadCell scope="col" className="text-right" aria-sort="none">
+                        <Button variant="ghost" size="sm" className="-mx-3 ml-auto" onClick={() => actions.sort("storage")}>
+                          {ui.plans.col.storage}
+                        </Button>
+                      </TableHeadCell>
+                    )}
+                    <TableHeadCell scope="col">
+                      {ui.plans.col.status}
+                    </TableHeadCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {(view.rows ?? []).map((row) => (
+                    <TableRow key={row.id} data-testid="plan-row">
+                      <TableCell>
+                        <Link href={(("#/plans/" + row.id) + view.qs)} variant="default" data-testid="open-record">
+                          {row.name}
+                        </Link>
+                      </TableCell>
+                      <TableCell className="text-right">
+                        {fmtMoney(row.price, row.currency)}
+                      </TableCell>
+                      <TableCell className="text-right">
+                        {row.seats}
+                      </TableCell>
+                      <TableCell className="text-right">
+                        {row.storage}
+                      </TableCell>
+                      <TableCell>
+                        <Badge variant={((row.status === "active") ? "default" : "secondary")} size="default">
+                          {at(ui.status, row.status)}
+                        </Badge>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+              {(view.total === 0) ? (
+                <Text className="text-muted-foreground" data-testid="empty">
+                  {ui.plans.empty}
+                </Text>
+              ) : null}
+              <Group gap="4" align="center" justify="between" className="flex-wrap">
+                <Text size="sm" className="text-muted-foreground">
+                  {tpl(ui.pager.showing, view.from, view.to, view.total)}
+                </Text>
+                <Group gap="2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    disabled={!(view.page > 1)}
+                    data-testid="prev"
+                    onClick={() => actions.page((view.page + -1))}
+                  >
+                    {ui.pager.previous}
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    disabled={!(view.page < view.pages)}
+                    data-testid="next"
+                    onClick={() => actions.page((view.page + 1))}
+                  >
+                    {ui.pager.next}
+                  </Button>
+                </Group>
+              </Group>
+            </Stack>
+          )}
+        </Stack>
+      </Container>
+    </Block>
   );
 }

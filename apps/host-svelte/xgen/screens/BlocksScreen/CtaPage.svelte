@@ -14,32 +14,34 @@
   } as const;
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.blocks.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
-        {ui.blocks.themes.marketing.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-        {ui.blocks.names.cta}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {ui.blocks.docs.cta}
-      </Text>
-    </Stack>
-    <Block
-      tag="section"
-      aria-labelledby="cta-card-label"
-      data-testid="variant"
-      data-block="cta"
-      data-variant="card"
-    >
-      <Stack gap="4" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.blocks.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
+          {ui.blocks.themes.marketing.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+          {ui.blocks.names.cta}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {ui.blocks.docs.cta}
+        </Text>
+      </Stack>
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="cta-card-label"
+        data-testid="variant"
+        data-block="cta"
+        data-variant="card"
+      >
         <Title as={2} size="base" weight="bold" id="cta-card-label" data-testid="variant-label">
           {ui.blocks.variants.cta.card}
         </Title>
@@ -57,15 +59,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="cta-banner-label"
-      data-testid="variant"
-      data-block="cta"
-      data-variant="banner"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="cta-banner-label"
+        data-testid="variant"
+        data-block="cta"
+        data-variant="banner"
+      >
         <Title as={2} size="base" weight="bold" id="cta-banner-label" data-testid="variant-label">
           {ui.blocks.variants.cta.banner}
         </Title>
@@ -83,9 +85,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block tag="section" aria-labelledby="cta-row-label" data-testid="variant" data-block="cta" data-variant="row">
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="cta-row-label"
+        data-testid="variant"
+        data-block="cta"
+        data-variant="row"
+      >
         <Title as={2} size="base" weight="bold" id="cta-row-label" data-testid="variant-label">
           {ui.blocks.variants.cta.row}
         </Title>
@@ -103,15 +111,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="cta-form-label"
-      data-testid="variant"
-      data-block="cta"
-      data-variant="form"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="cta-form-label"
+        data-testid="variant"
+        data-block="cta"
+        data-variant="form"
+      >
         <Title as={2} size="base" weight="bold" id="cta-form-label" data-testid="variant-label">
           {ui.blocks.variants.cta.form}
         </Title>
@@ -129,15 +137,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="cta-quote-label"
-      data-testid="variant"
-      data-block="cta"
-      data-variant="quote"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="cta-quote-label"
+        data-testid="variant"
+        data-block="cta"
+        data-variant="quote"
+      >
         <Title as={2} size="base" weight="bold" id="cta-quote-label" data-testid="variant-label">
           {ui.blocks.variants.cta.quote}
         </Title>
@@ -155,15 +163,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="cta-band-label"
-      data-testid="variant"
-      data-block="cta"
-      data-variant="band"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="cta-band-label"
+        data-testid="variant"
+        data-block="cta"
+        data-variant="band"
+      >
         <Title as={2} size="base" weight="bold" id="cta-band-label" data-testid="variant-label">
           {ui.blocks.variants.cta.band}
         </Title>
@@ -181,15 +189,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="cta-split-label"
-      data-testid="variant"
-      data-block="cta"
-      data-variant="split"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="cta-split-label"
+        data-testid="variant"
+        data-block="cta"
+        data-variant="split"
+      >
         <Title as={2} size="base" weight="bold" id="cta-split-label" data-testid="variant-label">
           {ui.blocks.variants.cta.split}
         </Title>
@@ -207,15 +215,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="cta-compact-label"
-      data-testid="variant"
-      data-block="cta"
-      data-variant="compact"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="cta-compact-label"
+        data-testid="variant"
+        data-block="cta"
+        data-variant="compact"
+      >
         <Title as={2} size="base" weight="bold" id="cta-compact-label" data-testid="variant-label">
           {ui.blocks.variants.cta.compact}
         </Title>
@@ -233,15 +241,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="cta-saas-label"
-      data-testid="variant"
-      data-block="cta"
-      data-variant="saas"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="cta-saas-label"
+        data-testid="variant"
+        data-block="cta"
+        data-variant="saas"
+      >
         <Title as={2} size="base" weight="bold" id="cta-saas-label" data-testid="variant-label">
           {ui.blocks.variants.cta.saas}
         </Title>
@@ -264,15 +272,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="cta-shop-label"
-      data-testid="variant"
-      data-block="cta"
-      data-variant="shop"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="cta-shop-label"
+        data-testid="variant"
+        data-block="cta"
+        data-variant="shop"
+      >
         <Title as={2} size="base" weight="bold" id="cta-shop-label" data-testid="variant-label">
           {ui.blocks.variants.cta.shop}
         </Title>
@@ -295,15 +303,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="cta-agency-label"
-      data-testid="variant"
-      data-block="cta"
-      data-variant="agency"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="cta-agency-label"
+        data-testid="variant"
+        data-block="cta"
+        data-variant="agency"
+      >
         <Title as={2} size="base" weight="bold" id="cta-agency-label" data-testid="variant-label">
           {ui.blocks.variants.cta.agency}
         </Title>
@@ -326,6 +334,6 @@
           />
         </Box>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

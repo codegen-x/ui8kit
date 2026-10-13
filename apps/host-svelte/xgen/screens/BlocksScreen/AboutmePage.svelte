@@ -29,32 +29,34 @@
   const ABOUTME_ACTIONS = { mode: "two", cta: ui.company.aboutMe.cta, href: "#/work", secondary: ui.company.aboutMe.more, secondaryHref: "#/contact" } as const;
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.blocks.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
-        {ui.blocks.themes.marketing.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-        {ui.blocks.names.aboutme}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {ui.blocks.docs.aboutme}
-      </Text>
-    </Stack>
-    <Block
-      tag="section"
-      aria-labelledby="aboutme-facts-label"
-      data-testid="variant"
-      data-block="aboutme"
-      data-variant="facts"
-    >
-      <Stack gap="4" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.blocks.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
+          {ui.blocks.themes.marketing.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+          {ui.blocks.names.aboutme}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {ui.blocks.docs.aboutme}
+        </Text>
+      </Stack>
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="aboutme-facts-label"
+        data-testid="variant"
+        data-block="aboutme"
+        data-variant="facts"
+      >
         <Title as={2} size="base" weight="bold" id="aboutme-facts-label" data-testid="variant-label">
           {ui.blocks.variants.aboutme.facts}
         </Title>
@@ -75,15 +77,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="aboutme-factsEnd-label"
-      data-testid="variant"
-      data-block="aboutme"
-      data-variant="factsEnd"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="aboutme-factsEnd-label"
+        data-testid="variant"
+        data-block="aboutme"
+        data-variant="factsEnd"
+      >
         <Title as={2} size="base" weight="bold" id="aboutme-factsEnd-label" data-testid="variant-label">
           {ui.blocks.variants.aboutme.factsEnd}
         </Title>
@@ -104,15 +106,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="aboutme-skills-label"
-      data-testid="variant"
-      data-block="aboutme"
-      data-variant="skills"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="aboutme-skills-label"
+        data-testid="variant"
+        data-block="aboutme"
+        data-variant="skills"
+      >
         <Title as={2} size="base" weight="bold" id="aboutme-skills-label" data-testid="variant-label">
           {ui.blocks.variants.aboutme.skills}
         </Title>
@@ -133,15 +135,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="aboutme-skillsMuted-label"
-      data-testid="variant"
-      data-block="aboutme"
-      data-variant="skillsMuted"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="aboutme-skillsMuted-label"
+        data-testid="variant"
+        data-block="aboutme"
+        data-variant="skillsMuted"
+      >
         <Title as={2} size="base" weight="bold" id="aboutme-skillsMuted-label" data-testid="variant-label">
           {ui.blocks.variants.aboutme.skillsMuted}
         </Title>
@@ -162,6 +164,6 @@
           />
         </Box>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

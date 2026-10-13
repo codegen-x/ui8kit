@@ -23,32 +23,34 @@
   const sidenav = fromCodex<NavLink>(sidenavEntries, SIDENAV_FIELDS);
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.blocks.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="dashboard">
-        {ui.blocks.themes.dashboard.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-        {ui.blocks.names.sidenav}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {ui.blocks.docs.sidenav}
-      </Text>
-    </Stack>
-    <Block
-      tag="section"
-      aria-labelledby="sidenav-full-label"
-      data-testid="variant"
-      data-block="sidenav"
-      data-variant="full"
-    >
-      <Stack gap="4" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.blocks.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="dashboard">
+          {ui.blocks.themes.dashboard.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+          {ui.blocks.names.sidenav}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {ui.blocks.docs.sidenav}
+        </Text>
+      </Stack>
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="sidenav-full-label"
+        data-testid="variant"
+        data-block="sidenav"
+        data-variant="full"
+      >
         <Title as={2} size="base" weight="bold" id="sidenav-full-label" data-testid="variant-label">
           {ui.blocks.variants.sidenav.full}
         </Title>
@@ -66,15 +68,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="sidenav-compact-label"
-      data-testid="variant"
-      data-block="sidenav"
-      data-variant="compact"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="sidenav-compact-label"
+        data-testid="variant"
+        data-block="sidenav"
+        data-variant="compact"
+      >
         <Title as={2} size="base" weight="bold" id="sidenav-compact-label" data-testid="variant-label">
           {ui.blocks.variants.sidenav.compact}
         </Title>
@@ -92,15 +94,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="sidenav-noUser-label"
-      data-testid="variant"
-      data-block="sidenav"
-      data-variant="noUser"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="sidenav-noUser-label"
+        data-testid="variant"
+        data-block="sidenav"
+        data-variant="noUser"
+      >
         <Title as={2} size="base" weight="bold" id="sidenav-noUser-label" data-testid="variant-label">
           {ui.blocks.variants.sidenav.noUser}
         </Title>
@@ -118,15 +120,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="sidenav-dense-label"
-      data-testid="variant"
-      data-block="sidenav"
-      data-variant="dense"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="sidenav-dense-label"
+        data-testid="variant"
+        data-block="sidenav"
+        data-variant="dense"
+      >
         <Title as={2} size="base" weight="bold" id="sidenav-dense-label" data-testid="variant-label">
           {ui.blocks.variants.sidenav.dense}
         </Title>
@@ -144,6 +146,6 @@
           />
         </Box>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

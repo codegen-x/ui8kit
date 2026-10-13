@@ -165,19 +165,26 @@
   ] as const;
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Stack gap="4" align="stretch">
-      <Title as={1} size="4xl" weight="bold" data-testid="gallery-title">
-        {ui.blocks.title}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {ui.blocks.intro}
-      </Text>
-    </Stack>
-    {#each TOPICS as topic (topic.id)}
-      <Block tag="section" aria-labelledby={topic.titleId} data-testid="theme-section" data-theme-id={topic.id}>
-        <Stack gap="4" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Stack gap="4" align="stretch">
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="gallery-title">
+          {ui.blocks.title}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {ui.blocks.intro}
+        </Text>
+      </Stack>
+      {#each TOPICS as topic (topic.id)}
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby={topic.titleId}
+          data-testid="theme-section"
+          data-theme-id={topic.id}
+        >
           <Stack gap="2" align="stretch">
             <Title as={2} size="2xl" weight="bold" id={topic.titleId}>
               {topic.title}
@@ -206,7 +213,7 @@
             {/each}
           </List>
         </Stack>
-      </Block>
-    {/each}
-  </Stack>
-</Container>
+      {/each}
+    </Stack>
+  </Container>
+</Block>

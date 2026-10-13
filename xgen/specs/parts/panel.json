@@ -3,7 +3,7 @@
   "specVersion": 1,
   "id": "part.panel",
   "name": "Panel",
-  "docs": "A titled card (surface bg-card, hairline ring): the content panel of a page. An optional title, description and header actions. Pass `id` to name the section by its title.",
+  "docs": "A titled card (surface bg-card, hairline ring): the content panel of a page. An optional title, description and header actions. Pass `id` to name the panel by its title. Not a landmark: a labelled group inside the Block of its block (rule 01).",
   "records": {},
   "props": [
     {
@@ -17,7 +17,7 @@
     {
       "name": "id",
       "type": "string",
-      "docs": "base id: the title gets `{id}-t` and the section points at it with aria-labelledby"
+      "docs": "base id: the title gets `{id}-t` and the panel points at it with aria-labelledby"
     }
   ],
   "className": true,
@@ -32,9 +32,8 @@
   "events": [],
   "view": [
     {
-      "use": "Block",
+      "use": "Box",
       "props": {
-        "Tag": "section",
         "Class": {
           "op": "cn",
           "args": [
@@ -46,6 +45,7 @@
         }
       },
       "attrs": {
+        "role": "group",
         "aria-labelledby": {
           "op": "cond",
           "args": [

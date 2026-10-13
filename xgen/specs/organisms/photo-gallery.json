@@ -368,9 +368,8 @@
                       },
                       "do": [
                         {
-                          "use": "Block",
+                          "use": "Figure",
                           "props": {
-                            "Tag": "figure",
                             "Class": {
                               "op": "cn",
                               "args": [
@@ -649,7 +648,7 @@
                               },
                               "then": [
                                 {
-                                  "use": "Block",
+                                  "use": "Box",
                                   "props": {
                                     "Class": "text-sm text-muted-foreground"
                                   },

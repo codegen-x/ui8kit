@@ -26,6 +26,7 @@ import Container from "../primitives/container/container.vue";
 import Group from "../primitives/group/group.vue";
 import Link from "../primitives/link/link.vue";
 import LinkPlain from "../primitives/link-plain/link-plain.vue";
+import Nav from "../primitives/nav/nav.vue";
 import { cn } from "../utils";
 
 const {
@@ -41,14 +42,6 @@ const emit = defineEmits<{ theme: [] }>();
 </script>
 
 <template>
-  <LinkPlain
-    href="#main-content"
-    :class="'sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background ' +
-      'focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border'"
-    data-testid="skip-link"
-  >
-    {{ labels.skip }}
-  </LinkPlain>
   <Block
     tag="header"
     :class="cn(
@@ -58,6 +51,14 @@ const emit = defineEmits<{ theme: [] }>();
     data-testid="site-header"
     :data-layout="layout"
   >
+    <LinkPlain
+      href="#main-content"
+      :class="'sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background ' +
+        'focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border'"
+      data-testid="skip-link"
+    >
+      {{ labels.skip }}
+    </LinkPlain>
     <Container
       :class="cn(
         'mx-auto w-full max-w-6xl px-4',
@@ -69,7 +70,7 @@ const emit = defineEmits<{ theme: [] }>();
       <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
         {{ labels.brand }}
       </Link>
-      <Block tag="nav" :aria-label="labels.nav" data-testid="site-nav">
+      <Nav :aria-label="labels.nav" data-testid="site-nav">
         <Group gap="4" align="center">
           <Link
             href="#/"
@@ -88,7 +89,7 @@ const emit = defineEmits<{ theme: [] }>();
             {{ labels.pricing }}
           </Link>
         </Group>
-      </Block>
+      </Nav>
       <Group gap="4" align="center">
         <Button variant="outline" size="sm" data-testid="theme-toggle" @click="() => emit('theme')">
           {{ labels.theme }}

@@ -32,37 +32,39 @@ const orders = fromCodex<Order>(ordersEntries, ORDERS_FIELDS);
 
 export function OrdersPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text
-            size="sm"
-            className="font-medium text-muted-foreground"
-            data-testid="block-theme"
-            data-theme-id="commerce"
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text
+              size="sm"
+              className="font-medium text-muted-foreground"
+              data-testid="block-theme"
+              data-theme-id="commerce"
+            >
+              {ui.blocks.themes.commerce.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.orders}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.orders}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="orders-table-label"
+            data-testid="variant"
+            data-block="orders"
+            data-variant="table"
           >
-            {ui.blocks.themes.commerce.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.orders}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.orders}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="orders-table-label"
-          data-testid="variant"
-          data-block="orders"
-          data-variant="table"
-        >
-          <Stack gap="4" align="stretch">
             <Title as={2} size="base" weight="bold" id="orders-table-label" data-testid="variant-label">
               {ui.blocks.variants.orders.table}
             </Title>
@@ -80,15 +82,15 @@ export function OrdersPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="orders-cards-label"
-          data-testid="variant"
-          data-block="orders"
-          data-variant="cards"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="orders-cards-label"
+            data-testid="variant"
+            data-block="orders"
+            data-variant="cards"
+          >
             <Title as={2} size="base" weight="bold" id="orders-cards-label" data-testid="variant-label">
               {ui.blocks.variants.orders.cards}
             </Title>
@@ -106,15 +108,15 @@ export function OrdersPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="orders-noPager-label"
-          data-testid="variant"
-          data-block="orders"
-          data-variant="noPager"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="orders-noPager-label"
+            data-testid="variant"
+            data-block="orders"
+            data-variant="noPager"
+          >
             <Title as={2} size="base" weight="bold" id="orders-noPager-label" data-testid="variant-label">
               {ui.blocks.variants.orders.noPager}
             </Title>
@@ -132,15 +134,15 @@ export function OrdersPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="orders-compactMuted-label"
-          data-testid="variant"
-          data-block="orders"
-          data-variant="compactMuted"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="orders-compactMuted-label"
+            data-testid="variant"
+            data-block="orders"
+            data-variant="compactMuted"
+          >
             <Title as={2} size="base" weight="bold" id="orders-compactMuted-label" data-testid="variant-label">
               {ui.blocks.variants.orders.compactMuted}
             </Title>
@@ -158,8 +160,8 @@ export function OrdersPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

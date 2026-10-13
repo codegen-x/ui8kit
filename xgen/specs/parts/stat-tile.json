@@ -37,7 +37,7 @@
   "events": [],
   "view": [
     {
-      "use": "Block",
+      "use": "Box",
       "props": {
         "Class": "min-w-0"
       },

@@ -24,32 +24,34 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.blocks.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
-          {{ ui.blocks.themes.marketing.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="block-title">
-          {{ ui.blocks.names.sticky }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ ui.blocks.docs.sticky }}
-        </Text>
-      </Stack>
-      <Block
-        tag="section"
-        aria-labelledby="sticky-end-label"
-        data-testid="variant"
-        data-block="sticky"
-        data-variant="end"
-      >
-        <Stack gap="4" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.blocks.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
+            {{ ui.blocks.themes.marketing.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="block-title">
+            {{ ui.blocks.names.sticky }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ ui.blocks.docs.sticky }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="sticky-end-label"
+          data-testid="variant"
+          data-block="sticky"
+          data-variant="end"
+        >
           <Title :as="2" size="base" weight="bold" id="sticky-end-label" data-testid="variant-label">
             {{ ui.blocks.variants.sticky.end }}
           </Title>
@@ -66,15 +68,15 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="sticky-start-label"
-        data-testid="variant"
-        data-block="sticky"
-        data-variant="start"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="sticky-start-label"
+          data-testid="variant"
+          data-block="sticky"
+          data-variant="start"
+        >
           <Title :as="2" size="base" weight="bold" id="sticky-start-label" data-testid="variant-label">
             {{ ui.blocks.variants.sticky.start }}
           </Title>
@@ -91,15 +93,15 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="sticky-card-label"
-        data-testid="variant"
-        data-block="sticky"
-        data-variant="card"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="sticky-card-label"
+          data-testid="variant"
+          data-block="sticky"
+          data-variant="card"
+        >
           <Title :as="2" size="base" weight="bold" id="sticky-card-label" data-testid="variant-label">
             {{ ui.blocks.variants.sticky.card }}
           </Title>
@@ -116,15 +118,15 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="sticky-muted-label"
-        data-testid="variant"
-        data-block="sticky"
-        data-variant="muted"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="sticky-muted-label"
+          data-testid="variant"
+          data-block="sticky"
+          data-variant="muted"
+        >
           <Title :as="2" size="base" weight="bold" id="sticky-muted-label" data-testid="variant-label">
             {{ ui.blocks.variants.sticky.muted }}
           </Title>
@@ -141,7 +143,7 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

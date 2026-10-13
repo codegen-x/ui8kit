@@ -53,31 +53,33 @@ const QUOTESPLIT_ACTIONS = {
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.catalog.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-          {{ ui.catalog.sections.marketing.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="category-title">
-          {{ ui.catalog.categories.marketingTestimonialsSplit }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ tpl(ui.catalog.count, 1, 6) }}
-        </Text>
-      </Stack>
-      <Block
-        tag="section"
-        aria-labelledby="catalog-quotesplit-title"
-        data-testid="catalog-block"
-        data-block="quotesplit"
-      >
-        <Stack gap="6" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.catalog.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+            {{ ui.catalog.sections.marketing.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="category-title">
+            {{ ui.catalog.categories.marketingTestimonialsSplit }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ tpl(ui.catalog.count, 1, 6) }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="6"
+          align="stretch"
+          role="group"
+          aria-labelledby="catalog-quotesplit-title"
+          data-testid="catalog-block"
+          data-block="quotesplit"
+        >
           <Stack gap="2" align="stretch">
             <Title :as="2" size="2xl" weight="bold" id="catalog-quotesplit-title">
               {{ ui.blocks.names.quotesplit }}
@@ -86,176 +88,176 @@ const QUOTESPLIT_ACTIONS = {
               {{ ui.blocks.docs.quotesplit }}
             </Text>
           </Stack>
-          <Block
-            tag="section"
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="quotesplit-quoteCard-label"
             data-testid="variant"
             data-block="quotesplit"
             data-variant="quoteCard"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="quotesplit-quoteCard-label" data-testid="variant-label">
-                {{ ui.blocks.variants.quotesplit.quoteCard }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <QuoteSplit
-                  id="quotesplit-quoteCard"
-                  :title="ui.marketing.quoteSplit.title"
-                  :lead="ui.marketing.quoteSplit.lead"
-                  :badge="ui.marketing.quoteSplit.badge"
-                  :quotes="testimonials"
-                  :labels="QUOTESPLIT_LABELS"
-                  :extras="QUOTESPLIT_EXTRAS"
-                  :actions="QUOTESPLIT_ACTIONS"
-                  layout="media"
-                  mediaSide="end"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="quotesplit-quoteCard-label" data-testid="variant-label">
+              {{ ui.blocks.variants.quotesplit.quoteCard }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <QuoteSplit
+                id="quotesplit-quoteCard"
+                :title="ui.marketing.quoteSplit.title"
+                :lead="ui.marketing.quoteSplit.lead"
+                :badge="ui.marketing.quoteSplit.badge"
+                :quotes="testimonials"
+                :labels="QUOTESPLIT_LABELS"
+                :extras="QUOTESPLIT_EXTRAS"
+                :actions="QUOTESPLIT_ACTIONS"
+                layout="media"
+                mediaSide="end"
+                tone="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="quotesplit-logoTiles-label"
             data-testid="variant"
             data-block="quotesplit"
             data-variant="logoTiles"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="quotesplit-logoTiles-label" data-testid="variant-label">
-                {{ ui.blocks.variants.quotesplit.logoTiles }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <QuoteSplit
-                  id="quotesplit-logoTiles"
-                  :title="ui.marketing.quoteSplit.title"
-                  :lead="ui.marketing.quoteSplit.lead"
-                  :badge="ui.marketing.quoteSplit.badge"
-                  :quotes="testimonials"
-                  :labels="QUOTESPLIT_LABELS"
-                  :extras="QUOTESPLIT_EXTRAS"
-                  :actions="QUOTESPLIT_ACTIONS"
-                  layout="logos"
-                  mediaSide="start"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="quotesplit-logoTiles-label" data-testid="variant-label">
+              {{ ui.blocks.variants.quotesplit.logoTiles }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <QuoteSplit
+                id="quotesplit-logoTiles"
+                :title="ui.marketing.quoteSplit.title"
+                :lead="ui.marketing.quoteSplit.lead"
+                :badge="ui.marketing.quoteSplit.badge"
+                :quotes="testimonials"
+                :labels="QUOTESPLIT_LABELS"
+                :extras="QUOTESPLIT_EXTRAS"
+                :actions="QUOTESPLIT_ACTIONS"
+                layout="logos"
+                mediaSide="start"
+                tone="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="quotesplit-ratingPanel-label"
             data-testid="variant"
             data-block="quotesplit"
             data-variant="ratingPanel"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="quotesplit-ratingPanel-label" data-testid="variant-label">
-                {{ ui.blocks.variants.quotesplit.ratingPanel }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <QuoteSplit
-                  id="quotesplit-ratingPanel"
-                  :title="ui.marketing.quoteSplit.title"
-                  :lead="ui.marketing.quoteSplit.lead"
-                  :badge="ui.marketing.quoteSplit.badge"
-                  :quotes="testimonials"
-                  :labels="QUOTESPLIT_LABELS"
-                  :extras="QUOTESPLIT_EXTRAS"
-                  :actions="QUOTESPLIT_ACTIONS"
-                  layout="rating"
-                  mediaSide="end"
-                  tone="muted"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="quotesplit-ratingPanel-label" data-testid="variant-label">
+              {{ ui.blocks.variants.quotesplit.ratingPanel }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <QuoteSplit
+                id="quotesplit-ratingPanel"
+                :title="ui.marketing.quoteSplit.title"
+                :lead="ui.marketing.quoteSplit.lead"
+                :badge="ui.marketing.quoteSplit.badge"
+                :quotes="testimonials"
+                :labels="QUOTESPLIT_LABELS"
+                :extras="QUOTESPLIT_EXTRAS"
+                :actions="QUOTESPLIT_ACTIONS"
+                layout="rating"
+                mediaSide="end"
+                tone="muted"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="quotesplit-stackedCards-label"
             data-testid="variant"
             data-block="quotesplit"
             data-variant="stackedCards"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="quotesplit-stackedCards-label" data-testid="variant-label">
-                {{ ui.blocks.variants.quotesplit.stackedCards }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <QuoteSplit
-                  id="quotesplit-stackedCards"
-                  :title="ui.marketing.quoteSplit.title"
-                  :lead="ui.marketing.quoteSplit.lead"
-                  :badge="ui.marketing.quoteSplit.badge"
-                  :quotes="testimonials"
-                  :labels="QUOTESPLIT_LABELS"
-                  :extras="QUOTESPLIT_EXTRAS"
-                  :actions="QUOTESPLIT_ACTIONS"
-                  layout="stack"
-                  mediaSide="start"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="quotesplit-stackedCards-label" data-testid="variant-label">
+              {{ ui.blocks.variants.quotesplit.stackedCards }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <QuoteSplit
+                id="quotesplit-stackedCards"
+                :title="ui.marketing.quoteSplit.title"
+                :lead="ui.marketing.quoteSplit.lead"
+                :badge="ui.marketing.quoteSplit.badge"
+                :quotes="testimonials"
+                :labels="QUOTESPLIT_LABELS"
+                :extras="QUOTESPLIT_EXTRAS"
+                :actions="QUOTESPLIT_ACTIONS"
+                layout="stack"
+                mediaSide="start"
+                tone="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="quotesplit-compact4-label"
             data-testid="variant"
             data-block="quotesplit"
             data-variant="compact4"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="quotesplit-compact4-label" data-testid="variant-label">
-                {{ ui.blocks.variants.quotesplit.compact4 }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <QuoteSplit
-                  id="quotesplit-compact4"
-                  :title="ui.marketing.quoteSplit.title"
-                  :lead="ui.marketing.quoteSplit.lead"
-                  :badge="ui.marketing.quoteSplit.badge"
-                  :quotes="testimonials"
-                  :labels="QUOTESPLIT_LABELS"
-                  :extras="QUOTESPLIT_EXTRAS"
-                  :actions="QUOTESPLIT_ACTIONS"
-                  layout="compact"
-                  mediaSide="end"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="quotesplit-compact4-label" data-testid="variant-label">
+              {{ ui.blocks.variants.quotesplit.compact4 }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <QuoteSplit
+                id="quotesplit-compact4"
+                :title="ui.marketing.quoteSplit.title"
+                :lead="ui.marketing.quoteSplit.lead"
+                :badge="ui.marketing.quoteSplit.badge"
+                :quotes="testimonials"
+                :labels="QUOTESPLIT_LABELS"
+                :extras="QUOTESPLIT_EXTRAS"
+                :actions="QUOTESPLIT_ACTIONS"
+                layout="compact"
+                mediaSide="end"
+                tone="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="quotesplit-bentoFigures-label"
             data-testid="variant"
             data-block="quotesplit"
             data-variant="bentoFigures"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="quotesplit-bentoFigures-label" data-testid="variant-label">
-                {{ ui.blocks.variants.quotesplit.bentoFigures }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <QuoteSplit
-                  id="quotesplit-bentoFigures"
-                  :title="ui.marketing.quoteSplit.title"
-                  :lead="ui.marketing.quoteSplit.lead"
-                  :badge="ui.marketing.quoteSplit.badge"
-                  :quotes="testimonials"
-                  :labels="QUOTESPLIT_LABELS"
-                  :extras="QUOTESPLIT_EXTRAS"
-                  :actions="QUOTESPLIT_ACTIONS"
-                  layout="bento"
-                  mediaSide="end"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
+            <Title :as="3" size="base" weight="bold" id="quotesplit-bentoFigures-label" data-testid="variant-label">
+              {{ ui.blocks.variants.quotesplit.bentoFigures }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <QuoteSplit
+                id="quotesplit-bentoFigures"
+                :title="ui.marketing.quoteSplit.title"
+                :lead="ui.marketing.quoteSplit.lead"
+                :badge="ui.marketing.quoteSplit.badge"
+                :quotes="testimonials"
+                :labels="QUOTESPLIT_LABELS"
+                :extras="QUOTESPLIT_EXTRAS"
+                :actions="QUOTESPLIT_ACTIONS"
+                layout="bento"
+                mediaSide="end"
+                tone="default"
+              />
+            </Box>
+          </Stack>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

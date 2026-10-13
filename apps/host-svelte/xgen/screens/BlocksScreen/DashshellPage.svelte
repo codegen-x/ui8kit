@@ -46,32 +46,34 @@
   } as const;
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.blocks.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="dashboard">
-        {ui.blocks.themes.dashboard.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-        {ui.blocks.names.dashshell}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {ui.blocks.docs.dashshell}
-      </Text>
-    </Stack>
-    <Block
-      tag="section"
-      aria-labelledby="dashshell-classic-label"
-      data-testid="variant"
-      data-block="dashshell"
-      data-variant="classic"
-    >
-      <Stack gap="4" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.blocks.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="dashboard">
+          {ui.blocks.themes.dashboard.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+          {ui.blocks.names.dashshell}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {ui.blocks.docs.dashshell}
+        </Text>
+      </Stack>
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="dashshell-classic-label"
+        data-testid="variant"
+        data-block="dashshell"
+        data-variant="classic"
+      >
         <Title as={2} size="base" weight="bold" id="dashshell-classic-label" data-testid="variant-label">
           {ui.blocks.variants.dashshell.classic}
         </Title>
@@ -90,15 +92,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="dashshell-inset-label"
-      data-testid="variant"
-      data-block="dashshell"
-      data-variant="inset"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="dashshell-inset-label"
+        data-testid="variant"
+        data-block="dashshell"
+        data-variant="inset"
+      >
         <Title as={2} size="base" weight="bold" id="dashshell-inset-label" data-testid="variant-label">
           {ui.blocks.variants.dashshell.inset}
         </Title>
@@ -117,15 +119,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="dashshell-rail-label"
-      data-testid="variant"
-      data-block="dashshell"
-      data-variant="rail"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="dashshell-rail-label"
+        data-testid="variant"
+        data-block="dashshell"
+        data-variant="rail"
+      >
         <Title as={2} size="base" weight="bold" id="dashshell-rail-label" data-testid="variant-label">
           {ui.blocks.variants.dashshell.rail}
         </Title>
@@ -144,15 +146,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="dashshell-railFooter-label"
-      data-testid="variant"
-      data-block="dashshell"
-      data-variant="railFooter"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="dashshell-railFooter-label"
+        data-testid="variant"
+        data-block="dashshell"
+        data-variant="railFooter"
+      >
         <Title as={2} size="base" weight="bold" id="dashshell-railFooter-label" data-testid="variant-label">
           {ui.blocks.variants.dashshell.railFooter}
         </Title>
@@ -171,15 +173,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="dashshell-collapsed-label"
-      data-testid="variant"
-      data-block="dashshell"
-      data-variant="collapsed"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="dashshell-collapsed-label"
+        data-testid="variant"
+        data-block="dashshell"
+        data-variant="collapsed"
+      >
         <Title as={2} size="base" weight="bold" id="dashshell-collapsed-label" data-testid="variant-label">
           {ui.blocks.variants.dashshell.collapsed}
         </Title>
@@ -198,15 +200,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="dashshell-twoLevel-label"
-      data-testid="variant"
-      data-block="dashshell"
-      data-variant="twoLevel"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="dashshell-twoLevel-label"
+        data-testid="variant"
+        data-block="dashshell"
+        data-variant="twoLevel"
+      >
         <Title as={2} size="base" weight="bold" id="dashshell-twoLevel-label" data-testid="variant-label">
           {ui.blocks.variants.dashshell.twoLevel}
         </Title>
@@ -225,15 +227,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="dashshell-twoLevelFull-label"
-      data-testid="variant"
-      data-block="dashshell"
-      data-variant="twoLevelFull"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="dashshell-twoLevelFull-label"
+        data-testid="variant"
+        data-block="dashshell"
+        data-variant="twoLevelFull"
+      >
         <Title as={2} size="base" weight="bold" id="dashshell-twoLevelFull-label" data-testid="variant-label">
           {ui.blocks.variants.dashshell.twoLevelFull}
         </Title>
@@ -252,15 +254,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="dashshell-end-label"
-      data-testid="variant"
-      data-block="dashshell"
-      data-variant="end"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="dashshell-end-label"
+        data-testid="variant"
+        data-block="dashshell"
+        data-variant="end"
+      >
         <Title as={2} size="base" weight="bold" id="dashshell-end-label" data-testid="variant-label">
           {ui.blocks.variants.dashshell.end}
         </Title>
@@ -279,15 +281,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="dashshell-railEnd-label"
-      data-testid="variant"
-      data-block="dashshell"
-      data-variant="railEnd"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="dashshell-railEnd-label"
+        data-testid="variant"
+        data-block="dashshell"
+        data-variant="railEnd"
+      >
         <Title as={2} size="base" weight="bold" id="dashshell-railEnd-label" data-testid="variant-label">
           {ui.blocks.variants.dashshell.railEnd}
         </Title>
@@ -306,15 +308,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="dashshell-topOnly-label"
-      data-testid="variant"
-      data-block="dashshell"
-      data-variant="topOnly"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="dashshell-topOnly-label"
+        data-testid="variant"
+        data-block="dashshell"
+        data-variant="topOnly"
+      >
         <Title as={2} size="base" weight="bold" id="dashshell-topOnly-label" data-testid="variant-label">
           {ui.blocks.variants.dashshell.topOnly}
         </Title>
@@ -333,15 +335,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="dashshell-sideOnly-label"
-      data-testid="variant"
-      data-block="dashshell"
-      data-variant="sideOnly"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="dashshell-sideOnly-label"
+        data-testid="variant"
+        data-block="dashshell"
+        data-variant="sideOnly"
+      >
         <Title as={2} size="base" weight="bold" id="dashshell-sideOnly-label" data-testid="variant-label">
           {ui.blocks.variants.dashshell.sideOnly}
         </Title>
@@ -360,15 +362,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="dashshell-collapsedEnd-label"
-      data-testid="variant"
-      data-block="dashshell"
-      data-variant="collapsedEnd"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="dashshell-collapsedEnd-label"
+        data-testid="variant"
+        data-block="dashshell"
+        data-variant="collapsedEnd"
+      >
         <Title as={2} size="base" weight="bold" id="dashshell-collapsedEnd-label" data-testid="variant-label">
           {ui.blocks.variants.dashshell.collapsedEnd}
         </Title>
@@ -387,6 +389,6 @@
           />
         </Box>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

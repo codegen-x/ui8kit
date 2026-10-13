@@ -15,12 +15,12 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
+  import Box from "../primitives/box/box.svelte";
   import { cn } from "../utils";
 
   let { label, class: className, children }: IconTabsProps = $props();
 </script>
 
-<Block class={cn("flex items-center gap-2", className)} role="tablist" aria-label={label} data-slot="icon-tabs">
+<Box class={cn("flex items-center gap-2", className)} role="tablist" aria-label={label} data-slot="icon-tabs">
   {@render children?.()}
-</Block>
+</Box>

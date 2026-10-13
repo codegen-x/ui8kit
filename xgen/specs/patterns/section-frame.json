@@ -577,6 +577,7 @@
     "svelte": true,
     "react": true
   },
+  "frame": true,
   "examples": [
     {
       "id": "tone.default",

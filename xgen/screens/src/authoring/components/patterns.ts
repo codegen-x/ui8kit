@@ -25,7 +25,7 @@ const iconTabs = spec(`${P}icon-tabs`, "IconTabs", "A row of icon-only tabs (a f
   props: [prop("label", "string", "accessible name of the tab list")],
   className: true,
   children: true,
-  view: [use("Block", { props: { Class: cn("flex items-center gap-2", ref("className")) }, attrs: { role: "tablist", "aria-label": ref("label"), "data-slot": "icon-tabs" } }, slot("children"))],
+  view: [use("Box", { props: { Class: cn("flex items-center gap-2", ref("className")) }, attrs: { role: "tablist", "aria-label": ref("label"), "data-slot": "icon-tabs" } }, slot("children"))],
 });
 
 const switcher = spec(`${P}switcher`, "Switcher", "A segmented switcher: a tab list whose items (SwitcherItem) share size and layout. Canary handed these down through context; here each item takes the same two props. Arrow keys: attach `moveFocus` to the keydown (horizontal, activate).", {
@@ -38,7 +38,7 @@ const switcher = spec(`${P}switcher`, "Switcher", "A segmented switcher: a tab l
   children: true,
   recipes: { switcher: "switcher" },
   examples: recipeExamples("switcher", { size: "size", layout: "layout" }),
-  view: [use("Block", { props: { Class: cn(recipe("switcher", "size", ref("size"), "layout", ref("layout")), ref("className")) }, attrs: { role: "tablist", "aria-label": ref("label"), "data-slot": "switcher" } }, slot("children"))],
+  view: [use("Box", { props: { Class: cn(recipe("switcher", "size", ref("size"), "layout", ref("layout")), ref("className")) }, attrs: { role: "tablist", "aria-label": ref("label"), "data-slot": "switcher" } }, slot("children"))],
 });
 
 const switcherItem = spec(`${P}switcher-item`, "SwitcherItem", "One item of a Switcher (default or active). Pass the same size and layout as the Switcher.", {
@@ -63,7 +63,7 @@ const editorTab = spec(`${P}editor-tab`, "EditorTab", "An editor file tab (40 px
   slots: [{ name: "icon", args: [], docs: "the file icon" }],
   events: [{ name: "click", args: [], docs: "the tab was pressed" }, { name: "close", args: [], docs: "the close button was pressed" }],
   view: [
-    use("Block", { props: { Class: cn("flex h-10 shrink-0 cursor-pointer flex-col justify-center data-[state=active]:bg-card [&_svg]:text-muted-foreground", "border-r border-border", ref("className")) }, attrs: { role: "tab", "aria-selected": ref("active"), tabindex: cond(ref("active"), 0, -1), "data-slot": "editor-tab", "data-state": state2("active", "active") }, on: { click: call("emit.click") } },
+    use("Box", { props: { Class: cn("flex h-10 shrink-0 cursor-pointer flex-col justify-center data-[state=active]:bg-card [&_svg]:text-muted-foreground", "border-r border-border", ref("className")) }, attrs: { role: "tab", "aria-selected": ref("active"), tabindex: cond(ref("active"), 0, -1), "data-slot": "editor-tab", "data-state": state2("active", "active") }, on: { click: call("emit.click") } },
       use("Inline", { props: { Class: "flex h-10 items-center gap-2 px-3" }, attrs: { "data-slot": "editor-tab-content" } },
         slot("icon"),
         use("Inline", { props: { Class: cn("text-xs text-foreground", cond(ref("preview"), "font-semibold italic", "font-bold")) }, attrs: { "data-slot": "editor-tab-label" } }, text(ref("label"))),
@@ -76,7 +76,7 @@ const fileTree = spec(`${P}file-tree`, "FileTree", "The list of a file tree. Put
   props: [prop("label", "string", "accessible name of the tree")],
   className: true,
   children: true,
-  view: [use("Block", { props: { Class: cn("flex flex-col gap-2 p-2", ref("className")) }, attrs: { role: "tree", "aria-label": ref("label"), "data-slot": "file-tree" } }, slot("children"))],
+  view: [use("Box", { props: { Class: cn("flex flex-col gap-2 p-2", ref("className")) }, attrs: { role: "tree", "aria-label": ref("label"), "data-slot": "file-tree" } }, slot("children"))],
 });
 
 const fileTreeItem = spec(`${P}file-tree-item`, "FileTreeItem", "A row of a file tree: a folder with a disclosure chevron, or a file. The glyphs are Lucide.", {
@@ -174,6 +174,7 @@ const sectionHead = spec(`${P}section-head`, "SectionHead", "A sidebar section h
 });
 
 const sidebarPanel = spec(`${P}sidebar-panel`, "SidebarPanel", "The app sidebar panel: width, padding and gap per kit sidebar type. Colours come from the middle layer.", {
+  frame: true,
   props: [prop("variant", union("sidebar-panel", "variant"), "sidebar type")],
   className: true,
   children: true,

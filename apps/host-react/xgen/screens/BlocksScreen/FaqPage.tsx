@@ -30,37 +30,39 @@ const FAQ_FILTER = { tabs: faqtabs, label: ui.vibe.faq.tabs, category: "" } as c
 
 export function FaqPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text
-            size="sm"
-            className="font-medium text-muted-foreground"
-            data-testid="block-theme"
-            data-theme-id="marketing"
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text
+              size="sm"
+              className="font-medium text-muted-foreground"
+              data-testid="block-theme"
+              data-theme-id="marketing"
+            >
+              {ui.blocks.themes.marketing.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.faq}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.faq}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="faq-list-label"
+            data-testid="variant"
+            data-block="faq"
+            data-variant="list"
           >
-            {ui.blocks.themes.marketing.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.faq}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.faq}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="faq-list-label"
-          data-testid="variant"
-          data-block="faq"
-          data-variant="list"
-        >
-          <Stack gap="4" align="stretch">
             <Title as={2} size="base" weight="bold" id="faq-list-label" data-testid="variant-label">
               {ui.blocks.variants.faq.list}
             </Title>
@@ -78,15 +80,15 @@ export function FaqPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="faq-chat-label"
-          data-testid="variant"
-          data-block="faq"
-          data-variant="chat"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="faq-chat-label"
+            data-testid="variant"
+            data-block="faq"
+            data-variant="chat"
+          >
             <Title as={2} size="base" weight="bold" id="faq-chat-label" data-testid="variant-label">
               {ui.blocks.variants.faq.chat}
             </Title>
@@ -104,15 +106,15 @@ export function FaqPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="faq-search-label"
-          data-testid="variant"
-          data-block="faq"
-          data-variant="search"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="faq-search-label"
+            data-testid="variant"
+            data-block="faq"
+            data-variant="search"
+          >
             <Title as={2} size="base" weight="bold" id="faq-search-label" data-testid="variant-label">
               {ui.blocks.variants.faq.search}
             </Title>
@@ -130,15 +132,15 @@ export function FaqPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="faq-tabs-label"
-          data-testid="variant"
-          data-block="faq"
-          data-variant="tabs"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="faq-tabs-label"
+            data-testid="variant"
+            data-block="faq"
+            data-variant="tabs"
+          >
             <Title as={2} size="base" weight="bold" id="faq-tabs-label" data-testid="variant-label">
               {ui.blocks.variants.faq.tabs}
             </Title>
@@ -156,15 +158,15 @@ export function FaqPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="faq-twoColumns-label"
-          data-testid="variant"
-          data-block="faq"
-          data-variant="twoColumns"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="faq-twoColumns-label"
+            data-testid="variant"
+            data-block="faq"
+            data-variant="twoColumns"
+          >
             <Title as={2} size="base" weight="bold" id="faq-twoColumns-label" data-testid="variant-label">
               {ui.blocks.variants.faq.twoColumns}
             </Title>
@@ -182,15 +184,15 @@ export function FaqPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="faq-muted-label"
-          data-testid="variant"
-          data-block="faq"
-          data-variant="muted"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="faq-muted-label"
+            data-testid="variant"
+            data-block="faq"
+            data-variant="muted"
+          >
             <Title as={2} size="base" weight="bold" id="faq-muted-label" data-testid="variant-label">
               {ui.blocks.variants.faq.muted}
             </Title>
@@ -208,15 +210,15 @@ export function FaqPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="faq-roomy-label"
-          data-testid="variant"
-          data-block="faq"
-          data-variant="roomy"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="faq-roomy-label"
+            data-testid="variant"
+            data-block="faq"
+            data-variant="roomy"
+          >
             <Title as={2} size="base" weight="bold" id="faq-roomy-label" data-testid="variant-label">
               {ui.blocks.variants.faq.roomy}
             </Title>
@@ -234,8 +236,8 @@ export function FaqPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

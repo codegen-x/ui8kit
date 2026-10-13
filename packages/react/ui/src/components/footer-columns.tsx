@@ -2,11 +2,11 @@
 // Source: xgen/screens/src/authoring/components/footer.ts
 /** The link groups of SitemapFooter as columns: a group title over its links, up to five columns. */
 import { type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
 import { Grid } from "../primitives/grid/grid";
 import { Link } from "../primitives/link/link";
 import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
+import { Nav } from "../primitives/nav/nav";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import type { MegaGroup } from "../blocks/mega-menu.types";
@@ -18,7 +18,7 @@ export type FooterColumnsProps = {
 
 export function FooterColumns({ label, groups }: FooterColumnsProps) {
   return (
-    <Block tag="nav" aria-label={label}>
+    <Nav aria-label={label}>
       <Grid cols="1" className="grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5" data-testid="footer-groups">
         {(groups ?? []).map((g) => (
           <Stack key={g.id} gap="2" data-testid="group">
@@ -37,6 +37,6 @@ export function FooterColumns({ label, groups }: FooterColumnsProps) {
           </Stack>
         ))}
       </Grid>
-    </Block>
+    </Nav>
   );
 }

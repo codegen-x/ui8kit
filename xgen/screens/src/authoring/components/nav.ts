@@ -60,15 +60,12 @@ export const searchPalette = spec(`${P}search-palette`, "SearchPalette", "A sear
 });
 
 /** a picture behind its children (a transparent bar over a hero picture); off: the children alone */
-export const overMedia = spec(`${P}over-media`, "OverMedia", "Puts its children over a faded picture (a transparent top bar over a hero image). on false: the children alone, no wrapper.", {
+export const overMedia = spec(`${P}over-media`, "OverMedia", "A faded picture behind the content of its header (a transparent top bar over a hero image); on false: nothing. It sits inside the header Block, which is `relative isolate overflow-hidden` and transparent when on, so the header stays the root of the block (rule 01).", {
   props: [
     { name: "on", type: "boolean", default: false },
     { name: "alt", type: "string", required: true, docs: "accessible name of the picture" },
   ],
-  children: true,
   view: [when(ref("on"),
-    [use("Block", { props: { Tag: "div", Class: "relative isolate overflow-hidden" }, attrs: { "data-testid": "over" } },
-      organism("MediaFrame", { alt: ref("alt"), ratio: "21/9", className: "absolute inset-0 -z-10 size-full rounded-none opacity-40" }),
-      use("Block", { props: { Tag: "div", Class: "[&_header]:border-0 [&_header]:bg-transparent" } }, slot("children")))],
-    [slot("children")])],
+    [use("Box", { props: { Class: "pointer-events-none absolute inset-0 -z-10" }, attrs: { "data-testid": "over" } },
+      organism("MediaFrame", { alt: ref("alt"), ratio: "21/9", className: "size-full rounded-none opacity-40" }))])],
 });

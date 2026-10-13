@@ -36,32 +36,34 @@ const PAGETRAIL_EXTRAS = {
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.blocks.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
-          {{ ui.blocks.themes.marketing.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="block-title">
-          {{ ui.blocks.names.pagetrail }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ ui.blocks.docs.pagetrail }}
-        </Text>
-      </Stack>
-      <Block
-        tag="section"
-        aria-labelledby="pagetrail-crumbs-label"
-        data-testid="variant"
-        data-block="pagetrail"
-        data-variant="crumbs"
-      >
-        <Stack gap="4" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.blocks.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
+            {{ ui.blocks.themes.marketing.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="block-title">
+            {{ ui.blocks.names.pagetrail }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ ui.blocks.docs.pagetrail }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="pagetrail-crumbs-label"
+          data-testid="variant"
+          data-block="pagetrail"
+          data-variant="crumbs"
+        >
           <Title :as="2" size="base" weight="bold" id="pagetrail-crumbs-label" data-testid="variant-label">
             {{ ui.blocks.variants.pagetrail.crumbs }}
           </Title>
@@ -80,15 +82,15 @@ const PAGETRAIL_EXTRAS = {
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="pagetrail-crumbsFigure-label"
-        data-testid="variant"
-        data-block="pagetrail"
-        data-variant="crumbsFigure"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="pagetrail-crumbsFigure-label"
+          data-testid="variant"
+          data-block="pagetrail"
+          data-variant="crumbsFigure"
+        >
           <Title :as="2" size="base" weight="bold" id="pagetrail-crumbsFigure-label" data-testid="variant-label">
             {{ ui.blocks.variants.pagetrail.crumbsFigure }}
           </Title>
@@ -107,15 +109,15 @@ const PAGETRAIL_EXTRAS = {
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="pagetrail-crumbsNote-label"
-        data-testid="variant"
-        data-block="pagetrail"
-        data-variant="crumbsNote"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="pagetrail-crumbsNote-label"
+          data-testid="variant"
+          data-block="pagetrail"
+          data-variant="crumbsNote"
+        >
           <Title :as="2" size="base" weight="bold" id="pagetrail-crumbsNote-label" data-testid="variant-label">
             {{ ui.blocks.variants.pagetrail.crumbsNote }}
           </Title>
@@ -134,15 +136,15 @@ const PAGETRAIL_EXTRAS = {
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="pagetrail-keyFacts-label"
-        data-testid="variant"
-        data-block="pagetrail"
-        data-variant="keyFacts"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="pagetrail-keyFacts-label"
+          data-testid="variant"
+          data-block="pagetrail"
+          data-variant="keyFacts"
+        >
           <Title :as="2" size="base" weight="bold" id="pagetrail-keyFacts-label" data-testid="variant-label">
             {{ ui.blocks.variants.pagetrail.keyFacts }}
           </Title>
@@ -161,7 +163,7 @@ const PAGETRAIL_EXTRAS = {
             />
           </Box>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

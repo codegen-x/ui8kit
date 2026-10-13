@@ -5,7 +5,6 @@
  * the prompt, an `output` line is muted. Static: the typing animation belongs to the port (TypingText contract).
  */
 import { type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
 import { Box } from "../primitives/box/box";
 import { Inline } from "../primitives/inline/inline";
 import { List } from "../primitives/list/list";
@@ -23,7 +22,7 @@ export type CodeWindowProps = {
 
 export function CodeWindow({ title, prompt, lines, className }: CodeWindowProps) {
   return (
-    <Block
+    <Box
       className={cn(
         "w-full overflow-hidden rounded bg-card text-left inset-ring inset-ring-border",
         className
@@ -57,6 +56,6 @@ export function CodeWindow({ title, prompt, lines, className }: CodeWindowProps)
           </ListItem>
         ))}
       </List>
-    </Block>
+    </Box>
   );
 }

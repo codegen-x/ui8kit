@@ -5,7 +5,7 @@
  * renders nothing visible.
  */
 import { type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
+import { Box } from "../primitives/box/box";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Text } from "../primitives/text/text";
 
@@ -15,7 +15,7 @@ export type NoticeProps = {
 
 export function Notice({ text }: NoticeProps) {
   return (
-    <Block className="contents" role="status" data-testid="notice">
+    <Box className="contents" role="status" data-testid="notice">
       {text ? (
         <Text
           className={"fixed right-4 bottom-4 z-40 m-0 flex items-center gap-2 rounded bg-foreground p-4 text-xs font-bold " +
@@ -25,6 +25,6 @@ export function Notice({ text }: NoticeProps) {
           {text}
         </Text>
       ) : null}
-    </Block>
+    </Box>
   );
 }

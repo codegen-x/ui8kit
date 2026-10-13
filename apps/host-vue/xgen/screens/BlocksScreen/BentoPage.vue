@@ -13,32 +13,34 @@ const bento = fromCodex<Tile>(bentoEntries, BENTO_FIELDS);
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.blocks.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
-          {{ ui.blocks.themes.marketing.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="block-title">
-          {{ ui.blocks.names.bento }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ ui.blocks.docs.bento }}
-        </Text>
-      </Stack>
-      <Block
-        tag="section"
-        aria-labelledby="bento-bento-label"
-        data-testid="variant"
-        data-block="bento"
-        data-variant="bento"
-      >
-        <Stack gap="4" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.blocks.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
+            {{ ui.blocks.themes.marketing.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="block-title">
+            {{ ui.blocks.names.bento }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ ui.blocks.docs.bento }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="bento-bento-label"
+          data-testid="variant"
+          data-block="bento"
+          data-variant="bento"
+        >
           <Title :as="2" size="base" weight="bold" id="bento-bento-label" data-testid="variant-label">
             {{ ui.blocks.variants.bento.bento }}
           </Title>
@@ -54,15 +56,15 @@ const bento = fromCodex<Tile>(bentoEntries, BENTO_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="bento-even-label"
-        data-testid="variant"
-        data-block="bento"
-        data-variant="even"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="bento-even-label"
+          data-testid="variant"
+          data-block="bento"
+          data-variant="even"
+        >
           <Title :as="2" size="base" weight="bold" id="bento-even-label" data-testid="variant-label">
             {{ ui.blocks.variants.bento.even }}
           </Title>
@@ -78,15 +80,15 @@ const bento = fromCodex<Tile>(bentoEntries, BENTO_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="bento-images-label"
-        data-testid="variant"
-        data-block="bento"
-        data-variant="images"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="bento-images-label"
+          data-testid="variant"
+          data-block="bento"
+          data-variant="images"
+        >
           <Title :as="2" size="base" weight="bold" id="bento-images-label" data-testid="variant-label">
             {{ ui.blocks.variants.bento.images }}
           </Title>
@@ -102,15 +104,15 @@ const bento = fromCodex<Tile>(bentoEntries, BENTO_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="bento-muted-label"
-        data-testid="variant"
-        data-block="bento"
-        data-variant="muted"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="bento-muted-label"
+          data-testid="variant"
+          data-block="bento"
+          data-variant="muted"
+        >
           <Title :as="2" size="base" weight="bold" id="bento-muted-label" data-testid="variant-label">
             {{ ui.blocks.variants.bento.muted }}
           </Title>
@@ -126,7 +128,7 @@ const bento = fromCodex<Tile>(bentoEntries, BENTO_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

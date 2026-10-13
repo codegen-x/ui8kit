@@ -40,32 +40,34 @@
   const summary = fromCodex<SummaryRow>(summaryEntries, SUMMARY_FIELDS);
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.blocks.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="commerce">
-        {ui.blocks.themes.commerce.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-        {ui.blocks.names.cartdrawer}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {ui.blocks.docs.cartdrawer}
-      </Text>
-    </Stack>
-    <Block
-      tag="section"
-      aria-labelledby="cartdrawer-filled-label"
-      data-testid="variant"
-      data-block="cartdrawer"
-      data-variant="filled"
-    >
-      <Stack gap="4" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.blocks.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="commerce">
+          {ui.blocks.themes.commerce.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+          {ui.blocks.names.cartdrawer}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {ui.blocks.docs.cartdrawer}
+        </Text>
+      </Stack>
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="cartdrawer-filled-label"
+        data-testid="variant"
+        data-block="cartdrawer"
+        data-variant="filled"
+      >
         <Title as={2} size="base" weight="bold" id="cartdrawer-filled-label" data-testid="variant-label">
           {ui.blocks.variants.cartdrawer.filled}
         </Title>
@@ -81,15 +83,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="cartdrawer-compact-label"
-      data-testid="variant"
-      data-block="cartdrawer"
-      data-variant="compact"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="cartdrawer-compact-label"
+        data-testid="variant"
+        data-block="cartdrawer"
+        data-variant="compact"
+      >
         <Title as={2} size="base" weight="bold" id="cartdrawer-compact-label" data-testid="variant-label">
           {ui.blocks.variants.cartdrawer.compact}
         </Title>
@@ -105,15 +107,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="cartdrawer-empty-label"
-      data-testid="variant"
-      data-block="cartdrawer"
-      data-variant="empty"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="cartdrawer-empty-label"
+        data-testid="variant"
+        data-block="cartdrawer"
+        data-variant="empty"
+      >
         <Title as={2} size="base" weight="bold" id="cartdrawer-empty-label" data-testid="variant-label">
           {ui.blocks.variants.cartdrawer.empty}
         </Title>
@@ -129,6 +131,6 @@
           />
         </Box>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

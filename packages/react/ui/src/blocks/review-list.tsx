@@ -5,7 +5,7 @@
  * columns, item (card, plain), avatar (none, image), tone, density.
  */
 import { type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
+import { Article } from "../primitives/article/article";
 import { Grid } from "../primitives/grid/grid";
 import { Group } from "../primitives/group/group";
 import { Stack } from "../primitives/stack/stack";
@@ -50,8 +50,7 @@ export function ReviewList({
     >
       <Grid cols={(((layout as string) === "grid") ? "1-3" : "1")} className="gap-4" data-testid="items">
         {(reviews ?? []).map((r) => (
-          <Block key={r.id}
-            tag="article"
+          <Article key={r.id}
             className={cn(
               "flex h-full flex-col gap-4",
               (
@@ -81,7 +80,7 @@ export function ReviewList({
                 </Text>
               </Stack>
             </Group>
-          </Block>
+          </Article>
         ))}
       </Grid>
     </SectionFrame>

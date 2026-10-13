@@ -6,7 +6,7 @@
  * Built from the catalog tree and the blocks.
  */
 
-import { Block, Button, Container, Link, LinkPlain } from "@ui8kit/react-ui";
+import { Block } from "@ui8kit/react-ui";
 import { MarketingNavigationPage } from "./CatalogScreen/MarketingNavigationPage";
 import { MarketingHeroPage } from "./CatalogScreen/MarketingHeroPage";
 import { MarketingHeroSplitPage } from "./CatalogScreen/MarketingHeroSplitPage";
@@ -87,6 +87,7 @@ import { PageShellCollapsedEndPage } from "./CatalogScreen/PageShellCollapsedEnd
 import { IndexPage } from "./CatalogScreen/IndexPage";
 import { PagesPage } from "./CatalogScreen/PagesPage";
 import { NotfoundPage } from "./CatalogScreen/NotfoundPage";
+import { ScreenHeader } from "./CatalogScreen/ScreenHeader";
 import { fromCodex, matchRoute, type UrlPort } from "@ui8kit/app-shared/runtime/core";
 import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
 import { ui } from "@ui8kit/app-shared/content";
@@ -180,41 +181,7 @@ export function CatalogScreen({ url }: { url: UrlPort }) {
   const route = matchRoute(ROUTES, url.path) ?? HOME;
   return (
     <>
-      <LinkPlain
-        href="#main-content"
-        className={"sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background " +
-          "focus:px-4 focus:py-2 focus:text-sm focus:shadow"}
-        data-testid="skip-link"
-      >
-        {ui.site.header.skip}
-      </LinkPlain>
-      <Block tag="header" className="border-b border-border">
-        <Container className="mx-auto w-full max-w-6xl px-4 flex flex-wrap items-center justify-between gap-4 py-3">
-          <Link href="#/" variant="default" className="text-lg font-bold" data-testid="brand">
-            {ui.catalog.title}
-          </Link>
-          <Block tag="nav" className="flex flex-wrap items-center gap-4" aria-label={ui.catalog.navLabel}>
-            <Link href="#/" variant="default" className="text-sm font-medium" data-testid="tab-categories">
-              {ui.catalog.categoriesTab}
-            </Link>
-            <Link href="#/pages" variant="default" className="text-sm font-medium" data-testid="tab-pages">
-              {ui.catalog.pagesTitle}
-            </Link>
-            <Link href="/blocks/" variant="default" className="text-sm font-medium" data-testid="gallery-link">
-              {ui.blocks.title}
-            </Link>
-            <Link href="/skins/" variant="default" className="text-sm font-medium" data-testid="skins-link">
-              {ui.skins.title}
-            </Link>
-            <Link href="/discovery/" variant="default" className="text-sm font-medium" data-testid="discovery-link">
-              {ui.discovery.title}
-            </Link>
-            <Button variant="outline" size="sm" data-testid="theme-toggle" onClick={() => actions.toggleTheme()}>
-              {ui.theme.toggle}
-            </Button>
-          </Block>
-        </Container>
-      </Block>
+      <ScreenHeader />
       <Block tag="main" id="main-content" tabIndex={-1} data-testid="main">
         {route.area === "index" ? (
           <IndexPage />

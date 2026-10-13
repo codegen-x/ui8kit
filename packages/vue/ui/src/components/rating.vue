@@ -16,7 +16,7 @@ export type RatingProps = {
 
 <script setup lang="ts">
 import { computed } from "vue";
-import Block from "../primitives/block/block.vue";
+import Box from "../primitives/box/box.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import { cn } from "../utils";
 
@@ -25,7 +25,7 @@ const full = computed(() => Math.round(Math.min(max, Math.max(0, value))));
 </script>
 
 <template>
-  <Block
+  <Box
     :class="cn('inline-flex items-center gap-0', className)"
     role="img"
     :aria-label="label"
@@ -39,5 +39,5 @@ const full = computed(() => Math.round(Math.min(max, Math.max(0, value))));
       :size="size"
       :class="((i < full) ? 'fill-foreground text-foreground' : 'text-border')"
     />
-  </Block>
+  </Box>
 </template>

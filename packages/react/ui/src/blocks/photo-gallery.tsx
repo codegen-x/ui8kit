@@ -7,9 +7,9 @@
  */
 import { type ReactNode } from "react";
 import { Badge } from "../primitives/badge/badge";
-import { Block } from "../primitives/block/block";
 import { Box } from "../primitives/box/box";
 import { Button } from "../primitives/button/button";
+import { Figure } from "../primitives/figure/figure";
 import { Group } from "../primitives/group/group";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
@@ -81,8 +81,7 @@ export function PhotoGallery({
           data-testid="items"
         >
           {(photos ?? []).map((p, i) => (
-            <Block key={p.id}
-              tag="figure"
+            <Figure key={p.id}
               className={cn(
                 "flex flex-col gap-2",
                 (((layout as string) === "masonry") ? "mb-4 break-inside-avoid" : ""),
@@ -111,11 +110,11 @@ export function PhotoGallery({
                 </Group>
               ) : null}
               {(((captions as string) === "show") && (((layout as string) === "grid") || ((layout as string) === "masonry"))) ? (
-                <Block className="text-sm text-muted-foreground" data-testid="caption">
+                <Box className="text-sm text-muted-foreground" data-testid="caption">
                   {p.title}
-                </Block>
+                </Box>
               ) : null}
-            </Block>
+            </Figure>
           ))}
         </Box>
       )}

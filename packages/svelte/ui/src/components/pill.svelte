@@ -13,7 +13,7 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
+  import Box from "../primitives/box/box.svelte";
   import Inline from "../primitives/inline/inline.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import { at, cn } from "../utils";
@@ -32,7 +32,7 @@
   let { tone = "gray", icon, class: className, children }: PillProps = $props();
 </script>
 
-<Block class="contents">
+<Box class="contents">
   <Inline
     class={cn(
       "inline-flex h-6 shrink-0 items-center gap-1 rounded-full px-3 text-xs font-medium whitespace-nowrap inset-ring",
@@ -46,4 +46,4 @@
     {/if}
     {@render children?.()}
   </Inline>
-</Block>
+</Box>

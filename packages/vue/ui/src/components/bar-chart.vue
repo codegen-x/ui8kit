@@ -18,7 +18,6 @@ export type BarChartProps = {
 
 <script setup lang="ts">
 import { computed } from "vue";
-import Block from "../primitives/block/block.vue";
 import Box from "../primitives/box/box.vue";
 import Text from "../primitives/text/text.vue";
 import { cn } from "../utils";
@@ -28,7 +27,7 @@ const top = computed(() => Math.max(1, (max ?? bars.reduce((m, i) => Math.max(m,
 </script>
 
 <template>
-  <Block :class="cn('min-w-0', className)" data-slot="bar-chart">
+  <Box :class="cn('min-w-0', className)" data-slot="bar-chart">
     <Box class="flex min-w-0 items-end gap-2" role="img" :aria-label="label" :style="`height:${height}px`">
       <Box v-for="b in bars" :key="b.id" class="flex h-full min-w-0 flex-1 items-end" :title="(b.title ?? b.label)">
         <Box
@@ -45,5 +44,5 @@ const top = computed(() => Math.max(1, (max ?? bars.reduce((m, i) => Math.max(m,
         </Text>
       </Box>
     </Box>
-  </Block>
+  </Box>
 </template>

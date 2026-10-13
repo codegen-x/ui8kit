@@ -24,9 +24,9 @@
 
 <script lang="ts">
   import Badge from "../primitives/badge/badge.svelte";
-  import Block from "../primitives/block/block.svelte";
   import Box from "../primitives/box/box.svelte";
   import Button from "../primitives/button/button.svelte";
+  import Figure from "../primitives/figure/figure.svelte";
   import Group from "../primitives/group/group.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Stack from "../primitives/stack/stack.svelte";
@@ -86,8 +86,7 @@
       data-testid="items"
     >
       {#each photos as p, i (p.id)}
-        <Block
-          tag="figure"
+        <Figure
           class={cn(
             "flex flex-col gap-2",
             (((layout as string) === "masonry") ? "mb-4 break-inside-avoid" : ""),
@@ -116,11 +115,11 @@
             </Group>
           {/if}
           {#if (((captions as string) === "show") && (((layout as string) === "grid") || ((layout as string) === "masonry")))}
-            <Block class="text-sm text-muted-foreground" data-testid="caption">
+            <Box class="text-sm text-muted-foreground" data-testid="caption">
               {p.title}
-            </Block>
+            </Box>
           {/if}
-        </Block>
+        </Figure>
       {/each}
     </Box>
   {/if}

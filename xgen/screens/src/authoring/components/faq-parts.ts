@@ -28,7 +28,7 @@ export const faqCards = spec("pattern.faq-cards", "FaqCards", "The questions of 
   props: [items, labels, { name: "cards", type: tsOf("grid3", "grid4", "icons"), default: "grid3" }],
   view: [use("Box", { props: { Class: cond(eq(ref("cards"), "grid4"), "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4", "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3") }, attrs: { "data-testid": "faq" } },
     each(ref("items"), "q", ref("q.id"),
-      use("Block", { props: { Tag: "article", Class: surface("flex flex-col gap-4 p-6") }, attrs: { "data-testid": "faq-card" } },
+      use("Article", { props: { Class: surface("flex flex-col gap-4 p-6") }, attrs: { "data-testid": "faq-card" } },
         when(eq(ref("cards"), "icons"), [iconSquare("q.icon")]),
         use("Stack", { props: { Gap: "2" } },
           use("Badge", { props: { Variant: "secondary", Size: "sm", Class: "w-fit" } }, text(ref("q.category"))),
@@ -38,6 +38,7 @@ export const faqCards = spec("pattern.faq-cards", "FaqCards", "The questions of 
 });
 
 export const faqHelp = spec("pattern.faq-help", "FaqHelp", "The help card beside the questions of FaqSplit: a title, a line of text, the ways to reach the team (icon, name, one line) and a link.", {
+  frame: true,
   typeImports: [...types, { from: "FeatureGrid", names: ["Feature"] }],
   props: [labels, { name: "channels", type: ts("Feature[]"), required: true }],
   view: [use("Block", { props: { Tag: "aside", Class: surface("flex flex-col gap-6 p-6") }, attrs: { "aria-label": ref("labels.asideTitle"), "data-testid": "faq-help" } },

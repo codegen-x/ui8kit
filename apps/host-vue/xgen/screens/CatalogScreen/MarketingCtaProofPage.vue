@@ -56,26 +56,33 @@ const CTAPROOF_CONTENT = { logos, features, stats, zones } as const;
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.catalog.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-          {{ ui.catalog.sections.marketing.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="category-title">
-          {{ ui.catalog.categories.marketingCtaProof }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ tpl(ui.catalog.count, 1, 7) }}
-        </Text>
-      </Stack>
-      <Block tag="section" aria-labelledby="catalog-ctaproof-title" data-testid="catalog-block" data-block="ctaproof">
-        <Stack gap="6" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.catalog.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+            {{ ui.catalog.sections.marketing.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="category-title">
+            {{ ui.catalog.categories.marketingCtaProof }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ tpl(ui.catalog.count, 1, 7) }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="6"
+          align="stretch"
+          role="group"
+          aria-labelledby="catalog-ctaproof-title"
+          data-testid="catalog-block"
+          data-block="ctaproof"
+        >
           <Stack gap="2" align="stretch">
             <Title :as="2" size="2xl" weight="bold" id="catalog-ctaproof-title">
               {{ ui.blocks.names.ctaproof }}
@@ -84,198 +91,198 @@ const CTAPROOF_CONTENT = { logos, features, stats, zones } as const;
               {{ ui.blocks.docs.ctaproof }}
             </Text>
           </Stack>
-          <Block
-            tag="section"
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="ctaproof-centerLogos-label"
             data-testid="variant"
             data-block="ctaproof"
             data-variant="centerLogos"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="ctaproof-centerLogos-label" data-testid="variant-label">
-                {{ ui.blocks.variants.ctaproof.centerLogos }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <CtaProof
-                  id="ctaproof-centerLogos"
-                  :title="ui.marketing.ctaProof.title"
-                  :lead="ui.marketing.ctaProof.lead"
-                  :badge="ui.marketing.ctaProof.badge"
-                  :actions="CTAPROOF_ACTIONS"
-                  :content="CTAPROOF_CONTENT"
-                  layout="center"
-                  proof="logos"
-                  mediaSide="end"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="ctaproof-centerLogos-label" data-testid="variant-label">
+              {{ ui.blocks.variants.ctaproof.centerLogos }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <CtaProof
+                id="ctaproof-centerLogos"
+                :title="ui.marketing.ctaProof.title"
+                :lead="ui.marketing.ctaProof.lead"
+                :badge="ui.marketing.ctaProof.badge"
+                :actions="CTAPROOF_ACTIONS"
+                :content="CTAPROOF_CONTENT"
+                layout="center"
+                proof="logos"
+                mediaSide="end"
+                tone="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="ctaproof-centerFeatures-label"
             data-testid="variant"
             data-block="ctaproof"
             data-variant="centerFeatures"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="ctaproof-centerFeatures-label" data-testid="variant-label">
-                {{ ui.blocks.variants.ctaproof.centerFeatures }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <CtaProof
-                  id="ctaproof-centerFeatures"
-                  :title="ui.marketing.ctaProof.title"
-                  :lead="ui.marketing.ctaProof.lead"
-                  :badge="ui.marketing.ctaProof.badge"
-                  :actions="CTAPROOF_ACTIONS"
-                  :content="CTAPROOF_CONTENT"
-                  layout="center"
-                  proof="features"
-                  mediaSide="end"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="ctaproof-centerFeatures-label" data-testid="variant-label">
+              {{ ui.blocks.variants.ctaproof.centerFeatures }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <CtaProof
+                id="ctaproof-centerFeatures"
+                :title="ui.marketing.ctaProof.title"
+                :lead="ui.marketing.ctaProof.lead"
+                :badge="ui.marketing.ctaProof.badge"
+                :actions="CTAPROOF_ACTIONS"
+                :content="CTAPROOF_CONTENT"
+                layout="center"
+                proof="features"
+                mediaSide="end"
+                tone="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="ctaproof-centerStats-label"
             data-testid="variant"
             data-block="ctaproof"
             data-variant="centerStats"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="ctaproof-centerStats-label" data-testid="variant-label">
-                {{ ui.blocks.variants.ctaproof.centerStats }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <CtaProof
-                  id="ctaproof-centerStats"
-                  :title="ui.marketing.ctaProof.title"
-                  :lead="ui.marketing.ctaProof.lead"
-                  :badge="ui.marketing.ctaProof.badge"
-                  :actions="CTAPROOF_ACTIONS"
-                  :content="CTAPROOF_CONTENT"
-                  layout="center"
-                  proof="stats"
-                  mediaSide="end"
-                  tone="muted"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="ctaproof-centerStats-label" data-testid="variant-label">
+              {{ ui.blocks.variants.ctaproof.centerStats }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <CtaProof
+                id="ctaproof-centerStats"
+                :title="ui.marketing.ctaProof.title"
+                :lead="ui.marketing.ctaProof.lead"
+                :badge="ui.marketing.ctaProof.badge"
+                :actions="CTAPROOF_ACTIONS"
+                :content="CTAPROOF_CONTENT"
+                layout="center"
+                proof="stats"
+                mediaSide="end"
+                tone="muted"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="ctaproof-splitStats-label"
             data-testid="variant"
             data-block="ctaproof"
             data-variant="splitStats"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="ctaproof-splitStats-label" data-testid="variant-label">
-                {{ ui.blocks.variants.ctaproof.splitStats }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <CtaProof
-                  id="ctaproof-splitStats"
-                  :title="ui.marketing.ctaProof.title"
-                  :lead="ui.marketing.ctaProof.lead"
-                  :badge="ui.marketing.ctaProof.badge"
-                  :actions="CTAPROOF_ACTIONS"
-                  :content="CTAPROOF_CONTENT"
-                  layout="split"
-                  proof="stats"
-                  mediaSide="end"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="ctaproof-splitStats-label" data-testid="variant-label">
+              {{ ui.blocks.variants.ctaproof.splitStats }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <CtaProof
+                id="ctaproof-splitStats"
+                :title="ui.marketing.ctaProof.title"
+                :lead="ui.marketing.ctaProof.lead"
+                :badge="ui.marketing.ctaProof.badge"
+                :actions="CTAPROOF_ACTIONS"
+                :content="CTAPROOF_CONTENT"
+                layout="split"
+                proof="stats"
+                mediaSide="end"
+                tone="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="ctaproof-splitStatsStart-label"
             data-testid="variant"
             data-block="ctaproof"
             data-variant="splitStatsStart"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="ctaproof-splitStatsStart-label" data-testid="variant-label">
-                {{ ui.blocks.variants.ctaproof.splitStatsStart }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <CtaProof
-                  id="ctaproof-splitStatsStart"
-                  :title="ui.marketing.ctaProof.title"
-                  :lead="ui.marketing.ctaProof.lead"
-                  :badge="ui.marketing.ctaProof.badge"
-                  :actions="CTAPROOF_ACTIONS"
-                  :content="CTAPROOF_CONTENT"
-                  layout="split"
-                  proof="stats"
-                  mediaSide="start"
-                  tone="default"
-                  :note="ui.marketing.ctaProof.note"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="ctaproof-splitStatsStart-label" data-testid="variant-label">
+              {{ ui.blocks.variants.ctaproof.splitStatsStart }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <CtaProof
+                id="ctaproof-splitStatsStart"
+                :title="ui.marketing.ctaProof.title"
+                :lead="ui.marketing.ctaProof.lead"
+                :badge="ui.marketing.ctaProof.badge"
+                :actions="CTAPROOF_ACTIONS"
+                :content="CTAPROOF_CONTENT"
+                layout="split"
+                proof="stats"
+                mediaSide="start"
+                tone="default"
+                :note="ui.marketing.ctaProof.note"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="ctaproof-splitRows-label"
             data-testid="variant"
             data-block="ctaproof"
             data-variant="splitRows"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="ctaproof-splitRows-label" data-testid="variant-label">
-                {{ ui.blocks.variants.ctaproof.splitRows }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <CtaProof
-                  id="ctaproof-splitRows"
-                  :title="ui.marketing.ctaProof.title"
-                  :lead="ui.marketing.ctaProof.lead"
-                  :badge="ui.marketing.ctaProof.badge"
-                  :actions="CTAPROOF_ACTIONS"
-                  :content="CTAPROOF_CONTENT"
-                  layout="split"
-                  proof="rows"
-                  mediaSide="end"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="ctaproof-splitRows-label" data-testid="variant-label">
+              {{ ui.blocks.variants.ctaproof.splitRows }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <CtaProof
+                id="ctaproof-splitRows"
+                :title="ui.marketing.ctaProof.title"
+                :lead="ui.marketing.ctaProof.lead"
+                :badge="ui.marketing.ctaProof.badge"
+                :actions="CTAPROOF_ACTIONS"
+                :content="CTAPROOF_CONTENT"
+                layout="split"
+                proof="rows"
+                mediaSide="end"
+                tone="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="ctaproof-splitZones-label"
             data-testid="variant"
             data-block="ctaproof"
             data-variant="splitZones"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="ctaproof-splitZones-label" data-testid="variant-label">
-                {{ ui.blocks.variants.ctaproof.splitZones }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <CtaProof
-                  id="ctaproof-splitZones"
-                  :title="ui.marketing.ctaProof.zonesTitle"
-                  :lead="ui.marketing.ctaProof.zonesLead"
-                  :badge="ui.marketing.ctaProof.badge"
-                  :actions="CTAPROOF_ACTIONS"
-                  :content="CTAPROOF_CONTENT"
-                  layout="split"
-                  proof="zones"
-                  mediaSide="end"
-                  tone="muted"
-                />
-              </Box>
-            </Stack>
-          </Block>
+            <Title :as="3" size="base" weight="bold" id="ctaproof-splitZones-label" data-testid="variant-label">
+              {{ ui.blocks.variants.ctaproof.splitZones }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <CtaProof
+                id="ctaproof-splitZones"
+                :title="ui.marketing.ctaProof.zonesTitle"
+                :lead="ui.marketing.ctaProof.zonesLead"
+                :badge="ui.marketing.ctaProof.badge"
+                :actions="CTAPROOF_ACTIONS"
+                :content="CTAPROOF_CONTENT"
+                layout="split"
+                proof="zones"
+                mediaSide="end"
+                tone="muted"
+              />
+            </Box>
+          </Stack>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

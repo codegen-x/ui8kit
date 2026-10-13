@@ -17,7 +17,7 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
+  import Box from "../primitives/box/box.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import { cn } from "../utils";
 
@@ -25,7 +25,7 @@
   const full = $derived(Math.round(Math.min(max, Math.max(0, value))));
 </script>
 
-<Block
+<Box
   class={cn("inline-flex items-center gap-0", className)}
   role="img"
   aria-label={label}
@@ -35,4 +35,4 @@
   {#each Array.from({ length: max }, (_, i) => i) as i (i)}
     <LucideIcon name="star" size={size} class={((i < full) ? "fill-foreground text-foreground" : "text-border")} />
   {/each}
-</Block>
+</Box>

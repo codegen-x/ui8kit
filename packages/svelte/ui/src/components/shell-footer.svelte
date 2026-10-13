@@ -19,6 +19,7 @@
   import Link from "../primitives/link/link.svelte";
   import List from "../primitives/list/list.svelte";
   import ListItem from "../primitives/list/list-item.svelte";
+  import Nav from "../primitives/nav/nav.svelte";
   import Text from "../primitives/text/text.svelte";
   import { cn } from "../utils";
 
@@ -37,7 +38,7 @@
   <Text size="xs" class="text-muted-foreground">
     {nav.copyright}
   </Text>
-  <Block tag="nav" aria-label={nav.footerLabel}>
+  <Nav aria-label={nav.footerLabel}>
     <List class="m-0 flex list-none items-center gap-4 p-0">
       {#each nav.footer as f (f.id)}
         <ListItem>
@@ -47,5 +48,5 @@
         </ListItem>
       {/each}
     </List>
-  </Block>
+  </Nav>
 </Block>

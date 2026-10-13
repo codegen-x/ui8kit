@@ -40,26 +40,33 @@ const templateFilters = fromCodex<Filter>(templateFiltersEntries, TEMPLATEFILTER
 
 export function MarketingGalleryPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.catalog.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text size="sm" className="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-            {ui.catalog.sections.marketing.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="category-title">
-            {ui.catalog.categories.marketingGallery}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {tpl(ui.catalog.count, 2, 10)}
-          </Text>
-        </Stack>
-        <Block tag="section" aria-labelledby="catalog-photos-title" data-testid="catalog-block" data-block="photos">
-          <Stack gap="6" align="stretch">
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.catalog.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text size="sm" className="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+              {ui.catalog.sections.marketing.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="category-title">
+              {ui.catalog.categories.marketingGallery}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {tpl(ui.catalog.count, 2, 10)}
+            </Text>
+          </Stack>
+          <Stack
+            gap="6"
+            align="stretch"
+            role="group"
+            aria-labelledby="catalog-photos-title"
+            data-testid="catalog-block"
+            data-block="photos"
+          >
             <Stack gap="2" align="stretch">
               <Title as={2} size="2xl" weight="bold" id="catalog-photos-title">
                 {ui.blocks.names.photos}
@@ -68,171 +75,171 @@ export function MarketingGalleryPage() {
                 {ui.blocks.docs.photos}
               </Text>
             </Stack>
-            <Block
-              tag="section"
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="photos-grid-label"
               data-testid="variant"
               data-block="photos"
               data-variant="grid"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="photos-grid-label" data-testid="variant-label">
-                  {ui.blocks.variants.photos.grid}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <PhotoGallery
-                    id="photos-grid"
-                    title={ui.company.photos.title}
-                    lead={ui.company.photos.lead}
-                    photos={photos}
-                    labels={ui.company.photos}
-                    layout="grid"
-                    captions="show"
-                    tone="default"
-                    density="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="photos-grid-label" data-testid="variant-label">
+                {ui.blocks.variants.photos.grid}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <PhotoGallery
+                  id="photos-grid"
+                  title={ui.company.photos.title}
+                  lead={ui.company.photos.lead}
+                  photos={photos}
+                  labels={ui.company.photos}
+                  layout="grid"
+                  captions="show"
+                  tone="default"
+                  density="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="photos-gridPlain-label"
               data-testid="variant"
               data-block="photos"
               data-variant="gridPlain"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="photos-gridPlain-label" data-testid="variant-label">
-                  {ui.blocks.variants.photos.gridPlain}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <PhotoGallery
-                    id="photos-gridPlain"
-                    title={ui.company.photos.title}
-                    lead={ui.company.photos.lead}
-                    photos={photos}
-                    labels={ui.company.photos}
-                    layout="grid"
-                    captions="hide"
-                    tone="muted"
-                    density="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="photos-gridPlain-label" data-testid="variant-label">
+                {ui.blocks.variants.photos.gridPlain}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <PhotoGallery
+                  id="photos-gridPlain"
+                  title={ui.company.photos.title}
+                  lead={ui.company.photos.lead}
+                  photos={photos}
+                  labels={ui.company.photos}
+                  layout="grid"
+                  captions="hide"
+                  tone="muted"
+                  density="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="photos-masonry-label"
               data-testid="variant"
               data-block="photos"
               data-variant="masonry"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="photos-masonry-label" data-testid="variant-label">
-                  {ui.blocks.variants.photos.masonry}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <PhotoGallery
-                    id="photos-masonry"
-                    title={ui.company.photos.title}
-                    lead={ui.company.photos.lead}
-                    photos={photos}
-                    labels={ui.company.photos}
-                    layout="masonry"
-                    captions="show"
-                    tone="default"
-                    density="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="photos-masonry-label" data-testid="variant-label">
+                {ui.blocks.variants.photos.masonry}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <PhotoGallery
+                  id="photos-masonry"
+                  title={ui.company.photos.title}
+                  lead={ui.company.photos.lead}
+                  photos={photos}
+                  labels={ui.company.photos}
+                  layout="masonry"
+                  captions="show"
+                  tone="default"
+                  density="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="photos-mosaic-label"
               data-testid="variant"
               data-block="photos"
               data-variant="mosaic"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="photos-mosaic-label" data-testid="variant-label">
-                  {ui.blocks.variants.photos.mosaic}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <PhotoGallery
-                    id="photos-mosaic"
-                    title={ui.company.photos.title}
-                    lead={ui.company.photos.lead}
-                    photos={photos}
-                    labels={ui.company.photos}
-                    layout="mosaic"
-                    captions="show"
-                    tone="default"
-                    density="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="photos-mosaic-label" data-testid="variant-label">
+                {ui.blocks.variants.photos.mosaic}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <PhotoGallery
+                  id="photos-mosaic"
+                  title={ui.company.photos.title}
+                  lead={ui.company.photos.lead}
+                  photos={photos}
+                  labels={ui.company.photos}
+                  layout="mosaic"
+                  captions="show"
+                  tone="default"
+                  density="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="photos-featured-label"
               data-testid="variant"
               data-block="photos"
               data-variant="featured"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="photos-featured-label" data-testid="variant-label">
-                  {ui.blocks.variants.photos.featured}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <PhotoGallery
-                    id="photos-featured"
-                    title={ui.company.photos.title}
-                    lead={ui.company.photos.lead}
-                    photos={photos}
-                    labels={ui.company.photos}
-                    layout="featured"
-                    captions="show"
-                    tone="default"
-                    density="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="photos-featured-label" data-testid="variant-label">
+                {ui.blocks.variants.photos.featured}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <PhotoGallery
+                  id="photos-featured"
+                  title={ui.company.photos.title}
+                  lead={ui.company.photos.lead}
+                  photos={photos}
+                  labels={ui.company.photos}
+                  layout="featured"
+                  captions="show"
+                  tone="default"
+                  density="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="photos-cards-label"
               data-testid="variant"
               data-block="photos"
               data-variant="cards"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="photos-cards-label" data-testid="variant-label">
-                  {ui.blocks.variants.photos.cards}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <PhotoGallery
-                    id="photos-cards"
-                    title={ui.company.photos.title}
-                    lead={ui.company.photos.lead}
-                    photos={photos}
-                    labels={ui.company.photos}
-                    layout="cards"
-                    captions="show"
-                    tone="default"
-                    density="compact"
-                  />
-                </Box>
-              </Stack>
-            </Block>
+              <Title as={3} size="base" weight="bold" id="photos-cards-label" data-testid="variant-label">
+                {ui.blocks.variants.photos.cards}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <PhotoGallery
+                  id="photos-cards"
+                  title={ui.company.photos.title}
+                  lead={ui.company.photos.lead}
+                  photos={photos}
+                  labels={ui.company.photos}
+                  layout="cards"
+                  captions="show"
+                  tone="default"
+                  density="compact"
+                />
+              </Box>
+            </Stack>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="catalog-templates-title"
-          data-testid="catalog-block"
-          data-block="templates"
-        >
-          <Stack gap="6" align="stretch">
+          <Stack
+            gap="6"
+            align="stretch"
+            role="group"
+            aria-labelledby="catalog-templates-title"
+            data-testid="catalog-block"
+            data-block="templates"
+          >
             <Stack gap="2" align="stretch">
               <Title as={2} size="2xl" weight="bold" id="catalog-templates-title">
                 {ui.blocks.names.templates}
@@ -241,125 +248,125 @@ export function MarketingGalleryPage() {
                 {ui.blocks.docs.templates}
               </Text>
             </Stack>
-            <Block
-              tag="section"
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="templates-grid4-label"
               data-testid="variant"
               data-block="templates"
               data-variant="grid4"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="templates-grid4-label" data-testid="variant-label">
-                  {ui.blocks.variants.templates.grid4}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <TemplateGrid
-                    id="templates-grid4"
-                    title={ui.vibe.templates.title}
-                    templates={templates}
-                    filters={templateFilters}
-                    filtersLabel={ui.vibe.templates.filters}
-                    browse={ui.vibe.templates.browse}
-                    browseHref="#/"
-                    viewsLabel={ui.vibe.templates.views}
-                    likesLabel={ui.vibe.templates.likes}
-                    cols="1-4"
-                    tone="default"
-                    density="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="templates-grid4-label" data-testid="variant-label">
+                {ui.blocks.variants.templates.grid4}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <TemplateGrid
+                  id="templates-grid4"
+                  title={ui.vibe.templates.title}
+                  templates={templates}
+                  filters={templateFilters}
+                  filtersLabel={ui.vibe.templates.filters}
+                  browse={ui.vibe.templates.browse}
+                  browseHref="#/"
+                  viewsLabel={ui.vibe.templates.views}
+                  likesLabel={ui.vibe.templates.likes}
+                  cols="1-4"
+                  tone="default"
+                  density="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="templates-grid3-label"
               data-testid="variant"
               data-block="templates"
               data-variant="grid3"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="templates-grid3-label" data-testid="variant-label">
-                  {ui.blocks.variants.templates.grid3}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <TemplateGrid
-                    id="templates-grid3"
-                    title={ui.vibe.templates.title}
-                    templates={templates}
-                    filters={templateFilters}
-                    filtersLabel={ui.vibe.templates.filters}
-                    browse={ui.vibe.templates.browse}
-                    browseHref="#/"
-                    viewsLabel={ui.vibe.templates.views}
-                    likesLabel={ui.vibe.templates.likes}
-                    cols="1-3"
-                    tone="default"
-                    density="compact"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="templates-grid3-label" data-testid="variant-label">
+                {ui.blocks.variants.templates.grid3}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <TemplateGrid
+                  id="templates-grid3"
+                  title={ui.vibe.templates.title}
+                  templates={templates}
+                  filters={templateFilters}
+                  filtersLabel={ui.vibe.templates.filters}
+                  browse={ui.vibe.templates.browse}
+                  browseHref="#/"
+                  viewsLabel={ui.vibe.templates.views}
+                  likesLabel={ui.vibe.templates.likes}
+                  cols="1-3"
+                  tone="default"
+                  density="compact"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="templates-muted-label"
               data-testid="variant"
               data-block="templates"
               data-variant="muted"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="templates-muted-label" data-testid="variant-label">
-                  {ui.blocks.variants.templates.muted}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <TemplateGrid
-                    id="templates-muted"
-                    title={ui.vibe.templates.title}
-                    templates={templates}
-                    filters={templateFilters}
-                    filtersLabel={ui.vibe.templates.filters}
-                    browse={ui.vibe.templates.browse}
-                    browseHref="#/"
-                    viewsLabel={ui.vibe.templates.views}
-                    likesLabel={ui.vibe.templates.likes}
-                    cols="1-4"
-                    tone="muted"
-                    density="compact"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="templates-muted-label" data-testid="variant-label">
+                {ui.blocks.variants.templates.muted}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <TemplateGrid
+                  id="templates-muted"
+                  title={ui.vibe.templates.title}
+                  templates={templates}
+                  filters={templateFilters}
+                  filtersLabel={ui.vibe.templates.filters}
+                  browse={ui.vibe.templates.browse}
+                  browseHref="#/"
+                  viewsLabel={ui.vibe.templates.views}
+                  likesLabel={ui.vibe.templates.likes}
+                  cols="1-4"
+                  tone="muted"
+                  density="compact"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="templates-roomy-label"
               data-testid="variant"
               data-block="templates"
               data-variant="roomy"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="templates-roomy-label" data-testid="variant-label">
-                  {ui.blocks.variants.templates.roomy}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <TemplateGrid
-                    id="templates-roomy"
-                    title={ui.vibe.templates.title}
-                    templates={templates}
-                    filters={templateFilters}
-                    filtersLabel={ui.vibe.templates.filters}
-                    browse={ui.vibe.templates.browse}
-                    browseHref="#/"
-                    viewsLabel={ui.vibe.templates.views}
-                    likesLabel={ui.vibe.templates.likes}
-                    cols="1-4"
-                    tone="default"
-                    density="roomy"
-                  />
-                </Box>
-              </Stack>
-            </Block>
+              <Title as={3} size="base" weight="bold" id="templates-roomy-label" data-testid="variant-label">
+                {ui.blocks.variants.templates.roomy}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <TemplateGrid
+                  id="templates-roomy"
+                  title={ui.vibe.templates.title}
+                  templates={templates}
+                  filters={templateFilters}
+                  filtersLabel={ui.vibe.templates.filters}
+                  browse={ui.vibe.templates.browse}
+                  browseHref="#/"
+                  viewsLabel={ui.vibe.templates.views}
+                  likesLabel={ui.vibe.templates.likes}
+                  cols="1-4"
+                  tone="default"
+                  density="roomy"
+                />
+              </Box>
+            </Stack>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

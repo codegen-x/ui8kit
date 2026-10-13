@@ -52,7 +52,7 @@ test("one host per runtime serves every screen; content, data and menus live onc
     // one file per screen, plus one per page of a chunked screen (the gallery: xgen/screens/BlocksScreen/<Area>Page)
     expect(h.files.filter((f) => /^xgen\/screens\/[^/]+$/.test(f.path)).length).toBe(p.inputs.screens.length);
     const pages = h.files.filter((f) => f.path.startsWith("xgen/screens/BlocksScreen/")).length;
-    expect(pages).toBe(p.inputs.blocks.length + 2); // every block, the index and notfound
+    expect(pages).toBe(p.inputs.blocks.length + 3); // every block, the index, notfound and the ScreenHeader part
     expect(h.files.some((f) => /content\.ts$|\/data\/|\/nav\/|runtime\/core\.ts$/.test(f.path))).toBe(false);
   }
   const shared = p.targets.find((x) => x.dir === "packages/shared/app")!;

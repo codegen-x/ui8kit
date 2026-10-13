@@ -5,7 +5,6 @@
  * tile is a plain figure.
  */
 import { type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
 import { Box } from "../primitives/box/box";
 import { IconBadge } from "../primitives/iconbadge/iconbadge";
 import { Link } from "../primitives/link/link";
@@ -22,7 +21,7 @@ export type StatTileProps = {
 
 export function StatTile({ label, value, icon, href, hint }: StatTileProps) {
   return (
-    <Block className="min-w-0">
+    <Box className="min-w-0">
       {href ? (
         <Link
           href={href}
@@ -67,6 +66,6 @@ export function StatTile({ label, value, icon, href, hint }: StatTileProps) {
           ) : null}
         </Box>
       )}
-    </Block>
+    </Box>
   );
 }

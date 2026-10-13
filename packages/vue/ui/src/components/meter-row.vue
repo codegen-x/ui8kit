@@ -16,7 +16,6 @@ export type MeterRowProps = {
 </script>
 
 <script setup lang="ts">
-import Block from "../primitives/block/block.vue";
 import Box from "../primitives/box/box.vue";
 import Link from "../primitives/link/link.vue";
 import Progress from "../primitives/form/progress.vue";
@@ -27,7 +26,7 @@ const { label, value, caption, hint, href, class: className } = defineProps<Mete
 </script>
 
 <template>
-  <Block :class="cn('min-w-0', className)" data-slot="meter-row">
+  <Box :class="cn('min-w-0', className)" data-slot="meter-row">
     <Link v-if="href"
       :href="href"
       variant="block"
@@ -60,5 +59,5 @@ const { label, value, caption, hint, href, class: className } = defineProps<Mete
         {{ hint }}
       </Text>
     </Box>
-  </Block>
+  </Box>
 </template>

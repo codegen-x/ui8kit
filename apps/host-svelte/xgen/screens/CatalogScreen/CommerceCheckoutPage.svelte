@@ -65,26 +65,33 @@
   const payments = fromCodex<Payment>(paymentsEntries, PAYMENTS_FIELDS);
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.catalog.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-        {ui.catalog.sections.commerce.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="category-title">
-        {ui.catalog.categories.commerceCheckout}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {tpl(ui.catalog.count, 3, 8)}
-      </Text>
-    </Stack>
-    <Block tag="section" aria-labelledby="catalog-checkout-title" data-testid="catalog-block" data-block="checkout">
-      <Stack gap="6" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.catalog.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+          {ui.catalog.sections.commerce.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="category-title">
+          {ui.catalog.categories.commerceCheckout}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {tpl(ui.catalog.count, 3, 8)}
+        </Text>
+      </Stack>
+      <Stack
+        gap="6"
+        align="stretch"
+        role="group"
+        aria-labelledby="catalog-checkout-title"
+        data-testid="catalog-block"
+        data-block="checkout"
+      >
         <Stack gap="2" align="stretch">
           <Title as={2} size="2xl" weight="bold" id="catalog-checkout-title">
             {ui.blocks.names.checkout}
@@ -93,97 +100,102 @@
             {ui.blocks.docs.checkout}
           </Text>
         </Stack>
-        <Block
-          tag="section"
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="checkout-cards-label"
           data-testid="variant"
           data-block="checkout"
           data-variant="cards"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="checkout-cards-label" data-testid="variant-label">
-              {ui.blocks.variants.checkout.cards}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <CheckoutForm
-                id="checkout-cards"
-                title={ui.commerce.checkout.title}
-                days={days}
-                payments={payments}
-                lines={cart}
-                rows={summary}
-                promos={promos}
-                labels={ui.commerce.checkout}
-                totals={ui.commerce.totals}
-                layout="cards"
-                summary="aside"
-                tone="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="checkout-cards-label" data-testid="variant-label">
+            {ui.blocks.variants.checkout.cards}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <CheckoutForm
+              id="checkout-cards"
+              title={ui.commerce.checkout.title}
+              days={days}
+              payments={payments}
+              lines={cart}
+              rows={summary}
+              promos={promos}
+              labels={ui.commerce.checkout}
+              totals={ui.commerce.totals}
+              layout="cards"
+              summary="aside"
+              tone="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="checkout-numbered-label"
           data-testid="variant"
           data-block="checkout"
           data-variant="numbered"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="checkout-numbered-label" data-testid="variant-label">
-              {ui.blocks.variants.checkout.numbered}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <CheckoutForm
-                id="checkout-numbered"
-                title={ui.commerce.checkout.title}
-                days={days}
-                payments={payments}
-                lines={cart}
-                rows={summary}
-                promos={promos}
-                labels={ui.commerce.checkout}
-                totals={ui.commerce.totals}
-                layout="numbered"
-                summary="aside"
-                tone="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="checkout-numbered-label" data-testid="variant-label">
+            {ui.blocks.variants.checkout.numbered}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <CheckoutForm
+              id="checkout-numbered"
+              title={ui.commerce.checkout.title}
+              days={days}
+              payments={payments}
+              lines={cart}
+              rows={summary}
+              promos={promos}
+              labels={ui.commerce.checkout}
+              totals={ui.commerce.totals}
+              layout="numbered"
+              summary="aside"
+              tone="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="checkout-noSummary-label"
           data-testid="variant"
           data-block="checkout"
           data-variant="noSummary"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="checkout-noSummary-label" data-testid="variant-label">
-              {ui.blocks.variants.checkout.noSummary}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <CheckoutForm
-                id="checkout-noSummary"
-                title={ui.commerce.checkout.title}
-                days={days}
-                payments={payments}
-                lines={cart}
-                rows={summary}
-                promos={promos}
-                labels={ui.commerce.checkout}
-                totals={ui.commerce.totals}
-                layout="cards"
-                summary="none"
-                tone="muted"
-              />
-            </Box>
-          </Stack>
-        </Block>
+          <Title as={3} size="base" weight="bold" id="checkout-noSummary-label" data-testid="variant-label">
+            {ui.blocks.variants.checkout.noSummary}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <CheckoutForm
+              id="checkout-noSummary"
+              title={ui.commerce.checkout.title}
+              days={days}
+              payments={payments}
+              lines={cart}
+              rows={summary}
+              promos={promos}
+              labels={ui.commerce.checkout}
+              totals={ui.commerce.totals}
+              layout="cards"
+              summary="none"
+              tone="muted"
+            />
+          </Box>
+        </Stack>
       </Stack>
-    </Block>
-    <Block tag="section" aria-labelledby="catalog-summary-title" data-testid="catalog-block" data-block="summary">
-      <Stack gap="6" align="stretch">
+      <Stack
+        gap="6"
+        align="stretch"
+        role="group"
+        aria-labelledby="catalog-summary-title"
+        data-testid="catalog-block"
+        data-block="summary"
+      >
         <Stack gap="2" align="stretch">
           <Title as={2} size="2xl" weight="bold" id="catalog-summary-title">
             {ui.blocks.names.summary}
@@ -192,114 +204,119 @@
             {ui.blocks.docs.summary}
           </Text>
         </Stack>
-        <Block
-          tag="section"
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="summary-card-label"
           data-testid="variant"
           data-block="summary"
           data-variant="card"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="summary-card-label" data-testid="variant-label">
-              {ui.blocks.variants.summary.card}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <OrderSummary
-                id="summary-card"
-                title={ui.commerce.summary.title}
-                rows={summary}
-                labels={ui.commerce.summary}
-                layout="card"
-                cta="show"
-                note="show"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="summary-card-label" data-testid="variant-label">
+            {ui.blocks.variants.summary.card}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <OrderSummary
+              id="summary-card"
+              title={ui.commerce.summary.title}
+              rows={summary}
+              labels={ui.commerce.summary}
+              layout="card"
+              cta="show"
+              note="show"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="summary-plain-label"
           data-testid="variant"
           data-block="summary"
           data-variant="plain"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="summary-plain-label" data-testid="variant-label">
-              {ui.blocks.variants.summary.plain}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <OrderSummary
-                id="summary-plain"
-                title={ui.commerce.summary.title}
-                rows={summary}
-                labels={ui.commerce.summary}
-                layout="plain"
-                cta="show"
-                note="hide"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="summary-plain-label" data-testid="variant-label">
+            {ui.blocks.variants.summary.plain}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <OrderSummary
+              id="summary-plain"
+              title={ui.commerce.summary.title}
+              rows={summary}
+              labels={ui.commerce.summary}
+              layout="plain"
+              cta="show"
+              note="hide"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="summary-noCta-label"
           data-testid="variant"
           data-block="summary"
           data-variant="noCta"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="summary-noCta-label" data-testid="variant-label">
-              {ui.blocks.variants.summary.noCta}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <OrderSummary
-                id="summary-noCta"
-                title={ui.commerce.summary.title}
-                rows={summary}
-                labels={ui.commerce.summary}
-                layout="card"
-                cta="hide"
-                note="show"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="summary-noCta-label" data-testid="variant-label">
+            {ui.blocks.variants.summary.noCta}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <OrderSummary
+              id="summary-noCta"
+              title={ui.commerce.summary.title}
+              rows={summary}
+              labels={ui.commerce.summary}
+              layout="card"
+              cta="hide"
+              note="show"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="summary-muted-label"
           data-testid="variant"
           data-block="summary"
           data-variant="muted"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="summary-muted-label" data-testid="variant-label">
-              {ui.blocks.variants.summary.muted}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <OrderSummary
-                id="summary-muted"
-                title={ui.commerce.summary.title}
-                rows={summary}
-                labels={ui.commerce.summary}
-                layout="card"
-                cta="show"
-                note="show"
-                tone="muted"
-                density="compact"
-              />
-            </Box>
-          </Stack>
-        </Block>
+          <Title as={3} size="base" weight="bold" id="summary-muted-label" data-testid="variant-label">
+            {ui.blocks.variants.summary.muted}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <OrderSummary
+              id="summary-muted"
+              title={ui.commerce.summary.title}
+              rows={summary}
+              labels={ui.commerce.summary}
+              layout="card"
+              cta="show"
+              note="show"
+              tone="muted"
+              density="compact"
+            />
+          </Box>
+        </Stack>
       </Stack>
-    </Block>
-    <Block tag="section" aria-labelledby="catalog-stepper-title" data-testid="catalog-block" data-block="stepper">
-      <Stack gap="6" align="stretch">
+      <Stack
+        gap="6"
+        align="stretch"
+        role="group"
+        aria-labelledby="catalog-stepper-title"
+        data-testid="catalog-block"
+        data-block="stepper"
+      >
         <Stack gap="2" align="stretch">
           <Title as={2} size="2xl" weight="bold" id="catalog-stepper-title">
             {ui.blocks.names.stepper}
@@ -308,34 +325,34 @@
             {ui.blocks.docs.stepper}
           </Text>
         </Stack>
-        <Block
-          tag="section"
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="stepper-horizontal-label"
           data-testid="variant"
           data-block="stepper"
           data-variant="horizontal"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="stepper-horizontal-label" data-testid="variant-label">
-              {ui.blocks.variants.stepper.horizontal}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <Stepper
-                id="stepper-horizontal"
-                title={ui.onboarding.stepper.title}
-                steps={steps}
-                current={2}
-                stepLabel={ui.onboarding.stepper.stepLabel}
-                back={ui.onboarding.stepper.back}
-                next={ui.onboarding.stepper.next}
-                layout="horizontal"
-                marker="number"
-                summary="show"
-              />
-            </Box>
-          </Stack>
-        </Block>
+          <Title as={3} size="base" weight="bold" id="stepper-horizontal-label" data-testid="variant-label">
+            {ui.blocks.variants.stepper.horizontal}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <Stepper
+              id="stepper-horizontal"
+              title={ui.onboarding.stepper.title}
+              steps={steps}
+              current={2}
+              stepLabel={ui.onboarding.stepper.stepLabel}
+              back={ui.onboarding.stepper.back}
+              next={ui.onboarding.stepper.next}
+              layout="horizontal"
+              marker="number"
+              summary="show"
+            />
+          </Box>
+        </Stack>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

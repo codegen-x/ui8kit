@@ -157,250 +157,170 @@
   ],
   "view": [
     {
-      "organism": "OverMedia",
+      "use": "Block",
       "props": {
-        "on": {
-          "op": "eq",
+        "Tag": "header",
+        "Class": {
+          "op": "cn",
           "args": [
+            "relative",
             {
-              "$": "over"
+              "op": "cond",
+              "args": [
+                {
+                  "op": "eq",
+                  "args": [
+                    {
+                      "$": "tone"
+                    },
+                    "inverse"
+                  ]
+                },
+                "border-b border-transparent bg-foreground text-background [&_a]:text-background [&_button]:text-background",
+                "border-b border-border bg-background"
+              ]
             },
-            "media"
+            {
+              "op": "cond",
+              "args": [
+                {
+                  "op": "eq",
+                  "args": [
+                    {
+                      "$": "over"
+                    },
+                    "media"
+                  ]
+                },
+                "isolate overflow-hidden border-0 bg-transparent",
+                ""
+              ]
+            }
           ]
-        },
-        "alt": {
-          "$": "brand"
         }
       },
-      "slots": {
-        "children": {
-          "args": [],
-          "do": [
+      "attrs": {
+        "data-testid": "nav-bar",
+        "data-layout": {
+          "$": "layout"
+        },
+        "data-tone": {
+          "$": "tone"
+        }
+      },
+      "children": [
+        {
+          "organism": "OverMedia",
+          "props": {
+            "on": {
+              "op": "eq",
+              "args": [
+                {
+                  "$": "over"
+                },
+                "media"
+              ]
+            },
+            "alt": {
+              "$": "brand"
+            }
+          }
+        },
+        {
+          "when": {
+            "$": "skip"
+          },
+          "then": [
             {
-              "use": "Block",
+              "use": "LinkPlain",
               "props": {
-                "Tag": "header",
+                "Href": "#main-content",
+                "Class": "sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border"
+              },
+              "attrs": {
+                "data-testid": "skip-link"
+              },
+              "children": [
+                {
+                  "text": {
+                    "$": "skip"
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "use": "Container",
+          "props": {
+            "Class": "mx-auto w-full max-w-6xl px-4"
+          },
+          "attrs": {
+            "data-slot": "container"
+          },
+          "children": [
+            {
+              "use": "Box",
+              "props": {
                 "Class": {
                   "op": "cn",
                   "args": [
-                    "relative",
-                    {
-                      "op": "cond",
-                      "args": [
-                        {
-                          "op": "eq",
-                          "args": [
-                            {
-                              "$": "tone"
-                            },
-                            "inverse"
-                          ]
-                        },
-                        "border-b border-transparent bg-foreground text-background [&_a]:text-background [&_button]:text-background",
-                        "border-b border-border bg-background"
-                      ]
-                    }
+                    "flex flex-wrap items-center justify-between gap-4",
+                    "py-4"
                   ]
-                }
-              },
-              "attrs": {
-                "data-testid": "nav-bar",
-                "data-layout": {
-                  "$": "layout"
-                },
-                "data-tone": {
-                  "$": "tone"
                 }
               },
               "children": [
                 {
                   "when": {
-                    "$": "skip"
+                    "op": "eq",
+                    "args": [
+                      {
+                        "$": "layout"
+                      },
+                      "split"
+                    ]
                   },
                   "then": [
                     {
-                      "use": "LinkPlain",
+                      "use": "Grid",
                       "props": {
-                        "Href": "#main-content",
-                        "Class": "sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border"
-                      },
-                      "attrs": {
-                        "data-testid": "skip-link"
+                        "Cols": "1-3",
+                        "Class": "w-full items-center gap-4"
                       },
                       "children": [
                         {
-                          "text": {
-                            "$": "skip"
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "use": "Container",
-                  "props": {
-                    "Class": "mx-auto w-full max-w-6xl px-4"
-                  },
-                  "attrs": {
-                    "data-slot": "container"
-                  },
-                  "children": [
-                    {
-                      "use": "Box",
-                      "props": {
-                        "Class": {
-                          "op": "cn",
-                          "args": [
-                            "flex flex-wrap items-center justify-between gap-4",
-                            "py-4"
-                          ]
-                        }
-                      },
-                      "children": [
-                        {
-                          "when": {
-                            "op": "eq",
-                            "args": [
-                              {
-                                "$": "layout"
-                              },
-                              "split"
-                            ]
+                          "use": "Nav",
+                          "props": {
+                            "Class": "md:justify-self-start"
                           },
-                          "then": [
+                          "attrs": {
+                            "aria-label": {
+                              "$": "label"
+                            },
+                            "data-testid": "site-nav"
+                          },
+                          "children": [
                             {
-                              "use": "Grid",
+                              "organism": "NavLinks",
                               "props": {
-                                "Cols": "1-3",
-                                "Class": "w-full items-center gap-4"
-                              },
-                              "children": [
-                                {
-                                  "use": "Block",
-                                  "props": {
-                                    "Tag": "nav",
-                                    "Class": "md:justify-self-start"
-                                  },
-                                  "attrs": {
-                                    "aria-label": {
-                                      "$": "label"
-                                    },
-                                    "data-testid": "site-nav"
-                                  },
-                                  "children": [
-                                    {
-                                      "organism": "NavLinks",
-                                      "props": {
-                                        "links": {
-                                          "$": "links"
-                                        },
-                                        "current": {
-                                          "$": "current"
-                                        },
-                                        "side": "left"
-                                      }
-                                    }
-                                  ]
+                                "links": {
+                                  "$": "links"
                                 },
-                                {
-                                  "use": "Box",
-                                  "props": {
-                                    "Class": "text-center"
-                                  },
-                                  "children": [
-                                    {
-                                      "use": "Link",
-                                      "props": {
-                                        "Href": "#/",
-                                        "Variant": "default",
-                                        "Class": "text-lg font-medium"
-                                      },
-                                      "attrs": {
-                                        "data-testid": "brand"
-                                      },
-                                      "children": [
-                                        {
-                                          "text": {
-                                            "$": "brand"
-                                          }
-                                        }
-                                      ]
-                                    }
-                                  ]
+                                "current": {
+                                  "$": "current"
                                 },
-                                {
-                                  "use": "Group",
-                                  "props": {
-                                    "Gap": "4",
-                                    "Align": "center",
-                                    "Justify": "end",
-                                    "Class": "flex-wrap md:justify-self-end"
-                                  },
-                                  "children": [
-                                    {
-                                      "use": "Block",
-                                      "props": {
-                                        "Tag": "nav"
-                                      },
-                                      "attrs": {
-                                        "aria-label": {
-                                          "$": "label"
-                                        }
-                                      },
-                                      "children": [
-                                        {
-                                          "organism": "NavLinks",
-                                          "props": {
-                                            "links": {
-                                              "$": "links"
-                                            },
-                                            "current": {
-                                              "$": "current"
-                                            },
-                                            "side": "right"
-                                          }
-                                        }
-                                      ]
-                                    },
-                                    {
-                                      "organism": "NavActions",
-                                      "props": {
-                                        "login": {
-                                          "$": "actions.login"
-                                        },
-                                        "loginHref": {
-                                          "$": "actions.loginHref"
-                                        },
-                                        "cta": {
-                                          "$": "actions.cta"
-                                        },
-                                        "ctaHref": {
-                                          "$": "actions.href"
-                                        },
-                                        "actions": {
-                                          "$": "actions.mode"
-                                        },
-                                        "tone": {
-                                          "$": "tone"
-                                        },
-                                        "themeLabel": {
-                                          "$": "actions.themeLabel"
-                                        }
-                                      },
-                                      "on": {
-                                        "theme": {
-                                          "call": "emit.theme",
-                                          "args": []
-                                        }
-                                      }
-                                    }
-                                  ]
-                                }
-                              ]
+                                "side": "left"
+                              }
                             }
-                          ],
-                          "else": [
+                          ]
+                        },
+                        {
+                          "use": "Box",
+                          "props": {
+                            "Class": "text-center"
+                          },
+                          "children": [
                             {
                               "use": "Link",
                               "props": {
@@ -418,42 +338,25 @@
                                   }
                                 }
                               ]
-                            },
+                            }
+                          ]
+                        },
+                        {
+                          "use": "Group",
+                          "props": {
+                            "Gap": "4",
+                            "Align": "center",
+                            "Justify": "end",
+                            "Class": "flex-wrap md:justify-self-end"
+                          },
+                          "children": [
                             {
-                              "when": {
-                                "op": "eq",
-                                "args": [
-                                  {
-                                    "$": "layout"
-                                  },
-                                  "search"
-                                ]
-                              },
-                              "then": [
-                                {
-                                  "organism": "SearchPalette",
-                                  "props": {
-                                    "label": {
-                                      "$": "search.label"
-                                    },
-                                    "shortcut": {
-                                      "$": "search.shortcut"
-                                    }
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "use": "Block",
-                              "props": {
-                                "Tag": "nav",
-                                "Class": "order-last w-full overflow-x-auto md:order-none md:w-auto [&>div]:flex-nowrap md:[&>div]:flex-wrap [&_a]:shrink-0"
-                              },
+                              "use": "Nav",
+                              "props": {},
                               "attrs": {
                                 "aria-label": {
                                   "$": "label"
-                                },
-                                "data-testid": "site-nav"
+                                }
                               },
                               "children": [
                                 {
@@ -465,7 +368,7 @@
                                     "current": {
                                       "$": "current"
                                     },
-                                    "side": "all"
+                                    "side": "right"
                                   }
                                 }
                               ]
@@ -506,13 +409,115 @@
                         }
                       ]
                     }
+                  ],
+                  "else": [
+                    {
+                      "use": "Link",
+                      "props": {
+                        "Href": "#/",
+                        "Variant": "default",
+                        "Class": "text-lg font-medium"
+                      },
+                      "attrs": {
+                        "data-testid": "brand"
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "$": "brand"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "when": {
+                        "op": "eq",
+                        "args": [
+                          {
+                            "$": "layout"
+                          },
+                          "search"
+                        ]
+                      },
+                      "then": [
+                        {
+                          "organism": "SearchPalette",
+                          "props": {
+                            "label": {
+                              "$": "search.label"
+                            },
+                            "shortcut": {
+                              "$": "search.shortcut"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "use": "Nav",
+                      "props": {
+                        "Class": "order-last w-full overflow-x-auto md:order-none md:w-auto [&>div]:flex-nowrap md:[&>div]:flex-wrap [&_a]:shrink-0"
+                      },
+                      "attrs": {
+                        "aria-label": {
+                          "$": "label"
+                        },
+                        "data-testid": "site-nav"
+                      },
+                      "children": [
+                        {
+                          "organism": "NavLinks",
+                          "props": {
+                            "links": {
+                              "$": "links"
+                            },
+                            "current": {
+                              "$": "current"
+                            },
+                            "side": "all"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "organism": "NavActions",
+                      "props": {
+                        "login": {
+                          "$": "actions.login"
+                        },
+                        "loginHref": {
+                          "$": "actions.loginHref"
+                        },
+                        "cta": {
+                          "$": "actions.cta"
+                        },
+                        "ctaHref": {
+                          "$": "actions.href"
+                        },
+                        "actions": {
+                          "$": "actions.mode"
+                        },
+                        "tone": {
+                          "$": "tone"
+                        },
+                        "themeLabel": {
+                          "$": "actions.themeLabel"
+                        }
+                      },
+                      "on": {
+                        "theme": {
+                          "call": "emit.theme",
+                          "args": []
+                        }
+                      }
+                    }
                   ]
                 }
               ]
             }
           ]
         }
-      }
+      ]
     }
   ],
   "portable": {

@@ -6,8 +6,8 @@
  * takes a big tile.
  */
 import { type ReactNode } from "react";
+import { Article } from "../primitives/article/article";
 import { Badge } from "../primitives/badge/badge";
-import { Block } from "../primitives/block/block";
 import { Box } from "../primitives/box/box";
 import { Group } from "../primitives/group/group";
 import { Link } from "../primitives/link/link";
@@ -36,8 +36,7 @@ export function ProjectTiles({ projects, labels, layout = "cards" }: ProjectTile
       data-testid="items"
     >
       {(projects ?? []).map((p, i) => (
-        <Block key={p.id}
-          tag="article"
+        <Article key={p.id}
           className={cn(
             "flex flex-col gap-4",
             (over ? "relative" : "rounded bg-card inset-ring inset-ring-border p-4"),
@@ -95,7 +94,7 @@ export function ProjectTiles({ projects, labels, layout = "cards" }: ProjectTile
               </>
             ) : null}
           </Stack>
-        </Block>
+        </Article>
       ))}
     </Box>
   );

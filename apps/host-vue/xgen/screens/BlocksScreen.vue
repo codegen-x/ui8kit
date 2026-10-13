@@ -6,7 +6,7 @@
 -->
 <script setup lang="ts">
 import { computed } from "vue";
-import { Block, Button, Container, Group, Link, LinkPlain } from "@ui8kit/vue-ui";
+import { Block } from "@ui8kit/vue-ui";
 import IndexPage from "./BlocksScreen/IndexPage.vue";
 import AboutPage from "./BlocksScreen/AboutPage.vue";
 import AboutmePage from "./BlocksScreen/AboutmePage.vue";
@@ -101,6 +101,7 @@ import ChannelsPage from "./BlocksScreen/ChannelsPage.vue";
 import ContactPage from "./BlocksScreen/ContactPage.vue";
 import ErrorpagePage from "./BlocksScreen/ErrorpagePage.vue";
 import NotfoundPage from "./BlocksScreen/NotfoundPage.vue";
+import ScreenHeader from "./BlocksScreen/ScreenHeader.vue";
 import { fromCodex, matchRoute, type UrlPort } from "@ui8kit/app-shared/runtime/core";
 import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
 import { ui } from "@ui8kit/app-shared/content";
@@ -208,35 +209,7 @@ const actions = { toggleTheme };
 </script>
 
 <template>
-  <LinkPlain
-    href="#main-content"
-    :class="'sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded-md focus:bg-background ' +
-      'focus:px-4 focus:py-2 focus:text-sm focus:shadow'"
-    data-testid="skip-link"
-  >
-    {{ ui.site.header.skip }}
-  </LinkPlain>
-  <Block tag="header" class="border-b border-border">
-    <Container class="mx-auto w-full max-w-6xl px-4 flex items-center justify-between gap-4 py-3">
-      <Link href="#/" variant="default" class="text-lg font-bold" data-testid="brand">
-        {{ ui.blocks.title }}
-      </Link>
-      <Group gap="4" align="center">
-        <Link href="/catalog/" variant="default" class="text-sm font-medium" data-testid="catalog-link">
-          {{ ui.catalog.title }}
-        </Link>
-        <Link href="/skins/" variant="default" class="text-sm font-medium" data-testid="skins-link">
-          {{ ui.skins.title }}
-        </Link>
-        <Link href="/discovery/" variant="default" class="text-sm font-medium" data-testid="discovery-link">
-          {{ ui.discovery.title }}
-        </Link>
-        <Button variant="outline" size="sm" data-testid="theme-toggle" @click="() => actions.toggleTheme()">
-          {{ ui.theme.toggle }}
-        </Button>
-      </Group>
-    </Container>
-  </Block>
+  <ScreenHeader />
   <Block tag="main" id="main-content" :tabindex="-1" data-testid="main">
     <IndexPage v-if="route.area === 'index'" />
     <AboutPage v-else-if="route.area === 'about'" />

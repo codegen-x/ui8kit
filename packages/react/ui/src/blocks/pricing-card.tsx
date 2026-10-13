@@ -6,9 +6,9 @@
  */
 import { type ReactNode } from "react";
 import { Badge } from "../primitives/badge/badge";
+import { Block } from "../primitives/block/block";
 import { Box } from "../primitives/box/box";
 import { Button } from "../primitives/button/button";
-import { Card } from "../primitives/card/card";
 import { CardContent } from "../primitives/card/card-content";
 import { CardDescription } from "../primitives/card/card-description";
 import { CardFooter } from "../primitives/card/card-footer";
@@ -47,9 +47,13 @@ export function PricingCard({
   const yearlyOn = ((billing as string) === "annual") && (plan.yearly > 0);
   const amount = yearlyOn ? plan.yearly : plan.price;
   return (
-    <Card
-      variant="default"
-      className="flex h-full flex-col"
+    <Block
+      tag="article"
+      className={cn(
+        "flex flex-col gap-8 bg-card p-6 text-card-foreground inset-ring inset-ring-border rounded",
+        "flex h-full flex-col"
+      )}
+      data-slot="card"
       data-highlighted={(stand ? "true" : "false")}
       data-current={(current ? "true" : "false")}
     >
@@ -112,6 +116,6 @@ export function PricingCard({
         </Button>
         {footer?.(plan)}
       </CardFooter>
-    </Card>
+    </Block>
   );
 }

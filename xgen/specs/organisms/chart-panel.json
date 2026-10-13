@@ -82,142 +82,182 @@
   "events": [],
   "view": [
     {
-      "use": "Container",
+      "use": "Block",
       "props": {
-        "Class": "mx-auto w-full max-w-6xl px-4 py-8"
+        "Tag": "section"
       },
       "attrs": {
-        "data-slot": "container"
+        "aria-labelledby": {
+          "op": "cond",
+          "args": [
+            {
+              "op": "and",
+              "args": [
+                {
+                  "$": "title"
+                },
+                {
+                  "$": "id"
+                }
+              ]
+            },
+            {
+              "op": "tpl",
+              "args": [
+                "{0}-t",
+                {
+                  "$": "id"
+                }
+              ]
+            },
+            {
+              "op": "undef",
+              "args": []
+            }
+          ]
+        },
+        "data-testid": "panel-section"
       },
       "children": [
         {
-          "organism": "Panel",
+          "use": "Container",
           "props": {
-            "title": {
-              "$": "title"
-            },
-            "description": {
-              "$": "text"
-            },
-            "id": {
-              "$": "id"
-            },
-            "className": {
-              "op": "cond",
-              "args": [
-                {
-                  "op": "eq",
+            "Class": "mx-auto w-full max-w-6xl px-4 py-8"
+          },
+          "attrs": {
+            "data-slot": "container"
+          },
+          "children": [
+            {
+              "organism": "Panel",
+              "props": {
+                "title": {
+                  "$": "title"
+                },
+                "description": {
+                  "$": "text"
+                },
+                "id": {
+                  "$": "id"
+                },
+                "className": {
+                  "op": "cond",
                   "args": [
                     {
-                      "$": "tone"
-                    },
-                    "muted"
-                  ]
-                },
-                "bg-muted",
-                ""
-              ]
-            }
-          },
-          "slots": {
-            "children": {
-              "args": [],
-              "do": [
-                {
-                  "when": {
-                    "op": "eq",
-                    "args": [
-                      {
-                        "$": "chart"
-                      },
-                      "bars"
-                    ]
-                  },
-                  "then": [
-                    {
-                      "organism": "BarChart",
-                      "props": {
-                        "bars": {
-                          "$": "series"
-                        },
-                        "label": {
-                          "$": "summary"
-                        },
-                        "height": {
-                          "op": "cond",
-                          "args": [
-                            {
-                              "op": "eq",
-                              "args": [
-                                {
-                                  "$": "size"
-                                },
-                                "compact"
-                              ]
-                            },
-                            96,
-                            176
-                          ]
-                        }
-                      }
-                    }
-                  ],
-                  "else": [
-                    {
-                      "use": "Stack",
-                      "props": {
-                        "Gap": {
-                          "op": "cond",
-                          "args": [
-                            {
-                              "op": "eq",
-                              "args": [
-                                {
-                                  "$": "size"
-                                },
-                                "compact"
-                              ]
-                            },
-                            "0",
-                            "2"
-                          ]
-                        },
-                        "Align": "stretch"
-                      },
-                      "attrs": {
-                        "data-testid": "items"
-                      },
-                      "children": [
+                      "op": "eq",
+                      "args": [
                         {
-                          "each": {
-                            "$": "series"
+                          "$": "tone"
+                        },
+                        "muted"
+                      ]
+                    },
+                    "bg-muted",
+                    ""
+                  ]
+                }
+              },
+              "slots": {
+                "children": {
+                  "args": [],
+                  "do": [
+                    {
+                      "when": {
+                        "op": "eq",
+                        "args": [
+                          {
+                            "$": "chart"
                           },
-                          "as": "s",
-                          "key": {
-                            "$": "s.id"
-                          },
-                          "do": [
-                            {
-                              "organism": "MeterRow",
-                              "props": {
-                                "label": {
-                                  "$": "s.label"
-                                },
-                                "value": {
-                                  "$": "s.value"
-                                },
-                                "caption": {
-                                  "op": "tpl",
+                          "bars"
+                        ]
+                      },
+                      "then": [
+                        {
+                          "organism": "BarChart",
+                          "props": {
+                            "bars": {
+                              "$": "series"
+                            },
+                            "label": {
+                              "$": "summary"
+                            },
+                            "height": {
+                              "op": "cond",
+                              "args": [
+                                {
+                                  "op": "eq",
                                   "args": [
                                     {
-                                      "$": "percent"
+                                      "$": "size"
                                     },
-                                    {
-                                      "$": "s.value"
-                                    }
+                                    "compact"
                                   ]
+                                },
+                                96,
+                                176
+                              ]
+                            }
+                          }
+                        }
+                      ],
+                      "else": [
+                        {
+                          "use": "Stack",
+                          "props": {
+                            "Gap": {
+                              "op": "cond",
+                              "args": [
+                                {
+                                  "op": "eq",
+                                  "args": [
+                                    {
+                                      "$": "size"
+                                    },
+                                    "compact"
+                                  ]
+                                },
+                                "0",
+                                "2"
+                              ]
+                            },
+                            "Align": "stretch"
+                          },
+                          "attrs": {
+                            "data-testid": "items"
+                          },
+                          "children": [
+                            {
+                              "each": {
+                                "$": "series"
+                              },
+                              "as": "s",
+                              "key": {
+                                "$": "s.id"
+                              },
+                              "do": [
+                                {
+                                  "organism": "MeterRow",
+                                  "props": {
+                                    "label": {
+                                      "$": "s.label"
+                                    },
+                                    "value": {
+                                      "$": "s.value"
+                                    },
+                                    "caption": {
+                                      "op": "tpl",
+                                      "args": [
+                                        {
+                                          "$": "percent"
+                                        },
+                                        {
+                                          "$": "s.value"
+                                        }
+                                      ]
+                                    }
+                                  }
                                 }
-                              }
+                              ]
                             }
                           ]
                         }
@@ -225,9 +265,9 @@
                     }
                   ]
                 }
-              ]
+              }
             }
-          }
+          ]
         }
       ]
     }

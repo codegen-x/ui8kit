@@ -45,8 +45,7 @@
         <Box class="h-40 rounded bg-background" />
         <Box class="h-40 rounded bg-background" />
       </Box>
-      <Block
-        tag="aside"
+      <Box
         class="flex w-full flex-col bg-background shadow-lg sm:max-w-sm"
         aria-label={drawer.title}
         data-testid="drawer"
@@ -75,7 +74,7 @@
         {:else}
           <DrawerLines lines={lines} rows={rows} labels={labels} drawer={drawer} media={media} />
         {/if}
-      </Block>
+      </Box>
     </Box>
   </Container>
 </Block>

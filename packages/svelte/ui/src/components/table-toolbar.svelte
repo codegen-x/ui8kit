@@ -16,14 +16,14 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
+  import Box from "../primitives/box/box.svelte";
   import Inline from "../primitives/inline/inline.svelte";
   import { cn } from "../utils";
 
   let { label, class: className, children, actions }: TableToolbarProps = $props();
 </script>
 
-<Block
+<Box
   class={cn("flex flex-wrap items-center justify-between gap-2", className)}
   role="toolbar"
   aria-label={label}
@@ -35,4 +35,4 @@
   <Inline class="flex flex-wrap items-center gap-2">
     {@render actions?.()}
   </Inline>
-</Block>
+</Box>

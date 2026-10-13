@@ -30,37 +30,39 @@ const metrics = fromCodex<Stat>(metricsEntries, METRICS_FIELDS);
 
 export function MetricsPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text
-            size="sm"
-            className="font-medium text-muted-foreground"
-            data-testid="block-theme"
-            data-theme-id="dashboard"
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text
+              size="sm"
+              className="font-medium text-muted-foreground"
+              data-testid="block-theme"
+              data-theme-id="dashboard"
+            >
+              {ui.blocks.themes.dashboard.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.metrics}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.metrics}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="metrics-tiles-label"
+            data-testid="variant"
+            data-block="metrics"
+            data-variant="tiles"
           >
-            {ui.blocks.themes.dashboard.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.metrics}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.metrics}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="metrics-tiles-label"
-          data-testid="variant"
-          data-block="metrics"
-          data-variant="tiles"
-        >
-          <Stack gap="4" align="stretch">
             <Title as={2} size="base" weight="bold" id="metrics-tiles-label" data-testid="variant-label">
               {ui.blocks.variants.metrics.tiles}
             </Title>
@@ -76,15 +78,15 @@ export function MetricsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="metrics-twoUp-label"
-          data-testid="variant"
-          data-block="metrics"
-          data-variant="twoUp"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="metrics-twoUp-label"
+            data-testid="variant"
+            data-block="metrics"
+            data-variant="twoUp"
+          >
             <Title as={2} size="base" weight="bold" id="metrics-twoUp-label" data-testid="variant-label">
               {ui.blocks.variants.metrics.twoUp}
             </Title>
@@ -100,15 +102,15 @@ export function MetricsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="metrics-compact-label"
-          data-testid="variant"
-          data-block="metrics"
-          data-variant="compact"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="metrics-compact-label"
+            data-testid="variant"
+            data-block="metrics"
+            data-variant="compact"
+          >
             <Title as={2} size="base" weight="bold" id="metrics-compact-label" data-testid="variant-label">
               {ui.blocks.variants.metrics.compact}
             </Title>
@@ -124,15 +126,15 @@ export function MetricsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="metrics-muted-label"
-          data-testid="variant"
-          data-block="metrics"
-          data-variant="muted"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="metrics-muted-label"
+            data-testid="variant"
+            data-block="metrics"
+            data-variant="muted"
+          >
             <Title as={2} size="base" weight="bold" id="metrics-muted-label" data-testid="variant-label">
               {ui.blocks.variants.metrics.muted}
             </Title>
@@ -148,8 +150,8 @@ export function MetricsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

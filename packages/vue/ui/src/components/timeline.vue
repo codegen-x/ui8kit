@@ -14,7 +14,6 @@ export type TimelineProps = {
 </script>
 
 <script setup lang="ts">
-import Block from "../primitives/block/block.vue";
 import Box from "../primitives/box/box.vue";
 import Inline from "../primitives/inline/inline.vue";
 import List from "../primitives/list/list.vue";
@@ -33,7 +32,7 @@ const { items, class: className } = defineProps<TimelineProps>();
 </script>
 
 <template>
-  <Block :class="cn('min-w-0', className)" data-slot="timeline">
+  <Box :class="cn('min-w-0', className)" data-slot="timeline">
     <List class="m-0 flex list-none flex-col p-0">
       <ListItem
         v-for="(item, i) in items"
@@ -60,5 +59,5 @@ const { items, class: className } = defineProps<TimelineProps>();
         </Box>
       </ListItem>
     </List>
-  </Block>
+  </Box>
 </template>

@@ -42,26 +42,33 @@
   const HERO_MEDIA = { codeTitle: ui.vibe.code.title, prompt: ui.vibe.code.prompt, lines: terminal } as const;
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.catalog.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-        {ui.catalog.sections.marketing.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="category-title">
-        {ui.catalog.categories.marketingHero}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {tpl(ui.catalog.count, 1, 15)}
-      </Text>
-    </Stack>
-    <Block tag="section" aria-labelledby="catalog-hero-title" data-testid="catalog-block" data-block="hero">
-      <Stack gap="6" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.catalog.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+          {ui.catalog.sections.marketing.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="category-title">
+          {ui.catalog.categories.marketingHero}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {tpl(ui.catalog.count, 1, 15)}
+        </Text>
+      </Stack>
+      <Stack
+        gap="6"
+        align="stretch"
+        role="group"
+        aria-labelledby="catalog-hero-title"
+        data-testid="catalog-block"
+        data-block="hero"
+      >
         <Stack gap="2" align="stretch">
           <Title as={2} size="2xl" weight="bold" id="catalog-hero-title">
             {ui.blocks.names.hero}
@@ -70,434 +77,434 @@
             {ui.blocks.docs.hero}
           </Text>
         </Stack>
-        <Block
-          tag="section"
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="hero-centered-label"
           data-testid="variant"
           data-block="hero"
           data-variant="centered"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="hero-centered-label" data-testid="variant-label">
-              {ui.blocks.variants.hero.centered}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <HeroClassic
-                id="hero-centered"
-                title={ui.site.home.title}
-                text={ui.site.home.text}
-                actions={{ ...HERO_ACTIONS, mode: "one" }}
-                media={{ ...HERO_MEDIA, kind: "none", side: "end" }}
-                layout="centered"
-                scale="default"
-                tone="default"
-                density="roomy"
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="hero-centered-label" data-testid="variant-label">
+            {ui.blocks.variants.hero.centered}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <HeroClassic
+              id="hero-centered"
+              title={ui.site.home.title}
+              text={ui.site.home.text}
+              actions={{ ...HERO_ACTIONS, mode: "one" }}
+              media={{ ...HERO_MEDIA, kind: "none", side: "end" }}
+              layout="centered"
+              scale="default"
+              tone="default"
+              density="roomy"
+              level={2}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="hero-screenshot-label"
           data-testid="variant"
           data-block="hero"
           data-variant="screenshot"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="hero-screenshot-label" data-testid="variant-label">
-              {ui.blocks.variants.hero.screenshot}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <HeroClassic
-                id="hero-screenshot"
-                title={ui.site.home.title}
-                text={ui.site.home.text}
-                actions={{ ...HERO_ACTIONS, mode: "one" }}
-                media={{ ...HERO_MEDIA, kind: "image", side: "end" }}
-                layout="centered"
-                scale="default"
-                tone="default"
-                density="roomy"
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="hero-screenshot-label" data-testid="variant-label">
+            {ui.blocks.variants.hero.screenshot}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <HeroClassic
+              id="hero-screenshot"
+              title={ui.site.home.title}
+              text={ui.site.home.text}
+              actions={{ ...HERO_ACTIONS, mode: "one" }}
+              media={{ ...HERO_MEDIA, kind: "image", side: "end" }}
+              layout="centered"
+              scale="default"
+              tone="default"
+              density="roomy"
+              level={2}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="hero-backdrop-label"
           data-testid="variant"
           data-block="hero"
           data-variant="backdrop"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="hero-backdrop-label" data-testid="variant-label">
-              {ui.blocks.variants.hero.backdrop}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <HeroClassic
-                id="hero-backdrop"
-                title={ui.site.home.title}
-                text={ui.site.home.text}
-                actions={{ ...HERO_ACTIONS, mode: "one" }}
-                media={{ ...HERO_MEDIA, kind: "backdrop", side: "end" }}
-                layout="centered"
-                scale="default"
-                tone="muted"
-                density="roomy"
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="hero-backdrop-label" data-testid="variant-label">
+            {ui.blocks.variants.hero.backdrop}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <HeroClassic
+              id="hero-backdrop"
+              title={ui.site.home.title}
+              text={ui.site.home.text}
+              actions={{ ...HERO_ACTIONS, mode: "one" }}
+              media={{ ...HERO_MEDIA, kind: "backdrop", side: "end" }}
+              layout="centered"
+              scale="default"
+              tone="muted"
+              density="roomy"
+              level={2}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="hero-code-label"
           data-testid="variant"
           data-block="hero"
           data-variant="code"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="hero-code-label" data-testid="variant-label">
-              {ui.blocks.variants.hero.code}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <HeroClassic
-                id="hero-code"
-                title={ui.site.home.title}
-                text={ui.site.home.text}
-                actions={{ ...HERO_ACTIONS, mode: "two" }}
-                media={{ ...HERO_MEDIA, kind: "code", side: "end" }}
-                layout="split"
-                scale="default"
-                tone="default"
-                density="roomy"
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="hero-code-label" data-testid="variant-label">
+            {ui.blocks.variants.hero.code}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <HeroClassic
+              id="hero-code"
+              title={ui.site.home.title}
+              text={ui.site.home.text}
+              actions={{ ...HERO_ACTIONS, mode: "two" }}
+              media={{ ...HERO_MEDIA, kind: "code", side: "end" }}
+              layout="split"
+              scale="default"
+              tone="default"
+              density="roomy"
+              level={2}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="hero-cluster-label"
           data-testid="variant"
           data-block="hero"
           data-variant="cluster"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="hero-cluster-label" data-testid="variant-label">
-              {ui.blocks.variants.hero.cluster}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <HeroClassic
-                id="hero-cluster"
-                title={ui.site.home.title}
-                text={ui.site.home.text}
-                actions={{ ...HERO_ACTIONS, mode: "one" }}
-                media={{ ...HERO_MEDIA, kind: "cluster", side: "end" }}
-                layout="split"
-                scale="default"
-                tone="default"
-                density="roomy"
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="hero-cluster-label" data-testid="variant-label">
+            {ui.blocks.variants.hero.cluster}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <HeroClassic
+              id="hero-cluster"
+              title={ui.site.home.title}
+              text={ui.site.home.text}
+              actions={{ ...HERO_ACTIONS, mode: "one" }}
+              media={{ ...HERO_MEDIA, kind: "cluster", side: "end" }}
+              layout="split"
+              scale="default"
+              tone="default"
+              density="roomy"
+              level={2}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="hero-display-label"
           data-testid="variant"
           data-block="hero"
           data-variant="display"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="hero-display-label" data-testid="variant-label">
-              {ui.blocks.variants.hero.display}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <HeroClassic
-                id="hero-display"
-                title={ui.site.home.title}
-                text={ui.site.home.text}
-                actions={{ ...HERO_ACTIONS, mode: "one" }}
-                media={{ ...HERO_MEDIA, kind: "none", side: "end" }}
-                layout="centered"
-                scale="display"
-                tone="default"
-                density="roomy"
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="hero-display-label" data-testid="variant-label">
+            {ui.blocks.variants.hero.display}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <HeroClassic
+              id="hero-display"
+              title={ui.site.home.title}
+              text={ui.site.home.text}
+              actions={{ ...HERO_ACTIONS, mode: "one" }}
+              media={{ ...HERO_MEDIA, kind: "none", side: "end" }}
+              layout="centered"
+              scale="display"
+              tone="default"
+              density="roomy"
+              level={2}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="hero-form-label"
           data-testid="variant"
           data-block="hero"
           data-variant="form"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="hero-form-label" data-testid="variant-label">
-              {ui.blocks.variants.hero.form}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <HeroClassic
-                id="hero-form"
-                title={ui.site.home.title}
-                text={ui.site.home.text}
-                actions={{ ...HERO_ACTIONS, mode: "form" }}
-                media={{ ...HERO_MEDIA, kind: "none", side: "end" }}
-                layout="centered"
-                scale="default"
-                tone="default"
-                density="roomy"
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="hero-form-label" data-testid="variant-label">
+            {ui.blocks.variants.hero.form}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <HeroClassic
+              id="hero-form"
+              title={ui.site.home.title}
+              text={ui.site.home.text}
+              actions={{ ...HERO_ACTIONS, mode: "form" }}
+              media={{ ...HERO_MEDIA, kind: "none", side: "end" }}
+              layout="centered"
+              scale="default"
+              tone="default"
+              density="roomy"
+              level={2}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="hero-prompt-label"
           data-testid="variant"
           data-block="hero"
           data-variant="prompt"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="hero-prompt-label" data-testid="variant-label">
-              {ui.blocks.variants.hero.prompt}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <HeroPrompt
-                title={ui.vibe.hero.title}
-                actions={{ ...HERO_ACTIONS, emailLabel: ui.vibe.hero.promptLabel, mode: "form" }}
-                composer={{ attachLabel: ui.vibe.hero.attach, modelLabel: ui.vibe.hero.model }}
-                nav={{
-                  brand: ui.site.header.brand,
-                  links: navlinks,
-                  current: "link-product",
-                  skip: ui.site.header.skip,
-                  label: ui.site.header.nav,
-                  login: ui.site.header.login,
-                  loginHref: "#/login",
-                }}
-                density="compact"
-                badge={ui.vibe.hero.badgeLabel}
-                badgeMark={ui.vibe.hero.badgeMark}
-                topics={prompts}
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="hero-prompt-label" data-testid="variant-label">
+            {ui.blocks.variants.hero.prompt}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <HeroPrompt
+              title={ui.vibe.hero.title}
+              actions={{ ...HERO_ACTIONS, emailLabel: ui.vibe.hero.promptLabel, mode: "form" }}
+              composer={{ attachLabel: ui.vibe.hero.attach, modelLabel: ui.vibe.hero.model }}
+              nav={{
+                brand: ui.site.header.brand,
+                links: navlinks,
+                current: "link-product",
+                skip: ui.site.header.skip,
+                label: ui.site.header.nav,
+                login: ui.site.header.login,
+                loginHref: "#/login",
+              }}
+              density="compact"
+              badge={ui.vibe.hero.badgeLabel}
+              badgeMark={ui.vibe.hero.badgeMark}
+              topics={prompts}
+              level={2}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="hero-twoActions-label"
           data-testid="variant"
           data-block="hero"
           data-variant="twoActions"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="hero-twoActions-label" data-testid="variant-label">
-              {ui.blocks.variants.hero.twoActions}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <HeroClassic
-                id="hero-twoActions"
-                title={ui.site.home.title}
-                text={ui.site.home.text}
-                actions={{ ...HERO_ACTIONS, mode: "two" }}
-                media={{ ...HERO_MEDIA, kind: "none", side: "end" }}
-                layout="centered"
-                scale="default"
-                tone="default"
-                density="roomy"
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="hero-twoActions-label" data-testid="variant-label">
+            {ui.blocks.variants.hero.twoActions}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <HeroClassic
+              id="hero-twoActions"
+              title={ui.site.home.title}
+              text={ui.site.home.text}
+              actions={{ ...HERO_ACTIONS, mode: "two" }}
+              media={{ ...HERO_MEDIA, kind: "none", side: "end" }}
+              layout="centered"
+              scale="default"
+              tone="default"
+              density="roomy"
+              level={2}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="hero-split-label"
           data-testid="variant"
           data-block="hero"
           data-variant="split"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="hero-split-label" data-testid="variant-label">
-              {ui.blocks.variants.hero.split}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <HeroClassic
-                id="hero-split"
-                title={ui.site.home.title}
-                text={ui.site.home.text}
-                actions={{ ...HERO_ACTIONS, mode: "one" }}
-                media={{ ...HERO_MEDIA, kind: "image", side: "end" }}
-                layout="split"
-                scale="default"
-                tone="default"
-                density="roomy"
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="hero-split-label" data-testid="variant-label">
+            {ui.blocks.variants.hero.split}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <HeroClassic
+              id="hero-split"
+              title={ui.site.home.title}
+              text={ui.site.home.text}
+              actions={{ ...HERO_ACTIONS, mode: "one" }}
+              media={{ ...HERO_MEDIA, kind: "image", side: "end" }}
+              layout="split"
+              scale="default"
+              tone="default"
+              density="roomy"
+              level={2}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="hero-splitStart-label"
           data-testid="variant"
           data-block="hero"
           data-variant="splitStart"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="hero-splitStart-label" data-testid="variant-label">
-              {ui.blocks.variants.hero.splitStart}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <HeroClassic
-                id="hero-splitStart"
-                title={ui.site.home.title}
-                text={ui.site.home.text}
-                actions={{ ...HERO_ACTIONS, mode: "two" }}
-                media={{ ...HERO_MEDIA, kind: "image", side: "start" }}
-                layout="split"
-                scale="default"
-                tone="default"
-                density="roomy"
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="hero-splitStart-label" data-testid="variant-label">
+            {ui.blocks.variants.hero.splitStart}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <HeroClassic
+              id="hero-splitStart"
+              title={ui.site.home.title}
+              text={ui.site.home.text}
+              actions={{ ...HERO_ACTIONS, mode: "two" }}
+              media={{ ...HERO_MEDIA, kind: "image", side: "start" }}
+              layout="split"
+              scale="default"
+              tone="default"
+              density="roomy"
+              level={2}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="hero-muted-label"
           data-testid="variant"
           data-block="hero"
           data-variant="muted"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="hero-muted-label" data-testid="variant-label">
-              {ui.blocks.variants.hero.muted}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <HeroClassic
-                id="hero-muted"
-                title={ui.site.home.title}
-                text={ui.site.home.text}
-                actions={{ ...HERO_ACTIONS, mode: "one" }}
-                media={{ ...HERO_MEDIA, kind: "none", side: "end" }}
-                layout="centered"
-                scale="default"
-                tone="muted"
-                density="default"
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="hero-muted-label" data-testid="variant-label">
+            {ui.blocks.variants.hero.muted}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <HeroClassic
+              id="hero-muted"
+              title={ui.site.home.title}
+              text={ui.site.home.text}
+              actions={{ ...HERO_ACTIONS, mode: "one" }}
+              media={{ ...HERO_MEDIA, kind: "none", side: "end" }}
+              layout="centered"
+              scale="default"
+              tone="muted"
+              density="default"
+              level={2}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="hero-saas-label"
           data-testid="variant"
           data-block="hero"
           data-variant="saas"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="hero-saas-label" data-testid="variant-label">
-              {ui.blocks.variants.hero.saas}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <HeroClassic
-                id="hero-saas"
-                title={ui.cases.saas.hero.title}
-                text={ui.cases.saas.hero.text}
-                actions={{
-                  ...HERO_ACTIONS,
-                  cta: ui.cases.saas.hero.cta,
-                  secondary: ui.cases.saas.hero.secondary,
-                  mode: "two",
-                }}
-                media={{ ...HERO_MEDIA, kind: "image", side: "end" }}
-                layout="split"
-                scale="default"
-                tone="default"
-                density="roomy"
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="hero-saas-label" data-testid="variant-label">
+            {ui.blocks.variants.hero.saas}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <HeroClassic
+              id="hero-saas"
+              title={ui.cases.saas.hero.title}
+              text={ui.cases.saas.hero.text}
+              actions={{
+                ...HERO_ACTIONS,
+                cta: ui.cases.saas.hero.cta,
+                secondary: ui.cases.saas.hero.secondary,
+                mode: "two",
+              }}
+              media={{ ...HERO_MEDIA, kind: "image", side: "end" }}
+              layout="split"
+              scale="default"
+              tone="default"
+              density="roomy"
+              level={2}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="hero-shop-label"
           data-testid="variant"
           data-block="hero"
           data-variant="shop"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="hero-shop-label" data-testid="variant-label">
-              {ui.blocks.variants.hero.shop}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <HeroClassic
-                id="hero-shop"
-                title={ui.cases.shop.hero.title}
-                text={ui.cases.shop.hero.text}
-                actions={{
-                  ...HERO_ACTIONS,
-                  cta: ui.cases.shop.hero.cta,
-                  secondary: ui.cases.shop.hero.secondary,
-                  mode: "one",
-                }}
-                media={{ ...HERO_MEDIA, kind: "image", side: "start" }}
-                layout="split"
-                scale="default"
-                tone="muted"
-                density="roomy"
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="hero-shop-label" data-testid="variant-label">
+            {ui.blocks.variants.hero.shop}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <HeroClassic
+              id="hero-shop"
+              title={ui.cases.shop.hero.title}
+              text={ui.cases.shop.hero.text}
+              actions={{
+                ...HERO_ACTIONS,
+                cta: ui.cases.shop.hero.cta,
+                secondary: ui.cases.shop.hero.secondary,
+                mode: "one",
+              }}
+              media={{ ...HERO_MEDIA, kind: "image", side: "start" }}
+              layout="split"
+              scale="default"
+              tone="muted"
+              density="roomy"
+              level={2}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="hero-blog-label"
           data-testid="variant"
           data-block="hero"
           data-variant="blog"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="hero-blog-label" data-testid="variant-label">
-              {ui.blocks.variants.hero.blog}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <HeroClassic
-                id="hero-blog"
-                title={ui.cases.blog.hero.title}
-                text={ui.cases.blog.hero.text}
-                actions={{
-                  ...HERO_ACTIONS,
-                  cta: ui.cases.blog.hero.cta,
-                  secondary: ui.cases.blog.hero.secondary,
-                  mode: "one",
-                }}
-                media={{ ...HERO_MEDIA, kind: "none", side: "end" }}
-                layout="centered"
-                scale="default"
-                tone="default"
-                density="compact"
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
+          <Title as={3} size="base" weight="bold" id="hero-blog-label" data-testid="variant-label">
+            {ui.blocks.variants.hero.blog}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <HeroClassic
+              id="hero-blog"
+              title={ui.cases.blog.hero.title}
+              text={ui.cases.blog.hero.text}
+              actions={{
+                ...HERO_ACTIONS,
+                cta: ui.cases.blog.hero.cta,
+                secondary: ui.cases.blog.hero.secondary,
+                mode: "one",
+              }}
+              media={{ ...HERO_MEDIA, kind: "none", side: "end" }}
+              layout="centered"
+              scale="default"
+              tone="default"
+              density="compact"
+              level={2}
+            />
+          </Box>
+        </Stack>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

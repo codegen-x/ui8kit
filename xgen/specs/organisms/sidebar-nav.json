@@ -147,9 +147,8 @@
           ]
         },
         {
-          "use": "Block",
+          "use": "Nav",
           "props": {
-            "Tag": "nav",
             "Class": "flex-1"
           },
           "attrs": {

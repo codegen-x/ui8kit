@@ -147,12 +147,13 @@
   ],
   "view": [
     {
-      "use": "Card",
+      "use": "Block",
       "props": {
-        "Variant": "default",
+        "Tag": "article",
         "Class": {
           "op": "cn",
           "args": [
+            "flex flex-col gap-8 bg-card p-6 text-card-foreground inset-ring inset-ring-border rounded",
             "h-full gap-4 overflow-hidden",
             {
               "op": "cond",
@@ -174,6 +175,7 @@
         }
       },
       "attrs": {
+        "data-slot": "card",
         "data-testid": "item",
         "data-layout": {
           "$": "layout"

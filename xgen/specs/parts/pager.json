@@ -86,7 +86,7 @@
   ],
   "view": [
     {
-      "use": "Block",
+      "use": "Box",
       "props": {
         "Class": "flex flex-wrap items-center justify-between gap-4 text-xs font-semibold text-muted-foreground"
       },

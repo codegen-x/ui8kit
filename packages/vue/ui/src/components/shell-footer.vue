@@ -18,6 +18,7 @@ import Block from "../primitives/block/block.vue";
 import Link from "../primitives/link/link.vue";
 import List from "../primitives/list/list.vue";
 import ListItem from "../primitives/list/list-item.vue";
+import Nav from "../primitives/nav/nav.vue";
 import Text from "../primitives/text/text.vue";
 import { cn } from "../utils";
 
@@ -37,7 +38,7 @@ const { nav, place = "full" } = defineProps<ShellFooterProps>();
     <Text size="xs" class="text-muted-foreground">
       {{ nav.copyright }}
     </Text>
-    <Block tag="nav" :aria-label="nav.footerLabel">
+    <Nav :aria-label="nav.footerLabel">
       <List class="m-0 flex list-none items-center gap-4 p-0">
         <ListItem v-for="f in nav.footer" :key="f.id">
           <Link href="#/" variant="muted" size="sm" class="text-xs">
@@ -45,6 +46,6 @@ const { nav, place = "full" } = defineProps<ShellFooterProps>();
           </Link>
         </ListItem>
       </List>
-    </Block>
+    </Nav>
   </Block>
 </template>

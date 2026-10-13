@@ -16,8 +16,8 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
   import Box from "../primitives/box/box.svelte";
+  import Figure from "../primitives/figure/figure.svelte";
   import Group from "../primitives/group/group.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Stack from "../primitives/stack/stack.svelte";
@@ -39,12 +39,12 @@
   <Box class="grid grid-cols-2 gap-4" data-testid="hero-grid">
     {#each content.features as f, i (f.id)}
       {#if (i < 4)}
-        <Block tag="figure" class="flex flex-col gap-2" data-testid="hero-tile">
+        <Figure class="flex flex-col gap-2" data-testid="hero-tile">
           <MediaFrame alt={f.title} ratio="1/1" />
           <Text size="xs" class="text-muted-foreground">
             {f.title}
           </Text>
-        </Block>
+        </Figure>
       {/if}
     {/each}
   </Box>

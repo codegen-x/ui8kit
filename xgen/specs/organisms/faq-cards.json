@@ -65,9 +65,8 @@
           },
           "do": [
             {
-              "use": "Block",
+              "use": "Article",
               "props": {
-                "Tag": "article",
                 "Class": "rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-6"
               },
               "attrs": {

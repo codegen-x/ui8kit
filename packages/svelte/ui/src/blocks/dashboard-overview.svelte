@@ -25,7 +25,7 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
+  import Box from "../primitives/box/box.svelte";
   import Grid from "../primitives/grid/grid.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import BarChart from "../components/bar-chart.svelte";
@@ -52,9 +52,9 @@
   <Stack gap="6" align="stretch">
     <Grid cols={(((cols as string) === "2") ? "1-2" : "1-4")} class="gap-4" data-testid="items">
       {#each metrics as m (m.id)}
-        <Block tag="div" data-testid="item">
+        <Box data-testid="item">
           <StatTile label={m.label} value={m.value} icon={m.icon} hint={m.hint} />
-        </Block>
+        </Box>
       {/each}
     </Grid>
     <Grid cols={(((layout as string) === "split") ? "1-2" : "1")} class="items-stretch gap-4" data-testid="panels">

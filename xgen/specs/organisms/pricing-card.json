@@ -220,12 +220,19 @@
   ],
   "view": [
     {
-      "use": "Card",
+      "use": "Block",
       "props": {
-        "Variant": "default",
-        "Class": "flex h-full flex-col"
+        "Tag": "article",
+        "Class": {
+          "op": "cn",
+          "args": [
+            "flex flex-col gap-8 bg-card p-6 text-card-foreground inset-ring inset-ring-border rounded",
+            "flex h-full flex-col"
+          ]
+        }
       },
       "attrs": {
+        "data-slot": "card",
         "data-highlighted": {
           "op": "cond",
           "args": [

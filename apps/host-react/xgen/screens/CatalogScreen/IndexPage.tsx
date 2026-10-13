@@ -410,19 +410,26 @@ const PAGES = [
 
 export function IndexPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Stack gap="2" align="stretch">
-          <Title as={1} size="4xl" weight="bold" data-testid="catalog-title">
-            {ui.catalog.title}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.catalog.intro}
-          </Text>
-        </Stack>
-        {(CATALOG ?? []).map((section) => (
-          <Block key={section.id} tag="section" aria-labelledby={section.titleId} data-testid="catalog-section" data-section={section.id}>
-            <Stack gap="4" align="stretch">
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Stack gap="2" align="stretch">
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="catalog-title">
+              {ui.catalog.title}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.catalog.intro}
+            </Text>
+          </Stack>
+          {(CATALOG ?? []).map((section) => (
+            <Stack key={section.id}
+              gap="4"
+              align="stretch"
+              role="group"
+              aria-labelledby={section.titleId}
+              data-testid="catalog-section"
+              data-section={section.id}
+            >
               <Stack gap="2" align="stretch">
                 <Title as={2} size="2xl" weight="bold" id={section.titleId}>
                   {section.title}
@@ -451,10 +458,8 @@ export function IndexPage() {
                 ))}
               </List>
             </Stack>
-          </Block>
-        ))}
-        <Block tag="section" aria-labelledby="pages-title-2" data-testid="pages-section">
-          <Stack gap="4" align="stretch">
+          ))}
+          <Stack gap="4" align="stretch" role="group" aria-labelledby="pages-title-2" data-testid="pages-section">
             <Stack gap="2" align="stretch">
               <Title as={2} size="2xl" weight="bold" id="pages-title-2">
                 {ui.catalog.pagesTitle}
@@ -486,8 +491,8 @@ export function IndexPage() {
               ))}
             </List>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

@@ -32,26 +32,33 @@
   const members = fromCodex<Member>(membersEntries, MEMBERS_FIELDS);
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.catalog.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-        {ui.catalog.sections.marketing.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="category-title">
-        {ui.catalog.categories.marketingTeam}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {tpl(ui.catalog.count, 1, 6)}
-      </Text>
-    </Stack>
-    <Block tag="section" aria-labelledby="catalog-team-title" data-testid="catalog-block" data-block="team">
-      <Stack gap="6" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.catalog.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+          {ui.catalog.sections.marketing.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="category-title">
+          {ui.catalog.categories.marketingTeam}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {tpl(ui.catalog.count, 1, 6)}
+        </Text>
+      </Stack>
+      <Stack
+        gap="6"
+        align="stretch"
+        role="group"
+        aria-labelledby="catalog-team-title"
+        data-testid="catalog-block"
+        data-block="team"
+      >
         <Stack gap="2" align="stretch">
           <Title as={2} size="2xl" weight="bold" id="catalog-team-title">
             {ui.blocks.names.team}
@@ -60,163 +67,163 @@
             {ui.blocks.docs.team}
           </Text>
         </Stack>
-        <Block
-          tag="section"
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="team-cards4-label"
           data-testid="variant"
           data-block="team"
           data-variant="cards4"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="team-cards4-label" data-testid="variant-label">
-              {ui.blocks.variants.team.cards4}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <TeamGrid
-                id="team-cards4"
-                title={ui.company.team.title}
-                lead={ui.company.team.lead}
-                members={members}
-                depts={ui.company.depts}
-                layout="cards"
-                cols="1-4"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="team-cards4-label" data-testid="variant-label">
+            {ui.blocks.variants.team.cards4}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <TeamGrid
+              id="team-cards4"
+              title={ui.company.team.title}
+              lead={ui.company.team.lead}
+              members={members}
+              depts={ui.company.depts}
+              layout="cards"
+              cols="1-4"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="team-cards3-label"
           data-testid="variant"
           data-block="team"
           data-variant="cards3"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="team-cards3-label" data-testid="variant-label">
-              {ui.blocks.variants.team.cards3}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <TeamGrid
-                id="team-cards3"
-                title={ui.company.team.title}
-                lead={ui.company.team.lead}
-                members={members}
-                depts={ui.company.depts}
-                layout="cards"
-                cols="1-3"
-                tone="muted"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="team-cards3-label" data-testid="variant-label">
+            {ui.blocks.variants.team.cards3}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <TeamGrid
+              id="team-cards3"
+              title={ui.company.team.title}
+              lead={ui.company.team.lead}
+              members={members}
+              depts={ui.company.depts}
+              layout="cards"
+              cols="1-3"
+              tone="muted"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="team-minimal-label"
           data-testid="variant"
           data-block="team"
           data-variant="minimal"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="team-minimal-label" data-testid="variant-label">
-              {ui.blocks.variants.team.minimal}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <TeamGrid
-                id="team-minimal"
-                title={ui.company.team.title}
-                lead={ui.company.team.lead}
-                members={members}
-                depts={ui.company.depts}
-                layout="minimal"
-                cols="1-4"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="team-minimal-label" data-testid="variant-label">
+            {ui.blocks.variants.team.minimal}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <TeamGrid
+              id="team-minimal"
+              title={ui.company.team.title}
+              lead={ui.company.team.lead}
+              members={members}
+              depts={ui.company.depts}
+              layout="minimal"
+              cols="1-4"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="team-detailed-label"
           data-testid="variant"
           data-block="team"
           data-variant="detailed"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="team-detailed-label" data-testid="variant-label">
-              {ui.blocks.variants.team.detailed}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <TeamGrid
-                id="team-detailed"
-                title={ui.company.team.title}
-                lead={ui.company.team.lead}
-                members={members}
-                depts={ui.company.depts}
-                layout="detailed"
-                cols="1-3"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="team-detailed-label" data-testid="variant-label">
+            {ui.blocks.variants.team.detailed}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <TeamGrid
+              id="team-detailed"
+              title={ui.company.team.title}
+              lead={ui.company.team.lead}
+              members={members}
+              depts={ui.company.depts}
+              layout="detailed"
+              cols="1-3"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="team-list-label"
           data-testid="variant"
           data-block="team"
           data-variant="list"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="team-list-label" data-testid="variant-label">
-              {ui.blocks.variants.team.list}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <TeamGrid
-                id="team-list"
-                title={ui.company.team.title}
-                lead={ui.company.team.lead}
-                members={members}
-                depts={ui.company.depts}
-                layout="list"
-                cols="1-4"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="team-list-label" data-testid="variant-label">
+            {ui.blocks.variants.team.list}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <TeamGrid
+              id="team-list"
+              title={ui.company.team.title}
+              lead={ui.company.team.lead}
+              members={members}
+              depts={ui.company.depts}
+              layout="list"
+              cols="1-4"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="team-directory-label"
           data-testid="variant"
           data-block="team"
           data-variant="directory"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="team-directory-label" data-testid="variant-label">
-              {ui.blocks.variants.team.directory}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <TeamGrid
-                id="team-directory"
-                title={ui.company.team.title}
-                lead={ui.company.team.lead}
-                members={members}
-                depts={ui.company.depts}
-                layout="directory"
-                cols="1-4"
-                tone="default"
-                density="compact"
-              />
-            </Box>
-          </Stack>
-        </Block>
+          <Title as={3} size="base" weight="bold" id="team-directory-label" data-testid="variant-label">
+            {ui.blocks.variants.team.directory}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <TeamGrid
+              id="team-directory"
+              title={ui.company.team.title}
+              lead={ui.company.team.lead}
+              members={members}
+              depts={ui.company.depts}
+              layout="directory"
+              cols="1-4"
+              tone="default"
+              density="compact"
+            />
+          </Box>
+        </Stack>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

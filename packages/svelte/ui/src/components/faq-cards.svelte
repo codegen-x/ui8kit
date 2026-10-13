@@ -16,8 +16,8 @@
 </script>
 
 <script lang="ts">
+  import Article from "../primitives/article/article.svelte";
   import Badge from "../primitives/badge/badge.svelte";
-  import Block from "../primitives/block/block.svelte";
   import Box from "../primitives/box/box.svelte";
   import Link from "../primitives/link/link.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
@@ -36,11 +36,7 @@
   data-testid="faq"
 >
   {#each items as q (q.id)}
-    <Block
-      tag="article"
-      class="rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-6"
-      data-testid="faq-card"
-    >
+    <Article class="rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-6" data-testid="faq-card">
       {#if ((cards as string) === "icons")}
         <Box class="flex size-10 shrink-0 items-center justify-center rounded bg-muted">
           <LucideIcon name={q.icon} size={20} />
@@ -63,6 +59,6 @@
           <LucideIcon name="arrow-right" size={16} />
         </Link>
       </Box>
-    </Block>
+    </Article>
   {/each}
 </Box>

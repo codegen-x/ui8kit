@@ -15,26 +15,33 @@ const CTA_ACTIONS = {
 
 export function MarketingCtaPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.catalog.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text size="sm" className="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-            {ui.catalog.sections.marketing.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="category-title">
-            {ui.catalog.categories.marketingCta}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {tpl(ui.catalog.count, 1, 11)}
-          </Text>
-        </Stack>
-        <Block tag="section" aria-labelledby="catalog-cta-title" data-testid="catalog-block" data-block="cta">
-          <Stack gap="6" align="stretch">
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.catalog.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text size="sm" className="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+              {ui.catalog.sections.marketing.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="category-title">
+              {ui.catalog.categories.marketingCta}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {tpl(ui.catalog.count, 1, 11)}
+            </Text>
+          </Stack>
+          <Stack
+            gap="6"
+            align="stretch"
+            role="group"
+            aria-labelledby="catalog-cta-title"
+            data-testid="catalog-block"
+            data-block="cta"
+          >
             <Stack gap="2" align="stretch">
               <Title as={2} size="2xl" weight="bold" id="catalog-cta-title">
                 {ui.blocks.names.cta}
@@ -43,304 +50,310 @@ export function MarketingCtaPage() {
                 {ui.blocks.docs.cta}
               </Text>
             </Stack>
-            <Block
-              tag="section"
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="cta-card-label"
               data-testid="variant"
               data-block="cta"
               data-variant="card"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="cta-card-label" data-testid="variant-label">
-                  {ui.blocks.variants.cta.card}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <CtaBand
-                    id="cta-card"
-                    title={ui.site.home.ctaTitle}
-                    text={ui.site.home.ctaText}
-                    actions={{ ...CTA_ACTIONS, mode: "one" }}
-                    quote={{ text: ui.vibe.cta.quote, by: ui.vibe.cta.quoteBy }}
-                    layout="card"
-                    tone="muted"
-                    proof="none"
-                    density="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="cta-card-label" data-testid="variant-label">
+                {ui.blocks.variants.cta.card}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <CtaBand
+                  id="cta-card"
+                  title={ui.site.home.ctaTitle}
+                  text={ui.site.home.ctaText}
+                  actions={{ ...CTA_ACTIONS, mode: "one" }}
+                  quote={{ text: ui.vibe.cta.quote, by: ui.vibe.cta.quoteBy }}
+                  layout="card"
+                  tone="muted"
+                  proof="none"
+                  density="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="cta-banner-label"
               data-testid="variant"
               data-block="cta"
               data-variant="banner"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="cta-banner-label" data-testid="variant-label">
-                  {ui.blocks.variants.cta.banner}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <CtaBand
-                    id="cta-banner"
-                    title={ui.site.home.ctaTitle}
-                    text={ui.site.home.ctaText}
-                    actions={{ ...CTA_ACTIONS, mode: "one" }}
-                    quote={{ text: ui.vibe.cta.quote, by: ui.vibe.cta.quoteBy }}
-                    layout="banner"
-                    tone="muted"
-                    proof="none"
-                    density="compact"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block tag="section" aria-labelledby="cta-row-label" data-testid="variant" data-block="cta" data-variant="row">
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="cta-row-label" data-testid="variant-label">
-                  {ui.blocks.variants.cta.row}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <CtaBand
-                    id="cta-row"
-                    title={ui.site.home.ctaTitle}
-                    text={ui.site.home.ctaText}
-                    actions={{ ...CTA_ACTIONS, mode: "one" }}
-                    quote={{ text: ui.vibe.cta.quote, by: ui.vibe.cta.quoteBy }}
-                    layout="row"
-                    tone="muted"
-                    proof="none"
-                    density="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="cta-banner-label" data-testid="variant-label">
+                {ui.blocks.variants.cta.banner}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <CtaBand
+                  id="cta-banner"
+                  title={ui.site.home.ctaTitle}
+                  text={ui.site.home.ctaText}
+                  actions={{ ...CTA_ACTIONS, mode: "one" }}
+                  quote={{ text: ui.vibe.cta.quote, by: ui.vibe.cta.quoteBy }}
+                  layout="banner"
+                  tone="muted"
+                  proof="none"
+                  density="compact"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
+              aria-labelledby="cta-row-label"
+              data-testid="variant"
+              data-block="cta"
+              data-variant="row"
+            >
+              <Title as={3} size="base" weight="bold" id="cta-row-label" data-testid="variant-label">
+                {ui.blocks.variants.cta.row}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <CtaBand
+                  id="cta-row"
+                  title={ui.site.home.ctaTitle}
+                  text={ui.site.home.ctaText}
+                  actions={{ ...CTA_ACTIONS, mode: "one" }}
+                  quote={{ text: ui.vibe.cta.quote, by: ui.vibe.cta.quoteBy }}
+                  layout="row"
+                  tone="muted"
+                  proof="none"
+                  density="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="cta-form-label"
               data-testid="variant"
               data-block="cta"
               data-variant="form"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="cta-form-label" data-testid="variant-label">
-                  {ui.blocks.variants.cta.form}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <CtaBand
-                    id="cta-form"
-                    title={ui.site.home.ctaTitle}
-                    text={ui.site.home.ctaText}
-                    actions={{ ...CTA_ACTIONS, mode: "form" }}
-                    quote={{ text: ui.vibe.cta.quote, by: ui.vibe.cta.quoteBy }}
-                    layout="band"
-                    tone="muted"
-                    proof="none"
-                    density="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="cta-form-label" data-testid="variant-label">
+                {ui.blocks.variants.cta.form}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <CtaBand
+                  id="cta-form"
+                  title={ui.site.home.ctaTitle}
+                  text={ui.site.home.ctaText}
+                  actions={{ ...CTA_ACTIONS, mode: "form" }}
+                  quote={{ text: ui.vibe.cta.quote, by: ui.vibe.cta.quoteBy }}
+                  layout="band"
+                  tone="muted"
+                  proof="none"
+                  density="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="cta-quote-label"
               data-testid="variant"
               data-block="cta"
               data-variant="quote"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="cta-quote-label" data-testid="variant-label">
-                  {ui.blocks.variants.cta.quote}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <CtaBand
-                    id="cta-quote"
-                    title={ui.site.home.ctaTitle}
-                    text={ui.site.home.ctaText}
-                    actions={{ ...CTA_ACTIONS, mode: "one" }}
-                    quote={{ text: ui.vibe.cta.quote, by: ui.vibe.cta.quoteBy }}
-                    layout="band"
-                    tone="muted"
-                    proof="quote"
-                    density="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="cta-quote-label" data-testid="variant-label">
+                {ui.blocks.variants.cta.quote}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <CtaBand
+                  id="cta-quote"
+                  title={ui.site.home.ctaTitle}
+                  text={ui.site.home.ctaText}
+                  actions={{ ...CTA_ACTIONS, mode: "one" }}
+                  quote={{ text: ui.vibe.cta.quote, by: ui.vibe.cta.quoteBy }}
+                  layout="band"
+                  tone="muted"
+                  proof="quote"
+                  density="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="cta-band-label"
               data-testid="variant"
               data-block="cta"
               data-variant="band"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="cta-band-label" data-testid="variant-label">
-                  {ui.blocks.variants.cta.band}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <CtaBand
-                    id="cta-band"
-                    title={ui.site.home.ctaTitle}
-                    text={ui.site.home.ctaText}
-                    actions={{ ...CTA_ACTIONS, mode: "one" }}
-                    quote={{ text: ui.vibe.cta.quote, by: ui.vibe.cta.quoteBy }}
-                    layout="band"
-                    tone="muted"
-                    proof="none"
-                    density="roomy"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="cta-band-label" data-testid="variant-label">
+                {ui.blocks.variants.cta.band}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <CtaBand
+                  id="cta-band"
+                  title={ui.site.home.ctaTitle}
+                  text={ui.site.home.ctaText}
+                  actions={{ ...CTA_ACTIONS, mode: "one" }}
+                  quote={{ text: ui.vibe.cta.quote, by: ui.vibe.cta.quoteBy }}
+                  layout="band"
+                  tone="muted"
+                  proof="none"
+                  density="roomy"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="cta-split-label"
               data-testid="variant"
               data-block="cta"
               data-variant="split"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="cta-split-label" data-testid="variant-label">
-                  {ui.blocks.variants.cta.split}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <CtaBand
-                    id="cta-split"
-                    title={ui.site.home.ctaTitle}
-                    text={ui.site.home.ctaText}
-                    actions={{ ...CTA_ACTIONS, mode: "two" }}
-                    quote={{ text: ui.vibe.cta.quote, by: ui.vibe.cta.quoteBy }}
-                    layout="split"
-                    tone="default"
-                    proof="none"
-                    density="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="cta-split-label" data-testid="variant-label">
+                {ui.blocks.variants.cta.split}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <CtaBand
+                  id="cta-split"
+                  title={ui.site.home.ctaTitle}
+                  text={ui.site.home.ctaText}
+                  actions={{ ...CTA_ACTIONS, mode: "two" }}
+                  quote={{ text: ui.vibe.cta.quote, by: ui.vibe.cta.quoteBy }}
+                  layout="split"
+                  tone="default"
+                  proof="none"
+                  density="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="cta-compact-label"
               data-testid="variant"
               data-block="cta"
               data-variant="compact"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="cta-compact-label" data-testid="variant-label">
-                  {ui.blocks.variants.cta.compact}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <CtaBand
-                    id="cta-compact"
-                    title={ui.site.home.ctaTitle}
-                    text={ui.site.home.ctaText}
-                    actions={{ ...CTA_ACTIONS, mode: "one" }}
-                    quote={{ text: ui.vibe.cta.quote, by: ui.vibe.cta.quoteBy }}
-                    layout="card"
-                    tone="muted"
-                    proof="none"
-                    density="compact"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="cta-compact-label" data-testid="variant-label">
+                {ui.blocks.variants.cta.compact}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <CtaBand
+                  id="cta-compact"
+                  title={ui.site.home.ctaTitle}
+                  text={ui.site.home.ctaText}
+                  actions={{ ...CTA_ACTIONS, mode: "one" }}
+                  quote={{ text: ui.vibe.cta.quote, by: ui.vibe.cta.quoteBy }}
+                  layout="card"
+                  tone="muted"
+                  proof="none"
+                  density="compact"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="cta-saas-label"
               data-testid="variant"
               data-block="cta"
               data-variant="saas"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="cta-saas-label" data-testid="variant-label">
-                  {ui.blocks.variants.cta.saas}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <CtaBand
-                    id="cta-saas"
-                    title={ui.cases.saas.cta.title}
-                    text={ui.cases.saas.cta.text}
-                    actions={{
-                      ...CTA_ACTIONS,
-                      cta: ui.cases.saas.cta.cta,
-                      secondary: ui.cases.saas.cta.secondary,
-                      mode: "two",
-                    }}
-                    quote={{ text: ui.vibe.cta.quote, by: ui.vibe.cta.quoteBy }}
-                    layout="band"
-                    tone="muted"
-                    proof="none"
-                    density="roomy"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="cta-saas-label" data-testid="variant-label">
+                {ui.blocks.variants.cta.saas}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <CtaBand
+                  id="cta-saas"
+                  title={ui.cases.saas.cta.title}
+                  text={ui.cases.saas.cta.text}
+                  actions={{
+                    ...CTA_ACTIONS,
+                    cta: ui.cases.saas.cta.cta,
+                    secondary: ui.cases.saas.cta.secondary,
+                    mode: "two",
+                  }}
+                  quote={{ text: ui.vibe.cta.quote, by: ui.vibe.cta.quoteBy }}
+                  layout="band"
+                  tone="muted"
+                  proof="none"
+                  density="roomy"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="cta-shop-label"
               data-testid="variant"
               data-block="cta"
               data-variant="shop"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="cta-shop-label" data-testid="variant-label">
-                  {ui.blocks.variants.cta.shop}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <CtaBand
-                    id="cta-shop"
-                    title={ui.cases.shop.cta.title}
-                    text={ui.cases.shop.cta.text}
-                    actions={{
-                      ...CTA_ACTIONS,
-                      cta: ui.cases.shop.cta.cta,
-                      secondary: ui.cases.shop.cta.secondary,
-                      mode: "one",
-                    }}
-                    quote={{ text: ui.vibe.cta.quote, by: ui.vibe.cta.quoteBy }}
-                    layout="split"
-                    tone="default"
-                    proof="none"
-                    density="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="cta-shop-label" data-testid="variant-label">
+                {ui.blocks.variants.cta.shop}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <CtaBand
+                  id="cta-shop"
+                  title={ui.cases.shop.cta.title}
+                  text={ui.cases.shop.cta.text}
+                  actions={{
+                    ...CTA_ACTIONS,
+                    cta: ui.cases.shop.cta.cta,
+                    secondary: ui.cases.shop.cta.secondary,
+                    mode: "one",
+                  }}
+                  quote={{ text: ui.vibe.cta.quote, by: ui.vibe.cta.quoteBy }}
+                  layout="split"
+                  tone="default"
+                  proof="none"
+                  density="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="cta-agency-label"
               data-testid="variant"
               data-block="cta"
               data-variant="agency"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="cta-agency-label" data-testid="variant-label">
-                  {ui.blocks.variants.cta.agency}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <CtaBand
-                    id="cta-agency"
-                    title={ui.cases.agency.cta.title}
-                    text={ui.cases.agency.cta.text}
-                    actions={{
-                      ...CTA_ACTIONS,
-                      cta: ui.cases.agency.cta.cta,
-                      secondary: ui.cases.agency.cta.secondary,
-                      mode: "two",
-                    }}
-                    quote={{ text: ui.vibe.cta.quote, by: ui.vibe.cta.quoteBy }}
-                    layout="card"
-                    tone="muted"
-                    proof="none"
-                    density="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
+              <Title as={3} size="base" weight="bold" id="cta-agency-label" data-testid="variant-label">
+                {ui.blocks.variants.cta.agency}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <CtaBand
+                  id="cta-agency"
+                  title={ui.cases.agency.cta.title}
+                  text={ui.cases.agency.cta.text}
+                  actions={{
+                    ...CTA_ACTIONS,
+                    cta: ui.cases.agency.cta.cta,
+                    secondary: ui.cases.agency.cta.secondary,
+                    mode: "two",
+                  }}
+                  quote={{ text: ui.vibe.cta.quote, by: ui.vibe.cta.quoteBy }}
+                  layout="card"
+                  tone="muted"
+                  proof="none"
+                  density="default"
+                />
+              </Box>
+            </Stack>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

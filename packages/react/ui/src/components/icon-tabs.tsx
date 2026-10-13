@@ -5,7 +5,7 @@
  * `moveFocus` from the utils to the keydown of the row (orientation horizontal, activate).
  */
 import { type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
+import { Box } from "../primitives/box/box";
 import { cn } from "../utils";
 
 export type IconTabsProps = {
@@ -16,13 +16,13 @@ export type IconTabsProps = {
 
 export function IconTabs({ label, className, children }: IconTabsProps) {
   return (
-    <Block
+    <Box
       className={cn("flex items-center gap-2", className)}
       role="tablist"
       aria-label={label}
       data-slot="icon-tabs"
     >
       {children}
-    </Block>
+    </Box>
   );
 }

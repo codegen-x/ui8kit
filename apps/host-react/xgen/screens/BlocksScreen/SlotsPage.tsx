@@ -44,37 +44,39 @@ const zones = fromCodex<Zone>(zonesEntries, ZONES_FIELDS);
 
 export function SlotsPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text
-            size="sm"
-            className="font-medium text-muted-foreground"
-            data-testid="block-theme"
-            data-theme-id="commerce"
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text
+              size="sm"
+              className="font-medium text-muted-foreground"
+              data-testid="block-theme"
+              data-theme-id="commerce"
+            >
+              {ui.blocks.themes.commerce.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.slots}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.slots}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="slots-split-label"
+            data-testid="variant"
+            data-block="slots"
+            data-variant="split"
           >
-            {ui.blocks.themes.commerce.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.slots}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.slots}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="slots-split-label"
-          data-testid="variant"
-          data-block="slots"
-          data-variant="split"
-        >
-          <Stack gap="4" align="stretch">
             <Title as={2} size="base" weight="bold" id="slots-split-label" data-testid="variant-label">
               {ui.blocks.variants.slots.split}
             </Title>
@@ -92,15 +94,15 @@ export function SlotsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="slots-plain-label"
-          data-testid="variant"
-          data-block="slots"
-          data-variant="plain"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="slots-plain-label"
+            data-testid="variant"
+            data-block="slots"
+            data-variant="plain"
+          >
             <Title as={2} size="base" weight="bold" id="slots-plain-label" data-testid="variant-label">
               {ui.blocks.variants.slots.plain}
             </Title>
@@ -118,15 +120,15 @@ export function SlotsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="slots-stacked-label"
-          data-testid="variant"
-          data-block="slots"
-          data-variant="stacked"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="slots-stacked-label"
+            data-testid="variant"
+            data-block="slots"
+            data-variant="stacked"
+          >
             <Title as={2} size="base" weight="bold" id="slots-stacked-label" data-testid="variant-label">
               {ui.blocks.variants.slots.stacked}
             </Title>
@@ -144,8 +146,8 @@ export function SlotsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

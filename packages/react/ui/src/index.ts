@@ -3,8 +3,10 @@
 
 // primitives
 export * from "./primitives/alert/alert";
+export * from "./primitives/article/article";
 export * from "./primitives/badge/badge";
 export * from "./primitives/block/block";
+export * from "./primitives/blockquote/blockquote";
 export * from "./primitives/box/box";
 export * from "./primitives/breadcrumb/breadcrumb";
 export * from "./primitives/button-plain/button-plain";
@@ -27,6 +29,8 @@ export * from "./primitives/form/progress";
 export * from "./primitives/dialog/dialog";
 export * from "./primitives/disclosure/disclosure";
 export * from "./primitives/disclosure/summary";
+export * from "./primitives/figure/figure";
+export * from "./primitives/figure/figure-caption";
 export * from "./primitives/form/form";
 export * from "./primitives/form/form-item";
 export * from "./primitives/form/form-description";
@@ -48,6 +52,7 @@ export * from "./primitives/link/link";
 export * from "./primitives/list/list";
 export * from "./primitives/list/list-item";
 export * from "./primitives/lucide-icon/lucide-icon";
+export * from "./primitives/nav/nav";
 export * from "./primitives/radio/radio";
 export * from "./primitives/range/range";
 export * from "./primitives/select/select";

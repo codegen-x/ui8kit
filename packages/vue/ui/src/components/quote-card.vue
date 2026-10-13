@@ -16,7 +16,7 @@ export type QuoteCardProps = {
 </script>
 
 <script setup lang="ts">
-import Block from "../primitives/block/block.vue";
+import Figure from "../primitives/figure/figure.vue";
 import Group from "../primitives/group/group.vue";
 import Inline from "../primitives/inline/inline.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
@@ -30,8 +30,7 @@ const { q, labels, item, layout = "grid" } = defineProps<QuoteCardProps>();
 </script>
 
 <template>
-  <Block
-    tag="figure"
+  <Figure
     :class="cn(
       'm-0 flex flex-col gap-4',
       ((item?.kind === 'plain') ? '' : 'rounded p-6 inset-ring inset-ring-border bg-card'),
@@ -90,5 +89,5 @@ const { q, labels, item, layout = "grid" } = defineProps<QuoteCardProps>();
         </Stack>
       </Group>
     </template>
-  </Block>
+  </Figure>
 </template>

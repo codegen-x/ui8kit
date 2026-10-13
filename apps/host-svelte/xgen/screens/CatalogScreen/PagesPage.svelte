@@ -2,7 +2,7 @@
 <!-- Source: xgen/specs/screens/catalog.json -->
 <!-- The pages page of CatalogScreen. -->
 <script lang="ts">
-  import { Container, Group, Link, List, ListItem, Stack, Text, Title, tpl } from "@ui8kit/svelte-ui";
+  import { Block, Container, Group, Link, List, ListItem, Stack, Text, Title, tpl } from "@ui8kit/svelte-ui";
   import { ui } from "@ui8kit/app-shared/content";
 
   const PAGES = [
@@ -177,42 +177,44 @@
   ] as const;
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.catalog.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Title as={1} size="4xl" weight="bold" data-testid="pages-title">
-        {ui.catalog.pagesTitle}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {ui.catalog.pagesText}
-      </Text>
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.catalog.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="pages-title">
+          {ui.catalog.pagesTitle}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {ui.catalog.pagesText}
+        </Text>
+      </Stack>
+      <List tag="ul" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-testid="page-list">
+        {#each PAGES as p (p.id)}
+          <ListItem class="flex flex-col gap-2 rounded p-4 inset-ring inset-ring-border">
+            <Link
+              href={p.href}
+              variant="default"
+              class="font-bold"
+              data-testid="page-link"
+              data-page={p.id}
+              data-visit={p.visit}
+            >
+              {p.name}
+            </Link>
+            <Text size="sm" class="text-muted-foreground">
+              {p.text}
+            </Text>
+            <Text size="xs" class="text-muted-foreground" data-testid="page-count">
+              {tpl(ui.catalog.pageCount, p.blocks)}
+            </Text>
+          </ListItem>
+        {/each}
+      </List>
     </Stack>
-    <List tag="ul" class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3" data-testid="page-list">
-      {#each PAGES as p (p.id)}
-        <ListItem class="flex flex-col gap-2 rounded p-4 inset-ring inset-ring-border">
-          <Link
-            href={p.href}
-            variant="default"
-            class="font-bold"
-            data-testid="page-link"
-            data-page={p.id}
-            data-visit={p.visit}
-          >
-            {p.name}
-          </Link>
-          <Text size="sm" class="text-muted-foreground">
-            {p.text}
-          </Text>
-          <Text size="xs" class="text-muted-foreground" data-testid="page-count">
-            {tpl(ui.catalog.pageCount, p.blocks)}
-          </Text>
-        </ListItem>
-      {/each}
-    </List>
-  </Stack>
-</Container>
+  </Container>
+</Block>

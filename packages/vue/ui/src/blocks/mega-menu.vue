@@ -34,6 +34,7 @@ import Link from "../primitives/link/link.vue";
 import List from "../primitives/list/list.vue";
 import ListItem from "../primitives/list/list-item.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
+import Nav from "../primitives/nav/nav.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import MediaFrame from "../components/media-frame.vue";
@@ -62,7 +63,7 @@ const {
       <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
         {{ brand }}
       </Link>
-      <Block tag="nav" class="flex-1" :aria-label="label">
+      <Nav class="flex-1" :aria-label="label">
         <Group gap="4" align="center" class="flex-wrap">
           <ButtonPlain
             type="button"
@@ -83,7 +84,7 @@ const {
             {{ l.name }}
           </Link>
         </Group>
-      </Block>
+      </Nav>
     </Container>
   </Block>
   <Box v-if="((panel as string) === 'open')" class="border-t border-border bg-card" data-testid="mega-panel">

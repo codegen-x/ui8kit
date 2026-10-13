@@ -24,37 +24,39 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
 
 export function FeaturetabsPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text
-            size="sm"
-            className="font-medium text-muted-foreground"
-            data-testid="block-theme"
-            data-theme-id="marketing"
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text
+              size="sm"
+              className="font-medium text-muted-foreground"
+              data-testid="block-theme"
+              data-theme-id="marketing"
+            >
+              {ui.blocks.themes.marketing.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.featuretabs}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.featuretabs}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="featuretabs-split-label"
+            data-testid="variant"
+            data-block="featuretabs"
+            data-variant="split"
           >
-            {ui.blocks.themes.marketing.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.featuretabs}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.featuretabs}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="featuretabs-split-label"
-          data-testid="variant"
-          data-block="featuretabs"
-          data-variant="split"
-        >
-          <Stack gap="4" align="stretch">
             <Title as={2} size="base" weight="bold" id="featuretabs-split-label" data-testid="variant-label">
               {ui.blocks.variants.featuretabs.split}
             </Title>
@@ -71,15 +73,15 @@ export function FeaturetabsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="featuretabs-stack-label"
-          data-testid="variant"
-          data-block="featuretabs"
-          data-variant="stack"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="featuretabs-stack-label"
+            data-testid="variant"
+            data-block="featuretabs"
+            data-variant="stack"
+          >
             <Title as={2} size="base" weight="bold" id="featuretabs-stack-label" data-testid="variant-label">
               {ui.blocks.variants.featuretabs.stack}
             </Title>
@@ -96,15 +98,15 @@ export function FeaturetabsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="featuretabs-muted-label"
-          data-testid="variant"
-          data-block="featuretabs"
-          data-variant="muted"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="featuretabs-muted-label"
+            data-testid="variant"
+            data-block="featuretabs"
+            data-variant="muted"
+          >
             <Title as={2} size="base" weight="bold" id="featuretabs-muted-label" data-testid="variant-label">
               {ui.blocks.variants.featuretabs.muted}
             </Title>
@@ -121,8 +123,8 @@ export function FeaturetabsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

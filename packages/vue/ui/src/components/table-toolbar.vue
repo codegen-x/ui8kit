@@ -12,7 +12,7 @@ export type TableToolbarProps = {
 </script>
 
 <script setup lang="ts">
-import Block from "../primitives/block/block.vue";
+import Box from "../primitives/box/box.vue";
 import Inline from "../primitives/inline/inline.vue";
 import { cn } from "../utils";
 
@@ -21,7 +21,7 @@ defineSlots<{ default?(): unknown, actions?(): unknown }>();
 </script>
 
 <template>
-  <Block
+  <Box
     :class="cn('flex flex-wrap items-center justify-between gap-2', className)"
     role="toolbar"
     :aria-label="label"
@@ -33,5 +33,5 @@ defineSlots<{ default?(): unknown, actions?(): unknown }>();
     <Inline class="flex flex-wrap items-center gap-2">
       <slot name="actions" />
     </Inline>
-  </Block>
+  </Box>
 </template>

@@ -17,7 +17,6 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
   import Box from "../primitives/box/box.svelte";
   import IconBadge from "../primitives/iconbadge/icon-badge.svelte";
   import Link from "../primitives/link/link.svelte";
@@ -27,7 +26,7 @@
   let { label, value, icon, href, hint }: StatTileProps = $props();
 </script>
 
-<Block class="min-w-0">
+<Box class="min-w-0">
   {#if href}
     <Link
       href={href}
@@ -72,4 +71,4 @@
       {/if}
     </Box>
   {/if}
-</Block>
+</Box>

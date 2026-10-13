@@ -413,9 +413,8 @@
                           },
                           "children": [
                             {
-                              "use": "Block",
+                              "use": "Box",
                               "props": {
-                                "Tag": "div",
                                 "Class": "ml-auto max-w-xs sm:max-w-md rounded bg-primary px-4 py-4 text-primary-foreground"
                               },
                               "children": [
@@ -436,9 +435,8 @@
                               ]
                             },
                             {
-                              "use": "Block",
+                              "use": "Box",
                               "props": {
-                                "Tag": "div",
                                 "Class": "mr-auto max-w-xs sm:max-w-md rounded bg-muted px-4 py-4"
                               },
                               "children": [

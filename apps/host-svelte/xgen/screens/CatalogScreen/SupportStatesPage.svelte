@@ -8,31 +8,33 @@
   const ERRORPAGE_ACTIONS = { cta: ui.vibe.error.cta, href: "#/", secondary: ui.vibe.error.secondary, secondaryHref: "#/" } as const;
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.catalog.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-        {ui.catalog.sections.support.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="category-title">
-        {ui.catalog.categories.supportStates}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {tpl(ui.catalog.count, 1, 5)}
-      </Text>
-    </Stack>
-    <Block
-      tag="section"
-      aria-labelledby="catalog-errorpage-title"
-      data-testid="catalog-block"
-      data-block="errorpage"
-    >
-      <Stack gap="6" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.catalog.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+          {ui.catalog.sections.support.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="category-title">
+          {ui.catalog.categories.supportStates}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {tpl(ui.catalog.count, 1, 5)}
+        </Text>
+      </Stack>
+      <Stack
+        gap="6"
+        align="stretch"
+        role="group"
+        aria-labelledby="catalog-errorpage-title"
+        data-testid="catalog-block"
+        data-block="errorpage"
+      >
         <Stack gap="2" align="stretch">
           <Title as={2} size="2xl" weight="bold" id="catalog-errorpage-title">
             {ui.blocks.names.errorpage}
@@ -41,137 +43,137 @@
             {ui.blocks.docs.errorpage}
           </Text>
         </Stack>
-        <Block
-          tag="section"
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="errorpage-centered-label"
           data-testid="variant"
           data-block="errorpage"
           data-variant="centered"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="errorpage-centered-label" data-testid="variant-label">
-              {ui.blocks.variants.errorpage.centered}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <ErrorPage
-                id="errorpage-centered"
-                title={ui.vibe.error.title}
-                text={ui.vibe.error.text}
-                status={ui.vibe.error.status}
-                actions={{ ...ERRORPAGE_ACTIONS, mode: "one" }}
-                layout="centered"
-                code="show"
-                tone="default"
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="errorpage-centered-label" data-testid="variant-label">
+            {ui.blocks.variants.errorpage.centered}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <ErrorPage
+              id="errorpage-centered"
+              title={ui.vibe.error.title}
+              text={ui.vibe.error.text}
+              status={ui.vibe.error.status}
+              actions={{ ...ERRORPAGE_ACTIONS, mode: "one" }}
+              layout="centered"
+              code="show"
+              tone="default"
+              level={2}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="errorpage-split-label"
           data-testid="variant"
           data-block="errorpage"
           data-variant="split"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="errorpage-split-label" data-testid="variant-label">
-              {ui.blocks.variants.errorpage.split}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <ErrorPage
-                id="errorpage-split"
-                title={ui.vibe.error.title}
-                text={ui.vibe.error.text}
-                status={ui.vibe.error.status}
-                actions={{ ...ERRORPAGE_ACTIONS, mode: "one" }}
-                layout="split"
-                code="show"
-                tone="default"
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="errorpage-split-label" data-testid="variant-label">
+            {ui.blocks.variants.errorpage.split}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <ErrorPage
+              id="errorpage-split"
+              title={ui.vibe.error.title}
+              text={ui.vibe.error.text}
+              status={ui.vibe.error.status}
+              actions={{ ...ERRORPAGE_ACTIONS, mode: "one" }}
+              layout="split"
+              code="show"
+              tone="default"
+              level={2}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="errorpage-noCode-label"
           data-testid="variant"
           data-block="errorpage"
           data-variant="noCode"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="errorpage-noCode-label" data-testid="variant-label">
-              {ui.blocks.variants.errorpage.noCode}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <ErrorPage
-                id="errorpage-noCode"
-                title={ui.vibe.error.title}
-                text={ui.vibe.error.text}
-                status={ui.vibe.error.status}
-                actions={{ ...ERRORPAGE_ACTIONS, mode: "one" }}
-                layout="centered"
-                code="hide"
-                tone="default"
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="errorpage-noCode-label" data-testid="variant-label">
+            {ui.blocks.variants.errorpage.noCode}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <ErrorPage
+              id="errorpage-noCode"
+              title={ui.vibe.error.title}
+              text={ui.vibe.error.text}
+              status={ui.vibe.error.status}
+              actions={{ ...ERRORPAGE_ACTIONS, mode: "one" }}
+              layout="centered"
+              code="hide"
+              tone="default"
+              level={2}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="errorpage-two-label"
           data-testid="variant"
           data-block="errorpage"
           data-variant="two"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="errorpage-two-label" data-testid="variant-label">
-              {ui.blocks.variants.errorpage.two}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <ErrorPage
-                id="errorpage-two"
-                title={ui.vibe.error.title}
-                text={ui.vibe.error.text}
-                status={ui.vibe.error.status}
-                actions={{ ...ERRORPAGE_ACTIONS, mode: "two" }}
-                layout="centered"
-                code="show"
-                tone="default"
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="errorpage-two-label" data-testid="variant-label">
+            {ui.blocks.variants.errorpage.two}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <ErrorPage
+              id="errorpage-two"
+              title={ui.vibe.error.title}
+              text={ui.vibe.error.text}
+              status={ui.vibe.error.status}
+              actions={{ ...ERRORPAGE_ACTIONS, mode: "two" }}
+              layout="centered"
+              code="show"
+              tone="default"
+              level={2}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="errorpage-muted-label"
           data-testid="variant"
           data-block="errorpage"
           data-variant="muted"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="errorpage-muted-label" data-testid="variant-label">
-              {ui.blocks.variants.errorpage.muted}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <ErrorPage
-                id="errorpage-muted"
-                title={ui.vibe.error.title}
-                text={ui.vibe.error.text}
-                status={ui.vibe.error.status}
-                actions={{ ...ERRORPAGE_ACTIONS, mode: "one" }}
-                layout="centered"
-                code="show"
-                tone="muted"
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
+          <Title as={3} size="base" weight="bold" id="errorpage-muted-label" data-testid="variant-label">
+            {ui.blocks.variants.errorpage.muted}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <ErrorPage
+              id="errorpage-muted"
+              title={ui.vibe.error.title}
+              text={ui.vibe.error.text}
+              status={ui.vibe.error.status}
+              actions={{ ...ERRORPAGE_ACTIONS, mode: "one" }}
+              layout="centered"
+              code="show"
+              tone="muted"
+              level={2}
+            />
+          </Box>
+        </Stack>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

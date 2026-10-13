@@ -61,14 +61,14 @@ export function CategoryNav({
     : tiles ? "grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6"
     : "flex flex-wrap gap-2";
   return (
-    <Container
-      className={cn(
-        "mx-auto w-full max-w-6xl px-4",
-        (((density as string) === "compact") ? "py-2" : "py-4")
-      )}
-      data-slot="container"
-    >
-      <Block tag="nav" aria-label={label} data-testid="category-nav" data-layout={layout}>
+    <Block tag="nav" aria-label={label} data-testid="category-nav" data-layout={layout}>
+      <Container
+        className={cn(
+          "mx-auto w-full max-w-6xl px-4",
+          (((density as string) === "compact") ? "py-2" : "py-4")
+        )}
+        data-slot="container"
+      >
         {((layout as string) === "toolbar") ? (
           <Group gap="4" align="center" className="mb-4 flex-wrap" data-testid="toolbar">
             <SearchField value={(tools?.query ?? "")} label={(tools?.search ?? "")} placeholder={tools?.search} />
@@ -113,7 +113,7 @@ export function CategoryNav({
             </ListItem>
           ))}
         </List>
-      </Block>
-    </Container>
+      </Container>
+    </Block>
   );
 }

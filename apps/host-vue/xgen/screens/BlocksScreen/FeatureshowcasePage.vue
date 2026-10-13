@@ -27,32 +27,34 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.blocks.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
-          {{ ui.blocks.themes.marketing.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="block-title">
-          {{ ui.blocks.names.featureshowcase }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ ui.blocks.docs.featureshowcase }}
-        </Text>
-      </Stack>
-      <Block
-        tag="section"
-        aria-labelledby="featureshowcase-pictureCards3-label"
-        data-testid="variant"
-        data-block="featureshowcase"
-        data-variant="pictureCards3"
-      >
-        <Stack gap="4" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.blocks.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
+            {{ ui.blocks.themes.marketing.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="block-title">
+            {{ ui.blocks.names.featureshowcase }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ ui.blocks.docs.featureshowcase }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="featureshowcase-pictureCards3-label"
+          data-testid="variant"
+          data-block="featureshowcase"
+          data-variant="pictureCards3"
+        >
           <Title :as="2" size="base" weight="bold" id="featureshowcase-pictureCards3-label" data-testid="variant-label">
             {{ ui.blocks.variants.featureshowcase.pictureCards3 }}
           </Title>
@@ -69,15 +71,15 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="featureshowcase-panelCards4-label"
-        data-testid="variant"
-        data-block="featureshowcase"
-        data-variant="panelCards4"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="featureshowcase-panelCards4-label"
+          data-testid="variant"
+          data-block="featureshowcase"
+          data-variant="panelCards4"
+        >
           <Title :as="2" size="base" weight="bold" id="featureshowcase-panelCards4-label" data-testid="variant-label">
             {{ ui.blocks.variants.featureshowcase.panelCards4 }}
           </Title>
@@ -94,15 +96,15 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="featureshowcase-pictureCards4-label"
-        data-testid="variant"
-        data-block="featureshowcase"
-        data-variant="pictureCards4"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="featureshowcase-pictureCards4-label"
+          data-testid="variant"
+          data-block="featureshowcase"
+          data-variant="pictureCards4"
+        >
           <Title :as="2" size="base" weight="bold" id="featureshowcase-pictureCards4-label" data-testid="variant-label">
             {{ ui.blocks.variants.featureshowcase.pictureCards4 }}
           </Title>
@@ -119,15 +121,15 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="featureshowcase-panelCards3-label"
-        data-testid="variant"
-        data-block="featureshowcase"
-        data-variant="panelCards3"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="featureshowcase-panelCards3-label"
+          data-testid="variant"
+          data-block="featureshowcase"
+          data-variant="panelCards3"
+        >
           <Title :as="2" size="base" weight="bold" id="featureshowcase-panelCards3-label" data-testid="variant-label">
             {{ ui.blocks.variants.featureshowcase.panelCards3 }}
           </Title>
@@ -144,7 +146,7 @@ const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

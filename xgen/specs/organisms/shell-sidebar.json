@@ -176,9 +176,8 @@
               ]
             },
             {
-              "use": "Block",
+              "use": "Nav",
               "props": {
-                "Tag": "nav",
                 "Class": "flex-1"
               },
               "attrs": {
@@ -431,10 +430,8 @@
                   ]
                 },
                 {
-                  "use": "Block",
-                  "props": {
-                    "Tag": "nav"
-                  },
+                  "use": "Nav",
+                  "props": {},
                   "attrs": {
                     "aria-label": {
                       "$": "nav.subTitle"
@@ -573,6 +570,7 @@
     "svelte": true,
     "react": true
   },
+  "frame": true,
   "typeImports": [
     {
       "from": "DashboardShell",

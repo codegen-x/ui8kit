@@ -23,9 +23,9 @@ export type PhotoGalleryProps = {
 
 <script setup lang="ts">
 import Badge from "../primitives/badge/badge.vue";
-import Block from "../primitives/block/block.vue";
 import Box from "../primitives/box/box.vue";
 import Button from "../primitives/button/button.vue";
+import Figure from "../primitives/figure/figure.vue";
 import Group from "../primitives/group/group.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
@@ -87,8 +87,7 @@ const {
       "
       data-testid="items"
     >
-      <Block v-for="(p, i) in photos" :key="p.id"
-        tag="figure"
+      <Figure v-for="(p, i) in photos" :key="p.id"
         :class="cn(
           'flex flex-col gap-2',
           (((layout as string) === 'masonry') ? 'mb-4 break-inside-avoid' : ''),
@@ -119,14 +118,14 @@ const {
             {{ p.tag }}
           </Badge>
         </Group>
-        <Block
+        <Box
           v-if="(((captions as string) === 'show') && (((layout as string) === 'grid') || ((layout as string) === 'masonry')))"
           class="text-sm text-muted-foreground"
           data-testid="caption"
         >
           {{ p.title }}
-        </Block>
-      </Block>
+        </Box>
+      </Figure>
     </Box>
   </SectionFrame>
 </template>

@@ -23,32 +23,34 @@
   const perks = fromCodex<Feature>(perksEntries, PERKS_FIELDS);
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.blocks.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="commerce">
-        {ui.blocks.themes.commerce.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-        {ui.blocks.names.usp}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {ui.blocks.docs.usp}
-      </Text>
-    </Stack>
-    <Block
-      tag="section"
-      aria-labelledby="usp-strip-label"
-      data-testid="variant"
-      data-block="usp"
-      data-variant="strip"
-    >
-      <Stack gap="4" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.blocks.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="commerce">
+          {ui.blocks.themes.commerce.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+          {ui.blocks.names.usp}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {ui.blocks.docs.usp}
+        </Text>
+      </Stack>
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="usp-strip-label"
+        data-testid="variant"
+        data-block="usp"
+        data-variant="strip"
+      >
         <Title as={2} size="base" weight="bold" id="usp-strip-label" data-testid="variant-label">
           {ui.blocks.variants.usp.strip}
         </Title>
@@ -56,15 +58,15 @@
           <UspStrip id="usp-strip" perks={perks} layout="strip" tone="default" density="default" />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="usp-cards-label"
-      data-testid="variant"
-      data-block="usp"
-      data-variant="cards"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="usp-cards-label"
+        data-testid="variant"
+        data-block="usp"
+        data-variant="cards"
+      >
         <Title as={2} size="base" weight="bold" id="usp-cards-label" data-testid="variant-label">
           {ui.blocks.variants.usp.cards}
         </Title>
@@ -79,15 +81,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="usp-stripCompact-label"
-      data-testid="variant"
-      data-block="usp"
-      data-variant="stripCompact"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="usp-stripCompact-label"
+        data-testid="variant"
+        data-block="usp"
+        data-variant="stripCompact"
+      >
         <Title as={2} size="base" weight="bold" id="usp-stripCompact-label" data-testid="variant-label">
           {ui.blocks.variants.usp.stripCompact}
         </Title>
@@ -95,9 +97,15 @@
           <UspStrip id="usp-stripCompact" perks={perks} layout="strip" tone="default" density="compact" />
         </Box>
       </Stack>
-    </Block>
-    <Block tag="section" aria-labelledby="usp-bar-label" data-testid="variant" data-block="usp" data-variant="bar">
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="usp-bar-label"
+        data-testid="variant"
+        data-block="usp"
+        data-variant="bar"
+      >
         <Title as={2} size="base" weight="bold" id="usp-bar-label" data-testid="variant-label">
           {ui.blocks.variants.usp.bar}
         </Title>
@@ -105,15 +113,15 @@
           <UspStrip id="usp-bar" perks={perks} layout="bar" tone="default" density="compact" />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="usp-barMuted-label"
-      data-testid="variant"
-      data-block="usp"
-      data-variant="barMuted"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="usp-barMuted-label"
+        data-testid="variant"
+        data-block="usp"
+        data-variant="barMuted"
+      >
         <Title as={2} size="base" weight="bold" id="usp-barMuted-label" data-testid="variant-label">
           {ui.blocks.variants.usp.barMuted}
         </Title>
@@ -121,6 +129,6 @@
           <UspStrip id="usp-barMuted" perks={perks} layout="bar" tone="muted" density="compact" />
         </Box>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

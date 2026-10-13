@@ -28,37 +28,39 @@ const cards = fromCodex<BoardCard>(cardsEntries, CARDS_FIELDS);
 
 export function KanbanPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text
-            size="sm"
-            className="font-medium text-muted-foreground"
-            data-testid="block-theme"
-            data-theme-id="dashboard"
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text
+              size="sm"
+              className="font-medium text-muted-foreground"
+              data-testid="block-theme"
+              data-theme-id="dashboard"
+            >
+              {ui.blocks.themes.dashboard.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.kanban}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.kanban}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="kanban-detail-label"
+            data-testid="variant"
+            data-block="kanban"
+            data-variant="detail"
           >
-            {ui.blocks.themes.dashboard.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.kanban}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.kanban}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="kanban-detail-label"
-          data-testid="variant"
-          data-block="kanban"
-          data-variant="detail"
-        >
-          <Stack gap="4" align="stretch">
             <Title as={2} size="base" weight="bold" id="kanban-detail-label" data-testid="variant-label">
               {ui.blocks.variants.kanban.detail}
             </Title>
@@ -76,15 +78,15 @@ export function KanbanPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="kanban-simple-label"
-          data-testid="variant"
-          data-block="kanban"
-          data-variant="simple"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="kanban-simple-label"
+            data-testid="variant"
+            data-block="kanban"
+            data-variant="simple"
+          >
             <Title as={2} size="base" weight="bold" id="kanban-simple-label" data-testid="variant-label">
               {ui.blocks.variants.kanban.simple}
             </Title>
@@ -102,15 +104,15 @@ export function KanbanPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="kanban-twoCols-label"
-          data-testid="variant"
-          data-block="kanban"
-          data-variant="twoCols"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="kanban-twoCols-label"
+            data-testid="variant"
+            data-block="kanban"
+            data-variant="twoCols"
+          >
             <Title as={2} size="base" weight="bold" id="kanban-twoCols-label" data-testid="variant-label">
               {ui.blocks.variants.kanban.twoCols}
             </Title>
@@ -128,15 +130,15 @@ export function KanbanPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="kanban-muted-label"
-          data-testid="variant"
-          data-block="kanban"
-          data-variant="muted"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="kanban-muted-label"
+            data-testid="variant"
+            data-block="kanban"
+            data-variant="muted"
+          >
             <Title as={2} size="base" weight="bold" id="kanban-muted-label" data-testid="variant-label">
               {ui.blocks.variants.kanban.muted}
             </Title>
@@ -154,8 +156,8 @@ export function KanbanPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

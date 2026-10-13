@@ -23,7 +23,7 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
+  import Box from "../primitives/box/box.svelte";
   import Grid from "../primitives/grid/grid.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Title from "../primitives/title/title.svelte";
@@ -47,9 +47,9 @@
   </Title>
   <Grid cols={cols} class="gap-4" data-testid="items">
     {#each metrics as m (m.id)}
-      <Block tag="div" data-testid="item">
+      <Box data-testid="item">
         <StatTile label={m.label} value={m.value} icon={m.icon} hint={m.hint} />
-      </Block>
+      </Box>
     {/each}
   </Grid>
   {#if activity}

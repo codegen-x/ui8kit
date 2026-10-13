@@ -28,37 +28,39 @@ const NAVBAR_ACTIONS = { cta: ui.site.header.cta, href: "#/", login: ui.site.hea
 
 export function NavbarPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text
-            size="sm"
-            className="font-medium text-muted-foreground"
-            data-testid="block-theme"
-            data-theme-id="marketing"
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text
+              size="sm"
+              className="font-medium text-muted-foreground"
+              data-testid="block-theme"
+              data-theme-id="marketing"
+            >
+              {ui.blocks.themes.marketing.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.navbar}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.navbar}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="navbar-inline-label"
+            data-testid="variant"
+            data-block="navbar"
+            data-variant="inline"
           >
-            {ui.blocks.themes.marketing.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.navbar}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.navbar}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="navbar-inline-label"
-          data-testid="variant"
-          data-block="navbar"
-          data-variant="inline"
-        >
-          <Stack gap="4" align="stretch">
             <Title as={2} size="base" weight="bold" id="navbar-inline-label" data-testid="variant-label">
               {ui.blocks.variants.navbar.inline}
             </Title>
@@ -77,15 +79,15 @@ export function NavbarPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="navbar-split-label"
-          data-testid="variant"
-          data-block="navbar"
-          data-variant="split"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="navbar-split-label"
+            data-testid="variant"
+            data-block="navbar"
+            data-variant="split"
+          >
             <Title as={2} size="base" weight="bold" id="navbar-split-label" data-testid="variant-label">
               {ui.blocks.variants.navbar.split}
             </Title>
@@ -104,15 +106,15 @@ export function NavbarPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="navbar-search-label"
-          data-testid="variant"
-          data-block="navbar"
-          data-variant="search"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="navbar-search-label"
+            data-testid="variant"
+            data-block="navbar"
+            data-variant="search"
+          >
             <Title as={2} size="base" weight="bold" id="navbar-search-label" data-testid="variant-label">
               {ui.blocks.variants.navbar.search}
             </Title>
@@ -131,15 +133,15 @@ export function NavbarPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="navbar-media-label"
-          data-testid="variant"
-          data-block="navbar"
-          data-variant="media"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="navbar-media-label"
+            data-testid="variant"
+            data-block="navbar"
+            data-variant="media"
+          >
             <Title as={2} size="base" weight="bold" id="navbar-media-label" data-testid="variant-label">
               {ui.blocks.variants.navbar.media}
             </Title>
@@ -158,15 +160,15 @@ export function NavbarPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="navbar-plain-label"
-          data-testid="variant"
-          data-block="navbar"
-          data-variant="plain"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="navbar-plain-label"
+            data-testid="variant"
+            data-block="navbar"
+            data-variant="plain"
+          >
             <Title as={2} size="base" weight="bold" id="navbar-plain-label" data-testid="variant-label">
               {ui.blocks.variants.navbar.plain}
             </Title>
@@ -185,15 +187,15 @@ export function NavbarPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="navbar-inverse-label"
-          data-testid="variant"
-          data-block="navbar"
-          data-variant="inverse"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="navbar-inverse-label"
+            data-testid="variant"
+            data-block="navbar"
+            data-variant="inverse"
+          >
             <Title as={2} size="base" weight="bold" id="navbar-inverse-label" data-testid="variant-label">
               {ui.blocks.variants.navbar.inverse}
             </Title>
@@ -212,8 +214,8 @@ export function NavbarPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

@@ -54,32 +54,34 @@
   const CTAPROOF_CONTENT = { logos, features, stats, zones } as const;
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.blocks.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
-        {ui.blocks.themes.marketing.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-        {ui.blocks.names.ctaproof}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {ui.blocks.docs.ctaproof}
-      </Text>
-    </Stack>
-    <Block
-      tag="section"
-      aria-labelledby="ctaproof-centerLogos-label"
-      data-testid="variant"
-      data-block="ctaproof"
-      data-variant="centerLogos"
-    >
-      <Stack gap="4" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.blocks.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
+          {ui.blocks.themes.marketing.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+          {ui.blocks.names.ctaproof}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {ui.blocks.docs.ctaproof}
+        </Text>
+      </Stack>
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="ctaproof-centerLogos-label"
+        data-testid="variant"
+        data-block="ctaproof"
+        data-variant="centerLogos"
+      >
         <Title as={2} size="base" weight="bold" id="ctaproof-centerLogos-label" data-testid="variant-label">
           {ui.blocks.variants.ctaproof.centerLogos}
         </Title>
@@ -98,15 +100,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="ctaproof-centerFeatures-label"
-      data-testid="variant"
-      data-block="ctaproof"
-      data-variant="centerFeatures"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="ctaproof-centerFeatures-label"
+        data-testid="variant"
+        data-block="ctaproof"
+        data-variant="centerFeatures"
+      >
         <Title as={2} size="base" weight="bold" id="ctaproof-centerFeatures-label" data-testid="variant-label">
           {ui.blocks.variants.ctaproof.centerFeatures}
         </Title>
@@ -125,15 +127,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="ctaproof-centerStats-label"
-      data-testid="variant"
-      data-block="ctaproof"
-      data-variant="centerStats"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="ctaproof-centerStats-label"
+        data-testid="variant"
+        data-block="ctaproof"
+        data-variant="centerStats"
+      >
         <Title as={2} size="base" weight="bold" id="ctaproof-centerStats-label" data-testid="variant-label">
           {ui.blocks.variants.ctaproof.centerStats}
         </Title>
@@ -152,15 +154,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="ctaproof-splitStats-label"
-      data-testid="variant"
-      data-block="ctaproof"
-      data-variant="splitStats"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="ctaproof-splitStats-label"
+        data-testid="variant"
+        data-block="ctaproof"
+        data-variant="splitStats"
+      >
         <Title as={2} size="base" weight="bold" id="ctaproof-splitStats-label" data-testid="variant-label">
           {ui.blocks.variants.ctaproof.splitStats}
         </Title>
@@ -179,15 +181,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="ctaproof-splitStatsStart-label"
-      data-testid="variant"
-      data-block="ctaproof"
-      data-variant="splitStatsStart"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="ctaproof-splitStatsStart-label"
+        data-testid="variant"
+        data-block="ctaproof"
+        data-variant="splitStatsStart"
+      >
         <Title as={2} size="base" weight="bold" id="ctaproof-splitStatsStart-label" data-testid="variant-label">
           {ui.blocks.variants.ctaproof.splitStatsStart}
         </Title>
@@ -207,15 +209,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="ctaproof-splitRows-label"
-      data-testid="variant"
-      data-block="ctaproof"
-      data-variant="splitRows"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="ctaproof-splitRows-label"
+        data-testid="variant"
+        data-block="ctaproof"
+        data-variant="splitRows"
+      >
         <Title as={2} size="base" weight="bold" id="ctaproof-splitRows-label" data-testid="variant-label">
           {ui.blocks.variants.ctaproof.splitRows}
         </Title>
@@ -234,15 +236,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="ctaproof-splitZones-label"
-      data-testid="variant"
-      data-block="ctaproof"
-      data-variant="splitZones"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="ctaproof-splitZones-label"
+        data-testid="variant"
+        data-block="ctaproof"
+        data-variant="splitZones"
+      >
         <Title as={2} size="base" weight="bold" id="ctaproof-splitZones-label" data-testid="variant-label">
           {ui.blocks.variants.ctaproof.splitZones}
         </Title>
@@ -261,6 +263,6 @@
           />
         </Box>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

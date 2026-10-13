@@ -1,7 +1,7 @@
 // Commerce organisms: category navigation, product card and grid, product page, reviews, cart, order summary, order history.
 import { at, call, cn, coalesce, cond, each, eq, mul, not, money, or, ref, str, text, tpl, undef, use, when, organism } from "../../build";
 import type { OrganismSpec, ViewNode } from "../../ir";
-import { fields, groupFields, spec, ts } from "../kit";
+import { cardBase, fields, groupFields, spec, ts } from "../kit";
 import { frame, wide } from "../components/frames";
 import { id, title, tone, tsOf, toneLite, denseLite, roomyLite } from "../props";
 import { cartTable } from "../components/cart-table";
@@ -40,8 +40,8 @@ const categoryNav = spec(`${O}category-nav`, "CategoryNav", "Navigation between 
     { name: "listShape", value: cond(eq(ref("layout"), "sidebar"), "flex flex-col gap-2", cond(eq(ref("layout"), "bar"), "flex flex-wrap gap-2 gap-x-4 border-b border-border", cond(ref("tiles"), "grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6", "flex flex-wrap gap-2"))) },
   ],
   view: [
-    use("Container", { props: { Class: cn(wide, cond(eq(ref("density"), "compact"), "py-2", "py-4")) }, attrs: { "data-slot": "container" } },
-      use("Block", { props: { Tag: "nav" }, attrs: { "aria-label": ref("label"), "data-testid": "category-nav", "data-layout": ref("layout") } },
+    use("Block", { props: { Tag: "nav" }, attrs: { "aria-label": ref("label"), "data-testid": "category-nav", "data-layout": ref("layout") } },
+      use("Container", { props: { Class: cn(wide, cond(eq(ref("density"), "compact"), "py-2", "py-4")) }, attrs: { "data-slot": "container" } },
         when(eq(ref("layout"), "toolbar"), [use("Group", { props: { Gap: "4", Align: "center", Class: "mb-4 flex-wrap" }, attrs: { "data-testid": "toolbar" } },
           organism("SearchField", { value: coalesce(ref("tools.query"), ""), label: coalesce(ref("tools.search"), ""), placeholder: ref("tools.search") }),
           use("Select", { props: { Name: "sort", Size: "sm", AriaLabel: ref("tools.sort"), Class: "w-48" } }, use("SelectOption", { props: { Value: "sort", Label: ref("tools.sortValue"), Selected: true } })),
@@ -74,7 +74,7 @@ const productCard = spec(`${O}product-card`, "ProductCard", "A product as a card
   ],
   events: [{ name: "add", args: [{ name: "id", type: "string" }], docs: "the add button was pressed" }],
   view: [
-    use("Card", { props: { Variant: "default", Class: cn("h-full gap-4 overflow-hidden", cond(eq(ref("layout"), "horizontal"), "flex flex-col sm:flex-row", "flex flex-col")) }, attrs: { "data-testid": "item", "data-layout": ref("layout") } },
+    use("Block", { props: { Tag: "article", Class: cn(cardBase(), "h-full gap-4 overflow-hidden", cond(eq(ref("layout"), "horizontal"), "flex flex-col sm:flex-row", "flex flex-col")) }, attrs: { "data-slot": "card", "data-testid": "item", "data-layout": ref("layout") } },
       when(eq(ref("media"), "image"), [
         use("Box", { props: { Class: cn("relative shrink-0", cond(eq(ref("layout"), "horizontal"), "sm:w-48", "")) } },
           organism("MediaFrame", { alt: ref("product.name"), ratio: ref("ratio"), className: "h-full" }),
@@ -177,7 +177,7 @@ const reviewList = spec(`${O}review-list`, "ReviewList", "Customer reviews as ca
   view: [frame({ ...common, measure: cond(eq(ref("layout"), "list"), "2xl", "default") }, [
     use("Grid", { props: { Cols: cond(eq(ref("layout"), "grid"), "1-3", "1"), Class: "gap-4" }, attrs: { "data-testid": "items" } },
       each(ref("reviews"), "r", ref("r.id"),
-        use("Block", { props: { Tag: "article", Class: cn("flex h-full flex-col gap-4", cond(eq(ref("item"), "card"), "rounded bg-card p-6 inset-ring inset-ring-border", "border-b border-border pb-4")) }, attrs: { "data-testid": "item" } },
+        use("Article", { props: { Class: cn("flex h-full flex-col gap-4", cond(eq(ref("item"), "card"), "rounded bg-card p-6 inset-ring inset-ring-border", "border-b border-border pb-4")) }, attrs: { "data-testid": "item" } },
           organism("Rating", { value: ref("r.rating"), label: tpl(ref("labels.ratingLabel"), ref("r.rating")), size: 16 }),
           use("Title", { props: { As: 3, Size: "base", Weight: "bold" } }, text(ref("r.title"))),
           use("Text", { props: { Size: "sm", Class: "text-muted-foreground" } }, text(ref("r.text"))),

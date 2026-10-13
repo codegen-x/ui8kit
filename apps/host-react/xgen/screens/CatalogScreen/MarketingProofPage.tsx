@@ -45,26 +45,33 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
 
 export function MarketingProofPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.catalog.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text size="sm" className="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-            {ui.catalog.sections.marketing.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="category-title">
-            {ui.catalog.categories.marketingProof}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {tpl(ui.catalog.count, 3, 14)}
-          </Text>
-        </Stack>
-        <Block tag="section" aria-labelledby="catalog-logos-title" data-testid="catalog-block" data-block="logos">
-          <Stack gap="6" align="stretch">
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.catalog.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text size="sm" className="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+              {ui.catalog.sections.marketing.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="category-title">
+              {ui.catalog.categories.marketingProof}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {tpl(ui.catalog.count, 3, 14)}
+            </Text>
+          </Stack>
+          <Stack
+            gap="6"
+            align="stretch"
+            role="group"
+            aria-labelledby="catalog-logos-title"
+            data-testid="catalog-block"
+            data-block="logos"
+          >
             <Stack gap="2" align="stretch">
               <Title as={2} size="2xl" weight="bold" id="catalog-logos-title">
                 {ui.blocks.names.logos}
@@ -73,160 +80,165 @@ export function MarketingProofPage() {
                 {ui.blocks.docs.logos}
               </Text>
             </Stack>
-            <Block
-              tag="section"
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="logos-grid4-label"
               data-testid="variant"
               data-block="logos"
               data-variant="grid4"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="logos-grid4-label" data-testid="variant-label">
-                  {ui.blocks.variants.logos.grid4}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <LogoCloud
-                    id="logos-grid4"
-                    title={ui.marketing.logos.title}
-                    logos={logos}
-                    layout="grid"
-                    cols="4"
-                    item="name"
-                    tone="default"
-                    density="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="logos-grid4-label" data-testid="variant-label">
+                {ui.blocks.variants.logos.grid4}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <LogoCloud
+                  id="logos-grid4"
+                  title={ui.marketing.logos.title}
+                  logos={logos}
+                  layout="grid"
+                  cols="4"
+                  item="name"
+                  tone="default"
+                  density="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="logos-grid3-label"
               data-testid="variant"
               data-block="logos"
               data-variant="grid3"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="logos-grid3-label" data-testid="variant-label">
-                  {ui.blocks.variants.logos.grid3}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <LogoCloud
-                    id="logos-grid3"
-                    title={ui.marketing.logos.title}
-                    logos={logos}
-                    layout="grid"
-                    cols="3"
-                    item="tile"
-                    tone="default"
-                    density="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="logos-grid3-label" data-testid="variant-label">
+                {ui.blocks.variants.logos.grid3}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <LogoCloud
+                  id="logos-grid3"
+                  title={ui.marketing.logos.title}
+                  logos={logos}
+                  layout="grid"
+                  cols="3"
+                  item="tile"
+                  tone="default"
+                  density="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="logos-row-label"
               data-testid="variant"
               data-block="logos"
               data-variant="row"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="logos-row-label" data-testid="variant-label">
-                  {ui.blocks.variants.logos.row}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <LogoCloud
-                    id="logos-row"
-                    title={ui.marketing.logos.title}
-                    logos={logos}
-                    layout="row"
-                    cols="4"
-                    item="icon"
-                    tone="default"
-                    density="compact"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="logos-row-label" data-testid="variant-label">
+                {ui.blocks.variants.logos.row}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <LogoCloud
+                  id="logos-row"
+                  title={ui.marketing.logos.title}
+                  logos={logos}
+                  layout="row"
+                  cols="4"
+                  item="icon"
+                  tone="default"
+                  density="compact"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="logos-icons-label"
               data-testid="variant"
               data-block="logos"
               data-variant="icons"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="logos-icons-label" data-testid="variant-label">
-                  {ui.blocks.variants.logos.icons}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <LogoCloud
-                    id="logos-icons"
-                    title={ui.marketing.logos.title}
-                    logos={logos}
-                    layout="grid"
-                    cols="4"
-                    item="icon"
-                    tone="muted"
-                    density="compact"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="logos-icons-label" data-testid="variant-label">
+                {ui.blocks.variants.logos.icons}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <LogoCloud
+                  id="logos-icons"
+                  title={ui.marketing.logos.title}
+                  logos={logos}
+                  layout="grid"
+                  cols="4"
+                  item="icon"
+                  tone="muted"
+                  density="compact"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="logos-grid2-label"
               data-testid="variant"
               data-block="logos"
               data-variant="grid2"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="logos-grid2-label" data-testid="variant-label">
-                  {ui.blocks.variants.logos.grid2}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <LogoCloud
-                    id="logos-grid2"
-                    title={ui.marketing.logos.title}
-                    logos={logos}
-                    layout="grid"
-                    cols="2"
-                    item="name"
-                    tone="default"
-                    density="roomy"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="logos-grid2-label" data-testid="variant-label">
+                {ui.blocks.variants.logos.grid2}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <LogoCloud
+                  id="logos-grid2"
+                  title={ui.marketing.logos.title}
+                  logos={logos}
+                  layout="grid"
+                  cols="2"
+                  item="name"
+                  tone="default"
+                  density="roomy"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="logos-tiles4-label"
               data-testid="variant"
               data-block="logos"
               data-variant="tiles4"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="logos-tiles4-label" data-testid="variant-label">
-                  {ui.blocks.variants.logos.tiles4}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <LogoCloud
-                    id="logos-tiles4"
-                    title={ui.marketing.logos.title}
-                    logos={logos}
-                    layout="grid"
-                    cols="4"
-                    item="tile"
-                    tone="default"
-                    density="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
+              <Title as={3} size="base" weight="bold" id="logos-tiles4-label" data-testid="variant-label">
+                {ui.blocks.variants.logos.tiles4}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <LogoCloud
+                  id="logos-tiles4"
+                  title={ui.marketing.logos.title}
+                  logos={logos}
+                  layout="grid"
+                  cols="4"
+                  item="tile"
+                  tone="default"
+                  density="default"
+                />
+              </Box>
+            </Stack>
           </Stack>
-        </Block>
-        <Block tag="section" aria-labelledby="catalog-proof-title" data-testid="catalog-block" data-block="proof">
-          <Stack gap="6" align="stretch">
+          <Stack
+            gap="6"
+            align="stretch"
+            role="group"
+            aria-labelledby="catalog-proof-title"
+            data-testid="catalog-block"
+            data-block="proof"
+          >
             <Stack gap="2" align="stretch">
               <Title as={2} size="2xl" weight="bold" id="catalog-proof-title">
                 {ui.blocks.names.proof}
@@ -235,110 +247,115 @@ export function MarketingProofPage() {
                 {ui.blocks.docs.proof}
               </Text>
             </Stack>
-            <Block
-              tag="section"
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="proof-above-label"
               data-testid="variant"
               data-block="proof"
               data-variant="above"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="proof-above-label" data-testid="variant-label">
-                  {ui.blocks.variants.proof.above}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <ProofBand
-                    id="proof-above"
-                    title={ui.vibe.proof.title}
-                    logos={logos}
-                    stats={stats}
-                    layout="above"
-                    logoStyle="name"
-                    tone="default"
-                    density="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="proof-above-label" data-testid="variant-label">
+                {ui.blocks.variants.proof.above}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <ProofBand
+                  id="proof-above"
+                  title={ui.vibe.proof.title}
+                  logos={logos}
+                  stats={stats}
+                  layout="above"
+                  logoStyle="name"
+                  tone="default"
+                  density="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="proof-beside-label"
               data-testid="variant"
               data-block="proof"
               data-variant="beside"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="proof-beside-label" data-testid="variant-label">
-                  {ui.blocks.variants.proof.beside}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <ProofBand
-                    id="proof-beside"
-                    title={ui.vibe.proof.title}
-                    logos={logos}
-                    stats={stats}
-                    layout="beside"
-                    logoStyle="name"
-                    tone="default"
-                    density="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="proof-beside-label" data-testid="variant-label">
+                {ui.blocks.variants.proof.beside}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <ProofBand
+                  id="proof-beside"
+                  title={ui.vibe.proof.title}
+                  logos={logos}
+                  stats={stats}
+                  layout="beside"
+                  logoStyle="name"
+                  tone="default"
+                  density="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="proof-icons-label"
               data-testid="variant"
               data-block="proof"
               data-variant="icons"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="proof-icons-label" data-testid="variant-label">
-                  {ui.blocks.variants.proof.icons}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <ProofBand
-                    id="proof-icons"
-                    title={ui.vibe.proof.title}
-                    logos={logos}
-                    stats={stats}
-                    layout="above"
-                    logoStyle="icon"
-                    tone="default"
-                    density="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="proof-icons-label" data-testid="variant-label">
+                {ui.blocks.variants.proof.icons}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <ProofBand
+                  id="proof-icons"
+                  title={ui.vibe.proof.title}
+                  logos={logos}
+                  stats={stats}
+                  layout="above"
+                  logoStyle="icon"
+                  tone="default"
+                  density="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="proof-muted-label"
               data-testid="variant"
               data-block="proof"
               data-variant="muted"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="proof-muted-label" data-testid="variant-label">
-                  {ui.blocks.variants.proof.muted}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <ProofBand
-                    id="proof-muted"
-                    title={ui.vibe.proof.title}
-                    logos={logos}
-                    stats={stats}
-                    layout="above"
-                    logoStyle="name"
-                    tone="muted"
-                    density="compact"
-                  />
-                </Box>
-              </Stack>
-            </Block>
+              <Title as={3} size="base" weight="bold" id="proof-muted-label" data-testid="variant-label">
+                {ui.blocks.variants.proof.muted}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <ProofBand
+                  id="proof-muted"
+                  title={ui.vibe.proof.title}
+                  logos={logos}
+                  stats={stats}
+                  layout="above"
+                  logoStyle="name"
+                  tone="muted"
+                  density="compact"
+                />
+              </Box>
+            </Stack>
           </Stack>
-        </Block>
-        <Block tag="section" aria-labelledby="catalog-videos-title" data-testid="catalog-block" data-block="videos">
-          <Stack gap="6" align="stretch">
+          <Stack
+            gap="6"
+            align="stretch"
+            role="group"
+            aria-labelledby="catalog-videos-title"
+            data-testid="catalog-block"
+            data-block="videos"
+          >
             <Stack gap="2" align="stretch">
               <Title as={2} size="2xl" weight="bold" id="catalog-videos-title">
                 {ui.blocks.names.videos}
@@ -347,113 +364,113 @@ export function MarketingProofPage() {
                 {ui.blocks.docs.videos}
               </Text>
             </Stack>
-            <Block
-              tag="section"
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="videos-grid3-label"
               data-testid="variant"
               data-block="videos"
               data-variant="grid3"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="videos-grid3-label" data-testid="variant-label">
-                  {ui.blocks.variants.videos.grid3}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <VideoGrid
-                    id="videos-grid3"
-                    title={ui.vibe.videos.title}
-                    quotes={testimonials}
-                    playLabel={ui.vibe.videos.play}
-                    byLine={ui.testimonials.byLine}
-                    cols="1-3"
-                    caption="below"
-                    tone="default"
-                    density="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="videos-grid3-label" data-testid="variant-label">
+                {ui.blocks.variants.videos.grid3}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <VideoGrid
+                  id="videos-grid3"
+                  title={ui.vibe.videos.title}
+                  quotes={testimonials}
+                  playLabel={ui.vibe.videos.play}
+                  byLine={ui.testimonials.byLine}
+                  cols="1-3"
+                  caption="below"
+                  tone="default"
+                  density="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="videos-grid2-label"
               data-testid="variant"
               data-block="videos"
               data-variant="grid2"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="videos-grid2-label" data-testid="variant-label">
-                  {ui.blocks.variants.videos.grid2}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <VideoGrid
-                    id="videos-grid2"
-                    title={ui.vibe.videos.title}
-                    quotes={testimonials}
-                    playLabel={ui.vibe.videos.play}
-                    byLine={ui.testimonials.byLine}
-                    cols="1-2"
-                    caption="below"
-                    tone="default"
-                    density="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="videos-grid2-label" data-testid="variant-label">
+                {ui.blocks.variants.videos.grid2}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <VideoGrid
+                  id="videos-grid2"
+                  title={ui.vibe.videos.title}
+                  quotes={testimonials}
+                  playLabel={ui.vibe.videos.play}
+                  byLine={ui.testimonials.byLine}
+                  cols="1-2"
+                  caption="below"
+                  tone="default"
+                  density="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="videos-overlay-label"
               data-testid="variant"
               data-block="videos"
               data-variant="overlay"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="videos-overlay-label" data-testid="variant-label">
-                  {ui.blocks.variants.videos.overlay}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <VideoGrid
-                    id="videos-overlay"
-                    title={ui.vibe.videos.title}
-                    quotes={testimonials}
-                    playLabel={ui.vibe.videos.play}
-                    byLine={ui.testimonials.byLine}
-                    cols="1-3"
-                    caption="overlay"
-                    tone="default"
-                    density="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="videos-overlay-label" data-testid="variant-label">
+                {ui.blocks.variants.videos.overlay}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <VideoGrid
+                  id="videos-overlay"
+                  title={ui.vibe.videos.title}
+                  quotes={testimonials}
+                  playLabel={ui.vibe.videos.play}
+                  byLine={ui.testimonials.byLine}
+                  cols="1-3"
+                  caption="overlay"
+                  tone="default"
+                  density="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="videos-muted-label"
               data-testid="variant"
               data-block="videos"
               data-variant="muted"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="videos-muted-label" data-testid="variant-label">
-                  {ui.blocks.variants.videos.muted}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <VideoGrid
-                    id="videos-muted"
-                    title={ui.vibe.videos.title}
-                    quotes={testimonials}
-                    playLabel={ui.vibe.videos.play}
-                    byLine={ui.testimonials.byLine}
-                    cols="1-3"
-                    caption="below"
-                    tone="muted"
-                    density="compact"
-                  />
-                </Box>
-              </Stack>
-            </Block>
+              <Title as={3} size="base" weight="bold" id="videos-muted-label" data-testid="variant-label">
+                {ui.blocks.variants.videos.muted}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <VideoGrid
+                  id="videos-muted"
+                  title={ui.vibe.videos.title}
+                  quotes={testimonials}
+                  playLabel={ui.vibe.videos.play}
+                  byLine={ui.testimonials.byLine}
+                  cols="1-3"
+                  caption="below"
+                  tone="muted"
+                  density="compact"
+                />
+              </Box>
+            </Stack>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

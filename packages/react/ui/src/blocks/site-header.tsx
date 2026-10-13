@@ -12,6 +12,7 @@ import { Container } from "../primitives/container/container";
 import { Group } from "../primitives/group/group";
 import { LinkPlain } from "../primitives/link-plain/link-plain";
 import { Link } from "../primitives/link/link";
+import { Nav } from "../primitives/nav/nav";
 import { cn } from "../utils";
 import type { SiteHeaderLabels } from "./site-header.types";
 
@@ -37,7 +38,15 @@ export function SiteHeader({
   onTheme,
 }: SiteHeaderProps) {
   return (
-    <>
+    <Block
+      tag="header"
+      className={cn(
+        "border-b border-border bg-background",
+        (((position as string) === "sticky") ? "sticky top-0 z-40" : "")
+      )}
+      data-testid="site-header"
+      data-layout={layout}
+    >
       <LinkPlain
         href="#main-content"
         className={"sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background " +
@@ -46,58 +55,48 @@ export function SiteHeader({
       >
         {labels.skip}
       </LinkPlain>
-      <Block
-        tag="header"
+      <Container
         className={cn(
-          "border-b border-border bg-background",
-          (((position as string) === "sticky") ? "sticky top-0 z-40" : "")
+          "mx-auto w-full max-w-6xl px-4",
+          "flex flex-wrap gap-4 py-4",
+          (((layout as string) === "stacked") ? "flex-col items-center" : "items-center justify-between")
         )}
-        data-testid="site-header"
-        data-layout={layout}
+        data-slot="container"
       >
-        <Container
-          className={cn(
-            "mx-auto w-full max-w-6xl px-4",
-            "flex flex-wrap gap-4 py-4",
-            (((layout as string) === "stacked") ? "flex-col items-center" : "items-center justify-between")
-          )}
-          data-slot="container"
-        >
-          <Link href="#/" variant="default" className="text-lg font-medium" data-testid="brand">
-            {labels.brand}
-          </Link>
-          <Block tag="nav" aria-label={labels.nav} data-testid="site-nav">
-            <Group gap="4" align="center">
-              <Link
-                href="#/"
-                variant="default"
-                aria-current={(((current as string) === "home") ? "page" : undefined)}
-                data-testid="nav-link"
-              >
-                {labels.home}
-              </Link>
-              <Link
-                href="#/pricing"
-                variant="default"
-                aria-current={(((current as string) === "pricing") ? "page" : undefined)}
-                data-testid="nav-link"
-              >
-                {labels.pricing}
-              </Link>
-            </Group>
-          </Block>
+        <Link href="#/" variant="default" className="text-lg font-medium" data-testid="brand">
+          {labels.brand}
+        </Link>
+        <Nav aria-label={labels.nav} data-testid="site-nav">
           <Group gap="4" align="center">
-            <Button variant="outline" size="sm" data-testid="theme-toggle" onClick={() => onTheme?.()}>
-              {labels.theme}
-            </Button>
-            {(((actions as string) === "cta") && cta) ? (
-              <Button variant="default" size="sm" href={ctaHref} data-testid="header-cta">
-                {cta}
-              </Button>
-            ) : null}
+            <Link
+              href="#/"
+              variant="default"
+              aria-current={(((current as string) === "home") ? "page" : undefined)}
+              data-testid="nav-link"
+            >
+              {labels.home}
+            </Link>
+            <Link
+              href="#/pricing"
+              variant="default"
+              aria-current={(((current as string) === "pricing") ? "page" : undefined)}
+              data-testid="nav-link"
+            >
+              {labels.pricing}
+            </Link>
           </Group>
-        </Container>
-      </Block>
-    </>
+        </Nav>
+        <Group gap="4" align="center">
+          <Button variant="outline" size="sm" data-testid="theme-toggle" onClick={() => onTheme?.()}>
+            {labels.theme}
+          </Button>
+          {(((actions as string) === "cta") && cta) ? (
+            <Button variant="default" size="sm" href={ctaHref} data-testid="header-cta">
+              {cta}
+            </Button>
+          ) : null}
+        </Group>
+      </Container>
+    </Block>
   );
 }

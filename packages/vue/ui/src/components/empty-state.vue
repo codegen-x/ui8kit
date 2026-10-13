@@ -11,7 +11,7 @@ export type EmptyStateProps = {
 </script>
 
 <script setup lang="ts">
-import Block from "../primitives/block/block.vue";
+import Box from "../primitives/box/box.vue";
 import IconBadge from "../primitives/iconbadge/icon-badge.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Text from "../primitives/text/text.vue";
@@ -22,7 +22,7 @@ defineSlots<{ action?(): unknown }>();
 </script>
 
 <template>
-  <Block
+  <Box
     :class="cn(
       'flex min-w-0 flex-col items-center gap-4 rounded bg-card px-6 py-14 text-center inset-ring inset-ring-border',
       className
@@ -39,5 +39,5 @@ defineSlots<{ action?(): unknown }>();
       {{ text }}
     </Text>
     <slot name="action" />
-  </Block>
+  </Box>
 </template>

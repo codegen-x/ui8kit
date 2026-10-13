@@ -14,7 +14,7 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
+  import Box from "../primitives/box/box.svelte";
   import Input from "../primitives/input/input.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import { cn } from "../utils";
@@ -22,7 +22,7 @@
   let { value, placeholder, label, class: className, onvalue }: SearchFieldProps = $props();
 </script>
 
-<Block class={cn("relative min-w-44 flex-1", className)} role="search">
+<Box class={cn("relative min-w-44 flex-1", className)} role="search">
   <LucideIcon name="search" size={16} class="pointer-events-none absolute top-2 left-3 text-muted-foreground" />
   <Input
     size="sm"
@@ -33,4 +33,4 @@
     value={value}
     oninput={(event: Event & { currentTarget: HTMLInputElement }) => onvalue?.(event.currentTarget.value)}
   />
-</Block>
+</Box>

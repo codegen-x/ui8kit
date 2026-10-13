@@ -1,5 +1,5 @@
 // What a collection screen needs besides markup: the constants of its list, routes and Codex mapping, and the route plan.
-import { printPretty, sourcesOf, type ScreenSpec, type SourceSpec, type Value } from "@ui8kit/xgen-screens";
+import { printPretty, sourcesOf, type ScreenSpec, type SourceSpec, type Value, type ViewNode } from "@ui8kit/xgen-screens";
 
 /** the roots a view tree reads: `{"$":"TOPICS"}` -> TOPICS */
 const rootsOf = (nodes: unknown): Set<string> => new Set([...JSON.stringify(nodes).matchAll(/"\$":"([A-Za-z0-9_]+)/g)].map((m) => m[1]!));
@@ -85,6 +85,10 @@ export function screenModel(s: ScreenSpec): ScreenModel {
 /** an area of a page screen emitted as its own component file: what it reads, so the file imports only that */
 export interface ChunkModel {
   area: string;
+  /** the nodes of the file: the area, or the part */
+  nodes: ViewNode[];
+  /** the comment line of the file: `The index page of BlocksScreen.` */
+  doc: string;
   /** component name: `AccordionPage` */
   name: string;
   /** folder of the chunk files, next to the screen: `BlocksScreen` */
@@ -109,7 +113,24 @@ export function chunksOf(s: ScreenSpec): ChunkModel[] {
     for (const r of ["route", "nav", "url", "record", "view"]) if (roots.has(r)) throw new Error(`${s.name}.${area}: the area reads ${r}, so it cannot be its own file`);
     const sources = all.filter((x) => roots.has(x.as));
     return {
-      area, name: `${pascal(area)}Page`, dir: s.name, sources, actions: json.includes('"call":"actions.'),
+      area, nodes, doc: `The ${area} page of ${s.name}.`, name: `${pascal(area)}Page`, dir: s.name, sources, actions: json.includes('"call":"actions.'),
+      constsTs: sources.map((x) => printConst(`${x.as.toUpperCase()}_FIELDS`, x.fields)).join("\n"),
+      namedTs: namedConsts(s, nodes).join("\n"),
+    };
+  });
+}
+
+/** the parts of a page screen (`ScreenSpec.parts`): one file each next to the screen, placed by a `{ part }` node of the layout */
+export function partsOf(s: ScreenSpec): ChunkModel[] {
+  if (s.kind !== "page") return [];
+  const all = sourcesOf(s);
+  return Object.entries(s.parts ?? {}).map(([name, nodes]) => {
+    const roots = rootsOf([nodes, constsRead(s, nodes)]);
+    for (const r of ["route", "nav", "url", "record", "view"]) if (roots.has(r)) throw new Error(`${s.name}.parts.${name}: a part reads ${r}; only the screen reads it`);
+    const sources = all.filter((x) => roots.has(x.as));
+    return {
+      area: name, nodes, doc: `The ${name} part of ${s.name}: its own file, so each file of the screen opens on one Block.`, name, dir: s.name, sources,
+      actions: JSON.stringify(nodes).includes('"call":"actions.'),
       constsTs: sources.map((x) => printConst(`${x.as.toUpperCase()}_FIELDS`, x.fields)).join("\n"),
       namedTs: namedConsts(s, nodes).join("\n"),
     };

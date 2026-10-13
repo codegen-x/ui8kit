@@ -83,67 +83,80 @@
   ],
   "layout": [
     {
-      "use": "Container",
+      "use": "Block",
       "props": {
-        "Class": "mx-auto w-full max-w-6xl px-4 py-8"
+        "Tag": "main",
+        "ID": "main-content"
+      },
+      "attrs": {
+        "tabindex": -1,
+        "data-testid": "main"
       },
       "children": [
         {
-          "use": "Stack",
+          "use": "Container",
           "props": {
-            "Gap": "6"
+            "Class": "mx-auto w-full max-w-6xl px-4 py-8"
           },
           "children": [
             {
-              "use": "Group",
+              "use": "Stack",
               "props": {
-                "Gap": "4",
-                "Align": "center",
-                "Justify": "between"
+                "Gap": "6"
               },
               "children": [
                 {
-                  "use": "Title",
+                  "use": "Group",
                   "props": {
-                    "As": 1,
-                    "Size": "2xl",
-                    "Weight": "bold"
+                    "Gap": "4",
+                    "Align": "center",
+                    "Justify": "between"
                   },
                   "children": [
                     {
-                      "text": {
-                        "$": "ui.app.title"
-                      }
+                      "use": "Title",
+                      "props": {
+                        "As": 1,
+                        "Size": "2xl",
+                        "Weight": "bold"
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "$": "ui.app.title"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "use": "Button",
+                      "props": {
+                        "Variant": "outline",
+                        "Size": "sm"
+                      },
+                      "attrs": {
+                        "data-testid": "theme-toggle"
+                      },
+                      "on": {
+                        "click": {
+                          "call": "actions.toggleTheme",
+                          "args": []
+                        }
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "$": "ui.theme.toggle"
+                          }
+                        }
+                      ]
                     }
                   ]
                 },
                 {
-                  "use": "Button",
-                  "props": {
-                    "Variant": "outline",
-                    "Size": "sm"
-                  },
-                  "attrs": {
-                    "data-testid": "theme-toggle"
-                  },
-                  "on": {
-                    "click": {
-                      "call": "actions.toggleTheme",
-                      "args": []
-                    }
-                  },
-                  "children": [
-                    {
-                      "text": {
-                        "$": "ui.theme.toggle"
-                      }
-                    }
-                  ]
+                  "outlet": true
                 }
               ]
-            },
-            {
-              "outlet": true
             }
           ]
         }

@@ -31,32 +31,34 @@ const wizard = fromCodex<WizardStep>(wizardEntries, WIZARD_FIELDS);
 
 export function WizardPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text size="sm" className="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="account">
-            {ui.blocks.themes.account.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.wizard}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.wizard}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="wizard-bar-label"
-          data-testid="variant"
-          data-block="wizard"
-          data-variant="bar"
-        >
-          <Stack gap="4" align="stretch">
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text size="sm" className="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="account">
+              {ui.blocks.themes.account.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.wizard}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.wizard}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="wizard-bar-label"
+            data-testid="variant"
+            data-block="wizard"
+            data-variant="bar"
+          >
             <Title as={2} size="base" weight="bold" id="wizard-bar-label" data-testid="variant-label">
               {ui.blocks.variants.wizard.bar}
             </Title>
@@ -73,15 +75,15 @@ export function WizardPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="wizard-list-label"
-          data-testid="variant"
-          data-block="wizard"
-          data-variant="list"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="wizard-list-label"
+            data-testid="variant"
+            data-block="wizard"
+            data-variant="list"
+          >
             <Title as={2} size="base" weight="bold" id="wizard-list-label" data-testid="variant-label">
               {ui.blocks.variants.wizard.list}
             </Title>
@@ -98,15 +100,15 @@ export function WizardPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="wizard-plain-label"
-          data-testid="variant"
-          data-block="wizard"
-          data-variant="plain"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="wizard-plain-label"
+            data-testid="variant"
+            data-block="wizard"
+            data-variant="plain"
+          >
             <Title as={2} size="base" weight="bold" id="wizard-plain-label" data-testid="variant-label">
               {ui.blocks.variants.wizard.plain}
             </Title>
@@ -123,15 +125,15 @@ export function WizardPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="wizard-second-label"
-          data-testid="variant"
-          data-block="wizard"
-          data-variant="second"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="wizard-second-label"
+            data-testid="variant"
+            data-block="wizard"
+            data-variant="second"
+          >
             <Title as={2} size="base" weight="bold" id="wizard-second-label" data-testid="variant-label">
               {ui.blocks.variants.wizard.second}
             </Title>
@@ -148,8 +150,8 @@ export function WizardPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

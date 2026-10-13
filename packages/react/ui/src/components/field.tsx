@@ -5,7 +5,7 @@
  * control.
  */
 import { type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
+import { Box } from "../primitives/box/box";
 import { Label } from "../primitives/label/label";
 import { Text } from "../primitives/text/text";
 import { cn } from "../utils";
@@ -21,7 +21,7 @@ export type FieldProps = {
 
 export function Field({ label, htmlFor, hint, error, className, children }: FieldProps) {
   return (
-    <Block className={cn("flex min-w-0 flex-col gap-2", className)}>
+    <Box className={cn("flex min-w-0 flex-col gap-2", className)}>
       <Label className="text-xs font-bold text-foreground" htmlFor={htmlFor}>
         {label}
       </Label>
@@ -35,6 +35,6 @@ export function Field({ label, htmlFor, hint, error, className, children }: Fiel
           {hint}
         </Text>
       ) : null}
-    </Block>
+    </Box>
   );
 }

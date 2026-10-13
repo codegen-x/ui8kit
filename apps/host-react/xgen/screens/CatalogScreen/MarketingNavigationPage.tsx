@@ -35,26 +35,33 @@ const NAVBAR_ACTIONS = { cta: ui.site.header.cta, href: "#/", login: ui.site.hea
 
 export function MarketingNavigationPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.catalog.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text size="sm" className="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-            {ui.catalog.sections.marketing.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="category-title">
-            {ui.catalog.categories.marketingNavigation}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {tpl(ui.catalog.count, 3, 14)}
-          </Text>
-        </Stack>
-        <Block tag="section" aria-labelledby="catalog-header-title" data-testid="catalog-block" data-block="header">
-          <Stack gap="6" align="stretch">
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.catalog.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text size="sm" className="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+              {ui.catalog.sections.marketing.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="category-title">
+              {ui.catalog.categories.marketingNavigation}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {tpl(ui.catalog.count, 3, 14)}
+            </Text>
+          </Stack>
+          <Stack
+            gap="6"
+            align="stretch"
+            role="group"
+            aria-labelledby="catalog-header-title"
+            data-testid="catalog-block"
+            data-block="header"
+          >
             <Stack gap="2" align="stretch">
               <Title as={2} size="2xl" weight="bold" id="catalog-header-title">
                 {ui.blocks.names.header}
@@ -63,110 +70,115 @@ export function MarketingNavigationPage() {
                 {ui.blocks.docs.header}
               </Text>
             </Stack>
-            <Block
-              tag="section"
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="header-inline-label"
               data-testid="variant"
               data-block="header"
               data-variant="inline"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="header-inline-label" data-testid="variant-label">
-                  {ui.blocks.variants.header.inline}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <SiteHeader
-                    labels={ui.site.header}
-                    current="home"
-                    cta={ui.site.header.cta}
-                    ctaHref="#/pricing"
-                    layout="inline"
-                    position="static"
-                    actions="none"
-                    onTheme={() => actions.toggleTheme()}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="header-inline-label" data-testid="variant-label">
+                {ui.blocks.variants.header.inline}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <SiteHeader
+                  labels={ui.site.header}
+                  current="home"
+                  cta={ui.site.header.cta}
+                  ctaHref="#/pricing"
+                  layout="inline"
+                  position="static"
+                  actions="none"
+                  onTheme={() => actions.toggleTheme()}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="header-stacked-label"
               data-testid="variant"
               data-block="header"
               data-variant="stacked"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="header-stacked-label" data-testid="variant-label">
-                  {ui.blocks.variants.header.stacked}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <SiteHeader
-                    labels={ui.site.header}
-                    current="home"
-                    cta={ui.site.header.cta}
-                    ctaHref="#/pricing"
-                    layout="stacked"
-                    position="static"
-                    actions="none"
-                    onTheme={() => actions.toggleTheme()}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="header-stacked-label" data-testid="variant-label">
+                {ui.blocks.variants.header.stacked}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <SiteHeader
+                  labels={ui.site.header}
+                  current="home"
+                  cta={ui.site.header.cta}
+                  ctaHref="#/pricing"
+                  layout="stacked"
+                  position="static"
+                  actions="none"
+                  onTheme={() => actions.toggleTheme()}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="header-sticky-label"
               data-testid="variant"
               data-block="header"
               data-variant="sticky"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="header-sticky-label" data-testid="variant-label">
-                  {ui.blocks.variants.header.sticky}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <SiteHeader
-                    labels={ui.site.header}
-                    current="home"
-                    cta={ui.site.header.cta}
-                    ctaHref="#/pricing"
-                    layout="inline"
-                    position="sticky"
-                    actions="none"
-                    onTheme={() => actions.toggleTheme()}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="header-sticky-label" data-testid="variant-label">
+                {ui.blocks.variants.header.sticky}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <SiteHeader
+                  labels={ui.site.header}
+                  current="home"
+                  cta={ui.site.header.cta}
+                  ctaHref="#/pricing"
+                  layout="inline"
+                  position="sticky"
+                  actions="none"
+                  onTheme={() => actions.toggleTheme()}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="header-withCta-label"
               data-testid="variant"
               data-block="header"
               data-variant="withCta"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="header-withCta-label" data-testid="variant-label">
-                  {ui.blocks.variants.header.withCta}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <SiteHeader
-                    labels={ui.site.header}
-                    current="home"
-                    cta={ui.site.header.cta}
-                    ctaHref="#/pricing"
-                    layout="inline"
-                    position="static"
-                    actions="cta"
-                    onTheme={() => actions.toggleTheme()}
-                  />
-                </Box>
-              </Stack>
-            </Block>
+              <Title as={3} size="base" weight="bold" id="header-withCta-label" data-testid="variant-label">
+                {ui.blocks.variants.header.withCta}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <SiteHeader
+                  labels={ui.site.header}
+                  current="home"
+                  cta={ui.site.header.cta}
+                  ctaHref="#/pricing"
+                  layout="inline"
+                  position="static"
+                  actions="cta"
+                  onTheme={() => actions.toggleTheme()}
+                />
+              </Box>
+            </Stack>
           </Stack>
-        </Block>
-        <Block tag="section" aria-labelledby="catalog-navbar-title" data-testid="catalog-block" data-block="navbar">
-          <Stack gap="6" align="stretch">
+          <Stack
+            gap="6"
+            align="stretch"
+            role="group"
+            aria-labelledby="catalog-navbar-title"
+            data-testid="catalog-block"
+            data-block="navbar"
+          >
             <Stack gap="2" align="stretch">
               <Title as={2} size="2xl" weight="bold" id="catalog-navbar-title">
                 {ui.blocks.names.navbar}
@@ -175,172 +187,177 @@ export function MarketingNavigationPage() {
                 {ui.blocks.docs.navbar}
               </Text>
             </Stack>
-            <Block
-              tag="section"
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="navbar-inline-label"
               data-testid="variant"
               data-block="navbar"
               data-variant="inline"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="navbar-inline-label" data-testid="variant-label">
-                  {ui.blocks.variants.navbar.inline}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <NavBar
-                    label={ui.vibe.nav.label}
-                    brand={ui.site.header.brand}
-                    links={navlinks}
-                    current="link-product"
-                    actions={{ ...NAVBAR_ACTIONS, mode: "cta" }}
-                    search={{ label: ui.vibe.nav.search, shortcut: ui.vibe.nav.shortcut }}
-                    layout="inline"
-                    over="none"
-                    tone="default"
-                    onTheme={() => actions.toggleTheme()}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="navbar-inline-label" data-testid="variant-label">
+                {ui.blocks.variants.navbar.inline}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <NavBar
+                  label={ui.vibe.nav.label}
+                  brand={ui.site.header.brand}
+                  links={navlinks}
+                  current="link-product"
+                  actions={{ ...NAVBAR_ACTIONS, mode: "cta" }}
+                  search={{ label: ui.vibe.nav.search, shortcut: ui.vibe.nav.shortcut }}
+                  layout="inline"
+                  over="none"
+                  tone="default"
+                  onTheme={() => actions.toggleTheme()}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="navbar-split-label"
               data-testid="variant"
               data-block="navbar"
               data-variant="split"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="navbar-split-label" data-testid="variant-label">
-                  {ui.blocks.variants.navbar.split}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <NavBar
-                    label={ui.vibe.nav.label}
-                    brand={ui.site.header.brand}
-                    links={navlinks}
-                    current="link-product"
-                    actions={{ ...NAVBAR_ACTIONS, mode: "cta" }}
-                    search={{ label: ui.vibe.nav.search, shortcut: ui.vibe.nav.shortcut }}
-                    layout="split"
-                    over="none"
-                    tone="default"
-                    onTheme={() => actions.toggleTheme()}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="navbar-split-label" data-testid="variant-label">
+                {ui.blocks.variants.navbar.split}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <NavBar
+                  label={ui.vibe.nav.label}
+                  brand={ui.site.header.brand}
+                  links={navlinks}
+                  current="link-product"
+                  actions={{ ...NAVBAR_ACTIONS, mode: "cta" }}
+                  search={{ label: ui.vibe.nav.search, shortcut: ui.vibe.nav.shortcut }}
+                  layout="split"
+                  over="none"
+                  tone="default"
+                  onTheme={() => actions.toggleTheme()}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="navbar-search-label"
               data-testid="variant"
               data-block="navbar"
               data-variant="search"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="navbar-search-label" data-testid="variant-label">
-                  {ui.blocks.variants.navbar.search}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <NavBar
-                    label={ui.vibe.nav.label}
-                    brand={ui.site.header.brand}
-                    links={navlinks}
-                    current="link-product"
-                    actions={{ ...NAVBAR_ACTIONS, mode: "cta" }}
-                    search={{ label: ui.vibe.nav.search, shortcut: ui.vibe.nav.shortcut }}
-                    layout="search"
-                    over="none"
-                    tone="default"
-                    onTheme={() => actions.toggleTheme()}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="navbar-search-label" data-testid="variant-label">
+                {ui.blocks.variants.navbar.search}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <NavBar
+                  label={ui.vibe.nav.label}
+                  brand={ui.site.header.brand}
+                  links={navlinks}
+                  current="link-product"
+                  actions={{ ...NAVBAR_ACTIONS, mode: "cta" }}
+                  search={{ label: ui.vibe.nav.search, shortcut: ui.vibe.nav.shortcut }}
+                  layout="search"
+                  over="none"
+                  tone="default"
+                  onTheme={() => actions.toggleTheme()}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="navbar-media-label"
               data-testid="variant"
               data-block="navbar"
               data-variant="media"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="navbar-media-label" data-testid="variant-label">
-                  {ui.blocks.variants.navbar.media}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <NavBar
-                    label={ui.vibe.nav.label}
-                    brand={ui.site.header.brand}
-                    links={navlinks}
-                    current="link-product"
-                    actions={{ ...NAVBAR_ACTIONS, mode: "cta" }}
-                    search={{ label: ui.vibe.nav.search, shortcut: ui.vibe.nav.shortcut }}
-                    layout="inline"
-                    over="media"
-                    tone="default"
-                    onTheme={() => actions.toggleTheme()}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="navbar-media-label" data-testid="variant-label">
+                {ui.blocks.variants.navbar.media}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <NavBar
+                  label={ui.vibe.nav.label}
+                  brand={ui.site.header.brand}
+                  links={navlinks}
+                  current="link-product"
+                  actions={{ ...NAVBAR_ACTIONS, mode: "cta" }}
+                  search={{ label: ui.vibe.nav.search, shortcut: ui.vibe.nav.shortcut }}
+                  layout="inline"
+                  over="media"
+                  tone="default"
+                  onTheme={() => actions.toggleTheme()}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="navbar-plain-label"
               data-testid="variant"
               data-block="navbar"
               data-variant="plain"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="navbar-plain-label" data-testid="variant-label">
-                  {ui.blocks.variants.navbar.plain}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <NavBar
-                    label={ui.vibe.nav.label}
-                    brand={ui.site.header.brand}
-                    links={navlinks}
-                    current="link-product"
-                    actions={{ ...NAVBAR_ACTIONS, mode: "none" }}
-                    search={{ label: ui.vibe.nav.search, shortcut: ui.vibe.nav.shortcut }}
-                    layout="inline"
-                    over="none"
-                    tone="default"
-                    onTheme={() => actions.toggleTheme()}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="navbar-plain-label" data-testid="variant-label">
+                {ui.blocks.variants.navbar.plain}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <NavBar
+                  label={ui.vibe.nav.label}
+                  brand={ui.site.header.brand}
+                  links={navlinks}
+                  current="link-product"
+                  actions={{ ...NAVBAR_ACTIONS, mode: "none" }}
+                  search={{ label: ui.vibe.nav.search, shortcut: ui.vibe.nav.shortcut }}
+                  layout="inline"
+                  over="none"
+                  tone="default"
+                  onTheme={() => actions.toggleTheme()}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="navbar-inverse-label"
               data-testid="variant"
               data-block="navbar"
               data-variant="inverse"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="navbar-inverse-label" data-testid="variant-label">
-                  {ui.blocks.variants.navbar.inverse}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <NavBar
-                    label={ui.vibe.nav.label}
-                    brand={ui.site.header.brand}
-                    links={navlinks}
-                    current="link-product"
-                    actions={{ ...NAVBAR_ACTIONS, mode: "cta" }}
-                    search={{ label: ui.vibe.nav.search, shortcut: ui.vibe.nav.shortcut }}
-                    layout="inline"
-                    over="none"
-                    tone="inverse"
-                    onTheme={() => actions.toggleTheme()}
-                  />
-                </Box>
-              </Stack>
-            </Block>
+              <Title as={3} size="base" weight="bold" id="navbar-inverse-label" data-testid="variant-label">
+                {ui.blocks.variants.navbar.inverse}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <NavBar
+                  label={ui.vibe.nav.label}
+                  brand={ui.site.header.brand}
+                  links={navlinks}
+                  current="link-product"
+                  actions={{ ...NAVBAR_ACTIONS, mode: "cta" }}
+                  search={{ label: ui.vibe.nav.search, shortcut: ui.vibe.nav.shortcut }}
+                  layout="inline"
+                  over="none"
+                  tone="inverse"
+                  onTheme={() => actions.toggleTheme()}
+                />
+              </Box>
+            </Stack>
           </Stack>
-        </Block>
-        <Block tag="section" aria-labelledby="catalog-megamenu-title" data-testid="catalog-block" data-block="megamenu">
-          <Stack gap="6" align="stretch">
+          <Stack
+            gap="6"
+            align="stretch"
+            role="group"
+            aria-labelledby="catalog-megamenu-title"
+            data-testid="catalog-block"
+            data-block="megamenu"
+          >
             <Stack gap="2" align="stretch">
               <Title as={2} size="2xl" weight="bold" id="catalog-megamenu-title">
                 {ui.blocks.names.megamenu}
@@ -349,117 +366,117 @@ export function MarketingNavigationPage() {
                 {ui.blocks.docs.megamenu}
               </Text>
             </Stack>
-            <Block
-              tag="section"
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="megamenu-open-label"
               data-testid="variant"
               data-block="megamenu"
               data-variant="open"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="megamenu-open-label" data-testid="variant-label">
-                  {ui.blocks.variants.megamenu.open}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <MegaMenu
-                    label={ui.vibe.nav.label}
-                    brand={ui.site.header.brand}
-                    trigger={ui.vibe.mega.trigger}
-                    links={navlinks}
-                    groups={megagroups}
-                    promoTitle={ui.vibe.mega.promoTitle}
-                    promoText={ui.vibe.mega.promoText}
-                    panel="open"
-                    cols="3"
-                    promo="none"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="megamenu-open-label" data-testid="variant-label">
+                {ui.blocks.variants.megamenu.open}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <MegaMenu
+                  label={ui.vibe.nav.label}
+                  brand={ui.site.header.brand}
+                  trigger={ui.vibe.mega.trigger}
+                  links={navlinks}
+                  groups={megagroups}
+                  promoTitle={ui.vibe.mega.promoTitle}
+                  promoText={ui.vibe.mega.promoText}
+                  panel="open"
+                  cols="3"
+                  promo="none"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="megamenu-closed-label"
               data-testid="variant"
               data-block="megamenu"
               data-variant="closed"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="megamenu-closed-label" data-testid="variant-label">
-                  {ui.blocks.variants.megamenu.closed}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <MegaMenu
-                    label={ui.vibe.nav.label}
-                    brand={ui.site.header.brand}
-                    trigger={ui.vibe.mega.trigger}
-                    links={navlinks}
-                    groups={megagroups}
-                    promoTitle={ui.vibe.mega.promoTitle}
-                    promoText={ui.vibe.mega.promoText}
-                    panel="closed"
-                    cols="3"
-                    promo="none"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="megamenu-closed-label" data-testid="variant-label">
+                {ui.blocks.variants.megamenu.closed}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <MegaMenu
+                  label={ui.vibe.nav.label}
+                  brand={ui.site.header.brand}
+                  trigger={ui.vibe.mega.trigger}
+                  links={navlinks}
+                  groups={megagroups}
+                  promoTitle={ui.vibe.mega.promoTitle}
+                  promoText={ui.vibe.mega.promoText}
+                  panel="closed"
+                  cols="3"
+                  promo="none"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="megamenu-twoCols-label"
               data-testid="variant"
               data-block="megamenu"
               data-variant="twoCols"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="megamenu-twoCols-label" data-testid="variant-label">
-                  {ui.blocks.variants.megamenu.twoCols}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <MegaMenu
-                    label={ui.vibe.nav.label}
-                    brand={ui.site.header.brand}
-                    trigger={ui.vibe.mega.trigger}
-                    links={navlinks}
-                    groups={megagroups}
-                    promoTitle={ui.vibe.mega.promoTitle}
-                    promoText={ui.vibe.mega.promoText}
-                    panel="open"
-                    cols="2"
-                    promo="none"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="megamenu-twoCols-label" data-testid="variant-label">
+                {ui.blocks.variants.megamenu.twoCols}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <MegaMenu
+                  label={ui.vibe.nav.label}
+                  brand={ui.site.header.brand}
+                  trigger={ui.vibe.mega.trigger}
+                  links={navlinks}
+                  groups={megagroups}
+                  promoTitle={ui.vibe.mega.promoTitle}
+                  promoText={ui.vibe.mega.promoText}
+                  panel="open"
+                  cols="2"
+                  promo="none"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="megamenu-promo-label"
               data-testid="variant"
               data-block="megamenu"
               data-variant="promo"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="megamenu-promo-label" data-testid="variant-label">
-                  {ui.blocks.variants.megamenu.promo}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <MegaMenu
-                    label={ui.vibe.nav.label}
-                    brand={ui.site.header.brand}
-                    trigger={ui.vibe.mega.trigger}
-                    links={navlinks}
-                    groups={megagroups}
-                    promoTitle={ui.vibe.mega.promoTitle}
-                    promoText={ui.vibe.mega.promoText}
-                    panel="open"
-                    cols="3"
-                    promo="card"
-                  />
-                </Box>
-              </Stack>
-            </Block>
+              <Title as={3} size="base" weight="bold" id="megamenu-promo-label" data-testid="variant-label">
+                {ui.blocks.variants.megamenu.promo}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <MegaMenu
+                  label={ui.vibe.nav.label}
+                  brand={ui.site.header.brand}
+                  trigger={ui.vibe.mega.trigger}
+                  links={navlinks}
+                  groups={megagroups}
+                  promoTitle={ui.vibe.mega.promoTitle}
+                  promoText={ui.vibe.mega.promoText}
+                  panel="open"
+                  cols="3"
+                  promo="card"
+                />
+              </Box>
+            </Stack>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

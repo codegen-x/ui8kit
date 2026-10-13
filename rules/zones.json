@@ -101,7 +101,16 @@
         "src/components"
       ],
       "blockRoot": [
-        "src/blocks"
+        "src/blocks",
+        "src/components/faq-help.tsx",
+        "src/components/footer-card.tsx",
+        "src/components/hero-head.tsx",
+        "src/components/region.tsx",
+        "src/components/section-frame.tsx",
+        "src/components/shell-footer.tsx",
+        "src/components/shell-sidebar.tsx",
+        "src/components/shell-topbar.tsx",
+        "src/components/sidebar-panel.tsx"
       ]
     },
     {
@@ -119,7 +128,16 @@
         "src/components"
       ],
       "blockRoot": [
-        "src/blocks"
+        "src/blocks",
+        "src/components/faq-help.svelte",
+        "src/components/footer-card.svelte",
+        "src/components/hero-head.svelte",
+        "src/components/region.svelte",
+        "src/components/section-frame.svelte",
+        "src/components/shell-footer.svelte",
+        "src/components/shell-sidebar.svelte",
+        "src/components/shell-topbar.svelte",
+        "src/components/sidebar-panel.svelte"
       ]
     },
     {
@@ -153,7 +171,16 @@
         "src/components"
       ],
       "blockRoot": [
-        "src/blocks"
+        "src/blocks",
+        "src/components/faq-help.vue",
+        "src/components/footer-card.vue",
+        "src/components/hero-head.vue",
+        "src/components/region.vue",
+        "src/components/section-frame.vue",
+        "src/components/shell-footer.vue",
+        "src/components/shell-sidebar.vue",
+        "src/components/shell-topbar.vue",
+        "src/components/sidebar-panel.vue"
       ]
     }
   ]

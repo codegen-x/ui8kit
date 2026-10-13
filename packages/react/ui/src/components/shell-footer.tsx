@@ -9,6 +9,7 @@ import { Block } from "../primitives/block/block";
 import { Link } from "../primitives/link/link";
 import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
+import { Nav } from "../primitives/nav/nav";
 import { Text } from "../primitives/text/text";
 import { cn } from "../utils";
 import type { ShellNav } from "../blocks/dashboard-shell.types";
@@ -32,7 +33,7 @@ export function ShellFooter({ nav, place = "full" }: ShellFooterProps) {
       <Text size="xs" className="text-muted-foreground">
         {nav.copyright}
       </Text>
-      <Block tag="nav" aria-label={nav.footerLabel}>
+      <Nav aria-label={nav.footerLabel}>
         <List className="m-0 flex list-none items-center gap-4 p-0">
           {(nav.footer ?? []).map((f) => (
             <ListItem key={f.id}>
@@ -42,7 +43,7 @@ export function ShellFooter({ nav, place = "full" }: ShellFooterProps) {
             </ListItem>
           ))}
         </List>
-      </Block>
+      </Nav>
     </Block>
   );
 }

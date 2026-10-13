@@ -21,6 +21,7 @@ export type ProfileFormProps = {
 </script>
 
 <script setup lang="ts">
+import Block from "../primitives/block/block.vue";
 import Button from "../primitives/button/button.vue";
 import Container from "../primitives/container/container.vue";
 import Form from "../primitives/form/form.vue";
@@ -50,59 +51,65 @@ const {
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-8" data-slot="container">
-    <Panel
-      :title="title"
-      :description="text"
-      :id="id"
-      :class="cn((((tone as string) === 'muted') ? 'bg-muted' : ''))"
-    >
-      <Form class="gap-6" data-testid="profile-form">
-        <Grid :cols="(((layout as string) === 'split') ? '1-2' : '1')" class="items-start gap-8">
-          <Stack gap="4" align="stretch">
-            <Group v-if="((avatar as string) === 'show')" gap="4" align="center" data-testid="avatar">
-              <MediaFrame :alt="labels.picture" ratio="1/1" class="size-16 shrink-0 rounded-full" />
-              <Button variant="outline" size="sm" type="button">
-                {{ labels.change }}
-              </Button>
-            </Group>
-            <Field :label="labels.name" :htmlFor="tpl('{0}-name', id)">
-              <Input type="text" name="name" autocomplete="name" :id="tpl('{0}-name', id)" data-testid="field" />
-            </Field>
-            <Field :label="labels.email" :htmlFor="tpl('{0}-email', id)">
-              <Input type="email" name="email" autocomplete="email" :id="tpl('{0}-email', id)" data-testid="field" />
-            </Field>
-            <Field :label="labels.bio" :htmlFor="tpl('{0}-bio', id)">
-              <Textarea :rows="4" name="bio" :id="tpl('{0}-bio', id)" data-testid="field" />
-            </Field>
-          </Stack>
-          <Stack v-if="((prefs as string) === 'show')" gap="4" align="stretch" data-testid="prefs">
-            <Title :as="3" size="base" weight="bold">
-              {{ labels.prefs }}
-            </Title>
-            <Group gap="4" align="center" justify="between">
-              <Label :for="tpl('{0}-updates', id)" class="text-sm">
-                {{ labels.updates }}
-              </Label>
-              <Switch name="updates" :id="tpl('{0}-updates', id)" />
-            </Group>
-            <Group gap="4" align="center" justify="between">
-              <Label :for="tpl('{0}-alerts', id)" class="text-sm">
-                {{ labels.alerts }}
-              </Label>
-              <Switch name="alerts" :id="tpl('{0}-alerts', id)" />
-            </Group>
-          </Stack>
-        </Grid>
-        <Group gap="2" class="flex-wrap">
-          <Button variant="default" size="default" type="button" data-testid="submit">
-            {{ labels.save }}
-          </Button>
-          <Button variant="outline" size="default" type="button">
-            {{ labels.cancel }}
-          </Button>
-        </Group>
-      </Form>
-    </Panel>
-  </Container>
+  <Block
+    tag="section"
+    :aria-labelledby="((title && id) ? tpl('{0}-t', id) : undefined)"
+    data-testid="panel-section"
+  >
+    <Container class="mx-auto w-full max-w-6xl px-4 py-8" data-slot="container">
+      <Panel
+        :title="title"
+        :description="text"
+        :id="id"
+        :class="cn((((tone as string) === 'muted') ? 'bg-muted' : ''))"
+      >
+        <Form class="gap-6" data-testid="profile-form">
+          <Grid :cols="(((layout as string) === 'split') ? '1-2' : '1')" class="items-start gap-8">
+            <Stack gap="4" align="stretch">
+              <Group v-if="((avatar as string) === 'show')" gap="4" align="center" data-testid="avatar">
+                <MediaFrame :alt="labels.picture" ratio="1/1" class="size-16 shrink-0 rounded-full" />
+                <Button variant="outline" size="sm" type="button">
+                  {{ labels.change }}
+                </Button>
+              </Group>
+              <Field :label="labels.name" :htmlFor="tpl('{0}-name', id)">
+                <Input type="text" name="name" autocomplete="name" :id="tpl('{0}-name', id)" data-testid="field" />
+              </Field>
+              <Field :label="labels.email" :htmlFor="tpl('{0}-email', id)">
+                <Input type="email" name="email" autocomplete="email" :id="tpl('{0}-email', id)" data-testid="field" />
+              </Field>
+              <Field :label="labels.bio" :htmlFor="tpl('{0}-bio', id)">
+                <Textarea :rows="4" name="bio" :id="tpl('{0}-bio', id)" data-testid="field" />
+              </Field>
+            </Stack>
+            <Stack v-if="((prefs as string) === 'show')" gap="4" align="stretch" data-testid="prefs">
+              <Title :as="3" size="base" weight="bold">
+                {{ labels.prefs }}
+              </Title>
+              <Group gap="4" align="center" justify="between">
+                <Label :for="tpl('{0}-updates', id)" class="text-sm">
+                  {{ labels.updates }}
+                </Label>
+                <Switch name="updates" :id="tpl('{0}-updates', id)" />
+              </Group>
+              <Group gap="4" align="center" justify="between">
+                <Label :for="tpl('{0}-alerts', id)" class="text-sm">
+                  {{ labels.alerts }}
+                </Label>
+                <Switch name="alerts" :id="tpl('{0}-alerts', id)" />
+              </Group>
+            </Stack>
+          </Grid>
+          <Group gap="2" class="flex-wrap">
+            <Button variant="default" size="default" type="button" data-testid="submit">
+              {{ labels.save }}
+            </Button>
+            <Button variant="outline" size="default" type="button">
+              {{ labels.cancel }}
+            </Button>
+          </Group>
+        </Form>
+      </Panel>
+    </Container>
+  </Block>
 </template>

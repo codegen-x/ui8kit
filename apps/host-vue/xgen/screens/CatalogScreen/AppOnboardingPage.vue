@@ -30,31 +30,33 @@ const checklist = fromCodex<Task>(checklistEntries, CHECKLIST_FIELDS);
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.catalog.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-          {{ ui.catalog.sections.app.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="category-title">
-          {{ ui.catalog.categories.appOnboarding }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ tpl(ui.catalog.count, 2, 11) }}
-        </Text>
-      </Stack>
-      <Block
-        tag="section"
-        aria-labelledby="catalog-checklist-title"
-        data-testid="catalog-block"
-        data-block="checklist"
-      >
-        <Stack gap="6" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.catalog.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+            {{ ui.catalog.sections.app.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="category-title">
+            {{ ui.catalog.categories.appOnboarding }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ tpl(ui.catalog.count, 2, 11) }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="6"
+          align="stretch"
+          role="group"
+          aria-labelledby="catalog-checklist-title"
+          data-testid="catalog-block"
+          data-block="checklist"
+        >
           <Stack gap="2" align="stretch">
             <Title :as="2" size="2xl" weight="bold" id="catalog-checklist-title">
               {{ ui.blocks.names.checklist }}
@@ -63,192 +65,197 @@ const checklist = fromCodex<Task>(checklistEntries, CHECKLIST_FIELDS);
               {{ ui.blocks.docs.checklist }}
             </Text>
           </Stack>
-          <Block
-            tag="section"
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="checklist-card-label"
             data-testid="variant"
             data-block="checklist"
             data-variant="card"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="checklist-card-label" data-testid="variant-label">
-                {{ ui.blocks.variants.checklist.card }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <Checklist
-                  id="checklist-card"
-                  :title="ui.onboarding.checklist.title"
-                  :tasks="checklist"
-                  :progressLabel="ui.onboarding.checklist.progress"
-                  layout="card"
-                  progress="bar"
-                  marker="check"
-                  detail="always"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="checklist-card-label" data-testid="variant-label">
+              {{ ui.blocks.variants.checklist.card }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <Checklist
+                id="checklist-card"
+                :title="ui.onboarding.checklist.title"
+                :tasks="checklist"
+                :progressLabel="ui.onboarding.checklist.progress"
+                layout="card"
+                progress="bar"
+                marker="check"
+                detail="always"
+                tone="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="checklist-expand-label"
             data-testid="variant"
             data-block="checklist"
             data-variant="expand"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="checklist-expand-label" data-testid="variant-label">
-                {{ ui.blocks.variants.checklist.expand }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <Checklist
-                  id="checklist-expand"
-                  :title="ui.onboarding.checklist.title"
-                  :tasks="checklist"
-                  :progressLabel="ui.onboarding.checklist.progress"
-                  layout="card"
-                  progress="bar"
-                  marker="check"
-                  detail="expand"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="checklist-expand-label" data-testid="variant-label">
+              {{ ui.blocks.variants.checklist.expand }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <Checklist
+                id="checklist-expand"
+                :title="ui.onboarding.checklist.title"
+                :tasks="checklist"
+                :progressLabel="ui.onboarding.checklist.progress"
+                layout="card"
+                progress="bar"
+                marker="check"
+                detail="expand"
+                tone="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="checklist-plain-label"
             data-testid="variant"
             data-block="checklist"
             data-variant="plain"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="checklist-plain-label" data-testid="variant-label">
-                {{ ui.blocks.variants.checklist.plain }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <Checklist
-                  id="checklist-plain"
-                  :title="ui.onboarding.checklist.title"
-                  :tasks="checklist"
-                  :progressLabel="ui.onboarding.checklist.progress"
-                  layout="plain"
-                  progress="bar"
-                  marker="check"
-                  detail="always"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="checklist-plain-label" data-testid="variant-label">
+              {{ ui.blocks.variants.checklist.plain }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <Checklist
+                id="checklist-plain"
+                :title="ui.onboarding.checklist.title"
+                :tasks="checklist"
+                :progressLabel="ui.onboarding.checklist.progress"
+                layout="plain"
+                progress="bar"
+                marker="check"
+                detail="always"
+                tone="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="checklist-text-label"
             data-testid="variant"
             data-block="checklist"
             data-variant="text"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="checklist-text-label" data-testid="variant-label">
-                {{ ui.blocks.variants.checklist.text }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <Checklist
-                  id="checklist-text"
-                  :title="ui.onboarding.checklist.title"
-                  :tasks="checklist"
-                  :progressLabel="ui.onboarding.checklist.progress"
-                  layout="card"
-                  progress="text"
-                  marker="check"
-                  detail="always"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="checklist-text-label" data-testid="variant-label">
+              {{ ui.blocks.variants.checklist.text }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <Checklist
+                id="checklist-text"
+                :title="ui.onboarding.checklist.title"
+                :tasks="checklist"
+                :progressLabel="ui.onboarding.checklist.progress"
+                layout="card"
+                progress="text"
+                marker="check"
+                detail="always"
+                tone="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="checklist-none-label"
             data-testid="variant"
             data-block="checklist"
             data-variant="none"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="checklist-none-label" data-testid="variant-label">
-                {{ ui.blocks.variants.checklist.none }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <Checklist
-                  id="checklist-none"
-                  :title="ui.onboarding.checklist.title"
-                  :tasks="checklist"
-                  :progressLabel="ui.onboarding.checklist.progress"
-                  layout="plain"
-                  progress="none"
-                  marker="check"
-                  detail="always"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="checklist-none-label" data-testid="variant-label">
+              {{ ui.blocks.variants.checklist.none }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <Checklist
+                id="checklist-none"
+                :title="ui.onboarding.checklist.title"
+                :tasks="checklist"
+                :progressLabel="ui.onboarding.checklist.progress"
+                layout="plain"
+                progress="none"
+                marker="check"
+                detail="always"
+                tone="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="checklist-numbered-label"
             data-testid="variant"
             data-block="checklist"
             data-variant="numbered"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="checklist-numbered-label" data-testid="variant-label">
-                {{ ui.blocks.variants.checklist.numbered }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <Checklist
-                  id="checklist-numbered"
-                  :title="ui.onboarding.checklist.title"
-                  :tasks="checklist"
-                  :progressLabel="ui.onboarding.checklist.progress"
-                  layout="card"
-                  progress="bar"
-                  marker="number"
-                  detail="always"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="checklist-numbered-label" data-testid="variant-label">
+              {{ ui.blocks.variants.checklist.numbered }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <Checklist
+                id="checklist-numbered"
+                :title="ui.onboarding.checklist.title"
+                :tasks="checklist"
+                :progressLabel="ui.onboarding.checklist.progress"
+                layout="card"
+                progress="bar"
+                marker="number"
+                detail="always"
+                tone="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="checklist-muted-label"
             data-testid="variant"
             data-block="checklist"
             data-variant="muted"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="checklist-muted-label" data-testid="variant-label">
-                {{ ui.blocks.variants.checklist.muted }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <Checklist
-                  id="checklist-muted"
-                  :title="ui.onboarding.checklist.title"
-                  :tasks="checklist"
-                  :progressLabel="ui.onboarding.checklist.progress"
-                  layout="card"
-                  progress="text"
-                  marker="number"
-                  detail="always"
-                  tone="muted"
-                />
-              </Box>
-            </Stack>
-          </Block>
+            <Title :as="3" size="base" weight="bold" id="checklist-muted-label" data-testid="variant-label">
+              {{ ui.blocks.variants.checklist.muted }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <Checklist
+                id="checklist-muted"
+                :title="ui.onboarding.checklist.title"
+                :tasks="checklist"
+                :progressLabel="ui.onboarding.checklist.progress"
+                layout="card"
+                progress="text"
+                marker="number"
+                detail="always"
+                tone="muted"
+              />
+            </Box>
+          </Stack>
         </Stack>
-      </Block>
-      <Block tag="section" aria-labelledby="catalog-stepper-title" data-testid="catalog-block" data-block="stepper">
-        <Stack gap="6" align="stretch">
+        <Stack
+          gap="6"
+          align="stretch"
+          role="group"
+          aria-labelledby="catalog-stepper-title"
+          data-testid="catalog-block"
+          data-block="stepper"
+        >
           <Stack gap="2" align="stretch">
             <Title :as="2" size="2xl" weight="bold" id="catalog-stepper-title">
               {{ ui.blocks.names.stepper }}
@@ -257,116 +264,116 @@ const checklist = fromCodex<Task>(checklistEntries, CHECKLIST_FIELDS);
               {{ ui.blocks.docs.stepper }}
             </Text>
           </Stack>
-          <Block
-            tag="section"
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="stepper-horizontal-label"
             data-testid="variant"
             data-block="stepper"
             data-variant="horizontal"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="stepper-horizontal-label" data-testid="variant-label">
-                {{ ui.blocks.variants.stepper.horizontal }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <Stepper
-                  id="stepper-horizontal"
-                  :title="ui.onboarding.stepper.title"
-                  :steps="steps"
-                  :current="2"
-                  :stepLabel="ui.onboarding.stepper.stepLabel"
-                  :back="ui.onboarding.stepper.back"
-                  :next="ui.onboarding.stepper.next"
-                  layout="horizontal"
-                  marker="number"
-                  summary="show"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="stepper-horizontal-label" data-testid="variant-label">
+              {{ ui.blocks.variants.stepper.horizontal }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <Stepper
+                id="stepper-horizontal"
+                :title="ui.onboarding.stepper.title"
+                :steps="steps"
+                :current="2"
+                :stepLabel="ui.onboarding.stepper.stepLabel"
+                :back="ui.onboarding.stepper.back"
+                :next="ui.onboarding.stepper.next"
+                layout="horizontal"
+                marker="number"
+                summary="show"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="stepper-vertical-label"
             data-testid="variant"
             data-block="stepper"
             data-variant="vertical"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="stepper-vertical-label" data-testid="variant-label">
-                {{ ui.blocks.variants.stepper.vertical }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <Stepper
-                  id="stepper-vertical"
-                  :title="ui.onboarding.stepper.title"
-                  :steps="steps"
-                  :current="2"
-                  :stepLabel="ui.onboarding.stepper.stepLabel"
-                  :back="ui.onboarding.stepper.back"
-                  :next="ui.onboarding.stepper.next"
-                  layout="vertical"
-                  marker="number"
-                  summary="show"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="stepper-vertical-label" data-testid="variant-label">
+              {{ ui.blocks.variants.stepper.vertical }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <Stepper
+                id="stepper-vertical"
+                :title="ui.onboarding.stepper.title"
+                :steps="steps"
+                :current="2"
+                :stepLabel="ui.onboarding.stepper.stepLabel"
+                :back="ui.onboarding.stepper.back"
+                :next="ui.onboarding.stepper.next"
+                layout="vertical"
+                marker="number"
+                summary="show"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="stepper-icons-label"
             data-testid="variant"
             data-block="stepper"
             data-variant="icons"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="stepper-icons-label" data-testid="variant-label">
-                {{ ui.blocks.variants.stepper.icons }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <Stepper
-                  id="stepper-icons"
-                  :title="ui.onboarding.stepper.title"
-                  :steps="steps"
-                  :current="2"
-                  :stepLabel="ui.onboarding.stepper.stepLabel"
-                  :back="ui.onboarding.stepper.back"
-                  :next="ui.onboarding.stepper.next"
-                  layout="horizontal"
-                  marker="icon"
-                  summary="show"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="stepper-icons-label" data-testid="variant-label">
+              {{ ui.blocks.variants.stepper.icons }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <Stepper
+                id="stepper-icons"
+                :title="ui.onboarding.stepper.title"
+                :steps="steps"
+                :current="2"
+                :stepLabel="ui.onboarding.stepper.stepLabel"
+                :back="ui.onboarding.stepper.back"
+                :next="ui.onboarding.stepper.next"
+                layout="horizontal"
+                marker="icon"
+                summary="show"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="stepper-bare-label"
             data-testid="variant"
             data-block="stepper"
             data-variant="bare"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="stepper-bare-label" data-testid="variant-label">
-                {{ ui.blocks.variants.stepper.bare }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <Stepper
-                  id="stepper-bare"
-                  :title="ui.onboarding.stepper.title"
-                  :steps="steps"
-                  :current="2"
-                  :stepLabel="ui.onboarding.stepper.stepLabel"
-                  :back="ui.onboarding.stepper.back"
-                  :next="ui.onboarding.stepper.next"
-                  layout="vertical"
-                  marker="icon"
-                  summary="hide"
-                />
-              </Box>
-            </Stack>
-          </Block>
+            <Title :as="3" size="base" weight="bold" id="stepper-bare-label" data-testid="variant-label">
+              {{ ui.blocks.variants.stepper.bare }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <Stepper
+                id="stepper-bare"
+                :title="ui.onboarding.stepper.title"
+                :steps="steps"
+                :current="2"
+                :stepLabel="ui.onboarding.stepper.stepLabel"
+                :back="ui.onboarding.stepper.back"
+                :next="ui.onboarding.stepper.next"
+                layout="vertical"
+                marker="icon"
+                summary="hide"
+              />
+            </Box>
+          </Stack>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

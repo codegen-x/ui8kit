@@ -20,9 +20,9 @@ export type PricingCardProps = {
 <script setup lang="ts">
 import { computed } from "vue";
 import Badge from "../primitives/badge/badge.vue";
+import Block from "../primitives/block/block.vue";
 import Box from "../primitives/box/box.vue";
 import Button from "../primitives/button/button.vue";
-import Card from "../primitives/card/card.vue";
 import CardContent from "../primitives/card/card-content.vue";
 import CardDescription from "../primitives/card/card-description.vue";
 import CardFooter from "../primitives/card/card-footer.vue";
@@ -51,9 +51,13 @@ const amount = computed(() => yearlyOn.value ? plan.yearly : plan.price);
 </script>
 
 <template>
-  <Card
-    variant="default"
-    class="flex h-full flex-col"
+  <Block
+    tag="article"
+    :class="cn(
+      'flex flex-col gap-8 bg-card p-6 text-card-foreground inset-ring inset-ring-border rounded',
+      'flex h-full flex-col'
+    )"
+    data-slot="card"
     :data-highlighted="(stand ? 'true' : 'false')"
     :data-current="(current ? 'true' : 'false')"
   >
@@ -107,5 +111,5 @@ const amount = computed(() => yearlyOn.value ? plan.yearly : plan.price);
       </Button>
       <slot name="footer" :plan="plan" />
     </CardFooter>
-  </Card>
+  </Block>
 </template>

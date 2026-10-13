@@ -30,26 +30,33 @@
   const milestones = fromCodex<Milestone>(milestonesEntries, MILESTONES_FIELDS);
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.catalog.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-        {ui.catalog.sections.content.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="category-title">
-        {ui.catalog.categories.contentTimeline}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {tpl(ui.catalog.count, 1, 4)}
-      </Text>
-    </Stack>
-    <Block tag="section" aria-labelledby="catalog-timeline-title" data-testid="catalog-block" data-block="timeline">
-      <Stack gap="6" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.catalog.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+          {ui.catalog.sections.content.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="category-title">
+          {ui.catalog.categories.contentTimeline}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {tpl(ui.catalog.count, 1, 4)}
+        </Text>
+      </Stack>
+      <Stack
+        gap="6"
+        align="stretch"
+        role="group"
+        aria-labelledby="catalog-timeline-title"
+        data-testid="catalog-block"
+        data-block="timeline"
+      >
         <Stack gap="2" align="stretch">
           <Title as={2} size="2xl" weight="bold" id="catalog-timeline-title">
             {ui.blocks.names.timeline}
@@ -58,103 +65,103 @@
             {ui.blocks.docs.timeline}
           </Text>
         </Stack>
-        <Block
-          tag="section"
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="timeline-split-label"
           data-testid="variant"
           data-block="timeline"
           data-variant="split"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="timeline-split-label" data-testid="variant-label">
-              {ui.blocks.variants.timeline.split}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <MilestoneTimeline
-                id="timeline-split"
-                title={ui.company.timeline.title}
-                lead={ui.company.timeline.lead}
-                milestones={milestones}
-                layout="split"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="timeline-split-label" data-testid="variant-label">
+            {ui.blocks.variants.timeline.split}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <MilestoneTimeline
+              id="timeline-split"
+              title={ui.company.timeline.title}
+              lead={ui.company.timeline.lead}
+              milestones={milestones}
+              layout="split"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="timeline-stacked-label"
           data-testid="variant"
           data-block="timeline"
           data-variant="stacked"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="timeline-stacked-label" data-testid="variant-label">
-              {ui.blocks.variants.timeline.stacked}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <MilestoneTimeline
-                id="timeline-stacked"
-                title={ui.company.timeline.title}
-                lead={ui.company.timeline.lead}
-                milestones={milestones}
-                layout="stacked"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="timeline-stacked-label" data-testid="variant-label">
+            {ui.blocks.variants.timeline.stacked}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <MilestoneTimeline
+              id="timeline-stacked"
+              title={ui.company.timeline.title}
+              lead={ui.company.timeline.lead}
+              milestones={milestones}
+              layout="stacked"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="timeline-row-label"
           data-testid="variant"
           data-block="timeline"
           data-variant="row"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="timeline-row-label" data-testid="variant-label">
-              {ui.blocks.variants.timeline.row}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <MilestoneTimeline
-                id="timeline-row"
-                title={ui.company.timeline.title}
-                lead={ui.company.timeline.lead}
-                milestones={milestones}
-                layout="row"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="timeline-row-label" data-testid="variant-label">
+            {ui.blocks.variants.timeline.row}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <MilestoneTimeline
+              id="timeline-row"
+              title={ui.company.timeline.title}
+              lead={ui.company.timeline.lead}
+              milestones={milestones}
+              layout="row"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="timeline-rowMuted-label"
           data-testid="variant"
           data-block="timeline"
           data-variant="rowMuted"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="timeline-rowMuted-label" data-testid="variant-label">
-              {ui.blocks.variants.timeline.rowMuted}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <MilestoneTimeline
-                id="timeline-rowMuted"
-                title={ui.company.timeline.title}
-                lead={ui.company.timeline.lead}
-                milestones={milestones}
-                layout="row"
-                tone="muted"
-                density="compact"
-              />
-            </Box>
-          </Stack>
-        </Block>
+          <Title as={3} size="base" weight="bold" id="timeline-rowMuted-label" data-testid="variant-label">
+            {ui.blocks.variants.timeline.rowMuted}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <MilestoneTimeline
+              id="timeline-rowMuted"
+              title={ui.company.timeline.title}
+              lead={ui.company.timeline.lead}
+              milestones={milestones}
+              layout="row"
+              tone="muted"
+              density="compact"
+            />
+          </Box>
+        </Stack>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

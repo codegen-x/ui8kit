@@ -2,7 +2,7 @@
 // Source: xgen/screens/src/authoring/components/parts.ts
 /** A search input with a magnifier. `value` fires on every keystroke with the new text. */
 import { type ChangeEvent, type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
+import { Box } from "../primitives/box/box";
 import { Input } from "../primitives/input/input";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { cn } from "../utils";
@@ -17,7 +17,7 @@ export type SearchFieldProps = {
 
 export function SearchField({ value, placeholder, label, className, onValue }: SearchFieldProps) {
   return (
-    <Block className={cn("relative min-w-44 flex-1", className)} role="search">
+    <Box className={cn("relative min-w-44 flex-1", className)} role="search">
       <LucideIcon name="search" size={16} className="pointer-events-none absolute top-2 left-3 text-muted-foreground" />
       <Input
         size="sm"
@@ -28,6 +28,6 @@ export function SearchField({ value, placeholder, label, className, onValue }: S
         value={value}
         onChange={(event: ChangeEvent<HTMLInputElement>) => onValue?.(event.currentTarget.value)}
       />
-    </Block>
+    </Box>
   );
 }

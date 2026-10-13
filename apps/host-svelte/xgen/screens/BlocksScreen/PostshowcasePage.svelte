@@ -32,32 +32,34 @@
   const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS);
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.blocks.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="content">
-        {ui.blocks.themes.content.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-        {ui.blocks.names.postshowcase}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {ui.blocks.docs.postshowcase}
-      </Text>
-    </Stack>
-    <Block
-      tag="section"
-      aria-labelledby="postshowcase-introCards-label"
-      data-testid="variant"
-      data-block="postshowcase"
-      data-variant="introCards"
-    >
-      <Stack gap="4" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.blocks.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="content">
+          {ui.blocks.themes.content.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+          {ui.blocks.names.postshowcase}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {ui.blocks.docs.postshowcase}
+        </Text>
+      </Stack>
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="postshowcase-introCards-label"
+        data-testid="variant"
+        data-block="postshowcase"
+        data-variant="introCards"
+      >
         <Title as={2} size="base" weight="bold" id="postshowcase-introCards-label" data-testid="variant-label">
           {ui.blocks.variants.postshowcase.introCards}
         </Title>
@@ -77,15 +79,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="postshowcase-featuredEnd-label"
-      data-testid="variant"
-      data-block="postshowcase"
-      data-variant="featuredEnd"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="postshowcase-featuredEnd-label"
+        data-testid="variant"
+        data-block="postshowcase"
+        data-variant="featuredEnd"
+      >
         <Title as={2} size="base" weight="bold" id="postshowcase-featuredEnd-label" data-testid="variant-label">
           {ui.blocks.variants.postshowcase.featuredEnd}
         </Title>
@@ -105,15 +107,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="postshowcase-overlay3-label"
-      data-testid="variant"
-      data-block="postshowcase"
-      data-variant="overlay3"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="postshowcase-overlay3-label"
+        data-testid="variant"
+        data-block="postshowcase"
+        data-variant="overlay3"
+      >
         <Title as={2} size="base" weight="bold" id="postshowcase-overlay3-label" data-testid="variant-label">
           {ui.blocks.variants.postshowcase.overlay3}
         </Title>
@@ -133,15 +135,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="postshowcase-overlay2-label"
-      data-testid="variant"
-      data-block="postshowcase"
-      data-variant="overlay2"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="postshowcase-overlay2-label"
+        data-testid="variant"
+        data-block="postshowcase"
+        data-variant="overlay2"
+      >
         <Title as={2} size="base" weight="bold" id="postshowcase-overlay2-label" data-testid="variant-label">
           {ui.blocks.variants.postshowcase.overlay2}
         </Title>
@@ -161,6 +163,6 @@
           />
         </Box>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

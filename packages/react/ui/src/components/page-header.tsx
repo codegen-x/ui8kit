@@ -2,7 +2,6 @@
 // Source: xgen/screens/src/authoring/components/parts.ts
 /** The page heading: a title, a one-line summary and the action buttons on the right (below on phones). */
 import { type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
 import { Box } from "../primitives/box/box";
 import { Text } from "../primitives/text/text";
 import { Title } from "../primitives/title/title";
@@ -16,7 +15,7 @@ export type PageHeaderProps = {
 
 export function PageHeader({ title, summary, id, actions }: PageHeaderProps) {
   return (
-    <Block className="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
+    <Box className="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
       <Box className="flex min-w-0 flex-col gap-2">
         <Title as={1} size="xl" weight="bold" className="m-0" id={id}>
           {title}
@@ -32,6 +31,6 @@ export function PageHeader({ title, summary, id, actions }: PageHeaderProps) {
           {actions}
         </Box>
       ) : null}
-    </Block>
+    </Box>
   );
 }

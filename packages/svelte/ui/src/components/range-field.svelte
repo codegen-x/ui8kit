@@ -21,7 +21,7 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
+  import Box from "../primitives/box/box.svelte";
   import Inline from "../primitives/inline/inline.svelte";
   import Input from "../primitives/input/input.svelte";
   import Range from "../primitives/range/range.svelte";
@@ -40,7 +40,7 @@
   }: RangeFieldProps = $props();
 </script>
 
-<Block class={cn("flex flex-col gap-2", className)} data-slot="range-field">
+<Box class={cn("flex flex-col gap-2", className)} data-slot="range-field">
   {#if (((type as string) === "number") && (min != null) && (max != null) && (min < max))}
     <Range
       min={min}
@@ -82,4 +82,4 @@
       oninput={(event: Event & { currentTarget: HTMLInputElement }) => onchange?.(from, event.currentTarget.value)}
     />
   </Inline>
-</Block>
+</Box>

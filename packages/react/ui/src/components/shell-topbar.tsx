@@ -13,6 +13,7 @@ import { Link } from "../primitives/link/link";
 import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
+import { Nav } from "../primitives/nav/nav";
 import { Text } from "../primitives/text/text";
 import { MediaFrame } from "../components/media-frame";
 import { SearchPalette } from "../components/search-palette";
@@ -42,7 +43,7 @@ export function ShellTopbar({ nav, brand = "show", links = "hide", search = "sho
         </Group>
       ) : null}
       {((links as string) === "show") ? (
-        <Block tag="nav" className="hidden lg:block" aria-label={nav.label}>
+        <Nav className="hidden lg:block" aria-label={nav.label}>
           <List className="m-0 flex list-none items-center gap-2 p-0">
             {(nav.links ?? []).map((l) => (
               <ListItem key={l.id}>
@@ -66,7 +67,7 @@ export function ShellTopbar({ nav, brand = "show", links = "hide", search = "sho
               </ListItem>
             ))}
           </List>
-        </Block>
+        </Nav>
       ) : null}
       {((search as string) === "show") ? (
         <>

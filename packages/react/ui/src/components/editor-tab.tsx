@@ -6,7 +6,7 @@
  * events.
  */
 import { type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
+import { Box } from "../primitives/box/box";
 import { Button } from "../primitives/button/button";
 import { Inline } from "../primitives/inline/inline";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
@@ -34,7 +34,7 @@ export function EditorTab({
   onClose,
 }: EditorTabProps) {
   return (
-    <Block
+    <Box
       className={cn(
         "flex h-10 shrink-0 cursor-pointer flex-col justify-center data-[state=active]:bg-card " +
           "[&_svg]:text-muted-foreground",
@@ -69,6 +69,6 @@ export function EditorTab({
           <LucideIcon name="x" size={16} />
         </Button>
       </Inline>
-    </Block>
+    </Box>
   );
 }

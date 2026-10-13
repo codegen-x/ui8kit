@@ -143,9 +143,8 @@
                   ]
                 },
                 {
-                  "use": "Block",
+                  "use": "Box",
                   "props": {
-                    "Tag": "aside",
                     "Class": "flex w-full flex-col bg-background shadow-lg sm:max-w-sm"
                   },
                   "attrs": {

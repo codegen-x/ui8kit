@@ -50,31 +50,33 @@ const POSTSPLIT_EXTRAS = {
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.catalog.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-          {{ ui.catalog.sections.content.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="category-title">
-          {{ ui.catalog.categories.contentPostHeaderSplit }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ tpl(ui.catalog.count, 1, 6) }}
-        </Text>
-      </Stack>
-      <Block
-        tag="section"
-        aria-labelledby="catalog-postsplit-title"
-        data-testid="catalog-block"
-        data-block="postsplit"
-      >
-        <Stack gap="6" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.catalog.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+            {{ ui.catalog.sections.content.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="category-title">
+            {{ ui.catalog.categories.contentPostHeaderSplit }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ tpl(ui.catalog.count, 1, 6) }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="6"
+          align="stretch"
+          role="group"
+          aria-labelledby="catalog-postsplit-title"
+          data-testid="catalog-block"
+          data-block="postsplit"
+        >
           <Stack gap="2" align="stretch">
             <Title :as="2" size="2xl" weight="bold" id="catalog-postsplit-title">
               {{ ui.blocks.names.postsplit }}
@@ -83,176 +85,176 @@ const POSTSPLIT_EXTRAS = {
               {{ ui.blocks.docs.postsplit }}
             </Text>
           </Stack>
-          <Block
-            tag="section"
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="postsplit-centerShare-label"
             data-testid="variant"
             data-block="postsplit"
             data-variant="centerShare"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="postsplit-centerShare-label" data-testid="variant-label">
-                {{ ui.blocks.variants.postsplit.centerShare }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <PostSplit
-                  id="postsplit-centerShare"
-                  :post="posts.find((i) => i.id === 'post-static-first')!"
-                  :labels="ui.content.postSplit.labels"
-                  :extras="POSTSPLIT_EXTRAS"
-                  layout="center"
-                  mediaSide="end"
-                  author="line"
-                  cover="wide"
-                  actions="pair"
-                  tone="default"
-                  :level="2"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="postsplit-centerShare-label" data-testid="variant-label">
+              {{ ui.blocks.variants.postsplit.centerShare }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <PostSplit
+                id="postsplit-centerShare"
+                :post="posts.find((i) => i.id === 'post-static-first')!"
+                :labels="ui.content.postSplit.labels"
+                :extras="POSTSPLIT_EXTRAS"
+                layout="center"
+                mediaSide="end"
+                author="line"
+                cover="wide"
+                actions="pair"
+                tone="default"
+                :level="2"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="postsplit-splitTags-label"
             data-testid="variant"
             data-block="postsplit"
             data-variant="splitTags"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="postsplit-splitTags-label" data-testid="variant-label">
-                {{ ui.blocks.variants.postsplit.splitTags }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <PostSplit
-                  id="postsplit-splitTags"
-                  :post="posts.find((i) => i.id === 'post-static-first')!"
-                  :labels="ui.content.postSplit.labels"
-                  :extras="POSTSPLIT_EXTRAS"
-                  layout="split"
-                  mediaSide="end"
-                  author="line"
-                  cover="wide"
-                  actions="pair"
-                  tone="default"
-                  :level="2"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="postsplit-splitTags-label" data-testid="variant-label">
+              {{ ui.blocks.variants.postsplit.splitTags }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <PostSplit
+                id="postsplit-splitTags"
+                :post="posts.find((i) => i.id === 'post-static-first')!"
+                :labels="ui.content.postSplit.labels"
+                :extras="POSTSPLIT_EXTRAS"
+                layout="split"
+                mediaSide="end"
+                author="line"
+                cover="wide"
+                actions="pair"
+                tone="default"
+                :level="2"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="postsplit-splitBioStart-label"
             data-testid="variant"
             data-block="postsplit"
             data-variant="splitBioStart"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="postsplit-splitBioStart-label" data-testid="variant-label">
-                {{ ui.blocks.variants.postsplit.splitBioStart }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <PostSplit
-                  id="postsplit-splitBioStart"
-                  :post="posts.find((i) => i.id === 'post-static-first')!"
-                  :labels="ui.content.postSplit.labels"
-                  :extras="POSTSPLIT_EXTRAS"
-                  layout="split"
-                  mediaSide="start"
-                  author="bio"
-                  cover="wide"
-                  actions="wide"
-                  tone="default"
-                  :level="2"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="postsplit-splitBioStart-label" data-testid="variant-label">
+              {{ ui.blocks.variants.postsplit.splitBioStart }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <PostSplit
+                id="postsplit-splitBioStart"
+                :post="posts.find((i) => i.id === 'post-static-first')!"
+                :labels="ui.content.postSplit.labels"
+                :extras="POSTSPLIT_EXTRAS"
+                layout="split"
+                mediaSide="start"
+                author="bio"
+                cover="wide"
+                actions="wide"
+                tone="default"
+                :level="2"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="postsplit-splitSquare-label"
             data-testid="variant"
             data-block="postsplit"
             data-variant="splitSquare"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="postsplit-splitSquare-label" data-testid="variant-label">
-                {{ ui.blocks.variants.postsplit.splitSquare }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <PostSplit
-                  id="postsplit-splitSquare"
-                  :post="posts.find((i) => i.id === 'post-static-first')!"
-                  :labels="ui.content.postSplit.labels"
-                  :extras="POSTSPLIT_EXTRAS"
-                  layout="split"
-                  mediaSide="end"
-                  author="line"
-                  cover="square"
-                  actions="icons"
-                  tone="default"
-                  :level="2"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="postsplit-splitSquare-label" data-testid="variant-label">
+              {{ ui.blocks.variants.postsplit.splitSquare }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <PostSplit
+                id="postsplit-splitSquare"
+                :post="posts.find((i) => i.id === 'post-static-first')!"
+                :labels="ui.content.postSplit.labels"
+                :extras="POSTSPLIT_EXTRAS"
+                layout="split"
+                mediaSide="end"
+                author="line"
+                cover="square"
+                actions="icons"
+                tone="default"
+                :level="2"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="postsplit-outlineStart-label"
             data-testid="variant"
             data-block="postsplit"
             data-variant="outlineStart"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="postsplit-outlineStart-label" data-testid="variant-label">
-                {{ ui.blocks.variants.postsplit.outlineStart }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <PostSplit
-                  id="postsplit-outlineStart"
-                  :post="posts.find((i) => i.id === 'post-static-first')!"
-                  :labels="ui.content.postSplit.labels"
-                  :extras="POSTSPLIT_EXTRAS"
-                  layout="outline"
-                  mediaSide="start"
-                  author="line"
-                  cover="wide"
-                  actions="pair"
-                  tone="default"
-                  :level="2"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="postsplit-outlineStart-label" data-testid="variant-label">
+              {{ ui.blocks.variants.postsplit.outlineStart }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <PostSplit
+                id="postsplit-outlineStart"
+                :post="posts.find((i) => i.id === 'post-static-first')!"
+                :labels="ui.content.postSplit.labels"
+                :extras="POSTSPLIT_EXTRAS"
+                layout="outline"
+                mediaSide="start"
+                author="line"
+                cover="wide"
+                actions="pair"
+                tone="default"
+                :level="2"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="postsplit-splitStats-label"
             data-testid="variant"
             data-block="postsplit"
             data-variant="splitStats"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="postsplit-splitStats-label" data-testid="variant-label">
-                {{ ui.blocks.variants.postsplit.splitStats }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <PostSplit
-                  id="postsplit-splitStats"
-                  :post="posts.find((i) => i.id === 'post-static-first')!"
-                  :labels="ui.content.postSplit.labels"
-                  :extras="POSTSPLIT_EXTRAS"
-                  layout="split"
-                  mediaSide="end"
-                  author="card"
-                  cover="wide"
-                  actions="pair"
-                  tone="muted"
-                  :level="2"
-                />
-              </Box>
-            </Stack>
-          </Block>
+            <Title :as="3" size="base" weight="bold" id="postsplit-splitStats-label" data-testid="variant-label">
+              {{ ui.blocks.variants.postsplit.splitStats }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <PostSplit
+                id="postsplit-splitStats"
+                :post="posts.find((i) => i.id === 'post-static-first')!"
+                :labels="ui.content.postSplit.labels"
+                :extras="POSTSPLIT_EXTRAS"
+                layout="split"
+                mediaSide="end"
+                author="card"
+                cover="wide"
+                actions="pair"
+                tone="muted"
+                :level="2"
+              />
+            </Box>
+          </Stack>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

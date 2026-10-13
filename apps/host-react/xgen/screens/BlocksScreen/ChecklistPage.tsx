@@ -24,37 +24,39 @@ const checklist = fromCodex<Task>(checklistEntries, CHECKLIST_FIELDS);
 
 export function ChecklistPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text
-            size="sm"
-            className="font-medium text-muted-foreground"
-            data-testid="block-theme"
-            data-theme-id="onboarding"
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text
+              size="sm"
+              className="font-medium text-muted-foreground"
+              data-testid="block-theme"
+              data-theme-id="onboarding"
+            >
+              {ui.blocks.themes.onboarding.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.checklist}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.checklist}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="checklist-card-label"
+            data-testid="variant"
+            data-block="checklist"
+            data-variant="card"
           >
-            {ui.blocks.themes.onboarding.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.checklist}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.checklist}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="checklist-card-label"
-          data-testid="variant"
-          data-block="checklist"
-          data-variant="card"
-        >
-          <Stack gap="4" align="stretch">
             <Title as={2} size="base" weight="bold" id="checklist-card-label" data-testid="variant-label">
               {ui.blocks.variants.checklist.card}
             </Title>
@@ -72,15 +74,15 @@ export function ChecklistPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="checklist-expand-label"
-          data-testid="variant"
-          data-block="checklist"
-          data-variant="expand"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="checklist-expand-label"
+            data-testid="variant"
+            data-block="checklist"
+            data-variant="expand"
+          >
             <Title as={2} size="base" weight="bold" id="checklist-expand-label" data-testid="variant-label">
               {ui.blocks.variants.checklist.expand}
             </Title>
@@ -98,15 +100,15 @@ export function ChecklistPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="checklist-plain-label"
-          data-testid="variant"
-          data-block="checklist"
-          data-variant="plain"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="checklist-plain-label"
+            data-testid="variant"
+            data-block="checklist"
+            data-variant="plain"
+          >
             <Title as={2} size="base" weight="bold" id="checklist-plain-label" data-testid="variant-label">
               {ui.blocks.variants.checklist.plain}
             </Title>
@@ -124,15 +126,15 @@ export function ChecklistPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="checklist-text-label"
-          data-testid="variant"
-          data-block="checklist"
-          data-variant="text"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="checklist-text-label"
+            data-testid="variant"
+            data-block="checklist"
+            data-variant="text"
+          >
             <Title as={2} size="base" weight="bold" id="checklist-text-label" data-testid="variant-label">
               {ui.blocks.variants.checklist.text}
             </Title>
@@ -150,15 +152,15 @@ export function ChecklistPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="checklist-none-label"
-          data-testid="variant"
-          data-block="checklist"
-          data-variant="none"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="checklist-none-label"
+            data-testid="variant"
+            data-block="checklist"
+            data-variant="none"
+          >
             <Title as={2} size="base" weight="bold" id="checklist-none-label" data-testid="variant-label">
               {ui.blocks.variants.checklist.none}
             </Title>
@@ -176,15 +178,15 @@ export function ChecklistPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="checklist-numbered-label"
-          data-testid="variant"
-          data-block="checklist"
-          data-variant="numbered"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="checklist-numbered-label"
+            data-testid="variant"
+            data-block="checklist"
+            data-variant="numbered"
+          >
             <Title as={2} size="base" weight="bold" id="checklist-numbered-label" data-testid="variant-label">
               {ui.blocks.variants.checklist.numbered}
             </Title>
@@ -202,15 +204,15 @@ export function ChecklistPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="checklist-muted-label"
-          data-testid="variant"
-          data-block="checklist"
-          data-variant="muted"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="checklist-muted-label"
+            data-testid="variant"
+            data-block="checklist"
+            data-variant="muted"
+          >
             <Title as={2} size="base" weight="bold" id="checklist-muted-label" data-testid="variant-label">
               {ui.blocks.variants.checklist.muted}
             </Title>
@@ -228,8 +230,8 @@ export function ChecklistPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

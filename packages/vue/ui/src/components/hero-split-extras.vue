@@ -14,8 +14,9 @@ export type HeroSplitExtrasProps = {
 </script>
 
 <script setup lang="ts">
-import Block from "../primitives/block/block.vue";
+import Blockquote from "../primitives/blockquote/blockquote.vue";
 import Box from "../primitives/box/box.vue";
+import Figure from "../primitives/figure/figure.vue";
 import Group from "../primitives/group/group.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
@@ -88,10 +89,10 @@ const { content, extra = "none" } = defineProps<HeroSplitExtrasProps>();
   </Box>
   <Stack v-if="((extra as string) === 'quote')" gap="6" align="stretch">
     <template v-for="(p, i) in content.people" :key="p.id">
-      <Block v-if="(i < 1)" tag="figure" class="flex flex-col gap-4" data-testid="hero-quote">
-        <Block tag="blockquote" class="text-lg font-medium">
+      <Figure v-if="(i < 1)" class="flex flex-col gap-4" data-testid="hero-quote">
+        <Blockquote class="text-lg font-medium">
           {{ p.quote }}
-        </Block>
+        </Blockquote>
         <Group gap="4" align="center">
           <MediaFrame :alt="p.author" ratio="1/1" class="size-10 shrink-0 rounded-full" />
           <Stack gap="0">
@@ -103,7 +104,7 @@ const { content, extra = "none" } = defineProps<HeroSplitExtrasProps>();
             </Text>
           </Stack>
         </Group>
-      </Block>
+      </Figure>
     </template>
     <Box class="grid grid-cols-3 gap-4" data-testid="hero-stats">
       <template v-for="(s, i) in content.stats" :key="s.id">

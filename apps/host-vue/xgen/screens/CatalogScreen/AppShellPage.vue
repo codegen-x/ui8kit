@@ -58,26 +58,33 @@ const SHELL_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboard.
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.catalog.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-          {{ ui.catalog.sections.app.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="category-title">
-          {{ ui.catalog.categories.appShell }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ tpl(ui.catalog.count, 3, 12) }}
-        </Text>
-      </Stack>
-      <Block tag="section" aria-labelledby="catalog-shell-title" data-testid="catalog-block" data-block="shell">
-        <Stack gap="6" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.catalog.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+            {{ ui.catalog.sections.app.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="category-title">
+            {{ ui.catalog.categories.appShell }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ tpl(ui.catalog.count, 3, 12) }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="6"
+          align="stretch"
+          role="group"
+          aria-labelledby="catalog-shell-title"
+          data-testid="catalog-block"
+          data-block="shell"
+        >
           <Stack gap="2" align="stretch">
             <Title :as="2" size="2xl" weight="bold" id="catalog-shell-title">
               {{ ui.blocks.names.shell }}
@@ -86,118 +93,123 @@ const SHELL_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboard.
               {{ ui.blocks.docs.shell }}
             </Text>
           </Stack>
-          <Block
-            tag="section"
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="shell-sidebar-label"
             data-testid="variant"
             data-block="shell"
             data-variant="sidebar"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="shell-sidebar-label" data-testid="variant-label">
-                {{ ui.blocks.variants.shell.sidebar }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <AppShell
-                  id="shell-sidebar"
-                  :title="ui.vibe.shell.title"
-                  :nav="SHELL_NAV"
-                  :user="{ name: ui.vibe.sidebar.userName, email: ui.vibe.sidebar.userEmail }"
-                  :search="{ label: ui.vibe.nav.search, shortcut: ui.vibe.nav.shortcut }"
-                  :metrics="metrics"
-                  :chart="SHELL_CHART"
-                  :activity="SHELL_ACTIVITY"
-                  layout="sidebar"
-                  density="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="shell-sidebar-label" data-testid="variant-label">
+              {{ ui.blocks.variants.shell.sidebar }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <AppShell
+                id="shell-sidebar"
+                :title="ui.vibe.shell.title"
+                :nav="SHELL_NAV"
+                :user="{ name: ui.vibe.sidebar.userName, email: ui.vibe.sidebar.userEmail }"
+                :search="{ label: ui.vibe.nav.search, shortcut: ui.vibe.nav.shortcut }"
+                :metrics="metrics"
+                :chart="SHELL_CHART"
+                :activity="SHELL_ACTIVITY"
+                layout="sidebar"
+                density="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="shell-top-label"
             data-testid="variant"
             data-block="shell"
             data-variant="top"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="shell-top-label" data-testid="variant-label">
-                {{ ui.blocks.variants.shell.top }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <AppShell
-                  id="shell-top"
-                  :title="ui.vibe.shell.title"
-                  :nav="SHELL_NAV"
-                  :user="{ name: ui.vibe.sidebar.userName, email: ui.vibe.sidebar.userEmail }"
-                  :search="{ label: ui.vibe.nav.search, shortcut: ui.vibe.nav.shortcut }"
-                  :metrics="metrics"
-                  :chart="SHELL_CHART"
-                  :activity="SHELL_ACTIVITY"
-                  layout="top"
-                  density="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="shell-top-label" data-testid="variant-label">
+              {{ ui.blocks.variants.shell.top }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <AppShell
+                id="shell-top"
+                :title="ui.vibe.shell.title"
+                :nav="SHELL_NAV"
+                :user="{ name: ui.vibe.sidebar.userName, email: ui.vibe.sidebar.userEmail }"
+                :search="{ label: ui.vibe.nav.search, shortcut: ui.vibe.nav.shortcut }"
+                :metrics="metrics"
+                :chart="SHELL_CHART"
+                :activity="SHELL_ACTIVITY"
+                layout="top"
+                density="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="shell-panes-label"
             data-testid="variant"
             data-block="shell"
             data-variant="panes"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="shell-panes-label" data-testid="variant-label">
-                {{ ui.blocks.variants.shell.panes }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <AppShell
-                  id="shell-panes"
-                  :title="ui.vibe.shell.title"
-                  :nav="SHELL_NAV"
-                  :user="{ name: ui.vibe.sidebar.userName, email: ui.vibe.sidebar.userEmail }"
-                  :search="{ label: ui.vibe.nav.search, shortcut: ui.vibe.nav.shortcut }"
-                  :metrics="metrics"
-                  :chart="SHELL_CHART"
-                  :activity="SHELL_ACTIVITY"
-                  layout="panes"
-                  density="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="shell-panes-label" data-testid="variant-label">
+              {{ ui.blocks.variants.shell.panes }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <AppShell
+                id="shell-panes"
+                :title="ui.vibe.shell.title"
+                :nav="SHELL_NAV"
+                :user="{ name: ui.vibe.sidebar.userName, email: ui.vibe.sidebar.userEmail }"
+                :search="{ label: ui.vibe.nav.search, shortcut: ui.vibe.nav.shortcut }"
+                :metrics="metrics"
+                :chart="SHELL_CHART"
+                :activity="SHELL_ACTIVITY"
+                layout="panes"
+                density="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="shell-dense-label"
             data-testid="variant"
             data-block="shell"
             data-variant="dense"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="shell-dense-label" data-testid="variant-label">
-                {{ ui.blocks.variants.shell.dense }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <AppShell
-                  id="shell-dense"
-                  :title="ui.vibe.shell.title"
-                  :nav="SHELL_NAV"
-                  :user="{ name: ui.vibe.sidebar.userName, email: ui.vibe.sidebar.userEmail }"
-                  :search="{ label: ui.vibe.nav.search, shortcut: ui.vibe.nav.shortcut }"
-                  :metrics="metrics"
-                  :chart="SHELL_CHART"
-                  :activity="SHELL_ACTIVITY"
-                  layout="sidebar"
-                  density="compact"
-                />
-              </Box>
-            </Stack>
-          </Block>
+            <Title :as="3" size="base" weight="bold" id="shell-dense-label" data-testid="variant-label">
+              {{ ui.blocks.variants.shell.dense }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <AppShell
+                id="shell-dense"
+                :title="ui.vibe.shell.title"
+                :nav="SHELL_NAV"
+                :user="{ name: ui.vibe.sidebar.userName, email: ui.vibe.sidebar.userEmail }"
+                :search="{ label: ui.vibe.nav.search, shortcut: ui.vibe.nav.shortcut }"
+                :metrics="metrics"
+                :chart="SHELL_CHART"
+                :activity="SHELL_ACTIVITY"
+                layout="sidebar"
+                density="compact"
+              />
+            </Box>
+          </Stack>
         </Stack>
-      </Block>
-      <Block tag="section" aria-labelledby="catalog-sidenav-title" data-testid="catalog-block" data-block="sidenav">
-        <Stack gap="6" align="stretch">
+        <Stack
+          gap="6"
+          align="stretch"
+          role="group"
+          aria-labelledby="catalog-sidenav-title"
+          data-testid="catalog-block"
+          data-block="sidenav"
+        >
           <Stack gap="2" align="stretch">
             <Title :as="2" size="2xl" weight="bold" id="catalog-sidenav-title">
               {{ ui.blocks.names.sidenav }}
@@ -206,119 +218,119 @@ const SHELL_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboard.
               {{ ui.blocks.docs.sidenav }}
             </Text>
           </Stack>
-          <Block
-            tag="section"
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="sidenav-full-label"
             data-testid="variant"
             data-block="sidenav"
             data-variant="full"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="sidenav-full-label" data-testid="variant-label">
-                {{ ui.blocks.variants.sidenav.full }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <SidebarNav
-                  :label="ui.vibe.sidebar.label"
-                  :brand="ui.site.header.brand"
-                  :links="sidenav"
-                  current="item-orders"
-                  :userName="ui.vibe.sidebar.userName"
-                  :userEmail="ui.vibe.sidebar.userEmail"
-                  width="full"
-                  user="show"
-                  density="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="sidenav-full-label" data-testid="variant-label">
+              {{ ui.blocks.variants.sidenav.full }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <SidebarNav
+                :label="ui.vibe.sidebar.label"
+                :brand="ui.site.header.brand"
+                :links="sidenav"
+                current="item-orders"
+                :userName="ui.vibe.sidebar.userName"
+                :userEmail="ui.vibe.sidebar.userEmail"
+                width="full"
+                user="show"
+                density="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="sidenav-compact-label"
             data-testid="variant"
             data-block="sidenav"
             data-variant="compact"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="sidenav-compact-label" data-testid="variant-label">
-                {{ ui.blocks.variants.sidenav.compact }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <SidebarNav
-                  :label="ui.vibe.sidebar.label"
-                  :brand="ui.site.header.brand"
-                  :links="sidenav"
-                  current="item-orders"
-                  :userName="ui.vibe.sidebar.userName"
-                  :userEmail="ui.vibe.sidebar.userEmail"
-                  width="compact"
-                  user="show"
-                  density="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="sidenav-compact-label" data-testid="variant-label">
+              {{ ui.blocks.variants.sidenav.compact }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <SidebarNav
+                :label="ui.vibe.sidebar.label"
+                :brand="ui.site.header.brand"
+                :links="sidenav"
+                current="item-orders"
+                :userName="ui.vibe.sidebar.userName"
+                :userEmail="ui.vibe.sidebar.userEmail"
+                width="compact"
+                user="show"
+                density="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="sidenav-noUser-label"
             data-testid="variant"
             data-block="sidenav"
             data-variant="noUser"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="sidenav-noUser-label" data-testid="variant-label">
-                {{ ui.blocks.variants.sidenav.noUser }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <SidebarNav
-                  :label="ui.vibe.sidebar.label"
-                  :brand="ui.site.header.brand"
-                  :links="sidenav"
-                  current="item-orders"
-                  :userName="ui.vibe.sidebar.userName"
-                  :userEmail="ui.vibe.sidebar.userEmail"
-                  width="full"
-                  user="hide"
-                  density="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="sidenav-noUser-label" data-testid="variant-label">
+              {{ ui.blocks.variants.sidenav.noUser }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <SidebarNav
+                :label="ui.vibe.sidebar.label"
+                :brand="ui.site.header.brand"
+                :links="sidenav"
+                current="item-orders"
+                :userName="ui.vibe.sidebar.userName"
+                :userEmail="ui.vibe.sidebar.userEmail"
+                width="full"
+                user="hide"
+                density="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="sidenav-dense-label"
             data-testid="variant"
             data-block="sidenav"
             data-variant="dense"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="sidenav-dense-label" data-testid="variant-label">
-                {{ ui.blocks.variants.sidenav.dense }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <SidebarNav
-                  :label="ui.vibe.sidebar.label"
-                  :brand="ui.site.header.brand"
-                  :links="sidenav"
-                  current="item-orders"
-                  :userName="ui.vibe.sidebar.userName"
-                  :userEmail="ui.vibe.sidebar.userEmail"
-                  width="full"
-                  user="show"
-                  density="compact"
-                />
-              </Box>
-            </Stack>
-          </Block>
+            <Title :as="3" size="base" weight="bold" id="sidenav-dense-label" data-testid="variant-label">
+              {{ ui.blocks.variants.sidenav.dense }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <SidebarNav
+                :label="ui.vibe.sidebar.label"
+                :brand="ui.site.header.brand"
+                :links="sidenav"
+                current="item-orders"
+                :userName="ui.vibe.sidebar.userName"
+                :userEmail="ui.vibe.sidebar.userEmail"
+                width="full"
+                user="show"
+                density="compact"
+              />
+            </Box>
+          </Stack>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="catalog-bottomnav-title"
-        data-testid="catalog-block"
-        data-block="bottomnav"
-      >
-        <Stack gap="6" align="stretch">
+        <Stack
+          gap="6"
+          align="stretch"
+          role="group"
+          aria-labelledby="catalog-bottomnav-title"
+          data-testid="catalog-block"
+          data-block="bottomnav"
+        >
           <Stack gap="2" align="stretch">
             <Title :as="2" size="2xl" weight="bold" id="catalog-bottomnav-title">
               {{ ui.blocks.names.bottomnav }}
@@ -327,100 +339,100 @@ const SHELL_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboard.
               {{ ui.blocks.docs.bottomnav }}
             </Text>
           </Stack>
-          <Block
-            tag="section"
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="bottomnav-labels-label"
             data-testid="variant"
             data-block="bottomnav"
             data-variant="labels"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="bottomnav-labels-label" data-testid="variant-label">
-                {{ ui.blocks.variants.bottomnav.labels }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <BottomNav
-                  :label="ui.vibe.bottom.label"
-                  :tabs="tabs"
-                  current="tab-explore"
-                  labels="show"
-                  position="static"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="bottomnav-labels-label" data-testid="variant-label">
+              {{ ui.blocks.variants.bottomnav.labels }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <BottomNav
+                :label="ui.vibe.bottom.label"
+                :tabs="tabs"
+                current="tab-explore"
+                labels="show"
+                position="static"
+                tone="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="bottomnav-icons-label"
             data-testid="variant"
             data-block="bottomnav"
             data-variant="icons"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="bottomnav-icons-label" data-testid="variant-label">
-                {{ ui.blocks.variants.bottomnav.icons }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <BottomNav
-                  :label="ui.vibe.bottom.label"
-                  :tabs="tabs"
-                  current="tab-explore"
-                  labels="hide"
-                  position="static"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="bottomnav-icons-label" data-testid="variant-label">
+              {{ ui.blocks.variants.bottomnav.icons }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <BottomNav
+                :label="ui.vibe.bottom.label"
+                :tabs="tabs"
+                current="tab-explore"
+                labels="hide"
+                position="static"
+                tone="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="bottomnav-sticky-label"
             data-testid="variant"
             data-block="bottomnav"
             data-variant="sticky"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="bottomnav-sticky-label" data-testid="variant-label">
-                {{ ui.blocks.variants.bottomnav.sticky }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <BottomNav
-                  :label="ui.vibe.bottom.label"
-                  :tabs="tabs"
-                  current="tab-explore"
-                  labels="show"
-                  position="sticky"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="bottomnav-sticky-label" data-testid="variant-label">
+              {{ ui.blocks.variants.bottomnav.sticky }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <BottomNav
+                :label="ui.vibe.bottom.label"
+                :tabs="tabs"
+                current="tab-explore"
+                labels="show"
+                position="sticky"
+                tone="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="bottomnav-muted-label"
             data-testid="variant"
             data-block="bottomnav"
             data-variant="muted"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="bottomnav-muted-label" data-testid="variant-label">
-                {{ ui.blocks.variants.bottomnav.muted }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <BottomNav
-                  :label="ui.vibe.bottom.label"
-                  :tabs="tabs"
-                  current="tab-explore"
-                  labels="show"
-                  position="static"
-                  tone="muted"
-                />
-              </Box>
-            </Stack>
-          </Block>
+            <Title :as="3" size="base" weight="bold" id="bottomnav-muted-label" data-testid="variant-label">
+              {{ ui.blocks.variants.bottomnav.muted }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <BottomNav
+                :label="ui.vibe.bottom.label"
+                :tabs="tabs"
+                current="tab-explore"
+                labels="show"
+                position="static"
+                tone="muted"
+              />
+            </Box>
+          </Stack>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

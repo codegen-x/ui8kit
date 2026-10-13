@@ -33,7 +33,7 @@
   "events": [],
   "view": [
     {
-      "use": "Block",
+      "use": "Box",
       "props": {
         "Class": {
           "op": "cn",

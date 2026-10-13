@@ -60,77 +60,80 @@
   const mediaSide = $derived(media?.side ?? "end");
 </script>
 
-<Backdrop kind={(((mediaKind as string) === "backdrop") ? "image" : "none")} alt={title}>
-  <SectionFrame
-    id={id}
-    title={title}
-    lead={text}
-    heading={{ level, scale, badge }}
-    layout={(((layout as string) === "split") ? "split" : "stack")}
-    align={(((layout as string) === "split") ? "start" : "center")}
-    media={{
-      show: (((mediaKind as string) === "image") || ((mediaKind as string) === "code") || ((mediaKind as string) === "cluster")),
-      side: mediaSide,
-    }}
-    tone={tone}
-    density={density}
-  >
-    {#if actions?.cta}
-      {#if (actions?.mode === "form")}
-        <Box
-          class={cn("w-full max-w-xl", (((layout as string) === "centered") ? "mx-auto" : ""))}
-          data-testid="email-form"
-        >
-          <Label for={tpl("{0}-email", id)} class="sr-only">
-            {actions?.emailLabel}
-          </Label>
-          <Group gap="2" align="start" class="w-full flex-wrap">
-            <Input
-              type="text"
-              name="prompt"
-              class="min-w-0 flex-1"
-              placeholder={actions?.emailLabel}
-              id={tpl("{0}-email", id)}
-              data-testid="field"
-            />
-            <Button variant="default" size="default" href={(actions?.href ?? "#/")} data-testid="submit">
-              {actions?.cta}
-            </Button>
-          </Group>
+<SectionFrame
+  id={id}
+  title={title}
+  lead={text}
+  heading={{ level, scale, badge }}
+  layout={(((layout as string) === "split") ? "split" : "stack")}
+  align={(((layout as string) === "split") ? "start" : "center")}
+  media={{
+    show: (((mediaKind as string) === "image") || ((mediaKind as string) === "code") || ((mediaKind as string) === "cluster")),
+    side: mediaSide,
+  }}
+  tone={tone}
+  density={density}
+  class={
+    (((mediaKind as string) === "backdrop") ? "image" : "none") === "image" ? "relative isolate overflow-hidden"
+    : ""
+  }
+>
+  <Backdrop kind={(((mediaKind as string) === "backdrop") ? "image" : "none")} alt={title} />
+  {#if actions?.cta}
+    {#if (actions?.mode === "form")}
+      <Box
+        class={cn("w-full max-w-xl", (((layout as string) === "centered") ? "mx-auto" : ""))}
+        data-testid="email-form"
+      >
+        <Label for={tpl("{0}-email", id)} class="sr-only">
+          {actions?.emailLabel}
+        </Label>
+        <Group gap="2" align="start" class="w-full flex-wrap">
+          <Input
+            type="text"
+            name="prompt"
+            class="min-w-0 flex-1"
+            placeholder={actions?.emailLabel}
+            id={tpl("{0}-email", id)}
+            data-testid="field"
+          />
+          <Button variant="default" size="default" href={(actions?.href ?? "#/")} data-testid="submit">
+            {actions?.cta}
+          </Button>
+        </Group>
+      </Box>
+    {:else}
+      <ActionGroup
+        primary={actions?.cta}
+        primaryHref={actions?.href}
+        secondary={((actions?.mode === "two") ? actions?.secondary : undefined)}
+        secondaryHref={actions?.secondaryHref}
+        align={(((layout as string) === "centered") ? "center" : "start")}
+      />
+    {/if}
+  {/if}
+  {#if topics}
+    <TopicChips topics={topics} />
+  {/if}
+  {#snippet aside()}
+    {#if (((mediaKind as string) === "code") && media?.lines && media?.codeTitle && media?.prompt)}
+      <CodeWindow title={media?.codeTitle} prompt={media?.prompt} lines={media?.lines} />
+    {/if}
+    {#if ((mediaKind as string) === "cluster")}
+      <Grid cols="3" class="items-end gap-4" data-testid="cluster">
+        <Box class={cn("w-full", "")}>
+          <MediaFrame alt={title} ratio="3/4" />
         </Box>
-      {:else}
-        <ActionGroup
-          primary={actions?.cta}
-          primaryHref={actions?.href}
-          secondary={((actions?.mode === "two") ? actions?.secondary : undefined)}
-          secondaryHref={actions?.secondaryHref}
-          align={(((layout as string) === "centered") ? "center" : "start")}
-        />
-      {/if}
+        <Box class={cn("w-full", "-translate-y-4")}>
+          <MediaFrame alt={title} ratio="4/3" />
+        </Box>
+        <Box class={cn("w-full", "")}>
+          <MediaFrame alt={title} ratio="3/4" />
+        </Box>
+      </Grid>
     {/if}
-    {#if topics}
-      <TopicChips topics={topics} />
+    {#if (((mediaKind as string) === "image"))}
+      <MediaFrame alt={title} ratio="4/3" />
     {/if}
-    {#snippet aside()}
-      {#if (((mediaKind as string) === "code") && media?.lines && media?.codeTitle && media?.prompt)}
-        <CodeWindow title={media?.codeTitle} prompt={media?.prompt} lines={media?.lines} />
-      {/if}
-      {#if ((mediaKind as string) === "cluster")}
-        <Grid cols="3" class="items-end gap-4" data-testid="cluster">
-          <Box class={cn("w-full", "")}>
-            <MediaFrame alt={title} ratio="3/4" />
-          </Box>
-          <Box class={cn("w-full", "-translate-y-4")}>
-            <MediaFrame alt={title} ratio="4/3" />
-          </Box>
-          <Box class={cn("w-full", "")}>
-            <MediaFrame alt={title} ratio="3/4" />
-          </Box>
-        </Grid>
-      {/if}
-      {#if (((mediaKind as string) === "image"))}
-        <MediaFrame alt={title} ratio="4/3" />
-      {/if}
-    {/snippet}
-  </SectionFrame>
-</Backdrop>
+  {/snippet}
+</SectionFrame>

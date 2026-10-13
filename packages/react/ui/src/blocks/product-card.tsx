@@ -7,9 +7,9 @@
  */
 import { type ReactNode } from "react";
 import { Badge } from "../primitives/badge/badge";
+import { Block } from "../primitives/block/block";
 import { Box } from "../primitives/box/box";
 import { Button } from "../primitives/button/button";
-import { Card } from "../primitives/card/card";
 import { CardContent } from "../primitives/card/card-content";
 import { Group } from "../primitives/group/group";
 import { Text } from "../primitives/text/text";
@@ -45,12 +45,14 @@ export function ProductCard({
   onAdd,
 }: ProductCardProps) {
   return (
-    <Card
-      variant="default"
+    <Block
+      tag="article"
       className={cn(
+        "flex flex-col gap-8 bg-card p-6 text-card-foreground inset-ring inset-ring-border rounded",
         "h-full gap-4 overflow-hidden",
         (((layout as string) === "horizontal") ? "flex flex-col sm:flex-row" : "flex flex-col")
       )}
+      data-slot="card"
       data-testid="item"
       data-layout={layout}
     >
@@ -101,6 +103,6 @@ export function ProductCard({
           ) : null}
         </Group>
       </CardContent>
-    </Card>
+    </Block>
   );
 }

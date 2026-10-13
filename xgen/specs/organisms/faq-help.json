@@ -186,6 +186,7 @@
     "svelte": true,
     "react": true
   },
+  "frame": true,
   "typeImports": [
     {
       "from": "FaqSplit",

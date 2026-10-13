@@ -39,26 +39,33 @@
   const ABOUTME_ACTIONS = { mode: "two", cta: ui.company.aboutMe.cta, href: "#/work", secondary: ui.company.aboutMe.more, secondaryHref: "#/contact" } as const;
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.catalog.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-        {ui.catalog.sections.marketing.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="category-title">
-        {ui.catalog.categories.marketingAbout}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {tpl(ui.catalog.count, 2, 7)}
-      </Text>
-    </Stack>
-    <Block tag="section" aria-labelledby="catalog-about-title" data-testid="catalog-block" data-block="about">
-      <Stack gap="6" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.catalog.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+          {ui.catalog.sections.marketing.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="category-title">
+          {ui.catalog.categories.marketingAbout}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {tpl(ui.catalog.count, 2, 7)}
+        </Text>
+      </Stack>
+      <Stack
+        gap="6"
+        align="stretch"
+        role="group"
+        aria-labelledby="catalog-about-title"
+        data-testid="catalog-block"
+        data-block="about"
+      >
         <Stack gap="2" align="stretch">
           <Title as={2} size="2xl" weight="bold" id="catalog-about-title">
             {ui.blocks.names.about}
@@ -67,85 +74,90 @@
             {ui.blocks.docs.about}
           </Text>
         </Stack>
-        <Block
-          tag="section"
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="about-split-label"
           data-testid="variant"
           data-block="about"
           data-variant="split"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="about-split-label" data-testid="variant-label">
-              {ui.blocks.variants.about.split}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <AboutCompany
-                id="about-split"
-                title={ui.company.about.title}
-                lead={ui.company.about.lead}
-                stats={stats}
-                values={values}
-                layout="split"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="about-split-label" data-testid="variant-label">
+            {ui.blocks.variants.about.split}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <AboutCompany
+              id="about-split"
+              title={ui.company.about.title}
+              lead={ui.company.about.lead}
+              stats={stats}
+              values={values}
+              layout="split"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="about-stacked-label"
           data-testid="variant"
           data-block="about"
           data-variant="stacked"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="about-stacked-label" data-testid="variant-label">
-              {ui.blocks.variants.about.stacked}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <AboutCompany
-                id="about-stacked"
-                title={ui.company.about.title}
-                lead={ui.company.about.lead}
-                stats={stats}
-                values={values}
-                layout="stacked"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="about-stacked-label" data-testid="variant-label">
+            {ui.blocks.variants.about.stacked}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <AboutCompany
+              id="about-stacked"
+              title={ui.company.about.title}
+              lead={ui.company.about.lead}
+              stats={stats}
+              values={values}
+              layout="stacked"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="about-muted-label"
           data-testid="variant"
           data-block="about"
           data-variant="muted"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="about-muted-label" data-testid="variant-label">
-              {ui.blocks.variants.about.muted}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <AboutCompany
-                id="about-muted"
-                title={ui.company.about.title}
-                lead={ui.company.about.lead}
-                stats={stats}
-                values={values}
-                layout="split"
-                tone="muted"
-                density="compact"
-              />
-            </Box>
-          </Stack>
-        </Block>
+          <Title as={3} size="base" weight="bold" id="about-muted-label" data-testid="variant-label">
+            {ui.blocks.variants.about.muted}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <AboutCompany
+              id="about-muted"
+              title={ui.company.about.title}
+              lead={ui.company.about.lead}
+              stats={stats}
+              values={values}
+              layout="split"
+              tone="muted"
+              density="compact"
+            />
+          </Box>
+        </Stack>
       </Stack>
-    </Block>
-    <Block tag="section" aria-labelledby="catalog-aboutme-title" data-testid="catalog-block" data-block="aboutme">
-      <Stack gap="6" align="stretch">
+      <Stack
+        gap="6"
+        align="stretch"
+        role="group"
+        aria-labelledby="catalog-aboutme-title"
+        data-testid="catalog-block"
+        data-block="aboutme"
+      >
         <Stack gap="2" align="stretch">
           <Title as={2} size="2xl" weight="bold" id="catalog-aboutme-title">
             {ui.blocks.names.aboutme}
@@ -154,123 +166,123 @@
             {ui.blocks.docs.aboutme}
           </Text>
         </Stack>
-        <Block
-          tag="section"
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="aboutme-facts-label"
           data-testid="variant"
           data-block="aboutme"
           data-variant="facts"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="aboutme-facts-label" data-testid="variant-label">
-              {ui.blocks.variants.aboutme.facts}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <AboutMe
-                id="aboutme-facts"
-                title={ui.company.aboutMe.title}
-                lead={ui.company.aboutMe.lead}
-                badge={ui.company.aboutMe.badge}
-                facts={profilefacts}
-                skills={skills}
-                labels={ui.company.aboutMe}
-                actions={ABOUTME_ACTIONS}
-                layout="facts"
-                mediaSide="start"
-                tone="default"
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="aboutme-facts-label" data-testid="variant-label">
+            {ui.blocks.variants.aboutme.facts}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <AboutMe
+              id="aboutme-facts"
+              title={ui.company.aboutMe.title}
+              lead={ui.company.aboutMe.lead}
+              badge={ui.company.aboutMe.badge}
+              facts={profilefacts}
+              skills={skills}
+              labels={ui.company.aboutMe}
+              actions={ABOUTME_ACTIONS}
+              layout="facts"
+              mediaSide="start"
+              tone="default"
+              level={2}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="aboutme-factsEnd-label"
           data-testid="variant"
           data-block="aboutme"
           data-variant="factsEnd"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="aboutme-factsEnd-label" data-testid="variant-label">
-              {ui.blocks.variants.aboutme.factsEnd}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <AboutMe
-                id="aboutme-factsEnd"
-                title={ui.company.aboutMe.title}
-                lead={ui.company.aboutMe.lead}
-                badge={ui.company.aboutMe.badge}
-                facts={profilefacts}
-                skills={skills}
-                labels={ui.company.aboutMe}
-                actions={ABOUTME_ACTIONS}
-                layout="facts"
-                mediaSide="end"
-                tone="default"
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="aboutme-factsEnd-label" data-testid="variant-label">
+            {ui.blocks.variants.aboutme.factsEnd}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <AboutMe
+              id="aboutme-factsEnd"
+              title={ui.company.aboutMe.title}
+              lead={ui.company.aboutMe.lead}
+              badge={ui.company.aboutMe.badge}
+              facts={profilefacts}
+              skills={skills}
+              labels={ui.company.aboutMe}
+              actions={ABOUTME_ACTIONS}
+              layout="facts"
+              mediaSide="end"
+              tone="default"
+              level={2}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="aboutme-skills-label"
           data-testid="variant"
           data-block="aboutme"
           data-variant="skills"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="aboutme-skills-label" data-testid="variant-label">
-              {ui.blocks.variants.aboutme.skills}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <AboutMe
-                id="aboutme-skills"
-                title={ui.company.aboutMe.title}
-                lead={ui.company.aboutMe.lead}
-                badge={ui.company.aboutMe.badge}
-                facts={profilefacts}
-                skills={skills}
-                labels={ui.company.aboutMe}
-                actions={ABOUTME_ACTIONS}
-                layout="skills"
-                mediaSide="start"
-                tone="default"
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="aboutme-skills-label" data-testid="variant-label">
+            {ui.blocks.variants.aboutme.skills}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <AboutMe
+              id="aboutme-skills"
+              title={ui.company.aboutMe.title}
+              lead={ui.company.aboutMe.lead}
+              badge={ui.company.aboutMe.badge}
+              facts={profilefacts}
+              skills={skills}
+              labels={ui.company.aboutMe}
+              actions={ABOUTME_ACTIONS}
+              layout="skills"
+              mediaSide="start"
+              tone="default"
+              level={2}
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="aboutme-skillsMuted-label"
           data-testid="variant"
           data-block="aboutme"
           data-variant="skillsMuted"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="aboutme-skillsMuted-label" data-testid="variant-label">
-              {ui.blocks.variants.aboutme.skillsMuted}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <AboutMe
-                id="aboutme-skillsMuted"
-                title={ui.company.aboutMe.title}
-                lead={ui.company.aboutMe.lead}
-                badge={ui.company.aboutMe.badge}
-                facts={profilefacts}
-                skills={skills}
-                labels={ui.company.aboutMe}
-                actions={ABOUTME_ACTIONS}
-                layout="skills"
-                mediaSide="end"
-                tone="muted"
-                level={2}
-              />
-            </Box>
-          </Stack>
-        </Block>
+          <Title as={3} size="base" weight="bold" id="aboutme-skillsMuted-label" data-testid="variant-label">
+            {ui.blocks.variants.aboutme.skillsMuted}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <AboutMe
+              id="aboutme-skillsMuted"
+              title={ui.company.aboutMe.title}
+              lead={ui.company.aboutMe.lead}
+              badge={ui.company.aboutMe.badge}
+              facts={profilefacts}
+              skills={skills}
+              labels={ui.company.aboutMe}
+              actions={ABOUTME_ACTIONS}
+              layout="skills"
+              mediaSide="end"
+              tone="muted"
+              level={2}
+            />
+          </Box>
+        </Stack>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

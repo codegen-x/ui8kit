@@ -14,7 +14,7 @@ export const OverviewChart = required(["title", "string"], ["text", "string"], [
 export const OverviewActivity = required(["title", "string"], ["text", "string"], ["events", "Event[]"]);
 
 export const tiles = (cols: Value) => use("Grid", { props: { Cols: cols, Class: "gap-4" }, attrs: { "data-testid": "items" } },
-  each(ref("metrics"), "m", ref("m.id"), use("Block", { props: { Tag: "div" }, attrs: { "data-testid": "item" } }, organism("StatTile", { label: ref("m.label"), value: ref("m.value"), icon: ref("m.icon"), hint: ref("m.hint") }))));
+  each(ref("metrics"), "m", ref("m.id"), use("Box", { props: {}, attrs: { "data-testid": "item" } }, organism("StatTile", { label: ref("m.label"), value: ref("m.value"), icon: ref("m.icon"), hint: ref("m.hint") }))));
 export const chart = () => organism("Panel", { title: ref("chart.title"), description: ref("chart.text"), id: tpl("{0}-chart", ref("id")), className: "h-full" }, kids(
   organism("BarChart", { bars: ref("chart.series"), label: ref("chart.summary"), height: 144 })));
 export const feed = () => organism("Panel", { title: ref("activity.title"), description: ref("activity.text"), id: tpl("{0}-feed", ref("id")), className: "h-full" }, kids(organism("Timeline", { items: ref("activity.events") })));

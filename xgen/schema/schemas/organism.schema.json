@@ -725,6 +725,10 @@
         ],
         "additionalProperties": false
       }
+    },
+    "frame": {
+      "const": true,
+      "description": "a frame: a part whose whole job is the landmark of a region; it opens on one Block and is checked as a block file (blockRoot zone, rule 01)"
     }
   },
   "required": [

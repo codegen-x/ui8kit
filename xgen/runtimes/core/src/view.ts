@@ -51,6 +51,8 @@ export interface WalkEnv {
   slotArgs?: Record<string, string[]>;
   /** lines for the screen outlet */
   outlet?: () => string[];
+  /** lines for a part of the screen layout (its component tag) */
+  part?: (name: string) => string[];
 }
 
 const pad = (lines: string[], n = 1): string[] => lines.map((l) => (l ? "  ".repeat(n) + l : l));
@@ -264,6 +266,7 @@ function walkNode(n: ViewNode, env: WalkEnv): string[] {
     return openTag(n.organism, attrs, children, s.attr);
   }
   if ("outlet" in n) return env.outlet ? env.outlet() : [];
+  if ("part" in n) return env.part ? env.part(n.part) : [];
   return [];
 }
 

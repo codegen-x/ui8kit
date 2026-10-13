@@ -17,7 +17,7 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
+  import Figure from "../primitives/figure/figure.svelte";
   import Group from "../primitives/group/group.svelte";
   import Inline from "../primitives/inline/inline.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
@@ -30,8 +30,7 @@
   let { q, labels, item, layout = "grid" }: QuoteCardProps = $props();
 </script>
 
-<Block
-  tag="figure"
+<Figure
   class={cn(
     "m-0 flex flex-col gap-4",
     ((item?.kind === "plain") ? "" : "rounded p-6 inset-ring inset-ring-border bg-card"),
@@ -87,4 +86,4 @@
       </Stack>
     </Group>
   {/if}
-</Block>
+</Figure>

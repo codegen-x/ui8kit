@@ -12,18 +12,18 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
   import Box from "../primitives/box/box.svelte";
   import Link from "../primitives/link/link.svelte";
   import List from "../primitives/list/list.svelte";
   import ListItem from "../primitives/list/list-item.svelte";
+  import Nav from "../primitives/nav/nav.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
 
   let { label, groups }: FooterLinkColumnsProps = $props();
 </script>
 
-<Block tag="nav" aria-label={label}>
+<Nav aria-label={label}>
   <Box class="grid grid-cols-2 gap-8 sm:grid-cols-3">
     {#each groups as g, i (g.id)}
       {#if (i < 3)}
@@ -44,4 +44,4 @@
       {/if}
     {/each}
   </Box>
-</Block>
+</Nav>

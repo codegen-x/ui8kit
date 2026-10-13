@@ -5,7 +5,7 @@
  * activity side by side, stacked: one below the other), cols (2, 4), tone, density.
  */
 import { type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
+import { Box } from "../primitives/box/box";
 import { Grid } from "../primitives/grid/grid";
 import { Stack } from "../primitives/stack/stack";
 import { BarChart } from "../components/bar-chart";
@@ -47,9 +47,9 @@ export function DashboardOverview({
       <Stack gap="6" align="stretch">
         <Grid cols={(((cols as string) === "2") ? "1-2" : "1-4")} className="gap-4" data-testid="items">
           {(metrics ?? []).map((m) => (
-            <Block key={m.id} tag="div" data-testid="item">
+            <Box key={m.id} data-testid="item">
               <StatTile label={m.label} value={m.value} icon={m.icon} hint={m.hint} />
-            </Block>
+            </Box>
           ))}
         </Grid>
         <Grid

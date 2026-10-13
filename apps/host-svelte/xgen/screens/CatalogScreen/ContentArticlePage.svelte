@@ -24,26 +24,33 @@
   const article = fromCodex<Section>(articleEntries, ARTICLE_FIELDS);
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.catalog.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-        {ui.catalog.sections.content.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="category-title">
-        {ui.catalog.categories.contentArticle}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {tpl(ui.catalog.count, 1, 4)}
-      </Text>
-    </Stack>
-    <Block tag="section" aria-labelledby="catalog-article-title" data-testid="catalog-block" data-block="article">
-      <Stack gap="6" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.catalog.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+          {ui.catalog.sections.content.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="category-title">
+          {ui.catalog.categories.contentArticle}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {tpl(ui.catalog.count, 1, 4)}
+        </Text>
+      </Stack>
+      <Stack
+        gap="6"
+        align="stretch"
+        role="group"
+        aria-labelledby="catalog-article-title"
+        data-testid="catalog-block"
+        data-block="article"
+      >
         <Stack gap="2" align="stretch">
           <Title as={2} size="2xl" weight="bold" id="catalog-article-title">
             {ui.blocks.names.article}
@@ -52,103 +59,103 @@
             {ui.blocks.docs.article}
           </Text>
         </Stack>
-        <Block
-          tag="section"
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="article-column-label"
           data-testid="variant"
           data-block="article"
           data-variant="column"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="article-column-label" data-testid="variant-label">
-              {ui.blocks.variants.article.column}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <ArticleBody
-                id="article-column"
-                title={ui.vibe.article.title}
-                sections={article}
-                tocTitle={ui.vibe.article.toc}
-                layout="column"
-                quotes="show"
-                tone="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="article-column-label" data-testid="variant-label">
+            {ui.blocks.variants.article.column}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <ArticleBody
+              id="article-column"
+              title={ui.vibe.article.title}
+              sections={article}
+              tocTitle={ui.vibe.article.toc}
+              layout="column"
+              quotes="show"
+              tone="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="article-toc-label"
           data-testid="variant"
           data-block="article"
           data-variant="toc"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="article-toc-label" data-testid="variant-label">
-              {ui.blocks.variants.article.toc}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <ArticleBody
-                id="article-toc"
-                title={ui.vibe.article.title}
-                sections={article}
-                tocTitle={ui.vibe.article.toc}
-                layout="toc"
-                quotes="show"
-                tone="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="article-toc-label" data-testid="variant-label">
+            {ui.blocks.variants.article.toc}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <ArticleBody
+              id="article-toc"
+              title={ui.vibe.article.title}
+              sections={article}
+              tocTitle={ui.vibe.article.toc}
+              layout="toc"
+              quotes="show"
+              tone="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="article-plain-label"
           data-testid="variant"
           data-block="article"
           data-variant="plain"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="article-plain-label" data-testid="variant-label">
-              {ui.blocks.variants.article.plain}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <ArticleBody
-                id="article-plain"
-                title={ui.vibe.article.title}
-                sections={article}
-                tocTitle={ui.vibe.article.toc}
-                layout="column"
-                quotes="hide"
-                tone="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="article-plain-label" data-testid="variant-label">
+            {ui.blocks.variants.article.plain}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <ArticleBody
+              id="article-plain"
+              title={ui.vibe.article.title}
+              sections={article}
+              tocTitle={ui.vibe.article.toc}
+              layout="column"
+              quotes="hide"
+              tone="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="article-muted-label"
           data-testid="variant"
           data-block="article"
           data-variant="muted"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="article-muted-label" data-testid="variant-label">
-              {ui.blocks.variants.article.muted}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <ArticleBody
-                id="article-muted"
-                title={ui.vibe.article.title}
-                sections={article}
-                tocTitle={ui.vibe.article.toc}
-                layout="column"
-                quotes="show"
-                tone="muted"
-              />
-            </Box>
-          </Stack>
-        </Block>
+          <Title as={3} size="base" weight="bold" id="article-muted-label" data-testid="variant-label">
+            {ui.blocks.variants.article.muted}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <ArticleBody
+              id="article-muted"
+              title={ui.vibe.article.title}
+              sections={article}
+              tocTitle={ui.vibe.article.toc}
+              layout="column"
+              quotes="show"
+              tone="muted"
+            />
+          </Box>
+        </Stack>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

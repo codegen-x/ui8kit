@@ -24,32 +24,34 @@ const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.blocks.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
-          {{ ui.blocks.themes.marketing.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="block-title">
-          {{ ui.blocks.names.beforeafter }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ ui.blocks.docs.beforeafter }}
-        </Text>
-      </Stack>
-      <Block
-        tag="section"
-        aria-labelledby="beforeafter-cards-label"
-        data-testid="variant"
-        data-block="beforeafter"
-        data-variant="cards"
-      >
-        <Stack gap="4" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.blocks.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
+            {{ ui.blocks.themes.marketing.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="block-title">
+            {{ ui.blocks.names.beforeafter }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ ui.blocks.docs.beforeafter }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="beforeafter-cards-label"
+          data-testid="variant"
+          data-block="beforeafter"
+          data-variant="cards"
+        >
           <Title :as="2" size="base" weight="bold" id="beforeafter-cards-label" data-testid="variant-label">
             {{ ui.blocks.variants.beforeafter.cards }}
           </Title>
@@ -66,15 +68,15 @@ const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="beforeafter-rows-label"
-        data-testid="variant"
-        data-block="beforeafter"
-        data-variant="rows"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="beforeafter-rows-label"
+          data-testid="variant"
+          data-block="beforeafter"
+          data-variant="rows"
+        >
           <Title :as="2" size="base" weight="bold" id="beforeafter-rows-label" data-testid="variant-label">
             {{ ui.blocks.variants.beforeafter.rows }}
           </Title>
@@ -91,15 +93,15 @@ const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="beforeafter-plain-label"
-        data-testid="variant"
-        data-block="beforeafter"
-        data-variant="plain"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="beforeafter-plain-label"
+          data-testid="variant"
+          data-block="beforeafter"
+          data-variant="plain"
+        >
           <Title :as="2" size="base" weight="bold" id="beforeafter-plain-label" data-testid="variant-label">
             {{ ui.blocks.variants.beforeafter.plain }}
           </Title>
@@ -116,15 +118,15 @@ const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="beforeafter-muted-label"
-        data-testid="variant"
-        data-block="beforeafter"
-        data-variant="muted"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="beforeafter-muted-label"
+          data-testid="variant"
+          data-block="beforeafter"
+          data-variant="muted"
+        >
           <Title :as="2" size="base" weight="bold" id="beforeafter-muted-label" data-testid="variant-label">
             {{ ui.blocks.variants.beforeafter.muted }}
           </Title>
@@ -141,7 +143,7 @@ const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

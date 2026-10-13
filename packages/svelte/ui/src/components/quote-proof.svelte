@@ -12,22 +12,18 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
+  import Figure from "../primitives/figure/figure.svelte";
   import Text from "../primitives/text/text.svelte";
   import { cn } from "../utils";
 
   let { quote, quoteBy, center = false }: QuoteProofProps = $props();
 </script>
 
-<Block
-  tag="figure"
-  class={cn("flex flex-col gap-2", (center ? "items-center text-center" : ""))}
-  data-testid="proof"
->
+<Figure class={cn("flex flex-col gap-2", (center ? "items-center text-center" : ""))} data-testid="proof">
   <Text size="xl">
     {quote}
   </Text>
   <Text size="sm" class="text-muted-foreground">
     {quoteBy}
   </Text>
-</Block>
+</Figure>

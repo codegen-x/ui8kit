@@ -3,11 +3,11 @@
 // (`ComposedSpec.catalog`); this file turns it into routes and areas, like the gallery.
 import { call, each, op, ref, text, use, tpl } from "./build";
 import type { BlockSpec, CatalogTree, OrganismSpec, ScreenSpec, Value, ViewNode } from "./ir";
-import { blockKey, dictKey, expandUse, hoistShared, TEXT, variantSection, type OrganismNode } from "./compose-kit";
+import { blockKey, dictKey, expandUse, hoistShared, labelledGroup, pageSection, skipLink, TEXT, variantSection, type OrganismNode } from "./compose-kit";
 import { wide } from "./authoring/components/frames";
 
 const CARD = "flex flex-col gap-2 rounded p-4 inset-ring inset-ring-border";
-const page = (...children: ViewNode[]): ViewNode => use("Container", { props: { Class: `${wide} py-10` } }, use("Stack", { props: { Gap: "8", Align: "stretch" } }, ...children));
+const page = (...children: ViewNode[]): ViewNode => pageSection(use("Container", { props: { Class: `${wide} py-10` } }, use("Stack", { props: { Gap: "8", Align: "stretch" } }, ...children)));
 const head = (eyebrow: Value | null, title: Value, intro: Value, testid: string): ViewNode =>
   use("Stack", { props: { Gap: "2", Align: "stretch" } },
     ...(eyebrow ? [use("Text", { props: { Size: "sm", Class: "font-medium text-muted-foreground" }, attrs: { "data-testid": "catalog-eyebrow" } }, text(eyebrow))] : []),
@@ -48,12 +48,11 @@ export function catalog(tree: CatalogTree, blocks: BlockSpec[], org: Record<stri
         ...shown.map(({ b, vs }) => {
           const key = blockKey(b);
           const drawn: OrganismNode[] = [];
-          const node = use("Block", { props: { Tag: "section" }, attrs: { "aria-labelledby": `catalog-${key}-title`, "data-testid": "catalog-block", "data-block": key } },
-            use("Stack", { props: { Gap: "6", Align: "stretch" } },
-              use("Stack", { props: { Gap: "2", Align: "stretch" } },
-                use("Title", { props: { As: 2, Size: "2xl", Weight: "bold" }, attrs: { id: `catalog-${key}-title` } }, text(TEXT(`blocks.names.${key}`))),
-                use("Text", { props: { Size: "sm", Class: "max-w-2xl text-muted-foreground" } }, text(TEXT(`blocks.docs.${key}`)))),
-              ...vs.map((v) => variantSection(b, v, org, drawn, 3))));
+          const node = labelledGroup("6", `catalog-${key}-title`, { "data-testid": "catalog-block", "data-block": key },
+            use("Stack", { props: { Gap: "2", Align: "stretch" } },
+              use("Title", { props: { As: 2, Size: "2xl", Weight: "bold" }, attrs: { id: `catalog-${key}-title` } }, text(TEXT(`blocks.names.${key}`))),
+              use("Text", { props: { Size: "sm", Class: "max-w-2xl text-muted-foreground" } }, text(TEXT(`blocks.docs.${key}`)))),
+            ...vs.map((v) => variantSection(b, v, org, drawn, 3)));
           // a block shown in two categories names its shared values after the second category
           hoistShared(b, drawn, consts, hoisted.has(key) ? `${c.id}_${key}` : key);
           hoisted.add(key);
@@ -92,21 +91,19 @@ export function catalog(tree: CatalogTree, blocks: BlockSpec[], org: Record<stri
     use("Text", { props: { Size: "sm", Class: "text-muted-foreground" } }, text(ref("p.text"))),
     use("Text", { props: { Size: "xs", Class: "text-muted-foreground" }, attrs: { "data-testid": "page-count" } }, text(tpl(TEXT("catalog.pageCount"), ref("p.blocks")))));
   const grid = (testid: string, ...body: ViewNode[]): ViewNode => use("List", { props: { Tag: "ul", Class: "grid gap-4 sm:grid-cols-2 lg:grid-cols-3" }, attrs: { "data-testid": testid } }, ...body);
-  const pagesSection = (h: 1 | 2): ViewNode => use("Block", { props: { Tag: "section" }, attrs: { "aria-labelledby": `pages-title-${h}`, "data-testid": "pages-section" } },
-    use("Stack", { props: { Gap: "4", Align: "stretch" } },
-      use("Stack", { props: { Gap: "2", Align: "stretch" } },
-        use("Title", { props: { As: 2, Size: "2xl", Weight: "bold" }, attrs: { id: `pages-title-${h}` } }, text(TEXT("catalog.pagesTitle"))),
-        use("Text", { props: { Size: "sm", Class: "max-w-2xl text-muted-foreground" } }, text(TEXT("catalog.pagesText")))),
-      grid("page-list", each(ref("PAGES"), "p", ref("p.id"), pageCard))));
+  const pagesSection = (h: 1 | 2): ViewNode => labelledGroup("4", `pages-title-${h}`, { "data-testid": "pages-section" },
+    use("Stack", { props: { Gap: "2", Align: "stretch" } },
+      use("Title", { props: { As: 2, Size: "2xl", Weight: "bold" }, attrs: { id: `pages-title-${h}` } }, text(TEXT("catalog.pagesTitle"))),
+      use("Text", { props: { Size: "sm", Class: "max-w-2xl text-muted-foreground" } }, text(TEXT("catalog.pagesText")))),
+    grid("page-list", each(ref("PAGES"), "p", ref("p.id"), pageCard)));
   areas["index"] = [page(
     head(null, TEXT("catalog.title"), TEXT("catalog.intro"), "catalog-title"),
     each(ref("CATALOG"), "section", ref("section.id"),
-      use("Block", { props: { Tag: "section" }, attrs: { "aria-labelledby": ref("section.titleId"), "data-testid": "catalog-section", "data-section": ref("section.id") } },
-        use("Stack", { props: { Gap: "4", Align: "stretch" } },
-          use("Stack", { props: { Gap: "2", Align: "stretch" } },
-            use("Title", { props: { As: 2, Size: "2xl", Weight: "bold" }, attrs: { id: ref("section.titleId") } }, text(ref("section.title"))),
-            use("Text", { props: { Size: "sm", Class: "max-w-2xl text-muted-foreground" } }, text(ref("section.text")))),
-          grid("category-list", each(ref("section.categories"), "cat", ref("cat.id"), categoryCard))))),
+      labelledGroup("4", ref("section.titleId"), { "data-testid": "catalog-section", "data-section": ref("section.id") },
+        use("Stack", { props: { Gap: "2", Align: "stretch" } },
+          use("Title", { props: { As: 2, Size: "2xl", Weight: "bold" }, attrs: { id: ref("section.titleId") } }, text(ref("section.title"))),
+          use("Text", { props: { Size: "sm", Class: "max-w-2xl text-muted-foreground" } }, text(ref("section.text")))),
+        grid("category-list", each(ref("section.categories"), "cat", ref("cat.id"), categoryCard)))),
     pagesSection(2))];
   areas["pages"] = [page(back("#/", "catalog.back"), head(null, TEXT("catalog.pagesTitle"), TEXT("catalog.pagesText"), "pages-title"), grid("page-list", each(ref("PAGES"), "p", ref("p.id"), pageCard)))];
   areas["notfound"] = [page(
@@ -115,15 +112,15 @@ export function catalog(tree: CatalogTree, blocks: BlockSpec[], org: Record<stri
   return { areas, routes, consts, used: [...used] };
 }
 
-/** the bar above the catalog: the skip link, the brand, the tabs (categories, pages), links to the block gallery, the Skins screen and the Discovery panorama, and the theme button */
+/** the header part of the catalog: the skip link, the brand, the tabs (categories, pages), links to the block gallery, the Skins screen and the Discovery panorama, and the theme button */
 export function catalogChrome(): ViewNode[] {
   const tab = (href: string, key: string, testid: string): ViewNode => use("Link", { props: { Href: href, Variant: "default", Class: "text-sm font-medium" }, attrs: { "data-testid": testid } }, text(TEXT(key)));
   return [
-    use("LinkPlain", { props: { Href: "#main-content", Class: "sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:shadow" }, attrs: { "data-testid": "skip-link" } }, text(TEXT("site.header.skip"))),
     use("Block", { props: { Tag: "header", Class: "border-b border-border" } },
+      skipLink("sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:shadow"),
       use("Container", { props: { Class: `${wide} flex flex-wrap items-center justify-between gap-4 py-3` } },
         use("Link", { props: { Href: "#/", Variant: "default", Class: "text-lg font-bold" }, attrs: { "data-testid": "brand" } }, text(TEXT("catalog.title"))),
-        use("Block", { props: { Tag: "nav", Class: "flex flex-wrap items-center gap-4" }, attrs: { "aria-label": TEXT("catalog.navLabel") } },
+        use("Nav", { props: { Class: "flex flex-wrap items-center gap-4" }, attrs: { "aria-label": TEXT("catalog.navLabel") } },
           tab("#/", "catalog.categoriesTab", "tab-categories"), tab("#/pages", "catalog.pagesTitle", "tab-pages"), tab("/blocks/", "blocks.title", "gallery-link"), tab("/skins/", "skins.title", "skins-link"), tab("/discovery/", "discovery.title", "discovery-link"),
           use("Button", { props: { Variant: "outline", Size: "sm" }, on: { click: call("actions.toggleTheme") }, attrs: { "data-testid": "theme-toggle" } }, text(TEXT("theme.toggle")))))),
   ];

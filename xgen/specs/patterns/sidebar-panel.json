@@ -68,6 +68,7 @@
     "svelte": true,
     "react": true
   },
+  "frame": true,
   "examples": [
     {
       "id": "variant.chat",

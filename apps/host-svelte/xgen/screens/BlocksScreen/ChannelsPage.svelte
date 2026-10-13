@@ -23,32 +23,34 @@
   const channels = fromCodex<Feature>(channelsEntries, CHANNELS_FIELDS);
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.blocks.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="support">
-        {ui.blocks.themes.support.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-        {ui.blocks.names.channels}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {ui.blocks.docs.channels}
-      </Text>
-    </Stack>
-    <Block
-      tag="section"
-      aria-labelledby="channels-grid-label"
-      data-testid="variant"
-      data-block="channels"
-      data-variant="grid"
-    >
-      <Stack gap="4" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.blocks.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="support">
+          {ui.blocks.themes.support.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+          {ui.blocks.names.channels}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {ui.blocks.docs.channels}
+        </Text>
+      </Stack>
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="channels-grid-label"
+        data-testid="variant"
+        data-block="channels"
+        data-variant="grid"
+      >
         <Title as={2} size="base" weight="bold" id="channels-grid-label" data-testid="variant-label">
           {ui.blocks.variants.channels.grid}
         </Title>
@@ -65,15 +67,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="channels-twoUp-label"
-      data-testid="variant"
-      data-block="channels"
-      data-variant="twoUp"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="channels-twoUp-label"
+        data-testid="variant"
+        data-block="channels"
+        data-variant="twoUp"
+      >
         <Title as={2} size="base" weight="bold" id="channels-twoUp-label" data-testid="variant-label">
           {ui.blocks.variants.channels.twoUp}
         </Title>
@@ -90,15 +92,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="channels-list-label"
-      data-testid="variant"
-      data-block="channels"
-      data-variant="list"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="channels-list-label"
+        data-testid="variant"
+        data-block="channels"
+        data-variant="list"
+      >
         <Title as={2} size="base" weight="bold" id="channels-list-label" data-testid="variant-label">
           {ui.blocks.variants.channels.list}
         </Title>
@@ -115,15 +117,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="channels-plain-label"
-      data-testid="variant"
-      data-block="channels"
-      data-variant="plain"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="channels-plain-label"
+        data-testid="variant"
+        data-block="channels"
+        data-variant="plain"
+      >
         <Title as={2} size="base" weight="bold" id="channels-plain-label" data-testid="variant-label">
           {ui.blocks.variants.channels.plain}
         </Title>
@@ -140,6 +142,6 @@
           />
         </Box>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

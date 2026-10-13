@@ -6,9 +6,10 @@
  * density.
  */
 import { type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
 import { Box } from "../primitives/box/box";
 import { Button } from "../primitives/button/button";
+import { Figure } from "../primitives/figure/figure";
+import { FigureCaption } from "../primitives/figure/figure-caption";
 import { Grid } from "../primitives/grid/grid";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Text } from "../primitives/text/text";
@@ -46,7 +47,7 @@ export function VideoGrid({
     <SectionFrame id={id} title={title} tone={tone} density={density}>
       <Grid cols={cols} className="gap-4" data-testid="items">
         {(quotes ?? []).map((q) => (
-          <Block key={q.id} tag="figure" className="m-0 flex flex-col gap-4" data-testid="item">
+          <Figure key={q.id} className="m-0 flex flex-col gap-4" data-testid="item">
             <Box className="relative">
               <MediaFrame alt={q.author} ratio="16/9" />
               <Button
@@ -72,16 +73,16 @@ export function VideoGrid({
               ) : null}
             </Box>
             {((caption as string) === "below") ? (
-              <Block tag="figcaption" data-testid="caption">
+              <FigureCaption data-testid="caption">
                 <Text size="sm" weight="semibold">
                   {q.author}
                 </Text>
                 <Text size="xs" className="text-muted-foreground">
                   {tpl(byLine, q.role, q.company)}
                 </Text>
-              </Block>
+              </FigureCaption>
             ) : null}
-          </Block>
+          </Figure>
         ))}
       </Grid>
     </SectionFrame>

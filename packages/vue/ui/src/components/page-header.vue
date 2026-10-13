@@ -10,7 +10,6 @@ export type PageHeaderProps = {
 </script>
 
 <script setup lang="ts">
-import Block from "../primitives/block/block.vue";
 import Box from "../primitives/box/box.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
@@ -20,7 +19,7 @@ defineSlots<{ actions?(): unknown }>();
 </script>
 
 <template>
-  <Block class="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
+  <Box class="flex flex-col items-start gap-4 md:flex-row md:items-center md:justify-between">
     <Box class="flex min-w-0 flex-col gap-2">
       <Title :as="1" size="xl" weight="bold" class="m-0" :id="id">
         {{ title }}
@@ -32,5 +31,5 @@ defineSlots<{ actions?(): unknown }>();
     <Box v-if="$slots.actions" class="flex flex-wrap items-center gap-2">
       <slot name="actions" />
     </Box>
-  </Block>
+  </Box>
 </template>

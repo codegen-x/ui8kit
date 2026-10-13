@@ -90,23 +90,6 @@
   ],
   "view": [
     {
-      "use": "LinkPlain",
-      "props": {
-        "Href": "#main-content",
-        "Class": "sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border"
-      },
-      "attrs": {
-        "data-testid": "skip-link"
-      },
-      "children": [
-        {
-          "text": {
-            "$": "labels.skip"
-          }
-        }
-      ]
-    },
-    {
       "use": "Block",
       "props": {
         "Tag": "header",
@@ -140,6 +123,23 @@
         }
       },
       "children": [
+        {
+          "use": "LinkPlain",
+          "props": {
+            "Href": "#main-content",
+            "Class": "sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border"
+          },
+          "attrs": {
+            "data-testid": "skip-link"
+          },
+          "children": [
+            {
+              "text": {
+                "$": "labels.skip"
+              }
+            }
+          ]
+        },
         {
           "use": "Container",
           "props": {
@@ -190,10 +190,8 @@
               ]
             },
             {
-              "use": "Block",
-              "props": {
-                "Tag": "nav"
-              },
+              "use": "Nav",
+              "props": {},
               "attrs": {
                 "aria-label": {
                   "$": "labels.nav"

@@ -45,48 +45,50 @@ const {
 </script>
 
 <template>
-  <Backdrop :kind="(((surface as string) === 'image') ? 'image' : 'none')" :alt="title">
-    <SectionFrame
-      :id="id"
-      :title="title"
-      :tone="tone"
-      :density="density"
-      :align="align"
-      :measure="
-        (surface as string) === 'panel' ? 'fill'
-        : (layout as string) === 'stack' ? 'xs'
-        : 'default'
+  <SectionFrame
+    :id="id"
+    :title="title"
+    :tone="tone"
+    :density="density"
+    :align="align"
+    :measure="
+      (surface as string) === 'panel' ? 'fill'
+      : (layout as string) === 'stack' ? 'xs'
+      : 'default'
+    "
+    :class="cn(
+      cn((((surface as string) === 'image') ? 'bg-transparent' : ''), (((surface as string) === 'panel') ? 'py-0' : '')),
+      (
+        (((surface as string) === 'image') ? 'image' : 'none') === 'image' ? 'relative isolate overflow-hidden'
+        : ''
+      )
+    )"
+  >
+    <Backdrop :kind="(((surface as string) === 'image') ? 'image' : 'none')" :alt="title" />
+    <Grid v-if="((surface as string) === 'panel')"
+      :cols="
+        (cols as string) === '2' ? '2'
+        : (cols as string) === '3' ? '2-3'
+        : (cols as string) === '4' ? '2-4'
+        : '3-6'
       "
-      :class="cn(
-        (((surface as string) === 'image') ? 'bg-transparent' : ''),
-        (((surface as string) === 'panel') ? 'py-0' : '')
-      )"
+      :class="cn('w-full items-center bg-muted px-6', defaults.stats.panel)"
+      data-testid="items"
     >
-      <Grid v-if="((surface as string) === 'panel')"
-        :cols="
-          (cols as string) === '2' ? '2'
-          : (cols as string) === '3' ? '2-3'
-          : (cols as string) === '4' ? '2-4'
-          : '3-6'
-        "
-        :class="cn('w-full items-center bg-muted px-6', defaults.stats.panel)"
-        data-testid="items"
-      >
-        <StatFigure v-for="stat in stats" :key="stat.id" :stat="stat" :item="item" :align="align" />
-      </Grid>
-      <Grid v-else
-        :cols="
-          (layout as string) === 'stack' ? '1'
-          : (cols as string) === '2' ? '2'
-          : (cols as string) === '3' ? '2-3'
-          : (cols as string) === '4' ? '2-4'
-          : '3-6'
-        "
-        class="gap-6"
-        data-testid="items"
-      >
-        <StatFigure v-for="stat in stats" :key="stat.id" :stat="stat" :item="item" :align="align" />
-      </Grid>
-    </SectionFrame>
-  </Backdrop>
+      <StatFigure v-for="stat in stats" :key="stat.id" :stat="stat" :item="item" :align="align" />
+    </Grid>
+    <Grid v-else
+      :cols="
+        (layout as string) === 'stack' ? '1'
+        : (cols as string) === '2' ? '2'
+        : (cols as string) === '3' ? '2-3'
+        : (cols as string) === '4' ? '2-4'
+        : '3-6'
+      "
+      class="gap-6"
+      data-testid="items"
+    >
+      <StatFigure v-for="stat in stats" :key="stat.id" :stat="stat" :item="item" :align="align" />
+    </Grid>
+  </SectionFrame>
 </template>

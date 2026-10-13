@@ -5,6 +5,7 @@
  * (timeline, list), density (default, compact), tone (default, muted).
  */
 import { type ReactNode } from "react";
+import { Block } from "../primitives/block/block";
 import { Container } from "../primitives/container/container";
 import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
@@ -12,7 +13,7 @@ import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { Panel } from "../components/panel";
 import { Timeline } from "../components/timeline";
-import { cn } from "../utils";
+import { cn, tpl } from "../utils";
 import type { Event } from "./activity-feed.types";
 
 export type ActivityFeedProps = {
@@ -35,38 +36,44 @@ export function ActivityFeed({
   tone = "default",
 }: ActivityFeedProps) {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-8" data-slot="container">
-      <Panel title={title} description={text} id={id} className={(((tone as string) === "muted") ? "bg-muted" : "")}>
-        {((layout as string) === "timeline") ? (
-          <Timeline items={events} />
-        ) : (
-          <List className="m-0 flex list-none flex-col p-0" data-testid="items">
-            {(events ?? []).map((e) => (
-              <ListItem key={e.id}
-                className={cn(
-                  "flex items-start justify-between gap-4 border-b border-border last:border-0",
-                  (((density as string) === "compact") ? "py-2" : "py-4")
-                )}
-                data-testid="item"
-              >
-                <Stack gap="0">
-                  <Text size="sm" weight="semibold">
-                    {e.title}
-                  </Text>
-                  {((density as string) === "default") ? (
-                    <Text size="sm" className="text-muted-foreground">
-                      {e.text}
+    <Block
+      tag="section"
+      aria-labelledby={((title && id) ? tpl("{0}-t", id) : undefined)}
+      data-testid="panel-section"
+    >
+      <Container className="mx-auto w-full max-w-6xl px-4 py-8" data-slot="container">
+        <Panel title={title} description={text} id={id} className={(((tone as string) === "muted") ? "bg-muted" : "")}>
+          {((layout as string) === "timeline") ? (
+            <Timeline items={events} />
+          ) : (
+            <List className="m-0 flex list-none flex-col p-0" data-testid="items">
+              {(events ?? []).map((e) => (
+                <ListItem key={e.id}
+                  className={cn(
+                    "flex items-start justify-between gap-4 border-b border-border last:border-0",
+                    (((density as string) === "compact") ? "py-2" : "py-4")
+                  )}
+                  data-testid="item"
+                >
+                  <Stack gap="0">
+                    <Text size="sm" weight="semibold">
+                      {e.title}
                     </Text>
-                  ) : null}
-                </Stack>
-                <Text size="xs" className="shrink-0 text-muted-foreground">
-                  {e.time}
-                </Text>
-              </ListItem>
-            ))}
-          </List>
-        )}
-      </Panel>
-    </Container>
+                    {((density as string) === "default") ? (
+                      <Text size="sm" className="text-muted-foreground">
+                        {e.text}
+                      </Text>
+                    ) : null}
+                  </Stack>
+                  <Text size="xs" className="shrink-0 text-muted-foreground">
+                    {e.time}
+                  </Text>
+                </ListItem>
+              ))}
+            </List>
+          )}
+        </Panel>
+      </Container>
+    </Block>
   );
 }

@@ -5,10 +5,10 @@ import { loadSpecs, validateRegistry } from "../src";
 const root = join(import.meta.dir, "..", "..");
 const { bricks, problems } = loadSpecs(root);
 
-test("38 bricks and 68 parts load and match the schema", () => {
+test("42 bricks and 73 parts load and match the schema", () => {
   expect(problems).toEqual([]);
-  expect(bricks.length).toBe(38);
-  expect(bricks.reduce((n, b) => n + b.brick.parts.length, 0)).toBe(68);
+  expect(bricks.length).toBe(42);
+  expect(bricks.reduce((n, b) => n + b.brick.parts.length, 0)).toBe(73);
 });
 
 test("the registry is consistent", () => {

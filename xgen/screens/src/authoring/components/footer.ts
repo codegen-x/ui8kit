@@ -13,7 +13,7 @@ export const footerColumns = spec("pattern.footer-columns", "FooterColumns", "Th
     { name: "groups", type: ts("MegaGroup[]"), required: true },
   ],
   view: [
-    use("Block", { props: { Tag: "nav" }, attrs: { "aria-label": ref("label") } },
+    use("Nav", { props: {}, attrs: { "aria-label": ref("label") } },
       use("Grid", { props: { Cols: "1", Class: "grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5" }, attrs: { "data-testid": "footer-groups" } },
         each(ref("groups"), "g", ref("g.id"), use("Stack", { props: { Gap: "2" }, attrs: { "data-testid": "group" } },
           strong(ref("g.title"), "sm"),
@@ -23,6 +23,7 @@ export const footerColumns = spec("pattern.footer-columns", "FooterColumns", "Th
 
 /** footer card: the brand mark and the link groups in one rounded card (the card layout of SitemapFooter) */
 export const footerCard = spec("pattern.footer-card", "FooterCard", "The card layout of SitemapFooter: the brand mark and word, then the link groups in one row, in a rounded card.", {
+  frame: true,
   typeImports: [{ from: "MegaMenu", names: ["MegaGroup"] }],
   props: [
     { name: "label", type: "string", required: true, docs: "accessible name of the link groups" },
@@ -43,7 +44,7 @@ export const footerCard = spec("pattern.footer-card", "FooterCard", "The card la
             use("Inline", { props: { Class: "flex size-8 items-center justify-center rounded bg-foreground text-background" } },
               use("LucideIcon", { props: { Name: "hexagon", Size: 16 } })),
             strong(ref("brand"), "base", "bold")),
-          use("Block", { props: { Tag: "nav", Class: "min-w-0 flex-1" }, attrs: { "aria-label": ref("label") } },
+          use("Nav", { props: { Class: "min-w-0 flex-1" }, attrs: { "aria-label": ref("label") } },
             use("Group", { props: { Gap: "0", Align: "start", Class: cn("flex w-full flex-nowrap justify-between", layoutOf("footer.groups")) }, attrs: { "data-testid": "footer-groups" } },
               each(ref("groups"), "g", ref("g.id"), groupCol))))))];
   })(),

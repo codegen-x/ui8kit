@@ -42,37 +42,39 @@ const HERO_MEDIA = { codeTitle: ui.vibe.code.title, prompt: ui.vibe.code.prompt,
 
 export function HeroPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text
-            size="sm"
-            className="font-medium text-muted-foreground"
-            data-testid="block-theme"
-            data-theme-id="marketing"
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text
+              size="sm"
+              className="font-medium text-muted-foreground"
+              data-testid="block-theme"
+              data-theme-id="marketing"
+            >
+              {ui.blocks.themes.marketing.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.hero}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.hero}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="hero-centered-label"
+            data-testid="variant"
+            data-block="hero"
+            data-variant="centered"
           >
-            {ui.blocks.themes.marketing.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.hero}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.hero}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="hero-centered-label"
-          data-testid="variant"
-          data-block="hero"
-          data-variant="centered"
-        >
-          <Stack gap="4" align="stretch">
             <Title as={2} size="base" weight="bold" id="hero-centered-label" data-testid="variant-label">
               {ui.blocks.variants.hero.centered}
             </Title>
@@ -91,15 +93,15 @@ export function HeroPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="hero-screenshot-label"
-          data-testid="variant"
-          data-block="hero"
-          data-variant="screenshot"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="hero-screenshot-label"
+            data-testid="variant"
+            data-block="hero"
+            data-variant="screenshot"
+          >
             <Title as={2} size="base" weight="bold" id="hero-screenshot-label" data-testid="variant-label">
               {ui.blocks.variants.hero.screenshot}
             </Title>
@@ -118,15 +120,15 @@ export function HeroPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="hero-backdrop-label"
-          data-testid="variant"
-          data-block="hero"
-          data-variant="backdrop"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="hero-backdrop-label"
+            data-testid="variant"
+            data-block="hero"
+            data-variant="backdrop"
+          >
             <Title as={2} size="base" weight="bold" id="hero-backdrop-label" data-testid="variant-label">
               {ui.blocks.variants.hero.backdrop}
             </Title>
@@ -145,15 +147,15 @@ export function HeroPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="hero-code-label"
-          data-testid="variant"
-          data-block="hero"
-          data-variant="code"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="hero-code-label"
+            data-testid="variant"
+            data-block="hero"
+            data-variant="code"
+          >
             <Title as={2} size="base" weight="bold" id="hero-code-label" data-testid="variant-label">
               {ui.blocks.variants.hero.code}
             </Title>
@@ -172,15 +174,15 @@ export function HeroPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="hero-cluster-label"
-          data-testid="variant"
-          data-block="hero"
-          data-variant="cluster"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="hero-cluster-label"
+            data-testid="variant"
+            data-block="hero"
+            data-variant="cluster"
+          >
             <Title as={2} size="base" weight="bold" id="hero-cluster-label" data-testid="variant-label">
               {ui.blocks.variants.hero.cluster}
             </Title>
@@ -199,15 +201,15 @@ export function HeroPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="hero-display-label"
-          data-testid="variant"
-          data-block="hero"
-          data-variant="display"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="hero-display-label"
+            data-testid="variant"
+            data-block="hero"
+            data-variant="display"
+          >
             <Title as={2} size="base" weight="bold" id="hero-display-label" data-testid="variant-label">
               {ui.blocks.variants.hero.display}
             </Title>
@@ -226,15 +228,15 @@ export function HeroPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="hero-form-label"
-          data-testid="variant"
-          data-block="hero"
-          data-variant="form"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="hero-form-label"
+            data-testid="variant"
+            data-block="hero"
+            data-variant="form"
+          >
             <Title as={2} size="base" weight="bold" id="hero-form-label" data-testid="variant-label">
               {ui.blocks.variants.hero.form}
             </Title>
@@ -253,15 +255,15 @@ export function HeroPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="hero-prompt-label"
-          data-testid="variant"
-          data-block="hero"
-          data-variant="prompt"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="hero-prompt-label"
+            data-testid="variant"
+            data-block="hero"
+            data-variant="prompt"
+          >
             <Title as={2} size="base" weight="bold" id="hero-prompt-label" data-testid="variant-label">
               {ui.blocks.variants.hero.prompt}
             </Title>
@@ -287,15 +289,15 @@ export function HeroPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="hero-twoActions-label"
-          data-testid="variant"
-          data-block="hero"
-          data-variant="twoActions"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="hero-twoActions-label"
+            data-testid="variant"
+            data-block="hero"
+            data-variant="twoActions"
+          >
             <Title as={2} size="base" weight="bold" id="hero-twoActions-label" data-testid="variant-label">
               {ui.blocks.variants.hero.twoActions}
             </Title>
@@ -314,15 +316,15 @@ export function HeroPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="hero-split-label"
-          data-testid="variant"
-          data-block="hero"
-          data-variant="split"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="hero-split-label"
+            data-testid="variant"
+            data-block="hero"
+            data-variant="split"
+          >
             <Title as={2} size="base" weight="bold" id="hero-split-label" data-testid="variant-label">
               {ui.blocks.variants.hero.split}
             </Title>
@@ -341,15 +343,15 @@ export function HeroPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="hero-splitStart-label"
-          data-testid="variant"
-          data-block="hero"
-          data-variant="splitStart"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="hero-splitStart-label"
+            data-testid="variant"
+            data-block="hero"
+            data-variant="splitStart"
+          >
             <Title as={2} size="base" weight="bold" id="hero-splitStart-label" data-testid="variant-label">
               {ui.blocks.variants.hero.splitStart}
             </Title>
@@ -368,15 +370,15 @@ export function HeroPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="hero-muted-label"
-          data-testid="variant"
-          data-block="hero"
-          data-variant="muted"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="hero-muted-label"
+            data-testid="variant"
+            data-block="hero"
+            data-variant="muted"
+          >
             <Title as={2} size="base" weight="bold" id="hero-muted-label" data-testid="variant-label">
               {ui.blocks.variants.hero.muted}
             </Title>
@@ -395,15 +397,15 @@ export function HeroPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="hero-saas-label"
-          data-testid="variant"
-          data-block="hero"
-          data-variant="saas"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="hero-saas-label"
+            data-testid="variant"
+            data-block="hero"
+            data-variant="saas"
+          >
             <Title as={2} size="base" weight="bold" id="hero-saas-label" data-testid="variant-label">
               {ui.blocks.variants.hero.saas}
             </Title>
@@ -427,15 +429,15 @@ export function HeroPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="hero-shop-label"
-          data-testid="variant"
-          data-block="hero"
-          data-variant="shop"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="hero-shop-label"
+            data-testid="variant"
+            data-block="hero"
+            data-variant="shop"
+          >
             <Title as={2} size="base" weight="bold" id="hero-shop-label" data-testid="variant-label">
               {ui.blocks.variants.hero.shop}
             </Title>
@@ -459,15 +461,15 @@ export function HeroPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="hero-blog-label"
-          data-testid="variant"
-          data-block="hero"
-          data-variant="blog"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="hero-blog-label"
+            data-testid="variant"
+            data-block="hero"
+            data-variant="blog"
+          >
             <Title as={2} size="base" weight="bold" id="hero-blog-label" data-testid="variant-label">
               {ui.blocks.variants.hero.blog}
             </Title>
@@ -491,8 +493,8 @@ export function HeroPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

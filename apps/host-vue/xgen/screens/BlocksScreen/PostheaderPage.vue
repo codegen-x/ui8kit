@@ -33,32 +33,34 @@ const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS);
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.blocks.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="content">
-          {{ ui.blocks.themes.content.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="block-title">
-          {{ ui.blocks.names.postheader }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ ui.blocks.docs.postheader }}
-        </Text>
-      </Stack>
-      <Block
-        tag="section"
-        aria-labelledby="postheader-start-label"
-        data-testid="variant"
-        data-block="postheader"
-        data-variant="start"
-      >
-        <Stack gap="4" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.blocks.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="content">
+            {{ ui.blocks.themes.content.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="block-title">
+            {{ ui.blocks.names.postheader }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ ui.blocks.docs.postheader }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="postheader-start-label"
+          data-testid="variant"
+          data-block="postheader"
+          data-variant="start"
+        >
           <Title :as="2" size="base" weight="bold" id="postheader-start-label" data-testid="variant-label">
             {{ ui.blocks.variants.postheader.start }}
           </Title>
@@ -75,15 +77,15 @@ const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="postheader-center-label"
-        data-testid="variant"
-        data-block="postheader"
-        data-variant="center"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="postheader-center-label"
+          data-testid="variant"
+          data-block="postheader"
+          data-variant="center"
+        >
           <Title :as="2" size="base" weight="bold" id="postheader-center-label" data-testid="variant-label">
             {{ ui.blocks.variants.postheader.center }}
           </Title>
@@ -100,15 +102,15 @@ const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="postheader-noCover-label"
-        data-testid="variant"
-        data-block="postheader"
-        data-variant="noCover"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="postheader-noCover-label"
+          data-testid="variant"
+          data-block="postheader"
+          data-variant="noCover"
+        >
           <Title :as="2" size="base" weight="bold" id="postheader-noCover-label" data-testid="variant-label">
             {{ ui.blocks.variants.postheader.noCover }}
           </Title>
@@ -125,15 +127,15 @@ const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="postheader-minimal-label"
-        data-testid="variant"
-        data-block="postheader"
-        data-variant="minimal"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="postheader-minimal-label"
+          data-testid="variant"
+          data-block="postheader"
+          data-variant="minimal"
+        >
           <Title :as="2" size="base" weight="bold" id="postheader-minimal-label" data-testid="variant-label">
             {{ ui.blocks.variants.postheader.minimal }}
           </Title>
@@ -150,7 +152,7 @@ const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

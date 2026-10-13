@@ -2,10 +2,10 @@
 // Source: xgen/screens/src/authoring/components/parts.ts
 /**
  * A titled card (surface bg-card, hairline ring): the content panel of a page. An optional title, description
- * and header actions. Pass `id` to name the section by its title.
+ * and header actions. Pass `id` to name the panel by its title. Not a landmark: a labelled group inside the
+ * Block of its block (rule 01).
  */
 import { type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
 import { Box } from "../primitives/box/box";
 import { Text } from "../primitives/text/text";
 import { Title } from "../primitives/title/title";
@@ -22,12 +22,12 @@ export type PanelProps = {
 
 export function Panel({ title, description, id, className, children, actions }: PanelProps) {
   return (
-    <Block
-      tag="section"
+    <Box
       className={cn(
         "flex min-w-0 flex-col gap-4 rounded bg-card p-6 inset-ring inset-ring-border",
         className
       )}
+      role="group"
       aria-labelledby={((title && id) ? tpl("{0}-t", id) : undefined)}
     >
       {(title || actions) ? (
@@ -48,6 +48,6 @@ export function Panel({ title, description, id, className, children, actions }: 
         </Box>
       ) : null}
       {children}
-    </Block>
+    </Box>
   );
 }

@@ -255,6 +255,7 @@ export function checkText(plan: Plan): CheckResult {
       for (const v of Object.values(o)) Array.isArray(v) ? v.forEach(walk) : walk(v);
     };
     walk(s.value.layout);
+    walk(s.value.parts ?? {});
     walk(s.value.areas);
     // a badge column shows ui.status.<value>: every value in the fixture has a word
     for (const src of sourcesOf(s.value)) {

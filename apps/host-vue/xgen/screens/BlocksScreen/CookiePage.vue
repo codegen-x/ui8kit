@@ -8,32 +8,34 @@ import { ui } from "@ui8kit/app-shared/content";
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.blocks.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="promo">
-          {{ ui.blocks.themes.promo.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="block-title">
-          {{ ui.blocks.names.cookie }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ ui.blocks.docs.cookie }}
-        </Text>
-      </Stack>
-      <Block
-        tag="section"
-        aria-labelledby="cookie-bar-label"
-        data-testid="variant"
-        data-block="cookie"
-        data-variant="bar"
-      >
-        <Stack gap="4" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.blocks.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="promo">
+            {{ ui.blocks.themes.promo.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="block-title">
+            {{ ui.blocks.names.cookie }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ ui.blocks.docs.cookie }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="cookie-bar-label"
+          data-testid="variant"
+          data-block="cookie"
+          data-variant="bar"
+        >
           <Title :as="2" size="base" weight="bold" id="cookie-bar-label" data-testid="variant-label">
             {{ ui.blocks.variants.cookie.bar }}
           </Title>
@@ -51,15 +53,15 @@ import { ui } from "@ui8kit/app-shared/content";
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="cookie-card-label"
-        data-testid="variant"
-        data-block="cookie"
-        data-variant="card"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="cookie-card-label"
+          data-testid="variant"
+          data-block="cookie"
+          data-variant="card"
+        >
           <Title :as="2" size="base" weight="bold" id="cookie-card-label" data-testid="variant-label">
             {{ ui.blocks.variants.cookie.card }}
           </Title>
@@ -77,15 +79,15 @@ import { ui } from "@ui8kit/app-shared/content";
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="cookie-settings-label"
-        data-testid="variant"
-        data-block="cookie"
-        data-variant="settings"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="cookie-settings-label"
+          data-testid="variant"
+          data-block="cookie"
+          data-variant="settings"
+        >
           <Title :as="2" size="base" weight="bold" id="cookie-settings-label" data-testid="variant-label">
             {{ ui.blocks.variants.cookie.settings }}
           </Title>
@@ -103,15 +105,15 @@ import { ui } from "@ui8kit/app-shared/content";
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="cookie-muted-label"
-        data-testid="variant"
-        data-block="cookie"
-        data-variant="muted"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="cookie-muted-label"
+          data-testid="variant"
+          data-block="cookie"
+          data-variant="muted"
+        >
           <Title :as="2" size="base" weight="bold" id="cookie-muted-label" data-testid="variant-label">
             {{ ui.blocks.variants.cookie.muted }}
           </Title>
@@ -129,7 +131,7 @@ import { ui } from "@ui8kit/app-shared/content";
             />
           </Box>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

@@ -15,7 +15,6 @@ export type StatTileProps = {
 </script>
 
 <script setup lang="ts">
-import Block from "../primitives/block/block.vue";
 import Box from "../primitives/box/box.vue";
 import IconBadge from "../primitives/iconbadge/icon-badge.vue";
 import Link from "../primitives/link/link.vue";
@@ -26,7 +25,7 @@ const { label, value, icon, href, hint } = defineProps<StatTileProps>();
 </script>
 
 <template>
-  <Block class="min-w-0">
+  <Box class="min-w-0">
     <Link v-if="href"
       :href="href"
       variant="block"
@@ -67,5 +66,5 @@ const { label, value, icon, href, hint } = defineProps<StatTileProps>();
         {{ hint }}
       </Text>
     </Box>
-  </Block>
+  </Box>
 </template>

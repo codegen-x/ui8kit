@@ -36,37 +36,39 @@ const FEATURESPLIT_ACTIONS = {
 
 export function FeaturesplitPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text
-            size="sm"
-            className="font-medium text-muted-foreground"
-            data-testid="block-theme"
-            data-theme-id="marketing"
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text
+              size="sm"
+              className="font-medium text-muted-foreground"
+              data-testid="block-theme"
+              data-theme-id="marketing"
+            >
+              {ui.blocks.themes.marketing.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.featuresplit}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.featuresplit}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="featuresplit-gridStart-label"
+            data-testid="variant"
+            data-block="featuresplit"
+            data-variant="gridStart"
           >
-            {ui.blocks.themes.marketing.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.featuresplit}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.featuresplit}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="featuresplit-gridStart-label"
-          data-testid="variant"
-          data-block="featuresplit"
-          data-variant="gridStart"
-        >
-          <Stack gap="4" align="stretch">
             <Title as={2} size="base" weight="bold" id="featuresplit-gridStart-label" data-testid="variant-label">
               {ui.blocks.variants.featuresplit.gridStart}
             </Title>
@@ -86,15 +88,15 @@ export function FeaturesplitPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="featuresplit-statsStart-label"
-          data-testid="variant"
-          data-block="featuresplit"
-          data-variant="statsStart"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="featuresplit-statsStart-label"
+            data-testid="variant"
+            data-block="featuresplit"
+            data-variant="statsStart"
+          >
             <Title as={2} size="base" weight="bold" id="featuresplit-statsStart-label" data-testid="variant-label">
               {ui.blocks.variants.featuresplit.statsStart}
             </Title>
@@ -114,15 +116,15 @@ export function FeaturesplitPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="featuresplit-gridMuted-label"
-          data-testid="variant"
-          data-block="featuresplit"
-          data-variant="gridMuted"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="featuresplit-gridMuted-label"
+            data-testid="variant"
+            data-block="featuresplit"
+            data-variant="gridMuted"
+          >
             <Title as={2} size="base" weight="bold" id="featuresplit-gridMuted-label" data-testid="variant-label">
               {ui.blocks.variants.featuresplit.gridMuted}
             </Title>
@@ -142,15 +144,15 @@ export function FeaturesplitPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="featuresplit-metricCards-label"
-          data-testid="variant"
-          data-block="featuresplit"
-          data-variant="metricCards"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="featuresplit-metricCards-label"
+            data-testid="variant"
+            data-block="featuresplit"
+            data-variant="metricCards"
+          >
             <Title as={2} size="base" weight="bold" id="featuresplit-metricCards-label" data-testid="variant-label">
               {ui.blocks.variants.featuresplit.metricCards}
             </Title>
@@ -170,15 +172,15 @@ export function FeaturesplitPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="featuresplit-featureCards-label"
-          data-testid="variant"
-          data-block="featuresplit"
-          data-variant="featureCards"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="featuresplit-featureCards-label"
+            data-testid="variant"
+            data-block="featuresplit"
+            data-variant="featureCards"
+          >
             <Title as={2} size="base" weight="bold" id="featuresplit-featureCards-label" data-testid="variant-label">
               {ui.blocks.variants.featuresplit.featureCards}
             </Title>
@@ -198,8 +200,8 @@ export function FeaturesplitPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

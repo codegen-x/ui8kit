@@ -5,7 +5,6 @@
  * Newest first or oldest first is the caller's order.
  */
 import { type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
 import { Box } from "../primitives/box/box";
 import { Inline } from "../primitives/inline/inline";
 import { List } from "../primitives/list/list";
@@ -29,7 +28,7 @@ export type TimelineProps = {
 
 export function Timeline({ items, className }: TimelineProps) {
   return (
-    <Block className={cn("min-w-0", className)} data-slot="timeline">
+    <Box className={cn("min-w-0", className)} data-slot="timeline">
       <List className="m-0 flex list-none flex-col p-0">
         {(items ?? []).map((item, i) => (
           <ListItem key={item.id} className="relative flex min-w-0 gap-4 pb-4 last:pb-0" data-event={item.id}>
@@ -57,6 +56,6 @@ export function Timeline({ items, className }: TimelineProps) {
           </ListItem>
         ))}
       </List>
-    </Block>
+    </Box>
   );
 }

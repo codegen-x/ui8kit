@@ -17,7 +17,7 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
+  import Box from "../primitives/box/box.svelte";
   import Button from "../primitives/button/button.svelte";
   import Inline from "../primitives/inline/inline.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
@@ -26,7 +26,7 @@
   let { label, clearLabel, class: className, children, onclear }: BulkBarProps = $props();
 </script>
 
-<Block
+<Box
   class={cn(
     "flex flex-wrap items-center gap-2 rounded bg-foreground px-4 py-2 text-xs font-bold text-background",
     className
@@ -54,4 +54,4 @@
   <Inline class="ml-auto flex flex-wrap items-center gap-2">
     {@render children?.()}
   </Inline>
-</Block>
+</Box>

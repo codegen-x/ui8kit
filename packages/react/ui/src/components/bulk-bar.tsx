@@ -5,7 +5,7 @@
  * through props.
  */
 import { type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
+import { Box } from "../primitives/box/box";
 import { Button } from "../primitives/button/button";
 import { Inline } from "../primitives/inline/inline";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
@@ -21,7 +21,7 @@ export type BulkBarProps = {
 
 export function BulkBar({ label, clearLabel, className, children, onClear }: BulkBarProps) {
   return (
-    <Block
+    <Box
       className={cn(
         "flex flex-wrap items-center gap-2 rounded bg-foreground px-4 py-2 text-xs font-bold text-background",
         className
@@ -49,6 +49,6 @@ export function BulkBar({ label, clearLabel, className, children, onClear }: Bul
       <Inline className="ml-auto flex flex-wrap items-center gap-2">
         {children}
       </Inline>
-    </Block>
+    </Box>
   );
 }

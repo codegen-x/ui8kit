@@ -10,6 +10,7 @@ import { Button } from "../primitives/button/button";
 import { Group } from "../primitives/group/group";
 import { LinkPlain } from "../primitives/link-plain/link-plain";
 import { Link } from "../primitives/link/link";
+import { Nav } from "../primitives/nav/nav";
 import { defaults } from "../presets/defaults";
 import { cn } from "../utils";
 import type { NavLink } from "../blocks/nav-bar.types";
@@ -61,7 +62,7 @@ export function HeroHead({
       >
         {brand}
       </Link>
-      <Block tag="nav" aria-label={navLabel} data-testid="site-nav">
+      <Nav aria-label={navLabel} data-testid="site-nav">
         <Group gap="8" align="center" className="flex-wrap">
           {(links ?? []).map((l) => (
             <Link key={l.id}
@@ -75,7 +76,7 @@ export function HeroHead({
             </Link>
           ))}
         </Group>
-      </Block>
+      </Nav>
       <Group gap="2" align="center">
         {login ? (
           <Button

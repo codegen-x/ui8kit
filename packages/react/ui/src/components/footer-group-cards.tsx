@@ -5,7 +5,6 @@
  * screens.
  */
 import { type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
 import { Box } from "../primitives/box/box";
 import { Group } from "../primitives/group/group";
 import { Inline } from "../primitives/inline/inline";
@@ -13,6 +12,7 @@ import { Link } from "../primitives/link/link";
 import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
+import { Nav } from "../primitives/nav/nav";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import type { MegaGroup } from "../blocks/mega-menu.types";
@@ -24,7 +24,7 @@ export type FooterGroupCardsProps = {
 
 export function FooterGroupCards({ label, groups }: FooterGroupCardsProps) {
   return (
-    <Block tag="nav" aria-label={label}>
+    <Nav aria-label={label}>
       <Box className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {(groups ?? []).map((g) => (
           <Stack key={g.id} gap="4" align="stretch" className="rounded bg-card inset-ring inset-ring-border p-6" data-testid="group">
@@ -48,6 +48,6 @@ export function FooterGroupCards({ label, groups }: FooterGroupCardsProps) {
           </Stack>
         ))}
       </Box>
-    </Block>
+    </Nav>
   );
 }

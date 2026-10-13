@@ -5,8 +5,8 @@
  * captions, or a picture with two plan cards floating over it.
  */
 import { Fragment, type ReactNode } from "react";
-import { Block } from "../primitives/block/block";
 import { Box } from "../primitives/box/box";
+import { Figure } from "../primitives/figure/figure";
 import { Group } from "../primitives/group/group";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
@@ -36,12 +36,12 @@ export function HeroSplitMedia({ content, alt, media = "picture" }: HeroSplitMed
           {(content.features ?? []).map((f, i) => (
             <Fragment key={f.id}>
               {(i < 4) ? (
-                <Block tag="figure" className="flex flex-col gap-2" data-testid="hero-tile">
+                <Figure className="flex flex-col gap-2" data-testid="hero-tile">
                   <MediaFrame alt={f.title} ratio="1/1" />
                   <Text size="xs" className="text-muted-foreground">
                     {f.title}
                   </Text>
-                </Block>
+                </Figure>
               ) : null}
             </Fragment>
           ))}

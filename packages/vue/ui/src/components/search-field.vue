@@ -11,7 +11,7 @@ export type SearchFieldProps = {
 </script>
 
 <script setup lang="ts">
-import Block from "../primitives/block/block.vue";
+import Box from "../primitives/box/box.vue";
 import Input from "../primitives/input/input.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import { cn } from "../utils";
@@ -21,7 +21,7 @@ const emit = defineEmits<{ value: [value: string] }>();
 </script>
 
 <template>
-  <Block :class="cn('relative min-w-44 flex-1', className)" role="search">
+  <Box :class="cn('relative min-w-44 flex-1', className)" role="search">
     <LucideIcon name="search" :size="16" class="pointer-events-none absolute top-2 left-3 text-muted-foreground" />
     <Input
       size="sm"
@@ -32,5 +32,5 @@ const emit = defineEmits<{ value: [value: string] }>();
       :value="value"
       @input="(event: Event & { currentTarget: HTMLInputElement }) => emit('value', event.currentTarget.value)"
     />
-  </Block>
+  </Box>
 </template>

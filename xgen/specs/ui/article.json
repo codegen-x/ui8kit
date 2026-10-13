@@ -1,0 +1,88 @@
+{
+  "$schema": "../../schema/schemas/spec.schema.json",
+  "specVersion": 1,
+  "id": "ui.article",
+  "tier": "brick",
+  "dir": "article",
+  "docs": "Article is one self-contained item inside a block: a post, a review, a project tile, a card of a list (often one per loop item).\nNot the root of a block or a screen: that is Block (rule 01).",
+  "variants": {
+    "article": "article.variants.json"
+  },
+  "parts": [
+    {
+      "name": "Article",
+      "docs": "Article renders an article element.",
+      "recipeId": "article",
+      "asChild": true,
+      "classes": {
+        "recipe": {}
+      },
+      "props": [
+        {
+          "name": "Class",
+          "type": "string",
+          "cva": false,
+          "docs": "adds Tailwind utilities"
+        },
+        {
+          "name": "Attrs",
+          "type": "attrs",
+          "cva": false
+        },
+        {
+          "name": "Children",
+          "type": "children",
+          "cva": false
+        }
+      ],
+      "render": {
+        "kind": "element",
+        "tag": {
+          "kind": "static",
+          "tag": "article"
+        },
+        "attrs": [
+          {
+            "kind": "class"
+          },
+          {
+            "kind": "rest"
+          }
+        ],
+        "children": [
+          {
+            "kind": "slot"
+          }
+        ]
+      },
+      "slots": [
+        {
+          "name": "children"
+        }
+      ],
+      "events": [],
+      "a11y": {
+        "roots": [
+          "article"
+        ],
+        "roles": [],
+        "aria": [],
+        "keyboard": []
+      },
+      "data": [],
+      "tokens": []
+    }
+  ],
+  "examples": [
+    {
+      "id": "class.padded",
+      "props": {
+        "Class": "p-4 rounded border border-border"
+      }
+    }
+  ],
+  "portable": {
+    "svelte": true,
+    "react": true
+  }
+}

@@ -14,6 +14,7 @@ import { Grid } from "../primitives/grid/grid";
 import { Group } from "../primitives/group/group";
 import { LinkPlain } from "../primitives/link-plain/link-plain";
 import { Link } from "../primitives/link/link";
+import { Nav } from "../primitives/nav/nav";
 import { NavActions } from "../components/nav-actions";
 import { NavLinks } from "../components/nav-links";
 import { OverMedia } from "../components/over-media";
@@ -49,74 +50,47 @@ export function NavBar({
   onTheme,
 }: NavBarProps) {
   return (
-    <OverMedia on={((over as string) === "media")} alt={brand}>
-      <Block
-        tag="header"
-        className={cn(
-          "relative",
-          (
-            (tone as string) === "inverse" ? "border-b border-transparent bg-foreground text-background [&_a]:text-background [&_button]:text-background"
-            : "border-b border-border bg-background"
-          )
-        )}
-        data-testid="nav-bar"
-        data-layout={layout}
-        data-tone={tone}
-      >
-        {skip ? (
-          <LinkPlain
-            href="#main-content"
-            className={"sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background " +
-              "focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border"}
-            data-testid="skip-link"
-          >
-            {skip}
-          </LinkPlain>
-        ) : null}
-        <Container className="mx-auto w-full max-w-6xl px-4" data-slot="container">
-          <Box className={cn("flex flex-wrap items-center justify-between gap-4", "py-4")}>
-            {((layout as string) === "split") ? (
-              <Grid cols="1-3" className="w-full items-center gap-4">
-                <Block tag="nav" className="md:justify-self-start" aria-label={label} data-testid="site-nav">
-                  <NavLinks links={links} current={current} side="left" />
-                </Block>
-                <Box className="text-center">
-                  <Link href="#/" variant="default" className="text-lg font-medium" data-testid="brand">
-                    {brand}
-                  </Link>
-                </Box>
-                <Group gap="4" align="center" justify="end" className="flex-wrap md:justify-self-end">
-                  <Block tag="nav" aria-label={label}>
-                    <NavLinks links={links} current={current} side="right" />
-                  </Block>
-                  <NavActions
-                    login={actions?.login}
-                    loginHref={actions?.loginHref}
-                    cta={actions?.cta}
-                    ctaHref={actions?.href}
-                    actions={actions?.mode}
-                    tone={tone}
-                    themeLabel={actions?.themeLabel}
-                    onTheme={() => onTheme?.()}
-                  />
-                </Group>
-              </Grid>
-            ) : (
-              <>
+    <Block
+      tag="header"
+      className={cn(
+        "relative",
+        (
+          (tone as string) === "inverse" ? "border-b border-transparent bg-foreground text-background [&_a]:text-background [&_button]:text-background"
+          : "border-b border-border bg-background"
+        ),
+        (((over as string) === "media") ? "isolate overflow-hidden border-0 bg-transparent" : "")
+      )}
+      data-testid="nav-bar"
+      data-layout={layout}
+      data-tone={tone}
+    >
+      <OverMedia on={((over as string) === "media")} alt={brand} />
+      {skip ? (
+        <LinkPlain
+          href="#main-content"
+          className={"sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background " +
+            "focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border"}
+          data-testid="skip-link"
+        >
+          {skip}
+        </LinkPlain>
+      ) : null}
+      <Container className="mx-auto w-full max-w-6xl px-4" data-slot="container">
+        <Box className={cn("flex flex-wrap items-center justify-between gap-4", "py-4")}>
+          {((layout as string) === "split") ? (
+            <Grid cols="1-3" className="w-full items-center gap-4">
+              <Nav className="md:justify-self-start" aria-label={label} data-testid="site-nav">
+                <NavLinks links={links} current={current} side="left" />
+              </Nav>
+              <Box className="text-center">
                 <Link href="#/" variant="default" className="text-lg font-medium" data-testid="brand">
                   {brand}
                 </Link>
-                {((layout as string) === "search") ? (
-                  <SearchPalette label={search.label} shortcut={search.shortcut} />
-                ) : null}
-                <Block
-                  tag="nav"
-                  className={"order-last w-full overflow-x-auto md:order-none md:w-auto [&>div]:flex-nowrap md:[&>div]:flex-wrap [&_a]:shrink-0"}
-                  aria-label={label}
-                  data-testid="site-nav"
-                >
-                  <NavLinks links={links} current={current} side="all" />
-                </Block>
+              </Box>
+              <Group gap="4" align="center" justify="end" className="flex-wrap md:justify-self-end">
+                <Nav aria-label={label}>
+                  <NavLinks links={links} current={current} side="right" />
+                </Nav>
                 <NavActions
                   login={actions?.login}
                   loginHref={actions?.loginHref}
@@ -127,11 +101,37 @@ export function NavBar({
                   themeLabel={actions?.themeLabel}
                   onTheme={() => onTheme?.()}
                 />
-              </>
-            )}
-          </Box>
-        </Container>
-      </Block>
-    </OverMedia>
+              </Group>
+            </Grid>
+          ) : (
+            <>
+              <Link href="#/" variant="default" className="text-lg font-medium" data-testid="brand">
+                {brand}
+              </Link>
+              {((layout as string) === "search") ? (
+                <SearchPalette label={search.label} shortcut={search.shortcut} />
+              ) : null}
+              <Nav
+                className={"order-last w-full overflow-x-auto md:order-none md:w-auto [&>div]:flex-nowrap md:[&>div]:flex-wrap [&_a]:shrink-0"}
+                aria-label={label}
+                data-testid="site-nav"
+              >
+                <NavLinks links={links} current={current} side="all" />
+              </Nav>
+              <NavActions
+                login={actions?.login}
+                loginHref={actions?.loginHref}
+                cta={actions?.cta}
+                ctaHref={actions?.href}
+                actions={actions?.mode}
+                tone={tone}
+                themeLabel={actions?.themeLabel}
+                onTheme={() => onTheme?.()}
+              />
+            </>
+          )}
+        </Box>
+      </Container>
+    </Block>
   );
 }

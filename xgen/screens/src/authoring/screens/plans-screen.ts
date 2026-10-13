@@ -68,13 +68,14 @@ export const plansScreen: ScreenSpec = {
   state: { q: "q", sort: "sort", page: "page" },
   routes: [{ path: "plans", area: "list" }, { path: "plans/:id", area: "record" }],
   organisms: ["PricingCard"],
+  // the screen opens on its one Block: the main of the page (the host frame adds no main of its own around a screen)
   layout: [
-    use("Container", { props: { Class: `${wide} py-8` } },
+    use("Block", { props: { Tag: "main", ID: "main-content" }, attrs: { tabindex: -1, "data-testid": "main" } }, use("Container", { props: { Class: `${wide} py-8` } },
       use("Stack", { props: { Gap: "6" } },
         use("Group", { props: { Gap: "4", Align: "center", Justify: "between" } },
           use("Title", { props: { As: 1, Size: "2xl", Weight: "bold" } }, text(ref("ui.app.title"))),
           use("Button", { props: { Variant: "outline", Size: "sm" }, on: { click: call("actions.toggleTheme") }, attrs: { "data-testid": "theme-toggle" } }, text(ref("ui.theme.toggle")))),
-        outlet())),
+        outlet()))),
   ],
   areas: { list, record },
   portable: { svelte: true, react: true },

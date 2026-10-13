@@ -18,7 +18,6 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
   import Box from "../primitives/box/box.svelte";
   import Link from "../primitives/link/link.svelte";
   import Progress from "../primitives/form/progress.svelte";
@@ -28,7 +27,7 @@
   let { label, value, caption, hint, href, class: className }: MeterRowProps = $props();
 </script>
 
-<Block class={cn("min-w-0", className)} data-slot="meter-row">
+<Box class={cn("min-w-0", className)} data-slot="meter-row">
   {#if href}
     <Link
       href={href}
@@ -68,4 +67,4 @@
       {/if}
     </Box>
   {/if}
-</Block>
+</Box>

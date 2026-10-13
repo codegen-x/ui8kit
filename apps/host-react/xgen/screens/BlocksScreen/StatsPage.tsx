@@ -24,37 +24,39 @@ const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
 
 export function StatsPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text
-            size="sm"
-            className="font-medium text-muted-foreground"
-            data-testid="block-theme"
-            data-theme-id="marketing"
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text
+              size="sm"
+              className="font-medium text-muted-foreground"
+              data-testid="block-theme"
+              data-theme-id="marketing"
+            >
+              {ui.blocks.themes.marketing.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.stats}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.stats}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="stats-plain4-label"
+            data-testid="variant"
+            data-block="stats"
+            data-variant="plain4"
           >
-            {ui.blocks.themes.marketing.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.stats}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.stats}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="stats-plain4-label"
-          data-testid="variant"
-          data-block="stats"
-          data-variant="plain4"
-        >
-          <Stack gap="4" align="stretch">
             <Title as={2} size="base" weight="bold" id="stats-plain4-label" data-testid="variant-label">
               {ui.blocks.variants.stats.plain4}
             </Title>
@@ -73,15 +75,15 @@ export function StatsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="stats-panel-label"
-          data-testid="variant"
-          data-block="stats"
-          data-variant="panel"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="stats-panel-label"
+            data-testid="variant"
+            data-block="stats"
+            data-variant="panel"
+          >
             <Title as={2} size="base" weight="bold" id="stats-panel-label" data-testid="variant-label">
               {ui.blocks.variants.stats.panel}
             </Title>
@@ -100,15 +102,15 @@ export function StatsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="stats-stack-label"
-          data-testid="variant"
-          data-block="stats"
-          data-variant="stack"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="stats-stack-label"
+            data-testid="variant"
+            data-block="stats"
+            data-variant="stack"
+          >
             <Title as={2} size="base" weight="bold" id="stats-stack-label" data-testid="variant-label">
               {ui.blocks.variants.stats.stack}
             </Title>
@@ -127,15 +129,15 @@ export function StatsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="stats-image-label"
-          data-testid="variant"
-          data-block="stats"
-          data-variant="image"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="stats-image-label"
+            data-testid="variant"
+            data-block="stats"
+            data-variant="image"
+          >
             <Title as={2} size="base" weight="bold" id="stats-image-label" data-testid="variant-label">
               {ui.blocks.variants.stats.image}
             </Title>
@@ -154,15 +156,15 @@ export function StatsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="stats-cards-label"
-          data-testid="variant"
-          data-block="stats"
-          data-variant="cards"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="stats-cards-label"
+            data-testid="variant"
+            data-block="stats"
+            data-variant="cards"
+          >
             <Title as={2} size="base" weight="bold" id="stats-cards-label" data-testid="variant-label">
               {ui.blocks.variants.stats.cards}
             </Title>
@@ -181,15 +183,15 @@ export function StatsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="stats-icons-label"
-          data-testid="variant"
-          data-block="stats"
-          data-variant="icons"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="stats-icons-label"
+            data-testid="variant"
+            data-block="stats"
+            data-variant="icons"
+          >
             <Title as={2} size="base" weight="bold" id="stats-icons-label" data-testid="variant-label">
               {ui.blocks.variants.stats.icons}
             </Title>
@@ -208,15 +210,15 @@ export function StatsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="stats-muted2-label"
-          data-testid="variant"
-          data-block="stats"
-          data-variant="muted2"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="stats-muted2-label"
+            data-testid="variant"
+            data-block="stats"
+            data-variant="muted2"
+          >
             <Title as={2} size="base" weight="bold" id="stats-muted2-label" data-testid="variant-label">
               {ui.blocks.variants.stats.muted2}
             </Title>
@@ -235,15 +237,15 @@ export function StatsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="stats-cardsCompact-label"
-          data-testid="variant"
-          data-block="stats"
-          data-variant="cardsCompact"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="stats-cardsCompact-label"
+            data-testid="variant"
+            data-block="stats"
+            data-variant="cardsCompact"
+          >
             <Title as={2} size="base" weight="bold" id="stats-cardsCompact-label" data-testid="variant-label">
               {ui.blocks.variants.stats.cardsCompact}
             </Title>
@@ -262,8 +264,8 @@ export function StatsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

@@ -2,7 +2,7 @@
 import { and, call, cn, coalesce, cond, each, eachAt, eq, gt, ne, ref, text, tpl, use, when, where, organism, len } from "../../build";
 import { fitCols } from "../ux";
 import type { OrganismSpec } from "../../ir";
-import { fields, groupFields, rec, spec, ts } from "../kit";
+import { cardBase, fields, groupFields, rec, spec, ts } from "../kit";
 import { frame } from "../components/frames";
 import { id, title, tone, tsOf, toneLite, denseLite } from "../props";
 import { kids } from "../forms";
@@ -47,8 +47,8 @@ const postCard = spec(`${O}post-card`, "PostCard", "A post as a card: cover pict
     // news card: image with the title on top, a date strip below; sizes from the default preset
     // Frame news card 267×218 r16 gap 8; image 267×160 r12; footer h50 gap16 pad: mark 32 + title only.
     // Card 267×218 r16 no pad; image 267×160 r12 with title 12 centered; strip h50 date+meta only
-    const news = use("Box", {
-      props: { Class: cn("flex flex-col gap-2 overflow-hidden rounded p-0 inset-ring inset-ring-border", layoutOf("news.card")) },
+    const news = use("Block", {
+      props: { Tag: "article", Class: cn("flex flex-col gap-2 overflow-hidden rounded p-0 inset-ring inset-ring-border", layoutOf("news.card")) },
       attrs: { "data-testid": "item", "data-layout": ref("layout"), "data-meta": "news" },
     },
       use("Box", { props: { Class: cn("relative shrink-0 overflow-hidden", layoutOf("news.cover")) }, attrs: { "data-testid": "news-cover" } },
@@ -58,7 +58,7 @@ const postCard = spec(`${O}post-card`, "PostCard", "A post as a card: cover pict
         use("LucideIcon", { props: { Name: "calendar", Size: 16 } }),
         use("Text", { props: { Size: "xs", Weight: "bold", Class: "leading-4" } }, text(ref("post.date"))),
         when(ref("post.category"), [use("Text", { props: { Size: "xs", Weight: "bold", Class: "leading-4" } }, text(ref("post.category")))])));
-    const full = use("Card", { props: { Variant: "default", Class: cn("h-full gap-4 overflow-hidden", cond(eq(ref("layout"), "horizontal"), "flex flex-col sm:flex-row", "flex flex-col")) }, attrs: { "data-testid": "item", "data-layout": ref("layout"), "data-meta": ref("meta") } },
+    const full = use("Block", { props: { Tag: "article", Class: cn(cardBase(), "h-full gap-4 overflow-hidden", cond(eq(ref("layout"), "horizontal"), "flex flex-col sm:flex-row", "flex flex-col")) }, attrs: { "data-slot": "card", "data-testid": "item", "data-layout": ref("layout"), "data-meta": ref("meta") } },
       cover,
       use("CardContent", { props: { Class: "flex flex-1 flex-col gap-2" } },
         category,

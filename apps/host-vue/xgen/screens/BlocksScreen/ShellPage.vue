@@ -52,32 +52,34 @@ const SHELL_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboard.
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.blocks.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="dashboard">
-          {{ ui.blocks.themes.dashboard.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="block-title">
-          {{ ui.blocks.names.shell }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ ui.blocks.docs.shell }}
-        </Text>
-      </Stack>
-      <Block
-        tag="section"
-        aria-labelledby="shell-sidebar-label"
-        data-testid="variant"
-        data-block="shell"
-        data-variant="sidebar"
-      >
-        <Stack gap="4" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.blocks.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="dashboard">
+            {{ ui.blocks.themes.dashboard.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="block-title">
+            {{ ui.blocks.names.shell }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ ui.blocks.docs.shell }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="shell-sidebar-label"
+          data-testid="variant"
+          data-block="shell"
+          data-variant="sidebar"
+        >
           <Title :as="2" size="base" weight="bold" id="shell-sidebar-label" data-testid="variant-label">
             {{ ui.blocks.variants.shell.sidebar }}
           </Title>
@@ -96,15 +98,15 @@ const SHELL_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboard.
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="shell-top-label"
-        data-testid="variant"
-        data-block="shell"
-        data-variant="top"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="shell-top-label"
+          data-testid="variant"
+          data-block="shell"
+          data-variant="top"
+        >
           <Title :as="2" size="base" weight="bold" id="shell-top-label" data-testid="variant-label">
             {{ ui.blocks.variants.shell.top }}
           </Title>
@@ -123,15 +125,15 @@ const SHELL_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboard.
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="shell-panes-label"
-        data-testid="variant"
-        data-block="shell"
-        data-variant="panes"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="shell-panes-label"
+          data-testid="variant"
+          data-block="shell"
+          data-variant="panes"
+        >
           <Title :as="2" size="base" weight="bold" id="shell-panes-label" data-testid="variant-label">
             {{ ui.blocks.variants.shell.panes }}
           </Title>
@@ -150,15 +152,15 @@ const SHELL_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboard.
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="shell-dense-label"
-        data-testid="variant"
-        data-block="shell"
-        data-variant="dense"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="shell-dense-label"
+          data-testid="variant"
+          data-block="shell"
+          data-variant="dense"
+        >
           <Title :as="2" size="base" weight="bold" id="shell-dense-label" data-testid="variant-label">
             {{ ui.blocks.variants.shell.dense }}
           </Title>
@@ -177,7 +179,7 @@ const SHELL_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboard.
             />
           </Box>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

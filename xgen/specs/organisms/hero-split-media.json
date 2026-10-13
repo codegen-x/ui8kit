@@ -118,9 +118,8 @@
                   },
                   "then": [
                     {
-                      "use": "Block",
+                      "use": "Figure",
                       "props": {
-                        "Tag": "figure",
                         "Class": "flex flex-col gap-2"
                       },
                       "attrs": {

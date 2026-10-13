@@ -25,9 +25,9 @@
 
 <script lang="ts">
   import Badge from "../primitives/badge/badge.svelte";
+  import Block from "../primitives/block/block.svelte";
   import Box from "../primitives/box/box.svelte";
   import Button from "../primitives/button/button.svelte";
-  import Card from "../primitives/card/card.svelte";
   import CardContent from "../primitives/card/card-content.svelte";
   import Group from "../primitives/group/group.svelte";
   import Text from "../primitives/text/text.svelte";
@@ -50,12 +50,14 @@
   }: ProductCardProps = $props();
 </script>
 
-<Card
-  variant="default"
+<Block
+  tag="article"
   class={cn(
+    "flex flex-col gap-8 bg-card p-6 text-card-foreground inset-ring inset-ring-border rounded",
     "h-full gap-4 overflow-hidden",
     (((layout as string) === "horizontal") ? "flex flex-col sm:flex-row" : "flex flex-col")
   )}
+  data-slot="card"
   data-testid="item"
   data-layout={layout}
 >
@@ -106,4 +108,4 @@
       {/if}
     </Group>
   </CardContent>
-</Card>
+</Block>

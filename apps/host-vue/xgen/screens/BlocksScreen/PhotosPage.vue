@@ -24,32 +24,34 @@ const photos = fromCodex<Photo>(photosEntries, PHOTOS_FIELDS);
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.blocks.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
-          {{ ui.blocks.themes.marketing.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="block-title">
-          {{ ui.blocks.names.photos }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ ui.blocks.docs.photos }}
-        </Text>
-      </Stack>
-      <Block
-        tag="section"
-        aria-labelledby="photos-grid-label"
-        data-testid="variant"
-        data-block="photos"
-        data-variant="grid"
-      >
-        <Stack gap="4" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.blocks.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
+            {{ ui.blocks.themes.marketing.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="block-title">
+            {{ ui.blocks.names.photos }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ ui.blocks.docs.photos }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="photos-grid-label"
+          data-testid="variant"
+          data-block="photos"
+          data-variant="grid"
+        >
           <Title :as="2" size="base" weight="bold" id="photos-grid-label" data-testid="variant-label">
             {{ ui.blocks.variants.photos.grid }}
           </Title>
@@ -67,15 +69,15 @@ const photos = fromCodex<Photo>(photosEntries, PHOTOS_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="photos-gridPlain-label"
-        data-testid="variant"
-        data-block="photos"
-        data-variant="gridPlain"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="photos-gridPlain-label"
+          data-testid="variant"
+          data-block="photos"
+          data-variant="gridPlain"
+        >
           <Title :as="2" size="base" weight="bold" id="photos-gridPlain-label" data-testid="variant-label">
             {{ ui.blocks.variants.photos.gridPlain }}
           </Title>
@@ -93,15 +95,15 @@ const photos = fromCodex<Photo>(photosEntries, PHOTOS_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="photos-masonry-label"
-        data-testid="variant"
-        data-block="photos"
-        data-variant="masonry"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="photos-masonry-label"
+          data-testid="variant"
+          data-block="photos"
+          data-variant="masonry"
+        >
           <Title :as="2" size="base" weight="bold" id="photos-masonry-label" data-testid="variant-label">
             {{ ui.blocks.variants.photos.masonry }}
           </Title>
@@ -119,15 +121,15 @@ const photos = fromCodex<Photo>(photosEntries, PHOTOS_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="photos-mosaic-label"
-        data-testid="variant"
-        data-block="photos"
-        data-variant="mosaic"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="photos-mosaic-label"
+          data-testid="variant"
+          data-block="photos"
+          data-variant="mosaic"
+        >
           <Title :as="2" size="base" weight="bold" id="photos-mosaic-label" data-testid="variant-label">
             {{ ui.blocks.variants.photos.mosaic }}
           </Title>
@@ -145,15 +147,15 @@ const photos = fromCodex<Photo>(photosEntries, PHOTOS_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="photos-featured-label"
-        data-testid="variant"
-        data-block="photos"
-        data-variant="featured"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="photos-featured-label"
+          data-testid="variant"
+          data-block="photos"
+          data-variant="featured"
+        >
           <Title :as="2" size="base" weight="bold" id="photos-featured-label" data-testid="variant-label">
             {{ ui.blocks.variants.photos.featured }}
           </Title>
@@ -171,15 +173,15 @@ const photos = fromCodex<Photo>(photosEntries, PHOTOS_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="photos-cards-label"
-        data-testid="variant"
-        data-block="photos"
-        data-variant="cards"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="photos-cards-label"
+          data-testid="variant"
+          data-block="photos"
+          data-variant="cards"
+        >
           <Title :as="2" size="base" weight="bold" id="photos-cards-label" data-testid="variant-label">
             {{ ui.blocks.variants.photos.cards }}
           </Title>
@@ -197,7 +199,7 @@ const photos = fromCodex<Photo>(photosEntries, PHOTOS_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

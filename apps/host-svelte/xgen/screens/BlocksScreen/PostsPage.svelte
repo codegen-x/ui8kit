@@ -38,32 +38,34 @@
   const POSTS_FILTER = { topics, label: ui.vibe.posts.topics, topic: "" } as const;
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.blocks.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="content">
-        {ui.blocks.themes.content.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-        {ui.blocks.names.posts}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {ui.blocks.docs.posts}
-      </Text>
-    </Stack>
-    <Block
-      tag="section"
-      aria-labelledby="posts-grid-label"
-      data-testid="variant"
-      data-block="posts"
-      data-variant="grid"
-    >
-      <Stack gap="4" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.blocks.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="content">
+          {ui.blocks.themes.content.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+          {ui.blocks.names.posts}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {ui.blocks.docs.posts}
+        </Text>
+      </Stack>
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="posts-grid-label"
+        data-testid="variant"
+        data-block="posts"
+        data-variant="grid"
+      >
         <Title as={2} size="base" weight="bold" id="posts-grid-label" data-testid="variant-label">
           {ui.blocks.variants.posts.grid}
         </Title>
@@ -84,15 +86,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="posts-filters-label"
-      data-testid="variant"
-      data-block="posts"
-      data-variant="filters"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="posts-filters-label"
+        data-testid="variant"
+        data-block="posts"
+        data-variant="filters"
+      >
         <Title as={2} size="base" weight="bold" id="posts-filters-label" data-testid="variant-label">
           {ui.blocks.variants.posts.filters}
         </Title>
@@ -113,15 +115,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="posts-twoUp-label"
-      data-testid="variant"
-      data-block="posts"
-      data-variant="twoUp"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="posts-twoUp-label"
+        data-testid="variant"
+        data-block="posts"
+        data-variant="twoUp"
+      >
         <Title as={2} size="base" weight="bold" id="posts-twoUp-label" data-testid="variant-label">
           {ui.blocks.variants.posts.twoUp}
         </Title>
@@ -142,15 +144,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="posts-row4-label"
-      data-testid="variant"
-      data-block="posts"
-      data-variant="row4"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="posts-row4-label"
+        data-testid="variant"
+        data-block="posts"
+        data-variant="row4"
+      >
         <Title as={2} size="base" weight="bold" id="posts-row4-label" data-testid="variant-label">
           {ui.blocks.variants.posts.row4}
         </Title>
@@ -171,15 +173,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="posts-news4-label"
-      data-testid="variant"
-      data-block="posts"
-      data-variant="news4"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="posts-news4-label"
+        data-testid="variant"
+        data-block="posts"
+        data-variant="news4"
+      >
         <Title as={2} size="base" weight="bold" id="posts-news4-label" data-testid="variant-label">
           {ui.blocks.variants.posts.news4}
         </Title>
@@ -200,15 +202,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="posts-list-label"
-      data-testid="variant"
-      data-block="posts"
-      data-variant="list"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="posts-list-label"
+        data-testid="variant"
+        data-block="posts"
+        data-variant="list"
+      >
         <Title as={2} size="base" weight="bold" id="posts-list-label" data-testid="variant-label">
           {ui.blocks.variants.posts.list}
         </Title>
@@ -229,15 +231,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="posts-magazine-label"
-      data-testid="variant"
-      data-block="posts"
-      data-variant="magazine"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="posts-magazine-label"
+        data-testid="variant"
+        data-block="posts"
+        data-variant="magazine"
+      >
         <Title as={2} size="base" weight="bold" id="posts-magazine-label" data-testid="variant-label">
           {ui.blocks.variants.posts.magazine}
         </Title>
@@ -258,15 +260,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="posts-textOnly-label"
-      data-testid="variant"
-      data-block="posts"
-      data-variant="textOnly"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="posts-textOnly-label"
+        data-testid="variant"
+        data-block="posts"
+        data-variant="textOnly"
+      >
         <Title as={2} size="base" weight="bold" id="posts-textOnly-label" data-testid="variant-label">
           {ui.blocks.variants.posts.textOnly}
         </Title>
@@ -287,15 +289,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="posts-digest-label"
-      data-testid="variant"
-      data-block="posts"
-      data-variant="digest"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="posts-digest-label"
+        data-testid="variant"
+        data-block="posts"
+        data-variant="digest"
+      >
         <Title as={2} size="base" weight="bold" id="posts-digest-label" data-testid="variant-label">
           {ui.blocks.variants.posts.digest}
         </Title>
@@ -316,6 +318,6 @@
           />
         </Box>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

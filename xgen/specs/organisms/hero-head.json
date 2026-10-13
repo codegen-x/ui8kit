@@ -132,10 +132,8 @@
           ]
         },
         {
-          "use": "Block",
-          "props": {
-            "Tag": "nav"
-          },
+          "use": "Nav",
+          "props": {},
           "attrs": {
             "aria-label": {
               "$": "navLabel"
@@ -290,6 +288,7 @@
     "svelte": true,
     "react": true
   },
+  "frame": true,
   "typeImports": [
     {
       "from": "NavBar",

@@ -7,26 +7,33 @@ import { ui } from "@ui8kit/app-shared/content";
 
 export function AppSettingsPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.catalog.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text size="sm" className="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-            {ui.catalog.sections.app.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="category-title">
-            {ui.catalog.categories.appSettings}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {tpl(ui.catalog.count, 1, 4)}
-          </Text>
-        </Stack>
-        <Block tag="section" aria-labelledby="catalog-profile-title" data-testid="catalog-block" data-block="profile">
-          <Stack gap="6" align="stretch">
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.catalog.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text size="sm" className="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+              {ui.catalog.sections.app.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="category-title">
+              {ui.catalog.categories.appSettings}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {tpl(ui.catalog.count, 1, 4)}
+            </Text>
+          </Stack>
+          <Stack
+            gap="6"
+            align="stretch"
+            role="group"
+            aria-labelledby="catalog-profile-title"
+            data-testid="catalog-block"
+            data-block="profile"
+          >
             <Stack gap="2" align="stretch">
               <Title as={2} size="2xl" weight="bold" id="catalog-profile-title">
                 {ui.blocks.names.profile}
@@ -35,109 +42,109 @@ export function AppSettingsPage() {
                 {ui.blocks.docs.profile}
               </Text>
             </Stack>
-            <Block
-              tag="section"
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="profile-stacked-label"
               data-testid="variant"
               data-block="profile"
               data-variant="stacked"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="profile-stacked-label" data-testid="variant-label">
-                  {ui.blocks.variants.profile.stacked}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <ProfileForm
-                    id="profile-stacked"
-                    title={ui.account.profile.title}
-                    text={ui.account.profile.text}
-                    labels={ui.account.profile.labels}
-                    layout="stacked"
-                    avatar="show"
-                    prefs="show"
-                    tone="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="profile-stacked-label" data-testid="variant-label">
+                {ui.blocks.variants.profile.stacked}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <ProfileForm
+                  id="profile-stacked"
+                  title={ui.account.profile.title}
+                  text={ui.account.profile.text}
+                  labels={ui.account.profile.labels}
+                  layout="stacked"
+                  avatar="show"
+                  prefs="show"
+                  tone="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="profile-split-label"
               data-testid="variant"
               data-block="profile"
               data-variant="split"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="profile-split-label" data-testid="variant-label">
-                  {ui.blocks.variants.profile.split}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <ProfileForm
-                    id="profile-split"
-                    title={ui.account.profile.title}
-                    text={ui.account.profile.text}
-                    labels={ui.account.profile.labels}
-                    layout="split"
-                    avatar="show"
-                    prefs="show"
-                    tone="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="profile-split-label" data-testid="variant-label">
+                {ui.blocks.variants.profile.split}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <ProfileForm
+                  id="profile-split"
+                  title={ui.account.profile.title}
+                  text={ui.account.profile.text}
+                  labels={ui.account.profile.labels}
+                  layout="split"
+                  avatar="show"
+                  prefs="show"
+                  tone="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="profile-minimal-label"
               data-testid="variant"
               data-block="profile"
               data-variant="minimal"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="profile-minimal-label" data-testid="variant-label">
-                  {ui.blocks.variants.profile.minimal}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <ProfileForm
-                    id="profile-minimal"
-                    title={ui.account.profile.title}
-                    text={ui.account.profile.text}
-                    labels={ui.account.profile.labels}
-                    layout="stacked"
-                    avatar="hide"
-                    prefs="hide"
-                    tone="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="profile-minimal-label" data-testid="variant-label">
+                {ui.blocks.variants.profile.minimal}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <ProfileForm
+                  id="profile-minimal"
+                  title={ui.account.profile.title}
+                  text={ui.account.profile.text}
+                  labels={ui.account.profile.labels}
+                  layout="stacked"
+                  avatar="hide"
+                  prefs="hide"
+                  tone="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="profile-muted-label"
               data-testid="variant"
               data-block="profile"
               data-variant="muted"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="profile-muted-label" data-testid="variant-label">
-                  {ui.blocks.variants.profile.muted}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <ProfileForm
-                    id="profile-muted"
-                    title={ui.account.profile.title}
-                    text={ui.account.profile.text}
-                    labels={ui.account.profile.labels}
-                    layout="split"
-                    avatar="show"
-                    prefs="show"
-                    tone="muted"
-                  />
-                </Box>
-              </Stack>
-            </Block>
+              <Title as={3} size="base" weight="bold" id="profile-muted-label" data-testid="variant-label">
+                {ui.blocks.variants.profile.muted}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <ProfileForm
+                  id="profile-muted"
+                  title={ui.account.profile.title}
+                  text={ui.account.profile.text}
+                  labels={ui.account.profile.labels}
+                  layout="split"
+                  avatar="show"
+                  prefs="show"
+                  tone="muted"
+                />
+              </Box>
+            </Stack>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

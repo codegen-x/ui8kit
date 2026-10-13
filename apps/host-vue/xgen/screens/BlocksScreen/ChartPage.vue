@@ -24,32 +24,34 @@ const series = fromCodex<Point>(seriesEntries, SERIES_FIELDS);
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.blocks.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="dashboard">
-          {{ ui.blocks.themes.dashboard.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="block-title">
-          {{ ui.blocks.names.chart }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ ui.blocks.docs.chart }}
-        </Text>
-      </Stack>
-      <Block
-        tag="section"
-        aria-labelledby="chart-bars-label"
-        data-testid="variant"
-        data-block="chart"
-        data-variant="bars"
-      >
-        <Stack gap="4" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.blocks.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="dashboard">
+            {{ ui.blocks.themes.dashboard.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="block-title">
+            {{ ui.blocks.names.chart }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ ui.blocks.docs.chart }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="chart-bars-label"
+          data-testid="variant"
+          data-block="chart"
+          data-variant="bars"
+        >
           <Title :as="2" size="base" weight="bold" id="chart-bars-label" data-testid="variant-label">
             {{ ui.blocks.variants.chart.bars }}
           </Title>
@@ -67,15 +69,15 @@ const series = fromCodex<Point>(seriesEntries, SERIES_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="chart-short-label"
-        data-testid="variant"
-        data-block="chart"
-        data-variant="short"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="chart-short-label"
+          data-testid="variant"
+          data-block="chart"
+          data-variant="short"
+        >
           <Title :as="2" size="base" weight="bold" id="chart-short-label" data-testid="variant-label">
             {{ ui.blocks.variants.chart.short }}
           </Title>
@@ -93,15 +95,15 @@ const series = fromCodex<Point>(seriesEntries, SERIES_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="chart-meters-label"
-        data-testid="variant"
-        data-block="chart"
-        data-variant="meters"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="chart-meters-label"
+          data-testid="variant"
+          data-block="chart"
+          data-variant="meters"
+        >
           <Title :as="2" size="base" weight="bold" id="chart-meters-label" data-testid="variant-label">
             {{ ui.blocks.variants.chart.meters }}
           </Title>
@@ -119,15 +121,15 @@ const series = fromCodex<Point>(seriesEntries, SERIES_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="chart-muted-label"
-        data-testid="variant"
-        data-block="chart"
-        data-variant="muted"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="chart-muted-label"
+          data-testid="variant"
+          data-block="chart"
+          data-variant="muted"
+        >
           <Title :as="2" size="base" weight="bold" id="chart-muted-label" data-testid="variant-label">
             {{ ui.blocks.variants.chart.muted }}
           </Title>
@@ -145,7 +147,7 @@ const series = fromCodex<Point>(seriesEntries, SERIES_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

@@ -15,12 +15,12 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
+  import Box from "../primitives/box/box.svelte";
   import { cn } from "../utils";
 
   let { label, class: className, children }: FileTreeProps = $props();
 </script>
 
-<Block class={cn("flex flex-col gap-2 p-2", className)} role="tree" aria-label={label} data-slot="file-tree">
+<Box class={cn("flex flex-col gap-2 p-2", className)} role="tree" aria-label={label} data-slot="file-tree">
   {@render children?.()}
-</Block>
+</Box>

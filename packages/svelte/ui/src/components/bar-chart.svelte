@@ -18,7 +18,6 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
   import Box from "../primitives/box/box.svelte";
   import Text from "../primitives/text/text.svelte";
   import { cn } from "../utils";
@@ -27,7 +26,7 @@
   const top = $derived(Math.max(1, (max ?? bars.reduce((m, i) => Math.max(m, i.value), 0))));
 </script>
 
-<Block class={cn("min-w-0", className)} data-slot="bar-chart">
+<Box class={cn("min-w-0", className)} data-slot="bar-chart">
   <Box class="flex min-w-0 items-end gap-2" role="img" aria-label={label} style={`height:${height}px`}>
     {#each bars as b (b.id)}
       <Box class="flex h-full min-w-0 flex-1 items-end" title={(b.title ?? b.label)}>
@@ -48,4 +47,4 @@
       </Box>
     {/each}
   </Box>
-</Block>
+</Box>

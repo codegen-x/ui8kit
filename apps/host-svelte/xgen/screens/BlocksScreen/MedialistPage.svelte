@@ -68,32 +68,34 @@
   const MEDIALIST_EXTRAS = { stats, steps, posts, topics: categories, channels, reviews } as const;
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.blocks.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
-        {ui.blocks.themes.marketing.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-        {ui.blocks.names.medialist}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {ui.blocks.docs.medialist}
-      </Text>
-    </Stack>
-    <Block
-      tag="section"
-      aria-labelledby="medialist-figuresStart-label"
-      data-testid="variant"
-      data-block="medialist"
-      data-variant="figuresStart"
-    >
-      <Stack gap="4" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.blocks.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="marketing">
+          {ui.blocks.themes.marketing.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+          {ui.blocks.names.medialist}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {ui.blocks.docs.medialist}
+        </Text>
+      </Stack>
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="medialist-figuresStart-label"
+        data-testid="variant"
+        data-block="medialist"
+        data-variant="figuresStart"
+      >
         <Title as={2} size="base" weight="bold" id="medialist-figuresStart-label" data-testid="variant-label">
           {ui.blocks.variants.medialist.figuresStart}
         </Title>
@@ -112,15 +114,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="medialist-proofReview-label"
-      data-testid="variant"
-      data-block="medialist"
-      data-variant="proofReview"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="medialist-proofReview-label"
+        data-testid="variant"
+        data-block="medialist"
+        data-variant="proofReview"
+      >
         <Title as={2} size="base" weight="bold" id="medialist-proofReview-label" data-testid="variant-label">
           {ui.blocks.variants.medialist.proofReview}
         </Title>
@@ -145,15 +147,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="medialist-stepsRows-label"
-      data-testid="variant"
-      data-block="medialist"
-      data-variant="stepsRows"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="medialist-stepsRows-label"
+        data-testid="variant"
+        data-block="medialist"
+        data-variant="stepsRows"
+      >
         <Title as={2} size="base" weight="bold" id="medialist-stepsRows-label" data-testid="variant-label">
           {ui.blocks.variants.medialist.stepsRows}
         </Title>
@@ -172,15 +174,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="medialist-latestPosts-label"
-      data-testid="variant"
-      data-block="medialist"
-      data-variant="latestPosts"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="medialist-latestPosts-label"
+        data-testid="variant"
+        data-block="medialist"
+        data-variant="latestPosts"
+      >
         <Title as={2} size="base" weight="bold" id="medialist-latestPosts-label" data-testid="variant-label">
           {ui.blocks.variants.medialist.latestPosts}
         </Title>
@@ -199,15 +201,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="medialist-topicRows-label"
-      data-testid="variant"
-      data-block="medialist"
-      data-variant="topicRows"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="medialist-topicRows-label"
+        data-testid="variant"
+        data-block="medialist"
+        data-variant="topicRows"
+      >
         <Title as={2} size="base" weight="bold" id="medialist-topicRows-label" data-testid="variant-label">
           {ui.blocks.variants.medialist.topicRows}
         </Title>
@@ -226,15 +228,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="medialist-contactStart-label"
-      data-testid="variant"
-      data-block="medialist"
-      data-variant="contactStart"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="medialist-contactStart-label"
+        data-testid="variant"
+        data-block="medialist"
+        data-variant="contactStart"
+      >
         <Title as={2} size="base" weight="bold" id="medialist-contactStart-label" data-testid="variant-label">
           {ui.blocks.variants.medialist.contactStart}
         </Title>
@@ -253,6 +255,6 @@
           />
         </Box>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

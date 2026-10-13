@@ -15,8 +15,8 @@ export type FaqCardsProps = {
 </script>
 
 <script setup lang="ts">
+import Article from "../primitives/article/article.vue";
 import Badge from "../primitives/badge/badge.vue";
-import Block from "../primitives/block/block.vue";
 import Box from "../primitives/box/box.vue";
 import Link from "../primitives/link/link.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
@@ -35,8 +35,9 @@ const { items, labels, cards = "grid3" } = defineProps<FaqCardsProps>();
     "
     data-testid="faq"
   >
-    <Block v-for="q in items" :key="q.id"
-      tag="article"
+    <Article
+      v-for="q in items"
+      :key="q.id"
       class="rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-6"
       data-testid="faq-card"
     >
@@ -63,6 +64,6 @@ const { items, labels, cards = "grid3" } = defineProps<FaqCardsProps>();
           <LucideIcon name="arrow-right" :size="16" />
         </Link>
       </Box>
-    </Block>
+    </Article>
   </Box>
 </template>

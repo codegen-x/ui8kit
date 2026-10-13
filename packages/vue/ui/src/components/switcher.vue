@@ -34,7 +34,7 @@ export type SwitcherProps = {
 </script>
 
 <script setup lang="ts">
-import Block from "../primitives/block/block.vue";
+import Box from "../primitives/box/box.vue";
 import { cn } from "../utils";
 
 const { size = "default", layout = "text", label, class: className } = defineProps<SwitcherProps>();
@@ -42,12 +42,12 @@ defineSlots<{ default?(): unknown }>();
 </script>
 
 <template>
-  <Block
+  <Box
     :class="cn(switcherVariants({ size: size, layout: layout }), className)"
     role="tablist"
     :aria-label="label"
     data-slot="switcher"
   >
     <slot />
-  </Block>
+  </Box>
 </template>

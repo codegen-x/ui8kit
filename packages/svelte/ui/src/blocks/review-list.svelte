@@ -22,7 +22,7 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
+  import Article from "../primitives/article/article.svelte";
   import Grid from "../primitives/grid/grid.svelte";
   import Group from "../primitives/group/group.svelte";
   import Stack from "../primitives/stack/stack.svelte";
@@ -55,8 +55,7 @@
 >
   <Grid cols={(((layout as string) === "grid") ? "1-3" : "1")} class="gap-4" data-testid="items">
     {#each reviews as r (r.id)}
-      <Block
-        tag="article"
+      <Article
         class={cn(
           "flex h-full flex-col gap-4",
           (
@@ -86,7 +85,7 @@
             </Text>
           </Stack>
         </Group>
-      </Block>
+      </Article>
     {/each}
   </Grid>
 </SectionFrame>

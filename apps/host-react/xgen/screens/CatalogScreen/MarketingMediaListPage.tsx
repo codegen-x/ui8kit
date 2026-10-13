@@ -70,31 +70,33 @@ const MEDIALIST_EXTRAS = { stats, steps, posts, topics: categories, channels, re
 
 export function MarketingMediaListPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.catalog.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text size="sm" className="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-            {ui.catalog.sections.marketing.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="category-title">
-            {ui.catalog.categories.marketingMediaList}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {tpl(ui.catalog.count, 1, 6)}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="catalog-medialist-title"
-          data-testid="catalog-block"
-          data-block="medialist"
-        >
-          <Stack gap="6" align="stretch">
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.catalog.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text size="sm" className="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+              {ui.catalog.sections.marketing.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="category-title">
+              {ui.catalog.categories.marketingMediaList}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {tpl(ui.catalog.count, 1, 6)}
+            </Text>
+          </Stack>
+          <Stack
+            gap="6"
+            align="stretch"
+            role="group"
+            aria-labelledby="catalog-medialist-title"
+            data-testid="catalog-block"
+            data-block="medialist"
+          >
             <Stack gap="2" align="stretch">
               <Title as={2} size="2xl" weight="bold" id="catalog-medialist-title">
                 {ui.blocks.names.medialist}
@@ -103,177 +105,177 @@ export function MarketingMediaListPage() {
                 {ui.blocks.docs.medialist}
               </Text>
             </Stack>
-            <Block
-              tag="section"
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="medialist-figuresStart-label"
               data-testid="variant"
               data-block="medialist"
               data-variant="figuresStart"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="medialist-figuresStart-label" data-testid="variant-label">
-                  {ui.blocks.variants.medialist.figuresStart}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <MediaList
-                    id="medialist-figuresStart"
-                    title={ui.marketing.mediaList.figures.title}
-                    lead={ui.marketing.mediaList.figures.lead}
-                    badge={ui.marketing.mediaList.figures.badge}
-                    labels={{ ...MEDIALIST_LABELS, list: ui.marketing.mediaList.figures.list }}
-                    actions={{ mode: "one", cta: ui.marketing.mediaList.figures.cta, href: "#/start" }}
-                    extras={MEDIALIST_EXTRAS}
-                    layout="figures"
-                    mediaSide="start"
-                    tone="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="medialist-figuresStart-label" data-testid="variant-label">
+                {ui.blocks.variants.medialist.figuresStart}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <MediaList
+                  id="medialist-figuresStart"
+                  title={ui.marketing.mediaList.figures.title}
+                  lead={ui.marketing.mediaList.figures.lead}
+                  badge={ui.marketing.mediaList.figures.badge}
+                  labels={{ ...MEDIALIST_LABELS, list: ui.marketing.mediaList.figures.list }}
+                  actions={{ mode: "one", cta: ui.marketing.mediaList.figures.cta, href: "#/start" }}
+                  extras={MEDIALIST_EXTRAS}
+                  layout="figures"
+                  mediaSide="start"
+                  tone="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="medialist-proofReview-label"
               data-testid="variant"
               data-block="medialist"
               data-variant="proofReview"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="medialist-proofReview-label" data-testid="variant-label">
-                  {ui.blocks.variants.medialist.proofReview}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <MediaList
-                    id="medialist-proofReview"
-                    title={ui.marketing.mediaList.proof.title}
-                    lead={ui.marketing.mediaList.proof.lead}
-                    badge={ui.marketing.mediaList.proof.badge}
-                    labels={{ ...MEDIALIST_LABELS, list: ui.marketing.mediaList.proof.list }}
-                    actions={{
-                      mode: "two",
-                      cta: ui.marketing.mediaList.proof.cta,
-                      href: "#/start",
-                      secondary: ui.marketing.mediaList.proof.secondary,
-                      secondaryHref: "#/more",
-                    }}
-                    extras={MEDIALIST_EXTRAS}
-                    layout="proof"
-                    mediaSide="end"
-                    tone="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="medialist-proofReview-label" data-testid="variant-label">
+                {ui.blocks.variants.medialist.proofReview}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <MediaList
+                  id="medialist-proofReview"
+                  title={ui.marketing.mediaList.proof.title}
+                  lead={ui.marketing.mediaList.proof.lead}
+                  badge={ui.marketing.mediaList.proof.badge}
+                  labels={{ ...MEDIALIST_LABELS, list: ui.marketing.mediaList.proof.list }}
+                  actions={{
+                    mode: "two",
+                    cta: ui.marketing.mediaList.proof.cta,
+                    href: "#/start",
+                    secondary: ui.marketing.mediaList.proof.secondary,
+                    secondaryHref: "#/more",
+                  }}
+                  extras={MEDIALIST_EXTRAS}
+                  layout="proof"
+                  mediaSide="end"
+                  tone="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="medialist-stepsRows-label"
               data-testid="variant"
               data-block="medialist"
               data-variant="stepsRows"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="medialist-stepsRows-label" data-testid="variant-label">
-                  {ui.blocks.variants.medialist.stepsRows}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <MediaList
-                    id="medialist-stepsRows"
-                    title={ui.marketing.mediaList.steps.title}
-                    lead={ui.marketing.mediaList.steps.lead}
-                    badge={ui.marketing.mediaList.steps.badge}
-                    labels={{ ...MEDIALIST_LABELS, list: ui.marketing.mediaList.steps.list }}
-                    actions={{ mode: "one", cta: ui.marketing.mediaList.steps.cta, href: "#/start" }}
-                    extras={MEDIALIST_EXTRAS}
-                    layout="steps"
-                    mediaSide="end"
-                    tone="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="medialist-stepsRows-label" data-testid="variant-label">
+                {ui.blocks.variants.medialist.stepsRows}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <MediaList
+                  id="medialist-stepsRows"
+                  title={ui.marketing.mediaList.steps.title}
+                  lead={ui.marketing.mediaList.steps.lead}
+                  badge={ui.marketing.mediaList.steps.badge}
+                  labels={{ ...MEDIALIST_LABELS, list: ui.marketing.mediaList.steps.list }}
+                  actions={{ mode: "one", cta: ui.marketing.mediaList.steps.cta, href: "#/start" }}
+                  extras={MEDIALIST_EXTRAS}
+                  layout="steps"
+                  mediaSide="end"
+                  tone="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="medialist-latestPosts-label"
               data-testid="variant"
               data-block="medialist"
               data-variant="latestPosts"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="medialist-latestPosts-label" data-testid="variant-label">
-                  {ui.blocks.variants.medialist.latestPosts}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <MediaList
-                    id="medialist-latestPosts"
-                    title={ui.marketing.mediaList.posts.title}
-                    lead={ui.marketing.mediaList.posts.lead}
-                    badge={ui.marketing.mediaList.posts.badge}
-                    labels={{ ...MEDIALIST_LABELS, list: ui.marketing.mediaList.posts.list }}
-                    actions={{ mode: "one", cta: ui.marketing.mediaList.posts.cta, href: "#/start" }}
-                    extras={MEDIALIST_EXTRAS}
-                    layout="posts"
-                    mediaSide="end"
-                    tone="muted"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="medialist-latestPosts-label" data-testid="variant-label">
+                {ui.blocks.variants.medialist.latestPosts}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <MediaList
+                  id="medialist-latestPosts"
+                  title={ui.marketing.mediaList.posts.title}
+                  lead={ui.marketing.mediaList.posts.lead}
+                  badge={ui.marketing.mediaList.posts.badge}
+                  labels={{ ...MEDIALIST_LABELS, list: ui.marketing.mediaList.posts.list }}
+                  actions={{ mode: "one", cta: ui.marketing.mediaList.posts.cta, href: "#/start" }}
+                  extras={MEDIALIST_EXTRAS}
+                  layout="posts"
+                  mediaSide="end"
+                  tone="muted"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="medialist-topicRows-label"
               data-testid="variant"
               data-block="medialist"
               data-variant="topicRows"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="medialist-topicRows-label" data-testid="variant-label">
-                  {ui.blocks.variants.medialist.topicRows}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <MediaList
-                    id="medialist-topicRows"
-                    title={ui.marketing.mediaList.topics.title}
-                    lead={ui.marketing.mediaList.topics.lead}
-                    badge={ui.marketing.mediaList.topics.badge}
-                    labels={{ ...MEDIALIST_LABELS, list: ui.marketing.mediaList.topics.list }}
-                    actions={{ mode: "one", cta: ui.marketing.mediaList.topics.cta, href: "#/start" }}
-                    extras={MEDIALIST_EXTRAS}
-                    layout="topics"
-                    mediaSide="end"
-                    tone="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="medialist-topicRows-label" data-testid="variant-label">
+                {ui.blocks.variants.medialist.topicRows}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <MediaList
+                  id="medialist-topicRows"
+                  title={ui.marketing.mediaList.topics.title}
+                  lead={ui.marketing.mediaList.topics.lead}
+                  badge={ui.marketing.mediaList.topics.badge}
+                  labels={{ ...MEDIALIST_LABELS, list: ui.marketing.mediaList.topics.list }}
+                  actions={{ mode: "one", cta: ui.marketing.mediaList.topics.cta, href: "#/start" }}
+                  extras={MEDIALIST_EXTRAS}
+                  layout="topics"
+                  mediaSide="end"
+                  tone="default"
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="medialist-contactStart-label"
               data-testid="variant"
               data-block="medialist"
               data-variant="contactStart"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="medialist-contactStart-label" data-testid="variant-label">
-                  {ui.blocks.variants.medialist.contactStart}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <MediaList
-                    id="medialist-contactStart"
-                    title={ui.marketing.mediaList.contact.title}
-                    lead={ui.marketing.mediaList.contact.lead}
-                    badge={ui.marketing.mediaList.contact.badge}
-                    labels={{ ...MEDIALIST_LABELS, list: ui.marketing.mediaList.contact.list }}
-                    actions={{ mode: "one", cta: ui.marketing.mediaList.contact.cta, href: "#/start" }}
-                    extras={MEDIALIST_EXTRAS}
-                    layout="contact"
-                    mediaSide="start"
-                    tone="default"
-                  />
-                </Box>
-              </Stack>
-            </Block>
+              <Title as={3} size="base" weight="bold" id="medialist-contactStart-label" data-testid="variant-label">
+                {ui.blocks.variants.medialist.contactStart}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <MediaList
+                  id="medialist-contactStart"
+                  title={ui.marketing.mediaList.contact.title}
+                  lead={ui.marketing.mediaList.contact.lead}
+                  badge={ui.marketing.mediaList.contact.badge}
+                  labels={{ ...MEDIALIST_LABELS, list: ui.marketing.mediaList.contact.list }}
+                  actions={{ mode: "one", cta: ui.marketing.mediaList.contact.cta, href: "#/start" }}
+                  extras={MEDIALIST_EXTRAS}
+                  layout="contact"
+                  mediaSide="start"
+                  tone="default"
+                />
+              </Box>
+            </Stack>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

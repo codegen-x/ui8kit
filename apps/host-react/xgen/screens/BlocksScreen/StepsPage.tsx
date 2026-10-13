@@ -24,37 +24,39 @@ const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
 
 export function StepsPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text
-            size="sm"
-            className="font-medium text-muted-foreground"
-            data-testid="block-theme"
-            data-theme-id="marketing"
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text
+              size="sm"
+              className="font-medium text-muted-foreground"
+              data-testid="block-theme"
+              data-theme-id="marketing"
+            >
+              {ui.blocks.themes.marketing.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.steps}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.steps}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="steps-row-label"
+            data-testid="variant"
+            data-block="steps"
+            data-variant="row"
           >
-            {ui.blocks.themes.marketing.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.steps}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.steps}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="steps-row-label"
-          data-testid="variant"
-          data-block="steps"
-          data-variant="row"
-        >
-          <Stack gap="4" align="stretch">
             <Title as={2} size="base" weight="bold" id="steps-row-label" data-testid="variant-label">
               {ui.blocks.variants.steps.row}
             </Title>
@@ -71,15 +73,15 @@ export function StepsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="steps-rowIcons-label"
-          data-testid="variant"
-          data-block="steps"
-          data-variant="rowIcons"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="steps-rowIcons-label"
+            data-testid="variant"
+            data-block="steps"
+            data-variant="rowIcons"
+          >
             <Title as={2} size="base" weight="bold" id="steps-rowIcons-label" data-testid="variant-label">
               {ui.blocks.variants.steps.rowIcons}
             </Title>
@@ -96,15 +98,15 @@ export function StepsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="steps-column-label"
-          data-testid="variant"
-          data-block="steps"
-          data-variant="column"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="steps-column-label"
+            data-testid="variant"
+            data-block="steps"
+            data-variant="column"
+          >
             <Title as={2} size="base" weight="bold" id="steps-column-label" data-testid="variant-label">
               {ui.blocks.variants.steps.column}
             </Title>
@@ -121,15 +123,15 @@ export function StepsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="steps-centered-label"
-          data-testid="variant"
-          data-block="steps"
-          data-variant="centered"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="steps-centered-label"
+            data-testid="variant"
+            data-block="steps"
+            data-variant="centered"
+          >
             <Title as={2} size="base" weight="bold" id="steps-centered-label" data-testid="variant-label">
               {ui.blocks.variants.steps.centered}
             </Title>
@@ -146,15 +148,15 @@ export function StepsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="steps-columnIcons-label"
-          data-testid="variant"
-          data-block="steps"
-          data-variant="columnIcons"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="steps-columnIcons-label"
+            data-testid="variant"
+            data-block="steps"
+            data-variant="columnIcons"
+          >
             <Title as={2} size="base" weight="bold" id="steps-columnIcons-label" data-testid="variant-label">
               {ui.blocks.variants.steps.columnIcons}
             </Title>
@@ -171,15 +173,15 @@ export function StepsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="steps-compact-label"
-          data-testid="variant"
-          data-block="steps"
-          data-variant="compact"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="steps-compact-label"
+            data-testid="variant"
+            data-block="steps"
+            data-variant="compact"
+          >
             <Title as={2} size="base" weight="bold" id="steps-compact-label" data-testid="variant-label">
               {ui.blocks.variants.steps.compact}
             </Title>
@@ -196,8 +198,8 @@ export function StepsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

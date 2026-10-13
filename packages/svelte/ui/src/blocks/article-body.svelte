@@ -21,11 +21,13 @@
 </script>
 
 <script lang="ts">
-  import Block from "../primitives/block/block.svelte";
+  import Blockquote from "../primitives/blockquote/blockquote.svelte";
+  import Box from "../primitives/box/box.svelte";
   import Grid from "../primitives/grid/grid.svelte";
   import Link from "../primitives/link/link.svelte";
   import List from "../primitives/list/list.svelte";
   import ListItem from "../primitives/list/list-item.svelte";
+  import Nav from "../primitives/nav/nav.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
@@ -52,7 +54,7 @@
     )}
   >
     {#if ((layout as string) === "toc")}
-      <Block tag="nav" class="md:sticky md:top-4" aria-label={tocTitle} data-testid="toc">
+      <Nav class="md:sticky md:top-4" aria-label={tocTitle} data-testid="toc">
         <Stack gap="2">
           <Text size="sm" weight="semibold">
             {tocTitle}
@@ -72,11 +74,11 @@
             {/each}
           </List>
         </Stack>
-      </Block>
+      </Nav>
     {/if}
     <Stack gap="8" align="stretch" class="mx-auto w-full max-w-2xl min-w-0" data-testid="article">
       {#each sections as s (s.id)}
-        <Block tag="div" class="flex flex-col gap-4" id={tpl("{0}-{1}", id, s.id)} data-testid="item">
+        <Box class="flex flex-col gap-4" id={tpl("{0}-{1}", id, s.id)} data-testid="item">
           <Title as={3} size="2xl" weight="bold">
             {s.title}
           </Title>
@@ -85,12 +87,12 @@
           </Text>
           {#if ((quotes as string) === "show")}
             {#if s.quote}
-              <Block tag="blockquote" class="m-0 border-l border-border pl-4 text-lg" data-testid="quote">
+              <Blockquote class="m-0 border-l border-border pl-4 text-lg" data-testid="quote">
                 {s.quote}
-              </Block>
+              </Blockquote>
             {/if}
           {/if}
-        </Block>
+        </Box>
       {/each}
     </Stack>
   </Grid>

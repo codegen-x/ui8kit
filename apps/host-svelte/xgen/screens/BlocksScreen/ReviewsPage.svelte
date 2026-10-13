@@ -30,32 +30,34 @@
   const reviews = fromCodex<Review>(reviewsEntries, REVIEWS_FIELDS);
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.blocks.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="commerce">
-        {ui.blocks.themes.commerce.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-        {ui.blocks.names.reviews}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {ui.blocks.docs.reviews}
-      </Text>
-    </Stack>
-    <Block
-      tag="section"
-      aria-labelledby="reviews-list-label"
-      data-testid="variant"
-      data-block="reviews"
-      data-variant="list"
-    >
-      <Stack gap="4" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.blocks.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="commerce">
+          {ui.blocks.themes.commerce.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+          {ui.blocks.names.reviews}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {ui.blocks.docs.reviews}
+        </Text>
+      </Stack>
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="reviews-list-label"
+        data-testid="variant"
+        data-block="reviews"
+        data-variant="list"
+      >
         <Title as={2} size="base" weight="bold" id="reviews-list-label" data-testid="variant-label">
           {ui.blocks.variants.reviews.list}
         </Title>
@@ -73,15 +75,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="reviews-grid-label"
-      data-testid="variant"
-      data-block="reviews"
-      data-variant="grid"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="reviews-grid-label"
+        data-testid="variant"
+        data-block="reviews"
+        data-variant="grid"
+      >
         <Title as={2} size="base" weight="bold" id="reviews-grid-label" data-testid="variant-label">
           {ui.blocks.variants.reviews.grid}
         </Title>
@@ -99,15 +101,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="reviews-plain-label"
-      data-testid="variant"
-      data-block="reviews"
-      data-variant="plain"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="reviews-plain-label"
+        data-testid="variant"
+        data-block="reviews"
+        data-variant="plain"
+      >
         <Title as={2} size="base" weight="bold" id="reviews-plain-label" data-testid="variant-label">
           {ui.blocks.variants.reviews.plain}
         </Title>
@@ -125,15 +127,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="reviews-avatars-label"
-      data-testid="variant"
-      data-block="reviews"
-      data-variant="avatars"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="reviews-avatars-label"
+        data-testid="variant"
+        data-block="reviews"
+        data-variant="avatars"
+      >
         <Title as={2} size="base" weight="bold" id="reviews-avatars-label" data-testid="variant-label">
           {ui.blocks.variants.reviews.avatars}
         </Title>
@@ -151,15 +153,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="reviews-mutedGrid-label"
-      data-testid="variant"
-      data-block="reviews"
-      data-variant="mutedGrid"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="reviews-mutedGrid-label"
+        data-testid="variant"
+        data-block="reviews"
+        data-variant="mutedGrid"
+      >
         <Title as={2} size="base" weight="bold" id="reviews-mutedGrid-label" data-testid="variant-label">
           {ui.blocks.variants.reviews.mutedGrid}
         </Title>
@@ -177,6 +179,6 @@
           />
         </Box>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

@@ -90,6 +90,7 @@ export function dictionaryUse(plan: Plan): DictionaryUse {
   };
   for (const s of plan.inputs.screens) {
     nodes(s.value.layout, new Map(), rel(s.file));
+    for (const p of Object.values(s.value.parts ?? {})) nodes(p, new Map(), rel(s.file));
     for (const a of Object.values(s.value.areas)) nodes(a, new Map(), rel(s.file));
     for (const v of Object.values(s.value.consts ?? {})) value(v, new Map(), rel(s.file));
   }

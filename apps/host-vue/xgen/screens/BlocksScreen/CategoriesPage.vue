@@ -24,32 +24,34 @@ const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS);
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.blocks.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="commerce">
-          {{ ui.blocks.themes.commerce.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="block-title">
-          {{ ui.blocks.names.categories }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ ui.blocks.docs.categories }}
-        </Text>
-      </Stack>
-      <Block
-        tag="section"
-        aria-labelledby="categories-chips-label"
-        data-testid="variant"
-        data-block="categories"
-        data-variant="chips"
-      >
-        <Stack gap="4" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.blocks.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="commerce">
+            {{ ui.blocks.themes.commerce.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="block-title">
+            {{ ui.blocks.names.categories }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ ui.blocks.docs.categories }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="categories-chips-label"
+          data-testid="variant"
+          data-block="categories"
+          data-variant="chips"
+        >
           <Title :as="2" size="base" weight="bold" id="categories-chips-label" data-testid="variant-label">
             {{ ui.blocks.variants.categories.chips }}
           </Title>
@@ -66,15 +68,15 @@ const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="categories-bar-label"
-        data-testid="variant"
-        data-block="categories"
-        data-variant="bar"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="categories-bar-label"
+          data-testid="variant"
+          data-block="categories"
+          data-variant="bar"
+        >
           <Title :as="2" size="base" weight="bold" id="categories-bar-label" data-testid="variant-label">
             {{ ui.blocks.variants.categories.bar }}
           </Title>
@@ -91,15 +93,15 @@ const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="categories-sidebar-label"
-        data-testid="variant"
-        data-block="categories"
-        data-variant="sidebar"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="categories-sidebar-label"
+          data-testid="variant"
+          data-block="categories"
+          data-variant="sidebar"
+        >
           <Title :as="2" size="base" weight="bold" id="categories-sidebar-label" data-testid="variant-label">
             {{ ui.blocks.variants.categories.sidebar }}
           </Title>
@@ -116,15 +118,15 @@ const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="categories-chipsPlain-label"
-        data-testid="variant"
-        data-block="categories"
-        data-variant="chipsPlain"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="categories-chipsPlain-label"
+          data-testid="variant"
+          data-block="categories"
+          data-variant="chipsPlain"
+        >
           <Title :as="2" size="base" weight="bold" id="categories-chipsPlain-label" data-testid="variant-label">
             {{ ui.blocks.variants.categories.chipsPlain }}
           </Title>
@@ -141,15 +143,15 @@ const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="categories-barCompact-label"
-        data-testid="variant"
-        data-block="categories"
-        data-variant="barCompact"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="categories-barCompact-label"
+          data-testid="variant"
+          data-block="categories"
+          data-variant="barCompact"
+        >
           <Title :as="2" size="base" weight="bold" id="categories-barCompact-label" data-testid="variant-label">
             {{ ui.blocks.variants.categories.barCompact }}
           </Title>
@@ -166,15 +168,15 @@ const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="categories-tiles-label"
-        data-testid="variant"
-        data-block="categories"
-        data-variant="tiles"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="categories-tiles-label"
+          data-testid="variant"
+          data-block="categories"
+          data-variant="tiles"
+        >
           <Title :as="2" size="base" weight="bold" id="categories-tiles-label" data-testid="variant-label">
             {{ ui.blocks.variants.categories.tiles }}
           </Title>
@@ -191,15 +193,15 @@ const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="categories-toolbar-label"
-        data-testid="variant"
-        data-block="categories"
-        data-variant="toolbar"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="categories-toolbar-label"
+          data-testid="variant"
+          data-block="categories"
+          data-variant="toolbar"
+        >
           <Title :as="2" size="base" weight="bold" id="categories-toolbar-label" data-testid="variant-label">
             {{ ui.blocks.variants.categories.toolbar }}
           </Title>
@@ -216,7 +218,7 @@ const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

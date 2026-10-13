@@ -7,37 +7,39 @@ import { ui } from "@ui8kit/app-shared/content";
 
 export function EmptyPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text
-            size="sm"
-            className="font-medium text-muted-foreground"
-            data-testid="block-theme"
-            data-theme-id="dashboard"
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text
+              size="sm"
+              className="font-medium text-muted-foreground"
+              data-testid="block-theme"
+              data-theme-id="dashboard"
+            >
+              {ui.blocks.themes.dashboard.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.empty}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.empty}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="empty-illustrated-label"
+            data-testid="variant"
+            data-block="empty"
+            data-variant="illustrated"
           >
-            {ui.blocks.themes.dashboard.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.empty}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.empty}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="empty-illustrated-label"
-          data-testid="variant"
-          data-block="empty"
-          data-variant="illustrated"
-        >
-          <Stack gap="4" align="stretch">
             <Title as={2} size="base" weight="bold" id="empty-illustrated-label" data-testid="variant-label">
               {ui.blocks.variants.empty.illustrated}
             </Title>
@@ -55,15 +57,15 @@ export function EmptyPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="empty-orders-label"
-          data-testid="variant"
-          data-block="empty"
-          data-variant="orders"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="empty-orders-label"
+            data-testid="variant"
+            data-block="empty"
+            data-variant="orders"
+          >
             <Title as={2} size="base" weight="bold" id="empty-orders-label" data-testid="variant-label">
               {ui.blocks.variants.empty.orders}
             </Title>
@@ -82,15 +84,15 @@ export function EmptyPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="empty-results-label"
-          data-testid="variant"
-          data-block="empty"
-          data-variant="results"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="empty-results-label"
+            data-testid="variant"
+            data-block="empty"
+            data-variant="results"
+          >
             <Title as={2} size="base" weight="bold" id="empty-results-label" data-testid="variant-label">
               {ui.blocks.variants.empty.results}
             </Title>
@@ -109,15 +111,15 @@ export function EmptyPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="empty-inbox-label"
-          data-testid="variant"
-          data-block="empty"
-          data-variant="inbox"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="empty-inbox-label"
+            data-testid="variant"
+            data-block="empty"
+            data-variant="inbox"
+          >
             <Title as={2} size="base" weight="bold" id="empty-inbox-label" data-testid="variant-label">
               {ui.blocks.variants.empty.inbox}
             </Title>
@@ -136,15 +138,15 @@ export function EmptyPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="empty-compact-label"
-          data-testid="variant"
-          data-block="empty"
-          data-variant="compact"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="empty-compact-label"
+            data-testid="variant"
+            data-block="empty"
+            data-variant="compact"
+          >
             <Title as={2} size="base" weight="bold" id="empty-compact-label" data-testid="variant-label">
               {ui.blocks.variants.empty.compact}
             </Title>
@@ -163,15 +165,15 @@ export function EmptyPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="empty-plainNoAction-label"
-          data-testid="variant"
-          data-block="empty"
-          data-variant="plainNoAction"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="empty-plainNoAction-label"
+            data-testid="variant"
+            data-block="empty"
+            data-variant="plainNoAction"
+          >
             <Title as={2} size="base" weight="bold" id="empty-plainNoAction-label" data-testid="variant-label">
               {ui.blocks.variants.empty.plainNoAction}
             </Title>
@@ -190,8 +192,8 @@ export function EmptyPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

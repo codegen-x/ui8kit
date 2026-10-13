@@ -28,31 +28,33 @@ const values = fromCodex<Feature>(valuesEntries, VALUES_FIELDS);
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.catalog.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-          {{ ui.catalog.sections.marketing.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="category-title">
-          {{ ui.catalog.categories.marketingFeatureCards }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ tpl(ui.catalog.count, 1, 4) }}
-        </Text>
-      </Stack>
-      <Block
-        tag="section"
-        aria-labelledby="catalog-featureshowcase-title"
-        data-testid="catalog-block"
-        data-block="featureshowcase"
-      >
-        <Stack gap="6" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.catalog.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+            {{ ui.catalog.sections.marketing.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="category-title">
+            {{ ui.catalog.categories.marketingFeatureCards }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ tpl(ui.catalog.count, 1, 4) }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="6"
+          align="stretch"
+          role="group"
+          aria-labelledby="catalog-featureshowcase-title"
+          data-testid="catalog-block"
+          data-block="featureshowcase"
+        >
           <Stack gap="2" align="stretch">
             <Title :as="2" size="2xl" weight="bold" id="catalog-featureshowcase-title">
               {{ ui.blocks.names.featureshowcase }}
@@ -61,108 +63,108 @@ const values = fromCodex<Feature>(valuesEntries, VALUES_FIELDS);
               {{ ui.blocks.docs.featureshowcase }}
             </Text>
           </Stack>
-          <Block
-            tag="section"
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="featureshowcase-pictureCards3-label"
             data-testid="variant"
             data-block="featureshowcase"
             data-variant="pictureCards3"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="featureshowcase-pictureCards3-label" data-testid="variant-label">
-                {{ ui.blocks.variants.featureshowcase.pictureCards3 }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <FeatureShowcase
-                  id="featureshowcase-pictureCards3"
-                  :title="ui.marketing.featureShowcase.title"
-                  :lead="ui.marketing.featureShowcase.lead"
-                  :features="values"
-                  :more="ui.marketing.featureShowcase.more"
-                  item="picture"
-                  cols="3"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="featureshowcase-pictureCards3-label" data-testid="variant-label">
+              {{ ui.blocks.variants.featureshowcase.pictureCards3 }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <FeatureShowcase
+                id="featureshowcase-pictureCards3"
+                :title="ui.marketing.featureShowcase.title"
+                :lead="ui.marketing.featureShowcase.lead"
+                :features="values"
+                :more="ui.marketing.featureShowcase.more"
+                item="picture"
+                cols="3"
+                tone="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="featureshowcase-panelCards4-label"
             data-testid="variant"
             data-block="featureshowcase"
             data-variant="panelCards4"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="featureshowcase-panelCards4-label" data-testid="variant-label">
-                {{ ui.blocks.variants.featureshowcase.panelCards4 }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <FeatureShowcase
-                  id="featureshowcase-panelCards4"
-                  :title="ui.marketing.featureShowcase.title"
-                  :lead="ui.marketing.featureShowcase.lead"
-                  :features="features"
-                  :more="ui.marketing.featureShowcase.more"
-                  item="panel"
-                  cols="4"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="featureshowcase-panelCards4-label" data-testid="variant-label">
+              {{ ui.blocks.variants.featureshowcase.panelCards4 }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <FeatureShowcase
+                id="featureshowcase-panelCards4"
+                :title="ui.marketing.featureShowcase.title"
+                :lead="ui.marketing.featureShowcase.lead"
+                :features="features"
+                :more="ui.marketing.featureShowcase.more"
+                item="panel"
+                cols="4"
+                tone="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="featureshowcase-pictureCards4-label"
             data-testid="variant"
             data-block="featureshowcase"
             data-variant="pictureCards4"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="featureshowcase-pictureCards4-label" data-testid="variant-label">
-                {{ ui.blocks.variants.featureshowcase.pictureCards4 }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <FeatureShowcase
-                  id="featureshowcase-pictureCards4"
-                  :title="ui.marketing.featureShowcase.title"
-                  :lead="ui.marketing.featureShowcase.lead"
-                  :features="features"
-                  :more="ui.marketing.featureShowcase.more"
-                  item="picture"
-                  cols="4"
-                  tone="muted"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="featureshowcase-pictureCards4-label" data-testid="variant-label">
+              {{ ui.blocks.variants.featureshowcase.pictureCards4 }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <FeatureShowcase
+                id="featureshowcase-pictureCards4"
+                :title="ui.marketing.featureShowcase.title"
+                :lead="ui.marketing.featureShowcase.lead"
+                :features="features"
+                :more="ui.marketing.featureShowcase.more"
+                item="picture"
+                cols="4"
+                tone="muted"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="featureshowcase-panelCards3-label"
             data-testid="variant"
             data-block="featureshowcase"
             data-variant="panelCards3"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="featureshowcase-panelCards3-label" data-testid="variant-label">
-                {{ ui.blocks.variants.featureshowcase.panelCards3 }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <FeatureShowcase
-                  id="featureshowcase-panelCards3"
-                  :title="ui.marketing.featureShowcase.title"
-                  :lead="ui.marketing.featureShowcase.lead"
-                  :features="values"
-                  :more="ui.marketing.featureShowcase.more"
-                  item="panel"
-                  cols="3"
-                  tone="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
+            <Title :as="3" size="base" weight="bold" id="featureshowcase-panelCards3-label" data-testid="variant-label">
+              {{ ui.blocks.variants.featureshowcase.panelCards3 }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <FeatureShowcase
+                id="featureshowcase-panelCards3"
+                :title="ui.marketing.featureShowcase.title"
+                :lead="ui.marketing.featureShowcase.lead"
+                :features="values"
+                :more="ui.marketing.featureShowcase.more"
+                item="panel"
+                cols="3"
+                tone="default"
+              />
+            </Box>
+          </Stack>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

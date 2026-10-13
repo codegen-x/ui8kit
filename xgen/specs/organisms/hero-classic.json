@@ -144,26 +144,131 @@
   "events": [],
   "view": [
     {
-      "organism": "Backdrop",
+      "organism": "SectionFrame",
       "props": {
-        "kind": {
+        "id": {
+          "$": "id"
+        },
+        "title": {
+          "$": "title"
+        },
+        "lead": {
+          "$": "text"
+        },
+        "heading": {
+          "level": {
+            "$": "level"
+          },
+          "scale": {
+            "$": "scale"
+          },
+          "badge": {
+            "$": "badge"
+          }
+        },
+        "layout": {
           "op": "cond",
           "args": [
             {
               "op": "eq",
               "args": [
                 {
-                  "$": "mediaKind"
+                  "$": "layout"
                 },
-                "backdrop"
+                "split"
               ]
             },
-            "image",
-            "none"
+            "split",
+            "stack"
           ]
         },
-        "alt": {
-          "$": "title"
+        "align": {
+          "op": "cond",
+          "args": [
+            {
+              "op": "eq",
+              "args": [
+                {
+                  "$": "layout"
+                },
+                "split"
+              ]
+            },
+            "start",
+            "center"
+          ]
+        },
+        "media": {
+          "show": {
+            "op": "or",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "mediaKind"
+                  },
+                  "image"
+                ]
+              },
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "mediaKind"
+                  },
+                  "code"
+                ]
+              },
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "mediaKind"
+                  },
+                  "cluster"
+                ]
+              }
+            ]
+          },
+          "side": {
+            "$": "mediaSide"
+          }
+        },
+        "tone": {
+          "$": "tone"
+        },
+        "density": {
+          "$": "density"
+        },
+        "className": {
+          "op": "cond",
+          "args": [
+            {
+              "op": "eq",
+              "args": [
+                {
+                  "op": "cond",
+                  "args": [
+                    {
+                      "op": "eq",
+                      "args": [
+                        {
+                          "$": "mediaKind"
+                        },
+                        "backdrop"
+                      ]
+                    },
+                    "image",
+                    "none"
+                  ]
+                },
+                "image"
+              ]
+            },
+            "relative isolate overflow-hidden",
+            ""
+          ]
         }
       },
       "slots": {
@@ -171,465 +276,332 @@
           "args": [],
           "do": [
             {
-              "organism": "SectionFrame",
+              "organism": "Backdrop",
               "props": {
-                "id": {
-                  "$": "id"
+                "kind": {
+                  "op": "cond",
+                  "args": [
+                    {
+                      "op": "eq",
+                      "args": [
+                        {
+                          "$": "mediaKind"
+                        },
+                        "backdrop"
+                      ]
+                    },
+                    "image",
+                    "none"
+                  ]
                 },
-                "title": {
+                "alt": {
                   "$": "title"
-                },
-                "lead": {
-                  "$": "text"
-                },
-                "heading": {
-                  "level": {
-                    "$": "level"
-                  },
-                  "scale": {
-                    "$": "scale"
-                  },
-                  "badge": {
-                    "$": "badge"
-                  }
-                },
-                "layout": {
-                  "op": "cond",
-                  "args": [
-                    {
-                      "op": "eq",
-                      "args": [
-                        {
-                          "$": "layout"
-                        },
-                        "split"
-                      ]
-                    },
-                    "split",
-                    "stack"
-                  ]
-                },
-                "align": {
-                  "op": "cond",
-                  "args": [
-                    {
-                      "op": "eq",
-                      "args": [
-                        {
-                          "$": "layout"
-                        },
-                        "split"
-                      ]
-                    },
-                    "start",
-                    "center"
-                  ]
-                },
-                "media": {
-                  "show": {
-                    "op": "or",
+                }
+              }
+            },
+            {
+              "when": {
+                "$": "actions.cta"
+              },
+              "then": [
+                {
+                  "when": {
+                    "op": "eq",
                     "args": [
                       {
-                        "op": "eq",
-                        "args": [
-                          {
-                            "$": "mediaKind"
-                          },
-                          "image"
-                        ]
+                        "$": "actions.mode"
                       },
-                      {
-                        "op": "eq",
-                        "args": [
-                          {
-                            "$": "mediaKind"
-                          },
-                          "code"
-                        ]
-                      },
-                      {
-                        "op": "eq",
-                        "args": [
-                          {
-                            "$": "mediaKind"
-                          },
-                          "cluster"
-                        ]
-                      }
+                      "form"
                     ]
                   },
-                  "side": {
-                    "$": "mediaSide"
-                  }
-                },
-                "tone": {
-                  "$": "tone"
-                },
-                "density": {
-                  "$": "density"
-                }
-              },
-              "slots": {
-                "children": {
-                  "args": [],
-                  "do": [
+                  "then": [
                     {
-                      "when": {
-                        "$": "actions.cta"
-                      },
-                      "then": [
-                        {
-                          "when": {
-                            "op": "eq",
-                            "args": [
-                              {
-                                "$": "actions.mode"
-                              },
-                              "form"
-                            ]
-                          },
-                          "then": [
+                      "use": "Box",
+                      "props": {
+                        "Class": {
+                          "op": "cn",
+                          "args": [
+                            "w-full max-w-xl",
                             {
-                              "use": "Box",
-                              "props": {
-                                "Class": {
-                                  "op": "cn",
+                              "op": "cond",
+                              "args": [
+                                {
+                                  "op": "eq",
                                   "args": [
-                                    "w-full max-w-xl",
                                     {
-                                      "op": "cond",
-                                      "args": [
-                                        {
-                                          "op": "eq",
-                                          "args": [
-                                            {
-                                              "$": "layout"
-                                            },
-                                            "centered"
-                                          ]
-                                        },
-                                        "mx-auto",
-                                        ""
-                                      ]
+                                      "$": "layout"
+                                    },
+                                    "centered"
+                                  ]
+                                },
+                                "mx-auto",
+                                ""
+                              ]
+                            }
+                          ]
+                        }
+                      },
+                      "attrs": {
+                        "data-testid": "email-form"
+                      },
+                      "children": [
+                        {
+                          "use": "Label",
+                          "props": {
+                            "HTMLFor": {
+                              "op": "tpl",
+                              "args": [
+                                "{0}-email",
+                                {
+                                  "$": "id"
+                                }
+                              ]
+                            },
+                            "Class": "sr-only"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "actions.emailLabel"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "use": "Group",
+                          "props": {
+                            "Gap": "2",
+                            "Align": "start",
+                            "Class": "w-full flex-wrap"
+                          },
+                          "children": [
+                            {
+                              "use": "Input",
+                              "props": {
+                                "Type": "text",
+                                "Name": "prompt",
+                                "Class": "min-w-0 flex-1",
+                                "Placeholder": {
+                                  "$": "actions.emailLabel"
+                                }
+                              },
+                              "attrs": {
+                                "id": {
+                                  "op": "tpl",
+                                  "args": [
+                                    "{0}-email",
+                                    {
+                                      "$": "id"
                                     }
+                                  ]
+                                },
+                                "data-testid": "field"
+                              }
+                            },
+                            {
+                              "use": "Button",
+                              "props": {
+                                "Variant": "default",
+                                "Size": "default",
+                                "Href": {
+                                  "op": "coalesce",
+                                  "args": [
+                                    {
+                                      "$": "actions.href"
+                                    },
+                                    "#/"
                                   ]
                                 }
                               },
                               "attrs": {
-                                "data-testid": "email-form"
+                                "data-testid": "submit"
                               },
                               "children": [
                                 {
-                                  "use": "Label",
-                                  "props": {
-                                    "HTMLFor": {
-                                      "op": "tpl",
-                                      "args": [
-                                        "{0}-email",
-                                        {
-                                          "$": "id"
-                                        }
-                                      ]
-                                    },
-                                    "Class": "sr-only"
-                                  },
-                                  "children": [
-                                    {
-                                      "text": {
-                                        "$": "actions.emailLabel"
-                                      }
-                                    }
-                                  ]
-                                },
-                                {
-                                  "use": "Group",
-                                  "props": {
-                                    "Gap": "2",
-                                    "Align": "start",
-                                    "Class": "w-full flex-wrap"
-                                  },
-                                  "children": [
-                                    {
-                                      "use": "Input",
-                                      "props": {
-                                        "Type": "text",
-                                        "Name": "prompt",
-                                        "Class": "min-w-0 flex-1",
-                                        "Placeholder": {
-                                          "$": "actions.emailLabel"
-                                        }
-                                      },
-                                      "attrs": {
-                                        "id": {
-                                          "op": "tpl",
-                                          "args": [
-                                            "{0}-email",
-                                            {
-                                              "$": "id"
-                                            }
-                                          ]
-                                        },
-                                        "data-testid": "field"
-                                      }
-                                    },
-                                    {
-                                      "use": "Button",
-                                      "props": {
-                                        "Variant": "default",
-                                        "Size": "default",
-                                        "Href": {
-                                          "op": "coalesce",
-                                          "args": [
-                                            {
-                                              "$": "actions.href"
-                                            },
-                                            "#/"
-                                          ]
-                                        }
-                                      },
-                                      "attrs": {
-                                        "data-testid": "submit"
-                                      },
-                                      "children": [
-                                        {
-                                          "text": {
-                                            "$": "actions.cta"
-                                          }
-                                        }
-                                      ]
-                                    }
-                                  ]
+                                  "text": {
+                                    "$": "actions.cta"
+                                  }
                                 }
                               ]
                             }
-                          ],
-                          "else": [
-                            {
-                              "organism": "ActionGroup",
-                              "props": {
-                                "primary": {
-                                  "$": "actions.cta"
-                                },
-                                "primaryHref": {
-                                  "$": "actions.href"
-                                },
-                                "secondary": {
-                                  "op": "cond",
-                                  "args": [
-                                    {
-                                      "op": "eq",
-                                      "args": [
-                                        {
-                                          "$": "actions.mode"
-                                        },
-                                        "two"
-                                      ]
-                                    },
-                                    {
-                                      "$": "actions.secondary"
-                                    },
-                                    {
-                                      "op": "undef",
-                                      "args": []
-                                    }
-                                  ]
-                                },
-                                "secondaryHref": {
-                                  "$": "actions.secondaryHref"
-                                },
-                                "align": {
-                                  "op": "cond",
-                                  "args": [
-                                    {
-                                      "op": "eq",
-                                      "args": [
-                                        {
-                                          "$": "layout"
-                                        },
-                                        "centered"
-                                      ]
-                                    },
-                                    "center",
-                                    "start"
-                                  ]
-                                }
-                              }
-                            }
                           ]
-                        }
-                      ]
-                    },
-                    {
-                      "when": {
-                        "$": "topics"
-                      },
-                      "then": [
-                        {
-                          "organism": "TopicChips",
-                          "props": {
-                            "topics": {
-                              "$": "topics"
-                            }
-                          }
                         }
                       ]
                     }
-                  ]
-                },
-                "aside": {
-                  "args": [],
-                  "do": [
+                  ],
+                  "else": [
                     {
-                      "when": {
-                        "op": "and",
-                        "args": [
-                          {
-                            "op": "eq",
-                            "args": [
-                              {
-                                "$": "mediaKind"
-                              },
-                              "code"
-                            ]
-                          },
-                          {
-                            "$": "media.lines"
-                          },
-                          {
-                            "$": "media.codeTitle"
-                          },
-                          {
-                            "$": "media.prompt"
-                          }
-                        ]
-                      },
-                      "then": [
-                        {
-                          "organism": "CodeWindow",
-                          "props": {
-                            "title": {
-                              "$": "media.codeTitle"
-                            },
-                            "prompt": {
-                              "$": "media.prompt"
-                            },
-                            "lines": {
-                              "$": "media.lines"
-                            }
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "when": {
-                        "op": "eq",
-                        "args": [
-                          {
-                            "$": "mediaKind"
-                          },
-                          "cluster"
-                        ]
-                      },
-                      "then": [
-                        {
-                          "use": "Grid",
-                          "props": {
-                            "Cols": "3",
-                            "Class": "items-end gap-4"
-                          },
-                          "attrs": {
-                            "data-testid": "cluster"
-                          },
-                          "children": [
+                      "organism": "ActionGroup",
+                      "props": {
+                        "primary": {
+                          "$": "actions.cta"
+                        },
+                        "primaryHref": {
+                          "$": "actions.href"
+                        },
+                        "secondary": {
+                          "op": "cond",
+                          "args": [
                             {
-                              "use": "Box",
-                              "props": {
-                                "Class": {
-                                  "op": "cn",
-                                  "args": [
-                                    "w-full",
-                                    ""
-                                  ]
-                                }
-                              },
-                              "children": [
+                              "op": "eq",
+                              "args": [
                                 {
-                                  "organism": "MediaFrame",
-                                  "props": {
-                                    "alt": {
-                                      "$": "title"
-                                    },
-                                    "ratio": "3/4"
-                                  }
-                                }
+                                  "$": "actions.mode"
+                                },
+                                "two"
                               ]
                             },
                             {
-                              "use": "Box",
-                              "props": {
-                                "Class": {
-                                  "op": "cn",
-                                  "args": [
-                                    "w-full",
-                                    "-translate-y-4"
-                                  ]
-                                }
-                              },
-                              "children": [
-                                {
-                                  "organism": "MediaFrame",
-                                  "props": {
-                                    "alt": {
-                                      "$": "title"
-                                    },
-                                    "ratio": "4/3"
-                                  }
-                                }
-                              ]
+                              "$": "actions.secondary"
                             },
                             {
-                              "use": "Box",
-                              "props": {
-                                "Class": {
-                                  "op": "cn",
-                                  "args": [
-                                    "w-full",
-                                    ""
-                                  ]
-                                }
-                              },
-                              "children": [
-                                {
-                                  "organism": "MediaFrame",
-                                  "props": {
-                                    "alt": {
-                                      "$": "title"
-                                    },
-                                    "ratio": "3/4"
-                                  }
-                                }
-                              ]
+                              "op": "undef",
+                              "args": []
                             }
                           ]
+                        },
+                        "secondaryHref": {
+                          "$": "actions.secondaryHref"
+                        },
+                        "align": {
+                          "op": "cond",
+                          "args": [
+                            {
+                              "op": "eq",
+                              "args": [
+                                {
+                                  "$": "layout"
+                                },
+                                "centered"
+                              ]
+                            },
+                            "center",
+                            "start"
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "when": {
+                "$": "topics"
+              },
+              "then": [
+                {
+                  "organism": "TopicChips",
+                  "props": {
+                    "topics": {
+                      "$": "topics"
+                    }
+                  }
+                }
+              ]
+            }
+          ]
+        },
+        "aside": {
+          "args": [],
+          "do": [
+            {
+              "when": {
+                "op": "and",
+                "args": [
+                  {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "$": "mediaKind"
+                      },
+                      "code"
+                    ]
+                  },
+                  {
+                    "$": "media.lines"
+                  },
+                  {
+                    "$": "media.codeTitle"
+                  },
+                  {
+                    "$": "media.prompt"
+                  }
+                ]
+              },
+              "then": [
+                {
+                  "organism": "CodeWindow",
+                  "props": {
+                    "title": {
+                      "$": "media.codeTitle"
+                    },
+                    "prompt": {
+                      "$": "media.prompt"
+                    },
+                    "lines": {
+                      "$": "media.lines"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "mediaKind"
+                  },
+                  "cluster"
+                ]
+              },
+              "then": [
+                {
+                  "use": "Grid",
+                  "props": {
+                    "Cols": "3",
+                    "Class": "items-end gap-4"
+                  },
+                  "attrs": {
+                    "data-testid": "cluster"
+                  },
+                  "children": [
+                    {
+                      "use": "Box",
+                      "props": {
+                        "Class": {
+                          "op": "cn",
+                          "args": [
+                            "w-full",
+                            ""
+                          ]
+                        }
+                      },
+                      "children": [
+                        {
+                          "organism": "MediaFrame",
+                          "props": {
+                            "alt": {
+                              "$": "title"
+                            },
+                            "ratio": "3/4"
+                          }
                         }
                       ]
                     },
                     {
-                      "when": {
-                        "op": "or",
-                        "args": [
-                          {
-                            "op": "eq",
-                            "args": [
-                              {
-                                "$": "mediaKind"
-                              },
-                              "image"
-                            ]
-                          }
-                        ]
+                      "use": "Box",
+                      "props": {
+                        "Class": {
+                          "op": "cn",
+                          "args": [
+                            "w-full",
+                            "-translate-y-4"
+                          ]
+                        }
                       },
-                      "then": [
+                      "children": [
                         {
                           "organism": "MediaFrame",
                           "props": {
@@ -640,10 +612,60 @@
                           }
                         }
                       ]
+                    },
+                    {
+                      "use": "Box",
+                      "props": {
+                        "Class": {
+                          "op": "cn",
+                          "args": [
+                            "w-full",
+                            ""
+                          ]
+                        }
+                      },
+                      "children": [
+                        {
+                          "organism": "MediaFrame",
+                          "props": {
+                            "alt": {
+                              "$": "title"
+                            },
+                            "ratio": "3/4"
+                          }
+                        }
+                      ]
                     }
                   ]
                 }
-              }
+              ]
+            },
+            {
+              "when": {
+                "op": "or",
+                "args": [
+                  {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "$": "mediaKind"
+                      },
+                      "image"
+                    ]
+                  }
+                ]
+              },
+              "then": [
+                {
+                  "organism": "MediaFrame",
+                  "props": {
+                    "alt": {
+                      "$": "title"
+                    },
+                    "ratio": "4/3"
+                  }
+                }
+              ]
             }
           ]
         }

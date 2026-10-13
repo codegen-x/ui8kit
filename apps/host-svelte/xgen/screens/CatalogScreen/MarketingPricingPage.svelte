@@ -52,26 +52,33 @@
   const duo = fromCodex<Plan>(duoEntries, DUO_FIELDS);
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.catalog.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-        {ui.catalog.sections.marketing.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="category-title">
-        {ui.catalog.categories.marketingPricing}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {tpl(ui.catalog.count, 2, 13)}
-      </Text>
-    </Stack>
-    <Block tag="section" aria-labelledby="catalog-pricing-title" data-testid="catalog-block" data-block="pricing">
-      <Stack gap="6" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.catalog.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+          {ui.catalog.sections.marketing.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="category-title">
+          {ui.catalog.categories.marketingPricing}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {tpl(ui.catalog.count, 2, 13)}
+        </Text>
+      </Stack>
+      <Stack
+        gap="6"
+        align="stretch"
+        role="group"
+        aria-labelledby="catalog-pricing-title"
+        data-testid="catalog-block"
+        data-block="pricing"
+      >
         <Stack gap="2" align="stretch">
           <Title as={2} size="2xl" weight="bold" id="catalog-pricing-title">
             {ui.blocks.names.pricing}
@@ -80,290 +87,295 @@
             {ui.blocks.docs.pricing}
           </Text>
         </Stack>
-        <Block
-          tag="section"
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="pricing-grid-label"
           data-testid="variant"
           data-block="pricing"
           data-variant="grid"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="pricing-grid-label" data-testid="variant-label">
-              {ui.blocks.variants.pricing.grid}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <PricingTiers
-                id="pricing-grid"
-                title={ui.site.pricing.tiersTitle}
-                plans={tiers}
-                labels={ui.pricing}
-                billingLabels={ui.vibe.billing}
-                layout="grid"
-                cols="1-3"
-                emphasis="auto"
-                billing="off"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="pricing-grid-label" data-testid="variant-label">
+            {ui.blocks.variants.pricing.grid}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <PricingTiers
+              id="pricing-grid"
+              title={ui.site.pricing.tiersTitle}
+              plans={tiers}
+              labels={ui.pricing}
+              billingLabels={ui.vibe.billing}
+              layout="grid"
+              cols="1-3"
+              emphasis="auto"
+              billing="off"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="pricing-monthly-label"
           data-testid="variant"
           data-block="pricing"
           data-variant="monthly"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="pricing-monthly-label" data-testid="variant-label">
-              {ui.blocks.variants.pricing.monthly}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <PricingTiers
-                id="pricing-monthly"
-                title={ui.site.pricing.tiersTitle}
-                plans={tiers}
-                labels={ui.pricing}
-                billingLabels={ui.vibe.billing}
-                layout="grid"
-                cols="1-3"
-                emphasis="auto"
-                billing="monthly"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="pricing-monthly-label" data-testid="variant-label">
+            {ui.blocks.variants.pricing.monthly}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <PricingTiers
+              id="pricing-monthly"
+              title={ui.site.pricing.tiersTitle}
+              plans={tiers}
+              labels={ui.pricing}
+              billingLabels={ui.vibe.billing}
+              layout="grid"
+              cols="1-3"
+              emphasis="auto"
+              billing="monthly"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="pricing-annual-label"
           data-testid="variant"
           data-block="pricing"
           data-variant="annual"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="pricing-annual-label" data-testid="variant-label">
-              {ui.blocks.variants.pricing.annual}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <PricingTiers
-                id="pricing-annual"
-                title={ui.site.pricing.tiersTitle}
-                plans={tiers}
-                labels={ui.pricing}
-                billingLabels={ui.vibe.billing}
-                layout="grid"
-                cols="1-3"
-                emphasis="auto"
-                billing="annual"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="pricing-annual-label" data-testid="variant-label">
+            {ui.blocks.variants.pricing.annual}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <PricingTiers
+              id="pricing-annual"
+              title={ui.site.pricing.tiersTitle}
+              plans={tiers}
+              labels={ui.pricing}
+              billingLabels={ui.vibe.billing}
+              layout="grid"
+              cols="1-3"
+              emphasis="auto"
+              billing="annual"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="pricing-duo-label"
           data-testid="variant"
           data-block="pricing"
           data-variant="duo"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="pricing-duo-label" data-testid="variant-label">
-              {ui.blocks.variants.pricing.duo}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <PricingTiers
-                id="pricing-duo"
-                title={ui.site.pricing.tiersTitle}
-                plans={duo}
-                labels={ui.pricing}
-                billingLabels={ui.vibe.billing}
-                layout="grid"
-                cols="1-2"
-                emphasis="off"
-                billing="off"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="pricing-duo-label" data-testid="variant-label">
+            {ui.blocks.variants.pricing.duo}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <PricingTiers
+              id="pricing-duo"
+              title={ui.site.pricing.tiersTitle}
+              plans={duo}
+              labels={ui.pricing}
+              billingLabels={ui.vibe.billing}
+              layout="grid"
+              cols="1-2"
+              emphasis="off"
+              billing="off"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="pricing-grid2-label"
           data-testid="variant"
           data-block="pricing"
           data-variant="grid2"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="pricing-grid2-label" data-testid="variant-label">
-              {ui.blocks.variants.pricing.grid2}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <PricingTiers
-                id="pricing-grid2"
-                title={ui.site.pricing.tiersTitle}
-                plans={tiers}
-                labels={ui.pricing}
-                billingLabels={ui.vibe.billing}
-                layout="grid"
-                cols="1-2"
-                emphasis="auto"
-                billing="off"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="pricing-grid2-label" data-testid="variant-label">
+            {ui.blocks.variants.pricing.grid2}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <PricingTiers
+              id="pricing-grid2"
+              title={ui.site.pricing.tiersTitle}
+              plans={tiers}
+              labels={ui.pricing}
+              billingLabels={ui.vibe.billing}
+              layout="grid"
+              cols="1-2"
+              emphasis="auto"
+              billing="off"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="pricing-grid4-label"
           data-testid="variant"
           data-block="pricing"
           data-variant="grid4"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="pricing-grid4-label" data-testid="variant-label">
-              {ui.blocks.variants.pricing.grid4}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <PricingTiers
-                id="pricing-grid4"
-                title={ui.site.pricing.tiersTitle}
-                plans={tiers}
-                labels={ui.pricing}
-                billingLabels={ui.vibe.billing}
-                layout="grid"
-                cols="1-4"
-                emphasis="auto"
-                billing="off"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="pricing-grid4-label" data-testid="variant-label">
+            {ui.blocks.variants.pricing.grid4}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <PricingTiers
+              id="pricing-grid4"
+              title={ui.site.pricing.tiersTitle}
+              plans={tiers}
+              labels={ui.pricing}
+              billingLabels={ui.vibe.billing}
+              layout="grid"
+              cols="1-4"
+              emphasis="auto"
+              billing="off"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="pricing-stack-label"
           data-testid="variant"
           data-block="pricing"
           data-variant="stack"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="pricing-stack-label" data-testid="variant-label">
-              {ui.blocks.variants.pricing.stack}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <PricingTiers
-                id="pricing-stack"
-                title={ui.site.pricing.tiersTitle}
-                plans={tiers}
-                labels={ui.pricing}
-                billingLabels={ui.vibe.billing}
-                layout="stack"
-                cols="1-3"
-                emphasis="auto"
-                billing="off"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="pricing-stack-label" data-testid="variant-label">
+            {ui.blocks.variants.pricing.stack}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <PricingTiers
+              id="pricing-stack"
+              title={ui.site.pricing.tiersTitle}
+              plans={tiers}
+              labels={ui.pricing}
+              billingLabels={ui.vibe.billing}
+              layout="stack"
+              cols="1-3"
+              emphasis="auto"
+              billing="off"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="pricing-flat-label"
           data-testid="variant"
           data-block="pricing"
           data-variant="flat"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="pricing-flat-label" data-testid="variant-label">
-              {ui.blocks.variants.pricing.flat}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <PricingTiers
-                id="pricing-flat"
-                title={ui.site.pricing.tiersTitle}
-                plans={tiers}
-                labels={ui.pricing}
-                billingLabels={ui.vibe.billing}
-                layout="grid"
-                cols="1-3"
-                emphasis="off"
-                billing="off"
-                tone="default"
-                density="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="pricing-flat-label" data-testid="variant-label">
+            {ui.blocks.variants.pricing.flat}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <PricingTiers
+              id="pricing-flat"
+              title={ui.site.pricing.tiersTitle}
+              plans={tiers}
+              labels={ui.pricing}
+              billingLabels={ui.vibe.billing}
+              layout="grid"
+              cols="1-3"
+              emphasis="off"
+              billing="off"
+              tone="default"
+              density="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="pricing-compactMuted-label"
           data-testid="variant"
           data-block="pricing"
           data-variant="compactMuted"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="pricing-compactMuted-label" data-testid="variant-label">
-              {ui.blocks.variants.pricing.compactMuted}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <PricingTiers
-                id="pricing-compactMuted"
-                title={ui.site.pricing.tiersTitle}
-                plans={tiers}
-                labels={ui.pricing}
-                billingLabels={ui.vibe.billing}
-                layout="grid"
-                cols="1-3"
-                emphasis="auto"
-                billing="off"
-                tone="muted"
-                density="compact"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="pricing-compactMuted-label" data-testid="variant-label">
+            {ui.blocks.variants.pricing.compactMuted}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <PricingTiers
+              id="pricing-compactMuted"
+              title={ui.site.pricing.tiersTitle}
+              plans={tiers}
+              labels={ui.pricing}
+              billingLabels={ui.vibe.billing}
+              layout="grid"
+              cols="1-3"
+              emphasis="auto"
+              billing="off"
+              tone="muted"
+              density="compact"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="pricing-roomy-label"
           data-testid="variant"
           data-block="pricing"
           data-variant="roomy"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="pricing-roomy-label" data-testid="variant-label">
-              {ui.blocks.variants.pricing.roomy}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <PricingTiers
-                id="pricing-roomy"
-                title={ui.site.pricing.tiersTitle}
-                plans={tiers}
-                labels={ui.pricing}
-                billingLabels={ui.vibe.billing}
-                layout="grid"
-                cols="1-3"
-                emphasis="auto"
-                billing="off"
-                tone="default"
-                density="roomy"
-              />
-            </Box>
-          </Stack>
-        </Block>
+          <Title as={3} size="base" weight="bold" id="pricing-roomy-label" data-testid="variant-label">
+            {ui.blocks.variants.pricing.roomy}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <PricingTiers
+              id="pricing-roomy"
+              title={ui.site.pricing.tiersTitle}
+              plans={tiers}
+              labels={ui.pricing}
+              billingLabels={ui.vibe.billing}
+              layout="grid"
+              cols="1-3"
+              emphasis="auto"
+              billing="off"
+              tone="default"
+              density="roomy"
+            />
+          </Box>
+        </Stack>
       </Stack>
-    </Block>
-    <Block tag="section" aria-labelledby="catalog-plan-title" data-testid="catalog-block" data-block="plan">
-      <Stack gap="6" align="stretch">
+      <Stack
+        gap="6"
+        align="stretch"
+        role="group"
+        aria-labelledby="catalog-plan-title"
+        data-testid="catalog-block"
+        data-block="plan"
+      >
         <Stack gap="2" align="stretch">
           <Title as={2} size="2xl" weight="bold" id="catalog-plan-title">
             {ui.blocks.names.plan}
@@ -372,76 +384,76 @@
             {ui.blocks.docs.plan}
           </Text>
         </Stack>
-        <Block
-          tag="section"
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="plan-standard-label"
           data-testid="variant"
           data-block="plan"
           data-variant="standard"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="plan-standard-label" data-testid="variant-label">
-              {ui.blocks.variants.plan.standard}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <Box class="mx-auto w-full max-w-sm px-4 py-6" data-slot="container">
-                <PricingCard
-                  plan={tiers.find((i) => i.id === "plan-team")!}
-                  labels={ui.pricing}
-                  emphasis="auto"
-                  density="default"
-                />
-              </Box>
+          <Title as={3} size="base" weight="bold" id="plan-standard-label" data-testid="variant-label">
+            {ui.blocks.variants.plan.standard}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <Box class="mx-auto w-full max-w-sm px-4 py-6" data-slot="container">
+              <PricingCard
+                plan={tiers.find((i) => i.id === "plan-team")!}
+                labels={ui.pricing}
+                emphasis="auto"
+                density="default"
+              />
             </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="plan-flat-label"
           data-testid="variant"
           data-block="plan"
           data-variant="flat"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="plan-flat-label" data-testid="variant-label">
-              {ui.blocks.variants.plan.flat}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <Box class="mx-auto w-full max-w-sm px-4 py-6" data-slot="container">
-                <PricingCard
-                  plan={tiers.find((i) => i.id === "plan-team")!}
-                  labels={ui.pricing}
-                  emphasis="off"
-                  density="default"
-                />
-              </Box>
+          <Title as={3} size="base" weight="bold" id="plan-flat-label" data-testid="variant-label">
+            {ui.blocks.variants.plan.flat}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <Box class="mx-auto w-full max-w-sm px-4 py-6" data-slot="container">
+              <PricingCard
+                plan={tiers.find((i) => i.id === "plan-team")!}
+                labels={ui.pricing}
+                emphasis="off"
+                density="default"
+              />
             </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="plan-compact-label"
           data-testid="variant"
           data-block="plan"
           data-variant="compact"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="plan-compact-label" data-testid="variant-label">
-              {ui.blocks.variants.plan.compact}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <Box class="mx-auto w-full max-w-sm px-4 py-6" data-slot="container">
-                <PricingCard
-                  plan={tiers.find((i) => i.id === "plan-team")!}
-                  labels={ui.pricing}
-                  emphasis="auto"
-                  density="compact"
-                />
-              </Box>
+          <Title as={3} size="base" weight="bold" id="plan-compact-label" data-testid="variant-label">
+            {ui.blocks.variants.plan.compact}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <Box class="mx-auto w-full max-w-sm px-4 py-6" data-slot="container">
+              <PricingCard
+                plan={tiers.find((i) => i.id === "plan-team")!}
+                labels={ui.pricing}
+                emphasis="auto"
+                density="compact"
+              />
             </Box>
-          </Stack>
-        </Block>
+          </Box>
+        </Stack>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

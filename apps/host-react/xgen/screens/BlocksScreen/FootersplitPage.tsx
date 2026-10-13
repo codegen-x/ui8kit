@@ -40,37 +40,39 @@ const FOOTERSPLIT_EXTRAS = { stats, points: features, contacts, channels: commun
 
 export function FootersplitPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text
-            size="sm"
-            className="font-medium text-muted-foreground"
-            data-testid="block-theme"
-            data-theme-id="marketing"
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text
+              size="sm"
+              className="font-medium text-muted-foreground"
+              data-testid="block-theme"
+              data-theme-id="marketing"
+            >
+              {ui.blocks.themes.marketing.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.footersplit}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.footersplit}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="footersplit-statsCards-label"
+            data-testid="variant"
+            data-block="footersplit"
+            data-variant="statsCards"
           >
-            {ui.blocks.themes.marketing.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.footersplit}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.footersplit}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="footersplit-statsCards-label"
-          data-testid="variant"
-          data-block="footersplit"
-          data-variant="statsCards"
-        >
-          <Stack gap="4" align="stretch">
             <Title as={2} size="base" weight="bold" id="footersplit-statsCards-label" data-testid="variant-label">
               {ui.blocks.variants.footersplit.statsCards}
             </Title>
@@ -90,15 +92,15 @@ export function FootersplitPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="footersplit-splitPoints-label"
-          data-testid="variant"
-          data-block="footersplit"
-          data-variant="splitPoints"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="footersplit-splitPoints-label"
+            data-testid="variant"
+            data-block="footersplit"
+            data-variant="splitPoints"
+          >
             <Title as={2} size="base" weight="bold" id="footersplit-splitPoints-label" data-testid="variant-label">
               {ui.blocks.variants.footersplit.splitPoints}
             </Title>
@@ -118,15 +120,15 @@ export function FootersplitPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="footersplit-splitLinks-label"
-          data-testid="variant"
-          data-block="footersplit"
-          data-variant="splitLinks"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="footersplit-splitLinks-label"
+            data-testid="variant"
+            data-block="footersplit"
+            data-variant="splitLinks"
+          >
             <Title as={2} size="base" weight="bold" id="footersplit-splitLinks-label" data-testid="variant-label">
               {ui.blocks.variants.footersplit.splitLinks}
             </Title>
@@ -146,15 +148,15 @@ export function FootersplitPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="footersplit-newsletterStart-label"
-          data-testid="variant"
-          data-block="footersplit"
-          data-variant="newsletterStart"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="footersplit-newsletterStart-label"
+            data-testid="variant"
+            data-block="footersplit"
+            data-variant="newsletterStart"
+          >
             <Title as={2} size="base" weight="bold" id="footersplit-newsletterStart-label" data-testid="variant-label">
               {ui.blocks.variants.footersplit.newsletterStart}
             </Title>
@@ -174,15 +176,15 @@ export function FootersplitPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="footersplit-splitContacts-label"
-          data-testid="variant"
-          data-block="footersplit"
-          data-variant="splitContacts"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="footersplit-splitContacts-label"
+            data-testid="variant"
+            data-block="footersplit"
+            data-variant="splitContacts"
+          >
             <Title as={2} size="base" weight="bold" id="footersplit-splitContacts-label" data-testid="variant-label">
               {ui.blocks.variants.footersplit.splitContacts}
             </Title>
@@ -202,15 +204,15 @@ export function FootersplitPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="footersplit-channelsStart-label"
-          data-testid="variant"
-          data-block="footersplit"
-          data-variant="channelsStart"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="footersplit-channelsStart-label"
+            data-testid="variant"
+            data-block="footersplit"
+            data-variant="channelsStart"
+          >
             <Title as={2} size="base" weight="bold" id="footersplit-channelsStart-label" data-testid="variant-label">
               {ui.blocks.variants.footersplit.channelsStart}
             </Title>
@@ -230,8 +232,8 @@ export function FootersplitPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

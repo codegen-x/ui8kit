@@ -48,31 +48,33 @@ const DASHSHELL_NAV = {
 
 export function AppDashboardShellsPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.catalog.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text size="sm" className="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-            {ui.catalog.sections.app.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="category-title">
-            {ui.catalog.categories.appDashboardShells}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {tpl(ui.catalog.count, 1, 12)}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="catalog-dashshell-title"
-          data-testid="catalog-block"
-          data-block="dashshell"
-        >
-          <Stack gap="6" align="stretch">
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.catalog.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text size="sm" className="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+              {ui.catalog.sections.app.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="category-title">
+              {ui.catalog.categories.appDashboardShells}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {tpl(ui.catalog.count, 1, 12)}
+            </Text>
+          </Stack>
+          <Stack
+            gap="6"
+            align="stretch"
+            role="group"
+            aria-labelledby="catalog-dashshell-title"
+            data-testid="catalog-block"
+            data-block="dashshell"
+          >
             <Stack gap="2" align="stretch">
               <Title as={2} size="2xl" weight="bold" id="catalog-dashshell-title">
                 {ui.blocks.names.dashshell}
@@ -81,333 +83,333 @@ export function AppDashboardShellsPage() {
                 {ui.blocks.docs.dashshell}
               </Text>
             </Stack>
-            <Block
-              tag="section"
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="dashshell-classic-label"
               data-testid="variant"
               data-block="dashshell"
               data-variant="classic"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="dashshell-classic-label" data-testid="variant-label">
-                  {ui.blocks.variants.dashshell.classic}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <DashboardShell
-                    id="dashshell-classic"
-                    title={ui.dashboard.shells.title}
-                    nav={DASHSHELL_NAV}
-                    topbar="full"
-                    search="show"
-                    sidebar="wide"
-                    side="start"
-                    footer="none"
-                    content="grid"
-                    level={2}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="dashshell-classic-label" data-testid="variant-label">
+                {ui.blocks.variants.dashshell.classic}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <DashboardShell
+                  id="dashshell-classic"
+                  title={ui.dashboard.shells.title}
+                  nav={DASHSHELL_NAV}
+                  topbar="full"
+                  search="show"
+                  sidebar="wide"
+                  side="start"
+                  footer="none"
+                  content="grid"
+                  level={2}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="dashshell-inset-label"
               data-testid="variant"
               data-block="dashshell"
               data-variant="inset"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="dashshell-inset-label" data-testid="variant-label">
-                  {ui.blocks.variants.dashshell.inset}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <DashboardShell
-                    id="dashshell-inset"
-                    title={ui.dashboard.shells.title}
-                    nav={DASHSHELL_NAV}
-                    topbar="inset"
-                    search="show"
-                    sidebar="wide"
-                    side="start"
-                    footer="inset"
-                    content="split"
-                    level={2}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="dashshell-inset-label" data-testid="variant-label">
+                {ui.blocks.variants.dashshell.inset}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <DashboardShell
+                  id="dashshell-inset"
+                  title={ui.dashboard.shells.title}
+                  nav={DASHSHELL_NAV}
+                  topbar="inset"
+                  search="show"
+                  sidebar="wide"
+                  side="start"
+                  footer="inset"
+                  content="split"
+                  level={2}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="dashshell-rail-label"
               data-testid="variant"
               data-block="dashshell"
               data-variant="rail"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="dashshell-rail-label" data-testid="variant-label">
-                  {ui.blocks.variants.dashshell.rail}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <DashboardShell
-                    id="dashshell-rail"
-                    title={ui.dashboard.shells.title}
-                    nav={DASHSHELL_NAV}
-                    topbar="full"
-                    search="hide"
-                    sidebar="rail"
-                    side="start"
-                    footer="none"
-                    content="list"
-                    level={2}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="dashshell-rail-label" data-testid="variant-label">
+                {ui.blocks.variants.dashshell.rail}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <DashboardShell
+                  id="dashshell-rail"
+                  title={ui.dashboard.shells.title}
+                  nav={DASHSHELL_NAV}
+                  topbar="full"
+                  search="hide"
+                  sidebar="rail"
+                  side="start"
+                  footer="none"
+                  content="list"
+                  level={2}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="dashshell-railFooter-label"
               data-testid="variant"
               data-block="dashshell"
               data-variant="railFooter"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="dashshell-railFooter-label" data-testid="variant-label">
-                  {ui.blocks.variants.dashshell.railFooter}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <DashboardShell
-                    id="dashshell-railFooter"
-                    title={ui.dashboard.shells.title}
-                    nav={DASHSHELL_NAV}
-                    topbar="inset"
-                    search="show"
-                    sidebar="rail"
-                    side="start"
-                    footer="full"
-                    content="grid"
-                    level={2}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="dashshell-railFooter-label" data-testid="variant-label">
+                {ui.blocks.variants.dashshell.railFooter}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <DashboardShell
+                  id="dashshell-railFooter"
+                  title={ui.dashboard.shells.title}
+                  nav={DASHSHELL_NAV}
+                  topbar="inset"
+                  search="show"
+                  sidebar="rail"
+                  side="start"
+                  footer="full"
+                  content="grid"
+                  level={2}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="dashshell-collapsed-label"
               data-testid="variant"
               data-block="dashshell"
               data-variant="collapsed"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="dashshell-collapsed-label" data-testid="variant-label">
-                  {ui.blocks.variants.dashshell.collapsed}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <DashboardShell
-                    id="dashshell-collapsed"
-                    title={ui.dashboard.shells.title}
-                    nav={DASHSHELL_NAV}
-                    topbar="inset"
-                    search="show"
-                    sidebar="collapsed"
-                    side="start"
-                    footer="none"
-                    content="split"
-                    level={2}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="dashshell-collapsed-label" data-testid="variant-label">
+                {ui.blocks.variants.dashshell.collapsed}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <DashboardShell
+                  id="dashshell-collapsed"
+                  title={ui.dashboard.shells.title}
+                  nav={DASHSHELL_NAV}
+                  topbar="inset"
+                  search="show"
+                  sidebar="collapsed"
+                  side="start"
+                  footer="none"
+                  content="split"
+                  level={2}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="dashshell-twoLevel-label"
               data-testid="variant"
               data-block="dashshell"
               data-variant="twoLevel"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="dashshell-twoLevel-label" data-testid="variant-label">
-                  {ui.blocks.variants.dashshell.twoLevel}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <DashboardShell
-                    id="dashshell-twoLevel"
-                    title={ui.dashboard.shells.title}
-                    nav={DASHSHELL_NAV}
-                    topbar="inset"
-                    search="hide"
-                    sidebar="twolevel"
-                    side="start"
-                    footer="inset"
-                    content="list"
-                    level={2}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="dashshell-twoLevel-label" data-testid="variant-label">
+                {ui.blocks.variants.dashshell.twoLevel}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <DashboardShell
+                  id="dashshell-twoLevel"
+                  title={ui.dashboard.shells.title}
+                  nav={DASHSHELL_NAV}
+                  topbar="inset"
+                  search="hide"
+                  sidebar="twolevel"
+                  side="start"
+                  footer="inset"
+                  content="list"
+                  level={2}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="dashshell-twoLevelFull-label"
               data-testid="variant"
               data-block="dashshell"
               data-variant="twoLevelFull"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="dashshell-twoLevelFull-label" data-testid="variant-label">
-                  {ui.blocks.variants.dashshell.twoLevelFull}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <DashboardShell
-                    id="dashshell-twoLevelFull"
-                    title={ui.dashboard.shells.title}
-                    nav={DASHSHELL_NAV}
-                    topbar="full"
-                    search="show"
-                    sidebar="twolevel"
-                    side="start"
-                    footer="full"
-                    content="split"
-                    level={2}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="dashshell-twoLevelFull-label" data-testid="variant-label">
+                {ui.blocks.variants.dashshell.twoLevelFull}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <DashboardShell
+                  id="dashshell-twoLevelFull"
+                  title={ui.dashboard.shells.title}
+                  nav={DASHSHELL_NAV}
+                  topbar="full"
+                  search="show"
+                  sidebar="twolevel"
+                  side="start"
+                  footer="full"
+                  content="split"
+                  level={2}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="dashshell-end-label"
               data-testid="variant"
               data-block="dashshell"
               data-variant="end"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="dashshell-end-label" data-testid="variant-label">
-                  {ui.blocks.variants.dashshell.end}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <DashboardShell
-                    id="dashshell-end"
-                    title={ui.dashboard.shells.title}
-                    nav={DASHSHELL_NAV}
-                    topbar="full"
-                    search="show"
-                    sidebar="wide"
-                    side="end"
-                    footer="full"
-                    content="split"
-                    level={2}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="dashshell-end-label" data-testid="variant-label">
+                {ui.blocks.variants.dashshell.end}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <DashboardShell
+                  id="dashshell-end"
+                  title={ui.dashboard.shells.title}
+                  nav={DASHSHELL_NAV}
+                  topbar="full"
+                  search="show"
+                  sidebar="wide"
+                  side="end"
+                  footer="full"
+                  content="split"
+                  level={2}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="dashshell-railEnd-label"
               data-testid="variant"
               data-block="dashshell"
               data-variant="railEnd"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="dashshell-railEnd-label" data-testid="variant-label">
-                  {ui.blocks.variants.dashshell.railEnd}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <DashboardShell
-                    id="dashshell-railEnd"
-                    title={ui.dashboard.shells.title}
-                    nav={DASHSHELL_NAV}
-                    topbar="inset"
-                    search="hide"
-                    sidebar="rail"
-                    side="end"
-                    footer="inset"
-                    content="grid"
-                    level={2}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="dashshell-railEnd-label" data-testid="variant-label">
+                {ui.blocks.variants.dashshell.railEnd}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <DashboardShell
+                  id="dashshell-railEnd"
+                  title={ui.dashboard.shells.title}
+                  nav={DASHSHELL_NAV}
+                  topbar="inset"
+                  search="hide"
+                  sidebar="rail"
+                  side="end"
+                  footer="inset"
+                  content="grid"
+                  level={2}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="dashshell-topOnly-label"
               data-testid="variant"
               data-block="dashshell"
               data-variant="topOnly"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="dashshell-topOnly-label" data-testid="variant-label">
-                  {ui.blocks.variants.dashshell.topOnly}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <DashboardShell
-                    id="dashshell-topOnly"
-                    title={ui.dashboard.shells.title}
-                    nav={DASHSHELL_NAV}
-                    topbar="full"
-                    search="show"
-                    sidebar="none"
-                    side="start"
-                    footer="full"
-                    content="grid"
-                    level={2}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="dashshell-topOnly-label" data-testid="variant-label">
+                {ui.blocks.variants.dashshell.topOnly}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <DashboardShell
+                  id="dashshell-topOnly"
+                  title={ui.dashboard.shells.title}
+                  nav={DASHSHELL_NAV}
+                  topbar="full"
+                  search="show"
+                  sidebar="none"
+                  side="start"
+                  footer="full"
+                  content="grid"
+                  level={2}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="dashshell-sideOnly-label"
               data-testid="variant"
               data-block="dashshell"
               data-variant="sideOnly"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="dashshell-sideOnly-label" data-testid="variant-label">
-                  {ui.blocks.variants.dashshell.sideOnly}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <DashboardShell
-                    id="dashshell-sideOnly"
-                    title={ui.dashboard.shells.title}
-                    nav={DASHSHELL_NAV}
-                    topbar="none"
-                    search="show"
-                    sidebar="wide"
-                    side="start"
-                    footer="inset"
-                    content="list"
-                    level={2}
-                  />
-                </Box>
-              </Stack>
-            </Block>
-            <Block
-              tag="section"
+              <Title as={3} size="base" weight="bold" id="dashshell-sideOnly-label" data-testid="variant-label">
+                {ui.blocks.variants.dashshell.sideOnly}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <DashboardShell
+                  id="dashshell-sideOnly"
+                  title={ui.dashboard.shells.title}
+                  nav={DASHSHELL_NAV}
+                  topbar="none"
+                  search="show"
+                  sidebar="wide"
+                  side="start"
+                  footer="inset"
+                  content="list"
+                  level={2}
+                />
+              </Box>
+            </Stack>
+            <Stack
+              gap="4"
+              align="stretch"
+              role="group"
               aria-labelledby="dashshell-collapsedEnd-label"
               data-testid="variant"
               data-block="dashshell"
               data-variant="collapsedEnd"
             >
-              <Stack gap="4" align="stretch">
-                <Title as={3} size="base" weight="bold" id="dashshell-collapsedEnd-label" data-testid="variant-label">
-                  {ui.blocks.variants.dashshell.collapsedEnd}
-                </Title>
-                <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                  <DashboardShell
-                    id="dashshell-collapsedEnd"
-                    title={ui.dashboard.shells.title}
-                    nav={DASHSHELL_NAV}
-                    topbar="none"
-                    search="show"
-                    sidebar="collapsed"
-                    side="end"
-                    footer="full"
-                    content="split"
-                    level={2}
-                  />
-                </Box>
-              </Stack>
-            </Block>
+              <Title as={3} size="base" weight="bold" id="dashshell-collapsedEnd-label" data-testid="variant-label">
+                {ui.blocks.variants.dashshell.collapsedEnd}
+              </Title>
+              <Box className="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+                <DashboardShell
+                  id="dashshell-collapsedEnd"
+                  title={ui.dashboard.shells.title}
+                  nav={DASHSHELL_NAV}
+                  topbar="none"
+                  search="show"
+                  sidebar="collapsed"
+                  side="end"
+                  footer="full"
+                  content="split"
+                  level={2}
+                />
+              </Box>
+            </Stack>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

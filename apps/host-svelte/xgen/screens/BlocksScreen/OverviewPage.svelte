@@ -46,32 +46,34 @@
   const OVERVIEW_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboard.activity.text, events: activity } as const;
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.blocks.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="dashboard">
-        {ui.blocks.themes.dashboard.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-        {ui.blocks.names.overview}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {ui.blocks.docs.overview}
-      </Text>
-    </Stack>
-    <Block
-      tag="section"
-      aria-labelledby="overview-split-label"
-      data-testid="variant"
-      data-block="overview"
-      data-variant="split"
-    >
-      <Stack gap="4" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.blocks.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="dashboard">
+          {ui.blocks.themes.dashboard.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+          {ui.blocks.names.overview}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {ui.blocks.docs.overview}
+        </Text>
+      </Stack>
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="overview-split-label"
+        data-testid="variant"
+        data-block="overview"
+        data-variant="split"
+      >
         <Title as={2} size="base" weight="bold" id="overview-split-label" data-testid="variant-label">
           {ui.blocks.variants.overview.split}
         </Title>
@@ -89,15 +91,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="overview-stacked-label"
-      data-testid="variant"
-      data-block="overview"
-      data-variant="stacked"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="overview-stacked-label"
+        data-testid="variant"
+        data-block="overview"
+        data-variant="stacked"
+      >
         <Title as={2} size="base" weight="bold" id="overview-stacked-label" data-testid="variant-label">
           {ui.blocks.variants.overview.stacked}
         </Title>
@@ -115,15 +117,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="overview-twoCols-label"
-      data-testid="variant"
-      data-block="overview"
-      data-variant="twoCols"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="overview-twoCols-label"
+        data-testid="variant"
+        data-block="overview"
+        data-variant="twoCols"
+      >
         <Title as={2} size="base" weight="bold" id="overview-twoCols-label" data-testid="variant-label">
           {ui.blocks.variants.overview.twoCols}
         </Title>
@@ -141,15 +143,15 @@
           />
         </Box>
       </Stack>
-    </Block>
-    <Block
-      tag="section"
-      aria-labelledby="overview-muted-label"
-      data-testid="variant"
-      data-block="overview"
-      data-variant="muted"
-    >
-      <Stack gap="4" align="stretch">
+      <Stack
+        gap="4"
+        align="stretch"
+        role="group"
+        aria-labelledby="overview-muted-label"
+        data-testid="variant"
+        data-block="overview"
+        data-variant="muted"
+      >
         <Title as={2} size="base" weight="bold" id="overview-muted-label" data-testid="variant-label">
           {ui.blocks.variants.overview.muted}
         </Title>
@@ -167,6 +169,6 @@
           />
         </Box>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

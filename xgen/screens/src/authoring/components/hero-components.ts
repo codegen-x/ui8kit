@@ -11,6 +11,7 @@ const onBand = "text-background";
 
 /** the head row inside the band: skip link, brand, menu, login and the call to action */
 export const heroHead = spec(`${P}hero-head`, "HeroHead", "The head row of a hero band: skip link, brand, menu links (the current one carries aria-current), login and a call to action.", {
+  frame: true,
   typeImports: [{ from: "NavBar", names: ["NavLink"] }],
   props: [
     { name: "brand", type: "string", docs: "brand word" },
@@ -32,7 +33,7 @@ export const heroHead = spec(`${P}hero-head`, "HeroHead", "The head row of a her
     return [use("Block", { props: { Tag: "header", Class: cn("flex w-full flex-wrap items-center justify-between pr-4", layoutOf("hero.head")) }, attrs: { "data-testid": "hero-head" } },
       when(ref("skip"), [use("LinkPlain", { props: { Href: "#main-content", Class: skipClass }, attrs: { "data-testid": "skip-link" } }, text(ref("skip")))]),
       use("Link", { props: { Href: "#/", Variant: "default", Class: cn(layoutOf("text.small"), `font-medium leading-6 ${onBand}`) }, attrs: { "data-testid": "brand" } }, text(ref("brand"))),
-      use("Block", { props: { Tag: "nav" }, attrs: { "aria-label": ref("navLabel"), "data-testid": "site-nav" } },
+      use("Nav", { props: {}, attrs: { "aria-label": ref("navLabel"), "data-testid": "site-nav" } },
         use("Group", { props: { Gap: "8", Align: "center", Class: "flex-wrap" } }, each(ref("links"), "l", ref("l.id"), link))),
       use("Group", { props: { Gap: "2", Align: "center" } },
         when(ref("login"), [use("Button", { props: { Href: ref("loginHref"), Variant: "ghost", Size: "sm", Class: `${onBand} hover:bg-background/10` }, attrs: { "data-testid": "nav-login" } }, text(ref("login")))]),

@@ -30,31 +30,33 @@
   const milestones = fromCodex<Milestone>(milestonesEntries, MILESTONES_FIELDS);
 </script>
 
-<Container class="mx-auto w-full max-w-6xl px-4 py-10">
-  <Stack gap="8" align="stretch">
-    <Group>
-      <Link href="#/" variant="default" data-testid="back">
-        {ui.catalog.back}
-      </Link>
-    </Group>
-    <Stack gap="2" align="stretch">
-      <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-        {ui.catalog.sections.content.title}
-      </Text>
-      <Title as={1} size="4xl" weight="bold" data-testid="category-title">
-        {ui.catalog.categories.contentStoryTabs}
-      </Title>
-      <Text class="max-w-2xl text-muted-foreground">
-        {tpl(ui.catalog.count, 1, 3)}
-      </Text>
-    </Stack>
-    <Block
-      tag="section"
-      aria-labelledby="catalog-storytabs-title"
-      data-testid="catalog-block"
-      data-block="storytabs"
-    >
-      <Stack gap="6" align="stretch">
+<Block tag="section" aria-labelledby="page-title" data-testid="page">
+  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+    <Stack gap="8" align="stretch">
+      <Group>
+        <Link href="#/" variant="default" data-testid="back">
+          {ui.catalog.back}
+        </Link>
+      </Group>
+      <Stack gap="2" align="stretch">
+        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+          {ui.catalog.sections.content.title}
+        </Text>
+        <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="category-title">
+          {ui.catalog.categories.contentStoryTabs}
+        </Title>
+        <Text class="max-w-2xl text-muted-foreground">
+          {tpl(ui.catalog.count, 1, 3)}
+        </Text>
+      </Stack>
+      <Stack
+        gap="6"
+        align="stretch"
+        role="group"
+        aria-labelledby="catalog-storytabs-title"
+        data-testid="catalog-block"
+        data-block="storytabs"
+      >
         <Stack gap="2" align="stretch">
           <Title as={2} size="2xl" weight="bold" id="catalog-storytabs-title">
             {ui.blocks.names.storytabs}
@@ -63,85 +65,85 @@
             {ui.blocks.docs.storytabs}
           </Text>
         </Stack>
-        <Block
-          tag="section"
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="storytabs-yearTabs-label"
           data-testid="variant"
           data-block="storytabs"
           data-variant="yearTabs"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="storytabs-yearTabs-label" data-testid="variant-label">
-              {ui.blocks.variants.storytabs.yearTabs}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <StoryTabs
-                id="storytabs-yearTabs"
-                title={ui.company.storyTabs.title}
-                lead={ui.company.storyTabs.lead}
-                badge={ui.company.storyTabs.badge}
-                steps={milestones}
-                active="milestone-runtimes"
-                labels={ui.company.storyTabs.labels}
-                layout="years"
-                tone="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="storytabs-yearTabs-label" data-testid="variant-label">
+            {ui.blocks.variants.storytabs.yearTabs}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <StoryTabs
+              id="storytabs-yearTabs"
+              title={ui.company.storyTabs.title}
+              lead={ui.company.storyTabs.lead}
+              badge={ui.company.storyTabs.badge}
+              steps={milestones}
+              active="milestone-runtimes"
+              labels={ui.company.storyTabs.labels}
+              layout="years"
+              tone="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="storytabs-carouselSplit-label"
           data-testid="variant"
           data-block="storytabs"
           data-variant="carouselSplit"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="storytabs-carouselSplit-label" data-testid="variant-label">
-              {ui.blocks.variants.storytabs.carouselSplit}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <StoryTabs
-                id="storytabs-carouselSplit"
-                title={ui.company.storyTabs.title}
-                lead={ui.company.storyTabs.lead}
-                badge={ui.company.storyTabs.badge}
-                steps={milestones}
-                active="milestone-runtimes"
-                labels={ui.company.storyTabs.labels}
-                layout="carousel"
-                tone="default"
-              />
-            </Box>
-          </Stack>
-        </Block>
-        <Block
-          tag="section"
+          <Title as={3} size="base" weight="bold" id="storytabs-carouselSplit-label" data-testid="variant-label">
+            {ui.blocks.variants.storytabs.carouselSplit}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <StoryTabs
+              id="storytabs-carouselSplit"
+              title={ui.company.storyTabs.title}
+              lead={ui.company.storyTabs.lead}
+              badge={ui.company.storyTabs.badge}
+              steps={milestones}
+              active="milestone-runtimes"
+              labels={ui.company.storyTabs.labels}
+              layout="carousel"
+              tone="default"
+            />
+          </Box>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
           aria-labelledby="storytabs-yearTabsMuted-label"
           data-testid="variant"
           data-block="storytabs"
           data-variant="yearTabsMuted"
         >
-          <Stack gap="4" align="stretch">
-            <Title as={3} size="base" weight="bold" id="storytabs-yearTabsMuted-label" data-testid="variant-label">
-              {ui.blocks.variants.storytabs.yearTabsMuted}
-            </Title>
-            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-              <StoryTabs
-                id="storytabs-yearTabsMuted"
-                title={ui.company.storyTabs.title}
-                lead={ui.company.storyTabs.lead}
-                badge={ui.company.storyTabs.badge}
-                steps={milestones}
-                active="milestone-runtimes"
-                labels={ui.company.storyTabs.labels}
-                layout="years"
-                tone="muted"
-              />
-            </Box>
-          </Stack>
-        </Block>
+          <Title as={3} size="base" weight="bold" id="storytabs-yearTabsMuted-label" data-testid="variant-label">
+            {ui.blocks.variants.storytabs.yearTabsMuted}
+          </Title>
+          <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+            <StoryTabs
+              id="storytabs-yearTabsMuted"
+              title={ui.company.storyTabs.title}
+              lead={ui.company.storyTabs.lead}
+              badge={ui.company.storyTabs.badge}
+              steps={milestones}
+              active="milestone-runtimes"
+              labels={ui.company.storyTabs.labels}
+              layout="years"
+              tone="muted"
+            />
+          </Box>
+        </Stack>
       </Stack>
-    </Block>
-  </Stack>
-</Container>
+    </Stack>
+  </Container>
+</Block>

@@ -28,32 +28,34 @@ const specs = fromCodex<Spec>(specsEntries, SPECS_FIELDS);
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.blocks.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="commerce">
-          {{ ui.blocks.themes.commerce.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="block-title">
-          {{ ui.blocks.names.productinfo }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ ui.blocks.docs.productinfo }}
-        </Text>
-      </Stack>
-      <Block
-        tag="section"
-        aria-labelledby="productinfo-split-label"
-        data-testid="variant"
-        data-block="productinfo"
-        data-variant="split"
-      >
-        <Stack gap="4" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.blocks.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="commerce">
+            {{ ui.blocks.themes.commerce.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="block-title">
+            {{ ui.blocks.names.productinfo }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ ui.blocks.docs.productinfo }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="productinfo-split-label"
+          data-testid="variant"
+          data-block="productinfo"
+          data-variant="split"
+        >
           <Title :as="2" size="base" weight="bold" id="productinfo-split-label" data-testid="variant-label">
             {{ ui.blocks.variants.productinfo.split }}
           </Title>
@@ -70,15 +72,15 @@ const specs = fromCodex<Spec>(specsEntries, SPECS_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="productinfo-stacked-label"
-        data-testid="variant"
-        data-block="productinfo"
-        data-variant="stacked"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="productinfo-stacked-label"
+          data-testid="variant"
+          data-block="productinfo"
+          data-variant="stacked"
+        >
           <Title :as="2" size="base" weight="bold" id="productinfo-stacked-label" data-testid="variant-label">
             {{ ui.blocks.variants.productinfo.stacked }}
           </Title>
@@ -95,15 +97,15 @@ const specs = fromCodex<Spec>(specsEntries, SPECS_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-      <Block
-        tag="section"
-        aria-labelledby="productinfo-closed-label"
-        data-testid="variant"
-        data-block="productinfo"
-        data-variant="closed"
-      >
-        <Stack gap="4" align="stretch">
+        <Stack
+          gap="4"
+          align="stretch"
+          role="group"
+          aria-labelledby="productinfo-closed-label"
+          data-testid="variant"
+          data-block="productinfo"
+          data-variant="closed"
+        >
           <Title :as="2" size="base" weight="bold" id="productinfo-closed-label" data-testid="variant-label">
             {{ ui.blocks.variants.productinfo.closed }}
           </Title>
@@ -120,7 +122,7 @@ const specs = fromCodex<Spec>(specsEntries, SPECS_FIELDS);
             />
           </Box>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

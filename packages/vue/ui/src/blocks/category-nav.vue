@@ -70,11 +70,11 @@ const listShape = computed(() =>
 </script>
 
 <template>
-  <Container
-    :class="cn('mx-auto w-full max-w-6xl px-4', (((density as string) === 'compact') ? 'py-2' : 'py-4'))"
-    data-slot="container"
-  >
-    <Block tag="nav" :aria-label="label" data-testid="category-nav" :data-layout="layout">
+  <Block tag="nav" :aria-label="label" data-testid="category-nav" :data-layout="layout">
+    <Container
+      :class="cn('mx-auto w-full max-w-6xl px-4', (((density as string) === 'compact') ? 'py-2' : 'py-4'))"
+      data-slot="container"
+    >
       <Group
         v-if="((layout as string) === 'toolbar')"
         gap="4"
@@ -114,6 +114,6 @@ const listShape = computed(() =>
           </Link>
         </ListItem>
       </List>
-    </Block>
-  </Container>
+    </Container>
+  </Block>
 </template>

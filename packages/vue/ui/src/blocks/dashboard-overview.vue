@@ -24,7 +24,7 @@ export type DashboardOverviewProps = {
 </script>
 
 <script setup lang="ts">
-import Block from "../primitives/block/block.vue";
+import Box from "../primitives/box/box.vue";
 import Grid from "../primitives/grid/grid.vue";
 import Stack from "../primitives/stack/stack.vue";
 import BarChart from "../components/bar-chart.vue";
@@ -51,9 +51,9 @@ const {
   <SectionFrame :id="id" :title="title" :tone="tone" :density="density">
     <Stack gap="6" align="stretch">
       <Grid :cols="(((cols as string) === '2') ? '1-2' : '1-4')" class="gap-4" data-testid="items">
-        <Block v-for="m in metrics" :key="m.id" tag="div" data-testid="item">
+        <Box v-for="m in metrics" :key="m.id" data-testid="item">
           <StatTile :label="m.label" :value="m.value" :icon="m.icon" :hint="m.hint" />
-        </Block>
+        </Box>
       </Grid>
       <Grid :cols="(((layout as string) === 'split') ? '1-2' : '1')" class="items-stretch gap-4" data-testid="panels">
         <Panel :title="chart.title" :description="chart.text" :id="tpl('{0}-chart', id)" class="h-full">

@@ -15,7 +15,7 @@ export type FieldProps = {
 </script>
 
 <script setup lang="ts">
-import Block from "../primitives/block/block.vue";
+import Box from "../primitives/box/box.vue";
 import Label from "../primitives/label/label.vue";
 import Text from "../primitives/text/text.vue";
 import { cn } from "../utils";
@@ -25,7 +25,7 @@ defineSlots<{ default?(): unknown }>();
 </script>
 
 <template>
-  <Block :class="cn('flex min-w-0 flex-col gap-2', className)">
+  <Box :class="cn('flex min-w-0 flex-col gap-2', className)">
     <Label class="text-xs font-bold text-foreground" :for="htmlFor">
       {{ label }}
     </Label>
@@ -36,5 +36,5 @@ defineSlots<{ default?(): unknown }>();
     <Text v-else-if="hint" class="m-0 text-xs font-medium text-muted-foreground">
       {{ hint }}
     </Text>
-  </Block>
+  </Box>
 </template>

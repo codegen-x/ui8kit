@@ -28,6 +28,7 @@
   import Group from "../primitives/group/group.svelte";
   import Link from "../primitives/link/link.svelte";
   import LinkPlain from "../primitives/link-plain/link-plain.svelte";
+  import Nav from "../primitives/nav/nav.svelte";
   import { cn } from "../utils";
 
   let {
@@ -42,14 +43,6 @@
   }: SiteHeaderProps = $props();
 </script>
 
-<LinkPlain
-  href="#main-content"
-  class={"sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background " +
-    "focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border"}
-  data-testid="skip-link"
->
-  {labels.skip}
-</LinkPlain>
 <Block
   tag="header"
   class={cn(
@@ -59,6 +52,14 @@
   data-testid="site-header"
   data-layout={layout}
 >
+  <LinkPlain
+    href="#main-content"
+    class={"sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background " +
+      "focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border"}
+    data-testid="skip-link"
+  >
+    {labels.skip}
+  </LinkPlain>
   <Container
     class={cn(
       "mx-auto w-full max-w-6xl px-4",
@@ -70,7 +71,7 @@
     <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
       {labels.brand}
     </Link>
-    <Block tag="nav" aria-label={labels.nav} data-testid="site-nav">
+    <Nav aria-label={labels.nav} data-testid="site-nav">
       <Group gap="4" align="center">
         <Link
           href="#/"
@@ -89,7 +90,7 @@
           {labels.pricing}
         </Link>
       </Group>
-    </Block>
+    </Nav>
     <Group gap="4" align="center">
       <Button variant="outline" size="sm" data-testid="theme-toggle" onclick={() => ontheme?.()}>
         {labels.theme}

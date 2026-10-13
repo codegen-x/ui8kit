@@ -7,32 +7,34 @@ import { ui } from "@ui8kit/app-shared/content";
 
 export function NewsletterPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text size="sm" className="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="promo">
-            {ui.blocks.themes.promo.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.newsletter}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.newsletter}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="newsletter-inline-label"
-          data-testid="variant"
-          data-block="newsletter"
-          data-variant="inline"
-        >
-          <Stack gap="4" align="stretch">
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text size="sm" className="font-medium text-muted-foreground" data-testid="block-theme" data-theme-id="promo">
+              {ui.blocks.themes.promo.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.newsletter}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.newsletter}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="newsletter-inline-label"
+            data-testid="variant"
+            data-block="newsletter"
+            data-variant="inline"
+          >
             <Title as={2} size="base" weight="bold" id="newsletter-inline-label" data-testid="variant-label">
               {ui.blocks.variants.newsletter.inline}
             </Title>
@@ -51,15 +53,15 @@ export function NewsletterPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="newsletter-stacked-label"
-          data-testid="variant"
-          data-block="newsletter"
-          data-variant="stacked"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="newsletter-stacked-label"
+            data-testid="variant"
+            data-block="newsletter"
+            data-variant="stacked"
+          >
             <Title as={2} size="base" weight="bold" id="newsletter-stacked-label" data-testid="variant-label">
               {ui.blocks.variants.newsletter.stacked}
             </Title>
@@ -78,15 +80,15 @@ export function NewsletterPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="newsletter-split-label"
-          data-testid="variant"
-          data-block="newsletter"
-          data-variant="split"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="newsletter-split-label"
+            data-testid="variant"
+            data-block="newsletter"
+            data-variant="split"
+          >
             <Title as={2} size="base" weight="bold" id="newsletter-split-label" data-testid="variant-label">
               {ui.blocks.variants.newsletter.split}
             </Title>
@@ -105,15 +107,15 @@ export function NewsletterPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="newsletter-consent-label"
-          data-testid="variant"
-          data-block="newsletter"
-          data-variant="consent"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="newsletter-consent-label"
+            data-testid="variant"
+            data-block="newsletter"
+            data-variant="consent"
+          >
             <Title as={2} size="base" weight="bold" id="newsletter-consent-label" data-testid="variant-label">
               {ui.blocks.variants.newsletter.consent}
             </Title>
@@ -132,15 +134,15 @@ export function NewsletterPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="newsletter-muted-label"
-          data-testid="variant"
-          data-block="newsletter"
-          data-variant="muted"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="newsletter-muted-label"
+            data-testid="variant"
+            data-block="newsletter"
+            data-variant="muted"
+          >
             <Title as={2} size="base" weight="bold" id="newsletter-muted-label" data-testid="variant-label">
               {ui.blocks.variants.newsletter.muted}
             </Title>
@@ -159,8 +161,8 @@ export function NewsletterPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

@@ -17,8 +17,8 @@
 </script>
 
 <script lang="ts">
+  import Article from "../primitives/article/article.svelte";
   import Badge from "../primitives/badge/badge.svelte";
-  import Block from "../primitives/block/block.svelte";
   import Box from "../primitives/box/box.svelte";
   import Group from "../primitives/group/group.svelte";
   import Link from "../primitives/link/link.svelte";
@@ -44,8 +44,7 @@
   data-testid="items"
 >
   {#each projects as p, i (p.id)}
-    <Block
-      tag="article"
+    <Article
       class={cn(
         "flex flex-col gap-4",
         (over ? "relative" : "rounded bg-card inset-ring inset-ring-border p-4"),
@@ -101,6 +100,6 @@
           </Group>
         {/if}
       </Stack>
-    </Block>
+    </Article>
   {/each}
 </Box>

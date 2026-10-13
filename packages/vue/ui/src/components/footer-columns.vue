@@ -11,11 +11,11 @@ export type FooterColumnsProps = {
 </script>
 
 <script setup lang="ts">
-import Block from "../primitives/block/block.vue";
 import Grid from "../primitives/grid/grid.vue";
 import Link from "../primitives/link/link.vue";
 import List from "../primitives/list/list.vue";
 import ListItem from "../primitives/list/list-item.vue";
+import Nav from "../primitives/nav/nav.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 
@@ -23,7 +23,7 @@ const { label, groups } = defineProps<FooterColumnsProps>();
 </script>
 
 <template>
-  <Block tag="nav" :aria-label="label">
+  <Nav :aria-label="label">
     <Grid cols="1" class="grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5" data-testid="footer-groups">
       <Stack v-for="g in groups" :key="g.id" gap="2" data-testid="group">
         <Text size="sm" weight="semibold">
@@ -38,5 +38,5 @@ const { label, groups } = defineProps<FooterColumnsProps>();
         </List>
       </Stack>
     </Grid>
-  </Block>
+  </Nav>
 </template>

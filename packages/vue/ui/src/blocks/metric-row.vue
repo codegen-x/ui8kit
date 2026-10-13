@@ -19,7 +19,7 @@ export type MetricRowProps = {
 </script>
 
 <script setup lang="ts">
-import Block from "../primitives/block/block.vue";
+import Box from "../primitives/box/box.vue";
 import Grid from "../primitives/grid/grid.vue";
 import Group from "../primitives/group/group.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
@@ -43,9 +43,9 @@ const {
   <SectionFrame :id="id" :title="title" :tone="tone" :density="density">
     <Grid :cols="(((cols as string) === '2') ? '1-2' : '1-4')" class="gap-4" data-testid="items">
       <template v-for="m in metrics" :key="m.id">
-        <Block v-if="((item as string) === 'tile')" tag="div" data-testid="item">
+        <Box v-if="((item as string) === 'tile')" data-testid="item">
           <StatTile :label="m.label" :value="m.value" :icon="m.icon" :hint="m.hint" />
-        </Block>
+        </Box>
         <Stack v-else gap="0" class="rounded bg-card p-4 inset-ring inset-ring-border" data-testid="item">
           <Group gap="2" align="center" class="text-muted-foreground">
             <LucideIcon :name="m.icon" :size="16" />

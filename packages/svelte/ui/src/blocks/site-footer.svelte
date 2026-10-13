@@ -20,6 +20,7 @@
   import Container from "../primitives/container/container.svelte";
   import Group from "../primitives/group/group.svelte";
   import Link from "../primitives/link/link.svelte";
+  import Nav from "../primitives/nav/nav.svelte";
   import Text from "../primitives/text/text.svelte";
   import { cn } from "../utils";
 
@@ -39,7 +40,7 @@
     <Text size="sm" class="text-muted-foreground" data-testid="copyright">
       {labels.copyright}
     </Text>
-    <Block tag="nav" aria-label={labels.nav}>
+    <Nav aria-label={labels.nav}>
       <Group gap="4">
         <Link href="#/" variant="default">
           {labels.home}
@@ -48,6 +49,6 @@
           {labels.pricing}
         </Link>
       </Group>
-    </Block>
+    </Nav>
   </Container>
 </Block>

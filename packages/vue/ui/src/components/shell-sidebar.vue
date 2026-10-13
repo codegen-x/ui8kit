@@ -27,6 +27,7 @@ import Link from "../primitives/link/link.vue";
 import List from "../primitives/list/list.vue";
 import ListItem from "../primitives/list/list-item.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
+import Nav from "../primitives/nav/nav.vue";
 import Text from "../primitives/text/text.vue";
 import { cn } from "../utils";
 
@@ -56,7 +57,7 @@ const named = computed(() => (mode as string) === "wide");
           {{ nav.brand }}
         </Text>
       </Group>
-      <Block tag="nav" class="flex-1" :aria-label="nav.label">
+      <Nav class="flex-1" :aria-label="nav.label">
         <List class="m-0 flex list-none flex-col gap-2 p-0" data-testid="items">
           <ListItem v-for="l in nav.links" :key="l.id">
             <Link
@@ -78,7 +79,7 @@ const named = computed(() => (mode as string) === "wide");
             </Link>
           </ListItem>
         </List>
-      </Block>
+      </Nav>
       <ButtonPlain v-if="((mode as string) === 'collapsed')"
         type="button"
         class="inline-flex size-10 items-center justify-center rounded text-muted-foreground"
@@ -100,7 +101,7 @@ const named = computed(() => (mode as string) === "wide");
       <Text size="sm" weight="semibold" class="px-4">
         {{ nav.subTitle }}
       </Text>
-      <Block tag="nav" :aria-label="nav.subTitle">
+      <Nav :aria-label="nav.subTitle">
         <List class="m-0 flex list-none flex-col gap-2 p-0">
           <ListItem v-for="s in nav.sub" :key="s.id">
             <Link
@@ -122,7 +123,7 @@ const named = computed(() => (mode as string) === "wide");
             </Link>
           </ListItem>
         </List>
-      </Block>
+      </Nav>
     </Box>
   </Block>
 </template>

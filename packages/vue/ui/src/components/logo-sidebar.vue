@@ -27,7 +27,7 @@ export type LogoSidebarProps = {
 </script>
 
 <script setup lang="ts">
-import Block from "../primitives/block/block.vue";
+import Box from "../primitives/box/box.vue";
 import Inline from "../primitives/inline/inline.vue";
 import { cn } from "../utils";
 
@@ -36,7 +36,7 @@ defineSlots<{ mark?(): unknown, actions?(): unknown }>();
 </script>
 
 <template>
-  <Block
+  <Box
     :class="cn(
       logoSidebarVariants({ variant: variant }),
       'in-data-[nav=collapsed]:w-full in-data-[nav=collapsed]:justify-center in-data-[nav=collapsed]:p-0',
@@ -57,5 +57,5 @@ defineSlots<{ mark?(): unknown, actions?(): unknown }>();
     >
       <slot name="actions" />
     </Inline>
-  </Block>
+  </Box>
 </template>

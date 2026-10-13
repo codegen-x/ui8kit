@@ -10,10 +10,14 @@ import { layoutOf } from "../presets";
 
 const P = "pattern.";
 export const wide = "mx-auto w-full max-w-6xl px-4";
+/** the root of a block whose content is a Panel: a section named by the panel title (`{id}-t`), then the container (rule 01) */
+export const panelSection = (...children: ViewNode[]): ViewNode =>
+  use("Block", { props: { Tag: "section" }, attrs: { "aria-labelledby": cond(and(ref("title"), ref("id")), op("tpl", "{0}-t", ref("id")), undef()), "data-testid": "panel-section" } }, ...children);
 /** the landing content column (default preset) */
 export const landingWide = cn("mx-auto w-full px-4", layoutOf("section.landing"));
 
 const sectionFrame = spec(`${P}section-frame`, "SectionFrame", "A page section: the landmark named by its heading, the heading (h1 or h2), an optional lead, the body (`children`) and optional media. `layout` stacks everything or puts the media beside the text; `boxed` puts the body in a card. Axes: layout, media side, tone, density, align.", {
+  frame: true,
   records: {
     SectionHeading: groupFields(["level", "1 | 2", "heading level", 2], ["scale", '"default" | "display"', "display: an oversized heading", "default"], ["badge", "string", "a short pill above the heading (e.g. New)"]),
     HeadLink: groupFields(["label", "string", "text of the link (View all, Browse all); none: no link"], ["href", "string", "href of the link", "#/"]),
@@ -79,22 +83,27 @@ const sectionColumn = spec(`${P}section-column`, "SectionColumn", "The stacked b
   view: [use("Stack", { props: { Gap: "6", Align: "stretch", Class: op("recipe", "sectionColumn", "measure", ref("measure")) } }, slot("children"))],
 });
 
-/** a picture behind the children, or the children as they are */
-const backdrop = spec(`${P}backdrop`, "Backdrop", "Something behind the children: a faint full-size picture (image), or nothing (none: the children as they are, no wrapper).", {
+/** a faint picture behind the content of the Block that holds it (that Block is `relative isolate overflow-hidden`), or nothing */
+const backdrop = spec(`${P}backdrop`, "Backdrop", "A faint full-size picture behind the content of its section (image), or nothing (none). It sits inside the Block of the block, which `behind` makes `relative isolate overflow-hidden`, so the section stays the root of the block (rule 01).", {
   props: [
     prop("kind", ts('"none" | "image"'), "what is drawn behind", { default: "none" }),
     prop("alt", "string", "accessible name of the picture (image)", { default: "" }),
   ],
-  children: true,
   view: [when(eq(ref("kind"), "image"),
-    [use("Block", { props: { Tag: "div", Class: "relative isolate overflow-hidden" }, attrs: { "data-testid": "backdrop" } },
-      organism("MediaFrame", { alt: ref("alt"), ratio: "21/9", className: "absolute inset-0 -z-10 size-full rounded-none opacity-30" }),
-      slot("children"))],
-    [slot("children")])],
+    [use("Box", { props: { Class: "pointer-events-none absolute inset-0 -z-10" }, attrs: { "data-testid": "backdrop" } },
+      organism("MediaFrame", { alt: ref("alt"), ratio: "21/9", className: "size-full rounded-none opacity-30" }))])],
 });
-/** `children` in front of a Backdrop of the given kind (none, image) */
-export const behind = (kind: Value, alt: Value, ...children: ViewNode[]): ViewNode =>
-  organism("Backdrop", { kind, alt }, { slots: { children: { args: [], do: children } } });
+/** a picture of the given kind (none, image) behind a section: the SectionFrame (or Block) `node` stays the root, gets
+ *  `relative isolate overflow-hidden` for an image and holds the Backdrop as its first child */
+export function behind(kind: Value, alt: Value, node: ViewNode): ViewNode {
+  const layer = organism("Backdrop", { kind, alt });
+  const shell = cond(eq(kind, "image"), "relative isolate overflow-hidden", "");
+  if ("organism" in node && node.slots?.["children"]) {
+    const props = { ...(node.props ?? {}), className: node.props?.["className"] !== undefined ? cn(node.props["className"]!, shell) : shell };
+    return { ...node, props, slots: { ...node.slots, children: { ...node.slots["children"], do: [layer, ...node.slots["children"].do] } } };
+  }
+  throw new Error("behind: the node is not a section with children");
+}
 
 /** the head of a section: an optional badge, the heading with an optional link opposite it, and the lead */
 const sectionHeader = spec(`${P}section-header`, "SectionHeader", "The head of a section: an optional badge, the heading (h1 or h2) with an optional link opposite it, and an optional lead. No wrapper: its parts are children of the section stack.", {

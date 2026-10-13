@@ -20,11 +20,13 @@ export type ArticleBodyProps = {
 </script>
 
 <script setup lang="ts">
-import Block from "../primitives/block/block.vue";
+import Blockquote from "../primitives/blockquote/blockquote.vue";
+import Box from "../primitives/box/box.vue";
 import Grid from "../primitives/grid/grid.vue";
 import Link from "../primitives/link/link.vue";
 import List from "../primitives/list/list.vue";
 import ListItem from "../primitives/list/list-item.vue";
+import Nav from "../primitives/nav/nav.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
@@ -51,9 +53,8 @@ const {
         (((layout as string) === 'toc') ? 'md:grid-cols-[14rem_minmax(0,1fr)]' : '')
       )"
     >
-      <Block
+      <Nav
         v-if="((layout as string) === 'toc')"
-        tag="nav"
         class="md:sticky md:top-4"
         :aria-label="tocTitle"
         data-testid="toc"
@@ -75,12 +76,11 @@ const {
             </ListItem>
           </List>
         </Stack>
-      </Block>
+      </Nav>
       <Stack gap="8" align="stretch" class="mx-auto w-full max-w-2xl min-w-0" data-testid="article">
-        <Block
+        <Box
           v-for="s in sections"
           :key="s.id"
-          tag="div"
           class="flex flex-col gap-4"
           :id="tpl('{0}-{1}', id, s.id)"
           data-testid="item"
@@ -92,11 +92,11 @@ const {
             {{ s.text }}
           </Text>
           <template v-if="((quotes as string) === 'show')">
-            <Block v-if="s.quote" tag="blockquote" class="m-0 border-l border-border pl-4 text-lg" data-testid="quote">
+            <Blockquote v-if="s.quote" class="m-0 border-l border-border pl-4 text-lg" data-testid="quote">
               {{ s.quote }}
-            </Block>
+            </Blockquote>
           </template>
-        </Block>
+        </Box>
       </Stack>
     </Grid>
   </SectionFrame>

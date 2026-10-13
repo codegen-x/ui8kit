@@ -33,37 +33,39 @@ const projects = fromCodex<Project>(projectsEntries, PROJECTS_FIELDS);
 
 export function ProjectsPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text
-            size="sm"
-            className="font-medium text-muted-foreground"
-            data-testid="block-theme"
-            data-theme-id="marketing"
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text
+              size="sm"
+              className="font-medium text-muted-foreground"
+              data-testid="block-theme"
+              data-theme-id="marketing"
+            >
+              {ui.blocks.themes.marketing.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.projects}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.projects}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="projects-cards-label"
+            data-testid="variant"
+            data-block="projects"
+            data-variant="cards"
           >
-            {ui.blocks.themes.marketing.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.projects}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.projects}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="projects-cards-label"
-          data-testid="variant"
-          data-block="projects"
-          data-variant="cards"
-        >
-          <Stack gap="4" align="stretch">
             <Title as={2} size="base" weight="bold" id="projects-cards-label" data-testid="variant-label">
               {ui.blocks.variants.projects.cards}
             </Title>
@@ -80,15 +82,15 @@ export function ProjectsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="projects-compact-label"
-          data-testid="variant"
-          data-block="projects"
-          data-variant="compact"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="projects-compact-label"
+            data-testid="variant"
+            data-block="projects"
+            data-variant="compact"
+          >
             <Title as={2} size="base" weight="bold" id="projects-compact-label" data-testid="variant-label">
               {ui.blocks.variants.projects.compact}
             </Title>
@@ -105,15 +107,15 @@ export function ProjectsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="projects-overlay-label"
-          data-testid="variant"
-          data-block="projects"
-          data-variant="overlay"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="projects-overlay-label"
+            data-testid="variant"
+            data-block="projects"
+            data-variant="overlay"
+          >
             <Title as={2} size="base" weight="bold" id="projects-overlay-label" data-testid="variant-label">
               {ui.blocks.variants.projects.overlay}
             </Title>
@@ -130,15 +132,15 @@ export function ProjectsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="projects-bento-label"
-          data-testid="variant"
-          data-block="projects"
-          data-variant="bento"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="projects-bento-label"
+            data-testid="variant"
+            data-block="projects"
+            data-variant="bento"
+          >
             <Title as={2} size="base" weight="bold" id="projects-bento-label" data-testid="variant-label">
               {ui.blocks.variants.projects.bento}
             </Title>
@@ -155,15 +157,15 @@ export function ProjectsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="projects-list-label"
-          data-testid="variant"
-          data-block="projects"
-          data-variant="list"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="projects-list-label"
+            data-testid="variant"
+            data-block="projects"
+            data-variant="list"
+          >
             <Title as={2} size="base" weight="bold" id="projects-list-label" data-testid="variant-label">
               {ui.blocks.variants.projects.list}
             </Title>
@@ -180,15 +182,15 @@ export function ProjectsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="projects-cardsMuted-label"
-          data-testid="variant"
-          data-block="projects"
-          data-variant="cardsMuted"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="projects-cardsMuted-label"
+            data-testid="variant"
+            data-block="projects"
+            data-variant="cardsMuted"
+          >
             <Title as={2} size="base" weight="bold" id="projects-cardsMuted-label" data-testid="variant-label">
               {ui.blocks.variants.projects.cardsMuted}
             </Title>
@@ -205,8 +207,8 @@ export function ProjectsPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

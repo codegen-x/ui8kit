@@ -33,26 +33,33 @@ const orders = fromCodex<Order>(ordersEntries, ORDERS_FIELDS);
 </script>
 
 <template>
-  <Container class="mx-auto w-full max-w-6xl px-4 py-10">
-    <Stack gap="8" align="stretch">
-      <Group>
-        <Link href="#/" variant="default" data-testid="back">
-          {{ ui.catalog.back }}
-        </Link>
-      </Group>
-      <Stack gap="2" align="stretch">
-        <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
-          {{ ui.catalog.sections.commerce.title }}
-        </Text>
-        <Title :as="1" size="4xl" weight="bold" data-testid="category-title">
-          {{ ui.catalog.categories.commerceOrders }}
-        </Title>
-        <Text class="max-w-2xl text-muted-foreground">
-          {{ tpl(ui.catalog.count, 1, 4) }}
-        </Text>
-      </Stack>
-      <Block tag="section" aria-labelledby="catalog-orders-title" data-testid="catalog-block" data-block="orders">
-        <Stack gap="6" align="stretch">
+  <Block tag="section" aria-labelledby="page-title" data-testid="page">
+    <Container class="mx-auto w-full max-w-6xl px-4 py-10">
+      <Stack gap="8" align="stretch">
+        <Group>
+          <Link href="#/" variant="default" data-testid="back">
+            {{ ui.catalog.back }}
+          </Link>
+        </Group>
+        <Stack gap="2" align="stretch">
+          <Text size="sm" class="font-medium text-muted-foreground" data-testid="catalog-eyebrow">
+            {{ ui.catalog.sections.commerce.title }}
+          </Text>
+          <Title :as="1" size="4xl" weight="bold" id="page-title" data-testid="category-title">
+            {{ ui.catalog.categories.commerceOrders }}
+          </Title>
+          <Text class="max-w-2xl text-muted-foreground">
+            {{ tpl(ui.catalog.count, 1, 4) }}
+          </Text>
+        </Stack>
+        <Stack
+          gap="6"
+          align="stretch"
+          role="group"
+          aria-labelledby="catalog-orders-title"
+          data-testid="catalog-block"
+          data-block="orders"
+        >
           <Stack gap="2" align="stretch">
             <Title :as="2" size="2xl" weight="bold" id="catalog-orders-title">
               {{ ui.blocks.names.orders }}
@@ -61,112 +68,112 @@ const orders = fromCodex<Order>(ordersEntries, ORDERS_FIELDS);
               {{ ui.blocks.docs.orders }}
             </Text>
           </Stack>
-          <Block
-            tag="section"
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="orders-table-label"
             data-testid="variant"
             data-block="orders"
             data-variant="table"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="orders-table-label" data-testid="variant-label">
-                {{ ui.blocks.variants.orders.table }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <OrderTable
-                  id="orders-table"
-                  :title="ui.commerce.orders.title"
-                  :orders="orders"
-                  :statuses="ui.status"
-                  :labels="ui.commerce.orders"
-                  layout="table"
-                  pager="show"
-                  tone="default"
-                  density="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="orders-table-label" data-testid="variant-label">
+              {{ ui.blocks.variants.orders.table }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <OrderTable
+                id="orders-table"
+                :title="ui.commerce.orders.title"
+                :orders="orders"
+                :statuses="ui.status"
+                :labels="ui.commerce.orders"
+                layout="table"
+                pager="show"
+                tone="default"
+                density="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="orders-cards-label"
             data-testid="variant"
             data-block="orders"
             data-variant="cards"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="orders-cards-label" data-testid="variant-label">
-                {{ ui.blocks.variants.orders.cards }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <OrderTable
-                  id="orders-cards"
-                  :title="ui.commerce.orders.title"
-                  :orders="orders"
-                  :statuses="ui.status"
-                  :labels="ui.commerce.orders"
-                  layout="cards"
-                  pager="show"
-                  tone="default"
-                  density="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="orders-cards-label" data-testid="variant-label">
+              {{ ui.blocks.variants.orders.cards }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <OrderTable
+                id="orders-cards"
+                :title="ui.commerce.orders.title"
+                :orders="orders"
+                :statuses="ui.status"
+                :labels="ui.commerce.orders"
+                layout="cards"
+                pager="show"
+                tone="default"
+                density="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="orders-noPager-label"
             data-testid="variant"
             data-block="orders"
             data-variant="noPager"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="orders-noPager-label" data-testid="variant-label">
-                {{ ui.blocks.variants.orders.noPager }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <OrderTable
-                  id="orders-noPager"
-                  :title="ui.commerce.orders.title"
-                  :orders="orders"
-                  :statuses="ui.status"
-                  :labels="ui.commerce.orders"
-                  layout="table"
-                  pager="hide"
-                  tone="default"
-                  density="default"
-                />
-              </Box>
-            </Stack>
-          </Block>
-          <Block
-            tag="section"
+            <Title :as="3" size="base" weight="bold" id="orders-noPager-label" data-testid="variant-label">
+              {{ ui.blocks.variants.orders.noPager }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <OrderTable
+                id="orders-noPager"
+                :title="ui.commerce.orders.title"
+                :orders="orders"
+                :statuses="ui.status"
+                :labels="ui.commerce.orders"
+                layout="table"
+                pager="hide"
+                tone="default"
+                density="default"
+              />
+            </Box>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
             aria-labelledby="orders-compactMuted-label"
             data-testid="variant"
             data-block="orders"
             data-variant="compactMuted"
           >
-            <Stack gap="4" align="stretch">
-              <Title :as="3" size="base" weight="bold" id="orders-compactMuted-label" data-testid="variant-label">
-                {{ ui.blocks.variants.orders.compactMuted }}
-              </Title>
-              <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
-                <OrderTable
-                  id="orders-compactMuted"
-                  :title="ui.commerce.orders.title"
-                  :orders="orders"
-                  :statuses="ui.status"
-                  :labels="ui.commerce.orders"
-                  layout="table"
-                  pager="hide"
-                  tone="muted"
-                  density="compact"
-                />
-              </Box>
-            </Stack>
-          </Block>
+            <Title :as="3" size="base" weight="bold" id="orders-compactMuted-label" data-testid="variant-label">
+              {{ ui.blocks.variants.orders.compactMuted }}
+            </Title>
+            <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
+              <OrderTable
+                id="orders-compactMuted"
+                :title="ui.commerce.orders.title"
+                :orders="orders"
+                :statuses="ui.status"
+                :labels="ui.commerce.orders"
+                layout="table"
+                pager="hide"
+                tone="muted"
+                density="compact"
+              />
+            </Box>
+          </Stack>
         </Stack>
-      </Block>
-    </Stack>
-  </Container>
+      </Stack>
+    </Container>
+  </Block>
 </template>

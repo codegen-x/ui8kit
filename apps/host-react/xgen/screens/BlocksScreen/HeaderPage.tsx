@@ -10,37 +10,39 @@ const actions = { toggleTheme };
 
 export function HeaderPage() {
   return (
-    <Container className="mx-auto w-full max-w-6xl px-4 py-10">
-      <Stack gap="8" align="stretch">
-        <Group>
-          <Link href="#/" variant="default" data-testid="back">
-            {ui.blocks.back}
-          </Link>
-        </Group>
-        <Stack gap="2" align="stretch">
-          <Text
-            size="sm"
-            className="font-medium text-muted-foreground"
-            data-testid="block-theme"
-            data-theme-id="marketing"
+    <Block tag="section" aria-labelledby="page-title" data-testid="page">
+      <Container className="mx-auto w-full max-w-6xl px-4 py-10">
+        <Stack gap="8" align="stretch">
+          <Group>
+            <Link href="#/" variant="default" data-testid="back">
+              {ui.blocks.back}
+            </Link>
+          </Group>
+          <Stack gap="2" align="stretch">
+            <Text
+              size="sm"
+              className="font-medium text-muted-foreground"
+              data-testid="block-theme"
+              data-theme-id="marketing"
+            >
+              {ui.blocks.themes.marketing.title}
+            </Text>
+            <Title as={1} size="4xl" weight="bold" id="page-title" data-testid="block-title">
+              {ui.blocks.names.header}
+            </Title>
+            <Text className="max-w-2xl text-muted-foreground">
+              {ui.blocks.docs.header}
+            </Text>
+          </Stack>
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="header-inline-label"
+            data-testid="variant"
+            data-block="header"
+            data-variant="inline"
           >
-            {ui.blocks.themes.marketing.title}
-          </Text>
-          <Title as={1} size="4xl" weight="bold" data-testid="block-title">
-            {ui.blocks.names.header}
-          </Title>
-          <Text className="max-w-2xl text-muted-foreground">
-            {ui.blocks.docs.header}
-          </Text>
-        </Stack>
-        <Block
-          tag="section"
-          aria-labelledby="header-inline-label"
-          data-testid="variant"
-          data-block="header"
-          data-variant="inline"
-        >
-          <Stack gap="4" align="stretch">
             <Title as={2} size="base" weight="bold" id="header-inline-label" data-testid="variant-label">
               {ui.blocks.variants.header.inline}
             </Title>
@@ -57,15 +59,15 @@ export function HeaderPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="header-stacked-label"
-          data-testid="variant"
-          data-block="header"
-          data-variant="stacked"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="header-stacked-label"
+            data-testid="variant"
+            data-block="header"
+            data-variant="stacked"
+          >
             <Title as={2} size="base" weight="bold" id="header-stacked-label" data-testid="variant-label">
               {ui.blocks.variants.header.stacked}
             </Title>
@@ -82,15 +84,15 @@ export function HeaderPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="header-sticky-label"
-          data-testid="variant"
-          data-block="header"
-          data-variant="sticky"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="header-sticky-label"
+            data-testid="variant"
+            data-block="header"
+            data-variant="sticky"
+          >
             <Title as={2} size="base" weight="bold" id="header-sticky-label" data-testid="variant-label">
               {ui.blocks.variants.header.sticky}
             </Title>
@@ -107,15 +109,15 @@ export function HeaderPage() {
               />
             </Box>
           </Stack>
-        </Block>
-        <Block
-          tag="section"
-          aria-labelledby="header-withCta-label"
-          data-testid="variant"
-          data-block="header"
-          data-variant="withCta"
-        >
-          <Stack gap="4" align="stretch">
+          <Stack
+            gap="4"
+            align="stretch"
+            role="group"
+            aria-labelledby="header-withCta-label"
+            data-testid="variant"
+            data-block="header"
+            data-variant="withCta"
+          >
             <Title as={2} size="base" weight="bold" id="header-withCta-label" data-testid="variant-label">
               {ui.blocks.variants.header.withCta}
             </Title>
@@ -132,8 +134,8 @@ export function HeaderPage() {
               />
             </Box>
           </Stack>
-        </Block>
-      </Stack>
-    </Container>
+        </Stack>
+      </Container>
+    </Block>
   );
 }

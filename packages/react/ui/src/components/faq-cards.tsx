@@ -5,8 +5,8 @@
  * square on top in the icons shape. Shapes: grid3, grid4, icons (three columns).
  */
 import { type ReactNode } from "react";
+import { Article } from "../primitives/article/article";
 import { Badge } from "../primitives/badge/badge";
-import { Block } from "../primitives/block/block";
 import { Box } from "../primitives/box/box";
 import { Link } from "../primitives/link/link";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
@@ -31,8 +31,7 @@ export function FaqCards({ items, labels, cards = "grid3" }: FaqCardsProps) {
       data-testid="faq"
     >
       {(items ?? []).map((q) => (
-        <Block key={q.id}
-          tag="article"
+        <Article key={q.id}
           className="rounded bg-card inset-ring inset-ring-border flex flex-col gap-4 p-6"
           data-testid="faq-card"
         >
@@ -58,7 +57,7 @@ export function FaqCards({ items, labels, cards = "grid3" }: FaqCardsProps) {
               <LucideIcon name="arrow-right" size={16} />
             </Link>
           </Box>
-        </Block>
+        </Article>
       ))}
     </Box>
   );

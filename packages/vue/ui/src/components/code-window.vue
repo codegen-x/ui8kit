@@ -16,7 +16,6 @@ export type CodeWindowProps = {
 </script>
 
 <script setup lang="ts">
-import Block from "../primitives/block/block.vue";
 import Box from "../primitives/box/box.vue";
 import Inline from "../primitives/inline/inline.vue";
 import List from "../primitives/list/list.vue";
@@ -28,7 +27,7 @@ const { title, prompt, lines, class: className } = defineProps<CodeWindowProps>(
 </script>
 
 <template>
-  <Block
+  <Box
     :class="cn(
       'w-full overflow-hidden rounded bg-card text-left inset-ring inset-ring-border',
       className
@@ -55,5 +54,5 @@ const { title, prompt, lines, class: className } = defineProps<CodeWindowProps>(
         </Inline>
       </ListItem>
     </List>
-  </Block>
+  </Box>
 </template>

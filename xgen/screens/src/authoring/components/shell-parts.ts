@@ -26,6 +26,7 @@ const panel = (cls: string, inner: ViewNode[] = [bar("h-4 w-1/3"), bar("flex-1")
 const palette = organism("SearchPalette", { label: ref("nav.search"), shortcut: ref("nav.shortcut") });
 
 export const shellTopbar = spec(`${P}shell-topbar`, "ShellTopbar", "The top bar of DashboardShell: the brand (when no sidebar carries it), the links (when there is no sidebar), an optional search field, and the signed-in person.", {
+  frame: true,
   typeImports: types,
   props: [
     nav,
@@ -35,7 +36,7 @@ export const shellTopbar = spec(`${P}shell-topbar`, "ShellTopbar", "The top bar 
   ],
   view: [use("Block", { props: { Tag: "header", Class: "flex h-16 shrink-0 items-center gap-6 border-b border-border bg-background px-6" }, attrs: { "data-testid": "topbar" } },
     when(eq(ref("brand"), "show"), [brand(true)]),
-    when(eq(ref("links"), "show"), [use("Block", { props: { Tag: "nav", Class: "hidden lg:block" }, attrs: { "aria-label": ref("nav.label") } },
+    when(eq(ref("links"), "show"), [use("Nav", { props: { Class: "hidden lg:block" }, attrs: { "aria-label": ref("nav.label") } },
       use("List", { props: { Class: "m-0 flex list-none items-center gap-2 p-0" } }, each(ref("nav.links"), "l", ref("l.id"), item("l", ref("nav.current"), true))))]),
     // beside the links the field keeps a fixed width at the end (from xl); alone it takes the free space up to max-w-sm
     when(eq(ref("search"), "show"), [when(eq(ref("links"), "show"), [use("Box", { props: { Class: "ml-auto hidden w-64 shrink-0 xl:block" } }, palette)], [palette])]),
@@ -46,6 +47,7 @@ export const shellTopbar = spec(`${P}shell-topbar`, "ShellTopbar", "The top bar 
 });
 
 export const shellSidebar = spec(`${P}shell-sidebar`, "ShellSidebar", "The sidebar of DashboardShell. Shapes: wide (icon and name), rail (icons only, the names still read), collapsed (the static collapsed state of a wide sidebar, with its expand button), twolevel (a rail beside a panel of the current section's links). side puts it at the start or the end.", {
+  frame: true,
   typeImports: types,
   props: [
     nav,
@@ -58,13 +60,13 @@ export const shellSidebar = spec(`${P}shell-sidebar`, "ShellSidebar", "The sideb
   view: [use("Block", { props: { Tag: "aside", Class: cn("flex shrink-0 bg-card", cond(eq(ref("side"), "end"), "flex-row-reverse border-l border-border", "border-r border-border")) }, attrs: { "aria-label": ref("nav.label"), "data-testid": "sidebar", "data-mode": ref("mode") } },
     use("Box", { props: { Class: cn("flex flex-col gap-6 py-4", cond(ref("named"), "w-64 px-4", "w-16 items-center px-2")) } },
       when(eq(ref("brand"), "show"), [brand(ref("named"))]),
-      use("Block", { props: { Tag: "nav", Class: "flex-1" }, attrs: { "aria-label": ref("nav.label") } },
+      use("Nav", { props: { Class: "flex-1" }, attrs: { "aria-label": ref("nav.label") } },
         use("List", { props: { Class: "m-0 flex list-none flex-col gap-2 p-0" }, attrs: { "data-testid": "items" } }, each(ref("nav.links"), "l", ref("l.id"), item("l", ref("nav.current"), ref("named"))))),
       when(eq(ref("mode"), "collapsed"), [use("ButtonPlain", { props: { Type: "button", Class: "inline-flex size-10 items-center justify-center rounded text-muted-foreground" }, on: { click: call("emit.toggle") }, attrs: { "aria-label": ref("nav.expand"), "aria-expanded": cond(eq(ref("mode"), "wide"), "true", "false"), "data-testid": "toggle" } },
         use("LucideIcon", { props: { Name: "panel-left", Size: 20 } }))])),
     when(eq(ref("mode"), "twolevel"), [use("Box", { props: { Class: cn("flex w-56 flex-col gap-4 px-4 py-6", cond(eq(ref("side"), "end"), "border-r border-border", "border-l border-border")) }, attrs: { "data-testid": "subnav" } },
       use("Text", { props: { Size: "sm", Weight: "semibold", Class: "px-4" } }, text(ref("nav.subTitle"))),
-      use("Block", { props: { Tag: "nav" }, attrs: { "aria-label": ref("nav.subTitle") } },
+      use("Nav", { props: {}, attrs: { "aria-label": ref("nav.subTitle") } },
         use("List", { props: { Class: "m-0 flex list-none flex-col gap-2 p-0" } }, each(ref("nav.sub"), "s", ref("s.id"), item("s", ref("nav.subCurrent"), true)))))]),
   )],
 });
@@ -94,11 +96,12 @@ export const shellContent = spec(`${P}shell-content`, "ShellContent", "The place
 });
 
 export const shellFooter = spec(`${P}shell-footer`, "ShellFooter", "The footer of DashboardShell: the copyright and a row of links, under the content column (inset) or across the whole shell (full).", {
+  frame: true,
   typeImports: types,
   props: [nav, { name: "place", type: tsOf("full", "inset"), default: "full" }],
   view: [use("Block", { props: { Tag: "footer", Class: cn("flex shrink-0 flex-wrap items-center justify-between gap-4 border-t border-border px-6 py-4", cond(eq(ref("place"), "full"), "bg-card", "")) }, attrs: { "data-testid": "footer", "data-place": ref("place") } },
     muted(ref("nav.copyright"), "xs"),
-    use("Block", { props: { Tag: "nav" }, attrs: { "aria-label": ref("nav.footerLabel") } },
+    use("Nav", { props: {}, attrs: { "aria-label": ref("nav.footerLabel") } },
       use("List", { props: { Class: "m-0 flex list-none items-center gap-4 p-0" } }, each(ref("nav.footer"), "f", ref("f.id"),
         use("ListItem", {}, use("Link", { props: { Href: "#/", Variant: "muted", Size: "sm", Class: "text-xs" } }, text(ref("f.name"))))))),
   )],
