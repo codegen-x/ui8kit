@@ -4,7 +4,7 @@ import { existsSync } from "node:fs";
 import { dirname, join, resolve } from "node:path";
 import { xgenPaths } from "@ui8kit/xgen-schema";
 import { planBuild, write } from "@ui8kit/xgen-generator";
-import { runChecks, runE2e, runShot, runVisual, solidCheck, templCheck } from "@ui8kit/xgen-check";
+import { runChecks, runE2e, runShot, runVisual, solidCheck, templCheck, twigCheck } from "@ui8kit/xgen-check";
 import { writeSpecs } from "@ui8kit/xgen-screens";
 
 /** the workspace is the nearest parent that has an xgen/ folder with specs */
@@ -39,6 +39,9 @@ async function main(argv: string[]): Promise<number> {
     // the Solid runtime: server render of every brick and block case against React, html-validate of every block case
     const so = await solidCheck(workspace, plan.bricks, plan.inputs);
     results.push({ name: "solid", what: `${so.cases} brick cases and ${so.blocks} block cases (${so.organisms} organisms) render the same DOM as React on the server; ${so.documents ?? 0} documents pass html-validate`, problems: so.problems });
+    // the Twig runtime: real Twig (PHP + twig/twig via composer) renders every brick and block case against React, html-validate of every block case
+    const tw = await twigCheck(workspace, plan.bricks, plan.inputs);
+    results.push({ name: "twig", what: tw.skipped ? `skipped: ${tw.skipped}` : `PHP ${tw.php} + twig/twig: ${tw.cases} brick cases and ${tw.blocks} block cases (${tw.organisms} organisms) render the same DOM as React; ${tw.documents ?? 0} documents pass html-validate`, problems: tw.problems });
     let bad = 0;
     for (const r of results) {
       console.log(`${r.problems.length ? "FAIL" : "ok  "}  ${r.name.padEnd(12)} ${r.what}`);

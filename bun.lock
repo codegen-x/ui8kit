@@ -259,6 +259,10 @@
         "xgen-zones": "./bin/zones.mjs",
       },
     },
+    "packages/twig/ui": {
+      "name": "@ui8kit/twig-ui",
+      "version": "0.0.0",
+    },
     "packages/vue/ui": {
       "name": "@ui8kit/vue-ui",
       "version": "0.0.0",
@@ -282,6 +286,8 @@
       "dependencies": {
         "@ui8kit/xgen-generator": "workspace:*",
         "@ui8kit/xgen-runtime-core": "workspace:*",
+        "@ui8kit/xgen-runtime-twig": "workspace:*",
+        "@ui8kit/xgen-runtime-twig": "workspace:*",
         "@ui8kit/xgen-schema": "workspace:*",
         "@ui8kit/xgen-screens": "workspace:*",
         "@ui8kit/xgen-spec": "workspace:*",
@@ -320,6 +326,7 @@
         "@ui8kit/xgen-runtime-solid": "workspace:*",
         "@ui8kit/xgen-runtime-svelte": "workspace:*",
         "@ui8kit/xgen-runtime-templ": "workspace:*",
+        "@ui8kit/xgen-runtime-twig": "workspace:*",
         "@ui8kit/xgen-runtime-vue": "workspace:*",
         "@ui8kit/xgen-schema": "workspace:*",
         "@ui8kit/xgen-screens": "workspace:*",
@@ -363,6 +370,15 @@
     },
     "xgen/runtimes/templ": {
       "name": "@ui8kit/xgen-runtime-templ",
+      "version": "0.0.0",
+      "dependencies": {
+        "@ui8kit/xgen-runtime-core": "workspace:*",
+        "@ui8kit/xgen-screens": "workspace:*",
+        "@ui8kit/xgen-spec": "workspace:*",
+      },
+    },
+    "xgen/runtimes/twig": {
+      "name": "@ui8kit/xgen-runtime-twig",
       "version": "0.0.0",
       "dependencies": {
         "@ui8kit/xgen-runtime-core": "workspace:*",
@@ -611,6 +627,8 @@
 
     "@ui8kit/templ-ui": ["@ui8kit/templ-ui@workspace:packages/templ/ui"],
 
+    "@ui8kit/twig-ui": ["@ui8kit/twig-ui@workspace:packages/twig/ui"],
+
     "@ui8kit/vue-ui": ["@ui8kit/vue-ui@workspace:packages/vue/ui"],
 
     "@ui8kit/xgen": ["@ui8kit/xgen@workspace:xgen/cli"],
@@ -628,6 +646,8 @@
     "@ui8kit/xgen-runtime-svelte": ["@ui8kit/xgen-runtime-svelte@workspace:xgen/runtimes/svelte"],
 
     "@ui8kit/xgen-runtime-templ": ["@ui8kit/xgen-runtime-templ@workspace:xgen/runtimes/templ"],
+
+    "@ui8kit/xgen-runtime-twig": ["@ui8kit/xgen-runtime-twig@workspace:xgen/runtimes/twig"],
 
     "@ui8kit/xgen-runtime-vue": ["@ui8kit/xgen-runtime-vue@workspace:xgen/runtimes/vue"],
 

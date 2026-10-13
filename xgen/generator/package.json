@@ -19,7 +19,8 @@
     "@ui8kit/xgen-runtime-solid": "workspace:*",
     "@ui8kit/xgen-runtime-vue": "workspace:*",
     "@ui8kit/xgen-schema": "workspace:*",
-    "@ui8kit/xgen-runtime-templ": "workspace:*"
+    "@ui8kit/xgen-runtime-templ": "workspace:*",
+    "@ui8kit/xgen-runtime-twig": "workspace:*"
   },
   "scripts": {
     "test": "bun test"

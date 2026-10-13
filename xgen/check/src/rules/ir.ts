@@ -1,8 +1,8 @@
-// The common tree of the `rules` group: every runtime adapter (svelte.ts, react.ts, vue.ts, templ.ts, solid.ts) turns one composition file into it,
+// The common tree of the `rules` group: every runtime adapter (svelte.ts, react.ts, vue.ts, templ.ts, solid.ts, twig.ts) turns one composition file into it,
 // and the detectors (detectors.ts) read only this tree, never a runtime AST.
 import ts from "typescript";
 
-export type Runtime = "svelte" | "react" | "vue" | "templ" | "solid";
+export type Runtime = "svelte" | "react" | "vue" | "templ" | "solid" | "twig";
 
 /** an attribute or a prop: static (a literal string or a bare flag) or an expression with the string literals it can evaluate to */
 export interface IrAttr { name: string; line: number; static: boolean; value?: string; strings: string[] }

@@ -285,3 +285,4 @@ export { runE2e, type E2eReport } from "./e2e";
 export { templCheck, type TemplResult } from "./templ";
 export { solidCheck, type SolidResult } from "./solid";
 export { runShot, type ShotOptions } from "./shots";
+export { twigCheck, type TwigResult } from "./twig";

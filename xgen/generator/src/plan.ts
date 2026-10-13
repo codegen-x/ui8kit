@@ -28,7 +28,7 @@ export interface Target {
   dir: string;
   kind: "package" | "app";
   /** "core": the shared package, runtime neutral */
-  runtime: Runtime | "core" | "templ";
+  runtime: Runtime | "core" | "templ" | "twig";
   /** build outputs of the target's own tools that the drift check leaves alone (templ generate: *_templ.go) */
   ignore?: RegExp;
   files: GeneratedFile[];
@@ -54,6 +54,7 @@ function banner(path: string, src: string): string {
 
 import { packageReadme } from "./readme";
 import { templFiles, TEMPL_DIR } from "./templ";
+import { twigFiles, TWIG_DIR } from "./twig";
 import { authoringIndex, withSource } from "./source";
 const pkgName = (r: Runtime): string => `@ui8kit/${r}-ui`;
 
@@ -206,6 +207,8 @@ export function planBuild(workspace: string, xgenRoot = join(workspace, "xgen"))
   // the Go templ package; templ generate output (*_templ.go) and go.sum are build outputs the drift check leaves alone
   const templ = templFiles(specs.bricks, inputs, xgenRoot, problems).sort((a, b) => (a.path < b.path ? -1 : a.path > b.path ? 1 : 0));
   targets.push({ dir: TEMPL_DIR, kind: "package", runtime: "templ", files: templ, handwritten: [], manifest: ".xgen-manifest.json", ignore: /(_templ\.go|^go\.sum)$/ });
+  // the Twig package; composer install output (vendor/, composer.lock) is a build output the drift check leaves alone
+  targets.push({ dir: TWIG_DIR, kind: "package", runtime: "twig", files: twigFiles(specs.bricks, inputs, xgenRoot, problems), handwritten: [], manifest: ".xgen-manifest.json", ignore: /^(vendor\/|composer\.lock$)/ });
   const all = inputs.screens.map((s) => s.value);
   const apps: Plan["apps"] = [];
   const hosted = new Map<string, ScreenSpec>();

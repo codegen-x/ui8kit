@@ -17,6 +17,7 @@
     "@ui8kit/xgen-generator": "workspace:*",
     "playwright-core": "^1.63.0",
     "@ui8kit/xgen-runtime-core": "workspace:*",
+    "@ui8kit/xgen-runtime-twig": "workspace:*",
     "@vue/compiler-sfc": "^3.5.43",
     "svelte": "^5.57.0",
     "typescript": "~6.0.2"
