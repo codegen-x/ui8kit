@@ -1,13 +1,16 @@
 # ui8kit 2.0 (codegen-x/ui8kit, branch `main`)
 
 One source of truth for UI that has to exist in more than one runtime. The sources are **specs, schemas and fixtures**.
-Everything else (the UI packages, the shared app core, the screens, the organisms, the menus, the two host apps) is **generated** by `xgen`
-for Svelte 5 and React 19. First slice: Svelte and React.
+Everything else (the UI packages, the shared app core, the screens, the organisms, the menus, the host apps) is **generated** by `xgen`
+for eight runtimes: Svelte 5, React 19, Vue 3 and Solid (each with a host app), and the server template engines Go templ, Twig,
+Jinja2 and Latte (held to DOM parity with React by `xgen check`).
+
+New here? Read **[docs/specs-guide.md](docs/specs-guide.md)**: how to author specs, run the gates and add an organism end to end.
 
 ```
 xgen/        the generation layer: a set of self-contained packages
-packages/    generated packages  @ui8kit/svelte-ui, @ui8kit/react-ui, @ui8kit/app-shared (dictionary, data, menus, runtime core; emitted once)   (+ tooling: audit, i18n and rules scripts)
-apps/        two host apps       host-svelte, host-react: one per runtime, each renders any screen by name at /<screen>/#/<route>   (the only hand-written file in each: xgen.app.json)
+packages/    generated packages  packages/{svelte,react,vue,solid}/ui, packages/{templ,twig,jinja2,latte}/ui, @ui8kit/app-shared (dictionary, data, menus, runtime core; emitted once)   (+ tooling: audit, i18n and rules scripts)
+apps/        host apps           host-svelte, host-react, host-vue, host-solid: one per TS runtime, each renders any screen by name at /<screen>/#/<route>   (the only hand-written file in each: xgen.app.json)
 ```
 
 ## The rule
@@ -24,24 +27,26 @@ apps/        two host apps       host-svelte, host-react: one per runtime, each 
 
 ```
 bun install
-bun run build         # xgen build: specs + fixtures + content  ->  packages/*/ui, packages/shared/app and apps/host-*
-bun run check         # xgen check: schema, props, a11y, authored, coverage, recipes, nonportable, text, dictionary, blocks, registry, themes, routes, structure, hardcode, corners, shadows, spacing, readability, dead, duplicates, versions, tests, drift
-bun run typecheck     # svelte-check / tsc on both UI packages, the shared core and both hosts (typecheck:xgen: tsc on xgen itself)
-bun run build:hosts   # vite build of both host apps (every screen is a lazy chunk)
+bun run build         # xgen build: specs + fixtures + content  ->  packages/*/ui (8 runtimes), packages/shared/app and apps/host-*
+bun run check         # xgen check: schema, props, a11y, authored, coverage, recipes, nonportable, text, dictionary, blocks, registry, themes, routes, structure, hardcode, corners, shadows, spacing, readability, dead, duplicates, versions, tests, rules, drift, and real-engine parity: templ, solid, twig, jinja2, latte
+                      # (templ needs Go, twig/latte PHP + composer, jinja2 Python; each skips without its toolchain, UI8KIT_REQUIRE_ALL_RUNTIMES=1 makes a skip fail)
+bun run typecheck     # svelte-check / tsc / vue-tsc on the TS UI packages, the shared core and the hosts (typecheck:xgen: tsc on xgen itself)
+bun run build:hosts   # vite build of the four host apps (every screen is a lazy chunk)
 bun run test          # bun test of xgen/*
-bun run e2e           # every screen in both hosts (plans: sort, search, pager, record; site: landmarks, skip link, current link, fixtures, FAQ, theme, 404; themes; gallery), screenshots, DOM pair test (needs build:hosts first; XGEN_E2E_ONLY=<screen-key>,... to filter)
+bun run e2e           # every screen in every host (plans: sort, search, pager, record; site: landmarks, skip link, current link, fixtures, FAQ, theme, 404; themes; gallery), screenshots, DOM pair test (needs build:hosts first; XGEN_E2E_ONLY=<screen-key>,... to filter)
 bun run shot <screen> [--runtime svelte|react] [--width 1600] [--theme light|dark] [--route /] [--out file.png]   # one full-page screenshot from a host
 bun run check:all     # all of the above
-bun run lint:px       # ui8px over the class sets of the specs (8 px grid, 4 px steps only in controls), ratchet in .ui8px/gate.json
+bun run lint:px       # ui8px over the class sets of the specs (8 px grid, 4 px steps only in controls), hard gate: 0 blocking hits (.ui8px/gate.json)
 bun run visual -- --out <dir> [--against <dir>]   # pixel gate: every state of every host in light and dark, manifest of PNG hashes
 bun run audit:push    # before every push: nothing private, no images/fonts/.fig, no secrets
 bun run rules          # rules 01/02/03/06 on the composition zone (also a group of bun run check)
+bun run rules:baseline # rewrite rules/zones.json and rules/baselines after an accepted change
 bun run hooks:install  # once per clone: git config core.hooksPath .githooks (pre-push: check + audit)
 ```
 
 `xgen list` prints what there is: bricks, parts, portable counts, targets, and the hand-written files of every app.
 
-## What is in the first slice
+## What is in the kit
 
 | | |
 |---|---|
@@ -49,7 +54,7 @@ bun run hooks:install  # once per clone: git config core.hooksPath .githooks (pr
 | organism | `PricingCard` (a plan as a card), built from primitives, with a typed render-prop slot `footer(plan)` and an event `select(id)` |
 | screen | `PlansScreen`: collection -> record. Search, sortable columns, pager, record card. State lives in the URL |
 | data | a Codex collection `xgen/fixtures/plans.json` (12 entries), texts in `xgen/content/ui/en.json` |
-| runtimes | Svelte 5 (`@ui8kit/svelte-ui`, `host-svelte`) and React 19 (`@ui8kit/react-ui`, `host-react`) |
+| runtimes | Svelte 5, React 19, Vue 3, Solid (packages + host apps); Go templ, Twig, Jinja2, Latte (template packages) |
 
 Text is never written in a view: a text is a reference into the content dictionary (or into the `labels` an organism receives).
 Cyrillic is not allowed in any tracked file: sources, generated code, content, docs, plans and reports (`xgen check`, `text`, which scans `git ls-files`). Genuine locale files would go in `CYRILLIC_ALLOW` in `xgen/check/src/index.ts`; the list is empty.
@@ -66,17 +71,23 @@ Each has its own `package.json`, `README.md` and `bun test`; the set is self-con
 | `@ui8kit/xgen-runtime-core` | `xgen/runtimes/core` | what the emitters share: types, expression printer, view walker, runtime assets (utils, styles, app runtime) |
 | `@ui8kit/xgen-runtime-svelte` | `xgen/runtimes/svelte` | the Svelte 5 emitter: bricks, organisms, screens, host scaffold |
 | `@ui8kit/xgen-runtime-react` | `xgen/runtimes/react` | the React emitter: the same |
+| `@ui8kit/xgen-runtime-vue`, `-solid` | `xgen/runtimes/vue`, `xgen/runtimes/solid` | the Vue 3 and Solid emitters |
+| `@ui8kit/xgen-runtime-templ` | `xgen/runtimes/templ` | Go templ templates and the Go helpers |
+| `@ui8kit/xgen-runtime-twig` | `xgen/runtimes/twig` | Twig templates through a dialect (shared by Jinja2 and Latte) and the PHP helpers |
+| `@ui8kit/xgen-runtime-jinja2`, `-latte` | `xgen/runtimes/jinja2`, `xgen/runtimes/latte` | the jinja and latte dialects, the Python helpers, the Latte extension |
 | `@ui8kit/xgen-generator` | `xgen/generator` | plans every file of every target in memory, writes it with a manifest, finds drift |
 | `@ui8kit/xgen-check` | `xgen/check` | the checks, the e2e scenario and the DOM pair test |
-| `xgen` | `xgen/cli` | `xgen build | check | e2e | list` |
+| `xgen` | `xgen/cli` | `xgen build | check | e2e | shot | visual | list` |
 
 See `xgen/README.md` for how the pieces fit, and `xgen/specs/_nonportable.json` for what does not carry over between
-Svelte and React and the explicit contract that replaces it.
+the runtimes and the explicit contract that replaces it.
 
 ## Generated packages
 
-`@ui8kit/svelte-ui` (`packages/svelte/ui`) and `@ui8kit/react-ui` (`packages/react/ui`): source only, no build step, the
-consumer's Vite compiles them. Tokens and classes come from the theme (the shadcn neutral theme in `src/styles/theme.css`,
+`@ui8kit/svelte-ui`, `@ui8kit/react-ui`, `@ui8kit/vue-ui` and `@ui8kit/solid-ui` (`packages/<rt>/ui`): source only, no build
+step, the consumer's Vite compiles them. The template packages (`packages/templ/ui`, `packages/twig/ui`,
+`packages/jinja2/ui`, `packages/latte/ui`) hold the same bricks and blocks as server templates with their helpers (Go,
+PHP, Python); each has its own README. Tokens and classes come from the theme (the shadcn neutral theme in `src/styles/theme.css`,
 no gradients, no `plain` variants). Text only through props.
 
 One corner token: every corner is plain `rounded`, which reads `--radius` (0.625rem = 10 px, set in `@theme` in
@@ -110,7 +121,7 @@ multiple of 8; 4 px belongs inside controls). Existing findings are recorded per
 `rules/style-baselines/<package>.json`; a new one fails, a fixed one asks for `bun run rules:baseline`.
 
 ```ts
-import { Button, Card, PricingCard } from "@ui8kit/svelte-ui";   // or "@ui8kit/react-ui"
+import { Button, Card, PricingCard } from "@ui8kit/svelte-ui";   // or react-ui, vue-ui, solid-ui
 ```
 
 ```css
@@ -119,7 +130,7 @@ import { Button, Card, PricingCard } from "@ui8kit/svelte-ui";   // or "@ui8kit/
 
 ## Blocks
 
-A block is an organism plus its axes (layout, columns, media side, density, tone, emphasis, ...), named variants and the data it reads: JSON, no markup (`xgen/specs/blocks`). The catalog has 34 blocks and 176 variants in 8 themes (marketing, commerce, promo, content, account, dashboard, onboarding, support).
+A block is an organism plus its axes (layout, columns, media side, density, tone, emphasis, ...), named variants and the data it reads: JSON, no markup (`xgen/specs/blocks`). The catalog has 92 blocks and 474 variants in 8 topics (marketing, commerce, promo, content, account, dashboard, onboarding, support).
 A page can be a **composed** screen (a list of blocks with variants); the gallery screen (`blocks`) is built from the catalog. Details: [xgen/docs/blocks.md](xgen/docs/blocks.md).
 
 ## Canary coverage
@@ -133,11 +144,11 @@ Only code, specs, schemas, fixtures, content and docs. Never: `private/`, `shots
 
 ## Host apps (screens as data)
 
-| | Svelte | React | Vue |
-|---|---|---|---|
-| app | `apps/host-svelte` | `apps/host-react` | `apps/host-vue` |
-| dev / preview port | 5180 | 5181 | 5182 |
-| a screen | `http://127.0.0.1:5180/<screen>/#/<route>` | `http://127.0.0.1:5181/<screen>/#/<route>` | `http://127.0.0.1:5182/<screen>/#/<route>` |
+| | Svelte | React | Vue | Solid |
+|---|---|---|---|---|
+| app | `apps/host-svelte` | `apps/host-react` | `apps/host-vue` | `apps/host-solid` |
+| dev / preview port | 5180 | 5181 | 5182 | 5183 |
+| a screen | `http://127.0.0.1:5180/<screen>/#/<route>` | `http://127.0.0.1:5181/<screen>/#/<route>` | `http://127.0.0.1:5182/<screen>/#/<route>` | `http://127.0.0.1:5183/<screen>/#/<route>` |
 
 `<screen>` is the screen id without `screen.`: `blocks`, `plans`, `site`, `theme-<name>` (ten themes). `/` lists every screen; `?screen=<key>` works too.
 Each host loads one screen per chunk. Dictionary, data, menus and runtime core live once in `packages/shared/app` (`@ui8kit/app-shared`).
