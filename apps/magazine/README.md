@@ -14,6 +14,15 @@ A hand-written app (not generated): the journal of a visitor's taste, design in 
 - One origin with Discovery (`/discovery/`, `/magazine/` on the :5190 preview) so both share the IndexedDB snapshot cache (`s2`, `m2`). A snapshot's cache key hashes the document CSS, so **the two apps must ship the same main stylesheet**: `src/app.css` imports the same kit, skins, `frame.css` and scans the same sources (`@source not` for its own, `@source inline("blur")` for what Discovery's sources produce), and the magazine's own rules (`src/magazine.css`) are injected as `<style data-snapshot-skip>`, which `collectCss()` leaves out. Its own markup uses `mg-*` classes, no Tailwind utilities. `bun run css-parity` fails when the stylesheets differ.
 - Screens, recipes and parts are shared with Discovery from `@ui8kit/taste-screens`; the engine from `@ui8kit/panorama`; the vocabulary, picks helpers, skin OKLab table and the recommender from `@ui8kit/taste-data`.
 
+## Tuned feed (home)
+
+The home (`#/`) is a marketplace-like feed (`src/feed`, logic in `src/lib/feed.ts`, state in `src/lib/tune.svelte.ts`). A taste profile is derived from the 10 picks: layout families (top 3), character (from the image recipe: calm, bold, technical, playful), density (from the layout family: airy, balanced, dense), skins (top 3), the most used font pair, the nearest radius, task (any) and imagery (top 3 recipes). Only overrides go into the address (`c`, `ch`, `d`, `sk`, `f`, `r`, `task`, `m`, after `picks`), so a tuned feed can be shared; "Reset to my picks" drops them.
+
+Sections, in order: Closest to your picks (cards in the visitor's skin, font and radius, with a "why" line), Same structure, different look (one screen in three skins; "Use this skin" applies it), an insert, The opposite of your taste, an insert, then pages of Unexpected combinations, each followed by an insert (templates, design system, series, video in turn) and "Show more". The Filters button (header and taste bar) opens a side sheet (the kit's Dialog, variant sheet) with the current settings preselected; "Update feed" applies them. The previous recommender rows are at `#/rows`. Copy: `content/ui.json` (`feed.*`).
+
+    bun run test                  # includes src/lib/feed.test.ts
+    bun run e2e:feed              # against the running :5190 server; html-validate on every state; SHOTS=<dir> saves screenshots
+
 ## Picks persistence
 
 `?picks=` is the source of truth (first 10 valid styles win and are saved). Without it: `magazine:v1:picks` (`{"v":1,"picks":[10 keys]}`), mirrored to sessionStorage, the `mgpicks` cookie and memory (`@ui8kit/taste-data/picks-store`; only exactly 10 valid distinct keys are accepted, anything else is skipped), then Discovery's `discovery-picked-recommend`. A direct visit with stored picks rewrites the address to `?picks=…` (replaceState, hash kept). Reset clears every mirror. Checks: `bun test packages/taste-data/src/picks-store.test.ts`, and `bun run e2e:persist` against the running :5190 server (headless Chrome, one persistent profile).

@@ -97,6 +97,7 @@
         "src/App.svelte",
         "src/reference",
         "src/parts",
+        "src/feed",
         "src/templates"
       ],
       "blockRoot": [

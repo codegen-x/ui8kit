@@ -249,5 +249,120 @@
     },
     "radiusLabel": "r{n}",
     "q": "Text"
+  },
+  "feed": {
+    "heading": "Your feed",
+    "lead": "Built from the 10 styles you picked. Tune it with Filters; the address keeps your settings, so you can share it.",
+    "profile": "Your taste",
+    "filters": "Filters",
+    "reset": "Reset to my picks",
+    "tuned": "Tuned",
+    "axes": {
+      "comp": "Layout",
+      "character": "Character",
+      "density": "Density",
+      "skins": "Skins",
+      "font": "Font",
+      "radius": "Radius",
+      "task": "Task",
+      "media": "Imagery"
+    },
+    "why": {
+      "comp": "same layout family",
+      "character": "same character",
+      "density": "same density",
+      "media": "same imagery",
+      "task": "fits your task"
+    },
+    "whyLead": "Why: ",
+    "sections": {
+      "closest": {
+        "title": "Closest to your picks",
+        "note": "Screens that match your layout, character and density, shown in your skin, font and radius."
+      },
+      "structure": {
+        "title": "Same structure, different look",
+        "note": "One layout in three skins. Pick a skin to apply it to the whole feed."
+      },
+      "opposite": {
+        "title": "The opposite of your taste",
+        "note": "Layouts and colours far from your picks: a check that you still like what you picked."
+      },
+      "unexpected": {
+        "title": "Unexpected combinations",
+        "note": "Other layout families that share your character or imagery, in mixed fonts and corners."
+      }
+    },
+    "applySkin": "Use this skin",
+    "applied": "In use",
+    "more": "Show more",
+    "end": "That is the whole catalogue for this taste.",
+    "inserts": {
+      "templates": {
+        "eyebrow": "Templates",
+        "title": "Ten page templates in your style",
+        "body": "Landing, shop, dashboard, docs and more, dressed in the skin, font and radius of your closest screen.",
+        "cta": "Open templates"
+      },
+      "design": {
+        "eyebrow": "Design system",
+        "title": "Tune the tokens behind the cards",
+        "body": "Radius, density and shadow per element, with a preset you can copy into a project.",
+        "cta": "Open the design system"
+      },
+      "series": {
+        "eyebrow": "Series",
+        "title": "One style across ten layouts",
+        "body": "The same skin, font and radius on one screen of every layout family.",
+        "cta": "See the series"
+      },
+      "video": {
+        "eyebrow": "Video",
+        "title": "Watch the panorama again",
+        "body": "Go back to Discovery and pick other screens: the feed rebuilds from your new picks.",
+        "cta": "Open Discovery"
+      }
+    },
+    "sheet": {
+      "title": "Filters",
+      "note": "Your current settings are selected. Change them and update the feed.",
+      "update": "Update feed",
+      "cancel": "Cancel",
+      "close": "Close filters"
+    },
+    "names": {
+      "character": {
+        "calm": "Calm",
+        "bold": "Bold",
+        "technical": "Technical",
+        "playful": "Playful"
+      },
+      "density": {
+        "airy": "Airy",
+        "balanced": "Balanced",
+        "dense": "Dense"
+      },
+      "task": {
+        "any": "Any",
+        "landing": "Landing page",
+        "shop": "Shop",
+        "dashboard": "Dashboard",
+        "docs": "Docs",
+        "portfolio": "Portfolio"
+      },
+      "media": {
+        "mesh": "Mesh",
+        "grain": "Grain",
+        "duotone": "Duotone",
+        "geometric": "Geometric",
+        "glass": "Glass",
+        "flat": "Flat shapes",
+        "rings": "Rings",
+        "stripes": "Stripes",
+        "dots": "Dots",
+        "conic": "Conic"
+      }
+    },
+    "pageLabel": "{title}, page {n}"
   }
 }

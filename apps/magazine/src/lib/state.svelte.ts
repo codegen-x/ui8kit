@@ -53,7 +53,7 @@ export function writePicksToUrl(keys: StyleKey[]): void {
 /** the routes of the hash: home, one style (`#/style/<key>` with "~" for "|"), one collection, and the read-only lists */
 /** the tabs of the detail page: the overview, the 10 templates, the design system */
 export type StyleTab = "overview" | "templates" | "design";
-export type Route = { name: "home" } | { name: "style"; key: StyleKey; tab: StyleTab } | { name: "collection"; id: string } | { name: "packs" } | { name: "presets" } | { name: "search"; query: string };
+export type Route = { name: "home" } | { name: "style"; key: StyleKey; tab: StyleTab } | { name: "collection"; id: string } | { name: "packs" } | { name: "presets" } | { name: "rows" } | { name: "search"; query: string };
 export function parseRoute(hash: string): Route {
   const m = /^#\/style\/([^/]+?)(?:\/(templates|design))?$/.exec(hash);
   if (m) {
@@ -66,6 +66,7 @@ export function parseRoute(hash: string): Route {
   if (sr) return { name: "search", query: sr[1] ?? "" };
   if (hash === "#/packs") return { name: "packs" };
   if (hash === "#/presets") return { name: "presets" };
+  if (hash === "#/rows") return { name: "rows" };
   return { name: "home" };
 }
 

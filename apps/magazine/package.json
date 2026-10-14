@@ -13,6 +13,7 @@
       "src/App.svelte",
       "src/reference",
       "src/parts",
+      "src/feed",
       "src/templates"
     ],
     "blockRoot": [
@@ -28,7 +29,8 @@
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "test": "bun test src",
     "css-parity": "bash scripts/css-parity.sh",
-    "e2e:persist": "bun scripts/e2e-persist.mjs"
+    "e2e:persist": "bun scripts/e2e-persist.mjs",
+    "e2e:feed": "bun scripts/e2e-feed.ts"
   },
   "dependencies": {
     "@ui8kit/app-shared": "workspace:*",

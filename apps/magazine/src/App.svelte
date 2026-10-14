@@ -1,6 +1,6 @@
 <!-- The magazine frame: a header (title, link to Discovery, the ball, theme), the sphere (one canvas, see parts/sphere.svelte) and the views of the hash. -->
 <script lang="ts">
-  import { Block, NavActions } from "@ui8kit/svelte-ui";
+  import { Block, Button, NavActions } from "@ui8kit/svelte-ui";
   import { ui as shared } from "@ui8kit/app-shared/content";
   import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
   import ui from "../content/ui.json";
@@ -11,11 +11,15 @@
   import Search from "./parts/search.svelte";
   import Presets from "./parts/presets.svelte";
   import Home from "./parts/home.svelte";
+  import Feed from "./feed/feed.svelte";
+  import FilterSheet from "./feed/filter-sheet.svelte";
+  import { startTune, tuning } from "./lib/tune.svelte";
   import Sphere from "./parts/sphere.svelte";
   import StylePage from "./parts/style-page.svelte";
 
   const first = loadPicks();
   mag.picks = first.picks;
+  if (first.picks.length) startTune(first.picks); // the tune of the feed: derived from the picks, overridden by the address
   if (first.picks.length > 0 && first.source !== "url") writePicksToUrl(first.picks); // opened without ?picks=: the address becomes shareable (replaceState, hash kept)
   mag.phase = first.picks.length === 0 ? "empty" : first.source === "url" ? "flying" : "ball";
   let hash = $state(location.hash);
@@ -45,6 +49,9 @@
         {/if}
       </nav>
     {/if}
+    {#if mag.picks.length > 0 && route.name === "home"}
+      <Button size="sm" onclick={() => (tuning.sheet = true)} data-testid="filters">{ui.feed.filters}</Button>
+    {/if}
     <a class="mg-link" href="/discovery/?cards=recommend">{ui.nav.discovery}</a>
     {#if mag.phase !== "empty"}
       <button class="mg-ball" type="button" aria-label={ui.ball.label} data-testid="ball" data-active={mag.phase === "ball" ? "1" : "0"} disabled={mag.phase !== "ball"} onclick={() => ctl.expand()}></button>
@@ -67,7 +74,10 @@
     <Packs />
   {:else if route.name === "presets"}
     <Presets />
-  {:else}
+  {:else if route.name === "rows"}
     <Home picks={mag.picks} />
+  {:else}
+    <Feed picks={mag.picks} />
+    <FilterSheet picks={mag.picks} />
   {/if}
 </Block>
