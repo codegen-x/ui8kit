@@ -195,7 +195,8 @@
       "compact": "Compact",
       "default": "Default",
       "comfortable": "Comfortable"
-    }
+    },
+    "mailPlaceholder": "name@example.com"
   },
   "find": {
     "heading": "Search styles",
@@ -365,5 +366,27 @@
       }
     },
     "pageLabel": "{title}, page {n}"
+  },
+  "theme": {
+    "button": "Theme",
+    "title": "Theme",
+    "note": "One skin, font, radius and density for the whole site. Feed cards and style pages keep their own design on top of it.",
+    "mode": "Mode",
+    "light": "Light",
+    "dark": "Dark",
+    "skin": "Skin",
+    "font": "Font",
+    "default": "Default",
+    "radius": "Default radius",
+    "resetRadius": "Reset radius",
+    "density": "Density",
+    "designSystem": "Design system",
+    "hideDesignSystem": "Hide design system",
+    "resetAll": "Reset theme",
+    "close": "Close",
+    "back": "Back",
+    "dsTitle": "Design system",
+    "dsNote": "Radius, density and shadow per element, for the whole site. The specimen shows the result.",
+    "dsReset": "Reset tokens"
   }
 }

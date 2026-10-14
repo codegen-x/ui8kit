@@ -5,9 +5,9 @@
     "block-root": 0,
     "raw-html": 0,
     "dynamic-tag": 0,
-    "raw-native-tag": 293,
-    "reactive-aria": 16,
-    "literal-text": 9
+    "raw-native-tag": 230,
+    "reactive-aria": 11,
+    "literal-text": 6
   },
   "counts": {
     "block-root": {},
@@ -18,7 +18,7 @@
       "src/parts/card.svelte": 7,
       "src/parts/collection-header.svelte": 12,
       "src/parts/collection.svelte": 8,
-      "src/parts/design-system.svelte": 93,
+      "src/parts/design-system.svelte": 30,
       "src/parts/heart.svelte": 3,
       "src/parts/home.svelte": 4,
       "src/parts/packs.svelte": 13,
@@ -35,7 +35,7 @@
       "src/templates/two-column.svelte": 8
     },
     "reactive-aria": {
-      "src/parts/design-system.svelte": 8,
+      "src/parts/design-system.svelte": 3,
       "src/parts/heart.svelte": 1,
       "src/parts/search.svelte": 4,
       "src/parts/style-page.svelte": 3
@@ -43,7 +43,7 @@
     "literal-text": {
       "src/App.svelte": 1,
       "src/parts/card.svelte": 2,
-      "src/parts/design-system.svelte": 5,
+      "src/parts/design-system.svelte": 2,
       "src/reference/App.svelte": 1
     }
   }

@@ -23,6 +23,18 @@ Sections, in order: Closest to your picks (cards in the visitor's skin, font and
     bun run test                  # includes src/lib/feed.test.ts
     bun run e2e:feed              # against the running :5190 server; html-validate on every state; SHOTS=<dir> saves screenshots
 
+## Theme (global layer)
+
+The header's **Theme** button (every page) opens a narrow side sheet (`src/theme`): light/dark mode, skin, font, default radius (0/4/8/12/16, Reset) and one density for all elements. **Design system** in its footer docks a wide panel flush on its left with the per-element radius, density and shadow and the specimen (the same `parts/ds-element-tokens.svelte` and `parts/ds-specimen.svelte` as the style page's Design system tab). Below 640 px the wide panel replaces the narrow one; Back returns. Saved on this device (`magazine:v1:theme`, logic and tests in `src/lib/global-theme.ts`); the mode stays the app's `xgen-theme`.
+
+Precedence, strongest first:
+
+1. **A card's own design.** Every feed card (and the style page) shows a style: its frame sets its own skin, radius and fonts, and the `.mg-shot` / `.mg-own` boundary in `magazine.css` resets the global per-element tokens, so nothing global leaks into a style.
+2. **The global theme**, on `.mg-root`: `data-skin`, `--radius`, `--font-sans`, the token variables and density attributes, inherited by the site chrome, the sheets and the specimen.
+3. **The defaults**: the kit's own values.
+
+The two layers are stored apart (the feed tune in the address, the theme in localStorage): changing one never rewrites the other (checked by `e2e:feed`).
+
 ## Picks persistence
 
 `?picks=` is the source of truth (first 10 valid styles win and are saved). Without it: `magazine:v1:picks` (`{"v":1,"picks":[10 keys]}`), mirrored to sessionStorage, the `mgpicks` cookie and memory (`@ui8kit/taste-data/picks-store`; only exactly 10 valid distinct keys are accepted, anything else is skipped), then Discovery's `discovery-picked-recommend`. A direct visit with stored picks rewrites the address to `?picks=…` (replaceState, hash kept). Reset clears every mirror. Checks: `bun test packages/taste-data/src/picks-store.test.ts`, and `bun run e2e:persist` against the running :5190 server (headless Chrome, one persistent profile).

@@ -16,7 +16,7 @@
 
 <!-- the kit Box has no fieldset: a group (checkboxes) or radiogroup (radios) named by its heading -->
 <Box class="mg-fieldset" role={multiple ? "group" : "radiogroup"} aria-labelledby={"mg-filter-" + name + "-label"} data-testid="filter-group" data-name={name}>
-  <Text tag="span" weight="semibold" class="mg-flegend" id={"mg-filter-" + name + "-label"}>{legend}<Text tag="span" class="mg-gcount">{ui.feed.sheet.selected.replace("{n}", String(selected.length))}</Text></Text>
+  <Text tag="span" weight="semibold" class="mg-flegend" id={"mg-filter-" + name + "-label"}>{legend}{#if multiple}<Text tag="span" class="mg-gcount">{ui.feed.sheet.selected.replace("{n}", String(selected.length))}</Text>{/if}</Text>
   <Box class="mg-options">
     {#each options as o (o.value)}
       <Label class="mg-option">

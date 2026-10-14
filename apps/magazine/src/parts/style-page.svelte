@@ -115,7 +115,7 @@
   const patLabel = (f: string) => (ui.style.patterns as Record<string, string>)[f] ?? f;
 </script>
 
-<main id="main-content" class="mg-main" data-testid="magazine-style">
+<main id="main-content" class="mg-main mg-own" data-testid="magazine-style">
   <p class="mg-crumbs"><a class="mg-link" href="#/">{ui.style.back}</a></p>
   {#if !parts}
     <h1 class="mg-h1" data-testid="style-key">{ui.style.invalid}</h1>

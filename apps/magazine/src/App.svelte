@@ -1,8 +1,7 @@
 <!-- The magazine frame: a header (title, link to Discovery, the ball, theme), the sphere (one canvas, see parts/sphere.svelte) and the views of the hash. -->
 <script lang="ts">
-  import { Block, Button, NavActions } from "@ui8kit/svelte-ui";
-  import { ui as shared } from "@ui8kit/app-shared/content";
-  import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
+  import { Block, Button } from "@ui8kit/svelte-ui";
+  import { family, type FontId } from "@ui8kit/taste-data/fonts";
   import ui from "../content/ui.json";
   import { resetAll } from "./lib/collections.svelte";
   import { ctl, loadPicks, mag, parseRoute, writePicksToUrl } from "./lib/state.svelte";
@@ -14,6 +13,9 @@
   import Feed from "./feed/feed.svelte";
   import FilterSheet from "./feed/filter-sheet.svelte";
   import { startTune, tuning } from "./lib/tune.svelte";
+  import { rootAttrs, rootStyle } from "./lib/global-theme";
+  import { gtheme } from "./lib/global-theme.svelte";
+  import ThemeSheet from "./theme/theme-sheet.svelte";
   import Sphere from "./parts/sphere.svelte";
   import StylePage from "./parts/style-page.svelte";
 
@@ -30,7 +32,8 @@
 
 <svelte:window onhashchange={() => (hash = location.hash)} />
 
-<Block class="mg-root">
+<!-- the global theme (lib/global-theme.ts) sits on the root: skin, radius, font and tokens for the whole site; styles override it -->
+<Block class="mg-root" style={rootStyle(gtheme.value, (f) => family(f as FontId))} {...rootAttrs(gtheme.value)} data-testid="magazine-root">
   <header class="mg-header" data-phase={mag.phase}>
     <a class="mg-title" href="#/">{ui.title}</a>
     <span class="mg-spacer"></span>
@@ -56,7 +59,7 @@
     {#if mag.phase !== "empty"}
       <button class="mg-ball" type="button" aria-label={ui.ball.label} data-testid="ball" data-active={mag.phase === "ball" ? "1" : "0"} disabled={mag.phase !== "ball"} onclick={() => ctl.expand()}></button>
     {/if}
-    <NavActions actions="none" themeLabel={shared.theme.toggle} ontheme={() => toggleTheme()} />
+    <Button size="sm" variant="outline" onclick={() => (gtheme.open = true)} data-testid="theme-open">{ui.theme.button}</Button>
   </header>
   <Sphere arrive={first.source === "url"} />
   {#if mag.picks.length === 0}
@@ -80,4 +83,5 @@
     <Feed picks={mag.picks} />
     <FilterSheet picks={mag.picks} />
   {/if}
+  <ThemeSheet />
 </Block>
