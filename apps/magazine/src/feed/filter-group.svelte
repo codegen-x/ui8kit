@@ -1,6 +1,7 @@
 <!-- One group of the Filters sheet: a fieldset of checkboxes (several values) or radios (one value), preselected from the draft. -->
 <script lang="ts">
   import { Box, Checkbox, Label, Radio, Text } from "@ui8kit/svelte-ui";
+  import ui from "../../content/ui.json";
 
   let { name, legend, options, selected, multiple, onchange }: {
     name: string; legend: string; options: Array<{ value: string; label: string }>; selected: string[]; multiple: boolean;
@@ -14,7 +15,7 @@
 </script>
 
 <Box tag="fieldset" class="mg-fieldset" data-testid="filter-group" data-name={name}>
-  <Text tag="legend" weight="semibold">{legend}</Text>
+  <Text tag="legend" weight="semibold" class="mg-legend">{legend}<Text tag="span" class="mg-count">{ui.feed.sheet.selected.replace("{n}", String(selected.length))}</Text></Text>
   <Box class="mg-options">
     {#each options as o (o.value)}
       <Label class="mg-option">

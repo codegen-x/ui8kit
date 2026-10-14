@@ -328,7 +328,8 @@
       "note": "Your current settings are selected. Change them and update the feed.",
       "update": "Update feed",
       "cancel": "Cancel",
-      "close": "Close filters"
+      "close": "Close filters",
+      "selected": "{n} selected"
     },
     "names": {
       "character": {

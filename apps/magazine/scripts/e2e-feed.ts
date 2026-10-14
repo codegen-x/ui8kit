@@ -64,6 +64,42 @@ try {
   ok(v.problems.length === 0, `html-validate: ${v.documents} documents, ${v.problems.length} problem(s)`);
   for (const m of v.problems) console.log("     " + m);
 
+  // the sheet at short viewports: full height, head and foot always in view, the body scrolls, a focused option scrolls into view
+  const SHEET_SHOTS = process.env.SHEET_SHOTS;
+  if (SHEET_SHOTS) mkdirSync(SHEET_SHOTS, { recursive: true });
+  for (const [w, h] of [[1440, 600], [390, 600], [390, 844], [1440, 900]] as const) {
+    for (const theme of ["light", "dark"] as const) {
+      if (theme === "dark" && !SHEET_SHOTS) continue;
+      const c = await browser.newContext({ httpCredentials: { username: process.env.PREVIEW_USER ?? "admin", password: process.env.PREVIEW_PASS ?? "admin" }, viewport: { width: w, height: h }, deviceScaleFactor: w < 500 ? 2 : 1 });
+      await c.addInitScript((t) => localStorage.setItem("xgen-theme", t), theme);
+      const x = await open("", c);
+      await x.locator("[data-testid=taste-filters]").click();
+      await x.waitForSelector("dialog[open][data-testid=filter-sheet]");
+      const g = await x.evaluate(() => {
+        const r = (s: string) => document.querySelector(s)!.getBoundingClientRect();
+        const body = document.querySelector("[data-testid=filter-body]")!;
+        return { sheet: r("dialog[open]"), head: r(".mg-sheet-head"), foot: r(".mg-sheet-foot"), scrolls: body.scrollHeight > body.clientHeight, oy: getComputedStyle(body).overflowY, vh: innerHeight };
+      });
+      const tag = `${w}x${h} ${theme}`;
+      ok(Math.abs(g.sheet.height - g.vh) < 2 && g.head.top >= 0 && g.foot.bottom <= g.vh + 1 && g.foot.top < g.vh, `${tag}: sheet full height, head and foot in view`);
+      ok(g.oy === "auto" && g.scrolls, `${tag}: body scrolls`);
+      const last = x.locator("[data-name=media] input").last();
+      await last.focus();
+      const seen = await last.evaluate((el) => { const b = el.getBoundingClientRect(), f = document.querySelector(".mg-sheet-foot")!.getBoundingClientRect(); return b.top >= 0 && b.bottom <= f.top + 1; });
+      ok(seen, `${tag}: a focused option scrolls into view above the foot`);
+      if (SHEET_SHOTS) {
+        const name = `sheet-${w}x${h}-${theme}`;
+        await x.evaluate(() => { const b = document.querySelector("[data-testid=filter-body]")!; b.scrollTop = 0; });
+        await x.waitForTimeout(300);
+        await x.screenshot({ path: join(SHEET_SHOTS, `${name}.png`) });
+        await x.evaluate(() => { const b = document.querySelector("[data-testid=filter-body]")!; b.scrollTop = (b.scrollHeight - b.clientHeight) / 2; });
+        await x.waitForTimeout(300);
+        await x.screenshot({ path: join(SHEET_SHOTS, `${name}-middle.png`) });
+      }
+      await c.close();
+    }
+  }
+
   if (SHOTS) {
     mkdirSync(SHOTS, { recursive: true });
     for (const [name, w, h] of [["desktop", 1440, 900], ["mobile", 390, 844]] as const) {

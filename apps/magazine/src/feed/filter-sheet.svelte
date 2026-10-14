@@ -36,12 +36,14 @@
 
 <Dialog id="mg-filter-sheet" variant="sheet" size="lg" class="mg-sheet" aria-labelledby="mg-sheet-title" onclose={() => (tuning.sheet = false)} data-testid="filter-sheet">
   {#if draft}
-    <Stack gap="4" class="mg-sheet-body">
-      <Group gap="2" justify="between">
+    <Box class="mg-sheet-head">
+      <Group gap="2" justify="between" align="center">
         <Title as={2} class="mg-h2" id="mg-sheet-title">{ui.feed.sheet.title}</Title>
-        <Button variant="ghost" size="sm" onclick={() => (tuning.sheet = false)}>{ui.feed.sheet.cancel}</Button>
+        <Button variant="ghost" size="sm" onclick={() => (tuning.sheet = false)} data-testid="filter-cancel">{ui.feed.sheet.cancel}</Button>
       </Group>
       <Text class="mg-note">{ui.feed.sheet.note}</Text>
+    </Box>
+    <Stack gap="0" class="mg-sheet-body" data-testid="filter-body">
       <FilterGroup name="comp" legend={G.comp} multiple options={opts("comp", COMPOSITIONS)} selected={draft.comp} onchange={(v) => set({ comp: v as Tune["comp"] })} />
       <FilterGroup name="character" legend={G.character} multiple options={opts("character", CHARACTERS)} selected={draft.character} onchange={(v) => set({ character: v as Tune["character"] })} />
       <FilterGroup name="density" legend={G.density} multiple options={opts("density", DENSITIES)} selected={draft.density} onchange={(v) => set({ density: v as Tune["density"] })} />
@@ -51,8 +53,9 @@
       <FilterGroup name="task" legend={G.task} multiple={false} options={opts("task", TASKS)} selected={[draft.task]} onchange={(v) => set({ task: v[0] as Tune["task"] })} />
       <FilterGroup name="media" legend={G.media} multiple options={opts("media", RECIPES)} selected={draft.media} onchange={(v) => set({ media: v as Tune["media"] })} />
     </Stack>
-    <Box class="mg-sheet-foot">
-      <Button onclick={update} data-testid="filter-update">{ui.feed.sheet.update}</Button>
-    </Box>
+    <Group gap="2" class="mg-sheet-foot">
+      <Button variant="outline" onclick={() => (draft = $state.snapshot(tuning.base))} data-testid="filter-reset">{ui.feed.reset}</Button>
+      <Button class="mg-grow" onclick={update} data-testid="filter-update">{ui.feed.sheet.update}</Button>
+    </Group>
   {/if}
 </Dialog>
