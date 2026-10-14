@@ -11,6 +11,7 @@ import { validateStates, type HtmlStates } from "../../../xgen/check/src/e2e/htm
 const BASE = process.env.MAG_BASE ?? "http://localhost:5190";
 const SHOTS = process.env.SHOTS;
 const PICKS = "t071-poster-dots~bubblegum~montserrat+open-sans~0,t094-dense-flat~amber-minimal~open-sans+open-sans~4,t143-poster-stripes~neo-brutalism~montserrat+open-sans~0,t053-fullbleed-geometric~bubblegum~onest+inter~4,t033-fullbleed-rings~doom-64~onest+inter~16,t081-poster-conic~neo-brutalism~onest+inter~8,t053-fullbleed-geometric~amber-minimal~onest+inter~4,t053-fullbleed-geometric~supabase~onest+inter~0,t093-fullbleed-dots~sky~montserrat+inter~12,t053-fullbleed-geometric~claude~onest+inter~8";
+const G_FONT = "Font";
 let failed = 0;
 const ok = (c: boolean, m: string) => { console.log((c ? "ok   " : "FAIL ") + m); if (!c) failed++; };
 const states: HtmlStates = new Map();
@@ -39,13 +40,18 @@ try {
   await p.locator("[data-testid=filters]").click();
   await p.waitForSelector("dialog[open][data-testid=filter-sheet]");
   ok(await p.locator("[data-name=radius] input:checked").getAttribute("value") === "4", "sheet preselects the derived radius");
+  ok(await p.locator("[role=group][aria-labelledby] input[type=checkbox]").count() > 0 && await p.locator("[role=radiogroup][aria-labelledby] input[type=radio]").count() > 0, "toggle groups keep checkbox and radio group semantics");
+  ok(await p.getByLabel(G_FONT).count() === 1, "font select has its label");
+  ok(await p.locator("[data-testid=filter-select-font]").inputValue() === "onest~inter", "font select preselects the derived pair");
   await keep(p, "sheet");
   await p.locator("[data-name=radius] input[value='16']").check();
   await p.locator("[data-name=task] input[value='shop']").check();
+  await p.locator("[data-testid=filter-select-font]").selectOption("manrope~manrope");
   await p.locator("[data-testid=filter-update]").click();
   await p.waitForSelector("dialog[open]", { state: "detached" }).catch(() => {});
   ok(!(await p.locator("dialog[open]").count()), "sheet closes on update");
   const s = await search(p);
+  ok(decodeURIComponent(s).includes("f=manrope~manrope"), "font select applies");
   ok(s.includes("r=16") && s.includes("task=shop") && s.startsWith("?picks="), `address keeps the tune: ${s.slice(-20)}`);
   ok((await p.locator("[data-section=closest] [data-testid=card]").first().getAttribute("data-key"))!.endsWith("|16"), "closest cards rerender with radius 16");
   ok(await p.locator("[data-testid=taste-bar]").getAttribute("data-tuned") === "1", "taste bar shows tuned");

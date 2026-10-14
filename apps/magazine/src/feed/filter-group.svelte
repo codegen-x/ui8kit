@@ -1,4 +1,4 @@
-<!-- One group of the Filters sheet: a fieldset of checkboxes (several values) or radios (one value), preselected from the draft. -->
+<!-- One group of the Filters sheet: a group of toggle buttons: checkboxes (several values) or radios (one value), preselected from the draft. -->
 <script lang="ts">
   import { Box, Checkbox, Label, Radio, Text } from "@ui8kit/svelte-ui";
   import ui from "../../content/ui.json";
@@ -14,8 +14,9 @@
   }
 </script>
 
-<Box tag="fieldset" class="mg-fieldset" data-testid="filter-group" data-name={name}>
-  <Text tag="legend" weight="semibold" class="mg-legend">{legend}<Text tag="span" class="mg-count">{ui.feed.sheet.selected.replace("{n}", String(selected.length))}</Text></Text>
+<!-- the kit Box has no fieldset: a group (checkboxes) or radiogroup (radios) named by its heading -->
+<Box class="mg-fieldset" role={multiple ? "group" : "radiogroup"} aria-labelledby={"mg-filter-" + name + "-label"} data-testid="filter-group" data-name={name}>
+  <Text tag="span" weight="semibold" class="mg-flegend" id={"mg-filter-" + name + "-label"}>{legend}<Text tag="span" class="mg-gcount">{ui.feed.sheet.selected.replace("{n}", String(selected.length))}</Text></Text>
   <Box class="mg-options">
     {#each options as o (o.value)}
       <Label class="mg-option">

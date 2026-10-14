@@ -9,6 +9,7 @@
   import { CHARACTERS, DENSITIES, TASKS, type Tune } from "../lib/feed";
   import { applyTune, tuning } from "../lib/tune.svelte";
   import FilterGroup from "./filter-group.svelte";
+  import FilterSelect from "./filter-select.svelte";
   import { fontLabel, valueLabel } from "./labels";
 
   let { picks }: { picks: StyleKey[] } = $props();
@@ -48,7 +49,7 @@
       <FilterGroup name="character" legend={G.character} multiple options={opts("character", CHARACTERS)} selected={draft.character} onchange={(v) => set({ character: v as Tune["character"] })} />
       <FilterGroup name="density" legend={G.density} multiple options={opts("density", DENSITIES)} selected={draft.density} onchange={(v) => set({ density: v as Tune["density"] })} />
       <FilterGroup name="skins" legend={G.skins} multiple options={opts("skins", SKIN_IDS)} selected={draft.skins} onchange={(v) => v.length && set({ skins: v as Tune["skins"] })} />
-      <FilterGroup name="font" legend={G.font} multiple={false} options={fontPairs} selected={[`${draft.font.display}~${draft.font.body}`]} onchange={(v) => { const [display, body] = v[0]!.split("~") as [FontId, FontId]; set({ font: { display, body } }); }} />
+      <FilterSelect name="font" legend={G.font} options={fontPairs} value={`${draft.font.display}~${draft.font.body}`} onchange={(v) => { const [display, body] = v.split("~") as [FontId, FontId]; set({ font: { display, body } }); }} />
       <FilterGroup name="radius" legend={G.radius} multiple={false} options={opts("radius", RADII)} selected={[String(draft.radius)]} onchange={(v) => set({ radius: Number(v[0]) as Tune["radius"] })} />
       <FilterGroup name="task" legend={G.task} multiple={false} options={opts("task", TASKS)} selected={[draft.task]} onchange={(v) => set({ task: v[0] as Tune["task"] })} />
       <FilterGroup name="media" legend={G.media} multiple options={opts("media", RECIPES)} selected={draft.media} onchange={(v) => set({ media: v as Tune["media"] })} />
