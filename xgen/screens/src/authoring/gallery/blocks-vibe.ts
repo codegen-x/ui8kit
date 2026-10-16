@@ -140,7 +140,7 @@ const usage = define({
   sample: {
     ...sec("usage"), text: v("usage.text"), usage: 5000,
     slider: { min: 100, max: 10000, label: v("usage.slider"), unit: v("usage.unit") },
-    price: { rate: 0.01, currency: v("usage.currency"), label: v("usage.estimate") },
+    price: { rate: 1, currency: v("usage.currency"), label: v("usage.estimate") },
     cta: v("usage.cta"), href: "#/",
   },
 });

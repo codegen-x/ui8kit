@@ -45,7 +45,7 @@ const comparisonTable = spec(`${O}comparison-table`, "ComparisonTable", "Plans, 
 const usageCalculator = spec(`${O}usage-calculator`, "UsageCalculator", "A price that follows a slider: the chosen amount of use, the price per unit and the estimate. The page keeps the amount and updates it on the `usage` event. Axes: layout (card, plain), ends (show: the smallest and the largest amount under the slider, hide), tone.", {
   records: {
     UsageSlider: requireFields(groupFields(["min", "number"], ["max", "number"], ["label", "string", "accessible name of the slider"], ["unit", "string", "template of an amount, e.g. `{0} credits`"]), "min", "max", "label", "unit"),
-    UsagePrice: requireFields(groupFields(["rate", "number", "price of one unit"], ["currency", "string"], ["label", "string", "name of the estimate"]), "rate", "currency", "label"),
+    UsagePrice: requireFields(groupFields(["rate", "number", "price of one unit in minor units (cents)"], ["currency", "string"], ["label", "string", "name of the estimate"]), "rate", "currency", "label"),
   },
   props: [
     id, title,
