@@ -63,7 +63,7 @@
       "record": "Step",
       "fields": {
         "id": "id",
-        "title": "title.en",
+        "title": "title",
         "text": "metadata.text.value",
         "icon": "metadata.icon.value"
       }

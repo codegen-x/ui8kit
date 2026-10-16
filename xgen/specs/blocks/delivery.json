@@ -81,7 +81,7 @@
       "record": "Feature",
       "fields": {
         "id": "id",
-        "title": "title.en",
+        "title": "title",
         "text": "metadata.text.value",
         "icon": "metadata.icon.value"
       }
@@ -93,7 +93,7 @@
       "record": "Zone",
       "fields": {
         "id": "id",
-        "name": "title.en",
+        "name": "title",
         "area": "metadata.area.value",
         "price": "metadata.price.value",
         "freeFrom": "metadata.freeFrom.value",

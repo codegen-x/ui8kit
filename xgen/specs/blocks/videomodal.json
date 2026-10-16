@@ -90,7 +90,7 @@
       "record": "Chapter",
       "fields": {
         "id": "id",
-        "title": "title.en",
+        "title": "title",
         "text": "metadata.text.value"
       }
     }

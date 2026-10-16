@@ -27,7 +27,7 @@ export function readPath(source: unknown, path: string): unknown {
   return cur;
 }
 
-/** Codex entries -> flat records by the `fields` mapping of the screen ("title.en", "metadata.price.value") */
+/** Codex entries -> flat records by the `fields` mapping of the screen ("title", "metadata.price.value") */
 export function fromCodex<T>(entries: readonly unknown[], fields: Record<string, string>): T[] {
   return entries.map((e) => Object.fromEntries(Object.entries(fields).map(([name, path]) => [name, readPath(e, path)])) as T);
 }

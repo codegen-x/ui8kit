@@ -179,7 +179,7 @@
       "record": "Question",
       "fields": {
         "id": "id",
-        "question": "title.en",
+        "question": "title",
         "answer": "metadata.answer.value",
         "category": "metadata.category.value",
         "icon": "metadata.icon.value"
@@ -192,7 +192,7 @@
       "record": "Feature",
       "fields": {
         "id": "id",
-        "title": "title.en",
+        "title": "title",
         "text": "metadata.text.value",
         "icon": "metadata.icon.value"
       }
@@ -204,7 +204,7 @@
       "record": "FaqTab",
       "fields": {
         "id": "id",
-        "title": "title.en",
+        "title": "title",
         "value": "metadata.value.value"
       }
     }

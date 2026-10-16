@@ -81,7 +81,7 @@
       "record": "Template",
       "fields": {
         "id": "id",
-        "title": "title.en",
+        "title": "title",
         "views": "metadata.views.value",
         "likes": "metadata.likes.value",
         "topic": "metadata.topic.value"
@@ -94,7 +94,7 @@
       "record": "Filter",
       "fields": {
         "id": "id",
-        "title": "title.en",
+        "title": "title",
         "value": "metadata.value.value",
         "icon": "metadata.icon.value"
       }

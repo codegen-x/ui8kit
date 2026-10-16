@@ -261,8 +261,8 @@
       "record": "CodeLine",
       "fields": {
         "id": "id",
-        "text": "title.en",
-        "kind": "metadata.kind.value"
+        "text": "title",
+        "kind": "metadata.line_kind.value"
       }
     },
     {
@@ -272,7 +272,7 @@
       "record": "Topic",
       "fields": {
         "id": "id",
-        "name": "title.en",
+        "name": "title",
         "icon": "metadata.icon.value"
       }
     },
@@ -283,7 +283,7 @@
       "record": "NavLink",
       "fields": {
         "id": "id",
-        "name": "title.en",
+        "name": "title",
         "icon": "metadata.icon.value"
       }
     }

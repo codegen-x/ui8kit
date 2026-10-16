@@ -30,7 +30,7 @@ test("the query string keeps only what differs from the defaults", () => {
 });
 
 test("fromCodex flattens entries by path", () => {
-  const out = fromCodex<{ title: string; price: number }>([{ title: { en: "X" }, metadata: { price: { value: 7 } } }], { title: "title.en", price: "metadata.price.value" });
+  const out = fromCodex<{ title: string; price: number }>([{ title: "X", locale: "en", metadata: { price: { value: 7 } } }], { title: "title", price: "metadata.price.value" });
   expect(out).toEqual([{ title: "X", price: 7 }]);
 });
 

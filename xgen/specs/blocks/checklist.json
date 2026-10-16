@@ -93,7 +93,7 @@
       "record": "Task",
       "fields": {
         "id": "id",
-        "title": "title.en",
+        "title": "title",
         "text": "metadata.text.value",
         "done": "metadata.done.value"
       }

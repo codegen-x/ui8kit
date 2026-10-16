@@ -139,7 +139,7 @@
       "record": "Feature",
       "fields": {
         "id": "id",
-        "title": "title.en",
+        "title": "title",
         "text": "metadata.text.value",
         "icon": "metadata.icon.value"
       }
@@ -151,7 +151,7 @@
       "record": "Stat",
       "fields": {
         "id": "id",
-        "label": "title.en",
+        "label": "title",
         "value": "metadata.value.value",
         "icon": "metadata.icon.value",
         "hint": "metadata.hint.value"

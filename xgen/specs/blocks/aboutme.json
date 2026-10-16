@@ -95,7 +95,7 @@
       "record": "Spec",
       "fields": {
         "id": "id",
-        "label": "title.en",
+        "label": "title",
         "value": "metadata.value.value"
       }
     },
@@ -106,7 +106,7 @@
       "record": "Skill",
       "fields": {
         "id": "id",
-        "label": "title.en",
+        "label": "title",
         "level": "metadata.level.value"
       }
     }

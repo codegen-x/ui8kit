@@ -62,7 +62,7 @@ export const plansScreen: ScreenSpec = {
   docs: "Collection -> record: a list of plans (search, sort, pager; all state in the URL) and the card of one plan. Data: the Codex fixture `plans`.",
   source: {
     collection: "plans", kind: "plan", record: "Plan",
-    fields: { id: "id", name: "title.en", tagline: "metadata.tagline.value", price: "metadata.price.value", currency: "metadata.currency.value", seats: "metadata.seats.value", storage: "metadata.storage.value", highlighted: "metadata.highlighted.value", status: "metadata.status.value", features: "metadata.features.value" },
+    fields: { id: "id", name: "title", tagline: "metadata.tagline.value", price: "metadata.price.value", currency: "metadata.currency.value", seats: "metadata.seats.value", storage: "metadata.storage.value", highlighted: "metadata.highlighted.value", status: "metadata.plan_status.value", features: "metadata.features.value" },
   },
   list: { columns, searchFields: ["name", "tagline"], pageSize: 5, defaultSort: "price:asc" },
   state: { q: "q", sort: "sort", page: "page" },

@@ -160,7 +160,7 @@
       "record": "Logo",
       "fields": {
         "id": "id",
-        "name": "title.en",
+        "name": "title",
         "icon": "metadata.icon.value"
       }
     },
@@ -171,7 +171,7 @@
       "record": "Feature",
       "fields": {
         "id": "id",
-        "title": "title.en",
+        "title": "title",
         "text": "metadata.text.value",
         "icon": "metadata.icon.value"
       }
@@ -183,7 +183,7 @@
       "record": "Stat",
       "fields": {
         "id": "id",
-        "label": "title.en",
+        "label": "title",
         "value": "metadata.value.value",
         "icon": "metadata.icon.value",
         "hint": "metadata.hint.value"
@@ -196,7 +196,7 @@
       "record": "Zone",
       "fields": {
         "id": "id",
-        "name": "title.en",
+        "name": "title",
         "area": "metadata.area.value",
         "price": "metadata.price.value",
         "freeFrom": "metadata.freeFrom.value",

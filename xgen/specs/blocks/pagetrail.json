@@ -99,7 +99,7 @@
       "record": "NavLink",
       "fields": {
         "id": "id",
-        "name": "title.en",
+        "name": "title",
         "icon": "metadata.icon.value"
       }
     },
@@ -110,7 +110,7 @@
       "record": "Stat",
       "fields": {
         "id": "id",
-        "label": "title.en",
+        "label": "title",
         "value": "metadata.value.value",
         "icon": "metadata.icon.value",
         "hint": "metadata.hint.value"

@@ -177,7 +177,7 @@
       "record": "MegaGroup",
       "fields": {
         "id": "id",
-        "title": "title.en",
+        "title": "title",
         "icon": "metadata.icon.value",
         "links": "metadata.links.value"
       }
@@ -189,7 +189,7 @@
       "record": "Stat",
       "fields": {
         "id": "id",
-        "label": "title.en",
+        "label": "title",
         "value": "metadata.value.value",
         "icon": "metadata.icon.value",
         "hint": "metadata.hint.value"
@@ -202,7 +202,7 @@
       "record": "Feature",
       "fields": {
         "id": "id",
-        "title": "title.en",
+        "title": "title",
         "text": "metadata.text.value",
         "icon": "metadata.icon.value"
       }
@@ -214,7 +214,7 @@
       "record": "Feature",
       "fields": {
         "id": "id",
-        "title": "title.en",
+        "title": "title",
         "text": "metadata.text.value",
         "icon": "metadata.icon.value"
       }
@@ -226,7 +226,7 @@
       "record": "Feature",
       "fields": {
         "id": "id",
-        "title": "title.en",
+        "title": "title",
         "text": "metadata.text.value",
         "icon": "metadata.icon.value"
       }

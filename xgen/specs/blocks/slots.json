@@ -86,7 +86,7 @@
       "record": "Day",
       "fields": {
         "id": "id",
-        "title": "title.en",
+        "title": "title",
         "note": "metadata.note.value",
         "slots": "metadata.slots.value",
         "closed": "metadata.closed.value"
@@ -99,7 +99,7 @@
       "record": "Zone",
       "fields": {
         "id": "id",
-        "name": "title.en",
+        "name": "title",
         "area": "metadata.area.value",
         "price": "metadata.price.value",
         "freeFrom": "metadata.freeFrom.value",

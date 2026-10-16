@@ -116,7 +116,7 @@
       "record": "MegaGroup",
       "fields": {
         "id": "id",
-        "title": "title.en",
+        "title": "title",
         "icon": "metadata.icon.value",
         "links": "metadata.links.value"
       }

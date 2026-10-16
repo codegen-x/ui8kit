@@ -193,7 +193,7 @@
       "record": "Quote",
       "fields": {
         "id": "id",
-        "author": "title.en",
+        "author": "title",
         "role": "metadata.role.value",
         "company": "metadata.company.value",
         "quote": "metadata.quote.value",
@@ -210,7 +210,7 @@
       "record": "Stat",
       "fields": {
         "id": "id",
-        "label": "title.en",
+        "label": "title",
         "value": "metadata.value.value",
         "icon": "metadata.icon.value",
         "hint": "metadata.hint.value"
@@ -223,7 +223,7 @@
       "record": "Logo",
       "fields": {
         "id": "id",
-        "name": "title.en",
+        "name": "title",
         "icon": "metadata.icon.value"
       }
     }

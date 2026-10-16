@@ -89,7 +89,7 @@
       "fields": {
         "id": "id",
         "date": "metadata.date.value",
-        "title": "title.en",
+        "title": "title",
         "text": "metadata.text.value",
         "tag": "metadata.tag.value"
       }

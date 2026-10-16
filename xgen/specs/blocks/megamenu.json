@@ -113,7 +113,7 @@
       "record": "NavLink",
       "fields": {
         "id": "id",
-        "name": "title.en",
+        "name": "title",
         "icon": "metadata.icon.value"
       }
     },
@@ -124,7 +124,7 @@
       "record": "MegaGroup",
       "fields": {
         "id": "id",
-        "title": "title.en",
+        "title": "title",
         "icon": "metadata.icon.value",
         "links": "metadata.links.value"
       }

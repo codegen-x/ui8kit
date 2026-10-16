@@ -92,8 +92,8 @@
       "record": "Lane",
       "fields": {
         "id": "id",
-        "key": "slug.en",
-        "title": "title.en"
+        "key": "slug",
+        "title": "title"
       }
     },
     {
@@ -104,7 +104,7 @@
       "fields": {
         "id": "id",
         "lane": "metadata.lane.value",
-        "title": "title.en",
+        "title": "title",
         "tag": "metadata.tag.value",
         "who": "metadata.who.value"
       }

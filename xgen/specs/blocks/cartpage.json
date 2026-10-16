@@ -99,7 +99,7 @@
       "record": "CartLine",
       "fields": {
         "id": "id",
-        "name": "title.en",
+        "name": "title",
         "variant": "metadata.variant.value",
         "price": "metadata.price.value",
         "currency": "metadata.currency.value",
@@ -113,7 +113,7 @@
       "record": "SummaryRow",
       "fields": {
         "id": "id",
-        "label": "title.en",
+        "label": "title",
         "amount": "metadata.amount.value",
         "currency": "metadata.currency.value",
         "strong": "metadata.strong.value"
@@ -126,7 +126,7 @@
       "record": "Promo",
       "fields": {
         "id": "id",
-        "code": "title.en"
+        "code": "title"
       }
     }
   ],

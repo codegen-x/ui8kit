@@ -104,7 +104,7 @@
       "record": "Faq",
       "fields": {
         "id": "id",
-        "question": "title.en",
+        "question": "title",
         "answer": "metadata.answer.value",
         "category": "metadata.category.value"
       }
@@ -116,7 +116,7 @@
       "record": "FaqTab",
       "fields": {
         "id": "id",
-        "title": "title.en",
+        "title": "title",
         "value": "metadata.value.value"
       }
     }

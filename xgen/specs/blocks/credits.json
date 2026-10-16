@@ -77,7 +77,7 @@
       "record": "Pack",
       "fields": {
         "id": "id",
-        "name": "title.en",
+        "name": "title",
         "credits": "metadata.credits.value",
         "price": "metadata.price.value",
         "currency": "metadata.currency.value",

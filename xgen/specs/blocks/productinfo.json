@@ -80,7 +80,7 @@
       "record": "Detail",
       "fields": {
         "id": "id",
-        "title": "title.en",
+        "title": "title",
         "text": "metadata.text.value"
       }
     },
@@ -91,7 +91,7 @@
       "record": "Spec",
       "fields": {
         "id": "id",
-        "label": "title.en",
+        "label": "title",
         "value": "metadata.value.value"
       }
     }

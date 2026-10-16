@@ -395,7 +395,7 @@
       "record": "Stat",
       "fields": {
         "id": "id",
-        "label": "title.en",
+        "label": "title",
         "value": "metadata.value.value",
         "icon": "metadata.icon.value",
         "hint": "metadata.hint.value"
@@ -408,7 +408,7 @@
       "record": "Step",
       "fields": {
         "id": "id",
-        "title": "title.en",
+        "title": "title",
         "text": "metadata.text.value",
         "icon": "metadata.icon.value"
       }
@@ -420,8 +420,8 @@
       "record": "Post",
       "fields": {
         "id": "id",
-        "title": "title.en",
-        "excerpt": "metadata.excerpt.value",
+        "title": "title",
+        "excerpt": "excerpt",
         "category": "metadata.category.value",
         "author": "metadata.author.value",
         "date": "metadata.date.value",
@@ -436,7 +436,7 @@
       "record": "Category",
       "fields": {
         "id": "id",
-        "name": "title.en",
+        "name": "title",
         "icon": "metadata.icon.value",
         "count": "metadata.count.value"
       }
@@ -448,7 +448,7 @@
       "record": "Feature",
       "fields": {
         "id": "id",
-        "title": "title.en",
+        "title": "title",
         "text": "metadata.text.value",
         "icon": "metadata.icon.value"
       }
@@ -460,7 +460,7 @@
       "record": "Review",
       "fields": {
         "id": "id",
-        "title": "title.en",
+        "title": "title",
         "author": "metadata.author.value",
         "rating": "metadata.rating.value",
         "text": "metadata.text.value",

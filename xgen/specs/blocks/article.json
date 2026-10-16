@@ -96,7 +96,7 @@
       "record": "Section",
       "fields": {
         "id": "id",
-        "title": "title.en",
+        "title": "title",
         "text": "metadata.text.value",
         "quote": "metadata.quote.value"
       }

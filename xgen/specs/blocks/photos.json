@@ -124,7 +124,7 @@
       "record": "Photo",
       "fields": {
         "id": "id",
-        "title": "title.en",
+        "title": "title",
         "tag": "metadata.tag.value",
         "size": "metadata.size.value"
       }

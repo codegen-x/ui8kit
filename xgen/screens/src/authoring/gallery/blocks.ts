@@ -117,7 +117,7 @@ const plan = define({
   key: "plan", theme: "marketing", group: "pricing", name: "Plan", docs: "One plan as a card.", fit: "card",
   organism: "PricingCard", axes: ["emphasis", "density"], data: [d.tiers],
   variants: [["standard", "Standard"], ["flat", "No emphasis", { emphasis: "off" }], ["compact", "Compact", { density: "compact" }]],
-  sample: { plan: { op: "pick", args: [ref("tiers"), "plan-team"] }, labels: t("pricing") },
+  sample: { plan: { op: "pick", args: [ref("tiers"), "tier-team"] }, labels: t("pricing") },
 });
 
 const faq = define({

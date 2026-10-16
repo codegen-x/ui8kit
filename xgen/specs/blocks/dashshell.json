@@ -307,7 +307,7 @@
       "record": "NavLink",
       "fields": {
         "id": "id",
-        "name": "title.en",
+        "name": "title",
         "icon": "metadata.icon.value"
       }
     },
@@ -318,7 +318,7 @@
       "record": "NavLink",
       "fields": {
         "id": "id",
-        "name": "title.en",
+        "name": "title",
         "icon": "metadata.icon.value"
       }
     },
@@ -329,7 +329,7 @@
       "record": "NavLink",
       "fields": {
         "id": "id",
-        "name": "title.en",
+        "name": "title",
         "icon": "metadata.icon.value"
       }
     }

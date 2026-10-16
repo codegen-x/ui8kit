@@ -97,7 +97,7 @@
       "record": "Contrast",
       "fields": {
         "id": "id",
-        "title": "title.en",
+        "title": "title",
         "before": "metadata.before.value",
         "after": "metadata.after.value"
       }

@@ -65,7 +65,7 @@
       "record": "Point",
       "fields": {
         "id": "id",
-        "label": "title.en",
+        "label": "title",
         "value": "metadata.value.value"
       }
     }

@@ -63,7 +63,7 @@
       "record": "Event",
       "fields": {
         "id": "id",
-        "title": "title.en",
+        "title": "title",
         "text": "metadata.text.value",
         "time": "metadata.time.value",
         "tone": "metadata.tone.value"

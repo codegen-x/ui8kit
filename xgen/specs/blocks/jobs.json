@@ -120,7 +120,7 @@
       "record": "Job",
       "fields": {
         "id": "id",
-        "title": "title.en",
+        "title": "title",
         "dept": "metadata.dept.value",
         "location": "metadata.location.value",
         "type": "metadata.type.value",
@@ -135,7 +135,7 @@
       "record": "Department",
       "fields": {
         "id": "id",
-        "name": "title.en"
+        "name": "title"
       }
     }
   ],

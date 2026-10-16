@@ -99,7 +99,7 @@
       "record": "CompareRow",
       "fields": {
         "id": "id",
-        "label": "title.en",
+        "label": "title",
         "a": "metadata.a.value",
         "b": "metadata.b.value",
         "c": "metadata.c.value"
@@ -112,7 +112,7 @@
       "record": "CompareRow",
       "fields": {
         "id": "id",
-        "label": "title.en",
+        "label": "title",
         "a": "metadata.a.value",
         "b": "metadata.b.value",
         "c": "metadata.c.value"
