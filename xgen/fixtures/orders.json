@@ -12,10 +12,10 @@
       "title": "Order 1042",
       "metadata": {
         "date": {
-          "value": "Mar 28, 2026"
+          "value": "2026-03-28T10:00:00Z"
         },
         "total": {
-          "value": 324
+          "value": 32400
         },
         "currency": {
           "value": "USD"
@@ -42,10 +42,10 @@
       "title": "Order 1041",
       "metadata": {
         "date": {
-          "value": "Mar 21, 2026"
+          "value": "2026-03-21T10:00:00Z"
         },
         "total": {
-          "value": 89
+          "value": 8900
         },
         "currency": {
           "value": "USD"
@@ -72,10 +72,10 @@
       "title": "Order 1038",
       "metadata": {
         "date": {
-          "value": "Mar 09, 2026"
+          "value": "2026-03-09T10:00:00Z"
         },
         "total": {
-          "value": 199
+          "value": 19900
         },
         "currency": {
           "value": "USD"
@@ -102,10 +102,10 @@
       "title": "Order 1031",
       "metadata": {
         "date": {
-          "value": "Feb 24, 2026"
+          "value": "2026-02-24T10:00:00Z"
         },
         "total": {
-          "value": 50
+          "value": 5000
         },
         "currency": {
           "value": "USD"

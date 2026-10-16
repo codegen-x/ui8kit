@@ -61,7 +61,7 @@
           "value": "For a single maker"
         },
         "price": {
-          "value": 9
+          "value": 900
         },
         "currency": {
           "value": "USD"
@@ -87,7 +87,7 @@
           ]
         },
         "yearly": {
-          "value": 90
+          "value": 9000
         }
       },
       "version": 1,
@@ -108,7 +108,7 @@
           "value": "For small teams"
         },
         "price": {
-          "value": 19
+          "value": 1900
         },
         "currency": {
           "value": "USD"
@@ -133,7 +133,7 @@
           ]
         },
         "yearly": {
-          "value": 190
+          "value": 19000
         }
       },
       "version": 1,
@@ -154,7 +154,7 @@
           "value": "For growing teams"
         },
         "price": {
-          "value": 39
+          "value": 3900
         },
         "currency": {
           "value": "USD"
@@ -180,7 +180,7 @@
           ]
         },
         "yearly": {
-          "value": 390
+          "value": 39000
         }
       },
       "version": 1,
@@ -201,7 +201,7 @@
           "value": "For teams that ship weekly"
         },
         "price": {
-          "value": 59
+          "value": 5900
         },
         "currency": {
           "value": "USD"
@@ -227,7 +227,7 @@
           ]
         },
         "yearly": {
-          "value": 590
+          "value": 59000
         }
       },
       "version": 1,
@@ -248,7 +248,7 @@
           "value": "For departments"
         },
         "price": {
-          "value": 99
+          "value": 9900
         },
         "currency": {
           "value": "USD"
@@ -275,7 +275,7 @@
           ]
         },
         "yearly": {
-          "value": 990
+          "value": 99000
         }
       },
       "version": 1,
@@ -296,7 +296,7 @@
           "value": "For power users"
         },
         "price": {
-          "value": 29
+          "value": 2900
         },
         "currency": {
           "value": "USD"
@@ -321,7 +321,7 @@
           ]
         },
         "yearly": {
-          "value": 290
+          "value": 29000
         }
       },
       "version": 1,
@@ -342,7 +342,7 @@
           "value": "For high traffic"
         },
         "price": {
-          "value": 199
+          "value": 19900
         },
         "currency": {
           "value": "USD"
@@ -368,7 +368,7 @@
           ]
         },
         "yearly": {
-          "value": 1990
+          "value": 199000
         }
       },
       "version": 1,
@@ -389,7 +389,7 @@
           "value": "For agencies"
         },
         "price": {
-          "value": 149
+          "value": 14900
         },
         "currency": {
           "value": "USD"
@@ -415,7 +415,7 @@
           ]
         },
         "yearly": {
-          "value": 1490
+          "value": 149000
         }
       },
       "version": 1,
@@ -436,7 +436,7 @@
           "value": "For large companies"
         },
         "price": {
-          "value": 499
+          "value": 49900
         },
         "currency": {
           "value": "USD"
@@ -462,7 +462,7 @@
           ]
         },
         "yearly": {
-          "value": 4990
+          "value": 499000
         }
       },
       "version": 1,
@@ -483,7 +483,7 @@
           "value": "Kept for old accounts"
         },
         "price": {
-          "value": 5
+          "value": 500
         },
         "currency": {
           "value": "USD"
@@ -507,7 +507,7 @@
           ]
         },
         "yearly": {
-          "value": 50
+          "value": 5000
         }
       },
       "version": 1,
@@ -528,7 +528,7 @@
           "value": "Kept for old accounts"
         },
         "price": {
-          "value": 25
+          "value": 2500
         },
         "currency": {
           "value": "USD"
@@ -553,7 +553,7 @@
           ]
         },
         "yearly": {
-          "value": 250
+          "value": 25000
         }
       },
       "version": 1,

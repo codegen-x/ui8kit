@@ -15,7 +15,7 @@
           "value": "Billing changed by Dana Pierce."
         },
         "time": {
-          "value": "2 min ago"
+          "value": "2026-03-30T11:58:00Z"
         },
         "tone": {
           "value": "green"
@@ -39,7 +39,7 @@
           "value": "Ravi Menon accepted the invitation."
         },
         "time": {
-          "value": "1 h ago"
+          "value": "2026-03-30T11:00:00Z"
         },
         "tone": {
           "value": "blue"
@@ -63,7 +63,7 @@
           "value": "Customers.csv is ready to download."
         },
         "time": {
-          "value": "Yesterday"
+          "value": "2026-03-29T12:00:00Z"
         },
         "tone": {
           "value": "gray"
@@ -87,7 +87,7 @@
           "value": "The card ending 4242 was declined."
         },
         "time": {
-          "value": "2 days ago"
+          "value": "2026-03-28T12:00:00Z"
         },
         "tone": {
           "value": "red"
