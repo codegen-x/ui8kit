@@ -2,6 +2,7 @@
 // (blockNode: sample, variant axes, case copy, id, level 2, landmark label), evaluated to JSON over the dictionary
 // and the fixtures. Both runtimes get the same JSON; event handlers are left out (the templ output is static).
 import { blockKey, blockNode, galleryOf, isGroup, isOp, isRef, type Inputs, type OrganismSpec, type Value } from "@ui8kit/xgen-screens";
+import { readPath } from "../../../runtimes/core/assets/app/core";
 import { tpl, fmtMoney, fmtNumber, at, pageWindow, fitCols, uniqLabel } from "../../../runtimes/core/assets/ts/format";
 
 export interface OrgCase { label: string; organism: string; props: Record<string, unknown> }
@@ -63,7 +64,7 @@ export function blockCases(inputs: Inputs, emitted: Set<string>): { cases: OrgCa
   const cases: OrgCase[] = [], skipped: string[] = [];
   for (const b of galleryOf(inputs.blocks.map((x) => x.value))) {
     const scope: Scope = { ui: inputs.dictionary.value };
-    for (const d of b.data) scope[d.as] = (collections.get(d.collection) ?? []).map((e) => Object.fromEntries(Object.entries(d.fields).map(([n, p]) => [n, get(e, p.split("."))])));
+    for (const d of b.data) scope[d.as] = (collections.get(d.collection) ?? []).map((e) => Object.fromEntries(Object.entries(d.fields).map(([n, p]) => [n, readPath(e, p)])));
     for (const v of b.variants) {
       const key = blockKey(b);
       const extra: Record<string, Value> = { id: `${key}-${v.id}`, level: 2, landmarkLabel: `${key} ${v.id}` };

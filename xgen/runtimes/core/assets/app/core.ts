@@ -18,18 +18,63 @@ export interface ListView<T> {
   qs: string;
 }
 
-export function readPath(source: unknown, path: string): unknown {
+/**
+ * The clock of relative dates. Fixtures are static, so the kit renders them against a fixed instant: every screen,
+ * runtime and screenshot shows the same "2 min ago". A live app passes its own `now` to `fromCodex`.
+ */
+export const DEMO_NOW = "2026-03-30T12:00:00Z";
+
+const dateFmt = new Intl.DateTimeFormat("en-US", { month: "short", day: "2-digit", year: "numeric", timeZone: "UTC" });
+/** an RFC 3339 date-time -> "Mar 09, 2026" (UTC); a value that is not a date stays as it is */
+export function fmtDate(iso: unknown): unknown {
+  const t = typeof iso === "string" ? Date.parse(iso) : NaN;
+  return Number.isNaN(t) ? iso : dateFmt.format(t);
+}
+
+export type AgoStyle = "ago" | "ago-days" | "ago-short";
+/**
+ * an RFC 3339 date-time -> time before `now`:
+ *   ago        "2 min ago", "1 h ago", "Yesterday", "3 days ago", "2 weeks ago"   (activity feeds)
+ *   ago-days   "1 day ago", "5 days ago", "1 week ago", "2 weeks ago"            (postings)
+ *   ago-short  "2 min ago", "5 h ago", "3 d ago"                                  (compact cards)
+ */
+export function fmtAgo(iso: unknown, now: string | number = DEMO_NOW, style: AgoStyle = "ago"): unknown {
+  const t = typeof iso === "string" ? Date.parse(iso) : NaN;
+  const ref = typeof now === "number" ? now : Date.parse(now);
+  if (Number.isNaN(t) || Number.isNaN(ref)) return iso;
+  const min = Math.max(0, Math.round((ref - t) / 60000));
+  const h = Math.floor(min / 60), d = Math.floor(min / 1440), w = Math.floor(d / 7);
+  const pl = (n: number, one: string) => `${n} ${one}${n === 1 ? "" : "s"} ago`;
+  if (style === "ago-days") return d < 7 ? pl(Math.max(d, 1), "day") : pl(w, "week");
+  if (min < 60) return `${min} min ago`;
+  if (h < 24) return `${h} h ago`;
+  if (style === "ago-short") return `${d} d ago`;
+  if (d === 1) return "Yesterday";
+  return d < 7 ? pl(d, "day") : pl(w, "week");
+}
+
+export interface ReadOptions { now?: string | number }
+
+/**
+ * a value by a dotted path, with an optional formatter after a pipe:
+ *   "metadata.date.value|date"  -> fmtDate      "metadata.time.value|ago" (or ago-days, ago-short) -> fmtAgo
+ */
+export function readPath(source: unknown, path: string, opts: ReadOptions = {}): unknown {
+  const [dotted, pipe] = path.split("|") as [string, string | undefined];
   let cur: unknown = source;
-  for (const part of path.split(".")) {
+  for (const part of dotted.split(".")) {
     if (cur === null || typeof cur !== "object") return undefined;
     cur = (cur as Record<string, unknown>)[part];
   }
-  return cur;
+  if (pipe === undefined || cur === undefined) return cur;
+  if (pipe === "date") return fmtDate(cur);
+  if (pipe === "ago" || pipe === "ago-days" || pipe === "ago-short") return fmtAgo(cur, opts.now ?? DEMO_NOW, pipe);
+  throw new Error(`readPath: unknown formatter "${pipe}" in "${path}"`);
 }
 
-/** Codex entries -> flat records by the `fields` mapping of the screen ("title", "metadata.price.value") */
-export function fromCodex<T>(entries: readonly unknown[], fields: Record<string, string>): T[] {
-  return entries.map((e) => Object.fromEntries(Object.entries(fields).map(([name, path]) => [name, readPath(e, path)])) as T);
+/** Codex entries -> flat records by the `fields` mapping of the screen ("title", "metadata.price.value", "metadata.date.value|date") */
+export function fromCodex<T>(entries: readonly unknown[], fields: Record<string, string>, opts: ReadOptions = {}): T[] {
+  return entries.map((e) => Object.fromEntries(Object.entries(fields).map(([name, path]) => [name, readPath(e, path, opts)])) as T);
 }
 
 export function parseSort(sort: string | undefined, fallback: string): { field: string; dir: SortDir } {

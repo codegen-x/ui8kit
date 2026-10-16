@@ -332,13 +332,26 @@ final class Runtime
 
     private const CURRENCY = ['USD' => '$', 'EUR' => "\u{20AC}", 'GBP' => "\u{00A3}", 'JPY' => "\u{00A5}", 'INR' => "\u{20B9}", 'CAD' => 'CA$', 'AUD' => 'A$'];
 
-    /** Intl.NumberFormat("en-US", {style: "currency", maximumFractionDigits: 0}) */
+    /** digits of the minor unit (ISO 4217): 2, or 0 for JPY and KRW */
+    public static function minorDigits(string $c): int
+    {
+        return in_array($c, ['JPY', 'KRW'], true) ? 0 : 2;
+    }
+
+    /** integer minor units (Codex v0.4: 1250 = 12.50) -> "$12.50"; whole amounts without the fraction: 149900 -> "$1,499" */
     public static function money(mixed $amount, mixed $currency): string
     {
         $c = self::s($currency);
         $sym = self::CURRENCY[$c] ?? $c . "\u{00A0}";
-        $f = round(self::n($amount));
-        return $f < 0 ? '-' . $sym . self::group(-$f, 0) : $sym . self::group($f, 0);
+        $minor = (int) round(self::n($amount));
+        $sign = $minor < 0 ? '-' : '';
+        $minor = abs($minor);
+        $d = self::minorDigits($c);
+        $unit = 10 ** $d;
+        $whole = intdiv($minor, $unit);
+        $rest = $minor % $unit;
+        $out = $sign . $sym . self::group((float) $whole, 0);
+        return $d > 0 && $rest !== 0 ? $out . '.' . str_pad((string) $rest, $d, '0', STR_PAD_LEFT) : $out;
     }
 
     /** a content word by key, the key itself when the dictionary has no entry */

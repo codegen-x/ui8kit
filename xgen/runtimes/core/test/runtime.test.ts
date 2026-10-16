@@ -70,7 +70,11 @@ test("screen actions only change the URL and keep the list state", () => {
 
 test("formatters", () => {
   expect(tpl("{0} of {1}", 2, 5)).toBe("2 of 5");
-  expect(fmtMoney(1499, "USD")).toBe("$1,499");
+  expect(fmtMoney(149900, "USD")).toBe("$1,499");
+  expect(fmtMoney(1250, "USD")).toBe("$12.50");
+  expect(fmtMoney(5, "EUR")).toBe("€0.05");
+  expect(fmtMoney(-2500, "USD")).toBe("-$25");
+  expect(fmtMoney(1500, "JPY")).toBe("¥1,500");
   expect(fmtNumber(12000)).toBe("12,000");
   expect(at({ a: "A" }, "a")).toBe("A");
   expect(at({ a: "A" }, "b")).toBe("b");
@@ -82,4 +86,19 @@ test("uniqLabel drops a segment equal to the one before it", async () => {
   expect(uniqLabel("Main navigation, main navigation, Bar")).toBe("Main navigation, Bar");
   expect(uniqLabel("Footer, Centered, Footer")).toBe("Footer, Centered, Footer");
   expect(uniqLabel(undefined)).toBe("");
+});
+
+test("dates: absolute, relative against the demo clock, pipes in field paths", async () => {
+  const { fmtDate, fmtAgo, readPath, DEMO_NOW } = await import("../assets/app/core");
+  expect(fmtDate("2026-03-09T10:00:00Z")).toBe("Mar 09, 2026");
+  expect(fmtDate("not a date")).toBe("not a date");
+  const before = (min: number) => new Date(Date.parse(DEMO_NOW) - min * 60000).toISOString();
+  expect([2, 60, 1440, 2880, 20160].map((m) => fmtAgo(before(m)))).toEqual(["2 min ago", "1 h ago", "Yesterday", "2 days ago", "2 weeks ago"]);
+  expect([1440, 7200, 10080].map((m) => fmtAgo(before(m), DEMO_NOW, "ago-days"))).toEqual(["1 day ago", "5 days ago", "1 week ago"]);
+  expect([300, 4320].map((m) => fmtAgo(before(m), DEMO_NOW, "ago-short"))).toEqual(["5 h ago", "3 d ago"]);
+  const e = { metadata: { date: { value: "2026-03-18T10:00:00Z" } } };
+  expect(readPath(e, "metadata.date.value|date")).toBe("Mar 18, 2026");
+  expect(readPath(e, "metadata.date.value|ago", { now: "2026-03-18T10:05:00Z" })).toBe("5 min ago");
+  expect(readPath(e, "metadata.nope.value|date")).toBeUndefined();
+  expect(() => readPath(e, "metadata.date.value|weird")).toThrow();
 });

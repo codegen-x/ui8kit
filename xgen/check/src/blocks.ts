@@ -126,7 +126,7 @@ export function checkBlocks(plan: Plan): CheckResult {
       if (!col.value.entries.length) problems.push(`${at}: fixture ${d.collection} is empty`);
       if (!org.records[d.record]) { if (!(plan.inputs.organisms.some((o) => o.value.records[d.record]))) problems.push(`${at}: no record ${d.record}`); }
       for (const [field, path] of Object.entries(d.fields)) for (const e of col.value.entries) {
-        const v = path.split(".").reduce<unknown>((x, k) => (x as Record<string, unknown> | undefined)?.[k], e);
+        const v = path.split("|")[0]!.split(".").reduce<unknown>((x, k) => (x as Record<string, unknown> | undefined)?.[k], e);
         if (v === undefined) problems.push(`${at}: ${d.collection}/${e.id} has no ${path} (field ${field})`);
         if (field === "icon" && typeof v === "string" && !icons.has(v)) problems.push(`${at}: ${d.collection}/${e.id}: icon ${v} is not a Lucide glyph of the registry`);
       }
