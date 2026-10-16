@@ -4,15 +4,12 @@
   "entries": [
     {
       "id": "chapter-intro",
+      "locale": "en",
       "kind": "chapter",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "intro"
-      },
-      "title": {
-        "en": "Welcome"
-      },
+      "slug": "intro",
+      "title": "Welcome",
       "metadata": {
         "text": {
           "value": "0:00"
@@ -25,15 +22,12 @@
     },
     {
       "id": "chapter-blocks",
+      "locale": "en",
       "kind": "chapter",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "blocks"
-      },
-      "title": {
-        "en": "Add a block"
-      },
+      "slug": "blocks",
+      "title": "Add a block",
       "metadata": {
         "text": {
           "value": "1:10"
@@ -46,15 +40,12 @@
     },
     {
       "id": "chapter-publish",
+      "locale": "en",
       "kind": "chapter",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "publish"
-      },
-      "title": {
-        "en": "Publish the page"
-      },
+      "slug": "publish",
+      "title": "Publish the page",
       "metadata": {
         "text": {
           "value": "3:45"

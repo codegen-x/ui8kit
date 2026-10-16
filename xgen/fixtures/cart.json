@@ -4,15 +4,12 @@
   "entries": [
     {
       "id": "cartline-lamp",
+      "locale": "en",
       "kind": "cartline",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "lamp"
-      },
-      "title": {
-        "en": "Arc desk lamp"
-      },
+      "slug": "lamp",
+      "title": "Arc desk lamp",
       "metadata": {
         "variant": {
           "value": "Brass"
@@ -34,15 +31,12 @@
     },
     {
       "id": "cartline-bag",
+      "locale": "en",
       "kind": "cartline",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "bag"
-      },
-      "title": {
-        "en": "Field backpack"
-      },
+      "slug": "bag",
+      "title": "Field backpack",
       "metadata": {
         "variant": {
           "value": "Olive"
@@ -64,15 +58,12 @@
     },
     {
       "id": "cartline-mat",
+      "locale": "en",
       "kind": "cartline",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "mat"
-      },
-      "title": {
-        "en": "Desk mat"
-      },
+      "slug": "mat",
+      "title": "Desk mat",
       "metadata": {
         "variant": {
           "value": "Charcoal"

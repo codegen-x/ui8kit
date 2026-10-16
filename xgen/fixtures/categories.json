@@ -4,15 +4,12 @@
   "entries": [
     {
       "id": "category-all",
+      "locale": "en",
       "kind": "category",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "all"
-      },
-      "title": {
-        "en": "All products"
-      },
+      "slug": "all",
+      "title": "All products",
       "metadata": {
         "icon": {
           "value": "layout-grid"
@@ -28,15 +25,12 @@
     },
     {
       "id": "category-desk",
+      "locale": "en",
       "kind": "category",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "desk"
-      },
-      "title": {
-        "en": "Desk"
-      },
+      "slug": "desk",
+      "title": "Desk",
       "metadata": {
         "icon": {
           "value": "lamp-desk"
@@ -52,15 +46,12 @@
     },
     {
       "id": "category-bags",
+      "locale": "en",
       "kind": "category",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "bags"
-      },
-      "title": {
-        "en": "Bags"
-      },
+      "slug": "bags",
+      "title": "Bags",
       "metadata": {
         "icon": {
           "value": "briefcase"
@@ -76,15 +67,12 @@
     },
     {
       "id": "category-audio",
+      "locale": "en",
       "kind": "category",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "audio"
-      },
-      "title": {
-        "en": "Audio"
-      },
+      "slug": "audio",
+      "title": "Audio",
       "metadata": {
         "icon": {
           "value": "headphones"
@@ -100,15 +88,12 @@
     },
     {
       "id": "category-light",
+      "locale": "en",
       "kind": "category",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "light"
-      },
-      "title": {
-        "en": "Lighting"
-      },
+      "slug": "light",
+      "title": "Lighting",
       "metadata": {
         "icon": {
           "value": "lightbulb"
@@ -124,15 +109,12 @@
     },
     {
       "id": "category-gifts",
+      "locale": "en",
       "kind": "category",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "gifts"
-      },
-      "title": {
-        "en": "Gifts"
-      },
+      "slug": "gifts",
+      "title": "Gifts",
       "metadata": {
         "icon": {
           "value": "gift"

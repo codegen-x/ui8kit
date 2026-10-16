@@ -4,15 +4,12 @@
   "entries": [
     {
       "id": "group-product",
+      "locale": "en",
       "kind": "group",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "product"
-      },
-      "title": {
-        "en": "Product"
-      },
+      "slug": "product",
+      "title": "Product",
       "metadata": {
         "icon": {
           "value": "layers"
@@ -33,15 +30,12 @@
     },
     {
       "id": "group-company",
+      "locale": "en",
       "kind": "group",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "company"
-      },
-      "title": {
-        "en": "Company"
-      },
+      "slug": "company",
+      "title": "Company",
       "metadata": {
         "icon": {
           "value": "building"
@@ -62,15 +56,12 @@
     },
     {
       "id": "group-resources",
+      "locale": "en",
       "kind": "group",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "resources"
-      },
-      "title": {
-        "en": "Resources"
-      },
+      "slug": "resources",
+      "title": "Resources",
       "metadata": {
         "icon": {
           "value": "book-open"
@@ -91,15 +82,12 @@
     },
     {
       "id": "group-legal",
+      "locale": "en",
       "kind": "group",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "legal"
-      },
-      "title": {
-        "en": "Legal"
-      },
+      "slug": "legal",
+      "title": "Legal",
       "metadata": {
         "icon": {
           "value": "shield"

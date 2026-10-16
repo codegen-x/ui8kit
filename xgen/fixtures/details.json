@@ -4,15 +4,12 @@
   "entries": [
     {
       "id": "detail-description",
+      "locale": "en",
       "kind": "detail",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "description"
-      },
-      "title": {
-        "en": "Description"
-      },
+      "slug": "description",
+      "title": "Description",
       "metadata": {
         "text": {
           "value": "A desk lamp with a long reach and a heavy base. The arm moves in three joints and stays where you leave it."
@@ -25,15 +22,12 @@
     },
     {
       "id": "detail-materials",
+      "locale": "en",
       "kind": "detail",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "materials"
-      },
-      "title": {
-        "en": "Materials"
-      },
+      "slug": "materials",
+      "title": "Materials",
       "metadata": {
         "text": {
           "value": "Powder-coated aluminium arm, steel base, linen-wrapped cable."
@@ -46,15 +40,12 @@
     },
     {
       "id": "detail-care",
+      "locale": "en",
       "kind": "detail",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "care"
-      },
-      "title": {
-        "en": "Care"
-      },
+      "slug": "care",
+      "title": "Care",
       "metadata": {
         "text": {
           "value": "Wipe with a dry cloth. The LED module lasts about 25,000 hours and can be replaced."
@@ -67,15 +58,12 @@
     },
     {
       "id": "detail-shipping",
+      "locale": "en",
       "kind": "detail",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "shipping"
-      },
-      "title": {
-        "en": "Shipping and returns"
-      },
+      "slug": "shipping",
+      "title": "Shipping and returns",
       "metadata": {
         "text": {
           "value": "Ships within one working day. Thirty days to return it in the original box."

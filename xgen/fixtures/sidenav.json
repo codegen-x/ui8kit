@@ -4,15 +4,12 @@
   "entries": [
     {
       "id": "item-overview",
+      "locale": "en",
       "kind": "item",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "overview"
-      },
-      "title": {
-        "en": "Overview"
-      },
+      "slug": "overview",
+      "title": "Overview",
       "metadata": {
         "icon": {
           "value": "layout-dashboard"
@@ -25,15 +22,12 @@
     },
     {
       "id": "item-orders",
+      "locale": "en",
       "kind": "item",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "orders"
-      },
-      "title": {
-        "en": "Orders"
-      },
+      "slug": "orders",
+      "title": "Orders",
       "metadata": {
         "icon": {
           "value": "shopping-bag"
@@ -46,15 +40,12 @@
     },
     {
       "id": "item-customers",
+      "locale": "en",
       "kind": "item",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "customers"
-      },
-      "title": {
-        "en": "Customers"
-      },
+      "slug": "customers",
+      "title": "Customers",
       "metadata": {
         "icon": {
           "value": "users"
@@ -67,15 +58,12 @@
     },
     {
       "id": "item-reports",
+      "locale": "en",
       "kind": "item",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "reports"
-      },
-      "title": {
-        "en": "Reports"
-      },
+      "slug": "reports",
+      "title": "Reports",
       "metadata": {
         "icon": {
           "value": "file-text"
@@ -88,15 +76,12 @@
     },
     {
       "id": "item-settings",
+      "locale": "en",
       "kind": "item",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "settings"
-      },
-      "title": {
-        "en": "Settings"
-      },
+      "slug": "settings",
+      "title": "Settings",
       "metadata": {
         "icon": {
           "value": "settings"

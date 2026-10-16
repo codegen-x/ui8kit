@@ -4,15 +4,12 @@
   "entries": [
     {
       "id": "zone-central",
+      "locale": "en",
       "kind": "zone",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "central"
-      },
-      "title": {
-        "en": "Central zone"
-      },
+      "slug": "central",
+      "title": "Central zone",
       "metadata": {
         "area": {
           "value": "Old Town, Riverside, Market Square"
@@ -43,15 +40,12 @@
     },
     {
       "id": "zone-inner",
+      "locale": "en",
       "kind": "zone",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "inner"
-      },
-      "title": {
-        "en": "Inner suburbs"
-      },
+      "slug": "inner",
+      "title": "Inner suburbs",
       "metadata": {
         "area": {
           "value": "Northfield, Elm Park, Harbour"
@@ -82,15 +76,12 @@
     },
     {
       "id": "zone-outer",
+      "locale": "en",
       "kind": "zone",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "outer"
-      },
-      "title": {
-        "en": "Outer towns"
-      },
+      "slug": "outer",
+      "title": "Outer towns",
       "metadata": {
         "area": {
           "value": "Westbrook, Hillside, Lakeview"

@@ -4,15 +4,12 @@
   "entries": [
     {
       "id": "milestone-founded",
+      "locale": "en",
       "kind": "milestone",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "founded"
-      },
-      "title": {
-        "en": "The first commit"
-      },
+      "slug": "founded",
+      "title": "The first commit",
       "metadata": {
         "date": {
           "value": "2021"
@@ -31,15 +28,12 @@
     },
     {
       "id": "milestone-launch",
+      "locale": "en",
       "kind": "milestone",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "launch"
-      },
-      "title": {
-        "en": "Public launch"
-      },
+      "slug": "launch",
+      "title": "Public launch",
       "metadata": {
         "date": {
           "value": "2022"
@@ -58,15 +52,12 @@
     },
     {
       "id": "milestone-runtimes",
+      "locale": "en",
       "kind": "milestone",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "runtimes"
-      },
-      "title": {
-        "en": "Three runtimes"
-      },
+      "slug": "runtimes",
+      "title": "Three runtimes",
       "metadata": {
         "date": {
           "value": "2024"
@@ -85,15 +76,12 @@
     },
     {
       "id": "milestone-team",
+      "locale": "en",
       "kind": "milestone",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "team"
-      },
-      "title": {
-        "en": "A team of twenty"
-      },
+      "slug": "team",
+      "title": "A team of twenty",
       "metadata": {
         "date": {
           "value": "2026"

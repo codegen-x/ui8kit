@@ -4,15 +4,12 @@
   "entries": [
     {
       "id": "posttag-performance",
+      "locale": "en",
       "kind": "posttag",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "performance"
-      },
-      "title": {
-        "en": "Performance"
-      },
+      "slug": "performance",
+      "title": "Performance",
       "metadata": {
         "icon": {
           "value": "zap"
@@ -25,15 +22,12 @@
     },
     {
       "id": "posttag-static",
+      "locale": "en",
       "kind": "posttag",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "static"
-      },
-      "title": {
-        "en": "Static sites"
-      },
+      "slug": "static",
+      "title": "Static sites",
       "metadata": {
         "icon": {
           "value": "layers"
@@ -46,15 +40,12 @@
     },
     {
       "id": "posttag-caching",
+      "locale": "en",
       "kind": "posttag",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "caching"
-      },
-      "title": {
-        "en": "Caching"
-      },
+      "slug": "caching",
+      "title": "Caching",
       "metadata": {
         "icon": {
           "value": "rotate-ccw"
@@ -67,15 +58,12 @@
     },
     {
       "id": "posttag-offline",
+      "locale": "en",
       "kind": "posttag",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "offline"
-      },
-      "title": {
-        "en": "Offline"
-      },
+      "slug": "offline",
+      "title": "Offline",
       "metadata": {
         "icon": {
           "value": "globe"

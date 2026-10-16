@@ -4,19 +4,14 @@
   "entries": [
     {
       "id": "post-static-first",
+      "locale": "en",
       "kind": "post",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "static-first"
-      },
-      "title": {
-        "en": "Why static-first pages still win"
-      },
+      "slug": "static-first",
+      "title": "Why static-first pages still win",
+      "excerpt": "Less script, less waiting, and pages that keep working offline.",
       "metadata": {
-        "excerpt": {
-          "value": "Less script, less waiting, and pages that keep working offline."
-        },
         "category": {
           "value": "Engineering"
         },
@@ -40,19 +35,14 @@
     },
     {
       "id": "post-design-tokens",
+      "locale": "en",
       "kind": "post",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "design-tokens"
-      },
-      "title": {
-        "en": "Design tokens without the drift"
-      },
+      "slug": "design-tokens",
+      "title": "Design tokens without the drift",
+      "excerpt": "How one list of tokens feeds every runtime and every theme.",
       "metadata": {
-        "excerpt": {
-          "value": "How one list of tokens feeds every runtime and every theme."
-        },
         "category": {
           "value": "Design"
         },
@@ -76,19 +66,14 @@
     },
     {
       "id": "post-launch-notes",
+      "locale": "en",
       "kind": "post",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "launch-notes"
-      },
-      "title": {
-        "en": "Launch notes for spring"
-      },
+      "slug": "launch-notes",
+      "title": "Launch notes for spring",
+      "excerpt": "New blocks, faster builds and a calmer dashboard.",
       "metadata": {
-        "excerpt": {
-          "value": "New blocks, faster builds and a calmer dashboard."
-        },
         "category": {
           "value": "Product"
         },
@@ -112,19 +97,14 @@
     },
     {
       "id": "post-small-teams",
+      "locale": "en",
       "kind": "post",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "small-teams"
-      },
-      "title": {
-        "en": "Shipping with a small team"
-      },
+      "slug": "small-teams",
+      "title": "Shipping with a small team",
+      "excerpt": "A short checklist that keeps a team of four on track.",
       "metadata": {
-        "excerpt": {
-          "value": "A short checklist that keeps a team of four on track."
-        },
         "category": {
           "value": "Company"
         },
@@ -148,19 +128,14 @@
     },
     {
       "id": "post-accessible-forms",
+      "locale": "en",
       "kind": "post",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "accessible-forms"
-      },
-      "title": {
-        "en": "Accessible forms in an afternoon"
-      },
+      "slug": "accessible-forms",
+      "title": "Accessible forms in an afternoon",
+      "excerpt": "Labels, errors and focus: the three things that matter most.",
       "metadata": {
-        "excerpt": {
-          "value": "Labels, errors and focus: the three things that matter most."
-        },
         "category": {
           "value": "Engineering"
         },
@@ -184,19 +159,14 @@
     },
     {
       "id": "post-pricing-page",
+      "locale": "en",
       "kind": "post",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "pricing-page"
-      },
-      "title": {
-        "en": "What a good pricing page shows"
-      },
+      "slug": "pricing-page",
+      "title": "What a good pricing page shows",
+      "excerpt": "Plans, limits and answers, in that order.",
       "metadata": {
-        "excerpt": {
-          "value": "Plans, limits and answers, in that order."
-        },
         "category": {
           "value": "Growth"
         },

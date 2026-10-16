@@ -4,15 +4,12 @@
   "entries": [
     {
       "id": "spec-category",
+      "locale": "en",
       "kind": "spec",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "category"
-      },
-      "title": {
-        "en": "Category"
-      },
+      "slug": "category",
+      "title": "Category",
       "metadata": {
         "value": {
           "value": "Lighting"
@@ -25,15 +22,12 @@
     },
     {
       "id": "spec-weight",
+      "locale": "en",
       "kind": "spec",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "weight"
-      },
-      "title": {
-        "en": "Weight"
-      },
+      "slug": "weight",
+      "title": "Weight",
       "metadata": {
         "value": {
           "value": "1.2 kg"
@@ -46,15 +40,12 @@
     },
     {
       "id": "spec-size",
+      "locale": "en",
       "kind": "spec",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "size"
-      },
-      "title": {
-        "en": "Size"
-      },
+      "slug": "size",
+      "title": "Size",
       "metadata": {
         "value": {
           "value": "42 x 18 cm"
@@ -67,15 +58,12 @@
     },
     {
       "id": "spec-material",
+      "locale": "en",
       "kind": "spec",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "material"
-      },
-      "title": {
-        "en": "Material"
-      },
+      "slug": "material",
+      "title": "Material",
       "metadata": {
         "value": {
           "value": "Aluminium"
@@ -88,15 +76,12 @@
     },
     {
       "id": "spec-warranty",
+      "locale": "en",
       "kind": "spec",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "warranty"
-      },
-      "title": {
-        "en": "Warranty"
-      },
+      "slug": "warranty",
+      "title": "Warranty",
       "metadata": {
         "value": {
           "value": "2 years"

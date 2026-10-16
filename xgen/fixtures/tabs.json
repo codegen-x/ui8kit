@@ -4,15 +4,12 @@
   "entries": [
     {
       "id": "tab-home",
+      "locale": "en",
       "kind": "tab",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "home"
-      },
-      "title": {
-        "en": "Home"
-      },
+      "slug": "home",
+      "title": "Home",
       "metadata": {
         "icon": {
           "value": "house"
@@ -25,15 +22,12 @@
     },
     {
       "id": "tab-explore",
+      "locale": "en",
       "kind": "tab",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "explore"
-      },
-      "title": {
-        "en": "Explore"
-      },
+      "slug": "explore",
+      "title": "Explore",
       "metadata": {
         "icon": {
           "value": "compass"
@@ -46,15 +40,12 @@
     },
     {
       "id": "tab-alerts",
+      "locale": "en",
       "kind": "tab",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "alerts"
-      },
-      "title": {
-        "en": "Alerts"
-      },
+      "slug": "alerts",
+      "title": "Alerts",
       "metadata": {
         "icon": {
           "value": "bell"
@@ -67,15 +58,12 @@
     },
     {
       "id": "tab-account",
+      "locale": "en",
       "kind": "tab",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "account"
-      },
-      "title": {
-        "en": "Account"
-      },
+      "slug": "account",
+      "title": "Account",
       "metadata": {
         "icon": {
           "value": "user"

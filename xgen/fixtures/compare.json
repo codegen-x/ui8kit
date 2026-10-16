@@ -4,15 +4,12 @@
   "entries": [
     {
       "id": "row-seats",
+      "locale": "en",
       "kind": "row",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "seats"
-      },
-      "title": {
-        "en": "Team seats"
-      },
+      "slug": "seats",
+      "title": "Team seats",
       "metadata": {
         "a": {
           "value": "1"
@@ -31,15 +28,12 @@
     },
     {
       "id": "row-storage",
+      "locale": "en",
       "kind": "row",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "storage"
-      },
-      "title": {
-        "en": "Storage"
-      },
+      "slug": "storage",
+      "title": "Storage",
       "metadata": {
         "a": {
           "value": "1 GB"
@@ -58,15 +52,12 @@
     },
     {
       "id": "row-sso",
+      "locale": "en",
       "kind": "row",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "sso"
-      },
-      "title": {
-        "en": "Single sign-on"
-      },
+      "slug": "sso",
+      "title": "Single sign-on",
       "metadata": {
         "a": {
           "value": "no"
@@ -85,15 +76,12 @@
     },
     {
       "id": "row-support",
+      "locale": "en",
       "kind": "row",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "support"
-      },
-      "title": {
-        "en": "Priority support"
-      },
+      "slug": "support",
+      "title": "Priority support",
       "metadata": {
         "a": {
           "value": "no"
@@ -112,15 +100,12 @@
     },
     {
       "id": "row-export",
+      "locale": "en",
       "kind": "row",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "export"
-      },
-      "title": {
-        "en": "Data export"
-      },
+      "slug": "export",
+      "title": "Data export",
       "metadata": {
         "a": {
           "value": "yes"

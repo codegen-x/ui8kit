@@ -4,15 +4,12 @@
   "entries": [
     {
       "id": "channel-email",
+      "locale": "en",
       "kind": "channel",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "email"
-      },
-      "title": {
-        "en": "Email us"
-      },
+      "slug": "email",
+      "title": "Email us",
       "metadata": {
         "text": {
           "value": "Answers within one working day."
@@ -28,15 +25,12 @@
     },
     {
       "id": "channel-chat",
+      "locale": "en",
       "kind": "channel",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "chat"
-      },
-      "title": {
-        "en": "Live chat"
-      },
+      "slug": "chat",
+      "title": "Live chat",
       "metadata": {
         "text": {
           "value": "Talk to a person, weekdays 9 to 18."
@@ -52,15 +46,12 @@
     },
     {
       "id": "channel-docs",
+      "locale": "en",
       "kind": "channel",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "docs"
-      },
-      "title": {
-        "en": "Read the docs"
-      },
+      "slug": "docs",
+      "title": "Read the docs",
       "metadata": {
         "text": {
           "value": "Guides and examples for every block."

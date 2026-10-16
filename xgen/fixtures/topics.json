@@ -4,15 +4,12 @@
   "entries": [
     {
       "id": "topic-all",
+      "locale": "en",
       "kind": "topic",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "all"
-      },
-      "title": {
-        "en": "All"
-      },
+      "slug": "all",
+      "title": "All",
       "metadata": {
         "value": {
           "value": ""
@@ -25,15 +22,12 @@
     },
     {
       "id": "topic-engineering",
+      "locale": "en",
       "kind": "topic",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "engineering"
-      },
-      "title": {
-        "en": "Engineering"
-      },
+      "slug": "engineering",
+      "title": "Engineering",
       "metadata": {
         "value": {
           "value": "Engineering"
@@ -46,15 +40,12 @@
     },
     {
       "id": "topic-design",
+      "locale": "en",
       "kind": "topic",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "design"
-      },
-      "title": {
-        "en": "Design"
-      },
+      "slug": "design",
+      "title": "Design",
       "metadata": {
         "value": {
           "value": "Design"
@@ -67,15 +58,12 @@
     },
     {
       "id": "topic-product",
+      "locale": "en",
       "kind": "topic",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "product"
-      },
-      "title": {
-        "en": "Product"
-      },
+      "slug": "product",
+      "title": "Product",
       "metadata": {
         "value": {
           "value": "Product"
@@ -88,15 +76,12 @@
     },
     {
       "id": "topic-growth",
+      "locale": "en",
       "kind": "topic",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "growth"
-      },
-      "title": {
-        "en": "Growth"
-      },
+      "slug": "growth",
+      "title": "Growth",
       "metadata": {
         "value": {
           "value": "Growth"

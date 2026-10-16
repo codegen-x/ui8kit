@@ -4,15 +4,12 @@
   "entries": [
     {
       "id": "tile-speed",
+      "locale": "en",
       "kind": "tile",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "speed"
-      },
-      "title": {
-        "en": "Fast by default"
-      },
+      "slug": "speed",
+      "title": "Fast by default",
       "metadata": {
         "text": {
           "value": "Pages ship little script and load in under a second."
@@ -31,15 +28,12 @@
     },
     {
       "id": "tile-blocks",
+      "locale": "en",
       "kind": "tile",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "blocks"
-      },
-      "title": {
-        "en": "Ready blocks"
-      },
+      "slug": "blocks",
+      "title": "Ready blocks",
       "metadata": {
         "text": {
           "value": "Compose a page from tested blocks and variants."
@@ -58,15 +52,12 @@
     },
     {
       "id": "tile-access",
+      "locale": "en",
       "kind": "tile",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "access"
-      },
-      "title": {
-        "en": "Accessible"
-      },
+      "slug": "access",
+      "title": "Accessible",
       "metadata": {
         "text": {
           "value": "Landmarks, labels and focus order are checked."
@@ -85,15 +76,12 @@
     },
     {
       "id": "tile-themes",
+      "locale": "en",
       "kind": "tile",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "themes"
-      },
-      "title": {
-        "en": "Light and dark"
-      },
+      "slug": "themes",
+      "title": "Light and dark",
       "metadata": {
         "text": {
           "value": "Every block follows the theme tokens."
@@ -112,15 +100,12 @@
     },
     {
       "id": "tile-data",
+      "locale": "en",
       "kind": "tile",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "data"
-      },
-      "title": {
-        "en": "One source of data"
-      },
+      "slug": "data",
+      "title": "One source of data",
       "metadata": {
         "text": {
           "value": "Pages read collections, never copies."
@@ -139,15 +124,12 @@
     },
     {
       "id": "tile-secure",
+      "locale": "en",
       "kind": "tile",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "secure"
-      },
-      "title": {
-        "en": "Private by default"
-      },
+      "slug": "secure",
+      "title": "Private by default",
       "metadata": {
         "text": {
           "value": "Your data stays in your collections."
@@ -166,15 +148,12 @@
     },
     {
       "id": "tile-export",
+      "locale": "en",
       "kind": "tile",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "export"
-      },
-      "title": {
-        "en": "Export anywhere"
-      },
+      "slug": "export",
+      "title": "Export anywhere",
       "metadata": {
         "text": {
           "value": "Take pages and data with you."

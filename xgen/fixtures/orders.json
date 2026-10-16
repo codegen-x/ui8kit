@@ -4,15 +4,12 @@
   "entries": [
     {
       "id": "order-o1042",
+      "locale": "en",
       "kind": "order",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "o1042"
-      },
-      "title": {
-        "en": "Order 1042"
-      },
+      "slug": "o1042",
+      "title": "Order 1042",
       "metadata": {
         "date": {
           "value": "Mar 28, 2026"
@@ -23,7 +20,7 @@
         "currency": {
           "value": "USD"
         },
-        "status": {
+        "order_status": {
           "value": "shipped"
         },
         "items": {
@@ -37,15 +34,12 @@
     },
     {
       "id": "order-o1041",
+      "locale": "en",
       "kind": "order",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "o1041"
-      },
-      "title": {
-        "en": "Order 1041"
-      },
+      "slug": "o1041",
+      "title": "Order 1041",
       "metadata": {
         "date": {
           "value": "Mar 21, 2026"
@@ -56,7 +50,7 @@
         "currency": {
           "value": "USD"
         },
-        "status": {
+        "order_status": {
           "value": "paid"
         },
         "items": {
@@ -70,15 +64,12 @@
     },
     {
       "id": "order-o1038",
+      "locale": "en",
       "kind": "order",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "o1038"
-      },
-      "title": {
-        "en": "Order 1038"
-      },
+      "slug": "o1038",
+      "title": "Order 1038",
       "metadata": {
         "date": {
           "value": "Mar 09, 2026"
@@ -89,7 +80,7 @@
         "currency": {
           "value": "USD"
         },
-        "status": {
+        "order_status": {
           "value": "pending"
         },
         "items": {
@@ -103,15 +94,12 @@
     },
     {
       "id": "order-o1031",
+      "locale": "en",
       "kind": "order",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "o1031"
-      },
-      "title": {
-        "en": "Order 1031"
-      },
+      "slug": "o1031",
+      "title": "Order 1031",
       "metadata": {
         "date": {
           "value": "Feb 24, 2026"
@@ -122,7 +110,7 @@
         "currency": {
           "value": "USD"
         },
-        "status": {
+        "order_status": {
           "value": "refunded"
         },
         "items": {

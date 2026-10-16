@@ -4,15 +4,12 @@
   "entries": [
     {
       "id": "event-a1",
+      "locale": "en",
       "kind": "event",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "a1"
-      },
-      "title": {
-        "en": "Plan upgraded to Team"
-      },
+      "slug": "a1",
+      "title": "Plan upgraded to Team",
       "metadata": {
         "text": {
           "value": "Billing changed by Dana Pierce."
@@ -31,15 +28,12 @@
     },
     {
       "id": "event-a2",
+      "locale": "en",
       "kind": "event",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "a2"
-      },
-      "title": {
-        "en": "New member joined"
-      },
+      "slug": "a2",
+      "title": "New member joined",
       "metadata": {
         "text": {
           "value": "Ravi Menon accepted the invitation."
@@ -58,15 +52,12 @@
     },
     {
       "id": "event-a3",
+      "locale": "en",
       "kind": "event",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "a3"
-      },
-      "title": {
-        "en": "Export finished"
-      },
+      "slug": "a3",
+      "title": "Export finished",
       "metadata": {
         "text": {
           "value": "Customers.csv is ready to download."
@@ -85,15 +76,12 @@
     },
     {
       "id": "event-a4",
+      "locale": "en",
       "kind": "event",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "a4"
-      },
-      "title": {
-        "en": "Payment failed"
-      },
+      "slug": "a4",
+      "title": "Payment failed",
       "metadata": {
         "text": {
           "value": "The card ending 4242 was declined."

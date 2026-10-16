@@ -4,15 +4,12 @@
   "entries": [
     {
       "id": "product-lamp",
+      "locale": "en",
       "kind": "product",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "lamp"
-      },
-      "title": {
-        "en": "Arc desk lamp"
-      },
+      "slug": "lamp",
+      "title": "Arc desk lamp",
       "metadata": {
         "summary": {
           "value": "Warm, dimmable light with a weighted base."
@@ -46,15 +43,12 @@
     },
     {
       "id": "product-bag",
+      "locale": "en",
       "kind": "product",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "bag"
-      },
-      "title": {
-        "en": "Field backpack"
-      },
+      "slug": "bag",
+      "title": "Field backpack",
       "metadata": {
         "summary": {
           "value": "Water-resistant, 22 litres, fits a 16 inch laptop."
@@ -88,15 +82,12 @@
     },
     {
       "id": "product-phones",
+      "locale": "en",
       "kind": "product",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "phones"
-      },
-      "title": {
-        "en": "Studio headphones"
-      },
+      "slug": "phones",
+      "title": "Studio headphones",
       "metadata": {
         "summary": {
           "value": "Closed-back, 40 hour battery, wired and wireless."
@@ -130,15 +121,12 @@
     },
     {
       "id": "product-stand",
+      "locale": "en",
       "kind": "product",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "stand"
-      },
-      "title": {
-        "en": "Laptop stand"
-      },
+      "slug": "stand",
+      "title": "Laptop stand",
       "metadata": {
         "summary": {
           "value": "Aluminium, folds flat, six heights."
@@ -172,15 +160,12 @@
     },
     {
       "id": "product-mat",
+      "locale": "en",
       "kind": "product",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "mat"
-      },
-      "title": {
-        "en": "Desk mat"
-      },
+      "slug": "mat",
+      "title": "Desk mat",
       "metadata": {
         "summary": {
           "value": "Felt top with a non-slip base, 90 by 40 cm."
@@ -214,15 +199,12 @@
     },
     {
       "id": "product-card",
+      "locale": "en",
       "kind": "product",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "card"
-      },
-      "title": {
-        "en": "Gift card"
-      },
+      "slug": "card",
+      "title": "Gift card",
       "metadata": {
         "summary": {
           "value": "Delivered by email, never expires."

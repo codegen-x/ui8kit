@@ -4,15 +4,12 @@
   "entries": [
     {
       "id": "task-profile",
+      "locale": "en",
       "kind": "task",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "profile"
-      },
-      "title": {
-        "en": "Complete your profile"
-      },
+      "slug": "profile",
+      "title": "Complete your profile",
       "metadata": {
         "text": {
           "value": "Add a name and a picture."
@@ -28,15 +25,12 @@
     },
     {
       "id": "task-invite",
+      "locale": "en",
       "kind": "task",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "invite"
-      },
-      "title": {
-        "en": "Invite your team"
-      },
+      "slug": "invite",
+      "title": "Invite your team",
       "metadata": {
         "text": {
           "value": "Teammates get access to every page."
@@ -52,15 +46,12 @@
     },
     {
       "id": "task-connect",
+      "locale": "en",
       "kind": "task",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "connect"
-      },
-      "title": {
-        "en": "Connect your data"
-      },
+      "slug": "connect",
+      "title": "Connect your data",
       "metadata": {
         "text": {
           "value": "Link a collection or upload a file."
@@ -76,15 +67,12 @@
     },
     {
       "id": "task-publish",
+      "locale": "en",
       "kind": "task",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "publish"
-      },
-      "title": {
-        "en": "Publish your first page"
-      },
+      "slug": "publish",
+      "title": "Publish your first page",
       "metadata": {
         "text": {
           "value": "Pick a block and press publish."
@@ -100,15 +88,12 @@
     },
     {
       "id": "task-domain",
+      "locale": "en",
       "kind": "task",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "domain"
-      },
-      "title": {
-        "en": "Add a custom domain"
-      },
+      "slug": "domain",
+      "title": "Add a custom domain",
       "metadata": {
         "text": {
           "value": "Point your own address at the site."

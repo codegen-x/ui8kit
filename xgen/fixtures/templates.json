@@ -4,15 +4,12 @@
   "entries": [
     {
       "id": "template-store-front",
+      "locale": "en",
       "kind": "template",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "store-front"
-      },
-      "title": {
-        "en": "Store Front"
-      },
+      "slug": "store-front",
+      "title": "Store Front",
       "metadata": {
         "views": {
           "value": "1.2K"
@@ -31,15 +28,12 @@
     },
     {
       "id": "template-event-page",
+      "locale": "en",
       "kind": "template",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "event-page"
-      },
-      "title": {
-        "en": "Event Page"
-      },
+      "slug": "event-page",
+      "title": "Event Page",
       "metadata": {
         "views": {
           "value": "3.4K"
@@ -58,15 +52,12 @@
     },
     {
       "id": "template-team-dashboard",
+      "locale": "en",
       "kind": "template",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "team-dashboard"
-      },
-      "title": {
-        "en": "Team Dashboard"
-      },
+      "slug": "team-dashboard",
+      "title": "Team Dashboard",
       "metadata": {
         "views": {
           "value": "860"
@@ -85,15 +76,12 @@
     },
     {
       "id": "template-docs-site",
+      "locale": "en",
       "kind": "template",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "docs-site"
-      },
-      "title": {
-        "en": "Docs Site"
-      },
+      "slug": "docs-site",
+      "title": "Docs Site",
       "metadata": {
         "views": {
           "value": "2.1K"
@@ -112,15 +100,12 @@
     },
     {
       "id": "template-portfolio",
+      "locale": "en",
       "kind": "template",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "portfolio"
-      },
-      "title": {
-        "en": "Portfolio"
-      },
+      "slug": "portfolio",
+      "title": "Portfolio",
       "metadata": {
         "views": {
           "value": "5.0K"
@@ -139,15 +124,12 @@
     },
     {
       "id": "template-course-page",
+      "locale": "en",
       "kind": "template",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "course-page"
-      },
-      "title": {
-        "en": "Course Page"
-      },
+      "slug": "course-page",
+      "title": "Course Page",
       "metadata": {
         "views": {
           "value": "740"
@@ -166,15 +148,12 @@
     },
     {
       "id": "template-status-board",
+      "locale": "en",
       "kind": "template",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "status-board"
-      },
-      "title": {
-        "en": "Status Board"
-      },
+      "slug": "status-board",
+      "title": "Status Board",
       "metadata": {
         "views": {
           "value": "1.8K"
@@ -193,15 +172,12 @@
     },
     {
       "id": "template-recipe-blog",
+      "locale": "en",
       "kind": "template",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "recipe-blog"
-      },
-      "title": {
-        "en": "Recipe Blog"
-      },
+      "slug": "recipe-blog",
+      "title": "Recipe Blog",
       "metadata": {
         "views": {
           "value": "2.6K"

@@ -4,15 +4,12 @@
   "entries": [
     {
       "id": "point-setup",
+      "locale": "en",
       "kind": "point",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "setup"
-      },
-      "title": {
-        "en": "Setup"
-      },
+      "slug": "setup",
+      "title": "Setup",
       "metadata": {
         "before": {
           "value": "Weeks of wiring"
@@ -28,15 +25,12 @@
     },
     {
       "id": "point-pages",
+      "locale": "en",
       "kind": "point",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "pages"
-      },
-      "title": {
-        "en": "Pages"
-      },
+      "slug": "pages",
+      "title": "Pages",
       "metadata": {
         "before": {
           "value": "Copied by hand"
@@ -52,15 +46,12 @@
     },
     {
       "id": "point-themes",
+      "locale": "en",
       "kind": "point",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "themes"
-      },
-      "title": {
-        "en": "Themes"
-      },
+      "slug": "themes",
+      "title": "Themes",
       "metadata": {
         "before": {
           "value": "Colors set one by one"
@@ -76,15 +67,12 @@
     },
     {
       "id": "point-checks",
+      "locale": "en",
       "kind": "point",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "checks"
-      },
-      "title": {
-        "en": "Checks"
-      },
+      "slug": "checks",
+      "title": "Checks",
       "metadata": {
         "before": {
           "value": "Review by eye"

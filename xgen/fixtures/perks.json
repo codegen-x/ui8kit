@@ -4,15 +4,12 @@
   "entries": [
     {
       "id": "perk-shipping",
+      "locale": "en",
       "kind": "perk",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "shipping"
-      },
-      "title": {
-        "en": "Free shipping over $75"
-      },
+      "slug": "shipping",
+      "title": "Free shipping over $75",
       "metadata": {
         "text": {
           "value": "Two-hour windows, seven days a week."
@@ -28,15 +25,12 @@
     },
     {
       "id": "perk-returns",
+      "locale": "en",
       "kind": "perk",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "returns"
-      },
-      "title": {
-        "en": "Thirty-day returns"
-      },
+      "slug": "returns",
+      "title": "Thirty-day returns",
       "metadata": {
         "text": {
           "value": "Send it back for free if it does not fit your desk."
@@ -52,15 +46,12 @@
     },
     {
       "id": "perk-warranty",
+      "locale": "en",
       "kind": "perk",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "warranty"
-      },
-      "title": {
-        "en": "Two-year warranty"
-      },
+      "slug": "warranty",
+      "title": "Two-year warranty",
       "metadata": {
         "text": {
           "value": "Repairs or a new one, whichever is faster."
@@ -76,15 +67,12 @@
     },
     {
       "id": "perk-support",
+      "locale": "en",
       "kind": "perk",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "support"
-      },
-      "title": {
-        "en": "Help seven days a week"
-      },
+      "slug": "support",
+      "title": "Help seven days a week",
       "metadata": {
         "text": {
           "value": "A person answers within the hour."

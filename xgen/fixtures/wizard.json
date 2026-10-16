@@ -4,15 +4,12 @@
   "entries": [
     {
       "id": "step-account",
+      "locale": "en",
       "kind": "step",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "account"
-      },
-      "title": {
-        "en": "Create your account"
-      },
+      "slug": "account",
+      "title": "Create your account",
       "metadata": {
         "text": {
           "value": "Use your work email."
@@ -34,15 +31,12 @@
     },
     {
       "id": "step-team",
+      "locale": "en",
       "kind": "step",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "team"
-      },
-      "title": {
-        "en": "Tell us about your team"
-      },
+      "slug": "team",
+      "title": "Tell us about your team",
       "metadata": {
         "text": {
           "value": "We tailor the workspace to its size."
@@ -63,16 +57,13 @@
       "published_at": "2026-03-04T10:00:00Z"
     },
     {
-      "id": "step-plan",
+      "id": "wizard-step-plan",
+      "locale": "en",
       "kind": "step",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "plan"
-      },
-      "title": {
-        "en": "Choose a plan"
-      },
+      "slug": "wizard-step-plan",
+      "title": "Choose a plan",
       "metadata": {
         "text": {
           "value": "You can change it at any time."

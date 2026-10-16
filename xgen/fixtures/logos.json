@@ -4,15 +4,12 @@
   "entries": [
     {
       "id": "logo-northwind",
+      "locale": "en",
       "kind": "logo",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "northwind"
-      },
-      "title": {
-        "en": "Northwind"
-      },
+      "slug": "northwind",
+      "title": "Northwind",
       "metadata": {
         "icon": {
           "value": "compass"
@@ -25,15 +22,12 @@
     },
     {
       "id": "logo-lumen",
+      "locale": "en",
       "kind": "logo",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "lumen"
-      },
-      "title": {
-        "en": "Lumen"
-      },
+      "slug": "lumen",
+      "title": "Lumen",
       "metadata": {
         "icon": {
           "value": "sun"
@@ -46,15 +40,12 @@
     },
     {
       "id": "logo-harbor",
+      "locale": "en",
       "kind": "logo",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "harbor"
-      },
-      "title": {
-        "en": "Harbor"
-      },
+      "slug": "harbor",
+      "title": "Harbor",
       "metadata": {
         "icon": {
           "value": "anchor"
@@ -67,15 +58,12 @@
     },
     {
       "id": "logo-summit",
+      "locale": "en",
       "kind": "logo",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "summit"
-      },
-      "title": {
-        "en": "Summit"
-      },
+      "slug": "summit",
+      "title": "Summit",
       "metadata": {
         "icon": {
           "value": "mountain"
@@ -88,15 +76,12 @@
     },
     {
       "id": "logo-orbit",
+      "locale": "en",
       "kind": "logo",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "orbit"
-      },
-      "title": {
-        "en": "Orbit"
-      },
+      "slug": "orbit",
+      "title": "Orbit",
       "metadata": {
         "icon": {
           "value": "orbit"
@@ -109,15 +94,12 @@
     },
     {
       "id": "logo-grove",
+      "locale": "en",
       "kind": "logo",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "grove"
-      },
-      "title": {
-        "en": "Grove"
-      },
+      "slug": "grove",
+      "title": "Grove",
       "metadata": {
         "icon": {
           "value": "trees"

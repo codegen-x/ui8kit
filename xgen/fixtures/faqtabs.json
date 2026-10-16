@@ -4,15 +4,12 @@
   "entries": [
     {
       "id": "tab-all",
+      "locale": "en",
       "kind": "tab",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "all"
-      },
-      "title": {
-        "en": "All"
-      },
+      "slug": "all",
+      "title": "All",
       "metadata": {
         "value": {
           "value": ""
@@ -25,15 +22,12 @@
     },
     {
       "id": "tab-billing",
+      "locale": "en",
       "kind": "tab",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "billing"
-      },
-      "title": {
-        "en": "Billing"
-      },
+      "slug": "billing",
+      "title": "Billing",
       "metadata": {
         "value": {
           "value": "billing"
@@ -45,16 +39,13 @@
       "published_at": "2026-03-04T10:00:00Z"
     },
     {
-      "id": "tab-account",
+      "id": "faqtab-account",
+      "locale": "en",
       "kind": "tab",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "account"
-      },
-      "title": {
-        "en": "Account"
-      },
+      "slug": "faqtab-account",
+      "title": "Account",
       "metadata": {
         "value": {
           "value": "account"

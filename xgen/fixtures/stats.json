@@ -4,15 +4,12 @@
   "entries": [
     {
       "id": "stat-sites",
+      "locale": "en",
       "kind": "stat",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "sites"
-      },
-      "title": {
-        "en": "Sites published"
-      },
+      "slug": "sites",
+      "title": "Sites published",
       "metadata": {
         "value": {
           "value": "12,400"
@@ -31,15 +28,12 @@
     },
     {
       "id": "stat-uptime",
+      "locale": "en",
       "kind": "stat",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "uptime"
-      },
-      "title": {
-        "en": "Uptime"
-      },
+      "slug": "uptime",
+      "title": "Uptime",
       "metadata": {
         "value": {
           "value": "99.99%"
@@ -58,15 +52,12 @@
     },
     {
       "id": "stat-teams",
+      "locale": "en",
       "kind": "stat",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "teams"
-      },
-      "title": {
-        "en": "Teams"
-      },
+      "slug": "teams",
+      "title": "Teams",
       "metadata": {
         "value": {
           "value": "3,200"
@@ -85,15 +76,12 @@
     },
     {
       "id": "stat-speed",
+      "locale": "en",
       "kind": "stat",
       "status": "published",
       "visibility": "public",
-      "slug": {
-        "en": "speed"
-      },
-      "title": {
-        "en": "Median load"
-      },
+      "slug": "speed",
+      "title": "Median load",
       "metadata": {
         "value": {
           "value": "0.8 s"
