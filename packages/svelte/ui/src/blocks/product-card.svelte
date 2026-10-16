@@ -30,6 +30,7 @@
   import Button from "../primitives/button/button.svelte";
   import CardContent from "../primitives/card/card-content.svelte";
   import Group from "../primitives/group/group.svelte";
+  import Link from "../primitives/link/link.svelte";
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
   import MediaFrame from "../components/media-frame.svelte";
@@ -63,7 +64,7 @@
 >
   {#if ((media as string) === "image")}
     <Box class={cn("relative shrink-0", (((layout as string) === "horizontal") ? "sm:w-48" : ""))}>
-      <MediaFrame alt={product.name} ratio={ratio} class="h-full" />
+      <MediaFrame alt={product.name} src={product.image} ratio={ratio} class="h-full" />
       {#if product.badge}
         <Badge variant="default" size="default" class="absolute left-4 top-4" data-testid="badge">
           {at(badges, product.badge)}
@@ -76,7 +77,13 @@
       {product.category}
     </Text>
     <Title as={3} size="base" weight="bold">
-      {product.name}
+      {#if product.href}
+        <Link href={product.href} variant="default" data-testid="open">
+          {product.name}
+        </Link>
+      {:else}
+        {product.name}
+      {/if}
     </Title>
     {#if ((rating as string) === "show")}
       <Group gap="2">

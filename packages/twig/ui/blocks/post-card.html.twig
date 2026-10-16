@@ -11,7 +11,7 @@
 {%- if ui_t(ui_eq(v_meta, 'news')) %}
   {%- set c_6 -%}
     {%- set c_2 -%}
-      {{ include('blocks/media-frame.html.twig', {'p': {'alt': ui_get(v_post, ['title']), 'className': ui_cnv([ui_cnv(['size-full', ui_preset('blocks/presets/defaults.json', ['media', 'rounded'])])])}}, with_context = false) }}
+      {{ include('blocks/media-frame.html.twig', {'p': {'alt': ui_get(v_post, ['title']), 'src': ui_get(v_post, ['image']), 'className': ui_cnv([ui_cnv(['size-full', ui_preset('blocks/presets/defaults.json', ['media', 'rounded'])])])}}, with_context = false) }}
       {%- set c_1 -%}
         {{ ui_text(ui_get(v_post, ['title'])) }}
       {%- endset -%}
@@ -38,7 +38,7 @@
   {%- set c_18 -%}
     {%- if ui_t(ui_eq(v_media, 'image')) %}
       {%- set c_7 -%}
-        {{ include('blocks/media-frame.html.twig', {'p': {'alt': ui_get(v_post, ['title']), 'className': ui_cnv(['h-full'])}}, with_context = false) }}
+        {{ include('blocks/media-frame.html.twig', {'p': {'alt': ui_get(v_post, ['title']), 'src': ui_get(v_post, ['image']), 'className': ui_cnv(['h-full'])}}, with_context = false) }}
       {%- endset -%}
       {{ include('ui/box/box.html.twig', {'p': {'Class': ui_s(ui_cnv(['relative shrink-0', (ui_t(ui_eq(v_layout, 'horizontal')) ? 'sm:w-64' : '')]))}, 'children': c_7}, with_context = false) }}
     {%- endif %}
@@ -88,7 +88,7 @@
         {%- set c_16 -%}
           {{ ui_text(ui_get(v_labels, ['read'])) }}
         {%- endset -%}
-        {{ include('ui/link/link.html.twig', {'p': {'Href': '#/', 'Variant': 'default', 'Attrs': ui_attrs(['data-testid', 'read'])}, 'children': c_16}, with_context = false) }}
+        {{ include('ui/link/link.html.twig', {'p': {'Href': ui_s(ui_coalesce([ui_get(v_post, ['href']), '#/'])), 'Variant': 'default', 'Attrs': ui_attrs(['data-testid', 'read'])}, 'children': c_16}, with_context = false) }}
       {%- endif %}
     {%- endset -%}
     {{ include('ui/card/card-content.html.twig', {'p': {'Class': 'flex flex-1 flex-col gap-2'}, 'children': c_17}, with_context = false) }}

@@ -9,7 +9,7 @@ import { kids } from "../forms";
 import { layoutOf } from "../presets";
 
 const O = "organism.";
-const Post = fields(["id", "string"], ["title", "string"], ["excerpt", "string"], ["category", "string"], ["author", "string"], ["date", "string"], ["minutes", "number"], ["icon", "string"]);
+const Post = fields(["id", "string"], ["title", "string"], ["excerpt", "string"], ["category", "string"], ["author", "string"], ["date", "string"], ["minutes", "number"], ["icon", "string"], ["href", "string", true], ["image", "string", true]);
 const PostLabels = fields(["minutes", "string"], ["by", "string"], ["read", "string"]);
 
 const postCard = spec(`${O}post-card`, "PostCard", "A post as a card: cover picture, category, title, excerpt, author line and a read link. Axes: layout (vertical, horizontal), media (image, none), meta (full, short: the date only, news: date and title only), density.", {
@@ -25,7 +25,7 @@ const postCard = spec(`${O}post-card`, "PostCard", "A post as a card: cover pict
   view: (() => {
     const cover = when(eq(ref("media"), "image"), [
       use("Box", { props: { Class: cn("relative shrink-0", cond(eq(ref("layout"), "horizontal"), "sm:w-64", "")) } },
-        organism("MediaFrame", { alt: ref("post.title"), ratio: "16/9", className: "h-full" })),
+        organism("MediaFrame", { alt: ref("post.title"), src: ref("post.image"), ratio: "16/9", className: "h-full" })),
     ]);
     const category = when(ne(ref("meta"), "news"), [
       use("Group", { props: { Gap: "2", Align: "center" } },
@@ -42,7 +42,7 @@ const postCard = spec(`${O}post-card`, "PostCard", "A post as a card: cover pict
         when(eq(ref("meta"), "full"), [use("Text", { props: { Size: "xs" } }, text(tpl(ref("labels.minutes"), ref("post.minutes"))))])),
     ]);
     const read = when(ne(ref("meta"), "news"), [
-      use("Link", { props: { Href: "#/", Variant: "default" }, attrs: { "data-testid": "read" } }, text(ref("labels.read"))),
+      use("Link", { props: { Href: coalesce(ref("post.href"), "#/"), Variant: "default" }, attrs: { "data-testid": "read" } }, text(ref("labels.read"))),
     ]);
     // news card: image with the title on top, a date strip below; sizes from the default preset
     // Frame news card 267×218 r16 gap 8; image 267×160 r12; footer h50 gap16 pad: mark 32 + title only.
@@ -52,7 +52,7 @@ const postCard = spec(`${O}post-card`, "PostCard", "A post as a card: cover pict
       attrs: { "data-testid": "item", "data-layout": ref("layout"), "data-meta": "news" },
     },
       use("Box", { props: { Class: cn("relative shrink-0 overflow-hidden", layoutOf("news.cover")) }, attrs: { "data-testid": "news-cover" } },
-        organism("MediaFrame", { alt: ref("post.title"), ratio: "16/9", className: cn("size-full", layoutOf("media.rounded")) }),
+        organism("MediaFrame", { alt: ref("post.title"), src: ref("post.image"), ratio: "16/9", className: cn("size-full", layoutOf("media.rounded")) }),
         use("Title", { props: { As: 3, Size: "xs", Weight: "semibold", Class: cn("pointer-events-none absolute inset-x-12 line-clamp-2 text-center leading-5 text-foreground", layoutOf("news.title")) }, attrs: { "data-testid": "news-title" } }, text(ref("post.title")))),
       use("Group", { props: { Gap: "2", Align: "center", Class: cn("w-full px-2 text-muted-foreground", layoutOf("news.strip")) }, attrs: { "data-testid": "news-date" } },
         use("LucideIcon", { props: { Name: "calendar", Size: 16 } }),

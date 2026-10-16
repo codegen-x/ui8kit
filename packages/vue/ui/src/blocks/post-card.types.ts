@@ -10,6 +10,8 @@ export type Post = {
   date: string;
   minutes: number;
   icon: string;
+  href?: string;
+  image?: string;
 };
 
 export type PostLabels = {

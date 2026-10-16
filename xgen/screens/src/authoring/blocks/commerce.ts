@@ -14,7 +14,7 @@ const common = { id: ref("id"), title: ref("title"), tone: ref("tone"), density:
 /** children of an organism that takes `children` */
 const kids = (...n: ViewNode[]) => ({ slots: { children: { args: [] as string[], do: n } } });
 
-const Product = fields(["id", "string"], ["name", "string"], ["summary", "string"], ["price", "number"], ["currency", "string"], ["rating", "number"], ["reviews", "number"], ["badge", "string"], ["category", "string"], ["inStock", "boolean"]);
+const Product = fields(["id", "string"], ["name", "string"], ["summary", "string"], ["price", "number"], ["currency", "string"], ["rating", "number"], ["reviews", "number"], ["badge", "string"], ["category", "string"], ["inStock", "boolean"], ["href", "string", true], ["image", "string", true]);
 
 const categoryNav = spec(`${O}category-nav`, "CategoryNav", "Navigation between product categories as chips, a bar with an underline, a side list, tiles with a big icon, or chips under a toolbar (search, sort and the number shown). The current one carries aria-current. Axes: layout (chips, bar, sidebar, tiles, toolbar), count (show, hide), icon (show, hide), density.", {
   records: {
@@ -78,12 +78,12 @@ const productCard = spec(`${O}product-card`, "ProductCard", "A product as a card
     use("Block", { props: { Tag: "article", Class: cn(cardBase(), "h-full gap-4 overflow-hidden", cond(eq(ref("layout"), "horizontal"), "flex flex-col sm:flex-row", "flex flex-col")) }, attrs: { "data-slot": "card", "data-testid": "item", "data-layout": ref("layout") } },
       when(eq(ref("media"), "image"), [
         use("Box", { props: { Class: cn("relative shrink-0", cond(eq(ref("layout"), "horizontal"), "sm:w-48", "")) } },
-          organism("MediaFrame", { alt: ref("product.name"), ratio: ref("ratio"), className: "h-full" }),
+          organism("MediaFrame", { alt: ref("product.name"), src: ref("product.image"), ratio: ref("ratio"), className: "h-full" }),
           when(ref("product.badge"), [use("Badge", { props: { Variant: "default", Size: "default", Class: "absolute left-4 top-4" }, attrs: { "data-testid": "badge" } }, text(at(ref("badges"), ref("product.badge"))))])),
       ]),
       use("CardContent", { props: { Class: "flex flex-1 flex-col gap-2" } },
         use("Text", { props: { Size: "xs", Class: "uppercase tracking-wide text-muted-foreground" } }, text(ref("product.category"))),
-        use("Title", { props: { As: 3, Size: "base", Weight: "bold" } }, text(ref("product.name"))),
+        use("Title", { props: { As: 3, Size: "base", Weight: "bold" } }, when(ref("product.href"), [use("Link", { props: { Href: ref("product.href"), Variant: "default" }, attrs: { "data-testid": "open" } }, text(ref("product.name")))], [text(ref("product.name"))])),
         when(eq(ref("rating"), "show"), [use("Group", { props: { Gap: "2" } },
           organism("Rating", { value: ref("product.rating"), label: tpl(ref("labels.ratingLabel"), ref("product.rating")), size: 16 }),
           use("Text", { props: { Size: "xs", Class: "text-muted-foreground" } }, text(tpl(ref("labels.reviews"), ref("product.reviews")))))]),

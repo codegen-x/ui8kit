@@ -45,6 +45,16 @@
       {
         "name": "inStock",
         "type": "boolean"
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "optional": true
+      },
+      {
+        "name": "image",
+        "type": "string",
+        "optional": true
       }
     ],
     "ProductLabels": [
@@ -226,6 +236,9 @@
                     "alt": {
                       "$": "product.name"
                     },
+                    "src": {
+                      "$": "product.image"
+                    },
                     "ratio": {
                       "$": "ratio"
                     },
@@ -298,9 +311,37 @@
               },
               "children": [
                 {
-                  "text": {
-                    "$": "product.name"
-                  }
+                  "when": {
+                    "$": "product.href"
+                  },
+                  "then": [
+                    {
+                      "use": "Link",
+                      "props": {
+                        "Href": {
+                          "$": "product.href"
+                        },
+                        "Variant": "default"
+                      },
+                      "attrs": {
+                        "data-testid": "open"
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "$": "product.name"
+                          }
+                        }
+                      ]
+                    }
+                  ],
+                  "else": [
+                    {
+                      "text": {
+                        "$": "product.name"
+                      }
+                    }
+                  ]
                 }
               ]
             },

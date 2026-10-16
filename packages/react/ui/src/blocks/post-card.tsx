@@ -50,7 +50,7 @@ export function PostCard({
           data-meta="news"
         >
           <Box className={cn("relative shrink-0 overflow-hidden", defaults.news.cover)} data-testid="news-cover">
-            <MediaFrame alt={post.title} className={cn("size-full", defaults.media.rounded)} />
+            <MediaFrame alt={post.title} src={post.image} className={cn("size-full", defaults.media.rounded)} />
             <Title
               as={3}
               size="xs"
@@ -96,7 +96,7 @@ export function PostCard({
         >
           {((media as string) === "image") ? (
             <Box className={cn("relative shrink-0", (((layout as string) === "horizontal") ? "sm:w-64" : ""))}>
-              <MediaFrame alt={post.title} className="h-full" />
+              <MediaFrame alt={post.title} src={post.image} className="h-full" />
             </Box>
           ) : null}
           <CardContent className="flex flex-1 flex-col gap-2">
@@ -134,7 +134,7 @@ export function PostCard({
               </Group>
             ) : null}
             {((meta as string) !== "news") ? (
-              <Link href="#/" variant="default" data-testid="read">
+              <Link href={(post.href ?? "#/")} variant="default" data-testid="read">
                 {labels.read}
               </Link>
             ) : null}

@@ -12,6 +12,8 @@ export type Product = {
   badge: string;
   category: string;
   inStock: boolean;
+  href?: string;
+  image?: string;
 };
 
 export type ProductLabels = {

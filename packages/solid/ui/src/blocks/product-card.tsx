@@ -12,6 +12,7 @@ import { Box } from "../primitives/box/box";
 import { Button } from "../primitives/button/button";
 import { CardContent } from "../primitives/card/card-content";
 import { Group } from "../primitives/group/group";
+import { Link } from "../primitives/link/link";
 import { Text } from "../primitives/text/text";
 import { Title } from "../primitives/title/title";
 import { MediaFrame } from "../components/media-frame";
@@ -58,7 +59,7 @@ export function ProductCard({
     >
       {((media as string) === "image") ? (
         <Box class={cn("relative shrink-0", (((layout as string) === "horizontal") ? "sm:w-48" : ""))}>
-          <MediaFrame alt={product.name} ratio={ratio} class="h-full" />
+          <MediaFrame alt={product.name} src={product.image} ratio={ratio} class="h-full" />
           {product.badge ? (
             <Badge variant="default" size="default" class="absolute left-4 top-4" data-testid="badge">
               {at(badges, product.badge)}
@@ -71,7 +72,15 @@ export function ProductCard({
           {product.category}
         </Text>
         <Title as={3} size="base" weight="bold">
-          {product.name}
+          {product.href ? (
+            <Link href={product.href} variant="default" data-testid="open">
+              {product.name}
+            </Link>
+          ) : (
+            <>
+              {product.name}
+            </>
+          )}
         </Title>
         {((rating as string) === "show") ? (
           <Group gap="2">

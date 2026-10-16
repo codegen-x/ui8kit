@@ -10,6 +10,7 @@ import (
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/button"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/card"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/group"
+	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/link"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/text"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/title"
 	uiutils "github.com/codegen-x/ui8kit/packages/templ/ui/utils"
@@ -42,7 +43,7 @@ templ ProductCard(p ProductCardProps) {
 	@block.Block(block.BlockProps{Tag: "article", Class: uiutils.S(uiutils.Cnv("flex flex-col gap-8 bg-card p-6 text-card-foreground inset-ring inset-ring-border rounded", "h-full gap-4 overflow-hidden", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "horizontal")), "flex flex-col sm:flex-row", "flex flex-col"))), Attrs: uiutils.Attrs("data-slot", "card", "data-testid", "item", "data-layout", vLayout)}) {
 		if uiutils.Eq(vMedia, "image") {
 			@box.Box(box.BoxProps{Class: uiutils.S(uiutils.Cnv("relative shrink-0", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "horizontal")), "sm:w-48", "")))}) {
-				@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vProduct, "name"), Ratio: vRatio, Class: uiutils.Cnv("h-full")})
+				@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vProduct, "name"), Src: uiutils.Get(vProduct, "image"), Ratio: vRatio, Class: uiutils.Cnv("h-full")})
 				if uiutils.T(uiutils.Get(vProduct, "badge")) {
 					@badge.Badge(badge.BadgeProps{Variant: "default", Size: "default", Class: "absolute left-4 top-4", Attrs: uiutils.Attrs("data-testid", "badge")}) {
 						{ uiutils.Text(uiutils.At(vBadges, uiutils.Get(vProduct, "badge"))) }
@@ -55,7 +56,13 @@ templ ProductCard(p ProductCardProps) {
 				{ uiutils.Text(uiutils.Get(vProduct, "category")) }
 			}
 			@title.Title(title.TitleProps{As: uiutils.HeadingLevel(uiutils.I(float64(3))), Size: "base", Weight: "bold"}) {
-				{ uiutils.Text(uiutils.Get(vProduct, "name")) }
+				if uiutils.T(uiutils.Get(vProduct, "href")) {
+					@link.Link(link.LinkProps{Href: uiutils.S(uiutils.Get(vProduct, "href")), Variant: "default", Attrs: uiutils.Attrs("data-testid", "open")}) {
+						{ uiutils.Text(uiutils.Get(vProduct, "name")) }
+					}
+				} else {
+					{ uiutils.Text(uiutils.Get(vProduct, "name")) }
+				}
 			}
 			if uiutils.Eq(vRating, "show") {
 				@group.Group(group.GroupProps{Gap: "2"}) {

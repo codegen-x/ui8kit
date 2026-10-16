@@ -28,6 +28,7 @@ import Box from "../primitives/box/box.vue";
 import Button from "../primitives/button/button.vue";
 import CardContent from "../primitives/card/card-content.vue";
 import Group from "../primitives/group/group.vue";
+import Link from "../primitives/link/link.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
 import MediaFrame from "../components/media-frame.vue";
@@ -64,7 +65,7 @@ const emit = defineEmits<{ add: [id: string] }>();
       v-if="((media as string) === 'image')"
       :class="cn('relative shrink-0', (((layout as string) === 'horizontal') ? 'sm:w-48' : ''))"
     >
-      <MediaFrame :alt="product.name" :ratio="ratio" class="h-full" />
+      <MediaFrame :alt="product.name" :src="product.image" :ratio="ratio" class="h-full" />
       <Badge
         v-if="product.badge"
         variant="default"
@@ -80,7 +81,12 @@ const emit = defineEmits<{ add: [id: string] }>();
         {{ product.category }}
       </Text>
       <Title :as="3" size="base" weight="bold">
-        {{ product.name }}
+        <Link v-if="product.href" :href="product.href" variant="default" data-testid="open">
+          {{ product.name }}
+        </Link>
+        <template v-else>
+          {{ product.name }}
+        </template>
       </Title>
       <Group v-if="((rating as string) === 'show')" gap="2">
         <Rating :value="product.rating" :label="tpl(labels.ratingLabel, product.rating)" />

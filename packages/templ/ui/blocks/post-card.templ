@@ -36,7 +36,7 @@ templ PostCard(p PostCardProps) {
 	if uiutils.Eq(vMeta, "news") {
 		@block.Block(block.BlockProps{Tag: "article", Class: uiutils.S(uiutils.Cnv("flex flex-col gap-2 overflow-hidden rounded p-0 inset-ring inset-ring-border", uiutils.Get(presetDefaults, "news", "card"))), Attrs: uiutils.Attrs("data-testid", "item", "data-layout", vLayout, "data-meta", "news")}) {
 			@box.Box(box.BoxProps{Class: uiutils.S(uiutils.Cnv("relative shrink-0 overflow-hidden", uiutils.Get(presetDefaults, "news", "cover"))), Attrs: uiutils.Attrs("data-testid", "news-cover")}) {
-				@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vPost, "title"), Class: uiutils.Cnv(uiutils.Cnv("size-full", uiutils.Get(presetDefaults, "media", "rounded")))})
+				@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vPost, "title"), Src: uiutils.Get(vPost, "image"), Class: uiutils.Cnv(uiutils.Cnv("size-full", uiutils.Get(presetDefaults, "media", "rounded")))})
 				@title.Title(title.TitleProps{As: uiutils.HeadingLevel(uiutils.I(float64(3))), Size: "xs", Weight: "semibold", Class: uiutils.S(uiutils.Cnv("pointer-events-none absolute inset-x-12 line-clamp-2 text-center leading-5 text-foreground", uiutils.Get(presetDefaults, "news", "title"))), Attrs: uiutils.Attrs("data-testid", "news-title")}) {
 					{ uiutils.Text(uiutils.Get(vPost, "title")) }
 				}
@@ -57,7 +57,7 @@ templ PostCard(p PostCardProps) {
 		@block.Block(block.BlockProps{Tag: "article", Class: uiutils.S(uiutils.Cnv("flex flex-col gap-8 bg-card p-6 text-card-foreground inset-ring inset-ring-border rounded", "h-full gap-4 overflow-hidden", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "horizontal")), "flex flex-col sm:flex-row", "flex flex-col"))), Attrs: uiutils.Attrs("data-slot", "card", "data-testid", "item", "data-layout", vLayout, "data-meta", vMeta)}) {
 			if uiutils.Eq(vMedia, "image") {
 				@box.Box(box.BoxProps{Class: uiutils.S(uiutils.Cnv("relative shrink-0", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "horizontal")), "sm:w-64", "")))}) {
-					@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vPost, "title"), Class: uiutils.Cnv("h-full")})
+					@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vPost, "title"), Src: uiutils.Get(vPost, "image"), Class: uiutils.Cnv("h-full")})
 				}
 			}
 			@card.CardContent(card.CardContentProps{Class: "flex flex-1 flex-col gap-2"}) {
@@ -95,7 +95,7 @@ templ PostCard(p PostCardProps) {
 					}
 				}
 				if !uiutils.Eq(vMeta, "news") {
-					@link.Link(link.LinkProps{Href: "#/", Variant: "default", Attrs: uiutils.Attrs("data-testid", "read")}) {
+					@link.Link(link.LinkProps{Href: uiutils.S(uiutils.Coalesce(uiutils.Get(vPost, "href"), "#/")), Variant: "default", Attrs: uiutils.Attrs("data-testid", "read")}) {
 						{ uiutils.Text(uiutils.Get(vLabels, "read")) }
 					}
 				}

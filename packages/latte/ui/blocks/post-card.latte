@@ -11,7 +11,7 @@
 {if ui_t(ui_eq($v_meta, 'news'))}
   {capture $c_6}
     {capture $c_2}
-      {=ui_include('blocks/media-frame.latte', ['p' => ['alt' => ui_get($v_post, ['title']), 'className' => ui_cnv([ui_cnv(['size-full', ui_preset('blocks/presets/defaults.json', ['media', 'rounded'])])])]])|noescape}
+      {=ui_include('blocks/media-frame.latte', ['p' => ['alt' => ui_get($v_post, ['title']), 'src' => ui_get($v_post, ['image']), 'className' => ui_cnv([ui_cnv(['size-full', ui_preset('blocks/presets/defaults.json', ['media', 'rounded'])])])]])|noescape}
       {capture $c_1}
         {=ui_text(ui_get($v_post, ['title']))}
       {/capture}
@@ -38,7 +38,7 @@
   {capture $c_18}
     {if ui_t(ui_eq($v_media, 'image'))}
       {capture $c_7}
-        {=ui_include('blocks/media-frame.latte', ['p' => ['alt' => ui_get($v_post, ['title']), 'className' => ui_cnv(['h-full'])]])|noescape}
+        {=ui_include('blocks/media-frame.latte', ['p' => ['alt' => ui_get($v_post, ['title']), 'src' => ui_get($v_post, ['image']), 'className' => ui_cnv(['h-full'])]])|noescape}
       {/capture}
       {=ui_include('ui/box/box.latte', ['p' => ['Class' => ui_s(ui_cnv(['relative shrink-0', (ui_t(ui_eq($v_layout, 'horizontal')) ? 'sm:w-64' : '')]))], 'children' => $c_7])|noescape}
     {/if}
@@ -88,7 +88,7 @@
         {capture $c_16}
           {=ui_text(ui_get($v_labels, ['read']))}
         {/capture}
-        {=ui_include('ui/link/link.latte', ['p' => ['Href' => '#/', 'Variant' => 'default', 'Attrs' => ui_attrs(['data-testid', 'read'])], 'children' => $c_16])|noescape}
+        {=ui_include('ui/link/link.latte', ['p' => ['Href' => ui_s(ui_coalesce([ui_get($v_post, ['href']), '#/'])), 'Variant' => 'default', 'Attrs' => ui_attrs(['data-testid', 'read'])], 'children' => $c_16])|noescape}
       {/if}
     {/capture}
     {=ui_include('ui/card/card-content.latte', ['p' => ['Class' => 'flex flex-1 flex-col gap-2'], 'children' => $c_17])|noescape}
