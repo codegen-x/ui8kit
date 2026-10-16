@@ -39,7 +39,7 @@
     "excerpt": "excerpt",
     "category": "metadata.category.value",
     "author": "metadata.author.value",
-    "date": "metadata.date.value",
+    "date": "metadata.date.value|date",
     "minutes": "metadata.minutes.value",
     "icon": "metadata.icon.value",
   } as const;
@@ -50,7 +50,7 @@
     "author": "metadata.author.value",
     "rating": "metadata.rating.value",
     "text": "metadata.text.value",
-    "date": "metadata.date.value",
+    "date": "metadata.date.value|date",
   } as const;
   const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
   const FAQTABS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;

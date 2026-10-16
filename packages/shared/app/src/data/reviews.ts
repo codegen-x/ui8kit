@@ -21,7 +21,7 @@ export const reviews = [
         "value": "Bright enough to read, soft enough to relax. The base stays put."
       },
       "date": {
-        "value": "Mar 12, 2026"
+        "value": "2026-03-12T10:00:00Z"
       }
     },
     "version": 1,
@@ -48,7 +48,7 @@ export const reviews = [
         "value": "Build quality is better than the price suggests."
       },
       "date": {
-        "value": "Mar 03, 2026"
+        "value": "2026-03-03T10:00:00Z"
       }
     },
     "version": 1,
@@ -75,7 +75,7 @@ export const reviews = [
         "value": "Easy setup. I would like one more color."
       },
       "date": {
-        "value": "Feb 19, 2026"
+        "value": "2026-02-19T10:00:00Z"
       }
     },
     "version": 1,

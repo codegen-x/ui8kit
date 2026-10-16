@@ -241,7 +241,7 @@
     "package.json": "bfbf0b1fcf32f41b8c9164d50f7923b712ce6ef51c89f6e7b0109ef5873f23c0",
     "py/ui8kit_jinja/__init__.py": "6a86a4e8d34684501d33611f950a9ec4d6a378db6b25b43fc423c0f9c8cb8349",
     "py/ui8kit_jinja/cn_merge.py": "111393538bb67c177dc5a38cdcf2b3e5c6cc2786cb1d249ec5234ecb2343eae3",
-    "py/ui8kit_jinja/runtime.py": "7ed54d9697df4aff71b686f8420851fe84dbd29cb5e7a7e9fdde2824c6f91501",
+    "py/ui8kit_jinja/runtime.py": "d567aa4ec601ef1cd34d349648c142e448077231475f8e519ffea2cace944263",
     "pyproject.toml": "ade9c1863e09f026639477231462c3a4be0111426fef3734d58d54cf989eff4b",
     "README.md": "f37ef8d37b0f5753a5a69fd714deea157d41bc14a7b9d4add362c367a83fd701",
     "requirements.txt": "5a9f4ede946d7c960b7f190c65c2f75ae501f07661bb4fe010a9f13c982d07c2",

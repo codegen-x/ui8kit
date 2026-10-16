@@ -15,7 +15,7 @@ export const cart = [
         "value": "Brass"
       },
       "price": {
-        "value": 89
+        "value": 8900
       },
       "currency": {
         "value": "USD"
@@ -42,7 +42,7 @@ export const cart = [
         "value": "Olive"
       },
       "price": {
-        "value": 129
+        "value": 12900
       },
       "currency": {
         "value": "USD"
@@ -69,7 +69,7 @@ export const cart = [
         "value": "Charcoal"
       },
       "price": {
-        "value": 35
+        "value": 3500
       },
       "currency": {
         "value": "USD"

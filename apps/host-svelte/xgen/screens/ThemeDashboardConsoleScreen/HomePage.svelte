@@ -22,7 +22,13 @@
 
   const METRICS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
   const SERIES_FIELDS = {"id":"id","label":"title","value":"metadata.value.value"} as const;
-  const ACTIVITY_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","time":"metadata.time.value","tone":"metadata.tone.value"} as const;
+  const ACTIVITY_FIELDS = {
+    "id": "id",
+    "title": "title",
+    "text": "metadata.text.value",
+    "time": "metadata.time.value|ago",
+    "tone": "metadata.tone.value",
+  } as const;
 
   const metrics = fromCodex<Stat>(metricsEntries, METRICS_FIELDS);
   const series = fromCodex<Point>(seriesEntries, SERIES_FIELDS);

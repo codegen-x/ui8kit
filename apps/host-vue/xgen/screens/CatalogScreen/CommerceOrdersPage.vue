@@ -23,7 +23,7 @@ import { orders as ordersEntries } from "@ui8kit/app-shared/data/orders";
 const ORDERS_FIELDS = {
   "id": "id",
   "number": "title",
-  "date": "metadata.date.value",
+  "date": "metadata.date.value|date",
   "total": "metadata.total.value",
   "currency": "metadata.currency.value",
   "status": "metadata.order_status.value",

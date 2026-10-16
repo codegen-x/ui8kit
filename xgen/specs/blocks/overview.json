@@ -125,7 +125,7 @@
         "id": "id",
         "title": "title",
         "text": "metadata.text.value",
-        "time": "metadata.time.value",
+        "time": "metadata.time.value|ago",
         "tone": "metadata.tone.value"
       }
     }

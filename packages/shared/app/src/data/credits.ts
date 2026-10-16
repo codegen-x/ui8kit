@@ -15,7 +15,7 @@ export const credits = [
         "value": 100
       },
       "price": {
-        "value": 9
+        "value": 900
       },
       "currency": {
         "value": "USD"
@@ -42,7 +42,7 @@ export const credits = [
         "value": 500
       },
       "price": {
-        "value": 39
+        "value": 3900
       },
       "currency": {
         "value": "USD"
@@ -69,7 +69,7 @@ export const credits = [
         "value": 2000
       },
       "price": {
-        "value": 129
+        "value": 12900
       },
       "currency": {
         "value": "USD"
@@ -96,7 +96,7 @@ export const credits = [
         "value": 10000
       },
       "price": {
-        "value": 549
+        "value": 54900
       },
       "currency": {
         "value": "USD"

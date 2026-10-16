@@ -46,7 +46,7 @@
     "location": "metadata.location.value",
     "type": "metadata.type.value",
     "salary": "metadata.salary.value",
-    "posted": "metadata.posted.value",
+    "posted": "metadata.posted.value|ago-days",
   } as const;
   const DEPARTMENTS_FIELDS = {"id":"id","name":"title"} as const;
 

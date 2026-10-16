@@ -34,7 +34,7 @@
         "name": "rate",
         "type": "number",
         "optional": false,
-        "docs": "price of one unit"
+        "docs": "price of one unit in minor units (cents)"
       },
       {
         "name": "currency",

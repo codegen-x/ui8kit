@@ -20,7 +20,13 @@ import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { activity as activityEntries } from "@ui8kit/app-shared/data/activity";
 
-const ACTIVITY_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","time":"metadata.time.value","tone":"metadata.tone.value"} as const;
+const ACTIVITY_FIELDS = {
+  "id": "id",
+  "title": "title",
+  "text": "metadata.text.value",
+  "time": "metadata.time.value|ago",
+  "tone": "metadata.tone.value",
+} as const;
 
 const activity = fromCodex<Event>(activityEntries, ACTIVITY_FIELDS);
 

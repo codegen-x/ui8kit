@@ -39,7 +39,7 @@
     "author": "metadata.author.value",
     "rating": "metadata.rating.value",
     "text": "metadata.text.value",
-    "date": "metadata.date.value",
+    "date": "metadata.date.value|date",
   } as const;
   const DETAILS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value"} as const;
   const SPECS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value"} as const;

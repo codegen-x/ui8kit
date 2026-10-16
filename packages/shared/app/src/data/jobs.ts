@@ -24,7 +24,7 @@ export const jobs = [
         "value": "$120k to $150k"
       },
       "posted": {
-        "value": "2 days ago"
+        "value": "2026-03-28T12:00:00Z"
       }
     },
     "version": 1,
@@ -54,7 +54,7 @@ export const jobs = [
         "value": "$110k to $140k"
       },
       "posted": {
-        "value": "1 week ago"
+        "value": "2026-03-23T12:00:00Z"
       }
     },
     "version": 1,
@@ -84,7 +84,7 @@ export const jobs = [
         "value": "$95k to $120k"
       },
       "posted": {
-        "value": "3 days ago"
+        "value": "2026-03-27T12:00:00Z"
       }
     },
     "version": 1,
@@ -114,7 +114,7 @@ export const jobs = [
         "value": "$60 an hour"
       },
       "posted": {
-        "value": "2 weeks ago"
+        "value": "2026-03-16T12:00:00Z"
       }
     },
     "version": 1,
@@ -144,7 +144,7 @@ export const jobs = [
         "value": "$80k to $95k"
       },
       "posted": {
-        "value": "5 days ago"
+        "value": "2026-03-25T12:00:00Z"
       }
     },
     "version": 1,
@@ -174,7 +174,7 @@ export const jobs = [
         "value": "$50 an hour"
       },
       "posted": {
-        "value": "1 day ago"
+        "value": "2026-03-29T12:00:00Z"
       }
     },
     "version": 1,

@@ -62,7 +62,7 @@ export function UsagePage() {
         text={ui.vibe.usage.text}
         usage={5000}
         slider={{ min: 100, max: 10000, label: ui.vibe.usage.slider, unit: ui.vibe.usage.unit }}
-        price={{ rate: 0.01, currency: ui.vibe.usage.currency, label: ui.vibe.usage.estimate }}
+        price={{ rate: 1, currency: ui.vibe.usage.currency, label: ui.vibe.usage.estimate }}
         cta={ui.vibe.usage.cta}
         href="#/"
         layout="card"

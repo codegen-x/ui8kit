@@ -41,7 +41,7 @@ const rivals = fromCodex<CompareRow>(rivalsEntries, RIVALS_FIELDS);
 const credits = fromCodex<Pack>(creditsEntries, CREDITS_FIELDS);
 
 const USAGE_SLIDER = { min: 100, max: 10000, label: ui.vibe.usage.slider, unit: ui.vibe.usage.unit } as const;
-const USAGE_PRICE = { rate: 0.01, currency: ui.vibe.usage.currency, label: ui.vibe.usage.estimate } as const;
+const USAGE_PRICE = { rate: 1, currency: ui.vibe.usage.currency, label: ui.vibe.usage.estimate } as const;
 
 export function MarketingPricingToolsPage() {
   return (

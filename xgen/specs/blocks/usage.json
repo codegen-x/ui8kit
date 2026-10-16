@@ -85,7 +85,7 @@
         }
       },
       "price": {
-        "rate": 0.01,
+        "rate": 1,
         "currency": {
           "$": "ui.vibe.usage.currency"
         },

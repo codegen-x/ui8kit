@@ -12,14 +12,24 @@ export function fmtNumber(n: number): string {
   return nf.format(n);
 }
 
+/** digits of the minor unit (ISO 4217): cents for most currencies, none for JPY and KRW */
+export function minorDigits(currency: string): number {
+  return currency === "JPY" || currency === "KRW" ? 0 : 2;
+}
+
 const moneyCache = new Map<string, Intl.NumberFormat>();
-export function fmtMoney(amount: number, currency: string): string {
-  let f = moneyCache.get(currency);
+/** money in integer minor units (Codex v0.4: 1250 = 12.50 USD) -> "$12.50"; whole amounts drop the fraction: 1499_00 -> "$1,499" */
+export function fmtMoney(minor: number, currency: string): string {
+  const d = minorDigits(currency);
+  const cents = Math.round(minor);
+  const frac = d > 0 && cents % 10 ** d !== 0 ? d : 0;
+  const key = `${currency}:${frac}`;
+  let f = moneyCache.get(key);
   if (!f) {
-    f = new Intl.NumberFormat("en-US", { style: "currency", currency, maximumFractionDigits: 0 });
-    moneyCache.set(currency, f);
+    f = new Intl.NumberFormat("en-US", { style: "currency", currency, minimumFractionDigits: frac, maximumFractionDigits: frac });
+    moneyCache.set(key, f);
   }
-  return f.format(amount);
+  return f.format(cents / 10 ** d);
 }
 
 /** a content word by key (the status of a record -> its label); the key itself when the dictionary has no entry */

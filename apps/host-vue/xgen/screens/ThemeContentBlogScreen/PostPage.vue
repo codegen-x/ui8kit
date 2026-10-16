@@ -14,7 +14,7 @@ const POSTS_FIELDS = {
   "excerpt": "excerpt",
   "category": "metadata.category.value",
   "author": "metadata.author.value",
-  "date": "metadata.date.value",
+  "date": "metadata.date.value|date",
   "minutes": "metadata.minutes.value",
   "icon": "metadata.icon.value",
 } as const;

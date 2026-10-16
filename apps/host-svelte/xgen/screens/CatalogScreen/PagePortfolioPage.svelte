@@ -43,7 +43,7 @@
     "quote": "metadata.quote.value",
     "rating": "metadata.rating.value",
     "handle": "metadata.handle.value",
-    "time": "metadata.time.value",
+    "time": "metadata.time.value|ago-short",
     "mark": "metadata.mark.value",
   } as const;
   const PROFILEFACTS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value"} as const;

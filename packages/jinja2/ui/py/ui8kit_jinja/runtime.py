@@ -254,11 +254,23 @@ def num(v: Any) -> str:
 _CURRENCY = {"USD": "$", "EUR": "\u20ac", "GBP": "\u00a3", "JPY": "\u00a5", "INR": "\u20b9", "CAD": "CA$", "AUD": "A$"}
 
 
+def minor_digits(c: str) -> int:
+    return 0 if c in ("JPY", "KRW") else 2
+
+
 def money(amount: Any, currency: Any) -> str:
+    """integer minor units (Codex v0.4: 1250 = 12.50) -> "$12.50"; whole amounts without the fraction"""
     c = s(currency)
     sym = _CURRENCY.get(c, c + "\u00a0")
-    f = _round_half_away(n(amount))
-    return "-" + sym + _group(-f, 0) if f < 0 else sym + _group(f, 0)
+    minor = int(_round_half_away(n(amount)))
+    sign = "-" if minor < 0 else ""
+    minor = abs(minor)
+    d = minor_digits(c)
+    whole, rest = divmod(minor, 10 ** d)
+    out = sign + sym + _group(float(whole), 0)
+    if d and rest:
+        out += "." + str(rest).zfill(d)
+    return out
 
 
 def at(d: Any, key: Any) -> str:

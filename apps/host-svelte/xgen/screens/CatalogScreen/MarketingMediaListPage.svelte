@@ -38,7 +38,7 @@
     "excerpt": "excerpt",
     "category": "metadata.category.value",
     "author": "metadata.author.value",
-    "date": "metadata.date.value",
+    "date": "metadata.date.value|date",
     "minutes": "metadata.minutes.value",
     "icon": "metadata.icon.value",
   } as const;
@@ -50,7 +50,7 @@
     "author": "metadata.author.value",
     "rating": "metadata.rating.value",
     "text": "metadata.text.value",
-    "date": "metadata.date.value",
+    "date": "metadata.date.value|date",
   } as const;
 
   const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);

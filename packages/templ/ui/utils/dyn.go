@@ -7,6 +7,7 @@ package uiutils
 // strict equality, String(), clsx + tailwind-merge for classes). Every helper is nil-safe, like `?.` in TypeScript.
 
 import (
+	"fmt"
 	"encoding/json"
 	"math"
 	"strconv"
@@ -362,18 +363,35 @@ func Num(v any) string { return group(N(v), 3) }
 
 var currencySymbols = map[string]string{"USD": "$", "EUR": "€", "GBP": "£", "JPY": "¥", "INR": "₹", "CAD": "CA$", "AUD": "A$"}
 
-// Money is Intl.NumberFormat("en-US", {style: "currency", maximumFractionDigits: 0}).
+// MinorDigits is the digits of the minor unit (ISO 4217): 2, or 0 for JPY and KRW.
+func MinorDigits(c string) int {
+	if c == "JPY" || c == "KRW" {
+		return 0
+	}
+	return 2
+}
+
+// Money formats integer minor units (Codex v0.4: 1250 = 12.50) like Intl.NumberFormat("en-US", {style: "currency"}),
+// without the fraction when the amount is whole: 149900 -> "$1,499", 1250 -> "$12.50".
 func Money(amount, currency any) string {
 	c := S(currency)
 	sym, ok := currencySymbols[c]
 	if !ok {
 		sym = c + "\u00a0"
 	}
-	f := math.Round(N(amount))
-	if f < 0 {
-		return "-" + sym + group(-f, 0)
+	minor := math.Round(N(amount))
+	sign := ""
+	if minor < 0 {
+		sign, minor = "-", -minor
 	}
-	return sym + group(f, 0)
+	d := MinorDigits(c)
+	unit := math.Pow(10, float64(d))
+	whole := math.Floor(minor / unit)
+	out := sign + sym + group(whole, 0)
+	if rest := minor - whole*unit; d > 0 && rest != 0 {
+		out += fmt.Sprintf(".%0*d", d, int(rest))
+	}
+	return out
 }
 
 // At is a content word by key, the key itself when the dictionary has no entry.

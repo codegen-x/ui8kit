@@ -36,7 +36,7 @@
     "quote": "metadata.quote.value",
     "rating": "metadata.rating.value",
     "handle": "metadata.handle.value",
-    "time": "metadata.time.value",
+    "time": "metadata.time.value|ago-short",
     "mark": "metadata.mark.value",
   } as const;
 

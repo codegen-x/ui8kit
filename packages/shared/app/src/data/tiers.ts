@@ -61,7 +61,7 @@ export const tiers = [
         "value": "For a small team"
       },
       "price": {
-        "value": 29
+        "value": 2900
       },
       "currency": {
         "value": "USD"
@@ -87,7 +87,7 @@ export const tiers = [
         ]
       },
       "yearly": {
-        "value": 290
+        "value": 29000
       }
     },
     "version": 1,
@@ -108,7 +108,7 @@ export const tiers = [
         "value": "For many sites and editors"
       },
       "price": {
-        "value": 99
+        "value": 9900
       },
       "currency": {
         "value": "USD"
@@ -134,7 +134,7 @@ export const tiers = [
         ]
       },
       "yearly": {
-        "value": 990
+        "value": 99000
       }
     },
     "version": 1,

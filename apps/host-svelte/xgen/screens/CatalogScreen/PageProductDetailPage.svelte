@@ -38,7 +38,7 @@
     "author": "metadata.author.value",
     "rating": "metadata.rating.value",
     "text": "metadata.text.value",
-    "date": "metadata.date.value",
+    "date": "metadata.date.value|date",
   } as const;
   const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
   const PRODUCTS_FIELDS = {

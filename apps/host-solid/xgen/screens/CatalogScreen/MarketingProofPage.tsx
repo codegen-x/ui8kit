@@ -35,7 +35,7 @@ const TESTIMONIALS_FIELDS = {
   "quote": "metadata.quote.value",
   "rating": "metadata.rating.value",
   "handle": "metadata.handle.value",
-  "time": "metadata.time.value",
+  "time": "metadata.time.value|ago-short",
   "mark": "metadata.mark.value",
 } as const;
 const LOGOS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;

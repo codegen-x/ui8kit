@@ -61,7 +61,7 @@ export const duo = [
         "value": "For a small team"
       },
       "price": {
-        "value": 29
+        "value": 2900
       },
       "currency": {
         "value": "USD"
@@ -87,7 +87,7 @@ export const duo = [
         ]
       },
       "yearly": {
-        "value": 290
+        "value": 29000
       }
     },
     "version": 1,

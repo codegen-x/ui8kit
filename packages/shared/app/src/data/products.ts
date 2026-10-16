@@ -15,7 +15,7 @@ export const products = [
         "value": "Warm, dimmable light with a weighted base."
       },
       "price": {
-        "value": 89
+        "value": 8900
       },
       "currency": {
         "value": "USD"
@@ -54,7 +54,7 @@ export const products = [
         "value": "Water-resistant, 22 litres, fits a 16 inch laptop."
       },
       "price": {
-        "value": 129
+        "value": 12900
       },
       "currency": {
         "value": "USD"
@@ -93,7 +93,7 @@ export const products = [
         "value": "Closed-back, 40 hour battery, wired and wireless."
       },
       "price": {
-        "value": 199
+        "value": 19900
       },
       "currency": {
         "value": "USD"
@@ -132,7 +132,7 @@ export const products = [
         "value": "Aluminium, folds flat, six heights."
       },
       "price": {
-        "value": 49
+        "value": 4900
       },
       "currency": {
         "value": "USD"
@@ -171,7 +171,7 @@ export const products = [
         "value": "Felt top with a non-slip base, 90 by 40 cm."
       },
       "price": {
-        "value": 35
+        "value": 3500
       },
       "currency": {
         "value": "USD"
@@ -210,7 +210,7 @@ export const products = [
         "value": "Delivered by email, never expires."
       },
       "price": {
-        "value": 50
+        "value": 5000
       },
       "currency": {
         "value": "USD"

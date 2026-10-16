@@ -32,7 +32,13 @@ import { tabs as tabsEntries } from "@ui8kit/app-shared/data/tabs";
 const SIDENAV_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
 const METRICS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
 const SERIES_FIELDS = {"id":"id","label":"title","value":"metadata.value.value"} as const;
-const ACTIVITY_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","time":"metadata.time.value","tone":"metadata.tone.value"} as const;
+const ACTIVITY_FIELDS = {
+  "id": "id",
+  "title": "title",
+  "text": "metadata.text.value",
+  "time": "metadata.time.value|ago",
+  "tone": "metadata.tone.value",
+} as const;
 const TABS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
 
 const sidenav = fromCodex<NavLink>(sidenavEntries, SIDENAV_FIELDS);

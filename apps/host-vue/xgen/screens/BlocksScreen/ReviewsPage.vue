@@ -26,7 +26,7 @@ const REVIEWS_FIELDS = {
   "author": "metadata.author.value",
   "rating": "metadata.rating.value",
   "text": "metadata.text.value",
-  "date": "metadata.date.value",
+  "date": "metadata.date.value|date",
 } as const;
 
 const reviews = fromCodex<Review>(reviewsEntries, REVIEWS_FIELDS);

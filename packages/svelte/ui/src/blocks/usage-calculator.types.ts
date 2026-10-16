@@ -11,7 +11,7 @@ export type UsageSlider = {
 };
 
 export type UsagePrice = {
-  /** price of one unit */
+  /** price of one unit in minor units (cents) */
   rate: number;
   currency: string;
   /** name of the estimate */

@@ -12,7 +12,7 @@ export const summary = [
     "title": "Subtotal",
     "metadata": {
       "amount": {
-        "value": 288
+        "value": 28800
       },
       "currency": {
         "value": "USD"
@@ -36,7 +36,7 @@ export const summary = [
     "title": "Shipping",
     "metadata": {
       "amount": {
-        "value": 12
+        "value": 1200
       },
       "currency": {
         "value": "USD"
@@ -60,7 +60,7 @@ export const summary = [
     "title": "Tax",
     "metadata": {
       "amount": {
-        "value": 24
+        "value": 2400
       },
       "currency": {
         "value": "USD"
@@ -84,7 +84,7 @@ export const summary = [
     "title": "Total",
     "metadata": {
       "amount": {
-        "value": 324
+        "value": 32400
       },
       "currency": {
         "value": "USD"

@@ -15,13 +15,13 @@ export const zones = [
         "value": "Old Town, Riverside, Market Square"
       },
       "price": {
-        "value": 12
+        "value": 1200
       },
       "freeFrom": {
-        "value": 75
+        "value": 7500
       },
       "minOrder": {
-        "value": 20
+        "value": 2000
       },
       "time": {
         "value": "90 minutes"
@@ -51,13 +51,13 @@ export const zones = [
         "value": "Northfield, Elm Park, Harbour"
       },
       "price": {
-        "value": 15
+        "value": 1500
       },
       "freeFrom": {
-        "value": 100
+        "value": 10000
       },
       "minOrder": {
-        "value": 30
+        "value": 3000
       },
       "time": {
         "value": "2 hours"
@@ -87,13 +87,13 @@ export const zones = [
         "value": "Westbrook, Hillside, Lakeview"
       },
       "price": {
-        "value": 19
+        "value": 1900
       },
       "freeFrom": {
-        "value": 150
+        "value": 15000
       },
       "minOrder": {
-        "value": 50
+        "value": 5000
       },
       "time": {
         "value": "Same day"

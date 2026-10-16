@@ -39,7 +39,7 @@ const TESTIMONIALS_FIELDS = {
   "quote": "metadata.quote.value",
   "rating": "metadata.rating.value",
   "handle": "metadata.handle.value",
-  "time": "metadata.time.value",
+  "time": "metadata.time.value|ago-short",
   "mark": "metadata.mark.value",
 } as const;
 const MEGAGROUPS_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
