@@ -16,10 +16,10 @@
   import { categories as categoriesEntries } from "@ui8kit/app-shared/data/categories";
   import { products as productsEntries } from "@ui8kit/app-shared/data/products";
 
-  const CATEGORIES_FIELDS = {"id":"id","name":"title.en","icon":"metadata.icon.value","count":"metadata.count.value"} as const;
+  const CATEGORIES_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","count":"metadata.count.value"} as const;
   const PRODUCTS_FIELDS = {
     "id": "id",
-    "name": "title.en",
+    "name": "title",
     "summary": "metadata.summary.value",
     "price": "metadata.price.value",
     "currency": "metadata.currency.value",

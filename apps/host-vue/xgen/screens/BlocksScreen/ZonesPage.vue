@@ -22,7 +22,7 @@ import { zones as zonesEntries } from "@ui8kit/app-shared/data/zones";
 
 const ZONES_FIELDS = {
   "id": "id",
-  "name": "title.en",
+  "name": "title",
   "area": "metadata.area.value",
   "price": "metadata.price.value",
   "freeFrom": "metadata.freeFrom.value",

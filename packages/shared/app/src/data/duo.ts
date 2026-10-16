@@ -3,16 +3,13 @@
 // Fixture of the Codex collection "duo" (xgen/fixtures/duo.json)
 export const duo = [
   {
-    "id": "plan-free",
+    "id": "duo-plan-free",
+    "locale": "en",
     "kind": "plan",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "free"
-    },
-    "title": {
-      "en": "Free"
-    },
+    "slug": "duo-plan-free",
+    "title": "Free",
     "metadata": {
       "tagline": {
         "value": "One person, one site"
@@ -32,7 +29,7 @@ export const duo = [
       "highlighted": {
         "value": false
       },
-      "status": {
+      "plan_status": {
         "value": "active"
       },
       "features": {
@@ -52,16 +49,13 @@ export const duo = [
     "published_at": "2026-03-11T10:00:00Z"
   },
   {
-    "id": "plan-pro",
+    "id": "duo-plan-pro",
+    "locale": "en",
     "kind": "plan",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "pro"
-    },
-    "title": {
-      "en": "Pro"
-    },
+    "slug": "duo-plan-pro",
+    "title": "Pro",
     "metadata": {
       "tagline": {
         "value": "For a small team"
@@ -81,7 +75,7 @@ export const duo = [
       "highlighted": {
         "value": true
       },
-      "status": {
+      "plan_status": {
         "value": "active"
       },
       "features": {

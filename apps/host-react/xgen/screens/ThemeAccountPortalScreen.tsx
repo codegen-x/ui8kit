@@ -36,7 +36,7 @@ const ROUTES = [
   {"path":"cards","area":"cards"},
   {"path":"profile","area":"profile"},
 ] as const;
-const SITEMAP_FIELDS = {"id":"id","title":"title.en","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
+const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
 
 const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS);
 const HOME = { area: "home", params: {} as Record<string, string> };

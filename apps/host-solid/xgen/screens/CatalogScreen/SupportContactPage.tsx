@@ -21,7 +21,7 @@ import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { channels as channelsEntries } from "@ui8kit/app-shared/data/channels";
 
-const CHANNELS_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+const CHANNELS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 
 const channels = fromCodex<Feature>(channelsEntries, CHANNELS_FIELDS);
 

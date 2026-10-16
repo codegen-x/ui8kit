@@ -4,15 +4,12 @@
 export const steps = [
   {
     "id": "step-plan",
+    "locale": "en",
     "kind": "step",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "plan"
-    },
-    "title": {
-      "en": "Pick a plan"
-    },
+    "slug": "plan",
+    "title": "Pick a plan",
     "metadata": {
       "text": {
         "value": "Start free and upgrade when the team grows."
@@ -28,15 +25,12 @@ export const steps = [
   },
   {
     "id": "step-connect",
+    "locale": "en",
     "kind": "step",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "connect"
-    },
-    "title": {
-      "en": "Connect your data"
-    },
+    "slug": "connect",
+    "title": "Connect your data",
     "metadata": {
       "text": {
         "value": "Point the site at your collections and content."
@@ -52,15 +46,12 @@ export const steps = [
   },
   {
     "id": "step-design",
+    "locale": "en",
     "kind": "step",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "design"
-    },
-    "title": {
-      "en": "Choose the blocks"
-    },
+    "slug": "design",
+    "title": "Choose the blocks",
     "metadata": {
       "text": {
         "value": "Compose pages from ready blocks and variants."
@@ -76,15 +67,12 @@ export const steps = [
   },
   {
     "id": "step-launch",
+    "locale": "en",
     "kind": "step",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "launch"
-    },
-    "title": {
-      "en": "Publish"
-    },
+    "slug": "launch",
+    "title": "Publish",
     "metadata": {
       "text": {
         "value": "Ship to every runtime with one command."

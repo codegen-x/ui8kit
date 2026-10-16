@@ -23,11 +23,11 @@
   import { products as productsEntries } from "@ui8kit/app-shared/data/products";
   import { reviews as reviewsEntries } from "@ui8kit/app-shared/data/reviews";
 
-  const TERMINAL_FIELDS = {"id":"id","text":"title.en","kind":"metadata.kind.value"} as const;
-  const CATEGORIES_FIELDS = {"id":"id","name":"title.en","icon":"metadata.icon.value","count":"metadata.count.value"} as const;
+  const TERMINAL_FIELDS = {"id":"id","text":"title","kind":"metadata.line_kind.value"} as const;
+  const CATEGORIES_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","count":"metadata.count.value"} as const;
   const PRODUCTS_FIELDS = {
     "id": "id",
-    "name": "title.en",
+    "name": "title",
     "summary": "metadata.summary.value",
     "price": "metadata.price.value",
     "currency": "metadata.currency.value",
@@ -39,7 +39,7 @@
   } as const;
   const REVIEWS_FIELDS = {
     "id": "id",
-    "title": "title.en",
+    "title": "title",
     "author": "metadata.author.value",
     "rating": "metadata.rating.value",
     "text": "metadata.text.value",

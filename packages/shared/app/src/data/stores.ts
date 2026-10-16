@@ -4,17 +4,14 @@
 export const stores = [
   {
     "id": "store-market",
+    "locale": "en",
     "kind": "store",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "market"
-    },
-    "title": {
-      "en": "Market Street"
-    },
+    "slug": "market",
+    "title": "Market Street",
     "metadata": {
-      "kind": {
+      "store_kind": {
         "value": "pickup"
       },
       "address": {
@@ -44,17 +41,14 @@ export const stores = [
   },
   {
     "id": "store-harbour",
+    "locale": "en",
     "kind": "store",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "harbour"
-    },
-    "title": {
-      "en": "Harbour Road"
-    },
+    "slug": "harbour",
+    "title": "Harbour Road",
     "metadata": {
-      "kind": {
+      "store_kind": {
         "value": "pickup"
       },
       "address": {
@@ -83,17 +77,14 @@ export const stores = [
   },
   {
     "id": "store-hillside",
+    "locale": "en",
     "kind": "store",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "hillside"
-    },
-    "title": {
-      "en": "Hillside Mall"
-    },
+    "slug": "hillside",
+    "title": "Hillside Mall",
     "metadata": {
-      "kind": {
+      "store_kind": {
         "value": "store"
       },
       "address": {
@@ -122,17 +113,14 @@ export const stores = [
   },
   {
     "id": "store-depot",
+    "locale": "en",
     "kind": "store",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "depot"
-    },
-    "title": {
-      "en": "North Depot"
-    },
+    "slug": "depot",
+    "title": "North Depot",
     "metadata": {
-      "kind": {
+      "store_kind": {
         "value": "pickup"
       },
       "address": {

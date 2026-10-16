@@ -4,15 +4,12 @@
 export const community = [
   {
     "id": "channel-forum",
+    "locale": "en",
     "kind": "channel",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "forum"
-    },
-    "title": {
-      "en": "Community forum"
-    },
+    "slug": "forum",
+    "title": "Community forum",
     "metadata": {
       "text": {
         "value": "Ask and answer questions"
@@ -28,15 +25,12 @@ export const community = [
   },
   {
     "id": "channel-videos",
+    "locale": "en",
     "kind": "channel",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "videos"
-    },
-    "title": {
-      "en": "Video lessons"
-    },
+    "slug": "videos",
+    "title": "Video lessons",
     "metadata": {
       "text": {
         "value": "Short walkthroughs every week"
@@ -51,16 +45,13 @@ export const community = [
     "published_at": "2026-03-05T10:00:00Z"
   },
   {
-    "id": "channel-chat",
+    "id": "community-channel-chat",
+    "locale": "en",
     "kind": "channel",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "chat"
-    },
-    "title": {
-      "en": "Group chat"
-    },
+    "slug": "community-channel-chat",
+    "title": "Group chat",
     "metadata": {
       "text": {
         "value": "Talk with other builders"

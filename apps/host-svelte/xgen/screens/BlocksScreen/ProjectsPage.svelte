@@ -22,7 +22,7 @@
 
   const PROJECTS_FIELDS = {
     "id": "id",
-    "title": "title.en",
+    "title": "title",
     "category": "metadata.category.value",
     "year": "metadata.year.value",
     "summary": "metadata.summary.value",

@@ -22,8 +22,8 @@
   import { details as detailsEntries } from "@ui8kit/app-shared/data/details";
   import { specs as specsEntries } from "@ui8kit/app-shared/data/specs";
 
-  const DETAILS_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value"} as const;
-  const SPECS_FIELDS = {"id":"id","label":"title.en","value":"metadata.value.value"} as const;
+  const DETAILS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value"} as const;
+  const SPECS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value"} as const;
 
   const details = fromCodex<Detail>(detailsEntries, DETAILS_FIELDS);
   const specs = fromCodex<Spec>(specsEntries, SPECS_FIELDS);

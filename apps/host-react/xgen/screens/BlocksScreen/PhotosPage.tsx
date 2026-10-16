@@ -20,7 +20,7 @@ import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { photos as photosEntries } from "@ui8kit/app-shared/data/photos";
 
-const PHOTOS_FIELDS = {"id":"id","title":"title.en","tag":"metadata.tag.value","size":"metadata.size.value"} as const;
+const PHOTOS_FIELDS = {"id":"id","title":"title","tag":"metadata.tag.value","size":"metadata.size.value"} as const;
 
 const photos = fromCodex<Photo>(photosEntries, PHOTOS_FIELDS);
 

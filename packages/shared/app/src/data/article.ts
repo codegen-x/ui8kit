@@ -4,15 +4,12 @@
 export const article = [
   {
     "id": "section-why",
+    "locale": "en",
     "kind": "section",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "why"
-    },
-    "title": {
-      "en": "Why start with the data"
-    },
+    "slug": "why",
+    "title": "Why start with the data",
     "metadata": {
       "text": {
         "value": "A page that reads one source stays correct when the source changes. Everything else is layout, and layout is cheap to change."
@@ -28,15 +25,12 @@ export const article = [
   },
   {
     "id": "section-blocks",
+    "locale": "en",
     "kind": "section",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "blocks"
-    },
-    "title": {
-      "en": "Compose from blocks"
-    },
+    "slug": "blocks",
+    "title": "Compose from blocks",
     "metadata": {
       "text": {
         "value": "Each block names its axes and its variants. A page is a list of blocks, so a new page is a few lines of data."
@@ -52,15 +46,12 @@ export const article = [
   },
   {
     "id": "section-check",
+    "locale": "en",
     "kind": "section",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "check"
-    },
-    "title": {
-      "en": "Check what you ship"
-    },
+    "slug": "check",
+    "title": "Check what you ship",
     "metadata": {
       "text": {
         "value": "Checks read the same specs as the generator, so a page cannot drift from its source without failing the build."
@@ -76,15 +67,12 @@ export const article = [
   },
   {
     "id": "section-next",
+    "locale": "en",
     "kind": "section",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "next"
-    },
-    "title": {
-      "en": "Where to go next"
-    },
+    "slug": "next",
+    "title": "Where to go next",
     "metadata": {
       "text": {
         "value": "Open the gallery, pick a variant and put it on a page. The guides cover themes, data and deployment."

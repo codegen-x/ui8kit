@@ -20,7 +20,7 @@ import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { categories as categoriesEntries } from "@ui8kit/app-shared/data/categories";
 
-const CATEGORIES_FIELDS = {"id":"id","name":"title.en","icon":"metadata.icon.value","count":"metadata.count.value"} as const;
+const CATEGORIES_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","count":"metadata.count.value"} as const;
 
 const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS);
 

@@ -22,7 +22,7 @@
 
   const MEMBERS_FIELDS = {
     "id": "id",
-    "name": "title.en",
+    "name": "title",
     "role": "metadata.role.value",
     "dept": "metadata.dept.value",
     "location": "metadata.location.value",

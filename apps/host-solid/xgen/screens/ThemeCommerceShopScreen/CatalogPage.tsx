@@ -20,10 +20,10 @@ import { products as productsEntries } from "@ui8kit/app-shared/data/products";
 import { crumbs as crumbsEntries } from "@ui8kit/app-shared/data/crumbs";
 import { stats as statsEntries } from "@ui8kit/app-shared/data/stats";
 
-const CATEGORIES_FIELDS = {"id":"id","name":"title.en","icon":"metadata.icon.value","count":"metadata.count.value"} as const;
+const CATEGORIES_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","count":"metadata.count.value"} as const;
 const PRODUCTS_FIELDS = {
   "id": "id",
-  "name": "title.en",
+  "name": "title",
   "summary": "metadata.summary.value",
   "price": "metadata.price.value",
   "currency": "metadata.currency.value",
@@ -33,8 +33,8 @@ const PRODUCTS_FIELDS = {
   "category": "metadata.category.value",
   "inStock": "metadata.inStock.value",
 } as const;
-const CRUMBS_FIELDS = {"id":"id","name":"title.en","icon":"metadata.icon.value"} as const;
-const STATS_FIELDS = {"id":"id","label":"title.en","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
+const CRUMBS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
+const STATS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
 
 const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS);
 const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS);

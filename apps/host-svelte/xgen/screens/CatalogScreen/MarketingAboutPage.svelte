@@ -27,10 +27,10 @@
   import { profilefacts as profilefactsEntries } from "@ui8kit/app-shared/data/profilefacts";
   import { skills as skillsEntries } from "@ui8kit/app-shared/data/skills";
 
-  const STATS_FIELDS = {"id":"id","label":"title.en","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
-  const VALUES_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
-  const PROFILEFACTS_FIELDS = {"id":"id","label":"title.en","value":"metadata.value.value"} as const;
-  const SKILLS_FIELDS = {"id":"id","label":"title.en","level":"metadata.level.value"} as const;
+  const STATS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
+  const VALUES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+  const PROFILEFACTS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value"} as const;
+  const SKILLS_FIELDS = {"id":"id","label":"title","level":"metadata.level.value"} as const;
 
   const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
   const values = fromCodex<Feature>(valuesEntries, VALUES_FIELDS);

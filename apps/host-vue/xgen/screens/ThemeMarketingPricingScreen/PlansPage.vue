@@ -20,31 +20,31 @@ import { compare as compareEntries } from "@ui8kit/app-shared/data/compare";
 
 const TIERS_FIELDS = {
   "id": "id",
-  "name": "title.en",
+  "name": "title",
   "tagline": "metadata.tagline.value",
   "price": "metadata.price.value",
   "currency": "metadata.currency.value",
   "seats": "metadata.seats.value",
   "storage": "metadata.storage.value",
   "highlighted": "metadata.highlighted.value",
-  "status": "metadata.status.value",
+  "status": "metadata.plan_status.value",
   "features": "metadata.features.value",
   "yearly": "metadata.yearly.value",
 } as const;
 const DUO_FIELDS = {
   "id": "id",
-  "name": "title.en",
+  "name": "title",
   "tagline": "metadata.tagline.value",
   "price": "metadata.price.value",
   "currency": "metadata.currency.value",
   "seats": "metadata.seats.value",
   "storage": "metadata.storage.value",
   "highlighted": "metadata.highlighted.value",
-  "status": "metadata.status.value",
+  "status": "metadata.plan_status.value",
   "features": "metadata.features.value",
   "yearly": "metadata.yearly.value",
 } as const;
-const COMPARE_FIELDS = {"id":"id","label":"title.en","a":"metadata.a.value","b":"metadata.b.value","c":"metadata.c.value"} as const;
+const COMPARE_FIELDS = {"id":"id","label":"title","a":"metadata.a.value","b":"metadata.b.value","c":"metadata.c.value"} as const;
 
 const tiers = fromCodex<Plan>(tiersEntries, TIERS_FIELDS);
 const duo = fromCodex<Plan>(duoEntries, DUO_FIELDS);
@@ -77,7 +77,7 @@ const compare = fromCodex<CompareRow>(compareEntries, COMPARE_FIELDS);
     :landmarkLabel="uniqLabel(tpl(ui.blocks.landmark, ui.blocks.names.pricing, ui.blocks.variants.pricing.duo))"
   />
   <PricingCard
-    :plan="tiers.find((i) => i.id === 'plan-team')!"
+    :plan="tiers.find((i) => i.id === 'tier-team')!"
     :labels="ui.pricing"
     emphasis="auto"
     density="default"

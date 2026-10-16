@@ -25,11 +25,11 @@
   import { rivals as rivalsEntries } from "@ui8kit/app-shared/data/rivals";
   import { credits as creditsEntries } from "@ui8kit/app-shared/data/credits";
 
-  const COMPARE_FIELDS = {"id":"id","label":"title.en","a":"metadata.a.value","b":"metadata.b.value","c":"metadata.c.value"} as const;
-  const RIVALS_FIELDS = {"id":"id","label":"title.en","a":"metadata.a.value","b":"metadata.b.value","c":"metadata.c.value"} as const;
+  const COMPARE_FIELDS = {"id":"id","label":"title","a":"metadata.a.value","b":"metadata.b.value","c":"metadata.c.value"} as const;
+  const RIVALS_FIELDS = {"id":"id","label":"title","a":"metadata.a.value","b":"metadata.b.value","c":"metadata.c.value"} as const;
   const CREDITS_FIELDS = {
     "id": "id",
-    "name": "title.en",
+    "name": "title",
     "credits": "metadata.credits.value",
     "price": "metadata.price.value",
     "currency": "metadata.currency.value",

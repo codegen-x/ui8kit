@@ -20,7 +20,7 @@
   import { ui } from "@ui8kit/app-shared/content";
   import { sitemap as sitemapEntries } from "@ui8kit/app-shared/data/sitemap";
 
-  const SITEMAP_FIELDS = {"id":"id","title":"title.en","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
+  const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
 
   const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS);
 

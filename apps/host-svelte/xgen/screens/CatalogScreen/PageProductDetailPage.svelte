@@ -31,19 +31,19 @@
   import { details as detailsEntries } from "@ui8kit/app-shared/data/details";
   import { specs as specsEntries } from "@ui8kit/app-shared/data/specs";
 
-  const NAVLINKS_FIELDS = {"id":"id","name":"title.en","icon":"metadata.icon.value"} as const;
+  const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
   const REVIEWS_FIELDS = {
     "id": "id",
-    "title": "title.en",
+    "title": "title",
     "author": "metadata.author.value",
     "rating": "metadata.rating.value",
     "text": "metadata.text.value",
     "date": "metadata.date.value",
   } as const;
-  const SITEMAP_FIELDS = {"id":"id","title":"title.en","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
+  const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
   const PRODUCTS_FIELDS = {
     "id": "id",
-    "name": "title.en",
+    "name": "title",
     "summary": "metadata.summary.value",
     "price": "metadata.price.value",
     "currency": "metadata.currency.value",
@@ -53,8 +53,8 @@
     "category": "metadata.category.value",
     "inStock": "metadata.inStock.value",
   } as const;
-  const DETAILS_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value"} as const;
-  const SPECS_FIELDS = {"id":"id","label":"title.en","value":"metadata.value.value"} as const;
+  const DETAILS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value"} as const;
+  const SPECS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value"} as const;
 
   const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS);
   const reviews = fromCodex<Review>(reviewsEntries, REVIEWS_FIELDS);

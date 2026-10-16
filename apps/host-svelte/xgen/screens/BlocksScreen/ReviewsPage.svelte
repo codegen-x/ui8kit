@@ -22,7 +22,7 @@
 
   const REVIEWS_FIELDS = {
     "id": "id",
-    "title": "title.en",
+    "title": "title",
     "author": "metadata.author.value",
     "rating": "metadata.rating.value",
     "text": "metadata.text.value",

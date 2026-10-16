@@ -10,15 +10,15 @@ import { topics as topicsEntries } from "@ui8kit/app-shared/data/topics";
 
 const POSTS_FIELDS = {
   "id": "id",
-  "title": "title.en",
-  "excerpt": "metadata.excerpt.value",
+  "title": "title",
+  "excerpt": "excerpt",
   "category": "metadata.category.value",
   "author": "metadata.author.value",
   "date": "metadata.date.value",
   "minutes": "metadata.minutes.value",
   "icon": "metadata.icon.value",
 } as const;
-const TOPICS_FIELDS = {"id":"id","title":"title.en","value":"metadata.value.value"} as const;
+const TOPICS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
 
 const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS);
 const topics = fromCodex<PostTopic>(topicsEntries, TOPICS_FIELDS);

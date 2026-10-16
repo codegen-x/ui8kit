@@ -22,8 +22,8 @@ import { ui } from "@ui8kit/app-shared/content";
 import { stats as statsEntries } from "@ui8kit/app-shared/data/stats";
 import { crumbs as crumbsEntries } from "@ui8kit/app-shared/data/crumbs";
 
-const STATS_FIELDS = {"id":"id","label":"title.en","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
-const CRUMBS_FIELDS = {"id":"id","name":"title.en","icon":"metadata.icon.value"} as const;
+const STATS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
+const CRUMBS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
 
 const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
 const crumbs = fromCodex<NavLink>(crumbsEntries, CRUMBS_FIELDS);

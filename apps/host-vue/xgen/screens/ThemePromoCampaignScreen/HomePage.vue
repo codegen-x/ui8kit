@@ -16,7 +16,7 @@ import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { terminal as terminalEntries } from "@ui8kit/app-shared/data/terminal";
 
-const TERMINAL_FIELDS = {"id":"id","text":"title.en","kind":"metadata.kind.value"} as const;
+const TERMINAL_FIELDS = {"id":"id","text":"title","kind":"metadata.line_kind.value"} as const;
 
 const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS);
 </script>

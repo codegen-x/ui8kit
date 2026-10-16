@@ -33,10 +33,10 @@
   import { deliveryfacts as deliveryfactsEntries } from "@ui8kit/app-shared/data/deliveryfacts";
   import { stores as storesEntries } from "@ui8kit/app-shared/data/stores";
 
-  const NAVLINKS_FIELDS = {"id":"id","name":"title.en","icon":"metadata.icon.value"} as const;
+  const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
   const ZONES_FIELDS = {
     "id": "id",
-    "name": "title.en",
+    "name": "title",
     "area": "metadata.area.value",
     "price": "metadata.price.value",
     "freeFrom": "metadata.freeFrom.value",
@@ -45,11 +45,11 @@
     "express": "metadata.express.value",
     "currency": "metadata.currency.value",
   } as const;
-  const SITEMAP_FIELDS = {"id":"id","title":"title.en","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
-  const PERKS_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+  const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
+  const PERKS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
   const PRODUCTS_FIELDS = {
     "id": "id",
-    "name": "title.en",
+    "name": "title",
     "summary": "metadata.summary.value",
     "price": "metadata.price.value",
     "currency": "metadata.currency.value",
@@ -59,11 +59,11 @@
     "category": "metadata.category.value",
     "inStock": "metadata.inStock.value",
   } as const;
-  const DELIVERYFACTS_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+  const DELIVERYFACTS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
   const STORES_FIELDS = {
     "id": "id",
-    "name": "title.en",
-    "kind": "metadata.kind.value",
+    "name": "title",
+    "kind": "metadata.store_kind.value",
     "address": "metadata.address.value",
     "hours": "metadata.hours.value",
     "phone": "metadata.phone.value",

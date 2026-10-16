@@ -4,15 +4,12 @@
 export const jobs = [
   {
     "id": "job-frontend",
+    "locale": "en",
     "kind": "job",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "frontend"
-    },
-    "title": {
-      "en": "Senior Frontend Engineer"
-    },
+    "slug": "frontend",
+    "title": "Senior Frontend Engineer",
     "metadata": {
       "dept": {
         "value": "department-engineering"
@@ -37,15 +34,12 @@ export const jobs = [
   },
   {
     "id": "job-platform",
+    "locale": "en",
     "kind": "job",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "platform"
-    },
-    "title": {
-      "en": "Platform Engineer"
-    },
+    "slug": "platform",
+    "title": "Platform Engineer",
     "metadata": {
       "dept": {
         "value": "department-engineering"
@@ -70,15 +64,12 @@ export const jobs = [
   },
   {
     "id": "job-designer",
+    "locale": "en",
     "kind": "job",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "designer"
-    },
-    "title": {
-      "en": "Product Designer"
-    },
+    "slug": "designer",
+    "title": "Product Designer",
     "metadata": {
       "dept": {
         "value": "department-design"
@@ -103,15 +94,12 @@ export const jobs = [
   },
   {
     "id": "job-brand",
+    "locale": "en",
     "kind": "job",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "brand"
-    },
-    "title": {
-      "en": "Brand Designer"
-    },
+    "slug": "brand",
+    "title": "Brand Designer",
     "metadata": {
       "dept": {
         "value": "department-design"
@@ -136,15 +124,12 @@ export const jobs = [
   },
   {
     "id": "job-success",
+    "locale": "en",
     "kind": "job",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "success"
-    },
-    "title": {
-      "en": "Customer Success Lead"
-    },
+    "slug": "success",
+    "title": "Customer Success Lead",
     "metadata": {
       "dept": {
         "value": "department-support"
@@ -169,15 +154,12 @@ export const jobs = [
   },
   {
     "id": "job-writer",
+    "locale": "en",
     "kind": "job",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "writer"
-    },
-    "title": {
-      "en": "Technical Writer"
-    },
+    "slug": "writer",
+    "title": "Technical Writer",
     "metadata": {
       "dept": {
         "value": "department-support"

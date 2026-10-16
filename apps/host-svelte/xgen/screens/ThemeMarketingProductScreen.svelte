@@ -22,7 +22,7 @@
     {"path":"capabilities","area":"capabilities"},
     {"path":"navigation","area":"navigation"},
   ] as const;
-  const SITEMAP_FIELDS = {"id":"id","title":"title.en","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
+  const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
 
   let { url }: { url: UrlPort } = $props();
 

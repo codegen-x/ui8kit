@@ -4,15 +4,12 @@
 export const plans = [
   {
     "id": "plan-free",
+    "locale": "en",
     "kind": "plan",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "free"
-    },
-    "title": {
-      "en": "Free"
-    },
+    "slug": "free",
+    "title": "Free",
     "metadata": {
       "tagline": {
         "value": "For trying things out"
@@ -32,7 +29,7 @@ export const plans = [
       "highlighted": {
         "value": false
       },
-      "status": {
+      "plan_status": {
         "value": "active"
       },
       "features": {
@@ -53,15 +50,12 @@ export const plans = [
   },
   {
     "id": "plan-starter",
+    "locale": "en",
     "kind": "plan",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "starter"
-    },
-    "title": {
-      "en": "Starter"
-    },
+    "slug": "starter",
+    "title": "Starter",
     "metadata": {
       "tagline": {
         "value": "For a single maker"
@@ -81,7 +75,7 @@ export const plans = [
       "highlighted": {
         "value": false
       },
-      "status": {
+      "plan_status": {
         "value": "active"
       },
       "features": {
@@ -103,15 +97,12 @@ export const plans = [
   },
   {
     "id": "plan-basic",
+    "locale": "en",
     "kind": "plan",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "basic"
-    },
-    "title": {
-      "en": "Basic"
-    },
+    "slug": "basic",
+    "title": "Basic",
     "metadata": {
       "tagline": {
         "value": "For small teams"
@@ -131,7 +122,7 @@ export const plans = [
       "highlighted": {
         "value": false
       },
-      "status": {
+      "plan_status": {
         "value": "active"
       },
       "features": {
@@ -152,15 +143,12 @@ export const plans = [
   },
   {
     "id": "plan-team",
+    "locale": "en",
     "kind": "plan",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "team"
-    },
-    "title": {
-      "en": "Team"
-    },
+    "slug": "team",
+    "title": "Team",
     "metadata": {
       "tagline": {
         "value": "For growing teams"
@@ -180,7 +168,7 @@ export const plans = [
       "highlighted": {
         "value": true
       },
-      "status": {
+      "plan_status": {
         "value": "active"
       },
       "features": {
@@ -202,15 +190,12 @@ export const plans = [
   },
   {
     "id": "plan-growth",
+    "locale": "en",
     "kind": "plan",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "growth"
-    },
-    "title": {
-      "en": "Growth"
-    },
+    "slug": "growth",
+    "title": "Growth",
     "metadata": {
       "tagline": {
         "value": "For teams that ship weekly"
@@ -230,7 +215,7 @@ export const plans = [
       "highlighted": {
         "value": false
       },
-      "status": {
+      "plan_status": {
         "value": "active"
       },
       "features": {
@@ -252,15 +237,12 @@ export const plans = [
   },
   {
     "id": "plan-business",
+    "locale": "en",
     "kind": "plan",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "business"
-    },
-    "title": {
-      "en": "Business"
-    },
+    "slug": "business",
+    "title": "Business",
     "metadata": {
       "tagline": {
         "value": "For departments"
@@ -280,7 +262,7 @@ export const plans = [
       "highlighted": {
         "value": false
       },
-      "status": {
+      "plan_status": {
         "value": "active"
       },
       "features": {
@@ -303,15 +285,12 @@ export const plans = [
   },
   {
     "id": "plan-pro",
+    "locale": "en",
     "kind": "plan",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "pro"
-    },
-    "title": {
-      "en": "Pro"
-    },
+    "slug": "pro",
+    "title": "Pro",
     "metadata": {
       "tagline": {
         "value": "For power users"
@@ -331,7 +310,7 @@ export const plans = [
       "highlighted": {
         "value": false
       },
-      "status": {
+      "plan_status": {
         "value": "active"
       },
       "features": {
@@ -352,15 +331,12 @@ export const plans = [
   },
   {
     "id": "plan-scale",
+    "locale": "en",
     "kind": "plan",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "scale"
-    },
-    "title": {
-      "en": "Scale"
-    },
+    "slug": "scale",
+    "title": "Scale",
     "metadata": {
       "tagline": {
         "value": "For high traffic"
@@ -380,7 +356,7 @@ export const plans = [
       "highlighted": {
         "value": false
       },
-      "status": {
+      "plan_status": {
         "value": "active"
       },
       "features": {
@@ -402,15 +378,12 @@ export const plans = [
   },
   {
     "id": "plan-studio",
+    "locale": "en",
     "kind": "plan",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "studio"
-    },
-    "title": {
-      "en": "Studio"
-    },
+    "slug": "studio",
+    "title": "Studio",
     "metadata": {
       "tagline": {
         "value": "For agencies"
@@ -430,7 +403,7 @@ export const plans = [
       "highlighted": {
         "value": false
       },
-      "status": {
+      "plan_status": {
         "value": "active"
       },
       "features": {
@@ -452,15 +425,12 @@ export const plans = [
   },
   {
     "id": "plan-enterprise",
+    "locale": "en",
     "kind": "plan",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "enterprise"
-    },
-    "title": {
-      "en": "Enterprise"
-    },
+    "slug": "enterprise",
+    "title": "Enterprise",
     "metadata": {
       "tagline": {
         "value": "For large companies"
@@ -480,7 +450,7 @@ export const plans = [
       "highlighted": {
         "value": false
       },
-      "status": {
+      "plan_status": {
         "value": "active"
       },
       "features": {
@@ -502,15 +472,12 @@ export const plans = [
   },
   {
     "id": "plan-legacy-starter",
+    "locale": "en",
     "kind": "plan",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "legacy-starter"
-    },
-    "title": {
-      "en": "Legacy Starter"
-    },
+    "slug": "legacy-starter",
+    "title": "Legacy Starter",
     "metadata": {
       "tagline": {
         "value": "Kept for old accounts"
@@ -530,7 +497,7 @@ export const plans = [
       "highlighted": {
         "value": false
       },
-      "status": {
+      "plan_status": {
         "value": "legacy"
       },
       "features": {
@@ -550,15 +517,12 @@ export const plans = [
   },
   {
     "id": "plan-legacy-team",
+    "locale": "en",
     "kind": "plan",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "legacy-team"
-    },
-    "title": {
-      "en": "Legacy Team"
-    },
+    "slug": "legacy-team",
+    "title": "Legacy Team",
     "metadata": {
       "tagline": {
         "value": "Kept for old accounts"
@@ -578,7 +542,7 @@ export const plans = [
       "highlighted": {
         "value": false
       },
-      "status": {
+      "plan_status": {
         "value": "legacy"
       },
       "features": {

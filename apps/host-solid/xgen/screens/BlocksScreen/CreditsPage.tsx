@@ -22,7 +22,7 @@ import { credits as creditsEntries } from "@ui8kit/app-shared/data/credits";
 
 const CREDITS_FIELDS = {
   "id": "id",
-  "name": "title.en",
+  "name": "title",
   "credits": "metadata.credits.value",
   "price": "metadata.price.value",
   "currency": "metadata.currency.value",

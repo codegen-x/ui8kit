@@ -4,15 +4,12 @@
 export const questions = [
   {
     "id": "question-start",
+    "locale": "en",
     "kind": "question",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "start"
-    },
-    "title": {
-      "en": "How do I start a new site?"
-    },
+    "slug": "start",
+    "title": "How do I start a new site?",
     "metadata": {
       "answer": {
         "value": "Pick a template, change the texts in one dictionary and publish. Most sites are live in an hour."
@@ -31,15 +28,12 @@ export const questions = [
   },
   {
     "id": "question-domain",
+    "locale": "en",
     "kind": "question",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "domain"
-    },
-    "title": {
-      "en": "Can I use my own domain?"
-    },
+    "slug": "domain",
+    "title": "Can I use my own domain?",
     "metadata": {
       "answer": {
         "value": "Yes. Point your domain at the site and we issue the certificate for you."
@@ -58,15 +52,12 @@ export const questions = [
   },
   {
     "id": "question-billing",
+    "locale": "en",
     "kind": "question",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "billing"
-    },
-    "title": {
-      "en": "When am I billed?"
-    },
+    "slug": "billing",
+    "title": "When am I billed?",
     "metadata": {
       "answer": {
         "value": "On the same day each month. You can switch to yearly billing and save two months."
@@ -85,15 +76,12 @@ export const questions = [
   },
   {
     "id": "question-refund",
+    "locale": "en",
     "kind": "question",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "refund"
-    },
-    "title": {
-      "en": "Do you give refunds?"
-    },
+    "slug": "refund",
+    "title": "Do you give refunds?",
     "metadata": {
       "answer": {
         "value": "Within 30 days of a payment, no questions asked."
@@ -112,15 +100,12 @@ export const questions = [
   },
   {
     "id": "question-team",
+    "locale": "en",
     "kind": "question",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "team"
-    },
-    "title": {
-      "en": "How do I invite my team?"
-    },
+    "slug": "team",
+    "title": "How do I invite my team?",
     "metadata": {
       "answer": {
         "value": "Open the settings, add their addresses and choose what each person can edit."
@@ -139,15 +124,12 @@ export const questions = [
   },
   {
     "id": "question-export",
+    "locale": "en",
     "kind": "question",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "export"
-    },
-    "title": {
-      "en": "Can I take my content with me?"
-    },
+    "slug": "export",
+    "title": "Can I take my content with me?",
     "metadata": {
       "answer": {
         "value": "Every plan exports all pages and texts as plain files at any time."

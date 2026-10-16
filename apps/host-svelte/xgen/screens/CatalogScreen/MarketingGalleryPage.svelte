@@ -25,15 +25,15 @@
   import { templates as templatesEntries } from "@ui8kit/app-shared/data/templates";
   import { prompts as templateFiltersEntries } from "@ui8kit/app-shared/data/prompts";
 
-  const PHOTOS_FIELDS = {"id":"id","title":"title.en","tag":"metadata.tag.value","size":"metadata.size.value"} as const;
+  const PHOTOS_FIELDS = {"id":"id","title":"title","tag":"metadata.tag.value","size":"metadata.size.value"} as const;
   const TEMPLATES_FIELDS = {
     "id": "id",
-    "title": "title.en",
+    "title": "title",
     "views": "metadata.views.value",
     "likes": "metadata.likes.value",
     "topic": "metadata.topic.value",
   } as const;
-  const TEMPLATEFILTERS_FIELDS = {"id":"id","title":"title.en","value":"metadata.value.value","icon":"metadata.icon.value"} as const;
+  const TEMPLATEFILTERS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value","icon":"metadata.icon.value"} as const;
 
   const photos = fromCodex<Photo>(photosEntries, PHOTOS_FIELDS);
   const templates = fromCodex<Template>(templatesEntries, TEMPLATES_FIELDS);

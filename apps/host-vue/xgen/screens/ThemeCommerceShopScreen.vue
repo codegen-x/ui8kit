@@ -33,7 +33,7 @@ const ROUTES = [
   {"path":"delivery","area":"delivery"},
   {"path":"orders","area":"orders"},
 ] as const;
-const SITEMAP_FIELDS = {"id":"id","title":"title.en","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
+const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
 
 const { url } = defineProps<{ url: UrlPort }>();
 

@@ -4,15 +4,12 @@
 export const days = [
   {
     "id": "day-today",
+    "locale": "en",
     "kind": "day",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "today"
-    },
-    "title": {
-      "en": "Today, 8 October"
-    },
+    "slug": "today",
+    "title": "Today, 8 October",
     "metadata": {
       "note": {
         "value": "2 windows left"
@@ -39,15 +36,12 @@ export const days = [
   },
   {
     "id": "day-tomorrow",
+    "locale": "en",
     "kind": "day",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "tomorrow"
-    },
-    "title": {
-      "en": "Tomorrow, 9 October"
-    },
+    "slug": "tomorrow",
+    "title": "Tomorrow, 9 October",
     "metadata": {
       "note": {
         "value": "6 windows"

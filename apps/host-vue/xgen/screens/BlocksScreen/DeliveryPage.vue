@@ -24,7 +24,7 @@ import { deliveryfacts as deliveryfactsEntries } from "@ui8kit/app-shared/data/d
 
 const ZONES_FIELDS = {
   "id": "id",
-  "name": "title.en",
+  "name": "title",
   "area": "metadata.area.value",
   "price": "metadata.price.value",
   "freeFrom": "metadata.freeFrom.value",
@@ -33,7 +33,7 @@ const ZONES_FIELDS = {
   "express": "metadata.express.value",
   "currency": "metadata.currency.value",
 } as const;
-const DELIVERYFACTS_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+const DELIVERYFACTS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 
 const zones = fromCodex<Zone>(zonesEntries, ZONES_FIELDS);
 const deliveryfacts = fromCodex<Feature>(deliveryfactsEntries, DELIVERYFACTS_FIELDS);

@@ -20,7 +20,7 @@ import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { bento as bentoEntries } from "@ui8kit/app-shared/data/bento";
 
-const BENTO_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","icon":"metadata.icon.value","size":"metadata.size.value"} as const;
+const BENTO_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","size":"metadata.size.value"} as const;
 
 const bento = fromCodex<Tile>(bentoEntries, BENTO_FIELDS);
 

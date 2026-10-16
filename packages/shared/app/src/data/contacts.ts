@@ -4,15 +4,12 @@
 export const contacts = [
   {
     "id": "contact-email",
+    "locale": "en",
     "kind": "contact",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "email"
-    },
-    "title": {
-      "en": "Email"
-    },
+    "slug": "email",
+    "title": "Email",
     "metadata": {
       "text": {
         "value": "hello@northwind.example"
@@ -28,15 +25,12 @@ export const contacts = [
   },
   {
     "id": "contact-phone",
+    "locale": "en",
     "kind": "contact",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "phone"
-    },
-    "title": {
-      "en": "Phone"
-    },
+    "slug": "phone",
+    "title": "Phone",
     "metadata": {
       "text": {
         "value": "+1 555 0100"
@@ -52,15 +46,12 @@ export const contacts = [
   },
   {
     "id": "contact-office",
+    "locale": "en",
     "kind": "contact",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "office"
-    },
-    "title": {
-      "en": "Office"
-    },
+    "slug": "office",
+    "title": "Office",
     "metadata": {
       "text": {
         "value": "12 Harbor Street, Portland"
@@ -76,15 +67,12 @@ export const contacts = [
   },
   {
     "id": "contact-web",
+    "locale": "en",
     "kind": "contact",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "web"
-    },
-    "title": {
-      "en": "Website"
-    },
+    "slug": "web",
+    "title": "Website",
     "metadata": {
       "text": {
         "value": "northwind.example"

@@ -4,15 +4,12 @@
 export const payments = [
   {
     "id": "payment-card",
+    "locale": "en",
     "kind": "payment",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "card"
-    },
-    "title": {
-      "en": "Card online"
-    },
+    "slug": "card",
+    "title": "Card online",
     "metadata": {
       "text": {
         "value": "Pay on a secure page after you confirm the order."
@@ -28,15 +25,12 @@ export const payments = [
   },
   {
     "id": "payment-wallet",
+    "locale": "en",
     "kind": "payment",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "wallet"
-    },
-    "title": {
-      "en": "Phone wallet"
-    },
+    "slug": "wallet",
+    "title": "Phone wallet",
     "metadata": {
       "text": {
         "value": "Confirm in the wallet on your phone, no card details to type."
@@ -52,15 +46,12 @@ export const payments = [
   },
   {
     "id": "payment-courier",
+    "locale": "en",
     "kind": "payment",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "courier"
-    },
-    "title": {
-      "en": "Card on delivery"
-    },
+    "slug": "courier",
+    "title": "Card on delivery",
     "metadata": {
       "text": {
         "value": "The courier brings a card terminal."
@@ -76,15 +67,12 @@ export const payments = [
   },
   {
     "id": "payment-cash",
+    "locale": "en",
     "kind": "payment",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "cash"
-    },
-    "title": {
-      "en": "Cash on delivery"
-    },
+    "slug": "cash",
+    "title": "Cash on delivery",
     "metadata": {
       "text": {
         "value": "Tell us the note you will pay with in the comment."

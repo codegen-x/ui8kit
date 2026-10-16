@@ -25,16 +25,16 @@ import { outline as outlineEntries } from "@ui8kit/app-shared/data/outline";
 
 const POSTS_FIELDS = {
   "id": "id",
-  "title": "title.en",
-  "excerpt": "metadata.excerpt.value",
+  "title": "title",
+  "excerpt": "excerpt",
   "category": "metadata.category.value",
   "author": "metadata.author.value",
   "date": "metadata.date.value",
   "minutes": "metadata.minutes.value",
   "icon": "metadata.icon.value",
 } as const;
-const POSTTAGS_FIELDS = {"id":"id","name":"title.en","icon":"metadata.icon.value"} as const;
-const OUTLINE_FIELDS = {"id":"id","name":"title.en","icon":"metadata.icon.value"} as const;
+const POSTTAGS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
+const OUTLINE_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
 
 const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS);
 const posttags = fromCodex<NavLink>(posttagsEntries, POSTTAGS_FIELDS);

@@ -31,12 +31,12 @@ import { questions as questionsEntries } from "@ui8kit/app-shared/data/questions
 import { channels as channelsEntries } from "@ui8kit/app-shared/data/channels";
 import { zones as zonesEntries } from "@ui8kit/app-shared/data/zones";
 
-const LOGOS_FIELDS = {"id":"id","name":"title.en","icon":"metadata.icon.value"} as const;
-const FEATURES_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
-const STATS_FIELDS = {"id":"id","label":"title.en","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
+const LOGOS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
+const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+const STATS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
 const TESTIMONIALS_FIELDS = {
   "id": "id",
-  "author": "title.en",
+  "author": "title",
   "role": "metadata.role.value",
   "company": "metadata.company.value",
   "quote": "metadata.quote.value",
@@ -45,31 +45,31 @@ const TESTIMONIALS_FIELDS = {
   "time": "metadata.time.value",
   "mark": "metadata.mark.value",
 } as const;
-const FAQTABS_FIELDS = {"id":"id","title":"title.en","value":"metadata.value.value"} as const;
+const FAQTABS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
 const TIERS_FIELDS = {
   "id": "id",
-  "name": "title.en",
+  "name": "title",
   "tagline": "metadata.tagline.value",
   "price": "metadata.price.value",
   "currency": "metadata.currency.value",
   "seats": "metadata.seats.value",
   "storage": "metadata.storage.value",
   "highlighted": "metadata.highlighted.value",
-  "status": "metadata.status.value",
+  "status": "metadata.plan_status.value",
   "features": "metadata.features.value",
   "yearly": "metadata.yearly.value",
 } as const;
 const QUESTIONS_FIELDS = {
   "id": "id",
-  "question": "title.en",
+  "question": "title",
   "answer": "metadata.answer.value",
   "category": "metadata.category.value",
   "icon": "metadata.icon.value",
 } as const;
-const CHANNELS_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+const CHANNELS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 const ZONES_FIELDS = {
   "id": "id",
-  "name": "title.en",
+  "name": "title",
   "area": "metadata.area.value",
   "price": "metadata.price.value",
   "freeFrom": "metadata.freeFrom.value",

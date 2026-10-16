@@ -31,7 +31,7 @@
 
   const ZONES_FIELDS = {
     "id": "id",
-    "name": "title.en",
+    "name": "title",
     "area": "metadata.area.value",
     "price": "metadata.price.value",
     "freeFrom": "metadata.freeFrom.value",
@@ -40,18 +40,12 @@
     "express": "metadata.express.value",
     "currency": "metadata.currency.value",
   } as const;
-  const DAYS_FIELDS = {
-    "id": "id",
-    "title": "title.en",
-    "note": "metadata.note.value",
-    "slots": "metadata.slots.value",
-    "closed": "metadata.closed.value",
-  } as const;
-  const DELIVERYFACTS_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+  const DAYS_FIELDS = {"id":"id","title":"title","note":"metadata.note.value","slots":"metadata.slots.value","closed":"metadata.closed.value"} as const;
+  const DELIVERYFACTS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
   const STORES_FIELDS = {
     "id": "id",
-    "name": "title.en",
-    "kind": "metadata.kind.value",
+    "name": "title",
+    "kind": "metadata.store_kind.value",
     "address": "metadata.address.value",
     "hours": "metadata.hours.value",
     "phone": "metadata.phone.value",

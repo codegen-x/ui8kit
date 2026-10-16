@@ -4,15 +4,12 @@
 export const profilefacts = [
   {
     "id": "profilefact-role",
+    "locale": "en",
     "kind": "profilefact",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "role"
-    },
-    "title": {
-      "en": "Role"
-    },
+    "slug": "role",
+    "title": "Role",
     "metadata": {
       "value": {
         "value": "Product designer"
@@ -25,15 +22,12 @@ export const profilefacts = [
   },
   {
     "id": "profilefact-based",
+    "locale": "en",
     "kind": "profilefact",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "based"
-    },
-    "title": {
-      "en": "Based in"
-    },
+    "slug": "based",
+    "title": "Based in",
     "metadata": {
       "value": {
         "value": "Lisbon"
@@ -46,15 +40,12 @@ export const profilefacts = [
   },
   {
     "id": "profilefact-years",
+    "locale": "en",
     "kind": "profilefact",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "years"
-    },
-    "title": {
-      "en": "Experience"
-    },
+    "slug": "years",
+    "title": "Experience",
     "metadata": {
       "value": {
         "value": "9 years"
@@ -67,15 +58,12 @@ export const profilefacts = [
   },
   {
     "id": "profilefact-status",
+    "locale": "en",
     "kind": "profilefact",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "status"
-    },
-    "title": {
-      "en": "Status"
-    },
+    "slug": "status",
+    "title": "Status",
     "metadata": {
       "value": {
         "value": "Open to projects"

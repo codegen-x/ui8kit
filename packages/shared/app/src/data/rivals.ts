@@ -4,15 +4,12 @@
 export const rivals = [
   {
     "id": "row-speed",
+    "locale": "en",
     "kind": "row",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "speed"
-    },
-    "title": {
-      "en": "Median load time"
-    },
+    "slug": "speed",
+    "title": "Median load time",
     "metadata": {
       "a": {
         "value": "0.8 s"
@@ -31,15 +28,12 @@ export const rivals = [
   },
   {
     "id": "row-runtimes",
+    "locale": "en",
     "kind": "row",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "runtimes"
-    },
-    "title": {
-      "en": "Svelte and React"
-    },
+    "slug": "runtimes",
+    "title": "Svelte and React",
     "metadata": {
       "a": {
         "value": "yes"
@@ -58,15 +52,12 @@ export const rivals = [
   },
   {
     "id": "row-a11y",
+    "locale": "en",
     "kind": "row",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "a11y"
-    },
-    "title": {
-      "en": "Accessibility checks"
-    },
+    "slug": "a11y",
+    "title": "Accessibility checks",
     "metadata": {
       "a": {
         "value": "yes"
@@ -85,15 +76,12 @@ export const rivals = [
   },
   {
     "id": "row-drift",
+    "locale": "en",
     "kind": "row",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "drift"
-    },
-    "title": {
-      "en": "Drift check"
-    },
+    "slug": "drift",
+    "title": "Drift check",
     "metadata": {
       "a": {
         "value": "yes"
@@ -112,15 +100,12 @@ export const rivals = [
   },
   {
     "id": "row-free",
+    "locale": "en",
     "kind": "row",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "free"
-    },
-    "title": {
-      "en": "Free tier"
-    },
+    "slug": "free",
+    "title": "Free tier",
     "metadata": {
       "a": {
         "value": "yes"

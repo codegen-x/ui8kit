@@ -4,15 +4,12 @@
 export const photos = [
   {
     "id": "photo-harbor",
+    "locale": "en",
     "kind": "photo",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "harbor"
-    },
-    "title": {
-      "en": "Harbor at dawn"
-    },
+    "slug": "harbor",
+    "title": "Harbor at dawn",
     "metadata": {
       "tag": {
         "value": "Travel"
@@ -28,15 +25,12 @@ export const photos = [
   },
   {
     "id": "photo-studio",
+    "locale": "en",
     "kind": "photo",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "studio"
-    },
-    "title": {
-      "en": "Studio corner"
-    },
+    "slug": "studio",
+    "title": "Studio corner",
     "metadata": {
       "tag": {
         "value": "Interior"
@@ -52,15 +46,12 @@ export const photos = [
   },
   {
     "id": "photo-market",
+    "locale": "en",
     "kind": "photo",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "market"
-    },
-    "title": {
-      "en": "Morning market"
-    },
+    "slug": "market",
+    "title": "Morning market",
     "metadata": {
       "tag": {
         "value": "Street"
@@ -76,15 +67,12 @@ export const photos = [
   },
   {
     "id": "photo-ridge",
+    "locale": "en",
     "kind": "photo",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "ridge"
-    },
-    "title": {
-      "en": "Ridge trail"
-    },
+    "slug": "ridge",
+    "title": "Ridge trail",
     "metadata": {
       "tag": {
         "value": "Nature"
@@ -100,15 +88,12 @@ export const photos = [
   },
   {
     "id": "photo-cafe",
+    "locale": "en",
     "kind": "photo",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "cafe"
-    },
-    "title": {
-      "en": "Corner cafe"
-    },
+    "slug": "cafe",
+    "title": "Corner cafe",
     "metadata": {
       "tag": {
         "value": "Street"
@@ -124,15 +109,12 @@ export const photos = [
   },
   {
     "id": "photo-dunes",
+    "locale": "en",
     "kind": "photo",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "dunes"
-    },
-    "title": {
-      "en": "Dunes at noon"
-    },
+    "slug": "dunes",
+    "title": "Dunes at noon",
     "metadata": {
       "tag": {
         "value": "Nature"
@@ -148,15 +130,12 @@ export const photos = [
   },
   {
     "id": "photo-library",
+    "locale": "en",
     "kind": "photo",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "library"
-    },
-    "title": {
-      "en": "Old library"
-    },
+    "slug": "library",
+    "title": "Old library",
     "metadata": {
       "tag": {
         "value": "Interior"
@@ -172,15 +151,12 @@ export const photos = [
   },
   {
     "id": "photo-bridge",
+    "locale": "en",
     "kind": "photo",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "bridge"
-    },
-    "title": {
-      "en": "Iron bridge"
-    },
+    "slug": "bridge",
+    "title": "Iron bridge",
     "metadata": {
       "tag": {
         "value": "Travel"
@@ -196,15 +172,12 @@ export const photos = [
   },
   {
     "id": "photo-orchard",
+    "locale": "en",
     "kind": "photo",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "orchard"
-    },
-    "title": {
-      "en": "Orchard rows"
-    },
+    "slug": "orchard",
+    "title": "Orchard rows",
     "metadata": {
       "tag": {
         "value": "Nature"

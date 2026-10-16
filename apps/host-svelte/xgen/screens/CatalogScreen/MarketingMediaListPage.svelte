@@ -30,23 +30,23 @@
   import { channels as channelsEntries } from "@ui8kit/app-shared/data/channels";
   import { reviews as reviewsEntries } from "@ui8kit/app-shared/data/reviews";
 
-  const STATS_FIELDS = {"id":"id","label":"title.en","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
-  const STEPS_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+  const STATS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
+  const STEPS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
   const POSTS_FIELDS = {
     "id": "id",
-    "title": "title.en",
-    "excerpt": "metadata.excerpt.value",
+    "title": "title",
+    "excerpt": "excerpt",
     "category": "metadata.category.value",
     "author": "metadata.author.value",
     "date": "metadata.date.value",
     "minutes": "metadata.minutes.value",
     "icon": "metadata.icon.value",
   } as const;
-  const CATEGORIES_FIELDS = {"id":"id","name":"title.en","icon":"metadata.icon.value","count":"metadata.count.value"} as const;
-  const CHANNELS_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+  const CATEGORIES_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","count":"metadata.count.value"} as const;
+  const CHANNELS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
   const REVIEWS_FIELDS = {
     "id": "id",
-    "title": "title.en",
+    "title": "title",
     "author": "metadata.author.value",
     "rating": "metadata.rating.value",
     "text": "metadata.text.value",

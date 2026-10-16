@@ -22,7 +22,7 @@
 
   const CART_FIELDS = {
     "id": "id",
-    "name": "title.en",
+    "name": "title",
     "variant": "metadata.variant.value",
     "price": "metadata.price.value",
     "currency": "metadata.currency.value",

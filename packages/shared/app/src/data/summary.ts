@@ -4,15 +4,12 @@
 export const summary = [
   {
     "id": "summaryrow-subtotal",
+    "locale": "en",
     "kind": "summaryrow",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "subtotal"
-    },
-    "title": {
-      "en": "Subtotal"
-    },
+    "slug": "subtotal",
+    "title": "Subtotal",
     "metadata": {
       "amount": {
         "value": 288
@@ -31,15 +28,12 @@ export const summary = [
   },
   {
     "id": "summaryrow-shipping",
+    "locale": "en",
     "kind": "summaryrow",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "shipping"
-    },
-    "title": {
-      "en": "Shipping"
-    },
+    "slug": "shipping",
+    "title": "Shipping",
     "metadata": {
       "amount": {
         "value": 12
@@ -58,15 +52,12 @@ export const summary = [
   },
   {
     "id": "summaryrow-tax",
+    "locale": "en",
     "kind": "summaryrow",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "tax"
-    },
-    "title": {
-      "en": "Tax"
-    },
+    "slug": "tax",
+    "title": "Tax",
     "metadata": {
       "amount": {
         "value": 24
@@ -85,15 +76,12 @@ export const summary = [
   },
   {
     "id": "summaryrow-total",
+    "locale": "en",
     "kind": "summaryrow",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "total"
-    },
-    "title": {
-      "en": "Total"
-    },
+    "slug": "total",
+    "title": "Total",
     "metadata": {
       "amount": {
         "value": 324

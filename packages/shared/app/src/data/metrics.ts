@@ -4,15 +4,12 @@
 export const metrics = [
   {
     "id": "metric-revenue",
+    "locale": "en",
     "kind": "metric",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "revenue"
-    },
-    "title": {
-      "en": "Revenue"
-    },
+    "slug": "revenue",
+    "title": "Revenue",
     "metadata": {
       "value": {
         "value": "$48,200"
@@ -31,15 +28,12 @@ export const metrics = [
   },
   {
     "id": "metric-orders",
+    "locale": "en",
     "kind": "metric",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "orders"
-    },
-    "title": {
-      "en": "Orders"
-    },
+    "slug": "orders",
+    "title": "Orders",
     "metadata": {
       "value": {
         "value": "1,284"
@@ -58,15 +52,12 @@ export const metrics = [
   },
   {
     "id": "metric-visitors",
+    "locale": "en",
     "kind": "metric",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "visitors"
-    },
-    "title": {
-      "en": "Visitors"
-    },
+    "slug": "visitors",
+    "title": "Visitors",
     "metadata": {
       "value": {
         "value": "92,410"
@@ -85,15 +76,12 @@ export const metrics = [
   },
   {
     "id": "metric-churn",
+    "locale": "en",
     "kind": "metric",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "churn"
-    },
-    "title": {
-      "en": "Churn"
-    },
+    "slug": "churn",
+    "title": "Churn",
     "metadata": {
       "value": {
         "value": "1.9%"

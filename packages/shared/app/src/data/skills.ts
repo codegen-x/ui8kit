@@ -4,15 +4,12 @@
 export const skills = [
   {
     "id": "skill-systems",
+    "locale": "en",
     "kind": "skill",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "systems"
-    },
-    "title": {
-      "en": "Design systems"
-    },
+    "slug": "systems",
+    "title": "Design systems",
     "metadata": {
       "level": {
         "value": 95
@@ -25,15 +22,12 @@ export const skills = [
   },
   {
     "id": "skill-research",
+    "locale": "en",
     "kind": "skill",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "research"
-    },
-    "title": {
-      "en": "User research"
-    },
+    "slug": "research",
+    "title": "User research",
     "metadata": {
       "level": {
         "value": 85
@@ -46,15 +40,12 @@ export const skills = [
   },
   {
     "id": "skill-prototyping",
+    "locale": "en",
     "kind": "skill",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "prototyping"
-    },
-    "title": {
-      "en": "Prototyping"
-    },
+    "slug": "prototyping",
+    "title": "Prototyping",
     "metadata": {
       "level": {
         "value": 90
@@ -67,15 +58,12 @@ export const skills = [
   },
   {
     "id": "skill-frontend",
+    "locale": "en",
     "kind": "skill",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "frontend"
-    },
-    "title": {
-      "en": "Frontend code"
-    },
+    "slug": "frontend",
+    "title": "Frontend code",
     "metadata": {
       "level": {
         "value": 70
@@ -88,15 +76,12 @@ export const skills = [
   },
   {
     "id": "skill-writing",
+    "locale": "en",
     "kind": "skill",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "writing"
-    },
-    "title": {
-      "en": "Product writing"
-    },
+    "slug": "writing",
+    "title": "Product writing",
     "metadata": {
       "level": {
         "value": 80

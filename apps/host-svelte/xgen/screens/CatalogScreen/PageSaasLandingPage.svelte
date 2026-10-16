@@ -44,13 +44,13 @@
   import { faqtabs as faqtabsEntries } from "@ui8kit/app-shared/data/faqtabs";
   import { sitemap as sitemapEntries } from "@ui8kit/app-shared/data/sitemap";
 
-  const NAVLINKS_FIELDS = {"id":"id","name":"title.en","icon":"metadata.icon.value"} as const;
-  const TERMINAL_FIELDS = {"id":"id","text":"title.en","kind":"metadata.kind.value"} as const;
-  const STATS_FIELDS = {"id":"id","label":"title.en","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
-  const FEATURES_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+  const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
+  const TERMINAL_FIELDS = {"id":"id","text":"title","kind":"metadata.line_kind.value"} as const;
+  const STATS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
+  const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
   const TESTIMONIALS_FIELDS = {
     "id": "id",
-    "author": "title.en",
+    "author": "title",
     "role": "metadata.role.value",
     "company": "metadata.company.value",
     "quote": "metadata.quote.value",
@@ -61,21 +61,21 @@
   } as const;
   const TIERS_FIELDS = {
     "id": "id",
-    "name": "title.en",
+    "name": "title",
     "tagline": "metadata.tagline.value",
     "price": "metadata.price.value",
     "currency": "metadata.currency.value",
     "seats": "metadata.seats.value",
     "storage": "metadata.storage.value",
     "highlighted": "metadata.highlighted.value",
-    "status": "metadata.status.value",
+    "status": "metadata.plan_status.value",
     "features": "metadata.features.value",
     "yearly": "metadata.yearly.value",
   } as const;
-  const LOGOS_FIELDS = {"id":"id","name":"title.en","icon":"metadata.icon.value"} as const;
-  const FAQ_FIELDS = {"id":"id","question":"title.en","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
-  const FAQTABS_FIELDS = {"id":"id","title":"title.en","value":"metadata.value.value"} as const;
-  const SITEMAP_FIELDS = {"id":"id","title":"title.en","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
+  const LOGOS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
+  const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
+  const FAQTABS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
+  const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
 
   const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS);
   const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS);

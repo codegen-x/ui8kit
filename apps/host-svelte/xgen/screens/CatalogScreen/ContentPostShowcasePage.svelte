@@ -22,8 +22,8 @@
 
   const POSTS_FIELDS = {
     "id": "id",
-    "title": "title.en",
-    "excerpt": "metadata.excerpt.value",
+    "title": "title",
+    "excerpt": "excerpt",
     "category": "metadata.category.value",
     "author": "metadata.author.value",
     "date": "metadata.date.value",

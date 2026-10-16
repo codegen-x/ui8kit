@@ -4,15 +4,12 @@
 export const series = [
   {
     "id": "point-mon",
+    "locale": "en",
     "kind": "point",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "mon"
-    },
-    "title": {
-      "en": "Mon"
-    },
+    "slug": "mon",
+    "title": "Mon",
     "metadata": {
       "value": {
         "value": 42
@@ -25,15 +22,12 @@ export const series = [
   },
   {
     "id": "point-tue",
+    "locale": "en",
     "kind": "point",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "tue"
-    },
-    "title": {
-      "en": "Tue"
-    },
+    "slug": "tue",
+    "title": "Tue",
     "metadata": {
       "value": {
         "value": 58
@@ -46,15 +40,12 @@ export const series = [
   },
   {
     "id": "point-wed",
+    "locale": "en",
     "kind": "point",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "wed"
-    },
-    "title": {
-      "en": "Wed"
-    },
+    "slug": "wed",
+    "title": "Wed",
     "metadata": {
       "value": {
         "value": 51
@@ -67,15 +58,12 @@ export const series = [
   },
   {
     "id": "point-thu",
+    "locale": "en",
     "kind": "point",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "thu"
-    },
-    "title": {
-      "en": "Thu"
-    },
+    "slug": "thu",
+    "title": "Thu",
     "metadata": {
       "value": {
         "value": 74
@@ -88,15 +76,12 @@ export const series = [
   },
   {
     "id": "point-fri",
+    "locale": "en",
     "kind": "point",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "fri"
-    },
-    "title": {
-      "en": "Fri"
-    },
+    "slug": "fri",
+    "title": "Fri",
     "metadata": {
       "value": {
         "value": 66
@@ -109,15 +94,12 @@ export const series = [
   },
   {
     "id": "point-sat",
+    "locale": "en",
     "kind": "point",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "sat"
-    },
-    "title": {
-      "en": "Sat"
-    },
+    "slug": "sat",
+    "title": "Sat",
     "metadata": {
       "value": {
         "value": 31
@@ -130,15 +112,12 @@ export const series = [
   },
   {
     "id": "point-sun",
+    "locale": "en",
     "kind": "point",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "sun"
-    },
-    "title": {
-      "en": "Sun"
-    },
+    "slug": "sun",
+    "title": "Sun",
     "metadata": {
       "value": {
         "value": 24

@@ -27,21 +27,21 @@
 
   const TIERS_FIELDS = {
     "id": "id",
-    "name": "title.en",
+    "name": "title",
     "tagline": "metadata.tagline.value",
     "price": "metadata.price.value",
     "currency": "metadata.currency.value",
     "seats": "metadata.seats.value",
     "storage": "metadata.storage.value",
     "highlighted": "metadata.highlighted.value",
-    "status": "metadata.status.value",
+    "status": "metadata.plan_status.value",
     "features": "metadata.features.value",
     "yearly": "metadata.yearly.value",
   } as const;
-  const LOGOS_FIELDS = {"id":"id","name":"title.en","icon":"metadata.icon.value"} as const;
-  const COMPARE_FIELDS = {"id":"id","label":"title.en","a":"metadata.a.value","b":"metadata.b.value","c":"metadata.c.value"} as const;
-  const FAQ_FIELDS = {"id":"id","question":"title.en","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
-  const FAQTABS_FIELDS = {"id":"id","title":"title.en","value":"metadata.value.value"} as const;
+  const LOGOS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
+  const COMPARE_FIELDS = {"id":"id","label":"title","a":"metadata.a.value","b":"metadata.b.value","c":"metadata.c.value"} as const;
+  const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
+  const FAQTABS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
 
   const tiers = fromCodex<Plan>(tiersEntries, TIERS_FIELDS);
   const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);

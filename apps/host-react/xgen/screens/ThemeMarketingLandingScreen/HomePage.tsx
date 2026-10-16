@@ -33,14 +33,14 @@ import { testimonials as testimonialsEntries } from "@ui8kit/app-shared/data/tes
 import { faq as faqEntries } from "@ui8kit/app-shared/data/faq";
 import { faqtabs as faqtabsEntries } from "@ui8kit/app-shared/data/faqtabs";
 
-const TERMINAL_FIELDS = {"id":"id","text":"title.en","kind":"metadata.kind.value"} as const;
-const LOGOS_FIELDS = {"id":"id","name":"title.en","icon":"metadata.icon.value"} as const;
-const FEATURES_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
-const STEPS_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
-const STATS_FIELDS = {"id":"id","label":"title.en","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
+const TERMINAL_FIELDS = {"id":"id","text":"title","kind":"metadata.line_kind.value"} as const;
+const LOGOS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
+const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+const STEPS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+const STATS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
 const TESTIMONIALS_FIELDS = {
   "id": "id",
-  "author": "title.en",
+  "author": "title",
   "role": "metadata.role.value",
   "company": "metadata.company.value",
   "quote": "metadata.quote.value",
@@ -49,8 +49,8 @@ const TESTIMONIALS_FIELDS = {
   "time": "metadata.time.value",
   "mark": "metadata.mark.value",
 } as const;
-const FAQ_FIELDS = {"id":"id","question":"title.en","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
-const FAQTABS_FIELDS = {"id":"id","title":"title.en","value":"metadata.value.value"} as const;
+const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
+const FAQTABS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
 
 const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS);
 const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);

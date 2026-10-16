@@ -22,7 +22,7 @@ import { cart as cartEntries } from "@ui8kit/app-shared/data/cart";
 
 const CART_FIELDS = {
   "id": "id",
-  "name": "title.en",
+  "name": "title",
   "variant": "metadata.variant.value",
   "price": "metadata.price.value",
   "currency": "metadata.currency.value",

@@ -4,15 +4,12 @@
 export const features = [
   {
     "id": "feature-fast",
+    "locale": "en",
     "kind": "feature",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "fast"
-    },
-    "title": {
-      "en": "Fast by default"
-    },
+    "slug": "fast",
+    "title": "Fast by default",
     "metadata": {
       "text": {
         "value": "Pages render from static data and ship little script."
@@ -28,15 +25,12 @@ export const features = [
   },
   {
     "id": "feature-clear",
+    "locale": "en",
     "kind": "feature",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "clear"
-    },
-    "title": {
-      "en": "Clear structure"
-    },
+    "slug": "clear",
+    "title": "Clear structure",
     "metadata": {
       "text": {
         "value": "One heading per page, landmarks and a skip link come built in."
@@ -52,15 +46,12 @@ export const features = [
   },
   {
     "id": "feature-safe",
+    "locale": "en",
     "kind": "feature",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "safe"
-    },
-    "title": {
-      "en": "Safe forms"
-    },
+    "slug": "safe",
+    "title": "Safe forms",
     "metadata": {
       "text": {
         "value": "Inputs carry labels and errors are announced to assistive tools."
@@ -76,15 +67,12 @@ export const features = [
   },
   {
     "id": "feature-global",
+    "locale": "en",
     "kind": "feature",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "global"
-    },
-    "title": {
-      "en": "Ready for any language"
-    },
+    "slug": "global",
+    "title": "Ready for any language",
     "metadata": {
       "text": {
         "value": "Every text lives in a dictionary, so a new language is one more file."

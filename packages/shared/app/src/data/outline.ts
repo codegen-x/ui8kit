@@ -4,15 +4,12 @@
 export const outline = [
   {
     "id": "outlineitem-budget",
+    "locale": "en",
     "kind": "outlineitem",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "budget"
-    },
-    "title": {
-      "en": "Set a page weight budget"
-    },
+    "slug": "budget",
+    "title": "Set a page weight budget",
     "metadata": {
       "icon": {
         "value": "chevron-right"
@@ -25,15 +22,12 @@ export const outline = [
   },
   {
     "id": "outlineitem-images",
+    "locale": "en",
     "kind": "outlineitem",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "images"
-    },
-    "title": {
-      "en": "Ship smaller pictures"
-    },
+    "slug": "images",
+    "title": "Ship smaller pictures",
     "metadata": {
       "icon": {
         "value": "chevron-right"
@@ -46,15 +40,12 @@ export const outline = [
   },
   {
     "id": "outlineitem-cache",
+    "locale": "en",
     "kind": "outlineitem",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "cache"
-    },
-    "title": {
-      "en": "Cache what does not change"
-    },
+    "slug": "cache",
+    "title": "Cache what does not change",
     "metadata": {
       "icon": {
         "value": "chevron-right"

@@ -31,23 +31,23 @@ import { faq as faqEntries } from "@ui8kit/app-shared/data/faq";
 import { faqtabs as faqtabsEntries } from "@ui8kit/app-shared/data/faqtabs";
 
 const ROUTES = [{"path":"","area":"home"},{"path":"pricing","area":"pricing"}] as const;
-const TERMINAL_FIELDS = {"id":"id","text":"title.en","kind":"metadata.kind.value"} as const;
-const FEATURES_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+const TERMINAL_FIELDS = {"id":"id","text":"title","kind":"metadata.line_kind.value"} as const;
+const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 const TIERS_FIELDS = {
   "id": "id",
-  "name": "title.en",
+  "name": "title",
   "tagline": "metadata.tagline.value",
   "price": "metadata.price.value",
   "currency": "metadata.currency.value",
   "seats": "metadata.seats.value",
   "storage": "metadata.storage.value",
   "highlighted": "metadata.highlighted.value",
-  "status": "metadata.status.value",
+  "status": "metadata.plan_status.value",
   "features": "metadata.features.value",
   "yearly": "metadata.yearly.value",
 } as const;
-const FAQ_FIELDS = {"id":"id","question":"title.en","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
-const FAQTABS_FIELDS = {"id":"id","title":"title.en","value":"metadata.value.value"} as const;
+const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
+const FAQTABS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
 
 const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS);
 const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);

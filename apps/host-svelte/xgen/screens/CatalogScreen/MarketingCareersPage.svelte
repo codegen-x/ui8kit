@@ -24,14 +24,14 @@
 
   const JOBS_FIELDS = {
     "id": "id",
-    "title": "title.en",
+    "title": "title",
     "dept": "metadata.dept.value",
     "location": "metadata.location.value",
     "type": "metadata.type.value",
     "salary": "metadata.salary.value",
     "posted": "metadata.posted.value",
   } as const;
-  const DEPARTMENTS_FIELDS = {"id":"id","name":"title.en"} as const;
+  const DEPARTMENTS_FIELDS = {"id":"id","name":"title"} as const;
 
   const jobs = fromCodex<Job>(jobsEntries, JOBS_FIELDS);
   const departments = fromCodex<Department>(departmentsEntries, DEPARTMENTS_FIELDS);

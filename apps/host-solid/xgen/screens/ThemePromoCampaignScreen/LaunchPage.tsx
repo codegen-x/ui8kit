@@ -18,8 +18,8 @@ import { ui } from "@ui8kit/app-shared/content";
 import { terminal as terminalEntries } from "@ui8kit/app-shared/data/terminal";
 import { logos as logosEntries } from "@ui8kit/app-shared/data/logos";
 
-const TERMINAL_FIELDS = {"id":"id","text":"title.en","kind":"metadata.kind.value"} as const;
-const LOGOS_FIELDS = {"id":"id","name":"title.en","icon":"metadata.icon.value"} as const;
+const TERMINAL_FIELDS = {"id":"id","text":"title","kind":"metadata.line_kind.value"} as const;
+const LOGOS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
 
 const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS);
 const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);

@@ -20,7 +20,7 @@
   import { ui } from "@ui8kit/app-shared/content";
   import { series as seriesEntries } from "@ui8kit/app-shared/data/series";
 
-  const SERIES_FIELDS = {"id":"id","label":"title.en","value":"metadata.value.value"} as const;
+  const SERIES_FIELDS = {"id":"id","label":"title","value":"metadata.value.value"} as const;
 
   const series = fromCodex<Point>(seriesEntries, SERIES_FIELDS);
 </script>

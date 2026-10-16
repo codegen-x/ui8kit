@@ -31,11 +31,11 @@
   import { days as daysEntries } from "@ui8kit/app-shared/data/days";
   import { payments as paymentsEntries } from "@ui8kit/app-shared/data/payments";
 
-  const NAVLINKS_FIELDS = {"id":"id","name":"title.en","icon":"metadata.icon.value"} as const;
-  const SITEMAP_FIELDS = {"id":"id","title":"title.en","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
+  const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
+  const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
   const CART_FIELDS = {
     "id": "id",
-    "name": "title.en",
+    "name": "title",
     "variant": "metadata.variant.value",
     "price": "metadata.price.value",
     "currency": "metadata.currency.value",
@@ -43,20 +43,14 @@
   } as const;
   const SUMMARY_FIELDS = {
     "id": "id",
-    "label": "title.en",
+    "label": "title",
     "amount": "metadata.amount.value",
     "currency": "metadata.currency.value",
     "strong": "metadata.strong.value",
   } as const;
-  const PROMOS_FIELDS = {"id":"id","code":"title.en"} as const;
-  const DAYS_FIELDS = {
-    "id": "id",
-    "title": "title.en",
-    "note": "metadata.note.value",
-    "slots": "metadata.slots.value",
-    "closed": "metadata.closed.value",
-  } as const;
-  const PAYMENTS_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+  const PROMOS_FIELDS = {"id":"id","code":"title"} as const;
+  const DAYS_FIELDS = {"id":"id","title":"title","note":"metadata.note.value","slots":"metadata.slots.value","closed":"metadata.closed.value"} as const;
+  const PAYMENTS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 
   const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS);
   const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS);

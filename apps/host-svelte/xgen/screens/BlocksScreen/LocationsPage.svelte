@@ -22,8 +22,8 @@
 
   const STORES_FIELDS = {
     "id": "id",
-    "name": "title.en",
-    "kind": "metadata.kind.value",
+    "name": "title",
+    "kind": "metadata.store_kind.value",
     "address": "metadata.address.value",
     "hours": "metadata.hours.value",
     "phone": "metadata.phone.value",

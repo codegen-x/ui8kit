@@ -38,14 +38,14 @@
   const ROUTES = [{"path":"plans","area":"list"},{"path":"plans/:id","area":"record"}] as const;
   const FIELDS = {
     "id": "id",
-    "name": "title.en",
+    "name": "title",
     "tagline": "metadata.tagline.value",
     "price": "metadata.price.value",
     "currency": "metadata.currency.value",
     "seats": "metadata.seats.value",
     "storage": "metadata.storage.value",
     "highlighted": "metadata.highlighted.value",
-    "status": "metadata.status.value",
+    "status": "metadata.plan_status.value",
     "features": "metadata.features.value",
   } as const;
 

@@ -22,7 +22,7 @@ import { testimonials as testimonialsEntries } from "@ui8kit/app-shared/data/tes
 
 const TESTIMONIALS_FIELDS = {
   "id": "id",
-  "author": "title.en",
+  "author": "title",
   "role": "metadata.role.value",
   "company": "metadata.company.value",
   "quote": "metadata.quote.value",

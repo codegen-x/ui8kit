@@ -29,19 +29,19 @@ import { bento as bentoEntries } from "@ui8kit/app-shared/data/bento";
 import { templates as templatesEntries } from "@ui8kit/app-shared/data/templates";
 import { prompts as templateFiltersEntries } from "@ui8kit/app-shared/data/prompts";
 
-const TERMINAL_FIELDS = {"id":"id","text":"title.en","kind":"metadata.kind.value"} as const;
-const FEATURES_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
-const FAQ_FIELDS = {"id":"id","question":"title.en","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
-const FAQTABS_FIELDS = {"id":"id","title":"title.en","value":"metadata.value.value"} as const;
-const BENTO_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","icon":"metadata.icon.value","size":"metadata.size.value"} as const;
+const TERMINAL_FIELDS = {"id":"id","text":"title","kind":"metadata.line_kind.value"} as const;
+const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
+const FAQTABS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
+const BENTO_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","size":"metadata.size.value"} as const;
 const TEMPLATES_FIELDS = {
   "id": "id",
-  "title": "title.en",
+  "title": "title",
   "views": "metadata.views.value",
   "likes": "metadata.likes.value",
   "topic": "metadata.topic.value",
 } as const;
-const TEMPLATEFILTERS_FIELDS = {"id":"id","title":"title.en","value":"metadata.value.value","icon":"metadata.icon.value"} as const;
+const TEMPLATEFILTERS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value","icon":"metadata.icon.value"} as const;
 
 const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS);
 const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);

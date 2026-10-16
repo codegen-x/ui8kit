@@ -20,7 +20,7 @@
   import { ui } from "@ui8kit/app-shared/content";
   import { article as articleEntries } from "@ui8kit/app-shared/data/article";
 
-  const ARTICLE_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","quote":"metadata.quote.value"} as const;
+  const ARTICLE_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","quote":"metadata.quote.value"} as const;
 
   const article = fromCodex<Section>(articleEntries, ARTICLE_FIELDS);
 </script>

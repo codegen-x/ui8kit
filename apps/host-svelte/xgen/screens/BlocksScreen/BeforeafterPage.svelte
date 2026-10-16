@@ -20,7 +20,7 @@
   import { ui } from "@ui8kit/app-shared/content";
   import { beforeafter as beforeafterEntries } from "@ui8kit/app-shared/data/beforeafter";
 
-  const BEFOREAFTER_FIELDS = {"id":"id","title":"title.en","before":"metadata.before.value","after":"metadata.after.value"} as const;
+  const BEFOREAFTER_FIELDS = {"id":"id","title":"title","before":"metadata.before.value","after":"metadata.after.value"} as const;
 
   const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
 </script>

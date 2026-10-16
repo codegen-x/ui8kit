@@ -23,7 +23,7 @@
 
   const WIZARD_FIELDS = {
     "id": "id",
-    "title": "title.en",
+    "title": "title",
     "text": "metadata.text.value",
     "icon": "metadata.icon.value",
     "fieldA": "metadata.fieldA.value",

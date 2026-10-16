@@ -22,7 +22,7 @@
 
   const PRODUCTS_FIELDS = {
     "id": "id",
-    "name": "title.en",
+    "name": "title",
     "summary": "metadata.summary.value",
     "price": "metadata.price.value",
     "currency": "metadata.currency.value",

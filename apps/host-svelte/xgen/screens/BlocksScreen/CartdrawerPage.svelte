@@ -24,7 +24,7 @@
 
   const CART_FIELDS = {
     "id": "id",
-    "name": "title.en",
+    "name": "title",
     "variant": "metadata.variant.value",
     "price": "metadata.price.value",
     "currency": "metadata.currency.value",
@@ -32,7 +32,7 @@
   } as const;
   const SUMMARY_FIELDS = {
     "id": "id",
-    "label": "title.en",
+    "label": "title",
     "amount": "metadata.amount.value",
     "currency": "metadata.currency.value",
     "strong": "metadata.strong.value",

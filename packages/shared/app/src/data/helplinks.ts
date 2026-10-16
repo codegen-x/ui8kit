@@ -4,15 +4,12 @@
 export const helplinks = [
   {
     "id": "helplink-help",
+    "locale": "en",
     "kind": "helplink",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "help"
-    },
-    "title": {
-      "en": "Help center"
-    },
+    "slug": "help",
+    "title": "Help center",
     "metadata": {
       "icon": {
         "value": "circle-question-mark"
@@ -25,15 +22,12 @@ export const helplinks = [
   },
   {
     "id": "helplink-status",
+    "locale": "en",
     "kind": "helplink",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "status"
-    },
-    "title": {
-      "en": "System status"
-    },
+    "slug": "status",
+    "title": "System status",
     "metadata": {
       "icon": {
         "value": "circle-check"
@@ -46,15 +40,12 @@ export const helplinks = [
   },
   {
     "id": "helplink-privacy",
+    "locale": "en",
     "kind": "helplink",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "privacy"
-    },
-    "title": {
-      "en": "Privacy"
-    },
+    "slug": "privacy",
+    "title": "Privacy",
     "metadata": {
       "icon": {
         "value": "lock"
@@ -67,15 +58,12 @@ export const helplinks = [
   },
   {
     "id": "helplink-terms",
+    "locale": "en",
     "kind": "helplink",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "terms"
-    },
-    "title": {
-      "en": "Terms"
-    },
+    "slug": "terms",
+    "title": "Terms",
     "metadata": {
       "icon": {
         "value": "file-text"

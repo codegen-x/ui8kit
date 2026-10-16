@@ -4,15 +4,12 @@
 export const testimonials = [
   {
     "id": "testimonial-mara",
+    "locale": "en",
     "kind": "testimonial",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "mara"
-    },
-    "title": {
-      "en": "Mara Quinn"
-    },
+    "slug": "mara",
+    "title": "Mara Quinn",
     "metadata": {
       "quote": {
         "value": "We moved our marketing site in a week and the pages got faster."
@@ -43,15 +40,12 @@ export const testimonials = [
   },
   {
     "id": "testimonial-jon",
+    "locale": "en",
     "kind": "testimonial",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "jon"
-    },
-    "title": {
-      "en": "Jon Ellis"
-    },
+    "slug": "jon",
+    "title": "Jon Ellis",
     "metadata": {
       "quote": {
         "value": "Every page reads the same data, so nothing drifts between teams."
@@ -82,15 +76,12 @@ export const testimonials = [
   },
   {
     "id": "testimonial-aya",
+    "locale": "en",
     "kind": "testimonial",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "aya"
-    },
-    "title": {
-      "en": "Aya Tanaka"
-    },
+    "slug": "aya",
+    "title": "Aya Tanaka",
     "metadata": {
       "quote": {
         "value": "The structure is clear, so new people ship on their first day."
@@ -121,15 +112,12 @@ export const testimonials = [
   },
   {
     "id": "testimonial-luis",
+    "locale": "en",
     "kind": "testimonial",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "luis"
-    },
-    "title": {
-      "en": "Luis Ortega"
-    },
+    "slug": "luis",
+    "title": "Luis Ortega",
     "metadata": {
       "quote": {
         "value": "Support answers in minutes and the docs are short and exact."

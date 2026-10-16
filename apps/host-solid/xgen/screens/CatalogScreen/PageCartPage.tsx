@@ -30,11 +30,11 @@ import { cart as cartEntries } from "@ui8kit/app-shared/data/cart";
 import { summary as summaryEntries } from "@ui8kit/app-shared/data/summary";
 import { promos as promosEntries } from "@ui8kit/app-shared/data/promos";
 
-const NAVLINKS_FIELDS = {"id":"id","name":"title.en","icon":"metadata.icon.value"} as const;
-const SITEMAP_FIELDS = {"id":"id","title":"title.en","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
+const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
+const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
 const PRODUCTS_FIELDS = {
   "id": "id",
-  "name": "title.en",
+  "name": "title",
   "summary": "metadata.summary.value",
   "price": "metadata.price.value",
   "currency": "metadata.currency.value",
@@ -46,7 +46,7 @@ const PRODUCTS_FIELDS = {
 } as const;
 const CART_FIELDS = {
   "id": "id",
-  "name": "title.en",
+  "name": "title",
   "variant": "metadata.variant.value",
   "price": "metadata.price.value",
   "currency": "metadata.currency.value",
@@ -54,12 +54,12 @@ const CART_FIELDS = {
 } as const;
 const SUMMARY_FIELDS = {
   "id": "id",
-  "label": "title.en",
+  "label": "title",
   "amount": "metadata.amount.value",
   "currency": "metadata.currency.value",
   "strong": "metadata.strong.value",
 } as const;
-const PROMOS_FIELDS = {"id":"id","code":"title.en"} as const;
+const PROMOS_FIELDS = {"id":"id","code":"title"} as const;
 
 const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS);
 const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS);

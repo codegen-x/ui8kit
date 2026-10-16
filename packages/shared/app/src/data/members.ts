@@ -4,15 +4,12 @@
 export const members = [
   {
     "id": "member-ava",
+    "locale": "en",
     "kind": "member",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "ava"
-    },
-    "title": {
-      "en": "Ava Moreno"
-    },
+    "slug": "ava",
+    "title": "Ava Moreno",
     "metadata": {
       "role": {
         "value": "Founder and CEO"
@@ -41,15 +38,12 @@ export const members = [
   },
   {
     "id": "member-noah",
+    "locale": "en",
     "kind": "member",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "noah"
-    },
-    "title": {
-      "en": "Noah Becker"
-    },
+    "slug": "noah",
+    "title": "Noah Becker",
     "metadata": {
       "role": {
         "value": "Head of Engineering"
@@ -78,15 +72,12 @@ export const members = [
   },
   {
     "id": "member-mia",
+    "locale": "en",
     "kind": "member",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "mia"
-    },
-    "title": {
-      "en": "Mia Laurent"
-    },
+    "slug": "mia",
+    "title": "Mia Laurent",
     "metadata": {
       "role": {
         "value": "Design Lead"
@@ -115,15 +106,12 @@ export const members = [
   },
   {
     "id": "member-liam",
+    "locale": "en",
     "kind": "member",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "liam"
-    },
-    "title": {
-      "en": "Liam Okafor"
-    },
+    "slug": "liam",
+    "title": "Liam Okafor",
     "metadata": {
       "role": {
         "value": "Product Manager"
@@ -152,15 +140,12 @@ export const members = [
   },
   {
     "id": "member-zoe",
+    "locale": "en",
     "kind": "member",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "zoe"
-    },
-    "title": {
-      "en": "Zoe Tanaka"
-    },
+    "slug": "zoe",
+    "title": "Zoe Tanaka",
     "metadata": {
       "role": {
         "value": "Frontend Engineer"
@@ -189,15 +174,12 @@ export const members = [
   },
   {
     "id": "member-omar",
+    "locale": "en",
     "kind": "member",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "omar"
-    },
-    "title": {
-      "en": "Omar Haddad"
-    },
+    "slug": "omar",
+    "title": "Omar Haddad",
     "metadata": {
       "role": {
         "value": "Customer Success"
@@ -226,15 +208,12 @@ export const members = [
   },
   {
     "id": "member-elena",
+    "locale": "en",
     "kind": "member",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "elena"
-    },
-    "title": {
-      "en": "Elena Rossi"
-    },
+    "slug": "elena",
+    "title": "Elena Rossi",
     "metadata": {
       "role": {
         "value": "Brand Designer"
@@ -263,15 +242,12 @@ export const members = [
   },
   {
     "id": "member-sam",
+    "locale": "en",
     "kind": "member",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "sam"
-    },
-    "title": {
-      "en": "Sam Carter"
-    },
+    "slug": "sam",
+    "title": "Sam Carter",
     "metadata": {
       "role": {
         "value": "Backend Engineer"

@@ -4,17 +4,14 @@
 export const terminal = [
   {
     "id": "line-l1",
+    "locale": "en",
     "kind": "line",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "l1"
-    },
-    "title": {
-      "en": "bun add @ui8kit/xgen"
-    },
+    "slug": "l1",
+    "title": "bun add @ui8kit/xgen",
     "metadata": {
-      "kind": {
+      "line_kind": {
         "value": "command"
       }
     },
@@ -25,17 +22,14 @@ export const terminal = [
   },
   {
     "id": "line-l2",
+    "locale": "en",
     "kind": "line",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "l2"
-    },
-    "title": {
-      "en": "xgen build"
-    },
+    "slug": "l2",
+    "title": "xgen build",
     "metadata": {
-      "kind": {
+      "line_kind": {
         "value": "command"
       }
     },
@@ -46,17 +40,14 @@ export const terminal = [
   },
   {
     "id": "line-l3",
+    "locale": "en",
     "kind": "line",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "l3"
-    },
-    "title": {
-      "en": "8 targets, 664 files written"
-    },
+    "slug": "l3",
+    "title": "8 targets, 664 files written",
     "metadata": {
-      "kind": {
+      "line_kind": {
         "value": "output"
       }
     },
@@ -67,17 +58,14 @@ export const terminal = [
   },
   {
     "id": "line-l4",
+    "locale": "en",
     "kind": "line",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "l4"
-    },
-    "title": {
-      "en": "xgen check"
-    },
+    "slug": "l4",
+    "title": "xgen check",
     "metadata": {
-      "kind": {
+      "line_kind": {
         "value": "command"
       }
     },
@@ -88,17 +76,14 @@ export const terminal = [
   },
   {
     "id": "line-l5",
+    "locale": "en",
     "kind": "line",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "l5"
-    },
-    "title": {
-      "en": "all checks passed"
-    },
+    "slug": "l5",
+    "title": "all checks passed",
     "metadata": {
-      "kind": {
+      "line_kind": {
         "value": "output"
       }
     },

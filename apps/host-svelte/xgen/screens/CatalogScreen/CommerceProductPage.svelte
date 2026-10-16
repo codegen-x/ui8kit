@@ -30,7 +30,7 @@
 
   const REVIEWS_FIELDS = {
     "id": "id",
-    "title": "title.en",
+    "title": "title",
     "author": "metadata.author.value",
     "rating": "metadata.rating.value",
     "text": "metadata.text.value",
@@ -38,7 +38,7 @@
   } as const;
   const PRODUCTS_FIELDS = {
     "id": "id",
-    "name": "title.en",
+    "name": "title",
     "summary": "metadata.summary.value",
     "price": "metadata.price.value",
     "currency": "metadata.currency.value",
@@ -48,8 +48,8 @@
     "category": "metadata.category.value",
     "inStock": "metadata.inStock.value",
   } as const;
-  const DETAILS_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value"} as const;
-  const SPECS_FIELDS = {"id":"id","label":"title.en","value":"metadata.value.value"} as const;
+  const DETAILS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value"} as const;
+  const SPECS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value"} as const;
 
   const reviews = fromCodex<Review>(reviewsEntries, REVIEWS_FIELDS);
   const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS);

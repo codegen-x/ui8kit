@@ -23,7 +23,7 @@
 
   const PRODUCTS_FIELDS = {
     "id": "id",
-    "name": "title.en",
+    "name": "title",
     "summary": "metadata.summary.value",
     "price": "metadata.price.value",
     "currency": "metadata.currency.value",
@@ -33,10 +33,10 @@
     "category": "metadata.category.value",
     "inStock": "metadata.inStock.value",
   } as const;
-  const PERKS_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+  const PERKS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
   const CART_FIELDS = {
     "id": "id",
-    "name": "title.en",
+    "name": "title",
     "variant": "metadata.variant.value",
     "price": "metadata.price.value",
     "currency": "metadata.currency.value",
@@ -44,7 +44,7 @@
   } as const;
   const SUMMARY_FIELDS = {
     "id": "id",
-    "label": "title.en",
+    "label": "title",
     "amount": "metadata.amount.value",
     "currency": "metadata.currency.value",
     "strong": "metadata.strong.value",

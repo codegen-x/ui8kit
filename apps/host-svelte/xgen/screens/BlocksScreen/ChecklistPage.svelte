@@ -20,7 +20,7 @@
   import { ui } from "@ui8kit/app-shared/content";
   import { checklist as checklistEntries } from "@ui8kit/app-shared/data/checklist";
 
-  const CHECKLIST_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","done":"metadata.done.value"} as const;
+  const CHECKLIST_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","done":"metadata.done.value"} as const;
 
   const checklist = fromCodex<Task>(checklistEntries, CHECKLIST_FIELDS);
 </script>

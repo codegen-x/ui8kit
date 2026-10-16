@@ -4,15 +4,12 @@
 export const promos = [
   {
     "id": "promo-welcome",
+    "locale": "en",
     "kind": "promo",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "welcome"
-    },
-    "title": {
-      "en": "WELCOME10"
-    },
+    "slug": "welcome",
+    "title": "WELCOME10",
     "metadata": {},
     "version": 1,
     "created_at": "2026-03-02T09:00:00Z",
@@ -21,15 +18,12 @@ export const promos = [
   },
   {
     "id": "promo-freeship",
+    "locale": "en",
     "kind": "promo",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "freeship"
-    },
-    "title": {
-      "en": "FREESHIP"
-    },
+    "slug": "freeship",
+    "title": "FREESHIP",
     "metadata": {},
     "version": 1,
     "created_at": "2026-03-04T09:00:00Z",
@@ -38,15 +32,12 @@ export const promos = [
   },
   {
     "id": "promo-desk",
+    "locale": "en",
     "kind": "promo",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "desk"
-    },
-    "title": {
-      "en": "DESK15"
-    },
+    "slug": "desk",
+    "title": "DESK15",
     "metadata": {},
     "version": 1,
     "created_at": "2026-03-06T09:00:00Z",

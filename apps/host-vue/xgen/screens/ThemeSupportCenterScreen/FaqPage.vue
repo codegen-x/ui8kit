@@ -8,8 +8,8 @@ import { ui } from "@ui8kit/app-shared/content";
 import { faq as faqEntries } from "@ui8kit/app-shared/data/faq";
 import { faqtabs as faqtabsEntries } from "@ui8kit/app-shared/data/faqtabs";
 
-const FAQ_FIELDS = {"id":"id","question":"title.en","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
-const FAQTABS_FIELDS = {"id":"id","title":"title.en","value":"metadata.value.value"} as const;
+const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
+const FAQTABS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
 
 const faq = fromCodex<Faq>(faqEntries, FAQ_FIELDS);
 const faqtabs = fromCodex<FaqTab>(faqtabsEntries, FAQTABS_FIELDS);

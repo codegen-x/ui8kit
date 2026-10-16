@@ -20,13 +20,7 @@
   import { ui } from "@ui8kit/app-shared/content";
   import { metrics as metricsEntries } from "@ui8kit/app-shared/data/metrics";
 
-  const METRICS_FIELDS = {
-    "id": "id",
-    "label": "title.en",
-    "value": "metadata.value.value",
-    "icon": "metadata.icon.value",
-    "hint": "metadata.hint.value",
-  } as const;
+  const METRICS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
 
   const metrics = fromCodex<Stat>(metricsEntries, METRICS_FIELDS);
 </script>

@@ -28,7 +28,7 @@
 
   const CART_FIELDS = {
     "id": "id",
-    "name": "title.en",
+    "name": "title",
     "variant": "metadata.variant.value",
     "price": "metadata.price.value",
     "currency": "metadata.currency.value",
@@ -36,12 +36,12 @@
   } as const;
   const SUMMARY_FIELDS = {
     "id": "id",
-    "label": "title.en",
+    "label": "title",
     "amount": "metadata.amount.value",
     "currency": "metadata.currency.value",
     "strong": "metadata.strong.value",
   } as const;
-  const PROMOS_FIELDS = {"id":"id","code":"title.en"} as const;
+  const PROMOS_FIELDS = {"id":"id","code":"title"} as const;
 
   const cart = fromCodex<CartLine>(cartEntries, CART_FIELDS);
   const summary = fromCodex<SummaryRow>(summaryEntries, SUMMARY_FIELDS);

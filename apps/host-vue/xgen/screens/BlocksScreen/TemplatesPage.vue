@@ -24,12 +24,12 @@ import { prompts as templateFiltersEntries } from "@ui8kit/app-shared/data/promp
 
 const TEMPLATES_FIELDS = {
   "id": "id",
-  "title": "title.en",
+  "title": "title",
   "views": "metadata.views.value",
   "likes": "metadata.likes.value",
   "topic": "metadata.topic.value",
 } as const;
-const TEMPLATEFILTERS_FIELDS = {"id":"id","title":"title.en","value":"metadata.value.value","icon":"metadata.icon.value"} as const;
+const TEMPLATEFILTERS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value","icon":"metadata.icon.value"} as const;
 
 const templates = fromCodex<Template>(templatesEntries, TEMPLATES_FIELDS);
 const templateFilters = fromCodex<Filter>(templateFiltersEntries, TEMPLATEFILTERS_FIELDS);

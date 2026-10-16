@@ -4,15 +4,12 @@
 export const prompts = [
   {
     "id": "prompt-code",
+    "locale": "en",
     "kind": "prompt",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "code"
-    },
-    "title": {
-      "en": "Code"
-    },
+    "slug": "code",
+    "title": "Code",
     "metadata": {
       "icon": {
         "value": "code-xml"
@@ -28,15 +25,12 @@ export const prompts = [
   },
   {
     "id": "prompt-landing",
+    "locale": "en",
     "kind": "prompt",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "landing"
-    },
-    "title": {
-      "en": "Landing"
-    },
+    "slug": "landing",
+    "title": "Landing",
     "metadata": {
       "icon": {
         "value": "layout-grid"
@@ -52,15 +46,12 @@ export const prompts = [
   },
   {
     "id": "prompt-dashboard",
+    "locale": "en",
     "kind": "prompt",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "dashboard"
-    },
-    "title": {
-      "en": "Dashboard"
-    },
+    "slug": "dashboard",
+    "title": "Dashboard",
     "metadata": {
       "icon": {
         "value": "activity"
@@ -76,15 +67,12 @@ export const prompts = [
   },
   {
     "id": "prompt-mini-game",
+    "locale": "en",
     "kind": "prompt",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "mini-game"
-    },
-    "title": {
-      "en": "Mini Game"
-    },
+    "slug": "mini-game",
+    "title": "Mini Game",
     "metadata": {
       "icon": {
         "value": "puzzle"
@@ -100,15 +88,12 @@ export const prompts = [
   },
   {
     "id": "prompt-data",
+    "locale": "en",
     "kind": "prompt",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "data"
-    },
-    "title": {
-      "en": "Data"
-    },
+    "slug": "data",
+    "title": "Data",
     "metadata": {
       "icon": {
         "value": "blocks"

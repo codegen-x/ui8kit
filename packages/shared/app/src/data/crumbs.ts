@@ -4,15 +4,12 @@
 export const crumbs = [
   {
     "id": "crumb-home",
+    "locale": "en",
     "kind": "crumb",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "home"
-    },
-    "title": {
-      "en": "Home"
-    },
+    "slug": "home",
+    "title": "Home",
     "metadata": {
       "icon": {
         "value": "house"
@@ -25,15 +22,12 @@ export const crumbs = [
   },
   {
     "id": "crumb-shop",
+    "locale": "en",
     "kind": "crumb",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "shop"
-    },
-    "title": {
-      "en": "Shop"
-    },
+    "slug": "shop",
+    "title": "Shop",
     "metadata": {
       "icon": {
         "value": "store"
@@ -46,15 +40,12 @@ export const crumbs = [
   },
   {
     "id": "crumb-catalog",
+    "locale": "en",
     "kind": "crumb",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "catalog"
-    },
-    "title": {
-      "en": "Catalog"
-    },
+    "slug": "catalog",
+    "title": "Catalog",
     "metadata": {
       "icon": {
         "value": "layers"

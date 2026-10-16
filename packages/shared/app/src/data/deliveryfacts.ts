@@ -4,15 +4,12 @@
 export const deliveryfacts = [
   {
     "id": "fact-windows",
+    "locale": "en",
     "kind": "fact",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "windows"
-    },
-    "title": {
-      "en": "Two-hour windows"
-    },
+    "slug": "windows",
+    "title": "Two-hour windows",
     "metadata": {
       "text": {
         "value": "Pick a window when you check out; the courier calls ten minutes before."
@@ -28,15 +25,12 @@ export const deliveryfacts = [
   },
   {
     "id": "fact-packing",
+    "locale": "en",
     "kind": "fact",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "packing"
-    },
-    "title": {
-      "en": "Careful packing"
-    },
+    "slug": "packing",
+    "title": "Careful packing",
     "metadata": {
       "text": {
         "value": "Fragile items travel in padded boxes, one order per box."
@@ -52,15 +46,12 @@ export const deliveryfacts = [
   },
   {
     "id": "fact-price",
+    "locale": "en",
     "kind": "fact",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "price"
-    },
-    "title": {
-      "en": "Delivery from $12"
-    },
+    "slug": "price",
+    "title": "Delivery from $12",
     "metadata": {
       "text": {
         "value": "Free from $75 in the central zone."
@@ -76,15 +67,12 @@ export const deliveryfacts = [
   },
   {
     "id": "fact-hub",
+    "locale": "en",
     "kind": "fact",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "hub"
-    },
-    "title": {
-      "en": "The nearest hub"
-    },
+    "slug": "hub",
+    "title": "The nearest hub",
     "metadata": {
       "text": {
         "value": "Orders leave from the hub closest to your address."

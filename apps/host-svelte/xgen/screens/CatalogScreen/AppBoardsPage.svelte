@@ -29,23 +29,11 @@
   import { lanes as lanesEntries } from "@ui8kit/app-shared/data/lanes";
   import { cards as cardsEntries } from "@ui8kit/app-shared/data/cards";
 
-  const METRICS_FIELDS = {
-    "id": "id",
-    "label": "title.en",
-    "value": "metadata.value.value",
-    "icon": "metadata.icon.value",
-    "hint": "metadata.hint.value",
-  } as const;
-  const SERIES_FIELDS = {"id":"id","label":"title.en","value":"metadata.value.value"} as const;
-  const ACTIVITY_FIELDS = {
-    "id": "id",
-    "title": "title.en",
-    "text": "metadata.text.value",
-    "time": "metadata.time.value",
-    "tone": "metadata.tone.value",
-  } as const;
-  const LANES_FIELDS = {"id":"id","key":"slug.en","title":"title.en"} as const;
-  const CARDS_FIELDS = {"id":"id","lane":"metadata.lane.value","title":"title.en","tag":"metadata.tag.value","who":"metadata.who.value"} as const;
+  const METRICS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
+  const SERIES_FIELDS = {"id":"id","label":"title","value":"metadata.value.value"} as const;
+  const ACTIVITY_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","time":"metadata.time.value","tone":"metadata.tone.value"} as const;
+  const LANES_FIELDS = {"id":"id","key":"slug","title":"title"} as const;
+  const CARDS_FIELDS = {"id":"id","lane":"metadata.lane.value","title":"title","tag":"metadata.tag.value","who":"metadata.who.value"} as const;
 
   const metrics = fromCodex<Stat>(metricsEntries, METRICS_FIELDS);
   const series = fromCodex<Point>(seriesEntries, SERIES_FIELDS);

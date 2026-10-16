@@ -20,13 +20,7 @@
   import { ui } from "@ui8kit/app-shared/content";
   import { milestones as milestonesEntries } from "@ui8kit/app-shared/data/milestones";
 
-  const MILESTONES_FIELDS = {
-    "id": "id",
-    "date": "metadata.date.value",
-    "title": "title.en",
-    "text": "metadata.text.value",
-    "tag": "metadata.tag.value",
-  } as const;
+  const MILESTONES_FIELDS = {"id":"id","date":"metadata.date.value","title":"title","text":"metadata.text.value","tag":"metadata.tag.value"} as const;
 
   const milestones = fromCodex<Milestone>(milestonesEntries, MILESTONES_FIELDS);
 </script>

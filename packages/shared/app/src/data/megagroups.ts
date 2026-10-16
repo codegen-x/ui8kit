@@ -3,16 +3,13 @@
 // Fixture of the Codex collection "megagroups" (xgen/fixtures/megagroups.json)
 export const megagroups = [
   {
-    "id": "group-product",
+    "id": "megagroup-product",
+    "locale": "en",
     "kind": "group",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "product"
-    },
-    "title": {
-      "en": "Product"
-    },
+    "slug": "megagroup-product",
+    "title": "Product",
     "metadata": {
       "icon": {
         "value": "layers"
@@ -32,16 +29,13 @@ export const megagroups = [
     "published_at": "2026-03-02T10:00:00Z"
   },
   {
-    "id": "group-resources",
+    "id": "megagroup-resources",
+    "locale": "en",
     "kind": "group",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "resources"
-    },
-    "title": {
-      "en": "Resources"
-    },
+    "slug": "megagroup-resources",
+    "title": "Resources",
     "metadata": {
       "icon": {
         "value": "book-open"
@@ -61,16 +55,13 @@ export const megagroups = [
     "published_at": "2026-03-04T10:00:00Z"
   },
   {
-    "id": "group-company",
+    "id": "megagroup-company",
+    "locale": "en",
     "kind": "group",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "company"
-    },
-    "title": {
-      "en": "Company"
-    },
+    "slug": "megagroup-company",
+    "title": "Company",
     "metadata": {
       "icon": {
         "value": "building"

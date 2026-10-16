@@ -34,10 +34,10 @@ import { projects as projectsEntries } from "@ui8kit/app-shared/data/projects";
 import { photos as photosEntries } from "@ui8kit/app-shared/data/photos";
 import { sitemap as sitemapEntries } from "@ui8kit/app-shared/data/sitemap";
 
-const NAVLINKS_FIELDS = {"id":"id","name":"title.en","icon":"metadata.icon.value"} as const;
+const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
 const TESTIMONIALS_FIELDS = {
   "id": "id",
-  "author": "title.en",
+  "author": "title",
   "role": "metadata.role.value",
   "company": "metadata.company.value",
   "quote": "metadata.quote.value",
@@ -46,11 +46,11 @@ const TESTIMONIALS_FIELDS = {
   "time": "metadata.time.value",
   "mark": "metadata.mark.value",
 } as const;
-const PROFILEFACTS_FIELDS = {"id":"id","label":"title.en","value":"metadata.value.value"} as const;
-const SKILLS_FIELDS = {"id":"id","label":"title.en","level":"metadata.level.value"} as const;
+const PROFILEFACTS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value"} as const;
+const SKILLS_FIELDS = {"id":"id","label":"title","level":"metadata.level.value"} as const;
 const PROJECTS_FIELDS = {
   "id": "id",
-  "title": "title.en",
+  "title": "title",
   "category": "metadata.category.value",
   "year": "metadata.year.value",
   "summary": "metadata.summary.value",
@@ -58,8 +58,8 @@ const PROJECTS_FIELDS = {
   "featured": "metadata.featured.value",
   "client": "metadata.client.value",
 } as const;
-const PHOTOS_FIELDS = {"id":"id","title":"title.en","tag":"metadata.tag.value","size":"metadata.size.value"} as const;
-const SITEMAP_FIELDS = {"id":"id","title":"title.en","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
+const PHOTOS_FIELDS = {"id":"id","title":"title","tag":"metadata.tag.value","size":"metadata.size.value"} as const;
+const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
 
 const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS);
 const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS);

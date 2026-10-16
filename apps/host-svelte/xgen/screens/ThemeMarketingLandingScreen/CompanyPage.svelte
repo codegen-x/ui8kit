@@ -27,18 +27,12 @@
   import { jobs as jobsEntries } from "@ui8kit/app-shared/data/jobs";
   import { departments as departmentsEntries } from "@ui8kit/app-shared/data/departments";
 
-  const STATS_FIELDS = {"id":"id","label":"title.en","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
-  const VALUES_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
-  const MILESTONES_FIELDS = {
-    "id": "id",
-    "date": "metadata.date.value",
-    "title": "title.en",
-    "text": "metadata.text.value",
-    "tag": "metadata.tag.value",
-  } as const;
+  const STATS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
+  const VALUES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+  const MILESTONES_FIELDS = {"id":"id","date":"metadata.date.value","title":"title","text":"metadata.text.value","tag":"metadata.tag.value"} as const;
   const MEMBERS_FIELDS = {
     "id": "id",
-    "name": "title.en",
+    "name": "title",
     "role": "metadata.role.value",
     "dept": "metadata.dept.value",
     "location": "metadata.location.value",
@@ -47,14 +41,14 @@
   } as const;
   const JOBS_FIELDS = {
     "id": "id",
-    "title": "title.en",
+    "title": "title",
     "dept": "metadata.dept.value",
     "location": "metadata.location.value",
     "type": "metadata.type.value",
     "salary": "metadata.salary.value",
     "posted": "metadata.posted.value",
   } as const;
-  const DEPARTMENTS_FIELDS = {"id":"id","name":"title.en"} as const;
+  const DEPARTMENTS_FIELDS = {"id":"id","name":"title"} as const;
 
   const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
   const values = fromCodex<Feature>(valuesEntries, VALUES_FIELDS);

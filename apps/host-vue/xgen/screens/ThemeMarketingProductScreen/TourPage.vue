@@ -27,13 +27,13 @@ import { steps as stepsEntries } from "@ui8kit/app-shared/data/steps";
 import { testimonials as testimonialsEntries } from "@ui8kit/app-shared/data/testimonials";
 import { megagroups as megagroupsEntries } from "@ui8kit/app-shared/data/megagroups";
 
-const NAVLINKS_FIELDS = {"id":"id","name":"title.en","icon":"metadata.icon.value"} as const;
-const FEATURES_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
-const BEFOREAFTER_FIELDS = {"id":"id","title":"title.en","before":"metadata.before.value","after":"metadata.after.value"} as const;
-const STEPS_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
+const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+const BEFOREAFTER_FIELDS = {"id":"id","title":"title","before":"metadata.before.value","after":"metadata.after.value"} as const;
+const STEPS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 const TESTIMONIALS_FIELDS = {
   "id": "id",
-  "author": "title.en",
+  "author": "title",
   "role": "metadata.role.value",
   "company": "metadata.company.value",
   "quote": "metadata.quote.value",
@@ -42,7 +42,7 @@ const TESTIMONIALS_FIELDS = {
   "time": "metadata.time.value",
   "mark": "metadata.mark.value",
 } as const;
-const MEGAGROUPS_FIELDS = {"id":"id","title":"title.en","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
+const MEGAGROUPS_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
 
 const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS);
 const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);

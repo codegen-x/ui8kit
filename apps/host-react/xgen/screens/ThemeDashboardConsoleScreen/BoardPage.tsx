@@ -8,8 +8,8 @@ import { ui } from "@ui8kit/app-shared/content";
 import { lanes as lanesEntries } from "@ui8kit/app-shared/data/lanes";
 import { cards as cardsEntries } from "@ui8kit/app-shared/data/cards";
 
-const LANES_FIELDS = {"id":"id","key":"slug.en","title":"title.en"} as const;
-const CARDS_FIELDS = {"id":"id","lane":"metadata.lane.value","title":"title.en","tag":"metadata.tag.value","who":"metadata.who.value"} as const;
+const LANES_FIELDS = {"id":"id","key":"slug","title":"title"} as const;
+const CARDS_FIELDS = {"id":"id","lane":"metadata.lane.value","title":"title","tag":"metadata.tag.value","who":"metadata.who.value"} as const;
 
 const lanes = fromCodex<Lane>(lanesEntries, LANES_FIELDS);
 const cards = fromCodex<BoardCard>(cardsEntries, CARDS_FIELDS);

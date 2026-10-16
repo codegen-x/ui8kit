@@ -4,15 +4,12 @@
 export const faq = [
   {
     "id": "faq-trial",
+    "locale": "en",
     "kind": "faq",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "trial"
-    },
-    "title": {
-      "en": "Is there a free plan?"
-    },
+    "slug": "trial",
+    "title": "Is there a free plan?",
     "metadata": {
       "answer": {
         "value": "Yes. Solo is free and has no time limit."
@@ -28,15 +25,12 @@ export const faq = [
   },
   {
     "id": "faq-switch",
+    "locale": "en",
     "kind": "faq",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "switch"
-    },
-    "title": {
-      "en": "Can I change plans later?"
-    },
+    "slug": "switch",
+    "title": "Can I change plans later?",
     "metadata": {
       "answer": {
         "value": "You can move up or down at any time; the change applies to the next month."
@@ -52,15 +46,12 @@ export const faq = [
   },
   {
     "id": "faq-export",
+    "locale": "en",
     "kind": "faq",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "export"
-    },
-    "title": {
-      "en": "Can I export my data?"
-    },
+    "slug": "export",
+    "title": "Can I export my data?",
     "metadata": {
       "answer": {
         "value": "Every plan can export all content as files."
@@ -76,15 +67,12 @@ export const faq = [
   },
   {
     "id": "faq-support",
+    "locale": "en",
     "kind": "faq",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "support"
-    },
-    "title": {
-      "en": "How fast is support?"
-    },
+    "slug": "support",
+    "title": "How fast is support?",
     "metadata": {
       "answer": {
         "value": "Team answers within one working day, Scale within four hours."

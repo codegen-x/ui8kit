@@ -17,8 +17,8 @@ import { ui } from "@ui8kit/app-shared/content";
 import { steps as stepsEntries } from "@ui8kit/app-shared/data/steps";
 import { checklist as checklistEntries } from "@ui8kit/app-shared/data/checklist";
 
-const STEPS_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
-const CHECKLIST_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","done":"metadata.done.value"} as const;
+const STEPS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+const CHECKLIST_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","done":"metadata.done.value"} as const;
 
 const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
 const checklist = fromCodex<Task>(checklistEntries, CHECKLIST_FIELDS);

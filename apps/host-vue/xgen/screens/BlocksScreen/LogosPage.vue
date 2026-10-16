@@ -20,7 +20,7 @@ import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { logos as logosEntries } from "@ui8kit/app-shared/data/logos";
 
-const LOGOS_FIELDS = {"id":"id","name":"title.en","icon":"metadata.icon.value"} as const;
+const LOGOS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
 
 const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
 </script>

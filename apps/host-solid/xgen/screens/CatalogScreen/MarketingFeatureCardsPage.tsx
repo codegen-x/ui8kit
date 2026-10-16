@@ -21,8 +21,8 @@ import { ui } from "@ui8kit/app-shared/content";
 import { features as featuresEntries } from "@ui8kit/app-shared/data/features";
 import { values as valuesEntries } from "@ui8kit/app-shared/data/values";
 
-const FEATURES_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
-const VALUES_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+const VALUES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 
 const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
 const values = fromCodex<Feature>(valuesEntries, VALUES_FIELDS);

@@ -27,12 +27,12 @@
   import { faqtabs as faqtabsEntries } from "@ui8kit/app-shared/data/faqtabs";
   import { questions as questionsEntries } from "@ui8kit/app-shared/data/questions";
 
-  const CHANNELS_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
-  const FAQ_FIELDS = {"id":"id","question":"title.en","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
-  const FAQTABS_FIELDS = {"id":"id","title":"title.en","value":"metadata.value.value"} as const;
+  const CHANNELS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+  const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
+  const FAQTABS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
   const QUESTIONS_FIELDS = {
     "id": "id",
-    "question": "title.en",
+    "question": "title",
     "answer": "metadata.answer.value",
     "category": "metadata.category.value",
     "icon": "metadata.icon.value",

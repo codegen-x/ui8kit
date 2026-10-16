@@ -4,15 +4,12 @@
 export const reviews = [
   {
     "id": "review-r1",
+    "locale": "en",
     "kind": "review",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "r1"
-    },
-    "title": {
-      "en": "Great light for late work"
-    },
+    "slug": "r1",
+    "title": "Great light for late work",
     "metadata": {
       "author": {
         "value": "Dana Pierce"
@@ -34,15 +31,12 @@ export const reviews = [
   },
   {
     "id": "review-r2",
+    "locale": "en",
     "kind": "review",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "r2"
-    },
-    "title": {
-      "en": "Solid and simple"
-    },
+    "slug": "r2",
+    "title": "Solid and simple",
     "metadata": {
       "author": {
         "value": "Ravi Menon"
@@ -64,15 +58,12 @@ export const reviews = [
   },
   {
     "id": "review-r3",
+    "locale": "en",
     "kind": "review",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "r3"
-    },
-    "title": {
-      "en": "Does the job"
-    },
+    "slug": "r3",
+    "title": "Does the job",
     "metadata": {
       "author": {
         "value": "Elena Brandt"

@@ -40,12 +40,12 @@ import { photos as photosEntries } from "@ui8kit/app-shared/data/photos";
 import { sitemap as sitemapEntries } from "@ui8kit/app-shared/data/sitemap";
 import { milestones as milestonesEntries } from "@ui8kit/app-shared/data/milestones";
 
-const NAVLINKS_FIELDS = {"id":"id","name":"title.en","icon":"metadata.icon.value"} as const;
-const STATS_FIELDS = {"id":"id","label":"title.en","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
-const VALUES_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
+const STATS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
+const VALUES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 const MEMBERS_FIELDS = {
   "id": "id",
-  "name": "title.en",
+  "name": "title",
   "role": "metadata.role.value",
   "dept": "metadata.dept.value",
   "location": "metadata.location.value",
@@ -54,23 +54,17 @@ const MEMBERS_FIELDS = {
 } as const;
 const JOBS_FIELDS = {
   "id": "id",
-  "title": "title.en",
+  "title": "title",
   "dept": "metadata.dept.value",
   "location": "metadata.location.value",
   "type": "metadata.type.value",
   "salary": "metadata.salary.value",
   "posted": "metadata.posted.value",
 } as const;
-const DEPARTMENTS_FIELDS = {"id":"id","name":"title.en"} as const;
-const PHOTOS_FIELDS = {"id":"id","title":"title.en","tag":"metadata.tag.value","size":"metadata.size.value"} as const;
-const SITEMAP_FIELDS = {"id":"id","title":"title.en","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
-const MILESTONES_FIELDS = {
-  "id": "id",
-  "date": "metadata.date.value",
-  "title": "title.en",
-  "text": "metadata.text.value",
-  "tag": "metadata.tag.value",
-} as const;
+const DEPARTMENTS_FIELDS = {"id":"id","name":"title"} as const;
+const PHOTOS_FIELDS = {"id":"id","title":"title","tag":"metadata.tag.value","size":"metadata.size.value"} as const;
+const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
+const MILESTONES_FIELDS = {"id":"id","date":"metadata.date.value","title":"title","text":"metadata.text.value","tag":"metadata.tag.value"} as const;
 
 const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS);
 const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);

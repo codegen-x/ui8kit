@@ -20,17 +20,17 @@
 
   const POSTS_FIELDS = {
     "id": "id",
-    "title": "title.en",
-    "excerpt": "metadata.excerpt.value",
+    "title": "title",
+    "excerpt": "excerpt",
     "category": "metadata.category.value",
     "author": "metadata.author.value",
     "date": "metadata.date.value",
     "minutes": "metadata.minutes.value",
     "icon": "metadata.icon.value",
   } as const;
-  const ARTICLE_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value","quote":"metadata.quote.value"} as const;
-  const POSTTAGS_FIELDS = {"id":"id","name":"title.en","icon":"metadata.icon.value"} as const;
-  const OUTLINE_FIELDS = {"id":"id","name":"title.en","icon":"metadata.icon.value"} as const;
+  const ARTICLE_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","quote":"metadata.quote.value"} as const;
+  const POSTTAGS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
+  const OUTLINE_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
 
   const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS);
   const article = fromCodex<Section>(articleEntries, ARTICLE_FIELDS);

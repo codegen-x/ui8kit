@@ -18,7 +18,7 @@ import { navOf } from "@ui8kit/app-shared/nav/ThemeOnboardingFlowScreen";
 import { sitemap as sitemapEntries } from "@ui8kit/app-shared/data/sitemap";
 
 const ROUTES = [{"path":"","area":"home"},{"path":"welcome","area":"welcome"},{"path":"setup","area":"setup"},{"path":"tour","area":"tour"}] as const;
-const SITEMAP_FIELDS = {"id":"id","title":"title.en","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
+const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
 
 const { url } = defineProps<{ url: UrlPort }>();
 

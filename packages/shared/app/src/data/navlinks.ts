@@ -4,15 +4,12 @@
 export const navlinks = [
   {
     "id": "link-product",
+    "locale": "en",
     "kind": "link",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "product"
-    },
-    "title": {
-      "en": "Product"
-    },
+    "slug": "product",
+    "title": "Product",
     "metadata": {
       "icon": {
         "value": "package"
@@ -25,15 +22,12 @@ export const navlinks = [
   },
   {
     "id": "link-solutions",
+    "locale": "en",
     "kind": "link",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "solutions"
-    },
-    "title": {
-      "en": "Solutions"
-    },
+    "slug": "solutions",
+    "title": "Solutions",
     "metadata": {
       "icon": {
         "value": "layers"
@@ -46,15 +40,12 @@ export const navlinks = [
   },
   {
     "id": "link-pricing",
+    "locale": "en",
     "kind": "link",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "pricing"
-    },
-    "title": {
-      "en": "Pricing"
-    },
+    "slug": "pricing",
+    "title": "Pricing",
     "metadata": {
       "icon": {
         "value": "tag"
@@ -67,15 +58,12 @@ export const navlinks = [
   },
   {
     "id": "link-docs",
+    "locale": "en",
     "kind": "link",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "docs"
-    },
-    "title": {
-      "en": "Docs"
-    },
+    "slug": "docs",
+    "title": "Docs",
     "metadata": {
       "icon": {
         "value": "book-open"
@@ -88,15 +76,12 @@ export const navlinks = [
   },
   {
     "id": "link-company",
+    "locale": "en",
     "kind": "link",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "company"
-    },
-    "title": {
-      "en": "Company"
-    },
+    "slug": "company",
+    "title": "Company",
     "metadata": {
       "icon": {
         "value": "building"

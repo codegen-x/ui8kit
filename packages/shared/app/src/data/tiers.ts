@@ -4,15 +4,12 @@
 export const tiers = [
   {
     "id": "plan-solo",
+    "locale": "en",
     "kind": "plan",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "solo"
-    },
-    "title": {
-      "en": "Solo"
-    },
+    "slug": "solo",
+    "title": "Solo",
     "metadata": {
       "tagline": {
         "value": "One person, one site"
@@ -32,7 +29,7 @@ export const tiers = [
       "highlighted": {
         "value": false
       },
-      "status": {
+      "plan_status": {
         "value": "active"
       },
       "features": {
@@ -52,16 +49,13 @@ export const tiers = [
     "published_at": "2026-03-11T10:00:00Z"
   },
   {
-    "id": "plan-team",
+    "id": "tier-team",
+    "locale": "en",
     "kind": "plan",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "team"
-    },
-    "title": {
-      "en": "Team"
-    },
+    "slug": "tier-team",
+    "title": "Team",
     "metadata": {
       "tagline": {
         "value": "For a small team"
@@ -81,7 +75,7 @@ export const tiers = [
       "highlighted": {
         "value": true
       },
-      "status": {
+      "plan_status": {
         "value": "active"
       },
       "features": {
@@ -102,16 +96,13 @@ export const tiers = [
     "published_at": "2026-03-12T10:00:00Z"
   },
   {
-    "id": "plan-scale",
+    "id": "tier-scale",
+    "locale": "en",
     "kind": "plan",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "scale"
-    },
-    "title": {
-      "en": "Scale"
-    },
+    "slug": "tier-scale",
+    "title": "Scale",
     "metadata": {
       "tagline": {
         "value": "For many sites and editors"
@@ -131,7 +122,7 @@ export const tiers = [
       "highlighted": {
         "value": false
       },
-      "status": {
+      "plan_status": {
         "value": "active"
       },
       "features": {

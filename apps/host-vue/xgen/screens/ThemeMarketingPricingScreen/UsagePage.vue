@@ -20,20 +20,20 @@ import { credits as creditsEntries } from "@ui8kit/app-shared/data/credits";
 
 const TIERS_FIELDS = {
   "id": "id",
-  "name": "title.en",
+  "name": "title",
   "tagline": "metadata.tagline.value",
   "price": "metadata.price.value",
   "currency": "metadata.currency.value",
   "seats": "metadata.seats.value",
   "storage": "metadata.storage.value",
   "highlighted": "metadata.highlighted.value",
-  "status": "metadata.status.value",
+  "status": "metadata.plan_status.value",
   "features": "metadata.features.value",
   "yearly": "metadata.yearly.value",
 } as const;
 const CREDITS_FIELDS = {
   "id": "id",
-  "name": "title.en",
+  "name": "title",
   "credits": "metadata.credits.value",
   "price": "metadata.price.value",
   "currency": "metadata.currency.value",

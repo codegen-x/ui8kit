@@ -4,15 +4,12 @@
 export const credits = [
   {
     "id": "pack-s",
+    "locale": "en",
     "kind": "pack",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "s"
-    },
-    "title": {
-      "en": "100 credits"
-    },
+    "slug": "s",
+    "title": "100 credits",
     "metadata": {
       "credits": {
         "value": 100
@@ -34,15 +31,12 @@ export const credits = [
   },
   {
     "id": "pack-m",
+    "locale": "en",
     "kind": "pack",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "m"
-    },
-    "title": {
-      "en": "500 credits"
-    },
+    "slug": "m",
+    "title": "500 credits",
     "metadata": {
       "credits": {
         "value": 500
@@ -64,15 +58,12 @@ export const credits = [
   },
   {
     "id": "pack-l",
+    "locale": "en",
     "kind": "pack",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "l"
-    },
-    "title": {
-      "en": "2,000 credits"
-    },
+    "slug": "l",
+    "title": "2,000 credits",
     "metadata": {
       "credits": {
         "value": 2000
@@ -94,15 +85,12 @@ export const credits = [
   },
   {
     "id": "pack-xl",
+    "locale": "en",
     "kind": "pack",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "xl"
-    },
-    "title": {
-      "en": "10,000 credits"
-    },
+    "slug": "xl",
+    "title": "10,000 credits",
     "metadata": {
       "credits": {
         "value": 10000

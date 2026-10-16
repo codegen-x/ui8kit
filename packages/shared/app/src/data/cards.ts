@@ -4,15 +4,12 @@
 export const cards = [
   {
     "id": "card-c1",
+    "locale": "en",
     "kind": "card",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "c1"
-    },
-    "title": {
-      "en": "Write the launch post"
-    },
+    "slug": "c1",
+    "title": "Write the launch post",
     "metadata": {
       "lane": {
         "value": "todo"
@@ -31,15 +28,12 @@ export const cards = [
   },
   {
     "id": "card-c2",
+    "locale": "en",
     "kind": "card",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "c2"
-    },
-    "title": {
-      "en": "Review pricing copy"
-    },
+    "slug": "c2",
+    "title": "Review pricing copy",
     "metadata": {
       "lane": {
         "value": "todo"
@@ -58,15 +52,12 @@ export const cards = [
   },
   {
     "id": "card-c3",
+    "locale": "en",
     "kind": "card",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "c3"
-    },
-    "title": {
-      "en": "Build the signup flow"
-    },
+    "slug": "c3",
+    "title": "Build the signup flow",
     "metadata": {
       "lane": {
         "value": "doing"
@@ -85,15 +76,12 @@ export const cards = [
   },
   {
     "id": "card-c4",
+    "locale": "en",
     "kind": "card",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "c4"
-    },
-    "title": {
-      "en": "Fix the cart total"
-    },
+    "slug": "c4",
+    "title": "Fix the cart total",
     "metadata": {
       "lane": {
         "value": "doing"
@@ -112,15 +100,12 @@ export const cards = [
   },
   {
     "id": "card-c5",
+    "locale": "en",
     "kind": "card",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "c5"
-    },
-    "title": {
-      "en": "Publish the docs"
-    },
+    "slug": "c5",
+    "title": "Publish the docs",
     "metadata": {
       "lane": {
         "value": "done"
@@ -139,15 +124,12 @@ export const cards = [
   },
   {
     "id": "card-c6",
+    "locale": "en",
     "kind": "card",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "c6"
-    },
-    "title": {
-      "en": "Ship dark mode"
-    },
+    "slug": "c6",
+    "title": "Ship dark mode",
     "metadata": {
       "lane": {
         "value": "done"

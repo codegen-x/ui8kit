@@ -24,27 +24,27 @@
 
   const TIERS_FIELDS = {
     "id": "id",
-    "name": "title.en",
+    "name": "title",
     "tagline": "metadata.tagline.value",
     "price": "metadata.price.value",
     "currency": "metadata.currency.value",
     "seats": "metadata.seats.value",
     "storage": "metadata.storage.value",
     "highlighted": "metadata.highlighted.value",
-    "status": "metadata.status.value",
+    "status": "metadata.plan_status.value",
     "features": "metadata.features.value",
     "yearly": "metadata.yearly.value",
   } as const;
   const DUO_FIELDS = {
     "id": "id",
-    "name": "title.en",
+    "name": "title",
     "tagline": "metadata.tagline.value",
     "price": "metadata.price.value",
     "currency": "metadata.currency.value",
     "seats": "metadata.seats.value",
     "storage": "metadata.storage.value",
     "highlighted": "metadata.highlighted.value",
-    "status": "metadata.status.value",
+    "status": "metadata.plan_status.value",
     "features": "metadata.features.value",
     "yearly": "metadata.yearly.value",
   } as const;
@@ -410,7 +410,7 @@
           <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
             <Box class="mx-auto w-full max-w-sm px-4 py-6" data-slot="container">
               <PricingCard
-                plan={tiers.find((i) => i.id === "plan-team")!}
+                plan={tiers.find((i) => i.id === "tier-team")!}
                 labels={ui.pricing}
                 emphasis="auto"
                 density="default"
@@ -433,7 +433,7 @@
           <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
             <Box class="mx-auto w-full max-w-sm px-4 py-6" data-slot="container">
               <PricingCard
-                plan={tiers.find((i) => i.id === "plan-team")!}
+                plan={tiers.find((i) => i.id === "tier-team")!}
                 labels={ui.pricing}
                 emphasis="off"
                 density="default"
@@ -456,7 +456,7 @@
           <Box class="overflow-clip rounded-xl inset-ring inset-ring-border" data-testid="variant-body">
             <Box class="mx-auto w-full max-w-sm px-4 py-6" data-slot="container">
               <PricingCard
-                plan={tiers.find((i) => i.id === "plan-team")!}
+                plan={tiers.find((i) => i.id === "tier-team")!}
                 labels={ui.pricing}
                 emphasis="auto"
                 density="compact"

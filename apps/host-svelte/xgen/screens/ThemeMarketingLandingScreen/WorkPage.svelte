@@ -20,11 +20,11 @@
   import { projects as projectsEntries } from "@ui8kit/app-shared/data/projects";
   import { photos as photosEntries } from "@ui8kit/app-shared/data/photos";
 
-  const PROFILEFACTS_FIELDS = {"id":"id","label":"title.en","value":"metadata.value.value"} as const;
-  const SKILLS_FIELDS = {"id":"id","label":"title.en","level":"metadata.level.value"} as const;
+  const PROFILEFACTS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value"} as const;
+  const SKILLS_FIELDS = {"id":"id","label":"title","level":"metadata.level.value"} as const;
   const PROJECTS_FIELDS = {
     "id": "id",
-    "title": "title.en",
+    "title": "title",
     "category": "metadata.category.value",
     "year": "metadata.year.value",
     "summary": "metadata.summary.value",
@@ -32,7 +32,7 @@
     "featured": "metadata.featured.value",
     "client": "metadata.client.value",
   } as const;
-  const PHOTOS_FIELDS = {"id":"id","title":"title.en","tag":"metadata.tag.value","size":"metadata.size.value"} as const;
+  const PHOTOS_FIELDS = {"id":"id","title":"title","tag":"metadata.tag.value","size":"metadata.size.value"} as const;
 
   const profilefacts = fromCodex<Spec>(profilefactsEntries, PROFILEFACTS_FIELDS);
   const skills = fromCodex<Skill>(skillsEntries, SKILLS_FIELDS);

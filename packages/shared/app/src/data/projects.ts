@@ -4,15 +4,12 @@
 export const projects = [
   {
     "id": "project-atlas",
+    "locale": "en",
     "kind": "project",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "atlas"
-    },
-    "title": {
-      "en": "Atlas dashboard"
-    },
+    "slug": "atlas",
+    "title": "Atlas dashboard",
     "metadata": {
       "category": {
         "value": "Product design"
@@ -44,15 +41,12 @@ export const projects = [
   },
   {
     "id": "project-harbor",
+    "locale": "en",
     "kind": "project",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "harbor"
-    },
-    "title": {
-      "en": "Harbor booking"
-    },
+    "slug": "harbor",
+    "title": "Harbor booking",
     "metadata": {
       "category": {
         "value": "Web app"
@@ -83,15 +77,12 @@ export const projects = [
   },
   {
     "id": "project-lumen",
+    "locale": "en",
     "kind": "project",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "lumen"
-    },
-    "title": {
-      "en": "Lumen brand"
-    },
+    "slug": "lumen",
+    "title": "Lumen brand",
     "metadata": {
       "category": {
         "value": "Branding"
@@ -122,15 +113,12 @@ export const projects = [
   },
   {
     "id": "project-orbit",
+    "locale": "en",
     "kind": "project",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "orbit"
-    },
-    "title": {
-      "en": "Orbit mobile"
-    },
+    "slug": "orbit",
+    "title": "Orbit mobile",
     "metadata": {
       "category": {
         "value": "Mobile"
@@ -161,15 +149,12 @@ export const projects = [
   },
   {
     "id": "project-field",
+    "locale": "en",
     "kind": "project",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "field"
-    },
-    "title": {
-      "en": "Field notes"
-    },
+    "slug": "field",
+    "title": "Field notes",
     "metadata": {
       "category": {
         "value": "Editorial"
@@ -200,15 +185,12 @@ export const projects = [
   },
   {
     "id": "project-cedar",
+    "locale": "en",
     "kind": "project",
     "status": "published",
     "visibility": "public",
-    "slug": {
-      "en": "cedar"
-    },
-    "title": {
-      "en": "Cedar store"
-    },
+    "slug": "cedar",
+    "title": "Cedar store",
     "metadata": {
       "category": {
         "value": "Commerce"

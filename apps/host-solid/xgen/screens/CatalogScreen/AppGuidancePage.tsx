@@ -21,7 +21,7 @@ import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { ui } from "@ui8kit/app-shared/content";
 import { chapters as chaptersEntries } from "@ui8kit/app-shared/data/chapters";
 
-const CHAPTERS_FIELDS = {"id":"id","title":"title.en","text":"metadata.text.value"} as const;
+const CHAPTERS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value"} as const;
 
 const chapters = fromCodex<Chapter>(chaptersEntries, CHAPTERS_FIELDS);
 
