@@ -13,6 +13,7 @@
     title: string;
     text: string;
     events: Event[];
+    empty?: string;
     layout?: "timeline" | "list";
     density?: "default" | "compact";
     tone?: "default" | "muted";
@@ -27,6 +28,7 @@
   import ListItem from "../primitives/list/list-item.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import Panel from "../components/panel.svelte";
   import Timeline from "../components/timeline.svelte";
   import { cn, tpl } from "../utils";
@@ -36,6 +38,7 @@
     title,
     text,
     events,
+    empty = "",
     layout = "timeline",
     density = "default",
     tone = "default",
@@ -51,7 +54,9 @@
 >
   <Container class="mx-auto w-full max-w-6xl px-4 py-8" data-slot="container">
     <Panel title={title} description={text} id={id} class={(((tone as string) === "muted") ? "bg-muted" : "")}>
-      {#if ((layout as string) === "timeline")}
+      {#if ((events?.length ?? 0) === 0)}
+        <EmptyState icon="activity" title={empty} />
+      {:else if ((layout as string) === "timeline")}
         <Timeline items={events} />
       {:else}
         <List class="m-0 flex list-none flex-col p-0" data-testid="items">

@@ -12,6 +12,7 @@
     id: string;
     title: string;
     metrics: Metric[];
+    empty?: string;
     cols?: "2" | "4";
     item?: "tile" | "compact";
     tone?: "default" | "muted";
@@ -27,6 +28,7 @@
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import StatTile from "../components/stat-tile.svelte";
 
@@ -34,6 +36,7 @@
     id,
     title,
     metrics,
+    empty = "",
     cols = "4",
     item = "tile",
     tone = "default",
@@ -43,28 +46,32 @@
 </script>
 
 <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
-  <Grid cols={(((cols as string) === "2") ? "1-2" : "1-4")} class="gap-4" data-testid="items">
-    {#each metrics as m (m.id)}
-      {#if ((item as string) === "tile")}
-        <Box data-testid="item">
-          <StatTile label={m.label} value={m.value} icon={m.icon} hint={m.hint} />
-        </Box>
-      {:else}
-        <Stack gap="0" class="rounded bg-card p-4 inset-ring inset-ring-border" data-testid="item">
-          <Group gap="2" align="center" class="text-muted-foreground">
-            <LucideIcon name={m.icon} size={16} />
-            <Text size="xs">
-              {m.label}
+  {#if ((metrics?.length ?? 0) === 0)}
+    <EmptyState icon="gauge" title={empty} />
+  {:else}
+    <Grid cols={(((cols as string) === "2") ? "1-2" : "1-4")} class="gap-4" data-testid="items">
+      {#each metrics as m (m.id)}
+        {#if ((item as string) === "tile")}
+          <Box data-testid="item">
+            <StatTile label={m.label} value={m.value} icon={m.icon} hint={m.hint} />
+          </Box>
+        {:else}
+          <Stack gap="0" class="rounded bg-card p-4 inset-ring inset-ring-border" data-testid="item">
+            <Group gap="2" align="center" class="text-muted-foreground">
+              <LucideIcon name={m.icon} size={16} />
+              <Text size="xs">
+                {m.label}
+              </Text>
+            </Group>
+            <Text size="2xl" weight="bold">
+              {m.value}
             </Text>
-          </Group>
-          <Text size="2xl" weight="bold">
-            {m.value}
-          </Text>
-          <Text size="xs" class="text-muted-foreground">
-            {m.hint}
-          </Text>
-        </Stack>
-      {/if}
-    {/each}
-  </Grid>
+            <Text size="xs" class="text-muted-foreground">
+              {m.hint}
+            </Text>
+          </Stack>
+        {/if}
+      {/each}
+    </Grid>
+  {/if}
 </SectionFrame>

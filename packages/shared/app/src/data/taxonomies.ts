@@ -74,12 +74,23 @@ export const taxonomies = [
       "label": "Question topic",
       "mode": "flat",
       "assigned_to_kinds": [
-        "faq"
+        "faq",
+        "question"
       ],
       "public": true,
       "version": 1
     },
     "terms": [
+      {
+        "id": "faq-category-getting-started",
+        "locale": "en",
+        "taxonomy_id": "faq_category",
+        "name": "Getting started",
+        "slug": "getting-started",
+        "version": 1,
+        "created_at": "2026-03-01T09:00:00Z",
+        "updated_at": "2026-03-02T09:00:00Z"
+      },
       {
         "id": "faq-category-billing",
         "locale": "en",
@@ -161,6 +172,81 @@ export const taxonomies = [
         "taxonomy_id": "product_category",
         "name": "Gifts",
         "slug": "gifts",
+        "version": 1,
+        "created_at": "2026-03-01T09:00:00Z",
+        "updated_at": "2026-03-02T09:00:00Z"
+      }
+    ]
+  },
+  {
+    "definition": {
+      "id": "project_category",
+      "locale": "en",
+      "label": "Project type",
+      "mode": "flat",
+      "assigned_to_kinds": [
+        "project"
+      ],
+      "public": true,
+      "version": 1
+    },
+    "terms": [
+      {
+        "id": "project-category-product-design",
+        "locale": "en",
+        "taxonomy_id": "project_category",
+        "name": "Product design",
+        "slug": "product-design",
+        "version": 1,
+        "created_at": "2026-03-01T09:00:00Z",
+        "updated_at": "2026-03-02T09:00:00Z"
+      },
+      {
+        "id": "project-category-web-app",
+        "locale": "en",
+        "taxonomy_id": "project_category",
+        "name": "Web app",
+        "slug": "web-app",
+        "version": 1,
+        "created_at": "2026-03-01T09:00:00Z",
+        "updated_at": "2026-03-02T09:00:00Z"
+      },
+      {
+        "id": "project-category-branding",
+        "locale": "en",
+        "taxonomy_id": "project_category",
+        "name": "Branding",
+        "slug": "branding",
+        "version": 1,
+        "created_at": "2026-03-01T09:00:00Z",
+        "updated_at": "2026-03-02T09:00:00Z"
+      },
+      {
+        "id": "project-category-mobile",
+        "locale": "en",
+        "taxonomy_id": "project_category",
+        "name": "Mobile",
+        "slug": "mobile",
+        "version": 1,
+        "created_at": "2026-03-01T09:00:00Z",
+        "updated_at": "2026-03-02T09:00:00Z"
+      },
+      {
+        "id": "project-category-editorial",
+        "locale": "en",
+        "taxonomy_id": "project_category",
+        "name": "Editorial",
+        "slug": "editorial",
+        "version": 1,
+        "created_at": "2026-03-01T09:00:00Z",
+        "updated_at": "2026-03-02T09:00:00Z"
+      },
+      {
+        "id": "project-category-commerce",
+        "locale": "en",
+        "taxonomy_id": "project_category",
+        "name": "Commerce",
+        "slug": "commerce",
         "version": 1,
         "created_at": "2026-03-01T09:00:00Z",
         "updated_at": "2026-03-02T09:00:00Z"

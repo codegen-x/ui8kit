@@ -24,6 +24,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "cols",
       "type": {
         "ts": "\"3\" | \"4\" | \"6\""
@@ -183,113 +189,142 @@
           "args": [],
           "do": [
             {
-              "use": "Grid",
-              "props": {
-                "Cols": {
-                  "$": "wallCols"
-                },
-                "Class": "gap-4"
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "features"
+                      }
+                    ]
+                  },
+                  0
+                ]
               },
-              "attrs": {
-                "data-testid": "items"
-              },
-              "children": [
+              "then": [
                 {
-                  "each": {
-                    "$": "features"
+                  "organism": "EmptyState",
+                  "props": {
+                    "icon": "layout-grid",
+                    "title": {
+                      "$": "empty"
+                    }
+                  }
+                }
+              ],
+              "else": [
+                {
+                  "use": "Grid",
+                  "props": {
+                    "Cols": {
+                      "$": "wallCols"
+                    },
+                    "Class": "gap-4"
                   },
-                  "as": "f",
-                  "key": {
-                    "$": "f.id"
+                  "attrs": {
+                    "data-testid": "items"
                   },
-                  "do": [
+                  "children": [
                     {
-                      "use": "Box",
-                      "props": {
-                        "Class": {
-                          "op": "cn",
-                          "args": [
-                            "flex items-center gap-2",
-                            "rounded bg-card inset-ring inset-ring-border",
-                            {
-                              "op": "cond",
+                      "each": {
+                        "$": "features"
+                      },
+                      "as": "f",
+                      "key": {
+                        "$": "f.id"
+                      },
+                      "do": [
+                        {
+                          "use": "Box",
+                          "props": {
+                            "Class": {
+                              "op": "cn",
                               "args": [
+                                "flex items-center gap-2",
+                                "rounded bg-card inset-ring inset-ring-border",
                                 {
-                                  "op": "eq",
+                                  "op": "cond",
                                   "args": [
                                     {
-                                      "$": "item"
-                                    },
-                                    "tile"
-                                  ]
-                                },
-                                {
-                                  "op": "cn",
-                                  "args": [
-                                    "flex-col justify-center text-center",
-                                    {
-                                      "op": "cond",
+                                      "op": "eq",
                                       "args": [
                                         {
-                                          "op": "eq",
+                                          "$": "item"
+                                        },
+                                        "tile"
+                                      ]
+                                    },
+                                    {
+                                      "op": "cn",
+                                      "args": [
+                                        "flex-col justify-center text-center",
+                                        {
+                                          "op": "cond",
                                           "args": [
                                             {
-                                              "$": "density"
+                                              "op": "eq",
+                                              "args": [
+                                                {
+                                                  "$": "density"
+                                                },
+                                                "compact"
+                                              ]
                                             },
-                                            "compact"
+                                            "p-4",
+                                            "p-6"
                                           ]
-                                        },
-                                        "p-4",
-                                        "p-6"
+                                        }
                                       ]
-                                    }
-                                  ]
-                                },
-                                "px-4 py-2"
-                              ]
-                            }
-                          ]
-                        }
-                      },
-                      "attrs": {
-                        "data-testid": "item"
-                      },
-                      "children": [
-                        {
-                          "use": "LucideIcon",
-                          "props": {
-                            "Name": {
-                              "$": "f.icon"
-                            },
-                            "Size": {
-                              "op": "cond",
-                              "args": [
-                                {
-                                  "op": "eq",
-                                  "args": [
-                                    {
-                                      "$": "item"
                                     },
-                                    "tile"
+                                    "px-4 py-2"
                                   ]
-                                },
-                                24,
-                                16
+                                }
                               ]
                             }
-                          }
-                        },
-                        {
-                          "use": "Text",
-                          "props": {
-                            "Size": "sm",
-                            "Weight": "semibold"
+                          },
+                          "attrs": {
+                            "data-testid": "item"
                           },
                           "children": [
                             {
-                              "text": {
-                                "$": "f.title"
+                              "use": "LucideIcon",
+                              "props": {
+                                "Name": {
+                                  "$": "f.icon"
+                                },
+                                "Size": {
+                                  "op": "cond",
+                                  "args": [
+                                    {
+                                      "op": "eq",
+                                      "args": [
+                                        {
+                                          "$": "item"
+                                        },
+                                        "tile"
+                                      ]
+                                    },
+                                    24,
+                                    16
+                                  ]
+                                }
                               }
+                            },
+                            {
+                              "use": "Text",
+                              "props": {
+                                "Size": "sm",
+                                "Weight": "semibold"
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "f.title"
+                                  }
+                                }
+                              ]
                             }
                           ]
                         }

@@ -68,6 +68,7 @@ export function AccordionPage() {
                 id="accordion-first"
                 title={ui.vibe.accordion.title}
                 features={features}
+                empty={ui.empty.features}
                 expand="first"
                 media="none"
                 tone="default"
@@ -93,6 +94,7 @@ export function AccordionPage() {
                 id="accordion-closed"
                 title={ui.vibe.accordion.title}
                 features={features}
+                empty={ui.empty.features}
                 expand="none"
                 media="none"
                 tone="default"
@@ -118,6 +120,7 @@ export function AccordionPage() {
                 id="accordion-media"
                 title={ui.vibe.accordion.title}
                 features={features}
+                empty={ui.empty.features}
                 expand="first"
                 media="image"
                 tone="default"
@@ -143,6 +146,7 @@ export function AccordionPage() {
                 id="accordion-muted"
                 title={ui.vibe.accordion.title}
                 features={features}
+                empty={ui.empty.features}
                 expand="first"
                 media="none"
                 tone="muted"

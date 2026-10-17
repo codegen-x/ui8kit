@@ -93,7 +93,8 @@ test("every label of a done block is a key of the dictionary (xgen/content/ui/en
 });
 
 test("done blocks: an empty state with its text from the dictionary (labels key or prop empty), or left out (emptyMode omit)", () => {
-  for (const b of done) {
+  for (const b of done.filter((x) => (x.data ?? []).length > 0)) {
+    // a block that reads no collection has nothing to be empty
     // label: the text from the dictionary (a labels key `empty` or a prop `empty`); omit: the empty part is left out
     const x = b as unknown as { emptyState: boolean; emptyMode?: "label" | "omit"; labels: { prop: string; keys: string[] }[] };
     const labelled = x.labels.some((l) => l.keys.includes("empty") || l.prop === "empty");

@@ -11,6 +11,7 @@ export type IconWallProps = {
   id: string;
   title: string;
   features: Feature[];
+  empty?: string;
   cols?: "3" | "4" | "6";
   item?: "tile" | "chip";
   tone?: "default" | "muted";
@@ -25,6 +26,7 @@ import Box from "../primitives/box/box.vue";
 import Grid from "../primitives/grid/grid.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Text from "../primitives/text/text.vue";
+import EmptyState from "../components/empty-state.vue";
 import SectionFrame from "../components/section-frame.vue";
 import { cn, fitCols } from "../utils";
 
@@ -32,6 +34,7 @@ const {
   id,
   title,
   features,
+  empty = "",
   cols = "4",
   item = "tile",
   tone = "default",
@@ -50,7 +53,8 @@ const wallCols = computed(() => fitCols(askedCols.value, (features?.length ?? 0)
 
 <template>
   <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
-    <Grid :cols="wallCols" class="gap-4" data-testid="items">
+    <EmptyState v-if="((features?.length ?? 0) === 0)" icon="layout-grid" :title="empty" />
+    <Grid v-else :cols="wallCols" class="gap-4" data-testid="items">
       <Box v-for="f in features" :key="f.id"
         :class="cn(
           'flex items-center gap-2',

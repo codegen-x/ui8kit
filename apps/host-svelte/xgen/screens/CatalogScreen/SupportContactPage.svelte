@@ -270,6 +270,7 @@
               id="channels-grid"
               title={ui.support.channels.title}
               channels={channels}
+              empty={ui.empty.channels}
               open={ui.support.channels.open}
               layout="grid"
               cols="1-3"
@@ -296,6 +297,7 @@
               id="channels-twoUp"
               title={ui.support.channels.title}
               channels={channels}
+              empty={ui.empty.channels}
               open={ui.support.channels.open}
               layout="grid"
               cols="1-2"
@@ -322,6 +324,7 @@
               id="channels-list"
               title={ui.support.channels.title}
               channels={channels}
+              empty={ui.empty.channels}
               open={ui.support.channels.open}
               layout="list"
               cols="1-3"
@@ -348,6 +351,7 @@
               id="channels-plain"
               title={ui.support.channels.title}
               channels={channels}
+              empty={ui.empty.channels}
               open={ui.support.channels.open}
               layout="grid"
               cols="1-3"

@@ -66,6 +66,7 @@
             id="kanban-detail"
             title={ui.vibe.kanban.title}
             lanes={lanes}
+            empty={ui.empty.lanes}
             cards={cards}
             countLabel={ui.vibe.kanban.count}
             card="detail"
@@ -93,6 +94,7 @@
             id="kanban-simple"
             title={ui.vibe.kanban.title}
             lanes={lanes}
+            empty={ui.empty.lanes}
             cards={cards}
             countLabel={ui.vibe.kanban.count}
             card="simple"
@@ -120,6 +122,7 @@
             id="kanban-twoCols"
             title={ui.vibe.kanban.title}
             lanes={lanes}
+            empty={ui.empty.lanes}
             cards={cards}
             countLabel={ui.vibe.kanban.count}
             card="detail"
@@ -147,6 +150,7 @@
             id="kanban-muted"
             title={ui.vibe.kanban.title}
             lanes={lanes}
+            empty={ui.empty.lanes}
             cards={cards}
             countLabel={ui.vibe.kanban.count}
             card="detail"

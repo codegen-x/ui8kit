@@ -52,7 +52,7 @@
   const PROJECTS_FIELDS = {
     "id": "id",
     "title": "title",
-    "category": "metadata.category.value",
+    "category": "terms|term:project_category",
     "year": "metadata.year.value",
     "summary": "metadata.summary.value",
     "tags": "metadata.tags.value",
@@ -126,6 +126,7 @@
     title={ui.company.projects.title}
     lead={ui.company.projects.lead}
     projects={projects}
+    empty={ui.empty.projects}
     labels={ui.company.projects}
     layout="cards"
     tone="default"
@@ -136,6 +137,7 @@
     title={ui.company.photos.title}
     lead={ui.company.photos.lead}
     photos={photos}
+    empty={ui.empty.photos}
     labels={ui.company.photos}
     layout="masonry"
     captions="show"
@@ -146,6 +148,7 @@
     id="portfolio-testimonials"
     title={ui.marketing.testimonials.title}
     quotes={testimonials}
+    empty={ui.empty.quotes}
     labels={{
       rating: ui.testimonials.rating,
       byLine: ui.testimonials.byLine,

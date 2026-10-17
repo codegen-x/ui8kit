@@ -13,6 +13,7 @@
     title: string;
     lead?: string;
     zones: Zone[];
+    empty?: string;
     labels: ZoneLabels;
     layout?: "table" | "cards";
     tone?: "default" | "muted";
@@ -30,6 +31,7 @@
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import ZoneRows from "../components/zone-rows.svelte";
   import { fmtMoney } from "../utils";
@@ -39,6 +41,7 @@
     title,
     lead = "",
     zones,
+    empty = "",
     labels,
     layout = "table",
     tone = "default",
@@ -48,7 +51,9 @@
 </script>
 
 <SectionFrame id={id} title={title} lead={lead} tone={tone} density={density} landmarkLabel={landmarkLabel}>
-  {#if ((layout as string) === "table")}
+  {#if ((zones?.length ?? 0) === 0)}
+    <EmptyState icon="map" title={empty} />
+  {:else if ((layout as string) === "table")}
     <ZoneRows zones={zones} labels={labels} />
   {:else}
     <Grid cols="1-3" class="gap-4" data-testid="items">

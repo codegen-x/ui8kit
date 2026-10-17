@@ -78,6 +78,14 @@ export function fmtFigure(value: unknown, unit: unknown, locale: string = DEFAUL
   return new Intl.NumberFormat(locale, known ? { style: "unit", unit: unit as string, unitDisplay: "narrow", maximumFractionDigits: 2 } : { maximumFractionDigits: 2 }).format(value);
 }
 
+/** an amount of money in integer minor units ("4820000", "USD" -> "$48,200"), in the locale; whole amounts show no cents */
+export function fmtCurrency(minor: unknown, currency: string, locale: string = DEFAULT_LOCALE): string | undefined {
+  if (typeof minor !== "number" || !Number.isFinite(minor)) return undefined;
+  const digits = new Intl.NumberFormat(locale, { style: "currency", currency }).resolvedOptions().maximumFractionDigits ?? 2;
+  const value = minor / 10 ** digits;
+  return new Intl.NumberFormat(locale, { style: "currency", currency, minimumFractionDigits: Number.isInteger(value) ? 0 : digits }).format(value);
+}
+
 export interface ReadOptions {
   now?: string | number;
   /** the locale of the app; without it a date is formatted in the `locale` of its entry (then DEFAULT_LOCALE) */
@@ -127,7 +135,10 @@ export function readPath(source: unknown, path: string, opts: ReadOptions = {}):
     const user = byLocale((opts.users ?? []).filter((u) => field(u, "id") === cur), locale);
     return field(field(field(user, "metadata"), "display_name"), "value") ?? field(user, "title");
   }
-  if (pipe === "number") return fmtFigure(cur, field(field(field(source, "metadata"), "unit"), "value"), locale);
+  if (pipe === "number") {
+    const currency = field(field(field(source, "metadata"), "currency"), "value");
+    return typeof currency === "string" ? fmtCurrency(cur, currency, locale) : fmtFigure(cur, field(field(field(source, "metadata"), "unit"), "value"), locale);
+  }
   if (pipe.startsWith("term:") || pipe.startsWith("term-slug:")) {
     const taxonomy = pipe.slice(pipe.indexOf(":") + 1);
     const ref = Array.isArray(cur) ? cur.find((r) => field(r, "taxonomy") === taxonomy) : undefined;

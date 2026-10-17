@@ -74,6 +74,7 @@ export function UsagePage() {
         id="usage-credits-2"
         title={ui.vibe.credits.title}
         packs={credits}
+        empty={ui.empty.packs}
         badges={ui.vibe.credits.badges}
         buy={ui.vibe.credits.buy}
         cols="4"
@@ -86,6 +87,7 @@ export function UsagePage() {
         id="usage-credits-3"
         title={ui.vibe.credits.title}
         packs={credits}
+        empty={ui.empty.packs}
         badges={ui.vibe.credits.badges}
         buy={ui.vibe.credits.buy}
         cols="4"

@@ -18,6 +18,7 @@ type FeatureStickyProps struct {
 	Id any `json:"id"`
 	Title any `json:"title"`
 	Features any `json:"features"`
+	Empty any `json:"empty"`
 	Active any `json:"active"`
 	MediaSide any `json:"mediaSide"`
 	Item any `json:"item"`
@@ -31,6 +32,7 @@ templ FeatureSticky(p FeatureStickyProps) {
 	{{ vId := p.Id }}
 	{{ vTitle := p.Title }}
 	{{ vFeatures := p.Features }}
+	{{ vEmpty := uiutils.Def(p.Empty, "") }}
 	{{ vActive := uiutils.Def(p.Active, "") }}
 	{{ vMediaSide := uiutils.Def(p.MediaSide, "end") }}
 	{{ vItem := uiutils.Def(p.Item, "plain") }}
@@ -38,19 +40,23 @@ templ FeatureSticky(p FeatureStickyProps) {
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Tone: vTone, Density: vDensity, LandmarkLabel: vLandmarkLabel}) {
-		@grid.Grid(grid.GridProps{Cols: "1-2", Class: "items-start gap-8", Attrs: uiutils.Attrs("data-testid", "sticky")}) {
-			@box.Box(box.BoxProps{Class: uiutils.S(uiutils.Cnv("md:sticky md:top-8", uiutils.Cond(uiutils.T(uiutils.Eq(vMediaSide, "start")), "md:order-first", "md:order-last"))), Attrs: uiutils.Attrs("data-testid", "sticky-media")}) {
-				@MediaFrame(MediaFrameProps{Alt: vTitle, Ratio: "4/3"})
-			}
-			@stack.Stack(stack.StackProps{Gap: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "4", "8")), Align: "stretch", Attrs: uiutils.Attrs("data-testid", "items")}) {
-				for _, vF := range uiutils.L(vFeatures) {
-					@stack.Stack(stack.StackProps{Gap: "2", Class: uiutils.S(uiutils.Cnv(uiutils.Cond(uiutils.T(uiutils.Eq(vItem, "card")), "rounded bg-card inset-ring inset-ring-border p-6", "py-4"), uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vF, "id"), vActive)), "inset-ring inset-ring-foreground", ""))), Attrs: uiutils.Attrs("data-testid", "item", "aria-current", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vF, "id"), vActive)), "true", nil))}) {
-						@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Get(vF, "icon")), Size: 24})
-						@title.Title(title.TitleProps{As: uiutils.HeadingLevel(uiutils.I(float64(3))), Size: "2xl", Weight: "bold"}) {
-							{ uiutils.Text(uiutils.Get(vF, "title")) }
-						}
-						@text.Text(text.TextProps{Size: "base", Class: "text-muted-foreground"}) {
-							{ uiutils.Text(uiutils.Get(vF, "text")) }
+		if uiutils.Eq(uiutils.Len(vFeatures), float64(0)) {
+			@EmptyState(EmptyStateProps{Icon: "layout-grid", Title: vEmpty})
+		} else {
+			@grid.Grid(grid.GridProps{Cols: "1-2", Class: "items-start gap-8", Attrs: uiutils.Attrs("data-testid", "sticky")}) {
+				@box.Box(box.BoxProps{Class: uiutils.S(uiutils.Cnv("md:sticky md:top-8", uiutils.Cond(uiutils.T(uiutils.Eq(vMediaSide, "start")), "md:order-first", "md:order-last"))), Attrs: uiutils.Attrs("data-testid", "sticky-media")}) {
+					@MediaFrame(MediaFrameProps{Alt: vTitle, Ratio: "4/3"})
+				}
+				@stack.Stack(stack.StackProps{Gap: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "4", "8")), Align: "stretch", Attrs: uiutils.Attrs("data-testid", "items")}) {
+					for _, vF := range uiutils.L(vFeatures) {
+						@stack.Stack(stack.StackProps{Gap: "2", Class: uiutils.S(uiutils.Cnv(uiutils.Cond(uiutils.T(uiutils.Eq(vItem, "card")), "rounded bg-card inset-ring inset-ring-border p-6", "py-4"), uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vF, "id"), vActive)), "inset-ring inset-ring-foreground", ""))), Attrs: uiutils.Attrs("data-testid", "item", "aria-current", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vF, "id"), vActive)), "true", nil))}) {
+							@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Get(vF, "icon")), Size: 24})
+							@title.Title(title.TitleProps{As: uiutils.HeadingLevel(uiutils.I(float64(3))), Size: "2xl", Weight: "bold"}) {
+								{ uiutils.Text(uiutils.Get(vF, "title")) }
+							}
+							@text.Text(text.TextProps{Size: "base", Class: "text-muted-foreground"}) {
+								{ uiutils.Text(uiutils.Get(vF, "text")) }
+							}
 						}
 					}
 				}

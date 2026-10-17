@@ -84,6 +84,7 @@ export function AppOnboardingPage() {
                   id="checklist-card"
                   title={ui.onboarding.checklist.title}
                   tasks={checklist}
+                  empty={ui.empty.tasks}
                   progressLabel={ui.onboarding.checklist.progress}
                   layout="card"
                   progress="bar"
@@ -111,6 +112,7 @@ export function AppOnboardingPage() {
                   id="checklist-expand"
                   title={ui.onboarding.checklist.title}
                   tasks={checklist}
+                  empty={ui.empty.tasks}
                   progressLabel={ui.onboarding.checklist.progress}
                   layout="card"
                   progress="bar"
@@ -138,6 +140,7 @@ export function AppOnboardingPage() {
                   id="checklist-plain"
                   title={ui.onboarding.checklist.title}
                   tasks={checklist}
+                  empty={ui.empty.tasks}
                   progressLabel={ui.onboarding.checklist.progress}
                   layout="plain"
                   progress="bar"
@@ -165,6 +168,7 @@ export function AppOnboardingPage() {
                   id="checklist-text"
                   title={ui.onboarding.checklist.title}
                   tasks={checklist}
+                  empty={ui.empty.tasks}
                   progressLabel={ui.onboarding.checklist.progress}
                   layout="card"
                   progress="text"
@@ -192,6 +196,7 @@ export function AppOnboardingPage() {
                   id="checklist-none"
                   title={ui.onboarding.checklist.title}
                   tasks={checklist}
+                  empty={ui.empty.tasks}
                   progressLabel={ui.onboarding.checklist.progress}
                   layout="plain"
                   progress="none"
@@ -219,6 +224,7 @@ export function AppOnboardingPage() {
                   id="checklist-numbered"
                   title={ui.onboarding.checklist.title}
                   tasks={checklist}
+                  empty={ui.empty.tasks}
                   progressLabel={ui.onboarding.checklist.progress}
                   layout="card"
                   progress="bar"
@@ -246,6 +252,7 @@ export function AppOnboardingPage() {
                   id="checklist-muted"
                   title={ui.onboarding.checklist.title}
                   tasks={checklist}
+                  empty={ui.empty.tasks}
                   progressLabel={ui.onboarding.checklist.progress}
                   layout="card"
                   progress="text"

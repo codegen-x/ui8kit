@@ -63,6 +63,7 @@
     }
   ],
   "slots": [
+    "EmptyState",
     "SectionFrame"
   ],
   "data": [
@@ -88,6 +89,9 @@
       },
       "rows": {
         "$": "summary"
+      },
+      "empty": {
+        "$": "ui.empty.summary"
       },
       "labels": {
         "$": "ui.commerce.summary"

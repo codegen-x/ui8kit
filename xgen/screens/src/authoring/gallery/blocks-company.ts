@@ -19,7 +19,7 @@ const team = define({
     ["directory", "Directory, two columns, compact", { layout: "directory", density: "compact" }],
   ],
   facts: [{ sel: '[data-testid="item"]', n: "@members" }, ...when2('[data-slot="media"]', 1, "layout", "list", ["cards", "minimal", "detailed", "directory"])],
-  sample: { id: "team", title: c("team.title"), lead: c("team.lead"), members: ref("members"), depts: c("depts") },
+  sample: { id: "team", title: c("team.title"), lead: c("team.lead"), members: ref("members"), empty: t("empty.members"), depts: c("depts") },
 });
 
 const photos = define({
@@ -39,7 +39,7 @@ const photos = define({
     { sel: '[data-testid="caption"]', n: "@photos", when: { layout: ["grid", "masonry"], captions: "show" } },
     { sel: '[data-testid="caption"]', n: 0, when: { captions: "hide" } },
   ],
-  sample: { id: "photos", title: c("photos.title"), lead: c("photos.lead"), photos: ref("photos"), labels: c("photos") },
+  sample: { id: "photos", title: c("photos.title"), lead: c("photos.lead"), photos: ref("photos"), empty: t("empty.photos"), labels: c("photos") },
 });
 
 const projects = define({
@@ -54,7 +54,7 @@ const projects = define({
     ["cardsMuted", "Cards, muted, compact", { tone: "muted", density: "compact" }],
   ],
   facts: [{ sel: '[data-testid="item"]', n: "@projects" }, { sel: '[data-testid="featured"]', n: 2, when: { layout: ["cards", "overlay", "bento"] } }, { sel: '[data-testid="featured"]', n: 0, when: { layout: ["compact", "list"] } }],
-  sample: { id: "projects", title: c("projects.title"), lead: c("projects.lead"), projects: ref("projects"), labels: c("projects") },
+  sample: { id: "projects", title: c("projects.title"), lead: c("projects.lead"), projects: ref("projects"), empty: t("empty.projects"), labels: c("projects") },
 });
 
 const jobs = define({
@@ -105,7 +105,7 @@ const timeline = define({
   organism: "MilestoneTimeline", axes: ["layout", "tone", "density"], data: [d.milestones],
   variants: [["split", "Beside a picture"], ["stacked", "Narrow column", { layout: "stacked" }], ["row", "A row of columns", { layout: "row" }], ["rowMuted", "Row, muted, compact", { layout: "row", tone: "muted", density: "compact" }]],
   facts: [{ sel: '[data-testid="item"]', n: "@milestones" }, ...when2('[data-slot="media"]', 1, "layout", "split", ["stacked", "row"])],
-  sample: { id: "timeline", title: c("timeline.title"), lead: c("timeline.lead"), milestones: ref("milestones") },
+  sample: { id: "timeline", title: c("timeline.title"), lead: c("timeline.lead"), milestones: ref("milestones"), empty: t("empty.milestones") },
 });
 
 export const companyBlocks = [team, photos, projects, jobs, aboutme, about, timeline];

@@ -105,6 +105,7 @@ export function CompanyPage() {
         title={ui.company.timeline.title}
         lead={ui.company.timeline.lead}
         milestones={milestones}
+        empty={ui.empty.milestones}
         layout="split"
         tone="default"
         density="default"
@@ -115,6 +116,7 @@ export function CompanyPage() {
         title={ui.company.team.title}
         lead={ui.company.team.lead}
         members={members}
+        empty={ui.empty.members}
         depts={ui.company.depts}
         layout="cards"
         cols="1-4"

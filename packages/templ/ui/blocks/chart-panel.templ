@@ -16,6 +16,7 @@ type ChartPanelProps struct {
 	Title any `json:"title"`
 	Text any `json:"text"`
 	Series any `json:"series"`
+	Empty any `json:"empty"`
 	Summary any `json:"summary"`
 	Percent any `json:"percent"`
 	Chart any `json:"chart"`
@@ -30,6 +31,7 @@ templ ChartPanel(p ChartPanelProps) {
 	{{ vTitle := p.Title }}
 	{{ vText := p.Text }}
 	{{ vSeries := p.Series }}
+	{{ vEmpty := uiutils.Def(p.Empty, "") }}
 	{{ vSummary := p.Summary }}
 	{{ vPercent := p.Percent }}
 	{{ vChart := uiutils.Def(p.Chart, "bars") }}
@@ -39,7 +41,9 @@ templ ChartPanel(p ChartPanelProps) {
 	@block.Block(block.BlockProps{Tag: "section", Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, uiutils.Cond(uiutils.T(uiutils.And(vTitle, vId)), uiutils.Tpl("{0}-t", vId), nil)), "data-testid", "panel-section", "aria-label", vLandmarkLabel)}) {
 		@container.Container(container.ContainerProps{Class: "mx-auto w-full max-w-6xl px-4 py-8", Attrs: uiutils.Attrs("data-slot", "container")}) {
 			@Panel(PanelProps{Title: vTitle, Description: vText, Id: vId, Class: uiutils.Cnv(uiutils.Cond(uiutils.T(uiutils.Eq(vTone, "muted")), "bg-muted", ""))}) {
-				if uiutils.Eq(vChart, "bars") {
+				if uiutils.Eq(uiutils.Len(vSeries), float64(0)) {
+					@EmptyState(EmptyStateProps{Icon: "chart-column", Title: vEmpty})
+				} else if uiutils.Eq(vChart, "bars") {
 					@BarChart(BarChartProps{Bars: vSeries, Label: vSummary, Height: uiutils.Cond(uiutils.T(uiutils.Eq(vSize, "compact")), float64(96), float64(176))})
 				} else {
 					@stack.Stack(stack.StackProps{Gap: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vSize, "compact")), "0", "2")), Align: "stretch", Attrs: uiutils.Attrs("data-testid", "items")}) {

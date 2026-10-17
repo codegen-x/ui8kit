@@ -52,6 +52,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "layout",
       "type": {
         "ts": "\"split\" | \"stacked\" | \"row\""
@@ -153,65 +159,68 @@
           "args": [],
           "do": [
             {
-              "use": "List",
-              "props": {
-                "Tag": "ol",
-                "Class": {
-                  "op": "cond",
-                  "args": [
-                    {
-                      "op": "eq",
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "milestones"
+                      }
+                    ]
+                  },
+                  0
+                ]
+              },
+              "then": [
+                {
+                  "organism": "EmptyState",
+                  "props": {
+                    "icon": "milestone",
+                    "title": {
+                      "$": "empty"
+                    }
+                  }
+                }
+              ],
+              "else": [
+                {
+                  "use": "List",
+                  "props": {
+                    "Tag": "ol",
+                    "Class": {
+                      "op": "cond",
                       "args": [
                         {
-                          "$": "layout"
-                        },
-                        "row"
-                      ]
-                    },
-                    "grid grid-cols-1 gap-8 border-t border-border sm:grid-cols-2 lg:grid-cols-4",
-                    "flex flex-col gap-8 border-l border-border"
-                  ]
-                }
-              },
-              "attrs": {
-                "data-testid": "items"
-              },
-              "children": [
-                {
-                  "each": {
-                    "$": "milestones"
-                  },
-                  "as": "m",
-                  "key": {
-                    "$": "m.id"
-                  },
-                  "do": [
-                    {
-                      "use": "ListItem",
-                      "props": {
-                        "Class": {
-                          "op": "cond",
+                          "op": "eq",
                           "args": [
                             {
-                              "op": "eq",
-                              "args": [
-                                {
-                                  "$": "layout"
-                                },
-                                "row"
-                              ]
+                              "$": "layout"
                             },
-                            "relative flex flex-col gap-2 pt-6",
-                            "relative flex flex-col gap-2 pl-6"
+                            "row"
                           ]
-                        }
+                        },
+                        "grid grid-cols-1 gap-8 border-t border-border sm:grid-cols-2 lg:grid-cols-4",
+                        "flex flex-col gap-8 border-l border-border"
+                      ]
+                    }
+                  },
+                  "attrs": {
+                    "data-testid": "items"
+                  },
+                  "children": [
+                    {
+                      "each": {
+                        "$": "milestones"
                       },
-                      "attrs": {
-                        "data-testid": "item"
+                      "as": "m",
+                      "key": {
+                        "$": "m.id"
                       },
-                      "children": [
+                      "do": [
                         {
-                          "use": "Inline",
+                          "use": "ListItem",
                           "props": {
                             "Class": {
                               "op": "cond",
@@ -225,78 +234,104 @@
                                     "row"
                                   ]
                                 },
-                                "absolute top-0 left-0 size-2 -translate-y-1/2 rounded bg-primary",
-                                "absolute top-2 left-0 size-2 -translate-x-1/2 rounded bg-primary"
+                                "relative flex flex-col gap-2 pt-6",
+                                "relative flex flex-col gap-2 pl-6"
                               ]
                             }
                           },
                           "attrs": {
-                            "aria-hidden": "true"
-                          }
-                        },
-                        {
-                          "use": "Group",
-                          "props": {
-                            "Gap": "2",
-                            "Align": "center"
+                            "data-testid": "item"
                           },
                           "children": [
                             {
-                              "use": "Text",
+                              "use": "Inline",
                               "props": {
-                                "Size": "sm",
-                                "Weight": "semibold"
+                                "Class": {
+                                  "op": "cond",
+                                  "args": [
+                                    {
+                                      "op": "eq",
+                                      "args": [
+                                        {
+                                          "$": "layout"
+                                        },
+                                        "row"
+                                      ]
+                                    },
+                                    "absolute top-0 left-0 size-2 -translate-y-1/2 rounded bg-primary",
+                                    "absolute top-2 left-0 size-2 -translate-x-1/2 rounded bg-primary"
+                                  ]
+                                }
+                              },
+                              "attrs": {
+                                "aria-hidden": "true"
+                              }
+                            },
+                            {
+                              "use": "Group",
+                              "props": {
+                                "Gap": "2",
+                                "Align": "center"
+                              },
+                              "children": [
+                                {
+                                  "use": "Text",
+                                  "props": {
+                                    "Size": "sm",
+                                    "Weight": "semibold"
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "m.date"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "use": "Badge",
+                                  "props": {
+                                    "Variant": "outline",
+                                    "Size": "sm"
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "m.tag"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "use": "Title",
+                              "props": {
+                                "As": 3,
+                                "Size": "lg",
+                                "Weight": "bold"
                               },
                               "children": [
                                 {
                                   "text": {
-                                    "$": "m.date"
+                                    "$": "m.title"
                                   }
                                 }
                               ]
                             },
                             {
-                              "use": "Badge",
+                              "use": "Text",
                               "props": {
-                                "Variant": "outline",
-                                "Size": "sm"
+                                "Size": "sm",
+                                "Class": "text-muted-foreground"
                               },
                               "children": [
                                 {
                                   "text": {
-                                    "$": "m.tag"
+                                    "$": "m.text"
                                   }
                                 }
                               ]
-                            }
-                          ]
-                        },
-                        {
-                          "use": "Title",
-                          "props": {
-                            "As": 3,
-                            "Size": "lg",
-                            "Weight": "bold"
-                          },
-                          "children": [
-                            {
-                              "text": {
-                                "$": "m.title"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "use": "Text",
-                          "props": {
-                            "Size": "sm",
-                            "Class": "text-muted-foreground"
-                          },
-                          "children": [
-                            {
-                              "text": {
-                                "$": "m.text"
-                              }
                             }
                           ]
                         }

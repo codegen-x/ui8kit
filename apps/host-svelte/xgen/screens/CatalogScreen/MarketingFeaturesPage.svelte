@@ -84,6 +84,7 @@
               id="features-grid"
               title={ui.site.home.featuresTitle}
               features={features}
+              empty={ui.empty.features}
               action={{ label: ui.site.home.featuresAction, href: "#/" }}
               layout="grid"
               cols="1-3"
@@ -112,6 +113,7 @@
               id="features-grid2"
               title={ui.site.home.featuresTitle}
               features={features}
+              empty={ui.empty.features}
               action={{ label: ui.site.home.featuresAction, href: "#/" }}
               layout="grid"
               cols="1-2"
@@ -140,6 +142,7 @@
               id="features-tiles4"
               title={ui.site.home.featuresTitle}
               features={features}
+              empty={ui.empty.features}
               action={{ label: ui.site.home.featuresAction, href: "#/" }}
               layout="grid"
               cols="1-4"
@@ -168,6 +171,7 @@
               id="features-cells4"
               title={ui.site.home.featuresTitle}
               features={features}
+              empty={ui.empty.features}
               action={{ label: ui.site.home.featuresAction, href: "#/" }}
               layout="grid"
               cols="1-4"
@@ -196,6 +200,7 @@
               id="features-rows"
               title={ui.site.home.featuresTitle}
               features={features}
+              empty={ui.empty.features}
               action={{ label: ui.site.home.featuresAction, href: "#/" }}
               layout="rows"
               cols="1-3"
@@ -224,6 +229,7 @@
               id="features-rowsStart"
               title={ui.site.home.featuresTitle}
               features={features}
+              empty={ui.empty.features}
               action={{ label: ui.site.home.featuresAction, href: "#/" }}
               layout="rows"
               cols="1-3"
@@ -252,6 +258,7 @@
               id="features-rowsAlternate"
               title={ui.site.home.featuresTitle}
               features={features}
+              empty={ui.empty.features}
               action={{ label: ui.site.home.featuresAction, href: "#/" }}
               layout="rows"
               cols="1-3"
@@ -280,6 +287,7 @@
               id="features-tilesMuted"
               title={ui.site.home.featuresTitle}
               features={features}
+              empty={ui.empty.features}
               action={{ label: ui.site.home.featuresAction, href: "#/" }}
               layout="grid"
               cols="1-3"
@@ -325,6 +333,7 @@
               id="iconwall-tiles4"
               title={ui.vibe.wall.title}
               features={features}
+              empty={ui.empty.features}
               cols="4"
               item="tile"
               tone="default"
@@ -350,6 +359,7 @@
               id="iconwall-tiles3"
               title={ui.vibe.wall.title}
               features={features}
+              empty={ui.empty.features}
               cols="3"
               item="tile"
               tone="default"
@@ -375,6 +385,7 @@
               id="iconwall-chips6"
               title={ui.vibe.wall.title}
               features={features}
+              empty={ui.empty.features}
               cols="6"
               item="chip"
               tone="default"
@@ -400,6 +411,7 @@
               id="iconwall-chips4"
               title={ui.vibe.wall.title}
               features={features}
+              empty={ui.empty.features}
               cols="4"
               item="chip"
               tone="default"
@@ -425,6 +437,7 @@
               id="iconwall-muted"
               title={ui.vibe.wall.title}
               features={features}
+              empty={ui.empty.features}
               cols="4"
               item="tile"
               tone="muted"
@@ -467,6 +480,7 @@
               id="beforeafter-cards"
               title={ui.vibe.beforeafter.title}
               points={beforeafter}
+              empty={ui.empty.points}
               labels={ui.vibe.beforeafter.labels}
               layout="cards"
               icons="show"
@@ -493,6 +507,7 @@
               id="beforeafter-rows"
               title={ui.vibe.beforeafter.title}
               points={beforeafter}
+              empty={ui.empty.points}
               labels={ui.vibe.beforeafter.labels}
               layout="rows"
               icons="show"
@@ -519,6 +534,7 @@
               id="beforeafter-plain"
               title={ui.vibe.beforeafter.title}
               points={beforeafter}
+              empty={ui.empty.points}
               labels={ui.vibe.beforeafter.labels}
               layout="cards"
               icons="hide"
@@ -545,6 +561,7 @@
               id="beforeafter-muted"
               title={ui.vibe.beforeafter.title}
               points={beforeafter}
+              empty={ui.empty.points}
               labels={ui.vibe.beforeafter.labels}
               layout="cards"
               icons="show"

@@ -69,6 +69,7 @@ export function TourPage() {
         id="tour-sticky"
         title={ui.vibe.sticky.title}
         features={features}
+        empty={ui.empty.features}
         active="feature-clear"
         mediaSide="end"
         item="plain"
@@ -80,6 +81,7 @@ export function TourPage() {
         id="tour-beforeafter"
         title={ui.vibe.beforeafter.title}
         points={beforeafter}
+        empty={ui.empty.points}
         labels={ui.vibe.beforeafter.labels}
         layout="cards"
         icons="show"
@@ -91,6 +93,7 @@ export function TourPage() {
         id="tour-steps"
         title={ui.marketing.steps.title}
         steps={steps}
+        empty={ui.empty.steps}
         layout="column"
         marker="number"
         align="start"
@@ -102,6 +105,7 @@ export function TourPage() {
         id="tour-videos"
         title={ui.vibe.videos.title}
         quotes={testimonials}
+        empty={ui.empty.quotes}
         playLabel={ui.vibe.videos.play}
         byLine={ui.testimonials.byLine}
         cols="1-3"

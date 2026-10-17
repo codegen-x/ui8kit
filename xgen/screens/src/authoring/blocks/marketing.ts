@@ -4,7 +4,7 @@ import { cn, cond, eachAt, each, eq, ne, or, add, op, ref, text, str, undef, use
 import type { OrganismSpec, ViewNode } from "../../ir";
 import { fields, groupFields, rec, requireFields, spec, ts } from "../kit";
 import { behind, frame } from "../components/frames";
-import { density, id, title, tone, tsOf } from "../props";
+import { density, empty, id, orEmpty, title, tone, tsOf } from "../props";
 import { fluidCols } from "../ux";
 import { layoutOf } from "../presets";
 import { logoSlot, statFigure, testimonialLayout, quoteCard, quoteCardOf } from "../components/marketing";
@@ -32,16 +32,18 @@ const logoCloud = spec(`${O}logo-cloud`, "LogoCloud", "A heading and the names o
   props: [
     id, title,
     { name: "logos", type: ts("Logo[]"), required: true },
+    empty,
     { name: "layout", type: tsOf("grid", "row"), default: "grid" },
     { name: "cols", type: tsOf("2", "3", "4"), default: "4" },
     { name: "item", type: tsOf("name", "icon", "tile"), default: "name" },
     { name: "tone", type: tone, default: "default" },
     { name: "density", type: density, default: "default" },
   ],
-  view: [when(eq(ref("layout"), "row"),
+  view: [orEmpty("logos", "building-2", [when(eq(ref("layout"), "row"),
     [organism("LogoRibbon", { id: ref("id"), title: ref("title"), logos: ref("logos"), tone: ref("tone"), density: ref("density") })],
     [frame({ ...common, align: "center" }, [
       use("Grid", { props: { Cols: fluidCols(ref("cols")), Class: "gap-4" }, attrs: { "data-testid": "items" } }, each(ref("logos"), "logo", ref("logo.id"), logoItem()))])])],
+    (n) => [frame({ ...common, align: "center" }, n)])],
 });
 
 const statsBand = spec(`${O}stats-band`, "StatsBand", "Key numbers in a row or grid: plain figures, cards (StatTile) or figures with an icon. Axes: columns (2, 3, 4), item (plain, card, icon), surface (none, image, panel: one rounded card), align, density, tone. Title may be empty.", {
@@ -93,6 +95,7 @@ const testimonials = spec(`${O}testimonial-grid`, "TestimonialGrid", "Customer q
   props: [
     id, title,
     { name: "quotes", type: ts("Quote[]"), required: true },
+    empty,
     { name: "labels", type: rec("QuoteLabels"), required: true, docs: "the templates of the lines around a quote" },
     { name: "layout", type: testimonialLayout, default: "grid", docs: "single: the first quote only, wide; stack: one narrow column; masonry: columns of cards of any height; strip: one row that scrolls sideways" },
     { name: "cols", type: tsOf("1-2", "1-3"), default: "1-3" },
@@ -100,12 +103,12 @@ const testimonials = spec(`${O}testimonial-grid`, "TestimonialGrid", "Customer q
     { name: "tone", type: tone, default: "default" },
     { name: "density", type: density, default: "default" },
   ],
-  view: [frame({ ...common, align: cond(eq(ref("layout"), "single"), "center", "start"), measure: cond(eq(ref("layout"), "grid"), "default", "2xl") }, [
+  view: [frame({ ...common, align: cond(eq(ref("layout"), "single"), "center", "start"), measure: cond(eq(ref("layout"), "grid"), "default", "2xl") }, [orEmpty("quotes", "message-square-quote", [
     when(or(eq(ref("layout"), "masonry"), eq(ref("layout"), "strip")),
       [use("Block", { props: { Tag: "div", Class: cond(eq(ref("layout"), "masonry"), "columns-1 gap-4 md:columns-2 xl:columns-3", "flex snap-x gap-4 overflow-x-auto pb-2") }, attrs: { "data-testid": "items" } },
         each(ref("quotes"), "q", ref("q.id"), quoteCardOf()))],
       [use("Grid", { props: { Cols: cond(eq(ref("layout"), "grid"), ref("cols"), "1"), Class: "gap-4" }, attrs: { "data-testid": "items" } },
-        eachAt(ref("quotes"), "q", "i", ref("q.id"), when(or(ne(ref("layout"), "single"), eq(ref("i"), 0)), [quoteCardOf()])))]),
+        eachAt(ref("quotes"), "q", "i", ref("q.id"), when(or(ne(ref("layout"), "single"), eq(ref("i"), 0)), [quoteCardOf()])))])]),
   ])],
 });
 
@@ -114,13 +117,14 @@ const stepsList = spec(`${O}steps-list`, "StepsList", "How it works: numbered or
   props: [
     id, title,
     { name: "steps", type: ts("Step[]"), required: true },
+    empty,
     { name: "layout", type: tsOf("row", "column"), default: "row" },
     { name: "marker", type: tsOf("number", "icon"), default: "number" },
     { name: "align", type: tsOf("start", "center"), default: "start" },
     { name: "tone", type: tone, default: "default" },
     { name: "density", type: density, default: "default" },
   ],
-  view: [frame({ ...common, align: ref("align"), measure: cond(eq(ref("layout"), "row"), "default", "2xl") }, [
+  view: [frame({ ...common, align: ref("align"), measure: cond(eq(ref("layout"), "row"), "default", "2xl") }, [orEmpty("steps", "list-ordered", [
     use("List", { props: { Tag: "ol", Class: cn("grid gap-6", cond(eq(ref("layout"), "row"), "sm:grid-cols-2 md:grid-cols-4", "")) }, attrs: { "data-testid": "items" } },
       eachAt(ref("steps"), "step", "i", ref("step.id"),
         use("ListItem", { props: { Class: cn("flex gap-4", cond(eq(ref("layout"), "row"), "flex-col", ""), cond(eq(ref("align"), "center"), "items-center text-center", "")) }, attrs: { "data-testid": "item" } },
@@ -130,7 +134,7 @@ const stepsList = spec(`${O}steps-list`, "StepsList", "How it works: numbered or
               [use("Inline", { props: { Class: "text-base font-bold" } }, text(str(add(ref("i"), 1))))])),
           use("Stack", { props: { Gap: "2", Align: cond(eq(ref("align"), "center"), "center", "start") } },
             use("Title", { props: { As: 3, Size: "xl", Weight: "bold" } }, text(ref("step.title"))),
-            use("Text", { props: { Size: "sm", Class: "text-muted-foreground" } }, text(ref("step.text"))))))),
+            use("Text", { props: { Size: "sm", Class: "text-muted-foreground" } }, text(ref("step.text")))))))]),
   ])],
 });
 

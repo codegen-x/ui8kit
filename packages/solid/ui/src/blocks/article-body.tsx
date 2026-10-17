@@ -14,6 +14,7 @@ import { ListItem } from "../primitives/list/list-item";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { Title } from "../primitives/title/title";
+import { EmptyState } from "../components/empty-state";
 import { NavBlock } from "../components/nav-block";
 import { SectionFrame } from "../components/section-frame";
 import { cn, tpl, uniqLabel } from "../utils";
@@ -23,6 +24,7 @@ export type ArticleBodyProps = {
   id: string;
   title: string;
   sections: Section[];
+  empty?: string;
   tocTitle: string;
   layout?: "column" | "toc";
   quotes?: "show" | "hide";
@@ -34,6 +36,7 @@ export function ArticleBody({
   id,
   title,
   sections,
+  empty = "",
   tocTitle,
   layout = "column",
   quotes = "show",
@@ -42,62 +45,66 @@ export function ArticleBody({
 }: ArticleBodyProps) {
   return (
     <SectionFrame id={id} title={title} tone={tone} landmarkLabel={landmarkLabel}>
-      <Grid
-        cols="1"
-        class={cn(
-          "items-start gap-8",
-          (((layout as string) === "toc") ? "md:grid-cols-[14rem_minmax(0,1fr)]" : "")
-        )}
-      >
-        {((layout as string) === "toc") ? (
-          <NavBlock
-            label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", tocTitle, landmarkLabel)) : tocTitle)}
-            class="md:sticky md:top-4"
-            testid="toc"
-          >
-            <Stack gap="2">
-              <Text size="sm" weight="semibold">
-                {tocTitle}
-              </Text>
-              <List class="m-0 flex list-none flex-col gap-2 p-0">
-                <For each={sections ?? []}>{(s) => (
-                  <ListItem>
-                    <Link
-                      href={tpl("#{0}-{1}", id, s.id)}
-                      variant="default"
-                      class="text-sm text-muted-foreground"
-                      data-testid="toc-link"
-                    >
-                      {s.title}
-                    </Link>
-                  </ListItem>
-                )}</For>
-              </List>
-            </Stack>
-          </NavBlock>
-        ) : null}
-        <Stack gap="8" align="stretch" class="mx-auto w-full max-w-2xl min-w-0" data-testid="article">
-          <For each={sections ?? []}>{(s) => (
-            <Box class="flex flex-col gap-4" id={tpl("{0}-{1}", id, s.id)} data-testid="item">
-              <Title as={3} size="2xl" weight="bold">
-                {s.title}
-              </Title>
-              <Text size="base">
-                {s.text}
-              </Text>
-              {((quotes as string) === "show") ? (
-                <>
-                  {s.quote ? (
-                    <Text tag="blockquote" class="m-0 border-l border-border pl-4 text-lg" data-testid="quote">
-                      {s.quote}
-                    </Text>
-                  ) : null}
-                </>
-              ) : null}
-            </Box>
-          )}</For>
-        </Stack>
-      </Grid>
+      {((sections?.length ?? 0) === 0) ? (
+        <EmptyState icon="file-text" title={empty} />
+      ) : (
+        <Grid
+          cols="1"
+          class={cn(
+            "items-start gap-8",
+            (((layout as string) === "toc") ? "md:grid-cols-[14rem_minmax(0,1fr)]" : "")
+          )}
+        >
+          {((layout as string) === "toc") ? (
+            <NavBlock
+              label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", tocTitle, landmarkLabel)) : tocTitle)}
+              class="md:sticky md:top-4"
+              testid="toc"
+            >
+              <Stack gap="2">
+                <Text size="sm" weight="semibold">
+                  {tocTitle}
+                </Text>
+                <List class="m-0 flex list-none flex-col gap-2 p-0">
+                  <For each={sections ?? []}>{(s) => (
+                    <ListItem>
+                      <Link
+                        href={tpl("#{0}-{1}", id, s.id)}
+                        variant="default"
+                        class="text-sm text-muted-foreground"
+                        data-testid="toc-link"
+                      >
+                        {s.title}
+                      </Link>
+                    </ListItem>
+                  )}</For>
+                </List>
+              </Stack>
+            </NavBlock>
+          ) : null}
+          <Stack gap="8" align="stretch" class="mx-auto w-full max-w-2xl min-w-0" data-testid="article">
+            <For each={sections ?? []}>{(s) => (
+              <Box class="flex flex-col gap-4" id={tpl("{0}-{1}", id, s.id)} data-testid="item">
+                <Title as={3} size="2xl" weight="bold">
+                  {s.title}
+                </Title>
+                <Text size="base">
+                  {s.text}
+                </Text>
+                {((quotes as string) === "show") ? (
+                  <>
+                    {s.quote ? (
+                      <Text tag="blockquote" class="m-0 border-l border-border pl-4 text-lg" data-testid="quote">
+                        {s.quote}
+                      </Text>
+                    ) : null}
+                  </>
+                ) : null}
+              </Box>
+            )}</For>
+          </Stack>
+        </Grid>
+      )}
     </SectionFrame>
   );
 }

@@ -20,6 +20,7 @@ type ZoneTableProps struct {
 	Title any `json:"title"`
 	Lead any `json:"lead"`
 	Zones any `json:"zones"`
+	Empty any `json:"empty"`
 	Labels any `json:"labels"`
 	Layout any `json:"layout"`
 	Tone any `json:"tone"`
@@ -33,13 +34,16 @@ templ ZoneTable(p ZoneTableProps) {
 	{{ vTitle := p.Title }}
 	{{ vLead := uiutils.Def(p.Lead, "") }}
 	{{ vZones := p.Zones }}
+	{{ vEmpty := uiutils.Def(p.Empty, "") }}
 	{{ vLabels := p.Labels }}
 	{{ vLayout := uiutils.Def(p.Layout, "table") }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Tone: vTone, Density: vDensity, LandmarkLabel: vLandmarkLabel}) {
-		if uiutils.Eq(vLayout, "table") {
+		if uiutils.Eq(uiutils.Len(vZones), float64(0)) {
+			@EmptyState(EmptyStateProps{Icon: "map", Title: vEmpty})
+		} else if uiutils.Eq(vLayout, "table") {
 			@ZoneRows(ZoneRowsProps{Zones: vZones, Labels: vLabels})
 		} else {
 			@grid.Grid(grid.GridProps{Cols: "1-3", Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "items")}) {

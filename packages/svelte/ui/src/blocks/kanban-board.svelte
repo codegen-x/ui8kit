@@ -13,6 +13,7 @@
     id: string;
     title: string;
     lanes: Lane[];
+    empty?: string;
     cards: BoardCard[];
     countLabel: string;
     card?: "simple" | "detail";
@@ -31,6 +32,7 @@
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import Pill from "../components/pill.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import { cn, tpl } from "../utils";
@@ -39,6 +41,7 @@
     id,
     title,
     lanes,
+    empty = "",
     cards,
     countLabel,
     card = "detail",
@@ -50,43 +53,47 @@
 </script>
 
 <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
-  <Grid cols={(((cols as string) === "2") ? "1-2" : "1-3")} class="items-start gap-4" data-testid="lanes">
-    {#each lanes as lane (lane.id)}
-      <Stack gap="4" align="stretch" class="rounded bg-muted p-4" data-testid="lane">
-        <Group gap="2" align="center" justify="between">
-          <Title as={3} size="base" weight="bold">
-            {lane.title}
-          </Title>
-          <Text size="xs" class="text-muted-foreground">
-            {tpl(countLabel, (cards.filter((i) => !lane.key || i["lane"] === lane.key)?.length ?? 0))}
-          </Text>
-        </Group>
-        <List class="m-0 flex list-none flex-col gap-2 p-0">
-          {#each cards.filter((i) => !lane.key || i["lane"] === lane.key) as c (c.id)}
-            <ListItem
-              class={cn(
-                "flex flex-col rounded bg-card inset-ring inset-ring-border",
-                (((density as string) === "compact") ? "gap-2 p-2" : "gap-2 p-4")
-              )}
-              data-testid="item"
-            >
-              <Text size="sm" weight="semibold">
-                {c.title}
-              </Text>
-              {#if ((card as string) === "detail")}
-                <Group gap="2" align="center" justify="between" class="flex-wrap">
-                  <Pill tone="blue" icon="tag">
-                    {c.tag}
-                  </Pill>
-                  <Text size="xs" class="text-muted-foreground">
-                    {c.who}
-                  </Text>
-                </Group>
-              {/if}
-            </ListItem>
-          {/each}
-        </List>
-      </Stack>
-    {/each}
-  </Grid>
+  {#if ((lanes?.length ?? 0) === 0)}
+    <EmptyState icon="kanban" title={empty} />
+  {:else}
+    <Grid cols={(((cols as string) === "2") ? "1-2" : "1-3")} class="items-start gap-4" data-testid="lanes">
+      {#each lanes as lane (lane.id)}
+        <Stack gap="4" align="stretch" class="rounded bg-muted p-4" data-testid="lane">
+          <Group gap="2" align="center" justify="between">
+            <Title as={3} size="base" weight="bold">
+              {lane.title}
+            </Title>
+            <Text size="xs" class="text-muted-foreground">
+              {tpl(countLabel, (cards.filter((i) => !lane.key || i["lane"] === lane.key)?.length ?? 0))}
+            </Text>
+          </Group>
+          <List class="m-0 flex list-none flex-col gap-2 p-0">
+            {#each cards.filter((i) => !lane.key || i["lane"] === lane.key) as c (c.id)}
+              <ListItem
+                class={cn(
+                  "flex flex-col rounded bg-card inset-ring inset-ring-border",
+                  (((density as string) === "compact") ? "gap-2 p-2" : "gap-2 p-4")
+                )}
+                data-testid="item"
+              >
+                <Text size="sm" weight="semibold">
+                  {c.title}
+                </Text>
+                {#if ((card as string) === "detail")}
+                  <Group gap="2" align="center" justify="between" class="flex-wrap">
+                    <Pill tone="blue" icon="tag">
+                      {c.tag}
+                    </Pill>
+                    <Text size="xs" class="text-muted-foreground">
+                      {c.who}
+                    </Text>
+                  </Group>
+                {/if}
+              </ListItem>
+            {/each}
+          </List>
+        </Stack>
+      {/each}
+    </Grid>
+  {/if}
 </SectionFrame>

@@ -9,6 +9,7 @@ import { For, type JSX } from "solid-js";
 import { Box } from "../primitives/box/box";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
+import { EmptyState } from "../components/empty-state";
 import { MediaFrame } from "../components/media-frame";
 import { MemberRow } from "../components/member-row";
 import { SectionFrame } from "../components/section-frame";
@@ -20,6 +21,7 @@ export type TeamGridProps = {
   title: string;
   lead?: string;
   members: Member[];
+  empty?: string;
   depts: Record<string, string>;
   layout?: "cards" | "minimal" | "detailed" | "list" | "directory";
   cols?: "1-3" | "1-4";
@@ -33,6 +35,7 @@ export function TeamGrid({
   title,
   lead = "",
   members,
+  empty = "",
   depts,
   layout = "cards",
   cols = "1-4",
@@ -54,51 +57,55 @@ export function TeamGrid({
         <MediaFrame alt={title} ratio="3/4" />
       )}
     >
-      <Box
-        class={
-          (layout as string) === "minimal" ? "grid grid-cols-2 gap-8 md:grid-cols-4"
-          : (layout as string) === "directory" ? "grid grid-cols-1 gap-4 md:grid-cols-2"
-          : (layout as string) === "list" ? "flex flex-col gap-4"
-          : (cols as string) === "1-3" ? "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
-          : "grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4"
-        }
-        data-testid="items"
-      >
-        <For each={members ?? []}>{(m) => (
-          <>
-            {((layout as string) === "minimal") ? (
-              <Stack gap="2" align="center" class="text-center" data-testid="item">
-                <MediaFrame alt={m.name} ratio="1/1" class={cn("size-16", "shrink-0")} />
-                <Text size="sm" weight="semibold">
-                  {m.name}
-                </Text>
-                <Text size="xs" class="text-muted-foreground">
-                  {m.role}
-                </Text>
-              </Stack>
-            ) : ((layout as string) === "cards") ? (
-              <Stack gap="4" class="rounded bg-card inset-ring inset-ring-border p-4" data-testid="item">
-                <MediaFrame alt={m.name} ratio="1/1" />
-                <Stack gap="2">
-                  <Stack gap="0">
-                    <Text size="base" weight="semibold">
-                      {m.name}
-                    </Text>
-                    <Text size="sm" class="text-muted-foreground">
-                      {m.role}
-                    </Text>
-                  </Stack>
-                  <Text size="sm" class="text-muted-foreground">
-                    {m.bio}
+      {((members?.length ?? 0) === 0) ? (
+        <EmptyState icon="users" title={empty} />
+      ) : (
+        <Box
+          class={
+            (layout as string) === "minimal" ? "grid grid-cols-2 gap-8 md:grid-cols-4"
+            : (layout as string) === "directory" ? "grid grid-cols-1 gap-4 md:grid-cols-2"
+            : (layout as string) === "list" ? "flex flex-col gap-4"
+            : (cols as string) === "1-3" ? "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3"
+            : "grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4"
+          }
+          data-testid="items"
+        >
+          <For each={members ?? []}>{(m) => (
+            <>
+              {((layout as string) === "minimal") ? (
+                <Stack gap="2" align="center" class="text-center" data-testid="item">
+                  <MediaFrame alt={m.name} ratio="1/1" class={cn("size-16", "shrink-0")} />
+                  <Text size="sm" weight="semibold">
+                    {m.name}
+                  </Text>
+                  <Text size="xs" class="text-muted-foreground">
+                    {m.role}
                   </Text>
                 </Stack>
-              </Stack>
-            ) : (
-              <MemberRow member={m} depts={depts} layout={layout} />
-            )}
-          </>
-        )}</For>
-      </Box>
+              ) : ((layout as string) === "cards") ? (
+                <Stack gap="4" class="rounded bg-card inset-ring inset-ring-border p-4" data-testid="item">
+                  <MediaFrame alt={m.name} ratio="1/1" />
+                  <Stack gap="2">
+                    <Stack gap="0">
+                      <Text size="base" weight="semibold">
+                        {m.name}
+                      </Text>
+                      <Text size="sm" class="text-muted-foreground">
+                        {m.role}
+                      </Text>
+                    </Stack>
+                    <Text size="sm" class="text-muted-foreground">
+                      {m.bio}
+                    </Text>
+                  </Stack>
+                </Stack>
+              ) : (
+                <MemberRow member={m} depts={depts} layout={layout} />
+              )}
+            </>
+          )}</For>
+        </Box>
+      )}
     </SectionFrame>
   );
 }

@@ -4,7 +4,7 @@ import type { OrganismSpec } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { frame } from "../components/frames";
 import { portrait, tags } from "../components/people-parts";
-import { id, title, tsOf, toneLite, denseLite } from "../props";
+import { empty, id, orEmpty, title, tsOf, toneLite, denseLite } from "../props";
 import { heading, muted, strong, surface } from "../ux";
 import { menuEntry } from "../components/nav";
 
@@ -16,13 +16,14 @@ const teamGrid = spec(`${O}team-grid`, "TeamGrid", "The people of a team: portra
   props: [
     id, title, lead,
     { name: "members", type: ts("Member[]"), required: true },
+    empty,
     { name: "depts", type: ts("Record<string, string>"), required: true, docs: "the name of each department" },
     { name: "layout", type: tsOf("cards", "minimal", "detailed", "list", "directory"), default: "cards" },
     { name: "cols", type: tsOf("1-3", "1-4"), default: "1-4" },
     { name: "tone", type: toneLite, default: "default" },
     { name: "density", type: denseLite, default: "default" },
   ],
-  view: [frame({ ...common, layout: cond(eq(ref("layout"), "list"), "split", "stack"), hasMedia: eq(ref("layout"), "list"), mediaSide: "start", mediaAlign: "start" }, [
+  view: [frame({ ...common, layout: cond(eq(ref("layout"), "list"), "split", "stack"), hasMedia: eq(ref("layout"), "list"), mediaSide: "start", mediaAlign: "start" }, [orEmpty("members", "users", [
     use("Box", { props: { Class: cond(eq(ref("layout"), "minimal"), "grid grid-cols-2 gap-8 md:grid-cols-4", cond(eq(ref("layout"), "directory"), "grid grid-cols-1 gap-4 md:grid-cols-2", cond(eq(ref("layout"), "list"), "flex flex-col gap-4", cond(eq(ref("cols"), "1-3"), "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3", "grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4")))) }, attrs: { "data-testid": "items" } },
       each(ref("members"), "m", ref("m.id"),
         when(eq(ref("layout"), "minimal"),
@@ -31,7 +32,7 @@ const teamGrid = spec(`${O}team-grid`, "TeamGrid", "The people of a team: portra
             [use("Stack", { props: { Gap: "4", Class: surface("p-4") }, attrs: { "data-testid": "item" } },
               organism("MediaFrame", { alt: ref("m.name"), ratio: "1/1" }),
               use("Stack", { props: { Gap: "2" } }, use("Stack", { props: { Gap: "0" } }, strong(ref("m.name")), muted(ref("m.role"))), muted(ref("m.bio"))))],
-            [organism("MemberRow", { member: ref("m"), depts: ref("depts"), layout: ref("layout") })])]))),
+            [organism("MemberRow", { member: ref("m"), depts: ref("depts"), layout: ref("layout") })])])))]),
   ], [organism("MediaFrame", { alt: ref("title"), ratio: "3/4" })])],
 });
 

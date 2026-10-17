@@ -4,7 +4,7 @@ import { cn, cond, each, eq, len, ref, text, tpl, use, when, where, organism } f
 import type { OrganismSpec, Value } from "../../ir";
 import { fields, groupFields, rec, requireFields, spec, ts } from "../kit";
 import { frame, wide } from "../components/frames";
-import { id, title, tsOf, toneLite, denseLite } from "../props";
+import { empty, id, orEmpty, title, tsOf, toneLite, denseLite } from "../props";
 import { kids } from "../forms";
 import { muted, strong } from "../ux";
 import { sharedTypes, required, OverviewChart, OverviewActivity, tiles, chart, feed, appMain } from "../components/app-main";
@@ -78,6 +78,7 @@ const kanban = spec(`${O}kanban-board`, "KanbanBoard", "Work items in lanes. Eac
   props: [
     id, title,
     { name: "lanes", type: ts("Lane[]"), required: true },
+    empty,
     { name: "cards", type: ts("BoardCard[]"), required: true },
     { name: "countLabel", type: "string", required: true, docs: "template of the card count of a lane, e.g. `{0} cards`" },
     { name: "card", type: tsOf("simple", "detail"), default: "detail" },
@@ -85,7 +86,7 @@ const kanban = spec(`${O}kanban-board`, "KanbanBoard", "Work items in lanes. Eac
     { name: "tone", type: toneLite, default: "default" },
     { name: "density", type: denseLite, default: "default" },
   ],
-  view: [frame({ id: ref("id"), title: ref("title"), tone: ref("tone"), density: ref("density") }, [
+  view: [frame({ id: ref("id"), title: ref("title"), tone: ref("tone"), density: ref("density") }, [orEmpty("lanes", "kanban", [
     use("Grid", { props: { Cols: cond(eq(ref("cols"), "2"), "1-2", "1-3"), Class: "items-start gap-4" }, attrs: { "data-testid": "lanes" } },
       each(ref("lanes"), "lane", ref("lane.id"), use("Stack", { props: { Gap: "4", Align: "stretch", Class: "rounded bg-muted p-4" }, attrs: { "data-testid": "lane" } },
         use("Group", { props: { Gap: "2", Align: "center", Justify: "between" } },
@@ -96,7 +97,7 @@ const kanban = spec(`${O}kanban-board`, "KanbanBoard", "Work items in lanes. Eac
             strong(ref("c.title"), "sm"),
             when(eq(ref("card"), "detail"), [use("Group", { props: { Gap: "2", Align: "center", Justify: "between", Class: "flex-wrap" } },
               organism("Pill", { tone: "blue", icon: "tag" }, kids(text(ref("c.tag")))),
-              muted(ref("c.who"), "xs"))]))))))),
+              muted(ref("c.who"), "xs"))]))))))),])
   ])],
 });
 

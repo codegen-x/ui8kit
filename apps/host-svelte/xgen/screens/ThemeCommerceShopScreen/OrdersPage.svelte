@@ -35,6 +35,7 @@
   id="orders-orders-1"
   title={ui.commerce.orders.title}
   orders={orders}
+  empty={ui.empty.orders}
   statuses={ui.status}
   labels={ui.commerce.orders}
   layout="table"
@@ -47,6 +48,7 @@
   id="orders-orders-2"
   title={ui.commerce.orders.title}
   orders={orders}
+  empty={ui.empty.orders}
   statuses={ui.status}
   labels={ui.commerce.orders}
   layout="cards"

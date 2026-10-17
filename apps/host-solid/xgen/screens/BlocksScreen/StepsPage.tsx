@@ -63,6 +63,7 @@ export function StepsPage() {
                 id="steps-row"
                 title={ui.marketing.steps.title}
                 steps={steps}
+                empty={ui.empty.steps}
                 layout="row"
                 marker="number"
                 align="start"
@@ -89,6 +90,7 @@ export function StepsPage() {
                 id="steps-rowIcons"
                 title={ui.marketing.steps.title}
                 steps={steps}
+                empty={ui.empty.steps}
                 layout="row"
                 marker="icon"
                 align="start"
@@ -115,6 +117,7 @@ export function StepsPage() {
                 id="steps-column"
                 title={ui.marketing.steps.title}
                 steps={steps}
+                empty={ui.empty.steps}
                 layout="column"
                 marker="number"
                 align="start"
@@ -141,6 +144,7 @@ export function StepsPage() {
                 id="steps-centered"
                 title={ui.marketing.steps.title}
                 steps={steps}
+                empty={ui.empty.steps}
                 layout="row"
                 marker="number"
                 align="center"
@@ -167,6 +171,7 @@ export function StepsPage() {
                 id="steps-columnIcons"
                 title={ui.marketing.steps.title}
                 steps={steps}
+                empty={ui.empty.steps}
                 layout="column"
                 marker="icon"
                 align="start"
@@ -193,6 +198,7 @@ export function StepsPage() {
                 id="steps-compact"
                 title={ui.marketing.steps.title}
                 steps={steps}
+                empty={ui.empty.steps}
                 layout="row"
                 marker="number"
                 align="start"

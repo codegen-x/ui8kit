@@ -122,7 +122,14 @@ const actions = { toggleTheme };
       tone="default"
       density="compact"
     />
-    <UspStrip id="store-catalog-usp" :perks="perks" layout="bar" tone="default" density="compact" />
+    <UspStrip
+      id="store-catalog-usp"
+      :perks="perks"
+      :empty="ui.empty.perks"
+      layout="bar"
+      tone="default"
+      density="compact"
+    />
     <SitemapFooter
       id="store-catalog-sitemap"
       :label="ui.vibe.sitemap.label"

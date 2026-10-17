@@ -11,6 +11,7 @@ export type StepsListProps = {
   id: string;
   title: string;
   steps: Step[];
+  empty?: string;
   layout?: "row" | "column";
   marker?: "number" | "icon";
   align?: "start" | "center";
@@ -29,6 +30,7 @@ import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
+import EmptyState from "../components/empty-state.vue";
 import SectionFrame from "../components/section-frame.vue";
 import { cn } from "../utils";
 
@@ -36,6 +38,7 @@ const {
   id,
   title,
   steps,
+  empty = "",
   layout = "row",
   marker = "number",
   align = "start",
@@ -55,7 +58,8 @@ const {
     :measure="(((layout as string) === 'row') ? 'default' : '2xl')"
     :landmarkLabel="landmarkLabel"
   >
-    <List
+    <EmptyState v-if="((steps?.length ?? 0) === 0)" icon="list-ordered" :title="empty" />
+    <List v-else
       tag="ol"
       :class="cn('grid gap-6', (((layout as string) === 'row') ? 'sm:grid-cols-2 md:grid-cols-4' : ''))"
       data-testid="items"

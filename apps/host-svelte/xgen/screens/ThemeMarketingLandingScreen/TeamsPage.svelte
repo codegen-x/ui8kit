@@ -69,7 +69,7 @@
     "id": "id",
     "question": "title",
     "answer": "metadata.answer.value",
-    "category": "metadata.category.value",
+    "category": "terms|term:faq_category",
     "icon": "metadata.icon.value",
   } as const;
   const CHANNELS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
@@ -125,6 +125,7 @@
   id="teams-logos"
   title={ui.marketing.logos.title}
   logos={logos}
+  empty={ui.empty.logos}
   layout="row"
   cols="4"
   item="icon"

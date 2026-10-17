@@ -12,6 +12,7 @@ export type ActivityFeedProps = {
   title: string;
   text: string;
   events: Event[];
+  empty?: string;
   layout?: "timeline" | "list";
   density?: "default" | "compact";
   tone?: "default" | "muted";
@@ -26,6 +27,7 @@ import List from "../primitives/list/list.vue";
 import ListItem from "../primitives/list/list-item.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
+import EmptyState from "../components/empty-state.vue";
 import Panel from "../components/panel.vue";
 import Timeline from "../components/timeline.vue";
 import { cn, tpl } from "../utils";
@@ -35,6 +37,7 @@ const {
   title,
   text,
   events,
+  empty = "",
   layout = "timeline",
   density = "default",
   tone = "default",
@@ -51,7 +54,8 @@ const {
   >
     <Container class="mx-auto w-full max-w-6xl px-4 py-8" data-slot="container">
       <Panel :title="title" :description="text" :id="id" :class="(((tone as string) === 'muted') ? 'bg-muted' : '')">
-        <Timeline v-if="((layout as string) === 'timeline')" :items="events" />
+        <EmptyState v-if="((events?.length ?? 0) === 0)" icon="activity" :title="empty" />
+        <Timeline v-else-if="((layout as string) === 'timeline')" :items="events" />
         <List v-else class="m-0 flex list-none flex-col p-0" data-testid="items">
           <ListItem v-for="e in events" :key="e.id"
             :class="cn(

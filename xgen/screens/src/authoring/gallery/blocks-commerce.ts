@@ -71,7 +71,7 @@ const cart = define({
     ["tableCompact", "Compact table, no pictures", { media: "none", density: "compact" }],
     ["cardsPlain", "Cards, no pictures, muted", { layout: "cards", media: "none", tone: "muted" }],
   ],
-  sample: { id: "cart", title: t("commerce.cart.title"), lines: ref("cart"), labels: t("commerce.cart") },
+  sample: { id: "cart", title: t("commerce.cart.title"), lines: ref("cart"), empty: t("empty.cart"), labels: t("commerce.cart") },
 });
 
 const summary = define({
@@ -83,7 +83,7 @@ const summary = define({
     ["noCta", "Card without a button", { cta: "hide" }],
     ["muted", "Muted", { tone: "muted", density: "compact" }],
   ],
-  sample: { id: "summary", title: t("commerce.summary.title"), rows: ref("summary"), labels: t("commerce.summary") },
+  sample: { id: "summary", title: t("commerce.summary.title"), rows: ref("summary"), empty: t("empty.summary"), labels: t("commerce.summary") },
 });
 
 const orders = define({
@@ -95,7 +95,7 @@ const orders = define({
     ["noPager", "Table without a pager", { pager: "hide" }],
     ["compactMuted", "Compact, muted", { tone: "muted", density: "compact", pager: "hide" }],
   ],
-  sample: { id: "orders", title: t("commerce.orders.title"), orders: ref("orders"), statuses: t("status"), labels: t("commerce.orders") },
+  sample: { id: "orders", title: t("commerce.orders.title"), orders: ref("orders"), empty: t("empty.orders"), statuses: t("status"), labels: t("commerce.orders") },
 });
 
 export const commerceBlocks = [categories, products, product, reviews, cart, summary, orders];

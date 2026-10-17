@@ -82,6 +82,7 @@ const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS, CODEX);
     id="launch-logos"
     :title="ui.marketing.logos.title"
     :logos="logos"
+    :empty="ui.empty.logos"
     layout="grid"
     cols="4"
     item="tile"

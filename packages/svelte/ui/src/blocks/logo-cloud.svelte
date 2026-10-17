@@ -12,6 +12,7 @@
     id: string;
     title: string;
     logos: Logo[];
+    empty?: string;
     layout?: "grid" | "row";
     cols?: "2" | "3" | "4";
     item?: "name" | "icon" | "tile";
@@ -26,6 +27,7 @@
   import Group from "../primitives/group/group.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Text from "../primitives/text/text.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import LogoRibbon from "../blocks/logo-ribbon.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import { cn } from "../utils";
@@ -34,6 +36,7 @@
     id,
     title,
     logos,
+    empty = "",
     layout = "grid",
     cols = "4",
     item = "name",
@@ -43,7 +46,11 @@
   }: LogoCloudProps = $props();
 </script>
 
-{#if ((layout as string) === "row")}
+{#if ((logos?.length ?? 0) === 0)}
+  <SectionFrame id={id} title={title} tone={tone} density={density} align="center" landmarkLabel={landmarkLabel}>
+    <EmptyState icon="building-2" title={empty} />
+  </SectionFrame>
+{:else if ((layout as string) === "row")}
   <LogoRibbon id={id} title={title} logos={logos} tone={tone} density={density} landmarkLabel={landmarkLabel} />
 {:else}
   <SectionFrame id={id} title={title} tone={tone} density={density} align="center" landmarkLabel={landmarkLabel}>

@@ -15,6 +15,7 @@ type FeatureGridProps struct {
 	Id any `json:"id"`
 	Title any `json:"title"`
 	Features any `json:"features"`
+	Empty any `json:"empty"`
 	Action any `json:"action"`
 	Layout any `json:"layout"`
 	Cols any `json:"cols"`
@@ -30,6 +31,7 @@ templ FeatureGrid(p FeatureGridProps) {
 	{{ vId := p.Id }}
 	{{ vTitle := p.Title }}
 	{{ vFeatures := p.Features }}
+	{{ vEmpty := uiutils.Def(p.Empty, "") }}
 	{{ vAction := p.Action }}
 	{{ vLayout := uiutils.Def(p.Layout, "grid") }}
 	{{ vCols := uiutils.Def(p.Cols, "1-3") }}
@@ -50,11 +52,17 @@ templ FeatureGrid(p FeatureGridProps) {
 					}
 				}
 			}
-			@FeatureCards(FeatureCardsProps{Features: vFeatures, Cols: vCols, Item: vItem})
+			if uiutils.Eq(uiutils.Len(vFeatures), float64(0)) {
+				@EmptyState(EmptyStateProps{Icon: "layout-grid", Title: vEmpty})
+			} else {
+				@FeatureCards(FeatureCardsProps{Features: vFeatures, Cols: vCols, Item: vItem})
+			}
 		}
 	} else {
 		@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Action: vAction, Tone: vTone, Density: vDensity, LandmarkLabel: vLandmarkLabel}) {
-			if uiutils.Eq(vLayout, "rows") {
+			if uiutils.Eq(uiutils.Len(vFeatures), float64(0)) {
+				@EmptyState(EmptyStateProps{Icon: "layout-grid", Title: vEmpty})
+			} else if uiutils.Eq(vLayout, "rows") {
 				@FeatureRows(FeatureRowsProps{Features: vFeatures, MediaSide: vMediaSide})
 			} else {
 				@FeatureCards(FeatureCardsProps{Features: vFeatures, Cols: vCols, Item: vItem})

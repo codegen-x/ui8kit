@@ -72,6 +72,7 @@
             id="videos-grid3"
             title={ui.vibe.videos.title}
             quotes={testimonials}
+            empty={ui.empty.quotes}
             playLabel={ui.vibe.videos.play}
             byLine={ui.testimonials.byLine}
             cols="1-3"
@@ -99,6 +100,7 @@
             id="videos-grid2"
             title={ui.vibe.videos.title}
             quotes={testimonials}
+            empty={ui.empty.quotes}
             playLabel={ui.vibe.videos.play}
             byLine={ui.testimonials.byLine}
             cols="1-2"
@@ -126,6 +128,7 @@
             id="videos-overlay"
             title={ui.vibe.videos.title}
             quotes={testimonials}
+            empty={ui.empty.quotes}
             playLabel={ui.vibe.videos.play}
             byLine={ui.testimonials.byLine}
             cols="1-3"
@@ -153,6 +156,7 @@
             id="videos-muted"
             title={ui.vibe.videos.title}
             quotes={testimonials}
+            empty={ui.empty.quotes}
             playLabel={ui.vibe.videos.play}
             byLine={ui.testimonials.byLine}
             cols="1-3"

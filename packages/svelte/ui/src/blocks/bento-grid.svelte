@@ -13,6 +13,7 @@
     id: string;
     title: string;
     tiles: Tile[];
+    empty?: string;
     layout?: "bento" | "even";
     media?: "none" | "image";
     tone?: "default" | "muted";
@@ -28,6 +29,7 @@
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import { at, cn } from "../utils";
@@ -41,6 +43,7 @@
     id,
     title,
     tiles,
+    empty = "",
     layout = "bento",
     media = "none",
     tone = "default",
@@ -50,31 +53,35 @@
 </script>
 
 <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
-  <Grid cols="1-4" class="auto-rows-fr gap-4" data-testid="items">
-    {#each tiles as tile (tile.id)}
-      <Card
-        variant="default"
-        class={cn(
-          "h-full overflow-hidden",
-          (((density as string) === "compact") ? "gap-4 p-4" : ""),
-          (((layout as string) === "bento") ? at(SPAN, tile.size) : "")
-        )}
-        data-testid="item"
-        data-size={(((layout as string) === "bento") ? tile.size : "even")}
-      >
-        <CardContent class="flex h-full flex-col gap-4">
-          <LucideIcon name={tile.icon} size={24} />
-          <Title as={3} size="xl" weight="bold">
-            {tile.title}
-          </Title>
-          <Text size="sm" class="text-muted-foreground">
-            {tile.text}
-          </Text>
-          {#if (((media as string) === "image") && ((tile.size === "large") || ((layout as string) === "even")))}
-            <MediaFrame alt={tile.title} ratio="4/3" class="mt-auto" />
-          {/if}
-        </CardContent>
-      </Card>
-    {/each}
-  </Grid>
+  {#if ((tiles?.length ?? 0) === 0)}
+    <EmptyState icon="layout-dashboard" title={empty} />
+  {:else}
+    <Grid cols="1-4" class="auto-rows-fr gap-4" data-testid="items">
+      {#each tiles as tile (tile.id)}
+        <Card
+          variant="default"
+          class={cn(
+            "h-full overflow-hidden",
+            (((density as string) === "compact") ? "gap-4 p-4" : ""),
+            (((layout as string) === "bento") ? at(SPAN, tile.size) : "")
+          )}
+          data-testid="item"
+          data-size={(((layout as string) === "bento") ? tile.size : "even")}
+        >
+          <CardContent class="flex h-full flex-col gap-4">
+            <LucideIcon name={tile.icon} size={24} />
+            <Title as={3} size="xl" weight="bold">
+              {tile.title}
+            </Title>
+            <Text size="sm" class="text-muted-foreground">
+              {tile.text}
+            </Text>
+            {#if (((media as string) === "image") && ((tile.size === "large") || ((layout as string) === "even")))}
+              <MediaFrame alt={tile.title} ratio="4/3" class="mt-auto" />
+            {/if}
+          </CardContent>
+        </Card>
+      {/each}
+    </Grid>
+  {/if}
 </SectionFrame>

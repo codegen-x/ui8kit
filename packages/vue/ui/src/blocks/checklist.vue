@@ -11,6 +11,7 @@ export type ChecklistProps = {
   id: string;
   title: string;
   tasks: Task[];
+  empty?: string;
   progressLabel: string;
   layout?: "card" | "plain";
   progress?: "bar" | "text" | "none";
@@ -31,6 +32,7 @@ import Progress from "../primitives/form/progress.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Summary from "../primitives/disclosure/summary.vue";
 import Text from "../primitives/text/text.vue";
+import EmptyState from "../components/empty-state.vue";
 import SectionFrame from "../components/section-frame.vue";
 import { tpl } from "../utils";
 
@@ -38,6 +40,7 @@ const {
   id,
   title,
   tasks,
+  empty = "",
   progressLabel,
   layout = "card",
   progress = "bar",
@@ -50,7 +53,8 @@ const {
 
 <template>
   <SectionFrame :id="id" :title="title" :tone="tone" measure="2xl" :landmarkLabel="landmarkLabel">
-    <Stack
+    <EmptyState v-if="((tasks?.length ?? 0) === 0)" icon="list-checks" :title="empty" />
+    <Stack v-else
       gap="4"
       align="stretch"
       :class="(((layout as string) === 'card') ? 'rounded bg-card p-6 inset-ring inset-ring-border' : '')"

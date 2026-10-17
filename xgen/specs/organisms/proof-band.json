@@ -24,6 +24,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "stats",
       "type": {
         "ts": "Stat[]"
@@ -92,102 +98,32 @@
           "args": [],
           "do": [
             {
-              "use": "Grid",
-              "props": {
-                "Cols": {
-                  "op": "cond",
-                  "args": [
-                    {
-                      "op": "eq",
-                      "args": [
-                        {
-                          "$": "layout"
-                        },
-                        "beside"
-                      ]
-                    },
-                    "1-2",
-                    "1"
-                  ]
-                },
-                "Class": "items-center gap-8"
-              },
-              "children": [
-                {
-                  "use": "Group",
-                  "props": {
-                    "Gap": "6",
-                    "Justify": "center",
-                    "Class": "flex-wrap text-muted-foreground"
-                  },
-                  "attrs": {
-                    "data-testid": "logos"
-                  },
-                  "children": [
-                    {
-                      "each": {
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
                         "$": "logos"
-                      },
-                      "as": "logo",
-                      "key": {
-                        "$": "logo.id"
-                      },
-                      "do": [
-                        {
-                          "use": "Group",
-                          "props": {
-                            "Gap": "2",
-                            "Align": "center"
-                          },
-                          "attrs": {
-                            "data-testid": "logo"
-                          },
-                          "children": [
-                            {
-                              "use": "LucideIcon",
-                              "props": {
-                                "Name": {
-                                  "$": "logo.icon"
-                                },
-                                "Size": 24
-                              }
-                            },
-                            {
-                              "use": "Text",
-                              "props": {
-                                "Size": "sm",
-                                "Weight": "semibold",
-                                "Class": {
-                                  "op": "cond",
-                                  "args": [
-                                    {
-                                      "op": "eq",
-                                      "args": [
-                                        {
-                                          "$": "logoStyle"
-                                        },
-                                        "icon"
-                                      ]
-                                    },
-                                    "sr-only",
-                                    ""
-                                  ]
-                                }
-                              },
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "logo.name"
-                                  }
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ]
+                      }
+                    ]
+                  },
+                  0
+                ]
+              },
+              "then": [
+                {
+                  "organism": "EmptyState",
+                  "props": {
+                    "icon": "building-2",
+                    "title": {
+                      "$": "empty"
                     }
-                  ]
-                },
+                  }
+                }
+              ],
+              "else": [
                 {
                   "use": "Grid",
                   "props": {
@@ -203,60 +139,159 @@
                             "beside"
                           ]
                         },
-                        "2",
-                        "1-4"
+                        "1-2",
+                        "1"
                       ]
                     },
-                    "Class": "gap-6 text-center"
-                  },
-                  "attrs": {
-                    "data-testid": "stats"
+                    "Class": "items-center gap-8"
                   },
                   "children": [
                     {
-                      "each": {
-                        "$": "stats"
+                      "use": "Group",
+                      "props": {
+                        "Gap": "6",
+                        "Justify": "center",
+                        "Class": "flex-wrap text-muted-foreground"
                       },
-                      "as": "stat",
-                      "key": {
-                        "$": "stat.id"
+                      "attrs": {
+                        "data-testid": "logos"
                       },
-                      "do": [
+                      "children": [
                         {
-                          "use": "Stack",
-                          "props": {
-                            "Gap": "0",
-                            "Align": "center"
+                          "each": {
+                            "$": "logos"
                           },
-                          "attrs": {
-                            "data-testid": "stat"
+                          "as": "logo",
+                          "key": {
+                            "$": "logo.id"
                           },
-                          "children": [
+                          "do": [
                             {
-                              "use": "Text",
+                              "use": "Group",
                               "props": {
-                                "Size": "4xl",
-                                "Weight": "bold"
+                                "Gap": "2",
+                                "Align": "center"
+                              },
+                              "attrs": {
+                                "data-testid": "logo"
                               },
                               "children": [
                                 {
-                                  "text": {
-                                    "$": "stat.value"
+                                  "use": "LucideIcon",
+                                  "props": {
+                                    "Name": {
+                                      "$": "logo.icon"
+                                    },
+                                    "Size": 24
                                   }
+                                },
+                                {
+                                  "use": "Text",
+                                  "props": {
+                                    "Size": "sm",
+                                    "Weight": "semibold",
+                                    "Class": {
+                                      "op": "cond",
+                                      "args": [
+                                        {
+                                          "op": "eq",
+                                          "args": [
+                                            {
+                                              "$": "logoStyle"
+                                            },
+                                            "icon"
+                                          ]
+                                        },
+                                        "sr-only",
+                                        ""
+                                      ]
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "logo.name"
+                                      }
+                                    }
+                                  ]
                                 }
                               ]
-                            },
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "use": "Grid",
+                      "props": {
+                        "Cols": {
+                          "op": "cond",
+                          "args": [
                             {
-                              "use": "Text",
+                              "op": "eq",
+                              "args": [
+                                {
+                                  "$": "layout"
+                                },
+                                "beside"
+                              ]
+                            },
+                            "2",
+                            "1-4"
+                          ]
+                        },
+                        "Class": "gap-6 text-center"
+                      },
+                      "attrs": {
+                        "data-testid": "stats"
+                      },
+                      "children": [
+                        {
+                          "each": {
+                            "$": "stats"
+                          },
+                          "as": "stat",
+                          "key": {
+                            "$": "stat.id"
+                          },
+                          "do": [
+                            {
+                              "use": "Stack",
                               "props": {
-                                "Size": "sm",
-                                "Class": "text-muted-foreground"
+                                "Gap": "0",
+                                "Align": "center"
+                              },
+                              "attrs": {
+                                "data-testid": "stat"
                               },
                               "children": [
                                 {
-                                  "text": {
-                                    "$": "stat.label"
-                                  }
+                                  "use": "Text",
+                                  "props": {
+                                    "Size": "4xl",
+                                    "Weight": "bold"
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "stat.value"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "use": "Text",
+                                  "props": {
+                                    "Size": "sm",
+                                    "Class": "text-muted-foreground"
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "stat.label"
+                                      }
+                                    }
+                                  ]
                                 }
                               ]
                             }

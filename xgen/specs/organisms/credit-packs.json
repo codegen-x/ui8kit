@@ -51,6 +51,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "badges",
       "type": {
         "ts": "Record<string, string>"
@@ -140,75 +146,51 @@
           "args": [],
           "do": [
             {
-              "use": "Grid",
-              "props": {
-                "Cols": {
-                  "op": "cond",
-                  "args": [
-                    {
-                      "op": "eq",
-                      "args": [
-                        {
-                          "$": "item"
-                        },
-                        "row"
-                      ]
-                    },
-                    "1",
-                    {
-                      "op": "fitCols",
-                      "args": [
-                        {
-                          "op": "cond",
-                          "args": [
-                            {
-                              "op": "eq",
-                              "args": [
-                                {
-                                  "$": "cols"
-                                },
-                                "2"
-                              ]
-                            },
-                            "1-2",
-                            "1-4"
-                          ]
-                        },
-                        {
-                          "op": "len",
-                          "args": [
-                            {
-                              "$": "packs"
-                            }
-                          ]
-                        }
-                      ]
-                    }
-                  ]
-                },
-                "Class": "gap-4"
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "packs"
+                      }
+                    ]
+                  },
+                  0
+                ]
               },
-              "attrs": {
-                "data-testid": "items"
-              },
-              "children": [
+              "then": [
                 {
-                  "each": {
-                    "$": "packs"
-                  },
-                  "as": "pack",
-                  "key": {
-                    "$": "pack.id"
-                  },
-                  "do": [
-                    {
-                      "use": "Card",
-                      "props": {
-                        "Variant": "default",
-                        "Class": {
-                          "op": "cn",
+                  "organism": "EmptyState",
+                  "props": {
+                    "icon": "coins",
+                    "title": {
+                      "$": "empty"
+                    }
+                  }
+                }
+              ],
+              "else": [
+                {
+                  "use": "Grid",
+                  "props": {
+                    "Cols": {
+                      "op": "cond",
+                      "args": [
+                        {
+                          "op": "eq",
                           "args": [
-                            "h-full",
+                            {
+                              "$": "item"
+                            },
+                            "row"
+                          ]
+                        },
+                        "1",
+                        {
+                          "op": "fitCols",
+                          "args": [
                             {
                               "op": "cond",
                               "args": [
@@ -216,47 +198,50 @@
                                   "op": "eq",
                                   "args": [
                                     {
-                                      "$": "item"
+                                      "$": "cols"
                                     },
-                                    "row"
+                                    "2"
                                   ]
                                 },
-                                "gap-4 p-4",
+                                "1-2",
+                                "1-4"
+                              ]
+                            },
+                            {
+                              "op": "len",
+                              "args": [
                                 {
-                                  "op": "cond",
-                                  "args": [
-                                    {
-                                      "op": "eq",
-                                      "args": [
-                                        {
-                                          "$": "density"
-                                        },
-                                        "compact"
-                                      ]
-                                    },
-                                    "gap-4 p-4",
-                                    ""
-                                  ]
+                                  "$": "packs"
                                 }
                               ]
                             }
                           ]
                         }
+                      ]
+                    },
+                    "Class": "gap-4"
+                  },
+                  "attrs": {
+                    "data-testid": "items"
+                  },
+                  "children": [
+                    {
+                      "each": {
+                        "$": "packs"
                       },
-                      "attrs": {
-                        "data-testid": "item",
-                        "data-badge": {
-                          "$": "pack.badge"
-                        }
+                      "as": "pack",
+                      "key": {
+                        "$": "pack.id"
                       },
-                      "children": [
+                      "do": [
                         {
-                          "use": "CardContent",
+                          "use": "Card",
                           "props": {
+                            "Variant": "default",
                             "Class": {
                               "op": "cn",
                               "args": [
-                                "flex h-full gap-4",
+                                "h-full",
                                 {
                                   "op": "cond",
                                   "args": [
@@ -269,23 +254,42 @@
                                         "row"
                                       ]
                                     },
-                                    "flex-row flex-wrap items-center justify-between",
-                                    "flex-col"
+                                    "gap-4 p-4",
+                                    {
+                                      "op": "cond",
+                                      "args": [
+                                        {
+                                          "op": "eq",
+                                          "args": [
+                                            {
+                                              "$": "density"
+                                            },
+                                            "compact"
+                                          ]
+                                        },
+                                        "gap-4 p-4",
+                                        ""
+                                      ]
+                                    }
                                   ]
                                 }
                               ]
                             }
                           },
+                          "attrs": {
+                            "data-testid": "item",
+                            "data-badge": {
+                              "$": "pack.badge"
+                            }
+                          },
                           "children": [
                             {
-                              "use": "Stack",
+                              "use": "CardContent",
                               "props": {
-                                "Gap": "2",
-                                "Align": "start",
                                 "Class": {
                                   "op": "cn",
                                   "args": [
-                                    "min-w-0",
+                                    "flex h-full gap-4",
                                     {
                                       "op": "cond",
                                       "args": [
@@ -298,8 +302,8 @@
                                             "row"
                                           ]
                                         },
-                                        "flex-1",
-                                        ""
+                                        "flex-row flex-wrap items-center justify-between",
+                                        "flex-col"
                                       ]
                                     }
                                   ]
@@ -307,83 +311,160 @@
                               },
                               "children": [
                                 {
-                                  "when": {
-                                    "op": "or",
-                                    "args": [
-                                      {
-                                        "$": "pack.badge"
-                                      },
-                                      {
-                                        "op": "and",
+                                  "use": "Stack",
+                                  "props": {
+                                    "Gap": "2",
+                                    "Align": "start",
+                                    "Class": {
+                                      "op": "cn",
+                                      "args": [
+                                        "min-w-0",
+                                        {
+                                          "op": "cond",
+                                          "args": [
+                                            {
+                                              "op": "eq",
+                                              "args": [
+                                                {
+                                                  "$": "item"
+                                                },
+                                                "row"
+                                              ]
+                                            },
+                                            "flex-1",
+                                            ""
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "when": {
+                                        "op": "or",
                                         "args": [
                                           {
-                                            "op": "ne",
-                                            "args": [
-                                              {
-                                                "$": "item"
-                                              },
-                                              "row"
-                                            ]
+                                            "$": "pack.badge"
                                           },
                                           {
-                                            "op": "gt",
+                                            "op": "and",
                                             "args": [
                                               {
-                                                "op": "count",
+                                                "op": "ne",
                                                 "args": [
                                                   {
-                                                    "$": "packs"
+                                                    "$": "item"
                                                   },
-                                                  "badge"
+                                                  "row"
                                                 ]
                                               },
-                                              0
+                                              {
+                                                "op": "gt",
+                                                "args": [
+                                                  {
+                                                    "op": "count",
+                                                    "args": [
+                                                      {
+                                                        "$": "packs"
+                                                      },
+                                                      "badge"
+                                                    ]
+                                                  },
+                                                  0
+                                                ]
+                                              }
                                             ]
                                           }
                                         ]
-                                      }
-                                    ]
-                                  },
-                                  "then": [
-                                    {
-                                      "use": "Box",
-                                      "props": {
-                                        "Class": "flex min-h-6 items-center"
                                       },
-                                      "attrs": {
-                                        "data-slot": "badge-slot"
+                                      "then": [
+                                        {
+                                          "use": "Box",
+                                          "props": {
+                                            "Class": "flex min-h-6 items-center"
+                                          },
+                                          "attrs": {
+                                            "data-slot": "badge-slot"
+                                          },
+                                          "children": [
+                                            {
+                                              "when": {
+                                                "$": "pack.badge"
+                                              },
+                                              "then": [
+                                                {
+                                                  "use": "Badge",
+                                                  "props": {
+                                                    "Variant": "default",
+                                                    "Size": "default",
+                                                    "Class": "w-fit shrink-0"
+                                                  },
+                                                  "attrs": {
+                                                    "data-testid": "badge"
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "text": {
+                                                        "op": "at",
+                                                        "args": [
+                                                          {
+                                                            "$": "badges"
+                                                          },
+                                                          {
+                                                            "$": "pack.badge"
+                                                          }
+                                                        ]
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "Stack",
+                                      "props": {
+                                        "Gap": "0",
+                                        "Class": "min-w-0"
                                       },
                                       "children": [
                                         {
-                                          "when": {
-                                            "$": "pack.badge"
+                                          "use": "Title",
+                                          "props": {
+                                            "As": 3,
+                                            "Size": "xl",
+                                            "Weight": "bold"
                                           },
-                                          "then": [
+                                          "children": [
                                             {
-                                              "use": "Badge",
-                                              "props": {
-                                                "Variant": "default",
-                                                "Size": "default",
-                                                "Class": "w-fit shrink-0"
-                                              },
-                                              "attrs": {
-                                                "data-testid": "badge"
-                                              },
-                                              "children": [
-                                                {
-                                                  "text": {
-                                                    "op": "at",
-                                                    "args": [
-                                                      {
-                                                        "$": "badges"
-                                                      },
-                                                      {
-                                                        "$": "pack.badge"
-                                                      }
-                                                    ]
+                                              "text": {
+                                                "$": "pack.name"
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "use": "Text",
+                                          "props": {
+                                            "Size": "2xl",
+                                            "Weight": "bold"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "op": "money",
+                                                "args": [
+                                                  {
+                                                    "$": "pack.price"
+                                                  },
+                                                  {
+                                                    "$": "pack.currency"
                                                   }
-                                                }
-                                              ]
+                                                ]
+                                              }
                                             }
                                           ]
                                         }
@@ -392,105 +473,59 @@
                                   ]
                                 },
                                 {
-                                  "use": "Stack",
+                                  "use": "Button",
                                   "props": {
-                                    "Gap": "0",
-                                    "Class": "min-w-0"
-                                  },
-                                  "children": [
-                                    {
-                                      "use": "Title",
-                                      "props": {
-                                        "As": 3,
-                                        "Size": "xl",
-                                        "Weight": "bold"
-                                      },
-                                      "children": [
-                                        {
-                                          "text": {
-                                            "$": "pack.name"
-                                          }
-                                        }
-                                      ]
-                                    },
-                                    {
-                                      "use": "Text",
-                                      "props": {
-                                        "Size": "2xl",
-                                        "Weight": "bold"
-                                      },
-                                      "children": [
-                                        {
-                                          "text": {
-                                            "op": "money",
-                                            "args": [
-                                              {
-                                                "$": "pack.price"
-                                              },
-                                              {
-                                                "$": "pack.currency"
-                                              }
-                                            ]
-                                          }
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "use": "Button",
-                              "props": {
-                                "Variant": {
-                                  "op": "cond",
-                                  "args": [
-                                    {
-                                      "op": "eq",
-                                      "args": [
-                                        {
-                                          "$": "pack.badge"
-                                        },
-                                        "popular"
-                                      ]
-                                    },
-                                    "default",
-                                    "outline"
-                                  ]
-                                },
-                                "Size": "sm",
-                                "Type": "button",
-                                "Class": {
-                                  "op": "cn",
-                                  "args": [
-                                    "w-fit shrink-0",
-                                    {
+                                    "Variant": {
                                       "op": "cond",
                                       "args": [
                                         {
                                           "op": "eq",
                                           "args": [
                                             {
-                                              "$": "item"
+                                              "$": "pack.badge"
                                             },
-                                            "row"
+                                            "popular"
                                           ]
                                         },
-                                        "",
-                                        "mt-auto"
+                                        "default",
+                                        "outline"
+                                      ]
+                                    },
+                                    "Size": "sm",
+                                    "Type": "button",
+                                    "Class": {
+                                      "op": "cn",
+                                      "args": [
+                                        "w-fit shrink-0",
+                                        {
+                                          "op": "cond",
+                                          "args": [
+                                            {
+                                              "op": "eq",
+                                              "args": [
+                                                {
+                                                  "$": "item"
+                                                },
+                                                "row"
+                                              ]
+                                            },
+                                            "",
+                                            "mt-auto"
+                                          ]
+                                        }
                                       ]
                                     }
+                                  },
+                                  "attrs": {
+                                    "data-testid": "buy"
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "buy"
+                                      }
+                                    }
                                   ]
-                                }
-                              },
-                              "attrs": {
-                                "data-testid": "buy"
-                              },
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "buy"
-                                  }
                                 }
                               ]
                             }

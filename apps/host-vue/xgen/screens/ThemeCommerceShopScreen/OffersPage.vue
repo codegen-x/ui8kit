@@ -82,6 +82,7 @@ const summary = fromCodex<SummaryRow>(summaryEntries, SUMMARY_FIELDS, CODEX);
   <UspStrip
     id="offers-usp"
     :perks="perks"
+    :empty="ui.empty.perks"
     layout="strip"
     tone="default"
     density="default"

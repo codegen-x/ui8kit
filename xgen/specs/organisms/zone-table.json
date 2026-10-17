@@ -98,6 +98,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "labels",
       "type": {
         "record": "ZoneLabels"
@@ -165,257 +171,286 @@
                 "op": "eq",
                 "args": [
                   {
-                    "$": "layout"
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "zones"
+                      }
+                    ]
                   },
-                  "table"
+                  0
                 ]
               },
               "then": [
                 {
-                  "organism": "ZoneRows",
+                  "organism": "EmptyState",
                   "props": {
-                    "zones": {
-                      "$": "zones"
-                    },
-                    "labels": {
-                      "$": "labels"
+                    "icon": "map",
+                    "title": {
+                      "$": "empty"
                     }
                   }
                 }
               ],
               "else": [
                 {
-                  "use": "Grid",
-                  "props": {
-                    "Cols": "1-3",
-                    "Class": "gap-4"
+                  "when": {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "$": "layout"
+                      },
+                      "table"
+                    ]
                   },
-                  "attrs": {
-                    "data-testid": "items"
-                  },
-                  "children": [
+                  "then": [
                     {
-                      "each": {
-                        "$": "zones"
+                      "organism": "ZoneRows",
+                      "props": {
+                        "zones": {
+                          "$": "zones"
+                        },
+                        "labels": {
+                          "$": "labels"
+                        }
+                      }
+                    }
+                  ],
+                  "else": [
+                    {
+                      "use": "Grid",
+                      "props": {
+                        "Cols": "1-3",
+                        "Class": "gap-4"
                       },
-                      "as": "z",
-                      "key": {
-                        "$": "z.id"
+                      "attrs": {
+                        "data-testid": "items"
                       },
-                      "do": [
+                      "children": [
                         {
-                          "use": "Stack",
-                          "props": {
-                            "Gap": "4",
-                            "Class": "rounded bg-card inset-ring inset-ring-border p-6"
+                          "each": {
+                            "$": "zones"
                           },
-                          "attrs": {
-                            "data-testid": "item"
+                          "as": "z",
+                          "key": {
+                            "$": "z.id"
                           },
-                          "children": [
+                          "do": [
                             {
                               "use": "Stack",
                               "props": {
-                                "Gap": "2"
+                                "Gap": "4",
+                                "Class": "rounded bg-card inset-ring inset-ring-border p-6"
+                              },
+                              "attrs": {
+                                "data-testid": "item"
                               },
                               "children": [
                                 {
-                                  "use": "Title",
+                                  "use": "Stack",
                                   "props": {
-                                    "As": 3,
-                                    "Size": "lg",
-                                    "Weight": "bold"
+                                    "Gap": "2"
                                   },
                                   "children": [
                                     {
-                                      "text": {
-                                        "$": "z.name"
-                                      }
+                                      "use": "Title",
+                                      "props": {
+                                        "As": 3,
+                                        "Size": "lg",
+                                        "Weight": "bold"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "z.name"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "sm",
+                                        "Class": "text-muted-foreground"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "z.area"
+                                          }
+                                        }
+                                      ]
                                     }
                                   ]
                                 },
                                 {
                                   "use": "Text",
                                   "props": {
-                                    "Size": "sm",
-                                    "Class": "text-muted-foreground"
+                                    "Size": "3xl",
+                                    "Weight": "bold"
                                   },
                                   "children": [
                                     {
                                       "text": {
-                                        "$": "z.area"
+                                        "op": "money",
+                                        "args": [
+                                          {
+                                            "$": "z.price"
+                                          },
+                                          {
+                                            "$": "z.currency"
+                                          }
+                                        ]
                                       }
                                     }
                                   ]
-                                }
-                              ]
-                            },
-                            {
-                              "use": "Text",
-                              "props": {
-                                "Size": "3xl",
-                                "Weight": "bold"
-                              },
-                              "children": [
+                                },
                                 {
-                                  "text": {
-                                    "op": "money",
-                                    "args": [
-                                      {
-                                        "$": "z.price"
-                                      },
-                                      {
-                                        "$": "z.currency"
-                                      }
-                                    ]
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "use": "List",
-                              "props": {
-                                "Tag": "ul",
-                                "Class": "flex flex-col gap-2 border-t border-border pt-4"
-                              },
-                              "children": [
-                                {
-                                  "use": "ListItem",
+                                  "use": "List",
                                   "props": {
-                                    "Class": "flex items-center justify-between gap-4 text-sm"
+                                    "Tag": "ul",
+                                    "Class": "flex flex-col gap-2 border-t border-border pt-4"
                                   },
                                   "children": [
                                     {
-                                      "use": "Inline",
+                                      "use": "ListItem",
                                       "props": {
-                                        "Class": "text-muted-foreground"
+                                        "Class": "flex items-center justify-between gap-4 text-sm"
                                       },
                                       "children": [
                                         {
-                                          "text": {
-                                            "$": "labels.freeFrom"
-                                          }
+                                          "use": "Inline",
+                                          "props": {
+                                            "Class": "text-muted-foreground"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "labels.freeFrom"
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "use": "Inline",
+                                          "props": {
+                                            "Class": "font-medium"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "op": "money",
+                                                "args": [
+                                                  {
+                                                    "$": "z.freeFrom"
+                                                  },
+                                                  {
+                                                    "$": "z.currency"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
                                         }
                                       ]
                                     },
                                     {
-                                      "use": "Inline",
+                                      "use": "ListItem",
                                       "props": {
-                                        "Class": "font-medium"
+                                        "Class": "flex items-center justify-between gap-4 text-sm"
                                       },
                                       "children": [
                                         {
-                                          "text": {
-                                            "op": "money",
-                                            "args": [
-                                              {
-                                                "$": "z.freeFrom"
-                                              },
-                                              {
-                                                "$": "z.currency"
+                                          "use": "Inline",
+                                          "props": {
+                                            "Class": "text-muted-foreground"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "labels.minOrder"
                                               }
-                                            ]
-                                          }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "use": "Inline",
+                                          "props": {
+                                            "Class": "font-medium"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "op": "money",
+                                                "args": [
+                                                  {
+                                                    "$": "z.minOrder"
+                                                  },
+                                                  {
+                                                    "$": "z.currency"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "ListItem",
+                                      "props": {
+                                        "Class": "flex items-center justify-between gap-4 text-sm"
+                                      },
+                                      "children": [
+                                        {
+                                          "use": "Inline",
+                                          "props": {
+                                            "Class": "text-muted-foreground"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "labels.time"
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "use": "Inline",
+                                          "props": {
+                                            "Class": "font-medium"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "z.time"
+                                              }
+                                            }
+                                          ]
                                         }
                                       ]
                                     }
                                   ]
                                 },
                                 {
-                                  "use": "ListItem",
-                                  "props": {
-                                    "Class": "flex items-center justify-between gap-4 text-sm"
+                                  "when": {
+                                    "$": "z.express"
                                   },
-                                  "children": [
+                                  "then": [
                                     {
-                                      "use": "Inline",
+                                      "use": "Badge",
                                       "props": {
-                                        "Class": "text-muted-foreground"
+                                        "Variant": "secondary",
+                                        "Size": "default",
+                                        "Class": "w-fit"
                                       },
                                       "children": [
                                         {
                                           "text": {
-                                            "$": "labels.minOrder"
+                                            "$": "z.express"
                                           }
                                         }
                                       ]
-                                    },
-                                    {
-                                      "use": "Inline",
-                                      "props": {
-                                        "Class": "font-medium"
-                                      },
-                                      "children": [
-                                        {
-                                          "text": {
-                                            "op": "money",
-                                            "args": [
-                                              {
-                                                "$": "z.minOrder"
-                                              },
-                                              {
-                                                "$": "z.currency"
-                                              }
-                                            ]
-                                          }
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "use": "ListItem",
-                                  "props": {
-                                    "Class": "flex items-center justify-between gap-4 text-sm"
-                                  },
-                                  "children": [
-                                    {
-                                      "use": "Inline",
-                                      "props": {
-                                        "Class": "text-muted-foreground"
-                                      },
-                                      "children": [
-                                        {
-                                          "text": {
-                                            "$": "labels.time"
-                                          }
-                                        }
-                                      ]
-                                    },
-                                    {
-                                      "use": "Inline",
-                                      "props": {
-                                        "Class": "font-medium"
-                                      },
-                                      "children": [
-                                        {
-                                          "text": {
-                                            "$": "z.time"
-                                          }
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "when": {
-                                "$": "z.express"
-                              },
-                              "then": [
-                                {
-                                  "use": "Badge",
-                                  "props": {
-                                    "Variant": "secondary",
-                                    "Size": "default",
-                                    "Class": "w-fit"
-                                  },
-                                  "children": [
-                                    {
-                                      "text": {
-                                        "$": "z.express"
-                                      }
                                     }
                                   ]
                                 }

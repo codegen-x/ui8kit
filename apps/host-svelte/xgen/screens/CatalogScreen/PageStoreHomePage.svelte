@@ -166,6 +166,7 @@
   <UspStrip
     id="store-home-usp"
     perks={perks}
+    empty={ui.empty.perks}
     layout="cards"
     tone="default"
     density="default"

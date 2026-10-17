@@ -63,6 +63,7 @@ export function BeforeafterPage() {
                 id="beforeafter-cards"
                 title={ui.vibe.beforeafter.title}
                 points={beforeafter}
+                empty={ui.empty.points}
                 labels={ui.vibe.beforeafter.labels}
                 layout="cards"
                 icons="show"
@@ -89,6 +90,7 @@ export function BeforeafterPage() {
                 id="beforeafter-rows"
                 title={ui.vibe.beforeafter.title}
                 points={beforeafter}
+                empty={ui.empty.points}
                 labels={ui.vibe.beforeafter.labels}
                 layout="rows"
                 icons="show"
@@ -115,6 +117,7 @@ export function BeforeafterPage() {
                 id="beforeafter-plain"
                 title={ui.vibe.beforeafter.title}
                 points={beforeafter}
+                empty={ui.empty.points}
                 labels={ui.vibe.beforeafter.labels}
                 layout="cards"
                 icons="hide"
@@ -141,6 +144,7 @@ export function BeforeafterPage() {
                 id="beforeafter-muted"
                 title={ui.vibe.beforeafter.title}
                 points={beforeafter}
+                empty={ui.empty.points}
                 labels={ui.vibe.beforeafter.labels}
                 layout="cards"
                 icons="show"

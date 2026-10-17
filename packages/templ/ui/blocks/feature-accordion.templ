@@ -17,6 +17,7 @@ type FeatureAccordionProps struct {
 	Id any `json:"id"`
 	Title any `json:"title"`
 	Features any `json:"features"`
+	Empty any `json:"empty"`
 	Expand any `json:"expand"`
 	Media any `json:"media"`
 	Multiple any `json:"multiple"`
@@ -30,6 +31,7 @@ templ FeatureAccordion(p FeatureAccordionProps) {
 	{{ vId := p.Id }}
 	{{ vTitle := p.Title }}
 	{{ vFeatures := p.Features }}
+	{{ vEmpty := uiutils.Def(p.Empty, "") }}
 	{{ vExpand := uiutils.Def(p.Expand, "first") }}
 	{{ vMedia := uiutils.Def(p.Media, "none") }}
 	{{ vMultiple := uiutils.Def(p.Multiple, false) }}
@@ -37,19 +39,23 @@ templ FeatureAccordion(p FeatureAccordionProps) {
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Tone: vTone, Density: vDensity, Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vMedia, "image")), "split", "stack"), Media: map[string]any{"show": uiutils.Eq(vMedia, "image")}, LandmarkLabel: vLandmarkLabel, Aside: featureAccordionFill1(p, vTitle)}) {
-		@stack.Stack(stack.StackProps{Gap: "0", Align: "stretch", Attrs: uiutils.Attrs("data-testid", "items")}) {
-			for vI, vF := range uiutils.L(vFeatures) {
-				@disclosure.Disclosure(disclosure.DisclosureProps{Variant: "item", Name: uiutils.S(uiutils.Cond(uiutils.T(vMultiple), nil, uiutils.Tpl("{0}-accordion", uiutils.Coalesce(vId, "accordion")))), Open: uiutils.T(uiutils.And(uiutils.Eq(vExpand, "first"), uiutils.Eq(float64(vI), float64(0)))), Attrs: uiutils.Attrs("data-testid", "item")}) {
-					@disclosure.Summary(disclosure.SummaryProps{Variant: "item"}) {
-						@inline.Inline(inline.InlineProps{Class: "flex min-w-0 items-center justify-start gap-4"}) {
-							@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Get(vF, "icon")), Size: 20})
-							@inline.Inline(inline.InlineProps{Class: "text-base font-semibold"}) {
-								{ uiutils.Text(uiutils.Get(vF, "title")) }
+		if uiutils.Eq(uiutils.Len(vFeatures), float64(0)) {
+			@EmptyState(EmptyStateProps{Icon: "layout-grid", Title: vEmpty})
+		} else {
+			@stack.Stack(stack.StackProps{Gap: "0", Align: "stretch", Attrs: uiutils.Attrs("data-testid", "items")}) {
+				for vI, vF := range uiutils.L(vFeatures) {
+					@disclosure.Disclosure(disclosure.DisclosureProps{Variant: "item", Name: uiutils.S(uiutils.Cond(uiutils.T(vMultiple), nil, uiutils.Tpl("{0}-accordion", uiutils.Coalesce(vId, "accordion")))), Open: uiutils.T(uiutils.And(uiutils.Eq(vExpand, "first"), uiutils.Eq(float64(vI), float64(0)))), Attrs: uiutils.Attrs("data-testid", "item")}) {
+						@disclosure.Summary(disclosure.SummaryProps{Variant: "item"}) {
+							@inline.Inline(inline.InlineProps{Class: "flex min-w-0 items-center justify-start gap-4"}) {
+								@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Get(vF, "icon")), Size: 20})
+								@inline.Inline(inline.InlineProps{Class: "text-base font-semibold"}) {
+									{ uiutils.Text(uiutils.Get(vF, "title")) }
+								}
 							}
 						}
-					}
-					@text.Text(text.TextProps{Size: "sm", Class: "pb-4 text-muted-foreground"}) {
-						{ uiutils.Text(uiutils.Get(vF, "text")) }
+						@text.Text(text.TextProps{Size: "sm", Class: "pb-4 text-muted-foreground"}) {
+							{ uiutils.Text(uiutils.Get(vF, "text")) }
+						}
 					}
 				}
 			}

@@ -11,6 +11,7 @@ export type BeforeAfterProps = {
   id: string;
   title: string;
   points: Contrast[];
+  empty?: string;
   labels: BeforeAfterLabels;
   layout?: "cards" | "rows";
   icons?: "show" | "hide";
@@ -31,6 +32,7 @@ import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
+import EmptyState from "../components/empty-state.vue";
 import SectionFrame from "../components/section-frame.vue";
 import { cn } from "../utils";
 
@@ -38,6 +40,7 @@ const {
   id,
   title,
   points,
+  empty = "",
   labels,
   layout = "cards",
   icons = "show",
@@ -49,7 +52,8 @@ const {
 
 <template>
   <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
-    <Grid v-if="((layout as string) === 'cards')" cols="1-2" class="items-stretch gap-4" data-testid="sides">
+    <EmptyState v-if="((points?.length ?? 0) === 0)" icon="git-compare" :title="empty" />
+    <Grid v-else-if="((layout as string) === 'cards')" cols="1-2" class="items-stretch gap-4" data-testid="sides">
       <Card
         variant="muted"
         :class="cn('h-full', (((density as string) === 'compact') ? 'gap-4 p-4' : ''))"

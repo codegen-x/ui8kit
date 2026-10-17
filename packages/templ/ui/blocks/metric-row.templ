@@ -18,6 +18,7 @@ type MetricRowProps struct {
 	Id any `json:"id"`
 	Title any `json:"title"`
 	Metrics any `json:"metrics"`
+	Empty any `json:"empty"`
 	Cols any `json:"cols"`
 	Item any `json:"item"`
 	Tone any `json:"tone"`
@@ -30,31 +31,36 @@ templ MetricRow(p MetricRowProps) {
 	{{ vId := p.Id }}
 	{{ vTitle := p.Title }}
 	{{ vMetrics := p.Metrics }}
+	{{ vEmpty := uiutils.Def(p.Empty, "") }}
 	{{ vCols := uiutils.Def(p.Cols, "4") }}
 	{{ vItem := uiutils.Def(p.Item, "tile") }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Tone: vTone, Density: vDensity, LandmarkLabel: vLandmarkLabel}) {
-		@grid.Grid(grid.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "2")), "1-2", "1-4")), Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "items")}) {
-			for _, vM := range uiutils.L(vMetrics) {
-				if uiutils.Eq(vItem, "tile") {
-					@box.Box(box.BoxProps{Attrs: uiutils.Attrs("data-testid", "item")}) {
-						@StatTile(StatTileProps{Label: uiutils.Get(vM, "label"), Value: uiutils.Get(vM, "value"), Icon: uiutils.Get(vM, "icon"), Hint: uiutils.Get(vM, "hint")})
-					}
-				} else {
-					@stack.Stack(stack.StackProps{Gap: "0", Class: "rounded bg-card p-4 inset-ring inset-ring-border", Attrs: uiutils.Attrs("data-testid", "item")}) {
-						@group.Group(group.GroupProps{Gap: "2", Align: "center", Class: "text-muted-foreground"}) {
-							@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Get(vM, "icon")), Size: 16})
-							@text.Text(text.TextProps{Size: "xs"}) {
-								{ uiutils.Text(uiutils.Get(vM, "label")) }
+		if uiutils.Eq(uiutils.Len(vMetrics), float64(0)) {
+			@EmptyState(EmptyStateProps{Icon: "gauge", Title: vEmpty})
+		} else {
+			@grid.Grid(grid.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "2")), "1-2", "1-4")), Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "items")}) {
+				for _, vM := range uiutils.L(vMetrics) {
+					if uiutils.Eq(vItem, "tile") {
+						@box.Box(box.BoxProps{Attrs: uiutils.Attrs("data-testid", "item")}) {
+							@StatTile(StatTileProps{Label: uiutils.Get(vM, "label"), Value: uiutils.Get(vM, "value"), Icon: uiutils.Get(vM, "icon"), Hint: uiutils.Get(vM, "hint")})
+						}
+					} else {
+						@stack.Stack(stack.StackProps{Gap: "0", Class: "rounded bg-card p-4 inset-ring inset-ring-border", Attrs: uiutils.Attrs("data-testid", "item")}) {
+							@group.Group(group.GroupProps{Gap: "2", Align: "center", Class: "text-muted-foreground"}) {
+								@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Get(vM, "icon")), Size: 16})
+								@text.Text(text.TextProps{Size: "xs"}) {
+									{ uiutils.Text(uiutils.Get(vM, "label")) }
+								}
 							}
-						}
-						@text.Text(text.TextProps{Size: "2xl", Weight: "bold"}) {
-							{ uiutils.Text(uiutils.Get(vM, "value")) }
-						}
-						@text.Text(text.TextProps{Size: "xs", Class: "text-muted-foreground"}) {
-							{ uiutils.Text(uiutils.Get(vM, "hint")) }
+							@text.Text(text.TextProps{Size: "2xl", Weight: "bold"}) {
+								{ uiutils.Text(uiutils.Get(vM, "value")) }
+							}
+							@text.Text(text.TextProps{Size: "xs", Class: "text-muted-foreground"}) {
+								{ uiutils.Text(uiutils.Get(vM, "hint")) }
+							}
 						}
 					}
 				}

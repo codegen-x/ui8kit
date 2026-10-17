@@ -62,6 +62,7 @@
             id="featuretabs-split"
             title={ui.vibe.tabs.title}
             features={features}
+            empty={ui.empty.features}
             tabsLabel={ui.vibe.tabs.label}
             active="feature-clear"
             panel="split"
@@ -88,6 +89,7 @@
             id="featuretabs-stack"
             title={ui.vibe.tabs.title}
             features={features}
+            empty={ui.empty.features}
             tabsLabel={ui.vibe.tabs.label}
             active="feature-clear"
             panel="stack"
@@ -114,6 +116,7 @@
             id="featuretabs-muted"
             title={ui.vibe.tabs.title}
             features={features}
+            empty={ui.empty.features}
             tabsLabel={ui.vibe.tabs.label}
             active="feature-clear"
             panel="split"

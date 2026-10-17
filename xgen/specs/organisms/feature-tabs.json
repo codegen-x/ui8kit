@@ -24,6 +24,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "tabsLabel",
       "type": "string",
       "required": true
@@ -99,243 +105,272 @@
           "args": [],
           "do": [
             {
-              "use": "Stack",
-              "props": {
-                "Gap": "6",
-                "Align": "stretch"
-              },
-              "children": [
-                {
-                  "organism": "Switcher",
-                  "props": {
-                    "label": {
-                      "$": "tabsLabel"
-                    },
-                    "className": "w-fit max-w-full flex-wrap"
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "features"
+                      }
+                    ]
                   },
-                  "slots": {
-                    "children": {
-                      "args": [],
-                      "do": [
-                        {
-                          "each": {
-                            "$": "features"
-                          },
-                          "as": "f",
-                          "key": {
-                            "$": "f.id"
-                          },
+                  0
+                ]
+              },
+              "then": [
+                {
+                  "organism": "EmptyState",
+                  "props": {
+                    "icon": "layout-grid",
+                    "title": {
+                      "$": "empty"
+                    }
+                  }
+                }
+              ],
+              "else": [
+                {
+                  "use": "Stack",
+                  "props": {
+                    "Gap": "6",
+                    "Align": "stretch"
+                  },
+                  "children": [
+                    {
+                      "organism": "Switcher",
+                      "props": {
+                        "label": {
+                          "$": "tabsLabel"
+                        },
+                        "className": "w-fit max-w-full flex-wrap"
+                      },
+                      "slots": {
+                        "children": {
+                          "args": [],
                           "do": [
                             {
-                              "organism": "SwitcherItem",
+                              "each": {
+                                "$": "features"
+                              },
+                              "as": "f",
+                              "key": {
+                                "$": "f.id"
+                              },
+                              "do": [
+                                {
+                                  "organism": "SwitcherItem",
+                                  "props": {
+                                    "active": {
+                                      "op": "or",
+                                      "args": [
+                                        {
+                                          "op": "eq",
+                                          "args": [
+                                            {
+                                              "$": "f.id"
+                                            },
+                                            {
+                                              "$": "active"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "op": "and",
+                                          "args": [
+                                            {
+                                              "op": "eq",
+                                              "args": [
+                                                {
+                                                  "$": "active"
+                                                },
+                                                ""
+                                              ]
+                                            },
+                                            {
+                                              "op": "eq",
+                                              "args": [
+                                                {
+                                                  "$": "i"
+                                                },
+                                                0
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "on": {
+                                    "click": {
+                                      "call": "emit.select",
+                                      "args": [
+                                        {
+                                          "$": "f.id"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "slots": {
+                                    "children": {
+                                      "args": [],
+                                      "do": [
+                                        {
+                                          "text": {
+                                            "$": "f.title"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ],
+                              "index": "i"
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "each": {
+                        "$": "features"
+                      },
+                      "as": "f",
+                      "key": {
+                        "$": "f.id"
+                      },
+                      "do": [
+                        {
+                          "when": {
+                            "op": "or",
+                            "args": [
+                              {
+                                "op": "eq",
+                                "args": [
+                                  {
+                                    "$": "f.id"
+                                  },
+                                  {
+                                    "$": "active"
+                                  }
+                                ]
+                              },
+                              {
+                                "op": "and",
+                                "args": [
+                                  {
+                                    "op": "eq",
+                                    "args": [
+                                      {
+                                        "$": "active"
+                                      },
+                                      ""
+                                    ]
+                                  },
+                                  {
+                                    "op": "eq",
+                                    "args": [
+                                      {
+                                        "$": "i"
+                                      },
+                                      0
+                                    ]
+                                  }
+                                ]
+                              }
+                            ]
+                          },
+                          "then": [
+                            {
+                              "use": "Grid",
                               "props": {
-                                "active": {
-                                  "op": "or",
+                                "Cols": {
+                                  "op": "cond",
                                   "args": [
                                     {
                                       "op": "eq",
                                       "args": [
                                         {
-                                          "$": "f.id"
+                                          "$": "panel"
                                         },
-                                        {
-                                          "$": "active"
-                                        }
+                                        "split"
                                       ]
                                     },
-                                    {
-                                      "op": "and",
-                                      "args": [
-                                        {
-                                          "op": "eq",
-                                          "args": [
-                                            {
-                                              "$": "active"
-                                            },
-                                            ""
-                                          ]
-                                        },
-                                        {
-                                          "op": "eq",
-                                          "args": [
-                                            {
-                                              "$": "i"
-                                            },
-                                            0
-                                          ]
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                }
-                              },
-                              "on": {
-                                "click": {
-                                  "call": "emit.select",
-                                  "args": [
-                                    {
-                                      "$": "f.id"
-                                    }
-                                  ]
-                                }
-                              },
-                              "slots": {
-                                "children": {
-                                  "args": [],
-                                  "do": [
-                                    {
-                                      "text": {
-                                        "$": "f.title"
-                                      }
-                                    }
-                                  ]
-                                }
-                              }
-                            }
-                          ],
-                          "index": "i"
-                        }
-                      ]
-                    }
-                  }
-                },
-                {
-                  "each": {
-                    "$": "features"
-                  },
-                  "as": "f",
-                  "key": {
-                    "$": "f.id"
-                  },
-                  "do": [
-                    {
-                      "when": {
-                        "op": "or",
-                        "args": [
-                          {
-                            "op": "eq",
-                            "args": [
-                              {
-                                "$": "f.id"
-                              },
-                              {
-                                "$": "active"
-                              }
-                            ]
-                          },
-                          {
-                            "op": "and",
-                            "args": [
-                              {
-                                "op": "eq",
-                                "args": [
-                                  {
-                                    "$": "active"
-                                  },
-                                  ""
-                                ]
-                              },
-                              {
-                                "op": "eq",
-                                "args": [
-                                  {
-                                    "$": "i"
-                                  },
-                                  0
-                                ]
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      "then": [
-                        {
-                          "use": "Grid",
-                          "props": {
-                            "Cols": {
-                              "op": "cond",
-                              "args": [
-                                {
-                                  "op": "eq",
-                                  "args": [
-                                    {
-                                      "$": "panel"
-                                    },
-                                    "split"
+                                    "1-2",
+                                    "1"
                                   ]
                                 },
-                                "1-2",
-                                "1"
-                              ]
-                            },
-                            "Class": "items-center gap-8"
-                          },
-                          "attrs": {
-                            "data-testid": "tab-panel",
-                            "role": "tabpanel"
-                          },
-                          "children": [
-                            {
-                              "use": "Stack",
-                              "props": {
-                                "Gap": "4"
+                                "Class": "items-center gap-8"
+                              },
+                              "attrs": {
+                                "data-testid": "tab-panel",
+                                "role": "tabpanel"
                               },
                               "children": [
                                 {
-                                  "use": "LucideIcon",
+                                  "use": "Stack",
                                   "props": {
-                                    "Name": {
-                                      "$": "f.icon"
+                                    "Gap": "4"
+                                  },
+                                  "children": [
+                                    {
+                                      "use": "LucideIcon",
+                                      "props": {
+                                        "Name": {
+                                          "$": "f.icon"
+                                        },
+                                        "Size": 24
+                                      }
                                     },
-                                    "Size": 24
+                                    {
+                                      "use": "Title",
+                                      "props": {
+                                        "As": 3,
+                                        "Size": "2xl",
+                                        "Weight": "bold"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "f.title"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "base",
+                                        "Class": "text-muted-foreground"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "f.text"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "organism": "MediaFrame",
+                                  "props": {
+                                    "alt": {
+                                      "$": "f.title"
+                                    },
+                                    "ratio": "4/3"
                                   }
-                                },
-                                {
-                                  "use": "Title",
-                                  "props": {
-                                    "As": 3,
-                                    "Size": "2xl",
-                                    "Weight": "bold"
-                                  },
-                                  "children": [
-                                    {
-                                      "text": {
-                                        "$": "f.title"
-                                      }
-                                    }
-                                  ]
-                                },
-                                {
-                                  "use": "Text",
-                                  "props": {
-                                    "Size": "base",
-                                    "Class": "text-muted-foreground"
-                                  },
-                                  "children": [
-                                    {
-                                      "text": {
-                                        "$": "f.text"
-                                      }
-                                    }
-                                  ]
                                 }
                               ]
-                            },
-                            {
-                              "organism": "MediaFrame",
-                              "props": {
-                                "alt": {
-                                  "$": "f.title"
-                                },
-                                "ratio": "4/3"
-                              }
                             }
                           ]
                         }
-                      ]
+                      ],
+                      "index": "i"
                     }
-                  ],
-                  "index": "i"
+                  ]
                 }
               ]
             }

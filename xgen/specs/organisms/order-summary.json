@@ -57,6 +57,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "labels",
       "type": {
         "record": "SummaryLabels"
@@ -132,168 +138,197 @@
           "args": [],
           "do": [
             {
-              "use": "Box",
-              "props": {
-                "Class": {
-                  "op": "cn",
-                  "args": [
-                    {
-                      "op": "cond",
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "rows"
+                      }
+                    ]
+                  },
+                  0
+                ]
+              },
+              "then": [
+                {
+                  "organism": "EmptyState",
+                  "props": {
+                    "icon": "receipt",
+                    "title": {
+                      "$": "empty"
+                    }
+                  }
+                }
+              ],
+              "else": [
+                {
+                  "use": "Box",
+                  "props": {
+                    "Class": {
+                      "op": "cn",
                       "args": [
                         {
-                          "op": "eq",
+                          "op": "cond",
                           "args": [
                             {
-                              "$": "layout"
+                              "op": "eq",
+                              "args": [
+                                {
+                                  "$": "layout"
+                                },
+                                "card"
+                              ]
                             },
-                            "card"
+                            "rounded bg-card p-6 inset-ring inset-ring-border",
+                            ""
                           ]
-                        },
-                        "rounded bg-card p-6 inset-ring inset-ring-border",
-                        ""
+                        }
                       ]
                     }
-                  ]
-                }
-              },
-              "attrs": {
-                "data-testid": "summary"
-              },
-              "children": [
-                {
-                  "use": "Stack",
-                  "props": {
-                    "Gap": "4",
-                    "Align": "stretch"
+                  },
+                  "attrs": {
+                    "data-testid": "summary"
                   },
                   "children": [
                     {
-                      "use": "List",
+                      "use": "Stack",
                       "props": {
-                        "Tag": "ul",
-                        "Class": "flex flex-col gap-4"
+                        "Gap": "4",
+                        "Align": "stretch"
                       },
                       "children": [
                         {
-                          "each": {
-                            "$": "rows"
+                          "use": "List",
+                          "props": {
+                            "Tag": "ul",
+                            "Class": "flex flex-col gap-4"
                           },
-                          "as": "row",
-                          "key": {
-                            "$": "row.id"
-                          },
-                          "do": [
+                          "children": [
                             {
-                              "use": "ListItem",
-                              "props": {
-                                "Class": {
-                                  "op": "cn",
-                                  "args": [
-                                    "flex items-center justify-between gap-4",
-                                    {
-                                      "op": "cond",
+                              "each": {
+                                "$": "rows"
+                              },
+                              "as": "row",
+                              "key": {
+                                "$": "row.id"
+                              },
+                              "do": [
+                                {
+                                  "use": "ListItem",
+                                  "props": {
+                                    "Class": {
+                                      "op": "cn",
                                       "args": [
+                                        "flex items-center justify-between gap-4",
                                         {
-                                          "$": "row.strong"
-                                        },
-                                        "border-t border-border pt-4 text-base font-bold",
-                                        "text-sm text-muted-foreground"
+                                          "op": "cond",
+                                          "args": [
+                                            {
+                                              "$": "row.strong"
+                                            },
+                                            "border-t border-border pt-4 text-base font-bold",
+                                            "text-sm text-muted-foreground"
+                                          ]
+                                        }
                                       ]
                                     }
-                                  ]
-                                }
-                              },
-                              "attrs": {
-                                "data-testid": "item"
-                              },
-                              "children": [
-                                {
-                                  "use": "Inline",
+                                  },
+                                  "attrs": {
+                                    "data-testid": "item"
+                                  },
                                   "children": [
                                     {
-                                      "text": {
-                                        "$": "row.label"
-                                      }
-                                    }
-                                  ]
-                                },
-                                {
-                                  "use": "Inline",
-                                  "children": [
-                                    {
-                                      "text": {
-                                        "op": "money",
-                                        "args": [
-                                          {
-                                            "$": "row.amount"
-                                          },
-                                          {
-                                            "$": "row.currency"
+                                      "use": "Inline",
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "row.label"
                                           }
-                                        ]
-                                      }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "Inline",
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "op": "money",
+                                            "args": [
+                                              {
+                                                "$": "row.amount"
+                                              },
+                                              {
+                                                "$": "row.currency"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
                                     }
                                   ]
                                 }
                               ]
                             }
                           ]
-                        }
-                      ]
-                    },
-                    {
-                      "when": {
-                        "op": "eq",
-                        "args": [
-                          {
-                            "$": "cta"
-                          },
-                          "show"
-                        ]
-                      },
-                      "then": [
+                        },
                         {
-                          "use": "Button",
-                          "props": {
-                            "Variant": "default",
-                            "Size": "default",
-                            "Class": "w-full"
+                          "when": {
+                            "op": "eq",
+                            "args": [
+                              {
+                                "$": "cta"
+                              },
+                              "show"
+                            ]
                           },
-                          "attrs": {
-                            "data-testid": "checkout"
-                          },
-                          "children": [
+                          "then": [
                             {
-                              "text": {
-                                "$": "labels.checkout"
-                              }
+                              "use": "Button",
+                              "props": {
+                                "Variant": "default",
+                                "Size": "default",
+                                "Class": "w-full"
+                              },
+                              "attrs": {
+                                "data-testid": "checkout"
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "labels.checkout"
+                                  }
+                                }
+                              ]
                             }
                           ]
-                        }
-                      ]
-                    },
-                    {
-                      "when": {
-                        "op": "eq",
-                        "args": [
-                          {
-                            "$": "note"
-                          },
-                          "show"
-                        ]
-                      },
-                      "then": [
+                        },
                         {
-                          "use": "Text",
-                          "props": {
-                            "Size": "xs",
-                            "Class": "text-muted-foreground"
+                          "when": {
+                            "op": "eq",
+                            "args": [
+                              {
+                                "$": "note"
+                              },
+                              "show"
+                            ]
                           },
-                          "children": [
+                          "then": [
                             {
-                              "text": {
-                                "$": "labels.note"
-                              }
+                              "use": "Text",
+                              "props": {
+                                "Size": "xs",
+                                "Class": "text-muted-foreground"
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "labels.note"
+                                  }
+                                }
+                              ]
                             }
                           ]
                         }

@@ -65,6 +65,7 @@
   id="tour-checklist"
   title={ui.onboarding.checklist.title}
   tasks={checklist}
+  empty={ui.empty.tasks}
   progressLabel={ui.onboarding.checklist.progress}
   layout="card"
   progress="text"

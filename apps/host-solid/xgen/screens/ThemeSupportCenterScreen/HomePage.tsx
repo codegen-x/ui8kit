@@ -90,6 +90,7 @@ export function HomePage() {
         id="home-channels"
         title={ui.support.channels.title}
         channels={channels}
+        empty={ui.empty.channels}
         open={ui.support.channels.open}
         layout="grid"
         cols="1-3"

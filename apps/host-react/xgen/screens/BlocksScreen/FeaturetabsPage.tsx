@@ -68,6 +68,7 @@ export function FeaturetabsPage() {
                 id="featuretabs-split"
                 title={ui.vibe.tabs.title}
                 features={features}
+                empty={ui.empty.features}
                 tabsLabel={ui.vibe.tabs.label}
                 active="feature-clear"
                 panel="split"
@@ -94,6 +95,7 @@ export function FeaturetabsPage() {
                 id="featuretabs-stack"
                 title={ui.vibe.tabs.title}
                 features={features}
+                empty={ui.empty.features}
                 tabsLabel={ui.vibe.tabs.label}
                 active="feature-clear"
                 panel="stack"
@@ -120,6 +122,7 @@ export function FeaturetabsPage() {
                 id="featuretabs-muted"
                 title={ui.vibe.tabs.title}
                 features={features}
+                empty={ui.empty.features}
                 tabsLabel={ui.vibe.tabs.label}
                 active="feature-clear"
                 panel="split"

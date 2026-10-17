@@ -57,6 +57,7 @@
     }
   ],
   "slots": [
+    "EmptyState",
     "SectionFrame"
   ],
   "facts": [
@@ -93,6 +94,9 @@
       },
       "packs": {
         "$": "credits"
+      },
+      "empty": {
+        "$": "ui.empty.packs"
       },
       "badges": {
         "$": "ui.vibe.credits.badges"

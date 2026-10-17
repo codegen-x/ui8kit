@@ -24,6 +24,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "expand",
       "type": {
         "ts": "\"first\" | \"none\""
@@ -117,139 +123,168 @@
           "args": [],
           "do": [
             {
-              "use": "Stack",
-              "props": {
-                "Gap": "0",
-                "Align": "stretch"
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "features"
+                      }
+                    ]
+                  },
+                  0
+                ]
               },
-              "attrs": {
-                "data-testid": "items"
-              },
-              "children": [
+              "then": [
                 {
-                  "each": {
-                    "$": "features"
+                  "organism": "EmptyState",
+                  "props": {
+                    "icon": "layout-grid",
+                    "title": {
+                      "$": "empty"
+                    }
+                  }
+                }
+              ],
+              "else": [
+                {
+                  "use": "Stack",
+                  "props": {
+                    "Gap": "0",
+                    "Align": "stretch"
                   },
-                  "as": "f",
-                  "key": {
-                    "$": "f.id"
+                  "attrs": {
+                    "data-testid": "items"
                   },
-                  "do": [
+                  "children": [
                     {
-                      "use": "Disclosure",
-                      "props": {
-                        "Variant": "item",
-                        "Name": {
-                          "op": "cond",
-                          "args": [
-                            {
-                              "$": "multiple"
-                            },
-                            {
-                              "op": "undef",
-                              "args": []
-                            },
-                            {
-                              "op": "tpl",
-                              "args": [
-                                "{0}-accordion",
-                                {
-                                  "op": "coalesce",
-                                  "args": [
-                                    {
-                                      "$": "id"
-                                    },
-                                    "accordion"
-                                  ]
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        "Open": {
-                          "op": "and",
-                          "args": [
-                            {
-                              "op": "eq",
-                              "args": [
-                                {
-                                  "$": "expand"
-                                },
-                                "first"
-                              ]
-                            },
-                            {
-                              "op": "eq",
-                              "args": [
-                                {
-                                  "$": "i"
-                                },
-                                0
-                              ]
-                            }
-                          ]
-                        }
+                      "each": {
+                        "$": "features"
                       },
-                      "attrs": {
-                        "data-testid": "item"
+                      "as": "f",
+                      "key": {
+                        "$": "f.id"
                       },
-                      "children": [
+                      "do": [
                         {
-                          "use": "Summary",
+                          "use": "Disclosure",
                           "props": {
-                            "Variant": "item"
-                          },
-                          "children": [
-                            {
-                              "use": "Inline",
-                              "props": {
-                                "Class": "flex min-w-0 items-center justify-start gap-4"
-                              },
-                              "children": [
+                            "Variant": "item",
+                            "Name": {
+                              "op": "cond",
+                              "args": [
                                 {
-                                  "use": "LucideIcon",
-                                  "props": {
-                                    "Name": {
-                                      "$": "f.icon"
-                                    },
-                                    "Size": 20
-                                  }
+                                  "$": "multiple"
                                 },
                                 {
-                                  "use": "Inline",
-                                  "props": {
-                                    "Class": "text-base font-semibold"
-                                  },
-                                  "children": [
+                                  "op": "undef",
+                                  "args": []
+                                },
+                                {
+                                  "op": "tpl",
+                                  "args": [
+                                    "{0}-accordion",
                                     {
-                                      "text": {
-                                        "$": "f.title"
-                                      }
+                                      "op": "coalesce",
+                                      "args": [
+                                        {
+                                          "$": "id"
+                                        },
+                                        "accordion"
+                                      ]
                                     }
                                   ]
                                 }
                               ]
+                            },
+                            "Open": {
+                              "op": "and",
+                              "args": [
+                                {
+                                  "op": "eq",
+                                  "args": [
+                                    {
+                                      "$": "expand"
+                                    },
+                                    "first"
+                                  ]
+                                },
+                                {
+                                  "op": "eq",
+                                  "args": [
+                                    {
+                                      "$": "i"
+                                    },
+                                    0
+                                  ]
+                                }
+                              ]
                             }
-                          ]
-                        },
-                        {
-                          "use": "Text",
-                          "props": {
-                            "Size": "sm",
-                            "Class": "pb-4 text-muted-foreground"
+                          },
+                          "attrs": {
+                            "data-testid": "item"
                           },
                           "children": [
                             {
-                              "text": {
-                                "$": "f.text"
-                              }
+                              "use": "Summary",
+                              "props": {
+                                "Variant": "item"
+                              },
+                              "children": [
+                                {
+                                  "use": "Inline",
+                                  "props": {
+                                    "Class": "flex min-w-0 items-center justify-start gap-4"
+                                  },
+                                  "children": [
+                                    {
+                                      "use": "LucideIcon",
+                                      "props": {
+                                        "Name": {
+                                          "$": "f.icon"
+                                        },
+                                        "Size": 20
+                                      }
+                                    },
+                                    {
+                                      "use": "Inline",
+                                      "props": {
+                                        "Class": "text-base font-semibold"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "f.title"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "use": "Text",
+                              "props": {
+                                "Size": "sm",
+                                "Class": "pb-4 text-muted-foreground"
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "f.text"
+                                  }
+                                }
+                              ]
                             }
                           ]
                         }
-                      ]
+                      ],
+                      "index": "i"
                     }
-                  ],
-                  "index": "i"
+                  ]
                 }
               ]
             }

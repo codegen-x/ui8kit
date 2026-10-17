@@ -13,6 +13,7 @@ export type PhotoGalleryProps = {
   title: string;
   lead?: string;
   photos: Photo[];
+  empty?: string;
   labels: PhotoLabels;
   layout?: "grid" | "masonry" | "mosaic" | "featured" | "cards";
   captions?: "show" | "hide";
@@ -30,6 +31,7 @@ import Group from "../primitives/group/group.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
+import EmptyState from "../components/empty-state.vue";
 import FigureBlock from "../components/figure-block.vue";
 import MediaFrame from "../components/media-frame.vue";
 import SectionFrame from "../components/section-frame.vue";
@@ -40,6 +42,7 @@ const {
   title,
   lead = "",
   photos,
+  empty = "",
   labels,
   layout = "grid",
   captions = "show",
@@ -58,7 +61,8 @@ const {
     :density="density"
     :landmarkLabel="landmarkLabel"
   >
-    <Stack v-if="((layout as string) === 'featured')" gap="4" align="stretch" data-testid="featured">
+    <EmptyState v-if="((photos?.length ?? 0) === 0)" icon="image" :title="empty" />
+    <Stack v-else-if="((layout as string) === 'featured')" gap="4" align="stretch" data-testid="featured">
       <MediaFrame :alt="title" />
       <Group gap="4" align="center" justify="between">
         <Stack gap="0">

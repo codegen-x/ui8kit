@@ -63,6 +63,7 @@
             title={ui.dashboard.chart.title}
             text={ui.dashboard.chart.text}
             series={series}
+            empty={ui.empty.series}
             summary={ui.dashboard.chart.summary}
             percent={ui.dashboard.chart.percent}
             chart="bars"
@@ -90,6 +91,7 @@
             title={ui.dashboard.chart.title}
             text={ui.dashboard.chart.text}
             series={series}
+            empty={ui.empty.series}
             summary={ui.dashboard.chart.summary}
             percent={ui.dashboard.chart.percent}
             chart="bars"
@@ -117,6 +119,7 @@
             title={ui.dashboard.chart.title}
             text={ui.dashboard.chart.text}
             series={series}
+            empty={ui.empty.series}
             summary={ui.dashboard.chart.summary}
             percent={ui.dashboard.chart.percent}
             chart="meters"
@@ -144,6 +147,7 @@
             title={ui.dashboard.chart.title}
             text={ui.dashboard.chart.text}
             series={series}
+            empty={ui.empty.series}
             summary={ui.dashboard.chart.summary}
             percent={ui.dashboard.chart.percent}
             chart="meters"

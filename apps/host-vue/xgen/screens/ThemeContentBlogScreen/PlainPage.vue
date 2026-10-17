@@ -53,6 +53,7 @@ const article = fromCodex<Section>(articleEntries, ARTICLE_FIELDS, CODEX);
     id="plain-article"
     :title="ui.vibe.article.title"
     :sections="article"
+    :empty="ui.empty.sections"
     :tocTitle="ui.vibe.article.toc"
     layout="column"
     quotes="hide"

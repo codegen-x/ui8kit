@@ -31,7 +31,7 @@ const QUESTIONS_FIELDS = {
   "id": "id",
   "question": "title",
   "answer": "metadata.answer.value",
-  "category": "metadata.category.value",
+  "category": "terms|term:faq_category",
   "icon": "metadata.icon.value",
 } as const;
 

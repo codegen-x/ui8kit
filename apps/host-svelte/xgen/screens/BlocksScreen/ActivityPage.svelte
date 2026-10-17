@@ -69,6 +69,7 @@
             title={ui.dashboard.activity.title}
             text={ui.dashboard.activity.text}
             events={activity}
+            empty={ui.empty.activity}
             layout="timeline"
             density="default"
             tone="default"
@@ -94,6 +95,7 @@
             title={ui.dashboard.activity.title}
             text={ui.dashboard.activity.text}
             events={activity}
+            empty={ui.empty.activity}
             layout="list"
             density="default"
             tone="default"
@@ -119,6 +121,7 @@
             title={ui.dashboard.activity.title}
             text={ui.dashboard.activity.text}
             events={activity}
+            empty={ui.empty.activity}
             layout="list"
             density="compact"
             tone="default"
@@ -144,6 +147,7 @@
             title={ui.dashboard.activity.title}
             text={ui.dashboard.activity.text}
             events={activity}
+            empty={ui.empty.activity}
             layout="timeline"
             density="default"
             tone="muted"

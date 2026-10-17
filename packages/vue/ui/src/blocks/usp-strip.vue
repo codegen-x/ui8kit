@@ -11,6 +11,7 @@ export type UspStripProps = {
   id: string;
   title?: string;
   perks: Feature[];
+  empty?: string;
   layout?: "strip" | "cards" | "bar";
   tone?: "default" | "muted";
   density?: "default" | "compact";
@@ -27,6 +28,7 @@ import ListItem from "../primitives/list/list-item.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
+import EmptyState from "../components/empty-state.vue";
 import SectionFrame from "../components/section-frame.vue";
 import { cn } from "../utils";
 
@@ -34,6 +36,7 @@ const {
   id,
   title = "",
   perks,
+  empty = "",
   layout = "strip",
   tone = "default",
   density = "default",
@@ -43,8 +46,9 @@ const {
 
 <template>
   <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
+    <EmptyState v-if="((perks?.length ?? 0) === 0)" icon="truck" :title="empty" />
     <List
-      v-if="((layout as string) === 'bar')"
+      v-else-if="((layout as string) === 'bar')"
       tag="ul"
       class="flex flex-wrap items-center justify-center gap-x-8 gap-y-4"
       data-testid="items"

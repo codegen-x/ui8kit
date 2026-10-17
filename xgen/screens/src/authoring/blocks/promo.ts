@@ -3,7 +3,7 @@ import { and, cn, cond, each, eq, ref, text, undef, use, when, organism } from "
 import type { OrganismSpec } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { frame, wide } from "../components/frames";
-import { id, title, tone, tsOf, toneLite } from "../props";
+import { empty, id, orEmpty, title, tone, tsOf, toneLite } from "../props";
 import { checkRow, fid, inputField, kids, textField } from "../forms";
 import { menuEntry } from "../components/nav";
 
@@ -127,13 +127,14 @@ const supportChannels = spec(`${O}support-channels`, "SupportChannels", "Ways to
   props: [
     id, title,
     { name: "channels", type: ts("Feature[]"), required: true },
+    empty,
     { name: "open", type: "string", required: true, docs: "text of the link of each channel" },
     { name: "layout", type: tsOf("grid", "list"), default: "grid" },
     { name: "cols", type: tsOf("1-2", "1-3"), default: "1-3" },
     { name: "action", type: tsOf("link", "none"), default: "link" },
     { name: "tone", type: toneLite, default: "default" },
   ],
-  view: [frame({ id: ref("id"), title: ref("title"), tone: ref("tone") }, [
+  view: [frame({ id: ref("id"), title: ref("title"), tone: ref("tone") }, [orEmpty("channels", "life-buoy", [
     use("Grid", { props: { Cols: cond(eq(ref("layout"), "list"), "1", ref("cols")), Class: "gap-4" }, attrs: { "data-testid": "items" } },
       each(ref("channels"), "c", ref("c.id"),
         use("Card", { props: { Variant: "default", Class: cn("h-full", cond(eq(ref("layout"), "list"), "flex-row items-center", "")) }, attrs: { "data-testid": "item" } },
@@ -142,7 +143,7 @@ const supportChannels = spec(`${O}support-channels`, "SupportChannels", "Ways to
             use("Stack", { props: { Gap: "2", Class: "flex-1" } },
               use("Title", { props: { As: 3, Size: "base", Weight: "bold" } }, text(ref("c.title"))),
               use("Text", { props: { Size: "sm", Class: "text-muted-foreground" } }, text(ref("c.text")))),
-            when(eq(ref("action"), "link"), [menuEntry(ref("c.href"), { cls: "font-semibold", testid: "open" }, text(ref("open")))]))))),
+            when(eq(ref("action"), "link"), [menuEntry(ref("c.href"), { cls: "font-semibold", testid: "open" }, text(ref("open")))]))))),])
   ])],
 });
 

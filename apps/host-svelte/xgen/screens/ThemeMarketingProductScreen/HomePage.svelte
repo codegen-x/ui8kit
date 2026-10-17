@@ -70,6 +70,7 @@
   id="home-features"
   title={ui.site.home.featuresTitle}
   features={features}
+  empty={ui.empty.features}
   action={{ label: ui.site.home.featuresAction, href: "#/" }}
   layout="grid"
   cols="1-3"
@@ -113,6 +114,7 @@
   id="home-bento"
   title={ui.vibe.bento.title}
   tiles={bento}
+  empty={ui.empty.tiles}
   layout="bento"
   media="image"
   tone="default"
@@ -123,6 +125,7 @@
   id="home-featuretabs"
   title={ui.vibe.tabs.title}
   features={features}
+  empty={ui.empty.features}
   tabsLabel={ui.vibe.tabs.label}
   active="feature-clear"
   panel="split"
@@ -134,6 +137,7 @@
   id="home-accordion"
   title={ui.vibe.accordion.title}
   features={features}
+  empty={ui.empty.features}
   expand="first"
   media="image"
   tone="default"

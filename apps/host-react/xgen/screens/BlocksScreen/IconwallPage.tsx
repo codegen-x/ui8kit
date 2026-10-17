@@ -68,6 +68,7 @@ export function IconwallPage() {
                 id="iconwall-tiles4"
                 title={ui.vibe.wall.title}
                 features={features}
+                empty={ui.empty.features}
                 cols="4"
                 item="tile"
                 tone="default"
@@ -93,6 +94,7 @@ export function IconwallPage() {
                 id="iconwall-tiles3"
                 title={ui.vibe.wall.title}
                 features={features}
+                empty={ui.empty.features}
                 cols="3"
                 item="tile"
                 tone="default"
@@ -118,6 +120,7 @@ export function IconwallPage() {
                 id="iconwall-chips6"
                 title={ui.vibe.wall.title}
                 features={features}
+                empty={ui.empty.features}
                 cols="6"
                 item="chip"
                 tone="default"
@@ -143,6 +146,7 @@ export function IconwallPage() {
                 id="iconwall-chips4"
                 title={ui.vibe.wall.title}
                 features={features}
+                empty={ui.empty.features}
                 cols="4"
                 item="chip"
                 tone="default"
@@ -168,6 +172,7 @@ export function IconwallPage() {
                 id="iconwall-muted"
                 title={ui.vibe.wall.title}
                 features={features}
+                empty={ui.empty.features}
                 cols="4"
                 item="tile"
                 tone="muted"

@@ -62,6 +62,7 @@
             id="features-grid"
             title={ui.site.home.featuresTitle}
             features={features}
+            empty={ui.empty.features}
             action={{ label: ui.site.home.featuresAction, href: "#/" }}
             layout="grid"
             cols="1-3"
@@ -90,6 +91,7 @@
             id="features-grid2"
             title={ui.site.home.featuresTitle}
             features={features}
+            empty={ui.empty.features}
             action={{ label: ui.site.home.featuresAction, href: "#/" }}
             layout="grid"
             cols="1-2"
@@ -118,6 +120,7 @@
             id="features-tiles4"
             title={ui.site.home.featuresTitle}
             features={features}
+            empty={ui.empty.features}
             action={{ label: ui.site.home.featuresAction, href: "#/" }}
             layout="grid"
             cols="1-4"
@@ -146,6 +149,7 @@
             id="features-cells4"
             title={ui.site.home.featuresTitle}
             features={features}
+            empty={ui.empty.features}
             action={{ label: ui.site.home.featuresAction, href: "#/" }}
             layout="grid"
             cols="1-4"
@@ -174,6 +178,7 @@
             id="features-rows"
             title={ui.site.home.featuresTitle}
             features={features}
+            empty={ui.empty.features}
             action={{ label: ui.site.home.featuresAction, href: "#/" }}
             layout="rows"
             cols="1-3"
@@ -202,6 +207,7 @@
             id="features-rowsStart"
             title={ui.site.home.featuresTitle}
             features={features}
+            empty={ui.empty.features}
             action={{ label: ui.site.home.featuresAction, href: "#/" }}
             layout="rows"
             cols="1-3"
@@ -230,6 +236,7 @@
             id="features-rowsAlternate"
             title={ui.site.home.featuresTitle}
             features={features}
+            empty={ui.empty.features}
             action={{ label: ui.site.home.featuresAction, href: "#/" }}
             layout="rows"
             cols="1-3"
@@ -258,6 +265,7 @@
             id="features-tilesMuted"
             title={ui.site.home.featuresTitle}
             features={features}
+            empty={ui.empty.features}
             action={{ label: ui.site.home.featuresAction, href: "#/" }}
             layout="grid"
             cols="1-3"

@@ -12,6 +12,7 @@ import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
+import { EmptyState } from "../components/empty-state";
 import { SectionFrame } from "../components/section-frame";
 import { cn, fmtMoney } from "../utils";
 import type { SummaryRow, SummaryLabels } from "./order-summary.types";
@@ -20,6 +21,7 @@ export type OrderSummaryProps = {
   id: string;
   title: string;
   rows: SummaryRow[];
+  empty?: string;
   labels: SummaryLabels;
   layout?: "card" | "plain";
   cta?: "show" | "hide";
@@ -33,6 +35,7 @@ export function OrderSummary({
   id,
   title,
   rows,
+  empty = "",
   labels,
   layout = "card",
   cta = "show",
@@ -43,46 +46,50 @@ export function OrderSummary({
 }: OrderSummaryProps) {
   return (
     <SectionFrame id={id} title={title} tone={tone} density={density} measure="md" landmarkLabel={landmarkLabel}>
-      <Box
-        class={cn(
-          (((layout as string) === "card") ? "rounded bg-card p-6 inset-ring inset-ring-border" : "")
-        )}
-        data-testid="summary"
-      >
-        <Stack gap="4" align="stretch">
-          <List tag="ul" class="flex flex-col gap-4">
-            <For each={rows ?? []}>{(row) => (
-              <ListItem
-                class={cn(
-                  "flex items-center justify-between gap-4",
-                  (
-                    row.strong ? "border-t border-border pt-4 text-base font-bold"
-                    : "text-sm text-muted-foreground"
-                  )
-                )}
-                data-testid="item"
-              >
-                <Inline>
-                  {row.label}
-                </Inline>
-                <Inline>
-                  {fmtMoney(row.amount, row.currency)}
-                </Inline>
-              </ListItem>
-            )}</For>
-          </List>
-          {((cta as string) === "show") ? (
-            <Button variant="default" size="default" class="w-full" data-testid="checkout">
-              {labels.checkout}
-            </Button>
-          ) : null}
-          {((note as string) === "show") ? (
-            <Text size="xs" class="text-muted-foreground">
-              {labels.note}
-            </Text>
-          ) : null}
-        </Stack>
-      </Box>
+      {((rows?.length ?? 0) === 0) ? (
+        <EmptyState icon="receipt" title={empty} />
+      ) : (
+        <Box
+          class={cn(
+            (((layout as string) === "card") ? "rounded bg-card p-6 inset-ring inset-ring-border" : "")
+          )}
+          data-testid="summary"
+        >
+          <Stack gap="4" align="stretch">
+            <List tag="ul" class="flex flex-col gap-4">
+              <For each={rows ?? []}>{(row) => (
+                <ListItem
+                  class={cn(
+                    "flex items-center justify-between gap-4",
+                    (
+                      row.strong ? "border-t border-border pt-4 text-base font-bold"
+                      : "text-sm text-muted-foreground"
+                    )
+                  )}
+                  data-testid="item"
+                >
+                  <Inline>
+                    {row.label}
+                  </Inline>
+                  <Inline>
+                    {fmtMoney(row.amount, row.currency)}
+                  </Inline>
+                </ListItem>
+              )}</For>
+            </List>
+            {((cta as string) === "show") ? (
+              <Button variant="default" size="default" class="w-full" data-testid="checkout">
+                {labels.checkout}
+              </Button>
+            ) : null}
+            {((note as string) === "show") ? (
+              <Text size="xs" class="text-muted-foreground">
+                {labels.note}
+              </Text>
+            ) : null}
+          </Stack>
+        </Box>
+      )}
     </SectionFrame>
   );
 }

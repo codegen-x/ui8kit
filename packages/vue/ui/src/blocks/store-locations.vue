@@ -12,6 +12,7 @@ export type StoreLocationsProps = {
   title: string;
   lead?: string;
   stores: Store[];
+  empty?: string;
   kinds: Record<string, string>;
   labels: StoreLabels;
   layout?: "cards" | "list" | "map";
@@ -32,6 +33,7 @@ import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
+import EmptyState from "../components/empty-state.vue";
 import MediaFrame from "../components/media-frame.vue";
 import SectionFrame from "../components/section-frame.vue";
 import { at, cn, tpl } from "../utils";
@@ -41,6 +43,7 @@ const {
   title,
   lead = "",
   stores,
+  empty = "",
   kinds,
   labels,
   layout = "cards",
@@ -51,7 +54,8 @@ const {
 
 <template>
   <SectionFrame :id="id" :title="title" :lead="lead" :tone="tone" :landmarkLabel="landmarkLabel">
-    <Box
+    <EmptyState v-if="((stores?.length ?? 0) === 0)" icon="store" :title="empty" />
+    <Box v-else
       :class="cn(
         'grid grid-cols-1 gap-8',
         (((layout as string) === 'map') ? 'items-start md:grid-cols-2' : '')

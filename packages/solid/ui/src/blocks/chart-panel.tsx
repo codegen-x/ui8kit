@@ -9,6 +9,7 @@ import { Block } from "../primitives/block/block";
 import { Container } from "../primitives/container/container";
 import { Stack } from "../primitives/stack/stack";
 import { BarChart } from "../components/bar-chart";
+import { EmptyState } from "../components/empty-state";
 import { MeterRow } from "../components/meter-row";
 import { Panel } from "../components/panel";
 import { tpl } from "../utils";
@@ -19,6 +20,7 @@ export type ChartPanelProps = {
   title: string;
   text: string;
   series: Point[];
+  empty?: string;
   summary: string;
   percent: string;
   chart?: "bars" | "meters";
@@ -32,6 +34,7 @@ export function ChartPanel({
   title,
   text,
   series,
+  empty = "",
   summary,
   percent,
   chart = "bars",
@@ -48,7 +51,9 @@ export function ChartPanel({
     >
       <Container class="mx-auto w-full max-w-6xl px-4 py-8" data-slot="container">
         <Panel title={title} description={text} id={id} class={(((tone as string) === "muted") ? "bg-muted" : "")}>
-          {((chart as string) === "bars") ? (
+          {((series?.length ?? 0) === 0) ? (
+            <EmptyState icon="chart-column" title={empty} />
+          ) : ((chart as string) === "bars") ? (
             <BarChart bars={series} label={summary} height={(((size as string) === "compact") ? 96 : 176)} />
           ) : (
             <Stack gap={(((size as string) === "compact") ? "0" : "2")} align="stretch" data-testid="items">

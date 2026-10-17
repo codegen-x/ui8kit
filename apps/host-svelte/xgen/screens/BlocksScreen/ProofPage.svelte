@@ -72,6 +72,7 @@
             id="proof-above"
             title={ui.vibe.proof.title}
             logos={logos}
+            empty={ui.empty.logos}
             stats={stats}
             layout="above"
             logoStyle="name"
@@ -98,6 +99,7 @@
             id="proof-beside"
             title={ui.vibe.proof.title}
             logos={logos}
+            empty={ui.empty.logos}
             stats={stats}
             layout="beside"
             logoStyle="name"
@@ -124,6 +126,7 @@
             id="proof-icons"
             title={ui.vibe.proof.title}
             logos={logos}
+            empty={ui.empty.logos}
             stats={stats}
             layout="above"
             logoStyle="icon"
@@ -150,6 +153,7 @@
             id="proof-muted"
             title={ui.vibe.proof.title}
             logos={logos}
+            empty={ui.empty.logos}
             stats={stats}
             layout="above"
             logoStyle="name"

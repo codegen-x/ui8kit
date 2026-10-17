@@ -14,6 +14,7 @@ import { Grid } from "../primitives/grid/grid";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { Title } from "../primitives/title/title";
+import { EmptyState } from "../components/empty-state";
 import { SectionFrame } from "../components/section-frame";
 import { at, cn, fitCols, fmtMoney } from "../utils";
 import type { Pack } from "./credit-packs.types";
@@ -22,6 +23,7 @@ export type CreditPacksProps = {
   id: string;
   title: string;
   packs: Pack[];
+  empty?: string;
   badges: Record<string, string>;
   buy: string;
   cols?: "2" | "4";
@@ -35,6 +37,7 @@ export function CreditPacks({
   id,
   title,
   packs,
+  empty = "",
   badges,
   buy,
   cols = "4",
@@ -52,66 +55,70 @@ export function CreditPacks({
       measure={(((item as string) === "row") ? "2xl" : "default")}
       landmarkLabel={landmarkLabel}
     >
-      <Grid
-        cols={
-          (item as string) === "row" ? "1"
-          : fitCols((((cols as string) === "2") ? "1-2" : "1-4"), (packs?.length ?? 0))
-        }
-        class="gap-4"
-        data-testid="items"
-      >
-        <For each={packs ?? []}>{(pack) => (
-          <Card
-            variant="default"
-            class={cn(
-              "h-full",
-              (
-                (item as string) === "row" ? "gap-4 p-4"
-                : (density as string) === "compact" ? "gap-4 p-4"
-                : ""
-              )
-            )}
-            data-testid="item"
-            data-badge={pack.badge}
-          >
-            <CardContent
+      {((packs?.length ?? 0) === 0) ? (
+        <EmptyState icon="coins" title={empty} />
+      ) : (
+        <Grid
+          cols={
+            (item as string) === "row" ? "1"
+            : fitCols((((cols as string) === "2") ? "1-2" : "1-4"), (packs?.length ?? 0))
+          }
+          class="gap-4"
+          data-testid="items"
+        >
+          <For each={packs ?? []}>{(pack) => (
+            <Card
+              variant="default"
               class={cn(
-                "flex h-full gap-4",
-                (((item as string) === "row") ? "flex-row flex-wrap items-center justify-between" : "flex-col")
+                "h-full",
+                (
+                  (item as string) === "row" ? "gap-4 p-4"
+                  : (density as string) === "compact" ? "gap-4 p-4"
+                  : ""
+                )
               )}
+              data-testid="item"
+              data-badge={pack.badge}
             >
-              <Stack gap="2" align="start" class={cn("min-w-0", (((item as string) === "row") ? "flex-1" : ""))}>
-                {(pack.badge || (((item as string) !== "row") && (packs.filter((i) => i["badge"]).length > 0))) ? (
-                  <Box class="flex min-h-6 items-center" data-slot="badge-slot">
-                    {pack.badge ? (
-                      <Badge variant="default" size="default" class="w-fit shrink-0" data-testid="badge">
-                        {at(badges, pack.badge)}
-                      </Badge>
-                    ) : null}
-                  </Box>
-                ) : null}
-                <Stack gap="0" class="min-w-0">
-                  <Title as={3} size="xl" weight="bold">
-                    {pack.name}
-                  </Title>
-                  <Text size="2xl" weight="bold">
-                    {fmtMoney(pack.price, pack.currency)}
-                  </Text>
-                </Stack>
-              </Stack>
-              <Button
-                variant={((pack.badge === "popular") ? "default" : "outline")}
-                size="sm"
-                type="button"
-                class={cn("w-fit shrink-0", (((item as string) === "row") ? "" : "mt-auto"))}
-                data-testid="buy"
+              <CardContent
+                class={cn(
+                  "flex h-full gap-4",
+                  (((item as string) === "row") ? "flex-row flex-wrap items-center justify-between" : "flex-col")
+                )}
               >
-                {buy}
-              </Button>
-            </CardContent>
-          </Card>
-        )}</For>
-      </Grid>
+                <Stack gap="2" align="start" class={cn("min-w-0", (((item as string) === "row") ? "flex-1" : ""))}>
+                  {(pack.badge || (((item as string) !== "row") && (packs.filter((i) => i["badge"]).length > 0))) ? (
+                    <Box class="flex min-h-6 items-center" data-slot="badge-slot">
+                      {pack.badge ? (
+                        <Badge variant="default" size="default" class="w-fit shrink-0" data-testid="badge">
+                          {at(badges, pack.badge)}
+                        </Badge>
+                      ) : null}
+                    </Box>
+                  ) : null}
+                  <Stack gap="0" class="min-w-0">
+                    <Title as={3} size="xl" weight="bold">
+                      {pack.name}
+                    </Title>
+                    <Text size="2xl" weight="bold">
+                      {fmtMoney(pack.price, pack.currency)}
+                    </Text>
+                  </Stack>
+                </Stack>
+                <Button
+                  variant={((pack.badge === "popular") ? "default" : "outline")}
+                  size="sm"
+                  type="button"
+                  class={cn("w-fit shrink-0", (((item as string) === "row") ? "" : "mt-auto"))}
+                  data-testid="buy"
+                >
+                  {buy}
+                </Button>
+              </CardContent>
+            </Card>
+          )}</For>
+        </Grid>
+      )}
     </SectionFrame>
   );
 }

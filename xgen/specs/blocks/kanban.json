@@ -57,6 +57,7 @@
     }
   ],
   "slots": [
+    "EmptyState",
     "Pill",
     "SectionFrame"
   ],
@@ -118,6 +119,9 @@
       },
       "lanes": {
         "$": "lanes"
+      },
+      "empty": {
+        "$": "ui.empty.lanes"
       },
       "cards": {
         "$": "cards"

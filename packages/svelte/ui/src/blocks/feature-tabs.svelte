@@ -13,6 +13,7 @@
     id: string;
     title: string;
     features: Feature[];
+    empty?: string;
     tabsLabel: string;
     active?: string;
     panel?: "split" | "stack";
@@ -29,6 +30,7 @@
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import Switcher from "../components/switcher.svelte";
@@ -38,6 +40,7 @@
     id,
     title,
     features,
+    empty = "",
     tabsLabel,
     active = "",
     panel = "split",
@@ -49,37 +52,41 @@
 </script>
 
 <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
-  <Stack gap="6" align="stretch">
-    <Switcher label={tabsLabel} class="w-fit max-w-full flex-wrap">
+  {#if ((features?.length ?? 0) === 0)}
+    <EmptyState icon="layout-grid" title={empty} />
+  {:else}
+    <Stack gap="6" align="stretch">
+      <Switcher label={tabsLabel} class="w-fit max-w-full flex-wrap">
+        {#each features as f, i (f.id)}
+          <SwitcherItem
+            active={((f.id === active) || (((active as string) === "") && (i === 0)))}
+            onclick={() => onselect?.(f.id)}
+          >
+            {f.title}
+          </SwitcherItem>
+        {/each}
+      </Switcher>
       {#each features as f, i (f.id)}
-        <SwitcherItem
-          active={((f.id === active) || (((active as string) === "") && (i === 0)))}
-          onclick={() => onselect?.(f.id)}
-        >
-          {f.title}
-        </SwitcherItem>
+        {#if ((f.id === active) || (((active as string) === "") && (i === 0)))}
+          <Grid
+            cols={(((panel as string) === "split") ? "1-2" : "1")}
+            class="items-center gap-8"
+            data-testid="tab-panel"
+            role="tabpanel"
+          >
+            <Stack gap="4">
+              <LucideIcon name={f.icon} size={24} />
+              <Title as={3} size="2xl" weight="bold">
+                {f.title}
+              </Title>
+              <Text size="base" class="text-muted-foreground">
+                {f.text}
+              </Text>
+            </Stack>
+            <MediaFrame alt={f.title} ratio="4/3" />
+          </Grid>
+        {/if}
       {/each}
-    </Switcher>
-    {#each features as f, i (f.id)}
-      {#if ((f.id === active) || (((active as string) === "") && (i === 0)))}
-        <Grid
-          cols={(((panel as string) === "split") ? "1-2" : "1")}
-          class="items-center gap-8"
-          data-testid="tab-panel"
-          role="tabpanel"
-        >
-          <Stack gap="4">
-            <LucideIcon name={f.icon} size={24} />
-            <Title as={3} size="2xl" weight="bold">
-              {f.title}
-            </Title>
-            <Text size="base" class="text-muted-foreground">
-              {f.text}
-            </Text>
-          </Stack>
-          <MediaFrame alt={f.title} ratio="4/3" />
-        </Grid>
-      {/if}
-    {/each}
-  </Stack>
+    </Stack>
+  {/if}
 </SectionFrame>

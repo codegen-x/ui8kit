@@ -14,6 +14,7 @@
     id: string;
     title: string;
     quotes: Quote[];
+    empty?: string;
     labels: QuoteLabels;
     layout?: "grid" | "single" | "stack" | "masonry" | "strip";
     cols?: "1-2" | "1-3";
@@ -27,6 +28,7 @@
 <script lang="ts">
   import Block from "../primitives/block/block.svelte";
   import Grid from "../primitives/grid/grid.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import QuoteCard from "../components/quote-card.svelte";
   import SectionFrame from "../components/section-frame.svelte";
 
@@ -34,6 +36,7 @@
     id,
     title,
     quotes,
+    empty = "",
     labels,
     layout = "grid",
     cols = "1-3",
@@ -53,7 +56,9 @@
   measure={(((layout as string) === "grid") ? "default" : "2xl")}
   landmarkLabel={landmarkLabel}
 >
-  {#if (((layout as string) === "masonry") || ((layout as string) === "strip"))}
+  {#if ((quotes?.length ?? 0) === 0)}
+    <EmptyState icon="message-square-quote" title={empty} />
+  {:else if (((layout as string) === "masonry") || ((layout as string) === "strip"))}
     <Block
       tag="div"
       class={

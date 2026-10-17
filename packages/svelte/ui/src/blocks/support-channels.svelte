@@ -12,6 +12,7 @@
     id: string;
     title: string;
     channels: Feature[];
+    empty?: string;
     open: string;
     layout?: "grid" | "list";
     cols?: "1-2" | "1-3";
@@ -29,6 +30,7 @@
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import MenuEntry from "../components/menu-entry.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import { cn } from "../utils";
@@ -37,6 +39,7 @@
     id,
     title,
     channels,
+    empty = "",
     open,
     layout = "grid",
     cols = "1-3",
@@ -47,30 +50,34 @@
 </script>
 
 <SectionFrame id={id} title={title} tone={tone} landmarkLabel={landmarkLabel}>
-  <Grid cols={(((layout as string) === "list") ? "1" : cols)} class="gap-4" data-testid="items">
-    {#each channels as c (c.id)}
-      <Card
-        variant="default"
-        class={cn("h-full", (((layout as string) === "list") ? "flex-row items-center" : ""))}
-        data-testid="item"
-      >
-        <CardContent class={cn("flex flex-1 gap-4", (((layout as string) === "list") ? "items-center" : "flex-col"))}>
-          <LucideIcon name={c.icon} size={24} />
-          <Stack gap="2" class="flex-1">
-            <Title as={3} size="base" weight="bold">
-              {c.title}
-            </Title>
-            <Text size="sm" class="text-muted-foreground">
-              {c.text}
-            </Text>
-          </Stack>
-          {#if ((action as string) === "link")}
-            <MenuEntry href={c.href} class="font-semibold" testid="open">
-              {open}
-            </MenuEntry>
-          {/if}
-        </CardContent>
-      </Card>
-    {/each}
-  </Grid>
+  {#if ((channels?.length ?? 0) === 0)}
+    <EmptyState icon="life-buoy" title={empty} />
+  {:else}
+    <Grid cols={(((layout as string) === "list") ? "1" : cols)} class="gap-4" data-testid="items">
+      {#each channels as c (c.id)}
+        <Card
+          variant="default"
+          class={cn("h-full", (((layout as string) === "list") ? "flex-row items-center" : ""))}
+          data-testid="item"
+        >
+          <CardContent class={cn("flex flex-1 gap-4", (((layout as string) === "list") ? "items-center" : "flex-col"))}>
+            <LucideIcon name={c.icon} size={24} />
+            <Stack gap="2" class="flex-1">
+              <Title as={3} size="base" weight="bold">
+                {c.title}
+              </Title>
+              <Text size="sm" class="text-muted-foreground">
+                {c.text}
+              </Text>
+            </Stack>
+            {#if ((action as string) === "link")}
+              <MenuEntry href={c.href} class="font-semibold" testid="open">
+                {open}
+              </MenuEntry>
+            {/if}
+          </CardContent>
+        </Card>
+      {/each}
+    </Grid>
+  {/if}
 </SectionFrame>

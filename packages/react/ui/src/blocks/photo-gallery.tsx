@@ -13,6 +13,7 @@ import { Group } from "../primitives/group/group";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
+import { EmptyState } from "../components/empty-state";
 import { FigureBlock } from "../components/figure-block";
 import { MediaFrame } from "../components/media-frame";
 import { SectionFrame } from "../components/section-frame";
@@ -24,6 +25,7 @@ export type PhotoGalleryProps = {
   title: string;
   lead?: string;
   photos: Photo[];
+  empty?: string;
   labels: PhotoLabels;
   layout?: "grid" | "masonry" | "mosaic" | "featured" | "cards";
   captions?: "show" | "hide";
@@ -37,6 +39,7 @@ export function PhotoGallery({
   title,
   lead = "",
   photos,
+  empty = "",
   labels,
   layout = "grid",
   captions = "show",
@@ -46,7 +49,9 @@ export function PhotoGallery({
 }: PhotoGalleryProps) {
   return (
     <SectionFrame id={id} title={title} lead={lead} tone={tone} density={density} landmarkLabel={landmarkLabel}>
-      {((layout as string) === "featured") ? (
+      {((photos?.length ?? 0) === 0) ? (
+        <EmptyState icon="image" title={empty} />
+      ) : ((layout as string) === "featured") ? (
         <Stack gap="4" align="stretch" data-testid="featured">
           <MediaFrame alt={title} />
           <Group gap="4" align="center" justify="between">

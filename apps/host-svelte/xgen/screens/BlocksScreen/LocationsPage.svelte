@@ -72,6 +72,7 @@
             title={ui.commerce.stores.title}
             lead={ui.commerce.stores.lead}
             stores={stores}
+            empty={ui.empty.stores}
             kinds={ui.commerce.stores.kinds}
             labels={ui.commerce.stores}
             layout="cards"
@@ -98,6 +99,7 @@
             title={ui.commerce.stores.title}
             lead={ui.commerce.stores.lead}
             stores={stores}
+            empty={ui.empty.stores}
             kinds={ui.commerce.stores.kinds}
             labels={ui.commerce.stores}
             layout="list"
@@ -124,6 +126,7 @@
             title={ui.commerce.stores.title}
             lead={ui.commerce.stores.lead}
             stores={stores}
+            empty={ui.empty.stores}
             kinds={ui.commerce.stores.kinds}
             labels={ui.commerce.stores}
             layout="map"

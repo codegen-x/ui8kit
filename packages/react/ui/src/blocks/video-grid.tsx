@@ -11,6 +11,7 @@ import { Button } from "../primitives/button/button";
 import { Grid } from "../primitives/grid/grid";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Text } from "../primitives/text/text";
+import { EmptyState } from "../components/empty-state";
 import { FigureBlock } from "../components/figure-block";
 import { MediaFrame } from "../components/media-frame";
 import { SectionFrame } from "../components/section-frame";
@@ -21,6 +22,7 @@ export type VideoGridProps = {
   id: string;
   title: string;
   quotes: Quote[];
+  empty?: string;
   playLabel: string;
   byLine: string;
   cols?: "1-2" | "1-3";
@@ -35,6 +37,7 @@ export function VideoGrid({
   id,
   title,
   quotes,
+  empty = "",
   playLabel,
   byLine,
   cols = "1-3",
@@ -46,46 +49,50 @@ export function VideoGrid({
 }: VideoGridProps) {
   return (
     <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
-      <Grid cols={cols} className="gap-4" data-testid="items">
-        {(quotes ?? []).map((q) => (
-          <FigureBlock key={q.id} className="m-0 flex flex-col gap-4" testid="item">
-            <Box className="relative">
-              <MediaFrame alt={q.author} />
-              <Button
-                variant="default"
-                size="default"
-                type="button"
-                className="absolute top-1/2 left-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded p-0"
-                aria-label={tpl(playLabel, q.author)}
-                data-testid="play"
-                onClick={() => onPlay?.(q.id)}
-              >
-                <LucideIcon name="play" size={20} />
-              </Button>
-              {((caption as string) === "overlay") ? (
-                <Box className="absolute inset-x-0 bottom-0 rounded bg-background p-4" data-testid="caption">
+      {((quotes?.length ?? 0) === 0) ? (
+        <EmptyState icon="video" title={empty} />
+      ) : (
+        <Grid cols={cols} className="gap-4" data-testid="items">
+          {(quotes ?? []).map((q) => (
+            <FigureBlock key={q.id} className="m-0 flex flex-col gap-4" testid="item">
+              <Box className="relative">
+                <MediaFrame alt={q.author} />
+                <Button
+                  variant="default"
+                  size="default"
+                  type="button"
+                  className="absolute top-1/2 left-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded p-0"
+                  aria-label={tpl(playLabel, q.author)}
+                  data-testid="play"
+                  onClick={() => onPlay?.(q.id)}
+                >
+                  <LucideIcon name="play" size={20} />
+                </Button>
+                {((caption as string) === "overlay") ? (
+                  <Box className="absolute inset-x-0 bottom-0 rounded bg-background p-4" data-testid="caption">
+                    <Text size="sm" weight="semibold">
+                      {q.author}
+                    </Text>
+                    <Text size="xs" className="text-muted-foreground">
+                      {tpl(byLine, q.role, q.company)}
+                    </Text>
+                  </Box>
+                ) : null}
+              </Box>
+              {((caption as string) === "below") ? (
+                <Text tag="figcaption" data-testid="caption">
                   <Text size="sm" weight="semibold">
                     {q.author}
                   </Text>
                   <Text size="xs" className="text-muted-foreground">
                     {tpl(byLine, q.role, q.company)}
                   </Text>
-                </Box>
+                </Text>
               ) : null}
-            </Box>
-            {((caption as string) === "below") ? (
-              <Text tag="figcaption" data-testid="caption">
-                <Text size="sm" weight="semibold">
-                  {q.author}
-                </Text>
-                <Text size="xs" className="text-muted-foreground">
-                  {tpl(byLine, q.role, q.company)}
-                </Text>
-              </Text>
-            ) : null}
-          </FigureBlock>
-        ))}
-      </Grid>
+            </FigureBlock>
+          ))}
+        </Grid>
+      )}
     </SectionFrame>
   );
 }

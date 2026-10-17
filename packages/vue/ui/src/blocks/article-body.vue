@@ -12,6 +12,7 @@ export type ArticleBodyProps = {
   id: string;
   title: string;
   sections: Section[];
+  empty?: string;
   tocTitle: string;
   layout?: "column" | "toc";
   quotes?: "show" | "hide";
@@ -29,6 +30,7 @@ import ListItem from "../primitives/list/list-item.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
+import EmptyState from "../components/empty-state.vue";
 import NavBlock from "../components/nav-block.vue";
 import SectionFrame from "../components/section-frame.vue";
 import { cn, tpl, uniqLabel } from "../utils";
@@ -37,6 +39,7 @@ const {
   id,
   title,
   sections,
+  empty = "",
   tocTitle,
   layout = "column",
   quotes = "show",
@@ -47,7 +50,8 @@ const {
 
 <template>
   <SectionFrame :id="id" :title="title" :tone="tone" :landmarkLabel="landmarkLabel">
-    <Grid
+    <EmptyState v-if="((sections?.length ?? 0) === 0)" icon="file-text" :title="empty" />
+    <Grid v-else
       cols="1"
       :class="cn(
         'items-start gap-8',

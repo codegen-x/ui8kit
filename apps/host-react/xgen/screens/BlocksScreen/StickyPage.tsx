@@ -68,6 +68,7 @@ export function StickyPage() {
                 id="sticky-end"
                 title={ui.vibe.sticky.title}
                 features={features}
+                empty={ui.empty.features}
                 active="feature-clear"
                 mediaSide="end"
                 item="plain"
@@ -94,6 +95,7 @@ export function StickyPage() {
                 id="sticky-start"
                 title={ui.vibe.sticky.title}
                 features={features}
+                empty={ui.empty.features}
                 active="feature-clear"
                 mediaSide="start"
                 item="plain"
@@ -120,6 +122,7 @@ export function StickyPage() {
                 id="sticky-card"
                 title={ui.vibe.sticky.title}
                 features={features}
+                empty={ui.empty.features}
                 active="feature-clear"
                 mediaSide="end"
                 item="card"
@@ -146,6 +149,7 @@ export function StickyPage() {
                 id="sticky-muted"
                 title={ui.vibe.sticky.title}
                 features={features}
+                empty={ui.empty.features}
                 active="feature-clear"
                 mediaSide="end"
                 item="plain"

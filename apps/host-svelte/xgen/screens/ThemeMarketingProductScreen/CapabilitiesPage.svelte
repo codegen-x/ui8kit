@@ -42,6 +42,7 @@
   id="capabilities-features"
   title={ui.site.home.featuresTitle}
   features={features}
+  empty={ui.empty.features}
   action={{ label: ui.site.home.featuresAction, href: "#/" }}
   layout="grid"
   cols="1-2"
@@ -55,6 +56,7 @@
   id="capabilities-iconwall"
   title={ui.vibe.wall.title}
   features={features}
+  empty={ui.empty.features}
   cols="6"
   item="chip"
   tone="default"
@@ -65,6 +67,7 @@
   id="capabilities-accordion"
   title={ui.vibe.accordion.title}
   features={features}
+  empty={ui.empty.features}
   expand="first"
   media="none"
   tone="default"
@@ -75,6 +78,7 @@
   id="capabilities-beforeafter"
   title={ui.vibe.beforeafter.title}
   points={beforeafter}
+  empty={ui.empty.points}
   labels={ui.vibe.beforeafter.labels}
   layout="rows"
   icons="show"
@@ -86,6 +90,7 @@
   id="capabilities-sticky"
   title={ui.vibe.sticky.title}
   features={features}
+  empty={ui.empty.features}
   active="feature-clear"
   mediaSide="end"
   item="card"

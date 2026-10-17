@@ -54,6 +54,7 @@
     }
   ],
   "slots": [
+    "EmptyState",
     "MediaFrame",
     "SectionFrame"
   ],
@@ -106,6 +107,9 @@
       },
       "milestones": {
         "$": "milestones"
+      },
+      "empty": {
+        "$": "ui.empty.milestones"
       }
     }
   }

@@ -17,6 +17,7 @@ type ProjectGridProps struct {
 	Title any `json:"title"`
 	Lead any `json:"lead"`
 	Projects any `json:"projects"`
+	Empty any `json:"empty"`
 	Labels any `json:"labels"`
 	Layout any `json:"layout"`
 	Tone any `json:"tone"`
@@ -30,13 +31,16 @@ templ ProjectGrid(p ProjectGridProps) {
 	{{ vTitle := p.Title }}
 	{{ vLead := uiutils.Def(p.Lead, "") }}
 	{{ vProjects := p.Projects }}
+	{{ vEmpty := uiutils.Def(p.Empty, "") }}
 	{{ vLabels := p.Labels }}
 	{{ vLayout := uiutils.Def(p.Layout, "cards") }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Tone: vTone, Density: vDensity, Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "list")), "split", "stack"), Media: map[string]any{"show": uiutils.Eq(vLayout, "list"), "align": "start"}, LandmarkLabel: vLandmarkLabel, Aside: projectGridFill1(p, vTitle)}) {
-		if uiutils.Eq(vLayout, "list") {
+		if uiutils.Eq(uiutils.Len(vProjects), float64(0)) {
+			@EmptyState(EmptyStateProps{Icon: "folder-open", Title: vEmpty})
+		} else if uiutils.Eq(vLayout, "list") {
 			@stack.Stack(stack.StackProps{Gap: "4", Align: "stretch", Attrs: uiutils.Attrs("data-testid", "items")}) {
 				for _, vP := range uiutils.L(vProjects) {
 					@group.Group(group.GroupProps{Gap: "4", Align: "start", Class: "border-b border-border pb-4", Attrs: uiutils.Attrs("data-testid", "item")}) {

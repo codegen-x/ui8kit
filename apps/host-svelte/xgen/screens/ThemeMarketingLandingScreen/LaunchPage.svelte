@@ -82,6 +82,7 @@
   id="launch-iconwall"
   title={ui.vibe.wall.title}
   features={features}
+  empty={ui.empty.features}
   cols="4"
   item="tile"
   tone="default"
@@ -92,6 +93,7 @@
   id="launch-proof"
   title={ui.vibe.proof.title}
   logos={logos}
+  empty={ui.empty.logos}
   stats={stats}
   layout="above"
   logoStyle="name"
@@ -103,6 +105,7 @@
   id="launch-testimonials"
   title={ui.marketing.testimonials.title}
   quotes={testimonials}
+  empty={ui.empty.quotes}
   labels={{
     rating: ui.testimonials.rating,
     byLine: ui.testimonials.byLine,

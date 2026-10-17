@@ -24,6 +24,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "open",
       "type": "string",
       "required": true,
@@ -87,79 +93,76 @@
           "args": [],
           "do": [
             {
-              "use": "Grid",
-              "props": {
-                "Cols": {
-                  "op": "cond",
-                  "args": [
-                    {
-                      "op": "eq",
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "channels"
+                      }
+                    ]
+                  },
+                  0
+                ]
+              },
+              "then": [
+                {
+                  "organism": "EmptyState",
+                  "props": {
+                    "icon": "life-buoy",
+                    "title": {
+                      "$": "empty"
+                    }
+                  }
+                }
+              ],
+              "else": [
+                {
+                  "use": "Grid",
+                  "props": {
+                    "Cols": {
+                      "op": "cond",
                       "args": [
                         {
-                          "$": "layout"
+                          "op": "eq",
+                          "args": [
+                            {
+                              "$": "layout"
+                            },
+                            "list"
+                          ]
                         },
-                        "list"
+                        "1",
+                        {
+                          "$": "cols"
+                        }
                       ]
                     },
-                    "1",
-                    {
-                      "$": "cols"
-                    }
-                  ]
-                },
-                "Class": "gap-4"
-              },
-              "attrs": {
-                "data-testid": "items"
-              },
-              "children": [
-                {
-                  "each": {
-                    "$": "channels"
+                    "Class": "gap-4"
                   },
-                  "as": "c",
-                  "key": {
-                    "$": "c.id"
+                  "attrs": {
+                    "data-testid": "items"
                   },
-                  "do": [
+                  "children": [
                     {
-                      "use": "Card",
-                      "props": {
-                        "Variant": "default",
-                        "Class": {
-                          "op": "cn",
-                          "args": [
-                            "h-full",
-                            {
-                              "op": "cond",
-                              "args": [
-                                {
-                                  "op": "eq",
-                                  "args": [
-                                    {
-                                      "$": "layout"
-                                    },
-                                    "list"
-                                  ]
-                                },
-                                "flex-row items-center",
-                                ""
-                              ]
-                            }
-                          ]
-                        }
+                      "each": {
+                        "$": "channels"
                       },
-                      "attrs": {
-                        "data-testid": "item"
+                      "as": "c",
+                      "key": {
+                        "$": "c.id"
                       },
-                      "children": [
+                      "do": [
                         {
-                          "use": "CardContent",
+                          "use": "Card",
                           "props": {
+                            "Variant": "default",
                             "Class": {
                               "op": "cn",
                               "args": [
-                                "flex flex-1 gap-4",
+                                "h-full",
                                 {
                                   "op": "cond",
                                   "args": [
@@ -172,93 +175,125 @@
                                         "list"
                                       ]
                                     },
-                                    "items-center",
-                                    "flex-col"
+                                    "flex-row items-center",
+                                    ""
                                   ]
                                 }
                               ]
                             }
                           },
+                          "attrs": {
+                            "data-testid": "item"
+                          },
                           "children": [
                             {
-                              "use": "LucideIcon",
+                              "use": "CardContent",
                               "props": {
-                                "Name": {
-                                  "$": "c.icon"
-                                },
-                                "Size": 24
-                              }
-                            },
-                            {
-                              "use": "Stack",
-                              "props": {
-                                "Gap": "2",
-                                "Class": "flex-1"
-                              },
-                              "children": [
-                                {
-                                  "use": "Title",
-                                  "props": {
-                                    "As": 3,
-                                    "Size": "base",
-                                    "Weight": "bold"
-                                  },
-                                  "children": [
+                                "Class": {
+                                  "op": "cn",
+                                  "args": [
+                                    "flex flex-1 gap-4",
                                     {
-                                      "text": {
-                                        "$": "c.title"
-                                      }
-                                    }
-                                  ]
-                                },
-                                {
-                                  "use": "Text",
-                                  "props": {
-                                    "Size": "sm",
-                                    "Class": "text-muted-foreground"
-                                  },
-                                  "children": [
-                                    {
-                                      "text": {
-                                        "$": "c.text"
-                                      }
+                                      "op": "cond",
+                                      "args": [
+                                        {
+                                          "op": "eq",
+                                          "args": [
+                                            {
+                                              "$": "layout"
+                                            },
+                                            "list"
+                                          ]
+                                        },
+                                        "items-center",
+                                        "flex-col"
+                                      ]
                                     }
                                   ]
                                 }
-                              ]
-                            },
-                            {
-                              "when": {
-                                "op": "eq",
-                                "args": [
-                                  {
-                                    "$": "action"
-                                  },
-                                  "link"
-                                ]
                               },
-                              "then": [
+                              "children": [
                                 {
-                                  "organism": "MenuEntry",
+                                  "use": "LucideIcon",
                                   "props": {
-                                    "href": {
-                                      "$": "c.href"
+                                    "Name": {
+                                      "$": "c.icon"
                                     },
-                                    "className": "font-semibold",
-                                    "testid": "open"
+                                    "Size": 24
+                                  }
+                                },
+                                {
+                                  "use": "Stack",
+                                  "props": {
+                                    "Gap": "2",
+                                    "Class": "flex-1"
                                   },
-                                  "slots": {
-                                    "children": {
-                                      "args": [],
-                                      "do": [
+                                  "children": [
+                                    {
+                                      "use": "Title",
+                                      "props": {
+                                        "As": 3,
+                                        "Size": "base",
+                                        "Weight": "bold"
+                                      },
+                                      "children": [
                                         {
                                           "text": {
-                                            "$": "open"
+                                            "$": "c.title"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "sm",
+                                        "Class": "text-muted-foreground"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "c.text"
                                           }
                                         }
                                       ]
                                     }
-                                  }
+                                  ]
+                                },
+                                {
+                                  "when": {
+                                    "op": "eq",
+                                    "args": [
+                                      {
+                                        "$": "action"
+                                      },
+                                      "link"
+                                    ]
+                                  },
+                                  "then": [
+                                    {
+                                      "organism": "MenuEntry",
+                                      "props": {
+                                        "href": {
+                                          "$": "c.href"
+                                        },
+                                        "className": "font-semibold",
+                                        "testid": "open"
+                                      },
+                                      "slots": {
+                                        "children": {
+                                          "args": [],
+                                          "do": [
+                                            {
+                                              "text": {
+                                                "$": "open"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  ]
                                 }
                               ]
                             }

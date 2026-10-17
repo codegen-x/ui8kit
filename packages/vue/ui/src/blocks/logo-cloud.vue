@@ -11,6 +11,7 @@ export type LogoCloudProps = {
   id: string;
   title: string;
   logos: Logo[];
+  empty?: string;
   layout?: "grid" | "row";
   cols?: "2" | "3" | "4";
   item?: "name" | "icon" | "tile";
@@ -25,6 +26,7 @@ import Grid from "../primitives/grid/grid.vue";
 import Group from "../primitives/group/group.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Text from "../primitives/text/text.vue";
+import EmptyState from "../components/empty-state.vue";
 import LogoRibbon from "../blocks/logo-ribbon.vue";
 import SectionFrame from "../components/section-frame.vue";
 import { cn } from "../utils";
@@ -33,6 +35,7 @@ const {
   id,
   title,
   logos,
+  empty = "",
   layout = "grid",
   cols = "4",
   item = "name",
@@ -43,7 +46,17 @@ const {
 </script>
 
 <template>
-  <LogoRibbon v-if="((layout as string) === 'row')"
+  <SectionFrame v-if="((logos?.length ?? 0) === 0)"
+    :id="id"
+    :title="title"
+    :tone="tone"
+    :density="density"
+    align="center"
+    :landmarkLabel="landmarkLabel"
+  >
+    <EmptyState icon="building-2" :title="empty" />
+  </SectionFrame>
+  <LogoRibbon v-else-if="((layout as string) === 'row')"
     :id="id"
     :title="title"
     :logos="logos"

@@ -65,7 +65,7 @@ const bento = define({
   organism: "BentoGrid", axes: ["layout", "media", "tone", "density"], data: [d.bento],
   variants: [["bento", "Mixed sizes"], ["even", "Even tiles", { layout: "even" }], ["images", "With pictures", { media: "image" }], ["muted", "Muted, compact", MUTED_COMPACT]],
   facts: [{ sel: '[data-testid="item"]', n: "@bento" }, { sel: '[data-slot="media-frame"]', n: 1, when: { media: "image" } }, { sel: '[data-slot="media-frame"]', n: 0, when: { media: "none" } }],
-  sample: { ...sec("bento"), tiles: ref("bento") },
+  sample: { ...sec("bento"), tiles: ref("bento"), empty: t("empty.tiles") },
 });
 
 const featuretabs = define({
@@ -73,7 +73,7 @@ const featuretabs = define({
   organism: "FeatureTabs", axes: ["panel", "tone", "density"], data: [d.features],
   variants: [["split", "Panel beside the tabs"], ["stack", "Panel below the tabs", { panel: "stack" }], ["muted", "Muted, compact", MUTED_COMPACT]],
   facts: [{ sel: '[role="tab"]', n: "@features" }, { sel: '[role="tabpanel"]', n: 1 }],
-  sample: { ...sec("tabs"), features: ref("features"), tabsLabel: v("tabs.label"), active: "feature-clear" },
+  sample: { ...sec("tabs"), features: ref("features"), empty: t("empty.features"), tabsLabel: v("tabs.label"), active: "feature-clear" },
 });
 
 const accordion = define({
@@ -81,7 +81,7 @@ const accordion = define({
   organism: "FeatureAccordion", axes: ["expand", "media", "tone", "density"], data: [d.features],
   variants: [["first", "First open"], ["closed", "All closed", { expand: "none" }], ["media", "With a picture", { media: "image" }], ["muted", "Muted, compact", MUTED_COMPACT]],
   facts: [{ sel: "details", n: "@features" }, { sel: "details[open]", n: 1, when: { expand: "first" } }, { sel: "details[open]", n: 0, when: { expand: "none" } }, { sel: '[data-slot="media-frame"]', n: 1, when: { media: "image" } }, { sel: '[data-slot="media-frame"]', n: 0, when: { media: "none" } }],
-  sample: { ...sec("accordion"), features: ref("features") },
+  sample: { ...sec("accordion"), features: ref("features"), empty: t("empty.features") },
 });
 
 const sticky = define({
@@ -89,7 +89,7 @@ const sticky = define({
   organism: "FeatureSticky", axes: ["mediaSide", "item", "tone", "density"], data: [d.features],
   variants: [["end", "Picture at the end"], ["start", "Picture at the start", { mediaSide: "start" }], ["card", "Features as cards", { item: "card" }], ["muted", "Muted, compact", MUTED_COMPACT]],
   facts: [{ sel: '[data-testid="item"]', n: "@features" }, { sel: '[data-slot="media-frame"]', n: 1 }],
-  sample: { ...sec("sticky"), features: ref("features"), active: "feature-clear" },
+  sample: { ...sec("sticky"), features: ref("features"), empty: t("empty.features"), active: "feature-clear" },
 });
 
 const iconwall = define({
@@ -97,7 +97,7 @@ const iconwall = define({
   organism: "IconWall", axes: ["cols", "item", "tone", "density"], data: [d.features],
   variants: [["tiles4", "Tiles, four columns"], ["tiles3", "Tiles, three columns", { cols: "3" }], ["chips6", "Chips, six columns", { cols: "6", item: "chip" }], ["chips4", "Chips, four columns", { item: "chip" }], ["muted", "Muted, compact", MUTED_COMPACT]],
   facts: [{ sel: '[data-testid="item"]', n: "@features" }, { sel: '[data-testid="item"]', cols: "$cols", when: { item: "tile" } }],
-  sample: { ...sec("wall"), features: ref("features") },
+  sample: { ...sec("wall"), features: ref("features"), empty: t("empty.features") },
 });
 
 const beforeafter = define({
@@ -105,7 +105,7 @@ const beforeafter = define({
   organism: "BeforeAfter", axes: ["layout", "icons", "tone", "density"], data: [d.beforeafter],
   variants: [["cards", "Two cards"], ["rows", "One row per point", { layout: "rows" }], ["plain", "Without icons", { icons: "hide" }], ["muted", "Muted, compact", MUTED_COMPACT]],
   facts: [{ sel: '[data-testid="side"]', n: 2, when: { layout: "cards" } }, { sel: '[data-testid="item"]', n: "@beforeafter*2", when: { layout: "cards" } }, { sel: '[data-testid="item"]', n: "@beforeafter", when: { layout: "rows" } }, { sel: "svg", n: 0, when: { icons: "hide" } }],
-  sample: { ...sec("beforeafter"), points: ref("beforeafter"), labels: v("beforeafter.labels") },
+  sample: { ...sec("beforeafter"), points: ref("beforeafter"), empty: t("empty.points"), labels: v("beforeafter.labels") },
 });
 
 const proof = define({
@@ -113,7 +113,7 @@ const proof = define({
   organism: "ProofBand", axes: ["layout", "logoStyle", "tone", "density"], data: [d.logos, d.stats],
   variants: [["above", "Logos above the figures"], ["beside", "Logos beside the figures", { layout: "beside" }], ["icons", "Icons only", { logoStyle: "icon" }], ["muted", "Muted, compact", MUTED_COMPACT]],
   facts: [{ sel: '[data-testid="logo"]', n: "@logos" }, { sel: '[data-testid="stat"]', n: "@stats" }],
-  sample: { ...sec("proof"), logos: ref("logos"), stats: ref("stats") },
+  sample: { ...sec("proof"), logos: ref("logos"), empty: t("empty.logos"), stats: ref("stats") },
 });
 
 const videos = define({
@@ -121,7 +121,7 @@ const videos = define({
   organism: "VideoGrid", axes: ["cols", "caption", "tone", "density"], data: [d.testimonials],
   variants: [["grid3", "Three columns"], ["grid2", "Two columns", { cols: "1-2" }], ["overlay", "Caption over the picture", { caption: "overlay" }], ["muted", "Muted, compact", MUTED_COMPACT]],
   facts: [{ sel: '[data-testid="item"]', n: "@testimonials" }, { sel: '[data-testid="item"]', cols: "$cols" }, { sel: '[data-testid="play"]', n: "@testimonials" }],
-  sample: { ...sec("videos"), quotes: ref("testimonials"), playLabel: v("videos.play"), byLine: t("testimonials.byLine") },
+  sample: { ...sec("videos"), quotes: ref("testimonials"), empty: t("empty.quotes"), playLabel: v("videos.play"), byLine: t("testimonials.byLine") },
 });
 
 const compare = define({
@@ -150,7 +150,7 @@ const credits = define({
   organism: "CreditPacks", axes: ["cols", "item", "tone", "density"], data: [d.credits],
   variants: [["tiles4", "Tiles, four columns"], ["tiles2", "Tiles, two columns", { cols: "2" }], ["rows", "Rows", { item: "row" }], ["muted", "Muted, compact", MUTED_COMPACT]],
   facts: [{ sel: '[data-testid="item"]', n: "@credits" }, { sel: '[data-testid="buy"]', n: "@credits" }],
-  sample: { ...sec("credits"), packs: ref("credits"), badges: v("credits.badges"), buy: v("credits.buy") },
+  sample: { ...sec("credits"), packs: ref("credits"), empty: t("empty.packs"), badges: v("credits.badges"), buy: v("credits.buy") },
 });
 
 const pagehead = define({
@@ -221,7 +221,7 @@ const kanban = define({
   organism: "KanbanBoard", axes: ["card", "cols", "tone", "density"], data: [d.lanes, d.cards],
   variants: [["detail", "Cards with a tag and a person"], ["simple", "Titles only", { card: "simple" }], ["twoCols", "Two lanes per row", { cols: "2" }], ["muted", "Muted, compact", MUTED_COMPACT]],
   facts: [{ sel: '[data-testid="lane"]', n: "@lanes" }, { sel: '[data-testid="lane"] [data-testid="item"]', n: "@cards" }, { sel: '[data-slot="pill"]', n: "@cards", when: { card: "detail" } }, { sel: '[data-slot="pill"]', n: 0, when: { card: "simple" } }],
-  sample: { ...sec("kanban"), lanes: ref("lanes"), cards: ref("cards"), countLabel: v("kanban.count") },
+  sample: { ...sec("kanban"), lanes: ref("lanes"), empty: t("empty.lanes"), cards: ref("cards"), countLabel: v("kanban.count") },
 });
 
 const sidenav = define({
@@ -278,7 +278,7 @@ const article = define({
   organism: "ArticleBody", axes: ["layout", "quotes", "tone"], data: [d.article],
   variants: [["column", "Reading column"], ["toc", "With a table of contents", { layout: "toc" }], ["plain", "Without pull quotes", { quotes: "hide" }], ["muted", "Muted", { tone: "muted" }]],
   facts: [{ sel: '[data-testid="article"] > [data-testid="item"]', n: "@article" }, { sel: '[data-testid="toc-link"]', n: "@article", when: { layout: "toc" } }, { sel: '[data-testid="toc"]', n: 0, when: { layout: "column" } }, { sel: '[data-testid="quote"]', n: 0, when: { quotes: "hide" } }, { sel: '[data-testid="quote"]', n: 1, when: { quotes: "show" } }],
-  sample: { ...sec("article"), sections: ref("article"), tocTitle: v("article.toc") },
+  sample: { ...sec("article"), sections: ref("article"), empty: t("empty.sections"), tocTitle: v("article.toc") },
 });
 
 export const vibeBlocks = [navbar, megamenu, sitemap, bento, featuretabs, accordion, sticky, iconwall, beforeafter, proof, videos, compare, usage, credits, pagehead, authpage, wizard, shell, overview, kanban, sidenav, bottomnav, skeleton, tour, videomodal, errorpage, article];

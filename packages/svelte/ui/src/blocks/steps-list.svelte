@@ -12,6 +12,7 @@
     id: string;
     title: string;
     steps: Step[];
+    empty?: string;
     layout?: "row" | "column";
     marker?: "number" | "icon";
     align?: "start" | "center";
@@ -30,6 +31,7 @@
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import { cn } from "../utils";
 
@@ -37,6 +39,7 @@
     id,
     title,
     steps,
+    empty = "",
     layout = "row",
     marker = "number",
     align = "start",
@@ -55,38 +58,42 @@
   measure={(((layout as string) === "row") ? "default" : "2xl")}
   landmarkLabel={landmarkLabel}
 >
-  <List
-    tag="ol"
-    class={cn("grid gap-6", (((layout as string) === "row") ? "sm:grid-cols-2 md:grid-cols-4" : ""))}
-    data-testid="items"
-  >
-    {#each steps as step, i (step.id)}
-      <ListItem
-        class={cn(
-          "flex gap-4",
-          (((layout as string) === "row") ? "flex-col" : ""),
-          (((align as string) === "center") ? "items-center text-center" : "")
-        )}
-        data-testid="item"
-      >
-        <IconBadge variant="primary" data-slot="marker">
-          {#if ((marker as string) === "icon")}
-            <LucideIcon name={step.icon} size={20} />
-          {:else}
-            <Inline class="text-base font-bold">
-              {((i + 1) == null ? undefined : String((i + 1)))}
-            </Inline>
-          {/if}
-        </IconBadge>
-        <Stack gap="2" align={(((align as string) === "center") ? "center" : "start")}>
-          <Title as={3} size="xl" weight="bold">
-            {step.title}
-          </Title>
-          <Text size="sm" class="text-muted-foreground">
-            {step.text}
-          </Text>
-        </Stack>
-      </ListItem>
-    {/each}
-  </List>
+  {#if ((steps?.length ?? 0) === 0)}
+    <EmptyState icon="list-ordered" title={empty} />
+  {:else}
+    <List
+      tag="ol"
+      class={cn("grid gap-6", (((layout as string) === "row") ? "sm:grid-cols-2 md:grid-cols-4" : ""))}
+      data-testid="items"
+    >
+      {#each steps as step, i (step.id)}
+        <ListItem
+          class={cn(
+            "flex gap-4",
+            (((layout as string) === "row") ? "flex-col" : ""),
+            (((align as string) === "center") ? "items-center text-center" : "")
+          )}
+          data-testid="item"
+        >
+          <IconBadge variant="primary" data-slot="marker">
+            {#if ((marker as string) === "icon")}
+              <LucideIcon name={step.icon} size={20} />
+            {:else}
+              <Inline class="text-base font-bold">
+                {((i + 1) == null ? undefined : String((i + 1)))}
+              </Inline>
+            {/if}
+          </IconBadge>
+          <Stack gap="2" align={(((align as string) === "center") ? "center" : "start")}>
+            <Title as={3} size="xl" weight="bold">
+              {step.title}
+            </Title>
+            <Text size="sm" class="text-muted-foreground">
+              {step.text}
+            </Text>
+          </Stack>
+        </ListItem>
+      {/each}
+    </List>
+  {/if}
 </SectionFrame>

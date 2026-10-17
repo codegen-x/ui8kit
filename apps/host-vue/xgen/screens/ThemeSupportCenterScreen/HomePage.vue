@@ -89,6 +89,7 @@ const faqtabs = fromCodex<FaqTab>(faqtabsEntries, FAQTABS_FIELDS, CODEX);
     id="home-channels"
     :title="ui.support.channels.title"
     :channels="channels"
+    :empty="ui.empty.channels"
     :open="ui.support.channels.open"
     layout="grid"
     cols="1-3"

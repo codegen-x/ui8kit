@@ -78,6 +78,7 @@
               id="steps-row"
               title={ui.marketing.steps.title}
               steps={steps}
+              empty={ui.empty.steps}
               layout="row"
               marker="number"
               align="start"
@@ -104,6 +105,7 @@
               id="steps-rowIcons"
               title={ui.marketing.steps.title}
               steps={steps}
+              empty={ui.empty.steps}
               layout="row"
               marker="icon"
               align="start"
@@ -130,6 +132,7 @@
               id="steps-column"
               title={ui.marketing.steps.title}
               steps={steps}
+              empty={ui.empty.steps}
               layout="column"
               marker="number"
               align="start"
@@ -156,6 +159,7 @@
               id="steps-centered"
               title={ui.marketing.steps.title}
               steps={steps}
+              empty={ui.empty.steps}
               layout="row"
               marker="number"
               align="center"
@@ -182,6 +186,7 @@
               id="steps-columnIcons"
               title={ui.marketing.steps.title}
               steps={steps}
+              empty={ui.empty.steps}
               layout="column"
               marker="icon"
               align="start"
@@ -208,6 +213,7 @@
               id="steps-compact"
               title={ui.marketing.steps.title}
               steps={steps}
+              empty={ui.empty.steps}
               layout="row"
               marker="number"
               align="start"

@@ -104,6 +104,7 @@
               id="logos-grid4"
               title={ui.marketing.logos.title}
               logos={logos}
+              empty={ui.empty.logos}
               layout="grid"
               cols="4"
               item="name"
@@ -130,6 +131,7 @@
               id="logos-grid3"
               title={ui.marketing.logos.title}
               logos={logos}
+              empty={ui.empty.logos}
               layout="grid"
               cols="3"
               item="tile"
@@ -156,6 +158,7 @@
               id="logos-row"
               title={ui.marketing.logos.title}
               logos={logos}
+              empty={ui.empty.logos}
               layout="row"
               cols="4"
               item="icon"
@@ -182,6 +185,7 @@
               id="logos-icons"
               title={ui.marketing.logos.title}
               logos={logos}
+              empty={ui.empty.logos}
               layout="grid"
               cols="4"
               item="icon"
@@ -208,6 +212,7 @@
               id="logos-grid2"
               title={ui.marketing.logos.title}
               logos={logos}
+              empty={ui.empty.logos}
               layout="grid"
               cols="2"
               item="name"
@@ -234,6 +239,7 @@
               id="logos-tiles4"
               title={ui.marketing.logos.title}
               logos={logos}
+              empty={ui.empty.logos}
               layout="grid"
               cols="4"
               item="tile"
@@ -277,6 +283,7 @@
               id="proof-above"
               title={ui.vibe.proof.title}
               logos={logos}
+              empty={ui.empty.logos}
               stats={stats}
               layout="above"
               logoStyle="name"
@@ -303,6 +310,7 @@
               id="proof-beside"
               title={ui.vibe.proof.title}
               logos={logos}
+              empty={ui.empty.logos}
               stats={stats}
               layout="beside"
               logoStyle="name"
@@ -329,6 +337,7 @@
               id="proof-icons"
               title={ui.vibe.proof.title}
               logos={logos}
+              empty={ui.empty.logos}
               stats={stats}
               layout="above"
               logoStyle="icon"
@@ -355,6 +364,7 @@
               id="proof-muted"
               title={ui.vibe.proof.title}
               logos={logos}
+              empty={ui.empty.logos}
               stats={stats}
               layout="above"
               logoStyle="name"
@@ -398,6 +408,7 @@
               id="videos-grid3"
               title={ui.vibe.videos.title}
               quotes={testimonials}
+              empty={ui.empty.quotes}
               playLabel={ui.vibe.videos.play}
               byLine={ui.testimonials.byLine}
               cols="1-3"
@@ -425,6 +436,7 @@
               id="videos-grid2"
               title={ui.vibe.videos.title}
               quotes={testimonials}
+              empty={ui.empty.quotes}
               playLabel={ui.vibe.videos.play}
               byLine={ui.testimonials.byLine}
               cols="1-2"
@@ -452,6 +464,7 @@
               id="videos-overlay"
               title={ui.vibe.videos.title}
               quotes={testimonials}
+              empty={ui.empty.quotes}
               playLabel={ui.vibe.videos.play}
               byLine={ui.testimonials.byLine}
               cols="1-3"
@@ -479,6 +492,7 @@
               id="videos-muted"
               title={ui.vibe.videos.title}
               quotes={testimonials}
+              empty={ui.empty.quotes}
               playLabel={ui.vibe.videos.play}
               byLine={ui.testimonials.byLine}
               cols="1-3"

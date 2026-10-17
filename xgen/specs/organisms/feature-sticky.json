@@ -24,6 +24,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "active",
       "type": "string",
       "default": "",
@@ -90,114 +96,164 @@
           "args": [],
           "do": [
             {
-              "use": "Grid",
-              "props": {
-                "Cols": "1-2",
-                "Class": "items-start gap-8"
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "features"
+                      }
+                    ]
+                  },
+                  0
+                ]
               },
-              "attrs": {
-                "data-testid": "sticky"
-              },
-              "children": [
+              "then": [
                 {
-                  "use": "Box",
+                  "organism": "EmptyState",
                   "props": {
-                    "Class": {
-                      "op": "cn",
-                      "args": [
-                        "md:sticky md:top-8",
+                    "icon": "layout-grid",
+                    "title": {
+                      "$": "empty"
+                    }
+                  }
+                }
+              ],
+              "else": [
+                {
+                  "use": "Grid",
+                  "props": {
+                    "Cols": "1-2",
+                    "Class": "items-start gap-8"
+                  },
+                  "attrs": {
+                    "data-testid": "sticky"
+                  },
+                  "children": [
+                    {
+                      "use": "Box",
+                      "props": {
+                        "Class": {
+                          "op": "cn",
+                          "args": [
+                            "md:sticky md:top-8",
+                            {
+                              "op": "cond",
+                              "args": [
+                                {
+                                  "op": "eq",
+                                  "args": [
+                                    {
+                                      "$": "mediaSide"
+                                    },
+                                    "start"
+                                  ]
+                                },
+                                "md:order-first",
+                                "md:order-last"
+                              ]
+                            }
+                          ]
+                        }
+                      },
+                      "attrs": {
+                        "data-testid": "sticky-media"
+                      },
+                      "children": [
                         {
+                          "organism": "MediaFrame",
+                          "props": {
+                            "alt": {
+                              "$": "title"
+                            },
+                            "ratio": "4/3"
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "use": "Stack",
+                      "props": {
+                        "Gap": {
                           "op": "cond",
                           "args": [
                             {
                               "op": "eq",
                               "args": [
                                 {
-                                  "$": "mediaSide"
+                                  "$": "density"
                                 },
-                                "start"
+                                "compact"
                               ]
                             },
-                            "md:order-first",
-                            "md:order-last"
+                            "4",
+                            "8"
                           ]
-                        }
-                      ]
-                    }
-                  },
-                  "attrs": {
-                    "data-testid": "sticky-media"
-                  },
-                  "children": [
-                    {
-                      "organism": "MediaFrame",
-                      "props": {
-                        "alt": {
-                          "$": "title"
                         },
-                        "ratio": "4/3"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "use": "Stack",
-                  "props": {
-                    "Gap": {
-                      "op": "cond",
-                      "args": [
+                        "Align": "stretch"
+                      },
+                      "attrs": {
+                        "data-testid": "items"
+                      },
+                      "children": [
                         {
-                          "op": "eq",
-                          "args": [
+                          "each": {
+                            "$": "features"
+                          },
+                          "as": "f",
+                          "key": {
+                            "$": "f.id"
+                          },
+                          "do": [
                             {
-                              "$": "density"
-                            },
-                            "compact"
-                          ]
-                        },
-                        "4",
-                        "8"
-                      ]
-                    },
-                    "Align": "stretch"
-                  },
-                  "attrs": {
-                    "data-testid": "items"
-                  },
-                  "children": [
-                    {
-                      "each": {
-                        "$": "features"
-                      },
-                      "as": "f",
-                      "key": {
-                        "$": "f.id"
-                      },
-                      "do": [
-                        {
-                          "use": "Stack",
-                          "props": {
-                            "Gap": "2",
-                            "Class": {
-                              "op": "cn",
-                              "args": [
-                                {
-                                  "op": "cond",
+                              "use": "Stack",
+                              "props": {
+                                "Gap": "2",
+                                "Class": {
+                                  "op": "cn",
                                   "args": [
                                     {
-                                      "op": "eq",
+                                      "op": "cond",
                                       "args": [
                                         {
-                                          "$": "item"
+                                          "op": "eq",
+                                          "args": [
+                                            {
+                                              "$": "item"
+                                            },
+                                            "card"
+                                          ]
                                         },
-                                        "card"
+                                        "rounded bg-card inset-ring inset-ring-border p-6",
+                                        "py-4"
                                       ]
                                     },
-                                    "rounded bg-card inset-ring inset-ring-border p-6",
-                                    "py-4"
+                                    {
+                                      "op": "cond",
+                                      "args": [
+                                        {
+                                          "op": "eq",
+                                          "args": [
+                                            {
+                                              "$": "f.id"
+                                            },
+                                            {
+                                              "$": "active"
+                                            }
+                                          ]
+                                        },
+                                        "inset-ring inset-ring-foreground",
+                                        ""
+                                      ]
+                                    }
                                   ]
-                                },
-                                {
+                                }
+                              },
+                              "attrs": {
+                                "data-testid": "item",
+                                "aria-current": {
                                   "op": "cond",
                                   "args": [
                                     {
@@ -211,73 +267,52 @@
                                         }
                                       ]
                                     },
-                                    "inset-ring inset-ring-foreground",
-                                    ""
+                                    "true",
+                                    {
+                                      "op": "undef",
+                                      "args": []
+                                    }
                                   ]
                                 }
-                              ]
-                            }
-                          },
-                          "attrs": {
-                            "data-testid": "item",
-                            "aria-current": {
-                              "op": "cond",
-                              "args": [
+                              },
+                              "children": [
                                 {
-                                  "op": "eq",
-                                  "args": [
-                                    {
-                                      "$": "f.id"
+                                  "use": "LucideIcon",
+                                  "props": {
+                                    "Name": {
+                                      "$": "f.icon"
                                     },
+                                    "Size": 24
+                                  }
+                                },
+                                {
+                                  "use": "Title",
+                                  "props": {
+                                    "As": 3,
+                                    "Size": "2xl",
+                                    "Weight": "bold"
+                                  },
+                                  "children": [
                                     {
-                                      "$": "active"
+                                      "text": {
+                                        "$": "f.title"
+                                      }
                                     }
                                   ]
                                 },
-                                "true",
                                 {
-                                  "op": "undef",
-                                  "args": []
-                                }
-                              ]
-                            }
-                          },
-                          "children": [
-                            {
-                              "use": "LucideIcon",
-                              "props": {
-                                "Name": {
-                                  "$": "f.icon"
-                                },
-                                "Size": 24
-                              }
-                            },
-                            {
-                              "use": "Title",
-                              "props": {
-                                "As": 3,
-                                "Size": "2xl",
-                                "Weight": "bold"
-                              },
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "f.title"
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "use": "Text",
-                              "props": {
-                                "Size": "base",
-                                "Class": "text-muted-foreground"
-                              },
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "f.text"
-                                  }
+                                  "use": "Text",
+                                  "props": {
+                                    "Size": "base",
+                                    "Class": "text-muted-foreground"
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "f.text"
+                                      }
+                                    }
+                                  ]
                                 }
                               ]
                             }

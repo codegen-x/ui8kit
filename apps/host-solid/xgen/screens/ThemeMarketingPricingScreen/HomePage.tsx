@@ -80,6 +80,7 @@ export function HomePage() {
         id="home-logos"
         title={ui.marketing.logos.title}
         logos={logos}
+        empty={ui.empty.logos}
         layout="grid"
         cols="3"
         item="tile"

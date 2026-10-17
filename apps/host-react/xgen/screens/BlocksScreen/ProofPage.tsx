@@ -78,6 +78,7 @@ export function ProofPage() {
                 id="proof-above"
                 title={ui.vibe.proof.title}
                 logos={logos}
+                empty={ui.empty.logos}
                 stats={stats}
                 layout="above"
                 logoStyle="name"
@@ -104,6 +105,7 @@ export function ProofPage() {
                 id="proof-beside"
                 title={ui.vibe.proof.title}
                 logos={logos}
+                empty={ui.empty.logos}
                 stats={stats}
                 layout="beside"
                 logoStyle="name"
@@ -130,6 +132,7 @@ export function ProofPage() {
                 id="proof-icons"
                 title={ui.vibe.proof.title}
                 logos={logos}
+                empty={ui.empty.logos}
                 stats={stats}
                 layout="above"
                 logoStyle="icon"
@@ -156,6 +159,7 @@ export function ProofPage() {
                 id="proof-muted"
                 title={ui.vibe.proof.title}
                 logos={logos}
+                empty={ui.empty.logos}
                 stats={stats}
                 layout="above"
                 logoStyle="name"

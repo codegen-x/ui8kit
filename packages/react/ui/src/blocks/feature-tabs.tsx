@@ -11,6 +11,7 @@ import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { Title } from "../primitives/title/title";
+import { EmptyState } from "../components/empty-state";
 import { MediaFrame } from "../components/media-frame";
 import { SectionFrame } from "../components/section-frame";
 import { Switcher } from "../components/switcher";
@@ -21,6 +22,7 @@ export type FeatureTabsProps = {
   id: string;
   title: string;
   features: Feature[];
+  empty?: string;
   tabsLabel: string;
   active?: string;
   panel?: "split" | "stack";
@@ -34,6 +36,7 @@ export function FeatureTabs({
   id,
   title,
   features,
+  empty = "",
   tabsLabel,
   active = "",
   panel = "split",
@@ -44,41 +47,45 @@ export function FeatureTabs({
 }: FeatureTabsProps) {
   return (
     <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
-      <Stack gap="6" align="stretch">
-        <Switcher label={tabsLabel} className="w-fit max-w-full flex-wrap">
-          {(features ?? []).map((f, i) => (
-            <SwitcherItem key={f.id}
-              active={((f.id === active) || (((active as string) === "") && (i === 0)))}
-              onClick={() => onSelect?.(f.id)}
-            >
-              {f.title}
-            </SwitcherItem>
-          ))}
-        </Switcher>
-        {(features ?? []).map((f, i) => (
-          <Fragment key={f.id}>
-            {((f.id === active) || (((active as string) === "") && (i === 0))) ? (
-              <Grid
-                cols={(((panel as string) === "split") ? "1-2" : "1")}
-                className="items-center gap-8"
-                data-testid="tab-panel"
-                role="tabpanel"
+      {((features?.length ?? 0) === 0) ? (
+        <EmptyState icon="layout-grid" title={empty} />
+      ) : (
+        <Stack gap="6" align="stretch">
+          <Switcher label={tabsLabel} className="w-fit max-w-full flex-wrap">
+            {(features ?? []).map((f, i) => (
+              <SwitcherItem key={f.id}
+                active={((f.id === active) || (((active as string) === "") && (i === 0)))}
+                onClick={() => onSelect?.(f.id)}
               >
-                <Stack gap="4">
-                  <LucideIcon name={f.icon} size={24} />
-                  <Title as={3} size="2xl" weight="bold">
-                    {f.title}
-                  </Title>
-                  <Text size="base" className="text-muted-foreground">
-                    {f.text}
-                  </Text>
-                </Stack>
-                <MediaFrame alt={f.title} ratio="4/3" />
-              </Grid>
-            ) : null}
-          </Fragment>
-        ))}
-      </Stack>
+                {f.title}
+              </SwitcherItem>
+            ))}
+          </Switcher>
+          {(features ?? []).map((f, i) => (
+            <Fragment key={f.id}>
+              {((f.id === active) || (((active as string) === "") && (i === 0))) ? (
+                <Grid
+                  cols={(((panel as string) === "split") ? "1-2" : "1")}
+                  className="items-center gap-8"
+                  data-testid="tab-panel"
+                  role="tabpanel"
+                >
+                  <Stack gap="4">
+                    <LucideIcon name={f.icon} size={24} />
+                    <Title as={3} size="2xl" weight="bold">
+                      {f.title}
+                    </Title>
+                    <Text size="base" className="text-muted-foreground">
+                      {f.text}
+                    </Text>
+                  </Stack>
+                  <MediaFrame alt={f.title} ratio="4/3" />
+                </Grid>
+              ) : null}
+            </Fragment>
+          ))}
+        </Stack>
+      )}
     </SectionFrame>
   );
 }

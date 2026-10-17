@@ -73,6 +73,7 @@
     }
   ],
   "slots": [
+    "EmptyState",
     "FigureBlock",
     "MediaFrame",
     "SectionFrame"
@@ -141,6 +142,9 @@
       },
       "photos": {
         "$": "photos"
+      },
+      "empty": {
+        "$": "ui.empty.photos"
       },
       "labels": {
         "$": "ui.company.photos"

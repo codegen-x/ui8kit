@@ -62,6 +62,7 @@
             id="bento-bento"
             title={ui.vibe.bento.title}
             tiles={bento}
+            empty={ui.empty.tiles}
             layout="bento"
             media="none"
             tone="default"
@@ -87,6 +88,7 @@
             id="bento-even"
             title={ui.vibe.bento.title}
             tiles={bento}
+            empty={ui.empty.tiles}
             layout="even"
             media="none"
             tone="default"
@@ -112,6 +114,7 @@
             id="bento-images"
             title={ui.vibe.bento.title}
             tiles={bento}
+            empty={ui.empty.tiles}
             layout="bento"
             media="image"
             tone="default"
@@ -137,6 +140,7 @@
             id="bento-muted"
             title={ui.vibe.bento.title}
             tiles={bento}
+            empty={ui.empty.tiles}
             layout="bento"
             media="none"
             tone="muted"

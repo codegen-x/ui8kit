@@ -11,6 +11,7 @@ export type OrderTableProps = {
   id: string;
   title: string;
   orders: Order[];
+  empty?: string;
   statuses: Record<string, string>;
   labels: OrderLabels;
   layout?: "table" | "cards";
@@ -26,6 +27,7 @@ import Card from "../primitives/card/card.vue";
 import CardContent from "../primitives/card/card-content.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
+import EmptyState from "../components/empty-state.vue";
 import OrderRows from "../components/order-rows.vue";
 import Pager from "../components/pager.vue";
 import Pill from "../components/pill.vue";
@@ -36,6 +38,7 @@ const {
   id,
   title,
   orders,
+  empty = "",
   statuses,
   labels,
   layout = "table",
@@ -48,7 +51,8 @@ const {
 
 <template>
   <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
-    <Stack gap="4" align="stretch">
+    <EmptyState v-if="((orders?.length ?? 0) === 0)" icon="package" :title="empty" />
+    <Stack v-else gap="4" align="stretch">
       <OrderRows
         v-if="((layout as string) === 'table')"
         :orders="orders"

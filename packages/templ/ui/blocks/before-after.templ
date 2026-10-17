@@ -20,6 +20,7 @@ type BeforeAfterProps struct {
 	Id any `json:"id"`
 	Title any `json:"title"`
 	Points any `json:"points"`
+	Empty any `json:"empty"`
 	Labels any `json:"labels"`
 	Layout any `json:"layout"`
 	Icons any `json:"icons"`
@@ -33,6 +34,7 @@ templ BeforeAfter(p BeforeAfterProps) {
 	{{ vId := p.Id }}
 	{{ vTitle := p.Title }}
 	{{ vPoints := p.Points }}
+	{{ vEmpty := uiutils.Def(p.Empty, "") }}
 	{{ vLabels := p.Labels }}
 	{{ vLayout := uiutils.Def(p.Layout, "cards") }}
 	{{ vIcons := uiutils.Def(p.Icons, "show") }}
@@ -40,7 +42,9 @@ templ BeforeAfter(p BeforeAfterProps) {
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Tone: vTone, Density: vDensity, LandmarkLabel: vLandmarkLabel}) {
-		if uiutils.Eq(vLayout, "cards") {
+		if uiutils.Eq(uiutils.Len(vPoints), float64(0)) {
+			@EmptyState(EmptyStateProps{Icon: "git-compare", Title: vEmpty})
+		} else if uiutils.Eq(vLayout, "cards") {
 			@grid.Grid(grid.GridProps{Cols: "1-2", Class: "items-stretch gap-4", Attrs: uiutils.Attrs("data-testid", "sides")}) {
 				@card.Card(card.CardProps{Variant: "muted", Class: uiutils.S(uiutils.Cnv("h-full", uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "gap-4 p-4", ""))), Attrs: uiutils.Attrs("data-testid", "side", "data-side", "before")}) {
 					@card.CardContent(card.CardContentProps{Class: "flex flex-col gap-4"}) {

@@ -3,7 +3,7 @@ import { add, cn, cond, div, count, each, eachAt, eq, len, lt, mul, ref, round, 
 import type { OrganismSpec } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { frame, panelSection, wide } from "../components/frames";
-import { id, title, tsOf, toneLite, denseLite } from "../props";
+import { empty, id, orEmpty, title, tsOf, toneLite, denseLite } from "../props";
 import { fid, kids } from "../forms";
 
 const O = "organism.";
@@ -13,12 +13,13 @@ const metricRow = spec(`${O}metric-row`, "MetricRow", "Dashboard counters in a r
   props: [
     id, title,
     { name: "metrics", type: ts("Metric[]"), required: true },
+    empty,
     { name: "cols", type: tsOf("2", "4"), default: "4" },
     { name: "item", type: tsOf("tile", "compact"), default: "tile" },
     { name: "tone", type: toneLite, default: "default" },
     { name: "density", type: denseLite, default: "default" },
   ],
-  view: [frame({ id: ref("id"), title: ref("title"), tone: ref("tone"), density: ref("density") }, [
+  view: [frame({ id: ref("id"), title: ref("title"), tone: ref("tone"), density: ref("density") }, [orEmpty("metrics", "gauge", [
     use("Grid", { props: { Cols: cond(eq(ref("cols"), "2"), "1-2", "1-4"), Class: "gap-4" }, attrs: { "data-testid": "items" } },
       each(ref("metrics"), "m", ref("m.id"),
         when(eq(ref("item"), "tile"),
@@ -26,7 +27,7 @@ const metricRow = spec(`${O}metric-row`, "MetricRow", "Dashboard counters in a r
           [use("Stack", { props: { Gap: "0", Class: "rounded bg-card p-4 inset-ring inset-ring-border" }, attrs: { "data-testid": "item" } },
             use("Group", { props: { Gap: "2", Align: "center", Class: "text-muted-foreground" } }, use("LucideIcon", { props: { Name: ref("m.icon"), Size: 16 } }), use("Text", { props: { Size: "xs" } }, text(ref("m.label")))),
             use("Text", { props: { Size: "2xl", Weight: "bold" } }, text(ref("m.value"))),
-            use("Text", { props: { Size: "xs", Class: "text-muted-foreground" } }, text(ref("m.hint"))))]))),
+            use("Text", { props: { Size: "xs", Class: "text-muted-foreground" } }, text(ref("m.hint"))))]))),])
   ])],
 });
 
@@ -36,6 +37,7 @@ const chartPanel = spec(`${O}chart-panel`, "ChartPanel", "A panel with a chart o
     id, title,
     { name: "text", type: "string", required: true, docs: "the sentence under the title" },
     { name: "series", type: ts("Point[]"), required: true },
+    empty,
     { name: "summary", type: "string", required: true, docs: "the chart's accessible summary" },
     { name: "percent", type: "string", required: true, docs: "template of a meter caption, e.g. `{0}%`" },
     { name: "chart", type: tsOf("bars", "meters"), default: "bars" },
@@ -45,10 +47,10 @@ const chartPanel = spec(`${O}chart-panel`, "ChartPanel", "A panel with a chart o
   view: [
     panelSection(use("Container", { props: { Class: `${wide} py-8` }, attrs: { "data-slot": "container" } },
       organism("Panel", { title: ref("title"), description: ref("text"), id: ref("id"), className: cond(eq(ref("tone"), "muted"), "bg-muted", "") }, kids(
-        when(eq(ref("chart"), "bars"),
+        orEmpty("series", "chart-column", [when(eq(ref("chart"), "bars"),
           [organism("BarChart", { bars: ref("series"), label: ref("summary"), height: cond(eq(ref("size"), "compact"), 96, 176) })],
           [use("Stack", { props: { Gap: cond(eq(ref("size"), "compact"), "0", "2"), Align: "stretch" }, attrs: { "data-testid": "items" } },
-            each(ref("series"), "s", ref("s.id"), organism("MeterRow", { label: ref("s.label"), value: ref("s.value"), caption: tpl(ref("percent"), ref("s.value")) })))]))))),
+            each(ref("series"), "s", ref("s.id"), organism("MeterRow", { label: ref("s.label"), value: ref("s.value"), caption: tpl(ref("percent"), ref("s.value")) })))])]))))),
   ],
 });
 
@@ -58,6 +60,7 @@ const activityFeed = spec(`${O}activity-feed`, "ActivityFeed", "A panel with rec
     id, title,
     { name: "text", type: "string", required: true },
     { name: "events", type: ts("Event[]"), required: true },
+    empty,
     { name: "layout", type: tsOf("timeline", "list"), default: "timeline" },
     { name: "density", type: denseLite, default: "default" },
     { name: "tone", type: toneLite, default: "default" },
@@ -65,7 +68,7 @@ const activityFeed = spec(`${O}activity-feed`, "ActivityFeed", "A panel with rec
   view: [
     panelSection(use("Container", { props: { Class: `${wide} py-8` }, attrs: { "data-slot": "container" } },
       organism("Panel", { title: ref("title"), description: ref("text"), id: ref("id"), className: cond(eq(ref("tone"), "muted"), "bg-muted", "") }, kids(
-        when(eq(ref("layout"), "timeline"),
+        orEmpty("events", "activity", [when(eq(ref("layout"), "timeline"),
           [organism("Timeline", { items: ref("events") })],
           [use("List", { props: { Class: "m-0 flex list-none flex-col p-0" }, attrs: { "data-testid": "items" } },
             each(ref("events"), "e", ref("e.id"),
@@ -73,7 +76,7 @@ const activityFeed = spec(`${O}activity-feed`, "ActivityFeed", "A panel with rec
                 use("Stack", { props: { Gap: "0" } },
                   use("Text", { props: { Size: "sm", Weight: "semibold" } }, text(ref("e.title"))),
                   when(eq(ref("density"), "default"), [use("Text", { props: { Size: "sm", Class: "text-muted-foreground" } }, text(ref("e.text")))])),
-                use("Text", { props: { Size: "xs", Class: "shrink-0 text-muted-foreground" } }, text(ref("e.time"))))))]))))),
+                use("Text", { props: { Size: "xs", Class: "shrink-0 text-muted-foreground" } }, text(ref("e.time"))))))])]))))),
   ],
 });
 
@@ -108,6 +111,7 @@ const checklist = spec(`${O}checklist`, "Checklist", "An onboarding checklist: t
   props: [
     id, title,
     { name: "tasks", type: ts("Task[]"), required: true },
+    empty,
     { name: "progressLabel", type: "string", required: true, docs: "template of the count, e.g. `{0} of {1} done`" },
     { name: "layout", type: tsOf("card", "plain"), default: "card" },
     { name: "progress", type: tsOf("bar", "text", "none"), default: "bar" },
@@ -115,7 +119,7 @@ const checklist = spec(`${O}checklist`, "Checklist", "An onboarding checklist: t
     { name: "detail", type: tsOf("always", "expand"), default: "always", docs: "expand: the sentence of a task opens under its title" },
     { name: "tone", type: toneLite, default: "default" },
   ],
-  view: [frame({ id: ref("id"), title: ref("title"), tone: ref("tone"), measure: "2xl" }, [
+  view: [frame({ id: ref("id"), title: ref("title"), tone: ref("tone"), measure: "2xl" }, [orEmpty("tasks", "list-checks", [
     use("Stack", { props: { Gap: "4", Align: "stretch", Class: cond(eq(ref("layout"), "card"), "rounded bg-card p-6 inset-ring inset-ring-border", "") }, attrs: { "data-testid": "checklist" } },
       when(eq(ref("progress"), "bar"), [use("Progress", { props: { Value: str(round(div(mul(count(ref("tasks"), "done"), 100), len(ref("tasks"))))), Max: "100" }, attrs: { "aria-label": tpl(ref("progressLabel"), count(ref("tasks"), "done"), len(ref("tasks"))) } })]),
       when(eq(ref("progress"), "text"), [use("Text", { props: { Size: "sm", Class: "text-muted-foreground" }, attrs: { "data-testid": "progress-text" } }, text(tpl(ref("progressLabel"), count(ref("tasks"), "done"), len(ref("tasks")))))]),
@@ -131,7 +135,7 @@ const checklist = spec(`${O}checklist`, "Checklist", "An onboarding checklist: t
                 use("Text", { props: { Size: "sm", Class: "pb-2 text-muted-foreground" } }, text(ref("task.text"))))],
               [use("Stack", { props: { Gap: "0" } },
                 use("Text", { props: { Size: "base", Weight: "semibold" } }, text(ref("task.title"))),
-                use("Text", { props: { Size: "sm", Class: "text-muted-foreground" } }, text(ref("task.text"))))]))))),
+                use("Text", { props: { Size: "sm", Class: "text-muted-foreground" } }, text(ref("task.text"))))]))))),])
   ])],
 });
 

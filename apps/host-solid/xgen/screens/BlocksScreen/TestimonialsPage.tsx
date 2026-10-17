@@ -75,6 +75,7 @@ export function TestimonialsPage() {
                 id="testimonials-grid3"
                 title={ui.marketing.testimonials.title}
                 quotes={testimonials}
+                empty={ui.empty.quotes}
                 labels={TESTIMONIALS_LABELS}
                 layout="grid"
                 cols="1-3"
@@ -102,6 +103,7 @@ export function TestimonialsPage() {
                 id="testimonials-masonry"
                 title={ui.marketing.testimonials.title}
                 quotes={testimonials}
+                empty={ui.empty.quotes}
                 labels={TESTIMONIALS_LABELS}
                 layout="masonry"
                 cols="1-3"
@@ -129,6 +131,7 @@ export function TestimonialsPage() {
                 id="testimonials-strip"
                 title={ui.marketing.testimonials.title}
                 quotes={testimonials}
+                empty={ui.empty.quotes}
                 labels={TESTIMONIALS_LABELS}
                 layout="strip"
                 cols="1-3"
@@ -156,6 +159,7 @@ export function TestimonialsPage() {
                 id="testimonials-social"
                 title={ui.marketing.testimonials.title}
                 quotes={testimonials}
+                empty={ui.empty.quotes}
                 labels={TESTIMONIALS_LABELS}
                 layout="masonry"
                 cols="1-3"
@@ -183,6 +187,7 @@ export function TestimonialsPage() {
                 id="testimonials-featured"
                 title={ui.marketing.testimonials.title}
                 quotes={testimonials}
+                empty={ui.empty.quotes}
                 labels={TESTIMONIALS_LABELS}
                 layout="single"
                 cols="1-3"
@@ -210,6 +215,7 @@ export function TestimonialsPage() {
                 id="testimonials-grid2"
                 title={ui.marketing.testimonials.title}
                 quotes={testimonials}
+                empty={ui.empty.quotes}
                 labels={TESTIMONIALS_LABELS}
                 layout="grid"
                 cols="1-2"
@@ -237,6 +243,7 @@ export function TestimonialsPage() {
                 id="testimonials-single"
                 title={ui.marketing.testimonials.title}
                 quotes={testimonials}
+                empty={ui.empty.quotes}
                 labels={TESTIMONIALS_LABELS}
                 layout="single"
                 cols="1-3"
@@ -264,6 +271,7 @@ export function TestimonialsPage() {
                 id="testimonials-stack"
                 title={ui.marketing.testimonials.title}
                 quotes={testimonials}
+                empty={ui.empty.quotes}
                 labels={TESTIMONIALS_LABELS}
                 layout="stack"
                 cols="1-3"
@@ -291,6 +299,7 @@ export function TestimonialsPage() {
                 id="testimonials-plain"
                 title={ui.marketing.testimonials.title}
                 quotes={testimonials}
+                empty={ui.empty.quotes}
                 labels={TESTIMONIALS_LABELS}
                 layout="grid"
                 cols="1-3"
@@ -318,6 +327,7 @@ export function TestimonialsPage() {
                 id="testimonials-noRating"
                 title={ui.marketing.testimonials.title}
                 quotes={testimonials}
+                empty={ui.empty.quotes}
                 labels={TESTIMONIALS_LABELS}
                 layout="grid"
                 cols="1-3"

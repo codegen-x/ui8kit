@@ -16,6 +16,7 @@ type LogoCloudProps struct {
 	Id any `json:"id"`
 	Title any `json:"title"`
 	Logos any `json:"logos"`
+	Empty any `json:"empty"`
 	Layout any `json:"layout"`
 	Cols any `json:"cols"`
 	Item any `json:"item"`
@@ -29,13 +30,18 @@ templ LogoCloud(p LogoCloudProps) {
 	{{ vId := p.Id }}
 	{{ vTitle := p.Title }}
 	{{ vLogos := p.Logos }}
+	{{ vEmpty := uiutils.Def(p.Empty, "") }}
 	{{ vLayout := uiutils.Def(p.Layout, "grid") }}
 	{{ vCols := uiutils.Def(p.Cols, "4") }}
 	{{ vItem := uiutils.Def(p.Item, "name") }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	if uiutils.Eq(vLayout, "row") {
+	if uiutils.Eq(uiutils.Len(vLogos), float64(0)) {
+		@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Tone: vTone, Density: vDensity, Align: "center", LandmarkLabel: vLandmarkLabel}) {
+			@EmptyState(EmptyStateProps{Icon: "building-2", Title: vEmpty})
+		}
+	} else if uiutils.Eq(vLayout, "row") {
 		@LogoRibbon(LogoRibbonProps{Id: vId, Title: vTitle, Logos: vLogos, Tone: vTone, Density: vDensity, LandmarkLabel: vLandmarkLabel})
 	} else {
 		@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Tone: vTone, Density: vDensity, Align: "center", LandmarkLabel: vLandmarkLabel}) {

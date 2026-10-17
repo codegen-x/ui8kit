@@ -31,7 +31,13 @@
   import { tabs as tabsEntries } from "@ui8kit/app-shared/data/tabs";
 
   const SIDENAV_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","href":"slug|route"} as const;
-  const METRICS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
+  const METRICS_FIELDS = {
+    "id": "id",
+    "label": "title",
+    "value": "metadata.value.value|number",
+    "icon": "metadata.icon.value",
+    "hint": "metadata.hint.value",
+  } as const;
   const SERIES_FIELDS = {"id":"id","label":"title","value":"metadata.value.value"} as const;
   const ACTIVITY_FIELDS = {
     "id": "id",

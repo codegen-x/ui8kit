@@ -74,6 +74,7 @@ export function ZonesPage() {
                 title={ui.commerce.zones.title}
                 lead={ui.commerce.zones.lead}
                 zones={zones}
+                empty={ui.empty.zones}
                 labels={ui.commerce.zones}
                 layout="table"
                 tone="default"
@@ -100,6 +101,7 @@ export function ZonesPage() {
                 title={ui.commerce.zones.title}
                 lead={ui.commerce.zones.lead}
                 zones={zones}
+                empty={ui.empty.zones}
                 labels={ui.commerce.zones}
                 layout="cards"
                 tone="default"
@@ -126,6 +128,7 @@ export function ZonesPage() {
                 title={ui.commerce.zones.title}
                 lead={ui.commerce.zones.lead}
                 zones={zones}
+                empty={ui.empty.zones}
                 labels={ui.commerce.zones}
                 layout="table"
                 tone="muted"

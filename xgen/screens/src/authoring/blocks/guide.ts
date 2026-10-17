@@ -4,7 +4,7 @@ import { cn, cond, each, eq, ref, text, tpl, undef, use, when, organism } from "
 import type { OrganismSpec } from "../../ir";
 import { fields, rec, spec, ts } from "../kit";
 import { frame } from "../components/frames";
-import { id, linkActions, title, tone, tsOf, toneLite, denseLite } from "../props";
+import { empty, id, linkActions, orEmpty, title, tone, tsOf, toneLite, denseLite } from "../props";
 import { kids } from "../forms";
 import { muted, strong, heading, surface } from "../ux";
 import { navBlockOf } from "../components/landmarks";
@@ -107,12 +107,13 @@ const articleBody = spec(`${O}article-body`, "ArticleBody", "A long read: sectio
   props: [
     id, title,
     { name: "sections", type: ts("Section[]"), required: true },
+    empty,
     { name: "tocTitle", type: "string", required: true },
     { name: "layout", type: tsOf("column", "toc"), default: "column" },
     { name: "quotes", type: tsOf("show", "hide"), default: "show" },
     { name: "tone", type: toneLite, default: "default" },
   ],
-  view: [frame({ id: ref("id"), title: ref("title"), tone: ref("tone"), density: "default" }, [
+  view: [frame({ id: ref("id"), title: ref("title"), tone: ref("tone"), density: "default" }, [orEmpty("sections", "file-text", [
     use("Grid", { props: { Cols: "1", Class: cn("items-start gap-8", cond(eq(ref("layout"), "toc"), "md:grid-cols-[14rem_minmax(0,1fr)]", "")) } },
       when(eq(ref("layout"), "toc"), [navBlockOf(ref("tocTitle"), "md:sticky md:top-4", "toc",
         use("Stack", { props: { Gap: "2" } }, strong(ref("tocTitle"), "sm"),
@@ -121,7 +122,7 @@ const articleBody = spec(`${O}article-body`, "ArticleBody", "A long read: sectio
         each(ref("sections"), "s", ref("s.id"), use("Box", { props: { Class: "flex flex-col gap-4" }, attrs: { id: tpl("{0}-{1}", ref("id"), ref("s.id")), "data-testid": "item" } },
           heading(ref("s.title"), "2xl"),
           use("Text", { props: { Size: "base" } }, text(ref("s.text"))),
-          when(eq(ref("quotes"), "show"), [when(ref("s.quote"), [use("Text", { props: { Tag: "blockquote", Class: "m-0 border-l border-border pl-4 text-lg" }, attrs: { "data-testid": "quote" } }, text(ref("s.quote")))])]))))),
+          when(eq(ref("quotes"), "show"), [when(ref("s.quote"), [use("Text", { props: { Tag: "blockquote", Class: "m-0 border-l border-border pl-4 text-lg" }, attrs: { "data-testid": "quote" } }, text(ref("s.quote")))])]))))),])
   ])],
 });
 

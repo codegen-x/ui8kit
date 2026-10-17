@@ -11,6 +11,7 @@ export type CartListProps = {
   id: string;
   title: string;
   lines: CartLine[];
+  empty?: string;
   labels: CartLabels;
   layout?: "table" | "cards";
   media?: "image" | "none";
@@ -28,6 +29,7 @@ import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import CartTable from "../components/cart-table.vue";
+import EmptyState from "../components/empty-state.vue";
 import MediaFrame from "../components/media-frame.vue";
 import NumberField from "../components/number-field.vue";
 import SectionFrame from "../components/section-frame.vue";
@@ -37,6 +39,7 @@ const {
   id,
   title,
   lines,
+  empty = "",
   labels,
   layout = "table",
   media = "image",
@@ -49,7 +52,8 @@ const emit = defineEmits<{ remove: [id: string] }>();
 
 <template>
   <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
-    <CartTable v-if="((layout as string) === 'table')"
+    <EmptyState v-if="((lines?.length ?? 0) === 0)" icon="shopping-cart" :title="empty" />
+    <CartTable v-else-if="((layout as string) === 'table')"
       :field="tpl('{0}-qty', id)"
       :lines="lines"
       :labels="labels"

@@ -93,6 +93,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "labels",
       "type": {
         "record": "CartLabels"
@@ -175,146 +181,232 @@
                 "op": "eq",
                 "args": [
                   {
-                    "$": "layout"
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "lines"
+                      }
+                    ]
                   },
-                  "table"
+                  0
                 ]
               },
               "then": [
                 {
-                  "organism": "CartTable",
+                  "organism": "EmptyState",
                   "props": {
-                    "field": {
-                      "op": "tpl",
-                      "args": [
-                        "{0}-qty",
-                        {
-                          "$": "id"
-                        }
-                      ]
-                    },
-                    "lines": {
-                      "$": "lines"
-                    },
-                    "labels": {
-                      "$": "labels"
-                    },
-                    "media": {
-                      "$": "media"
-                    },
-                    "density": {
-                      "$": "density"
-                    }
-                  },
-                  "on": {
-                    "remove": {
-                      "call": "emit.remove",
-                      "args": [
-                        {
-                          "$": "arg"
-                        }
-                      ]
+                    "icon": "shopping-cart",
+                    "title": {
+                      "$": "empty"
                     }
                   }
                 }
               ],
               "else": [
                 {
-                  "use": "Stack",
-                  "props": {
-                    "Gap": "4",
-                    "Align": "stretch"
+                  "when": {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "$": "layout"
+                      },
+                      "table"
+                    ]
                   },
-                  "attrs": {
-                    "data-testid": "cart-cards"
-                  },
-                  "children": [
+                  "then": [
                     {
-                      "each": {
-                        "$": "lines"
-                      },
-                      "as": "line",
-                      "key": {
-                        "$": "line.id"
-                      },
-                      "do": [
-                        {
-                          "use": "Card",
-                          "props": {
-                            "Variant": "default"
-                          },
-                          "attrs": {
-                            "data-testid": "item"
-                          },
-                          "children": [
+                      "organism": "CartTable",
+                      "props": {
+                        "field": {
+                          "op": "tpl",
+                          "args": [
+                            "{0}-qty",
                             {
-                              "use": "CardContent",
+                              "$": "id"
+                            }
+                          ]
+                        },
+                        "lines": {
+                          "$": "lines"
+                        },
+                        "labels": {
+                          "$": "labels"
+                        },
+                        "media": {
+                          "$": "media"
+                        },
+                        "density": {
+                          "$": "density"
+                        }
+                      },
+                      "on": {
+                        "remove": {
+                          "call": "emit.remove",
+                          "args": [
+                            {
+                              "$": "arg"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ],
+                  "else": [
+                    {
+                      "use": "Stack",
+                      "props": {
+                        "Gap": "4",
+                        "Align": "stretch"
+                      },
+                      "attrs": {
+                        "data-testid": "cart-cards"
+                      },
+                      "children": [
+                        {
+                          "each": {
+                            "$": "lines"
+                          },
+                          "as": "line",
+                          "key": {
+                            "$": "line.id"
+                          },
+                          "do": [
+                            {
+                              "use": "Card",
                               "props": {
-                                "Class": "flex flex-wrap items-center gap-4"
+                                "Variant": "default"
+                              },
+                              "attrs": {
+                                "data-testid": "item"
                               },
                               "children": [
                                 {
-                                  "when": {
-                                    "op": "eq",
-                                    "args": [
-                                      {
-                                        "$": "media"
-                                      },
-                                      "image"
-                                    ]
-                                  },
-                                  "then": [
-                                    {
-                                      "organism": "MediaFrame",
-                                      "props": {
-                                        "alt": {
-                                          "$": "line.name"
-                                        },
-                                        "ratio": "1/1",
-                                        "className": "size-16 shrink-0"
-                                      }
-                                    }
-                                  ]
-                                },
-                                {
-                                  "use": "Stack",
+                                  "use": "CardContent",
                                   "props": {
-                                    "Gap": "0",
-                                    "Class": "min-w-40 flex-1"
+                                    "Class": "flex flex-wrap items-center gap-4"
                                   },
                                   "children": [
                                     {
-                                      "use": "Text",
-                                      "props": {
-                                        "Size": "sm",
-                                        "Weight": "semibold"
+                                      "when": {
+                                        "op": "eq",
+                                        "args": [
+                                          {
+                                            "$": "media"
+                                          },
+                                          "image"
+                                        ]
                                       },
-                                      "children": [
+                                      "then": [
                                         {
-                                          "text": {
-                                            "$": "line.name"
+                                          "organism": "MediaFrame",
+                                          "props": {
+                                            "alt": {
+                                              "$": "line.name"
+                                            },
+                                            "ratio": "1/1",
+                                            "className": "size-16 shrink-0"
                                           }
                                         }
                                       ]
                                     },
                                     {
-                                      "use": "Text",
+                                      "use": "Stack",
                                       "props": {
-                                        "Size": "xs",
-                                        "Class": "text-muted-foreground"
+                                        "Gap": "0",
+                                        "Class": "min-w-40 flex-1"
                                       },
                                       "children": [
                                         {
-                                          "text": {
-                                            "$": "line.variant"
-                                          }
+                                          "use": "Text",
+                                          "props": {
+                                            "Size": "sm",
+                                            "Weight": "semibold"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "line.name"
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "use": "Text",
+                                          "props": {
+                                            "Size": "xs",
+                                            "Class": "text-muted-foreground"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "line.variant"
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "use": "Text",
+                                          "props": {
+                                            "Size": "sm"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "op": "money",
+                                                "args": [
+                                                  {
+                                                    "$": "line.price"
+                                                  },
+                                                  {
+                                                    "$": "line.currency"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
                                         }
                                       ]
                                     },
                                     {
+                                      "organism": "NumberField",
+                                      "props": {
+                                        "value": {
+                                          "op": "str",
+                                          "args": [
+                                            {
+                                              "$": "line.qty"
+                                            }
+                                          ]
+                                        },
+                                        "name": {
+                                          "op": "tpl",
+                                          "args": [
+                                            "{0}-qty-{1}",
+                                            {
+                                              "$": "id"
+                                            },
+                                            {
+                                              "$": "line.id"
+                                            }
+                                          ]
+                                        },
+                                        "min": "1",
+                                        "label": {
+                                          "$": "labels.qty"
+                                        },
+                                        "decrease": {
+                                          "$": "labels.decrease"
+                                        },
+                                        "increase": {
+                                          "$": "labels.increase"
+                                        }
+                                      }
+                                    },
+                                    {
                                       "use": "Text",
                                       "props": {
-                                        "Size": "sm"
+                                        "Size": "base",
+                                        "Weight": "bold"
                                       },
                                       "children": [
                                         {
@@ -322,7 +414,15 @@
                                             "op": "money",
                                             "args": [
                                               {
-                                                "$": "line.price"
+                                                "op": "mul",
+                                                "args": [
+                                                  {
+                                                    "$": "line.price"
+                                                  },
+                                                  {
+                                                    "$": "line.qty"
+                                                  }
+                                                ]
                                               },
                                               {
                                                 "$": "line.currency"
@@ -331,104 +431,39 @@
                                           }
                                         }
                                       ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "organism": "NumberField",
-                                  "props": {
-                                    "value": {
-                                      "op": "str",
-                                      "args": [
-                                        {
-                                          "$": "line.qty"
-                                        }
-                                      ]
                                     },
-                                    "name": {
-                                      "op": "tpl",
-                                      "args": [
-                                        "{0}-qty-{1}",
-                                        {
-                                          "$": "id"
-                                        },
-                                        {
-                                          "$": "line.id"
-                                        }
-                                      ]
-                                    },
-                                    "min": "1",
-                                    "label": {
-                                      "$": "labels.qty"
-                                    },
-                                    "decrease": {
-                                      "$": "labels.decrease"
-                                    },
-                                    "increase": {
-                                      "$": "labels.increase"
-                                    }
-                                  }
-                                },
-                                {
-                                  "use": "Text",
-                                  "props": {
-                                    "Size": "base",
-                                    "Weight": "bold"
-                                  },
-                                  "children": [
                                     {
-                                      "text": {
-                                        "op": "money",
-                                        "args": [
-                                          {
-                                            "op": "mul",
-                                            "args": [
-                                              {
-                                                "$": "line.price"
-                                              },
-                                              {
-                                                "$": "line.qty"
-                                              }
-                                            ]
-                                          },
-                                          {
-                                            "$": "line.currency"
-                                          }
-                                        ]
-                                      }
-                                    }
-                                  ]
-                                },
-                                {
-                                  "use": "Button",
-                                  "props": {
-                                    "Variant": "ghost",
-                                    "Size": "sm",
-                                    "Layout": "icon",
-                                    "AriaLabel": {
-                                      "$": "labels.remove"
-                                    }
-                                  },
-                                  "attrs": {
-                                    "data-testid": "remove"
-                                  },
-                                  "on": {
-                                    "click": {
-                                      "call": "emit.remove",
-                                      "args": [
-                                        {
-                                          "$": "line.id"
-                                        }
-                                      ]
-                                    }
-                                  },
-                                  "children": [
-                                    {
-                                      "use": "LucideIcon",
+                                      "use": "Button",
                                       "props": {
-                                        "Name": "x",
-                                        "Size": 16
-                                      }
+                                        "Variant": "ghost",
+                                        "Size": "sm",
+                                        "Layout": "icon",
+                                        "AriaLabel": {
+                                          "$": "labels.remove"
+                                        }
+                                      },
+                                      "attrs": {
+                                        "data-testid": "remove"
+                                      },
+                                      "on": {
+                                        "click": {
+                                          "call": "emit.remove",
+                                          "args": [
+                                            {
+                                              "$": "line.id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "use": "LucideIcon",
+                                          "props": {
+                                            "Name": "x",
+                                            "Size": 16
+                                          }
+                                        }
+                                      ]
                                     }
                                   ]
                                 }

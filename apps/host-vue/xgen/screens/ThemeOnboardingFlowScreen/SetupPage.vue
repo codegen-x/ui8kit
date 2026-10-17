@@ -53,6 +53,7 @@ const checklist = fromCodex<Task>(checklistEntries, CHECKLIST_FIELDS, CODEX);
     id="setup-checklist"
     :title="ui.onboarding.checklist.title"
     :tasks="checklist"
+    :empty="ui.empty.tasks"
     :progressLabel="ui.onboarding.checklist.progress"
     layout="card"
     progress="bar"

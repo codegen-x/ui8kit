@@ -3,7 +3,7 @@ import { at, call, cn, cond, each, eq, mul, money, ne, or, ref, text, tpl, use, 
 import type { OrganismSpec } from "../../ir";
 import { fields, groupFields, rec, requireFields, spec, ts } from "../kit";
 import { frame } from "../components/frames";
-import { id, title, tsOf, toneLite, denseLite } from "../props";
+import { empty, id, orEmpty, title, tsOf, toneLite, denseLite } from "../props";
 import { muted, strong, fitCols } from "../ux";
 import { compareMark } from "../components/compare";
 
@@ -76,6 +76,7 @@ const creditPacks = spec(`${O}credit-packs`, "CreditPacks", "Packs of credits as
   props: [
     id, title,
     { name: "packs", type: ts("Pack[]"), required: true },
+    empty,
     { name: "badges", type: ts("Record<string, string>"), required: true, docs: "badge word by pack badge (popular, best)" },
     { name: "buy", type: "string", required: true },
     { name: "cols", type: tsOf("2", "4"), default: "4" },
@@ -83,7 +84,7 @@ const creditPacks = spec(`${O}credit-packs`, "CreditPacks", "Packs of credits as
     { name: "tone", type: toneLite, default: "default" },
     { name: "density", type: denseLite, default: "default" },
   ],
-  view: [frame({ id: ref("id"), title: ref("title"), tone: ref("tone"), density: ref("density"), measure: cond(eq(ref("item"), "row"), "2xl", "default") }, [
+  view: [frame({ id: ref("id"), title: ref("title"), tone: ref("tone"), density: ref("density"), measure: cond(eq(ref("item"), "row"), "2xl", "default") }, [orEmpty("packs", "coins", [
     use("Grid", { props: { Cols: cond(eq(ref("item"), "row"), "1", fitCols(cond(eq(ref("cols"), "2"), "1-2", "1-4"), len(ref("packs")))), Class: "gap-4" }, attrs: { "data-testid": "items" } },
       each(ref("packs"), "pack", ref("pack.id"),
         use("Card", { props: { Variant: "default", Class: cn("h-full", cond(eq(ref("item"), "row"), "gap-4 p-4", cond(eq(ref("density"), "compact"), "gap-4 p-4", ""))) }, attrs: { "data-testid": "item", "data-badge": ref("pack.badge") } },
@@ -93,7 +94,7 @@ const creditPacks = spec(`${O}credit-packs`, "CreditPacks", "Packs of credits as
                 when(ref("pack.badge"), [use("Badge", { props: { Variant: "default", Size: "default", Class: "w-fit shrink-0" }, attrs: { "data-testid": "badge" } }, text(at(ref("badges"), ref("pack.badge"))))]))]),
               use("Stack", { props: { Gap: "0", Class: "min-w-0" } }, use("Title", { props: { As: 3, Size: "xl", Weight: "bold" } }, text(ref("pack.name"))),
                 use("Text", { props: { Size: "2xl", Weight: "bold" } }, text(money(ref("pack.price"), ref("pack.currency")))))),
-            use("Button", { props: { Variant: cond(eq(ref("pack.badge"), "popular"), "default", "outline"), Size: "sm", Type: "button", Class: cn("w-fit shrink-0", cond(eq(ref("item"), "row"), "", "mt-auto")) }, attrs: { "data-testid": "buy" } }, text(ref("buy"))))))),
+            use("Button", { props: { Variant: cond(eq(ref("pack.badge"), "popular"), "default", "outline"), Size: "sm", Type: "button", Class: cn("w-fit shrink-0", cond(eq(ref("item"), "row"), "", "mt-auto")) }, attrs: { "data-testid": "buy" } }, text(ref("buy"))))))),])
   ])],
 });
 

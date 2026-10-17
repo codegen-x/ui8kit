@@ -35,7 +35,7 @@ const usp = define({
     ["barMuted", "Thin bar, muted", { layout: "bar", tone: "muted", density: "compact" }],
   ],
   facts: [{ sel: '[data-testid="item"]', n: "@perks" }],
-  sample: { id: "usp", perks: ref("perks") },
+  sample: { id: "usp", perks: ref("perks"), empty: t("empty.perks") },
 });
 
 const zones = define({
@@ -43,7 +43,7 @@ const zones = define({
   organism: "ZoneTable", axes: ["layout", "tone", "density"], data: [d.zones],
   variants: [["table", "Table"], ["cards", "Cards", { layout: "cards" }], ["tableMuted", "Table, muted, compact", { tone: "muted", density: "compact" }]],
   facts: [{ sel: '[data-testid="item"]', n: "@zones" }, ...shown('[data-testid="zone-table"]', "layout", "table", "cards")],
-  sample: { id: "zones", title: c("zones.title"), lead: c("zones.lead"), zones: ref("zones"), labels: c("zones") },
+  sample: { id: "zones", title: c("zones.title"), lead: c("zones.lead"), zones: ref("zones"), empty: t("empty.zones"), labels: c("zones") },
 });
 
 const slots = define({
@@ -67,7 +67,7 @@ const locations = define({
   organism: "StoreLocations", axes: ["layout", "tone"], data: [d.stores],
   variants: [["cards", "Cards"], ["list", "One row per store, muted", { layout: "list", tone: "muted" }], ["map", "Beside a map", { layout: "map" }]],
   facts: [{ sel: '[data-testid="item"]', n: "@stores" }, ...shown('[data-slot="media-frame"]', "layout", "map", ["cards", "list"])],
-  sample: { id: "locations", title: c("stores.title"), lead: c("stores.lead"), stores: ref("stores"), kinds: c("stores.kinds"), labels: c("stores") },
+  sample: { id: "locations", title: c("stores.title"), lead: c("stores.lead"), stores: ref("stores"), empty: t("empty.stores"), kinds: c("stores.kinds"), labels: c("stores") },
 });
 
 const productinfo = define({

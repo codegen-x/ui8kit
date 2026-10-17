@@ -45,6 +45,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "summary",
       "type": "string",
       "required": true,
@@ -186,96 +192,125 @@
                         "op": "eq",
                         "args": [
                           {
-                            "$": "chart"
+                            "op": "len",
+                            "args": [
+                              {
+                                "$": "series"
+                              }
+                            ]
                           },
-                          "bars"
+                          0
                         ]
                       },
                       "then": [
                         {
-                          "organism": "BarChart",
+                          "organism": "EmptyState",
                           "props": {
-                            "bars": {
-                              "$": "series"
-                            },
-                            "label": {
-                              "$": "summary"
-                            },
-                            "height": {
-                              "op": "cond",
-                              "args": [
-                                {
-                                  "op": "eq",
-                                  "args": [
-                                    {
-                                      "$": "size"
-                                    },
-                                    "compact"
-                                  ]
-                                },
-                                96,
-                                176
-                              ]
+                            "icon": "chart-column",
+                            "title": {
+                              "$": "empty"
                             }
                           }
                         }
                       ],
                       "else": [
                         {
-                          "use": "Stack",
-                          "props": {
-                            "Gap": {
-                              "op": "cond",
-                              "args": [
-                                {
-                                  "op": "eq",
+                          "when": {
+                            "op": "eq",
+                            "args": [
+                              {
+                                "$": "chart"
+                              },
+                              "bars"
+                            ]
+                          },
+                          "then": [
+                            {
+                              "organism": "BarChart",
+                              "props": {
+                                "bars": {
+                                  "$": "series"
+                                },
+                                "label": {
+                                  "$": "summary"
+                                },
+                                "height": {
+                                  "op": "cond",
                                   "args": [
                                     {
-                                      "$": "size"
-                                    },
-                                    "compact"
-                                  ]
-                                },
-                                "0",
-                                "2"
-                              ]
-                            },
-                            "Align": "stretch"
-                          },
-                          "attrs": {
-                            "data-testid": "items"
-                          },
-                          "children": [
-                            {
-                              "each": {
-                                "$": "series"
-                              },
-                              "as": "s",
-                              "key": {
-                                "$": "s.id"
-                              },
-                              "do": [
-                                {
-                                  "organism": "MeterRow",
-                                  "props": {
-                                    "label": {
-                                      "$": "s.label"
-                                    },
-                                    "value": {
-                                      "$": "s.value"
-                                    },
-                                    "caption": {
-                                      "op": "tpl",
+                                      "op": "eq",
                                       "args": [
                                         {
-                                          "$": "percent"
+                                          "$": "size"
                                         },
-                                        {
-                                          "$": "s.value"
-                                        }
+                                        "compact"
                                       ]
+                                    },
+                                    96,
+                                    176
+                                  ]
+                                }
+                              }
+                            }
+                          ],
+                          "else": [
+                            {
+                              "use": "Stack",
+                              "props": {
+                                "Gap": {
+                                  "op": "cond",
+                                  "args": [
+                                    {
+                                      "op": "eq",
+                                      "args": [
+                                        {
+                                          "$": "size"
+                                        },
+                                        "compact"
+                                      ]
+                                    },
+                                    "0",
+                                    "2"
+                                  ]
+                                },
+                                "Align": "stretch"
+                              },
+                              "attrs": {
+                                "data-testid": "items"
+                              },
+                              "children": [
+                                {
+                                  "each": {
+                                    "$": "series"
+                                  },
+                                  "as": "s",
+                                  "key": {
+                                    "$": "s.id"
+                                  },
+                                  "do": [
+                                    {
+                                      "organism": "MeterRow",
+                                      "props": {
+                                        "label": {
+                                          "$": "s.label"
+                                        },
+                                        "value": {
+                                          "$": "s.value"
+                                        },
+                                        "caption": {
+                                          "op": "tpl",
+                                          "args": [
+                                            {
+                                              "$": "percent"
+                                            },
+                                            {
+                                              "$": "s.value"
+                                            }
+                                          ]
+                                        }
+                                      }
                                     }
-                                  }
+                                  ]
                                 }
                               ]
                             }

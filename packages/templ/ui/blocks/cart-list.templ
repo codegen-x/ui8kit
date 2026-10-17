@@ -17,6 +17,7 @@ type CartListProps struct {
 	Id any `json:"id"`
 	Title any `json:"title"`
 	Lines any `json:"lines"`
+	Empty any `json:"empty"`
 	Labels any `json:"labels"`
 	Layout any `json:"layout"`
 	Media any `json:"media"`
@@ -30,6 +31,7 @@ templ CartList(p CartListProps) {
 	{{ vId := p.Id }}
 	{{ vTitle := p.Title }}
 	{{ vLines := p.Lines }}
+	{{ vEmpty := uiutils.Def(p.Empty, "") }}
 	{{ vLabels := p.Labels }}
 	{{ vLayout := uiutils.Def(p.Layout, "table") }}
 	{{ vMedia := uiutils.Def(p.Media, "image") }}
@@ -37,7 +39,9 @@ templ CartList(p CartListProps) {
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Tone: vTone, Density: vDensity, LandmarkLabel: vLandmarkLabel}) {
-		if uiutils.Eq(vLayout, "table") {
+		if uiutils.Eq(uiutils.Len(vLines), float64(0)) {
+			@EmptyState(EmptyStateProps{Icon: "shopping-cart", Title: vEmpty})
+		} else if uiutils.Eq(vLayout, "table") {
 			@CartTable(CartTableProps{Field: uiutils.Tpl("{0}-qty", vId), Lines: vLines, Labels: vLabels, Media: vMedia, Density: vDensity})
 		} else {
 			@stack.Stack(stack.StackProps{Gap: "4", Align: "stretch", Attrs: uiutils.Attrs("data-testid", "cart-cards")}) {

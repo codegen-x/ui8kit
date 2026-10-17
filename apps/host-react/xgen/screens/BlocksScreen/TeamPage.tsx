@@ -77,6 +77,7 @@ export function TeamPage() {
                 title={ui.company.team.title}
                 lead={ui.company.team.lead}
                 members={members}
+                empty={ui.empty.members}
                 depts={ui.company.depts}
                 layout="cards"
                 cols="1-4"
@@ -104,6 +105,7 @@ export function TeamPage() {
                 title={ui.company.team.title}
                 lead={ui.company.team.lead}
                 members={members}
+                empty={ui.empty.members}
                 depts={ui.company.depts}
                 layout="cards"
                 cols="1-3"
@@ -131,6 +133,7 @@ export function TeamPage() {
                 title={ui.company.team.title}
                 lead={ui.company.team.lead}
                 members={members}
+                empty={ui.empty.members}
                 depts={ui.company.depts}
                 layout="minimal"
                 cols="1-4"
@@ -158,6 +161,7 @@ export function TeamPage() {
                 title={ui.company.team.title}
                 lead={ui.company.team.lead}
                 members={members}
+                empty={ui.empty.members}
                 depts={ui.company.depts}
                 layout="detailed"
                 cols="1-3"
@@ -185,6 +189,7 @@ export function TeamPage() {
                 title={ui.company.team.title}
                 lead={ui.company.team.lead}
                 members={members}
+                empty={ui.empty.members}
                 depts={ui.company.depts}
                 layout="list"
                 cols="1-4"
@@ -212,6 +217,7 @@ export function TeamPage() {
                 title={ui.company.team.title}
                 lead={ui.company.team.lead}
                 members={members}
+                empty={ui.empty.members}
                 depts={ui.company.depts}
                 layout="directory"
                 cols="1-4"

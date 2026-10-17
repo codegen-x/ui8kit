@@ -62,6 +62,7 @@ const perks = fromCodex<Feature>(perksEntries, PERKS_FIELDS, CODEX);
             <UspStrip
               id="usp-strip"
               :perks="perks"
+              :empty="ui.empty.perks"
               layout="strip"
               tone="default"
               density="default"
@@ -85,6 +86,7 @@ const perks = fromCodex<Feature>(perksEntries, PERKS_FIELDS, CODEX);
             <UspStrip
               id="usp-cards"
               :perks="perks"
+              :empty="ui.empty.perks"
               layout="cards"
               tone="default"
               density="default"
@@ -109,6 +111,7 @@ const perks = fromCodex<Feature>(perksEntries, PERKS_FIELDS, CODEX);
             <UspStrip
               id="usp-stripCompact"
               :perks="perks"
+              :empty="ui.empty.perks"
               layout="strip"
               tone="default"
               density="compact"
@@ -132,6 +135,7 @@ const perks = fromCodex<Feature>(perksEntries, PERKS_FIELDS, CODEX);
             <UspStrip
               id="usp-bar"
               :perks="perks"
+              :empty="ui.empty.perks"
               layout="bar"
               tone="default"
               density="compact"
@@ -155,6 +159,7 @@ const perks = fromCodex<Feature>(perksEntries, PERKS_FIELDS, CODEX);
             <UspStrip
               id="usp-barMuted"
               :perks="perks"
+              :empty="ui.empty.perks"
               layout="bar"
               tone="muted"
               density="compact"

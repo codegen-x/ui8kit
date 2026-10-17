@@ -24,7 +24,7 @@
   const PROJECTS_FIELDS = {
     "id": "id",
     "title": "title",
-    "category": "metadata.category.value",
+    "category": "terms|term:project_category",
     "year": "metadata.year.value",
     "summary": "metadata.summary.value",
     "tags": "metadata.tags.value",
@@ -72,6 +72,7 @@
             title={ui.company.projects.title}
             lead={ui.company.projects.lead}
             projects={projects}
+            empty={ui.empty.projects}
             labels={ui.company.projects}
             layout="cards"
             tone="default"
@@ -98,6 +99,7 @@
             title={ui.company.projects.title}
             lead={ui.company.projects.lead}
             projects={projects}
+            empty={ui.empty.projects}
             labels={ui.company.projects}
             layout="compact"
             tone="default"
@@ -124,6 +126,7 @@
             title={ui.company.projects.title}
             lead={ui.company.projects.lead}
             projects={projects}
+            empty={ui.empty.projects}
             labels={ui.company.projects}
             layout="overlay"
             tone="default"
@@ -150,6 +153,7 @@
             title={ui.company.projects.title}
             lead={ui.company.projects.lead}
             projects={projects}
+            empty={ui.empty.projects}
             labels={ui.company.projects}
             layout="bento"
             tone="default"
@@ -176,6 +180,7 @@
             title={ui.company.projects.title}
             lead={ui.company.projects.lead}
             projects={projects}
+            empty={ui.empty.projects}
             labels={ui.company.projects}
             layout="list"
             tone="default"
@@ -202,6 +207,7 @@
             title={ui.company.projects.title}
             lead={ui.company.projects.lead}
             projects={projects}
+            empty={ui.empty.projects}
             labels={ui.company.projects}
             layout="cards"
             tone="muted"

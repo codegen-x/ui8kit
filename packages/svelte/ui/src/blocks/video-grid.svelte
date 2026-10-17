@@ -13,6 +13,7 @@
     id: string;
     title: string;
     quotes: Quote[];
+    empty?: string;
     playLabel: string;
     byLine: string;
     cols?: "1-2" | "1-3";
@@ -30,6 +31,7 @@
   import Grid from "../primitives/grid/grid.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Text from "../primitives/text/text.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import FigureBlock from "../components/figure-block.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import SectionFrame from "../components/section-frame.svelte";
@@ -39,6 +41,7 @@
     id,
     title,
     quotes,
+    empty = "",
     playLabel,
     byLine,
     cols = "1-3",
@@ -51,44 +54,48 @@
 </script>
 
 <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
-  <Grid cols={cols} class="gap-4" data-testid="items">
-    {#each quotes as q (q.id)}
-      <FigureBlock class="m-0 flex flex-col gap-4" testid="item">
-        <Box class="relative">
-          <MediaFrame alt={q.author} />
-          <Button
-            variant="default"
-            size="default"
-            type="button"
-            class="absolute top-1/2 left-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded p-0"
-            aria-label={tpl(playLabel, q.author)}
-            data-testid="play"
-            onclick={() => onplay?.(q.id)}
-          >
-            <LucideIcon name="play" size={20} />
-          </Button>
-          {#if ((caption as string) === "overlay")}
-            <Box class="absolute inset-x-0 bottom-0 rounded bg-background p-4" data-testid="caption">
+  {#if ((quotes?.length ?? 0) === 0)}
+    <EmptyState icon="video" title={empty} />
+  {:else}
+    <Grid cols={cols} class="gap-4" data-testid="items">
+      {#each quotes as q (q.id)}
+        <FigureBlock class="m-0 flex flex-col gap-4" testid="item">
+          <Box class="relative">
+            <MediaFrame alt={q.author} />
+            <Button
+              variant="default"
+              size="default"
+              type="button"
+              class="absolute top-1/2 left-1/2 size-12 -translate-x-1/2 -translate-y-1/2 rounded p-0"
+              aria-label={tpl(playLabel, q.author)}
+              data-testid="play"
+              onclick={() => onplay?.(q.id)}
+            >
+              <LucideIcon name="play" size={20} />
+            </Button>
+            {#if ((caption as string) === "overlay")}
+              <Box class="absolute inset-x-0 bottom-0 rounded bg-background p-4" data-testid="caption">
+                <Text size="sm" weight="semibold">
+                  {q.author}
+                </Text>
+                <Text size="xs" class="text-muted-foreground">
+                  {tpl(byLine, q.role, q.company)}
+                </Text>
+              </Box>
+            {/if}
+          </Box>
+          {#if ((caption as string) === "below")}
+            <Text tag="figcaption" data-testid="caption">
               <Text size="sm" weight="semibold">
                 {q.author}
               </Text>
               <Text size="xs" class="text-muted-foreground">
                 {tpl(byLine, q.role, q.company)}
               </Text>
-            </Box>
+            </Text>
           {/if}
-        </Box>
-        {#if ((caption as string) === "below")}
-          <Text tag="figcaption" data-testid="caption">
-            <Text size="sm" weight="semibold">
-              {q.author}
-            </Text>
-            <Text size="xs" class="text-muted-foreground">
-              {tpl(byLine, q.role, q.company)}
-            </Text>
-          </Text>
-        {/if}
-      </FigureBlock>
-    {/each}
-  </Grid>
+        </FigureBlock>
+      {/each}
+    </Grid>
+  {/if}
 </SectionFrame>

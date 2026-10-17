@@ -62,6 +62,7 @@
             id="logos-grid4"
             title={ui.marketing.logos.title}
             logos={logos}
+            empty={ui.empty.logos}
             layout="grid"
             cols="4"
             item="name"
@@ -88,6 +89,7 @@
             id="logos-grid3"
             title={ui.marketing.logos.title}
             logos={logos}
+            empty={ui.empty.logos}
             layout="grid"
             cols="3"
             item="tile"
@@ -114,6 +116,7 @@
             id="logos-row"
             title={ui.marketing.logos.title}
             logos={logos}
+            empty={ui.empty.logos}
             layout="row"
             cols="4"
             item="icon"
@@ -140,6 +143,7 @@
             id="logos-icons"
             title={ui.marketing.logos.title}
             logos={logos}
+            empty={ui.empty.logos}
             layout="grid"
             cols="4"
             item="icon"
@@ -166,6 +170,7 @@
             id="logos-grid2"
             title={ui.marketing.logos.title}
             logos={logos}
+            empty={ui.empty.logos}
             layout="grid"
             cols="2"
             item="name"
@@ -192,6 +197,7 @@
             id="logos-tiles4"
             title={ui.marketing.logos.title}
             logos={logos}
+            empty={ui.empty.logos}
             layout="grid"
             cols="4"
             item="tile"

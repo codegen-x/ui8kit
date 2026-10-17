@@ -71,6 +71,7 @@
   id="cart-cart"
   title={ui.commerce.cart.title}
   lines={cart}
+  empty={ui.empty.cart}
   labels={ui.commerce.cart}
   layout="table"
   media="image"
@@ -82,6 +83,7 @@
   id="cart-summary"
   title={ui.commerce.summary.title}
   rows={summary}
+  empty={ui.empty.summary}
   labels={ui.commerce.summary}
   layout="card"
   cta="show"

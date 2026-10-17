@@ -12,6 +12,7 @@ export type KanbanBoardProps = {
   id: string;
   title: string;
   lanes: Lane[];
+  empty?: string;
   cards: BoardCard[];
   countLabel: string;
   card?: "simple" | "detail";
@@ -30,6 +31,7 @@ import ListItem from "../primitives/list/list-item.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
+import EmptyState from "../components/empty-state.vue";
 import Pill from "../components/pill.vue";
 import SectionFrame from "../components/section-frame.vue";
 import { cn, tpl } from "../utils";
@@ -38,6 +40,7 @@ const {
   id,
   title,
   lanes,
+  empty = "",
   cards,
   countLabel,
   card = "detail",
@@ -50,7 +53,13 @@ const {
 
 <template>
   <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
-    <Grid :cols="(((cols as string) === '2') ? '1-2' : '1-3')" class="items-start gap-4" data-testid="lanes">
+    <EmptyState v-if="((lanes?.length ?? 0) === 0)" icon="kanban" :title="empty" />
+    <Grid
+      v-else
+      :cols="(((cols as string) === '2') ? '1-2' : '1-3')"
+      class="items-start gap-4"
+      data-testid="lanes"
+    >
       <Stack
         v-for="lane in lanes"
         :key="lane.id"

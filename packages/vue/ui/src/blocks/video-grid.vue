@@ -12,6 +12,7 @@ export type VideoGridProps = {
   id: string;
   title: string;
   quotes: Quote[];
+  empty?: string;
   playLabel: string;
   byLine: string;
   cols?: "1-2" | "1-3";
@@ -28,6 +29,7 @@ import Button from "../primitives/button/button.vue";
 import Grid from "../primitives/grid/grid.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Text from "../primitives/text/text.vue";
+import EmptyState from "../components/empty-state.vue";
 import FigureBlock from "../components/figure-block.vue";
 import MediaFrame from "../components/media-frame.vue";
 import SectionFrame from "../components/section-frame.vue";
@@ -37,6 +39,7 @@ const {
   id,
   title,
   quotes,
+  empty = "",
   playLabel,
   byLine,
   cols = "1-3",
@@ -50,7 +53,8 @@ const emit = defineEmits<{ play: [id: string] }>();
 
 <template>
   <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
-    <Grid :cols="cols" class="gap-4" data-testid="items">
+    <EmptyState v-if="((quotes?.length ?? 0) === 0)" icon="video" :title="empty" />
+    <Grid v-else :cols="cols" class="gap-4" data-testid="items">
       <FigureBlock v-for="q in quotes" :key="q.id" class="m-0 flex flex-col gap-4" testid="item">
         <Box class="relative">
           <MediaFrame :alt="q.author" />

@@ -78,6 +78,7 @@
               id="article-column"
               title={ui.vibe.article.title}
               sections={article}
+              empty={ui.empty.sections}
               tocTitle={ui.vibe.article.toc}
               layout="column"
               quotes="show"
@@ -103,6 +104,7 @@
               id="article-toc"
               title={ui.vibe.article.title}
               sections={article}
+              empty={ui.empty.sections}
               tocTitle={ui.vibe.article.toc}
               layout="toc"
               quotes="show"
@@ -128,6 +130,7 @@
               id="article-plain"
               title={ui.vibe.article.title}
               sections={article}
+              empty={ui.empty.sections}
               tocTitle={ui.vibe.article.toc}
               layout="column"
               quotes="hide"
@@ -153,6 +156,7 @@
               id="article-muted"
               title={ui.vibe.article.title}
               sections={article}
+              empty={ui.empty.sections}
               tocTitle={ui.vibe.article.toc}
               layout="column"
               quotes="show"

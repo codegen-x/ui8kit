@@ -75,6 +75,7 @@ export function CartPage() {
                 id="cart-table"
                 title={ui.commerce.cart.title}
                 lines={cart}
+                empty={ui.empty.cart}
                 labels={ui.commerce.cart}
                 layout="table"
                 media="image"
@@ -101,6 +102,7 @@ export function CartPage() {
                 id="cart-cards"
                 title={ui.commerce.cart.title}
                 lines={cart}
+                empty={ui.empty.cart}
                 labels={ui.commerce.cart}
                 layout="cards"
                 media="image"
@@ -127,6 +129,7 @@ export function CartPage() {
                 id="cart-tableCompact"
                 title={ui.commerce.cart.title}
                 lines={cart}
+                empty={ui.empty.cart}
                 labels={ui.commerce.cart}
                 layout="table"
                 media="none"
@@ -153,6 +156,7 @@ export function CartPage() {
                 id="cart-cardsPlain"
                 title={ui.commerce.cart.title}
                 lines={cart}
+                empty={ui.empty.cart}
                 labels={ui.commerce.cart}
                 layout="cards"
                 media="none"

@@ -61,6 +61,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "cards",
       "type": {
         "ts": "BoardCard[]"
@@ -134,229 +140,258 @@
           "args": [],
           "do": [
             {
-              "use": "Grid",
-              "props": {
-                "Cols": {
-                  "op": "cond",
-                  "args": [
-                    {
-                      "op": "eq",
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "lanes"
+                      }
+                    ]
+                  },
+                  0
+                ]
+              },
+              "then": [
+                {
+                  "organism": "EmptyState",
+                  "props": {
+                    "icon": "kanban",
+                    "title": {
+                      "$": "empty"
+                    }
+                  }
+                }
+              ],
+              "else": [
+                {
+                  "use": "Grid",
+                  "props": {
+                    "Cols": {
+                      "op": "cond",
                       "args": [
                         {
-                          "$": "cols"
+                          "op": "eq",
+                          "args": [
+                            {
+                              "$": "cols"
+                            },
+                            "2"
+                          ]
                         },
-                        "2"
+                        "1-2",
+                        "1-3"
                       ]
                     },
-                    "1-2",
-                    "1-3"
-                  ]
-                },
-                "Class": "items-start gap-4"
-              },
-              "attrs": {
-                "data-testid": "lanes"
-              },
-              "children": [
-                {
-                  "each": {
-                    "$": "lanes"
+                    "Class": "items-start gap-4"
                   },
-                  "as": "lane",
-                  "key": {
-                    "$": "lane.id"
+                  "attrs": {
+                    "data-testid": "lanes"
                   },
-                  "do": [
+                  "children": [
                     {
-                      "use": "Stack",
-                      "props": {
-                        "Gap": "4",
-                        "Align": "stretch",
-                        "Class": "rounded bg-muted p-4"
+                      "each": {
+                        "$": "lanes"
                       },
-                      "attrs": {
-                        "data-testid": "lane"
+                      "as": "lane",
+                      "key": {
+                        "$": "lane.id"
                       },
-                      "children": [
+                      "do": [
                         {
-                          "use": "Group",
+                          "use": "Stack",
                           "props": {
-                            "Gap": "2",
-                            "Align": "center",
-                            "Justify": "between"
+                            "Gap": "4",
+                            "Align": "stretch",
+                            "Class": "rounded bg-muted p-4"
+                          },
+                          "attrs": {
+                            "data-testid": "lane"
                           },
                           "children": [
                             {
-                              "use": "Title",
+                              "use": "Group",
                               "props": {
-                                "As": 3,
-                                "Size": "base",
-                                "Weight": "bold"
+                                "Gap": "2",
+                                "Align": "center",
+                                "Justify": "between"
                               },
                               "children": [
                                 {
-                                  "text": {
-                                    "$": "lane.title"
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "use": "Text",
-                              "props": {
-                                "Size": "xs",
-                                "Class": "text-muted-foreground"
-                              },
-                              "children": [
+                                  "use": "Title",
+                                  "props": {
+                                    "As": 3,
+                                    "Size": "base",
+                                    "Weight": "bold"
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "lane.title"
+                                      }
+                                    }
+                                  ]
+                                },
                                 {
-                                  "text": {
-                                    "op": "tpl",
-                                    "args": [
-                                      {
-                                        "$": "countLabel"
-                                      },
-                                      {
-                                        "op": "len",
+                                  "use": "Text",
+                                  "props": {
+                                    "Size": "xs",
+                                    "Class": "text-muted-foreground"
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "op": "tpl",
                                         "args": [
                                           {
-                                            "op": "where",
+                                            "$": "countLabel"
+                                          },
+                                          {
+                                            "op": "len",
                                             "args": [
                                               {
-                                                "$": "cards"
-                                              },
-                                              "lane",
-                                              {
-                                                "$": "lane.key"
+                                                "op": "where",
+                                                "args": [
+                                                  {
+                                                    "$": "cards"
+                                                  },
+                                                  "lane",
+                                                  {
+                                                    "$": "lane.key"
+                                                  }
+                                                ]
                                               }
                                             ]
                                           }
                                         ]
                                       }
-                                    ]
-                                  }
+                                    }
+                                  ]
                                 }
                               ]
-                            }
-                          ]
-                        },
-                        {
-                          "use": "List",
-                          "props": {
-                            "Class": "m-0 flex list-none flex-col gap-2 p-0"
-                          },
-                          "children": [
+                            },
                             {
-                              "each": {
-                                "op": "where",
-                                "args": [
-                                  {
-                                    "$": "cards"
-                                  },
-                                  "lane",
-                                  {
-                                    "$": "lane.key"
-                                  }
-                                ]
+                              "use": "List",
+                              "props": {
+                                "Class": "m-0 flex list-none flex-col gap-2 p-0"
                               },
-                              "as": "c",
-                              "key": {
-                                "$": "c.id"
-                              },
-                              "do": [
+                              "children": [
                                 {
-                                  "use": "ListItem",
-                                  "props": {
-                                    "Class": {
-                                      "op": "cn",
-                                      "args": [
-                                        "flex flex-col rounded bg-card inset-ring inset-ring-border",
-                                        {
-                                          "op": "cond",
+                                  "each": {
+                                    "op": "where",
+                                    "args": [
+                                      {
+                                        "$": "cards"
+                                      },
+                                      "lane",
+                                      {
+                                        "$": "lane.key"
+                                      }
+                                    ]
+                                  },
+                                  "as": "c",
+                                  "key": {
+                                    "$": "c.id"
+                                  },
+                                  "do": [
+                                    {
+                                      "use": "ListItem",
+                                      "props": {
+                                        "Class": {
+                                          "op": "cn",
                                           "args": [
+                                            "flex flex-col rounded bg-card inset-ring inset-ring-border",
                                             {
-                                              "op": "eq",
+                                              "op": "cond",
                                               "args": [
                                                 {
-                                                  "$": "density"
+                                                  "op": "eq",
+                                                  "args": [
+                                                    {
+                                                      "$": "density"
+                                                    },
+                                                    "compact"
+                                                  ]
                                                 },
-                                                "compact"
+                                                "gap-2 p-2",
+                                                "gap-2 p-4"
                                               ]
-                                            },
-                                            "gap-2 p-2",
-                                            "gap-2 p-4"
+                                            }
                                           ]
                                         }
-                                      ]
-                                    }
-                                  },
-                                  "attrs": {
-                                    "data-testid": "item"
-                                  },
-                                  "children": [
-                                    {
-                                      "use": "Text",
-                                      "props": {
-                                        "Size": "sm",
-                                        "Weight": "semibold"
+                                      },
+                                      "attrs": {
+                                        "data-testid": "item"
                                       },
                                       "children": [
                                         {
-                                          "text": {
-                                            "$": "c.title"
-                                          }
-                                        }
-                                      ]
-                                    },
-                                    {
-                                      "when": {
-                                        "op": "eq",
-                                        "args": [
-                                          {
-                                            "$": "card"
-                                          },
-                                          "detail"
-                                        ]
-                                      },
-                                      "then": [
-                                        {
-                                          "use": "Group",
+                                          "use": "Text",
                                           "props": {
-                                            "Gap": "2",
-                                            "Align": "center",
-                                            "Justify": "between",
-                                            "Class": "flex-wrap"
+                                            "Size": "sm",
+                                            "Weight": "semibold"
                                           },
                                           "children": [
                                             {
-                                              "organism": "Pill",
-                                              "props": {
-                                                "tone": "blue",
-                                                "icon": "tag"
-                                              },
-                                              "slots": {
-                                                "children": {
-                                                  "args": [],
-                                                  "do": [
-                                                    {
-                                                      "text": {
-                                                        "$": "c.tag"
-                                                      }
-                                                    }
-                                                  ]
-                                                }
+                                              "text": {
+                                                "$": "c.title"
                                               }
-                                            },
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "when": {
+                                            "op": "eq",
+                                            "args": [
+                                              {
+                                                "$": "card"
+                                              },
+                                              "detail"
+                                            ]
+                                          },
+                                          "then": [
                                             {
-                                              "use": "Text",
+                                              "use": "Group",
                                               "props": {
-                                                "Size": "xs",
-                                                "Class": "text-muted-foreground"
+                                                "Gap": "2",
+                                                "Align": "center",
+                                                "Justify": "between",
+                                                "Class": "flex-wrap"
                                               },
                                               "children": [
                                                 {
-                                                  "text": {
-                                                    "$": "c.who"
+                                                  "organism": "Pill",
+                                                  "props": {
+                                                    "tone": "blue",
+                                                    "icon": "tag"
+                                                  },
+                                                  "slots": {
+                                                    "children": {
+                                                      "args": [],
+                                                      "do": [
+                                                        {
+                                                          "text": {
+                                                            "$": "c.tag"
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
                                                   }
+                                                },
+                                                {
+                                                  "use": "Text",
+                                                  "props": {
+                                                    "Size": "xs",
+                                                    "Class": "text-muted-foreground"
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "text": {
+                                                        "$": "c.who"
+                                                      }
+                                                    }
+                                                  ]
                                                 }
                                               ]
                                             }

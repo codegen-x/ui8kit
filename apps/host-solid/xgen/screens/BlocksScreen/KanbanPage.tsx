@@ -67,6 +67,7 @@ export function KanbanPage() {
                 id="kanban-detail"
                 title={ui.vibe.kanban.title}
                 lanes={lanes}
+                empty={ui.empty.lanes}
                 cards={cards}
                 countLabel={ui.vibe.kanban.count}
                 card="detail"
@@ -94,6 +95,7 @@ export function KanbanPage() {
                 id="kanban-simple"
                 title={ui.vibe.kanban.title}
                 lanes={lanes}
+                empty={ui.empty.lanes}
                 cards={cards}
                 countLabel={ui.vibe.kanban.count}
                 card="simple"
@@ -121,6 +123,7 @@ export function KanbanPage() {
                 id="kanban-twoCols"
                 title={ui.vibe.kanban.title}
                 lanes={lanes}
+                empty={ui.empty.lanes}
                 cards={cards}
                 countLabel={ui.vibe.kanban.count}
                 card="detail"
@@ -148,6 +151,7 @@ export function KanbanPage() {
                 id="kanban-muted"
                 title={ui.vibe.kanban.title}
                 lanes={lanes}
+                empty={ui.empty.lanes}
                 cards={cards}
                 countLabel={ui.vibe.kanban.count}
                 card="detail"

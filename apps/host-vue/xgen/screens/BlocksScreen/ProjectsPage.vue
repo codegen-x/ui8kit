@@ -24,7 +24,7 @@ import { projects as projectsEntries } from "@ui8kit/app-shared/data/projects";
 const PROJECTS_FIELDS = {
   "id": "id",
   "title": "title",
-  "category": "metadata.category.value",
+  "category": "terms|term:project_category",
   "year": "metadata.year.value",
   "summary": "metadata.summary.value",
   "tags": "metadata.tags.value",
@@ -73,6 +73,7 @@ const projects = fromCodex<Project>(projectsEntries, PROJECTS_FIELDS, CODEX);
               :title="ui.company.projects.title"
               :lead="ui.company.projects.lead"
               :projects="projects"
+              :empty="ui.empty.projects"
               :labels="ui.company.projects"
               layout="cards"
               tone="default"
@@ -99,6 +100,7 @@ const projects = fromCodex<Project>(projectsEntries, PROJECTS_FIELDS, CODEX);
               :title="ui.company.projects.title"
               :lead="ui.company.projects.lead"
               :projects="projects"
+              :empty="ui.empty.projects"
               :labels="ui.company.projects"
               layout="compact"
               tone="default"
@@ -125,6 +127,7 @@ const projects = fromCodex<Project>(projectsEntries, PROJECTS_FIELDS, CODEX);
               :title="ui.company.projects.title"
               :lead="ui.company.projects.lead"
               :projects="projects"
+              :empty="ui.empty.projects"
               :labels="ui.company.projects"
               layout="overlay"
               tone="default"
@@ -151,6 +154,7 @@ const projects = fromCodex<Project>(projectsEntries, PROJECTS_FIELDS, CODEX);
               :title="ui.company.projects.title"
               :lead="ui.company.projects.lead"
               :projects="projects"
+              :empty="ui.empty.projects"
               :labels="ui.company.projects"
               layout="bento"
               tone="default"
@@ -177,6 +181,7 @@ const projects = fromCodex<Project>(projectsEntries, PROJECTS_FIELDS, CODEX);
               :title="ui.company.projects.title"
               :lead="ui.company.projects.lead"
               :projects="projects"
+              :empty="ui.empty.projects"
               :labels="ui.company.projects"
               layout="list"
               tone="default"
@@ -203,6 +208,7 @@ const projects = fromCodex<Project>(projectsEntries, PROJECTS_FIELDS, CODEX);
               :title="ui.company.projects.title"
               :lead="ui.company.projects.lead"
               :projects="projects"
+              :empty="ui.empty.projects"
               :labels="ui.company.projects"
               layout="cards"
               tone="muted"

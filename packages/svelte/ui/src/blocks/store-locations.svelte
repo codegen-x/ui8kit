@@ -13,6 +13,7 @@
     title: string;
     lead?: string;
     stores: Store[];
+    empty?: string;
     kinds: Record<string, string>;
     labels: StoreLabels;
     layout?: "cards" | "list" | "map";
@@ -33,6 +34,7 @@
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import { at, cn, tpl } from "../utils";
@@ -42,6 +44,7 @@
     title,
     lead = "",
     stores,
+    empty = "",
     kinds,
     labels,
     layout = "cards",
@@ -51,81 +54,85 @@
 </script>
 
 <SectionFrame id={id} title={title} lead={lead} tone={tone} landmarkLabel={landmarkLabel}>
-  <Box
-    class={cn(
-      "grid grid-cols-1 gap-8",
-      (((layout as string) === "map") ? "items-start md:grid-cols-2" : "")
-    )}
-  >
+  {#if ((stores?.length ?? 0) === 0)}
+    <EmptyState icon="store" title={empty} />
+  {:else}
     <Box
-      class={
-        (layout as string) === "cards" ? "grid grid-cols-1 gap-4 md:grid-cols-2"
-        : "flex flex-col gap-4"
-      }
-      data-testid="items"
+      class={cn(
+        "grid grid-cols-1 gap-8",
+        (((layout as string) === "map") ? "items-start md:grid-cols-2" : "")
+      )}
     >
-      {#each stores as s (s.id)}
-        <Stack
-          gap="4"
-          class={
-            (layout as string) === "list" ? "border-b border-border pb-4"
-            : "rounded bg-card inset-ring inset-ring-border p-6"
-          }
-          data-testid="item"
-        >
-          <Stack gap="2">
-            <Badge variant="outline" size="default" class="w-fit">
-              {at(kinds, s.kind)}
-            </Badge>
-            <Title as={3} size="lg" weight="bold">
-              {s.name}
-            </Title>
-          </Stack>
-          <List
-            tag="ul"
+      <Box
+        class={
+          (layout as string) === "cards" ? "grid grid-cols-1 gap-4 md:grid-cols-2"
+          : "flex flex-col gap-4"
+        }
+        data-testid="items"
+      >
+        {#each stores as s (s.id)}
+          <Stack
+            gap="4"
             class={
-              (layout as string) === "list" ? "flex flex-wrap gap-x-8 gap-y-2 text-sm"
-              : "flex flex-col gap-2 text-sm"
+              (layout as string) === "list" ? "border-b border-border pb-4"
+              : "rounded bg-card inset-ring inset-ring-border p-6"
             }
+            data-testid="item"
           >
-            <ListItem class="flex items-center gap-2">
-              <LucideIcon name="map-pin" size={16} />
-              <Inline>
-                {s.address}
-              </Inline>
-            </ListItem>
-            <ListItem class="flex items-center gap-2">
-              <LucideIcon name="clock" size={16} />
-              <Inline>
-                {s.hours}
-              </Inline>
-            </ListItem>
-            <ListItem class="flex items-center gap-2">
-              <LucideIcon name="phone" size={16} />
-              <Link href={tpl("tel:{0}", s.phone)} variant="default">
-                {(s.phone ?? "").replaceAll(" ", "\u00a0")}
-              </Link>
-            </ListItem>
-          </List>
-          {#if ((layout as string) === "cards")}
-            <Text size="sm" class="text-muted-foreground">
-              {s.note}
-            </Text>
-            <Group gap="2" class="flex-wrap">
-              {#each s.services as v (v)}
-                <Badge variant="secondary" size="default">
-                  {v}
-                </Badge>
-              {/each}
-            </Group>
-          {/if}
-        </Stack>
-      {/each}
-    </Box>
-    {#if ((layout as string) === "map")}
-      <Box class="md:sticky md:top-8">
-        <MediaFrame alt={labels.map} ratio="1/1" />
+            <Stack gap="2">
+              <Badge variant="outline" size="default" class="w-fit">
+                {at(kinds, s.kind)}
+              </Badge>
+              <Title as={3} size="lg" weight="bold">
+                {s.name}
+              </Title>
+            </Stack>
+            <List
+              tag="ul"
+              class={
+                (layout as string) === "list" ? "flex flex-wrap gap-x-8 gap-y-2 text-sm"
+                : "flex flex-col gap-2 text-sm"
+              }
+            >
+              <ListItem class="flex items-center gap-2">
+                <LucideIcon name="map-pin" size={16} />
+                <Inline>
+                  {s.address}
+                </Inline>
+              </ListItem>
+              <ListItem class="flex items-center gap-2">
+                <LucideIcon name="clock" size={16} />
+                <Inline>
+                  {s.hours}
+                </Inline>
+              </ListItem>
+              <ListItem class="flex items-center gap-2">
+                <LucideIcon name="phone" size={16} />
+                <Link href={tpl("tel:{0}", s.phone)} variant="default">
+                  {(s.phone ?? "").replaceAll(" ", "\u00a0")}
+                </Link>
+              </ListItem>
+            </List>
+            {#if ((layout as string) === "cards")}
+              <Text size="sm" class="text-muted-foreground">
+                {s.note}
+              </Text>
+              <Group gap="2" class="flex-wrap">
+                {#each s.services as v (v)}
+                  <Badge variant="secondary" size="default">
+                    {v}
+                  </Badge>
+                {/each}
+              </Group>
+            {/if}
+          </Stack>
+        {/each}
       </Box>
-    {/if}
-  </Box>
+      {#if ((layout as string) === "map")}
+        <Box class="md:sticky md:top-8">
+          <MediaFrame alt={labels.map} ratio="1/1" />
+        </Box>
+      {/if}
+    </Box>
+  {/if}
 </SectionFrame>

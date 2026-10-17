@@ -16,6 +16,7 @@ import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { Title } from "../primitives/title/title";
+import { EmptyState } from "../components/empty-state";
 import { MediaFrame } from "../components/media-frame";
 import { SectionFrame } from "../components/section-frame";
 import { at, cn, tpl } from "../utils";
@@ -26,6 +27,7 @@ export type StoreLocationsProps = {
   title: string;
   lead?: string;
   stores: Store[];
+  empty?: string;
   kinds: Record<string, string>;
   labels: StoreLabels;
   layout?: "cards" | "list" | "map";
@@ -38,6 +40,7 @@ export function StoreLocations({
   title,
   lead = "",
   stores,
+  empty = "",
   kinds,
   labels,
   layout = "cards",
@@ -46,85 +49,89 @@ export function StoreLocations({
 }: StoreLocationsProps) {
   return (
     <SectionFrame id={id} title={title} lead={lead} tone={tone} landmarkLabel={landmarkLabel}>
-      <Box
-        className={cn(
-          "grid grid-cols-1 gap-8",
-          (((layout as string) === "map") ? "items-start md:grid-cols-2" : "")
-        )}
-      >
+      {((stores?.length ?? 0) === 0) ? (
+        <EmptyState icon="store" title={empty} />
+      ) : (
         <Box
-          className={
-            (layout as string) === "cards" ? "grid grid-cols-1 gap-4 md:grid-cols-2"
-            : "flex flex-col gap-4"
-          }
-          data-testid="items"
+          className={cn(
+            "grid grid-cols-1 gap-8",
+            (((layout as string) === "map") ? "items-start md:grid-cols-2" : "")
+          )}
         >
-          {(stores ?? []).map((s) => (
-            <Stack key={s.id}
-              gap="4"
-              className={
-                (layout as string) === "list" ? "border-b border-border pb-4"
-                : "rounded bg-card inset-ring inset-ring-border p-6"
-              }
-              data-testid="item"
-            >
-              <Stack gap="2">
-                <Badge variant="outline" size="default" className="w-fit">
-                  {at(kinds, s.kind)}
-                </Badge>
-                <Title as={3} size="lg" weight="bold">
-                  {s.name}
-                </Title>
-              </Stack>
-              <List
-                tag="ul"
+          <Box
+            className={
+              (layout as string) === "cards" ? "grid grid-cols-1 gap-4 md:grid-cols-2"
+              : "flex flex-col gap-4"
+            }
+            data-testid="items"
+          >
+            {(stores ?? []).map((s) => (
+              <Stack key={s.id}
+                gap="4"
                 className={
-                  (layout as string) === "list" ? "flex flex-wrap gap-x-8 gap-y-2 text-sm"
-                  : "flex flex-col gap-2 text-sm"
+                  (layout as string) === "list" ? "border-b border-border pb-4"
+                  : "rounded bg-card inset-ring inset-ring-border p-6"
                 }
+                data-testid="item"
               >
-                <ListItem className="flex items-center gap-2">
-                  <LucideIcon name="map-pin" size={16} />
-                  <Inline>
-                    {s.address}
-                  </Inline>
-                </ListItem>
-                <ListItem className="flex items-center gap-2">
-                  <LucideIcon name="clock" size={16} />
-                  <Inline>
-                    {s.hours}
-                  </Inline>
-                </ListItem>
-                <ListItem className="flex items-center gap-2">
-                  <LucideIcon name="phone" size={16} />
-                  <Link href={tpl("tel:{0}", s.phone)} variant="default">
-                    {(s.phone ?? "").replaceAll(" ", "\u00a0")}
-                  </Link>
-                </ListItem>
-              </List>
-              {((layout as string) === "cards") ? (
-                <>
-                  <Text size="sm" className="text-muted-foreground">
-                    {s.note}
-                  </Text>
-                  <Group gap="2" className="flex-wrap">
-                    {(s.services ?? []).map((v) => (
-                      <Badge key={v} variant="secondary" size="default">
-                        {v}
-                      </Badge>
-                    ))}
-                  </Group>
-                </>
-              ) : null}
-            </Stack>
-          ))}
-        </Box>
-        {((layout as string) === "map") ? (
-          <Box className="md:sticky md:top-8">
-            <MediaFrame alt={labels.map} ratio="1/1" />
+                <Stack gap="2">
+                  <Badge variant="outline" size="default" className="w-fit">
+                    {at(kinds, s.kind)}
+                  </Badge>
+                  <Title as={3} size="lg" weight="bold">
+                    {s.name}
+                  </Title>
+                </Stack>
+                <List
+                  tag="ul"
+                  className={
+                    (layout as string) === "list" ? "flex flex-wrap gap-x-8 gap-y-2 text-sm"
+                    : "flex flex-col gap-2 text-sm"
+                  }
+                >
+                  <ListItem className="flex items-center gap-2">
+                    <LucideIcon name="map-pin" size={16} />
+                    <Inline>
+                      {s.address}
+                    </Inline>
+                  </ListItem>
+                  <ListItem className="flex items-center gap-2">
+                    <LucideIcon name="clock" size={16} />
+                    <Inline>
+                      {s.hours}
+                    </Inline>
+                  </ListItem>
+                  <ListItem className="flex items-center gap-2">
+                    <LucideIcon name="phone" size={16} />
+                    <Link href={tpl("tel:{0}", s.phone)} variant="default">
+                      {(s.phone ?? "").replaceAll(" ", "\u00a0")}
+                    </Link>
+                  </ListItem>
+                </List>
+                {((layout as string) === "cards") ? (
+                  <>
+                    <Text size="sm" className="text-muted-foreground">
+                      {s.note}
+                    </Text>
+                    <Group gap="2" className="flex-wrap">
+                      {(s.services ?? []).map((v) => (
+                        <Badge key={v} variant="secondary" size="default">
+                          {v}
+                        </Badge>
+                      ))}
+                    </Group>
+                  </>
+                ) : null}
+              </Stack>
+            ))}
           </Box>
-        ) : null}
-      </Box>
+          {((layout as string) === "map") ? (
+            <Box className="md:sticky md:top-8">
+              <MediaFrame alt={labels.map} ratio="1/1" />
+            </Box>
+          ) : null}
+        </Box>
+      )}
     </SectionFrame>
   );
 }

@@ -86,6 +86,7 @@
               id="orders-table"
               title={ui.commerce.orders.title}
               orders={orders}
+              empty={ui.empty.orders}
               statuses={ui.status}
               labels={ui.commerce.orders}
               layout="table"
@@ -113,6 +114,7 @@
               id="orders-cards"
               title={ui.commerce.orders.title}
               orders={orders}
+              empty={ui.empty.orders}
               statuses={ui.status}
               labels={ui.commerce.orders}
               layout="cards"
@@ -140,6 +142,7 @@
               id="orders-noPager"
               title={ui.commerce.orders.title}
               orders={orders}
+              empty={ui.empty.orders}
               statuses={ui.status}
               labels={ui.commerce.orders}
               layout="table"
@@ -167,6 +170,7 @@
               id="orders-compactMuted"
               title={ui.commerce.orders.title}
               orders={orders}
+              empty={ui.empty.orders}
               statuses={ui.status}
               labels={ui.commerce.orders}
               layout="table"

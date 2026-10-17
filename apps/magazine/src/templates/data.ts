@@ -39,16 +39,8 @@ import { details } from "@ui8kit/app-shared/data/details";
 
 export const ui = kitUi;
 
-// the maps of product, post, plan and review are the central ones (runtime/fields, source xgen/runtimes/core/assets/app/fields.ts)
-const f = {
-  reviews: CODEX_FIELDS.review,
-  posts: CODEX_FIELDS.post,
-  products: CODEX_FIELDS.product,
-  plan: CODEX_FIELDS.plan,
-  metrics: { id: "id", label: "title", value: "metadata.value.value", icon: "metadata.icon.value", hint: "metadata.hint.value" },
-  projects: { id: "id", title: "title", category: "metadata.category.value", year: "metadata.year.value", summary: "metadata.summary.value", tags: "metadata.tags.value", featured: "metadata.featured.value", client: "metadata.client.value" },
-  testimonials: { id: "id", author: "title", role: "metadata.role.value", company: "metadata.company.value", quote: "metadata.quote.value", rating: "metadata.rating.value", handle: "metadata.handle.value", time: "metadata.time.value|ago-short", mark: "metadata.mark.value" },
-};
+// every map is a central one (runtime/fields, source xgen/runtimes/core/assets/app/fields.ts): one data contract per kind
+const F = CODEX_FIELDS;
 
 /** replaces the fixtures' one fictional company name with the deck's wordmark, deeply, without touching the source */
 export function rebrand<T>(value: T, brand: string): T {
@@ -70,36 +62,36 @@ export function makeData(brand: string) {
   return {
     brand,
     ui: rb(kitUi),
-    // the menus: Codex menu_item entries (CODEX_FIELDS.menuItem); no route for menu items, so names, not links
-    sidenav: rb(fromCodex<NavLink>(sidenav, CODEX_FIELDS.menuItem, codex)),
-    subnav: fromCodex<NavLink>(subnav, CODEX_FIELDS.menuItem, codex),
-    helplinks: fromCodex<NavLink>(helplinks, CODEX_FIELDS.menuItem, codex),
-    navlinks: fromCodex<NavLink>(navlinks, CODEX_FIELDS.menuItem, codex),
-    outline: fromCodex<NavLink>(outline, CODEX_FIELDS.menuItem, codex),
+    // the menus: Codex menu_item entries (F.menuItem); no route for menu items, so names, not links
+    sidenav: rb(fromCodex<NavLink>(sidenav, F.menuItem, codex)),
+    subnav: fromCodex<NavLink>(subnav, F.menuItem, codex),
+    helplinks: fromCodex<NavLink>(helplinks, F.menuItem, codex),
+    navlinks: fromCodex<NavLink>(navlinks, F.menuItem, codex),
+    outline: fromCodex<NavLink>(outline, F.menuItem, codex),
     // the breadcrumbs: the pages of the parent_id chain, root first (no page routes in the magazine: names, no links)
-    crumbs: fromCodex<NavLink>(trail(crumbs), CODEX_FIELDS.page, codex),
-    metrics: fromCodex<Stat>(metrics, f.metrics),
-    stats: fromCodex<Stat>(stats, CODEX_FIELDS.stat, codex),
-    series: fromCodex<Point>(series, { id: "id", label: "title", value: "metadata.value.value" }),
-    activity: fromCodex<Event>(activity, { id: "id", title: "title", text: "metadata.text.value", time: "metadata.time.value|ago", tone: "metadata.tone.value" }),
-    posts: fromCodex<Post>(posts, f.posts, codex),
-    topics: fromCodex<PostTopic>(topics, { id: "id", title: "title", value: "metadata.value.value" }),
-    article: fromCodex<Section>(article, { id: "id", title: "title", text: "metadata.text.value", quote: "metadata.quote.value" }),
-    products: fromCodex<Product>(products, f.products, codex),
-    categories: fromCodex<Category>(categories, CODEX_FIELDS.menuCategory, codex),
-    reviews: fromCodex<Review>(reviews, f.reviews, codex),
-    specs: fromCodex<Spec>(specs, { id: "id", label: "title", value: "metadata.value.value" }),
-    details: fromCodex<{ id: string; title: string; text: string }>(details, { id: "id", title: "title", text: "metadata.text.value" }),
-    projects: rb(fromCodex<Project>(projects, f.projects)),
-    photos: fromCodex<Photo>(photos, { id: "id", title: "title", tag: "metadata.tag.value", size: "metadata.size.value" }),
-    facts: fromCodex<Spec>(profilefacts, { id: "id", label: "title", value: "metadata.value.value" }),
-    skills: fromCodex<Skill>(skills, { id: "id", label: "title", level: "metadata.level.value" }),
-    features: fromCodex<Feature>(features, { id: "id", title: "title", text: "metadata.text.value", icon: "metadata.icon.value" }),
-    steps: fromCodex<Step>(steps, { id: "id", title: "title", text: "metadata.text.value", icon: "metadata.icon.value" }),
-    tiers: fromCodex<Plan>(tiers, f.plan, codex),
-    testimonials: fromCodex<Quote>(testimonials, f.testimonials),
-    faq: fromCodex<Faq>(faq, CODEX_FIELDS.faq, codex),
+    crumbs: fromCodex<NavLink>(trail(crumbs), F.page, codex),
+    metrics: fromCodex<Stat>(metrics, F.metric, codex),
+    stats: fromCodex<Stat>(stats, F.stat, codex),
+    series: fromCodex<Point>(series, F.point),
+    activity: fromCodex<Event>(activity, F.event),
+    posts: fromCodex<Post>(posts, F.post, codex),
+    topics: fromCodex<PostTopic>(topics, F.topic),
+    article: fromCodex<Section>(article, F.section),
+    products: fromCodex<Product>(products, F.product, codex),
+    categories: fromCodex<Category>(categories, F.menuCategory, codex),
+    reviews: fromCodex<Review>(reviews, F.review, codex),
+    specs: fromCodex<Spec>(specs, F.spec),
+    details: fromCodex<{ id: string; title: string; text: string }>(details, F.detail),
+    projects: rb(fromCodex<Project>(projects, F.project, codex)),
+    photos: fromCodex<Photo>(photos, F.photo),
+    facts: fromCodex<Spec>(profilefacts, F.profilefact),
+    skills: fromCodex<Skill>(skills, F.skill),
+    features: fromCodex<Feature>(features, F.feature),
+    steps: fromCodex<Step>(steps, F.step),
+    tiers: fromCodex<Plan>(tiers, F.plan, codex),
+    testimonials: fromCodex<Quote>(testimonials, F.testimonial),
+    faq: fromCodex<Faq>(faq, F.faq, codex),
     // the footer menu: groups and the items under them (parent_id, the lookup CODEX.menus)
-    sitemap: fromCodex<MegaGroup>(sitemap, CODEX_FIELDS.menuGroup, codex),
+    sitemap: fromCodex<MegaGroup>(sitemap, F.menuGroup, codex),
   };
 }

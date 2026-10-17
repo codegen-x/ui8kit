@@ -12,6 +12,7 @@ export type FeatureStickyProps = {
   id: string;
   title: string;
   features: Feature[];
+  empty?: string;
   active?: string;
   mediaSide?: "end" | "start";
   item?: "plain" | "card";
@@ -28,6 +29,7 @@ import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
+import EmptyState from "../components/empty-state.vue";
 import MediaFrame from "../components/media-frame.vue";
 import SectionFrame from "../components/section-frame.vue";
 import { cn } from "../utils";
@@ -36,6 +38,7 @@ const {
   id,
   title,
   features,
+  empty = "",
   active = "",
   mediaSide = "end",
   item = "plain",
@@ -47,7 +50,8 @@ const {
 
 <template>
   <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
-    <Grid cols="1-2" class="items-start gap-8" data-testid="sticky">
+    <EmptyState v-if="((features?.length ?? 0) === 0)" icon="layout-grid" :title="empty" />
+    <Grid v-else cols="1-2" class="items-start gap-8" data-testid="sticky">
       <Box
         :class="cn(
           'md:sticky md:top-8',

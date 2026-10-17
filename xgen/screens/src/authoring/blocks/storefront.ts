@@ -3,7 +3,7 @@ import { cn, cond, each, eachAt, eq, lt, ref, text, undef, use, when, organism }
 import type { OrganismSpec } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { behind, frame } from "../components/frames";
-import { id, tsOf, toneLite, denseLite } from "../props";
+import { empty, id, orEmpty, tsOf, toneLite, denseLite } from "../props";
 import { muted, strong, surface } from "../ux";
 
 const O = "organism.";
@@ -53,11 +53,12 @@ const uspStrip = spec(`${O}usp-strip`, "UspStrip", "The promises of a store in o
     id,
     { name: "title", type: "string", default: "", docs: "section heading; empty: no heading (the section is named by id)" },
     { name: "perks", type: ts("Feature[]"), required: true },
+    empty,
     { name: "layout", type: tsOf("strip", "cards", "bar"), default: "strip" },
     { name: "tone", type: toneLite, default: "default" },
     { name: "density", type: denseLite, default: "default" },
   ],
-  view: [frame({ id: ref("id"), title: ref("title"), tone: ref("tone"), density: ref("density") }, [
+  view: [frame({ id: ref("id"), title: ref("title"), tone: ref("tone"), density: ref("density") }, [orEmpty("perks", "truck", [
     when(eq(ref("layout"), "bar"),
       [use("List", { props: { Tag: "ul", Class: "flex flex-wrap items-center justify-center gap-x-8 gap-y-4" }, attrs: { "data-testid": "items" } },
         each(ref("perks"), "p", ref("p.id"),
@@ -67,7 +68,7 @@ const uspStrip = spec(`${O}usp-strip`, "UspStrip", "The promises of a store in o
         each(ref("perks"), "p", ref("p.id"),
           use("Stack", { props: { Gap: "4", Class: cond(eq(ref("layout"), "cards"), surface("p-6"), "") }, attrs: { "data-testid": "item" } },
             iconSquare("p.icon"),
-            use("Stack", { props: { Gap: "2" } }, strong(ref("p.title"), "sm"), muted(ref("p.text"))))))]),
+            use("Stack", { props: { Gap: "2" } }, strong(ref("p.title"), "sm"), muted(ref("p.text"))))))]),])
   ])],
 });
 

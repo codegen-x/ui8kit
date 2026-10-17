@@ -86,6 +86,7 @@ export function MarketingShowcasesPage() {
                   id="bento-bento"
                   title={ui.vibe.bento.title}
                   tiles={bento}
+                  empty={ui.empty.tiles}
                   layout="bento"
                   media="none"
                   tone="default"
@@ -111,6 +112,7 @@ export function MarketingShowcasesPage() {
                   id="bento-even"
                   title={ui.vibe.bento.title}
                   tiles={bento}
+                  empty={ui.empty.tiles}
                   layout="even"
                   media="none"
                   tone="default"
@@ -136,6 +138,7 @@ export function MarketingShowcasesPage() {
                   id="bento-images"
                   title={ui.vibe.bento.title}
                   tiles={bento}
+                  empty={ui.empty.tiles}
                   layout="bento"
                   media="image"
                   tone="default"
@@ -161,6 +164,7 @@ export function MarketingShowcasesPage() {
                   id="bento-muted"
                   title={ui.vibe.bento.title}
                   tiles={bento}
+                  empty={ui.empty.tiles}
                   layout="bento"
                   media="none"
                   tone="muted"
@@ -203,6 +207,7 @@ export function MarketingShowcasesPage() {
                   id="featuretabs-split"
                   title={ui.vibe.tabs.title}
                   features={features}
+                  empty={ui.empty.features}
                   tabsLabel={ui.vibe.tabs.label}
                   active="feature-clear"
                   panel="split"
@@ -229,6 +234,7 @@ export function MarketingShowcasesPage() {
                   id="featuretabs-stack"
                   title={ui.vibe.tabs.title}
                   features={features}
+                  empty={ui.empty.features}
                   tabsLabel={ui.vibe.tabs.label}
                   active="feature-clear"
                   panel="stack"
@@ -255,6 +261,7 @@ export function MarketingShowcasesPage() {
                   id="featuretabs-muted"
                   title={ui.vibe.tabs.title}
                   features={features}
+                  empty={ui.empty.features}
                   tabsLabel={ui.vibe.tabs.label}
                   active="feature-clear"
                   panel="split"
@@ -298,6 +305,7 @@ export function MarketingShowcasesPage() {
                   id="accordion-first"
                   title={ui.vibe.accordion.title}
                   features={features}
+                  empty={ui.empty.features}
                   expand="first"
                   media="none"
                   tone="default"
@@ -323,6 +331,7 @@ export function MarketingShowcasesPage() {
                   id="accordion-closed"
                   title={ui.vibe.accordion.title}
                   features={features}
+                  empty={ui.empty.features}
                   expand="none"
                   media="none"
                   tone="default"
@@ -348,6 +357,7 @@ export function MarketingShowcasesPage() {
                   id="accordion-media"
                   title={ui.vibe.accordion.title}
                   features={features}
+                  empty={ui.empty.features}
                   expand="first"
                   media="image"
                   tone="default"
@@ -373,6 +383,7 @@ export function MarketingShowcasesPage() {
                   id="accordion-muted"
                   title={ui.vibe.accordion.title}
                   features={features}
+                  empty={ui.empty.features}
                   expand="first"
                   media="none"
                   tone="muted"
@@ -415,6 +426,7 @@ export function MarketingShowcasesPage() {
                   id="sticky-end"
                   title={ui.vibe.sticky.title}
                   features={features}
+                  empty={ui.empty.features}
                   active="feature-clear"
                   mediaSide="end"
                   item="plain"
@@ -441,6 +453,7 @@ export function MarketingShowcasesPage() {
                   id="sticky-start"
                   title={ui.vibe.sticky.title}
                   features={features}
+                  empty={ui.empty.features}
                   active="feature-clear"
                   mediaSide="start"
                   item="plain"
@@ -467,6 +480,7 @@ export function MarketingShowcasesPage() {
                   id="sticky-card"
                   title={ui.vibe.sticky.title}
                   features={features}
+                  empty={ui.empty.features}
                   active="feature-clear"
                   mediaSide="end"
                   item="card"
@@ -493,6 +507,7 @@ export function MarketingShowcasesPage() {
                   id="sticky-muted"
                   title={ui.vibe.sticky.title}
                   features={features}
+                  empty={ui.empty.features}
                   active="feature-clear"
                   mediaSide="end"
                   item="plain"

@@ -9,6 +9,7 @@ import { type JSX } from "solid-js";
 import { Group } from "../primitives/group/group";
 import { Link } from "../primitives/link/link";
 import { Title } from "../primitives/title/title";
+import { EmptyState } from "../components/empty-state";
 import { FeatureCards } from "../components/feature-cards";
 import { FeatureRows } from "../components/feature-rows";
 import { SectionFrame } from "../components/section-frame";
@@ -21,6 +22,7 @@ export type FeatureGridProps = {
   id: string;
   title: string;
   features: Feature[];
+  empty?: string;
   action?: HeadLink;
   layout?: "grid" | "rows";
   cols?: "1-2" | "1-3" | "1-4";
@@ -35,6 +37,7 @@ export function FeatureGrid({
   id,
   title,
   features,
+  empty = "",
   action,
   layout = "grid",
   cols = "1-3",
@@ -63,11 +66,17 @@ export function FeatureGrid({
               </Link>
             ) : null}
           </Group>
-          <FeatureCards features={features} cols={cols} item={item} />
+          {((features?.length ?? 0) === 0) ? (
+            <EmptyState icon="layout-grid" title={empty} />
+          ) : (
+            <FeatureCards features={features} cols={cols} item={item} />
+          )}
         </SectionFrame>
       ) : (
         <SectionFrame id={id} title={title} action={action} tone={tone} density={density} landmarkLabel={landmarkLabel}>
-          {((layout as string) === "rows") ? (
+          {((features?.length ?? 0) === 0) ? (
+            <EmptyState icon="layout-grid" title={empty} />
+          ) : ((layout as string) === "rows") ? (
             <FeatureRows features={features} mediaSide={mediaSide} />
           ) : (
             <FeatureCards features={features} cols={cols} item={item} />

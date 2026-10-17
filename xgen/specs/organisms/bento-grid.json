@@ -47,6 +47,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "layout",
       "type": {
         "ts": "\"bento\" | \"even\""
@@ -114,49 +120,107 @@
           "args": [],
           "do": [
             {
-              "use": "Grid",
-              "props": {
-                "Cols": "1-4",
-                "Class": "auto-rows-fr gap-4"
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "tiles"
+                      }
+                    ]
+                  },
+                  0
+                ]
               },
-              "attrs": {
-                "data-testid": "items"
-              },
-              "children": [
+              "then": [
                 {
-                  "each": {
-                    "$": "tiles"
+                  "organism": "EmptyState",
+                  "props": {
+                    "icon": "layout-dashboard",
+                    "title": {
+                      "$": "empty"
+                    }
+                  }
+                }
+              ],
+              "else": [
+                {
+                  "use": "Grid",
+                  "props": {
+                    "Cols": "1-4",
+                    "Class": "auto-rows-fr gap-4"
                   },
-                  "as": "tile",
-                  "key": {
-                    "$": "tile.id"
+                  "attrs": {
+                    "data-testid": "items"
                   },
-                  "do": [
+                  "children": [
                     {
-                      "use": "Card",
-                      "props": {
-                        "Variant": "default",
-                        "Class": {
-                          "op": "cn",
-                          "args": [
-                            "h-full overflow-hidden",
-                            {
-                              "op": "cond",
+                      "each": {
+                        "$": "tiles"
+                      },
+                      "as": "tile",
+                      "key": {
+                        "$": "tile.id"
+                      },
+                      "do": [
+                        {
+                          "use": "Card",
+                          "props": {
+                            "Variant": "default",
+                            "Class": {
+                              "op": "cn",
                               "args": [
+                                "h-full overflow-hidden",
                                 {
-                                  "op": "eq",
+                                  "op": "cond",
                                   "args": [
                                     {
-                                      "$": "density"
+                                      "op": "eq",
+                                      "args": [
+                                        {
+                                          "$": "density"
+                                        },
+                                        "compact"
+                                      ]
                                     },
-                                    "compact"
+                                    "gap-4 p-4",
+                                    ""
                                   ]
                                 },
-                                "gap-4 p-4",
-                                ""
+                                {
+                                  "op": "cond",
+                                  "args": [
+                                    {
+                                      "op": "eq",
+                                      "args": [
+                                        {
+                                          "$": "layout"
+                                        },
+                                        "bento"
+                                      ]
+                                    },
+                                    {
+                                      "op": "at",
+                                      "args": [
+                                        {
+                                          "$": "SPAN"
+                                        },
+                                        {
+                                          "$": "tile.size"
+                                        }
+                                      ]
+                                    },
+                                    ""
+                                  ]
+                                }
                               ]
-                            },
-                            {
+                            }
+                          },
+                          "attrs": {
+                            "data-testid": "item",
+                            "data-size": {
                               "op": "cond",
                               "args": [
                                 {
@@ -169,136 +233,107 @@
                                   ]
                                 },
                                 {
-                                  "op": "at",
-                                  "args": [
-                                    {
-                                      "$": "SPAN"
-                                    },
-                                    {
-                                      "$": "tile.size"
-                                    }
-                                  ]
+                                  "$": "tile.size"
                                 },
-                                ""
+                                "even"
                               ]
                             }
-                          ]
-                        }
-                      },
-                      "attrs": {
-                        "data-testid": "item",
-                        "data-size": {
-                          "op": "cond",
-                          "args": [
-                            {
-                              "op": "eq",
-                              "args": [
-                                {
-                                  "$": "layout"
-                                },
-                                "bento"
-                              ]
-                            },
-                            {
-                              "$": "tile.size"
-                            },
-                            "even"
-                          ]
-                        }
-                      },
-                      "children": [
-                        {
-                          "use": "CardContent",
-                          "props": {
-                            "Class": "flex h-full flex-col gap-4"
                           },
                           "children": [
                             {
-                              "use": "LucideIcon",
+                              "use": "CardContent",
                               "props": {
-                                "Name": {
-                                  "$": "tile.icon"
+                                "Class": "flex h-full flex-col gap-4"
+                              },
+                              "children": [
+                                {
+                                  "use": "LucideIcon",
+                                  "props": {
+                                    "Name": {
+                                      "$": "tile.icon"
+                                    },
+                                    "Size": 24
+                                  }
                                 },
-                                "Size": 24
-                              }
-                            },
-                            {
-                              "use": "Title",
-                              "props": {
-                                "As": 3,
-                                "Size": "xl",
-                                "Weight": "bold"
-                              },
-                              "children": [
                                 {
-                                  "text": {
-                                    "$": "tile.title"
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "use": "Text",
-                              "props": {
-                                "Size": "sm",
-                                "Class": "text-muted-foreground"
-                              },
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "tile.text"
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "when": {
-                                "op": "and",
-                                "args": [
-                                  {
-                                    "op": "eq",
-                                    "args": [
-                                      {
-                                        "$": "media"
-                                      },
-                                      "image"
-                                    ]
+                                  "use": "Title",
+                                  "props": {
+                                    "As": 3,
+                                    "Size": "xl",
+                                    "Weight": "bold"
                                   },
-                                  {
-                                    "op": "or",
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "tile.title"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "use": "Text",
+                                  "props": {
+                                    "Size": "sm",
+                                    "Class": "text-muted-foreground"
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "tile.text"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "when": {
+                                    "op": "and",
                                     "args": [
                                       {
                                         "op": "eq",
                                         "args": [
                                           {
-                                            "$": "tile.size"
+                                            "$": "media"
                                           },
-                                          "large"
+                                          "image"
                                         ]
                                       },
                                       {
-                                        "op": "eq",
+                                        "op": "or",
                                         "args": [
                                           {
-                                            "$": "layout"
+                                            "op": "eq",
+                                            "args": [
+                                              {
+                                                "$": "tile.size"
+                                              },
+                                              "large"
+                                            ]
                                           },
-                                          "even"
+                                          {
+                                            "op": "eq",
+                                            "args": [
+                                              {
+                                                "$": "layout"
+                                              },
+                                              "even"
+                                            ]
+                                          }
                                         ]
                                       }
                                     ]
-                                  }
-                                ]
-                              },
-                              "then": [
-                                {
-                                  "organism": "MediaFrame",
-                                  "props": {
-                                    "alt": {
-                                      "$": "tile.title"
-                                    },
-                                    "ratio": "4/3",
-                                    "className": "mt-auto"
-                                  }
+                                  },
+                                  "then": [
+                                    {
+                                      "organism": "MediaFrame",
+                                      "props": {
+                                        "alt": {
+                                          "$": "tile.title"
+                                        },
+                                        "ratio": "4/3",
+                                        "className": "mt-auto"
+                                      }
+                                    }
+                                  ]
                                 }
                               ]
                             }

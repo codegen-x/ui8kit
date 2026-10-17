@@ -13,6 +13,7 @@
     id: string;
     title: string;
     features: Feature[];
+    empty?: string;
     active?: string;
     mediaSide?: "end" | "start";
     item?: "plain" | "card";
@@ -29,6 +30,7 @@
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import { cn } from "../utils";
@@ -37,6 +39,7 @@
     id,
     title,
     features,
+    empty = "",
     active = "",
     mediaSide = "end",
     item = "plain",
@@ -47,36 +50,40 @@
 </script>
 
 <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
-  <Grid cols="1-2" class="items-start gap-8" data-testid="sticky">
-    <Box
-      class={cn(
-        "md:sticky md:top-8",
-        (((mediaSide as string) === "start") ? "md:order-first" : "md:order-last")
-      )}
-      data-testid="sticky-media"
-    >
-      <MediaFrame alt={title} ratio="4/3" />
-    </Box>
-    <Stack gap={(((density as string) === "compact") ? "4" : "8")} align="stretch" data-testid="items">
-      {#each features as f (f.id)}
-        <Stack
-          gap="2"
-          class={cn(
-            (((item as string) === "card") ? "rounded bg-card inset-ring inset-ring-border p-6" : "py-4"),
-            ((f.id === active) ? "inset-ring inset-ring-foreground" : "")
-          )}
-          data-testid="item"
-          aria-current={((f.id === active) ? "true" : undefined)}
-        >
-          <LucideIcon name={f.icon} size={24} />
-          <Title as={3} size="2xl" weight="bold">
-            {f.title}
-          </Title>
-          <Text size="base" class="text-muted-foreground">
-            {f.text}
-          </Text>
-        </Stack>
-      {/each}
-    </Stack>
-  </Grid>
+  {#if ((features?.length ?? 0) === 0)}
+    <EmptyState icon="layout-grid" title={empty} />
+  {:else}
+    <Grid cols="1-2" class="items-start gap-8" data-testid="sticky">
+      <Box
+        class={cn(
+          "md:sticky md:top-8",
+          (((mediaSide as string) === "start") ? "md:order-first" : "md:order-last")
+        )}
+        data-testid="sticky-media"
+      >
+        <MediaFrame alt={title} ratio="4/3" />
+      </Box>
+      <Stack gap={(((density as string) === "compact") ? "4" : "8")} align="stretch" data-testid="items">
+        {#each features as f (f.id)}
+          <Stack
+            gap="2"
+            class={cn(
+              (((item as string) === "card") ? "rounded bg-card inset-ring inset-ring-border p-6" : "py-4"),
+              ((f.id === active) ? "inset-ring inset-ring-foreground" : "")
+            )}
+            data-testid="item"
+            aria-current={((f.id === active) ? "true" : undefined)}
+          >
+            <LucideIcon name={f.icon} size={24} />
+            <Title as={3} size="2xl" weight="bold">
+              {f.title}
+            </Title>
+            <Text size="base" class="text-muted-foreground">
+              {f.text}
+            </Text>
+          </Stack>
+        {/each}
+      </Stack>
+    </Grid>
+  {/if}
 </SectionFrame>

@@ -3,7 +3,7 @@ import { and, cn, cond, each, eachAt, eq, firstOf, len, or, ref, text, tpl, use,
 import type { OrganismSpec, Value } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { frame } from "../components/frames";
-import { id, title, tsOf, toneLite, denseLite } from "../props";
+import { empty, id, orEmpty, title, tsOf, toneLite, denseLite } from "../props";
 import { heading, muted, strong, surface } from "../ux";
 import { figureBlockOf } from "../components/landmarks";
 
@@ -18,13 +18,14 @@ const photoGallery = spec(`${O}photo-gallery`, "PhotoGallery", "Photos in a grid
   props: [
     id, title, lead,
     { name: "photos", type: ts("Photo[]"), required: true },
+    empty,
     { name: "labels", type: { record: "PhotoLabels" }, required: true },
     { name: "layout", type: tsOf("grid", "masonry", "mosaic", "featured", "cards"), default: "grid" },
     { name: "captions", type: tsOf("show", "hide"), default: "show" },
     { name: "tone", type: toneLite, default: "default" },
     { name: "density", type: denseLite, default: "default" },
   ],
-  view: [frame(common, [
+  view: [frame(common, [orEmpty("photos", "image", [
     when(eq(ref("layout"), "featured"),
       [use("Stack", { props: { Gap: "4", Align: "stretch" }, attrs: { "data-testid": "featured" } },
         organism("MediaFrame", { alt: ref("title"), ratio: "16/9" }),
@@ -41,21 +42,22 @@ const photoGallery = spec(`${O}photo-gallery`, "PhotoGallery", "Photos in a grid
           figureBlockOf(cn("flex flex-col gap-2", cond(eq(ref("layout"), "masonry"), "mb-4 break-inside-avoid", ""), cond(and(eq(ref("layout"), "mosaic"), eq(ref("i"), 0)), "col-span-2 row-span-2", ""), cond(eq(ref("layout"), "cards"), surface("p-4"), "")), "item",
             organism("MediaFrame", { alt: ref("p.title"), ratio: cond(eq(ref("layout"), "masonry"), ratioOf(ref("p.size")), cond(eq(ref("layout"), "grid"), "4/3", "1/1")), className: cond(eq(ref("layout"), "mosaic"), "h-full", "") }),
             when(and(eq(ref("captions"), "show"), eq(ref("layout"), "cards")), [use("Group", { props: { Gap: "4", Align: "center", Justify: "between" } }, strong(ref("p.title"), "sm"), use("Badge", { props: { Variant: "secondary", Size: "sm" } }, text(ref("p.tag"))))]),
-            when(and(eq(ref("captions"), "show"), or(eq(ref("layout"), "grid"), eq(ref("layout"), "masonry"))), [use("Box", { props: { Class: "text-sm text-muted-foreground" }, attrs: { "data-testid": "caption" } }, text(ref("p.title")))]))))]),
+            when(and(eq(ref("captions"), "show"), or(eq(ref("layout"), "grid"), eq(ref("layout"), "masonry"))), [use("Box", { props: { Class: "text-sm text-muted-foreground" }, attrs: { "data-testid": "caption" } }, text(ref("p.title")))]))))]),])
   ])],
 });
 
 const projectGrid = spec(`${O}project-grid`, "ProjectGrid", "Projects of a studio or a person: cards with tags and links, a compact grid, tiles with the caption over the picture, a bento with one big project, or a list beside a collage. Axes: layout (cards, compact, overlay, bento, list), tone, density.", {
-  records: { Project: fields(["id", "string"], ["title", "string"], ["category", "string"], ["year", "string"], ["summary", "string"], ["tags", "string[]"], ["featured", "boolean"], ["client", "string"], ["href", "string", true]), ProjectLabels: fields(["featured", "string"], ["view", "string"], ["case", "string"]) },
+  records: { Project: fields(["id", "string"], ["title", "string"], ["category", "string"], ["year", "number"], ["summary", "string"], ["tags", "string[]"], ["featured", "boolean"], ["client", "string"], ["href", "string", true]), ProjectLabels: fields(["featured", "string"], ["view", "string"], ["case", "string"]) },
   props: [
     id, title, lead,
     { name: "projects", type: ts("Project[]"), required: true },
+    empty,
     { name: "labels", type: { record: "ProjectLabels" }, required: true },
     { name: "layout", type: tsOf("cards", "compact", "overlay", "bento", "list"), default: "cards" },
     { name: "tone", type: toneLite, default: "default" },
     { name: "density", type: denseLite, default: "default" },
   ],
-  view: [frame({ ...common, layout: cond(eq(ref("layout"), "list"), "split", "stack"), hasMedia: eq(ref("layout"), "list"), mediaAlign: "start" }, [
+  view: [frame({ ...common, layout: cond(eq(ref("layout"), "list"), "split", "stack"), hasMedia: eq(ref("layout"), "list"), mediaAlign: "start" }, [orEmpty("projects", "folder-open", [
     when(eq(ref("layout"), "list"),
       [use("Stack", { props: { Gap: "4", Align: "stretch" }, attrs: { "data-testid": "items" } },
         each(ref("projects"), "p", ref("p.id"),
@@ -64,7 +66,7 @@ const projectGrid = spec(`${O}project-grid`, "ProjectGrid", "Projects of a studi
             use("Stack", { props: { Gap: "2", Align: "stretch", Class: "flex-1" } },
               use("Group", { props: { Gap: "4", Justify: "between" } }, strong(ref("p.title"), "sm"), muted(ref("p.year"), "xs")),
               muted(ref("p.summary"))))))],
-      [organism("ProjectTiles", { projects: ref("projects"), labels: ref("labels"), layout: ref("layout") })]),
+      [organism("ProjectTiles", { projects: ref("projects"), labels: ref("labels"), layout: ref("layout") })]),])
   ], [use("Box", { props: { Class: "grid grid-cols-2 gap-4" }, attrs: { "data-testid": "collage" } },
     organism("MediaFrame", { alt: ref("title"), ratio: "3/4" }), organism("MediaFrame", { alt: ref("title"), ratio: "3/4", className: "mt-8" }))])],
 });
@@ -74,18 +76,19 @@ const milestoneTimeline = spec(`${O}milestone-timeline`, "MilestoneTimeline", "M
   props: [
     id, title, lead,
     { name: "milestones", type: ts("Milestone[]"), required: true },
+    empty,
     { name: "layout", type: tsOf("split", "stacked", "row"), default: "split" },
     { name: "tone", type: toneLite, default: "default" },
     { name: "density", type: denseLite, default: "default" },
   ],
-  view: [frame({ ...common, layout: cond(eq(ref("layout"), "split"), "split", "stack"), hasMedia: eq(ref("layout"), "split"), mediaSide: "start", mediaAlign: "start", measure: cond(eq(ref("layout"), "stacked"), "2xl", "default") }, [
+  view: [frame({ ...common, layout: cond(eq(ref("layout"), "split"), "split", "stack"), hasMedia: eq(ref("layout"), "split"), mediaSide: "start", mediaAlign: "start", measure: cond(eq(ref("layout"), "stacked"), "2xl", "default") }, [orEmpty("milestones", "milestone", [
     use("List", { props: { Tag: "ol", Class: cond(eq(ref("layout"), "row"), "grid grid-cols-1 gap-8 border-t border-border sm:grid-cols-2 lg:grid-cols-4", "flex flex-col gap-8 border-l border-border") }, attrs: { "data-testid": "items" } },
       each(ref("milestones"), "m", ref("m.id"),
         use("ListItem", { props: { Class: cond(eq(ref("layout"), "row"), "relative flex flex-col gap-2 pt-6", "relative flex flex-col gap-2 pl-6") }, attrs: { "data-testid": "item" } },
           use("Inline", { props: { Class: cond(eq(ref("layout"), "row"), "absolute top-0 left-0 size-2 -translate-y-1/2 rounded bg-primary", "absolute top-2 left-0 size-2 -translate-x-1/2 rounded bg-primary") }, attrs: { "aria-hidden": "true" } }),
           use("Group", { props: { Gap: "2", Align: "center" } }, use("Text", { props: { Size: "sm", Weight: "semibold" } }, text(ref("m.date"))), use("Badge", { props: { Variant: "outline", Size: "sm" } }, text(ref("m.tag")))),
           heading(ref("m.title"), "lg"),
-          muted(ref("m.text"))))),
+          muted(ref("m.text"))))),])
   ], [organism("MediaFrame", { alt: ref("title"), ratio: "3/4" })])],
 });
 

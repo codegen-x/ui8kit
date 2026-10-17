@@ -1,6 +1,6 @@
 // Prop helpers every block shares: literal unions (tsOf), the common axes (tone, density, cols), id and title,
 // the action set of a section and its picture. Blocks and components import them from here.
-import { cond, eq, ref, undef, organism } from "../build";
+import { cond, eq, len, ref, undef, organism, when } from "../build";
 import type { ViewNode } from "../ir";
 import { groupFields, requireFields, ts } from "./kit";
 
@@ -11,6 +11,11 @@ export const density = tsOf("roomy", "default", "compact");
 export const cols = tsOf("1-2", "1-3", "1-4");
 export const id = { name: "id", type: "string" as const, required: true };
 export const title = { name: "title", type: "string" as const, required: true };
+/** the text of the empty state of a list block (no records), from the dictionary */
+export const empty = { name: "empty", type: "string" as const, default: "", docs: "the text of the empty state (no records), from the dictionary" };
+/** the list `list` or, when it has no records, the EmptyState with the `empty` text (Codex rule: every list block has an empty state) */
+export const orEmpty = (list: string, icon: string, nodes: ViewNode[], wrap: (n: ViewNode[]) => ViewNode[] = (n) => n): ViewNode =>
+  when(eq(len(ref(list)), 0), wrap([organism("EmptyState", { icon, title: ref("empty") })]), nodes);
 
 /** the ActionGroup of a section: from flat props (cta, href, secondary, secondaryHref, actions), or from a grouped prop `group` (group.cta ... group.mode) */
 export const actions = (center: ReturnType<typeof eq>, group = ""): ViewNode => {

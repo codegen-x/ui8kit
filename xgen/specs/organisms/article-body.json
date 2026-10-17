@@ -43,6 +43,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "tocTitle",
       "type": "string",
       "required": true
@@ -98,146 +104,175 @@
           "args": [],
           "do": [
             {
-              "use": "Grid",
-              "props": {
-                "Cols": "1",
-                "Class": {
-                  "op": "cn",
-                  "args": [
-                    "items-start gap-8",
-                    {
-                      "op": "cond",
-                      "args": [
-                        {
-                          "op": "eq",
-                          "args": [
-                            {
-                              "$": "layout"
-                            },
-                            "toc"
-                          ]
-                        },
-                        "md:grid-cols-[14rem_minmax(0,1fr)]",
-                        ""
-                      ]
-                    }
-                  ]
-                }
-              },
-              "children": [
-                {
-                  "when": {
-                    "op": "eq",
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "op": "len",
                     "args": [
                       {
-                        "$": "layout"
-                      },
-                      "toc"
+                        "$": "sections"
+                      }
                     ]
                   },
-                  "then": [
-                    {
-                      "organism": "NavBlock",
-                      "props": {
-                        "label": {
+                  0
+                ]
+              },
+              "then": [
+                {
+                  "organism": "EmptyState",
+                  "props": {
+                    "icon": "file-text",
+                    "title": {
+                      "$": "empty"
+                    }
+                  }
+                }
+              ],
+              "else": [
+                {
+                  "use": "Grid",
+                  "props": {
+                    "Cols": "1",
+                    "Class": {
+                      "op": "cn",
+                      "args": [
+                        "items-start gap-8",
+                        {
                           "op": "cond",
                           "args": [
                             {
-                              "$": "landmarkLabel"
-                            },
-                            {
-                              "op": "uniq",
+                              "op": "eq",
                               "args": [
                                 {
-                                  "op": "tpl",
-                                  "args": [
-                                    "{0}, {1}",
-                                    {
-                                      "$": "tocTitle"
-                                    },
-                                    {
-                                      "$": "landmarkLabel"
-                                    }
-                                  ]
-                                }
+                                  "$": "layout"
+                                },
+                                "toc"
                               ]
                             },
-                            {
-                              "$": "tocTitle"
-                            }
+                            "md:grid-cols-[14rem_minmax(0,1fr)]",
+                            ""
                           ]
-                        },
-                        "className": "md:sticky md:top-4",
-                        "testid": "toc"
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "when": {
+                        "op": "eq",
+                        "args": [
+                          {
+                            "$": "layout"
+                          },
+                          "toc"
+                        ]
                       },
-                      "slots": {
-                        "children": {
-                          "args": [],
-                          "do": [
-                            {
-                              "use": "Stack",
-                              "props": {
-                                "Gap": "2"
-                              },
-                              "children": [
+                      "then": [
+                        {
+                          "organism": "NavBlock",
+                          "props": {
+                            "label": {
+                              "op": "cond",
+                              "args": [
                                 {
-                                  "use": "Text",
-                                  "props": {
-                                    "Size": "sm",
-                                    "Weight": "semibold"
-                                  },
-                                  "children": [
+                                  "$": "landmarkLabel"
+                                },
+                                {
+                                  "op": "uniq",
+                                  "args": [
                                     {
-                                      "text": {
-                                        "$": "tocTitle"
-                                      }
+                                      "op": "tpl",
+                                      "args": [
+                                        "{0}, {1}",
+                                        {
+                                          "$": "tocTitle"
+                                        },
+                                        {
+                                          "$": "landmarkLabel"
+                                        }
+                                      ]
                                     }
                                   ]
                                 },
                                 {
-                                  "use": "List",
+                                  "$": "tocTitle"
+                                }
+                              ]
+                            },
+                            "className": "md:sticky md:top-4",
+                            "testid": "toc"
+                          },
+                          "slots": {
+                            "children": {
+                              "args": [],
+                              "do": [
+                                {
+                                  "use": "Stack",
                                   "props": {
-                                    "Class": "m-0 flex list-none flex-col gap-2 p-0"
+                                    "Gap": "2"
                                   },
                                   "children": [
                                     {
-                                      "each": {
-                                        "$": "sections"
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "sm",
+                                        "Weight": "semibold"
                                       },
-                                      "as": "s",
-                                      "key": {
-                                        "$": "s.id"
-                                      },
-                                      "do": [
+                                      "children": [
                                         {
-                                          "use": "ListItem",
-                                          "children": [
+                                          "text": {
+                                            "$": "tocTitle"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "List",
+                                      "props": {
+                                        "Class": "m-0 flex list-none flex-col gap-2 p-0"
+                                      },
+                                      "children": [
+                                        {
+                                          "each": {
+                                            "$": "sections"
+                                          },
+                                          "as": "s",
+                                          "key": {
+                                            "$": "s.id"
+                                          },
+                                          "do": [
                                             {
-                                              "use": "Link",
-                                              "props": {
-                                                "Href": {
-                                                  "op": "tpl",
-                                                  "args": [
-                                                    "#{0}-{1}",
-                                                    {
-                                                      "$": "id"
-                                                    },
-                                                    {
-                                                      "$": "s.id"
-                                                    }
-                                                  ]
-                                                },
-                                                "Variant": "default",
-                                                "Class": "text-sm text-muted-foreground"
-                                              },
-                                              "attrs": {
-                                                "data-testid": "toc-link"
-                                              },
+                                              "use": "ListItem",
                                               "children": [
                                                 {
-                                                  "text": {
-                                                    "$": "s.title"
-                                                  }
+                                                  "use": "Link",
+                                                  "props": {
+                                                    "Href": {
+                                                      "op": "tpl",
+                                                      "args": [
+                                                        "#{0}-{1}",
+                                                        {
+                                                          "$": "id"
+                                                        },
+                                                        {
+                                                          "$": "s.id"
+                                                        }
+                                                      ]
+                                                    },
+                                                    "Variant": "default",
+                                                    "Class": "text-sm text-muted-foreground"
+                                                  },
+                                                  "attrs": {
+                                                    "data-testid": "toc-link"
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "text": {
+                                                        "$": "s.title"
+                                                      }
+                                                    }
+                                                  ]
                                                 }
                                               ]
                                             }
@@ -249,111 +284,111 @@
                                 }
                               ]
                             }
-                          ]
+                          }
                         }
-                      }
-                    }
-                  ]
-                },
-                {
-                  "use": "Stack",
-                  "props": {
-                    "Gap": "8",
-                    "Align": "stretch",
-                    "Class": "mx-auto w-full max-w-2xl min-w-0"
-                  },
-                  "attrs": {
-                    "data-testid": "article"
-                  },
-                  "children": [
+                      ]
+                    },
                     {
-                      "each": {
-                        "$": "sections"
+                      "use": "Stack",
+                      "props": {
+                        "Gap": "8",
+                        "Align": "stretch",
+                        "Class": "mx-auto w-full max-w-2xl min-w-0"
                       },
-                      "as": "s",
-                      "key": {
-                        "$": "s.id"
+                      "attrs": {
+                        "data-testid": "article"
                       },
-                      "do": [
+                      "children": [
                         {
-                          "use": "Box",
-                          "props": {
-                            "Class": "flex flex-col gap-4"
+                          "each": {
+                            "$": "sections"
                           },
-                          "attrs": {
-                            "id": {
-                              "op": "tpl",
-                              "args": [
-                                "{0}-{1}",
+                          "as": "s",
+                          "key": {
+                            "$": "s.id"
+                          },
+                          "do": [
+                            {
+                              "use": "Box",
+                              "props": {
+                                "Class": "flex flex-col gap-4"
+                              },
+                              "attrs": {
+                                "id": {
+                                  "op": "tpl",
+                                  "args": [
+                                    "{0}-{1}",
+                                    {
+                                      "$": "id"
+                                    },
+                                    {
+                                      "$": "s.id"
+                                    }
+                                  ]
+                                },
+                                "data-testid": "item"
+                              },
+                              "children": [
                                 {
-                                  "$": "id"
+                                  "use": "Title",
+                                  "props": {
+                                    "As": 3,
+                                    "Size": "2xl",
+                                    "Weight": "bold"
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "s.title"
+                                      }
+                                    }
+                                  ]
                                 },
                                 {
-                                  "$": "s.id"
-                                }
-                              ]
-                            },
-                            "data-testid": "item"
-                          },
-                          "children": [
-                            {
-                              "use": "Title",
-                              "props": {
-                                "As": 3,
-                                "Size": "2xl",
-                                "Weight": "bold"
-                              },
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "s.title"
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "use": "Text",
-                              "props": {
-                                "Size": "base"
-                              },
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "s.text"
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "when": {
-                                "op": "eq",
-                                "args": [
-                                  {
-                                    "$": "quotes"
+                                  "use": "Text",
+                                  "props": {
+                                    "Size": "base"
                                   },
-                                  "show"
-                                ]
-                              },
-                              "then": [
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "s.text"
+                                      }
+                                    }
+                                  ]
+                                },
                                 {
                                   "when": {
-                                    "$": "s.quote"
+                                    "op": "eq",
+                                    "args": [
+                                      {
+                                        "$": "quotes"
+                                      },
+                                      "show"
+                                    ]
                                   },
                                   "then": [
                                     {
-                                      "use": "Text",
-                                      "props": {
-                                        "Tag": "blockquote",
-                                        "Class": "m-0 border-l border-border pl-4 text-lg"
+                                      "when": {
+                                        "$": "s.quote"
                                       },
-                                      "attrs": {
-                                        "data-testid": "quote"
-                                      },
-                                      "children": [
+                                      "then": [
                                         {
-                                          "text": {
-                                            "$": "s.quote"
-                                          }
+                                          "use": "Text",
+                                          "props": {
+                                            "Tag": "blockquote",
+                                            "Class": "m-0 border-l border-border pl-4 text-lg"
+                                          },
+                                          "attrs": {
+                                            "data-testid": "quote"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "s.quote"
+                                              }
+                                            }
+                                          ]
                                         }
                                       ]
                                     }

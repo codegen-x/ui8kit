@@ -33,7 +33,13 @@ const ACTIVITY_FIELDS = {
   "tone": "metadata.tone.value",
 } as const;
 const SERIES_FIELDS = {"id":"id","label":"title","value":"metadata.value.value"} as const;
-const METRICS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
+const METRICS_FIELDS = {
+  "id": "id",
+  "label": "title",
+  "value": "metadata.value.value|number",
+  "icon": "metadata.icon.value",
+  "hint": "metadata.hint.value",
+} as const;
 
 const activity = fromCodex<Event>(activityEntries, ACTIVITY_FIELDS, CODEX);
 const series = fromCodex<Point>(seriesEntries, SERIES_FIELDS, CODEX);

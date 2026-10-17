@@ -12,6 +12,7 @@ export type FeatureTabsProps = {
   id: string;
   title: string;
   features: Feature[];
+  empty?: string;
   tabsLabel: string;
   active?: string;
   panel?: "split" | "stack";
@@ -27,6 +28,7 @@ import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
+import EmptyState from "../components/empty-state.vue";
 import MediaFrame from "../components/media-frame.vue";
 import SectionFrame from "../components/section-frame.vue";
 import Switcher from "../components/switcher.vue";
@@ -36,6 +38,7 @@ const {
   id,
   title,
   features,
+  empty = "",
   tabsLabel,
   active = "",
   panel = "split",
@@ -48,7 +51,8 @@ const emit = defineEmits<{ select: [id: string] }>();
 
 <template>
   <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
-    <Stack gap="6" align="stretch">
+    <EmptyState v-if="((features?.length ?? 0) === 0)" icon="layout-grid" :title="empty" />
+    <Stack v-else gap="6" align="stretch">
       <Switcher :label="tabsLabel" class="w-fit max-w-full flex-wrap">
         <SwitcherItem v-for="(f, i) in features" :key="f.id"
           :active="((f.id === active) || (((active as string) === '') && (i === 0)))"

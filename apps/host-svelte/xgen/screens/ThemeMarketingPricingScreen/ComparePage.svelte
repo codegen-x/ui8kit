@@ -86,6 +86,7 @@
   id="compare-testimonials"
   title={ui.marketing.testimonials.title}
   quotes={testimonials}
+  empty={ui.empty.quotes}
   labels={{
     rating: ui.testimonials.rating,
     byLine: ui.testimonials.byLine,

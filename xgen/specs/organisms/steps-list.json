@@ -43,6 +43,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "layout",
       "type": {
         "ts": "\"row\" | \"column\""
@@ -129,142 +135,224 @@
           "args": [],
           "do": [
             {
-              "use": "List",
-              "props": {
-                "Tag": "ol",
-                "Class": {
-                  "op": "cn",
-                  "args": [
-                    "grid gap-6",
-                    {
-                      "op": "cond",
-                      "args": [
-                        {
-                          "op": "eq",
-                          "args": [
-                            {
-                              "$": "layout"
-                            },
-                            "row"
-                          ]
-                        },
-                        "sm:grid-cols-2 md:grid-cols-4",
-                        ""
-                      ]
-                    }
-                  ]
-                }
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "steps"
+                      }
+                    ]
+                  },
+                  0
+                ]
               },
-              "attrs": {
-                "data-testid": "items"
-              },
-              "children": [
+              "then": [
                 {
-                  "each": {
-                    "$": "steps"
-                  },
-                  "as": "step",
-                  "key": {
-                    "$": "step.id"
-                  },
-                  "do": [
-                    {
-                      "use": "ListItem",
-                      "props": {
-                        "Class": {
-                          "op": "cn",
+                  "organism": "EmptyState",
+                  "props": {
+                    "icon": "list-ordered",
+                    "title": {
+                      "$": "empty"
+                    }
+                  }
+                }
+              ],
+              "else": [
+                {
+                  "use": "List",
+                  "props": {
+                    "Tag": "ol",
+                    "Class": {
+                      "op": "cn",
+                      "args": [
+                        "grid gap-6",
+                        {
+                          "op": "cond",
                           "args": [
-                            "flex gap-4",
                             {
-                              "op": "cond",
+                              "op": "eq",
                               "args": [
                                 {
-                                  "op": "eq",
-                                  "args": [
-                                    {
-                                      "$": "layout"
-                                    },
-                                    "row"
-                                  ]
+                                  "$": "layout"
                                 },
-                                "flex-col",
-                                ""
+                                "row"
                               ]
                             },
-                            {
-                              "op": "cond",
-                              "args": [
-                                {
-                                  "op": "eq",
-                                  "args": [
-                                    {
-                                      "$": "align"
-                                    },
-                                    "center"
-                                  ]
-                                },
-                                "items-center text-center",
-                                ""
-                              ]
-                            }
+                            "sm:grid-cols-2 md:grid-cols-4",
+                            ""
                           ]
                         }
+                      ]
+                    }
+                  },
+                  "attrs": {
+                    "data-testid": "items"
+                  },
+                  "children": [
+                    {
+                      "each": {
+                        "$": "steps"
                       },
-                      "attrs": {
-                        "data-testid": "item"
+                      "as": "step",
+                      "key": {
+                        "$": "step.id"
                       },
-                      "children": [
+                      "do": [
                         {
-                          "use": "IconBadge",
+                          "use": "ListItem",
                           "props": {
-                            "Variant": "primary"
+                            "Class": {
+                              "op": "cn",
+                              "args": [
+                                "flex gap-4",
+                                {
+                                  "op": "cond",
+                                  "args": [
+                                    {
+                                      "op": "eq",
+                                      "args": [
+                                        {
+                                          "$": "layout"
+                                        },
+                                        "row"
+                                      ]
+                                    },
+                                    "flex-col",
+                                    ""
+                                  ]
+                                },
+                                {
+                                  "op": "cond",
+                                  "args": [
+                                    {
+                                      "op": "eq",
+                                      "args": [
+                                        {
+                                          "$": "align"
+                                        },
+                                        "center"
+                                      ]
+                                    },
+                                    "items-center text-center",
+                                    ""
+                                  ]
+                                }
+                              ]
+                            }
                           },
                           "attrs": {
-                            "data-slot": "marker"
+                            "data-testid": "item"
                           },
                           "children": [
                             {
-                              "when": {
-                                "op": "eq",
-                                "args": [
-                                  {
-                                    "$": "marker"
-                                  },
-                                  "icon"
-                                ]
+                              "use": "IconBadge",
+                              "props": {
+                                "Variant": "primary"
                               },
-                              "then": [
+                              "attrs": {
+                                "data-slot": "marker"
+                              },
+                              "children": [
                                 {
-                                  "use": "LucideIcon",
-                                  "props": {
-                                    "Name": {
-                                      "$": "step.icon"
-                                    },
-                                    "Size": 20
-                                  }
+                                  "when": {
+                                    "op": "eq",
+                                    "args": [
+                                      {
+                                        "$": "marker"
+                                      },
+                                      "icon"
+                                    ]
+                                  },
+                                  "then": [
+                                    {
+                                      "use": "LucideIcon",
+                                      "props": {
+                                        "Name": {
+                                          "$": "step.icon"
+                                        },
+                                        "Size": 20
+                                      }
+                                    }
+                                  ],
+                                  "else": [
+                                    {
+                                      "use": "Inline",
+                                      "props": {
+                                        "Class": "text-base font-bold"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "op": "str",
+                                            "args": [
+                                              {
+                                                "op": "add",
+                                                "args": [
+                                                  {
+                                                    "$": "i"
+                                                  },
+                                                  1
+                                                ]
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
                                 }
-                              ],
-                              "else": [
+                              ]
+                            },
+                            {
+                              "use": "Stack",
+                              "props": {
+                                "Gap": "2",
+                                "Align": {
+                                  "op": "cond",
+                                  "args": [
+                                    {
+                                      "op": "eq",
+                                      "args": [
+                                        {
+                                          "$": "align"
+                                        },
+                                        "center"
+                                      ]
+                                    },
+                                    "center",
+                                    "start"
+                                  ]
+                                }
+                              },
+                              "children": [
                                 {
-                                  "use": "Inline",
+                                  "use": "Title",
                                   "props": {
-                                    "Class": "text-base font-bold"
+                                    "As": 3,
+                                    "Size": "xl",
+                                    "Weight": "bold"
                                   },
                                   "children": [
                                     {
                                       "text": {
-                                        "op": "str",
-                                        "args": [
-                                          {
-                                            "op": "add",
-                                            "args": [
-                                              {
-                                                "$": "i"
-                                              },
-                                              1
-                                            ]
-                                          }
-                                        ]
+                                        "$": "step.title"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "use": "Text",
+                                  "props": {
+                                    "Size": "sm",
+                                    "Class": "text-muted-foreground"
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "step.text"
                                       }
                                     }
                                   ]
@@ -272,64 +360,11 @@
                               ]
                             }
                           ]
-                        },
-                        {
-                          "use": "Stack",
-                          "props": {
-                            "Gap": "2",
-                            "Align": {
-                              "op": "cond",
-                              "args": [
-                                {
-                                  "op": "eq",
-                                  "args": [
-                                    {
-                                      "$": "align"
-                                    },
-                                    "center"
-                                  ]
-                                },
-                                "center",
-                                "start"
-                              ]
-                            }
-                          },
-                          "children": [
-                            {
-                              "use": "Title",
-                              "props": {
-                                "As": 3,
-                                "Size": "xl",
-                                "Weight": "bold"
-                              },
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "step.title"
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "use": "Text",
-                              "props": {
-                                "Size": "sm",
-                                "Class": "text-muted-foreground"
-                              },
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "step.text"
-                                  }
-                                }
-                              ]
-                            }
-                          ]
                         }
-                      ]
+                      ],
+                      "index": "i"
                     }
-                  ],
-                  "index": "i"
+                  ]
                 }
               ]
             }

@@ -54,6 +54,7 @@
   ],
   "slots": [
     "BarChart",
+    "EmptyState",
     "MeterRow",
     "Panel"
   ],
@@ -81,6 +82,9 @@
       },
       "series": {
         "$": "series"
+      },
+      "empty": {
+        "$": "ui.empty.series"
       },
       "summary": {
         "$": "ui.dashboard.chart.summary"

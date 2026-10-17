@@ -102,6 +102,7 @@ const actions = { toggleTheme };
         id="home-features"
         :title="ui.site.home.featuresTitle"
         :features="features"
+        :empty="ui.empty.features"
         :action="{ label: ui.site.home.featuresAction, href: '#/' }"
         layout="grid"
         cols="1-3"

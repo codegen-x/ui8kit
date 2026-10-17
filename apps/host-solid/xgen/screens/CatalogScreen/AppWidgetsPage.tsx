@@ -27,7 +27,13 @@ import { metrics as metricsEntries } from "@ui8kit/app-shared/data/metrics";
 import { series as seriesEntries } from "@ui8kit/app-shared/data/series";
 import { activity as activityEntries } from "@ui8kit/app-shared/data/activity";
 
-const METRICS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
+const METRICS_FIELDS = {
+  "id": "id",
+  "label": "title",
+  "value": "metadata.value.value|number",
+  "icon": "metadata.icon.value",
+  "hint": "metadata.hint.value",
+} as const;
 const SERIES_FIELDS = {"id":"id","label":"title","value":"metadata.value.value"} as const;
 const ACTIVITY_FIELDS = {
   "id": "id",
@@ -95,6 +101,7 @@ export function AppWidgetsPage() {
                   id="metrics-tiles"
                   title={ui.dashboard.metrics.title}
                   metrics={metrics}
+                  empty={ui.empty.metrics}
                   cols="4"
                   item="tile"
                   tone="default"
@@ -120,6 +127,7 @@ export function AppWidgetsPage() {
                   id="metrics-twoUp"
                   title={ui.dashboard.metrics.title}
                   metrics={metrics}
+                  empty={ui.empty.metrics}
                   cols="2"
                   item="tile"
                   tone="default"
@@ -145,6 +153,7 @@ export function AppWidgetsPage() {
                   id="metrics-compact"
                   title={ui.dashboard.metrics.title}
                   metrics={metrics}
+                  empty={ui.empty.metrics}
                   cols="4"
                   item="compact"
                   tone="default"
@@ -170,6 +179,7 @@ export function AppWidgetsPage() {
                   id="metrics-muted"
                   title={ui.dashboard.metrics.title}
                   metrics={metrics}
+                  empty={ui.empty.metrics}
                   cols="2"
                   item="compact"
                   tone="muted"
@@ -213,6 +223,7 @@ export function AppWidgetsPage() {
                   title={ui.dashboard.chart.title}
                   text={ui.dashboard.chart.text}
                   series={series}
+                  empty={ui.empty.series}
                   summary={ui.dashboard.chart.summary}
                   percent={ui.dashboard.chart.percent}
                   chart="bars"
@@ -240,6 +251,7 @@ export function AppWidgetsPage() {
                   title={ui.dashboard.chart.title}
                   text={ui.dashboard.chart.text}
                   series={series}
+                  empty={ui.empty.series}
                   summary={ui.dashboard.chart.summary}
                   percent={ui.dashboard.chart.percent}
                   chart="bars"
@@ -267,6 +279,7 @@ export function AppWidgetsPage() {
                   title={ui.dashboard.chart.title}
                   text={ui.dashboard.chart.text}
                   series={series}
+                  empty={ui.empty.series}
                   summary={ui.dashboard.chart.summary}
                   percent={ui.dashboard.chart.percent}
                   chart="meters"
@@ -294,6 +307,7 @@ export function AppWidgetsPage() {
                   title={ui.dashboard.chart.title}
                   text={ui.dashboard.chart.text}
                   series={series}
+                  empty={ui.empty.series}
                   summary={ui.dashboard.chart.summary}
                   percent={ui.dashboard.chart.percent}
                   chart="meters"
@@ -338,6 +352,7 @@ export function AppWidgetsPage() {
                   title={ui.dashboard.activity.title}
                   text={ui.dashboard.activity.text}
                   events={activity}
+                  empty={ui.empty.activity}
                   layout="timeline"
                   density="default"
                   tone="default"
@@ -363,6 +378,7 @@ export function AppWidgetsPage() {
                   title={ui.dashboard.activity.title}
                   text={ui.dashboard.activity.text}
                   events={activity}
+                  empty={ui.empty.activity}
                   layout="list"
                   density="default"
                   tone="default"
@@ -388,6 +404,7 @@ export function AppWidgetsPage() {
                   title={ui.dashboard.activity.title}
                   text={ui.dashboard.activity.text}
                   events={activity}
+                  empty={ui.empty.activity}
                   layout="list"
                   density="compact"
                   tone="default"
@@ -413,6 +430,7 @@ export function AppWidgetsPage() {
                   title={ui.dashboard.activity.title}
                   text={ui.dashboard.activity.text}
                   events={activity}
+                  empty={ui.empty.activity}
                   layout="timeline"
                   density="default"
                   tone="muted"

@@ -57,6 +57,7 @@
     }
   ],
   "slots": [
+    "EmptyState",
     "FigureBlock",
     "MediaFrame",
     "SectionFrame"
@@ -102,6 +103,9 @@
       },
       "quotes": {
         "$": "testimonials"
+      },
+      "empty": {
+        "$": "ui.empty.quotes"
       },
       "playLabel": {
         "$": "ui.vibe.videos.play"

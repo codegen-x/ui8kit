@@ -79,6 +79,7 @@ const faqtabs = fromCodex<FaqTab>(faqtabsEntries, FAQTABS_FIELDS, CODEX);
     id="home-logos"
     :title="ui.marketing.logos.title"
     :logos="logos"
+    :empty="ui.empty.logos"
     layout="grid"
     cols="3"
     item="tile"

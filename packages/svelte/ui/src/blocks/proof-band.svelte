@@ -13,6 +13,7 @@
     id: string;
     title: string;
     logos: Logo[];
+    empty?: string;
     stats: Stat[];
     layout?: "above" | "beside";
     logoStyle?: "name" | "icon";
@@ -28,12 +29,14 @@
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import SectionFrame from "../components/section-frame.svelte";
 
   let {
     id,
     title,
     logos,
+    empty = "",
     stats,
     layout = "above",
     logoStyle = "name",
@@ -44,28 +47,32 @@
 </script>
 
 <SectionFrame id={id} title={title} tone={tone} density={density} align="center" landmarkLabel={landmarkLabel}>
-  <Grid cols={(((layout as string) === "beside") ? "1-2" : "1")} class="items-center gap-8">
-    <Group gap="6" justify="center" class="flex-wrap text-muted-foreground" data-testid="logos">
-      {#each logos as logo (logo.id)}
-        <Group gap="2" align="center" data-testid="logo">
-          <LucideIcon name={logo.icon} size={24} />
-          <Text size="sm" weight="semibold" class={(((logoStyle as string) === "icon") ? "sr-only" : "")}>
-            {logo.name}
-          </Text>
-        </Group>
-      {/each}
-    </Group>
-    <Grid cols={(((layout as string) === "beside") ? "2" : "1-4")} class="gap-6 text-center" data-testid="stats">
-      {#each stats as stat (stat.id)}
-        <Stack gap="0" align="center" data-testid="stat">
-          <Text size="4xl" weight="bold">
-            {stat.value}
-          </Text>
-          <Text size="sm" class="text-muted-foreground">
-            {stat.label}
-          </Text>
-        </Stack>
-      {/each}
+  {#if ((logos?.length ?? 0) === 0)}
+    <EmptyState icon="building-2" title={empty} />
+  {:else}
+    <Grid cols={(((layout as string) === "beside") ? "1-2" : "1")} class="items-center gap-8">
+      <Group gap="6" justify="center" class="flex-wrap text-muted-foreground" data-testid="logos">
+        {#each logos as logo (logo.id)}
+          <Group gap="2" align="center" data-testid="logo">
+            <LucideIcon name={logo.icon} size={24} />
+            <Text size="sm" weight="semibold" class={(((logoStyle as string) === "icon") ? "sr-only" : "")}>
+              {logo.name}
+            </Text>
+          </Group>
+        {/each}
+      </Group>
+      <Grid cols={(((layout as string) === "beside") ? "2" : "1-4")} class="gap-6 text-center" data-testid="stats">
+        {#each stats as stat (stat.id)}
+          <Stack gap="0" align="center" data-testid="stat">
+            <Text size="4xl" weight="bold">
+              {stat.value}
+            </Text>
+            <Text size="sm" class="text-muted-foreground">
+              {stat.label}
+            </Text>
+          </Stack>
+        {/each}
+      </Grid>
     </Grid>
-  </Grid>
+  {/if}
 </SectionFrame>

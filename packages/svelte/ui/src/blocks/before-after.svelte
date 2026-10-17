@@ -12,6 +12,7 @@
     id: string;
     title: string;
     points: Contrast[];
+    empty?: string;
     labels: BeforeAfterLabels;
     layout?: "cards" | "rows";
     icons?: "show" | "hide";
@@ -32,6 +33,7 @@
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import { cn } from "../utils";
 
@@ -39,6 +41,7 @@
     id,
     title,
     points,
+    empty = "",
     labels,
     layout = "cards",
     icons = "show",
@@ -49,7 +52,9 @@
 </script>
 
 <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
-  {#if ((layout as string) === "cards")}
+  {#if ((points?.length ?? 0) === 0)}
+    <EmptyState icon="git-compare" title={empty} />
+  {:else if ((layout as string) === "cards")}
     <Grid cols="1-2" class="items-stretch gap-4" data-testid="sides">
       <Card
         variant="muted"

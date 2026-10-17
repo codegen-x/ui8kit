@@ -3,7 +3,7 @@ import { at, nbsp, cn, cond, each, eq, ne, money, ref, text, tpl, use, when, org
 import type { OrganismSpec, Value } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { frame } from "../components/frames";
-import { id, title, tsOf, toneLite, denseLite } from "../props";
+import { empty, id, orEmpty, title, tsOf, toneLite, denseLite } from "../props";
 import { heading, muted, strong, surface } from "../ux";
 
 const O = "organism.";
@@ -23,12 +23,13 @@ const zoneTable = spec(`${O}zone-table`, "ZoneTable", "Delivery zones and their 
   props: [
     id, title, lead,
     { name: "zones", type: ts("Zone[]"), required: true },
+    empty,
     { name: "labels", type: { record: "ZoneLabels" }, required: true },
     { name: "layout", type: tsOf("table", "cards"), default: "table" },
     { name: "tone", type: toneLite, default: "default" },
     { name: "density", type: denseLite, default: "default" },
   ],
-  view: [frame(common, [
+  view: [frame(common, [orEmpty("zones", "map", [
     when(eq(ref("layout"), "table"),
       [organism("ZoneRows", { zones: ref("zones"), labels: ref("labels") })],
       [use("Grid", { props: { Cols: "1-3", Class: "gap-4" }, attrs: { "data-testid": "items" } },
@@ -40,7 +41,7 @@ const zoneTable = spec(`${O}zone-table`, "ZoneTable", "Delivery zones and their 
               pair(ref("labels.freeFrom"), money(ref("z.freeFrom"), ref("z.currency"))),
               pair(ref("labels.minOrder"), money(ref("z.minOrder"), ref("z.currency"))),
               pair(ref("labels.time"), ref("z.time"))),
-            when(ref("z.express"), [use("Badge", { props: { Variant: "secondary", Size: "default", Class: "w-fit" } }, text(ref("z.express")))]))))]),
+            when(ref("z.express"), [use("Badge", { props: { Variant: "secondary", Size: "default", Class: "w-fit" } }, text(ref("z.express")))]))))]),])
   ])],
 });
 
@@ -107,12 +108,13 @@ const storeLocations = spec(`${O}store-locations`, "StoreLocations", "The stores
   props: [
     id, title, lead,
     { name: "stores", type: ts("Store[]"), required: true },
+    empty,
     { name: "kinds", type: ts("Record<string, string>"), required: true, docs: "word by store kind (pickup, store only)" },
     { name: "labels", type: { record: "StoreLabels" }, required: true },
     { name: "layout", type: tsOf("cards", "list", "map"), default: "cards" },
     { name: "tone", type: toneLite, default: "default" },
   ],
-  view: [frame({ ...common, density: "default" }, [
+  view: [frame({ ...common, density: "default" }, [orEmpty("stores", "store", [
     use("Box", { props: { Class: cn("grid grid-cols-1 gap-8", cond(eq(ref("layout"), "map"), "items-start md:grid-cols-2", "")) } },
       use("Box", { props: { Class: cond(eq(ref("layout"), "cards"), "grid grid-cols-1 gap-4 md:grid-cols-2", "flex flex-col gap-4") }, attrs: { "data-testid": "items" } },
         each(ref("stores"), "s", ref("s.id"),
@@ -124,7 +126,7 @@ const storeLocations = spec(`${O}store-locations`, "StoreLocations", "The stores
               use("ListItem", { props: { Class: "flex items-center gap-2" } }, use("LucideIcon", { props: { Name: "phone", Size: 16 } }), use("Link", { props: { Href: tpl("tel:{0}", ref("s.phone")), Variant: "default" } }, text(nbsp(ref("s.phone")))))),
             when(eq(ref("layout"), "cards"), [muted(ref("s.note")),
               use("Group", { props: { Gap: "2", Class: "flex-wrap" } }, each(ref("s.services"), "v", ref("v"), use("Badge", { props: { Variant: "secondary", Size: "default" } }, text(ref("v")))))])))),
-      when(eq(ref("layout"), "map"), [use("Box", { props: { Class: "md:sticky md:top-8" } }, organism("MediaFrame", { alt: ref("labels.map"), ratio: "1/1" }))])),
+      when(eq(ref("layout"), "map"), [use("Box", { props: { Class: "md:sticky md:top-8" } }, organism("MediaFrame", { alt: ref("labels.map"), ratio: "1/1" }))])),])
   ])],
 });
 

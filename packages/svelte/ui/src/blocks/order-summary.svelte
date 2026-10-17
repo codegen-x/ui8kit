@@ -12,6 +12,7 @@
     id: string;
     title: string;
     rows: SummaryRow[];
+    empty?: string;
     labels: SummaryLabels;
     layout?: "card" | "plain";
     cta?: "show" | "hide";
@@ -30,6 +31,7 @@
   import ListItem from "../primitives/list/list-item.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import { cn, fmtMoney } from "../utils";
 
@@ -37,6 +39,7 @@
     id,
     title,
     rows,
+    empty = "",
     labels,
     layout = "card",
     cta = "show",
@@ -48,44 +51,48 @@
 </script>
 
 <SectionFrame id={id} title={title} tone={tone} density={density} measure="md" landmarkLabel={landmarkLabel}>
-  <Box
-    class={cn(
-      (((layout as string) === "card") ? "rounded bg-card p-6 inset-ring inset-ring-border" : "")
-    )}
-    data-testid="summary"
-  >
-    <Stack gap="4" align="stretch">
-      <List tag="ul" class="flex flex-col gap-4">
-        {#each rows as row (row.id)}
-          <ListItem
-            class={cn(
-              "flex items-center justify-between gap-4",
-              (
-                row.strong ? "border-t border-border pt-4 text-base font-bold"
-                : "text-sm text-muted-foreground"
-              )
-            )}
-            data-testid="item"
-          >
-            <Inline>
-              {row.label}
-            </Inline>
-            <Inline>
-              {fmtMoney(row.amount, row.currency)}
-            </Inline>
-          </ListItem>
-        {/each}
-      </List>
-      {#if ((cta as string) === "show")}
-        <Button variant="default" size="default" class="w-full" data-testid="checkout">
-          {labels.checkout}
-        </Button>
-      {/if}
-      {#if ((note as string) === "show")}
-        <Text size="xs" class="text-muted-foreground">
-          {labels.note}
-        </Text>
-      {/if}
-    </Stack>
-  </Box>
+  {#if ((rows?.length ?? 0) === 0)}
+    <EmptyState icon="receipt" title={empty} />
+  {:else}
+    <Box
+      class={cn(
+        (((layout as string) === "card") ? "rounded bg-card p-6 inset-ring inset-ring-border" : "")
+      )}
+      data-testid="summary"
+    >
+      <Stack gap="4" align="stretch">
+        <List tag="ul" class="flex flex-col gap-4">
+          {#each rows as row (row.id)}
+            <ListItem
+              class={cn(
+                "flex items-center justify-between gap-4",
+                (
+                  row.strong ? "border-t border-border pt-4 text-base font-bold"
+                  : "text-sm text-muted-foreground"
+                )
+              )}
+              data-testid="item"
+            >
+              <Inline>
+                {row.label}
+              </Inline>
+              <Inline>
+                {fmtMoney(row.amount, row.currency)}
+              </Inline>
+            </ListItem>
+          {/each}
+        </List>
+        {#if ((cta as string) === "show")}
+          <Button variant="default" size="default" class="w-full" data-testid="checkout">
+            {labels.checkout}
+          </Button>
+        {/if}
+        {#if ((note as string) === "show")}
+          <Text size="xs" class="text-muted-foreground">
+            {labels.note}
+          </Text>
+        {/if}
+      </Stack>
+    </Box>
+  {/if}
 </SectionFrame>

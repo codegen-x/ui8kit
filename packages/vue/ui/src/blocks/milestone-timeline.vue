@@ -13,6 +13,7 @@ export type MilestoneTimelineProps = {
   title: string;
   lead?: string;
   milestones: Milestone[];
+  empty?: string;
   layout?: "split" | "stacked" | "row";
   tone?: "default" | "muted";
   density?: "default" | "compact";
@@ -28,6 +29,7 @@ import List from "../primitives/list/list.vue";
 import ListItem from "../primitives/list/list-item.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
+import EmptyState from "../components/empty-state.vue";
 import MediaFrame from "../components/media-frame.vue";
 import SectionFrame from "../components/section-frame.vue";
 
@@ -36,6 +38,7 @@ const {
   title,
   lead = "",
   milestones,
+  empty = "",
   layout = "split",
   tone = "default",
   density = "default",
@@ -55,7 +58,8 @@ const {
     :measure="(((layout as string) === 'stacked') ? '2xl' : 'default')"
     :landmarkLabel="landmarkLabel"
   >
-    <List
+    <EmptyState v-if="((milestones?.length ?? 0) === 0)" icon="milestone" :title="empty" />
+    <List v-else
       tag="ol"
       :class="
         (layout as string) === 'row' ? 'grid grid-cols-1 gap-8 border-t border-border sm:grid-cols-2 lg:grid-cols-4'

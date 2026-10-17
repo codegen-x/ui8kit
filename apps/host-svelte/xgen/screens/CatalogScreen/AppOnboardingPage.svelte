@@ -83,6 +83,7 @@
               id="checklist-card"
               title={ui.onboarding.checklist.title}
               tasks={checklist}
+              empty={ui.empty.tasks}
               progressLabel={ui.onboarding.checklist.progress}
               layout="card"
               progress="bar"
@@ -110,6 +111,7 @@
               id="checklist-expand"
               title={ui.onboarding.checklist.title}
               tasks={checklist}
+              empty={ui.empty.tasks}
               progressLabel={ui.onboarding.checklist.progress}
               layout="card"
               progress="bar"
@@ -137,6 +139,7 @@
               id="checklist-plain"
               title={ui.onboarding.checklist.title}
               tasks={checklist}
+              empty={ui.empty.tasks}
               progressLabel={ui.onboarding.checklist.progress}
               layout="plain"
               progress="bar"
@@ -164,6 +167,7 @@
               id="checklist-text"
               title={ui.onboarding.checklist.title}
               tasks={checklist}
+              empty={ui.empty.tasks}
               progressLabel={ui.onboarding.checklist.progress}
               layout="card"
               progress="text"
@@ -191,6 +195,7 @@
               id="checklist-none"
               title={ui.onboarding.checklist.title}
               tasks={checklist}
+              empty={ui.empty.tasks}
               progressLabel={ui.onboarding.checklist.progress}
               layout="plain"
               progress="none"
@@ -218,6 +223,7 @@
               id="checklist-numbered"
               title={ui.onboarding.checklist.title}
               tasks={checklist}
+              empty={ui.empty.tasks}
               progressLabel={ui.onboarding.checklist.progress}
               layout="card"
               progress="bar"
@@ -245,6 +251,7 @@
               id="checklist-muted"
               title={ui.onboarding.checklist.title}
               tasks={checklist}
+              empty={ui.empty.tasks}
               progressLabel={ui.onboarding.checklist.progress}
               layout="card"
               progress="text"

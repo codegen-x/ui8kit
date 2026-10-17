@@ -12,6 +12,7 @@
     id: string;
     title?: string;
     perks: Feature[];
+    empty?: string;
     layout?: "strip" | "cards" | "bar";
     tone?: "default" | "muted";
     density?: "default" | "compact";
@@ -28,6 +29,7 @@
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import { cn } from "../utils";
 
@@ -35,6 +37,7 @@
     id,
     title = "",
     perks,
+    empty = "",
     layout = "strip",
     tone = "default",
     density = "default",
@@ -43,7 +46,9 @@
 </script>
 
 <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
-  {#if ((layout as string) === "bar")}
+  {#if ((perks?.length ?? 0) === 0)}
+    <EmptyState icon="truck" title={empty} />
+  {:else if ((layout as string) === "bar")}
     <List tag="ul" class="flex flex-wrap items-center justify-center gap-x-8 gap-y-4" data-testid="items">
       {#each perks as p (p.id)}
         <ListItem class="flex items-center gap-2 text-sm font-medium" data-testid="item">

@@ -57,6 +57,7 @@
     }
   ],
   "slots": [
+    "EmptyState",
     "SectionFrame"
   ],
   "facts": [
@@ -103,6 +104,9 @@
       },
       "logos": {
         "$": "logos"
+      },
+      "empty": {
+        "$": "ui.empty.logos"
       },
       "stats": {
         "$": "stats"

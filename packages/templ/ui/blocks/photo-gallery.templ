@@ -20,6 +20,7 @@ type PhotoGalleryProps struct {
 	Title any `json:"title"`
 	Lead any `json:"lead"`
 	Photos any `json:"photos"`
+	Empty any `json:"empty"`
 	Labels any `json:"labels"`
 	Layout any `json:"layout"`
 	Captions any `json:"captions"`
@@ -34,6 +35,7 @@ templ PhotoGallery(p PhotoGalleryProps) {
 	{{ vTitle := p.Title }}
 	{{ vLead := uiutils.Def(p.Lead, "") }}
 	{{ vPhotos := p.Photos }}
+	{{ vEmpty := uiutils.Def(p.Empty, "") }}
 	{{ vLabels := p.Labels }}
 	{{ vLayout := uiutils.Def(p.Layout, "grid") }}
 	{{ vCaptions := uiutils.Def(p.Captions, "show") }}
@@ -41,7 +43,9 @@ templ PhotoGallery(p PhotoGalleryProps) {
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Tone: vTone, Density: vDensity, LandmarkLabel: vLandmarkLabel}) {
-		if uiutils.Eq(vLayout, "featured") {
+		if uiutils.Eq(uiutils.Len(vPhotos), float64(0)) {
+			@EmptyState(EmptyStateProps{Icon: "image", Title: vEmpty})
+		} else if uiutils.Eq(vLayout, "featured") {
 			@stack.Stack(stack.StackProps{Gap: "4", Align: "stretch", Attrs: uiutils.Attrs("data-testid", "featured")}) {
 				@MediaFrame(MediaFrameProps{Alt: vTitle})
 				@group.Group(group.GroupProps{Gap: "4", Align: "center", Justify: "between"}) {

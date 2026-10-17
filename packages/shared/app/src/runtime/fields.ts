@@ -124,9 +124,60 @@ export const menuCategoryFields = {
   href: "slug|route",
 } as const;
 
+
+// The other kinds of the kit fixtures, one map per kind (or per record where one kind feeds two records). `m.x` below reads
+// "metadata.x.value". Plain text fields; numbers stay numbers; money is integer minor units + `currency`.
+const m = (k: string) => `metadata.${k}.value` as const;
+/** id + title + text + icon: features, values, perks, delivery facts, payments, support channels, contacts (Feature) */
+const card = { id: "id", title: "title", text: m("text"), icon: m("icon") } as const;
+export const KIT_FIELDS = {
+  feature: card, value: card, perk: card, fact: card, payment: card, channel: card, contact: card, step: card,
+  logo: { id: "id", name: "title", icon: m("icon") },
+  testimonial: { id: "id", author: "title", role: m("role"), company: m("company"), quote: m("quote"), rating: m("rating"), handle: m("handle"), time: `${m("time")}|ago-short`, mark: m("mark") },
+  cartline: { id: "id", name: "title", variant: m("variant"), price: m("price"), currency: m("currency"), qty: m("qty") },
+  summaryrow: { id: "id", label: "title", amount: m("amount"), currency: m("currency"), strong: m("strong") },
+  order: { id: "id", number: "title", date: `${m("date")}|date`, total: m("total"), currency: m("currency"), status: m("order_status"), items: m("items") },
+  event: { id: "id", title: "title", text: m("text"), time: `${m("time")}|ago`, tone: m("tone") },
+  point: { id: "id", label: "title", value: m("value") },
+  metric: { id: "id", label: "title", value: `${m("value")}|number`, icon: m("icon"), hint: m("hint") },
+  task: { id: "id", title: "title", text: m("text"), done: m("done") },
+  prompt: { id: "id", name: "title", icon: m("icon") },
+  promptFilter: { id: "id", title: "title", value: m("value"), icon: m("icon") },
+  template: { id: "id", title: "title", views: m("views"), likes: m("likes"), topic: m("topic") },
+  tab: { id: "id", name: "title", icon: m("icon") },
+  posttag: { id: "id", name: "title", icon: m("icon") },
+  row: { id: "id", label: "title", a: m("a"), b: m("b"), c: m("c") },
+  pack: { id: "id", name: "title", credits: m("credits"), price: m("price"), currency: m("currency"), badge: m("badge") },
+  tile: { id: "id", title: "title", text: m("text"), icon: m("icon"), size: m("size") },
+  line: { id: "id", text: "title", kind: m("line_kind") },
+  wizardStep: { id: "id", title: "title", text: m("text"), icon: m("icon"), fieldA: m("fieldA"), fieldB: m("fieldB") },
+  lane: { id: "id", key: "slug", title: "title" },
+  card: { id: "id", lane: m("lane"), title: "title", tag: m("tag"), who: m("who") },
+  topic: { id: "id", title: "title", value: m("value") },
+  section: { id: "id", title: "title", text: m("text"), quote: m("quote") },
+  contrast: { id: "id", title: "title", before: m("before"), after: m("after") },
+  placeholder: { id: "id" },
+  chapter: { id: "id", title: "title", text: m("text") },
+  zone: { id: "id", name: "title", area: m("area"), price: m("price"), freeFrom: m("freeFrom"), minOrder: m("minOrder"), time: m("time"), express: m("express"), currency: m("currency") },
+  day: { id: "id", title: "title", note: m("note"), slots: m("slots"), closed: m("closed") },
+  store: { id: "id", name: "title", kind: m("store_kind"), address: m("address"), hours: m("hours"), phone: m("phone"), note: m("note"), services: m("services") },
+  detail: { id: "id", title: "title", text: m("text") },
+  spec: { id: "id", label: "title", value: m("value") },
+  profilefact: { id: "id", label: "title", value: m("value") },
+  promo: { id: "id", code: "title" },
+  member: { id: "id", name: "title", role: m("role"), dept: m("dept"), location: m("location"), bio: m("bio"), skills: m("skills") },
+  photo: { id: "id", title: "title", tag: m("tag"), size: m("size") },
+  project: { id: "id", title: "title", category: "terms|term:project_category", year: m("year"), summary: m("summary"), tags: m("tags"), featured: m("featured"), client: m("client") },
+  job: { id: "id", title: "title", dept: m("dept"), location: m("location"), type: m("type"), salary: m("salary"), posted: `${m("posted")}|ago-days` },
+  department: { id: "id", name: "title" },
+  milestone: { id: "id", date: m("date"), title: "title", text: m("text"), tag: m("tag") },
+  skill: { id: "id", label: "title", level: m("level") },
+  question: { id: "id", question: "title", answer: m("answer"), category: "terms|term:faq_category", icon: m("icon") },
+} as const;
+
 /** the field maps by entry kind */
 export const CODEX_FIELDS = {
   product: productFields, post: postFields, plan: planFields, review: reviewFields, stat: statFields, faq: faqFields, faqtab: faqTabFields, page: pageFields,
-  menuItem: menuItemFields, menuGroup: menuGroupFields, menuCategory: menuCategoryFields,
+  menuItem: menuItemFields, menuGroup: menuGroupFields, menuCategory: menuCategoryFields, ...KIT_FIELDS,
 } as const;
 export type CodexFieldKind = keyof typeof CODEX_FIELDS;

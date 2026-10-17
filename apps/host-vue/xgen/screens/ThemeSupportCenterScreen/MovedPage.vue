@@ -34,6 +34,7 @@ const channels = fromCodex<Feature>(channelsEntries, CHANNELS_FIELDS, CODEX);
     id="moved-channels"
     :title="ui.support.channels.title"
     :channels="channels"
+    :empty="ui.empty.channels"
     :open="ui.support.channels.open"
     layout="grid"
     cols="1-2"

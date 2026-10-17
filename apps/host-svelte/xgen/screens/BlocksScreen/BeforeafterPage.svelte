@@ -62,6 +62,7 @@
             id="beforeafter-cards"
             title={ui.vibe.beforeafter.title}
             points={beforeafter}
+            empty={ui.empty.points}
             labels={ui.vibe.beforeafter.labels}
             layout="cards"
             icons="show"
@@ -88,6 +89,7 @@
             id="beforeafter-rows"
             title={ui.vibe.beforeafter.title}
             points={beforeafter}
+            empty={ui.empty.points}
             labels={ui.vibe.beforeafter.labels}
             layout="rows"
             icons="show"
@@ -114,6 +116,7 @@
             id="beforeafter-plain"
             title={ui.vibe.beforeafter.title}
             points={beforeafter}
+            empty={ui.empty.points}
             labels={ui.vibe.beforeafter.labels}
             layout="cards"
             icons="hide"
@@ -140,6 +143,7 @@
             id="beforeafter-muted"
             title={ui.vibe.beforeafter.title}
             points={beforeafter}
+            empty={ui.empty.points}
             labels={ui.vibe.beforeafter.labels}
             layout="cards"
             icons="show"

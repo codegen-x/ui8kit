@@ -15,6 +15,7 @@ import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { Title } from "../primitives/title/title";
+import { EmptyState } from "../components/empty-state";
 import { SectionFrame } from "../components/section-frame";
 import { cn } from "../utils";
 import type { Contrast, BeforeAfterLabels } from "./before-after.types";
@@ -23,6 +24,7 @@ export type BeforeAfterProps = {
   id: string;
   title: string;
   points: Contrast[];
+  empty?: string;
   labels: BeforeAfterLabels;
   layout?: "cards" | "rows";
   icons?: "show" | "hide";
@@ -35,6 +37,7 @@ export function BeforeAfter({
   id,
   title,
   points,
+  empty = "",
   labels,
   layout = "cards",
   icons = "show",
@@ -44,7 +47,9 @@ export function BeforeAfter({
 }: BeforeAfterProps) {
   return (
     <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
-      {((layout as string) === "cards") ? (
+      {((points?.length ?? 0) === 0) ? (
+        <EmptyState icon="git-compare" title={empty} />
+      ) : ((layout as string) === "cards") ? (
         <Grid cols="1-2" className="items-stretch gap-4" data-testid="sides">
           <Card
             variant="muted"

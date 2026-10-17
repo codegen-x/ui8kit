@@ -30,6 +30,7 @@
   id="board-kanban-1"
   title={ui.vibe.kanban.title}
   lanes={lanes}
+  empty={ui.empty.lanes}
   cards={cards}
   countLabel={ui.vibe.kanban.count}
   card="detail"
@@ -42,6 +43,7 @@
   id="board-kanban-2"
   title={ui.vibe.kanban.title}
   lanes={lanes}
+  empty={ui.empty.lanes}
   cards={cards}
   countLabel={ui.vibe.kanban.count}
   card="detail"

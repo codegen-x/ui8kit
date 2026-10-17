@@ -154,6 +154,7 @@
     id="saas-landing-logos"
     title={ui.marketing.logos.title}
     logos={logos}
+    empty={ui.empty.logos}
     layout="row"
     cols="4"
     item="icon"
@@ -164,6 +165,7 @@
     id="saas-landing-features"
     title={ui.site.home.featuresTitle}
     features={features}
+    empty={ui.empty.features}
     action={{ label: ui.site.home.featuresAction, href: "#/" }}
     layout="grid"
     cols="1-3"
@@ -176,6 +178,7 @@
     id="saas-landing-sticky"
     title={ui.vibe.sticky.title}
     features={features}
+    empty={ui.empty.features}
     active="feature-clear"
     mediaSide="end"
     item="plain"
@@ -199,6 +202,7 @@
     id="saas-landing-testimonials"
     title={ui.marketing.testimonials.title}
     quotes={testimonials}
+    empty={ui.empty.quotes}
     labels={{
       rating: ui.testimonials.rating,
       byLine: ui.testimonials.byLine,

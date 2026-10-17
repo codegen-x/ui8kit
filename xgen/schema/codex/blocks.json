@@ -24,6 +24,7 @@
           "collection": "values",
           "kind": "value",
           "record": "Feature",
+          "map": "value",
           "list": true
         }
       ],
@@ -60,6 +61,7 @@
           "collection": "profilefacts",
           "kind": "profilefact",
           "record": "Spec",
+          "map": "profilefact",
           "list": true
         },
         {
@@ -67,6 +69,7 @@
           "collection": "skills",
           "kind": "skill",
           "record": "Skill",
+          "map": "skill",
           "list": true
         }
       ],
@@ -119,14 +122,22 @@
       "surface": "kit-block",
       "spec": "block.accordion",
       "source": "xgen/specs/blocks/accordion.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "features",
           "collection": "features",
           "kind": "feature",
           "record": "Feature",
-          "list": true
+          "map": "feature",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -143,23 +154,37 @@
           "prop": "title",
           "dictionary": "vibe.accordion.title",
           "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.features",
+          "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "ActivityFeed",
       "surface": "kit-block",
       "spec": "block.activity",
       "source": "xgen/specs/blocks/activity.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "events",
           "collection": "activity",
           "kind": "event",
           "record": "Event",
-          "list": true
+          "map": "event",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.time.value",
+            "metadata.tone.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -179,16 +204,21 @@
           "prop": "text",
           "dictionary": "dashboard.activity.text",
           "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.activity",
+          "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "AnnouncementBar",
       "surface": "kit-block",
       "spec": "block.announcement",
       "source": "xgen/specs/blocks/announcement.json",
-      "status": "todo",
+      "status": "done",
       "data": [],
       "settings": [
         "ctaHref",
@@ -234,14 +264,23 @@
       "surface": "kit-block",
       "spec": "block.article",
       "source": "xgen/specs/blocks/article.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "sections",
           "collection": "article",
           "kind": "section",
           "record": "Section",
-          "list": true
+          "map": "section",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": [
+            "metadata.quote.value"
+          ]
         }
       ],
       "settings": [
@@ -258,19 +297,24 @@
           "keys": []
         },
         {
+          "prop": "empty",
+          "dictionary": "empty.sections",
+          "keys": []
+        },
+        {
           "prop": "tocTitle",
           "dictionary": "vibe.article.toc",
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "AuthCard",
       "surface": "kit-block",
       "spec": "block.auth",
       "source": "xgen/specs/blocks/auth.json",
-      "status": "todo",
+      "status": "done",
       "data": [],
       "settings": [
         "id",
@@ -330,7 +374,7 @@
       "surface": "kit-block",
       "spec": "block.authpage",
       "source": "xgen/specs/blocks/authpage.json",
-      "status": "todo",
+      "status": "done",
       "data": [],
       "settings": [
         "id",
@@ -400,14 +444,22 @@
       "surface": "kit-block",
       "spec": "block.beforeafter",
       "source": "xgen/specs/blocks/beforeafter.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "points",
           "collection": "beforeafter",
           "kind": "point",
           "record": "Contrast",
-          "list": true
+          "map": "contrast",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.before.value",
+            "metadata.after.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -425,6 +477,11 @@
           "keys": []
         },
         {
+          "prop": "empty",
+          "dictionary": "empty.points",
+          "keys": []
+        },
+        {
           "prop": "labels",
           "dictionary": "vibe.beforeafter.labels",
           "keys": [
@@ -433,21 +490,30 @@
           ]
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "BentoGrid",
       "surface": "kit-block",
       "spec": "block.bento",
       "source": "xgen/specs/blocks/bento.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "tiles",
           "collection": "bento",
           "kind": "tile",
           "record": "Tile",
-          "list": true
+          "map": "tile",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value",
+            "metadata.size.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -463,9 +529,14 @@
           "prop": "title",
           "dictionary": "vibe.bento.title",
           "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.tiles",
+          "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "BottomNav",
@@ -479,6 +550,7 @@
           "collection": "tabs",
           "kind": "tab",
           "record": "NavLink",
+          "map": "tab",
           "list": true
         }
       ],
@@ -503,14 +575,24 @@
       "surface": "kit-block",
       "spec": "block.cart",
       "source": "xgen/specs/blocks/cart.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "lines",
           "collection": "cart",
           "kind": "cartline",
           "record": "CartLine",
-          "list": true
+          "map": "cartline",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.variant.value",
+            "metadata.price.value",
+            "metadata.currency.value",
+            "metadata.qty.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -525,6 +607,11 @@
         {
           "prop": "title",
           "dictionary": "commerce.cart.title",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.cart",
           "keys": []
         },
         {
@@ -544,7 +631,7 @@
           ]
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "CartDrawer",
@@ -558,6 +645,7 @@
           "collection": "cart",
           "kind": "cartline",
           "record": "CartLine",
+          "map": "cartline",
           "list": true
         },
         {
@@ -565,6 +653,7 @@
           "collection": "summary",
           "kind": "summaryrow",
           "record": "SummaryRow",
+          "map": "summaryrow",
           "list": true
         }
       ],
@@ -618,6 +707,7 @@
           "collection": "cart",
           "kind": "cartline",
           "record": "CartLine",
+          "map": "cartline",
           "list": true
         },
         {
@@ -625,6 +715,7 @@
           "collection": "summary",
           "kind": "summaryrow",
           "record": "SummaryRow",
+          "map": "summaryrow",
           "list": true
         },
         {
@@ -632,6 +723,7 @@
           "collection": "promos",
           "kind": "promo",
           "record": "Promo",
+          "map": "promo",
           "list": true
         }
       ],
@@ -739,14 +831,22 @@
       "surface": "kit-block",
       "spec": "block.channels",
       "source": "xgen/specs/blocks/channels.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "channels",
           "collection": "channels",
           "kind": "channel",
           "record": "Feature",
-          "list": true
+          "map": "channel",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -764,26 +864,38 @@
           "keys": []
         },
         {
+          "prop": "empty",
+          "dictionary": "empty.channels",
+          "keys": []
+        },
+        {
           "prop": "open",
           "dictionary": "support.channels.open",
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "ChartPanel",
       "surface": "kit-block",
       "spec": "block.chart",
       "source": "xgen/specs/blocks/chart.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "series",
           "collection": "series",
           "kind": "point",
           "record": "Point",
-          "list": true
+          "map": "point",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.value.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -805,6 +917,11 @@
           "keys": []
         },
         {
+          "prop": "empty",
+          "dictionary": "empty.series",
+          "keys": []
+        },
+        {
           "prop": "summary",
           "dictionary": "dashboard.chart.summary",
           "keys": []
@@ -815,21 +932,29 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "Checklist",
       "surface": "kit-block",
       "spec": "block.checklist",
       "source": "xgen/specs/blocks/checklist.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "tasks",
           "collection": "checklist",
           "kind": "task",
           "record": "Task",
-          "list": true
+          "map": "task",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.done.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -848,12 +973,17 @@
           "keys": []
         },
         {
+          "prop": "empty",
+          "dictionary": "empty.tasks",
+          "keys": []
+        },
+        {
           "prop": "progressLabel",
           "dictionary": "onboarding.checklist.progress",
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "CheckoutForm",
@@ -867,6 +997,7 @@
           "collection": "days",
           "kind": "day",
           "record": "Day",
+          "map": "day",
           "list": true
         },
         {
@@ -874,6 +1005,7 @@
           "collection": "payments",
           "kind": "payment",
           "record": "Payment",
+          "map": "payment",
           "list": true
         },
         {
@@ -881,6 +1013,7 @@
           "collection": "cart",
           "kind": "cartline",
           "record": "CartLine",
+          "map": "cartline",
           "list": true
         },
         {
@@ -888,6 +1021,7 @@
           "collection": "summary",
           "kind": "summaryrow",
           "record": "SummaryRow",
+          "map": "summaryrow",
           "list": true
         },
         {
@@ -895,6 +1029,7 @@
           "collection": "promos",
           "kind": "promo",
           "record": "Promo",
+          "map": "promo",
           "list": true
         }
       ],
@@ -966,6 +1101,7 @@
           "collection": "compare",
           "kind": "row",
           "record": "CompareRow",
+          "map": "row",
           "list": true
         },
         {
@@ -973,6 +1109,7 @@
           "collection": "rivals",
           "kind": "row",
           "record": "CompareRow",
+          "map": "row",
           "list": true
         }
       ],
@@ -1017,6 +1154,7 @@
           "collection": "channels",
           "kind": "channel",
           "record": "Feature",
+          "map": "channel",
           "list": true
         }
       ],
@@ -1061,7 +1199,7 @@
       "surface": "kit-block",
       "spec": "block.cookie",
       "source": "xgen/specs/blocks/cookie.json",
-      "status": "todo",
+      "status": "done",
       "data": [],
       "settings": [
         "id",
@@ -1104,14 +1242,25 @@
       "surface": "kit-block",
       "spec": "block.credits",
       "source": "xgen/specs/blocks/credits.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "packs",
           "collection": "credits",
           "kind": "pack",
           "record": "Pack",
-          "list": true
+          "map": "pack",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.credits.value",
+            "metadata.price.value",
+            "metadata.currency.value"
+          ],
+          "optional": [
+            "metadata.badge.value"
+          ]
         }
       ],
       "settings": [
@@ -1129,6 +1278,11 @@
           "keys": []
         },
         {
+          "prop": "empty",
+          "dictionary": "empty.packs",
+          "keys": []
+        },
+        {
           "prop": "badges",
           "dictionary": "vibe.credits.badges",
           "keys": [
@@ -1142,14 +1296,14 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "CtaBand",
       "surface": "kit-block",
       "spec": "block.cta",
       "source": "xgen/specs/blocks/cta.json",
-      "status": "todo",
+      "status": "done",
       "data": [],
       "settings": [
         "id",
@@ -1210,6 +1364,7 @@
           "collection": "logos",
           "kind": "logo",
           "record": "Logo",
+          "map": "logo",
           "list": true
         },
         {
@@ -1217,6 +1372,7 @@
           "collection": "features",
           "kind": "feature",
           "record": "Feature",
+          "map": "feature",
           "list": true
         },
         {
@@ -1232,6 +1388,7 @@
           "collection": "zones",
           "kind": "zone",
           "record": "Zone",
+          "map": "zone",
           "list": true
         }
       ],
@@ -1387,6 +1544,7 @@
           "collection": "deliveryfacts",
           "kind": "fact",
           "record": "Feature",
+          "map": "fact",
           "list": true
         },
         {
@@ -1394,6 +1552,7 @@
           "collection": "zones",
           "kind": "zone",
           "record": "Zone",
+          "map": "zone",
           "list": true
         }
       ],
@@ -1431,7 +1590,7 @@
       "surface": "kit-block",
       "spec": "block.empty",
       "source": "xgen/specs/blocks/empty.json",
-      "status": "todo",
+      "status": "done",
       "data": [],
       "settings": [
         "id",
@@ -1467,7 +1626,7 @@
       "surface": "kit-block",
       "spec": "block.errorpage",
       "source": "xgen/specs/blocks/errorpage.json",
-      "status": "todo",
+      "status": "done",
       "data": [],
       "settings": [
         "id",
@@ -1588,6 +1747,7 @@
           "collection": "questions",
           "kind": "question",
           "record": "Question",
+          "map": "question",
           "list": true
         },
         {
@@ -1595,6 +1755,7 @@
           "collection": "channels",
           "kind": "channel",
           "record": "Feature",
+          "map": "channel",
           "list": true
         },
         {
@@ -1673,14 +1834,22 @@
       "surface": "kit-block",
       "spec": "block.features",
       "source": "xgen/specs/blocks/features.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "features",
           "collection": "features",
           "kind": "feature",
           "record": "Feature",
-          "list": true
+          "map": "feature",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -1700,12 +1869,17 @@
           "keys": []
         },
         {
+          "prop": "empty",
+          "dictionary": "empty.features",
+          "keys": []
+        },
+        {
           "prop": "action.label",
           "dictionary": "site.home.featuresAction",
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "FeatureShowcase",
@@ -1719,6 +1893,7 @@
           "collection": "features",
           "kind": "feature",
           "record": "Feature",
+          "map": "feature",
           "list": true
         },
         {
@@ -1726,6 +1901,7 @@
           "collection": "values",
           "kind": "value",
           "record": "Feature",
+          "map": "value",
           "list": true
         }
       ],
@@ -1767,6 +1943,7 @@
           "collection": "features",
           "kind": "feature",
           "record": "Feature",
+          "map": "feature",
           "list": true
         },
         {
@@ -1820,14 +1997,22 @@
       "surface": "kit-block",
       "spec": "block.featuretabs",
       "source": "xgen/specs/blocks/featuretabs.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "features",
           "collection": "features",
           "kind": "feature",
           "record": "Feature",
-          "list": true
+          "map": "feature",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -1845,19 +2030,24 @@
           "keys": []
         },
         {
+          "prop": "empty",
+          "dictionary": "empty.features",
+          "keys": []
+        },
+        {
           "prop": "tabsLabel",
           "dictionary": "vibe.tabs.label",
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "SiteFooter",
       "surface": "kit-block",
       "spec": "block.footer",
       "source": "xgen/specs/blocks/footer.json",
-      "status": "todo",
+      "status": "done",
       "data": [],
       "settings": [
         "routes",
@@ -1907,6 +2097,7 @@
           "collection": "features",
           "kind": "feature",
           "record": "Feature",
+          "map": "feature",
           "list": true
         },
         {
@@ -1914,6 +2105,7 @@
           "collection": "contacts",
           "kind": "contact",
           "record": "Feature",
+          "map": "contact",
           "list": true
         },
         {
@@ -1921,6 +2113,7 @@
           "collection": "community",
           "kind": "channel",
           "record": "Feature",
+          "map": "channel",
           "list": true
         }
       ],
@@ -1980,7 +2173,7 @@
       "surface": "kit-block",
       "spec": "block.header",
       "source": "xgen/specs/blocks/header.json",
-      "status": "todo",
+      "status": "done",
       "data": [],
       "settings": [
         "routes",
@@ -2024,6 +2217,7 @@
           "collection": "terminal",
           "kind": "line",
           "record": "CodeLine",
+          "map": "line",
           "list": true
         },
         {
@@ -2031,6 +2225,7 @@
           "collection": "prompts",
           "kind": "prompt",
           "record": "Topic",
+          "map": "prompt",
           "list": true
         },
         {
@@ -2150,6 +2345,7 @@
           "collection": "features",
           "kind": "feature",
           "record": "Feature",
+          "map": "feature",
           "list": true
         },
         {
@@ -2157,6 +2353,7 @@
           "collection": "testimonials",
           "kind": "testimonial",
           "record": "Quote",
+          "map": "testimonial",
           "list": true
         },
         {
@@ -2226,14 +2423,22 @@
       "surface": "kit-block",
       "spec": "block.iconwall",
       "source": "xgen/specs/blocks/iconwall.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "features",
           "collection": "features",
           "kind": "feature",
           "record": "Feature",
-          "list": true
+          "map": "feature",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -2249,9 +2454,14 @@
           "prop": "title",
           "dictionary": "vibe.wall.title",
           "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.features",
+          "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "JobBoard",
@@ -2265,6 +2475,7 @@
           "collection": "jobs",
           "kind": "job",
           "record": "Job",
+          "map": "job",
           "list": true
         },
         {
@@ -2272,6 +2483,7 @@
           "collection": "departments",
           "kind": "department",
           "record": "Department",
+          "map": "department",
           "list": true
         }
       ],
@@ -2315,21 +2527,37 @@
       "surface": "kit-block",
       "spec": "block.kanban",
       "source": "xgen/specs/blocks/kanban.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "lanes",
           "collection": "lanes",
           "kind": "lane",
           "record": "Lane",
-          "list": true
+          "map": "lane",
+          "list": true,
+          "required": [
+            "id",
+            "slug",
+            "title"
+          ],
+          "optional": []
         },
         {
           "prop": "cards",
           "collection": "cards",
           "kind": "card",
           "record": "BoardCard",
-          "list": true
+          "map": "card",
+          "list": true,
+          "required": [
+            "id",
+            "metadata.lane.value",
+            "title",
+            "metadata.tag.value",
+            "metadata.who.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -2347,26 +2575,43 @@
           "keys": []
         },
         {
+          "prop": "empty",
+          "dictionary": "empty.lanes",
+          "keys": []
+        },
+        {
           "prop": "countLabel",
           "dictionary": "vibe.kanban.count",
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "StoreLocations",
       "surface": "kit-block",
       "spec": "block.locations",
       "source": "xgen/specs/blocks/locations.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "stores",
           "collection": "stores",
           "kind": "store",
           "record": "Store",
-          "list": true
+          "map": "store",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.store_kind.value",
+            "metadata.address.value",
+            "metadata.hours.value",
+            "metadata.phone.value",
+            "metadata.note.value",
+            "metadata.services.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -2387,6 +2632,11 @@
           "keys": []
         },
         {
+          "prop": "empty",
+          "dictionary": "empty.stores",
+          "keys": []
+        },
+        {
           "prop": "kinds",
           "dictionary": "commerce.stores.kinds",
           "keys": [
@@ -2402,21 +2652,28 @@
           ]
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "LogoCloud",
       "surface": "kit-block",
       "spec": "block.logos",
       "source": "xgen/specs/blocks/logos.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "logos",
           "collection": "logos",
           "kind": "logo",
           "record": "Logo",
-          "list": true
+          "map": "logo",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -2433,9 +2690,14 @@
           "prop": "title",
           "dictionary": "marketing.logos.title",
           "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.logos",
+          "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "MediaList",
@@ -2457,6 +2719,7 @@
           "collection": "steps",
           "kind": "step",
           "record": "Step",
+          "map": "step",
           "list": true
         },
         {
@@ -2480,6 +2743,7 @@
           "collection": "channels",
           "kind": "channel",
           "record": "Feature",
+          "map": "channel",
           "list": true
         },
         {
@@ -2622,14 +2886,23 @@
       "surface": "kit-block",
       "spec": "block.metrics",
       "source": "xgen/specs/blocks/metrics.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "metrics",
           "collection": "metrics",
           "kind": "metric",
           "record": "Stat",
-          "list": true
+          "map": "metric",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.value.value",
+            "metadata.icon.value",
+            "metadata.hint.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -2645,9 +2918,14 @@
           "prop": "title",
           "dictionary": "dashboard.metrics.title",
           "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.metrics",
+          "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "NavBar",
@@ -2713,7 +2991,7 @@
       "surface": "kit-block",
       "spec": "block.newsletter",
       "source": "xgen/specs/blocks/newsletter.json",
-      "status": "todo",
+      "status": "done",
       "data": [],
       "settings": [
         "id",
@@ -2757,14 +3035,25 @@
       "surface": "kit-block",
       "spec": "block.orders",
       "source": "xgen/specs/blocks/orders.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "orders",
           "collection": "orders",
           "kind": "order",
           "record": "Order",
-          "list": true
+          "map": "order",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.date.value",
+            "metadata.total.value",
+            "metadata.currency.value",
+            "metadata.order_status.value",
+            "metadata.items.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -2779,6 +3068,11 @@
         {
           "prop": "title",
           "dictionary": "commerce.orders.title",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.orders",
           "keys": []
         },
         {
@@ -2810,7 +3104,7 @@
           ]
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "DashboardOverview",
@@ -2824,6 +3118,7 @@
           "collection": "metrics",
           "kind": "metric",
           "record": "Stat",
+          "map": "metric",
           "list": true
         },
         {
@@ -2831,6 +3126,7 @@
           "collection": "series",
           "kind": "point",
           "record": "Point",
+          "map": "point",
           "list": true
         },
         {
@@ -2838,6 +3134,7 @@
           "collection": "activity",
           "kind": "event",
           "record": "Event",
+          "map": "event",
           "list": true
         }
       ],
@@ -2888,7 +3185,7 @@
       "surface": "kit-block",
       "spec": "block.pagehead",
       "source": "xgen/specs/blocks/pagehead.json",
-      "status": "todo",
+      "status": "done",
       "data": [],
       "settings": [
         "id",
@@ -3013,14 +3310,22 @@
       "surface": "kit-block",
       "spec": "block.photos",
       "source": "xgen/specs/blocks/photos.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "photos",
           "collection": "photos",
           "kind": "photo",
           "record": "Photo",
-          "list": true
+          "map": "photo",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.tag.value",
+            "metadata.size.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -3043,6 +3348,11 @@
           "keys": []
         },
         {
+          "prop": "empty",
+          "dictionary": "empty.photos",
+          "keys": []
+        },
+        {
           "prop": "labels",
           "dictionary": "company.photos",
           "keys": [
@@ -3052,7 +3362,7 @@
           ]
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "PricingCard",
@@ -3167,7 +3477,7 @@
           "collection": "topics",
           "kind": "topic",
           "record": "PostTopic",
-          "map": "faqtab",
+          "map": "topic",
           "list": true
         }
       ],
@@ -3288,6 +3598,7 @@
           "collection": "posttags",
           "kind": "posttag",
           "record": "NavLink",
+          "map": "posttag",
           "list": true
         },
         {
@@ -3513,6 +3824,7 @@
           "collection": "details",
           "kind": "detail",
           "record": "Detail",
+          "map": "detail",
           "list": true
         },
         {
@@ -3520,6 +3832,7 @@
           "collection": "specs",
           "kind": "spec",
           "record": "Spec",
+          "map": "spec",
           "list": true
         }
       ],
@@ -3624,7 +3937,7 @@
       "surface": "kit-block",
       "spec": "block.profile",
       "source": "xgen/specs/blocks/profile.json",
-      "status": "todo",
+      "status": "done",
       "data": [],
       "settings": [
         "id",
@@ -3669,14 +3982,26 @@
       "surface": "kit-block",
       "spec": "block.projects",
       "source": "xgen/specs/blocks/projects.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "projects",
           "collection": "projects",
           "kind": "project",
           "record": "Project",
-          "list": true
+          "map": "project",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "terms",
+            "metadata.year.value",
+            "metadata.summary.value",
+            "metadata.tags.value",
+            "metadata.featured.value",
+            "metadata.client.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -3698,6 +4023,11 @@
           "keys": []
         },
         {
+          "prop": "empty",
+          "dictionary": "empty.projects",
+          "keys": []
+        },
+        {
           "prop": "labels",
           "dictionary": "company.projects",
           "keys": [
@@ -3707,21 +4037,28 @@
           ]
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "ProofBand",
       "surface": "kit-block",
       "spec": "block.proof",
       "source": "xgen/specs/blocks/proof.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "logos",
           "collection": "logos",
           "kind": "logo",
           "record": "Logo",
-          "list": true
+          "map": "logo",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value"
+          ],
+          "optional": []
         },
         {
           "prop": "stats",
@@ -3729,7 +4066,15 @@
           "kind": "stat",
           "record": "Stat",
           "map": "stat",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.value.value",
+            "metadata.icon.value",
+            "metadata.hint.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -3745,9 +4090,14 @@
           "prop": "title",
           "dictionary": "vibe.proof.title",
           "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.logos",
+          "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "QuoteSplit",
@@ -3761,6 +4111,7 @@
           "collection": "testimonials",
           "kind": "testimonial",
           "record": "Quote",
+          "map": "testimonial",
           "list": true
         },
         {
@@ -3776,6 +4127,7 @@
           "collection": "logos",
           "kind": "logo",
           "record": "Logo",
+          "map": "logo",
           "list": true
         }
       ],
@@ -3911,6 +4263,7 @@
           "collection": "metrics",
           "kind": "metric",
           "record": "Stat",
+          "map": "metric",
           "list": true
         },
         {
@@ -3918,6 +4271,7 @@
           "collection": "series",
           "kind": "point",
           "record": "Point",
+          "map": "point",
           "list": true
         },
         {
@@ -3925,6 +4279,7 @@
           "collection": "activity",
           "kind": "event",
           "record": "Event",
+          "map": "event",
           "list": true
         }
       ],
@@ -4123,6 +4478,7 @@
           "collection": "placeholders",
           "kind": "placeholder",
           "record": "Line",
+          "map": "placeholder",
           "list": true
         }
       ],
@@ -4158,6 +4514,7 @@
           "collection": "days",
           "kind": "day",
           "record": "Day",
+          "map": "day",
           "list": true
         },
         {
@@ -4165,6 +4522,7 @@
           "collection": "zones",
           "kind": "zone",
           "record": "Zone",
+          "map": "zone",
           "list": false
         }
       ],
@@ -4265,6 +4623,7 @@
           "collection": "steps",
           "kind": "step",
           "record": "Step",
+          "map": "step",
           "list": true
         }
       ],
@@ -4305,14 +4664,22 @@
       "surface": "kit-block",
       "spec": "block.steps",
       "source": "xgen/specs/blocks/steps.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "steps",
           "collection": "steps",
           "kind": "step",
           "record": "Step",
-          "list": true
+          "map": "step",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -4329,23 +4696,36 @@
           "prop": "title",
           "dictionary": "marketing.steps.title",
           "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.steps",
+          "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "FeatureSticky",
       "surface": "kit-block",
       "spec": "block.sticky",
       "source": "xgen/specs/blocks/sticky.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "features",
           "collection": "features",
           "kind": "feature",
           "record": "Feature",
-          "list": true
+          "map": "feature",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -4362,9 +4742,14 @@
           "prop": "title",
           "dictionary": "vibe.sticky.title",
           "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.features",
+          "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "StoreHero",
@@ -4378,6 +4763,7 @@
           "collection": "perks",
           "kind": "perk",
           "record": "Feature",
+          "map": "perk",
           "list": true
         }
       ],
@@ -4439,6 +4825,7 @@
           "collection": "milestones",
           "kind": "milestone",
           "record": "Milestone",
+          "map": "milestone",
           "list": true
         }
       ],
@@ -4482,14 +4869,23 @@
       "surface": "kit-block",
       "spec": "block.summary",
       "source": "xgen/specs/blocks/summary.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "rows",
           "collection": "summary",
           "kind": "summaryrow",
           "record": "SummaryRow",
-          "list": true
+          "map": "summaryrow",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.amount.value",
+            "metadata.currency.value",
+            "metadata.strong.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -4508,6 +4904,11 @@
           "keys": []
         },
         {
+          "prop": "empty",
+          "dictionary": "empty.summary",
+          "keys": []
+        },
+        {
           "prop": "labels",
           "dictionary": "commerce.summary",
           "keys": [
@@ -4516,21 +4917,32 @@
           ]
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "TeamGrid",
       "surface": "kit-block",
       "spec": "block.team",
       "source": "xgen/specs/blocks/team.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "members",
           "collection": "members",
           "kind": "member",
           "record": "Member",
-          "list": true
+          "map": "member",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.role.value",
+            "metadata.dept.value",
+            "metadata.location.value",
+            "metadata.bio.value",
+            "metadata.skills.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -4553,6 +4965,11 @@
           "keys": []
         },
         {
+          "prop": "empty",
+          "dictionary": "empty.members",
+          "keys": []
+        },
+        {
           "prop": "depts",
           "dictionary": "company.depts",
           "keys": [
@@ -4564,7 +4981,7 @@
           ]
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "TemplateGrid",
@@ -4578,6 +4995,7 @@
           "collection": "templates",
           "kind": "template",
           "record": "Template",
+          "map": "template",
           "list": true
         },
         {
@@ -4585,6 +5003,7 @@
           "collection": "prompts",
           "kind": "prompt",
           "record": "Filter",
+          "map": "promptFilter",
           "list": true
         }
       ],
@@ -4630,14 +5049,27 @@
       "surface": "kit-block",
       "spec": "block.testimonials",
       "source": "xgen/specs/blocks/testimonials.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "quotes",
           "collection": "testimonials",
           "kind": "testimonial",
           "record": "Quote",
-          "list": true
+          "map": "testimonial",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.role.value",
+            "metadata.company.value",
+            "metadata.quote.value",
+            "metadata.rating.value",
+            "metadata.handle.value",
+            "metadata.time.value",
+            "metadata.mark.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -4656,6 +5088,11 @@
           "keys": []
         },
         {
+          "prop": "empty",
+          "dictionary": "empty.quotes",
+          "keys": []
+        },
+        {
           "prop": "labels.rating",
           "dictionary": "testimonials.rating",
           "keys": []
@@ -4671,21 +5108,30 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "MilestoneTimeline",
       "surface": "kit-block",
       "spec": "block.timeline",
       "source": "xgen/specs/blocks/timeline.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "milestones",
           "collection": "milestones",
           "kind": "milestone",
           "record": "Milestone",
-          "list": true
+          "map": "milestone",
+          "list": true,
+          "required": [
+            "id",
+            "metadata.date.value",
+            "title",
+            "metadata.text.value",
+            "metadata.tag.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -4705,16 +5151,21 @@
           "prop": "lead",
           "dictionary": "company.timeline.lead",
           "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.milestones",
+          "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "TourCallout",
       "surface": "kit-block",
       "spec": "block.tour",
       "source": "xgen/specs/blocks/tour.json",
-      "status": "todo",
+      "status": "done",
       "data": [],
       "settings": [
         "id",
@@ -4762,7 +5213,7 @@
       "surface": "kit-block",
       "spec": "block.usage",
       "source": "xgen/specs/blocks/usage.json",
-      "status": "todo",
+      "status": "done",
       "data": [],
       "settings": [
         "id",
@@ -4817,14 +5268,22 @@
       "surface": "kit-block",
       "spec": "block.usp",
       "source": "xgen/specs/blocks/usp.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "perks",
           "collection": "perks",
           "kind": "perk",
           "record": "Feature",
-          "list": true
+          "map": "perk",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -4836,12 +5295,17 @@
       ],
       "labels": [
         {
+          "prop": "empty",
+          "dictionary": "empty.perks",
+          "keys": []
+        },
+        {
           "prop": "title",
           "dictionary": "commerce.usp.title",
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "VideoModal",
@@ -4855,6 +5319,7 @@
           "collection": "chapters",
           "kind": "chapter",
           "record": "Chapter",
+          "map": "chapter",
           "list": true
         }
       ],
@@ -4899,14 +5364,27 @@
       "surface": "kit-block",
       "spec": "block.videos",
       "source": "xgen/specs/blocks/videos.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "quotes",
           "collection": "testimonials",
           "kind": "testimonial",
           "record": "Quote",
-          "list": true
+          "map": "testimonial",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.role.value",
+            "metadata.company.value",
+            "metadata.quote.value",
+            "metadata.rating.value",
+            "metadata.handle.value",
+            "metadata.time.value",
+            "metadata.mark.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -4924,6 +5402,11 @@
           "keys": []
         },
         {
+          "prop": "empty",
+          "dictionary": "empty.quotes",
+          "keys": []
+        },
+        {
           "prop": "playLabel",
           "dictionary": "vibe.videos.play",
           "keys": []
@@ -4934,7 +5417,7 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "SignupWizard",
@@ -4948,6 +5431,7 @@
           "collection": "wizard",
           "kind": "step",
           "record": "WizardStep",
+          "map": "wizardStep",
           "list": true
         }
       ],
@@ -4984,14 +5468,28 @@
       "surface": "kit-block",
       "spec": "block.zones",
       "source": "xgen/specs/blocks/zones.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "zones",
           "collection": "zones",
           "kind": "zone",
           "record": "Zone",
-          "list": true
+          "map": "zone",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.area.value",
+            "metadata.price.value",
+            "metadata.freeFrom.value",
+            "metadata.minOrder.value",
+            "metadata.time.value",
+            "metadata.currency.value"
+          ],
+          "optional": [
+            "metadata.express.value"
+          ]
         }
       ],
       "settings": [
@@ -5013,6 +5511,11 @@
           "keys": []
         },
         {
+          "prop": "empty",
+          "dictionary": "empty.zones",
+          "keys": []
+        },
+        {
           "prop": "labels",
           "dictionary": "commerce.zones",
           "keys": [
@@ -5026,7 +5529,7 @@
           ]
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "screen.blocks",

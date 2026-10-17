@@ -12,6 +12,7 @@ export type ProofBandProps = {
   id: string;
   title: string;
   logos: Logo[];
+  empty?: string;
   stats: Stat[];
   layout?: "above" | "beside";
   logoStyle?: "name" | "icon";
@@ -27,12 +28,14 @@ import Group from "../primitives/group/group.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
+import EmptyState from "../components/empty-state.vue";
 import SectionFrame from "../components/section-frame.vue";
 
 const {
   id,
   title,
   logos,
+  empty = "",
   stats,
   layout = "above",
   logoStyle = "name",
@@ -51,7 +54,8 @@ const {
     align="center"
     :landmarkLabel="landmarkLabel"
   >
-    <Grid :cols="(((layout as string) === 'beside') ? '1-2' : '1')" class="items-center gap-8">
+    <EmptyState v-if="((logos?.length ?? 0) === 0)" icon="building-2" :title="empty" />
+    <Grid v-else :cols="(((layout as string) === 'beside') ? '1-2' : '1')" class="items-center gap-8">
       <Group gap="6" justify="center" class="flex-wrap text-muted-foreground" data-testid="logos">
         <Group v-for="logo in logos" :key="logo.id" gap="2" align="center" data-testid="logo">
           <LucideIcon :name="logo.icon" :size="24" />

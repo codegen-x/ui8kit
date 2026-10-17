@@ -78,6 +78,7 @@ export function VideosPage() {
                 id="videos-grid3"
                 title={ui.vibe.videos.title}
                 quotes={testimonials}
+                empty={ui.empty.quotes}
                 playLabel={ui.vibe.videos.play}
                 byLine={ui.testimonials.byLine}
                 cols="1-3"
@@ -105,6 +106,7 @@ export function VideosPage() {
                 id="videos-grid2"
                 title={ui.vibe.videos.title}
                 quotes={testimonials}
+                empty={ui.empty.quotes}
                 playLabel={ui.vibe.videos.play}
                 byLine={ui.testimonials.byLine}
                 cols="1-2"
@@ -132,6 +134,7 @@ export function VideosPage() {
                 id="videos-overlay"
                 title={ui.vibe.videos.title}
                 quotes={testimonials}
+                empty={ui.empty.quotes}
                 playLabel={ui.vibe.videos.play}
                 byLine={ui.testimonials.byLine}
                 cols="1-3"
@@ -159,6 +162,7 @@ export function VideosPage() {
                 id="videos-muted"
                 title={ui.vibe.videos.title}
                 quotes={testimonials}
+                empty={ui.empty.quotes}
                 playLabel={ui.vibe.videos.play}
                 byLine={ui.testimonials.byLine}
                 cols="1-3"

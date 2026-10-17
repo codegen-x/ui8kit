@@ -19,6 +19,7 @@ type UspStripProps struct {
 	Id any `json:"id"`
 	Title any `json:"title"`
 	Perks any `json:"perks"`
+	Empty any `json:"empty"`
 	Layout any `json:"layout"`
 	Tone any `json:"tone"`
 	Density any `json:"density"`
@@ -30,12 +31,15 @@ templ UspStrip(p UspStripProps) {
 	{{ vId := p.Id }}
 	{{ vTitle := uiutils.Def(p.Title, "") }}
 	{{ vPerks := p.Perks }}
+	{{ vEmpty := uiutils.Def(p.Empty, "") }}
 	{{ vLayout := uiutils.Def(p.Layout, "strip") }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Tone: vTone, Density: vDensity, LandmarkLabel: vLandmarkLabel}) {
-		if uiutils.Eq(vLayout, "bar") {
+		if uiutils.Eq(uiutils.Len(vPerks), float64(0)) {
+			@EmptyState(EmptyStateProps{Icon: "truck", Title: vEmpty})
+		} else if uiutils.Eq(vLayout, "bar") {
 			@list.List(list.ListProps{Tag: "ul", Class: "flex flex-wrap items-center justify-center gap-x-8 gap-y-4", Attrs: uiutils.Attrs("data-testid", "items")}) {
 				for _, vP := range uiutils.L(vPerks) {
 					@list.ListItem(list.ListItemProps{Class: "flex items-center gap-2 text-sm font-medium", Attrs: uiutils.Attrs("data-testid", "item")}) {

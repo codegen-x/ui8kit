@@ -57,6 +57,7 @@
     }
   ],
   "slots": [
+    "EmptyState",
     "SectionFrame"
   ],
   "facts": [
@@ -111,6 +112,9 @@
       },
       "points": {
         "$": "beforeafter"
+      },
+      "empty": {
+        "$": "ui.empty.points"
       },
       "labels": {
         "$": "ui.vibe.beforeafter.labels"

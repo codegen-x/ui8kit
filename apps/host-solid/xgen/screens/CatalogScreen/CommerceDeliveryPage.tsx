@@ -212,6 +212,7 @@ export function CommerceDeliveryPage() {
                   title={ui.commerce.zones.title}
                   lead={ui.commerce.zones.lead}
                   zones={zones}
+                  empty={ui.empty.zones}
                   labels={ui.commerce.zones}
                   layout="table"
                   tone="default"
@@ -238,6 +239,7 @@ export function CommerceDeliveryPage() {
                   title={ui.commerce.zones.title}
                   lead={ui.commerce.zones.lead}
                   zones={zones}
+                  empty={ui.empty.zones}
                   labels={ui.commerce.zones}
                   layout="cards"
                   tone="default"
@@ -264,6 +266,7 @@ export function CommerceDeliveryPage() {
                   title={ui.commerce.zones.title}
                   lead={ui.commerce.zones.lead}
                   zones={zones}
+                  empty={ui.empty.zones}
                   labels={ui.commerce.zones}
                   layout="table"
                   tone="muted"
@@ -405,6 +408,7 @@ export function CommerceDeliveryPage() {
                   title={ui.commerce.stores.title}
                   lead={ui.commerce.stores.lead}
                   stores={stores}
+                  empty={ui.empty.stores}
                   kinds={ui.commerce.stores.kinds}
                   labels={ui.commerce.stores}
                   layout="cards"
@@ -431,6 +435,7 @@ export function CommerceDeliveryPage() {
                   title={ui.commerce.stores.title}
                   lead={ui.commerce.stores.lead}
                   stores={stores}
+                  empty={ui.empty.stores}
                   kinds={ui.commerce.stores.kinds}
                   labels={ui.commerce.stores}
                   layout="list"
@@ -457,6 +462,7 @@ export function CommerceDeliveryPage() {
                   title={ui.commerce.stores.title}
                   lead={ui.commerce.stores.lead}
                   stores={stores}
+                  empty={ui.empty.stores}
                   kinds={ui.commerce.stores.kinds}
                   labels={ui.commerce.stores}
                   layout="map"

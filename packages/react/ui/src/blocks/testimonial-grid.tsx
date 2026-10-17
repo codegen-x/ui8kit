@@ -9,6 +9,7 @@
 import { Fragment, type ReactNode } from "react";
 import { Block } from "../primitives/block/block";
 import { Grid } from "../primitives/grid/grid";
+import { EmptyState } from "../components/empty-state";
 import { QuoteCard } from "../components/quote-card";
 import { SectionFrame } from "../components/section-frame";
 import type { Quote, QuoteLabels, QuoteItem } from "./testimonial-grid.types";
@@ -17,6 +18,7 @@ export type TestimonialGridProps = {
   id: string;
   title: string;
   quotes: Quote[];
+  empty?: string;
   labels: QuoteLabels;
   layout?: "grid" | "single" | "stack" | "masonry" | "strip";
   cols?: "1-2" | "1-3";
@@ -30,6 +32,7 @@ export function TestimonialGrid({
   id,
   title,
   quotes,
+  empty = "",
   labels,
   layout = "grid",
   cols = "1-3",
@@ -48,7 +51,9 @@ export function TestimonialGrid({
       measure={(((layout as string) === "grid") ? "default" : "2xl")}
       landmarkLabel={landmarkLabel}
     >
-      {(((layout as string) === "masonry") || ((layout as string) === "strip")) ? (
+      {((quotes?.length ?? 0) === 0) ? (
+        <EmptyState icon="message-square-quote" title={empty} />
+      ) : (((layout as string) === "masonry") || ((layout as string) === "strip")) ? (
         <Block
           tag="div"
           className={

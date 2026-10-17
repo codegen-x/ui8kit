@@ -13,6 +13,7 @@ export type TestimonialGridProps = {
   id: string;
   title: string;
   quotes: Quote[];
+  empty?: string;
   labels: QuoteLabels;
   layout?: "grid" | "single" | "stack" | "masonry" | "strip";
   cols?: "1-2" | "1-3";
@@ -26,6 +27,7 @@ export type TestimonialGridProps = {
 <script setup lang="ts">
 import Block from "../primitives/block/block.vue";
 import Grid from "../primitives/grid/grid.vue";
+import EmptyState from "../components/empty-state.vue";
 import QuoteCard from "../components/quote-card.vue";
 import SectionFrame from "../components/section-frame.vue";
 
@@ -33,6 +35,7 @@ const {
   id,
   title,
   quotes,
+  empty = "",
   labels,
   layout = "grid",
   cols = "1-3",
@@ -53,7 +56,8 @@ const {
     :measure="(((layout as string) === 'grid') ? 'default' : '2xl')"
     :landmarkLabel="landmarkLabel"
   >
-    <Block v-if="(((layout as string) === 'masonry') || ((layout as string) === 'strip'))"
+    <EmptyState v-if="((quotes?.length ?? 0) === 0)" icon="message-square-quote" :title="empty" />
+    <Block v-else-if="(((layout as string) === 'masonry') || ((layout as string) === 'strip'))"
       tag="div"
       :class="
         (layout as string) === 'masonry' ? 'columns-1 gap-4 md:columns-2 xl:columns-3'

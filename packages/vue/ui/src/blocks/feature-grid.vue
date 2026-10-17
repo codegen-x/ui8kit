@@ -13,6 +13,7 @@ export type FeatureGridProps = {
   id: string;
   title: string;
   features: Feature[];
+  empty?: string;
   action?: HeadLink;
   layout?: "grid" | "rows";
   cols?: "1-2" | "1-3" | "1-4";
@@ -28,6 +29,7 @@ export type FeatureGridProps = {
 import Group from "../primitives/group/group.vue";
 import Link from "../primitives/link/link.vue";
 import Title from "../primitives/title/title.vue";
+import EmptyState from "../components/empty-state.vue";
 import FeatureCards from "../components/feature-cards.vue";
 import FeatureRows from "../components/feature-rows.vue";
 import SectionFrame from "../components/section-frame.vue";
@@ -38,6 +40,7 @@ const {
   id,
   title,
   features,
+  empty = "",
   action,
   layout = "grid",
   cols = "1-3",
@@ -71,7 +74,8 @@ const {
         {{ action?.label }}
       </Link>
     </Group>
-    <FeatureCards :features="features" :cols="cols" :item="item" />
+    <EmptyState v-if="((features?.length ?? 0) === 0)" icon="layout-grid" :title="empty" />
+    <FeatureCards v-else :features="features" :cols="cols" :item="item" />
   </SectionFrame>
   <SectionFrame v-else
     :id="id"
@@ -81,7 +85,8 @@ const {
     :density="density"
     :landmarkLabel="landmarkLabel"
   >
-    <FeatureRows v-if="((layout as string) === 'rows')" :features="features" :mediaSide="mediaSide" />
+    <EmptyState v-if="((features?.length ?? 0) === 0)" icon="layout-grid" :title="empty" />
+    <FeatureRows v-else-if="((layout as string) === 'rows')" :features="features" :mediaSide="mediaSide" />
     <FeatureCards v-else :features="features" :cols="cols" :item="item" />
   </SectionFrame>
 </template>

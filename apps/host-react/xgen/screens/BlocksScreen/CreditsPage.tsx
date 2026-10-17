@@ -75,6 +75,7 @@ export function CreditsPage() {
                 id="credits-tiles4"
                 title={ui.vibe.credits.title}
                 packs={credits}
+                empty={ui.empty.packs}
                 badges={ui.vibe.credits.badges}
                 buy={ui.vibe.credits.buy}
                 cols="4"
@@ -102,6 +103,7 @@ export function CreditsPage() {
                 id="credits-tiles2"
                 title={ui.vibe.credits.title}
                 packs={credits}
+                empty={ui.empty.packs}
                 badges={ui.vibe.credits.badges}
                 buy={ui.vibe.credits.buy}
                 cols="2"
@@ -129,6 +131,7 @@ export function CreditsPage() {
                 id="credits-rows"
                 title={ui.vibe.credits.title}
                 packs={credits}
+                empty={ui.empty.packs}
                 badges={ui.vibe.credits.badges}
                 buy={ui.vibe.credits.buy}
                 cols="4"
@@ -156,6 +159,7 @@ export function CreditsPage() {
                 id="credits-muted"
                 title={ui.vibe.credits.title}
                 packs={credits}
+                empty={ui.empty.packs}
                 badges={ui.vibe.credits.badges}
                 buy={ui.vibe.credits.buy}
                 cols="4"

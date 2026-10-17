@@ -5,7 +5,7 @@ export type Project = {
   id: string;
   title: string;
   category: string;
-  year: string;
+  year: number;
   summary: string;
   tags: string[];
   featured: boolean;

@@ -63,6 +63,7 @@ export function ArticlePage() {
                 id="article-column"
                 title={ui.vibe.article.title}
                 sections={article}
+                empty={ui.empty.sections}
                 tocTitle={ui.vibe.article.toc}
                 layout="column"
                 quotes="show"
@@ -88,6 +89,7 @@ export function ArticlePage() {
                 id="article-toc"
                 title={ui.vibe.article.title}
                 sections={article}
+                empty={ui.empty.sections}
                 tocTitle={ui.vibe.article.toc}
                 layout="toc"
                 quotes="show"
@@ -113,6 +115,7 @@ export function ArticlePage() {
                 id="article-plain"
                 title={ui.vibe.article.title}
                 sections={article}
+                empty={ui.empty.sections}
                 tocTitle={ui.vibe.article.toc}
                 layout="column"
                 quotes="hide"
@@ -138,6 +141,7 @@ export function ArticlePage() {
                 id="article-muted"
                 title={ui.vibe.article.title}
                 sections={article}
+                empty={ui.empty.sections}
                 tocTitle={ui.vibe.article.toc}
                 layout="column"
                 quotes="show"

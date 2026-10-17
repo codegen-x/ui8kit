@@ -3,7 +3,7 @@ import { and, at, call, cn, coalesce, cond, each, eq, gt, len, mul, not, money, 
 import type { OrganismSpec, ViewNode } from "../../ir";
 import { cardBase, fields, groupFields, spec, ts } from "../kit";
 import { frame, wide } from "../components/frames";
-import { id, title, tone, tsOf, toneLite, denseLite, roomyLite } from "../props";
+import { empty, id, orEmpty, title, tone, tsOf, toneLite, denseLite, roomyLite } from "../props";
 import { cartTable } from "../components/cart-table";
 import { numberField } from "../components/number-field";
 import { orderRows, statusTone } from "../components/orders";
@@ -199,6 +199,7 @@ const cartList = spec(`${O}cart-list`, "CartList", "The lines of a cart as a tab
   props: [
     id, title,
     { name: "lines", type: ts("CartLine[]"), required: true },
+    empty,
     { name: "labels", type: { record: "CartLabels" }, required: true },
     { name: "layout", type: tsOf("table", "cards"), default: "table" },
     { name: "media", type: tsOf("image", "none"), default: "image" },
@@ -206,7 +207,7 @@ const cartList = spec(`${O}cart-list`, "CartList", "The lines of a cart as a tab
     { name: "density", type: denseLite, default: "default" },
   ],
   events: [{ name: "remove", args: [{ name: "id", type: "string" }], docs: "the remove button of a line was pressed" }],
-  view: [frame(common, [
+  view: [frame(common, [orEmpty("lines", "shopping-cart", [
     when(eq(ref("layout"), "table"),
       [organism("CartTable", { field: tpl("{0}-qty", ref("id")), lines: ref("lines"), labels: ref("labels"), media: ref("media"), density: ref("density") }, { on: { remove: call("emit.remove", ref("arg")) } })],
       [use("Stack", { props: { Gap: "4", Align: "stretch" }, attrs: { "data-testid": "cart-cards" } },
@@ -220,7 +221,7 @@ const cartList = spec(`${O}cart-list`, "CartList", "The lines of a cart as a tab
                 use("Text", { props: { Size: "sm" } }, text(money(ref("line.price"), ref("line.currency"))))),
               organism("NumberField", { value: str(ref("line.qty")), name: tpl("{0}-qty-{1}", ref("id"), ref("line.id")), min: "1", label: ref("labels.qty"), decrease: ref("labels.decrease"), increase: ref("labels.increase") }),
               use("Text", { props: { Size: "base", Weight: "bold" } }, text(money(mul(ref("line.price"), ref("line.qty")), ref("line.currency")))),
-              use("Button", { props: { Variant: "ghost", Size: "sm", Layout: "icon", AriaLabel: ref("labels.remove") }, on: { click: call("emit.remove", ref("line.id")) }, attrs: { "data-testid": "remove" } }, use("LucideIcon", { props: { Name: "x", Size: 16 } }))))))]),
+              use("Button", { props: { Variant: "ghost", Size: "sm", Layout: "icon", AriaLabel: ref("labels.remove") }, on: { click: call("emit.remove", ref("line.id")) }, attrs: { "data-testid": "remove" } }, use("LucideIcon", { props: { Name: "x", Size: 16 } }))))))]),])
   ])],
 });
 
@@ -229,6 +230,7 @@ const orderSummary = spec(`${O}order-summary`, "OrderSummary", "The totals of an
   props: [
     id, title,
     { name: "rows", type: ts("SummaryRow[]"), required: true },
+    empty,
     { name: "labels", type: { record: "SummaryLabels" }, required: true },
     { name: "layout", type: tsOf("card", "plain"), default: "card" },
     { name: "cta", type: tsOf("show", "hide"), default: "show" },
@@ -236,7 +238,7 @@ const orderSummary = spec(`${O}order-summary`, "OrderSummary", "The totals of an
     { name: "tone", type: toneLite, default: "default" },
     { name: "density", type: denseLite, default: "default" },
   ],
-  view: [frame({ ...common, measure: "md" }, [
+  view: [frame({ ...common, measure: "md" }, [orEmpty("rows", "receipt", [
     use("Box", { props: { Class: cn(cond(eq(ref("layout"), "card"), "rounded bg-card p-6 inset-ring inset-ring-border", "")) }, attrs: { "data-testid": "summary" } },
       use("Stack", { props: { Gap: "4", Align: "stretch" } },
         use("List", { props: { Tag: "ul", Class: "flex flex-col gap-4" } },
@@ -244,7 +246,7 @@ const orderSummary = spec(`${O}order-summary`, "OrderSummary", "The totals of an
             use("ListItem", { props: { Class: cn("flex items-center justify-between gap-4", cond(ref("row.strong"), "border-t border-border pt-4 text-base font-bold", "text-sm text-muted-foreground")) }, attrs: { "data-testid": "item" } },
               use("Inline", {}, text(ref("row.label"))), use("Inline", {}, text(money(ref("row.amount"), ref("row.currency"))))))),
         when(eq(ref("cta"), "show"), [use("Button", { props: { Variant: "default", Size: "default", Class: "w-full" }, attrs: { "data-testid": "checkout" } }, text(ref("labels.checkout")))]),
-        when(eq(ref("note"), "show"), [use("Text", { props: { Size: "xs", Class: "text-muted-foreground" } }, text(ref("labels.note")))]))),
+        when(eq(ref("note"), "show"), [use("Text", { props: { Size: "xs", Class: "text-muted-foreground" } }, text(ref("labels.note")))]))),])
   ])],
 });
 
@@ -253,6 +255,7 @@ const orderTable = spec(`${O}order-table`, "OrderTable", "The order history as a
   props: [
     id, title,
     { name: "orders", type: ts("Order[]"), required: true },
+    empty,
     { name: "statuses", type: ts("Record<string, string>"), required: true, docs: "word by order status" },
     { name: "labels", type: { record: "OrderLabels" }, required: true },
     { name: "layout", type: tsOf("table", "cards"), default: "table" },
@@ -260,7 +263,7 @@ const orderTable = spec(`${O}order-table`, "OrderTable", "The order history as a
     { name: "tone", type: toneLite, default: "default" },
     { name: "density", type: denseLite, default: "default" },
   ],
-  view: [frame(common, [
+  view: [frame(common, [orEmpty("orders", "package", [
     use("Stack", { props: { Gap: "4", Align: "stretch" } },
       when(eq(ref("layout"), "table"),
         [organism("OrderRows", { orders: ref("orders"), statuses: ref("statuses"), labels: ref("labels"), density: ref("density") })],
@@ -274,7 +277,7 @@ const orderTable = spec(`${O}order-table`, "OrderTable", "The order history as a
                 use("Text", { props: { Size: "sm" } }, text(tpl(ref("labels.itemsCount"), ref("o.items")))),
                 use("Text", { props: { Size: "sm", Weight: "bold" } }, text(money(ref("o.total"), ref("o.currency")))),
                 organism("Pill", { tone: statusTone }, kids(text(at(ref("statuses"), ref("o.status")))))))))]),
-      when(eq(ref("pager"), "show"), [organism("Pager", { page: 1, pages: 3, summary: tpl(ref("labels.summary"), 1, 4, 12), previousLabel: ref("labels.previous"), nextLabel: ref("labels.next") })])),
+      when(eq(ref("pager"), "show"), [organism("Pager", { page: 1, pages: 3, summary: tpl(ref("labels.summary"), 1, 4, 12), previousLabel: ref("labels.previous"), nextLabel: ref("labels.next") })])),])
   ])],
 });
 

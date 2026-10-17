@@ -15,6 +15,7 @@ type OrderTableProps struct {
 	Id any `json:"id"`
 	Title any `json:"title"`
 	Orders any `json:"orders"`
+	Empty any `json:"empty"`
 	Statuses any `json:"statuses"`
 	Labels any `json:"labels"`
 	Layout any `json:"layout"`
@@ -29,6 +30,7 @@ templ OrderTable(p OrderTableProps) {
 	{{ vId := p.Id }}
 	{{ vTitle := p.Title }}
 	{{ vOrders := p.Orders }}
+	{{ vEmpty := uiutils.Def(p.Empty, "") }}
 	{{ vStatuses := p.Statuses }}
 	{{ vLabels := p.Labels }}
 	{{ vLayout := uiutils.Def(p.Layout, "table") }}
@@ -37,38 +39,42 @@ templ OrderTable(p OrderTableProps) {
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Tone: vTone, Density: vDensity, LandmarkLabel: vLandmarkLabel}) {
-		@stack.Stack(stack.StackProps{Gap: "4", Align: "stretch"}) {
-			if uiutils.Eq(vLayout, "table") {
-				@OrderRows(OrderRowsProps{Orders: vOrders, Statuses: vStatuses, Labels: vLabels, Density: vDensity})
-			} else {
-				@stack.Stack(stack.StackProps{Gap: "4", Align: "stretch", Attrs: uiutils.Attrs("data-testid", "order-cards")}) {
-					for _, vO := range uiutils.L(vOrders) {
-						@card.Card(card.CardProps{Variant: "default", Attrs: uiutils.Attrs("data-testid", "item")}) {
-							@card.CardContent(card.CardContentProps{Class: "flex flex-wrap items-center justify-between gap-4"}) {
-								@stack.Stack(stack.StackProps{Gap: "0"}) {
-									@text.Text(text.TextProps{Size: "sm", Weight: "semibold"}) {
-										{ uiutils.Text(uiutils.Get(vO, "number")) }
+		if uiutils.Eq(uiutils.Len(vOrders), float64(0)) {
+			@EmptyState(EmptyStateProps{Icon: "package", Title: vEmpty})
+		} else {
+			@stack.Stack(stack.StackProps{Gap: "4", Align: "stretch"}) {
+				if uiutils.Eq(vLayout, "table") {
+					@OrderRows(OrderRowsProps{Orders: vOrders, Statuses: vStatuses, Labels: vLabels, Density: vDensity})
+				} else {
+					@stack.Stack(stack.StackProps{Gap: "4", Align: "stretch", Attrs: uiutils.Attrs("data-testid", "order-cards")}) {
+						for _, vO := range uiutils.L(vOrders) {
+							@card.Card(card.CardProps{Variant: "default", Attrs: uiutils.Attrs("data-testid", "item")}) {
+								@card.CardContent(card.CardContentProps{Class: "flex flex-wrap items-center justify-between gap-4"}) {
+									@stack.Stack(stack.StackProps{Gap: "0"}) {
+										@text.Text(text.TextProps{Size: "sm", Weight: "semibold"}) {
+											{ uiutils.Text(uiutils.Get(vO, "number")) }
+										}
+										@text.Text(text.TextProps{Size: "xs", Class: "text-muted-foreground"}) {
+											{ uiutils.Text(uiutils.Get(vO, "date")) }
+										}
 									}
-									@text.Text(text.TextProps{Size: "xs", Class: "text-muted-foreground"}) {
-										{ uiutils.Text(uiutils.Get(vO, "date")) }
+									@text.Text(text.TextProps{Size: "sm"}) {
+										{ uiutils.Text(uiutils.Tpl(uiutils.Get(vLabels, "itemsCount"), uiutils.Get(vO, "items"))) }
 									}
-								}
-								@text.Text(text.TextProps{Size: "sm"}) {
-									{ uiutils.Text(uiutils.Tpl(uiutils.Get(vLabels, "itemsCount"), uiutils.Get(vO, "items"))) }
-								}
-								@text.Text(text.TextProps{Size: "sm", Weight: "bold"}) {
-									{ uiutils.Text(uiutils.Money(uiutils.Get(vO, "total"), uiutils.Get(vO, "currency"))) }
-								}
-								@Pill(PillProps{Tone: uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vO, "status"), "paid")), "green", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vO, "status"), "shipped")), "blue", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vO, "status"), "pending")), "amber", "gray")))}) {
-									{ uiutils.Text(uiutils.At(vStatuses, uiutils.Get(vO, "status"))) }
+									@text.Text(text.TextProps{Size: "sm", Weight: "bold"}) {
+										{ uiutils.Text(uiutils.Money(uiutils.Get(vO, "total"), uiutils.Get(vO, "currency"))) }
+									}
+									@Pill(PillProps{Tone: uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vO, "status"), "paid")), "green", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vO, "status"), "shipped")), "blue", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vO, "status"), "pending")), "amber", "gray")))}) {
+										{ uiutils.Text(uiutils.At(vStatuses, uiutils.Get(vO, "status"))) }
+									}
 								}
 							}
 						}
 					}
 				}
-			}
-			if uiutils.Eq(vPager, "show") {
-				@Pager(PagerProps{Page: float64(1), Pages: float64(3), Summary: uiutils.Tpl(uiutils.Get(vLabels, "summary"), float64(1), float64(4), float64(12)), PreviousLabel: uiutils.Get(vLabels, "previous"), NextLabel: uiutils.Get(vLabels, "next")})
+				if uiutils.Eq(vPager, "show") {
+					@Pager(PagerProps{Page: float64(1), Pages: float64(3), Summary: uiutils.Tpl(uiutils.Get(vLabels, "summary"), float64(1), float64(4), float64(12)), PreviousLabel: uiutils.Get(vLabels, "previous"), NextLabel: uiutils.Get(vLabels, "next")})
+				}
 			}
 		}
 	}

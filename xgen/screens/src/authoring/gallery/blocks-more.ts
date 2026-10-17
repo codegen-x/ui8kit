@@ -117,7 +117,7 @@ const metrics = define({
     ["compact", "Compact figures", { item: "compact" }],
     ["muted", "Muted, compact", { tone: "muted", density: "compact", item: "compact", cols: "2" }],
   ],
-  sample: { id: "metrics", title: t("dashboard.metrics.title"), metrics: ref("metrics") },
+  sample: { id: "metrics", title: t("dashboard.metrics.title"), metrics: ref("metrics"), empty: t("empty.metrics") },
 });
 
 const chart = define({
@@ -129,7 +129,7 @@ const chart = define({
     ["meters", "Meters", { chart: "meters" }],
     ["muted", "Muted compact meters", { chart: "meters", size: "compact", tone: "muted" }],
   ],
-  sample: { id: "chart", title: t("dashboard.chart.title"), text: t("dashboard.chart.text"), series: ref("series"), summary: t("dashboard.chart.summary"), percent: t("dashboard.chart.percent") },
+  sample: { id: "chart", title: t("dashboard.chart.title"), text: t("dashboard.chart.text"), series: ref("series"), empty: t("empty.series"), summary: t("dashboard.chart.summary"), percent: t("dashboard.chart.percent") },
 });
 
 const activity = define({
@@ -141,7 +141,7 @@ const activity = define({
     ["compact", "Compact list", { layout: "list", density: "compact" }],
     ["muted", "Muted timeline", { tone: "muted" }],
   ],
-  sample: { id: "activity", title: t("dashboard.activity.title"), text: t("dashboard.activity.text"), events: ref("activity") },
+  sample: { id: "activity", title: t("dashboard.activity.title"), text: t("dashboard.activity.text"), events: ref("activity"), empty: t("empty.activity") },
 });
 
 const emptyCase = (c: string) => ({ title: t(`dashboard.empty.${c}.title`), text: t(`dashboard.empty.${c}.text`), cta: t(`dashboard.empty.${c}.cta`) });
@@ -171,7 +171,7 @@ const checklist = define({
     ["numbered", "Numbered", { marker: "number" }],
     ["muted", "Muted, numbered, count", { marker: "number", progress: "text", tone: "muted" }],
   ],
-  sample: { id: "checklist", title: t("onboarding.checklist.title"), tasks: ref("checklist"), progressLabel: t("onboarding.checklist.progress") },
+  sample: { id: "checklist", title: t("onboarding.checklist.title"), tasks: ref("checklist"), empty: t("empty.tasks"), progressLabel: t("onboarding.checklist.progress") },
 });
 
 const stepper = define({
@@ -209,7 +209,7 @@ const channels = define({
     ["list", "List", { layout: "list" }],
     ["plain", "Muted, without links", { action: "none", tone: "muted" }],
   ],
-  sample: { id: "channels", title: t("support.channels.title"), channels: ref("channels"), open: t("support.channels.open") },
+  sample: { id: "channels", title: t("support.channels.title"), channels: ref("channels"), empty: t("empty.channels"), open: t("support.channels.open") },
 });
 
 

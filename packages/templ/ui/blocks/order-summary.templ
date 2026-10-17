@@ -18,6 +18,7 @@ type OrderSummaryProps struct {
 	Id any `json:"id"`
 	Title any `json:"title"`
 	Rows any `json:"rows"`
+	Empty any `json:"empty"`
 	Labels any `json:"labels"`
 	Layout any `json:"layout"`
 	Cta any `json:"cta"`
@@ -32,6 +33,7 @@ templ OrderSummary(p OrderSummaryProps) {
 	{{ vId := p.Id }}
 	{{ vTitle := p.Title }}
 	{{ vRows := p.Rows }}
+	{{ vEmpty := uiutils.Def(p.Empty, "") }}
 	{{ vLabels := p.Labels }}
 	{{ vLayout := uiutils.Def(p.Layout, "card") }}
 	{{ vCta := uiutils.Def(p.Cta, "show") }}
@@ -40,28 +42,32 @@ templ OrderSummary(p OrderSummaryProps) {
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Tone: vTone, Density: vDensity, Measure: "md", LandmarkLabel: vLandmarkLabel}) {
-		@box.Box(box.BoxProps{Class: uiutils.S(uiutils.Cnv(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "card")), "rounded bg-card p-6 inset-ring inset-ring-border", ""))), Attrs: uiutils.Attrs("data-testid", "summary")}) {
-			@stack.Stack(stack.StackProps{Gap: "4", Align: "stretch"}) {
-				@list.List(list.ListProps{Tag: "ul", Class: "flex flex-col gap-4"}) {
-					for _, vRow := range uiutils.L(vRows) {
-						@list.ListItem(list.ListItemProps{Class: uiutils.S(uiutils.Cnv("flex items-center justify-between gap-4", uiutils.Cond(uiutils.T(uiutils.Get(vRow, "strong")), "border-t border-border pt-4 text-base font-bold", "text-sm text-muted-foreground"))), Attrs: uiutils.Attrs("data-testid", "item")}) {
-							@inline.Inline(inline.InlineProps{}) {
-								{ uiutils.Text(uiutils.Get(vRow, "label")) }
-							}
-							@inline.Inline(inline.InlineProps{}) {
-								{ uiutils.Text(uiutils.Money(uiutils.Get(vRow, "amount"), uiutils.Get(vRow, "currency"))) }
+		if uiutils.Eq(uiutils.Len(vRows), float64(0)) {
+			@EmptyState(EmptyStateProps{Icon: "receipt", Title: vEmpty})
+		} else {
+			@box.Box(box.BoxProps{Class: uiutils.S(uiutils.Cnv(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "card")), "rounded bg-card p-6 inset-ring inset-ring-border", ""))), Attrs: uiutils.Attrs("data-testid", "summary")}) {
+				@stack.Stack(stack.StackProps{Gap: "4", Align: "stretch"}) {
+					@list.List(list.ListProps{Tag: "ul", Class: "flex flex-col gap-4"}) {
+						for _, vRow := range uiutils.L(vRows) {
+							@list.ListItem(list.ListItemProps{Class: uiutils.S(uiutils.Cnv("flex items-center justify-between gap-4", uiutils.Cond(uiutils.T(uiutils.Get(vRow, "strong")), "border-t border-border pt-4 text-base font-bold", "text-sm text-muted-foreground"))), Attrs: uiutils.Attrs("data-testid", "item")}) {
+								@inline.Inline(inline.InlineProps{}) {
+									{ uiutils.Text(uiutils.Get(vRow, "label")) }
+								}
+								@inline.Inline(inline.InlineProps{}) {
+									{ uiutils.Text(uiutils.Money(uiutils.Get(vRow, "amount"), uiutils.Get(vRow, "currency"))) }
+								}
 							}
 						}
 					}
-				}
-				if uiutils.Eq(vCta, "show") {
-					@button.Button(button.ButtonProps{Variant: "default", Size: "default", Class: "w-full", Attrs: uiutils.Attrs("data-testid", "checkout")}) {
-						{ uiutils.Text(uiutils.Get(vLabels, "checkout")) }
+					if uiutils.Eq(vCta, "show") {
+						@button.Button(button.ButtonProps{Variant: "default", Size: "default", Class: "w-full", Attrs: uiutils.Attrs("data-testid", "checkout")}) {
+							{ uiutils.Text(uiutils.Get(vLabels, "checkout")) }
+						}
 					}
-				}
-				if uiutils.Eq(vNote, "show") {
-					@text.Text(text.TextProps{Size: "xs", Class: "text-muted-foreground"}) {
-						{ uiutils.Text(uiutils.Get(vLabels, "note")) }
+					if uiutils.Eq(vNote, "show") {
+						@text.Text(text.TextProps{Size: "xs", Class: "text-muted-foreground"}) {
+							{ uiutils.Text(uiutils.Get(vLabels, "note")) }
+						}
 					}
 				}
 			}

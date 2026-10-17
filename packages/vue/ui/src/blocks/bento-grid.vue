@@ -12,6 +12,7 @@ export type BentoGridProps = {
   id: string;
   title: string;
   tiles: Tile[];
+  empty?: string;
   layout?: "bento" | "even";
   media?: "none" | "image";
   tone?: "default" | "muted";
@@ -27,6 +28,7 @@ import Grid from "../primitives/grid/grid.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
+import EmptyState from "../components/empty-state.vue";
 import MediaFrame from "../components/media-frame.vue";
 import SectionFrame from "../components/section-frame.vue";
 import { at, cn } from "../utils";
@@ -40,6 +42,7 @@ const {
   id,
   title,
   tiles,
+  empty = "",
   layout = "bento",
   media = "none",
   tone = "default",
@@ -50,7 +53,8 @@ const {
 
 <template>
   <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
-    <Grid cols="1-4" class="auto-rows-fr gap-4" data-testid="items">
+    <EmptyState v-if="((tiles?.length ?? 0) === 0)" icon="layout-dashboard" :title="empty" />
+    <Grid v-else cols="1-4" class="auto-rows-fr gap-4" data-testid="items">
       <Card v-for="tile in tiles" :key="tile.id"
         variant="default"
         :class="cn(

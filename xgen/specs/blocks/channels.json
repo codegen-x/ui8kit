@@ -57,6 +57,7 @@
     }
   ],
   "slots": [
+    "EmptyState",
     "MenuEntry",
     "SectionFrame"
   ],
@@ -82,6 +83,9 @@
       },
       "channels": {
         "$": "channels"
+      },
+      "empty": {
+        "$": "ui.empty.channels"
       },
       "open": {
         "$": "ui.support.channels.open"

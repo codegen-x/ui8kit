@@ -57,6 +57,7 @@
     }
   ],
   "slots": [
+    "EmptyState",
     "MediaFrame",
     "SectionFrame"
   ],
@@ -92,6 +93,9 @@
       },
       "features": {
         "$": "features"
+      },
+      "empty": {
+        "$": "ui.empty.features"
       },
       "active": "feature-clear"
     }

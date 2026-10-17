@@ -131,6 +131,7 @@
     }
   ],
   "slots": [
+    "EmptyState",
     "QuoteCard",
     "SectionFrame"
   ],
@@ -161,6 +162,9 @@
       },
       "quotes": {
         "$": "testimonials"
+      },
+      "empty": {
+        "$": "ui.empty.quotes"
       },
       "labels": {
         "rating": {

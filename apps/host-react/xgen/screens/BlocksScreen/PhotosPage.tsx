@@ -69,6 +69,7 @@ export function PhotosPage() {
                 title={ui.company.photos.title}
                 lead={ui.company.photos.lead}
                 photos={photos}
+                empty={ui.empty.photos}
                 labels={ui.company.photos}
                 layout="grid"
                 captions="show"
@@ -96,6 +97,7 @@ export function PhotosPage() {
                 title={ui.company.photos.title}
                 lead={ui.company.photos.lead}
                 photos={photos}
+                empty={ui.empty.photos}
                 labels={ui.company.photos}
                 layout="grid"
                 captions="hide"
@@ -123,6 +125,7 @@ export function PhotosPage() {
                 title={ui.company.photos.title}
                 lead={ui.company.photos.lead}
                 photos={photos}
+                empty={ui.empty.photos}
                 labels={ui.company.photos}
                 layout="masonry"
                 captions="show"
@@ -150,6 +153,7 @@ export function PhotosPage() {
                 title={ui.company.photos.title}
                 lead={ui.company.photos.lead}
                 photos={photos}
+                empty={ui.empty.photos}
                 labels={ui.company.photos}
                 layout="mosaic"
                 captions="show"
@@ -177,6 +181,7 @@ export function PhotosPage() {
                 title={ui.company.photos.title}
                 lead={ui.company.photos.lead}
                 photos={photos}
+                empty={ui.empty.photos}
                 labels={ui.company.photos}
                 layout="featured"
                 captions="show"
@@ -204,6 +209,7 @@ export function PhotosPage() {
                 title={ui.company.photos.title}
                 lead={ui.company.photos.lead}
                 photos={photos}
+                empty={ui.empty.photos}
                 labels={ui.company.photos}
                 layout="cards"
                 captions="show"

@@ -13,6 +13,7 @@ import { ListItem } from "../primitives/list/list-item";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
+import { EmptyState } from "../components/empty-state";
 import { SectionFrame } from "../components/section-frame";
 import { cn } from "../utils";
 import type { Feature } from "./feature-grid.types";
@@ -21,6 +22,7 @@ export type UspStripProps = {
   id: string;
   title?: string;
   perks: Feature[];
+  empty?: string;
   layout?: "strip" | "cards" | "bar";
   tone?: "default" | "muted";
   density?: "default" | "compact";
@@ -31,6 +33,7 @@ export function UspStrip({
   id,
   title = "",
   perks,
+  empty = "",
   layout = "strip",
   tone = "default",
   density = "default",
@@ -38,7 +41,9 @@ export function UspStrip({
 }: UspStripProps) {
   return (
     <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
-      {((layout as string) === "bar") ? (
+      {((perks?.length ?? 0) === 0) ? (
+        <EmptyState icon="truck" title={empty} />
+      ) : ((layout as string) === "bar") ? (
         <List tag="ul" className="flex flex-wrap items-center justify-center gap-x-8 gap-y-4" data-testid="items">
           {(perks ?? []).map((p) => (
             <ListItem key={p.id} className="flex items-center gap-2 text-sm font-medium" data-testid="item">

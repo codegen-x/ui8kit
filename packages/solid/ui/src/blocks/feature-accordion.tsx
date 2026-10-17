@@ -11,6 +11,7 @@ import { Inline } from "../primitives/inline/inline";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
+import { EmptyState } from "../components/empty-state";
 import { MediaFrame } from "../components/media-frame";
 import { SectionFrame } from "../components/section-frame";
 import { tpl } from "../utils";
@@ -20,6 +21,7 @@ export type FeatureAccordionProps = {
   id: string;
   title: string;
   features: Feature[];
+  empty?: string;
   expand?: "first" | "none";
   media?: "none" | "image";
   multiple?: boolean;
@@ -32,6 +34,7 @@ export function FeatureAccordion({
   id,
   title,
   features,
+  empty = "",
   expand = "first",
   media = "none",
   multiple = false,
@@ -52,28 +55,32 @@ export function FeatureAccordion({
         <MediaFrame alt={title} ratio="4/3" />
       )}
     >
-      <Stack gap="0" align="stretch" data-testid="items">
-        <For each={features ?? []}>{(f, iOf) => { const i = iOf(); return (
-          <Disclosure
-            variant="item"
-            name={(multiple ? undefined : tpl("{0}-accordion", (id ?? "accordion")))}
-            open={(((expand as string) === "first") && (i === 0))}
-            data-testid="item"
-          >
-            <Summary variant="item">
-              <Inline class="flex min-w-0 items-center justify-start gap-4">
-                <LucideIcon name={f.icon} size={20} />
-                <Inline class="text-base font-semibold">
-                  {f.title}
+      {((features?.length ?? 0) === 0) ? (
+        <EmptyState icon="layout-grid" title={empty} />
+      ) : (
+        <Stack gap="0" align="stretch" data-testid="items">
+          <For each={features ?? []}>{(f, iOf) => { const i = iOf(); return (
+            <Disclosure
+              variant="item"
+              name={(multiple ? undefined : tpl("{0}-accordion", (id ?? "accordion")))}
+              open={(((expand as string) === "first") && (i === 0))}
+              data-testid="item"
+            >
+              <Summary variant="item">
+                <Inline class="flex min-w-0 items-center justify-start gap-4">
+                  <LucideIcon name={f.icon} size={20} />
+                  <Inline class="text-base font-semibold">
+                    {f.title}
+                  </Inline>
                 </Inline>
-              </Inline>
-            </Summary>
-            <Text size="sm" class="pb-4 text-muted-foreground">
-              {f.text}
-            </Text>
-          </Disclosure>
-        ); }}</For>
-      </Stack>
+              </Summary>
+              <Text size="sm" class="pb-4 text-muted-foreground">
+                {f.text}
+              </Text>
+            </Disclosure>
+          ); }}</For>
+        </Stack>
+      )}
     </SectionFrame>
   );
 }

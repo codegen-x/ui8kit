@@ -64,6 +64,7 @@ export function TimelinePage() {
                 title={ui.company.timeline.title}
                 lead={ui.company.timeline.lead}
                 milestones={milestones}
+                empty={ui.empty.milestones}
                 layout="split"
                 tone="default"
                 density="default"
@@ -89,6 +90,7 @@ export function TimelinePage() {
                 title={ui.company.timeline.title}
                 lead={ui.company.timeline.lead}
                 milestones={milestones}
+                empty={ui.empty.milestones}
                 layout="stacked"
                 tone="default"
                 density="default"
@@ -114,6 +116,7 @@ export function TimelinePage() {
                 title={ui.company.timeline.title}
                 lead={ui.company.timeline.lead}
                 milestones={milestones}
+                empty={ui.empty.milestones}
                 layout="row"
                 tone="default"
                 density="default"
@@ -139,6 +142,7 @@ export function TimelinePage() {
                 title={ui.company.timeline.title}
                 lead={ui.company.timeline.lead}
                 milestones={milestones}
+                empty={ui.empty.milestones}
                 layout="row"
                 tone="muted"
                 density="compact"

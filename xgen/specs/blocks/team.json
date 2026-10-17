@@ -74,6 +74,7 @@
     }
   ],
   "slots": [
+    "EmptyState",
     "MediaFrame",
     "MemberRow",
     "SectionFrame"
@@ -131,6 +132,9 @@
       },
       "members": {
         "$": "members"
+      },
+      "empty": {
+        "$": "ui.empty.members"
       },
       "depts": {
         "$": "ui.company.depts"

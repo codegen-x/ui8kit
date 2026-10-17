@@ -21,7 +21,13 @@ import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { metrics as metricsEntries } from "@ui8kit/app-shared/data/metrics";
 
-const METRICS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
+const METRICS_FIELDS = {
+  "id": "id",
+  "label": "title",
+  "value": "metadata.value.value|number",
+  "icon": "metadata.icon.value",
+  "hint": "metadata.hint.value",
+} as const;
 
 const metrics = fromCodex<Stat>(metricsEntries, METRICS_FIELDS, CODEX);
 
@@ -63,6 +69,7 @@ export function MetricsPage() {
                 id="metrics-tiles"
                 title={ui.dashboard.metrics.title}
                 metrics={metrics}
+                empty={ui.empty.metrics}
                 cols="4"
                 item="tile"
                 tone="default"
@@ -88,6 +95,7 @@ export function MetricsPage() {
                 id="metrics-twoUp"
                 title={ui.dashboard.metrics.title}
                 metrics={metrics}
+                empty={ui.empty.metrics}
                 cols="2"
                 item="tile"
                 tone="default"
@@ -113,6 +121,7 @@ export function MetricsPage() {
                 id="metrics-compact"
                 title={ui.dashboard.metrics.title}
                 metrics={metrics}
+                empty={ui.empty.metrics}
                 cols="4"
                 item="compact"
                 tone="default"
@@ -138,6 +147,7 @@ export function MetricsPage() {
                 id="metrics-muted"
                 title={ui.dashboard.metrics.title}
                 metrics={metrics}
+                empty={ui.empty.metrics}
                 cols="2"
                 item="compact"
                 tone="muted"

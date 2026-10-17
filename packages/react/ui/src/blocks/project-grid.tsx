@@ -10,6 +10,7 @@ import { Box } from "../primitives/box/box";
 import { Group } from "../primitives/group/group";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
+import { EmptyState } from "../components/empty-state";
 import { MediaFrame } from "../components/media-frame";
 import { ProjectTiles } from "../components/project-tiles";
 import { SectionFrame } from "../components/section-frame";
@@ -20,6 +21,7 @@ export type ProjectGridProps = {
   title: string;
   lead?: string;
   projects: Project[];
+  empty?: string;
   labels: ProjectLabels;
   layout?: "cards" | "compact" | "overlay" | "bento" | "list";
   tone?: "default" | "muted";
@@ -32,6 +34,7 @@ export function ProjectGrid({
   title,
   lead = "",
   projects,
+  empty = "",
   labels,
   layout = "cards",
   tone = "default",
@@ -55,7 +58,9 @@ export function ProjectGrid({
         </Box>
       )}
     >
-      {((layout as string) === "list") ? (
+      {((projects?.length ?? 0) === 0) ? (
+        <EmptyState icon="folder-open" title={empty} />
+      ) : ((layout as string) === "list") ? (
         <Stack gap="4" align="stretch" data-testid="items">
           {(projects ?? []).map((p) => (
             <Group key={p.id} gap="4" align="start" className="border-b border-border pb-4" data-testid="item">

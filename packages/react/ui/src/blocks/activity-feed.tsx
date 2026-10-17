@@ -11,6 +11,7 @@ import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
+import { EmptyState } from "../components/empty-state";
 import { Panel } from "../components/panel";
 import { Timeline } from "../components/timeline";
 import { cn, tpl } from "../utils";
@@ -21,6 +22,7 @@ export type ActivityFeedProps = {
   title: string;
   text: string;
   events: Event[];
+  empty?: string;
   layout?: "timeline" | "list";
   density?: "default" | "compact";
   tone?: "default" | "muted";
@@ -32,6 +34,7 @@ export function ActivityFeed({
   title,
   text,
   events,
+  empty = "",
   layout = "timeline",
   density = "default",
   tone = "default",
@@ -46,7 +49,9 @@ export function ActivityFeed({
     >
       <Container className="mx-auto w-full max-w-6xl px-4 py-8" data-slot="container">
         <Panel title={title} description={text} id={id} className={(((tone as string) === "muted") ? "bg-muted" : "")}>
-          {((layout as string) === "timeline") ? (
+          {((events?.length ?? 0) === 0) ? (
+            <EmptyState icon="activity" title={empty} />
+          ) : ((layout as string) === "timeline") ? (
             <Timeline items={events} />
           ) : (
             <List className="m-0 flex list-none flex-col p-0" data-testid="items">

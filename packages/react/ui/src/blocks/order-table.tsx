@@ -9,6 +9,7 @@ import { Card } from "../primitives/card/card";
 import { CardContent } from "../primitives/card/card-content";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
+import { EmptyState } from "../components/empty-state";
 import { OrderRows } from "../components/order-rows";
 import { Pager } from "../components/pager";
 import { Pill } from "../components/pill";
@@ -20,6 +21,7 @@ export type OrderTableProps = {
   id: string;
   title: string;
   orders: Order[];
+  empty?: string;
   statuses: Record<string, string>;
   labels: OrderLabels;
   layout?: "table" | "cards";
@@ -33,6 +35,7 @@ export function OrderTable({
   id,
   title,
   orders,
+  empty = "",
   statuses,
   labels,
   layout = "table",
@@ -43,53 +46,57 @@ export function OrderTable({
 }: OrderTableProps) {
   return (
     <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
-      <Stack gap="4" align="stretch">
-        {((layout as string) === "table") ? (
-          <OrderRows orders={orders} statuses={statuses} labels={labels} density={density} />
-        ) : (
-          <Stack gap="4" align="stretch" data-testid="order-cards">
-            {(orders ?? []).map((o) => (
-              <Card key={o.id} variant="default" data-testid="item">
-                <CardContent className="flex flex-wrap items-center justify-between gap-4">
-                  <Stack gap="0">
-                    <Text size="sm" weight="semibold">
-                      {o.number}
+      {((orders?.length ?? 0) === 0) ? (
+        <EmptyState icon="package" title={empty} />
+      ) : (
+        <Stack gap="4" align="stretch">
+          {((layout as string) === "table") ? (
+            <OrderRows orders={orders} statuses={statuses} labels={labels} density={density} />
+          ) : (
+            <Stack gap="4" align="stretch" data-testid="order-cards">
+              {(orders ?? []).map((o) => (
+                <Card key={o.id} variant="default" data-testid="item">
+                  <CardContent className="flex flex-wrap items-center justify-between gap-4">
+                    <Stack gap="0">
+                      <Text size="sm" weight="semibold">
+                        {o.number}
+                      </Text>
+                      <Text size="xs" className="text-muted-foreground">
+                        {o.date}
+                      </Text>
+                    </Stack>
+                    <Text size="sm">
+                      {tpl(labels.itemsCount, o.items)}
                     </Text>
-                    <Text size="xs" className="text-muted-foreground">
-                      {o.date}
+                    <Text size="sm" weight="bold">
+                      {fmtMoney(o.total, o.currency)}
                     </Text>
-                  </Stack>
-                  <Text size="sm">
-                    {tpl(labels.itemsCount, o.items)}
-                  </Text>
-                  <Text size="sm" weight="bold">
-                    {fmtMoney(o.total, o.currency)}
-                  </Text>
-                  <Pill
-                    tone={
-                      o.status === "paid" ? "green"
-                      : o.status === "shipped" ? "blue"
-                      : o.status === "pending" ? "amber"
-                      : "gray"
-                    }
-                  >
-                    {at(statuses, o.status)}
-                  </Pill>
-                </CardContent>
-              </Card>
-            ))}
-          </Stack>
-        )}
-        {((pager as string) === "show") ? (
-          <Pager
-            page={1}
-            pages={3}
-            summary={tpl(labels.summary, 1, 4, 12)}
-            previousLabel={labels.previous}
-            nextLabel={labels.next}
-          />
-        ) : null}
-      </Stack>
+                    <Pill
+                      tone={
+                        o.status === "paid" ? "green"
+                        : o.status === "shipped" ? "blue"
+                        : o.status === "pending" ? "amber"
+                        : "gray"
+                      }
+                    >
+                      {at(statuses, o.status)}
+                    </Pill>
+                  </CardContent>
+                </Card>
+              ))}
+            </Stack>
+          )}
+          {((pager as string) === "show") ? (
+            <Pager
+              page={1}
+              pages={3}
+              summary={tpl(labels.summary, 1, 4, 12)}
+              previousLabel={labels.previous}
+              nextLabel={labels.next}
+            />
+          ) : null}
+        </Stack>
+      )}
     </SectionFrame>
   );
 }

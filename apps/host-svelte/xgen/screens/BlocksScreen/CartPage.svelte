@@ -69,6 +69,7 @@
             id="cart-table"
             title={ui.commerce.cart.title}
             lines={cart}
+            empty={ui.empty.cart}
             labels={ui.commerce.cart}
             layout="table"
             media="image"
@@ -95,6 +96,7 @@
             id="cart-cards"
             title={ui.commerce.cart.title}
             lines={cart}
+            empty={ui.empty.cart}
             labels={ui.commerce.cart}
             layout="cards"
             media="image"
@@ -121,6 +123,7 @@
             id="cart-tableCompact"
             title={ui.commerce.cart.title}
             lines={cart}
+            empty={ui.empty.cart}
             labels={ui.commerce.cart}
             layout="table"
             media="none"
@@ -147,6 +150,7 @@
             id="cart-cardsPlain"
             title={ui.commerce.cart.title}
             lines={cart}
+            empty={ui.empty.cart}
             labels={ui.commerce.cart}
             layout="cards"
             media="none"

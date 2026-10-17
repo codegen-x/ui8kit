@@ -46,6 +46,7 @@
     }
   ],
   "slots": [
+    "EmptyState",
     "MediaFrame",
     "SectionFrame",
     "Switcher",
@@ -83,6 +84,9 @@
       },
       "features": {
         "$": "features"
+      },
+      "empty": {
+        "$": "ui.empty.features"
       },
       "tabsLabel": {
         "$": "ui.vibe.tabs.label"

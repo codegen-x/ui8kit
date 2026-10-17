@@ -12,6 +12,7 @@
     id: string;
     title: string;
     tasks: Task[];
+    empty?: string;
     progressLabel: string;
     layout?: "card" | "plain";
     progress?: "bar" | "text" | "none";
@@ -32,6 +33,7 @@
   import Stack from "../primitives/stack/stack.svelte";
   import Summary from "../primitives/disclosure/summary.svelte";
   import Text from "../primitives/text/text.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import { tpl } from "../utils";
 
@@ -39,6 +41,7 @@
     id,
     title,
     tasks,
+    empty = "",
     progressLabel,
     layout = "card",
     progress = "bar",
@@ -50,66 +53,70 @@
 </script>
 
 <SectionFrame id={id} title={title} tone={tone} measure="2xl" landmarkLabel={landmarkLabel}>
-  <Stack
-    gap="4"
-    align="stretch"
-    class={(((layout as string) === "card") ? "rounded bg-card p-6 inset-ring inset-ring-border" : "")}
-    data-testid="checklist"
-  >
-    {#if ((progress as string) === "bar")}
-      <Progress
-        value={
-          Math.round(((tasks.filter((i) => i["done"]).length * 100) / (tasks?.length ?? 0))) == null ? undefined
-          : String(Math.round(((tasks.filter((i) => i["done"]).length * 100) / (tasks?.length ?? 0))))
-        }
-        max="100"
-        aria-label={tpl(progressLabel, tasks.filter((i) => i["done"]).length, (tasks?.length ?? 0))}
-      />
-    {/if}
-    {#if ((progress as string) === "text")}
-      <Text size="sm" class="text-muted-foreground" data-testid="progress-text">
-        {tpl(progressLabel, tasks.filter((i) => i["done"]).length, (tasks?.length ?? 0))}
-      </Text>
-    {/if}
-    <List class="m-0 flex list-none flex-col gap-4 p-0" data-testid="items">
-      {#each tasks as task, i (task.id)}
-        <ListItem
-          class="flex items-start gap-4"
-          data-testid="item"
-          data-done={(task.done == null ? undefined : String(task.done))}
-        >
-          {#if ((marker as string) === "number")}
-            <IconBadge variant={(task.done ? "primary" : "outline")} size="xs">
-              {((i + 1) == null ? undefined : String((i + 1)))}
-            </IconBadge>
-          {:else}
-            <LucideIcon
-              name={(task.done ? "circle-check" : "circle")}
-              size={24}
-              class={(task.done ? "shrink-0 text-primary" : "shrink-0 text-muted-foreground")}
-            />
-          {/if}
-          {#if ((detail as string) === "expand")}
-            <Disclosure variant="ghost" class="flex-1" data-testid="task-detail">
-              <Summary variant="ghost">
-                {task.title}
-              </Summary>
-              <Text size="sm" class="pb-2 text-muted-foreground">
-                {task.text}
-              </Text>
-            </Disclosure>
-          {:else}
-            <Stack gap="0">
-              <Text size="base" weight="semibold">
-                {task.title}
-              </Text>
-              <Text size="sm" class="text-muted-foreground">
-                {task.text}
-              </Text>
-            </Stack>
-          {/if}
-        </ListItem>
-      {/each}
-    </List>
-  </Stack>
+  {#if ((tasks?.length ?? 0) === 0)}
+    <EmptyState icon="list-checks" title={empty} />
+  {:else}
+    <Stack
+      gap="4"
+      align="stretch"
+      class={(((layout as string) === "card") ? "rounded bg-card p-6 inset-ring inset-ring-border" : "")}
+      data-testid="checklist"
+    >
+      {#if ((progress as string) === "bar")}
+        <Progress
+          value={
+            Math.round(((tasks.filter((i) => i["done"]).length * 100) / (tasks?.length ?? 0))) == null ? undefined
+            : String(Math.round(((tasks.filter((i) => i["done"]).length * 100) / (tasks?.length ?? 0))))
+          }
+          max="100"
+          aria-label={tpl(progressLabel, tasks.filter((i) => i["done"]).length, (tasks?.length ?? 0))}
+        />
+      {/if}
+      {#if ((progress as string) === "text")}
+        <Text size="sm" class="text-muted-foreground" data-testid="progress-text">
+          {tpl(progressLabel, tasks.filter((i) => i["done"]).length, (tasks?.length ?? 0))}
+        </Text>
+      {/if}
+      <List class="m-0 flex list-none flex-col gap-4 p-0" data-testid="items">
+        {#each tasks as task, i (task.id)}
+          <ListItem
+            class="flex items-start gap-4"
+            data-testid="item"
+            data-done={(task.done == null ? undefined : String(task.done))}
+          >
+            {#if ((marker as string) === "number")}
+              <IconBadge variant={(task.done ? "primary" : "outline")} size="xs">
+                {((i + 1) == null ? undefined : String((i + 1)))}
+              </IconBadge>
+            {:else}
+              <LucideIcon
+                name={(task.done ? "circle-check" : "circle")}
+                size={24}
+                class={(task.done ? "shrink-0 text-primary" : "shrink-0 text-muted-foreground")}
+              />
+            {/if}
+            {#if ((detail as string) === "expand")}
+              <Disclosure variant="ghost" class="flex-1" data-testid="task-detail">
+                <Summary variant="ghost">
+                  {task.title}
+                </Summary>
+                <Text size="sm" class="pb-2 text-muted-foreground">
+                  {task.text}
+                </Text>
+              </Disclosure>
+            {:else}
+              <Stack gap="0">
+                <Text size="base" weight="semibold">
+                  {task.title}
+                </Text>
+                <Text size="sm" class="text-muted-foreground">
+                  {task.text}
+                </Text>
+              </Stack>
+            {/if}
+          </ListItem>
+        {/each}
+      </List>
+    </Stack>
+  {/if}
 </SectionFrame>

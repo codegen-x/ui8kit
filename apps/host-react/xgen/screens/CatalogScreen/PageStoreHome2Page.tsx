@@ -135,7 +135,14 @@ export function PageStoreHome2Page() {
           tone="default"
           level={1}
         />
-        <UspStrip id="store-home-2-usp" perks={perks} layout="strip" tone="default" density="default" />
+        <UspStrip
+          id="store-home-2-usp"
+          perks={perks}
+          empty={ui.empty.perks}
+          layout="strip"
+          tone="default"
+          density="default"
+        />
         <ProductGrid
           id="store-home-2-products"
           title={ui.commerce.products.title}
@@ -166,6 +173,7 @@ export function PageStoreHome2Page() {
           title={ui.commerce.stores.title}
           lead={ui.commerce.stores.lead}
           stores={stores}
+          empty={ui.empty.stores}
           kinds={ui.commerce.stores.kinds}
           labels={ui.commerce.stores}
           layout="map"

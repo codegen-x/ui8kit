@@ -2447,5 +2447,31 @@ export const ui = {
   },
   "discovery": {
     "title": "Discovery"
+  },
+  "empty": {
+    "logos": "No logos to show yet",
+    "features": "No features to show yet",
+    "steps": "No steps to show yet",
+    "quotes": "No quotes to show yet",
+    "members": "No people to show yet",
+    "perks": "No promises to show yet",
+    "metrics": "No figures to show yet",
+    "series": "No data to chart yet",
+    "activity": "No activity yet",
+    "tasks": "No tasks yet",
+    "cart": "Your cart is empty",
+    "summary": "Nothing to total yet",
+    "orders": "No orders yet",
+    "photos": "No photos yet",
+    "projects": "No projects yet",
+    "milestones": "No milestones yet",
+    "tiles": "No features to show yet",
+    "points": "No points to compare yet",
+    "channels": "No ways to reach us yet",
+    "packs": "No packs on sale yet",
+    "zones": "No delivery zones yet",
+    "stores": "No stores yet",
+    "sections": "Nothing to read yet",
+    "lanes": "No lanes yet"
   }
 } as const;

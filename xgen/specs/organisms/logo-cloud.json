@@ -39,6 +39,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "layout",
       "type": {
         "ts": "\"grid\" | \"row\""
@@ -87,37 +93,17 @@
         "op": "eq",
         "args": [
           {
-            "$": "layout"
+            "op": "len",
+            "args": [
+              {
+                "$": "logos"
+              }
+            ]
           },
-          "row"
+          0
         ]
       },
       "then": [
-        {
-          "organism": "LogoRibbon",
-          "props": {
-            "id": {
-              "$": "id"
-            },
-            "title": {
-              "$": "title"
-            },
-            "logos": {
-              "$": "logos"
-            },
-            "tone": {
-              "$": "tone"
-            },
-            "density": {
-              "$": "density"
-            },
-            "landmarkLabel": {
-              "$": "landmarkLabel"
-            }
-          }
-        }
-      ],
-      "else": [
         {
           "organism": "SectionFrame",
           "props": {
@@ -143,22 +129,84 @@
               "args": [],
               "do": [
                 {
-                  "use": "Grid",
+                  "organism": "EmptyState",
                   "props": {
-                    "Cols": {
-                      "op": "cond",
-                      "args": [
-                        {
-                          "op": "eq",
-                          "args": [
-                            {
-                              "$": "cols"
-                            },
-                            "2"
-                          ]
-                        },
-                        "2",
-                        {
+                    "icon": "building-2",
+                    "title": {
+                      "$": "empty"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "else": [
+        {
+          "when": {
+            "op": "eq",
+            "args": [
+              {
+                "$": "layout"
+              },
+              "row"
+            ]
+          },
+          "then": [
+            {
+              "organism": "LogoRibbon",
+              "props": {
+                "id": {
+                  "$": "id"
+                },
+                "title": {
+                  "$": "title"
+                },
+                "logos": {
+                  "$": "logos"
+                },
+                "tone": {
+                  "$": "tone"
+                },
+                "density": {
+                  "$": "density"
+                },
+                "landmarkLabel": {
+                  "$": "landmarkLabel"
+                }
+              }
+            }
+          ],
+          "else": [
+            {
+              "organism": "SectionFrame",
+              "props": {
+                "id": {
+                  "$": "id"
+                },
+                "title": {
+                  "$": "title"
+                },
+                "tone": {
+                  "$": "tone"
+                },
+                "density": {
+                  "$": "density"
+                },
+                "align": "center",
+                "landmarkLabel": {
+                  "$": "landmarkLabel"
+                }
+              },
+              "slots": {
+                "children": {
+                  "args": [],
+                  "do": [
+                    {
+                      "use": "Grid",
+                      "props": {
+                        "Cols": {
                           "op": "cond",
                           "args": [
                             {
@@ -167,10 +215,10 @@
                                 {
                                   "$": "cols"
                                 },
-                                "3"
+                                "2"
                               ]
                             },
-                            "2-3",
+                            "2",
                             {
                               "op": "cond",
                               "args": [
@@ -180,101 +228,116 @@
                                     {
                                       "$": "cols"
                                     },
-                                    "4"
+                                    "3"
                                   ]
                                 },
-                                "2-4",
-                                "3-6"
+                                "2-3",
+                                {
+                                  "op": "cond",
+                                  "args": [
+                                    {
+                                      "op": "eq",
+                                      "args": [
+                                        {
+                                          "$": "cols"
+                                        },
+                                        "4"
+                                      ]
+                                    },
+                                    "2-4",
+                                    "3-6"
+                                  ]
+                                }
                               ]
                             }
                           ]
-                        }
-                      ]
-                    },
-                    "Class": "gap-4"
-                  },
-                  "attrs": {
-                    "data-testid": "items"
-                  },
-                  "children": [
-                    {
-                      "each": {
-                        "$": "logos"
+                        },
+                        "Class": "gap-4"
                       },
-                      "as": "logo",
-                      "key": {
-                        "$": "logo.id"
+                      "attrs": {
+                        "data-testid": "items"
                       },
-                      "do": [
+                      "children": [
                         {
-                          "use": "Group",
-                          "props": {
-                            "Gap": "2",
-                            "Align": "center",
-                            "Justify": "center",
-                            "Class": {
-                              "op": "cn",
-                              "args": [
-                                "text-muted-foreground",
-                                {
-                                  "op": "cond",
-                                  "args": [
-                                    {
-                                      "op": "eq",
-                                      "args": [
-                                        {
-                                          "$": "item"
-                                        },
-                                        "tile"
-                                      ]
-                                    },
-                                    "flex-col rounded p-4 inset-ring inset-ring-border",
-                                    ""
-                                  ]
-                                }
-                              ]
-                            }
+                          "each": {
+                            "$": "logos"
                           },
-                          "attrs": {
-                            "data-testid": "item"
+                          "as": "logo",
+                          "key": {
+                            "$": "logo.id"
                           },
-                          "children": [
+                          "do": [
                             {
-                              "use": "LucideIcon",
+                              "use": "Group",
                               "props": {
-                                "Name": {
-                                  "$": "logo.icon"
-                                },
-                                "Size": 24
-                              }
-                            },
-                            {
-                              "use": "Text",
-                              "props": {
-                                "Size": "sm",
-                                "Weight": "semibold",
+                                "Gap": "2",
+                                "Align": "center",
+                                "Justify": "center",
                                 "Class": {
-                                  "op": "cond",
+                                  "op": "cn",
                                   "args": [
+                                    "text-muted-foreground",
                                     {
-                                      "op": "eq",
+                                      "op": "cond",
                                       "args": [
                                         {
-                                          "$": "item"
+                                          "op": "eq",
+                                          "args": [
+                                            {
+                                              "$": "item"
+                                            },
+                                            "tile"
+                                          ]
                                         },
-                                        "icon"
+                                        "flex-col rounded p-4 inset-ring inset-ring-border",
+                                        ""
                                       ]
-                                    },
-                                    "sr-only",
-                                    ""
+                                    }
                                   ]
                                 }
                               },
+                              "attrs": {
+                                "data-testid": "item"
+                              },
                               "children": [
                                 {
-                                  "text": {
-                                    "$": "logo.name"
+                                  "use": "LucideIcon",
+                                  "props": {
+                                    "Name": {
+                                      "$": "logo.icon"
+                                    },
+                                    "Size": 24
                                   }
+                                },
+                                {
+                                  "use": "Text",
+                                  "props": {
+                                    "Size": "sm",
+                                    "Weight": "semibold",
+                                    "Class": {
+                                      "op": "cond",
+                                      "args": [
+                                        {
+                                          "op": "eq",
+                                          "args": [
+                                            {
+                                              "$": "item"
+                                            },
+                                            "icon"
+                                          ]
+                                        },
+                                        "sr-only",
+                                        ""
+                                      ]
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "logo.name"
+                                      }
+                                    }
+                                  ]
                                 }
                               ]
                             }
@@ -284,9 +347,9 @@
                     }
                   ]
                 }
-              ]
+              }
             }
-          }
+          ]
         }
       ]
     }

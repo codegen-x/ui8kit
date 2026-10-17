@@ -12,6 +12,7 @@
     id: string;
     title: string;
     features: Feature[];
+    empty?: string;
     cols?: "3" | "4" | "6";
     item?: "tile" | "chip";
     tone?: "default" | "muted";
@@ -25,6 +26,7 @@
   import Grid from "../primitives/grid/grid.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Text from "../primitives/text/text.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import { cn, fitCols } from "../utils";
 
@@ -32,6 +34,7 @@
     id,
     title,
     features,
+    empty = "",
     cols = "4",
     item = "tile",
     tone = "default",
@@ -49,24 +52,28 @@
 </script>
 
 <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
-  <Grid cols={wallCols} class="gap-4" data-testid="items">
-    {#each features as f (f.id)}
-      <Box
-        class={cn(
-          "flex items-center gap-2",
-          "rounded bg-card inset-ring inset-ring-border",
-          (
-            (item as string) === "tile" ? cn("flex-col justify-center text-center", (((density as string) === "compact") ? "p-4" : "p-6"))
-            : "px-4 py-2"
-          )
-        )}
-        data-testid="item"
-      >
-        <LucideIcon name={f.icon} size={(((item as string) === "tile") ? 24 : 16)} />
-        <Text size="sm" weight="semibold">
-          {f.title}
-        </Text>
-      </Box>
-    {/each}
-  </Grid>
+  {#if ((features?.length ?? 0) === 0)}
+    <EmptyState icon="layout-grid" title={empty} />
+  {:else}
+    <Grid cols={wallCols} class="gap-4" data-testid="items">
+      {#each features as f (f.id)}
+        <Box
+          class={cn(
+            "flex items-center gap-2",
+            "rounded bg-card inset-ring inset-ring-border",
+            (
+              (item as string) === "tile" ? cn("flex-col justify-center text-center", (((density as string) === "compact") ? "p-4" : "p-6"))
+              : "px-4 py-2"
+            )
+          )}
+          data-testid="item"
+        >
+          <LucideIcon name={f.icon} size={(((item as string) === "tile") ? 24 : 16)} />
+          <Text size="sm" weight="semibold">
+            {f.title}
+          </Text>
+        </Box>
+      {/each}
+    </Grid>
+  {/if}
 </SectionFrame>

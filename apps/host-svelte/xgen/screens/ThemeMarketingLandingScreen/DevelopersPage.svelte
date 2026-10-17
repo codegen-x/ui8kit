@@ -81,6 +81,7 @@
   id="developers-bento"
   title={ui.vibe.bento.title}
   tiles={bento}
+  empty={ui.empty.tiles}
   layout="bento"
   media="none"
   tone="default"
@@ -106,6 +107,7 @@
   id="developers-features"
   title={ui.site.home.featuresTitle}
   features={features}
+  empty={ui.empty.features}
   action={{ label: ui.site.home.featuresAction, href: "#/" }}
   layout="grid"
   cols="1-4"

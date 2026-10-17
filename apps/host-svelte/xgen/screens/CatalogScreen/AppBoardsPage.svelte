@@ -30,7 +30,13 @@
   import { lanes as lanesEntries } from "@ui8kit/app-shared/data/lanes";
   import { cards as cardsEntries } from "@ui8kit/app-shared/data/cards";
 
-  const METRICS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
+  const METRICS_FIELDS = {
+    "id": "id",
+    "label": "title",
+    "value": "metadata.value.value|number",
+    "icon": "metadata.icon.value",
+    "hint": "metadata.hint.value",
+  } as const;
   const SERIES_FIELDS = {"id":"id","label":"title","value":"metadata.value.value"} as const;
   const ACTIVITY_FIELDS = {
     "id": "id",
@@ -229,6 +235,7 @@
               id="kanban-detail"
               title={ui.vibe.kanban.title}
               lanes={lanes}
+              empty={ui.empty.lanes}
               cards={cards}
               countLabel={ui.vibe.kanban.count}
               card="detail"
@@ -256,6 +263,7 @@
               id="kanban-simple"
               title={ui.vibe.kanban.title}
               lanes={lanes}
+              empty={ui.empty.lanes}
               cards={cards}
               countLabel={ui.vibe.kanban.count}
               card="simple"
@@ -283,6 +291,7 @@
               id="kanban-twoCols"
               title={ui.vibe.kanban.title}
               lanes={lanes}
+              empty={ui.empty.lanes}
               cards={cards}
               countLabel={ui.vibe.kanban.count}
               card="detail"
@@ -310,6 +319,7 @@
               id="kanban-muted"
               title={ui.vibe.kanban.title}
               lanes={lanes}
+              empty={ui.empty.lanes}
               cards={cards}
               countLabel={ui.vibe.kanban.count}
               card="detail"

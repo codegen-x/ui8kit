@@ -14,6 +14,7 @@
     title: string;
     lead?: string;
     projects: Project[];
+    empty?: string;
     labels: ProjectLabels;
     layout?: "cards" | "compact" | "overlay" | "bento" | "list";
     tone?: "default" | "muted";
@@ -27,6 +28,7 @@
   import Group from "../primitives/group/group.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import ProjectTiles from "../components/project-tiles.svelte";
   import SectionFrame from "../components/section-frame.svelte";
@@ -36,6 +38,7 @@
     title,
     lead = "",
     projects,
+    empty = "",
     labels,
     layout = "cards",
     tone = "default",
@@ -54,7 +57,9 @@
   media={{ show: ((layout as string) === "list"), align: "start" }}
   landmarkLabel={landmarkLabel}
 >
-  {#if ((layout as string) === "list")}
+  {#if ((projects?.length ?? 0) === 0)}
+    <EmptyState icon="folder-open" title={empty} />
+  {:else if ((layout as string) === "list")}
     <Stack gap="4" align="stretch" data-testid="items">
       {#each projects as p (p.id)}
         <Group gap="4" align="start" class="border-b border-border pb-4" data-testid="item">

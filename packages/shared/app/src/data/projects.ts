@@ -11,11 +11,8 @@ export const projects = [
     "slug": "atlas",
     "title": "Atlas dashboard",
     "metadata": {
-      "category": {
-        "value": "Product design"
-      },
       "year": {
-        "value": "2026"
+        "value": 2026
       },
       "summary": {
         "value": "An analytics dashboard for a logistics team: one screen for the whole fleet."
@@ -37,7 +34,13 @@ export const projects = [
     "version": 1,
     "created_at": "2026-03-02T09:00:00Z",
     "updated_at": "2026-03-03T09:00:00Z",
-    "published_at": "2026-03-03T10:00:00Z"
+    "published_at": "2026-03-03T10:00:00Z",
+    "terms": [
+      {
+        "taxonomy": "project_category",
+        "term_id": "project-category-product-design"
+      }
+    ]
   },
   {
     "id": "project-harbor",
@@ -48,11 +51,8 @@ export const projects = [
     "slug": "harbor",
     "title": "Harbor booking",
     "metadata": {
-      "category": {
-        "value": "Web app"
-      },
       "year": {
-        "value": "2025"
+        "value": 2025
       },
       "summary": {
         "value": "Booking flow for a chain of marinas, from the map to the receipt."
@@ -73,7 +73,13 @@ export const projects = [
     "version": 1,
     "created_at": "2026-03-04T09:00:00Z",
     "updated_at": "2026-03-05T09:00:00Z",
-    "published_at": "2026-03-05T10:00:00Z"
+    "published_at": "2026-03-05T10:00:00Z",
+    "terms": [
+      {
+        "taxonomy": "project_category",
+        "term_id": "project-category-web-app"
+      }
+    ]
   },
   {
     "id": "project-lumen",
@@ -84,11 +90,8 @@ export const projects = [
     "slug": "lumen",
     "title": "Lumen brand",
     "metadata": {
-      "category": {
-        "value": "Branding"
-      },
       "year": {
-        "value": "2025"
+        "value": 2025
       },
       "summary": {
         "value": "Identity, type and a site for a lighting studio."
@@ -109,7 +112,13 @@ export const projects = [
     "version": 1,
     "created_at": "2026-03-06T09:00:00Z",
     "updated_at": "2026-03-07T09:00:00Z",
-    "published_at": "2026-03-07T10:00:00Z"
+    "published_at": "2026-03-07T10:00:00Z",
+    "terms": [
+      {
+        "taxonomy": "project_category",
+        "term_id": "project-category-branding"
+      }
+    ]
   },
   {
     "id": "project-orbit",
@@ -120,11 +129,8 @@ export const projects = [
     "slug": "orbit",
     "title": "Orbit mobile",
     "metadata": {
-      "category": {
-        "value": "Mobile"
-      },
       "year": {
-        "value": "2024"
+        "value": 2024
       },
       "summary": {
         "value": "A habit tracker that fits on the lock screen."
@@ -145,7 +151,13 @@ export const projects = [
     "version": 1,
     "created_at": "2026-03-08T09:00:00Z",
     "updated_at": "2026-03-09T09:00:00Z",
-    "published_at": "2026-03-09T10:00:00Z"
+    "published_at": "2026-03-09T10:00:00Z",
+    "terms": [
+      {
+        "taxonomy": "project_category",
+        "term_id": "project-category-mobile"
+      }
+    ]
   },
   {
     "id": "project-field",
@@ -156,11 +168,8 @@ export const projects = [
     "slug": "field",
     "title": "Field notes",
     "metadata": {
-      "category": {
-        "value": "Editorial"
-      },
       "year": {
-        "value": "2024"
+        "value": 2024
       },
       "summary": {
         "value": "A long-read magazine with a reading mode and offline issues."
@@ -181,7 +190,13 @@ export const projects = [
     "version": 1,
     "created_at": "2026-03-10T09:00:00Z",
     "updated_at": "2026-03-11T09:00:00Z",
-    "published_at": "2026-03-11T10:00:00Z"
+    "published_at": "2026-03-11T10:00:00Z",
+    "terms": [
+      {
+        "taxonomy": "project_category",
+        "term_id": "project-category-editorial"
+      }
+    ]
   },
   {
     "id": "project-cedar",
@@ -192,11 +207,8 @@ export const projects = [
     "slug": "cedar",
     "title": "Cedar store",
     "metadata": {
-      "category": {
-        "value": "Commerce"
-      },
       "year": {
-        "value": "2023"
+        "value": 2023
       },
       "summary": {
         "value": "A small furniture store with a configurator and same-day delivery."
@@ -217,6 +229,12 @@ export const projects = [
     "version": 1,
     "created_at": "2026-03-12T09:00:00Z",
     "updated_at": "2026-03-13T09:00:00Z",
-    "published_at": "2026-03-13T10:00:00Z"
+    "published_at": "2026-03-13T10:00:00Z",
+    "terms": [
+      {
+        "taxonomy": "project_category",
+        "term_id": "project-category-commerce"
+      }
+    ]
   }
 ] as const;

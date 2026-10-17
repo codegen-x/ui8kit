@@ -11,6 +11,7 @@ export type FeatureAccordionProps = {
   id: string;
   title: string;
   features: Feature[];
+  empty?: string;
   expand?: "first" | "none";
   media?: "none" | "image";
   multiple?: boolean;
@@ -27,6 +28,7 @@ import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Summary from "../primitives/disclosure/summary.vue";
 import Text from "../primitives/text/text.vue";
+import EmptyState from "../components/empty-state.vue";
 import MediaFrame from "../components/media-frame.vue";
 import SectionFrame from "../components/section-frame.vue";
 import { tpl } from "../utils";
@@ -35,6 +37,7 @@ const {
   id,
   title,
   features,
+  empty = "",
   expand = "first",
   media = "none",
   multiple = false,
@@ -54,7 +57,8 @@ const {
     :media="{ show: ((media as string) === 'image') }"
     :landmarkLabel="landmarkLabel"
   >
-    <Stack gap="0" align="stretch" data-testid="items">
+    <EmptyState v-if="((features?.length ?? 0) === 0)" icon="layout-grid" :title="empty" />
+    <Stack v-else gap="0" align="stretch" data-testid="items">
       <Disclosure v-for="(f, i) in features" :key="f.id"
         variant="item"
         :name="(multiple ? undefined : tpl('{0}-accordion', (id ?? 'accordion')))"

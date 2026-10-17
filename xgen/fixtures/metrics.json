@@ -12,7 +12,10 @@
       "title": "Revenue",
       "metadata": {
         "value": {
-          "value": "$48,200"
+          "value": 4820000
+        },
+        "currency": {
+          "value": "USD"
         },
         "icon": {
           "value": "badge-dollar-sign"
@@ -36,7 +39,7 @@
       "title": "Orders",
       "metadata": {
         "value": {
-          "value": "1,284"
+          "value": 1284
         },
         "icon": {
           "value": "shopping-cart"
@@ -60,7 +63,7 @@
       "title": "Visitors",
       "metadata": {
         "value": {
-          "value": "92,410"
+          "value": 92410
         },
         "icon": {
           "value": "eye"
@@ -84,7 +87,10 @@
       "title": "Churn",
       "metadata": {
         "value": {
-          "value": "1.9%"
+          "value": 1.9
+        },
+        "unit": {
+          "value": "percent"
         },
         "icon": {
           "value": "trending-down"

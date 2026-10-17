@@ -11,6 +11,7 @@ export type SupportChannelsProps = {
   id: string;
   title: string;
   channels: Feature[];
+  empty?: string;
   open: string;
   layout?: "grid" | "list";
   cols?: "1-2" | "1-3";
@@ -28,6 +29,7 @@ import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
+import EmptyState from "../components/empty-state.vue";
 import MenuEntry from "../components/menu-entry.vue";
 import SectionFrame from "../components/section-frame.vue";
 import { cn } from "../utils";
@@ -36,6 +38,7 @@ const {
   id,
   title,
   channels,
+  empty = "",
   open,
   layout = "grid",
   cols = "1-3",
@@ -47,7 +50,8 @@ const {
 
 <template>
   <SectionFrame :id="id" :title="title" :tone="tone" :landmarkLabel="landmarkLabel">
-    <Grid :cols="(((layout as string) === 'list') ? '1' : cols)" class="gap-4" data-testid="items">
+    <EmptyState v-if="((channels?.length ?? 0) === 0)" icon="life-buoy" :title="empty" />
+    <Grid v-else :cols="(((layout as string) === 'list') ? '1' : cols)" class="gap-4" data-testid="items">
       <Card v-for="c in channels" :key="c.id"
         variant="default"
         :class="cn('h-full', (((layout as string) === 'list') ? 'flex-row items-center' : ''))"

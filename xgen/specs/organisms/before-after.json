@@ -53,6 +53,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "labels",
       "type": {
         "record": "BeforeAfterLabels"
@@ -124,130 +130,159 @@
                 "op": "eq",
                 "args": [
                   {
-                    "$": "layout"
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "points"
+                      }
+                    ]
                   },
-                  "cards"
+                  0
                 ]
               },
               "then": [
                 {
-                  "use": "Grid",
+                  "organism": "EmptyState",
                   "props": {
-                    "Cols": "1-2",
-                    "Class": "items-stretch gap-4"
+                    "icon": "git-compare",
+                    "title": {
+                      "$": "empty"
+                    }
+                  }
+                }
+              ],
+              "else": [
+                {
+                  "when": {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "$": "layout"
+                      },
+                      "cards"
+                    ]
                   },
-                  "attrs": {
-                    "data-testid": "sides"
-                  },
-                  "children": [
+                  "then": [
                     {
-                      "use": "Card",
+                      "use": "Grid",
                       "props": {
-                        "Variant": "muted",
-                        "Class": {
-                          "op": "cn",
-                          "args": [
-                            "h-full",
-                            {
-                              "op": "cond",
-                              "args": [
-                                {
-                                  "op": "eq",
-                                  "args": [
-                                    {
-                                      "$": "density"
-                                    },
-                                    "compact"
-                                  ]
-                                },
-                                "gap-4 p-4",
-                                ""
-                              ]
-                            }
-                          ]
-                        }
+                        "Cols": "1-2",
+                        "Class": "items-stretch gap-4"
                       },
                       "attrs": {
-                        "data-testid": "side",
-                        "data-side": "before"
+                        "data-testid": "sides"
                       },
                       "children": [
                         {
-                          "use": "CardContent",
+                          "use": "Card",
                           "props": {
-                            "Class": "flex flex-col gap-4"
+                            "Variant": "muted",
+                            "Class": {
+                              "op": "cn",
+                              "args": [
+                                "h-full",
+                                {
+                                  "op": "cond",
+                                  "args": [
+                                    {
+                                      "op": "eq",
+                                      "args": [
+                                        {
+                                          "$": "density"
+                                        },
+                                        "compact"
+                                      ]
+                                    },
+                                    "gap-4 p-4",
+                                    ""
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "attrs": {
+                            "data-testid": "side",
+                            "data-side": "before"
                           },
                           "children": [
                             {
-                              "use": "Title",
+                              "use": "CardContent",
                               "props": {
-                                "As": 3,
-                                "Size": "xl",
-                                "Weight": "bold"
+                                "Class": "flex flex-col gap-4"
                               },
                               "children": [
                                 {
-                                  "text": {
-                                    "$": "labels.before"
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "use": "List",
-                              "props": {
-                                "Class": "m-0 flex list-none flex-col gap-4 p-0"
-                              },
-                              "children": [
-                                {
-                                  "each": {
-                                    "$": "points"
+                                  "use": "Title",
+                                  "props": {
+                                    "As": 3,
+                                    "Size": "xl",
+                                    "Weight": "bold"
                                   },
-                                  "as": "p",
-                                  "key": {
-                                    "$": "p.id"
-                                  },
-                                  "do": [
+                                  "children": [
                                     {
-                                      "use": "ListItem",
-                                      "props": {
-                                        "Class": "flex items-start gap-4"
+                                      "text": {
+                                        "$": "labels.before"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "use": "List",
+                                  "props": {
+                                    "Class": "m-0 flex list-none flex-col gap-4 p-0"
+                                  },
+                                  "children": [
+                                    {
+                                      "each": {
+                                        "$": "points"
                                       },
-                                      "attrs": {
-                                        "data-testid": "item"
+                                      "as": "p",
+                                      "key": {
+                                        "$": "p.id"
                                       },
-                                      "children": [
+                                      "do": [
                                         {
-                                          "when": {
-                                            "op": "eq",
-                                            "args": [
-                                              {
-                                                "$": "icons"
-                                              },
-                                              "show"
-                                            ]
-                                          },
-                                          "then": [
-                                            {
-                                              "use": "LucideIcon",
-                                              "props": {
-                                                "Name": "x",
-                                                "Size": 16,
-                                                "Class": "h-lh shrink-0 text-sm"
-                                              }
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "use": "Text",
+                                          "use": "ListItem",
                                           "props": {
-                                            "Size": "sm"
+                                            "Class": "flex items-start gap-4"
+                                          },
+                                          "attrs": {
+                                            "data-testid": "item"
                                           },
                                           "children": [
                                             {
-                                              "text": {
-                                                "$": "p.before"
-                                              }
+                                              "when": {
+                                                "op": "eq",
+                                                "args": [
+                                                  {
+                                                    "$": "icons"
+                                                  },
+                                                  "show"
+                                                ]
+                                              },
+                                              "then": [
+                                                {
+                                                  "use": "LucideIcon",
+                                                  "props": {
+                                                    "Name": "x",
+                                                    "Size": 16,
+                                                    "Class": "h-lh shrink-0 text-sm"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "use": "Text",
+                                              "props": {
+                                                "Size": "sm"
+                                              },
+                                              "children": [
+                                                {
+                                                  "text": {
+                                                    "$": "p.before"
+                                                  }
+                                                }
+                                              ]
                                             }
                                           ]
                                         }
@@ -258,117 +293,117 @@
                               ]
                             }
                           ]
-                        }
-                      ]
-                    },
-                    {
-                      "use": "Card",
-                      "props": {
-                        "Variant": "default",
-                        "Class": {
-                          "op": "cn",
-                          "args": [
-                            "h-full",
-                            {
-                              "op": "cond",
+                        },
+                        {
+                          "use": "Card",
+                          "props": {
+                            "Variant": "default",
+                            "Class": {
+                              "op": "cn",
                               "args": [
+                                "h-full",
                                 {
-                                  "op": "eq",
+                                  "op": "cond",
                                   "args": [
                                     {
-                                      "$": "density"
+                                      "op": "eq",
+                                      "args": [
+                                        {
+                                          "$": "density"
+                                        },
+                                        "compact"
+                                      ]
                                     },
-                                    "compact"
+                                    "gap-4 p-4",
+                                    ""
                                   ]
-                                },
-                                "gap-4 p-4",
-                                ""
+                                }
                               ]
                             }
-                          ]
-                        }
-                      },
-                      "attrs": {
-                        "data-testid": "side",
-                        "data-side": "after"
-                      },
-                      "children": [
-                        {
-                          "use": "CardContent",
-                          "props": {
-                            "Class": "flex flex-col gap-4"
+                          },
+                          "attrs": {
+                            "data-testid": "side",
+                            "data-side": "after"
                           },
                           "children": [
                             {
-                              "use": "Title",
+                              "use": "CardContent",
                               "props": {
-                                "As": 3,
-                                "Size": "xl",
-                                "Weight": "bold"
+                                "Class": "flex flex-col gap-4"
                               },
                               "children": [
                                 {
-                                  "text": {
-                                    "$": "labels.after"
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "use": "List",
-                              "props": {
-                                "Class": "m-0 flex list-none flex-col gap-4 p-0"
-                              },
-                              "children": [
-                                {
-                                  "each": {
-                                    "$": "points"
+                                  "use": "Title",
+                                  "props": {
+                                    "As": 3,
+                                    "Size": "xl",
+                                    "Weight": "bold"
                                   },
-                                  "as": "p",
-                                  "key": {
-                                    "$": "p.id"
-                                  },
-                                  "do": [
+                                  "children": [
                                     {
-                                      "use": "ListItem",
-                                      "props": {
-                                        "Class": "flex items-start gap-4"
+                                      "text": {
+                                        "$": "labels.after"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "use": "List",
+                                  "props": {
+                                    "Class": "m-0 flex list-none flex-col gap-4 p-0"
+                                  },
+                                  "children": [
+                                    {
+                                      "each": {
+                                        "$": "points"
                                       },
-                                      "attrs": {
-                                        "data-testid": "item"
+                                      "as": "p",
+                                      "key": {
+                                        "$": "p.id"
                                       },
-                                      "children": [
+                                      "do": [
                                         {
-                                          "when": {
-                                            "op": "eq",
-                                            "args": [
-                                              {
-                                                "$": "icons"
-                                              },
-                                              "show"
-                                            ]
-                                          },
-                                          "then": [
-                                            {
-                                              "use": "LucideIcon",
-                                              "props": {
-                                                "Name": "check",
-                                                "Size": 16,
-                                                "Class": "h-lh shrink-0 text-sm"
-                                              }
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "use": "Text",
+                                          "use": "ListItem",
                                           "props": {
-                                            "Size": "sm"
+                                            "Class": "flex items-start gap-4"
+                                          },
+                                          "attrs": {
+                                            "data-testid": "item"
                                           },
                                           "children": [
                                             {
-                                              "text": {
-                                                "$": "p.after"
-                                              }
+                                              "when": {
+                                                "op": "eq",
+                                                "args": [
+                                                  {
+                                                    "$": "icons"
+                                                  },
+                                                  "show"
+                                                ]
+                                              },
+                                              "then": [
+                                                {
+                                                  "use": "LucideIcon",
+                                                  "props": {
+                                                    "Name": "check",
+                                                    "Size": 16,
+                                                    "Class": "h-lh shrink-0 text-sm"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "use": "Text",
+                                              "props": {
+                                                "Size": "sm"
+                                              },
+                                              "children": [
+                                                {
+                                                  "text": {
+                                                    "$": "p.after"
+                                                  }
+                                                }
+                                              ]
                                             }
                                           ]
                                         }
@@ -382,142 +417,142 @@
                         }
                       ]
                     }
-                  ]
-                }
-              ],
-              "else": [
-                {
-                  "use": "Stack",
-                  "props": {
-                    "Gap": "2",
-                    "Align": "stretch"
-                  },
-                  "attrs": {
-                    "data-testid": "rows"
-                  },
-                  "children": [
+                  ],
+                  "else": [
                     {
-                      "each": {
-                        "$": "points"
+                      "use": "Stack",
+                      "props": {
+                        "Gap": "2",
+                        "Align": "stretch"
                       },
-                      "as": "p",
-                      "key": {
-                        "$": "p.id"
+                      "attrs": {
+                        "data-testid": "rows"
                       },
-                      "do": [
+                      "children": [
                         {
-                          "use": "Grid",
-                          "props": {
-                            "Cols": "1-3",
-                            "Class": {
-                              "op": "cn",
-                              "args": [
-                                "items-center gap-4",
-                                "rounded bg-card inset-ring inset-ring-border p-4"
-                              ]
-                            }
+                          "each": {
+                            "$": "points"
                           },
-                          "attrs": {
-                            "data-testid": "item"
+                          "as": "p",
+                          "key": {
+                            "$": "p.id"
                           },
-                          "children": [
+                          "do": [
                             {
-                              "use": "Text",
+                              "use": "Grid",
                               "props": {
-                                "Size": "base",
-                                "Weight": "semibold"
-                              },
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "p.title"
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "use": "Group",
-                              "props": {
-                                "Gap": "2",
-                                "Align": "start"
-                              },
-                              "children": [
-                                {
-                                  "when": {
-                                    "op": "eq",
-                                    "args": [
-                                      {
-                                        "$": "icons"
-                                      },
-                                      "show"
-                                    ]
-                                  },
-                                  "then": [
-                                    {
-                                      "use": "LucideIcon",
-                                      "props": {
-                                        "Name": "x",
-                                        "Size": 16,
-                                        "Class": "h-lh shrink-0 text-sm text-muted-foreground"
-                                      }
-                                    }
+                                "Cols": "1-3",
+                                "Class": {
+                                  "op": "cn",
+                                  "args": [
+                                    "items-center gap-4",
+                                    "rounded bg-card inset-ring inset-ring-border p-4"
                                   ]
-                                },
+                                }
+                              },
+                              "attrs": {
+                                "data-testid": "item"
+                              },
+                              "children": [
                                 {
                                   "use": "Text",
                                   "props": {
-                                    "Size": "sm",
-                                    "Class": "text-muted-foreground"
-                                  },
-                                  "children": [
-                                    {
-                                      "text": {
-                                        "$": "p.before"
-                                      }
-                                    }
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "use": "Group",
-                              "props": {
-                                "Gap": "2",
-                                "Align": "start"
-                              },
-                              "children": [
-                                {
-                                  "when": {
-                                    "op": "eq",
-                                    "args": [
-                                      {
-                                        "$": "icons"
-                                      },
-                                      "show"
-                                    ]
-                                  },
-                                  "then": [
-                                    {
-                                      "use": "LucideIcon",
-                                      "props": {
-                                        "Name": "check",
-                                        "Size": 16,
-                                        "Class": "h-lh shrink-0 text-sm text-primary"
-                                      }
-                                    }
-                                  ]
-                                },
-                                {
-                                  "use": "Text",
-                                  "props": {
-                                    "Size": "sm",
+                                    "Size": "base",
                                     "Weight": "semibold"
                                   },
                                   "children": [
                                     {
                                       "text": {
-                                        "$": "p.after"
+                                        "$": "p.title"
                                       }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "use": "Group",
+                                  "props": {
+                                    "Gap": "2",
+                                    "Align": "start"
+                                  },
+                                  "children": [
+                                    {
+                                      "when": {
+                                        "op": "eq",
+                                        "args": [
+                                          {
+                                            "$": "icons"
+                                          },
+                                          "show"
+                                        ]
+                                      },
+                                      "then": [
+                                        {
+                                          "use": "LucideIcon",
+                                          "props": {
+                                            "Name": "x",
+                                            "Size": 16,
+                                            "Class": "h-lh shrink-0 text-sm text-muted-foreground"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "sm",
+                                        "Class": "text-muted-foreground"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "p.before"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "use": "Group",
+                                  "props": {
+                                    "Gap": "2",
+                                    "Align": "start"
+                                  },
+                                  "children": [
+                                    {
+                                      "when": {
+                                        "op": "eq",
+                                        "args": [
+                                          {
+                                            "$": "icons"
+                                          },
+                                          "show"
+                                        ]
+                                      },
+                                      "then": [
+                                        {
+                                          "use": "LucideIcon",
+                                          "props": {
+                                            "Name": "check",
+                                            "Size": 16,
+                                            "Class": "h-lh shrink-0 text-sm text-primary"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "sm",
+                                        "Weight": "semibold"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "p.after"
+                                          }
+                                        }
+                                      ]
                                     }
                                   ]
                                 }

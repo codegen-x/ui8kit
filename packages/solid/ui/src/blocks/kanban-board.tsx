@@ -13,6 +13,7 @@ import { ListItem } from "../primitives/list/list-item";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { Title } from "../primitives/title/title";
+import { EmptyState } from "../components/empty-state";
 import { Pill } from "../components/pill";
 import { SectionFrame } from "../components/section-frame";
 import { cn, tpl } from "../utils";
@@ -22,6 +23,7 @@ export type KanbanBoardProps = {
   id: string;
   title: string;
   lanes: Lane[];
+  empty?: string;
   cards: BoardCard[];
   countLabel: string;
   card?: "simple" | "detail";
@@ -35,6 +37,7 @@ export function KanbanBoard({
   id,
   title,
   lanes,
+  empty = "",
   cards,
   countLabel,
   card = "detail",
@@ -45,45 +48,49 @@ export function KanbanBoard({
 }: KanbanBoardProps) {
   return (
     <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
-      <Grid cols={(((cols as string) === "2") ? "1-2" : "1-3")} class="items-start gap-4" data-testid="lanes">
-        <For each={lanes ?? []}>{(lane) => (
-          <Stack gap="4" align="stretch" class="rounded bg-muted p-4" data-testid="lane">
-            <Group gap="2" align="center" justify="between">
-              <Title as={3} size="base" weight="bold">
-                {lane.title}
-              </Title>
-              <Text size="xs" class="text-muted-foreground">
-                {tpl(countLabel, (cards.filter((i) => !lane.key || i["lane"] === lane.key)?.length ?? 0))}
-              </Text>
-            </Group>
-            <List class="m-0 flex list-none flex-col gap-2 p-0">
-              <For each={cards.filter((i) => !lane.key || i["lane"] === lane.key) ?? []}>{(c) => (
-                <ListItem
-                  class={cn(
-                    "flex flex-col rounded bg-card inset-ring inset-ring-border",
-                    (((density as string) === "compact") ? "gap-2 p-2" : "gap-2 p-4")
-                  )}
-                  data-testid="item"
-                >
-                  <Text size="sm" weight="semibold">
-                    {c.title}
-                  </Text>
-                  {((card as string) === "detail") ? (
-                    <Group gap="2" align="center" justify="between" class="flex-wrap">
-                      <Pill tone="blue" icon="tag">
-                        {c.tag}
-                      </Pill>
-                      <Text size="xs" class="text-muted-foreground">
-                        {c.who}
-                      </Text>
-                    </Group>
-                  ) : null}
-                </ListItem>
-              )}</For>
-            </List>
-          </Stack>
-        )}</For>
-      </Grid>
+      {((lanes?.length ?? 0) === 0) ? (
+        <EmptyState icon="kanban" title={empty} />
+      ) : (
+        <Grid cols={(((cols as string) === "2") ? "1-2" : "1-3")} class="items-start gap-4" data-testid="lanes">
+          <For each={lanes ?? []}>{(lane) => (
+            <Stack gap="4" align="stretch" class="rounded bg-muted p-4" data-testid="lane">
+              <Group gap="2" align="center" justify="between">
+                <Title as={3} size="base" weight="bold">
+                  {lane.title}
+                </Title>
+                <Text size="xs" class="text-muted-foreground">
+                  {tpl(countLabel, (cards.filter((i) => !lane.key || i["lane"] === lane.key)?.length ?? 0))}
+                </Text>
+              </Group>
+              <List class="m-0 flex list-none flex-col gap-2 p-0">
+                <For each={cards.filter((i) => !lane.key || i["lane"] === lane.key) ?? []}>{(c) => (
+                  <ListItem
+                    class={cn(
+                      "flex flex-col rounded bg-card inset-ring inset-ring-border",
+                      (((density as string) === "compact") ? "gap-2 p-2" : "gap-2 p-4")
+                    )}
+                    data-testid="item"
+                  >
+                    <Text size="sm" weight="semibold">
+                      {c.title}
+                    </Text>
+                    {((card as string) === "detail") ? (
+                      <Group gap="2" align="center" justify="between" class="flex-wrap">
+                        <Pill tone="blue" icon="tag">
+                          {c.tag}
+                        </Pill>
+                        <Text size="xs" class="text-muted-foreground">
+                          {c.who}
+                        </Text>
+                      </Group>
+                    ) : null}
+                  </ListItem>
+                )}</For>
+              </List>
+            </Stack>
+          )}</For>
+        </Grid>
+      )}
     </SectionFrame>
   );
 }

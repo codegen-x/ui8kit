@@ -92,7 +92,7 @@ const features = define({
     ["rowsAlternate", "Rows, alternating media, muted", { layout: "rows", mediaSide: "alternate", tone: "muted" }],
     ["tilesMuted", "Tiles, three columns, muted", { item: "tile", tone: "muted", density: "compact" }],
   ],
-  sample: { id: "features", title: t("site.home.featuresTitle"), features: ref("features"), action: { label: t("site.home.featuresAction"), href: "#/" } },
+  sample: { id: "features", title: t("site.home.featuresTitle"), features: ref("features"), empty: t("empty.features"), action: { label: t("site.home.featuresAction"), href: "#/" } },
 });
 
 const pricing = define({
@@ -166,7 +166,7 @@ const logos = define({
     ["grid2", "Grid, two columns, roomy", { cols: "2", density: "roomy" }],
     ["tiles4", "Tiles, four columns", { item: "tile" }],
   ],
-  sample: { id: "logos", title: t("marketing.logos.title"), logos: ref("logos") },
+  sample: { id: "logos", title: t("marketing.logos.title"), logos: ref("logos"), empty: t("empty.logos") },
 });
 
 const stats = define({
@@ -201,7 +201,7 @@ const testimonials = define({
     ["plain", "Plain quotes, no avatars", { "item.kind": "plain", "item.avatar": "none", tone: "muted", density: "compact" }],
     ["noRating", "Cards, no rating, roomy", { "item.rating": "hide", density: "roomy" }],
   ],
-  sample: { id: "testimonials", title: t("marketing.testimonials.title"), quotes: ref("testimonials"), labels: { rating: t("testimonials.rating"), byLine: t("testimonials.byLine"), handleLine: t("testimonials.handleLine") } },
+  sample: { id: "testimonials", title: t("marketing.testimonials.title"), quotes: ref("testimonials"), empty: t("empty.quotes"), labels: { rating: t("testimonials.rating"), byLine: t("testimonials.byLine"), handleLine: t("testimonials.handleLine") } },
 });
 
 const steps = define({
@@ -215,7 +215,7 @@ const steps = define({
     ["columnIcons", "Column with icons, roomy", { layout: "column", marker: "icon", density: "roomy" }],
     ["compact", "Row, compact", { density: "compact" }],
   ],
-  sample: { id: "steps", title: t("marketing.steps.title"), steps: ref("steps") },
+  sample: { id: "steps", title: t("marketing.steps.title"), steps: ref("steps"), empty: t("empty.steps") },
 });
 
 export const marketingBlocks = [header, hero, logos, features, stats, testimonials, steps, pricing, plan, faq, cta, footer];

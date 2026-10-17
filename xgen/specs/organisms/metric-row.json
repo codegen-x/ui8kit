@@ -47,6 +47,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "cols",
       "type": {
         "ts": "\"2\" | \"4\""
@@ -107,145 +113,174 @@
           "args": [],
           "do": [
             {
-              "use": "Grid",
-              "props": {
-                "Cols": {
-                  "op": "cond",
-                  "args": [
-                    {
-                      "op": "eq",
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "metrics"
+                      }
+                    ]
+                  },
+                  0
+                ]
+              },
+              "then": [
+                {
+                  "organism": "EmptyState",
+                  "props": {
+                    "icon": "gauge",
+                    "title": {
+                      "$": "empty"
+                    }
+                  }
+                }
+              ],
+              "else": [
+                {
+                  "use": "Grid",
+                  "props": {
+                    "Cols": {
+                      "op": "cond",
                       "args": [
                         {
-                          "$": "cols"
+                          "op": "eq",
+                          "args": [
+                            {
+                              "$": "cols"
+                            },
+                            "2"
+                          ]
                         },
-                        "2"
+                        "1-2",
+                        "1-4"
                       ]
                     },
-                    "1-2",
-                    "1-4"
-                  ]
-                },
-                "Class": "gap-4"
-              },
-              "attrs": {
-                "data-testid": "items"
-              },
-              "children": [
-                {
-                  "each": {
-                    "$": "metrics"
+                    "Class": "gap-4"
                   },
-                  "as": "m",
-                  "key": {
-                    "$": "m.id"
+                  "attrs": {
+                    "data-testid": "items"
                   },
-                  "do": [
+                  "children": [
                     {
-                      "when": {
-                        "op": "eq",
-                        "args": [
-                          {
-                            "$": "item"
-                          },
-                          "tile"
-                        ]
+                      "each": {
+                        "$": "metrics"
                       },
-                      "then": [
+                      "as": "m",
+                      "key": {
+                        "$": "m.id"
+                      },
+                      "do": [
                         {
-                          "use": "Box",
-                          "props": {},
-                          "attrs": {
-                            "data-testid": "item"
+                          "when": {
+                            "op": "eq",
+                            "args": [
+                              {
+                                "$": "item"
+                              },
+                              "tile"
+                            ]
                           },
-                          "children": [
+                          "then": [
                             {
-                              "organism": "StatTile",
-                              "props": {
-                                "label": {
-                                  "$": "m.label"
-                                },
-                                "value": {
-                                  "$": "m.value"
-                                },
-                                "icon": {
-                                  "$": "m.icon"
-                                },
-                                "hint": {
-                                  "$": "m.hint"
-                                }
-                              }
-                            }
-                          ]
-                        }
-                      ],
-                      "else": [
-                        {
-                          "use": "Stack",
-                          "props": {
-                            "Gap": "0",
-                            "Class": "rounded bg-card p-4 inset-ring inset-ring-border"
-                          },
-                          "attrs": {
-                            "data-testid": "item"
-                          },
-                          "children": [
-                            {
-                              "use": "Group",
-                              "props": {
-                                "Gap": "2",
-                                "Align": "center",
-                                "Class": "text-muted-foreground"
+                              "use": "Box",
+                              "props": {},
+                              "attrs": {
+                                "data-testid": "item"
                               },
                               "children": [
                                 {
-                                  "use": "LucideIcon",
+                                  "organism": "StatTile",
                                   "props": {
-                                    "Name": {
+                                    "label": {
+                                      "$": "m.label"
+                                    },
+                                    "value": {
+                                      "$": "m.value"
+                                    },
+                                    "icon": {
                                       "$": "m.icon"
                                     },
-                                    "Size": 16
+                                    "hint": {
+                                      "$": "m.hint"
+                                    }
                                   }
+                                }
+                              ]
+                            }
+                          ],
+                          "else": [
+                            {
+                              "use": "Stack",
+                              "props": {
+                                "Gap": "0",
+                                "Class": "rounded bg-card p-4 inset-ring inset-ring-border"
+                              },
+                              "attrs": {
+                                "data-testid": "item"
+                              },
+                              "children": [
+                                {
+                                  "use": "Group",
+                                  "props": {
+                                    "Gap": "2",
+                                    "Align": "center",
+                                    "Class": "text-muted-foreground"
+                                  },
+                                  "children": [
+                                    {
+                                      "use": "LucideIcon",
+                                      "props": {
+                                        "Name": {
+                                          "$": "m.icon"
+                                        },
+                                        "Size": 16
+                                      }
+                                    },
+                                    {
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "xs"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "m.label"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
                                 },
                                 {
                                   "use": "Text",
                                   "props": {
-                                    "Size": "xs"
+                                    "Size": "2xl",
+                                    "Weight": "bold"
                                   },
                                   "children": [
                                     {
                                       "text": {
-                                        "$": "m.label"
+                                        "$": "m.value"
                                       }
                                     }
                                   ]
-                                }
-                              ]
-                            },
-                            {
-                              "use": "Text",
-                              "props": {
-                                "Size": "2xl",
-                                "Weight": "bold"
-                              },
-                              "children": [
+                                },
                                 {
-                                  "text": {
-                                    "$": "m.value"
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "use": "Text",
-                              "props": {
-                                "Size": "xs",
-                                "Class": "text-muted-foreground"
-                              },
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "m.hint"
-                                  }
+                                  "use": "Text",
+                                  "props": {
+                                    "Size": "xs",
+                                    "Class": "text-muted-foreground"
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "m.hint"
+                                      }
+                                    }
+                                  ]
                                 }
                               ]
                             }

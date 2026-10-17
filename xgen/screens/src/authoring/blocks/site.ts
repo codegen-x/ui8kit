@@ -4,7 +4,7 @@
 import { and, call, cn, cond, eq, op, ref, text, undef, use, when, organism } from "../../build";
 import type { OrganismSpec } from "../../ir";
 import { fields, spec, ts } from "../kit";
-import { cols, density, id, title, tone, tsOf } from "../props";
+import { cols, density, empty, id, orEmpty, title, tone, tsOf } from "../props";
 import { frame, wide } from "../components/frames";
 import { layoutOf } from "../presets";
 import { featureRecord, featureItem, featureCards, featureRows } from "../components/features";
@@ -70,6 +70,7 @@ const featureGrid = spec(`${O}feature-grid`, "FeatureGrid", "A section with a he
   props: [
     id, title,
     { name: "features", type: ts("Feature[]"), required: true },
+    empty,
     { name: "action", type: ts("HeadLink"), docs: "optional link opposite the heading" },
     { name: "layout", type: tsOf("grid", "rows"), default: "grid" },
     { name: "cols", type: cols, default: "1-3", docs: "columns of the grid layout (responsive)" },
@@ -87,9 +88,9 @@ const featureGrid = spec(`${O}feature-grid`, "FeatureGrid", "A section with a he
       // the view-all link only with an address (no "#/" stand-in): no href, no link
       when(and(ref("action.label"), ref("action.href")), [use("Link", { props: { Href: ref("action.href"), Variant: "default", Class: cn(layoutOf("text.tiny"), "shrink-0 font-medium leading-5") }, attrs: { "data-testid": "section-action" } }, text(ref("action.label")))]));
     return [when(eq(ref("item"), "cell"),
-      [frame({ id: ref("id"), title: "", tone: ref("tone"), density: ref("density"), measure: "fill", className: "py-0" }, [cellHead, grid])],
+      [frame({ id: ref("id"), title: "", tone: ref("tone"), density: ref("density"), measure: "fill", className: "py-0" }, [cellHead, orEmpty("features", "layout-grid", [grid])])],
       [frame({ id: ref("id"), title: ref("title"), action: ref("action"), tone: ref("tone"), density: ref("density") }, [
-        when(eq(ref("layout"), "rows"), [rows], [grid])])])];
+        orEmpty("features", "layout-grid", [when(eq(ref("layout"), "rows"), [rows], [grid])])])])];
   })(),
 });
 

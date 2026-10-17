@@ -44,6 +44,7 @@ const chapters = fromCodex<Chapter>(chaptersEntries, CHAPTERS_FIELDS, CODEX);
     id="welcome-checklist"
     :title="ui.onboarding.checklist.title"
     :tasks="checklist"
+    :empty="ui.empty.tasks"
     :progressLabel="ui.onboarding.checklist.progress"
     layout="card"
     progress="bar"

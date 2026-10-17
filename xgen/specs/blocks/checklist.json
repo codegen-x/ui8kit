@@ -83,6 +83,7 @@
     }
   ],
   "slots": [
+    "EmptyState",
     "SectionFrame"
   ],
   "data": [
@@ -107,6 +108,9 @@
       },
       "tasks": {
         "$": "checklist"
+      },
+      "empty": {
+        "$": "ui.empty.tasks"
       },
       "progressLabel": {
         "$": "ui.onboarding.checklist.progress"

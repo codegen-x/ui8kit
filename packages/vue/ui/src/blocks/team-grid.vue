@@ -13,6 +13,7 @@ export type TeamGridProps = {
   title: string;
   lead?: string;
   members: Member[];
+  empty?: string;
   depts: Record<string, string>;
   layout?: "cards" | "minimal" | "detailed" | "list" | "directory";
   cols?: "1-3" | "1-4";
@@ -26,6 +27,7 @@ export type TeamGridProps = {
 import Box from "../primitives/box/box.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
+import EmptyState from "../components/empty-state.vue";
 import MediaFrame from "../components/media-frame.vue";
 import MemberRow from "../components/member-row.vue";
 import SectionFrame from "../components/section-frame.vue";
@@ -36,6 +38,7 @@ const {
   title,
   lead = "",
   members,
+  empty = "",
   depts,
   layout = "cards",
   cols = "1-4",
@@ -56,7 +59,8 @@ const {
     :media="{ show: ((layout as string) === 'list'), side: 'start', align: 'start' }"
     :landmarkLabel="landmarkLabel"
   >
-    <Box
+    <EmptyState v-if="((members?.length ?? 0) === 0)" icon="users" :title="empty" />
+    <Box v-else
       :class="
         (layout as string) === 'minimal' ? 'grid grid-cols-2 gap-8 md:grid-cols-4'
         : (layout as string) === 'directory' ? 'grid grid-cols-1 gap-4 md:grid-cols-2'

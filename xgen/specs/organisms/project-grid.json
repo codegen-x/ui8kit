@@ -20,7 +20,7 @@
       },
       {
         "name": "year",
-        "type": "string"
+        "type": "number"
       },
       {
         "name": "summary",
@@ -81,6 +81,12 @@
         "ts": "Project[]"
       },
       "required": true
+    },
+    {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
     },
     {
       "name": "labels",
@@ -178,108 +184,137 @@
                 "op": "eq",
                 "args": [
                   {
-                    "$": "layout"
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "projects"
+                      }
+                    ]
                   },
-                  "list"
+                  0
                 ]
               },
               "then": [
                 {
-                  "use": "Stack",
+                  "organism": "EmptyState",
                   "props": {
-                    "Gap": "4",
-                    "Align": "stretch"
+                    "icon": "folder-open",
+                    "title": {
+                      "$": "empty"
+                    }
+                  }
+                }
+              ],
+              "else": [
+                {
+                  "when": {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "$": "layout"
+                      },
+                      "list"
+                    ]
                   },
-                  "attrs": {
-                    "data-testid": "items"
-                  },
-                  "children": [
+                  "then": [
                     {
-                      "each": {
-                        "$": "projects"
+                      "use": "Stack",
+                      "props": {
+                        "Gap": "4",
+                        "Align": "stretch"
                       },
-                      "as": "p",
-                      "key": {
-                        "$": "p.id"
+                      "attrs": {
+                        "data-testid": "items"
                       },
-                      "do": [
+                      "children": [
                         {
-                          "use": "Group",
-                          "props": {
-                            "Gap": "4",
-                            "Align": "start",
-                            "Class": "border-b border-border pb-4"
+                          "each": {
+                            "$": "projects"
                           },
-                          "attrs": {
-                            "data-testid": "item"
+                          "as": "p",
+                          "key": {
+                            "$": "p.id"
                           },
-                          "children": [
+                          "do": [
                             {
-                              "organism": "MediaFrame",
+                              "use": "Group",
                               "props": {
-                                "alt": {
-                                  "$": "p.title"
-                                },
-                                "ratio": "1/1",
-                                "className": "size-16 shrink-0"
-                              }
-                            },
-                            {
-                              "use": "Stack",
-                              "props": {
-                                "Gap": "2",
-                                "Align": "stretch",
-                                "Class": "flex-1"
+                                "Gap": "4",
+                                "Align": "start",
+                                "Class": "border-b border-border pb-4"
+                              },
+                              "attrs": {
+                                "data-testid": "item"
                               },
                               "children": [
                                 {
-                                  "use": "Group",
+                                  "organism": "MediaFrame",
                                   "props": {
-                                    "Gap": "4",
-                                    "Justify": "between"
+                                    "alt": {
+                                      "$": "p.title"
+                                    },
+                                    "ratio": "1/1",
+                                    "className": "size-16 shrink-0"
+                                  }
+                                },
+                                {
+                                  "use": "Stack",
+                                  "props": {
+                                    "Gap": "2",
+                                    "Align": "stretch",
+                                    "Class": "flex-1"
                                   },
                                   "children": [
                                     {
-                                      "use": "Text",
+                                      "use": "Group",
                                       "props": {
-                                        "Size": "sm",
-                                        "Weight": "semibold"
+                                        "Gap": "4",
+                                        "Justify": "between"
                                       },
                                       "children": [
                                         {
-                                          "text": {
-                                            "$": "p.title"
-                                          }
+                                          "use": "Text",
+                                          "props": {
+                                            "Size": "sm",
+                                            "Weight": "semibold"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "p.title"
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "use": "Text",
+                                          "props": {
+                                            "Size": "xs",
+                                            "Class": "text-muted-foreground"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "p.year"
+                                              }
+                                            }
+                                          ]
                                         }
                                       ]
                                     },
                                     {
                                       "use": "Text",
                                       "props": {
-                                        "Size": "xs",
+                                        "Size": "sm",
                                         "Class": "text-muted-foreground"
                                       },
                                       "children": [
                                         {
                                           "text": {
-                                            "$": "p.year"
+                                            "$": "p.summary"
                                           }
                                         }
                                       ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "use": "Text",
-                                  "props": {
-                                    "Size": "sm",
-                                    "Class": "text-muted-foreground"
-                                  },
-                                  "children": [
-                                    {
-                                      "text": {
-                                        "$": "p.summary"
-                                      }
                                     }
                                   ]
                                 }
@@ -289,23 +324,23 @@
                         }
                       ]
                     }
-                  ]
-                }
-              ],
-              "else": [
-                {
-                  "organism": "ProjectTiles",
-                  "props": {
-                    "projects": {
-                      "$": "projects"
-                    },
-                    "labels": {
-                      "$": "labels"
-                    },
-                    "layout": {
-                      "$": "layout"
+                  ],
+                  "else": [
+                    {
+                      "organism": "ProjectTiles",
+                      "props": {
+                        "projects": {
+                          "$": "projects"
+                        },
+                        "labels": {
+                          "$": "labels"
+                        },
+                        "layout": {
+                          "$": "layout"
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
               ]
             }

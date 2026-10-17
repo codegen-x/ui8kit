@@ -48,6 +48,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "action",
       "type": {
         "ts": "HeadLink"
@@ -227,18 +233,47 @@
                   ]
                 },
                 {
-                  "organism": "FeatureCards",
-                  "props": {
-                    "features": {
-                      "$": "features"
-                    },
-                    "cols": {
-                      "$": "cols"
-                    },
-                    "item": {
-                      "$": "item"
+                  "when": {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "op": "len",
+                        "args": [
+                          {
+                            "$": "features"
+                          }
+                        ]
+                      },
+                      0
+                    ]
+                  },
+                  "then": [
+                    {
+                      "organism": "EmptyState",
+                      "props": {
+                        "icon": "layout-grid",
+                        "title": {
+                          "$": "empty"
+                        }
+                      }
                     }
-                  }
+                  ],
+                  "else": [
+                    {
+                      "organism": "FeatureCards",
+                      "props": {
+                        "features": {
+                          "$": "features"
+                        },
+                        "cols": {
+                          "$": "cols"
+                        },
+                        "item": {
+                          "$": "item"
+                        }
+                      }
+                    }
+                  ]
                 }
               ]
             }
@@ -277,38 +312,67 @@
                     "op": "eq",
                     "args": [
                       {
-                        "$": "layout"
+                        "op": "len",
+                        "args": [
+                          {
+                            "$": "features"
+                          }
+                        ]
                       },
-                      "rows"
+                      0
                     ]
                   },
                   "then": [
                     {
-                      "organism": "FeatureRows",
+                      "organism": "EmptyState",
                       "props": {
-                        "features": {
-                          "$": "features"
-                        },
-                        "mediaSide": {
-                          "$": "mediaSide"
+                        "icon": "layout-grid",
+                        "title": {
+                          "$": "empty"
                         }
                       }
                     }
                   ],
                   "else": [
                     {
-                      "organism": "FeatureCards",
-                      "props": {
-                        "features": {
-                          "$": "features"
-                        },
-                        "cols": {
-                          "$": "cols"
-                        },
-                        "item": {
-                          "$": "item"
+                      "when": {
+                        "op": "eq",
+                        "args": [
+                          {
+                            "$": "layout"
+                          },
+                          "rows"
+                        ]
+                      },
+                      "then": [
+                        {
+                          "organism": "FeatureRows",
+                          "props": {
+                            "features": {
+                              "$": "features"
+                            },
+                            "mediaSide": {
+                              "$": "mediaSide"
+                            }
+                          }
                         }
-                      }
+                      ],
+                      "else": [
+                        {
+                          "organism": "FeatureCards",
+                          "props": {
+                            "features": {
+                              "$": "features"
+                            },
+                            "cols": {
+                              "$": "cols"
+                            },
+                            "item": {
+                              "$": "item"
+                            }
+                          }
+                        }
+                      ]
                     }
                   ]
                 }

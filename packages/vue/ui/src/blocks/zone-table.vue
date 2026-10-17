@@ -12,6 +12,7 @@ export type ZoneTableProps = {
   title: string;
   lead?: string;
   zones: Zone[];
+  empty?: string;
   labels: ZoneLabels;
   layout?: "table" | "cards";
   tone?: "default" | "muted";
@@ -29,6 +30,7 @@ import ListItem from "../primitives/list/list-item.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
+import EmptyState from "../components/empty-state.vue";
 import SectionFrame from "../components/section-frame.vue";
 import ZoneRows from "../components/zone-rows.vue";
 import { fmtMoney } from "../utils";
@@ -38,6 +40,7 @@ const {
   title,
   lead = "",
   zones,
+  empty = "",
   labels,
   layout = "table",
   tone = "default",
@@ -55,7 +58,8 @@ const {
     :density="density"
     :landmarkLabel="landmarkLabel"
   >
-    <ZoneRows v-if="((layout as string) === 'table')" :zones="zones" :labels="labels" />
+    <EmptyState v-if="((zones?.length ?? 0) === 0)" icon="map" :title="empty" />
+    <ZoneRows v-else-if="((layout as string) === 'table')" :zones="zones" :labels="labels" />
     <Grid v-else cols="1-3" class="gap-4" data-testid="items">
       <Stack
         v-for="z in zones"

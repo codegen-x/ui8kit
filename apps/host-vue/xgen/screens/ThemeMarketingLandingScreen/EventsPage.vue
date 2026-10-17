@@ -89,6 +89,7 @@ const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS, 
     id="events-testimonials"
     :title="ui.marketing.testimonials.title"
     :quotes="testimonials"
+    :empty="ui.empty.quotes"
     :labels="{
       rating: ui.testimonials.rating,
       byLine: ui.testimonials.byLine,
@@ -105,6 +106,7 @@ const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS, 
     id="events-videos"
     :title="ui.vibe.videos.title"
     :quotes="testimonials"
+    :empty="ui.empty.quotes"
     :playLabel="ui.vibe.videos.play"
     :byLine="ui.testimonials.byLine"
     cols="1-3"

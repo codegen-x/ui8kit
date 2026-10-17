@@ -68,6 +68,7 @@ export function LogosPage() {
                 id="logos-grid4"
                 title={ui.marketing.logos.title}
                 logos={logos}
+                empty={ui.empty.logos}
                 layout="grid"
                 cols="4"
                 item="name"
@@ -94,6 +95,7 @@ export function LogosPage() {
                 id="logos-grid3"
                 title={ui.marketing.logos.title}
                 logos={logos}
+                empty={ui.empty.logos}
                 layout="grid"
                 cols="3"
                 item="tile"
@@ -120,6 +122,7 @@ export function LogosPage() {
                 id="logos-row"
                 title={ui.marketing.logos.title}
                 logos={logos}
+                empty={ui.empty.logos}
                 layout="row"
                 cols="4"
                 item="icon"
@@ -146,6 +149,7 @@ export function LogosPage() {
                 id="logos-icons"
                 title={ui.marketing.logos.title}
                 logos={logos}
+                empty={ui.empty.logos}
                 layout="grid"
                 cols="4"
                 item="icon"
@@ -172,6 +176,7 @@ export function LogosPage() {
                 id="logos-grid2"
                 title={ui.marketing.logos.title}
                 logos={logos}
+                empty={ui.empty.logos}
                 layout="grid"
                 cols="2"
                 item="name"
@@ -198,6 +203,7 @@ export function LogosPage() {
                 id="logos-tiles4"
                 title={ui.marketing.logos.title}
                 logos={logos}
+                empty={ui.empty.logos}
                 layout="grid"
                 cols="4"
                 item="tile"

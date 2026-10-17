@@ -18,6 +18,7 @@ type ActivityFeedProps struct {
 	Title any `json:"title"`
 	Text any `json:"text"`
 	Events any `json:"events"`
+	Empty any `json:"empty"`
 	Layout any `json:"layout"`
 	Density any `json:"density"`
 	Tone any `json:"tone"`
@@ -30,6 +31,7 @@ templ ActivityFeed(p ActivityFeedProps) {
 	{{ vTitle := p.Title }}
 	{{ vText := p.Text }}
 	{{ vEvents := p.Events }}
+	{{ vEmpty := uiutils.Def(p.Empty, "") }}
 	{{ vLayout := uiutils.Def(p.Layout, "timeline") }}
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
@@ -37,7 +39,9 @@ templ ActivityFeed(p ActivityFeedProps) {
 	@block.Block(block.BlockProps{Tag: "section", Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, uiutils.Cond(uiutils.T(uiutils.And(vTitle, vId)), uiutils.Tpl("{0}-t", vId), nil)), "data-testid", "panel-section", "aria-label", vLandmarkLabel)}) {
 		@container.Container(container.ContainerProps{Class: "mx-auto w-full max-w-6xl px-4 py-8", Attrs: uiutils.Attrs("data-slot", "container")}) {
 			@Panel(PanelProps{Title: vTitle, Description: vText, Id: vId, Class: uiutils.Cnv(uiutils.Cond(uiutils.T(uiutils.Eq(vTone, "muted")), "bg-muted", ""))}) {
-				if uiutils.Eq(vLayout, "timeline") {
+				if uiutils.Eq(uiutils.Len(vEvents), float64(0)) {
+					@EmptyState(EmptyStateProps{Icon: "activity", Title: vEmpty})
+				} else if uiutils.Eq(vLayout, "timeline") {
 					@Timeline(TimelineProps{Items: vEvents})
 				} else {
 					@list.List(list.ListProps{Class: "m-0 flex list-none flex-col p-0", Attrs: uiutils.Attrs("data-testid", "items")}) {

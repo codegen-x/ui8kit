@@ -64,6 +64,7 @@
   id="story-article"
   title={ui.vibe.article.title}
   sections={article}
+  empty={ui.empty.sections}
   tocTitle={ui.vibe.article.toc}
   layout="column"
   quotes="show"

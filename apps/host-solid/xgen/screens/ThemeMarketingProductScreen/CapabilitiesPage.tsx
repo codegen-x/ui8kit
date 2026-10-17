@@ -44,6 +44,7 @@ export function CapabilitiesPage() {
         id="capabilities-features"
         title={ui.site.home.featuresTitle}
         features={features}
+        empty={ui.empty.features}
         action={{ label: ui.site.home.featuresAction, href: "#/" }}
         layout="grid"
         cols="1-2"
@@ -57,6 +58,7 @@ export function CapabilitiesPage() {
         id="capabilities-iconwall"
         title={ui.vibe.wall.title}
         features={features}
+        empty={ui.empty.features}
         cols="6"
         item="chip"
         tone="default"
@@ -67,6 +69,7 @@ export function CapabilitiesPage() {
         id="capabilities-accordion"
         title={ui.vibe.accordion.title}
         features={features}
+        empty={ui.empty.features}
         expand="first"
         media="none"
         tone="default"
@@ -77,6 +80,7 @@ export function CapabilitiesPage() {
         id="capabilities-beforeafter"
         title={ui.vibe.beforeafter.title}
         points={beforeafter}
+        empty={ui.empty.points}
         labels={ui.vibe.beforeafter.labels}
         layout="rows"
         icons="show"
@@ -88,6 +92,7 @@ export function CapabilitiesPage() {
         id="capabilities-sticky"
         title={ui.vibe.sticky.title}
         features={features}
+        empty={ui.empty.features}
         active="feature-clear"
         mediaSide="end"
         item="card"

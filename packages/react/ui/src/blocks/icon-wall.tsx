@@ -9,6 +9,7 @@ import { Box } from "../primitives/box/box";
 import { Grid } from "../primitives/grid/grid";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Text } from "../primitives/text/text";
+import { EmptyState } from "../components/empty-state";
 import { SectionFrame } from "../components/section-frame";
 import { cn, fitCols } from "../utils";
 import type { Feature } from "./feature-grid.types";
@@ -17,6 +18,7 @@ export type IconWallProps = {
   id: string;
   title: string;
   features: Feature[];
+  empty?: string;
   cols?: "3" | "4" | "6";
   item?: "tile" | "chip";
   tone?: "default" | "muted";
@@ -28,6 +30,7 @@ export function IconWall({
   id,
   title,
   features,
+  empty = "",
   cols = "4",
   item = "tile",
   tone = "default",
@@ -43,26 +46,30 @@ export function IconWall({
   const wallCols = fitCols(askedCols, (features?.length ?? 0));
   return (
     <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
-      <Grid cols={wallCols} className="gap-4" data-testid="items">
-        {(features ?? []).map((f) => (
-          <Box key={f.id}
-            className={cn(
-              "flex items-center gap-2",
-              "rounded bg-card inset-ring inset-ring-border",
-              (
-                (item as string) === "tile" ? cn("flex-col justify-center text-center", (((density as string) === "compact") ? "p-4" : "p-6"))
-                : "px-4 py-2"
-              )
-            )}
-            data-testid="item"
-          >
-            <LucideIcon name={f.icon} size={(((item as string) === "tile") ? 24 : 16)} />
-            <Text size="sm" weight="semibold">
-              {f.title}
-            </Text>
-          </Box>
-        ))}
-      </Grid>
+      {((features?.length ?? 0) === 0) ? (
+        <EmptyState icon="layout-grid" title={empty} />
+      ) : (
+        <Grid cols={wallCols} className="gap-4" data-testid="items">
+          {(features ?? []).map((f) => (
+            <Box key={f.id}
+              className={cn(
+                "flex items-center gap-2",
+                "rounded bg-card inset-ring inset-ring-border",
+                (
+                  (item as string) === "tile" ? cn("flex-col justify-center text-center", (((density as string) === "compact") ? "p-4" : "p-6"))
+                  : "px-4 py-2"
+                )
+              )}
+              data-testid="item"
+            >
+              <LucideIcon name={f.icon} size={(((item as string) === "tile") ? 24 : 16)} />
+              <Text size="sm" weight="semibold">
+                {f.title}
+              </Text>
+            </Box>
+          ))}
+        </Grid>
+      )}
     </SectionFrame>
   );
 }

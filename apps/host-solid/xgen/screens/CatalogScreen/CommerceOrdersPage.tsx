@@ -87,6 +87,7 @@ export function CommerceOrdersPage() {
                   id="orders-table"
                   title={ui.commerce.orders.title}
                   orders={orders}
+                  empty={ui.empty.orders}
                   statuses={ui.status}
                   labels={ui.commerce.orders}
                   layout="table"
@@ -114,6 +115,7 @@ export function CommerceOrdersPage() {
                   id="orders-cards"
                   title={ui.commerce.orders.title}
                   orders={orders}
+                  empty={ui.empty.orders}
                   statuses={ui.status}
                   labels={ui.commerce.orders}
                   layout="cards"
@@ -141,6 +143,7 @@ export function CommerceOrdersPage() {
                   id="orders-noPager"
                   title={ui.commerce.orders.title}
                   orders={orders}
+                  empty={ui.empty.orders}
                   statuses={ui.status}
                   labels={ui.commerce.orders}
                   layout="table"
@@ -168,6 +171,7 @@ export function CommerceOrdersPage() {
                   id="orders-compactMuted"
                   title={ui.commerce.orders.title}
                   orders={orders}
+                  empty={ui.empty.orders}
                   statuses={ui.status}
                   labels={ui.commerce.orders}
                   layout="table"

@@ -12,6 +12,7 @@ export type ChartPanelProps = {
   title: string;
   text: string;
   series: Point[];
+  empty?: string;
   summary: string;
   percent: string;
   chart?: "bars" | "meters";
@@ -26,6 +27,7 @@ import Block from "../primitives/block/block.vue";
 import Container from "../primitives/container/container.vue";
 import Stack from "../primitives/stack/stack.vue";
 import BarChart from "../components/bar-chart.vue";
+import EmptyState from "../components/empty-state.vue";
 import MeterRow from "../components/meter-row.vue";
 import Panel from "../components/panel.vue";
 import { tpl } from "../utils";
@@ -35,6 +37,7 @@ const {
   title,
   text,
   series,
+  empty = "",
   summary,
   percent,
   chart = "bars",
@@ -53,8 +56,9 @@ const {
   >
     <Container class="mx-auto w-full max-w-6xl px-4 py-8" data-slot="container">
       <Panel :title="title" :description="text" :id="id" :class="(((tone as string) === 'muted') ? 'bg-muted' : '')">
+        <EmptyState v-if="((series?.length ?? 0) === 0)" icon="chart-column" :title="empty" />
         <BarChart
-          v-if="((chart as string) === 'bars')"
+          v-else-if="((chart as string) === 'bars')"
           :bars="series"
           :label="summary"
           :height="(((size as string) === 'compact') ? 96 : 176)"

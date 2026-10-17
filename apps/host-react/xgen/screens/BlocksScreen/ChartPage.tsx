@@ -69,6 +69,7 @@ export function ChartPage() {
                 title={ui.dashboard.chart.title}
                 text={ui.dashboard.chart.text}
                 series={series}
+                empty={ui.empty.series}
                 summary={ui.dashboard.chart.summary}
                 percent={ui.dashboard.chart.percent}
                 chart="bars"
@@ -96,6 +97,7 @@ export function ChartPage() {
                 title={ui.dashboard.chart.title}
                 text={ui.dashboard.chart.text}
                 series={series}
+                empty={ui.empty.series}
                 summary={ui.dashboard.chart.summary}
                 percent={ui.dashboard.chart.percent}
                 chart="bars"
@@ -123,6 +125,7 @@ export function ChartPage() {
                 title={ui.dashboard.chart.title}
                 text={ui.dashboard.chart.text}
                 series={series}
+                empty={ui.empty.series}
                 summary={ui.dashboard.chart.summary}
                 percent={ui.dashboard.chart.percent}
                 chart="meters"
@@ -150,6 +153,7 @@ export function ChartPage() {
                 title={ui.dashboard.chart.title}
                 text={ui.dashboard.chart.text}
                 series={series}
+                empty={ui.empty.series}
                 summary={ui.dashboard.chart.summary}
                 percent={ui.dashboard.chart.percent}
                 chart="meters"

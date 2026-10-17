@@ -65,6 +65,7 @@
     }
   ],
   "slots": [
+    "EmptyState",
     "SectionFrame"
   ],
   "facts": [
@@ -102,6 +103,9 @@
       },
       "features": {
         "$": "features"
+      },
+      "empty": {
+        "$": "ui.empty.features"
       }
     }
   }

@@ -80,6 +80,7 @@
   title={ui.commerce.zones.title}
   lead={ui.commerce.zones.lead}
   zones={zones}
+  empty={ui.empty.zones}
   labels={ui.commerce.zones}
   layout="table"
   tone="default"
@@ -103,6 +104,7 @@
   title={ui.commerce.stores.title}
   lead={ui.commerce.stores.lead}
   stores={stores}
+  empty={ui.empty.stores}
   kinds={ui.commerce.stores.kinds}
   labels={ui.commerce.stores}
   layout="cards"

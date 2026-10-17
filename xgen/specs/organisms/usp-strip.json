@@ -25,6 +25,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "layout",
       "type": {
         "ts": "\"strip\" | \"cards\" | \"bar\""
@@ -82,136 +88,65 @@
                 "op": "eq",
                 "args": [
                   {
-                    "$": "layout"
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "perks"
+                      }
+                    ]
                   },
-                  "bar"
+                  0
                 ]
               },
               "then": [
                 {
-                  "use": "List",
+                  "organism": "EmptyState",
                   "props": {
-                    "Tag": "ul",
-                    "Class": "flex flex-wrap items-center justify-center gap-x-8 gap-y-4"
-                  },
-                  "attrs": {
-                    "data-testid": "items"
-                  },
-                  "children": [
-                    {
-                      "each": {
-                        "$": "perks"
-                      },
-                      "as": "p",
-                      "key": {
-                        "$": "p.id"
-                      },
-                      "do": [
-                        {
-                          "use": "ListItem",
-                          "props": {
-                            "Class": "flex items-center gap-2 text-sm font-medium"
-                          },
-                          "attrs": {
-                            "data-testid": "item"
-                          },
-                          "children": [
-                            {
-                              "use": "LucideIcon",
-                              "props": {
-                                "Name": {
-                                  "$": "p.icon"
-                                },
-                                "Size": 16
-                              }
-                            },
-                            {
-                              "use": "Inline",
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "p.title"
-                                  }
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ]
+                    "icon": "truck",
+                    "title": {
+                      "$": "empty"
                     }
-                  ]
+                  }
                 }
               ],
               "else": [
                 {
-                  "use": "Grid",
-                  "props": {
-                    "Cols": "1-4",
-                    "Class": {
-                      "op": "cn",
-                      "args": [
-                        "gap-4",
-                        {
-                          "op": "cond",
-                          "args": [
-                            {
-                              "op": "eq",
-                              "args": [
-                                {
-                                  "$": "layout"
-                                },
-                                "strip"
-                              ]
-                            },
-                            "rounded bg-muted p-6",
-                            ""
-                          ]
-                        }
-                      ]
-                    }
+                  "when": {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "$": "layout"
+                      },
+                      "bar"
+                    ]
                   },
-                  "attrs": {
-                    "data-testid": "items"
-                  },
-                  "children": [
+                  "then": [
                     {
-                      "each": {
-                        "$": "perks"
+                      "use": "List",
+                      "props": {
+                        "Tag": "ul",
+                        "Class": "flex flex-wrap items-center justify-center gap-x-8 gap-y-4"
                       },
-                      "as": "p",
-                      "key": {
-                        "$": "p.id"
+                      "attrs": {
+                        "data-testid": "items"
                       },
-                      "do": [
+                      "children": [
                         {
-                          "use": "Stack",
-                          "props": {
-                            "Gap": "4",
-                            "Class": {
-                              "op": "cond",
-                              "args": [
-                                {
-                                  "op": "eq",
-                                  "args": [
-                                    {
-                                      "$": "layout"
-                                    },
-                                    "cards"
-                                  ]
-                                },
-                                "rounded bg-card inset-ring inset-ring-border p-6",
-                                ""
-                              ]
-                            }
+                          "each": {
+                            "$": "perks"
                           },
-                          "attrs": {
-                            "data-testid": "item"
+                          "as": "p",
+                          "key": {
+                            "$": "p.id"
                           },
-                          "children": [
+                          "do": [
                             {
-                              "use": "Box",
+                              "use": "ListItem",
                               "props": {
-                                "Class": "flex size-10 shrink-0 items-center justify-center rounded bg-muted"
+                                "Class": "flex items-center gap-2 text-sm font-medium"
+                              },
+                              "attrs": {
+                                "data-testid": "item"
                               },
                               "children": [
                                 {
@@ -220,23 +155,11 @@
                                     "Name": {
                                       "$": "p.icon"
                                     },
-                                    "Size": 20
+                                    "Size": 16
                                   }
-                                }
-                              ]
-                            },
-                            {
-                              "use": "Stack",
-                              "props": {
-                                "Gap": "2"
-                              },
-                              "children": [
+                                },
                                 {
-                                  "use": "Text",
-                                  "props": {
-                                    "Size": "sm",
-                                    "Weight": "semibold"
-                                  },
+                                  "use": "Inline",
                                   "children": [
                                     {
                                       "text": {
@@ -244,18 +167,130 @@
                                       }
                                     }
                                   ]
-                                },
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "else": [
+                    {
+                      "use": "Grid",
+                      "props": {
+                        "Cols": "1-4",
+                        "Class": {
+                          "op": "cn",
+                          "args": [
+                            "gap-4",
+                            {
+                              "op": "cond",
+                              "args": [
                                 {
-                                  "use": "Text",
+                                  "op": "eq",
+                                  "args": [
+                                    {
+                                      "$": "layout"
+                                    },
+                                    "strip"
+                                  ]
+                                },
+                                "rounded bg-muted p-6",
+                                ""
+                              ]
+                            }
+                          ]
+                        }
+                      },
+                      "attrs": {
+                        "data-testid": "items"
+                      },
+                      "children": [
+                        {
+                          "each": {
+                            "$": "perks"
+                          },
+                          "as": "p",
+                          "key": {
+                            "$": "p.id"
+                          },
+                          "do": [
+                            {
+                              "use": "Stack",
+                              "props": {
+                                "Gap": "4",
+                                "Class": {
+                                  "op": "cond",
+                                  "args": [
+                                    {
+                                      "op": "eq",
+                                      "args": [
+                                        {
+                                          "$": "layout"
+                                        },
+                                        "cards"
+                                      ]
+                                    },
+                                    "rounded bg-card inset-ring inset-ring-border p-6",
+                                    ""
+                                  ]
+                                }
+                              },
+                              "attrs": {
+                                "data-testid": "item"
+                              },
+                              "children": [
+                                {
+                                  "use": "Box",
                                   "props": {
-                                    "Size": "sm",
-                                    "Class": "text-muted-foreground"
+                                    "Class": "flex size-10 shrink-0 items-center justify-center rounded bg-muted"
                                   },
                                   "children": [
                                     {
-                                      "text": {
-                                        "$": "p.text"
+                                      "use": "LucideIcon",
+                                      "props": {
+                                        "Name": {
+                                          "$": "p.icon"
+                                        },
+                                        "Size": 20
                                       }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "use": "Stack",
+                                  "props": {
+                                    "Gap": "2"
+                                  },
+                                  "children": [
+                                    {
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "sm",
+                                        "Weight": "semibold"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "p.title"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "sm",
+                                        "Class": "text-muted-foreground"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "p.text"
+                                          }
+                                        }
+                                      ]
                                     }
                                   ]
                                 }

@@ -12,6 +12,7 @@
     id: string;
     title: string;
     lines: CartLine[];
+    empty?: string;
     labels: CartLabels;
     layout?: "table" | "cards";
     media?: "image" | "none";
@@ -30,6 +31,7 @@
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
   import CartTable from "../components/cart-table.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import NumberField from "../components/number-field.svelte";
   import SectionFrame from "../components/section-frame.svelte";
@@ -39,6 +41,7 @@
     id,
     title,
     lines,
+    empty = "",
     labels,
     layout = "table",
     media = "image",
@@ -50,7 +53,9 @@
 </script>
 
 <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
-  {#if ((layout as string) === "table")}
+  {#if ((lines?.length ?? 0) === 0)}
+    <EmptyState icon="shopping-cart" title={empty} />
+  {:else if ((layout as string) === "table")}
     <CartTable
       field={tpl("{0}-qty", id)}
       lines={lines}

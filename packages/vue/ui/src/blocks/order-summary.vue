@@ -11,6 +11,7 @@ export type OrderSummaryProps = {
   id: string;
   title: string;
   rows: SummaryRow[];
+  empty?: string;
   labels: SummaryLabels;
   layout?: "card" | "plain";
   cta?: "show" | "hide";
@@ -29,6 +30,7 @@ import List from "../primitives/list/list.vue";
 import ListItem from "../primitives/list/list-item.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
+import EmptyState from "../components/empty-state.vue";
 import SectionFrame from "../components/section-frame.vue";
 import { cn, fmtMoney } from "../utils";
 
@@ -36,6 +38,7 @@ const {
   id,
   title,
   rows,
+  empty = "",
   labels,
   layout = "card",
   cta = "show",
@@ -55,7 +58,8 @@ const {
     measure="md"
     :landmarkLabel="landmarkLabel"
   >
-    <Box
+    <EmptyState v-if="((rows?.length ?? 0) === 0)" icon="receipt" :title="empty" />
+    <Box v-else
       :class="cn(
         (((layout as string) === 'card') ? 'rounded bg-card p-6 inset-ring inset-ring-border' : '')
       )"

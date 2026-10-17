@@ -52,6 +52,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "layout",
       "type": {
         "ts": "\"timeline\" | \"list\""
@@ -181,130 +187,159 @@
                         "op": "eq",
                         "args": [
                           {
-                            "$": "layout"
+                            "op": "len",
+                            "args": [
+                              {
+                                "$": "events"
+                              }
+                            ]
                           },
-                          "timeline"
+                          0
                         ]
                       },
                       "then": [
                         {
-                          "organism": "Timeline",
+                          "organism": "EmptyState",
                           "props": {
-                            "items": {
-                              "$": "events"
+                            "icon": "activity",
+                            "title": {
+                              "$": "empty"
                             }
                           }
                         }
                       ],
                       "else": [
                         {
-                          "use": "List",
-                          "props": {
-                            "Class": "m-0 flex list-none flex-col p-0"
+                          "when": {
+                            "op": "eq",
+                            "args": [
+                              {
+                                "$": "layout"
+                              },
+                              "timeline"
+                            ]
                           },
-                          "attrs": {
-                            "data-testid": "items"
-                          },
-                          "children": [
+                          "then": [
                             {
-                              "each": {
-                                "$": "events"
+                              "organism": "Timeline",
+                              "props": {
+                                "items": {
+                                  "$": "events"
+                                }
+                              }
+                            }
+                          ],
+                          "else": [
+                            {
+                              "use": "List",
+                              "props": {
+                                "Class": "m-0 flex list-none flex-col p-0"
                               },
-                              "as": "e",
-                              "key": {
-                                "$": "e.id"
+                              "attrs": {
+                                "data-testid": "items"
                               },
-                              "do": [
+                              "children": [
                                 {
-                                  "use": "ListItem",
-                                  "props": {
-                                    "Class": {
-                                      "op": "cn",
-                                      "args": [
-                                        "flex items-start justify-between gap-4 border-b border-border last:border-0",
-                                        {
-                                          "op": "cond",
+                                  "each": {
+                                    "$": "events"
+                                  },
+                                  "as": "e",
+                                  "key": {
+                                    "$": "e.id"
+                                  },
+                                  "do": [
+                                    {
+                                      "use": "ListItem",
+                                      "props": {
+                                        "Class": {
+                                          "op": "cn",
                                           "args": [
+                                            "flex items-start justify-between gap-4 border-b border-border last:border-0",
                                             {
-                                              "op": "eq",
+                                              "op": "cond",
                                               "args": [
                                                 {
-                                                  "$": "density"
+                                                  "op": "eq",
+                                                  "args": [
+                                                    {
+                                                      "$": "density"
+                                                    },
+                                                    "compact"
+                                                  ]
                                                 },
-                                                "compact"
+                                                "py-2",
+                                                "py-4"
                                               ]
-                                            },
-                                            "py-2",
-                                            "py-4"
+                                            }
                                           ]
                                         }
-                                      ]
-                                    }
-                                  },
-                                  "attrs": {
-                                    "data-testid": "item"
-                                  },
-                                  "children": [
-                                    {
-                                      "use": "Stack",
-                                      "props": {
-                                        "Gap": "0"
+                                      },
+                                      "attrs": {
+                                        "data-testid": "item"
                                       },
                                       "children": [
                                         {
-                                          "use": "Text",
+                                          "use": "Stack",
                                           "props": {
-                                            "Size": "sm",
-                                            "Weight": "semibold"
+                                            "Gap": "0"
                                           },
                                           "children": [
-                                            {
-                                              "text": {
-                                                "$": "e.title"
-                                              }
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "when": {
-                                            "op": "eq",
-                                            "args": [
-                                              {
-                                                "$": "density"
-                                              },
-                                              "default"
-                                            ]
-                                          },
-                                          "then": [
                                             {
                                               "use": "Text",
                                               "props": {
                                                 "Size": "sm",
-                                                "Class": "text-muted-foreground"
+                                                "Weight": "semibold"
                                               },
                                               "children": [
                                                 {
                                                   "text": {
-                                                    "$": "e.text"
+                                                    "$": "e.title"
                                                   }
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "when": {
+                                                "op": "eq",
+                                                "args": [
+                                                  {
+                                                    "$": "density"
+                                                  },
+                                                  "default"
+                                                ]
+                                              },
+                                              "then": [
+                                                {
+                                                  "use": "Text",
+                                                  "props": {
+                                                    "Size": "sm",
+                                                    "Class": "text-muted-foreground"
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "text": {
+                                                        "$": "e.text"
+                                                      }
+                                                    }
+                                                  ]
                                                 }
                                               ]
                                             }
                                           ]
-                                        }
-                                      ]
-                                    },
-                                    {
-                                      "use": "Text",
-                                      "props": {
-                                        "Size": "xs",
-                                        "Class": "shrink-0 text-muted-foreground"
-                                      },
-                                      "children": [
+                                        },
                                         {
-                                          "text": {
-                                            "$": "e.time"
-                                          }
+                                          "use": "Text",
+                                          "props": {
+                                            "Size": "xs",
+                                            "Class": "shrink-0 text-muted-foreground"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "e.time"
+                                              }
+                                            }
+                                          ]
                                         }
                                       ]
                                     }

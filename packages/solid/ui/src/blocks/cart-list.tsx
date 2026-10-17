@@ -12,6 +12,7 @@ import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { CartTable } from "../components/cart-table";
+import { EmptyState } from "../components/empty-state";
 import { MediaFrame } from "../components/media-frame";
 import { NumberField } from "../components/number-field";
 import { SectionFrame } from "../components/section-frame";
@@ -22,6 +23,7 @@ export type CartListProps = {
   id: string;
   title: string;
   lines: CartLine[];
+  empty?: string;
   labels: CartLabels;
   layout?: "table" | "cards";
   media?: "image" | "none";
@@ -35,6 +37,7 @@ export function CartList({
   id,
   title,
   lines,
+  empty = "",
   labels,
   layout = "table",
   media = "image",
@@ -45,7 +48,9 @@ export function CartList({
 }: CartListProps) {
   return (
     <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
-      {((layout as string) === "table") ? (
+      {((lines?.length ?? 0) === 0) ? (
+        <EmptyState icon="shopping-cart" title={empty} />
+      ) : ((layout as string) === "table") ? (
         <CartTable
           field={tpl("{0}-qty", id)}
           lines={lines}

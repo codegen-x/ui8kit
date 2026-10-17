@@ -42,6 +42,7 @@
     }
   ],
   "slots": [
+    "EmptyState",
     "MediaFrame",
     "SectionFrame"
   ],
@@ -97,6 +98,9 @@
       },
       "stores": {
         "$": "stores"
+      },
+      "empty": {
+        "$": "ui.empty.stores"
       },
       "kinds": {
         "$": "ui.commerce.stores.kinds"

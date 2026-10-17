@@ -14,9 +14,6 @@ export const questions = [
       "answer": {
         "value": "Pick a template, change the texts in one dictionary and publish. Most sites are live in an hour."
       },
-      "category": {
-        "value": "Getting started"
-      },
       "icon": {
         "value": "rocket"
       }
@@ -24,7 +21,13 @@ export const questions = [
     "version": 1,
     "created_at": "2026-03-02T09:00:00Z",
     "updated_at": "2026-03-03T09:00:00Z",
-    "published_at": "2026-03-03T10:00:00Z"
+    "published_at": "2026-03-03T10:00:00Z",
+    "terms": [
+      {
+        "taxonomy": "faq_category",
+        "term_id": "faq-category-getting-started"
+      }
+    ]
   },
   {
     "id": "question-domain",
@@ -38,9 +41,6 @@ export const questions = [
       "answer": {
         "value": "Yes. Point your domain at the site and we issue the certificate for you."
       },
-      "category": {
-        "value": "Getting started"
-      },
       "icon": {
         "value": "globe"
       }
@@ -48,7 +48,13 @@ export const questions = [
     "version": 1,
     "created_at": "2026-03-04T09:00:00Z",
     "updated_at": "2026-03-05T09:00:00Z",
-    "published_at": "2026-03-05T10:00:00Z"
+    "published_at": "2026-03-05T10:00:00Z",
+    "terms": [
+      {
+        "taxonomy": "faq_category",
+        "term_id": "faq-category-getting-started"
+      }
+    ]
   },
   {
     "id": "question-billing",
@@ -62,9 +68,6 @@ export const questions = [
       "answer": {
         "value": "On the same day each month. You can switch to yearly billing and save two months."
       },
-      "category": {
-        "value": "Billing"
-      },
       "icon": {
         "value": "credit-card"
       }
@@ -72,7 +75,13 @@ export const questions = [
     "version": 1,
     "created_at": "2026-03-06T09:00:00Z",
     "updated_at": "2026-03-07T09:00:00Z",
-    "published_at": "2026-03-07T10:00:00Z"
+    "published_at": "2026-03-07T10:00:00Z",
+    "terms": [
+      {
+        "taxonomy": "faq_category",
+        "term_id": "faq-category-billing"
+      }
+    ]
   },
   {
     "id": "question-refund",
@@ -86,9 +95,6 @@ export const questions = [
       "answer": {
         "value": "Within 30 days of a payment, no questions asked."
       },
-      "category": {
-        "value": "Billing"
-      },
       "icon": {
         "value": "rotate-ccw"
       }
@@ -96,7 +102,13 @@ export const questions = [
     "version": 1,
     "created_at": "2026-03-08T09:00:00Z",
     "updated_at": "2026-03-09T09:00:00Z",
-    "published_at": "2026-03-09T10:00:00Z"
+    "published_at": "2026-03-09T10:00:00Z",
+    "terms": [
+      {
+        "taxonomy": "faq_category",
+        "term_id": "faq-category-billing"
+      }
+    ]
   },
   {
     "id": "question-team",
@@ -110,9 +122,6 @@ export const questions = [
       "answer": {
         "value": "Open the settings, add their addresses and choose what each person can edit."
       },
-      "category": {
-        "value": "Account"
-      },
       "icon": {
         "value": "users"
       }
@@ -120,7 +129,13 @@ export const questions = [
     "version": 1,
     "created_at": "2026-03-10T09:00:00Z",
     "updated_at": "2026-03-11T09:00:00Z",
-    "published_at": "2026-03-11T10:00:00Z"
+    "published_at": "2026-03-11T10:00:00Z",
+    "terms": [
+      {
+        "taxonomy": "faq_category",
+        "term_id": "faq-category-account"
+      }
+    ]
   },
   {
     "id": "question-export",
@@ -134,9 +149,6 @@ export const questions = [
       "answer": {
         "value": "Every plan exports all pages and texts as plain files at any time."
       },
-      "category": {
-        "value": "Account"
-      },
       "icon": {
         "value": "download"
       }
@@ -144,6 +156,12 @@ export const questions = [
     "version": 1,
     "created_at": "2026-03-12T09:00:00Z",
     "updated_at": "2026-03-13T09:00:00Z",
-    "published_at": "2026-03-13T10:00:00Z"
+    "published_at": "2026-03-13T10:00:00Z",
+    "terms": [
+      {
+        "taxonomy": "faq_category",
+        "term_id": "faq-category-account"
+      }
+    ]
   }
 ] as const;

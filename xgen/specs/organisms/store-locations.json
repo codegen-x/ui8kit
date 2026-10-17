@@ -70,6 +70,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "kinds",
       "type": {
         "ts": "Record<string, string>"
@@ -131,140 +137,96 @@
           "args": [],
           "do": [
             {
-              "use": "Box",
-              "props": {
-                "Class": {
-                  "op": "cn",
-                  "args": [
-                    "grid grid-cols-1 gap-8",
-                    {
-                      "op": "cond",
-                      "args": [
-                        {
-                          "op": "eq",
-                          "args": [
-                            {
-                              "$": "layout"
-                            },
-                            "map"
-                          ]
-                        },
-                        "items-start md:grid-cols-2",
-                        ""
-                      ]
-                    }
-                  ]
-                }
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "stores"
+                      }
+                    ]
+                  },
+                  0
+                ]
               },
-              "children": [
+              "then": [
+                {
+                  "organism": "EmptyState",
+                  "props": {
+                    "icon": "store",
+                    "title": {
+                      "$": "empty"
+                    }
+                  }
+                }
+              ],
+              "else": [
                 {
                   "use": "Box",
                   "props": {
                     "Class": {
-                      "op": "cond",
+                      "op": "cn",
                       "args": [
+                        "grid grid-cols-1 gap-8",
                         {
-                          "op": "eq",
+                          "op": "cond",
                           "args": [
                             {
-                              "$": "layout"
+                              "op": "eq",
+                              "args": [
+                                {
+                                  "$": "layout"
+                                },
+                                "map"
+                              ]
                             },
-                            "cards"
+                            "items-start md:grid-cols-2",
+                            ""
                           ]
-                        },
-                        "grid grid-cols-1 gap-4 md:grid-cols-2",
-                        "flex flex-col gap-4"
+                        }
                       ]
                     }
                   },
-                  "attrs": {
-                    "data-testid": "items"
-                  },
                   "children": [
                     {
-                      "each": {
-                        "$": "stores"
-                      },
-                      "as": "s",
-                      "key": {
-                        "$": "s.id"
-                      },
-                      "do": [
-                        {
-                          "use": "Stack",
-                          "props": {
-                            "Gap": "4",
-                            "Class": {
-                              "op": "cond",
+                      "use": "Box",
+                      "props": {
+                        "Class": {
+                          "op": "cond",
+                          "args": [
+                            {
+                              "op": "eq",
                               "args": [
                                 {
-                                  "op": "eq",
-                                  "args": [
-                                    {
-                                      "$": "layout"
-                                    },
-                                    "list"
-                                  ]
+                                  "$": "layout"
                                 },
-                                "border-b border-border pb-4",
-                                "rounded bg-card inset-ring inset-ring-border p-6"
+                                "cards"
                               ]
-                            }
+                            },
+                            "grid grid-cols-1 gap-4 md:grid-cols-2",
+                            "flex flex-col gap-4"
+                          ]
+                        }
+                      },
+                      "attrs": {
+                        "data-testid": "items"
+                      },
+                      "children": [
+                        {
+                          "each": {
+                            "$": "stores"
                           },
-                          "attrs": {
-                            "data-testid": "item"
+                          "as": "s",
+                          "key": {
+                            "$": "s.id"
                           },
-                          "children": [
+                          "do": [
                             {
                               "use": "Stack",
                               "props": {
-                                "Gap": "2"
-                              },
-                              "children": [
-                                {
-                                  "use": "Badge",
-                                  "props": {
-                                    "Variant": "outline",
-                                    "Size": "default",
-                                    "Class": "w-fit"
-                                  },
-                                  "children": [
-                                    {
-                                      "text": {
-                                        "op": "at",
-                                        "args": [
-                                          {
-                                            "$": "kinds"
-                                          },
-                                          {
-                                            "$": "s.kind"
-                                          }
-                                        ]
-                                      }
-                                    }
-                                  ]
-                                },
-                                {
-                                  "use": "Title",
-                                  "props": {
-                                    "As": 3,
-                                    "Size": "lg",
-                                    "Weight": "bold"
-                                  },
-                                  "children": [
-                                    {
-                                      "text": {
-                                        "$": "s.name"
-                                      }
-                                    }
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "use": "List",
-                              "props": {
-                                "Tag": "ul",
+                                "Gap": "4",
                                 "Class": {
                                   "op": "cond",
                                   "args": [
@@ -277,158 +239,231 @@
                                         "list"
                                       ]
                                     },
-                                    "flex flex-wrap gap-x-8 gap-y-2 text-sm",
-                                    "flex flex-col gap-2 text-sm"
+                                    "border-b border-border pb-4",
+                                    "rounded bg-card inset-ring inset-ring-border p-6"
                                   ]
                                 }
                               },
+                              "attrs": {
+                                "data-testid": "item"
+                              },
                               "children": [
                                 {
-                                  "use": "ListItem",
+                                  "use": "Stack",
                                   "props": {
-                                    "Class": "flex items-center gap-2"
+                                    "Gap": "2"
                                   },
                                   "children": [
                                     {
-                                      "use": "LucideIcon",
+                                      "use": "Badge",
                                       "props": {
-                                        "Name": "map-pin",
-                                        "Size": 16
-                                      }
-                                    },
-                                    {
-                                      "use": "Inline",
-                                      "children": [
-                                        {
-                                          "text": {
-                                            "$": "s.address"
-                                          }
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "use": "ListItem",
-                                  "props": {
-                                    "Class": "flex items-center gap-2"
-                                  },
-                                  "children": [
-                                    {
-                                      "use": "LucideIcon",
-                                      "props": {
-                                        "Name": "clock",
-                                        "Size": 16
-                                      }
-                                    },
-                                    {
-                                      "use": "Inline",
-                                      "children": [
-                                        {
-                                          "text": {
-                                            "$": "s.hours"
-                                          }
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "use": "ListItem",
-                                  "props": {
-                                    "Class": "flex items-center gap-2"
-                                  },
-                                  "children": [
-                                    {
-                                      "use": "LucideIcon",
-                                      "props": {
-                                        "Name": "phone",
-                                        "Size": 16
-                                      }
-                                    },
-                                    {
-                                      "use": "Link",
-                                      "props": {
-                                        "Href": {
-                                          "op": "tpl",
-                                          "args": [
-                                            "tel:{0}",
-                                            {
-                                              "$": "s.phone"
-                                            }
-                                          ]
-                                        },
-                                        "Variant": "default"
+                                        "Variant": "outline",
+                                        "Size": "default",
+                                        "Class": "w-fit"
                                       },
                                       "children": [
                                         {
                                           "text": {
-                                            "op": "nbsp",
+                                            "op": "at",
                                             "args": [
                                               {
-                                                "$": "s.phone"
+                                                "$": "kinds"
+                                              },
+                                              {
+                                                "$": "s.kind"
                                               }
                                             ]
                                           }
                                         }
                                       ]
-                                    }
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "when": {
-                                "op": "eq",
-                                "args": [
-                                  {
-                                    "$": "layout"
-                                  },
-                                  "cards"
-                                ]
-                              },
-                              "then": [
-                                {
-                                  "use": "Text",
-                                  "props": {
-                                    "Size": "sm",
-                                    "Class": "text-muted-foreground"
-                                  },
-                                  "children": [
+                                    },
                                     {
-                                      "text": {
-                                        "$": "s.note"
-                                      }
+                                      "use": "Title",
+                                      "props": {
+                                        "As": 3,
+                                        "Size": "lg",
+                                        "Weight": "bold"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "s.name"
+                                          }
+                                        }
+                                      ]
                                     }
                                   ]
                                 },
                                 {
-                                  "use": "Group",
+                                  "use": "List",
                                   "props": {
-                                    "Gap": "2",
-                                    "Class": "flex-wrap"
+                                    "Tag": "ul",
+                                    "Class": {
+                                      "op": "cond",
+                                      "args": [
+                                        {
+                                          "op": "eq",
+                                          "args": [
+                                            {
+                                              "$": "layout"
+                                            },
+                                            "list"
+                                          ]
+                                        },
+                                        "flex flex-wrap gap-x-8 gap-y-2 text-sm",
+                                        "flex flex-col gap-2 text-sm"
+                                      ]
+                                    }
                                   },
                                   "children": [
                                     {
-                                      "each": {
-                                        "$": "s.services"
+                                      "use": "ListItem",
+                                      "props": {
+                                        "Class": "flex items-center gap-2"
                                       },
-                                      "as": "v",
-                                      "key": {
-                                        "$": "v"
-                                      },
-                                      "do": [
+                                      "children": [
                                         {
-                                          "use": "Badge",
+                                          "use": "LucideIcon",
                                           "props": {
-                                            "Variant": "secondary",
-                                            "Size": "default"
+                                            "Name": "map-pin",
+                                            "Size": 16
+                                          }
+                                        },
+                                        {
+                                          "use": "Inline",
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "s.address"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "ListItem",
+                                      "props": {
+                                        "Class": "flex items-center gap-2"
+                                      },
+                                      "children": [
+                                        {
+                                          "use": "LucideIcon",
+                                          "props": {
+                                            "Name": "clock",
+                                            "Size": 16
+                                          }
+                                        },
+                                        {
+                                          "use": "Inline",
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "s.hours"
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "ListItem",
+                                      "props": {
+                                        "Class": "flex items-center gap-2"
+                                      },
+                                      "children": [
+                                        {
+                                          "use": "LucideIcon",
+                                          "props": {
+                                            "Name": "phone",
+                                            "Size": 16
+                                          }
+                                        },
+                                        {
+                                          "use": "Link",
+                                          "props": {
+                                            "Href": {
+                                              "op": "tpl",
+                                              "args": [
+                                                "tel:{0}",
+                                                {
+                                                  "$": "s.phone"
+                                                }
+                                              ]
+                                            },
+                                            "Variant": "default"
                                           },
                                           "children": [
                                             {
                                               "text": {
-                                                "$": "v"
+                                                "op": "nbsp",
+                                                "args": [
+                                                  {
+                                                    "$": "s.phone"
+                                                  }
+                                                ]
                                               }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "when": {
+                                    "op": "eq",
+                                    "args": [
+                                      {
+                                        "$": "layout"
+                                      },
+                                      "cards"
+                                    ]
+                                  },
+                                  "then": [
+                                    {
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "sm",
+                                        "Class": "text-muted-foreground"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "s.note"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "Group",
+                                      "props": {
+                                        "Gap": "2",
+                                        "Class": "flex-wrap"
+                                      },
+                                      "children": [
+                                        {
+                                          "each": {
+                                            "$": "s.services"
+                                          },
+                                          "as": "v",
+                                          "key": {
+                                            "$": "v"
+                                          },
+                                          "do": [
+                                            {
+                                              "use": "Badge",
+                                              "props": {
+                                                "Variant": "secondary",
+                                                "Size": "default"
+                                              },
+                                              "children": [
+                                                {
+                                                  "text": {
+                                                    "$": "v"
+                                                  }
+                                                }
+                                              ]
                                             }
                                           ]
                                         }
@@ -441,34 +476,34 @@
                           ]
                         }
                       ]
-                    }
-                  ]
-                },
-                {
-                  "when": {
-                    "op": "eq",
-                    "args": [
-                      {
-                        "$": "layout"
-                      },
-                      "map"
-                    ]
-                  },
-                  "then": [
+                    },
                     {
-                      "use": "Box",
-                      "props": {
-                        "Class": "md:sticky md:top-8"
+                      "when": {
+                        "op": "eq",
+                        "args": [
+                          {
+                            "$": "layout"
+                          },
+                          "map"
+                        ]
                       },
-                      "children": [
+                      "then": [
                         {
-                          "organism": "MediaFrame",
+                          "use": "Box",
                           "props": {
-                            "alt": {
-                              "$": "labels.map"
-                            },
-                            "ratio": "1/1"
-                          }
+                            "Class": "md:sticky md:top-8"
+                          },
+                          "children": [
+                            {
+                              "organism": "MediaFrame",
+                              "props": {
+                                "alt": {
+                                  "$": "labels.map"
+                                },
+                                "ratio": "1/1"
+                              }
+                            }
+                          ]
                         }
                       ]
                     }

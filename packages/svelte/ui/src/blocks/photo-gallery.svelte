@@ -14,6 +14,7 @@
     title: string;
     lead?: string;
     photos: Photo[];
+    empty?: string;
     labels: PhotoLabels;
     layout?: "grid" | "masonry" | "mosaic" | "featured" | "cards";
     captions?: "show" | "hide";
@@ -31,6 +32,7 @@
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import FigureBlock from "../components/figure-block.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import SectionFrame from "../components/section-frame.svelte";
@@ -41,6 +43,7 @@
     title,
     lead = "",
     photos,
+    empty = "",
     labels,
     layout = "grid",
     captions = "show",
@@ -51,7 +54,9 @@
 </script>
 
 <SectionFrame id={id} title={title} lead={lead} tone={tone} density={density} landmarkLabel={landmarkLabel}>
-  {#if ((layout as string) === "featured")}
+  {#if ((photos?.length ?? 0) === 0)}
+    <EmptyState icon="image" title={empty} />
+  {:else if ((layout as string) === "featured")}
     <Stack gap="4" align="stretch" data-testid="featured">
       <MediaFrame alt={title} />
       <Group gap="4" align="center" justify="between">

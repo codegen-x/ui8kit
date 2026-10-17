@@ -81,6 +81,7 @@
 <UspStrip
   id="offers-usp"
   perks={perks}
+  empty={ui.empty.perks}
   layout="strip"
   tone="default"
   density="default"

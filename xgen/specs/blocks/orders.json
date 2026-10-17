@@ -58,6 +58,7 @@
     }
   ],
   "slots": [
+    "EmptyState",
     "OrderRows",
     "Pager",
     "Pill",
@@ -88,6 +89,9 @@
       },
       "orders": {
         "$": "orders"
+      },
+      "empty": {
+        "$": "ui.empty.orders"
       },
       "statuses": {
         "$": "ui.status"

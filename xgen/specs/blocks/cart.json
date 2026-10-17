@@ -60,6 +60,7 @@
   ],
   "slots": [
     "CartTable",
+    "EmptyState",
     "MediaFrame",
     "NumberField",
     "SectionFrame"
@@ -88,6 +89,9 @@
       },
       "lines": {
         "$": "cart"
+      },
+      "empty": {
+        "$": "ui.empty.cart"
       },
       "labels": {
         "$": "ui.commerce.cart"

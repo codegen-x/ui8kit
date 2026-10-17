@@ -23,6 +23,7 @@ type StoreLocationsProps struct {
 	Title any `json:"title"`
 	Lead any `json:"lead"`
 	Stores any `json:"stores"`
+	Empty any `json:"empty"`
 	Kinds any `json:"kinds"`
 	Labels any `json:"labels"`
 	Layout any `json:"layout"`
@@ -36,62 +37,67 @@ templ StoreLocations(p StoreLocationsProps) {
 	{{ vTitle := p.Title }}
 	{{ vLead := uiutils.Def(p.Lead, "") }}
 	{{ vStores := p.Stores }}
+	{{ vEmpty := uiutils.Def(p.Empty, "") }}
 	{{ vKinds := p.Kinds }}
 	{{ vLabels := p.Labels }}
 	{{ vLayout := uiutils.Def(p.Layout, "cards") }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Tone: vTone, LandmarkLabel: vLandmarkLabel}) {
-		@box.Box(box.BoxProps{Class: uiutils.S(uiutils.Cnv("grid grid-cols-1 gap-8", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "map")), "items-start md:grid-cols-2", "")))}) {
-			@box.Box(box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "cards")), "grid grid-cols-1 gap-4 md:grid-cols-2", "flex flex-col gap-4")), Attrs: uiutils.Attrs("data-testid", "items")}) {
-				for _, vS := range uiutils.L(vStores) {
-					@stack.Stack(stack.StackProps{Gap: "4", Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "list")), "border-b border-border pb-4", "rounded bg-card inset-ring inset-ring-border p-6")), Attrs: uiutils.Attrs("data-testid", "item")}) {
-						@stack.Stack(stack.StackProps{Gap: "2"}) {
-							@badge.Badge(badge.BadgeProps{Variant: "outline", Size: "default", Class: "w-fit"}) {
-								{ uiutils.Text(uiutils.At(vKinds, uiutils.Get(vS, "kind"))) }
-							}
-							@title.Title(title.TitleProps{As: uiutils.HeadingLevel(uiutils.I(float64(3))), Size: "lg", Weight: "bold"}) {
-								{ uiutils.Text(uiutils.Get(vS, "name")) }
-							}
-						}
-						@list.List(list.ListProps{Tag: "ul", Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "list")), "flex flex-wrap gap-x-8 gap-y-2 text-sm", "flex flex-col gap-2 text-sm"))}) {
-							@list.ListItem(list.ListItemProps{Class: "flex items-center gap-2"}) {
-								@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "map-pin", Size: 16})
-								@inline.Inline(inline.InlineProps{}) {
-									{ uiutils.Text(uiutils.Get(vS, "address")) }
+		if uiutils.Eq(uiutils.Len(vStores), float64(0)) {
+			@EmptyState(EmptyStateProps{Icon: "store", Title: vEmpty})
+		} else {
+			@box.Box(box.BoxProps{Class: uiutils.S(uiutils.Cnv("grid grid-cols-1 gap-8", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "map")), "items-start md:grid-cols-2", "")))}) {
+				@box.Box(box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "cards")), "grid grid-cols-1 gap-4 md:grid-cols-2", "flex flex-col gap-4")), Attrs: uiutils.Attrs("data-testid", "items")}) {
+					for _, vS := range uiutils.L(vStores) {
+						@stack.Stack(stack.StackProps{Gap: "4", Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "list")), "border-b border-border pb-4", "rounded bg-card inset-ring inset-ring-border p-6")), Attrs: uiutils.Attrs("data-testid", "item")}) {
+							@stack.Stack(stack.StackProps{Gap: "2"}) {
+								@badge.Badge(badge.BadgeProps{Variant: "outline", Size: "default", Class: "w-fit"}) {
+									{ uiutils.Text(uiutils.At(vKinds, uiutils.Get(vS, "kind"))) }
+								}
+								@title.Title(title.TitleProps{As: uiutils.HeadingLevel(uiutils.I(float64(3))), Size: "lg", Weight: "bold"}) {
+									{ uiutils.Text(uiutils.Get(vS, "name")) }
 								}
 							}
-							@list.ListItem(list.ListItemProps{Class: "flex items-center gap-2"}) {
-								@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "clock", Size: 16})
-								@inline.Inline(inline.InlineProps{}) {
-									{ uiutils.Text(uiutils.Get(vS, "hours")) }
+							@list.List(list.ListProps{Tag: "ul", Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "list")), "flex flex-wrap gap-x-8 gap-y-2 text-sm", "flex flex-col gap-2 text-sm"))}) {
+								@list.ListItem(list.ListItemProps{Class: "flex items-center gap-2"}) {
+									@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "map-pin", Size: 16})
+									@inline.Inline(inline.InlineProps{}) {
+										{ uiutils.Text(uiutils.Get(vS, "address")) }
+									}
+								}
+								@list.ListItem(list.ListItemProps{Class: "flex items-center gap-2"}) {
+									@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "clock", Size: 16})
+									@inline.Inline(inline.InlineProps{}) {
+										{ uiutils.Text(uiutils.Get(vS, "hours")) }
+									}
+								}
+								@list.ListItem(list.ListItemProps{Class: "flex items-center gap-2"}) {
+									@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "phone", Size: 16})
+									@link.Link(link.LinkProps{Href: uiutils.S(uiutils.Tpl("tel:{0}", uiutils.Get(vS, "phone"))), Variant: "default"}) {
+										{ uiutils.Text(uiutils.Nbsp(uiutils.Get(vS, "phone"))) }
+									}
 								}
 							}
-							@list.ListItem(list.ListItemProps{Class: "flex items-center gap-2"}) {
-								@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "phone", Size: 16})
-								@link.Link(link.LinkProps{Href: uiutils.S(uiutils.Tpl("tel:{0}", uiutils.Get(vS, "phone"))), Variant: "default"}) {
-									{ uiutils.Text(uiutils.Nbsp(uiutils.Get(vS, "phone"))) }
+							if uiutils.Eq(vLayout, "cards") {
+								@text.Text(text.TextProps{Size: "sm", Class: "text-muted-foreground"}) {
+									{ uiutils.Text(uiutils.Get(vS, "note")) }
 								}
-							}
-						}
-						if uiutils.Eq(vLayout, "cards") {
-							@text.Text(text.TextProps{Size: "sm", Class: "text-muted-foreground"}) {
-								{ uiutils.Text(uiutils.Get(vS, "note")) }
-							}
-							@group.Group(group.GroupProps{Gap: "2", Class: "flex-wrap"}) {
-								for _, vV := range uiutils.L(uiutils.Get(vS, "services")) {
-									@badge.Badge(badge.BadgeProps{Variant: "secondary", Size: "default"}) {
-										{ uiutils.Text(vV) }
+								@group.Group(group.GroupProps{Gap: "2", Class: "flex-wrap"}) {
+									for _, vV := range uiutils.L(uiutils.Get(vS, "services")) {
+										@badge.Badge(badge.BadgeProps{Variant: "secondary", Size: "default"}) {
+											{ uiutils.Text(vV) }
+										}
 									}
 								}
 							}
 						}
 					}
 				}
-			}
-			if uiutils.Eq(vLayout, "map") {
-				@box.Box(box.BoxProps{Class: "md:sticky md:top-8"}) {
-					@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vLabels, "map"), Ratio: "1/1"})
+				if uiutils.Eq(vLayout, "map") {
+					@box.Box(box.BoxProps{Class: "md:sticky md:top-8"}) {
+						@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vLabels, "map"), Ratio: "1/1"})
+					}
 				}
 			}
 		}

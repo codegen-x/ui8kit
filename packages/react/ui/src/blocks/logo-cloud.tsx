@@ -9,6 +9,7 @@ import { Grid } from "../primitives/grid/grid";
 import { Group } from "../primitives/group/group";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Text } from "../primitives/text/text";
+import { EmptyState } from "../components/empty-state";
 import { LogoRibbon } from "../blocks/logo-ribbon";
 import { SectionFrame } from "../components/section-frame";
 import { cn } from "../utils";
@@ -18,6 +19,7 @@ export type LogoCloudProps = {
   id: string;
   title: string;
   logos: Logo[];
+  empty?: string;
   layout?: "grid" | "row";
   cols?: "2" | "3" | "4";
   item?: "name" | "icon" | "tile";
@@ -30,6 +32,7 @@ export function LogoCloud({
   id,
   title,
   logos,
+  empty = "",
   layout = "grid",
   cols = "4",
   item = "name",
@@ -39,7 +42,11 @@ export function LogoCloud({
 }: LogoCloudProps) {
   return (
     <>
-      {((layout as string) === "row") ? (
+      {((logos?.length ?? 0) === 0) ? (
+        <SectionFrame id={id} title={title} tone={tone} density={density} align="center" landmarkLabel={landmarkLabel}>
+          <EmptyState icon="building-2" title={empty} />
+        </SectionFrame>
+      ) : ((layout as string) === "row") ? (
         <LogoRibbon id={id} title={title} logos={logos} tone={tone} density={density} landmarkLabel={landmarkLabel} />
       ) : (
         <SectionFrame id={id} title={title} tone={tone} density={density} align="center" landmarkLabel={landmarkLabel}>

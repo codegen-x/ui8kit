@@ -74,6 +74,7 @@ export function StudioPage() {
         id="studio-logos"
         title={ui.marketing.logos.title}
         logos={logos}
+        empty={ui.empty.logos}
         layout="grid"
         cols="4"
         item="name"
@@ -85,6 +86,7 @@ export function StudioPage() {
         id="studio-features"
         title={ui.site.home.featuresTitle}
         features={features}
+        empty={ui.empty.features}
         action={{ label: ui.site.home.featuresAction, href: "#/" }}
         layout="grid"
         cols="1-4"
@@ -98,6 +100,7 @@ export function StudioPage() {
         id="studio-testimonials"
         title={ui.marketing.testimonials.title}
         quotes={testimonials}
+        empty={ui.empty.quotes}
         labels={{
           rating: ui.testimonials.rating,
           byLine: ui.testimonials.byLine,

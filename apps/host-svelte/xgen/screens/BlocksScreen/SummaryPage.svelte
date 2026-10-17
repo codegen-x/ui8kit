@@ -68,6 +68,7 @@
             id="summary-card"
             title={ui.commerce.summary.title}
             rows={summary}
+            empty={ui.empty.summary}
             labels={ui.commerce.summary}
             layout="card"
             cta="show"
@@ -95,6 +96,7 @@
             id="summary-plain"
             title={ui.commerce.summary.title}
             rows={summary}
+            empty={ui.empty.summary}
             labels={ui.commerce.summary}
             layout="plain"
             cta="show"
@@ -122,6 +124,7 @@
             id="summary-noCta"
             title={ui.commerce.summary.title}
             rows={summary}
+            empty={ui.empty.summary}
             labels={ui.commerce.summary}
             layout="card"
             cta="hide"
@@ -149,6 +152,7 @@
             id="summary-muted"
             title={ui.commerce.summary.title}
             rows={summary}
+            empty={ui.empty.summary}
             labels={ui.commerce.summary}
             layout="card"
             cta="show"

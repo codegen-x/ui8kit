@@ -85,6 +85,7 @@ export function MarketingFeaturesPage() {
                   id="features-grid"
                   title={ui.site.home.featuresTitle}
                   features={features}
+                  empty={ui.empty.features}
                   action={{ label: ui.site.home.featuresAction, href: "#/" }}
                   layout="grid"
                   cols="1-3"
@@ -113,6 +114,7 @@ export function MarketingFeaturesPage() {
                   id="features-grid2"
                   title={ui.site.home.featuresTitle}
                   features={features}
+                  empty={ui.empty.features}
                   action={{ label: ui.site.home.featuresAction, href: "#/" }}
                   layout="grid"
                   cols="1-2"
@@ -141,6 +143,7 @@ export function MarketingFeaturesPage() {
                   id="features-tiles4"
                   title={ui.site.home.featuresTitle}
                   features={features}
+                  empty={ui.empty.features}
                   action={{ label: ui.site.home.featuresAction, href: "#/" }}
                   layout="grid"
                   cols="1-4"
@@ -169,6 +172,7 @@ export function MarketingFeaturesPage() {
                   id="features-cells4"
                   title={ui.site.home.featuresTitle}
                   features={features}
+                  empty={ui.empty.features}
                   action={{ label: ui.site.home.featuresAction, href: "#/" }}
                   layout="grid"
                   cols="1-4"
@@ -197,6 +201,7 @@ export function MarketingFeaturesPage() {
                   id="features-rows"
                   title={ui.site.home.featuresTitle}
                   features={features}
+                  empty={ui.empty.features}
                   action={{ label: ui.site.home.featuresAction, href: "#/" }}
                   layout="rows"
                   cols="1-3"
@@ -225,6 +230,7 @@ export function MarketingFeaturesPage() {
                   id="features-rowsStart"
                   title={ui.site.home.featuresTitle}
                   features={features}
+                  empty={ui.empty.features}
                   action={{ label: ui.site.home.featuresAction, href: "#/" }}
                   layout="rows"
                   cols="1-3"
@@ -253,6 +259,7 @@ export function MarketingFeaturesPage() {
                   id="features-rowsAlternate"
                   title={ui.site.home.featuresTitle}
                   features={features}
+                  empty={ui.empty.features}
                   action={{ label: ui.site.home.featuresAction, href: "#/" }}
                   layout="rows"
                   cols="1-3"
@@ -281,6 +288,7 @@ export function MarketingFeaturesPage() {
                   id="features-tilesMuted"
                   title={ui.site.home.featuresTitle}
                   features={features}
+                  empty={ui.empty.features}
                   action={{ label: ui.site.home.featuresAction, href: "#/" }}
                   layout="grid"
                   cols="1-3"
@@ -326,6 +334,7 @@ export function MarketingFeaturesPage() {
                   id="iconwall-tiles4"
                   title={ui.vibe.wall.title}
                   features={features}
+                  empty={ui.empty.features}
                   cols="4"
                   item="tile"
                   tone="default"
@@ -351,6 +360,7 @@ export function MarketingFeaturesPage() {
                   id="iconwall-tiles3"
                   title={ui.vibe.wall.title}
                   features={features}
+                  empty={ui.empty.features}
                   cols="3"
                   item="tile"
                   tone="default"
@@ -376,6 +386,7 @@ export function MarketingFeaturesPage() {
                   id="iconwall-chips6"
                   title={ui.vibe.wall.title}
                   features={features}
+                  empty={ui.empty.features}
                   cols="6"
                   item="chip"
                   tone="default"
@@ -401,6 +412,7 @@ export function MarketingFeaturesPage() {
                   id="iconwall-chips4"
                   title={ui.vibe.wall.title}
                   features={features}
+                  empty={ui.empty.features}
                   cols="4"
                   item="chip"
                   tone="default"
@@ -426,6 +438,7 @@ export function MarketingFeaturesPage() {
                   id="iconwall-muted"
                   title={ui.vibe.wall.title}
                   features={features}
+                  empty={ui.empty.features}
                   cols="4"
                   item="tile"
                   tone="muted"
@@ -468,6 +481,7 @@ export function MarketingFeaturesPage() {
                   id="beforeafter-cards"
                   title={ui.vibe.beforeafter.title}
                   points={beforeafter}
+                  empty={ui.empty.points}
                   labels={ui.vibe.beforeafter.labels}
                   layout="cards"
                   icons="show"
@@ -494,6 +508,7 @@ export function MarketingFeaturesPage() {
                   id="beforeafter-rows"
                   title={ui.vibe.beforeafter.title}
                   points={beforeafter}
+                  empty={ui.empty.points}
                   labels={ui.vibe.beforeafter.labels}
                   layout="rows"
                   icons="show"
@@ -520,6 +535,7 @@ export function MarketingFeaturesPage() {
                   id="beforeafter-plain"
                   title={ui.vibe.beforeafter.title}
                   points={beforeafter}
+                  empty={ui.empty.points}
                   labels={ui.vibe.beforeafter.labels}
                   layout="cards"
                   icons="hide"
@@ -546,6 +562,7 @@ export function MarketingFeaturesPage() {
                   id="beforeafter-muted"
                   title={ui.vibe.beforeafter.title}
                   points={beforeafter}
+                  empty={ui.empty.points}
                   labels={ui.vibe.beforeafter.labels}
                   layout="cards"
                   icons="show"

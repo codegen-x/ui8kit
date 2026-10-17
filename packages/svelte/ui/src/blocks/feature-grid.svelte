@@ -14,6 +14,7 @@
     id: string;
     title: string;
     features: Feature[];
+    empty?: string;
     action?: HeadLink;
     layout?: "grid" | "rows";
     cols?: "1-2" | "1-3" | "1-4";
@@ -29,6 +30,7 @@
   import Group from "../primitives/group/group.svelte";
   import Link from "../primitives/link/link.svelte";
   import Title from "../primitives/title/title.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import FeatureCards from "../components/feature-cards.svelte";
   import FeatureRows from "../components/feature-rows.svelte";
   import SectionFrame from "../components/section-frame.svelte";
@@ -39,6 +41,7 @@
     id,
     title,
     features,
+    empty = "",
     action,
     layout = "grid",
     cols = "1-3",
@@ -67,11 +70,17 @@
         </Link>
       {/if}
     </Group>
-    <FeatureCards features={features} cols={cols} item={item} />
+    {#if ((features?.length ?? 0) === 0)}
+      <EmptyState icon="layout-grid" title={empty} />
+    {:else}
+      <FeatureCards features={features} cols={cols} item={item} />
+    {/if}
   </SectionFrame>
 {:else}
   <SectionFrame id={id} title={title} action={action} tone={tone} density={density} landmarkLabel={landmarkLabel}>
-    {#if ((layout as string) === "rows")}
+    {#if ((features?.length ?? 0) === 0)}
+      <EmptyState icon="layout-grid" title={empty} />
+    {:else if ((layout as string) === "rows")}
       <FeatureRows features={features} mediaSide={mediaSide} />
     {:else}
       <FeatureCards features={features} cols={cols} item={item} />

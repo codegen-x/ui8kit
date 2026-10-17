@@ -13,6 +13,7 @@ export type ProjectGridProps = {
   title: string;
   lead?: string;
   projects: Project[];
+  empty?: string;
   labels: ProjectLabels;
   layout?: "cards" | "compact" | "overlay" | "bento" | "list";
   tone?: "default" | "muted";
@@ -26,6 +27,7 @@ import Box from "../primitives/box/box.vue";
 import Group from "../primitives/group/group.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
+import EmptyState from "../components/empty-state.vue";
 import MediaFrame from "../components/media-frame.vue";
 import ProjectTiles from "../components/project-tiles.vue";
 import SectionFrame from "../components/section-frame.vue";
@@ -35,6 +37,7 @@ const {
   title,
   lead = "",
   projects,
+  empty = "",
   labels,
   layout = "cards",
   tone = "default",
@@ -54,7 +57,8 @@ const {
     :media="{ show: ((layout as string) === 'list'), align: 'start' }"
     :landmarkLabel="landmarkLabel"
   >
-    <Stack v-if="((layout as string) === 'list')" gap="4" align="stretch" data-testid="items">
+    <EmptyState v-if="((projects?.length ?? 0) === 0)" icon="folder-open" :title="empty" />
+    <Stack v-else-if="((layout as string) === 'list')" gap="4" align="stretch" data-testid="items">
       <Group
         v-for="p in projects"
         :key="p.id"

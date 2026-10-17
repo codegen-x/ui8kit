@@ -52,7 +52,7 @@ const SKILLS_FIELDS = {"id":"id","label":"title","level":"metadata.level.value"}
 const PROJECTS_FIELDS = {
   "id": "id",
   "title": "title",
-  "category": "metadata.category.value",
+  "category": "terms|term:project_category",
   "year": "metadata.year.value",
   "summary": "metadata.summary.value",
   "tags": "metadata.tags.value",
@@ -127,6 +127,7 @@ const actions = { toggleTheme };
       :title="ui.company.projects.title"
       :lead="ui.company.projects.lead"
       :projects="projects"
+      :empty="ui.empty.projects"
       :labels="ui.company.projects"
       layout="cards"
       tone="default"
@@ -137,6 +138,7 @@ const actions = { toggleTheme };
       :title="ui.company.photos.title"
       :lead="ui.company.photos.lead"
       :photos="photos"
+      :empty="ui.empty.photos"
       :labels="ui.company.photos"
       layout="masonry"
       captions="show"
@@ -147,6 +149,7 @@ const actions = { toggleTheme };
       id="portfolio-testimonials"
       :title="ui.marketing.testimonials.title"
       :quotes="testimonials"
+      :empty="ui.empty.quotes"
       :labels="{
         rating: ui.testimonials.rating,
         byLine: ui.testimonials.byLine,

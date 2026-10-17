@@ -17,6 +17,7 @@ type FeatureTabsProps struct {
 	Id any `json:"id"`
 	Title any `json:"title"`
 	Features any `json:"features"`
+	Empty any `json:"empty"`
 	TabsLabel any `json:"tabsLabel"`
 	Active any `json:"active"`
 	Panel any `json:"panel"`
@@ -30,6 +31,7 @@ templ FeatureTabs(p FeatureTabsProps) {
 	{{ vId := p.Id }}
 	{{ vTitle := p.Title }}
 	{{ vFeatures := p.Features }}
+	{{ vEmpty := uiutils.Def(p.Empty, "") }}
 	{{ vTabsLabel := p.TabsLabel }}
 	{{ vActive := uiutils.Def(p.Active, "") }}
 	{{ vPanel := uiutils.Def(p.Panel, "split") }}
@@ -37,27 +39,31 @@ templ FeatureTabs(p FeatureTabsProps) {
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Tone: vTone, Density: vDensity, LandmarkLabel: vLandmarkLabel}) {
-		@stack.Stack(stack.StackProps{Gap: "6", Align: "stretch"}) {
-			@Switcher(SwitcherProps{Label: vTabsLabel, Class: uiutils.Cnv("w-fit max-w-full flex-wrap")}) {
-				for vI, vF := range uiutils.L(vFeatures) {
-					@SwitcherItem(SwitcherItemProps{Active: uiutils.Or(uiutils.Eq(uiutils.Get(vF, "id"), vActive), uiutils.And(uiutils.Eq(vActive, ""), uiutils.Eq(float64(vI), float64(0))))}) {
-						{ uiutils.Text(uiutils.Get(vF, "title")) }
+		if uiutils.Eq(uiutils.Len(vFeatures), float64(0)) {
+			@EmptyState(EmptyStateProps{Icon: "layout-grid", Title: vEmpty})
+		} else {
+			@stack.Stack(stack.StackProps{Gap: "6", Align: "stretch"}) {
+				@Switcher(SwitcherProps{Label: vTabsLabel, Class: uiutils.Cnv("w-fit max-w-full flex-wrap")}) {
+					for vI, vF := range uiutils.L(vFeatures) {
+						@SwitcherItem(SwitcherItemProps{Active: uiutils.Or(uiutils.Eq(uiutils.Get(vF, "id"), vActive), uiutils.And(uiutils.Eq(vActive, ""), uiutils.Eq(float64(vI), float64(0))))}) {
+							{ uiutils.Text(uiutils.Get(vF, "title")) }
+						}
 					}
 				}
-			}
-			for vI, vF := range uiutils.L(vFeatures) {
-				if uiutils.T(uiutils.Or(uiutils.Eq(uiutils.Get(vF, "id"), vActive), uiutils.And(uiutils.Eq(vActive, ""), uiutils.Eq(float64(vI), float64(0))))) {
-					@grid.Grid(grid.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vPanel, "split")), "1-2", "1")), Class: "items-center gap-8", Attrs: uiutils.Attrs("data-testid", "tab-panel", "role", "tabpanel")}) {
-						@stack.Stack(stack.StackProps{Gap: "4"}) {
-							@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Get(vF, "icon")), Size: 24})
-							@title.Title(title.TitleProps{As: uiutils.HeadingLevel(uiutils.I(float64(3))), Size: "2xl", Weight: "bold"}) {
-								{ uiutils.Text(uiutils.Get(vF, "title")) }
+				for vI, vF := range uiutils.L(vFeatures) {
+					if uiutils.T(uiutils.Or(uiutils.Eq(uiutils.Get(vF, "id"), vActive), uiutils.And(uiutils.Eq(vActive, ""), uiutils.Eq(float64(vI), float64(0))))) {
+						@grid.Grid(grid.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vPanel, "split")), "1-2", "1")), Class: "items-center gap-8", Attrs: uiutils.Attrs("data-testid", "tab-panel", "role", "tabpanel")}) {
+							@stack.Stack(stack.StackProps{Gap: "4"}) {
+								@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Get(vF, "icon")), Size: 24})
+								@title.Title(title.TitleProps{As: uiutils.HeadingLevel(uiutils.I(float64(3))), Size: "2xl", Weight: "bold"}) {
+									{ uiutils.Text(uiutils.Get(vF, "title")) }
+								}
+								@text.Text(text.TextProps{Size: "base", Class: "text-muted-foreground"}) {
+									{ uiutils.Text(uiutils.Get(vF, "text")) }
+								}
 							}
-							@text.Text(text.TextProps{Size: "base", Class: "text-muted-foreground"}) {
-								{ uiutils.Text(uiutils.Get(vF, "text")) }
-							}
+							@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vF, "title"), Ratio: "4/3"})
 						}
-						@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vF, "title"), Ratio: "4/3"})
 					}
 				}
 			}

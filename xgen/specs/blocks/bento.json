@@ -57,6 +57,7 @@
     }
   ],
   "slots": [
+    "EmptyState",
     "MediaFrame",
     "SectionFrame"
   ],
@@ -103,6 +104,9 @@
       },
       "tiles": {
         "$": "bento"
+      },
+      "empty": {
+        "$": "ui.empty.tiles"
       }
     }
   }

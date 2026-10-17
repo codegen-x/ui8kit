@@ -283,6 +283,7 @@ export function CommerceStorefrontPage() {
                 <UspStrip
                   id="usp-strip"
                   perks={perks}
+                  empty={ui.empty.perks}
                   layout="strip"
                   tone="default"
                   density="default"
@@ -306,6 +307,7 @@ export function CommerceStorefrontPage() {
                 <UspStrip
                   id="usp-cards"
                   perks={perks}
+                  empty={ui.empty.perks}
                   layout="cards"
                   tone="default"
                   density="default"
@@ -330,6 +332,7 @@ export function CommerceStorefrontPage() {
                 <UspStrip
                   id="usp-stripCompact"
                   perks={perks}
+                  empty={ui.empty.perks}
                   layout="strip"
                   tone="default"
                   density="compact"
@@ -353,6 +356,7 @@ export function CommerceStorefrontPage() {
                 <UspStrip
                   id="usp-bar"
                   perks={perks}
+                  empty={ui.empty.perks}
                   layout="bar"
                   tone="default"
                   density="compact"
@@ -376,6 +380,7 @@ export function CommerceStorefrontPage() {
                 <UspStrip
                   id="usp-barMuted"
                   perks={perks}
+                  empty={ui.empty.perks}
                   layout="bar"
                   tone="muted"
                   density="compact"

@@ -13,6 +13,7 @@ import { ListItem } from "../primitives/list/list-item";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { Title } from "../primitives/title/title";
+import { EmptyState } from "../components/empty-state";
 import { SectionFrame } from "../components/section-frame";
 import { ZoneRows } from "../components/zone-rows";
 import { fmtMoney } from "../utils";
@@ -23,6 +24,7 @@ export type ZoneTableProps = {
   title: string;
   lead?: string;
   zones: Zone[];
+  empty?: string;
   labels: ZoneLabels;
   layout?: "table" | "cards";
   tone?: "default" | "muted";
@@ -35,6 +37,7 @@ export function ZoneTable({
   title,
   lead = "",
   zones,
+  empty = "",
   labels,
   layout = "table",
   tone = "default",
@@ -43,7 +46,9 @@ export function ZoneTable({
 }: ZoneTableProps) {
   return (
     <SectionFrame id={id} title={title} lead={lead} tone={tone} density={density} landmarkLabel={landmarkLabel}>
-      {((layout as string) === "table") ? (
+      {((zones?.length ?? 0) === 0) ? (
+        <EmptyState icon="map" title={empty} />
+      ) : ((layout as string) === "table") ? (
         <ZoneRows zones={zones} labels={labels} />
       ) : (
         <Grid cols="1-3" class="gap-4" data-testid="items">

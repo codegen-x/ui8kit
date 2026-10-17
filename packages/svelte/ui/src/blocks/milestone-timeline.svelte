@@ -14,6 +14,7 @@
     title: string;
     lead?: string;
     milestones: Milestone[];
+    empty?: string;
     layout?: "split" | "stacked" | "row";
     tone?: "default" | "muted";
     density?: "default" | "compact";
@@ -29,6 +30,7 @@
   import ListItem from "../primitives/list/list-item.svelte";
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import SectionFrame from "../components/section-frame.svelte";
 
@@ -37,6 +39,7 @@
     title,
     lead = "",
     milestones,
+    empty = "",
     layout = "split",
     tone = "default",
     density = "default",
@@ -55,46 +58,50 @@
   measure={(((layout as string) === "stacked") ? "2xl" : "default")}
   landmarkLabel={landmarkLabel}
 >
-  <List
-    tag="ol"
-    class={
-      (layout as string) === "row" ? "grid grid-cols-1 gap-8 border-t border-border sm:grid-cols-2 lg:grid-cols-4"
-      : "flex flex-col gap-8 border-l border-border"
-    }
-    data-testid="items"
-  >
-    {#each milestones as m (m.id)}
-      <ListItem
-        class={
-          (layout as string) === "row" ? "relative flex flex-col gap-2 pt-6"
-          : "relative flex flex-col gap-2 pl-6"
-        }
-        data-testid="item"
-      >
-        <Inline
+  {#if ((milestones?.length ?? 0) === 0)}
+    <EmptyState icon="milestone" title={empty} />
+  {:else}
+    <List
+      tag="ol"
+      class={
+        (layout as string) === "row" ? "grid grid-cols-1 gap-8 border-t border-border sm:grid-cols-2 lg:grid-cols-4"
+        : "flex flex-col gap-8 border-l border-border"
+      }
+      data-testid="items"
+    >
+      {#each milestones as m (m.id)}
+        <ListItem
           class={
-            (layout as string) === "row" ? "absolute top-0 left-0 size-2 -translate-y-1/2 rounded bg-primary"
-            : "absolute top-2 left-0 size-2 -translate-x-1/2 rounded bg-primary"
+            (layout as string) === "row" ? "relative flex flex-col gap-2 pt-6"
+            : "relative flex flex-col gap-2 pl-6"
           }
-          aria-hidden="true"
-        />
-        <Group gap="2" align="center">
-          <Text size="sm" weight="semibold">
-            {m.date}
+          data-testid="item"
+        >
+          <Inline
+            class={
+              (layout as string) === "row" ? "absolute top-0 left-0 size-2 -translate-y-1/2 rounded bg-primary"
+              : "absolute top-2 left-0 size-2 -translate-x-1/2 rounded bg-primary"
+            }
+            aria-hidden="true"
+          />
+          <Group gap="2" align="center">
+            <Text size="sm" weight="semibold">
+              {m.date}
+            </Text>
+            <Badge variant="outline" size="sm">
+              {m.tag}
+            </Badge>
+          </Group>
+          <Title as={3} size="lg" weight="bold">
+            {m.title}
+          </Title>
+          <Text size="sm" class="text-muted-foreground">
+            {m.text}
           </Text>
-          <Badge variant="outline" size="sm">
-            {m.tag}
-          </Badge>
-        </Group>
-        <Title as={3} size="lg" weight="bold">
-          {m.title}
-        </Title>
-        <Text size="sm" class="text-muted-foreground">
-          {m.text}
-        </Text>
-      </ListItem>
-    {/each}
-  </List>
+        </ListItem>
+      {/each}
+    </List>
+  {/if}
   {#snippet aside()}
     <MediaFrame alt={title} ratio="3/4" />
   {/snippet}

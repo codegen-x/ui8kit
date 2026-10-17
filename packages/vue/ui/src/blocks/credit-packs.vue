@@ -11,6 +11,7 @@ export type CreditPacksProps = {
   id: string;
   title: string;
   packs: Pack[];
+  empty?: string;
   badges: Record<string, string>;
   buy: string;
   cols?: "2" | "4";
@@ -31,6 +32,7 @@ import Grid from "../primitives/grid/grid.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
+import EmptyState from "../components/empty-state.vue";
 import SectionFrame from "../components/section-frame.vue";
 import { at, cn, fitCols, fmtMoney } from "../utils";
 
@@ -38,6 +40,7 @@ const {
   id,
   title,
   packs,
+  empty = "",
   badges,
   buy,
   cols = "4",
@@ -57,7 +60,8 @@ const {
     :measure="(((item as string) === 'row') ? '2xl' : 'default')"
     :landmarkLabel="landmarkLabel"
   >
-    <Grid
+    <EmptyState v-if="((packs?.length ?? 0) === 0)" icon="coins" :title="empty" />
+    <Grid v-else
       :cols="
         (item as string) === 'row' ? '1'
         : fitCols((((cols as string) === '2') ? '1-2' : '1-4'), (packs?.length ?? 0))

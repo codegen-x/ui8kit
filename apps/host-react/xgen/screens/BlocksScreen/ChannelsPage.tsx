@@ -63,6 +63,7 @@ export function ChannelsPage() {
                 id="channels-grid"
                 title={ui.support.channels.title}
                 channels={channels}
+                empty={ui.empty.channels}
                 open={ui.support.channels.open}
                 layout="grid"
                 cols="1-3"
@@ -89,6 +90,7 @@ export function ChannelsPage() {
                 id="channels-twoUp"
                 title={ui.support.channels.title}
                 channels={channels}
+                empty={ui.empty.channels}
                 open={ui.support.channels.open}
                 layout="grid"
                 cols="1-2"
@@ -115,6 +117,7 @@ export function ChannelsPage() {
                 id="channels-list"
                 title={ui.support.channels.title}
                 channels={channels}
+                empty={ui.empty.channels}
                 open={ui.support.channels.open}
                 layout="list"
                 cols="1-3"
@@ -141,6 +144,7 @@ export function ChannelsPage() {
                 id="channels-plain"
                 title={ui.support.channels.title}
                 channels={channels}
+                empty={ui.empty.channels}
                 open={ui.support.channels.open}
                 layout="grid"
                 cols="1-3"

@@ -511,6 +511,11 @@
         "description": "fixtures: metrics",
         "fields": [
           {
+            "id": "currency",
+            "label": "Currency",
+            "type": "string"
+          },
+          {
             "id": "hint",
             "label": "Hint",
             "type": "string",
@@ -523,9 +528,14 @@
             "required": true
           },
           {
+            "id": "unit",
+            "label": "Unit",
+            "type": "string"
+          },
+          {
             "id": "value",
             "label": "Value",
-            "type": "string",
+            "type": "number",
             "required": true
           }
         ]
@@ -1012,12 +1022,6 @@
         "description": "fixtures: projects",
         "fields": [
           {
-            "id": "category",
-            "label": "Category",
-            "type": "string",
-            "required": true
-          },
-          {
             "id": "client",
             "label": "Client",
             "type": "string",
@@ -1049,11 +1053,19 @@
           {
             "id": "year",
             "label": "Year",
-            "type": "string",
+            "type": "number",
+            "rules": [
+              {
+                "name": "fastygo.codex/integer"
+              }
+            ],
             "required": true
           }
         ]
-      }
+      },
+      "taxonomies": [
+        "project_category"
+      ]
     },
     {
       "record": {
@@ -1100,19 +1112,16 @@
             "required": true
           },
           {
-            "id": "category",
-            "label": "Category",
-            "type": "string",
-            "required": true
-          },
-          {
             "id": "icon",
             "label": "Icon",
             "type": "string",
             "required": true
           }
         ]
-      }
+      },
+      "taxonomies": [
+        "faq_category"
+      ]
     },
     {
       "record": {

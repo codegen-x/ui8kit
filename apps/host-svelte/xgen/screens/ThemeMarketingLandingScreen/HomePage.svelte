@@ -97,6 +97,7 @@
   id="home-logos"
   title={ui.marketing.logos.title}
   logos={logos}
+  empty={ui.empty.logos}
   layout="row"
   cols="4"
   item="icon"
@@ -108,6 +109,7 @@
   id="home-features"
   title={ui.site.home.featuresTitle}
   features={features}
+  empty={ui.empty.features}
   action={{ label: ui.site.home.featuresAction, href: "#/" }}
   layout="rows"
   cols="1-3"
@@ -121,6 +123,7 @@
   id="home-steps"
   title={ui.marketing.steps.title}
   steps={steps}
+  empty={ui.empty.steps}
   layout="row"
   marker="icon"
   align="start"
@@ -146,6 +149,7 @@
   id="home-testimonials"
   title={ui.marketing.testimonials.title}
   quotes={testimonials}
+  empty={ui.empty.quotes}
   labels={{
     rating: ui.testimonials.rating,
     byLine: ui.testimonials.byLine,

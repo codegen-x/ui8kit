@@ -113,6 +113,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "labels",
       "type": {
         "record": "QuoteLabels"
@@ -222,147 +228,90 @@
           "do": [
             {
               "when": {
-                "op": "or",
+                "op": "eq",
                 "args": [
                   {
-                    "op": "eq",
+                    "op": "len",
                     "args": [
                       {
-                        "$": "layout"
-                      },
-                      "masonry"
+                        "$": "quotes"
+                      }
                     ]
                   },
-                  {
-                    "op": "eq",
-                    "args": [
-                      {
-                        "$": "layout"
-                      },
-                      "strip"
-                    ]
-                  }
+                  0
                 ]
               },
               "then": [
                 {
-                  "use": "Block",
+                  "organism": "EmptyState",
                   "props": {
-                    "Tag": "div",
-                    "Class": {
-                      "op": "cond",
-                      "args": [
-                        {
-                          "op": "eq",
-                          "args": [
-                            {
-                              "$": "layout"
-                            },
-                            "masonry"
-                          ]
-                        },
-                        "columns-1 gap-4 md:columns-2 xl:columns-3",
-                        "flex snap-x gap-4 overflow-x-auto pb-2"
-                      ]
+                    "icon": "message-square-quote",
+                    "title": {
+                      "$": "empty"
                     }
-                  },
-                  "attrs": {
-                    "data-testid": "items"
-                  },
-                  "children": [
-                    {
-                      "each": {
-                        "$": "quotes"
-                      },
-                      "as": "q",
-                      "key": {
-                        "$": "q.id"
-                      },
-                      "do": [
-                        {
-                          "organism": "QuoteCard",
-                          "props": {
-                            "q": {
-                              "$": "q"
-                            },
-                            "labels": {
-                              "$": "labels"
-                            },
-                            "item": {
-                              "$": "item"
-                            },
-                            "layout": {
-                              "$": "layout"
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  ]
+                  }
                 }
               ],
               "else": [
                 {
-                  "use": "Grid",
-                  "props": {
-                    "Cols": {
-                      "op": "cond",
-                      "args": [
-                        {
-                          "op": "eq",
+                  "when": {
+                    "op": "or",
+                    "args": [
+                      {
+                        "op": "eq",
+                        "args": [
+                          {
+                            "$": "layout"
+                          },
+                          "masonry"
+                        ]
+                      },
+                      {
+                        "op": "eq",
+                        "args": [
+                          {
+                            "$": "layout"
+                          },
+                          "strip"
+                        ]
+                      }
+                    ]
+                  },
+                  "then": [
+                    {
+                      "use": "Block",
+                      "props": {
+                        "Tag": "div",
+                        "Class": {
+                          "op": "cond",
                           "args": [
                             {
-                              "$": "layout"
+                              "op": "eq",
+                              "args": [
+                                {
+                                  "$": "layout"
+                                },
+                                "masonry"
+                              ]
                             },
-                            "grid"
+                            "columns-1 gap-4 md:columns-2 xl:columns-3",
+                            "flex snap-x gap-4 overflow-x-auto pb-2"
                           ]
-                        },
-                        {
-                          "$": "cols"
-                        },
-                        "1"
-                      ]
-                    },
-                    "Class": "gap-4"
-                  },
-                  "attrs": {
-                    "data-testid": "items"
-                  },
-                  "children": [
-                    {
-                      "each": {
-                        "$": "quotes"
+                        }
                       },
-                      "as": "q",
-                      "key": {
-                        "$": "q.id"
+                      "attrs": {
+                        "data-testid": "items"
                       },
-                      "do": [
+                      "children": [
                         {
-                          "when": {
-                            "op": "or",
-                            "args": [
-                              {
-                                "op": "ne",
-                                "args": [
-                                  {
-                                    "$": "layout"
-                                  },
-                                  "single"
-                                ]
-                              },
-                              {
-                                "op": "eq",
-                                "args": [
-                                  {
-                                    "$": "i"
-                                  },
-                                  0
-                                ]
-                              }
-                            ]
+                          "each": {
+                            "$": "quotes"
                           },
-                          "then": [
+                          "as": "q",
+                          "key": {
+                            "$": "q.id"
+                          },
+                          "do": [
                             {
                               "organism": "QuoteCard",
                               "props": {
@@ -382,8 +331,94 @@
                             }
                           ]
                         }
-                      ],
-                      "index": "i"
+                      ]
+                    }
+                  ],
+                  "else": [
+                    {
+                      "use": "Grid",
+                      "props": {
+                        "Cols": {
+                          "op": "cond",
+                          "args": [
+                            {
+                              "op": "eq",
+                              "args": [
+                                {
+                                  "$": "layout"
+                                },
+                                "grid"
+                              ]
+                            },
+                            {
+                              "$": "cols"
+                            },
+                            "1"
+                          ]
+                        },
+                        "Class": "gap-4"
+                      },
+                      "attrs": {
+                        "data-testid": "items"
+                      },
+                      "children": [
+                        {
+                          "each": {
+                            "$": "quotes"
+                          },
+                          "as": "q",
+                          "key": {
+                            "$": "q.id"
+                          },
+                          "do": [
+                            {
+                              "when": {
+                                "op": "or",
+                                "args": [
+                                  {
+                                    "op": "ne",
+                                    "args": [
+                                      {
+                                        "$": "layout"
+                                      },
+                                      "single"
+                                    ]
+                                  },
+                                  {
+                                    "op": "eq",
+                                    "args": [
+                                      {
+                                        "$": "i"
+                                      },
+                                      0
+                                    ]
+                                  }
+                                ]
+                              },
+                              "then": [
+                                {
+                                  "organism": "QuoteCard",
+                                  "props": {
+                                    "q": {
+                                      "$": "q"
+                                    },
+                                    "labels": {
+                                      "$": "labels"
+                                    },
+                                    "item": {
+                                      "$": "item"
+                                    },
+                                    "layout": {
+                                      "$": "layout"
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ],
+                          "index": "i"
+                        }
+                      ]
                     }
                   ]
                 }

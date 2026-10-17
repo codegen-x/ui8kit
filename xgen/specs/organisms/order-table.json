@@ -97,6 +97,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "statuses",
       "type": {
         "ts": "Record<string, string>"
@@ -172,92 +178,156 @@
           "args": [],
           "do": [
             {
-              "use": "Stack",
-              "props": {
-                "Gap": "4",
-                "Align": "stretch"
-              },
-              "children": [
-                {
-                  "when": {
-                    "op": "eq",
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "op": "len",
                     "args": [
                       {
-                        "$": "layout"
-                      },
-                      "table"
+                        "$": "orders"
+                      }
                     ]
                   },
-                  "then": [
-                    {
-                      "organism": "OrderRows",
-                      "props": {
-                        "orders": {
-                          "$": "orders"
-                        },
-                        "statuses": {
-                          "$": "statuses"
-                        },
-                        "labels": {
-                          "$": "labels"
-                        },
-                        "density": {
-                          "$": "density"
-                        }
-                      }
+                  0
+                ]
+              },
+              "then": [
+                {
+                  "organism": "EmptyState",
+                  "props": {
+                    "icon": "package",
+                    "title": {
+                      "$": "empty"
                     }
-                  ],
-                  "else": [
+                  }
+                }
+              ],
+              "else": [
+                {
+                  "use": "Stack",
+                  "props": {
+                    "Gap": "4",
+                    "Align": "stretch"
+                  },
+                  "children": [
                     {
-                      "use": "Stack",
-                      "props": {
-                        "Gap": "4",
-                        "Align": "stretch"
+                      "when": {
+                        "op": "eq",
+                        "args": [
+                          {
+                            "$": "layout"
+                          },
+                          "table"
+                        ]
                       },
-                      "attrs": {
-                        "data-testid": "order-cards"
-                      },
-                      "children": [
+                      "then": [
                         {
-                          "each": {
-                            "$": "orders"
+                          "organism": "OrderRows",
+                          "props": {
+                            "orders": {
+                              "$": "orders"
+                            },
+                            "statuses": {
+                              "$": "statuses"
+                            },
+                            "labels": {
+                              "$": "labels"
+                            },
+                            "density": {
+                              "$": "density"
+                            }
+                          }
+                        }
+                      ],
+                      "else": [
+                        {
+                          "use": "Stack",
+                          "props": {
+                            "Gap": "4",
+                            "Align": "stretch"
                           },
-                          "as": "o",
-                          "key": {
-                            "$": "o.id"
+                          "attrs": {
+                            "data-testid": "order-cards"
                           },
-                          "do": [
+                          "children": [
                             {
-                              "use": "Card",
-                              "props": {
-                                "Variant": "default"
+                              "each": {
+                                "$": "orders"
                               },
-                              "attrs": {
-                                "data-testid": "item"
+                              "as": "o",
+                              "key": {
+                                "$": "o.id"
                               },
-                              "children": [
+                              "do": [
                                 {
-                                  "use": "CardContent",
+                                  "use": "Card",
                                   "props": {
-                                    "Class": "flex flex-wrap items-center justify-between gap-4"
+                                    "Variant": "default"
+                                  },
+                                  "attrs": {
+                                    "data-testid": "item"
                                   },
                                   "children": [
                                     {
-                                      "use": "Stack",
+                                      "use": "CardContent",
                                       "props": {
-                                        "Gap": "0"
+                                        "Class": "flex flex-wrap items-center justify-between gap-4"
                                       },
                                       "children": [
                                         {
+                                          "use": "Stack",
+                                          "props": {
+                                            "Gap": "0"
+                                          },
+                                          "children": [
+                                            {
+                                              "use": "Text",
+                                              "props": {
+                                                "Size": "sm",
+                                                "Weight": "semibold"
+                                              },
+                                              "children": [
+                                                {
+                                                  "text": {
+                                                    "$": "o.number"
+                                                  }
+                                                }
+                                              ]
+                                            },
+                                            {
+                                              "use": "Text",
+                                              "props": {
+                                                "Size": "xs",
+                                                "Class": "text-muted-foreground"
+                                              },
+                                              "children": [
+                                                {
+                                                  "text": {
+                                                    "$": "o.date"
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        {
                                           "use": "Text",
                                           "props": {
-                                            "Size": "sm",
-                                            "Weight": "semibold"
+                                            "Size": "sm"
                                           },
                                           "children": [
                                             {
                                               "text": {
-                                                "$": "o.number"
+                                                "op": "tpl",
+                                                "args": [
+                                                  {
+                                                    "$": "labels.itemsCount"
+                                                  },
+                                                  {
+                                                    "$": "o.items"
+                                                  }
+                                                ]
                                               }
                                             }
                                           ]
@@ -265,79 +335,29 @@
                                         {
                                           "use": "Text",
                                           "props": {
-                                            "Size": "xs",
-                                            "Class": "text-muted-foreground"
+                                            "Size": "sm",
+                                            "Weight": "bold"
                                           },
                                           "children": [
                                             {
                                               "text": {
-                                                "$": "o.date"
+                                                "op": "money",
+                                                "args": [
+                                                  {
+                                                    "$": "o.total"
+                                                  },
+                                                  {
+                                                    "$": "o.currency"
+                                                  }
+                                                ]
                                               }
                                             }
                                           ]
-                                        }
-                                      ]
-                                    },
-                                    {
-                                      "use": "Text",
-                                      "props": {
-                                        "Size": "sm"
-                                      },
-                                      "children": [
+                                        },
                                         {
-                                          "text": {
-                                            "op": "tpl",
-                                            "args": [
-                                              {
-                                                "$": "labels.itemsCount"
-                                              },
-                                              {
-                                                "$": "o.items"
-                                              }
-                                            ]
-                                          }
-                                        }
-                                      ]
-                                    },
-                                    {
-                                      "use": "Text",
-                                      "props": {
-                                        "Size": "sm",
-                                        "Weight": "bold"
-                                      },
-                                      "children": [
-                                        {
-                                          "text": {
-                                            "op": "money",
-                                            "args": [
-                                              {
-                                                "$": "o.total"
-                                              },
-                                              {
-                                                "$": "o.currency"
-                                              }
-                                            ]
-                                          }
-                                        }
-                                      ]
-                                    },
-                                    {
-                                      "organism": "Pill",
-                                      "props": {
-                                        "tone": {
-                                          "op": "cond",
-                                          "args": [
-                                            {
-                                              "op": "eq",
-                                              "args": [
-                                                {
-                                                  "$": "o.status"
-                                                },
-                                                "paid"
-                                              ]
-                                            },
-                                            "green",
-                                            {
+                                          "organism": "Pill",
+                                          "props": {
+                                            "tone": {
                                               "op": "cond",
                                               "args": [
                                                 {
@@ -346,10 +366,10 @@
                                                     {
                                                       "$": "o.status"
                                                     },
-                                                    "shipped"
+                                                    "paid"
                                                   ]
                                                 },
-                                                "blue",
+                                                "green",
                                                 {
                                                   "op": "cond",
                                                   "args": [
@@ -359,38 +379,53 @@
                                                         {
                                                           "$": "o.status"
                                                         },
-                                                        "pending"
+                                                        "shipped"
                                                       ]
                                                     },
-                                                    "amber",
-                                                    "gray"
+                                                    "blue",
+                                                    {
+                                                      "op": "cond",
+                                                      "args": [
+                                                        {
+                                                          "op": "eq",
+                                                          "args": [
+                                                            {
+                                                              "$": "o.status"
+                                                            },
+                                                            "pending"
+                                                          ]
+                                                        },
+                                                        "amber",
+                                                        "gray"
+                                                      ]
+                                                    }
                                                   ]
                                                 }
                                               ]
                                             }
-                                          ]
-                                        }
-                                      },
-                                      "slots": {
-                                        "children": {
-                                          "args": [],
-                                          "do": [
-                                            {
-                                              "text": {
-                                                "op": "at",
-                                                "args": [
-                                                  {
-                                                    "$": "statuses"
-                                                  },
-                                                  {
-                                                    "$": "o.status"
+                                          },
+                                          "slots": {
+                                            "children": {
+                                              "args": [],
+                                              "do": [
+                                                {
+                                                  "text": {
+                                                    "op": "at",
+                                                    "args": [
+                                                      {
+                                                        "$": "statuses"
+                                                      },
+                                                      {
+                                                        "$": "o.status"
+                                                      }
+                                                    ]
                                                   }
-                                                ]
-                                              }
+                                                }
+                                              ]
                                             }
-                                          ]
+                                          }
                                         }
-                                      }
+                                      ]
                                     }
                                   ]
                                 }
@@ -399,43 +434,43 @@
                           ]
                         }
                       ]
-                    }
-                  ]
-                },
-                {
-                  "when": {
-                    "op": "eq",
-                    "args": [
-                      {
-                        "$": "pager"
-                      },
-                      "show"
-                    ]
-                  },
-                  "then": [
+                    },
                     {
-                      "organism": "Pager",
-                      "props": {
-                        "page": 1,
-                        "pages": 3,
-                        "summary": {
-                          "op": "tpl",
-                          "args": [
-                            {
-                              "$": "labels.summary"
+                      "when": {
+                        "op": "eq",
+                        "args": [
+                          {
+                            "$": "pager"
+                          },
+                          "show"
+                        ]
+                      },
+                      "then": [
+                        {
+                          "organism": "Pager",
+                          "props": {
+                            "page": 1,
+                            "pages": 3,
+                            "summary": {
+                              "op": "tpl",
+                              "args": [
+                                {
+                                  "$": "labels.summary"
+                                },
+                                1,
+                                4,
+                                12
+                              ]
                             },
-                            1,
-                            4,
-                            12
-                          ]
-                        },
-                        "previousLabel": {
-                          "$": "labels.previous"
-                        },
-                        "nextLabel": {
-                          "$": "labels.next"
+                            "previousLabel": {
+                              "$": "labels.previous"
+                            },
+                            "nextLabel": {
+                              "$": "labels.next"
+                            }
+                          }
                         }
-                      }
+                      ]
                     }
                   ]
                 }
