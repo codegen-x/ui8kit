@@ -425,6 +425,9 @@
       "dependencies": {
         "ajv": "^8.17.1",
       },
+      "devDependencies": {
+        "@ui8kit/contract": "^0.2.0",
+      },
     },
     "xgen/screens": {
       "name": "@ui8kit/xgen-screens",
@@ -636,6 +639,8 @@
     "@types/webxr": ["@types/webxr@0.5.24", "", {}, "sha512-h8fgEd/DpoS9CBrjEQXR+dIDraopAEfu4wYVNY2tEPwk60stPWhvZMf4Foo5FakuQ7HFZoa8WceaWFervK2Ovg=="],
 
     "@ui8kit/app-shared": ["@ui8kit/app-shared@workspace:packages/shared/app"],
+
+    "@ui8kit/contract": ["@ui8kit/contract@0.2.0", "", {}, "sha512-Ba+YQPjwSmgFNh3nUYSyt3+Ap/fYUK6IQCXEj33WoDbeT6j0ejmq1ln8wGLHVe5dgBcRhI5/QDPprjgOYkYeXg=="],
 
     "@ui8kit/jinja2-ui": ["@ui8kit/jinja2-ui@workspace:packages/jinja2/ui"],
 

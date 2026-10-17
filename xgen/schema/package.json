@@ -15,5 +15,8 @@
   },
   "scripts": {
     "test": "bun test"
+  },
+  "devDependencies": {
+    "@ui8kit/contract": "^0.2.0"
   }
 }
