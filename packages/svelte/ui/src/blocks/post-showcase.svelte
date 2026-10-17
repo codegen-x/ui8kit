@@ -22,6 +22,7 @@
     cols?: "2" | "3";
     mediaSide?: "end" | "start";
     tone?: "default" | "muted";
+    empty?: string;
     landmarkLabel?: string;
   };
 </script>
@@ -30,6 +31,7 @@
   import Box from "../primitives/box/box.svelte";
   import Link from "../primitives/link/link.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import PostFeature from "../components/post-feature.svelte";
   import PostMiniCard from "../components/post-mini-card.svelte";
@@ -48,11 +50,16 @@
     cols = "3",
     mediaSide = "start",
     tone = "default",
+    empty = "",
     landmarkLabel,
   }: PostShowcaseProps = $props();
 </script>
 
-{#if ((layout as string) === "intro")}
+{#if ((posts?.length ?? 0) === 0)}
+  <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone} landmarkLabel={landmarkLabel}>
+    <EmptyState icon="newspaper" title={empty} />
+  </SectionFrame>
+{:else if ((layout as string) === "intro")}
   <SectionFrame
     id={id}
     title={title}

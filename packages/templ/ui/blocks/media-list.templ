@@ -37,22 +37,34 @@ templ MediaList(p MediaListProps) {
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, Layout: "split", Media: map[string]any{"show": true, "side": vMediaSide}, LandmarkLabel: vLandmarkLabel, Aside: mediaListFill1(p, vTitle, vLayout)}) {
 		if uiutils.T(uiutils.Or(uiutils.Eq(vLayout, "figures"), uiutils.Eq(vLayout, "proof"))) {
-			@MediaFigures(MediaFiguresProps{Extras: vExtras, Mode: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "proof")), "row", "grid")})
+			if uiutils.Gt(uiutils.Len(uiutils.Get(vExtras, "stats")), float64(0)) {
+				@MediaFigures(MediaFiguresProps{Extras: vExtras, Mode: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "proof")), "row", "grid")})
+			}
 		}
 		if uiutils.Eq(vLayout, "proof") {
-			@MediaReview(MediaReviewProps{Extras: vExtras, Labels: vLabels})
+			if uiutils.Gt(uiutils.Len(uiutils.Get(vExtras, "reviews")), float64(0)) {
+				@MediaReview(MediaReviewProps{Extras: vExtras, Labels: vLabels})
+			}
 		}
 		if uiutils.Eq(vLayout, "steps") {
-			@MediaSteps(MediaStepsProps{Extras: vExtras, Labels: vLabels})
+			if uiutils.Gt(uiutils.Len(uiutils.Get(vExtras, "steps")), float64(0)) {
+				@MediaSteps(MediaStepsProps{Extras: vExtras, Labels: vLabels})
+			}
 		}
 		if uiutils.Eq(vLayout, "posts") {
-			@MediaPosts(MediaPostsProps{Extras: vExtras, Labels: vLabels})
+			if uiutils.Gt(uiutils.Len(uiutils.Get(vExtras, "posts")), float64(0)) {
+				@MediaPosts(MediaPostsProps{Extras: vExtras, Labels: vLabels})
+			}
 		}
 		if uiutils.Eq(vLayout, "topics") {
-			@MediaTopics(MediaTopicsProps{Extras: vExtras, Labels: vLabels})
+			if uiutils.Gt(uiutils.Len(uiutils.Get(vExtras, "topics")), float64(0)) {
+				@MediaTopics(MediaTopicsProps{Extras: vExtras, Labels: vLabels})
+			}
 		}
 		if uiutils.Eq(vLayout, "contact") {
-			@MediaContacts(MediaContactsProps{Extras: vExtras, Labels: vLabels})
+			if uiutils.Gt(uiutils.Len(uiutils.Get(vExtras, "channels")), float64(0)) {
+				@MediaContacts(MediaContactsProps{Extras: vExtras, Labels: vLabels})
+			}
 		}
 		if !uiutils.Eq(vLayout, "contact") {
 			@ActionGroup(ActionGroupProps{Primary: uiutils.Get(vActions, "cta"), PrimaryHref: uiutils.Get(vActions, "href"), Secondary: uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vActions, "mode"), "two")), uiutils.Get(vActions, "secondary"), nil), SecondaryHref: uiutils.Get(vActions, "secondaryHref")})

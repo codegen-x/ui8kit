@@ -63,7 +63,7 @@ const {
     align="center"
     :landmarkLabel="landmarkLabel"
   >
-    <PostTags :tags="extras.tags" align="center" />
+    <PostTags v-if="((extras.tags?.length ?? 0) > 0)" :tags="extras.tags" align="center" />
     <PostStats :post="post" :extras="extras" :labels="labels" align="center" />
     <PostAuthor
       :post="post"
@@ -94,11 +94,13 @@ const {
     layout="split"
     :landmarkLabel="landmarkLabel"
   >
-    <PostOutline v-if="((layout as string) === 'outline')" :post="post" :extras="extras" :labels="labels" />
+    <template v-if="((layout as string) === 'outline')">
+      <PostOutline v-if="((extras.outline?.length ?? 0) > 0)" :post="post" :extras="extras" :labels="labels" />
+    </template>
     <template v-else>
       <PostAuthor :post="post" :extras="extras" :labels="labels" :mode="author" />
       <PostStats v-if="((author as string) !== 'line')" :post="post" :extras="extras" :labels="labels" />
-      <PostTags :tags="extras.tags" />
+      <PostTags v-if="((extras.tags?.length ?? 0) > 0)" :tags="extras.tags" />
     </template>
     <PostActions :labels="labels" :mode="actions" />
     <template #aside>

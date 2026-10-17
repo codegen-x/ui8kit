@@ -195,13 +195,31 @@
               "args": [],
               "do": [
                 {
-                  "organism": "PostTags",
-                  "props": {
-                    "tags": {
-                      "$": "extras.tags"
-                    },
-                    "align": "center"
-                  }
+                  "when": {
+                    "op": "gt",
+                    "args": [
+                      {
+                        "op": "len",
+                        "args": [
+                          {
+                            "$": "extras.tags"
+                          }
+                        ]
+                      },
+                      0
+                    ]
+                  },
+                  "then": [
+                    {
+                      "organism": "PostTags",
+                      "props": {
+                        "tags": {
+                          "$": "extras.tags"
+                        },
+                        "align": "center"
+                      }
+                    }
+                  ]
                 },
                 {
                   "organism": "PostStats",
@@ -335,18 +353,36 @@
                   },
                   "then": [
                     {
-                      "organism": "PostOutline",
-                      "props": {
-                        "post": {
-                          "$": "post"
-                        },
-                        "extras": {
-                          "$": "extras"
-                        },
-                        "labels": {
-                          "$": "labels"
+                      "when": {
+                        "op": "gt",
+                        "args": [
+                          {
+                            "op": "len",
+                            "args": [
+                              {
+                                "$": "extras.outline"
+                              }
+                            ]
+                          },
+                          0
+                        ]
+                      },
+                      "then": [
+                        {
+                          "organism": "PostOutline",
+                          "props": {
+                            "post": {
+                              "$": "post"
+                            },
+                            "extras": {
+                              "$": "extras"
+                            },
+                            "labels": {
+                              "$": "labels"
+                            }
+                          }
                         }
-                      }
+                      ]
                     }
                   ],
                   "else": [
@@ -395,12 +431,30 @@
                       ]
                     },
                     {
-                      "organism": "PostTags",
-                      "props": {
-                        "tags": {
-                          "$": "extras.tags"
+                      "when": {
+                        "op": "gt",
+                        "args": [
+                          {
+                            "op": "len",
+                            "args": [
+                              {
+                                "$": "extras.tags"
+                              }
+                            ]
+                          },
+                          0
+                        ]
+                      },
+                      "then": [
+                        {
+                          "organism": "PostTags",
+                          "props": {
+                            "tags": {
+                              "$": "extras.tags"
+                            }
+                          }
                         }
-                      }
+                      ]
                     }
                   ]
                 },

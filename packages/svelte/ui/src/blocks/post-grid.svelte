@@ -75,40 +75,42 @@
       {/each}
     </Switcher>
   {/if}
-  {#if ((layout as string) === "magazine")}
-    <Stack gap="6" align="stretch" data-testid="items">
-      {#each posts.filter((i) => !filter?.topic || i["category"] === filter?.topic) as p, i (p.id)}
-        {#if (i === 0)}
-          <PostCard post={p} labels={labels} layout="horizontal" media={media} meta={meta} density={density} />
-        {/if}
-      {/each}
-      <Grid cols={cols} class="gap-6">
+  {#if ((posts.filter((i) => !filter?.topic || i["category"] === filter?.topic)?.length ?? 0) > 0)}
+    {#if ((layout as string) === "magazine")}
+      <Stack gap="6" align="stretch" data-testid="items">
         {#each posts.filter((i) => !filter?.topic || i["category"] === filter?.topic) as p, i (p.id)}
-          {#if (i > 0)}
-            <PostCard post={p} labels={labels} media={media} meta={meta} density={density} />
+          {#if (i === 0)}
+            <PostCard post={p} labels={labels} layout="horizontal" media={media} meta={meta} density={density} />
           {/if}
         {/each}
+        <Grid cols={cols} class="gap-6">
+          {#each posts.filter((i) => !filter?.topic || i["category"] === filter?.topic) as p, i (p.id)}
+            {#if (i > 0)}
+              <PostCard post={p} labels={labels} media={media} meta={meta} density={density} />
+            {/if}
+          {/each}
+        </Grid>
+      </Stack>
+    {:else}
+      <Grid
+        cols={
+          (layout as string) === "list" ? "1"
+          : fitCols(cols, (posts.filter((i) => !filter?.topic || i["category"] === filter?.topic)?.length ?? 0))
+        }
+        class="w-full gap-6"
+        data-testid="items"
+      >
+        {#each posts.filter((i) => !filter?.topic || i["category"] === filter?.topic) as p (p.id)}
+          <PostCard
+            post={p}
+            labels={labels}
+            layout={(((layout as string) === "list") ? "horizontal" : "vertical")}
+            media={media}
+            meta={meta}
+            density={density}
+          />
+        {/each}
       </Grid>
-    </Stack>
-  {:else}
-    <Grid
-      cols={
-        (layout as string) === "list" ? "1"
-        : fitCols(cols, (posts.filter((i) => !filter?.topic || i["category"] === filter?.topic)?.length ?? 0))
-      }
-      class="w-full gap-6"
-      data-testid="items"
-    >
-      {#each posts.filter((i) => !filter?.topic || i["category"] === filter?.topic) as p (p.id)}
-        <PostCard
-          post={p}
-          labels={labels}
-          layout={(((layout as string) === "list") ? "horizontal" : "vertical")}
-          media={media}
-          meta={meta}
-          density={density}
-        />
-      {/each}
-    </Grid>
+    {/if}
   {/if}
 </SectionFrame>

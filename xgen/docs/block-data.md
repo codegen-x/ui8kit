@@ -172,7 +172,7 @@ replace the string arrays `links`).
 - Magazine: no routes, so no links; the template stage has 0 `<a>` except the in-page table of contents of the docs template
   (was 158: brand, sitemap groups, side navs, categories, nav links).
 
-## 7a. Kit blocks in groups (steps 7-10)
+## 7a. Kit blocks in groups (steps 7-11)
 
 - Every fixture kind has a central map (`KIT_FIELDS` in fields.ts, part of `CODEX_FIELDS`); `codex:blocks` picks the map named
   after the binding's kind when two maps are equal (feature/value/perk/... share one shape).
@@ -186,6 +186,7 @@ replace the string arrays `links`).
 - Step 10: FeatureShowcase, ComparisonTable, SlotBoard draw EmptyState; FeatureSplit (features/stats), VideoModal (chapters),
   ContactForm (details), DeliveryInfo (facts/zones), SkeletonLayout use omit. `slug|route` may be undefined by design (no route, no link).
 
+- Step 11: PostShowcase, QuoteSplit draw EmptyState; PostGrid (12 props already: omit), MediaList (extras), PostSplit (tags/outline) use omit.
 ## 8. Open questions (decided for now, review later)
 
 1. Docs template table of contents: in-page anchors (`#tp-docs-body-section-*`) stay links; they address the page itself, not an app route.
@@ -201,3 +202,4 @@ replace the string arrays `links`).
 9. Table cells of ComparisonTable (`compare`, `rivals`: "Unlimited", "0.8 s"), delivery windows (`days.slots`), zone times and chapter
    offsets ("0:00") stay plain text for now: they read as copy, not as figures the UI computes with.
 10. Milestone `date` is a year string ("2021"); kept as text until a `|year` formatter is needed.
+- FaqSplit stays todo: an `empty` prop makes 13 props and the generated faq-split 154 lines; needs a split (FaqSplit by layout) or the text in its labels record.

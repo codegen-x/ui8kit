@@ -4,7 +4,7 @@ import { cond, eachAt, eq, lt, ref, text, use, when, organism } from "../../buil
 import type { OrganismSpec, Value, ViewNode } from "../../ir";
 import { spec, ts } from "../kit";
 import { frame } from "../components/frames";
-import { id, tsOf, toneLite } from "../props";
+import { empty, id, orEmpty, tsOf, toneLite } from "../props";
 
 const postShowcase = spec("organism.post-showcase", "PostShowcase", "Posts shown off. Axes: layout (intro: four small post cards beside the intro with a view-all link, featured: the first post in detail beside its picture, overlay: cards with the text over the picture), cols (2, 3: overlay columns), mediaSide, tone.", {
   typeImports: [{ from: "PostCard", names: ["Post", "PostLabels"] }, { from: "SectionFrame", names: ["HeadLink"] }],
@@ -20,6 +20,7 @@ const postShowcase = spec("organism.post-showcase", "PostShowcase", "Posts shown
     { name: "cols", type: tsOf("2", "3"), default: "3" },
     { name: "mediaSide", type: tsOf("end", "start"), default: "start" },
     { name: "tone", type: toneLite, default: "default" },
+    empty,
   ],
   view: (() => {
     const is = (l: string) => eq(ref("layout"), l);
@@ -33,7 +34,7 @@ const postShowcase = spec("organism.post-showcase", "PostShowcase", "Posts shown
       [organism("MediaFrame", { alt: ref("title"), ratio: "4/3" })]);
     const overlay = frame(head, [use("Box", { props: { Class: cond(eq(ref("cols"), "2"), "grid grid-cols-1 gap-6 md:grid-cols-2", "grid grid-cols-1 gap-6 md:grid-cols-3") } },
       eachAt(ref("posts"), "p", "i", ref("p.id"), when(lt(ref("i"), cond(eq(ref("cols"), "2"), 2, 3)), [organism("PostOverlayCard", { p: ref("p"), labels: ref("labels"), ratio: cond(eq(ref("cols"), "2"), "16/9", "4/3") })])))]);
-    return [when(is("intro"), [intro], [when(is("featured"), [featured], [overlay])])];
+    return [orEmpty("posts", "newspaper", [when(is("intro"), [intro], [when(is("featured"), [featured], [overlay])])], (n) => [frame(head, n)])];
   })(),
 });
 

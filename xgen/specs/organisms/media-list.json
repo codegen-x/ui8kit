@@ -194,28 +194,46 @@
               },
               "then": [
                 {
-                  "organism": "MediaFigures",
-                  "props": {
-                    "extras": {
-                      "$": "extras"
-                    },
-                    "mode": {
-                      "op": "cond",
-                      "args": [
-                        {
-                          "op": "eq",
+                  "when": {
+                    "op": "gt",
+                    "args": [
+                      {
+                        "op": "len",
+                        "args": [
+                          {
+                            "$": "extras.stats"
+                          }
+                        ]
+                      },
+                      0
+                    ]
+                  },
+                  "then": [
+                    {
+                      "organism": "MediaFigures",
+                      "props": {
+                        "extras": {
+                          "$": "extras"
+                        },
+                        "mode": {
+                          "op": "cond",
                           "args": [
                             {
-                              "$": "layout"
+                              "op": "eq",
+                              "args": [
+                                {
+                                  "$": "layout"
+                                },
+                                "proof"
+                              ]
                             },
-                            "proof"
+                            "row",
+                            "grid"
                           ]
-                        },
-                        "row",
-                        "grid"
-                      ]
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
               ]
             },
@@ -231,15 +249,33 @@
               },
               "then": [
                 {
-                  "organism": "MediaReview",
-                  "props": {
-                    "extras": {
-                      "$": "extras"
-                    },
-                    "labels": {
-                      "$": "labels"
+                  "when": {
+                    "op": "gt",
+                    "args": [
+                      {
+                        "op": "len",
+                        "args": [
+                          {
+                            "$": "extras.reviews"
+                          }
+                        ]
+                      },
+                      0
+                    ]
+                  },
+                  "then": [
+                    {
+                      "organism": "MediaReview",
+                      "props": {
+                        "extras": {
+                          "$": "extras"
+                        },
+                        "labels": {
+                          "$": "labels"
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
               ]
             },
@@ -255,15 +291,33 @@
               },
               "then": [
                 {
-                  "organism": "MediaSteps",
-                  "props": {
-                    "extras": {
-                      "$": "extras"
-                    },
-                    "labels": {
-                      "$": "labels"
+                  "when": {
+                    "op": "gt",
+                    "args": [
+                      {
+                        "op": "len",
+                        "args": [
+                          {
+                            "$": "extras.steps"
+                          }
+                        ]
+                      },
+                      0
+                    ]
+                  },
+                  "then": [
+                    {
+                      "organism": "MediaSteps",
+                      "props": {
+                        "extras": {
+                          "$": "extras"
+                        },
+                        "labels": {
+                          "$": "labels"
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
               ]
             },
@@ -279,15 +333,33 @@
               },
               "then": [
                 {
-                  "organism": "MediaPosts",
-                  "props": {
-                    "extras": {
-                      "$": "extras"
-                    },
-                    "labels": {
-                      "$": "labels"
+                  "when": {
+                    "op": "gt",
+                    "args": [
+                      {
+                        "op": "len",
+                        "args": [
+                          {
+                            "$": "extras.posts"
+                          }
+                        ]
+                      },
+                      0
+                    ]
+                  },
+                  "then": [
+                    {
+                      "organism": "MediaPosts",
+                      "props": {
+                        "extras": {
+                          "$": "extras"
+                        },
+                        "labels": {
+                          "$": "labels"
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
               ]
             },
@@ -303,15 +375,33 @@
               },
               "then": [
                 {
-                  "organism": "MediaTopics",
-                  "props": {
-                    "extras": {
-                      "$": "extras"
-                    },
-                    "labels": {
-                      "$": "labels"
+                  "when": {
+                    "op": "gt",
+                    "args": [
+                      {
+                        "op": "len",
+                        "args": [
+                          {
+                            "$": "extras.topics"
+                          }
+                        ]
+                      },
+                      0
+                    ]
+                  },
+                  "then": [
+                    {
+                      "organism": "MediaTopics",
+                      "props": {
+                        "extras": {
+                          "$": "extras"
+                        },
+                        "labels": {
+                          "$": "labels"
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
               ]
             },
@@ -327,15 +417,33 @@
               },
               "then": [
                 {
-                  "organism": "MediaContacts",
-                  "props": {
-                    "extras": {
-                      "$": "extras"
-                    },
-                    "labels": {
-                      "$": "labels"
+                  "when": {
+                    "op": "gt",
+                    "args": [
+                      {
+                        "op": "len",
+                        "args": [
+                          {
+                            "$": "extras.channels"
+                          }
+                        ]
+                      },
+                      0
+                    ]
+                  },
+                  "then": [
+                    {
+                      "organism": "MediaContacts",
+                      "props": {
+                        "extras": {
+                          "$": "extras"
+                        },
+                        "labels": {
+                          "$": "labels"
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
               ]
             },

@@ -70,46 +70,50 @@ export function PostGrid({
           )}</For>
         </Switcher>
       ) : null}
-      {((layout as string) === "magazine") ? (
-        <Stack gap="6" align="stretch" data-testid="items">
-          <For each={posts.filter((i) => !filter?.topic || i["category"] === filter?.topic) ?? []}>{(p, iOf) => { const i = iOf(); return (
-            <>
-              {(i === 0) ? (
-                <PostCard post={p} labels={labels} layout="horizontal" media={media} meta={meta} density={density} />
-              ) : null}
-            </>
-          ); }}</For>
-          <Grid cols={cols} class="gap-6">
-            <For each={posts.filter((i) => !filter?.topic || i["category"] === filter?.topic) ?? []}>{(p, iOf) => { const i = iOf(); return (
-              <>
-                {(i > 0) ? (
-                  <PostCard post={p} labels={labels} media={media} meta={meta} density={density} />
-                ) : null}
-              </>
-            ); }}</For>
-          </Grid>
-        </Stack>
-      ) : (
-        <Grid
-          cols={
-            (layout as string) === "list" ? "1"
-            : fitCols(cols, (posts.filter((i) => !filter?.topic || i["category"] === filter?.topic)?.length ?? 0))
-          }
-          class="w-full gap-6"
-          data-testid="items"
-        >
-          <For each={posts.filter((i) => !filter?.topic || i["category"] === filter?.topic) ?? []}>{(p) => (
-            <PostCard
-              post={p}
-              labels={labels}
-              layout={(((layout as string) === "list") ? "horizontal" : "vertical")}
-              media={media}
-              meta={meta}
-              density={density}
-            />
-          )}</For>
-        </Grid>
-      )}
+      {((posts.filter((i) => !filter?.topic || i["category"] === filter?.topic)?.length ?? 0) > 0) ? (
+        <>
+          {((layout as string) === "magazine") ? (
+            <Stack gap="6" align="stretch" data-testid="items">
+              <For each={posts.filter((i) => !filter?.topic || i["category"] === filter?.topic) ?? []}>{(p, iOf) => { const i = iOf(); return (
+                <>
+                  {(i === 0) ? (
+                    <PostCard post={p} labels={labels} layout="horizontal" media={media} meta={meta} density={density} />
+                  ) : null}
+                </>
+              ); }}</For>
+              <Grid cols={cols} class="gap-6">
+                <For each={posts.filter((i) => !filter?.topic || i["category"] === filter?.topic) ?? []}>{(p, iOf) => { const i = iOf(); return (
+                  <>
+                    {(i > 0) ? (
+                      <PostCard post={p} labels={labels} media={media} meta={meta} density={density} />
+                    ) : null}
+                  </>
+                ); }}</For>
+              </Grid>
+            </Stack>
+          ) : (
+            <Grid
+              cols={
+                (layout as string) === "list" ? "1"
+                : fitCols(cols, (posts.filter((i) => !filter?.topic || i["category"] === filter?.topic)?.length ?? 0))
+              }
+              class="w-full gap-6"
+              data-testid="items"
+            >
+              <For each={posts.filter((i) => !filter?.topic || i["category"] === filter?.topic) ?? []}>{(p) => (
+                <PostCard
+                  post={p}
+                  labels={labels}
+                  layout={(((layout as string) === "list") ? "horizontal" : "vertical")}
+                  media={media}
+                  meta={meta}
+                  density={density}
+                />
+              )}</For>
+            </Grid>
+          )}
+        </>
+      ) : null}
     </SectionFrame>
   );
 }

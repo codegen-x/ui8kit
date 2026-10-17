@@ -51,25 +51,27 @@ templ PostGrid(p PostGridProps) {
 				}
 			}
 		}
-		if uiutils.Eq(vLayout, "magazine") {
-			@stack.Stack(stack.StackProps{Gap: "6", Align: "stretch", Attrs: uiutils.Attrs("data-testid", "items")}) {
-				for vI, vP := range uiutils.L(uiutils.Where(vPosts, "category", uiutils.Get(vFilter, "topic"))) {
-					if uiutils.Eq(float64(vI), float64(0)) {
-						@PostCard(PostCardProps{Post: vP, Labels: vLabels, Layout: "horizontal", Media: vMedia, Meta: vMeta, Density: vDensity})
-					}
-				}
-				@grid.Grid(grid.GridProps{Cols: uiutils.S(vCols), Class: "gap-6"}) {
+		if uiutils.Gt(uiutils.Len(uiutils.Where(vPosts, "category", uiutils.Get(vFilter, "topic"))), float64(0)) {
+			if uiutils.Eq(vLayout, "magazine") {
+				@stack.Stack(stack.StackProps{Gap: "6", Align: "stretch", Attrs: uiutils.Attrs("data-testid", "items")}) {
 					for vI, vP := range uiutils.L(uiutils.Where(vPosts, "category", uiutils.Get(vFilter, "topic"))) {
-						if uiutils.Gt(float64(vI), float64(0)) {
-							@PostCard(PostCardProps{Post: vP, Labels: vLabels, Media: vMedia, Meta: vMeta, Density: vDensity})
+						if uiutils.Eq(float64(vI), float64(0)) {
+							@PostCard(PostCardProps{Post: vP, Labels: vLabels, Layout: "horizontal", Media: vMedia, Meta: vMeta, Density: vDensity})
+						}
+					}
+					@grid.Grid(grid.GridProps{Cols: uiutils.S(vCols), Class: "gap-6"}) {
+						for vI, vP := range uiutils.L(uiutils.Where(vPosts, "category", uiutils.Get(vFilter, "topic"))) {
+							if uiutils.Gt(float64(vI), float64(0)) {
+								@PostCard(PostCardProps{Post: vP, Labels: vLabels, Media: vMedia, Meta: vMeta, Density: vDensity})
+							}
 						}
 					}
 				}
-			}
-		} else {
-			@grid.Grid(grid.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "list")), "1", uiutils.FitCols(vCols, uiutils.Len(uiutils.Where(vPosts, "category", uiutils.Get(vFilter, "topic")))))), Class: "w-full gap-6", Attrs: uiutils.Attrs("data-testid", "items")}) {
-				for _, vP := range uiutils.L(uiutils.Where(vPosts, "category", uiutils.Get(vFilter, "topic"))) {
-					@PostCard(PostCardProps{Post: vP, Labels: vLabels, Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "list")), "horizontal", "vertical"), Media: vMedia, Meta: vMeta, Density: vDensity})
+			} else {
+				@grid.Grid(grid.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "list")), "1", uiutils.FitCols(vCols, uiutils.Len(uiutils.Where(vPosts, "category", uiutils.Get(vFilter, "topic")))))), Class: "w-full gap-6", Attrs: uiutils.Attrs("data-testid", "items")}) {
+					for _, vP := range uiutils.L(uiutils.Where(vPosts, "category", uiutils.Get(vFilter, "topic"))) {
+						@PostCard(PostCardProps{Post: vP, Labels: vLabels, Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "list")), "horizontal", "vertical"), Media: vMedia, Meta: vMeta, Density: vDensity})
+					}
 				}
 			}
 		}

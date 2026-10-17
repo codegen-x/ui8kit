@@ -162,6 +162,7 @@
   lead={ui.marketing.quoteSplit.lead}
   badge={ui.marketing.quoteSplit.badge}
   quotes={testimonials}
+  empty={ui.empty.quotes}
   labels={{
     rating: ui.testimonials.rating,
     byLine: ui.testimonials.byLine,

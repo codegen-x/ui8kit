@@ -39,20 +39,26 @@ templ PostSplit(p PostSplitProps) {
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	if uiutils.Eq(vLayout, "center") {
 		@SectionFrame(SectionFrameProps{Id: vId, Title: uiutils.Get(vPost, "title"), Lead: uiutils.Get(vPost, "excerpt"), Heading: map[string]any{"badge": uiutils.Get(vPost, "category"), "level": vLevel}, Tone: vTone, Media: map[string]any{"show": true}, Align: "center", LandmarkLabel: vLandmarkLabel, Aside: postSplitFill1(p, vPost, vLayout, vCover)}) {
-			@PostTags(PostTagsProps{Tags: uiutils.Get(vExtras, "tags"), Align: "center"})
+			if uiutils.Gt(uiutils.Len(uiutils.Get(vExtras, "tags")), float64(0)) {
+				@PostTags(PostTagsProps{Tags: uiutils.Get(vExtras, "tags"), Align: "center"})
+			}
 			@PostStats(PostStatsProps{Post: vPost, Extras: vExtras, Labels: vLabels, Align: "center"})
 			@PostAuthor(PostAuthorProps{Post: vPost, Extras: vExtras, Labels: vLabels, Mode: "card", Share: true, Class: uiutils.Cnv("mx-auto w-full max-w-md")})
 		}
 	} else {
 		@SectionFrame(SectionFrameProps{Id: vId, Title: uiutils.Get(vPost, "title"), Lead: uiutils.Get(vPost, "excerpt"), Heading: map[string]any{"badge": uiutils.Get(vPost, "category"), "level": vLevel}, Tone: vTone, Media: map[string]any{"show": true, "side": vMediaSide}, Layout: "split", LandmarkLabel: vLandmarkLabel, Aside: postSplitFill2(p, vPost, vLayout, vCover)}) {
 			if uiutils.Eq(vLayout, "outline") {
-				@PostOutline(PostOutlineProps{Post: vPost, Extras: vExtras, Labels: vLabels})
+				if uiutils.Gt(uiutils.Len(uiutils.Get(vExtras, "outline")), float64(0)) {
+					@PostOutline(PostOutlineProps{Post: vPost, Extras: vExtras, Labels: vLabels})
+				}
 			} else {
 				@PostAuthor(PostAuthorProps{Post: vPost, Extras: vExtras, Labels: vLabels, Mode: vAuthor})
 				if !uiutils.Eq(vAuthor, "line") {
 					@PostStats(PostStatsProps{Post: vPost, Extras: vExtras, Labels: vLabels})
 				}
-				@PostTags(PostTagsProps{Tags: uiutils.Get(vExtras, "tags")})
+				if uiutils.Gt(uiutils.Len(uiutils.Get(vExtras, "tags")), float64(0)) {
+					@PostTags(PostTagsProps{Tags: uiutils.Get(vExtras, "tags")})
+				}
 			}
 			@PostActions(PostActionsProps{Labels: vLabels, Mode: vActions})
 		}

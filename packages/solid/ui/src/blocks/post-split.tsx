@@ -70,7 +70,9 @@ export function PostSplit({
             />
           )}
         >
-          <PostTags tags={extras.tags} align="center" />
+          {((extras.tags?.length ?? 0) > 0) ? (
+            <PostTags tags={extras.tags} align="center" />
+          ) : null}
           <PostStats post={post} extras={extras} labels={labels} align="center" />
           <PostAuthor
             post={post}
@@ -103,14 +105,20 @@ export function PostSplit({
           )}
         >
           {((layout as string) === "outline") ? (
-            <PostOutline post={post} extras={extras} labels={labels} />
+            <>
+              {((extras.outline?.length ?? 0) > 0) ? (
+                <PostOutline post={post} extras={extras} labels={labels} />
+              ) : null}
+            </>
           ) : (
             <>
               <PostAuthor post={post} extras={extras} labels={labels} mode={author} />
               {((author as string) !== "line") ? (
                 <PostStats post={post} extras={extras} labels={labels} />
               ) : null}
-              <PostTags tags={extras.tags} />
+              {((extras.tags?.length ?? 0) > 0) ? (
+                <PostTags tags={extras.tags} />
+              ) : null}
             </>
           )}
           <PostActions labels={labels} mode={actions} />

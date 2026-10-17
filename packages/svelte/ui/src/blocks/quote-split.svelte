@@ -26,6 +26,7 @@
     layout?: "media" | "logos" | "rating" | "stack" | "compact" | "bento";
     mediaSide?: "end" | "start";
     tone?: "default" | "muted";
+    empty?: string;
     landmarkLabel?: string;
   };
 </script>
@@ -34,6 +35,7 @@
   import Box from "../primitives/box/box.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import ActionGroup from "../components/action-group.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import QuoteFigures from "../components/quote-figures.svelte";
   import QuoteLogoTiles from "../components/quote-logo-tiles.svelte";
@@ -53,11 +55,16 @@
     layout = "media",
     mediaSide = "end",
     tone = "default",
+    empty = "",
     landmarkLabel,
   }: QuoteSplitProps = $props();
 </script>
 
-{#if (((layout as string) === "compact") || ((layout as string) === "bento"))}
+{#if ((quotes?.length ?? 0) === 0)}
+  <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone} landmarkLabel={landmarkLabel}>
+    <EmptyState icon="quote" title={empty} />
+  </SectionFrame>
+{:else if (((layout as string) === "compact") || ((layout as string) === "bento"))}
   <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone} landmarkLabel={landmarkLabel}>
     {#if ((layout as string) === "bento")}
       <QuoteFigures extras={extras} />

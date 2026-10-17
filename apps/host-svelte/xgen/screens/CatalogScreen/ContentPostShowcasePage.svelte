@@ -91,6 +91,7 @@
               lead={ui.content.postShowcase.lead}
               badge={ui.content.postShowcase.badge}
               posts={posts}
+              empty={ui.empty.posts}
               labels={ui.content.labels}
               action={{ label: ui.content.postShowcase.action, href: "#/articles" }}
               layout="intro"
@@ -120,6 +121,7 @@
               lead={ui.content.postShowcase.lead}
               badge={ui.content.postShowcase.badge}
               posts={posts}
+              empty={ui.empty.posts}
               labels={ui.content.labels}
               action={{ label: ui.content.postShowcase.action, href: "#/articles" }}
               layout="featured"
@@ -149,6 +151,7 @@
               lead={ui.content.postShowcase.lead}
               badge={ui.content.postShowcase.badge}
               posts={posts}
+              empty={ui.empty.posts}
               labels={ui.content.labels}
               action={{ label: ui.content.postShowcase.action, href: "#/articles" }}
               layout="overlay"
@@ -178,6 +181,7 @@
               lead={ui.content.postShowcase.lead}
               badge={ui.content.postShowcase.badge}
               posts={posts}
+              empty={ui.empty.posts}
               labels={ui.content.labels}
               action={{ label: ui.content.postShowcase.action, href: "#/articles" }}
               layout="overlay"

@@ -19,7 +19,9 @@
     {{ include('blocks/media-frame.html.twig', {'p': {'alt': ui_get(v_post, ['title']), 'ratio': (ui_t(ui_eq(v_layout, 'center')) ? '21/9' : (ui_t(ui_eq(v_cover, 'square')) ? '1/1' : '4/3'))}}, with_context = false) }}
   {%- endset -%}
   {%- set c_2 -%}
-    {{ include('blocks/post-tags.html.twig', {'p': {'tags': ui_get(v_extras, ['tags']), 'align': 'center'}}, with_context = false) }}
+    {%- if ui_t(ui_gt(ui_len(ui_get(v_extras, ['tags'])), 0)) %}
+      {{ include('blocks/post-tags.html.twig', {'p': {'tags': ui_get(v_extras, ['tags']), 'align': 'center'}}, with_context = false) }}
+    {%- endif %}
     {{ include('blocks/post-stats.html.twig', {'p': {'post': v_post, 'extras': v_extras, 'labels': v_labels, 'align': 'center'}}, with_context = false) }}
     {{ include('blocks/post-author.html.twig', {'p': {'post': v_post, 'extras': v_extras, 'labels': v_labels, 'mode': 'card', 'share': true, 'className': ui_cnv(['mx-auto w-full max-w-md'])}}, with_context = false) }}
   {%- endset -%}
@@ -30,13 +32,17 @@
   {%- endset -%}
   {%- set c_4 -%}
     {%- if ui_t(ui_eq(v_layout, 'outline')) %}
-      {{ include('blocks/post-outline.html.twig', {'p': {'post': v_post, 'extras': v_extras, 'labels': v_labels}}, with_context = false) }}
+      {%- if ui_t(ui_gt(ui_len(ui_get(v_extras, ['outline'])), 0)) %}
+        {{ include('blocks/post-outline.html.twig', {'p': {'post': v_post, 'extras': v_extras, 'labels': v_labels}}, with_context = false) }}
+      {%- endif %}
     {%- else %}
       {{ include('blocks/post-author.html.twig', {'p': {'post': v_post, 'extras': v_extras, 'labels': v_labels, 'mode': v_author}}, with_context = false) }}
       {%- if ui_t(not (ui_eq(v_author, 'line'))) %}
         {{ include('blocks/post-stats.html.twig', {'p': {'post': v_post, 'extras': v_extras, 'labels': v_labels}}, with_context = false) }}
       {%- endif %}
-      {{ include('blocks/post-tags.html.twig', {'p': {'tags': ui_get(v_extras, ['tags'])}}, with_context = false) }}
+      {%- if ui_t(ui_gt(ui_len(ui_get(v_extras, ['tags'])), 0)) %}
+        {{ include('blocks/post-tags.html.twig', {'p': {'tags': ui_get(v_extras, ['tags'])}}, with_context = false) }}
+      {%- endif %}
     {%- endif %}
     {{ include('blocks/post-actions.html.twig', {'p': {'labels': v_labels, 'mode': v_actions}}, with_context = false) }}
   {%- endset -%}

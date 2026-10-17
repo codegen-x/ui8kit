@@ -4,7 +4,7 @@ import { and, cond, eachAt, eq, lt, or, ref, undef, use, when, organism } from "
 import type { OrganismSpec, Value, ViewNode } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { frame } from "../components/frames";
-import { id, tsOf, toneLite } from "../props";
+import { empty, id, orEmpty, tsOf, toneLite } from "../props";
 
 const quoteSplit = spec("organism.quote-split", "QuoteSplit", "Testimonials in a split or with figures. Axes: layout (media: one quote card and an action beside a picture, logos: one quote over four logo tiles beside a picture, rating: one quote beside a rating panel, stack: three stacked quote cards beside a picture, compact: four short quote cards in a row, bento: figures over a featured quote beside a stack), mediaSide, tone.", {
   typeImports: [{ from: "TestimonialGrid", names: ["Quote", "QuoteLabels"] }, { from: "StatsBand", names: ["Stat"] }, { from: "LogoCloud", names: ["Logo"] }, { from: "ErrorPage", names: ["LinkActions"] }],
@@ -21,6 +21,7 @@ const quoteSplit = spec("organism.quote-split", "QuoteSplit", "Testimonials in a
     { name: "layout", type: tsOf("media", "logos", "rating", "stack", "compact", "bento"), default: "media" },
     { name: "mediaSide", type: tsOf("end", "start"), default: "end" },
     { name: "tone", type: toneLite, default: "default" },
+    empty,
   ],
   view: (() => {
     const card = (kind: Value, layout: Value, cls: Value = ""): ViewNode => organism("QuoteSlot", { q: ref("q"), labels: ref("labels"), kind, layout, className: cls });
@@ -31,7 +32,7 @@ const quoteSplit = spec("organism.quote-split", "QuoteSplit", "Testimonials in a
     const picture = organism("MediaFrame", { alt: ref("title"), ratio: "4/3" });
     const is = (l: string) => eq(ref("layout"), l);
     const one = or(is("media"), is("logos"), is("rating"));
-    return [
+    return [orEmpty("quotes", "quote", [
       when(or(is("compact"), is("bento")), [frame(common, [
         when(is("bento"), [organism("QuoteFigures", { extras: ref("extras") })]),
         use("Box", { props: { Class: cond(is("bento"), "grid grid-cols-1 gap-4 lg:grid-cols-2", "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4") } },
@@ -42,7 +43,7 @@ const quoteSplit = spec("organism.quote-split", "QuoteSplit", "Testimonials in a
         when(is("stack"), [use("Stack", { props: { Gap: "4", Align: "stretch" } }, firstQuotes(3, card("card", "stack")))]),
         when(one, [actions]),
       ], [when(is("rating"), [organism("QuoteRatingPanel", { extras: ref("extras"), labels: ref("labels") })], [picture])])]),
-    ];
+    ], (n) => [frame(common, n)])];
   })(),
 });
 

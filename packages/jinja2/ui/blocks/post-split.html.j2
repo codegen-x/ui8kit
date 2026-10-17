@@ -19,7 +19,9 @@
     {{ ui_include('blocks/media-frame.html.j2', {'p': {'alt': ui_get(v_post, ['title']), 'ratio': ('21/9' if ui_t(ui_eq(v_layout, 'center')) else ('1/1' if ui_t(ui_eq(v_cover, 'square')) else '4/3'))}}) }}
   {%- endset -%}
   {%- set c_2 -%}
-    {{ ui_include('blocks/post-tags.html.j2', {'p': {'tags': ui_get(v_extras, ['tags']), 'align': 'center'}}) }}
+    {%- if ui_t(ui_gt(ui_len(ui_get(v_extras, ['tags'])), 0)) %}
+      {{ ui_include('blocks/post-tags.html.j2', {'p': {'tags': ui_get(v_extras, ['tags']), 'align': 'center'}}) }}
+    {%- endif %}
     {{ ui_include('blocks/post-stats.html.j2', {'p': {'post': v_post, 'extras': v_extras, 'labels': v_labels, 'align': 'center'}}) }}
     {{ ui_include('blocks/post-author.html.j2', {'p': {'post': v_post, 'extras': v_extras, 'labels': v_labels, 'mode': 'card', 'share': true, 'className': ui_cnv(['mx-auto w-full max-w-md'])}}) }}
   {%- endset -%}
@@ -30,13 +32,17 @@
   {%- endset -%}
   {%- set c_4 -%}
     {%- if ui_t(ui_eq(v_layout, 'outline')) %}
-      {{ ui_include('blocks/post-outline.html.j2', {'p': {'post': v_post, 'extras': v_extras, 'labels': v_labels}}) }}
+      {%- if ui_t(ui_gt(ui_len(ui_get(v_extras, ['outline'])), 0)) %}
+        {{ ui_include('blocks/post-outline.html.j2', {'p': {'post': v_post, 'extras': v_extras, 'labels': v_labels}}) }}
+      {%- endif %}
     {%- else %}
       {{ ui_include('blocks/post-author.html.j2', {'p': {'post': v_post, 'extras': v_extras, 'labels': v_labels, 'mode': v_author}}) }}
       {%- if ui_t(not (ui_eq(v_author, 'line'))) %}
         {{ ui_include('blocks/post-stats.html.j2', {'p': {'post': v_post, 'extras': v_extras, 'labels': v_labels}}) }}
       {%- endif %}
-      {{ ui_include('blocks/post-tags.html.j2', {'p': {'tags': ui_get(v_extras, ['tags'])}}) }}
+      {%- if ui_t(ui_gt(ui_len(ui_get(v_extras, ['tags'])), 0)) %}
+        {{ ui_include('blocks/post-tags.html.j2', {'p': {'tags': ui_get(v_extras, ['tags'])}}) }}
+      {%- endif %}
     {%- endif %}
     {{ ui_include('blocks/post-actions.html.j2', {'p': {'labels': v_labels, 'mode': v_actions}}) }}
   {%- endset -%}

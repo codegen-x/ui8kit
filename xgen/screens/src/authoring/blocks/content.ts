@@ -96,13 +96,14 @@ const postGrid = spec(`${O}post-grid`, "PostGrid", "A section with a heading and
     return [frame({ id: ref("id"), title: ref("title"), action: ref("action"), tone: ref("tone"), density: cond(eq(ref("density"), "compact"), "compact", "default"), measure: cond(eq(ref("meta"), "news"), "fill", "default"), className: cond(eq(ref("meta"), "news"), "py-0", "") }, [
       when(eq(ref("filter.mode"), "topics"), [organism("Switcher", { label: ref("filter.label") }, kids(
         each(ref("filter.topics"), "tab", ref("tab.id"), organism("SwitcherItem", { active: eq(ref("tab.value"), ref("filter.topic")) }, { on: { click: call("emit.topic", ref("tab.value")) }, ...kids(text(ref("tab.title"))) }))))]),
-      when(eq(ref("layout"), "magazine"),
+      // emptyMode omit (12-prop limit leaves no room for an `empty` text): no posts, no grid
+      when(gt(len(shown), 0), [when(eq(ref("layout"), "magazine"),
         [use("Stack", { props: { Gap: "6", Align: "stretch" }, attrs: { "data-testid": "items" } },
           eachAt(shown, "p", "i", ref("p.id"), when(eq(ref("i"), 0), [card("horizontal")])),
           use("Grid", { props: { Cols: ref("cols"), Class: "gap-6" } },
             eachAt(shown, "p", "i", ref("p.id"), when(gt(ref("i"), 0), [card("vertical")]))))],
         [use("Grid", { props: { Cols: cond(eq(ref("layout"), "list"), "1", fitCols(ref("cols"), len(shown))), Class: "w-full gap-6" }, attrs: { "data-testid": "items" } },
-          each(shown, "p", ref("p.id"), organism("PostCard", { post: ref("p"), labels: ref("labels"), layout: cond(eq(ref("layout"), "list"), "horizontal", "vertical"), media: ref("media"), meta: ref("meta"), density: ref("density") })))]),
+          each(shown, "p", ref("p.id"), organism("PostCard", { post: ref("p"), labels: ref("labels"), layout: cond(eq(ref("layout"), "list"), "horizontal", "vertical"), media: ref("media"), meta: ref("meta"), density: ref("density") })))])]),
     ])];
   })(),
 });

@@ -92,6 +92,7 @@ export function ContentPostShowcasePage() {
                   lead={ui.content.postShowcase.lead}
                   badge={ui.content.postShowcase.badge}
                   posts={posts}
+                  empty={ui.empty.posts}
                   labels={ui.content.labels}
                   action={{ label: ui.content.postShowcase.action, href: "#/articles" }}
                   layout="intro"
@@ -121,6 +122,7 @@ export function ContentPostShowcasePage() {
                   lead={ui.content.postShowcase.lead}
                   badge={ui.content.postShowcase.badge}
                   posts={posts}
+                  empty={ui.empty.posts}
                   labels={ui.content.labels}
                   action={{ label: ui.content.postShowcase.action, href: "#/articles" }}
                   layout="featured"
@@ -150,6 +152,7 @@ export function ContentPostShowcasePage() {
                   lead={ui.content.postShowcase.lead}
                   badge={ui.content.postShowcase.badge}
                   posts={posts}
+                  empty={ui.empty.posts}
                   labels={ui.content.labels}
                   action={{ label: ui.content.postShowcase.action, href: "#/articles" }}
                   layout="overlay"
@@ -179,6 +182,7 @@ export function ContentPostShowcasePage() {
                   lead={ui.content.postShowcase.lead}
                   badge={ui.content.postShowcase.badge}
                   posts={posts}
+                  empty={ui.empty.posts}
                   labels={ui.content.labels}
                   action={{ label: ui.content.postShowcase.action, href: "#/articles" }}
                   layout="overlay"

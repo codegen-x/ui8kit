@@ -23,6 +23,7 @@ type PostShowcaseProps struct {
 	Cols any `json:"cols"`
 	MediaSide any `json:"mediaSide"`
 	Tone any `json:"tone"`
+	Empty any `json:"empty"`
 	LandmarkLabel any `json:"landmarkLabel"`
 }
 
@@ -39,8 +40,13 @@ templ PostShowcase(p PostShowcaseProps) {
 	{{ vCols := uiutils.Def(p.Cols, "3") }}
 	{{ vMediaSide := uiutils.Def(p.MediaSide, "start") }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
+	{{ vEmpty := uiutils.Def(p.Empty, "") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	if uiutils.Eq(vLayout, "intro") {
+	if uiutils.Eq(uiutils.Len(vPosts), float64(0)) {
+		@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, LandmarkLabel: vLandmarkLabel}) {
+			@EmptyState(EmptyStateProps{Icon: "newspaper", Title: vEmpty})
+		}
+	} else if uiutils.Eq(vLayout, "intro") {
 		@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, Layout: "split", Media: map[string]any{"show": true, "side": vMediaSide}, LandmarkLabel: vLandmarkLabel, Aside: postShowcaseFill1(p, vPosts, vLabels)}) {
 			@link.Link(link.LinkProps{Href: uiutils.S(uiutils.Get(vAction, "href")), Size: "sm", Attrs: uiutils.Attrs("data-testid", "section-action")}) {
 				{ uiutils.Text(uiutils.Get(vAction, "label")) }

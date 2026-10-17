@@ -19,7 +19,9 @@
     {=ui_include('blocks/media-frame.latte', ['p' => ['alt' => ui_get($v_post, ['title']), 'ratio' => (ui_t(ui_eq($v_layout, 'center')) ? '21/9' : (ui_t(ui_eq($v_cover, 'square')) ? '1/1' : '4/3'))]])|noescape}
   {/capture}
   {capture $c_2}
-    {=ui_include('blocks/post-tags.latte', ['p' => ['tags' => ui_get($v_extras, ['tags']), 'align' => 'center']])|noescape}
+    {if ui_t(ui_gt(ui_len(ui_get($v_extras, ['tags'])), 0))}
+      {=ui_include('blocks/post-tags.latte', ['p' => ['tags' => ui_get($v_extras, ['tags']), 'align' => 'center']])|noescape}
+    {/if}
     {=ui_include('blocks/post-stats.latte', ['p' => ['post' => $v_post, 'extras' => $v_extras, 'labels' => $v_labels, 'align' => 'center']])|noescape}
     {=ui_include('blocks/post-author.latte', ['p' => ['post' => $v_post, 'extras' => $v_extras, 'labels' => $v_labels, 'mode' => 'card', 'share' => true, 'className' => ui_cnv(['mx-auto w-full max-w-md'])]])|noescape}
   {/capture}
@@ -30,13 +32,17 @@
   {/capture}
   {capture $c_4}
     {if ui_t(ui_eq($v_layout, 'outline'))}
-      {=ui_include('blocks/post-outline.latte', ['p' => ['post' => $v_post, 'extras' => $v_extras, 'labels' => $v_labels]])|noescape}
+      {if ui_t(ui_gt(ui_len(ui_get($v_extras, ['outline'])), 0))}
+        {=ui_include('blocks/post-outline.latte', ['p' => ['post' => $v_post, 'extras' => $v_extras, 'labels' => $v_labels]])|noescape}
+      {/if}
     {else}
       {=ui_include('blocks/post-author.latte', ['p' => ['post' => $v_post, 'extras' => $v_extras, 'labels' => $v_labels, 'mode' => $v_author]])|noescape}
       {if ui_t(!(ui_eq($v_author, 'line')))}
         {=ui_include('blocks/post-stats.latte', ['p' => ['post' => $v_post, 'extras' => $v_extras, 'labels' => $v_labels]])|noescape}
       {/if}
-      {=ui_include('blocks/post-tags.latte', ['p' => ['tags' => ui_get($v_extras, ['tags'])]])|noescape}
+      {if ui_t(ui_gt(ui_len(ui_get($v_extras, ['tags'])), 0))}
+        {=ui_include('blocks/post-tags.latte', ['p' => ['tags' => ui_get($v_extras, ['tags'])]])|noescape}
+      {/if}
     {/if}
     {=ui_include('blocks/post-actions.latte', ['p' => ['labels' => $v_labels, 'mode' => $v_actions]])|noescape}
   {/capture}

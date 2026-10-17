@@ -70,46 +70,50 @@ export function PostGrid({
           ))}
         </Switcher>
       ) : null}
-      {((layout as string) === "magazine") ? (
-        <Stack gap="6" align="stretch" data-testid="items">
-          {(posts.filter((i) => !filter?.topic || i["category"] === filter?.topic) ?? []).map((p, i) => (
-            <Fragment key={p.id}>
-              {(i === 0) ? (
-                <PostCard post={p} labels={labels} layout="horizontal" media={media} meta={meta} density={density} />
-              ) : null}
-            </Fragment>
-          ))}
-          <Grid cols={cols} className="gap-6">
-            {(posts.filter((i) => !filter?.topic || i["category"] === filter?.topic) ?? []).map((p, i) => (
-              <Fragment key={p.id}>
-                {(i > 0) ? (
-                  <PostCard post={p} labels={labels} media={media} meta={meta} density={density} />
-                ) : null}
-              </Fragment>
-            ))}
-          </Grid>
-        </Stack>
-      ) : (
-        <Grid
-          cols={
-            (layout as string) === "list" ? "1"
-            : fitCols(cols, (posts.filter((i) => !filter?.topic || i["category"] === filter?.topic)?.length ?? 0))
-          }
-          className="w-full gap-6"
-          data-testid="items"
-        >
-          {(posts.filter((i) => !filter?.topic || i["category"] === filter?.topic) ?? []).map((p) => (
-            <PostCard key={p.id}
-              post={p}
-              labels={labels}
-              layout={(((layout as string) === "list") ? "horizontal" : "vertical")}
-              media={media}
-              meta={meta}
-              density={density}
-            />
-          ))}
-        </Grid>
-      )}
+      {((posts.filter((i) => !filter?.topic || i["category"] === filter?.topic)?.length ?? 0) > 0) ? (
+        <>
+          {((layout as string) === "magazine") ? (
+            <Stack gap="6" align="stretch" data-testid="items">
+              {(posts.filter((i) => !filter?.topic || i["category"] === filter?.topic) ?? []).map((p, i) => (
+                <Fragment key={p.id}>
+                  {(i === 0) ? (
+                    <PostCard post={p} labels={labels} layout="horizontal" media={media} meta={meta} density={density} />
+                  ) : null}
+                </Fragment>
+              ))}
+              <Grid cols={cols} className="gap-6">
+                {(posts.filter((i) => !filter?.topic || i["category"] === filter?.topic) ?? []).map((p, i) => (
+                  <Fragment key={p.id}>
+                    {(i > 0) ? (
+                      <PostCard post={p} labels={labels} media={media} meta={meta} density={density} />
+                    ) : null}
+                  </Fragment>
+                ))}
+              </Grid>
+            </Stack>
+          ) : (
+            <Grid
+              cols={
+                (layout as string) === "list" ? "1"
+                : fitCols(cols, (posts.filter((i) => !filter?.topic || i["category"] === filter?.topic)?.length ?? 0))
+              }
+              className="w-full gap-6"
+              data-testid="items"
+            >
+              {(posts.filter((i) => !filter?.topic || i["category"] === filter?.topic) ?? []).map((p) => (
+                <PostCard key={p.id}
+                  post={p}
+                  labels={labels}
+                  layout={(((layout as string) === "list") ? "horizontal" : "vertical")}
+                  media={media}
+                  meta={meta}
+                  density={density}
+                />
+              ))}
+            </Grid>
+          )}
+        </>
+      ) : null}
     </SectionFrame>
   );
 }

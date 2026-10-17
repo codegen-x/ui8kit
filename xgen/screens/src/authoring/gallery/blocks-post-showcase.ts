@@ -23,7 +23,7 @@ const postshowcase = define({
     { sel: '[data-testid="section-action"]', n: 1, when: { layout: "intro" } },
   ],
   sample: {
-    id: "postshowcase", title: p("title"), lead: p("lead"), badge: p("badge"), posts: ref("posts"), labels: t("content.labels"),
+    id: "postshowcase", title: p("title"), lead: p("lead"), badge: p("badge"), posts: ref("posts"), empty: t("empty.posts"), labels: t("content.labels"),
     action: { label: p("action"), href: "#/articles" },
   },
 });

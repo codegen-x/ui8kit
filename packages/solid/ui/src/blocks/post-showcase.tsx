@@ -9,6 +9,7 @@ import { For, type JSX } from "solid-js";
 import { Box } from "../primitives/box/box";
 import { Link } from "../primitives/link/link";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
+import { EmptyState } from "../components/empty-state";
 import { MediaFrame } from "../components/media-frame";
 import { PostFeature } from "../components/post-feature";
 import { PostMiniCard } from "../components/post-mini-card";
@@ -29,6 +30,7 @@ export type PostShowcaseProps = {
   cols?: "2" | "3";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  empty?: string;
   landmarkLabel?: string;
 };
 
@@ -44,11 +46,16 @@ export function PostShowcase({
   cols = "3",
   mediaSide = "start",
   tone = "default",
+  empty = "",
   landmarkLabel,
 }: PostShowcaseProps) {
   return (
     <>
-      {((layout as string) === "intro") ? (
+      {((posts?.length ?? 0) === 0) ? (
+        <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone} landmarkLabel={landmarkLabel}>
+          <EmptyState icon="newspaper" title={empty} />
+        </SectionFrame>
+      ) : ((layout as string) === "intro") ? (
         <SectionFrame
           id={id}
           title={title}

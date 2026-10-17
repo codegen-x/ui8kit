@@ -67,16 +67,28 @@ const {
     :media="{ show: true, side: mediaSide }"
     :landmarkLabel="landmarkLabel"
   >
-    <MediaFigures
-      v-if="(((layout as string) === 'figures') || ((layout as string) === 'proof'))"
-      :extras="extras"
-      :mode="(((layout as string) === 'proof') ? 'row' : 'grid')"
-    />
-    <MediaReview v-if="((layout as string) === 'proof')" :extras="extras" :labels="labels" />
-    <MediaSteps v-if="((layout as string) === 'steps')" :extras="extras" :labels="labels" />
-    <MediaPosts v-if="((layout as string) === 'posts')" :extras="extras" :labels="labels" />
-    <MediaTopics v-if="((layout as string) === 'topics')" :extras="extras" :labels="labels" />
-    <MediaContacts v-if="((layout as string) === 'contact')" :extras="extras" :labels="labels" />
+    <template v-if="(((layout as string) === 'figures') || ((layout as string) === 'proof'))">
+      <MediaFigures
+        v-if="((extras.stats?.length ?? 0) > 0)"
+        :extras="extras"
+        :mode="(((layout as string) === 'proof') ? 'row' : 'grid')"
+      />
+    </template>
+    <template v-if="((layout as string) === 'proof')">
+      <MediaReview v-if="((extras.reviews?.length ?? 0) > 0)" :extras="extras" :labels="labels" />
+    </template>
+    <template v-if="((layout as string) === 'steps')">
+      <MediaSteps v-if="((extras.steps?.length ?? 0) > 0)" :extras="extras" :labels="labels" />
+    </template>
+    <template v-if="((layout as string) === 'posts')">
+      <MediaPosts v-if="((extras.posts?.length ?? 0) > 0)" :extras="extras" :labels="labels" />
+    </template>
+    <template v-if="((layout as string) === 'topics')">
+      <MediaTopics v-if="((extras.topics?.length ?? 0) > 0)" :extras="extras" :labels="labels" />
+    </template>
+    <template v-if="((layout as string) === 'contact')">
+      <MediaContacts v-if="((extras.channels?.length ?? 0) > 0)" :extras="extras" :labels="labels" />
+    </template>
     <ActionGroup v-if="((layout as string) !== 'contact')"
       :primary="actions.cta"
       :primaryHref="actions.href"

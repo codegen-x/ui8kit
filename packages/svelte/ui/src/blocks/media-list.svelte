@@ -68,22 +68,34 @@
   landmarkLabel={landmarkLabel}
 >
   {#if (((layout as string) === "figures") || ((layout as string) === "proof"))}
-    <MediaFigures extras={extras} mode={(((layout as string) === "proof") ? "row" : "grid")} />
+    {#if ((extras.stats?.length ?? 0) > 0)}
+      <MediaFigures extras={extras} mode={(((layout as string) === "proof") ? "row" : "grid")} />
+    {/if}
   {/if}
   {#if ((layout as string) === "proof")}
-    <MediaReview extras={extras} labels={labels} />
+    {#if ((extras.reviews?.length ?? 0) > 0)}
+      <MediaReview extras={extras} labels={labels} />
+    {/if}
   {/if}
   {#if ((layout as string) === "steps")}
-    <MediaSteps extras={extras} labels={labels} />
+    {#if ((extras.steps?.length ?? 0) > 0)}
+      <MediaSteps extras={extras} labels={labels} />
+    {/if}
   {/if}
   {#if ((layout as string) === "posts")}
-    <MediaPosts extras={extras} labels={labels} />
+    {#if ((extras.posts?.length ?? 0) > 0)}
+      <MediaPosts extras={extras} labels={labels} />
+    {/if}
   {/if}
   {#if ((layout as string) === "topics")}
-    <MediaTopics extras={extras} labels={labels} />
+    {#if ((extras.topics?.length ?? 0) > 0)}
+      <MediaTopics extras={extras} labels={labels} />
+    {/if}
   {/if}
   {#if ((layout as string) === "contact")}
-    <MediaContacts extras={extras} labels={labels} />
+    {#if ((extras.channels?.length ?? 0) > 0)}
+      <MediaContacts extras={extras} labels={labels} />
+    {/if}
   {/if}
   {#if ((layout as string) !== "contact")}
     <ActionGroup

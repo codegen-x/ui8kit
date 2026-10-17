@@ -25,6 +25,7 @@ export type QuoteSplitProps = {
   layout?: "media" | "logos" | "rating" | "stack" | "compact" | "bento";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  empty?: string;
   landmarkLabel?: string;
 };
 </script>
@@ -33,6 +34,7 @@ export type QuoteSplitProps = {
 import Box from "../primitives/box/box.vue";
 import Stack from "../primitives/stack/stack.vue";
 import ActionGroup from "../components/action-group.vue";
+import EmptyState from "../components/empty-state.vue";
 import MediaFrame from "../components/media-frame.vue";
 import QuoteFigures from "../components/quote-figures.vue";
 import QuoteLogoTiles from "../components/quote-logo-tiles.vue";
@@ -52,12 +54,23 @@ const {
   layout = "media",
   mediaSide = "end",
   tone = "default",
+  empty = "",
   landmarkLabel,
 } = defineProps<QuoteSplitProps>();
 </script>
 
 <template>
-  <SectionFrame v-if="(((layout as string) === 'compact') || ((layout as string) === 'bento'))"
+  <SectionFrame v-if="((quotes?.length ?? 0) === 0)"
+    :id="id"
+    :title="title"
+    :lead="lead"
+    :heading="{ badge }"
+    :tone="tone"
+    :landmarkLabel="landmarkLabel"
+  >
+    <EmptyState icon="quote" :title="empty" />
+  </SectionFrame>
+  <SectionFrame v-else-if="(((layout as string) === 'compact') || ((layout as string) === 'bento'))"
     :id="id"
     :title="title"
     :lead="lead"

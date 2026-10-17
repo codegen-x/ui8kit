@@ -18,22 +18,34 @@
 {/capture}
 {capture $c_2}
   {if ui_t(ui_or([ui_eq($v_layout, 'figures'), ui_eq($v_layout, 'proof')]))}
-    {=ui_include('blocks/media-figures.latte', ['p' => ['extras' => $v_extras, 'mode' => (ui_t(ui_eq($v_layout, 'proof')) ? 'row' : 'grid')]])|noescape}
+    {if ui_t(ui_gt(ui_len(ui_get($v_extras, ['stats'])), 0))}
+      {=ui_include('blocks/media-figures.latte', ['p' => ['extras' => $v_extras, 'mode' => (ui_t(ui_eq($v_layout, 'proof')) ? 'row' : 'grid')]])|noescape}
+    {/if}
   {/if}
   {if ui_t(ui_eq($v_layout, 'proof'))}
-    {=ui_include('blocks/media-review.latte', ['p' => ['extras' => $v_extras, 'labels' => $v_labels]])|noescape}
+    {if ui_t(ui_gt(ui_len(ui_get($v_extras, ['reviews'])), 0))}
+      {=ui_include('blocks/media-review.latte', ['p' => ['extras' => $v_extras, 'labels' => $v_labels]])|noescape}
+    {/if}
   {/if}
   {if ui_t(ui_eq($v_layout, 'steps'))}
-    {=ui_include('blocks/media-steps.latte', ['p' => ['extras' => $v_extras, 'labels' => $v_labels]])|noescape}
+    {if ui_t(ui_gt(ui_len(ui_get($v_extras, ['steps'])), 0))}
+      {=ui_include('blocks/media-steps.latte', ['p' => ['extras' => $v_extras, 'labels' => $v_labels]])|noescape}
+    {/if}
   {/if}
   {if ui_t(ui_eq($v_layout, 'posts'))}
-    {=ui_include('blocks/media-posts.latte', ['p' => ['extras' => $v_extras, 'labels' => $v_labels]])|noescape}
+    {if ui_t(ui_gt(ui_len(ui_get($v_extras, ['posts'])), 0))}
+      {=ui_include('blocks/media-posts.latte', ['p' => ['extras' => $v_extras, 'labels' => $v_labels]])|noescape}
+    {/if}
   {/if}
   {if ui_t(ui_eq($v_layout, 'topics'))}
-    {=ui_include('blocks/media-topics.latte', ['p' => ['extras' => $v_extras, 'labels' => $v_labels]])|noescape}
+    {if ui_t(ui_gt(ui_len(ui_get($v_extras, ['topics'])), 0))}
+      {=ui_include('blocks/media-topics.latte', ['p' => ['extras' => $v_extras, 'labels' => $v_labels]])|noescape}
+    {/if}
   {/if}
   {if ui_t(ui_eq($v_layout, 'contact'))}
-    {=ui_include('blocks/media-contacts.latte', ['p' => ['extras' => $v_extras, 'labels' => $v_labels]])|noescape}
+    {if ui_t(ui_gt(ui_len(ui_get($v_extras, ['channels'])), 0))}
+      {=ui_include('blocks/media-contacts.latte', ['p' => ['extras' => $v_extras, 'labels' => $v_labels]])|noescape}
+    {/if}
   {/if}
   {if ui_t(!(ui_eq($v_layout, 'contact')))}
     {=ui_include('blocks/action-group.latte', ['p' => ['primary' => ui_get($v_actions, ['cta']), 'primaryHref' => ui_get($v_actions, ['href']), 'secondary' => (ui_t(ui_eq(ui_get($v_actions, ['mode']), 'two')) ? ui_get($v_actions, ['secondary']) : null), 'secondaryHref' => ui_get($v_actions, ['secondaryHref'])]])|noescape}

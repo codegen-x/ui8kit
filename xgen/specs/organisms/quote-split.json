@@ -100,6 +100,12 @@
       "default": "default"
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "landmarkLabel",
       "type": "string",
       "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
@@ -110,26 +116,17 @@
   "view": [
     {
       "when": {
-        "op": "or",
+        "op": "eq",
         "args": [
           {
-            "op": "eq",
+            "op": "len",
             "args": [
               {
-                "$": "layout"
-              },
-              "compact"
+                "$": "quotes"
+              }
             ]
           },
-          {
-            "op": "eq",
-            "args": [
-              {
-                "$": "layout"
-              },
-              "bento"
-            ]
-          }
+          0
         ]
       },
       "then": [
@@ -162,131 +159,13 @@
               "args": [],
               "do": [
                 {
-                  "when": {
-                    "op": "eq",
-                    "args": [
-                      {
-                        "$": "layout"
-                      },
-                      "bento"
-                    ]
-                  },
-                  "then": [
-                    {
-                      "organism": "QuoteFigures",
-                      "props": {
-                        "extras": {
-                          "$": "extras"
-                        }
-                      }
-                    }
-                  ]
-                },
-                {
-                  "use": "Box",
+                  "organism": "EmptyState",
                   "props": {
-                    "Class": {
-                      "op": "cond",
-                      "args": [
-                        {
-                          "op": "eq",
-                          "args": [
-                            {
-                              "$": "layout"
-                            },
-                            "bento"
-                          ]
-                        },
-                        "grid grid-cols-1 gap-4 lg:grid-cols-2",
-                        "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
-                      ]
+                    "icon": "quote",
+                    "title": {
+                      "$": "empty"
                     }
-                  },
-                  "children": [
-                    {
-                      "each": {
-                        "$": "quotes"
-                      },
-                      "as": "q",
-                      "key": {
-                        "$": "q.id"
-                      },
-                      "do": [
-                        {
-                          "organism": "QuoteSlot",
-                          "props": {
-                            "q": {
-                              "$": "q"
-                            },
-                            "labels": {
-                              "$": "labels"
-                            },
-                            "layout": {
-                              "op": "cond",
-                              "args": [
-                                {
-                                  "op": "and",
-                                  "args": [
-                                    {
-                                      "op": "eq",
-                                      "args": [
-                                        {
-                                          "$": "layout"
-                                        },
-                                        "bento"
-                                      ]
-                                    },
-                                    {
-                                      "op": "eq",
-                                      "args": [
-                                        {
-                                          "$": "i"
-                                        },
-                                        0
-                                      ]
-                                    }
-                                  ]
-                                },
-                                "single",
-                                "grid"
-                              ]
-                            },
-                            "className": {
-                              "op": "cond",
-                              "args": [
-                                {
-                                  "op": "and",
-                                  "args": [
-                                    {
-                                      "op": "eq",
-                                      "args": [
-                                        {
-                                          "$": "layout"
-                                        },
-                                        "bento"
-                                      ]
-                                    },
-                                    {
-                                      "op": "eq",
-                                      "args": [
-                                        {
-                                          "$": "i"
-                                        },
-                                        0
-                                      ]
-                                    }
-                                  ]
-                                },
-                                "lg:row-span-3",
-                                ""
-                              ]
-                            }
-                          }
-                        }
-                      ],
-                      "index": "i"
-                    }
-                  ]
+                  }
                 }
               ]
             }
@@ -295,94 +174,109 @@
       ],
       "else": [
         {
-          "organism": "SectionFrame",
-          "props": {
-            "id": {
-              "$": "id"
-            },
-            "title": {
-              "$": "title"
-            },
-            "lead": {
-              "$": "lead"
-            },
-            "heading": {
-              "badge": {
-                "$": "badge"
-              }
-            },
-            "tone": {
-              "$": "tone"
-            },
-            "layout": "split",
-            "media": {
-              "show": true,
-              "side": {
-                "$": "mediaSide"
-              }
-            },
-            "landmarkLabel": {
-              "$": "landmarkLabel"
-            }
-          },
-          "slots": {
-            "children": {
-              "args": [],
-              "do": [
-                {
-                  "when": {
-                    "op": "or",
-                    "args": [
-                      {
-                        "op": "eq",
-                        "args": [
-                          {
-                            "$": "layout"
-                          },
-                          "media"
-                        ]
-                      },
-                      {
-                        "op": "eq",
-                        "args": [
-                          {
-                            "$": "layout"
-                          },
-                          "logos"
-                        ]
-                      },
-                      {
-                        "op": "eq",
-                        "args": [
-                          {
-                            "$": "layout"
-                          },
-                          "rating"
-                        ]
-                      }
-                    ]
+          "when": {
+            "op": "or",
+            "args": [
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "layout"
                   },
-                  "then": [
+                  "compact"
+                ]
+              },
+              {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "layout"
+                  },
+                  "bento"
+                ]
+              }
+            ]
+          },
+          "then": [
+            {
+              "organism": "SectionFrame",
+              "props": {
+                "id": {
+                  "$": "id"
+                },
+                "title": {
+                  "$": "title"
+                },
+                "lead": {
+                  "$": "lead"
+                },
+                "heading": {
+                  "badge": {
+                    "$": "badge"
+                  }
+                },
+                "tone": {
+                  "$": "tone"
+                },
+                "landmarkLabel": {
+                  "$": "landmarkLabel"
+                }
+              },
+              "slots": {
+                "children": {
+                  "args": [],
+                  "do": [
                     {
-                      "each": {
-                        "$": "quotes"
-                      },
-                      "as": "q",
-                      "key": {
-                        "$": "q.id"
-                      },
-                      "do": [
-                        {
-                          "when": {
-                            "op": "lt",
-                            "args": [
-                              {
-                                "$": "i"
-                              },
-                              1
-                            ]
+                      "when": {
+                        "op": "eq",
+                        "args": [
+                          {
+                            "$": "layout"
                           },
-                          "then": [
+                          "bento"
+                        ]
+                      },
+                      "then": [
+                        {
+                          "organism": "QuoteFigures",
+                          "props": {
+                            "extras": {
+                              "$": "extras"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "use": "Box",
+                      "props": {
+                        "Class": {
+                          "op": "cond",
+                          "args": [
+                            {
+                              "op": "eq",
+                              "args": [
+                                {
+                                  "$": "layout"
+                                },
+                                "bento"
+                              ]
+                            },
+                            "grid grid-cols-1 gap-4 lg:grid-cols-2",
+                            "grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4"
+                          ]
+                        }
+                      },
+                      "children": [
+                        {
+                          "each": {
+                            "$": "quotes"
+                          },
+                          "as": "q",
+                          "key": {
+                            "$": "q.id"
+                          },
+                          "do": [
                             {
                               "organism": "QuoteSlot",
                               "props": {
@@ -392,72 +286,148 @@
                                 "labels": {
                                   "$": "labels"
                                 },
-                                "kind": {
+                                "layout": {
                                   "op": "cond",
                                   "args": [
                                     {
-                                      "op": "eq",
+                                      "op": "and",
                                       "args": [
                                         {
-                                          "$": "layout"
+                                          "op": "eq",
+                                          "args": [
+                                            {
+                                              "$": "layout"
+                                            },
+                                            "bento"
+                                          ]
                                         },
-                                        "media"
+                                        {
+                                          "op": "eq",
+                                          "args": [
+                                            {
+                                              "$": "i"
+                                            },
+                                            0
+                                          ]
+                                        }
                                       ]
                                     },
-                                    "card",
-                                    "plain"
+                                    "single",
+                                    "grid"
                                   ]
                                 },
-                                "layout": "single",
-                                "className": ""
+                                "className": {
+                                  "op": "cond",
+                                  "args": [
+                                    {
+                                      "op": "and",
+                                      "args": [
+                                        {
+                                          "op": "eq",
+                                          "args": [
+                                            {
+                                              "$": "layout"
+                                            },
+                                            "bento"
+                                          ]
+                                        },
+                                        {
+                                          "op": "eq",
+                                          "args": [
+                                            {
+                                              "$": "i"
+                                            },
+                                            0
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    "lg:row-span-3",
+                                    ""
+                                  ]
+                                }
                               }
                             }
-                          ]
+                          ],
+                          "index": "i"
                         }
-                      ],
-                      "index": "i"
+                      ]
                     }
                   ]
+                }
+              }
+            }
+          ],
+          "else": [
+            {
+              "organism": "SectionFrame",
+              "props": {
+                "id": {
+                  "$": "id"
                 },
-                {
-                  "when": {
-                    "op": "eq",
-                    "args": [
-                      {
-                        "$": "layout"
-                      },
-                      "logos"
-                    ]
-                  },
-                  "then": [
-                    {
-                      "organism": "QuoteLogoTiles",
-                      "props": {
-                        "extras": {
-                          "$": "extras"
-                        }
-                      }
-                    }
-                  ]
+                "title": {
+                  "$": "title"
                 },
-                {
-                  "when": {
-                    "op": "eq",
-                    "args": [
-                      {
-                        "$": "layout"
-                      },
-                      "stack"
-                    ]
-                  },
-                  "then": [
+                "lead": {
+                  "$": "lead"
+                },
+                "heading": {
+                  "badge": {
+                    "$": "badge"
+                  }
+                },
+                "tone": {
+                  "$": "tone"
+                },
+                "layout": "split",
+                "media": {
+                  "show": true,
+                  "side": {
+                    "$": "mediaSide"
+                  }
+                },
+                "landmarkLabel": {
+                  "$": "landmarkLabel"
+                }
+              },
+              "slots": {
+                "children": {
+                  "args": [],
+                  "do": [
                     {
-                      "use": "Stack",
-                      "props": {
-                        "Gap": "4",
-                        "Align": "stretch"
+                      "when": {
+                        "op": "or",
+                        "args": [
+                          {
+                            "op": "eq",
+                            "args": [
+                              {
+                                "$": "layout"
+                              },
+                              "media"
+                            ]
+                          },
+                          {
+                            "op": "eq",
+                            "args": [
+                              {
+                                "$": "layout"
+                              },
+                              "logos"
+                            ]
+                          },
+                          {
+                            "op": "eq",
+                            "args": [
+                              {
+                                "$": "layout"
+                              },
+                              "rating"
+                            ]
+                          }
+                        ]
                       },
-                      "children": [
+                      "then": [
                         {
                           "each": {
                             "$": "quotes"
@@ -474,7 +444,7 @@
                                   {
                                     "$": "i"
                                   },
-                                  3
+                                  1
                                 ]
                               },
                               "then": [
@@ -487,7 +457,23 @@
                                     "labels": {
                                       "$": "labels"
                                     },
-                                    "layout": "stack",
+                                    "kind": {
+                                      "op": "cond",
+                                      "args": [
+                                        {
+                                          "op": "eq",
+                                          "args": [
+                                            {
+                                              "$": "layout"
+                                            },
+                                            "media"
+                                          ]
+                                        },
+                                        "card",
+                                        "plain"
+                                      ]
+                                    },
+                                    "layout": "single",
                                     "className": ""
                                   }
                                 }
@@ -497,23 +483,9 @@
                           "index": "i"
                         }
                       ]
-                    }
-                  ]
-                },
-                {
-                  "when": {
-                    "op": "or",
-                    "args": [
-                      {
-                        "op": "eq",
-                        "args": [
-                          {
-                            "$": "layout"
-                          },
-                          "media"
-                        ]
-                      },
-                      {
+                    },
+                    {
+                      "when": {
                         "op": "eq",
                         "args": [
                           {
@@ -522,7 +494,155 @@
                           "logos"
                         ]
                       },
-                      {
+                      "then": [
+                        {
+                          "organism": "QuoteLogoTiles",
+                          "props": {
+                            "extras": {
+                              "$": "extras"
+                            }
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "when": {
+                        "op": "eq",
+                        "args": [
+                          {
+                            "$": "layout"
+                          },
+                          "stack"
+                        ]
+                      },
+                      "then": [
+                        {
+                          "use": "Stack",
+                          "props": {
+                            "Gap": "4",
+                            "Align": "stretch"
+                          },
+                          "children": [
+                            {
+                              "each": {
+                                "$": "quotes"
+                              },
+                              "as": "q",
+                              "key": {
+                                "$": "q.id"
+                              },
+                              "do": [
+                                {
+                                  "when": {
+                                    "op": "lt",
+                                    "args": [
+                                      {
+                                        "$": "i"
+                                      },
+                                      3
+                                    ]
+                                  },
+                                  "then": [
+                                    {
+                                      "organism": "QuoteSlot",
+                                      "props": {
+                                        "q": {
+                                          "$": "q"
+                                        },
+                                        "labels": {
+                                          "$": "labels"
+                                        },
+                                        "layout": "stack",
+                                        "className": ""
+                                      }
+                                    }
+                                  ]
+                                }
+                              ],
+                              "index": "i"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "when": {
+                        "op": "or",
+                        "args": [
+                          {
+                            "op": "eq",
+                            "args": [
+                              {
+                                "$": "layout"
+                              },
+                              "media"
+                            ]
+                          },
+                          {
+                            "op": "eq",
+                            "args": [
+                              {
+                                "$": "layout"
+                              },
+                              "logos"
+                            ]
+                          },
+                          {
+                            "op": "eq",
+                            "args": [
+                              {
+                                "$": "layout"
+                              },
+                              "rating"
+                            ]
+                          }
+                        ]
+                      },
+                      "then": [
+                        {
+                          "organism": "ActionGroup",
+                          "props": {
+                            "primary": {
+                              "$": "actions.cta"
+                            },
+                            "primaryHref": {
+                              "$": "actions.href"
+                            },
+                            "secondary": {
+                              "op": "cond",
+                              "args": [
+                                {
+                                  "op": "eq",
+                                  "args": [
+                                    {
+                                      "$": "actions.mode"
+                                    },
+                                    "two"
+                                  ]
+                                },
+                                {
+                                  "$": "actions.secondary"
+                                },
+                                {
+                                  "op": "undef",
+                                  "args": []
+                                }
+                              ]
+                            },
+                            "secondaryHref": {
+                              "$": "actions.secondaryHref"
+                            }
+                          }
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "aside": {
+                  "args": [],
+                  "do": [
+                    {
+                      "when": {
                         "op": "eq",
                         "args": [
                           {
@@ -530,90 +650,37 @@
                           },
                           "rating"
                         ]
-                      }
-                    ]
-                  },
-                  "then": [
-                    {
-                      "organism": "ActionGroup",
-                      "props": {
-                        "primary": {
-                          "$": "actions.cta"
-                        },
-                        "primaryHref": {
-                          "$": "actions.href"
-                        },
-                        "secondary": {
-                          "op": "cond",
-                          "args": [
-                            {
-                              "op": "eq",
-                              "args": [
-                                {
-                                  "$": "actions.mode"
-                                },
-                                "two"
-                              ]
-                            },
-                            {
-                              "$": "actions.secondary"
-                            },
-                            {
-                              "op": "undef",
-                              "args": []
-                            }
-                          ]
-                        },
-                        "secondaryHref": {
-                          "$": "actions.secondaryHref"
-                        }
-                      }
-                    }
-                  ]
-                }
-              ]
-            },
-            "aside": {
-              "args": [],
-              "do": [
-                {
-                  "when": {
-                    "op": "eq",
-                    "args": [
-                      {
-                        "$": "layout"
                       },
-                      "rating"
-                    ]
-                  },
-                  "then": [
-                    {
-                      "organism": "QuoteRatingPanel",
-                      "props": {
-                        "extras": {
-                          "$": "extras"
-                        },
-                        "labels": {
-                          "$": "labels"
+                      "then": [
+                        {
+                          "organism": "QuoteRatingPanel",
+                          "props": {
+                            "extras": {
+                              "$": "extras"
+                            },
+                            "labels": {
+                              "$": "labels"
+                            }
+                          }
                         }
-                      }
-                    }
-                  ],
-                  "else": [
-                    {
-                      "organism": "MediaFrame",
-                      "props": {
-                        "alt": {
-                          "$": "title"
-                        },
-                        "ratio": "4/3"
-                      }
+                      ],
+                      "else": [
+                        {
+                          "organism": "MediaFrame",
+                          "props": {
+                            "alt": {
+                              "$": "title"
+                            },
+                            "ratio": "4/3"
+                          }
+                        }
+                      ]
                     }
                   ]
                 }
-              ]
+              }
             }
-          }
+          ]
         }
       ]
     }

@@ -75,40 +75,42 @@ const emit = defineEmits<{ topic: [value: string] }>();
         {{ tab.title }}
       </SwitcherItem>
     </Switcher>
-    <Stack v-if="((layout as string) === 'magazine')" gap="6" align="stretch" data-testid="items">
-      <template v-for="(p, i) in posts.filter((i) => !filter?.topic || i['category'] === filter?.topic)" :key="p.id">
-        <PostCard
-          v-if="(i === 0)"
+    <template v-if="((posts.filter((i) => !filter?.topic || i['category'] === filter?.topic)?.length ?? 0) > 0)">
+      <Stack v-if="((layout as string) === 'magazine')" gap="6" align="stretch" data-testid="items">
+        <template v-for="(p, i) in posts.filter((i) => !filter?.topic || i['category'] === filter?.topic)" :key="p.id">
+          <PostCard
+            v-if="(i === 0)"
+            :post="p"
+            :labels="labels"
+            layout="horizontal"
+            :media="media"
+            :meta="meta"
+            :density="density"
+          />
+        </template>
+        <Grid :cols="cols" class="gap-6">
+          <template v-for="(p, i) in posts.filter((i) => !filter?.topic || i['category'] === filter?.topic)" :key="p.id">
+            <PostCard v-if="(i > 0)" :post="p" :labels="labels" :media="media" :meta="meta" :density="density" />
+          </template>
+        </Grid>
+      </Stack>
+      <Grid v-else
+        :cols="
+          (layout as string) === 'list' ? '1'
+          : fitCols(cols, (posts.filter((i) => !filter?.topic || i['category'] === filter?.topic)?.length ?? 0))
+        "
+        class="w-full gap-6"
+        data-testid="items"
+      >
+        <PostCard v-for="p in posts.filter((i) => !filter?.topic || i['category'] === filter?.topic)" :key="p.id"
           :post="p"
           :labels="labels"
-          layout="horizontal"
+          :layout="(((layout as string) === 'list') ? 'horizontal' : 'vertical')"
           :media="media"
           :meta="meta"
           :density="density"
         />
-      </template>
-      <Grid :cols="cols" class="gap-6">
-        <template v-for="(p, i) in posts.filter((i) => !filter?.topic || i['category'] === filter?.topic)" :key="p.id">
-          <PostCard v-if="(i > 0)" :post="p" :labels="labels" :media="media" :meta="meta" :density="density" />
-        </template>
       </Grid>
-    </Stack>
-    <Grid v-else
-      :cols="
-        (layout as string) === 'list' ? '1'
-        : fitCols(cols, (posts.filter((i) => !filter?.topic || i['category'] === filter?.topic)?.length ?? 0))
-      "
-      class="w-full gap-6"
-      data-testid="items"
-    >
-      <PostCard v-for="p in posts.filter((i) => !filter?.topic || i['category'] === filter?.topic)" :key="p.id"
-        :post="p"
-        :labels="labels"
-        :layout="(((layout as string) === 'list') ? 'horizontal' : 'vertical')"
-        :media="media"
-        :meta="meta"
-        :density="density"
-      />
-    </Grid>
+    </template>
   </SectionFrame>
 </template>

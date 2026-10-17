@@ -69,22 +69,46 @@ export function MediaList({
       )}
     >
       {(((layout as string) === "figures") || ((layout as string) === "proof")) ? (
-        <MediaFigures extras={extras} mode={(((layout as string) === "proof") ? "row" : "grid")} />
+        <>
+          {((extras.stats?.length ?? 0) > 0) ? (
+            <MediaFigures extras={extras} mode={(((layout as string) === "proof") ? "row" : "grid")} />
+          ) : null}
+        </>
       ) : null}
       {((layout as string) === "proof") ? (
-        <MediaReview extras={extras} labels={labels} />
+        <>
+          {((extras.reviews?.length ?? 0) > 0) ? (
+            <MediaReview extras={extras} labels={labels} />
+          ) : null}
+        </>
       ) : null}
       {((layout as string) === "steps") ? (
-        <MediaSteps extras={extras} labels={labels} />
+        <>
+          {((extras.steps?.length ?? 0) > 0) ? (
+            <MediaSteps extras={extras} labels={labels} />
+          ) : null}
+        </>
       ) : null}
       {((layout as string) === "posts") ? (
-        <MediaPosts extras={extras} labels={labels} />
+        <>
+          {((extras.posts?.length ?? 0) > 0) ? (
+            <MediaPosts extras={extras} labels={labels} />
+          ) : null}
+        </>
       ) : null}
       {((layout as string) === "topics") ? (
-        <MediaTopics extras={extras} labels={labels} />
+        <>
+          {((extras.topics?.length ?? 0) > 0) ? (
+            <MediaTopics extras={extras} labels={labels} />
+          ) : null}
+        </>
       ) : null}
       {((layout as string) === "contact") ? (
-        <MediaContacts extras={extras} labels={labels} />
+        <>
+          {((extras.channels?.length ?? 0) > 0) ? (
+            <MediaContacts extras={extras} labels={labels} />
+          ) : null}
+        </>
       ) : null}
       {((layout as string) !== "contact") ? (
         <ActionGroup

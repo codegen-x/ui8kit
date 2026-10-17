@@ -64,7 +64,9 @@
     align="center"
     landmarkLabel={landmarkLabel}
   >
-    <PostTags tags={extras.tags} align="center" />
+    {#if ((extras.tags?.length ?? 0) > 0)}
+      <PostTags tags={extras.tags} align="center" />
+    {/if}
     <PostStats post={post} extras={extras} labels={labels} align="center" />
     <PostAuthor
       post={post}
@@ -97,13 +99,17 @@
     landmarkLabel={landmarkLabel}
   >
     {#if ((layout as string) === "outline")}
-      <PostOutline post={post} extras={extras} labels={labels} />
+      {#if ((extras.outline?.length ?? 0) > 0)}
+        <PostOutline post={post} extras={extras} labels={labels} />
+      {/if}
     {:else}
       <PostAuthor post={post} extras={extras} labels={labels} mode={author} />
       {#if ((author as string) !== "line")}
         <PostStats post={post} extras={extras} labels={labels} />
       {/if}
-      <PostTags tags={extras.tags} />
+      {#if ((extras.tags?.length ?? 0) > 0)}
+        <PostTags tags={extras.tags} />
+      {/if}
     {/if}
     <PostActions labels={labels} mode={actions} />
     {#snippet aside()}

@@ -298,27 +298,12 @@
             },
             {
               "when": {
-                "op": "eq",
+                "op": "gt",
                 "args": [
                   {
-                    "$": "layout"
-                  },
-                  "magazine"
-                ]
-              },
-              "then": [
-                {
-                  "use": "Stack",
-                  "props": {
-                    "Gap": "6",
-                    "Align": "stretch"
-                  },
-                  "attrs": {
-                    "data-testid": "items"
-                  },
-                  "children": [
-                    {
-                      "each": {
+                    "op": "len",
+                    "args": [
+                      {
                         "op": "where",
                         "args": [
                           {
@@ -329,56 +314,32 @@
                             "$": "filter.topic"
                           }
                         ]
+                      }
+                    ]
+                  },
+                  0
+                ]
+              },
+              "then": [
+                {
+                  "when": {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "$": "layout"
                       },
-                      "as": "p",
-                      "key": {
-                        "$": "p.id"
-                      },
-                      "do": [
-                        {
-                          "when": {
-                            "op": "eq",
-                            "args": [
-                              {
-                                "$": "i"
-                              },
-                              0
-                            ]
-                          },
-                          "then": [
-                            {
-                              "organism": "PostCard",
-                              "props": {
-                                "post": {
-                                  "$": "p"
-                                },
-                                "labels": {
-                                  "$": "labels"
-                                },
-                                "layout": "horizontal",
-                                "media": {
-                                  "$": "media"
-                                },
-                                "meta": {
-                                  "$": "meta"
-                                },
-                                "density": {
-                                  "$": "density"
-                                }
-                              }
-                            }
-                          ]
-                        }
-                      ],
-                      "index": "i"
-                    },
+                      "magazine"
+                    ]
+                  },
+                  "then": [
                     {
-                      "use": "Grid",
+                      "use": "Stack",
                       "props": {
-                        "Cols": {
-                          "$": "cols"
-                        },
-                        "Class": "gap-6"
+                        "Gap": "6",
+                        "Align": "stretch"
+                      },
+                      "attrs": {
+                        "data-testid": "items"
                       },
                       "children": [
                         {
@@ -401,7 +362,7 @@
                           "do": [
                             {
                               "when": {
-                                "op": "gt",
+                                "op": "eq",
                                 "args": [
                                   {
                                     "$": "i"
@@ -419,6 +380,7 @@
                                     "labels": {
                                       "$": "labels"
                                     },
+                                    "layout": "horizontal",
                                     "media": {
                                       "$": "media"
                                     },
@@ -434,115 +396,180 @@
                             }
                           ],
                           "index": "i"
+                        },
+                        {
+                          "use": "Grid",
+                          "props": {
+                            "Cols": {
+                              "$": "cols"
+                            },
+                            "Class": "gap-6"
+                          },
+                          "children": [
+                            {
+                              "each": {
+                                "op": "where",
+                                "args": [
+                                  {
+                                    "$": "posts"
+                                  },
+                                  "category",
+                                  {
+                                    "$": "filter.topic"
+                                  }
+                                ]
+                              },
+                              "as": "p",
+                              "key": {
+                                "$": "p.id"
+                              },
+                              "do": [
+                                {
+                                  "when": {
+                                    "op": "gt",
+                                    "args": [
+                                      {
+                                        "$": "i"
+                                      },
+                                      0
+                                    ]
+                                  },
+                                  "then": [
+                                    {
+                                      "organism": "PostCard",
+                                      "props": {
+                                        "post": {
+                                          "$": "p"
+                                        },
+                                        "labels": {
+                                          "$": "labels"
+                                        },
+                                        "media": {
+                                          "$": "media"
+                                        },
+                                        "meta": {
+                                          "$": "meta"
+                                        },
+                                        "density": {
+                                          "$": "density"
+                                        }
+                                      }
+                                    }
+                                  ]
+                                }
+                              ],
+                              "index": "i"
+                            }
+                          ]
                         }
                       ]
                     }
-                  ]
-                }
-              ],
-              "else": [
-                {
-                  "use": "Grid",
-                  "props": {
-                    "Cols": {
-                      "op": "cond",
-                      "args": [
-                        {
-                          "op": "eq",
+                  ],
+                  "else": [
+                    {
+                      "use": "Grid",
+                      "props": {
+                        "Cols": {
+                          "op": "cond",
                           "args": [
                             {
-                              "$": "layout"
-                            },
-                            "list"
-                          ]
-                        },
-                        "1",
-                        {
-                          "op": "fitCols",
-                          "args": [
-                            {
-                              "$": "cols"
-                            },
-                            {
-                              "op": "len",
+                              "op": "eq",
                               "args": [
                                 {
-                                  "op": "where",
+                                  "$": "layout"
+                                },
+                                "list"
+                              ]
+                            },
+                            "1",
+                            {
+                              "op": "fitCols",
+                              "args": [
+                                {
+                                  "$": "cols"
+                                },
+                                {
+                                  "op": "len",
                                   "args": [
                                     {
-                                      "$": "posts"
-                                    },
-                                    "category",
-                                    {
-                                      "$": "filter.topic"
+                                      "op": "where",
+                                      "args": [
+                                        {
+                                          "$": "posts"
+                                        },
+                                        "category",
+                                        {
+                                          "$": "filter.topic"
+                                        }
+                                      ]
                                     }
                                   ]
                                 }
                               ]
                             }
                           ]
-                        }
-                      ]
-                    },
-                    "Class": "w-full gap-6"
-                  },
-                  "attrs": {
-                    "data-testid": "items"
-                  },
-                  "children": [
-                    {
-                      "each": {
-                        "op": "where",
-                        "args": [
-                          {
-                            "$": "posts"
-                          },
-                          "category",
-                          {
-                            "$": "filter.topic"
-                          }
-                        ]
+                        },
+                        "Class": "w-full gap-6"
                       },
-                      "as": "p",
-                      "key": {
-                        "$": "p.id"
+                      "attrs": {
+                        "data-testid": "items"
                       },
-                      "do": [
+                      "children": [
                         {
-                          "organism": "PostCard",
-                          "props": {
-                            "post": {
-                              "$": "p"
-                            },
-                            "labels": {
-                              "$": "labels"
-                            },
-                            "layout": {
-                              "op": "cond",
-                              "args": [
-                                {
-                                  "op": "eq",
+                          "each": {
+                            "op": "where",
+                            "args": [
+                              {
+                                "$": "posts"
+                              },
+                              "category",
+                              {
+                                "$": "filter.topic"
+                              }
+                            ]
+                          },
+                          "as": "p",
+                          "key": {
+                            "$": "p.id"
+                          },
+                          "do": [
+                            {
+                              "organism": "PostCard",
+                              "props": {
+                                "post": {
+                                  "$": "p"
+                                },
+                                "labels": {
+                                  "$": "labels"
+                                },
+                                "layout": {
+                                  "op": "cond",
                                   "args": [
                                     {
-                                      "$": "layout"
+                                      "op": "eq",
+                                      "args": [
+                                        {
+                                          "$": "layout"
+                                        },
+                                        "list"
+                                      ]
                                     },
-                                    "list"
+                                    "horizontal",
+                                    "vertical"
                                   ]
                                 },
-                                "horizontal",
-                                "vertical"
-                              ]
-                            },
-                            "media": {
-                              "$": "media"
-                            },
-                            "meta": {
-                              "$": "meta"
-                            },
-                            "density": {
-                              "$": "density"
+                                "media": {
+                                  "$": "media"
+                                },
+                                "meta": {
+                                  "$": "meta"
+                                },
+                                "density": {
+                                  "$": "density"
+                                }
+                              }
                             }
-                          }
+                          ]
                         }
                       ]
                     }

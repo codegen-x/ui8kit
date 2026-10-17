@@ -10,6 +10,7 @@ import { Fragment, type ReactNode } from "react";
 import { Box } from "../primitives/box/box";
 import { Stack } from "../primitives/stack/stack";
 import { ActionGroup } from "../components/action-group";
+import { EmptyState } from "../components/empty-state";
 import { MediaFrame } from "../components/media-frame";
 import { QuoteFigures } from "../components/quote-figures";
 import { QuoteLogoTiles } from "../components/quote-logo-tiles";
@@ -34,6 +35,7 @@ export type QuoteSplitProps = {
   layout?: "media" | "logos" | "rating" | "stack" | "compact" | "bento";
   mediaSide?: "end" | "start";
   tone?: "default" | "muted";
+  empty?: string;
   landmarkLabel?: string;
 };
 
@@ -49,11 +51,16 @@ export function QuoteSplit({
   layout = "media",
   mediaSide = "end",
   tone = "default",
+  empty = "",
   landmarkLabel,
 }: QuoteSplitProps) {
   return (
     <>
-      {(((layout as string) === "compact") || ((layout as string) === "bento")) ? (
+      {((quotes?.length ?? 0) === 0) ? (
+        <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone} landmarkLabel={landmarkLabel}>
+          <EmptyState icon="quote" title={empty} />
+        </SectionFrame>
+      ) : (((layout as string) === "compact") || ((layout as string) === "bento")) ? (
         <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone} landmarkLabel={landmarkLabel}>
           {((layout as string) === "bento") ? (
             <QuoteFigures extras={extras} />

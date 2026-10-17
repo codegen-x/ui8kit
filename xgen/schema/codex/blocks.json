@@ -1843,7 +1843,15 @@
           "kind": "question",
           "record": "Question",
           "map": "question",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.answer.value",
+            "terms",
+            "metadata.icon.value"
+          ],
+          "optional": []
         },
         {
           "prop": "channels",
@@ -1851,7 +1859,14 @@
           "kind": "channel",
           "record": "Feature",
           "map": "channel",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
         },
         {
           "prop": "topics",
@@ -1859,7 +1874,14 @@
           "kind": "tab",
           "record": "FaqTab",
           "map": "faqtab",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title"
+          ],
+          "optional": [
+            "metadata.value.value"
+          ]
         }
       ],
       "settings": [
@@ -2834,7 +2856,7 @@
       "surface": "kit-block",
       "spec": "block.medialist",
       "source": "xgen/specs/blocks/medialist.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "extras.stats",
@@ -2842,7 +2864,15 @@
           "kind": "stat",
           "record": "Stat",
           "map": "stat",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.value.value",
+            "metadata.icon.value",
+            "metadata.hint.value"
+          ],
+          "optional": []
         },
         {
           "prop": "extras.steps",
@@ -2850,7 +2880,14 @@
           "kind": "step",
           "record": "Step",
           "map": "step",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
         },
         {
           "prop": "extras.posts",
@@ -2858,7 +2895,21 @@
           "kind": "post",
           "record": "Post",
           "map": "post",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "excerpt",
+            "terms",
+            "author_id",
+            "metadata.date.value",
+            "metadata.minutes.value",
+            "metadata.icon.value",
+            "slug"
+          ],
+          "optional": [
+            "featured_media_id"
+          ]
         },
         {
           "prop": "extras.topics",
@@ -2866,7 +2917,15 @@
           "kind": "menu_item",
           "record": "Category",
           "map": "menuCategory",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value",
+            "metadata.count.value",
+            "slug"
+          ],
+          "optional": []
         },
         {
           "prop": "extras.channels",
@@ -2874,7 +2933,14 @@
           "kind": "channel",
           "record": "Feature",
           "map": "channel",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
         },
         {
           "prop": "extras.reviews",
@@ -2882,7 +2948,16 @@
           "kind": "review",
           "record": "Review",
           "map": "review",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "author_id",
+            "metadata.rating.value",
+            "metadata.text.value",
+            "metadata.date.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -2949,7 +3024,8 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "MegaMenu",
@@ -3614,7 +3690,7 @@
       "surface": "kit-block",
       "spec": "block.posts",
       "source": "xgen/specs/blocks/posts.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "posts",
@@ -3622,7 +3698,21 @@
           "kind": "post",
           "record": "Post",
           "map": "post",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "excerpt",
+            "terms",
+            "author_id",
+            "metadata.date.value",
+            "metadata.minutes.value",
+            "metadata.icon.value",
+            "slug"
+          ],
+          "optional": [
+            "featured_media_id"
+          ]
         },
         {
           "prop": "filter.topics",
@@ -3630,7 +3720,14 @@
           "kind": "topic",
           "record": "PostTopic",
           "map": "topic",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title"
+          ],
+          "optional": [
+            "metadata.value.value"
+          ]
         }
       ],
       "settings": [
@@ -3670,14 +3767,15 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "PostShowcase",
       "surface": "kit-block",
       "spec": "block.postshowcase",
       "source": "xgen/specs/blocks/postshowcase.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "posts",
@@ -3685,7 +3783,21 @@
           "kind": "post",
           "record": "Post",
           "map": "post",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "excerpt",
+            "terms",
+            "author_id",
+            "metadata.date.value",
+            "metadata.minutes.value",
+            "metadata.icon.value",
+            "slug"
+          ],
+          "optional": [
+            "featured_media_id"
+          ]
         }
       ],
       "settings": [
@@ -3713,6 +3825,11 @@
           "keys": []
         },
         {
+          "prop": "empty",
+          "dictionary": "empty.posts",
+          "keys": []
+        },
+        {
           "prop": "labels",
           "dictionary": "content.labels",
           "keys": [
@@ -3728,14 +3845,14 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "PostSplit",
       "surface": "kit-block",
       "spec": "block.postsplit",
       "source": "xgen/specs/blocks/postsplit.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "post",
@@ -3743,7 +3860,21 @@
           "kind": "post",
           "record": "Post",
           "map": "post",
-          "list": false
+          "list": false,
+          "required": [
+            "id",
+            "title",
+            "excerpt",
+            "terms",
+            "author_id",
+            "metadata.date.value",
+            "metadata.minutes.value",
+            "metadata.icon.value",
+            "slug"
+          ],
+          "optional": [
+            "featured_media_id"
+          ]
         },
         {
           "prop": "extras.tags",
@@ -3751,7 +3882,13 @@
           "kind": "posttag",
           "record": "NavLink",
           "map": "posttag",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value"
+          ],
+          "optional": []
         },
         {
           "prop": "extras.outline",
@@ -3759,7 +3896,14 @@
           "kind": "menu_item",
           "record": "NavLink",
           "map": "menuItem",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value",
+            "slug"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -3808,7 +3952,8 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "PricingTiers",
@@ -4269,7 +4414,7 @@
       "surface": "kit-block",
       "spec": "block.quotesplit",
       "source": "xgen/specs/blocks/quotesplit.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "quotes",
@@ -4277,7 +4422,19 @@
           "kind": "testimonial",
           "record": "Quote",
           "map": "testimonial",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.role.value",
+            "metadata.company.value",
+            "metadata.quote.value",
+            "metadata.rating.value",
+            "metadata.handle.value",
+            "metadata.time.value",
+            "metadata.mark.value"
+          ],
+          "optional": []
         },
         {
           "prop": "extras.stats",
@@ -4285,7 +4442,15 @@
           "kind": "stat",
           "record": "Stat",
           "map": "stat",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.value.value",
+            "metadata.icon.value",
+            "metadata.hint.value"
+          ],
+          "optional": []
         },
         {
           "prop": "extras.logos",
@@ -4293,7 +4458,13 @@
           "kind": "logo",
           "record": "Logo",
           "map": "logo",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -4317,6 +4488,11 @@
         {
           "prop": "badge",
           "dictionary": "marketing.quoteSplit.badge",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.quotes",
           "keys": []
         },
         {
@@ -4355,7 +4531,7 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "ReviewList",

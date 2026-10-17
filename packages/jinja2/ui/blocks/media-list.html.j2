@@ -18,22 +18,34 @@
 {%- endset -%}
 {%- set c_2 -%}
   {%- if ui_t(ui_or([ui_eq(v_layout, 'figures'), ui_eq(v_layout, 'proof')])) %}
-    {{ ui_include('blocks/media-figures.html.j2', {'p': {'extras': v_extras, 'mode': ('row' if ui_t(ui_eq(v_layout, 'proof')) else 'grid')}}) }}
+    {%- if ui_t(ui_gt(ui_len(ui_get(v_extras, ['stats'])), 0)) %}
+      {{ ui_include('blocks/media-figures.html.j2', {'p': {'extras': v_extras, 'mode': ('row' if ui_t(ui_eq(v_layout, 'proof')) else 'grid')}}) }}
+    {%- endif %}
   {%- endif %}
   {%- if ui_t(ui_eq(v_layout, 'proof')) %}
-    {{ ui_include('blocks/media-review.html.j2', {'p': {'extras': v_extras, 'labels': v_labels}}) }}
+    {%- if ui_t(ui_gt(ui_len(ui_get(v_extras, ['reviews'])), 0)) %}
+      {{ ui_include('blocks/media-review.html.j2', {'p': {'extras': v_extras, 'labels': v_labels}}) }}
+    {%- endif %}
   {%- endif %}
   {%- if ui_t(ui_eq(v_layout, 'steps')) %}
-    {{ ui_include('blocks/media-steps.html.j2', {'p': {'extras': v_extras, 'labels': v_labels}}) }}
+    {%- if ui_t(ui_gt(ui_len(ui_get(v_extras, ['steps'])), 0)) %}
+      {{ ui_include('blocks/media-steps.html.j2', {'p': {'extras': v_extras, 'labels': v_labels}}) }}
+    {%- endif %}
   {%- endif %}
   {%- if ui_t(ui_eq(v_layout, 'posts')) %}
-    {{ ui_include('blocks/media-posts.html.j2', {'p': {'extras': v_extras, 'labels': v_labels}}) }}
+    {%- if ui_t(ui_gt(ui_len(ui_get(v_extras, ['posts'])), 0)) %}
+      {{ ui_include('blocks/media-posts.html.j2', {'p': {'extras': v_extras, 'labels': v_labels}}) }}
+    {%- endif %}
   {%- endif %}
   {%- if ui_t(ui_eq(v_layout, 'topics')) %}
-    {{ ui_include('blocks/media-topics.html.j2', {'p': {'extras': v_extras, 'labels': v_labels}}) }}
+    {%- if ui_t(ui_gt(ui_len(ui_get(v_extras, ['topics'])), 0)) %}
+      {{ ui_include('blocks/media-topics.html.j2', {'p': {'extras': v_extras, 'labels': v_labels}}) }}
+    {%- endif %}
   {%- endif %}
   {%- if ui_t(ui_eq(v_layout, 'contact')) %}
-    {{ ui_include('blocks/media-contacts.html.j2', {'p': {'extras': v_extras, 'labels': v_labels}}) }}
+    {%- if ui_t(ui_gt(ui_len(ui_get(v_extras, ['channels'])), 0)) %}
+      {{ ui_include('blocks/media-contacts.html.j2', {'p': {'extras': v_extras, 'labels': v_labels}}) }}
+    {%- endif %}
   {%- endif %}
   {%- if ui_t(not (ui_eq(v_layout, 'contact'))) %}
     {{ ui_include('blocks/action-group.html.j2', {'p': {'primary': ui_get(v_actions, ['cta']), 'primaryHref': ui_get(v_actions, ['href']), 'secondary': (ui_get(v_actions, ['secondary']) if ui_t(ui_eq(ui_get(v_actions, ['mode']), 'two')) else none), 'secondaryHref': ui_get(v_actions, ['secondaryHref'])}}) }}

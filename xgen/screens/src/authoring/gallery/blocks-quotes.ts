@@ -29,7 +29,7 @@ const quotesplit = define({
     { sel: '[data-testid="action-primary"]', n: 1, when: { layout: ["media", "logos", "rating"] } },
   ],
   sample: {
-    id: "quotesplit", title: q("title"), lead: q("lead"), badge: q("badge"), quotes: ref("testimonials"),
+    id: "quotesplit", title: q("title"), lead: q("lead"), badge: q("badge"), quotes: ref("testimonials"), empty: t("empty.quotes"),
     labels: { rating: t("testimonials.rating"), byLine: t("testimonials.byLine"), handleLine: t("testimonials.handleLine") },
     extras: { stats: ref("stats"), logos: ref("logos"), rating: 5, score: q("score"), reviews: q("reviews") },
     actions: { mode: "two", cta: q("cta"), href: "#/customers", secondary: q("secondary"), secondaryHref: "#/contact" },

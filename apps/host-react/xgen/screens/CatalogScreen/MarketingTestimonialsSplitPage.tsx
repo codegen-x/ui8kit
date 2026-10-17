@@ -115,6 +115,7 @@ export function MarketingTestimonialsSplitPage() {
                   lead={ui.marketing.quoteSplit.lead}
                   badge={ui.marketing.quoteSplit.badge}
                   quotes={testimonials}
+                  empty={ui.empty.quotes}
                   labels={QUOTESPLIT_LABELS}
                   extras={QUOTESPLIT_EXTRAS}
                   actions={QUOTESPLIT_ACTIONS}
@@ -144,6 +145,7 @@ export function MarketingTestimonialsSplitPage() {
                   lead={ui.marketing.quoteSplit.lead}
                   badge={ui.marketing.quoteSplit.badge}
                   quotes={testimonials}
+                  empty={ui.empty.quotes}
                   labels={QUOTESPLIT_LABELS}
                   extras={QUOTESPLIT_EXTRAS}
                   actions={QUOTESPLIT_ACTIONS}
@@ -173,6 +175,7 @@ export function MarketingTestimonialsSplitPage() {
                   lead={ui.marketing.quoteSplit.lead}
                   badge={ui.marketing.quoteSplit.badge}
                   quotes={testimonials}
+                  empty={ui.empty.quotes}
                   labels={QUOTESPLIT_LABELS}
                   extras={QUOTESPLIT_EXTRAS}
                   actions={QUOTESPLIT_ACTIONS}
@@ -202,6 +205,7 @@ export function MarketingTestimonialsSplitPage() {
                   lead={ui.marketing.quoteSplit.lead}
                   badge={ui.marketing.quoteSplit.badge}
                   quotes={testimonials}
+                  empty={ui.empty.quotes}
                   labels={QUOTESPLIT_LABELS}
                   extras={QUOTESPLIT_EXTRAS}
                   actions={QUOTESPLIT_ACTIONS}
@@ -231,6 +235,7 @@ export function MarketingTestimonialsSplitPage() {
                   lead={ui.marketing.quoteSplit.lead}
                   badge={ui.marketing.quoteSplit.badge}
                   quotes={testimonials}
+                  empty={ui.empty.quotes}
                   labels={QUOTESPLIT_LABELS}
                   extras={QUOTESPLIT_EXTRAS}
                   actions={QUOTESPLIT_ACTIONS}
@@ -260,6 +265,7 @@ export function MarketingTestimonialsSplitPage() {
                   lead={ui.marketing.quoteSplit.lead}
                   badge={ui.marketing.quoteSplit.badge}
                   quotes={testimonials}
+                  empty={ui.empty.quotes}
                   labels={QUOTESPLIT_LABELS}
                   extras={QUOTESPLIT_EXTRAS}
                   actions={QUOTESPLIT_ACTIONS}

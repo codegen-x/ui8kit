@@ -60,6 +60,7 @@
     }
   ],
   "slots": [
+    "EmptyState",
     "MediaFrame",
     "PostFeature",
     "PostMiniCard",
@@ -139,6 +140,9 @@
       },
       "posts": {
         "$": "posts"
+      },
+      "empty": {
+        "$": "ui.empty.posts"
       },
       "labels": {
         "$": "ui.content.labels"

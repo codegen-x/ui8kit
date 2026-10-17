@@ -18,22 +18,34 @@
 {%- endset -%}
 {%- set c_2 -%}
   {%- if ui_t(ui_or([ui_eq(v_layout, 'figures'), ui_eq(v_layout, 'proof')])) %}
-    {{ include('blocks/media-figures.html.twig', {'p': {'extras': v_extras, 'mode': (ui_t(ui_eq(v_layout, 'proof')) ? 'row' : 'grid')}}, with_context = false) }}
+    {%- if ui_t(ui_gt(ui_len(ui_get(v_extras, ['stats'])), 0)) %}
+      {{ include('blocks/media-figures.html.twig', {'p': {'extras': v_extras, 'mode': (ui_t(ui_eq(v_layout, 'proof')) ? 'row' : 'grid')}}, with_context = false) }}
+    {%- endif %}
   {%- endif %}
   {%- if ui_t(ui_eq(v_layout, 'proof')) %}
-    {{ include('blocks/media-review.html.twig', {'p': {'extras': v_extras, 'labels': v_labels}}, with_context = false) }}
+    {%- if ui_t(ui_gt(ui_len(ui_get(v_extras, ['reviews'])), 0)) %}
+      {{ include('blocks/media-review.html.twig', {'p': {'extras': v_extras, 'labels': v_labels}}, with_context = false) }}
+    {%- endif %}
   {%- endif %}
   {%- if ui_t(ui_eq(v_layout, 'steps')) %}
-    {{ include('blocks/media-steps.html.twig', {'p': {'extras': v_extras, 'labels': v_labels}}, with_context = false) }}
+    {%- if ui_t(ui_gt(ui_len(ui_get(v_extras, ['steps'])), 0)) %}
+      {{ include('blocks/media-steps.html.twig', {'p': {'extras': v_extras, 'labels': v_labels}}, with_context = false) }}
+    {%- endif %}
   {%- endif %}
   {%- if ui_t(ui_eq(v_layout, 'posts')) %}
-    {{ include('blocks/media-posts.html.twig', {'p': {'extras': v_extras, 'labels': v_labels}}, with_context = false) }}
+    {%- if ui_t(ui_gt(ui_len(ui_get(v_extras, ['posts'])), 0)) %}
+      {{ include('blocks/media-posts.html.twig', {'p': {'extras': v_extras, 'labels': v_labels}}, with_context = false) }}
+    {%- endif %}
   {%- endif %}
   {%- if ui_t(ui_eq(v_layout, 'topics')) %}
-    {{ include('blocks/media-topics.html.twig', {'p': {'extras': v_extras, 'labels': v_labels}}, with_context = false) }}
+    {%- if ui_t(ui_gt(ui_len(ui_get(v_extras, ['topics'])), 0)) %}
+      {{ include('blocks/media-topics.html.twig', {'p': {'extras': v_extras, 'labels': v_labels}}, with_context = false) }}
+    {%- endif %}
   {%- endif %}
   {%- if ui_t(ui_eq(v_layout, 'contact')) %}
-    {{ include('blocks/media-contacts.html.twig', {'p': {'extras': v_extras, 'labels': v_labels}}, with_context = false) }}
+    {%- if ui_t(ui_gt(ui_len(ui_get(v_extras, ['channels'])), 0)) %}
+      {{ include('blocks/media-contacts.html.twig', {'p': {'extras': v_extras, 'labels': v_labels}}, with_context = false) }}
+    {%- endif %}
   {%- endif %}
   {%- if ui_t(not (ui_eq(v_layout, 'contact'))) %}
     {{ include('blocks/action-group.html.twig', {'p': {'primary': ui_get(v_actions, ['cta']), 'primaryHref': ui_get(v_actions, ['href']), 'secondary': (ui_t(ui_eq(ui_get(v_actions, ['mode']), 'two')) ? ui_get(v_actions, ['secondary']) : null), 'secondaryHref': ui_get(v_actions, ['secondaryHref'])}}, with_context = false) }}
