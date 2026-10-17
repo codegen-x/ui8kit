@@ -6627,7 +6627,117 @@
       "id": "template.blog",
       "surface": "magazine-template",
       "source": "apps/magazine/src/templates/blog.svelte",
-      "status": "todo",
+      "status": "done",
+      "data": [
+        {
+          "prop": "d.posts",
+          "collection": "posts",
+          "kind": "post",
+          "record": "Post",
+          "map": "post",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "excerpt",
+            "terms",
+            "author_id",
+            "metadata.date.value",
+            "metadata.minutes.value",
+            "metadata.icon.value",
+            "slug"
+          ],
+          "optional": [
+            "featured_media_id"
+          ]
+        },
+        {
+          "prop": "d.topics",
+          "collection": "topics",
+          "kind": "topic",
+          "record": "PostTopic",
+          "map": "topic",
+          "list": true,
+          "required": [
+            "id",
+            "title"
+          ],
+          "optional": [
+            "metadata.value.value"
+          ]
+        }
+      ],
+      "settings": [
+        "c"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "pages.contentBlog.home.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.contentBlog.home.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.contentBlog.home.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "content.posts.title",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "content.labels",
+          "keys": [
+            "by",
+            "empty",
+            "minutes",
+            "read"
+          ]
+        },
+        {
+          "prop": "ui",
+          "dictionary": "vibe.posts.topics",
+          "keys": []
+        },
+        {
+          "prop": "ui",
+          "dictionary": "content.posts.action",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "promo.newsletter.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "promo.newsletter.text",
+          "keys": []
+        },
+        {
+          "prop": "label",
+          "dictionary": "promo.newsletter.label",
+          "keys": []
+        },
+        {
+          "prop": "submit",
+          "dictionary": "promo.newsletter.submit",
+          "keys": []
+        },
+        {
+          "prop": "consent",
+          "dictionary": "promo.newsletter.consent",
+          "keys": []
+        }
+      ],
+      "emptyState": true,
       "uses": [
         "NewsletterForm",
         "PageIntro",
@@ -6642,7 +6752,66 @@
       "id": "template.classic",
       "surface": "magazine-template",
       "source": "apps/magazine/src/templates/classic.svelte",
-      "status": "todo",
+      "status": "done",
+      "data": [
+        {
+          "prop": "d.features",
+          "collection": "features",
+          "kind": "feature",
+          "record": "Feature",
+          "map": "feature",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "d.stats",
+          "collection": "stats",
+          "kind": "stat",
+          "record": "Stat",
+          "map": "stat",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.value.value",
+            "metadata.icon.value",
+            "metadata.hint.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "c"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "site.home.featuresTitle",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.features",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "marketing.stats.title",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "marketing.stats.empty",
+          "keys": []
+        }
+      ],
+      "emptyState": true,
       "uses": [
         "CtaBand",
         "FeatureGrid",
@@ -6658,7 +6827,126 @@
       "id": "template.dashboard",
       "surface": "magazine-template",
       "source": "apps/magazine/src/templates/dashboard.svelte",
-      "status": "todo",
+      "status": "done",
+      "data": [
+        {
+          "prop": "d.activity",
+          "collection": "activity",
+          "kind": "event",
+          "record": "Event",
+          "map": "event",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.time.value",
+            "metadata.tone.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "d.metrics",
+          "collection": "metrics",
+          "kind": "metric",
+          "record": "Stat",
+          "map": "metric",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.value.value",
+            "metadata.icon.value",
+            "metadata.hint.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "d.series",
+          "collection": "series",
+          "kind": "point",
+          "record": "Point",
+          "map": "point",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.value.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "d.sidenav",
+          "collection": "sidenav",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value",
+            "slug"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "c"
+      ],
+      "labels": [
+        {
+          "prop": "ui",
+          "dictionary": "vibe.sidebar.label",
+          "keys": []
+        },
+        {
+          "prop": "ui",
+          "dictionary": "vibe.sidebar.userName",
+          "keys": []
+        },
+        {
+          "prop": "ui",
+          "dictionary": "vibe.sidebar.userEmail",
+          "keys": []
+        },
+        {
+          "prop": "ui",
+          "dictionary": "vibe.nav.search",
+          "keys": []
+        },
+        {
+          "prop": "ui",
+          "dictionary": "vibe.nav.shortcut",
+          "keys": []
+        },
+        {
+          "prop": "ui",
+          "dictionary": "dashboard.chart.title",
+          "keys": []
+        },
+        {
+          "prop": "ui",
+          "dictionary": "dashboard.chart.text",
+          "keys": []
+        },
+        {
+          "prop": "ui",
+          "dictionary": "dashboard.chart.summary",
+          "keys": []
+        },
+        {
+          "prop": "ui",
+          "dictionary": "dashboard.activity.title",
+          "keys": []
+        },
+        {
+          "prop": "ui",
+          "dictionary": "dashboard.activity.text",
+          "keys": []
+        }
+      ],
+      "emptyState": true,
       "uses": [
         "AppShell"
       ],
@@ -6673,7 +6961,142 @@
       "id": "template.docs",
       "surface": "magazine-template",
       "source": "apps/magazine/src/templates/docs.svelte",
-      "status": "todo",
+      "status": "done",
+      "data": [
+        {
+          "prop": "d.article",
+          "collection": "article",
+          "kind": "section",
+          "record": "Section",
+          "map": "section",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": [
+            "metadata.quote.value"
+          ]
+        },
+        {
+          "prop": "d.crumbs",
+          "collection": "crumbs",
+          "kind": "page",
+          "record": "NavLink",
+          "map": "page",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value",
+            "slug"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "d.helplinks",
+          "collection": "helplinks",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value",
+            "slug"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "d.outline",
+          "collection": "outline",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value",
+            "slug"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "d.stats",
+          "collection": "stats",
+          "kind": "stat",
+          "record": "Stat",
+          "map": "stat",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.value.value",
+            "metadata.icon.value",
+            "metadata.hint.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "c"
+      ],
+      "labels": [
+        {
+          "prop": "label",
+          "dictionary": "vibe.sidebar.label",
+          "keys": []
+        },
+        {
+          "prop": "userName",
+          "dictionary": "vibe.sidebar.userName",
+          "keys": []
+        },
+        {
+          "prop": "userEmail",
+          "dictionary": "vibe.sidebar.userEmail",
+          "keys": []
+        },
+        {
+          "prop": "label",
+          "dictionary": "marketing.pageTrail.label",
+          "keys": []
+        },
+        {
+          "prop": "ui",
+          "dictionary": "marketing.pageTrail.value",
+          "keys": []
+        },
+        {
+          "prop": "ui",
+          "dictionary": "marketing.pageTrail.caption",
+          "keys": []
+        },
+        {
+          "prop": "ui",
+          "dictionary": "marketing.pageTrail.note",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "vibe.article.title",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.sections",
+          "keys": []
+        },
+        {
+          "prop": "tocTitle",
+          "dictionary": "vibe.article.toc",
+          "keys": []
+        }
+      ],
+      "emptyState": true,
       "uses": [
         "ArticleBody",
         "PageTrail",
@@ -6691,7 +7114,145 @@
       "id": "template.ecommerce",
       "surface": "magazine-template",
       "source": "apps/magazine/src/templates/ecommerce.svelte",
-      "status": "todo",
+      "status": "done",
+      "data": [
+        {
+          "prop": "d.categories",
+          "collection": "categories",
+          "kind": "menu_item",
+          "record": "Category",
+          "map": "menuCategory",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value",
+            "metadata.count.value",
+            "slug"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "d.products",
+          "collection": "products",
+          "kind": "product",
+          "record": "Product",
+          "map": "product",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.summary.value",
+            "metadata.price.value",
+            "metadata.currency.value",
+            "metadata.rating.value",
+            "metadata.reviews.value",
+            "terms",
+            "metadata.inStock.value",
+            "slug"
+          ],
+          "optional": [
+            "metadata.badge.value",
+            "metadata.compare_at.value",
+            "featured_media_id"
+          ]
+        },
+        {
+          "prop": "d.reviews",
+          "collection": "reviews",
+          "kind": "review",
+          "record": "Review",
+          "map": "review",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "author_id",
+            "metadata.rating.value",
+            "metadata.text.value",
+            "metadata.date.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "c"
+      ],
+      "labels": [
+        {
+          "prop": "label",
+          "dictionary": "commerce.nav.label",
+          "keys": []
+        },
+        {
+          "prop": "tools",
+          "dictionary": "commerce.tools",
+          "keys": [
+            "query",
+            "search",
+            "shown",
+            "sort",
+            "sortValue"
+          ]
+        },
+        {
+          "prop": "labels",
+          "dictionary": "commerce.detail",
+          "keys": [
+            "add",
+            "decrease",
+            "empty",
+            "inStock",
+            "increase",
+            "qty",
+            "ratingLabel",
+            "returns",
+            "reviews",
+            "shipping",
+            "soldOut",
+            "was"
+          ]
+        },
+        {
+          "prop": "badges",
+          "dictionary": "commerce.badges",
+          "keys": [
+            "new",
+            "sale"
+          ]
+        },
+        {
+          "prop": "title",
+          "dictionary": "commerce.products.title",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "commerce.productLabels",
+          "keys": [
+            "add",
+            "empty",
+            "ratingLabel",
+            "reviews",
+            "soldOut",
+            "was"
+          ]
+        },
+        {
+          "prop": "title",
+          "dictionary": "commerce.reviews.title",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "commerce.reviewLabels",
+          "keys": [
+            "empty",
+            "ratingLabel"
+          ]
+        }
+      ],
+      "emptyState": true,
       "uses": [
         "CategoryNav",
         "CtaBand",
@@ -6709,7 +7270,141 @@
       "id": "template.portfolio",
       "surface": "magazine-template",
       "source": "apps/magazine/src/templates/portfolio.svelte",
-      "status": "todo",
+      "status": "done",
+      "data": [
+        {
+          "prop": "d.facts",
+          "collection": "profilefacts",
+          "kind": "profilefact",
+          "record": "Spec",
+          "map": "profilefact",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.value.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "d.photos",
+          "collection": "photos",
+          "kind": "photo",
+          "record": "Photo",
+          "map": "photo",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.tag.value",
+            "metadata.size.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "d.projects",
+          "collection": "projects",
+          "kind": "project",
+          "record": "Project",
+          "map": "project",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "terms",
+            "metadata.year.value",
+            "metadata.summary.value",
+            "metadata.tags.value",
+            "metadata.featured.value",
+            "metadata.client.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "d.skills",
+          "collection": "skills",
+          "kind": "skill",
+          "record": "Skill",
+          "map": "skill",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.level.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "c"
+      ],
+      "labels": [
+        {
+          "prop": "labels",
+          "dictionary": "company.aboutMe",
+          "keys": [
+            "badge",
+            "cta",
+            "lead",
+            "level",
+            "more",
+            "title"
+          ]
+        },
+        {
+          "prop": "title",
+          "dictionary": "company.projects.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "company.projects.lead",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.projects",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "company.projects",
+          "keys": [
+            "case",
+            "featured",
+            "lead",
+            "title",
+            "view"
+          ]
+        },
+        {
+          "prop": "title",
+          "dictionary": "company.photos.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "company.photos.lead",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.photos",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "company.photos",
+          "keys": [
+            "counter",
+            "lead",
+            "next",
+            "previous",
+            "title"
+          ]
+        }
+      ],
+      "emptyState": true,
       "uses": [
         "AboutMe",
         "CtaBand",
@@ -6717,8 +7412,8 @@
         "ProjectGrid"
       ],
       "collections": [
-        "facts",
         "photos",
+        "profilefacts",
         "projects",
         "skills"
       ]
@@ -6727,7 +7422,161 @@
       "id": "template.saas",
       "surface": "magazine-template",
       "source": "apps/magazine/src/templates/saas.svelte",
-      "status": "todo",
+      "status": "done",
+      "data": [
+        {
+          "prop": "d.faq",
+          "collection": "faq",
+          "kind": "faq",
+          "record": "Faq",
+          "map": "faq",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.answer.value",
+            "terms"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "d.features",
+          "collection": "features",
+          "kind": "feature",
+          "record": "Feature",
+          "map": "feature",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "d.stats",
+          "collection": "stats",
+          "kind": "stat",
+          "record": "Stat",
+          "map": "stat",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.value.value",
+            "metadata.icon.value",
+            "metadata.hint.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "d.testimonials",
+          "collection": "testimonials",
+          "kind": "testimonial",
+          "record": "Quote",
+          "map": "testimonial",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.role.value",
+            "metadata.company.value",
+            "metadata.quote.value",
+            "metadata.rating.value",
+            "metadata.handle.value",
+            "metadata.time.value",
+            "metadata.mark.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "d.tiers",
+          "collection": "tiers",
+          "kind": "plan",
+          "record": "Plan",
+          "map": "plan",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.tagline.value",
+            "metadata.price.value",
+            "metadata.currency.value",
+            "metadata.seats.value",
+            "metadata.storage.value",
+            "metadata.highlighted.value",
+            "metadata.features.value",
+            "metadata.yearly.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "c"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.stats.title",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "marketing.stats.empty",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "site.home.featuresTitle",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.features",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "site.pricing.tiersTitle",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "pricing",
+          "keys": [
+            "cta",
+            "empty",
+            "free",
+            "perMonth",
+            "perYear",
+            "popular",
+            "seats",
+            "storage"
+          ]
+        },
+        {
+          "prop": "billingLabels",
+          "dictionary": "vibe.billing",
+          "keys": [
+            "annual",
+            "label",
+            "monthly",
+            "save"
+          ]
+        },
+        {
+          "prop": "title",
+          "dictionary": "site.pricing.faqTitle",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "vibe.faq.empty",
+          "keys": []
+        }
+      ],
+      "emptyState": true,
       "uses": [
         "CtaBand",
         "FaqList",
@@ -6748,7 +7597,92 @@
       "id": "template.sidebar",
       "surface": "magazine-template",
       "source": "apps/magazine/src/templates/sidebar.svelte",
-      "status": "todo",
+      "status": "done",
+      "data": [
+        {
+          "prop": "d.categories",
+          "collection": "categories",
+          "kind": "menu_item",
+          "record": "Category",
+          "map": "menuCategory",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value",
+            "metadata.count.value",
+            "slug"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "d.faq",
+          "collection": "faq",
+          "kind": "faq",
+          "record": "Faq",
+          "map": "faq",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.answer.value",
+            "terms"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "d.features",
+          "collection": "features",
+          "kind": "feature",
+          "record": "Feature",
+          "map": "feature",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "c"
+      ],
+      "labels": [
+        {
+          "prop": "label",
+          "dictionary": "commerce.nav.label",
+          "keys": []
+        },
+        {
+          "prop": "tools",
+          "dictionary": "commerce.tools",
+          "keys": [
+            "query",
+            "search",
+            "shown",
+            "sort",
+            "sortValue"
+          ]
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.features",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "site.pricing.faqTitle",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "vibe.faq.empty",
+          "keys": []
+        }
+      ],
+      "emptyState": true,
       "uses": [
         "CategoryNav",
         "FaqList",
@@ -6765,7 +7699,134 @@
       "id": "template.three-column",
       "surface": "magazine-template",
       "source": "apps/magazine/src/templates/three-column.svelte",
-      "status": "todo",
+      "status": "done",
+      "data": [
+        {
+          "prop": "d.activity",
+          "collection": "activity",
+          "kind": "event",
+          "record": "Event",
+          "map": "event",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.time.value",
+            "metadata.tone.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "d.article",
+          "collection": "article",
+          "kind": "section",
+          "record": "Section",
+          "map": "section",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": [
+            "metadata.quote.value"
+          ]
+        },
+        {
+          "prop": "d.posts",
+          "collection": "posts",
+          "kind": "post",
+          "record": "Post",
+          "map": "post",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "excerpt",
+            "terms",
+            "author_id",
+            "metadata.date.value",
+            "metadata.minutes.value",
+            "metadata.icon.value",
+            "slug"
+          ],
+          "optional": [
+            "featured_media_id"
+          ]
+        },
+        {
+          "prop": "d.sidenav",
+          "collection": "sidenav",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value",
+            "slug"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "c"
+      ],
+      "labels": [
+        {
+          "prop": "label",
+          "dictionary": "vibe.sidebar.label",
+          "keys": []
+        },
+        {
+          "prop": "userName",
+          "dictionary": "vibe.sidebar.userName",
+          "keys": []
+        },
+        {
+          "prop": "userEmail",
+          "dictionary": "vibe.sidebar.userEmail",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "content.labels",
+          "keys": [
+            "by",
+            "empty",
+            "minutes",
+            "read"
+          ]
+        },
+        {
+          "prop": "title",
+          "dictionary": "vibe.article.title",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.sections",
+          "keys": []
+        },
+        {
+          "prop": "tocTitle",
+          "dictionary": "vibe.article.toc",
+          "keys": []
+        },
+        {
+          "prop": "label",
+          "dictionary": "dashboard.activity.title",
+          "keys": []
+        },
+        {
+          "prop": "ui",
+          "dictionary": "content.posts.title",
+          "keys": []
+        }
+      ],
+      "emptyState": true,
       "uses": [
         "ArticleBody",
         "PostHeader",
@@ -6782,7 +7843,103 @@
       "id": "template.two-column",
       "surface": "magazine-template",
       "source": "apps/magazine/src/templates/two-column.svelte",
-      "status": "todo",
+      "status": "done",
+      "data": [
+        {
+          "prop": "d.article",
+          "collection": "article",
+          "kind": "section",
+          "record": "Section",
+          "map": "section",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": [
+            "metadata.quote.value"
+          ]
+        },
+        {
+          "prop": "d.posts",
+          "collection": "posts",
+          "kind": "post",
+          "record": "Post",
+          "map": "post",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "excerpt",
+            "terms",
+            "author_id",
+            "metadata.date.value",
+            "metadata.minutes.value",
+            "metadata.icon.value",
+            "slug"
+          ],
+          "optional": [
+            "featured_media_id"
+          ]
+        },
+        {
+          "prop": "d.topics",
+          "collection": "topics",
+          "kind": "topic",
+          "record": "PostTopic",
+          "map": "topic",
+          "list": true,
+          "required": [
+            "id",
+            "title"
+          ],
+          "optional": [
+            "metadata.value.value"
+          ]
+        }
+      ],
+      "settings": [
+        "c"
+      ],
+      "labels": [
+        {
+          "prop": "labels",
+          "dictionary": "content.labels",
+          "keys": [
+            "by",
+            "empty",
+            "minutes",
+            "read"
+          ]
+        },
+        {
+          "prop": "title",
+          "dictionary": "vibe.article.title",
+          "keys": []
+        },
+        {
+          "prop": "empty",
+          "dictionary": "empty.sections",
+          "keys": []
+        },
+        {
+          "prop": "tocTitle",
+          "dictionary": "vibe.article.toc",
+          "keys": []
+        },
+        {
+          "prop": "label",
+          "dictionary": "vibe.posts.topics",
+          "keys": []
+        },
+        {
+          "prop": "ui",
+          "dictionary": "content.posts.title",
+          "keys": []
+        }
+      ],
+      "emptyState": true,
       "uses": [
         "ArticleBody",
         "PostHeader"
@@ -6797,7 +7954,36 @@
       "id": "template.footer",
       "surface": "magazine-part",
       "source": "apps/magazine/src/templates/footer.svelte",
-      "status": "todo",
+      "status": "done",
+      "data": [
+        {
+          "prop": "d.sitemap",
+          "collection": "sitemap",
+          "kind": "menu_item",
+          "record": "MegaGroup",
+          "map": "menuGroup",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value",
+            "slug"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "c",
+        "layout"
+      ],
+      "labels": [
+        {
+          "prop": "label",
+          "dictionary": "vibe.sitemap.label",
+          "keys": []
+        }
+      ],
+      "emptyState": true,
       "uses": [
         "SitemapFooter"
       ],
@@ -6810,10 +7996,36 @@
       "surface": "magazine-part",
       "source": "apps/magazine/src/templates/header.svelte",
       "status": "todo",
+      "data": [
+        {
+          "prop": "d.navlinks",
+          "collection": "navlinks",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value",
+            "slug"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "c",
+        "layout",
+        "cta"
+      ],
+      "labels": [],
+      "emptyState": false,
       "uses": [
         "NavBar"
       ],
-      "collections": []
+      "collections": [
+        "navlinks"
+      ]
     },
     {
       "id": "taste.t001-poster-mesh",

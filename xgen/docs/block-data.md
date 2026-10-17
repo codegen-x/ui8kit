@@ -197,6 +197,15 @@ replace the string arrays `links`).
 - Step 15: CheckoutForm uses omit (no days or payments: the step keeps its heading, the radios are left out; CartSummaryCard leaves
   out empty lines, promo codes and rows). Magazine templates pass the `empty` labels of FeatureGrid, ArticleBody, ProjectGrid and
   PhotoGallery (ui.empty.*); a magazine test checks the template data has no href and only data-URI media.
+## 7b. Magazine templates (step 16)
+
+- `codex:blocks` gives every template and part its bindings (from `apps/magazine/src/templates/data.ts`: key, record, fixture
+  collection, central map; kind and required/optional from the fixtures), its dictionary labels (`d.ui.*`), its settings (the deck
+  copy `c` and the layout props of a part) and `emptyState` (true when every block it composes that reads data has one).
+- A template or part is done when every block it uses is done (blocks test); the magazine test checks no href and data-URI media.
+- Done: the 10 templates and the footer. The header stays todo with NavBar.
+- The deck copy (`c.title`, `c.lead`, `c.cta`) is the per-deck text of the taste decks, not dictionary labels: kept as a setting.
+
 ## 8. Open questions (decided for now, review later)
 
 1. Docs template table of contents: in-page anchors (`#tp-docs-body-section-*`) stay links; they address the page itself, not an app route.

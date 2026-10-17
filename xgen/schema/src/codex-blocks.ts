@@ -122,12 +122,45 @@ function screen(file: string, src: BlockSources): BlockEntry {
 }
 
 const PARTS = new Set(["header", "footer"]);
-function template(file: string, src: BlockSources, kit: Set<string>): BlockEntry {
+/** the template data (apps/magazine/src/templates/data.ts): `key: fromCodex<Record>(collection, F.map, ...)` per collection */
+function templateData(src: BlockSources): Map<string, { record: string; collection: string; map: string }> {
+  const file = join(src.magazine, "data.ts");
+  const text = existsSync(file) ? readFileSync(file, "utf8") : "";
+  const out = new Map<string, { record: string; collection: string; map: string }>();
+  for (const m of text.matchAll(/^\s*(\w+): (?:rb\()?fromCodex<(\w+)[^>]*>\((?:trail\()?(\w+)\)?, F\.(\w+)/gm)) out.set(m[1]!, { record: m[2]!, collection: m[3]!, map: m[4]! });
+  return out;
+}
+/** a binding of a template: the kind from the fixtures, required = the map's fields every entry has */
+function templateBinding(key: string, d: { record: string; collection: string; map: string }, src: BlockSources): Binding {
+  const file = join(xgenPaths(src.xgen).fixtures, `${d.collection}.json`);
+  const entries = (existsSync(file) ? ((readJson(file).entries ?? []) as Obj[]) : []);
+  const map = (CODEX_FIELDS as Record<string, Record<string, string>>)[d.map] ?? {};
+  const paths = [...new Set(Object.values(map).map((v) => v.split("|")[0]!))];
+  const has = (e: Obj, path: string) => { const v = at(e, path); return v !== undefined && v !== null && v !== ""; };
+  const required = paths.filter((p) => entries.length > 0 && entries.every((e) => has(e, p)));
+  return { prop: `d.${key}`, collection: d.collection, kind: String(entries[0]?.kind ?? ""), record: d.record, map: d.map, list: true,
+    required, optional: paths.filter((p) => !required.includes(p)) };
+}
+function template(file: string, src: BlockSources, kit: Set<string>, dict: Obj, tdata: ReturnType<typeof templateData>): BlockEntry {
   const text = readFileSync(file, "utf8");
   const name = file.split("/").pop()!.replace(/\.svelte$/, "");
   const imported = [...text.matchAll(/import \{([^}]*)\} from "@ui8kit\/svelte-ui"/g)].flatMap((m) => m[1]!.split(",").map((x) => x.trim())).filter(Boolean);
-  const collections = [...new Set([...text.matchAll(/\bd\.([A-Za-z]+)/g)].map((m) => m[1]!).filter((c) => c !== "ui"))].sort();
-  return { id: `template.${name}`, surface: PARTS.has(name) ? "magazine-part" : "magazine-template", source: rel(src, file), status: "todo", uses: imported.filter((n) => kit.has(n)).sort(), collections };
+  // `d.x` (and `dataFor(..).x` in a part) reads a collection of the template data; `d.ui.*` the dictionary
+  const keys = [...new Set([...text.matchAll(/(?:\bd|dataFor\([^)]*\))\.([A-Za-z]+)/g)].map((m) => m[1]!).filter((c) => c !== "ui"))].sort();
+  const collections = [...new Set(keys.map((k) => tdata.get(k)?.collection ?? k))].sort();
+  const data = keys.filter((k) => tdata.has(k)).map((k) => templateBinding(k, tdata.get(k)!, src));
+  const labels: Labels[] = [];
+  for (const m of text.matchAll(/(?:(\w+)=\{)?\bd\.ui\.([A-Za-z0-9_.]+)/g)) {
+    const dictionary = m[2]!;
+    if (labels.some((l) => l.dictionary === dictionary)) continue;
+    const value = at(dict, dictionary);
+    labels.push({ prop: m[1] ?? "ui", dictionary, keys: isObj(value) ? Object.keys(value).filter((k) => typeof value[k] === "string").sort() : [] });
+  }
+  // the deck copy (`c`: brand, title, lead, cta of the taste deck) and the layout props of a part are settings, not Codex data
+  const settings = ["c", ...[...text.matchAll(/let \{ ([^}]*) \}/g)].flatMap((m) => m[1]!.split(",").map((x) => x.trim().split(/[ =]/)[0]!)).filter((x) => x && x !== "c")];
+  const uses = imported.filter((n) => kit.has(n)).sort();
+  return { id: `template.${name}`, surface: PARTS.has(name) ? "magazine-part" : "magazine-template", source: rel(src, file), status: "todo",
+    data, settings: [...new Set(settings)], labels, emptyState: false, uses, collections };
 }
 
 function tasteScreen(file: string, src: BlockSources, kit: Set<string>): BlockEntry {
@@ -160,7 +193,13 @@ export function buildBlocks(src = blockSources(), previous: BlocksDoc | undefine
   const kitBlocks = kitFiles.map((f) => kitBlock(f, src, orgs, dict));
   const kit = new Set(kitBlocks.map((b) => b.id));
   const svelte = (dir: string) => (existsSync(dir) ? readdirSync(dir).filter((f) => f.endsWith(".svelte")).sort().map((f) => join(dir, f)) : []);
-  const templates = svelte(src.magazine).map((f) => template(f, src, kit));
+  const tdata = templateData(src);
+  const templates = svelte(src.magazine).map((f) => template(f, src, kit, dict, tdata));
+  // a template has its empty state when every block it composes that reads data has one
+  const kitById = new Map(kitBlocks.map((b) => [b.id, b]));
+  const prevById = new Map((previous?.blocks ?? []).map((b) => [b.id, b]));
+  const emptyOk = (id: string) => { const b = kitById.get(id); const p = prevById.get(id); return !b?.data?.length || !!b.emptyState || p?.emptyMode === "omit"; };
+  for (const t of templates) t.emptyState = (t.uses ?? []).every(emptyOk);
   const fresh = [
     ...kitBlocks,
     ...jsonFiles(paths.specs("screens")).map((f) => screen(f, src)),
