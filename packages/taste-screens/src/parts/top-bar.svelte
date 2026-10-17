@@ -1,10 +1,11 @@
 <!--
-  The top bar of a taste screen: a wordmark (a small mark plus a generic word), menu links and one action.
+  The top bar of a taste screen: a wordmark (a small mark plus a generic word), menu words (no links: a showcase
+  has no routes) and one action.
   Layouts: split (links in the middle), start (links after the wordmark), center (wordmark in the middle), bare (wordmark
   and the action only). `tone="inverse"` sets it on a dark or coloured field.
 -->
 <script lang="ts">
-  import { Block, Button, Box, Group, Inline, Link } from "@ui8kit/svelte-ui";
+  import { Block, Button, Box, Group, Inline } from "@ui8kit/svelte-ui";
   import type { Deck } from "@ui8kit/taste-data/copy";
 
   let { c, layout = "split", tone = "default", action = "default", mark = "square" }: {
@@ -25,7 +26,7 @@
   {#if layout === "center"}
     <Group gap="8" class={"absolute left-16 " + ink}>
       {#each c.nav.slice(0, 2) as n (n)}
-        <Link href="#/" variant="nav" size="sm" class={ink}>{n}</Link>
+        <Inline class={"text-sm font-medium " + ink}>{n}</Inline>
       {/each}
     </Group>
   {/if}
@@ -38,7 +39,7 @@
   {#if layout === "split" || layout === "start"}
     <Group gap="8" class={layout === "start" ? "mr-auto ml-12" : ""}>
       {#each c.nav as n (n)}
-        <Link href="#/" variant="nav" size="sm" class={tone === "inverse" ? "text-background/80" : "text-muted-foreground"}>{n}</Link>
+        <Inline class={"text-sm font-medium " + (tone === "inverse" ? "text-background/80" : "text-muted-foreground")}>{n}</Inline>
       {/each}
     </Group>
   {/if}

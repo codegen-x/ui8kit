@@ -219,6 +219,14 @@ replace the string arrays `links`).
 - Done: 12 of 15. Todo: screen.blocks (the gallery shows every block), screen.catalog and screen.theme-marketing-landing
   (FaqSplit, JobBoard, TemplateGrid).
 
+## 7d. Taste screens (step 19-)
+
+- Step 19: no links: the menu words of TopBar and t043 are text (`Inline`), not `Link href="#/"` (the magazine shows the taste
+  screens and has no routes).
+- The screens read a copy deck (`c`, packages/taste-data/content/copy.json) and kit-data adapters (stats, features, logos, topics,
+  bars) built from it. Plan: the deck becomes Codex entries (a `deck` kind with metadata, stat/feature/plan/testimonial/faq
+  entries), the adapters map them through CODEX_FIELDS; then each screen gets bindings and is set done.
+
 ## 8. Open questions (decided for now, review later)
 
 1. Docs template table of contents: in-page anchors (`#tp-docs-body-section-*`) stay links; they address the page itself, not an app route.
