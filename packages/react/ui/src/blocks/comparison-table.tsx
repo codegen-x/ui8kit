@@ -15,6 +15,7 @@ import { TableHead } from "../primitives/table/table-head";
 import { TableHeadCell } from "../primitives/table/table-head-cell";
 import { TableRow } from "../primitives/table/table-row";
 import { CompareMark } from "../components/compare-mark";
+import { EmptyState } from "../components/empty-state";
 import { SectionFrame } from "../components/section-frame";
 import { cn } from "../utils";
 import type { CompareRow, CompareLabels } from "./comparison-table.types";
@@ -23,6 +24,7 @@ export type ComparisonTableProps = {
   id: string;
   title: string;
   rows: CompareRow[];
+  empty?: string;
   labels: CompareLabels;
   highlight?: "none" | "middle";
   tone?: "default" | "muted";
@@ -34,6 +36,7 @@ export function ComparisonTable({
   id,
   title,
   rows,
+  empty = "",
   labels,
   highlight = "none",
   tone = "default",
@@ -42,59 +45,63 @@ export function ComparisonTable({
 }: ComparisonTableProps) {
   return (
     <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
-      <Box className="relative w-full overflow-x-auto">
-        <Table className="w-full text-left text-sm" data-testid="compare">
-          <TableCaption className="sr-only">
-            {labels.caption}
-          </TableCaption>
-          <TableHead>
-            <TableRow>
-              <TableHeadCell scope="col" className="py-4">
-                {labels.feature}
-              </TableHeadCell>
-              <TableHeadCell scope="col" className="py-4">
-                {labels.a}
-              </TableHeadCell>
-              <TableHeadCell
-                scope="col"
-                className={cn("py-4", (((highlight as string) === "middle") ? "bg-muted" : ""))}
-                data-highlight={(((highlight as string) === "middle") ? "true" : "false")}
-              >
-                {labels.b}
-              </TableHeadCell>
-              <TableHeadCell scope="col" className="py-4">
-                {labels.c}
-              </TableHeadCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {(rows ?? []).map((row) => (
-              <TableRow key={row.id} className="border-t border-border" data-testid="item">
-                <TableHeadCell
-                  scope="row"
-                  className={cn("font-medium", (((density as string) === "compact") ? "py-2" : "py-4"))}
-                >
-                  {row.label}
+      {((rows?.length ?? 0) === 0) ? (
+        <EmptyState icon="table" title={empty} />
+      ) : (
+        <Box className="relative w-full overflow-x-auto">
+          <Table className="w-full text-left text-sm" data-testid="compare">
+            <TableCaption className="sr-only">
+              {labels.caption}
+            </TableCaption>
+            <TableHead>
+              <TableRow>
+                <TableHeadCell scope="col" className="py-4">
+                  {labels.feature}
                 </TableHeadCell>
-                <TableCell className={cn((((density as string) === "compact") ? "py-2" : "py-4"))}>
-                  <CompareMark value={row.a} yes={labels.yes} no={labels.no} />
-                </TableCell>
-                <TableCell
-                  className={cn(
-                    (((density as string) === "compact") ? "py-2" : "py-4"),
-                    (((highlight as string) === "middle") ? "bg-muted font-semibold" : "")
-                  )}
+                <TableHeadCell scope="col" className="py-4">
+                  {labels.a}
+                </TableHeadCell>
+                <TableHeadCell
+                  scope="col"
+                  className={cn("py-4", (((highlight as string) === "middle") ? "bg-muted" : ""))}
+                  data-highlight={(((highlight as string) === "middle") ? "true" : "false")}
                 >
-                  <CompareMark value={row.b} yes={labels.yes} no={labels.no} />
-                </TableCell>
-                <TableCell className={(((density as string) === "compact") ? "py-2" : "py-4")}>
-                  <CompareMark value={row.c} yes={labels.yes} no={labels.no} />
-                </TableCell>
+                  {labels.b}
+                </TableHeadCell>
+                <TableHeadCell scope="col" className="py-4">
+                  {labels.c}
+                </TableHeadCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </Box>
+            </TableHead>
+            <TableBody>
+              {(rows ?? []).map((row) => (
+                <TableRow key={row.id} className="border-t border-border" data-testid="item">
+                  <TableHeadCell
+                    scope="row"
+                    className={cn("font-medium", (((density as string) === "compact") ? "py-2" : "py-4"))}
+                  >
+                    {row.label}
+                  </TableHeadCell>
+                  <TableCell className={cn((((density as string) === "compact") ? "py-2" : "py-4"))}>
+                    <CompareMark value={row.a} yes={labels.yes} no={labels.no} />
+                  </TableCell>
+                  <TableCell
+                    className={cn(
+                      (((density as string) === "compact") ? "py-2" : "py-4"),
+                      (((highlight as string) === "middle") ? "bg-muted font-semibold" : "")
+                    )}
+                  >
+                    <CompareMark value={row.b} yes={labels.yes} no={labels.no} />
+                  </TableCell>
+                  <TableCell className={(((density as string) === "compact") ? "py-2" : "py-4")}>
+                    <CompareMark value={row.c} yes={labels.yes} no={labels.no} />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </Box>
+      )}
     </SectionFrame>
   );
 }

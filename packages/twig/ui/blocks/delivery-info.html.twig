@@ -14,30 +14,32 @@
 {%- set v_landmarkLabel = (p.landmarkLabel ?? null) -%}
 {%- set c_17 -%}
   {%- set c_16 -%}
-    {%- set c_6 -%}
-      {%- for v_f in ui_l(v_facts) %}
-        {%- set c_5 -%}
-          {%- set c_1 -%}
-            {{ include('ui/lucide-icon/lucide-icon.html.twig', {'p': {'Name': ui_s(ui_get(v_f, ['icon'])), 'Size': 20}}, with_context = false) }}
-          {%- endset -%}
-          {{ include('ui/box/box.html.twig', {'p': {'Class': 'flex size-10 shrink-0 items-center justify-center rounded bg-muted'}, 'children': c_1}, with_context = false) }}
-          {%- set c_4 -%}
-            {%- set c_2 -%}
-              {{ ui_text(ui_get(v_f, ['title'])) }}
+    {%- if ui_t(ui_gt(ui_len(v_facts), 0)) %}
+      {%- set c_6 -%}
+        {%- for v_f in ui_l(v_facts) %}
+          {%- set c_5 -%}
+            {%- set c_1 -%}
+              {{ include('ui/lucide-icon/lucide-icon.html.twig', {'p': {'Name': ui_s(ui_get(v_f, ['icon'])), 'Size': 20}}, with_context = false) }}
             {%- endset -%}
-            {{ include('ui/text/text.html.twig', {'p': {'Size': 'sm', 'Weight': 'semibold'}, 'children': c_2}, with_context = false) }}
-            {%- set c_3 -%}
-              {{ ui_text(ui_get(v_f, ['text'])) }}
+            {{ include('ui/box/box.html.twig', {'p': {'Class': 'flex size-10 shrink-0 items-center justify-center rounded bg-muted'}, 'children': c_1}, with_context = false) }}
+            {%- set c_4 -%}
+              {%- set c_2 -%}
+                {{ ui_text(ui_get(v_f, ['title'])) }}
+              {%- endset -%}
+              {{ include('ui/text/text.html.twig', {'p': {'Size': 'sm', 'Weight': 'semibold'}, 'children': c_2}, with_context = false) }}
+              {%- set c_3 -%}
+                {{ ui_text(ui_get(v_f, ['text'])) }}
+              {%- endset -%}
+              {{ include('ui/text/text.html.twig', {'p': {'Size': 'sm', 'Class': 'text-muted-foreground'}, 'children': c_3}, with_context = false) }}
             {%- endset -%}
-            {{ include('ui/text/text.html.twig', {'p': {'Size': 'sm', 'Class': 'text-muted-foreground'}, 'children': c_3}, with_context = false) }}
+            {{ include('ui/stack/stack.html.twig', {'p': {'Gap': '2'}, 'children': c_4}, with_context = false) }}
           {%- endset -%}
-          {{ include('ui/stack/stack.html.twig', {'p': {'Gap': '2'}, 'children': c_4}, with_context = false) }}
-        {%- endset -%}
-        {{ include('ui/stack/stack.html.twig', {'p': {'Gap': '4', 'Class': 'rounded bg-card inset-ring inset-ring-border p-6', 'Attrs': ui_attrs(['data-testid', 'fact'])}, 'children': c_5}, with_context = false) }}
-      {%- endfor %}
-    {%- endset -%}
-    {{ include('ui/grid/grid.html.twig', {'p': {'Cols': ui_s((ui_t(ui_eq(v_layout, 'split')) ? '1-2' : '1-4')), 'Class': 'gap-4', 'Attrs': ui_attrs(['data-testid', 'facts'])}, 'children': c_6}, with_context = false) }}
-    {%- if ui_t(not (ui_eq(v_layout, 'facts'))) %}
+          {{ include('ui/stack/stack.html.twig', {'p': {'Gap': '4', 'Class': 'rounded bg-card inset-ring inset-ring-border p-6', 'Attrs': ui_attrs(['data-testid', 'fact'])}, 'children': c_5}, with_context = false) }}
+        {%- endfor %}
+      {%- endset -%}
+      {{ include('ui/grid/grid.html.twig', {'p': {'Cols': ui_s((ui_t(ui_eq(v_layout, 'split')) ? '1-2' : '1-4')), 'Class': 'gap-4', 'Attrs': ui_attrs(['data-testid', 'facts'])}, 'children': c_6}, with_context = false) }}
+    {%- endif %}
+    {%- if ui_t(ui_and([not (ui_eq(v_layout, 'facts')), ui_gt(ui_len(v_zones), 0)])) %}
       {%- set c_15 -%}
         {%- set c_7 -%}
           {{ ui_text(ui_get(v_labels, ['zones'])) }}

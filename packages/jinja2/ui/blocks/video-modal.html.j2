@@ -34,7 +34,7 @@
       {{ ui_include('ui/button/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Type': 'button', 'Class': 'absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded', 'Attrs': ui_attrs(['aria-label', v_play, 'data-testid', 'play'])}, 'children': c_4}) }}
     {%- endset -%}
     {{ ui_include('ui/box/box.html.j2', {'p': {'Class': 'relative', 'Attrs': ui_attrs(['data-testid', 'player'])}, 'children': c_5}) }}
-    {%- if ui_t(ui_eq(v_outline, 'chapters')) %}
+    {%- if ui_t(ui_and([ui_eq(v_outline, 'chapters'), ui_gt(ui_len(v_chapters), 0)])) %}
       {%- set c_11 -%}
         {%- set c_6 -%}
           {{ ui_text(v_chaptersTitle) }}

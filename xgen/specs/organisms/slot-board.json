@@ -60,6 +60,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "zone",
       "type": {
         "ts": "Zone"
@@ -128,307 +134,336 @@
           "args": [],
           "do": [
             {
-              "use": "Box",
-              "props": {
-                "Class": "grid grid-cols-1 items-start gap-8 lg:grid-cols-3"
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "days"
+                      }
+                    ]
+                  },
+                  0
+                ]
               },
-              "children": [
+              "then": [
+                {
+                  "organism": "EmptyState",
+                  "props": {
+                    "icon": "calendar",
+                    "title": {
+                      "$": "empty"
+                    }
+                  }
+                }
+              ],
+              "else": [
                 {
                   "use": "Box",
                   "props": {
-                    "Class": {
-                      "op": "cond",
-                      "args": [
-                        {
-                          "op": "eq",
-                          "args": [
-                            {
-                              "$": "layout"
-                            },
-                            "split"
-                          ]
-                        },
-                        "lg:col-span-2",
-                        "lg:col-span-3"
-                      ]
-                    }
+                    "Class": "grid grid-cols-1 items-start gap-8 lg:grid-cols-3"
                   },
                   "children": [
                     {
-                      "organism": "SlotGrid",
+                      "use": "Box",
                       "props": {
-                        "days": {
-                          "$": "days"
-                        },
-                        "name": {
-                          "op": "tpl",
+                        "Class": {
+                          "op": "cond",
                           "args": [
-                            "{0}-slot",
                             {
-                              "$": "id"
-                            }
+                              "op": "eq",
+                              "args": [
+                                {
+                                  "$": "layout"
+                                },
+                                "split"
+                              ]
+                            },
+                            "lg:col-span-2",
+                            "lg:col-span-3"
                           ]
-                        },
-                        "item": {
-                          "$": "item"
                         }
-                      }
-                    }
-                  ]
-                },
-                {
-                  "when": {
-                    "op": "eq",
-                    "args": [
-                      {
-                        "$": "layout"
-                      },
-                      "split"
-                    ]
-                  },
-                  "then": [
-                    {
-                      "use": "Stack",
-                      "props": {
-                        "Gap": "4",
-                        "Align": "stretch",
-                        "Class": "rounded bg-card inset-ring inset-ring-border p-6"
-                      },
-                      "attrs": {
-                        "data-testid": "aside"
                       },
                       "children": [
                         {
-                          "organism": "Field",
+                          "organism": "SlotGrid",
                           "props": {
-                            "label": {
-                              "$": "labels.zone"
+                            "days": {
+                              "$": "days"
                             },
-                            "htmlFor": {
+                            "name": {
                               "op": "tpl",
                               "args": [
-                                "{0}-zone",
+                                "{0}-slot",
                                 {
                                   "$": "id"
                                 }
                               ]
-                            }
-                          },
-                          "slots": {
-                            "children": {
-                              "args": [],
-                              "do": [
-                                {
-                                  "use": "Select",
-                                  "props": {
-                                    "Name": {
-                                      "op": "tpl",
-                                      "args": [
-                                        "{0}-zone",
-                                        {
-                                          "$": "id"
-                                        }
-                                      ]
-                                    }
-                                  },
-                                  "attrs": {
-                                    "id": {
-                                      "op": "tpl",
-                                      "args": [
-                                        "{0}-zone",
-                                        {
-                                          "$": "id"
-                                        }
-                                      ]
-                                    }
-                                  },
-                                  "children": [
-                                    {
-                                      "use": "SelectOption",
-                                      "props": {
-                                        "Value": {
-                                          "$": "zone.id"
-                                        },
-                                        "Label": {
-                                          "$": "zone.name"
-                                        },
-                                        "Selected": true
-                                      }
-                                    }
-                                  ]
-                                }
-                              ]
+                            },
+                            "item": {
+                              "$": "item"
                             }
                           }
-                        },
+                        }
+                      ]
+                    },
+                    {
+                      "when": {
+                        "op": "eq",
+                        "args": [
+                          {
+                            "$": "layout"
+                          },
+                          "split"
+                        ]
+                      },
+                      "then": [
                         {
-                          "use": "List",
+                          "use": "Stack",
                           "props": {
-                            "Tag": "ul",
-                            "Class": "flex flex-col gap-2"
+                            "Gap": "4",
+                            "Align": "stretch",
+                            "Class": "rounded bg-card inset-ring inset-ring-border p-6"
+                          },
+                          "attrs": {
+                            "data-testid": "aside"
                           },
                           "children": [
                             {
-                              "use": "ListItem",
+                              "organism": "Field",
                               "props": {
-                                "Class": "flex items-center justify-between gap-4 text-sm"
+                                "label": {
+                                  "$": "labels.zone"
+                                },
+                                "htmlFor": {
+                                  "op": "tpl",
+                                  "args": [
+                                    "{0}-zone",
+                                    {
+                                      "$": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "slots": {
+                                "children": {
+                                  "args": [],
+                                  "do": [
+                                    {
+                                      "use": "Select",
+                                      "props": {
+                                        "Name": {
+                                          "op": "tpl",
+                                          "args": [
+                                            "{0}-zone",
+                                            {
+                                              "$": "id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "attrs": {
+                                        "id": {
+                                          "op": "tpl",
+                                          "args": [
+                                            "{0}-zone",
+                                            {
+                                              "$": "id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "use": "SelectOption",
+                                          "props": {
+                                            "Value": {
+                                              "$": "zone.id"
+                                            },
+                                            "Label": {
+                                              "$": "zone.name"
+                                            },
+                                            "Selected": true
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "use": "List",
+                              "props": {
+                                "Tag": "ul",
+                                "Class": "flex flex-col gap-2"
                               },
                               "children": [
                                 {
-                                  "use": "Inline",
+                                  "use": "ListItem",
                                   "props": {
-                                    "Class": "text-muted-foreground"
+                                    "Class": "flex items-center justify-between gap-4 text-sm"
                                   },
                                   "children": [
                                     {
-                                      "text": {
-                                        "$": "labels.price"
-                                      }
+                                      "use": "Inline",
+                                      "props": {
+                                        "Class": "text-muted-foreground"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "labels.price"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "Inline",
+                                      "props": {
+                                        "Class": "font-medium"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "op": "money",
+                                            "args": [
+                                              {
+                                                "$": "zone.price"
+                                              },
+                                              {
+                                                "$": "zone.currency"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
                                     }
                                   ]
                                 },
                                 {
-                                  "use": "Inline",
+                                  "use": "ListItem",
                                   "props": {
-                                    "Class": "font-medium"
+                                    "Class": "flex items-center justify-between gap-4 text-sm"
                                   },
                                   "children": [
                                     {
-                                      "text": {
-                                        "op": "money",
-                                        "args": [
-                                          {
-                                            "$": "zone.price"
-                                          },
-                                          {
-                                            "$": "zone.currency"
+                                      "use": "Inline",
+                                      "props": {
+                                        "Class": "text-muted-foreground"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "labels.freeFrom"
                                           }
-                                        ]
-                                      }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "Inline",
+                                      "props": {
+                                        "Class": "font-medium"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "op": "money",
+                                            "args": [
+                                              {
+                                                "$": "zone.freeFrom"
+                                              },
+                                              {
+                                                "$": "zone.currency"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "use": "ListItem",
+                                  "props": {
+                                    "Class": "flex items-center justify-between gap-4 text-sm"
+                                  },
+                                  "children": [
+                                    {
+                                      "use": "Inline",
+                                      "props": {
+                                        "Class": "text-muted-foreground"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "labels.time"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "Inline",
+                                      "props": {
+                                        "Class": "font-medium"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "zone.time"
+                                          }
+                                        }
+                                      ]
                                     }
                                   ]
                                 }
                               ]
                             },
                             {
-                              "use": "ListItem",
+                              "use": "Button",
                               "props": {
-                                "Class": "flex items-center justify-between gap-4 text-sm"
+                                "Variant": "default",
+                                "Size": "default",
+                                "Class": "w-full"
                               },
                               "children": [
                                 {
-                                  "use": "Inline",
-                                  "props": {
-                                    "Class": "text-muted-foreground"
-                                  },
-                                  "children": [
-                                    {
-                                      "text": {
-                                        "$": "labels.freeFrom"
-                                      }
-                                    }
-                                  ]
-                                },
-                                {
-                                  "use": "Inline",
-                                  "props": {
-                                    "Class": "font-medium"
-                                  },
-                                  "children": [
-                                    {
-                                      "text": {
-                                        "op": "money",
-                                        "args": [
-                                          {
-                                            "$": "zone.freeFrom"
-                                          },
-                                          {
-                                            "$": "zone.currency"
-                                          }
-                                        ]
-                                      }
-                                    }
-                                  ]
+                                  "text": {
+                                    "$": "labels.primary"
+                                  }
                                 }
                               ]
                             },
                             {
-                              "use": "ListItem",
+                              "use": "Button",
                               "props": {
-                                "Class": "flex items-center justify-between gap-4 text-sm"
+                                "Variant": "outline",
+                                "Size": "default",
+                                "Class": "w-full"
                               },
                               "children": [
                                 {
-                                  "use": "Inline",
-                                  "props": {
-                                    "Class": "text-muted-foreground"
-                                  },
-                                  "children": [
-                                    {
-                                      "text": {
-                                        "$": "labels.time"
-                                      }
-                                    }
-                                  ]
-                                },
-                                {
-                                  "use": "Inline",
-                                  "props": {
-                                    "Class": "font-medium"
-                                  },
-                                  "children": [
-                                    {
-                                      "text": {
-                                        "$": "zone.time"
-                                      }
-                                    }
-                                  ]
+                                  "text": {
+                                    "$": "labels.secondary"
+                                  }
                                 }
                               ]
-                            }
-                          ]
-                        },
-                        {
-                          "use": "Button",
-                          "props": {
-                            "Variant": "default",
-                            "Size": "default",
-                            "Class": "w-full"
-                          },
-                          "children": [
+                            },
                             {
-                              "text": {
-                                "$": "labels.primary"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "use": "Button",
-                          "props": {
-                            "Variant": "outline",
-                            "Size": "default",
-                            "Class": "w-full"
-                          },
-                          "children": [
-                            {
-                              "text": {
-                                "$": "labels.secondary"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "use": "Text",
-                          "props": {
-                            "Size": "xs",
-                            "Class": "text-muted-foreground"
-                          },
-                          "children": [
-                            {
-                              "text": {
-                                "$": "labels.note"
-                              }
+                              "use": "Text",
+                              "props": {
+                                "Size": "xs",
+                                "Class": "text-muted-foreground"
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "labels.note"
+                                  }
+                                }
+                              ]
                             }
                           ]
                         }

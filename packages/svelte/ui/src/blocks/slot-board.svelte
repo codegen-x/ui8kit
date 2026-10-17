@@ -16,6 +16,7 @@
     title: string;
     lead?: string;
     days: Day[];
+    empty?: string;
     zone: Zone;
     labels: SlotLabels;
     layout?: "split" | "stacked";
@@ -35,6 +36,7 @@
   import SelectOption from "../primitives/select/select-option.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import Field from "../components/field.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import SlotGrid from "../components/slot-grid.svelte";
@@ -45,6 +47,7 @@
     title,
     lead = "",
     days,
+    empty = "",
     zone,
     labels,
     layout = "split",
@@ -55,53 +58,57 @@
 </script>
 
 <SectionFrame id={id} title={title} lead={lead} tone={tone} landmarkLabel={landmarkLabel}>
-  <Box class="grid grid-cols-1 items-start gap-8 lg:grid-cols-3">
-    <Box class={(((layout as string) === "split") ? "lg:col-span-2" : "lg:col-span-3")}>
-      <SlotGrid days={days} name={tpl("{0}-slot", id)} item={item} />
+  {#if ((days?.length ?? 0) === 0)}
+    <EmptyState icon="calendar" title={empty} />
+  {:else}
+    <Box class="grid grid-cols-1 items-start gap-8 lg:grid-cols-3">
+      <Box class={(((layout as string) === "split") ? "lg:col-span-2" : "lg:col-span-3")}>
+        <SlotGrid days={days} name={tpl("{0}-slot", id)} item={item} />
+      </Box>
+      {#if ((layout as string) === "split")}
+        <Stack gap="4" align="stretch" class="rounded bg-card inset-ring inset-ring-border p-6" data-testid="aside">
+          <Field label={labels.zone} htmlFor={tpl("{0}-zone", id)}>
+            <Select name={tpl("{0}-zone", id)} id={tpl("{0}-zone", id)}>
+              <SelectOption value={zone.id} label={zone.name} selected={true} />
+            </Select>
+          </Field>
+          <List tag="ul" class="flex flex-col gap-2">
+            <ListItem class="flex items-center justify-between gap-4 text-sm">
+              <Inline class="text-muted-foreground">
+                {labels.price}
+              </Inline>
+              <Inline class="font-medium">
+                {fmtMoney(zone.price, zone.currency)}
+              </Inline>
+            </ListItem>
+            <ListItem class="flex items-center justify-between gap-4 text-sm">
+              <Inline class="text-muted-foreground">
+                {labels.freeFrom}
+              </Inline>
+              <Inline class="font-medium">
+                {fmtMoney(zone.freeFrom, zone.currency)}
+              </Inline>
+            </ListItem>
+            <ListItem class="flex items-center justify-between gap-4 text-sm">
+              <Inline class="text-muted-foreground">
+                {labels.time}
+              </Inline>
+              <Inline class="font-medium">
+                {zone.time}
+              </Inline>
+            </ListItem>
+          </List>
+          <Button variant="default" size="default" class="w-full">
+            {labels.primary}
+          </Button>
+          <Button variant="outline" size="default" class="w-full">
+            {labels.secondary}
+          </Button>
+          <Text size="xs" class="text-muted-foreground">
+            {labels.note}
+          </Text>
+        </Stack>
+      {/if}
     </Box>
-    {#if ((layout as string) === "split")}
-      <Stack gap="4" align="stretch" class="rounded bg-card inset-ring inset-ring-border p-6" data-testid="aside">
-        <Field label={labels.zone} htmlFor={tpl("{0}-zone", id)}>
-          <Select name={tpl("{0}-zone", id)} id={tpl("{0}-zone", id)}>
-            <SelectOption value={zone.id} label={zone.name} selected={true} />
-          </Select>
-        </Field>
-        <List tag="ul" class="flex flex-col gap-2">
-          <ListItem class="flex items-center justify-between gap-4 text-sm">
-            <Inline class="text-muted-foreground">
-              {labels.price}
-            </Inline>
-            <Inline class="font-medium">
-              {fmtMoney(zone.price, zone.currency)}
-            </Inline>
-          </ListItem>
-          <ListItem class="flex items-center justify-between gap-4 text-sm">
-            <Inline class="text-muted-foreground">
-              {labels.freeFrom}
-            </Inline>
-            <Inline class="font-medium">
-              {fmtMoney(zone.freeFrom, zone.currency)}
-            </Inline>
-          </ListItem>
-          <ListItem class="flex items-center justify-between gap-4 text-sm">
-            <Inline class="text-muted-foreground">
-              {labels.time}
-            </Inline>
-            <Inline class="font-medium">
-              {zone.time}
-            </Inline>
-          </ListItem>
-        </List>
-        <Button variant="default" size="default" class="w-full">
-          {labels.primary}
-        </Button>
-        <Button variant="outline" size="default" class="w-full">
-          {labels.secondary}
-        </Button>
-        <Text size="xs" class="text-muted-foreground">
-          {labels.note}
-        </Text>
-      </Stack>
-    {/if}
-  </Box>
+  {/if}
 </SectionFrame>

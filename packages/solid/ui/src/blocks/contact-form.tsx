@@ -94,7 +94,7 @@ export function ContactForm({
             {labels.submit}
           </Button>
         </Form>
-        {((layout as string) === "split") ? (
+        {(((layout as string) === "split") && ((details?.length ?? 0) > 0)) ? (
           <Stack gap="4" data-testid="details">
             <For each={details ?? []}>{(d) => (
               <Group gap="4" align="start" data-testid="detail">

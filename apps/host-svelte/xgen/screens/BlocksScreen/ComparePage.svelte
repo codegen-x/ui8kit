@@ -65,6 +65,7 @@
             id="compare-plans"
             title={ui.vibe.compare.title}
             rows={compare}
+            empty={ui.empty.rows}
             labels={ui.vibe.compare.labels}
             highlight="none"
             tone="default"
@@ -90,6 +91,7 @@
             id="compare-highlight"
             title={ui.vibe.compare.title}
             rows={compare}
+            empty={ui.empty.rows}
             labels={ui.vibe.compare.labels}
             highlight="middle"
             tone="default"
@@ -115,6 +117,7 @@
             id="compare-rivals"
             title={ui.vibe.rivals.title}
             rows={rivals}
+            empty={ui.empty.rows}
             labels={ui.vibe.rivals.labels}
             highlight="middle"
             tone="muted"
@@ -140,6 +143,7 @@
             id="compare-muted"
             title={ui.vibe.compare.title}
             rows={compare}
+            empty={ui.empty.rows}
             labels={ui.vibe.compare.labels}
             highlight="none"
             tone="muted"

@@ -87,7 +87,11 @@ const {
           <LucideIcon name="play" :size="24" />
         </Button>
       </Box>
-      <Stack v-if="((outline as string) === 'chapters')" gap="2" data-testid="chapters">
+      <Stack
+        v-if="(((outline as string) === 'chapters') && ((chapters?.length ?? 0) > 0))"
+        gap="2"
+        data-testid="chapters"
+      >
         <Title :as="3" size="base" weight="bold">
           {{ chaptersTitle }}
         </Title>

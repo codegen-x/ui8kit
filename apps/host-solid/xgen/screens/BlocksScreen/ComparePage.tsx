@@ -66,6 +66,7 @@ export function ComparePage() {
                 id="compare-plans"
                 title={ui.vibe.compare.title}
                 rows={compare}
+                empty={ui.empty.rows}
                 labels={ui.vibe.compare.labels}
                 highlight="none"
                 tone="default"
@@ -91,6 +92,7 @@ export function ComparePage() {
                 id="compare-highlight"
                 title={ui.vibe.compare.title}
                 rows={compare}
+                empty={ui.empty.rows}
                 labels={ui.vibe.compare.labels}
                 highlight="middle"
                 tone="default"
@@ -116,6 +118,7 @@ export function ComparePage() {
                 id="compare-rivals"
                 title={ui.vibe.rivals.title}
                 rows={rivals}
+                empty={ui.empty.rows}
                 labels={ui.vibe.rivals.labels}
                 highlight="middle"
                 tone="muted"
@@ -141,6 +144,7 @@ export function ComparePage() {
                 id="compare-muted"
                 title={ui.vibe.compare.title}
                 rows={compare}
+                empty={ui.empty.rows}
                 labels={ui.vibe.compare.labels}
                 highlight="none"
                 tone="muted"

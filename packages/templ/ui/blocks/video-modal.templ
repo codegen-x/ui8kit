@@ -59,7 +59,7 @@ templ VideoModal(p VideoModalProps) {
 					@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "play", Size: 24})
 				}
 			}
-			if uiutils.Eq(vOutline, "chapters") {
+			if uiutils.T(uiutils.And(uiutils.Eq(vOutline, "chapters"), uiutils.Gt(uiutils.Len(vChapters), float64(0)))) {
 				@stack.Stack(stack.StackProps{Gap: "2", Attrs: uiutils.Attrs("data-testid", "chapters")}) {
 					@title.Title(title.TitleProps{As: uiutils.HeadingLevel(uiutils.I(float64(3))), Size: "base", Weight: "bold"}) {
 						{ uiutils.Text(vChaptersTitle) }

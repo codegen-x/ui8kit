@@ -61,16 +61,32 @@ export function FeatureSplit({
       )}
     >
       {((layout as string) === "grid") ? (
-        <FeaturePairs features={features} />
+        <>
+          {((features?.length ?? 0) > 0) ? (
+            <FeaturePairs features={features} />
+          ) : null}
+        </>
       ) : null}
       {((layout as string) === "cards") ? (
-        <FeatureCards features={features} cols="1-2" item="tile" />
+        <>
+          {((features?.length ?? 0) > 0) ? (
+            <FeatureCards features={features} cols="1-2" item="tile" />
+          ) : null}
+        </>
       ) : null}
       {((layout as string) === "stats") ? (
-        <FeatureStatRows features={features} stats={stats} />
+        <>
+          {((features?.length ?? 0) > 0) ? (
+            <FeatureStatRows features={features} stats={stats} />
+          ) : null}
+        </>
       ) : null}
       {((layout as string) === "metrics") ? (
-        <FeatureMetricCards stats={stats} />
+        <>
+          {((stats?.length ?? 0) > 0) ? (
+            <FeatureMetricCards stats={stats} />
+          ) : null}
+        </>
       ) : null}
       {(((layout as string) === "cards") || ((layout as string) === "metrics")) ? (
         <ActionGroup

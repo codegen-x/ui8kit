@@ -1,5 +1,5 @@
 // Promo and support organisms: announcement bar, cookie banner, newsletter form, contact form, support channels.
-import { and, cn, cond, each, eq, ref, text, undef, use, when, organism } from "../../build";
+import { and, cn, gt, len, cond, each, eq, ref, text, undef, use, when, organism } from "../../build";
 import type { OrganismSpec } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { frame, wide } from "../components/frames";
@@ -112,7 +112,7 @@ const contactForm = spec(`${O}contact-form`, "ContactForm", "A contact section: 
         textField("message", ref("labels.message")),
         when(eq(ref("terms"), "show"), [checkRow("consent", ref("labels.consent"))]),
         use("Button", { props: { Variant: "default", Size: "default", Type: "submit", Class: "w-fit" }, attrs: { "data-testid": "submit" } }, text(ref("labels.submit")))),
-      when(eq(ref("layout"), "split"), [use("Stack", { props: { Gap: "4" }, attrs: { "data-testid": "details" } },
+      when(and(eq(ref("layout"), "split"), gt(len(ref("details")), 0)), [use("Stack", { props: { Gap: "4" }, attrs: { "data-testid": "details" } },
         each(ref("details"), "d", ref("d.id"),
           use("Group", { props: { Gap: "4", Align: "start" }, attrs: { "data-testid": "detail" } },
             use("LucideIcon", { props: { Name: ref("d.icon"), Size: 20 } }),

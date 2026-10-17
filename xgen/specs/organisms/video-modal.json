@@ -240,12 +240,31 @@
                 },
                 {
                   "when": {
-                    "op": "eq",
+                    "op": "and",
                     "args": [
                       {
-                        "$": "outline"
+                        "op": "eq",
+                        "args": [
+                          {
+                            "$": "outline"
+                          },
+                          "chapters"
+                        ]
                       },
-                      "chapters"
+                      {
+                        "op": "gt",
+                        "args": [
+                          {
+                            "op": "len",
+                            "args": [
+                              {
+                                "$": "chapters"
+                              }
+                            ]
+                          },
+                          0
+                        ]
+                      }
                     ]
                   },
                   "then": [

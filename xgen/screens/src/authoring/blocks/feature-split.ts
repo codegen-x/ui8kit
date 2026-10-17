@@ -3,7 +3,7 @@ import { cond, eq, or, ref, undef, when, organism } from "../../build";
 import type { OrganismSpec } from "../../ir";
 import { spec, ts } from "../kit";
 import { frame } from "../components/frames";
-import { id, tsOf, toneLite } from "../props";
+import { id, ifAny, tsOf, toneLite } from "../props";
 
 const featureSplit = spec("organism.feature-split", "FeatureSplit", "Features beside a picture. Axes: layout (grid: four plain features in two columns, cards: four features as cards and the actions, stats: two figure cards over three checked rows beside a square picture, metrics: four metric cards and the actions), mediaSide, tone.", {
   typeImports: [{ from: "FeatureGrid", names: ["Feature"] }, { from: "StatsBand", names: ["Stat"] }, { from: "ErrorPage", names: ["LinkActions"] }],
@@ -25,10 +25,11 @@ const featureSplit = spec("organism.feature-split", "FeatureSplit", "Features be
     const head = { id: ref("id"), title: ref("title"), lead: ref("lead"), badge: ref("badge"), level: ref("level"), tone: ref("tone"), layout: "split", hasMedia: true, mediaSide: ref("mediaSide") };
     const actions = organism("ActionGroup", { primary: ref("actions.cta"), primaryHref: ref("actions.href"), secondary: cond(eq(ref("actions.mode"), "two"), ref("actions.secondary"), undef()), secondaryHref: ref("actions.secondaryHref"), align: "start" });
     return [frame(head, [
-      when(is("grid"), [organism("FeaturePairs", { features: ref("features") })]),
-      when(is("cards"), [organism("FeatureCards", { features: ref("features"), cols: "1-2", item: "tile" })]),
-      when(is("stats"), [organism("FeatureStatRows", { features: ref("features"), stats: ref("stats") })]),
-      when(is("metrics"), [organism("FeatureMetricCards", { stats: ref("stats") })]),
+      // emptyMode omit: an empty list leaves its part out
+      when(is("grid"), [ifAny("features", [organism("FeaturePairs", { features: ref("features") })])]),
+      when(is("cards"), [ifAny("features", [organism("FeatureCards", { features: ref("features"), cols: "1-2", item: "tile" })])]),
+      when(is("stats"), [ifAny("features", [organism("FeatureStatRows", { features: ref("features"), stats: ref("stats") })])]),
+      when(is("metrics"), [ifAny("stats", [organism("FeatureMetricCards", { stats: ref("stats") })])]),
       when(or(is("cards"), is("metrics")), [actions]),
     ], [organism("MediaFrame", { alt: ref("title"), ratio: cond(is("stats"), "1/1", "4/3") })])];
   })(),

@@ -78,6 +78,7 @@ export function SlotsPage() {
                 title={ui.commerce.slots.title}
                 lead={ui.commerce.slots.lead}
                 days={days}
+                empty={ui.empty.days}
                 zone={zones.find((i) => i.id === "zone-central")!}
                 labels={ui.commerce.slots}
                 layout="split"
@@ -105,6 +106,7 @@ export function SlotsPage() {
                 title={ui.commerce.slots.title}
                 lead={ui.commerce.slots.lead}
                 days={days}
+                empty={ui.empty.days}
                 zone={zones.find((i) => i.id === "zone-central")!}
                 labels={ui.commerce.slots}
                 layout="split"
@@ -132,6 +134,7 @@ export function SlotsPage() {
                 title={ui.commerce.slots.title}
                 lead={ui.commerce.slots.lead}
                 days={days}
+                empty={ui.empty.days}
                 zone={zones.find((i) => i.id === "zone-central")!}
                 labels={ui.commerce.slots}
                 layout="stacked"

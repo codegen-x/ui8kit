@@ -129,7 +129,7 @@ const compare = define({
   organism: "ComparisonTable", axes: ["highlight", "tone", "density"], data: [d.compare, d.rivals],
   variants: [["plans", "Plans"], ["highlight", "Middle column stands out", { highlight: "middle" }], ["rivals", "Us and the rivals", { highlight: "middle", tone: "muted" }, { rows: ref("rivals"), title: v("rivals.title"), labels: v("rivals.labels") }], ["muted", "Muted, compact", MUTED_COMPACT]],
   facts: [{ sel: '[data-testid="item"]', n: 5 }, { sel: "th[scope=col]", n: 4 }, { sel: '[data-highlight="true"]', n: 1, when: { highlight: "middle" } }, { sel: '[data-highlight="true"]', n: 0, when: { highlight: "none" } }],
-  sample: { ...sec("compare"), rows: ref("compare"), labels: v("compare.labels") },
+  sample: { ...sec("compare"), rows: ref("compare"), empty: t("empty.rows"), labels: v("compare.labels") },
 });
 
 const usage = define({

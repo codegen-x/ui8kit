@@ -46,6 +46,7 @@
     }
   ],
   "slots": [
+    "EmptyState",
     "Field",
     "SectionFrame",
     "SlotGrid"
@@ -121,6 +122,9 @@
       },
       "days": {
         "$": "days"
+      },
+      "empty": {
+        "$": "ui.empty.days"
       },
       "zone": {
         "op": "pick",

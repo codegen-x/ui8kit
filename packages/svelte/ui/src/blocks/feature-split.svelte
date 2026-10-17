@@ -63,16 +63,24 @@
   landmarkLabel={landmarkLabel}
 >
   {#if ((layout as string) === "grid")}
-    <FeaturePairs features={features} />
+    {#if ((features?.length ?? 0) > 0)}
+      <FeaturePairs features={features} />
+    {/if}
   {/if}
   {#if ((layout as string) === "cards")}
-    <FeatureCards features={features} cols="1-2" item="tile" />
+    {#if ((features?.length ?? 0) > 0)}
+      <FeatureCards features={features} cols="1-2" item="tile" />
+    {/if}
   {/if}
   {#if ((layout as string) === "stats")}
-    <FeatureStatRows features={features} stats={stats} />
+    {#if ((features?.length ?? 0) > 0)}
+      <FeatureStatRows features={features} stats={stats} />
+    {/if}
   {/if}
   {#if ((layout as string) === "metrics")}
-    <FeatureMetricCards stats={stats} />
+    {#if ((stats?.length ?? 0) > 0)}
+      <FeatureMetricCards stats={stats} />
+    {/if}
   {/if}
   {#if (((layout as string) === "cards") || ((layout as string) === "metrics"))}
     <ActionGroup

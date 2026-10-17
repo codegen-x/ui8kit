@@ -93,7 +93,11 @@ const {
           {{ labels.submit }}
         </Button>
       </Form>
-      <Stack v-if="((layout as string) === 'split')" gap="4" data-testid="details">
+      <Stack
+        v-if="(((layout as string) === 'split') && ((details?.length ?? 0) > 0))"
+        gap="4"
+        data-testid="details"
+      >
         <Group v-for="d in details" :key="d.id" gap="4" align="start" data-testid="detail">
           <LucideIcon :name="d.icon" :size="20" />
           <Stack gap="0">

@@ -14,30 +14,32 @@
 {%- set v_landmarkLabel = ui_def(p['landmarkLabel'], none) -%}
 {%- set c_17 -%}
   {%- set c_16 -%}
-    {%- set c_6 -%}
-      {%- for v_f in ui_l(v_facts) %}
-        {%- set c_5 -%}
-          {%- set c_1 -%}
-            {{ ui_include('ui/lucide-icon/lucide-icon.html.j2', {'p': {'Name': ui_s(ui_get(v_f, ['icon'])), 'Size': 20}}) }}
-          {%- endset -%}
-          {{ ui_include('ui/box/box.html.j2', {'p': {'Class': 'flex size-10 shrink-0 items-center justify-center rounded bg-muted'}, 'children': c_1}) }}
-          {%- set c_4 -%}
-            {%- set c_2 -%}
-              {{ ui_text(ui_get(v_f, ['title'])) }}
+    {%- if ui_t(ui_gt(ui_len(v_facts), 0)) %}
+      {%- set c_6 -%}
+        {%- for v_f in ui_l(v_facts) %}
+          {%- set c_5 -%}
+            {%- set c_1 -%}
+              {{ ui_include('ui/lucide-icon/lucide-icon.html.j2', {'p': {'Name': ui_s(ui_get(v_f, ['icon'])), 'Size': 20}}) }}
             {%- endset -%}
-            {{ ui_include('ui/text/text.html.j2', {'p': {'Size': 'sm', 'Weight': 'semibold'}, 'children': c_2}) }}
-            {%- set c_3 -%}
-              {{ ui_text(ui_get(v_f, ['text'])) }}
+            {{ ui_include('ui/box/box.html.j2', {'p': {'Class': 'flex size-10 shrink-0 items-center justify-center rounded bg-muted'}, 'children': c_1}) }}
+            {%- set c_4 -%}
+              {%- set c_2 -%}
+                {{ ui_text(ui_get(v_f, ['title'])) }}
+              {%- endset -%}
+              {{ ui_include('ui/text/text.html.j2', {'p': {'Size': 'sm', 'Weight': 'semibold'}, 'children': c_2}) }}
+              {%- set c_3 -%}
+                {{ ui_text(ui_get(v_f, ['text'])) }}
+              {%- endset -%}
+              {{ ui_include('ui/text/text.html.j2', {'p': {'Size': 'sm', 'Class': 'text-muted-foreground'}, 'children': c_3}) }}
             {%- endset -%}
-            {{ ui_include('ui/text/text.html.j2', {'p': {'Size': 'sm', 'Class': 'text-muted-foreground'}, 'children': c_3}) }}
+            {{ ui_include('ui/stack/stack.html.j2', {'p': {'Gap': '2'}, 'children': c_4}) }}
           {%- endset -%}
-          {{ ui_include('ui/stack/stack.html.j2', {'p': {'Gap': '2'}, 'children': c_4}) }}
-        {%- endset -%}
-        {{ ui_include('ui/stack/stack.html.j2', {'p': {'Gap': '4', 'Class': 'rounded bg-card inset-ring inset-ring-border p-6', 'Attrs': ui_attrs(['data-testid', 'fact'])}, 'children': c_5}) }}
-      {%- endfor %}
-    {%- endset -%}
-    {{ ui_include('ui/grid/grid.html.j2', {'p': {'Cols': ui_s(('1-2' if ui_t(ui_eq(v_layout, 'split')) else '1-4')), 'Class': 'gap-4', 'Attrs': ui_attrs(['data-testid', 'facts'])}, 'children': c_6}) }}
-    {%- if ui_t(not (ui_eq(v_layout, 'facts'))) %}
+          {{ ui_include('ui/stack/stack.html.j2', {'p': {'Gap': '4', 'Class': 'rounded bg-card inset-ring inset-ring-border p-6', 'Attrs': ui_attrs(['data-testid', 'fact'])}, 'children': c_5}) }}
+        {%- endfor %}
+      {%- endset -%}
+      {{ ui_include('ui/grid/grid.html.j2', {'p': {'Cols': ui_s(('1-2' if ui_t(ui_eq(v_layout, 'split')) else '1-4')), 'Class': 'gap-4', 'Attrs': ui_attrs(['data-testid', 'facts'])}, 'children': c_6}) }}
+    {%- endif %}
+    {%- if ui_t(ui_and([not (ui_eq(v_layout, 'facts')), ui_gt(ui_len(v_zones), 0)])) %}
       {%- set c_15 -%}
         {%- set c_7 -%}
           {{ ui_text(ui_get(v_labels, ['zones'])) }}

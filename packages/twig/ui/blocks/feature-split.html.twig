@@ -19,16 +19,24 @@
 {%- endset -%}
 {%- set c_2 -%}
   {%- if ui_t(ui_eq(v_layout, 'grid')) %}
-    {{ include('blocks/feature-pairs.html.twig', {'p': {'features': v_features}}, with_context = false) }}
+    {%- if ui_t(ui_gt(ui_len(v_features), 0)) %}
+      {{ include('blocks/feature-pairs.html.twig', {'p': {'features': v_features}}, with_context = false) }}
+    {%- endif %}
   {%- endif %}
   {%- if ui_t(ui_eq(v_layout, 'cards')) %}
-    {{ include('blocks/feature-cards.html.twig', {'p': {'features': v_features, 'cols': '1-2', 'item': 'tile'}}, with_context = false) }}
+    {%- if ui_t(ui_gt(ui_len(v_features), 0)) %}
+      {{ include('blocks/feature-cards.html.twig', {'p': {'features': v_features, 'cols': '1-2', 'item': 'tile'}}, with_context = false) }}
+    {%- endif %}
   {%- endif %}
   {%- if ui_t(ui_eq(v_layout, 'stats')) %}
-    {{ include('blocks/feature-stat-rows.html.twig', {'p': {'features': v_features, 'stats': v_stats}}, with_context = false) }}
+    {%- if ui_t(ui_gt(ui_len(v_features), 0)) %}
+      {{ include('blocks/feature-stat-rows.html.twig', {'p': {'features': v_features, 'stats': v_stats}}, with_context = false) }}
+    {%- endif %}
   {%- endif %}
   {%- if ui_t(ui_eq(v_layout, 'metrics')) %}
-    {{ include('blocks/feature-metric-cards.html.twig', {'p': {'stats': v_stats}}, with_context = false) }}
+    {%- if ui_t(ui_gt(ui_len(v_stats), 0)) %}
+      {{ include('blocks/feature-metric-cards.html.twig', {'p': {'stats': v_stats}}, with_context = false) }}
+    {%- endif %}
   {%- endif %}
   {%- if ui_t(ui_or([ui_eq(v_layout, 'cards'), ui_eq(v_layout, 'metrics')])) %}
     {{ include('blocks/action-group.html.twig', {'p': {'primary': ui_get(v_actions, ['cta']), 'primaryHref': ui_get(v_actions, ['href']), 'secondary': (ui_t(ui_eq(ui_get(v_actions, ['mode']), 'two')) ? ui_get(v_actions, ['secondary']) : null), 'secondaryHref': ui_get(v_actions, ['secondaryHref'])}}, with_context = false) }}

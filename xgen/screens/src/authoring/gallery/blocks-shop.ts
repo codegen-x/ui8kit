@@ -51,7 +51,7 @@ const slots = define({
   organism: "SlotBoard", axes: ["layout", "item", "tone"], data: [d.days, d.zones],
   variants: [["split", "Days beside the zone card"], ["plain", "Plain days", { item: "plain" }], ["stacked", "Days only, muted", { layout: "stacked", tone: "muted" }]],
   facts: [{ sel: '[data-testid="day"]', n: "@days" }, { sel: 'input[type="radio"]', n: 12 }, { sel: 'input[type="radio"]:disabled', n: 4 }, ...shown('[data-testid="aside"]', "layout", "split", "stacked")],
-  sample: { id: "slots", title: c("slots.title"), lead: c("slots.lead"), days: ref("days"), zone: pick("zones", "zone-central"), labels: c("slots") },
+  sample: { id: "slots", title: c("slots.title"), lead: c("slots.lead"), days: ref("days"), empty: t("empty.days"), zone: pick("zones", "zone-central"), labels: c("slots") },
 });
 
 const delivery = define({

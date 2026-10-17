@@ -2472,6 +2472,8 @@ export const ui = {
     "zones": "No delivery zones yet",
     "stores": "No stores yet",
     "sections": "Nothing to read yet",
-    "lanes": "No lanes yet"
+    "lanes": "No lanes yet",
+    "rows": "Nothing to compare yet",
+    "days": "No delivery windows yet"
   }
 } as const;

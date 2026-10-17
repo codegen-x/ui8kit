@@ -29,6 +29,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "more",
       "type": "string",
       "required": true,
@@ -89,123 +95,72 @@
           "args": [],
           "do": [
             {
-              "use": "Box",
-              "props": {
-                "Class": {
-                  "op": "cond",
-                  "args": [
-                    {
-                      "op": "eq",
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "features"
+                      }
+                    ]
+                  },
+                  0
+                ]
+              },
+              "then": [
+                {
+                  "organism": "EmptyState",
+                  "props": {
+                    "icon": "layout-grid",
+                    "title": {
+                      "$": "empty"
+                    }
+                  }
+                }
+              ],
+              "else": [
+                {
+                  "use": "Box",
+                  "props": {
+                    "Class": {
+                      "op": "cond",
                       "args": [
                         {
-                          "$": "cols"
-                        },
-                        "4"
-                      ]
-                    },
-                    "grid grid-cols-1 gap-6 text-start sm:grid-cols-2 lg:grid-cols-4",
-                    "grid grid-cols-1 gap-6 text-start sm:grid-cols-2 lg:grid-cols-3"
-                  ]
-                }
-              },
-              "children": [
-                {
-                  "each": {
-                    "$": "features"
-                  },
-                  "as": "f",
-                  "key": {
-                    "$": "f.id"
-                  },
-                  "do": [
-                    {
-                      "use": "Card",
-                      "props": {
-                        "Variant": "default",
-                        "Class": "h-full gap-4 overflow-hidden"
-                      },
-                      "attrs": {
-                        "data-testid": "showcase-card"
-                      },
-                      "children": [
-                        {
-                          "when": {
-                            "op": "eq",
-                            "args": [
-                              {
-                                "$": "item"
-                              },
-                              "picture"
-                            ]
-                          },
-                          "then": [
+                          "op": "eq",
+                          "args": [
                             {
-                              "organism": "MediaFrame",
-                              "props": {
-                                "alt": {
-                                  "$": "f.title"
-                                }
-                              }
-                            }
-                          ],
-                          "else": [
-                            {
-                              "use": "Box",
-                              "props": {
-                                "Class": "flex aspect-video items-center justify-center rounded bg-muted text-foreground"
-                              },
-                              "attrs": {
-                                "data-testid": "showcase-panel"
-                              },
-                              "children": [
-                                {
-                                  "use": "LucideIcon",
-                                  "props": {
-                                    "Name": {
-                                      "$": "f.icon"
-                                    },
-                                    "Size": 32
-                                  }
-                                }
-                              ]
-                            }
+                              "$": "cols"
+                            },
+                            "4"
                           ]
                         },
+                        "grid grid-cols-1 gap-6 text-start sm:grid-cols-2 lg:grid-cols-4",
+                        "grid grid-cols-1 gap-6 text-start sm:grid-cols-2 lg:grid-cols-3"
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "each": {
+                        "$": "features"
+                      },
+                      "as": "f",
+                      "key": {
+                        "$": "f.id"
+                      },
+                      "do": [
                         {
-                          "use": "CardContent",
+                          "use": "Card",
                           "props": {
-                            "Class": "flex flex-1 flex-col gap-2"
+                            "Variant": "default",
+                            "Class": "h-full gap-4 overflow-hidden"
+                          },
+                          "attrs": {
+                            "data-testid": "showcase-card"
                           },
                           "children": [
-                            {
-                              "use": "Title",
-                              "props": {
-                                "As": 3,
-                                "Size": "base",
-                                "Weight": "semibold"
-                              },
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "f.title"
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "use": "Text",
-                              "props": {
-                                "Size": "sm",
-                                "Class": "text-muted-foreground"
-                              },
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "f.text"
-                                  }
-                                }
-                              ]
-                            },
                             {
                               "when": {
                                 "op": "eq",
@@ -218,34 +173,114 @@
                               },
                               "then": [
                                 {
-                                  "organism": "MenuEntry",
+                                  "organism": "MediaFrame",
                                   "props": {
-                                    "href": {
-                                      "$": "f.href"
-                                    },
-                                    "className": "mt-auto gap-2 pt-2 text-sm font-medium",
-                                    "size": "sm",
-                                    "testid": "read"
-                                  },
-                                  "slots": {
-                                    "children": {
-                                      "args": [],
-                                      "do": [
-                                        {
-                                          "text": {
-                                            "$": "more"
-                                          }
-                                        },
-                                        {
-                                          "use": "LucideIcon",
-                                          "props": {
-                                            "Name": "arrow-right",
-                                            "Size": 16
-                                          }
-                                        }
-                                      ]
+                                    "alt": {
+                                      "$": "f.title"
                                     }
                                   }
+                                }
+                              ],
+                              "else": [
+                                {
+                                  "use": "Box",
+                                  "props": {
+                                    "Class": "flex aspect-video items-center justify-center rounded bg-muted text-foreground"
+                                  },
+                                  "attrs": {
+                                    "data-testid": "showcase-panel"
+                                  },
+                                  "children": [
+                                    {
+                                      "use": "LucideIcon",
+                                      "props": {
+                                        "Name": {
+                                          "$": "f.icon"
+                                        },
+                                        "Size": 32
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "use": "CardContent",
+                              "props": {
+                                "Class": "flex flex-1 flex-col gap-2"
+                              },
+                              "children": [
+                                {
+                                  "use": "Title",
+                                  "props": {
+                                    "As": 3,
+                                    "Size": "base",
+                                    "Weight": "semibold"
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "f.title"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "use": "Text",
+                                  "props": {
+                                    "Size": "sm",
+                                    "Class": "text-muted-foreground"
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "f.text"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "when": {
+                                    "op": "eq",
+                                    "args": [
+                                      {
+                                        "$": "item"
+                                      },
+                                      "picture"
+                                    ]
+                                  },
+                                  "then": [
+                                    {
+                                      "organism": "MenuEntry",
+                                      "props": {
+                                        "href": {
+                                          "$": "f.href"
+                                        },
+                                        "className": "mt-auto gap-2 pt-2 text-sm font-medium",
+                                        "size": "sm",
+                                        "testid": "read"
+                                      },
+                                      "slots": {
+                                        "children": {
+                                          "args": [],
+                                          "do": [
+                                            {
+                                              "text": {
+                                                "$": "more"
+                                              }
+                                            },
+                                            {
+                                              "use": "LucideIcon",
+                                              "props": {
+                                                "Name": "arrow-right",
+                                                "Size": 16
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      }
+                                    }
+                                  ]
                                 }
                               ]
                             }

@@ -13,6 +13,7 @@ export type FeatureShowcaseProps = {
   title: string;
   lead?: string;
   features: Feature[];
+  empty?: string;
   more: string;
   item?: "picture" | "panel";
   cols?: "3" | "4";
@@ -28,6 +29,7 @@ import CardContent from "../primitives/card/card-content.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
+import EmptyState from "../components/empty-state.vue";
 import MediaFrame from "../components/media-frame.vue";
 import MenuEntry from "../components/menu-entry.vue";
 import SectionFrame from "../components/section-frame.vue";
@@ -37,6 +39,7 @@ const {
   title,
   lead = "",
   features,
+  empty = "",
   more,
   item = "picture",
   cols = "3",
@@ -47,7 +50,8 @@ const {
 
 <template>
   <SectionFrame :id="id" :title="title" :lead="lead" :tone="tone" align="center" :landmarkLabel="landmarkLabel">
-    <Box
+    <EmptyState v-if="((features?.length ?? 0) === 0)" icon="layout-grid" :title="empty" />
+    <Box v-else
       :class="
         (cols as string) === '4' ? 'grid grid-cols-1 gap-6 text-start sm:grid-cols-2 lg:grid-cols-4'
         : 'grid grid-cols-1 gap-6 text-start sm:grid-cols-2 lg:grid-cols-3'

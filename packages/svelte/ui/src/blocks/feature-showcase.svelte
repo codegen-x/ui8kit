@@ -14,6 +14,7 @@
     title: string;
     lead?: string;
     features: Feature[];
+    empty?: string;
     more: string;
     item?: "picture" | "panel";
     cols?: "3" | "4";
@@ -29,6 +30,7 @@
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import MenuEntry from "../components/menu-entry.svelte";
   import SectionFrame from "../components/section-frame.svelte";
@@ -38,6 +40,7 @@
     title,
     lead = "",
     features,
+    empty = "",
     more,
     item = "picture",
     cols = "3",
@@ -47,39 +50,43 @@
 </script>
 
 <SectionFrame id={id} title={title} lead={lead} tone={tone} align="center" landmarkLabel={landmarkLabel}>
-  <Box
-    class={
-      (cols as string) === "4" ? "grid grid-cols-1 gap-6 text-start sm:grid-cols-2 lg:grid-cols-4"
-      : "grid grid-cols-1 gap-6 text-start sm:grid-cols-2 lg:grid-cols-3"
-    }
-  >
-    {#each features as f (f.id)}
-      <Card variant="default" class="h-full gap-4 overflow-hidden" data-testid="showcase-card">
-        {#if ((item as string) === "picture")}
-          <MediaFrame alt={f.title} />
-        {:else}
-          <Box
-            class="flex aspect-video items-center justify-center rounded bg-muted text-foreground"
-            data-testid="showcase-panel"
-          >
-            <LucideIcon name={f.icon} size={32} />
-          </Box>
-        {/if}
-        <CardContent class="flex flex-1 flex-col gap-2">
-          <Title as={3} size="base" weight="semibold">
-            {f.title}
-          </Title>
-          <Text size="sm" class="text-muted-foreground">
-            {f.text}
-          </Text>
+  {#if ((features?.length ?? 0) === 0)}
+    <EmptyState icon="layout-grid" title={empty} />
+  {:else}
+    <Box
+      class={
+        (cols as string) === "4" ? "grid grid-cols-1 gap-6 text-start sm:grid-cols-2 lg:grid-cols-4"
+        : "grid grid-cols-1 gap-6 text-start sm:grid-cols-2 lg:grid-cols-3"
+      }
+    >
+      {#each features as f (f.id)}
+        <Card variant="default" class="h-full gap-4 overflow-hidden" data-testid="showcase-card">
           {#if ((item as string) === "picture")}
-            <MenuEntry href={f.href} class="mt-auto gap-2 pt-2 text-sm font-medium" size="sm" testid="read">
-              {more}
-              <LucideIcon name="arrow-right" size={16} />
-            </MenuEntry>
+            <MediaFrame alt={f.title} />
+          {:else}
+            <Box
+              class="flex aspect-video items-center justify-center rounded bg-muted text-foreground"
+              data-testid="showcase-panel"
+            >
+              <LucideIcon name={f.icon} size={32} />
+            </Box>
           {/if}
-        </CardContent>
-      </Card>
-    {/each}
-  </Box>
+          <CardContent class="flex flex-1 flex-col gap-2">
+            <Title as={3} size="base" weight="semibold">
+              {f.title}
+            </Title>
+            <Text size="sm" class="text-muted-foreground">
+              {f.text}
+            </Text>
+            {#if ((item as string) === "picture")}
+              <MenuEntry href={f.href} class="mt-auto gap-2 pt-2 text-sm font-medium" size="sm" testid="read">
+                {more}
+                <LucideIcon name="arrow-right" size={16} />
+              </MenuEntry>
+            {/if}
+          </CardContent>
+        </Card>
+      {/each}
+    </Box>
+  {/if}
 </SectionFrame>

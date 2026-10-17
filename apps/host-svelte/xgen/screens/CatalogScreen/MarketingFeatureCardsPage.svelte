@@ -82,6 +82,7 @@
               title={ui.marketing.featureShowcase.title}
               lead={ui.marketing.featureShowcase.lead}
               features={values}
+              empty={ui.empty.features}
               more={ui.marketing.featureShowcase.more}
               item="picture"
               cols="3"
@@ -108,6 +109,7 @@
               title={ui.marketing.featureShowcase.title}
               lead={ui.marketing.featureShowcase.lead}
               features={features}
+              empty={ui.empty.features}
               more={ui.marketing.featureShowcase.more}
               item="panel"
               cols="4"
@@ -134,6 +136,7 @@
               title={ui.marketing.featureShowcase.title}
               lead={ui.marketing.featureShowcase.lead}
               features={features}
+              empty={ui.empty.features}
               more={ui.marketing.featureShowcase.more}
               item="picture"
               cols="4"
@@ -160,6 +163,7 @@
               title={ui.marketing.featureShowcase.title}
               lead={ui.marketing.featureShowcase.lead}
               features={values}
+              empty={ui.empty.features}
               more={ui.marketing.featureShowcase.more}
               item="panel"
               cols="3"

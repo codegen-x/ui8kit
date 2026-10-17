@@ -514,12 +514,31 @@
                 },
                 {
                   "when": {
-                    "op": "eq",
+                    "op": "and",
                     "args": [
                       {
-                        "$": "layout"
+                        "op": "eq",
+                        "args": [
+                          {
+                            "$": "layout"
+                          },
+                          "split"
+                        ]
                       },
-                      "split"
+                      {
+                        "op": "gt",
+                        "args": [
+                          {
+                            "op": "len",
+                            "args": [
+                              {
+                                "$": "details"
+                              }
+                            ]
+                          },
+                          0
+                        ]
+                      }
                     ]
                   },
                   "then": [

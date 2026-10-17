@@ -53,24 +53,26 @@ export function DeliveryInfo({
           (((layout as string) === "split") ? "items-start md:grid-cols-2" : "")
         )}
       >
-        <Grid cols={(((layout as string) === "split") ? "1-2" : "1-4")} className="gap-4" data-testid="facts">
-          {(facts ?? []).map((f) => (
-            <Stack key={f.id} gap="4" className="rounded bg-card inset-ring inset-ring-border p-6" data-testid="fact">
-              <Box className="flex size-10 shrink-0 items-center justify-center rounded bg-muted">
-                <LucideIcon name={f.icon} size={20} />
-              </Box>
-              <Stack gap="2">
-                <Text size="sm" weight="semibold">
-                  {f.title}
-                </Text>
-                <Text size="sm" className="text-muted-foreground">
-                  {f.text}
-                </Text>
+        {((facts?.length ?? 0) > 0) ? (
+          <Grid cols={(((layout as string) === "split") ? "1-2" : "1-4")} className="gap-4" data-testid="facts">
+            {(facts ?? []).map((f) => (
+              <Stack key={f.id} gap="4" className="rounded bg-card inset-ring inset-ring-border p-6" data-testid="fact">
+                <Box className="flex size-10 shrink-0 items-center justify-center rounded bg-muted">
+                  <LucideIcon name={f.icon} size={20} />
+                </Box>
+                <Stack gap="2">
+                  <Text size="sm" weight="semibold">
+                    {f.title}
+                  </Text>
+                  <Text size="sm" className="text-muted-foreground">
+                    {f.text}
+                  </Text>
+                </Stack>
               </Stack>
-            </Stack>
-          ))}
-        </Grid>
-        {((layout as string) !== "facts") ? (
+            ))}
+          </Grid>
+        ) : null}
+        {(((layout as string) !== "facts") && ((zones?.length ?? 0) > 0)) ? (
           <Stack gap="4" align="stretch">
             <Title as={3} size="lg" weight="bold">
               {labels.zones}

@@ -172,7 +172,7 @@ replace the string arrays `links`).
 - Magazine: no routes, so no links; the template stage has 0 `<a>` except the in-page table of contents of the docs template
   (was 158: brand, sitemap groups, side navs, categories, nav links).
 
-## 7a. Kit blocks in groups (steps 7-9)
+## 7a. Kit blocks in groups (steps 7-10)
 
 - Every fixture kind has a central map (`KIT_FIELDS` in fields.ts, part of `CODEX_FIELDS`); `codex:blocks` picks the map named
   after the binding's kind when two maps are equal (feature/value/perk/... share one shape).
@@ -183,6 +183,8 @@ replace the string arrays `links`).
 - `done.py`-style bookkeeping: `required`/`optional` of a binding come from the fixtures (a field every entry has is required).
 - Data fixes: metrics are numbers (money in minor units + `currency`, `|number` formats it), projects carry an integer year and
   the term of `project_category`, questions the term of `faq_category`.
+- Step 10: FeatureShowcase, ComparisonTable, SlotBoard draw EmptyState; FeatureSplit (features/stats), VideoModal (chapters),
+  ContactForm (details), DeliveryInfo (facts/zones), SkeletonLayout use omit. `slug|route` may be undefined by design (no route, no link).
 
 ## 8. Open questions (decided for now, review later)
 

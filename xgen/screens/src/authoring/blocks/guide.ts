@@ -1,6 +1,6 @@
 // Guidance organisms: a product-tour callout, a video dialog, an error page, a loading skeleton, a long article with a table of contents.
 // Positioning a callout on its target and playing the video are port contracts; these show the resting state.
-import { cn, cond, each, eq, ref, text, tpl, undef, use, when, organism } from "../../build";
+import { and, cn, cond, each, eq, gt, len, ref, text, tpl, undef, use, when, organism } from "../../build";
 import type { OrganismSpec } from "../../ir";
 import { fields, rec, spec, ts } from "../kit";
 import { frame } from "../components/frames";
@@ -56,7 +56,7 @@ const videoModal = spec(`${O}video-modal`, "VideoModal", "A dialog with a walkth
       use("Box", { props: { Class: "relative" }, attrs: { "data-testid": "player" } },
         organism("MediaFrame", { alt: ref("title"), ratio: "16/9" }),
         use("Button", { props: { Variant: "default", Size: "default", Type: "button", Class: "absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded" }, attrs: { "aria-label": ref("play"), "data-testid": "play" } }, use("LucideIcon", { props: { Name: "play", Size: 24 } }))),
-      when(eq(ref("outline"), "chapters"), [use("Stack", { props: { Gap: "2" }, attrs: { "data-testid": "chapters" } },
+      when(and(eq(ref("outline"), "chapters"), gt(len(ref("chapters")), 0)), [use("Stack", { props: { Gap: "2" }, attrs: { "data-testid": "chapters" } },
         heading(ref("chaptersTitle"), "base"),
         use("List", { props: { Class: "m-0 flex list-none flex-col gap-2 p-0" } }, each(ref("chapters"), "c", ref("c.id"), use("ListItem", { props: { Class: "flex items-baseline gap-4" }, attrs: { "data-testid": "item" } }, strong(ref("c.title"), "sm"), muted(ref("c.text"), "xs")))))])),
   ])],

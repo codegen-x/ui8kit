@@ -65,7 +65,12 @@ const {
         (((layout as string) === 'split') ? 'items-start md:grid-cols-2' : '')
       )"
     >
-      <Grid :cols="(((layout as string) === 'split') ? '1-2' : '1-4')" class="gap-4" data-testid="facts">
+      <Grid
+        v-if="((facts?.length ?? 0) > 0)"
+        :cols="(((layout as string) === 'split') ? '1-2' : '1-4')"
+        class="gap-4"
+        data-testid="facts"
+      >
         <Stack
           v-for="f in facts"
           :key="f.id"
@@ -86,7 +91,7 @@ const {
           </Stack>
         </Stack>
       </Grid>
-      <Stack v-if="((layout as string) !== 'facts')" gap="4" align="stretch">
+      <Stack v-if="(((layout as string) !== 'facts') && ((zones?.length ?? 0) > 0))" gap="4" align="stretch">
         <Title :as="3" size="lg" weight="bold">
           {{ labels.zones }}
         </Title>

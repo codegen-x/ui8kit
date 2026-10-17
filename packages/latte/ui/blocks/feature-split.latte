@@ -19,16 +19,24 @@
 {/capture}
 {capture $c_2}
   {if ui_t(ui_eq($v_layout, 'grid'))}
-    {=ui_include('blocks/feature-pairs.latte', ['p' => ['features' => $v_features]])|noescape}
+    {if ui_t(ui_gt(ui_len($v_features), 0))}
+      {=ui_include('blocks/feature-pairs.latte', ['p' => ['features' => $v_features]])|noescape}
+    {/if}
   {/if}
   {if ui_t(ui_eq($v_layout, 'cards'))}
-    {=ui_include('blocks/feature-cards.latte', ['p' => ['features' => $v_features, 'cols' => '1-2', 'item' => 'tile']])|noescape}
+    {if ui_t(ui_gt(ui_len($v_features), 0))}
+      {=ui_include('blocks/feature-cards.latte', ['p' => ['features' => $v_features, 'cols' => '1-2', 'item' => 'tile']])|noescape}
+    {/if}
   {/if}
   {if ui_t(ui_eq($v_layout, 'stats'))}
-    {=ui_include('blocks/feature-stat-rows.latte', ['p' => ['features' => $v_features, 'stats' => $v_stats]])|noescape}
+    {if ui_t(ui_gt(ui_len($v_features), 0))}
+      {=ui_include('blocks/feature-stat-rows.latte', ['p' => ['features' => $v_features, 'stats' => $v_stats]])|noescape}
+    {/if}
   {/if}
   {if ui_t(ui_eq($v_layout, 'metrics'))}
-    {=ui_include('blocks/feature-metric-cards.latte', ['p' => ['stats' => $v_stats]])|noescape}
+    {if ui_t(ui_gt(ui_len($v_stats), 0))}
+      {=ui_include('blocks/feature-metric-cards.latte', ['p' => ['stats' => $v_stats]])|noescape}
+    {/if}
   {/if}
   {if ui_t(ui_or([ui_eq($v_layout, 'cards'), ui_eq($v_layout, 'metrics')]))}
     {=ui_include('blocks/action-group.latte', ['p' => ['primary' => ui_get($v_actions, ['cta']), 'primaryHref' => ui_get($v_actions, ['href']), 'secondary' => (ui_t(ui_eq(ui_get($v_actions, ['mode']), 'two')) ? ui_get($v_actions, ['secondary']) : null), 'secondaryHref' => ui_get($v_actions, ['secondaryHref'])]])|noescape}

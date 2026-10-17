@@ -99,7 +99,7 @@
         {labels.submit}
       </Button>
     </Form>
-    {#if ((layout as string) === "split")}
+    {#if (((layout as string) === "split") && ((details?.length ?? 0) > 0))}
       <Stack gap="4" data-testid="details">
         {#each details as d (d.id)}
           <Group gap="4" align="start" data-testid="detail">

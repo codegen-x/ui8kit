@@ -91,6 +91,7 @@ const faqtabs = fromCodex<FaqTab>(faqtabsEntries, FAQTABS_FIELDS, CODEX);
     id="home-compare"
     :title="ui.vibe.compare.title"
     :rows="compare"
+    :empty="ui.empty.rows"
     :labels="ui.vibe.compare.labels"
     highlight="none"
     tone="default"

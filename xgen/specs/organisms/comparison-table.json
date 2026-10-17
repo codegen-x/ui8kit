@@ -77,6 +77,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "labels",
       "type": {
         "record": "CompareLabels"
@@ -138,258 +144,102 @@
           "args": [],
           "do": [
             {
-              "use": "Box",
-              "props": {
-                "Class": "relative w-full overflow-x-auto"
-              },
-              "children": [
-                {
-                  "use": "Table",
-                  "props": {
-                    "Class": "w-full text-left text-sm"
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "rows"
+                      }
+                    ]
                   },
-                  "attrs": {
-                    "data-testid": "compare"
+                  0
+                ]
+              },
+              "then": [
+                {
+                  "organism": "EmptyState",
+                  "props": {
+                    "icon": "table",
+                    "title": {
+                      "$": "empty"
+                    }
+                  }
+                }
+              ],
+              "else": [
+                {
+                  "use": "Box",
+                  "props": {
+                    "Class": "relative w-full overflow-x-auto"
                   },
                   "children": [
                     {
-                      "use": "TableCaption",
+                      "use": "Table",
                       "props": {
-                        "Class": "sr-only"
+                        "Class": "w-full text-left text-sm"
+                      },
+                      "attrs": {
+                        "data-testid": "compare"
                       },
                       "children": [
                         {
-                          "text": {
-                            "$": "labels.caption"
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "use": "TableHead",
-                      "children": [
-                        {
-                          "use": "TableRow",
+                          "use": "TableCaption",
+                          "props": {
+                            "Class": "sr-only"
+                          },
                           "children": [
                             {
-                              "use": "TableHeadCell",
-                              "props": {
-                                "Scope": "col",
-                                "Class": "py-4"
-                              },
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "labels.feature"
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "use": "TableHeadCell",
-                              "props": {
-                                "Scope": "col",
-                                "Class": "py-4"
-                              },
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "labels.a"
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "use": "TableHeadCell",
-                              "props": {
-                                "Scope": "col",
-                                "Class": {
-                                  "op": "cn",
-                                  "args": [
-                                    "py-4",
-                                    {
-                                      "op": "cond",
-                                      "args": [
-                                        {
-                                          "op": "eq",
-                                          "args": [
-                                            {
-                                              "$": "highlight"
-                                            },
-                                            "middle"
-                                          ]
-                                        },
-                                        "bg-muted",
-                                        ""
-                                      ]
-                                    }
-                                  ]
-                                }
-                              },
-                              "attrs": {
-                                "data-highlight": {
-                                  "op": "cond",
-                                  "args": [
-                                    {
-                                      "op": "eq",
-                                      "args": [
-                                        {
-                                          "$": "highlight"
-                                        },
-                                        "middle"
-                                      ]
-                                    },
-                                    "true",
-                                    "false"
-                                  ]
-                                }
-                              },
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "labels.b"
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "use": "TableHeadCell",
-                              "props": {
-                                "Scope": "col",
-                                "Class": "py-4"
-                              },
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "labels.c"
-                                  }
-                                }
-                              ]
+                              "text": {
+                                "$": "labels.caption"
+                              }
                             }
                           ]
-                        }
-                      ]
-                    },
-                    {
-                      "use": "TableBody",
-                      "children": [
+                        },
                         {
-                          "each": {
-                            "$": "rows"
-                          },
-                          "as": "row",
-                          "key": {
-                            "$": "row.id"
-                          },
-                          "do": [
+                          "use": "TableHead",
+                          "children": [
                             {
                               "use": "TableRow",
-                              "props": {
-                                "Class": "border-t border-border"
-                              },
-                              "attrs": {
-                                "data-testid": "item"
-                              },
                               "children": [
                                 {
                                   "use": "TableHeadCell",
                                   "props": {
-                                    "Scope": "row",
-                                    "Class": {
-                                      "op": "cn",
-                                      "args": [
-                                        "font-medium",
-                                        {
-                                          "op": "cond",
-                                          "args": [
-                                            {
-                                              "op": "eq",
-                                              "args": [
-                                                {
-                                                  "$": "density"
-                                                },
-                                                "compact"
-                                              ]
-                                            },
-                                            "py-2",
-                                            "py-4"
-                                          ]
-                                        }
-                                      ]
-                                    }
+                                    "Scope": "col",
+                                    "Class": "py-4"
                                   },
                                   "children": [
                                     {
                                       "text": {
-                                        "$": "row.label"
+                                        "$": "labels.feature"
                                       }
                                     }
                                   ]
                                 },
                                 {
-                                  "use": "TableCell",
+                                  "use": "TableHeadCell",
                                   "props": {
-                                    "Class": {
-                                      "op": "cn",
-                                      "args": [
-                                        {
-                                          "op": "cond",
-                                          "args": [
-                                            {
-                                              "op": "eq",
-                                              "args": [
-                                                {
-                                                  "$": "density"
-                                                },
-                                                "compact"
-                                              ]
-                                            },
-                                            "py-2",
-                                            "py-4"
-                                          ]
-                                        }
-                                      ]
-                                    }
+                                    "Scope": "col",
+                                    "Class": "py-4"
                                   },
                                   "children": [
                                     {
-                                      "organism": "CompareMark",
-                                      "props": {
-                                        "value": {
-                                          "$": "row.a"
-                                        },
-                                        "yes": {
-                                          "$": "labels.yes"
-                                        },
-                                        "no": {
-                                          "$": "labels.no"
-                                        }
+                                      "text": {
+                                        "$": "labels.a"
                                       }
                                     }
                                   ]
                                 },
                                 {
-                                  "use": "TableCell",
+                                  "use": "TableHeadCell",
                                   "props": {
+                                    "Scope": "col",
                                     "Class": {
                                       "op": "cn",
                                       "args": [
-                                        {
-                                          "op": "cond",
-                                          "args": [
-                                            {
-                                              "op": "eq",
-                                              "args": [
-                                                {
-                                                  "$": "density"
-                                                },
-                                                "compact"
-                                              ]
-                                            },
-                                            "py-2",
-                                            "py-4"
-                                          ]
-                                        },
+                                        "py-4",
                                         {
                                           "op": "cond",
                                           "args": [
@@ -402,64 +252,249 @@
                                                 "middle"
                                               ]
                                             },
-                                            "bg-muted font-semibold",
+                                            "bg-muted",
                                             ""
                                           ]
                                         }
                                       ]
                                     }
                                   },
-                                  "children": [
-                                    {
-                                      "organism": "CompareMark",
-                                      "props": {
-                                        "value": {
-                                          "$": "row.b"
-                                        },
-                                        "yes": {
-                                          "$": "labels.yes"
-                                        },
-                                        "no": {
-                                          "$": "labels.no"
-                                        }
-                                      }
-                                    }
-                                  ]
-                                },
-                                {
-                                  "use": "TableCell",
-                                  "props": {
-                                    "Class": {
+                                  "attrs": {
+                                    "data-highlight": {
                                       "op": "cond",
                                       "args": [
                                         {
                                           "op": "eq",
                                           "args": [
                                             {
-                                              "$": "density"
+                                              "$": "highlight"
                                             },
-                                            "compact"
+                                            "middle"
                                           ]
                                         },
-                                        "py-2",
-                                        "py-4"
+                                        "true",
+                                        "false"
                                       ]
                                     }
                                   },
                                   "children": [
                                     {
-                                      "organism": "CompareMark",
-                                      "props": {
-                                        "value": {
-                                          "$": "row.c"
-                                        },
-                                        "yes": {
-                                          "$": "labels.yes"
-                                        },
-                                        "no": {
-                                          "$": "labels.no"
-                                        }
+                                      "text": {
+                                        "$": "labels.b"
                                       }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "use": "TableHeadCell",
+                                  "props": {
+                                    "Scope": "col",
+                                    "Class": "py-4"
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "labels.c"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        {
+                          "use": "TableBody",
+                          "children": [
+                            {
+                              "each": {
+                                "$": "rows"
+                              },
+                              "as": "row",
+                              "key": {
+                                "$": "row.id"
+                              },
+                              "do": [
+                                {
+                                  "use": "TableRow",
+                                  "props": {
+                                    "Class": "border-t border-border"
+                                  },
+                                  "attrs": {
+                                    "data-testid": "item"
+                                  },
+                                  "children": [
+                                    {
+                                      "use": "TableHeadCell",
+                                      "props": {
+                                        "Scope": "row",
+                                        "Class": {
+                                          "op": "cn",
+                                          "args": [
+                                            "font-medium",
+                                            {
+                                              "op": "cond",
+                                              "args": [
+                                                {
+                                                  "op": "eq",
+                                                  "args": [
+                                                    {
+                                                      "$": "density"
+                                                    },
+                                                    "compact"
+                                                  ]
+                                                },
+                                                "py-2",
+                                                "py-4"
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "row.label"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "TableCell",
+                                      "props": {
+                                        "Class": {
+                                          "op": "cn",
+                                          "args": [
+                                            {
+                                              "op": "cond",
+                                              "args": [
+                                                {
+                                                  "op": "eq",
+                                                  "args": [
+                                                    {
+                                                      "$": "density"
+                                                    },
+                                                    "compact"
+                                                  ]
+                                                },
+                                                "py-2",
+                                                "py-4"
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "organism": "CompareMark",
+                                          "props": {
+                                            "value": {
+                                              "$": "row.a"
+                                            },
+                                            "yes": {
+                                              "$": "labels.yes"
+                                            },
+                                            "no": {
+                                              "$": "labels.no"
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "TableCell",
+                                      "props": {
+                                        "Class": {
+                                          "op": "cn",
+                                          "args": [
+                                            {
+                                              "op": "cond",
+                                              "args": [
+                                                {
+                                                  "op": "eq",
+                                                  "args": [
+                                                    {
+                                                      "$": "density"
+                                                    },
+                                                    "compact"
+                                                  ]
+                                                },
+                                                "py-2",
+                                                "py-4"
+                                              ]
+                                            },
+                                            {
+                                              "op": "cond",
+                                              "args": [
+                                                {
+                                                  "op": "eq",
+                                                  "args": [
+                                                    {
+                                                      "$": "highlight"
+                                                    },
+                                                    "middle"
+                                                  ]
+                                                },
+                                                "bg-muted font-semibold",
+                                                ""
+                                              ]
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "organism": "CompareMark",
+                                          "props": {
+                                            "value": {
+                                              "$": "row.b"
+                                            },
+                                            "yes": {
+                                              "$": "labels.yes"
+                                            },
+                                            "no": {
+                                              "$": "labels.no"
+                                            }
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "TableCell",
+                                      "props": {
+                                        "Class": {
+                                          "op": "cond",
+                                          "args": [
+                                            {
+                                              "op": "eq",
+                                              "args": [
+                                                {
+                                                  "$": "density"
+                                                },
+                                                "compact"
+                                              ]
+                                            },
+                                            "py-2",
+                                            "py-4"
+                                          ]
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "organism": "CompareMark",
+                                          "props": {
+                                            "value": {
+                                              "$": "row.c"
+                                            },
+                                            "yes": {
+                                              "$": "labels.yes"
+                                            },
+                                            "no": {
+                                              "$": "labels.no"
+                                            }
+                                          }
+                                        }
+                                      ]
                                     }
                                   ]
                                 }

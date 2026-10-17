@@ -1139,7 +1139,7 @@
       "surface": "kit-block",
       "spec": "block.compare",
       "source": "xgen/specs/blocks/compare.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "rows",
@@ -1147,7 +1147,15 @@
           "kind": "row",
           "record": "CompareRow",
           "map": "row",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.a.value",
+            "metadata.b.value",
+            "metadata.c.value"
+          ],
+          "optional": []
         },
         {
           "prop": "rows",
@@ -1155,7 +1163,15 @@
           "kind": "row",
           "record": "CompareRow",
           "map": "row",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.a.value",
+            "metadata.b.value",
+            "metadata.c.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -1172,6 +1188,11 @@
           "keys": []
         },
         {
+          "prop": "empty",
+          "dictionary": "empty.rows",
+          "keys": []
+        },
+        {
           "prop": "labels",
           "dictionary": "vibe.compare.labels",
           "keys": [
@@ -1185,14 +1206,14 @@
           ]
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "ContactForm",
       "surface": "kit-block",
       "spec": "block.contact",
       "source": "xgen/specs/blocks/contact.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "details",
@@ -1200,7 +1221,14 @@
           "kind": "channel",
           "record": "Feature",
           "map": "channel",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -1237,7 +1265,8 @@
           ]
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "CookieBanner",
@@ -1582,7 +1611,7 @@
       "surface": "kit-block",
       "spec": "block.delivery",
       "source": "xgen/specs/blocks/delivery.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "facts",
@@ -1590,7 +1619,14 @@
           "kind": "fact",
           "record": "Feature",
           "map": "fact",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
         },
         {
           "prop": "zones",
@@ -1598,7 +1634,20 @@
           "kind": "zone",
           "record": "Zone",
           "map": "zone",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.area.value",
+            "metadata.price.value",
+            "metadata.freeFrom.value",
+            "metadata.minOrder.value",
+            "metadata.time.value",
+            "metadata.currency.value"
+          ],
+          "optional": [
+            "metadata.express.value"
+          ]
         }
       ],
       "settings": [
@@ -1628,7 +1677,8 @@
           ]
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "EmptyPanel",
@@ -1931,7 +1981,7 @@
       "surface": "kit-block",
       "spec": "block.featureshowcase",
       "source": "xgen/specs/blocks/featureshowcase.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "features",
@@ -1939,7 +1989,14 @@
           "kind": "feature",
           "record": "Feature",
           "map": "feature",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
         },
         {
           "prop": "features",
@@ -1947,7 +2004,14 @@
           "kind": "value",
           "record": "Feature",
           "map": "value",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -1969,19 +2033,24 @@
           "keys": []
         },
         {
+          "prop": "empty",
+          "dictionary": "empty.features",
+          "keys": []
+        },
+        {
           "prop": "more",
           "dictionary": "marketing.featureShowcase.more",
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "FeatureSplit",
       "surface": "kit-block",
       "spec": "block.featuresplit",
       "source": "xgen/specs/blocks/featuresplit.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "features",
@@ -1989,7 +2058,14 @@
           "kind": "feature",
           "record": "Feature",
           "map": "feature",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
         },
         {
           "prop": "stats",
@@ -1997,7 +2073,15 @@
           "kind": "stat",
           "record": "Stat",
           "map": "stat",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.value.value",
+            "metadata.icon.value",
+            "metadata.hint.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -2035,7 +2119,8 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "FeatureTabs",
@@ -4567,7 +4652,7 @@
       "surface": "kit-block",
       "spec": "block.skeleton",
       "source": "xgen/specs/blocks/skeleton.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "lines",
@@ -4575,7 +4660,11 @@
           "kind": "placeholder",
           "record": "Line",
           "map": "placeholder",
-          "list": true
+          "list": true,
+          "required": [
+            "id"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -4596,14 +4685,15 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "SlotBoard",
       "surface": "kit-block",
       "spec": "block.slots",
       "source": "xgen/specs/blocks/slots.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "days",
@@ -4611,7 +4701,15 @@
           "kind": "day",
           "record": "Day",
           "map": "day",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.note.value",
+            "metadata.slots.value",
+            "metadata.closed.value"
+          ],
+          "optional": []
         },
         {
           "prop": "zone",
@@ -4619,7 +4717,20 @@
           "kind": "zone",
           "record": "Zone",
           "map": "zone",
-          "list": false
+          "list": false,
+          "required": [
+            "id",
+            "title",
+            "metadata.area.value",
+            "metadata.price.value",
+            "metadata.freeFrom.value",
+            "metadata.minOrder.value",
+            "metadata.time.value",
+            "metadata.currency.value"
+          ],
+          "optional": [
+            "metadata.express.value"
+          ]
         }
       ],
       "settings": [
@@ -4641,6 +4752,11 @@
           "keys": []
         },
         {
+          "prop": "empty",
+          "dictionary": "empty.days",
+          "keys": []
+        },
+        {
           "prop": "labels",
           "dictionary": "commerce.slots",
           "keys": [
@@ -4654,7 +4770,7 @@
           ]
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "StatsBand",
@@ -5437,7 +5553,7 @@
       "surface": "kit-block",
       "spec": "block.videomodal",
       "source": "xgen/specs/blocks/videomodal.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "chapters",
@@ -5445,7 +5561,13 @@
           "kind": "chapter",
           "record": "Chapter",
           "map": "chapter",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -5482,7 +5604,8 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "VideoGrid",

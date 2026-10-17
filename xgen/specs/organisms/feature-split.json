@@ -136,12 +136,30 @@
               },
               "then": [
                 {
-                  "organism": "FeaturePairs",
-                  "props": {
-                    "features": {
-                      "$": "features"
+                  "when": {
+                    "op": "gt",
+                    "args": [
+                      {
+                        "op": "len",
+                        "args": [
+                          {
+                            "$": "features"
+                          }
+                        ]
+                      },
+                      0
+                    ]
+                  },
+                  "then": [
+                    {
+                      "organism": "FeaturePairs",
+                      "props": {
+                        "features": {
+                          "$": "features"
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
               ]
             },
@@ -157,14 +175,32 @@
               },
               "then": [
                 {
-                  "organism": "FeatureCards",
-                  "props": {
-                    "features": {
-                      "$": "features"
-                    },
-                    "cols": "1-2",
-                    "item": "tile"
-                  }
+                  "when": {
+                    "op": "gt",
+                    "args": [
+                      {
+                        "op": "len",
+                        "args": [
+                          {
+                            "$": "features"
+                          }
+                        ]
+                      },
+                      0
+                    ]
+                  },
+                  "then": [
+                    {
+                      "organism": "FeatureCards",
+                      "props": {
+                        "features": {
+                          "$": "features"
+                        },
+                        "cols": "1-2",
+                        "item": "tile"
+                      }
+                    }
+                  ]
                 }
               ]
             },
@@ -180,15 +216,33 @@
               },
               "then": [
                 {
-                  "organism": "FeatureStatRows",
-                  "props": {
-                    "features": {
-                      "$": "features"
-                    },
-                    "stats": {
-                      "$": "stats"
+                  "when": {
+                    "op": "gt",
+                    "args": [
+                      {
+                        "op": "len",
+                        "args": [
+                          {
+                            "$": "features"
+                          }
+                        ]
+                      },
+                      0
+                    ]
+                  },
+                  "then": [
+                    {
+                      "organism": "FeatureStatRows",
+                      "props": {
+                        "features": {
+                          "$": "features"
+                        },
+                        "stats": {
+                          "$": "stats"
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
               ]
             },
@@ -204,12 +258,30 @@
               },
               "then": [
                 {
-                  "organism": "FeatureMetricCards",
-                  "props": {
-                    "stats": {
-                      "$": "stats"
+                  "when": {
+                    "op": "gt",
+                    "args": [
+                      {
+                        "op": "len",
+                        "args": [
+                          {
+                            "$": "stats"
+                          }
+                        ]
+                      },
+                      0
+                    ]
+                  },
+                  "then": [
+                    {
+                      "organism": "FeatureMetricCards",
+                      "props": {
+                        "stats": {
+                          "$": "stats"
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
               ]
             },

@@ -15,6 +15,7 @@ export type SlotBoardProps = {
   title: string;
   lead?: string;
   days: Day[];
+  empty?: string;
   zone: Zone;
   labels: SlotLabels;
   layout?: "split" | "stacked";
@@ -34,6 +35,7 @@ import Select from "../primitives/select/select.vue";
 import SelectOption from "../primitives/select/select-option.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
+import EmptyState from "../components/empty-state.vue";
 import Field from "../components/field.vue";
 import SectionFrame from "../components/section-frame.vue";
 import SlotGrid from "../components/slot-grid.vue";
@@ -44,6 +46,7 @@ const {
   title,
   lead = "",
   days,
+  empty = "",
   zone,
   labels,
   layout = "split",
@@ -55,7 +58,8 @@ const {
 
 <template>
   <SectionFrame :id="id" :title="title" :lead="lead" :tone="tone" :landmarkLabel="landmarkLabel">
-    <Box class="grid grid-cols-1 items-start gap-8 lg:grid-cols-3">
+    <EmptyState v-if="((days?.length ?? 0) === 0)" icon="calendar" :title="empty" />
+    <Box v-else class="grid grid-cols-1 items-start gap-8 lg:grid-cols-3">
       <Box :class="(((layout as string) === 'split') ? 'lg:col-span-2' : 'lg:col-span-3')">
         <SlotGrid :days="days" :name="tpl('{0}-slot', id)" :item="item" />
       </Box>

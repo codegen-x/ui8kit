@@ -14,30 +14,32 @@
 {var $v_landmarkLabel = ($p['landmarkLabel'] ?? null)}
 {capture $c_17}
   {capture $c_16}
-    {capture $c_6}
-      {foreach ui_l($v_facts) as $v_f}
-        {capture $c_5}
-          {capture $c_1}
-            {=ui_include('ui/lucide-icon/lucide-icon.latte', ['p' => ['Name' => ui_s(ui_get($v_f, ['icon'])), 'Size' => 20]])|noescape}
-          {/capture}
-          {=ui_include('ui/box/box.latte', ['p' => ['Class' => 'flex size-10 shrink-0 items-center justify-center rounded bg-muted'], 'children' => $c_1])|noescape}
-          {capture $c_4}
-            {capture $c_2}
-              {=ui_text(ui_get($v_f, ['title']))}
+    {if ui_t(ui_gt(ui_len($v_facts), 0))}
+      {capture $c_6}
+        {foreach ui_l($v_facts) as $v_f}
+          {capture $c_5}
+            {capture $c_1}
+              {=ui_include('ui/lucide-icon/lucide-icon.latte', ['p' => ['Name' => ui_s(ui_get($v_f, ['icon'])), 'Size' => 20]])|noescape}
             {/capture}
-            {=ui_include('ui/text/text.latte', ['p' => ['Size' => 'sm', 'Weight' => 'semibold'], 'children' => $c_2])|noescape}
-            {capture $c_3}
-              {=ui_text(ui_get($v_f, ['text']))}
+            {=ui_include('ui/box/box.latte', ['p' => ['Class' => 'flex size-10 shrink-0 items-center justify-center rounded bg-muted'], 'children' => $c_1])|noescape}
+            {capture $c_4}
+              {capture $c_2}
+                {=ui_text(ui_get($v_f, ['title']))}
+              {/capture}
+              {=ui_include('ui/text/text.latte', ['p' => ['Size' => 'sm', 'Weight' => 'semibold'], 'children' => $c_2])|noescape}
+              {capture $c_3}
+                {=ui_text(ui_get($v_f, ['text']))}
+              {/capture}
+              {=ui_include('ui/text/text.latte', ['p' => ['Size' => 'sm', 'Class' => 'text-muted-foreground'], 'children' => $c_3])|noescape}
             {/capture}
-            {=ui_include('ui/text/text.latte', ['p' => ['Size' => 'sm', 'Class' => 'text-muted-foreground'], 'children' => $c_3])|noescape}
+            {=ui_include('ui/stack/stack.latte', ['p' => ['Gap' => '2'], 'children' => $c_4])|noescape}
           {/capture}
-          {=ui_include('ui/stack/stack.latte', ['p' => ['Gap' => '2'], 'children' => $c_4])|noescape}
-        {/capture}
-        {=ui_include('ui/stack/stack.latte', ['p' => ['Gap' => '4', 'Class' => 'rounded bg-card inset-ring inset-ring-border p-6', 'Attrs' => ui_attrs(['data-testid', 'fact'])], 'children' => $c_5])|noescape}
-      {/foreach}
-    {/capture}
-    {=ui_include('ui/grid/grid.latte', ['p' => ['Cols' => ui_s((ui_t(ui_eq($v_layout, 'split')) ? '1-2' : '1-4')), 'Class' => 'gap-4', 'Attrs' => ui_attrs(['data-testid', 'facts'])], 'children' => $c_6])|noescape}
-    {if ui_t(!(ui_eq($v_layout, 'facts')))}
+          {=ui_include('ui/stack/stack.latte', ['p' => ['Gap' => '4', 'Class' => 'rounded bg-card inset-ring inset-ring-border p-6', 'Attrs' => ui_attrs(['data-testid', 'fact'])], 'children' => $c_5])|noescape}
+        {/foreach}
+      {/capture}
+      {=ui_include('ui/grid/grid.latte', ['p' => ['Cols' => ui_s((ui_t(ui_eq($v_layout, 'split')) ? '1-2' : '1-4')), 'Class' => 'gap-4', 'Attrs' => ui_attrs(['data-testid', 'facts'])], 'children' => $c_6])|noescape}
+    {/if}
+    {if ui_t(ui_and([!(ui_eq($v_layout, 'facts')), ui_gt(ui_len($v_zones), 0)]))}
       {capture $c_15}
         {capture $c_7}
           {=ui_text(ui_get($v_labels, ['zones']))}

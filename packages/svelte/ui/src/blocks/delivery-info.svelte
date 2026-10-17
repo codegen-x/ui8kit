@@ -58,24 +58,26 @@
       (((layout as string) === "split") ? "items-start md:grid-cols-2" : "")
     )}
   >
-    <Grid cols={(((layout as string) === "split") ? "1-2" : "1-4")} class="gap-4" data-testid="facts">
-      {#each facts as f (f.id)}
-        <Stack gap="4" class="rounded bg-card inset-ring inset-ring-border p-6" data-testid="fact">
-          <Box class="flex size-10 shrink-0 items-center justify-center rounded bg-muted">
-            <LucideIcon name={f.icon} size={20} />
-          </Box>
-          <Stack gap="2">
-            <Text size="sm" weight="semibold">
-              {f.title}
-            </Text>
-            <Text size="sm" class="text-muted-foreground">
-              {f.text}
-            </Text>
+    {#if ((facts?.length ?? 0) > 0)}
+      <Grid cols={(((layout as string) === "split") ? "1-2" : "1-4")} class="gap-4" data-testid="facts">
+        {#each facts as f (f.id)}
+          <Stack gap="4" class="rounded bg-card inset-ring inset-ring-border p-6" data-testid="fact">
+            <Box class="flex size-10 shrink-0 items-center justify-center rounded bg-muted">
+              <LucideIcon name={f.icon} size={20} />
+            </Box>
+            <Stack gap="2">
+              <Text size="sm" weight="semibold">
+                {f.title}
+              </Text>
+              <Text size="sm" class="text-muted-foreground">
+                {f.text}
+              </Text>
+            </Stack>
           </Stack>
-        </Stack>
-      {/each}
-    </Grid>
-    {#if ((layout as string) !== "facts")}
+        {/each}
+      </Grid>
+    {/if}
+    {#if (((layout as string) !== "facts") && ((zones?.length ?? 0) > 0))}
       <Stack gap="4" align="stretch">
         <Title as={3} size="lg" weight="bold">
           {labels.zones}

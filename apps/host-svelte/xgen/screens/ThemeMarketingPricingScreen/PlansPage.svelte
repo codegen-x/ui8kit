@@ -98,6 +98,7 @@
   id="plans-compare"
   title={ui.vibe.compare.title}
   rows={compare}
+  empty={ui.empty.rows}
   labels={ui.vibe.compare.labels}
   highlight="middle"
   tone="default"

@@ -98,6 +98,7 @@ export function MarketingPricingToolsPage() {
                   id="compare-plans"
                   title={ui.vibe.compare.title}
                   rows={compare}
+                  empty={ui.empty.rows}
                   labels={ui.vibe.compare.labels}
                   highlight="none"
                   tone="default"
@@ -123,6 +124,7 @@ export function MarketingPricingToolsPage() {
                   id="compare-highlight"
                   title={ui.vibe.compare.title}
                   rows={compare}
+                  empty={ui.empty.rows}
                   labels={ui.vibe.compare.labels}
                   highlight="middle"
                   tone="default"
@@ -148,6 +150,7 @@ export function MarketingPricingToolsPage() {
                   id="compare-rivals"
                   title={ui.vibe.rivals.title}
                   rows={rivals}
+                  empty={ui.empty.rows}
                   labels={ui.vibe.rivals.labels}
                   highlight="middle"
                   tone="muted"
@@ -173,6 +176,7 @@ export function MarketingPricingToolsPage() {
                   id="compare-muted"
                   title={ui.vibe.compare.title}
                   rows={compare}
+                  empty={ui.empty.rows}
                   labels={ui.vibe.compare.labels}
                   highlight="none"
                   tone="muted"

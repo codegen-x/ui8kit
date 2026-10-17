@@ -21,7 +21,7 @@ const featureshowcase = define({
     { sel: '[data-testid="showcase-panel"]', n: 0, when: { item: "picture" } },
     { sel: '[data-testid="read"]', n: 0, when: { item: "panel" } },
   ],
-  sample: { id: "featureshowcase", title: f("title"), lead: f("lead"), features: ref("features"), more: f("more") },
+  sample: { id: "featureshowcase", title: f("title"), lead: f("lead"), features: ref("features"), empty: t("empty.features"), more: f("more") },
 });
 
 export const featureShowcaseBlocks = [featureshowcase];

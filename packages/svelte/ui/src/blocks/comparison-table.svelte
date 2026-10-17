@@ -13,6 +13,7 @@
     id: string;
     title: string;
     rows: CompareRow[];
+    empty?: string;
     labels: CompareLabels;
     highlight?: "none" | "middle";
     tone?: "default" | "muted";
@@ -31,6 +32,7 @@
   import TableHeadCell from "../primitives/table/table-head-cell.svelte";
   import TableRow from "../primitives/table/table-row.svelte";
   import CompareMark from "../components/compare-mark.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import { cn } from "../utils";
 
@@ -38,6 +40,7 @@
     id,
     title,
     rows,
+    empty = "",
     labels,
     highlight = "none",
     tone = "default",
@@ -47,54 +50,58 @@
 </script>
 
 <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
-  <Box class="relative w-full overflow-x-auto">
-    <Table class="w-full text-left text-sm" data-testid="compare">
-      <TableCaption class="sr-only">
-        {labels.caption}
-      </TableCaption>
-      <TableHead>
-        <TableRow>
-          <TableHeadCell scope="col" class="py-4">
-            {labels.feature}
-          </TableHeadCell>
-          <TableHeadCell scope="col" class="py-4">
-            {labels.a}
-          </TableHeadCell>
-          <TableHeadCell
-            scope="col"
-            class={cn("py-4", (((highlight as string) === "middle") ? "bg-muted" : ""))}
-            data-highlight={(((highlight as string) === "middle") ? "true" : "false")}
-          >
-            {labels.b}
-          </TableHeadCell>
-          <TableHeadCell scope="col" class="py-4">
-            {labels.c}
-          </TableHeadCell>
-        </TableRow>
-      </TableHead>
-      <TableBody>
-        {#each rows as row (row.id)}
-          <TableRow class="border-t border-border" data-testid="item">
-            <TableHeadCell scope="row" class={cn("font-medium", (((density as string) === "compact") ? "py-2" : "py-4"))}>
-              {row.label}
+  {#if ((rows?.length ?? 0) === 0)}
+    <EmptyState icon="table" title={empty} />
+  {:else}
+    <Box class="relative w-full overflow-x-auto">
+      <Table class="w-full text-left text-sm" data-testid="compare">
+        <TableCaption class="sr-only">
+          {labels.caption}
+        </TableCaption>
+        <TableHead>
+          <TableRow>
+            <TableHeadCell scope="col" class="py-4">
+              {labels.feature}
             </TableHeadCell>
-            <TableCell class={cn((((density as string) === "compact") ? "py-2" : "py-4"))}>
-              <CompareMark value={row.a} yes={labels.yes} no={labels.no} />
-            </TableCell>
-            <TableCell
-              class={cn(
-                (((density as string) === "compact") ? "py-2" : "py-4"),
-                (((highlight as string) === "middle") ? "bg-muted font-semibold" : "")
-              )}
+            <TableHeadCell scope="col" class="py-4">
+              {labels.a}
+            </TableHeadCell>
+            <TableHeadCell
+              scope="col"
+              class={cn("py-4", (((highlight as string) === "middle") ? "bg-muted" : ""))}
+              data-highlight={(((highlight as string) === "middle") ? "true" : "false")}
             >
-              <CompareMark value={row.b} yes={labels.yes} no={labels.no} />
-            </TableCell>
-            <TableCell class={(((density as string) === "compact") ? "py-2" : "py-4")}>
-              <CompareMark value={row.c} yes={labels.yes} no={labels.no} />
-            </TableCell>
+              {labels.b}
+            </TableHeadCell>
+            <TableHeadCell scope="col" class="py-4">
+              {labels.c}
+            </TableHeadCell>
           </TableRow>
-        {/each}
-      </TableBody>
-    </Table>
-  </Box>
+        </TableHead>
+        <TableBody>
+          {#each rows as row (row.id)}
+            <TableRow class="border-t border-border" data-testid="item">
+              <TableHeadCell scope="row" class={cn("font-medium", (((density as string) === "compact") ? "py-2" : "py-4"))}>
+                {row.label}
+              </TableHeadCell>
+              <TableCell class={cn((((density as string) === "compact") ? "py-2" : "py-4"))}>
+                <CompareMark value={row.a} yes={labels.yes} no={labels.no} />
+              </TableCell>
+              <TableCell
+                class={cn(
+                  (((density as string) === "compact") ? "py-2" : "py-4"),
+                  (((highlight as string) === "middle") ? "bg-muted font-semibold" : "")
+                )}
+              >
+                <CompareMark value={row.b} yes={labels.yes} no={labels.no} />
+              </TableCell>
+              <TableCell class={(((density as string) === "compact") ? "py-2" : "py-4")}>
+                <CompareMark value={row.c} yes={labels.yes} no={labels.no} />
+              </TableCell>
+            </TableRow>
+          {/each}
+        </TableBody>
+      </Table>
+    </Box>
+  {/if}
 </SectionFrame>

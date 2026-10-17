@@ -53,7 +53,7 @@
       {=ui_include('ui/button/button.latte', ['p' => ['Variant' => 'default', 'Size' => 'default', 'Type' => 'submit', 'Class' => 'w-fit', 'Attrs' => ui_attrs(['data-testid', 'submit'])], 'children' => $c_7])|noescape}
     {/capture}
     {=ui_include('ui/form/form.latte', ['p' => ['Method' => 'dialog', 'Class' => 'w-full gap-4', 'Attrs' => ui_attrs(['data-testid', 'contact-form'])], 'children' => $c_8])|noescape}
-    {if ui_t(ui_eq($v_layout, 'split'))}
+    {if ui_t(ui_and([ui_eq($v_layout, 'split'), ui_gt(ui_len($v_details), 0)]))}
       {capture $c_13}
         {foreach ui_l($v_details) as $v_d}
           {capture $c_12}

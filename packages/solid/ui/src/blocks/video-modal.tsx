@@ -82,7 +82,7 @@ export function VideoModal({
             <LucideIcon name="play" size={24} />
           </Button>
         </Box>
-        {((outline as string) === "chapters") ? (
+        {(((outline as string) === "chapters") && ((chapters?.length ?? 0) > 0)) ? (
           <Stack gap="2" data-testid="chapters">
             <Title as={3} size="base" weight="bold">
               {chaptersTitle}

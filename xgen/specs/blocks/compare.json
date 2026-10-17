@@ -65,6 +65,7 @@
   ],
   "slots": [
     "CompareMark",
+    "EmptyState",
     "SectionFrame"
   ],
   "facts": [
@@ -127,6 +128,9 @@
       },
       "rows": {
         "$": "compare"
+      },
+      "empty": {
+        "$": "ui.empty.rows"
       },
       "labels": {
         "$": "ui.vibe.compare.labels"

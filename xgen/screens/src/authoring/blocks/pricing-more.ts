@@ -19,12 +19,13 @@ const comparisonTable = spec(`${O}comparison-table`, "ComparisonTable", "Plans, 
   props: [
     id, title,
     { name: "rows", type: ts("CompareRow[]"), required: true },
+    empty,
     { name: "labels", type: { record: "CompareLabels" }, required: true },
     { name: "highlight", type: tsOf("none", "middle"), default: "none", docs: "middle: the second column stands out" },
     { name: "tone", type: toneLite, default: "default" },
     { name: "density", type: denseLite, default: "default" },
   ],
-  view: [frame({ id: ref("id"), title: ref("title"), tone: ref("tone"), density: ref("density") }, [
+  view: [frame({ id: ref("id"), title: ref("title"), tone: ref("tone"), density: ref("density") }, [orEmpty("rows", "table", [
     use("Box", { props: { Class: "relative w-full overflow-x-auto" } },
       use("Table", { props: { Class: "w-full text-left text-sm" }, attrs: { "data-testid": "compare" } },
         use("TableCaption", { props: { Class: "sr-only" } }, text(ref("labels.caption"))),
@@ -38,7 +39,7 @@ const comparisonTable = spec(`${O}comparison-table`, "ComparisonTable", "Plans, 
             use("TableHeadCell", { props: { Scope: "row", Class: cn("font-medium", cond(eq(ref("density"), "compact"), "py-2", "py-4")) } }, text(ref("row.label"))),
             use("TableCell", { props: { Class: cn(cond(eq(ref("density"), "compact"), "py-2", "py-4")) } }, markOf(ref("row.a"))),
             use("TableCell", { props: { Class: cn(cond(eq(ref("density"), "compact"), "py-2", "py-4"), cond(eq(ref("highlight"), "middle"), "bg-muted font-semibold", "")) } }, markOf(ref("row.b"))),
-            use("TableCell", { props: { Class: cond(eq(ref("density"), "compact"), "py-2", "py-4") } }, markOf(ref("row.c")))))))),
+            use("TableCell", { props: { Class: cond(eq(ref("density"), "compact"), "py-2", "py-4") } }, markOf(ref("row.c")))))))),])
   ])],
 });
 

@@ -62,10 +62,18 @@ const {
     :media="{ show: true, side: mediaSide }"
     :landmarkLabel="landmarkLabel"
   >
-    <FeaturePairs v-if="((layout as string) === 'grid')" :features="features" />
-    <FeatureCards v-if="((layout as string) === 'cards')" :features="features" cols="1-2" item="tile" />
-    <FeatureStatRows v-if="((layout as string) === 'stats')" :features="features" :stats="stats" />
-    <FeatureMetricCards v-if="((layout as string) === 'metrics')" :stats="stats" />
+    <template v-if="((layout as string) === 'grid')">
+      <FeaturePairs v-if="((features?.length ?? 0) > 0)" :features="features" />
+    </template>
+    <template v-if="((layout as string) === 'cards')">
+      <FeatureCards v-if="((features?.length ?? 0) > 0)" :features="features" cols="1-2" item="tile" />
+    </template>
+    <template v-if="((layout as string) === 'stats')">
+      <FeatureStatRows v-if="((features?.length ?? 0) > 0)" :features="features" :stats="stats" />
+    </template>
+    <template v-if="((layout as string) === 'metrics')">
+      <FeatureMetricCards v-if="((stats?.length ?? 0) > 0)" :stats="stats" />
+    </template>
     <ActionGroup v-if="(((layout as string) === 'cards') || ((layout as string) === 'metrics'))"
       :primary="actions.cta"
       :primaryHref="actions.href"

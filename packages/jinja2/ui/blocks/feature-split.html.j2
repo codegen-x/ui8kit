@@ -19,16 +19,24 @@
 {%- endset -%}
 {%- set c_2 -%}
   {%- if ui_t(ui_eq(v_layout, 'grid')) %}
-    {{ ui_include('blocks/feature-pairs.html.j2', {'p': {'features': v_features}}) }}
+    {%- if ui_t(ui_gt(ui_len(v_features), 0)) %}
+      {{ ui_include('blocks/feature-pairs.html.j2', {'p': {'features': v_features}}) }}
+    {%- endif %}
   {%- endif %}
   {%- if ui_t(ui_eq(v_layout, 'cards')) %}
-    {{ ui_include('blocks/feature-cards.html.j2', {'p': {'features': v_features, 'cols': '1-2', 'item': 'tile'}}) }}
+    {%- if ui_t(ui_gt(ui_len(v_features), 0)) %}
+      {{ ui_include('blocks/feature-cards.html.j2', {'p': {'features': v_features, 'cols': '1-2', 'item': 'tile'}}) }}
+    {%- endif %}
   {%- endif %}
   {%- if ui_t(ui_eq(v_layout, 'stats')) %}
-    {{ ui_include('blocks/feature-stat-rows.html.j2', {'p': {'features': v_features, 'stats': v_stats}}) }}
+    {%- if ui_t(ui_gt(ui_len(v_features), 0)) %}
+      {{ ui_include('blocks/feature-stat-rows.html.j2', {'p': {'features': v_features, 'stats': v_stats}}) }}
+    {%- endif %}
   {%- endif %}
   {%- if ui_t(ui_eq(v_layout, 'metrics')) %}
-    {{ ui_include('blocks/feature-metric-cards.html.j2', {'p': {'stats': v_stats}}) }}
+    {%- if ui_t(ui_gt(ui_len(v_stats), 0)) %}
+      {{ ui_include('blocks/feature-metric-cards.html.j2', {'p': {'stats': v_stats}}) }}
+    {%- endif %}
   {%- endif %}
   {%- if ui_t(ui_or([ui_eq(v_layout, 'cards'), ui_eq(v_layout, 'metrics')])) %}
     {{ ui_include('blocks/action-group.html.j2', {'p': {'primary': ui_get(v_actions, ['cta']), 'primaryHref': ui_get(v_actions, ['href']), 'secondary': (ui_get(v_actions, ['secondary']) if ui_t(ui_eq(ui_get(v_actions, ['mode']), 'two')) else none), 'secondaryHref': ui_get(v_actions, ['secondaryHref'])}}) }}

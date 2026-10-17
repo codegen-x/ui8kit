@@ -12,6 +12,7 @@ export type ComparisonTableProps = {
   id: string;
   title: string;
   rows: CompareRow[];
+  empty?: string;
   labels: CompareLabels;
   highlight?: "none" | "middle";
   tone?: "default" | "muted";
@@ -30,6 +31,7 @@ import TableHead from "../primitives/table/table-head.vue";
 import TableHeadCell from "../primitives/table/table-head-cell.vue";
 import TableRow from "../primitives/table/table-row.vue";
 import CompareMark from "../components/compare-mark.vue";
+import EmptyState from "../components/empty-state.vue";
 import SectionFrame from "../components/section-frame.vue";
 import { cn } from "../utils";
 
@@ -37,6 +39,7 @@ const {
   id,
   title,
   rows,
+  empty = "",
   labels,
   highlight = "none",
   tone = "default",
@@ -47,7 +50,8 @@ const {
 
 <template>
   <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
-    <Box class="relative w-full overflow-x-auto">
+    <EmptyState v-if="((rows?.length ?? 0) === 0)" icon="table" :title="empty" />
+    <Box v-else class="relative w-full overflow-x-auto">
       <Table class="w-full text-left text-sm" data-testid="compare">
         <TableCaption class="sr-only">
           {{ labels.caption }}

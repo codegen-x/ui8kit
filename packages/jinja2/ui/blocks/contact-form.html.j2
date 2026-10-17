@@ -53,7 +53,7 @@
       {{ ui_include('ui/button/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Type': 'submit', 'Class': 'w-fit', 'Attrs': ui_attrs(['data-testid', 'submit'])}, 'children': c_7}) }}
     {%- endset -%}
     {{ ui_include('ui/form/form.html.j2', {'p': {'Method': 'dialog', 'Class': 'w-full gap-4', 'Attrs': ui_attrs(['data-testid', 'contact-form'])}, 'children': c_8}) }}
-    {%- if ui_t(ui_eq(v_layout, 'split')) %}
+    {%- if ui_t(ui_and([ui_eq(v_layout, 'split'), ui_gt(ui_len(v_details), 0)])) %}
       {%- set c_13 -%}
         {%- for v_d in ui_l(v_details) %}
           {%- set c_12 -%}

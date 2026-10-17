@@ -77,6 +77,7 @@ const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS, 
     id="compare-compare"
     :title="ui.vibe.rivals.title"
     :rows="rivals"
+    :empty="ui.empty.rows"
     :labels="ui.vibe.rivals.labels"
     highlight="middle"
     tone="muted"

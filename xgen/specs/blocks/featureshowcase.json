@@ -63,6 +63,7 @@
     }
   ],
   "slots": [
+    "EmptyState",
     "MediaFrame",
     "MenuEntry",
     "SectionFrame"
@@ -134,6 +135,9 @@
       },
       "features": {
         "$": "features"
+      },
+      "empty": {
+        "$": "ui.empty.features"
       },
       "more": {
         "$": "ui.marketing.featureShowcase.more"

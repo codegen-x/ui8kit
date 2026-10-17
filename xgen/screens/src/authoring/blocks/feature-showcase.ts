@@ -3,7 +3,7 @@ import { cond, each, eq, ref, text, use, when, organism } from "../../build";
 import type { OrganismSpec } from "../../ir";
 import { spec, ts } from "../kit";
 import { frame } from "../components/frames";
-import { id, tsOf, toneLite } from "../props";
+import { empty, id, orEmpty, tsOf, toneLite } from "../props";
 import { muted } from "../ux";
 import { menuEntry } from "../components/nav";
 
@@ -14,12 +14,13 @@ const featureShowcase = spec("organism.feature-showcase", "FeatureShowcase", "Fe
     { name: "title", type: "string", required: true },
     { name: "lead", type: "string", default: "" },
     { name: "features", type: ts("Feature[]"), required: true },
+    empty,
     { name: "more", type: "string", required: true, docs: "the word of the read link of the picture cards" },
     { name: "item", type: tsOf("picture", "panel"), default: "picture" },
     { name: "cols", type: tsOf("3", "4"), default: "3" },
     { name: "tone", type: toneLite, default: "default" },
   ],
-  view: [frame({ id: ref("id"), title: ref("title"), lead: ref("lead"), tone: ref("tone"), align: "center" }, [
+  view: [frame({ id: ref("id"), title: ref("title"), lead: ref("lead"), tone: ref("tone"), align: "center" }, [orEmpty("features", "layout-grid", [
     use("Box", { props: { Class: cond(eq(ref("cols"), "4"), "grid grid-cols-1 gap-6 text-start sm:grid-cols-2 lg:grid-cols-4", "grid grid-cols-1 gap-6 text-start sm:grid-cols-2 lg:grid-cols-3") } },
       each(ref("features"), "f", ref("f.id"), use("Card", { props: { Variant: "default", Class: "h-full gap-4 overflow-hidden" }, attrs: { "data-testid": "showcase-card" } },
         when(eq(ref("item"), "picture"), [organism("MediaFrame", { alt: ref("f.title"), ratio: "16/9" })],
@@ -27,7 +28,7 @@ const featureShowcase = spec("organism.feature-showcase", "FeatureShowcase", "Fe
         use("CardContent", { props: { Class: "flex flex-1 flex-col gap-2" } },
           use("Title", { props: { As: 3, Size: "base", Weight: "semibold" } }, text(ref("f.title"))),
           muted(ref("f.text")),
-          when(eq(ref("item"), "picture"), [menuEntry(ref("f.href"), { size: "sm", cls: "mt-auto gap-2 pt-2 text-sm font-medium", testid: "read" }, text(ref("more")), use("LucideIcon", { props: { Name: "arrow-right", Size: 16 } }))])))))]),
+          when(eq(ref("item"), "picture"), [menuEntry(ref("f.href"), { size: "sm", cls: "mt-auto gap-2 pt-2 text-sm font-medium", testid: "read" }, text(ref("more")), use("LucideIcon", { props: { Name: "arrow-right", Size: 16 } }))])))))]),])
   ],
 });
 

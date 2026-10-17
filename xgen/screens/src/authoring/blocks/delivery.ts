@@ -1,9 +1,9 @@
 // Delivery: the zones and their prices, the delivery windows to pick from, the delivery facts, and the stores where an order can be picked up.
-import { at, nbsp, cn, cond, each, eq, ne, money, ref, text, tpl, use, when, organism } from "../../build";
+import { and, at, nbsp, cn, gt, len, cond, each, eq, ne, money, ref, text, tpl, use, when, organism } from "../../build";
 import type { OrganismSpec, Value } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { frame } from "../components/frames";
-import { empty, id, orEmpty, title, tsOf, toneLite, denseLite } from "../props";
+import { empty, id, ifAny, orEmpty, title, tsOf, toneLite, denseLite } from "../props";
 import { heading, muted, strong, surface } from "../ux";
 
 const O = "organism.";
@@ -51,13 +51,14 @@ const slotBoard = spec(`${O}slot-board`, "SlotBoard", "Pick a delivery window: t
   props: [
     id, title, lead,
     { name: "days", type: ts("Day[]"), required: true },
+    empty,
     { name: "zone", type: ts("Zone"), required: true, docs: "the zone of the address" },
     { name: "labels", type: { record: "SlotLabels" }, required: true },
     { name: "layout", type: tsOf("split", "stacked"), default: "split" },
     { name: "item", type: tsOf("card", "plain"), default: "card" },
     { name: "tone", type: toneLite, default: "default" },
   ],
-  view: [frame({ ...common, density: "default" }, [
+  view: [frame({ ...common, density: "default" }, [orEmpty("days", "calendar", [
     use("Box", { props: { Class: "grid grid-cols-1 items-start gap-8 lg:grid-cols-3" } },
       use("Box", { props: { Class: cond(eq(ref("layout"), "split"), "lg:col-span-2", "lg:col-span-3") } },
         organism("SlotGrid", { days: ref("days"), name: tpl("{0}-slot", ref("id")), item: ref("item") })),
@@ -70,7 +71,7 @@ const slotBoard = spec(`${O}slot-board`, "SlotBoard", "Pick a delivery window: t
           pair(ref("labels.time"), ref("zone.time"))),
         use("Button", { props: { Variant: "default", Size: "default", Class: "w-full" } }, text(ref("labels.primary"))),
         use("Button", { props: { Variant: "outline", Size: "default", Class: "w-full" } }, text(ref("labels.secondary"))),
-        muted(ref("labels.note"), "xs"))])),
+        muted(ref("labels.note"), "xs"))])),])
   ])],
 });
 
@@ -88,11 +89,11 @@ const deliveryInfo = spec(`${O}delivery-info`, "DeliveryInfo", "How delivery wor
   ],
   view: [frame(common, [
     use("Box", { props: { Class: cn("grid grid-cols-1 gap-8", cond(eq(ref("layout"), "split"), "items-start md:grid-cols-2", "")) } },
-      use("Grid", { props: { Cols: cond(eq(ref("layout"), "split"), "1-2", "1-4"), Class: "gap-4" }, attrs: { "data-testid": "facts" } },
+      ifAny("facts", [use("Grid", { props: { Cols: cond(eq(ref("layout"), "split"), "1-2", "1-4"), Class: "gap-4" }, attrs: { "data-testid": "facts" } },
         each(ref("facts"), "f", ref("f.id"),
           use("Stack", { props: { Gap: "4", Class: surface("p-6") }, attrs: { "data-testid": "fact" } },
-            iconSquare("f.icon"), use("Stack", { props: { Gap: "2" } }, strong(ref("f.title"), "sm"), muted(ref("f.text")))))),
-      when(ne(ref("layout"), "facts"), [use("Stack", { props: { Gap: "4", Align: "stretch" } },
+            iconSquare("f.icon"), use("Stack", { props: { Gap: "2" } }, strong(ref("f.title"), "sm"), muted(ref("f.text"))))))]),
+      when(and(ne(ref("layout"), "facts"), gt(len(ref("zones")), 0)), [use("Stack", { props: { Gap: "4", Align: "stretch" } },
         heading(ref("labels.zones"), "lg"),
         use("Box", { props: { Class: cond(eq(ref("layout"), "split"), "flex flex-col gap-4", "grid grid-cols-1 gap-4 md:grid-cols-3") } },
           each(ref("zones"), "z", ref("z.id"),

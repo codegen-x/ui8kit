@@ -20,6 +20,7 @@ type SlotBoardProps struct {
 	Title any `json:"title"`
 	Lead any `json:"lead"`
 	Days any `json:"days"`
+	Empty any `json:"empty"`
 	Zone any `json:"zone"`
 	Labels any `json:"labels"`
 	Layout any `json:"layout"`
@@ -34,6 +35,7 @@ templ SlotBoard(p SlotBoardProps) {
 	{{ vTitle := p.Title }}
 	{{ vLead := uiutils.Def(p.Lead, "") }}
 	{{ vDays := p.Days }}
+	{{ vEmpty := uiutils.Def(p.Empty, "") }}
 	{{ vZone := p.Zone }}
 	{{ vLabels := p.Labels }}
 	{{ vLayout := uiutils.Def(p.Layout, "split") }}
@@ -41,51 +43,55 @@ templ SlotBoard(p SlotBoardProps) {
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Tone: vTone, LandmarkLabel: vLandmarkLabel}) {
-		@box.Box(box.BoxProps{Class: "grid grid-cols-1 items-start gap-8 lg:grid-cols-3"}) {
-			@box.Box(box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "lg:col-span-2", "lg:col-span-3"))}) {
-				@SlotGrid(SlotGridProps{Days: vDays, Name: uiutils.Tpl("{0}-slot", vId), Item: vItem})
-			}
-			if uiutils.Eq(vLayout, "split") {
-				@stack.Stack(stack.StackProps{Gap: "4", Align: "stretch", Class: "rounded bg-card inset-ring inset-ring-border p-6", Attrs: uiutils.Attrs("data-testid", "aside")}) {
-					@Field(FieldProps{Label: uiutils.Get(vLabels, "zone"), HtmlFor: uiutils.Tpl("{0}-zone", vId)}) {
-						@selectfield.Select(selectfield.SelectProps{Name: uiutils.S(uiutils.Tpl("{0}-zone", vId)), Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-zone", vId))}) {
-							@selectfield.SelectOption(selectfield.SelectOptionProps{Value: uiutils.S(uiutils.Get(vZone, "id")), Label: uiutils.S(uiutils.Get(vZone, "name")), Selected: true})
-						}
-					}
-					@list.List(list.ListProps{Tag: "ul", Class: "flex flex-col gap-2"}) {
-						@list.ListItem(list.ListItemProps{Class: "flex items-center justify-between gap-4 text-sm"}) {
-							@inline.Inline(inline.InlineProps{Class: "text-muted-foreground"}) {
-								{ uiutils.Text(uiutils.Get(vLabels, "price")) }
-							}
-							@inline.Inline(inline.InlineProps{Class: "font-medium"}) {
-								{ uiutils.Text(uiutils.Money(uiutils.Get(vZone, "price"), uiutils.Get(vZone, "currency"))) }
+		if uiutils.Eq(uiutils.Len(vDays), float64(0)) {
+			@EmptyState(EmptyStateProps{Icon: "calendar", Title: vEmpty})
+		} else {
+			@box.Box(box.BoxProps{Class: "grid grid-cols-1 items-start gap-8 lg:grid-cols-3"}) {
+				@box.Box(box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "lg:col-span-2", "lg:col-span-3"))}) {
+					@SlotGrid(SlotGridProps{Days: vDays, Name: uiutils.Tpl("{0}-slot", vId), Item: vItem})
+				}
+				if uiutils.Eq(vLayout, "split") {
+					@stack.Stack(stack.StackProps{Gap: "4", Align: "stretch", Class: "rounded bg-card inset-ring inset-ring-border p-6", Attrs: uiutils.Attrs("data-testid", "aside")}) {
+						@Field(FieldProps{Label: uiutils.Get(vLabels, "zone"), HtmlFor: uiutils.Tpl("{0}-zone", vId)}) {
+							@selectfield.Select(selectfield.SelectProps{Name: uiutils.S(uiutils.Tpl("{0}-zone", vId)), Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-zone", vId))}) {
+								@selectfield.SelectOption(selectfield.SelectOptionProps{Value: uiutils.S(uiutils.Get(vZone, "id")), Label: uiutils.S(uiutils.Get(vZone, "name")), Selected: true})
 							}
 						}
-						@list.ListItem(list.ListItemProps{Class: "flex items-center justify-between gap-4 text-sm"}) {
-							@inline.Inline(inline.InlineProps{Class: "text-muted-foreground"}) {
-								{ uiutils.Text(uiutils.Get(vLabels, "freeFrom")) }
+						@list.List(list.ListProps{Tag: "ul", Class: "flex flex-col gap-2"}) {
+							@list.ListItem(list.ListItemProps{Class: "flex items-center justify-between gap-4 text-sm"}) {
+								@inline.Inline(inline.InlineProps{Class: "text-muted-foreground"}) {
+									{ uiutils.Text(uiutils.Get(vLabels, "price")) }
+								}
+								@inline.Inline(inline.InlineProps{Class: "font-medium"}) {
+									{ uiutils.Text(uiutils.Money(uiutils.Get(vZone, "price"), uiutils.Get(vZone, "currency"))) }
+								}
 							}
-							@inline.Inline(inline.InlineProps{Class: "font-medium"}) {
-								{ uiutils.Text(uiutils.Money(uiutils.Get(vZone, "freeFrom"), uiutils.Get(vZone, "currency"))) }
+							@list.ListItem(list.ListItemProps{Class: "flex items-center justify-between gap-4 text-sm"}) {
+								@inline.Inline(inline.InlineProps{Class: "text-muted-foreground"}) {
+									{ uiutils.Text(uiutils.Get(vLabels, "freeFrom")) }
+								}
+								@inline.Inline(inline.InlineProps{Class: "font-medium"}) {
+									{ uiutils.Text(uiutils.Money(uiutils.Get(vZone, "freeFrom"), uiutils.Get(vZone, "currency"))) }
+								}
+							}
+							@list.ListItem(list.ListItemProps{Class: "flex items-center justify-between gap-4 text-sm"}) {
+								@inline.Inline(inline.InlineProps{Class: "text-muted-foreground"}) {
+									{ uiutils.Text(uiutils.Get(vLabels, "time")) }
+								}
+								@inline.Inline(inline.InlineProps{Class: "font-medium"}) {
+									{ uiutils.Text(uiutils.Get(vZone, "time")) }
+								}
 							}
 						}
-						@list.ListItem(list.ListItemProps{Class: "flex items-center justify-between gap-4 text-sm"}) {
-							@inline.Inline(inline.InlineProps{Class: "text-muted-foreground"}) {
-								{ uiutils.Text(uiutils.Get(vLabels, "time")) }
-							}
-							@inline.Inline(inline.InlineProps{Class: "font-medium"}) {
-								{ uiutils.Text(uiutils.Get(vZone, "time")) }
-							}
+						@button.Button(button.ButtonProps{Variant: "default", Size: "default", Class: "w-full"}) {
+							{ uiutils.Text(uiutils.Get(vLabels, "primary")) }
 						}
-					}
-					@button.Button(button.ButtonProps{Variant: "default", Size: "default", Class: "w-full"}) {
-						{ uiutils.Text(uiutils.Get(vLabels, "primary")) }
-					}
-					@button.Button(button.ButtonProps{Variant: "outline", Size: "default", Class: "w-full"}) {
-						{ uiutils.Text(uiutils.Get(vLabels, "secondary")) }
-					}
-					@text.Text(text.TextProps{Size: "xs", Class: "text-muted-foreground"}) {
-						{ uiutils.Text(uiutils.Get(vLabels, "note")) }
+						@button.Button(button.ButtonProps{Variant: "outline", Size: "default", Class: "w-full"}) {
+							{ uiutils.Text(uiutils.Get(vLabels, "secondary")) }
+						}
+						@text.Text(text.TextProps{Size: "xs", Class: "text-muted-foreground"}) {
+							{ uiutils.Text(uiutils.Get(vLabels, "note")) }
+						}
 					}
 				}
 			}

@@ -137,97 +137,115 @@
               },
               "children": [
                 {
-                  "use": "Grid",
-                  "props": {
-                    "Cols": {
-                      "op": "cond",
-                      "args": [
-                        {
-                          "op": "eq",
+                  "when": {
+                    "op": "gt",
+                    "args": [
+                      {
+                        "op": "len",
+                        "args": [
+                          {
+                            "$": "facts"
+                          }
+                        ]
+                      },
+                      0
+                    ]
+                  },
+                  "then": [
+                    {
+                      "use": "Grid",
+                      "props": {
+                        "Cols": {
+                          "op": "cond",
                           "args": [
                             {
-                              "$": "layout"
-                            },
-                            "split"
-                          ]
-                        },
-                        "1-2",
-                        "1-4"
-                      ]
-                    },
-                    "Class": "gap-4"
-                  },
-                  "attrs": {
-                    "data-testid": "facts"
-                  },
-                  "children": [
-                    {
-                      "each": {
-                        "$": "facts"
-                      },
-                      "as": "f",
-                      "key": {
-                        "$": "f.id"
-                      },
-                      "do": [
-                        {
-                          "use": "Stack",
-                          "props": {
-                            "Gap": "4",
-                            "Class": "rounded bg-card inset-ring inset-ring-border p-6"
-                          },
-                          "attrs": {
-                            "data-testid": "fact"
-                          },
-                          "children": [
-                            {
-                              "use": "Box",
-                              "props": {
-                                "Class": "flex size-10 shrink-0 items-center justify-center rounded bg-muted"
-                              },
-                              "children": [
+                              "op": "eq",
+                              "args": [
                                 {
-                                  "use": "LucideIcon",
-                                  "props": {
-                                    "Name": {
-                                      "$": "f.icon"
-                                    },
-                                    "Size": 20
-                                  }
-                                }
+                                  "$": "layout"
+                                },
+                                "split"
                               ]
                             },
+                            "1-2",
+                            "1-4"
+                          ]
+                        },
+                        "Class": "gap-4"
+                      },
+                      "attrs": {
+                        "data-testid": "facts"
+                      },
+                      "children": [
+                        {
+                          "each": {
+                            "$": "facts"
+                          },
+                          "as": "f",
+                          "key": {
+                            "$": "f.id"
+                          },
+                          "do": [
                             {
                               "use": "Stack",
                               "props": {
-                                "Gap": "2"
+                                "Gap": "4",
+                                "Class": "rounded bg-card inset-ring inset-ring-border p-6"
+                              },
+                              "attrs": {
+                                "data-testid": "fact"
                               },
                               "children": [
                                 {
-                                  "use": "Text",
+                                  "use": "Box",
                                   "props": {
-                                    "Size": "sm",
-                                    "Weight": "semibold"
+                                    "Class": "flex size-10 shrink-0 items-center justify-center rounded bg-muted"
                                   },
                                   "children": [
                                     {
-                                      "text": {
-                                        "$": "f.title"
+                                      "use": "LucideIcon",
+                                      "props": {
+                                        "Name": {
+                                          "$": "f.icon"
+                                        },
+                                        "Size": 20
                                       }
                                     }
                                   ]
                                 },
                                 {
-                                  "use": "Text",
+                                  "use": "Stack",
                                   "props": {
-                                    "Size": "sm",
-                                    "Class": "text-muted-foreground"
+                                    "Gap": "2"
                                   },
                                   "children": [
                                     {
-                                      "text": {
-                                        "$": "f.text"
-                                      }
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "sm",
+                                        "Weight": "semibold"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "f.title"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "sm",
+                                        "Class": "text-muted-foreground"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "f.text"
+                                          }
+                                        }
+                                      ]
                                     }
                                   ]
                                 }
@@ -241,12 +259,31 @@
                 },
                 {
                   "when": {
-                    "op": "ne",
+                    "op": "and",
                     "args": [
                       {
-                        "$": "layout"
+                        "op": "ne",
+                        "args": [
+                          {
+                            "$": "layout"
+                          },
+                          "facts"
+                        ]
                       },
-                      "facts"
+                      {
+                        "op": "gt",
+                        "args": [
+                          {
+                            "op": "len",
+                            "args": [
+                              {
+                                "$": "zones"
+                              }
+                            ]
+                          },
+                          0
+                        ]
+                      }
                     ]
                   },
                   "then": [
