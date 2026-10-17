@@ -173,6 +173,9 @@ export const KIT_FIELDS = {
   milestone: { id: "id", date: m("date"), title: "title", text: m("text"), tag: m("tag") },
   skill: { id: "id", label: "title", level: m("level") },
   question: { id: "id", question: "title", answer: m("answer"), category: "terms|term:faq_category", icon: m("icon") },
+  // kind `plan` as a row of the plans screen (screen.plans: list and record, with the plan status)
+  planRow: { id: "id", name: "title", tagline: m("tagline"), price: m("price"), currency: m("currency"), seats: m("seats"), storage: m("storage"),
+    highlighted: m("highlighted"), features: m("features"), yearly: m("yearly"), status: m("plan_status") },
 } as const;
 
 /** the field maps by entry kind */

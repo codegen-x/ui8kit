@@ -6271,6 +6271,13 @@
       "surface": "xgen-screen",
       "source": "xgen/specs/screens/blocks.json",
       "status": "todo",
+      "data": [],
+      "settings": [
+        "routes",
+        "frame"
+      ],
+      "labels": [],
+      "emptyState": true,
       "uses": []
     },
     {
@@ -6278,6 +6285,619 @@
       "surface": "xgen-screen",
       "source": "xgen/specs/screens/catalog.json",
       "status": "todo",
+      "data": [
+        {
+          "prop": "AboutCompany.stats",
+          "collection": "stats",
+          "kind": "stat",
+          "record": "Stat",
+          "map": "stat",
+          "list": true
+        },
+        {
+          "prop": "AboutCompany.values",
+          "collection": "values",
+          "kind": "value",
+          "record": "Feature",
+          "map": "value",
+          "list": true
+        },
+        {
+          "prop": "AboutMe.facts",
+          "collection": "profilefacts",
+          "kind": "profilefact",
+          "record": "Spec",
+          "map": "profilefact",
+          "list": true
+        },
+        {
+          "prop": "AboutMe.skills",
+          "collection": "skills",
+          "kind": "skill",
+          "record": "Skill",
+          "map": "skill",
+          "list": true
+        },
+        {
+          "prop": "FeatureAccordion.features",
+          "collection": "features",
+          "kind": "feature",
+          "record": "Feature",
+          "map": "feature",
+          "list": true
+        },
+        {
+          "prop": "ActivityFeed.events",
+          "collection": "activity",
+          "kind": "event",
+          "record": "Event",
+          "map": "event",
+          "list": true
+        },
+        {
+          "prop": "ArticleBody.sections",
+          "collection": "article",
+          "kind": "section",
+          "record": "Section",
+          "map": "section",
+          "list": true
+        },
+        {
+          "prop": "BeforeAfter.points",
+          "collection": "beforeafter",
+          "kind": "point",
+          "record": "Contrast",
+          "map": "contrast",
+          "list": true
+        },
+        {
+          "prop": "BentoGrid.tiles",
+          "collection": "bento",
+          "kind": "tile",
+          "record": "Tile",
+          "map": "tile",
+          "list": true
+        },
+        {
+          "prop": "BottomNav.tabs",
+          "collection": "tabs",
+          "kind": "tab",
+          "record": "NavLink",
+          "map": "tab",
+          "list": true
+        },
+        {
+          "prop": "CartList.lines",
+          "collection": "cart",
+          "kind": "cartline",
+          "record": "CartLine",
+          "map": "cartline",
+          "list": true
+        },
+        {
+          "prop": "CartDrawer.rows",
+          "collection": "summary",
+          "kind": "summaryrow",
+          "record": "SummaryRow",
+          "map": "summaryrow",
+          "list": true
+        },
+        {
+          "prop": "ShoppingCart.promos",
+          "collection": "promos",
+          "kind": "promo",
+          "record": "Promo",
+          "map": "promo",
+          "list": true
+        },
+        {
+          "prop": "CategoryNav.categories",
+          "collection": "categories",
+          "kind": "menu_item",
+          "record": "Category",
+          "map": "menuCategory",
+          "list": true
+        },
+        {
+          "prop": "SupportChannels.channels",
+          "collection": "channels",
+          "kind": "channel",
+          "record": "Feature",
+          "map": "channel",
+          "list": true
+        },
+        {
+          "prop": "ChartPanel.series",
+          "collection": "series",
+          "kind": "point",
+          "record": "Point",
+          "map": "point",
+          "list": true
+        },
+        {
+          "prop": "Checklist.tasks",
+          "collection": "checklist",
+          "kind": "task",
+          "record": "Task",
+          "map": "task",
+          "list": true
+        },
+        {
+          "prop": "CheckoutForm.days",
+          "collection": "days",
+          "kind": "day",
+          "record": "Day",
+          "map": "day",
+          "list": true
+        },
+        {
+          "prop": "CheckoutForm.payments",
+          "collection": "payments",
+          "kind": "payment",
+          "record": "Payment",
+          "map": "payment",
+          "list": true
+        },
+        {
+          "prop": "ComparisonTable.rows",
+          "collection": "compare",
+          "kind": "row",
+          "record": "CompareRow",
+          "map": "row",
+          "list": true
+        },
+        {
+          "prop": "ComparisonTable.rows",
+          "collection": "rivals",
+          "kind": "row",
+          "record": "CompareRow",
+          "map": "row",
+          "list": true
+        },
+        {
+          "prop": "CreditPacks.packs",
+          "collection": "credits",
+          "kind": "pack",
+          "record": "Pack",
+          "map": "pack",
+          "list": true
+        },
+        {
+          "prop": "CtaProof.content.logos",
+          "collection": "logos",
+          "kind": "logo",
+          "record": "Logo",
+          "map": "logo",
+          "list": true
+        },
+        {
+          "prop": "CtaProof.content.zones",
+          "collection": "zones",
+          "kind": "zone",
+          "record": "Zone",
+          "map": "zone",
+          "list": true
+        },
+        {
+          "prop": "DashboardShell.nav.links",
+          "collection": "sidenav",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true
+        },
+        {
+          "prop": "DashboardShell.nav.sub",
+          "collection": "subnav",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true
+        },
+        {
+          "prop": "DashboardShell.nav.footer",
+          "collection": "helplinks",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true
+        },
+        {
+          "prop": "DeliveryInfo.facts",
+          "collection": "deliveryfacts",
+          "kind": "fact",
+          "record": "Feature",
+          "map": "fact",
+          "list": true
+        },
+        {
+          "prop": "FaqList.items",
+          "collection": "faq",
+          "kind": "faq",
+          "record": "Faq",
+          "map": "faq",
+          "list": true
+        },
+        {
+          "prop": "FaqList.filter.tabs",
+          "collection": "faqtabs",
+          "kind": "tab",
+          "record": "FaqTab",
+          "map": "faqtab",
+          "list": true
+        },
+        {
+          "prop": "FaqSplit.items",
+          "collection": "questions",
+          "kind": "question",
+          "record": "Question",
+          "map": "question",
+          "list": true
+        },
+        {
+          "prop": "FooterSplit.groups",
+          "collection": "sitemap",
+          "kind": "menu_item",
+          "record": "MegaGroup",
+          "map": "menuGroup",
+          "list": true
+        },
+        {
+          "prop": "FooterSplit.extras.contacts",
+          "collection": "contacts",
+          "kind": "contact",
+          "record": "Feature",
+          "map": "contact",
+          "list": true
+        },
+        {
+          "prop": "FooterSplit.extras.channels",
+          "collection": "community",
+          "kind": "channel",
+          "record": "Feature",
+          "map": "channel",
+          "list": true
+        },
+        {
+          "prop": "HeroClassic.media.lines",
+          "collection": "terminal",
+          "kind": "line",
+          "record": "CodeLine",
+          "map": "line",
+          "list": true
+        },
+        {
+          "prop": "HeroClassic.topics",
+          "collection": "prompts",
+          "kind": "prompt",
+          "record": "Topic",
+          "map": "prompt",
+          "list": true
+        },
+        {
+          "prop": "HeroClassic.nav.links",
+          "collection": "navlinks",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true
+        },
+        {
+          "prop": "HeroSplit.content.people",
+          "collection": "testimonials",
+          "kind": "testimonial",
+          "record": "Quote",
+          "map": "testimonial",
+          "list": true
+        },
+        {
+          "prop": "HeroSplit.content.plans",
+          "collection": "tiers",
+          "kind": "plan",
+          "record": "Plan",
+          "map": "plan",
+          "list": true
+        },
+        {
+          "prop": "JobBoard.jobs",
+          "collection": "jobs",
+          "kind": "job",
+          "record": "Job",
+          "map": "job",
+          "list": true
+        },
+        {
+          "prop": "JobBoard.departments",
+          "collection": "departments",
+          "kind": "department",
+          "record": "Department",
+          "map": "department",
+          "list": true
+        },
+        {
+          "prop": "KanbanBoard.lanes",
+          "collection": "lanes",
+          "kind": "lane",
+          "record": "Lane",
+          "map": "lane",
+          "list": true
+        },
+        {
+          "prop": "KanbanBoard.cards",
+          "collection": "cards",
+          "kind": "card",
+          "record": "BoardCard",
+          "map": "card",
+          "list": true
+        },
+        {
+          "prop": "StoreLocations.stores",
+          "collection": "stores",
+          "kind": "store",
+          "record": "Store",
+          "map": "store",
+          "list": true
+        },
+        {
+          "prop": "MediaList.extras.steps",
+          "collection": "steps",
+          "kind": "step",
+          "record": "Step",
+          "map": "step",
+          "list": true
+        },
+        {
+          "prop": "MediaList.extras.posts",
+          "collection": "posts",
+          "kind": "post",
+          "record": "Post",
+          "map": "post",
+          "list": true
+        },
+        {
+          "prop": "MediaList.extras.reviews",
+          "collection": "reviews",
+          "kind": "review",
+          "record": "Review",
+          "map": "review",
+          "list": true
+        },
+        {
+          "prop": "MegaMenu.groups",
+          "collection": "megagroups",
+          "kind": "menu_item",
+          "record": "MegaGroup",
+          "map": "menuGroup",
+          "list": true
+        },
+        {
+          "prop": "MetricRow.metrics",
+          "collection": "metrics",
+          "kind": "metric",
+          "record": "Stat",
+          "map": "metric",
+          "list": true
+        },
+        {
+          "prop": "OrderTable.orders",
+          "collection": "orders",
+          "kind": "order",
+          "record": "Order",
+          "map": "order",
+          "list": true
+        },
+        {
+          "prop": "PageTrail.crumbs",
+          "collection": "crumbs",
+          "kind": "page",
+          "record": "NavLink",
+          "map": "page",
+          "list": true
+        },
+        {
+          "prop": "PhotoGallery.photos",
+          "collection": "photos",
+          "kind": "photo",
+          "record": "Photo",
+          "map": "photo",
+          "list": true
+        },
+        {
+          "prop": "PostGrid.filter.topics",
+          "collection": "topics",
+          "kind": "topic",
+          "record": "PostTopic",
+          "map": "topic",
+          "list": true
+        },
+        {
+          "prop": "PostSplit.extras.tags",
+          "collection": "posttags",
+          "kind": "posttag",
+          "record": "NavLink",
+          "map": "posttag",
+          "list": true
+        },
+        {
+          "prop": "PostSplit.extras.outline",
+          "collection": "outline",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true
+        },
+        {
+          "prop": "PricingTiers.plans",
+          "collection": "duo",
+          "kind": "plan",
+          "record": "Plan",
+          "map": "plan",
+          "list": true
+        },
+        {
+          "prop": "ProductDetail.product",
+          "collection": "products",
+          "kind": "product",
+          "record": "Product",
+          "map": "product",
+          "list": false
+        },
+        {
+          "prop": "ProductInfo.details",
+          "collection": "details",
+          "kind": "detail",
+          "record": "Detail",
+          "map": "detail",
+          "list": true
+        },
+        {
+          "prop": "ProductInfo.specs",
+          "collection": "specs",
+          "kind": "spec",
+          "record": "Spec",
+          "map": "spec",
+          "list": true
+        },
+        {
+          "prop": "ProjectGrid.projects",
+          "collection": "projects",
+          "kind": "project",
+          "record": "Project",
+          "map": "project",
+          "list": true
+        },
+        {
+          "prop": "SkeletonLayout.lines",
+          "collection": "placeholders",
+          "kind": "placeholder",
+          "record": "Line",
+          "map": "placeholder",
+          "list": true
+        },
+        {
+          "prop": "StoreHero.perks",
+          "collection": "perks",
+          "kind": "perk",
+          "record": "Feature",
+          "map": "perk",
+          "list": true
+        },
+        {
+          "prop": "StoryTabs.steps",
+          "collection": "milestones",
+          "kind": "milestone",
+          "record": "Milestone",
+          "map": "milestone",
+          "list": true
+        },
+        {
+          "prop": "TeamGrid.members",
+          "collection": "members",
+          "kind": "member",
+          "record": "Member",
+          "map": "member",
+          "list": true
+        },
+        {
+          "prop": "TemplateGrid.templates",
+          "collection": "templates",
+          "kind": "template",
+          "record": "Template",
+          "map": "template",
+          "list": true
+        },
+        {
+          "prop": "TemplateGrid.filters",
+          "collection": "prompts",
+          "kind": "prompt",
+          "record": "Filter",
+          "map": "promptFilter",
+          "list": true
+        },
+        {
+          "prop": "VideoModal.chapters",
+          "collection": "chapters",
+          "kind": "chapter",
+          "record": "Chapter",
+          "map": "chapter",
+          "list": true
+        },
+        {
+          "prop": "SignupWizard.steps",
+          "collection": "wizard",
+          "kind": "step",
+          "record": "WizardStep",
+          "map": "wizardStep",
+          "list": true
+        }
+      ],
+      "settings": [
+        "routes",
+        "frame"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "company.pages.companyTitle",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "company.pages.companyLead",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "commerce.pages.bestsellers",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "commerce.rail.title",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "commerce.pages.catalogTitle",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "commerce.pages.catalogLead",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "commerce.pages.related",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "commerce.cartPage.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "commerce.pages.cartLead",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "commerce.cart.caption",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "commerce.checkout.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "commerce.pages.checkoutLead",
+          "keys": []
+        }
+      ],
+      "emptyState": false,
       "uses": [
         "block.about",
         "block.aboutme",
@@ -6377,7 +6997,135 @@
       "id": "screen.plans",
       "surface": "xgen-screen",
       "source": "xgen/specs/screens/plans.json",
-      "status": "todo",
+      "status": "done",
+      "data": [
+        {
+          "prop": "source",
+          "collection": "plans",
+          "kind": "plan",
+          "record": "Plan",
+          "map": "planRow",
+          "list": true
+        }
+      ],
+      "settings": [
+        "routes",
+        "state"
+      ],
+      "labels": [
+        {
+          "prop": "label",
+          "dictionary": "plans.col.name",
+          "keys": []
+        },
+        {
+          "prop": "label",
+          "dictionary": "plans.col.price",
+          "keys": []
+        },
+        {
+          "prop": "label",
+          "dictionary": "plans.col.seats",
+          "keys": []
+        },
+        {
+          "prop": "label",
+          "dictionary": "plans.col.storage",
+          "keys": []
+        },
+        {
+          "prop": "label",
+          "dictionary": "plans.col.status",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "app.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "theme.toggle",
+          "keys": []
+        },
+        {
+          "prop": "Placeholder",
+          "dictionary": "plans.search",
+          "keys": []
+        },
+        {
+          "prop": "args",
+          "dictionary": "plans.count",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "plans.caption",
+          "keys": []
+        },
+        {
+          "prop": "args",
+          "dictionary": "status",
+          "keys": [
+            "active",
+            "legacy",
+            "paid",
+            "pending",
+            "refunded",
+            "shipped"
+          ]
+        },
+        {
+          "prop": "text",
+          "dictionary": "plans.empty",
+          "keys": []
+        },
+        {
+          "prop": "args",
+          "dictionary": "pager.showing",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pager.previous",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pager.next",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "record.back",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "pricing",
+          "keys": [
+            "cta",
+            "empty",
+            "free",
+            "perMonth",
+            "perYear",
+            "popular",
+            "seats",
+            "storage"
+          ]
+        },
+        {
+          "prop": "args",
+          "dictionary": "record.id",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "record.missing",
+          "keys": []
+        }
+      ],
+      "emptyState": true,
       "uses": [],
       "collections": [
         "plans"
@@ -6387,7 +7135,105 @@
       "id": "screen.site",
       "surface": "xgen-screen",
       "source": "xgen/specs/screens/site.json",
-      "status": "todo",
+      "status": "done",
+      "data": [
+        {
+          "prop": "FaqList.items",
+          "collection": "faq",
+          "kind": "faq",
+          "record": "Faq",
+          "map": "faq",
+          "list": true
+        },
+        {
+          "prop": "FaqList.filter.tabs",
+          "collection": "faqtabs",
+          "kind": "tab",
+          "record": "FaqTab",
+          "map": "faqtab",
+          "list": true
+        },
+        {
+          "prop": "FeatureGrid.features",
+          "collection": "features",
+          "kind": "feature",
+          "record": "Feature",
+          "map": "feature",
+          "list": true
+        },
+        {
+          "prop": "HeroClassic.media.lines",
+          "collection": "terminal",
+          "kind": "line",
+          "record": "CodeLine",
+          "map": "line",
+          "list": true
+        },
+        {
+          "prop": "HeroClassic.topics",
+          "collection": "prompts",
+          "kind": "prompt",
+          "record": "Topic",
+          "map": "prompt",
+          "list": true
+        },
+        {
+          "prop": "HeroClassic.nav.links",
+          "collection": "navlinks",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true
+        },
+        {
+          "prop": "PricingTiers.plans",
+          "collection": "tiers",
+          "kind": "plan",
+          "record": "Plan",
+          "map": "plan",
+          "list": true
+        },
+        {
+          "prop": "PricingTiers.plans",
+          "collection": "duo",
+          "kind": "plan",
+          "record": "Plan",
+          "map": "plan",
+          "list": true
+        }
+      ],
+      "settings": [
+        "routes",
+        "frame"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "site.pricing.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "site.pricing.text",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "site.notFound.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "site.notFound.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "site.notFound.back",
+          "keys": []
+        }
+      ],
+      "emptyState": true,
       "uses": [
         "block.cta",
         "block.faq",
@@ -6402,14 +7248,289 @@
       "id": "screen.skins",
       "surface": "xgen-screen",
       "source": "xgen/specs/screens/skins.json",
-      "status": "todo",
+      "status": "done",
+      "data": [],
+      "settings": [
+        "routes",
+        "frame"
+      ],
+      "labels": [],
+      "emptyState": true,
       "uses": []
     },
     {
       "id": "screen.theme-account-portal",
       "surface": "xgen-screen",
       "source": "xgen/specs/screens/theme-account-portal.json",
-      "status": "todo",
+      "status": "done",
+      "data": [
+        {
+          "prop": "NavBar.links",
+          "collection": "navlinks",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true
+        },
+        {
+          "prop": "SitemapFooter.groups",
+          "collection": "sitemap",
+          "kind": "menu_item",
+          "record": "MegaGroup",
+          "map": "menuGroup",
+          "list": true
+        },
+        {
+          "prop": "SignupWizard.steps",
+          "collection": "wizard",
+          "kind": "step",
+          "record": "WizardStep",
+          "map": "wizardStep",
+          "list": true
+        }
+      ],
+      "settings": [
+        "routes",
+        "nav",
+        "menu",
+        "frame",
+        "chunks",
+        "requireH1",
+        "nameLandmarks"
+      ],
+      "labels": [
+        {
+          "prop": "skip",
+          "dictionary": "site.header.skip",
+          "keys": []
+        },
+        {
+          "prop": "themeLabel",
+          "dictionary": "theme.toggle",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.accountPortal.home.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.accountPortal.home.text",
+          "keys": []
+        },
+        {
+          "prop": "submit",
+          "dictionary": "pages.accountPortal.home.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.accountPortal.start.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.accountPortal.start.text",
+          "keys": []
+        },
+        {
+          "prop": "submit",
+          "dictionary": "pages.accountPortal.start.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.accountPortal.signup.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.accountPortal.signup.text",
+          "keys": []
+        },
+        {
+          "prop": "submit",
+          "dictionary": "pages.accountPortal.signup.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.accountPortal.welcome.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.accountPortal.welcome.text",
+          "keys": []
+        },
+        {
+          "prop": "submit",
+          "dictionary": "pages.accountPortal.welcome.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.accountPortal.reset.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.accountPortal.reset.text",
+          "keys": []
+        },
+        {
+          "prop": "submit",
+          "dictionary": "pages.accountPortal.reset.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.accountPortal.magic.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.accountPortal.magic.text",
+          "keys": []
+        },
+        {
+          "prop": "submit",
+          "dictionary": "pages.accountPortal.magic.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.accountPortal.minimal.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.accountPortal.minimal.text",
+          "keys": []
+        },
+        {
+          "prop": "submit",
+          "dictionary": "pages.accountPortal.minimal.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.accountPortal.options.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.accountPortal.options.text",
+          "keys": []
+        },
+        {
+          "prop": "submit",
+          "dictionary": "pages.accountPortal.options.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.accountPortal.join.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.accountPortal.join.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.accountPortal.join.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.accountPortal.cards.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.accountPortal.cards.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.accountPortal.cards.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.accountPortal.profile.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.accountPortal.profile.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.accountPortal.profile.cta",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.accountPortal.home.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.accountPortal.start.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.accountPortal.signup.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.accountPortal.welcome.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.accountPortal.reset.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.accountPortal.magic.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.accountPortal.minimal.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.accountPortal.options.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.accountPortal.join.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.accountPortal.cards.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.accountPortal.profile.nav",
+          "keys": []
+        }
+      ],
+      "emptyState": true,
       "uses": [
         "block.auth",
         "block.authpage",
@@ -6424,7 +7545,334 @@
       "id": "screen.theme-commerce-shop",
       "surface": "xgen-screen",
       "source": "xgen/specs/screens/theme-commerce-shop.json",
-      "status": "todo",
+      "status": "done",
+      "data": [
+        {
+          "prop": "CartList.lines",
+          "collection": "cart",
+          "kind": "cartline",
+          "record": "CartLine",
+          "map": "cartline",
+          "list": true
+        },
+        {
+          "prop": "CartDrawer.rows",
+          "collection": "summary",
+          "kind": "summaryrow",
+          "record": "SummaryRow",
+          "map": "summaryrow",
+          "list": true
+        },
+        {
+          "prop": "ShoppingCart.promos",
+          "collection": "promos",
+          "kind": "promo",
+          "record": "Promo",
+          "map": "promo",
+          "list": true
+        },
+        {
+          "prop": "CategoryNav.categories",
+          "collection": "categories",
+          "kind": "menu_item",
+          "record": "Category",
+          "map": "menuCategory",
+          "list": true
+        },
+        {
+          "prop": "CheckoutForm.days",
+          "collection": "days",
+          "kind": "day",
+          "record": "Day",
+          "map": "day",
+          "list": true
+        },
+        {
+          "prop": "CheckoutForm.payments",
+          "collection": "payments",
+          "kind": "payment",
+          "record": "Payment",
+          "map": "payment",
+          "list": true
+        },
+        {
+          "prop": "DeliveryInfo.facts",
+          "collection": "deliveryfacts",
+          "kind": "fact",
+          "record": "Feature",
+          "map": "fact",
+          "list": true
+        },
+        {
+          "prop": "DeliveryInfo.zones",
+          "collection": "zones",
+          "kind": "zone",
+          "record": "Zone",
+          "map": "zone",
+          "list": true
+        },
+        {
+          "prop": "HeroClassic.media.lines",
+          "collection": "terminal",
+          "kind": "line",
+          "record": "CodeLine",
+          "map": "line",
+          "list": true
+        },
+        {
+          "prop": "HeroClassic.topics",
+          "collection": "prompts",
+          "kind": "prompt",
+          "record": "Topic",
+          "map": "prompt",
+          "list": true
+        },
+        {
+          "prop": "HeroClassic.nav.links",
+          "collection": "navlinks",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true
+        },
+        {
+          "prop": "StoreLocations.stores",
+          "collection": "stores",
+          "kind": "store",
+          "record": "Store",
+          "map": "store",
+          "list": true
+        },
+        {
+          "prop": "OrderTable.orders",
+          "collection": "orders",
+          "kind": "order",
+          "record": "Order",
+          "map": "order",
+          "list": true
+        },
+        {
+          "prop": "PageTrail.crumbs",
+          "collection": "crumbs",
+          "kind": "page",
+          "record": "NavLink",
+          "map": "page",
+          "list": true
+        },
+        {
+          "prop": "PageTrail.extras.facts",
+          "collection": "stats",
+          "kind": "stat",
+          "record": "Stat",
+          "map": "stat",
+          "list": true
+        },
+        {
+          "prop": "ProductDetail.product",
+          "collection": "products",
+          "kind": "product",
+          "record": "Product",
+          "map": "product",
+          "list": false
+        },
+        {
+          "prop": "ProductInfo.details",
+          "collection": "details",
+          "kind": "detail",
+          "record": "Detail",
+          "map": "detail",
+          "list": true
+        },
+        {
+          "prop": "ProductInfo.specs",
+          "collection": "specs",
+          "kind": "spec",
+          "record": "Spec",
+          "map": "spec",
+          "list": true
+        },
+        {
+          "prop": "ReviewList.reviews",
+          "collection": "reviews",
+          "kind": "review",
+          "record": "Review",
+          "map": "review",
+          "list": true
+        },
+        {
+          "prop": "SitemapFooter.groups",
+          "collection": "sitemap",
+          "kind": "menu_item",
+          "record": "MegaGroup",
+          "map": "menuGroup",
+          "list": true
+        },
+        {
+          "prop": "StoreHero.perks",
+          "collection": "perks",
+          "kind": "perk",
+          "record": "Feature",
+          "map": "perk",
+          "list": true
+        }
+      ],
+      "settings": [
+        "routes",
+        "nav",
+        "menu",
+        "frame",
+        "chunks",
+        "requireH1",
+        "nameLandmarks"
+      ],
+      "labels": [
+        {
+          "prop": "skip",
+          "dictionary": "site.header.skip",
+          "keys": []
+        },
+        {
+          "prop": "themeLabel",
+          "dictionary": "theme.toggle",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.commerceShop.home.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.commerceShop.home.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.commerceShop.home.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.commerceShop.browse.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.commerceShop.browse.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.commerceShop.browse.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.commerceShop.cart.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.commerceShop.cart.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.commerceShop.cart.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.commerceShop.checkout.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.commerceShop.checkout.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.commerceShop.checkout.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.commerceShop.delivery.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.commerceShop.delivery.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.commerceShop.delivery.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.commerceShop.orders.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.commerceShop.orders.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.commerceShop.orders.cta",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.commerceShop.home.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.commerceShop.catalog.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.commerceShop.browse.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.commerceShop.offers.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.commerceShop.product.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.commerceShop.cart.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.commerceShop.checkout.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.commerceShop.delivery.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.commerceShop.orders.nav",
+          "keys": []
+        }
+      ],
+      "emptyState": true,
       "uses": [
         "block.cart",
         "block.cartdrawer",
@@ -6456,7 +7904,167 @@
       "id": "screen.theme-content-blog",
       "surface": "xgen-screen",
       "source": "xgen/specs/screens/theme-content-blog.json",
-      "status": "todo",
+      "status": "done",
+      "data": [
+        {
+          "prop": "ArticleBody.sections",
+          "collection": "article",
+          "kind": "section",
+          "record": "Section",
+          "map": "section",
+          "list": true
+        },
+        {
+          "prop": "NavBar.links",
+          "collection": "navlinks",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true
+        },
+        {
+          "prop": "PostHeader.post",
+          "collection": "posts",
+          "kind": "post",
+          "record": "Post",
+          "map": "post",
+          "list": false
+        },
+        {
+          "prop": "PostGrid.filter.topics",
+          "collection": "topics",
+          "kind": "topic",
+          "record": "PostTopic",
+          "map": "topic",
+          "list": true
+        },
+        {
+          "prop": "PostSplit.extras.tags",
+          "collection": "posttags",
+          "kind": "posttag",
+          "record": "NavLink",
+          "map": "posttag",
+          "list": true
+        },
+        {
+          "prop": "PostSplit.extras.outline",
+          "collection": "outline",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true
+        },
+        {
+          "prop": "SitemapFooter.groups",
+          "collection": "sitemap",
+          "kind": "menu_item",
+          "record": "MegaGroup",
+          "map": "menuGroup",
+          "list": true
+        }
+      ],
+      "settings": [
+        "routes",
+        "nav",
+        "menu",
+        "frame",
+        "chunks",
+        "requireH1",
+        "nameLandmarks"
+      ],
+      "labels": [
+        {
+          "prop": "skip",
+          "dictionary": "site.header.skip",
+          "keys": []
+        },
+        {
+          "prop": "themeLabel",
+          "dictionary": "theme.toggle",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.contentBlog.home.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.contentBlog.home.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.contentBlog.home.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.contentBlog.articles.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.contentBlog.articles.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.contentBlog.articles.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.contentBlog.archive.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.contentBlog.archive.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.contentBlog.archive.cta",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.contentBlog.home.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.contentBlog.articles.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.contentBlog.archive.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.contentBlog.post.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.contentBlog.story.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.contentBlog.essay.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.contentBlog.plain.nav",
+          "keys": []
+        }
+      ],
+      "emptyState": true,
       "uses": [
         "block.article",
         "block.navbar",
@@ -6473,7 +8081,247 @@
       "id": "screen.theme-dashboard-console",
       "surface": "xgen-screen",
       "source": "xgen/specs/screens/theme-dashboard-console.json",
-      "status": "todo",
+      "status": "done",
+      "data": [
+        {
+          "prop": "ActivityFeed.events",
+          "collection": "activity",
+          "kind": "event",
+          "record": "Event",
+          "map": "event",
+          "list": true
+        },
+        {
+          "prop": "BottomNav.tabs",
+          "collection": "tabs",
+          "kind": "tab",
+          "record": "NavLink",
+          "map": "tab",
+          "list": true
+        },
+        {
+          "prop": "ChartPanel.series",
+          "collection": "series",
+          "kind": "point",
+          "record": "Point",
+          "map": "point",
+          "list": true
+        },
+        {
+          "prop": "DashboardShell.nav.links",
+          "collection": "sidenav",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true
+        },
+        {
+          "prop": "DashboardShell.nav.sub",
+          "collection": "subnav",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true
+        },
+        {
+          "prop": "DashboardShell.nav.footer",
+          "collection": "helplinks",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true
+        },
+        {
+          "prop": "KanbanBoard.lanes",
+          "collection": "lanes",
+          "kind": "lane",
+          "record": "Lane",
+          "map": "lane",
+          "list": true
+        },
+        {
+          "prop": "KanbanBoard.cards",
+          "collection": "cards",
+          "kind": "card",
+          "record": "BoardCard",
+          "map": "card",
+          "list": true
+        },
+        {
+          "prop": "MetricRow.metrics",
+          "collection": "metrics",
+          "kind": "metric",
+          "record": "Stat",
+          "map": "metric",
+          "list": true
+        },
+        {
+          "prop": "NavBar.links",
+          "collection": "navlinks",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true
+        },
+        {
+          "prop": "SitemapFooter.groups",
+          "collection": "sitemap",
+          "kind": "menu_item",
+          "record": "MegaGroup",
+          "map": "menuGroup",
+          "list": true
+        },
+        {
+          "prop": "SkeletonLayout.lines",
+          "collection": "placeholders",
+          "kind": "placeholder",
+          "record": "Line",
+          "map": "placeholder",
+          "list": true
+        }
+      ],
+      "settings": [
+        "routes",
+        "nav",
+        "menu",
+        "frame",
+        "chunks",
+        "requireH1",
+        "nameLandmarks"
+      ],
+      "labels": [
+        {
+          "prop": "skip",
+          "dictionary": "site.header.skip",
+          "keys": []
+        },
+        {
+          "prop": "themeLabel",
+          "dictionary": "theme.toggle",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.dashboardConsole.home.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.dashboardConsole.home.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.dashboardConsole.home.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.dashboardConsole.board.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.dashboardConsole.board.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.dashboardConsole.board.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.dashboardConsole.workspace.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.dashboardConsole.workspace.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.dashboardConsole.workspace.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.dashboardConsole.shells.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.dashboardConsole.shells.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.dashboardConsole.shells.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.dashboardConsole.layouts.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.dashboardConsole.layouts.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.dashboardConsole.layouts.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.dashboardConsole.states.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.dashboardConsole.states.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.dashboardConsole.states.cta",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.dashboardConsole.home.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.dashboardConsole.board.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.dashboardConsole.workspace.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.dashboardConsole.shells.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.dashboardConsole.layouts.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.dashboardConsole.states.nav",
+          "keys": []
+        }
+      ],
+      "emptyState": true,
       "uses": [
         "block.activity",
         "block.bottomnav",
@@ -6496,6 +8344,376 @@
       "surface": "xgen-screen",
       "source": "xgen/specs/screens/theme-marketing-landing.json",
       "status": "todo",
+      "data": [
+        {
+          "prop": "AboutCompany.stats",
+          "collection": "stats",
+          "kind": "stat",
+          "record": "Stat",
+          "map": "stat",
+          "list": true
+        },
+        {
+          "prop": "AboutCompany.values",
+          "collection": "values",
+          "kind": "value",
+          "record": "Feature",
+          "map": "value",
+          "list": true
+        },
+        {
+          "prop": "AboutMe.facts",
+          "collection": "profilefacts",
+          "kind": "profilefact",
+          "record": "Spec",
+          "map": "profilefact",
+          "list": true
+        },
+        {
+          "prop": "AboutMe.skills",
+          "collection": "skills",
+          "kind": "skill",
+          "record": "Skill",
+          "map": "skill",
+          "list": true
+        },
+        {
+          "prop": "BentoGrid.tiles",
+          "collection": "bento",
+          "kind": "tile",
+          "record": "Tile",
+          "map": "tile",
+          "list": true
+        },
+        {
+          "prop": "CtaProof.content.logos",
+          "collection": "logos",
+          "kind": "logo",
+          "record": "Logo",
+          "map": "logo",
+          "list": true
+        },
+        {
+          "prop": "CtaProof.content.features",
+          "collection": "features",
+          "kind": "feature",
+          "record": "Feature",
+          "map": "feature",
+          "list": true
+        },
+        {
+          "prop": "CtaProof.content.zones",
+          "collection": "zones",
+          "kind": "zone",
+          "record": "Zone",
+          "map": "zone",
+          "list": true
+        },
+        {
+          "prop": "FaqList.items",
+          "collection": "faq",
+          "kind": "faq",
+          "record": "Faq",
+          "map": "faq",
+          "list": true
+        },
+        {
+          "prop": "FaqList.filter.tabs",
+          "collection": "faqtabs",
+          "kind": "tab",
+          "record": "FaqTab",
+          "map": "faqtab",
+          "list": true
+        },
+        {
+          "prop": "FaqSplit.items",
+          "collection": "questions",
+          "kind": "question",
+          "record": "Question",
+          "map": "question",
+          "list": true
+        },
+        {
+          "prop": "FaqSplit.channels",
+          "collection": "channels",
+          "kind": "channel",
+          "record": "Feature",
+          "map": "channel",
+          "list": true
+        },
+        {
+          "prop": "HeroClassic.media.lines",
+          "collection": "terminal",
+          "kind": "line",
+          "record": "CodeLine",
+          "map": "line",
+          "list": true
+        },
+        {
+          "prop": "HeroClassic.topics",
+          "collection": "prompts",
+          "kind": "prompt",
+          "record": "Topic",
+          "map": "prompt",
+          "list": true
+        },
+        {
+          "prop": "HeroClassic.nav.links",
+          "collection": "navlinks",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true
+        },
+        {
+          "prop": "HeroSplit.content.people",
+          "collection": "testimonials",
+          "kind": "testimonial",
+          "record": "Quote",
+          "map": "testimonial",
+          "list": true
+        },
+        {
+          "prop": "HeroSplit.content.plans",
+          "collection": "tiers",
+          "kind": "plan",
+          "record": "Plan",
+          "map": "plan",
+          "list": true
+        },
+        {
+          "prop": "JobBoard.jobs",
+          "collection": "jobs",
+          "kind": "job",
+          "record": "Job",
+          "map": "job",
+          "list": true
+        },
+        {
+          "prop": "JobBoard.departments",
+          "collection": "departments",
+          "kind": "department",
+          "record": "Department",
+          "map": "department",
+          "list": true
+        },
+        {
+          "prop": "PhotoGallery.photos",
+          "collection": "photos",
+          "kind": "photo",
+          "record": "Photo",
+          "map": "photo",
+          "list": true
+        },
+        {
+          "prop": "ProjectGrid.projects",
+          "collection": "projects",
+          "kind": "project",
+          "record": "Project",
+          "map": "project",
+          "list": true
+        },
+        {
+          "prop": "SitemapFooter.groups",
+          "collection": "sitemap",
+          "kind": "menu_item",
+          "record": "MegaGroup",
+          "map": "menuGroup",
+          "list": true
+        },
+        {
+          "prop": "StepsList.steps",
+          "collection": "steps",
+          "kind": "step",
+          "record": "Step",
+          "map": "step",
+          "list": true
+        },
+        {
+          "prop": "StoryTabs.steps",
+          "collection": "milestones",
+          "kind": "milestone",
+          "record": "Milestone",
+          "map": "milestone",
+          "list": true
+        },
+        {
+          "prop": "TeamGrid.members",
+          "collection": "members",
+          "kind": "member",
+          "record": "Member",
+          "map": "member",
+          "list": true
+        },
+        {
+          "prop": "TemplateGrid.templates",
+          "collection": "templates",
+          "kind": "template",
+          "record": "Template",
+          "map": "template",
+          "list": true
+        },
+        {
+          "prop": "TemplateGrid.filters",
+          "collection": "prompts",
+          "kind": "prompt",
+          "record": "Filter",
+          "map": "promptFilter",
+          "list": true
+        }
+      ],
+      "settings": [
+        "routes",
+        "nav",
+        "menu",
+        "frame",
+        "chunks",
+        "requireH1",
+        "nameLandmarks"
+      ],
+      "labels": [
+        {
+          "prop": "skip",
+          "dictionary": "site.header.skip",
+          "keys": []
+        },
+        {
+          "prop": "themeLabel",
+          "dictionary": "theme.toggle",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.marketingLanding.home.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.marketingLanding.home.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.marketingLanding.home.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.marketingLanding.launch.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.marketingLanding.launch.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.marketingLanding.launch.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.marketingLanding.developers.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.marketingLanding.developers.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.marketingLanding.developers.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.marketingLanding.studio.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.marketingLanding.studio.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.marketingLanding.studio.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.marketingLanding.events.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.marketingLanding.events.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.marketingLanding.events.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.marketingLanding.company.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.marketingLanding.company.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.marketingLanding.company.cta",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.marketingLanding.home.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.marketingLanding.launch.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.marketingLanding.developers.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.marketingLanding.studio.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.marketingLanding.events.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.marketingLanding.company.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.marketingLanding.work.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.marketingLanding.teams.nav",
+          "keys": []
+        }
+      ],
+      "emptyState": false,
       "uses": [
         "block.about",
         "block.aboutme",
@@ -6531,7 +8749,215 @@
       "id": "screen.theme-marketing-pricing",
       "surface": "xgen-screen",
       "source": "xgen/specs/screens/theme-marketing-pricing.json",
-      "status": "todo",
+      "status": "done",
+      "data": [
+        {
+          "prop": "ComparisonTable.rows",
+          "collection": "compare",
+          "kind": "row",
+          "record": "CompareRow",
+          "map": "row",
+          "list": true
+        },
+        {
+          "prop": "ComparisonTable.rows",
+          "collection": "rivals",
+          "kind": "row",
+          "record": "CompareRow",
+          "map": "row",
+          "list": true
+        },
+        {
+          "prop": "CreditPacks.packs",
+          "collection": "credits",
+          "kind": "pack",
+          "record": "Pack",
+          "map": "pack",
+          "list": true
+        },
+        {
+          "prop": "FaqList.items",
+          "collection": "faq",
+          "kind": "faq",
+          "record": "Faq",
+          "map": "faq",
+          "list": true
+        },
+        {
+          "prop": "FaqList.filter.tabs",
+          "collection": "faqtabs",
+          "kind": "tab",
+          "record": "FaqTab",
+          "map": "faqtab",
+          "list": true
+        },
+        {
+          "prop": "HeroClassic.media.lines",
+          "collection": "terminal",
+          "kind": "line",
+          "record": "CodeLine",
+          "map": "line",
+          "list": true
+        },
+        {
+          "prop": "HeroClassic.topics",
+          "collection": "prompts",
+          "kind": "prompt",
+          "record": "Topic",
+          "map": "prompt",
+          "list": true
+        },
+        {
+          "prop": "HeroClassic.nav.links",
+          "collection": "navlinks",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true
+        },
+        {
+          "prop": "LogoCloud.logos",
+          "collection": "logos",
+          "kind": "logo",
+          "record": "Logo",
+          "map": "logo",
+          "list": true
+        },
+        {
+          "prop": "PricingCard.plan",
+          "collection": "tiers",
+          "kind": "plan",
+          "record": "Plan",
+          "map": "plan",
+          "list": false
+        },
+        {
+          "prop": "PricingTiers.plans",
+          "collection": "duo",
+          "kind": "plan",
+          "record": "Plan",
+          "map": "plan",
+          "list": true
+        },
+        {
+          "prop": "SitemapFooter.groups",
+          "collection": "sitemap",
+          "kind": "menu_item",
+          "record": "MegaGroup",
+          "map": "menuGroup",
+          "list": true
+        },
+        {
+          "prop": "TestimonialGrid.quotes",
+          "collection": "testimonials",
+          "kind": "testimonial",
+          "record": "Quote",
+          "map": "testimonial",
+          "list": true
+        }
+      ],
+      "settings": [
+        "routes",
+        "nav",
+        "menu",
+        "frame",
+        "chunks",
+        "requireH1",
+        "nameLandmarks"
+      ],
+      "labels": [
+        {
+          "prop": "skip",
+          "dictionary": "site.header.skip",
+          "keys": []
+        },
+        {
+          "prop": "themeLabel",
+          "dictionary": "theme.toggle",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.marketingPricing.home.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.marketingPricing.home.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.marketingPricing.home.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.marketingPricing.plans.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.marketingPricing.plans.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.marketingPricing.plans.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.marketingPricing.usage.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.marketingPricing.usage.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.marketingPricing.usage.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.marketingPricing.compare.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.marketingPricing.compare.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.marketingPricing.compare.cta",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.marketingPricing.home.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.marketingPricing.plans.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.marketingPricing.usage.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.marketingPricing.compare.nav",
+          "keys": []
+        }
+      ],
+      "emptyState": true,
       "uses": [
         "block.compare",
         "block.credits",
@@ -6552,7 +8978,207 @@
       "id": "screen.theme-marketing-product",
       "surface": "xgen-screen",
       "source": "xgen/specs/screens/theme-marketing-product.json",
-      "status": "todo",
+      "status": "done",
+      "data": [
+        {
+          "prop": "FeatureAccordion.features",
+          "collection": "features",
+          "kind": "feature",
+          "record": "Feature",
+          "map": "feature",
+          "list": true
+        },
+        {
+          "prop": "BeforeAfter.points",
+          "collection": "beforeafter",
+          "kind": "point",
+          "record": "Contrast",
+          "map": "contrast",
+          "list": true
+        },
+        {
+          "prop": "BentoGrid.tiles",
+          "collection": "bento",
+          "kind": "tile",
+          "record": "Tile",
+          "map": "tile",
+          "list": true
+        },
+        {
+          "prop": "FeatureShowcase.features",
+          "collection": "values",
+          "kind": "value",
+          "record": "Feature",
+          "map": "value",
+          "list": true
+        },
+        {
+          "prop": "FeatureSplit.stats",
+          "collection": "stats",
+          "kind": "stat",
+          "record": "Stat",
+          "map": "stat",
+          "list": true
+        },
+        {
+          "prop": "HeroClassic.media.lines",
+          "collection": "terminal",
+          "kind": "line",
+          "record": "CodeLine",
+          "map": "line",
+          "list": true
+        },
+        {
+          "prop": "HeroClassic.topics",
+          "collection": "prompts",
+          "kind": "prompt",
+          "record": "Topic",
+          "map": "prompt",
+          "list": true
+        },
+        {
+          "prop": "HeroClassic.nav.links",
+          "collection": "navlinks",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true
+        },
+        {
+          "prop": "MegaMenu.groups",
+          "collection": "megagroups",
+          "kind": "menu_item",
+          "record": "MegaGroup",
+          "map": "menuGroup",
+          "list": true
+        },
+        {
+          "prop": "SitemapFooter.groups",
+          "collection": "sitemap",
+          "kind": "menu_item",
+          "record": "MegaGroup",
+          "map": "menuGroup",
+          "list": true
+        },
+        {
+          "prop": "StepsList.steps",
+          "collection": "steps",
+          "kind": "step",
+          "record": "Step",
+          "map": "step",
+          "list": true
+        },
+        {
+          "prop": "VideoGrid.quotes",
+          "collection": "testimonials",
+          "kind": "testimonial",
+          "record": "Quote",
+          "map": "testimonial",
+          "list": true
+        }
+      ],
+      "settings": [
+        "routes",
+        "nav",
+        "menu",
+        "frame",
+        "chunks",
+        "requireH1",
+        "nameLandmarks"
+      ],
+      "labels": [
+        {
+          "prop": "skip",
+          "dictionary": "site.header.skip",
+          "keys": []
+        },
+        {
+          "prop": "themeLabel",
+          "dictionary": "theme.toggle",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.marketingProduct.home.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.marketingProduct.home.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.marketingProduct.home.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.marketingProduct.tour.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.marketingProduct.tour.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.marketingProduct.tour.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.marketingProduct.capabilities.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.marketingProduct.capabilities.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.marketingProduct.capabilities.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.marketingProduct.navigation.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.marketingProduct.navigation.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.marketingProduct.navigation.cta",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.marketingProduct.home.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.marketingProduct.tour.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.marketingProduct.capabilities.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.marketingProduct.navigation.nav",
+          "keys": []
+        }
+      ],
+      "emptyState": true,
       "uses": [
         "block.accordion",
         "block.beforeafter",
@@ -6579,7 +9205,151 @@
       "id": "screen.theme-onboarding-flow",
       "surface": "xgen-screen",
       "source": "xgen/specs/screens/theme-onboarding-flow.json",
-      "status": "todo",
+      "status": "done",
+      "data": [
+        {
+          "prop": "Checklist.tasks",
+          "collection": "checklist",
+          "kind": "task",
+          "record": "Task",
+          "map": "task",
+          "list": true
+        },
+        {
+          "prop": "NavBar.links",
+          "collection": "navlinks",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true
+        },
+        {
+          "prop": "SitemapFooter.groups",
+          "collection": "sitemap",
+          "kind": "menu_item",
+          "record": "MegaGroup",
+          "map": "menuGroup",
+          "list": true
+        },
+        {
+          "prop": "Stepper.steps",
+          "collection": "steps",
+          "kind": "step",
+          "record": "Step",
+          "map": "step",
+          "list": true
+        },
+        {
+          "prop": "VideoModal.chapters",
+          "collection": "chapters",
+          "kind": "chapter",
+          "record": "Chapter",
+          "map": "chapter",
+          "list": true
+        }
+      ],
+      "settings": [
+        "routes",
+        "nav",
+        "menu",
+        "frame",
+        "chunks",
+        "requireH1",
+        "nameLandmarks"
+      ],
+      "labels": [
+        {
+          "prop": "skip",
+          "dictionary": "site.header.skip",
+          "keys": []
+        },
+        {
+          "prop": "themeLabel",
+          "dictionary": "theme.toggle",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.onboardingFlow.home.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.onboardingFlow.home.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.onboardingFlow.home.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.onboardingFlow.welcome.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.onboardingFlow.welcome.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.onboardingFlow.welcome.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.onboardingFlow.setup.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.onboardingFlow.setup.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.onboardingFlow.setup.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.onboardingFlow.tour.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.onboardingFlow.tour.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.onboardingFlow.tour.cta",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.onboardingFlow.home.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.onboardingFlow.welcome.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.onboardingFlow.setup.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.onboardingFlow.tour.nav",
+          "keys": []
+        }
+      ],
+      "emptyState": true,
       "uses": [
         "block.checklist",
         "block.empty",
@@ -6595,7 +9365,183 @@
       "id": "screen.theme-promo-campaign",
       "surface": "xgen-screen",
       "source": "xgen/specs/screens/theme-promo-campaign.json",
-      "status": "todo",
+      "status": "done",
+      "data": [
+        {
+          "prop": "FooterSplit.groups",
+          "collection": "sitemap",
+          "kind": "menu_item",
+          "record": "MegaGroup",
+          "map": "menuGroup",
+          "list": true
+        },
+        {
+          "prop": "FooterSplit.extras.stats",
+          "collection": "stats",
+          "kind": "stat",
+          "record": "Stat",
+          "map": "stat",
+          "list": true
+        },
+        {
+          "prop": "FooterSplit.extras.points",
+          "collection": "features",
+          "kind": "feature",
+          "record": "Feature",
+          "map": "feature",
+          "list": true
+        },
+        {
+          "prop": "FooterSplit.extras.contacts",
+          "collection": "contacts",
+          "kind": "contact",
+          "record": "Feature",
+          "map": "contact",
+          "list": true
+        },
+        {
+          "prop": "FooterSplit.extras.channels",
+          "collection": "community",
+          "kind": "channel",
+          "record": "Feature",
+          "map": "channel",
+          "list": true
+        },
+        {
+          "prop": "HeroClassic.media.lines",
+          "collection": "terminal",
+          "kind": "line",
+          "record": "CodeLine",
+          "map": "line",
+          "list": true
+        },
+        {
+          "prop": "HeroClassic.topics",
+          "collection": "prompts",
+          "kind": "prompt",
+          "record": "Topic",
+          "map": "prompt",
+          "list": true
+        },
+        {
+          "prop": "HeroClassic.nav.links",
+          "collection": "navlinks",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true
+        },
+        {
+          "prop": "LogoCloud.logos",
+          "collection": "logos",
+          "kind": "logo",
+          "record": "Logo",
+          "map": "logo",
+          "list": true
+        }
+      ],
+      "settings": [
+        "routes",
+        "nav",
+        "menu",
+        "frame",
+        "chunks",
+        "requireH1",
+        "nameLandmarks"
+      ],
+      "labels": [
+        {
+          "prop": "skip",
+          "dictionary": "site.header.skip",
+          "keys": []
+        },
+        {
+          "prop": "themeLabel",
+          "dictionary": "theme.toggle",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.promoCampaign.home.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.promoCampaign.home.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.promoCampaign.home.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.promoCampaign.launch.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.promoCampaign.launch.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.promoCampaign.launch.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.promoCampaign.offer.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.promoCampaign.offer.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.promoCampaign.offer.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.promoCampaign.notices.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.promoCampaign.notices.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.promoCampaign.notices.cta",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.promoCampaign.home.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.promoCampaign.launch.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.promoCampaign.offer.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.promoCampaign.notices.nav",
+          "keys": []
+        }
+      ],
+      "emptyState": true,
       "uses": [
         "block.announcement",
         "block.cookie",
@@ -6612,7 +9558,211 @@
       "id": "screen.theme-support-center",
       "surface": "xgen-screen",
       "source": "xgen/specs/screens/theme-support-center.json",
-      "status": "todo",
+      "status": "done",
+      "data": [
+        {
+          "prop": "SupportChannels.channels",
+          "collection": "channels",
+          "kind": "channel",
+          "record": "Feature",
+          "map": "channel",
+          "list": true
+        },
+        {
+          "prop": "FaqList.items",
+          "collection": "faq",
+          "kind": "faq",
+          "record": "Faq",
+          "map": "faq",
+          "list": true
+        },
+        {
+          "prop": "FaqList.filter.tabs",
+          "collection": "faqtabs",
+          "kind": "tab",
+          "record": "FaqTab",
+          "map": "faqtab",
+          "list": true
+        },
+        {
+          "prop": "MediaList.extras.stats",
+          "collection": "stats",
+          "kind": "stat",
+          "record": "Stat",
+          "map": "stat",
+          "list": true
+        },
+        {
+          "prop": "MediaList.extras.steps",
+          "collection": "steps",
+          "kind": "step",
+          "record": "Step",
+          "map": "step",
+          "list": true
+        },
+        {
+          "prop": "MediaList.extras.posts",
+          "collection": "posts",
+          "kind": "post",
+          "record": "Post",
+          "map": "post",
+          "list": true
+        },
+        {
+          "prop": "MediaList.extras.topics",
+          "collection": "categories",
+          "kind": "menu_item",
+          "record": "Category",
+          "map": "menuCategory",
+          "list": true
+        },
+        {
+          "prop": "MediaList.extras.reviews",
+          "collection": "reviews",
+          "kind": "review",
+          "record": "Review",
+          "map": "review",
+          "list": true
+        },
+        {
+          "prop": "NavBar.links",
+          "collection": "navlinks",
+          "kind": "menu_item",
+          "record": "NavLink",
+          "map": "menuItem",
+          "list": true
+        },
+        {
+          "prop": "SitemapFooter.groups",
+          "collection": "sitemap",
+          "kind": "menu_item",
+          "record": "MegaGroup",
+          "map": "menuGroup",
+          "list": true
+        }
+      ],
+      "settings": [
+        "routes",
+        "nav",
+        "menu",
+        "frame",
+        "chunks",
+        "requireH1",
+        "nameLandmarks"
+      ],
+      "labels": [
+        {
+          "prop": "skip",
+          "dictionary": "site.header.skip",
+          "keys": []
+        },
+        {
+          "prop": "themeLabel",
+          "dictionary": "theme.toggle",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.supportCenter.home.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.supportCenter.home.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.supportCenter.home.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.supportCenter.faq.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.supportCenter.faq.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.supportCenter.faq.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.supportCenter.contact.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.supportCenter.contact.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.supportCenter.contact.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.supportCenter.missing.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.supportCenter.missing.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.supportCenter.missing.cta",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "pages.supportCenter.moved.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "pages.supportCenter.moved.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "pages.supportCenter.moved.cta",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.supportCenter.home.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.supportCenter.faq.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.supportCenter.contact.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.supportCenter.missing.nav",
+          "keys": []
+        },
+        {
+          "prop": "titleKey",
+          "dictionary": "pages.supportCenter.moved.nav",
+          "keys": []
+        }
+      ],
+      "emptyState": true,
       "uses": [
         "block.channels",
         "block.contact",

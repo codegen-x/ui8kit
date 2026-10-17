@@ -89,7 +89,7 @@
     "src/nav/ThemeSupportCenterScreen.ts": "01310ebbcfcadf71f46906d627ba6dc67b9762f55aa01190d380b49b27a236df",
     "src/runtime/codex.ts": "500af036cb6de095a646f28f821cd34cb28486cd180a0bcd7c3d1fa4cf4aa445",
     "src/runtime/core.ts": "f08950725cdde4df4a403c0b9a0b6e6b4aa4922d9675f3e0445b90ca8b25b713",
-    "src/runtime/fields.ts": "76bfcfd15afb4ee373b1d6d6601d2c6554d13626a820ea3949a7ac24552479a6",
+    "src/runtime/fields.ts": "cf6d056fdfc4bee8c761f3beae227833ed37599ba4ab35a0dfa1a1e618f488c4",
     "src/runtime/inspect.ts": "81f3b5ee49bca61492565cc4bd0ec3fad464703b52d001d2530ed6d0a42ef9f9",
     "src/runtime/skin-fonts.ts": "5b7e3c8fa9c98740265c91f0c143800dcff74ec4893bb3ca0e867894867015e2",
     "src/runtime/skins.ts": "c4a3bb9190a0c9efa755719514c9405de1277baa4385943738256bb5db8fffaf",

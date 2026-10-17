@@ -109,16 +109,41 @@ function kitBlock(file: string, src: BlockSources, orgs: ReturnType<typeof organ
 
 const rel = (src: BlockSources, f: string): string => relative(src.workspace, f).split("\\").join("/");
 
-function screen(file: string, src: BlockSources): BlockEntry {
+function screen(file: string, src: BlockSources, dict: Obj, kitBySpec: Map<string, BlockEntry>): BlockEntry {
   const s = readJson(file);
   const uses = new Set<string>();
-  const walk = (v: Json | undefined): void => {
-    if (Array.isArray(v)) v.forEach(walk);
-    else if (isObj(v)) { if (typeof v.block === "string") uses.add(`block.${v.block}`); Object.values(v).forEach(walk); }
+  const labels: Labels[] = [];
+  const label = (prop: string, dictionary: string) => {
+    const value = at(dict, dictionary);
+    if (value === undefined || labels.some((l) => l.dictionary === dictionary)) return;
+    labels.push({ prop, dictionary, keys: isObj(value) ? Object.keys(value).filter((k) => typeof value[k] === "string").sort() : [] });
   };
-  walk(s);
+  // blocks composed (`block`), dictionary refs (`{ "$": "ui.x" }`) and dictionary keys of menus and columns (`titleKey`, `label`)
+  const walk = (v: Json | undefined, key: string): void => {
+    if (Array.isArray(v)) v.forEach((x) => walk(x, key));
+    else if (isObj(v)) {
+      if (typeof v.block === "string") uses.add(`block.${v.block}`);
+      if (typeof v.$ === "string" && v.$.startsWith("ui.")) label(key, v.$.slice(3));
+      for (const [k, x] of Object.entries(v)) {
+        if ((k === "titleKey" || k === "label") && typeof x === "string" && typeof at(dict, x) === "string") label(k, x);
+        else walk(x, k);
+      }
+    }
+  };
+  walk(s, "");
   const collections = [isObj(s.source) ? s.source.collection : undefined, ...((s.sources ?? []) as Obj[]).map((x) => x.collection)].filter((c): c is string => typeof c === "string");
-  return { id: s.id as string, surface: "xgen-screen", source: rel(src, file), status: "todo", uses: [...uses].sort(), ...(collections.length ? { collections: [...new Set(collections)].sort() } : {}) };
+  // the data: a list screen's own source, and the bindings of the blocks it composes (one per collection)
+  const data: Binding[] = [];
+  if (isObj(s.source)) {
+    const map = mapOf(s.source.fields, String(s.source.kind ?? ""));
+    data.push({ prop: "source", collection: String(s.source.collection), kind: String(s.source.kind), record: String(s.source.record ?? ""), ...(map ? { map } : {}), list: true });
+  }
+  for (const u of [...uses].sort()) for (const d of kitBySpec.get(u)?.data ?? [])
+    if (!data.some((x) => x.collection === d.collection && x.map === d.map)) data.push({ ...d, prop: `${kitBySpec.get(u)!.id}.${d.prop}` });
+  // the route table, the URL state and the frame switches are settings of the app, not Codex data
+  const settings = ["routes", "state", "nav", "menu", "frame", "chunks", "requireH1", "nameLandmarks"].filter((k) => s[k] !== undefined);
+  return { id: s.id as string, surface: "xgen-screen", source: rel(src, file), status: "todo", data, settings, labels, emptyState: false, uses: [...uses].sort(),
+    ...(collections.length ? { collections: [...new Set(collections)].sort() } : {}) };
 }
 
 const PARTS = new Set(["header", "footer"]);
@@ -200,9 +225,12 @@ export function buildBlocks(src = blockSources(), previous: BlocksDoc | undefine
   const prevById = new Map((previous?.blocks ?? []).map((b) => [b.id, b]));
   const emptyOk = (id: string) => { const b = kitById.get(id); const p = prevById.get(id); return !b?.data?.length || !!b.emptyState || p?.emptyMode === "omit"; };
   for (const t of templates) t.emptyState = (t.uses ?? []).every(emptyOk);
+  const kitBySpec = new Map(kitBlocks.map((b) => [b.spec!, b]));
+  const screens = jsonFiles(paths.specs("screens")).map((f) => screen(f, src, dict, kitBySpec));
+  for (const t of screens) t.emptyState = (t.uses ?? []).every((u) => emptyOk(kitBySpec.get(u)?.id ?? ""));
   const fresh = [
     ...kitBlocks,
-    ...jsonFiles(paths.specs("screens")).map((f) => screen(f, src)),
+    ...screens,
     ...templates.filter((t) => t.surface === "magazine-template"),
     ...templates.filter((t) => t.surface === "magazine-part"),
     ...svelte(src.taste).map((f) => tasteScreen(f, src, kit)),
