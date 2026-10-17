@@ -19,79 +19,97 @@
   "events": [],
   "view": [
     {
-      "use": "Stack",
-      "props": {
-        "Gap": "4",
-        "Align": "stretch"
+      "when": {
+        "op": "gt",
+        "args": [
+          {
+            "op": "len",
+            "args": [
+              {
+                "$": "extras.contacts"
+              }
+            ]
+          },
+          0
+        ]
       },
-      "children": [
+      "then": [
         {
-          "each": {
-            "$": "extras.contacts"
+          "use": "Stack",
+          "props": {
+            "Gap": "4",
+            "Align": "stretch"
           },
-          "as": "c",
-          "key": {
-            "$": "c.id"
-          },
-          "do": [
+          "children": [
             {
-              "use": "Group",
-              "props": {
-                "Gap": "4",
-                "Align": "center"
+              "each": {
+                "$": "extras.contacts"
               },
-              "attrs": {
-                "data-testid": "footer-contact"
+              "as": "c",
+              "key": {
+                "$": "c.id"
               },
-              "children": [
+              "do": [
                 {
-                  "use": "Inline",
+                  "use": "Group",
                   "props": {
-                    "Class": "flex size-10 shrink-0 items-center justify-center rounded bg-muted text-foreground"
+                    "Gap": "4",
+                    "Align": "center"
+                  },
+                  "attrs": {
+                    "data-testid": "footer-contact"
                   },
                   "children": [
                     {
-                      "use": "LucideIcon",
+                      "use": "Inline",
                       "props": {
-                        "Name": {
-                          "$": "c.icon"
-                        },
-                        "Size": 20
-                      }
-                    }
-                  ]
-                },
-                {
-                  "use": "Stack",
-                  "props": {
-                    "Gap": "0"
-                  },
-                  "children": [
-                    {
-                      "use": "Text",
-                      "props": {
-                        "Size": "sm",
-                        "Weight": "semibold"
+                        "Class": "flex size-10 shrink-0 items-center justify-center rounded bg-muted text-foreground"
                       },
                       "children": [
                         {
-                          "text": {
-                            "$": "c.title"
+                          "use": "LucideIcon",
+                          "props": {
+                            "Name": {
+                              "$": "c.icon"
+                            },
+                            "Size": 20
                           }
                         }
                       ]
                     },
                     {
-                      "use": "Text",
+                      "use": "Stack",
                       "props": {
-                        "Size": "sm",
-                        "Class": "text-muted-foreground"
+                        "Gap": "0"
                       },
                       "children": [
                         {
-                          "text": {
-                            "$": "c.text"
-                          }
+                          "use": "Text",
+                          "props": {
+                            "Size": "sm",
+                            "Weight": "semibold"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "c.title"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "use": "Text",
+                          "props": {
+                            "Size": "sm",
+                            "Class": "text-muted-foreground"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "c.text"
+                              }
+                            }
+                          ]
                         }
                       ]
                     }

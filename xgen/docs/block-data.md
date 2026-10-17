@@ -172,7 +172,7 @@ replace the string arrays `links`).
 - Magazine: no routes, so no links; the template stage has 0 `<a>` except the in-page table of contents of the docs template
   (was 158: brand, sitemap groups, side navs, categories, nav links).
 
-## 7a. Kit blocks in groups (steps 7-12)
+## 7a. Kit blocks in groups (steps 7-13)
 
 - Every fixture kind has a central map (`KIT_FIELDS` in fields.ts, part of `CODEX_FIELDS`); `codex:blocks` picks the map named
   after the binding's kind when two maps are equal (feature/value/perk/... share one shape).
@@ -189,6 +189,8 @@ replace the string arrays `links`).
 - Step 11: PostShowcase, QuoteSplit draw EmptyState; PostGrid (12 props already: omit), MediaList (extras), PostSplit (tags/outline) use omit.
 - Step 12: CtaProof, HeroSplit, HeroClassic use omit: each proof/extra/media shape draws only when its list has records; HeroHead
   leaves its nav landmark out without links; topics and terminal lines check the length, not only presence (an empty array is truthy in JS).
+- Step 13 (omit): FooterSplit (the guards sit in its parts, the block stays under 150 lines), DashboardShell (ShellTopbar/Sidebar/
+  Footer leave a landmark out without links), SignupWizard (no steps: no wizard), PricingCard (one record; the empty list is PricingTable's job).
 ## 8. Open questions (decided for now, review later)
 
 1. Docs template table of contents: in-page anchors (`#tp-docs-body-section-*`) stay links; they address the page itself, not an app route.

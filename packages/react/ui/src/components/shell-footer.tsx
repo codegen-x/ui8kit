@@ -35,22 +35,24 @@ export function ShellFooter({ nav, place = "full", landmarkLabel }: ShellFooterP
       <Text size="xs" className="text-muted-foreground">
         {nav.copyright}
       </Text>
-      <NavBlock
-        label={
-          landmarkLabel ? uniqLabel(tpl("{0}, {1}", nav.footerLabel, landmarkLabel))
-          : nav.footerLabel
-        }
-      >
-        <List className="m-0 flex list-none items-center gap-4 p-0">
-          {(nav.footer ?? []).map((f) => (
-            <ListItem key={f.id}>
-              <MenuEntry href={f.href} className="text-xs text-muted-foreground" variant="muted" size="sm">
-                {f.name}
-              </MenuEntry>
-            </ListItem>
-          ))}
-        </List>
-      </NavBlock>
+      {((nav.footer?.length ?? 0) > 0) ? (
+        <NavBlock
+          label={
+            landmarkLabel ? uniqLabel(tpl("{0}, {1}", nav.footerLabel, landmarkLabel))
+            : nav.footerLabel
+          }
+        >
+          <List className="m-0 flex list-none items-center gap-4 p-0">
+            {(nav.footer ?? []).map((f) => (
+              <ListItem key={f.id}>
+                <MenuEntry href={f.href} className="text-xs text-muted-foreground" variant="muted" size="sm">
+                  {f.name}
+                </MenuEntry>
+              </ListItem>
+            ))}
+          </List>
+        </NavBlock>
+      ) : null}
     </Block>
   );
 }

@@ -66,33 +66,35 @@
         </Text>
       </Group>
     {/if}
-    <NavBlock
-      label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", nav.label, landmarkLabel)) : nav.label)}
-      class="flex-1"
-    >
-      <List class="m-0 flex list-none flex-col gap-2 p-0" data-testid="items">
-        {#each nav.links as l (l.id)}
-          <ListItem>
-            <MenuEntry
-              href={l.href}
-              class={cn(
-                "flex items-center gap-4 rounded py-2 text-sm",
-                (named ? "px-4" : "justify-center px-2"),
-                ((l.id === nav.current) ? "bg-muted font-medium" : "")
-              )}
-              current={(l.id === nav.current)}
-              size="sm"
-              testid="item"
-            >
-              <LucideIcon name={l.icon} size={16} />
-              <Inline class={(named ? "" : "sr-only")}>
-                {l.name}
-              </Inline>
-            </MenuEntry>
-          </ListItem>
-        {/each}
-      </List>
-    </NavBlock>
+    {#if ((nav.links?.length ?? 0) > 0)}
+      <NavBlock
+        label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", nav.label, landmarkLabel)) : nav.label)}
+        class="flex-1"
+      >
+        <List class="m-0 flex list-none flex-col gap-2 p-0" data-testid="items">
+          {#each nav.links as l (l.id)}
+            <ListItem>
+              <MenuEntry
+                href={l.href}
+                class={cn(
+                  "flex items-center gap-4 rounded py-2 text-sm",
+                  (named ? "px-4" : "justify-center px-2"),
+                  ((l.id === nav.current) ? "bg-muted font-medium" : "")
+                )}
+                current={(l.id === nav.current)}
+                size="sm"
+                testid="item"
+              >
+                <LucideIcon name={l.icon} size={16} />
+                <Inline class={(named ? "" : "sr-only")}>
+                  {l.name}
+                </Inline>
+              </MenuEntry>
+            </ListItem>
+          {/each}
+        </List>
+      </NavBlock>
+    {/if}
     {#if ((mode as string) === "collapsed")}
       <ButtonPlain
         type="button"
@@ -106,7 +108,7 @@
       </ButtonPlain>
     {/if}
   </Box>
-  {#if ((mode as string) === "twolevel")}
+  {#if (((mode as string) === "twolevel") && ((nav.sub?.length ?? 0) > 0))}
     <Box
       class={cn(
         "flex w-56 flex-col gap-4 px-4 py-6",

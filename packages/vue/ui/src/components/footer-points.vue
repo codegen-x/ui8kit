@@ -20,7 +20,7 @@ const { extras, title } = defineProps<FooterPointsProps>();
 </script>
 
 <template>
-  <Stack gap="4" align="start">
+  <Stack v-if="((extras.points?.length ?? 0) > 0)" gap="4" align="start">
     <Text size="sm" weight="semibold">
       {{ title }}
     </Text>

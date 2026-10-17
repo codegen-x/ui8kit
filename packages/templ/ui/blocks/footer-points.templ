@@ -21,16 +21,18 @@ type FooterPointsProps struct {
 templ FooterPoints(p FooterPointsProps) {
 	{{ vExtras := p.Extras }}
 	{{ vTitle := p.Title }}
-	@stack.Stack(stack.StackProps{Gap: "4", Align: "start"}) {
-		@text.Text(text.TextProps{Size: "sm", Weight: "semibold"}) {
-			{ uiutils.Text(vTitle) }
-		}
-		for vI, vP := range uiutils.L(uiutils.Get(vExtras, "points")) {
-			if uiutils.Lt(float64(vI), float64(4)) {
-				@group.Group(group.GroupProps{Gap: "2", Align: "center", Attrs: uiutils.Attrs("data-testid", "footer-point")}) {
-					@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Get(vP, "icon")), Size: 16})
-					@text.Text(text.TextProps{Size: "sm"}) {
-						{ uiutils.Text(uiutils.Get(vP, "title")) }
+	if uiutils.Gt(uiutils.Len(uiutils.Get(vExtras, "points")), float64(0)) {
+		@stack.Stack(stack.StackProps{Gap: "4", Align: "start"}) {
+			@text.Text(text.TextProps{Size: "sm", Weight: "semibold"}) {
+				{ uiutils.Text(vTitle) }
+			}
+			for vI, vP := range uiutils.L(uiutils.Get(vExtras, "points")) {
+				if uiutils.Lt(float64(vI), float64(4)) {
+					@group.Group(group.GroupProps{Gap: "2", Align: "center", Attrs: uiutils.Attrs("data-testid", "footer-point")}) {
+						@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Get(vP, "icon")), Size: 16})
+						@text.Text(text.TextProps{Size: "sm"}) {
+							{ uiutils.Text(uiutils.Get(vP, "title")) }
+						}
 					}
 				}
 			}

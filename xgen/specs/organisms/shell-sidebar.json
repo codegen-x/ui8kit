@@ -189,155 +189,173 @@
               ]
             },
             {
-              "organism": "NavBlock",
-              "props": {
-                "label": {
-                  "op": "cond",
-                  "args": [
-                    {
-                      "$": "landmarkLabel"
-                    },
-                    {
-                      "op": "uniq",
+              "when": {
+                "op": "gt",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "nav.links"
+                      }
+                    ]
+                  },
+                  0
+                ]
+              },
+              "then": [
+                {
+                  "organism": "NavBlock",
+                  "props": {
+                    "label": {
+                      "op": "cond",
                       "args": [
                         {
-                          "op": "tpl",
+                          "$": "landmarkLabel"
+                        },
+                        {
+                          "op": "uniq",
                           "args": [
-                            "{0}, {1}",
                             {
-                              "$": "nav.label"
-                            },
-                            {
-                              "$": "landmarkLabel"
+                              "op": "tpl",
+                              "args": [
+                                "{0}, {1}",
+                                {
+                                  "$": "nav.label"
+                                },
+                                {
+                                  "$": "landmarkLabel"
+                                }
+                              ]
                             }
                           ]
+                        },
+                        {
+                          "$": "nav.label"
                         }
                       ]
                     },
-                    {
-                      "$": "nav.label"
-                    }
-                  ]
-                },
-                "className": "flex-1"
-              },
-              "slots": {
-                "children": {
-                  "args": [],
-                  "do": [
-                    {
-                      "use": "List",
-                      "props": {
-                        "Class": "m-0 flex list-none flex-col gap-2 p-0"
-                      },
-                      "attrs": {
-                        "data-testid": "items"
-                      },
-                      "children": [
+                    "className": "flex-1"
+                  },
+                  "slots": {
+                    "children": {
+                      "args": [],
+                      "do": [
                         {
-                          "each": {
-                            "$": "nav.links"
+                          "use": "List",
+                          "props": {
+                            "Class": "m-0 flex list-none flex-col gap-2 p-0"
                           },
-                          "as": "l",
-                          "key": {
-                            "$": "l.id"
+                          "attrs": {
+                            "data-testid": "items"
                           },
-                          "do": [
+                          "children": [
                             {
-                              "use": "ListItem",
-                              "children": [
+                              "each": {
+                                "$": "nav.links"
+                              },
+                              "as": "l",
+                              "key": {
+                                "$": "l.id"
+                              },
+                              "do": [
                                 {
-                                  "organism": "MenuEntry",
-                                  "props": {
-                                    "href": {
-                                      "$": "l.href"
-                                    },
-                                    "className": {
-                                      "op": "cn",
-                                      "args": [
-                                        "flex items-center gap-4 rounded py-2 text-sm",
-                                        {
-                                          "op": "cond",
+                                  "use": "ListItem",
+                                  "children": [
+                                    {
+                                      "organism": "MenuEntry",
+                                      "props": {
+                                        "href": {
+                                          "$": "l.href"
+                                        },
+                                        "className": {
+                                          "op": "cn",
                                           "args": [
+                                            "flex items-center gap-4 rounded py-2 text-sm",
                                             {
-                                              "$": "named"
-                                            },
-                                            "px-4",
-                                            "justify-center px-2"
-                                          ]
-                                        },
-                                        {
-                                          "op": "cond",
-                                          "args": [
-                                            {
-                                              "op": "eq",
-                                              "args": [
-                                                {
-                                                  "$": "l.id"
-                                                },
-                                                {
-                                                  "$": "nav.current"
-                                                }
-                                              ]
-                                            },
-                                            "bg-muted font-medium",
-                                            ""
-                                          ]
-                                        }
-                                      ]
-                                    },
-                                    "current": {
-                                      "op": "eq",
-                                      "args": [
-                                        {
-                                          "$": "l.id"
-                                        },
-                                        {
-                                          "$": "nav.current"
-                                        }
-                                      ]
-                                    },
-                                    "size": "sm",
-                                    "testid": "item"
-                                  },
-                                  "slots": {
-                                    "children": {
-                                      "args": [],
-                                      "do": [
-                                        {
-                                          "use": "LucideIcon",
-                                          "props": {
-                                            "Name": {
-                                              "$": "l.icon"
-                                            },
-                                            "Size": 16
-                                          }
-                                        },
-                                        {
-                                          "use": "Inline",
-                                          "props": {
-                                            "Class": {
                                               "op": "cond",
                                               "args": [
                                                 {
                                                   "$": "named"
                                                 },
-                                                "",
-                                                "sr-only"
+                                                "px-4",
+                                                "justify-center px-2"
+                                              ]
+                                            },
+                                            {
+                                              "op": "cond",
+                                              "args": [
+                                                {
+                                                  "op": "eq",
+                                                  "args": [
+                                                    {
+                                                      "$": "l.id"
+                                                    },
+                                                    {
+                                                      "$": "nav.current"
+                                                    }
+                                                  ]
+                                                },
+                                                "bg-muted font-medium",
+                                                ""
                                               ]
                                             }
-                                          },
-                                          "children": [
+                                          ]
+                                        },
+                                        "current": {
+                                          "op": "eq",
+                                          "args": [
                                             {
-                                              "text": {
-                                                "$": "l.name"
+                                              "$": "l.id"
+                                            },
+                                            {
+                                              "$": "nav.current"
+                                            }
+                                          ]
+                                        },
+                                        "size": "sm",
+                                        "testid": "item"
+                                      },
+                                      "slots": {
+                                        "children": {
+                                          "args": [],
+                                          "do": [
+                                            {
+                                              "use": "LucideIcon",
+                                              "props": {
+                                                "Name": {
+                                                  "$": "l.icon"
+                                                },
+                                                "Size": 16
                                               }
+                                            },
+                                            {
+                                              "use": "Inline",
+                                              "props": {
+                                                "Class": {
+                                                  "op": "cond",
+                                                  "args": [
+                                                    {
+                                                      "$": "named"
+                                                    },
+                                                    "",
+                                                    "sr-only"
+                                                  ]
+                                                }
+                                              },
+                                              "children": [
+                                                {
+                                                  "text": {
+                                                    "$": "l.name"
+                                                  }
+                                                }
+                                              ]
                                             }
                                           ]
                                         }
-                                      ]
+                                      }
                                     }
-                                  }
+                                  ]
                                 }
                               ]
                             }
@@ -345,9 +363,9 @@
                         }
                       ]
                     }
-                  ]
+                  }
                 }
-              }
+              ]
             },
             {
               "when": {
@@ -410,12 +428,31 @@
         },
         {
           "when": {
-            "op": "eq",
+            "op": "and",
             "args": [
               {
-                "$": "mode"
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "mode"
+                  },
+                  "twolevel"
+                ]
               },
-              "twolevel"
+              {
+                "op": "gt",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "nav.sub"
+                      }
+                    ]
+                  },
+                  0
+                ]
+              }
             ]
           },
           "then": [

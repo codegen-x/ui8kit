@@ -20,7 +20,7 @@ const { extras } = defineProps<FooterChannelsProps>();
 </script>
 
 <template>
-  <Box class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+  <Box v-if="((extras.channels?.length ?? 0) > 0)" class="grid grid-cols-1 gap-4 sm:grid-cols-3">
     <template v-for="(c, i) in extras.channels" :key="c.id">
       <Stack v-if="(i < 3)"
         gap="2"

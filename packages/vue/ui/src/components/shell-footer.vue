@@ -40,7 +40,7 @@ const { nav, place = "full", landmarkLabel } = defineProps<ShellFooterProps>();
     <Text size="xs" class="text-muted-foreground">
       {{ nav.copyright }}
     </Text>
-    <NavBlock
+    <NavBlock v-if="((nav.footer?.length ?? 0) > 0)"
       :label="
         landmarkLabel ? uniqLabel(tpl('{0}, {1}', nav.footerLabel, landmarkLabel))
         : nav.footerLabel

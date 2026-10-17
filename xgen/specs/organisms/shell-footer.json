@@ -82,81 +82,99 @@
           ]
         },
         {
-          "organism": "NavBlock",
-          "props": {
-            "label": {
-              "op": "cond",
-              "args": [
-                {
-                  "$": "landmarkLabel"
-                },
-                {
-                  "op": "uniq",
+          "when": {
+            "op": "gt",
+            "args": [
+              {
+                "op": "len",
+                "args": [
+                  {
+                    "$": "nav.footer"
+                  }
+                ]
+              },
+              0
+            ]
+          },
+          "then": [
+            {
+              "organism": "NavBlock",
+              "props": {
+                "label": {
+                  "op": "cond",
                   "args": [
                     {
-                      "op": "tpl",
+                      "$": "landmarkLabel"
+                    },
+                    {
+                      "op": "uniq",
                       "args": [
-                        "{0}, {1}",
                         {
-                          "$": "nav.footerLabel"
-                        },
-                        {
-                          "$": "landmarkLabel"
+                          "op": "tpl",
+                          "args": [
+                            "{0}, {1}",
+                            {
+                              "$": "nav.footerLabel"
+                            },
+                            {
+                              "$": "landmarkLabel"
+                            }
+                          ]
                         }
                       ]
+                    },
+                    {
+                      "$": "nav.footerLabel"
                     }
                   ]
-                },
-                {
-                  "$": "nav.footerLabel"
                 }
-              ]
-            }
-          },
-          "slots": {
-            "children": {
-              "args": [],
-              "do": [
-                {
-                  "use": "List",
-                  "props": {
-                    "Class": "m-0 flex list-none items-center gap-4 p-0"
-                  },
-                  "children": [
+              },
+              "slots": {
+                "children": {
+                  "args": [],
+                  "do": [
                     {
-                      "each": {
-                        "$": "nav.footer"
+                      "use": "List",
+                      "props": {
+                        "Class": "m-0 flex list-none items-center gap-4 p-0"
                       },
-                      "as": "f",
-                      "key": {
-                        "$": "f.id"
-                      },
-                      "do": [
+                      "children": [
                         {
-                          "use": "ListItem",
-                          "children": [
+                          "each": {
+                            "$": "nav.footer"
+                          },
+                          "as": "f",
+                          "key": {
+                            "$": "f.id"
+                          },
+                          "do": [
                             {
-                              "organism": "MenuEntry",
-                              "props": {
-                                "href": {
-                                  "$": "f.href"
-                                },
-                                "className": "text-xs text-muted-foreground",
-                                "variant": "muted",
-                                "size": "sm"
-                              },
-                              "slots": {
-                                "children": {
-                                  "args": [],
-                                  "do": [
-                                    {
-                                      "text": {
-                                        "$": "f.name"
-                                      }
+                              "use": "ListItem",
+                              "children": [
+                                {
+                                  "organism": "MenuEntry",
+                                  "props": {
+                                    "href": {
+                                      "$": "f.href"
+                                    },
+                                    "className": "text-xs text-muted-foreground",
+                                    "variant": "muted",
+                                    "size": "sm"
+                                  },
+                                  "slots": {
+                                    "children": {
+                                      "args": [],
+                                      "do": [
+                                        {
+                                          "text": {
+                                            "$": "f.name"
+                                          }
+                                        }
+                                      ]
                                     }
-                                  ]
+                                  }
                                 }
-                              }
+                              ]
                             }
                           ]
                         }
@@ -164,9 +182,9 @@
                     }
                   ]
                 }
-              ]
+              }
             }
-          }
+          ]
         }
       ]
     }

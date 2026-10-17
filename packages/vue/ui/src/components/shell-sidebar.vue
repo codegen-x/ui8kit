@@ -64,7 +64,7 @@ const named = computed(() => (mode as string) === "wide");
           {{ nav.brand }}
         </Text>
       </Group>
-      <NavBlock
+      <NavBlock v-if="((nav.links?.length ?? 0) > 0)"
         :label="(landmarkLabel ? uniqLabel(tpl('{0}, {1}', nav.label, landmarkLabel)) : nav.label)"
         class="flex-1"
       >
@@ -100,7 +100,7 @@ const named = computed(() => (mode as string) === "wide");
         <LucideIcon name="panel-left" :size="20" />
       </ButtonPlain>
     </Box>
-    <Box v-if="((mode as string) === 'twolevel')"
+    <Box v-if="(((mode as string) === 'twolevel') && ((nav.sub?.length ?? 0) > 0))"
       :class="cn(
         'flex w-56 flex-col gap-4 px-4 py-6',
         (((side as string) === 'end') ? 'border-r border-border' : 'border-l border-border')

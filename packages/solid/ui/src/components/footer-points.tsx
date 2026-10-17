@@ -15,22 +15,26 @@ export type FooterPointsProps = {
 
 export function FooterPoints({ extras, title }: FooterPointsProps) {
   return (
-    <Stack gap="4" align="start">
-      <Text size="sm" weight="semibold">
-        {title}
-      </Text>
-      <For each={extras.points ?? []}>{(p, iOf) => { const i = iOf(); return (
-        <>
-          {(i < 4) ? (
-            <Group gap="2" align="center" data-testid="footer-point">
-              <LucideIcon name={p.icon} size={16} />
-              <Text size="sm">
-                {p.title}
-              </Text>
-            </Group>
-          ) : null}
-        </>
-      ); }}</For>
-    </Stack>
+    <>
+      {((extras.points?.length ?? 0) > 0) ? (
+        <Stack gap="4" align="start">
+          <Text size="sm" weight="semibold">
+            {title}
+          </Text>
+          <For each={extras.points ?? []}>{(p, iOf) => { const i = iOf(); return (
+            <>
+              {(i < 4) ? (
+                <Group gap="2" align="center" data-testid="footer-point">
+                  <LucideIcon name={p.icon} size={16} />
+                  <Text size="sm">
+                    {p.title}
+                  </Text>
+                </Group>
+              ) : null}
+            </>
+          ); }}</For>
+        </Stack>
+      ) : null}
+    </>
   );
 }

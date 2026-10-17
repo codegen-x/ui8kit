@@ -53,7 +53,7 @@ const {
         {{ nav.brand }}
       </Text>
     </Group>
-    <NavBlock v-if="((links as string) === 'show')"
+    <NavBlock v-if="(((links as string) === 'show') && ((nav.links?.length ?? 0) > 0))"
       :label="(landmarkLabel ? uniqLabel(tpl('{0}, {1}', nav.label, landmarkLabel)) : nav.label)"
       class="hidden lg:block"
     >

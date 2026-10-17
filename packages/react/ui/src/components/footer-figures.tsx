@@ -13,21 +13,25 @@ export type FooterFiguresProps = {
 
 export function FooterFigures({ extras }: FooterFiguresProps) {
   return (
-    <Group gap="8" className="flex-wrap">
-      {(extras.stats ?? []).map((s, i) => (
-        <Fragment key={s.id}>
-          {(i < 3) ? (
-            <Stack gap="0" data-testid="footer-stat">
-              <Text size="xl" weight="bold">
-                {s.value}
-              </Text>
-              <Text size="xs" className="text-muted-foreground">
-                {s.label}
-              </Text>
-            </Stack>
-          ) : null}
-        </Fragment>
-      ))}
-    </Group>
+    <>
+      {((extras.stats?.length ?? 0) > 0) ? (
+        <Group gap="8" className="flex-wrap">
+          {(extras.stats ?? []).map((s, i) => (
+            <Fragment key={s.id}>
+              {(i < 3) ? (
+                <Stack gap="0" data-testid="footer-stat">
+                  <Text size="xl" weight="bold">
+                    {s.value}
+                  </Text>
+                  <Text size="xs" className="text-muted-foreground">
+                    {s.label}
+                  </Text>
+                </Stack>
+              ) : null}
+            </Fragment>
+          ))}
+        </Group>
+      ) : null}
+    </>
   );
 }

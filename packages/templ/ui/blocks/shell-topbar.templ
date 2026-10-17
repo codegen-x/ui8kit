@@ -39,7 +39,7 @@ templ ShellTopbar(p ShellTopbarProps) {
 				}
 			}
 		}
-		if uiutils.Eq(vLinks, "show") {
+		if uiutils.T(uiutils.And(uiutils.Eq(vLinks, "show"), uiutils.Gt(uiutils.Len(uiutils.Get(vNav, "links")), float64(0)))) {
 			@NavBlock(NavBlockProps{Label: uiutils.Cond(uiutils.T(vLandmarkLabel), uiutils.Uniq(uiutils.Tpl("{0}, {1}", uiutils.Get(vNav, "label"), vLandmarkLabel)), uiutils.Get(vNav, "label")), Class: uiutils.Cnv("hidden lg:block")}) {
 				@list.List(list.ListProps{Class: "m-0 flex list-none items-center gap-2 p-0"}) {
 					for _, vL := range uiutils.L(uiutils.Get(vNav, "links")) {

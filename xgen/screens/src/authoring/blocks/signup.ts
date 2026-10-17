@@ -3,7 +3,7 @@ import { cn, cond, eachAt, eq, ge, len, lt, ref, str, sub, text, tpl, use, when,
 import type { OrganismSpec } from "../../ir";
 import { fields, groupFields, rec, requireFields, spec, ts } from "../kit";
 import { wide } from "../components/frames";
-import { id, tsOf } from "../props";
+import { id, ifAny, tsOf } from "../props";
 import { inputField } from "../forms";
 import { heading, muted } from "../ux";
 
@@ -58,7 +58,8 @@ const signupWizard = spec(`${O}signup-wizard`, "SignupWizard", "A sign-up in ste
     { name: "layout", type: tsOf("card", "plain"), default: "card" },
   ],
   events: [{ name: "go", args: [{ name: "step", type: "number" }], docs: "back or next was pressed" }],
-  view: [
+  // emptyMode omit: a wizard with no steps is left out
+  view: [ifAny("steps", [
     use("Block", { props: { Tag: "section", Class: cn("mx-auto flex w-full max-w-lg flex-col gap-6 px-4 py-8", cond(eq(ref("layout"), "card"), "rounded bg-card p-6 inset-ring inset-ring-border", "")) }, attrs: { "aria-labelledby": tpl("{0}-title", ref("id")), "data-testid": "wizard", "data-current": str(ref("current")) } },
       use("Title", { props: { As: ref("level"), Size: "2xl", Weight: "bold" }, attrs: { id: tpl("{0}-title", ref("id")) } }, text(ref("title"))),
       use("Text", { props: { Size: "sm", Class: "text-muted-foreground" }, attrs: { "data-testid": "step-of" } }, text(tpl(ref("labels.stepOf"), ref("current"), len(ref("steps"))))),
@@ -72,7 +73,7 @@ const signupWizard = spec(`${O}signup-wizard`, "SignupWizard", "A sign-up in ste
       use("Group", { props: { Gap: "2", Justify: "between" } },
         use("Button", { props: { Variant: "outline", Size: "default", Type: "button", Disabled: lt(ref("current"), 2) }, on: { click: { call: "emit.go", args: [sub(ref("current"), 1)] } }, attrs: { "data-testid": "wizard-back" } }, text(ref("labels.back"))),
         use("Button", { props: { Variant: "default", Size: "default", Type: "button" }, on: { click: { call: "emit.go", args: [add(ref("current"), 1)] } }, attrs: { "data-testid": "wizard-next" } }, text(cond(ge(ref("current"), len(ref("steps"))), ref("labels.finish"), ref("labels.next")))))),
-  ],
+  ])],
 });
 
 export const signupOrganisms: OrganismSpec[] = [authLayout, signupWizard];

@@ -126,213 +126,257 @@
   ],
   "view": [
     {
-      "use": "Block",
-      "props": {
-        "Tag": "section",
-        "Class": {
-          "op": "cn",
-          "args": [
-            "mx-auto flex w-full max-w-lg flex-col gap-6 px-4 py-8",
-            {
+      "when": {
+        "op": "gt",
+        "args": [
+          {
+            "op": "len",
+            "args": [
+              {
+                "$": "steps"
+              }
+            ]
+          },
+          0
+        ]
+      },
+      "then": [
+        {
+          "use": "Block",
+          "props": {
+            "Tag": "section",
+            "Class": {
+              "op": "cn",
+              "args": [
+                "mx-auto flex w-full max-w-lg flex-col gap-6 px-4 py-8",
+                {
+                  "op": "cond",
+                  "args": [
+                    {
+                      "op": "eq",
+                      "args": [
+                        {
+                          "$": "layout"
+                        },
+                        "card"
+                      ]
+                    },
+                    "rounded bg-card p-6 inset-ring inset-ring-border",
+                    ""
+                  ]
+                }
+              ]
+            }
+          },
+          "attrs": {
+            "aria-labelledby": {
               "op": "cond",
               "args": [
                 {
-                  "op": "eq",
-                  "args": [
-                    {
-                      "$": "layout"
-                    },
-                    "card"
-                  ]
+                  "$": "landmarkLabel"
                 },
-                "rounded bg-card p-6 inset-ring inset-ring-border",
-                ""
+                {
+                  "op": "undef",
+                  "args": []
+                },
+                {
+                  "op": "tpl",
+                  "args": [
+                    "{0}-title",
+                    {
+                      "$": "id"
+                    }
+                  ]
+                }
               ]
-            }
-          ]
-        }
-      },
-      "attrs": {
-        "aria-labelledby": {
-          "op": "cond",
-          "args": [
-            {
+            },
+            "data-testid": "wizard",
+            "data-current": {
+              "op": "str",
+              "args": [
+                {
+                  "$": "current"
+                }
+              ]
+            },
+            "aria-label": {
               "$": "landmarkLabel"
-            },
-            {
-              "op": "undef",
-              "args": []
-            },
-            {
-              "op": "tpl",
-              "args": [
-                "{0}-title",
-                {
-                  "$": "id"
-                }
-              ]
-            }
-          ]
-        },
-        "data-testid": "wizard",
-        "data-current": {
-          "op": "str",
-          "args": [
-            {
-              "$": "current"
-            }
-          ]
-        },
-        "aria-label": {
-          "$": "landmarkLabel"
-        }
-      },
-      "children": [
-        {
-          "use": "Title",
-          "props": {
-            "As": {
-              "$": "level"
-            },
-            "Size": "2xl",
-            "Weight": "bold"
-          },
-          "attrs": {
-            "id": {
-              "op": "tpl",
-              "args": [
-                "{0}-title",
-                {
-                  "$": "id"
-                }
-              ]
             }
           },
           "children": [
             {
-              "text": {
-                "$": "title"
-              }
-            }
-          ]
-        },
-        {
-          "use": "Text",
-          "props": {
-            "Size": "sm",
-            "Class": "text-muted-foreground"
-          },
-          "attrs": {
-            "data-testid": "step-of"
-          },
-          "children": [
-            {
-              "text": {
-                "op": "tpl",
-                "args": [
-                  {
-                    "$": "labels.stepOf"
-                  },
-                  {
-                    "$": "current"
-                  },
-                  {
-                    "op": "len",
-                    "args": [
-                      {
-                        "$": "steps"
-                      }
-                    ]
-                  }
-                ]
-              }
-            }
-          ]
-        },
-        {
-          "when": {
-            "op": "eq",
-            "args": [
-              {
-                "$": "progress"
-              },
-              "bar"
-            ]
-          },
-          "then": [
-            {
-              "use": "Progress",
+              "use": "Title",
               "props": {
-                "Value": {
-                  "op": "str",
-                  "args": [
-                    {
-                      "$": "current"
-                    }
-                  ]
+                "As": {
+                  "$": "level"
                 },
-                "Max": {
-                  "op": "str",
+                "Size": "2xl",
+                "Weight": "bold"
+              },
+              "attrs": {
+                "id": {
+                  "op": "tpl",
                   "args": [
+                    "{0}-title",
                     {
-                      "op": "len",
-                      "args": [
-                        {
-                          "$": "steps"
-                        }
-                      ]
+                      "$": "id"
                     }
                   ]
                 }
-              },
-              "attrs": {
-                "aria-label": {
-                  "$": "labels.steps"
-                }
-              }
-            }
-          ]
-        },
-        {
-          "when": {
-            "op": "eq",
-            "args": [
-              {
-                "$": "progress"
-              },
-              "list"
-            ]
-          },
-          "then": [
-            {
-              "use": "List",
-              "props": {
-                "Class": "m-0 flex list-none flex-col gap-2 p-0"
-              },
-              "attrs": {
-                "aria-label": {
-                  "$": "labels.steps"
-                },
-                "data-testid": "step-list"
               },
               "children": [
                 {
-                  "each": {
-                    "$": "steps"
+                  "text": {
+                    "$": "title"
+                  }
+                }
+              ]
+            },
+            {
+              "use": "Text",
+              "props": {
+                "Size": "sm",
+                "Class": "text-muted-foreground"
+              },
+              "attrs": {
+                "data-testid": "step-of"
+              },
+              "children": [
+                {
+                  "text": {
+                    "op": "tpl",
+                    "args": [
+                      {
+                        "$": "labels.stepOf"
+                      },
+                      {
+                        "$": "current"
+                      },
+                      {
+                        "op": "len",
+                        "args": [
+                          {
+                            "$": "steps"
+                          }
+                        ]
+                      }
+                    ]
+                  }
+                }
+              ]
+            },
+            {
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "progress"
                   },
-                  "as": "s",
-                  "key": {
-                    "$": "s.id"
-                  },
-                  "do": [
-                    {
-                      "use": "ListItem",
-                      "props": {
-                        "Class": {
-                          "op": "cn",
+                  "bar"
+                ]
+              },
+              "then": [
+                {
+                  "use": "Progress",
+                  "props": {
+                    "Value": {
+                      "op": "str",
+                      "args": [
+                        {
+                          "$": "current"
+                        }
+                      ]
+                    },
+                    "Max": {
+                      "op": "str",
+                      "args": [
+                        {
+                          "op": "len",
                           "args": [
-                            "flex items-center gap-4 text-sm",
                             {
+                              "$": "steps"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "attrs": {
+                    "aria-label": {
+                      "$": "labels.steps"
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "progress"
+                  },
+                  "list"
+                ]
+              },
+              "then": [
+                {
+                  "use": "List",
+                  "props": {
+                    "Class": "m-0 flex list-none flex-col gap-2 p-0"
+                  },
+                  "attrs": {
+                    "aria-label": {
+                      "$": "labels.steps"
+                    },
+                    "data-testid": "step-list"
+                  },
+                  "children": [
+                    {
+                      "each": {
+                        "$": "steps"
+                      },
+                      "as": "s",
+                      "key": {
+                        "$": "s.id"
+                      },
+                      "do": [
+                        {
+                          "use": "ListItem",
+                          "props": {
+                            "Class": {
+                              "op": "cn",
+                              "args": [
+                                "flex items-center gap-4 text-sm",
+                                {
+                                  "op": "cond",
+                                  "args": [
+                                    {
+                                      "op": "eq",
+                                      "args": [
+                                        {
+                                          "op": "add",
+                                          "args": [
+                                            {
+                                              "$": "i"
+                                            },
+                                            1
+                                          ]
+                                        },
+                                        {
+                                          "$": "current"
+                                        }
+                                      ]
+                                    },
+                                    "font-semibold",
+                                    "text-muted-foreground"
+                                  ]
+                                }
+                              ]
+                            }
+                          },
+                          "attrs": {
+                            "aria-current": {
                               "op": "cond",
                               "args": [
                                 {
@@ -352,379 +396,353 @@
                                     }
                                   ]
                                 },
-                                "font-semibold",
-                                "text-muted-foreground"
-                              ]
-                            }
-                          ]
-                        }
-                      },
-                      "attrs": {
-                        "aria-current": {
-                          "op": "cond",
-                          "args": [
-                            {
-                              "op": "eq",
-                              "args": [
+                                "step",
                                 {
-                                  "op": "add",
-                                  "args": [
-                                    {
-                                      "$": "i"
-                                    },
-                                    1
-                                  ]
-                                },
-                                {
-                                  "$": "current"
+                                  "op": "undef",
+                                  "args": []
                                 }
                               ]
                             },
-                            "step",
+                            "data-testid": "step-item"
+                          },
+                          "children": [
                             {
-                              "op": "undef",
-                              "args": []
-                            }
-                          ]
-                        },
-                        "data-testid": "step-item"
-                      },
-                      "children": [
-                        {
-                          "use": "LucideIcon",
-                          "props": {
-                            "Name": {
-                              "op": "cond",
-                              "args": [
-                                {
-                                  "op": "lt",
+                              "use": "LucideIcon",
+                              "props": {
+                                "Name": {
+                                  "op": "cond",
                                   "args": [
                                     {
-                                      "op": "add",
+                                      "op": "lt",
                                       "args": [
                                         {
-                                          "$": "i"
+                                          "op": "add",
+                                          "args": [
+                                            {
+                                              "$": "i"
+                                            },
+                                            1
+                                          ]
                                         },
-                                        1
+                                        {
+                                          "$": "current"
+                                        }
                                       ]
                                     },
+                                    "circle-check",
                                     {
-                                      "$": "current"
+                                      "$": "s.icon"
                                     }
                                   ]
                                 },
-                                "circle-check",
-                                {
-                                  "$": "s.icon"
-                                }
-                              ]
+                                "Size": 16
+                              }
                             },
-                            "Size": 16
-                          }
-                        },
-                        {
-                          "text": {
-                            "$": "s.title"
-                          }
-                        }
-                      ]
-                    }
-                  ],
-                  "index": "i"
-                }
-              ]
-            }
-          ]
-        },
-        {
-          "each": {
-            "$": "steps"
-          },
-          "as": "s",
-          "key": {
-            "$": "s.id"
-          },
-          "do": [
-            {
-              "when": {
-                "op": "eq",
-                "args": [
-                  {
-                    "op": "add",
-                    "args": [
-                      {
-                        "$": "i"
-                      },
-                      1
-                    ]
-                  },
-                  {
-                    "$": "current"
-                  }
-                ]
-              },
-              "then": [
-                {
-                  "use": "Stack",
-                  "props": {
-                    "Gap": "4",
-                    "Align": "stretch"
-                  },
-                  "attrs": {
-                    "data-testid": "step"
-                  },
-                  "children": [
-                    {
-                      "use": "Title",
-                      "props": {
-                        "As": 3,
-                        "Size": "xl",
-                        "Weight": "bold"
-                      },
-                      "children": [
-                        {
-                          "text": {
-                            "$": "s.title"
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "use": "Text",
-                      "props": {
-                        "Size": "sm",
-                        "Class": "text-muted-foreground"
-                      },
-                      "children": [
-                        {
-                          "text": {
-                            "$": "s.text"
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "use": "Box",
-                      "props": {
-                        "Class": "grid gap-4"
-                      },
-                      "children": [
-                        {
-                          "organism": "Field",
-                          "props": {
-                            "label": {
-                              "$": "s.fieldA"
-                            },
-                            "htmlFor": {
-                              "op": "tpl",
-                              "args": [
-                                "{0}-a",
-                                {
-                                  "$": "id"
-                                }
-                              ]
+                            {
+                              "text": {
+                                "$": "s.title"
+                              }
                             }
-                          },
-                          "slots": {
-                            "children": {
-                              "args": [],
-                              "do": [
-                                {
-                                  "use": "Input",
-                                  "props": {
-                                    "Type": "text",
-                                    "Name": {
-                                      "op": "tpl",
-                                      "args": [
-                                        "{0}-a",
-                                        {
-                                          "$": "id"
-                                        }
-                                      ]
-                                    }
-                                  },
-                                  "attrs": {
-                                    "id": {
-                                      "op": "tpl",
-                                      "args": [
-                                        "{0}-a",
-                                        {
-                                          "$": "id"
-                                        }
-                                      ]
-                                    },
-                                    "data-testid": "field"
-                                  }
-                                }
-                              ]
-                            }
-                          }
-                        },
-                        {
-                          "organism": "Field",
-                          "props": {
-                            "label": {
-                              "$": "s.fieldB"
-                            },
-                            "htmlFor": {
-                              "op": "tpl",
-                              "args": [
-                                "{0}-b",
-                                {
-                                  "$": "id"
-                                }
-                              ]
-                            }
-                          },
-                          "slots": {
-                            "children": {
-                              "args": [],
-                              "do": [
-                                {
-                                  "use": "Input",
-                                  "props": {
-                                    "Type": "text",
-                                    "Name": {
-                                      "op": "tpl",
-                                      "args": [
-                                        "{0}-b",
-                                        {
-                                          "$": "id"
-                                        }
-                                      ]
-                                    }
-                                  },
-                                  "attrs": {
-                                    "id": {
-                                      "op": "tpl",
-                                      "args": [
-                                        "{0}-b",
-                                        {
-                                          "$": "id"
-                                        }
-                                      ]
-                                    },
-                                    "data-testid": "field"
-                                  }
-                                }
-                              ]
-                            }
-                          }
+                          ]
                         }
-                      ]
+                      ],
+                      "index": "i"
                     }
                   ]
-                }
-              ]
-            }
-          ],
-          "index": "i"
-        },
-        {
-          "use": "Group",
-          "props": {
-            "Gap": "2",
-            "Justify": "between"
-          },
-          "children": [
-            {
-              "use": "Button",
-              "props": {
-                "Variant": "outline",
-                "Size": "default",
-                "Type": "button",
-                "Disabled": {
-                  "op": "lt",
-                  "args": [
-                    {
-                      "$": "current"
-                    },
-                    2
-                  ]
-                }
-              },
-              "attrs": {
-                "data-testid": "wizard-back"
-              },
-              "on": {
-                "click": {
-                  "call": "emit.go",
-                  "args": [
-                    {
-                      "op": "sub",
-                      "args": [
-                        {
-                          "$": "current"
-                        },
-                        1
-                      ]
-                    }
-                  ]
-                }
-              },
-              "children": [
-                {
-                  "text": {
-                    "$": "labels.back"
-                  }
                 }
               ]
             },
             {
-              "use": "Button",
-              "props": {
-                "Variant": "default",
-                "Size": "default",
-                "Type": "button"
+              "each": {
+                "$": "steps"
               },
-              "attrs": {
-                "data-testid": "wizard-next"
+              "as": "s",
+              "key": {
+                "$": "s.id"
               },
-              "on": {
-                "click": {
-                  "call": "emit.go",
-                  "args": [
+              "do": [
+                {
+                  "when": {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "op": "add",
+                        "args": [
+                          {
+                            "$": "i"
+                          },
+                          1
+                        ]
+                      },
+                      {
+                        "$": "current"
+                      }
+                    ]
+                  },
+                  "then": [
                     {
-                      "op": "add",
-                      "args": [
+                      "use": "Stack",
+                      "props": {
+                        "Gap": "4",
+                        "Align": "stretch"
+                      },
+                      "attrs": {
+                        "data-testid": "step"
+                      },
+                      "children": [
                         {
-                          "$": "current"
+                          "use": "Title",
+                          "props": {
+                            "As": 3,
+                            "Size": "xl",
+                            "Weight": "bold"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "s.title"
+                              }
+                            }
+                          ]
                         },
-                        1
+                        {
+                          "use": "Text",
+                          "props": {
+                            "Size": "sm",
+                            "Class": "text-muted-foreground"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "s.text"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "use": "Box",
+                          "props": {
+                            "Class": "grid gap-4"
+                          },
+                          "children": [
+                            {
+                              "organism": "Field",
+                              "props": {
+                                "label": {
+                                  "$": "s.fieldA"
+                                },
+                                "htmlFor": {
+                                  "op": "tpl",
+                                  "args": [
+                                    "{0}-a",
+                                    {
+                                      "$": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "slots": {
+                                "children": {
+                                  "args": [],
+                                  "do": [
+                                    {
+                                      "use": "Input",
+                                      "props": {
+                                        "Type": "text",
+                                        "Name": {
+                                          "op": "tpl",
+                                          "args": [
+                                            "{0}-a",
+                                            {
+                                              "$": "id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "attrs": {
+                                        "id": {
+                                          "op": "tpl",
+                                          "args": [
+                                            "{0}-a",
+                                            {
+                                              "$": "id"
+                                            }
+                                          ]
+                                        },
+                                        "data-testid": "field"
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "organism": "Field",
+                              "props": {
+                                "label": {
+                                  "$": "s.fieldB"
+                                },
+                                "htmlFor": {
+                                  "op": "tpl",
+                                  "args": [
+                                    "{0}-b",
+                                    {
+                                      "$": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "slots": {
+                                "children": {
+                                  "args": [],
+                                  "do": [
+                                    {
+                                      "use": "Input",
+                                      "props": {
+                                        "Type": "text",
+                                        "Name": {
+                                          "op": "tpl",
+                                          "args": [
+                                            "{0}-b",
+                                            {
+                                              "$": "id"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "attrs": {
+                                        "id": {
+                                          "op": "tpl",
+                                          "args": [
+                                            "{0}-b",
+                                            {
+                                              "$": "id"
+                                            }
+                                          ]
+                                        },
+                                        "data-testid": "field"
+                                      }
+                                    }
+                                  ]
+                                }
+                              }
+                            }
+                          ]
+                        }
                       ]
                     }
                   ]
                 }
+              ],
+              "index": "i"
+            },
+            {
+              "use": "Group",
+              "props": {
+                "Gap": "2",
+                "Justify": "between"
               },
               "children": [
                 {
-                  "text": {
-                    "op": "cond",
-                    "args": [
-                      {
-                        "op": "ge",
+                  "use": "Button",
+                  "props": {
+                    "Variant": "outline",
+                    "Size": "default",
+                    "Type": "button",
+                    "Disabled": {
+                      "op": "lt",
+                      "args": [
+                        {
+                          "$": "current"
+                        },
+                        2
+                      ]
+                    }
+                  },
+                  "attrs": {
+                    "data-testid": "wizard-back"
+                  },
+                  "on": {
+                    "click": {
+                      "call": "emit.go",
+                      "args": [
+                        {
+                          "op": "sub",
+                          "args": [
+                            {
+                              "$": "current"
+                            },
+                            1
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "text": {
+                        "$": "labels.back"
+                      }
+                    }
+                  ]
+                },
+                {
+                  "use": "Button",
+                  "props": {
+                    "Variant": "default",
+                    "Size": "default",
+                    "Type": "button"
+                  },
+                  "attrs": {
+                    "data-testid": "wizard-next"
+                  },
+                  "on": {
+                    "click": {
+                      "call": "emit.go",
+                      "args": [
+                        {
+                          "op": "add",
+                          "args": [
+                            {
+                              "$": "current"
+                            },
+                            1
+                          ]
+                        }
+                      ]
+                    }
+                  },
+                  "children": [
+                    {
+                      "text": {
+                        "op": "cond",
                         "args": [
                           {
-                            "$": "current"
-                          },
-                          {
-                            "op": "len",
+                            "op": "ge",
                             "args": [
                               {
-                                "$": "steps"
+                                "$": "current"
+                              },
+                              {
+                                "op": "len",
+                                "args": [
+                                  {
+                                    "$": "steps"
+                                  }
+                                ]
                               }
                             ]
+                          },
+                          {
+                            "$": "labels.finish"
+                          },
+                          {
+                            "$": "labels.next"
                           }
                         ]
-                      },
-                      {
-                        "$": "labels.finish"
-                      },
-                      {
-                        "$": "labels.next"
                       }
-                    ]
-                  }
+                    }
+                  ]
                 }
               ]
             }

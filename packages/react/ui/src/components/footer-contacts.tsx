@@ -15,22 +15,26 @@ export type FooterContactsProps = {
 
 export function FooterContacts({ extras }: FooterContactsProps) {
   return (
-    <Stack gap="4" align="stretch">
-      {(extras.contacts ?? []).map((c) => (
-        <Group key={c.id} gap="4" align="center" data-testid="footer-contact">
-          <Inline className="flex size-10 shrink-0 items-center justify-center rounded bg-muted text-foreground">
-            <LucideIcon name={c.icon} size={20} />
-          </Inline>
-          <Stack gap="0">
-            <Text size="sm" weight="semibold">
-              {c.title}
-            </Text>
-            <Text size="sm" className="text-muted-foreground">
-              {c.text}
-            </Text>
-          </Stack>
-        </Group>
-      ))}
-    </Stack>
+    <>
+      {((extras.contacts?.length ?? 0) > 0) ? (
+        <Stack gap="4" align="stretch">
+          {(extras.contacts ?? []).map((c) => (
+            <Group key={c.id} gap="4" align="center" data-testid="footer-contact">
+              <Inline className="flex size-10 shrink-0 items-center justify-center rounded bg-muted text-foreground">
+                <LucideIcon name={c.icon} size={20} />
+              </Inline>
+              <Stack gap="0">
+                <Text size="sm" weight="semibold">
+                  {c.title}
+                </Text>
+                <Text size="sm" className="text-muted-foreground">
+                  {c.text}
+                </Text>
+              </Stack>
+            </Group>
+          ))}
+        </Stack>
+      ) : null}
+    </>
   );
 }

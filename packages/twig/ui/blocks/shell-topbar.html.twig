@@ -18,7 +18,7 @@
     {%- endset -%}
     {{ include('ui/group/group.html.twig', {'p': {'Gap': '2', 'Align': 'center', 'Class': 'shrink-0', 'Attrs': ui_attrs(['data-testid', 'brand'])}, 'children': c_2}, with_context = false) }}
   {%- endif %}
-  {%- if ui_t(ui_eq(v_links, 'show')) %}
+  {%- if ui_t(ui_and([ui_eq(v_links, 'show'), ui_gt(ui_len(ui_get(v_nav, ['links'])), 0)])) %}
     {%- set c_7 -%}
       {%- set c_6 -%}
         {%- for v_l in ui_l(ui_get(v_nav, ['links'])) %}

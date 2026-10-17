@@ -114,12 +114,31 @@
         },
         {
           "when": {
-            "op": "eq",
+            "op": "and",
             "args": [
               {
-                "$": "links"
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "links"
+                  },
+                  "show"
+                ]
               },
-              "show"
+              {
+                "op": "gt",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "nav.links"
+                      }
+                    ]
+                  },
+                  0
+                ]
+              }
             ]
           },
           "then": [

@@ -1548,7 +1548,7 @@
       "surface": "kit-block",
       "spec": "block.dashshell",
       "source": "xgen/specs/blocks/dashshell.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "nav.links",
@@ -1556,7 +1556,14 @@
           "kind": "menu_item",
           "record": "NavLink",
           "map": "menuItem",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value",
+            "slug"
+          ],
+          "optional": []
         },
         {
           "prop": "nav.sub",
@@ -1564,7 +1571,14 @@
           "kind": "menu_item",
           "record": "NavLink",
           "map": "menuItem",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value",
+            "slug"
+          ],
+          "optional": []
         },
         {
           "prop": "nav.footer",
@@ -1572,7 +1586,14 @@
           "kind": "menu_item",
           "record": "NavLink",
           "map": "menuItem",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value",
+            "slug"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -1639,7 +1660,8 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "DeliveryInfo",
@@ -2261,7 +2283,7 @@
       "surface": "kit-block",
       "spec": "block.footersplit",
       "source": "xgen/specs/blocks/footersplit.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "groups",
@@ -2269,7 +2291,14 @@
           "kind": "menu_item",
           "record": "MegaGroup",
           "map": "menuGroup",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value",
+            "slug"
+          ],
+          "optional": []
         },
         {
           "prop": "extras.stats",
@@ -2277,7 +2306,15 @@
           "kind": "stat",
           "record": "Stat",
           "map": "stat",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.value.value",
+            "metadata.icon.value",
+            "metadata.hint.value"
+          ],
+          "optional": []
         },
         {
           "prop": "extras.points",
@@ -2285,7 +2322,14 @@
           "kind": "feature",
           "record": "Feature",
           "map": "feature",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
         },
         {
           "prop": "extras.contacts",
@@ -2293,7 +2337,14 @@
           "kind": "contact",
           "record": "Feature",
           "map": "contact",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
         },
         {
           "prop": "extras.channels",
@@ -2301,7 +2352,14 @@
           "kind": "channel",
           "record": "Feature",
           "map": "channel",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -2353,7 +2411,8 @@
           ]
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "SiteHeader",
@@ -3693,7 +3752,7 @@
       "surface": "kit-block",
       "spec": "block.plan",
       "source": "xgen/specs/blocks/plan.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "plan",
@@ -3701,7 +3760,20 @@
           "kind": "plan",
           "record": "Plan",
           "map": "plan",
-          "list": false
+          "list": false,
+          "required": [
+            "id",
+            "title",
+            "metadata.tagline.value",
+            "metadata.price.value",
+            "metadata.currency.value",
+            "metadata.seats.value",
+            "metadata.storage.value",
+            "metadata.highlighted.value",
+            "metadata.features.value",
+            "metadata.yearly.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -3726,7 +3798,8 @@
           ]
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "PostHeader",
@@ -5944,7 +6017,7 @@
       "surface": "kit-block",
       "spec": "block.wizard",
       "source": "xgen/specs/blocks/wizard.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "steps",
@@ -5952,7 +6025,16 @@
           "kind": "step",
           "record": "WizardStep",
           "map": "wizardStep",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value",
+            "metadata.fieldA.value",
+            "metadata.fieldB.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -5981,7 +6063,8 @@
           ]
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "ZoneTable",

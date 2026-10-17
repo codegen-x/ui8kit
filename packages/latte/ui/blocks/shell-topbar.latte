@@ -18,7 +18,7 @@
     {/capture}
     {=ui_include('ui/group/group.latte', ['p' => ['Gap' => '2', 'Align' => 'center', 'Class' => 'shrink-0', 'Attrs' => ui_attrs(['data-testid', 'brand'])], 'children' => $c_2])|noescape}
   {/if}
-  {if ui_t(ui_eq($v_links, 'show'))}
+  {if ui_t(ui_and([ui_eq($v_links, 'show'), ui_gt(ui_len(ui_get($v_nav, ['links'])), 0)]))}
     {capture $c_7}
       {capture $c_6}
         {foreach ui_l(ui_get($v_nav, ['links'])) as $v_l}

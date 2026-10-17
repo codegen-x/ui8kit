@@ -42,52 +42,54 @@ templ SignupWizard(p SignupWizardProps) {
 	{{ vProgress := uiutils.Def(p.Progress, "bar") }}
 	{{ vLayout := uiutils.Def(p.Layout, "card") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@block.Block(block.BlockProps{Tag: "section", Class: uiutils.S(uiutils.Cnv("mx-auto flex w-full max-w-lg flex-col gap-6 px-4 py-8", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "card")), "rounded bg-card p-6 inset-ring inset-ring-border", ""))), Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, uiutils.Tpl("{0}-title", vId)), "data-testid", "wizard", "data-current", uiutils.Str(vCurrent), "aria-label", vLandmarkLabel)}) {
-		@title.Title(title.TitleProps{As: uiutils.HeadingLevel(uiutils.I(vLevel)), Size: "2xl", Weight: "bold", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-title", vId))}) {
-			{ uiutils.Text(vTitle) }
-		}
-		@text.Text(text.TextProps{Size: "sm", Class: "text-muted-foreground", Attrs: uiutils.Attrs("data-testid", "step-of")}) {
-			{ uiutils.Text(uiutils.Tpl(uiutils.Get(vLabels, "stepOf"), vCurrent, uiutils.Len(vSteps))) }
-		}
-		if uiutils.Eq(vProgress, "bar") {
-			@form.Progress(form.ProgressProps{Value: uiutils.S(uiutils.Str(vCurrent)), Max: uiutils.S(uiutils.Str(uiutils.Len(vSteps))), Attrs: uiutils.Attrs("aria-label", uiutils.Get(vLabels, "steps"))})
-		}
-		if uiutils.Eq(vProgress, "list") {
-			@list.List(list.ListProps{Class: "m-0 flex list-none flex-col gap-2 p-0", Attrs: uiutils.Attrs("aria-label", uiutils.Get(vLabels, "steps"), "data-testid", "step-list")}) {
-				for vI, vS := range uiutils.L(vSteps) {
-					@list.ListItem(list.ListItemProps{Class: uiutils.S(uiutils.Cnv("flex items-center gap-4 text-sm", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Add(float64(vI), float64(1)), vCurrent)), "font-semibold", "text-muted-foreground"))), Attrs: uiutils.Attrs("aria-current", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Add(float64(vI), float64(1)), vCurrent)), "step", nil), "data-testid", "step-item")}) {
-						@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Lt(uiutils.Add(float64(vI), float64(1)), vCurrent)), "circle-check", uiutils.Get(vS, "icon"))), Size: 16})
-						{ uiutils.Text(uiutils.Get(vS, "title")) }
-					}
-				}
+	if uiutils.Gt(uiutils.Len(vSteps), float64(0)) {
+		@block.Block(block.BlockProps{Tag: "section", Class: uiutils.S(uiutils.Cnv("mx-auto flex w-full max-w-lg flex-col gap-6 px-4 py-8", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "card")), "rounded bg-card p-6 inset-ring inset-ring-border", ""))), Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, uiutils.Tpl("{0}-title", vId)), "data-testid", "wizard", "data-current", uiutils.Str(vCurrent), "aria-label", vLandmarkLabel)}) {
+			@title.Title(title.TitleProps{As: uiutils.HeadingLevel(uiutils.I(vLevel)), Size: "2xl", Weight: "bold", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-title", vId))}) {
+				{ uiutils.Text(vTitle) }
 			}
-		}
-		for vI, vS := range uiutils.L(vSteps) {
-			if uiutils.Eq(uiutils.Add(float64(vI), float64(1)), vCurrent) {
-				@stack.Stack(stack.StackProps{Gap: "4", Align: "stretch", Attrs: uiutils.Attrs("data-testid", "step")}) {
-					@title.Title(title.TitleProps{As: uiutils.HeadingLevel(uiutils.I(float64(3))), Size: "xl", Weight: "bold"}) {
-						{ uiutils.Text(uiutils.Get(vS, "title")) }
-					}
-					@text.Text(text.TextProps{Size: "sm", Class: "text-muted-foreground"}) {
-						{ uiutils.Text(uiutils.Get(vS, "text")) }
-					}
-					@box.Box(box.BoxProps{Class: "grid gap-4"}) {
-						@Field(FieldProps{Label: uiutils.Get(vS, "fieldA"), HtmlFor: uiutils.Tpl("{0}-a", vId)}) {
-							@input.Input(input.InputProps{Type: "text", Name: uiutils.S(uiutils.Tpl("{0}-a", vId)), Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-a", vId), "data-testid", "field")})
-						}
-						@Field(FieldProps{Label: uiutils.Get(vS, "fieldB"), HtmlFor: uiutils.Tpl("{0}-b", vId)}) {
-							@input.Input(input.InputProps{Type: "text", Name: uiutils.S(uiutils.Tpl("{0}-b", vId)), Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-b", vId), "data-testid", "field")})
+			@text.Text(text.TextProps{Size: "sm", Class: "text-muted-foreground", Attrs: uiutils.Attrs("data-testid", "step-of")}) {
+				{ uiutils.Text(uiutils.Tpl(uiutils.Get(vLabels, "stepOf"), vCurrent, uiutils.Len(vSteps))) }
+			}
+			if uiutils.Eq(vProgress, "bar") {
+				@form.Progress(form.ProgressProps{Value: uiutils.S(uiutils.Str(vCurrent)), Max: uiutils.S(uiutils.Str(uiutils.Len(vSteps))), Attrs: uiutils.Attrs("aria-label", uiutils.Get(vLabels, "steps"))})
+			}
+			if uiutils.Eq(vProgress, "list") {
+				@list.List(list.ListProps{Class: "m-0 flex list-none flex-col gap-2 p-0", Attrs: uiutils.Attrs("aria-label", uiutils.Get(vLabels, "steps"), "data-testid", "step-list")}) {
+					for vI, vS := range uiutils.L(vSteps) {
+						@list.ListItem(list.ListItemProps{Class: uiutils.S(uiutils.Cnv("flex items-center gap-4 text-sm", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Add(float64(vI), float64(1)), vCurrent)), "font-semibold", "text-muted-foreground"))), Attrs: uiutils.Attrs("aria-current", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Add(float64(vI), float64(1)), vCurrent)), "step", nil), "data-testid", "step-item")}) {
+							@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Lt(uiutils.Add(float64(vI), float64(1)), vCurrent)), "circle-check", uiutils.Get(vS, "icon"))), Size: 16})
+							{ uiutils.Text(uiutils.Get(vS, "title")) }
 						}
 					}
 				}
 			}
-		}
-		@group.Group(group.GroupProps{Gap: "2", Justify: "between"}) {
-			@button.Button(button.ButtonProps{Variant: "outline", Size: "default", Type: "button", Disabled: uiutils.T(uiutils.Lt(vCurrent, float64(2))), Attrs: uiutils.Attrs("data-testid", "wizard-back")}) {
-				{ uiutils.Text(uiutils.Get(vLabels, "back")) }
+			for vI, vS := range uiutils.L(vSteps) {
+				if uiutils.Eq(uiutils.Add(float64(vI), float64(1)), vCurrent) {
+					@stack.Stack(stack.StackProps{Gap: "4", Align: "stretch", Attrs: uiutils.Attrs("data-testid", "step")}) {
+						@title.Title(title.TitleProps{As: uiutils.HeadingLevel(uiutils.I(float64(3))), Size: "xl", Weight: "bold"}) {
+							{ uiutils.Text(uiutils.Get(vS, "title")) }
+						}
+						@text.Text(text.TextProps{Size: "sm", Class: "text-muted-foreground"}) {
+							{ uiutils.Text(uiutils.Get(vS, "text")) }
+						}
+						@box.Box(box.BoxProps{Class: "grid gap-4"}) {
+							@Field(FieldProps{Label: uiutils.Get(vS, "fieldA"), HtmlFor: uiutils.Tpl("{0}-a", vId)}) {
+								@input.Input(input.InputProps{Type: "text", Name: uiutils.S(uiutils.Tpl("{0}-a", vId)), Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-a", vId), "data-testid", "field")})
+							}
+							@Field(FieldProps{Label: uiutils.Get(vS, "fieldB"), HtmlFor: uiutils.Tpl("{0}-b", vId)}) {
+								@input.Input(input.InputProps{Type: "text", Name: uiutils.S(uiutils.Tpl("{0}-b", vId)), Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-b", vId), "data-testid", "field")})
+							}
+						}
+					}
+				}
 			}
-			@button.Button(button.ButtonProps{Variant: "default", Size: "default", Type: "button", Attrs: uiutils.Attrs("data-testid", "wizard-next")}) {
-				{ uiutils.Text(uiutils.Cond(uiutils.T(uiutils.Ge(vCurrent, uiutils.Len(vSteps))), uiutils.Get(vLabels, "finish"), uiutils.Get(vLabels, "next"))) }
+			@group.Group(group.GroupProps{Gap: "2", Justify: "between"}) {
+				@button.Button(button.ButtonProps{Variant: "outline", Size: "default", Type: "button", Disabled: uiutils.T(uiutils.Lt(vCurrent, float64(2))), Attrs: uiutils.Attrs("data-testid", "wizard-back")}) {
+					{ uiutils.Text(uiutils.Get(vLabels, "back")) }
+				}
+				@button.Button(button.ButtonProps{Variant: "default", Size: "default", Type: "button", Attrs: uiutils.Attrs("data-testid", "wizard-next")}) {
+					{ uiutils.Text(uiutils.Cond(uiutils.T(uiutils.Ge(vCurrent, uiutils.Len(vSteps))), uiutils.Get(vLabels, "finish"), uiutils.Get(vLabels, "next"))) }
+				}
 			}
 		}
 	}

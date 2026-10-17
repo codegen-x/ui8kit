@@ -20,7 +20,7 @@ const { extras } = defineProps<FooterContactsProps>();
 </script>
 
 <template>
-  <Stack gap="4" align="stretch">
+  <Stack v-if="((extras.contacts?.length ?? 0) > 0)" gap="4" align="stretch">
     <Group v-for="c in extras.contacts" :key="c.id" gap="4" align="center" data-testid="footer-contact">
       <Inline class="flex size-10 shrink-0 items-center justify-center rounded bg-muted text-foreground">
         <LucideIcon :name="c.icon" :size="20" />

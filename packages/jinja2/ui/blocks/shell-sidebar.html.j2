@@ -20,25 +20,27 @@
       {%- endset -%}
       {{ ui_include('ui/group/group.html.j2', {'p': {'Gap': '2', 'Align': 'center', 'Class': 'shrink-0', 'Attrs': ui_attrs(['data-testid', 'brand'])}, 'children': c_2}) }}
     {%- endif %}
-    {%- set c_7 -%}
-      {%- set c_6 -%}
-        {%- for v_l in ui_l(ui_get(v_nav, ['links'])) %}
-          {%- set c_5 -%}
-            {%- set c_4 -%}
-              {{ ui_include('ui/lucide-icon/lucide-icon.html.j2', {'p': {'Name': ui_s(ui_get(v_l, ['icon'])), 'Size': 16}}) }}
-              {%- set c_3 -%}
-                {{ ui_text(ui_get(v_l, ['name'])) }}
+    {%- if ui_t(ui_gt(ui_len(ui_get(v_nav, ['links'])), 0)) %}
+      {%- set c_7 -%}
+        {%- set c_6 -%}
+          {%- for v_l in ui_l(ui_get(v_nav, ['links'])) %}
+            {%- set c_5 -%}
+              {%- set c_4 -%}
+                {{ ui_include('ui/lucide-icon/lucide-icon.html.j2', {'p': {'Name': ui_s(ui_get(v_l, ['icon'])), 'Size': 16}}) }}
+                {%- set c_3 -%}
+                  {{ ui_text(ui_get(v_l, ['name'])) }}
+                {%- endset -%}
+                {{ ui_include('ui/inline/inline.html.j2', {'p': {'Class': ui_s(('' if ui_t(v_named) else 'sr-only'))}, 'children': c_3}) }}
               {%- endset -%}
-              {{ ui_include('ui/inline/inline.html.j2', {'p': {'Class': ui_s(('' if ui_t(v_named) else 'sr-only'))}, 'children': c_3}) }}
+              {{ ui_include('blocks/menu-entry.html.j2', {'p': {'href': ui_get(v_l, ['href']), 'className': ui_cnv([ui_cnv(['flex items-center gap-4 rounded py-2 text-sm', ('px-4' if ui_t(v_named) else 'justify-center px-2'), ('bg-muted font-medium' if ui_t(ui_eq(ui_get(v_l, ['id']), ui_get(v_nav, ['current']))) else '')])]), 'current': ui_eq(ui_get(v_l, ['id']), ui_get(v_nav, ['current'])), 'size': 'sm', 'testid': 'item'}, 'children': c_4}) }}
             {%- endset -%}
-            {{ ui_include('blocks/menu-entry.html.j2', {'p': {'href': ui_get(v_l, ['href']), 'className': ui_cnv([ui_cnv(['flex items-center gap-4 rounded py-2 text-sm', ('px-4' if ui_t(v_named) else 'justify-center px-2'), ('bg-muted font-medium' if ui_t(ui_eq(ui_get(v_l, ['id']), ui_get(v_nav, ['current']))) else '')])]), 'current': ui_eq(ui_get(v_l, ['id']), ui_get(v_nav, ['current'])), 'size': 'sm', 'testid': 'item'}, 'children': c_4}) }}
-          {%- endset -%}
-          {{ ui_include('ui/list/list-item.html.j2', {'p': {}, 'children': c_5}) }}
-        {%- endfor %}
+            {{ ui_include('ui/list/list-item.html.j2', {'p': {}, 'children': c_5}) }}
+          {%- endfor %}
+        {%- endset -%}
+        {{ ui_include('ui/list/list.html.j2', {'p': {'Class': 'm-0 flex list-none flex-col gap-2 p-0', 'Attrs': ui_attrs(['data-testid', 'items'])}, 'children': c_6}) }}
       {%- endset -%}
-      {{ ui_include('ui/list/list.html.j2', {'p': {'Class': 'm-0 flex list-none flex-col gap-2 p-0', 'Attrs': ui_attrs(['data-testid', 'items'])}, 'children': c_6}) }}
-    {%- endset -%}
-    {{ ui_include('blocks/nav-block.html.j2', {'p': {'label': (ui_uniq(ui_tpl('{0}, {1}', [ui_get(v_nav, ['label']), v_landmarkLabel])) if ui_t(v_landmarkLabel) else ui_get(v_nav, ['label'])), 'className': ui_cnv(['flex-1'])}, 'children': c_7}) }}
+      {{ ui_include('blocks/nav-block.html.j2', {'p': {'label': (ui_uniq(ui_tpl('{0}, {1}', [ui_get(v_nav, ['label']), v_landmarkLabel])) if ui_t(v_landmarkLabel) else ui_get(v_nav, ['label'])), 'className': ui_cnv(['flex-1'])}, 'children': c_7}) }}
+    {%- endif %}
     {%- if ui_t(ui_eq(v_mode, 'collapsed')) %}
       {%- set c_8 -%}
         {{ ui_include('ui/lucide-icon/lucide-icon.html.j2', {'p': {'Name': 'panel-left', 'Size': 20}}) }}
@@ -47,7 +49,7 @@
     {%- endif %}
   {%- endset -%}
   {{ ui_include('ui/box/box.html.j2', {'p': {'Class': ui_s(ui_cnv(['flex flex-col gap-6 py-4', ('w-64 px-4' if ui_t(v_named) else 'w-16 items-center px-2')]))}, 'children': c_9}) }}
-  {%- if ui_t(ui_eq(v_mode, 'twolevel')) %}
+  {%- if ui_t(ui_and([ui_eq(v_mode, 'twolevel'), ui_gt(ui_len(ui_get(v_nav, ['sub'])), 0)])) %}
     {%- set c_16 -%}
       {%- set c_10 -%}
         {{ ui_text(ui_get(v_nav, ['subTitle'])) }}

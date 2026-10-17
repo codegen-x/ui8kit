@@ -24,84 +24,102 @@
   "events": [],
   "view": [
     {
-      "use": "Stack",
-      "props": {
-        "Gap": "4",
-        "Align": "start"
+      "when": {
+        "op": "gt",
+        "args": [
+          {
+            "op": "len",
+            "args": [
+              {
+                "$": "extras.points"
+              }
+            ]
+          },
+          0
+        ]
       },
-      "children": [
+      "then": [
         {
-          "use": "Text",
+          "use": "Stack",
           "props": {
-            "Size": "sm",
-            "Weight": "semibold"
+            "Gap": "4",
+            "Align": "start"
           },
           "children": [
             {
-              "text": {
-                "$": "title"
-              }
-            }
-          ]
-        },
-        {
-          "each": {
-            "$": "extras.points"
-          },
-          "as": "p",
-          "key": {
-            "$": "p.id"
-          },
-          "do": [
-            {
-              "when": {
-                "op": "lt",
-                "args": [
-                  {
-                    "$": "i"
-                  },
-                  4
-                ]
+              "use": "Text",
+              "props": {
+                "Size": "sm",
+                "Weight": "semibold"
               },
-              "then": [
+              "children": [
                 {
-                  "use": "Group",
-                  "props": {
-                    "Gap": "2",
-                    "Align": "center"
+                  "text": {
+                    "$": "title"
+                  }
+                }
+              ]
+            },
+            {
+              "each": {
+                "$": "extras.points"
+              },
+              "as": "p",
+              "key": {
+                "$": "p.id"
+              },
+              "do": [
+                {
+                  "when": {
+                    "op": "lt",
+                    "args": [
+                      {
+                        "$": "i"
+                      },
+                      4
+                    ]
                   },
-                  "attrs": {
-                    "data-testid": "footer-point"
-                  },
-                  "children": [
+                  "then": [
                     {
-                      "use": "LucideIcon",
+                      "use": "Group",
                       "props": {
-                        "Name": {
-                          "$": "p.icon"
-                        },
-                        "Size": 16
-                      }
-                    },
-                    {
-                      "use": "Text",
-                      "props": {
-                        "Size": "sm"
+                        "Gap": "2",
+                        "Align": "center"
+                      },
+                      "attrs": {
+                        "data-testid": "footer-point"
                       },
                       "children": [
                         {
-                          "text": {
-                            "$": "p.title"
+                          "use": "LucideIcon",
+                          "props": {
+                            "Name": {
+                              "$": "p.icon"
+                            },
+                            "Size": 16
                           }
+                        },
+                        {
+                          "use": "Text",
+                          "props": {
+                            "Size": "sm"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "p.title"
+                              }
+                            }
+                          ]
                         }
                       ]
                     }
                   ]
                 }
-              ]
+              ],
+              "index": "i"
             }
-          ],
-          "index": "i"
+          ]
         }
       ]
     }

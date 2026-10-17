@@ -24,7 +24,7 @@ const { label, groups, landmarkLabel } = defineProps<FooterLinkColumnsProps>();
 </script>
 
 <template>
-  <Block tag="nav" :aria-label="(landmarkLabel ?? label)">
+  <Block v-if="((groups?.length ?? 0) > 0)" tag="nav" :aria-label="(landmarkLabel ?? label)">
     <Box class="grid grid-cols-2 gap-8 sm:grid-cols-3">
       <template v-for="(g, i) in groups" :key="g.id">
         <Stack v-if="(i < 3)" gap="2" data-testid="group">

@@ -19,93 +19,111 @@
   "events": [],
   "view": [
     {
-      "use": "Box",
-      "props": {
-        "Class": "grid grid-cols-1 gap-4 sm:grid-cols-3"
+      "when": {
+        "op": "gt",
+        "args": [
+          {
+            "op": "len",
+            "args": [
+              {
+                "$": "extras.channels"
+              }
+            ]
+          },
+          0
+        ]
       },
-      "children": [
+      "then": [
         {
-          "each": {
-            "$": "extras.channels"
+          "use": "Box",
+          "props": {
+            "Class": "grid grid-cols-1 gap-4 sm:grid-cols-3"
           },
-          "as": "c",
-          "key": {
-            "$": "c.id"
-          },
-          "do": [
+          "children": [
             {
-              "when": {
-                "op": "lt",
-                "args": [
-                  {
-                    "$": "i"
-                  },
-                  3
-                ]
+              "each": {
+                "$": "extras.channels"
               },
-              "then": [
+              "as": "c",
+              "key": {
+                "$": "c.id"
+              },
+              "do": [
                 {
-                  "use": "Stack",
-                  "props": {
-                    "Gap": "2",
-                    "Align": "start",
-                    "Class": "rounded bg-card inset-ring inset-ring-border p-4"
+                  "when": {
+                    "op": "lt",
+                    "args": [
+                      {
+                        "$": "i"
+                      },
+                      3
+                    ]
                   },
-                  "attrs": {
-                    "data-testid": "footer-channel"
-                  },
-                  "children": [
+                  "then": [
                     {
-                      "use": "Inline",
+                      "use": "Stack",
                       "props": {
-                        "Class": "flex size-10 shrink-0 items-center justify-center rounded bg-muted text-foreground"
+                        "Gap": "2",
+                        "Align": "start",
+                        "Class": "rounded bg-card inset-ring inset-ring-border p-4"
+                      },
+                      "attrs": {
+                        "data-testid": "footer-channel"
                       },
                       "children": [
                         {
-                          "use": "LucideIcon",
+                          "use": "Inline",
                           "props": {
-                            "Name": {
-                              "$": "c.icon"
-                            },
-                            "Size": 20
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "use": "Text",
-                      "props": {
-                        "Size": "sm",
-                        "Weight": "semibold"
-                      },
-                      "children": [
+                            "Class": "flex size-10 shrink-0 items-center justify-center rounded bg-muted text-foreground"
+                          },
+                          "children": [
+                            {
+                              "use": "LucideIcon",
+                              "props": {
+                                "Name": {
+                                  "$": "c.icon"
+                                },
+                                "Size": 20
+                              }
+                            }
+                          ]
+                        },
                         {
-                          "text": {
-                            "$": "c.title"
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "use": "Text",
-                      "props": {
-                        "Size": "xs",
-                        "Class": "text-muted-foreground"
-                      },
-                      "children": [
+                          "use": "Text",
+                          "props": {
+                            "Size": "sm",
+                            "Weight": "semibold"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "c.title"
+                              }
+                            }
+                          ]
+                        },
                         {
-                          "text": {
-                            "$": "c.text"
-                          }
+                          "use": "Text",
+                          "props": {
+                            "Size": "xs",
+                            "Class": "text-muted-foreground"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "c.text"
+                              }
+                            }
+                          ]
                         }
                       ]
                     }
                   ]
                 }
-              ]
+              ],
+              "index": "i"
             }
-          ],
-          "index": "i"
+          ]
         }
       ]
     }

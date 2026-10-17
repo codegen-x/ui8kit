@@ -24,19 +24,21 @@ templ FooterLinkColumns(p FooterLinkColumnsProps) {
 	{{ vLabel := p.Label }}
 	{{ vGroups := p.Groups }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@block.Block(block.BlockProps{Tag: "nav", Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vLandmarkLabel, vLabel))}) {
-		@box.Box(box.BoxProps{Class: "grid grid-cols-2 gap-8 sm:grid-cols-3"}) {
-			for vI, vG := range uiutils.L(vGroups) {
-				if uiutils.Lt(float64(vI), float64(3)) {
-					@stack.Stack(stack.StackProps{Gap: "2", Attrs: uiutils.Attrs("data-testid", "group")}) {
-						@text.Text(text.TextProps{Size: "sm", Weight: "semibold"}) {
-							{ uiutils.Text(uiutils.Get(vG, "title")) }
-						}
-						@list.List(list.ListProps{Class: "m-0 flex list-none flex-col gap-2 p-0"}) {
-							for _, vItem := range uiutils.L(uiutils.Get(vG, "links")) {
-								@list.ListItem(list.ListItemProps{}) {
-									@MenuEntry(MenuEntryProps{Href: uiutils.Get(vItem, "href"), Class: uiutils.Cnv("text-sm text-muted-foreground"), Variant: "muted", Size: "sm"}) {
-										{ uiutils.Text(uiutils.Get(vItem, "name")) }
+	if uiutils.Gt(uiutils.Len(vGroups), float64(0)) {
+		@block.Block(block.BlockProps{Tag: "nav", Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vLandmarkLabel, vLabel))}) {
+			@box.Box(box.BoxProps{Class: "grid grid-cols-2 gap-8 sm:grid-cols-3"}) {
+				for vI, vG := range uiutils.L(vGroups) {
+					if uiutils.Lt(float64(vI), float64(3)) {
+						@stack.Stack(stack.StackProps{Gap: "2", Attrs: uiutils.Attrs("data-testid", "group")}) {
+							@text.Text(text.TextProps{Size: "sm", Weight: "semibold"}) {
+								{ uiutils.Text(uiutils.Get(vG, "title")) }
+							}
+							@list.List(list.ListProps{Class: "m-0 flex list-none flex-col gap-2 p-0"}) {
+								for _, vItem := range uiutils.L(uiutils.Get(vG, "links")) {
+									@list.ListItem(list.ListItemProps{}) {
+										@MenuEntry(MenuEntryProps{Href: uiutils.Get(vItem, "href"), Class: uiutils.Cnv("text-sm text-muted-foreground"), Variant: "muted", Size: "sm"}) {
+											{ uiutils.Text(uiutils.Get(vItem, "name")) }
+										}
 									}
 								}
 							}

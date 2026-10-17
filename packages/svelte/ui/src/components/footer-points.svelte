@@ -20,18 +20,20 @@
   let { extras, title }: FooterPointsProps = $props();
 </script>
 
-<Stack gap="4" align="start">
-  <Text size="sm" weight="semibold">
-    {title}
-  </Text>
-  {#each extras.points as p, i (p.id)}
-    {#if (i < 4)}
-      <Group gap="2" align="center" data-testid="footer-point">
-        <LucideIcon name={p.icon} size={16} />
-        <Text size="sm">
-          {p.title}
-        </Text>
-      </Group>
-    {/if}
-  {/each}
-</Stack>
+{#if ((extras.points?.length ?? 0) > 0)}
+  <Stack gap="4" align="start">
+    <Text size="sm" weight="semibold">
+      {title}
+    </Text>
+    {#each extras.points as p, i (p.id)}
+      {#if (i < 4)}
+        <Group gap="2" align="center" data-testid="footer-point">
+          <LucideIcon name={p.icon} size={16} />
+          <Text size="sm">
+            {p.title}
+          </Text>
+        </Group>
+      {/if}
+    {/each}
+  </Stack>
+{/if}

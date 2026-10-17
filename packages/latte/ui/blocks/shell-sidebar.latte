@@ -20,25 +20,27 @@
       {/capture}
       {=ui_include('ui/group/group.latte', ['p' => ['Gap' => '2', 'Align' => 'center', 'Class' => 'shrink-0', 'Attrs' => ui_attrs(['data-testid', 'brand'])], 'children' => $c_2])|noescape}
     {/if}
-    {capture $c_7}
-      {capture $c_6}
-        {foreach ui_l(ui_get($v_nav, ['links'])) as $v_l}
-          {capture $c_5}
-            {capture $c_4}
-              {=ui_include('ui/lucide-icon/lucide-icon.latte', ['p' => ['Name' => ui_s(ui_get($v_l, ['icon'])), 'Size' => 16]])|noescape}
-              {capture $c_3}
-                {=ui_text(ui_get($v_l, ['name']))}
+    {if ui_t(ui_gt(ui_len(ui_get($v_nav, ['links'])), 0))}
+      {capture $c_7}
+        {capture $c_6}
+          {foreach ui_l(ui_get($v_nav, ['links'])) as $v_l}
+            {capture $c_5}
+              {capture $c_4}
+                {=ui_include('ui/lucide-icon/lucide-icon.latte', ['p' => ['Name' => ui_s(ui_get($v_l, ['icon'])), 'Size' => 16]])|noescape}
+                {capture $c_3}
+                  {=ui_text(ui_get($v_l, ['name']))}
+                {/capture}
+                {=ui_include('ui/inline/inline.latte', ['p' => ['Class' => ui_s((ui_t($v_named) ? '' : 'sr-only'))], 'children' => $c_3])|noescape}
               {/capture}
-              {=ui_include('ui/inline/inline.latte', ['p' => ['Class' => ui_s((ui_t($v_named) ? '' : 'sr-only'))], 'children' => $c_3])|noescape}
+              {=ui_include('blocks/menu-entry.latte', ['p' => ['href' => ui_get($v_l, ['href']), 'className' => ui_cnv([ui_cnv(['flex items-center gap-4 rounded py-2 text-sm', (ui_t($v_named) ? 'px-4' : 'justify-center px-2'), (ui_t(ui_eq(ui_get($v_l, ['id']), ui_get($v_nav, ['current']))) ? 'bg-muted font-medium' : '')])]), 'current' => ui_eq(ui_get($v_l, ['id']), ui_get($v_nav, ['current'])), 'size' => 'sm', 'testid' => 'item'], 'children' => $c_4])|noescape}
             {/capture}
-            {=ui_include('blocks/menu-entry.latte', ['p' => ['href' => ui_get($v_l, ['href']), 'className' => ui_cnv([ui_cnv(['flex items-center gap-4 rounded py-2 text-sm', (ui_t($v_named) ? 'px-4' : 'justify-center px-2'), (ui_t(ui_eq(ui_get($v_l, ['id']), ui_get($v_nav, ['current']))) ? 'bg-muted font-medium' : '')])]), 'current' => ui_eq(ui_get($v_l, ['id']), ui_get($v_nav, ['current'])), 'size' => 'sm', 'testid' => 'item'], 'children' => $c_4])|noescape}
-          {/capture}
-          {=ui_include('ui/list/list-item.latte', ['p' => [], 'children' => $c_5])|noescape}
-        {/foreach}
+            {=ui_include('ui/list/list-item.latte', ['p' => [], 'children' => $c_5])|noescape}
+          {/foreach}
+        {/capture}
+        {=ui_include('ui/list/list.latte', ['p' => ['Class' => 'm-0 flex list-none flex-col gap-2 p-0', 'Attrs' => ui_attrs(['data-testid', 'items'])], 'children' => $c_6])|noescape}
       {/capture}
-      {=ui_include('ui/list/list.latte', ['p' => ['Class' => 'm-0 flex list-none flex-col gap-2 p-0', 'Attrs' => ui_attrs(['data-testid', 'items'])], 'children' => $c_6])|noescape}
-    {/capture}
-    {=ui_include('blocks/nav-block.latte', ['p' => ['label' => (ui_t($v_landmarkLabel) ? ui_uniq(ui_tpl('{0}, {1}', [ui_get($v_nav, ['label']), $v_landmarkLabel])) : ui_get($v_nav, ['label'])), 'className' => ui_cnv(['flex-1'])], 'children' => $c_7])|noescape}
+      {=ui_include('blocks/nav-block.latte', ['p' => ['label' => (ui_t($v_landmarkLabel) ? ui_uniq(ui_tpl('{0}, {1}', [ui_get($v_nav, ['label']), $v_landmarkLabel])) : ui_get($v_nav, ['label'])), 'className' => ui_cnv(['flex-1'])], 'children' => $c_7])|noescape}
+    {/if}
     {if ui_t(ui_eq($v_mode, 'collapsed'))}
       {capture $c_8}
         {=ui_include('ui/lucide-icon/lucide-icon.latte', ['p' => ['Name' => 'panel-left', 'Size' => 20]])|noescape}
@@ -47,7 +49,7 @@
     {/if}
   {/capture}
   {=ui_include('ui/box/box.latte', ['p' => ['Class' => ui_s(ui_cnv(['flex flex-col gap-6 py-4', (ui_t($v_named) ? 'w-64 px-4' : 'w-16 items-center px-2')]))], 'children' => $c_9])|noescape}
-  {if ui_t(ui_eq($v_mode, 'twolevel'))}
+  {if ui_t(ui_and([ui_eq($v_mode, 'twolevel'), ui_gt(ui_len(ui_get($v_nav, ['sub'])), 0)]))}
     {capture $c_16}
       {capture $c_10}
         {=ui_text(ui_get($v_nav, ['subTitle']))}

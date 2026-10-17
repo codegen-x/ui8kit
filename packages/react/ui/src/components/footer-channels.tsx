@@ -15,29 +15,33 @@ export type FooterChannelsProps = {
 
 export function FooterChannels({ extras }: FooterChannelsProps) {
   return (
-    <Box className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-      {(extras.channels ?? []).map((c, i) => (
-        <Fragment key={c.id}>
-          {(i < 3) ? (
-            <Stack
-              gap="2"
-              align="start"
-              className="rounded bg-card inset-ring inset-ring-border p-4"
-              data-testid="footer-channel"
-            >
-              <Inline className="flex size-10 shrink-0 items-center justify-center rounded bg-muted text-foreground">
-                <LucideIcon name={c.icon} size={20} />
-              </Inline>
-              <Text size="sm" weight="semibold">
-                {c.title}
-              </Text>
-              <Text size="xs" className="text-muted-foreground">
-                {c.text}
-              </Text>
-            </Stack>
-          ) : null}
-        </Fragment>
-      ))}
-    </Box>
+    <>
+      {((extras.channels?.length ?? 0) > 0) ? (
+        <Box className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          {(extras.channels ?? []).map((c, i) => (
+            <Fragment key={c.id}>
+              {(i < 3) ? (
+                <Stack
+                  gap="2"
+                  align="start"
+                  className="rounded bg-card inset-ring inset-ring-border p-4"
+                  data-testid="footer-channel"
+                >
+                  <Inline className="flex size-10 shrink-0 items-center justify-center rounded bg-muted text-foreground">
+                    <LucideIcon name={c.icon} size={20} />
+                  </Inline>
+                  <Text size="sm" weight="semibold">
+                    {c.title}
+                  </Text>
+                  <Text size="xs" className="text-muted-foreground">
+                    {c.text}
+                  </Text>
+                </Stack>
+              ) : null}
+            </Fragment>
+          ))}
+        </Box>
+      ) : null}
+    </>
   );
 }

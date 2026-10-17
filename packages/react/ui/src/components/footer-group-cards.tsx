@@ -25,30 +25,34 @@ export type FooterGroupCardsProps = {
 
 export function FooterGroupCards({ label, groups, landmarkLabel }: FooterGroupCardsProps) {
   return (
-    <Block tag="nav" aria-label={(landmarkLabel ?? label)}>
-      <Box className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {(groups ?? []).map((g) => (
-          <Stack key={g.id} gap="4" align="stretch" className="rounded bg-card inset-ring inset-ring-border p-6" data-testid="group">
-            <Group gap="2" align="center">
-              <Inline className="flex size-10 shrink-0 items-center justify-center rounded bg-muted text-foreground">
-                <LucideIcon name={g.icon} size={20} />
-              </Inline>
-              <Text size="sm" weight="semibold">
-                {g.title}
-              </Text>
-            </Group>
-            <List className="m-0 flex list-none flex-col gap-2 p-0">
-              {(g.links ?? []).map((item) => (
-                <ListItem key={item.id}>
-                  <MenuEntry href={item.href} className="text-sm text-muted-foreground" variant="muted" size="sm">
-                    {item.name}
-                  </MenuEntry>
-                </ListItem>
-              ))}
-            </List>
-          </Stack>
-        ))}
-      </Box>
-    </Block>
+    <>
+      {((groups?.length ?? 0) > 0) ? (
+        <Block tag="nav" aria-label={(landmarkLabel ?? label)}>
+          <Box className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {(groups ?? []).map((g) => (
+              <Stack key={g.id} gap="4" align="stretch" className="rounded bg-card inset-ring inset-ring-border p-6" data-testid="group">
+                <Group gap="2" align="center">
+                  <Inline className="flex size-10 shrink-0 items-center justify-center rounded bg-muted text-foreground">
+                    <LucideIcon name={g.icon} size={20} />
+                  </Inline>
+                  <Text size="sm" weight="semibold">
+                    {g.title}
+                  </Text>
+                </Group>
+                <List className="m-0 flex list-none flex-col gap-2 p-0">
+                  {(g.links ?? []).map((item) => (
+                    <ListItem key={item.id}>
+                      <MenuEntry href={item.href} className="text-sm text-muted-foreground" variant="muted" size="sm">
+                        {item.name}
+                      </MenuEntry>
+                    </ListItem>
+                  ))}
+                </List>
+              </Stack>
+            ))}
+          </Box>
+        </Block>
+      ) : null}
+    </>
   );
 }

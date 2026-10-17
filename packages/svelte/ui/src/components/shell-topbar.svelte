@@ -49,7 +49,7 @@
       </Text>
     </Group>
   {/if}
-  {#if ((links as string) === "show")}
+  {#if (((links as string) === "show") && ((nav.links?.length ?? 0) > 0))}
     <NavBlock
       label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", nav.label, landmarkLabel)) : nav.label)}
       class="hidden lg:block"

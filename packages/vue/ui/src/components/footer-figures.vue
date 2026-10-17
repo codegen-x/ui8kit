@@ -18,7 +18,7 @@ const { extras } = defineProps<FooterFiguresProps>();
 </script>
 
 <template>
-  <Group gap="8" class="flex-wrap">
+  <Group v-if="((extras.stats?.length ?? 0) > 0)" gap="8" class="flex-wrap">
     <template v-for="(s, i) in extras.stats" :key="s.id">
       <Stack v-if="(i < 3)" gap="0" data-testid="footer-stat">
         <Text size="xl" weight="bold">

@@ -52,7 +52,7 @@ const emit = defineEmits<{ go: [step: number] }>();
 </script>
 
 <template>
-  <Block
+  <Block v-if="((steps?.length ?? 0) > 0)"
     tag="section"
     :class="cn(
       'mx-auto flex w-full max-w-lg flex-col gap-6 px-4 py-8',

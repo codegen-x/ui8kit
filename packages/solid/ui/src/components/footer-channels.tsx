@@ -15,29 +15,33 @@ export type FooterChannelsProps = {
 
 export function FooterChannels({ extras }: FooterChannelsProps) {
   return (
-    <Box class="grid grid-cols-1 gap-4 sm:grid-cols-3">
-      <For each={extras.channels ?? []}>{(c, iOf) => { const i = iOf(); return (
-        <>
-          {(i < 3) ? (
-            <Stack
-              gap="2"
-              align="start"
-              class="rounded bg-card inset-ring inset-ring-border p-4"
-              data-testid="footer-channel"
-            >
-              <Inline class="flex size-10 shrink-0 items-center justify-center rounded bg-muted text-foreground">
-                <LucideIcon name={c.icon} size={20} />
-              </Inline>
-              <Text size="sm" weight="semibold">
-                {c.title}
-              </Text>
-              <Text size="xs" class="text-muted-foreground">
-                {c.text}
-              </Text>
-            </Stack>
-          ) : null}
-        </>
-      ); }}</For>
-    </Box>
+    <>
+      {((extras.channels?.length ?? 0) > 0) ? (
+        <Box class="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <For each={extras.channels ?? []}>{(c, iOf) => { const i = iOf(); return (
+            <>
+              {(i < 3) ? (
+                <Stack
+                  gap="2"
+                  align="start"
+                  class="rounded bg-card inset-ring inset-ring-border p-4"
+                  data-testid="footer-channel"
+                >
+                  <Inline class="flex size-10 shrink-0 items-center justify-center rounded bg-muted text-foreground">
+                    <LucideIcon name={c.icon} size={20} />
+                  </Inline>
+                  <Text size="sm" weight="semibold">
+                    {c.title}
+                  </Text>
+                  <Text size="xs" class="text-muted-foreground">
+                    {c.text}
+                  </Text>
+                </Stack>
+              ) : null}
+            </>
+          ); }}</For>
+        </Box>
+      ) : null}
+    </>
   );
 }

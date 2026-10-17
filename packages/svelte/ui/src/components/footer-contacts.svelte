@@ -20,20 +20,22 @@
   let { extras }: FooterContactsProps = $props();
 </script>
 
-<Stack gap="4" align="stretch">
-  {#each extras.contacts as c (c.id)}
-    <Group gap="4" align="center" data-testid="footer-contact">
-      <Inline class="flex size-10 shrink-0 items-center justify-center rounded bg-muted text-foreground">
-        <LucideIcon name={c.icon} size={20} />
-      </Inline>
-      <Stack gap="0">
-        <Text size="sm" weight="semibold">
-          {c.title}
-        </Text>
-        <Text size="sm" class="text-muted-foreground">
-          {c.text}
-        </Text>
-      </Stack>
-    </Group>
-  {/each}
-</Stack>
+{#if ((extras.contacts?.length ?? 0) > 0)}
+  <Stack gap="4" align="stretch">
+    {#each extras.contacts as c (c.id)}
+      <Group gap="4" align="center" data-testid="footer-contact">
+        <Inline class="flex size-10 shrink-0 items-center justify-center rounded bg-muted text-foreground">
+          <LucideIcon name={c.icon} size={20} />
+        </Inline>
+        <Stack gap="0">
+          <Text size="sm" weight="semibold">
+            {c.title}
+          </Text>
+          <Text size="sm" class="text-muted-foreground">
+            {c.text}
+          </Text>
+        </Stack>
+      </Group>
+    {/each}
+  </Stack>
+{/if}

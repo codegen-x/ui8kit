@@ -19,29 +19,33 @@ export type FooterLinkColumnsProps = {
 
 export function FooterLinkColumns({ label, groups, landmarkLabel }: FooterLinkColumnsProps) {
   return (
-    <Block tag="nav" aria-label={(landmarkLabel ?? label)}>
-      <Box className="grid grid-cols-2 gap-8 sm:grid-cols-3">
-        {(groups ?? []).map((g, i) => (
-          <Fragment key={g.id}>
-            {(i < 3) ? (
-              <Stack gap="2" data-testid="group">
-                <Text size="sm" weight="semibold">
-                  {g.title}
-                </Text>
-                <List className="m-0 flex list-none flex-col gap-2 p-0">
-                  {(g.links ?? []).map((item) => (
-                    <ListItem key={item.id}>
-                      <MenuEntry href={item.href} className="text-sm text-muted-foreground" variant="muted" size="sm">
-                        {item.name}
-                      </MenuEntry>
-                    </ListItem>
-                  ))}
-                </List>
-              </Stack>
-            ) : null}
-          </Fragment>
-        ))}
-      </Box>
-    </Block>
+    <>
+      {((groups?.length ?? 0) > 0) ? (
+        <Block tag="nav" aria-label={(landmarkLabel ?? label)}>
+          <Box className="grid grid-cols-2 gap-8 sm:grid-cols-3">
+            {(groups ?? []).map((g, i) => (
+              <Fragment key={g.id}>
+                {(i < 3) ? (
+                  <Stack gap="2" data-testid="group">
+                    <Text size="sm" weight="semibold">
+                      {g.title}
+                    </Text>
+                    <List className="m-0 flex list-none flex-col gap-2 p-0">
+                      {(g.links ?? []).map((item) => (
+                        <ListItem key={item.id}>
+                          <MenuEntry href={item.href} className="text-sm text-muted-foreground" variant="muted" size="sm">
+                            {item.name}
+                          </MenuEntry>
+                        </ListItem>
+                      ))}
+                    </List>
+                  </Stack>
+                ) : null}
+              </Fragment>
+            ))}
+          </Box>
+        </Block>
+      ) : null}
+    </>
   );
 }

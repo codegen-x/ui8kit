@@ -42,14 +42,16 @@ templ ShellSidebar(p ShellSidebarProps) {
 					}
 				}
 			}
-			@NavBlock(NavBlockProps{Label: uiutils.Cond(uiutils.T(vLandmarkLabel), uiutils.Uniq(uiutils.Tpl("{0}, {1}", uiutils.Get(vNav, "label"), vLandmarkLabel)), uiutils.Get(vNav, "label")), Class: uiutils.Cnv("flex-1")}) {
-				@list.List(list.ListProps{Class: "m-0 flex list-none flex-col gap-2 p-0", Attrs: uiutils.Attrs("data-testid", "items")}) {
-					for _, vL := range uiutils.L(uiutils.Get(vNav, "links")) {
-						@list.ListItem(list.ListItemProps{}) {
-							@MenuEntry(MenuEntryProps{Href: uiutils.Get(vL, "href"), Class: uiutils.Cnv(uiutils.Cnv("flex items-center gap-4 rounded py-2 text-sm", uiutils.Cond(uiutils.T(vNamed), "px-4", "justify-center px-2"), uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vL, "id"), uiutils.Get(vNav, "current"))), "bg-muted font-medium", ""))), Current: uiutils.Eq(uiutils.Get(vL, "id"), uiutils.Get(vNav, "current")), Size: "sm", Testid: "item"}) {
-								@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Get(vL, "icon")), Size: 16})
-								@inline.Inline(inline.InlineProps{Class: uiutils.S(uiutils.Cond(uiutils.T(vNamed), "", "sr-only"))}) {
-									{ uiutils.Text(uiutils.Get(vL, "name")) }
+			if uiutils.Gt(uiutils.Len(uiutils.Get(vNav, "links")), float64(0)) {
+				@NavBlock(NavBlockProps{Label: uiutils.Cond(uiutils.T(vLandmarkLabel), uiutils.Uniq(uiutils.Tpl("{0}, {1}", uiutils.Get(vNav, "label"), vLandmarkLabel)), uiutils.Get(vNav, "label")), Class: uiutils.Cnv("flex-1")}) {
+					@list.List(list.ListProps{Class: "m-0 flex list-none flex-col gap-2 p-0", Attrs: uiutils.Attrs("data-testid", "items")}) {
+						for _, vL := range uiutils.L(uiutils.Get(vNav, "links")) {
+							@list.ListItem(list.ListItemProps{}) {
+								@MenuEntry(MenuEntryProps{Href: uiutils.Get(vL, "href"), Class: uiutils.Cnv(uiutils.Cnv("flex items-center gap-4 rounded py-2 text-sm", uiutils.Cond(uiutils.T(vNamed), "px-4", "justify-center px-2"), uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vL, "id"), uiutils.Get(vNav, "current"))), "bg-muted font-medium", ""))), Current: uiutils.Eq(uiutils.Get(vL, "id"), uiutils.Get(vNav, "current")), Size: "sm", Testid: "item"}) {
+									@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Get(vL, "icon")), Size: 16})
+									@inline.Inline(inline.InlineProps{Class: uiutils.S(uiutils.Cond(uiutils.T(vNamed), "", "sr-only"))}) {
+										{ uiutils.Text(uiutils.Get(vL, "name")) }
+									}
 								}
 							}
 						}
@@ -62,7 +64,7 @@ templ ShellSidebar(p ShellSidebarProps) {
 				}
 			}
 		}
-		if uiutils.Eq(vMode, "twolevel") {
+		if uiutils.T(uiutils.And(uiutils.Eq(vMode, "twolevel"), uiutils.Gt(uiutils.Len(uiutils.Get(vNav, "sub")), float64(0)))) {
 			@box.Box(box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex w-56 flex-col gap-4 px-4 py-6", uiutils.Cond(uiutils.T(uiutils.Eq(vSide, "end")), "border-r border-border", "border-l border-border"))), Attrs: uiutils.Attrs("data-testid", "subnav")}) {
 				@text.Text(text.TextProps{Size: "sm", Weight: "semibold", Class: "px-4"}) {
 					{ uiutils.Text(uiutils.Get(vNav, "subTitle")) }

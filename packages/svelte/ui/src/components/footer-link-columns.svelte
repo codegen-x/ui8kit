@@ -24,25 +24,27 @@
   let { label, groups, landmarkLabel }: FooterLinkColumnsProps = $props();
 </script>
 
-<Block tag="nav" aria-label={(landmarkLabel ?? label)}>
-  <Box class="grid grid-cols-2 gap-8 sm:grid-cols-3">
-    {#each groups as g, i (g.id)}
-      {#if (i < 3)}
-        <Stack gap="2" data-testid="group">
-          <Text size="sm" weight="semibold">
-            {g.title}
-          </Text>
-          <List class="m-0 flex list-none flex-col gap-2 p-0">
-            {#each g.links as item (item.id)}
-              <ListItem>
-                <MenuEntry href={item.href} class="text-sm text-muted-foreground" variant="muted" size="sm">
-                  {item.name}
-                </MenuEntry>
-              </ListItem>
-            {/each}
-          </List>
-        </Stack>
-      {/if}
-    {/each}
-  </Box>
-</Block>
+{#if ((groups?.length ?? 0) > 0)}
+  <Block tag="nav" aria-label={(landmarkLabel ?? label)}>
+    <Box class="grid grid-cols-2 gap-8 sm:grid-cols-3">
+      {#each groups as g, i (g.id)}
+        {#if (i < 3)}
+          <Stack gap="2" data-testid="group">
+            <Text size="sm" weight="semibold">
+              {g.title}
+            </Text>
+            <List class="m-0 flex list-none flex-col gap-2 p-0">
+              {#each g.links as item (item.id)}
+                <ListItem>
+                  <MenuEntry href={item.href} class="text-sm text-muted-foreground" variant="muted" size="sm">
+                    {item.name}
+                  </MenuEntry>
+                </ListItem>
+              {/each}
+            </List>
+          </Stack>
+        {/if}
+      {/each}
+    </Box>
+  </Block>
+{/if}

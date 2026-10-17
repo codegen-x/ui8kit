@@ -26,12 +26,14 @@ templ ShellFooter(p ShellFooterProps) {
 		@text.Text(text.TextProps{Size: "xs", Class: "text-muted-foreground"}) {
 			{ uiutils.Text(uiutils.Get(vNav, "copyright")) }
 		}
-		@NavBlock(NavBlockProps{Label: uiutils.Cond(uiutils.T(vLandmarkLabel), uiutils.Uniq(uiutils.Tpl("{0}, {1}", uiutils.Get(vNav, "footerLabel"), vLandmarkLabel)), uiutils.Get(vNav, "footerLabel"))}) {
-			@list.List(list.ListProps{Class: "m-0 flex list-none items-center gap-4 p-0"}) {
-				for _, vF := range uiutils.L(uiutils.Get(vNav, "footer")) {
-					@list.ListItem(list.ListItemProps{}) {
-						@MenuEntry(MenuEntryProps{Href: uiutils.Get(vF, "href"), Class: uiutils.Cnv("text-xs text-muted-foreground"), Variant: "muted", Size: "sm"}) {
-							{ uiutils.Text(uiutils.Get(vF, "name")) }
+		if uiutils.Gt(uiutils.Len(uiutils.Get(vNav, "footer")), float64(0)) {
+			@NavBlock(NavBlockProps{Label: uiutils.Cond(uiutils.T(vLandmarkLabel), uiutils.Uniq(uiutils.Tpl("{0}, {1}", uiutils.Get(vNav, "footerLabel"), vLandmarkLabel)), uiutils.Get(vNav, "footerLabel"))}) {
+				@list.List(list.ListProps{Class: "m-0 flex list-none items-center gap-4 p-0"}) {
+					for _, vF := range uiutils.L(uiutils.Get(vNav, "footer")) {
+						@list.ListItem(list.ListItemProps{}) {
+							@MenuEntry(MenuEntryProps{Href: uiutils.Get(vF, "href"), Class: uiutils.Cnv("text-xs text-muted-foreground"), Variant: "muted", Size: "sm"}) {
+								{ uiutils.Text(uiutils.Get(vF, "name")) }
+							}
 						}
 					}
 				}

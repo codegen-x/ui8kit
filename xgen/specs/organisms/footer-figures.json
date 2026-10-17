@@ -19,75 +19,93 @@
   "events": [],
   "view": [
     {
-      "use": "Group",
-      "props": {
-        "Gap": "8",
-        "Class": "flex-wrap"
+      "when": {
+        "op": "gt",
+        "args": [
+          {
+            "op": "len",
+            "args": [
+              {
+                "$": "extras.stats"
+              }
+            ]
+          },
+          0
+        ]
       },
-      "children": [
+      "then": [
         {
-          "each": {
-            "$": "extras.stats"
+          "use": "Group",
+          "props": {
+            "Gap": "8",
+            "Class": "flex-wrap"
           },
-          "as": "s",
-          "key": {
-            "$": "s.id"
-          },
-          "do": [
+          "children": [
             {
-              "when": {
-                "op": "lt",
-                "args": [
-                  {
-                    "$": "i"
-                  },
-                  3
-                ]
+              "each": {
+                "$": "extras.stats"
               },
-              "then": [
+              "as": "s",
+              "key": {
+                "$": "s.id"
+              },
+              "do": [
                 {
-                  "use": "Stack",
-                  "props": {
-                    "Gap": "0"
+                  "when": {
+                    "op": "lt",
+                    "args": [
+                      {
+                        "$": "i"
+                      },
+                      3
+                    ]
                   },
-                  "attrs": {
-                    "data-testid": "footer-stat"
-                  },
-                  "children": [
+                  "then": [
                     {
-                      "use": "Text",
+                      "use": "Stack",
                       "props": {
-                        "Size": "xl",
-                        "Weight": "bold"
+                        "Gap": "0"
+                      },
+                      "attrs": {
+                        "data-testid": "footer-stat"
                       },
                       "children": [
                         {
-                          "text": {
-                            "$": "s.value"
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "use": "Text",
-                      "props": {
-                        "Size": "xs",
-                        "Class": "text-muted-foreground"
-                      },
-                      "children": [
+                          "use": "Text",
+                          "props": {
+                            "Size": "xl",
+                            "Weight": "bold"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "s.value"
+                              }
+                            }
+                          ]
+                        },
                         {
-                          "text": {
-                            "$": "s.label"
-                          }
+                          "use": "Text",
+                          "props": {
+                            "Size": "xs",
+                            "Class": "text-muted-foreground"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "s.label"
+                              }
+                            }
+                          ]
                         }
                       ]
                     }
                   ]
                 }
-              ]
+              ],
+              "index": "i"
             }
-          ],
-          "index": "i"
+          ]
         }
       ]
     }

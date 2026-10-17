@@ -13,21 +13,25 @@ export type FooterFiguresProps = {
 
 export function FooterFigures({ extras }: FooterFiguresProps) {
   return (
-    <Group gap="8" class="flex-wrap">
-      <For each={extras.stats ?? []}>{(s, iOf) => { const i = iOf(); return (
-        <>
-          {(i < 3) ? (
-            <Stack gap="0" data-testid="footer-stat">
-              <Text size="xl" weight="bold">
-                {s.value}
-              </Text>
-              <Text size="xs" class="text-muted-foreground">
-                {s.label}
-              </Text>
-            </Stack>
-          ) : null}
-        </>
-      ); }}</For>
-    </Group>
+    <>
+      {((extras.stats?.length ?? 0) > 0) ? (
+        <Group gap="8" class="flex-wrap">
+          <For each={extras.stats ?? []}>{(s, iOf) => { const i = iOf(); return (
+            <>
+              {(i < 3) ? (
+                <Stack gap="0" data-testid="footer-stat">
+                  <Text size="xl" weight="bold">
+                    {s.value}
+                  </Text>
+                  <Text size="xs" class="text-muted-foreground">
+                    {s.label}
+                  </Text>
+                </Stack>
+              ) : null}
+            </>
+          ); }}</For>
+        </Group>
+      ) : null}
+    </>
   );
 }

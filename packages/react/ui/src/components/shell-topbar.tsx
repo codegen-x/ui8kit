@@ -50,7 +50,7 @@ export function ShellTopbar({
           </Text>
         </Group>
       ) : null}
-      {((links as string) === "show") ? (
+      {(((links as string) === "show") && ((nav.links?.length ?? 0) > 0)) ? (
         <NavBlock
           label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", nav.label, landmarkLabel)) : nav.label)}
           className="hidden lg:block"
