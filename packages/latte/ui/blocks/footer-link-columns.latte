@@ -19,9 +19,9 @@
             {foreach ui_l(ui_get($v_g, ['links'])) as $v_item}
               {capture $c_3}
                 {capture $c_2}
-                  {=ui_text($v_item)}
+                  {=ui_text(ui_get($v_item, ['name']))}
                 {/capture}
-                {=ui_include('ui/link/link.latte', ['p' => ['Href' => '#/', 'Variant' => 'muted', 'Size' => 'sm'], 'children' => $c_2])|noescape}
+                {=ui_include('blocks/menu-entry.latte', ['p' => ['href' => ui_get($v_item, ['href']), 'className' => ui_cnv(['text-sm text-muted-foreground']), 'variant' => 'muted', 'size' => 'sm'], 'children' => $c_2])|noescape}
               {/capture}
               {=ui_include('ui/list/list-item.latte', ['p' => [], 'children' => $c_3])|noescape}
             {/foreach}

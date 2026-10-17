@@ -33,7 +33,6 @@ export function PromptComposer({ label, attachLabel, modelLabel, send, href }: P
       {attachLabel ? (
         <Group gap="2" align="center" data-testid="composer-attachments">
           <Button
-            href="#/"
             variant="ghost"
             size="sm"
             className={cn(
@@ -46,7 +45,6 @@ export function PromptComposer({ label, attachLabel, modelLabel, send, href }: P
             {attachLabel}
           </Button>
           <Button
-            href="#/"
             variant="ghost"
             size="sm"
             className={cn(
@@ -71,7 +69,6 @@ export function PromptComposer({ label, attachLabel, modelLabel, send, href }: P
       <Group gap="2" align="center" justify="between" className="h-8 w-full" data-testid="composer-tools">
         <Group gap="2" align="center">
           <Button
-            href="#/"
             variant="ghost"
             size="sm"
             layout="icon"
@@ -83,7 +80,6 @@ export function PromptComposer({ label, attachLabel, modelLabel, send, href }: P
           </Button>
           {modelLabel ? (
             <Button
-              href="#/"
               variant="ghost"
               size="sm"
               className={cn("gap-2 bg-background/10 text-background hover:bg-background/20", defaults.hero.model)}

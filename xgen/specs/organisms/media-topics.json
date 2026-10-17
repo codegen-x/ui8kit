@@ -66,86 +66,92 @@
               },
               "then": [
                 {
-                  "use": "Link",
+                  "organism": "MenuEntry",
                   "props": {
-                    "Href": "#/",
-                    "Variant": "block",
-                    "Class": "rounded bg-card inset-ring inset-ring-border items-center gap-4 p-4"
-                  },
-                  "attrs": {
-                    "data-testid": "media-topic"
-                  },
-                  "children": [
-                    {
-                      "use": "Inline",
-                      "props": {
-                        "Class": "flex size-8 shrink-0 items-center justify-center rounded bg-primary text-primary-foreground"
-                      },
-                      "children": [
-                        {
-                          "use": "LucideIcon",
-                          "props": {
-                            "Name": {
-                              "$": "c.icon"
-                            },
-                            "Size": 16
-                          }
-                        }
-                      ]
+                    "href": {
+                      "$": "c.href"
                     },
-                    {
-                      "use": "Stack",
-                      "props": {
-                        "Gap": "0",
-                        "Class": "min-w-0 flex-1"
-                      },
-                      "children": [
+                    "className": "rounded bg-card inset-ring inset-ring-border flex w-full items-center gap-4 p-4",
+                    "variant": "block",
+                    "testid": "media-topic",
+                    "block": true
+                  },
+                  "slots": {
+                    "children": {
+                      "args": [],
+                      "do": [
                         {
-                          "use": "Text",
+                          "use": "Inline",
                           "props": {
-                            "Size": "sm",
-                            "Weight": "semibold"
+                            "Class": "flex size-8 shrink-0 items-center justify-center rounded bg-primary text-primary-foreground"
                           },
                           "children": [
                             {
-                              "text": {
-                                "$": "c.name"
+                              "use": "LucideIcon",
+                              "props": {
+                                "Name": {
+                                  "$": "c.icon"
+                                },
+                                "Size": 16
                               }
                             }
                           ]
                         },
                         {
-                          "use": "Text",
+                          "use": "Stack",
                           "props": {
-                            "Size": "xs",
-                            "Class": "text-muted-foreground"
+                            "Gap": "0",
+                            "Class": "min-w-0 flex-1"
                           },
                           "children": [
                             {
-                              "text": {
-                                "op": "tpl",
-                                "args": [
-                                  {
-                                    "$": "labels.count"
-                                  },
-                                  {
-                                    "$": "c.count"
+                              "use": "Text",
+                              "props": {
+                                "Size": "sm",
+                                "Weight": "semibold"
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "c.name"
                                   }
-                                ]
-                              }
+                                }
+                              ]
+                            },
+                            {
+                              "use": "Text",
+                              "props": {
+                                "Size": "xs",
+                                "Class": "text-muted-foreground"
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "op": "tpl",
+                                    "args": [
+                                      {
+                                        "$": "labels.count"
+                                      },
+                                      {
+                                        "$": "c.count"
+                                      }
+                                    ]
+                                  }
+                                }
+                              ]
                             }
                           ]
+                        },
+                        {
+                          "use": "LucideIcon",
+                          "props": {
+                            "Name": "arrow-right",
+                            "Size": 16
+                          }
                         }
                       ]
-                    },
-                    {
-                      "use": "LucideIcon",
-                      "props": {
-                        "Name": "arrow-right",
-                        "Size": 16
-                      }
                     }
-                  ]
+                  }
                 }
               ]
             }

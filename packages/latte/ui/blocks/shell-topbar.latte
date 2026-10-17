@@ -30,7 +30,7 @@
               {/capture}
               {=ui_include('ui/inline/inline.latte', ['p' => ['Class' => ui_s((ui_t(true) ? '' : 'sr-only'))], 'children' => $c_3])|noescape}
             {/capture}
-            {=ui_include('ui/link/link.latte', ['p' => ['Href' => '#/', 'Variant' => 'default', 'Size' => 'sm', 'AriaCurrent' => ui_s((ui_t(ui_eq(ui_get($v_l, ['id']), ui_get($v_nav, ['current']))) ? 'page' : null)), 'Class' => ui_s(ui_cnv(['flex items-center gap-4 rounded py-2', (ui_t(true) ? 'px-4' : 'justify-center px-2'), (ui_t(ui_eq(ui_get($v_l, ['id']), ui_get($v_nav, ['current']))) ? 'bg-muted font-medium' : '')])), 'Attrs' => ui_attrs(['data-testid', 'item'])], 'children' => $c_4])|noescape}
+            {=ui_include('blocks/menu-entry.latte', ['p' => ['href' => ui_get($v_l, ['href']), 'className' => ui_cnv([ui_cnv(['flex items-center gap-4 rounded py-2 text-sm', (ui_t(true) ? 'px-4' : 'justify-center px-2'), (ui_t(ui_eq(ui_get($v_l, ['id']), ui_get($v_nav, ['current']))) ? 'bg-muted font-medium' : '')])]), 'current' => ui_eq(ui_get($v_l, ['id']), ui_get($v_nav, ['current'])), 'size' => 'sm', 'testid' => 'item'], 'children' => $c_4])|noescape}
           {/capture}
           {=ui_include('ui/list/list-item.latte', ['p' => [], 'children' => $c_5])|noescape}
         {/foreach}

@@ -22,10 +22,10 @@
 <script lang="ts">
   import Block from "../primitives/block/block.svelte";
   import Inline from "../primitives/inline/inline.svelte";
-  import Link from "../primitives/link/link.svelte";
   import List from "../primitives/list/list.svelte";
   import ListItem from "../primitives/list/list-item.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
+  import MenuEntry from "../components/menu-entry.svelte";
   import { cn } from "../utils";
 
   let {
@@ -53,21 +53,20 @@
   <List class="m-0 grid list-none grid-flow-col auto-cols-fr p-0" data-testid="items">
     {#each tabs as tab (tab.id)}
       <ListItem>
-        <Link
-          href="#/"
-          variant="default"
-          aria-current={((tab.id === current) ? "page" : undefined)}
+        <MenuEntry
+          href={tab.href}
           class={cn(
             "flex flex-col items-center gap-2 py-2 text-xs",
             ((tab.id === current) ? "font-semibold text-primary" : "text-muted-foreground")
           )}
-          data-testid="item"
+          current={(tab.id === current)}
+          testid="item"
         >
           <LucideIcon name={tab.icon} size={20} />
           <Inline class={(((labels as string) === "hide") ? "sr-only" : "")}>
             {tab.name}
           </Inline>
-        </Link>
+        </MenuEntry>
       </ListItem>
     {/each}
   </List>

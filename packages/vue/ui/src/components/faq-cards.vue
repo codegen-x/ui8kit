@@ -17,7 +17,7 @@ export type FaqCardsProps = {
 <script setup lang="ts">
 import Badge from "../primitives/badge/badge.vue";
 import Box from "../primitives/box/box.vue";
-import Link from "../primitives/link/link.vue";
+import Button from "../primitives/button/button.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
@@ -59,10 +59,10 @@ const { items, labels, cards = "grid3" } = defineProps<FaqCardsProps>();
         </Text>
       </Stack>
       <Box class="mt-auto">
-        <Link href="#/faq" variant="default" size="sm" class="font-medium">
+        <Button variant="link" size="sm" class="gap-2 px-0 font-medium">
           {{ labels.more }}
           <LucideIcon name="arrow-right" :size="16" />
-        </Link>
+        </Button>
       </Box>
     </ArticleBlock>
   </Box>

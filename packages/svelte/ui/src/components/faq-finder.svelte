@@ -19,13 +19,12 @@
 <script lang="ts">
   import Button from "../primitives/button/button.svelte";
   import Group from "../primitives/group/group.svelte";
-  import Link from "../primitives/link/link.svelte";
   import List from "../primitives/list/list.svelte";
   import ListItem from "../primitives/list/list-item.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
+  import MenuEntry from "../components/menu-entry.svelte";
   import SearchField from "../components/search-field.svelte";
-  import { tpl } from "../utils";
 
   let { items, labels, topics }: FaqFinderProps = $props();
 </script>
@@ -34,7 +33,7 @@
   <SearchField label={labels.search} placeholder={labels.search} value={(labels.query ?? "")} />
   <Group gap="2" class="flex-wrap">
     {#each topics as t (t.id)}
-      <Button variant="outline" size="sm" href={tpl("#/faq/{0}", t.value)} data-testid="faq-topic">
+      <Button variant="outline" size="sm" data-testid="faq-topic" data-value={t.value}>
         {t.title}
       </Button>
     {/each}
@@ -47,9 +46,9 @@
       {#each items as q, i (q.id)}
         {#if (i < 3)}
           <ListItem data-testid="faq-popular">
-            <Link href="#/faq" variant="default" size="sm">
+            <MenuEntry href={q.href} class="text-sm font-medium" size="sm">
               {q.question}
-            </Link>
+            </MenuEntry>
           </ListItem>
         {/if}
       {/each}

@@ -45,7 +45,7 @@ import { faq as faqEntries } from "@ui8kit/app-shared/data/faq";
 import { faqtabs as faqtabsEntries } from "@ui8kit/app-shared/data/faqtabs";
 import { sitemap as sitemapEntries } from "@ui8kit/app-shared/data/sitemap";
 
-const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
+const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","href":"slug|route"} as const;
 const TERMINAL_FIELDS = {"id":"id","text":"title","kind":"metadata.line_kind.value"} as const;
 const STATS_FIELDS = {
   "id": "id",
@@ -81,7 +81,7 @@ const TIERS_FIELDS = {
 const LOGOS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
 const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"terms|term-slug:faq_category"} as const;
 const FAQTABS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
-const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
+const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"id|menu","href":"slug|route"} as const;
 
 const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS, CODEX);
 const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS, CODEX);

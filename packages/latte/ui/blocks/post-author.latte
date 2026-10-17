@@ -27,12 +27,12 @@
           {=ui_include('ui/lucide-icon/lucide-icon.latte', ['p' => ['Name' => 'share-2', 'Size' => 16]])|noescape}
           {=ui_text(ui_get($v_labels, ['share']))}
         {/capture}
-        {=ui_include('ui/button/button.latte', ['p' => ['Variant' => 'ghost', 'Size' => 'default', 'Href' => '#/', 'Class' => 'gap-2', 'Attrs' => ui_attrs(['data-testid', 'post-share'])], 'children' => $c_4])|noescape}
+        {=ui_include('ui/button/button.latte', ['p' => ['Variant' => 'ghost', 'Size' => 'default', 'Class' => 'gap-2', 'Attrs' => ui_attrs(['data-testid', 'post-share'])], 'children' => $c_4])|noescape}
         {capture $c_5}
           {=ui_include('ui/lucide-icon/lucide-icon.latte', ['p' => ['Name' => 'bookmark', 'Size' => 16]])|noescape}
           {=ui_text(ui_get($v_labels, ['save']))}
         {/capture}
-        {=ui_include('ui/button/button.latte', ['p' => ['Variant' => 'ghost', 'Size' => 'default', 'Href' => '#/', 'Class' => 'gap-2', 'Attrs' => ui_attrs(['data-testid', 'post-save'])], 'children' => $c_5])|noescape}
+        {=ui_include('ui/button/button.latte', ['p' => ['Variant' => 'ghost', 'Size' => 'default', 'Class' => 'gap-2', 'Attrs' => ui_attrs(['data-testid', 'post-save'])], 'children' => $c_5])|noescape}
       {/capture}
       {=ui_include('ui/group/group.latte', ['p' => ['Gap' => '2'], 'children' => $c_6])|noescape}
     {else}

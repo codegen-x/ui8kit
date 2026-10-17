@@ -179,36 +179,15 @@
                               "use": "ListItem",
                               "children": [
                                 {
-                                  "use": "Link",
+                                  "organism": "MenuEntry",
                                   "props": {
-                                    "Href": "#/",
-                                    "Variant": "default",
-                                    "Size": "sm",
-                                    "AriaCurrent": {
-                                      "op": "cond",
-                                      "args": [
-                                        {
-                                          "op": "eq",
-                                          "args": [
-                                            {
-                                              "$": "l.id"
-                                            },
-                                            {
-                                              "$": "nav.current"
-                                            }
-                                          ]
-                                        },
-                                        "page",
-                                        {
-                                          "op": "undef",
-                                          "args": []
-                                        }
-                                      ]
+                                    "href": {
+                                      "$": "l.href"
                                     },
-                                    "Class": {
+                                    "className": {
                                       "op": "cn",
                                       "args": [
-                                        "flex items-center gap-4 rounded py-2",
+                                        "flex items-center gap-4 rounded py-2 text-sm",
                                         {
                                           "op": "cond",
                                           "args": [
@@ -236,42 +215,57 @@
                                           ]
                                         }
                                       ]
-                                    }
-                                  },
-                                  "attrs": {
-                                    "data-testid": "item"
-                                  },
-                                  "children": [
-                                    {
-                                      "use": "LucideIcon",
-                                      "props": {
-                                        "Name": {
-                                          "$": "l.icon"
-                                        },
-                                        "Size": 16
-                                      }
                                     },
-                                    {
-                                      "use": "Inline",
-                                      "props": {
-                                        "Class": {
-                                          "op": "cond",
-                                          "args": [
-                                            true,
-                                            "",
-                                            "sr-only"
-                                          ]
-                                        }
-                                      },
-                                      "children": [
+                                    "current": {
+                                      "op": "eq",
+                                      "args": [
                                         {
-                                          "text": {
-                                            "$": "l.name"
+                                          "$": "l.id"
+                                        },
+                                        {
+                                          "$": "nav.current"
+                                        }
+                                      ]
+                                    },
+                                    "size": "sm",
+                                    "testid": "item"
+                                  },
+                                  "slots": {
+                                    "children": {
+                                      "args": [],
+                                      "do": [
+                                        {
+                                          "use": "LucideIcon",
+                                          "props": {
+                                            "Name": {
+                                              "$": "l.icon"
+                                            },
+                                            "Size": 16
                                           }
+                                        },
+                                        {
+                                          "use": "Inline",
+                                          "props": {
+                                            "Class": {
+                                              "op": "cond",
+                                              "args": [
+                                                true,
+                                                "",
+                                                "sr-only"
+                                              ]
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "l.name"
+                                              }
+                                            }
+                                          ]
                                         }
                                       ]
                                     }
-                                  ]
+                                  }
                                 }
                               ]
                             }

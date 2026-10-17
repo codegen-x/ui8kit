@@ -52,7 +52,7 @@ const POSTS_FIELDS = {
   "href": "slug|route",
   "image": "featured_media_id|media",
 } as const;
-const CATEGORIES_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","count":"metadata.count.value"} as const;
+const CATEGORIES_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","count":"metadata.count.value","href":"slug|route"} as const;
 const REVIEWS_FIELDS = {
   "id": "id",
   "title": "title",

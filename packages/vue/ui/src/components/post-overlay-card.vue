@@ -18,12 +18,12 @@ export type PostOverlayCardProps = {
 import Badge from "../primitives/badge/badge.vue";
 import Box from "../primitives/box/box.vue";
 import Group from "../primitives/group/group.vue";
-import Link from "../primitives/link/link.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
 import MediaFrame from "../components/media-frame.vue";
+import MenuEntry from "../components/menu-entry.vue";
 import { cn } from "../utils";
 
 const { p, labels, ratio = "4/3" } = defineProps<PostOverlayCardProps>();
@@ -47,10 +47,10 @@ const { p, labels, ratio = "4/3" } = defineProps<PostOverlayCardProps>();
       <Text size="sm" :class="cn('text-muted-foreground', 'line-clamp-2')">
         {{ p.excerpt }}
       </Text>
-      <Link href="#/" size="sm" data-testid="read">
+      <MenuEntry :href="p.href" class="gap-2 text-sm font-medium" size="sm" testid="read">
         {{ labels.read }}
         <LucideIcon name="arrow-right" :size="16" />
-      </Link>
+      </MenuEntry>
     </Stack>
   </Box>
 </template>

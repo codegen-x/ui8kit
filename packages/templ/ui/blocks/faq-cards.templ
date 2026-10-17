@@ -6,7 +6,7 @@ package blocks
 import (
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/badge"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/box"
-	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/link"
+	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/button"
 	lucideicon "github.com/codegen-x/ui8kit/packages/templ/ui/ui/lucide-icon"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/stack"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/text"
@@ -46,7 +46,7 @@ templ FaqCards(p FaqCardsProps) {
 					}
 				}
 				@box.Box(box.BoxProps{Class: "mt-auto"}) {
-					@link.Link(link.LinkProps{Href: "#/faq", Variant: "default", Size: "sm", Class: "font-medium"}) {
+					@button.Button(button.ButtonProps{Variant: "link", Size: "sm", Class: "gap-2 px-0 font-medium"}) {
 						{ uiutils.Text(uiutils.Get(vLabels, "more")) }
 						@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "arrow-right", Size: 16})
 					}

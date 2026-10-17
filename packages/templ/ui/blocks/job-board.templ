@@ -6,7 +6,6 @@ package blocks
 import (
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/badge"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/group"
-	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/link"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/list"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/stack"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/text"
@@ -57,7 +56,7 @@ templ JobBoard(p JobBoardProps) {
 							for _, vJ := range uiutils.L(uiutils.Where(vJobs, "dept", uiutils.Get(vD, "id"))) {
 								@list.ListItem(list.ListItemProps{Class: "flex flex-wrap items-center justify-between gap-4 border-b border-border py-4", Attrs: uiutils.Attrs("data-testid", "item")}) {
 									@stack.Stack(stack.StackProps{Gap: "0"}) {
-										@link.Link(link.LinkProps{Href: "#/careers", Variant: "default", Class: "font-medium"}) {
+										@MenuEntry(MenuEntryProps{Href: uiutils.Get(vJ, "href"), Class: uiutils.Cnv("font-medium")}) {
 											{ uiutils.Text(uiutils.Get(vJ, "title")) }
 										}
 										@text.Text(text.TextProps{Size: "xs", Class: "text-muted-foreground"}) {

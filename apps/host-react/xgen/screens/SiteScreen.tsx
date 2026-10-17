@@ -65,10 +65,10 @@ export function SiteScreen({ url }: { url: UrlPort }) {
         labels={ui.site.header}
         current={route.area}
         cta={ui.site.header.cta}
-        ctaHref="#/pricing"
         layout="inline"
         position="static"
         actions="none"
+        routes={{ home: "#/", pricing: "#/pricing" }}
         onTheme={() => actions.toggleTheme()}
       />
       <Block tag="main" id="main-content" tabIndex={-1} data-testid="main">
@@ -201,7 +201,12 @@ export function SiteScreen({ url }: { url: UrlPort }) {
           />
         )}
       </Block>
-      <SiteFooter labels={ui.site.footer} layout="minimal" density="default" />
+      <SiteFooter
+        labels={ui.site.footer}
+        layout="minimal"
+        density="default"
+        routes={{ home: "#/", pricing: "#/pricing" }}
+      />
     </>
   );
 }

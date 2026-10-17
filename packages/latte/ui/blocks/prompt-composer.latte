@@ -14,12 +14,12 @@
         {=ui_include('ui/lucide-icon/lucide-icon.latte', ['p' => ['Name' => 'file-text', 'Size' => 16]])|noescape}
         {=ui_text($v_attachLabel)}
       {/capture}
-      {=ui_include('ui/button/button.latte', ['p' => ['Href' => '#/', 'Variant' => 'ghost', 'Size' => 'sm', 'Class' => ui_s(ui_cnv(['gap-2 overflow-hidden bg-background/10 text-background hover:bg-background/20', ui_preset('blocks/presets/defaults.json', ['hero', 'attach'])])), 'Attrs' => ui_attrs(['data-testid', 'composer-attach'])], 'children' => $c_1])|noescape}
+      {=ui_include('ui/button/button.latte', ['p' => ['Variant' => 'ghost', 'Size' => 'sm', 'Class' => ui_s(ui_cnv(['gap-2 overflow-hidden bg-background/10 text-background hover:bg-background/20', ui_preset('blocks/presets/defaults.json', ['hero', 'attach'])])), 'Attrs' => ui_attrs(['data-testid', 'composer-attach'])], 'children' => $c_1])|noescape}
       {capture $c_2}
         {=ui_include('ui/lucide-icon/lucide-icon.latte', ['p' => ['Name' => 'paperclip', 'Size' => 16]])|noescape}
         {=ui_text($v_attachLabel)}
       {/capture}
-      {=ui_include('ui/button/button.latte', ['p' => ['Href' => '#/', 'Variant' => 'ghost', 'Size' => 'sm', 'Class' => ui_s(ui_cnv(['gap-2 overflow-hidden bg-background/10 text-background hover:bg-background/20', ui_preset('blocks/presets/defaults.json', ['hero', 'attach'])])), 'Attrs' => ui_attrs(['data-testid', 'composer-attach'])], 'children' => $c_2])|noescape}
+      {=ui_include('ui/button/button.latte', ['p' => ['Variant' => 'ghost', 'Size' => 'sm', 'Class' => ui_s(ui_cnv(['gap-2 overflow-hidden bg-background/10 text-background hover:bg-background/20', ui_preset('blocks/presets/defaults.json', ['hero', 'attach'])])), 'Attrs' => ui_attrs(['data-testid', 'composer-attach'])], 'children' => $c_2])|noescape}
     {/capture}
     {=ui_include('ui/group/group.latte', ['p' => ['Gap' => '2', 'Align' => 'center', 'Attrs' => ui_attrs(['data-testid', 'composer-attachments'])], 'children' => $c_3])|noescape}
   {/if}
@@ -32,14 +32,14 @@
       {capture $c_5}
         {=ui_include('ui/lucide-icon/lucide-icon.latte', ['p' => ['Name' => 'plus', 'Size' => 16]])|noescape}
       {/capture}
-      {=ui_include('ui/button/button.latte', ['p' => ['Href' => '#/', 'Variant' => 'ghost', 'Size' => 'sm', 'Layout' => 'icon', 'Class' => 'bg-background/10 text-background hover:bg-background/20', 'Attrs' => ui_attrs(['data-testid', 'composer-plus', 'aria-label', ui_coalesce([$v_attachLabel, 'Attach'])])], 'children' => $c_5])|noescape}
+      {=ui_include('ui/button/button.latte', ['p' => ['Variant' => 'ghost', 'Size' => 'sm', 'Layout' => 'icon', 'Class' => 'bg-background/10 text-background hover:bg-background/20', 'Attrs' => ui_attrs(['data-testid', 'composer-plus', 'aria-label', ui_coalesce([$v_attachLabel, 'Attach'])])], 'children' => $c_5])|noescape}
       {if ui_t($v_modelLabel)}
         {capture $c_6}
           {=ui_include('ui/lucide-icon/lucide-icon.latte', ['p' => ['Name' => 'sparkles', 'Size' => 16]])|noescape}
           {=ui_text($v_modelLabel)}
           {=ui_include('ui/lucide-icon/lucide-icon.latte', ['p' => ['Name' => 'chevron-down', 'Size' => 16]])|noescape}
         {/capture}
-        {=ui_include('ui/button/button.latte', ['p' => ['Href' => '#/', 'Variant' => 'ghost', 'Size' => 'sm', 'Class' => ui_s(ui_cnv(['gap-2 bg-background/10 text-background hover:bg-background/20', ui_preset('blocks/presets/defaults.json', ['hero', 'model'])])), 'Attrs' => ui_attrs(['data-testid', 'composer-model'])], 'children' => $c_6])|noescape}
+        {=ui_include('ui/button/button.latte', ['p' => ['Variant' => 'ghost', 'Size' => 'sm', 'Class' => ui_s(ui_cnv(['gap-2 bg-background/10 text-background hover:bg-background/20', ui_preset('blocks/presets/defaults.json', ['hero', 'model'])])), 'Attrs' => ui_attrs(['data-testid', 'composer-model'])], 'children' => $c_6])|noescape}
       {/if}
     {/capture}
     {=ui_include('ui/group/group.latte', ['p' => ['Gap' => '2', 'Align' => 'center'], 'children' => $c_7])|noescape}

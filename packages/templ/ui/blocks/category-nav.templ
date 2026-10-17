@@ -8,7 +8,6 @@ import (
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/container"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/group"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/inline"
-	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/link"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/list"
 	lucideicon "github.com/codegen-x/ui8kit/packages/templ/ui/ui/lucide-icon"
 	selectfield "github.com/codegen-x/ui8kit/packages/templ/ui/ui/select"
@@ -62,7 +61,7 @@ templ CategoryNav(p CategoryNavProps) {
 			@list.List(list.ListProps{Tag: "ul", Class: uiutils.S(vListShape), Attrs: uiutils.Attrs("data-testid", "items")}) {
 				for _, vC := range uiutils.L(vCategories) {
 					@list.ListItem(list.ListItemProps{}) {
-						@link.Link(link.LinkProps{Href: "#/categories", Variant: "default", AriaCurrent: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vC, "id"), vCurrent)), "page", nil)), Class: uiutils.S(uiutils.Cnv("text-sm", vLinkShape, uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vC, "id"), vCurrent)), vCurrentLook, vOtherLook))), Attrs: uiutils.Attrs("data-testid", "item")}) {
+						@MenuEntry(MenuEntryProps{Href: uiutils.Get(vC, "href"), Class: uiutils.Cnv(uiutils.Cnv("text-sm", vLinkShape, uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vC, "id"), vCurrent)), vCurrentLook, vOtherLook))), Current: uiutils.Eq(uiutils.Get(vC, "id"), vCurrent), Testid: "item", Block: true}) {
 							if uiutils.Eq(vIcon, "show") {
 								if uiutils.T(vTiles) {
 									@inline.Inline(inline.InlineProps{Class: "flex size-10 items-center justify-center rounded bg-muted"}) {

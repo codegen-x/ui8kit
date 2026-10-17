@@ -8,7 +8,7 @@ import { id, tsOf, toneLite } from "../props";
 const faqSplit = spec("organism.faq-split", "FaqSplit", "Questions in a split or as cards. Axes: layout (head: the heading and an action beside the disclosures, aside: the disclosures beside a help card, media: the disclosures and an action beside a picture, search: a finder beside a picture, cards: the questions as cards), cards (grid3, grid4, icons), mediaSide, tone.", {
   typeImports: [{ from: "FeatureGrid", names: ["Feature"] }, { from: "FaqList", names: ["FaqTab"] }],
   records: {
-    Question: fields(["id", "string"], ["question", "string"], ["answer", "string"], ["category", "string"], ["icon", "string"]),
+    Question: fields(["id", "string"], ["question", "string"], ["answer", "string"], ["category", "string"], ["icon", "string"], ["href", "string", true]),
     FaqSplitLabels: fields(["cta", "string"], ["more", "string"], ["asideTitle", "string"], ["asideText", "string"], ["asideCta", "string"], ["search", "string"], ["popular", "string"], ["query", "string", true]),
   },
   props: [
@@ -27,7 +27,7 @@ const faqSplit = spec("organism.faq-split", "FaqSplit", "Questions in a split or
   ],
   view: (() => {
     const list = organism("FaqDisclosures", { items: ref("items"), name: tpl("{0}-faq", ref("id")) });
-    const cta = use("Box", {}, use("Button", { props: { Variant: "default", Size: "default", Href: "#/contact" }, attrs: { "data-testid": "faq-cta" } }, text(ref("labels.cta"))));
+    const cta = use("Box", {}, use("Button", { props: { Variant: "default", Size: "default" }, attrs: { "data-testid": "faq-cta" } }, text(ref("labels.cta"))));
     const common = { id: ref("id"), title: ref("title"), lead: ref("lead"), badge: ref("badge"), tone: ref("tone"), density: "default" };
     const picture = organism("MediaFrame", { alt: ref("title"), ratio: "4/3" });
     return [

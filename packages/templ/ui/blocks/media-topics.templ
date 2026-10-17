@@ -5,7 +5,6 @@ package blocks
 
 import (
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/inline"
-	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/link"
 	lucideicon "github.com/codegen-x/ui8kit/packages/templ/ui/ui/lucide-icon"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/stack"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/text"
@@ -28,7 +27,7 @@ templ MediaTopics(p MediaTopicsProps) {
 		}
 		for vI, vC := range uiutils.L(uiutils.Get(vExtras, "topics")) {
 			if uiutils.Lt(float64(vI), float64(5)) {
-				@link.Link(link.LinkProps{Href: "#/", Variant: "block", Class: "rounded bg-card inset-ring inset-ring-border items-center gap-4 p-4", Attrs: uiutils.Attrs("data-testid", "media-topic")}) {
+				@MenuEntry(MenuEntryProps{Href: uiutils.Get(vC, "href"), Class: uiutils.Cnv("rounded bg-card inset-ring inset-ring-border flex w-full items-center gap-4 p-4"), Variant: "block", Testid: "media-topic", Block: true}) {
 					@inline.Inline(inline.InlineProps{Class: "flex size-8 shrink-0 items-center justify-center rounded bg-primary text-primary-foreground"}) {
 						@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Get(vC, "icon")), Size: 16})
 					}

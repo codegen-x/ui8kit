@@ -36,7 +36,7 @@
       {%- set c_6 -%}
         {{ ui_text(ui_get(v_labels, ['forgot'])) }}
       {%- endset -%}
-      {{ ui_include('ui/link/link.html.j2', {'p': {'Href': '#/', 'Variant': 'default', 'Class': 'text-sm'}, 'children': c_6}) }}
+      {{ ui_include('ui/button/button.html.j2', {'p': {'Variant': 'link', 'Size': 'sm', 'Class': 'px-0'}, 'children': c_6}) }}
     {%- endset -%}
     {{ ui_include('ui/group/group.html.j2', {'p': {'Justify': 'between', 'Align': 'center', 'Class': 'flex-wrap gap-2'}, 'children': c_7}) }}
   {%- endif %}

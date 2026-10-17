@@ -25,7 +25,7 @@ const templateGrid = spec(`${O}template-grid`, "TemplateGrid", "Template gallery
     { name: "filters", type: ts("Filter[]"), required: true },
     { name: "filtersLabel", type: "string", required: true, docs: "accessible name of the filter row" },
     { name: "browse", type: "string", required: true, docs: "Browse All label" },
-    { name: "browseHref", type: "string", default: "#/" },
+    { name: "browseHref", type: "string", docs: "the address of the full list; none: a button" },
     { name: "viewsLabel", type: "string", required: true, docs: "accessible name for the views count" },
     { name: "likesLabel", type: "string", required: true, docs: "accessible name for the likes count" },
     { name: "cols", type: tsOf("1-3", "1-4"), default: "1-4" },

@@ -20,13 +20,13 @@ import { computed } from "vue";
 import Badge from "../primitives/badge/badge.vue";
 import Box from "../primitives/box/box.vue";
 import Group from "../primitives/group/group.vue";
-import Link from "../primitives/link/link.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
 import ArticleBlock from "../components/article-block.vue";
 import MediaFrame from "../components/media-frame.vue";
+import MenuEntry from "../components/menu-entry.vue";
 import { cn, tpl } from "../utils";
 
 const { projects, labels, layout = "cards" } = defineProps<ProjectTilesProps>();
@@ -89,14 +89,14 @@ const over = computed(() =>
             </Badge>
           </Group>
           <Group gap="4" class="pt-2">
-            <Link href="#/work" variant="default" class="inline-flex items-center gap-2 text-sm font-medium">
+            <MenuEntry :href="p.href" class="inline-flex items-center gap-2 text-sm font-medium">
               {{ labels.case }}
               <LucideIcon name="arrow-right" :size="16" />
-            </Link>
-            <Link href="#/work" variant="default" class="inline-flex items-center gap-2 text-sm font-medium">
+            </MenuEntry>
+            <MenuEntry :href="p.href" class="inline-flex items-center gap-2 text-sm font-medium">
               {{ labels.view }}
               <LucideIcon name="external-link" :size="16" />
-            </Link>
+            </MenuEntry>
           </Group>
         </template>
       </Stack>

@@ -88,6 +88,9 @@ export interface ReadOptions {
   users?: readonly unknown[];
   /** the Codex terms (of every taxonomy): `terms|term:<taxonomy>` resolves to the `name` of the entry's first term of that taxonomy; without it: undefined */
   terms?: readonly unknown[];
+  /** the entries of kind `menu_item` that sit under another (parent_id): `id|menu` lists the children of an item as NavLink
+   *  records { id, name, icon, href } in their `order`; without it: [] */
+  menus?: readonly unknown[];
   /** the address of an entry by its kind, with `{slug}`: `{ product: "#/product/{slug}" }`; `slug|route` builds it; without a route: undefined (no link) */
   routes?: Readonly<Record<string, string>>;
 }
@@ -104,6 +107,7 @@ const byLocale = (records: readonly unknown[], locale: string): unknown => recor
  *   "author_id|author"          -> the display name of that user     "terms|term:category" -> the name of the entry's term of that taxonomy
  *   "terms|term-slug:faq_category" -> the slug of that term (a filter key)
  *   "metadata.value.value|number" -> the number in the locale, with the entry's `metadata.unit` (percent, second): 12400 -> "12,400"
+ *   "id|menu"                   -> the menu items under this one (parent_id), as { id, name, icon, href } (href only with a route)
  */
 export function readPath(source: unknown, path: string, opts: ReadOptions = {}): unknown {
   const [dotted, pipe] = path.split("|") as [string, string | undefined];
@@ -130,6 +134,13 @@ export function readPath(source: unknown, path: string, opts: ReadOptions = {}):
     if (ref === undefined) return undefined;
     const term = byLocale((opts.terms ?? []).filter((t) => field(t, "taxonomy_id") === taxonomy && field(t, "id") === field(ref, "term_id")), locale);
     return field(term, pipe.startsWith("term-slug:") ? "slug" : "name");
+  }
+  if (pipe === "menu") {
+    const kids = (opts.menus ?? []).filter((m) => field(m, "parent_id") === cur);
+    const order = (m: unknown): number => { const o = field(m, "order"); return typeof o === "number" ? o : 0; };
+    return [...kids].sort((a, b) => order(a) - order(b)).map((m) => ({
+      id: field(m, "id"), name: field(m, "title"), icon: field(field(field(m, "metadata"), "icon"), "value"), href: readPath(m, "slug|route", opts),
+    }));
   }
   if (pipe === "route") {
     const kind = field(source, "kind"), route = typeof kind === "string" ? opts.routes?.[kind] : undefined;

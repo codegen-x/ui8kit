@@ -9,11 +9,11 @@ import { For, type JSX } from "solid-js";
 import { Box } from "../primitives/box/box";
 import { Card } from "../primitives/card/card";
 import { CardContent } from "../primitives/card/card-content";
-import { Link } from "../primitives/link/link";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Text } from "../primitives/text/text";
 import { Title } from "../primitives/title/title";
 import { MediaFrame } from "../components/media-frame";
+import { MenuEntry } from "../components/menu-entry";
 import { SectionFrame } from "../components/section-frame";
 import type { Feature } from "./feature-grid.types";
 
@@ -68,10 +68,10 @@ export function FeatureShowcase({
                 {f.text}
               </Text>
               {((item as string) === "picture") ? (
-                <Link href="#/" size="sm" class="mt-auto pt-2" data-testid="read">
+                <MenuEntry href={f.href} class="mt-auto gap-2 pt-2 text-sm font-medium" size="sm" testid="read">
                   {more}
                   <LucideIcon name="arrow-right" size={16} />
-                </Link>
+                </MenuEntry>
               ) : null}
             </CardContent>
           </Card>

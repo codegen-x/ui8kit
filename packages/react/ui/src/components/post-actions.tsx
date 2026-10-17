@@ -21,18 +21,18 @@ export function PostActions({ labels, mode = "pair" }: PostActionsProps) {
     <>
       {((mode as string) === "pair") ? (
         <Group gap="2" className="flex-wrap">
-          <Button variant="default" size="default" href="#/" className="gap-2" data-testid="action-primary">
+          <Button variant="default" size="default" className="gap-2" data-testid="action-primary">
             <LucideIcon name="share-2" size={16} />
             {labels.share}
           </Button>
-          <Button variant="outline" size="default" href="#/" className="gap-2" data-testid="post-save">
+          <Button variant="outline" size="default" className="gap-2" data-testid="post-save">
             <LucideIcon name="bookmark" size={16} />
             {labels.save}
           </Button>
         </Group>
       ) : (
         <Group gap="2">
-          <Button variant="default" size="default" href="#/" className="gap-2 flex-1" data-testid="action-primary">
+          <Button variant="default" size="default" className="gap-2 flex-1" data-testid="action-primary">
             <LucideIcon name="book-open" size={16} />
             {labels.read}
           </Button>

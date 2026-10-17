@@ -7,10 +7,10 @@
 import { type ReactNode } from "react";
 import { Block } from "../primitives/block/block";
 import { Inline } from "../primitives/inline/inline";
-import { Link } from "../primitives/link/link";
 import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
+import { MenuEntry } from "../components/menu-entry";
 import { cn } from "../utils";
 import type { NavLink } from "./nav-bar.types";
 
@@ -48,21 +48,20 @@ export function BottomNav({
       <List className="m-0 grid list-none grid-flow-col auto-cols-fr p-0" data-testid="items">
         {(tabs ?? []).map((tab) => (
           <ListItem key={tab.id}>
-            <Link
-              href="#/"
-              variant="default"
-              aria-current={((tab.id === current) ? "page" : undefined)}
+            <MenuEntry
+              href={tab.href}
               className={cn(
                 "flex flex-col items-center gap-2 py-2 text-xs",
                 ((tab.id === current) ? "font-semibold text-primary" : "text-muted-foreground")
               )}
-              data-testid="item"
+              current={(tab.id === current)}
+              testid="item"
             >
               <LucideIcon name={tab.icon} size={20} />
               <Inline className={(((labels as string) === "hide") ? "sr-only" : "")}>
                 {tab.name}
               </Inline>
-            </Link>
+            </MenuEntry>
           </ListItem>
         ))}
       </List>

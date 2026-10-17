@@ -21,6 +21,11 @@
       {
         "name": "icon",
         "type": "string"
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "optional": true
       }
     ]
   },

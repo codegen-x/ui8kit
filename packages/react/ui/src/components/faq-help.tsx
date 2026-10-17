@@ -7,7 +7,7 @@
 import { type ReactNode } from "react";
 import { Block } from "../primitives/block/block";
 import { Box } from "../primitives/box/box";
-import { Link } from "../primitives/link/link";
+import { Button } from "../primitives/button/button";
 import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
@@ -55,10 +55,10 @@ export function FaqHelp({ labels, channels, landmarkLabel }: FaqHelpProps) {
           </ListItem>
         ))}
       </List>
-      <Link href="#/contact" variant="default" size="sm" className="font-medium">
+      <Button variant="link" size="sm" className="gap-2 px-0 font-medium">
         {labels.asideCta}
         <LucideIcon name="arrow-right" size={16} />
-      </Link>
+      </Button>
     </Block>
   );
 }

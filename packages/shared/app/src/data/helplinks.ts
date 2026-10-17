@@ -5,12 +5,15 @@ export const helplinks = [
   {
     "id": "helplink-help",
     "locale": "en",
-    "kind": "helplink",
+    "kind": "menu_item",
     "status": "published",
     "visibility": "public",
     "slug": "help",
     "title": "Help center",
     "metadata": {
+      "location": {
+        "value": "help"
+      },
       "icon": {
         "value": "circle-question-mark"
       }
@@ -23,12 +26,15 @@ export const helplinks = [
   {
     "id": "helplink-status",
     "locale": "en",
-    "kind": "helplink",
+    "kind": "menu_item",
     "status": "published",
     "visibility": "public",
     "slug": "status",
     "title": "System status",
     "metadata": {
+      "location": {
+        "value": "help"
+      },
       "icon": {
         "value": "circle-check"
       }
@@ -41,12 +47,15 @@ export const helplinks = [
   {
     "id": "helplink-privacy",
     "locale": "en",
-    "kind": "helplink",
+    "kind": "menu_item",
     "status": "published",
     "visibility": "public",
     "slug": "privacy",
     "title": "Privacy",
     "metadata": {
+      "location": {
+        "value": "help"
+      },
       "icon": {
         "value": "lock"
       }
@@ -59,12 +68,15 @@ export const helplinks = [
   {
     "id": "helplink-terms",
     "locale": "en",
-    "kind": "helplink",
+    "kind": "menu_item",
     "status": "published",
     "visibility": "public",
     "slug": "terms",
     "title": "Terms",
     "metadata": {
+      "location": {
+        "value": "help"
+      },
       "icon": {
         "value": "file-text"
       }

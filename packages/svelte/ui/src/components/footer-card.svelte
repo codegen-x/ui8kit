@@ -19,12 +19,12 @@
   import Container from "../primitives/container/container.svelte";
   import Group from "../primitives/group/group.svelte";
   import Inline from "../primitives/inline/inline.svelte";
-  import Link from "../primitives/link/link.svelte";
   import List from "../primitives/list/list.svelte";
   import ListItem from "../primitives/list/list-item.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
+  import MenuEntry from "../components/menu-entry.svelte";
   import NavBlock from "../components/nav-block.svelte";
   import { defaults } from "../presets/defaults";
   import { cn, tpl, uniqLabel } from "../utils";
@@ -62,11 +62,11 @@
                 {g.title}
               </Text>
               <List class="m-0 flex list-none flex-col gap-4 p-0">
-                {#each g.links as item (item)}
+                {#each g.links as item (item.id)}
                   <ListItem>
-                    <Link href="#/" variant="default" class="text-xs leading-5 text-muted-foreground">
-                      {item}
-                    </Link>
+                    <MenuEntry href={item.href} class="text-xs leading-5 text-muted-foreground">
+                      {item.name}
+                    </MenuEntry>
                   </ListItem>
                 {/each}
               </List>

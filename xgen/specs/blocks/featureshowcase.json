@@ -64,6 +64,7 @@
   ],
   "slots": [
     "MediaFrame",
+    "MenuEntry",
     "SectionFrame"
   ],
   "facts": [

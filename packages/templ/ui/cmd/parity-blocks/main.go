@@ -510,6 +510,12 @@ func component(name string, props []byte) (templ.Component, error) {
 			return nil, err
 		}
 		return blocks.FooterSignupCard(p), nil
+	case "FooterSitemap":
+		var p blocks.FooterSitemapProps
+		if err := json.Unmarshal(props, &p); err != nil {
+			return nil, err
+		}
+		return blocks.FooterSitemap(p), nil
 	case "FooterSplit":
 		var p blocks.FooterSplitProps
 		if err := json.Unmarshal(props, &p); err != nil {
@@ -678,6 +684,12 @@ func component(name string, props []byte) (templ.Component, error) {
 			return nil, err
 		}
 		return blocks.MemberRow(p), nil
+	case "MenuEntry":
+		var p blocks.MenuEntryProps
+		if err := json.Unmarshal(props, &p); err != nil {
+			return nil, err
+		}
+		return blocks.MenuEntry(p), nil
 	case "MeterRow":
 		var p blocks.MeterRowProps
 		if err := json.Unmarshal(props, &p); err != nil {

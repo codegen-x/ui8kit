@@ -18,7 +18,7 @@ export type FaqHelpProps = {
 <script setup lang="ts">
 import Block from "../primitives/block/block.vue";
 import Box from "../primitives/box/box.vue";
-import Link from "../primitives/link/link.vue";
+import Button from "../primitives/button/button.vue";
 import List from "../primitives/list/list.vue";
 import ListItem from "../primitives/list/list-item.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
@@ -58,9 +58,9 @@ const { labels, channels, landmarkLabel } = defineProps<FaqHelpProps>();
         </Stack>
       </ListItem>
     </List>
-    <Link href="#/contact" variant="default" size="sm" class="font-medium">
+    <Button variant="link" size="sm" class="gap-2 px-0 font-medium">
       {{ labels.asideCta }}
       <LucideIcon name="arrow-right" :size="16" />
-    </Link>
+    </Button>
   </Block>
 </template>

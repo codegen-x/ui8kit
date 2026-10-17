@@ -46,7 +46,7 @@ const photoGallery = spec(`${O}photo-gallery`, "PhotoGallery", "Photos in a grid
 });
 
 const projectGrid = spec(`${O}project-grid`, "ProjectGrid", "Projects of a studio or a person: cards with tags and links, a compact grid, tiles with the caption over the picture, a bento with one big project, or a list beside a collage. Axes: layout (cards, compact, overlay, bento, list), tone, density.", {
-  records: { Project: fields(["id", "string"], ["title", "string"], ["category", "string"], ["year", "string"], ["summary", "string"], ["tags", "string[]"], ["featured", "boolean"], ["client", "string"]), ProjectLabels: fields(["featured", "string"], ["view", "string"], ["case", "string"]) },
+  records: { Project: fields(["id", "string"], ["title", "string"], ["category", "string"], ["year", "string"], ["summary", "string"], ["tags", "string[]"], ["featured", "boolean"], ["client", "string"], ["href", "string", true]), ProjectLabels: fields(["featured", "string"], ["view", "string"], ["case", "string"]) },
   props: [
     id, title, lead,
     { name: "projects", type: ts("Project[]"), required: true },

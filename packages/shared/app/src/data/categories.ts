@@ -5,12 +5,15 @@ export const categories = [
   {
     "id": "category-all",
     "locale": "en",
-    "kind": "category",
+    "kind": "menu_item",
     "status": "published",
     "visibility": "public",
     "slug": "all",
     "title": "All products",
     "metadata": {
+      "location": {
+        "value": "categories"
+      },
       "icon": {
         "value": "layout-grid"
       },
@@ -26,12 +29,15 @@ export const categories = [
   {
     "id": "category-desk",
     "locale": "en",
-    "kind": "category",
+    "kind": "menu_item",
     "status": "published",
     "visibility": "public",
     "slug": "desk",
     "title": "Desk",
     "metadata": {
+      "location": {
+        "value": "categories"
+      },
       "icon": {
         "value": "lamp-desk"
       },
@@ -47,12 +53,15 @@ export const categories = [
   {
     "id": "category-bags",
     "locale": "en",
-    "kind": "category",
+    "kind": "menu_item",
     "status": "published",
     "visibility": "public",
     "slug": "bags",
     "title": "Bags",
     "metadata": {
+      "location": {
+        "value": "categories"
+      },
       "icon": {
         "value": "briefcase"
       },
@@ -68,12 +77,15 @@ export const categories = [
   {
     "id": "category-audio",
     "locale": "en",
-    "kind": "category",
+    "kind": "menu_item",
     "status": "published",
     "visibility": "public",
     "slug": "audio",
     "title": "Audio",
     "metadata": {
+      "location": {
+        "value": "categories"
+      },
       "icon": {
         "value": "headphones"
       },
@@ -89,12 +101,15 @@ export const categories = [
   {
     "id": "category-light",
     "locale": "en",
-    "kind": "category",
+    "kind": "menu_item",
     "status": "published",
     "visibility": "public",
     "slug": "light",
     "title": "Lighting",
     "metadata": {
+      "location": {
+        "value": "categories"
+      },
       "icon": {
         "value": "lightbulb"
       },
@@ -110,12 +125,15 @@ export const categories = [
   {
     "id": "category-gifts",
     "locale": "en",
-    "kind": "category",
+    "kind": "menu_item",
     "status": "published",
     "visibility": "public",
     "slug": "gifts",
     "title": "Gifts",
     "metadata": {
+      "location": {
+        "value": "categories"
+      },
       "icon": {
         "value": "gift"
       },

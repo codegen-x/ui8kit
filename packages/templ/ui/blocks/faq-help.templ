@@ -6,7 +6,7 @@ package blocks
 import (
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/block"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/box"
-	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/link"
+	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/button"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/list"
 	lucideicon "github.com/codegen-x/ui8kit/packages/templ/ui/ui/lucide-icon"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/stack"
@@ -52,7 +52,7 @@ templ FaqHelp(p FaqHelpProps) {
 				}
 			}
 		}
-		@link.Link(link.LinkProps{Href: "#/contact", Variant: "default", Size: "sm", Class: "font-medium"}) {
+		@button.Button(button.ButtonProps{Variant: "link", Size: "sm", Class: "gap-2 px-0 font-medium"}) {
 			{ uiutils.Text(uiutils.Get(vLabels, "asideCta")) }
 			@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "arrow-right", Size: 16})
 		}

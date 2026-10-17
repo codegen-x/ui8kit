@@ -20,7 +20,7 @@ export type NavActionsProps = {
 
 export function NavActions({
   login,
-  loginHref = "#/login",
+  loginHref,
   cta,
   ctaHref,
   actions = "cta",

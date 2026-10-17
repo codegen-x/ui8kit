@@ -66,10 +66,10 @@ const actions = { toggleTheme };
     :labels="ui.site.header"
     :current="route.area"
     :cta="ui.site.header.cta"
-    ctaHref="#/pricing"
     layout="inline"
     position="static"
     actions="none"
+    :routes="{ home: '#/', pricing: '#/pricing' }"
     @theme="() => actions.toggleTheme()"
   />
   <Block tag="main" id="main-content" :tabindex="-1" data-testid="main">
@@ -198,5 +198,10 @@ const actions = { toggleTheme };
       density="roomy"
     />
   </Block>
-  <SiteFooter :labels="ui.site.footer" layout="minimal" density="default" />
+  <SiteFooter
+    :labels="ui.site.footer"
+    layout="minimal"
+    density="default"
+    :routes="{ home: '#/', pricing: '#/pricing' }"
+  />
 </template>

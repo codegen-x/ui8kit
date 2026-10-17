@@ -489,22 +489,26 @@
                                       },
                                       "do": [
                                         {
-                                          "use": "Link",
+                                          "organism": "MenuEntry",
                                           "props": {
-                                            "Href": "#/",
-                                            "Variant": "default",
-                                            "Class": "text-sm"
+                                            "href": {
+                                              "$": "g.href"
+                                            },
+                                            "className": "text-sm",
+                                            "testid": "group"
                                           },
-                                          "attrs": {
-                                            "data-testid": "group"
-                                          },
-                                          "children": [
-                                            {
-                                              "text": {
-                                                "$": "g.title"
-                                              }
+                                          "slots": {
+                                            "children": {
+                                              "args": [],
+                                              "do": [
+                                                {
+                                                  "text": {
+                                                    "$": "g.title"
+                                                  }
+                                                }
+                                              ]
                                             }
-                                          ]
+                                          }
                                         }
                                       ]
                                     }

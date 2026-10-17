@@ -7,7 +7,7 @@
 import { For, type JSX } from "solid-js";
 import { Badge } from "../primitives/badge/badge";
 import { Box } from "../primitives/box/box";
-import { Link } from "../primitives/link/link";
+import { Button } from "../primitives/button/button";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
@@ -49,10 +49,10 @@ export function FaqCards({ items, labels, cards = "grid3" }: FaqCardsProps) {
             </Text>
           </Stack>
           <Box class="mt-auto">
-            <Link href="#/faq" variant="default" size="sm" class="font-medium">
+            <Button variant="link" size="sm" class="gap-2 px-0 font-medium">
               {labels.more}
               <LucideIcon name="arrow-right" size={16} />
-            </Link>
+            </Button>
           </Box>
         </ArticleBlock>
       )}</For>

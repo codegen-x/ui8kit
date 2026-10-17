@@ -7,7 +7,6 @@ import (
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/block"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/container"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/group"
-	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/link"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/text"
 	uiutils "github.com/codegen-x/ui8kit/packages/templ/ui/utils"
 )
@@ -15,6 +14,7 @@ import (
 // SiteFooterProps are the props of SiteFooter; the values are the JSON shapes of the TypeScript props.
 type SiteFooterProps struct {
 	Labels any `json:"labels"`
+	Routes any `json:"routes"`
 	Layout any `json:"layout"`
 	Density any `json:"density"`
 	LandmarkLabel any `json:"landmarkLabel"`
@@ -23,6 +23,7 @@ type SiteFooterProps struct {
 // The page footer: the copyright line and the same two links. Axes: layout (minimal, centered), density (default, compact).
 templ SiteFooter(p SiteFooterProps) {
 	{{ vLabels := p.Labels }}
+	{{ vRoutes := p.Routes }}
 	{{ vLayout := uiutils.Def(p.Layout, "minimal") }}
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
@@ -33,10 +34,10 @@ templ SiteFooter(p SiteFooterProps) {
 			}
 			@NavBlock(NavBlockProps{Label: uiutils.Cond(uiutils.T(vLandmarkLabel), uiutils.Uniq(uiutils.Tpl("{0}, {1}", uiutils.Get(vLabels, "nav"), vLandmarkLabel)), uiutils.Get(vLabels, "nav"))}) {
 				@group.Group(group.GroupProps{Gap: "4"}) {
-					@link.Link(link.LinkProps{Href: "#/", Variant: "default"}) {
+					@MenuEntry(MenuEntryProps{Href: uiutils.Get(vRoutes, "home"), Class: uiutils.Cnv("font-semibold")}) {
 						{ uiutils.Text(uiutils.Get(vLabels, "home")) }
 					}
-					@link.Link(link.LinkProps{Href: "#/pricing", Variant: "default"}) {
+					@MenuEntry(MenuEntryProps{Href: uiutils.Get(vRoutes, "pricing"), Class: uiutils.Cnv("font-semibold")}) {
 						{ uiutils.Text(uiutils.Get(vLabels, "pricing")) }
 					}
 				}

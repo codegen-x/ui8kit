@@ -17,7 +17,7 @@ export type NavBarActions = {
   href?: string;
   /** text of the login link; none: no login */
   login?: string;
-  /** href of the login link */
+  /** href of the login link; none: a button with no address */
   loginHref?: string;
   /** text of the theme button; none: no button */
   themeLabel?: string;

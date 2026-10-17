@@ -38,7 +38,6 @@
   {#if attachLabel}
     <Group gap="2" align="center" data-testid="composer-attachments">
       <Button
-        href="#/"
         variant="ghost"
         size="sm"
         class={cn(
@@ -51,7 +50,6 @@
         {attachLabel}
       </Button>
       <Button
-        href="#/"
         variant="ghost"
         size="sm"
         class={cn(
@@ -76,7 +74,6 @@
   <Group gap="2" align="center" justify="between" class="h-8 w-full" data-testid="composer-tools">
     <Group gap="2" align="center">
       <Button
-        href="#/"
         variant="ghost"
         size="sm"
         layout="icon"
@@ -88,7 +85,6 @@
       </Button>
       {#if modelLabel}
         <Button
-          href="#/"
           variant="ghost"
           size="sm"
           class={cn("gap-2 bg-background/10 text-background hover:bg-background/20", defaults.hero.model)}

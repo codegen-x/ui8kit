@@ -38,7 +38,7 @@ const ROUTES = [
   {"path":"cards","area":"cards"},
   {"path":"profile","area":"profile"},
 ] as const;
-const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
+const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"id|menu","href":"slug|route"} as const;
 
 const { url } = defineProps<{ url: UrlPort }>();
 
@@ -66,6 +66,7 @@ const actions = { toggleTheme };
     layout="inline"
     over="none"
     tone="default"
+    brandHref="#/"
     :skip="ui.site.header.skip"
     @theme="() => actions.toggleTheme()"
   />

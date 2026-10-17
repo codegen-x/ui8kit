@@ -32,7 +32,7 @@
             {/capture}
             {=ui_include('ui/inline/inline.latte', ['p' => ['Class' => ui_s((ui_t(ui_eq($v_width, 'compact')) ? 'sr-only' : ''))], 'children' => $c_3])|noescape}
           {/capture}
-          {=ui_include('ui/link/link.latte', ['p' => ['Href' => '#/', 'Variant' => 'default', 'AriaCurrent' => ui_s((ui_t(ui_eq(ui_get($v_l, ['id']), $v_current)) ? 'page' : null)), 'Class' => ui_s(ui_cnv(['flex items-center gap-4 rounded px-4 text-sm', 'py-2', (ui_t(ui_eq(ui_get($v_l, ['id']), $v_current)) ? 'bg-muted font-semibold' : '')])), 'Attrs' => ui_attrs(['data-testid', 'item'])], 'children' => $c_4])|noescape}
+          {=ui_include('blocks/menu-entry.latte', ['p' => ['href' => ui_get($v_l, ['href']), 'className' => ui_cnv([ui_cnv(['flex items-center gap-4 rounded px-4 text-sm', 'py-2', (ui_t(ui_eq(ui_get($v_l, ['id']), $v_current)) ? 'bg-muted font-semibold' : '')])]), 'current' => ui_eq(ui_get($v_l, ['id']), $v_current), 'testid' => 'item'], 'children' => $c_4])|noescape}
         {/capture}
         {=ui_include('ui/list/list-item.latte', ['p' => [], 'children' => $c_5])|noescape}
       {/foreach}

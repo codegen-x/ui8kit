@@ -1,5 +1,5 @@
 // Commerce organisms: category navigation, product card and grid, product page, reviews, cart, order summary, order history.
-import { and, at, call, cn, coalesce, cond, each, eq, gt, len, mul, not, money, or, ref, str, text, tpl, undef, use, when, organism } from "../../build";
+import { and, at, call, cn, coalesce, cond, each, eq, gt, len, mul, not, money, or, ref, str, text, tpl, use, when, organism } from "../../build";
 import type { OrganismSpec, ViewNode } from "../../ir";
 import { cardBase, fields, groupFields, spec, ts } from "../kit";
 import { frame, wide } from "../components/frames";
@@ -9,6 +9,7 @@ import { numberField } from "../components/number-field";
 import { orderRows, statusTone } from "../components/orders";
 import { articleBlockOf } from "../components/landmarks";
 import { productGallery, productPrice } from "../components/product-parts";
+import { currentOf, menuEntry } from "../components/nav";
 
 const O = "organism.";
 const common = { id: ref("id"), title: ref("title"), tone: ref("tone"), density: ref("density") };
@@ -19,7 +20,7 @@ const Product = fields(["id", "string"], ["name", "string"], ["summary", "string
 
 const categoryNav = spec(`${O}category-nav`, "CategoryNav", "Navigation between product categories as chips, a bar with an underline, a side list, tiles with a big icon, or chips under a toolbar (search, sort and the number shown). The current one carries aria-current. Axes: layout (chips, bar, sidebar, tiles, toolbar), count (show, hide), icon (show, hide), density.", {
   records: {
-    Category: fields(["id", "string"], ["name", "string"], ["icon", "string"], ["count", "number"]),
+    Category: fields(["id", "string"], ["name", "string"], ["icon", "string"], ["count", "number"], ["href", "string", true]),
     CategoryTools: groupFields(["search", "string", "label of the search field"], ["sort", "string", "label of the sort select"], ["sortValue", "string", "the chosen sort"], ["shown", "string", "how many products are shown"], ["query", "string", "the text in the search field", ""]),
   },
   props: [
@@ -51,8 +52,8 @@ const categoryNav = spec(`${O}category-nav`, "CategoryNav", "Navigation between 
         use("List", { props: { Tag: "ul", Class: ref("listShape") }, attrs: { "data-testid": "items" } },
           each(ref("categories"), "c", ref("c.id"),
             use("ListItem", {},
-              use("Link", { props: { Href: "#/categories", Variant: "default", AriaCurrent: cond(eq(ref("c.id"), ref("current")), "page", undef()),
-                Class: cn("text-sm", ref("linkShape"), cond(eq(ref("c.id"), ref("current")), ref("currentLook"), ref("otherLook"))) }, attrs: { "data-testid": "item" } },
+              // a category is a menu entry: a link only where the app routes menu items
+              menuEntry(ref("c.href"), { cls: cn("text-sm", ref("linkShape"), cond(eq(ref("c.id"), ref("current")), ref("currentLook"), ref("otherLook"))), current: currentOf("c", ref("current")), testid: "item", block: true },
                 when(eq(ref("icon"), "show"), [when(ref("tiles"),
                   [use("Inline", { props: { Class: "flex size-10 items-center justify-center rounded bg-muted" } }, use("LucideIcon", { props: { Name: ref("c.icon"), Size: 20 } }))],
                   [use("LucideIcon", { props: { Name: ref("c.icon"), Size: 16 } })])]),

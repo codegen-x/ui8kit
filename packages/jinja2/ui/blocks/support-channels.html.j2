@@ -32,7 +32,7 @@
             {%- set c_4 -%}
               {{ ui_text(v_open) }}
             {%- endset -%}
-            {{ ui_include('ui/link/link.html.j2', {'p': {'Href': '#/', 'Variant': 'default', 'Attrs': ui_attrs(['data-testid', 'open'])}, 'children': c_4}) }}
+            {{ ui_include('blocks/menu-entry.html.j2', {'p': {'href': ui_get(v_c, ['href']), 'className': ui_cnv(['font-semibold']), 'testid': 'open'}, 'children': c_4}) }}
           {%- endif %}
         {%- endset -%}
         {{ ui_include('ui/card/card-content.html.j2', {'p': {'Class': ui_s(ui_cnv(['flex flex-1 gap-4', ('items-center' if ui_t(ui_eq(v_layout, 'list')) else 'flex-col')]))}, 'children': c_5}) }}

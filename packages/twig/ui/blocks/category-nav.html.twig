@@ -58,7 +58,7 @@
               {{ include('ui/text/text.html.twig', {'p': {'Size': 'xs', 'Class': 'text-muted-foreground'}, 'children': c_6}, with_context = false) }}
             {%- endif %}
           {%- endset -%}
-          {{ include('ui/link/link.html.twig', {'p': {'Href': '#/categories', 'Variant': 'default', 'AriaCurrent': ui_s((ui_t(ui_eq(ui_get(v_c, ['id']), v_current)) ? 'page' : null)), 'Class': ui_s(ui_cnv(['text-sm', v_linkShape, (ui_t(ui_eq(ui_get(v_c, ['id']), v_current)) ? v_currentLook : v_otherLook)])), 'Attrs': ui_attrs(['data-testid', 'item'])}, 'children': c_7}, with_context = false) }}
+          {{ include('blocks/menu-entry.html.twig', {'p': {'href': ui_get(v_c, ['href']), 'className': ui_cnv([ui_cnv(['text-sm', v_linkShape, (ui_t(ui_eq(ui_get(v_c, ['id']), v_current)) ? v_currentLook : v_otherLook)])]), 'current': ui_eq(ui_get(v_c, ['id']), v_current), 'testid': 'item', 'block': true}, 'children': c_7}, with_context = false) }}
         {%- endset -%}
         {{ include('ui/list/list-item.html.twig', {'p': {}, 'children': c_8}, with_context = false) }}
       {%- endfor %}

@@ -18,12 +18,12 @@ import Box from "../primitives/box/box.vue";
 import Container from "../primitives/container/container.vue";
 import Group from "../primitives/group/group.vue";
 import Inline from "../primitives/inline/inline.vue";
-import Link from "../primitives/link/link.vue";
 import List from "../primitives/list/list.vue";
 import ListItem from "../primitives/list/list-item.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
+import MenuEntry from "../components/menu-entry.vue";
 import NavBlock from "../components/nav-block.vue";
 import { defaults } from "../presets/defaults";
 import { cn, tpl, uniqLabel } from "../utils";
@@ -61,10 +61,10 @@ const { label, brand, groups, landmarkLabel } = defineProps<FooterCardProps>();
                 {{ g.title }}
               </Text>
               <List class="m-0 flex list-none flex-col gap-4 p-0">
-                <ListItem v-for="item in g.links" :key="item">
-                  <Link href="#/" variant="default" class="text-xs leading-5 text-muted-foreground">
-                    {{ item }}
-                  </Link>
+                <ListItem v-for="item in g.links" :key="item.id">
+                  <MenuEntry :href="item.href" class="text-xs leading-5 text-muted-foreground">
+                    {{ item.name }}
+                  </MenuEntry>
                 </ListItem>
               </List>
             </Stack>

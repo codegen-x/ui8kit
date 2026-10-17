@@ -48,7 +48,7 @@
     filters,
     filtersLabel,
     browse,
-    browseHref = "#/",
+    browseHref,
     viewsLabel,
     likesLabel,
     cols = "1-4",

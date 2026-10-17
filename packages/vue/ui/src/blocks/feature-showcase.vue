@@ -25,11 +25,11 @@ export type FeatureShowcaseProps = {
 import Box from "../primitives/box/box.vue";
 import Card from "../primitives/card/card.vue";
 import CardContent from "../primitives/card/card-content.vue";
-import Link from "../primitives/link/link.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
 import MediaFrame from "../components/media-frame.vue";
+import MenuEntry from "../components/menu-entry.vue";
 import SectionFrame from "../components/section-frame.vue";
 
 const {
@@ -74,10 +74,16 @@ const {
           <Text size="sm" class="text-muted-foreground">
             {{ f.text }}
           </Text>
-          <Link v-if="((item as string) === 'picture')" href="#/" size="sm" class="mt-auto pt-2" data-testid="read">
+          <MenuEntry
+            v-if="((item as string) === 'picture')"
+            :href="f.href"
+            class="mt-auto gap-2 pt-2 text-sm font-medium"
+            size="sm"
+            testid="read"
+          >
             {{ more }}
             <LucideIcon name="arrow-right" :size="16" />
-          </Link>
+          </MenuEntry>
         </CardContent>
       </Card>
     </Box>

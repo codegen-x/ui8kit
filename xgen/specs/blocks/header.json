@@ -51,6 +51,7 @@
     }
   ],
   "slots": [
+    "MenuEntry",
     "NavBlock"
   ],
   "events": {
@@ -65,8 +66,7 @@
       "current": "home",
       "cta": {
         "$": "ui.site.header.cta"
-      },
-      "ctaHref": "#/pricing"
+      }
     }
   }
 }

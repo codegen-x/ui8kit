@@ -6,7 +6,7 @@
     "raw-html": 0,
     "dynamic-tag": 0,
     "raw-native-tag": 0,
-    "reactive-aria": 26,
+    "reactive-aria": 19,
     "literal-text": 2
   },
   "counts": {
@@ -15,23 +15,18 @@
     "dynamic-tag": {},
     "raw-native-tag": {},
     "reactive-aria": {
-      "src/blocks/bottom-nav.vue": 1,
-      "src/blocks/category-nav.vue": 1,
       "src/blocks/feature-sticky.vue": 1,
-      "src/blocks/mega-menu.vue": 2,
-      "src/blocks/sidebar-nav.vue": 1,
+      "src/blocks/mega-menu.vue": 1,
       "src/blocks/signup-wizard.vue": 1,
-      "src/blocks/site-header.vue": 2,
       "src/blocks/stepper.vue": 1,
       "src/components/editor-tab.vue": 1,
       "src/components/file-tree-item.vue": 2,
       "src/components/hero-head.vue": 1,
       "src/components/icon-tab.vue": 1,
+      "src/components/menu-entry.vue": 3,
       "src/components/nav-item.vue": 3,
-      "src/components/nav-links.vue": 1,
       "src/components/section-head.vue": 2,
-      "src/components/shell-sidebar.vue": 3,
-      "src/components/shell-topbar.vue": 1,
+      "src/components/shell-sidebar.vue": 1,
       "src/components/switcher-item.vue": 1
     },
     "literal-text": {

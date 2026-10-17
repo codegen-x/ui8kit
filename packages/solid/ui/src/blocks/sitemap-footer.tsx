@@ -15,12 +15,12 @@ import { Form } from "../primitives/form/form";
 import { Group } from "../primitives/group/group";
 import { Input } from "../primitives/input/input";
 import { Label } from "../primitives/label/label";
-import { Link } from "../primitives/link/link";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { Title } from "../primitives/title/title";
 import { FooterCard } from "../components/footer-card";
 import { FooterColumns } from "../components/footer-columns";
+import { MenuEntry } from "../components/menu-entry";
 import { NavBlock } from "../components/nav-block";
 import { Pill } from "../components/pill";
 import { cn, tpl, uniqLabel } from "../utils";
@@ -114,9 +114,9 @@ export function SitemapFooter({
                 <NavBlock label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", label, landmarkLabel)) : label)}>
                   <Group gap="4" class="flex-wrap">
                     <For each={groups ?? []}>{(g) => (
-                      <Link href="#/" variant="default" class="text-sm" data-testid="group">
+                      <MenuEntry href={g.href} class="text-sm" testid="group">
                         {g.title}
-                      </Link>
+                      </MenuEntry>
                     )}</For>
                   </Group>
                 </NavBlock>

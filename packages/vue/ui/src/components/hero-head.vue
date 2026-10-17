@@ -9,6 +9,7 @@ import type { NavLink } from "../blocks/nav-bar.types";
 
 export type HeroHeadProps = {
   brand?: string;
+  brandHref?: string;
   links?: NavLink[];
   current?: string;
   login?: string;
@@ -28,16 +29,18 @@ import Group from "../primitives/group/group.vue";
 import Inline from "../primitives/inline/inline.vue";
 import Link from "../primitives/link/link.vue";
 import LinkPlain from "../primitives/link-plain/link-plain.vue";
+import MenuEntry from "../components/menu-entry.vue";
 import NavBlock from "../components/nav-block.vue";
 import { defaults } from "../presets/defaults";
 import { cn, tpl, uniqLabel } from "../utils";
 
 const {
   brand,
+  brandHref,
   links,
   current = "",
   login,
-  loginHref = "#/login",
+  loginHref,
   cta,
   href,
   skip,
@@ -61,14 +64,13 @@ const {
     >
       {{ skip }}
     </LinkPlain>
-    <Link
-      href="#/"
-      variant="default"
+    <MenuEntry
+      :href="brandHref"
       :class="cn(defaults.text.small, 'font-medium leading-6 text-background')"
-      data-testid="brand"
+      testid="brand"
     >
       {{ brand }}
-    </Link>
+    </MenuEntry>
     <NavBlock
       :label="(landmarkLabel ? uniqLabel(tpl('{0}, {1}', navLabel, landmarkLabel)) : navLabel)"
       testid="site-nav"

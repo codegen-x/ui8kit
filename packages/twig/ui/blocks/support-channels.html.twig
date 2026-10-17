@@ -32,7 +32,7 @@
             {%- set c_4 -%}
               {{ ui_text(v_open) }}
             {%- endset -%}
-            {{ include('ui/link/link.html.twig', {'p': {'Href': '#/', 'Variant': 'default', 'Attrs': ui_attrs(['data-testid', 'open'])}, 'children': c_4}, with_context = false) }}
+            {{ include('blocks/menu-entry.html.twig', {'p': {'href': ui_get(v_c, ['href']), 'className': ui_cnv(['font-semibold']), 'testid': 'open'}, 'children': c_4}, with_context = false) }}
           {%- endif %}
         {%- endset -%}
         {{ include('ui/card/card-content.html.twig', {'p': {'Class': ui_s(ui_cnv(['flex flex-1 gap-4', (ui_t(ui_eq(v_layout, 'list')) ? 'items-center' : 'flex-col')]))}, 'children': c_5}, with_context = false) }}

@@ -55,6 +55,7 @@
   ],
   "slots": [
     "JobCards",
+    "MenuEntry",
     "SectionFrame"
   ],
   "facts": [

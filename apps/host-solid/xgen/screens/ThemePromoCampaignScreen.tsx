@@ -27,7 +27,7 @@ const ROUTES = [
   {"path":"offer","area":"offer"},
   {"path":"notices","area":"notices"},
 ] as const;
-const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
+const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"id|menu","href":"slug|route"} as const;
 const STATS_FIELDS = {
   "id": "id",
   "label": "title",
@@ -69,6 +69,7 @@ export function ThemePromoCampaignScreen({ url }: { url: UrlPort }) {
         layout="inline"
         over="none"
         tone="default"
+        brandHref="#/"
         skip={ui.site.header.skip}
         onTheme={() => actions.toggleTheme()}
       />

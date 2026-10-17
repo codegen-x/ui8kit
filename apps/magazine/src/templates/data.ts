@@ -45,7 +45,6 @@ const f = {
   posts: CODEX_FIELDS.post,
   products: CODEX_FIELDS.product,
   plan: CODEX_FIELDS.plan,
-  nav: { id: "id", name: "title", icon: "metadata.icon.value" },
   metrics: { id: "id", label: "title", value: "metadata.value.value", icon: "metadata.icon.value", hint: "metadata.hint.value" },
   projects: { id: "id", title: "title", category: "metadata.category.value", year: "metadata.year.value", summary: "metadata.summary.value", tags: "metadata.tags.value", featured: "metadata.featured.value", client: "metadata.client.value" },
   testimonials: { id: "id", author: "title", role: "metadata.role.value", company: "metadata.company.value", quote: "metadata.quote.value", rating: "metadata.rating.value", handle: "metadata.handle.value", time: "metadata.time.value|ago-short", mark: "metadata.mark.value" },
@@ -71,11 +70,12 @@ export function makeData(brand: string) {
   return {
     brand,
     ui: rb(kitUi),
-    sidenav: rb(fromCodex<NavLink>(sidenav, f.nav)),
-    subnav: fromCodex<NavLink>(subnav, f.nav),
-    helplinks: fromCodex<NavLink>(helplinks, f.nav),
-    navlinks: fromCodex<NavLink>(navlinks, f.nav),
-    outline: fromCodex<NavLink>(outline, f.nav),
+    // the menus: Codex menu_item entries (CODEX_FIELDS.menuItem); no route for menu items, so names, not links
+    sidenav: rb(fromCodex<NavLink>(sidenav, CODEX_FIELDS.menuItem, codex)),
+    subnav: fromCodex<NavLink>(subnav, CODEX_FIELDS.menuItem, codex),
+    helplinks: fromCodex<NavLink>(helplinks, CODEX_FIELDS.menuItem, codex),
+    navlinks: fromCodex<NavLink>(navlinks, CODEX_FIELDS.menuItem, codex),
+    outline: fromCodex<NavLink>(outline, CODEX_FIELDS.menuItem, codex),
     // the breadcrumbs: the pages of the parent_id chain, root first (no page routes in the magazine: names, no links)
     crumbs: fromCodex<NavLink>(trail(crumbs), CODEX_FIELDS.page, codex),
     metrics: fromCodex<Stat>(metrics, f.metrics),
@@ -86,7 +86,7 @@ export function makeData(brand: string) {
     topics: fromCodex<PostTopic>(topics, { id: "id", title: "title", value: "metadata.value.value" }),
     article: fromCodex<Section>(article, { id: "id", title: "title", text: "metadata.text.value", quote: "metadata.quote.value" }),
     products: fromCodex<Product>(products, f.products, codex),
-    categories: fromCodex<Category>(categories, { id: "id", name: "title", icon: "metadata.icon.value", count: "metadata.count.value" }),
+    categories: fromCodex<Category>(categories, CODEX_FIELDS.menuCategory, codex),
     reviews: fromCodex<Review>(reviews, f.reviews, codex),
     specs: fromCodex<Spec>(specs, { id: "id", label: "title", value: "metadata.value.value" }),
     details: fromCodex<{ id: string; title: string; text: string }>(details, { id: "id", title: "title", text: "metadata.text.value" }),
@@ -99,6 +99,7 @@ export function makeData(brand: string) {
     tiers: fromCodex<Plan>(tiers, f.plan, codex),
     testimonials: fromCodex<Quote>(testimonials, f.testimonials),
     faq: fromCodex<Faq>(faq, CODEX_FIELDS.faq, codex),
-    sitemap: fromCodex<MegaGroup>(sitemap, { id: "id", title: "title", icon: "metadata.icon.value", links: "metadata.links.value" }),
+    // the footer menu: groups and the items under them (parent_id, the lookup CODEX.menus)
+    sitemap: fromCodex<MegaGroup>(sitemap, CODEX_FIELDS.menuGroup, codex),
   };
 }

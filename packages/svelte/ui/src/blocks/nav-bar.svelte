@@ -13,6 +13,7 @@
   export type NavBarProps = {
     label: string;
     brand: string;
+    brandHref?: string;
     links: NavLink[];
     current?: string;
     actions?: NavBarActions;
@@ -32,8 +33,8 @@
   import Container from "../primitives/container/container.svelte";
   import Grid from "../primitives/grid/grid.svelte";
   import Group from "../primitives/group/group.svelte";
-  import Link from "../primitives/link/link.svelte";
   import LinkPlain from "../primitives/link-plain/link-plain.svelte";
+  import MenuEntry from "../components/menu-entry.svelte";
   import NavActions from "../components/nav-actions.svelte";
   import NavBlock from "../components/nav-block.svelte";
   import NavLinks from "../components/nav-links.svelte";
@@ -44,6 +45,7 @@
   let {
     label,
     brand,
+    brandHref,
     links,
     current = "",
     actions,
@@ -96,9 +98,9 @@
               <NavLinks links={links} current={current} side="left" />
             </Box>
             <Box class="text-center">
-              <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
+              <MenuEntry href={brandHref} class="text-lg font-medium" testid="brand">
                 {brand}
-              </Link>
+              </MenuEntry>
             </Box>
             <Group gap="4" align="center" justify="end" class="flex-wrap md:justify-self-end">
               <Box>
@@ -118,9 +120,9 @@
           </Grid>
         </NavBlock>
       {:else}
-        <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
+        <MenuEntry href={brandHref} class="text-lg font-medium" testid="brand">
           {brand}
-        </Link>
+        </MenuEntry>
         {#if ((layout as string) === "search")}
           <SearchPalette label={search.label} shortcut={search.shortcut} />
         {/if}

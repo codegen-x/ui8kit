@@ -7,7 +7,6 @@ import (
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/block"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/group"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/inline"
-	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/link"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/list"
 	lucideicon "github.com/codegen-x/ui8kit/packages/templ/ui/ui/lucide-icon"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/stack"
@@ -52,7 +51,7 @@ templ SidebarNav(p SidebarNavProps) {
 			@list.List(list.ListProps{Class: uiutils.S(uiutils.Cnv("m-0 flex list-none flex-col p-0", uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "gap-0", "gap-2"))), Attrs: uiutils.Attrs("data-testid", "items")}) {
 				for _, vL := range uiutils.L(vLinks) {
 					@list.ListItem(list.ListItemProps{}) {
-						@link.Link(link.LinkProps{Href: "#/", Variant: "default", AriaCurrent: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vL, "id"), vCurrent)), "page", nil)), Class: uiutils.S(uiutils.Cnv("flex items-center gap-4 rounded px-4 text-sm", "py-2", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vL, "id"), vCurrent)), "bg-muted font-semibold", ""))), Attrs: uiutils.Attrs("data-testid", "item")}) {
+						@MenuEntry(MenuEntryProps{Href: uiutils.Get(vL, "href"), Class: uiutils.Cnv(uiutils.Cnv("flex items-center gap-4 rounded px-4 text-sm", "py-2", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vL, "id"), vCurrent)), "bg-muted font-semibold", ""))), Current: uiutils.Eq(uiutils.Get(vL, "id"), vCurrent), Testid: "item"}) {
 							@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Get(vL, "icon")), Size: 16})
 							@inline.Inline(inline.InlineProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vWidth, "compact")), "sr-only", ""))}) {
 								{ uiutils.Text(uiutils.Get(vL, "name")) }

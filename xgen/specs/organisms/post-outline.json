@@ -217,28 +217,34 @@
               },
               "do": [
                 {
-                  "use": "Link",
+                  "organism": "MenuEntry",
                   "props": {
-                    "Href": "#/",
-                    "Size": "sm"
-                  },
-                  "attrs": {
-                    "data-testid": "post-link"
-                  },
-                  "children": [
-                    {
-                      "use": "LucideIcon",
-                      "props": {
-                        "Name": "chevron-right",
-                        "Size": 16
-                      }
+                    "href": {
+                      "$": "l.href"
                     },
-                    {
-                      "text": {
-                        "$": "l.name"
-                      }
+                    "className": "text-sm font-medium",
+                    "size": "sm",
+                    "testid": "post-link"
+                  },
+                  "slots": {
+                    "children": {
+                      "args": [],
+                      "do": [
+                        {
+                          "use": "LucideIcon",
+                          "props": {
+                            "Name": "chevron-right",
+                            "Size": 16
+                          }
+                        },
+                        {
+                          "text": {
+                            "$": "l.name"
+                          }
+                        }
+                      ]
                     }
-                  ]
+                  }
                 }
               ]
             }

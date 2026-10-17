@@ -3,7 +3,7 @@
     The buttons at the end of a top bar: login, the call to action and the theme button (it only reports the press). No wrapper: they sit in the row of the bar.
     Props (p): login, loginHref, cta, ctaHref, actions, tone, themeLabel. -#}
 {%- set v_login = ui_def(p['login'], none) -%}
-{%- set v_loginHref = ui_def(p['loginHref'], '#/login') -%}
+{%- set v_loginHref = ui_def(p['loginHref'], none) -%}
 {%- set v_cta = ui_def(p['cta'], none) -%}
 {%- set v_ctaHref = ui_def(p['ctaHref'], none) -%}
 {%- set v_actions = ui_def(p['actions'], 'cta') -%}

@@ -25,6 +25,11 @@
       {
         "name": "icon",
         "type": "string"
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "optional": true
       }
     ],
     "FaqSplitLabels": [
@@ -263,8 +268,7 @@
                       "use": "Button",
                       "props": {
                         "Variant": "default",
-                        "Size": "default",
-                        "Href": "#/contact"
+                        "Size": "default"
                       },
                       "attrs": {
                         "data-testid": "faq-cta"
@@ -465,8 +469,7 @@
                       "use": "Button",
                       "props": {
                         "Variant": "default",
-                        "Size": "default",
-                        "Href": "#/contact"
+                        "Size": "default"
                       },
                       "attrs": {
                         "data-testid": "faq-cta"

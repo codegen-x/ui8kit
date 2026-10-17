@@ -96,6 +96,37 @@ export const pageFields = {
   href: "slug|route",
 } as const;
 
+/** kind `menu_item` -> NavLink (NavBar, SidebarNav, BottomNav, ShellSidebar, the sub nav, outlines and help links): a menu entry
+ *  (Codex v0.4 Menu item: label = title, the address from the slug); `href` only where the app routes menu items, else no link */
+export const menuItemFields = {
+  id: "id",
+  name: "title",
+  icon: "metadata.icon.value",
+  href: "slug|route",
+} as const;
+
+/** kind `menu_item` with children -> MegaGroup (SitemapFooter, FooterColumns, FooterCard, MegaMenu, FooterSplit): a group of a
+ *  menu and the items under it (parent_id), resolved through the lookup CODEX.menus */
+export const menuGroupFields = {
+  id: "id",
+  title: "title",
+  icon: "metadata.icon.value",
+  links: "id|menu",
+  href: "slug|route",
+} as const;
+
+/** kind `menu_item` (location categories) -> Category (CategoryNav): a menu entry with the number of products under it */
+export const menuCategoryFields = {
+  id: "id",
+  name: "title",
+  icon: "metadata.icon.value",
+  count: "metadata.count.value",
+  href: "slug|route",
+} as const;
+
 /** the field maps by entry kind */
-export const CODEX_FIELDS = { product: productFields, post: postFields, plan: planFields, review: reviewFields, stat: statFields, faq: faqFields, faqtab: faqTabFields, page: pageFields } as const;
+export const CODEX_FIELDS = {
+  product: productFields, post: postFields, plan: planFields, review: reviewFields, stat: statFields, faq: faqFields, faqtab: faqTabFields, page: pageFields,
+  menuItem: menuItemFields, menuGroup: menuGroupFields, menuCategory: menuCategoryFields,
+} as const;
 export type CodexFieldKind = keyof typeof CODEX_FIELDS;

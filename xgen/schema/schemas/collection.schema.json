@@ -51,6 +51,10 @@
             "minLength": 1,
             "description": "the id of the parent entry of the same kind (a page under a page: the breadcrumb chain; Codex v0.4 core field)"
           },
+          "order": {
+            "type": "integer",
+            "description": "the position among the entries of one parent (a menu item among its siblings; Codex v0.4 core field)"
+          },
           "featured_media_id": {
             "type": "string",
             "minLength": 1,

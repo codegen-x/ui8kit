@@ -81,19 +81,13 @@
                   "use": "Button",
                   "props": {
                     "Variant": "outline",
-                    "Size": "sm",
-                    "Href": {
-                      "op": "tpl",
-                      "args": [
-                        "#/faq/{0}",
-                        {
-                          "$": "t.value"
-                        }
-                      ]
-                    }
+                    "Size": "sm"
                   },
                   "attrs": {
-                    "data-testid": "faq-topic"
+                    "data-testid": "faq-topic",
+                    "data-value": {
+                      "$": "t.value"
+                    }
                   },
                   "children": [
                     {
@@ -160,19 +154,26 @@
                           },
                           "children": [
                             {
-                              "use": "Link",
+                              "organism": "MenuEntry",
                               "props": {
-                                "Href": "#/faq",
-                                "Variant": "default",
-                                "Size": "sm"
+                                "href": {
+                                  "$": "q.href"
+                                },
+                                "className": "text-sm font-medium",
+                                "size": "sm"
                               },
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "q.question"
-                                  }
+                              "slots": {
+                                "children": {
+                                  "args": [],
+                                  "do": [
+                                    {
+                                      "text": {
+                                        "$": "q.question"
+                                      }
+                                    }
+                                  ]
                                 }
-                              ]
+                              }
                             }
                           ]
                         }

@@ -63,7 +63,6 @@ export function HeaderPage() {
                 labels={ui.site.header}
                 current="home"
                 cta={ui.site.header.cta}
-                ctaHref="#/pricing"
                 layout="inline"
                 position="static"
                 actions="none"
@@ -89,7 +88,6 @@ export function HeaderPage() {
                 labels={ui.site.header}
                 current="home"
                 cta={ui.site.header.cta}
-                ctaHref="#/pricing"
                 layout="stacked"
                 position="static"
                 actions="none"
@@ -115,7 +113,6 @@ export function HeaderPage() {
                 labels={ui.site.header}
                 current="home"
                 cta={ui.site.header.cta}
-                ctaHref="#/pricing"
                 layout="inline"
                 position="sticky"
                 actions="none"
@@ -141,7 +138,6 @@ export function HeaderPage() {
                 labels={ui.site.header}
                 current="home"
                 cta={ui.site.header.cta}
-                ctaHref="#/pricing"
                 layout="inline"
                 position="static"
                 actions="cta"

@@ -5,12 +5,15 @@ export const sidenav = [
   {
     "id": "item-overview",
     "locale": "en",
-    "kind": "item",
+    "kind": "menu_item",
     "status": "published",
     "visibility": "public",
     "slug": "overview",
     "title": "Overview",
     "metadata": {
+      "location": {
+        "value": "sidebar"
+      },
       "icon": {
         "value": "layout-dashboard"
       }
@@ -23,12 +26,15 @@ export const sidenav = [
   {
     "id": "item-orders",
     "locale": "en",
-    "kind": "item",
+    "kind": "menu_item",
     "status": "published",
     "visibility": "public",
     "slug": "orders",
     "title": "Orders",
     "metadata": {
+      "location": {
+        "value": "sidebar"
+      },
       "icon": {
         "value": "shopping-bag"
       }
@@ -41,12 +47,15 @@ export const sidenav = [
   {
     "id": "item-customers",
     "locale": "en",
-    "kind": "item",
+    "kind": "menu_item",
     "status": "published",
     "visibility": "public",
     "slug": "customers",
     "title": "Customers",
     "metadata": {
+      "location": {
+        "value": "sidebar"
+      },
       "icon": {
         "value": "users"
       }
@@ -59,12 +68,15 @@ export const sidenav = [
   {
     "id": "item-reports",
     "locale": "en",
-    "kind": "item",
+    "kind": "menu_item",
     "status": "published",
     "visibility": "public",
     "slug": "reports",
     "title": "Reports",
     "metadata": {
+      "location": {
+        "value": "sidebar"
+      },
       "icon": {
         "value": "file-text"
       }
@@ -77,12 +89,15 @@ export const sidenav = [
   {
     "id": "item-settings",
     "locale": "en",
-    "kind": "item",
+    "kind": "menu_item",
     "status": "published",
     "visibility": "public",
     "slug": "settings",
     "title": "Settings",
     "metadata": {
+      "location": {
+        "value": "sidebar"
+      },
       "icon": {
         "value": "settings"
       }

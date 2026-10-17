@@ -31,7 +31,7 @@ const { extras, labels } = defineProps<MediaContactsProps>();
         :key="c.id"
         variant="outline"
         size="default"
-        href="#/"
+        :href="c.href"
         class="w-full gap-2"
         data-testid="media-channel"
       >

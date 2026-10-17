@@ -23,7 +23,6 @@
   import Grid from "../primitives/grid/grid.svelte";
   import Group from "../primitives/group/group.svelte";
   import Inline from "../primitives/inline/inline.svelte";
-  import Link from "../primitives/link/link.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Table from "../primitives/table/table.svelte";
@@ -34,6 +33,7 @@
   import TableHeadCell from "../primitives/table/table-head-cell.svelte";
   import TableRow from "../primitives/table/table-row.svelte";
   import Text from "../primitives/text/text.svelte";
+  import MenuEntry from "../components/menu-entry.svelte";
 
   let { jobs, departments, labels, layout = "grid", salary = "hide" }: JobCardsProps = $props();
 </script>
@@ -91,9 +91,9 @@
               </TableCell>
             {/if}
             <TableCell class="pr-4 text-right">
-              <Link href="#/careers" variant="default" class="font-medium">
+              <MenuEntry href={j.href} class="font-medium">
                 {labels.apply}
-              </Link>
+              </MenuEntry>
             </TableCell>
           </TableRow>
         {/each}
@@ -138,10 +138,10 @@
           <Badge variant="secondary" size="default">
             {departments.filter((i) => !j.dept || i["id"] === j.dept)[0]?.name ?? ""}
           </Badge>
-          <Link href="#/careers" variant="default" class="inline-flex items-center gap-2 text-sm font-medium">
+          <MenuEntry href={j.href} class="inline-flex items-center gap-2 text-sm font-medium">
             {labels.apply}
             <LucideIcon name="arrow-right" size={16} />
-          </Link>
+          </MenuEntry>
         </Group>
       </Stack>
     {/each}

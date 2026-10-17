@@ -21,6 +21,21 @@
       {
         "name": "channels",
         "type": "Feature[]"
+      },
+      {
+        "name": "sitemapHref",
+        "type": "string",
+        "optional": true
+      },
+      {
+        "name": "ctaHref",
+        "type": "string",
+        "optional": true
+      },
+      {
+        "name": "secondaryHref",
+        "type": "string",
+        "optional": true
       }
     ],
     "FooterSplitLabels": [
@@ -269,28 +284,15 @@
                           ]
                         },
                         {
-                          "use": "Link",
+                          "organism": "FooterSitemap",
                           "props": {
-                            "Href": "#/sitemap",
-                            "Size": "sm"
-                          },
-                          "attrs": {
-                            "data-testid": "footer-sitemap"
-                          },
-                          "children": [
-                            {
-                              "use": "LucideIcon",
-                              "props": {
-                                "Name": "arrow-right",
-                                "Size": 16
-                              }
+                            "href": {
+                              "$": "extras.sitemapHref"
                             },
-                            {
-                              "text": {
-                                "$": "labels.sitemap"
-                              }
+                            "label": {
+                              "$": "labels.sitemap"
                             }
-                          ]
+                          }
                         }
                       ]
                     },
@@ -628,11 +630,15 @@
                                 "primary": {
                                   "$": "labels.cta"
                                 },
-                                "primaryHref": "#/contact",
+                                "primaryHref": {
+                                  "$": "extras.ctaHref"
+                                },
                                 "secondary": {
                                   "$": "labels.secondary"
                                 },
-                                "secondaryHref": "#/work"
+                                "secondaryHref": {
+                                  "$": "extras.secondaryHref"
+                                }
                               }
                             }
                           ]

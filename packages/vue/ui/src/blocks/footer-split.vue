@@ -33,8 +33,6 @@ import Block from "../primitives/block/block.vue";
 import Box from "../primitives/box/box.vue";
 import Container from "../primitives/container/container.vue";
 import Group from "../primitives/group/group.vue";
-import Link from "../primitives/link/link.vue";
-import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import ActionGroup from "../components/action-group.vue";
@@ -46,6 +44,7 @@ import FooterGroupCards from "../components/footer-group-cards.vue";
 import FooterLinkColumns from "../components/footer-link-columns.vue";
 import FooterPoints from "../components/footer-points.vue";
 import FooterSignupCard from "../components/footer-signup-card.vue";
+import FooterSitemap from "../components/footer-sitemap.vue";
 import MediaFrame from "../components/media-frame.vue";
 import { cn } from "../utils";
 
@@ -80,10 +79,7 @@ const {
             <FooterBrand :brand="brand" :tagline="tagline" />
             <FooterFigures :extras="extras" />
           </Stack>
-          <Link href="#/sitemap" size="sm" data-testid="footer-sitemap">
-            <LucideIcon name="arrow-right" :size="16" />
-            {{ labels.sitemap }}
-          </Link>
+          <FooterSitemap :href="extras.sitemapHref" :label="labels.sitemap" />
         </Group>
         <FooterGroupCards :label="label" :groups="groups" :landmarkLabel="landmarkLabel" />
         <Box class="border-t border-border pt-6">
@@ -118,7 +114,12 @@ const {
           />
           <template v-if="((layout as string) === 'contacts')">
             <FooterContacts :extras="extras" />
-            <ActionGroup :primary="labels.cta" primaryHref="#/contact" :secondary="labels.secondary" secondaryHref="#/work" />
+            <ActionGroup
+              :primary="labels.cta"
+              :primaryHref="extras.ctaHref"
+              :secondary="labels.secondary"
+              :secondaryHref="extras.secondaryHref"
+            />
           </template>
           <template v-if="((layout as string) === 'channels')">
             <FooterChannels :extras="extras" />

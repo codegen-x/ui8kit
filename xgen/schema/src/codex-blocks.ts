@@ -60,8 +60,12 @@ function organisms(src: BlockSources) {
   return { byName, records };
 }
 
-const mapOf = (fields: Json | undefined): string | undefined =>
-  Object.entries(CODEX_FIELDS).find(([, m]) => same({ ...m }, fields))?.[0];
+// equal maps (page and menuItem): the one named after the binding's kind first ("menu_item" -> menuItem)
+const mapOf = (fields: Json | undefined, kind = ""): string | undefined => {
+  const hits = Object.entries(CODEX_FIELDS).filter(([, m]) => same({ ...m }, fields)).map(([k]) => k);
+  const norm = kind.replace(/_/g, "").toLowerCase();
+  return hits.find((k) => k.toLowerCase() === norm) ?? hits[0];
+};
 
 function kitBlock(file: string, src: BlockSources, orgs: ReturnType<typeof organisms>, dict: Obj): BlockEntry {
   const s = readJson(file);
@@ -72,7 +76,7 @@ function kitBlock(file: string, src: BlockSources, orgs: ReturnType<typeof organ
   const aliases = new Set(specData.map((d) => d.as as string));
   const data: Binding[] = specData.map((d) => {
     const r = refs.find((x) => x.ref === d.as);
-    const map = mapOf(d.fields);
+    const map = mapOf(d.fields, typeof d.kind === "string" ? d.kind : "");
     return {
       prop: r?.path ?? (d.as as string),
       ...(d.collection ? { collection: d.collection as string } : {}),

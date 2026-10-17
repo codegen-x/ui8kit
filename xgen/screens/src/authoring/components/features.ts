@@ -4,7 +4,7 @@ import { fields, spec, ts } from "../kit";
 import { cols, mediaOf, tsOf } from "../props";
 import { layoutOf } from "../presets";
 
-export const featureRecord = fields(["id", "string"], ["title", "string"], ["text", "string"], ["icon", "string"]);
+export const featureRecord = fields(["id", "string"], ["title", "string"], ["text", "string"], ["icon", "string"], ["href", "string", true]);
 export const featureItem = { name: "item", type: tsOf("card", "tile", "cell"), default: "card", docs: "card: icon, title and text stacked; tile: compact icon beside title and text; cell: bordered cell with a round icon" };
 
 export const featureCards = spec("pattern.feature-cards", "FeatureCards", "The features as a grid of cards, tiles or bordered cells (the body of FeatureGrid). Icons are Lucide names.", {

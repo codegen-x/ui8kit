@@ -5,14 +5,16 @@ import { spec, ts } from "../kit";
 import { tsOf } from "../props";
 import { muted, strong, surface } from "../ux";
 import { articleBlockOf } from "./landmarks";
+import { menuEntry } from "./nav";
 
 const types = [{ from: "FaqSplit", names: ["Question", "FaqSplitLabels"] }];
 const items = { name: "items", type: ts("Question[]"), required: true };
 const labels = { name: "labels", type: ts("FaqSplitLabels"), required: true };
 const iconSquare = (icon: string): ViewNode =>
   use("Box", { props: { Class: "flex size-10 shrink-0 items-center justify-center rounded bg-muted" } }, use("LucideIcon", { props: { Name: ref(icon), Size: 20 } }));
-const arrowLink = (label: string, href: string): ViewNode =>
-  use("Link", { props: { Href: href, Variant: "default", Size: "sm", Class: "font-medium" } }, text(ref(label)), use("LucideIcon", { props: { Name: "arrow-right", Size: 16 } }));
+/** a call to action with no address of its own: a link-styled button (an app wires it); no "#/" stand-in */
+const arrowLink = (label: string): ViewNode =>
+  use("Button", { props: { Variant: "link", Size: "sm", Class: "gap-2 px-0 font-medium" } }, text(ref(label)), use("LucideIcon", { props: { Name: "arrow-right", Size: 16 } }));
 
 export const faqDisclosures = spec("pattern.faq-disclosures", "FaqDisclosures", "The questions of FaqSplit as native disclosures, one open at a time.", {
   typeImports: types,
@@ -35,7 +37,7 @@ export const faqCards = spec("pattern.faq-cards", "FaqCards", "The questions of 
           use("Badge", { props: { Variant: "secondary", Size: "sm", Class: "w-fit" } }, text(ref("q.category"))),
           use("Title", { props: { As: 3, Size: "base", Weight: "semibold" } }, text(ref("q.question"))),
           muted(ref("q.answer"))),
-        use("Box", { props: { Class: "mt-auto" } }, arrowLink("labels.more", "#/faq")))))],
+        use("Box", { props: { Class: "mt-auto" } }, arrowLink("labels.more")))))],
 });
 
 export const faqHelp = spec("pattern.faq-help", "FaqHelp", "The help card beside the questions of FaqSplit: a title, a line of text, the ways to reach the team (icon, name, one line) and a link.", {
@@ -47,7 +49,7 @@ export const faqHelp = spec("pattern.faq-help", "FaqHelp", "The help card beside
     use("List", { props: { Class: "m-0 flex list-none flex-col gap-4 p-0" } },
       each(ref("channels"), "c", ref("c.id"), use("ListItem", { props: { Class: "flex items-start gap-4" }, attrs: { "data-testid": "faq-channel" } },
         iconSquare("c.icon"), use("Stack", { props: { Gap: "0" } }, strong(ref("c.title"), "sm"), muted(ref("c.text"), "xs"))))),
-    arrowLink("labels.asideCta", "#/contact"))],
+    arrowLink("labels.asideCta"))],
 });
 
 export const faqFinder = spec("pattern.faq-finder", "FaqFinder", "The finder of FaqSplit: a search field, the topics as a row of buttons, and the first three questions as popular links.", {
@@ -56,12 +58,12 @@ export const faqFinder = spec("pattern.faq-finder", "FaqFinder", "The finder of 
   view: [use("Stack", { props: { Gap: "6", Align: "stretch" }, attrs: { "data-testid": "faq-finder" } },
     organism("SearchField", { label: ref("labels.search"), placeholder: ref("labels.search"), value: coalesce(ref("labels.query"), "") }),
     use("Group", { props: { Gap: "2", Class: "flex-wrap" } },
-      each(ref("topics"), "t", ref("t.id"), use("Button", { props: { Variant: "outline", Size: "sm", Href: tpl("#/faq/{0}", ref("t.value")) }, attrs: { "data-testid": "faq-topic" } }, text(ref("t.title"))))),
+      each(ref("topics"), "t", ref("t.id"), use("Button", { props: { Variant: "outline", Size: "sm" }, attrs: { "data-testid": "faq-topic", "data-value": ref("t.value") } }, text(ref("t.title"))))),
     use("Stack", { props: { Gap: "2" } },
       strong(ref("labels.popular"), "sm"),
       use("List", { props: { Class: "m-0 flex list-none flex-col gap-2 p-0" } },
         eachAt(ref("items"), "q", "i", ref("q.id"), when(lt(ref("i"), 3), [use("ListItem", { attrs: { "data-testid": "faq-popular" } },
-          use("Link", { props: { Href: "#/faq", Variant: "default", Size: "sm" } }, text(ref("q.question"))))])))))],
+          menuEntry(ref("q.href"), { size: "sm", cls: "text-sm font-medium" }, text(ref("q.question"))))])))))],
 });
 
 export const faqParts: OrganismSpec[] = [faqDisclosures, faqCards, faqHelp, faqFinder];

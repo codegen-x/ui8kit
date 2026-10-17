@@ -7,13 +7,12 @@
 import { Fragment, type ReactNode } from "react";
 import { Button } from "../primitives/button/button";
 import { Group } from "../primitives/group/group";
-import { Link } from "../primitives/link/link";
 import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
+import { MenuEntry } from "../components/menu-entry";
 import { SearchField } from "../components/search-field";
-import { tpl } from "../utils";
 import type { Question, FaqSplitLabels } from "../blocks/faq-split.types";
 import type { FaqTab } from "../blocks/faq-list.types";
 
@@ -29,7 +28,7 @@ export function FaqFinder({ items, labels, topics }: FaqFinderProps) {
       <SearchField label={labels.search} placeholder={labels.search} value={(labels.query ?? "")} />
       <Group gap="2" className="flex-wrap">
         {(topics ?? []).map((t) => (
-          <Button key={t.id} variant="outline" size="sm" href={tpl("#/faq/{0}", t.value)} data-testid="faq-topic">
+          <Button key={t.id} variant="outline" size="sm" data-testid="faq-topic" data-value={t.value}>
             {t.title}
           </Button>
         ))}
@@ -43,9 +42,9 @@ export function FaqFinder({ items, labels, topics }: FaqFinderProps) {
             <Fragment key={q.id}>
               {(i < 3) ? (
                 <ListItem data-testid="faq-popular">
-                  <Link href="#/faq" variant="default" size="sm">
+                  <MenuEntry href={q.href} className="text-sm font-medium" size="sm">
                     {q.question}
-                  </Link>
+                  </MenuEntry>
                 </ListItem>
               ) : null}
             </Fragment>

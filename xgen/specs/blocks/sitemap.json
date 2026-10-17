@@ -71,6 +71,7 @@
   "slots": [
     "FooterCard",
     "FooterColumns",
+    "MenuEntry",
     "NavBlock",
     "Pill"
   ],
@@ -112,13 +113,14 @@
     {
       "as": "sitemap",
       "collection": "sitemap",
-      "kind": "group",
+      "kind": "menu_item",
       "record": "MegaGroup",
       "fields": {
         "id": "id",
         "title": "title",
         "icon": "metadata.icon.value",
-        "links": "metadata.links.value"
+        "links": "id|menu",
+        "href": "slug|route"
       }
     }
   ],

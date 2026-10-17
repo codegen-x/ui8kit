@@ -12,7 +12,6 @@ import (
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/group"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/input"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/label"
-	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/link"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/stack"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/text"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/title"
@@ -92,7 +91,7 @@ templ SitemapFooter(p SitemapFooterProps) {
 						@NavBlock(NavBlockProps{Label: uiutils.Cond(uiutils.T(vLandmarkLabel), uiutils.Uniq(uiutils.Tpl("{0}, {1}", vLabel, vLandmarkLabel)), vLabel)}) {
 							@group.Group(group.GroupProps{Gap: "4", Class: "flex-wrap"}) {
 								for _, vG := range uiutils.L(vGroups) {
-									@link.Link(link.LinkProps{Href: "#/", Variant: "default", Class: "text-sm", Attrs: uiutils.Attrs("data-testid", "group")}) {
+									@MenuEntry(MenuEntryProps{Href: uiutils.Get(vG, "href"), Class: uiutils.Cnv("text-sm"), Testid: "group"}) {
 										{ uiutils.Text(uiutils.Get(vG, "title")) }
 									}
 								}

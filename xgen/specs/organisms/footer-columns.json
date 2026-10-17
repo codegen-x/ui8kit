@@ -101,26 +101,32 @@
                           },
                           "as": "item",
                           "key": {
-                            "$": "item"
+                            "$": "item.id"
                           },
                           "do": [
                             {
                               "use": "ListItem",
                               "children": [
                                 {
-                                  "use": "Link",
+                                  "organism": "MenuEntry",
                                   "props": {
-                                    "Href": "#/",
-                                    "Variant": "default",
-                                    "Class": "text-sm text-muted-foreground"
+                                    "href": {
+                                      "$": "item.href"
+                                    },
+                                    "className": "text-sm text-muted-foreground"
                                   },
-                                  "children": [
-                                    {
-                                      "text": {
-                                        "$": "item"
-                                      }
+                                  "slots": {
+                                    "children": {
+                                      "args": [],
+                                      "do": [
+                                        {
+                                          "text": {
+                                            "$": "item.name"
+                                          }
+                                        }
+                                      ]
                                     }
-                                  ]
+                                  }
                                 }
                               ]
                             }

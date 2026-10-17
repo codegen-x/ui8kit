@@ -27,13 +27,13 @@
   import Container from "../primitives/container/container.svelte";
   import Group from "../primitives/group/group.svelte";
   import Inline from "../primitives/inline/inline.svelte";
-  import Link from "../primitives/link/link.svelte";
   import List from "../primitives/list/list.svelte";
   import ListItem from "../primitives/list/list-item.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Select from "../primitives/select/select.svelte";
   import SelectOption from "../primitives/select/select-option.svelte";
   import Text from "../primitives/text/text.svelte";
+  import MenuEntry from "../components/menu-entry.svelte";
   import SearchField from "../components/search-field.svelte";
   import { cn } from "../utils";
 
@@ -90,12 +90,12 @@
     <List tag="ul" class={listShape} data-testid="items">
       {#each categories as c (c.id)}
         <ListItem>
-          <Link
-            href="#/categories"
-            variant="default"
-            aria-current={((c.id === current) ? "page" : undefined)}
+          <MenuEntry
+            href={c.href}
             class={cn("text-sm", linkShape, ((c.id === current) ? currentLook : otherLook))}
-            data-testid="item"
+            current={(c.id === current)}
+            testid="item"
+            block={true}
           >
             {#if ((icon as string) === "show")}
               {#if tiles}
@@ -114,7 +114,7 @@
                 {(c.count == null ? undefined : String(c.count))}
               </Text>
             {/if}
-          </Link>
+          </MenuEntry>
         </ListItem>
       {/each}
     </List>

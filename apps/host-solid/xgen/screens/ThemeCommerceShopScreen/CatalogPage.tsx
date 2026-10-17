@@ -21,7 +21,7 @@ import { products as productsEntries } from "@ui8kit/app-shared/data/products";
 import { crumbs as crumbsEntries } from "@ui8kit/app-shared/data/crumbs";
 import { stats as statsEntries } from "@ui8kit/app-shared/data/stats";
 
-const CATEGORIES_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","count":"metadata.count.value"} as const;
+const CATEGORIES_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","count":"metadata.count.value","href":"slug|route"} as const;
 const PRODUCTS_FIELDS = {
   "id": "id",
   "name": "title",

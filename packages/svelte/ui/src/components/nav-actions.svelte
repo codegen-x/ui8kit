@@ -24,7 +24,7 @@
 
   let {
     login,
-    loginHref = "#/login",
+    loginHref,
     cta,
     ctaHref,
     actions = "cta",

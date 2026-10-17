@@ -13,6 +13,7 @@
   export type MegaMenuProps = {
     label: string;
     brand: string;
+    brandHref?: string;
     trigger: string;
     links: NavLink[];
     groups: MegaGroup[];
@@ -32,19 +33,20 @@
   import Container from "../primitives/container/container.svelte";
   import Grid from "../primitives/grid/grid.svelte";
   import Group from "../primitives/group/group.svelte";
-  import Link from "../primitives/link/link.svelte";
   import List from "../primitives/list/list.svelte";
   import ListItem from "../primitives/list/list-item.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
   import MediaFrame from "../components/media-frame.svelte";
+  import MenuEntry from "../components/menu-entry.svelte";
   import NavBlock from "../components/nav-block.svelte";
   import { cn, tpl, uniqLabel } from "../utils";
 
   let {
     label,
     brand,
+    brandHref,
     trigger,
     links,
     groups,
@@ -67,9 +69,9 @@
     class={cn("mx-auto w-full max-w-6xl px-4", "flex flex-wrap items-center gap-6 py-4")}
     data-slot="container"
   >
-    <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
+    <MenuEntry href={brandHref} class="text-lg font-medium" testid="brand">
       {brand}
-    </Link>
+    </MenuEntry>
     <NavBlock label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", label, landmarkLabel)) : label)} class="flex-1">
       <Group gap="4" align="center" class="flex-wrap">
         <ButtonPlain
@@ -82,15 +84,9 @@
           <LucideIcon name="chevron-down" size={16} />
         </ButtonPlain>
         {#each links as l (l.id)}
-          <Link
-            href={l.href}
-            variant="default"
-            aria-current={((l.id === "") ? "page" : undefined)}
-            class="text-sm"
-            data-testid="nav-link"
-          >
+          <MenuEntry href={l.href} class="text-sm" current={(l.id === "")} testid="nav-link">
             {l.name}
-          </Link>
+          </MenuEntry>
         {/each}
       </Group>
     </NavBlock>
@@ -116,11 +112,11 @@
               </Text>
             </Group>
             <List class="m-0 flex list-none flex-col gap-2 p-0">
-              {#each g.links as item (item)}
+              {#each g.links as item (item.id)}
                 <ListItem>
-                  <Link href="#/" variant="default" class="text-sm text-muted-foreground">
-                    {item}
-                  </Link>
+                  <MenuEntry href={item.href} class="text-sm text-muted-foreground">
+                    {item.name}
+                  </MenuEntry>
                 </ListItem>
               {/each}
             </List>

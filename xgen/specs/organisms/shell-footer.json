@@ -136,20 +136,27 @@
                           "use": "ListItem",
                           "children": [
                             {
-                              "use": "Link",
+                              "organism": "MenuEntry",
                               "props": {
-                                "Href": "#/",
-                                "Variant": "muted",
-                                "Size": "sm",
-                                "Class": "text-xs"
+                                "href": {
+                                  "$": "f.href"
+                                },
+                                "className": "text-xs text-muted-foreground",
+                                "variant": "muted",
+                                "size": "sm"
                               },
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "f.name"
-                                  }
+                              "slots": {
+                                "children": {
+                                  "args": [],
+                                  "do": [
+                                    {
+                                      "text": {
+                                        "$": "f.name"
+                                      }
+                                    }
+                                  ]
                                 }
-                              ]
+                              }
                             }
                           ]
                         }

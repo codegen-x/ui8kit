@@ -9,6 +9,9 @@ export type FooterExtras = {
   points: Feature[];
   contacts: Feature[];
   channels: Feature[];
+  sitemapHref?: string;
+  ctaHref?: string;
+  secondaryHref?: string;
 };
 
 export type FooterSplitLabels = {

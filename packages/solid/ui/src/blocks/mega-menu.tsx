@@ -12,13 +12,13 @@ import { ButtonPlain } from "../primitives/button-plain/button-plain";
 import { Container } from "../primitives/container/container";
 import { Grid } from "../primitives/grid/grid";
 import { Group } from "../primitives/group/group";
-import { Link } from "../primitives/link/link";
 import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { MediaFrame } from "../components/media-frame";
+import { MenuEntry } from "../components/menu-entry";
 import { NavBlock } from "../components/nav-block";
 import { cn, tpl, uniqLabel } from "../utils";
 import type { MegaGroup } from "./mega-menu.types";
@@ -27,6 +27,7 @@ import type { NavLink } from "./nav-bar.types";
 export type MegaMenuProps = {
   label: string;
   brand: string;
+  brandHref?: string;
   trigger: string;
   links: NavLink[];
   groups: MegaGroup[];
@@ -41,6 +42,7 @@ export type MegaMenuProps = {
 export function MegaMenu({
   label,
   brand,
+  brandHref,
   trigger,
   links,
   groups,
@@ -63,9 +65,9 @@ export function MegaMenu({
           class={cn("mx-auto w-full max-w-6xl px-4", "flex flex-wrap items-center gap-6 py-4")}
           data-slot="container"
         >
-          <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
+          <MenuEntry href={brandHref} class="text-lg font-medium" testid="brand">
             {brand}
-          </Link>
+          </MenuEntry>
           <NavBlock label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", label, landmarkLabel)) : label)} class="flex-1">
             <Group gap="4" align="center" class="flex-wrap">
               <ButtonPlain
@@ -78,15 +80,9 @@ export function MegaMenu({
                 <LucideIcon name="chevron-down" size={16} />
               </ButtonPlain>
               <For each={links ?? []}>{(l) => (
-                <Link
-                  href={l.href}
-                  variant="default"
-                  aria-current={((l.id === "") ? "page" : undefined)}
-                  class="text-sm"
-                  data-testid="nav-link"
-                >
+                <MenuEntry href={l.href} class="text-sm" current={(l.id === "")} testid="nav-link">
                   {l.name}
-                </Link>
+                </MenuEntry>
               )}</For>
             </Group>
           </NavBlock>
@@ -114,9 +110,9 @@ export function MegaMenu({
                   <List class="m-0 flex list-none flex-col gap-2 p-0">
                     <For each={g.links ?? []}>{(item) => (
                       <ListItem>
-                        <Link href="#/" variant="default" class="text-sm text-muted-foreground">
-                          {item}
-                        </Link>
+                        <MenuEntry href={item.href} class="text-sm text-muted-foreground">
+                          {item.name}
+                        </MenuEntry>
                       </ListItem>
                     )}</For>
                   </List>

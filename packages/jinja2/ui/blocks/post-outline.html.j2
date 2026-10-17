@@ -51,7 +51,7 @@
         {{ ui_include('ui/lucide-icon/lucide-icon.html.j2', {'p': {'Name': 'chevron-right', 'Size': 16}}) }}
         {{ ui_text(ui_get(v_l, ['name'])) }}
       {%- endset -%}
-      {{ ui_include('ui/link/link.html.j2', {'p': {'Href': '#/', 'Size': 'sm', 'Attrs': ui_attrs(['data-testid', 'post-link'])}, 'children': c_11}) }}
+      {{ ui_include('blocks/menu-entry.html.j2', {'p': {'href': ui_get(v_l, ['href']), 'className': ui_cnv(['text-sm font-medium']), 'size': 'sm', 'testid': 'post-link'}, 'children': c_11}) }}
     {%- endfor %}
   {%- endset -%}
   {{ ui_include('ui/stack/stack.html.j2', {'p': {'Gap': '2', 'Align': 'stretch', 'Class': 'border-t border-border pt-4'}, 'children': c_12}) }}

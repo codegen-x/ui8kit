@@ -41,7 +41,7 @@
   import { sitemap as sitemapEntries } from "@ui8kit/app-shared/data/sitemap";
   import { milestones as milestonesEntries } from "@ui8kit/app-shared/data/milestones";
 
-  const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
+  const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","href":"slug|route"} as const;
   const STATS_FIELDS = {
     "id": "id",
     "label": "title",
@@ -70,7 +70,7 @@
   } as const;
   const DEPARTMENTS_FIELDS = {"id":"id","name":"title"} as const;
   const PHOTOS_FIELDS = {"id":"id","title":"title","tag":"metadata.tag.value","size":"metadata.size.value"} as const;
-  const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
+  const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"id|menu","href":"slug|route"} as const;
   const MILESTONES_FIELDS = {"id":"id","date":"metadata.date.value","title":"title","text":"metadata.text.value","tag":"metadata.tag.value"} as const;
 
   const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS, CODEX);

@@ -35,7 +35,7 @@
   import { photos as photosEntries } from "@ui8kit/app-shared/data/photos";
   import { sitemap as sitemapEntries } from "@ui8kit/app-shared/data/sitemap";
 
-  const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
+  const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","href":"slug|route"} as const;
   const TESTIMONIALS_FIELDS = {
     "id": "id",
     "author": "title",
@@ -60,7 +60,7 @@
     "client": "metadata.client.value",
   } as const;
   const PHOTOS_FIELDS = {"id":"id","title":"title","tag":"metadata.tag.value","size":"metadata.size.value"} as const;
-  const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
+  const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"id|menu","href":"slug|route"} as const;
 
   const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS, CODEX);
   const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS, CODEX);

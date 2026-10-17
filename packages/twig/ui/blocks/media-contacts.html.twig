@@ -16,7 +16,7 @@
         {{ include('ui/lucide-icon/lucide-icon.html.twig', {'p': {'Name': ui_s(ui_get(v_c, ['icon'])), 'Size': 16}}, with_context = false) }}
         {{ ui_text(ui_get(v_c, ['title'])) }}
       {%- endset -%}
-      {{ include('ui/button/button.html.twig', {'p': {'Variant': 'outline', 'Size': 'default', 'Href': '#/', 'Class': 'w-full gap-2', 'Attrs': ui_attrs(['data-testid', 'media-channel'])}, 'children': c_2}, with_context = false) }}
+      {{ include('ui/button/button.html.twig', {'p': {'Variant': 'outline', 'Size': 'default', 'Href': ui_s(ui_get(v_c, ['href'])), 'Class': 'w-full gap-2', 'Attrs': ui_attrs(['data-testid', 'media-channel'])}, 'children': c_2}, with_context = false) }}
     {%- endfor %}
   {%- endset -%}
   {{ include('ui/stack/stack.html.twig', {'p': {'Gap': '2', 'Align': 'stretch'}, 'children': c_3}, with_context = false) }}

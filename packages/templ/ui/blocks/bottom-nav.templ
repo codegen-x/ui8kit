@@ -6,7 +6,6 @@ package blocks
 import (
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/block"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/inline"
-	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/link"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/list"
 	lucideicon "github.com/codegen-x/ui8kit/packages/templ/ui/ui/lucide-icon"
 	uiutils "github.com/codegen-x/ui8kit/packages/templ/ui/utils"
@@ -36,7 +35,7 @@ templ BottomNav(p BottomNavProps) {
 		@list.List(list.ListProps{Class: "m-0 grid list-none grid-flow-col auto-cols-fr p-0", Attrs: uiutils.Attrs("data-testid", "items")}) {
 			for _, vTab := range uiutils.L(vTabs) {
 				@list.ListItem(list.ListItemProps{}) {
-					@link.Link(link.LinkProps{Href: "#/", Variant: "default", AriaCurrent: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vTab, "id"), vCurrent)), "page", nil)), Class: uiutils.S(uiutils.Cnv("flex flex-col items-center gap-2 py-2 text-xs", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vTab, "id"), vCurrent)), "font-semibold text-primary", "text-muted-foreground"))), Attrs: uiutils.Attrs("data-testid", "item")}) {
+					@MenuEntry(MenuEntryProps{Href: uiutils.Get(vTab, "href"), Class: uiutils.Cnv(uiutils.Cnv("flex flex-col items-center gap-2 py-2 text-xs", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vTab, "id"), vCurrent)), "font-semibold text-primary", "text-muted-foreground"))), Current: uiutils.Eq(uiutils.Get(vTab, "id"), vCurrent), Testid: "item"}) {
 						@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Get(vTab, "icon")), Size: 20})
 						@inline.Inline(inline.InlineProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLabels, "hide")), "sr-only", ""))}) {
 							{ uiutils.Text(uiutils.Get(vTab, "name")) }

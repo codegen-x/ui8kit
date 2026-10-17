@@ -16,21 +16,21 @@ type TopicChipsProps struct {
 	Tone any `json:"tone"`
 }
 
-// A centered row of topic pills (static links). tone inverse: on a dark band with an icon per topic; default: outlined.
+// A centered row of topic pills: links where a topic has an address, else buttons. tone inverse: on a dark band with an icon per topic; default: outlined.
 templ TopicChips(p TopicChipsProps) {
 	{{ vTopics := p.Topics }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
 	@group.Group(group.GroupProps{Gap: "2", Align: "center", Justify: "center", Class: "flex-wrap", Attrs: uiutils.Attrs("data-testid", "hero-topics")}) {
 		for _, vTopic := range uiutils.L(vTopics) {
 			if uiutils.Eq(vTone, "inverse") {
-				@button.Button(button.ButtonProps{Href: "#/", Variant: "ghost", Size: "sm", Class: "gap-2 text-background inset-ring-background/30 hover:bg-background/10", Attrs: uiutils.Attrs("data-testid", "hero-topic")}) {
+				@button.Button(button.ButtonProps{Href: uiutils.S(uiutils.Get(vTopic, "href")), Variant: "ghost", Size: "sm", Class: "gap-2 text-background inset-ring-background/30 hover:bg-background/10", Attrs: uiutils.Attrs("data-testid", "hero-topic")}) {
 					if uiutils.T(uiutils.Get(vTopic, "icon")) {
 						@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Get(vTopic, "icon")), Size: 16})
 					}
 					{ uiutils.Text(uiutils.Get(vTopic, "name")) }
 				}
 			} else {
-				@button.Button(button.ButtonProps{Href: "#/", Variant: "outline", Size: "sm", Attrs: uiutils.Attrs("data-testid", "hero-topic")}) {
+				@button.Button(button.ButtonProps{Href: uiutils.S(uiutils.Get(vTopic, "href")), Variant: "outline", Size: "sm", Attrs: uiutils.Attrs("data-testid", "hero-topic")}) {
 					{ uiutils.Text(uiutils.Get(vTopic, "name")) }
 				}
 			}

@@ -33,7 +33,7 @@ const ROUTES = [
   {"path":"delivery","area":"delivery"},
   {"path":"orders","area":"orders"},
 ] as const;
-const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
+const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"id|menu","href":"slug|route"} as const;
 
 const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS, CODEX);
 const HOME = { area: "home", params: {} as Record<string, string> };
@@ -61,6 +61,7 @@ export function ThemeCommerceShopScreen({ url }: { url: UrlPort }) {
         layout="inline"
         over="none"
         tone="default"
+        brandHref="#/"
         skip={ui.site.header.skip}
         onTheme={() => actions.toggleTheme()}
       />

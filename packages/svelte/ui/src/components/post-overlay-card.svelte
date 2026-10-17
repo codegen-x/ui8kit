@@ -19,12 +19,12 @@
   import Badge from "../primitives/badge/badge.svelte";
   import Box from "../primitives/box/box.svelte";
   import Group from "../primitives/group/group.svelte";
-  import Link from "../primitives/link/link.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
   import MediaFrame from "../components/media-frame.svelte";
+  import MenuEntry from "../components/menu-entry.svelte";
   import { cn } from "../utils";
 
   let { p, labels, ratio = "4/3" }: PostOverlayCardProps = $props();
@@ -47,9 +47,9 @@
     <Text size="sm" class={cn("text-muted-foreground", "line-clamp-2")}>
       {p.excerpt}
     </Text>
-    <Link href="#/" size="sm" data-testid="read">
+    <MenuEntry href={p.href} class="gap-2 text-sm font-medium" size="sm" testid="read">
       {labels.read}
       <LucideIcon name="arrow-right" size={16} />
-    </Link>
+    </MenuEntry>
   </Stack>
 </Box>

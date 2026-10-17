@@ -12,6 +12,11 @@
       "docs": "brand word"
     },
     {
+      "name": "brandHref",
+      "type": "string",
+      "docs": "the address of the home page; none: the brand is text"
+    },
+    {
       "name": "links",
       "type": {
         "ts": "NavLink[]"
@@ -30,7 +35,7 @@
     {
       "name": "loginHref",
       "type": "string",
-      "default": "#/login"
+      "docs": "the address of the login page; none: a button"
     },
     {
       "name": "cta",
@@ -110,11 +115,12 @@
           ]
         },
         {
-          "use": "Link",
+          "organism": "MenuEntry",
           "props": {
-            "Href": "#/",
-            "Variant": "default",
-            "Class": {
+            "href": {
+              "$": "brandHref"
+            },
+            "className": {
               "op": "cn",
               "args": [
                 {
@@ -126,18 +132,21 @@
                 },
                 "font-medium leading-6 text-background"
               ]
-            }
+            },
+            "testid": "brand"
           },
-          "attrs": {
-            "data-testid": "brand"
-          },
-          "children": [
-            {
-              "text": {
-                "$": "brand"
-              }
+          "slots": {
+            "children": {
+              "args": [],
+              "do": [
+                {
+                  "text": {
+                    "$": "brand"
+                  }
+                }
+              ]
             }
-          ]
+          }
         },
         {
           "organism": "NavBlock",

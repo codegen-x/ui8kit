@@ -32,7 +32,7 @@
     {"path":"work","area":"work"},
     {"path":"teams","area":"teams"},
   ] as const;
-  const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
+  const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"id|menu","href":"slug|route"} as const;
 
   let { url }: { url: UrlPort } = $props();
 
@@ -59,6 +59,7 @@
   layout="inline"
   over="none"
   tone="default"
+  brandHref="#/"
   skip={ui.site.header.skip}
   ontheme={() => actions.toggleTheme()}
 />

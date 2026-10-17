@@ -239,21 +239,26 @@
                               },
                               "then": [
                                 {
-                                  "use": "Link",
+                                  "organism": "MenuEntry",
                                   "props": {
-                                    "Href": "#/",
-                                    "Variant": "default"
+                                    "href": {
+                                      "$": "c.href"
+                                    },
+                                    "className": "font-semibold",
+                                    "testid": "open"
                                   },
-                                  "attrs": {
-                                    "data-testid": "open"
-                                  },
-                                  "children": [
-                                    {
-                                      "text": {
-                                        "$": "open"
-                                      }
+                                  "slots": {
+                                    "children": {
+                                      "args": [],
+                                      "do": [
+                                        {
+                                          "text": {
+                                            "$": "open"
+                                          }
+                                        }
+                                      ]
                                     }
-                                  ]
+                                  }
                                 }
                               ]
                             }

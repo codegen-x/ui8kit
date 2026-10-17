@@ -32,9 +32,9 @@
                 {%- for v_item in ui_l(ui_get(v_g, ['links'])) %}
                   {%- set c_6 -%}
                     {%- set c_5 -%}
-                      {{ ui_text(v_item) }}
+                      {{ ui_text(ui_get(v_item, ['name'])) }}
                     {%- endset -%}
-                    {{ include('ui/link/link.html.twig', {'p': {'Href': '#/', 'Variant': 'default', 'Class': 'text-xs leading-5 text-muted-foreground'}, 'children': c_5}, with_context = false) }}
+                    {{ include('blocks/menu-entry.html.twig', {'p': {'href': ui_get(v_item, ['href']), 'className': ui_cnv(['text-xs leading-5 text-muted-foreground'])}, 'children': c_5}, with_context = false) }}
                   {%- endset -%}
                   {{ include('ui/list/list-item.html.twig', {'p': {}, 'children': c_6}, with_context = false) }}
                 {%- endfor %}

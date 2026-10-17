@@ -32,7 +32,7 @@
   import { details as detailsEntries } from "@ui8kit/app-shared/data/details";
   import { specs as specsEntries } from "@ui8kit/app-shared/data/specs";
 
-  const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
+  const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","href":"slug|route"} as const;
   const REVIEWS_FIELDS = {
     "id": "id",
     "title": "title",
@@ -41,7 +41,7 @@
     "text": "metadata.text.value",
     "date": "metadata.date.value|date",
   } as const;
-  const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
+  const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"id|menu","href":"slug|route"} as const;
   const PRODUCTS_FIELDS = {
     "id": "id",
     "name": "title",

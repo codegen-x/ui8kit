@@ -35,12 +35,12 @@
   import Group from "../primitives/group/group.svelte";
   import Input from "../primitives/input/input.svelte";
   import Label from "../primitives/label/label.svelte";
-  import Link from "../primitives/link/link.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
   import FooterCard from "../components/footer-card.svelte";
   import FooterColumns from "../components/footer-columns.svelte";
+  import MenuEntry from "../components/menu-entry.svelte";
   import NavBlock from "../components/nav-block.svelte";
   import Pill from "../components/pill.svelte";
   import { cn, tpl, uniqLabel } from "../utils";
@@ -118,9 +118,9 @@
           <NavBlock label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", label, landmarkLabel)) : label)}>
             <Group gap="4" class="flex-wrap">
               {#each groups as g (g.id)}
-                <Link href="#/" variant="default" class="text-sm" data-testid="group">
+                <MenuEntry href={g.href} class="text-sm" testid="group">
                   {g.title}
-                </Link>
+                </MenuEntry>
               {/each}
             </Group>
           </NavBlock>

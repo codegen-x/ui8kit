@@ -1,6 +1,6 @@
 // Footers with more than links: the brand with figures over link-group cards, or a split beside a picture with points, small link
 // columns, a newsletter card, the contacts, or the community channels with figures.
-import { cn, cond, eq, ne, or, ref, text, use, when, organism } from "../../build";
+import { cn, cond, eq, ne, or, ref, use, when, organism } from "../../build";
 import type { OrganismSpec, ViewNode } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { wide } from "../components/frames";
@@ -10,7 +10,7 @@ import { muted, strong } from "../ux";
 const footerSplit = spec("organism.footer-split", "FooterSplit", "A footer with more than links. Axes: layout (stats: the brand with three figures and a sitemap link over the link groups as cards; points, links, newsletter, contacts, channels: a split beside a picture with the brand and four points, the brand and small link columns, a newsletter card and link columns, the contacts and two actions, or the community channels and figures), mediaSide, tone.", {
   typeImports: [{ from: "MegaMenu", names: ["MegaGroup"] }, { from: "StatsBand", names: ["Stat"] }, { from: "FeatureGrid", names: ["Feature"] }],
   records: {
-    FooterExtras: fields(["stats", "Stat[]"], ["points", "Feature[]"], ["contacts", "Feature[]"], ["channels", "Feature[]"]),
+    FooterExtras: fields(["stats", "Stat[]"], ["points", "Feature[]"], ["contacts", "Feature[]"], ["channels", "Feature[]"], ["sitemapHref", "string", true], ["ctaHref", "string", true], ["secondaryHref", "string", true]),
     FooterSplitLabels: fields(["title", "string"], ["text", "string"], ["loopTitle", "string"], ["loopText", "string"], ["joinTitle", "string"], ["joinText", "string"], ["sitemap", "string"], ["points", "string"], ["signup", "string"], ["email", "string"], ["subscribe", "string"], ["note", "string"], ["cta", "string"], ["secondary", "string"]),
   },
   props: [
@@ -38,7 +38,7 @@ const footerSplit = spec("organism.footer-split", "FooterSplit", "A footer with 
     const stats = use("Stack", { props: { Gap: "8", Align: "stretch" } },
       use("Group", { props: { Gap: "6", Align: "start", Justify: "between", Class: "flex-wrap" } },
         use("Stack", { props: { Gap: "6", Align: "start" } }, brand, organism("FooterFigures", ex)),
-        use("Link", { props: { Href: "#/sitemap", Size: "sm" }, attrs: { "data-testid": "footer-sitemap" } }, use("LucideIcon", { props: { Name: "arrow-right", Size: 16 } }), text(ref("labels.sitemap")))),
+        organism("FooterSitemap", { href: ref("extras.sitemapHref"), label: ref("labels.sitemap") })),
       organism("FooterGroupCards", nav), copyright);
     const split = use("Box", { props: { Class: "grid grid-cols-1 items-center gap-8 lg:grid-cols-2" } },
       picture(true),
@@ -48,7 +48,7 @@ const footerSplit = spec("organism.footer-split", "FooterSplit", "A footer with 
         when(is("newsletter"), [organism("FooterSignupCard", { id: ref("id"), labels: ref("labels") })]),
         when(or(is("links"), is("newsletter")), [organism("FooterLinkColumns", nav)]),
         when(is("contacts"), [organism("FooterContacts", ex),
-          organism("ActionGroup", { primary: ref("labels.cta"), primaryHref: "#/contact", secondary: ref("labels.secondary"), secondaryHref: "#/work", align: "start" })]),
+          organism("ActionGroup", { primary: ref("labels.cta"), primaryHref: ref("extras.ctaHref"), secondary: ref("labels.secondary"), secondaryHref: ref("extras.secondaryHref"), align: "start" })]),
         when(is("channels"), [organism("FooterChannels", ex), organism("FooterFigures", ex)]),
         copyright),
       picture(false));

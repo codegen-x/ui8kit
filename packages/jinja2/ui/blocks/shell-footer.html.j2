@@ -17,7 +17,7 @@
           {%- set c_2 -%}
             {{ ui_text(ui_get(v_f, ['name'])) }}
           {%- endset -%}
-          {{ ui_include('ui/link/link.html.j2', {'p': {'Href': '#/', 'Variant': 'muted', 'Size': 'sm', 'Class': 'text-xs'}, 'children': c_2}) }}
+          {{ ui_include('blocks/menu-entry.html.j2', {'p': {'href': ui_get(v_f, ['href']), 'className': ui_cnv(['text-xs text-muted-foreground']), 'variant': 'muted', 'size': 'sm'}, 'children': c_2}) }}
         {%- endset -%}
         {{ ui_include('ui/list/list-item.html.j2', {'p': {}, 'children': c_3}) }}
       {%- endfor %}

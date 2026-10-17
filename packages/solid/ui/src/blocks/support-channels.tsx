@@ -8,11 +8,11 @@ import { For, type JSX } from "solid-js";
 import { Card } from "../primitives/card/card";
 import { CardContent } from "../primitives/card/card-content";
 import { Grid } from "../primitives/grid/grid";
-import { Link } from "../primitives/link/link";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { Title } from "../primitives/title/title";
+import { MenuEntry } from "../components/menu-entry";
 import { SectionFrame } from "../components/section-frame";
 import { cn } from "../utils";
 import type { Feature } from "./feature-grid.types";
@@ -60,9 +60,9 @@ export function SupportChannels({
                 </Text>
               </Stack>
               {((action as string) === "link") ? (
-                <Link href="#/" variant="default" data-testid="open">
+                <MenuEntry href={c.href} class="font-semibold" testid="open">
                   {open}
-                </Link>
+                </MenuEntry>
               ) : null}
             </CardContent>
           </Card>

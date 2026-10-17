@@ -12,7 +12,7 @@
       {%- set c_1 -%}
         {{ ui_text(ui_get(v_t, ['title'])) }}
       {%- endset -%}
-      {{ ui_include('ui/button/button.html.j2', {'p': {'Variant': 'outline', 'Size': 'sm', 'Href': ui_s(ui_tpl('#/faq/{0}', [ui_get(v_t, ['value'])])), 'Attrs': ui_attrs(['data-testid', 'faq-topic'])}, 'children': c_1}) }}
+      {{ ui_include('ui/button/button.html.j2', {'p': {'Variant': 'outline', 'Size': 'sm', 'Attrs': ui_attrs(['data-testid', 'faq-topic', 'data-value', ui_get(v_t, ['value'])])}, 'children': c_1}) }}
     {%- endfor %}
   {%- endset -%}
   {{ ui_include('ui/group/group.html.j2', {'p': {'Gap': '2', 'Class': 'flex-wrap'}, 'children': c_2}) }}
@@ -29,7 +29,7 @@
             {%- set c_4 -%}
               {{ ui_text(ui_get(v_q, ['question'])) }}
             {%- endset -%}
-            {{ ui_include('ui/link/link.html.j2', {'p': {'Href': '#/faq', 'Variant': 'default', 'Size': 'sm'}, 'children': c_4}) }}
+            {{ ui_include('blocks/menu-entry.html.j2', {'p': {'href': ui_get(v_q, ['href']), 'className': ui_cnv(['text-sm font-medium']), 'size': 'sm'}, 'children': c_4}) }}
           {%- endset -%}
           {{ ui_include('ui/list/list-item.html.j2', {'p': {'Attrs': ui_attrs(['data-testid', 'faq-popular'])}, 'children': c_5}) }}
         {%- endif %}

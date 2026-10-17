@@ -20,7 +20,7 @@
           {%- endset -%}
           {{ ui_include('ui/inline/inline.html.j2', {'p': {'Class': ui_s(('sr-only' if ui_t(ui_eq(v_labels, 'hide')) else ''))}, 'children': c_1}) }}
         {%- endset -%}
-        {{ ui_include('ui/link/link.html.j2', {'p': {'Href': '#/', 'Variant': 'default', 'AriaCurrent': ui_s(('page' if ui_t(ui_eq(ui_get(v_tab, ['id']), v_current)) else none)), 'Class': ui_s(ui_cnv(['flex flex-col items-center gap-2 py-2 text-xs', ('font-semibold text-primary' if ui_t(ui_eq(ui_get(v_tab, ['id']), v_current)) else 'text-muted-foreground')])), 'Attrs': ui_attrs(['data-testid', 'item'])}, 'children': c_2}) }}
+        {{ ui_include('blocks/menu-entry.html.j2', {'p': {'href': ui_get(v_tab, ['href']), 'className': ui_cnv([ui_cnv(['flex flex-col items-center gap-2 py-2 text-xs', ('font-semibold text-primary' if ui_t(ui_eq(ui_get(v_tab, ['id']), v_current)) else 'text-muted-foreground')])]), 'current': ui_eq(ui_get(v_tab, ['id']), v_current), 'testid': 'item'}, 'children': c_2}) }}
       {%- endset -%}
       {{ ui_include('ui/list/list-item.html.j2', {'p': {}, 'children': c_3}) }}
     {%- endfor %}

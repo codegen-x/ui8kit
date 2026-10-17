@@ -22,7 +22,7 @@ type NavActionsProps struct {
 // The buttons at the end of a top bar: login, the call to action and the theme button (it only reports the press). No wrapper: they sit in the row of the bar.
 templ NavActions(p NavActionsProps) {
 	{{ vLogin := p.Login }}
-	{{ vLoginHref := uiutils.Def(p.LoginHref, "#/login") }}
+	{{ vLoginHref := p.LoginHref }}
 	{{ vCta := p.Cta }}
 	{{ vCtaHref := p.CtaHref }}
 	{{ vActions := uiutils.Def(p.Actions, "cta") }}

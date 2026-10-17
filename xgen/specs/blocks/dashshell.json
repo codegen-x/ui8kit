@@ -268,7 +268,7 @@
       }
     },
     {
-      "sel": "[data-testid=\"footer\"] a",
+      "sel": "[data-testid=\"footer\"] li",
       "n": "@helplinks",
       "when": {
         "footer": [
@@ -303,34 +303,37 @@
     {
       "as": "sidenav",
       "collection": "sidenav",
-      "kind": "item",
+      "kind": "menu_item",
       "record": "NavLink",
       "fields": {
         "id": "id",
         "name": "title",
-        "icon": "metadata.icon.value"
+        "icon": "metadata.icon.value",
+        "href": "slug|route"
       }
     },
     {
       "as": "subnav",
       "collection": "subnav",
-      "kind": "subitem",
+      "kind": "menu_item",
       "record": "NavLink",
       "fields": {
         "id": "id",
         "name": "title",
-        "icon": "metadata.icon.value"
+        "icon": "metadata.icon.value",
+        "href": "slug|route"
       }
     },
     {
       "as": "helplinks",
       "collection": "helplinks",
-      "kind": "helplink",
+      "kind": "menu_item",
       "record": "NavLink",
       "fields": {
         "id": "id",
         "name": "title",
-        "icon": "metadata.icon.value"
+        "icon": "metadata.icon.value",
+        "href": "slug|route"
       }
     }
   ],

@@ -10,6 +10,7 @@
 
   export type HeroHeadProps = {
     brand?: string;
+    brandHref?: string;
     links?: NavLink[];
     current?: string;
     login?: string;
@@ -29,16 +30,18 @@
   import Inline from "../primitives/inline/inline.svelte";
   import Link from "../primitives/link/link.svelte";
   import LinkPlain from "../primitives/link-plain/link-plain.svelte";
+  import MenuEntry from "../components/menu-entry.svelte";
   import NavBlock from "../components/nav-block.svelte";
   import { defaults } from "../presets/defaults";
   import { cn, tpl, uniqLabel } from "../utils";
 
   let {
     brand,
+    brandHref,
     links,
     current = "",
     login,
-    loginHref = "#/login",
+    loginHref,
     cta,
     href,
     skip,
@@ -63,14 +66,13 @@
       {skip}
     </LinkPlain>
   {/if}
-  <Link
-    href="#/"
-    variant="default"
+  <MenuEntry
+    href={brandHref}
     class={cn(defaults.text.small, "font-medium leading-6 text-background")}
-    data-testid="brand"
+    testid="brand"
   >
     {brand}
-  </Link>
+  </MenuEntry>
   <NavBlock
     label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", navLabel, landmarkLabel)) : navLabel)}
     testid="site-nav"

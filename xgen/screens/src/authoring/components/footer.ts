@@ -5,6 +5,7 @@ import { landingWide } from "./frames";
 import { strong } from "../ux";
 import { layoutOf } from "../presets";
 import { navBlockOf } from "./landmarks";
+import { groupLinks } from "./nav";
 
 /** the columns layout of SitemapFooter: one column of links per group */
 export const footerColumns = spec("pattern.footer-columns", "FooterColumns", "The link groups of SitemapFooter as columns: a group title over its links, up to five columns.", {
@@ -18,7 +19,7 @@ export const footerColumns = spec("pattern.footer-columns", "FooterColumns", "Th
       use("Grid", { props: { Cols: "1", Class: "grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5" }, attrs: { "data-testid": "footer-groups" } },
         each(ref("groups"), "g", ref("g.id"), use("Stack", { props: { Gap: "2" }, attrs: { "data-testid": "group" } },
           strong(ref("g.title"), "sm"),
-          use("List", { props: { Class: "m-0 flex list-none flex-col gap-2 p-0" } }, each(ref("g.links"), "item", ref("item"), use("ListItem", {}, use("Link", { props: { Href: "#/", Variant: "default", Class: "text-sm text-muted-foreground" } }, text(ref("item")))))))))),
+          use("List", { props: { Class: "m-0 flex list-none flex-col gap-2 p-0" } }, groupLinks("g", "text-sm text-muted-foreground")))))),
   ],
 });
 
@@ -35,7 +36,7 @@ export const footerCard = spec("pattern.footer-card", "FooterCard", "The card la
     // Frame footer columns: title + links gap 12, link line ~20px (Item gap 12).
     const groupCol = use("Stack", { props: { Gap: "4" }, attrs: { "data-testid": "group" } },
       use("Text", { props: { Size: "xs", Weight: "semibold", Class: "leading-5" } }, text(ref("g.title"))),
-      use("List", { props: { Class: "m-0 flex list-none flex-col gap-4 p-0" } }, each(ref("g.links"), "item", ref("item"), use("ListItem", {}, use("Link", { props: { Href: "#/", Variant: "default", Class: "text-xs leading-5 text-muted-foreground" } }, text(ref("item")))))));
+      use("List", { props: { Class: "m-0 flex list-none flex-col gap-4 p-0" } }, groupLinks("g", "text-xs leading-5 text-muted-foreground")));
     // the brand mark and word, then the link groups in one row (no tagline in the card)
     // The 1128 container centers itself (236 each side on the 1600 frame), so the footer needs no side padding of its own.
     return [use("Block", { props: { Tag: "footer", Class: "py-8" }, attrs: { "data-testid": "site-footer", "data-layout": "card" } },

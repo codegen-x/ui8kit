@@ -4,6 +4,7 @@ import type { OrganismSpec, Value } from "../../ir";
 import { spec, ts } from "../kit";
 import { tsOf } from "../props";
 import { muted, strong, surface } from "../ux";
+import { menuEntry } from "./nav";
 
 const meta = (icon: string, value: string) =>
   use("Group", { props: { Gap: "2", Align: "center" } }, use("LucideIcon", { props: { Name: icon, Size: 16 } }), use("Inline", {}, text(ref(value))));
@@ -56,7 +57,7 @@ export const jobCards = spec("pattern.job-cards", "JobCards", "The jobs of JobBo
             use("TableCell", { props: { Class: "hidden sm:table-cell" } }, text(ref("j.location"))),
             use("TableCell", {}, text(ref("j.type"))),
             when(eq(ref("salary"), "show"), [use("TableCell", { props: { Class: "hidden md:table-cell" } }, text(ref("j.salary")))]),
-            use("TableCell", { props: { Class: "pr-4 text-right" } }, use("Link", { props: { Href: "#/careers", Variant: "default", Class: "font-medium" } }, text(ref("labels.apply")))))))))],
+            use("TableCell", { props: { Class: "pr-4 text-right" } }, menuEntry(ref("j.href"), { cls: "font-medium" }, text(ref("labels.apply")))))))))],
     [use("Grid", { props: { Cols: "1-2", Class: "gap-4" }, attrs: { "data-testid": "items" } },
       each(ref("jobs"), "j", ref("j.id"),
         use("Stack", { props: { Gap: "4", Class: surface("p-6") }, attrs: { "data-testid": "item" } },
@@ -65,7 +66,7 @@ export const jobCards = spec("pattern.job-cards", "JobCards", "The jobs of JobBo
           when(eq(ref("salary"), "show"), [use("Text", { props: { Size: "base", Weight: "semibold" }, attrs: { "data-testid": "salary" } }, text(ref("j.salary")))]),
           use("Group", { props: { Gap: "4", Align: "center", Justify: "between", Class: "mt-auto" } },
             use("Badge", { props: { Variant: "secondary", Size: "default" } }, text(firstOf(where(ref("departments"), "id", ref("j.dept")), "name"))),
-            use("Link", { props: { Href: "#/careers", Variant: "default", Class: "inline-flex items-center gap-2 text-sm font-medium" } }, text(ref("labels.apply")), use("LucideIcon", { props: { Name: "arrow-right", Size: 16 } }))))))]),
+            menuEntry(ref("j.href"), { cls: "inline-flex items-center gap-2 text-sm font-medium" }, text(ref("labels.apply")), use("LucideIcon", { props: { Name: "arrow-right", Size: 16 } }))))))]),
   ],
 });
 

@@ -76,33 +76,6 @@
     },
     {
       "record": {
-        "id": "category",
-        "label": "Category",
-        "scope": "workspace",
-        "description": "fixtures: categories",
-        "fields": [
-          {
-            "id": "count",
-            "label": "Count",
-            "type": "number",
-            "rules": [
-              {
-                "name": "fastygo.codex/integer"
-              }
-            ],
-            "required": true
-          },
-          {
-            "id": "icon",
-            "label": "Icon",
-            "type": "string",
-            "required": true
-          }
-        ]
-      }
-    },
-    {
-      "record": {
         "id": "channel",
         "label": "Channel",
         "scope": "workspace",
@@ -317,65 +290,6 @@
     },
     {
       "record": {
-        "id": "group",
-        "label": "Group",
-        "scope": "workspace",
-        "description": "fixtures: megagroups, sitemap",
-        "fields": [
-          {
-            "id": "icon",
-            "label": "Icon",
-            "type": "string",
-            "required": true
-          },
-          {
-            "id": "links",
-            "label": "Links",
-            "type": "collection",
-            "items": {
-              "id": "item",
-              "label": "Item",
-              "type": "string"
-            },
-            "required": true
-          }
-        ]
-      }
-    },
-    {
-      "record": {
-        "id": "helplink",
-        "label": "Helplink",
-        "scope": "workspace",
-        "description": "fixtures: helplinks",
-        "fields": [
-          {
-            "id": "icon",
-            "label": "Icon",
-            "type": "string",
-            "required": true
-          }
-        ]
-      }
-    },
-    {
-      "record": {
-        "id": "item",
-        "label": "Item",
-        "scope": "workspace",
-        "description": "fixtures: sidenav",
-        "fields": [
-          {
-            "id": "icon",
-            "label": "Icon",
-            "type": "string",
-            "required": true
-          }
-        ]
-      }
-    },
-    {
-      "record": {
         "id": "job",
         "label": "Job",
         "scope": "workspace",
@@ -441,22 +355,6 @@
           {
             "id": "line_kind",
             "label": "Line kind",
-            "type": "string",
-            "required": true
-          }
-        ]
-      }
-    },
-    {
-      "record": {
-        "id": "link",
-        "label": "Link",
-        "scope": "workspace",
-        "description": "fixtures: navlinks",
-        "fields": [
-          {
-            "id": "icon",
-            "label": "Icon",
             "type": "string",
             "required": true
           }
@@ -576,6 +474,37 @@
     },
     {
       "record": {
+        "id": "menu_item",
+        "label": "Menu item",
+        "scope": "workspace",
+        "description": "fixtures: categories, helplinks, megagroups, menulinks, navlinks, outline, sidenav, sitemap, subnav",
+        "fields": [
+          {
+            "id": "count",
+            "label": "Count",
+            "type": "number",
+            "rules": [
+              {
+                "name": "fastygo.codex/integer"
+              }
+            ]
+          },
+          {
+            "id": "icon",
+            "label": "Icon",
+            "type": "string"
+          },
+          {
+            "id": "location",
+            "label": "Location",
+            "type": "string",
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "record": {
         "id": "metric",
         "label": "Metric",
         "scope": "workspace",
@@ -675,22 +604,6 @@
                 "name": "fastygo.codex/money"
               }
             ],
-            "required": true
-          }
-        ]
-      }
-    },
-    {
-      "record": {
-        "id": "outlineitem",
-        "label": "Outlineitem",
-        "scope": "workspace",
-        "description": "fixtures: outline",
-        "fields": [
-          {
-            "id": "icon",
-            "label": "Icon",
-            "type": "string",
             "required": true
           }
         ]
@@ -1430,22 +1343,6 @@
           {
             "id": "store_kind",
             "label": "Store kind",
-            "type": "string",
-            "required": true
-          }
-        ]
-      }
-    },
-    {
-      "record": {
-        "id": "subitem",
-        "label": "Subitem",
-        "scope": "workspace",
-        "description": "fixtures: subnav",
-        "fields": [
-          {
-            "id": "icon",
-            "label": "Icon",
             "type": "string",
             "required": true
           }

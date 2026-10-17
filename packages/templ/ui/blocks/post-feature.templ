@@ -45,7 +45,7 @@ templ PostFeature(p PostFeatureProps) {
 				}
 			}
 		}
-		@button.Button(button.ButtonProps{Variant: "default", Size: "default", Href: "#/", Class: "w-full gap-2", Attrs: uiutils.Attrs("data-testid", "action-primary")}) {
+		@button.Button(button.ButtonProps{Variant: "default", Size: "default", Href: uiutils.S(uiutils.Get(vP, "href")), Class: "w-full gap-2", Attrs: uiutils.Attrs("data-testid", "action-primary")}) {
 			{ uiutils.Text(uiutils.Get(vLabels, "read")) }
 			@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "arrow-right", Size: 16})
 		}

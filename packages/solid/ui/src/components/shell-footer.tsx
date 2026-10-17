@@ -6,10 +6,10 @@
  */
 import { For, type JSX } from "solid-js";
 import { Block } from "../primitives/block/block";
-import { Link } from "../primitives/link/link";
 import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
 import { Text } from "../primitives/text/text";
+import { MenuEntry } from "../components/menu-entry";
 import { NavBlock } from "../components/nav-block";
 import { cn, tpl, uniqLabel } from "../utils";
 import type { ShellNav } from "../blocks/dashboard-shell.types";
@@ -44,9 +44,9 @@ export function ShellFooter({ nav, place = "full", landmarkLabel }: ShellFooterP
         <List class="m-0 flex list-none items-center gap-4 p-0">
           <For each={nav.footer ?? []}>{(f) => (
             <ListItem>
-              <Link href="#/" variant="muted" size="sm" class="text-xs">
+              <MenuEntry href={f.href} class="text-xs text-muted-foreground" variant="muted" size="sm">
                 {f.name}
-              </Link>
+              </MenuEntry>
             </ListItem>
           )}</For>
         </List>

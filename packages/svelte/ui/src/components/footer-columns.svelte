@@ -15,11 +15,11 @@
 <script lang="ts">
   import Block from "../primitives/block/block.svelte";
   import Grid from "../primitives/grid/grid.svelte";
-  import Link from "../primitives/link/link.svelte";
   import List from "../primitives/list/list.svelte";
   import ListItem from "../primitives/list/list-item.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
+  import MenuEntry from "../components/menu-entry.svelte";
 
   let { label, groups, landmarkLabel }: FooterColumnsProps = $props();
 </script>
@@ -32,11 +32,11 @@
           {g.title}
         </Text>
         <List class="m-0 flex list-none flex-col gap-2 p-0">
-          {#each g.links as item (item)}
+          {#each g.links as item (item.id)}
             <ListItem>
-              <Link href="#/" variant="default" class="text-sm text-muted-foreground">
-                {item}
-              </Link>
+              <MenuEntry href={item.href} class="text-sm text-muted-foreground">
+                {item.name}
+              </MenuEntry>
             </ListItem>
           {/each}
         </List>

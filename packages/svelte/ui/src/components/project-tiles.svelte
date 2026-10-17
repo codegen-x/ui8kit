@@ -20,13 +20,13 @@
   import Badge from "../primitives/badge/badge.svelte";
   import Box from "../primitives/box/box.svelte";
   import Group from "../primitives/group/group.svelte";
-  import Link from "../primitives/link/link.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
   import ArticleBlock from "../components/article-block.svelte";
   import MediaFrame from "../components/media-frame.svelte";
+  import MenuEntry from "../components/menu-entry.svelte";
   import { cn, tpl } from "../utils";
 
   let { projects, labels, layout = "cards" }: ProjectTilesProps = $props();
@@ -89,14 +89,14 @@
             {/each}
           </Group>
           <Group gap="4" class="pt-2">
-            <Link href="#/work" variant="default" class="inline-flex items-center gap-2 text-sm font-medium">
+            <MenuEntry href={p.href} class="inline-flex items-center gap-2 text-sm font-medium">
               {labels.case}
               <LucideIcon name="arrow-right" size={16} />
-            </Link>
-            <Link href="#/work" variant="default" class="inline-flex items-center gap-2 text-sm font-medium">
+            </MenuEntry>
+            <MenuEntry href={p.href} class="inline-flex items-center gap-2 text-sm font-medium">
               {labels.view}
               <LucideIcon name="external-link" size={16} />
-            </Link>
+            </MenuEntry>
           </Group>
         {/if}
       </Stack>

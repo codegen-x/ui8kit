@@ -12,10 +12,10 @@ export type MediaTopicsProps = {
 
 <script setup lang="ts">
 import Inline from "../primitives/inline/inline.vue";
-import Link from "../primitives/link/link.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
+import MenuEntry from "../components/menu-entry.vue";
 import { tpl } from "../utils";
 
 const { extras, labels } = defineProps<MediaTopicsProps>();
@@ -27,11 +27,12 @@ const { extras, labels } = defineProps<MediaTopicsProps>();
       {{ labels.list }}
     </Text>
     <template v-for="(c, i) in extras.topics" :key="c.id">
-      <Link v-if="(i < 5)"
-        href="#/"
+      <MenuEntry v-if="(i < 5)"
+        :href="c.href"
+        class="rounded bg-card inset-ring inset-ring-border flex w-full items-center gap-4 p-4"
         variant="block"
-        class="rounded bg-card inset-ring inset-ring-border items-center gap-4 p-4"
-        data-testid="media-topic"
+        testid="media-topic"
+        :block="true"
       >
         <Inline class="flex size-8 shrink-0 items-center justify-center rounded bg-primary text-primary-foreground">
           <LucideIcon :name="c.icon" :size="16" />
@@ -45,7 +46,7 @@ const { extras, labels } = defineProps<MediaTopicsProps>();
           </Text>
         </Stack>
         <LucideIcon name="arrow-right" :size="16" />
-      </Link>
+      </MenuEntry>
     </template>
   </Stack>
 </template>

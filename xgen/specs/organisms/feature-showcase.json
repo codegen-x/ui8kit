@@ -218,29 +218,34 @@
                               },
                               "then": [
                                 {
-                                  "use": "Link",
+                                  "organism": "MenuEntry",
                                   "props": {
-                                    "Href": "#/",
-                                    "Size": "sm",
-                                    "Class": "mt-auto pt-2"
-                                  },
-                                  "attrs": {
-                                    "data-testid": "read"
-                                  },
-                                  "children": [
-                                    {
-                                      "text": {
-                                        "$": "more"
-                                      }
+                                    "href": {
+                                      "$": "f.href"
                                     },
-                                    {
-                                      "use": "LucideIcon",
-                                      "props": {
-                                        "Name": "arrow-right",
-                                        "Size": 16
-                                      }
+                                    "className": "mt-auto gap-2 pt-2 text-sm font-medium",
+                                    "size": "sm",
+                                    "testid": "read"
+                                  },
+                                  "slots": {
+                                    "children": {
+                                      "args": [],
+                                      "do": [
+                                        {
+                                          "text": {
+                                            "$": "more"
+                                          }
+                                        },
+                                        {
+                                          "use": "LucideIcon",
+                                          "props": {
+                                            "Name": "arrow-right",
+                                            "Size": 16
+                                          }
+                                        }
+                                      ]
                                     }
-                                  ]
+                                  }
                                 }
                               ]
                             }

@@ -29,6 +29,7 @@
         "block": "navbar",
         "variant": "inline",
         "props": {
+          "brandHref": "#/",
           "links": {
             "$": "nav.links"
           },

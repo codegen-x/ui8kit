@@ -50,7 +50,9 @@
       }
     }
   ],
-  "slots": [],
+  "slots": [
+    "MenuEntry"
+  ],
   "facts": [
     {
       "sel": "[data-testid=\"item\"]",

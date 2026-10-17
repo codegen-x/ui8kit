@@ -700,8 +700,9 @@
         {
           "prop": "categories",
           "collection": "categories",
-          "kind": "category",
+          "kind": "menu_item",
           "record": "Category",
+          "map": "menuCategory",
           "list": true
         }
       ],
@@ -1286,22 +1287,25 @@
         {
           "prop": "nav.links",
           "collection": "sidenav",
-          "kind": "item",
+          "kind": "menu_item",
           "record": "NavLink",
+          "map": "menuItem",
           "list": true
         },
         {
           "prop": "nav.sub",
           "collection": "subnav",
-          "kind": "subitem",
+          "kind": "menu_item",
           "record": "NavLink",
+          "map": "menuItem",
           "list": true
         },
         {
           "prop": "nav.footer",
           "collection": "helplinks",
-          "kind": "helplink",
+          "kind": "menu_item",
           "record": "NavLink",
+          "map": "menuItem",
           "list": true
         }
       ],
@@ -1856,6 +1860,7 @@
       "status": "todo",
       "data": [],
       "settings": [
+        "routes",
         "layout",
         "density",
         "landmarkLabel"
@@ -1884,8 +1889,9 @@
         {
           "prop": "groups",
           "collection": "sitemap",
-          "kind": "group",
+          "kind": "menu_item",
           "record": "MegaGroup",
+          "map": "menuGroup",
           "list": true
         },
         {
@@ -1977,6 +1983,7 @@
       "status": "todo",
       "data": [],
       "settings": [
+        "routes",
         "current",
         "layout",
         "position",
@@ -2029,8 +2036,9 @@
         {
           "prop": "nav.links",
           "collection": "navlinks",
-          "kind": "link",
+          "kind": "menu_item",
           "record": "NavLink",
+          "map": "menuItem",
           "list": true
         }
       ],
@@ -2462,8 +2470,9 @@
         {
           "prop": "extras.topics",
           "collection": "categories",
-          "kind": "category",
+          "kind": "menu_item",
           "record": "Category",
+          "map": "menuCategory",
           "list": true
         },
         {
@@ -2558,19 +2567,22 @@
         {
           "prop": "links",
           "collection": "navlinks",
-          "kind": "link",
+          "kind": "menu_item",
           "record": "NavLink",
+          "map": "menuItem",
           "list": true
         },
         {
           "prop": "groups",
           "collection": "megagroups",
-          "kind": "group",
+          "kind": "menu_item",
           "record": "MegaGroup",
+          "map": "menuGroup",
           "list": true
         }
       ],
       "settings": [
+        "brandHref",
         "panel",
         "cols",
         "promo",
@@ -2647,12 +2659,14 @@
         {
           "prop": "links",
           "collection": "navlinks",
-          "kind": "link",
+          "kind": "menu_item",
           "record": "NavLink",
+          "map": "menuItem",
           "list": true
         }
       ],
       "settings": [
+        "brandHref",
         "current",
         "tone",
         "layout",
@@ -3279,8 +3293,9 @@
         {
           "prop": "extras.outline",
           "collection": "outline",
-          "kind": "outlineitem",
+          "kind": "menu_item",
           "record": "NavLink",
+          "map": "menuItem",
           "list": true
         }
       ],
@@ -3886,8 +3901,9 @@
         {
           "prop": "nav.links",
           "collection": "sidenav",
-          "kind": "item",
+          "kind": "menu_item",
           "record": "NavLink",
+          "map": "menuItem",
           "list": true
         },
         {
@@ -3992,8 +4008,9 @@
         {
           "prop": "links",
           "collection": "sidenav",
-          "kind": "item",
+          "kind": "menu_item",
           "record": "NavLink",
+          "map": "menuItem",
           "list": true
         }
       ],
@@ -4038,8 +4055,9 @@
         {
           "prop": "groups",
           "collection": "sitemap",
-          "kind": "group",
+          "kind": "menu_item",
           "record": "MegaGroup",
+          "map": "menuGroup",
           "list": true
         }
       ],

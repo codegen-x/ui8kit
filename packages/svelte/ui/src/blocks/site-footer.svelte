@@ -7,9 +7,11 @@
 <script lang="ts" module>
   import type { Snippet } from "svelte";
   import type { SiteFooterLabels } from "./site-footer.types";
+  import type { SiteRoutes } from "./site-header.types";
 
   export type SiteFooterProps = {
     labels: SiteFooterLabels;
+    routes?: SiteRoutes;
     layout?: "minimal" | "centered";
     density?: "default" | "compact";
     landmarkLabel?: string;
@@ -20,12 +22,12 @@
   import Block from "../primitives/block/block.svelte";
   import Container from "../primitives/container/container.svelte";
   import Group from "../primitives/group/group.svelte";
-  import Link from "../primitives/link/link.svelte";
   import Text from "../primitives/text/text.svelte";
+  import MenuEntry from "../components/menu-entry.svelte";
   import NavBlock from "../components/nav-block.svelte";
   import { cn, tpl, uniqLabel } from "../utils";
 
-  let { labels, layout = "minimal", density = "default", landmarkLabel }: SiteFooterProps = $props();
+  let { labels, routes, layout = "minimal", density = "default", landmarkLabel }: SiteFooterProps = $props();
 </script>
 
 <Block
@@ -49,12 +51,12 @@
     </Text>
     <NavBlock label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", labels.nav, landmarkLabel)) : labels.nav)}>
       <Group gap="4">
-        <Link href="#/" variant="default">
+        <MenuEntry href={routes?.home} class="font-semibold">
           {labels.home}
-        </Link>
-        <Link href="#/pricing" variant="default">
+        </MenuEntry>
+        <MenuEntry href={routes?.pricing} class="font-semibold">
           {labels.pricing}
-        </Link>
+        </MenuEntry>
       </Group>
     </NavBlock>
   </Container>

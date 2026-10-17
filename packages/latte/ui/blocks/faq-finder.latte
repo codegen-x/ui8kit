@@ -12,7 +12,7 @@
       {capture $c_1}
         {=ui_text(ui_get($v_t, ['title']))}
       {/capture}
-      {=ui_include('ui/button/button.latte', ['p' => ['Variant' => 'outline', 'Size' => 'sm', 'Href' => ui_s(ui_tpl('#/faq/{0}', [ui_get($v_t, ['value'])])), 'Attrs' => ui_attrs(['data-testid', 'faq-topic'])], 'children' => $c_1])|noescape}
+      {=ui_include('ui/button/button.latte', ['p' => ['Variant' => 'outline', 'Size' => 'sm', 'Attrs' => ui_attrs(['data-testid', 'faq-topic', 'data-value', ui_get($v_t, ['value'])])], 'children' => $c_1])|noescape}
     {/foreach}
   {/capture}
   {=ui_include('ui/group/group.latte', ['p' => ['Gap' => '2', 'Class' => 'flex-wrap'], 'children' => $c_2])|noescape}
@@ -29,7 +29,7 @@
             {capture $c_4}
               {=ui_text(ui_get($v_q, ['question']))}
             {/capture}
-            {=ui_include('ui/link/link.latte', ['p' => ['Href' => '#/faq', 'Variant' => 'default', 'Size' => 'sm'], 'children' => $c_4])|noescape}
+            {=ui_include('blocks/menu-entry.latte', ['p' => ['href' => ui_get($v_q, ['href']), 'className' => ui_cnv(['text-sm font-medium']), 'size' => 'sm'], 'children' => $c_4])|noescape}
           {/capture}
           {=ui_include('ui/list/list-item.latte', ['p' => ['Attrs' => ui_attrs(['data-testid', 'faq-popular'])], 'children' => $c_5])|noescape}
         {/if}

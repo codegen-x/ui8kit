@@ -8,12 +8,12 @@ import { type JSX } from "solid-js";
 import { Badge } from "../primitives/badge/badge";
 import { Box } from "../primitives/box/box";
 import { Group } from "../primitives/group/group";
-import { Link } from "../primitives/link/link";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { Title } from "../primitives/title/title";
 import { MediaFrame } from "../components/media-frame";
+import { MenuEntry } from "../components/menu-entry";
 import { cn } from "../utils";
 import type { Post, PostLabels } from "../blocks/post-card.types";
 
@@ -42,10 +42,10 @@ export function PostOverlayCard({ p, labels, ratio = "4/3" }: PostOverlayCardPro
         <Text size="sm" class={cn("text-muted-foreground", "line-clamp-2")}>
           {p.excerpt}
         </Text>
-        <Link href="#/" size="sm" data-testid="read">
+        <MenuEntry href={p.href} class="gap-2 text-sm font-medium" size="sm" testid="read">
           {labels.read}
           <LucideIcon name="arrow-right" size={16} />
-        </Link>
+        </MenuEntry>
       </Stack>
     </Box>
   );

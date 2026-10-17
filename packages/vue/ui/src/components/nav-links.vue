@@ -17,7 +17,7 @@ export type NavLinksProps = {
 <script setup lang="ts">
 import { computed } from "vue";
 import Group from "../primitives/group/group.vue";
-import Link from "../primitives/link/link.vue";
+import MenuEntry from "../components/menu-entry.vue";
 
 const { links, current = "", side = "all" } = defineProps<NavLinksProps>();
 const count = computed(() => links?.length ?? 0);
@@ -26,15 +26,15 @@ const count = computed(() => links?.length ?? 0);
 <template>
   <Group gap="4" align="center" class="flex-wrap">
     <template v-for="(l, i) in links" :key="l.id">
-      <Link v-if="(((side as string) === 'all') || (((i * 2) < count) === ((side as string) === 'left')))"
+      <MenuEntry
+        v-if="(((side as string) === 'all') || (((i * 2) < count) === ((side as string) === 'left')))"
         :href="l.href"
-        variant="default"
-        :aria-current="((l.id === current) ? 'page' : undefined)"
         class="text-sm"
-        data-testid="nav-link"
+        :current="(l.id === current)"
+        testid="nav-link"
       >
         {{ l.name }}
-      </Link>
+      </MenuEntry>
     </template>
   </Group>
 </template>

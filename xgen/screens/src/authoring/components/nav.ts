@@ -1,17 +1,51 @@
 // The pieces of a top bar: the links (NavLinks), the buttons at its end (NavActions), the search field
 // (SearchPalette) and the faded picture a transparent bar sits on (OverMedia). NavBar, MegaMenu and SidebarNav use them.
-import { and, call, coalesce, cond, eachAt, eq, lt, mul, or, ref, slot, text, undef, use, when, organism, len } from "../../build";
+import { and, call, coalesce, cond, each, eachAt, eq, lt, mul, or, ref, slot, text, undef, use, when, organism, len } from "../../build";
 import type { Value, ViewNode } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { tsOf } from "../props";
+import { kids } from "../forms";
 
-export const NavLink = fields(["id", "string"], ["name", "string"], ["icon", "string"], ["href", "string", true]);
-export const Group = fields(["id", "string"], ["title", "string"], ["icon", "string"], ["links", "string[]"]);
-
-/** a menu entry: a link to its address; without one an anchor with no href (a placeholder, not a link; no "#/" stand-in) */
-export const link = (l: string, current: Value): ViewNode => use("Link", { props: { Href: ref(`${l}.href`), Variant: "default", AriaCurrent: cond(eq(ref(`${l}.id`), current), "page", undef()), Class: "text-sm" }, attrs: { "data-testid": "nav-link" } }, text(ref(`${l}.name`)));
-export const brandLink = (): ViewNode => use("Link", { props: { Href: "#/", Variant: "default", Class: "text-lg font-medium" }, attrs: { "data-testid": "brand" } }, text(ref("brand")));
 const P = "pattern.";
+export const NavLink = fields(["id", "string"], ["name", "string"], ["icon", "string"], ["href", "string", true]);
+/** a group of a menu (kind menu_item) and the items under it (parent_id): MegaMenu, SitemapFooter, FooterColumns, FooterSplit */
+export const Group = fields(["id", "string"], ["title", "string"], ["icon", "string"], ["links", "NavLink[]"], ["href", "string", true]);
+
+export interface EntryLook { cls: Value; current?: Value; variant?: string; size?: string; testid?: string; block?: boolean }
+/**
+ * a menu entry (a NavLink of a Codex menu_item, or any record with an optional href): MenuEntry draws a link where it has an
+ * address (the app routes it), else its name as text in the same box. No "#/" stand-in: no address, no link.
+ */
+export const menuEntry = (href: Value, o: EntryLook, ...children: ViewNode[]): ViewNode => organism("MenuEntry", {
+  href, className: o.cls,
+  ...(o.current !== undefined ? { current: o.current } : {}), ...(o.variant ? { variant: o.variant } : {}), ...(o.size ? { size: o.size } : {}), ...(o.testid ? { testid: o.testid } : {}), ...(o.block ? { block: true } : {}),
+}, kids(...children));
+/** the item `l` is the current one */
+export const currentOf = (l: string, current: Value): Value => eq(ref(`${l}.id`), current);
+export const menuEntrySpec = spec(`${P}menu-entry`, "MenuEntry", "One entry of a menu: a link to its address, or, without one, its content as text in the same box (the magazine routes nothing, so it shows text). current marks the page the entry stands for (aria-current) either way.", {
+  props: [
+    { name: "href", type: "string", docs: "the address; none: text, not a link" },
+    { name: "current", type: "boolean", default: false, docs: "the entry of the current page" },
+    { name: "variant", type: tsOf("default", "muted", "block"), default: "default", docs: "the look of the link" },
+    { name: "size", type: tsOf("default", "sm"), default: "default" },
+    { name: "testid", type: "string", docs: "the test id of the entry" },
+    { name: "block", type: "boolean", default: false, docs: "the content holds block elements: without an address it sits in a div, not a span" },
+  ],
+  className: true,
+  children: true,
+  view: [when(ref("href"),
+    [use("Link", { props: { Href: ref("href"), Variant: ref("variant"), Size: ref("size"), AriaCurrent: cond(ref("current"), "page", undef()), Class: ref("className") }, attrs: { "data-testid": ref("testid") } }, slot("children"))],
+    [when(ref("block"),
+      [use("Box", { props: { Class: ref("className") }, attrs: { "aria-current": cond(ref("current"), "page", undef()), "data-testid": ref("testid") } }, slot("children"))],
+      [use("Inline", { props: { Class: ref("className") }, attrs: { "aria-current": cond(ref("current"), "page", undef()), "data-testid": ref("testid") } }, slot("children"))])])],
+});
+/** a menu entry of a top bar */
+export const link = (l: string, current: Value): ViewNode => menuEntry(ref(`${l}.href`), { cls: "text-sm", current: currentOf(l, current), testid: "nav-link" }, text(ref(`${l}.name`)));
+/** the brand of a bar: a link home only where the app gives the address (`brandHref`), else the name */
+export const brandLink = (): ViewNode => menuEntry(ref("brandHref"), { cls: "text-lg font-medium", testid: "brand" }, text(ref("brand")));
+/** the items under a menu group (g.links): links where they have an address, else names */
+export const groupLinks = (g: string, cls: string, look: Omit<EntryLook, "cls"> = {}): ViewNode =>
+  each(ref(`${g}.links`), "item", ref("item.id"), use("ListItem", {}, menuEntry(ref("item.href"), { cls, ...look }, text(ref("item.name")))));
 /** the menu links of a bar: all of them, or the left or right half (the split layout puts the brand between) */
 export const navLinks = spec(`${P}nav-links`, "NavLinks", "The links of a top bar in a row; the current one carries aria-current. side: all, or the first or second half of the list.", {
   typeImports: [{ from: "NavBar", names: ["NavLink"] }],
@@ -33,7 +67,7 @@ export const navLinks = spec(`${P}nav-links`, "NavLinks", "The links of a top ba
 export const navActions = spec(`${P}nav-actions`, "NavActions", "The buttons at the end of a top bar: login, the call to action and the theme button (it only reports the press). No wrapper: they sit in the row of the bar.", {
   props: [
     { name: "login", type: "string", docs: "text of the login link; none: no login" },
-    { name: "loginHref", type: "string", default: "#/login" },
+    { name: "loginHref", type: "string", docs: "the address of the login page; none: the login is a button with no address" },
     { name: "cta", type: "string" },
     { name: "ctaHref", type: "string" },
     { name: "actions", type: tsOf("none", "cta"), default: "cta" },

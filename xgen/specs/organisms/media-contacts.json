@@ -66,7 +66,9 @@
                   "props": {
                     "Variant": "outline",
                     "Size": "default",
-                    "Href": "#/",
+                    "Href": {
+                      "$": "c.href"
+                    },
                     "Class": "w-full gap-2"
                   },
                   "attrs": {

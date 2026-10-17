@@ -6,7 +6,6 @@ package blocks
 import (
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/card"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/grid"
-	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/link"
 	lucideicon "github.com/codegen-x/ui8kit/packages/templ/ui/ui/lucide-icon"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/stack"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/text"
@@ -53,7 +52,7 @@ templ SupportChannels(p SupportChannelsProps) {
 							}
 						}
 						if uiutils.Eq(vAction, "link") {
-							@link.Link(link.LinkProps{Href: "#/", Variant: "default", Attrs: uiutils.Attrs("data-testid", "open")}) {
+							@MenuEntry(MenuEntryProps{Href: uiutils.Get(vC, "href"), Class: uiutils.Cnv("font-semibold"), Testid: "open"}) {
 								{ uiutils.Text(vOpen) }
 							}
 						}

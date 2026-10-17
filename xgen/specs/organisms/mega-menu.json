@@ -20,7 +20,12 @@
       },
       {
         "name": "links",
-        "type": "string[]"
+        "type": "NavLink[]"
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "optional": true
       }
     ]
   },
@@ -34,6 +39,11 @@
       "name": "brand",
       "type": "string",
       "required": true
+    },
+    {
+      "name": "brandHref",
+      "type": "string",
+      "docs": "the address of the home page; none: the brand is text"
     },
     {
       "name": "trigger",
@@ -123,22 +133,26 @@
           },
           "children": [
             {
-              "use": "Link",
+              "organism": "MenuEntry",
               "props": {
-                "Href": "#/",
-                "Variant": "default",
-                "Class": "text-lg font-medium"
+                "href": {
+                  "$": "brandHref"
+                },
+                "className": "text-lg font-medium",
+                "testid": "brand"
               },
-              "attrs": {
-                "data-testid": "brand"
-              },
-              "children": [
-                {
-                  "text": {
-                    "$": "brand"
-                  }
+              "slots": {
+                "children": {
+                  "args": [],
+                  "do": [
+                    {
+                      "text": {
+                        "$": "brand"
+                      }
+                    }
+                  ]
                 }
-              ]
+              }
             },
             {
               "organism": "NavBlock",
@@ -235,43 +249,35 @@
                           },
                           "do": [
                             {
-                              "use": "Link",
+                              "organism": "MenuEntry",
                               "props": {
-                                "Href": {
+                                "href": {
                                   "$": "l.href"
                                 },
-                                "Variant": "default",
-                                "AriaCurrent": {
-                                  "op": "cond",
+                                "className": "text-sm",
+                                "current": {
+                                  "op": "eq",
                                   "args": [
                                     {
-                                      "op": "eq",
-                                      "args": [
-                                        {
-                                          "$": "l.id"
-                                        },
-                                        ""
-                                      ]
+                                      "$": "l.id"
                                     },
-                                    "page",
-                                    {
-                                      "op": "undef",
-                                      "args": []
-                                    }
+                                    ""
                                   ]
                                 },
-                                "Class": "text-sm"
+                                "testid": "nav-link"
                               },
-                              "attrs": {
-                                "data-testid": "nav-link"
-                              },
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "l.name"
-                                  }
+                              "slots": {
+                                "children": {
+                                  "args": [],
+                                  "do": [
+                                    {
+                                      "text": {
+                                        "$": "l.name"
+                                      }
+                                    }
+                                  ]
                                 }
-                              ]
+                              }
                             }
                           ]
                         }
@@ -423,26 +429,32 @@
                                   },
                                   "as": "item",
                                   "key": {
-                                    "$": "item"
+                                    "$": "item.id"
                                   },
                                   "do": [
                                     {
                                       "use": "ListItem",
                                       "children": [
                                         {
-                                          "use": "Link",
+                                          "organism": "MenuEntry",
                                           "props": {
-                                            "Href": "#/",
-                                            "Variant": "default",
-                                            "Class": "text-sm text-muted-foreground"
+                                            "href": {
+                                              "$": "item.href"
+                                            },
+                                            "className": "text-sm text-muted-foreground"
                                           },
-                                          "children": [
-                                            {
-                                              "text": {
-                                                "$": "item"
-                                              }
+                                          "slots": {
+                                            "children": {
+                                              "args": [],
+                                              "do": [
+                                                {
+                                                  "text": {
+                                                    "$": "item.name"
+                                                  }
+                                                }
+                                              ]
                                             }
-                                          ]
+                                          }
                                         }
                                       ]
                                     }

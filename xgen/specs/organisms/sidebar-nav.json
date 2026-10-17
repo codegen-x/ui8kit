@@ -239,32 +239,12 @@
                           "use": "ListItem",
                           "children": [
                             {
-                              "use": "Link",
+                              "organism": "MenuEntry",
                               "props": {
-                                "Href": "#/",
-                                "Variant": "default",
-                                "AriaCurrent": {
-                                  "op": "cond",
-                                  "args": [
-                                    {
-                                      "op": "eq",
-                                      "args": [
-                                        {
-                                          "$": "l.id"
-                                        },
-                                        {
-                                          "$": "current"
-                                        }
-                                      ]
-                                    },
-                                    "page",
-                                    {
-                                      "op": "undef",
-                                      "args": []
-                                    }
-                                  ]
+                                "href": {
+                                  "$": "l.href"
                                 },
-                                "Class": {
+                                "className": {
                                   "op": "cn",
                                   "args": [
                                     "flex items-center gap-4 rounded px-4 text-sm",
@@ -288,50 +268,64 @@
                                       ]
                                     }
                                   ]
-                                }
-                              },
-                              "attrs": {
-                                "data-testid": "item"
-                              },
-                              "children": [
-                                {
-                                  "use": "LucideIcon",
-                                  "props": {
-                                    "Name": {
-                                      "$": "l.icon"
-                                    },
-                                    "Size": 16
-                                  }
                                 },
-                                {
-                                  "use": "Inline",
-                                  "props": {
-                                    "Class": {
-                                      "op": "cond",
-                                      "args": [
-                                        {
-                                          "op": "eq",
+                                "current": {
+                                  "op": "eq",
+                                  "args": [
+                                    {
+                                      "$": "l.id"
+                                    },
+                                    {
+                                      "$": "current"
+                                    }
+                                  ]
+                                },
+                                "testid": "item"
+                              },
+                              "slots": {
+                                "children": {
+                                  "args": [],
+                                  "do": [
+                                    {
+                                      "use": "LucideIcon",
+                                      "props": {
+                                        "Name": {
+                                          "$": "l.icon"
+                                        },
+                                        "Size": 16
+                                      }
+                                    },
+                                    {
+                                      "use": "Inline",
+                                      "props": {
+                                        "Class": {
+                                          "op": "cond",
                                           "args": [
                                             {
-                                              "$": "width"
+                                              "op": "eq",
+                                              "args": [
+                                                {
+                                                  "$": "width"
+                                                },
+                                                "compact"
+                                              ]
                                             },
-                                            "compact"
+                                            "sr-only",
+                                            ""
                                           ]
-                                        },
-                                        "sr-only",
-                                        ""
+                                        }
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "l.name"
+                                          }
+                                        }
                                       ]
-                                    }
-                                  },
-                                  "children": [
-                                    {
-                                      "text": {
-                                        "$": "l.name"
-                                      }
                                     }
                                   ]
                                 }
-                              ]
+                              }
                             }
                           ]
                         }

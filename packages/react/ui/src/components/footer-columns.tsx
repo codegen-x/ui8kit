@@ -4,11 +4,11 @@
 import { type ReactNode } from "react";
 import { Block } from "../primitives/block/block";
 import { Grid } from "../primitives/grid/grid";
-import { Link } from "../primitives/link/link";
 import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
+import { MenuEntry } from "../components/menu-entry";
 import type { MegaGroup } from "../blocks/mega-menu.types";
 
 export type FooterColumnsProps = {
@@ -28,10 +28,10 @@ export function FooterColumns({ label, groups, landmarkLabel }: FooterColumnsPro
             </Text>
             <List className="m-0 flex list-none flex-col gap-2 p-0">
               {(g.links ?? []).map((item) => (
-                <ListItem key={item}>
-                  <Link href="#/" variant="default" className="text-sm text-muted-foreground">
-                    {item}
-                  </Link>
+                <ListItem key={item.id}>
+                  <MenuEntry href={item.href} className="text-sm text-muted-foreground">
+                    {item.name}
+                  </MenuEntry>
                 </ListItem>
               ))}
             </List>

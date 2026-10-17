@@ -34,12 +34,12 @@ import Form from "../primitives/form/form.vue";
 import Group from "../primitives/group/group.vue";
 import Input from "../primitives/input/input.vue";
 import Label from "../primitives/label/label.vue";
-import Link from "../primitives/link/link.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
 import FooterCard from "../components/footer-card.vue";
 import FooterColumns from "../components/footer-columns.vue";
+import MenuEntry from "../components/menu-entry.vue";
 import NavBlock from "../components/nav-block.vue";
 import Pill from "../components/pill.vue";
 import { cn, tpl, uniqLabel } from "../utils";
@@ -121,9 +121,9 @@ const {
         </Text>
         <NavBlock :label="(landmarkLabel ? uniqLabel(tpl('{0}, {1}', label, landmarkLabel)) : label)">
           <Group gap="4" class="flex-wrap">
-            <Link v-for="g in groups" :key="g.id" href="#/" variant="default" class="text-sm" data-testid="group">
+            <MenuEntry v-for="g in groups" :key="g.id" :href="g.href" class="text-sm" testid="group">
               {{ g.title }}
-            </Link>
+            </MenuEntry>
           </Group>
         </NavBlock>
       </Group>

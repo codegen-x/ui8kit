@@ -9,3 +9,8 @@ export type SiteHeaderLabels = {
   pricing: string;
   theme: string;
 };
+
+export type SiteRoutes = {
+  home?: string;
+  pricing?: string;
+};

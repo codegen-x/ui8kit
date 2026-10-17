@@ -9,13 +9,18 @@ import { frame, wide } from "../components/frames";
 import { layoutOf } from "../presets";
 import { featureRecord, featureItem, featureCards, featureRows } from "../components/features";
 import { navBlockOf } from "../components/landmarks";
+import { menuEntry } from "../components/nav";
 
 const O = "organism.";
 
 const siteHeader = spec(`${O}site-header`, "SiteHeader", "The page header: a skip link to the main content, the brand, the two navigation links (the current one carries aria-current) and the theme button. `current` is the route area. Axes: layout (inline, stacked), position (static, sticky), actions (none, cta).", {
-  records: { SiteHeaderLabels: fields(["skip", "string"], ["brand", "string"], ["nav", "string"], ["home", "string"], ["pricing", "string"], ["theme", "string"]) },
+  records: {
+    SiteHeaderLabels: fields(["skip", "string"], ["brand", "string"], ["nav", "string"], ["home", "string"], ["pricing", "string"], ["theme", "string"]),
+    SiteRoutes: fields(["home", "string", true], ["pricing", "string", true]),
+  },
   props: [
     { name: "labels", type: { record: "SiteHeaderLabels" }, required: true },
+    { name: "routes", type: { record: "SiteRoutes" }, docs: "the addresses of the two pages, from the app; none: the brand and the menu are text, not links" },
     { name: "current", type: "string", required: true, docs: "the area of the current route: home or pricing" },
     { name: "layout", type: tsOf("inline", "stacked"), default: "inline", docs: "inline: brand left, links and button right; stacked: all centered in rows" },
     { name: "position", type: tsOf("static", "sticky"), default: "static", docs: "sticky: stays at the top while the page scrolls" },
@@ -28,11 +33,11 @@ const siteHeader = spec(`${O}site-header`, "SiteHeader", "The page header: a ski
     use("Block", { props: { Tag: "header", Class: cn("border-b border-border bg-background", cond(eq(ref("position"), "sticky"), "sticky top-0 z-40", "")) }, attrs: { "data-testid": "site-header", "data-layout": ref("layout") } },
       use("LinkPlain", { props: { Href: "#main-content", Class: "sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border" }, attrs: { "data-testid": "skip-link" } }, text(ref("labels.skip"))),
       use("Container", { attrs: { "data-slot": "container" }, props: { Class: cn(wide, "flex flex-wrap gap-4 py-4", cond(eq(ref("layout"), "stacked"), "flex-col items-center", "items-center justify-between")) } },
-        use("Link", { props: { Href: "#/", Variant: "default", Class: "text-lg font-medium" }, attrs: { "data-testid": "brand" } }, text(ref("labels.brand"))),
+        menuEntry(ref("routes.home"), { cls: "text-lg font-medium", testid: "brand" }, text(ref("labels.brand"))),
         navBlockOf(ref("labels.nav"), undefined, "site-nav",
           use("Group", { props: { Gap: "4", Align: "center" } },
-            use("Link", { props: { Href: "#/", Variant: "default", AriaCurrent: cond(eq(ref("current"), "home"), "page", undef()) }, attrs: { "data-testid": "nav-link" } }, text(ref("labels.home"))),
-            use("Link", { props: { Href: "#/pricing", Variant: "default", AriaCurrent: cond(eq(ref("current"), "pricing"), "page", undef()) }, attrs: { "data-testid": "nav-link" } }, text(ref("labels.pricing"))))),
+            menuEntry(ref("routes.home"), { cls: "font-semibold", current: eq(ref("current"), "home"), testid: "nav-link" }, text(ref("labels.home"))),
+            menuEntry(ref("routes.pricing"), { cls: "font-semibold", current: eq(ref("current"), "pricing"), testid: "nav-link" }, text(ref("labels.pricing"))))),
         use("Group", { props: { Gap: "4", Align: "center" } },
           use("Button", { props: { Variant: "outline", Size: "sm" }, on: { click: call("emit.theme") }, attrs: { "data-testid": "theme-toggle" } }, text(ref("labels.theme"))),
           when(and(eq(ref("actions"), "cta"), ref("cta")), [use("Button", { props: { Variant: "default", Size: "sm", Href: ref("ctaHref") }, attrs: { "data-testid": "header-cta" } }, text(ref("cta")))])))),
@@ -41,8 +46,10 @@ const siteHeader = spec(`${O}site-header`, "SiteHeader", "The page header: a ski
 
 const siteFooter = spec(`${O}site-footer`, "SiteFooter", "The page footer: the copyright line and the same two links. Axes: layout (minimal, centered), density (default, compact).", {
   records: { SiteFooterLabels: fields(["copyright", "string"], ["nav", "string"], ["home", "string"], ["pricing", "string"]) },
+  typeImports: [{ from: "SiteHeader", names: ["SiteRoutes"] }],
   props: [
     { name: "labels", type: { record: "SiteFooterLabels" }, required: true },
+    { name: "routes", type: ts("SiteRoutes"), docs: "the addresses of the two pages, from the app; none: text, not links" },
     { name: "layout", type: tsOf("minimal", "centered"), default: "minimal", docs: "minimal: one row; centered: stacked and centered" },
     { name: "density", type: tsOf("default", "compact"), default: "default" },
   ],
@@ -52,8 +59,8 @@ const siteFooter = spec(`${O}site-footer`, "SiteFooter", "The page footer: the c
         use("Text", { props: { Size: "sm", Class: "text-muted-foreground" }, attrs: { "data-testid": "copyright" } }, text(ref("labels.copyright"))),
         navBlockOf(ref("labels.nav"), undefined, undefined,
           use("Group", { props: { Gap: "4" } },
-            use("Link", { props: { Href: "#/", Variant: "default" } }, text(ref("labels.home"))),
-            use("Link", { props: { Href: "#/pricing", Variant: "default" } }, text(ref("labels.pricing"))))))),
+            menuEntry(ref("routes.home"), { cls: "font-semibold" }, text(ref("labels.home"))),
+            menuEntry(ref("routes.pricing"), { cls: "font-semibold" }, text(ref("labels.pricing"))))))),
   ],
 });
 

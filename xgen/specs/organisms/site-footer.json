@@ -33,6 +33,13 @@
       "required": true
     },
     {
+      "name": "routes",
+      "type": {
+        "ts": "SiteRoutes"
+      },
+      "docs": "the addresses of the two pages, from the app; none: text, not links"
+    },
+    {
       "name": "layout",
       "type": {
         "ts": "\"minimal\" | \"centered\""
@@ -179,32 +186,46 @@
                       },
                       "children": [
                         {
-                          "use": "Link",
+                          "organism": "MenuEntry",
                           "props": {
-                            "Href": "#/",
-                            "Variant": "default"
+                            "href": {
+                              "$": "routes.home"
+                            },
+                            "className": "font-semibold"
                           },
-                          "children": [
-                            {
-                              "text": {
-                                "$": "labels.home"
-                              }
+                          "slots": {
+                            "children": {
+                              "args": [],
+                              "do": [
+                                {
+                                  "text": {
+                                    "$": "labels.home"
+                                  }
+                                }
+                              ]
                             }
-                          ]
+                          }
                         },
                         {
-                          "use": "Link",
+                          "organism": "MenuEntry",
                           "props": {
-                            "Href": "#/pricing",
-                            "Variant": "default"
+                            "href": {
+                              "$": "routes.pricing"
+                            },
+                            "className": "font-semibold"
                           },
-                          "children": [
-                            {
-                              "text": {
-                                "$": "labels.pricing"
-                              }
+                          "slots": {
+                            "children": {
+                              "args": [],
+                              "do": [
+                                {
+                                  "text": {
+                                    "$": "labels.pricing"
+                                  }
+                                }
+                              ]
                             }
-                          ]
+                          }
                         }
                       ]
                     }
@@ -220,5 +241,13 @@
   "portable": {
     "svelte": true,
     "react": true
-  }
+  },
+  "typeImports": [
+    {
+      "from": "SiteHeader",
+      "names": [
+        "SiteRoutes"
+      ]
+    }
+  ]
 }

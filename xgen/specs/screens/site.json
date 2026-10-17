@@ -23,6 +23,10 @@
         "props": {
           "current": {
             "$": "route.area"
+          },
+          "routes": {
+            "home": "#/",
+            "pricing": "#/pricing"
           }
         }
       }
@@ -30,7 +34,13 @@
     "after": [
       {
         "block": "footer",
-        "variant": "minimal"
+        "variant": "minimal",
+        "props": {
+          "routes": {
+            "home": "#/",
+            "pricing": "#/pricing"
+          }
+        }
       }
     ]
   },

@@ -21,12 +21,12 @@ import Block from "../primitives/block/block.vue";
 import Box from "../primitives/box/box.vue";
 import Group from "../primitives/group/group.vue";
 import Inline from "../primitives/inline/inline.vue";
-import Link from "../primitives/link/link.vue";
 import List from "../primitives/list/list.vue";
 import ListItem from "../primitives/list/list-item.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Text from "../primitives/text/text.vue";
 import MediaFrame from "../components/media-frame.vue";
+import MenuEntry from "../components/menu-entry.vue";
 import NavBlock from "../components/nav-block.vue";
 import SearchPalette from "../components/search-palette.vue";
 import { cn, tpl, uniqLabel } from "../utils";
@@ -59,23 +59,22 @@ const {
     >
       <List class="m-0 flex list-none items-center gap-2 p-0">
         <ListItem v-for="l in nav.links" :key="l.id">
-          <Link
-            href="#/"
-            variant="default"
-            size="sm"
-            :aria-current="((l.id === nav.current) ? 'page' : undefined)"
+          <MenuEntry
+            :href="l.href"
             :class="cn(
-              'flex items-center gap-4 rounded py-2',
+              'flex items-center gap-4 rounded py-2 text-sm',
               (true ? 'px-4' : 'justify-center px-2'),
               ((l.id === nav.current) ? 'bg-muted font-medium' : '')
             )"
-            data-testid="item"
+            :current="(l.id === nav.current)"
+            size="sm"
+            testid="item"
           >
             <LucideIcon :name="l.icon" :size="16" />
             <Inline :class="(true ? '' : 'sr-only')">
               {{ l.name }}
             </Inline>
-          </Link>
+          </MenuEntry>
         </ListItem>
       </List>
     </NavBlock>

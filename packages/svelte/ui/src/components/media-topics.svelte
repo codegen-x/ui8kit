@@ -13,10 +13,10 @@
 
 <script lang="ts">
   import Inline from "../primitives/inline/inline.svelte";
-  import Link from "../primitives/link/link.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
+  import MenuEntry from "../components/menu-entry.svelte";
   import { tpl } from "../utils";
 
   let { extras, labels }: MediaTopicsProps = $props();
@@ -28,11 +28,12 @@
   </Text>
   {#each extras.topics as c, i (c.id)}
     {#if (i < 5)}
-      <Link
-        href="#/"
+      <MenuEntry
+        href={c.href}
+        class="rounded bg-card inset-ring inset-ring-border flex w-full items-center gap-4 p-4"
         variant="block"
-        class="rounded bg-card inset-ring inset-ring-border items-center gap-4 p-4"
-        data-testid="media-topic"
+        testid="media-topic"
+        block={true}
       >
         <Inline class="flex size-8 shrink-0 items-center justify-center rounded bg-primary text-primary-foreground">
           <LucideIcon name={c.icon} size={16} />
@@ -46,7 +47,7 @@
           </Text>
         </Stack>
         <LucideIcon name="arrow-right" size={16} />
-      </Link>
+      </MenuEntry>
     {/if}
   {/each}
 </Stack>

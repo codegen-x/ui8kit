@@ -8,13 +8,13 @@
 import { type ReactNode } from "react";
 import { Badge } from "../primitives/badge/badge";
 import { Group } from "../primitives/group/group";
-import { Link } from "../primitives/link/link";
 import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { Title } from "../primitives/title/title";
 import { JobCards } from "../components/job-cards";
+import { MenuEntry } from "../components/menu-entry";
 import { SectionFrame } from "../components/section-frame";
 import { tpl } from "../utils";
 import type { Job, Department, JobLabels } from "./job-board.types";
@@ -72,9 +72,9 @@ export function JobBoard({
                     data-testid="item"
                   >
                     <Stack gap="0">
-                      <Link href="#/careers" variant="default" className="font-medium">
+                      <MenuEntry href={j.href} className="font-medium">
                         {j.title}
-                      </Link>
+                      </MenuEntry>
                       <Text size="xs" className="text-muted-foreground">
                         {tpl("{0}, {1}", j.location, j.type)}
                       </Text>

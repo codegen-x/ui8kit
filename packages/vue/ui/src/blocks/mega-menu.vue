@@ -12,6 +12,7 @@ import type { NavLink } from "./nav-bar.types";
 export type MegaMenuProps = {
   label: string;
   brand: string;
+  brandHref?: string;
   trigger: string;
   links: NavLink[];
   groups: MegaGroup[];
@@ -31,19 +32,20 @@ import ButtonPlain from "../primitives/button-plain/button-plain.vue";
 import Container from "../primitives/container/container.vue";
 import Grid from "../primitives/grid/grid.vue";
 import Group from "../primitives/group/group.vue";
-import Link from "../primitives/link/link.vue";
 import List from "../primitives/list/list.vue";
 import ListItem from "../primitives/list/list-item.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import MediaFrame from "../components/media-frame.vue";
+import MenuEntry from "../components/menu-entry.vue";
 import NavBlock from "../components/nav-block.vue";
 import { cn, tpl, uniqLabel } from "../utils";
 
 const {
   label,
   brand,
+  brandHref,
   trigger,
   links,
   groups,
@@ -67,9 +69,9 @@ const {
       :class="cn('mx-auto w-full max-w-6xl px-4', 'flex flex-wrap items-center gap-6 py-4')"
       data-slot="container"
     >
-      <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
+      <MenuEntry :href="brandHref" class="text-lg font-medium" testid="brand">
         {{ brand }}
-      </Link>
+      </MenuEntry>
       <NavBlock :label="(landmarkLabel ? uniqLabel(tpl('{0}, {1}', label, landmarkLabel)) : label)" class="flex-1">
         <Group gap="4" align="center" class="flex-wrap">
           <ButtonPlain
@@ -81,15 +83,16 @@ const {
             {{ trigger }}
             <LucideIcon name="chevron-down" :size="16" />
           </ButtonPlain>
-          <Link v-for="l in links" :key="l.id"
+          <MenuEntry
+            v-for="l in links"
+            :key="l.id"
             :href="l.href"
-            variant="default"
-            :aria-current="((l.id === '') ? 'page' : undefined)"
             class="text-sm"
-            data-testid="nav-link"
+            :current="(l.id === '')"
+            testid="nav-link"
           >
             {{ l.name }}
-          </Link>
+          </MenuEntry>
         </Group>
       </NavBlock>
     </Container>
@@ -112,10 +115,10 @@ const {
             </Text>
           </Group>
           <List class="m-0 flex list-none flex-col gap-2 p-0">
-            <ListItem v-for="item in g.links" :key="item">
-              <Link href="#/" variant="default" class="text-sm text-muted-foreground">
-                {{ item }}
-              </Link>
+            <ListItem v-for="item in g.links" :key="item.id">
+              <MenuEntry :href="item.href" class="text-sm text-muted-foreground">
+                {{ item.name }}
+              </MenuEntry>
             </ListItem>
           </List>
         </Stack>

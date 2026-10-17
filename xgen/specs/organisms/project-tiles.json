@@ -397,48 +397,60 @@
                               },
                               "children": [
                                 {
-                                  "use": "Link",
+                                  "organism": "MenuEntry",
                                   "props": {
-                                    "Href": "#/work",
-                                    "Variant": "default",
-                                    "Class": "inline-flex items-center gap-2 text-sm font-medium"
-                                  },
-                                  "children": [
-                                    {
-                                      "text": {
-                                        "$": "labels.case"
-                                      }
+                                    "href": {
+                                      "$": "p.href"
                                     },
-                                    {
-                                      "use": "LucideIcon",
-                                      "props": {
-                                        "Name": "arrow-right",
-                                        "Size": 16
-                                      }
+                                    "className": "inline-flex items-center gap-2 text-sm font-medium"
+                                  },
+                                  "slots": {
+                                    "children": {
+                                      "args": [],
+                                      "do": [
+                                        {
+                                          "text": {
+                                            "$": "labels.case"
+                                          }
+                                        },
+                                        {
+                                          "use": "LucideIcon",
+                                          "props": {
+                                            "Name": "arrow-right",
+                                            "Size": 16
+                                          }
+                                        }
+                                      ]
                                     }
-                                  ]
+                                  }
                                 },
                                 {
-                                  "use": "Link",
+                                  "organism": "MenuEntry",
                                   "props": {
-                                    "Href": "#/work",
-                                    "Variant": "default",
-                                    "Class": "inline-flex items-center gap-2 text-sm font-medium"
-                                  },
-                                  "children": [
-                                    {
-                                      "text": {
-                                        "$": "labels.view"
-                                      }
+                                    "href": {
+                                      "$": "p.href"
                                     },
-                                    {
-                                      "use": "LucideIcon",
-                                      "props": {
-                                        "Name": "external-link",
-                                        "Size": 16
-                                      }
+                                    "className": "inline-flex items-center gap-2 text-sm font-medium"
+                                  },
+                                  "slots": {
+                                    "children": {
+                                      "args": [],
+                                      "do": [
+                                        {
+                                          "text": {
+                                            "$": "labels.view"
+                                          }
+                                        },
+                                        {
+                                          "use": "LucideIcon",
+                                          "props": {
+                                            "Name": "external-link",
+                                            "Size": 16
+                                          }
+                                        }
+                                      ]
                                     }
-                                  ]
+                                  }
                                 }
                               ]
                             }

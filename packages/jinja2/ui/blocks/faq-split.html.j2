@@ -30,7 +30,7 @@
       {%- set c_2 -%}
         {{ ui_text(ui_get(v_labels, ['cta'])) }}
       {%- endset -%}
-      {{ ui_include('ui/button/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Href': '#/contact', 'Attrs': ui_attrs(['data-testid', 'faq-cta'])}, 'children': c_2}) }}
+      {{ ui_include('ui/button/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Attrs': ui_attrs(['data-testid', 'faq-cta'])}, 'children': c_2}) }}
     {%- endset -%}
     {{ ui_include('ui/box/box.html.j2', {'p': {}, 'children': c_3}) }}
   {%- endset -%}
@@ -55,7 +55,7 @@
       {%- set c_8 -%}
         {{ ui_text(ui_get(v_labels, ['cta'])) }}
       {%- endset -%}
-      {{ ui_include('ui/button/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Href': '#/contact', 'Attrs': ui_attrs(['data-testid', 'faq-cta'])}, 'children': c_8}) }}
+      {{ ui_include('ui/button/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Attrs': ui_attrs(['data-testid', 'faq-cta'])}, 'children': c_8}) }}
     {%- endset -%}
     {{ ui_include('ui/box/box.html.j2', {'p': {}, 'children': c_9}) }}
   {%- endset -%}

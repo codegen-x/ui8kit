@@ -3,10 +3,10 @@
 /** The facts of a post in a column (author, date, minutes, views), then the related reading as links. */
 import { type ReactNode } from "react";
 import { Group } from "../primitives/group/group";
-import { Link } from "../primitives/link/link";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
+import { MenuEntry } from "../components/menu-entry";
 import { tpl } from "../utils";
 import type { Post } from "../blocks/post-card.types";
 import type { PostExtras, PostSplitLabels } from "../blocks/post-split.types";
@@ -51,10 +51,10 @@ export function PostOutline({ post, extras, labels }: PostOutlineProps) {
           {labels.related}
         </Text>
         {(extras.outline ?? []).map((l) => (
-          <Link key={l.id} href="#/" size="sm" data-testid="post-link">
+          <MenuEntry key={l.id} href={l.href} className="text-sm font-medium" size="sm" testid="post-link">
             <LucideIcon name="chevron-right" size={16} />
             {l.name}
-          </Link>
+          </MenuEntry>
         ))}
       </Stack>
     </Stack>

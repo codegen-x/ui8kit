@@ -7,7 +7,6 @@ import (
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/badge"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/box"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/group"
-	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/link"
 	lucideicon "github.com/codegen-x/ui8kit/packages/templ/ui/ui/lucide-icon"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/stack"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/text"
@@ -60,11 +59,11 @@ templ ProjectTiles(p ProjectTilesProps) {
 							}
 						}
 						@group.Group(group.GroupProps{Gap: "4", Class: "pt-2"}) {
-							@link.Link(link.LinkProps{Href: "#/work", Variant: "default", Class: "inline-flex items-center gap-2 text-sm font-medium"}) {
+							@MenuEntry(MenuEntryProps{Href: uiutils.Get(vP, "href"), Class: uiutils.Cnv("inline-flex items-center gap-2 text-sm font-medium")}) {
 								{ uiutils.Text(uiutils.Get(vLabels, "case")) }
 								@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "arrow-right", Size: 16})
 							}
-							@link.Link(link.LinkProps{Href: "#/work", Variant: "default", Class: "inline-flex items-center gap-2 text-sm font-medium"}) {
+							@MenuEntry(MenuEntryProps{Href: uiutils.Get(vP, "href"), Class: uiutils.Cnv("inline-flex items-center gap-2 text-sm font-medium")}) {
 								{ uiutils.Text(uiutils.Get(vLabels, "view")) }
 								@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "external-link", Size: 16})
 							}

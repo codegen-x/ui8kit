@@ -32,8 +32,8 @@
   import { days as daysEntries } from "@ui8kit/app-shared/data/days";
   import { payments as paymentsEntries } from "@ui8kit/app-shared/data/payments";
 
-  const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
-  const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
+  const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","href":"slug|route"} as const;
+  const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"id|menu","href":"slug|route"} as const;
   const CART_FIELDS = {
     "id": "id",
     "name": "title",

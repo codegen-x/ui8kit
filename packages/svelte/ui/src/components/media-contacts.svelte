@@ -27,7 +27,7 @@
       {labels.list}
     </Text>
     {#each extras.channels as c, i (c.id)}
-      <Button variant="outline" size="default" href="#/" class="w-full gap-2" data-testid="media-channel">
+      <Button variant="outline" size="default" href={c.href} class="w-full gap-2" data-testid="media-channel">
         <LucideIcon name={c.icon} size={16} />
         {c.title}
       </Button>

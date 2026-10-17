@@ -81,19 +81,21 @@
     }
   ],
   "slots": [
+    "MenuEntry",
     "SearchField"
   ],
   "data": [
     {
       "as": "categories",
       "collection": "categories",
-      "kind": "category",
+      "kind": "menu_item",
       "record": "Category",
       "fields": {
         "id": "id",
         "name": "title",
         "icon": "metadata.icon.value",
-        "count": "metadata.count.value"
+        "count": "metadata.count.value",
+        "href": "slug|route"
       }
     }
   ],

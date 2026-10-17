@@ -25,13 +25,13 @@ export type JobBoardProps = {
 <script setup lang="ts">
 import Badge from "../primitives/badge/badge.vue";
 import Group from "../primitives/group/group.vue";
-import Link from "../primitives/link/link.vue";
 import List from "../primitives/list/list.vue";
 import ListItem from "../primitives/list/list-item.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
 import JobCards from "../components/job-cards.vue";
+import MenuEntry from "../components/menu-entry.vue";
 import SectionFrame from "../components/section-frame.vue";
 import { tpl } from "../utils";
 
@@ -74,9 +74,9 @@ const {
             data-testid="item"
           >
             <Stack gap="0">
-              <Link href="#/careers" variant="default" class="font-medium">
+              <MenuEntry :href="j.href" class="font-medium">
                 {{ j.title }}
-              </Link>
+              </MenuEntry>
               <Text size="xs" class="text-muted-foreground">
                 {{ tpl("{0}, {1}", j.location, j.type) }}
               </Text>

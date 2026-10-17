@@ -44,7 +44,7 @@ export function PostFeature({ p, labels }: PostFeatureProps) {
           </Text>
         </Stack>
       </Group>
-      <Button variant="default" size="default" href="#/" className="w-full gap-2" data-testid="action-primary">
+      <Button variant="default" size="default" href={p.href} className="w-full gap-2" data-testid="action-primary">
         {labels.read}
         <LucideIcon name="arrow-right" size={16} />
       </Button>

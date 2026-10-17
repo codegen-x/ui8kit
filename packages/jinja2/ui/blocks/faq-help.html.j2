@@ -44,6 +44,6 @@
     {{ ui_text(ui_get(v_labels, ['asideCta'])) }}
     {{ ui_include('ui/lucide-icon/lucide-icon.html.j2', {'p': {'Name': 'arrow-right', 'Size': 16}}) }}
   {%- endset -%}
-  {{ ui_include('ui/link/link.html.j2', {'p': {'Href': '#/contact', 'Variant': 'default', 'Size': 'sm', 'Class': 'font-medium'}, 'children': c_10}) }}
+  {{ ui_include('ui/button/button.html.j2', {'p': {'Variant': 'link', 'Size': 'sm', 'Class': 'gap-2 px-0 font-medium'}, 'children': c_10}) }}
 {%- endset -%}
 {{ ui_include('ui/block/block.html.j2', {'p': {'Tag': 'aside', 'Class': 'rounded bg-card inset-ring inset-ring-border flex flex-col gap-6 p-6', 'Attrs': ui_attrs(['aria-label', ui_coalesce([v_landmarkLabel, ui_get(v_labels, ['asideTitle'])]), 'data-testid', 'faq-help'])}, 'children': c_11}) }}

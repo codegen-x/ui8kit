@@ -37,6 +37,11 @@
       {
         "name": "client",
         "type": "string"
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "optional": true
       }
     ],
     "ProjectLabels": [

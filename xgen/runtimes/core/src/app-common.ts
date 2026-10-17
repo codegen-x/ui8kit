@@ -159,17 +159,20 @@ const escapeCyrillic = (s: string): string => s.replace(/[\u0400-\u04FF]/g, (c) 
 
 /** the shared package: one copy of what every host reads, whatever its runtime */
 /** runtime/codex: the lookups `fromCodex` resolves the references of an entry with (ReadOptions of runtime/core): the
- *  media entries (featured_media_id|media), the users (author_id|author) and the terms of every taxonomy (terms|term:<id>) */
+ *  media entries (featured_media_id|media), the users (author_id|author), the terms of every taxonomy (terms|term:<id>) and
+ *  the child menu items (id|menu) */
 function codexFile(collections: CollectionFile[]): GeneratedFile {
   const of = (kind: string) => collections.filter((c) => c.entries.length > 0 && c.entries.every((e) => e.kind === kind)).map((c) => c.collection).sort();
   const media = of("media"), users = of("user");
-  const imports = [...media, ...users].map((c) => `import { ${c} } from "../data/${c}";`);
+  // the links under a menu item (kind menu_item with a parent_id): `id|menu` lists the children of an item
+  const menus = collections.filter((c) => c.entries.length > 0 && c.entries.every((e) => e.kind === "menu_item" && typeof (e as { parent_id?: unknown }).parent_id === "string")).map((c) => c.collection).sort();
+  const imports = [...media, ...users, ...menus].map((c) => `import { ${c} } from "../data/${c}";`);
   const list = (cs: string[]) => (cs.length ? `[${cs.map((c) => `...${c}`).join(", ")}]` : "[]");
   return {
     path: "src/runtime/codex.ts",
     contents: withBanner([
       `// The lookups of the Codex entries: pass CODEX as the options of fromCodex so that featured_media_id, author_id and terms`,
-      `// resolve (media file, author name, term label). Add \`routes\` for the kinds an app has a page for: without one, no link.`,
+      `// resolve (media file, author name, term label, the links under a menu item). Add \`routes\` for the kinds an app has a page for: without one, no link.`,
       `import type { ReadOptions } from "./core";`,
       ...imports,
       `import { taxonomies } from "../data/taxonomies";`,
@@ -177,6 +180,7 @@ function codexFile(collections: CollectionFile[]): GeneratedFile {
       `export const CODEX: ReadOptions = {`,
       `  media: ${list(media)},`,
       `  users: ${list(users)},`,
+      `  menus: ${list(menus)},`,
       `  terms: (taxonomies as readonly { terms: readonly unknown[] }[]).flatMap((t) => t.terms),`,
       `};`,
       ``,

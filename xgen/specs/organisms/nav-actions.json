@@ -14,7 +14,7 @@
     {
       "name": "loginHref",
       "type": "string",
-      "default": "#/login"
+      "docs": "the address of the login page; none: the login is a button with no address"
     },
     {
       "name": "cta",

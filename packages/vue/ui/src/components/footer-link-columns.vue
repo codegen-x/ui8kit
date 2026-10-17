@@ -14,11 +14,11 @@ export type FooterLinkColumnsProps = {
 <script setup lang="ts">
 import Block from "../primitives/block/block.vue";
 import Box from "../primitives/box/box.vue";
-import Link from "../primitives/link/link.vue";
 import List from "../primitives/list/list.vue";
 import ListItem from "../primitives/list/list-item.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
+import MenuEntry from "../components/menu-entry.vue";
 
 const { label, groups, landmarkLabel } = defineProps<FooterLinkColumnsProps>();
 </script>
@@ -32,10 +32,10 @@ const { label, groups, landmarkLabel } = defineProps<FooterLinkColumnsProps>();
             {{ g.title }}
           </Text>
           <List class="m-0 flex list-none flex-col gap-2 p-0">
-            <ListItem v-for="item in g.links" :key="item">
-              <Link href="#/" variant="muted" size="sm">
-                {{ item }}
-              </Link>
+            <ListItem v-for="item in g.links" :key="item.id">
+              <MenuEntry :href="item.href" class="text-sm text-muted-foreground" variant="muted" size="sm">
+                {{ item.name }}
+              </MenuEntry>
             </ListItem>
           </List>
         </Stack>

@@ -1,26 +1,21 @@
 {
   "collection": "sitemap",
-  "kind": "group",
+  "kind": "menu_item",
   "entries": [
     {
       "id": "group-product",
       "locale": "en",
-      "kind": "group",
+      "kind": "menu_item",
       "status": "published",
       "visibility": "public",
-      "slug": "product",
+      "slug": "footer-product",
       "title": "Product",
       "metadata": {
+        "location": {
+          "value": "footer"
+        },
         "icon": {
           "value": "layers"
-        },
-        "links": {
-          "value": [
-            "Blocks",
-            "Templates",
-            "Themes",
-            "Pricing"
-          ]
         }
       },
       "version": 1,
@@ -31,22 +26,17 @@
     {
       "id": "group-company",
       "locale": "en",
-      "kind": "group",
+      "kind": "menu_item",
       "status": "published",
       "visibility": "public",
-      "slug": "company",
+      "slug": "footer-company",
       "title": "Company",
       "metadata": {
+        "location": {
+          "value": "footer"
+        },
         "icon": {
           "value": "building"
-        },
-        "links": {
-          "value": [
-            "About",
-            "Careers",
-            "Contact",
-            "Press"
-          ]
         }
       },
       "version": 1,
@@ -57,22 +47,17 @@
     {
       "id": "group-resources",
       "locale": "en",
-      "kind": "group",
+      "kind": "menu_item",
       "status": "published",
       "visibility": "public",
-      "slug": "resources",
+      "slug": "footer-resources",
       "title": "Resources",
       "metadata": {
+        "location": {
+          "value": "footer"
+        },
         "icon": {
           "value": "book-open"
-        },
-        "links": {
-          "value": [
-            "Guides",
-            "Changelog",
-            "Community",
-            "Support"
-          ]
         }
       },
       "version": 1,
@@ -83,22 +68,17 @@
     {
       "id": "group-legal",
       "locale": "en",
-      "kind": "group",
+      "kind": "menu_item",
       "status": "published",
       "visibility": "public",
-      "slug": "legal",
+      "slug": "footer-legal",
       "title": "Legal",
       "metadata": {
+        "location": {
+          "value": "footer"
+        },
         "icon": {
           "value": "shield"
-        },
-        "links": {
-          "value": [
-            "Terms",
-            "Privacy",
-            "Cookies",
-            "Security"
-          ]
         }
       },
       "version": 1,

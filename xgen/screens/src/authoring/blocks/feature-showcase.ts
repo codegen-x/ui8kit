@@ -5,6 +5,7 @@ import { spec, ts } from "../kit";
 import { frame } from "../components/frames";
 import { id, tsOf, toneLite } from "../props";
 import { muted } from "../ux";
+import { menuEntry } from "../components/nav";
 
 const featureShowcase = spec("organism.feature-showcase", "FeatureShowcase", "Features as cards under a centered heading. Axes: item (picture: a picture on top, then the title, the text and a read link; panel: a muted panel with a large glyph on top, then the title and the text), cols (3, 4), tone.", {
   typeImports: [{ from: "FeatureGrid", names: ["Feature"] }],
@@ -26,7 +27,7 @@ const featureShowcase = spec("organism.feature-showcase", "FeatureShowcase", "Fe
         use("CardContent", { props: { Class: "flex flex-1 flex-col gap-2" } },
           use("Title", { props: { As: 3, Size: "base", Weight: "semibold" } }, text(ref("f.title"))),
           muted(ref("f.text")),
-          when(eq(ref("item"), "picture"), [use("Link", { props: { Href: "#/", Size: "sm", Class: "mt-auto pt-2" }, attrs: { "data-testid": "read" } }, text(ref("more")), use("LucideIcon", { props: { Name: "arrow-right", Size: 16 } }))])))))]),
+          when(eq(ref("item"), "picture"), [menuEntry(ref("f.href"), { size: "sm", cls: "mt-auto gap-2 pt-2 text-sm font-medium", testid: "read" }, text(ref("more")), use("LucideIcon", { props: { Name: "arrow-right", Size: 16 } }))])))))]),
   ],
 });
 

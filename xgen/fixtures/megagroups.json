@@ -1,26 +1,21 @@
 {
   "collection": "megagroups",
-  "kind": "group",
+  "kind": "menu_item",
   "entries": [
     {
       "id": "megagroup-product",
       "locale": "en",
-      "kind": "group",
+      "kind": "menu_item",
       "status": "published",
       "visibility": "public",
       "slug": "megagroup-product",
       "title": "Product",
       "metadata": {
+        "location": {
+          "value": "mega"
+        },
         "icon": {
           "value": "layers"
-        },
-        "links": {
-          "value": [
-            "Blocks",
-            "Templates",
-            "Themes",
-            "Integrations"
-          ]
         }
       },
       "version": 1,
@@ -31,22 +26,17 @@
     {
       "id": "megagroup-resources",
       "locale": "en",
-      "kind": "group",
+      "kind": "menu_item",
       "status": "published",
       "visibility": "public",
       "slug": "megagroup-resources",
       "title": "Resources",
       "metadata": {
+        "location": {
+          "value": "mega"
+        },
         "icon": {
           "value": "book-open"
-        },
-        "links": {
-          "value": [
-            "Guides",
-            "Changelog",
-            "Community",
-            "Support"
-          ]
         }
       },
       "version": 1,
@@ -57,22 +47,17 @@
     {
       "id": "megagroup-company",
       "locale": "en",
-      "kind": "group",
+      "kind": "menu_item",
       "status": "published",
       "visibility": "public",
       "slug": "megagroup-company",
       "title": "Company",
       "metadata": {
+        "location": {
+          "value": "mega"
+        },
         "icon": {
           "value": "building"
-        },
-        "links": {
-          "value": [
-            "About",
-            "Careers",
-            "Contact",
-            "Press"
-          ]
         }
       },
       "version": 1,

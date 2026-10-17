@@ -5,6 +5,7 @@ import { fields, spec, ts } from "../kit";
 import { frame, wide } from "../components/frames";
 import { id, title, tone, tsOf, toneLite } from "../props";
 import { checkRow, fid, inputField, kids, textField } from "../forms";
+import { menuEntry } from "../components/nav";
 
 const O = "organism.";
 
@@ -141,7 +142,7 @@ const supportChannels = spec(`${O}support-channels`, "SupportChannels", "Ways to
             use("Stack", { props: { Gap: "2", Class: "flex-1" } },
               use("Title", { props: { As: 3, Size: "base", Weight: "bold" } }, text(ref("c.title"))),
               use("Text", { props: { Size: "sm", Class: "text-muted-foreground" } }, text(ref("c.text")))),
-            when(eq(ref("action"), "link"), [use("Link", { props: { Href: "#/", Variant: "default" }, attrs: { "data-testid": "open" } }, text(ref("open")))]))))),
+            when(eq(ref("action"), "link"), [menuEntry(ref("c.href"), { cls: "font-semibold", testid: "open" }, text(ref("open")))]))))),
   ])],
 });
 

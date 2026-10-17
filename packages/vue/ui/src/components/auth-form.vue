@@ -22,7 +22,6 @@ import Form from "../primitives/form/form.vue";
 import Group from "../primitives/group/group.vue";
 import Input from "../primitives/input/input.vue";
 import Label from "../primitives/label/label.vue";
-import Link from "../primitives/link/link.vue";
 import Field from "../components/field.vue";
 import { cn, tpl } from "../utils";
 
@@ -57,9 +56,9 @@ const { id, mode = "signin", labels, submit } = defineProps<AuthFormProps>();
           {{ labels.remember }}
         </Label>
       </Group>
-      <Link href="#/" variant="default" class="text-sm">
+      <Button variant="link" size="sm" class="px-0">
         {{ labels.forgot }}
-      </Link>
+      </Button>
     </Group>
     <Group v-if="((mode as string) === 'signup')" gap="2" align="center" :class="cn('w-fit', '')">
       <Checkbox name="terms" :id="tpl('{0}-terms', id)" />

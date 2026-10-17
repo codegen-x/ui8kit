@@ -9,13 +9,13 @@ import { type ReactNode } from "react";
 import { Badge } from "../primitives/badge/badge";
 import { Box } from "../primitives/box/box";
 import { Group } from "../primitives/group/group";
-import { Link } from "../primitives/link/link";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { Title } from "../primitives/title/title";
 import { ArticleBlock } from "../components/article-block";
 import { MediaFrame } from "../components/media-frame";
+import { MenuEntry } from "../components/menu-entry";
 import { cn, tpl } from "../utils";
 import type { Project, ProjectLabels } from "../blocks/project-grid.types";
 
@@ -82,14 +82,14 @@ export function ProjectTiles({ projects, labels, layout = "cards" }: ProjectTile
                   ))}
                 </Group>
                 <Group gap="4" className="pt-2">
-                  <Link href="#/work" variant="default" className="inline-flex items-center gap-2 text-sm font-medium">
+                  <MenuEntry href={p.href} className="inline-flex items-center gap-2 text-sm font-medium">
                     {labels.case}
                     <LucideIcon name="arrow-right" size={16} />
-                  </Link>
-                  <Link href="#/work" variant="default" className="inline-flex items-center gap-2 text-sm font-medium">
+                  </MenuEntry>
+                  <MenuEntry href={p.href} className="inline-flex items-center gap-2 text-sm font-medium">
                     {labels.view}
                     <LucideIcon name="external-link" size={16} />
-                  </Link>
+                  </MenuEntry>
                 </Group>
               </>
             ) : null}

@@ -17,7 +17,7 @@
   import { categories as categoriesEntries } from "@ui8kit/app-shared/data/categories";
   import { products as productsEntries } from "@ui8kit/app-shared/data/products";
 
-  const CATEGORIES_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","count":"metadata.count.value"} as const;
+  const CATEGORIES_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","count":"metadata.count.value","href":"slug|route"} as const;
   const PRODUCTS_FIELDS = {
     "id": "id",
     "name": "title",

@@ -13,7 +13,7 @@ export const logos = src("logos", "logos", "logo", "Logo", { id: "id", name: "ti
 export const stats = src("stats", "stats", "stat", "Stat", CODEX_FIELDS.stat);
 export const testimonials = src("testimonials", "testimonials", "testimonial", "Quote", { id: "id", author: "title", role: m("role"), company: m("company"), quote: m("quote"), rating: m("rating"), handle: m("handle"), time: `${m("time")}|ago-short`, mark: m("mark") });
 export const steps = src("steps", "steps", "step", "Step", { id: "id", title: "title", text: m("text"), icon: m("icon") });
-export const categories = src("categories", "categories", "category", "Category", { id: "id", name: "title", icon: m("icon"), count: m("count") });
+export const categories = src("categories", "categories", "menu_item", "Category", CODEX_FIELDS.menuCategory);
 export const products = src("products", "products", "product", "Product", CODEX_FIELDS.product);
 export const cart = src("cart", "cart", "cartline", "CartLine", { id: "id", name: "title", variant: m("variant"), price: m("price"), currency: m("currency"), qty: m("qty") });
 export const summary = src("summary", "summary", "summaryrow", "SummaryRow", { id: "id", label: "title", amount: m("amount"), currency: m("currency"), strong: m("strong") });
@@ -29,15 +29,17 @@ export const contacts = src("contacts", "contacts", "contact", "Feature", { id: 
 export const community = src("community", "community", "channel", "Feature", { id: "id", title: "title", text: m("text"), icon: m("icon") });
 
 const link = (as: string, kind: string, record = "NavLink") => src(as, as, kind, record, { id: "id", name: "title", icon: m("icon") });
-const group = (as: string) => src(as, as, "group", "MegaGroup", { id: "id", title: "title", icon: m("icon"), links: m("links") });
+const group = (as: string) => src(as, as, "menu_item", "MegaGroup", CODEX_FIELDS.menuGroup);
+/** a menu (kind menu_item): the central map, a link only where the app routes menu items */
+const menu = (as: string) => src(as, as, "menu_item", "NavLink", CODEX_FIELDS.menuItem);
 const row = (as: string) => src(as, as, "row", "CompareRow", { id: "id", label: "title", a: m("a"), b: m("b"), c: m("c") });
 const tab = (as: string, kind: string, record: string) => src(as, as, kind, record, { id: "id", title: "title", value: m("value") });
-export const navlinks = link("navlinks", "link");
+export const navlinks = menu("navlinks");
 export const prompts = link("prompts", "prompt", "Topic");
 export const templates = src("templates", "templates", "template", "Template", { id: "id", title: "title", views: m("views"), likes: m("likes"), topic: m("topic") });
 export const templateFilters = src("templateFilters", "prompts", "prompt", "Filter", { id: "id", title: "title", value: m("value"), icon: m("icon") });
 export const tabs = link("tabs", "tab");
-export const sidenav = link("sidenav", "item");
+export const sidenav = menu("sidenav");
 export const megagroups = group("megagroups");
 export const sitemap = group("sitemap");
 export const compare = row("compare");
@@ -73,10 +75,10 @@ export const milestones = src("milestones", "milestones", "milestone", "Mileston
 export const values = src("values", "values", "value", "Feature", { id: "id", title: "title", text: m("text"), icon: m("icon") });
 export const profilefacts = src("profilefacts", "profilefacts", "profilefact", "Spec", { id: "id", label: "title", value: m("value") });
 export const skills = src("skills", "skills", "skill", "Skill", { id: "id", label: "title", level: m("level") });
-export const subnav = link("subnav", "subitem");
-export const helplinks = link("helplinks", "helplink");
+export const subnav = menu("subnav");
+export const helplinks = menu("helplinks");
 export const posttags = link("posttags", "posttag");
-export const outline = link("outline", "outlineitem");
+export const outline = menu("outline");
 // the breadcrumb trail: pages chained by parent_id, in the order root -> current page
 export const crumbs = src("crumbs", "crumbs", "page", "NavLink", CODEX_FIELDS.page);
 export const questions = src("questions", "questions", "question", "Question", { id: "id", question: "title", answer: m("answer"), category: m("category"), icon: m("icon") });

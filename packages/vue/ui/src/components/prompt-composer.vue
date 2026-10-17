@@ -36,7 +36,6 @@ const { label, attachLabel, modelLabel, send, href } = defineProps<PromptCompose
   >
     <Group v-if="attachLabel" gap="2" align="center" data-testid="composer-attachments">
       <Button
-        href="#/"
         variant="ghost"
         size="sm"
         :class="cn(
@@ -49,7 +48,6 @@ const { label, attachLabel, modelLabel, send, href } = defineProps<PromptCompose
         {{ attachLabel }}
       </Button>
       <Button
-        href="#/"
         variant="ghost"
         size="sm"
         :class="cn(
@@ -73,7 +71,6 @@ const { label, attachLabel, modelLabel, send, href } = defineProps<PromptCompose
     <Group gap="2" align="center" justify="between" class="h-8 w-full" data-testid="composer-tools">
       <Group gap="2" align="center">
         <Button
-          href="#/"
           variant="ghost"
           size="sm"
           layout="icon"
@@ -84,7 +81,6 @@ const { label, attachLabel, modelLabel, send, href } = defineProps<PromptCompose
           <LucideIcon name="plus" :size="16" />
         </Button>
         <Button v-if="modelLabel"
-          href="#/"
           variant="ghost"
           size="sm"
           :class="cn('gap-2 bg-background/10 text-background hover:bg-background/20', defaults.hero.model)"

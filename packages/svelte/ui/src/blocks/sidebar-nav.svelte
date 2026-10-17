@@ -26,13 +26,13 @@
   import Block from "../primitives/block/block.svelte";
   import Group from "../primitives/group/group.svelte";
   import Inline from "../primitives/inline/inline.svelte";
-  import Link from "../primitives/link/link.svelte";
   import List from "../primitives/list/list.svelte";
   import ListItem from "../primitives/list/list-item.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
   import MediaFrame from "../components/media-frame.svelte";
+  import MenuEntry from "../components/menu-entry.svelte";
   import NavBlock from "../components/nav-block.svelte";
   import { cn, tpl, uniqLabel } from "../utils";
 
@@ -76,22 +76,21 @@
     >
       {#each links as l (l.id)}
         <ListItem>
-          <Link
-            href="#/"
-            variant="default"
-            aria-current={((l.id === current) ? "page" : undefined)}
+          <MenuEntry
+            href={l.href}
             class={cn(
               "flex items-center gap-4 rounded px-4 text-sm",
               "py-2",
               ((l.id === current) ? "bg-muted font-semibold" : "")
             )}
-            data-testid="item"
+            current={(l.id === current)}
+            testid="item"
           >
             <LucideIcon name={l.icon} size={16} />
             <Inline class={(((width as string) === "compact") ? "sr-only" : "")}>
               {l.name}
             </Inline>
-          </Link>
+          </MenuEntry>
         </ListItem>
       {/each}
     </List>

@@ -10,7 +10,6 @@ import { Box } from "../primitives/box/box";
 import { Grid } from "../primitives/grid/grid";
 import { Group } from "../primitives/group/group";
 import { Inline } from "../primitives/inline/inline";
-import { Link } from "../primitives/link/link";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
 import { Table } from "../primitives/table/table";
@@ -21,6 +20,7 @@ import { TableHead } from "../primitives/table/table-head";
 import { TableHeadCell } from "../primitives/table/table-head-cell";
 import { TableRow } from "../primitives/table/table-row";
 import { Text } from "../primitives/text/text";
+import { MenuEntry } from "../components/menu-entry";
 import type { Job, Department, JobLabels } from "../blocks/job-board.types";
 
 export type JobCardsProps = {
@@ -87,9 +87,9 @@ export function JobCards({ jobs, departments, labels, layout = "grid", salary = 
                     </TableCell>
                   ) : null}
                   <TableCell class="pr-4 text-right">
-                    <Link href="#/careers" variant="default" class="font-medium">
+                    <MenuEntry href={j.href} class="font-medium">
                       {labels.apply}
-                    </Link>
+                    </MenuEntry>
                   </TableCell>
                 </TableRow>
               )}</For>
@@ -134,10 +134,10 @@ export function JobCards({ jobs, departments, labels, layout = "grid", salary = 
                 <Badge variant="secondary" size="default">
                   {departments.filter((i) => !j.dept || i["id"] === j.dept)[0]?.name ?? ""}
                 </Badge>
-                <Link href="#/careers" variant="default" class="inline-flex items-center gap-2 text-sm font-medium">
+                <MenuEntry href={j.href} class="inline-flex items-center gap-2 text-sm font-medium">
                   {labels.apply}
                   <LucideIcon name="arrow-right" size={16} />
-                </Link>
+                </MenuEntry>
               </Group>
             </Stack>
           )}</For>

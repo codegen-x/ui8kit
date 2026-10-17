@@ -87,7 +87,7 @@
     {
       "name": "browseHref",
       "type": "string",
-      "default": "#/"
+      "docs": "the address of the full list; none: a button"
     },
     {
       "name": "viewsLabel",

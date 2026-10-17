@@ -13,7 +13,7 @@ import { Container } from "../primitives/container/container";
 import { Grid } from "../primitives/grid/grid";
 import { Group } from "../primitives/group/group";
 import { LinkPlain } from "../primitives/link-plain/link-plain";
-import { Link } from "../primitives/link/link";
+import { MenuEntry } from "../components/menu-entry";
 import { NavActions } from "../components/nav-actions";
 import { NavBlock } from "../components/nav-block";
 import { NavLinks } from "../components/nav-links";
@@ -25,6 +25,7 @@ import type { NavLink, NavBarActions, NavSearch } from "./nav-bar.types";
 export type NavBarProps = {
   label: string;
   brand: string;
+  brandHref?: string;
   links: NavLink[];
   current?: string;
   actions?: NavBarActions;
@@ -40,6 +41,7 @@ export type NavBarProps = {
 export function NavBar({
   label,
   brand,
+  brandHref,
   links,
   current = "",
   actions,
@@ -91,9 +93,9 @@ export function NavBar({
                   <NavLinks links={links} current={current} side="left" />
                 </Box>
                 <Box className="text-center">
-                  <Link href="#/" variant="default" className="text-lg font-medium" data-testid="brand">
+                  <MenuEntry href={brandHref} className="text-lg font-medium" testid="brand">
                     {brand}
-                  </Link>
+                  </MenuEntry>
                 </Box>
                 <Group gap="4" align="center" justify="end" className="flex-wrap md:justify-self-end">
                   <Box>
@@ -114,9 +116,9 @@ export function NavBar({
             </NavBlock>
           ) : (
             <>
-              <Link href="#/" variant="default" className="text-lg font-medium" data-testid="brand">
+              <MenuEntry href={brandHref} className="text-lg font-medium" testid="brand">
                 {brand}
-              </Link>
+              </MenuEntry>
               {((layout as string) === "search") ? (
                 <SearchPalette label={search.label} shortcut={search.shortcut} />
               ) : null}

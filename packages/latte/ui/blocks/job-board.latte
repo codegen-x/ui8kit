@@ -35,7 +35,7 @@
                   {capture $c_4}
                     {=ui_text(ui_get($v_j, ['title']))}
                   {/capture}
-                  {=ui_include('ui/link/link.latte', ['p' => ['Href' => '#/careers', 'Variant' => 'default', 'Class' => 'font-medium'], 'children' => $c_4])|noescape}
+                  {=ui_include('blocks/menu-entry.latte', ['p' => ['href' => ui_get($v_j, ['href']), 'className' => ui_cnv(['font-medium'])], 'children' => $c_4])|noescape}
                   {capture $c_5}
                     {=ui_text(ui_tpl('{0}, {1}', [ui_get($v_j, ['location']), ui_get($v_j, ['type'])]))}
                   {/capture}

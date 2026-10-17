@@ -8,13 +8,13 @@ import { For, type JSX } from "solid-js";
 import { Block } from "../primitives/block/block";
 import { Group } from "../primitives/group/group";
 import { Inline } from "../primitives/inline/inline";
-import { Link } from "../primitives/link/link";
 import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { MediaFrame } from "../components/media-frame";
+import { MenuEntry } from "../components/menu-entry";
 import { NavBlock } from "../components/nav-block";
 import { cn, tpl, uniqLabel } from "../utils";
 import type { NavLink } from "./nav-bar.types";
@@ -71,22 +71,21 @@ export function SidebarNav({
         >
           <For each={links ?? []}>{(l) => (
             <ListItem>
-              <Link
-                href="#/"
-                variant="default"
-                aria-current={((l.id === current) ? "page" : undefined)}
+              <MenuEntry
+                href={l.href}
                 class={cn(
                   "flex items-center gap-4 rounded px-4 text-sm",
                   "py-2",
                   ((l.id === current) ? "bg-muted font-semibold" : "")
                 )}
-                data-testid="item"
+                current={(l.id === current)}
+                testid="item"
               >
                 <LucideIcon name={l.icon} size={16} />
                 <Inline class={(((width as string) === "compact") ? "sr-only" : "")}>
                   {l.name}
                 </Inline>
-              </Link>
+              </MenuEntry>
             </ListItem>
           )}</For>
         </List>

@@ -13,9 +13,9 @@ export type MediaPostsProps = {
 <script setup lang="ts">
 import Group from "../primitives/group/group.vue";
 import Inline from "../primitives/inline/inline.vue";
-import Link from "../primitives/link/link.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
+import MenuEntry from "../components/menu-entry.vue";
 import { tpl } from "../utils";
 
 const { extras, labels } = defineProps<MediaPostsProps>();
@@ -30,9 +30,9 @@ const { extras, labels } = defineProps<MediaPostsProps>();
       <Group v-if="(i < 3)" gap="4" align="start" data-testid="media-post">
         <Inline class="mt-2 size-2 shrink-0 rounded-full bg-primary" />
         <Stack gap="0">
-          <Link href="#/" size="sm">
+          <MenuEntry :href="p.href" class="text-sm font-medium" size="sm">
             {{ p.title }}
-          </Link>
+          </MenuEntry>
           <Text size="xs" class="text-muted-foreground">
             {{ tpl("{0} · {1}", p.date, tpl(labels.minutes, p.minutes)) }}
           </Text>

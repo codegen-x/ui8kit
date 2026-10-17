@@ -73,7 +73,6 @@
                 {
                   "use": "Button",
                   "props": {
-                    "Href": "#/",
                     "Variant": "ghost",
                     "Size": "sm",
                     "Class": {
@@ -111,7 +110,6 @@
                 {
                   "use": "Button",
                   "props": {
-                    "Href": "#/",
                     "Variant": "ghost",
                     "Size": "sm",
                     "Class": {
@@ -202,7 +200,6 @@
                 {
                   "use": "Button",
                   "props": {
-                    "Href": "#/",
                     "Variant": "ghost",
                     "Size": "sm",
                     "Layout": "icon",
@@ -238,7 +235,6 @@
                     {
                       "use": "Button",
                       "props": {
-                        "Href": "#/",
                         "Variant": "ghost",
                         "Size": "sm",
                         "Class": {

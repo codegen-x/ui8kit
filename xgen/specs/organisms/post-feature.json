@@ -157,7 +157,9 @@
           "props": {
             "Variant": "default",
             "Size": "default",
-            "Href": "#/",
+            "Href": {
+              "$": "p.href"
+            },
             "Class": "w-full gap-2"
           },
           "attrs": {

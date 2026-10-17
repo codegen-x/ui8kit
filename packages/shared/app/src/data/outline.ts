@@ -5,12 +5,15 @@ export const outline = [
   {
     "id": "outlineitem-budget",
     "locale": "en",
-    "kind": "outlineitem",
+    "kind": "menu_item",
     "status": "published",
     "visibility": "public",
     "slug": "budget",
     "title": "Set a page weight budget",
     "metadata": {
+      "location": {
+        "value": "outline"
+      },
       "icon": {
         "value": "chevron-right"
       }
@@ -23,12 +26,15 @@ export const outline = [
   {
     "id": "outlineitem-images",
     "locale": "en",
-    "kind": "outlineitem",
+    "kind": "menu_item",
     "status": "published",
     "visibility": "public",
     "slug": "images",
     "title": "Ship smaller pictures",
     "metadata": {
+      "location": {
+        "value": "outline"
+      },
       "icon": {
         "value": "chevron-right"
       }
@@ -41,12 +47,15 @@ export const outline = [
   {
     "id": "outlineitem-cache",
     "locale": "en",
-    "kind": "outlineitem",
+    "kind": "menu_item",
     "status": "published",
     "visibility": "public",
     "slug": "cache",
     "title": "Cache what does not change",
     "metadata": {
+      "location": {
+        "value": "outline"
+      },
       "icon": {
         "value": "chevron-right"
       }

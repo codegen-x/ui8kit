@@ -9,7 +9,6 @@ import (
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/grid"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/group"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/inline"
-	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/link"
 	lucideicon "github.com/codegen-x/ui8kit/packages/templ/ui/ui/lucide-icon"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/stack"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/table"
@@ -86,7 +85,7 @@ templ JobCards(p JobCardsProps) {
 								}
 							}
 							@table.TableCell(table.TableCellProps{Class: "pr-4 text-right"}) {
-								@link.Link(link.LinkProps{Href: "#/careers", Variant: "default", Class: "font-medium"}) {
+								@MenuEntry(MenuEntryProps{Href: uiutils.Get(vJ, "href"), Class: uiutils.Cnv("font-medium")}) {
 									{ uiutils.Text(uiutils.Get(vLabels, "apply")) }
 								}
 							}
@@ -133,7 +132,7 @@ templ JobCards(p JobCardsProps) {
 						@badge.Badge(badge.BadgeProps{Variant: "secondary", Size: "default"}) {
 							{ uiutils.Text(uiutils.FirstOf(uiutils.Where(vDepartments, "id", uiutils.Get(vJ, "dept")), "name")) }
 						}
-						@link.Link(link.LinkProps{Href: "#/careers", Variant: "default", Class: "inline-flex items-center gap-2 text-sm font-medium"}) {
+						@MenuEntry(MenuEntryProps{Href: uiutils.Get(vJ, "href"), Class: uiutils.Cnv("inline-flex items-center gap-2 text-sm font-medium")}) {
 							{ uiutils.Text(uiutils.Get(vLabels, "apply")) }
 							@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "arrow-right", Size: 16})
 						}

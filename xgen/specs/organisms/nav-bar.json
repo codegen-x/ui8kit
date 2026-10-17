@@ -54,8 +54,7 @@
         "name": "loginHref",
         "type": "string",
         "optional": true,
-        "docs": "href of the login link",
-        "default": "#/login"
+        "docs": "href of the login link; none: a button with no address"
       },
       {
         "name": "themeLabel",
@@ -90,6 +89,11 @@
       "name": "brand",
       "type": "string",
       "required": true
+    },
+    {
+      "name": "brandHref",
+      "type": "string",
+      "docs": "the address of the home page; none: the brand is text, not a link"
     },
     {
       "name": "links",
@@ -362,22 +366,26 @@
                                   },
                                   "children": [
                                     {
-                                      "use": "Link",
+                                      "organism": "MenuEntry",
                                       "props": {
-                                        "Href": "#/",
-                                        "Variant": "default",
-                                        "Class": "text-lg font-medium"
+                                        "href": {
+                                          "$": "brandHref"
+                                        },
+                                        "className": "text-lg font-medium",
+                                        "testid": "brand"
                                       },
-                                      "attrs": {
-                                        "data-testid": "brand"
-                                      },
-                                      "children": [
-                                        {
-                                          "text": {
-                                            "$": "brand"
-                                          }
+                                      "slots": {
+                                        "children": {
+                                          "args": [],
+                                          "do": [
+                                            {
+                                              "text": {
+                                                "$": "brand"
+                                              }
+                                            }
+                                          ]
                                         }
-                                      ]
+                                      }
                                     }
                                   ]
                                 },
@@ -450,22 +458,26 @@
                   ],
                   "else": [
                     {
-                      "use": "Link",
+                      "organism": "MenuEntry",
                       "props": {
-                        "Href": "#/",
-                        "Variant": "default",
-                        "Class": "text-lg font-medium"
+                        "href": {
+                          "$": "brandHref"
+                        },
+                        "className": "text-lg font-medium",
+                        "testid": "brand"
                       },
-                      "attrs": {
-                        "data-testid": "brand"
-                      },
-                      "children": [
-                        {
-                          "text": {
-                            "$": "brand"
-                          }
+                      "slots": {
+                        "children": {
+                          "args": [],
+                          "do": [
+                            {
+                              "text": {
+                                "$": "brand"
+                              }
+                            }
+                          ]
                         }
-                      ]
+                      }
                     },
                     {
                       "when": {

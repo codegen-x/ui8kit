@@ -16,6 +16,7 @@ import (
 // HeroHeadProps are the props of HeroHead; the values are the JSON shapes of the TypeScript props.
 type HeroHeadProps struct {
 	Brand any `json:"brand"`
+	BrandHref any `json:"brandHref"`
 	Links any `json:"links"`
 	Current any `json:"current"`
 	Login any `json:"login"`
@@ -30,10 +31,11 @@ type HeroHeadProps struct {
 // The head row of a hero band: skip link, brand, menu links (the current one carries aria-current), login and a call to action.
 templ HeroHead(p HeroHeadProps) {
 	{{ vBrand := p.Brand }}
+	{{ vBrandHref := p.BrandHref }}
 	{{ vLinks := p.Links }}
 	{{ vCurrent := uiutils.Def(p.Current, "") }}
 	{{ vLogin := p.Login }}
-	{{ vLoginHref := uiutils.Def(p.LoginHref, "#/login") }}
+	{{ vLoginHref := p.LoginHref }}
 	{{ vCta := p.Cta }}
 	{{ vHref := p.Href }}
 	{{ vSkip := p.Skip }}
@@ -45,7 +47,7 @@ templ HeroHead(p HeroHeadProps) {
 				{ uiutils.Text(vSkip) }
 			}
 		}
-		@link.Link(link.LinkProps{Href: "#/", Variant: "default", Class: uiutils.S(uiutils.Cnv(uiutils.Get(presetDefaults, "text", "small"), "font-medium leading-6 text-background")), Attrs: uiutils.Attrs("data-testid", "brand")}) {
+		@MenuEntry(MenuEntryProps{Href: vBrandHref, Class: uiutils.Cnv(uiutils.Cnv(uiutils.Get(presetDefaults, "text", "small"), "font-medium leading-6 text-background")), Testid: "brand"}) {
 			{ uiutils.Text(vBrand) }
 		}
 		@NavBlock(NavBlockProps{Label: uiutils.Cond(uiutils.T(vLandmarkLabel), uiutils.Uniq(uiutils.Tpl("{0}, {1}", vNavLabel, vLandmarkLabel)), vNavLabel), Testid: "site-nav"}) {

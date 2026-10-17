@@ -36,7 +36,7 @@
       {capture $c_6}
         {=ui_text(ui_get($v_labels, ['forgot']))}
       {/capture}
-      {=ui_include('ui/link/link.latte', ['p' => ['Href' => '#/', 'Variant' => 'default', 'Class' => 'text-sm'], 'children' => $c_6])|noescape}
+      {=ui_include('ui/button/button.latte', ['p' => ['Variant' => 'link', 'Size' => 'sm', 'Class' => 'px-0'], 'children' => $c_6])|noescape}
     {/capture}
     {=ui_include('ui/group/group.latte', ['p' => ['Justify' => 'between', 'Align' => 'center', 'Class' => 'flex-wrap gap-2'], 'children' => $c_7])|noescape}
   {/if}

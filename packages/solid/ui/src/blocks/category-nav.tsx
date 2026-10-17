@@ -10,13 +10,13 @@ import { Block } from "../primitives/block/block";
 import { Container } from "../primitives/container/container";
 import { Group } from "../primitives/group/group";
 import { Inline } from "../primitives/inline/inline";
-import { Link } from "../primitives/link/link";
 import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Select } from "../primitives/select/select";
 import { SelectOption } from "../primitives/select/select-option";
 import { Text } from "../primitives/text/text";
+import { MenuEntry } from "../components/menu-entry";
 import { SearchField } from "../components/search-field";
 import { cn } from "../utils";
 import type { Category, CategoryTools } from "./category-nav.types";
@@ -82,12 +82,12 @@ export function CategoryNav({
         <List tag="ul" class={listShape} data-testid="items">
           <For each={categories ?? []}>{(c) => (
             <ListItem>
-              <Link
-                href="#/categories"
-                variant="default"
-                aria-current={((c.id === current) ? "page" : undefined)}
+              <MenuEntry
+                href={c.href}
                 class={cn("text-sm", linkShape, ((c.id === current) ? currentLook : otherLook))}
-                data-testid="item"
+                current={(c.id === current)}
+                testid="item"
+                block={true}
               >
                 {((icon as string) === "show") ? (
                   <>
@@ -108,7 +108,7 @@ export function CategoryNav({
                     {(c.count == null ? undefined : String(c.count))}
                   </Text>
                 ) : null}
-              </Link>
+              </MenuEntry>
             </ListItem>
           )}</For>
         </List>

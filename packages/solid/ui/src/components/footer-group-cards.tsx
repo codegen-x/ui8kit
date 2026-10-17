@@ -9,12 +9,12 @@ import { Block } from "../primitives/block/block";
 import { Box } from "../primitives/box/box";
 import { Group } from "../primitives/group/group";
 import { Inline } from "../primitives/inline/inline";
-import { Link } from "../primitives/link/link";
 import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
+import { MenuEntry } from "../components/menu-entry";
 import type { MegaGroup } from "../blocks/mega-menu.types";
 
 export type FooterGroupCardsProps = {
@@ -40,9 +40,9 @@ export function FooterGroupCards({ label, groups, landmarkLabel }: FooterGroupCa
             <List class="m-0 flex list-none flex-col gap-2 p-0">
               <For each={g.links ?? []}>{(item) => (
                 <ListItem>
-                  <Link href="#/" variant="muted" size="sm">
-                    {item}
-                  </Link>
+                  <MenuEntry href={item.href} class="text-sm text-muted-foreground" variant="muted" size="sm">
+                    {item.name}
+                  </MenuEntry>
                 </ListItem>
               )}</For>
             </List>

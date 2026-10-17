@@ -6,7 +6,6 @@ package blocks
 import (
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/block"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/grid"
-	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/link"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/list"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/stack"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/text"
@@ -35,8 +34,8 @@ templ FooterColumns(p FooterColumnsProps) {
 					@list.List(list.ListProps{Class: "m-0 flex list-none flex-col gap-2 p-0"}) {
 						for _, vItem := range uiutils.L(uiutils.Get(vG, "links")) {
 							@list.ListItem(list.ListItemProps{}) {
-								@link.Link(link.LinkProps{Href: "#/", Variant: "default", Class: "text-sm text-muted-foreground"}) {
-									{ uiutils.Text(vItem) }
+								@MenuEntry(MenuEntryProps{Href: uiutils.Get(vItem, "href"), Class: uiutils.Cnv("text-sm text-muted-foreground")}) {
+									{ uiutils.Text(uiutils.Get(vItem, "name")) }
 								}
 							}
 						}

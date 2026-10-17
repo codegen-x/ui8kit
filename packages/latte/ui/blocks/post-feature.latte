@@ -36,6 +36,6 @@
     {=ui_text(ui_get($v_labels, ['read']))}
     {=ui_include('ui/lucide-icon/lucide-icon.latte', ['p' => ['Name' => 'arrow-right', 'Size' => 16]])|noescape}
   {/capture}
-  {=ui_include('ui/button/button.latte', ['p' => ['Variant' => 'default', 'Size' => 'default', 'Href' => '#/', 'Class' => 'w-full gap-2', 'Attrs' => ui_attrs(['data-testid', 'action-primary'])], 'children' => $c_8])|noescape}
+  {=ui_include('ui/button/button.latte', ['p' => ['Variant' => 'default', 'Size' => 'default', 'Href' => ui_s(ui_get($v_p, ['href'])), 'Class' => 'w-full gap-2', 'Attrs' => ui_attrs(['data-testid', 'action-primary'])], 'children' => $c_8])|noescape}
 {/capture}
 {=ui_include('ui/stack/stack.latte', ['p' => ['Gap' => '4', 'Align' => 'stretch', 'Class' => 'border-t border-border pt-6', 'Attrs' => ui_attrs(['data-testid', 'post-feature'])], 'children' => $c_9])|noescape}

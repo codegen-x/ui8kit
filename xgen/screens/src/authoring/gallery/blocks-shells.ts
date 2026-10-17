@@ -41,7 +41,7 @@ const dashshell = define({
     ...when2('[data-testid="footer"]', 1, "footer", ["full", "inset"], "none"),
     { sel: '[data-testid="sidebar"] [data-testid="items"] [data-testid="item"]', n: "@sidenav", when: { sidebar: ["wide", "rail", "collapsed", "twolevel"] } },
     { sel: '[data-testid="subnav"] [data-testid="item"]', n: "@subnav", when: { sidebar: "twolevel" } },
-    { sel: '[data-testid="footer"] a', n: "@helplinks", when: { footer: ["full", "inset"] } },
+    { sel: '[data-testid="footer"] li', n: "@helplinks", when: { footer: ["full", "inset"] } },
     { sel: '[data-testid="panel"]', n: 5, when: { content: "grid" } },
     { sel: '[data-testid="panel"]', n: 3, when: { content: "split" } },
     { sel: '[data-testid="panel"]', n: 1, when: { content: "list" } },

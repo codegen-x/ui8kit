@@ -15,10 +15,10 @@
 
 <script lang="ts">
   import Group from "../primitives/group/group.svelte";
-  import Link from "../primitives/link/link.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
+  import MenuEntry from "../components/menu-entry.svelte";
   import { tpl } from "../utils";
 
   let { post, extras, labels }: PostOutlineProps = $props();
@@ -56,10 +56,10 @@
       {labels.related}
     </Text>
     {#each extras.outline as l (l.id)}
-      <Link href="#/" size="sm" data-testid="post-link">
+      <MenuEntry href={l.href} class="text-sm font-medium" size="sm" testid="post-link">
         <LucideIcon name="chevron-right" size={16} />
         {l.name}
-      </Link>
+      </MenuEntry>
     {/each}
   </Stack>
 </Stack>

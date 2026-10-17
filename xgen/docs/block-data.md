@@ -1,4 +1,4 @@
-# Block data vs the Codex v0.4 contract (inventory; step 2: the pilot blocks fixed; step 3: lookups, terms, author_id; step 4: five more blocks; step 5: blocks.json generated)
+# Block data vs the Codex v0.4 contract (inventory; step 2: the pilot blocks fixed; step 3: lookups, terms, author_id; step 4: five more blocks; step 5: blocks.json generated; step 6: menus)
 
 Goal: every block, screen, template and data structure of the kit reads Codex v0.4 entries (`@ui8kit/contract` ^0.2.0;
 manifest `xgen/schema/codex/manifest.json`, 62 kinds) by the rules: money = integer minor units + `currency`; dates RFC 3339,
@@ -108,7 +108,7 @@ the plans list screen keeps its own column). No plans: the empty state (`pricing
 | 8 | Product `badge` / Plan `status` (**fixed**: optional; `status` not mapped for the pricing blocks) | record vs manifest | block: make the prop optional / drop `status` |
 | 9 | ProductGrid, PricingTiers, PostHeader (**fixed**: EmptyState, `labels.empty`), most other lists | no empty state | block: empty state with a dictionary label |
 | 10 | magazine templates / taste screens | text from the English copy deck `c` (not entries, not dictionary) | block props from dictionary; deck becomes entries or a dictionary per locale |
-| 11 | sitemap `links`, footer groups, side navs, category nav, brand (hardcoded `"#/"` in the components), Plan `features` | string arrays / no href per item; menus are not `menu` records | features ok as content of the entry; menus -> the contract `menu` schema, a link only where it has an address |
+| 11 | (**fixed**, section 7) sitemap `links`, footer groups, side navs, category nav, brand (hardcoded `"#/"` in the components), Plan `features` | string arrays / no href per item; menus are not `menu` records | features ok as content of the entry; menus -> the contract `menu` schema, a link only where it has an address |
 | 12 | Project `year` string, ProjectGrid `client` "Northwind" rebranded at runtime | types / data | manifest: integer year; block drops runtime rebrand when data is neutral |
 
 ## 5. Status per block
@@ -123,7 +123,8 @@ chained by `parent_id`, `trail()` orders them, a crumb links only with a route; 
 `faq_category` term, tabs filter by it; prop `empty`). Fallback `"#/"` links removed from SectionHead, FeatureGrid cell head, HeroPrompt,
 HeroHead and NavBar links: no address, no link (a button stays a button). Media fixtures: published, base64 data URIs.
 The magazine is a showcase: no routes and no links by design; its templates pass no `href`. Left: the hardcoded `"#/"` of footer
-groups, side navs, the category nav, the brand and the in-page table of contents (#11).
+groups, side navs, the category nav, the brand and the in-page table of contents (#11): done in step 6 (section 7), except the
+in-page table of contents (section 8).
 todo: everything else in blocks.json (kind listed from the spec).
 
 ## 6. Generation of blocks.json (step 5)
@@ -144,3 +145,38 @@ todo: everything else in blocks.json (kind listed from the spec).
 A block new in the specs appears as `todo` with its bindings; a moved or renamed source is followed (the id stays). The bindings of
 the done blocks now name the real organism prop (FaqList `items`, `filter.tabs`; PageTrail `extras.facts`; PricingTiers lists the
 `duo` collection of its variant too).
+
+## 7. Menus (step 6)
+
+The contract's `Menu` is a core record (`{id, location, locale, items[{id, label, url, parent_id?, order?, target?}]}`), not an entry
+kind. The kit keeps its menus as **entries of kind `menu_item`** (manifest kind, field `location`, `icon`, `count`): `title` = the label,
+`slug` -> the address through the app's routes (`slug|route`), `parent_id` + `order` = nesting, `metadata.location` = the menu
+(`main`, `sidebar`, `subnav`, `outline`, `help`, `footer`, `mega`, `categories`). Collections: navlinks, sidenav, subnav, outline,
+helplinks, sitemap, megagroups, categories (the top items) and `menulinks` (the 28 items under the footer and mega groups, which
+replace the string arrays `links`).
+
+- `bun run codex:validate` builds the core `Menu` records from these entries (one per location and locale: `url` = `"/" + slug`,
+  `target` = `{kind: "menu_item", id}`) and validates them with the entries (`menus` of `validateCollectionV04`): 8 menus, 63 items, 0 errors.
+- Field maps: `CODEX_FIELDS.menuItem` (NavLink), `menuGroup` (MegaGroup: `links` = `id|menu`, the children by `order`),
+  `menuCategory` (Category). Lookup: `CODEX.menus` = the child collections (generated `runtime/codex`); the shared package and
+  `xgen check` (dead) count a child collection as read when its parents are read.
+- Blocks: one pattern, `MenuEntry` (`pattern.menu-entry`): a `Link` where the entry has an address, else its content as text in the
+  same box (`Inline`, or `Box` with `block` when the content holds block elements); `current` -> `aria-current="page"` in both. Used by
+  NavBar, NavLinks, MegaMenu, SidebarNav, BottomNav, SitemapFooter, FooterColumns, FooterCard, FooterSplit, ShellSidebar, ShellFooter,
+  CategoryNav, SiteHeader, HeroHead, PostSplit outline, PostShowcase, MediaList, ProjectGrid, JobCards, FAQ blocks. The aria
+  expressions now sit in that one file (rules baseline: reactive-aria 26 -> 19 per runtime).
+- Brand: a link only with `brandHref` (NavBar, MegaMenu, HeroHead) or `routes.home` (SiteHeader/SiteFooter); else text.
+  FooterSplit: the sitemap link only with `extras.sitemapHref` (pattern `FooterSitemap`); the contact actions take `extras.ctaHref` / `secondaryHref`.
+- Screens: the site screen passes its routes (`SITE_ROUTES` = home, pricing), the theme screens their own `brandHref` and nav links.
+  The gallery passes no menu routes: entries render as text (the DashboardShell footer test counts items, not anchors).
+- Magazine: no routes, so no links; the template stage has 0 `<a>` except the in-page table of contents of the docs template
+  (was 158: brand, sitemap groups, side navs, categories, nav links).
+
+## 8. Open questions (decided for now, review later)
+
+1. Docs template table of contents: in-page anchors (`#tp-docs-body-section-*`) stay links; they address the page itself, not an app route.
+2. Gallery samples (`gallery/blocks-*.ts`) keep `"#/pricing"`-style hrefs as screen data the app hands over (not fixtures).
+3. CTAs with no address source (FAQ arrow link, auth "forgot", composer buttons) became link-style buttons (`<button type="button">`).
+4. CategoryNav keeps the chip classes `px-3 py-1.5` (a half step; inside a control, lint:px does not block it); to revisit with the control sizes.
+5. The magazine header shows the fixture menu labels (`navlinks`) instead of the deck's nav words; the deck words will go with #10.
+6. Menu items' `url` in the core Menu is `"/" + slug` (a neutral path); the real address is still the app's route.

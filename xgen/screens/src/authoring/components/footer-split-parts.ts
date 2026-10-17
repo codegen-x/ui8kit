@@ -5,6 +5,7 @@ import type { OrganismSpec, ViewNode } from "../../ir";
 import { spec, ts } from "../kit";
 import { emailRow } from "../forms";
 import { muted, strong, surface } from "../ux";
+import { menuEntry } from "./nav";
 
 const extras = { name: "extras", type: ts("FooterExtras"), required: true, docs: "the figures, points, contacts and channels" };
 const typesOf = (...more: { from: string; names: string[] }[]) => [{ from: "FooterSplit", names: ["FooterExtras", "FooterSplitLabels"] }, ...more];
@@ -12,8 +13,9 @@ const groupsProp = [{ name: "label", type: "string" as const, required: true, do
 /** the first `n` entries of a list */
 const first = (list: string, as: string, n: number, node: ViewNode): ViewNode => eachAt(ref(list), as, "i", ref(`${as}.id`), when(lt(ref("i"), n), [node]));
 const tile = (icon: string): ViewNode => use("Inline", { props: { Class: "flex size-10 shrink-0 items-center justify-center rounded bg-muted text-foreground" } }, use("LucideIcon", { props: { Name: ref(icon), Size: 20 } }));
+/** the items of a menu group: links where they have an address, else names */
 const links = (list: string, cls: string): ViewNode => use("List", { props: { Class: "m-0 flex list-none flex-col gap-2 p-0" } },
-  each(ref(list), "item", ref("item"), use("ListItem", {}, use("Link", { props: { Href: "#/", Variant: "muted", Size: "sm", Class: cls } }, text(ref("item"))))));
+  each(ref(list), "item", ref("item.id"), use("ListItem", {}, menuEntry(ref("item.href"), { variant: "muted", size: "sm", cls: `text-sm text-muted-foreground ${cls}`.trim() }, text(ref("item.name"))))));
 
 export const footerFigures = spec("pattern.footer-figures", "FooterFigures", "Three figures in a row under the brand of FooterSplit.", {
   typeImports: typesOf(),
@@ -80,4 +82,9 @@ export const footerBrand = spec("pattern.footer-brand", "FooterBrand", "The bran
     muted(ref("tagline")))],
 });
 
-export const footerSplitParts: OrganismSpec[] = [footerBrand, footerFigures, footerGroupCards, footerLinkColumns, footerPoints, footerContacts, footerChannels, footerSignupCard];
+export const footerSitemap = spec("pattern.footer-sitemap", "FooterSitemap", "The sitemap link of FooterSplit: an arrow and the word, only where the app gives the address (no address, no link).", {
+  props: [{ name: "href", type: "string", docs: "the address of the sitemap; none: nothing" }, { name: "label", type: "string", required: true }],
+  view: [when(ref("href"), [use("Link", { props: { Href: ref("href"), Size: "sm" }, attrs: { "data-testid": "footer-sitemap" } }, use("LucideIcon", { props: { Name: "arrow-right", Size: 16 } }), text(ref("label")))])],
+});
+
+export const footerSplitParts: OrganismSpec[] = [footerSitemap, footerBrand, footerFigures, footerGroupCards, footerLinkColumns, footerPoints, footerContacts, footerChannels, footerSignupCard];

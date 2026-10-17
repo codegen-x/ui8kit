@@ -8,14 +8,16 @@ import { type ReactNode } from "react";
 import { Block } from "../primitives/block/block";
 import { Container } from "../primitives/container/container";
 import { Group } from "../primitives/group/group";
-import { Link } from "../primitives/link/link";
 import { Text } from "../primitives/text/text";
+import { MenuEntry } from "../components/menu-entry";
 import { NavBlock } from "../components/nav-block";
 import { cn, tpl, uniqLabel } from "../utils";
 import type { SiteFooterLabels } from "./site-footer.types";
+import type { SiteRoutes } from "./site-header.types";
 
 export type SiteFooterProps = {
   labels: SiteFooterLabels;
+  routes?: SiteRoutes;
   layout?: "minimal" | "centered";
   density?: "default" | "compact";
   landmarkLabel?: string;
@@ -23,6 +25,7 @@ export type SiteFooterProps = {
 
 export function SiteFooter({
   labels,
+  routes,
   layout = "minimal",
   density = "default",
   landmarkLabel,
@@ -49,12 +52,12 @@ export function SiteFooter({
         </Text>
         <NavBlock label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", labels.nav, landmarkLabel)) : labels.nav)}>
           <Group gap="4">
-            <Link href="#/" variant="default">
+            <MenuEntry href={routes?.home} className="font-semibold">
               {labels.home}
-            </Link>
-            <Link href="#/pricing" variant="default">
+            </MenuEntry>
+            <MenuEntry href={routes?.pricing} className="font-semibold">
               {labels.pricing}
-            </Link>
+            </MenuEntry>
           </Group>
         </NavBlock>
       </Container>

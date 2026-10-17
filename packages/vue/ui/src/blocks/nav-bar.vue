@@ -12,6 +12,7 @@ import type { NavLink, NavBarActions, NavSearch } from "./nav-bar.types";
 export type NavBarProps = {
   label: string;
   brand: string;
+  brandHref?: string;
   links: NavLink[];
   current?: string;
   actions?: NavBarActions;
@@ -30,8 +31,8 @@ import Box from "../primitives/box/box.vue";
 import Container from "../primitives/container/container.vue";
 import Grid from "../primitives/grid/grid.vue";
 import Group from "../primitives/group/group.vue";
-import Link from "../primitives/link/link.vue";
 import LinkPlain from "../primitives/link-plain/link-plain.vue";
+import MenuEntry from "../components/menu-entry.vue";
 import NavActions from "../components/nav-actions.vue";
 import NavBlock from "../components/nav-block.vue";
 import NavLinks from "../components/nav-links.vue";
@@ -42,6 +43,7 @@ import { cn, tpl, uniqLabel } from "../utils";
 const {
   label,
   brand,
+  brandHref,
   links,
   current = "",
   actions,
@@ -92,9 +94,9 @@ const emit = defineEmits<{ theme: [] }>();
               <NavLinks :links="links" :current="current" side="left" />
             </Box>
             <Box class="text-center">
-              <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
+              <MenuEntry :href="brandHref" class="text-lg font-medium" testid="brand">
                 {{ brand }}
-              </Link>
+              </MenuEntry>
             </Box>
             <Group gap="4" align="center" justify="end" class="flex-wrap md:justify-self-end">
               <Box>
@@ -114,9 +116,9 @@ const emit = defineEmits<{ theme: [] }>();
           </Grid>
         </NavBlock>
         <template v-else>
-          <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
+          <MenuEntry :href="brandHref" class="text-lg font-medium" testid="brand">
             {{ brand }}
-          </Link>
+          </MenuEntry>
           <SearchPalette v-if="((layout as string) === 'search')" :label="search.label" :shortcut="search.shortcut" />
           <NavBlock
             :label="(landmarkLabel ? uniqLabel(tpl('{0}, {1}', label, landmarkLabel)) : label)"

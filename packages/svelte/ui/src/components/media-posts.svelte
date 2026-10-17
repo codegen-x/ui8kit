@@ -14,9 +14,9 @@
 <script lang="ts">
   import Group from "../primitives/group/group.svelte";
   import Inline from "../primitives/inline/inline.svelte";
-  import Link from "../primitives/link/link.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
+  import MenuEntry from "../components/menu-entry.svelte";
   import { tpl } from "../utils";
 
   let { extras, labels }: MediaPostsProps = $props();
@@ -31,9 +31,9 @@
       <Group gap="4" align="start" data-testid="media-post">
         <Inline class="mt-2 size-2 shrink-0 rounded-full bg-primary" />
         <Stack gap="0">
-          <Link href="#/" size="sm">
+          <MenuEntry href={p.href} class="text-sm font-medium" size="sm">
             {p.title}
-          </Link>
+          </MenuEntry>
           <Text size="xs" class="text-muted-foreground">
             {tpl("{0} · {1}", p.date, tpl(labels.minutes, p.minutes))}
           </Text>

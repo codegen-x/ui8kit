@@ -22,7 +22,7 @@ export function MediaContacts({ extras, labels }: MediaContactsProps) {
           {labels.list}
         </Text>
         {(extras.channels ?? []).map((c, i) => (
-          <Button key={c.id} variant="outline" size="default" href="#/" className="w-full gap-2" data-testid="media-channel">
+          <Button key={c.id} variant="outline" size="default" href={c.href} className="w-full gap-2" data-testid="media-channel">
             <LucideIcon name={c.icon} size={16} />
             {c.title}
           </Button>

@@ -22,7 +22,6 @@ import Box from "../primitives/box/box.vue";
 import Grid from "../primitives/grid/grid.vue";
 import Group from "../primitives/group/group.vue";
 import Inline from "../primitives/inline/inline.vue";
-import Link from "../primitives/link/link.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Table from "../primitives/table/table.vue";
@@ -33,6 +32,7 @@ import TableHead from "../primitives/table/table-head.vue";
 import TableHeadCell from "../primitives/table/table-head-cell.vue";
 import TableRow from "../primitives/table/table-row.vue";
 import Text from "../primitives/text/text.vue";
+import MenuEntry from "../components/menu-entry.vue";
 
 const { jobs, departments, labels, layout = "grid", salary = "hide" } = defineProps<JobCardsProps>();
 </script>
@@ -88,9 +88,9 @@ const { jobs, departments, labels, layout = "grid", salary = "hide" } = definePr
             {{ j.salary }}
           </TableCell>
           <TableCell class="pr-4 text-right">
-            <Link href="#/careers" variant="default" class="font-medium">
+            <MenuEntry :href="j.href" class="font-medium">
               {{ labels.apply }}
-            </Link>
+            </MenuEntry>
           </TableCell>
         </TableRow>
       </TableBody>
@@ -136,10 +136,10 @@ const { jobs, departments, labels, layout = "grid", salary = "hide" } = definePr
         <Badge variant="secondary" size="default">
           {{ departments.filter((i) => !j.dept || i["id"] === j.dept)[0]?.name ?? "" }}
         </Badge>
-        <Link href="#/careers" variant="default" class="inline-flex items-center gap-2 text-sm font-medium">
+        <MenuEntry :href="j.href" class="inline-flex items-center gap-2 text-sm font-medium">
           {{ labels.apply }}
           <LucideIcon name="arrow-right" :size="16" />
-        </Link>
+        </MenuEntry>
       </Group>
     </Stack>
   </Grid>

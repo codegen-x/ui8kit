@@ -32,7 +32,7 @@
             {capture $c_4}
               {=ui_text($v_open)}
             {/capture}
-            {=ui_include('ui/link/link.latte', ['p' => ['Href' => '#/', 'Variant' => 'default', 'Attrs' => ui_attrs(['data-testid', 'open'])], 'children' => $c_4])|noescape}
+            {=ui_include('blocks/menu-entry.latte', ['p' => ['href' => ui_get($v_c, ['href']), 'className' => ui_cnv(['font-semibold']), 'testid' => 'open'], 'children' => $c_4])|noescape}
           {/if}
         {/capture}
         {=ui_include('ui/card/card-content.latte', ['p' => ['Class' => ui_s(ui_cnv(['flex flex-1 gap-4', (ui_t(ui_eq($v_layout, 'list')) ? 'items-center' : 'flex-col')]))], 'children' => $c_5])|noescape}

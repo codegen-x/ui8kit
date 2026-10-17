@@ -31,8 +31,8 @@ import { cart as cartEntries } from "@ui8kit/app-shared/data/cart";
 import { summary as summaryEntries } from "@ui8kit/app-shared/data/summary";
 import { promos as promosEntries } from "@ui8kit/app-shared/data/promos";
 
-const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
-const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
+const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","href":"slug|route"} as const;
+const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"id|menu","href":"slug|route"} as const;
 const PRODUCTS_FIELDS = {
   "id": "id",
   "name": "title",

@@ -11,7 +11,6 @@ import { Form } from "../primitives/form/form";
 import { Group } from "../primitives/group/group";
 import { Input } from "../primitives/input/input";
 import { Label } from "../primitives/label/label";
-import { Link } from "../primitives/link/link";
 import { Field } from "../components/field";
 import { cn, tpl } from "../utils";
 import type { AuthLabels } from "../blocks/auth-card.types";
@@ -53,9 +52,9 @@ export function AuthForm({ id, mode = "signin", labels, submit }: AuthFormProps)
               {labels.remember}
             </Label>
           </Group>
-          <Link href="#/" variant="default" class="text-sm">
+          <Button variant="link" size="sm" class="px-0">
             {labels.forgot}
-          </Link>
+          </Button>
         </Group>
       ) : null}
       {((mode as string) === "signup") ? (

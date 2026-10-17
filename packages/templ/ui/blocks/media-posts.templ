@@ -6,7 +6,6 @@ package blocks
 import (
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/group"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/inline"
-	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/link"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/stack"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/text"
 	uiutils "github.com/codegen-x/ui8kit/packages/templ/ui/utils"
@@ -31,7 +30,7 @@ templ MediaPosts(p MediaPostsProps) {
 				@group.Group(group.GroupProps{Gap: "4", Align: "start", Attrs: uiutils.Attrs("data-testid", "media-post")}) {
 					@inline.Inline(inline.InlineProps{Class: "mt-2 size-2 shrink-0 rounded-full bg-primary"})
 					@stack.Stack(stack.StackProps{Gap: "0"}) {
-						@link.Link(link.LinkProps{Href: "#/", Size: "sm"}) {
+						@MenuEntry(MenuEntryProps{Href: uiutils.Get(vP, "href"), Class: uiutils.Cnv("text-sm font-medium"), Size: "sm"}) {
 							{ uiutils.Text(uiutils.Get(vP, "title")) }
 						}
 						@text.Text(text.TextProps{Size: "xs", Class: "text-muted-foreground"}) {

@@ -25,13 +25,13 @@ export type SidebarNavProps = {
 import Block from "../primitives/block/block.vue";
 import Group from "../primitives/group/group.vue";
 import Inline from "../primitives/inline/inline.vue";
-import Link from "../primitives/link/link.vue";
 import List from "../primitives/list/list.vue";
 import ListItem from "../primitives/list/list-item.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import MediaFrame from "../components/media-frame.vue";
+import MenuEntry from "../components/menu-entry.vue";
 import NavBlock from "../components/nav-block.vue";
 import { cn, tpl, uniqLabel } from "../utils";
 
@@ -75,22 +75,21 @@ const {
         data-testid="items"
       >
         <ListItem v-for="l in links" :key="l.id">
-          <Link
-            href="#/"
-            variant="default"
-            :aria-current="((l.id === current) ? 'page' : undefined)"
+          <MenuEntry
+            :href="l.href"
             :class="cn(
               'flex items-center gap-4 rounded px-4 text-sm',
               'py-2',
               ((l.id === current) ? 'bg-muted font-semibold' : '')
             )"
-            data-testid="item"
+            :current="(l.id === current)"
+            testid="item"
           >
             <LucideIcon :name="l.icon" :size="16" />
             <Inline :class="(((width as string) === 'compact') ? 'sr-only' : '')">
               {{ l.name }}
             </Inline>
-          </Link>
+          </MenuEntry>
         </ListItem>
       </List>
     </NavBlock>

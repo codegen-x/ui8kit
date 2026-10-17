@@ -14,12 +14,12 @@
         {{ include('ui/lucide-icon/lucide-icon.html.twig', {'p': {'Name': 'file-text', 'Size': 16}}, with_context = false) }}
         {{ ui_text(v_attachLabel) }}
       {%- endset -%}
-      {{ include('ui/button/button.html.twig', {'p': {'Href': '#/', 'Variant': 'ghost', 'Size': 'sm', 'Class': ui_s(ui_cnv(['gap-2 overflow-hidden bg-background/10 text-background hover:bg-background/20', ui_preset('blocks/presets/defaults.json', ['hero', 'attach'])])), 'Attrs': ui_attrs(['data-testid', 'composer-attach'])}, 'children': c_1}, with_context = false) }}
+      {{ include('ui/button/button.html.twig', {'p': {'Variant': 'ghost', 'Size': 'sm', 'Class': ui_s(ui_cnv(['gap-2 overflow-hidden bg-background/10 text-background hover:bg-background/20', ui_preset('blocks/presets/defaults.json', ['hero', 'attach'])])), 'Attrs': ui_attrs(['data-testid', 'composer-attach'])}, 'children': c_1}, with_context = false) }}
       {%- set c_2 -%}
         {{ include('ui/lucide-icon/lucide-icon.html.twig', {'p': {'Name': 'paperclip', 'Size': 16}}, with_context = false) }}
         {{ ui_text(v_attachLabel) }}
       {%- endset -%}
-      {{ include('ui/button/button.html.twig', {'p': {'Href': '#/', 'Variant': 'ghost', 'Size': 'sm', 'Class': ui_s(ui_cnv(['gap-2 overflow-hidden bg-background/10 text-background hover:bg-background/20', ui_preset('blocks/presets/defaults.json', ['hero', 'attach'])])), 'Attrs': ui_attrs(['data-testid', 'composer-attach'])}, 'children': c_2}, with_context = false) }}
+      {{ include('ui/button/button.html.twig', {'p': {'Variant': 'ghost', 'Size': 'sm', 'Class': ui_s(ui_cnv(['gap-2 overflow-hidden bg-background/10 text-background hover:bg-background/20', ui_preset('blocks/presets/defaults.json', ['hero', 'attach'])])), 'Attrs': ui_attrs(['data-testid', 'composer-attach'])}, 'children': c_2}, with_context = false) }}
     {%- endset -%}
     {{ include('ui/group/group.html.twig', {'p': {'Gap': '2', 'Align': 'center', 'Attrs': ui_attrs(['data-testid', 'composer-attachments'])}, 'children': c_3}, with_context = false) }}
   {%- endif %}
@@ -32,14 +32,14 @@
       {%- set c_5 -%}
         {{ include('ui/lucide-icon/lucide-icon.html.twig', {'p': {'Name': 'plus', 'Size': 16}}, with_context = false) }}
       {%- endset -%}
-      {{ include('ui/button/button.html.twig', {'p': {'Href': '#/', 'Variant': 'ghost', 'Size': 'sm', 'Layout': 'icon', 'Class': 'bg-background/10 text-background hover:bg-background/20', 'Attrs': ui_attrs(['data-testid', 'composer-plus', 'aria-label', ui_coalesce([v_attachLabel, 'Attach'])])}, 'children': c_5}, with_context = false) }}
+      {{ include('ui/button/button.html.twig', {'p': {'Variant': 'ghost', 'Size': 'sm', 'Layout': 'icon', 'Class': 'bg-background/10 text-background hover:bg-background/20', 'Attrs': ui_attrs(['data-testid', 'composer-plus', 'aria-label', ui_coalesce([v_attachLabel, 'Attach'])])}, 'children': c_5}, with_context = false) }}
       {%- if ui_t(v_modelLabel) %}
         {%- set c_6 -%}
           {{ include('ui/lucide-icon/lucide-icon.html.twig', {'p': {'Name': 'sparkles', 'Size': 16}}, with_context = false) }}
           {{ ui_text(v_modelLabel) }}
           {{ include('ui/lucide-icon/lucide-icon.html.twig', {'p': {'Name': 'chevron-down', 'Size': 16}}, with_context = false) }}
         {%- endset -%}
-        {{ include('ui/button/button.html.twig', {'p': {'Href': '#/', 'Variant': 'ghost', 'Size': 'sm', 'Class': ui_s(ui_cnv(['gap-2 bg-background/10 text-background hover:bg-background/20', ui_preset('blocks/presets/defaults.json', ['hero', 'model'])])), 'Attrs': ui_attrs(['data-testid', 'composer-model'])}, 'children': c_6}, with_context = false) }}
+        {{ include('ui/button/button.html.twig', {'p': {'Variant': 'ghost', 'Size': 'sm', 'Class': ui_s(ui_cnv(['gap-2 bg-background/10 text-background hover:bg-background/20', ui_preset('blocks/presets/defaults.json', ['hero', 'model'])])), 'Attrs': ui_attrs(['data-testid', 'composer-model'])}, 'children': c_6}, with_context = false) }}
       {%- endif %}
     {%- endset -%}
     {{ include('ui/group/group.html.twig', {'p': {'Gap': '2', 'Align': 'center'}, 'children': c_7}, with_context = false) }}

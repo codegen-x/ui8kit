@@ -5,12 +5,15 @@ export const navlinks = [
   {
     "id": "link-product",
     "locale": "en",
-    "kind": "link",
+    "kind": "menu_item",
     "status": "published",
     "visibility": "public",
     "slug": "product",
     "title": "Product",
     "metadata": {
+      "location": {
+        "value": "main"
+      },
       "icon": {
         "value": "package"
       }
@@ -23,12 +26,15 @@ export const navlinks = [
   {
     "id": "link-solutions",
     "locale": "en",
-    "kind": "link",
+    "kind": "menu_item",
     "status": "published",
     "visibility": "public",
     "slug": "solutions",
     "title": "Solutions",
     "metadata": {
+      "location": {
+        "value": "main"
+      },
       "icon": {
         "value": "layers"
       }
@@ -41,12 +47,15 @@ export const navlinks = [
   {
     "id": "link-pricing",
     "locale": "en",
-    "kind": "link",
+    "kind": "menu_item",
     "status": "published",
     "visibility": "public",
     "slug": "pricing",
     "title": "Pricing",
     "metadata": {
+      "location": {
+        "value": "main"
+      },
       "icon": {
         "value": "tag"
       }
@@ -59,12 +68,15 @@ export const navlinks = [
   {
     "id": "link-docs",
     "locale": "en",
-    "kind": "link",
+    "kind": "menu_item",
     "status": "published",
     "visibility": "public",
     "slug": "docs",
     "title": "Docs",
     "metadata": {
+      "location": {
+        "value": "main"
+      },
       "icon": {
         "value": "book-open"
       }
@@ -77,12 +89,15 @@ export const navlinks = [
   {
     "id": "link-company",
     "locale": "en",
-    "kind": "link",
+    "kind": "menu_item",
     "status": "published",
     "visibility": "public",
     "slug": "company",
     "title": "Company",
     "metadata": {
+      "location": {
+        "value": "main"
+      },
       "icon": {
         "value": "building"
       }

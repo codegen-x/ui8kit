@@ -149,28 +149,34 @@
               ]
             },
             {
-              "use": "Link",
+              "organism": "MenuEntry",
               "props": {
-                "Href": "#/",
-                "Size": "sm"
-              },
-              "attrs": {
-                "data-testid": "read"
-              },
-              "children": [
-                {
-                  "text": {
-                    "$": "labels.read"
-                  }
+                "href": {
+                  "$": "p.href"
                 },
-                {
-                  "use": "LucideIcon",
-                  "props": {
-                    "Name": "arrow-right",
-                    "Size": 16
-                  }
+                "className": "gap-2 text-sm font-medium",
+                "size": "sm",
+                "testid": "read"
+              },
+              "slots": {
+                "children": {
+                  "args": [],
+                  "do": [
+                    {
+                      "text": {
+                        "$": "labels.read"
+                      }
+                    },
+                    {
+                      "use": "LucideIcon",
+                      "props": {
+                        "Name": "arrow-right",
+                        "Size": 16
+                      }
+                    }
+                  ]
                 }
-              ]
+              }
             }
           ]
         }

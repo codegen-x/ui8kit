@@ -31,7 +31,7 @@
       {=ui_text(ui_get($v_labels, ['read']))}
       {=ui_include('ui/lucide-icon/lucide-icon.latte', ['p' => ['Name' => 'arrow-right', 'Size' => 16]])|noescape}
     {/capture}
-    {=ui_include('ui/link/link.latte', ['p' => ['Href' => '#/', 'Size' => 'sm', 'Attrs' => ui_attrs(['data-testid', 'read'])], 'children' => $c_6])|noescape}
+    {=ui_include('blocks/menu-entry.latte', ['p' => ['href' => ui_get($v_p, ['href']), 'className' => ui_cnv(['gap-2 text-sm font-medium']), 'size' => 'sm', 'testid' => 'read'], 'children' => $c_6])|noescape}
   {/capture}
   {=ui_include('ui/stack/stack.latte', ['p' => ['Gap' => '2', 'Align' => 'start', 'Class' => 'absolute bottom-4 left-4 right-4 rounded bg-background p-4'], 'children' => $c_7])|noescape}
 {/capture}

@@ -5,7 +5,6 @@ package blocks
 
 import (
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/group"
-	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/link"
 	uiutils "github.com/codegen-x/ui8kit/packages/templ/ui/utils"
 )
 
@@ -25,7 +24,7 @@ templ NavLinks(p NavLinksProps) {
 	@group.Group(group.GroupProps{Gap: "4", Align: "center", Class: "flex-wrap"}) {
 		for vI, vL := range uiutils.L(vLinks) {
 			if uiutils.T(uiutils.Or(uiutils.Eq(vSide, "all"), uiutils.Eq(uiutils.Lt(uiutils.Mul(float64(vI), float64(2)), vCount), uiutils.Eq(vSide, "left")))) {
-				@link.Link(link.LinkProps{Href: uiutils.S(uiutils.Get(vL, "href")), Variant: "default", AriaCurrent: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vL, "id"), vCurrent)), "page", nil)), Class: "text-sm", Attrs: uiutils.Attrs("data-testid", "nav-link")}) {
+				@MenuEntry(MenuEntryProps{Href: uiutils.Get(vL, "href"), Class: uiutils.Cnv("text-sm"), Current: uiutils.Eq(uiutils.Get(vL, "id"), vCurrent), Testid: "nav-link"}) {
 					{ uiutils.Text(uiutils.Get(vL, "name")) }
 				}
 			}

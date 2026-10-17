@@ -9,7 +9,6 @@ import (
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/container"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/group"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/inline"
-	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/link"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/list"
 	lucideicon "github.com/codegen-x/ui8kit/packages/templ/ui/ui/lucide-icon"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/stack"
@@ -52,8 +51,8 @@ templ FooterCard(p FooterCardProps) {
 								@list.List(list.ListProps{Class: "m-0 flex list-none flex-col gap-4 p-0"}) {
 									for _, vItem := range uiutils.L(uiutils.Get(vG, "links")) {
 										@list.ListItem(list.ListItemProps{}) {
-											@link.Link(link.LinkProps{Href: "#/", Variant: "default", Class: "text-xs leading-5 text-muted-foreground"}) {
-												{ uiutils.Text(vItem) }
+											@MenuEntry(MenuEntryProps{Href: uiutils.Get(vItem, "href"), Class: uiutils.Cnv("text-xs leading-5 text-muted-foreground")}) {
+												{ uiutils.Text(uiutils.Get(vItem, "name")) }
 											}
 										}
 									}

@@ -11,13 +11,14 @@ import { Button } from "../primitives/button/button";
 import { Container } from "../primitives/container/container";
 import { Group } from "../primitives/group/group";
 import { LinkPlain } from "../primitives/link-plain/link-plain";
-import { Link } from "../primitives/link/link";
+import { MenuEntry } from "../components/menu-entry";
 import { NavBlock } from "../components/nav-block";
 import { cn, tpl, uniqLabel } from "../utils";
-import type { SiteHeaderLabels } from "./site-header.types";
+import type { SiteHeaderLabels, SiteRoutes } from "./site-header.types";
 
 export type SiteHeaderProps = {
   labels: SiteHeaderLabels;
+  routes?: SiteRoutes;
   current: string;
   layout?: "inline" | "stacked";
   position?: "static" | "sticky";
@@ -30,6 +31,7 @@ export type SiteHeaderProps = {
 
 export function SiteHeader({
   labels,
+  routes,
   current,
   layout = "inline",
   position = "static",
@@ -66,30 +68,30 @@ export function SiteHeader({
         )}
         data-slot="container"
       >
-        <Link href="#/" variant="default" className="text-lg font-medium" data-testid="brand">
+        <MenuEntry href={routes?.home} className="text-lg font-medium" testid="brand">
           {labels.brand}
-        </Link>
+        </MenuEntry>
         <NavBlock
           label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", labels.nav, landmarkLabel)) : labels.nav)}
           testid="site-nav"
         >
           <Group gap="4" align="center">
-            <Link
-              href="#/"
-              variant="default"
-              aria-current={(((current as string) === "home") ? "page" : undefined)}
-              data-testid="nav-link"
+            <MenuEntry
+              href={routes?.home}
+              className="font-semibold"
+              current={((current as string) === "home")}
+              testid="nav-link"
             >
               {labels.home}
-            </Link>
-            <Link
-              href="#/pricing"
-              variant="default"
-              aria-current={(((current as string) === "pricing") ? "page" : undefined)}
-              data-testid="nav-link"
+            </MenuEntry>
+            <MenuEntry
+              href={routes?.pricing}
+              className="font-semibold"
+              current={((current as string) === "pricing")}
+              testid="nav-link"
             >
               {labels.pricing}
-            </Link>
+            </MenuEntry>
           </Group>
         </NavBlock>
         <Group gap="4" align="center">

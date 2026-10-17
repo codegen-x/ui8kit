@@ -6,7 +6,7 @@
     "raw-html": 0,
     "dynamic-tag": 0,
     "raw-native-tag": 0,
-    "reactive-aria": 26,
+    "reactive-aria": 19,
     "literal-text": 2
   },
   "counts": {
@@ -15,23 +15,18 @@
     "dynamic-tag": {},
     "raw-native-tag": {},
     "reactive-aria": {
-      "src/blocks/bottom-nav.svelte": 1,
-      "src/blocks/category-nav.svelte": 1,
       "src/blocks/feature-sticky.svelte": 1,
-      "src/blocks/mega-menu.svelte": 2,
-      "src/blocks/sidebar-nav.svelte": 1,
+      "src/blocks/mega-menu.svelte": 1,
       "src/blocks/signup-wizard.svelte": 1,
-      "src/blocks/site-header.svelte": 2,
       "src/blocks/stepper.svelte": 1,
       "src/components/editor-tab.svelte": 1,
       "src/components/file-tree-item.svelte": 2,
       "src/components/hero-head.svelte": 1,
       "src/components/icon-tab.svelte": 1,
+      "src/components/menu-entry.svelte": 3,
       "src/components/nav-item.svelte": 3,
-      "src/components/nav-links.svelte": 1,
       "src/components/section-head.svelte": 2,
-      "src/components/shell-sidebar.svelte": 3,
-      "src/components/shell-topbar.svelte": 1,
+      "src/components/shell-sidebar.svelte": 1,
       "src/components/switcher-item.svelte": 1
     },
     "literal-text": {

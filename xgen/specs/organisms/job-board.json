@@ -33,6 +33,11 @@
       {
         "name": "posted",
         "type": "string"
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "optional": true
       }
     ],
     "Department": [
@@ -328,19 +333,25 @@
                                           },
                                           "children": [
                                             {
-                                              "use": "Link",
+                                              "organism": "MenuEntry",
                                               "props": {
-                                                "Href": "#/careers",
-                                                "Variant": "default",
-                                                "Class": "font-medium"
+                                                "href": {
+                                                  "$": "j.href"
+                                                },
+                                                "className": "font-medium"
                                               },
-                                              "children": [
-                                                {
-                                                  "text": {
-                                                    "$": "j.title"
-                                                  }
+                                              "slots": {
+                                                "children": {
+                                                  "args": [],
+                                                  "do": [
+                                                    {
+                                                      "text": {
+                                                        "$": "j.title"
+                                                      }
+                                                    }
+                                                  ]
                                                 }
-                                              ]
+                                              }
                                             },
                                             {
                                               "use": "Text",

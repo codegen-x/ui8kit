@@ -42,7 +42,7 @@ templ TemplateGrid(p TemplateGridProps) {
 	{{ vFilters := p.Filters }}
 	{{ vFiltersLabel := p.FiltersLabel }}
 	{{ vBrowse := p.Browse }}
-	{{ vBrowseHref := uiutils.Def(p.BrowseHref, "#/") }}
+	{{ vBrowseHref := p.BrowseHref }}
 	{{ vViewsLabel := p.ViewsLabel }}
 	{{ vLikesLabel := p.LikesLabel }}
 	{{ vCols := uiutils.Def(p.Cols, "1-4") }}

@@ -120,6 +120,9 @@ export function checkDead(plan: Plan): CheckResult {
     return [r.featured_media_id ?? "", r.author_id ?? ""];
   })));
   for (const c of plan.inputs.collections) if (c.value.entries.length && c.value.entries.every((e) => (e.kind === "media" || e.kind === "user") && referenced.has(e.id))) read.add(c.value.collection);
+  // the items under a menu item (kind menu_item with a parent_id) are reached through `id|menu` of the menu a screen reads
+  const readIds = new Set(plan.inputs.collections.filter((c) => read.has(c.value.collection)).flatMap((c) => c.value.entries.map((e) => e.id)));
+  for (const c of plan.inputs.collections) if (c.value.entries.length && c.value.entries.every((e) => e.kind === "menu_item" && readIds.has((e as { parent_id?: string }).parent_id ?? ""))) read.add(c.value.collection);
   for (const c of plan.inputs.collections) if (!read.has(c.value.collection)) problems.push(`xgen/fixtures/${c.value.collection}.json: no screen reads the collection ${c.value.collection}`);
   // organisms: one that no screen draws, directly or inside another
   const byName = new Map(plan.inputs.organisms.map((o) => [o.value.name, o.value]));

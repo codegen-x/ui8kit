@@ -3,7 +3,7 @@
   "specVersion": 1,
   "id": "pattern.topic-chips",
   "name": "TopicChips",
-  "docs": "A centered row of topic pills (static links). tone inverse: on a dark band with an icon per topic; default: outlined.",
+  "docs": "A centered row of topic pills: links where a topic has an address, else buttons. tone inverse: on a dark band with an icon per topic; default: outlined.",
   "records": {
     "Topic": [
       {
@@ -17,6 +17,11 @@
       {
         "name": "icon",
         "type": "string"
+      },
+      {
+        "name": "href",
+        "type": "string",
+        "optional": true
       }
     ]
   },
@@ -74,7 +79,9 @@
                 {
                   "use": "Button",
                   "props": {
-                    "Href": "#/",
+                    "Href": {
+                      "$": "topic.href"
+                    },
                     "Variant": "ghost",
                     "Size": "sm",
                     "Class": "gap-2 text-background inset-ring-background/30 hover:bg-background/10"
@@ -111,7 +118,9 @@
                 {
                   "use": "Button",
                   "props": {
-                    "Href": "#/",
+                    "Href": {
+                      "$": "topic.href"
+                    },
                     "Variant": "outline",
                     "Size": "sm"
                   },

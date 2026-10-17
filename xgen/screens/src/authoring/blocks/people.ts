@@ -6,6 +6,7 @@ import { frame } from "../components/frames";
 import { portrait, tags } from "../components/people-parts";
 import { id, title, tsOf, toneLite, denseLite } from "../props";
 import { heading, muted, strong, surface } from "../ux";
+import { menuEntry } from "../components/nav";
 
 const O = "organism.";
 const lead = { name: "lead", type: "string" as const, default: "" };
@@ -35,7 +36,7 @@ const teamGrid = spec(`${O}team-grid`, "TeamGrid", "The people of a team: portra
 });
 
 const jobBoard = spec(`${O}job-board`, "JobBoard", "Open jobs as cards in two columns, grouped by department, or as a table: the title, the department, the place, the type, an optional salary and an apply link. Axes: layout (grid, grouped, table), salary (show, hide), tone.", {
-  records: { Job: fields(["id", "string"], ["title", "string"], ["dept", "string"], ["location", "string"], ["type", "string"], ["salary", "string"], ["posted", "string"]), Department: fields(["id", "string"], ["name", "string"]), JobLabels: fields(["apply", "string"], ["caption", "string"], ["role", "string"], ["team", "string"], ["location", "string"], ["type", "string"], ["salary", "string"], ["count", "string"]) },
+  records: { Job: fields(["id", "string"], ["title", "string"], ["dept", "string"], ["location", "string"], ["type", "string"], ["salary", "string"], ["posted", "string"], ["href", "string", true]), Department: fields(["id", "string"], ["name", "string"]), JobLabels: fields(["apply", "string"], ["caption", "string"], ["role", "string"], ["team", "string"], ["location", "string"], ["type", "string"], ["salary", "string"], ["count", "string"]) },
   props: [
     id, title, lead,
     { name: "jobs", type: ts("Job[]"), required: true },
@@ -54,7 +55,7 @@ const jobBoard = spec(`${O}job-board`, "JobBoard", "Open jobs as cards in two co
             use("List", { props: { Tag: "ul", Class: "flex flex-col" } },
               each(where(ref("jobs"), "dept", ref("d.id")), "j", ref("j.id"),
                 use("ListItem", { props: { Class: "flex flex-wrap items-center justify-between gap-4 border-b border-border py-4" }, attrs: { "data-testid": "item" } },
-                  use("Stack", { props: { Gap: "0" } }, use("Link", { props: { Href: "#/careers", Variant: "default", Class: "font-medium" } }, text(ref("j.title"))), muted(tpl("{0}, {1}", ref("j.location"), ref("j.type")), "xs")),
+                  use("Stack", { props: { Gap: "0" } }, menuEntry(ref("j.href"), { cls: "font-medium" }, text(ref("j.title"))), muted(tpl("{0}, {1}", ref("j.location"), ref("j.type")), "xs")),
                   use("Badge", { props: { Variant: "outline", Size: "default" } }, text(ref("j.type")))))))))],
       [organism("JobCards", { jobs: ref("jobs"), departments: ref("departments"), labels: ref("labels"), layout: ref("layout"), salary: ref("salary") })]),
   ])],

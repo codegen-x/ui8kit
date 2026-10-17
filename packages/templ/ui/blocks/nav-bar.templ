@@ -9,7 +9,6 @@ import (
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/container"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/grid"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/group"
-	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/link"
 	linkplain "github.com/codegen-x/ui8kit/packages/templ/ui/ui/link-plain"
 	uiutils "github.com/codegen-x/ui8kit/packages/templ/ui/utils"
 )
@@ -18,6 +17,7 @@ import (
 type NavBarProps struct {
 	Label any `json:"label"`
 	Brand any `json:"brand"`
+	BrandHref any `json:"brandHref"`
 	Links any `json:"links"`
 	Current any `json:"current"`
 	Actions any `json:"actions"`
@@ -33,6 +33,7 @@ type NavBarProps struct {
 templ NavBar(p NavBarProps) {
 	{{ vLabel := p.Label }}
 	{{ vBrand := p.Brand }}
+	{{ vBrandHref := p.BrandHref }}
 	{{ vLinks := p.Links }}
 	{{ vCurrent := uiutils.Def(p.Current, "") }}
 	{{ vActions := p.Actions }}
@@ -58,7 +59,7 @@ templ NavBar(p NavBarProps) {
 								@NavLinks(NavLinksProps{Links: vLinks, Current: vCurrent, Side: "left"})
 							}
 							@box.Box(box.BoxProps{Class: "text-center"}) {
-								@link.Link(link.LinkProps{Href: "#/", Variant: "default", Class: "text-lg font-medium", Attrs: uiutils.Attrs("data-testid", "brand")}) {
+								@MenuEntry(MenuEntryProps{Href: vBrandHref, Class: uiutils.Cnv("text-lg font-medium"), Testid: "brand"}) {
 									{ uiutils.Text(vBrand) }
 								}
 							}
@@ -71,7 +72,7 @@ templ NavBar(p NavBarProps) {
 						}
 					}
 				} else {
-					@link.Link(link.LinkProps{Href: "#/", Variant: "default", Class: "text-lg font-medium", Attrs: uiutils.Attrs("data-testid", "brand")}) {
+					@MenuEntry(MenuEntryProps{Href: vBrandHref, Class: uiutils.Cnv("text-lg font-medium"), Testid: "brand"}) {
 						{ uiutils.Text(vBrand) }
 					}
 					if uiutils.Eq(vLayout, "search") {

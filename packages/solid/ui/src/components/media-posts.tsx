@@ -4,9 +4,9 @@
 import { For, type JSX } from "solid-js";
 import { Group } from "../primitives/group/group";
 import { Inline } from "../primitives/inline/inline";
-import { Link } from "../primitives/link/link";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
+import { MenuEntry } from "../components/menu-entry";
 import { tpl } from "../utils";
 import type { MediaExtras, MediaListLabels } from "../blocks/media-list.types";
 
@@ -27,9 +27,9 @@ export function MediaPosts({ extras, labels }: MediaPostsProps) {
             <Group gap="4" align="start" data-testid="media-post">
               <Inline class="mt-2 size-2 shrink-0 rounded-full bg-primary" />
               <Stack gap="0">
-                <Link href="#/" size="sm">
+                <MenuEntry href={p.href} class="text-sm font-medium" size="sm">
                   {p.title}
-                </Link>
+                </MenuEntry>
                 <Text size="xs" class="text-muted-foreground">
                   {tpl("{0} · {1}", p.date, tpl(labels.minutes, p.minutes))}
                 </Text>

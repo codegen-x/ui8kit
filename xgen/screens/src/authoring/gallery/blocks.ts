@@ -32,7 +32,7 @@ const header = define({
   organism: "SiteHeader", axes: ["layout", "position", "actions"],
   variants: [["inline", "Inline"], ["stacked", "Stacked", { layout: "stacked" }], ["sticky", "Sticky", { position: "sticky" }], ["withCta", "Inline with a call to action", { actions: "cta" }]],
   events: { theme: "toggleTheme" },
-  sample: { labels: t("site.header"), current: "home", cta: t("site.header.cta"), ctaHref: "#/pricing" },
+  sample: { labels: t("site.header"), current: "home", cta: t("site.header.cta") },
 });
 
 const footer = define({
@@ -226,6 +226,9 @@ export const blockTexts: Record<string, BlockTexts> = Object.fromEntries(all.map
 
 const portable = { svelte: true, react: true } as const;
 
+/** the addresses of the routes of the site screen (its own: "" and "pricing") */
+const SITE_ROUTES = { home: "#/", pricing: "#/pricing" };
+
 /** the marketing site, now a list of blocks */
 export const siteComposed: ComposedSpec = {
   $schema: "../../schema/schemas/composed.schema.json",
@@ -235,7 +238,8 @@ export const siteComposed: ComposedSpec = {
   kind: "composed",
   docs: "A marketing site of two routes, home and pricing, made of blocks: header, hero, features, pricing, FAQ, call to action, footer. Data: the Codex fixtures `features`, `tiers` and `faq`. The only action is the theme button.",
   routes: [{ path: "", area: "home" }, { path: "pricing", area: "pricing" }],
-  frame: { before: [{ block: "header", variant: "inline", props: { current: ref("route.area") } }], after: [{ block: "footer", variant: "minimal" }] },
+  // the app owns its addresses: the header and footer link to the two routes of this screen
+  frame: { before: [{ block: "header", variant: "inline", props: { current: ref("route.area"), routes: SITE_ROUTES } }], after: [{ block: "footer", variant: "minimal", props: { routes: SITE_ROUTES } }] },
   areas: {
     home: [
       { block: "hero", variant: "centered", props: { id: "home-hero" } },

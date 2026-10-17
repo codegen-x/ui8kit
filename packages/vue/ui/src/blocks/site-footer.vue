@@ -6,9 +6,11 @@
 -->
 <script lang="ts">
 import type { SiteFooterLabels } from "./site-footer.types";
+import type { SiteRoutes } from "./site-header.types";
 
 export type SiteFooterProps = {
   labels: SiteFooterLabels;
+  routes?: SiteRoutes;
   layout?: "minimal" | "centered";
   density?: "default" | "compact";
   landmarkLabel?: string;
@@ -19,12 +21,18 @@ export type SiteFooterProps = {
 import Block from "../primitives/block/block.vue";
 import Container from "../primitives/container/container.vue";
 import Group from "../primitives/group/group.vue";
-import Link from "../primitives/link/link.vue";
 import Text from "../primitives/text/text.vue";
+import MenuEntry from "../components/menu-entry.vue";
 import NavBlock from "../components/nav-block.vue";
 import { cn, tpl, uniqLabel } from "../utils";
 
-const { labels, layout = "minimal", density = "default", landmarkLabel } = defineProps<SiteFooterProps>();
+const {
+  labels,
+  routes,
+  layout = "minimal",
+  density = "default",
+  landmarkLabel,
+} = defineProps<SiteFooterProps>();
 </script>
 
 <template>
@@ -49,12 +57,12 @@ const { labels, layout = "minimal", density = "default", landmarkLabel } = defin
       </Text>
       <NavBlock :label="(landmarkLabel ? uniqLabel(tpl('{0}, {1}', labels.nav, landmarkLabel)) : labels.nav)">
         <Group gap="4">
-          <Link href="#/" variant="default">
+          <MenuEntry :href="routes?.home" class="font-semibold">
             {{ labels.home }}
-          </Link>
-          <Link href="#/pricing" variant="default">
+          </MenuEntry>
+          <MenuEntry :href="routes?.pricing" class="font-semibold">
             {{ labels.pricing }}
-          </Link>
+          </MenuEntry>
         </Group>
       </NavBlock>
     </Container>

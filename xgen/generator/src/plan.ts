@@ -246,7 +246,10 @@ export function planBuild(workspace: string, xgenRoot = join(workspace, "xgen"))
   const cols = new Set(shared.flatMap((s) => sourcesOf(s).map((x) => x.collection)));
   // and the lookups of the entries they read: media (featured_media_id), users (author_id) and the taxonomy terms (terms)
   const LOOKUP_KINDS = ["media", "user"];
-  const collections = inputs.collections.map((c) => c.value).filter((c) => cols.has(c.collection) || c.entries.every((e) => LOOKUP_KINDS.includes(e.kind)) && c.entries.length > 0);
+  const picked = inputs.collections.map((c) => c.value).filter((c) => cols.has(c.collection) || c.entries.every((e) => LOOKUP_KINDS.includes(e.kind)) && c.entries.length > 0);
+  // and the items under the menu items they read (kind menu_item, parent_id): the lookup of `id|menu`
+  const pickedIds = new Set(picked.flatMap((c) => c.entries.map((e) => e.id)));
+  const collections = inputs.collections.map((c) => c.value).filter((c) => picked.includes(c) || c.entries.length > 0 && c.entries.every((e) => e.kind === "menu_item" && pickedIds.has((e as { parent_id?: string }).parent_id ?? "")));
   const screenFile = (name: string): string | undefined => { const f = inputs.screens.find((x) => x.value.name === name)?.file; return f ? relative(join(xgenRoot, ".."), f) : undefined; };
   const sharedFiles = sharedPackage(inputs.dictionary.value, collections, shared, inputs.taxonomies.map((t) => t.value)).map((f) => withSource(f, sharedSourceOf(f.path, screenFile)));
   if (hostTargets.length) targets.push({ dir: SHARED_DIR, kind: "package", runtime: "core", files: byPath(sharedFiles), handwritten: [], manifest: MANIFEST });

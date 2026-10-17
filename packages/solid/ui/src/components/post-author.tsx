@@ -55,11 +55,11 @@ export function PostAuthor({
         </Stack>
         {share ? (
           <Group gap="2">
-            <Button variant="ghost" size="default" href="#/" class="gap-2" data-testid="post-share">
+            <Button variant="ghost" size="default" class="gap-2" data-testid="post-share">
               <LucideIcon name="share-2" size={16} />
               {labels.share}
             </Button>
-            <Button variant="ghost" size="default" href="#/" class="gap-2" data-testid="post-save">
+            <Button variant="ghost" size="default" class="gap-2" data-testid="post-save">
               <LucideIcon name="bookmark" size={16} />
               {labels.save}
             </Button>

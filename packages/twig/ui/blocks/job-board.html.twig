@@ -35,7 +35,7 @@
                   {%- set c_4 -%}
                     {{ ui_text(ui_get(v_j, ['title'])) }}
                   {%- endset -%}
-                  {{ include('ui/link/link.html.twig', {'p': {'Href': '#/careers', 'Variant': 'default', 'Class': 'font-medium'}, 'children': c_4}, with_context = false) }}
+                  {{ include('blocks/menu-entry.html.twig', {'p': {'href': ui_get(v_j, ['href']), 'className': ui_cnv(['font-medium'])}, 'children': c_4}, with_context = false) }}
                   {%- set c_5 -%}
                     {{ ui_text(ui_tpl('{0}, {1}', [ui_get(v_j, ['location']), ui_get(v_j, ['type'])])) }}
                   {%- endset -%}

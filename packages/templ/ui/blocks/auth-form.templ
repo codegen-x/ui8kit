@@ -10,7 +10,6 @@ import (
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/group"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/input"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/label"
-	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/link"
 	uiutils "github.com/codegen-x/ui8kit/packages/templ/ui/utils"
 )
 
@@ -50,7 +49,7 @@ templ AuthForm(p AuthFormProps) {
 						{ uiutils.Text(uiutils.Get(vLabels, "remember")) }
 					}
 				}
-				@link.Link(link.LinkProps{Href: "#/", Variant: "default", Class: "text-sm"}) {
+				@button.Button(button.ButtonProps{Variant: "link", Size: "sm", Class: "px-0"}) {
 					{ uiutils.Text(uiutils.Get(vLabels, "forgot")) }
 				}
 			}

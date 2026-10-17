@@ -26,11 +26,11 @@
   import Box from "../primitives/box/box.svelte";
   import Card from "../primitives/card/card.svelte";
   import CardContent from "../primitives/card/card-content.svelte";
-  import Link from "../primitives/link/link.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
   import MediaFrame from "../components/media-frame.svelte";
+  import MenuEntry from "../components/menu-entry.svelte";
   import SectionFrame from "../components/section-frame.svelte";
 
   let {
@@ -73,10 +73,10 @@
             {f.text}
           </Text>
           {#if ((item as string) === "picture")}
-            <Link href="#/" size="sm" class="mt-auto pt-2" data-testid="read">
+            <MenuEntry href={f.href} class="mt-auto gap-2 pt-2 text-sm font-medium" size="sm" testid="read">
               {more}
               <LucideIcon name="arrow-right" size={16} />
-            </Link>
+            </MenuEntry>
           {/if}
         </CardContent>
       </Card>

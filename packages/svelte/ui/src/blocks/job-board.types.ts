@@ -9,6 +9,7 @@ export type Job = {
   type: string;
   salary: string;
   posted: string;
+  href?: string;
 };
 
 export type Department = {

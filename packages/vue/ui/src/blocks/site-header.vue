@@ -6,10 +6,11 @@
   (static, sticky), actions (none, cta).
 -->
 <script lang="ts">
-import type { SiteHeaderLabels } from "./site-header.types";
+import type { SiteHeaderLabels, SiteRoutes } from "./site-header.types";
 
 export type SiteHeaderProps = {
   labels: SiteHeaderLabels;
+  routes?: SiteRoutes;
   current: string;
   layout?: "inline" | "stacked";
   position?: "static" | "sticky";
@@ -25,13 +26,14 @@ import Block from "../primitives/block/block.vue";
 import Button from "../primitives/button/button.vue";
 import Container from "../primitives/container/container.vue";
 import Group from "../primitives/group/group.vue";
-import Link from "../primitives/link/link.vue";
 import LinkPlain from "../primitives/link-plain/link-plain.vue";
+import MenuEntry from "../components/menu-entry.vue";
 import NavBlock from "../components/nav-block.vue";
 import { cn, tpl, uniqLabel } from "../utils";
 
 const {
   labels,
+  routes,
   current,
   layout = "inline",
   position = "static",
@@ -70,30 +72,30 @@ const emit = defineEmits<{ theme: [] }>();
       )"
       data-slot="container"
     >
-      <Link href="#/" variant="default" class="text-lg font-medium" data-testid="brand">
+      <MenuEntry :href="routes?.home" class="text-lg font-medium" testid="brand">
         {{ labels.brand }}
-      </Link>
+      </MenuEntry>
       <NavBlock
         :label="(landmarkLabel ? uniqLabel(tpl('{0}, {1}', labels.nav, landmarkLabel)) : labels.nav)"
         testid="site-nav"
       >
         <Group gap="4" align="center">
-          <Link
-            href="#/"
-            variant="default"
-            :aria-current="(((current as string) === 'home') ? 'page' : undefined)"
-            data-testid="nav-link"
+          <MenuEntry
+            :href="routes?.home"
+            class="font-semibold"
+            :current="((current as string) === 'home')"
+            testid="nav-link"
           >
             {{ labels.home }}
-          </Link>
-          <Link
-            href="#/pricing"
-            variant="default"
-            :aria-current="(((current as string) === 'pricing') ? 'page' : undefined)"
-            data-testid="nav-link"
+          </MenuEntry>
+          <MenuEntry
+            :href="routes?.pricing"
+            class="font-semibold"
+            :current="((current as string) === 'pricing')"
+            testid="nav-link"
           >
             {{ labels.pricing }}
-          </Link>
+          </MenuEntry>
         </Group>
       </NavBlock>
       <Group gap="4" align="center">

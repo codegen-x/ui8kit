@@ -35,7 +35,7 @@ const STATS_FIELDS = {
   "hint": "metadata.hint.value",
 } as const;
 const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
-const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
+const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"id|menu","href":"slug|route"} as const;
 const CONTACTS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 const COMMUNITY_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 

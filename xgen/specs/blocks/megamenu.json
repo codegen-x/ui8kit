@@ -52,6 +52,7 @@
   ],
   "slots": [
     "MediaFrame",
+    "MenuEntry",
     "NavBlock"
   ],
   "facts": [
@@ -109,24 +110,26 @@
     {
       "as": "navlinks",
       "collection": "navlinks",
-      "kind": "link",
+      "kind": "menu_item",
       "record": "NavLink",
       "fields": {
         "id": "id",
         "name": "title",
-        "icon": "metadata.icon.value"
+        "icon": "metadata.icon.value",
+        "href": "slug|route"
       }
     },
     {
       "as": "megagroups",
       "collection": "megagroups",
-      "kind": "group",
+      "kind": "menu_item",
       "record": "MegaGroup",
       "fields": {
         "id": "id",
         "title": "title",
         "icon": "metadata.icon.value",
-        "links": "metadata.links.value"
+        "links": "id|menu",
+        "href": "slug|route"
       }
     }
   ],

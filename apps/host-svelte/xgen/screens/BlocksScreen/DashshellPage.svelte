@@ -23,9 +23,9 @@
   import { subnav as subnavEntries } from "@ui8kit/app-shared/data/subnav";
   import { helplinks as helplinksEntries } from "@ui8kit/app-shared/data/helplinks";
 
-  const SIDENAV_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
-  const SUBNAV_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
-  const HELPLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
+  const SIDENAV_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","href":"slug|route"} as const;
+  const SUBNAV_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","href":"slug|route"} as const;
+  const HELPLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","href":"slug|route"} as const;
 
   const sidenav = fromCodex<NavLink>(sidenavEntries, SIDENAV_FIELDS, CODEX);
   const subnav = fromCodex<NavLink>(subnavEntries, SUBNAV_FIELDS, CODEX);

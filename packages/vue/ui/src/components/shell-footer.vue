@@ -16,10 +16,10 @@ export type ShellFooterProps = {
 
 <script setup lang="ts">
 import Block from "../primitives/block/block.vue";
-import Link from "../primitives/link/link.vue";
 import List from "../primitives/list/list.vue";
 import ListItem from "../primitives/list/list-item.vue";
 import Text from "../primitives/text/text.vue";
+import MenuEntry from "../components/menu-entry.vue";
 import NavBlock from "../components/nav-block.vue";
 import { cn, tpl, uniqLabel } from "../utils";
 
@@ -48,9 +48,9 @@ const { nav, place = "full", landmarkLabel } = defineProps<ShellFooterProps>();
     >
       <List class="m-0 flex list-none items-center gap-4 p-0">
         <ListItem v-for="f in nav.footer" :key="f.id">
-          <Link href="#/" variant="muted" size="sm" class="text-xs">
+          <MenuEntry :href="f.href" class="text-xs text-muted-foreground" variant="muted" size="sm">
             {{ f.name }}
-          </Link>
+          </MenuEntry>
         </ListItem>
       </List>
     </NavBlock>

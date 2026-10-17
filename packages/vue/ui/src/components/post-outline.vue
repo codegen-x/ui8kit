@@ -14,10 +14,10 @@ export type PostOutlineProps = {
 
 <script setup lang="ts">
 import Group from "../primitives/group/group.vue";
-import Link from "../primitives/link/link.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
+import MenuEntry from "../components/menu-entry.vue";
 import { tpl } from "../utils";
 
 const { post, extras, labels } = defineProps<PostOutlineProps>();
@@ -55,10 +55,17 @@ const { post, extras, labels } = defineProps<PostOutlineProps>();
       <Text size="xs" weight="medium" class="uppercase tracking-wide text-muted-foreground">
         {{ labels.related }}
       </Text>
-      <Link v-for="l in extras.outline" :key="l.id" href="#/" size="sm" data-testid="post-link">
+      <MenuEntry
+        v-for="l in extras.outline"
+        :key="l.id"
+        :href="l.href"
+        class="text-sm font-medium"
+        size="sm"
+        testid="post-link"
+      >
         <LucideIcon name="chevron-right" :size="16" />
         {{ l.name }}
-      </Link>
+      </MenuEntry>
     </Stack>
   </Stack>
 </template>

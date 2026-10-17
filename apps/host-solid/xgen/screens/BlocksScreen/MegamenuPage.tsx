@@ -23,8 +23,8 @@ import { ui } from "@ui8kit/app-shared/content";
 import { navlinks as navlinksEntries } from "@ui8kit/app-shared/data/navlinks";
 import { megagroups as megagroupsEntries } from "@ui8kit/app-shared/data/megagroups";
 
-const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
-const MEGAGROUPS_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
+const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","href":"slug|route"} as const;
+const MEGAGROUPS_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"id|menu","href":"slug|route"} as const;
 
 const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS, CODEX);
 const megagroups = fromCodex<MegaGroup>(megagroupsEntries, MEGAGROUPS_FIELDS, CODEX);

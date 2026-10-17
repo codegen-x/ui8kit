@@ -19,7 +19,7 @@
 <script lang="ts">
   import Block from "../primitives/block/block.svelte";
   import Box from "../primitives/box/box.svelte";
-  import Link from "../primitives/link/link.svelte";
+  import Button from "../primitives/button/button.svelte";
   import List from "../primitives/list/list.svelte";
   import ListItem from "../primitives/list/list-item.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
@@ -60,8 +60,8 @@
       </ListItem>
     {/each}
   </List>
-  <Link href="#/contact" variant="default" size="sm" class="font-medium">
+  <Button variant="link" size="sm" class="gap-2 px-0 font-medium">
     {labels.asideCta}
     <LucideIcon name="arrow-right" size={16} />
-  </Link>
+  </Button>
 </Block>

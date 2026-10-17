@@ -34,8 +34,6 @@
   import Box from "../primitives/box/box.svelte";
   import Container from "../primitives/container/container.svelte";
   import Group from "../primitives/group/group.svelte";
-  import Link from "../primitives/link/link.svelte";
-  import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
   import ActionGroup from "../components/action-group.svelte";
@@ -47,6 +45,7 @@
   import FooterLinkColumns from "../components/footer-link-columns.svelte";
   import FooterPoints from "../components/footer-points.svelte";
   import FooterSignupCard from "../components/footer-signup-card.svelte";
+  import FooterSitemap from "../components/footer-sitemap.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import { cn } from "../utils";
 
@@ -81,10 +80,7 @@
             <FooterBrand brand={brand} tagline={tagline} />
             <FooterFigures extras={extras} />
           </Stack>
-          <Link href="#/sitemap" size="sm" data-testid="footer-sitemap">
-            <LucideIcon name="arrow-right" size={16} />
-            {labels.sitemap}
-          </Link>
+          <FooterSitemap href={extras.sitemapHref} label={labels.sitemap} />
         </Group>
         <FooterGroupCards label={label} groups={groups} landmarkLabel={landmarkLabel} />
         <Box class="border-t border-border pt-6">
@@ -122,7 +118,12 @@
           {/if}
           {#if ((layout as string) === "contacts")}
             <FooterContacts extras={extras} />
-            <ActionGroup primary={labels.cta} primaryHref="#/contact" secondary={labels.secondary} secondaryHref="#/work" />
+            <ActionGroup
+              primary={labels.cta}
+              primaryHref={extras.ctaHref}
+              secondary={labels.secondary}
+              secondaryHref={extras.secondaryHref}
+            />
           {/if}
           {#if ((layout as string) === "channels")}
             <FooterChannels extras={extras} />

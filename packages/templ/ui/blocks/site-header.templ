@@ -8,7 +8,6 @@ import (
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/button"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/container"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/group"
-	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/link"
 	linkplain "github.com/codegen-x/ui8kit/packages/templ/ui/ui/link-plain"
 	uiutils "github.com/codegen-x/ui8kit/packages/templ/ui/utils"
 )
@@ -16,6 +15,7 @@ import (
 // SiteHeaderProps are the props of SiteHeader; the values are the JSON shapes of the TypeScript props.
 type SiteHeaderProps struct {
 	Labels any `json:"labels"`
+	Routes any `json:"routes"`
 	Current any `json:"current"`
 	Layout any `json:"layout"`
 	Position any `json:"position"`
@@ -28,6 +28,7 @@ type SiteHeaderProps struct {
 // The page header: a skip link to the main content, the brand, the two navigation links (the current one carries aria-current) and the theme button. `current` is the route area. Axes: layout (inline, stacked), position (static, sticky), actions (none, cta).
 templ SiteHeader(p SiteHeaderProps) {
 	{{ vLabels := p.Labels }}
+	{{ vRoutes := p.Routes }}
 	{{ vCurrent := p.Current }}
 	{{ vLayout := uiutils.Def(p.Layout, "inline") }}
 	{{ vPosition := uiutils.Def(p.Position, "static") }}
@@ -40,15 +41,15 @@ templ SiteHeader(p SiteHeaderProps) {
 			{ uiutils.Text(uiutils.Get(vLabels, "skip")) }
 		}
 		@container.Container(container.ContainerProps{Class: uiutils.S(uiutils.Cnv("mx-auto w-full max-w-6xl px-4", "flex flex-wrap gap-4 py-4", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "stacked")), "flex-col items-center", "items-center justify-between"))), Attrs: uiutils.Attrs("data-slot", "container")}) {
-			@link.Link(link.LinkProps{Href: "#/", Variant: "default", Class: "text-lg font-medium", Attrs: uiutils.Attrs("data-testid", "brand")}) {
+			@MenuEntry(MenuEntryProps{Href: uiutils.Get(vRoutes, "home"), Class: uiutils.Cnv("text-lg font-medium"), Testid: "brand"}) {
 				{ uiutils.Text(uiutils.Get(vLabels, "brand")) }
 			}
 			@NavBlock(NavBlockProps{Label: uiutils.Cond(uiutils.T(vLandmarkLabel), uiutils.Uniq(uiutils.Tpl("{0}, {1}", uiutils.Get(vLabels, "nav"), vLandmarkLabel)), uiutils.Get(vLabels, "nav")), Testid: "site-nav"}) {
 				@group.Group(group.GroupProps{Gap: "4", Align: "center"}) {
-					@link.Link(link.LinkProps{Href: "#/", Variant: "default", AriaCurrent: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCurrent, "home")), "page", nil)), Attrs: uiutils.Attrs("data-testid", "nav-link")}) {
+					@MenuEntry(MenuEntryProps{Href: uiutils.Get(vRoutes, "home"), Class: uiutils.Cnv("font-semibold"), Current: uiutils.Eq(vCurrent, "home"), Testid: "nav-link"}) {
 						{ uiutils.Text(uiutils.Get(vLabels, "home")) }
 					}
-					@link.Link(link.LinkProps{Href: "#/pricing", Variant: "default", AriaCurrent: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCurrent, "pricing")), "page", nil)), Attrs: uiutils.Attrs("data-testid", "nav-link")}) {
+					@MenuEntry(MenuEntryProps{Href: uiutils.Get(vRoutes, "pricing"), Class: uiutils.Cnv("font-semibold"), Current: uiutils.Eq(vCurrent, "pricing"), Testid: "nav-link"}) {
 						{ uiutils.Text(uiutils.Get(vLabels, "pricing")) }
 					}
 				}

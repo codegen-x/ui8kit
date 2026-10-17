@@ -11,6 +11,7 @@ import { Group } from "../primitives/group/group";
 import { Inline } from "../primitives/inline/inline";
 import { LinkPlain } from "../primitives/link-plain/link-plain";
 import { Link } from "../primitives/link/link";
+import { MenuEntry } from "../components/menu-entry";
 import { NavBlock } from "../components/nav-block";
 import { defaults } from "../presets/defaults";
 import { cn, tpl, uniqLabel } from "../utils";
@@ -18,6 +19,7 @@ import type { NavLink } from "../blocks/nav-bar.types";
 
 export type HeroHeadProps = {
   brand?: string;
+  brandHref?: string;
   links?: NavLink[];
   current?: string;
   login?: string;
@@ -31,10 +33,11 @@ export type HeroHeadProps = {
 
 export function HeroHead({
   brand,
+  brandHref,
   links,
   current = "",
   login,
-  loginHref = "#/login",
+  loginHref,
   cta,
   href,
   skip,
@@ -58,14 +61,13 @@ export function HeroHead({
           {skip}
         </LinkPlain>
       ) : null}
-      <Link
-        href="#/"
-        variant="default"
+      <MenuEntry
+        href={brandHref}
         class={cn(defaults.text.small, "font-medium leading-6 text-background")}
-        data-testid="brand"
+        testid="brand"
       >
         {brand}
-      </Link>
+      </MenuEntry>
       <NavBlock
         label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", navLabel, landmarkLabel)) : navLabel)}
         testid="site-nav"

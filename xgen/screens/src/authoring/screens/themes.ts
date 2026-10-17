@@ -189,7 +189,7 @@ export const themeComposed: ComposedSpec[] = themeApps.map((app) => ({
   docs: app.docs,
   routes: app.pages.map((p) => ({ path: p.path, area: areaOf(p.path) })),
   frame: {
-    before: [{ block: "navbar", variant: "inline", props: { links: ref("nav.links"), current: ref("nav.current"), skip: t("site.header.skip"), actions: { themeLabel: t("theme.toggle") } } }],
+    before: [{ block: "navbar", variant: "inline", props: { brandHref: "#/", links: ref("nav.links"), current: ref("nav.current"), skip: t("site.header.skip"), actions: { themeLabel: t("theme.toggle") } } }],
     after: [{ block: split(app.footer)[0], variant: split(app.footer)[1] }],
   },
   areas: Object.fromEntries(app.pages.map((p, i) => [areaOf(p.path), page(app, i)])),

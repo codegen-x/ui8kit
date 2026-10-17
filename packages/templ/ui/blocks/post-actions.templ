@@ -22,18 +22,18 @@ templ PostActions(p PostActionsProps) {
 	{{ vMode := uiutils.Def(p.Mode, "pair") }}
 	if uiutils.Eq(vMode, "pair") {
 		@group.Group(group.GroupProps{Gap: "2", Class: "flex-wrap"}) {
-			@button.Button(button.ButtonProps{Variant: "default", Size: "default", Href: "#/", Class: "gap-2", Attrs: uiutils.Attrs("data-testid", "action-primary")}) {
+			@button.Button(button.ButtonProps{Variant: "default", Size: "default", Class: "gap-2", Attrs: uiutils.Attrs("data-testid", "action-primary")}) {
 				@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "share-2", Size: 16})
 				{ uiutils.Text(uiutils.Get(vLabels, "share")) }
 			}
-			@button.Button(button.ButtonProps{Variant: "outline", Size: "default", Href: "#/", Class: "gap-2", Attrs: uiutils.Attrs("data-testid", "post-save")}) {
+			@button.Button(button.ButtonProps{Variant: "outline", Size: "default", Class: "gap-2", Attrs: uiutils.Attrs("data-testid", "post-save")}) {
 				@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "bookmark", Size: 16})
 				{ uiutils.Text(uiutils.Get(vLabels, "save")) }
 			}
 		}
 	} else {
 		@group.Group(group.GroupProps{Gap: "2"}) {
-			@button.Button(button.ButtonProps{Variant: "default", Size: "default", Href: "#/", Class: "gap-2 flex-1", Attrs: uiutils.Attrs("data-testid", "action-primary")}) {
+			@button.Button(button.ButtonProps{Variant: "default", Size: "default", Class: "gap-2 flex-1", Attrs: uiutils.Attrs("data-testid", "action-primary")}) {
 				@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "book-open", Size: 16})
 				{ uiutils.Text(uiutils.Get(vLabels, "read")) }
 			}

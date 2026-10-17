@@ -30,6 +30,18 @@
         "name": "theme",
         "type": "string"
       }
+    ],
+    "SiteRoutes": [
+      {
+        "name": "home",
+        "type": "string",
+        "optional": true
+      },
+      {
+        "name": "pricing",
+        "type": "string",
+        "optional": true
+      }
     ]
   },
   "props": [
@@ -39,6 +51,13 @@
         "record": "SiteHeaderLabels"
       },
       "required": true
+    },
+    {
+      "name": "routes",
+      "type": {
+        "record": "SiteRoutes"
+      },
+      "docs": "the addresses of the two pages, from the app; none: the brand and the menu are text, not links"
     },
     {
       "name": "current",
@@ -180,22 +199,26 @@
           },
           "children": [
             {
-              "use": "Link",
+              "organism": "MenuEntry",
               "props": {
-                "Href": "#/",
-                "Variant": "default",
-                "Class": "text-lg font-medium"
+                "href": {
+                  "$": "routes.home"
+                },
+                "className": "text-lg font-medium",
+                "testid": "brand"
               },
-              "attrs": {
-                "data-testid": "brand"
-              },
-              "children": [
-                {
-                  "text": {
-                    "$": "labels.brand"
-                  }
+              "slots": {
+                "children": {
+                  "args": [],
+                  "do": [
+                    {
+                      "text": {
+                        "$": "labels.brand"
+                      }
+                    }
+                  ]
                 }
-              ]
+              }
             },
             {
               "organism": "NavBlock",
@@ -242,76 +265,66 @@
                       },
                       "children": [
                         {
-                          "use": "Link",
+                          "organism": "MenuEntry",
                           "props": {
-                            "Href": "#/",
-                            "Variant": "default",
-                            "AriaCurrent": {
-                              "op": "cond",
+                            "href": {
+                              "$": "routes.home"
+                            },
+                            "className": "font-semibold",
+                            "current": {
+                              "op": "eq",
                               "args": [
                                 {
-                                  "op": "eq",
-                                  "args": [
-                                    {
-                                      "$": "current"
-                                    },
-                                    "home"
-                                  ]
+                                  "$": "current"
                                 },
-                                "page",
+                                "home"
+                              ]
+                            },
+                            "testid": "nav-link"
+                          },
+                          "slots": {
+                            "children": {
+                              "args": [],
+                              "do": [
                                 {
-                                  "op": "undef",
-                                  "args": []
+                                  "text": {
+                                    "$": "labels.home"
+                                  }
                                 }
                               ]
                             }
-                          },
-                          "attrs": {
-                            "data-testid": "nav-link"
-                          },
-                          "children": [
-                            {
-                              "text": {
-                                "$": "labels.home"
-                              }
-                            }
-                          ]
+                          }
                         },
                         {
-                          "use": "Link",
+                          "organism": "MenuEntry",
                           "props": {
-                            "Href": "#/pricing",
-                            "Variant": "default",
-                            "AriaCurrent": {
-                              "op": "cond",
+                            "href": {
+                              "$": "routes.pricing"
+                            },
+                            "className": "font-semibold",
+                            "current": {
+                              "op": "eq",
                               "args": [
                                 {
-                                  "op": "eq",
-                                  "args": [
-                                    {
-                                      "$": "current"
-                                    },
-                                    "pricing"
-                                  ]
+                                  "$": "current"
                                 },
-                                "page",
+                                "pricing"
+                              ]
+                            },
+                            "testid": "nav-link"
+                          },
+                          "slots": {
+                            "children": {
+                              "args": [],
+                              "do": [
                                 {
-                                  "op": "undef",
-                                  "args": []
+                                  "text": {
+                                    "$": "labels.pricing"
+                                  }
                                 }
                               ]
                             }
-                          },
-                          "attrs": {
-                            "data-testid": "nav-link"
-                          },
-                          "children": [
-                            {
-                              "text": {
-                                "$": "labels.pricing"
-                              }
-                            }
-                          ]
+                          }
                         }
                       ]
                     }

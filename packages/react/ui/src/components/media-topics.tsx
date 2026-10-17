@@ -3,10 +3,10 @@
 /** The topics of MediaList as card rows: a glyph tile, the name, the count and an arrow. */
 import { Fragment, type ReactNode } from "react";
 import { Inline } from "../primitives/inline/inline";
-import { Link } from "../primitives/link/link";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
+import { MenuEntry } from "../components/menu-entry";
 import { tpl } from "../utils";
 import type { MediaExtras, MediaListLabels } from "../blocks/media-list.types";
 
@@ -24,11 +24,12 @@ export function MediaTopics({ extras, labels }: MediaTopicsProps) {
       {(extras.topics ?? []).map((c, i) => (
         <Fragment key={c.id}>
           {(i < 5) ? (
-            <Link
-              href="#/"
+            <MenuEntry
+              href={c.href}
+              className="rounded bg-card inset-ring inset-ring-border flex w-full items-center gap-4 p-4"
               variant="block"
-              className="rounded bg-card inset-ring inset-ring-border items-center gap-4 p-4"
-              data-testid="media-topic"
+              testid="media-topic"
+              block={true}
             >
               <Inline className={"flex size-8 shrink-0 items-center justify-center rounded bg-primary text-primary-foreground"}>
                 <LucideIcon name={c.icon} size={16} />
@@ -42,7 +43,7 @@ export function MediaTopics({ extras, labels }: MediaTopicsProps) {
                 </Text>
               </Stack>
               <LucideIcon name="arrow-right" size={16} />
-            </Link>
+            </MenuEntry>
           ) : null}
         </Fragment>
       ))}

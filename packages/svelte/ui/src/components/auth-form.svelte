@@ -23,7 +23,6 @@
   import Group from "../primitives/group/group.svelte";
   import Input from "../primitives/input/input.svelte";
   import Label from "../primitives/label/label.svelte";
-  import Link from "../primitives/link/link.svelte";
   import Field from "../components/field.svelte";
   import { cn, tpl } from "../utils";
 
@@ -58,9 +57,9 @@
           {labels.remember}
         </Label>
       </Group>
-      <Link href="#/" variant="default" class="text-sm">
+      <Button variant="link" size="sm" class="px-0">
         {labels.forgot}
-      </Link>
+      </Button>
     </Group>
   {/if}
   {#if ((mode as string) === "signup")}

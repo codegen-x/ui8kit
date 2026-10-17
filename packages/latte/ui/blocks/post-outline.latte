@@ -51,7 +51,7 @@
         {=ui_include('ui/lucide-icon/lucide-icon.latte', ['p' => ['Name' => 'chevron-right', 'Size' => 16]])|noescape}
         {=ui_text(ui_get($v_l, ['name']))}
       {/capture}
-      {=ui_include('ui/link/link.latte', ['p' => ['Href' => '#/', 'Size' => 'sm', 'Attrs' => ui_attrs(['data-testid', 'post-link'])], 'children' => $c_11])|noescape}
+      {=ui_include('blocks/menu-entry.latte', ['p' => ['href' => ui_get($v_l, ['href']), 'className' => ui_cnv(['text-sm font-medium']), 'size' => 'sm', 'testid' => 'post-link'], 'children' => $c_11])|noescape}
     {/foreach}
   {/capture}
   {=ui_include('ui/stack/stack.latte', ['p' => ['Gap' => '2', 'Align' => 'stretch', 'Class' => 'border-t border-border pt-4'], 'children' => $c_12])|noescape}

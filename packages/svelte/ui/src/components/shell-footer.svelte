@@ -17,10 +17,10 @@
 
 <script lang="ts">
   import Block from "../primitives/block/block.svelte";
-  import Link from "../primitives/link/link.svelte";
   import List from "../primitives/list/list.svelte";
   import ListItem from "../primitives/list/list-item.svelte";
   import Text from "../primitives/text/text.svelte";
+  import MenuEntry from "../components/menu-entry.svelte";
   import NavBlock from "../components/nav-block.svelte";
   import { cn, tpl, uniqLabel } from "../utils";
 
@@ -49,9 +49,9 @@
     <List class="m-0 flex list-none items-center gap-4 p-0">
       {#each nav.footer as f (f.id)}
         <ListItem>
-          <Link href="#/" variant="muted" size="sm" class="text-xs">
+          <MenuEntry href={f.href} class="text-xs text-muted-foreground" variant="muted" size="sm">
             {f.name}
-          </Link>
+          </MenuEntry>
         </ListItem>
       {/each}
     </List>

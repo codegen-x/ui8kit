@@ -38,7 +38,7 @@
     "icon": "metadata.icon.value",
     "hint": "metadata.hint.value",
   } as const;
-  const CATEGORIES_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","count":"metadata.count.value"} as const;
+  const CATEGORIES_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","count":"metadata.count.value","href":"slug|route"} as const;
   const CHANNELS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
   const STEPS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
   const POSTS_FIELDS = {

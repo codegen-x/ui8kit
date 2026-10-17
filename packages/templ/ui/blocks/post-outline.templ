@@ -5,7 +5,6 @@ package blocks
 
 import (
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/group"
-	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/link"
 	lucideicon "github.com/codegen-x/ui8kit/packages/templ/ui/ui/lucide-icon"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/stack"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/text"
@@ -56,7 +55,7 @@ templ PostOutline(p PostOutlineProps) {
 				{ uiutils.Text(uiutils.Get(vLabels, "related")) }
 			}
 			for _, vL := range uiutils.L(uiutils.Get(vExtras, "outline")) {
-				@link.Link(link.LinkProps{Href: "#/", Size: "sm", Attrs: uiutils.Attrs("data-testid", "post-link")}) {
+				@MenuEntry(MenuEntryProps{Href: uiutils.Get(vL, "href"), Class: uiutils.Cnv("text-sm font-medium"), Size: "sm", Testid: "post-link"}) {
 					@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "chevron-right", Size: 16})
 					{ uiutils.Text(uiutils.Get(vL, "name")) }
 				}

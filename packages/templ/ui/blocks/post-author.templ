@@ -43,11 +43,11 @@ templ PostAuthor(p PostAuthorProps) {
 			}
 			if uiutils.T(vShare) {
 				@group.Group(group.GroupProps{Gap: "2"}) {
-					@button.Button(button.ButtonProps{Variant: "ghost", Size: "default", Href: "#/", Class: "gap-2", Attrs: uiutils.Attrs("data-testid", "post-share")}) {
+					@button.Button(button.ButtonProps{Variant: "ghost", Size: "default", Class: "gap-2", Attrs: uiutils.Attrs("data-testid", "post-share")}) {
 						@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "share-2", Size: 16})
 						{ uiutils.Text(uiutils.Get(vLabels, "share")) }
 					}
-					@button.Button(button.ButtonProps{Variant: "ghost", Size: "default", Href: "#/", Class: "gap-2", Attrs: uiutils.Attrs("data-testid", "post-save")}) {
+					@button.Button(button.ButtonProps{Variant: "ghost", Size: "default", Class: "gap-2", Attrs: uiutils.Attrs("data-testid", "post-save")}) {
 						@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "bookmark", Size: 16})
 						{ uiutils.Text(uiutils.Get(vLabels, "save")) }
 					}

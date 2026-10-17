@@ -4,6 +4,7 @@ import type { OrganismSpec, Value, ViewNode } from "../../ir";
 import { spec, ts } from "../kit";
 import { tsOf } from "../props";
 import { muted, surface } from "../ux";
+import { menuEntry } from "./nav";
 
 const types = [{ from: "PostCard", names: ["Post"] }, { from: "PostSplit", names: ["PostExtras", "PostSplitLabels"] }];
 const post = { name: "post", type: ts("Post"), required: true };
@@ -16,7 +17,7 @@ const fact = (icon: string, v: Value): ViewNode => use("Group", { props: { Gap: 
 const iconButton = (icon: string, label: string, testid: string): ViewNode =>
   use("Button", { props: { Variant: "outline", Size: "default", Layout: "icon", AriaLabel: ref(label) }, attrs: { "data-testid": testid } }, use("LucideIcon", { props: { Name: icon, Size: 16 } }));
 const button = (variant: string, icon: string, label: string, testid: string, cls = ""): ViewNode =>
-  use("Button", { props: { Variant: variant, Size: "default", Href: "#/", Class: `gap-2 ${cls}`.trim() }, attrs: { "data-testid": testid } }, use("LucideIcon", { props: { Name: icon, Size: 16 } }), text(ref(label)));
+  use("Button", { props: { Variant: variant, Size: "default", Class: `gap-2 ${cls}`.trim() }, attrs: { "data-testid": testid } }, use("LucideIcon", { props: { Name: icon, Size: 16 } }), text(ref(label)));
 
 export const postStats = spec("pattern.post-stats", "PostStats", "The reading figures of a post: minutes to read, views and likes, each with its glyph.", {
   typeImports: types,
@@ -56,7 +57,7 @@ export const postOutline = spec("pattern.post-outline", "PostOutline", "The fact
       fact("user", ref("post.author")), fact("calendar", ref("post.date")), fact("clock", tpl(ref("labels.minutes"), ref("post.minutes"))), fact("eye", tpl(ref("labels.views"), ref("extras.views")))),
     use("Stack", { props: { Gap: "2", Align: "stretch", Class: "border-t border-border pt-4" } },
       use("Text", { props: { Size: "xs", Weight: "medium", Class: "uppercase tracking-wide text-muted-foreground" } }, text(ref("labels.related"))),
-      each(ref("extras.outline"), "l", ref("l.id"), use("Link", { props: { Href: "#/", Size: "sm" }, attrs: { "data-testid": "post-link" } },
+      each(ref("extras.outline"), "l", ref("l.id"), menuEntry(ref("l.href"), { size: "sm", cls: "text-sm font-medium", testid: "post-link" },
         use("LucideIcon", { props: { Name: "chevron-right", Size: 16 } }), text(ref("l.name"))))))],
 });
 

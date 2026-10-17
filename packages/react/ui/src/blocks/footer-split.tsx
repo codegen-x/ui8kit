@@ -11,8 +11,6 @@ import { Block } from "../primitives/block/block";
 import { Box } from "../primitives/box/box";
 import { Container } from "../primitives/container/container";
 import { Group } from "../primitives/group/group";
-import { Link } from "../primitives/link/link";
-import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { ActionGroup } from "../components/action-group";
@@ -24,6 +22,7 @@ import { FooterGroupCards } from "../components/footer-group-cards";
 import { FooterLinkColumns } from "../components/footer-link-columns";
 import { FooterPoints } from "../components/footer-points";
 import { FooterSignupCard } from "../components/footer-signup-card";
+import { FooterSitemap } from "../components/footer-sitemap";
 import { MediaFrame } from "../components/media-frame";
 import { cn } from "../utils";
 import type { FooterExtras, FooterSplitLabels } from "./footer-split.types";
@@ -76,10 +75,7 @@ export function FooterSplit({
                 <FooterBrand brand={brand} tagline={tagline} />
                 <FooterFigures extras={extras} />
               </Stack>
-              <Link href="#/sitemap" size="sm" data-testid="footer-sitemap">
-                <LucideIcon name="arrow-right" size={16} />
-                {labels.sitemap}
-              </Link>
+              <FooterSitemap href={extras.sitemapHref} label={labels.sitemap} />
             </Group>
             <FooterGroupCards label={label} groups={groups} landmarkLabel={landmarkLabel} />
             <Box className="border-t border-border pt-6">
@@ -118,7 +114,12 @@ export function FooterSplit({
               {((layout as string) === "contacts") ? (
                 <>
                   <FooterContacts extras={extras} />
-                  <ActionGroup primary={labels.cta} primaryHref="#/contact" secondary={labels.secondary} secondaryHref="#/work" />
+                  <ActionGroup
+                    primary={labels.cta}
+                    primaryHref={extras.ctaHref}
+                    secondary={labels.secondary}
+                    secondaryHref={extras.secondaryHref}
+                  />
                 </>
               ) : null}
               {((layout as string) === "channels") ? (

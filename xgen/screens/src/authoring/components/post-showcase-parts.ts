@@ -4,6 +4,7 @@ import type { OrganismSpec } from "../../ir";
 import { spec, ts } from "../kit";
 import { tsOf } from "../props";
 import { muted, surface } from "../ux";
+import { menuEntry } from "./nav";
 
 const types = [{ from: "PostCard", names: ["Post", "PostLabels"] }];
 const post = { name: "p", type: ts("Post"), required: true };
@@ -29,7 +30,7 @@ export const postOverlayCard = spec("pattern.post-overlay-card", "PostOverlayCar
       use("Group", { props: { Gap: "2", Align: "center" } }, use("Badge", { props: { Variant: "secondary", Size: "sm" } }, text(ref("p.category"))), muted(ref("p.date"), "xs")),
       use("Title", { props: { As: 3, Size: "base", Weight: "semibold" } }, text(ref("p.title"))),
       muted(ref("p.excerpt"), "sm", "line-clamp-2"),
-      use("Link", { props: { Href: "#/", Size: "sm" }, attrs: { "data-testid": "read" } }, text(ref("labels.read")), use("LucideIcon", { props: { Name: "arrow-right", Size: 16 } }))))],
+      menuEntry(ref("p.href"), { size: "sm", cls: "gap-2 text-sm font-medium", testid: "read" }, text(ref("labels.read")), use("LucideIcon", { props: { Name: "arrow-right", Size: 16 } }))))],
 });
 
 export const postFeature = spec("pattern.post-feature", "PostFeature", "The featured post of PostShowcase: the category, the title, the excerpt, the author with the date and reading time, and a wide read button.", {
@@ -43,7 +44,7 @@ export const postFeature = spec("pattern.post-feature", "PostFeature", "The feat
       organism("MediaFrame", { alt: ref("p.author"), ratio: "1/1", className: "size-10 shrink-0 rounded-full" }),
       use("Stack", { props: { Gap: "0" } }, use("Text", { props: { Size: "sm", Weight: "semibold" } }, text(ref("p.author"))),
         muted(tpl("{0} · {1}", ref("p.date"), tpl(ref("labels.minutes"), ref("p.minutes"))), "xs"))),
-    use("Button", { props: { Variant: "default", Size: "default", Href: "#/", Class: "w-full gap-2" }, attrs: { "data-testid": "action-primary" } }, text(ref("labels.read")), use("LucideIcon", { props: { Name: "arrow-right", Size: 16 } })))],
+    use("Button", { props: { Variant: "default", Size: "default", Href: ref("p.href"), Class: "w-full gap-2" }, attrs: { "data-testid": "action-primary" } }, text(ref("labels.read")), use("LucideIcon", { props: { Name: "arrow-right", Size: 16 } })))],
 });
 
 export const postShowcaseParts: OrganismSpec[] = [postMiniCard, postOverlayCard, postFeature];

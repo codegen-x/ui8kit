@@ -10,7 +10,6 @@ import (
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/container"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/grid"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/group"
-	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/link"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/list"
 	lucideicon "github.com/codegen-x/ui8kit/packages/templ/ui/ui/lucide-icon"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/stack"
@@ -22,6 +21,7 @@ import (
 type MegaMenuProps struct {
 	Label any `json:"label"`
 	Brand any `json:"brand"`
+	BrandHref any `json:"brandHref"`
 	Trigger any `json:"trigger"`
 	Links any `json:"links"`
 	Groups any `json:"groups"`
@@ -37,6 +37,7 @@ type MegaMenuProps struct {
 templ MegaMenu(p MegaMenuProps) {
 	{{ vLabel := p.Label }}
 	{{ vBrand := p.Brand }}
+	{{ vBrandHref := p.BrandHref }}
 	{{ vTrigger := p.Trigger }}
 	{{ vLinks := p.Links }}
 	{{ vGroups := p.Groups }}
@@ -48,7 +49,7 @@ templ MegaMenu(p MegaMenuProps) {
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@block.Block(block.BlockProps{Tag: "header", Class: "relative border-b border-border bg-background", Attrs: uiutils.Attrs("data-testid", "mega-menu", "aria-label", vLandmarkLabel)}) {
 		@container.Container(container.ContainerProps{Class: uiutils.S(uiutils.Cnv("mx-auto w-full max-w-6xl px-4", "flex flex-wrap items-center gap-6 py-4")), Attrs: uiutils.Attrs("data-slot", "container")}) {
-			@link.Link(link.LinkProps{Href: "#/", Variant: "default", Class: "text-lg font-medium", Attrs: uiutils.Attrs("data-testid", "brand")}) {
+			@MenuEntry(MenuEntryProps{Href: vBrandHref, Class: uiutils.Cnv("text-lg font-medium"), Testid: "brand"}) {
 				{ uiutils.Text(vBrand) }
 			}
 			@NavBlock(NavBlockProps{Label: uiutils.Cond(uiutils.T(vLandmarkLabel), uiutils.Uniq(uiutils.Tpl("{0}, {1}", vLabel, vLandmarkLabel)), vLabel), Class: uiutils.Cnv("flex-1")}) {
@@ -58,7 +59,7 @@ templ MegaMenu(p MegaMenuProps) {
 						@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "chevron-down", Size: 16})
 					}
 					for _, vL := range uiutils.L(vLinks) {
-						@link.Link(link.LinkProps{Href: uiutils.S(uiutils.Get(vL, "href")), Variant: "default", AriaCurrent: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vL, "id"), "")), "page", nil)), Class: "text-sm", Attrs: uiutils.Attrs("data-testid", "nav-link")}) {
+						@MenuEntry(MenuEntryProps{Href: uiutils.Get(vL, "href"), Class: uiutils.Cnv("text-sm"), Current: uiutils.Eq(uiutils.Get(vL, "id"), ""), Testid: "nav-link"}) {
 							{ uiutils.Text(uiutils.Get(vL, "name")) }
 						}
 					}
@@ -81,8 +82,8 @@ templ MegaMenu(p MegaMenuProps) {
 							@list.List(list.ListProps{Class: "m-0 flex list-none flex-col gap-2 p-0"}) {
 								for _, vItem := range uiutils.L(uiutils.Get(vG, "links")) {
 									@list.ListItem(list.ListItemProps{}) {
-										@link.Link(link.LinkProps{Href: "#/", Variant: "default", Class: "text-sm text-muted-foreground"}) {
-											{ uiutils.Text(vItem) }
+										@MenuEntry(MenuEntryProps{Href: uiutils.Get(vItem, "href"), Class: uiutils.Cnv("text-sm text-muted-foreground")}) {
+											{ uiutils.Text(uiutils.Get(vItem, "name")) }
 										}
 									}
 								}

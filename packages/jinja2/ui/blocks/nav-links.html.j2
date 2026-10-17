@@ -13,7 +13,7 @@
       {%- set c_1 -%}
         {{ ui_text(ui_get(v_l, ['name'])) }}
       {%- endset -%}
-      {{ ui_include('ui/link/link.html.j2', {'p': {'Href': ui_s(ui_get(v_l, ['href'])), 'Variant': 'default', 'AriaCurrent': ui_s(('page' if ui_t(ui_eq(ui_get(v_l, ['id']), v_current)) else none)), 'Class': 'text-sm', 'Attrs': ui_attrs(['data-testid', 'nav-link'])}, 'children': c_1}) }}
+      {{ ui_include('blocks/menu-entry.html.j2', {'p': {'href': ui_get(v_l, ['href']), 'className': ui_cnv(['text-sm']), 'current': ui_eq(ui_get(v_l, ['id']), v_current), 'testid': 'nav-link'}, 'children': c_1}) }}
     {%- endif %}
   {%- endfor %}
 {%- endset -%}

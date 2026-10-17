@@ -21,10 +21,10 @@ export type BottomNavProps = {
 <script setup lang="ts">
 import Block from "../primitives/block/block.vue";
 import Inline from "../primitives/inline/inline.vue";
-import Link from "../primitives/link/link.vue";
 import List from "../primitives/list/list.vue";
 import ListItem from "../primitives/list/list-item.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
+import MenuEntry from "../components/menu-entry.vue";
 import { cn } from "../utils";
 
 const {
@@ -52,21 +52,20 @@ const {
   >
     <List class="m-0 grid list-none grid-flow-col auto-cols-fr p-0" data-testid="items">
       <ListItem v-for="tab in tabs" :key="tab.id">
-        <Link
-          href="#/"
-          variant="default"
-          :aria-current="((tab.id === current) ? 'page' : undefined)"
+        <MenuEntry
+          :href="tab.href"
           :class="cn(
             'flex flex-col items-center gap-2 py-2 text-xs',
             ((tab.id === current) ? 'font-semibold text-primary' : 'text-muted-foreground')
           )"
-          data-testid="item"
+          :current="(tab.id === current)"
+          testid="item"
         >
           <LucideIcon :name="tab.icon" :size="20" />
           <Inline :class="(((labels as string) === 'hide') ? 'sr-only' : '')">
             {{ tab.name }}
           </Inline>
-        </Link>
+        </MenuEntry>
       </ListItem>
     </List>
   </Block>

@@ -18,7 +18,7 @@
 <script lang="ts">
   import Badge from "../primitives/badge/badge.svelte";
   import Box from "../primitives/box/box.svelte";
-  import Link from "../primitives/link/link.svelte";
+  import Button from "../primitives/button/button.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
@@ -54,10 +54,10 @@
         </Text>
       </Stack>
       <Box class="mt-auto">
-        <Link href="#/faq" variant="default" size="sm" class="font-medium">
+        <Button variant="link" size="sm" class="gap-2 px-0 font-medium">
           {labels.more}
           <LucideIcon name="arrow-right" size={16} />
-        </Link>
+        </Button>
       </Box>
     </ArticleBlock>
   {/each}

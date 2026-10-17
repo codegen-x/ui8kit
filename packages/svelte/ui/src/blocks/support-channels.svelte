@@ -25,11 +25,11 @@
   import Card from "../primitives/card/card.svelte";
   import CardContent from "../primitives/card/card-content.svelte";
   import Grid from "../primitives/grid/grid.svelte";
-  import Link from "../primitives/link/link.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
+  import MenuEntry from "../components/menu-entry.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import { cn } from "../utils";
 
@@ -65,9 +65,9 @@
             </Text>
           </Stack>
           {#if ((action as string) === "link")}
-            <Link href="#/" variant="default" data-testid="open">
+            <MenuEntry href={c.href} class="font-semibold" testid="open">
               {open}
-            </Link>
+            </MenuEntry>
           {/if}
         </CardContent>
       </Card>

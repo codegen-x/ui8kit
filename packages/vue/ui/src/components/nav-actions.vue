@@ -21,7 +21,7 @@ import Button from "../primitives/button/button.vue";
 
 const {
   login,
-  loginHref = "#/login",
+  loginHref,
   cta,
   ctaHref,
   actions = "cta",

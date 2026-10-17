@@ -136,32 +136,12 @@
                   "use": "ListItem",
                   "children": [
                     {
-                      "use": "Link",
+                      "organism": "MenuEntry",
                       "props": {
-                        "Href": "#/",
-                        "Variant": "default",
-                        "AriaCurrent": {
-                          "op": "cond",
-                          "args": [
-                            {
-                              "op": "eq",
-                              "args": [
-                                {
-                                  "$": "tab.id"
-                                },
-                                {
-                                  "$": "current"
-                                }
-                              ]
-                            },
-                            "page",
-                            {
-                              "op": "undef",
-                              "args": []
-                            }
-                          ]
+                        "href": {
+                          "$": "tab.href"
                         },
-                        "Class": {
+                        "className": {
                           "op": "cn",
                           "args": [
                             "flex flex-col items-center gap-2 py-2 text-xs",
@@ -184,50 +164,64 @@
                               ]
                             }
                           ]
-                        }
-                      },
-                      "attrs": {
-                        "data-testid": "item"
-                      },
-                      "children": [
-                        {
-                          "use": "LucideIcon",
-                          "props": {
-                            "Name": {
-                              "$": "tab.icon"
-                            },
-                            "Size": 20
-                          }
                         },
-                        {
-                          "use": "Inline",
-                          "props": {
-                            "Class": {
-                              "op": "cond",
-                              "args": [
-                                {
-                                  "op": "eq",
+                        "current": {
+                          "op": "eq",
+                          "args": [
+                            {
+                              "$": "tab.id"
+                            },
+                            {
+                              "$": "current"
+                            }
+                          ]
+                        },
+                        "testid": "item"
+                      },
+                      "slots": {
+                        "children": {
+                          "args": [],
+                          "do": [
+                            {
+                              "use": "LucideIcon",
+                              "props": {
+                                "Name": {
+                                  "$": "tab.icon"
+                                },
+                                "Size": 20
+                              }
+                            },
+                            {
+                              "use": "Inline",
+                              "props": {
+                                "Class": {
+                                  "op": "cond",
                                   "args": [
                                     {
-                                      "$": "labels"
+                                      "op": "eq",
+                                      "args": [
+                                        {
+                                          "$": "labels"
+                                        },
+                                        "hide"
+                                      ]
                                     },
-                                    "hide"
+                                    "sr-only",
+                                    ""
                                   ]
-                                },
-                                "sr-only",
-                                ""
+                                }
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "tab.name"
+                                  }
+                                }
                               ]
-                            }
-                          },
-                          "children": [
-                            {
-                              "text": {
-                                "$": "tab.name"
-                              }
                             }
                           ]
                         }
-                      ]
+                      }
                     }
                   ]
                 }

@@ -17,7 +17,7 @@
 
 <script lang="ts">
   import Group from "../primitives/group/group.svelte";
-  import Link from "../primitives/link/link.svelte";
+  import MenuEntry from "../components/menu-entry.svelte";
 
   let { links, current = "", side = "all" }: NavLinksProps = $props();
   const count = $derived(links?.length ?? 0);
@@ -26,15 +26,9 @@
 <Group gap="4" align="center" class="flex-wrap">
   {#each links as l, i (l.id)}
     {#if (((side as string) === "all") || (((i * 2) < count) === ((side as string) === "left")))}
-      <Link
-        href={l.href}
-        variant="default"
-        aria-current={((l.id === current) ? "page" : undefined)}
-        class="text-sm"
-        data-testid="nav-link"
-      >
+      <MenuEntry href={l.href} class="text-sm" current={(l.id === current)} testid="nav-link">
         {l.name}
-      </Link>
+      </MenuEntry>
     {/if}
   {/each}
 </Group>

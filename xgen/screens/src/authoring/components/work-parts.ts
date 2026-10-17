@@ -5,6 +5,7 @@ import { spec, ts } from "../kit";
 import { tsOf } from "../props";
 import { muted, surface } from "../ux";
 import { articleBlockOf } from "./landmarks";
+import { menuEntry } from "./nav";
 
 const tags = (list: string) => use("Group", { props: { Gap: "2", Class: "flex-wrap" } }, each(ref(list), "k", ref("k"), use("Badge", { props: { Variant: "secondary", Size: "sm" } }, text(ref("k")))));
 
@@ -30,8 +31,8 @@ export const projectTiles = spec("pattern.project-tiles", "ProjectTiles", "The p
           when(ne(ref("layout"), "compact"), [muted(ref("p.summary"))]),
           when(eq(ref("layout"), "cards"), [tags("p.tags"),
             use("Group", { props: { Gap: "4", Class: "pt-2" } },
-              use("Link", { props: { Href: "#/work", Variant: "default", Class: "inline-flex items-center gap-2 text-sm font-medium" } }, text(ref("labels.case")), use("LucideIcon", { props: { Name: "arrow-right", Size: 16 } })),
-              use("Link", { props: { Href: "#/work", Variant: "default", Class: "inline-flex items-center gap-2 text-sm font-medium" } }, text(ref("labels.view")), use("LucideIcon", { props: { Name: "external-link", Size: 16 } })))]))))),
+              menuEntry(ref("p.href"), { cls: "inline-flex items-center gap-2 text-sm font-medium" }, text(ref("labels.case")), use("LucideIcon", { props: { Name: "arrow-right", Size: 16 } })),
+              menuEntry(ref("p.href"), { cls: "inline-flex items-center gap-2 text-sm font-medium" }, text(ref("labels.view")), use("LucideIcon", { props: { Name: "external-link", Size: 16 } })))]))))),
   ],
 });
 

@@ -28,7 +28,7 @@ import { steps as stepsEntries } from "@ui8kit/app-shared/data/steps";
 import { testimonials as testimonialsEntries } from "@ui8kit/app-shared/data/testimonials";
 import { megagroups as megagroupsEntries } from "@ui8kit/app-shared/data/megagroups";
 
-const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
+const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","href":"slug|route"} as const;
 const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 const BEFOREAFTER_FIELDS = {"id":"id","title":"title","before":"metadata.before.value","after":"metadata.after.value"} as const;
 const STEPS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
@@ -43,7 +43,7 @@ const TESTIMONIALS_FIELDS = {
   "time": "metadata.time.value|ago-short",
   "mark": "metadata.mark.value",
 } as const;
-const MEGAGROUPS_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
+const MEGAGROUPS_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"id|menu","href":"slug|route"} as const;
 
 const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS, CODEX);
 const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS, CODEX);

@@ -7,6 +7,7 @@ export type Question = {
   answer: string;
   category: string;
   icon: string;
+  href?: string;
 };
 
 export type FaqSplitLabels = {

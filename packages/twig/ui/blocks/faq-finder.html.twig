@@ -12,7 +12,7 @@
       {%- set c_1 -%}
         {{ ui_text(ui_get(v_t, ['title'])) }}
       {%- endset -%}
-      {{ include('ui/button/button.html.twig', {'p': {'Variant': 'outline', 'Size': 'sm', 'Href': ui_s(ui_tpl('#/faq/{0}', [ui_get(v_t, ['value'])])), 'Attrs': ui_attrs(['data-testid', 'faq-topic'])}, 'children': c_1}, with_context = false) }}
+      {{ include('ui/button/button.html.twig', {'p': {'Variant': 'outline', 'Size': 'sm', 'Attrs': ui_attrs(['data-testid', 'faq-topic', 'data-value', ui_get(v_t, ['value'])])}, 'children': c_1}, with_context = false) }}
     {%- endfor %}
   {%- endset -%}
   {{ include('ui/group/group.html.twig', {'p': {'Gap': '2', 'Class': 'flex-wrap'}, 'children': c_2}, with_context = false) }}
@@ -29,7 +29,7 @@
             {%- set c_4 -%}
               {{ ui_text(ui_get(v_q, ['question'])) }}
             {%- endset -%}
-            {{ include('ui/link/link.html.twig', {'p': {'Href': '#/faq', 'Variant': 'default', 'Size': 'sm'}, 'children': c_4}, with_context = false) }}
+            {{ include('blocks/menu-entry.html.twig', {'p': {'href': ui_get(v_q, ['href']), 'className': ui_cnv(['text-sm font-medium']), 'size': 'sm'}, 'children': c_4}, with_context = false) }}
           {%- endset -%}
           {{ include('ui/list/list-item.html.twig', {'p': {'Attrs': ui_attrs(['data-testid', 'faq-popular'])}, 'children': c_5}, with_context = false) }}
         {%- endif %}

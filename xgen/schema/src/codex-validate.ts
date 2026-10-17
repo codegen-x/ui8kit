@@ -21,9 +21,20 @@ const bundles = loadTaxonomies();
 const badBundles: string[] = [];
 for (const b of bundles) if (!validBundle(b as unknown)) badBundles.push(`${b.definition.id}: ${JSON.stringify(validBundle.errors)}`);
 const terms = bundles.flatMap((b) => b.terms.map((data, i) => ({ file: `taxonomies/${b.definition.id}.json#${i}`, data })));
-const issues = validateCollectionV04({ entries, terms }, { manifest }) as { code: string; path: string; message: string; severity?: string }[];
+// the core Menu records (one per location and locale) built from the menu_item entries: label = title, url = "/" + slug, the
+// entry as the target, nesting by parent_id and order (xgen/docs/block-data.md, menus)
+type Item = { id: string; locale: string; title: string; slug: string; parent_id?: string; order?: number; metadata?: { location?: { value?: string } } };
+const items = loadFixtures().flatMap((c) => c.entries as unknown as Item[]).filter((e) => (e as { kind?: string }).kind === "menu_item");
+const menuMap = new Map<string, { id: string; location: string; locale: string; items: object[] }>();
+for (const e of items) {
+  const location = e.metadata?.location?.value ?? "main", key = `${location}/${e.locale}`;
+  if (!menuMap.has(key)) menuMap.set(key, { id: `menu-${location}`, location, locale: e.locale, items: [] });
+  menuMap.get(key)!.items.push({ id: e.id, label: e.title, url: `/${e.slug}`, ...(e.parent_id ? { parent_id: e.parent_id } : {}), ...(e.order !== undefined ? { order: e.order } : {}), target: { kind: "menu_item", id: e.id } });
+}
+const menus = [...menuMap.values()].map((data) => ({ file: `menus/${data.id}.${data.locale}`, data }));
+const issues = validateCollectionV04({ entries, terms, menus }, { manifest }) as { code: string; path: string; message: string; severity?: string }[];
 for (const i of issues) console.log(`${i.severity ?? "error"} ${i.code} ${i.path}: ${i.message}`);
 const errors = issues.filter((i) => !i.severity).length, warnings = issues.length - errors;
 for (const b of badBundles) console.log(`error taxonomy ${b}`);
-console.log(`manifest schema: ${okManifest ? "ok" : JSON.stringify(ajv.errors)}; ${entries.length} entries, ${manifest.resources.length} kinds, ${bundles.length} taxonomies (${terms.length} terms): ${errors + badBundles.length} errors, ${warnings} warnings`);
+console.log(`manifest schema: ${okManifest ? "ok" : JSON.stringify(ajv.errors)}; ${entries.length} entries, ${menus.length} menus (${items.length} items), ${manifest.resources.length} kinds, ${bundles.length} taxonomies (${terms.length} terms): ${errors + badBundles.length} errors, ${warnings} warnings`);
 process.exit(okManifest && errors === 0 && badBundles.length === 0 ? 0 : 1);

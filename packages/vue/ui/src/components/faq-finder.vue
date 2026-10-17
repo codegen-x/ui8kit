@@ -18,13 +18,12 @@ export type FaqFinderProps = {
 <script setup lang="ts">
 import Button from "../primitives/button/button.vue";
 import Group from "../primitives/group/group.vue";
-import Link from "../primitives/link/link.vue";
 import List from "../primitives/list/list.vue";
 import ListItem from "../primitives/list/list-item.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
+import MenuEntry from "../components/menu-entry.vue";
 import SearchField from "../components/search-field.vue";
-import { tpl } from "../utils";
 
 const { items, labels, topics } = defineProps<FaqFinderProps>();
 </script>
@@ -38,8 +37,8 @@ const { items, labels, topics } = defineProps<FaqFinderProps>();
         :key="t.id"
         variant="outline"
         size="sm"
-        :href="tpl('#/faq/{0}', t.value)"
         data-testid="faq-topic"
+        :data-value="t.value"
       >
         {{ t.title }}
       </Button>
@@ -51,9 +50,9 @@ const { items, labels, topics } = defineProps<FaqFinderProps>();
       <List class="m-0 flex list-none flex-col gap-2 p-0">
         <template v-for="(q, i) in items" :key="q.id">
           <ListItem v-if="(i < 3)" data-testid="faq-popular">
-            <Link href="#/faq" variant="default" size="sm">
+            <MenuEntry :href="q.href" class="text-sm font-medium" size="sm">
               {{ q.question }}
-            </Link>
+            </MenuEntry>
           </ListItem>
         </template>
       </List>

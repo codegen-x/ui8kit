@@ -88,18 +88,26 @@
                       },
                       "children": [
                         {
-                          "use": "Link",
+                          "organism": "MenuEntry",
                           "props": {
-                            "Href": "#/",
-                            "Size": "sm"
+                            "href": {
+                              "$": "p.href"
+                            },
+                            "className": "text-sm font-medium",
+                            "size": "sm"
                           },
-                          "children": [
-                            {
-                              "text": {
-                                "$": "p.title"
-                              }
+                          "slots": {
+                            "children": {
+                              "args": [],
+                              "do": [
+                                {
+                                  "text": {
+                                    "$": "p.title"
+                                  }
+                                }
+                              ]
                             }
-                          ]
+                          }
                         },
                         {
                           "use": "Text",

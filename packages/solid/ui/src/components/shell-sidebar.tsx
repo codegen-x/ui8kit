@@ -11,11 +11,11 @@ import { Box } from "../primitives/box/box";
 import { ButtonPlain } from "../primitives/button-plain/button-plain";
 import { Group } from "../primitives/group/group";
 import { Inline } from "../primitives/inline/inline";
-import { Link } from "../primitives/link/link";
 import { List } from "../primitives/list/list";
 import { ListItem } from "../primitives/list/list-item";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Text } from "../primitives/text/text";
+import { MenuEntry } from "../components/menu-entry";
 import { NavBlock } from "../components/nav-block";
 import { cn, tpl, uniqLabel } from "../utils";
 import type { ShellNav } from "../blocks/dashboard-shell.types";
@@ -68,23 +68,22 @@ export function ShellSidebar({
           <List class="m-0 flex list-none flex-col gap-2 p-0" data-testid="items">
             <For each={nav.links ?? []}>{(l) => (
               <ListItem>
-                <Link
-                  href="#/"
-                  variant="default"
-                  size="sm"
-                  aria-current={((l.id === nav.current) ? "page" : undefined)}
+                <MenuEntry
+                  href={l.href}
                   class={cn(
-                    "flex items-center gap-4 rounded py-2",
+                    "flex items-center gap-4 rounded py-2 text-sm",
                     (named ? "px-4" : "justify-center px-2"),
                     ((l.id === nav.current) ? "bg-muted font-medium" : "")
                   )}
-                  data-testid="item"
+                  current={(l.id === nav.current)}
+                  size="sm"
+                  testid="item"
                 >
                   <LucideIcon name={l.icon} size={16} />
                   <Inline class={(named ? "" : "sr-only")}>
                     {l.name}
                   </Inline>
-                </Link>
+                </MenuEntry>
               </ListItem>
             )}</For>
           </List>
@@ -117,23 +116,22 @@ export function ShellSidebar({
             <List class="m-0 flex list-none flex-col gap-2 p-0">
               <For each={nav.sub ?? []}>{(s) => (
                 <ListItem>
-                  <Link
-                    href="#/"
-                    variant="default"
-                    size="sm"
-                    aria-current={((s.id === nav.subCurrent) ? "page" : undefined)}
+                  <MenuEntry
+                    href={s.href}
                     class={cn(
-                      "flex items-center gap-4 rounded py-2",
+                      "flex items-center gap-4 rounded py-2 text-sm",
                       (true ? "px-4" : "justify-center px-2"),
                       ((s.id === nav.subCurrent) ? "bg-muted font-medium" : "")
                     )}
-                    data-testid="item"
+                    current={(s.id === nav.subCurrent)}
+                    size="sm"
+                    testid="item"
                   >
                     <LucideIcon name={s.icon} size={16} />
                     <Inline class={(true ? "" : "sr-only")}>
                       {s.name}
                     </Inline>
-                  </Link>
+                  </MenuEntry>
                 </ListItem>
               )}</For>
             </List>

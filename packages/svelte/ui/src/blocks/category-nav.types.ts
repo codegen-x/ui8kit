@@ -6,6 +6,7 @@ export type Category = {
   name: string;
   icon: string;
   count: number;
+  href?: string;
 };
 
 export type CategoryTools = {

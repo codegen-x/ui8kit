@@ -4,6 +4,7 @@ import type { OrganismSpec, Value, ViewNode } from "../../ir";
 import { spec, ts } from "../kit";
 import { tsOf } from "../props";
 import { muted, strong, surface } from "../ux";
+import { menuEntry } from "./nav";
 
 const types = [{ from: "MediaList", names: ["MediaExtras", "MediaListLabels"] }];
 const extras = { name: "extras", type: ts("MediaExtras"), required: true };
@@ -49,7 +50,7 @@ export const mediaPosts = spec("pattern.media-posts", "MediaPosts", "The latest 
   view: [use("Stack", { props: { Gap: "4", Align: "stretch" } }, listHead,
     first("extras.posts", "p", 3, use("Group", { props: { Gap: "4", Align: "start" }, attrs: { "data-testid": "media-post" } },
       use("Inline", { props: { Class: "mt-2 size-2 shrink-0 rounded-full bg-primary" } }),
-      use("Stack", { props: { Gap: "0" } }, use("Link", { props: { Href: "#/", Size: "sm" } }, text(ref("p.title"))),
+      use("Stack", { props: { Gap: "0" } }, menuEntry(ref("p.href"), { size: "sm", cls: "text-sm font-medium" }, text(ref("p.title"))),
         muted(tpl("{0} · {1}", ref("p.date"), tpl(ref("labels.minutes"), ref("p.minutes"))), "xs")))))],
 });
 
@@ -57,7 +58,7 @@ export const mediaTopics = spec("pattern.media-topics", "MediaTopics", "The topi
   typeImports: types,
   props: [extras, labels],
   view: [use("Stack", { props: { Gap: "4", Align: "stretch" } }, listHead,
-    first("extras.topics", "c", 5, use("Link", { props: { Href: "#/", Variant: "block", Class: surface("items-center gap-4 p-4") }, attrs: { "data-testid": "media-topic" } },
+    first("extras.topics", "c", 5, menuEntry(ref("c.href"), { variant: "block", cls: surface("flex w-full items-center gap-4 p-4"), testid: "media-topic", block: true },
       glyph(ref("c.icon"), tileCls),
       use("Stack", { props: { Gap: "0", Class: "min-w-0 flex-1" } }, strong(ref("c.name"), "sm"), muted(tpl(ref("labels.count"), ref("c.count")), "xs")),
       use("LucideIcon", { props: { Name: "arrow-right", Size: 16 } }))))],
@@ -68,7 +69,7 @@ export const mediaContacts = spec("pattern.media-contacts", "MediaContacts", "Th
   props: [extras, labels],
   view: [use("Stack", { props: { Gap: "6", Align: "stretch" } },
     use("Stack", { props: { Gap: "2", Align: "stretch" } }, listHead,
-      eachAt(ref("extras.channels"), "c", "i", ref("c.id"), use("Button", { props: { Variant: "outline", Size: "default", Href: "#/", Class: "w-full gap-2" }, attrs: { "data-testid": "media-channel" } },
+      eachAt(ref("extras.channels"), "c", "i", ref("c.id"), use("Button", { props: { Variant: "outline", Size: "default", Href: ref("c.href"), Class: "w-full gap-2" }, attrs: { "data-testid": "media-channel" } },
         use("LucideIcon", { props: { Name: ref("c.icon"), Size: 16 } }), text(ref("c.title"))))),
     use("Stack", { props: { Gap: "2", Align: "stretch", Class: surface("p-4") } }, strong(ref("labels.figures"), "sm"),
       first("extras.stats", "s", 3, use("Group", { props: { Gap: "4", Align: "center", Justify: "between" }, attrs: { "data-testid": "media-stat" } },

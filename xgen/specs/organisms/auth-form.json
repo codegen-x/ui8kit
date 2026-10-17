@@ -308,11 +308,11 @@
                   ]
                 },
                 {
-                  "use": "Link",
+                  "use": "Button",
                   "props": {
-                    "Href": "#/",
-                    "Variant": "default",
-                    "Class": "text-sm"
+                    "Variant": "link",
+                    "Size": "sm",
+                    "Class": "px-0"
                   },
                   "children": [
                     {

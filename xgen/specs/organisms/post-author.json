@@ -151,7 +151,6 @@
                       "props": {
                         "Variant": "ghost",
                         "Size": "default",
-                        "Href": "#/",
                         "Class": "gap-2"
                       },
                       "attrs": {
@@ -177,7 +176,6 @@
                       "props": {
                         "Variant": "ghost",
                         "Size": "default",
-                        "Href": "#/",
                         "Class": "gap-2"
                       },
                       "attrs": {

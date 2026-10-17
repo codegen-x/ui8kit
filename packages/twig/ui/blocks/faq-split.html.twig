@@ -30,7 +30,7 @@
       {%- set c_2 -%}
         {{ ui_text(ui_get(v_labels, ['cta'])) }}
       {%- endset -%}
-      {{ include('ui/button/button.html.twig', {'p': {'Variant': 'default', 'Size': 'default', 'Href': '#/contact', 'Attrs': ui_attrs(['data-testid', 'faq-cta'])}, 'children': c_2}, with_context = false) }}
+      {{ include('ui/button/button.html.twig', {'p': {'Variant': 'default', 'Size': 'default', 'Attrs': ui_attrs(['data-testid', 'faq-cta'])}, 'children': c_2}, with_context = false) }}
     {%- endset -%}
     {{ include('ui/box/box.html.twig', {'p': {}, 'children': c_3}, with_context = false) }}
   {%- endset -%}
@@ -55,7 +55,7 @@
       {%- set c_8 -%}
         {{ ui_text(ui_get(v_labels, ['cta'])) }}
       {%- endset -%}
-      {{ include('ui/button/button.html.twig', {'p': {'Variant': 'default', 'Size': 'default', 'Href': '#/contact', 'Attrs': ui_attrs(['data-testid', 'faq-cta'])}, 'children': c_8}, with_context = false) }}
+      {{ include('ui/button/button.html.twig', {'p': {'Variant': 'default', 'Size': 'default', 'Attrs': ui_attrs(['data-testid', 'faq-cta'])}, 'children': c_8}, with_context = false) }}
     {%- endset -%}
     {{ include('ui/box/box.html.twig', {'p': {}, 'children': c_9}, with_context = false) }}
   {%- endset -%}

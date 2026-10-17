@@ -170,12 +170,11 @@
           ]
         },
         {
-          "use": "Link",
+          "use": "Button",
           "props": {
-            "Href": "#/contact",
-            "Variant": "default",
+            "Variant": "link",
             "Size": "sm",
-            "Class": "font-medium"
+            "Class": "gap-2 px-0 font-medium"
           },
           "children": [
             {

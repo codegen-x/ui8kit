@@ -6,7 +6,6 @@ package blocks
 import (
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/box"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/card"
-	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/link"
 	lucideicon "github.com/codegen-x/ui8kit/packages/templ/ui/ui/lucide-icon"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/text"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/title"
@@ -56,7 +55,7 @@ templ FeatureShowcase(p FeatureShowcaseProps) {
 							{ uiutils.Text(uiutils.Get(vF, "text")) }
 						}
 						if uiutils.Eq(vItem, "picture") {
-							@link.Link(link.LinkProps{Href: "#/", Size: "sm", Class: "mt-auto pt-2", Attrs: uiutils.Attrs("data-testid", "read")}) {
+							@MenuEntry(MenuEntryProps{Href: uiutils.Get(vF, "href"), Class: uiutils.Cnv("mt-auto gap-2 pt-2 text-sm font-medium"), Size: "sm", Testid: "read"}) {
 								{ uiutils.Text(vMore) }
 								@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "arrow-right", Size: 16})
 							}

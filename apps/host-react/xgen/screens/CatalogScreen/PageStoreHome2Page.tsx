@@ -34,7 +34,7 @@ import { products as productsEntries } from "@ui8kit/app-shared/data/products";
 import { deliveryfacts as deliveryfactsEntries } from "@ui8kit/app-shared/data/deliveryfacts";
 import { stores as storesEntries } from "@ui8kit/app-shared/data/stores";
 
-const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
+const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","href":"slug|route"} as const;
 const ZONES_FIELDS = {
   "id": "id",
   "name": "title",
@@ -46,7 +46,7 @@ const ZONES_FIELDS = {
   "express": "metadata.express.value",
   "currency": "metadata.currency.value",
 } as const;
-const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
+const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"id|menu","href":"slug|route"} as const;
 const PERKS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 const PRODUCTS_FIELDS = {
   "id": "id",

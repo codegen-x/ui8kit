@@ -24,11 +24,11 @@ export type SupportChannelsProps = {
 import Card from "../primitives/card/card.vue";
 import CardContent from "../primitives/card/card-content.vue";
 import Grid from "../primitives/grid/grid.vue";
-import Link from "../primitives/link/link.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
+import MenuEntry from "../components/menu-entry.vue";
 import SectionFrame from "../components/section-frame.vue";
 import { cn } from "../utils";
 
@@ -63,9 +63,9 @@ const {
               {{ c.text }}
             </Text>
           </Stack>
-          <Link v-if="((action as string) === 'link')" href="#/" variant="default" data-testid="open">
+          <MenuEntry v-if="((action as string) === 'link')" :href="c.href" class="font-semibold" testid="open">
             {{ open }}
-          </Link>
+          </MenuEntry>
         </CardContent>
       </Card>
     </Grid>

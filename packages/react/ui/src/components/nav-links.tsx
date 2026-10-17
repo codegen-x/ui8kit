@@ -6,7 +6,7 @@
  */
 import { Fragment, type ReactNode } from "react";
 import { Group } from "../primitives/group/group";
-import { Link } from "../primitives/link/link";
+import { MenuEntry } from "../components/menu-entry";
 import type { NavLink } from "../blocks/nav-bar.types";
 
 export type NavLinksProps = {
@@ -22,15 +22,9 @@ export function NavLinks({ links, current = "", side = "all" }: NavLinksProps) {
       {(links ?? []).map((l, i) => (
         <Fragment key={l.id}>
           {(((side as string) === "all") || (((i * 2) < count) === ((side as string) === "left"))) ? (
-            <Link
-              href={l.href}
-              variant="default"
-              aria-current={((l.id === current) ? "page" : undefined)}
-              className="text-sm"
-              data-testid="nav-link"
-            >
+            <MenuEntry href={l.href} className="text-sm" current={(l.id === current)} testid="nav-link">
               {l.name}
-            </Link>
+            </MenuEntry>
           ) : null}
         </Fragment>
       ))}

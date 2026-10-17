@@ -279,12 +279,13 @@
     {
       "as": "navlinks",
       "collection": "navlinks",
-      "kind": "link",
+      "kind": "menu_item",
       "record": "NavLink",
       "fields": {
         "id": "id",
         "name": "title",
-        "icon": "metadata.icon.value"
+        "icon": "metadata.icon.value",
+        "href": "slug|route"
       }
     }
   ],

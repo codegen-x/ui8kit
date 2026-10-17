@@ -320,19 +320,25 @@
                               },
                               "children": [
                                 {
-                                  "use": "Link",
+                                  "organism": "MenuEntry",
                                   "props": {
-                                    "Href": "#/careers",
-                                    "Variant": "default",
-                                    "Class": "font-medium"
+                                    "href": {
+                                      "$": "j.href"
+                                    },
+                                    "className": "font-medium"
                                   },
-                                  "children": [
-                                    {
-                                      "text": {
-                                        "$": "labels.apply"
-                                      }
+                                  "slots": {
+                                    "children": {
+                                      "args": [],
+                                      "do": [
+                                        {
+                                          "text": {
+                                            "$": "labels.apply"
+                                          }
+                                        }
+                                      ]
                                     }
-                                  ]
+                                  }
                                 }
                               ]
                             }
@@ -555,26 +561,32 @@
                           ]
                         },
                         {
-                          "use": "Link",
+                          "organism": "MenuEntry",
                           "props": {
-                            "Href": "#/careers",
-                            "Variant": "default",
-                            "Class": "inline-flex items-center gap-2 text-sm font-medium"
-                          },
-                          "children": [
-                            {
-                              "text": {
-                                "$": "labels.apply"
-                              }
+                            "href": {
+                              "$": "j.href"
                             },
-                            {
-                              "use": "LucideIcon",
-                              "props": {
-                                "Name": "arrow-right",
-                                "Size": 16
-                              }
+                            "className": "inline-flex items-center gap-2 text-sm font-medium"
+                          },
+                          "slots": {
+                            "children": {
+                              "args": [],
+                              "do": [
+                                {
+                                  "text": {
+                                    "$": "labels.apply"
+                                  }
+                                },
+                                {
+                                  "use": "LucideIcon",
+                                  "props": {
+                                    "Name": "arrow-right",
+                                    "Size": 16
+                                  }
+                                }
+                              ]
                             }
-                          ]
+                          }
                         }
                       ]
                     }

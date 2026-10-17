@@ -6,7 +6,6 @@ package blocks
 import (
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/button"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/group"
-	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/link"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/list"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/stack"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/text"
@@ -29,7 +28,7 @@ templ FaqFinder(p FaqFinderProps) {
 		@SearchField(SearchFieldProps{Label: uiutils.Get(vLabels, "search"), Placeholder: uiutils.Get(vLabels, "search"), Value: uiutils.Coalesce(uiutils.Get(vLabels, "query"), "")})
 		@group.Group(group.GroupProps{Gap: "2", Class: "flex-wrap"}) {
 			for _, vT := range uiutils.L(vTopics) {
-				@button.Button(button.ButtonProps{Variant: "outline", Size: "sm", Href: uiutils.S(uiutils.Tpl("#/faq/{0}", uiutils.Get(vT, "value"))), Attrs: uiutils.Attrs("data-testid", "faq-topic")}) {
+				@button.Button(button.ButtonProps{Variant: "outline", Size: "sm", Attrs: uiutils.Attrs("data-testid", "faq-topic", "data-value", uiutils.Get(vT, "value"))}) {
 					{ uiutils.Text(uiutils.Get(vT, "title")) }
 				}
 			}
@@ -42,7 +41,7 @@ templ FaqFinder(p FaqFinderProps) {
 				for vI, vQ := range uiutils.L(vItems) {
 					if uiutils.Lt(float64(vI), float64(3)) {
 						@list.ListItem(list.ListItemProps{Attrs: uiutils.Attrs("data-testid", "faq-popular")}) {
-							@link.Link(link.LinkProps{Href: "#/faq", Variant: "default", Size: "sm"}) {
+							@MenuEntry(MenuEntryProps{Href: uiutils.Get(vQ, "href"), Class: uiutils.Cnv("text-sm font-medium"), Size: "sm"}) {
 								{ uiutils.Text(uiutils.Get(vQ, "question")) }
 							}
 						}

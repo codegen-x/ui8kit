@@ -9,7 +9,6 @@ import (
 	buttonplain "github.com/codegen-x/ui8kit/packages/templ/ui/ui/button-plain"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/group"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/inline"
-	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/link"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/list"
 	lucideicon "github.com/codegen-x/ui8kit/packages/templ/ui/ui/lucide-icon"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/text"
@@ -47,7 +46,7 @@ templ ShellSidebar(p ShellSidebarProps) {
 				@list.List(list.ListProps{Class: "m-0 flex list-none flex-col gap-2 p-0", Attrs: uiutils.Attrs("data-testid", "items")}) {
 					for _, vL := range uiutils.L(uiutils.Get(vNav, "links")) {
 						@list.ListItem(list.ListItemProps{}) {
-							@link.Link(link.LinkProps{Href: "#/", Variant: "default", Size: "sm", AriaCurrent: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vL, "id"), uiutils.Get(vNav, "current"))), "page", nil)), Class: uiutils.S(uiutils.Cnv("flex items-center gap-4 rounded py-2", uiutils.Cond(uiutils.T(vNamed), "px-4", "justify-center px-2"), uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vL, "id"), uiutils.Get(vNav, "current"))), "bg-muted font-medium", ""))), Attrs: uiutils.Attrs("data-testid", "item")}) {
+							@MenuEntry(MenuEntryProps{Href: uiutils.Get(vL, "href"), Class: uiutils.Cnv(uiutils.Cnv("flex items-center gap-4 rounded py-2 text-sm", uiutils.Cond(uiutils.T(vNamed), "px-4", "justify-center px-2"), uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vL, "id"), uiutils.Get(vNav, "current"))), "bg-muted font-medium", ""))), Current: uiutils.Eq(uiutils.Get(vL, "id"), uiutils.Get(vNav, "current")), Size: "sm", Testid: "item"}) {
 								@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Get(vL, "icon")), Size: 16})
 								@inline.Inline(inline.InlineProps{Class: uiutils.S(uiutils.Cond(uiutils.T(vNamed), "", "sr-only"))}) {
 									{ uiutils.Text(uiutils.Get(vL, "name")) }
@@ -72,7 +71,7 @@ templ ShellSidebar(p ShellSidebarProps) {
 					@list.List(list.ListProps{Class: "m-0 flex list-none flex-col gap-2 p-0"}) {
 						for _, vS := range uiutils.L(uiutils.Get(vNav, "sub")) {
 							@list.ListItem(list.ListItemProps{}) {
-								@link.Link(link.LinkProps{Href: "#/", Variant: "default", Size: "sm", AriaCurrent: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vS, "id"), uiutils.Get(vNav, "subCurrent"))), "page", nil)), Class: uiutils.S(uiutils.Cnv("flex items-center gap-4 rounded py-2", uiutils.Cond(uiutils.T(true), "px-4", "justify-center px-2"), uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vS, "id"), uiutils.Get(vNav, "subCurrent"))), "bg-muted font-medium", ""))), Attrs: uiutils.Attrs("data-testid", "item")}) {
+								@MenuEntry(MenuEntryProps{Href: uiutils.Get(vS, "href"), Class: uiutils.Cnv(uiutils.Cnv("flex items-center gap-4 rounded py-2 text-sm", uiutils.Cond(uiutils.T(true), "px-4", "justify-center px-2"), uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vS, "id"), uiutils.Get(vNav, "subCurrent"))), "bg-muted font-medium", ""))), Current: uiutils.Eq(uiutils.Get(vS, "id"), uiutils.Get(vNav, "subCurrent")), Size: "sm", Testid: "item"}) {
 									@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Get(vS, "icon")), Size: 16})
 									@inline.Inline(inline.InlineProps{Class: uiutils.S(uiutils.Cond(uiutils.T(true), "", "sr-only"))}) {
 										{ uiutils.Text(uiutils.Get(vS, "name")) }

@@ -73,7 +73,7 @@
     landmarkLabel={landmarkLabel}
   >
     <Box>
-      <Button variant="default" size="default" href="#/contact" data-testid="faq-cta">
+      <Button variant="default" size="default" data-testid="faq-cta">
         {labels.cta}
       </Button>
     </Box>
@@ -112,7 +112,7 @@
   >
     <FaqDisclosures items={items} name={tpl("{0}-faq", id)} />
     <Box>
-      <Button variant="default" size="default" href="#/contact" data-testid="faq-cta">
+      <Button variant="default" size="default" data-testid="faq-cta">
         {labels.cta}
       </Button>
     </Box>

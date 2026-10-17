@@ -26,13 +26,13 @@
 <script lang="ts">
   import Badge from "../primitives/badge/badge.svelte";
   import Group from "../primitives/group/group.svelte";
-  import Link from "../primitives/link/link.svelte";
   import List from "../primitives/list/list.svelte";
   import ListItem from "../primitives/list/list-item.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
   import JobCards from "../components/job-cards.svelte";
+  import MenuEntry from "../components/menu-entry.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import { tpl } from "../utils";
 
@@ -77,9 +77,9 @@
                 data-testid="item"
               >
                 <Stack gap="0">
-                  <Link href="#/careers" variant="default" class="font-medium">
+                  <MenuEntry href={j.href} class="font-medium">
                     {j.title}
-                  </Link>
+                  </MenuEntry>
                   <Text size="xs" class="text-muted-foreground">
                     {tpl("{0}, {1}", j.location, j.type)}
                   </Text>

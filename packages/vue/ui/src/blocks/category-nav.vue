@@ -27,13 +27,13 @@ import Block from "../primitives/block/block.vue";
 import Container from "../primitives/container/container.vue";
 import Group from "../primitives/group/group.vue";
 import Inline from "../primitives/inline/inline.vue";
-import Link from "../primitives/link/link.vue";
 import List from "../primitives/list/list.vue";
 import ListItem from "../primitives/list/list-item.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Select from "../primitives/select/select.vue";
 import SelectOption from "../primitives/select/select-option.vue";
 import Text from "../primitives/text/text.vue";
+import MenuEntry from "../components/menu-entry.vue";
 import SearchField from "../components/search-field.vue";
 import { cn } from "../utils";
 
@@ -94,12 +94,12 @@ const listShape = computed(() =>
       </Group>
       <List tag="ul" :class="listShape" data-testid="items">
         <ListItem v-for="c in categories" :key="c.id">
-          <Link
-            href="#/categories"
-            variant="default"
-            :aria-current="((c.id === current) ? 'page' : undefined)"
+          <MenuEntry
+            :href="c.href"
             :class="cn('text-sm', linkShape, ((c.id === current) ? currentLook : otherLook))"
-            data-testid="item"
+            :current="(c.id === current)"
+            testid="item"
+            :block="true"
           >
             <template v-if="((icon as string) === 'show')">
               <Inline v-if="tiles" class="flex size-10 items-center justify-center rounded bg-muted">
@@ -113,7 +113,7 @@ const listShape = computed(() =>
             <Text v-if="((count as string) === 'show')" size="xs" class="text-muted-foreground">
               {{ (c.count == null ? undefined : String(c.count)) }}
             </Text>
-          </Link>
+          </MenuEntry>
         </ListItem>
       </List>
     </Container>

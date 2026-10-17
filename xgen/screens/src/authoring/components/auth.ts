@@ -21,7 +21,7 @@ export const authForm = spec(`${P}auth-form`, "AuthForm", "The form of AuthCard:
       when(and(ne(ref("mode"), "reset"), ne(ref("mode"), "magic")), [inputField("password", "password", ref("labels.password"), cond(eq(ref("mode"), "signup"), "new-password", "current-password"))]),
       when(eq(ref("mode"), "signin"), [use("Group", { props: { Justify: "between", Align: "center", Class: "flex-wrap gap-2" } },
         checkRow("remember", ref("labels.remember")),
-        use("Link", { props: { Href: "#/", Variant: "default", Class: "text-sm" } }, text(ref("labels.forgot"))))]),
+        use("Button", { props: { Variant: "link", Size: "sm", Class: "px-0" } }, text(ref("labels.forgot"))))]),
       when(eq(ref("mode"), "signup"), [checkRow("terms", ref("labels.terms"))]),
       use("Button", { props: { Variant: "default", Size: "default", Type: "submit", Class: "w-full" }, attrs: { "data-testid": "submit" } }, text(ref("submit")))),
   ],

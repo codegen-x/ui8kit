@@ -73,7 +73,7 @@
                 {capture $c_13}
                   {=ui_text(ui_get($v_g, ['title']))}
                 {/capture}
-                {=ui_include('ui/link/link.latte', ['p' => ['Href' => '#/', 'Variant' => 'default', 'Class' => 'text-sm', 'Attrs' => ui_attrs(['data-testid', 'group'])], 'children' => $c_13])|noescape}
+                {=ui_include('blocks/menu-entry.latte', ['p' => ['href' => ui_get($v_g, ['href']), 'className' => ui_cnv(['text-sm']), 'testid' => 'group'], 'children' => $c_13])|noescape}
               {/foreach}
             {/capture}
             {=ui_include('ui/group/group.latte', ['p' => ['Gap' => '4', 'Class' => 'flex-wrap'], 'children' => $c_14])|noescape}

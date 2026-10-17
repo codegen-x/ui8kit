@@ -108,45 +108,37 @@
               },
               "then": [
                 {
-                  "use": "Link",
+                  "organism": "MenuEntry",
                   "props": {
-                    "Href": {
+                    "href": {
                       "$": "l.href"
                     },
-                    "Variant": "default",
-                    "AriaCurrent": {
-                      "op": "cond",
+                    "className": "text-sm",
+                    "current": {
+                      "op": "eq",
                       "args": [
                         {
-                          "op": "eq",
-                          "args": [
-                            {
-                              "$": "l.id"
-                            },
-                            {
-                              "$": "current"
-                            }
-                          ]
+                          "$": "l.id"
                         },
-                        "page",
                         {
-                          "op": "undef",
-                          "args": []
+                          "$": "current"
                         }
                       ]
                     },
-                    "Class": "text-sm"
+                    "testid": "nav-link"
                   },
-                  "attrs": {
-                    "data-testid": "nav-link"
-                  },
-                  "children": [
-                    {
-                      "text": {
-                        "$": "l.name"
-                      }
+                  "slots": {
+                    "children": {
+                      "args": [],
+                      "do": [
+                        {
+                          "text": {
+                            "$": "l.name"
+                          }
+                        }
+                      ]
                     }
-                  ]
+                  }
                 }
               ]
             }

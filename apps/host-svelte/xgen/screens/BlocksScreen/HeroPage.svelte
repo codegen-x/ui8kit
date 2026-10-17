@@ -28,7 +28,7 @@
 
   const TERMINAL_FIELDS = {"id":"id","text":"title","kind":"metadata.line_kind.value"} as const;
   const PROMPTS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
-  const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
+  const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","href":"slug|route"} as const;
 
   const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS, CODEX);
   const prompts = fromCodex<Topic>(promptsEntries, PROMPTS_FIELDS, CODEX);

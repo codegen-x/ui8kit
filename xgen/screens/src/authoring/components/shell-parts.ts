@@ -1,11 +1,12 @@
 // Parts of DashboardShell: the top bar, the sidebar in four shapes, the placeholder content and the footer.
 // Collapsing and expanding the sidebar is a port contract (the toggle event); the parts draw one static state.
-import { and, call, cn, cond, each, eq, ref, text, undef, use, when, organism } from "../../build";
+import { and, call, cn, cond, each, eq, ref, text, use, when, organism } from "../../build";
 import type { OrganismSpec, Value, ViewNode } from "../../ir";
 import { spec, ts } from "../kit";
 import { tsOf } from "../props";
 import { muted } from "../ux";
 import { navBlockOf } from "./landmarks";
+import { currentOf, menuEntry } from "./nav";
 
 const P = "pattern.";
 const types = [{ from: "DashboardShell", names: ["ShellNav"] }];
@@ -15,7 +16,7 @@ const brand = (named: Value): ViewNode => use("Group", { props: { Gap: "2", Alig
   use("LucideIcon", { props: { Name: "layers", Size: 24 } }), use("Text", { props: { Size: "base", Weight: "bold", Class: cond(named, "", "sr-only") } }, text(ref("nav.brand"))));
 /** one link of a list: the icon and the name (hidden when `named` is false), the current one marked */
 const item = (l: string, current: Value, named: Value): ViewNode => use("ListItem", {},
-  use("Link", { props: { Href: "#/", Variant: "default", Size: "sm", AriaCurrent: cond(eq(ref(`${l}.id`), current), "page", undef()), Class: cn("flex items-center gap-4 rounded py-2", cond(named, "px-4", "justify-center px-2"), cond(eq(ref(`${l}.id`), current), "bg-muted font-medium", "")) }, attrs: { "data-testid": "item" } },
+  menuEntry(ref(`${l}.href`), { size: "sm", cls: cn("flex items-center gap-4 rounded py-2 text-sm", cond(named, "px-4", "justify-center px-2"), cond(eq(ref(`${l}.id`), current), "bg-muted font-medium", "")), current: currentOf(l, current), testid: "item" },
     use("LucideIcon", { props: { Name: ref(`${l}.icon`), Size: 16 } }), use("Inline", { props: { Class: cond(named, "", "sr-only") } }, text(ref(`${l}.name`)))));
 /** a grey bar of a placeholder */
 const bar = (cls: string): ViewNode => use("Box", { props: { Class: cn("rounded bg-muted", cls) } });
@@ -104,7 +105,7 @@ export const shellFooter = spec(`${P}shell-footer`, "ShellFooter", "The footer o
     muted(ref("nav.copyright"), "xs"),
     navBlockOf(ref("nav.footerLabel"), undefined, undefined,
       use("List", { props: { Class: "m-0 flex list-none items-center gap-4 p-0" } }, each(ref("nav.footer"), "f", ref("f.id"),
-        use("ListItem", {}, use("Link", { props: { Href: "#/", Variant: "muted", Size: "sm", Class: "text-xs" } }, text(ref("f.name"))))))),
+        use("ListItem", {}, menuEntry(ref("f.href"), { variant: "muted", size: "sm", cls: "text-xs text-muted-foreground" }, text(ref("f.name"))))))),
   )],
 });
 

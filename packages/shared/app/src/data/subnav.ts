@@ -5,12 +5,15 @@ export const subnav = [
   {
     "id": "subitem-all",
     "locale": "en",
-    "kind": "subitem",
+    "kind": "menu_item",
     "status": "published",
     "visibility": "public",
-    "slug": "all",
+    "slug": "orders-all",
     "title": "All orders",
     "metadata": {
+      "location": {
+        "value": "subnav"
+      },
       "icon": {
         "value": "inbox"
       }
@@ -23,12 +26,15 @@ export const subnav = [
   {
     "id": "subitem-drafts",
     "locale": "en",
-    "kind": "subitem",
+    "kind": "menu_item",
     "status": "published",
     "visibility": "public",
     "slug": "drafts",
     "title": "Drafts",
     "metadata": {
+      "location": {
+        "value": "subnav"
+      },
       "icon": {
         "value": "file-text"
       }
@@ -41,12 +47,15 @@ export const subnav = [
   {
     "id": "subitem-shipping",
     "locale": "en",
-    "kind": "subitem",
+    "kind": "menu_item",
     "status": "published",
     "visibility": "public",
     "slug": "shipping",
     "title": "Shipping",
     "metadata": {
+      "location": {
+        "value": "subnav"
+      },
       "icon": {
         "value": "truck"
       }
@@ -59,12 +68,15 @@ export const subnav = [
   {
     "id": "subitem-returns",
     "locale": "en",
-    "kind": "subitem",
+    "kind": "menu_item",
     "status": "published",
     "visibility": "public",
     "slug": "returns",
     "title": "Returns",
     "metadata": {
+      "location": {
+        "value": "subnav"
+      },
       "icon": {
         "value": "rotate-ccw"
       }
@@ -77,12 +89,15 @@ export const subnav = [
   {
     "id": "subitem-archive",
     "locale": "en",
-    "kind": "subitem",
+    "kind": "menu_item",
     "status": "published",
     "visibility": "public",
     "slug": "archive",
     "title": "Archive",
     "metadata": {
+      "location": {
+        "value": "subnav"
+      },
       "icon": {
         "value": "package"
       }
