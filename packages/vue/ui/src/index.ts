@@ -272,6 +272,8 @@ export { default as MenuEntry } from "./components/menu-entry.vue";
 export type { MenuEntryProps } from "./components/menu-entry.vue";
 export { default as NavActions } from "./components/nav-actions.vue";
 export type { NavActionsProps } from "./components/nav-actions.vue";
+export { default as NavBarMenu } from "./components/nav-bar-menu.vue";
+export type { NavBarMenuProps } from "./components/nav-bar-menu.vue";
 export { default as NavBlock } from "./components/nav-block.vue";
 export type { NavBlockProps } from "./components/nav-block.vue";
 export { default as NavLinks } from "./components/nav-links.vue";

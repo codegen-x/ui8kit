@@ -203,8 +203,11 @@ replace the string arrays `links`).
   collection, central map; kind and required/optional from the fixtures), its dictionary labels (`d.ui.*`), its settings (the deck
   copy `c` and the layout props of a part) and `emptyState` (true when every block it composes that reads data has one).
 - A template or part is done when every block it uses is done (blocks test); the magazine test checks no href and data-URI media.
-- Done: the 10 templates and the footer. The header stays todo with NavBar.
+- Done: the 10 templates, the footer and (step 17) the header.
 - The deck copy (`c.title`, `c.lead`, `c.cta`) is the per-deck text of the taste decks, not dictionary labels: kept as a setting.
+
+- Step 17: NavBar uses omit: its inline/search links sit in NavBarMenu (NavBlock + NavLinks), left out with no links; the
+  landmark label passes through (landmarks.ts). The split layout keeps its nav (brand and buttons are inside it).
 
 ## 8. Open questions (decided for now, review later)
 

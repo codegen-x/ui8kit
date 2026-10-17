@@ -504,55 +504,19 @@
                       ]
                     },
                     {
-                      "organism": "NavBlock",
+                      "organism": "NavBarMenu",
                       "props": {
                         "label": {
-                          "op": "cond",
-                          "args": [
-                            {
-                              "$": "landmarkLabel"
-                            },
-                            {
-                              "op": "uniq",
-                              "args": [
-                                {
-                                  "op": "tpl",
-                                  "args": [
-                                    "{0}, {1}",
-                                    {
-                                      "$": "label"
-                                    },
-                                    {
-                                      "$": "landmarkLabel"
-                                    }
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "$": "label"
-                            }
-                          ]
+                          "$": "label"
                         },
-                        "className": "order-last w-full overflow-x-auto md:order-none md:w-auto [&>div]:flex-nowrap md:[&>div]:flex-wrap [&_a]:shrink-0",
-                        "testid": "site-nav"
-                      },
-                      "slots": {
-                        "children": {
-                          "args": [],
-                          "do": [
-                            {
-                              "organism": "NavLinks",
-                              "props": {
-                                "links": {
-                                  "$": "links"
-                                },
-                                "current": {
-                                  "$": "current"
-                                }
-                              }
-                            }
-                          ]
+                        "links": {
+                          "$": "links"
+                        },
+                        "current": {
+                          "$": "current"
+                        },
+                        "landmarkLabel": {
+                          "$": "landmarkLabel"
                         }
                       }
                     },

@@ -3386,7 +3386,7 @@
       "surface": "kit-block",
       "spec": "block.navbar",
       "source": "xgen/specs/blocks/navbar.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "links",
@@ -3445,7 +3445,8 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "NewsletterForm",
@@ -7995,7 +7996,7 @@
       "id": "template.header",
       "surface": "magazine-part",
       "source": "apps/magazine/src/templates/header.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "d.navlinks",
@@ -8019,7 +8020,7 @@
         "cta"
       ],
       "labels": [],
-      "emptyState": false,
+      "emptyState": true,
       "uses": [
         "NavBar"
       ],

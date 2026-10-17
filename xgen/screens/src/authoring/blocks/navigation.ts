@@ -8,7 +8,7 @@ import { ifAny, tsOf, toneLite } from "../props";
 import { kids } from "../forms";
 import { emailRow } from "../forms";
 import { heading, muted, strong, surface } from "../ux";
-import { NavLink, Group, link, brandLink, currentOf, groupLinks, menuEntry, menuEntrySpec, navLinks, navActions, searchPalette, overMedia } from "../components/nav";
+import { NavLink, Group, link, brandLink, currentOf, groupLinks, menuEntry, menuEntrySpec, navLinks, navBarMenu, navActions, searchPalette, overMedia } from "../components/nav";
 import { footerColumns, footerCard } from "../components/footer";
 import { navBlockOf } from "../components/landmarks";
 
@@ -50,7 +50,7 @@ const navBar = spec(`${O}nav-bar`, "NavBar", "A top bar in four shapes. Axes: la
        when(eq(ref("layout"), "search"), [organism("SearchPalette", { label: ref("search.label"), shortcut: ref("search.shortcut") })]),
        // below md the links take a row of their own under the brand and the buttons, one line that scrolls sideways
        // instead of wrapping into a block of rows
-       navBlockOf(ref("label"), "order-last w-full overflow-x-auto md:order-none md:w-auto [&>div]:flex-nowrap md:[&>div]:flex-wrap [&_a]:shrink-0", "site-nav", links("all")),
+       organism("NavBarMenu", { label: ref("label"), links: ref("links"), current: ref("current") }),
        buttons()])];
     // over a picture: the header itself carries the picture layer (OverMedia) and turns transparent; it stays the root Block
     const bar = use("Block", { props: { Tag: "header", Class: cn("relative", cond(eq(ref("tone"), "inverse"), "border-b border-transparent bg-foreground text-background [&_a]:text-background [&_button]:text-background", "border-b border-border bg-background"), cond(eq(ref("over"), "media"), "isolate overflow-hidden border-0 bg-transparent", "")) }, attrs: { "data-testid": "nav-bar", "data-layout": ref("layout"), "data-tone": ref("tone") } },
@@ -182,4 +182,4 @@ const sitemapFooter = spec(`${O}sitemap-footer`, "SitemapFooter", "A footer with
   })(),
 });
 
-export const navigationOrganisms: OrganismSpec[] = [navBar, menuEntrySpec, navLinks, navActions, searchPalette, overMedia, megaMenu, sidebarNav, bottomNav, footerColumns, footerCard, sitemapFooter];
+export const navigationOrganisms: OrganismSpec[] = [navBar, menuEntrySpec, navLinks, navBarMenu, navActions, searchPalette, overMedia, megaMenu, sidebarNav, bottomNav, footerColumns, footerCard, sitemapFooter];

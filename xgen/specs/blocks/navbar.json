@@ -79,6 +79,7 @@
   "slots": [
     "MenuEntry",
     "NavActions",
+    "NavBarMenu",
     "NavBlock",
     "NavLinks",
     "OverMedia",

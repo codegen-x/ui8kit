@@ -121,6 +121,7 @@ export * from "./components/media-topics";
 export * from "./components/member-row";
 export * from "./components/menu-entry";
 export * from "./components/nav-actions";
+export * from "./components/nav-bar-menu";
 export * from "./components/nav-block";
 export * from "./components/nav-links";
 export * from "./components/number-field";

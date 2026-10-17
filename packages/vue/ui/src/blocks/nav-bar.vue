@@ -34,6 +34,7 @@ import Group from "../primitives/group/group.vue";
 import LinkPlain from "../primitives/link-plain/link-plain.vue";
 import MenuEntry from "../components/menu-entry.vue";
 import NavActions from "../components/nav-actions.vue";
+import NavBarMenu from "../components/nav-bar-menu.vue";
 import NavBlock from "../components/nav-block.vue";
 import NavLinks from "../components/nav-links.vue";
 import OverMedia from "../components/over-media.vue";
@@ -120,13 +121,7 @@ const emit = defineEmits<{ theme: [] }>();
             {{ brand }}
           </MenuEntry>
           <SearchPalette v-if="((layout as string) === 'search')" :label="search.label" :shortcut="search.shortcut" />
-          <NavBlock
-            :label="(landmarkLabel ? uniqLabel(tpl('{0}, {1}', label, landmarkLabel)) : label)"
-            :class="'order-last w-full overflow-x-auto md:order-none md:w-auto [&>div]:flex-nowrap md:[&>div]:flex-wrap [&_a]:shrink-0'"
-            testid="site-nav"
-          >
-            <NavLinks :links="links" :current="current" />
-          </NavBlock>
+          <NavBarMenu :label="label" :links="links" :current="current" :landmarkLabel="landmarkLabel" />
           <NavActions
             :login="actions?.login"
             :loginHref="actions?.loginHref"

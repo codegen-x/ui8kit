@@ -272,6 +272,8 @@ export { default as MenuEntry } from "./components/menu-entry.svelte";
 export type { MenuEntryProps } from "./components/menu-entry.svelte";
 export { default as NavActions } from "./components/nav-actions.svelte";
 export type { NavActionsProps } from "./components/nav-actions.svelte";
+export { default as NavBarMenu } from "./components/nav-bar-menu.svelte";
+export type { NavBarMenuProps } from "./components/nav-bar-menu.svelte";
 export { default as NavBlock } from "./components/nav-block.svelte";
 export type { NavBlockProps } from "./components/nav-block.svelte";
 export { default as NavLinks } from "./components/nav-links.svelte";

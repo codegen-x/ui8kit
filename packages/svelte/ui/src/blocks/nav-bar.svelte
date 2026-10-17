@@ -36,6 +36,7 @@
   import LinkPlain from "../primitives/link-plain/link-plain.svelte";
   import MenuEntry from "../components/menu-entry.svelte";
   import NavActions from "../components/nav-actions.svelte";
+  import NavBarMenu from "../components/nav-bar-menu.svelte";
   import NavBlock from "../components/nav-block.svelte";
   import NavLinks from "../components/nav-links.svelte";
   import OverMedia from "../components/over-media.svelte";
@@ -126,13 +127,7 @@
         {#if ((layout as string) === "search")}
           <SearchPalette label={search.label} shortcut={search.shortcut} />
         {/if}
-        <NavBlock
-          label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", label, landmarkLabel)) : label)}
-          class={"order-last w-full overflow-x-auto md:order-none md:w-auto [&>div]:flex-nowrap md:[&>div]:flex-wrap [&_a]:shrink-0"}
-          testid="site-nav"
-        >
-          <NavLinks links={links} current={current} />
-        </NavBlock>
+        <NavBarMenu label={label} links={links} current={current} landmarkLabel={landmarkLabel} />
         <NavActions
           login={actions?.login}
           loginHref={actions?.loginHref}

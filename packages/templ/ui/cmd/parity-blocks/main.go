@@ -720,6 +720,12 @@ func component(name string, props []byte) (templ.Component, error) {
 			return nil, err
 		}
 		return blocks.NavBar(p), nil
+	case "NavBarMenu":
+		var p blocks.NavBarMenuProps
+		if err := json.Unmarshal(props, &p); err != nil {
+			return nil, err
+		}
+		return blocks.NavBarMenu(p), nil
 	case "NavBlock":
 		var p blocks.NavBlockProps
 		if err := json.Unmarshal(props, &p); err != nil {

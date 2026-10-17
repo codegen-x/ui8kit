@@ -14,7 +14,7 @@
 {%- set v_over = (p.over ?? 'none') -%}
 {%- set v_skip = (p.skip ?? null) -%}
 {%- set v_landmarkLabel = (p.landmarkLabel ?? null) -%}
-{%- set c_13 -%}
+{%- set c_12 -%}
   {{ include('blocks/over-media.html.twig', {'p': {'on': ui_eq(v_over, 'media'), 'alt': v_brand}}, with_context = false) }}
   {%- if ui_t(v_skip) %}
     {%- set c_1 -%}
@@ -22,8 +22,8 @@
     {%- endset -%}
     {{ include('ui/link-plain/link-plain.html.twig', {'p': {'Href': '#main-content', 'Class': 'sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border', 'Attrs': ui_attrs(['data-testid', 'skip-link'])}, 'children': c_1}, with_context = false) }}
   {%- endif %}
-  {%- set c_12 -%}
-    {%- set c_11 -%}
+  {%- set c_11 -%}
+    {%- set c_10 -%}
       {%- if ui_t(ui_eq(v_layout, 'split')) %}
         {%- set c_8 -%}
           {%- set c_7 -%}
@@ -58,15 +58,12 @@
         {%- if ui_t(ui_eq(v_layout, 'search')) %}
           {{ include('blocks/search-palette.html.twig', {'p': {'label': ui_get(v_search, ['label']), 'shortcut': ui_get(v_search, ['shortcut'])}}, with_context = false) }}
         {%- endif %}
-        {%- set c_10 -%}
-          {{ include('blocks/nav-links.html.twig', {'p': {'links': v_links, 'current': v_current}}, with_context = false) }}
-        {%- endset -%}
-        {{ include('blocks/nav-block.html.twig', {'p': {'label': (ui_t(v_landmarkLabel) ? ui_uniq(ui_tpl('{0}, {1}', [v_label, v_landmarkLabel])) : v_label), 'className': ui_cnv(['order-last w-full overflow-x-auto md:order-none md:w-auto [&>div]:flex-nowrap md:[&>div]:flex-wrap [&_a]:shrink-0']), 'testid': 'site-nav'}, 'children': c_10}, with_context = false) }}
+        {{ include('blocks/nav-bar-menu.html.twig', {'p': {'label': v_label, 'links': v_links, 'current': v_current, 'landmarkLabel': v_landmarkLabel}}, with_context = false) }}
         {{ include('blocks/nav-actions.html.twig', {'p': {'login': ui_get(v_actions, ['login']), 'loginHref': ui_get(v_actions, ['loginHref']), 'cta': ui_get(v_actions, ['cta']), 'ctaHref': ui_get(v_actions, ['href']), 'actions': ui_get(v_actions, ['mode']), 'tone': v_tone, 'themeLabel': ui_get(v_actions, ['themeLabel'])}}, with_context = false) }}
       {%- endif %}
     {%- endset -%}
-    {{ include('ui/box/box.html.twig', {'p': {'Class': ui_s(ui_cnv(['flex flex-wrap items-center justify-between gap-4', 'py-4']))}, 'children': c_11}, with_context = false) }}
+    {{ include('ui/box/box.html.twig', {'p': {'Class': ui_s(ui_cnv(['flex flex-wrap items-center justify-between gap-4', 'py-4']))}, 'children': c_10}, with_context = false) }}
   {%- endset -%}
-  {{ include('ui/container/container.html.twig', {'p': {'Class': 'mx-auto w-full max-w-6xl px-4', 'Attrs': ui_attrs(['data-slot', 'container'])}, 'children': c_12}, with_context = false) }}
+  {{ include('ui/container/container.html.twig', {'p': {'Class': 'mx-auto w-full max-w-6xl px-4', 'Attrs': ui_attrs(['data-slot', 'container'])}, 'children': c_11}, with_context = false) }}
 {%- endset -%}
-{{ include('ui/block/block.html.twig', {'p': {'Tag': 'header', 'Class': ui_s(ui_cnv(['relative', (ui_t(ui_eq(v_tone, 'inverse')) ? 'border-b border-transparent bg-foreground text-background [&_a]:text-background [&_button]:text-background' : 'border-b border-border bg-background'), (ui_t(ui_eq(v_over, 'media')) ? 'isolate overflow-hidden border-0 bg-transparent' : '')])), 'Attrs': ui_attrs(['data-testid', 'nav-bar', 'data-layout', v_layout, 'data-tone', v_tone, 'aria-label', v_landmarkLabel])}, 'children': c_13}, with_context = false) }}
+{{ include('ui/block/block.html.twig', {'p': {'Tag': 'header', 'Class': ui_s(ui_cnv(['relative', (ui_t(ui_eq(v_tone, 'inverse')) ? 'border-b border-transparent bg-foreground text-background [&_a]:text-background [&_button]:text-background' : 'border-b border-border bg-background'), (ui_t(ui_eq(v_over, 'media')) ? 'isolate overflow-hidden border-0 bg-transparent' : '')])), 'Attrs': ui_attrs(['data-testid', 'nav-bar', 'data-layout', v_layout, 'data-tone', v_tone, 'aria-label', v_landmarkLabel])}, 'children': c_12}, with_context = false) }}

@@ -14,7 +14,7 @@
 {%- set v_over = ui_def(p['over'], 'none') -%}
 {%- set v_skip = ui_def(p['skip'], none) -%}
 {%- set v_landmarkLabel = ui_def(p['landmarkLabel'], none) -%}
-{%- set c_13 -%}
+{%- set c_12 -%}
   {{ ui_include('blocks/over-media.html.j2', {'p': {'on': ui_eq(v_over, 'media'), 'alt': v_brand}}) }}
   {%- if ui_t(v_skip) %}
     {%- set c_1 -%}
@@ -22,8 +22,8 @@
     {%- endset -%}
     {{ ui_include('ui/link-plain/link-plain.html.j2', {'p': {'Href': '#main-content', 'Class': 'sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:inset-ring focus:inset-ring-border', 'Attrs': ui_attrs(['data-testid', 'skip-link'])}, 'children': c_1}) }}
   {%- endif %}
-  {%- set c_12 -%}
-    {%- set c_11 -%}
+  {%- set c_11 -%}
+    {%- set c_10 -%}
       {%- if ui_t(ui_eq(v_layout, 'split')) %}
         {%- set c_8 -%}
           {%- set c_7 -%}
@@ -58,15 +58,12 @@
         {%- if ui_t(ui_eq(v_layout, 'search')) %}
           {{ ui_include('blocks/search-palette.html.j2', {'p': {'label': ui_get(v_search, ['label']), 'shortcut': ui_get(v_search, ['shortcut'])}}) }}
         {%- endif %}
-        {%- set c_10 -%}
-          {{ ui_include('blocks/nav-links.html.j2', {'p': {'links': v_links, 'current': v_current}}) }}
-        {%- endset -%}
-        {{ ui_include('blocks/nav-block.html.j2', {'p': {'label': (ui_uniq(ui_tpl('{0}, {1}', [v_label, v_landmarkLabel])) if ui_t(v_landmarkLabel) else v_label), 'className': ui_cnv(['order-last w-full overflow-x-auto md:order-none md:w-auto [&>div]:flex-nowrap md:[&>div]:flex-wrap [&_a]:shrink-0']), 'testid': 'site-nav'}, 'children': c_10}) }}
+        {{ ui_include('blocks/nav-bar-menu.html.j2', {'p': {'label': v_label, 'links': v_links, 'current': v_current, 'landmarkLabel': v_landmarkLabel}}) }}
         {{ ui_include('blocks/nav-actions.html.j2', {'p': {'login': ui_get(v_actions, ['login']), 'loginHref': ui_get(v_actions, ['loginHref']), 'cta': ui_get(v_actions, ['cta']), 'ctaHref': ui_get(v_actions, ['href']), 'actions': ui_get(v_actions, ['mode']), 'tone': v_tone, 'themeLabel': ui_get(v_actions, ['themeLabel'])}}) }}
       {%- endif %}
     {%- endset -%}
-    {{ ui_include('ui/box/box.html.j2', {'p': {'Class': ui_s(ui_cnv(['flex flex-wrap items-center justify-between gap-4', 'py-4']))}, 'children': c_11}) }}
+    {{ ui_include('ui/box/box.html.j2', {'p': {'Class': ui_s(ui_cnv(['flex flex-wrap items-center justify-between gap-4', 'py-4']))}, 'children': c_10}) }}
   {%- endset -%}
-  {{ ui_include('ui/container/container.html.j2', {'p': {'Class': 'mx-auto w-full max-w-6xl px-4', 'Attrs': ui_attrs(['data-slot', 'container'])}, 'children': c_12}) }}
+  {{ ui_include('ui/container/container.html.j2', {'p': {'Class': 'mx-auto w-full max-w-6xl px-4', 'Attrs': ui_attrs(['data-slot', 'container'])}, 'children': c_11}) }}
 {%- endset -%}
-{{ ui_include('ui/block/block.html.j2', {'p': {'Tag': 'header', 'Class': ui_s(ui_cnv(['relative', ('border-b border-transparent bg-foreground text-background [&_a]:text-background [&_button]:text-background' if ui_t(ui_eq(v_tone, 'inverse')) else 'border-b border-border bg-background'), ('isolate overflow-hidden border-0 bg-transparent' if ui_t(ui_eq(v_over, 'media')) else '')])), 'Attrs': ui_attrs(['data-testid', 'nav-bar', 'data-layout', v_layout, 'data-tone', v_tone, 'aria-label', v_landmarkLabel])}, 'children': c_13}) }}
+{{ ui_include('ui/block/block.html.j2', {'p': {'Tag': 'header', 'Class': ui_s(ui_cnv(['relative', ('border-b border-transparent bg-foreground text-background [&_a]:text-background [&_button]:text-background' if ui_t(ui_eq(v_tone, 'inverse')) else 'border-b border-border bg-background'), ('isolate overflow-hidden border-0 bg-transparent' if ui_t(ui_eq(v_over, 'media')) else '')])), 'Attrs': ui_attrs(['data-testid', 'nav-bar', 'data-layout', v_layout, 'data-tone', v_tone, 'aria-label', v_landmarkLabel])}, 'children': c_12}) }}

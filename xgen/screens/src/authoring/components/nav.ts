@@ -5,6 +5,7 @@ import type { Value, ViewNode } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { ifAny, tsOf } from "../props";
 import { kids } from "../forms";
+import { navBlockOf } from "./landmarks";
 
 const P = "pattern.";
 export const NavLink = fields(["id", "string"], ["name", "string"], ["icon", "string"], ["href", "string", true]);
@@ -61,6 +62,18 @@ export const navLinks = spec(`${P}nav-links`, "NavLinks", "The links of a top ba
     return [ifAny("links", [use("Group", { props: { Gap: "4", Align: "center", Class: "flex-wrap" } },
       eachAt(ref("links"), "l", "i", ref("l.id"), when(shown, [link("l", ref("current"))])))])];
   })(),
+});
+
+/** the links of NavBar in their nav landmark; no links: no landmark (emptyMode omit) */
+export const navBarMenu = spec(`${P}nav-bar-menu`, "NavBarMenu", "The links of NavBar in a nav landmark; left out when there are no links.", {
+  typeImports: [{ from: "NavBar", names: ["NavLink"] }],
+  props: [
+    { name: "label", type: "string", required: true, docs: "accessible name of the navigation" },
+    { name: "links", type: ts("NavLink[]"), required: true },
+    { name: "current", type: "string", default: "", docs: "id of the current link" },
+  ],
+  // below md the links take a row of their own under the brand and the buttons, one line that scrolls sideways
+  view: [ifAny("links", [navBlockOf(ref("label"), "order-last w-full overflow-x-auto md:order-none md:w-auto [&>div]:flex-nowrap md:[&>div]:flex-wrap [&_a]:shrink-0", "site-nav", organism("NavLinks", { links: ref("links"), current: ref("current") }))])],
 });
 
 /** the buttons at the end of a bar: login, call to action, theme */

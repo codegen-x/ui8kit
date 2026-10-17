@@ -15,6 +15,7 @@ import { Group } from "../primitives/group/group";
 import { LinkPlain } from "../primitives/link-plain/link-plain";
 import { MenuEntry } from "../components/menu-entry";
 import { NavActions } from "../components/nav-actions";
+import { NavBarMenu } from "../components/nav-bar-menu";
 import { NavBlock } from "../components/nav-block";
 import { NavLinks } from "../components/nav-links";
 import { OverMedia } from "../components/over-media";
@@ -122,13 +123,7 @@ export function NavBar({
               {((layout as string) === "search") ? (
                 <SearchPalette label={search.label} shortcut={search.shortcut} />
               ) : null}
-              <NavBlock
-                label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", label, landmarkLabel)) : label)}
-                className={"order-last w-full overflow-x-auto md:order-none md:w-auto [&>div]:flex-nowrap md:[&>div]:flex-wrap [&_a]:shrink-0"}
-                testid="site-nav"
-              >
-                <NavLinks links={links} current={current} />
-              </NavBlock>
+              <NavBarMenu label={label} links={links} current={current} landmarkLabel={landmarkLabel} />
               <NavActions
                 login={actions?.login}
                 loginHref={actions?.loginHref}

@@ -78,9 +78,7 @@ templ NavBar(p NavBarProps) {
 					if uiutils.Eq(vLayout, "search") {
 						@SearchPalette(SearchPaletteProps{Label: uiutils.Get(vSearch, "label"), Shortcut: uiutils.Get(vSearch, "shortcut")})
 					}
-					@NavBlock(NavBlockProps{Label: uiutils.Cond(uiutils.T(vLandmarkLabel), uiutils.Uniq(uiutils.Tpl("{0}, {1}", vLabel, vLandmarkLabel)), vLabel), Class: uiutils.Cnv("order-last w-full overflow-x-auto md:order-none md:w-auto [&>div]:flex-nowrap md:[&>div]:flex-wrap [&_a]:shrink-0"), Testid: "site-nav"}) {
-						@NavLinks(NavLinksProps{Links: vLinks, Current: vCurrent})
-					}
+					@NavBarMenu(NavBarMenuProps{Label: vLabel, Links: vLinks, Current: vCurrent, LandmarkLabel: vLandmarkLabel})
 					@NavActions(NavActionsProps{Login: uiutils.Get(vActions, "login"), LoginHref: uiutils.Get(vActions, "loginHref"), Cta: uiutils.Get(vActions, "cta"), CtaHref: uiutils.Get(vActions, "href"), Actions: uiutils.Get(vActions, "mode"), Tone: vTone, ThemeLabel: uiutils.Get(vActions, "themeLabel")})
 				}
 			}
