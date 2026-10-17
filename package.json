@@ -38,6 +38,7 @@
     "check": "bun xgen/cli/src/cli.ts check",
     "codex:manifest": "bun xgen/schema/src/codex.ts",
     "codex:validate": "bun xgen/schema/src/codex-validate.ts",
+    "codex:blocks": "bun xgen/schema/src/codex-blocks.ts",
     "rules": "bun xgen/check/tools/rules.ts",
     "rules:baseline": "bun xgen/check/tools/rules.ts --write",
     "audit:push": "bash packages/tooling/bin/audit.sh",

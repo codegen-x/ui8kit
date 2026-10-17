@@ -28,7 +28,7 @@ apps/        host apps           host-svelte, host-react, host-vue, host-solid: 
 ```
 bun install
 bun run build         # xgen build: specs + fixtures + content  ->  packages/*/ui (8 runtimes), packages/shared/app and apps/host-*
-bun run check         # xgen check: schema, props, a11y, authored, coverage, recipes, nonportable, text, dictionary, blocks, registry, themes, routes, structure, hardcode, corners, shadows, spacing, readability, dead, duplicates, versions, tests, rules, drift, and real-engine parity: templ, solid, twig, jinja2, latte
+bun run check         # xgen check: schema, props, a11y, authored, coverage, recipes, nonportable, text, dictionary, blocks, registry, themes, routes, structure, hardcode, corners, shadows, spacing, readability, dead, duplicates, versions, tests, rules, codex, drift, and real-engine parity: templ, solid, twig, jinja2, latte
                       # (templ needs Go, twig/latte PHP + composer, jinja2 Python; each skips without its toolchain, UI8KIT_REQUIRE_ALL_RUNTIMES=1 makes a skip fail)
 bun run typecheck     # svelte-check / tsc / vue-tsc on the TS UI packages, the shared core and the hosts (typecheck:xgen: tsc on xgen itself)
 bun run build:hosts   # vite build of the four host apps (every screen is a lazy chunk)

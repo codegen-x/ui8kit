@@ -14,4 +14,7 @@ Part of xgen (see `../README.md`). Self-contained: depends only on other `@ui8ki
 entry kinds it reads; a block with status `done` also names its central field map (`CODEX_FIELDS` in
 `xgen/runtimes/core/assets/app/fields.ts`), the required and optional entry fields, settings props and dictionary labels.
 `test/blocks.test.ts` checks the fields against `codex/manifest.json`, the fixtures against the contract validator and the mapping.
+The file is generated: `bun run codex:blocks` (`src/codex-blocks.ts`) derives ids, sources, bindings, settings, labels, empty state and
+uses from the specs, templates and screens and keeps the hand fields (`status`, `required` / `optional`, `note`, `emptyMode`);
+`xgen check` group `codex` fails when it is behind the sources.
 Inventory and mismatches: `xgen/docs/block-data.md`.

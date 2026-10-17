@@ -16,15 +16,37 @@
           "collection": "stats",
           "kind": "stat",
           "record": "Stat",
-          "map": "stat"
+          "map": "stat",
+          "list": true
         },
         {
           "prop": "values",
           "collection": "values",
           "kind": "value",
-          "record": "Feature"
+          "record": "Feature",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "company.about.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "company.about.lead",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "AboutMe",
@@ -34,18 +56,63 @@
       "status": "todo",
       "data": [
         {
-          "prop": "profilefacts",
+          "prop": "facts",
           "collection": "profilefacts",
           "kind": "profilefact",
-          "record": "Spec"
+          "record": "Spec",
+          "list": true
         },
         {
           "prop": "skills",
           "collection": "skills",
           "kind": "skill",
-          "record": "Skill"
+          "record": "Skill",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "level",
+        "layout",
+        "mediaSide",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "company.aboutMe.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "company.aboutMe.lead",
+          "keys": []
+        },
+        {
+          "prop": "badge",
+          "dictionary": "company.aboutMe.badge",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "company.aboutMe",
+          "keys": [
+            "level"
+          ]
+        },
+        {
+          "prop": "actions.cta",
+          "dictionary": "company.aboutMe.cta",
+          "keys": []
+        },
+        {
+          "prop": "actions.secondary",
+          "dictionary": "company.aboutMe.more",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "FeatureAccordion",
@@ -58,9 +125,27 @@
           "prop": "features",
           "collection": "features",
           "kind": "feature",
-          "record": "Feature"
+          "record": "Feature",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "expand",
+        "media",
+        "multiple",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "vibe.accordion.title",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "ActivityFeed",
@@ -70,12 +155,33 @@
       "status": "todo",
       "data": [
         {
-          "prop": "activity",
+          "prop": "events",
           "collection": "activity",
           "kind": "event",
-          "record": "Event"
+          "record": "Event",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "density",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "dashboard.activity.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "dashboard.activity.text",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "AnnouncementBar",
@@ -83,7 +189,45 @@
       "spec": "block.announcement",
       "source": "xgen/specs/blocks/announcement.json",
       "status": "todo",
-      "data": []
+      "data": [],
+      "settings": [
+        "ctaHref",
+        "icon",
+        "tone",
+        "layout",
+        "dismiss",
+        "badge",
+        "position",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "label",
+          "dictionary": "promo.announcement.label",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "promo.announcement.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "promo.announcement.cta",
+          "keys": []
+        },
+        {
+          "prop": "dismissLabel",
+          "dictionary": "promo.announcement.dismiss",
+          "keys": []
+        },
+        {
+          "prop": "badgeLabel",
+          "dictionary": "promo.announcement.badge",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "ArticleBody",
@@ -93,12 +237,33 @@
       "status": "todo",
       "data": [
         {
-          "prop": "article",
+          "prop": "sections",
           "collection": "article",
           "kind": "section",
-          "record": "Section"
+          "record": "Section",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "quotes",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "vibe.article.title",
+          "keys": []
+        },
+        {
+          "prop": "tocTitle",
+          "dictionary": "vibe.article.toc",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "AuthCard",
@@ -106,7 +271,59 @@
       "spec": "block.auth",
       "source": "xgen/specs/blocks/auth.json",
       "status": "todo",
-      "data": []
+      "data": [],
+      "settings": [
+        "id",
+        "switchHref",
+        "mode",
+        "layout",
+        "social",
+        "level",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "auth.signin.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "auth.signin.text",
+          "keys": []
+        },
+        {
+          "prop": "submit",
+          "dictionary": "auth.signin.submit",
+          "keys": []
+        },
+        {
+          "prop": "switchText",
+          "dictionary": "auth.signin.switchText",
+          "keys": []
+        },
+        {
+          "prop": "switchLink",
+          "dictionary": "auth.signin.switchLink",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "auth.labels",
+          "keys": [
+            "name",
+            "email",
+            "password",
+            "remember",
+            "forgot",
+            "terms",
+            "divider",
+            "passkey",
+            "magic"
+          ]
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "AuthLayout",
@@ -114,7 +331,69 @@
       "spec": "block.authpage",
       "source": "xgen/specs/blocks/authpage.json",
       "status": "todo",
-      "data": []
+      "data": [],
+      "settings": [
+        "id",
+        "level",
+        "layout",
+        "side",
+        "mode",
+        "social",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "auth.signin.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "auth.signin.text",
+          "keys": []
+        },
+        {
+          "prop": "submit",
+          "dictionary": "auth.signin.submit",
+          "keys": []
+        },
+        {
+          "prop": "switchTo.text",
+          "dictionary": "auth.signin.switchText",
+          "keys": []
+        },
+        {
+          "prop": "switchTo.link",
+          "dictionary": "auth.signin.switchLink",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "auth.labels",
+          "keys": [
+            "name",
+            "email",
+            "password",
+            "remember",
+            "forgot",
+            "terms",
+            "divider",
+            "passkey",
+            "magic"
+          ]
+        },
+        {
+          "prop": "visual.title",
+          "dictionary": "vibe.authpage.visualTitle",
+          "keys": []
+        },
+        {
+          "prop": "visual.text",
+          "dictionary": "vibe.authpage.visualText",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "BeforeAfter",
@@ -124,12 +403,37 @@
       "status": "todo",
       "data": [
         {
-          "prop": "beforeafter",
+          "prop": "points",
           "collection": "beforeafter",
           "kind": "point",
-          "record": "Contrast"
+          "record": "Contrast",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "icons",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "vibe.beforeafter.title",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "vibe.beforeafter.labels",
+          "keys": [
+            "before",
+            "after"
+          ]
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "BentoGrid",
@@ -139,12 +443,29 @@
       "status": "todo",
       "data": [
         {
-          "prop": "bento",
+          "prop": "tiles",
           "collection": "bento",
           "kind": "tile",
-          "record": "Tile"
+          "record": "Tile",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "media",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "vibe.bento.title",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "BottomNav",
@@ -157,9 +478,25 @@
           "prop": "tabs",
           "collection": "tabs",
           "kind": "tab",
-          "record": "NavLink"
+          "record": "NavLink",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "current",
+        "labels",
+        "position",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "label",
+          "dictionary": "vibe.bottom.label",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "CartList",
@@ -169,12 +506,45 @@
       "status": "todo",
       "data": [
         {
-          "prop": "cart",
+          "prop": "lines",
           "collection": "cart",
           "kind": "cartline",
-          "record": "CartLine"
+          "record": "CartLine",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "media",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "commerce.cart.title",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "commerce.cart",
+          "keys": [
+            "caption",
+            "product",
+            "price",
+            "qty",
+            "total",
+            "remove",
+            "subtotal",
+            "checkout",
+            "decrease",
+            "increase"
+          ]
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "CartDrawer",
@@ -184,18 +554,57 @@
       "status": "todo",
       "data": [
         {
-          "prop": "cart",
+          "prop": "lines",
           "collection": "cart",
           "kind": "cartline",
-          "record": "CartLine"
+          "record": "CartLine",
+          "list": true
         },
         {
-          "prop": "summary",
+          "prop": "rows",
           "collection": "summary",
           "kind": "summaryrow",
-          "record": "SummaryRow"
+          "record": "SummaryRow",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "state",
+        "media",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "labels",
+          "dictionary": "commerce.cart",
+          "keys": [
+            "caption",
+            "product",
+            "price",
+            "qty",
+            "total",
+            "remove",
+            "subtotal",
+            "checkout",
+            "decrease",
+            "increase"
+          ]
+        },
+        {
+          "prop": "drawer",
+          "dictionary": "commerce.drawer",
+          "keys": [
+            "title",
+            "close",
+            "progress",
+            "empty",
+            "emptyText",
+            "browse"
+          ]
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "ShoppingCart",
@@ -205,24 +614,81 @@
       "status": "todo",
       "data": [
         {
-          "prop": "cart",
+          "prop": "lines",
           "collection": "cart",
           "kind": "cartline",
-          "record": "CartLine"
+          "record": "CartLine",
+          "list": true
         },
         {
-          "prop": "summary",
+          "prop": "rows",
           "collection": "summary",
           "kind": "summaryrow",
-          "record": "SummaryRow"
+          "record": "SummaryRow",
+          "list": true
         },
         {
           "prop": "promos",
           "collection": "promos",
           "kind": "promo",
-          "record": "Promo"
+          "record": "Promo",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "promo",
+        "progress",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "commerce.cartPage.title",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "commerce.cart",
+          "keys": [
+            "caption",
+            "product",
+            "price",
+            "qty",
+            "total",
+            "remove",
+            "subtotal",
+            "checkout",
+            "decrease",
+            "increase"
+          ]
+        },
+        {
+          "prop": "totals",
+          "dictionary": "commerce.totals",
+          "keys": [
+            "title",
+            "items",
+            "promo",
+            "apply",
+            "codes",
+            "progress",
+            "checkout",
+            "note"
+          ]
+        },
+        {
+          "prop": "actions",
+          "dictionary": "commerce.cartPage",
+          "keys": [
+            "back",
+            "clear"
+          ]
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "CategoryNav",
@@ -235,9 +701,37 @@
           "prop": "categories",
           "collection": "categories",
           "kind": "category",
-          "record": "Category"
+          "record": "Category",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "current",
+        "layout",
+        "count",
+        "icon",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "label",
+          "dictionary": "commerce.nav.label",
+          "keys": []
+        },
+        {
+          "prop": "tools",
+          "dictionary": "commerce.tools",
+          "keys": [
+            "search",
+            "sort",
+            "sortValue",
+            "shown",
+            "query"
+          ]
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "SupportChannels",
@@ -250,9 +744,31 @@
           "prop": "channels",
           "collection": "channels",
           "kind": "channel",
-          "record": "Feature"
+          "record": "Feature",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "cols",
+        "action",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "support.channels.title",
+          "keys": []
+        },
+        {
+          "prop": "open",
+          "dictionary": "support.channels.open",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "ChartPanel",
@@ -265,9 +781,40 @@
           "prop": "series",
           "collection": "series",
           "kind": "point",
-          "record": "Point"
+          "record": "Point",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "chart",
+        "size",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "dashboard.chart.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "dashboard.chart.text",
+          "keys": []
+        },
+        {
+          "prop": "summary",
+          "dictionary": "dashboard.chart.summary",
+          "keys": []
+        },
+        {
+          "prop": "percent",
+          "dictionary": "dashboard.chart.percent",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "Checklist",
@@ -277,12 +824,35 @@
       "status": "todo",
       "data": [
         {
-          "prop": "checklist",
+          "prop": "tasks",
           "collection": "checklist",
           "kind": "task",
-          "record": "Task"
+          "record": "Task",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "progress",
+        "marker",
+        "detail",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "onboarding.checklist.title",
+          "keys": []
+        },
+        {
+          "prop": "progressLabel",
+          "dictionary": "onboarding.checklist.progress",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "CheckoutForm",
@@ -295,33 +865,93 @@
           "prop": "days",
           "collection": "days",
           "kind": "day",
-          "record": "Day"
+          "record": "Day",
+          "list": true
         },
         {
           "prop": "payments",
           "collection": "payments",
           "kind": "payment",
-          "record": "Payment"
+          "record": "Payment",
+          "list": true
         },
         {
-          "prop": "cart",
+          "prop": "lines",
           "collection": "cart",
           "kind": "cartline",
-          "record": "CartLine"
+          "record": "CartLine",
+          "list": true
         },
         {
-          "prop": "summary",
+          "prop": "rows",
           "collection": "summary",
           "kind": "summaryrow",
-          "record": "SummaryRow"
+          "record": "SummaryRow",
+          "list": true
         },
         {
           "prop": "promos",
           "collection": "promos",
           "kind": "promo",
-          "record": "Promo"
+          "record": "Promo",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "summary",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "commerce.checkout.title",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "commerce.checkout",
+          "keys": [
+            "contacts",
+            "contactsText",
+            "name",
+            "phone",
+            "email",
+            "address",
+            "addressText",
+            "street",
+            "house",
+            "flat",
+            "entrance",
+            "floor",
+            "comment",
+            "slot",
+            "slotText",
+            "payment",
+            "paymentText",
+            "consent",
+            "submit",
+            "legal"
+          ]
+        },
+        {
+          "prop": "totals",
+          "dictionary": "commerce.totals",
+          "keys": [
+            "title",
+            "items",
+            "promo",
+            "apply",
+            "codes",
+            "progress",
+            "checkout",
+            "note"
+          ]
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "ComparisonTable",
@@ -331,18 +961,48 @@
       "status": "todo",
       "data": [
         {
-          "prop": "compare",
+          "prop": "rows",
           "collection": "compare",
           "kind": "row",
-          "record": "CompareRow"
+          "record": "CompareRow",
+          "list": true
         },
         {
-          "prop": "rivals",
+          "prop": "rows",
           "collection": "rivals",
           "kind": "row",
-          "record": "CompareRow"
+          "record": "CompareRow",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "highlight",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "vibe.compare.title",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "vibe.compare.labels",
+          "keys": [
+            "caption",
+            "feature",
+            "a",
+            "b",
+            "c",
+            "yes",
+            "no"
+          ]
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "ContactForm",
@@ -352,12 +1012,48 @@
       "status": "todo",
       "data": [
         {
-          "prop": "channels",
+          "prop": "details",
           "collection": "channels",
           "kind": "channel",
-          "record": "Feature"
+          "record": "Feature",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "fields",
+        "terms",
+        "level",
+        "page",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "support.contact.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "support.contact.text",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "support.contact.labels",
+          "keys": [
+            "name",
+            "email",
+            "subject",
+            "message",
+            "consent",
+            "submit"
+          ]
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "CookieBanner",
@@ -365,7 +1061,42 @@
       "spec": "block.cookie",
       "source": "xgen/specs/blocks/cookie.json",
       "status": "todo",
-      "data": []
+      "data": [],
+      "settings": [
+        "id",
+        "layout",
+        "actions",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "promo.cookie.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "promo.cookie.text",
+          "keys": []
+        },
+        {
+          "prop": "accept",
+          "dictionary": "promo.cookie.accept",
+          "keys": []
+        },
+        {
+          "prop": "decline",
+          "dictionary": "promo.cookie.decline",
+          "keys": []
+        },
+        {
+          "prop": "settings",
+          "dictionary": "promo.cookie.settings",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "CreditPacks",
@@ -375,12 +1106,42 @@
       "status": "todo",
       "data": [
         {
-          "prop": "credits",
+          "prop": "packs",
           "collection": "credits",
           "kind": "pack",
-          "record": "Pack"
+          "record": "Pack",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "cols",
+        "item",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "vibe.credits.title",
+          "keys": []
+        },
+        {
+          "prop": "badges",
+          "dictionary": "vibe.credits.badges",
+          "keys": [
+            "popular",
+            "best"
+          ]
+        },
+        {
+          "prop": "buy",
+          "dictionary": "vibe.credits.buy",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "CtaBand",
@@ -388,7 +1149,53 @@
       "spec": "block.cta",
       "source": "xgen/specs/blocks/cta.json",
       "status": "todo",
-      "data": []
+      "data": [],
+      "settings": [
+        "id",
+        "layout",
+        "tone",
+        "proof",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "site.home.ctaTitle",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "site.home.ctaText",
+          "keys": []
+        },
+        {
+          "prop": "actions.cta",
+          "dictionary": "site.home.ctaButton",
+          "keys": []
+        },
+        {
+          "prop": "actions.secondary",
+          "dictionary": "site.home.ctaSecondary",
+          "keys": []
+        },
+        {
+          "prop": "actions.emailLabel",
+          "dictionary": "promo.newsletter.label",
+          "keys": []
+        },
+        {
+          "prop": "quote.text",
+          "dictionary": "vibe.cta.quote",
+          "keys": []
+        },
+        {
+          "prop": "quote.by",
+          "dictionary": "vibe.cta.quoteBy",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "CtaProof",
@@ -398,31 +1205,76 @@
       "status": "todo",
       "data": [
         {
-          "prop": "logos",
+          "prop": "content.logos",
           "collection": "logos",
           "kind": "logo",
-          "record": "Logo"
+          "record": "Logo",
+          "list": true
         },
         {
-          "prop": "features",
+          "prop": "content.features",
           "collection": "features",
           "kind": "feature",
-          "record": "Feature"
+          "record": "Feature",
+          "list": true
         },
         {
-          "prop": "stats",
+          "prop": "content.stats",
           "collection": "stats",
           "kind": "stat",
           "record": "Stat",
-          "map": "stat"
+          "map": "stat",
+          "list": true
         },
         {
-          "prop": "zones",
+          "prop": "content.zones",
           "collection": "zones",
           "kind": "zone",
-          "record": "Zone"
+          "record": "Zone",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "proof",
+        "mediaSide",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.ctaProof.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "marketing.ctaProof.lead",
+          "keys": []
+        },
+        {
+          "prop": "badge",
+          "dictionary": "marketing.ctaProof.badge",
+          "keys": []
+        },
+        {
+          "prop": "actions.cta",
+          "dictionary": "marketing.ctaProof.cta",
+          "keys": []
+        },
+        {
+          "prop": "actions.secondary",
+          "dictionary": "marketing.ctaProof.secondary",
+          "keys": []
+        },
+        {
+          "prop": "note",
+          "dictionary": "marketing.ctaProof.note",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "DashboardShell",
@@ -432,24 +1284,92 @@
       "status": "todo",
       "data": [
         {
-          "prop": "sidenav",
+          "prop": "nav.links",
           "collection": "sidenav",
           "kind": "item",
-          "record": "NavLink"
+          "record": "NavLink",
+          "list": true
         },
         {
-          "prop": "subnav",
+          "prop": "nav.sub",
           "collection": "subnav",
           "kind": "subitem",
-          "record": "NavLink"
+          "record": "NavLink",
+          "list": true
         },
         {
-          "prop": "helplinks",
+          "prop": "nav.footer",
           "collection": "helplinks",
           "kind": "helplink",
-          "record": "NavLink"
+          "record": "NavLink",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "level",
+        "topbar",
+        "search",
+        "sidebar",
+        "side",
+        "footer",
+        "content",
+        "frame",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "dashboard.shells.title",
+          "keys": []
+        },
+        {
+          "prop": "nav.label",
+          "dictionary": "dashboard.shells.label",
+          "keys": []
+        },
+        {
+          "prop": "nav.brand",
+          "dictionary": "site.header.brand",
+          "keys": []
+        },
+        {
+          "prop": "nav.subTitle",
+          "dictionary": "dashboard.shells.subTitle",
+          "keys": []
+        },
+        {
+          "prop": "nav.search",
+          "dictionary": "dashboard.shells.search",
+          "keys": []
+        },
+        {
+          "prop": "nav.shortcut",
+          "dictionary": "dashboard.shells.shortcut",
+          "keys": []
+        },
+        {
+          "prop": "nav.expand",
+          "dictionary": "dashboard.shells.expand",
+          "keys": []
+        },
+        {
+          "prop": "nav.userName",
+          "dictionary": "dashboard.shells.userName",
+          "keys": []
+        },
+        {
+          "prop": "nav.copyright",
+          "dictionary": "dashboard.shells.copyright",
+          "keys": []
+        },
+        {
+          "prop": "nav.footerLabel",
+          "dictionary": "dashboard.shells.footerLabel",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "DeliveryInfo",
@@ -459,18 +1379,48 @@
       "status": "todo",
       "data": [
         {
-          "prop": "deliveryfacts",
+          "prop": "facts",
           "collection": "deliveryfacts",
           "kind": "fact",
-          "record": "Feature"
+          "record": "Feature",
+          "list": true
         },
         {
           "prop": "zones",
           "collection": "zones",
           "kind": "zone",
-          "record": "Zone"
+          "record": "Zone",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "commerce.delivery.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "commerce.delivery.lead",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "commerce.delivery",
+          "keys": [
+            "zones",
+            "freeFrom"
+          ]
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "EmptyPanel",
@@ -478,7 +1428,35 @@
       "spec": "block.empty",
       "source": "xgen/specs/blocks/empty.json",
       "status": "todo",
-      "data": []
+      "data": [],
+      "settings": [
+        "id",
+        "icon",
+        "ctaHref",
+        "layout",
+        "actions",
+        "visual",
+        "size",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "dashboard.empty.orders.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "dashboard.empty.orders.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "dashboard.empty.orders.cta",
+          "keys": []
+        }
+      ],
+      "emptyState": true
     },
     {
       "id": "ErrorPage",
@@ -486,7 +1464,43 @@
       "spec": "block.errorpage",
       "source": "xgen/specs/blocks/errorpage.json",
       "status": "todo",
-      "data": []
+      "data": [],
+      "settings": [
+        "id",
+        "level",
+        "layout",
+        "code",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "vibe.error.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "vibe.error.text",
+          "keys": []
+        },
+        {
+          "prop": "status",
+          "dictionary": "vibe.error.status",
+          "keys": []
+        },
+        {
+          "prop": "actions.cta",
+          "dictionary": "vibe.error.cta",
+          "keys": []
+        },
+        {
+          "prop": "actions.secondary",
+          "dictionary": "vibe.error.secondary",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "FaqList",
@@ -496,7 +1510,7 @@
       "status": "done",
       "data": [
         {
-          "prop": "faq",
+          "prop": "items",
           "collection": "faq",
           "kind": "faq",
           "record": "Faq",
@@ -511,7 +1525,7 @@
           "optional": []
         },
         {
-          "prop": "faqtabs",
+          "prop": "filter.tabs",
           "collection": "faqtabs",
           "kind": "tab",
           "record": "FaqTab",
@@ -531,26 +1545,29 @@
         "cols",
         "multiple",
         "tone",
-        "density"
+        "density",
+        "landmarkLabel"
       ],
       "labels": [
-        {
-          "prop": "empty",
-          "dictionary": "vibe.faq.empty",
-          "keys": []
-        },
         {
           "prop": "title",
           "dictionary": "site.pricing.faqTitle",
           "keys": []
         },
         {
-          "prop": "search",
-          "dictionary": "vibe.faq",
-          "keys": [
-            "search",
-            "tabs"
-          ]
+          "prop": "empty",
+          "dictionary": "vibe.faq.empty",
+          "keys": []
+        },
+        {
+          "prop": "search.label",
+          "dictionary": "vibe.faq.search",
+          "keys": []
+        },
+        {
+          "prop": "filter.label",
+          "dictionary": "vibe.faq.tabs",
+          "keys": []
         }
       ],
       "emptyState": true
@@ -563,24 +1580,89 @@
       "status": "todo",
       "data": [
         {
-          "prop": "questions",
+          "prop": "items",
           "collection": "questions",
           "kind": "question",
-          "record": "Question"
+          "record": "Question",
+          "list": true
         },
         {
           "prop": "channels",
           "collection": "channels",
           "kind": "channel",
-          "record": "Feature"
+          "record": "Feature",
+          "list": true
         },
         {
-          "prop": "faqtabs",
+          "prop": "topics",
           "collection": "faqtabs",
           "kind": "tab",
-          "record": "FaqTab"
+          "record": "FaqTab",
+          "map": "faqtab",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "cards",
+        "mediaSide",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.faqSplit.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "marketing.faqSplit.lead",
+          "keys": []
+        },
+        {
+          "prop": "badge",
+          "dictionary": "marketing.faqSplit.badge",
+          "keys": []
+        },
+        {
+          "prop": "labels.cta",
+          "dictionary": "marketing.faqSplit.cta",
+          "keys": []
+        },
+        {
+          "prop": "labels.more",
+          "dictionary": "marketing.faqSplit.more",
+          "keys": []
+        },
+        {
+          "prop": "labels.asideTitle",
+          "dictionary": "marketing.faqSplit.asideTitle",
+          "keys": []
+        },
+        {
+          "prop": "labels.asideText",
+          "dictionary": "marketing.faqSplit.asideText",
+          "keys": []
+        },
+        {
+          "prop": "labels.asideCta",
+          "dictionary": "marketing.faqSplit.asideCta",
+          "keys": []
+        },
+        {
+          "prop": "labels.search",
+          "dictionary": "marketing.faqSplit.search",
+          "keys": []
+        },
+        {
+          "prop": "labels.popular",
+          "dictionary": "marketing.faqSplit.popular",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "FeatureGrid",
@@ -593,9 +1675,33 @@
           "prop": "features",
           "collection": "features",
           "kind": "feature",
-          "record": "Feature"
+          "record": "Feature",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "cols",
+        "item",
+        "mediaSide",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "site.home.featuresTitle",
+          "keys": []
+        },
+        {
+          "prop": "action.label",
+          "dictionary": "site.home.featuresAction",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "FeatureShowcase",
@@ -608,15 +1714,42 @@
           "prop": "features",
           "collection": "features",
           "kind": "feature",
-          "record": "Feature"
+          "record": "Feature",
+          "list": true
         },
         {
-          "prop": "values",
+          "prop": "features",
           "collection": "values",
           "kind": "value",
-          "record": "Feature"
+          "record": "Feature",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "item",
+        "cols",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.featureShowcase.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "marketing.featureShowcase.lead",
+          "keys": []
+        },
+        {
+          "prop": "more",
+          "dictionary": "marketing.featureShowcase.more",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "FeatureSplit",
@@ -629,16 +1762,54 @@
           "prop": "features",
           "collection": "features",
           "kind": "feature",
-          "record": "Feature"
+          "record": "Feature",
+          "list": true
         },
         {
           "prop": "stats",
           "collection": "stats",
           "kind": "stat",
           "record": "Stat",
-          "map": "stat"
+          "map": "stat",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "level",
+        "layout",
+        "mediaSide",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.featureSplit.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "marketing.featureSplit.lead",
+          "keys": []
+        },
+        {
+          "prop": "badge",
+          "dictionary": "marketing.featureSplit.badge",
+          "keys": []
+        },
+        {
+          "prop": "actions.cta",
+          "dictionary": "marketing.featureSplit.cta",
+          "keys": []
+        },
+        {
+          "prop": "actions.secondary",
+          "dictionary": "marketing.featureSplit.secondary",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "FeatureTabs",
@@ -651,9 +1822,31 @@
           "prop": "features",
           "collection": "features",
           "kind": "feature",
-          "record": "Feature"
+          "record": "Feature",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "active",
+        "panel",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "vibe.tabs.title",
+          "keys": []
+        },
+        {
+          "prop": "tabsLabel",
+          "dictionary": "vibe.tabs.label",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "SiteFooter",
@@ -661,7 +1854,25 @@
       "spec": "block.footer",
       "source": "xgen/specs/blocks/footer.json",
       "status": "todo",
-      "data": []
+      "data": [],
+      "settings": [
+        "layout",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "labels",
+          "dictionary": "site.footer",
+          "keys": [
+            "copyright",
+            "nav",
+            "home",
+            "pricing"
+          ]
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "FooterSplit",
@@ -671,37 +1882,92 @@
       "status": "todo",
       "data": [
         {
-          "prop": "sitemap",
+          "prop": "groups",
           "collection": "sitemap",
           "kind": "group",
-          "record": "MegaGroup"
+          "record": "MegaGroup",
+          "list": true
         },
         {
-          "prop": "stats",
+          "prop": "extras.stats",
           "collection": "stats",
           "kind": "stat",
           "record": "Stat",
-          "map": "stat"
+          "map": "stat",
+          "list": true
         },
         {
-          "prop": "features",
+          "prop": "extras.points",
           "collection": "features",
           "kind": "feature",
-          "record": "Feature"
+          "record": "Feature",
+          "list": true
         },
         {
-          "prop": "contacts",
+          "prop": "extras.contacts",
           "collection": "contacts",
           "kind": "contact",
-          "record": "Feature"
+          "record": "Feature",
+          "list": true
         },
         {
-          "prop": "community",
+          "prop": "extras.channels",
           "collection": "community",
           "kind": "channel",
-          "record": "Feature"
+          "record": "Feature",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "mediaSide",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "label",
+          "dictionary": "vibe.sitemap.label",
+          "keys": []
+        },
+        {
+          "prop": "brand",
+          "dictionary": "site.header.brand",
+          "keys": []
+        },
+        {
+          "prop": "tagline",
+          "dictionary": "marketing.footerSplit.tagline",
+          "keys": []
+        },
+        {
+          "prop": "copyright",
+          "dictionary": "marketing.footerSplit.copyright",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "marketing.footerSplit.labels",
+          "keys": [
+            "title",
+            "text",
+            "loopTitle",
+            "loopText",
+            "joinTitle",
+            "joinText",
+            "sitemap",
+            "points",
+            "signup",
+            "email",
+            "subscribe",
+            "note",
+            "cta",
+            "secondary"
+          ]
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "SiteHeader",
@@ -709,7 +1975,35 @@
       "spec": "block.header",
       "source": "xgen/specs/blocks/header.json",
       "status": "todo",
-      "data": []
+      "data": [],
+      "settings": [
+        "current",
+        "layout",
+        "position",
+        "actions",
+        "ctaHref",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "labels",
+          "dictionary": "site.header",
+          "keys": [
+            "skip",
+            "brand",
+            "nav",
+            "home",
+            "pricing",
+            "theme"
+          ]
+        },
+        {
+          "prop": "cta",
+          "dictionary": "site.header.cta",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "HeroClassic",
@@ -719,24 +2013,114 @@
       "status": "todo",
       "data": [
         {
-          "prop": "terminal",
+          "prop": "media.lines",
           "collection": "terminal",
           "kind": "line",
-          "record": "CodeLine"
+          "record": "CodeLine",
+          "list": true
         },
         {
-          "prop": "prompts",
+          "prop": "topics",
           "collection": "prompts",
           "kind": "prompt",
-          "record": "Topic"
+          "record": "Topic",
+          "list": true
         },
         {
-          "prop": "navlinks",
+          "prop": "nav.links",
           "collection": "navlinks",
           "kind": "link",
-          "record": "NavLink"
+          "record": "NavLink",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "level",
+        "layout",
+        "scale",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "site.home.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "site.home.text",
+          "keys": []
+        },
+        {
+          "prop": "actions.cta",
+          "dictionary": "site.home.cta",
+          "keys": []
+        },
+        {
+          "prop": "actions.secondary",
+          "dictionary": "site.home.secondary",
+          "keys": []
+        },
+        {
+          "prop": "actions.emailLabel",
+          "dictionary": "promo.newsletter.label",
+          "keys": []
+        },
+        {
+          "prop": "media.codeTitle",
+          "dictionary": "vibe.code.title",
+          "keys": []
+        },
+        {
+          "prop": "media.prompt",
+          "dictionary": "vibe.code.prompt",
+          "keys": []
+        },
+        {
+          "prop": "composer.attachLabel",
+          "dictionary": "vibe.hero.attach",
+          "keys": []
+        },
+        {
+          "prop": "composer.modelLabel",
+          "dictionary": "vibe.hero.model",
+          "keys": []
+        },
+        {
+          "prop": "nav.brand",
+          "dictionary": "site.header.brand",
+          "keys": []
+        },
+        {
+          "prop": "nav.skip",
+          "dictionary": "site.header.skip",
+          "keys": []
+        },
+        {
+          "prop": "nav.label",
+          "dictionary": "site.header.nav",
+          "keys": []
+        },
+        {
+          "prop": "nav.login",
+          "dictionary": "site.header.login",
+          "keys": []
+        },
+        {
+          "prop": "badge",
+          "dictionary": "vibe.hero.badgeLabel",
+          "keys": []
+        },
+        {
+          "prop": "badgeMark",
+          "dictionary": "vibe.hero.badgeMark",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "HeroSplit",
@@ -746,31 +2130,88 @@
       "status": "todo",
       "data": [
         {
-          "prop": "stats",
+          "prop": "content.stats",
           "collection": "stats",
           "kind": "stat",
           "record": "Stat",
-          "map": "stat"
+          "map": "stat",
+          "list": true
         },
         {
-          "prop": "features",
+          "prop": "content.features",
           "collection": "features",
           "kind": "feature",
-          "record": "Feature"
+          "record": "Feature",
+          "list": true
         },
         {
-          "prop": "testimonials",
+          "prop": "content.people",
           "collection": "testimonials",
           "kind": "testimonial",
-          "record": "Quote"
+          "record": "Quote",
+          "list": true
         },
         {
-          "prop": "tiers",
+          "prop": "content.plans",
           "collection": "tiers",
           "kind": "plan",
-          "record": "Plan"
+          "record": "Plan",
+          "map": "plan",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "level",
+        "extra",
+        "media",
+        "mediaSide",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.heroSplit.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "marketing.heroSplit.lead",
+          "keys": []
+        },
+        {
+          "prop": "badge",
+          "dictionary": "marketing.heroSplit.badge",
+          "keys": []
+        },
+        {
+          "prop": "actions.cta",
+          "dictionary": "marketing.heroSplit.cta",
+          "keys": []
+        },
+        {
+          "prop": "actions.secondary",
+          "dictionary": "marketing.heroSplit.secondary",
+          "keys": []
+        },
+        {
+          "prop": "content.proof",
+          "dictionary": "marketing.heroSplit.proof",
+          "keys": []
+        },
+        {
+          "prop": "content.card.title",
+          "dictionary": "marketing.heroSplit.cardTitle",
+          "keys": []
+        },
+        {
+          "prop": "content.card.text",
+          "dictionary": "marketing.heroSplit.cardText",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "IconWall",
@@ -783,9 +2224,26 @@
           "prop": "features",
           "collection": "features",
           "kind": "feature",
-          "record": "Feature"
+          "record": "Feature",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "cols",
+        "item",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "vibe.wall.title",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "JobBoard",
@@ -798,15 +2256,51 @@
           "prop": "jobs",
           "collection": "jobs",
           "kind": "job",
-          "record": "Job"
+          "record": "Job",
+          "list": true
         },
         {
           "prop": "departments",
           "collection": "departments",
           "kind": "department",
-          "record": "Department"
+          "record": "Department",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "salary",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "company.jobs.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "company.jobs.lead",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "company.jobs",
+          "keys": [
+            "apply",
+            "caption",
+            "role",
+            "team",
+            "location",
+            "type",
+            "salary",
+            "count"
+          ]
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "KanbanBoard",
@@ -819,15 +2313,38 @@
           "prop": "lanes",
           "collection": "lanes",
           "kind": "lane",
-          "record": "Lane"
+          "record": "Lane",
+          "list": true
         },
         {
           "prop": "cards",
           "collection": "cards",
           "kind": "card",
-          "record": "BoardCard"
+          "record": "BoardCard",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "card",
+        "cols",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "vibe.kanban.title",
+          "keys": []
+        },
+        {
+          "prop": "countLabel",
+          "dictionary": "vibe.kanban.count",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "StoreLocations",
@@ -840,9 +2357,44 @@
           "prop": "stores",
           "collection": "stores",
           "kind": "store",
-          "record": "Store"
+          "record": "Store",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "commerce.stores.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "commerce.stores.lead",
+          "keys": []
+        },
+        {
+          "prop": "kinds",
+          "dictionary": "commerce.stores.kinds",
+          "keys": [
+            "pickup",
+            "store"
+          ]
+        },
+        {
+          "prop": "labels",
+          "dictionary": "commerce.stores",
+          "keys": [
+            "map"
+          ]
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "LogoCloud",
@@ -855,9 +2407,27 @@
           "prop": "logos",
           "collection": "logos",
           "kind": "logo",
-          "record": "Logo"
+          "record": "Logo",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "cols",
+        "item",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.logos.title",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "MediaList",
@@ -867,44 +2437,116 @@
       "status": "todo",
       "data": [
         {
-          "prop": "stats",
+          "prop": "extras.stats",
           "collection": "stats",
           "kind": "stat",
           "record": "Stat",
-          "map": "stat"
+          "map": "stat",
+          "list": true
         },
         {
-          "prop": "steps",
+          "prop": "extras.steps",
           "collection": "steps",
           "kind": "step",
-          "record": "Step"
+          "record": "Step",
+          "list": true
         },
         {
-          "prop": "posts",
+          "prop": "extras.posts",
           "collection": "posts",
           "kind": "post",
-          "record": "Post"
+          "record": "Post",
+          "map": "post",
+          "list": true
         },
         {
-          "prop": "categories",
+          "prop": "extras.topics",
           "collection": "categories",
           "kind": "category",
-          "record": "Category"
+          "record": "Category",
+          "list": true
         },
         {
-          "prop": "channels",
+          "prop": "extras.channels",
           "collection": "channels",
           "kind": "channel",
-          "record": "Feature"
+          "record": "Feature",
+          "list": true
         },
         {
-          "prop": "reviews",
+          "prop": "extras.reviews",
           "collection": "reviews",
           "kind": "review",
           "record": "Review",
-          "map": "review"
+          "map": "review",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "mediaSide",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.mediaList.figures.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "marketing.mediaList.figures.lead",
+          "keys": []
+        },
+        {
+          "prop": "badge",
+          "dictionary": "marketing.mediaList.figures.badge",
+          "keys": []
+        },
+        {
+          "prop": "labels.list",
+          "dictionary": "marketing.mediaList.figures.list",
+          "keys": []
+        },
+        {
+          "prop": "labels.count",
+          "dictionary": "marketing.mediaList.count",
+          "keys": []
+        },
+        {
+          "prop": "labels.minutes",
+          "dictionary": "content.labels.minutes",
+          "keys": []
+        },
+        {
+          "prop": "labels.featured",
+          "dictionary": "marketing.mediaList.featured",
+          "keys": []
+        },
+        {
+          "prop": "labels.rating",
+          "dictionary": "testimonials.rating",
+          "keys": []
+        },
+        {
+          "prop": "labels.figures",
+          "dictionary": "marketing.mediaList.supportFigures",
+          "keys": []
+        },
+        {
+          "prop": "actions.cta",
+          "dictionary": "marketing.mediaList.figures.cta",
+          "keys": []
+        },
+        {
+          "prop": "actions.secondary",
+          "dictionary": "marketing.mediaList.proof.secondary",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "MegaMenu",
@@ -914,18 +2556,54 @@
       "status": "todo",
       "data": [
         {
-          "prop": "navlinks",
+          "prop": "links",
           "collection": "navlinks",
           "kind": "link",
-          "record": "NavLink"
+          "record": "NavLink",
+          "list": true
         },
         {
-          "prop": "megagroups",
+          "prop": "groups",
           "collection": "megagroups",
           "kind": "group",
-          "record": "MegaGroup"
+          "record": "MegaGroup",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "panel",
+        "cols",
+        "promo",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "label",
+          "dictionary": "vibe.nav.label",
+          "keys": []
+        },
+        {
+          "prop": "brand",
+          "dictionary": "site.header.brand",
+          "keys": []
+        },
+        {
+          "prop": "trigger",
+          "dictionary": "vibe.mega.trigger",
+          "keys": []
+        },
+        {
+          "prop": "promoTitle",
+          "dictionary": "vibe.mega.promoTitle",
+          "keys": []
+        },
+        {
+          "prop": "promoText",
+          "dictionary": "vibe.mega.promoText",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "MetricRow",
@@ -938,9 +2616,26 @@
           "prop": "metrics",
           "collection": "metrics",
           "kind": "metric",
-          "record": "Stat"
+          "record": "Stat",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "cols",
+        "item",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "dashboard.metrics.title",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "NavBar",
@@ -950,12 +2645,54 @@
       "status": "todo",
       "data": [
         {
-          "prop": "navlinks",
+          "prop": "links",
           "collection": "navlinks",
           "kind": "link",
-          "record": "NavLink"
+          "record": "NavLink",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "current",
+        "tone",
+        "layout",
+        "over",
+        "skip",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "label",
+          "dictionary": "vibe.nav.label",
+          "keys": []
+        },
+        {
+          "prop": "brand",
+          "dictionary": "site.header.brand",
+          "keys": []
+        },
+        {
+          "prop": "actions.cta",
+          "dictionary": "site.header.cta",
+          "keys": []
+        },
+        {
+          "prop": "actions.login",
+          "dictionary": "site.header.login",
+          "keys": []
+        },
+        {
+          "prop": "search.label",
+          "dictionary": "vibe.nav.search",
+          "keys": []
+        },
+        {
+          "prop": "search.shortcut",
+          "dictionary": "vibe.nav.shortcut",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "NewsletterForm",
@@ -963,7 +2700,43 @@
       "spec": "block.newsletter",
       "source": "xgen/specs/blocks/newsletter.json",
       "status": "todo",
-      "data": []
+      "data": [],
+      "settings": [
+        "id",
+        "layout",
+        "terms",
+        "tone",
+        "align",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "promo.newsletter.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "promo.newsletter.text",
+          "keys": []
+        },
+        {
+          "prop": "label",
+          "dictionary": "promo.newsletter.label",
+          "keys": []
+        },
+        {
+          "prop": "submit",
+          "dictionary": "promo.newsletter.submit",
+          "keys": []
+        },
+        {
+          "prop": "consent",
+          "dictionary": "promo.newsletter.consent",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "OrderTable",
@@ -976,9 +2749,54 @@
           "prop": "orders",
           "collection": "orders",
           "kind": "order",
-          "record": "Order"
+          "record": "Order",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "pager",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "commerce.orders.title",
+          "keys": []
+        },
+        {
+          "prop": "statuses",
+          "dictionary": "status",
+          "keys": [
+            "active",
+            "legacy",
+            "paid",
+            "shipped",
+            "pending",
+            "refunded"
+          ]
+        },
+        {
+          "prop": "labels",
+          "dictionary": "commerce.orders",
+          "keys": [
+            "caption",
+            "number",
+            "date",
+            "items",
+            "total",
+            "status",
+            "itemsCount",
+            "summary",
+            "previous",
+            "next"
+          ]
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "DashboardOverview",
@@ -991,21 +2809,65 @@
           "prop": "metrics",
           "collection": "metrics",
           "kind": "metric",
-          "record": "Stat"
+          "record": "Stat",
+          "list": true
         },
         {
-          "prop": "series",
+          "prop": "chart.series",
           "collection": "series",
           "kind": "point",
-          "record": "Point"
+          "record": "Point",
+          "list": true
         },
         {
-          "prop": "activity",
+          "prop": "activity.events",
           "collection": "activity",
           "kind": "event",
-          "record": "Event"
+          "record": "Event",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "cols",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "vibe.overview.title",
+          "keys": []
+        },
+        {
+          "prop": "chart.title",
+          "dictionary": "dashboard.chart.title",
+          "keys": []
+        },
+        {
+          "prop": "chart.text",
+          "dictionary": "dashboard.chart.text",
+          "keys": []
+        },
+        {
+          "prop": "chart.summary",
+          "dictionary": "dashboard.chart.summary",
+          "keys": []
+        },
+        {
+          "prop": "activity.title",
+          "dictionary": "dashboard.activity.title",
+          "keys": []
+        },
+        {
+          "prop": "activity.text",
+          "dictionary": "dashboard.activity.text",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "PageIntro",
@@ -1013,7 +2875,34 @@
       "spec": "block.pagehead",
       "source": "xgen/specs/blocks/pagehead.json",
       "status": "todo",
-      "data": []
+      "data": [],
+      "settings": [
+        "id",
+        "href",
+        "level",
+        "align",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "vibe.pagehead.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "vibe.pagehead.text",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "vibe.pagehead.cta",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "PageTrail",
@@ -1040,7 +2929,7 @@
           ]
         },
         {
-          "prop": "stats",
+          "prop": "extras.facts",
           "collection": "stats",
           "kind": "stat",
           "record": "Stat",
@@ -1062,21 +2951,44 @@
         "id",
         "aside",
         "level",
-        "tone"
+        "tone",
+        "landmarkLabel"
       ],
       "labels": [
         {
-          "prop": "labels",
-          "dictionary": "marketing.pageTrail",
-          "keys": [
-            "title",
-            "lead",
-            "badge",
-            "label",
-            "value",
-            "caption",
-            "note"
-          ]
+          "prop": "title",
+          "dictionary": "marketing.pageTrail.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "marketing.pageTrail.lead",
+          "keys": []
+        },
+        {
+          "prop": "badge",
+          "dictionary": "marketing.pageTrail.badge",
+          "keys": []
+        },
+        {
+          "prop": "label",
+          "dictionary": "marketing.pageTrail.label",
+          "keys": []
+        },
+        {
+          "prop": "extras.value",
+          "dictionary": "marketing.pageTrail.value",
+          "keys": []
+        },
+        {
+          "prop": "extras.caption",
+          "dictionary": "marketing.pageTrail.caption",
+          "keys": []
+        },
+        {
+          "prop": "extras.note",
+          "dictionary": "marketing.pageTrail.note",
+          "keys": []
         }
       ],
       "emptyState": true,
@@ -1093,9 +3005,40 @@
           "prop": "photos",
           "collection": "photos",
           "kind": "photo",
-          "record": "Photo"
+          "record": "Photo",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "captions",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "company.photos.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "company.photos.lead",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "company.photos",
+          "keys": [
+            "previous",
+            "next",
+            "counter"
+          ]
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "PricingCard",
@@ -1105,12 +3048,37 @@
       "status": "todo",
       "data": [
         {
-          "prop": "tiers",
+          "prop": "plan",
           "collection": "tiers",
           "kind": "plan",
-          "record": "Plan"
+          "record": "Plan",
+          "map": "plan",
+          "list": false
         }
-      ]
+      ],
+      "settings": [
+        "current",
+        "emphasis",
+        "density",
+        "billing"
+      ],
+      "labels": [
+        {
+          "prop": "labels",
+          "dictionary": "pricing",
+          "keys": [
+            "popular",
+            "perMonth",
+            "seats",
+            "storage",
+            "cta",
+            "free",
+            "perYear",
+            "empty"
+          ]
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "PostHeader",
@@ -1176,15 +3144,57 @@
           "prop": "posts",
           "collection": "posts",
           "kind": "post",
-          "record": "Post"
+          "record": "Post",
+          "map": "post",
+          "list": true
         },
         {
-          "prop": "topics",
+          "prop": "filter.topics",
           "collection": "topics",
           "kind": "topic",
-          "record": "PostTopic"
+          "record": "PostTopic",
+          "map": "faqtab",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "cols",
+        "media",
+        "meta",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "content.posts.title",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "content.labels",
+          "keys": [
+            "minutes",
+            "by",
+            "read",
+            "empty"
+          ]
+        },
+        {
+          "prop": "filter.label",
+          "dictionary": "vibe.posts.topics",
+          "keys": []
+        },
+        {
+          "prop": "action.label",
+          "dictionary": "content.posts.action",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "PostShowcase",
@@ -1197,9 +3207,52 @@
           "prop": "posts",
           "collection": "posts",
           "kind": "post",
-          "record": "Post"
+          "record": "Post",
+          "map": "post",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "cols",
+        "mediaSide",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "content.postShowcase.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "content.postShowcase.lead",
+          "keys": []
+        },
+        {
+          "prop": "badge",
+          "dictionary": "content.postShowcase.badge",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "content.labels",
+          "keys": [
+            "minutes",
+            "by",
+            "read",
+            "empty"
+          ]
+        },
+        {
+          "prop": "action.label",
+          "dictionary": "content.postShowcase.action",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "PostSplit",
@@ -1209,24 +3262,75 @@
       "status": "todo",
       "data": [
         {
-          "prop": "posts",
+          "prop": "post",
           "collection": "posts",
           "kind": "post",
-          "record": "Post"
+          "record": "Post",
+          "map": "post",
+          "list": false
         },
         {
-          "prop": "posttags",
+          "prop": "extras.tags",
           "collection": "posttags",
           "kind": "posttag",
-          "record": "NavLink"
+          "record": "NavLink",
+          "list": true
         },
         {
-          "prop": "outline",
+          "prop": "extras.outline",
           "collection": "outline",
           "kind": "outlineitem",
-          "record": "NavLink"
+          "record": "NavLink",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "level",
+        "layout",
+        "mediaSide",
+        "author",
+        "cover",
+        "actions",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "labels",
+          "dictionary": "content.postSplit.labels",
+          "keys": [
+            "minutes",
+            "views",
+            "likes",
+            "share",
+            "save",
+            "read",
+            "related"
+          ]
+        },
+        {
+          "prop": "extras.role",
+          "dictionary": "content.postSplit.role",
+          "keys": []
+        },
+        {
+          "prop": "extras.bio",
+          "dictionary": "content.postSplit.bio",
+          "keys": []
+        },
+        {
+          "prop": "extras.views",
+          "dictionary": "content.postSplit.views",
+          "keys": []
+        },
+        {
+          "prop": "extras.likes",
+          "dictionary": "content.postSplit.likes",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "PricingTiers",
@@ -1255,11 +3359,18 @@
             "metadata.yearly.value"
           ],
           "optional": []
+        },
+        {
+          "prop": "plans",
+          "collection": "duo",
+          "kind": "plan",
+          "record": "Plan",
+          "map": "plan",
+          "list": true
         }
       ],
       "settings": [
         "id",
-        "title",
         "layout",
         "cols",
         "emphasis",
@@ -1269,6 +3380,11 @@
         "landmarkLabel"
       ],
       "labels": [
+        {
+          "prop": "title",
+          "dictionary": "site.pricing.tiersTitle",
+          "keys": []
+        },
         {
           "prop": "labels",
           "dictionary": "pricing",
@@ -1292,11 +3408,6 @@
             "annual",
             "save"
           ]
-        },
-        {
-          "prop": "title",
-          "dictionary": "site.pricing.tiersTitle",
-          "keys": []
         }
       ],
       "emptyState": true
@@ -1342,7 +3453,8 @@
         "thumbs",
         "buy",
         "tone",
-        "density"
+        "density",
+        "landmarkLabel"
       ],
       "labels": [
         {
@@ -1385,15 +3497,39 @@
           "prop": "details",
           "collection": "details",
           "kind": "detail",
-          "record": "Detail"
+          "record": "Detail",
+          "list": true
         },
         {
           "prop": "specs",
           "collection": "specs",
           "kind": "spec",
-          "record": "Spec"
+          "record": "Spec",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "expand",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "commerce.info.title",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "commerce.info",
+          "keys": [
+            "specs"
+          ]
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "ProductGrid",
@@ -1430,7 +3566,6 @@
       ],
       "settings": [
         "id",
-        "title",
         "layout",
         "cols",
         "ratio",
@@ -1441,6 +3576,11 @@
         "landmarkLabel"
       ],
       "labels": [
+        {
+          "prop": "title",
+          "dictionary": "commerce.products.title",
+          "keys": []
+        },
         {
           "prop": "labels",
           "dictionary": "commerce.productLabels",
@@ -1460,11 +3600,6 @@
             "new",
             "sale"
           ]
-        },
-        {
-          "prop": "title",
-          "dictionary": "commerce.products.title",
-          "keys": []
         }
       ],
       "emptyState": true
@@ -1475,7 +3610,44 @@
       "spec": "block.profile",
       "source": "xgen/specs/blocks/profile.json",
       "status": "todo",
-      "data": []
+      "data": [],
+      "settings": [
+        "id",
+        "layout",
+        "avatar",
+        "prefs",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "account.profile.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "account.profile.text",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "account.profile.labels",
+          "keys": [
+            "picture",
+            "change",
+            "name",
+            "email",
+            "bio",
+            "prefs",
+            "updates",
+            "alerts",
+            "save",
+            "cancel"
+          ]
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "ProjectGrid",
@@ -1488,9 +3660,39 @@
           "prop": "projects",
           "collection": "projects",
           "kind": "project",
-          "record": "Project"
+          "record": "Project",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "company.projects.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "company.projects.lead",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "company.projects",
+          "keys": [
+            "featured",
+            "view",
+            "case"
+          ]
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "ProofBand",
@@ -1503,16 +3705,34 @@
           "prop": "logos",
           "collection": "logos",
           "kind": "logo",
-          "record": "Logo"
+          "record": "Logo",
+          "list": true
         },
         {
           "prop": "stats",
           "collection": "stats",
           "kind": "stat",
           "record": "Stat",
-          "map": "stat"
+          "map": "stat",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "logoStyle",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "vibe.proof.title",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "QuoteSplit",
@@ -1522,25 +3742,88 @@
       "status": "todo",
       "data": [
         {
-          "prop": "testimonials",
+          "prop": "quotes",
           "collection": "testimonials",
           "kind": "testimonial",
-          "record": "Quote"
+          "record": "Quote",
+          "list": true
         },
         {
-          "prop": "stats",
+          "prop": "extras.stats",
           "collection": "stats",
           "kind": "stat",
           "record": "Stat",
-          "map": "stat"
+          "map": "stat",
+          "list": true
         },
         {
-          "prop": "logos",
+          "prop": "extras.logos",
           "collection": "logos",
           "kind": "logo",
-          "record": "Logo"
+          "record": "Logo",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "mediaSide",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.quoteSplit.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "marketing.quoteSplit.lead",
+          "keys": []
+        },
+        {
+          "prop": "badge",
+          "dictionary": "marketing.quoteSplit.badge",
+          "keys": []
+        },
+        {
+          "prop": "labels.rating",
+          "dictionary": "testimonials.rating",
+          "keys": []
+        },
+        {
+          "prop": "labels.byLine",
+          "dictionary": "testimonials.byLine",
+          "keys": []
+        },
+        {
+          "prop": "labels.handleLine",
+          "dictionary": "testimonials.handleLine",
+          "keys": []
+        },
+        {
+          "prop": "extras.score",
+          "dictionary": "marketing.quoteSplit.score",
+          "keys": []
+        },
+        {
+          "prop": "extras.reviews",
+          "dictionary": "marketing.quoteSplit.reviews",
+          "keys": []
+        },
+        {
+          "prop": "actions.cta",
+          "dictionary": "marketing.quoteSplit.cta",
+          "keys": []
+        },
+        {
+          "prop": "actions.secondary",
+          "dictionary": "marketing.quoteSplit.secondary",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "ReviewList",
@@ -1569,14 +3852,19 @@
       ],
       "settings": [
         "id",
-        "title",
         "layout",
         "item",
         "avatar",
         "tone",
-        "density"
+        "density",
+        "landmarkLabel"
       ],
       "labels": [
+        {
+          "prop": "title",
+          "dictionary": "commerce.reviews.title",
+          "keys": []
+        },
         {
           "prop": "labels",
           "dictionary": "commerce.reviewLabels",
@@ -1584,11 +3872,6 @@
             "ratingLabel",
             "empty"
           ]
-        },
-        {
-          "prop": "title",
-          "dictionary": "commerce.reviews.title",
-          "keys": []
         }
       ],
       "emptyState": true
@@ -1601,30 +3884,103 @@
       "status": "todo",
       "data": [
         {
-          "prop": "sidenav",
+          "prop": "nav.links",
           "collection": "sidenav",
           "kind": "item",
-          "record": "NavLink"
+          "record": "NavLink",
+          "list": true
         },
         {
           "prop": "metrics",
           "collection": "metrics",
           "kind": "metric",
-          "record": "Stat"
+          "record": "Stat",
+          "list": true
         },
         {
-          "prop": "series",
+          "prop": "chart.series",
           "collection": "series",
           "kind": "point",
-          "record": "Point"
+          "record": "Point",
+          "list": true
         },
         {
-          "prop": "activity",
+          "prop": "activity.events",
           "collection": "activity",
           "kind": "event",
-          "record": "Event"
+          "record": "Event",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "vibe.shell.title",
+          "keys": []
+        },
+        {
+          "prop": "nav.label",
+          "dictionary": "vibe.sidebar.label",
+          "keys": []
+        },
+        {
+          "prop": "nav.brand",
+          "dictionary": "site.header.brand",
+          "keys": []
+        },
+        {
+          "prop": "user.name",
+          "dictionary": "vibe.sidebar.userName",
+          "keys": []
+        },
+        {
+          "prop": "user.email",
+          "dictionary": "vibe.sidebar.userEmail",
+          "keys": []
+        },
+        {
+          "prop": "search.label",
+          "dictionary": "vibe.nav.search",
+          "keys": []
+        },
+        {
+          "prop": "search.shortcut",
+          "dictionary": "vibe.nav.shortcut",
+          "keys": []
+        },
+        {
+          "prop": "chart.title",
+          "dictionary": "dashboard.chart.title",
+          "keys": []
+        },
+        {
+          "prop": "chart.text",
+          "dictionary": "dashboard.chart.text",
+          "keys": []
+        },
+        {
+          "prop": "chart.summary",
+          "dictionary": "dashboard.chart.summary",
+          "keys": []
+        },
+        {
+          "prop": "activity.title",
+          "dictionary": "dashboard.activity.title",
+          "keys": []
+        },
+        {
+          "prop": "activity.text",
+          "dictionary": "dashboard.activity.text",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "SidebarNav",
@@ -1634,12 +3990,43 @@
       "status": "todo",
       "data": [
         {
-          "prop": "sidenav",
+          "prop": "links",
           "collection": "sidenav",
           "kind": "item",
-          "record": "NavLink"
+          "record": "NavLink",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "current",
+        "width",
+        "user",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "label",
+          "dictionary": "vibe.sidebar.label",
+          "keys": []
+        },
+        {
+          "prop": "brand",
+          "dictionary": "site.header.brand",
+          "keys": []
+        },
+        {
+          "prop": "userName",
+          "dictionary": "vibe.sidebar.userName",
+          "keys": []
+        },
+        {
+          "prop": "userEmail",
+          "dictionary": "vibe.sidebar.userEmail",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "SitemapFooter",
@@ -1649,12 +4036,62 @@
       "status": "todo",
       "data": [
         {
-          "prop": "sitemap",
+          "prop": "groups",
           "collection": "sitemap",
           "kind": "group",
-          "record": "MegaGroup"
+          "record": "MegaGroup",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "label",
+          "dictionary": "vibe.sitemap.label",
+          "keys": []
+        },
+        {
+          "prop": "brand",
+          "dictionary": "site.header.brand",
+          "keys": []
+        },
+        {
+          "prop": "tagline",
+          "dictionary": "vibe.sitemap.tagline",
+          "keys": []
+        },
+        {
+          "prop": "copyright",
+          "dictionary": "vibe.sitemap.copyright",
+          "keys": []
+        },
+        {
+          "prop": "signup.title",
+          "dictionary": "vibe.sitemap.signupTitle",
+          "keys": []
+        },
+        {
+          "prop": "signup.label",
+          "dictionary": "vibe.sitemap.signupLabel",
+          "keys": []
+        },
+        {
+          "prop": "signup.submit",
+          "dictionary": "vibe.sitemap.signupSubmit",
+          "keys": []
+        },
+        {
+          "prop": "status.label",
+          "dictionary": "vibe.sitemap.status",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "SkeletonLayout",
@@ -1664,12 +4101,32 @@
       "status": "todo",
       "data": [
         {
-          "prop": "placeholders",
+          "prop": "lines",
           "collection": "placeholders",
           "kind": "placeholder",
-          "record": "Line"
+          "record": "Line",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "shape",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "vibe.skeleton.title",
+          "keys": []
+        },
+        {
+          "prop": "label",
+          "dictionary": "vibe.skeleton.label",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "SlotBoard",
@@ -1682,15 +4139,50 @@
           "prop": "days",
           "collection": "days",
           "kind": "day",
-          "record": "Day"
+          "record": "Day",
+          "list": true
         },
         {
-          "prop": "zones",
+          "prop": "zone",
           "collection": "zones",
           "kind": "zone",
-          "record": "Zone"
+          "record": "Zone",
+          "list": false
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "item",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "commerce.slots.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "commerce.slots.lead",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "commerce.slots",
+          "keys": [
+            "zone",
+            "price",
+            "freeFrom",
+            "time",
+            "primary",
+            "secondary",
+            "note"
+          ]
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "StatsBand",
@@ -1726,17 +4218,18 @@
         "item",
         "align",
         "tone",
-        "density"
+        "density",
+        "landmarkLabel"
       ],
       "labels": [
         {
-          "prop": "empty",
-          "dictionary": "marketing.stats.empty",
+          "prop": "title",
+          "dictionary": "marketing.stats.title",
           "keys": []
         },
         {
-          "prop": "title",
-          "dictionary": "marketing.stats.title",
+          "prop": "empty",
+          "dictionary": "marketing.stats.empty",
           "keys": []
         }
       ],
@@ -1753,9 +4246,41 @@
           "prop": "steps",
           "collection": "steps",
           "kind": "step",
-          "record": "Step"
+          "record": "Step",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "current",
+        "layout",
+        "marker",
+        "summary",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "onboarding.stepper.title",
+          "keys": []
+        },
+        {
+          "prop": "stepLabel",
+          "dictionary": "onboarding.stepper.stepLabel",
+          "keys": []
+        },
+        {
+          "prop": "back",
+          "dictionary": "onboarding.stepper.back",
+          "keys": []
+        },
+        {
+          "prop": "next",
+          "dictionary": "onboarding.stepper.next",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "StepsList",
@@ -1768,9 +4293,27 @@
           "prop": "steps",
           "collection": "steps",
           "kind": "step",
-          "record": "Step"
+          "record": "Step",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "marker",
+        "align",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.steps.title",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "FeatureSticky",
@@ -1783,9 +4326,27 @@
           "prop": "features",
           "collection": "features",
           "kind": "feature",
-          "record": "Feature"
+          "record": "Feature",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "active",
+        "mediaSide",
+        "item",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "vibe.sticky.title",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "StoreHero",
@@ -1798,9 +4359,55 @@
           "prop": "perks",
           "collection": "perks",
           "kind": "perk",
-          "record": "Feature"
+          "record": "Feature",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "level",
+        "layout",
+        "mediaSide",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "commerce.storeHero.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "commerce.storeHero.lead",
+          "keys": []
+        },
+        {
+          "prop": "badge",
+          "dictionary": "commerce.storeHero.badge",
+          "keys": []
+        },
+        {
+          "prop": "card",
+          "dictionary": "commerce.storeHero.card",
+          "keys": [
+            "title",
+            "text",
+            "icon"
+          ]
+        },
+        {
+          "prop": "actions.cta",
+          "dictionary": "commerce.storeHero.cta",
+          "keys": []
+        },
+        {
+          "prop": "actions.secondary",
+          "dictionary": "commerce.storeHero.secondary",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "StoryTabs",
@@ -1810,12 +4417,47 @@
       "status": "todo",
       "data": [
         {
-          "prop": "milestones",
+          "prop": "steps",
           "collection": "milestones",
           "kind": "milestone",
-          "record": "Milestone"
+          "record": "Milestone",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "active",
+        "layout",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "company.storyTabs.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "company.storyTabs.lead",
+          "keys": []
+        },
+        {
+          "prop": "badge",
+          "dictionary": "company.storyTabs.badge",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "company.storyTabs.labels",
+          "keys": [
+            "step",
+            "previous",
+            "next"
+          ]
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "OrderSummary",
@@ -1825,12 +4467,38 @@
       "status": "todo",
       "data": [
         {
-          "prop": "summary",
+          "prop": "rows",
           "collection": "summary",
           "kind": "summaryrow",
-          "record": "SummaryRow"
+          "record": "SummaryRow",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "cta",
+        "note",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "commerce.summary.title",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "commerce.summary",
+          "keys": [
+            "checkout",
+            "note"
+          ]
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "TeamGrid",
@@ -1843,9 +4511,42 @@
           "prop": "members",
           "collection": "members",
           "kind": "member",
-          "record": "Member"
+          "record": "Member",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "cols",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "company.team.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "company.team.lead",
+          "keys": []
+        },
+        {
+          "prop": "depts",
+          "dictionary": "company.depts",
+          "keys": [
+            "leadership",
+            "engineering",
+            "design",
+            "product",
+            "support"
+          ]
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "TemplateGrid",
@@ -1858,15 +4559,53 @@
           "prop": "templates",
           "collection": "templates",
           "kind": "template",
-          "record": "Template"
+          "record": "Template",
+          "list": true
         },
         {
-          "prop": "templateFilters",
+          "prop": "filters",
           "collection": "prompts",
           "kind": "prompt",
-          "record": "Filter"
+          "record": "Filter",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "browseHref",
+        "cols",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "vibe.templates.title",
+          "keys": []
+        },
+        {
+          "prop": "filtersLabel",
+          "dictionary": "vibe.templates.filters",
+          "keys": []
+        },
+        {
+          "prop": "browse",
+          "dictionary": "vibe.templates.browse",
+          "keys": []
+        },
+        {
+          "prop": "viewsLabel",
+          "dictionary": "vibe.templates.views",
+          "keys": []
+        },
+        {
+          "prop": "likesLabel",
+          "dictionary": "vibe.templates.likes",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "TestimonialGrid",
@@ -1876,12 +4615,45 @@
       "status": "todo",
       "data": [
         {
-          "prop": "testimonials",
+          "prop": "quotes",
           "collection": "testimonials",
           "kind": "testimonial",
-          "record": "Quote"
+          "record": "Quote",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "cols",
+        "item",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "marketing.testimonials.title",
+          "keys": []
+        },
+        {
+          "prop": "labels.rating",
+          "dictionary": "testimonials.rating",
+          "keys": []
+        },
+        {
+          "prop": "labels.byLine",
+          "dictionary": "testimonials.byLine",
+          "keys": []
+        },
+        {
+          "prop": "labels.handleLine",
+          "dictionary": "testimonials.handleLine",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "MilestoneTimeline",
@@ -1894,9 +4666,30 @@
           "prop": "milestones",
           "collection": "milestones",
           "kind": "milestone",
-          "record": "Milestone"
+          "record": "Milestone",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "company.timeline.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "company.timeline.lead",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "TourCallout",
@@ -1904,7 +4697,47 @@
       "spec": "block.tour",
       "source": "xgen/specs/blocks/tour.json",
       "status": "todo",
-      "data": []
+      "data": [],
+      "settings": [
+        "id",
+        "placement",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "vibe.tour.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "vibe.tour.text",
+          "keys": []
+        },
+        {
+          "prop": "target",
+          "dictionary": "vibe.tour.target",
+          "keys": []
+        },
+        {
+          "prop": "position",
+          "dictionary": "vibe.tour.position",
+          "keys": []
+        },
+        {
+          "prop": "skip",
+          "dictionary": "vibe.tour.skip",
+          "keys": []
+        },
+        {
+          "prop": "next",
+          "dictionary": "vibe.tour.next",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "UsageCalculator",
@@ -1912,7 +4745,54 @@
       "spec": "block.usage",
       "source": "xgen/specs/blocks/usage.json",
       "status": "todo",
-      "data": []
+      "data": [],
+      "settings": [
+        "id",
+        "usage",
+        "href",
+        "layout",
+        "ends",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "vibe.usage.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "vibe.usage.text",
+          "keys": []
+        },
+        {
+          "prop": "slider.label",
+          "dictionary": "vibe.usage.slider",
+          "keys": []
+        },
+        {
+          "prop": "slider.unit",
+          "dictionary": "vibe.usage.unit",
+          "keys": []
+        },
+        {
+          "prop": "price.currency",
+          "dictionary": "vibe.usage.currency",
+          "keys": []
+        },
+        {
+          "prop": "price.label",
+          "dictionary": "vibe.usage.estimate",
+          "keys": []
+        },
+        {
+          "prop": "cta",
+          "dictionary": "vibe.usage.cta",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "UspStrip",
@@ -1925,9 +4805,25 @@
           "prop": "perks",
           "collection": "perks",
           "kind": "perk",
-          "record": "Feature"
+          "record": "Feature",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "commerce.usp.title",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "VideoModal",
@@ -1940,9 +4836,45 @@
           "prop": "chapters",
           "collection": "chapters",
           "kind": "chapter",
-          "record": "Chapter"
+          "record": "Chapter",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "size",
+        "outline",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "vibe.modal.title",
+          "keys": []
+        },
+        {
+          "prop": "text",
+          "dictionary": "vibe.modal.text",
+          "keys": []
+        },
+        {
+          "prop": "close",
+          "dictionary": "vibe.modal.close",
+          "keys": []
+        },
+        {
+          "prop": "play",
+          "dictionary": "vibe.modal.play",
+          "keys": []
+        },
+        {
+          "prop": "chaptersTitle",
+          "dictionary": "vibe.modal.chapters",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "VideoGrid",
@@ -1952,12 +4884,39 @@
       "status": "todo",
       "data": [
         {
-          "prop": "testimonials",
+          "prop": "quotes",
           "collection": "testimonials",
           "kind": "testimonial",
-          "record": "Quote"
+          "record": "Quote",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "cols",
+        "caption",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "vibe.videos.title",
+          "keys": []
+        },
+        {
+          "prop": "playLabel",
+          "dictionary": "vibe.videos.play",
+          "keys": []
+        },
+        {
+          "prop": "byLine",
+          "dictionary": "testimonials.byLine",
+          "keys": []
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "SignupWizard",
@@ -1967,12 +4926,40 @@
       "status": "todo",
       "data": [
         {
-          "prop": "wizard",
+          "prop": "steps",
           "collection": "wizard",
           "kind": "step",
-          "record": "WizardStep"
+          "record": "WizardStep",
+          "list": true
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "current",
+        "level",
+        "progress",
+        "layout",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "vibe.wizard.title",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "vibe.wizard.labels",
+          "keys": [
+            "stepOf",
+            "steps",
+            "back",
+            "next",
+            "finish"
+          ]
+        }
+      ],
+      "emptyState": false
     },
     {
       "id": "ZoneTable",
@@ -1985,201 +4972,43 @@
           "prop": "zones",
           "collection": "zones",
           "kind": "zone",
-          "record": "Zone"
+          "record": "Zone",
+          "list": true
         }
-      ]
-    },
-    {
-      "id": "template.blog",
-      "surface": "magazine-template",
-      "source": "apps/magazine/src/templates/blog.svelte",
-      "status": "todo",
-      "uses": [
-        "NewsletterForm",
-        "PageIntro",
-        "PostGrid"
       ],
-      "collections": [
-        "posts",
-        "topics"
-      ]
-    },
-    {
-      "id": "template.classic",
-      "surface": "magazine-template",
-      "source": "apps/magazine/src/templates/classic.svelte",
-      "status": "todo",
-      "uses": [
-        "CtaBand",
-        "FeatureGrid",
-        "HeroClassic",
-        "StatsBand"
+      "settings": [
+        "id",
+        "layout",
+        "tone",
+        "density",
+        "landmarkLabel"
       ],
-      "collections": [
-        "features",
-        "stats"
-      ]
-    },
-    {
-      "id": "template.dashboard",
-      "surface": "magazine-template",
-      "source": "apps/magazine/src/templates/dashboard.svelte",
-      "status": "todo",
-      "uses": [
-        "AppShell"
+      "labels": [
+        {
+          "prop": "title",
+          "dictionary": "commerce.zones.title",
+          "keys": []
+        },
+        {
+          "prop": "lead",
+          "dictionary": "commerce.zones.lead",
+          "keys": []
+        },
+        {
+          "prop": "labels",
+          "dictionary": "commerce.zones",
+          "keys": [
+            "caption",
+            "zone",
+            "price",
+            "freeFrom",
+            "minOrder",
+            "time",
+            "express"
+          ]
+        }
       ],
-      "collections": [
-        "activity",
-        "metrics",
-        "series",
-        "sidenav"
-      ]
-    },
-    {
-      "id": "template.docs",
-      "surface": "magazine-template",
-      "source": "apps/magazine/src/templates/docs.svelte",
-      "status": "todo",
-      "uses": [
-        "ArticleBody",
-        "PageTrail",
-        "SidebarNav"
-      ],
-      "collections": [
-        "article",
-        "crumbs",
-        "helplinks",
-        "outline",
-        "stats"
-      ]
-    },
-    {
-      "id": "template.ecommerce",
-      "surface": "magazine-template",
-      "source": "apps/magazine/src/templates/ecommerce.svelte",
-      "status": "todo",
-      "uses": [
-        "CategoryNav",
-        "CtaBand",
-        "ProductDetail",
-        "ProductGrid",
-        "ReviewList"
-      ],
-      "collections": [
-        "categories",
-        "products",
-        "reviews"
-      ]
-    },
-    {
-      "id": "template.footer",
-      "surface": "magazine-part",
-      "source": "apps/magazine/src/templates/footer.svelte",
-      "status": "todo",
-      "uses": [
-        "SitemapFooter"
-      ],
-      "collections": [
-        "sitemap"
-      ]
-    },
-    {
-      "id": "template.header",
-      "surface": "magazine-part",
-      "source": "apps/magazine/src/templates/header.svelte",
-      "status": "todo",
-      "uses": [
-        "NavBar"
-      ],
-      "collections": []
-    },
-    {
-      "id": "template.portfolio",
-      "surface": "magazine-template",
-      "source": "apps/magazine/src/templates/portfolio.svelte",
-      "status": "todo",
-      "uses": [
-        "AboutMe",
-        "CtaBand",
-        "PhotoGallery",
-        "ProjectGrid"
-      ],
-      "collections": [
-        "facts",
-        "photos",
-        "projects",
-        "skills"
-      ]
-    },
-    {
-      "id": "template.saas",
-      "surface": "magazine-template",
-      "source": "apps/magazine/src/templates/saas.svelte",
-      "status": "todo",
-      "uses": [
-        "CtaBand",
-        "FaqList",
-        "FeatureGrid",
-        "HeroSplit",
-        "PricingTiers",
-        "StatsBand"
-      ],
-      "collections": [
-        "faq",
-        "features",
-        "stats",
-        "testimonials",
-        "tiers"
-      ]
-    },
-    {
-      "id": "template.sidebar",
-      "surface": "magazine-template",
-      "source": "apps/magazine/src/templates/sidebar.svelte",
-      "status": "todo",
-      "uses": [
-        "CategoryNav",
-        "FaqList",
-        "FeatureGrid",
-        "PageIntro"
-      ],
-      "collections": [
-        "categories",
-        "faq",
-        "features"
-      ]
-    },
-    {
-      "id": "template.three-column",
-      "surface": "magazine-template",
-      "source": "apps/magazine/src/templates/three-column.svelte",
-      "status": "todo",
-      "uses": [
-        "ArticleBody",
-        "PostHeader",
-        "SidebarNav"
-      ],
-      "collections": [
-        "activity",
-        "article",
-        "posts",
-        "sidenav"
-      ]
-    },
-    {
-      "id": "template.two-column",
-      "surface": "magazine-template",
-      "source": "apps/magazine/src/templates/two-column.svelte",
-      "status": "todo",
-      "uses": [
-        "ArticleBody",
-        "PostHeader"
-      ],
-      "collections": [
-        "article",
-        "posts",
-        "topics"
-      ]
+      "emptyState": false
     },
     {
       "id": "screen.blocks",
@@ -2293,7 +5122,10 @@
       "surface": "xgen-screen",
       "source": "xgen/specs/screens/plans.json",
       "status": "todo",
-      "uses": []
+      "uses": [],
+      "collections": [
+        "plans"
+      ]
     },
     {
       "id": "screen.site",
@@ -2535,6 +5367,198 @@
         "block.pagehead",
         "block.sitemap"
       ]
+    },
+    {
+      "id": "template.blog",
+      "surface": "magazine-template",
+      "source": "apps/magazine/src/templates/blog.svelte",
+      "status": "todo",
+      "uses": [
+        "NewsletterForm",
+        "PageIntro",
+        "PostGrid"
+      ],
+      "collections": [
+        "posts",
+        "topics"
+      ]
+    },
+    {
+      "id": "template.classic",
+      "surface": "magazine-template",
+      "source": "apps/magazine/src/templates/classic.svelte",
+      "status": "todo",
+      "uses": [
+        "CtaBand",
+        "FeatureGrid",
+        "HeroClassic",
+        "StatsBand"
+      ],
+      "collections": [
+        "features",
+        "stats"
+      ]
+    },
+    {
+      "id": "template.dashboard",
+      "surface": "magazine-template",
+      "source": "apps/magazine/src/templates/dashboard.svelte",
+      "status": "todo",
+      "uses": [
+        "AppShell"
+      ],
+      "collections": [
+        "activity",
+        "metrics",
+        "series",
+        "sidenav"
+      ]
+    },
+    {
+      "id": "template.docs",
+      "surface": "magazine-template",
+      "source": "apps/magazine/src/templates/docs.svelte",
+      "status": "todo",
+      "uses": [
+        "ArticleBody",
+        "PageTrail",
+        "SidebarNav"
+      ],
+      "collections": [
+        "article",
+        "crumbs",
+        "helplinks",
+        "outline",
+        "stats"
+      ]
+    },
+    {
+      "id": "template.ecommerce",
+      "surface": "magazine-template",
+      "source": "apps/magazine/src/templates/ecommerce.svelte",
+      "status": "todo",
+      "uses": [
+        "CategoryNav",
+        "CtaBand",
+        "ProductDetail",
+        "ProductGrid",
+        "ReviewList"
+      ],
+      "collections": [
+        "categories",
+        "products",
+        "reviews"
+      ]
+    },
+    {
+      "id": "template.portfolio",
+      "surface": "magazine-template",
+      "source": "apps/magazine/src/templates/portfolio.svelte",
+      "status": "todo",
+      "uses": [
+        "AboutMe",
+        "CtaBand",
+        "PhotoGallery",
+        "ProjectGrid"
+      ],
+      "collections": [
+        "facts",
+        "photos",
+        "projects",
+        "skills"
+      ]
+    },
+    {
+      "id": "template.saas",
+      "surface": "magazine-template",
+      "source": "apps/magazine/src/templates/saas.svelte",
+      "status": "todo",
+      "uses": [
+        "CtaBand",
+        "FaqList",
+        "FeatureGrid",
+        "HeroSplit",
+        "PricingTiers",
+        "StatsBand"
+      ],
+      "collections": [
+        "faq",
+        "features",
+        "stats",
+        "testimonials",
+        "tiers"
+      ]
+    },
+    {
+      "id": "template.sidebar",
+      "surface": "magazine-template",
+      "source": "apps/magazine/src/templates/sidebar.svelte",
+      "status": "todo",
+      "uses": [
+        "CategoryNav",
+        "FaqList",
+        "FeatureGrid",
+        "PageIntro"
+      ],
+      "collections": [
+        "categories",
+        "faq",
+        "features"
+      ]
+    },
+    {
+      "id": "template.three-column",
+      "surface": "magazine-template",
+      "source": "apps/magazine/src/templates/three-column.svelte",
+      "status": "todo",
+      "uses": [
+        "ArticleBody",
+        "PostHeader",
+        "SidebarNav"
+      ],
+      "collections": [
+        "activity",
+        "article",
+        "posts",
+        "sidenav"
+      ]
+    },
+    {
+      "id": "template.two-column",
+      "surface": "magazine-template",
+      "source": "apps/magazine/src/templates/two-column.svelte",
+      "status": "todo",
+      "uses": [
+        "ArticleBody",
+        "PostHeader"
+      ],
+      "collections": [
+        "article",
+        "posts",
+        "topics"
+      ]
+    },
+    {
+      "id": "template.footer",
+      "surface": "magazine-part",
+      "source": "apps/magazine/src/templates/footer.svelte",
+      "status": "todo",
+      "uses": [
+        "SitemapFooter"
+      ],
+      "collections": [
+        "sitemap"
+      ]
+    },
+    {
+      "id": "template.header",
+      "surface": "magazine-part",
+      "source": "apps/magazine/src/templates/header.svelte",
+      "status": "todo",
+      "uses": [
+        "NavBar"
+      ],
+      "collections": []
     },
     {
       "id": "taste.t001-poster-mesh",

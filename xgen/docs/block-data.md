@@ -1,4 +1,4 @@
-# Block data vs the Codex v0.4 contract (inventory; step 2: the pilot blocks fixed; step 3: lookups, terms, author_id; step 4: five more blocks)
+# Block data vs the Codex v0.4 contract (inventory; step 2: the pilot blocks fixed; step 3: lookups, terms, author_id; step 4: five more blocks; step 5: blocks.json generated)
 
 Goal: every block, screen, template and data structure of the kit reads Codex v0.4 entries (`@ui8kit/contract` ^0.2.0;
 manifest `xgen/schema/codex/manifest.json`, 62 kinds) by the rules: money = integer minor units + `currency`; dates RFC 3339,
@@ -8,7 +8,9 @@ media via `featured_media_id` (kind `media`); UI labels from the dictionary of t
 **The contract wins.** On any conflict the block (or its prop) changes; where data is missing it goes into a kind/metadata field
 declared in `manifest.json` (an extension point), never into the core schema. Fix column: `block` (preferred) or `manifest` (kind/field).
 
-Machine-readable twin: `xgen/schema/codex/blocks.json` (schema `blocks.schema.json`, test `xgen/schema/test/blocks.test.ts`).
+Machine-readable twin: `xgen/schema/codex/blocks.json` (schema `blocks.schema.json`, test `xgen/schema/test/blocks.test.ts`),
+**generated** by `bun run codex:blocks` (`xgen/schema/src/codex-blocks.ts`); `xgen check` (group `codex`) fails when it is behind
+the sources. See section 6.
 Central field maps: `xgen/runtimes/core/assets/app/fields.ts` -> generated `@ui8kit/app-shared/runtime/fields` (`CODEX_FIELDS`).
 Lookups: generated `@ui8kit/app-shared/runtime/codex` (`CODEX`: media, users, taxonomy terms) is the third argument of every
 `fromCodex` in the hosts and the magazine; `routes` are added only for kinds an app has a page for (today none: no link).
@@ -123,3 +125,22 @@ HeroHead and NavBar links: no address, no link (a button stays a button). Media 
 The magazine is a showcase: no routes and no links by design; its templates pass no `href`. Left: the hardcoded `"#/"` of footer
 groups, side navs, the category nav, the brand and the in-page table of contents (#11).
 todo: everything else in blocks.json (kind listed from the spec).
+
+## 6. Generation of blocks.json (step 5)
+
+`bun run codex:blocks` writes `xgen/schema/codex/blocks.json` from the sources; `xgen check` group `codex` (and the test
+`xgen/schema/test/codex-blocks.test.ts`) fails on drift, like the `authored` and `drift` groups for specs and generated code.
+
+| Field | Source |
+|---|---|
+| id, spec, source | kit block: the organism name, the spec id, `xgen/specs/blocks/<key>.json`; screen: `xgen/specs/screens/*.json`; magazine: `apps/magazine/src/templates/*.svelte` (`header`, `footer` = `magazine-part`); taste: `packages/taste-screens/src/screens/*.svelte` |
+| data[] | one binding per `data[]` of the spec: `collection`, `kind`, `record` as written; `prop` = the organism prop the sample or a variant hands the collection to (dotted for a field of a grouped prop: `filter.tabs`, `extras.facts`); `list` = false when picked (`pick`, `nth`); `map` = the key of `CODEX_FIELDS` whose map equals the spec's `fields` |
+| labels[] | every `{ "$": "ui.<path>" }` of the sample and the variants: the prop (dotted when nested) and the dictionary path; `keys` = the fields of the prop's record type found as strings in the dictionary (else the string keys of the dictionary object; `[]` for one string) |
+| settings | the organism props that carry neither data nor dictionary text |
+| emptyState | the block lists the `EmptyState` slot (or `emptyMode: omit`) |
+| uses, collections | screen: every `{ "block": key }` (`block.<key>`), a list screen's `source.collection`; magazine: the kit blocks imported from `@ui8kit/svelte-ui`, every `d.<collection>` read; taste: the kit blocks imported |
+| **by hand** | `status` (todo/done), `required` / `optional` of a binding (kept by its collection), `note`, `emptyMode` (kept by id) |
+
+A block new in the specs appears as `todo` with its bindings; a moved or renamed source is followed (the id stays). The bindings of
+the done blocks now name the real organism prop (FaqList `items`, `filter.tabs`; PageTrail `extras.facts`; PricingTiers lists the
+`duo` collection of its variant too).

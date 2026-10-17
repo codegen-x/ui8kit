@@ -7,6 +7,7 @@ import { validateRegistry, deriveA11y, deriveData, deriveSlots, portableTo, UI_R
 import { authored, authoredDirs, screenContentRefs, indexParts, sourcesOf, stringify, fileName, tierDir, validateOrganism, validateScreen, type OrganismSpec } from "@ui8kit/xgen-screens";
 import { drift, planBuild, type Plan } from "@ui8kit/xgen-generator";
 import { checkBlocks } from "./blocks";
+import { blockSources, blocksDrift } from "@ui8kit/xgen-schema/codex-blocks";
 import { checkRegistry, checkThemes } from "./registry";
 import { checkDictionary } from "./dictionary";
 import { checkRoutes } from "./routes";
@@ -151,6 +152,11 @@ export function checkRecipes(plan: Plan): CheckResult {
   return result("recipes", `${plan.inputs.recipes.length} recipes of parts and patterns (parts, patterns and block frames): valid, used, every value of every key shown in an example`, problems);
 }
 
+/** the block data manifest (xgen/schema/codex/blocks.json) equals what `bun run codex:blocks` generates from the specs, templates and screens */
+export function checkCodex(plan: Plan): CheckResult {
+  return result("codex", "the block data manifest (xgen/schema/codex/blocks.json) is generated from the block and screen specs, the magazine templates and the taste screens: no block missing, no stale binding or source", blocksDrift(blockSources(plan.xgenRoot)));
+}
+
 export function checkDrift(plan: Plan): CheckResult {
   return result("drift", "packages and apps equal what the specs generate: no hand edits, no extra files, every file has the DO NOT EDIT header", drift(plan));
 }
@@ -274,7 +280,7 @@ export function checkText(plan: Plan): CheckResult {
 
 export function runChecks(workspace: string): { results: CheckResult[]; plan: Plan } {
   const plan = planBuild(workspace);
-  const results = [checkSchema(plan), checkProps(plan), checkA11y(plan), checkAuthored(plan), checkCoverage(plan), checkRecipes(plan), checkNonportable(plan), checkText(plan), checkDictionary(plan), checkBlocks(plan), checkRegistry(plan), checkThemes(plan), checkRoutes(plan), checkStructure(plan), checkHardcode(plan), checkCorners(plan), checkShadows(plan), checkSpacing(plan), checkReadability(plan), checkDead(plan), checkDuplicates(plan), checkVersions(plan), checkTests(plan), checkRules(plan.workspace), checkDrift(plan)];
+  const results = [checkSchema(plan), checkProps(plan), checkA11y(plan), checkAuthored(plan), checkCoverage(plan), checkRecipes(plan), checkNonportable(plan), checkText(plan), checkDictionary(plan), checkBlocks(plan), checkRegistry(plan), checkThemes(plan), checkRoutes(plan), checkStructure(plan), checkHardcode(plan), checkCorners(plan), checkShadows(plan), checkSpacing(plan), checkReadability(plan), checkDead(plan), checkDuplicates(plan), checkVersions(plan), checkTests(plan), checkRules(plan.workspace), checkCodex(plan), checkDrift(plan)];
   return { results, plan };
 }
 
