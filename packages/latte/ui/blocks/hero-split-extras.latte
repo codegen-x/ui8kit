@@ -4,7 +4,7 @@
     Props (p): content, extra. *}
 {var $v_content = ($p['content'] ?? null)}
 {var $v_extra = ($p['extra'] ?? 'none')}
-{if ui_t(ui_eq($v_extra, 'stats'))}
+{if ui_t(ui_and([ui_eq($v_extra, 'stats'), ui_gt(ui_len(ui_get($v_content, ['stats'])), 0)]))}
   {capture $c_4}
     {foreach ui_l(ui_get($v_content, ['stats'])) as $v_s}
       {var $v_i = $iterator->counter0}
@@ -25,7 +25,7 @@
   {/capture}
   {=ui_include('ui/box/box.latte', ['p' => ['Class' => 'grid grid-cols-3 gap-4', 'Attrs' => ui_attrs(['data-testid', 'hero-stats'])], 'children' => $c_4])|noescape}
 {/if}
-{if ui_t(ui_eq($v_extra, 'avatars'))}
+{if ui_t(ui_and([ui_eq($v_extra, 'avatars'), ui_gt(ui_len(ui_get($v_content, ['people'])), 0)]))}
   {capture $c_7}
     {capture $c_5}
       {foreach ui_l(ui_get($v_content, ['people'])) as $v_p}
@@ -43,7 +43,7 @@
   {/capture}
   {=ui_include('ui/group/group.latte', ['p' => ['Gap' => '4', 'Align' => 'center', 'Class' => 'flex-wrap', 'Attrs' => ui_attrs(['data-testid', 'hero-proof'])], 'children' => $c_7])|noescape}
 {/if}
-{if ui_t(ui_eq($v_extra, 'minis'))}
+{if ui_t(ui_and([ui_eq($v_extra, 'minis'), ui_gt(ui_len(ui_get($v_content, ['features'])), 0)]))}
   {capture $c_13}
     {foreach ui_l(ui_get($v_content, ['features'])) as $v_f}
       {var $v_i = $iterator->counter0}
@@ -71,7 +71,7 @@
   {/capture}
   {=ui_include('ui/box/box.latte', ['p' => ['Class' => 'grid grid-cols-1 gap-4 sm:grid-cols-2', 'Attrs' => ui_attrs(['data-testid', 'hero-minis'])], 'children' => $c_13])|noescape}
 {/if}
-{if ui_t(ui_eq($v_extra, 'quote'))}
+{if ui_t(ui_and([ui_eq($v_extra, 'quote'), ui_gt(ui_len(ui_get($v_content, ['people'])), 0)]))}
   {capture $c_24}
     {foreach ui_l(ui_get($v_content, ['people'])) as $v_p}
       {var $v_i = $iterator->counter0}

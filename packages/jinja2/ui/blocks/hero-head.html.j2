@@ -24,25 +24,27 @@
     {{ ui_text(v_brand) }}
   {%- endset -%}
   {{ ui_include('blocks/menu-entry.html.j2', {'p': {'href': v_brandHref, 'className': ui_cnv([ui_cnv([ui_preset('blocks/presets/defaults.json', ['text', 'small']), 'font-medium leading-6 text-background'])]), 'testid': 'brand'}, 'children': c_2}) }}
-  {%- set c_6 -%}
-    {%- set c_5 -%}
-      {%- for v_l in ui_l(v_links) %}
-        {%- if ui_t(ui_get(v_l, ['href'])) %}
-          {%- set c_3 -%}
-            {{ ui_text(ui_get(v_l, ['name'])) }}
-          {%- endset -%}
-          {{ ui_include('ui/link/link.html.j2', {'p': {'Href': ui_s(ui_get(v_l, ['href'])), 'Variant': 'default', 'AriaCurrent': ui_s(('page' if ui_t(ui_eq(ui_get(v_l, ['id']), v_current)) else none)), 'Class': 'text-xs font-medium leading-5 text-background', 'Attrs': ui_attrs(['data-testid', 'nav-link'])}, 'children': c_3}) }}
-        {%- else %}
-          {%- set c_4 -%}
-            {{ ui_text(ui_get(v_l, ['name'])) }}
-          {%- endset -%}
-          {{ ui_include('ui/inline/inline.html.j2', {'p': {'Class': 'text-xs font-medium leading-5 text-background', 'Attrs': ui_attrs(['data-testid', 'nav-link'])}, 'children': c_4}) }}
-        {%- endif %}
-      {%- endfor %}
+  {%- if ui_t(ui_and([v_links, ui_gt(ui_len(v_links), 0)])) %}
+    {%- set c_6 -%}
+      {%- set c_5 -%}
+        {%- for v_l in ui_l(v_links) %}
+          {%- if ui_t(ui_get(v_l, ['href'])) %}
+            {%- set c_3 -%}
+              {{ ui_text(ui_get(v_l, ['name'])) }}
+            {%- endset -%}
+            {{ ui_include('ui/link/link.html.j2', {'p': {'Href': ui_s(ui_get(v_l, ['href'])), 'Variant': 'default', 'AriaCurrent': ui_s(('page' if ui_t(ui_eq(ui_get(v_l, ['id']), v_current)) else none)), 'Class': 'text-xs font-medium leading-5 text-background', 'Attrs': ui_attrs(['data-testid', 'nav-link'])}, 'children': c_3}) }}
+          {%- else %}
+            {%- set c_4 -%}
+              {{ ui_text(ui_get(v_l, ['name'])) }}
+            {%- endset -%}
+            {{ ui_include('ui/inline/inline.html.j2', {'p': {'Class': 'text-xs font-medium leading-5 text-background', 'Attrs': ui_attrs(['data-testid', 'nav-link'])}, 'children': c_4}) }}
+          {%- endif %}
+        {%- endfor %}
+      {%- endset -%}
+      {{ ui_include('ui/group/group.html.j2', {'p': {'Gap': '8', 'Align': 'center', 'Class': 'flex-wrap'}, 'children': c_5}) }}
     {%- endset -%}
-    {{ ui_include('ui/group/group.html.j2', {'p': {'Gap': '8', 'Align': 'center', 'Class': 'flex-wrap'}, 'children': c_5}) }}
-  {%- endset -%}
-  {{ ui_include('blocks/nav-block.html.j2', {'p': {'label': (ui_uniq(ui_tpl('{0}, {1}', [v_navLabel, v_landmarkLabel])) if ui_t(v_landmarkLabel) else v_navLabel), 'testid': 'site-nav'}, 'children': c_6}) }}
+    {{ ui_include('blocks/nav-block.html.j2', {'p': {'label': (ui_uniq(ui_tpl('{0}, {1}', [v_navLabel, v_landmarkLabel])) if ui_t(v_landmarkLabel) else v_navLabel), 'testid': 'site-nav'}, 'children': c_6}) }}
+  {%- endif %}
   {%- set c_9 -%}
     {%- if ui_t(v_login) %}
       {%- set c_7 -%}

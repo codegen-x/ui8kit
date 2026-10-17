@@ -11,7 +11,7 @@
 {if ui_t(ui_eq($v_media, 'card'))}
   {=ui_include('blocks/offer-media.latte', ['p' => ['alt' => $v_alt, 'card' => ui_get($v_content, ['card'])]])|noescape}
 {/if}
-{if ui_t(ui_eq($v_media, 'grid'))}
+{if ui_t(ui_and([ui_eq($v_media, 'grid'), ui_gt(ui_len(ui_get($v_content, ['features'])), 0)]))}
   {capture $c_3}
     {foreach ui_l(ui_get($v_content, ['features'])) as $v_f}
       {var $v_i = $iterator->counter0}
@@ -29,7 +29,7 @@
   {/capture}
   {=ui_include('ui/box/box.latte', ['p' => ['Class' => 'grid grid-cols-2 gap-4', 'Attrs' => ui_attrs(['data-testid', 'hero-grid'])], 'children' => $c_3])|noescape}
 {/if}
-{if ui_t(ui_eq($v_media, 'plans'))}
+{if ui_t(ui_and([ui_eq($v_media, 'plans'), ui_gt(ui_len(ui_get($v_content, ['plans'])), 0)]))}
   {capture $c_8}
     {=ui_include('blocks/media-frame.latte', ['p' => ['alt' => $v_alt, 'ratio' => '4/3']])|noescape}
     {foreach ui_l(ui_get($v_content, ['plans'])) as $v_p}

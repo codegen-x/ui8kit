@@ -26,7 +26,7 @@
   let { content, extra = "none" }: HeroSplitExtrasProps = $props();
 </script>
 
-{#if ((extra as string) === "stats")}
+{#if (((extra as string) === "stats") && ((content.stats?.length ?? 0) > 0))}
   <Box class="grid grid-cols-3 gap-4" data-testid="hero-stats">
     {#each content.stats as s, i (s.id)}
       {#if (i < 3)}
@@ -42,7 +42,7 @@
     {/each}
   </Box>
 {/if}
-{#if ((extra as string) === "avatars")}
+{#if (((extra as string) === "avatars") && ((content.people?.length ?? 0) > 0))}
   <Group gap="4" align="center" class="flex-wrap" data-testid="hero-proof">
     <Group gap="2" align="center">
       {#each content.people as p, i (p.id)}
@@ -56,7 +56,7 @@
     </Text>
   </Group>
 {/if}
-{#if ((extra as string) === "minis")}
+{#if (((extra as string) === "minis") && ((content.features?.length ?? 0) > 0))}
   <Box class="grid grid-cols-1 gap-4 sm:grid-cols-2" data-testid="hero-minis">
     {#each content.features as f, i (f.id)}
       {#if (i < 2)}
@@ -77,7 +77,7 @@
     {/each}
   </Box>
 {/if}
-{#if ((extra as string) === "quote")}
+{#if (((extra as string) === "quote") && ((content.people?.length ?? 0) > 0))}
   <Stack gap="6" align="stretch">
     {#each content.people as p, i (p.id)}
       {#if (i < 1)}

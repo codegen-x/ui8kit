@@ -1431,7 +1431,7 @@
       "surface": "kit-block",
       "spec": "block.ctaproof",
       "source": "xgen/specs/blocks/ctaproof.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "content.logos",
@@ -1439,7 +1439,13 @@
           "kind": "logo",
           "record": "Logo",
           "map": "logo",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value"
+          ],
+          "optional": []
         },
         {
           "prop": "content.features",
@@ -1447,7 +1453,14 @@
           "kind": "feature",
           "record": "Feature",
           "map": "feature",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
         },
         {
           "prop": "content.stats",
@@ -1455,7 +1468,15 @@
           "kind": "stat",
           "record": "Stat",
           "map": "stat",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.value.value",
+            "metadata.icon.value",
+            "metadata.hint.value"
+          ],
+          "optional": []
         },
         {
           "prop": "content.zones",
@@ -1463,7 +1484,20 @@
           "kind": "zone",
           "record": "Zone",
           "map": "zone",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.area.value",
+            "metadata.price.value",
+            "metadata.freeFrom.value",
+            "metadata.minOrder.value",
+            "metadata.time.value",
+            "metadata.currency.value"
+          ],
+          "optional": [
+            "metadata.express.value"
+          ]
         }
       ],
       "settings": [
@@ -1506,7 +1540,8 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "DashboardShell",
@@ -2362,7 +2397,7 @@
       "surface": "kit-block",
       "spec": "block.hero",
       "source": "xgen/specs/blocks/hero.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "media.lines",
@@ -2370,7 +2405,13 @@
           "kind": "line",
           "record": "CodeLine",
           "map": "line",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.line_kind.value"
+          ],
+          "optional": []
         },
         {
           "prop": "topics",
@@ -2378,7 +2419,13 @@
           "kind": "prompt",
           "record": "Topic",
           "map": "prompt",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value"
+          ],
+          "optional": []
         },
         {
           "prop": "nav.links",
@@ -2386,7 +2433,14 @@
           "kind": "menu_item",
           "record": "NavLink",
           "map": "menuItem",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value",
+            "slug"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -2475,14 +2529,15 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "HeroSplit",
       "surface": "kit-block",
       "spec": "block.herosplit",
       "source": "xgen/specs/blocks/herosplit.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "content.stats",
@@ -2490,7 +2545,15 @@
           "kind": "stat",
           "record": "Stat",
           "map": "stat",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.value.value",
+            "metadata.icon.value",
+            "metadata.hint.value"
+          ],
+          "optional": []
         },
         {
           "prop": "content.features",
@@ -2498,7 +2561,14 @@
           "kind": "feature",
           "record": "Feature",
           "map": "feature",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
         },
         {
           "prop": "content.people",
@@ -2506,7 +2576,19 @@
           "kind": "testimonial",
           "record": "Quote",
           "map": "testimonial",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.role.value",
+            "metadata.company.value",
+            "metadata.quote.value",
+            "metadata.rating.value",
+            "metadata.handle.value",
+            "metadata.time.value",
+            "metadata.mark.value"
+          ],
+          "optional": []
         },
         {
           "prop": "content.plans",
@@ -2514,7 +2596,20 @@
           "kind": "plan",
           "record": "Plan",
           "map": "plan",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.tagline.value",
+            "metadata.price.value",
+            "metadata.currency.value",
+            "metadata.seats.value",
+            "metadata.storage.value",
+            "metadata.highlighted.value",
+            "metadata.features.value",
+            "metadata.yearly.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -2568,7 +2663,8 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "IconWall",

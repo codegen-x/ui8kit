@@ -18,7 +18,7 @@
 {%- set v_mediaKind = ui_coalesce([ui_get(v_media, ['kind']), 'none']) -%}
 {%- set v_mediaSide = ui_coalesce([ui_get(v_media, ['side']), 'end']) -%}
 {%- set f_5 -%}
-  {%- if ui_t(ui_and([ui_eq(v_mediaKind, 'code'), ui_get(v_media, ['lines']), ui_get(v_media, ['codeTitle']), ui_get(v_media, ['prompt'])])) %}
+  {%- if ui_t(ui_and([ui_eq(v_mediaKind, 'code'), ui_get(v_media, ['lines']), ui_gt(ui_len(ui_get(v_media, ['lines'])), 0), ui_get(v_media, ['codeTitle']), ui_get(v_media, ['prompt'])])) %}
     {{ ui_include('blocks/code-window.html.j2', {'p': {'title': ui_get(v_media, ['codeTitle']), 'prompt': ui_get(v_media, ['prompt']), 'lines': ui_get(v_media, ['lines'])}}) }}
   {%- endif %}
   {%- if ui_t(ui_eq(v_mediaKind, 'cluster')) %}
@@ -65,7 +65,7 @@
       {{ ui_include('blocks/action-group.html.j2', {'p': {'primary': ui_get(v_actions, ['cta']), 'primaryHref': ui_get(v_actions, ['href']), 'secondary': (ui_get(v_actions, ['secondary']) if ui_t(ui_eq(ui_get(v_actions, ['mode']), 'two')) else none), 'secondaryHref': ui_get(v_actions, ['secondaryHref']), 'align': ('center' if ui_t(ui_eq(v_layout, 'centered')) else 'start')}}) }}
     {%- endif %}
   {%- endif %}
-  {%- if ui_t(v_topics) %}
+  {%- if ui_t(ui_and([v_topics, ui_gt(ui_len(v_topics), 0)])) %}
     {{ ui_include('blocks/topic-chips.html.j2', {'p': {'topics': v_topics}}) }}
   {%- endif %}
 {%- endset -%}

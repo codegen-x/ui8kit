@@ -66,14 +66,14 @@ templ HeroClassic(p HeroClassicProps) {
 				@ActionGroup(ActionGroupProps{Primary: uiutils.Get(vActions, "cta"), PrimaryHref: uiutils.Get(vActions, "href"), Secondary: uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vActions, "mode"), "two")), uiutils.Get(vActions, "secondary"), nil), SecondaryHref: uiutils.Get(vActions, "secondaryHref"), Align: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "centered")), "center", "start")})
 			}
 		}
-		if uiutils.T(vTopics) {
+		if uiutils.T(uiutils.And(vTopics, uiutils.Gt(uiutils.Len(vTopics), float64(0)))) {
 			@TopicChips(TopicChipsProps{Topics: vTopics})
 		}
 	}
 }
 
 templ heroClassicFill1(p HeroClassicProps, vTitle any, vMedia any, vMediaKind any) {
-	if uiutils.T(uiutils.And(uiutils.Eq(vMediaKind, "code"), uiutils.Get(vMedia, "lines"), uiutils.Get(vMedia, "codeTitle"), uiutils.Get(vMedia, "prompt"))) {
+	if uiutils.T(uiutils.And(uiutils.Eq(vMediaKind, "code"), uiutils.Get(vMedia, "lines"), uiutils.Gt(uiutils.Len(uiutils.Get(vMedia, "lines")), float64(0)), uiutils.Get(vMedia, "codeTitle"), uiutils.Get(vMedia, "prompt"))) {
 		@CodeWindow(CodeWindowProps{Title: uiutils.Get(vMedia, "codeTitle"), Prompt: uiutils.Get(vMedia, "prompt"), Lines: uiutils.Get(vMedia, "lines")})
 	}
 	if uiutils.Eq(vMediaKind, "cluster") {

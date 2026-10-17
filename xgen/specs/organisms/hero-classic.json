@@ -489,7 +489,26 @@
             },
             {
               "when": {
-                "$": "topics"
+                "op": "and",
+                "args": [
+                  {
+                    "$": "topics"
+                  },
+                  {
+                    "op": "gt",
+                    "args": [
+                      {
+                        "op": "len",
+                        "args": [
+                          {
+                            "$": "topics"
+                          }
+                        ]
+                      },
+                      0
+                    ]
+                  }
+                ]
               },
               "then": [
                 {
@@ -522,6 +541,20 @@
                   },
                   {
                     "$": "media.lines"
+                  },
+                  {
+                    "op": "gt",
+                    "args": [
+                      {
+                        "op": "len",
+                        "args": [
+                          {
+                            "$": "media.lines"
+                          }
+                        ]
+                      },
+                      0
+                    ]
                   },
                   {
                     "$": "media.codeTitle"

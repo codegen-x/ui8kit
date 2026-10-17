@@ -149,120 +149,146 @@
           }
         },
         {
-          "organism": "NavBlock",
-          "props": {
-            "label": {
-              "op": "cond",
-              "args": [
-                {
-                  "$": "landmarkLabel"
-                },
-                {
-                  "op": "uniq",
+          "when": {
+            "op": "and",
+            "args": [
+              {
+                "$": "links"
+              },
+              {
+                "op": "gt",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "links"
+                      }
+                    ]
+                  },
+                  0
+                ]
+              }
+            ]
+          },
+          "then": [
+            {
+              "organism": "NavBlock",
+              "props": {
+                "label": {
+                  "op": "cond",
                   "args": [
                     {
-                      "op": "tpl",
+                      "$": "landmarkLabel"
+                    },
+                    {
+                      "op": "uniq",
                       "args": [
-                        "{0}, {1}",
                         {
-                          "$": "navLabel"
-                        },
-                        {
-                          "$": "landmarkLabel"
+                          "op": "tpl",
+                          "args": [
+                            "{0}, {1}",
+                            {
+                              "$": "navLabel"
+                            },
+                            {
+                              "$": "landmarkLabel"
+                            }
+                          ]
                         }
                       ]
+                    },
+                    {
+                      "$": "navLabel"
                     }
                   ]
                 },
-                {
-                  "$": "navLabel"
-                }
-              ]
-            },
-            "testid": "site-nav"
-          },
-          "slots": {
-            "children": {
-              "args": [],
-              "do": [
-                {
-                  "use": "Group",
-                  "props": {
-                    "Gap": "8",
-                    "Align": "center",
-                    "Class": "flex-wrap"
-                  },
-                  "children": [
+                "testid": "site-nav"
+              },
+              "slots": {
+                "children": {
+                  "args": [],
+                  "do": [
                     {
-                      "each": {
-                        "$": "links"
+                      "use": "Group",
+                      "props": {
+                        "Gap": "8",
+                        "Align": "center",
+                        "Class": "flex-wrap"
                       },
-                      "as": "l",
-                      "key": {
-                        "$": "l.id"
-                      },
-                      "do": [
+                      "children": [
                         {
-                          "when": {
-                            "$": "l.href"
+                          "each": {
+                            "$": "links"
                           },
-                          "then": [
+                          "as": "l",
+                          "key": {
+                            "$": "l.id"
+                          },
+                          "do": [
                             {
-                              "use": "Link",
-                              "props": {
-                                "Href": {
-                                  "$": "l.href"
-                                },
-                                "Variant": "default",
-                                "AriaCurrent": {
-                                  "op": "cond",
-                                  "args": [
-                                    {
-                                      "op": "eq",
+                              "when": {
+                                "$": "l.href"
+                              },
+                              "then": [
+                                {
+                                  "use": "Link",
+                                  "props": {
+                                    "Href": {
+                                      "$": "l.href"
+                                    },
+                                    "Variant": "default",
+                                    "AriaCurrent": {
+                                      "op": "cond",
                                       "args": [
                                         {
-                                          "$": "l.id"
+                                          "op": "eq",
+                                          "args": [
+                                            {
+                                              "$": "l.id"
+                                            },
+                                            {
+                                              "$": "current"
+                                            }
+                                          ]
                                         },
+                                        "page",
                                         {
-                                          "$": "current"
+                                          "op": "undef",
+                                          "args": []
                                         }
                                       ]
                                     },
-                                    "page",
+                                    "Class": "text-xs font-medium leading-5 text-background"
+                                  },
+                                  "attrs": {
+                                    "data-testid": "nav-link"
+                                  },
+                                  "children": [
                                     {
-                                      "op": "undef",
-                                      "args": []
+                                      "text": {
+                                        "$": "l.name"
+                                      }
                                     }
                                   ]
-                                },
-                                "Class": "text-xs font-medium leading-5 text-background"
-                              },
-                              "attrs": {
-                                "data-testid": "nav-link"
-                              },
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "l.name"
-                                  }
                                 }
-                              ]
-                            }
-                          ],
-                          "else": [
-                            {
-                              "use": "Inline",
-                              "props": {
-                                "Class": "text-xs font-medium leading-5 text-background"
-                              },
-                              "attrs": {
-                                "data-testid": "nav-link"
-                              },
-                              "children": [
+                              ],
+                              "else": [
                                 {
-                                  "text": {
-                                    "$": "l.name"
-                                  }
+                                  "use": "Inline",
+                                  "props": {
+                                    "Class": "text-xs font-medium leading-5 text-background"
+                                  },
+                                  "attrs": {
+                                    "data-testid": "nav-link"
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "l.name"
+                                      }
+                                    }
+                                  ]
                                 }
                               ]
                             }
@@ -272,9 +298,9 @@
                     }
                   ]
                 }
-              ]
+              }
             }
-          }
+          ]
         },
         {
           "use": "Group",

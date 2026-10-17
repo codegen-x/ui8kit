@@ -381,7 +381,26 @@
                     },
                     {
                       "when": {
-                        "$": "topics"
+                        "op": "and",
+                        "args": [
+                          {
+                            "$": "topics"
+                          },
+                          {
+                            "op": "gt",
+                            "args": [
+                              {
+                                "op": "len",
+                                "args": [
+                                  {
+                                    "$": "topics"
+                                  }
+                                ]
+                              },
+                              0
+                            ]
+                          }
+                        ]
                       },
                       "then": [
                         {

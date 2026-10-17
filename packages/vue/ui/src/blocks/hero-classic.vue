@@ -113,10 +113,10 @@ const mediaSide = computed(() => media?.side ?? "end");
         :align="(((layout as string) === 'centered') ? 'center' : 'start')"
       />
     </template>
-    <TopicChips v-if="topics" :topics="topics" />
+    <TopicChips v-if="(topics && ((topics?.length ?? 0) > 0))" :topics="topics" />
     <template #aside>
       <CodeWindow
-        v-if="(((mediaKind as string) === 'code') && media?.lines && media?.codeTitle && media?.prompt)"
+        v-if="(((mediaKind as string) === 'code') && media?.lines && ((media?.lines?.length ?? 0) > 0) && media?.codeTitle && media?.prompt)"
         :title="media?.codeTitle"
         :prompt="media?.prompt"
         :lines="media?.lines"

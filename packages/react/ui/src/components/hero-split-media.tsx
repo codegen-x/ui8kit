@@ -31,7 +31,7 @@ export function HeroSplitMedia({ content, alt, media = "picture" }: HeroSplitMed
       {((media as string) === "card") ? (
         <OfferMedia alt={alt} card={content.card} />
       ) : null}
-      {((media as string) === "grid") ? (
+      {(((media as string) === "grid") && ((content.features?.length ?? 0) > 0)) ? (
         <Box className="grid grid-cols-2 gap-4" data-testid="hero-grid">
           {(content.features ?? []).map((f, i) => (
             <Fragment key={f.id}>
@@ -47,7 +47,7 @@ export function HeroSplitMedia({ content, alt, media = "picture" }: HeroSplitMed
           ))}
         </Box>
       ) : null}
-      {((media as string) === "plans") ? (
+      {(((media as string) === "plans") && ((content.plans?.length ?? 0) > 0)) ? (
         <Box className="relative" data-testid="hero-media">
           <MediaFrame alt={alt} ratio="4/3" />
           {(content.plans ?? []).map((p, i) => (

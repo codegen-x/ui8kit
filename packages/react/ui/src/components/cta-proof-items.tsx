@@ -24,7 +24,7 @@ export type CtaProofItemsProps = {
 export function CtaProofItems({ content, proof = "stats", center = false }: CtaProofItemsProps) {
   return (
     <>
-      {((proof as string) === "logos") ? (
+      {(((proof as string) === "logos") && ((content.logos?.length ?? 0) > 0)) ? (
         <Box className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6" data-testid="cta-proof">
           {(content.logos ?? []).map((l) => (
             <Group key={l.id} gap="2" align="center" justify="center" className="text-muted-foreground" data-testid="cta-item">
@@ -36,7 +36,7 @@ export function CtaProofItems({ content, proof = "stats", center = false }: CtaP
           ))}
         </Box>
       ) : null}
-      {((proof as string) === "features") ? (
+      {(((proof as string) === "features") && ((content.features?.length ?? 0) > 0)) ? (
         <Box className="grid grid-cols-1 gap-4 text-left sm:grid-cols-2" data-testid="cta-proof">
           {(content.features ?? []).map((f) => (
             <Group key={f.id}
@@ -60,7 +60,7 @@ export function CtaProofItems({ content, proof = "stats", center = false }: CtaP
           ))}
         </Box>
       ) : null}
-      {((proof as string) === "stats") ? (
+      {(((proof as string) === "stats") && ((content.stats?.length ?? 0) > 0)) ? (
         <Box className="grid grid-cols-3 gap-4" data-testid="cta-proof">
           {(content.stats ?? []).map((s, i) => (
             <Fragment key={s.id}>
@@ -78,7 +78,7 @@ export function CtaProofItems({ content, proof = "stats", center = false }: CtaP
           ))}
         </Box>
       ) : null}
-      {((proof as string) === "rows") ? (
+      {(((proof as string) === "rows") && ((content.features?.length ?? 0) > 0)) ? (
         <List className="m-0 flex list-none flex-col gap-4 p-0" data-testid="cta-proof">
           {(content.features ?? []).map((f) => (
             <ListItem key={f.id} className="flex items-start gap-4" data-testid="cta-item">
@@ -97,7 +97,7 @@ export function CtaProofItems({ content, proof = "stats", center = false }: CtaP
           ))}
         </List>
       ) : null}
-      {((proof as string) === "zones") ? (
+      {(((proof as string) === "zones") && ((content.zones?.length ?? 0) > 0)) ? (
         <List className="m-0 flex list-none flex-col p-0" data-testid="cta-proof">
           {(content.zones ?? []).map((z) => (
             <ListItem key={z.id} className="flex items-start justify-between gap-4 border-b border-border py-4" data-testid="cta-item">

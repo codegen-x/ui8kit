@@ -32,12 +32,31 @@
   "view": [
     {
       "when": {
-        "op": "eq",
+        "op": "and",
         "args": [
           {
-            "$": "proof"
+            "op": "eq",
+            "args": [
+              {
+                "$": "proof"
+              },
+              "logos"
+            ]
           },
-          "logos"
+          {
+            "op": "gt",
+            "args": [
+              {
+                "op": "len",
+                "args": [
+                  {
+                    "$": "content.logos"
+                  }
+                ]
+              },
+              0
+            ]
+          }
         ]
       },
       "then": [
@@ -104,12 +123,31 @@
     },
     {
       "when": {
-        "op": "eq",
+        "op": "and",
         "args": [
           {
-            "$": "proof"
+            "op": "eq",
+            "args": [
+              {
+                "$": "proof"
+              },
+              "features"
+            ]
           },
-          "features"
+          {
+            "op": "gt",
+            "args": [
+              {
+                "op": "len",
+                "args": [
+                  {
+                    "$": "content.features"
+                  }
+                ]
+              },
+              0
+            ]
+          }
         ]
       },
       "then": [
@@ -205,12 +243,31 @@
     },
     {
       "when": {
-        "op": "eq",
+        "op": "and",
         "args": [
           {
-            "$": "proof"
+            "op": "eq",
+            "args": [
+              {
+                "$": "proof"
+              },
+              "stats"
+            ]
           },
-          "stats"
+          {
+            "op": "gt",
+            "args": [
+              {
+                "op": "len",
+                "args": [
+                  {
+                    "$": "content.stats"
+                  }
+                ]
+              },
+              0
+            ]
+          }
         ]
       },
       "then": [
@@ -303,12 +360,31 @@
     },
     {
       "when": {
-        "op": "eq",
+        "op": "and",
         "args": [
           {
-            "$": "proof"
+            "op": "eq",
+            "args": [
+              {
+                "$": "proof"
+              },
+              "rows"
+            ]
           },
-          "rows"
+          {
+            "op": "gt",
+            "args": [
+              {
+                "op": "len",
+                "args": [
+                  {
+                    "$": "content.features"
+                  }
+                ]
+              },
+              0
+            ]
+          }
         ]
       },
       "then": [
@@ -402,12 +478,31 @@
     },
     {
       "when": {
-        "op": "eq",
+        "op": "and",
         "args": [
           {
-            "$": "proof"
+            "op": "eq",
+            "args": [
+              {
+                "$": "proof"
+              },
+              "zones"
+            ]
           },
-          "zones"
+          {
+            "op": "gt",
+            "args": [
+              {
+                "op": "len",
+                "args": [
+                  {
+                    "$": "content.zones"
+                  }
+                ]
+              },
+              0
+            ]
+          }
         ]
       },
       "then": [

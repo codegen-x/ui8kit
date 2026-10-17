@@ -79,12 +79,31 @@
     },
     {
       "when": {
-        "op": "eq",
+        "op": "and",
         "args": [
           {
-            "$": "media"
+            "op": "eq",
+            "args": [
+              {
+                "$": "media"
+              },
+              "grid"
+            ]
           },
-          "grid"
+          {
+            "op": "gt",
+            "args": [
+              {
+                "op": "len",
+                "args": [
+                  {
+                    "$": "content.features"
+                  }
+                ]
+              },
+              0
+            ]
+          }
         ]
       },
       "then": [
@@ -165,12 +184,31 @@
     },
     {
       "when": {
-        "op": "eq",
+        "op": "and",
         "args": [
           {
-            "$": "media"
+            "op": "eq",
+            "args": [
+              {
+                "$": "media"
+              },
+              "plans"
+            ]
           },
-          "plans"
+          {
+            "op": "gt",
+            "args": [
+              {
+                "op": "len",
+                "args": [
+                  {
+                    "$": "content.plans"
+                  }
+                ]
+              },
+              0
+            ]
+          }
         ]
       },
       "then": [

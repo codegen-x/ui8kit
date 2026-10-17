@@ -26,7 +26,7 @@
         {elseif ui_t(ui_get($v_actions, ['cta']))}
           {=ui_include('blocks/action-group.latte', ['p' => ['primary' => ui_get($v_actions, ['cta']), 'primaryHref' => ui_get($v_actions, ['href']), 'secondary' => (ui_t(ui_eq(ui_get($v_actions, ['mode']), 'two')) ? ui_get($v_actions, ['secondary']) : null), 'secondaryHref' => ui_get($v_actions, ['secondaryHref']), 'align' => (ui_t(true) ? 'center' : 'start')]])|noescape}
         {/if}
-        {if ui_t($v_topics)}
+        {if ui_t(ui_and([$v_topics, ui_gt(ui_len($v_topics), 0)]))}
           {=ui_include('blocks/topic-chips.latte', ['p' => ['topics' => $v_topics, 'tone' => 'inverse']])|noescape}
         {/if}
       {/capture}

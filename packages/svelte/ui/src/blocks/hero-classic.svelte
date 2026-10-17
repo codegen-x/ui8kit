@@ -115,11 +115,11 @@
       />
     {/if}
   {/if}
-  {#if topics}
+  {#if (topics && ((topics?.length ?? 0) > 0))}
     <TopicChips topics={topics} />
   {/if}
   {#snippet aside()}
-    {#if (((mediaKind as string) === "code") && media?.lines && media?.codeTitle && media?.prompt)}
+    {#if (((mediaKind as string) === "code") && media?.lines && ((media?.lines?.length ?? 0) > 0) && media?.codeTitle && media?.prompt)}
       <CodeWindow title={media?.codeTitle} prompt={media?.prompt} lines={media?.lines} />
     {/if}
     {#if ((mediaKind as string) === "cluster")}

@@ -22,7 +22,7 @@ export type HeroSplitExtrasProps = {
 export function HeroSplitExtras({ content, extra = "none" }: HeroSplitExtrasProps) {
   return (
     <>
-      {((extra as string) === "stats") ? (
+      {(((extra as string) === "stats") && ((content.stats?.length ?? 0) > 0)) ? (
         <Box className="grid grid-cols-3 gap-4" data-testid="hero-stats">
           {(content.stats ?? []).map((s, i) => (
             <Fragment key={s.id}>
@@ -40,7 +40,7 @@ export function HeroSplitExtras({ content, extra = "none" }: HeroSplitExtrasProp
           ))}
         </Box>
       ) : null}
-      {((extra as string) === "avatars") ? (
+      {(((extra as string) === "avatars") && ((content.people?.length ?? 0) > 0)) ? (
         <Group gap="4" align="center" className="flex-wrap" data-testid="hero-proof">
           <Group gap="2" align="center">
             {(content.people ?? []).map((p, i) => (
@@ -56,7 +56,7 @@ export function HeroSplitExtras({ content, extra = "none" }: HeroSplitExtrasProp
           </Text>
         </Group>
       ) : null}
-      {((extra as string) === "minis") ? (
+      {(((extra as string) === "minis") && ((content.features?.length ?? 0) > 0)) ? (
         <Box className="grid grid-cols-1 gap-4 sm:grid-cols-2" data-testid="hero-minis">
           {(content.features ?? []).map((f, i) => (
             <Fragment key={f.id}>
@@ -84,7 +84,7 @@ export function HeroSplitExtras({ content, extra = "none" }: HeroSplitExtrasProp
           ))}
         </Box>
       ) : null}
-      {((extra as string) === "quote") ? (
+      {(((extra as string) === "quote") && ((content.people?.length ?? 0) > 0)) ? (
         <Stack gap="6" align="stretch">
           {(content.people ?? []).map((p, i) => (
             <Fragment key={p.id}>

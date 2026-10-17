@@ -106,7 +106,7 @@
             align={(true ? "center" : "start")}
           />
         {/if}
-        {#if topics}
+        {#if (topics && ((topics?.length ?? 0) > 0))}
           <TopicChips topics={topics} tone="inverse" />
         {/if}
       </Stack>

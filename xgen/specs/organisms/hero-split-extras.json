@@ -27,12 +27,31 @@
   "view": [
     {
       "when": {
-        "op": "eq",
+        "op": "and",
         "args": [
           {
-            "$": "extra"
+            "op": "eq",
+            "args": [
+              {
+                "$": "extra"
+              },
+              "stats"
+            ]
           },
-          "stats"
+          {
+            "op": "gt",
+            "args": [
+              {
+                "op": "len",
+                "args": [
+                  {
+                    "$": "content.stats"
+                  }
+                ]
+              },
+              0
+            ]
+          }
         ]
       },
       "then": [
@@ -116,12 +135,31 @@
     },
     {
       "when": {
-        "op": "eq",
+        "op": "and",
         "args": [
           {
-            "$": "extra"
+            "op": "eq",
+            "args": [
+              {
+                "$": "extra"
+              },
+              "avatars"
+            ]
           },
-          "avatars"
+          {
+            "op": "gt",
+            "args": [
+              {
+                "op": "len",
+                "args": [
+                  {
+                    "$": "content.people"
+                  }
+                ]
+              },
+              0
+            ]
+          }
         ]
       },
       "then": [
@@ -200,12 +238,31 @@
     },
     {
       "when": {
-        "op": "eq",
+        "op": "and",
         "args": [
           {
-            "$": "extra"
+            "op": "eq",
+            "args": [
+              {
+                "$": "extra"
+              },
+              "minis"
+            ]
           },
-          "minis"
+          {
+            "op": "gt",
+            "args": [
+              {
+                "op": "len",
+                "args": [
+                  {
+                    "$": "content.features"
+                  }
+                ]
+              },
+              0
+            ]
+          }
         ]
       },
       "then": [
@@ -315,12 +372,31 @@
     },
     {
       "when": {
-        "op": "eq",
+        "op": "and",
         "args": [
           {
-            "$": "extra"
+            "op": "eq",
+            "args": [
+              {
+                "$": "extra"
+              },
+              "quote"
+            ]
           },
-          "quote"
+          {
+            "op": "gt",
+            "args": [
+              {
+                "op": "len",
+                "args": [
+                  {
+                    "$": "content.people"
+                  }
+                ]
+              },
+              0
+            ]
+          }
         ]
       },
       "then": [

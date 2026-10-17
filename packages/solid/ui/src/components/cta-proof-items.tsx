@@ -24,7 +24,7 @@ export type CtaProofItemsProps = {
 export function CtaProofItems({ content, proof = "stats", center = false }: CtaProofItemsProps) {
   return (
     <>
-      {((proof as string) === "logos") ? (
+      {(((proof as string) === "logos") && ((content.logos?.length ?? 0) > 0)) ? (
         <Box class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6" data-testid="cta-proof">
           <For each={content.logos ?? []}>{(l) => (
             <Group gap="2" align="center" justify="center" class="text-muted-foreground" data-testid="cta-item">
@@ -36,7 +36,7 @@ export function CtaProofItems({ content, proof = "stats", center = false }: CtaP
           )}</For>
         </Box>
       ) : null}
-      {((proof as string) === "features") ? (
+      {(((proof as string) === "features") && ((content.features?.length ?? 0) > 0)) ? (
         <Box class="grid grid-cols-1 gap-4 text-left sm:grid-cols-2" data-testid="cta-proof">
           <For each={content.features ?? []}>{(f) => (
             <Group gap="4" align="start" class="rounded bg-card inset-ring inset-ring-border p-4" data-testid="cta-item">
@@ -55,7 +55,7 @@ export function CtaProofItems({ content, proof = "stats", center = false }: CtaP
           )}</For>
         </Box>
       ) : null}
-      {((proof as string) === "stats") ? (
+      {(((proof as string) === "stats") && ((content.stats?.length ?? 0) > 0)) ? (
         <Box class="grid grid-cols-3 gap-4" data-testid="cta-proof">
           <For each={content.stats ?? []}>{(s, iOf) => { const i = iOf(); return (
             <>
@@ -73,7 +73,7 @@ export function CtaProofItems({ content, proof = "stats", center = false }: CtaP
           ); }}</For>
         </Box>
       ) : null}
-      {((proof as string) === "rows") ? (
+      {(((proof as string) === "rows") && ((content.features?.length ?? 0) > 0)) ? (
         <List class="m-0 flex list-none flex-col gap-4 p-0" data-testid="cta-proof">
           <For each={content.features ?? []}>{(f) => (
             <ListItem class="flex items-start gap-4" data-testid="cta-item">
@@ -92,7 +92,7 @@ export function CtaProofItems({ content, proof = "stats", center = false }: CtaP
           )}</For>
         </List>
       ) : null}
-      {((proof as string) === "zones") ? (
+      {(((proof as string) === "zones") && ((content.zones?.length ?? 0) > 0)) ? (
         <List class="m-0 flex list-none flex-col p-0" data-testid="cta-proof">
           <For each={content.zones ?? []}>{(z) => (
             <ListItem class="flex items-start justify-between gap-4 border-b border-border py-4" data-testid="cta-item">

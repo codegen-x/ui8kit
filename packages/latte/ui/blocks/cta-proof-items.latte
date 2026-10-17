@@ -5,7 +5,7 @@
 {var $v_content = ($p['content'] ?? null)}
 {var $v_proof = ($p['proof'] ?? 'stats')}
 {var $v_center = ($p['center'] ?? false)}
-{if ui_t(ui_eq($v_proof, 'logos'))}
+{if ui_t(ui_and([ui_eq($v_proof, 'logos'), ui_gt(ui_len(ui_get($v_content, ['logos'])), 0)]))}
   {capture $c_3}
     {foreach ui_l(ui_get($v_content, ['logos'])) as $v_l}
       {capture $c_2}
@@ -20,7 +20,7 @@
   {/capture}
   {=ui_include('ui/box/box.latte', ['p' => ['Class' => 'grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6', 'Attrs' => ui_attrs(['data-testid', 'cta-proof'])], 'children' => $c_3])|noescape}
 {/if}
-{if ui_t(ui_eq($v_proof, 'features'))}
+{if ui_t(ui_and([ui_eq($v_proof, 'features'), ui_gt(ui_len(ui_get($v_content, ['features'])), 0)]))}
   {capture $c_9}
     {foreach ui_l(ui_get($v_content, ['features'])) as $v_f}
       {capture $c_8}
@@ -45,7 +45,7 @@
   {/capture}
   {=ui_include('ui/box/box.latte', ['p' => ['Class' => 'grid grid-cols-1 gap-4 text-left sm:grid-cols-2', 'Attrs' => ui_attrs(['data-testid', 'cta-proof'])], 'children' => $c_9])|noescape}
 {/if}
-{if ui_t(ui_eq($v_proof, 'stats'))}
+{if ui_t(ui_and([ui_eq($v_proof, 'stats'), ui_gt(ui_len(ui_get($v_content, ['stats'])), 0)]))}
   {capture $c_13}
     {foreach ui_l(ui_get($v_content, ['stats'])) as $v_s}
       {var $v_i = $iterator->counter0}
@@ -66,7 +66,7 @@
   {/capture}
   {=ui_include('ui/box/box.latte', ['p' => ['Class' => 'grid grid-cols-3 gap-4', 'Attrs' => ui_attrs(['data-testid', 'cta-proof'])], 'children' => $c_13])|noescape}
 {/if}
-{if ui_t(ui_eq($v_proof, 'rows'))}
+{if ui_t(ui_and([ui_eq($v_proof, 'rows'), ui_gt(ui_len(ui_get($v_content, ['features'])), 0)]))}
   {capture $c_19}
     {foreach ui_l(ui_get($v_content, ['features'])) as $v_f}
       {capture $c_18}
@@ -91,7 +91,7 @@
   {/capture}
   {=ui_include('ui/list/list.latte', ['p' => ['Class' => 'm-0 flex list-none flex-col gap-4 p-0', 'Attrs' => ui_attrs(['data-testid', 'cta-proof'])], 'children' => $c_19])|noescape}
 {/if}
-{if ui_t(ui_eq($v_proof, 'zones'))}
+{if ui_t(ui_and([ui_eq($v_proof, 'zones'), ui_gt(ui_len(ui_get($v_content, ['zones'])), 0)]))}
   {capture $c_27}
     {foreach ui_l(ui_get($v_content, ['zones'])) as $v_z}
       {capture $c_26}

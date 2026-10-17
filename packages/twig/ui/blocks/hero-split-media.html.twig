@@ -11,7 +11,7 @@
 {%- if ui_t(ui_eq(v_media, 'card')) %}
   {{ include('blocks/offer-media.html.twig', {'p': {'alt': v_alt, 'card': ui_get(v_content, ['card'])}}, with_context = false) }}
 {%- endif %}
-{%- if ui_t(ui_eq(v_media, 'grid')) %}
+{%- if ui_t(ui_and([ui_eq(v_media, 'grid'), ui_gt(ui_len(ui_get(v_content, ['features'])), 0)])) %}
   {%- set c_3 -%}
     {%- for v_f in ui_l(ui_get(v_content, ['features'])) %}
       {%- set v_i = loop.index0 -%}
@@ -29,7 +29,7 @@
   {%- endset -%}
   {{ include('ui/box/box.html.twig', {'p': {'Class': 'grid grid-cols-2 gap-4', 'Attrs': ui_attrs(['data-testid', 'hero-grid'])}, 'children': c_3}, with_context = false) }}
 {%- endif %}
-{%- if ui_t(ui_eq(v_media, 'plans')) %}
+{%- if ui_t(ui_and([ui_eq(v_media, 'plans'), ui_gt(ui_len(ui_get(v_content, ['plans'])), 0)])) %}
   {%- set c_8 -%}
     {{ include('blocks/media-frame.html.twig', {'p': {'alt': v_alt, 'ratio': '4/3'}}, with_context = false) }}
     {%- for v_p in ui_l(ui_get(v_content, ['plans'])) %}

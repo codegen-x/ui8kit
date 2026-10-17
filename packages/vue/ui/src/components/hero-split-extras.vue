@@ -26,7 +26,11 @@ const { content, extra = "none" } = defineProps<HeroSplitExtrasProps>();
 </script>
 
 <template>
-  <Box v-if="((extra as string) === 'stats')" class="grid grid-cols-3 gap-4" data-testid="hero-stats">
+  <Box
+    v-if="(((extra as string) === 'stats') && ((content.stats?.length ?? 0) > 0))"
+    class="grid grid-cols-3 gap-4"
+    data-testid="hero-stats"
+  >
     <template v-for="(s, i) in content.stats" :key="s.id">
       <Stack
         v-if="(i < 3)"
@@ -44,7 +48,7 @@ const { content, extra = "none" } = defineProps<HeroSplitExtrasProps>();
     </template>
   </Box>
   <Group
-    v-if="((extra as string) === 'avatars')"
+    v-if="(((extra as string) === 'avatars') && ((content.people?.length ?? 0) > 0))"
     gap="4"
     align="center"
     class="flex-wrap"
@@ -60,7 +64,7 @@ const { content, extra = "none" } = defineProps<HeroSplitExtrasProps>();
     </Text>
   </Group>
   <Box
-    v-if="((extra as string) === 'minis')"
+    v-if="(((extra as string) === 'minis') && ((content.features?.length ?? 0) > 0))"
     class="grid grid-cols-1 gap-4 sm:grid-cols-2"
     data-testid="hero-minis"
   >
@@ -86,7 +90,11 @@ const { content, extra = "none" } = defineProps<HeroSplitExtrasProps>();
       </Group>
     </template>
   </Box>
-  <Stack v-if="((extra as string) === 'quote')" gap="6" align="stretch">
+  <Stack
+    v-if="(((extra as string) === 'quote') && ((content.people?.length ?? 0) > 0))"
+    gap="6"
+    align="stretch"
+  >
     <template v-for="(p, i) in content.people" :key="p.id">
       <FigureBlock v-if="(i < 1)" class="flex flex-col gap-4" testid="hero-quote">
         <Text tag="blockquote" class="text-lg font-medium">

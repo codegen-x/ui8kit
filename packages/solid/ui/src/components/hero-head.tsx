@@ -68,32 +68,34 @@ export function HeroHead({
       >
         {brand}
       </MenuEntry>
-      <NavBlock
-        label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", navLabel, landmarkLabel)) : navLabel)}
-        testid="site-nav"
-      >
-        <Group gap="8" align="center" class="flex-wrap">
-          <For each={links ?? []}>{(l) => (
-            <>
-              {l.href ? (
-                <Link
-                  href={l.href}
-                  variant="default"
-                  aria-current={((l.id === current) ? "page" : undefined)}
-                  class="text-xs font-medium leading-5 text-background"
-                  data-testid="nav-link"
-                >
-                  {l.name}
-                </Link>
-              ) : (
-                <Inline class="text-xs font-medium leading-5 text-background" data-testid="nav-link">
-                  {l.name}
-                </Inline>
-              )}
-            </>
-          )}</For>
-        </Group>
-      </NavBlock>
+      {(links && ((links?.length ?? 0) > 0)) ? (
+        <NavBlock
+          label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", navLabel, landmarkLabel)) : navLabel)}
+          testid="site-nav"
+        >
+          <Group gap="8" align="center" class="flex-wrap">
+            <For each={links ?? []}>{(l) => (
+              <>
+                {l.href ? (
+                  <Link
+                    href={l.href}
+                    variant="default"
+                    aria-current={((l.id === current) ? "page" : undefined)}
+                    class="text-xs font-medium leading-5 text-background"
+                    data-testid="nav-link"
+                  >
+                    {l.name}
+                  </Link>
+                ) : (
+                  <Inline class="text-xs font-medium leading-5 text-background" data-testid="nav-link">
+                    {l.name}
+                  </Inline>
+                )}
+              </>
+            )}</For>
+          </Group>
+        </NavBlock>
+      ) : null}
       <Group gap="2" align="center">
         {login ? (
           <Button

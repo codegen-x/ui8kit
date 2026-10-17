@@ -35,7 +35,7 @@
 {#if ((media as string) === "card")}
   <OfferMedia alt={alt} card={content.card} />
 {/if}
-{#if ((media as string) === "grid")}
+{#if (((media as string) === "grid") && ((content.features?.length ?? 0) > 0))}
   <Box class="grid grid-cols-2 gap-4" data-testid="hero-grid">
     {#each content.features as f, i (f.id)}
       {#if (i < 4)}
@@ -49,7 +49,7 @@
     {/each}
   </Box>
 {/if}
-{#if ((media as string) === "plans")}
+{#if (((media as string) === "plans") && ((content.plans?.length ?? 0) > 0))}
   <Box class="relative" data-testid="hero-media">
     <MediaFrame alt={alt} ratio="4/3" />
     {#each content.plans as p, i (p.id)}

@@ -22,7 +22,7 @@ export type HeroSplitExtrasProps = {
 export function HeroSplitExtras({ content, extra = "none" }: HeroSplitExtrasProps) {
   return (
     <>
-      {((extra as string) === "stats") ? (
+      {(((extra as string) === "stats") && ((content.stats?.length ?? 0) > 0)) ? (
         <Box class="grid grid-cols-3 gap-4" data-testid="hero-stats">
           <For each={content.stats ?? []}>{(s, iOf) => { const i = iOf(); return (
             <>
@@ -40,7 +40,7 @@ export function HeroSplitExtras({ content, extra = "none" }: HeroSplitExtrasProp
           ); }}</For>
         </Box>
       ) : null}
-      {((extra as string) === "avatars") ? (
+      {(((extra as string) === "avatars") && ((content.people?.length ?? 0) > 0)) ? (
         <Group gap="4" align="center" class="flex-wrap" data-testid="hero-proof">
           <Group gap="2" align="center">
             <For each={content.people ?? []}>{(p, iOf) => { const i = iOf(); return (
@@ -56,7 +56,7 @@ export function HeroSplitExtras({ content, extra = "none" }: HeroSplitExtrasProp
           </Text>
         </Group>
       ) : null}
-      {((extra as string) === "minis") ? (
+      {(((extra as string) === "minis") && ((content.features?.length ?? 0) > 0)) ? (
         <Box class="grid grid-cols-1 gap-4 sm:grid-cols-2" data-testid="hero-minis">
           <For each={content.features ?? []}>{(f, iOf) => { const i = iOf(); return (
             <>
@@ -79,7 +79,7 @@ export function HeroSplitExtras({ content, extra = "none" }: HeroSplitExtrasProp
           ); }}</For>
         </Box>
       ) : null}
-      {((extra as string) === "quote") ? (
+      {(((extra as string) === "quote") && ((content.people?.length ?? 0) > 0)) ? (
         <Stack gap="6" align="stretch">
           <For each={content.people ?? []}>{(p, iOf) => { const i = iOf(); return (
             <>

@@ -1,6 +1,6 @@
 // The components the prompt hero is made of. Each one is small, takes plain props and reads
 // block sizes from the default preset only. HeroPrompt (landing-hero.ts) arranges them; screens pass the texts.
-import { cn, nth, coalesce, cond, each, eachAt, eq, ref, text, undef, use, when, words } from "../../build";
+import { and, cn, gt, len, nth, coalesce, cond, each, eachAt, eq, ref, text, undef, use, when, words } from "../../build";
 import type { OrganismSpec, ViewNode } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { layoutOf } from "../presets";
@@ -37,8 +37,8 @@ export const heroHead = spec(`${P}hero-head`, "HeroHead", "The head row of a her
     return [use("Block", { props: { Tag: "header", Class: cn("flex w-full flex-wrap items-center justify-between pr-4", layoutOf("hero.head")) }, attrs: { "data-testid": "hero-head" } },
       when(ref("skip"), [use("LinkPlain", { props: { Href: "#main-content", Class: skipClass }, attrs: { "data-testid": "skip-link" } }, text(ref("skip")))]),
       menuEntry(ref("brandHref"), { cls: cn(layoutOf("text.small"), `font-medium leading-6 ${onBand}`), testid: "brand" }, text(ref("brand"))),
-      navBlockOf(ref("navLabel"), undefined, "site-nav",
-        use("Group", { props: { Gap: "8", Align: "center", Class: "flex-wrap" } }, each(ref("links"), "l", ref("l.id"), link))),
+      when(and(ref("links"), gt(len(ref("links")), 0)), [navBlockOf(ref("navLabel"), undefined, "site-nav",
+        use("Group", { props: { Gap: "8", Align: "center", Class: "flex-wrap" } }, each(ref("links"), "l", ref("l.id"), link)))]),
       use("Group", { props: { Gap: "2", Align: "center" } },
         when(ref("login"), [use("Button", { props: { Href: ref("loginHref"), Variant: "ghost", Size: "sm", Class: `${onBand} hover:bg-background/10` }, attrs: { "data-testid": "nav-login" } }, text(ref("login")))]),
         when(ref("cta"), [use("Button", { props: { Href: ref("href"), Variant: "secondary", Size: "sm" }, attrs: { "data-testid": "header-cta" } }, text(ref("cta")))])))];

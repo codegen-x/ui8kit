@@ -101,7 +101,7 @@ const {
             :secondaryHref="actions?.secondaryHref"
             :align="(true ? 'center' : 'start')"
           />
-          <TopicChips v-if="topics" :topics="topics" tone="inverse" />
+          <TopicChips v-if="(topics && ((topics?.length ?? 0) > 0))" :topics="topics" tone="inverse" />
         </Stack>
       </Stack>
     </Container>

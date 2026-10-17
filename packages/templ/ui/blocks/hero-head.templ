@@ -50,16 +50,18 @@ templ HeroHead(p HeroHeadProps) {
 		@MenuEntry(MenuEntryProps{Href: vBrandHref, Class: uiutils.Cnv(uiutils.Cnv(uiutils.Get(presetDefaults, "text", "small"), "font-medium leading-6 text-background")), Testid: "brand"}) {
 			{ uiutils.Text(vBrand) }
 		}
-		@NavBlock(NavBlockProps{Label: uiutils.Cond(uiutils.T(vLandmarkLabel), uiutils.Uniq(uiutils.Tpl("{0}, {1}", vNavLabel, vLandmarkLabel)), vNavLabel), Testid: "site-nav"}) {
-			@group.Group(group.GroupProps{Gap: "8", Align: "center", Class: "flex-wrap"}) {
-				for _, vL := range uiutils.L(vLinks) {
-					if uiutils.T(uiutils.Get(vL, "href")) {
-						@link.Link(link.LinkProps{Href: uiutils.S(uiutils.Get(vL, "href")), Variant: "default", AriaCurrent: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vL, "id"), vCurrent)), "page", nil)), Class: "text-xs font-medium leading-5 text-background", Attrs: uiutils.Attrs("data-testid", "nav-link")}) {
-							{ uiutils.Text(uiutils.Get(vL, "name")) }
-						}
-					} else {
-						@inline.Inline(inline.InlineProps{Class: "text-xs font-medium leading-5 text-background", Attrs: uiutils.Attrs("data-testid", "nav-link")}) {
-							{ uiutils.Text(uiutils.Get(vL, "name")) }
+		if uiutils.T(uiutils.And(vLinks, uiutils.Gt(uiutils.Len(vLinks), float64(0)))) {
+			@NavBlock(NavBlockProps{Label: uiutils.Cond(uiutils.T(vLandmarkLabel), uiutils.Uniq(uiutils.Tpl("{0}, {1}", vNavLabel, vLandmarkLabel)), vNavLabel), Testid: "site-nav"}) {
+				@group.Group(group.GroupProps{Gap: "8", Align: "center", Class: "flex-wrap"}) {
+					for _, vL := range uiutils.L(vLinks) {
+						if uiutils.T(uiutils.Get(vL, "href")) {
+							@link.Link(link.LinkProps{Href: uiutils.S(uiutils.Get(vL, "href")), Variant: "default", AriaCurrent: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vL, "id"), vCurrent)), "page", nil)), Class: "text-xs font-medium leading-5 text-background", Attrs: uiutils.Attrs("data-testid", "nav-link")}) {
+								{ uiutils.Text(uiutils.Get(vL, "name")) }
+							}
+						} else {
+							@inline.Inline(inline.InlineProps{Class: "text-xs font-medium leading-5 text-background", Attrs: uiutils.Attrs("data-testid", "nav-link")}) {
+								{ uiutils.Text(uiutils.Get(vL, "name")) }
+							}
 						}
 					}
 				}

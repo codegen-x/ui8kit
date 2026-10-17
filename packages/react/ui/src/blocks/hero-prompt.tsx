@@ -101,7 +101,7 @@ export function HeroPrompt({
                 align={(true ? "center" : "start")}
               />
             ) : null}
-            {topics ? (
+            {(topics && ((topics?.length ?? 0) > 0)) ? (
               <TopicChips topics={topics} tone="inverse" />
             ) : null}
           </Stack>

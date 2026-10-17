@@ -30,7 +30,7 @@ templ HeroSplitMedia(p HeroSplitMediaProps) {
 	if uiutils.Eq(vMedia, "card") {
 		@OfferMedia(OfferMediaProps{Alt: vAlt, Card: uiutils.Get(vContent, "card")})
 	}
-	if uiutils.Eq(vMedia, "grid") {
+	if uiutils.T(uiutils.And(uiutils.Eq(vMedia, "grid"), uiutils.Gt(uiutils.Len(uiutils.Get(vContent, "features")), float64(0)))) {
 		@box.Box(box.BoxProps{Class: "grid grid-cols-2 gap-4", Attrs: uiutils.Attrs("data-testid", "hero-grid")}) {
 			for vI, vF := range uiutils.L(uiutils.Get(vContent, "features")) {
 				if uiutils.Lt(float64(vI), float64(4)) {
@@ -44,7 +44,7 @@ templ HeroSplitMedia(p HeroSplitMediaProps) {
 			}
 		}
 	}
-	if uiutils.Eq(vMedia, "plans") {
+	if uiutils.T(uiutils.And(uiutils.Eq(vMedia, "plans"), uiutils.Gt(uiutils.Len(uiutils.Get(vContent, "plans")), float64(0)))) {
 		@box.Box(box.BoxProps{Class: "relative", Attrs: uiutils.Attrs("data-testid", "hero-media")}) {
 			@MediaFrame(MediaFrameProps{Alt: vAlt, Ratio: "4/3"})
 			for vI, vP := range uiutils.L(uiutils.Get(vContent, "plans")) {

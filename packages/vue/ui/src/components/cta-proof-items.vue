@@ -29,7 +29,7 @@ const { content, proof = "stats", center = false } = defineProps<CtaProofItemsPr
 
 <template>
   <Box
-    v-if="((proof as string) === 'logos')"
+    v-if="(((proof as string) === 'logos') && ((content.logos?.length ?? 0) > 0))"
     class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6"
     data-testid="cta-proof"
   >
@@ -49,7 +49,7 @@ const { content, proof = "stats", center = false } = defineProps<CtaProofItemsPr
     </Group>
   </Box>
   <Box
-    v-if="((proof as string) === 'features')"
+    v-if="(((proof as string) === 'features') && ((content.features?.length ?? 0) > 0))"
     class="grid grid-cols-1 gap-4 text-left sm:grid-cols-2"
     data-testid="cta-proof"
   >
@@ -74,7 +74,11 @@ const { content, proof = "stats", center = false } = defineProps<CtaProofItemsPr
       </Stack>
     </Group>
   </Box>
-  <Box v-if="((proof as string) === 'stats')" class="grid grid-cols-3 gap-4" data-testid="cta-proof">
+  <Box
+    v-if="(((proof as string) === 'stats') && ((content.stats?.length ?? 0) > 0))"
+    class="grid grid-cols-3 gap-4"
+    data-testid="cta-proof"
+  >
     <template v-for="(s, i) in content.stats" :key="s.id">
       <Stack v-if="(i < 3)" gap="0" :class="(center ? 'items-center text-center' : '')" data-testid="cta-item">
         <Text size="3xl" weight="bold">
@@ -87,7 +91,7 @@ const { content, proof = "stats", center = false } = defineProps<CtaProofItemsPr
     </template>
   </Box>
   <List
-    v-if="((proof as string) === 'rows')"
+    v-if="(((proof as string) === 'rows') && ((content.features?.length ?? 0) > 0))"
     class="m-0 flex list-none flex-col gap-4 p-0"
     data-testid="cta-proof"
   >
@@ -105,7 +109,11 @@ const { content, proof = "stats", center = false } = defineProps<CtaProofItemsPr
       </Stack>
     </ListItem>
   </List>
-  <List v-if="((proof as string) === 'zones')" class="m-0 flex list-none flex-col p-0" data-testid="cta-proof">
+  <List
+    v-if="(((proof as string) === 'zones') && ((content.zones?.length ?? 0) > 0))"
+    class="m-0 flex list-none flex-col p-0"
+    data-testid="cta-proof"
+  >
     <ListItem
       v-for="z in content.zones"
       :key="z.id"

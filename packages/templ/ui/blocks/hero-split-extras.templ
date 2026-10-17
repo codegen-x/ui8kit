@@ -22,7 +22,7 @@ type HeroSplitExtrasProps struct {
 templ HeroSplitExtras(p HeroSplitExtrasProps) {
 	{{ vContent := p.Content }}
 	{{ vExtra := uiutils.Def(p.Extra, "none") }}
-	if uiutils.Eq(vExtra, "stats") {
+	if uiutils.T(uiutils.And(uiutils.Eq(vExtra, "stats"), uiutils.Gt(uiutils.Len(uiutils.Get(vContent, "stats")), float64(0)))) {
 		@box.Box(box.BoxProps{Class: "grid grid-cols-3 gap-4", Attrs: uiutils.Attrs("data-testid", "hero-stats")}) {
 			for vI, vS := range uiutils.L(uiutils.Get(vContent, "stats")) {
 				if uiutils.Lt(float64(vI), float64(3)) {
@@ -38,7 +38,7 @@ templ HeroSplitExtras(p HeroSplitExtrasProps) {
 			}
 		}
 	}
-	if uiutils.Eq(vExtra, "avatars") {
+	if uiutils.T(uiutils.And(uiutils.Eq(vExtra, "avatars"), uiutils.Gt(uiutils.Len(uiutils.Get(vContent, "people")), float64(0)))) {
 		@group.Group(group.GroupProps{Gap: "4", Align: "center", Class: "flex-wrap", Attrs: uiutils.Attrs("data-testid", "hero-proof")}) {
 			@group.Group(group.GroupProps{Gap: "2", Align: "center"}) {
 				for vI, vP := range uiutils.L(uiutils.Get(vContent, "people")) {
@@ -52,7 +52,7 @@ templ HeroSplitExtras(p HeroSplitExtrasProps) {
 			}
 		}
 	}
-	if uiutils.Eq(vExtra, "minis") {
+	if uiutils.T(uiutils.And(uiutils.Eq(vExtra, "minis"), uiutils.Gt(uiutils.Len(uiutils.Get(vContent, "features")), float64(0)))) {
 		@box.Box(box.BoxProps{Class: "grid grid-cols-1 gap-4 sm:grid-cols-2", Attrs: uiutils.Attrs("data-testid", "hero-minis")}) {
 			for vI, vF := range uiutils.L(uiutils.Get(vContent, "features")) {
 				if uiutils.Lt(float64(vI), float64(2)) {
@@ -73,7 +73,7 @@ templ HeroSplitExtras(p HeroSplitExtrasProps) {
 			}
 		}
 	}
-	if uiutils.Eq(vExtra, "quote") {
+	if uiutils.T(uiutils.And(uiutils.Eq(vExtra, "quote"), uiutils.Gt(uiutils.Len(uiutils.Get(vContent, "people")), float64(0)))) {
 		@stack.Stack(stack.StackProps{Gap: "6", Align: "stretch"}) {
 			for vI, vP := range uiutils.L(uiutils.Get(vContent, "people")) {
 				if uiutils.Lt(float64(vI), float64(1)) {

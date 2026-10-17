@@ -71,7 +71,7 @@ const {
     >
       {{ brand }}
     </MenuEntry>
-    <NavBlock
+    <NavBlock v-if="(links && ((links?.length ?? 0) > 0))"
       :label="(landmarkLabel ? uniqLabel(tpl('{0}, {1}', navLabel, landmarkLabel)) : navLabel)"
       testid="site-nav"
     >

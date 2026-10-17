@@ -1,7 +1,7 @@
 // The hero blocks: HeroClassic (heading, lead, actions, optional media) and HeroPrompt (head row, badge,
 // weighted title, prompt box and topics inside a dark band). The block `hero` draws HeroPrompt for chrome "nav".
 // Related props come in groups (shadcn style): actions, media, composer, nav. Sizes come from the default preset.
-import { and, cn, coalesce, cond, eq, or, ref, use, when, organism } from "../../build";
+import { and, cn, gt, len, coalesce, cond, eq, or, ref, use, when, organism } from "../../build";
 import type { OrganismSpec } from "../../ir";
 import { groupFields, rec, spec, ts } from "../kit";
 import { behind, frame } from "../components/frames";
@@ -43,7 +43,7 @@ export const heroPrompt = spec(`${O}hero-prompt`, "HeroPrompt", "A dark hero ban
       when(eq(ref("actions.mode"), "form"),
         [organism("PromptComposer", { label: ref("actions.emailLabel"), attachLabel: ref("composer.attachLabel"), modelLabel: ref("composer.modelLabel"), send: ref("actions.cta"), href: ref("actions.href") })],
         [when(ref("actions.cta"), [actions(true, "actions")])]),
-      when(ref("topics"), [organism("TopicChips", { topics: ref("topics"), tone: "inverse" })]));
+      when(and(ref("topics"), gt(len(ref("topics")), 0)), [organism("TopicChips", { topics: ref("topics"), tone: "inverse" })]));
     // the band pads top and bottom; the container pads the sides, so it fills the band (1536 + 2 × 32 = the 1600 frame)
     const band = cn("flex w-full flex-col bg-foreground text-background py-8 [&_.text-muted-foreground]:text-background/70", layoutOf("hero.band"));
     const head = { brand: ref("nav.brand"), links: ref("nav.links"), current: ref("nav.current"), login: ref("nav.login"), loginHref: ref("nav.loginHref"),
@@ -76,10 +76,10 @@ export const heroClassic = spec(`${O}hero-classic`, "HeroClassic", "The top of a
         use("Input", { props: { Type: "text", Name: "prompt", Class: "min-w-0 flex-1", Placeholder: ref("actions.emailLabel") }, attrs: { id: fid("email"), "data-testid": "field" } }),
         use("Button", { props: { Variant: "default", Size: "default", Href: ref("actions.href") }, attrs: { "data-testid": "submit" } }, { text: ref("actions.cta") })));
     const body = [when(ref("actions.cta"), [when(eq(ref("actions.mode"), "form"), [prompt], [actions(eq(ref("layout"), "centered"), "actions")])]),
-      when(ref("topics"), [organism("TopicChips", { topics: ref("topics") })])];
+      when(and(ref("topics"), gt(len(ref("topics")), 0)), [organism("TopicChips", { topics: ref("topics") })])];
     const card = (ratio: string, lift = "") => use("Box", { props: { Class: cn("w-full", lift) } }, organism("MediaFrame", { alt: ref("title"), ratio }));
     const mediaNodes = [
-      when(and(kind("code"), ref("media.lines"), ref("media.codeTitle"), ref("media.prompt")), [organism("CodeWindow", { title: ref("media.codeTitle"), prompt: ref("media.prompt"), lines: ref("media.lines") })]),
+      when(and(kind("code"), ref("media.lines"), gt(len(ref("media.lines")), 0), ref("media.codeTitle"), ref("media.prompt")), [organism("CodeWindow", { title: ref("media.codeTitle"), prompt: ref("media.prompt"), lines: ref("media.lines") })]),
       when(kind("cluster"), [use("Grid", { props: { Cols: "3", Class: "items-end gap-4" }, attrs: { "data-testid": "cluster" } }, card("3/4"), card("4/3", "-translate-y-4"), card("3/4"))]),
       when(or(kind("image")), mediaOf(ref("title"))),
     ];

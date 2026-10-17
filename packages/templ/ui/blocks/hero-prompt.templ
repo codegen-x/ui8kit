@@ -50,7 +50,7 @@ templ HeroPrompt(p HeroPromptProps) {
 					} else if uiutils.T(uiutils.Get(vActions, "cta")) {
 						@ActionGroup(ActionGroupProps{Primary: uiutils.Get(vActions, "cta"), PrimaryHref: uiutils.Get(vActions, "href"), Secondary: uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vActions, "mode"), "two")), uiutils.Get(vActions, "secondary"), nil), SecondaryHref: uiutils.Get(vActions, "secondaryHref"), Align: uiutils.Cond(uiutils.T(true), "center", "start")})
 					}
-					if uiutils.T(vTopics) {
+					if uiutils.T(uiutils.And(vTopics, uiutils.Gt(uiutils.Len(vTopics), float64(0)))) {
 						@TopicChips(TopicChipsProps{Topics: vTopics, Tone: "inverse"})
 					}
 				}

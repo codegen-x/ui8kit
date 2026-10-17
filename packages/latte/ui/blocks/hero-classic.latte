@@ -18,7 +18,7 @@
 {var $v_mediaKind = ui_coalesce([ui_get($v_media, ['kind']), 'none'])}
 {var $v_mediaSide = ui_coalesce([ui_get($v_media, ['side']), 'end'])}
 {capture $f_5}
-  {if ui_t(ui_and([ui_eq($v_mediaKind, 'code'), ui_get($v_media, ['lines']), ui_get($v_media, ['codeTitle']), ui_get($v_media, ['prompt'])]))}
+  {if ui_t(ui_and([ui_eq($v_mediaKind, 'code'), ui_get($v_media, ['lines']), ui_gt(ui_len(ui_get($v_media, ['lines'])), 0), ui_get($v_media, ['codeTitle']), ui_get($v_media, ['prompt'])]))}
     {=ui_include('blocks/code-window.latte', ['p' => ['title' => ui_get($v_media, ['codeTitle']), 'prompt' => ui_get($v_media, ['prompt']), 'lines' => ui_get($v_media, ['lines'])]])|noescape}
   {/if}
   {if ui_t(ui_eq($v_mediaKind, 'cluster'))}
@@ -65,7 +65,7 @@
       {=ui_include('blocks/action-group.latte', ['p' => ['primary' => ui_get($v_actions, ['cta']), 'primaryHref' => ui_get($v_actions, ['href']), 'secondary' => (ui_t(ui_eq(ui_get($v_actions, ['mode']), 'two')) ? ui_get($v_actions, ['secondary']) : null), 'secondaryHref' => ui_get($v_actions, ['secondaryHref']), 'align' => (ui_t(ui_eq($v_layout, 'centered')) ? 'center' : 'start')]])|noescape}
     {/if}
   {/if}
-  {if ui_t($v_topics)}
+  {if ui_t(ui_and([$v_topics, ui_gt(ui_len($v_topics), 0)]))}
     {=ui_include('blocks/topic-chips.latte', ['p' => ['topics' => $v_topics]])|noescape}
   {/if}
 {/capture}

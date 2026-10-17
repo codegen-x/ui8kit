@@ -28,7 +28,7 @@
   let { content, proof = "stats", center = false }: CtaProofItemsProps = $props();
 </script>
 
-{#if ((proof as string) === "logos")}
+{#if (((proof as string) === "logos") && ((content.logos?.length ?? 0) > 0))}
   <Box class="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-6" data-testid="cta-proof">
     {#each content.logos as l (l.id)}
       <Group gap="2" align="center" justify="center" class="text-muted-foreground" data-testid="cta-item">
@@ -40,7 +40,7 @@
     {/each}
   </Box>
 {/if}
-{#if ((proof as string) === "features")}
+{#if (((proof as string) === "features") && ((content.features?.length ?? 0) > 0))}
   <Box class="grid grid-cols-1 gap-4 text-left sm:grid-cols-2" data-testid="cta-proof">
     {#each content.features as f (f.id)}
       <Group gap="4" align="start" class="rounded bg-card inset-ring inset-ring-border p-4" data-testid="cta-item">
@@ -59,7 +59,7 @@
     {/each}
   </Box>
 {/if}
-{#if ((proof as string) === "stats")}
+{#if (((proof as string) === "stats") && ((content.stats?.length ?? 0) > 0))}
   <Box class="grid grid-cols-3 gap-4" data-testid="cta-proof">
     {#each content.stats as s, i (s.id)}
       {#if (i < 3)}
@@ -75,7 +75,7 @@
     {/each}
   </Box>
 {/if}
-{#if ((proof as string) === "rows")}
+{#if (((proof as string) === "rows") && ((content.features?.length ?? 0) > 0))}
   <List class="m-0 flex list-none flex-col gap-4 p-0" data-testid="cta-proof">
     {#each content.features as f (f.id)}
       <ListItem class="flex items-start gap-4" data-testid="cta-item">
@@ -94,7 +94,7 @@
     {/each}
   </List>
 {/if}
-{#if ((proof as string) === "zones")}
+{#if (((proof as string) === "zones") && ((content.zones?.length ?? 0) > 0))}
   <List class="m-0 flex list-none flex-col p-0" data-testid="cta-proof">
     {#each content.zones as z (z.id)}
       <ListItem class="flex items-start justify-between gap-4 border-b border-border py-4" data-testid="cta-item">

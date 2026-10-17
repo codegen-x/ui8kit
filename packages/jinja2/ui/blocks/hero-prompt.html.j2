@@ -26,7 +26,7 @@
         {%- elif ui_t(ui_get(v_actions, ['cta'])) %}
           {{ ui_include('blocks/action-group.html.j2', {'p': {'primary': ui_get(v_actions, ['cta']), 'primaryHref': ui_get(v_actions, ['href']), 'secondary': (ui_get(v_actions, ['secondary']) if ui_t(ui_eq(ui_get(v_actions, ['mode']), 'two')) else none), 'secondaryHref': ui_get(v_actions, ['secondaryHref']), 'align': ('center' if ui_t(true) else 'start')}}) }}
         {%- endif %}
-        {%- if ui_t(v_topics) %}
+        {%- if ui_t(ui_and([v_topics, ui_gt(ui_len(v_topics), 0)])) %}
           {{ ui_include('blocks/topic-chips.html.j2', {'p': {'topics': v_topics, 'tone': 'inverse'}}) }}
         {%- endif %}
       {%- endset -%}
