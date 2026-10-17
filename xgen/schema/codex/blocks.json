@@ -9,7 +9,7 @@
       "surface": "kit-block",
       "spec": "block.about",
       "source": "xgen/specs/blocks/about.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "stats",
@@ -17,7 +17,15 @@
           "kind": "stat",
           "record": "Stat",
           "map": "stat",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.value.value",
+            "metadata.icon.value",
+            "metadata.hint.value"
+          ],
+          "optional": []
         },
         {
           "prop": "values",
@@ -25,7 +33,14 @@
           "kind": "value",
           "record": "Feature",
           "map": "value",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -47,14 +62,15 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "AboutMe",
       "surface": "kit-block",
       "spec": "block.aboutme",
       "source": "xgen/specs/blocks/aboutme.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "facts",
@@ -62,7 +78,13 @@
           "kind": "profilefact",
           "record": "Spec",
           "map": "profilefact",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.value.value"
+          ],
+          "optional": []
         },
         {
           "prop": "skills",
@@ -70,7 +92,13 @@
           "kind": "skill",
           "record": "Skill",
           "map": "skill",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.level.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -115,7 +143,8 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "FeatureAccordion",
@@ -3817,7 +3846,7 @@
       "surface": "kit-block",
       "spec": "block.productinfo",
       "source": "xgen/specs/blocks/productinfo.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "details",
@@ -3825,7 +3854,13 @@
           "kind": "detail",
           "record": "Detail",
           "map": "detail",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
         },
         {
           "prop": "specs",
@@ -3833,7 +3868,13 @@
           "kind": "spec",
           "record": "Spec",
           "map": "spec",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.value.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -3857,7 +3898,8 @@
           ]
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "ProductGrid",
@@ -4616,7 +4658,7 @@
       "surface": "kit-block",
       "spec": "block.stepper",
       "source": "xgen/specs/blocks/stepper.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "steps",
@@ -4624,7 +4666,14 @@
           "kind": "step",
           "record": "Step",
           "map": "step",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -4657,7 +4706,8 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "StepsList",
@@ -4756,7 +4806,7 @@
       "surface": "kit-block",
       "spec": "block.storehero",
       "source": "xgen/specs/blocks/storehero.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "perks",
@@ -4764,7 +4814,14 @@
           "kind": "perk",
           "record": "Feature",
           "map": "perk",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -4811,14 +4868,15 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "StoryTabs",
       "surface": "kit-block",
       "spec": "block.storytabs",
       "source": "xgen/specs/blocks/storytabs.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "steps",
@@ -4826,7 +4884,15 @@
           "kind": "milestone",
           "record": "Milestone",
           "map": "milestone",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "metadata.date.value",
+            "title",
+            "metadata.text.value",
+            "metadata.tag.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -4853,6 +4919,11 @@
           "keys": []
         },
         {
+          "prop": "empty",
+          "dictionary": "empty.milestones",
+          "keys": []
+        },
+        {
           "prop": "labels",
           "dictionary": "company.storyTabs.labels",
           "keys": [
@@ -4862,7 +4933,7 @@
           ]
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "OrderSummary",

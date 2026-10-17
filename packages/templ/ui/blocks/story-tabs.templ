@@ -20,6 +20,7 @@ type StoryTabsProps struct {
 	Lead any `json:"lead"`
 	Badge any `json:"badge"`
 	Steps any `json:"steps"`
+	Empty any `json:"empty"`
 	Active any `json:"active"`
 	Labels any `json:"labels"`
 	Layout any `json:"layout"`
@@ -34,12 +35,17 @@ templ StoryTabs(p StoryTabsProps) {
 	{{ vLead := uiutils.Def(p.Lead, "") }}
 	{{ vBadge := uiutils.Def(p.Badge, "") }}
 	{{ vSteps := p.Steps }}
+	{{ vEmpty := uiutils.Def(p.Empty, "") }}
 	{{ vActive := p.Active }}
 	{{ vLabels := p.Labels }}
 	{{ vLayout := uiutils.Def(p.Layout, "years") }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	if uiutils.Eq(vLayout, "years") {
+	if uiutils.Eq(uiutils.Len(vSteps), float64(0)) {
+		@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, LandmarkLabel: vLandmarkLabel}) {
+			@EmptyState(EmptyStateProps{Icon: "milestone", Title: vEmpty})
+		}
+	} else if uiutils.Eq(vLayout, "years") {
 		@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, LandmarkLabel: vLandmarkLabel}) {
 			@box.Box(box.BoxProps{Class: "grid grid-cols-2 gap-2 sm:grid-cols-4", Attrs: uiutils.Attrs("data-testid", "story-tabs")}) {
 				for _, vS := range uiutils.L(vSteps) {

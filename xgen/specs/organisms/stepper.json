@@ -94,242 +94,109 @@
           "args": [],
           "do": [
             {
-              "use": "Stack",
-              "props": {
-                "Gap": "6",
-                "Align": "stretch"
+              "when": {
+                "op": "gt",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "steps"
+                      }
+                    ]
+                  },
+                  0
+                ]
               },
-              "attrs": {
-                "data-testid": "stepper"
-              },
-              "children": [
+              "then": [
                 {
-                  "use": "Text",
+                  "use": "Stack",
                   "props": {
-                    "Size": "sm",
-                    "Class": "text-muted-foreground"
+                    "Gap": "6",
+                    "Align": "stretch"
+                  },
+                  "attrs": {
+                    "data-testid": "stepper"
                   },
                   "children": [
                     {
-                      "text": {
-                        "op": "tpl",
-                        "args": [
-                          {
-                            "$": "stepLabel"
-                          },
-                          {
-                            "$": "current"
-                          },
-                          {
-                            "op": "len",
+                      "use": "Text",
+                      "props": {
+                        "Size": "sm",
+                        "Class": "text-muted-foreground"
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "op": "tpl",
                             "args": [
                               {
-                                "$": "steps"
+                                "$": "stepLabel"
+                              },
+                              {
+                                "$": "current"
+                              },
+                              {
+                                "op": "len",
+                                "args": [
+                                  {
+                                    "$": "steps"
+                                  }
+                                ]
                               }
                             ]
                           }
-                        ]
-                      }
-                    }
-                  ]
-                },
-                {
-                  "use": "List",
-                  "props": {
-                    "Tag": "ol",
-                    "Class": {
-                      "op": "cn",
-                      "args": [
-                        "m-0 flex list-none gap-4 p-0",
-                        {
-                          "op": "cond",
-                          "args": [
-                            {
-                              "op": "eq",
-                              "args": [
-                                {
-                                  "$": "layout"
-                                },
-                                "vertical"
-                              ]
-                            },
-                            "flex-col",
-                            "flex-col sm:flex-row"
-                          ]
                         }
                       ]
-                    }
-                  },
-                  "attrs": {
-                    "data-testid": "items"
-                  },
-                  "children": [
+                    },
                     {
-                      "each": {
-                        "$": "steps"
-                      },
-                      "as": "s",
-                      "key": {
-                        "$": "s.id"
-                      },
-                      "do": [
-                        {
-                          "use": "ListItem",
-                          "props": {
-                            "Class": "flex flex-1 items-center gap-4"
-                          },
-                          "attrs": {
-                            "data-testid": "item",
-                            "aria-current": {
+                      "use": "List",
+                      "props": {
+                        "Tag": "ol",
+                        "Class": {
+                          "op": "cn",
+                          "args": [
+                            "m-0 flex list-none gap-4 p-0",
+                            {
                               "op": "cond",
                               "args": [
                                 {
                                   "op": "eq",
                                   "args": [
                                     {
-                                      "op": "add",
-                                      "args": [
-                                        {
-                                          "$": "i"
-                                        },
-                                        1
-                                      ]
+                                      "$": "layout"
                                     },
-                                    {
-                                      "$": "current"
-                                    }
+                                    "vertical"
                                   ]
                                 },
-                                "step",
-                                {
-                                  "op": "undef",
-                                  "args": []
-                                }
+                                "flex-col",
+                                "flex-col sm:flex-row"
                               ]
                             }
+                          ]
+                        }
+                      },
+                      "attrs": {
+                        "data-testid": "items"
+                      },
+                      "children": [
+                        {
+                          "each": {
+                            "$": "steps"
                           },
-                          "children": [
+                          "as": "s",
+                          "key": {
+                            "$": "s.id"
+                          },
+                          "do": [
                             {
-                              "use": "IconBadge",
+                              "use": "ListItem",
                               "props": {
-                                "Variant": {
-                                  "op": "cond",
-                                  "args": [
-                                    {
-                                      "op": "lt",
-                                      "args": [
-                                        {
-                                          "op": "add",
-                                          "args": [
-                                            {
-                                              "$": "i"
-                                            },
-                                            1
-                                          ]
-                                        },
-                                        {
-                                          "op": "add",
-                                          "args": [
-                                            {
-                                              "$": "current"
-                                            },
-                                            1
-                                          ]
-                                        }
-                                      ]
-                                    },
-                                    "primary",
-                                    "outline"
-                                  ]
-                                },
-                                "Size": "sm",
-                                "Class": {
-                                  "op": "cond",
-                                  "args": [
-                                    {
-                                      "op": "lt",
-                                      "args": [
-                                        {
-                                          "op": "add",
-                                          "args": [
-                                            {
-                                              "$": "i"
-                                            },
-                                            1
-                                          ]
-                                        },
-                                        {
-                                          "op": "add",
-                                          "args": [
-                                            {
-                                              "$": "current"
-                                            },
-                                            1
-                                          ]
-                                        }
-                                      ]
-                                    },
-                                    "text-sm",
-                                    "text-sm text-muted-foreground"
-                                  ]
-                                }
+                                "Class": "flex flex-1 items-center gap-4"
                               },
-                              "children": [
-                                {
-                                  "when": {
-                                    "op": "eq",
-                                    "args": [
-                                      {
-                                        "$": "marker"
-                                      },
-                                      "icon"
-                                    ]
-                                  },
-                                  "then": [
-                                    {
-                                      "use": "LucideIcon",
-                                      "props": {
-                                        "Name": {
-                                          "$": "s.icon"
-                                        },
-                                        "Size": 16
-                                      }
-                                    }
-                                  ],
-                                  "else": [
-                                    {
-                                      "use": "Inline",
-                                      "props": {
-                                        "Class": "text-sm font-bold"
-                                      },
-                                      "children": [
-                                        {
-                                          "text": {
-                                            "op": "str",
-                                            "args": [
-                                              {
-                                                "op": "add",
-                                                "args": [
-                                                  {
-                                                    "$": "i"
-                                                  },
-                                                  1
-                                                ]
-                                              }
-                                            ]
-                                          }
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "use": "Text",
-                              "props": {
-                                "Size": "sm",
-                                "Weight": {
+                              "attrs": {
+                                "data-testid": "item",
+                                "aria-current": {
                                   "op": "cond",
                                   "args": [
                                     {
@@ -349,81 +216,159 @@
                                         }
                                       ]
                                     },
-                                    "bold",
-                                    "semibold"
+                                    "step",
+                                    {
+                                      "op": "undef",
+                                      "args": []
+                                    }
                                   ]
                                 }
                               },
                               "children": [
                                 {
-                                  "text": {
-                                    "$": "s.title"
-                                  }
-                                }
-                              ]
-                            }
-                          ]
-                        }
-                      ],
-                      "index": "i"
-                    }
-                  ]
-                },
-                {
-                  "when": {
-                    "op": "eq",
-                    "args": [
-                      {
-                        "$": "summary"
-                      },
-                      "show"
-                    ]
-                  },
-                  "then": [
-                    {
-                      "each": {
-                        "$": "steps"
-                      },
-                      "as": "s",
-                      "key": {
-                        "$": "s.id"
-                      },
-                      "do": [
-                        {
-                          "when": {
-                            "op": "eq",
-                            "args": [
-                              {
-                                "op": "add",
-                                "args": [
-                                  {
-                                    "$": "i"
-                                  },
-                                  1
-                                ]
-                              },
-                              {
-                                "$": "current"
-                              }
-                            ]
-                          },
-                          "then": [
-                            {
-                              "use": "Stack",
-                              "props": {
-                                "Gap": "2",
-                                "Class": "rounded bg-card p-6 inset-ring inset-ring-border"
-                              },
-                              "attrs": {
-                                "data-testid": "step-summary"
-                              },
-                              "children": [
-                                {
-                                  "use": "Title",
+                                  "use": "IconBadge",
                                   "props": {
-                                    "As": 3,
-                                    "Size": "xl",
-                                    "Weight": "bold"
+                                    "Variant": {
+                                      "op": "cond",
+                                      "args": [
+                                        {
+                                          "op": "lt",
+                                          "args": [
+                                            {
+                                              "op": "add",
+                                              "args": [
+                                                {
+                                                  "$": "i"
+                                                },
+                                                1
+                                              ]
+                                            },
+                                            {
+                                              "op": "add",
+                                              "args": [
+                                                {
+                                                  "$": "current"
+                                                },
+                                                1
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "primary",
+                                        "outline"
+                                      ]
+                                    },
+                                    "Size": "sm",
+                                    "Class": {
+                                      "op": "cond",
+                                      "args": [
+                                        {
+                                          "op": "lt",
+                                          "args": [
+                                            {
+                                              "op": "add",
+                                              "args": [
+                                                {
+                                                  "$": "i"
+                                                },
+                                                1
+                                              ]
+                                            },
+                                            {
+                                              "op": "add",
+                                              "args": [
+                                                {
+                                                  "$": "current"
+                                                },
+                                                1
+                                              ]
+                                            }
+                                          ]
+                                        },
+                                        "text-sm",
+                                        "text-sm text-muted-foreground"
+                                      ]
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "when": {
+                                        "op": "eq",
+                                        "args": [
+                                          {
+                                            "$": "marker"
+                                          },
+                                          "icon"
+                                        ]
+                                      },
+                                      "then": [
+                                        {
+                                          "use": "LucideIcon",
+                                          "props": {
+                                            "Name": {
+                                              "$": "s.icon"
+                                            },
+                                            "Size": 16
+                                          }
+                                        }
+                                      ],
+                                      "else": [
+                                        {
+                                          "use": "Inline",
+                                          "props": {
+                                            "Class": "text-sm font-bold"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "op": "str",
+                                                "args": [
+                                                  {
+                                                    "op": "add",
+                                                    "args": [
+                                                      {
+                                                        "$": "i"
+                                                      },
+                                                      1
+                                                    ]
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "use": "Text",
+                                  "props": {
+                                    "Size": "sm",
+                                    "Weight": {
+                                      "op": "cond",
+                                      "args": [
+                                        {
+                                          "op": "eq",
+                                          "args": [
+                                            {
+                                              "op": "add",
+                                              "args": [
+                                                {
+                                                  "$": "i"
+                                                },
+                                                1
+                                              ]
+                                            },
+                                            {
+                                              "$": "current"
+                                            }
+                                          ]
+                                        },
+                                        "bold",
+                                        "semibold"
+                                      ]
+                                    }
                                   },
                                   "children": [
                                     {
@@ -432,55 +377,128 @@
                                       }
                                     }
                                   ]
-                                },
-                                {
-                                  "use": "Text",
-                                  "props": {
-                                    "Size": "sm",
-                                    "Class": "text-muted-foreground"
+                                }
+                              ]
+                            }
+                          ],
+                          "index": "i"
+                        }
+                      ]
+                    },
+                    {
+                      "when": {
+                        "op": "eq",
+                        "args": [
+                          {
+                            "$": "summary"
+                          },
+                          "show"
+                        ]
+                      },
+                      "then": [
+                        {
+                          "each": {
+                            "$": "steps"
+                          },
+                          "as": "s",
+                          "key": {
+                            "$": "s.id"
+                          },
+                          "do": [
+                            {
+                              "when": {
+                                "op": "eq",
+                                "args": [
+                                  {
+                                    "op": "add",
+                                    "args": [
+                                      {
+                                        "$": "i"
+                                      },
+                                      1
+                                    ]
                                   },
-                                  "children": [
-                                    {
-                                      "text": {
-                                        "$": "s.text"
-                                      }
-                                    }
-                                  ]
-                                },
+                                  {
+                                    "$": "current"
+                                  }
+                                ]
+                              },
+                              "then": [
                                 {
-                                  "use": "Group",
+                                  "use": "Stack",
                                   "props": {
                                     "Gap": "2",
-                                    "Class": "pt-2"
+                                    "Class": "rounded bg-card p-6 inset-ring inset-ring-border"
+                                  },
+                                  "attrs": {
+                                    "data-testid": "step-summary"
                                   },
                                   "children": [
                                     {
-                                      "use": "Button",
+                                      "use": "Title",
                                       "props": {
-                                        "Variant": "outline",
-                                        "Size": "sm",
-                                        "Type": "button"
+                                        "As": 3,
+                                        "Size": "xl",
+                                        "Weight": "bold"
                                       },
                                       "children": [
                                         {
                                           "text": {
-                                            "$": "back"
+                                            "$": "s.title"
                                           }
                                         }
                                       ]
                                     },
                                     {
-                                      "use": "Button",
+                                      "use": "Text",
                                       "props": {
-                                        "Variant": "default",
                                         "Size": "sm",
-                                        "Type": "button"
+                                        "Class": "text-muted-foreground"
                                       },
                                       "children": [
                                         {
                                           "text": {
-                                            "$": "next"
+                                            "$": "s.text"
                                           }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "Group",
+                                      "props": {
+                                        "Gap": "2",
+                                        "Class": "pt-2"
+                                      },
+                                      "children": [
+                                        {
+                                          "use": "Button",
+                                          "props": {
+                                            "Variant": "outline",
+                                            "Size": "sm",
+                                            "Type": "button"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "back"
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "use": "Button",
+                                          "props": {
+                                            "Variant": "default",
+                                            "Size": "sm",
+                                            "Type": "button"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "next"
+                                              }
+                                            }
+                                          ]
                                         }
                                       ]
                                     }
@@ -488,10 +506,10 @@
                                 }
                               ]
                             }
-                          ]
+                          ],
+                          "index": "i"
                         }
-                      ],
-                      "index": "i"
+                      ]
                     }
                   ]
                 }

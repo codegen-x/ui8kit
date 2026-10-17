@@ -56,7 +56,7 @@ const {
     :media="{ show: true, side: 'start' }"
     :landmarkLabel="landmarkLabel"
   >
-    <Grid cols="2-4" class="gap-4" data-testid="stats">
+    <Grid v-if="((stats?.length ?? 0) > 0)" cols="2-4" class="gap-4" data-testid="stats">
       <Stack v-for="s in stats" :key="s.id" gap="0" data-testid="stat">
         <Text size="3xl" weight="bold">
           {{ s.value }}
@@ -66,7 +66,7 @@ const {
         </Text>
       </Stack>
     </Grid>
-    <Box
+    <Box v-if="((values?.length ?? 0) > 0)"
       :class="cn('grid grid-cols-1 gap-4', (((layout as string) === 'stacked') ? 'md:grid-cols-3' : ''))"
       data-testid="values"
     >

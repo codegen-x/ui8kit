@@ -4,7 +4,7 @@ import type { OrganismSpec } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { frame } from "../components/frames";
 import { portrait, tags } from "../components/people-parts";
-import { empty, id, orEmpty, title, tsOf, toneLite, denseLite } from "../props";
+import { empty, id, ifAny, orEmpty, title, tsOf, toneLite, denseLite } from "../props";
 import { heading, muted, strong, surface } from "../ux";
 import { menuEntry } from "../components/nav";
 
@@ -79,14 +79,14 @@ const aboutMe = spec(`${O}about-me`, "AboutMe", "A personal about section beside
   ],
   view: [frame({ id: ref("id"), title: ref("title"), lead: ref("lead"), badge: ref("badge"), level: ref("level"), layout: "split", hasMedia: true, mediaSide: ref("mediaSide"), tone: ref("tone"), density: "default" }, [
     when(eq(ref("layout"), "facts"),
-      [use("List", { props: { Tag: "ul", Class: "grid grid-cols-1 gap-4 sm:grid-cols-2" }, attrs: { "data-testid": "facts" } },
+      [ifAny("facts", [use("List", { props: { Tag: "ul", Class: "grid grid-cols-1 gap-4 sm:grid-cols-2" }, attrs: { "data-testid": "facts" } },
         each(ref("facts"), "f", ref("f.id"),
-          use("ListItem", { props: { Class: surface("flex flex-col gap-0 p-4") }, attrs: { "data-testid": "fact" } }, muted(ref("f.label"), "xs"), strong(ref("f.value"), "sm"))))],
-      [use("Stack", { props: { Gap: "4", Align: "stretch" }, attrs: { "data-testid": "skills" } },
+          use("ListItem", { props: { Class: surface("flex flex-col gap-0 p-4") }, attrs: { "data-testid": "fact" } }, muted(ref("f.label"), "xs"), strong(ref("f.value"), "sm"))))])],
+      [ifAny("skills", [use("Stack", { props: { Gap: "4", Align: "stretch" }, attrs: { "data-testid": "skills" } },
         each(ref("skills"), "s", ref("s.id"),
           use("Stack", { props: { Gap: "2", Align: "stretch" }, attrs: { "data-testid": "skill" } },
             use("Group", { props: { Gap: "4", Justify: "between" } }, strong(ref("s.label"), "sm"), muted(tpl(ref("labels.level"), ref("s.level")), "xs")),
-            use("Progress", { props: { Value: str(ref("s.level")), Max: "100" }, attrs: { "aria-label": ref("s.label") } }))))]),
+            use("Progress", { props: { Value: str(ref("s.level")), Max: "100" }, attrs: { "aria-label": ref("s.label") } }))))])]),
     organism("ActionGroup", { primary: ref("actions.cta"), primaryHref: ref("actions.href"), secondary: cond(eq(ref("actions.mode"), "two"), ref("actions.secondary"), undef()), secondaryHref: ref("actions.secondaryHref"), align: "start" }),
   ], [organism("MediaFrame", { alt: ref("title"), ratio: "3/4" })])],
 });
@@ -102,14 +102,14 @@ const aboutCompany = spec(`${O}about-company`, "AboutCompany", "The culture of a
     { name: "density", type: denseLite, default: "default" },
   ],
   view: [frame({ ...common, layout: cond(eq(ref("layout"), "split"), "split", "stack"), hasMedia: true, mediaSide: "start" }, [
-    use("Grid", { props: { Cols: "2-4", Class: "gap-4" }, attrs: { "data-testid": "stats" } },
+    ifAny("stats", [use("Grid", { props: { Cols: "2-4", Class: "gap-4" }, attrs: { "data-testid": "stats" } },
       each(ref("stats"), "s", ref("s.id"),
-        use("Stack", { props: { Gap: "0" }, attrs: { "data-testid": "stat" } }, use("Text", { props: { Size: "3xl", Weight: "bold" } }, text(ref("s.value"))), muted(ref("s.label"), "xs")))),
-    use("Box", { props: { Class: cn("grid grid-cols-1 gap-4", cond(eq(ref("layout"), "stacked"), "md:grid-cols-3", "")) }, attrs: { "data-testid": "values" } },
+        use("Stack", { props: { Gap: "0" }, attrs: { "data-testid": "stat" } }, use("Text", { props: { Size: "3xl", Weight: "bold" } }, text(ref("s.value"))), muted(ref("s.label"), "xs"))))]),
+    ifAny("values", [use("Box", { props: { Class: cn("grid grid-cols-1 gap-4", cond(eq(ref("layout"), "stacked"), "md:grid-cols-3", "")) }, attrs: { "data-testid": "values" } },
       each(ref("values"), "v", ref("v.id"),
         use("Group", { props: { Gap: "4", Align: "start", Class: "border-t border-border pt-4" }, attrs: { "data-testid": "value" } },
           use("LucideIcon", { props: { Name: ref("v.icon"), Size: 20 } }),
-          use("Stack", { props: { Gap: "2" } }, strong(ref("v.title"), "sm"), muted(ref("v.text")))))),
+          use("Stack", { props: { Gap: "2" } }, strong(ref("v.title"), "sm"), muted(ref("v.text"))))))]),
   ], [use("Box", { props: { Class: "grid grid-cols-3 gap-4" }, attrs: { "data-testid": "strip" } },
     organism("MediaFrame", { alt: ref("title"), ratio: "3/4" }), organism("MediaFrame", { alt: ref("title"), ratio: "3/4", className: "mt-8" }), organism("MediaFrame", { alt: ref("title"), ratio: "3/4" }))])],
 });

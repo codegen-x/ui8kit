@@ -54,44 +54,48 @@
       : "grid grid-cols-1 gap-8"
     }
   >
-    <Stack
-      gap="0"
-      align="stretch"
-      class={(((layout as string) === "split") ? "lg:col-span-2" : "")}
-      data-testid="items"
-    >
-      {#each details as d, i (d.id)}
-        <Disclosure variant="item" open={(((expand as string) === "first") && (i === 0))} data-testid="item">
-          <Summary variant="item">
-            <Inline class="text-base font-semibold">
-              {d.title}
-            </Inline>
-          </Summary>
-          <Text size="sm" class="pb-4 text-muted-foreground">
-            {d.text}
-          </Text>
-        </Disclosure>
-      {/each}
-    </Stack>
-    <Stack gap="4" align="stretch" class="rounded bg-card inset-ring inset-ring-border p-6" data-testid="specs">
-      <Title as={3} size="lg" weight="bold">
-        {labels.specs}
-      </Title>
-      <List tag="ul" class="flex flex-col">
-        {#each specs as s (s.id)}
-          <ListItem
-            class="flex items-center justify-between gap-4 border-b border-border py-2 text-sm last:border-b-0"
-            data-testid="spec"
-          >
-            <Inline class="text-muted-foreground">
-              {s.label}
-            </Inline>
-            <Inline class="font-medium">
-              {s.value}
-            </Inline>
-          </ListItem>
+    {#if ((details?.length ?? 0) > 0)}
+      <Stack
+        gap="0"
+        align="stretch"
+        class={(((layout as string) === "split") ? "lg:col-span-2" : "")}
+        data-testid="items"
+      >
+        {#each details as d, i (d.id)}
+          <Disclosure variant="item" open={(((expand as string) === "first") && (i === 0))} data-testid="item">
+            <Summary variant="item">
+              <Inline class="text-base font-semibold">
+                {d.title}
+              </Inline>
+            </Summary>
+            <Text size="sm" class="pb-4 text-muted-foreground">
+              {d.text}
+            </Text>
+          </Disclosure>
         {/each}
-      </List>
-    </Stack>
+      </Stack>
+    {/if}
+    {#if ((specs?.length ?? 0) > 0)}
+      <Stack gap="4" align="stretch" class="rounded bg-card inset-ring inset-ring-border p-6" data-testid="specs">
+        <Title as={3} size="lg" weight="bold">
+          {labels.specs}
+        </Title>
+        <List tag="ul" class="flex flex-col">
+          {#each specs as s (s.id)}
+            <ListItem
+              class="flex items-center justify-between gap-4 border-b border-border py-2 text-sm last:border-b-0"
+              data-testid="spec"
+            >
+              <Inline class="text-muted-foreground">
+                {s.label}
+              </Inline>
+              <Inline class="font-medium">
+                {s.value}
+              </Inline>
+            </ListItem>
+          {/each}
+        </List>
+      </Stack>
+    {/if}
   </Box>
 </SectionFrame>

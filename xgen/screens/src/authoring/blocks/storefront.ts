@@ -3,7 +3,7 @@ import { cn, cond, each, eachAt, eq, lt, ref, text, undef, use, when, organism }
 import type { OrganismSpec } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { behind, frame } from "../components/frames";
-import { empty, id, orEmpty, tsOf, toneLite, denseLite } from "../props";
+import { empty, id, ifAny, orEmpty, tsOf, toneLite, denseLite } from "../props";
 import { muted, strong, surface } from "../ux";
 
 const O = "organism.";
@@ -41,9 +41,9 @@ const storeHero = spec(`${O}store-hero`, "StoreHero", "The hero of a store: a ba
   view: [when(eq(ref("layout"), "backdrop"),
     [behind("image", ref("title"),
       frame({ id: ref("id"), title: ref("title"), lead: ref("lead"), badge: ref("badge"), level: ref("level"), tone: ref("tone"), density: "roomy", measure: "3xl" },
-        [heroActions, heroPerks]))],
+        [heroActions, ifAny("perks", [heroPerks])]))],
     [frame({ id: ref("id"), title: ref("title"), lead: ref("lead"), badge: ref("badge"), level: ref("level"), layout: "split", hasMedia: true, mediaSide: ref("mediaSide"), tone: ref("tone"), density: "default" },
-      [heroActions, heroPerks],
+      [heroActions, ifAny("perks", [heroPerks])],
       [organism("OfferMedia", { alt: ref("title"), card: ref("card") })])])],
 });
 

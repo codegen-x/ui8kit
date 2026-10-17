@@ -3,7 +3,7 @@ import { add, cn, cond, div, count, each, eachAt, eq, len, lt, mul, ref, round, 
 import type { OrganismSpec } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { frame, panelSection, wide } from "../components/frames";
-import { empty, id, orEmpty, title, tsOf, toneLite, denseLite } from "../props";
+import { empty, id, ifAny, orEmpty, title, tsOf, toneLite, denseLite } from "../props";
 import { fid, kids } from "../forms";
 
 const O = "organism.";
@@ -152,7 +152,7 @@ const stepper = spec(`${O}stepper`, "Stepper", "A multi-step form header: the st
     { name: "marker", type: tsOf("number", "icon"), default: "number" },
     { name: "summary", type: tsOf("show", "hide"), default: "show" },
   ],
-  view: [frame({ id: ref("id"), title: ref("title"), measure: "3xl" }, [
+  view: [frame({ id: ref("id"), title: ref("title"), measure: "3xl" }, [ifAny("steps", [
     use("Stack", { props: { Gap: "6", Align: "stretch" }, attrs: { "data-testid": "stepper" } },
       use("Text", { props: { Size: "sm", Class: "text-muted-foreground" } }, text(tpl(ref("stepLabel"), ref("current"), len(ref("steps"))))),
       use("List", { props: { Tag: "ol", Class: cn("m-0 flex list-none gap-4 p-0", cond(eq(ref("layout"), "vertical"), "flex-col", "flex-col sm:flex-row")) }, attrs: { "data-testid": "items" } },
@@ -169,7 +169,7 @@ const stepper = spec(`${O}stepper`, "Stepper", "A multi-step form header: the st
             use("Group", { props: { Gap: "2", Class: "pt-2" } },
               use("Button", { props: { Variant: "outline", Size: "sm", Type: "button" } }, text(ref("back"))),
               use("Button", { props: { Variant: "default", Size: "sm", Type: "button" } }, text(ref("next")))))])),
-      ])),
+      ]))]),
   ])],
 });
 

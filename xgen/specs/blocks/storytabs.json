@@ -40,6 +40,7 @@
     }
   ],
   "slots": [
+    "EmptyState",
     "MediaFrame",
     "SectionFrame",
     "StoryDots",
@@ -111,6 +112,9 @@
       },
       "steps": {
         "$": "milestones"
+      },
+      "empty": {
+        "$": "ui.empty.milestones"
       },
       "active": "milestone-runtimes",
       "labels": {

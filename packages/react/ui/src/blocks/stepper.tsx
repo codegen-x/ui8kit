@@ -49,70 +49,72 @@ export function Stepper({
 }: StepperProps) {
   return (
     <SectionFrame id={id} title={title} measure="3xl" landmarkLabel={landmarkLabel}>
-      <Stack gap="6" align="stretch" data-testid="stepper">
-        <Text size="sm" className="text-muted-foreground">
-          {tpl(stepLabel, current, (steps?.length ?? 0))}
-        </Text>
-        <List
-          tag="ol"
-          className={cn(
-            "m-0 flex list-none gap-4 p-0",
-            (((layout as string) === "vertical") ? "flex-col" : "flex-col sm:flex-row")
-          )}
-          data-testid="items"
-        >
-          {(steps ?? []).map((s, i) => (
-            <ListItem key={s.id}
-              className="flex flex-1 items-center gap-4"
-              data-testid="item"
-              aria-current={(((i + 1) === current) ? "step" : undefined)}
-            >
-              <IconBadge
-                variant={(((i + 1) < (current + 1)) ? "primary" : "outline")}
-                size="sm"
-                className={(((i + 1) < (current + 1)) ? "text-sm" : "text-sm text-muted-foreground")}
-              >
-                {((marker as string) === "icon") ? (
-                  <LucideIcon name={s.icon} size={16} />
-                ) : (
-                  <Inline className="text-sm font-bold">
-                    {((i + 1) == null ? undefined : String((i + 1)))}
-                  </Inline>
-                )}
-              </IconBadge>
-              <Text size="sm" weight={(((i + 1) === current) ? "bold" : "semibold")}>
-                {s.title}
-              </Text>
-            </ListItem>
-          ))}
-        </List>
-        {((summary as string) === "show") ? (
-          <>
+      {((steps?.length ?? 0) > 0) ? (
+        <Stack gap="6" align="stretch" data-testid="stepper">
+          <Text size="sm" className="text-muted-foreground">
+            {tpl(stepLabel, current, (steps?.length ?? 0))}
+          </Text>
+          <List
+            tag="ol"
+            className={cn(
+              "m-0 flex list-none gap-4 p-0",
+              (((layout as string) === "vertical") ? "flex-col" : "flex-col sm:flex-row")
+            )}
+            data-testid="items"
+          >
             {(steps ?? []).map((s, i) => (
-              <Fragment key={s.id}>
-                {((i + 1) === current) ? (
-                  <Stack gap="2" className="rounded bg-card p-6 inset-ring inset-ring-border" data-testid="step-summary">
-                    <Title as={3} size="xl" weight="bold">
-                      {s.title}
-                    </Title>
-                    <Text size="sm" className="text-muted-foreground">
-                      {s.text}
-                    </Text>
-                    <Group gap="2" className="pt-2">
-                      <Button variant="outline" size="sm" type="button">
-                        {back}
-                      </Button>
-                      <Button variant="default" size="sm" type="button">
-                        {next}
-                      </Button>
-                    </Group>
-                  </Stack>
-                ) : null}
-              </Fragment>
+              <ListItem key={s.id}
+                className="flex flex-1 items-center gap-4"
+                data-testid="item"
+                aria-current={(((i + 1) === current) ? "step" : undefined)}
+              >
+                <IconBadge
+                  variant={(((i + 1) < (current + 1)) ? "primary" : "outline")}
+                  size="sm"
+                  className={(((i + 1) < (current + 1)) ? "text-sm" : "text-sm text-muted-foreground")}
+                >
+                  {((marker as string) === "icon") ? (
+                    <LucideIcon name={s.icon} size={16} />
+                  ) : (
+                    <Inline className="text-sm font-bold">
+                      {((i + 1) == null ? undefined : String((i + 1)))}
+                    </Inline>
+                  )}
+                </IconBadge>
+                <Text size="sm" weight={(((i + 1) === current) ? "bold" : "semibold")}>
+                  {s.title}
+                </Text>
+              </ListItem>
             ))}
-          </>
-        ) : null}
-      </Stack>
+          </List>
+          {((summary as string) === "show") ? (
+            <>
+              {(steps ?? []).map((s, i) => (
+                <Fragment key={s.id}>
+                  {((i + 1) === current) ? (
+                    <Stack gap="2" className="rounded bg-card p-6 inset-ring inset-ring-border" data-testid="step-summary">
+                      <Title as={3} size="xl" weight="bold">
+                        {s.title}
+                      </Title>
+                      <Text size="sm" className="text-muted-foreground">
+                        {s.text}
+                      </Text>
+                      <Group gap="2" className="pt-2">
+                        <Button variant="outline" size="sm" type="button">
+                          {back}
+                        </Button>
+                        <Button variant="default" size="sm" type="button">
+                          {next}
+                        </Button>
+                      </Group>
+                    </Stack>
+                  ) : null}
+                </Fragment>
+              ))}
+            </>
+          ) : null}
+        </Stack>
+      ) : null}
     </SectionFrame>
   );
 }

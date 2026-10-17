@@ -21,7 +21,7 @@ const storytabs = define({
     { sel: '[data-testid="story-arrow"]', n: 2, when: { layout: "carousel" } },
     { sel: '[data-testid="story-tab"]', n: 0, when: { layout: "carousel" } },
   ],
-  sample: { id: "storytabs", title: s("title"), lead: s("lead"), badge: s("badge"), steps: ref("milestones"), active: "milestone-runtimes", labels: s("labels") },
+  sample: { id: "storytabs", title: s("title"), lead: s("lead"), badge: s("badge"), steps: ref("milestones"), empty: t("empty.milestones"), active: "milestone-runtimes", labels: s("labels") },
 });
 
 export const storyTabsBlocks = [storytabs];

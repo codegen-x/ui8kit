@@ -16,6 +16,7 @@
     lead?: string;
     badge?: string;
     steps: Milestone[];
+    empty?: string;
     active: string;
     labels: StoryLabels;
     layout?: "years" | "carousel";
@@ -32,6 +33,7 @@
   import Inline from "../primitives/inline/inline.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Stack from "../primitives/stack/stack.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import StoryDots from "../components/story-dots.svelte";
@@ -43,6 +45,7 @@
     lead = "",
     badge = "",
     steps,
+    empty = "",
     active,
     labels,
     layout = "years",
@@ -52,7 +55,11 @@
   }: StoryTabsProps = $props();
 </script>
 
-{#if ((layout as string) === "years")}
+{#if ((steps?.length ?? 0) === 0)}
+  <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone} landmarkLabel={landmarkLabel}>
+    <EmptyState icon="milestone" title={empty} />
+  </SectionFrame>
+{:else if ((layout as string) === "years")}
   <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone} landmarkLabel={landmarkLabel}>
     <Box class="grid grid-cols-2 gap-2 sm:grid-cols-4" data-testid="story-tabs">
       {#each steps as s (s.id)}

@@ -12,6 +12,7 @@ import { Group } from "../primitives/group/group";
 import { Inline } from "../primitives/inline/inline";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
+import { EmptyState } from "../components/empty-state";
 import { MediaFrame } from "../components/media-frame";
 import { SectionFrame } from "../components/section-frame";
 import { StoryDots } from "../components/story-dots";
@@ -25,6 +26,7 @@ export type StoryTabsProps = {
   lead?: string;
   badge?: string;
   steps: Milestone[];
+  empty?: string;
   active: string;
   labels: StoryLabels;
   layout?: "years" | "carousel";
@@ -39,6 +41,7 @@ export function StoryTabs({
   lead = "",
   badge = "",
   steps,
+  empty = "",
   active,
   labels,
   layout = "years",
@@ -48,7 +51,11 @@ export function StoryTabs({
 }: StoryTabsProps) {
   return (
     <>
-      {((layout as string) === "years") ? (
+      {((steps?.length ?? 0) === 0) ? (
+        <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone} landmarkLabel={landmarkLabel}>
+          <EmptyState icon="milestone" title={empty} />
+        </SectionFrame>
+      ) : ((layout as string) === "years") ? (
         <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone} landmarkLabel={landmarkLabel}>
           <Box className="grid grid-cols-2 gap-2 sm:grid-cols-4" data-testid="story-tabs">
             {(steps ?? []).map((s) => (

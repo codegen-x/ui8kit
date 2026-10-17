@@ -54,64 +54,66 @@
 </script>
 
 <SectionFrame id={id} title={title} measure="3xl" landmarkLabel={landmarkLabel}>
-  <Stack gap="6" align="stretch" data-testid="stepper">
-    <Text size="sm" class="text-muted-foreground">
-      {tpl(stepLabel, current, (steps?.length ?? 0))}
-    </Text>
-    <List
-      tag="ol"
-      class={cn(
-        "m-0 flex list-none gap-4 p-0",
-        (((layout as string) === "vertical") ? "flex-col" : "flex-col sm:flex-row")
-      )}
-      data-testid="items"
-    >
-      {#each steps as s, i (s.id)}
-        <ListItem
-          class="flex flex-1 items-center gap-4"
-          data-testid="item"
-          aria-current={(((i + 1) === current) ? "step" : undefined)}
-        >
-          <IconBadge
-            variant={(((i + 1) < (current + 1)) ? "primary" : "outline")}
-            size="sm"
-            class={(((i + 1) < (current + 1)) ? "text-sm" : "text-sm text-muted-foreground")}
+  {#if ((steps?.length ?? 0) > 0)}
+    <Stack gap="6" align="stretch" data-testid="stepper">
+      <Text size="sm" class="text-muted-foreground">
+        {tpl(stepLabel, current, (steps?.length ?? 0))}
+      </Text>
+      <List
+        tag="ol"
+        class={cn(
+          "m-0 flex list-none gap-4 p-0",
+          (((layout as string) === "vertical") ? "flex-col" : "flex-col sm:flex-row")
+        )}
+        data-testid="items"
+      >
+        {#each steps as s, i (s.id)}
+          <ListItem
+            class="flex flex-1 items-center gap-4"
+            data-testid="item"
+            aria-current={(((i + 1) === current) ? "step" : undefined)}
           >
-            {#if ((marker as string) === "icon")}
-              <LucideIcon name={s.icon} size={16} />
-            {:else}
-              <Inline class="text-sm font-bold">
-                {((i + 1) == null ? undefined : String((i + 1)))}
-              </Inline>
-            {/if}
-          </IconBadge>
-          <Text size="sm" weight={(((i + 1) === current) ? "bold" : "semibold")}>
-            {s.title}
-          </Text>
-        </ListItem>
-      {/each}
-    </List>
-    {#if ((summary as string) === "show")}
-      {#each steps as s, i (s.id)}
-        {#if ((i + 1) === current)}
-          <Stack gap="2" class="rounded bg-card p-6 inset-ring inset-ring-border" data-testid="step-summary">
-            <Title as={3} size="xl" weight="bold">
+            <IconBadge
+              variant={(((i + 1) < (current + 1)) ? "primary" : "outline")}
+              size="sm"
+              class={(((i + 1) < (current + 1)) ? "text-sm" : "text-sm text-muted-foreground")}
+            >
+              {#if ((marker as string) === "icon")}
+                <LucideIcon name={s.icon} size={16} />
+              {:else}
+                <Inline class="text-sm font-bold">
+                  {((i + 1) == null ? undefined : String((i + 1)))}
+                </Inline>
+              {/if}
+            </IconBadge>
+            <Text size="sm" weight={(((i + 1) === current) ? "bold" : "semibold")}>
               {s.title}
-            </Title>
-            <Text size="sm" class="text-muted-foreground">
-              {s.text}
             </Text>
-            <Group gap="2" class="pt-2">
-              <Button variant="outline" size="sm" type="button">
-                {back}
-              </Button>
-              <Button variant="default" size="sm" type="button">
-                {next}
-              </Button>
-            </Group>
-          </Stack>
-        {/if}
-      {/each}
-    {/if}
-  </Stack>
+          </ListItem>
+        {/each}
+      </List>
+      {#if ((summary as string) === "show")}
+        {#each steps as s, i (s.id)}
+          {#if ((i + 1) === current)}
+            <Stack gap="2" class="rounded bg-card p-6 inset-ring inset-ring-border" data-testid="step-summary">
+              <Title as={3} size="xl" weight="bold">
+                {s.title}
+              </Title>
+              <Text size="sm" class="text-muted-foreground">
+                {s.text}
+              </Text>
+              <Group gap="2" class="pt-2">
+                <Button variant="outline" size="sm" type="button">
+                  {back}
+                </Button>
+                <Button variant="default" size="sm" type="button">
+                  {next}
+                </Button>
+              </Group>
+            </Stack>
+          {/if}
+        {/each}
+      {/if}
+    </Stack>
+  {/if}
 </SectionFrame>

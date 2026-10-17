@@ -56,36 +56,40 @@
   media={{ show: true, side: "start" }}
   landmarkLabel={landmarkLabel}
 >
-  <Grid cols="2-4" class="gap-4" data-testid="stats">
-    {#each stats as s (s.id)}
-      <Stack gap="0" data-testid="stat">
-        <Text size="3xl" weight="bold">
-          {s.value}
-        </Text>
-        <Text size="xs" class="text-muted-foreground">
-          {s.label}
-        </Text>
-      </Stack>
-    {/each}
-  </Grid>
-  <Box
-    class={cn("grid grid-cols-1 gap-4", (((layout as string) === "stacked") ? "md:grid-cols-3" : ""))}
-    data-testid="values"
-  >
-    {#each values as v (v.id)}
-      <Group gap="4" align="start" class="border-t border-border pt-4" data-testid="value">
-        <LucideIcon name={v.icon} size={20} />
-        <Stack gap="2">
-          <Text size="sm" weight="semibold">
-            {v.title}
+  {#if ((stats?.length ?? 0) > 0)}
+    <Grid cols="2-4" class="gap-4" data-testid="stats">
+      {#each stats as s (s.id)}
+        <Stack gap="0" data-testid="stat">
+          <Text size="3xl" weight="bold">
+            {s.value}
           </Text>
-          <Text size="sm" class="text-muted-foreground">
-            {v.text}
+          <Text size="xs" class="text-muted-foreground">
+            {s.label}
           </Text>
         </Stack>
-      </Group>
-    {/each}
-  </Box>
+      {/each}
+    </Grid>
+  {/if}
+  {#if ((values?.length ?? 0) > 0)}
+    <Box
+      class={cn("grid grid-cols-1 gap-4", (((layout as string) === "stacked") ? "md:grid-cols-3" : ""))}
+      data-testid="values"
+    >
+      {#each values as v (v.id)}
+        <Group gap="4" align="start" class="border-t border-border pt-4" data-testid="value">
+          <LucideIcon name={v.icon} size={20} />
+          <Stack gap="2">
+            <Text size="sm" weight="semibold">
+              {v.title}
+            </Text>
+            <Text size="sm" class="text-muted-foreground">
+              {v.text}
+            </Text>
+          </Stack>
+        </Group>
+      {/each}
+    </Box>
+  {/if}
   {#snippet aside()}
     <Box class="grid grid-cols-3 gap-4" data-testid="strip">
       <MediaFrame alt={title} ratio="3/4" />

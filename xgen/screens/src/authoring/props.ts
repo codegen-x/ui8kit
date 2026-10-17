@@ -1,6 +1,6 @@
 // Prop helpers every block shares: literal unions (tsOf), the common axes (tone, density, cols), id and title,
 // the action set of a section and its picture. Blocks and components import them from here.
-import { cond, eq, len, ref, undef, organism, when } from "../build";
+import { cond, eq, gt, len, ref, undef, organism, when } from "../build";
 import type { ViewNode } from "../ir";
 import { groupFields, requireFields, ts } from "./kit";
 
@@ -14,6 +14,8 @@ export const title = { name: "title", type: "string" as const, required: true };
 /** the text of the empty state of a list block (no records), from the dictionary */
 export const empty = { name: "empty", type: "string" as const, default: "", docs: "the text of the empty state (no records), from the dictionary" };
 /** the list `list` or, when it has no records, the EmptyState with the `empty` text (Codex rule: every list block has an empty state) */
+/** the part `nodes` only when `list` has records (emptyMode omit: an empty secondary list is left out) */
+export const ifAny = (list: string, nodes: ViewNode[]): ViewNode => when(gt(len(ref(list)), 0), nodes);
 export const orEmpty = (list: string, icon: string, nodes: ViewNode[], wrap: (n: ViewNode[]) => ViewNode[] = (n) => n): ViewNode =>
   when(eq(len(ref(list)), 0), wrap([organism("EmptyState", { icon, title: ref("empty") })]), nodes);
 

@@ -54,7 +54,7 @@ const {
 
 <template>
   <SectionFrame :id="id" :title="title" measure="3xl" :landmarkLabel="landmarkLabel">
-    <Stack gap="6" align="stretch" data-testid="stepper">
+    <Stack v-if="((steps?.length ?? 0) > 0)" gap="6" align="stretch" data-testid="stepper">
       <Text size="sm" class="text-muted-foreground">
         {{ tpl(stepLabel, current, (steps?.length ?? 0)) }}
       </Text>

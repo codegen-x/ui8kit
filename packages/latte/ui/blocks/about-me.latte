@@ -20,23 +20,25 @@
 {/capture}
 {capture $c_11}
   {if ui_t(ui_eq($v_layout, 'facts'))}
-    {capture $c_4}
-      {foreach ui_l($v_facts) as $v_f}
-        {capture $c_3}
-          {capture $c_1}
-            {=ui_text(ui_get($v_f, ['label']))}
+    {if ui_t(ui_gt(ui_len($v_facts), 0))}
+      {capture $c_4}
+        {foreach ui_l($v_facts) as $v_f}
+          {capture $c_3}
+            {capture $c_1}
+              {=ui_text(ui_get($v_f, ['label']))}
+            {/capture}
+            {=ui_include('ui/text/text.latte', ['p' => ['Size' => 'xs', 'Class' => 'text-muted-foreground'], 'children' => $c_1])|noescape}
+            {capture $c_2}
+              {=ui_text(ui_get($v_f, ['value']))}
+            {/capture}
+            {=ui_include('ui/text/text.latte', ['p' => ['Size' => 'sm', 'Weight' => 'semibold'], 'children' => $c_2])|noescape}
           {/capture}
-          {=ui_include('ui/text/text.latte', ['p' => ['Size' => 'xs', 'Class' => 'text-muted-foreground'], 'children' => $c_1])|noescape}
-          {capture $c_2}
-            {=ui_text(ui_get($v_f, ['value']))}
-          {/capture}
-          {=ui_include('ui/text/text.latte', ['p' => ['Size' => 'sm', 'Weight' => 'semibold'], 'children' => $c_2])|noescape}
-        {/capture}
-        {=ui_include('ui/list/list-item.latte', ['p' => ['Class' => 'rounded bg-card inset-ring inset-ring-border flex flex-col gap-0 p-4', 'Attrs' => ui_attrs(['data-testid', 'fact'])], 'children' => $c_3])|noescape}
-      {/foreach}
-    {/capture}
-    {=ui_include('ui/list/list.latte', ['p' => ['Tag' => 'ul', 'Class' => 'grid grid-cols-1 gap-4 sm:grid-cols-2', 'Attrs' => ui_attrs(['data-testid', 'facts'])], 'children' => $c_4])|noescape}
-  {else}
+          {=ui_include('ui/list/list-item.latte', ['p' => ['Class' => 'rounded bg-card inset-ring inset-ring-border flex flex-col gap-0 p-4', 'Attrs' => ui_attrs(['data-testid', 'fact'])], 'children' => $c_3])|noescape}
+        {/foreach}
+      {/capture}
+      {=ui_include('ui/list/list.latte', ['p' => ['Tag' => 'ul', 'Class' => 'grid grid-cols-1 gap-4 sm:grid-cols-2', 'Attrs' => ui_attrs(['data-testid', 'facts'])], 'children' => $c_4])|noescape}
+    {/if}
+  {elseif ui_t(ui_gt(ui_len($v_skills), 0))}
     {capture $c_9}
       {foreach ui_l($v_skills) as $v_s}
         {capture $c_8}

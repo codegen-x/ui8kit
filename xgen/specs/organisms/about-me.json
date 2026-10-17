@@ -162,58 +162,76 @@
               },
               "then": [
                 {
-                  "use": "List",
-                  "props": {
-                    "Tag": "ul",
-                    "Class": "grid grid-cols-1 gap-4 sm:grid-cols-2"
+                  "when": {
+                    "op": "gt",
+                    "args": [
+                      {
+                        "op": "len",
+                        "args": [
+                          {
+                            "$": "facts"
+                          }
+                        ]
+                      },
+                      0
+                    ]
                   },
-                  "attrs": {
-                    "data-testid": "facts"
-                  },
-                  "children": [
+                  "then": [
                     {
-                      "each": {
-                        "$": "facts"
+                      "use": "List",
+                      "props": {
+                        "Tag": "ul",
+                        "Class": "grid grid-cols-1 gap-4 sm:grid-cols-2"
                       },
-                      "as": "f",
-                      "key": {
-                        "$": "f.id"
+                      "attrs": {
+                        "data-testid": "facts"
                       },
-                      "do": [
+                      "children": [
                         {
-                          "use": "ListItem",
-                          "props": {
-                            "Class": "rounded bg-card inset-ring inset-ring-border flex flex-col gap-0 p-4"
+                          "each": {
+                            "$": "facts"
                           },
-                          "attrs": {
-                            "data-testid": "fact"
+                          "as": "f",
+                          "key": {
+                            "$": "f.id"
                           },
-                          "children": [
+                          "do": [
                             {
-                              "use": "Text",
+                              "use": "ListItem",
                               "props": {
-                                "Size": "xs",
-                                "Class": "text-muted-foreground"
+                                "Class": "rounded bg-card inset-ring inset-ring-border flex flex-col gap-0 p-4"
+                              },
+                              "attrs": {
+                                "data-testid": "fact"
                               },
                               "children": [
                                 {
-                                  "text": {
-                                    "$": "f.label"
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "use": "Text",
-                              "props": {
-                                "Size": "sm",
-                                "Weight": "semibold"
-                              },
-                              "children": [
+                                  "use": "Text",
+                                  "props": {
+                                    "Size": "xs",
+                                    "Class": "text-muted-foreground"
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "f.label"
+                                      }
+                                    }
+                                  ]
+                                },
                                 {
-                                  "text": {
-                                    "$": "f.value"
-                                  }
+                                  "use": "Text",
+                                  "props": {
+                                    "Size": "sm",
+                                    "Weight": "semibold"
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "f.value"
+                                      }
+                                    }
+                                  ]
                                 }
                               ]
                             }
@@ -226,97 +244,115 @@
               ],
               "else": [
                 {
-                  "use": "Stack",
-                  "props": {
-                    "Gap": "4",
-                    "Align": "stretch"
+                  "when": {
+                    "op": "gt",
+                    "args": [
+                      {
+                        "op": "len",
+                        "args": [
+                          {
+                            "$": "skills"
+                          }
+                        ]
+                      },
+                      0
+                    ]
                   },
-                  "attrs": {
-                    "data-testid": "skills"
-                  },
-                  "children": [
+                  "then": [
                     {
-                      "each": {
-                        "$": "skills"
+                      "use": "Stack",
+                      "props": {
+                        "Gap": "4",
+                        "Align": "stretch"
                       },
-                      "as": "s",
-                      "key": {
-                        "$": "s.id"
+                      "attrs": {
+                        "data-testid": "skills"
                       },
-                      "do": [
+                      "children": [
                         {
-                          "use": "Stack",
-                          "props": {
-                            "Gap": "2",
-                            "Align": "stretch"
+                          "each": {
+                            "$": "skills"
                           },
-                          "attrs": {
-                            "data-testid": "skill"
+                          "as": "s",
+                          "key": {
+                            "$": "s.id"
                           },
-                          "children": [
+                          "do": [
                             {
-                              "use": "Group",
+                              "use": "Stack",
                               "props": {
-                                "Gap": "4",
-                                "Justify": "between"
+                                "Gap": "2",
+                                "Align": "stretch"
+                              },
+                              "attrs": {
+                                "data-testid": "skill"
                               },
                               "children": [
                                 {
-                                  "use": "Text",
+                                  "use": "Group",
                                   "props": {
-                                    "Size": "sm",
-                                    "Weight": "semibold"
+                                    "Gap": "4",
+                                    "Justify": "between"
                                   },
                                   "children": [
                                     {
-                                      "text": {
-                                        "$": "s.label"
-                                      }
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "sm",
+                                        "Weight": "semibold"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "s.label"
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "xs",
+                                        "Class": "text-muted-foreground"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "op": "tpl",
+                                            "args": [
+                                              {
+                                                "$": "labels.level"
+                                              },
+                                              {
+                                                "$": "s.level"
+                                              }
+                                            ]
+                                          }
+                                        }
+                                      ]
                                     }
                                   ]
                                 },
                                 {
-                                  "use": "Text",
+                                  "use": "Progress",
                                   "props": {
-                                    "Size": "xs",
-                                    "Class": "text-muted-foreground"
+                                    "Value": {
+                                      "op": "str",
+                                      "args": [
+                                        {
+                                          "$": "s.level"
+                                        }
+                                      ]
+                                    },
+                                    "Max": "100"
                                   },
-                                  "children": [
-                                    {
-                                      "text": {
-                                        "op": "tpl",
-                                        "args": [
-                                          {
-                                            "$": "labels.level"
-                                          },
-                                          {
-                                            "$": "s.level"
-                                          }
-                                        ]
-                                      }
+                                  "attrs": {
+                                    "aria-label": {
+                                      "$": "s.label"
                                     }
-                                  ]
+                                  }
                                 }
                               ]
-                            },
-                            {
-                              "use": "Progress",
-                              "props": {
-                                "Value": {
-                                  "op": "str",
-                                  "args": [
-                                    {
-                                      "$": "s.level"
-                                    }
-                                  ]
-                                },
-                                "Max": "100"
-                              },
-                              "attrs": {
-                                "aria-label": {
-                                  "$": "s.label"
-                                }
-                              }
                             }
                           ]
                         }

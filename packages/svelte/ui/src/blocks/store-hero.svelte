@@ -74,25 +74,27 @@
       secondary={((actions.mode === "two") ? actions.secondary : undefined)}
       secondaryHref={actions.secondaryHref}
     />
-    <Grid cols="1-3" class="gap-4" data-testid="perks">
-      {#each perks as p, i (p.id)}
-        {#if (i < 3)}
-          <Group gap="4" align="start" data-testid="perk">
-            <Box class="flex size-10 shrink-0 items-center justify-center rounded bg-muted">
-              <LucideIcon name={p.icon} size={20} />
-            </Box>
-            <Stack gap="0">
-              <Text size="sm" weight="semibold">
-                {p.title}
-              </Text>
-              <Text size="xs" class="text-muted-foreground">
-                {p.text}
-              </Text>
-            </Stack>
-          </Group>
-        {/if}
-      {/each}
-    </Grid>
+    {#if ((perks?.length ?? 0) > 0)}
+      <Grid cols="1-3" class="gap-4" data-testid="perks">
+        {#each perks as p, i (p.id)}
+          {#if (i < 3)}
+            <Group gap="4" align="start" data-testid="perk">
+              <Box class="flex size-10 shrink-0 items-center justify-center rounded bg-muted">
+                <LucideIcon name={p.icon} size={20} />
+              </Box>
+              <Stack gap="0">
+                <Text size="sm" weight="semibold">
+                  {p.title}
+                </Text>
+                <Text size="xs" class="text-muted-foreground">
+                  {p.text}
+                </Text>
+              </Stack>
+            </Group>
+          {/if}
+        {/each}
+      </Grid>
+    {/if}
   </SectionFrame>
 {:else}
   <SectionFrame
@@ -111,25 +113,27 @@
       secondary={((actions.mode === "two") ? actions.secondary : undefined)}
       secondaryHref={actions.secondaryHref}
     />
-    <Grid cols="1-3" class="gap-4" data-testid="perks">
-      {#each perks as p, i (p.id)}
-        {#if (i < 3)}
-          <Group gap="4" align="start" data-testid="perk">
-            <Box class="flex size-10 shrink-0 items-center justify-center rounded bg-muted">
-              <LucideIcon name={p.icon} size={20} />
-            </Box>
-            <Stack gap="0">
-              <Text size="sm" weight="semibold">
-                {p.title}
-              </Text>
-              <Text size="xs" class="text-muted-foreground">
-                {p.text}
-              </Text>
-            </Stack>
-          </Group>
-        {/if}
-      {/each}
-    </Grid>
+    {#if ((perks?.length ?? 0) > 0)}
+      <Grid cols="1-3" class="gap-4" data-testid="perks">
+        {#each perks as p, i (p.id)}
+          {#if (i < 3)}
+            <Group gap="4" align="start" data-testid="perk">
+              <Box class="flex size-10 shrink-0 items-center justify-center rounded bg-muted">
+                <LucideIcon name={p.icon} size={20} />
+              </Box>
+              <Stack gap="0">
+                <Text size="sm" weight="semibold">
+                  {p.title}
+                </Text>
+                <Text size="xs" class="text-muted-foreground">
+                  {p.text}
+                </Text>
+              </Stack>
+            </Group>
+          {/if}
+        {/each}
+      </Grid>
+    {/if}
     {#snippet aside()}
       <OfferMedia alt={title} card={card} />
     {/snippet}

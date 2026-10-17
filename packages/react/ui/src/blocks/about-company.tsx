@@ -58,39 +58,43 @@ export function AboutCompany({
         </Box>
       )}
     >
-      <Grid cols="2-4" className="gap-4" data-testid="stats">
-        {(stats ?? []).map((s) => (
-          <Stack key={s.id} gap="0" data-testid="stat">
-            <Text size="3xl" weight="bold">
-              {s.value}
-            </Text>
-            <Text size="xs" className="text-muted-foreground">
-              {s.label}
-            </Text>
-          </Stack>
-        ))}
-      </Grid>
-      <Box
-        className={cn(
-          "grid grid-cols-1 gap-4",
-          (((layout as string) === "stacked") ? "md:grid-cols-3" : "")
-        )}
-        data-testid="values"
-      >
-        {(values ?? []).map((v) => (
-          <Group key={v.id} gap="4" align="start" className="border-t border-border pt-4" data-testid="value">
-            <LucideIcon name={v.icon} size={20} />
-            <Stack gap="2">
-              <Text size="sm" weight="semibold">
-                {v.title}
+      {((stats?.length ?? 0) > 0) ? (
+        <Grid cols="2-4" className="gap-4" data-testid="stats">
+          {(stats ?? []).map((s) => (
+            <Stack key={s.id} gap="0" data-testid="stat">
+              <Text size="3xl" weight="bold">
+                {s.value}
               </Text>
-              <Text size="sm" className="text-muted-foreground">
-                {v.text}
+              <Text size="xs" className="text-muted-foreground">
+                {s.label}
               </Text>
             </Stack>
-          </Group>
-        ))}
-      </Box>
+          ))}
+        </Grid>
+      ) : null}
+      {((values?.length ?? 0) > 0) ? (
+        <Box
+          className={cn(
+            "grid grid-cols-1 gap-4",
+            (((layout as string) === "stacked") ? "md:grid-cols-3" : "")
+          )}
+          data-testid="values"
+        >
+          {(values ?? []).map((v) => (
+            <Group key={v.id} gap="4" align="start" className="border-t border-border pt-4" data-testid="value">
+              <LucideIcon name={v.icon} size={20} />
+              <Stack gap="2">
+                <Text size="sm" weight="semibold">
+                  {v.title}
+                </Text>
+                <Text size="sm" className="text-muted-foreground">
+                  {v.text}
+                </Text>
+              </Stack>
+            </Group>
+          ))}
+        </Box>
+      ) : null}
     </SectionFrame>
   );
 }

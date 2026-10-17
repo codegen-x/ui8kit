@@ -4,7 +4,7 @@ import { and, cond, each, eachAt, eq, money, mul, ref, str, text, tpl, use, when
 import type { OrganismSpec, ViewNode } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { frame } from "../components/frames";
-import { id, title, tsOf, toneLite } from "../props";
+import { id, ifAny, title, tsOf, toneLite } from "../props";
 import { inputField, kids, textField, checkRow } from "../forms";
 import { heading, muted, strong, strongSpan, surface } from "../ux";
 
@@ -123,17 +123,17 @@ const productInfo = spec(`${O}product-info`, "ProductInfo", "The details of a pr
   ],
   view: [frame({ id: ref("id"), title: ref("title"), tone: ref("tone"), density: "default" }, [
     use("Box", { props: { Class: cond(eq(ref("layout"), "split"), "grid grid-cols-1 items-start gap-8 lg:grid-cols-3", "grid grid-cols-1 gap-8") } },
-      use("Stack", { props: { Gap: "0", Align: "stretch", Class: cond(eq(ref("layout"), "split"), "lg:col-span-2", "") }, attrs: { "data-testid": "items" } },
+      ifAny("details", [use("Stack", { props: { Gap: "0", Align: "stretch", Class: cond(eq(ref("layout"), "split"), "lg:col-span-2", "") }, attrs: { "data-testid": "items" } },
         eachAt(ref("details"), "d", "i", ref("d.id"),
           use("Disclosure", { props: { Variant: "item", Open: and(eq(ref("expand"), "first"), eq(ref("i"), 0)) }, attrs: { "data-testid": "item" } },
             use("Summary", { props: { Variant: "item" } }, strongSpan(ref("d.title"))),
-            use("Text", { props: { Size: "sm", Class: "pb-4 text-muted-foreground" } }, text(ref("d.text")))))),
-      use("Stack", { props: { Gap: "4", Align: "stretch", Class: surface("p-6") }, attrs: { "data-testid": "specs" } },
+            use("Text", { props: { Size: "sm", Class: "pb-4 text-muted-foreground" } }, text(ref("d.text"))))))]),
+      ifAny("specs", [use("Stack", { props: { Gap: "4", Align: "stretch", Class: surface("p-6") }, attrs: { "data-testid": "specs" } },
         heading(ref("labels.specs"), "lg"),
         use("List", { props: { Tag: "ul", Class: "flex flex-col" } },
           each(ref("specs"), "s", ref("s.id"),
             use("ListItem", { props: { Class: "flex items-center justify-between gap-4 border-b border-border py-2 text-sm last:border-b-0" }, attrs: { "data-testid": "spec" } },
-              use("Inline", { props: { Class: "text-muted-foreground" } }, text(ref("s.label"))), use("Inline", { props: { Class: "font-medium" } }, text(ref("s.value")))))))),
+              use("Inline", { props: { Class: "text-muted-foreground" } }, text(ref("s.label"))), use("Inline", { props: { Class: "font-medium" } }, text(ref("s.value")))))))])),
   ])],
 });
 

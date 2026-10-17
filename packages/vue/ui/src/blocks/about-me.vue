@@ -67,27 +67,29 @@ const {
     :tone="tone"
     :landmarkLabel="landmarkLabel"
   >
-    <List
-      v-if="((layout as string) === 'facts')"
-      tag="ul"
-      class="grid grid-cols-1 gap-4 sm:grid-cols-2"
-      data-testid="facts"
-    >
-      <ListItem
-        v-for="f in facts"
-        :key="f.id"
-        class="rounded bg-card inset-ring inset-ring-border flex flex-col gap-0 p-4"
-        data-testid="fact"
+    <template v-if="((layout as string) === 'facts')">
+      <List
+        v-if="((facts?.length ?? 0) > 0)"
+        tag="ul"
+        class="grid grid-cols-1 gap-4 sm:grid-cols-2"
+        data-testid="facts"
       >
-        <Text size="xs" class="text-muted-foreground">
-          {{ f.label }}
-        </Text>
-        <Text size="sm" weight="semibold">
-          {{ f.value }}
-        </Text>
-      </ListItem>
-    </List>
-    <Stack v-else gap="4" align="stretch" data-testid="skills">
+        <ListItem
+          v-for="f in facts"
+          :key="f.id"
+          class="rounded bg-card inset-ring inset-ring-border flex flex-col gap-0 p-4"
+          data-testid="fact"
+        >
+          <Text size="xs" class="text-muted-foreground">
+            {{ f.label }}
+          </Text>
+          <Text size="sm" weight="semibold">
+            {{ f.value }}
+          </Text>
+        </ListItem>
+      </List>
+    </template>
+    <Stack v-else-if="((skills?.length ?? 0) > 0)" gap="4" align="stretch" data-testid="skills">
       <Stack v-for="s in skills" :key="s.id" gap="2" align="stretch" data-testid="skill">
         <Group gap="4" justify="between">
           <Text size="sm" weight="semibold">

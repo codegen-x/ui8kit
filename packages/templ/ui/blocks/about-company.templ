@@ -38,28 +38,32 @@ templ AboutCompany(p AboutCompanyProps) {
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Tone: vTone, Density: vDensity, Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "split", "stack"), Media: map[string]any{"show": true, "side": "start"}, LandmarkLabel: vLandmarkLabel, Aside: aboutCompanyFill1(p, vTitle)}) {
-		@grid.Grid(grid.GridProps{Cols: "2-4", Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "stats")}) {
-			for _, vS := range uiutils.L(vStats) {
-				@stack.Stack(stack.StackProps{Gap: "0", Attrs: uiutils.Attrs("data-testid", "stat")}) {
-					@text.Text(text.TextProps{Size: "3xl", Weight: "bold"}) {
-						{ uiutils.Text(uiutils.Get(vS, "value")) }
-					}
-					@text.Text(text.TextProps{Size: "xs", Class: "text-muted-foreground"}) {
-						{ uiutils.Text(uiutils.Get(vS, "label")) }
+		if uiutils.Gt(uiutils.Len(vStats), float64(0)) {
+			@grid.Grid(grid.GridProps{Cols: "2-4", Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "stats")}) {
+				for _, vS := range uiutils.L(vStats) {
+					@stack.Stack(stack.StackProps{Gap: "0", Attrs: uiutils.Attrs("data-testid", "stat")}) {
+						@text.Text(text.TextProps{Size: "3xl", Weight: "bold"}) {
+							{ uiutils.Text(uiutils.Get(vS, "value")) }
+						}
+						@text.Text(text.TextProps{Size: "xs", Class: "text-muted-foreground"}) {
+							{ uiutils.Text(uiutils.Get(vS, "label")) }
+						}
 					}
 				}
 			}
 		}
-		@box.Box(box.BoxProps{Class: uiutils.S(uiutils.Cnv("grid grid-cols-1 gap-4", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "stacked")), "md:grid-cols-3", ""))), Attrs: uiutils.Attrs("data-testid", "values")}) {
-			for _, vV := range uiutils.L(vValues) {
-				@group.Group(group.GroupProps{Gap: "4", Align: "start", Class: "border-t border-border pt-4", Attrs: uiutils.Attrs("data-testid", "value")}) {
-					@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Get(vV, "icon")), Size: 20})
-					@stack.Stack(stack.StackProps{Gap: "2"}) {
-						@text.Text(text.TextProps{Size: "sm", Weight: "semibold"}) {
-							{ uiutils.Text(uiutils.Get(vV, "title")) }
-						}
-						@text.Text(text.TextProps{Size: "sm", Class: "text-muted-foreground"}) {
-							{ uiutils.Text(uiutils.Get(vV, "text")) }
+		if uiutils.Gt(uiutils.Len(vValues), float64(0)) {
+			@box.Box(box.BoxProps{Class: uiutils.S(uiutils.Cnv("grid grid-cols-1 gap-4", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "stacked")), "md:grid-cols-3", ""))), Attrs: uiutils.Attrs("data-testid", "values")}) {
+				for _, vV := range uiutils.L(vValues) {
+					@group.Group(group.GroupProps{Gap: "4", Align: "start", Class: "border-t border-border pt-4", Attrs: uiutils.Attrs("data-testid", "value")}) {
+						@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Get(vV, "icon")), Size: 20})
+						@stack.Stack(stack.StackProps{Gap: "2"}) {
+							@text.Text(text.TextProps{Size: "sm", Weight: "semibold"}) {
+								{ uiutils.Text(uiutils.Get(vV, "title")) }
+							}
+							@text.Text(text.TextProps{Size: "sm", Class: "text-muted-foreground"}) {
+								{ uiutils.Text(uiutils.Get(vV, "text")) }
+							}
 						}
 					}
 				}

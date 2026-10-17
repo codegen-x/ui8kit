@@ -112,58 +112,76 @@
           "args": [],
           "do": [
             {
-              "use": "Grid",
-              "props": {
-                "Cols": "2-4",
-                "Class": "gap-4"
+              "when": {
+                "op": "gt",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "stats"
+                      }
+                    ]
+                  },
+                  0
+                ]
               },
-              "attrs": {
-                "data-testid": "stats"
-              },
-              "children": [
+              "then": [
                 {
-                  "each": {
-                    "$": "stats"
+                  "use": "Grid",
+                  "props": {
+                    "Cols": "2-4",
+                    "Class": "gap-4"
                   },
-                  "as": "s",
-                  "key": {
-                    "$": "s.id"
+                  "attrs": {
+                    "data-testid": "stats"
                   },
-                  "do": [
+                  "children": [
                     {
-                      "use": "Stack",
-                      "props": {
-                        "Gap": "0"
+                      "each": {
+                        "$": "stats"
                       },
-                      "attrs": {
-                        "data-testid": "stat"
+                      "as": "s",
+                      "key": {
+                        "$": "s.id"
                       },
-                      "children": [
+                      "do": [
                         {
-                          "use": "Text",
+                          "use": "Stack",
                           "props": {
-                            "Size": "3xl",
-                            "Weight": "bold"
+                            "Gap": "0"
+                          },
+                          "attrs": {
+                            "data-testid": "stat"
                           },
                           "children": [
                             {
-                              "text": {
-                                "$": "s.value"
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "use": "Text",
-                          "props": {
-                            "Size": "xs",
-                            "Class": "text-muted-foreground"
-                          },
-                          "children": [
+                              "use": "Text",
+                              "props": {
+                                "Size": "3xl",
+                                "Weight": "bold"
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "s.value"
+                                  }
+                                }
+                              ]
+                            },
                             {
-                              "text": {
-                                "$": "s.label"
-                              }
+                              "use": "Text",
+                              "props": {
+                                "Size": "xs",
+                                "Class": "text-muted-foreground"
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "s.label"
+                                  }
+                                }
+                              ]
                             }
                           ]
                         }
@@ -174,95 +192,113 @@
               ]
             },
             {
-              "use": "Box",
-              "props": {
-                "Class": {
-                  "op": "cn",
-                  "args": [
-                    "grid grid-cols-1 gap-4",
-                    {
-                      "op": "cond",
+              "when": {
+                "op": "gt",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "values"
+                      }
+                    ]
+                  },
+                  0
+                ]
+              },
+              "then": [
+                {
+                  "use": "Box",
+                  "props": {
+                    "Class": {
+                      "op": "cn",
                       "args": [
+                        "grid grid-cols-1 gap-4",
                         {
-                          "op": "eq",
+                          "op": "cond",
                           "args": [
                             {
-                              "$": "layout"
+                              "op": "eq",
+                              "args": [
+                                {
+                                  "$": "layout"
+                                },
+                                "stacked"
+                              ]
                             },
-                            "stacked"
+                            "md:grid-cols-3",
+                            ""
                           ]
-                        },
-                        "md:grid-cols-3",
-                        ""
+                        }
                       ]
                     }
-                  ]
-                }
-              },
-              "attrs": {
-                "data-testid": "values"
-              },
-              "children": [
-                {
-                  "each": {
-                    "$": "values"
                   },
-                  "as": "v",
-                  "key": {
-                    "$": "v.id"
+                  "attrs": {
+                    "data-testid": "values"
                   },
-                  "do": [
+                  "children": [
                     {
-                      "use": "Group",
-                      "props": {
-                        "Gap": "4",
-                        "Align": "start",
-                        "Class": "border-t border-border pt-4"
+                      "each": {
+                        "$": "values"
                       },
-                      "attrs": {
-                        "data-testid": "value"
+                      "as": "v",
+                      "key": {
+                        "$": "v.id"
                       },
-                      "children": [
+                      "do": [
                         {
-                          "use": "LucideIcon",
+                          "use": "Group",
                           "props": {
-                            "Name": {
-                              "$": "v.icon"
-                            },
-                            "Size": 20
-                          }
-                        },
-                        {
-                          "use": "Stack",
-                          "props": {
-                            "Gap": "2"
+                            "Gap": "4",
+                            "Align": "start",
+                            "Class": "border-t border-border pt-4"
+                          },
+                          "attrs": {
+                            "data-testid": "value"
                           },
                           "children": [
                             {
-                              "use": "Text",
+                              "use": "LucideIcon",
                               "props": {
-                                "Size": "sm",
-                                "Weight": "semibold"
-                              },
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "v.title"
-                                  }
-                                }
-                              ]
+                                "Name": {
+                                  "$": "v.icon"
+                                },
+                                "Size": 20
+                              }
                             },
                             {
-                              "use": "Text",
+                              "use": "Stack",
                               "props": {
-                                "Size": "sm",
-                                "Class": "text-muted-foreground"
+                                "Gap": "2"
                               },
                               "children": [
                                 {
-                                  "text": {
-                                    "$": "v.text"
-                                  }
+                                  "use": "Text",
+                                  "props": {
+                                    "Size": "sm",
+                                    "Weight": "semibold"
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "v.title"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "use": "Text",
+                                  "props": {
+                                    "Size": "sm",
+                                    "Class": "text-muted-foreground"
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "v.text"
+                                      }
+                                    }
+                                  ]
                                 }
                               ]
                             }

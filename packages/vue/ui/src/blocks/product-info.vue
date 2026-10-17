@@ -54,7 +54,7 @@ const {
         : 'grid grid-cols-1 gap-8'
       "
     >
-      <Stack
+      <Stack v-if="((details?.length ?? 0) > 0)"
         gap="0"
         align="stretch"
         :class="(((layout as string) === 'split') ? 'lg:col-span-2' : '')"
@@ -77,7 +77,13 @@ const {
           </Text>
         </Disclosure>
       </Stack>
-      <Stack gap="4" align="stretch" class="rounded bg-card inset-ring inset-ring-border p-6" data-testid="specs">
+      <Stack
+        v-if="((specs?.length ?? 0) > 0)"
+        gap="4"
+        align="stretch"
+        class="rounded bg-card inset-ring inset-ring-border p-6"
+        data-testid="specs"
+      >
         <Title :as="3" size="lg" weight="bold">
           {{ labels.specs }}
         </Title>

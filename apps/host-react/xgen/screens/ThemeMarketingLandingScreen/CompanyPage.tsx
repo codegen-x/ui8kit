@@ -94,6 +94,7 @@ export function CompanyPage() {
         lead={ui.company.storyTabs.lead}
         badge={ui.company.storyTabs.badge}
         steps={milestones}
+        empty={ui.empty.milestones}
         active="milestone-runtimes"
         labels={ui.company.storyTabs.labels}
         layout="years"

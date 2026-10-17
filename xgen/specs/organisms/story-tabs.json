@@ -50,6 +50,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "active",
       "type": "string",
       "required": true,
@@ -102,9 +108,14 @@
         "op": "eq",
         "args": [
           {
-            "$": "layout"
+            "op": "len",
+            "args": [
+              {
+                "$": "steps"
+              }
+            ]
           },
-          "years"
+          0
         ]
       },
       "then": [
@@ -137,14 +148,166 @@
               "args": [],
               "do": [
                 {
-                  "use": "Box",
+                  "organism": "EmptyState",
                   "props": {
-                    "Class": "grid grid-cols-2 gap-2 sm:grid-cols-4"
-                  },
-                  "attrs": {
-                    "data-testid": "story-tabs"
-                  },
-                  "children": [
+                    "icon": "milestone",
+                    "title": {
+                      "$": "empty"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "else": [
+        {
+          "when": {
+            "op": "eq",
+            "args": [
+              {
+                "$": "layout"
+              },
+              "years"
+            ]
+          },
+          "then": [
+            {
+              "organism": "SectionFrame",
+              "props": {
+                "id": {
+                  "$": "id"
+                },
+                "title": {
+                  "$": "title"
+                },
+                "lead": {
+                  "$": "lead"
+                },
+                "heading": {
+                  "badge": {
+                    "$": "badge"
+                  }
+                },
+                "tone": {
+                  "$": "tone"
+                },
+                "landmarkLabel": {
+                  "$": "landmarkLabel"
+                }
+              },
+              "slots": {
+                "children": {
+                  "args": [],
+                  "do": [
+                    {
+                      "use": "Box",
+                      "props": {
+                        "Class": "grid grid-cols-2 gap-2 sm:grid-cols-4"
+                      },
+                      "attrs": {
+                        "data-testid": "story-tabs"
+                      },
+                      "children": [
+                        {
+                          "each": {
+                            "$": "steps"
+                          },
+                          "as": "s",
+                          "key": {
+                            "$": "s.id"
+                          },
+                          "do": [
+                            {
+                              "use": "Button",
+                              "props": {
+                                "Variant": {
+                                  "op": "cond",
+                                  "args": [
+                                    {
+                                      "op": "eq",
+                                      "args": [
+                                        {
+                                          "$": "s.id"
+                                        },
+                                        {
+                                          "$": "active"
+                                        }
+                                      ]
+                                    },
+                                    "default",
+                                    "outline"
+                                  ]
+                                },
+                                "Size": "lg",
+                                "Type": "button",
+                                "Class": "h-auto flex-col items-start gap-0 py-2 text-start"
+                              },
+                              "attrs": {
+                                "data-testid": "story-tab",
+                                "data-active": {
+                                  "op": "cond",
+                                  "args": [
+                                    {
+                                      "op": "eq",
+                                      "args": [
+                                        {
+                                          "$": "s.id"
+                                        },
+                                        {
+                                          "$": "active"
+                                        }
+                                      ]
+                                    },
+                                    "true",
+                                    "false"
+                                  ]
+                                }
+                              },
+                              "on": {
+                                "click": {
+                                  "call": "emit.select",
+                                  "args": [
+                                    {
+                                      "$": "s.id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "children": [
+                                {
+                                  "use": "Inline",
+                                  "props": {
+                                    "Class": "text-sm font-semibold"
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "s.date"
+                                      }
+                                    }
+                                  ]
+                                },
+                                {
+                                  "use": "Inline",
+                                  "props": {
+                                    "Class": "text-xs"
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "s.tag"
+                                      }
+                                    }
+                                  ]
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
                     {
                       "each": {
                         "$": "steps"
@@ -155,265 +318,169 @@
                       },
                       "do": [
                         {
-                          "use": "Button",
-                          "props": {
-                            "Variant": {
-                              "op": "cond",
-                              "args": [
-                                {
-                                  "op": "eq",
+                          "when": {
+                            "op": "eq",
+                            "args": [
+                              {
+                                "$": "s.id"
+                              },
+                              {
+                                "$": "active"
+                              }
+                            ]
+                          },
+                          "then": [
+                            {
+                              "organism": "StoryPanel",
+                              "props": {
+                                "s": {
+                                  "$": "s"
+                                },
+                                "index": {
+                                  "$": "i"
+                                },
+                                "total": {
+                                  "op": "len",
                                   "args": [
                                     {
-                                      "$": "s.id"
-                                    },
-                                    {
-                                      "$": "active"
+                                      "$": "steps"
                                     }
                                   ]
                                 },
-                                "default",
-                                "outline"
-                              ]
-                            },
-                            "Size": "lg",
-                            "Type": "button",
-                            "Class": "h-auto flex-col items-start gap-0 py-2 text-start"
-                          },
-                          "attrs": {
-                            "data-testid": "story-tab",
-                            "data-active": {
-                              "op": "cond",
-                              "args": [
-                                {
-                                  "op": "eq",
-                                  "args": [
-                                    {
-                                      "$": "s.id"
-                                    },
-                                    {
-                                      "$": "active"
-                                    }
-                                  ]
-                                },
-                                "true",
-                                "false"
-                              ]
-                            }
-                          },
-                          "on": {
-                            "click": {
-                              "call": "emit.select",
-                              "args": [
-                                {
-                                  "$": "s.id"
+                                "labels": {
+                                  "$": "labels"
                                 }
-                              ]
-                            }
-                          },
-                          "children": [
-                            {
-                              "use": "Inline",
-                              "props": {
-                                "Class": "text-sm font-semibold"
-                              },
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "s.date"
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "use": "Inline",
-                              "props": {
-                                "Class": "text-xs"
-                              },
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "s.tag"
-                                  }
-                                }
-                              ]
+                              }
                             }
                           ]
                         }
-                      ]
+                      ],
+                      "index": "i"
                     }
                   ]
+                }
+              }
+            }
+          ],
+          "else": [
+            {
+              "organism": "SectionFrame",
+              "props": {
+                "id": {
+                  "$": "id"
                 },
-                {
-                  "each": {
-                    "$": "steps"
-                  },
-                  "as": "s",
-                  "key": {
-                    "$": "s.id"
-                  },
+                "title": {
+                  "$": "title"
+                },
+                "lead": {
+                  "$": "lead"
+                },
+                "heading": {
+                  "badge": {
+                    "$": "badge"
+                  }
+                },
+                "tone": {
+                  "$": "tone"
+                },
+                "layout": "split",
+                "media": {
+                  "show": true
+                },
+                "landmarkLabel": {
+                  "$": "landmarkLabel"
+                }
+              },
+              "slots": {
+                "children": {
+                  "args": [],
+                  "do": []
+                },
+                "aside": {
+                  "args": [],
                   "do": [
                     {
-                      "when": {
-                        "op": "eq",
-                        "args": [
-                          {
-                            "$": "s.id"
-                          },
-                          {
-                            "$": "active"
-                          }
-                        ]
-                      },
-                      "then": [
-                        {
-                          "organism": "StoryPanel",
-                          "props": {
-                            "s": {
-                              "$": "s"
-                            },
-                            "index": {
-                              "$": "i"
-                            },
-                            "total": {
-                              "op": "len",
-                              "args": [
-                                {
-                                  "$": "steps"
-                                }
-                              ]
-                            },
-                            "labels": {
-                              "$": "labels"
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  ],
-                  "index": "i"
-                }
-              ]
-            }
-          }
-        }
-      ],
-      "else": [
-        {
-          "organism": "SectionFrame",
-          "props": {
-            "id": {
-              "$": "id"
-            },
-            "title": {
-              "$": "title"
-            },
-            "lead": {
-              "$": "lead"
-            },
-            "heading": {
-              "badge": {
-                "$": "badge"
-              }
-            },
-            "tone": {
-              "$": "tone"
-            },
-            "layout": "split",
-            "media": {
-              "show": true
-            },
-            "landmarkLabel": {
-              "$": "landmarkLabel"
-            }
-          },
-          "slots": {
-            "children": {
-              "args": [],
-              "do": []
-            },
-            "aside": {
-              "args": [],
-              "do": [
-                {
-                  "use": "Stack",
-                  "props": {
-                    "Gap": "4",
-                    "Align": "stretch"
-                  },
-                  "children": [
-                    {
-                      "organism": "MediaFrame",
-                      "props": {
-                        "alt": {
-                          "$": "title"
-                        },
-                        "ratio": "4/3"
-                      }
-                    },
-                    {
-                      "use": "Group",
+                      "use": "Stack",
                       "props": {
                         "Gap": "4",
-                        "Align": "center",
-                        "Justify": "between"
+                        "Align": "stretch"
                       },
                       "children": [
                         {
-                          "use": "Button",
+                          "organism": "MediaFrame",
                           "props": {
-                            "Variant": "outline",
-                            "Size": "sm",
-                            "Layout": "icon",
-                            "Type": "button",
-                            "AriaLabel": {
-                              "$": "labels.previous"
-                            }
-                          },
-                          "attrs": {
-                            "data-testid": "story-arrow"
-                          },
-                          "children": [
-                            {
-                              "use": "LucideIcon",
-                              "props": {
-                                "Name": "chevron-left",
-                                "Size": 16
-                              }
-                            }
-                          ]
-                        },
-                        {
-                          "organism": "StoryDots",
-                          "props": {
-                            "steps": {
-                              "$": "steps"
+                            "alt": {
+                              "$": "title"
                             },
-                            "active": {
-                              "$": "active"
-                            }
+                            "ratio": "4/3"
                           }
                         },
                         {
-                          "use": "Button",
+                          "use": "Group",
                           "props": {
-                            "Variant": "outline",
-                            "Size": "sm",
-                            "Layout": "icon",
-                            "Type": "button",
-                            "AriaLabel": {
-                              "$": "labels.next"
-                            }
-                          },
-                          "attrs": {
-                            "data-testid": "story-arrow"
+                            "Gap": "4",
+                            "Align": "center",
+                            "Justify": "between"
                           },
                           "children": [
                             {
-                              "use": "LucideIcon",
+                              "use": "Button",
                               "props": {
-                                "Name": "chevron-right",
-                                "Size": 16
+                                "Variant": "outline",
+                                "Size": "sm",
+                                "Layout": "icon",
+                                "Type": "button",
+                                "AriaLabel": {
+                                  "$": "labels.previous"
+                                }
+                              },
+                              "attrs": {
+                                "data-testid": "story-arrow"
+                              },
+                              "children": [
+                                {
+                                  "use": "LucideIcon",
+                                  "props": {
+                                    "Name": "chevron-left",
+                                    "Size": 16
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "organism": "StoryDots",
+                              "props": {
+                                "steps": {
+                                  "$": "steps"
+                                },
+                                "active": {
+                                  "$": "active"
+                                }
                               }
+                            },
+                            {
+                              "use": "Button",
+                              "props": {
+                                "Variant": "outline",
+                                "Size": "sm",
+                                "Layout": "icon",
+                                "Type": "button",
+                                "AriaLabel": {
+                                  "$": "labels.next"
+                                }
+                              },
+                              "attrs": {
+                                "data-testid": "story-arrow"
+                              },
+                              "children": [
+                                {
+                                  "use": "LucideIcon",
+                                  "props": {
+                                    "Name": "chevron-right",
+                                    "Size": 16
+                                  }
+                                }
+                              ]
                             }
                           ]
                         }
@@ -421,9 +488,9 @@
                     }
                   ]
                 }
-              ]
+              }
             }
-          }
+          ]
         }
       ]
     }

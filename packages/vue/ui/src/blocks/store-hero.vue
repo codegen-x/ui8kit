@@ -73,7 +73,7 @@ const {
       :secondary="((actions.mode === 'two') ? actions.secondary : undefined)"
       :secondaryHref="actions.secondaryHref"
     />
-    <Grid cols="1-3" class="gap-4" data-testid="perks">
+    <Grid v-if="((perks?.length ?? 0) > 0)" cols="1-3" class="gap-4" data-testid="perks">
       <template v-for="(p, i) in perks" :key="p.id">
         <Group v-if="(i < 3)" gap="4" align="start" data-testid="perk">
           <Box class="flex size-10 shrink-0 items-center justify-center rounded bg-muted">
@@ -107,7 +107,7 @@ const {
       :secondary="((actions.mode === 'two') ? actions.secondary : undefined)"
       :secondaryHref="actions.secondaryHref"
     />
-    <Grid cols="1-3" class="gap-4" data-testid="perks">
+    <Grid v-if="((perks?.length ?? 0) > 0)" cols="1-3" class="gap-4" data-testid="perks">
       <template v-for="(p, i) in perks" :key="p.id">
         <Group v-if="(i < 3)" gap="4" align="start" data-testid="perk">
           <Box class="flex size-10 shrink-0 items-center justify-center rounded bg-muted">

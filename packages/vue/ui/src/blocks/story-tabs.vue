@@ -15,6 +15,7 @@ export type StoryTabsProps = {
   lead?: string;
   badge?: string;
   steps: Milestone[];
+  empty?: string;
   active: string;
   labels: StoryLabels;
   layout?: "years" | "carousel";
@@ -30,6 +31,7 @@ import Group from "../primitives/group/group.vue";
 import Inline from "../primitives/inline/inline.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
+import EmptyState from "../components/empty-state.vue";
 import MediaFrame from "../components/media-frame.vue";
 import SectionFrame from "../components/section-frame.vue";
 import StoryDots from "../components/story-dots.vue";
@@ -41,6 +43,7 @@ const {
   lead = "",
   badge = "",
   steps,
+  empty = "",
   active,
   labels,
   layout = "years",
@@ -51,7 +54,17 @@ const emit = defineEmits<{ select: [id: string] }>();
 </script>
 
 <template>
-  <SectionFrame v-if="((layout as string) === 'years')"
+  <SectionFrame v-if="((steps?.length ?? 0) === 0)"
+    :id="id"
+    :title="title"
+    :lead="lead"
+    :heading="{ badge }"
+    :tone="tone"
+    :landmarkLabel="landmarkLabel"
+  >
+    <EmptyState icon="milestone" :title="empty" />
+  </SectionFrame>
+  <SectionFrame v-else-if="((layout as string) === 'years')"
     :id="id"
     :title="title"
     :lead="lead"

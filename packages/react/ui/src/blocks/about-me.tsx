@@ -66,19 +66,23 @@ export function AboutMe({
       )}
     >
       {((layout as string) === "facts") ? (
-        <List tag="ul" className="grid grid-cols-1 gap-4 sm:grid-cols-2" data-testid="facts">
-          {(facts ?? []).map((f) => (
-            <ListItem key={f.id} className="rounded bg-card inset-ring inset-ring-border flex flex-col gap-0 p-4" data-testid="fact">
-              <Text size="xs" className="text-muted-foreground">
-                {f.label}
-              </Text>
-              <Text size="sm" weight="semibold">
-                {f.value}
-              </Text>
-            </ListItem>
-          ))}
-        </List>
-      ) : (
+        <>
+          {((facts?.length ?? 0) > 0) ? (
+            <List tag="ul" className="grid grid-cols-1 gap-4 sm:grid-cols-2" data-testid="facts">
+              {(facts ?? []).map((f) => (
+                <ListItem key={f.id} className="rounded bg-card inset-ring inset-ring-border flex flex-col gap-0 p-4" data-testid="fact">
+                  <Text size="xs" className="text-muted-foreground">
+                    {f.label}
+                  </Text>
+                  <Text size="sm" weight="semibold">
+                    {f.value}
+                  </Text>
+                </ListItem>
+              ))}
+            </List>
+          ) : null}
+        </>
+      ) : ((skills?.length ?? 0) > 0) ? (
         <Stack gap="4" align="stretch" data-testid="skills">
           {(skills ?? []).map((s) => (
             <Stack key={s.id} gap="2" align="stretch" data-testid="skill">
@@ -94,7 +98,7 @@ export function AboutMe({
             </Stack>
           ))}
         </Stack>
-      )}
+      ) : null}
       <ActionGroup
         primary={actions.cta}
         primaryHref={actions.href}
