@@ -10,7 +10,7 @@ import { layoutOf } from "../presets";
 
 const O = "organism.";
 const Post = fields(["id", "string"], ["title", "string"], ["excerpt", "string"], ["category", "string"], ["author", "string"], ["date", "string"], ["minutes", "number"], ["icon", "string"], ["href", "string", true], ["image", "string", true]);
-const PostLabels = fields(["minutes", "string"], ["by", "string"], ["read", "string"]);
+const PostLabels = fields(["minutes", "string"], ["by", "string"], ["read", "string"], ["empty", "string"]);
 
 const postCard = spec(`${O}post-card`, "PostCard", "A post as a card: cover picture, category, title, excerpt, author line and a read link. Axes: layout (vertical, horizontal), media (image, none), meta (full, short: the date only, news: date and title only), density.", {
   records: { Post, PostLabels },
@@ -110,7 +110,7 @@ const postHeader = spec(`${O}post-header`, "PostHeader", "The top of a post page
   typeImports: [{ from: "PostCard", names: ["Post", "PostLabels"] }],
   props: [
     id,
-    { name: "post", type: ts("Post"), required: true },
+    { name: "post", type: ts("Post"), docs: "the post; without one: the empty state" },
     { name: "labels", type: ts("PostLabels"), required: true },
     { name: "level", type: ts("1 | 2"), default: 1 },
     { name: "layout", type: tsOf("start", "center"), default: "start" },
@@ -118,7 +118,8 @@ const postHeader = spec(`${O}post-header`, "PostHeader", "The top of a post page
     { name: "meta", type: tsOf("full", "short"), default: "full" },
     { name: "tone", type: toneLite, default: "default" },
   ],
-  view: [frame(
+  // no post: the empty state (labels.empty); the cover is the post's image (featured_media_id), the placeholder without one
+  view: [when(ref("post"), [frame(
     { id: ref("id"), title: ref("post.title"), lead: ref("post.excerpt"), level: ref("level"), align: ref("layout"), tone: ref("tone"), hasMedia: eq(ref("cover"), "show") },
     [use("Group", { props: { Gap: "4", Align: "center", Justify: cond(eq(ref("layout"), "center"), "center", "start"), Class: "flex-wrap" }, attrs: { "data-testid": "post-meta" } },
       organism("MediaFrame", { alt: ref("post.author"), ratio: "1/1", className: "size-10 shrink-0 rounded-full" }),
@@ -127,7 +128,8 @@ const postHeader = spec(`${O}post-header`, "PostHeader", "The top of a post page
       when(eq(ref("meta"), "full"), [use("Text", { props: { Size: "sm", Class: "text-muted-foreground" } }, text(tpl(ref("labels.minutes"), ref("post.minutes"))))]),
       organism("Pill", { tone: "blue" }, kids(text(ref("post.category"))))),
     ],
-    [organism("MediaFrame", { alt: ref("post.title"), ratio: "21/9" })])],
+    [organism("MediaFrame", { alt: ref("post.title"), src: ref("post.image"), ratio: "21/9" })])],
+    [frame({ id: ref("id"), level: ref("level"), align: ref("layout"), tone: ref("tone") }, [organism("EmptyState", { icon: "file-text", title: ref("labels.empty") })])])],
 });
 
 export const contentOrganisms: OrganismSpec[] = [postCard, postGrid, postHeader];

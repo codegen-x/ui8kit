@@ -26,7 +26,7 @@ type PricingTiersProps struct {
 	LandmarkLabel any `json:"landmarkLabel"`
 }
 
-// A section with a heading and one PricingCard per plan. Axes: layout (grid, stack), columns, emphasis, billing (off: no toggle; monthly or annual: a toggle with that choice selected, and the prices of that period), density, tone.
+// A section with a heading and one PricingCard per plan; an empty state when there are none. Axes: layout (grid, stack), columns, emphasis, billing (off: no toggle; monthly or annual: a toggle with that choice selected, and the prices of that period), density, tone.
 templ PricingTiers(p PricingTiersProps) {
 	{{ vId := p.Id }}
 	{{ vTitle := p.Title }}
@@ -56,9 +56,13 @@ templ PricingTiers(p PricingTiersProps) {
 				}
 			}
 		}
-		@grid.Grid(grid.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "stack")), "1", uiutils.FitCols(vCols, uiutils.Len(vPlans)))), Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "tiers")}) {
-			for _, vPlan := range uiutils.L(vPlans) {
-				@PricingCard(PricingCardProps{Plan: vPlan, Labels: vLabels, Emphasis: vEmphasis, Billing: uiutils.Cond(uiutils.T(uiutils.Eq(vBilling, "annual")), "annual", "monthly"), Density: uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "compact", "default")})
+		if uiutils.Eq(uiutils.Len(vPlans), float64(0)) {
+			@EmptyState(EmptyStateProps{Icon: "layers", Title: uiutils.Get(vLabels, "empty")})
+		} else {
+			@grid.Grid(grid.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "stack")), "1", uiutils.FitCols(vCols, uiutils.Len(vPlans)))), Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "tiers")}) {
+				for _, vPlan := range uiutils.L(vPlans) {
+					@PricingCard(PricingCardProps{Plan: vPlan, Labels: vLabels, Emphasis: vEmphasis, Billing: uiutils.Cond(uiutils.T(uiutils.Eq(vBilling, "annual")), "annual", "monthly"), Density: uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "compact", "default")})
+				}
 			}
 		}
 	}

@@ -2,7 +2,8 @@
 <!-- Source: xgen/screens/src/authoring/blocks/commerce.ts -->
 <!--
   A section with a heading and the products as cards in a grid, as a list of horizontal cards, or as a rail that
-  scrolls sideways. Axes: layout (grid, list, rail), columns, ratio, rating, action, tone, density.
+  scrolls sideways; an empty state when there are none. Axes: layout (grid, list, rail), columns, ratio, rating,
+  action, tone, density.
 -->
 <script lang="ts">
 import type { Product, ProductLabels } from "./product-card.types";
@@ -27,6 +28,7 @@ export type ProductGridProps = {
 <script setup lang="ts">
 import Box from "../primitives/box/box.vue";
 import Grid from "../primitives/grid/grid.vue";
+import EmptyState from "../components/empty-state.vue";
 import ProductCard from "../blocks/product-card.vue";
 import SectionFrame from "../components/section-frame.vue";
 
@@ -50,8 +52,9 @@ const emit = defineEmits<{ add: [id: string] }>();
 
 <template>
   <SectionFrame :id="id" :title="title" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
+    <EmptyState v-if="((products?.length ?? 0) === 0)" icon="package" :title="labels.empty" />
     <Box
-      v-if="((layout as string) === 'rail')"
+      v-else-if="((layout as string) === 'rail')"
       class="flex snap-x gap-4 overflow-x-auto pb-4"
       data-testid="items"
     >

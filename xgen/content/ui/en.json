@@ -43,7 +43,8 @@
     "storage": "{0} GB storage",
     "cta": "Choose plan",
     "free": "Free",
-    "perYear": "/ year"
+    "perYear": "/ year",
+    "empty": "No plans to show yet"
   },
   "site": {
     "header": {
@@ -57,7 +58,7 @@
       "login": "Log In"
     },
     "footer": {
-      "copyright": "© 2026 Northwind. All rights reserved.",
+      "copyright": "\u00a9 2026 Northwind. All rights reserved.",
       "nav": "Footer",
       "home": "Home",
       "pricing": "Pricing"
@@ -68,7 +69,7 @@
       "cta": "See pricing",
       "featuresTitle": "Features of our service",
       "ctaTitle": "AI-powered website builder with ready-to-use templates",
-      "ctaText": "Generate complete HTML, CSS, and JavaScript projects in minutes — just pick a template and share your idea.",
+      "ctaText": "Generate complete HTML, CSS, and JavaScript projects in minutes \u2014 just pick a template and share your idea.",
       "ctaButton": "Get Started",
       "secondary": "How it works",
       "ctaSecondary": "Talk to us",
@@ -1035,7 +1036,7 @@
     },
     "footerSplit": {
       "tagline": "Sites from one set of blocks, in every runtime.",
-      "copyright": "© 2026 Northwind. All rights reserved.",
+      "copyright": "\u00a9 2026 Northwind. All rights reserved.",
       "labels": {
         "title": "Get in touch",
         "text": "Ready to start a project? Write to us and we answer within a day.",
@@ -1188,7 +1189,9 @@
       "add": "Add to cart",
       "soldOut": "Sold out",
       "reviews": "{0} reviews",
-      "ratingLabel": "{0} out of 5"
+      "ratingLabel": "{0} out of 5",
+      "was": "Was",
+      "empty": "No products to show yet"
     },
     "badges": {
       "new": "New",
@@ -1395,7 +1398,8 @@
     "labels": {
       "minutes": "{0} min read",
       "by": "By {0}",
-      "read": "Read the post"
+      "read": "Read the post",
+      "empty": "This post is not available"
     },
     "postSplit": {
       "role": "Head of Growth",

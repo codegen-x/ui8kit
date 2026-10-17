@@ -114,6 +114,9 @@ export function checkDead(plan: Plan): CheckResult {
   const root = plan.xgenRoot;
   // fixtures: a collection that no screen reads
   const read = new Set(plan.inputs.screens.flatMap((s) => (s.value.sources ?? []).map((x) => x.collection)).concat(plan.inputs.screens.map((s) => s.value.source?.collection ?? "")));
+  // a collection of media is reached through the featured_media_id of the entries of a collection a screen reads
+  const pictured = new Set(plan.inputs.collections.filter((c) => read.has(c.value.collection)).flatMap((c) => c.value.entries.map((e) => (e as { featured_media_id?: string }).featured_media_id ?? "")));
+  for (const c of plan.inputs.collections) if (c.value.entries.length && c.value.entries.every((e) => e.kind === "media" && pictured.has(e.id))) read.add(c.value.collection);
   for (const c of plan.inputs.collections) if (!read.has(c.value.collection)) problems.push(`xgen/fixtures/${c.value.collection}.json: no screen reads the collection ${c.value.collection}`);
   // organisms: one that no screen draws, directly or inside another
   const byName = new Map(plan.inputs.organisms.map((o) => [o.value.name, o.value]));

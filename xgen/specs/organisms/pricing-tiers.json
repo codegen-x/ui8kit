@@ -3,7 +3,7 @@
   "specVersion": 1,
   "id": "organism.pricing-tiers",
   "name": "PricingTiers",
-  "docs": "A section with a heading and one PricingCard per plan. Axes: layout (grid, stack), columns, emphasis, billing (off: no toggle; monthly or annual: a toggle with that choice selected, and the prices of that period), density, tone.",
+  "docs": "A section with a heading and one PricingCard per plan; an empty state when there are none. Axes: layout (grid, stack), columns, emphasis, billing (off: no toggle; monthly or annual: a toggle with that choice selected, and the prices of that period), density, tone.",
   "records": {
     "BillingLabels": [
       {
@@ -294,109 +294,138 @@
               ]
             },
             {
-              "use": "Grid",
-              "props": {
-                "Cols": {
-                  "op": "cond",
-                  "args": [
-                    {
-                      "op": "eq",
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "plans"
+                      }
+                    ]
+                  },
+                  0
+                ]
+              },
+              "then": [
+                {
+                  "organism": "EmptyState",
+                  "props": {
+                    "icon": "layers",
+                    "title": {
+                      "$": "labels.empty"
+                    }
+                  }
+                }
+              ],
+              "else": [
+                {
+                  "use": "Grid",
+                  "props": {
+                    "Cols": {
+                      "op": "cond",
                       "args": [
                         {
-                          "$": "layout"
+                          "op": "eq",
+                          "args": [
+                            {
+                              "$": "layout"
+                            },
+                            "stack"
+                          ]
                         },
-                        "stack"
+                        "1",
+                        {
+                          "op": "fitCols",
+                          "args": [
+                            {
+                              "$": "cols"
+                            },
+                            {
+                              "op": "len",
+                              "args": [
+                                {
+                                  "$": "plans"
+                                }
+                              ]
+                            }
+                          ]
+                        }
                       ]
                     },
-                    "1",
+                    "Class": "gap-4"
+                  },
+                  "attrs": {
+                    "data-testid": "tiers"
+                  },
+                  "children": [
                     {
-                      "op": "fitCols",
-                      "args": [
+                      "each": {
+                        "$": "plans"
+                      },
+                      "as": "plan",
+                      "key": {
+                        "$": "plan.id"
+                      },
+                      "do": [
                         {
-                          "$": "cols"
-                        },
-                        {
-                          "op": "len",
-                          "args": [
-                            {
-                              "$": "plans"
+                          "organism": "PricingCard",
+                          "props": {
+                            "plan": {
+                              "$": "plan"
+                            },
+                            "labels": {
+                              "$": "labels"
+                            },
+                            "emphasis": {
+                              "$": "emphasis"
+                            },
+                            "billing": {
+                              "op": "cond",
+                              "args": [
+                                {
+                                  "op": "eq",
+                                  "args": [
+                                    {
+                                      "$": "billing"
+                                    },
+                                    "annual"
+                                  ]
+                                },
+                                "annual",
+                                "monthly"
+                              ]
+                            },
+                            "density": {
+                              "op": "cond",
+                              "args": [
+                                {
+                                  "op": "eq",
+                                  "args": [
+                                    {
+                                      "$": "density"
+                                    },
+                                    "compact"
+                                  ]
+                                },
+                                "compact",
+                                "default"
+                              ]
                             }
-                          ]
+                          },
+                          "on": {
+                            "select": {
+                              "call": "emit.select",
+                              "args": [
+                                {
+                                  "$": "plan.id"
+                                }
+                              ]
+                            }
+                          }
                         }
                       ]
-                    }
-                  ]
-                },
-                "Class": "gap-4"
-              },
-              "attrs": {
-                "data-testid": "tiers"
-              },
-              "children": [
-                {
-                  "each": {
-                    "$": "plans"
-                  },
-                  "as": "plan",
-                  "key": {
-                    "$": "plan.id"
-                  },
-                  "do": [
-                    {
-                      "organism": "PricingCard",
-                      "props": {
-                        "plan": {
-                          "$": "plan"
-                        },
-                        "labels": {
-                          "$": "labels"
-                        },
-                        "emphasis": {
-                          "$": "emphasis"
-                        },
-                        "billing": {
-                          "op": "cond",
-                          "args": [
-                            {
-                              "op": "eq",
-                              "args": [
-                                {
-                                  "$": "billing"
-                                },
-                                "annual"
-                              ]
-                            },
-                            "annual",
-                            "monthly"
-                          ]
-                        },
-                        "density": {
-                          "op": "cond",
-                          "args": [
-                            {
-                              "op": "eq",
-                              "args": [
-                                {
-                                  "$": "density"
-                                },
-                                "compact"
-                              ]
-                            },
-                            "compact",
-                            "default"
-                          ]
-                        }
-                      },
-                      "on": {
-                        "select": {
-                          "call": "emit.select",
-                          "args": [
-                            {
-                              "$": "plan.id"
-                            }
-                          ]
-                        }
-                      }
                     }
                   ]
                 }

@@ -26,7 +26,7 @@ type ProductGridProps struct {
 	LandmarkLabel any `json:"landmarkLabel"`
 }
 
-// A section with a heading and the products as cards in a grid, as a list of horizontal cards, or as a rail that scrolls sideways. Axes: layout (grid, list, rail), columns, ratio, rating, action, tone, density.
+// A section with a heading and the products as cards in a grid, as a list of horizontal cards, or as a rail that scrolls sideways; an empty state when there are none. Axes: layout (grid, list, rail), columns, ratio, rating, action, tone, density.
 templ ProductGrid(p ProductGridProps) {
 	{{ vId := p.Id }}
 	{{ vTitle := p.Title }}
@@ -42,7 +42,9 @@ templ ProductGrid(p ProductGridProps) {
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Tone: vTone, Density: vDensity, LandmarkLabel: vLandmarkLabel}) {
-		if uiutils.Eq(vLayout, "rail") {
+		if uiutils.Eq(uiutils.Len(vProducts), float64(0)) {
+			@EmptyState(EmptyStateProps{Icon: "package", Title: uiutils.Get(vLabels, "empty")})
+		} else if uiutils.Eq(vLayout, "rail") {
 			@box.Box(box.BoxProps{Class: "flex snap-x gap-4 overflow-x-auto pb-4", Attrs: uiutils.Attrs("data-testid", "items")}) {
 				for _, vP := range uiutils.L(vProducts) {
 					@box.Box(box.BoxProps{Class: "w-64 shrink-0 snap-start"}) {

@@ -7,6 +7,7 @@
 import { type ReactNode } from "react";
 import { Group } from "../primitives/group/group";
 import { Text } from "../primitives/text/text";
+import { EmptyState } from "../components/empty-state";
 import { MediaFrame } from "../components/media-frame";
 import { Pill } from "../components/pill";
 import { SectionFrame } from "../components/section-frame";
@@ -15,7 +16,7 @@ import type { Post, PostLabels } from "./post-card.types";
 
 export type PostHeaderProps = {
   id: string;
-  post: Post;
+  post?: Post;
   labels: PostLabels;
   level?: 1 | 2;
   layout?: "start" | "center";
@@ -37,42 +38,50 @@ export function PostHeader({
   landmarkLabel,
 }: PostHeaderProps) {
   return (
-    <SectionFrame
-      id={id}
-      title={post.title}
-      lead={post.excerpt}
-      heading={{ level }}
-      align={layout}
-      tone={tone}
-      media={{ show: ((cover as string) === "show") }}
-      landmarkLabel={landmarkLabel}
-      aside={(
-        <MediaFrame alt={post.title} ratio="21/9" />
+    <>
+      {post ? (
+        <SectionFrame
+          id={id}
+          title={post?.title}
+          lead={post?.excerpt}
+          heading={{ level }}
+          align={layout}
+          tone={tone}
+          media={{ show: ((cover as string) === "show") }}
+          landmarkLabel={landmarkLabel}
+          aside={(
+            <MediaFrame alt={post?.title} src={post?.image} ratio="21/9" />
+          )}
+        >
+          <Group
+            gap="4"
+            align="center"
+            justify={(((layout as string) === "center") ? "center" : "start")}
+            className="flex-wrap"
+            data-testid="post-meta"
+          >
+            <MediaFrame alt={post?.author} ratio="1/1" className="size-10 shrink-0 rounded-full" />
+            <Text size="sm" weight="semibold">
+              {post?.author}
+            </Text>
+            <Text size="sm" className="text-muted-foreground">
+              {post?.date}
+            </Text>
+            {((meta as string) === "full") ? (
+              <Text size="sm" className="text-muted-foreground">
+                {tpl(labels.minutes, post?.minutes)}
+              </Text>
+            ) : null}
+            <Pill tone="blue">
+              {post?.category}
+            </Pill>
+          </Group>
+        </SectionFrame>
+      ) : (
+        <SectionFrame id={id} heading={{ level }} align={layout} tone={tone} landmarkLabel={landmarkLabel}>
+          <EmptyState icon="file-text" title={labels.empty} />
+        </SectionFrame>
       )}
-    >
-      <Group
-        gap="4"
-        align="center"
-        justify={(((layout as string) === "center") ? "center" : "start")}
-        className="flex-wrap"
-        data-testid="post-meta"
-      >
-        <MediaFrame alt={post.author} ratio="1/1" className="size-10 shrink-0 rounded-full" />
-        <Text size="sm" weight="semibold">
-          {post.author}
-        </Text>
-        <Text size="sm" className="text-muted-foreground">
-          {post.date}
-        </Text>
-        {((meta as string) === "full") ? (
-          <Text size="sm" className="text-muted-foreground">
-            {tpl(labels.minutes, post.minutes)}
-          </Text>
-        ) : null}
-        <Pill tone="blue">
-          {post.category}
-        </Pill>
-      </Group>
-    </SectionFrame>
+    </>
   );
 }

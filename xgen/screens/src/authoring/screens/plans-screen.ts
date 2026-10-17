@@ -1,6 +1,7 @@
 // The plans screen: a collection of plans (list with search, sortable columns and a pager) and a record card (the PricingCard organism).
 // Built from primitives; the table is assembled from the column list so the markup and the sorting config cannot disagree.
-import { call, cond, each, eq, op, outlet, ref, sortHeader, text, tpl, use, when, not } from "../../build";
+import { call, coalesce, cond, each, eq, op, outlet, ref, sortHeader, text, tpl, use, when, not } from "../../build";
+import { CODEX_FIELDS } from "../../../../runtimes/core/assets/app/fields";
 import type { ColumnSpec, ScreenSpec, ViewNode } from "../../ir";
 import { wide } from "../components/frames";
 
@@ -23,7 +24,7 @@ const cell = (c: ColumnSpec): ViewNode => {
   const inner: ViewNode =
     c.type === "text" ? use("Link", { props: { Href: op("add", op("add", "#/plans/", ref("row.id")), ref("view.qs")), Variant: "default" }, attrs: { "data-testid": "open-record" } }, text(value))
     : c.type === "money" ? text(op("money", value, ref("row.currency")))
-    : c.type === "badge" ? use("Badge", { props: { Variant: cond(eq(value, "active"), "default", "secondary"), Size: "default" } }, text(op("at", ref("ui.status"), value)))
+    : c.type === "badge" ? use("Badge", { props: { Variant: cond(eq(value, "active"), "default", "secondary"), Size: "default" } }, text(op("at", ref("ui.status"), coalesce(value, ""))))
     : text(value);
   return use("TableCell", { props: { Class: align } }, inner);
 };
@@ -62,7 +63,8 @@ export const plansScreen: ScreenSpec = {
   docs: "Collection -> record: a list of plans (search, sort, pager; all state in the URL) and the card of one plan. Data: the Codex fixture `plans`.",
   source: {
     collection: "plans", kind: "plan", record: "Plan",
-    fields: { id: "id", name: "title", tagline: "metadata.tagline.value", price: "metadata.price.value", currency: "metadata.currency.value", seats: "metadata.seats.value", storage: "metadata.storage.value", highlighted: "metadata.highlighted.value", status: "metadata.plan_status.value", features: "metadata.features.value" },
+    // the central plan map, plus the status the list shows in a column
+    fields: { ...CODEX_FIELDS.plan, status: "metadata.plan_status.value" },
   },
   list: { columns, searchFields: ["name", "tagline"], pageSize: 5, defaultSort: "price:asc" },
   state: { q: "q", sort: "sort", page: "page" },

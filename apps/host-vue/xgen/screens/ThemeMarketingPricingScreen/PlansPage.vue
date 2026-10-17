@@ -27,7 +27,6 @@ const TIERS_FIELDS = {
   "seats": "metadata.seats.value",
   "storage": "metadata.storage.value",
   "highlighted": "metadata.highlighted.value",
-  "status": "metadata.plan_status.value",
   "features": "metadata.features.value",
   "yearly": "metadata.yearly.value",
 } as const;
@@ -40,7 +39,6 @@ const DUO_FIELDS = {
   "seats": "metadata.seats.value",
   "storage": "metadata.storage.value",
   "highlighted": "metadata.highlighted.value",
-  "status": "metadata.plan_status.value",
   "features": "metadata.features.value",
   "yearly": "metadata.yearly.value",
 } as const;

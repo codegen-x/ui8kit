@@ -1,23 +1,25 @@
 // The collections the blocks read: the fixtures in xgen/fixtures, with the field each prop takes (path inside the Codex entry).
 import type { Source } from "./block-kit";
+// the central field maps (shared with every runtime as @ui8kit/app-shared/runtime/fields): product, post and plan read through them
+import { CODEX_FIELDS } from "../../../../runtimes/core/assets/app/fields";
 
-const src = (as: string, collection: string, kind: string, record: string, fields: Record<string, string>): Source => ({ as, collection, kind, record, fields });
+const src = (as: string, collection: string, kind: string, record: string, fields: Readonly<Record<string, string>>): Source => ({ as, collection, kind, record, fields: { ...fields } });
 const m = (k: string) => `metadata.${k}.value`;
 
 export const features = src("features", "features", "feature", "Feature", { id: "id", title: "title", text: m("text"), icon: m("icon") });
-export const tiers = src("tiers", "tiers", "plan", "Plan", { id: "id", name: "title", tagline: m("tagline"), price: m("price"), currency: m("currency"), seats: m("seats"), storage: m("storage"), highlighted: m("highlighted"), status: m("plan_status"), features: m("features"), yearly: m("yearly") });
+export const tiers = src("tiers", "tiers", "plan", "Plan", CODEX_FIELDS.plan);
 export const faq = src("faq", "faq", "faq", "Faq", { id: "id", question: "title", answer: m("answer"), category: m("category") });
 export const logos = src("logos", "logos", "logo", "Logo", { id: "id", name: "title", icon: m("icon") });
 export const stats = src("stats", "stats", "stat", "Stat", { id: "id", label: "title", value: m("value"), icon: m("icon"), hint: m("hint") });
 export const testimonials = src("testimonials", "testimonials", "testimonial", "Quote", { id: "id", author: "title", role: m("role"), company: m("company"), quote: m("quote"), rating: m("rating"), handle: m("handle"), time: `${m("time")}|ago-short`, mark: m("mark") });
 export const steps = src("steps", "steps", "step", "Step", { id: "id", title: "title", text: m("text"), icon: m("icon") });
 export const categories = src("categories", "categories", "category", "Category", { id: "id", name: "title", icon: m("icon"), count: m("count") });
-export const products = src("products", "products", "product", "Product", { id: "id", name: "title", summary: m("summary"), price: m("price"), currency: m("currency"), rating: m("rating"), reviews: m("reviews"), badge: m("badge"), category: m("category"), inStock: m("inStock") });
+export const products = src("products", "products", "product", "Product", CODEX_FIELDS.product);
 export const cart = src("cart", "cart", "cartline", "CartLine", { id: "id", name: "title", variant: m("variant"), price: m("price"), currency: m("currency"), qty: m("qty") });
 export const summary = src("summary", "summary", "summaryrow", "SummaryRow", { id: "id", label: "title", amount: m("amount"), currency: m("currency"), strong: m("strong") });
 export const orders = src("orders", "orders", "order", "Order", { id: "id", number: "title", date: `${m("date")}|date`, total: m("total"), currency: m("currency"), status: m("order_status"), items: m("items") });
 export const reviews = src("reviews", "reviews", "review", "Review", { id: "id", title: "title", author: m("author"), rating: m("rating"), text: m("text"), date: `${m("date")}|date` });
-export const posts = src("posts", "posts", "post", "Post", { id: "id", title: "title", excerpt: "excerpt", category: m("category"), author: m("author"), date: `${m("date")}|date`, minutes: m("minutes"), icon: m("icon") });
+export const posts = src("posts", "posts", "post", "Post", CODEX_FIELDS.post);
 export const activity = src("activity", "activity", "event", "Event", { id: "id", title: "title", text: m("text"), time: `${m("time")}|ago`, tone: m("tone") });
 export const series = src("series", "series", "point", "Point", { id: "id", label: "title", value: m("value") });
 export const metrics = src("metrics", "metrics", "metric", "Stat", { id: "id", label: "title", value: m("value"), icon: m("icon"), hint: m("hint") });
@@ -50,7 +52,7 @@ export const faqtabs = tab("faqtabs", "tab", "FaqTab");
 export const topics = tab("topics", "topic", "PostTopic");
 export const article = src("article", "article", "section", "Section", { id: "id", title: "title", text: m("text"), quote: m("quote") });
 export const beforeafter = src("beforeafter", "beforeafter", "point", "Contrast", { id: "id", title: "title", before: m("before"), after: m("after") });
-export const duo = src("duo", "duo", "plan", "Plan", { id: "id", name: "title", tagline: m("tagline"), price: m("price"), currency: m("currency"), seats: m("seats"), storage: m("storage"), highlighted: m("highlighted"), status: m("plan_status"), features: m("features"), yearly: m("yearly") });
+export const duo = src("duo", "duo", "plan", "Plan", CODEX_FIELDS.plan);
 export const placeholders = src("placeholders", "placeholders", "placeholder", "Line", { id: "id" });
 export const chapters = src("chapters", "chapters", "chapter", "Chapter", { id: "id", title: "title", text: m("text") });
 export const zones = src("zones", "zones", "zone", "Zone", { id: "id", name: "title", area: m("area"), price: m("price"), freeFrom: m("freeFrom"), minOrder: m("minOrder"), time: m("time"), express: m("express"), currency: m("currency") });

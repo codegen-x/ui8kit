@@ -9,9 +9,10 @@ export type Product = {
   currency: string;
   rating: number;
   reviews: number;
-  badge: string;
+  badge?: string;
   category: string;
   inStock: boolean;
+  compareAt?: number;
   href?: string;
   image?: string;
 };
@@ -21,4 +22,6 @@ export type ProductLabels = {
   soldOut: string;
   reviews: string;
   ratingLabel: string;
+  was: string;
+  empty: string;
 };

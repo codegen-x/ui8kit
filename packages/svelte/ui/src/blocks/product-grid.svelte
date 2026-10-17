@@ -2,7 +2,8 @@
 <!-- Source: xgen/screens/src/authoring/blocks/commerce.ts -->
 <!--
   A section with a heading and the products as cards in a grid, as a list of horizontal cards, or as a rail that
-  scrolls sideways. Axes: layout (grid, list, rail), columns, ratio, rating, action, tone, density.
+  scrolls sideways; an empty state when there are none. Axes: layout (grid, list, rail), columns, ratio, rating,
+  action, tone, density.
 -->
 <script lang="ts" module>
   import type { Snippet } from "svelte";
@@ -29,6 +30,7 @@
 <script lang="ts">
   import Box from "../primitives/box/box.svelte";
   import Grid from "../primitives/grid/grid.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import ProductCard from "../blocks/product-card.svelte";
   import SectionFrame from "../components/section-frame.svelte";
 
@@ -51,7 +53,9 @@
 </script>
 
 <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
-  {#if ((layout as string) === "rail")}
+  {#if ((products?.length ?? 0) === 0)}
+    <EmptyState icon="package" title={labels.empty} />
+  {:else if ((layout as string) === "rail")}
     <Box class="flex snap-x gap-4 overflow-x-auto pb-4" data-testid="items">
       {#each products as p (p.id)}
         <Box class="w-64 shrink-0 snap-start">

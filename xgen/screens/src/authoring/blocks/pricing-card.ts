@@ -13,12 +13,13 @@ export const pricingCard: OrganismSpec = {
     Plan: [
       { name: "id", type: "string" }, { name: "name", type: "string" }, { name: "tagline", type: "string" },
       { name: "price", type: "number" }, { name: "currency", type: "string" }, { name: "seats", type: "number" },
-      { name: "storage", type: "number" }, { name: "highlighted", type: "boolean" }, { name: "status", type: "string" },
+      { name: "storage", type: "number" }, { name: "highlighted", type: "boolean" }, { name: "status", type: "string", optional: true },
       { name: "features", type: "string[]" }, { name: "yearly", type: "number" },
     ],
     PricingCardLabels: [
       { name: "popular", type: "string" }, { name: "perMonth", type: "string" }, { name: "seats", type: "string" },
       { name: "storage", type: "string" }, { name: "cta", type: "string" }, { name: "free", type: "string" }, { name: "perYear", type: "string" },
+      { name: "empty", type: "string" },
     ],
   },
   props: [

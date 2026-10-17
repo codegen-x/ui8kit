@@ -10,6 +10,7 @@
       "visibility": "public",
       "slug": "lamp",
       "title": "Arc desk lamp",
+      "featured_media_id": "media-lamp",
       "metadata": {
         "summary": {
           "value": "Warm, dimmable light with a weighted base."
@@ -49,12 +50,16 @@
       "visibility": "public",
       "slug": "bag",
       "title": "Field backpack",
+      "featured_media_id": "media-bag",
       "metadata": {
         "summary": {
           "value": "Water-resistant, 22 litres, fits a 16 inch laptop."
         },
         "price": {
           "value": 12900
+        },
+        "compare_at": {
+          "value": 15900
         },
         "currency": {
           "value": "USD"
@@ -88,12 +93,16 @@
       "visibility": "public",
       "slug": "phones",
       "title": "Studio headphones",
+      "featured_media_id": "media-phones",
       "metadata": {
         "summary": {
           "value": "Closed-back, 40 hour battery, wired and wireless."
         },
         "price": {
           "value": 19900
+        },
+        "compare_at": {
+          "value": 24900
         },
         "currency": {
           "value": "USD"
@@ -133,6 +142,9 @@
         },
         "price": {
           "value": 4900
+        },
+        "compare_at": {
+          "value": 5900
         },
         "currency": {
           "value": "USD"

@@ -61,6 +61,10 @@
       {
         "name": "read",
         "type": "string"
+      },
+      {
+        "name": "empty",
+        "type": "string"
       }
     ]
   },

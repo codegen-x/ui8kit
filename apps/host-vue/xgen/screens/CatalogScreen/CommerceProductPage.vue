@@ -47,6 +47,9 @@ const PRODUCTS_FIELDS = {
   "badge": "metadata.badge.value",
   "category": "metadata.category.value",
   "inStock": "metadata.inStock.value",
+  "compareAt": "metadata.compare_at.value",
+  "href": "slug|route",
+  "image": "featured_media_id|media",
 } as const;
 const DETAILS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value"} as const;
 const SPECS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value"} as const;

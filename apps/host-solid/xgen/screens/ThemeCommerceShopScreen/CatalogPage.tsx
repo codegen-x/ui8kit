@@ -32,6 +32,9 @@ const PRODUCTS_FIELDS = {
   "badge": "metadata.badge.value",
   "category": "metadata.category.value",
   "inStock": "metadata.inStock.value",
+  "compareAt": "metadata.compare_at.value",
+  "href": "slug|route",
+  "image": "featured_media_id|media",
 } as const;
 const CRUMBS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
 const STATS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;

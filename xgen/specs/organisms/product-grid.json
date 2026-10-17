@@ -3,7 +3,7 @@
   "specVersion": 1,
   "id": "organism.product-grid",
   "name": "ProductGrid",
-  "docs": "A section with a heading and the products as cards in a grid, as a list of horizontal cards, or as a rail that scrolls sideways. Axes: layout (grid, list, rail), columns, ratio, rating, action, tone, density.",
+  "docs": "A section with a heading and the products as cards in a grid, as a list of horizontal cards, or as a rail that scrolls sideways; an empty state when there are none. Axes: layout (grid, list, rail), columns, ratio, rating, action, tone, density.",
   "records": {},
   "props": [
     {
@@ -134,36 +134,172 @@
                 "op": "eq",
                 "args": [
                   {
-                    "$": "layout"
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "products"
+                      }
+                    ]
                   },
-                  "rail"
+                  0
                 ]
               },
               "then": [
                 {
-                  "use": "Box",
+                  "organism": "EmptyState",
                   "props": {
-                    "Class": "flex snap-x gap-4 overflow-x-auto pb-4"
+                    "icon": "package",
+                    "title": {
+                      "$": "labels.empty"
+                    }
+                  }
+                }
+              ],
+              "else": [
+                {
+                  "when": {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "$": "layout"
+                      },
+                      "rail"
+                    ]
                   },
-                  "attrs": {
-                    "data-testid": "items"
-                  },
-                  "children": [
+                  "then": [
                     {
-                      "each": {
-                        "$": "products"
+                      "use": "Box",
+                      "props": {
+                        "Class": "flex snap-x gap-4 overflow-x-auto pb-4"
                       },
-                      "as": "p",
-                      "key": {
-                        "$": "p.id"
+                      "attrs": {
+                        "data-testid": "items"
                       },
-                      "do": [
+                      "children": [
                         {
-                          "use": "Box",
-                          "props": {
-                            "Class": "w-64 shrink-0 snap-start"
+                          "each": {
+                            "$": "products"
                           },
-                          "children": [
+                          "as": "p",
+                          "key": {
+                            "$": "p.id"
+                          },
+                          "do": [
+                            {
+                              "use": "Box",
+                              "props": {
+                                "Class": "w-64 shrink-0 snap-start"
+                              },
+                              "children": [
+                                {
+                                  "organism": "ProductCard",
+                                  "props": {
+                                    "product": {
+                                      "$": "p"
+                                    },
+                                    "labels": {
+                                      "$": "labels"
+                                    },
+                                    "badges": {
+                                      "$": "badges"
+                                    },
+                                    "layout": {
+                                      "op": "cond",
+                                      "args": [
+                                        {
+                                          "op": "eq",
+                                          "args": [
+                                            {
+                                              "$": "layout"
+                                            },
+                                            "list"
+                                          ]
+                                        },
+                                        "horizontal",
+                                        "vertical"
+                                      ]
+                                    },
+                                    "ratio": {
+                                      "$": "ratio"
+                                    },
+                                    "rating": {
+                                      "$": "rating"
+                                    },
+                                    "action": {
+                                      "$": "action"
+                                    },
+                                    "density": {
+                                      "op": "cond",
+                                      "args": [
+                                        {
+                                          "op": "eq",
+                                          "args": [
+                                            {
+                                              "$": "density"
+                                            },
+                                            "compact"
+                                          ]
+                                        },
+                                        "compact",
+                                        "default"
+                                      ]
+                                    }
+                                  },
+                                  "on": {
+                                    "add": {
+                                      "call": "emit.add",
+                                      "args": [
+                                        {
+                                          "$": "p.id"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "else": [
+                    {
+                      "use": "Grid",
+                      "props": {
+                        "Cols": {
+                          "op": "cond",
+                          "args": [
+                            {
+                              "op": "eq",
+                              "args": [
+                                {
+                                  "$": "layout"
+                                },
+                                "list"
+                              ]
+                            },
+                            "1",
+                            {
+                              "$": "cols"
+                            }
+                          ]
+                        },
+                        "Class": "gap-4"
+                      },
+                      "attrs": {
+                        "data-testid": "items"
+                      },
+                      "children": [
+                        {
+                          "each": {
+                            "$": "products"
+                          },
+                          "as": "p",
+                          "key": {
+                            "$": "p.id"
+                          },
+                          "do": [
                             {
                               "organism": "ProductCard",
                               "props": {
@@ -230,113 +366,6 @@
                               }
                             }
                           ]
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ],
-              "else": [
-                {
-                  "use": "Grid",
-                  "props": {
-                    "Cols": {
-                      "op": "cond",
-                      "args": [
-                        {
-                          "op": "eq",
-                          "args": [
-                            {
-                              "$": "layout"
-                            },
-                            "list"
-                          ]
-                        },
-                        "1",
-                        {
-                          "$": "cols"
-                        }
-                      ]
-                    },
-                    "Class": "gap-4"
-                  },
-                  "attrs": {
-                    "data-testid": "items"
-                  },
-                  "children": [
-                    {
-                      "each": {
-                        "$": "products"
-                      },
-                      "as": "p",
-                      "key": {
-                        "$": "p.id"
-                      },
-                      "do": [
-                        {
-                          "organism": "ProductCard",
-                          "props": {
-                            "product": {
-                              "$": "p"
-                            },
-                            "labels": {
-                              "$": "labels"
-                            },
-                            "badges": {
-                              "$": "badges"
-                            },
-                            "layout": {
-                              "op": "cond",
-                              "args": [
-                                {
-                                  "op": "eq",
-                                  "args": [
-                                    {
-                                      "$": "layout"
-                                    },
-                                    "list"
-                                  ]
-                                },
-                                "horizontal",
-                                "vertical"
-                              ]
-                            },
-                            "ratio": {
-                              "$": "ratio"
-                            },
-                            "rating": {
-                              "$": "rating"
-                            },
-                            "action": {
-                              "$": "action"
-                            },
-                            "density": {
-                              "op": "cond",
-                              "args": [
-                                {
-                                  "op": "eq",
-                                  "args": [
-                                    {
-                                      "$": "density"
-                                    },
-                                    "compact"
-                                  ]
-                                },
-                                "compact",
-                                "default"
-                              ]
-                            }
-                          },
-                          "on": {
-                            "add": {
-                              "call": "emit.add",
-                              "args": [
-                                {
-                                  "$": "p.id"
-                                }
-                              ]
-                            }
-                          }
                         }
                       ]
                     }

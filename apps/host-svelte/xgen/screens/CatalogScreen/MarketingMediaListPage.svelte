@@ -41,6 +41,8 @@
     "date": "metadata.date.value|date",
     "minutes": "metadata.minutes.value",
     "icon": "metadata.icon.value",
+    "href": "slug|route",
+    "image": "featured_media_id|media",
   } as const;
   const CATEGORIES_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","count":"metadata.count.value"} as const;
   const CHANNELS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;

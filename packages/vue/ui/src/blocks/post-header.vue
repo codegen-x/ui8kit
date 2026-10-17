@@ -9,7 +9,7 @@ import type { Post, PostLabels } from "./post-card.types";
 
 export type PostHeaderProps = {
   id: string;
-  post: Post;
+  post?: Post;
   labels: PostLabels;
   level?: 1 | 2;
   layout?: "start" | "center";
@@ -23,6 +23,7 @@ export type PostHeaderProps = {
 <script setup lang="ts">
 import Group from "../primitives/group/group.vue";
 import Text from "../primitives/text/text.vue";
+import EmptyState from "../components/empty-state.vue";
 import MediaFrame from "../components/media-frame.vue";
 import Pill from "../components/pill.vue";
 import SectionFrame from "../components/section-frame.vue";
@@ -42,10 +43,10 @@ const {
 </script>
 
 <template>
-  <SectionFrame
+  <SectionFrame v-if="post"
     :id="id"
-    :title="post.title"
-    :lead="post.excerpt"
+    :title="post?.title"
+    :lead="post?.excerpt"
     :heading="{ level }"
     :align="layout"
     :tone="tone"
@@ -59,22 +60,32 @@ const {
       class="flex-wrap"
       data-testid="post-meta"
     >
-      <MediaFrame :alt="post.author" ratio="1/1" class="size-10 shrink-0 rounded-full" />
+      <MediaFrame :alt="post?.author" ratio="1/1" class="size-10 shrink-0 rounded-full" />
       <Text size="sm" weight="semibold">
-        {{ post.author }}
+        {{ post?.author }}
       </Text>
       <Text size="sm" class="text-muted-foreground">
-        {{ post.date }}
+        {{ post?.date }}
       </Text>
       <Text v-if="((meta as string) === 'full')" size="sm" class="text-muted-foreground">
-        {{ tpl(labels.minutes, post.minutes) }}
+        {{ tpl(labels.minutes, post?.minutes) }}
       </Text>
       <Pill tone="blue">
-        {{ post.category }}
+        {{ post?.category }}
       </Pill>
     </Group>
     <template #aside>
-      <MediaFrame :alt="post.title" ratio="21/9" />
+      <MediaFrame :alt="post?.title" :src="post?.image" ratio="21/9" />
     </template>
+  </SectionFrame>
+  <SectionFrame
+    v-else
+    :id="id"
+    :heading="{ level }"
+    :align="layout"
+    :tone="tone"
+    :landmarkLabel="landmarkLabel"
+  >
+    <EmptyState icon="file-text" :title="labels.empty" />
   </SectionFrame>
 </template>

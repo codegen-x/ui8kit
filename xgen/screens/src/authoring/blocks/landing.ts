@@ -58,7 +58,7 @@ const ctaBanner = spec(`${O}cta-banner`, "CtaBanner", "A centered closing card: 
       use("Button", { props: { Variant: "default", Size: "lg", Href: ref("href"), Class: layoutOf("cta.button") }, attrs: { "data-testid": "action-primary" } }, text(ref("cta")))))],
 });
 
-const pricingTiers = spec(`${O}pricing-tiers`, "PricingTiers", "A section with a heading and one PricingCard per plan. Axes: layout (grid, stack), columns, emphasis, billing (off: no toggle; monthly or annual: a toggle with that choice selected, and the prices of that period), density, tone.", {
+const pricingTiers = spec(`${O}pricing-tiers`, "PricingTiers", "A section with a heading and one PricingCard per plan; an empty state when there are none. Axes: layout (grid, stack), columns, emphasis, billing (off: no toggle; monthly or annual: a toggle with that choice selected, and the prices of that period), density, tone.", {
   typeImports: [{ from: "PricingCard", names: ["Plan", "PricingCardLabels"] }],
   records: { BillingLabels: fields(["label", "string"], ["monthly", "string"], ["annual", "string"], ["save", "string"]) },
   props: [
@@ -83,8 +83,10 @@ const pricingTiers = spec(`${O}pricing-tiers`, "PricingTiers", "A section with a
         organism("SwitcherItem", { active: eq(ref("billing"), "monthly") }, { on: { click: call("emit.billing", "monthly") }, ...kids(text(ref("billingLabels.monthly"))) }),
         organism("SwitcherItem", { active: eq(ref("billing"), "annual") }, { on: { click: call("emit.billing", "annual") }, ...kids(text(ref("billingLabels.annual"))) }))),
       use("Badge", { props: { Variant: "default", Size: "default" } }, text(ref("billingLabels.save"))))]),
-    use("Grid", { props: { Cols: cond(eq(ref("layout"), "stack"), "1", fitCols(ref("cols"), len(ref("plans")))), Class: "gap-4" }, attrs: { "data-testid": "tiers" } },
-      each(ref("plans"), "plan", ref("plan.id"), organism("PricingCard", { plan: ref("plan"), labels: ref("labels"), emphasis: ref("emphasis"), billing: cond(eq(ref("billing"), "annual"), "annual", "monthly"), density: cond(eq(ref("density"), "compact"), "compact", "default") }, { on: { select: call("emit.select", ref("plan.id")) } }))),
+    // no plans: the empty state (labels.empty)
+    when(eq(len(ref("plans")), 0), [organism("EmptyState", { icon: "layers", title: ref("labels.empty") })], [
+      use("Grid", { props: { Cols: cond(eq(ref("layout"), "stack"), "1", fitCols(ref("cols"), len(ref("plans")))), Class: "gap-4" }, attrs: { "data-testid": "tiers" } },
+        each(ref("plans"), "plan", ref("plan.id"), organism("PricingCard", { plan: ref("plan"), labels: ref("labels"), emphasis: ref("emphasis"), billing: cond(eq(ref("billing"), "annual"), "annual", "monthly"), density: cond(eq(ref("density"), "compact"), "compact", "default") }, { on: { select: call("emit.select", ref("plan.id")) } })))]),
   ])],
 });
 

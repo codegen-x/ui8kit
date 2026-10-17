@@ -24,40 +24,64 @@ export interface ListView<T> {
  */
 export const DEMO_NOW = "2026-03-30T12:00:00Z";
 
-const dateFmt = new Intl.DateTimeFormat("en-US", { month: "short", day: "2-digit", year: "numeric", timeZone: "UTC" });
-/** an RFC 3339 date-time -> "Mar 09, 2026" (UTC); a value that is not a date stays as it is */
-export function fmtDate(iso: unknown): unknown {
+/** the locale of the kit's fixtures and of an entry that names none */
+export const DEFAULT_LOCALE = "en";
+
+const dateFmts = new Map<string, Intl.DateTimeFormat>();
+/** an RFC 3339 date-time -> a short date in the locale, UTC ("Mar 09, 2026" in en); a value that is not a date stays as it is */
+export function fmtDate(iso: unknown, locale: string = DEFAULT_LOCALE): unknown {
   const t = typeof iso === "string" ? Date.parse(iso) : NaN;
-  return Number.isNaN(t) ? iso : dateFmt.format(t);
+  if (Number.isNaN(t)) return iso;
+  let f = dateFmts.get(locale);
+  if (!f) { f = new Intl.DateTimeFormat(locale, { month: "short", day: "2-digit", year: "numeric", timeZone: "UTC" }); dateFmts.set(locale, f); }
+  return f.format(t);
 }
 
 export type AgoStyle = "ago" | "ago-days" | "ago-short";
+const isEnglish = (locale: string): boolean => /^en(-|$)/i.test(locale);
+const upperFirst = (s: string, locale: string): string => s.charAt(0).toLocaleUpperCase(locale) + s.slice(1);
+/** n units before now in the locale: Intl.RelativeTimeFormat (long; numeric auto, so 1 day is "yesterday" in the "ago" style) */
+function relative(n: number, unit: "minute" | "hour" | "day" | "week", locale: string, style: AgoStyle): string {
+  // the kit's compact English units ("2 min ago", "1 h ago", "3 d ago") stay as they were; every other form comes from Intl
+  if (isEnglish(locale) && (unit === "minute" || unit === "hour" || (unit === "day" && style === "ago-short"))) return `${n} ${unit === "minute" ? "min" : unit === "hour" ? "h" : "d"} ago`;
+  const numeric = style === "ago" ? "auto" : "always";
+  return upperFirst(new Intl.RelativeTimeFormat(locale, { numeric, style: style === "ago-short" ? "short" : "long" }).format(-n, unit), locale);
+}
 /**
- * an RFC 3339 date-time -> time before `now`:
+ * an RFC 3339 date-time -> time before `now`, in the locale (en shown):
  *   ago        "2 min ago", "1 h ago", "Yesterday", "3 days ago", "2 weeks ago"   (activity feeds)
  *   ago-days   "1 day ago", "5 days ago", "1 week ago", "2 weeks ago"            (postings)
  *   ago-short  "2 min ago", "5 h ago", "3 d ago"                                  (compact cards)
  */
-export function fmtAgo(iso: unknown, now: string | number = DEMO_NOW, style: AgoStyle = "ago"): unknown {
+export function fmtAgo(iso: unknown, now: string | number = DEMO_NOW, style: AgoStyle = "ago", locale: string = DEFAULT_LOCALE): unknown {
   const t = typeof iso === "string" ? Date.parse(iso) : NaN;
   const ref = typeof now === "number" ? now : Date.parse(now);
   if (Number.isNaN(t) || Number.isNaN(ref)) return iso;
   const min = Math.max(0, Math.round((ref - t) / 60000));
   const h = Math.floor(min / 60), d = Math.floor(min / 1440), w = Math.floor(d / 7);
-  const pl = (n: number, one: string) => `${n} ${one}${n === 1 ? "" : "s"} ago`;
-  if (style === "ago-days") return d < 7 ? pl(Math.max(d, 1), "day") : pl(w, "week");
-  if (min < 60) return `${min} min ago`;
-  if (h < 24) return `${h} h ago`;
-  if (style === "ago-short") return `${d} d ago`;
-  if (d === 1) return "Yesterday";
-  return d < 7 ? pl(d, "day") : pl(w, "week");
+  if (style === "ago-days") return d < 7 ? relative(Math.max(d, 1), "day", locale, style) : relative(w, "week", locale, style);
+  if (min < 60) return relative(min, "minute", locale, style);
+  if (h < 24) return relative(h, "hour", locale, style);
+  if (style === "ago-short") return relative(d, "day", locale, style);
+  return d < 7 ? relative(d, "day", locale, style) : relative(w, "week", locale, style);
 }
 
-export interface ReadOptions { now?: string | number }
+export interface ReadOptions {
+  now?: string | number;
+  /** the locale of the app; without it a date is formatted in the `locale` of its entry (then DEFAULT_LOCALE) */
+  locale?: string;
+  /** the entries of kind `media`: `featured_media_id|media` resolves to the `file` of the one with that id; without them: undefined (the placeholder) */
+  media?: readonly unknown[];
+  /** the address of an entry by its kind, with `{slug}`: `{ product: "#/product/{slug}" }`; `slug|route` builds it; without a route: undefined (no link) */
+  routes?: Readonly<Record<string, string>>;
+}
+
+const field = (o: unknown, k: string): unknown => (o !== null && typeof o === "object" ? (o as Record<string, unknown>)[k] : undefined);
 
 /**
  * a value by a dotted path, with an optional formatter after a pipe:
- *   "metadata.date.value|date"  -> fmtDate      "metadata.time.value|ago" (or ago-days, ago-short) -> fmtAgo
+ *   "metadata.date.value|date"  -> fmtDate      "metadata.time.value|ago" (or ago-days, ago-short) -> fmtAgo   (in the locale)
+ *   "featured_media_id|media"   -> the file of that media entry      "slug|route" -> the address from the route of the entry's kind
  */
 export function readPath(source: unknown, path: string, opts: ReadOptions = {}): unknown {
   const [dotted, pipe] = path.split("|") as [string, string | undefined];
@@ -67,8 +91,15 @@ export function readPath(source: unknown, path: string, opts: ReadOptions = {}):
     cur = (cur as Record<string, unknown>)[part];
   }
   if (pipe === undefined || cur === undefined) return cur;
-  if (pipe === "date") return fmtDate(cur);
-  if (pipe === "ago" || pipe === "ago-days" || pipe === "ago-short") return fmtAgo(cur, opts.now ?? DEMO_NOW, pipe);
+  const own = field(source, "locale");
+  const locale = opts.locale ?? (typeof own === "string" ? own : DEFAULT_LOCALE);
+  if (pipe === "date") return fmtDate(cur, locale);
+  if (pipe === "ago" || pipe === "ago-days" || pipe === "ago-short") return fmtAgo(cur, opts.now ?? DEMO_NOW, pipe, locale);
+  if (pipe === "media") return field(field(field((opts.media ?? []).find((m) => field(m, "id") === cur), "metadata"), "file"), "value");
+  if (pipe === "route") {
+    const kind = field(source, "kind"), route = typeof kind === "string" ? opts.routes?.[kind] : undefined;
+    return route === undefined ? undefined : route.replace("{slug}", encodeURIComponent(String(cur)));
+  }
   throw new Error(`readPath: unknown formatter "${pipe}" in "${path}"`);
 }
 

@@ -4,7 +4,8 @@
 // (`fromCodex(entries, CODEX_FIELDS.product)`). Every runtime and every hand-written app reads the same map, so a
 // block's data contract lives in one place (xgen/schema/codex/blocks.json lists which block reads which map).
 // Paths: top-level entry fields ("title", "excerpt") or "metadata.<field>.value" of a field declared for the kind in
-// xgen/schema/codex/manifest.json; a pipe names a formatter of readPath ("|date", "|ago").
+// xgen/schema/codex/manifest.json; a pipe names a formatter of readPath: "|date" and "|ago" format in the locale, "|route" builds
+// the address from the slug (no href in data), "|media" takes the file of the `media` entry of featured_media_id.
 
 /** kind `product` -> Product (ProductGrid, ProductDetail, ProductCard) */
 export const productFields = {
@@ -18,6 +19,9 @@ export const productFields = {
   badge: "metadata.badge.value",
   category: "metadata.category.value",
   inStock: "metadata.inStock.value",
+  compareAt: "metadata.compare_at.value",
+  href: "slug|route",
+  image: "featured_media_id|media",
 } as const;
 
 /** kind `post` -> Post (PostHeader, PostGrid, PostCard) */
@@ -30,6 +34,8 @@ export const postFields = {
   date: "metadata.date.value|date",
   minutes: "metadata.minutes.value",
   icon: "metadata.icon.value",
+  href: "slug|route",
+  image: "featured_media_id|media",
 } as const;
 
 /** kind `plan` -> Plan (PricingTiers, PricingCard) */
@@ -42,7 +48,6 @@ export const planFields = {
   seats: "metadata.seats.value",
   storage: "metadata.storage.value",
   highlighted: "metadata.highlighted.value",
-  status: "metadata.plan_status.value",
   features: "metadata.features.value",
   yearly: "metadata.yearly.value",
 } as const;

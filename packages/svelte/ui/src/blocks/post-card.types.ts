@@ -18,4 +18,5 @@ export type PostLabels = {
   minutes: string;
   by: string;
   read: string;
+  empty: string;
 };

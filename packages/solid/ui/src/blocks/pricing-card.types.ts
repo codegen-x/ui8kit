@@ -10,7 +10,7 @@ export type Plan = {
   seats: number;
   storage: number;
   highlighted: boolean;
-  status: string;
+  status?: string;
   features: string[];
   yearly: number;
 };
@@ -23,4 +23,5 @@ export type PricingCardLabels = {
   cta: string;
   free: string;
   perYear: string;
+  empty: string;
 };

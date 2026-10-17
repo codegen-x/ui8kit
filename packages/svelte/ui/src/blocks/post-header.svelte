@@ -10,7 +10,7 @@
 
   export type PostHeaderProps = {
     id: string;
-    post: Post;
+    post?: Post;
     labels: PostLabels;
     level?: 1 | 2;
     layout?: "start" | "center";
@@ -24,6 +24,7 @@
 <script lang="ts">
   import Group from "../primitives/group/group.svelte";
   import Text from "../primitives/text/text.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import Pill from "../components/pill.svelte";
   import SectionFrame from "../components/section-frame.svelte";
@@ -42,40 +43,46 @@
   }: PostHeaderProps = $props();
 </script>
 
-<SectionFrame
-  id={id}
-  title={post.title}
-  lead={post.excerpt}
-  heading={{ level }}
-  align={layout}
-  tone={tone}
-  media={{ show: ((cover as string) === "show") }}
-  landmarkLabel={landmarkLabel}
->
-  <Group
-    gap="4"
-    align="center"
-    justify={(((layout as string) === "center") ? "center" : "start")}
-    class="flex-wrap"
-    data-testid="post-meta"
+{#if post}
+  <SectionFrame
+    id={id}
+    title={post?.title}
+    lead={post?.excerpt}
+    heading={{ level }}
+    align={layout}
+    tone={tone}
+    media={{ show: ((cover as string) === "show") }}
+    landmarkLabel={landmarkLabel}
   >
-    <MediaFrame alt={post.author} ratio="1/1" class="size-10 shrink-0 rounded-full" />
-    <Text size="sm" weight="semibold">
-      {post.author}
-    </Text>
-    <Text size="sm" class="text-muted-foreground">
-      {post.date}
-    </Text>
-    {#if ((meta as string) === "full")}
-      <Text size="sm" class="text-muted-foreground">
-        {tpl(labels.minutes, post.minutes)}
+    <Group
+      gap="4"
+      align="center"
+      justify={(((layout as string) === "center") ? "center" : "start")}
+      class="flex-wrap"
+      data-testid="post-meta"
+    >
+      <MediaFrame alt={post?.author} ratio="1/1" class="size-10 shrink-0 rounded-full" />
+      <Text size="sm" weight="semibold">
+        {post?.author}
       </Text>
-    {/if}
-    <Pill tone="blue">
-      {post.category}
-    </Pill>
-  </Group>
-  {#snippet aside()}
-    <MediaFrame alt={post.title} ratio="21/9" />
-  {/snippet}
-</SectionFrame>
+      <Text size="sm" class="text-muted-foreground">
+        {post?.date}
+      </Text>
+      {#if ((meta as string) === "full")}
+        <Text size="sm" class="text-muted-foreground">
+          {tpl(labels.minutes, post?.minutes)}
+        </Text>
+      {/if}
+      <Pill tone="blue">
+        {post?.category}
+      </Pill>
+    </Group>
+    {#snippet aside()}
+      <MediaFrame alt={post?.title} src={post?.image} ratio="21/9" />
+    {/snippet}
+  </SectionFrame>
+{:else}
+  <SectionFrame id={id} heading={{ level }} align={layout} tone={tone} landmarkLabel={landmarkLabel}>
+    <EmptyState icon="file-text" title={labels.empty} />
+  </SectionFrame>
+{/if}

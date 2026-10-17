@@ -17,8 +17,9 @@
       "seats": "metadata.seats.value",
       "storage": "metadata.storage.value",
       "highlighted": "metadata.highlighted.value",
-      "status": "metadata.plan_status.value",
-      "features": "metadata.features.value"
+      "features": "metadata.features.value",
+      "yearly": "metadata.yearly.value",
+      "status": "metadata.plan_status.value"
     }
   },
   "list": {
@@ -1077,7 +1078,13 @@
                                           "$": "ui.status"
                                         },
                                         {
-                                          "$": "row.status"
+                                          "op": "coalesce",
+                                          "args": [
+                                            {
+                                              "$": "row.status"
+                                            },
+                                            ""
+                                          ]
                                         }
                                       ]
                                     }

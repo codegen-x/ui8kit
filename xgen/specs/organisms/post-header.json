@@ -16,7 +16,7 @@
       "type": {
         "ts": "Post"
       },
-      "required": true
+      "docs": "the post; without one: the empty state"
     },
     {
       "name": "labels",
@@ -70,123 +70,103 @@
   "events": [],
   "view": [
     {
-      "organism": "SectionFrame",
-      "props": {
-        "id": {
-          "$": "id"
-        },
-        "title": {
-          "$": "post.title"
-        },
-        "lead": {
-          "$": "post.excerpt"
-        },
-        "heading": {
-          "level": {
-            "$": "level"
-          }
-        },
-        "align": {
-          "$": "layout"
-        },
-        "tone": {
-          "$": "tone"
-        },
-        "media": {
-          "show": {
-            "op": "eq",
-            "args": [
-              {
-                "$": "cover"
-              },
-              "show"
-            ]
-          }
-        },
-        "landmarkLabel": {
-          "$": "landmarkLabel"
-        }
+      "when": {
+        "$": "post"
       },
-      "slots": {
-        "children": {
-          "args": [],
-          "do": [
-            {
-              "use": "Group",
-              "props": {
-                "Gap": "4",
-                "Align": "center",
-                "Justify": {
-                  "op": "cond",
-                  "args": [
-                    {
-                      "op": "eq",
+      "then": [
+        {
+          "organism": "SectionFrame",
+          "props": {
+            "id": {
+              "$": "id"
+            },
+            "title": {
+              "$": "post.title"
+            },
+            "lead": {
+              "$": "post.excerpt"
+            },
+            "heading": {
+              "level": {
+                "$": "level"
+              }
+            },
+            "align": {
+              "$": "layout"
+            },
+            "tone": {
+              "$": "tone"
+            },
+            "media": {
+              "show": {
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "cover"
+                  },
+                  "show"
+                ]
+              }
+            },
+            "landmarkLabel": {
+              "$": "landmarkLabel"
+            }
+          },
+          "slots": {
+            "children": {
+              "args": [],
+              "do": [
+                {
+                  "use": "Group",
+                  "props": {
+                    "Gap": "4",
+                    "Align": "center",
+                    "Justify": {
+                      "op": "cond",
                       "args": [
                         {
-                          "$": "layout"
+                          "op": "eq",
+                          "args": [
+                            {
+                              "$": "layout"
+                            },
+                            "center"
+                          ]
                         },
-                        "center"
+                        "center",
+                        "start"
                       ]
                     },
-                    "center",
-                    "start"
-                  ]
-                },
-                "Class": "flex-wrap"
-              },
-              "attrs": {
-                "data-testid": "post-meta"
-              },
-              "children": [
-                {
-                  "organism": "MediaFrame",
-                  "props": {
-                    "alt": {
-                      "$": "post.author"
+                    "Class": "flex-wrap"
+                  },
+                  "attrs": {
+                    "data-testid": "post-meta"
+                  },
+                  "children": [
+                    {
+                      "organism": "MediaFrame",
+                      "props": {
+                        "alt": {
+                          "$": "post.author"
+                        },
+                        "ratio": "1/1",
+                        "className": "size-10 shrink-0 rounded-full"
+                      }
                     },
-                    "ratio": "1/1",
-                    "className": "size-10 shrink-0 rounded-full"
-                  }
-                },
-                {
-                  "use": "Text",
-                  "props": {
-                    "Size": "sm",
-                    "Weight": "semibold"
-                  },
-                  "children": [
                     {
-                      "text": {
-                        "$": "post.author"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "use": "Text",
-                  "props": {
-                    "Size": "sm",
-                    "Class": "text-muted-foreground"
-                  },
-                  "children": [
-                    {
-                      "text": {
-                        "$": "post.date"
-                      }
-                    }
-                  ]
-                },
-                {
-                  "when": {
-                    "op": "eq",
-                    "args": [
-                      {
-                        "$": "meta"
+                      "use": "Text",
+                      "props": {
+                        "Size": "sm",
+                        "Weight": "semibold"
                       },
-                      "full"
-                    ]
-                  },
-                  "then": [
+                      "children": [
+                        {
+                          "text": {
+                            "$": "post.author"
+                          }
+                        }
+                      ]
+                    },
                     {
                       "use": "Text",
                       "props": {
@@ -196,58 +176,128 @@
                       "children": [
                         {
                           "text": {
-                            "op": "tpl",
-                            "args": [
-                              {
-                                "$": "labels.minutes"
-                              },
-                              {
-                                "$": "post.minutes"
-                              }
-                            ]
+                            "$": "post.date"
                           }
                         }
                       ]
+                    },
+                    {
+                      "when": {
+                        "op": "eq",
+                        "args": [
+                          {
+                            "$": "meta"
+                          },
+                          "full"
+                        ]
+                      },
+                      "then": [
+                        {
+                          "use": "Text",
+                          "props": {
+                            "Size": "sm",
+                            "Class": "text-muted-foreground"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "op": "tpl",
+                                "args": [
+                                  {
+                                    "$": "labels.minutes"
+                                  },
+                                  {
+                                    "$": "post.minutes"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "organism": "Pill",
+                      "props": {
+                        "tone": "blue"
+                      },
+                      "slots": {
+                        "children": {
+                          "args": [],
+                          "do": [
+                            {
+                              "text": {
+                                "$": "post.category"
+                              }
+                            }
+                          ]
+                        }
+                      }
                     }
                   ]
-                },
+                }
+              ]
+            },
+            "aside": {
+              "args": [],
+              "do": [
                 {
-                  "organism": "Pill",
+                  "organism": "MediaFrame",
                   "props": {
-                    "tone": "blue"
-                  },
-                  "slots": {
-                    "children": {
-                      "args": [],
-                      "do": [
-                        {
-                          "text": {
-                            "$": "post.category"
-                          }
-                        }
-                      ]
+                    "alt": {
+                      "$": "post.title"
+                    },
+                    "src": {
+                      "$": "post.image"
+                    },
+                    "ratio": "21/9"
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "else": [
+        {
+          "organism": "SectionFrame",
+          "props": {
+            "id": {
+              "$": "id"
+            },
+            "heading": {
+              "level": {
+                "$": "level"
+              }
+            },
+            "align": {
+              "$": "layout"
+            },
+            "tone": {
+              "$": "tone"
+            },
+            "landmarkLabel": {
+              "$": "landmarkLabel"
+            }
+          },
+          "slots": {
+            "children": {
+              "args": [],
+              "do": [
+                {
+                  "organism": "EmptyState",
+                  "props": {
+                    "icon": "file-text",
+                    "title": {
+                      "$": "labels.empty"
                     }
                   }
                 }
               ]
             }
-          ]
-        },
-        "aside": {
-          "args": [],
-          "do": [
-            {
-              "organism": "MediaFrame",
-              "props": {
-                "alt": {
-                  "$": "post.title"
-                },
-                "ratio": "21/9"
-              }
-            }
-          ]
+          }
         }
-      }
+      ]
     }
   ],
   "portable": {

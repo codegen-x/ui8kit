@@ -31,7 +31,6 @@
     "seats": "metadata.seats.value",
     "storage": "metadata.storage.value",
     "highlighted": "metadata.highlighted.value",
-    "status": "metadata.plan_status.value",
     "features": "metadata.features.value",
     "yearly": "metadata.yearly.value",
   } as const;
@@ -44,7 +43,6 @@
     "seats": "metadata.seats.value",
     "storage": "metadata.storage.value",
     "highlighted": "metadata.highlighted.value",
-    "status": "metadata.plan_status.value",
     "features": "metadata.features.value",
     "yearly": "metadata.yearly.value",
   } as const;

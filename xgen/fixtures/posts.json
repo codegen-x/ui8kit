@@ -11,6 +11,7 @@
       "slug": "static-first",
       "title": "Why static-first pages still win",
       "excerpt": "Less script, less waiting, and pages that keep working offline.",
+      "featured_media_id": "media-static-first",
       "metadata": {
         "category": {
           "value": "Engineering"

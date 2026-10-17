@@ -6,7 +6,7 @@ import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { xgenPaths } from "./paths";
 
-export const MONEY_FIELDS = ["price", "yearly", "total", "amount", "freeFrom", "minOrder"] as const;
+export const MONEY_FIELDS = ["price", "compare_at", "yearly", "total", "amount", "freeFrom", "minOrder"] as const;
 export const MANIFEST_PATH = join(import.meta.dir, "..", "codex", "manifest.json");
 const RFC3339 = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})$/;
 

@@ -10,6 +10,7 @@ import (
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/button"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/card"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/group"
+	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/inline"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/link"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/text"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/title"
@@ -29,7 +30,7 @@ type ProductCardProps struct {
 	Density any `json:"density"`
 }
 
-// A product as a card: picture, optional badge, category, name, rating, summary, price and an add button. Axes: layout (vertical, horizontal), media (image, none), ratio, rating (show, hide), action (button, none), density.
+// A product as a card: picture, optional badge, category, name, rating, summary, price (and the old price struck through when `compareAt` is higher) and an add button. Axes: layout (vertical, horizontal), media (image, none), ratio, rating (show, hide), action (button, none), density.
 templ ProductCard(p ProductCardProps) {
 	{{ vProduct := p.Product }}
 	{{ vLabels := p.Labels }}
@@ -78,8 +79,18 @@ templ ProductCard(p ProductCardProps) {
 				}
 			}
 			@group.Group(group.GroupProps{Gap: "4", Justify: "between", Class: "mt-auto pt-2"}) {
-				@text.Text(text.TextProps{Size: "xl", Weight: "bold"}) {
-					{ uiutils.Text(uiutils.Money(uiutils.Get(vProduct, "price"), uiutils.Get(vProduct, "currency"))) }
+				@group.Group(group.GroupProps{Gap: "2", Align: "baseline", Class: "flex-wrap"}) {
+					@text.Text(text.TextProps{Size: "xl", Weight: "bold"}) {
+						{ uiutils.Text(uiutils.Money(uiutils.Get(vProduct, "price"), uiutils.Get(vProduct, "currency"))) }
+					}
+					if uiutils.T(uiutils.And(uiutils.Get(vProduct, "compareAt"), uiutils.Gt(uiutils.Get(vProduct, "compareAt"), uiutils.Get(vProduct, "price")))) {
+						@text.Text(text.TextProps{Tag: "del", Size: "sm", Class: "text-muted-foreground", Attrs: uiutils.Attrs("data-testid", "compare-at")}) {
+							@inline.Inline(inline.InlineProps{Class: "sr-only"}) {
+								{ uiutils.Text(uiutils.Get(vLabels, "was")) }
+							}
+							{ uiutils.Text(uiutils.Money(uiutils.Get(vProduct, "compareAt"), uiutils.Get(vProduct, "currency"))) }
+						}
+					}
 				}
 				if uiutils.Eq(vAction, "button") {
 					@button.Button(button.ButtonProps{Variant: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Get(vProduct, "inStock")), "default", "outline")), Size: "sm", Disabled: uiutils.T(!uiutils.T(uiutils.Get(vProduct, "inStock"))), Attrs: uiutils.Attrs("data-testid", "add")}) {

@@ -41,6 +41,11 @@
           "excerpt": {
             "type": "string"
           },
+          "featured_media_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "the id of the entry of kind media that pictures this one (Codex v0.4 core field)"
+          },
           "metadata": {
             "type": "object",
             "additionalProperties": {

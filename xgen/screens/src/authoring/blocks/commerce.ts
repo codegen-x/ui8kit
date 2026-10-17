@@ -1,5 +1,5 @@
 // Commerce organisms: category navigation, product card and grid, product page, reviews, cart, order summary, order history.
-import { at, call, cn, coalesce, cond, each, eq, mul, not, money, or, ref, str, text, tpl, undef, use, when, organism } from "../../build";
+import { and, at, call, cn, coalesce, cond, each, eq, gt, len, mul, not, money, or, ref, str, text, tpl, undef, use, when, organism } from "../../build";
 import type { OrganismSpec, ViewNode } from "../../ir";
 import { cardBase, fields, groupFields, spec, ts } from "../kit";
 import { frame, wide } from "../components/frames";
@@ -14,7 +14,7 @@ const common = { id: ref("id"), title: ref("title"), tone: ref("tone"), density:
 /** children of an organism that takes `children` */
 const kids = (...n: ViewNode[]) => ({ slots: { children: { args: [] as string[], do: n } } });
 
-const Product = fields(["id", "string"], ["name", "string"], ["summary", "string"], ["price", "number"], ["currency", "string"], ["rating", "number"], ["reviews", "number"], ["badge", "string"], ["category", "string"], ["inStock", "boolean"], ["href", "string", true], ["image", "string", true]);
+const Product = fields(["id", "string"], ["name", "string"], ["summary", "string"], ["price", "number"], ["currency", "string"], ["rating", "number"], ["reviews", "number"], ["badge", "string", true], ["category", "string"], ["inStock", "boolean"], ["compareAt", "number", true], ["href", "string", true], ["image", "string", true]);
 
 const categoryNav = spec(`${O}category-nav`, "CategoryNav", "Navigation between product categories as chips, a bar with an underline, a side list, tiles with a big icon, or chips under a toolbar (search, sort and the number shown). The current one carries aria-current. Axes: layout (chips, bar, sidebar, tiles, toolbar), count (show, hide), icon (show, hide), density.", {
   records: {
@@ -60,8 +60,8 @@ const categoryNav = spec(`${O}category-nav`, "CategoryNav", "Navigation between 
   ],
 });
 
-const productCard = spec(`${O}product-card`, "ProductCard", "A product as a card: picture, optional badge, category, name, rating, summary, price and an add button. Axes: layout (vertical, horizontal), media (image, none), ratio, rating (show, hide), action (button, none), density.", {
-  records: { Product, ProductLabels: fields(["add", "string"], ["soldOut", "string"], ["reviews", "string"], ["ratingLabel", "string"]) },
+const productCard = spec(`${O}product-card`, "ProductCard", "A product as a card: picture, optional badge, category, name, rating, summary, price (and the old price struck through when `compareAt` is higher) and an add button. Axes: layout (vertical, horizontal), media (image, none), ratio, rating (show, hide), action (button, none), density.", {
+  records: { Product, ProductLabels: fields(["add", "string"], ["soldOut", "string"], ["reviews", "string"], ["ratingLabel", "string"], ["was", "string"], ["empty", "string"]) },
   props: [
     { name: "product", type: { record: "Product" }, required: true },
     { name: "labels", type: { record: "ProductLabels" }, required: true },
@@ -89,13 +89,16 @@ const productCard = spec(`${O}product-card`, "ProductCard", "A product as a card
           use("Text", { props: { Size: "xs", Class: "text-muted-foreground" } }, text(tpl(ref("labels.reviews"), ref("product.reviews")))))]),
         when(eq(ref("density"), "default"), [use("Text", { props: { Size: "sm", Class: "text-muted-foreground" } }, text(ref("product.summary")))]),
         use("Group", { props: { Gap: "4", Justify: "between", Class: "mt-auto pt-2" } },
-          use("Text", { props: { Size: "xl", Weight: "bold" } }, text(money(ref("product.price"), ref("product.currency")))),
+          use("Group", { props: { Gap: "2", Align: "baseline", Class: "flex-wrap" } },
+            use("Text", { props: { Size: "xl", Weight: "bold" } }, text(money(ref("product.price"), ref("product.currency")))),
+            when(and(ref("product.compareAt"), gt(ref("product.compareAt"), ref("product.price"))), [use("Text", { props: { Tag: "del", Size: "sm", Class: "text-muted-foreground" }, attrs: { "data-testid": "compare-at" } },
+              use("Inline", { props: { Class: "sr-only" } }, text(ref("labels.was"))), text(money(ref("product.compareAt"), ref("product.currency"))))])),
           when(eq(ref("action"), "button"), [use("Button", { props: { Variant: cond(ref("product.inStock"), "default", "outline"), Size: "sm", Disabled: not(ref("product.inStock")) }, on: { click: call("emit.add", ref("product.id")) }, attrs: { "data-testid": "add" } },
             text(cond(ref("product.inStock"), ref("labels.add"), ref("labels.soldOut"))))])))),
   ],
 });
 
-const productGrid = spec(`${O}product-grid`, "ProductGrid", "A section with a heading and the products as cards in a grid, as a list of horizontal cards, or as a rail that scrolls sideways. Axes: layout (grid, list, rail), columns, ratio, rating, action, tone, density.", {
+const productGrid = spec(`${O}product-grid`, "ProductGrid", "A section with a heading and the products as cards in a grid, as a list of horizontal cards, or as a rail that scrolls sideways; an empty state when there are none. Axes: layout (grid, list, rail), columns, ratio, rating, action, tone, density.", {
   typeImports: [{ from: "ProductCard", names: ["Product", "ProductLabels"] }],
   props: [
     id, title,
@@ -113,11 +116,12 @@ const productGrid = spec(`${O}product-grid`, "ProductGrid", "A section with a he
   events: [{ name: "add", args: [{ name: "id", type: "string" }], docs: "the add button of a product was pressed" }],
   view: (() => {
     const card = () => organism("ProductCard", { product: ref("p"), labels: ref("labels"), badges: ref("badges"), layout: cond(eq(ref("layout"), "list"), "horizontal", "vertical"), ratio: ref("ratio"), rating: ref("rating"), action: ref("action"), density: cond(eq(ref("density"), "compact"), "compact", "default") }, { on: { add: call("emit.add", ref("p.id")) } });
-    return [frame(common, [when(eq(ref("layout"), "rail"),
+    // no products: the empty state (its text is the dictionary's labels.empty)
+    return [frame(common, [when(eq(len(ref("products")), 0), [organism("EmptyState", { icon: "package", title: ref("labels.empty") })], [when(eq(ref("layout"), "rail"),
       [use("Box", { props: { Class: "flex snap-x gap-4 overflow-x-auto pb-4" }, attrs: { "data-testid": "items" } },
         each(ref("products"), "p", ref("p.id"), use("Box", { props: { Class: "w-64 shrink-0 snap-start" } }, card())))],
       [use("Grid", { props: { Cols: cond(eq(ref("layout"), "list"), "1", ref("cols")), Class: "gap-4" }, attrs: { "data-testid": "items" } },
-        each(ref("products"), "p", ref("p.id"), card()))])])];
+        each(ref("products"), "p", ref("p.id"), card()))])])])];
   })(),
 });
 

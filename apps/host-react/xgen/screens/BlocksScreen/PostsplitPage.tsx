@@ -32,6 +32,8 @@ const POSTS_FIELDS = {
   "date": "metadata.date.value|date",
   "minutes": "metadata.minutes.value",
   "icon": "metadata.icon.value",
+  "href": "slug|route",
+  "image": "featured_media_id|media",
 } as const;
 const POSTTAGS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
 const OUTLINE_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;

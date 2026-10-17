@@ -102,3 +102,30 @@ test("dates: absolute, relative against the demo clock, pipes in field paths", a
   expect(readPath(e, "metadata.nope.value|date")).toBeUndefined();
   expect(() => readPath(e, "metadata.date.value|weird")).toThrow();
 });
+
+test("locale: dates and relative times follow the entry's locale (or the app's), en stays as it was", async () => {
+  const { fmtDate, fmtAgo, readPath, DEMO_NOW } = await import("../assets/app/core");
+  const iso = "2026-03-09T10:00:00Z";
+  expect(fmtDate(iso, "de")).toBe(new Intl.DateTimeFormat("de", { month: "short", day: "2-digit", year: "numeric", timeZone: "UTC" }).format(Date.parse(iso)));
+  expect(fmtDate(iso, "en-US")).toBe("Mar 09, 2026");
+  const before = (min: number) => new Date(Date.parse(DEMO_NOW) - min * 60000).toISOString();
+  const rt = (loc: string, n: number, u: Intl.RelativeTimeFormatUnit, numeric: "auto" | "always" = "auto") => { const s = new Intl.RelativeTimeFormat(loc, { numeric }).format(-n, u); return s.charAt(0).toLocaleUpperCase(loc) + s.slice(1); };
+  expect(fmtAgo(before(2), DEMO_NOW, "ago", "de")).toBe(rt("de", 2, "minute"));
+  expect(fmtAgo(before(1440), DEMO_NOW, "ago", "de")).toBe(rt("de", 1, "day"));
+  expect(fmtAgo(before(7200), DEMO_NOW, "ago-days", "fr")).toBe(rt("fr", 5, "day", "always"));
+  const e = { locale: "de", metadata: { date: { value: "2026-03-18T10:00:00Z" } } };
+  expect(readPath(e, "metadata.date.value|date")).toBe(fmtDate("2026-03-18T10:00:00Z", "de"));
+  expect(readPath(e, "metadata.date.value|date", { locale: "en" })).toBe("Mar 18, 2026");
+});
+
+test("media and routes: an image from featured_media_id, a link from the slug, nothing without them", async () => {
+  const { readPath, fromCodex } = await import("../assets/app/core");
+  const media = [{ id: "media-a", kind: "media", metadata: { file: { value: "/media/a.webp" } } }];
+  const e = { id: "p", kind: "product", slug: "arc lamp", featured_media_id: "media-a" };
+  expect(readPath(e, "featured_media_id|media", { media })).toBe("/media/a.webp");
+  expect(readPath(e, "featured_media_id|media")).toBeUndefined();
+  expect(readPath({ ...e, featured_media_id: "media-x" }, "featured_media_id|media", { media })).toBeUndefined();
+  expect(readPath(e, "slug|route", { routes: { product: "#/product/{slug}" } })).toBe("#/product/arc%20lamp");
+  expect(readPath(e, "slug|route", { routes: { post: "#/post/{slug}" } })).toBeUndefined();
+  expect(fromCodex([e], { href: "slug|route", image: "featured_media_id|media" })).toEqual([{ href: undefined, image: undefined }]);
+});

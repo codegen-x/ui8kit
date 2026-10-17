@@ -45,8 +45,9 @@
     "seats": "metadata.seats.value",
     "storage": "metadata.storage.value",
     "highlighted": "metadata.highlighted.value",
-    "status": "metadata.plan_status.value",
     "features": "metadata.features.value",
+    "yearly": "metadata.yearly.value",
+    "status": "metadata.plan_status.value",
   } as const;
 
   let { url }: { url: UrlPort } = $props();
@@ -213,7 +214,7 @@
                   </TableCell>
                   <TableCell>
                     <Badge variant={((row.status === "active") ? "default" : "secondary")} size="default">
-                      {at(ui.status, row.status)}
+                      {at(ui.status, (row.status ?? ""))}
                     </Badge>
                   </TableCell>
                 </TableRow>

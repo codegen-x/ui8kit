@@ -1,0 +1,126 @@
+{
+  "collection": "media",
+  "kind": "media",
+  "entries": [
+    {
+      "id": "media-lamp",
+      "locale": "en",
+      "kind": "media",
+      "status": "published",
+      "visibility": "public",
+      "slug": "arc-desk-lamp",
+      "title": "Arc desk lamp",
+      "metadata": {
+        "file": {
+          "value": "media/arc-desk-lamp.webp"
+        },
+        "mime": {
+          "value": "image/webp"
+        },
+        "width": {
+          "value": 1200
+        },
+        "height": {
+          "value": 1200
+        },
+        "alt": {
+          "value": "A curved desk lamp on a wooden desk"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-01T09:00:00Z",
+      "updated_at": "2026-03-02T09:00:00Z",
+      "published_at": "2026-03-02T10:00:00Z"
+    },
+    {
+      "id": "media-phones",
+      "locale": "en",
+      "kind": "media",
+      "status": "published",
+      "visibility": "public",
+      "slug": "studio-headphones",
+      "title": "Studio headphones",
+      "metadata": {
+        "file": {
+          "value": "media/studio-headphones.webp"
+        },
+        "mime": {
+          "value": "image/webp"
+        },
+        "width": {
+          "value": 1200
+        },
+        "height": {
+          "value": 1200
+        },
+        "alt": {
+          "value": "Closed-back headphones on a stand"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-01T09:00:00Z",
+      "updated_at": "2026-03-02T09:00:00Z",
+      "published_at": "2026-03-02T10:00:00Z"
+    },
+    {
+      "id": "media-bag",
+      "locale": "en",
+      "kind": "media",
+      "status": "published",
+      "visibility": "public",
+      "slug": "field-backpack",
+      "title": "Field backpack",
+      "metadata": {
+        "file": {
+          "value": "media/field-backpack.webp"
+        },
+        "mime": {
+          "value": "image/webp"
+        },
+        "width": {
+          "value": 1200
+        },
+        "height": {
+          "value": 1200
+        },
+        "alt": {
+          "value": "A grey backpack against a wall"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-01T09:00:00Z",
+      "updated_at": "2026-03-02T09:00:00Z",
+      "published_at": "2026-03-02T10:00:00Z"
+    },
+    {
+      "id": "media-static-first",
+      "locale": "en",
+      "kind": "media",
+      "status": "published",
+      "visibility": "public",
+      "slug": "static-first-cover",
+      "title": "Static-first cover",
+      "metadata": {
+        "file": {
+          "value": "media/static-first-cover.webp"
+        },
+        "mime": {
+          "value": "image/webp"
+        },
+        "width": {
+          "value": 2100
+        },
+        "height": {
+          "value": 900
+        },
+        "alt": {
+          "value": "Abstract shapes in muted colors"
+        }
+      },
+      "version": 1,
+      "created_at": "2026-03-01T09:00:00Z",
+      "updated_at": "2026-03-02T09:00:00Z",
+      "published_at": "2026-03-02T10:00:00Z"
+    }
+  ]
+}

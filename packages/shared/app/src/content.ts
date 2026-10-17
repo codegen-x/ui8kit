@@ -46,7 +46,8 @@ export const ui = {
     "storage": "{0} GB storage",
     "cta": "Choose plan",
     "free": "Free",
-    "perYear": "/ year"
+    "perYear": "/ year",
+    "empty": "No plans to show yet"
   },
   "site": {
     "header": {
@@ -1191,7 +1192,9 @@ export const ui = {
       "add": "Add to cart",
       "soldOut": "Sold out",
       "reviews": "{0} reviews",
-      "ratingLabel": "{0} out of 5"
+      "ratingLabel": "{0} out of 5",
+      "was": "Was",
+      "empty": "No products to show yet"
     },
     "badges": {
       "new": "New",
@@ -1398,7 +1401,8 @@ export const ui = {
     "labels": {
       "minutes": "{0} min read",
       "by": "By {0}",
-      "read": "Read the post"
+      "read": "Read the post",
+      "empty": "This post is not available"
     },
     "postSplit": {
       "role": "Head of Growth",

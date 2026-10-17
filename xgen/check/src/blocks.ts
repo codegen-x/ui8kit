@@ -125,9 +125,12 @@ export function checkBlocks(plan: Plan): CheckResult {
       if (col.value.kind !== d.kind) problems.push(`${at}: fixture ${d.collection} is of kind ${col.value.kind}, the block says ${d.kind}`);
       if (!col.value.entries.length) problems.push(`${at}: fixture ${d.collection} is empty`);
       if (!org.records[d.record]) { if (!(plan.inputs.organisms.some((o) => o.value.records[d.record]))) problems.push(`${at}: no record ${d.record}`); }
+      // a field the record marks optional (an old price, an image) may be missing from an entry
+      const rec = (org.records[d.record] ?? plan.inputs.organisms.find((o) => o.value.records[d.record])?.value.records[d.record]) as { name: string; optional?: boolean }[] | undefined;
+      const optional = new Set((rec ?? []).filter((f) => f.optional).map((f) => f.name));
       for (const [field, path] of Object.entries(d.fields)) for (const e of col.value.entries) {
         const v = path.split("|")[0]!.split(".").reduce<unknown>((x, k) => (x as Record<string, unknown> | undefined)?.[k], e);
-        if (v === undefined) problems.push(`${at}: ${d.collection}/${e.id} has no ${path} (field ${field})`);
+        if (v === undefined && !optional.has(field)) problems.push(`${at}: ${d.collection}/${e.id} has no ${path} (field ${field})`);
         if (field === "icon" && typeof v === "string" && !icons.has(v)) problems.push(`${at}: ${d.collection}/${e.id}: icon ${v} is not a Lucide glyph of the registry`);
       }
     }

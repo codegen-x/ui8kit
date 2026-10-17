@@ -28,6 +28,9 @@ const PRODUCTS_FIELDS = {
   "badge": "metadata.badge.value",
   "category": "metadata.category.value",
   "inStock": "metadata.inStock.value",
+  "compareAt": "metadata.compare_at.value",
+  "href": "slug|route",
+  "image": "featured_media_id|media",
 } as const;
 
 const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS);

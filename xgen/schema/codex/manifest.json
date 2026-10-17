@@ -500,6 +500,56 @@
     },
     {
       "record": {
+        "id": "media",
+        "label": "Media",
+        "scope": "workspace",
+        "description": "fixtures: media",
+        "fields": [
+          {
+            "id": "alt",
+            "label": "Alt",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "file",
+            "label": "File",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "height",
+            "label": "Height",
+            "type": "number",
+            "rules": [
+              {
+                "name": "fastygo.codex/integer"
+              }
+            ],
+            "required": true
+          },
+          {
+            "id": "mime",
+            "label": "Mime",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "width",
+            "label": "Width",
+            "type": "number",
+            "rules": [
+              {
+                "name": "fastygo.codex/integer"
+              }
+            ],
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "record": {
         "id": "member",
         "label": "Member",
         "scope": "workspace",
@@ -980,6 +1030,16 @@
             "label": "Category",
             "type": "string",
             "required": true
+          },
+          {
+            "id": "compare_at",
+            "label": "Compare at",
+            "type": "number",
+            "rules": [
+              {
+                "name": "fastygo.codex/money"
+              }
+            ]
           },
           {
             "id": "currency",

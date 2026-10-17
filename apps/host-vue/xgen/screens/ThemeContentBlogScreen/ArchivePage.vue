@@ -17,6 +17,8 @@ const POSTS_FIELDS = {
   "date": "metadata.date.value|date",
   "minutes": "metadata.minutes.value",
   "icon": "metadata.icon.value",
+  "href": "slug|route",
+  "image": "featured_media_id|media",
 } as const;
 const TOPICS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
 

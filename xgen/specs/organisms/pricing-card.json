@@ -40,7 +40,8 @@
       },
       {
         "name": "status",
-        "type": "string"
+        "type": "string",
+        "optional": true
       },
       {
         "name": "features",
@@ -78,6 +79,10 @@
       },
       {
         "name": "perYear",
+        "type": "string"
+      },
+      {
+        "name": "empty",
         "type": "string"
       }
     ]

@@ -2,11 +2,13 @@
 // Source: xgen/screens/src/authoring/blocks/commerce.ts
 /**
  * A section with a heading and the products as cards in a grid, as a list of horizontal cards, or as a rail that
- * scrolls sideways. Axes: layout (grid, list, rail), columns, ratio, rating, action, tone, density.
+ * scrolls sideways; an empty state when there are none. Axes: layout (grid, list, rail), columns, ratio, rating,
+ * action, tone, density.
  */
 import { type ReactNode } from "react";
 import { Box } from "../primitives/box/box";
 import { Grid } from "../primitives/grid/grid";
+import { EmptyState } from "../components/empty-state";
 import { ProductCard } from "../blocks/product-card";
 import { SectionFrame } from "../components/section-frame";
 import type { Product, ProductLabels } from "./product-card.types";
@@ -46,7 +48,9 @@ export function ProductGrid({
 }: ProductGridProps) {
   return (
     <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
-      {((layout as string) === "rail") ? (
+      {((products?.length ?? 0) === 0) ? (
+        <EmptyState icon="package" title={labels.empty} />
+      ) : ((layout as string) === "rail") ? (
         <Box className="flex snap-x gap-4 overflow-x-auto pb-4" data-testid="items">
           {(products ?? []).map((p) => (
             <Box key={p.id} className="w-64 shrink-0 snap-start">

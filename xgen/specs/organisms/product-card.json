@@ -3,7 +3,7 @@
   "specVersion": 1,
   "id": "organism.product-card",
   "name": "ProductCard",
-  "docs": "A product as a card: picture, optional badge, category, name, rating, summary, price and an add button. Axes: layout (vertical, horizontal), media (image, none), ratio, rating (show, hide), action (button, none), density.",
+  "docs": "A product as a card: picture, optional badge, category, name, rating, summary, price (and the old price struck through when `compareAt` is higher) and an add button. Axes: layout (vertical, horizontal), media (image, none), ratio, rating (show, hide), action (button, none), density.",
   "records": {
     "Product": [
       {
@@ -36,7 +36,8 @@
       },
       {
         "name": "badge",
-        "type": "string"
+        "type": "string",
+        "optional": true
       },
       {
         "name": "category",
@@ -45,6 +46,11 @@
       {
         "name": "inStock",
         "type": "boolean"
+      },
+      {
+        "name": "compareAt",
+        "type": "number",
+        "optional": true
       },
       {
         "name": "href",
@@ -72,6 +78,14 @@
       },
       {
         "name": "ratingLabel",
+        "type": "string"
+      },
+      {
+        "name": "was",
+        "type": "string"
+      },
+      {
+        "name": "empty",
         "type": "string"
       }
     ]
@@ -443,24 +457,96 @@
               },
               "children": [
                 {
-                  "use": "Text",
+                  "use": "Group",
                   "props": {
-                    "Size": "xl",
-                    "Weight": "bold"
+                    "Gap": "2",
+                    "Align": "baseline",
+                    "Class": "flex-wrap"
                   },
                   "children": [
                     {
-                      "text": {
-                        "op": "money",
+                      "use": "Text",
+                      "props": {
+                        "Size": "xl",
+                        "Weight": "bold"
+                      },
+                      "children": [
+                        {
+                          "text": {
+                            "op": "money",
+                            "args": [
+                              {
+                                "$": "product.price"
+                              },
+                              {
+                                "$": "product.currency"
+                              }
+                            ]
+                          }
+                        }
+                      ]
+                    },
+                    {
+                      "when": {
+                        "op": "and",
                         "args": [
                           {
-                            "$": "product.price"
+                            "$": "product.compareAt"
                           },
                           {
-                            "$": "product.currency"
+                            "op": "gt",
+                            "args": [
+                              {
+                                "$": "product.compareAt"
+                              },
+                              {
+                                "$": "product.price"
+                              }
+                            ]
                           }
                         ]
-                      }
+                      },
+                      "then": [
+                        {
+                          "use": "Text",
+                          "props": {
+                            "Tag": "del",
+                            "Size": "sm",
+                            "Class": "text-muted-foreground"
+                          },
+                          "attrs": {
+                            "data-testid": "compare-at"
+                          },
+                          "children": [
+                            {
+                              "use": "Inline",
+                              "props": {
+                                "Class": "sr-only"
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "labels.was"
+                                  }
+                                }
+                              ]
+                            },
+                            {
+                              "text": {
+                                "op": "money",
+                                "args": [
+                                  {
+                                    "$": "product.compareAt"
+                                  },
+                                  {
+                                    "$": "product.currency"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
+                        }
+                      ]
                     }
                   ]
                 },

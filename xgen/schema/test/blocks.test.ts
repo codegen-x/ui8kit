@@ -86,6 +86,40 @@ test("every label of a done block is a key of the dictionary (xgen/content/ui/en
   }
 });
 
+test("done blocks: an empty state with its text from the dictionary (labels key empty)", () => {
+  for (const b of done) {
+    const x = b as unknown as { emptyState: boolean; labels: { keys: string[] }[] };
+    expect([b.id, x.emptyState, x.labels.some((l) => l.keys.includes("empty"))]).toEqual([b.id, true, true]);
+  }
+});
+
+test("media: every featured_media_id names an entry of kind media, and the map turns it into the file of that entry", () => {
+  const media = cols.filter((c) => c.kind === "media").flatMap((c) => c.entries);
+  expect(media.length).toBeGreaterThan(0);
+  const pictured = cols.flatMap((c) => c.entries).filter((e) => (e as { featured_media_id?: string }).featured_media_id);
+  expect(pictured.length).toBeGreaterThan(0);
+  for (const e of pictured) expect([e.id, media.some((m) => m.id === (e as { featured_media_id?: string }).featured_media_id)]).toEqual([e.id, true]);
+  const products = cols.find((c) => c.collection === "products")!.entries;
+  const rows = fromCodex<{ id: string; image?: string; href?: string }>(products, CODEX_FIELDS.product, { media, routes: { product: "#/product/{slug}" } });
+  for (const [i, r] of rows.entries()) {
+    const id = (products[i] as { featured_media_id?: string }).featured_media_id;
+    expect(r.image).toBe(id ? (media.find((m) => m.id === id)!.metadata!.file!.value as string) : undefined);
+    expect(r.href).toBe(`#/product/${(products[i] as unknown as { slug: string }).slug}`);
+  }
+  // without media and routes (the kit's screens and the magazine today): no image, no link, the placeholder stays
+  expect(fromCodex<{ image?: string; href?: string }>(products, CODEX_FIELDS.product).every((r) => r.image === undefined && r.href === undefined)).toBe(true);
+});
+
+test("old price: compare_at is integer minor units in the currency of the entry, and some products are on sale", () => {
+  const products = cols.find((c) => c.collection === "products")!.entries;
+  const sale = products.filter((e) => e.metadata?.compare_at !== undefined);
+  expect(sale.length).toBeGreaterThan(0);
+  for (const e of sale) {
+    expect(Number.isSafeInteger(e.metadata!.compare_at!.value)).toBe(true);
+    expect((e.metadata!.compare_at!.value as number) > (e.metadata!.price!.value as number)).toBe(true);
+  }
+});
+
 test("at least the three pilot blocks are done", () => {
   expect(done.map((b) => b.id).sort()).toEqual(expect.arrayContaining(["PostHeader", "PricingTiers", "ProductGrid"]));
 });

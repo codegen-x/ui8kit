@@ -1037,7 +1037,9 @@
           ],
           "optional": [
             "metadata.minutes.value",
-            "metadata.icon.value"
+            "metadata.icon.value",
+            "slug",
+            "featured_media_id"
           ]
         }
       ],
@@ -1057,11 +1059,12 @@
           "keys": [
             "minutes",
             "by",
-            "read"
+            "read",
+            "empty"
           ]
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "PostGrid",
@@ -1152,9 +1155,7 @@
             "metadata.features.value",
             "metadata.yearly.value"
           ],
-          "optional": [
-            "metadata.plan_status.value"
-          ]
+          "optional": []
         }
       ],
       "settings": [
@@ -1179,7 +1180,8 @@
             "storage",
             "cta",
             "free",
-            "perYear"
+            "perYear",
+            "empty"
           ]
         },
         {
@@ -1198,7 +1200,7 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "ProductDetail",
@@ -1262,7 +1264,10 @@
             "metadata.inStock.value"
           ],
           "optional": [
-            "metadata.badge.value"
+            "metadata.badge.value",
+            "metadata.compare_at.value",
+            "slug",
+            "featured_media_id"
           ]
         }
       ],
@@ -1286,7 +1291,9 @@
             "add",
             "soldOut",
             "reviews",
-            "ratingLabel"
+            "ratingLabel",
+            "was",
+            "empty"
           ]
         },
         {
@@ -1303,7 +1310,7 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "ProfileForm",

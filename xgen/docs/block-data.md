@@ -1,4 +1,4 @@
-# Block data vs the Codex v0.4 contract (step 1 inventory)
+# Block data vs the Codex v0.4 contract (inventory; step 2: the pilot blocks fixed)
 
 Goal: every block, screen, template and data structure of the kit reads Codex v0.4 entries (`@ui8kit/contract` ^0.2.0;
 manifest `xgen/schema/codex/manifest.json`, 60 kinds) by the rules: money = integer minor units + `currency`; dates RFC 3339,
@@ -15,13 +15,13 @@ Central field maps: `xgen/runtimes/core/assets/app/fields.ts` -> generated `@ui8
 
 | Surface | Where | Data source | Kinds | Status |
 |---|---|---|---|---|
-| kit blocks (92) | `xgen/specs/blocks/*.json` (authoring `xgen/screens/src/authoring/blocks`, gallery) -> 8 runtimes | `data[].fields` per spec, fixtures | 50+ kinds, see blocks.json | 3 done, 89 todo |
+| kit blocks (92) | `xgen/specs/blocks/*.json` (authoring `xgen/screens/src/authoring/blocks`, gallery) -> 8 runtimes | `data[].fields` per spec (product, post, plan: `CODEX_FIELDS` in `gallery/blocks-data.ts`), fixtures | 50+ kinds, see blocks.json | 3 done, 89 todo |
 | kit organisms/components (179) | `xgen/specs/organisms`, `authoring/components` | props from the blocks above | (via blocks) | todo (listed in step 2) |
 | presets | `authoring/presets`, `xgen/specs/presets` | style only | none | n/a |
 | xgen screens (15) | `xgen/specs/screens/*.json` -> `apps/host-*/xgen/screens/*` | `{ "$": "ui.*" }` dictionary refs + block data | via blocks | todo |
 | magazine templates (10 + header/footer) | `apps/magazine/src/templates/*.svelte`, Templates tab `#/style/<key>/templates` | `data.ts` (fromCodex over `@ui8kit/app-shared/data/*`) + the copy deck `c` | 25 collections | todo (3 pilot blocks use central maps) |
 | taste screens (146) | `packages/taste-screens/src/screens` (style detail preview; panorama excluded) | `Deck` from `@ui8kit/taste-data/content/copy.json`, not Codex | none | todo |
-| fixtures (306 entries) | `xgen/fixtures/*.json` -> `packages/shared/app/src/data` | v0.4 entries | 60 | valid (0 errors) |
+| fixtures (310 entries) | `xgen/fixtures/*.json` -> `packages/shared/app/src/data` | v0.4 entries | 61 (new: `media`) | valid (0 errors) |
 | taste-data content | `copy.json`, `reference-*.json` | own shapes | none | todo: decide which become entries |
 | panorama, illustrations | `packages/panorama` | - | - | excluded |
 
@@ -71,38 +71,45 @@ Templates also compose HeroClassic, HeroSplit, PostGrid, AppShell, SidebarNav, C
 | name | title | core | plain string + locale |
 | summary | metadata.summary.value | string, req | |
 | price | metadata.price.value | number, money | minor units, `fmtMoney(minor, currency)` |
+| compareAt (optional) | metadata.compare_at.value | number, money, optional | old price, same currency; struck through (`del`, "Was" for screen readers) when higher than price |
 | currency | metadata.currency.value | string, req | ISO 4217 |
 | rating / reviews | metadata.rating / reviews.value | number / integer | |
-| badge | metadata.badge.value | string, optional | a key into the `badges` dictionary (good) |
-| category | metadata.category.value | string | raw key `light` printed as text |
+| badge (optional) | metadata.badge.value | string, optional | a key into the `badges` dictionary |
+| category | metadata.category.value | string | raw key `light` printed as text (todo: terms) |
 | inStock | metadata.inStock.value | boolean | |
-| href, image (optional) | not mapped | - | should come from slug / featured_media_id |
+| href (optional) | slug\|route | core | built from the slug by `opts.routes[kind]`; no route: no link |
+| image (optional) | featured_media_id\|media | core -> kind `media` (`metadata.file`) | resolved when the app passes `opts.media`; else the placeholder |
+| labels | dictionary `commerce.productLabels` | | add, soldOut, reviews, ratingLabel, was, empty |
 
-**PostHeader** (`Post`, kind `post`, map `CODEX_FIELDS.post`): id<-id, title<-title, excerpt<-excerpt (core), category<-metadata.category
-(English text), author<-metadata.author (a name string), date<-metadata.date|date (RFC 3339 -> en-US), minutes<-metadata.minutes
-(integer, shown by `labels.minutes`), icon<-metadata.icon (not rendered by PostHeader). Cover: an empty MediaFrame.
+**PostHeader** (`Post`, kind `post`, map `CODEX_FIELDS.post`): id, title, excerpt (core), category (metadata, English text: todo terms),
+author (a name string: todo author_id), date<-metadata.date|date (RFC 3339 -> the locale of the entry or the app, Intl), minutes (integer,
+`labels.minutes`), icon, href<-slug|route, image<-featured_media_id|media (the cover; placeholder without). `post` is optional: without it
+the empty state (`content.labels.empty`).
 
 **PricingTiers** (`Plan`, kind `plan`, map `CODEX_FIELDS.plan`): id, name<-title, tagline, price / yearly (money, minor units; 0 -> `labels.free`),
-currency, seats / storage (integers, units in labels), highlighted (boolean), status<-metadata.plan_status (not rendered), features (string[]).
+currency, seats / storage (integers, units in labels), highlighted, features (string[]). `status` is no longer read (optional on the record,
+the plans list screen keeps its own column). No plans: the empty state (`pricing.empty`).
 
 ## 4. Mismatches (fix direction)
 
 | # | Where | Mismatch | Fix |
 |---|---|---|---|
-| 1 | Product/Post `href`, CtaBand/PageIntro/PageTrail `href="#"`, sitemap `links` strings | links not built from slug/parent_id | block: derive the link from `slug` by a route helper; drop `href` from data |
-| 2 | Product `image`, PostHeader cover, PhotoGallery, ProjectGrid | no media field; MediaFrame placeholders | block reads `featured_media_id` -> media entry; fixtures add kind `media` (manifest kind) |
-| 3 | ProductGrid/ProductDetail | no old (compare-at) price | manifest field `product.compare_at` (money) + block prop |
+| 1 | Product/Post `href` (**fixed**: `slug\|route`), CtaBand/PageIntro/PageTrail `href="#"`, sitemap `links` strings | links not built from slug/parent_id | block: derive the link from `slug` by a route helper; drop `href` from data |
+| 2 | Product `image`, PostHeader cover (**fixed**: kind `media`, `featured_media_id\|media`), PhotoGallery, ProjectGrid | no media field; MediaFrame placeholders | block reads `featured_media_id` -> media entry; fixtures add kind `media` (manifest kind) |
+| 3 | ProductGrid (**fixed**), ProductDetail (todo) | no old (compare-at) price | manifest field `product.compare_at` (money) + block prop |
 | 4 | Product `category`, Post `category`, Faq `category`, Photo `tag`, Project `tags` | taxonomy as free text / raw keys printed | block: read `terms` (taxonomy + term entries with locale), show term name |
 | 5 | Post/Review `author` | a name string, not a reference | block: read `author_id` (kind user) display_name |
-| 6 | `fmtDate`, `fmtAgo` in core.ts | fixed en-US format and English "2 min ago", "Yesterday" | block/runtime: Intl by locale + dictionary words |
+| 6 | `fmtDate`, `fmtAgo` in core.ts (**fixed**: Intl by the entry's or the app's locale; en output unchanged, the compact en units "min", "h", "d" kept) | fixed en-US format and English "2 min ago", "Yesterday" | block/runtime: Intl by locale + dictionary words |
 | 7 | stats/metrics `value` ("12,400"), templates `views`/`likes` ("1.2K") | preformatted numbers as strings | manifest: number fields; block formats with Intl |
-| 8 | Product `badge` / Plan `status` required in the TS record, optional or unused in data | record vs manifest | block: make the prop optional / drop `status` |
-| 9 | ProductGrid, PricingTiers, PostHeader, most lists | no empty state | block: empty state with a dictionary label |
+| 8 | Product `badge` / Plan `status` (**fixed**: optional; `status` not mapped for the pricing blocks) | record vs manifest | block: make the prop optional / drop `status` |
+| 9 | ProductGrid, PricingTiers, PostHeader (**fixed**: EmptyState, `labels.empty`), most other lists | no empty state | block: empty state with a dictionary label |
 | 10 | magazine templates / taste screens | text from the English copy deck `c` (not entries, not dictionary) | block props from dictionary; deck becomes entries or a dictionary per locale |
 | 11 | sitemap `links`, Plan `features` | string arrays in metadata, no locale per item | features ok as content of the entry; sitemap -> a `menu` (contract menu schema) |
 | 12 | Project `year` string, ProjectGrid `client` "Northwind" rebranded at runtime | types / data | manifest: integer year; block drops runtime rebrand when data is neutral |
 
 ## 5. Status per block
 
-done: ProductGrid, PostHeader, PricingTiers (fields declared, central map, fixtures validated, test green; mismatches above still open).
+done: ProductGrid, PostHeader, PricingTiers. Step 2 fixed: empty states, links from slug, image from `featured_media_id` (kind `media`),
+optional badge, no status, dates by locale, `compare_at`; the xgen specs read `CODEX_FIELDS` (`gallery/blocks-data.ts`, `screens/plans-screen.ts`).
+Open for them: category and author as terms / author_id (#4, #5).
 todo: everything else in blocks.json (kind listed from the spec).
