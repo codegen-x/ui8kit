@@ -158,6 +158,9 @@ test("figures, term slugs and trails: |number formats by locale with the unit, |
   expect(readPath(stat(99.99, "percent"), "metadata.value.value|number")).toBe("99.99%");
   expect(readPath(stat(0.8, "second"), "metadata.value.value|number")).toBe("0.8s");
   expect(readPath(stat(12400), "metadata.value.value|number", { locale: "de" })).toBe("12.400");
+  // |compact: a count in short form (template views and likes)
+  expect(readPath({ metadata: { views: { value: 1200 } } }, "metadata.views.value|compact")).toBe("1.2K");
+  expect(readPath({ metadata: { views: { value: 96 } } }, "metadata.views.value|compact")).toBe("96");
   expect(readPath(stat("12,400"), "metadata.value.value|number")).toBeUndefined();
   const terms = [{ id: "faq-category-billing", locale: "en", taxonomy_id: "faq_category", name: "Billing", slug: "billing" }];
   expect(readPath({ id: "f", locale: "en", terms: [{ taxonomy: "faq_category", term_id: "faq-category-billing" }] }, "terms|term-slug:faq_category", { terms })).toBe("billing");

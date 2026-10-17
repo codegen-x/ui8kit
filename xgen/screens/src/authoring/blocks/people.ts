@@ -46,8 +46,9 @@ const jobBoard = spec(`${O}job-board`, "JobBoard", "Open jobs as cards in two co
     { name: "layout", type: tsOf("grid", "grouped", "table"), default: "grid" },
     { name: "salary", type: tsOf("show", "hide"), default: "hide" },
     { name: "tone", type: toneLite, default: "default" },
+    empty,
   ],
-  view: [frame({ ...common, density: "default", measure: cond(eq(ref("layout"), "grouped"), "3xl", "default") }, [
+  view: [frame({ ...common, density: "default", measure: cond(eq(ref("layout"), "grouped"), "3xl", "default") }, [orEmpty("jobs", "briefcase", [
     when(eq(ref("layout"), "grouped"),
       [use("Stack", { props: { Gap: "8", Align: "stretch" }, attrs: { "data-testid": "groups" } },
         each(ref("departments"), "d", ref("d.id"),
@@ -59,7 +60,7 @@ const jobBoard = spec(`${O}job-board`, "JobBoard", "Open jobs as cards in two co
                   use("Stack", { props: { Gap: "0" } }, menuEntry(ref("j.href"), { cls: "font-medium" }, text(ref("j.title"))), muted(tpl("{0}, {1}", ref("j.location"), ref("j.type")), "xs")),
                   use("Badge", { props: { Variant: "outline", Size: "default" } }, text(ref("j.type")))))))))],
       [organism("JobCards", { jobs: ref("jobs"), departments: ref("departments"), labels: ref("labels"), layout: ref("layout"), salary: ref("salary") })]),
-  ])],
+  ])])],
 });
 
 const aboutMe = spec(`${O}about-me`, "AboutMe", "A personal about section beside a portrait: a badge, the heading, a lead, then key facts and a list of specialities, or skill chips and expertise bars, and one or two links. Axes: layout (facts, skills), mediaSide, tone.", {

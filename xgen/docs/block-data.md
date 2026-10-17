@@ -209,6 +209,13 @@ replace the string arrays `links`).
 - Step 17: NavBar uses omit: its inline/search links sit in NavBarMenu (NavBlock + NavLinks), left out with no links; the
   landmark label passes through (landmarks.ts). The split layout keeps its nav (brand and buttons are inside it).
 
+- Step 20: the last kit blocks. FaqSplit uses omit: a FAQ section without questions is left out whole (an `empty` prop would
+  break the prop and line limits). JobBoard draws EmptyState (ui.empty.jobs); its salary range stays text (open question 7).
+  TemplateGrid: filtersLabel/browse/viewsLabel/likesLabel became one `labels` record (TemplateLabels), which leaves room for
+  `empty` (ui.empty.templates); no filters, no filter row. Template views and likes are numbers in the fixture, shown by the new
+  pipe `|compact` (1200 -> "1.2K"; "5.0K" now reads "5K"). The blocks test validates a collection together with the others,
+  so a relation (jobs -> departments) resolves.
+
 ## 7c. xgen screens (step 18)
 
 - `codex:blocks` gives every screen its data (a list screen's own `source`, and the bindings of the blocks it composes, one per
@@ -216,8 +223,7 @@ replace the string arrays `links`).
   URL state, nav/menu/frame switches) and `emptyState` (every composed block with data has one).
 - The route menus of the theme screens are app routes with dictionary titles, not Codex menu content.
 - screen.plans reads kind `plan` through the central map `planRow` (KIT_FIELDS: the plan with its status).
-- Done: 12 of 15. Todo: screen.blocks (the gallery shows every block), screen.catalog and screen.theme-marketing-landing
-  (FaqSplit, JobBoard, TemplateGrid).
+- Done: 15 of 15 (step 20: blocks, catalog and theme-marketing-landing once FaqSplit, JobBoard, TemplateGrid were done).
 
 ## 7d. Taste screens (step 19-)
 

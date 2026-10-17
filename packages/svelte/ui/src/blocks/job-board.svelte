@@ -19,6 +19,7 @@
     layout?: "grid" | "grouped" | "table";
     salary?: "show" | "hide";
     tone?: "default" | "muted";
+    empty?: string;
     landmarkLabel?: string;
   };
 </script>
@@ -31,6 +32,7 @@
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import JobCards from "../components/job-cards.svelte";
   import MenuEntry from "../components/menu-entry.svelte";
   import SectionFrame from "../components/section-frame.svelte";
@@ -46,6 +48,7 @@
     layout = "grid",
     salary = "hide",
     tone = "default",
+    empty = "",
     landmarkLabel,
   }: JobBoardProps = $props();
 </script>
@@ -58,7 +61,9 @@
   measure={(((layout as string) === "grouped") ? "3xl" : "default")}
   landmarkLabel={landmarkLabel}
 >
-  {#if ((layout as string) === "grouped")}
+  {#if ((jobs?.length ?? 0) === 0)}
+    <EmptyState icon="briefcase" title={empty} />
+  {:else if ((layout as string) === "grouped")}
     <Stack gap="8" align="stretch" data-testid="groups">
       {#each departments as d (d.id)}
         <Stack gap="2" align="stretch" data-testid="group">

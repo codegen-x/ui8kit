@@ -56,85 +56,87 @@
   }: FaqSplitProps = $props();
 </script>
 
-{#if ((layout as string) === "cards")}
-  <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone} landmarkLabel={landmarkLabel}>
-    <FaqCards items={items} labels={labels} cards={cards} />
-  </SectionFrame>
-{/if}
-{#if ((layout as string) === "head")}
-  <SectionFrame
-    id={id}
-    title={title}
-    lead={lead}
-    heading={{ badge }}
-    tone={tone}
-    layout="split"
-    media={{ show: true, side: "end", align: "start" }}
-    landmarkLabel={landmarkLabel}
-  >
-    <Box>
-      <Button variant="default" size="default" data-testid="faq-cta">
-        {labels.cta}
-      </Button>
-    </Box>
-    {#snippet aside()}
+{#if ((items?.length ?? 0) > 0)}
+  {#if ((layout as string) === "cards")}
+    <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone} landmarkLabel={landmarkLabel}>
+      <FaqCards items={items} labels={labels} cards={cards} />
+    </SectionFrame>
+  {/if}
+  {#if ((layout as string) === "head")}
+    <SectionFrame
+      id={id}
+      title={title}
+      lead={lead}
+      heading={{ badge }}
+      tone={tone}
+      layout="split"
+      media={{ show: true, side: "end", align: "start" }}
+      landmarkLabel={landmarkLabel}
+    >
+      <Box>
+        <Button variant="default" size="default" data-testid="faq-cta">
+          {labels.cta}
+        </Button>
+      </Box>
+      {#snippet aside()}
+        <FaqDisclosures items={items} name={tpl("{0}-faq", id)} />
+      {/snippet}
+    </SectionFrame>
+  {/if}
+  {#if ((layout as string) === "aside")}
+    <SectionFrame
+      id={id}
+      title={title}
+      lead={lead}
+      heading={{ badge }}
+      tone={tone}
+      layout="split"
+      media={{ show: true, side: "end", align: "start" }}
+      landmarkLabel={landmarkLabel}
+    >
       <FaqDisclosures items={items} name={tpl("{0}-faq", id)} />
-    {/snippet}
-  </SectionFrame>
-{/if}
-{#if ((layout as string) === "aside")}
-  <SectionFrame
-    id={id}
-    title={title}
-    lead={lead}
-    heading={{ badge }}
-    tone={tone}
-    layout="split"
-    media={{ show: true, side: "end", align: "start" }}
-    landmarkLabel={landmarkLabel}
-  >
-    <FaqDisclosures items={items} name={tpl("{0}-faq", id)} />
-    {#snippet aside()}
-      <FaqHelp labels={labels} channels={channels} landmarkLabel={landmarkLabel} />
-    {/snippet}
-  </SectionFrame>
-{/if}
-{#if ((layout as string) === "media")}
-  <SectionFrame
-    id={id}
-    title={title}
-    lead={lead}
-    heading={{ badge }}
-    tone={tone}
-    layout="split"
-    media={{ show: true, side: mediaSide, align: "start" }}
-    landmarkLabel={landmarkLabel}
-  >
-    <FaqDisclosures items={items} name={tpl("{0}-faq", id)} />
-    <Box>
-      <Button variant="default" size="default" data-testid="faq-cta">
-        {labels.cta}
-      </Button>
-    </Box>
-    {#snippet aside()}
-      <MediaFrame alt={title} ratio="4/3" />
-    {/snippet}
-  </SectionFrame>
-{/if}
-{#if ((layout as string) === "search")}
-  <SectionFrame
-    id={id}
-    title={title}
-    lead={lead}
-    heading={{ badge }}
-    tone={tone}
-    layout="split"
-    media={{ show: true, side: mediaSide }}
-    landmarkLabel={landmarkLabel}
-  >
-    <FaqFinder items={items} labels={labels} topics={topics} />
-    {#snippet aside()}
-      <MediaFrame alt={title} ratio="4/3" />
-    {/snippet}
-  </SectionFrame>
+      {#snippet aside()}
+        <FaqHelp labels={labels} channels={channels} landmarkLabel={landmarkLabel} />
+      {/snippet}
+    </SectionFrame>
+  {/if}
+  {#if ((layout as string) === "media")}
+    <SectionFrame
+      id={id}
+      title={title}
+      lead={lead}
+      heading={{ badge }}
+      tone={tone}
+      layout="split"
+      media={{ show: true, side: mediaSide, align: "start" }}
+      landmarkLabel={landmarkLabel}
+    >
+      <FaqDisclosures items={items} name={tpl("{0}-faq", id)} />
+      <Box>
+        <Button variant="default" size="default" data-testid="faq-cta">
+          {labels.cta}
+        </Button>
+      </Box>
+      {#snippet aside()}
+        <MediaFrame alt={title} ratio="4/3" />
+      {/snippet}
+    </SectionFrame>
+  {/if}
+  {#if ((layout as string) === "search")}
+    <SectionFrame
+      id={id}
+      title={title}
+      lead={lead}
+      heading={{ badge }}
+      tone={tone}
+      layout="split"
+      media={{ show: true, side: mediaSide }}
+      landmarkLabel={landmarkLabel}
+    >
+      <FaqFinder items={items} labels={labels} topics={topics} />
+      {#snippet aside()}
+        <MediaFrame alt={title} ratio="4/3" />
+      {/snippet}
+    </SectionFrame>
+  {/if}
 {/if}

@@ -56,83 +56,85 @@ const {
 </script>
 
 <template>
-  <SectionFrame v-if="((layout as string) === 'cards')"
-    :id="id"
-    :title="title"
-    :lead="lead"
-    :heading="{ badge }"
-    :tone="tone"
-    :landmarkLabel="landmarkLabel"
-  >
-    <FaqCards :items="items" :labels="labels" :cards="cards" />
-  </SectionFrame>
-  <SectionFrame v-if="((layout as string) === 'head')"
-    :id="id"
-    :title="title"
-    :lead="lead"
-    :heading="{ badge }"
-    :tone="tone"
-    layout="split"
-    :media="{ show: true, side: 'end', align: 'start' }"
-    :landmarkLabel="landmarkLabel"
-  >
-    <Box>
-      <Button variant="default" size="default" data-testid="faq-cta">
-        {{ labels.cta }}
-      </Button>
-    </Box>
-    <template #aside>
+  <template v-if="((items?.length ?? 0) > 0)">
+    <SectionFrame v-if="((layout as string) === 'cards')"
+      :id="id"
+      :title="title"
+      :lead="lead"
+      :heading="{ badge }"
+      :tone="tone"
+      :landmarkLabel="landmarkLabel"
+    >
+      <FaqCards :items="items" :labels="labels" :cards="cards" />
+    </SectionFrame>
+    <SectionFrame v-if="((layout as string) === 'head')"
+      :id="id"
+      :title="title"
+      :lead="lead"
+      :heading="{ badge }"
+      :tone="tone"
+      layout="split"
+      :media="{ show: true, side: 'end', align: 'start' }"
+      :landmarkLabel="landmarkLabel"
+    >
+      <Box>
+        <Button variant="default" size="default" data-testid="faq-cta">
+          {{ labels.cta }}
+        </Button>
+      </Box>
+      <template #aside>
+        <FaqDisclosures :items="items" :name="tpl('{0}-faq', id)" />
+      </template>
+    </SectionFrame>
+    <SectionFrame v-if="((layout as string) === 'aside')"
+      :id="id"
+      :title="title"
+      :lead="lead"
+      :heading="{ badge }"
+      :tone="tone"
+      layout="split"
+      :media="{ show: true, side: 'end', align: 'start' }"
+      :landmarkLabel="landmarkLabel"
+    >
       <FaqDisclosures :items="items" :name="tpl('{0}-faq', id)" />
-    </template>
-  </SectionFrame>
-  <SectionFrame v-if="((layout as string) === 'aside')"
-    :id="id"
-    :title="title"
-    :lead="lead"
-    :heading="{ badge }"
-    :tone="tone"
-    layout="split"
-    :media="{ show: true, side: 'end', align: 'start' }"
-    :landmarkLabel="landmarkLabel"
-  >
-    <FaqDisclosures :items="items" :name="tpl('{0}-faq', id)" />
-    <template #aside>
-      <FaqHelp :labels="labels" :channels="channels" :landmarkLabel="landmarkLabel" />
-    </template>
-  </SectionFrame>
-  <SectionFrame v-if="((layout as string) === 'media')"
-    :id="id"
-    :title="title"
-    :lead="lead"
-    :heading="{ badge }"
-    :tone="tone"
-    layout="split"
-    :media="{ show: true, side: mediaSide, align: 'start' }"
-    :landmarkLabel="landmarkLabel"
-  >
-    <FaqDisclosures :items="items" :name="tpl('{0}-faq', id)" />
-    <Box>
-      <Button variant="default" size="default" data-testid="faq-cta">
-        {{ labels.cta }}
-      </Button>
-    </Box>
-    <template #aside>
-      <MediaFrame :alt="title" ratio="4/3" />
-    </template>
-  </SectionFrame>
-  <SectionFrame v-if="((layout as string) === 'search')"
-    :id="id"
-    :title="title"
-    :lead="lead"
-    :heading="{ badge }"
-    :tone="tone"
-    layout="split"
-    :media="{ show: true, side: mediaSide }"
-    :landmarkLabel="landmarkLabel"
-  >
-    <FaqFinder :items="items" :labels="labels" :topics="topics" />
-    <template #aside>
-      <MediaFrame :alt="title" ratio="4/3" />
-    </template>
-  </SectionFrame>
+      <template #aside>
+        <FaqHelp :labels="labels" :channels="channels" :landmarkLabel="landmarkLabel" />
+      </template>
+    </SectionFrame>
+    <SectionFrame v-if="((layout as string) === 'media')"
+      :id="id"
+      :title="title"
+      :lead="lead"
+      :heading="{ badge }"
+      :tone="tone"
+      layout="split"
+      :media="{ show: true, side: mediaSide, align: 'start' }"
+      :landmarkLabel="landmarkLabel"
+    >
+      <FaqDisclosures :items="items" :name="tpl('{0}-faq', id)" />
+      <Box>
+        <Button variant="default" size="default" data-testid="faq-cta">
+          {{ labels.cta }}
+        </Button>
+      </Box>
+      <template #aside>
+        <MediaFrame :alt="title" ratio="4/3" />
+      </template>
+    </SectionFrame>
+    <SectionFrame v-if="((layout as string) === 'search')"
+      :id="id"
+      :title="title"
+      :lead="lead"
+      :heading="{ badge }"
+      :tone="tone"
+      layout="split"
+      :media="{ show: true, side: mediaSide }"
+      :landmarkLabel="landmarkLabel"
+    >
+      <FaqFinder :items="items" :labels="labels" :topics="topics" />
+      <template #aside>
+        <MediaFrame :alt="title" ratio="4/3" />
+      </template>
+    </SectionFrame>
+  </template>
 </template>

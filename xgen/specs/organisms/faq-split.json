@@ -159,428 +159,446 @@
   "view": [
     {
       "when": {
-        "op": "eq",
+        "op": "gt",
         "args": [
           {
-            "$": "layout"
+            "op": "len",
+            "args": [
+              {
+                "$": "items"
+              }
+            ]
           },
-          "cards"
+          0
         ]
       },
       "then": [
         {
-          "organism": "SectionFrame",
-          "props": {
-            "id": {
-              "$": "id"
-            },
-            "title": {
-              "$": "title"
-            },
-            "lead": {
-              "$": "lead"
-            },
-            "heading": {
-              "badge": {
-                "$": "badge"
-              }
-            },
-            "tone": {
-              "$": "tone"
-            },
-            "landmarkLabel": {
-              "$": "landmarkLabel"
-            }
-          },
-          "slots": {
-            "children": {
-              "args": [],
-              "do": [
-                {
-                  "organism": "FaqCards",
-                  "props": {
-                    "items": {
-                      "$": "items"
-                    },
-                    "labels": {
-                      "$": "labels"
-                    },
-                    "cards": {
-                      "$": "cards"
-                    }
-                  }
-                }
-              ]
-            }
-          }
-        }
-      ]
-    },
-    {
-      "when": {
-        "op": "eq",
-        "args": [
-          {
-            "$": "layout"
-          },
-          "head"
-        ]
-      },
-      "then": [
-        {
-          "organism": "SectionFrame",
-          "props": {
-            "id": {
-              "$": "id"
-            },
-            "title": {
-              "$": "title"
-            },
-            "lead": {
-              "$": "lead"
-            },
-            "heading": {
-              "badge": {
-                "$": "badge"
-              }
-            },
-            "tone": {
-              "$": "tone"
-            },
-            "layout": "split",
-            "media": {
-              "show": true,
-              "side": "end",
-              "align": "start"
-            },
-            "landmarkLabel": {
-              "$": "landmarkLabel"
-            }
-          },
-          "slots": {
-            "children": {
-              "args": [],
-              "do": [
-                {
-                  "use": "Box",
-                  "children": [
-                    {
-                      "use": "Button",
-                      "props": {
-                        "Variant": "default",
-                        "Size": "default"
-                      },
-                      "attrs": {
-                        "data-testid": "faq-cta"
-                      },
-                      "children": [
-                        {
-                          "text": {
-                            "$": "labels.cta"
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                }
-              ]
-            },
-            "aside": {
-              "args": [],
-              "do": [
-                {
-                  "organism": "FaqDisclosures",
-                  "props": {
-                    "items": {
-                      "$": "items"
-                    },
-                    "name": {
-                      "op": "tpl",
-                      "args": [
-                        "{0}-faq",
-                        {
-                          "$": "id"
-                        }
-                      ]
-                    }
-                  }
-                }
-              ]
-            }
-          }
-        }
-      ]
-    },
-    {
-      "when": {
-        "op": "eq",
-        "args": [
-          {
-            "$": "layout"
-          },
-          "aside"
-        ]
-      },
-      "then": [
-        {
-          "organism": "SectionFrame",
-          "props": {
-            "id": {
-              "$": "id"
-            },
-            "title": {
-              "$": "title"
-            },
-            "lead": {
-              "$": "lead"
-            },
-            "heading": {
-              "badge": {
-                "$": "badge"
-              }
-            },
-            "tone": {
-              "$": "tone"
-            },
-            "layout": "split",
-            "media": {
-              "show": true,
-              "side": "end",
-              "align": "start"
-            },
-            "landmarkLabel": {
-              "$": "landmarkLabel"
-            }
-          },
-          "slots": {
-            "children": {
-              "args": [],
-              "do": [
-                {
-                  "organism": "FaqDisclosures",
-                  "props": {
-                    "items": {
-                      "$": "items"
-                    },
-                    "name": {
-                      "op": "tpl",
-                      "args": [
-                        "{0}-faq",
-                        {
-                          "$": "id"
-                        }
-                      ]
-                    }
-                  }
-                }
-              ]
-            },
-            "aside": {
-              "args": [],
-              "do": [
-                {
-                  "organism": "FaqHelp",
-                  "props": {
-                    "labels": {
-                      "$": "labels"
-                    },
-                    "channels": {
-                      "$": "channels"
-                    },
-                    "landmarkLabel": {
-                      "$": "landmarkLabel"
-                    }
-                  }
-                }
-              ]
-            }
-          }
-        }
-      ]
-    },
-    {
-      "when": {
-        "op": "eq",
-        "args": [
-          {
-            "$": "layout"
-          },
-          "media"
-        ]
-      },
-      "then": [
-        {
-          "organism": "SectionFrame",
-          "props": {
-            "id": {
-              "$": "id"
-            },
-            "title": {
-              "$": "title"
-            },
-            "lead": {
-              "$": "lead"
-            },
-            "heading": {
-              "badge": {
-                "$": "badge"
-              }
-            },
-            "tone": {
-              "$": "tone"
-            },
-            "layout": "split",
-            "media": {
-              "show": true,
-              "side": {
-                "$": "mediaSide"
+          "when": {
+            "op": "eq",
+            "args": [
+              {
+                "$": "layout"
               },
-              "align": "start"
-            },
-            "landmarkLabel": {
-              "$": "landmarkLabel"
-            }
+              "cards"
+            ]
           },
-          "slots": {
-            "children": {
-              "args": [],
-              "do": [
-                {
-                  "organism": "FaqDisclosures",
-                  "props": {
-                    "items": {
-                      "$": "items"
-                    },
-                    "name": {
-                      "op": "tpl",
-                      "args": [
-                        "{0}-faq",
-                        {
-                          "$": "id"
-                        }
-                      ]
-                    }
+          "then": [
+            {
+              "organism": "SectionFrame",
+              "props": {
+                "id": {
+                  "$": "id"
+                },
+                "title": {
+                  "$": "title"
+                },
+                "lead": {
+                  "$": "lead"
+                },
+                "heading": {
+                  "badge": {
+                    "$": "badge"
                   }
                 },
-                {
-                  "use": "Box",
-                  "children": [
+                "tone": {
+                  "$": "tone"
+                },
+                "landmarkLabel": {
+                  "$": "landmarkLabel"
+                }
+              },
+              "slots": {
+                "children": {
+                  "args": [],
+                  "do": [
                     {
-                      "use": "Button",
+                      "organism": "FaqCards",
                       "props": {
-                        "Variant": "default",
-                        "Size": "default"
-                      },
-                      "attrs": {
-                        "data-testid": "faq-cta"
-                      },
+                        "items": {
+                          "$": "items"
+                        },
+                        "labels": {
+                          "$": "labels"
+                        },
+                        "cards": {
+                          "$": "cards"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "when": {
+            "op": "eq",
+            "args": [
+              {
+                "$": "layout"
+              },
+              "head"
+            ]
+          },
+          "then": [
+            {
+              "organism": "SectionFrame",
+              "props": {
+                "id": {
+                  "$": "id"
+                },
+                "title": {
+                  "$": "title"
+                },
+                "lead": {
+                  "$": "lead"
+                },
+                "heading": {
+                  "badge": {
+                    "$": "badge"
+                  }
+                },
+                "tone": {
+                  "$": "tone"
+                },
+                "layout": "split",
+                "media": {
+                  "show": true,
+                  "side": "end",
+                  "align": "start"
+                },
+                "landmarkLabel": {
+                  "$": "landmarkLabel"
+                }
+              },
+              "slots": {
+                "children": {
+                  "args": [],
+                  "do": [
+                    {
+                      "use": "Box",
                       "children": [
                         {
-                          "text": {
-                            "$": "labels.cta"
-                          }
+                          "use": "Button",
+                          "props": {
+                            "Variant": "default",
+                            "Size": "default"
+                          },
+                          "attrs": {
+                            "data-testid": "faq-cta"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "labels.cta"
+                              }
+                            }
+                          ]
                         }
                       ]
                     }
                   ]
-                }
-              ]
-            },
-            "aside": {
-              "args": [],
-              "do": [
-                {
-                  "organism": "MediaFrame",
-                  "props": {
-                    "alt": {
-                      "$": "title"
-                    },
-                    "ratio": "4/3"
-                  }
-                }
-              ]
-            }
-          }
-        }
-      ]
-    },
-    {
-      "when": {
-        "op": "eq",
-        "args": [
-          {
-            "$": "layout"
-          },
-          "search"
-        ]
-      },
-      "then": [
-        {
-          "organism": "SectionFrame",
-          "props": {
-            "id": {
-              "$": "id"
-            },
-            "title": {
-              "$": "title"
-            },
-            "lead": {
-              "$": "lead"
-            },
-            "heading": {
-              "badge": {
-                "$": "badge"
-              }
-            },
-            "tone": {
-              "$": "tone"
-            },
-            "layout": "split",
-            "media": {
-              "show": true,
-              "side": {
-                "$": "mediaSide"
-              }
-            },
-            "landmarkLabel": {
-              "$": "landmarkLabel"
-            }
-          },
-          "slots": {
-            "children": {
-              "args": [],
-              "do": [
-                {
-                  "organism": "FaqFinder",
-                  "props": {
-                    "items": {
-                      "$": "items"
-                    },
-                    "labels": {
-                      "$": "labels"
-                    },
-                    "topics": {
-                      "$": "topics"
+                },
+                "aside": {
+                  "args": [],
+                  "do": [
+                    {
+                      "organism": "FaqDisclosures",
+                      "props": {
+                        "items": {
+                          "$": "items"
+                        },
+                        "name": {
+                          "op": "tpl",
+                          "args": [
+                            "{0}-faq",
+                            {
+                              "$": "id"
+                            }
+                          ]
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
-              ]
-            },
-            "aside": {
-              "args": [],
-              "do": [
-                {
-                  "organism": "MediaFrame",
-                  "props": {
-                    "alt": {
-                      "$": "title"
-                    },
-                    "ratio": "4/3"
-                  }
-                }
-              ]
+              }
             }
-          }
+          ]
+        },
+        {
+          "when": {
+            "op": "eq",
+            "args": [
+              {
+                "$": "layout"
+              },
+              "aside"
+            ]
+          },
+          "then": [
+            {
+              "organism": "SectionFrame",
+              "props": {
+                "id": {
+                  "$": "id"
+                },
+                "title": {
+                  "$": "title"
+                },
+                "lead": {
+                  "$": "lead"
+                },
+                "heading": {
+                  "badge": {
+                    "$": "badge"
+                  }
+                },
+                "tone": {
+                  "$": "tone"
+                },
+                "layout": "split",
+                "media": {
+                  "show": true,
+                  "side": "end",
+                  "align": "start"
+                },
+                "landmarkLabel": {
+                  "$": "landmarkLabel"
+                }
+              },
+              "slots": {
+                "children": {
+                  "args": [],
+                  "do": [
+                    {
+                      "organism": "FaqDisclosures",
+                      "props": {
+                        "items": {
+                          "$": "items"
+                        },
+                        "name": {
+                          "op": "tpl",
+                          "args": [
+                            "{0}-faq",
+                            {
+                              "$": "id"
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                },
+                "aside": {
+                  "args": [],
+                  "do": [
+                    {
+                      "organism": "FaqHelp",
+                      "props": {
+                        "labels": {
+                          "$": "labels"
+                        },
+                        "channels": {
+                          "$": "channels"
+                        },
+                        "landmarkLabel": {
+                          "$": "landmarkLabel"
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "when": {
+            "op": "eq",
+            "args": [
+              {
+                "$": "layout"
+              },
+              "media"
+            ]
+          },
+          "then": [
+            {
+              "organism": "SectionFrame",
+              "props": {
+                "id": {
+                  "$": "id"
+                },
+                "title": {
+                  "$": "title"
+                },
+                "lead": {
+                  "$": "lead"
+                },
+                "heading": {
+                  "badge": {
+                    "$": "badge"
+                  }
+                },
+                "tone": {
+                  "$": "tone"
+                },
+                "layout": "split",
+                "media": {
+                  "show": true,
+                  "side": {
+                    "$": "mediaSide"
+                  },
+                  "align": "start"
+                },
+                "landmarkLabel": {
+                  "$": "landmarkLabel"
+                }
+              },
+              "slots": {
+                "children": {
+                  "args": [],
+                  "do": [
+                    {
+                      "organism": "FaqDisclosures",
+                      "props": {
+                        "items": {
+                          "$": "items"
+                        },
+                        "name": {
+                          "op": "tpl",
+                          "args": [
+                            "{0}-faq",
+                            {
+                              "$": "id"
+                            }
+                          ]
+                        }
+                      }
+                    },
+                    {
+                      "use": "Box",
+                      "children": [
+                        {
+                          "use": "Button",
+                          "props": {
+                            "Variant": "default",
+                            "Size": "default"
+                          },
+                          "attrs": {
+                            "data-testid": "faq-cta"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "labels.cta"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "aside": {
+                  "args": [],
+                  "do": [
+                    {
+                      "organism": "MediaFrame",
+                      "props": {
+                        "alt": {
+                          "$": "title"
+                        },
+                        "ratio": "4/3"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "when": {
+            "op": "eq",
+            "args": [
+              {
+                "$": "layout"
+              },
+              "search"
+            ]
+          },
+          "then": [
+            {
+              "organism": "SectionFrame",
+              "props": {
+                "id": {
+                  "$": "id"
+                },
+                "title": {
+                  "$": "title"
+                },
+                "lead": {
+                  "$": "lead"
+                },
+                "heading": {
+                  "badge": {
+                    "$": "badge"
+                  }
+                },
+                "tone": {
+                  "$": "tone"
+                },
+                "layout": "split",
+                "media": {
+                  "show": true,
+                  "side": {
+                    "$": "mediaSide"
+                  }
+                },
+                "landmarkLabel": {
+                  "$": "landmarkLabel"
+                }
+              },
+              "slots": {
+                "children": {
+                  "args": [],
+                  "do": [
+                    {
+                      "organism": "FaqFinder",
+                      "props": {
+                        "items": {
+                          "$": "items"
+                        },
+                        "labels": {
+                          "$": "labels"
+                        },
+                        "topics": {
+                          "$": "topics"
+                        }
+                      }
+                    }
+                  ]
+                },
+                "aside": {
+                  "args": [],
+                  "do": [
+                    {
+                      "organism": "MediaFrame",
+                      "props": {
+                        "alt": {
+                          "$": "title"
+                        },
+                        "ratio": "4/3"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          ]
         }
       ]
     }

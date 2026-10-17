@@ -45,6 +45,24 @@
         "type": "string",
         "optional": true
       }
+    ],
+    "TemplateLabels": [
+      {
+        "name": "filters",
+        "type": "string"
+      },
+      {
+        "name": "browse",
+        "type": "string"
+      },
+      {
+        "name": "views",
+        "type": "string"
+      },
+      {
+        "name": "likes",
+        "type": "string"
+      }
     ]
   },
   "props": [
@@ -73,33 +91,17 @@
       "required": true
     },
     {
-      "name": "filtersLabel",
-      "type": "string",
-      "required": true,
-      "docs": "accessible name of the filter row"
-    },
-    {
-      "name": "browse",
-      "type": "string",
-      "required": true,
-      "docs": "Browse All label"
-    },
-    {
       "name": "browseHref",
       "type": "string",
       "docs": "the address of the full list; none: a button"
     },
     {
-      "name": "viewsLabel",
-      "type": "string",
+      "name": "labels",
+      "type": {
+        "record": "TemplateLabels"
+      },
       "required": true,
-      "docs": "accessible name for the views count"
-    },
-    {
-      "name": "likesLabel",
-      "type": "string",
-      "required": true,
-      "docs": "accessible name for the likes count"
+      "docs": "the name of the filter row, the browse-all text, the hidden names of the counts"
     },
     {
       "name": "cols",
@@ -121,6 +123,12 @@
         "ts": "\"roomy\" | \"default\" | \"compact\""
       },
       "default": "compact"
+    },
+    {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
     },
     {
       "name": "landmarkLabel",
@@ -197,61 +205,79 @@
                       ]
                     },
                     {
-                      "use": "Group",
-                      "props": {
-                        "Gap": "4",
-                        "Align": "center",
-                        "Class": "flex-wrap"
+                      "when": {
+                        "op": "gt",
+                        "args": [
+                          {
+                            "op": "len",
+                            "args": [
+                              {
+                                "$": "filters"
+                              }
+                            ]
+                          },
+                          0
+                        ]
                       },
-                      "attrs": {
-                        "role": "group",
-                        "aria-label": {
-                          "$": "filtersLabel"
-                        },
-                        "data-testid": "template-filters"
-                      },
-                      "children": [
+                      "then": [
                         {
-                          "each": {
-                            "$": "filters"
+                          "use": "Group",
+                          "props": {
+                            "Gap": "4",
+                            "Align": "center",
+                            "Class": "flex-wrap"
                           },
-                          "as": "f",
-                          "key": {
-                            "$": "f.id"
+                          "attrs": {
+                            "role": "group",
+                            "aria-label": {
+                              "$": "labels.filters"
+                            },
+                            "data-testid": "template-filters"
                           },
-                          "do": [
+                          "children": [
                             {
-                              "use": "Button",
-                              "props": {
-                                "Variant": "outline",
-                                "Size": "sm",
-                                "Type": "button",
-                                "Class": "gap-2"
+                              "each": {
+                                "$": "filters"
                               },
-                              "attrs": {
-                                "data-testid": "template-filter"
+                              "as": "f",
+                              "key": {
+                                "$": "f.id"
                               },
-                              "children": [
+                              "do": [
                                 {
-                                  "when": {
-                                    "$": "f.icon"
+                                  "use": "Button",
+                                  "props": {
+                                    "Variant": "outline",
+                                    "Size": "sm",
+                                    "Type": "button",
+                                    "Class": "gap-2"
                                   },
-                                  "then": [
+                                  "attrs": {
+                                    "data-testid": "template-filter"
+                                  },
+                                  "children": [
                                     {
-                                      "use": "LucideIcon",
-                                      "props": {
-                                        "Name": {
-                                          "$": "f.icon"
-                                        },
-                                        "Size": 16
+                                      "when": {
+                                        "$": "f.icon"
+                                      },
+                                      "then": [
+                                        {
+                                          "use": "LucideIcon",
+                                          "props": {
+                                            "Name": {
+                                              "$": "f.icon"
+                                            },
+                                            "Size": 16
+                                          }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "text": {
+                                        "$": "f.title"
                                       }
                                     }
                                   ]
-                                },
-                                {
-                                  "text": {
-                                    "$": "f.title"
-                                  }
                                 }
                               ]
                             }
@@ -262,244 +288,273 @@
                   ]
                 },
                 {
-                  "use": "Grid",
-                  "props": {
-                    "Cols": {
-                      "$": "cols"
-                    },
-                    "Class": "w-full gap-6"
+                  "when": {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "op": "len",
+                        "args": [
+                          {
+                            "$": "templates"
+                          }
+                        ]
+                      },
+                      0
+                    ]
                   },
-                  "attrs": {
-                    "data-testid": "template-grid"
-                  },
-                  "children": [
+                  "then": [
                     {
-                      "each": {
-                        "$": "templates"
+                      "organism": "EmptyState",
+                      "props": {
+                        "icon": "layout-template",
+                        "title": {
+                          "$": "empty"
+                        }
+                      }
+                    }
+                  ],
+                  "else": [
+                    {
+                      "use": "Grid",
+                      "props": {
+                        "Cols": {
+                          "$": "cols"
+                        },
+                        "Class": "w-full gap-6"
                       },
-                      "as": "t",
-                      "key": {
-                        "$": "t.id"
+                      "attrs": {
+                        "data-testid": "template-grid"
                       },
-                      "do": [
+                      "children": [
                         {
-                          "use": "Box",
-                          "props": {
-                            "Class": {
-                              "op": "cn",
-                              "args": [
-                                "flex flex-col gap-2 overflow-hidden rounded p-4 inset-ring inset-ring-border",
-                                {
-                                  "op": "preset",
-                                  "args": [
-                                    "defaults",
-                                    "templates.card"
-                                  ]
-                                }
-                              ]
-                            }
+                          "each": {
+                            "$": "templates"
                           },
-                          "attrs": {
-                            "data-testid": "template-card"
+                          "as": "t",
+                          "key": {
+                            "$": "t.id"
                           },
-                          "children": [
+                          "do": [
                             {
                               "use": "Box",
                               "props": {
                                 "Class": {
                                   "op": "cn",
                                   "args": [
-                                    "shrink-0 overflow-hidden",
+                                    "flex flex-col gap-2 overflow-hidden rounded p-4 inset-ring inset-ring-border",
                                     {
                                       "op": "preset",
                                       "args": [
                                         "defaults",
-                                        "templates.image"
-                                      ]
-                                    }
-                                  ]
-                                }
-                              },
-                              "children": [
-                                {
-                                  "organism": "MediaFrame",
-                                  "props": {
-                                    "alt": {
-                                      "$": "t.title"
-                                    },
-                                    "className": {
-                                      "op": "cn",
-                                      "args": [
-                                        "size-full",
-                                        {
-                                          "op": "preset",
-                                          "args": [
-                                            "defaults",
-                                            "media.rounded"
-                                          ]
-                                        }
-                                      ]
-                                    }
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "use": "Group",
-                              "props": {
-                                "Gap": "4",
-                                "Align": "center",
-                                "Class": {
-                                  "op": "cn",
-                                  "args": [
-                                    "w-full",
-                                    {
-                                      "op": "preset",
-                                      "args": [
-                                        "defaults",
-                                        "templates.footer"
+                                        "templates.card"
                                       ]
                                     }
                                   ]
                                 }
                               },
                               "attrs": {
-                                "data-testid": "template-footer"
+                                "data-testid": "template-card"
                               },
                               "children": [
                                 {
-                                  "use": "IconBadge",
+                                  "use": "Box",
                                   "props": {
-                                    "Size": "sm",
-                                    "Class": "overflow-hidden"
-                                  },
-                                  "attrs": {
-                                    "data-testid": "template-avatar"
+                                    "Class": {
+                                      "op": "cn",
+                                      "args": [
+                                        "shrink-0 overflow-hidden",
+                                        {
+                                          "op": "preset",
+                                          "args": [
+                                            "defaults",
+                                            "templates.image"
+                                          ]
+                                        }
+                                      ]
+                                    }
                                   },
                                   "children": [
                                     {
-                                      "use": "LucideIcon",
+                                      "organism": "MediaFrame",
                                       "props": {
-                                        "Name": "layout-template",
-                                        "Size": 16
+                                        "alt": {
+                                          "$": "t.title"
+                                        },
+                                        "className": {
+                                          "op": "cn",
+                                          "args": [
+                                            "size-full",
+                                            {
+                                              "op": "preset",
+                                              "args": [
+                                                "defaults",
+                                                "media.rounded"
+                                              ]
+                                            }
+                                          ]
+                                        }
                                       }
                                     }
                                   ]
                                 },
                                 {
-                                  "use": "Stack",
+                                  "use": "Group",
                                   "props": {
-                                    "Gap": "0",
-                                    "Class": "min-w-0 flex-1"
+                                    "Gap": "4",
+                                    "Align": "center",
+                                    "Class": {
+                                      "op": "cn",
+                                      "args": [
+                                        "w-full",
+                                        {
+                                          "op": "preset",
+                                          "args": [
+                                            "defaults",
+                                            "templates.footer"
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "attrs": {
+                                    "data-testid": "template-footer"
                                   },
                                   "children": [
                                     {
-                                      "use": "Title",
+                                      "use": "IconBadge",
                                       "props": {
-                                        "As": 3,
-                                        "Size": "base",
-                                        "Weight": "semibold",
-                                        "Class": "truncate leading-6"
+                                        "Size": "sm",
+                                        "Class": "overflow-hidden"
+                                      },
+                                      "attrs": {
+                                        "data-testid": "template-avatar"
                                       },
                                       "children": [
                                         {
-                                          "text": {
-                                            "$": "t.title"
+                                          "use": "LucideIcon",
+                                          "props": {
+                                            "Name": "layout-template",
+                                            "Size": 16
                                           }
                                         }
                                       ]
                                     },
                                     {
-                                      "use": "Group",
+                                      "use": "Stack",
                                       "props": {
-                                        "Gap": "4",
-                                        "Align": "center",
-                                        "Class": "h-4 text-muted-foreground"
+                                        "Gap": "0",
+                                        "Class": "min-w-0 flex-1"
                                       },
                                       "children": [
                                         {
-                                          "use": "Group",
+                                          "use": "Title",
                                           "props": {
-                                            "Gap": "2",
-                                            "Align": "center"
+                                            "As": 3,
+                                            "Size": "base",
+                                            "Weight": "semibold",
+                                            "Class": "truncate leading-6"
                                           },
                                           "children": [
                                             {
-                                              "use": "LucideIcon",
-                                              "props": {
-                                                "Name": "eye",
-                                                "Size": 16
+                                              "text": {
+                                                "$": "t.title"
                                               }
-                                            },
-                                            {
-                                              "use": "Inline",
-                                              "props": {
-                                                "Class": "sr-only"
-                                              },
-                                              "children": [
-                                                {
-                                                  "text": {
-                                                    "$": "viewsLabel"
-                                                  }
-                                                }
-                                              ]
-                                            },
-                                            {
-                                              "use": "Text",
-                                              "props": {
-                                                "Size": "xs",
-                                                "Weight": "bold",
-                                                "Class": "leading-4"
-                                              },
-                                              "children": [
-                                                {
-                                                  "text": {
-                                                    "$": "t.views"
-                                                  }
-                                                }
-                                              ]
                                             }
                                           ]
                                         },
                                         {
                                           "use": "Group",
                                           "props": {
-                                            "Gap": "2",
-                                            "Align": "center"
+                                            "Gap": "4",
+                                            "Align": "center",
+                                            "Class": "h-4 text-muted-foreground"
                                           },
                                           "children": [
                                             {
-                                              "use": "LucideIcon",
+                                              "use": "Group",
                                               "props": {
-                                                "Name": "heart",
-                                                "Size": 16
-                                              }
-                                            },
-                                            {
-                                              "use": "Inline",
-                                              "props": {
-                                                "Class": "sr-only"
+                                                "Gap": "2",
+                                                "Align": "center"
                                               },
                                               "children": [
                                                 {
-                                                  "text": {
-                                                    "$": "likesLabel"
+                                                  "use": "LucideIcon",
+                                                  "props": {
+                                                    "Name": "eye",
+                                                    "Size": 16
                                                   }
+                                                },
+                                                {
+                                                  "use": "Inline",
+                                                  "props": {
+                                                    "Class": "sr-only"
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "text": {
+                                                        "$": "labels.views"
+                                                      }
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "use": "Text",
+                                                  "props": {
+                                                    "Size": "xs",
+                                                    "Weight": "bold",
+                                                    "Class": "leading-4"
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "text": {
+                                                        "$": "t.views"
+                                                      }
+                                                    }
+                                                  ]
                                                 }
                                               ]
                                             },
                                             {
-                                              "use": "Text",
+                                              "use": "Group",
                                               "props": {
-                                                "Size": "xs",
-                                                "Weight": "bold",
-                                                "Class": "leading-4"
+                                                "Gap": "2",
+                                                "Align": "center"
                                               },
                                               "children": [
                                                 {
-                                                  "text": {
-                                                    "$": "t.likes"
+                                                  "use": "LucideIcon",
+                                                  "props": {
+                                                    "Name": "heart",
+                                                    "Size": 16
                                                   }
+                                                },
+                                                {
+                                                  "use": "Inline",
+                                                  "props": {
+                                                    "Class": "sr-only"
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "text": {
+                                                        "$": "labels.likes"
+                                                      }
+                                                    }
+                                                  ]
+                                                },
+                                                {
+                                                  "use": "Text",
+                                                  "props": {
+                                                    "Size": "xs",
+                                                    "Weight": "bold",
+                                                    "Class": "leading-4"
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "text": {
+                                                        "$": "t.likes"
+                                                      }
+                                                    }
+                                                  ]
                                                 }
                                               ]
                                             }
@@ -533,7 +588,7 @@
                   "children": [
                     {
                       "text": {
-                        "$": "browse"
+                        "$": "labels.browse"
                       }
                     }
                   ]

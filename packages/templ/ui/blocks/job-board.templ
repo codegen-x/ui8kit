@@ -24,6 +24,7 @@ type JobBoardProps struct {
 	Layout any `json:"layout"`
 	Salary any `json:"salary"`
 	Tone any `json:"tone"`
+	Empty any `json:"empty"`
 	LandmarkLabel any `json:"landmarkLabel"`
 }
 
@@ -38,9 +39,12 @@ templ JobBoard(p JobBoardProps) {
 	{{ vLayout := uiutils.Def(p.Layout, "grid") }}
 	{{ vSalary := uiutils.Def(p.Salary, "hide") }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
+	{{ vEmpty := uiutils.Def(p.Empty, "") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Tone: vTone, Measure: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "grouped")), "3xl", "default"), LandmarkLabel: vLandmarkLabel}) {
-		if uiutils.Eq(vLayout, "grouped") {
+		if uiutils.Eq(uiutils.Len(vJobs), float64(0)) {
+			@EmptyState(EmptyStateProps{Icon: "briefcase", Title: vEmpty})
+		} else if uiutils.Eq(vLayout, "grouped") {
 			@stack.Stack(stack.StackProps{Gap: "8", Align: "stretch", Attrs: uiutils.Attrs("data-testid", "groups")}) {
 				for _, vD := range uiutils.L(vDepartments) {
 					@stack.Stack(stack.StackProps{Gap: "2", Align: "stretch", Attrs: uiutils.Attrs("data-testid", "group")}) {

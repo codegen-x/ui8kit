@@ -143,7 +143,7 @@ export const KIT_FIELDS = {
   task: { id: "id", title: "title", text: m("text"), done: m("done") },
   prompt: { id: "id", name: "title", icon: m("icon") },
   promptFilter: { id: "id", title: "title", value: m("value"), icon: m("icon") },
-  template: { id: "id", title: "title", views: m("views"), likes: m("likes"), topic: m("topic") },
+  template: { id: "id", title: "title", views: `${m("views")}|compact`, likes: `${m("likes")}|compact`, topic: m("topic") },
   tab: { id: "id", name: "title", icon: m("icon") },
   posttag: { id: "id", name: "title", icon: m("icon") },
   row: { id: "id", label: "title", a: m("a"), b: m("b"), c: m("c") },

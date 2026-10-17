@@ -227,7 +227,7 @@ const templates = define({
     { sel: '[data-testid="template-filter"]', n: "@templateFilters" },
     { sel: '[data-testid="template-browse"]', n: 1 },
   ],
-  sample: { id: "templates", title: t("vibe.templates.title"), templates: ref("templates"), filters: ref("templateFilters"), filtersLabel: t("vibe.templates.filters"), browse: t("vibe.templates.browse"), browseHref: "#/", viewsLabel: t("vibe.templates.views"), likesLabel: t("vibe.templates.likes") },
+  sample: { id: "templates", title: t("vibe.templates.title"), templates: ref("templates"), filters: ref("templateFilters"), labels: t("vibe.templates"), browseHref: "#/", empty: t("empty.templates") },
 });
 
 export const moreBlocks = [announcement, cookie, newsletter, posts, postheader, auth, profile, metrics, chart, activity, empty, checklist, stepper, contact, channels, templates];

@@ -54,6 +54,7 @@
     }
   ],
   "slots": [
+    "EmptyState",
     "JobCards",
     "MenuEntry",
     "SectionFrame"
@@ -151,6 +152,9 @@
       },
       "jobs": {
         "$": "jobs"
+      },
+      "empty": {
+        "$": "ui.empty.jobs"
       },
       "departments": {
         "$": "departments"

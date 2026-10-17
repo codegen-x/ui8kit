@@ -78,6 +78,12 @@ export function fmtFigure(value: unknown, unit: unknown, locale: string = DEFAUL
   return new Intl.NumberFormat(locale, known ? { style: "unit", unit: unit as string, unitDisplay: "narrow", maximumFractionDigits: 2 } : { maximumFractionDigits: 2 }).format(value);
 }
 
+/** a count in short form, in the locale (1200 -> "1.2K", 96 -> "96"): views, likes, followers */
+export function fmtCompact(value: unknown, locale: string = DEFAULT_LOCALE): string | undefined {
+  if (typeof value !== "number" || !Number.isFinite(value)) return undefined;
+  return new Intl.NumberFormat(locale, { notation: "compact", maximumFractionDigits: 1 }).format(value);
+}
+
 /** an amount of money in integer minor units ("4820000", "USD" -> "$48,200"), in the locale; whole amounts show no cents */
 export function fmtCurrency(minor: unknown, currency: string, locale: string = DEFAULT_LOCALE): string | undefined {
   if (typeof minor !== "number" || !Number.isFinite(minor)) return undefined;
@@ -115,6 +121,7 @@ const byLocale = (records: readonly unknown[], locale: string): unknown => recor
  *   "author_id|author"          -> the display name of that user     "terms|term:category" -> the name of the entry's term of that taxonomy
  *   "terms|term-slug:faq_category" -> the slug of that term (a filter key)
  *   "metadata.value.value|number" -> the number in the locale, with the entry's `metadata.unit` (percent, second): 12400 -> "12,400"
+ *   "metadata.views.value|compact" -> the count in short form: 1200 -> "1.2K"
  *   "id|menu"                   -> the menu items under this one (parent_id), as { id, name, icon, href } (href only with a route)
  */
 export function readPath(source: unknown, path: string, opts: ReadOptions = {}): unknown {
@@ -139,6 +146,7 @@ export function readPath(source: unknown, path: string, opts: ReadOptions = {}):
     const currency = field(field(field(source, "metadata"), "currency"), "value");
     return typeof currency === "string" ? fmtCurrency(cur, currency, locale) : fmtFigure(cur, field(field(field(source, "metadata"), "unit"), "value"), locale);
   }
+  if (pipe === "compact") return fmtCompact(cur, locale);
   if (pipe.startsWith("term:") || pipe.startsWith("term-slug:")) {
     const taxonomy = pipe.slice(pipe.indexOf(":") + 1);
     const ref = Array.isArray(cur) ? cur.find((r) => field(r, "taxonomy") === taxonomy) : undefined;

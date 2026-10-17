@@ -12,10 +12,10 @@
       "title": "Store Front",
       "metadata": {
         "views": {
-          "value": "1.2K"
+          "value": 1200
         },
         "likes": {
-          "value": "96"
+          "value": 96
         },
         "topic": {
           "value": "landing"
@@ -36,10 +36,10 @@
       "title": "Event Page",
       "metadata": {
         "views": {
-          "value": "3.4K"
+          "value": 3400
         },
         "likes": {
-          "value": "210"
+          "value": 210
         },
         "topic": {
           "value": "landing"
@@ -60,10 +60,10 @@
       "title": "Team Dashboard",
       "metadata": {
         "views": {
-          "value": "860"
+          "value": 860
         },
         "likes": {
-          "value": "48"
+          "value": 48
         },
         "topic": {
           "value": "dashboard"
@@ -84,10 +84,10 @@
       "title": "Docs Site",
       "metadata": {
         "views": {
-          "value": "2.1K"
+          "value": 2100
         },
         "likes": {
-          "value": "133"
+          "value": 133
         },
         "topic": {
           "value": "code"
@@ -108,10 +108,10 @@
       "title": "Portfolio",
       "metadata": {
         "views": {
-          "value": "5.0K"
+          "value": 5000
         },
         "likes": {
-          "value": "402"
+          "value": 402
         },
         "topic": {
           "value": "landing"
@@ -132,10 +132,10 @@
       "title": "Course Page",
       "metadata": {
         "views": {
-          "value": "740"
+          "value": 740
         },
         "likes": {
-          "value": "35"
+          "value": 35
         },
         "topic": {
           "value": "dashboard"
@@ -156,10 +156,10 @@
       "title": "Status Board",
       "metadata": {
         "views": {
-          "value": "1.8K"
+          "value": 1800
         },
         "likes": {
-          "value": "120"
+          "value": 120
         },
         "topic": {
           "value": "bots"
@@ -180,10 +180,10 @@
       "title": "Recipe Blog",
       "metadata": {
         "views": {
-          "value": "2.6K"
+          "value": 2600
         },
         "likes": {
-          "value": "188"
+          "value": 188
         },
         "topic": {
           "value": "data"

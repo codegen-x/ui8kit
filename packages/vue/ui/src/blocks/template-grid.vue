@@ -5,21 +5,19 @@
   button.
 -->
 <script lang="ts">
-import type { Template, Filter } from "./template-grid.types";
+import type { Template, Filter, TemplateLabels } from "./template-grid.types";
 
 export type TemplateGridProps = {
   id: string;
   title: string;
   templates: Template[];
   filters: Filter[];
-  filtersLabel: string;
-  browse: string;
   browseHref?: string;
-  viewsLabel: string;
-  likesLabel: string;
+  labels: TemplateLabels;
   cols?: "1-3" | "1-4";
   tone?: "default" | "muted";
   density?: "roomy" | "default" | "compact";
+  empty?: string;
   landmarkLabel?: string;
 };
 </script>
@@ -35,6 +33,7 @@ import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
+import EmptyState from "../components/empty-state.vue";
 import MediaFrame from "../components/media-frame.vue";
 import SectionFrame from "../components/section-frame.vue";
 import { defaults } from "../presets/defaults";
@@ -45,14 +44,12 @@ const {
   title,
   templates,
   filters,
-  filtersLabel,
-  browse,
   browseHref,
-  viewsLabel,
-  likesLabel,
+  labels,
   cols = "1-4",
   tone = "default",
   density = "compact",
+  empty = "",
   landmarkLabel,
 } = defineProps<TemplateGridProps>();
 </script>
@@ -71,12 +68,12 @@ const {
         <Title :as="2" size="2xl" weight="semibold" class="leading-9" :id="(id + '-title')">
           {{ title }}
         </Title>
-        <Group
+        <Group v-if="((filters?.length ?? 0) > 0)"
           gap="4"
           align="center"
           class="flex-wrap"
           role="group"
-          :aria-label="filtersLabel"
+          :aria-label="labels.filters"
           data-testid="template-filters"
         >
           <Button
@@ -93,7 +90,8 @@ const {
           </Button>
         </Group>
       </Group>
-      <Grid :cols="cols" class="w-full gap-6" data-testid="template-grid">
+      <EmptyState v-if="((templates?.length ?? 0) === 0)" icon="layout-template" :title="empty" />
+      <Grid v-else :cols="cols" class="w-full gap-6" data-testid="template-grid">
         <Box v-for="t in templates" :key="t.id"
           :class="cn(
             'flex flex-col gap-2 overflow-hidden rounded p-4 inset-ring inset-ring-border',
@@ -116,7 +114,7 @@ const {
                 <Group gap="2" align="center">
                   <LucideIcon name="eye" :size="16" />
                   <Inline class="sr-only">
-                    {{ viewsLabel }}
+                    {{ labels.views }}
                   </Inline>
                   <Text size="xs" weight="bold" class="leading-4">
                     {{ t.views }}
@@ -125,7 +123,7 @@ const {
                 <Group gap="2" align="center">
                   <LucideIcon name="heart" :size="16" />
                   <Inline class="sr-only">
-                    {{ likesLabel }}
+                    {{ labels.likes }}
                   </Inline>
                   <Text size="xs" weight="bold" class="leading-4">
                     {{ t.likes }}
@@ -137,7 +135,7 @@ const {
         </Box>
       </Grid>
       <Button variant="outline" size="sm" :href="browseHref" class="w-full" data-testid="template-browse">
-        {{ browse }}
+        {{ labels.browse }}
       </Button>
     </Stack>
   </SectionFrame>

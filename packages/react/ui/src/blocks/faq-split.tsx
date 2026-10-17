@@ -52,87 +52,91 @@ export function FaqSplit({
 }: FaqSplitProps) {
   return (
     <>
-      {((layout as string) === "cards") ? (
-        <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone} landmarkLabel={landmarkLabel}>
-          <FaqCards items={items} labels={labels} cards={cards} />
-        </SectionFrame>
-      ) : null}
-      {((layout as string) === "head") ? (
-        <SectionFrame
-          id={id}
-          title={title}
-          lead={lead}
-          heading={{ badge }}
-          tone={tone}
-          layout="split"
-          media={{ show: true, side: "end", align: "start" }}
-          landmarkLabel={landmarkLabel}
-          aside={(
-            <FaqDisclosures items={items} name={tpl("{0}-faq", id)} />
-          )}
-        >
-          <Box>
-            <Button variant="default" size="default" data-testid="faq-cta">
-              {labels.cta}
-            </Button>
-          </Box>
-        </SectionFrame>
-      ) : null}
-      {((layout as string) === "aside") ? (
-        <SectionFrame
-          id={id}
-          title={title}
-          lead={lead}
-          heading={{ badge }}
-          tone={tone}
-          layout="split"
-          media={{ show: true, side: "end", align: "start" }}
-          landmarkLabel={landmarkLabel}
-          aside={(
-            <FaqHelp labels={labels} channels={channels} landmarkLabel={landmarkLabel} />
-          )}
-        >
-          <FaqDisclosures items={items} name={tpl("{0}-faq", id)} />
-        </SectionFrame>
-      ) : null}
-      {((layout as string) === "media") ? (
-        <SectionFrame
-          id={id}
-          title={title}
-          lead={lead}
-          heading={{ badge }}
-          tone={tone}
-          layout="split"
-          media={{ show: true, side: mediaSide, align: "start" }}
-          landmarkLabel={landmarkLabel}
-          aside={(
-            <MediaFrame alt={title} ratio="4/3" />
-          )}
-        >
-          <FaqDisclosures items={items} name={tpl("{0}-faq", id)} />
-          <Box>
-            <Button variant="default" size="default" data-testid="faq-cta">
-              {labels.cta}
-            </Button>
-          </Box>
-        </SectionFrame>
-      ) : null}
-      {((layout as string) === "search") ? (
-        <SectionFrame
-          id={id}
-          title={title}
-          lead={lead}
-          heading={{ badge }}
-          tone={tone}
-          layout="split"
-          media={{ show: true, side: mediaSide }}
-          landmarkLabel={landmarkLabel}
-          aside={(
-            <MediaFrame alt={title} ratio="4/3" />
-          )}
-        >
-          <FaqFinder items={items} labels={labels} topics={topics} />
-        </SectionFrame>
+      {((items?.length ?? 0) > 0) ? (
+        <>
+          {((layout as string) === "cards") ? (
+            <SectionFrame id={id} title={title} lead={lead} heading={{ badge }} tone={tone} landmarkLabel={landmarkLabel}>
+              <FaqCards items={items} labels={labels} cards={cards} />
+            </SectionFrame>
+          ) : null}
+          {((layout as string) === "head") ? (
+            <SectionFrame
+              id={id}
+              title={title}
+              lead={lead}
+              heading={{ badge }}
+              tone={tone}
+              layout="split"
+              media={{ show: true, side: "end", align: "start" }}
+              landmarkLabel={landmarkLabel}
+              aside={(
+                <FaqDisclosures items={items} name={tpl("{0}-faq", id)} />
+              )}
+            >
+              <Box>
+                <Button variant="default" size="default" data-testid="faq-cta">
+                  {labels.cta}
+                </Button>
+              </Box>
+            </SectionFrame>
+          ) : null}
+          {((layout as string) === "aside") ? (
+            <SectionFrame
+              id={id}
+              title={title}
+              lead={lead}
+              heading={{ badge }}
+              tone={tone}
+              layout="split"
+              media={{ show: true, side: "end", align: "start" }}
+              landmarkLabel={landmarkLabel}
+              aside={(
+                <FaqHelp labels={labels} channels={channels} landmarkLabel={landmarkLabel} />
+              )}
+            >
+              <FaqDisclosures items={items} name={tpl("{0}-faq", id)} />
+            </SectionFrame>
+          ) : null}
+          {((layout as string) === "media") ? (
+            <SectionFrame
+              id={id}
+              title={title}
+              lead={lead}
+              heading={{ badge }}
+              tone={tone}
+              layout="split"
+              media={{ show: true, side: mediaSide, align: "start" }}
+              landmarkLabel={landmarkLabel}
+              aside={(
+                <MediaFrame alt={title} ratio="4/3" />
+              )}
+            >
+              <FaqDisclosures items={items} name={tpl("{0}-faq", id)} />
+              <Box>
+                <Button variant="default" size="default" data-testid="faq-cta">
+                  {labels.cta}
+                </Button>
+              </Box>
+            </SectionFrame>
+          ) : null}
+          {((layout as string) === "search") ? (
+            <SectionFrame
+              id={id}
+              title={title}
+              lead={lead}
+              heading={{ badge }}
+              tone={tone}
+              layout="split"
+              media={{ show: true, side: mediaSide }}
+              landmarkLabel={landmarkLabel}
+              aside={(
+                <MediaFrame alt={title} ratio="4/3" />
+              )}
+            >
+              <FaqFinder items={items} labels={labels} topics={topics} />
+            </SectionFrame>
+          ) : null}
+        </>
       ) : null}
     </>
   );

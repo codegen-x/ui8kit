@@ -1970,7 +1970,7 @@
       "surface": "kit-block",
       "spec": "block.faqsplit",
       "source": "xgen/specs/blocks/faqsplit.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "items",
@@ -2079,7 +2079,8 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "FeatureGrid",
@@ -2853,7 +2854,7 @@
       "surface": "kit-block",
       "spec": "block.jobs",
       "source": "xgen/specs/blocks/jobs.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "jobs",
@@ -2861,7 +2862,17 @@
           "kind": "job",
           "record": "Job",
           "map": "job",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.dept.value",
+            "metadata.location.value",
+            "metadata.type.value",
+            "metadata.salary.value",
+            "metadata.posted.value"
+          ],
+          "optional": []
         },
         {
           "prop": "departments",
@@ -2869,7 +2880,12 @@
           "kind": "department",
           "record": "Department",
           "map": "department",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -2891,6 +2907,11 @@
           "keys": []
         },
         {
+          "prop": "empty",
+          "dictionary": "empty.jobs",
+          "keys": []
+        },
+        {
           "prop": "labels",
           "dictionary": "company.jobs",
           "keys": [
@@ -2905,7 +2926,7 @@
           ]
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "KanbanBoard",
@@ -5706,7 +5727,7 @@
       "surface": "kit-block",
       "spec": "block.templates",
       "source": "xgen/specs/blocks/templates.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "templates",
@@ -5714,7 +5735,15 @@
           "kind": "template",
           "record": "Template",
           "map": "template",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.views.value",
+            "metadata.likes.value",
+            "metadata.topic.value"
+          ],
+          "optional": []
         },
         {
           "prop": "filters",
@@ -5722,7 +5751,14 @@
           "kind": "prompt",
           "record": "Filter",
           "map": "promptFilter",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.value.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -5740,27 +5776,22 @@
           "keys": []
         },
         {
-          "prop": "filtersLabel",
-          "dictionary": "vibe.templates.filters",
-          "keys": []
+          "prop": "labels",
+          "dictionary": "vibe.templates",
+          "keys": [
+            "filters",
+            "browse",
+            "views",
+            "likes"
+          ]
         },
         {
-          "prop": "browse",
-          "dictionary": "vibe.templates.browse",
-          "keys": []
-        },
-        {
-          "prop": "viewsLabel",
-          "dictionary": "vibe.templates.views",
-          "keys": []
-        },
-        {
-          "prop": "likesLabel",
-          "dictionary": "vibe.templates.likes",
+          "prop": "empty",
+          "dictionary": "empty.templates",
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "TestimonialGrid",
@@ -6270,7 +6301,7 @@
       "id": "screen.blocks",
       "surface": "xgen-screen",
       "source": "xgen/specs/screens/blocks.json",
-      "status": "todo",
+      "status": "done",
       "data": [],
       "settings": [
         "routes",
@@ -6284,7 +6315,7 @@
       "id": "screen.catalog",
       "surface": "xgen-screen",
       "source": "xgen/specs/screens/catalog.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "AboutCompany.stats",
@@ -6897,7 +6928,7 @@
           "keys": []
         }
       ],
-      "emptyState": false,
+      "emptyState": true,
       "uses": [
         "block.about",
         "block.aboutme",
@@ -8343,7 +8374,7 @@
       "id": "screen.theme-marketing-landing",
       "surface": "xgen-screen",
       "source": "xgen/specs/screens/theme-marketing-landing.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "AboutCompany.stats",
@@ -8713,7 +8744,7 @@
           "keys": []
         }
       ],
-      "emptyState": false,
+      "emptyState": true,
       "uses": [
         "block.about",
         "block.aboutme",

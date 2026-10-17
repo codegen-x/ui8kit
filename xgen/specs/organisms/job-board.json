@@ -144,6 +144,12 @@
       "default": "default"
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no records), from the dictionary"
+    },
+    {
       "name": "landmarkLabel",
       "type": "string",
       "docs": "accessible name of the landmark of this component when the page shows it more than once (a variant); replaces the heading name of the root landmark, follows the name of a nested one"
@@ -196,199 +202,228 @@
                 "op": "eq",
                 "args": [
                   {
-                    "$": "layout"
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "jobs"
+                      }
+                    ]
                   },
-                  "grouped"
+                  0
                 ]
               },
               "then": [
                 {
-                  "use": "Stack",
+                  "organism": "EmptyState",
                   "props": {
-                    "Gap": "8",
-                    "Align": "stretch"
+                    "icon": "briefcase",
+                    "title": {
+                      "$": "empty"
+                    }
+                  }
+                }
+              ],
+              "else": [
+                {
+                  "when": {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "$": "layout"
+                      },
+                      "grouped"
+                    ]
                   },
-                  "attrs": {
-                    "data-testid": "groups"
-                  },
-                  "children": [
+                  "then": [
                     {
-                      "each": {
-                        "$": "departments"
+                      "use": "Stack",
+                      "props": {
+                        "Gap": "8",
+                        "Align": "stretch"
                       },
-                      "as": "d",
-                      "key": {
-                        "$": "d.id"
+                      "attrs": {
+                        "data-testid": "groups"
                       },
-                      "do": [
+                      "children": [
                         {
-                          "use": "Stack",
-                          "props": {
-                            "Gap": "2",
-                            "Align": "stretch"
+                          "each": {
+                            "$": "departments"
                           },
-                          "attrs": {
-                            "data-testid": "group"
+                          "as": "d",
+                          "key": {
+                            "$": "d.id"
                           },
-                          "children": [
+                          "do": [
                             {
-                              "use": "Group",
+                              "use": "Stack",
                               "props": {
-                                "Gap": "4",
-                                "Align": "baseline",
-                                "Justify": "between"
+                                "Gap": "2",
+                                "Align": "stretch"
+                              },
+                              "attrs": {
+                                "data-testid": "group"
                               },
                               "children": [
                                 {
-                                  "use": "Title",
+                                  "use": "Group",
                                   "props": {
-                                    "As": 3,
-                                    "Size": "lg",
-                                    "Weight": "bold"
+                                    "Gap": "4",
+                                    "Align": "baseline",
+                                    "Justify": "between"
                                   },
                                   "children": [
                                     {
-                                      "text": {
-                                        "$": "d.name"
-                                      }
-                                    }
-                                  ]
-                                },
-                                {
-                                  "use": "Text",
-                                  "props": {
-                                    "Size": "xs",
-                                    "Class": "text-muted-foreground"
-                                  },
-                                  "children": [
+                                      "use": "Title",
+                                      "props": {
+                                        "As": 3,
+                                        "Size": "lg",
+                                        "Weight": "bold"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "d.name"
+                                          }
+                                        }
+                                      ]
+                                    },
                                     {
-                                      "text": {
-                                        "op": "tpl",
-                                        "args": [
-                                          {
-                                            "$": "labels.count"
-                                          },
-                                          {
-                                            "op": "len",
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "xs",
+                                        "Class": "text-muted-foreground"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "op": "tpl",
                                             "args": [
                                               {
-                                                "op": "where",
+                                                "$": "labels.count"
+                                              },
+                                              {
+                                                "op": "len",
                                                 "args": [
                                                   {
-                                                    "$": "jobs"
-                                                  },
-                                                  "dept",
-                                                  {
-                                                    "$": "d.id"
+                                                    "op": "where",
+                                                    "args": [
+                                                      {
+                                                        "$": "jobs"
+                                                      },
+                                                      "dept",
+                                                      {
+                                                        "$": "d.id"
+                                                      }
+                                                    ]
                                                   }
                                                 ]
                                               }
                                             ]
                                           }
-                                        ]
-                                      }
+                                        }
+                                      ]
                                     }
                                   ]
-                                }
-                              ]
-                            },
-                            {
-                              "use": "List",
-                              "props": {
-                                "Tag": "ul",
-                                "Class": "flex flex-col"
-                              },
-                              "children": [
+                                },
                                 {
-                                  "each": {
-                                    "op": "where",
-                                    "args": [
-                                      {
-                                        "$": "jobs"
-                                      },
-                                      "dept",
-                                      {
-                                        "$": "d.id"
-                                      }
-                                    ]
+                                  "use": "List",
+                                  "props": {
+                                    "Tag": "ul",
+                                    "Class": "flex flex-col"
                                   },
-                                  "as": "j",
-                                  "key": {
-                                    "$": "j.id"
-                                  },
-                                  "do": [
+                                  "children": [
                                     {
-                                      "use": "ListItem",
-                                      "props": {
-                                        "Class": "flex flex-wrap items-center justify-between gap-4 border-b border-border py-4"
+                                      "each": {
+                                        "op": "where",
+                                        "args": [
+                                          {
+                                            "$": "jobs"
+                                          },
+                                          "dept",
+                                          {
+                                            "$": "d.id"
+                                          }
+                                        ]
                                       },
-                                      "attrs": {
-                                        "data-testid": "item"
+                                      "as": "j",
+                                      "key": {
+                                        "$": "j.id"
                                       },
-                                      "children": [
+                                      "do": [
                                         {
-                                          "use": "Stack",
+                                          "use": "ListItem",
                                           "props": {
-                                            "Gap": "0"
+                                            "Class": "flex flex-wrap items-center justify-between gap-4 border-b border-border py-4"
+                                          },
+                                          "attrs": {
+                                            "data-testid": "item"
                                           },
                                           "children": [
                                             {
-                                              "organism": "MenuEntry",
+                                              "use": "Stack",
                                               "props": {
-                                                "href": {
-                                                  "$": "j.href"
-                                                },
-                                                "className": "font-medium"
+                                                "Gap": "0"
                                               },
-                                              "slots": {
-                                                "children": {
-                                                  "args": [],
-                                                  "do": [
+                                              "children": [
+                                                {
+                                                  "organism": "MenuEntry",
+                                                  "props": {
+                                                    "href": {
+                                                      "$": "j.href"
+                                                    },
+                                                    "className": "font-medium"
+                                                  },
+                                                  "slots": {
+                                                    "children": {
+                                                      "args": [],
+                                                      "do": [
+                                                        {
+                                                          "text": {
+                                                            "$": "j.title"
+                                                          }
+                                                        }
+                                                      ]
+                                                    }
+                                                  }
+                                                },
+                                                {
+                                                  "use": "Text",
+                                                  "props": {
+                                                    "Size": "xs",
+                                                    "Class": "text-muted-foreground"
+                                                  },
+                                                  "children": [
                                                     {
                                                       "text": {
-                                                        "$": "j.title"
+                                                        "op": "tpl",
+                                                        "args": [
+                                                          "{0}, {1}",
+                                                          {
+                                                            "$": "j.location"
+                                                          },
+                                                          {
+                                                            "$": "j.type"
+                                                          }
+                                                        ]
                                                       }
                                                     }
                                                   ]
                                                 }
-                                              }
+                                              ]
                                             },
                                             {
-                                              "use": "Text",
+                                              "use": "Badge",
                                               "props": {
-                                                "Size": "xs",
-                                                "Class": "text-muted-foreground"
+                                                "Variant": "outline",
+                                                "Size": "default"
                                               },
                                               "children": [
                                                 {
                                                   "text": {
-                                                    "op": "tpl",
-                                                    "args": [
-                                                      "{0}, {1}",
-                                                      {
-                                                        "$": "j.location"
-                                                      },
-                                                      {
-                                                        "$": "j.type"
-                                                      }
-                                                    ]
+                                                    "$": "j.type"
                                                   }
                                                 }
                                               ]
-                                            }
-                                          ]
-                                        },
-                                        {
-                                          "use": "Badge",
-                                          "props": {
-                                            "Variant": "outline",
-                                            "Size": "default"
-                                          },
-                                          "children": [
-                                            {
-                                              "text": {
-                                                "$": "j.type"
-                                              }
                                             }
                                           ]
                                         }
@@ -402,29 +437,29 @@
                         }
                       ]
                     }
-                  ]
-                }
-              ],
-              "else": [
-                {
-                  "organism": "JobCards",
-                  "props": {
-                    "jobs": {
-                      "$": "jobs"
-                    },
-                    "departments": {
-                      "$": "departments"
-                    },
-                    "labels": {
-                      "$": "labels"
-                    },
-                    "layout": {
-                      "$": "layout"
-                    },
-                    "salary": {
-                      "$": "salary"
+                  ],
+                  "else": [
+                    {
+                      "organism": "JobCards",
+                      "props": {
+                        "jobs": {
+                          "$": "jobs"
+                        },
+                        "departments": {
+                          "$": "departments"
+                        },
+                        "labels": {
+                          "$": "labels"
+                        },
+                        "layout": {
+                          "$": "layout"
+                        },
+                        "salary": {
+                          "$": "salary"
+                        }
+                      }
                     }
-                  }
+                  ]
                 }
               ]
             }

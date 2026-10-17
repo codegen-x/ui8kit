@@ -6,21 +6,19 @@
 -->
 <script lang="ts" module>
   import type { Snippet } from "svelte";
-  import type { Template, Filter } from "./template-grid.types";
+  import type { Template, Filter, TemplateLabels } from "./template-grid.types";
 
   export type TemplateGridProps = {
     id: string;
     title: string;
     templates: Template[];
     filters: Filter[];
-    filtersLabel: string;
-    browse: string;
     browseHref?: string;
-    viewsLabel: string;
-    likesLabel: string;
+    labels: TemplateLabels;
     cols?: "1-3" | "1-4";
     tone?: "default" | "muted";
     density?: "roomy" | "default" | "compact";
+    empty?: string;
     landmarkLabel?: string;
   };
 </script>
@@ -36,6 +34,7 @@
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import { defaults } from "../presets/defaults";
@@ -46,14 +45,12 @@
     title,
     templates,
     filters,
-    filtersLabel,
-    browse,
     browseHref,
-    viewsLabel,
-    likesLabel,
+    labels,
     cols = "1-4",
     tone = "default",
     density = "compact",
+    empty = "",
     landmarkLabel,
   }: TemplateGridProps = $props();
 </script>
@@ -64,71 +61,77 @@
       <Title as={2} size="2xl" weight="semibold" class="leading-9" id={(id + "-title")}>
         {title}
       </Title>
-      <Group
-        gap="4"
-        align="center"
-        class="flex-wrap"
-        role="group"
-        aria-label={filtersLabel}
-        data-testid="template-filters"
-      >
-        {#each filters as f (f.id)}
-          <Button variant="outline" size="sm" type="button" class="gap-2" data-testid="template-filter">
-            {#if f.icon}
-              <LucideIcon name={f.icon} size={16} />
-            {/if}
-            {f.title}
-          </Button>
-        {/each}
-      </Group>
-    </Group>
-    <Grid cols={cols} class="w-full gap-6" data-testid="template-grid">
-      {#each templates as t (t.id)}
-        <Box
-          class={cn(
-            "flex flex-col gap-2 overflow-hidden rounded p-4 inset-ring inset-ring-border",
-            defaults.templates.card
-          )}
-          data-testid="template-card"
+      {#if ((filters?.length ?? 0) > 0)}
+        <Group
+          gap="4"
+          align="center"
+          class="flex-wrap"
+          role="group"
+          aria-label={labels.filters}
+          data-testid="template-filters"
         >
-          <Box class={cn("shrink-0 overflow-hidden", defaults.templates.image)}>
-            <MediaFrame alt={t.title} class={cn("size-full", defaults.media.rounded)} />
+          {#each filters as f (f.id)}
+            <Button variant="outline" size="sm" type="button" class="gap-2" data-testid="template-filter">
+              {#if f.icon}
+                <LucideIcon name={f.icon} size={16} />
+              {/if}
+              {f.title}
+            </Button>
+          {/each}
+        </Group>
+      {/if}
+    </Group>
+    {#if ((templates?.length ?? 0) === 0)}
+      <EmptyState icon="layout-template" title={empty} />
+    {:else}
+      <Grid cols={cols} class="w-full gap-6" data-testid="template-grid">
+        {#each templates as t (t.id)}
+          <Box
+            class={cn(
+              "flex flex-col gap-2 overflow-hidden rounded p-4 inset-ring inset-ring-border",
+              defaults.templates.card
+            )}
+            data-testid="template-card"
+          >
+            <Box class={cn("shrink-0 overflow-hidden", defaults.templates.image)}>
+              <MediaFrame alt={t.title} class={cn("size-full", defaults.media.rounded)} />
+            </Box>
+            <Group gap="4" align="center" class={cn("w-full", defaults.templates.footer)} data-testid="template-footer">
+              <IconBadge size="sm" class="overflow-hidden" data-testid="template-avatar">
+                <LucideIcon name="layout-template" size={16} />
+              </IconBadge>
+              <Stack gap="0" class="min-w-0 flex-1">
+                <Title as={3} size="base" weight="semibold" class="truncate leading-6">
+                  {t.title}
+                </Title>
+                <Group gap="4" align="center" class="h-4 text-muted-foreground">
+                  <Group gap="2" align="center">
+                    <LucideIcon name="eye" size={16} />
+                    <Inline class="sr-only">
+                      {labels.views}
+                    </Inline>
+                    <Text size="xs" weight="bold" class="leading-4">
+                      {t.views}
+                    </Text>
+                  </Group>
+                  <Group gap="2" align="center">
+                    <LucideIcon name="heart" size={16} />
+                    <Inline class="sr-only">
+                      {labels.likes}
+                    </Inline>
+                    <Text size="xs" weight="bold" class="leading-4">
+                      {t.likes}
+                    </Text>
+                  </Group>
+                </Group>
+              </Stack>
+            </Group>
           </Box>
-          <Group gap="4" align="center" class={cn("w-full", defaults.templates.footer)} data-testid="template-footer">
-            <IconBadge size="sm" class="overflow-hidden" data-testid="template-avatar">
-              <LucideIcon name="layout-template" size={16} />
-            </IconBadge>
-            <Stack gap="0" class="min-w-0 flex-1">
-              <Title as={3} size="base" weight="semibold" class="truncate leading-6">
-                {t.title}
-              </Title>
-              <Group gap="4" align="center" class="h-4 text-muted-foreground">
-                <Group gap="2" align="center">
-                  <LucideIcon name="eye" size={16} />
-                  <Inline class="sr-only">
-                    {viewsLabel}
-                  </Inline>
-                  <Text size="xs" weight="bold" class="leading-4">
-                    {t.views}
-                  </Text>
-                </Group>
-                <Group gap="2" align="center">
-                  <LucideIcon name="heart" size={16} />
-                  <Inline class="sr-only">
-                    {likesLabel}
-                  </Inline>
-                  <Text size="xs" weight="bold" class="leading-4">
-                    {t.likes}
-                  </Text>
-                </Group>
-              </Group>
-            </Stack>
-          </Group>
-        </Box>
-      {/each}
-    </Grid>
+        {/each}
+      </Grid>
+    {/if}
     <Button variant="outline" size="sm" href={browseHref} class="w-full" data-testid="template-browse">
-      {browse}
+      {labels.browse}
     </Button>
   </Stack>
 </SectionFrame>

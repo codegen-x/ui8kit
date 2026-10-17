@@ -130,6 +130,7 @@ export function CompanyPage() {
         title={ui.company.jobs.title}
         lead={ui.company.jobs.lead}
         jobs={jobs}
+        empty={ui.empty.jobs}
         departments={departments}
         labels={ui.company.jobs}
         layout="grouped"

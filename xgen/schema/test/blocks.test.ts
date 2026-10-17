@@ -73,7 +73,7 @@ for (const b of done) for (const d of b.data ?? []) {
     for (const p of d.required ?? []) expect([p, paths.includes(p)]).toEqual([p, true]);
     if (b.spec) {
       const spec = JSON.parse(readFileSync(join(root, b.source), "utf8"));
-      const own = (spec.data as { as: string; fields: Record<string, string> }[]).find((x) => x.as === d.collection || x.as === d.prop);
+      const own = (spec.data as { as: string; collection?: string; kind?: string; fields: Record<string, string> }[]).find((x) => x.as === d.collection || x.as === d.prop || (x.collection === d.collection && x.kind === d.kind));
       expect(own?.fields).toEqual({ ...map! });
     }
   });
@@ -82,8 +82,10 @@ for (const b of done) for (const d of b.data ?? []) {
     expect(entries.length).toBeGreaterThan(0);
     for (const e of entries) expect(e.kind).toBe(d.kind);
     const termFiles = terms.map((data, i) => ({ file: `taxonomies#${i}`, data }));
-    const issues = validateCollectionV04({ entries: entries.map((data, i) => ({ file: `${d.collection}.json#${i}`, data })), terms: termFiles }, { manifest }) as { severity?: string }[];
-    expect(issues.filter((i) => !i.severity)).toEqual([]);
+    // the other collections ride along so a relation (jobs -> departments) resolves; only this collection's issues count
+    const others = cols.filter((c) => c.collection !== d.collection).flatMap((c) => c.entries.map((data, i) => ({ file: `${c.collection}.json#${i}`, data })));
+    const issues = validateCollectionV04({ entries: [...entries.map((data, i) => ({ file: `${d.collection}.json#${i}`, data })), ...others], terms: termFiles }, { manifest }) as { severity?: string; path?: string }[];
+    expect(issues.filter((i) => !i.severity && String(i.path ?? "").startsWith(`${d.collection}.json`))).toEqual([]);
     const rows = fromCodex<Record<string, unknown>>(entries, map!, lookups);
     // `slug|route` is undefined by design where the app gives no route (no link): not a missing field
     const requiredProps = Object.entries(map!).filter(([, p]) => !p.endsWith("|route") && (d.required ?? []).includes(p.split("|")[0]!)).map(([k]) => k);

@@ -73,7 +73,7 @@ const jobs = define({
     { sel: '[data-testid="salary"]', n: "@jobs", when: { layout: "grid", salary: "show" } },
     { sel: '[data-testid="salary"]', n: 0, when: { salary: "hide" } },
   ],
-  sample: { id: "jobs", title: c("jobs.title"), lead: c("jobs.lead"), jobs: ref("jobs"), departments: ref("departments"), labels: c("jobs") },
+  sample: { id: "jobs", title: c("jobs.title"), lead: c("jobs.lead"), jobs: ref("jobs"), empty: t("empty.jobs"), departments: ref("departments"), labels: c("jobs") },
 });
 
 const aboutme = define({

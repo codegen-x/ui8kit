@@ -1443,7 +1443,12 @@
           {
             "id": "likes",
             "label": "Likes",
-            "type": "string",
+            "type": "number",
+            "rules": [
+              {
+                "name": "fastygo.codex/integer"
+              }
+            ],
             "required": true
           },
           {
@@ -1455,7 +1460,12 @@
           {
             "id": "views",
             "label": "Views",
-            "type": "string",
+            "type": "number",
+            "rules": [
+              {
+                "name": "fastygo.codex/integer"
+              }
+            ],
             "required": true
           }
         ]

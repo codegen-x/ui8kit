@@ -13,6 +13,7 @@ import { ListItem } from "../primitives/list/list-item";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { Title } from "../primitives/title/title";
+import { EmptyState } from "../components/empty-state";
 import { JobCards } from "../components/job-cards";
 import { MenuEntry } from "../components/menu-entry";
 import { SectionFrame } from "../components/section-frame";
@@ -29,6 +30,7 @@ export type JobBoardProps = {
   layout?: "grid" | "grouped" | "table";
   salary?: "show" | "hide";
   tone?: "default" | "muted";
+  empty?: string;
   landmarkLabel?: string;
 };
 
@@ -42,6 +44,7 @@ export function JobBoard({
   layout = "grid",
   salary = "hide",
   tone = "default",
+  empty = "",
   landmarkLabel,
 }: JobBoardProps) {
   return (
@@ -53,7 +56,9 @@ export function JobBoard({
       measure={(((layout as string) === "grouped") ? "3xl" : "default")}
       landmarkLabel={landmarkLabel}
     >
-      {((layout as string) === "grouped") ? (
+      {((jobs?.length ?? 0) === 0) ? (
+        <EmptyState icon="briefcase" title={empty} />
+      ) : ((layout as string) === "grouped") ? (
         <Stack gap="8" align="stretch" data-testid="groups">
           {(departments ?? []).map((d) => (
             <Stack key={d.id} gap="2" align="stretch" data-testid="group">

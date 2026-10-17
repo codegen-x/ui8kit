@@ -41,38 +41,40 @@ templ FaqSplit(p FaqSplitProps) {
 	{{ vMediaSide := uiutils.Def(p.MediaSide, "end") }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	if uiutils.Eq(vLayout, "cards") {
-		@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, LandmarkLabel: vLandmarkLabel}) {
-			@FaqCards(FaqCardsProps{Items: vItems, Labels: vLabels, Cards: vCards})
+	if uiutils.Gt(uiutils.Len(vItems), float64(0)) {
+		if uiutils.Eq(vLayout, "cards") {
+			@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, LandmarkLabel: vLandmarkLabel}) {
+				@FaqCards(FaqCardsProps{Items: vItems, Labels: vLabels, Cards: vCards})
+			}
 		}
-	}
-	if uiutils.Eq(vLayout, "head") {
-		@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, Layout: "split", Media: map[string]any{"show": true, "side": "end", "align": "start"}, LandmarkLabel: vLandmarkLabel, Aside: faqSplitFill1(p, vId, vItems)}) {
-			@box.Box(box.BoxProps{}) {
-				@button.Button(button.ButtonProps{Variant: "default", Size: "default", Attrs: uiutils.Attrs("data-testid", "faq-cta")}) {
-					{ uiutils.Text(uiutils.Get(vLabels, "cta")) }
+		if uiutils.Eq(vLayout, "head") {
+			@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, Layout: "split", Media: map[string]any{"show": true, "side": "end", "align": "start"}, LandmarkLabel: vLandmarkLabel, Aside: faqSplitFill1(p, vId, vItems)}) {
+				@box.Box(box.BoxProps{}) {
+					@button.Button(button.ButtonProps{Variant: "default", Size: "default", Attrs: uiutils.Attrs("data-testid", "faq-cta")}) {
+						{ uiutils.Text(uiutils.Get(vLabels, "cta")) }
+					}
 				}
 			}
 		}
-	}
-	if uiutils.Eq(vLayout, "aside") {
-		@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, Layout: "split", Media: map[string]any{"show": true, "side": "end", "align": "start"}, LandmarkLabel: vLandmarkLabel, Aside: faqSplitFill2(p, vChannels, vLabels, vLandmarkLabel)}) {
-			@FaqDisclosures(FaqDisclosuresProps{Items: vItems, Name: uiutils.Tpl("{0}-faq", vId)})
+		if uiutils.Eq(vLayout, "aside") {
+			@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, Layout: "split", Media: map[string]any{"show": true, "side": "end", "align": "start"}, LandmarkLabel: vLandmarkLabel, Aside: faqSplitFill2(p, vChannels, vLabels, vLandmarkLabel)}) {
+				@FaqDisclosures(FaqDisclosuresProps{Items: vItems, Name: uiutils.Tpl("{0}-faq", vId)})
+			}
 		}
-	}
-	if uiutils.Eq(vLayout, "media") {
-		@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, Layout: "split", Media: map[string]any{"show": true, "side": vMediaSide, "align": "start"}, LandmarkLabel: vLandmarkLabel, Aside: faqSplitFill3(p, vTitle)}) {
-			@FaqDisclosures(FaqDisclosuresProps{Items: vItems, Name: uiutils.Tpl("{0}-faq", vId)})
-			@box.Box(box.BoxProps{}) {
-				@button.Button(button.ButtonProps{Variant: "default", Size: "default", Attrs: uiutils.Attrs("data-testid", "faq-cta")}) {
-					{ uiutils.Text(uiutils.Get(vLabels, "cta")) }
+		if uiutils.Eq(vLayout, "media") {
+			@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, Layout: "split", Media: map[string]any{"show": true, "side": vMediaSide, "align": "start"}, LandmarkLabel: vLandmarkLabel, Aside: faqSplitFill3(p, vTitle)}) {
+				@FaqDisclosures(FaqDisclosuresProps{Items: vItems, Name: uiutils.Tpl("{0}-faq", vId)})
+				@box.Box(box.BoxProps{}) {
+					@button.Button(button.ButtonProps{Variant: "default", Size: "default", Attrs: uiutils.Attrs("data-testid", "faq-cta")}) {
+						{ uiutils.Text(uiutils.Get(vLabels, "cta")) }
+					}
 				}
 			}
 		}
-	}
-	if uiutils.Eq(vLayout, "search") {
-		@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, Layout: "split", Media: map[string]any{"show": true, "side": vMediaSide}, LandmarkLabel: vLandmarkLabel, Aside: faqSplitFill4(p, vTitle)}) {
-			@FaqFinder(FaqFinderProps{Items: vItems, Labels: vLabels, Topics: vTopics})
+		if uiutils.Eq(vLayout, "search") {
+			@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Lead: vLead, Heading: map[string]any{"badge": vBadge}, Tone: vTone, Layout: "split", Media: map[string]any{"show": true, "side": vMediaSide}, LandmarkLabel: vLandmarkLabel, Aside: faqSplitFill4(p, vTitle)}) {
+				@FaqFinder(FaqFinderProps{Items: vItems, Labels: vLabels, Topics: vTopics})
+			}
 		}
 	}
 }

@@ -92,6 +92,7 @@ export function MarketingCareersPage() {
                   title={ui.company.jobs.title}
                   lead={ui.company.jobs.lead}
                   jobs={jobs}
+                  empty={ui.empty.jobs}
                   departments={departments}
                   labels={ui.company.jobs}
                   layout="grid"
@@ -119,6 +120,7 @@ export function MarketingCareersPage() {
                   title={ui.company.jobs.title}
                   lead={ui.company.jobs.lead}
                   jobs={jobs}
+                  empty={ui.empty.jobs}
                   departments={departments}
                   labels={ui.company.jobs}
                   layout="grid"
@@ -146,6 +148,7 @@ export function MarketingCareersPage() {
                   title={ui.company.jobs.title}
                   lead={ui.company.jobs.lead}
                   jobs={jobs}
+                  empty={ui.empty.jobs}
                   departments={departments}
                   labels={ui.company.jobs}
                   layout="grouped"
@@ -173,6 +176,7 @@ export function MarketingCareersPage() {
                   title={ui.company.jobs.title}
                   lead={ui.company.jobs.lead}
                   jobs={jobs}
+                  empty={ui.empty.jobs}
                   departments={departments}
                   labels={ui.company.jobs}
                   layout="table"

@@ -26,8 +26,8 @@
   const TEMPLATES_FIELDS = {
     "id": "id",
     "title": "title",
-    "views": "metadata.views.value",
-    "likes": "metadata.likes.value",
+    "views": "metadata.views.value|compact",
+    "likes": "metadata.likes.value|compact",
     "topic": "metadata.topic.value",
   } as const;
   const TEMPLATEFILTERS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value","icon":"metadata.icon.value"} as const;
@@ -73,11 +73,9 @@
             title={ui.vibe.templates.title}
             templates={templates}
             filters={templateFilters}
-            filtersLabel={ui.vibe.templates.filters}
-            browse={ui.vibe.templates.browse}
+            labels={ui.vibe.templates}
             browseHref="#/"
-            viewsLabel={ui.vibe.templates.views}
-            likesLabel={ui.vibe.templates.likes}
+            empty={ui.empty.templates}
             cols="1-4"
             tone="default"
             density="default"
@@ -103,11 +101,9 @@
             title={ui.vibe.templates.title}
             templates={templates}
             filters={templateFilters}
-            filtersLabel={ui.vibe.templates.filters}
-            browse={ui.vibe.templates.browse}
+            labels={ui.vibe.templates}
             browseHref="#/"
-            viewsLabel={ui.vibe.templates.views}
-            likesLabel={ui.vibe.templates.likes}
+            empty={ui.empty.templates}
             cols="1-3"
             tone="default"
             density="compact"
@@ -133,11 +129,9 @@
             title={ui.vibe.templates.title}
             templates={templates}
             filters={templateFilters}
-            filtersLabel={ui.vibe.templates.filters}
-            browse={ui.vibe.templates.browse}
+            labels={ui.vibe.templates}
             browseHref="#/"
-            viewsLabel={ui.vibe.templates.views}
-            likesLabel={ui.vibe.templates.likes}
+            empty={ui.empty.templates}
             cols="1-4"
             tone="muted"
             density="compact"
@@ -163,11 +157,9 @@
             title={ui.vibe.templates.title}
             templates={templates}
             filters={templateFilters}
-            filtersLabel={ui.vibe.templates.filters}
-            browse={ui.vibe.templates.browse}
+            labels={ui.vibe.templates}
             browseHref="#/"
-            viewsLabel={ui.vibe.templates.views}
-            likesLabel={ui.vibe.templates.likes}
+            empty={ui.empty.templates}
             cols="1-4"
             tone="default"
             density="roomy"

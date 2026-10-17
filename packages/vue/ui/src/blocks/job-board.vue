@@ -18,6 +18,7 @@ export type JobBoardProps = {
   layout?: "grid" | "grouped" | "table";
   salary?: "show" | "hide";
   tone?: "default" | "muted";
+  empty?: string;
   landmarkLabel?: string;
 };
 </script>
@@ -30,6 +31,7 @@ import ListItem from "../primitives/list/list-item.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
+import EmptyState from "../components/empty-state.vue";
 import JobCards from "../components/job-cards.vue";
 import MenuEntry from "../components/menu-entry.vue";
 import SectionFrame from "../components/section-frame.vue";
@@ -45,6 +47,7 @@ const {
   layout = "grid",
   salary = "hide",
   tone = "default",
+  empty = "",
   landmarkLabel,
 } = defineProps<JobBoardProps>();
 </script>
@@ -58,7 +61,8 @@ const {
     :measure="(((layout as string) === 'grouped') ? '3xl' : 'default')"
     :landmarkLabel="landmarkLabel"
   >
-    <Stack v-if="((layout as string) === 'grouped')" gap="8" align="stretch" data-testid="groups">
+    <EmptyState v-if="((jobs?.length ?? 0) === 0)" icon="briefcase" :title="empty" />
+    <Stack v-else-if="((layout as string) === 'grouped')" gap="8" align="stretch" data-testid="groups">
       <Stack v-for="d in departments" :key="d.id" gap="2" align="stretch" data-testid="group">
         <Group gap="4" align="baseline" justify="between">
           <Title :as="3" size="lg" weight="bold">

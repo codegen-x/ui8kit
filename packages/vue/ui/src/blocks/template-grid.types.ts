@@ -15,3 +15,10 @@ export type Filter = {
   value: string;
   icon?: string;
 };
+
+export type TemplateLabels = {
+  filters: string;
+  browse: string;
+  views: string;
+  likes: string;
+};
