@@ -17,12 +17,13 @@
     type Feature,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { ui } from "@ui8kit/app-shared/content";
   import { perks as perksEntries } from "@ui8kit/app-shared/data/perks";
 
   const PERKS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 
-  const perks = fromCodex<Feature>(perksEntries, PERKS_FIELDS);
+  const perks = fromCodex<Feature>(perksEntries, PERKS_FIELDS, CODEX);
 
   const STOREHERO_ACTIONS = {
     mode: "two",

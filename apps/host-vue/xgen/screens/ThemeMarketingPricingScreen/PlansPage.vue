@@ -13,6 +13,7 @@ import {
   type Plan,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { tiers as tiersEntries } from "@ui8kit/app-shared/data/tiers";
 import { duo as duoEntries } from "@ui8kit/app-shared/data/duo";
@@ -44,9 +45,9 @@ const DUO_FIELDS = {
 } as const;
 const COMPARE_FIELDS = {"id":"id","label":"title","a":"metadata.a.value","b":"metadata.b.value","c":"metadata.c.value"} as const;
 
-const tiers = fromCodex<Plan>(tiersEntries, TIERS_FIELDS);
-const duo = fromCodex<Plan>(duoEntries, DUO_FIELDS);
-const compare = fromCodex<CompareRow>(compareEntries, COMPARE_FIELDS);
+const tiers = fromCodex<Plan>(tiersEntries, TIERS_FIELDS, CODEX);
+const duo = fromCodex<Plan>(duoEntries, DUO_FIELDS, CODEX);
+const compare = fromCodex<CompareRow>(compareEntries, COMPARE_FIELDS, CODEX);
 </script>
 
 <template>

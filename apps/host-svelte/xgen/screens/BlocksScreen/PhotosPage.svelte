@@ -17,12 +17,13 @@
     type Photo,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { ui } from "@ui8kit/app-shared/content";
   import { photos as photosEntries } from "@ui8kit/app-shared/data/photos";
 
   const PHOTOS_FIELDS = {"id":"id","title":"title","tag":"metadata.tag.value","size":"metadata.size.value"} as const;
 
-  const photos = fromCodex<Photo>(photosEntries, PHOTOS_FIELDS);
+  const photos = fromCodex<Photo>(photosEntries, PHOTOS_FIELDS, CODEX);
 </script>
 
 <Block tag="section" aria-labelledby="page-title" data-testid="page">

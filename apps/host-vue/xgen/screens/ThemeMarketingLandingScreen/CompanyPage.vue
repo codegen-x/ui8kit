@@ -19,6 +19,7 @@ import {
   type Stat,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { stats as statsEntries } from "@ui8kit/app-shared/data/stats";
 import { values as valuesEntries } from "@ui8kit/app-shared/data/values";
@@ -50,12 +51,12 @@ const JOBS_FIELDS = {
 } as const;
 const DEPARTMENTS_FIELDS = {"id":"id","name":"title"} as const;
 
-const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
-const values = fromCodex<Feature>(valuesEntries, VALUES_FIELDS);
-const milestones = fromCodex<Milestone>(milestonesEntries, MILESTONES_FIELDS);
-const members = fromCodex<Member>(membersEntries, MEMBERS_FIELDS);
-const jobs = fromCodex<Job>(jobsEntries, JOBS_FIELDS);
-const departments = fromCodex<Department>(departmentsEntries, DEPARTMENTS_FIELDS);
+const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS, CODEX);
+const values = fromCodex<Feature>(valuesEntries, VALUES_FIELDS, CODEX);
+const milestones = fromCodex<Milestone>(milestonesEntries, MILESTONES_FIELDS, CODEX);
+const members = fromCodex<Member>(membersEntries, MEMBERS_FIELDS, CODEX);
+const jobs = fromCodex<Job>(jobsEntries, JOBS_FIELDS, CODEX);
+const departments = fromCodex<Department>(departmentsEntries, DEPARTMENTS_FIELDS, CODEX);
 </script>
 
 <template>

@@ -17,6 +17,7 @@
     type Order,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { ui } from "@ui8kit/app-shared/content";
   import { orders as ordersEntries } from "@ui8kit/app-shared/data/orders";
 
@@ -30,7 +31,7 @@
     "items": "metadata.items.value",
   } as const;
 
-  const orders = fromCodex<Order>(ordersEntries, ORDERS_FIELDS);
+  const orders = fromCodex<Order>(ordersEntries, ORDERS_FIELDS, CODEX);
 </script>
 
 <Block tag="section" aria-labelledby="page-title" data-testid="page">

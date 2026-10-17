@@ -18,6 +18,7 @@
     type Spec,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { ui } from "@ui8kit/app-shared/content";
   import { details as detailsEntries } from "@ui8kit/app-shared/data/details";
   import { specs as specsEntries } from "@ui8kit/app-shared/data/specs";
@@ -25,8 +26,8 @@
   const DETAILS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value"} as const;
   const SPECS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value"} as const;
 
-  const details = fromCodex<Detail>(detailsEntries, DETAILS_FIELDS);
-  const specs = fromCodex<Spec>(specsEntries, SPECS_FIELDS);
+  const details = fromCodex<Detail>(detailsEntries, DETAILS_FIELDS, CODEX);
+  const specs = fromCodex<Spec>(specsEntries, SPECS_FIELDS, CODEX);
 </script>
 
 <Block tag="section" aria-labelledby="page-title" data-testid="page">

@@ -2,7 +2,7 @@
 // (blockNode: sample, variant axes, case copy, id, level 2, landmark label), evaluated to JSON over the dictionary
 // and the fixtures. Both runtimes get the same JSON; event handlers are left out (the templ output is static).
 import { blockKey, blockNode, galleryOf, isGroup, isOp, isRef, type Inputs, type OrganismSpec, type Value } from "@ui8kit/xgen-screens";
-import { readPath } from "../../../runtimes/core/assets/app/core";
+import { readPath, type ReadOptions } from "../../../runtimes/core/assets/app/core";
 import { tpl, fmtMoney, fmtNumber, at, pageWindow, fitCols, uniqLabel } from "../../../runtimes/core/assets/ts/format";
 
 export interface OrgCase { label: string; organism: string; props: Record<string, unknown> }
@@ -61,10 +61,13 @@ export function blockCases(inputs: Inputs, emitted: Set<string>): { cases: OrgCa
   const organisms = Object.fromEntries(inputs.organisms.map((o) => [o.value.name, o.value as OrganismSpec]));
   const presets = Object.fromEntries(inputs.presets.map((p) => [p.value.name, (p.value as unknown as { values: unknown }).values]));
   const collections = new Map(inputs.collections.map((c) => [c.value.collection, c.value.entries as unknown[]]));
+  // the lookups the hosts pass as CODEX (runtime/codex): media, users and the taxonomy terms
+  const all = inputs.collections.flatMap((c) => c.value.entries as { kind: string }[]);
+  const codex: ReadOptions = { media: all.filter((e) => e.kind === "media"), users: all.filter((e) => e.kind === "user"), terms: inputs.taxonomies.flatMap((t) => t.value.terms) };
   const cases: OrgCase[] = [], skipped: string[] = [];
   for (const b of galleryOf(inputs.blocks.map((x) => x.value))) {
     const scope: Scope = { ui: inputs.dictionary.value };
-    for (const d of b.data) scope[d.as] = (collections.get(d.collection) ?? []).map((e) => Object.fromEntries(Object.entries(d.fields).map(([n, p]) => [n, readPath(e, p)])));
+    for (const d of b.data) scope[d.as] = (collections.get(d.collection) ?? []).map((e) => Object.fromEntries(Object.entries(d.fields).map(([n, p]) => [n, readPath(e, p, codex)])));
     for (const v of b.variants) {
       const key = blockKey(b);
       const extra: Record<string, Value> = { id: `${key}-${v.id}`, level: 2, landmarkLabel: `${key} ${v.id}` };

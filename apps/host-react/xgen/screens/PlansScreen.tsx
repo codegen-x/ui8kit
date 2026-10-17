@@ -30,6 +30,7 @@ import {
   type Plan,
 } from "@ui8kit/react-ui";
 import { collectionView, fromCodex, matchRoute, screenActions, type UrlPort } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
 import { ui } from "@ui8kit/app-shared/content";
 import { plans as entries } from "@ui8kit/app-shared/data/plans";
@@ -50,7 +51,7 @@ const FIELDS = {
   "status": "metadata.plan_status.value",
 } as const;
 
-const ROWS = fromCodex<Plan>(entries, FIELDS);
+const ROWS = fromCodex<Plan>(entries, FIELDS, CODEX);
 const HOME = { area: "list", params: {} as Record<string, string> };
 
 export function PlansScreen({ url }: { url: UrlPort }) {

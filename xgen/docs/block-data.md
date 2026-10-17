@@ -1,7 +1,7 @@
-# Block data vs the Codex v0.4 contract (inventory; step 2: the pilot blocks fixed)
+# Block data vs the Codex v0.4 contract (inventory; step 2: the pilot blocks fixed; step 3: lookups, terms, author_id)
 
 Goal: every block, screen, template and data structure of the kit reads Codex v0.4 entries (`@ui8kit/contract` ^0.2.0;
-manifest `xgen/schema/codex/manifest.json`, 60 kinds) by the rules: money = integer minor units + `currency`; dates RFC 3339,
+manifest `xgen/schema/codex/manifest.json`, 62 kinds) by the rules: money = integer minor units + `currency`; dates RFC 3339,
 formatted by the UI per locale; text = plain string + entry `locale`; links built from `slug` / `parent_id` (no `href` in data);
 media via `featured_media_id` (kind `media`); UI labels from the dictionary of the locale, never from entries; an empty state in every block.
 
@@ -10,6 +10,8 @@ declared in `manifest.json` (an extension point), never into the core schema. Fi
 
 Machine-readable twin: `xgen/schema/codex/blocks.json` (schema `blocks.schema.json`, test `xgen/schema/test/blocks.test.ts`).
 Central field maps: `xgen/runtimes/core/assets/app/fields.ts` -> generated `@ui8kit/app-shared/runtime/fields` (`CODEX_FIELDS`).
+Lookups: generated `@ui8kit/app-shared/runtime/codex` (`CODEX`: media, users, taxonomy terms) is the third argument of every
+`fromCodex` in the hosts and the magazine; `routes` are added only for kinds an app has a page for (today none: no link).
 
 ## 1. Surfaces
 
@@ -21,7 +23,7 @@ Central field maps: `xgen/runtimes/core/assets/app/fields.ts` -> generated `@ui8
 | xgen screens (15) | `xgen/specs/screens/*.json` -> `apps/host-*/xgen/screens/*` | `{ "$": "ui.*" }` dictionary refs + block data | via blocks | todo |
 | magazine templates (10 + header/footer) | `apps/magazine/src/templates/*.svelte`, Templates tab `#/style/<key>/templates` | `data.ts` (fromCodex over `@ui8kit/app-shared/data/*`) + the copy deck `c` | 25 collections | todo (3 pilot blocks use central maps) |
 | taste screens (146) | `packages/taste-screens/src/screens` (style detail preview; panorama excluded) | `Deck` from `@ui8kit/taste-data/content/copy.json`, not Codex | none | todo |
-| fixtures (310 entries) | `xgen/fixtures/*.json` -> `packages/shared/app/src/data` | v0.4 entries | 61 (new: `media`) | valid (0 errors) |
+| fixtures (317 entries, 2 taxonomies / 10 terms) | `xgen/fixtures/*.json`, `xgen/fixtures/taxonomies/*.json` -> `packages/shared/app/src/data` | v0.4 entries, taxonomy bundles | 62 (`media`, `user`) | valid (0 errors; term refs checked) |
 | taste-data content | `copy.json`, `reference-*.json` | own shapes | none | todo: decide which become entries |
 | panorama, illustrations | `packages/panorama` | - | - | excluded |
 
@@ -75,14 +77,14 @@ Templates also compose HeroClassic, HeroSplit, PostGrid, AppShell, SidebarNav, C
 | currency | metadata.currency.value | string, req | ISO 4217 |
 | rating / reviews | metadata.rating / reviews.value | number / integer | |
 | badge (optional) | metadata.badge.value | string, optional | a key into the `badges` dictionary |
-| category | metadata.category.value | string | raw key `light` printed as text (todo: terms) |
+| category | terms\|term:product_category | core `terms` -> taxonomy `product_category` | the term name ("Light"), by the entry's locale |
 | inStock | metadata.inStock.value | boolean | |
 | href (optional) | slug\|route | core | built from the slug by `opts.routes[kind]`; no route: no link |
-| image (optional) | featured_media_id\|media | core -> kind `media` (`metadata.file`) | resolved when the app passes `opts.media`; else the placeholder |
+| image (optional) | featured_media_id\|media | core -> kind `media` (`metadata.file`) | the file of a *published* media entry (CODEX.media); the fixtures' media are drafts (no assets in the repo): placeholder |
 | labels | dictionary `commerce.productLabels` | | add, soldOut, reviews, ratingLabel, was, empty |
 
-**PostHeader** (`Post`, kind `post`, map `CODEX_FIELDS.post`): id, title, excerpt (core), category (metadata, English text: todo terms),
-author (a name string: todo author_id), date<-metadata.date|date (RFC 3339 -> the locale of the entry or the app, Intl), minutes (integer,
+**PostHeader** (`Post`, kind `post`, map `CODEX_FIELDS.post`): id, title, excerpt (core), category<-terms|term:category (term name),
+author<-author_id|author (`display_name` of the kind `user`), date<-metadata.date|date (RFC 3339 -> the locale of the entry or the app, Intl), minutes (integer,
 `labels.minutes`), icon, href<-slug|route, image<-featured_media_id|media (the cover; placeholder without). `post` is optional: without it
 the empty state (`content.labels.empty`).
 
@@ -97,8 +99,8 @@ the plans list screen keeps its own column). No plans: the empty state (`pricing
 | 1 | Product/Post `href` (**fixed**: `slug\|route`), CtaBand/PageIntro/PageTrail `href="#"`, sitemap `links` strings | links not built from slug/parent_id | block: derive the link from `slug` by a route helper; drop `href` from data |
 | 2 | Product `image`, PostHeader cover (**fixed**: kind `media`, `featured_media_id\|media`), PhotoGallery, ProjectGrid | no media field; MediaFrame placeholders | block reads `featured_media_id` -> media entry; fixtures add kind `media` (manifest kind) |
 | 3 | ProductGrid (**fixed**), ProductDetail (todo) | no old (compare-at) price | manifest field `product.compare_at` (money) + block prop |
-| 4 | Product `category`, Post `category`, Faq `category`, Photo `tag`, Project `tags` | taxonomy as free text / raw keys printed | block: read `terms` (taxonomy + term entries with locale), show term name |
-| 5 | Post/Review `author` | a name string, not a reference | block: read `author_id` (kind user) display_name |
+| 4 | Product `category`, Post `category` (**fixed**: `terms`, taxonomies `product_category`, `category`), Faq `category`, Photo `tag`, Project `tags` | taxonomy as free text / raw keys printed | block: read `terms` (taxonomy + term entries with locale), show term name |
+| 5 | Post/Review `author` (**fixed**: `author_id` -> kind `user`, map `CODEX_FIELDS.review`) | a name string, not a reference | block: read `author_id` (kind user) display_name |
 | 6 | `fmtDate`, `fmtAgo` in core.ts (**fixed**: Intl by the entry's or the app's locale; en output unchanged, the compact en units "min", "h", "d" kept) | fixed en-US format and English "2 min ago", "Yesterday" | block/runtime: Intl by locale + dictionary words |
 | 7 | stats/metrics `value` ("12,400"), templates `views`/`likes` ("1.2K") | preformatted numbers as strings | manifest: number fields; block formats with Intl |
 | 8 | Product `badge` / Plan `status` (**fixed**: optional; `status` not mapped for the pricing blocks) | record vs manifest | block: make the prop optional / drop `status` |
@@ -111,5 +113,6 @@ the plans list screen keeps its own column). No plans: the empty state (`pricing
 
 done: ProductGrid, PostHeader, PricingTiers. Step 2 fixed: empty states, links from slug, image from `featured_media_id` (kind `media`),
 optional badge, no status, dates by locale, `compare_at`; the xgen specs read `CODEX_FIELDS` (`gallery/blocks-data.ts`, `screens/plans-screen.ts`).
-Open for them: category and author as terms / author_id (#4, #5).
+Step 3: category from `terms`, author from `author_id` (kind `user`), lookups `CODEX` passed by the hosts and the magazine;
+PostCard renders its read link only with a route. Open: real media assets (none in the repo), routes once the apps have product/post pages.
 todo: everything else in blocks.json (kind listed from the spec).

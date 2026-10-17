@@ -13,12 +13,13 @@ import {
   type CodeLine,
 } from "@ui8kit/solid-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { terminal as terminalEntries } from "@ui8kit/app-shared/data/terminal";
 
 const TERMINAL_FIELDS = {"id":"id","text":"title","kind":"metadata.line_kind.value"} as const;
 
-const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS);
+const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS, CODEX);
 
 export function HomePage() {
   return (

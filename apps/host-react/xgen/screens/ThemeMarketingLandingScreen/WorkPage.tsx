@@ -14,6 +14,7 @@ import {
   type Spec,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { profilefacts as profilefactsEntries } from "@ui8kit/app-shared/data/profilefacts";
 import { skills as skillsEntries } from "@ui8kit/app-shared/data/skills";
@@ -34,10 +35,10 @@ const PROJECTS_FIELDS = {
 } as const;
 const PHOTOS_FIELDS = {"id":"id","title":"title","tag":"metadata.tag.value","size":"metadata.size.value"} as const;
 
-const profilefacts = fromCodex<Spec>(profilefactsEntries, PROFILEFACTS_FIELDS);
-const skills = fromCodex<Skill>(skillsEntries, SKILLS_FIELDS);
-const projects = fromCodex<Project>(projectsEntries, PROJECTS_FIELDS);
-const photos = fromCodex<Photo>(photosEntries, PHOTOS_FIELDS);
+const profilefacts = fromCodex<Spec>(profilefactsEntries, PROFILEFACTS_FIELDS, CODEX);
+const skills = fromCodex<Skill>(skillsEntries, SKILLS_FIELDS, CODEX);
+const projects = fromCodex<Project>(projectsEntries, PROJECTS_FIELDS, CODEX);
+const photos = fromCodex<Photo>(photosEntries, PHOTOS_FIELDS, CODEX);
 
 export function WorkPage() {
   return (

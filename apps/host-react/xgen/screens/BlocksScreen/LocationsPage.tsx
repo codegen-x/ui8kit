@@ -17,6 +17,7 @@ import {
   type Store,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { stores as storesEntries } from "@ui8kit/app-shared/data/stores";
 
@@ -31,7 +32,7 @@ const STORES_FIELDS = {
   "services": "metadata.services.value",
 } as const;
 
-const stores = fromCodex<Store>(storesEntries, STORES_FIELDS);
+const stores = fromCodex<Store>(storesEntries, STORES_FIELDS, CODEX);
 
 export function LocationsPage() {
   return (

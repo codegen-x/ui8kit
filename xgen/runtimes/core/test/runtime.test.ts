@@ -120,7 +120,7 @@ test("locale: dates and relative times follow the entry's locale (or the app's),
 
 test("media and routes: an image from featured_media_id, a link from the slug, nothing without them", async () => {
   const { readPath, fromCodex } = await import("../assets/app/core");
-  const media = [{ id: "media-a", kind: "media", metadata: { file: { value: "/media/a.webp" } } }];
+  const media = [{ id: "media-a", kind: "media", status: "published", metadata: { file: { value: "/media/a.webp" } } }];
   const e = { id: "p", kind: "product", slug: "arc lamp", featured_media_id: "media-a" };
   expect(readPath(e, "featured_media_id|media", { media })).toBe("/media/a.webp");
   expect(readPath(e, "featured_media_id|media")).toBeUndefined();
@@ -128,4 +128,25 @@ test("media and routes: an image from featured_media_id, a link from the slug, n
   expect(readPath(e, "slug|route", { routes: { product: "#/product/{slug}" } })).toBe("#/product/arc%20lamp");
   expect(readPath(e, "slug|route", { routes: { post: "#/post/{slug}" } })).toBeUndefined();
   expect(fromCodex([e], { href: "slug|route", image: "featured_media_id|media" })).toEqual([{ href: undefined, image: undefined }]);
+  // a draft media entry (no uploaded asset) gives no file: the placeholder
+  expect(readPath(e, "featured_media_id|media", { media: [{ ...media[0], status: "draft" }] })).toBeUndefined();
+});
+
+test("authors and terms: author_id prints the user's display name, terms|term:<taxonomy> the name of the term, by locale", async () => {
+  const { readPath } = await import("../assets/app/core");
+  const users = [{ id: "user-a", locale: "en", kind: "user", title: "a", metadata: { display_name: { value: "Ann Lee" } } }];
+  const terms = [
+    { id: "category-design", locale: "en", taxonomy_id: "category", name: "Design", slug: "design" },
+    { id: "category-design", locale: "de", taxonomy_id: "category", name: "Gestaltung", slug: "gestaltung" },
+    { id: "tag-x", locale: "en", taxonomy_id: "tag", name: "X", slug: "x" },
+  ];
+  const e = { id: "p", locale: "en", kind: "post", author_id: "user-a", terms: [{ taxonomy: "tag", term_id: "tag-x" }, { taxonomy: "category", term_id: "category-design" }] };
+  expect(readPath(e, "author_id|author", { users })).toBe("Ann Lee");
+  expect(readPath(e, "author_id|author", { users: [{ ...users[0], metadata: {} }] })).toBe("a");
+  expect(readPath(e, "author_id|author")).toBeUndefined();
+  expect(readPath(e, "terms|term:category", { terms })).toBe("Design");
+  expect(readPath({ ...e, locale: "de" }, "terms|term:category", { terms })).toBe("Gestaltung");
+  expect(readPath(e, "terms|term:tag", { terms })).toBe("X");
+  expect(readPath(e, "terms|term:brand", { terms })).toBeUndefined();
+  expect(readPath(e, "terms|term:category")).toBeUndefined();
 });

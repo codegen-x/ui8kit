@@ -512,7 +512,7 @@
                           "props": {
                             "Tag": "del",
                             "Size": "sm",
-                            "Class": "text-muted-foreground"
+                            "Class": "relative text-muted-foreground"
                           },
                           "attrs": {
                             "data-testid": "compare-at"

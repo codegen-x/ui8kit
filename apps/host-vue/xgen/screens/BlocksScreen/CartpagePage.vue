@@ -19,6 +19,7 @@ import {
   type SummaryRow,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { cart as cartEntries } from "@ui8kit/app-shared/data/cart";
 import { summary as summaryEntries } from "@ui8kit/app-shared/data/summary";
@@ -41,9 +42,9 @@ const SUMMARY_FIELDS = {
 } as const;
 const PROMOS_FIELDS = {"id":"id","code":"title"} as const;
 
-const cart = fromCodex<CartLine>(cartEntries, CART_FIELDS);
-const summary = fromCodex<SummaryRow>(summaryEntries, SUMMARY_FIELDS);
-const promos = fromCodex<Promo>(promosEntries, PROMOS_FIELDS);
+const cart = fromCodex<CartLine>(cartEntries, CART_FIELDS, CODEX);
+const summary = fromCodex<SummaryRow>(summaryEntries, SUMMARY_FIELDS, CODEX);
+const promos = fromCodex<Promo>(promosEntries, PROMOS_FIELDS, CODEX);
 </script>
 
 <template>

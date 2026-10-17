@@ -18,6 +18,7 @@ import {
   type Spec,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { profilefacts as profilefactsEntries } from "@ui8kit/app-shared/data/profilefacts";
 import { skills as skillsEntries } from "@ui8kit/app-shared/data/skills";
@@ -25,8 +26,8 @@ import { skills as skillsEntries } from "@ui8kit/app-shared/data/skills";
 const PROFILEFACTS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value"} as const;
 const SKILLS_FIELDS = {"id":"id","label":"title","level":"metadata.level.value"} as const;
 
-const profilefacts = fromCodex<Spec>(profilefactsEntries, PROFILEFACTS_FIELDS);
-const skills = fromCodex<Skill>(skillsEntries, SKILLS_FIELDS);
+const profilefacts = fromCodex<Spec>(profilefactsEntries, PROFILEFACTS_FIELDS, CODEX);
+const skills = fromCodex<Skill>(skillsEntries, SKILLS_FIELDS, CODEX);
 
 const ABOUTME_ACTIONS = { mode: "two", cta: ui.company.aboutMe.cta, href: "#/work", secondary: ui.company.aboutMe.more, secondaryHref: "#/contact" } as const;
 </script>

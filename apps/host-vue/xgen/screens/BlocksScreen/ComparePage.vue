@@ -17,6 +17,7 @@ import {
   type CompareRow,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { compare as compareEntries } from "@ui8kit/app-shared/data/compare";
 import { rivals as rivalsEntries } from "@ui8kit/app-shared/data/rivals";
@@ -24,8 +25,8 @@ import { rivals as rivalsEntries } from "@ui8kit/app-shared/data/rivals";
 const COMPARE_FIELDS = {"id":"id","label":"title","a":"metadata.a.value","b":"metadata.b.value","c":"metadata.c.value"} as const;
 const RIVALS_FIELDS = {"id":"id","label":"title","a":"metadata.a.value","b":"metadata.b.value","c":"metadata.c.value"} as const;
 
-const compare = fromCodex<CompareRow>(compareEntries, COMPARE_FIELDS);
-const rivals = fromCodex<CompareRow>(rivalsEntries, RIVALS_FIELDS);
+const compare = fromCodex<CompareRow>(compareEntries, COMPARE_FIELDS, CODEX);
+const rivals = fromCodex<CompareRow>(rivalsEntries, RIVALS_FIELDS, CODEX);
 </script>
 
 <template>

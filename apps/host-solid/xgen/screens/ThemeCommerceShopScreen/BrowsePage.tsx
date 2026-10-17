@@ -12,6 +12,7 @@ import {
   type Product,
 } from "@ui8kit/solid-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { categories as categoriesEntries } from "@ui8kit/app-shared/data/categories";
 import { products as productsEntries } from "@ui8kit/app-shared/data/products";
@@ -26,15 +27,15 @@ const PRODUCTS_FIELDS = {
   "rating": "metadata.rating.value",
   "reviews": "metadata.reviews.value",
   "badge": "metadata.badge.value",
-  "category": "metadata.category.value",
+  "category": "terms|term:product_category",
   "inStock": "metadata.inStock.value",
   "compareAt": "metadata.compare_at.value",
   "href": "slug|route",
   "image": "featured_media_id|media",
 } as const;
 
-const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS);
-const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS);
+const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS, CODEX);
+const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS, CODEX);
 
 export function BrowsePage() {
   return (

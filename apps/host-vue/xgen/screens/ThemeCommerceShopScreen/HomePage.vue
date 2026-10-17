@@ -17,6 +17,7 @@ import {
   type Review,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { terminal as terminalEntries } from "@ui8kit/app-shared/data/terminal";
 import { categories as categoriesEntries } from "@ui8kit/app-shared/data/categories";
@@ -34,7 +35,7 @@ const PRODUCTS_FIELDS = {
   "rating": "metadata.rating.value",
   "reviews": "metadata.reviews.value",
   "badge": "metadata.badge.value",
-  "category": "metadata.category.value",
+  "category": "terms|term:product_category",
   "inStock": "metadata.inStock.value",
   "compareAt": "metadata.compare_at.value",
   "href": "slug|route",
@@ -43,16 +44,16 @@ const PRODUCTS_FIELDS = {
 const REVIEWS_FIELDS = {
   "id": "id",
   "title": "title",
-  "author": "metadata.author.value",
+  "author": "author_id|author",
   "rating": "metadata.rating.value",
   "text": "metadata.text.value",
   "date": "metadata.date.value|date",
 } as const;
 
-const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS);
-const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS);
-const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS);
-const reviews = fromCodex<Review>(reviewsEntries, REVIEWS_FIELDS);
+const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS, CODEX);
+const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS, CODEX);
+const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS, CODEX);
+const reviews = fromCodex<Review>(reviewsEntries, REVIEWS_FIELDS, CODEX);
 </script>
 
 <template>

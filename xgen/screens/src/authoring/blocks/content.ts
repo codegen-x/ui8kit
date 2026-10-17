@@ -41,8 +41,9 @@ const postCard = spec(`${O}post-card`, "PostCard", "A post as a card: cover pict
         use("Text", { props: { Size: "xs" } }, text(ref("post.date"))),
         when(eq(ref("meta"), "full"), [use("Text", { props: { Size: "xs" } }, text(tpl(ref("labels.minutes"), ref("post.minutes"))))])),
     ]);
-    const read = when(ne(ref("meta"), "news"), [
-      use("Link", { props: { Href: coalesce(ref("post.href"), "#/"), Variant: "default" }, attrs: { "data-testid": "read" } }, text(ref("labels.read"))),
+    // the link to the post from its slug (slug|route); an app with no post page gives no route: no link rather than a dead one
+    const read = when(and(ne(ref("meta"), "news"), ref("post.href")), [
+      use("Link", { props: { Href: ref("post.href"), Variant: "default" }, attrs: { "data-testid": "read" } }, text(ref("labels.read"))),
     ]);
     // news card: image with the title on top, a date strip below; sizes from the default preset
     // Frame news card 267×218 r16 gap 8; image 267×160 r12; footer h50 gap16 pad: mark 32 + title only.

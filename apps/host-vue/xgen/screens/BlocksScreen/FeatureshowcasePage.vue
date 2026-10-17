@@ -17,6 +17,7 @@ import {
   type Feature,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { values as valuesEntries } from "@ui8kit/app-shared/data/values";
 import { features as featuresEntries } from "@ui8kit/app-shared/data/features";
@@ -24,8 +25,8 @@ import { features as featuresEntries } from "@ui8kit/app-shared/data/features";
 const VALUES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 
-const values = fromCodex<Feature>(valuesEntries, VALUES_FIELDS);
-const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
+const values = fromCodex<Feature>(valuesEntries, VALUES_FIELDS, CODEX);
+const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS, CODEX);
 </script>
 
 <template>

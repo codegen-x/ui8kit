@@ -91,7 +91,8 @@ const productCard = spec(`${O}product-card`, "ProductCard", "A product as a card
         use("Group", { props: { Gap: "4", Justify: "between", Class: "mt-auto pt-2" } },
           use("Group", { props: { Gap: "2", Align: "baseline", Class: "flex-wrap" } },
             use("Text", { props: { Size: "xl", Weight: "bold" } }, text(money(ref("product.price"), ref("product.currency")))),
-            when(and(ref("product.compareAt"), gt(ref("product.compareAt"), ref("product.price"))), [use("Text", { props: { Tag: "del", Size: "sm", Class: "text-muted-foreground" }, attrs: { "data-testid": "compare-at" } },
+            // relative: the sr-only "Was" (absolute) stays inside the price, not at the far end of a scrolling row of cards
+            when(and(ref("product.compareAt"), gt(ref("product.compareAt"), ref("product.price"))), [use("Text", { props: { Tag: "del", Size: "sm", Class: "relative text-muted-foreground" }, attrs: { "data-testid": "compare-at" } },
               use("Inline", { props: { Class: "sr-only" } }, text(ref("labels.was"))), text(money(ref("product.compareAt"), ref("product.currency"))))])),
           when(eq(ref("action"), "button"), [use("Button", { props: { Variant: cond(ref("product.inStock"), "default", "outline"), Size: "sm", Disabled: not(ref("product.inStock")) }, on: { click: call("emit.add", ref("product.id")) }, attrs: { "data-testid": "add" } },
             text(cond(ref("product.inStock"), ref("labels.add"), ref("labels.soldOut"))))])))),

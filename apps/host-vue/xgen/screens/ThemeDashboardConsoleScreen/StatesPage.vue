@@ -4,12 +4,13 @@
 <script setup lang="ts">
 import { EmptyPanel, PageIntro, SkeletonLayout, tpl, uniqLabel, type Line } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { placeholders as placeholdersEntries } from "@ui8kit/app-shared/data/placeholders";
 
 const PLACEHOLDERS_FIELDS = {"id":"id"} as const;
 
-const placeholders = fromCodex<Line>(placeholdersEntries, PLACEHOLDERS_FIELDS);
+const placeholders = fromCodex<Line>(placeholdersEntries, PLACEHOLDERS_FIELDS, CODEX);
 </script>
 
 <template>

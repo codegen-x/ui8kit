@@ -2,7 +2,7 @@
 // inferred from the fixtures. Money fields hold integer minor units (rule fastygo.codex/money) next to a `currency`
 // field; dates are RFC 3339 (type datetime); ids of entries of one other kind become relations.
 // `bun xgen/schema/src/codex.ts` writes xgen/schema/codex/manifest.json; a test keeps the file equal to the fixtures.
-import { readdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { xgenPaths } from "./paths";
 
@@ -14,7 +14,14 @@ type Meta = Record<string, { value: unknown }>;
 export interface Entry { id: string; kind: string; metadata?: Meta }
 export interface Collection { collection: string; kind: string; entries: Entry[] }
 export interface Field { id: string; label: string; type: string; required?: boolean; rules?: { name: string; args?: Record<string, string> }[]; items?: Field; fields?: Field[] }
-export interface Manifest { name: string; version: string; resources: { record: { id: string; label: string; scope: string; description: string; fields: Field[]; relations?: { id: string; source: string; target: string; cardinality: string }[] } }[] }
+export interface Manifest { name: string; version: string; resources: { record: { id: string; label: string; scope: string; description: string; fields: Field[]; relations?: { id: string; source: string; target: string; cardinality: string }[] }; taxonomies?: string[] }[] }
+
+export interface Term { id: string; locale: string; taxonomy_id: string; name: string; slug: string }
+export interface TaxonomyBundle { definition: { id: string; locale: string; label: string; mode: string; assigned_to_kinds: string[] }; terms: Term[] }
+/** the taxonomy bundles of xgen/fixtures/taxonomies (the terms that entries name in `terms`) */
+export function loadTaxonomies(dir = xgenPaths(join(import.meta.dir, "..", "..")).taxonomies): TaxonomyBundle[] {
+  return existsSync(dir) ? readdirSync(dir).filter((f) => f.endsWith(".json")).sort().map((f) => JSON.parse(readFileSync(join(dir, f), "utf8")) as TaxonomyBundle) : [];
+}
 
 export function loadFixtures(dir = xgenPaths(join(import.meta.dir, "..", "..")).fixtures): Collection[] {
   return readdirSync(dir).filter((f) => f.endsWith(".json")).sort().map((f) => JSON.parse(readFileSync(join(dir, f), "utf8")) as Collection);
@@ -39,7 +46,7 @@ function typeOf(id: string, values: unknown[]): Field {
   return f;
 }
 
-export function buildManifest(cols: Collection[]): Manifest {
+export function buildManifest(cols: Collection[], taxonomies: TaxonomyBundle[] = loadTaxonomies()): Manifest {
   const byKind = new Map<string, Entry[]>();
   for (const c of cols) for (const e of c.entries) byKind.set(e.kind, [...(byKind.get(e.kind) ?? []), e]);
   const kindOfId = new Map<string, string>();
@@ -62,7 +69,9 @@ export function buildManifest(cols: Collection[]): Manifest {
       return f;
     });
     const collections = [...new Set(cols.filter((c) => c.entries.some((e) => e.kind === kind)).map((c) => c.collection))].sort();
-    return { record: { id: kind, label: label(kind), scope: "workspace", description: `fixtures: ${collections.join(", ")}`, fields, ...(relations.length ? { relations } : {}) } };
+    // the taxonomies a kind's entries may name in `terms` (Manifest Resource.taxonomies)
+    const tax = taxonomies.filter((t) => t.definition.assigned_to_kinds.includes(kind)).map((t) => t.definition.id).sort();
+    return { record: { id: kind, label: label(kind), scope: "workspace", description: `fixtures: ${collections.join(", ")}`, fields, ...(relations.length ? { relations } : {}) }, ...(tax.length ? { taxonomies: tax } : {}) };
   });
   return { name: "ui8kit-fixtures", version: "0.4.0", resources };
 }

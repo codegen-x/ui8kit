@@ -422,8 +422,8 @@
         "id": "id",
         "title": "title",
         "excerpt": "excerpt",
-        "category": "metadata.category.value",
-        "author": "metadata.author.value",
+        "category": "terms|term:category",
+        "author": "author_id|author",
         "date": "metadata.date.value|date",
         "minutes": "metadata.minutes.value",
         "icon": "metadata.icon.value",
@@ -463,7 +463,7 @@
       "fields": {
         "id": "id",
         "title": "title",
-        "author": "metadata.author.value",
+        "author": "author_id|author",
         "rating": "metadata.rating.value",
         "text": "metadata.text.value",
         "date": "metadata.date.value|date"

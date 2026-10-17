@@ -17,6 +17,7 @@
     type Stat,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { ui } from "@ui8kit/app-shared/content";
   import { metrics as metricsEntries } from "@ui8kit/app-shared/data/metrics";
   import { series as seriesEntries } from "@ui8kit/app-shared/data/series";
@@ -36,11 +37,11 @@
   const SIDENAV_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
   const TABS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
 
-  const metrics = fromCodex<Stat>(metricsEntries, METRICS_FIELDS);
-  const series = fromCodex<Point>(seriesEntries, SERIES_FIELDS);
-  const activity = fromCodex<Event>(activityEntries, ACTIVITY_FIELDS);
-  const sidenav = fromCodex<NavLink>(sidenavEntries, SIDENAV_FIELDS);
-  const tabs = fromCodex<NavLink>(tabsEntries, TABS_FIELDS);
+  const metrics = fromCodex<Stat>(metricsEntries, METRICS_FIELDS, CODEX);
+  const series = fromCodex<Point>(seriesEntries, SERIES_FIELDS, CODEX);
+  const activity = fromCodex<Event>(activityEntries, ACTIVITY_FIELDS, CODEX);
+  const sidenav = fromCodex<NavLink>(sidenavEntries, SIDENAV_FIELDS, CODEX);
+  const tabs = fromCodex<NavLink>(tabsEntries, TABS_FIELDS, CODEX);
 </script>
 
 <PageIntro

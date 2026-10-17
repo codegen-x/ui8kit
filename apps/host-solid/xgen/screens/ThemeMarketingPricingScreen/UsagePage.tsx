@@ -14,6 +14,7 @@ import {
   type Plan,
 } from "@ui8kit/solid-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { tiers as tiersEntries } from "@ui8kit/app-shared/data/tiers";
 import { credits as creditsEntries } from "@ui8kit/app-shared/data/credits";
@@ -39,8 +40,8 @@ const CREDITS_FIELDS = {
   "badge": "metadata.badge.value",
 } as const;
 
-const tiers = fromCodex<Plan>(tiersEntries, TIERS_FIELDS);
-const credits = fromCodex<Pack>(creditsEntries, CREDITS_FIELDS);
+const tiers = fromCodex<Plan>(tiersEntries, TIERS_FIELDS, CODEX);
+const credits = fromCodex<Pack>(creditsEntries, CREDITS_FIELDS, CODEX);
 
 export function UsagePage() {
   return (

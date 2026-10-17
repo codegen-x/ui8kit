@@ -25,6 +25,7 @@ import {
   type Product,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
 import { ui } from "@ui8kit/app-shared/content";
 import { navlinks as navlinksEntries } from "@ui8kit/app-shared/data/navlinks";
@@ -46,18 +47,18 @@ const PRODUCTS_FIELDS = {
   "rating": "metadata.rating.value",
   "reviews": "metadata.reviews.value",
   "badge": "metadata.badge.value",
-  "category": "metadata.category.value",
+  "category": "terms|term:product_category",
   "inStock": "metadata.inStock.value",
   "compareAt": "metadata.compare_at.value",
   "href": "slug|route",
   "image": "featured_media_id|media",
 } as const;
 
-const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS);
-const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS);
-const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS);
-const perks = fromCodex<Feature>(perksEntries, PERKS_FIELDS);
-const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS);
+const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS, CODEX);
+const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS, CODEX);
+const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS, CODEX);
+const perks = fromCodex<Feature>(perksEntries, PERKS_FIELDS, CODEX);
+const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS, CODEX);
 const actions = { toggleTheme };
 </script>
 

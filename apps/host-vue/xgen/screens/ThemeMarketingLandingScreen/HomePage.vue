@@ -23,6 +23,7 @@ import {
   type Step,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { terminal as terminalEntries } from "@ui8kit/app-shared/data/terminal";
 import { logos as logosEntries } from "@ui8kit/app-shared/data/logos";
@@ -52,14 +53,14 @@ const TESTIMONIALS_FIELDS = {
 const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
 const FAQTABS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
 
-const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS);
-const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
-const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
-const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
-const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
-const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS);
-const faq = fromCodex<Faq>(faqEntries, FAQ_FIELDS);
-const faqtabs = fromCodex<FaqTab>(faqtabsEntries, FAQTABS_FIELDS);
+const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS, CODEX);
+const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS, CODEX);
+const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS, CODEX);
+const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS, CODEX);
+const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS, CODEX);
+const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS, CODEX);
+const faq = fromCodex<Faq>(faqEntries, FAQ_FIELDS, CODEX);
+const faqtabs = fromCodex<FaqTab>(faqtabsEntries, FAQTABS_FIELDS, CODEX);
 </script>
 
 <template>

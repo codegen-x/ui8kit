@@ -17,12 +17,13 @@
     type Contrast,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { ui } from "@ui8kit/app-shared/content";
   import { beforeafter as beforeafterEntries } from "@ui8kit/app-shared/data/beforeafter";
 
   const BEFOREAFTER_FIELDS = {"id":"id","title":"title","before":"metadata.before.value","after":"metadata.after.value"} as const;
 
-  const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
+  const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS, CODEX);
 </script>
 
 <Block tag="section" aria-labelledby="page-title" data-testid="page">

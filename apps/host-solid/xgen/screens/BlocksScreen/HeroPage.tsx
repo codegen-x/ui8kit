@@ -20,6 +20,7 @@ import {
   type Topic,
 } from "@ui8kit/solid-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { terminal as terminalEntries } from "@ui8kit/app-shared/data/terminal";
 import { prompts as promptsEntries } from "@ui8kit/app-shared/data/prompts";
@@ -29,9 +30,9 @@ const TERMINAL_FIELDS = {"id":"id","text":"title","kind":"metadata.line_kind.val
 const PROMPTS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
 const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
 
-const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS);
-const prompts = fromCodex<Topic>(promptsEntries, PROMPTS_FIELDS);
-const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS);
+const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS, CODEX);
+const prompts = fromCodex<Topic>(promptsEntries, PROMPTS_FIELDS, CODEX);
+const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS, CODEX);
 
 const HERO_ACTIONS = {
   cta: ui.site.home.cta,

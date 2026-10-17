@@ -102,7 +102,7 @@ export function ProductCard({
               {fmtMoney(product.price, product.currency)}
             </Text>
             {(product.compareAt && (product.compareAt > product.price)) ? (
-              <Text tag="del" size="sm" className="text-muted-foreground" data-testid="compare-at">
+              <Text tag="del" size="sm" className="relative text-muted-foreground" data-testid="compare-at">
                 <Inline className="sr-only">
                   {labels.was}
                 </Inline>

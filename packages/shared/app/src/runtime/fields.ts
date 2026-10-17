@@ -5,7 +5,8 @@
 // block's data contract lives in one place (xgen/schema/codex/blocks.json lists which block reads which map).
 // Paths: top-level entry fields ("title", "excerpt") or "metadata.<field>.value" of a field declared for the kind in
 // xgen/schema/codex/manifest.json; a pipe names a formatter of readPath: "|date" and "|ago" format in the locale, "|route" builds
-// the address from the slug (no href in data), "|media" takes the file of the `media` entry of featured_media_id.
+// the address from the slug (no href in data), "|media" takes the file of the `media` entry of featured_media_id,
+// "|author" the display name of the `user` entry of author_id, "|term:<taxonomy>" the name of the entry's term of that taxonomy.
 
 /** kind `product` -> Product (ProductGrid, ProductDetail, ProductCard) */
 export const productFields = {
@@ -17,7 +18,7 @@ export const productFields = {
   rating: "metadata.rating.value",
   reviews: "metadata.reviews.value",
   badge: "metadata.badge.value",
-  category: "metadata.category.value",
+  category: "terms|term:product_category",
   inStock: "metadata.inStock.value",
   compareAt: "metadata.compare_at.value",
   href: "slug|route",
@@ -29,8 +30,8 @@ export const postFields = {
   id: "id",
   title: "title",
   excerpt: "excerpt",
-  category: "metadata.category.value",
-  author: "metadata.author.value",
+  category: "terms|term:category",
+  author: "author_id|author",
   date: "metadata.date.value|date",
   minutes: "metadata.minutes.value",
   icon: "metadata.icon.value",
@@ -52,6 +53,16 @@ export const planFields = {
   yearly: "metadata.yearly.value",
 } as const;
 
+/** kind `review` -> Review (ProductReviews, Reviews) */
+export const reviewFields = {
+  id: "id",
+  title: "title",
+  author: "author_id|author",
+  rating: "metadata.rating.value",
+  text: "metadata.text.value",
+  date: "metadata.date.value|date",
+} as const;
+
 /** the field maps by entry kind */
-export const CODEX_FIELDS = { product: productFields, post: postFields, plan: planFields } as const;
+export const CODEX_FIELDS = { product: productFields, post: postFields, plan: planFields, review: reviewFields } as const;
 export type CodexFieldKind = keyof typeof CODEX_FIELDS;

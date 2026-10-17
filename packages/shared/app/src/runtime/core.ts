@@ -72,18 +72,26 @@ export interface ReadOptions {
   now?: string | number;
   /** the locale of the app; without it a date is formatted in the `locale` of its entry (then DEFAULT_LOCALE) */
   locale?: string;
-  /** the entries of kind `media`: `featured_media_id|media` resolves to the `file` of the one with that id; without them: undefined (the placeholder) */
+  /** the entries of kind `media`: `featured_media_id|media` resolves to the `file` of the published one with that id; without it: undefined (the placeholder) */
   media?: readonly unknown[];
+  /** the entries of kind `user`: `author_id|author` resolves to the `display_name` of the one with that id; without it: undefined */
+  users?: readonly unknown[];
+  /** the Codex terms (of every taxonomy): `terms|term:<taxonomy>` resolves to the `name` of the entry's first term of that taxonomy; without it: undefined */
+  terms?: readonly unknown[];
   /** the address of an entry by its kind, with `{slug}`: `{ product: "#/product/{slug}" }`; `slug|route` builds it; without a route: undefined (no link) */
   routes?: Readonly<Record<string, string>>;
 }
 
 const field = (o: unknown, k: string): unknown => (o !== null && typeof o === "object" ? (o as Record<string, unknown>)[k] : undefined);
 
+/** a record is keyed by (id, locale): of the records with one id, the one in the locale, else the first */
+const byLocale = (records: readonly unknown[], locale: string): unknown => records.find((r) => field(r, "locale") === locale) ?? records[0];
+
 /**
  * a value by a dotted path, with an optional formatter after a pipe:
  *   "metadata.date.value|date"  -> fmtDate      "metadata.time.value|ago" (or ago-days, ago-short) -> fmtAgo   (in the locale)
  *   "featured_media_id|media"   -> the file of that media entry      "slug|route" -> the address from the route of the entry's kind
+ *   "author_id|author"          -> the display name of that user     "terms|term:category" -> the name of the entry's term of that taxonomy
  */
 export function readPath(source: unknown, path: string, opts: ReadOptions = {}): unknown {
   const [dotted, pipe] = path.split("|") as [string, string | undefined];
@@ -97,7 +105,19 @@ export function readPath(source: unknown, path: string, opts: ReadOptions = {}):
   const locale = opts.locale ?? (typeof own === "string" ? own : DEFAULT_LOCALE);
   if (pipe === "date") return fmtDate(cur, locale);
   if (pipe === "ago" || pipe === "ago-days" || pipe === "ago-short") return fmtAgo(cur, opts.now ?? DEMO_NOW, pipe, locale);
-  if (pipe === "media") return field(field(field((opts.media ?? []).find((m) => field(m, "id") === cur), "metadata"), "file"), "value");
+  // a media entry with no uploaded asset is a draft: no file, the block shows its placeholder
+  if (pipe === "media") return field(field(field((opts.media ?? []).find((m) => field(m, "id") === cur && field(m, "status") === "published"), "metadata"), "file"), "value");
+  if (pipe === "author") {
+    const user = byLocale((opts.users ?? []).filter((u) => field(u, "id") === cur), locale);
+    return field(field(field(user, "metadata"), "display_name"), "value") ?? field(user, "title");
+  }
+  if (pipe.startsWith("term:")) {
+    const taxonomy = pipe.slice("term:".length);
+    const ref = Array.isArray(cur) ? cur.find((r) => field(r, "taxonomy") === taxonomy) : undefined;
+    if (ref === undefined) return undefined;
+    const term = byLocale((opts.terms ?? []).filter((t) => field(t, "taxonomy_id") === taxonomy && field(t, "id") === field(ref, "term_id")), locale);
+    return field(term, "name");
+  }
   if (pipe === "route") {
     const kind = field(source, "kind"), route = typeof kind === "string" ? opts.routes?.[kind] : undefined;
     return route === undefined ? undefined : route.replace("{slug}", encodeURIComponent(String(cur)));

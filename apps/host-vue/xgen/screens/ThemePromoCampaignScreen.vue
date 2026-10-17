@@ -12,6 +12,7 @@ import LaunchPage from "./ThemePromoCampaignScreen/LaunchPage.vue";
 import OfferPage from "./ThemePromoCampaignScreen/OfferPage.vue";
 import NoticesPage from "./ThemePromoCampaignScreen/NoticesPage.vue";
 import { fromCodex, matchRoute, type UrlPort } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
 import { ui } from "@ui8kit/app-shared/content";
 import { navOf } from "@ui8kit/app-shared/nav/ThemePromoCampaignScreen";
@@ -35,11 +36,11 @@ const COMMUNITY_FIELDS = {"id":"id","title":"title","text":"metadata.text.value"
 
 const { url } = defineProps<{ url: UrlPort }>();
 
-const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS);
-const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
-const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
-const contacts = fromCodex<Feature>(contactsEntries, CONTACTS_FIELDS);
-const community = fromCodex<Feature>(communityEntries, COMMUNITY_FIELDS);
+const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS, CODEX);
+const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS, CODEX);
+const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS, CODEX);
+const contacts = fromCodex<Feature>(contactsEntries, CONTACTS_FIELDS, CODEX);
+const community = fromCodex<Feature>(communityEntries, COMMUNITY_FIELDS, CODEX);
 const route = computed(() => matchRoute(ROUTES, url.path) ?? { area: "home", params: {} as Record<string, string> });
 const nav = computed(() => navOf(route.value.area));
 const actions = { toggleTheme };

@@ -20,6 +20,7 @@ import {
   type Stat,
 } from "@ui8kit/solid-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { stats as statsEntries } from "@ui8kit/app-shared/data/stats";
 import { features as featuresEntries } from "@ui8kit/app-shared/data/features";
@@ -52,10 +53,10 @@ const TIERS_FIELDS = {
   "yearly": "metadata.yearly.value",
 } as const;
 
-const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
-const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
-const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS);
-const tiers = fromCodex<Plan>(tiersEntries, TIERS_FIELDS);
+const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS, CODEX);
+const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS, CODEX);
+const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS, CODEX);
+const tiers = fromCodex<Plan>(tiersEntries, TIERS_FIELDS, CODEX);
 
 const HEROSPLIT_ACTIONS = {
   mode: "two",

@@ -17,6 +17,7 @@ import {
   type Event,
 } from "@ui8kit/solid-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { activity as activityEntries } from "@ui8kit/app-shared/data/activity";
 
@@ -28,7 +29,7 @@ const ACTIVITY_FIELDS = {
   "tone": "metadata.tone.value",
 } as const;
 
-const activity = fromCodex<Event>(activityEntries, ACTIVITY_FIELDS);
+const activity = fromCodex<Event>(activityEntries, ACTIVITY_FIELDS, CODEX);
 
 export function ActivityPage() {
   return (

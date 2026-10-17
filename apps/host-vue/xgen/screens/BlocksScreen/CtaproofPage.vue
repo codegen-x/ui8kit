@@ -20,6 +20,7 @@ import {
   type Zone,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { stats as statsEntries } from "@ui8kit/app-shared/data/stats";
 import { features as featuresEntries } from "@ui8kit/app-shared/data/features";
@@ -41,10 +42,10 @@ const ZONES_FIELDS = {
   "currency": "metadata.currency.value",
 } as const;
 
-const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
-const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
-const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
-const zones = fromCodex<Zone>(zonesEntries, ZONES_FIELDS);
+const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS, CODEX);
+const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS, CODEX);
+const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS, CODEX);
+const zones = fromCodex<Zone>(zonesEntries, ZONES_FIELDS, CODEX);
 
 const CTAPROOF_ACTIONS = {
   mode: "two",

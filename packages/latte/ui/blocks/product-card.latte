@@ -70,7 +70,7 @@
             {=ui_include('ui/inline/inline.latte', ['p' => ['Class' => 'sr-only'], 'children' => $c_10])|noescape}
             {=ui_text(ui_money(ui_get($v_product, ['compareAt']), ui_get($v_product, ['currency'])))}
           {/capture}
-          {=ui_include('ui/text/text.latte', ['p' => ['Tag' => 'del', 'Size' => 'sm', 'Class' => 'text-muted-foreground', 'Attrs' => ui_attrs(['data-testid', 'compare-at'])], 'children' => $c_11])|noescape}
+          {=ui_include('ui/text/text.latte', ['p' => ['Tag' => 'del', 'Size' => 'sm', 'Class' => 'relative text-muted-foreground', 'Attrs' => ui_attrs(['data-testid', 'compare-at'])], 'children' => $c_11])|noescape}
         {/if}
       {/capture}
       {=ui_include('ui/group/group.latte', ['p' => ['Gap' => '2', 'Align' => 'baseline', 'Class' => 'flex-wrap'], 'children' => $c_12])|noescape}

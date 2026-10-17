@@ -84,11 +84,11 @@
         {/capture}
         {=ui_include('ui/group/group.latte', ['p' => ['Gap' => '2', 'Class' => 'mt-auto flex-wrap pt-2 text-muted-foreground'], 'children' => $c_15])|noescape}
       {/if}
-      {if ui_t(!(ui_eq($v_meta, 'news')))}
+      {if ui_t(ui_and([!(ui_eq($v_meta, 'news')), ui_get($v_post, ['href'])]))}
         {capture $c_16}
           {=ui_text(ui_get($v_labels, ['read']))}
         {/capture}
-        {=ui_include('ui/link/link.latte', ['p' => ['Href' => ui_s(ui_coalesce([ui_get($v_post, ['href']), '#/'])), 'Variant' => 'default', 'Attrs' => ui_attrs(['data-testid', 'read'])], 'children' => $c_16])|noescape}
+        {=ui_include('ui/link/link.latte', ['p' => ['Href' => ui_s(ui_get($v_post, ['href'])), 'Variant' => 'default', 'Attrs' => ui_attrs(['data-testid', 'read'])], 'children' => $c_16])|noescape}
       {/if}
     {/capture}
     {=ui_include('ui/card/card-content.latte', ['p' => ['Class' => 'flex flex-1 flex-col gap-2'], 'children' => $c_17])|noescape}

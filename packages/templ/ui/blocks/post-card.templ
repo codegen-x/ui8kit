@@ -94,8 +94,8 @@ templ PostCard(p PostCardProps) {
 						}
 					}
 				}
-				if !uiutils.Eq(vMeta, "news") {
-					@link.Link(link.LinkProps{Href: uiutils.S(uiutils.Coalesce(uiutils.Get(vPost, "href"), "#/")), Variant: "default", Attrs: uiutils.Attrs("data-testid", "read")}) {
+				if uiutils.T(uiutils.And(!uiutils.Eq(vMeta, "news"), uiutils.Get(vPost, "href"))) {
+					@link.Link(link.LinkProps{Href: uiutils.S(uiutils.Get(vPost, "href")), Variant: "default", Attrs: uiutils.Attrs("data-testid", "read")}) {
 						{ uiutils.Text(uiutils.Get(vLabels, "read")) }
 					}
 				}

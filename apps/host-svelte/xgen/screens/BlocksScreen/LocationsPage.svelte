@@ -17,6 +17,7 @@
     type Store,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { ui } from "@ui8kit/app-shared/content";
   import { stores as storesEntries } from "@ui8kit/app-shared/data/stores";
 
@@ -31,7 +32,7 @@
     "services": "metadata.services.value",
   } as const;
 
-  const stores = fromCodex<Store>(storesEntries, STORES_FIELDS);
+  const stores = fromCodex<Store>(storesEntries, STORES_FIELDS, CODEX);
 </script>
 
 <Block tag="section" aria-labelledby="page-title" data-testid="page">

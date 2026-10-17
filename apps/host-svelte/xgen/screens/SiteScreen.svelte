@@ -22,6 +22,7 @@
     type Plan,
   } from "@ui8kit/svelte-ui";
   import { fromCodex, matchRoute, type UrlPort } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
   import { ui } from "@ui8kit/app-shared/content";
   import { terminal as terminalEntries } from "@ui8kit/app-shared/data/terminal";
@@ -50,11 +51,11 @@
 
   let { url }: { url: UrlPort } = $props();
 
-  const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS);
-  const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
-  const tiers = fromCodex<Plan>(tiersEntries, TIERS_FIELDS);
-  const faq = fromCodex<Faq>(faqEntries, FAQ_FIELDS);
-  const faqtabs = fromCodex<FaqTab>(faqtabsEntries, FAQTABS_FIELDS);
+  const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS, CODEX);
+  const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS, CODEX);
+  const tiers = fromCodex<Plan>(tiersEntries, TIERS_FIELDS, CODEX);
+  const faq = fromCodex<Faq>(faqEntries, FAQ_FIELDS, CODEX);
+  const faqtabs = fromCodex<FaqTab>(faqtabsEntries, FAQTABS_FIELDS, CODEX);
   const route = $derived(matchRoute(ROUTES, url.path) ?? { area: "notfound", params: {} as Record<string, string> });
   const actions = { toggleTheme };
 </script>

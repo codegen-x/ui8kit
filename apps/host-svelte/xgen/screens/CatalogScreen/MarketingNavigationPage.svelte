@@ -20,6 +20,7 @@
     type NavLink,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
   import { ui } from "@ui8kit/app-shared/content";
   import { navlinks as navlinksEntries } from "@ui8kit/app-shared/data/navlinks";
@@ -28,8 +29,8 @@
   const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
   const MEGAGROUPS_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
 
-  const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS);
-  const megagroups = fromCodex<MegaGroup>(megagroupsEntries, MEGAGROUPS_FIELDS);
+  const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS, CODEX);
+  const megagroups = fromCodex<MegaGroup>(megagroupsEntries, MEGAGROUPS_FIELDS, CODEX);
   const actions = { toggleTheme };
 
   const NAVBAR_ACTIONS = { cta: ui.site.header.cta, href: "#/", login: ui.site.header.login, loginHref: "#/login" } as const;

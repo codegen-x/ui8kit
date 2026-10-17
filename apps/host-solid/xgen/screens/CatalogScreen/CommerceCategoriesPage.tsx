@@ -17,12 +17,13 @@ import {
   type Category,
 } from "@ui8kit/solid-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { categories as categoriesEntries } from "@ui8kit/app-shared/data/categories";
 
 const CATEGORIES_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","count":"metadata.count.value"} as const;
 
-const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS);
+const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS, CODEX);
 
 export function CommerceCategoriesPage() {
   return (

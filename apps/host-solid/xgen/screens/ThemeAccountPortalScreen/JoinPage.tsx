@@ -4,6 +4,7 @@
 
 import { PageIntro, SignupWizard, tpl, uniqLabel, type WizardStep } from "@ui8kit/solid-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { wizard as wizardEntries } from "@ui8kit/app-shared/data/wizard";
 
@@ -16,7 +17,7 @@ const WIZARD_FIELDS = {
   "fieldB": "metadata.fieldB.value",
 } as const;
 
-const wizard = fromCodex<WizardStep>(wizardEntries, WIZARD_FIELDS);
+const wizard = fromCodex<WizardStep>(wizardEntries, WIZARD_FIELDS, CODEX);
 
 export function JoinPage() {
   return (

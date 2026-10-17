@@ -84,7 +84,7 @@ templ ProductCard(p ProductCardProps) {
 						{ uiutils.Text(uiutils.Money(uiutils.Get(vProduct, "price"), uiutils.Get(vProduct, "currency"))) }
 					}
 					if uiutils.T(uiutils.And(uiutils.Get(vProduct, "compareAt"), uiutils.Gt(uiutils.Get(vProduct, "compareAt"), uiutils.Get(vProduct, "price")))) {
-						@text.Text(text.TextProps{Tag: "del", Size: "sm", Class: "text-muted-foreground", Attrs: uiutils.Attrs("data-testid", "compare-at")}) {
+						@text.Text(text.TextProps{Tag: "del", Size: "sm", Class: "relative text-muted-foreground", Attrs: uiutils.Attrs("data-testid", "compare-at")}) {
 							@inline.Inline(inline.InlineProps{Class: "sr-only"}) {
 								{ uiutils.Text(uiutils.Get(vLabels, "was")) }
 							}

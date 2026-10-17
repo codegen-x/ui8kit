@@ -17,6 +17,7 @@ import {
   type Zone,
 } from "@ui8kit/solid-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { zones as zonesEntries } from "@ui8kit/app-shared/data/zones";
 
@@ -32,7 +33,7 @@ const ZONES_FIELDS = {
   "currency": "metadata.currency.value",
 } as const;
 
-const zones = fromCodex<Zone>(zonesEntries, ZONES_FIELDS);
+const zones = fromCodex<Zone>(zonesEntries, ZONES_FIELDS, CODEX);
 
 export function ZonesPage() {
   return (

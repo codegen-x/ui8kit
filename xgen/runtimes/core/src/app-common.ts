@@ -3,7 +3,7 @@
 // What both hosts read (dictionary, fixtures, menus, url core, theme, skins, the screen registry) is emitted once, in SHARED_DIR.
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import type { AppSpec, CollectionFile, Dictionary, ScreenSpec } from "@ui8kit/xgen-screens";
+import type { AppSpec, CollectionFile, Dictionary, ScreenSpec, TaxonomyFile } from "@ui8kit/xgen-screens";
 import { BANNER, type GeneratedFile } from "./common";
 
 /** the package every host imports content, data, menus and the url core from */
@@ -158,7 +158,33 @@ function registryFile(screens: ScreenSpec[]): GeneratedFile {
 const escapeCyrillic = (s: string): string => s.replace(/[\u0400-\u04FF]/g, (c) => `\\u${c.charCodeAt(0).toString(16).padStart(4, "0")}`);
 
 /** the shared package: one copy of what every host reads, whatever its runtime */
-export function sharedPackage(dictionary: Dictionary, collections: CollectionFile[], screens: ScreenSpec[]): GeneratedFile[] {
+/** runtime/codex: the lookups `fromCodex` resolves the references of an entry with (ReadOptions of runtime/core): the
+ *  media entries (featured_media_id|media), the users (author_id|author) and the terms of every taxonomy (terms|term:<id>) */
+function codexFile(collections: CollectionFile[]): GeneratedFile {
+  const of = (kind: string) => collections.filter((c) => c.entries.length > 0 && c.entries.every((e) => e.kind === kind)).map((c) => c.collection).sort();
+  const media = of("media"), users = of("user");
+  const imports = [...media, ...users].map((c) => `import { ${c} } from "../data/${c}";`);
+  const list = (cs: string[]) => (cs.length ? `[${cs.map((c) => `...${c}`).join(", ")}]` : "[]");
+  return {
+    path: "src/runtime/codex.ts",
+    contents: withBanner([
+      `// The lookups of the Codex entries: pass CODEX as the options of fromCodex so that featured_media_id, author_id and terms`,
+      `// resolve (media file, author name, term label). Add \`routes\` for the kinds an app has a page for: without one, no link.`,
+      `import type { ReadOptions } from "./core";`,
+      ...imports,
+      `import { taxonomies } from "../data/taxonomies";`,
+      ``,
+      `export const CODEX: ReadOptions = {`,
+      `  media: ${list(media)},`,
+      `  users: ${list(users)},`,
+      `  terms: (taxonomies as readonly { terms: readonly unknown[] }[]).flatMap((t) => t.terms),`,
+      `};`,
+      ``,
+    ].join("\n")),
+  };
+}
+
+export function sharedPackage(dictionary: Dictionary, collections: CollectionFile[], screens: ScreenSpec[], taxonomies: TaxonomyFile[] = []): GeneratedFile[] {
   const files: GeneratedFile[] = [
     { path: "src/content.ts", contents: withBanner(`// The content dictionary (xgen/content/ui/en.json): every text of every screen\nexport const ui = ${escapeCyrillic(JSON.stringify(dictionary, null, 2))} as const;\n`) },
     { path: "src/runtime/core.ts", contents: withBanner(readAsset("app", "core.ts")) },
@@ -175,6 +201,11 @@ export function sharedPackage(dictionary: Dictionary, collections: CollectionFil
       path: `src/data/${c.collection}.ts`,
       contents: withBanner(`// Fixture of the Codex collection "${c.collection}" (xgen/fixtures/${c.collection}.json)\nexport const ${c.collection} = ${JSON.stringify(c.entries, null, 2)} as const;\n`),
     })),
+    {
+      path: "src/data/taxonomies.ts",
+      contents: withBanner(`// The Codex taxonomy bundles (xgen/fixtures/taxonomies/*.json): the terms that entries name in \`terms\`\nexport const taxonomies = ${JSON.stringify(taxonomies, null, 2)} as const;\n`),
+    },
+    codexFile(collections),
     ...screens.filter((s) => s.nav).map(navFile),
   ];
   files.push(jsonFile("package.json", {
@@ -207,7 +238,7 @@ export function sharedPackage(dictionary: Dictionary, collections: CollectionFil
       `- \`data/<collection>\`: the fixtures the screens read`,
       `- \`nav/<Screen>\`: the menu of a screen (\`menu\` of its spec)`,
       `- \`screens\`: the registry of screens (key, id, skin) and the boot of a visit`,
-      `- \`runtime/core\`, \`runtime/theme\`: url state and light/dark, runtime neutral; \`runtime/fields\`: the Codex field maps by kind`,
+      `- \`runtime/core\`, \`runtime/theme\`: url state and light/dark, runtime neutral; \`runtime/fields\`: the Codex field maps by kind; \`runtime/codex\`: the lookups (media, users, terms) of fromCodex`,
       `- \`styles/skins.css\`: skins switched by \`data-skin\` on \`<html>\``,
       ``,
       `${screens.length} screens. A dictionary edit changes \`src/content.ts\` here and nothing in the hosts.`,

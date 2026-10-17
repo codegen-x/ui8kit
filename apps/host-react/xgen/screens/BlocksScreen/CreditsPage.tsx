@@ -17,6 +17,7 @@ import {
   type Pack,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { credits as creditsEntries } from "@ui8kit/app-shared/data/credits";
 
@@ -29,7 +30,7 @@ const CREDITS_FIELDS = {
   "badge": "metadata.badge.value",
 } as const;
 
-const credits = fromCodex<Pack>(creditsEntries, CREDITS_FIELDS);
+const credits = fromCodex<Pack>(creditsEntries, CREDITS_FIELDS, CODEX);
 
 export function CreditsPage() {
   return (

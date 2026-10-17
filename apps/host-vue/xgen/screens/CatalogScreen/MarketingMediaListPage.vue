@@ -22,6 +22,7 @@ import {
   type Step,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { stats as statsEntries } from "@ui8kit/app-shared/data/stats";
 import { steps as stepsEntries } from "@ui8kit/app-shared/data/steps";
@@ -36,8 +37,8 @@ const POSTS_FIELDS = {
   "id": "id",
   "title": "title",
   "excerpt": "excerpt",
-  "category": "metadata.category.value",
-  "author": "metadata.author.value",
+  "category": "terms|term:category",
+  "author": "author_id|author",
   "date": "metadata.date.value|date",
   "minutes": "metadata.minutes.value",
   "icon": "metadata.icon.value",
@@ -49,18 +50,18 @@ const CHANNELS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value",
 const REVIEWS_FIELDS = {
   "id": "id",
   "title": "title",
-  "author": "metadata.author.value",
+  "author": "author_id|author",
   "rating": "metadata.rating.value",
   "text": "metadata.text.value",
   "date": "metadata.date.value|date",
 } as const;
 
-const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
-const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
-const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS);
-const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS);
-const channels = fromCodex<Feature>(channelsEntries, CHANNELS_FIELDS);
-const reviews = fromCodex<Review>(reviewsEntries, REVIEWS_FIELDS);
+const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS, CODEX);
+const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS, CODEX);
+const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS, CODEX);
+const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS, CODEX);
+const channels = fromCodex<Feature>(channelsEntries, CHANNELS_FIELDS, CODEX);
+const reviews = fromCodex<Review>(reviewsEntries, REVIEWS_FIELDS, CODEX);
 
 const MEDIALIST_LABELS = {
   count: ui.marketing.mediaList.count,

@@ -16,6 +16,7 @@
   import WorkPage from "./ThemeMarketingLandingScreen/WorkPage.svelte";
   import TeamsPage from "./ThemeMarketingLandingScreen/TeamsPage.svelte";
   import { fromCodex, matchRoute, type UrlPort } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
   import { ui } from "@ui8kit/app-shared/content";
   import { navOf } from "@ui8kit/app-shared/nav/ThemeMarketingLandingScreen";
@@ -35,7 +36,7 @@
 
   let { url }: { url: UrlPort } = $props();
 
-  const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS);
+  const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS, CODEX);
   const route = $derived(matchRoute(ROUTES, url.path) ?? { area: "home", params: {} as Record<string, string> });
   const nav = $derived(navOf(route.area));
   const actions = { toggleTheme };

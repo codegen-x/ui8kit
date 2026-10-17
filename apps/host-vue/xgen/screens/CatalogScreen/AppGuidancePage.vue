@@ -18,12 +18,13 @@ import {
   type Chapter,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { chapters as chaptersEntries } from "@ui8kit/app-shared/data/chapters";
 
 const CHAPTERS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value"} as const;
 
-const chapters = fromCodex<Chapter>(chaptersEntries, CHAPTERS_FIELDS);
+const chapters = fromCodex<Chapter>(chaptersEntries, CHAPTERS_FIELDS, CODEX);
 </script>
 
 <template>

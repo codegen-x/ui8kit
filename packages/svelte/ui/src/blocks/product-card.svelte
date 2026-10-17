@@ -105,7 +105,7 @@
           {fmtMoney(product.price, product.currency)}
         </Text>
         {#if (product.compareAt && (product.compareAt > product.price))}
-          <Text tag="del" size="sm" class="text-muted-foreground" data-testid="compare-at">
+          <Text tag="del" size="sm" class="relative text-muted-foreground" data-testid="compare-at">
             <Inline class="sr-only">
               {labels.was}
             </Inline>

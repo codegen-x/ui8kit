@@ -107,7 +107,7 @@ const emit = defineEmits<{ add: [id: string] }>();
             v-if="(product.compareAt && (product.compareAt > product.price))"
             tag="del"
             size="sm"
-            class="text-muted-foreground"
+            class="relative text-muted-foreground"
             data-testid="compare-at"
           >
             <Inline class="sr-only">

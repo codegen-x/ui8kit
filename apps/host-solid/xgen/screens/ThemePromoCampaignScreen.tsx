@@ -11,6 +11,7 @@ import { LaunchPage } from "./ThemePromoCampaignScreen/LaunchPage";
 import { OfferPage } from "./ThemePromoCampaignScreen/OfferPage";
 import { NoticesPage } from "./ThemePromoCampaignScreen/NoticesPage";
 import { fromCodex, matchRoute, type UrlPort } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
 import { ui } from "@ui8kit/app-shared/content";
 import { navOf } from "@ui8kit/app-shared/nav/ThemePromoCampaignScreen";
@@ -32,11 +33,11 @@ const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value",
 const CONTACTS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 const COMMUNITY_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 
-const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS);
-const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
-const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
-const contacts = fromCodex<Feature>(contactsEntries, CONTACTS_FIELDS);
-const community = fromCodex<Feature>(communityEntries, COMMUNITY_FIELDS);
+const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS, CODEX);
+const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS, CODEX);
+const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS, CODEX);
+const contacts = fromCodex<Feature>(contactsEntries, CONTACTS_FIELDS, CODEX);
+const community = fromCodex<Feature>(communityEntries, COMMUNITY_FIELDS, CODEX);
 const HOME = { area: "home", params: {} as Record<string, string> };
 const actions = { toggleTheme };
 

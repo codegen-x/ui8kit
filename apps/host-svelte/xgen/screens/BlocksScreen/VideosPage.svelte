@@ -17,6 +17,7 @@
     type Quote,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { ui } from "@ui8kit/app-shared/content";
   import { testimonials as testimonialsEntries } from "@ui8kit/app-shared/data/testimonials";
 
@@ -32,7 +33,7 @@
     "mark": "metadata.mark.value",
   } as const;
 
-  const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS);
+  const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS, CODEX);
 </script>
 
 <Block tag="section" aria-labelledby="page-title" data-testid="page">

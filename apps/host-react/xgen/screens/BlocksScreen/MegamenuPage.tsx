@@ -18,6 +18,7 @@ import {
   type NavLink,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { navlinks as navlinksEntries } from "@ui8kit/app-shared/data/navlinks";
 import { megagroups as megagroupsEntries } from "@ui8kit/app-shared/data/megagroups";
@@ -25,8 +26,8 @@ import { megagroups as megagroupsEntries } from "@ui8kit/app-shared/data/megagro
 const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
 const MEGAGROUPS_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
 
-const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS);
-const megagroups = fromCodex<MegaGroup>(megagroupsEntries, MEGAGROUPS_FIELDS);
+const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS, CODEX);
+const megagroups = fromCodex<MegaGroup>(megagroupsEntries, MEGAGROUPS_FIELDS, CODEX);
 
 export function MegamenuPage() {
   return (

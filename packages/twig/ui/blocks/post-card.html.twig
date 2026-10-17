@@ -84,11 +84,11 @@
         {%- endset -%}
         {{ include('ui/group/group.html.twig', {'p': {'Gap': '2', 'Class': 'mt-auto flex-wrap pt-2 text-muted-foreground'}, 'children': c_15}, with_context = false) }}
       {%- endif %}
-      {%- if ui_t(not (ui_eq(v_meta, 'news'))) %}
+      {%- if ui_t(ui_and([not (ui_eq(v_meta, 'news')), ui_get(v_post, ['href'])])) %}
         {%- set c_16 -%}
           {{ ui_text(ui_get(v_labels, ['read'])) }}
         {%- endset -%}
-        {{ include('ui/link/link.html.twig', {'p': {'Href': ui_s(ui_coalesce([ui_get(v_post, ['href']), '#/'])), 'Variant': 'default', 'Attrs': ui_attrs(['data-testid', 'read'])}, 'children': c_16}, with_context = false) }}
+        {{ include('ui/link/link.html.twig', {'p': {'Href': ui_s(ui_get(v_post, ['href'])), 'Variant': 'default', 'Attrs': ui_attrs(['data-testid', 'read'])}, 'children': c_16}, with_context = false) }}
       {%- endif %}
     {%- endset -%}
     {{ include('ui/card/card-content.html.twig', {'p': {'Class': 'flex flex-1 flex-col gap-2'}, 'children': c_17}, with_context = false) }}

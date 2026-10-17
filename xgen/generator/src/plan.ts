@@ -244,9 +244,11 @@ export function planBuild(workspace: string, xgenRoot = join(workspace, "xgen"))
   // what every host reads, emitted once: the dictionary, the fixtures of the hosted screens, their menus, the registry, the url core
   const shared = [...hosted.values()].sort((a, b) => a.id.localeCompare(b.id));
   const cols = new Set(shared.flatMap((s) => sourcesOf(s).map((x) => x.collection)));
-  const collections = inputs.collections.map((c) => c.value).filter((c) => cols.has(c.collection));
+  // and the lookups of the entries they read: media (featured_media_id), users (author_id) and the taxonomy terms (terms)
+  const LOOKUP_KINDS = ["media", "user"];
+  const collections = inputs.collections.map((c) => c.value).filter((c) => cols.has(c.collection) || c.entries.every((e) => LOOKUP_KINDS.includes(e.kind)) && c.entries.length > 0);
   const screenFile = (name: string): string | undefined => { const f = inputs.screens.find((x) => x.value.name === name)?.file; return f ? relative(join(xgenRoot, ".."), f) : undefined; };
-  const sharedFiles = sharedPackage(inputs.dictionary.value, collections, shared).map((f) => withSource(f, sharedSourceOf(f.path, screenFile)));
+  const sharedFiles = sharedPackage(inputs.dictionary.value, collections, shared, inputs.taxonomies.map((t) => t.value)).map((f) => withSource(f, sharedSourceOf(f.path, screenFile)));
   if (hostTargets.length) targets.push({ dir: SHARED_DIR, kind: "package", runtime: "core", files: byPath(sharedFiles), handwritten: [], manifest: MANIFEST });
   targets.push(...hostTargets);
   return { workspace, xgenRoot, targets, problems, inputs, bricks: specs.bricks, apps };
@@ -255,6 +257,8 @@ export function planBuild(workspace: string, xgenRoot = join(workspace, "xgen"))
 /** the file a person changes instead of a generated file of the shared package (dictionary, fixtures, menus, registry, url core) */
 export function sharedSourceOf(path: string, screenFile: (name: string) => string | undefined): string | undefined {
   if (path === "src/content.ts") return "xgen/content/ui/en.json";
+  if (path === "src/data/taxonomies.ts") return "xgen/fixtures/taxonomies/*.json";
+  if (path === "src/runtime/codex.ts") return "xgen/runtimes/core/src/app-common.ts (codexFile: the lookups of the entries)";
   const data = /^src\/data\/([a-z0-9-]+)\.ts$/.exec(path);
   if (data) return `xgen/fixtures/${data[1]}.json`;
   const nav = /^src\/nav\/(\w+)\.ts$/.exec(path);

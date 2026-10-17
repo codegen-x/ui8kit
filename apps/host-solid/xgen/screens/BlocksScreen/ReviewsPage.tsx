@@ -17,19 +17,20 @@ import {
   type Review,
 } from "@ui8kit/solid-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { reviews as reviewsEntries } from "@ui8kit/app-shared/data/reviews";
 
 const REVIEWS_FIELDS = {
   "id": "id",
   "title": "title",
-  "author": "metadata.author.value",
+  "author": "author_id|author",
   "rating": "metadata.rating.value",
   "text": "metadata.text.value",
   "date": "metadata.date.value|date",
 } as const;
 
-const reviews = fromCodex<Review>(reviewsEntries, REVIEWS_FIELDS);
+const reviews = fromCodex<Review>(reviewsEntries, REVIEWS_FIELDS, CODEX);
 
 export function ReviewsPage() {
   return (

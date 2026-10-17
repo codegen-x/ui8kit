@@ -17,12 +17,13 @@
     type Milestone,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { ui } from "@ui8kit/app-shared/content";
   import { milestones as milestonesEntries } from "@ui8kit/app-shared/data/milestones";
 
   const MILESTONES_FIELDS = {"id":"id","date":"metadata.date.value","title":"title","text":"metadata.text.value","tag":"metadata.tag.value"} as const;
 
-  const milestones = fromCodex<Milestone>(milestonesEntries, MILESTONES_FIELDS);
+  const milestones = fromCodex<Milestone>(milestonesEntries, MILESTONES_FIELDS, CODEX);
 </script>
 
 <Block tag="section" aria-labelledby="page-title" data-testid="page">

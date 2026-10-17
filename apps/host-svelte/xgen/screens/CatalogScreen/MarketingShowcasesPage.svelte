@@ -21,6 +21,7 @@
     type Tile,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { ui } from "@ui8kit/app-shared/content";
   import { features as featuresEntries } from "@ui8kit/app-shared/data/features";
   import { bento as bentoEntries } from "@ui8kit/app-shared/data/bento";
@@ -28,8 +29,8 @@
   const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
   const BENTO_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","size":"metadata.size.value"} as const;
 
-  const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
-  const bento = fromCodex<Tile>(bentoEntries, BENTO_FIELDS);
+  const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS, CODEX);
+  const bento = fromCodex<Tile>(bentoEntries, BENTO_FIELDS, CODEX);
 </script>
 
 <Block tag="section" aria-labelledby="page-title" data-testid="page">

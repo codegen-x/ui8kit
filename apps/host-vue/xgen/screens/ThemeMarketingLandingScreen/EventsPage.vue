@@ -15,6 +15,7 @@ import {
   type Stat,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { terminal as terminalEntries } from "@ui8kit/app-shared/data/terminal";
 import { stats as statsEntries } from "@ui8kit/app-shared/data/stats";
@@ -34,9 +35,9 @@ const TESTIMONIALS_FIELDS = {
   "mark": "metadata.mark.value",
 } as const;
 
-const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS);
-const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
-const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS);
+const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS, CODEX);
+const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS, CODEX);
+const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS, CODEX);
 </script>
 
 <template>

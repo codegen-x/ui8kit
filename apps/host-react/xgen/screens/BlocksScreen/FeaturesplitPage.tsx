@@ -18,6 +18,7 @@ import {
   type Stat,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { stats as statsEntries } from "@ui8kit/app-shared/data/stats";
 import { features as featuresEntries } from "@ui8kit/app-shared/data/features";
@@ -25,8 +26,8 @@ import { features as featuresEntries } from "@ui8kit/app-shared/data/features";
 const STATS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
 const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 
-const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
-const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
+const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS, CODEX);
+const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS, CODEX);
 
 const FEATURESPLIT_ACTIONS = {
   mode: "two",

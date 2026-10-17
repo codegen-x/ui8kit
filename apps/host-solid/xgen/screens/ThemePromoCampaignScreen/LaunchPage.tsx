@@ -14,6 +14,7 @@ import {
   type Logo,
 } from "@ui8kit/solid-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { terminal as terminalEntries } from "@ui8kit/app-shared/data/terminal";
 import { logos as logosEntries } from "@ui8kit/app-shared/data/logos";
@@ -21,8 +22,8 @@ import { logos as logosEntries } from "@ui8kit/app-shared/data/logos";
 const TERMINAL_FIELDS = {"id":"id","text":"title","kind":"metadata.line_kind.value"} as const;
 const LOGOS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
 
-const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS);
-const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
+const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS, CODEX);
+const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS, CODEX);
 
 export function LaunchPage() {
   return (

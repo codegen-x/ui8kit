@@ -20,6 +20,7 @@ import {
   type Stat,
 } from "@ui8kit/solid-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { activity as activityEntries } from "@ui8kit/app-shared/data/activity";
 import { series as seriesEntries } from "@ui8kit/app-shared/data/series";
@@ -37,10 +38,10 @@ const SERIES_FIELDS = {"id":"id","label":"title","value":"metadata.value.value"}
 const SIDENAV_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
 const METRICS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
 
-const activity = fromCodex<Event>(activityEntries, ACTIVITY_FIELDS);
-const series = fromCodex<Point>(seriesEntries, SERIES_FIELDS);
-const sidenav = fromCodex<NavLink>(sidenavEntries, SIDENAV_FIELDS);
-const metrics = fromCodex<Stat>(metricsEntries, METRICS_FIELDS);
+const activity = fromCodex<Event>(activityEntries, ACTIVITY_FIELDS, CODEX);
+const series = fromCodex<Point>(seriesEntries, SERIES_FIELDS, CODEX);
+const sidenav = fromCodex<NavLink>(sidenavEntries, SIDENAV_FIELDS, CODEX);
+const metrics = fromCodex<Stat>(metricsEntries, METRICS_FIELDS, CODEX);
 
 const SHELL_NAV = { label: ui.vibe.sidebar.label, brand: ui.site.header.brand, links: sidenav, current: "item-overview" } as const;
 const SHELL_CHART = { title: ui.dashboard.chart.title, text: ui.dashboard.chart.text, summary: ui.dashboard.chart.summary, series } as const;

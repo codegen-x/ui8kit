@@ -17,6 +17,7 @@ import {
   type Plan,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { tiers as tiersEntries } from "@ui8kit/app-shared/data/tiers";
 import { duo as duoEntries } from "@ui8kit/app-shared/data/duo";
@@ -46,8 +47,8 @@ const DUO_FIELDS = {
   "yearly": "metadata.yearly.value",
 } as const;
 
-const tiers = fromCodex<Plan>(tiersEntries, TIERS_FIELDS);
-const duo = fromCodex<Plan>(duoEntries, DUO_FIELDS);
+const tiers = fromCodex<Plan>(tiersEntries, TIERS_FIELDS, CODEX);
+const duo = fromCodex<Plan>(duoEntries, DUO_FIELDS, CODEX);
 
 export function PricingPage() {
   return (

@@ -28,6 +28,7 @@
     type Stat,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
   import { ui } from "@ui8kit/app-shared/content";
   import { navlinks as navlinksEntries } from "@ui8kit/app-shared/data/navlinks";
@@ -66,15 +67,15 @@
   const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
   const MILESTONES_FIELDS = {"id":"id","date":"metadata.date.value","title":"title","text":"metadata.text.value","tag":"metadata.tag.value"} as const;
 
-  const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS);
-  const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
-  const values = fromCodex<Feature>(valuesEntries, VALUES_FIELDS);
-  const members = fromCodex<Member>(membersEntries, MEMBERS_FIELDS);
-  const jobs = fromCodex<Job>(jobsEntries, JOBS_FIELDS);
-  const departments = fromCodex<Department>(departmentsEntries, DEPARTMENTS_FIELDS);
-  const photos = fromCodex<Photo>(photosEntries, PHOTOS_FIELDS);
-  const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS);
-  const milestones = fromCodex<Milestone>(milestonesEntries, MILESTONES_FIELDS);
+  const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS, CODEX);
+  const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS, CODEX);
+  const values = fromCodex<Feature>(valuesEntries, VALUES_FIELDS, CODEX);
+  const members = fromCodex<Member>(membersEntries, MEMBERS_FIELDS, CODEX);
+  const jobs = fromCodex<Job>(jobsEntries, JOBS_FIELDS, CODEX);
+  const departments = fromCodex<Department>(departmentsEntries, DEPARTMENTS_FIELDS, CODEX);
+  const photos = fromCodex<Photo>(photosEntries, PHOTOS_FIELDS, CODEX);
+  const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS, CODEX);
+  const milestones = fromCodex<Milestone>(milestonesEntries, MILESTONES_FIELDS, CODEX);
   const actions = { toggleTheme };
 </script>
 

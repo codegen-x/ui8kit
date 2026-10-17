@@ -17,6 +17,7 @@
     type Post,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { ui } from "@ui8kit/app-shared/content";
   import { posts as postsEntries } from "@ui8kit/app-shared/data/posts";
 
@@ -24,8 +25,8 @@
     "id": "id",
     "title": "title",
     "excerpt": "excerpt",
-    "category": "metadata.category.value",
-    "author": "metadata.author.value",
+    "category": "terms|term:category",
+    "author": "author_id|author",
     "date": "metadata.date.value|date",
     "minutes": "metadata.minutes.value",
     "icon": "metadata.icon.value",
@@ -33,7 +34,7 @@
     "image": "featured_media_id|media",
   } as const;
 
-  const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS);
+  const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS, CODEX);
 </script>
 
 <Block tag="section" aria-labelledby="page-title" data-testid="page">

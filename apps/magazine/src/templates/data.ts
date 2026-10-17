@@ -6,6 +6,7 @@ import type {
 } from "@ui8kit/svelte-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
 import { CODEX_FIELDS } from "@ui8kit/app-shared/runtime/fields";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui as kitUi } from "@ui8kit/app-shared/content";
 import { activity } from "@ui8kit/app-shared/data/activity";
 import { article } from "@ui8kit/app-shared/data/article";
@@ -38,15 +39,15 @@ import { details } from "@ui8kit/app-shared/data/details";
 
 export const ui = kitUi;
 
-// the maps of product, post and plan are the central ones (runtime/fields, source xgen/runtimes/core/assets/app/fields.ts)
+// the maps of product, post, plan and review are the central ones (runtime/fields, source xgen/runtimes/core/assets/app/fields.ts)
 const f = {
+  reviews: CODEX_FIELDS.review,
   posts: CODEX_FIELDS.post,
   products: CODEX_FIELDS.product,
   plan: CODEX_FIELDS.plan,
   nav: { id: "id", name: "title", icon: "metadata.icon.value" },
   metrics: { id: "id", label: "title", value: "metadata.value.value", icon: "metadata.icon.value", hint: "metadata.hint.value" },
   projects: { id: "id", title: "title", category: "metadata.category.value", year: "metadata.year.value", summary: "metadata.summary.value", tags: "metadata.tags.value", featured: "metadata.featured.value", client: "metadata.client.value" },
-  reviews: { id: "id", title: "title", author: "metadata.author.value", rating: "metadata.rating.value", text: "metadata.text.value", date: "metadata.date.value|date" },
   testimonials: { id: "id", author: "title", role: "metadata.role.value", company: "metadata.company.value", quote: "metadata.quote.value", rating: "metadata.rating.value", handle: "metadata.handle.value", time: "metadata.time.value|ago-short", mark: "metadata.mark.value" },
 };
 
@@ -58,6 +59,10 @@ export function rebrand<T>(value: T, brand: string): T {
     v && typeof v === "object" ? Object.fromEntries(Object.entries(v).map(([k, x]) => [k, walk(x)])) : v;
   return walk(value) as T;
 }
+
+// the lookups of the entries (media files, author names, term labels: runtime/codex) and the addresses of entries: the
+// magazine has no product or post page, so no route: `slug|route` stays undefined and the blocks render no link
+const codex = { ...CODEX, routes: {} };
 
 export type TemplateData = ReturnType<typeof makeData>;
 
@@ -76,12 +81,12 @@ export function makeData(brand: string) {
     stats: fromCodex<Stat>(stats, f.metrics),
     series: fromCodex<Point>(series, { id: "id", label: "title", value: "metadata.value.value" }),
     activity: fromCodex<Event>(activity, { id: "id", title: "title", text: "metadata.text.value", time: "metadata.time.value|ago", tone: "metadata.tone.value" }),
-    posts: fromCodex<Post>(posts, f.posts),
+    posts: fromCodex<Post>(posts, f.posts, codex),
     topics: fromCodex<PostTopic>(topics, { id: "id", title: "title", value: "metadata.value.value" }),
     article: fromCodex<Section>(article, { id: "id", title: "title", text: "metadata.text.value", quote: "metadata.quote.value" }),
-    products: fromCodex<Product>(products, f.products),
+    products: fromCodex<Product>(products, f.products, codex),
     categories: fromCodex<Category>(categories, { id: "id", name: "title", icon: "metadata.icon.value", count: "metadata.count.value" }),
-    reviews: fromCodex<Review>(reviews, f.reviews),
+    reviews: fromCodex<Review>(reviews, f.reviews, codex),
     specs: fromCodex<Spec>(specs, { id: "id", label: "title", value: "metadata.value.value" }),
     details: fromCodex<{ id: string; title: string; text: string }>(details, { id: "id", title: "title", text: "metadata.text.value" }),
     projects: rb(fromCodex<Project>(projects, f.projects)),
@@ -90,7 +95,7 @@ export function makeData(brand: string) {
     skills: fromCodex<Skill>(skills, { id: "id", label: "title", level: "metadata.level.value" }),
     features: fromCodex<Feature>(features, { id: "id", title: "title", text: "metadata.text.value", icon: "metadata.icon.value" }),
     steps: fromCodex<Step>(steps, { id: "id", title: "title", text: "metadata.text.value", icon: "metadata.icon.value" }),
-    tiers: fromCodex<Plan>(tiers, f.plan),
+    tiers: fromCodex<Plan>(tiers, f.plan, codex),
     testimonials: fromCodex<Quote>(testimonials, f.testimonials),
     faq: fromCodex<Faq>(faq, { id: "id", question: "title", answer: "metadata.answer.value", category: "metadata.category.value" }),
     sitemap: fromCodex<MegaGroup>(sitemap, { id: "id", title: "title", icon: "metadata.icon.value", links: "metadata.links.value" }),

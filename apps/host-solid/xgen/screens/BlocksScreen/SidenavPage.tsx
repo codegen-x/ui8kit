@@ -17,12 +17,13 @@ import {
   type NavLink,
 } from "@ui8kit/solid-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { sidenav as sidenavEntries } from "@ui8kit/app-shared/data/sidenav";
 
 const SIDENAV_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
 
-const sidenav = fromCodex<NavLink>(sidenavEntries, SIDENAV_FIELDS);
+const sidenav = fromCodex<NavLink>(sidenavEntries, SIDENAV_FIELDS, CODEX);
 
 export function SidenavPage() {
   return (

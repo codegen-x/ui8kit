@@ -16,6 +16,7 @@ import { CompanyPage } from "./ThemeMarketingLandingScreen/CompanyPage";
 import { WorkPage } from "./ThemeMarketingLandingScreen/WorkPage";
 import { TeamsPage } from "./ThemeMarketingLandingScreen/TeamsPage";
 import { fromCodex, matchRoute, type UrlPort } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
 import { ui } from "@ui8kit/app-shared/content";
 import { navOf } from "@ui8kit/app-shared/nav/ThemeMarketingLandingScreen";
@@ -33,7 +34,7 @@ const ROUTES = [
 ] as const;
 const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
 
-const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS);
+const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS, CODEX);
 const HOME = { area: "home", params: {} as Record<string, string> };
 const actions = { toggleTheme };
 

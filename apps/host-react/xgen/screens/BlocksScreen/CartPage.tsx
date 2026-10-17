@@ -17,6 +17,7 @@ import {
   type CartLine,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { cart as cartEntries } from "@ui8kit/app-shared/data/cart";
 
@@ -29,7 +30,7 @@ const CART_FIELDS = {
   "qty": "metadata.qty.value",
 } as const;
 
-const cart = fromCodex<CartLine>(cartEntries, CART_FIELDS);
+const cart = fromCodex<CartLine>(cartEntries, CART_FIELDS, CODEX);
 
 export function CartPage() {
   return (

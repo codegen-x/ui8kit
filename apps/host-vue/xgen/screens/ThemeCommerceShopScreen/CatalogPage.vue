@@ -14,6 +14,7 @@ import {
   type Stat,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { categories as categoriesEntries } from "@ui8kit/app-shared/data/categories";
 import { products as productsEntries } from "@ui8kit/app-shared/data/products";
@@ -30,7 +31,7 @@ const PRODUCTS_FIELDS = {
   "rating": "metadata.rating.value",
   "reviews": "metadata.reviews.value",
   "badge": "metadata.badge.value",
-  "category": "metadata.category.value",
+  "category": "terms|term:product_category",
   "inStock": "metadata.inStock.value",
   "compareAt": "metadata.compare_at.value",
   "href": "slug|route",
@@ -39,10 +40,10 @@ const PRODUCTS_FIELDS = {
 const CRUMBS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
 const STATS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
 
-const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS);
-const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS);
-const crumbs = fromCodex<NavLink>(crumbsEntries, CRUMBS_FIELDS);
-const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
+const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS, CODEX);
+const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS, CODEX);
+const crumbs = fromCodex<NavLink>(crumbsEntries, CRUMBS_FIELDS, CODEX);
+const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS, CODEX);
 </script>
 
 <template>

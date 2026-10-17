@@ -11,14 +11,15 @@ export const posts = [
     "slug": "static-first",
     "title": "Why static-first pages still win",
     "excerpt": "Less script, less waiting, and pages that keep working offline.",
+    "author_id": "user-mara-quinn",
     "featured_media_id": "media-static-first",
+    "terms": [
+      {
+        "taxonomy": "category",
+        "term_id": "category-engineering"
+      }
+    ],
     "metadata": {
-      "category": {
-        "value": "Engineering"
-      },
-      "author": {
-        "value": "Mara Quinn"
-      },
       "date": {
         "value": "2026-03-18T10:00:00Z"
       },
@@ -43,13 +44,14 @@ export const posts = [
     "slug": "design-tokens",
     "title": "Design tokens without the drift",
     "excerpt": "How one list of tokens feeds every runtime and every theme.",
+    "author_id": "user-aya-tanaka",
+    "terms": [
+      {
+        "taxonomy": "category",
+        "term_id": "category-design"
+      }
+    ],
     "metadata": {
-      "category": {
-        "value": "Design"
-      },
-      "author": {
-        "value": "Aya Tanaka"
-      },
       "date": {
         "value": "2026-03-11T10:00:00Z"
       },
@@ -74,13 +76,14 @@ export const posts = [
     "slug": "launch-notes",
     "title": "Launch notes for spring",
     "excerpt": "New blocks, faster builds and a calmer dashboard.",
+    "author_id": "user-jon-ellis",
+    "terms": [
+      {
+        "taxonomy": "category",
+        "term_id": "category-product"
+      }
+    ],
     "metadata": {
-      "category": {
-        "value": "Product"
-      },
-      "author": {
-        "value": "Jon Ellis"
-      },
       "date": {
         "value": "2026-03-04T10:00:00Z"
       },
@@ -105,13 +108,14 @@ export const posts = [
     "slug": "small-teams",
     "title": "Shipping with a small team",
     "excerpt": "A short checklist that keeps a team of four on track.",
+    "author_id": "user-luis-ortega",
+    "terms": [
+      {
+        "taxonomy": "category",
+        "term_id": "category-company"
+      }
+    ],
     "metadata": {
-      "category": {
-        "value": "Company"
-      },
-      "author": {
-        "value": "Luis Ortega"
-      },
       "date": {
         "value": "2026-02-25T10:00:00Z"
       },
@@ -136,13 +140,14 @@ export const posts = [
     "slug": "accessible-forms",
     "title": "Accessible forms in an afternoon",
     "excerpt": "Labels, errors and focus: the three things that matter most.",
+    "author_id": "user-mara-quinn",
+    "terms": [
+      {
+        "taxonomy": "category",
+        "term_id": "category-engineering"
+      }
+    ],
     "metadata": {
-      "category": {
-        "value": "Engineering"
-      },
-      "author": {
-        "value": "Mara Quinn"
-      },
       "date": {
         "value": "2026-02-14T10:00:00Z"
       },
@@ -167,13 +172,14 @@ export const posts = [
     "slug": "pricing-page",
     "title": "What a good pricing page shows",
     "excerpt": "Plans, limits and answers, in that order.",
+    "author_id": "user-jon-ellis",
+    "terms": [
+      {
+        "taxonomy": "category",
+        "term_id": "category-growth"
+      }
+    ],
     "metadata": {
-      "category": {
-        "value": "Growth"
-      },
-      "author": {
-        "value": "Jon Ellis"
-      },
       "date": {
         "value": "2026-02-02T10:00:00Z"
       },

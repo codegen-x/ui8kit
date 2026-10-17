@@ -18,6 +18,7 @@ import {
   type Template,
 } from "@ui8kit/solid-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { templates as templatesEntries } from "@ui8kit/app-shared/data/templates";
 import { prompts as templateFiltersEntries } from "@ui8kit/app-shared/data/prompts";
@@ -31,8 +32,8 @@ const TEMPLATES_FIELDS = {
 } as const;
 const TEMPLATEFILTERS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value","icon":"metadata.icon.value"} as const;
 
-const templates = fromCodex<Template>(templatesEntries, TEMPLATES_FIELDS);
-const templateFilters = fromCodex<Filter>(templateFiltersEntries, TEMPLATEFILTERS_FIELDS);
+const templates = fromCodex<Template>(templatesEntries, TEMPLATES_FIELDS, CODEX);
+const templateFilters = fromCodex<Filter>(templateFiltersEntries, TEMPLATEFILTERS_FIELDS, CODEX);
 
 export function TemplatesPage() {
   return (

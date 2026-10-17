@@ -31,6 +31,7 @@ import {
   type Stat,
 } from "@ui8kit/solid-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
 import { ui } from "@ui8kit/app-shared/content";
 import { navlinks as navlinksEntries } from "@ui8kit/app-shared/data/navlinks";
@@ -76,16 +77,16 @@ const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value
 const FAQTABS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
 const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
 
-const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS);
-const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS);
-const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
-const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
-const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS);
-const tiers = fromCodex<Plan>(tiersEntries, TIERS_FIELDS);
-const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
-const faq = fromCodex<Faq>(faqEntries, FAQ_FIELDS);
-const faqtabs = fromCodex<FaqTab>(faqtabsEntries, FAQTABS_FIELDS);
-const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS);
+const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS, CODEX);
+const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS, CODEX);
+const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS, CODEX);
+const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS, CODEX);
+const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS, CODEX);
+const tiers = fromCodex<Plan>(tiersEntries, TIERS_FIELDS, CODEX);
+const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS, CODEX);
+const faq = fromCodex<Faq>(faqEntries, FAQ_FIELDS, CODEX);
+const faqtabs = fromCodex<FaqTab>(faqtabsEntries, FAQTABS_FIELDS, CODEX);
+const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS, CODEX);
 const actions = { toggleTheme };
 
 export function PageSaasLandingPage() {

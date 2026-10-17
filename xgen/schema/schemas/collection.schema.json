@@ -41,10 +41,35 @@
           "excerpt": {
             "type": "string"
           },
+          "author_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "the id of the entry of kind user that wrote this one (Codex v0.4 core field)"
+          },
           "featured_media_id": {
             "type": "string",
             "minLength": 1,
             "description": "the id of the entry of kind media that pictures this one (Codex v0.4 core field)"
+          },
+          "terms": {
+            "type": "array",
+            "description": "term references (Codex v0.4 core field); the terms live in fixtures/taxonomies",
+            "items": {
+              "type": "object",
+              "properties": {
+                "taxonomy": {
+                  "type": "string"
+                },
+                "term_id": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "taxonomy",
+                "term_id"
+              ],
+              "additionalProperties": false
+            }
           },
           "metadata": {
             "type": "object",

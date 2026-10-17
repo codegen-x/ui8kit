@@ -609,12 +609,20 @@
                 },
                 {
                   "when": {
-                    "op": "ne",
+                    "op": "and",
                     "args": [
                       {
-                        "$": "meta"
+                        "op": "ne",
+                        "args": [
+                          {
+                            "$": "meta"
+                          },
+                          "news"
+                        ]
                       },
-                      "news"
+                      {
+                        "$": "post.href"
+                      }
                     ]
                   },
                   "then": [
@@ -622,13 +630,7 @@
                       "use": "Link",
                       "props": {
                         "Href": {
-                          "op": "coalesce",
-                          "args": [
-                            {
-                              "$": "post.href"
-                            },
-                            "#/"
-                          ]
+                          "$": "post.href"
                         },
                         "Variant": "default"
                       },

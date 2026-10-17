@@ -18,6 +18,7 @@ import {
   type Tile,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { terminal as terminalEntries } from "@ui8kit/app-shared/data/terminal";
 import { features as featuresEntries } from "@ui8kit/app-shared/data/features";
@@ -29,10 +30,10 @@ const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value",
 const STATS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
 const BENTO_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","size":"metadata.size.value"} as const;
 
-const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS);
-const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
-const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
-const bento = fromCodex<Tile>(bentoEntries, BENTO_FIELDS);
+const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS, CODEX);
+const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS, CODEX);
+const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS, CODEX);
+const bento = fromCodex<Tile>(bentoEntries, BENTO_FIELDS, CODEX);
 
 export function HomePage() {
   return (

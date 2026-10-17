@@ -17,6 +17,7 @@
     type Member,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { ui } from "@ui8kit/app-shared/content";
   import { members as membersEntries } from "@ui8kit/app-shared/data/members";
 
@@ -30,7 +31,7 @@
     "skills": "metadata.skills.value",
   } as const;
 
-  const members = fromCodex<Member>(membersEntries, MEMBERS_FIELDS);
+  const members = fromCodex<Member>(membersEntries, MEMBERS_FIELDS, CODEX);
 </script>
 
 <Block tag="section" aria-labelledby="page-title" data-testid="page">

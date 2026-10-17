@@ -44,7 +44,9 @@ export async function runE2e(workspace: string, shotsDir = join(workspace, "shot
     faq: coll("faq").length,
     tiers: coll("tiers").map((e) => ({ price: e.metadata.price.value as number, highlighted: e.metadata.highlighted.value as boolean })),
   };
-  const blocksData: BlocksData = { dict: siteData.dict, blocks: plan.inputs.blocks.map((b) => b.value), features: siteData.features, faq: siteData.faq, tiers: siteData.tiers, counts: { ...Object.fromEntries(plan.inputs.collections.map((c) => [c.value.collection, (c.value.entries ?? []).length])), "faq:billing": coll("faq").filter((e) => e.metadata.category?.value === "billing").length, "posts:Design": coll("posts").filter((e) => e.metadata.category?.value === "Design").length }, done: coll("checklist").filter((e) => e.metadata.done.value).length };
+  // the Design topic of the posts: the term category-design of the taxonomy category
+  const inDesign = (e: any): boolean => (e.terms ?? []).some((t: { taxonomy: string; term_id: string }) => t.taxonomy === "category" && t.term_id === "category-design");
+  const blocksData: BlocksData = { dict: siteData.dict, blocks: plan.inputs.blocks.map((b) => b.value), features: siteData.features, faq: siteData.faq, tiers: siteData.tiers, counts: { ...Object.fromEntries(plan.inputs.collections.map((c) => [c.value.collection, (c.value.entries ?? []).length])), "faq:billing": coll("faq").filter((e) => e.metadata.category?.value === "billing").length, "posts:Design": coll("posts").filter(inDesign).length }, done: coll("checklist").filter((e) => e.metadata.done.value).length };
   const tree = plan.inputs.screens.find((s) => s.composed?.catalog)?.composed?.catalog as CatalogTree | undefined;
   const board = plan.inputs.screens.find((s) => s.composed?.skins)?.composed?.skins as SkinsBoard | undefined;
   try {

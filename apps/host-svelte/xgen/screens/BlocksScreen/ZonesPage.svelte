@@ -17,6 +17,7 @@
     type Zone,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { ui } from "@ui8kit/app-shared/content";
   import { zones as zonesEntries } from "@ui8kit/app-shared/data/zones";
 
@@ -32,7 +33,7 @@
     "currency": "metadata.currency.value",
   } as const;
 
-  const zones = fromCodex<Zone>(zonesEntries, ZONES_FIELDS);
+  const zones = fromCodex<Zone>(zonesEntries, ZONES_FIELDS, CODEX);
 </script>
 
 <Block tag="section" aria-labelledby="page-title" data-testid="page">

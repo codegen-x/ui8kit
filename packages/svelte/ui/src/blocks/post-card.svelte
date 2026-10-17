@@ -137,8 +137,8 @@
           {/if}
         </Group>
       {/if}
-      {#if ((meta as string) !== "news")}
-        <Link href={(post.href ?? "#/")} variant="default" data-testid="read">
+      {#if (((meta as string) !== "news") && post.href)}
+        <Link href={post.href} variant="default" data-testid="read">
           {labels.read}
         </Link>
       {/if}

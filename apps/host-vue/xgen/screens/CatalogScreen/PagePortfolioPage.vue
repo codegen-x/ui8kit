@@ -24,6 +24,7 @@ import {
   type Spec,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
 import { ui } from "@ui8kit/app-shared/content";
 import { navlinks as navlinksEntries } from "@ui8kit/app-shared/data/navlinks";
@@ -61,13 +62,13 @@ const PROJECTS_FIELDS = {
 const PHOTOS_FIELDS = {"id":"id","title":"title","tag":"metadata.tag.value","size":"metadata.size.value"} as const;
 const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
 
-const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS);
-const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS);
-const profilefacts = fromCodex<Spec>(profilefactsEntries, PROFILEFACTS_FIELDS);
-const skills = fromCodex<Skill>(skillsEntries, SKILLS_FIELDS);
-const projects = fromCodex<Project>(projectsEntries, PROJECTS_FIELDS);
-const photos = fromCodex<Photo>(photosEntries, PHOTOS_FIELDS);
-const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS);
+const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS, CODEX);
+const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS, CODEX);
+const profilefacts = fromCodex<Spec>(profilefactsEntries, PROFILEFACTS_FIELDS, CODEX);
+const skills = fromCodex<Skill>(skillsEntries, SKILLS_FIELDS, CODEX);
+const projects = fromCodex<Project>(projectsEntries, PROJECTS_FIELDS, CODEX);
+const photos = fromCodex<Photo>(photosEntries, PHOTOS_FIELDS, CODEX);
+const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS, CODEX);
 const actions = { toggleTheme };
 </script>
 

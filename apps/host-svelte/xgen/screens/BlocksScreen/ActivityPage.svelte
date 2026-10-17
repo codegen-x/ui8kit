@@ -17,6 +17,7 @@
     type Event,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { ui } from "@ui8kit/app-shared/content";
   import { activity as activityEntries } from "@ui8kit/app-shared/data/activity";
 
@@ -28,7 +29,7 @@
     "tone": "metadata.tone.value",
   } as const;
 
-  const activity = fromCodex<Event>(activityEntries, ACTIVITY_FIELDS);
+  const activity = fromCodex<Event>(activityEntries, ACTIVITY_FIELDS, CODEX);
 </script>
 
 <Block tag="section" aria-labelledby="page-title" data-testid="page">

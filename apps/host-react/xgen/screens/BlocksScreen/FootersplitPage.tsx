@@ -19,6 +19,7 @@ import {
   type Stat,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { stats as statsEntries } from "@ui8kit/app-shared/data/stats";
 import { features as featuresEntries } from "@ui8kit/app-shared/data/features";
@@ -32,11 +33,11 @@ const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","
 const CONTACTS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 const COMMUNITY_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 
-const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
-const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
-const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS);
-const contacts = fromCodex<Feature>(contactsEntries, CONTACTS_FIELDS);
-const community = fromCodex<Feature>(communityEntries, COMMUNITY_FIELDS);
+const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS, CODEX);
+const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS, CODEX);
+const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS, CODEX);
+const contacts = fromCodex<Feature>(contactsEntries, CONTACTS_FIELDS, CODEX);
+const community = fromCodex<Feature>(communityEntries, COMMUNITY_FIELDS, CODEX);
 
 const FOOTERSPLIT_EXTRAS = { stats, points: features, contacts, channels: community } as const;
 

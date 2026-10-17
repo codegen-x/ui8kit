@@ -14,6 +14,7 @@ import {
   type SummaryRow,
 } from "@ui8kit/solid-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { cart as cartEntries } from "@ui8kit/app-shared/data/cart";
 import { summary as summaryEntries } from "@ui8kit/app-shared/data/summary";
@@ -40,11 +41,11 @@ const PROMOS_FIELDS = {"id":"id","code":"title"} as const;
 const DAYS_FIELDS = {"id":"id","title":"title","note":"metadata.note.value","slots":"metadata.slots.value","closed":"metadata.closed.value"} as const;
 const PAYMENTS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 
-const cart = fromCodex<CartLine>(cartEntries, CART_FIELDS);
-const summary = fromCodex<SummaryRow>(summaryEntries, SUMMARY_FIELDS);
-const promos = fromCodex<Promo>(promosEntries, PROMOS_FIELDS);
-const days = fromCodex<Day>(daysEntries, DAYS_FIELDS);
-const payments = fromCodex<Payment>(paymentsEntries, PAYMENTS_FIELDS);
+const cart = fromCodex<CartLine>(cartEntries, CART_FIELDS, CODEX);
+const summary = fromCodex<SummaryRow>(summaryEntries, SUMMARY_FIELDS, CODEX);
+const promos = fromCodex<Promo>(promosEntries, PROMOS_FIELDS, CODEX);
+const days = fromCodex<Day>(daysEntries, DAYS_FIELDS, CODEX);
+const payments = fromCodex<Payment>(paymentsEntries, PAYMENTS_FIELDS, CODEX);
 
 export function CheckoutPage() {
   return (

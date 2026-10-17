@@ -4,6 +4,7 @@
 
 import { FaqList, PageIntro, tpl, uniqLabel, type Faq, type FaqTab } from "@ui8kit/solid-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { faq as faqEntries } from "@ui8kit/app-shared/data/faq";
 import { faqtabs as faqtabsEntries } from "@ui8kit/app-shared/data/faqtabs";
@@ -11,8 +12,8 @@ import { faqtabs as faqtabsEntries } from "@ui8kit/app-shared/data/faqtabs";
 const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
 const FAQTABS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
 
-const faq = fromCodex<Faq>(faqEntries, FAQ_FIELDS);
-const faqtabs = fromCodex<FaqTab>(faqtabsEntries, FAQTABS_FIELDS);
+const faq = fromCodex<Faq>(faqEntries, FAQ_FIELDS, CODEX);
+const faqtabs = fromCodex<FaqTab>(faqtabsEntries, FAQTABS_FIELDS, CODEX);
 
 export function FaqPage() {
   return (

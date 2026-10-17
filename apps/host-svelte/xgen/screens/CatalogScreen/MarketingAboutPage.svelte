@@ -21,6 +21,7 @@
     type Stat,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { ui } from "@ui8kit/app-shared/content";
   import { stats as statsEntries } from "@ui8kit/app-shared/data/stats";
   import { values as valuesEntries } from "@ui8kit/app-shared/data/values";
@@ -32,10 +33,10 @@
   const PROFILEFACTS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value"} as const;
   const SKILLS_FIELDS = {"id":"id","label":"title","level":"metadata.level.value"} as const;
 
-  const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
-  const values = fromCodex<Feature>(valuesEntries, VALUES_FIELDS);
-  const profilefacts = fromCodex<Spec>(profilefactsEntries, PROFILEFACTS_FIELDS);
-  const skills = fromCodex<Skill>(skillsEntries, SKILLS_FIELDS);
+  const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS, CODEX);
+  const values = fromCodex<Feature>(valuesEntries, VALUES_FIELDS, CODEX);
+  const profilefacts = fromCodex<Spec>(profilefactsEntries, PROFILEFACTS_FIELDS, CODEX);
+  const skills = fromCodex<Skill>(skillsEntries, SKILLS_FIELDS, CODEX);
 
   const ABOUTME_ACTIONS = { mode: "two", cta: ui.company.aboutMe.cta, href: "#/work", secondary: ui.company.aboutMe.more, secondaryHref: "#/contact" } as const;
 </script>

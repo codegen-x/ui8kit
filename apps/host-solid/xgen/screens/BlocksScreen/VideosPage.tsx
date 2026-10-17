@@ -17,6 +17,7 @@ import {
   type Quote,
 } from "@ui8kit/solid-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { testimonials as testimonialsEntries } from "@ui8kit/app-shared/data/testimonials";
 
@@ -32,7 +33,7 @@ const TESTIMONIALS_FIELDS = {
   "mark": "metadata.mark.value",
 } as const;
 
-const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS);
+const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS, CODEX);
 
 export function VideosPage() {
   return (

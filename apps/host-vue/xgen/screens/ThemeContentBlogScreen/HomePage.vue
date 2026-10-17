@@ -13,6 +13,7 @@ import {
   type PostTopic,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { posts as postsEntries } from "@ui8kit/app-shared/data/posts";
 import { topics as topicsEntries } from "@ui8kit/app-shared/data/topics";
@@ -21,8 +22,8 @@ const POSTS_FIELDS = {
   "id": "id",
   "title": "title",
   "excerpt": "excerpt",
-  "category": "metadata.category.value",
-  "author": "metadata.author.value",
+  "category": "terms|term:category",
+  "author": "author_id|author",
   "date": "metadata.date.value|date",
   "minutes": "metadata.minutes.value",
   "icon": "metadata.icon.value",
@@ -31,8 +32,8 @@ const POSTS_FIELDS = {
 } as const;
 const TOPICS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
 
-const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS);
-const topics = fromCodex<PostTopic>(topicsEntries, TOPICS_FIELDS);
+const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS, CODEX);
+const topics = fromCodex<PostTopic>(topicsEntries, TOPICS_FIELDS, CODEX);
 </script>
 
 <template>

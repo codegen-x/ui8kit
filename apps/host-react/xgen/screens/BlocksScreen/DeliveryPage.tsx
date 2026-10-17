@@ -18,6 +18,7 @@ import {
   type Zone,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { zones as zonesEntries } from "@ui8kit/app-shared/data/zones";
 import { deliveryfacts as deliveryfactsEntries } from "@ui8kit/app-shared/data/deliveryfacts";
@@ -35,8 +36,8 @@ const ZONES_FIELDS = {
 } as const;
 const DELIVERYFACTS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 
-const zones = fromCodex<Zone>(zonesEntries, ZONES_FIELDS);
-const deliveryfacts = fromCodex<Feature>(deliveryfactsEntries, DELIVERYFACTS_FIELDS);
+const zones = fromCodex<Zone>(zonesEntries, ZONES_FIELDS, CODEX);
+const deliveryfacts = fromCodex<Feature>(deliveryfactsEntries, DELIVERYFACTS_FIELDS, CODEX);
 
 export function DeliveryPage() {
   return (

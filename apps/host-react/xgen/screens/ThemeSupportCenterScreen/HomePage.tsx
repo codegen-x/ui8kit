@@ -20,6 +20,7 @@ import {
   type Step,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { channels as channelsEntries } from "@ui8kit/app-shared/data/channels";
 import { stats as statsEntries } from "@ui8kit/app-shared/data/stats";
@@ -37,8 +38,8 @@ const POSTS_FIELDS = {
   "id": "id",
   "title": "title",
   "excerpt": "excerpt",
-  "category": "metadata.category.value",
-  "author": "metadata.author.value",
+  "category": "terms|term:category",
+  "author": "author_id|author",
   "date": "metadata.date.value|date",
   "minutes": "metadata.minutes.value",
   "icon": "metadata.icon.value",
@@ -49,7 +50,7 @@ const CATEGORIES_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"
 const REVIEWS_FIELDS = {
   "id": "id",
   "title": "title",
-  "author": "metadata.author.value",
+  "author": "author_id|author",
   "rating": "metadata.rating.value",
   "text": "metadata.text.value",
   "date": "metadata.date.value|date",
@@ -57,14 +58,14 @@ const REVIEWS_FIELDS = {
 const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
 const FAQTABS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
 
-const channels = fromCodex<Feature>(channelsEntries, CHANNELS_FIELDS);
-const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
-const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
-const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS);
-const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS);
-const reviews = fromCodex<Review>(reviewsEntries, REVIEWS_FIELDS);
-const faq = fromCodex<Faq>(faqEntries, FAQ_FIELDS);
-const faqtabs = fromCodex<FaqTab>(faqtabsEntries, FAQTABS_FIELDS);
+const channels = fromCodex<Feature>(channelsEntries, CHANNELS_FIELDS, CODEX);
+const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS, CODEX);
+const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS, CODEX);
+const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS, CODEX);
+const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS, CODEX);
+const reviews = fromCodex<Review>(reviewsEntries, REVIEWS_FIELDS, CODEX);
+const faq = fromCodex<Faq>(faqEntries, FAQ_FIELDS, CODEX);
+const faqtabs = fromCodex<FaqTab>(faqtabsEntries, FAQTABS_FIELDS, CODEX);
 
 export function HomePage() {
   return (

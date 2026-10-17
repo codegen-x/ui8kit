@@ -960,18 +960,6 @@
         "description": "fixtures: posts",
         "fields": [
           {
-            "id": "author",
-            "label": "Author",
-            "type": "string",
-            "required": true
-          },
-          {
-            "id": "category",
-            "label": "Category",
-            "type": "string",
-            "required": true
-          },
-          {
             "id": "date",
             "label": "Date",
             "type": "datetime",
@@ -995,7 +983,10 @@
             "required": true
           }
         ]
-      }
+      },
+      "taxonomies": [
+        "category"
+      ]
     },
     {
       "record": {
@@ -1024,12 +1015,6 @@
             "id": "badge",
             "label": "Badge",
             "type": "string"
-          },
-          {
-            "id": "category",
-            "label": "Category",
-            "type": "string",
-            "required": true
           },
           {
             "id": "compare_at",
@@ -1088,7 +1073,10 @@
             "required": true
           }
         ]
-      }
+      },
+      "taxonomies": [
+        "product_category"
+      ]
     },
     {
       "record": {
@@ -1223,12 +1211,6 @@
         "scope": "workspace",
         "description": "fixtures: reviews",
         "fields": [
-          {
-            "id": "author",
-            "label": "Author",
-            "type": "string",
-            "required": true
-          },
           {
             "id": "date",
             "label": "Date",
@@ -1667,6 +1649,33 @@
             "id": "value",
             "label": "Value",
             "type": "string"
+          }
+        ]
+      }
+    },
+    {
+      "record": {
+        "id": "user",
+        "label": "User",
+        "scope": "workspace",
+        "description": "fixtures: users",
+        "fields": [
+          {
+            "id": "display_name",
+            "label": "Display name",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "roles",
+            "label": "Roles",
+            "type": "collection",
+            "items": {
+              "id": "item",
+              "label": "Item",
+              "type": "string"
+            },
+            "required": true
           }
         ]
       }

@@ -11,6 +11,7 @@
   import OfferPage from "./ThemePromoCampaignScreen/OfferPage.svelte";
   import NoticesPage from "./ThemePromoCampaignScreen/NoticesPage.svelte";
   import { fromCodex, matchRoute, type UrlPort } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
   import { ui } from "@ui8kit/app-shared/content";
   import { navOf } from "@ui8kit/app-shared/nav/ThemePromoCampaignScreen";
@@ -34,11 +35,11 @@
 
   let { url }: { url: UrlPort } = $props();
 
-  const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS);
-  const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
-  const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
-  const contacts = fromCodex<Feature>(contactsEntries, CONTACTS_FIELDS);
-  const community = fromCodex<Feature>(communityEntries, COMMUNITY_FIELDS);
+  const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS, CODEX);
+  const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS, CODEX);
+  const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS, CODEX);
+  const contacts = fromCodex<Feature>(contactsEntries, CONTACTS_FIELDS, CODEX);
+  const community = fromCodex<Feature>(communityEntries, COMMUNITY_FIELDS, CODEX);
   const route = $derived(matchRoute(ROUTES, url.path) ?? { area: "home", params: {} as Record<string, string> });
   const nav = $derived(navOf(route.area));
   const actions = { toggleTheme };

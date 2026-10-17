@@ -22,6 +22,7 @@ import {
   type Stat,
 } from "@ui8kit/solid-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { metrics as metricsEntries } from "@ui8kit/app-shared/data/metrics";
 import { series as seriesEntries } from "@ui8kit/app-shared/data/series";
@@ -41,11 +42,11 @@ const ACTIVITY_FIELDS = {
 const LANES_FIELDS = {"id":"id","key":"slug","title":"title"} as const;
 const CARDS_FIELDS = {"id":"id","lane":"metadata.lane.value","title":"title","tag":"metadata.tag.value","who":"metadata.who.value"} as const;
 
-const metrics = fromCodex<Stat>(metricsEntries, METRICS_FIELDS);
-const series = fromCodex<Point>(seriesEntries, SERIES_FIELDS);
-const activity = fromCodex<Event>(activityEntries, ACTIVITY_FIELDS);
-const lanes = fromCodex<Lane>(lanesEntries, LANES_FIELDS);
-const cards = fromCodex<BoardCard>(cardsEntries, CARDS_FIELDS);
+const metrics = fromCodex<Stat>(metricsEntries, METRICS_FIELDS, CODEX);
+const series = fromCodex<Point>(seriesEntries, SERIES_FIELDS, CODEX);
+const activity = fromCodex<Event>(activityEntries, ACTIVITY_FIELDS, CODEX);
+const lanes = fromCodex<Lane>(lanesEntries, LANES_FIELDS, CODEX);
+const cards = fromCodex<BoardCard>(cardsEntries, CARDS_FIELDS, CODEX);
 
 const OVERVIEW_CHART = { title: ui.dashboard.chart.title, text: ui.dashboard.chart.text, summary: ui.dashboard.chart.summary, series } as const;
 const OVERVIEW_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboard.activity.text, events: activity } as const;

@@ -12,6 +12,7 @@
     type Section,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { ui } from "@ui8kit/app-shared/content";
   import { posts as postsEntries } from "@ui8kit/app-shared/data/posts";
   import { article as articleEntries } from "@ui8kit/app-shared/data/article";
@@ -20,8 +21,8 @@
     "id": "id",
     "title": "title",
     "excerpt": "excerpt",
-    "category": "metadata.category.value",
-    "author": "metadata.author.value",
+    "category": "terms|term:category",
+    "author": "author_id|author",
     "date": "metadata.date.value|date",
     "minutes": "metadata.minutes.value",
     "icon": "metadata.icon.value",
@@ -30,8 +31,8 @@
   } as const;
   const ARTICLE_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","quote":"metadata.quote.value"} as const;
 
-  const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS);
-  const article = fromCodex<Section>(articleEntries, ARTICLE_FIELDS);
+  const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS, CODEX);
+  const article = fromCodex<Section>(articleEntries, ARTICLE_FIELDS, CODEX);
 </script>
 
 <PostHeader

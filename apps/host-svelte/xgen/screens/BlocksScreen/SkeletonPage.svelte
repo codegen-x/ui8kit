@@ -17,12 +17,13 @@
     type Line,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { ui } from "@ui8kit/app-shared/content";
   import { placeholders as placeholdersEntries } from "@ui8kit/app-shared/data/placeholders";
 
   const PLACEHOLDERS_FIELDS = {"id":"id"} as const;
 
-  const placeholders = fromCodex<Line>(placeholdersEntries, PLACEHOLDERS_FIELDS);
+  const placeholders = fromCodex<Line>(placeholdersEntries, PLACEHOLDERS_FIELDS, CODEX);
 </script>
 
 <Block tag="section" aria-labelledby="page-title" data-testid="page">

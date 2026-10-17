@@ -15,6 +15,7 @@ import {
   type Plan,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { tiers as tiersEntries } from "@ui8kit/app-shared/data/tiers";
 
@@ -31,7 +32,7 @@ const TIERS_FIELDS = {
   "yearly": "metadata.yearly.value",
 } as const;
 
-const tiers = fromCodex<Plan>(tiersEntries, TIERS_FIELDS);
+const tiers = fromCodex<Plan>(tiersEntries, TIERS_FIELDS, CODEX);
 
 export function PlanPage() {
   return (

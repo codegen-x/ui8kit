@@ -21,6 +21,7 @@ import {
   type Stat,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { metrics as metricsEntries } from "@ui8kit/app-shared/data/metrics";
 import { series as seriesEntries } from "@ui8kit/app-shared/data/series";
@@ -36,9 +37,9 @@ const ACTIVITY_FIELDS = {
   "tone": "metadata.tone.value",
 } as const;
 
-const metrics = fromCodex<Stat>(metricsEntries, METRICS_FIELDS);
-const series = fromCodex<Point>(seriesEntries, SERIES_FIELDS);
-const activity = fromCodex<Event>(activityEntries, ACTIVITY_FIELDS);
+const metrics = fromCodex<Stat>(metricsEntries, METRICS_FIELDS, CODEX);
+const series = fromCodex<Point>(seriesEntries, SERIES_FIELDS, CODEX);
+const activity = fromCodex<Event>(activityEntries, ACTIVITY_FIELDS, CODEX);
 </script>
 
 <template>

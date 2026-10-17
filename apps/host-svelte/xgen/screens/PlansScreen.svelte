@@ -30,6 +30,7 @@
     type Plan,
   } from "@ui8kit/svelte-ui";
   import { collectionView, fromCodex, matchRoute, screenActions, type UrlPort } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
   import { ui } from "@ui8kit/app-shared/content";
   import { plans as entries } from "@ui8kit/app-shared/data/plans";
@@ -52,7 +53,7 @@
 
   let { url }: { url: UrlPort } = $props();
 
-  const rows = fromCodex<Plan>(entries, FIELDS);
+  const rows = fromCodex<Plan>(entries, FIELDS, CODEX);
   const route = $derived(matchRoute(ROUTES, url.path) ?? { area: "list", params: {} as Record<string, string> });
   const view = $derived(collectionView(rows, LIST, url.query));
   const record = $derived(route.area === "record" ? rows.find((r) => r.id === route.params.id) : undefined);

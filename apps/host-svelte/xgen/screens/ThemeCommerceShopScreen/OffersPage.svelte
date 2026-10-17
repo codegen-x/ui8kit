@@ -15,6 +15,7 @@
     type SummaryRow,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { ui } from "@ui8kit/app-shared/content";
   import { products as productsEntries } from "@ui8kit/app-shared/data/products";
   import { perks as perksEntries } from "@ui8kit/app-shared/data/perks";
@@ -30,7 +31,7 @@
     "rating": "metadata.rating.value",
     "reviews": "metadata.reviews.value",
     "badge": "metadata.badge.value",
-    "category": "metadata.category.value",
+    "category": "terms|term:product_category",
     "inStock": "metadata.inStock.value",
     "compareAt": "metadata.compare_at.value",
     "href": "slug|route",
@@ -53,10 +54,10 @@
     "strong": "metadata.strong.value",
   } as const;
 
-  const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS);
-  const perks = fromCodex<Feature>(perksEntries, PERKS_FIELDS);
-  const cart = fromCodex<CartLine>(cartEntries, CART_FIELDS);
-  const summary = fromCodex<SummaryRow>(summaryEntries, SUMMARY_FIELDS);
+  const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS, CODEX);
+  const perks = fromCodex<Feature>(perksEntries, PERKS_FIELDS, CODEX);
+  const cart = fromCodex<CartLine>(cartEntries, CART_FIELDS, CODEX);
+  const summary = fromCodex<SummaryRow>(summaryEntries, SUMMARY_FIELDS, CODEX);
 </script>
 
 <StoreHero

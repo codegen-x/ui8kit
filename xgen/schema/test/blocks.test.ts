@@ -8,7 +8,7 @@ import Ajv2020 from "ajv/dist/2020.js";
 import { validateCollectionV04 } from "@ui8kit/contract/validate";
 import { fromCodex } from "../../runtimes/core/assets/app/core";
 import { CODEX_FIELDS } from "../../runtimes/core/assets/app/fields";
-import { MANIFEST_PATH, loadFixtures, type Field, type Manifest } from "../src/codex";
+import { MANIFEST_PATH, loadFixtures, loadTaxonomies, type Field, type Manifest } from "../src/codex";
 
 const codex = join(import.meta.dir, "..", "codex");
 const root = join(import.meta.dir, "..", "..", "..");
@@ -17,6 +17,11 @@ const manifest = JSON.parse(readFileSync(MANIFEST_PATH, "utf8")) as Manifest;
 const entrySchema = JSON.parse(readFileSync(new URL(import.meta.resolve("@ui8kit/contract/schemas/entry.schema.json")), "utf8"));
 const coreFields = Object.keys(entrySchema.properties as object);
 const cols = loadFixtures();
+const taxonomies = loadTaxonomies();
+const terms = taxonomies.flatMap((t) => t.terms);
+const ofKind = (kind: string) => cols.flatMap((c) => c.entries).filter((e) => e.kind === kind);
+// the lookups the apps pass to fromCodex (runtime/codex: CODEX)
+const lookups = { media: ofKind("media"), users: ofKind("user"), terms };
 
 interface Binding { prop: string; collection?: string; kind: string; record?: string; map?: string; list?: boolean; required?: string[]; optional?: string[] }
 interface Block { id: string; surface: string; spec?: string; source: string; status: "todo" | "done"; data?: Binding[] }
@@ -68,9 +73,10 @@ for (const b of done) for (const d of b.data ?? []) {
   test(`${b.id}.${d.prop}: fixtures of "${d.collection}" pass the contract validator and map with no required prop undefined`, () => {
     expect(entries.length).toBeGreaterThan(0);
     for (const e of entries) expect(e.kind).toBe(d.kind);
-    const issues = validateCollectionV04({ entries: entries.map((data, i) => ({ file: `${d.collection}.json#${i}`, data })) }, { manifest }) as { severity?: string }[];
+    const termFiles = terms.map((data, i) => ({ file: `taxonomies#${i}`, data }));
+    const issues = validateCollectionV04({ entries: entries.map((data, i) => ({ file: `${d.collection}.json#${i}`, data })), terms: termFiles }, { manifest }) as { severity?: string }[];
     expect(issues.filter((i) => !i.severity)).toEqual([]);
-    const rows = fromCodex<Record<string, unknown>>(entries, map!);
+    const rows = fromCodex<Record<string, unknown>>(entries, map!, lookups);
     const requiredProps = Object.entries(map!).filter(([, p]) => (d.required ?? []).includes(p.split("|")[0]!)).map(([k]) => k);
     for (const [i, r] of rows.entries()) for (const k of requiredProps) expect([entries[i]!.id, k, r[k] === undefined || r[k] === null]).toEqual([entries[i]!.id, k, false]);
   });
@@ -93,21 +99,49 @@ test("done blocks: an empty state with its text from the dictionary (labels key 
   }
 });
 
-test("media: every featured_media_id names an entry of kind media, and the map turns it into the file of that entry", () => {
-  const media = cols.filter((c) => c.kind === "media").flatMap((c) => c.entries);
+test("media: every featured_media_id names an entry of kind media; the map turns a published one into its file, a draft into nothing", () => {
+  const media = ofKind("media");
   expect(media.length).toBeGreaterThan(0);
   const pictured = cols.flatMap((c) => c.entries).filter((e) => (e as { featured_media_id?: string }).featured_media_id);
   expect(pictured.length).toBeGreaterThan(0);
   for (const e of pictured) expect([e.id, media.some((m) => m.id === (e as { featured_media_id?: string }).featured_media_id)]).toEqual([e.id, true]);
   const products = cols.find((c) => c.collection === "products")!.entries;
-  const rows = fromCodex<{ id: string; image?: string; href?: string }>(products, CODEX_FIELDS.product, { media, routes: { product: "#/product/{slug}" } });
+  // the repository has no image assets: every media entry is a draft (no uploaded file), so every block keeps its placeholder
+  expect(media.every((m) => (m as { status?: string }).status === "draft")).toBe(true);
+  expect(fromCodex<{ image?: string }>(products, CODEX_FIELDS.product, lookups).every((r) => r.image === undefined)).toBe(true);
+  const published = media.map((m) => ({ ...m, status: "published" }));
+  const rows = fromCodex<{ id: string; image?: string; href?: string }>(products, CODEX_FIELDS.product, { media: published, routes: { product: "#/product/{slug}" } });
   for (const [i, r] of rows.entries()) {
     const id = (products[i] as { featured_media_id?: string }).featured_media_id;
     expect(r.image).toBe(id ? (media.find((m) => m.id === id)!.metadata!.file!.value as string) : undefined);
     expect(r.href).toBe(`#/product/${(products[i] as unknown as { slug: string }).slug}`);
   }
-  // without media and routes (the kit's screens and the magazine today): no image, no link, the placeholder stays
-  expect(fromCodex<{ image?: string; href?: string }>(products, CODEX_FIELDS.product).every((r) => r.image === undefined && r.href === undefined)).toBe(true);
+  // without routes (the magazine and the hosts have no product or post page): no link
+  expect(fromCodex<{ href?: string }>(products, CODEX_FIELDS.product, lookups).every((r) => r.href === undefined)).toBe(true);
+});
+
+test("terms and authors: every term ref names a term of a taxonomy assigned to the kind, every author_id a user; the maps print their names", () => {
+  for (const t of taxonomies) for (const term of t.terms) expect([term.id, term.taxonomy_id]).toEqual([term.id, t.definition.id]);
+  const users = ofKind("user");
+  for (const e of cols.flatMap((c) => c.entries)) {
+    for (const r of (e as { terms?: { taxonomy: string; term_id: string }[] }).terms ?? []) {
+      const t = taxonomies.find((x) => x.definition.id === r.taxonomy);
+      expect([e.id, r.term_id, t?.definition.assigned_to_kinds.includes(e.kind), t?.terms.some((x) => x.id === r.term_id)]).toEqual([e.id, r.term_id, true, true]);
+    }
+    const author = (e as { author_id?: string }).author_id;
+    if (author) expect([e.id, users.some((u) => u.id === author)]).toEqual([e.id, true]);
+  }
+  for (const [kind, collection] of [["post", "posts"], ["product", "products"], ["review", "reviews"]] as const) {
+    const entries = cols.find((c) => c.collection === collection)!.entries;
+    const rows = fromCodex<{ category?: string; author?: string }>(entries, CODEX_FIELDS[kind], lookups);
+    for (const [i, r] of rows.entries()) {
+      if ("category" in CODEX_FIELDS[kind]) expect([entries[i]!.id, typeof r.category]).toEqual([entries[i]!.id, "string"]);
+      if ("author" in CODEX_FIELDS[kind]) expect([entries[i]!.id, typeof r.author]).toEqual([entries[i]!.id, "string"]);
+    }
+  }
+  // the post topics filter by the category name: every topic value is the name of a term of the taxonomy category
+  const names = taxonomies.find((t) => t.definition.id === "category")!.terms.map((t) => t.name);
+  for (const t of cols.find((c) => c.collection === "topics")?.entries ?? []) if (t.metadata?.value?.value) expect(names).toContain(t.metadata.value.value as string);
 });
 
 test("old price: compare_at is integer minor units in the currency of the entry, and some products are on sale", () => {

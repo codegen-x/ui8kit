@@ -18,12 +18,13 @@ import {
   type MegaGroup,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { sitemap as sitemapEntries } from "@ui8kit/app-shared/data/sitemap";
 
 const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
 
-const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS);
+const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS, CODEX);
 
 const SITEMAP_SIGNUP = { title: ui.vibe.sitemap.signupTitle, label: ui.vibe.sitemap.signupLabel, submit: ui.vibe.sitemap.signupSubmit } as const;
 </script>

@@ -70,7 +70,7 @@
             {{ ui_include('ui/inline/inline.html.j2', {'p': {'Class': 'sr-only'}, 'children': c_10}) }}
             {{ ui_text(ui_money(ui_get(v_product, ['compareAt']), ui_get(v_product, ['currency']))) }}
           {%- endset -%}
-          {{ ui_include('ui/text/text.html.j2', {'p': {'Tag': 'del', 'Size': 'sm', 'Class': 'text-muted-foreground', 'Attrs': ui_attrs(['data-testid', 'compare-at'])}, 'children': c_11}) }}
+          {{ ui_include('ui/text/text.html.j2', {'p': {'Tag': 'del', 'Size': 'sm', 'Class': 'relative text-muted-foreground', 'Attrs': ui_attrs(['data-testid', 'compare-at'])}, 'children': c_11}) }}
         {%- endif %}
       {%- endset -%}
       {{ ui_include('ui/group/group.html.j2', {'p': {'Gap': '2', 'Align': 'baseline', 'Class': 'flex-wrap'}, 'children': c_12}) }}

@@ -17,6 +17,7 @@ import {
   type Project,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { projects as projectsEntries } from "@ui8kit/app-shared/data/projects";
 
@@ -31,7 +32,7 @@ const PROJECTS_FIELDS = {
   "client": "metadata.client.value",
 } as const;
 
-const projects = fromCodex<Project>(projectsEntries, PROJECTS_FIELDS);
+const projects = fromCodex<Project>(projectsEntries, PROJECTS_FIELDS, CODEX);
 </script>
 
 <template>

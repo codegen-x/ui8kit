@@ -4,6 +4,7 @@
 <script lang="ts">
   import { DashboardShell, PageIntro, tpl, uniqLabel, type NavLink } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { ui } from "@ui8kit/app-shared/content";
   import { sidenav as sidenavEntries } from "@ui8kit/app-shared/data/sidenav";
   import { subnav as subnavEntries } from "@ui8kit/app-shared/data/subnav";
@@ -13,9 +14,9 @@
   const SUBNAV_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
   const HELPLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
 
-  const sidenav = fromCodex<NavLink>(sidenavEntries, SIDENAV_FIELDS);
-  const subnav = fromCodex<NavLink>(subnavEntries, SUBNAV_FIELDS);
-  const helplinks = fromCodex<NavLink>(helplinksEntries, HELPLINKS_FIELDS);
+  const sidenav = fromCodex<NavLink>(sidenavEntries, SIDENAV_FIELDS, CODEX);
+  const subnav = fromCodex<NavLink>(subnavEntries, SUBNAV_FIELDS, CODEX);
+  const helplinks = fromCodex<NavLink>(helplinksEntries, HELPLINKS_FIELDS, CODEX);
 </script>
 
 <PageIntro

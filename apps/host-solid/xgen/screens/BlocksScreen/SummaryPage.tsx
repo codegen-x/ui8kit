@@ -17,6 +17,7 @@ import {
   type SummaryRow,
 } from "@ui8kit/solid-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { summary as summaryEntries } from "@ui8kit/app-shared/data/summary";
 
@@ -28,7 +29,7 @@ const SUMMARY_FIELDS = {
   "strong": "metadata.strong.value",
 } as const;
 
-const summary = fromCodex<SummaryRow>(summaryEntries, SUMMARY_FIELDS);
+const summary = fromCodex<SummaryRow>(summaryEntries, SUMMARY_FIELDS, CODEX);
 
 export function SummaryPage() {
   return (

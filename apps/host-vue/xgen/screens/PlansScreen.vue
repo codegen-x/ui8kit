@@ -31,6 +31,7 @@ import {
   type Plan,
 } from "@ui8kit/vue-ui";
 import { collectionView, fromCodex, matchRoute, screenActions, type UrlPort } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
 import { ui } from "@ui8kit/app-shared/content";
 import { plans as entries } from "@ui8kit/app-shared/data/plans";
@@ -53,7 +54,7 @@ const FIELDS = {
 
 const { url } = defineProps<{ url: UrlPort }>();
 
-const rows = fromCodex<Plan>(entries, FIELDS);
+const rows = fromCodex<Plan>(entries, FIELDS, CODEX);
 const route = computed(() => matchRoute(ROUTES, url.path) ?? { area: "list", params: {} as Record<string, string> });
 const view = computed(() => collectionView(rows, LIST, url.query));
 const record = computed(() => route.value.area === "record" ? rows.find((r) => r.id === route.value.params.id) : undefined);

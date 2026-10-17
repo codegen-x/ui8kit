@@ -17,12 +17,13 @@ import {
   type Stat,
 } from "@ui8kit/solid-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { metrics as metricsEntries } from "@ui8kit/app-shared/data/metrics";
 
 const METRICS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
 
-const metrics = fromCodex<Stat>(metricsEntries, METRICS_FIELDS);
+const metrics = fromCodex<Stat>(metricsEntries, METRICS_FIELDS, CODEX);
 
 export function MetricsPage() {
   return (

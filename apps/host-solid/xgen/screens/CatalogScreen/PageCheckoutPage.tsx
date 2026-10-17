@@ -21,6 +21,7 @@ import {
   type SummaryRow,
 } from "@ui8kit/solid-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
 import { ui } from "@ui8kit/app-shared/content";
 import { navlinks as navlinksEntries } from "@ui8kit/app-shared/data/navlinks";
@@ -52,13 +53,13 @@ const PROMOS_FIELDS = {"id":"id","code":"title"} as const;
 const DAYS_FIELDS = {"id":"id","title":"title","note":"metadata.note.value","slots":"metadata.slots.value","closed":"metadata.closed.value"} as const;
 const PAYMENTS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 
-const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS);
-const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS);
-const cart = fromCodex<CartLine>(cartEntries, CART_FIELDS);
-const summary = fromCodex<SummaryRow>(summaryEntries, SUMMARY_FIELDS);
-const promos = fromCodex<Promo>(promosEntries, PROMOS_FIELDS);
-const days = fromCodex<Day>(daysEntries, DAYS_FIELDS);
-const payments = fromCodex<Payment>(paymentsEntries, PAYMENTS_FIELDS);
+const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS, CODEX);
+const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS, CODEX);
+const cart = fromCodex<CartLine>(cartEntries, CART_FIELDS, CODEX);
+const summary = fromCodex<SummaryRow>(summaryEntries, SUMMARY_FIELDS, CODEX);
+const promos = fromCodex<Promo>(promosEntries, PROMOS_FIELDS, CODEX);
+const days = fromCodex<Day>(daysEntries, DAYS_FIELDS, CODEX);
+const payments = fromCodex<Payment>(paymentsEntries, PAYMENTS_FIELDS, CODEX);
 const actions = { toggleTheme };
 
 export function PageCheckoutPage() {

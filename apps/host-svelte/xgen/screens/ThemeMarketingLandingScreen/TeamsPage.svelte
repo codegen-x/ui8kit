@@ -20,6 +20,7 @@
     type Zone,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { ui } from "@ui8kit/app-shared/content";
   import { logos as logosEntries } from "@ui8kit/app-shared/data/logos";
   import { features as featuresEntries } from "@ui8kit/app-shared/data/features";
@@ -78,15 +79,15 @@
     "currency": "metadata.currency.value",
   } as const;
 
-  const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
-  const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
-  const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
-  const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS);
-  const faqtabs = fromCodex<FaqTab>(faqtabsEntries, FAQTABS_FIELDS);
-  const tiers = fromCodex<Plan>(tiersEntries, TIERS_FIELDS);
-  const questions = fromCodex<Question>(questionsEntries, QUESTIONS_FIELDS);
-  const channels = fromCodex<Feature>(channelsEntries, CHANNELS_FIELDS);
-  const zones = fromCodex<Zone>(zonesEntries, ZONES_FIELDS);
+  const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS, CODEX);
+  const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS, CODEX);
+  const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS, CODEX);
+  const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS, CODEX);
+  const faqtabs = fromCodex<FaqTab>(faqtabsEntries, FAQTABS_FIELDS, CODEX);
+  const tiers = fromCodex<Plan>(tiersEntries, TIERS_FIELDS, CODEX);
+  const questions = fromCodex<Question>(questionsEntries, QUESTIONS_FIELDS, CODEX);
+  const channels = fromCodex<Feature>(channelsEntries, CHANNELS_FIELDS, CODEX);
+  const zones = fromCodex<Zone>(zonesEntries, ZONES_FIELDS, CODEX);
 </script>
 
 <HeroSplit

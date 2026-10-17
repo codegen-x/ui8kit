@@ -18,6 +18,7 @@ import {
   type Plan,
 } from "@ui8kit/vue-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { tiers as tiersEntries } from "@ui8kit/app-shared/data/tiers";
 import { logos as logosEntries } from "@ui8kit/app-shared/data/logos";
@@ -42,11 +43,11 @@ const COMPARE_FIELDS = {"id":"id","label":"title","a":"metadata.a.value","b":"me
 const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
 const FAQTABS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
 
-const tiers = fromCodex<Plan>(tiersEntries, TIERS_FIELDS);
-const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
-const compare = fromCodex<CompareRow>(compareEntries, COMPARE_FIELDS);
-const faq = fromCodex<Faq>(faqEntries, FAQ_FIELDS);
-const faqtabs = fromCodex<FaqTab>(faqtabsEntries, FAQTABS_FIELDS);
+const tiers = fromCodex<Plan>(tiersEntries, TIERS_FIELDS, CODEX);
+const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS, CODEX);
+const compare = fromCodex<CompareRow>(compareEntries, COMPARE_FIELDS, CODEX);
+const faq = fromCodex<Faq>(faqEntries, FAQ_FIELDS, CODEX);
+const faqtabs = fromCodex<FaqTab>(faqtabsEntries, FAQTABS_FIELDS, CODEX);
 </script>
 
 <template>

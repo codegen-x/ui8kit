@@ -12,6 +12,7 @@ import TourPage from "./ThemeMarketingProductScreen/TourPage.vue";
 import CapabilitiesPage from "./ThemeMarketingProductScreen/CapabilitiesPage.vue";
 import NavigationPage from "./ThemeMarketingProductScreen/NavigationPage.vue";
 import { fromCodex, matchRoute, type UrlPort } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
 import { ui } from "@ui8kit/app-shared/content";
 import { navOf } from "@ui8kit/app-shared/nav/ThemeMarketingProductScreen";
@@ -27,7 +28,7 @@ const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","
 
 const { url } = defineProps<{ url: UrlPort }>();
 
-const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS);
+const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS, CODEX);
 const route = computed(() => matchRoute(ROUTES, url.path) ?? { area: "home", params: {} as Record<string, string> });
 const nav = computed(() => navOf(route.value.area));
 const actions = { toggleTheme };

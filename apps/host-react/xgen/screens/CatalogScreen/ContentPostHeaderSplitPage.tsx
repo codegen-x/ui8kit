@@ -18,6 +18,7 @@ import {
   type Post,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { posts as postsEntries } from "@ui8kit/app-shared/data/posts";
 import { posttags as posttagsEntries } from "@ui8kit/app-shared/data/posttags";
@@ -27,8 +28,8 @@ const POSTS_FIELDS = {
   "id": "id",
   "title": "title",
   "excerpt": "excerpt",
-  "category": "metadata.category.value",
-  "author": "metadata.author.value",
+  "category": "terms|term:category",
+  "author": "author_id|author",
   "date": "metadata.date.value|date",
   "minutes": "metadata.minutes.value",
   "icon": "metadata.icon.value",
@@ -38,9 +39,9 @@ const POSTS_FIELDS = {
 const POSTTAGS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
 const OUTLINE_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
 
-const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS);
-const posttags = fromCodex<NavLink>(posttagsEntries, POSTTAGS_FIELDS);
-const outline = fromCodex<NavLink>(outlineEntries, OUTLINE_FIELDS);
+const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS, CODEX);
+const posttags = fromCodex<NavLink>(posttagsEntries, POSTTAGS_FIELDS, CODEX);
+const outline = fromCodex<NavLink>(outlineEntries, OUTLINE_FIELDS, CODEX);
 
 const POSTSPLIT_EXTRAS = {
   role: ui.content.postSplit.role,

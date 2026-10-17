@@ -19,6 +19,7 @@ import {
   type Stat,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { activity as activityEntries } from "@ui8kit/app-shared/data/activity";
 import { series as seriesEntries } from "@ui8kit/app-shared/data/series";
@@ -34,9 +35,9 @@ const ACTIVITY_FIELDS = {
 const SERIES_FIELDS = {"id":"id","label":"title","value":"metadata.value.value"} as const;
 const METRICS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
 
-const activity = fromCodex<Event>(activityEntries, ACTIVITY_FIELDS);
-const series = fromCodex<Point>(seriesEntries, SERIES_FIELDS);
-const metrics = fromCodex<Stat>(metricsEntries, METRICS_FIELDS);
+const activity = fromCodex<Event>(activityEntries, ACTIVITY_FIELDS, CODEX);
+const series = fromCodex<Point>(seriesEntries, SERIES_FIELDS, CODEX);
+const metrics = fromCodex<Stat>(metricsEntries, METRICS_FIELDS, CODEX);
 
 const OVERVIEW_CHART = { title: ui.dashboard.chart.title, text: ui.dashboard.chart.text, summary: ui.dashboard.chart.summary, series } as const;
 const OVERVIEW_ACTIVITY = { title: ui.dashboard.activity.title, text: ui.dashboard.activity.text, events: activity } as const;

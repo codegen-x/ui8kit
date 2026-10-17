@@ -19,6 +19,7 @@ import {
   type Stat,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { stats as statsEntries } from "@ui8kit/app-shared/data/stats";
 import { testimonials as testimonialsEntries } from "@ui8kit/app-shared/data/testimonials";
@@ -38,9 +39,9 @@ const TESTIMONIALS_FIELDS = {
 } as const;
 const LOGOS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
 
-const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS);
-const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS);
-const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS);
+const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS, CODEX);
+const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS, CODEX);
+const logos = fromCodex<Logo>(logosEntries, LOGOS_FIELDS, CODEX);
 
 const QUOTESPLIT_LABELS = { rating: ui.testimonials.rating, byLine: ui.testimonials.byLine, handleLine: ui.testimonials.handleLine } as const;
 const QUOTESPLIT_EXTRAS = { stats, logos, rating: 5, score: ui.marketing.quoteSplit.score, reviews: ui.marketing.quoteSplit.reviews } as const;

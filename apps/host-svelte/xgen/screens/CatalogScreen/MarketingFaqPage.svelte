@@ -21,6 +21,7 @@
     type Question,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { ui } from "@ui8kit/app-shared/content";
   import { channels as channelsEntries } from "@ui8kit/app-shared/data/channels";
   import { faq as faqEntries } from "@ui8kit/app-shared/data/faq";
@@ -38,10 +39,10 @@
     "icon": "metadata.icon.value",
   } as const;
 
-  const channels = fromCodex<Feature>(channelsEntries, CHANNELS_FIELDS);
-  const faq = fromCodex<Faq>(faqEntries, FAQ_FIELDS);
-  const faqtabs = fromCodex<FaqTab>(faqtabsEntries, FAQTABS_FIELDS);
-  const questions = fromCodex<Question>(questionsEntries, QUESTIONS_FIELDS);
+  const channels = fromCodex<Feature>(channelsEntries, CHANNELS_FIELDS, CODEX);
+  const faq = fromCodex<Faq>(faqEntries, FAQ_FIELDS, CODEX);
+  const faqtabs = fromCodex<FaqTab>(faqtabsEntries, FAQTABS_FIELDS, CODEX);
+  const questions = fromCodex<Question>(questionsEntries, QUESTIONS_FIELDS, CODEX);
 
   const FAQ_FILTER = { tabs: faqtabs, label: ui.vibe.faq.tabs, category: "" } as const;
   const FAQSPLIT_LABELS = {

@@ -17,6 +17,7 @@
     type Project,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { ui } from "@ui8kit/app-shared/content";
   import { projects as projectsEntries } from "@ui8kit/app-shared/data/projects";
 
@@ -31,7 +32,7 @@
     "client": "metadata.client.value",
   } as const;
 
-  const projects = fromCodex<Project>(projectsEntries, PROJECTS_FIELDS);
+  const projects = fromCodex<Project>(projectsEntries, PROJECTS_FIELDS, CODEX);
 </script>
 
 <Block tag="section" aria-labelledby="page-title" data-testid="page">

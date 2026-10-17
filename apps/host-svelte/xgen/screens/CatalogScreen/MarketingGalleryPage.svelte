@@ -20,6 +20,7 @@
     type Template,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { ui } from "@ui8kit/app-shared/content";
   import { photos as photosEntries } from "@ui8kit/app-shared/data/photos";
   import { templates as templatesEntries } from "@ui8kit/app-shared/data/templates";
@@ -35,9 +36,9 @@
   } as const;
   const TEMPLATEFILTERS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value","icon":"metadata.icon.value"} as const;
 
-  const photos = fromCodex<Photo>(photosEntries, PHOTOS_FIELDS);
-  const templates = fromCodex<Template>(templatesEntries, TEMPLATES_FIELDS);
-  const templateFilters = fromCodex<Filter>(templateFiltersEntries, TEMPLATEFILTERS_FIELDS);
+  const photos = fromCodex<Photo>(photosEntries, PHOTOS_FIELDS, CODEX);
+  const templates = fromCodex<Template>(templatesEntries, TEMPLATES_FIELDS, CODEX);
+  const templateFilters = fromCodex<Filter>(templateFiltersEntries, TEMPLATEFILTERS_FIELDS, CODEX);
 </script>
 
 <Block tag="section" aria-labelledby="page-title" data-testid="page">

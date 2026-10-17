@@ -4,7 +4,7 @@ import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { validate, xgenPaths } from "@ui8kit/xgen-schema";
 import { expandComposed } from "./compose";
-import type { AppSpec, BlockSpec, CollectionFile, ComposedSpec, Dictionary, OrganismSpec, PresetSpec, RecipeFile, ScreenSpec } from "./ir";
+import type { AppSpec, BlockSpec, CollectionFile, TaxonomyFile, ComposedSpec, Dictionary, OrganismSpec, PresetSpec, RecipeFile, ScreenSpec } from "./ir";
 
 export const readJson = <T = unknown>(p: string): T => JSON.parse(readFileSync(p, "utf8")) as T;
 
@@ -20,6 +20,8 @@ export interface Inputs {
   screens: Array<Loaded<ScreenSpec> & { composed?: ComposedSpec }>;
   blocks: Loaded<BlockSpec>[];
   collections: Loaded<CollectionFile>[];
+  /** fixtures/taxonomies/*.json: the taxonomy bundles (checked against the contract by codex:validate) */
+  taxonomies: Loaded<TaxonomyFile>[];
   dictionary: Loaded<Dictionary>;
   problems: string[];
 }
@@ -61,6 +63,9 @@ export function loadInputs(root: string): Inputs {
     presets: loadDir<PresetSpec>(xgenPaths(root).specs("presets"), "preset", problems),
     screens,
     collections: loadDir<CollectionFile>(xgenPaths(root).fixtures, "collection", problems),
+    taxonomies: existsSync(xgenPaths(root).taxonomies)
+      ? readdirSync(xgenPaths(root).taxonomies).filter((f) => f.endsWith(".json")).sort().map((f) => ({ file: join(xgenPaths(root).taxonomies, f), value: readJson<TaxonomyFile>(join(xgenPaths(root).taxonomies, f)) }))
+      : [],
     dictionary,
     problems,
   };

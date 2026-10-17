@@ -128,7 +128,12 @@ const {
           {{ tpl(labels.minutes, post.minutes) }}
         </Text>
       </Group>
-      <Link v-if="((meta as string) !== 'news')" :href="(post.href ?? '#/')" variant="default" data-testid="read">
+      <Link
+        v-if="(((meta as string) !== 'news') && post.href)"
+        :href="post.href"
+        variant="default"
+        data-testid="read"
+      >
         {{ labels.read }}
       </Link>
     </CardContent>

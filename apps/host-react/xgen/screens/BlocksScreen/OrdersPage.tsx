@@ -17,6 +17,7 @@ import {
   type Order,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { orders as ordersEntries } from "@ui8kit/app-shared/data/orders";
 
@@ -30,7 +31,7 @@ const ORDERS_FIELDS = {
   "items": "metadata.items.value",
 } as const;
 
-const orders = fromCodex<Order>(ordersEntries, ORDERS_FIELDS);
+const orders = fromCodex<Order>(ordersEntries, ORDERS_FIELDS, CODEX);
 
 export function OrdersPage() {
   return (

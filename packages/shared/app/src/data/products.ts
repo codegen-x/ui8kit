@@ -11,6 +11,12 @@ export const products = [
     "slug": "lamp",
     "title": "Arc desk lamp",
     "featured_media_id": "media-lamp",
+    "terms": [
+      {
+        "taxonomy": "product_category",
+        "term_id": "product-category-light"
+      }
+    ],
     "metadata": {
       "summary": {
         "value": "Warm, dimmable light with a weighted base."
@@ -30,9 +36,6 @@ export const products = [
       "badge": {
         "value": "new"
       },
-      "category": {
-        "value": "light"
-      },
       "inStock": {
         "value": true
       }
@@ -51,6 +54,12 @@ export const products = [
     "slug": "bag",
     "title": "Field backpack",
     "featured_media_id": "media-bag",
+    "terms": [
+      {
+        "taxonomy": "product_category",
+        "term_id": "product-category-bags"
+      }
+    ],
     "metadata": {
       "summary": {
         "value": "Water-resistant, 22 litres, fits a 16 inch laptop."
@@ -73,9 +82,6 @@ export const products = [
       "badge": {
         "value": ""
       },
-      "category": {
-        "value": "bags"
-      },
       "inStock": {
         "value": true
       }
@@ -94,6 +100,12 @@ export const products = [
     "slug": "phones",
     "title": "Studio headphones",
     "featured_media_id": "media-phones",
+    "terms": [
+      {
+        "taxonomy": "product_category",
+        "term_id": "product-category-audio"
+      }
+    ],
     "metadata": {
       "summary": {
         "value": "Closed-back, 40 hour battery, wired and wireless."
@@ -116,9 +128,6 @@ export const products = [
       "badge": {
         "value": "sale"
       },
-      "category": {
-        "value": "audio"
-      },
       "inStock": {
         "value": true
       }
@@ -136,6 +145,12 @@ export const products = [
     "visibility": "public",
     "slug": "stand",
     "title": "Laptop stand",
+    "terms": [
+      {
+        "taxonomy": "product_category",
+        "term_id": "product-category-desk"
+      }
+    ],
     "metadata": {
       "summary": {
         "value": "Aluminium, folds flat, six heights."
@@ -158,9 +173,6 @@ export const products = [
       "badge": {
         "value": ""
       },
-      "category": {
-        "value": "desk"
-      },
       "inStock": {
         "value": false
       }
@@ -178,6 +190,12 @@ export const products = [
     "visibility": "public",
     "slug": "mat",
     "title": "Desk mat",
+    "terms": [
+      {
+        "taxonomy": "product_category",
+        "term_id": "product-category-desk"
+      }
+    ],
     "metadata": {
       "summary": {
         "value": "Felt top with a non-slip base, 90 by 40 cm."
@@ -197,9 +215,6 @@ export const products = [
       "badge": {
         "value": "new"
       },
-      "category": {
-        "value": "desk"
-      },
       "inStock": {
         "value": true
       }
@@ -217,6 +232,12 @@ export const products = [
     "visibility": "public",
     "slug": "card",
     "title": "Gift card",
+    "terms": [
+      {
+        "taxonomy": "product_category",
+        "term_id": "product-category-gifts"
+      }
+    ],
     "metadata": {
       "summary": {
         "value": "Delivered by email, never expires."
@@ -235,9 +256,6 @@ export const products = [
       },
       "badge": {
         "value": ""
-      },
-      "category": {
-        "value": "gifts"
       },
       "inStock": {
         "value": true

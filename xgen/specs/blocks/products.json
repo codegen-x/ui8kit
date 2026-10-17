@@ -133,7 +133,7 @@
         "rating": "metadata.rating.value",
         "reviews": "metadata.reviews.value",
         "badge": "metadata.badge.value",
-        "category": "metadata.category.value",
+        "category": "terms|term:product_category",
         "inStock": "metadata.inStock.value",
         "compareAt": "metadata.compare_at.value",
         "href": "slug|route",

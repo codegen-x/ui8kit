@@ -12,6 +12,7 @@ import {
   type Section,
 } from "@ui8kit/solid-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { posts as postsEntries } from "@ui8kit/app-shared/data/posts";
 import { article as articleEntries } from "@ui8kit/app-shared/data/article";
@@ -22,8 +23,8 @@ const POSTS_FIELDS = {
   "id": "id",
   "title": "title",
   "excerpt": "excerpt",
-  "category": "metadata.category.value",
-  "author": "metadata.author.value",
+  "category": "terms|term:category",
+  "author": "author_id|author",
   "date": "metadata.date.value|date",
   "minutes": "metadata.minutes.value",
   "icon": "metadata.icon.value",
@@ -34,10 +35,10 @@ const ARTICLE_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","
 const POSTTAGS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
 const OUTLINE_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
 
-const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS);
-const article = fromCodex<Section>(articleEntries, ARTICLE_FIELDS);
-const posttags = fromCodex<NavLink>(posttagsEntries, POSTTAGS_FIELDS);
-const outline = fromCodex<NavLink>(outlineEntries, OUTLINE_FIELDS);
+const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS, CODEX);
+const article = fromCodex<Section>(articleEntries, ARTICLE_FIELDS, CODEX);
+const posttags = fromCodex<NavLink>(posttagsEntries, POSTTAGS_FIELDS, CODEX);
+const outline = fromCodex<NavLink>(outlineEntries, OUTLINE_FIELDS, CODEX);
 
 export function StoryPage() {
   return (

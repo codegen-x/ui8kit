@@ -19,6 +19,7 @@
     type Step,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { ui } from "@ui8kit/app-shared/content";
   import { navlinks as navlinksEntries } from "@ui8kit/app-shared/data/navlinks";
   import { features as featuresEntries } from "@ui8kit/app-shared/data/features";
@@ -44,12 +45,12 @@
   } as const;
   const MEGAGROUPS_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
 
-  const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS);
-  const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS);
-  const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS);
-  const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS);
-  const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS);
-  const megagroups = fromCodex<MegaGroup>(megagroupsEntries, MEGAGROUPS_FIELDS);
+  const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS, CODEX);
+  const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS, CODEX);
+  const beforeafter = fromCodex<Contrast>(beforeafterEntries, BEFOREAFTER_FIELDS, CODEX);
+  const steps = fromCodex<Step>(stepsEntries, STEPS_FIELDS, CODEX);
+  const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS, CODEX);
+  const megagroups = fromCodex<MegaGroup>(megagroupsEntries, MEGAGROUPS_FIELDS, CODEX);
 </script>
 
 <PageIntro

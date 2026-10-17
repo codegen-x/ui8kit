@@ -10,10 +10,8 @@ export const reviews = [
     "visibility": "public",
     "slug": "r1",
     "title": "Great light for late work",
+    "author_id": "user-dana-pierce",
     "metadata": {
-      "author": {
-        "value": "Dana Pierce"
-      },
       "rating": {
         "value": 5
       },
@@ -37,10 +35,8 @@ export const reviews = [
     "visibility": "public",
     "slug": "r2",
     "title": "Solid and simple",
+    "author_id": "user-ravi-menon",
     "metadata": {
-      "author": {
-        "value": "Ravi Menon"
-      },
       "rating": {
         "value": 4
       },
@@ -64,10 +60,8 @@ export const reviews = [
     "visibility": "public",
     "slug": "r3",
     "title": "Does the job",
+    "author_id": "user-elena-brandt",
     "metadata": {
-      "author": {
-        "value": "Elena Brandt"
-      },
       "rating": {
         "value": 4
       },

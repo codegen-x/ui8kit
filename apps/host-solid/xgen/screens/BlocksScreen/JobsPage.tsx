@@ -18,6 +18,7 @@ import {
   type Job,
 } from "@ui8kit/solid-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { jobs as jobsEntries } from "@ui8kit/app-shared/data/jobs";
 import { departments as departmentsEntries } from "@ui8kit/app-shared/data/departments";
@@ -33,8 +34,8 @@ const JOBS_FIELDS = {
 } as const;
 const DEPARTMENTS_FIELDS = {"id":"id","name":"title"} as const;
 
-const jobs = fromCodex<Job>(jobsEntries, JOBS_FIELDS);
-const departments = fromCodex<Department>(departmentsEntries, DEPARTMENTS_FIELDS);
+const jobs = fromCodex<Job>(jobsEntries, JOBS_FIELDS, CODEX);
+const departments = fromCodex<Department>(departmentsEntries, DEPARTMENTS_FIELDS, CODEX);
 
 export function JobsPage() {
   return (

@@ -19,6 +19,7 @@
     type Question,
   } from "@ui8kit/svelte-ui";
   import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+  import { CODEX } from "@ui8kit/app-shared/runtime/codex";
   import { ui } from "@ui8kit/app-shared/content";
   import { channels as channelsEntries } from "@ui8kit/app-shared/data/channels";
   import { faqtabs as faqtabsEntries } from "@ui8kit/app-shared/data/faqtabs";
@@ -34,9 +35,9 @@
     "icon": "metadata.icon.value",
   } as const;
 
-  const channels = fromCodex<Feature>(channelsEntries, CHANNELS_FIELDS);
-  const faqtabs = fromCodex<FaqTab>(faqtabsEntries, FAQTABS_FIELDS);
-  const questions = fromCodex<Question>(questionsEntries, QUESTIONS_FIELDS);
+  const channels = fromCodex<Feature>(channelsEntries, CHANNELS_FIELDS, CODEX);
+  const faqtabs = fromCodex<FaqTab>(faqtabsEntries, FAQTABS_FIELDS, CODEX);
+  const questions = fromCodex<Question>(questionsEntries, QUESTIONS_FIELDS, CODEX);
 
   const FAQSPLIT_LABELS = {
     cta: ui.marketing.faqSplit.cta,

@@ -21,6 +21,7 @@ import {
   type SummaryRow,
 } from "@ui8kit/react-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
 import { ui } from "@ui8kit/app-shared/content";
 import { navlinks as navlinksEntries } from "@ui8kit/app-shared/data/navlinks";
@@ -41,7 +42,7 @@ const PRODUCTS_FIELDS = {
   "rating": "metadata.rating.value",
   "reviews": "metadata.reviews.value",
   "badge": "metadata.badge.value",
-  "category": "metadata.category.value",
+  "category": "terms|term:product_category",
   "inStock": "metadata.inStock.value",
   "compareAt": "metadata.compare_at.value",
   "href": "slug|route",
@@ -64,12 +65,12 @@ const SUMMARY_FIELDS = {
 } as const;
 const PROMOS_FIELDS = {"id":"id","code":"title"} as const;
 
-const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS);
-const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS);
-const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS);
-const cart = fromCodex<CartLine>(cartEntries, CART_FIELDS);
-const summary = fromCodex<SummaryRow>(summaryEntries, SUMMARY_FIELDS);
-const promos = fromCodex<Promo>(promosEntries, PROMOS_FIELDS);
+const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS, CODEX);
+const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS, CODEX);
+const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS, CODEX);
+const cart = fromCodex<CartLine>(cartEntries, CART_FIELDS, CODEX);
+const summary = fromCodex<SummaryRow>(summaryEntries, SUMMARY_FIELDS, CODEX);
+const promos = fromCodex<Promo>(promosEntries, PROMOS_FIELDS, CODEX);
 const actions = { toggleTheme };
 
 export function PageCartPage() {

@@ -849,7 +849,8 @@
           "prop": "reviews",
           "collection": "reviews",
           "kind": "review",
-          "record": "Review"
+          "record": "Review",
+          "map": "review"
         }
       ]
     },
@@ -1031,9 +1032,9 @@
             "id",
             "title",
             "excerpt",
-            "metadata.author.value",
+            "author_id",
             "metadata.date.value",
-            "metadata.category.value"
+            "terms"
           ],
           "optional": [
             "metadata.minutes.value",
@@ -1260,7 +1261,7 @@
             "metadata.currency.value",
             "metadata.rating.value",
             "metadata.reviews.value",
-            "metadata.category.value",
+            "terms",
             "metadata.inStock.value"
           ],
           "optional": [
@@ -1394,7 +1395,8 @@
           "prop": "reviews",
           "collection": "reviews",
           "kind": "review",
-          "record": "Review"
+          "record": "Review",
+          "map": "review"
         }
       ]
     },

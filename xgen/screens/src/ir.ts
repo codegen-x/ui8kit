@@ -200,6 +200,8 @@ export interface CodexEntry {
   version: number; created_at: string; updated_at: string; published_at: string;
 }
 export interface CollectionFile { collection: string; kind: string; entries: CodexEntry[] }
+/** a Codex v0.4 taxonomy bundle (fixtures/taxonomies/<id>.json): the definition and its terms, which entries name in `terms` */
+export interface TaxonomyFile { definition: { id: string; locale: string; label: string; mode: string; assigned_to_kinds: string[] }; terms: { id: string; locale: string; taxonomy_id: string; name: string; slug: string }[] }
 export type Dictionary = { [key: string]: string | Dictionary };
 
 /** the collections a screen reads: one (`rows`) for a collection screen, the declared list for a page */
