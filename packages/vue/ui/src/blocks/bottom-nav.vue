@@ -39,7 +39,7 @@ const {
 </script>
 
 <template>
-  <Block
+  <Block v-if="((tabs?.length ?? 0) > 0)"
     tag="nav"
     :class="cn(
       'mx-auto w-full max-w-md border-t border-border',

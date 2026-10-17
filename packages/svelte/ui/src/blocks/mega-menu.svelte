@@ -102,27 +102,29 @@
       )}
       data-slot="container"
     >
-      <Grid cols={(((cols as string) === "2") ? "1-2" : "1-3")} class="gap-6" data-testid="items">
-        {#each groups as g (g.id)}
-          <Stack gap="2" data-testid="item">
-            <Group gap="2" align="center">
-              <LucideIcon name={g.icon} size={16} />
-              <Text size="sm" weight="semibold">
-                {g.title}
-              </Text>
-            </Group>
-            <List class="m-0 flex list-none flex-col gap-2 p-0">
-              {#each g.links as item (item.id)}
-                <ListItem>
-                  <MenuEntry href={item.href} class="text-sm text-muted-foreground">
-                    {item.name}
-                  </MenuEntry>
-                </ListItem>
-              {/each}
-            </List>
-          </Stack>
-        {/each}
-      </Grid>
+      {#if ((groups?.length ?? 0) > 0)}
+        <Grid cols={(((cols as string) === "2") ? "1-2" : "1-3")} class="gap-6" data-testid="items">
+          {#each groups as g (g.id)}
+            <Stack gap="2" data-testid="item">
+              <Group gap="2" align="center">
+                <LucideIcon name={g.icon} size={16} />
+                <Text size="sm" weight="semibold">
+                  {g.title}
+                </Text>
+              </Group>
+              <List class="m-0 flex list-none flex-col gap-2 p-0">
+                {#each g.links as item (item.id)}
+                  <ListItem>
+                    <MenuEntry href={item.href} class="text-sm text-muted-foreground">
+                      {item.name}
+                    </MenuEntry>
+                  </ListItem>
+                {/each}
+              </List>
+            </Stack>
+          {/each}
+        </Grid>
+      {/if}
       {#if ((promo as string) === "card")}
         <Stack gap="2" class="rounded bg-card inset-ring inset-ring-border p-4" data-testid="promo">
           <MediaFrame alt={(promoTitle ?? "")} ratio="4/3" />

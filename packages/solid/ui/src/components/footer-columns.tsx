@@ -19,25 +19,29 @@ export type FooterColumnsProps = {
 
 export function FooterColumns({ label, groups, landmarkLabel }: FooterColumnsProps) {
   return (
-    <Block tag="nav" aria-label={(landmarkLabel ?? label)}>
-      <Grid cols="1" class="grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5" data-testid="footer-groups">
-        <For each={groups ?? []}>{(g) => (
-          <Stack gap="2" data-testid="group">
-            <Text size="sm" weight="semibold">
-              {g.title}
-            </Text>
-            <List class="m-0 flex list-none flex-col gap-2 p-0">
-              <For each={g.links ?? []}>{(item) => (
-                <ListItem>
-                  <MenuEntry href={item.href} class="text-sm text-muted-foreground">
-                    {item.name}
-                  </MenuEntry>
-                </ListItem>
-              )}</For>
-            </List>
-          </Stack>
-        )}</For>
-      </Grid>
-    </Block>
+    <>
+      {((groups?.length ?? 0) > 0) ? (
+        <Block tag="nav" aria-label={(landmarkLabel ?? label)}>
+          <Grid cols="1" class="grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5" data-testid="footer-groups">
+            <For each={groups ?? []}>{(g) => (
+              <Stack gap="2" data-testid="group">
+                <Text size="sm" weight="semibold">
+                  {g.title}
+                </Text>
+                <List class="m-0 flex list-none flex-col gap-2 p-0">
+                  <For each={g.links ?? []}>{(item) => (
+                    <ListItem>
+                      <MenuEntry href={item.href} class="text-sm text-muted-foreground">
+                        {item.name}
+                      </MenuEntry>
+                    </ListItem>
+                  )}</For>
+                </List>
+              </Stack>
+            )}</For>
+          </Grid>
+        </Block>
+      ) : null}
+    </>
   );
 }

@@ -31,14 +31,16 @@ templ BottomNav(p BottomNavProps) {
 	{{ vPosition := uiutils.Def(p.Position, "static") }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@block.Block(block.BlockProps{Tag: "nav", Class: uiutils.S(uiutils.Cnv("mx-auto w-full max-w-md border-t border-border", uiutils.Cond(uiutils.T(uiutils.Eq(vTone, "muted")), "bg-muted", "bg-background"), uiutils.Cond(uiutils.T(uiutils.Eq(vPosition, "sticky")), "sticky bottom-0 z-40", ""))), Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vLandmarkLabel, vLabel), "data-testid", "bottom-nav", "data-position", vPosition)}) {
-		@list.List(list.ListProps{Class: "m-0 grid list-none grid-flow-col auto-cols-fr p-0", Attrs: uiutils.Attrs("data-testid", "items")}) {
-			for _, vTab := range uiutils.L(vTabs) {
-				@list.ListItem(list.ListItemProps{}) {
-					@MenuEntry(MenuEntryProps{Href: uiutils.Get(vTab, "href"), Class: uiutils.Cnv(uiutils.Cnv("flex flex-col items-center gap-2 py-2 text-xs", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vTab, "id"), vCurrent)), "font-semibold text-primary", "text-muted-foreground"))), Current: uiutils.Eq(uiutils.Get(vTab, "id"), vCurrent), Testid: "item"}) {
-						@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Get(vTab, "icon")), Size: 20})
-						@inline.Inline(inline.InlineProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLabels, "hide")), "sr-only", ""))}) {
-							{ uiutils.Text(uiutils.Get(vTab, "name")) }
+	if uiutils.Gt(uiutils.Len(vTabs), float64(0)) {
+		@block.Block(block.BlockProps{Tag: "nav", Class: uiutils.S(uiutils.Cnv("mx-auto w-full max-w-md border-t border-border", uiutils.Cond(uiutils.T(uiutils.Eq(vTone, "muted")), "bg-muted", "bg-background"), uiutils.Cond(uiutils.T(uiutils.Eq(vPosition, "sticky")), "sticky bottom-0 z-40", ""))), Attrs: uiutils.Attrs("aria-label", uiutils.Coalesce(vLandmarkLabel, vLabel), "data-testid", "bottom-nav", "data-position", vPosition)}) {
+			@list.List(list.ListProps{Class: "m-0 grid list-none grid-flow-col auto-cols-fr p-0", Attrs: uiutils.Attrs("data-testid", "items")}) {
+				for _, vTab := range uiutils.L(vTabs) {
+					@list.ListItem(list.ListItemProps{}) {
+						@MenuEntry(MenuEntryProps{Href: uiutils.Get(vTab, "href"), Class: uiutils.Cnv(uiutils.Cnv("flex flex-col items-center gap-2 py-2 text-xs", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vTab, "id"), vCurrent)), "font-semibold text-primary", "text-muted-foreground"))), Current: uiutils.Eq(uiutils.Get(vTab, "id"), vCurrent), Testid: "item"}) {
+							@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Get(vTab, "icon")), Size: 20})
+							@inline.Inline(inline.InlineProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLabels, "hide")), "sr-only", ""))}) {
+								{ uiutils.Text(uiutils.Get(vTab, "name")) }
+							}
 						}
 					}
 				}

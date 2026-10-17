@@ -23,12 +23,14 @@
   const count = $derived(links?.length ?? 0);
 </script>
 
-<Group gap="4" align="center" class="flex-wrap">
-  {#each links as l, i (l.id)}
-    {#if (((side as string) === "all") || (((i * 2) < count) === ((side as string) === "left")))}
-      <MenuEntry href={l.href} class="text-sm" current={(l.id === current)} testid="nav-link">
-        {l.name}
-      </MenuEntry>
-    {/if}
-  {/each}
-</Group>
+{#if ((links?.length ?? 0) > 0)}
+  <Group gap="4" align="center" class="flex-wrap">
+    {#each links as l, i (l.id)}
+      {#if (((side as string) === "all") || (((i * 2) < count) === ((side as string) === "left")))}
+        <MenuEntry href={l.href} class="text-sm" current={(l.id === current)} testid="nav-link">
+          {l.name}
+        </MenuEntry>
+      {/if}
+    {/each}
+  </Group>
+{/if}

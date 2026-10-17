@@ -21,25 +21,27 @@
     {{ ui_include('ui/text/text.html.j2', {'p': {'Size': 'base', 'Weight': 'bold', 'Class': ui_s(('sr-only' if ui_t(ui_eq(v_width, 'compact')) else ''))}, 'children': c_1}) }}
   {%- endset -%}
   {{ ui_include('ui/group/group.html.j2', {'p': {'Gap': '2', 'Align': 'center'}, 'children': c_2}) }}
-  {%- set c_7 -%}
-    {%- set c_6 -%}
-      {%- for v_l in ui_l(v_links) %}
-        {%- set c_5 -%}
-          {%- set c_4 -%}
-            {{ ui_include('ui/lucide-icon/lucide-icon.html.j2', {'p': {'Name': ui_s(ui_get(v_l, ['icon'])), 'Size': 16}}) }}
-            {%- set c_3 -%}
-              {{ ui_text(ui_get(v_l, ['name'])) }}
+  {%- if ui_t(ui_gt(ui_len(v_links), 0)) %}
+    {%- set c_7 -%}
+      {%- set c_6 -%}
+        {%- for v_l in ui_l(v_links) %}
+          {%- set c_5 -%}
+            {%- set c_4 -%}
+              {{ ui_include('ui/lucide-icon/lucide-icon.html.j2', {'p': {'Name': ui_s(ui_get(v_l, ['icon'])), 'Size': 16}}) }}
+              {%- set c_3 -%}
+                {{ ui_text(ui_get(v_l, ['name'])) }}
+              {%- endset -%}
+              {{ ui_include('ui/inline/inline.html.j2', {'p': {'Class': ui_s(('sr-only' if ui_t(ui_eq(v_width, 'compact')) else ''))}, 'children': c_3}) }}
             {%- endset -%}
-            {{ ui_include('ui/inline/inline.html.j2', {'p': {'Class': ui_s(('sr-only' if ui_t(ui_eq(v_width, 'compact')) else ''))}, 'children': c_3}) }}
+            {{ ui_include('blocks/menu-entry.html.j2', {'p': {'href': ui_get(v_l, ['href']), 'className': ui_cnv([ui_cnv(['flex items-center gap-4 rounded px-4 text-sm', 'py-2', ('bg-muted font-semibold' if ui_t(ui_eq(ui_get(v_l, ['id']), v_current)) else '')])]), 'current': ui_eq(ui_get(v_l, ['id']), v_current), 'testid': 'item'}, 'children': c_4}) }}
           {%- endset -%}
-          {{ ui_include('blocks/menu-entry.html.j2', {'p': {'href': ui_get(v_l, ['href']), 'className': ui_cnv([ui_cnv(['flex items-center gap-4 rounded px-4 text-sm', 'py-2', ('bg-muted font-semibold' if ui_t(ui_eq(ui_get(v_l, ['id']), v_current)) else '')])]), 'current': ui_eq(ui_get(v_l, ['id']), v_current), 'testid': 'item'}, 'children': c_4}) }}
-        {%- endset -%}
-        {{ ui_include('ui/list/list-item.html.j2', {'p': {}, 'children': c_5}) }}
-      {%- endfor %}
+          {{ ui_include('ui/list/list-item.html.j2', {'p': {}, 'children': c_5}) }}
+        {%- endfor %}
+      {%- endset -%}
+      {{ ui_include('ui/list/list.html.j2', {'p': {'Class': ui_s(ui_cnv(['m-0 flex list-none flex-col p-0', ('gap-0' if ui_t(ui_eq(v_density, 'compact')) else 'gap-2')])), 'Attrs': ui_attrs(['data-testid', 'items'])}, 'children': c_6}) }}
     {%- endset -%}
-    {{ ui_include('ui/list/list.html.j2', {'p': {'Class': ui_s(ui_cnv(['m-0 flex list-none flex-col p-0', ('gap-0' if ui_t(ui_eq(v_density, 'compact')) else 'gap-2')])), 'Attrs': ui_attrs(['data-testid', 'items'])}, 'children': c_6}) }}
-  {%- endset -%}
-  {{ ui_include('blocks/nav-block.html.j2', {'p': {'label': (ui_uniq(ui_tpl('{0}, {1}', [v_label, v_landmarkLabel])) if ui_t(v_landmarkLabel) else v_label), 'className': ui_cnv(['flex-1'])}, 'children': c_7}) }}
+    {{ ui_include('blocks/nav-block.html.j2', {'p': {'label': (ui_uniq(ui_tpl('{0}, {1}', [v_label, v_landmarkLabel])) if ui_t(v_landmarkLabel) else v_label), 'className': ui_cnv(['flex-1'])}, 'children': c_7}) }}
+  {%- endif %}
   {%- if ui_t(ui_eq(v_user, 'show')) %}
     {%- set c_11 -%}
       {{ ui_include('blocks/media-frame.html.j2', {'p': {'alt': v_userName, 'ratio': '1/1', 'className': ui_cnv(['size-10 shrink-0 rounded-full'])}}) }}

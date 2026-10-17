@@ -87,36 +87,38 @@
         </Text>
       </Group>
     {/if}
-    <List tag="ul" class={listShape} data-testid="items">
-      {#each categories as c (c.id)}
-        <ListItem>
-          <MenuEntry
-            href={c.href}
-            class={cn("text-sm", linkShape, ((c.id === current) ? currentLook : otherLook))}
-            current={(c.id === current)}
-            testid="item"
-            block={true}
-          >
-            {#if ((icon as string) === "show")}
-              {#if tiles}
-                <Inline class="flex size-10 items-center justify-center rounded bg-muted">
-                  <LucideIcon name={c.icon} size={20} />
-                </Inline>
-              {:else}
-                <LucideIcon name={c.icon} size={16} />
+    {#if ((categories?.length ?? 0) > 0)}
+      <List tag="ul" class={listShape} data-testid="items">
+        {#each categories as c (c.id)}
+          <ListItem>
+            <MenuEntry
+              href={c.href}
+              class={cn("text-sm", linkShape, ((c.id === current) ? currentLook : otherLook))}
+              current={(c.id === current)}
+              testid="item"
+              block={true}
+            >
+              {#if ((icon as string) === "show")}
+                {#if tiles}
+                  <Inline class="flex size-10 items-center justify-center rounded bg-muted">
+                    <LucideIcon name={c.icon} size={20} />
+                  </Inline>
+                {:else}
+                  <LucideIcon name={c.icon} size={16} />
+                {/if}
               {/if}
-            {/if}
-            <Inline>
-              {c.name}
-            </Inline>
-            {#if ((count as string) === "show")}
-              <Text size="xs" class="text-muted-foreground">
-                {(c.count == null ? undefined : String(c.count))}
-              </Text>
-            {/if}
-          </MenuEntry>
-        </ListItem>
-      {/each}
-    </List>
+              <Inline>
+                {c.name}
+              </Inline>
+              {#if ((count as string) === "show")}
+                <Text size="xs" class="text-muted-foreground">
+                  {(c.count == null ? undefined : String(c.count))}
+                </Text>
+              {/if}
+            </MenuEntry>
+          </ListItem>
+        {/each}
+      </List>
+    {/if}
   </Container>
 </Block>

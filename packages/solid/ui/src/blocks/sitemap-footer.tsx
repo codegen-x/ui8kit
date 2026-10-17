@@ -111,15 +111,17 @@ export function SitemapFooter({
                 <Text size="base" weight="bold">
                   {brand}
                 </Text>
-                <NavBlock label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", label, landmarkLabel)) : label)}>
-                  <Group gap="4" class="flex-wrap">
-                    <For each={groups ?? []}>{(g) => (
-                      <MenuEntry href={g.href} class="text-sm" testid="group">
-                        {g.title}
-                      </MenuEntry>
-                    )}</For>
-                  </Group>
-                </NavBlock>
+                {((groups?.length ?? 0) > 0) ? (
+                  <NavBlock label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", label, landmarkLabel)) : label)}>
+                    <Group gap="4" class="flex-wrap">
+                      <For each={groups ?? []}>{(g) => (
+                        <MenuEntry href={g.href} class="text-sm" testid="group">
+                          {g.title}
+                        </MenuEntry>
+                      )}</For>
+                    </Group>
+                  </NavBlock>
+                ) : null}
               </Group>
             )}
             <Group gap="4" align="center" justify="between" class="flex-wrap border-t border-border pt-6">

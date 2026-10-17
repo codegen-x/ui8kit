@@ -47,14 +47,16 @@ templ SidebarNav(p SidebarNavProps) {
 				{ uiutils.Text(vBrand) }
 			}
 		}
-		@NavBlock(NavBlockProps{Label: uiutils.Cond(uiutils.T(vLandmarkLabel), uiutils.Uniq(uiutils.Tpl("{0}, {1}", vLabel, vLandmarkLabel)), vLabel), Class: uiutils.Cnv("flex-1")}) {
-			@list.List(list.ListProps{Class: uiutils.S(uiutils.Cnv("m-0 flex list-none flex-col p-0", uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "gap-0", "gap-2"))), Attrs: uiutils.Attrs("data-testid", "items")}) {
-				for _, vL := range uiutils.L(vLinks) {
-					@list.ListItem(list.ListItemProps{}) {
-						@MenuEntry(MenuEntryProps{Href: uiutils.Get(vL, "href"), Class: uiutils.Cnv(uiutils.Cnv("flex items-center gap-4 rounded px-4 text-sm", "py-2", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vL, "id"), vCurrent)), "bg-muted font-semibold", ""))), Current: uiutils.Eq(uiutils.Get(vL, "id"), vCurrent), Testid: "item"}) {
-							@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Get(vL, "icon")), Size: 16})
-							@inline.Inline(inline.InlineProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vWidth, "compact")), "sr-only", ""))}) {
-								{ uiutils.Text(uiutils.Get(vL, "name")) }
+		if uiutils.Gt(uiutils.Len(vLinks), float64(0)) {
+			@NavBlock(NavBlockProps{Label: uiutils.Cond(uiutils.T(vLandmarkLabel), uiutils.Uniq(uiutils.Tpl("{0}, {1}", vLabel, vLandmarkLabel)), vLabel), Class: uiutils.Cnv("flex-1")}) {
+				@list.List(list.ListProps{Class: uiutils.S(uiutils.Cnv("m-0 flex list-none flex-col p-0", uiutils.Cond(uiutils.T(uiutils.Eq(vDensity, "compact")), "gap-0", "gap-2"))), Attrs: uiutils.Attrs("data-testid", "items")}) {
+					for _, vL := range uiutils.L(vLinks) {
+						@list.ListItem(list.ListItemProps{}) {
+							@MenuEntry(MenuEntryProps{Href: uiutils.Get(vL, "href"), Class: uiutils.Cnv(uiutils.Cnv("flex items-center gap-4 rounded px-4 text-sm", "py-2", uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vL, "id"), vCurrent)), "bg-muted font-semibold", ""))), Current: uiutils.Eq(uiutils.Get(vL, "id"), vCurrent), Testid: "item"}) {
+								@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Get(vL, "icon")), Size: 16})
+								@inline.Inline(inline.InlineProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vWidth, "compact")), "sr-only", ""))}) {
+									{ uiutils.Text(uiutils.Get(vL, "name")) }
+								}
 							}
 						}
 					}

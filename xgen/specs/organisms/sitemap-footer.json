@@ -437,86 +437,104 @@
                           ]
                         },
                         {
-                          "organism": "NavBlock",
-                          "props": {
-                            "label": {
-                              "op": "cond",
-                              "args": [
-                                {
-                                  "$": "landmarkLabel"
-                                },
-                                {
-                                  "op": "uniq",
+                          "when": {
+                            "op": "gt",
+                            "args": [
+                              {
+                                "op": "len",
+                                "args": [
+                                  {
+                                    "$": "groups"
+                                  }
+                                ]
+                              },
+                              0
+                            ]
+                          },
+                          "then": [
+                            {
+                              "organism": "NavBlock",
+                              "props": {
+                                "label": {
+                                  "op": "cond",
                                   "args": [
                                     {
-                                      "op": "tpl",
-                                      "args": [
-                                        "{0}, {1}",
-                                        {
-                                          "$": "label"
-                                        },
-                                        {
-                                          "$": "landmarkLabel"
-                                        }
-                                      ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "$": "label"
-                                }
-                              ]
-                            }
-                          },
-                          "slots": {
-                            "children": {
-                              "args": [],
-                              "do": [
-                                {
-                                  "use": "Group",
-                                  "props": {
-                                    "Gap": "4",
-                                    "Class": "flex-wrap"
-                                  },
-                                  "children": [
+                                      "$": "landmarkLabel"
+                                    },
                                     {
-                                      "each": {
-                                        "$": "groups"
-                                      },
-                                      "as": "g",
-                                      "key": {
-                                        "$": "g.id"
-                                      },
-                                      "do": [
+                                      "op": "uniq",
+                                      "args": [
                                         {
-                                          "organism": "MenuEntry",
-                                          "props": {
-                                            "href": {
-                                              "$": "g.href"
+                                          "op": "tpl",
+                                          "args": [
+                                            "{0}, {1}",
+                                            {
+                                              "$": "label"
                                             },
-                                            "className": "text-sm",
-                                            "testid": "group"
-                                          },
-                                          "slots": {
-                                            "children": {
-                                              "args": [],
-                                              "do": [
-                                                {
-                                                  "text": {
-                                                    "$": "g.title"
-                                                  }
-                                                }
-                                              ]
+                                            {
+                                              "$": "landmarkLabel"
                                             }
-                                          }
+                                          ]
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "$": "label"
+                                    }
+                                  ]
+                                }
+                              },
+                              "slots": {
+                                "children": {
+                                  "args": [],
+                                  "do": [
+                                    {
+                                      "use": "Group",
+                                      "props": {
+                                        "Gap": "4",
+                                        "Class": "flex-wrap"
+                                      },
+                                      "children": [
+                                        {
+                                          "each": {
+                                            "$": "groups"
+                                          },
+                                          "as": "g",
+                                          "key": {
+                                            "$": "g.id"
+                                          },
+                                          "do": [
+                                            {
+                                              "organism": "MenuEntry",
+                                              "props": {
+                                                "href": {
+                                                  "$": "g.href"
+                                                },
+                                                "className": "text-sm",
+                                                "testid": "group"
+                                              },
+                                              "slots": {
+                                                "children": {
+                                                  "args": [],
+                                                  "do": [
+                                                    {
+                                                      "text": {
+                                                        "$": "g.title"
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            }
+                                          ]
                                         }
                                       ]
                                     }
                                   ]
                                 }
-                              ]
+                              }
                             }
-                          }
+                          ]
                         }
                       ]
                     }

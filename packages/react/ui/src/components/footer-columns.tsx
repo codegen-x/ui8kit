@@ -19,25 +19,29 @@ export type FooterColumnsProps = {
 
 export function FooterColumns({ label, groups, landmarkLabel }: FooterColumnsProps) {
   return (
-    <Block tag="nav" aria-label={(landmarkLabel ?? label)}>
-      <Grid cols="1" className="grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5" data-testid="footer-groups">
-        {(groups ?? []).map((g) => (
-          <Stack key={g.id} gap="2" data-testid="group">
-            <Text size="sm" weight="semibold">
-              {g.title}
-            </Text>
-            <List className="m-0 flex list-none flex-col gap-2 p-0">
-              {(g.links ?? []).map((item) => (
-                <ListItem key={item.id}>
-                  <MenuEntry href={item.href} className="text-sm text-muted-foreground">
-                    {item.name}
-                  </MenuEntry>
-                </ListItem>
-              ))}
-            </List>
-          </Stack>
-        ))}
-      </Grid>
-    </Block>
+    <>
+      {((groups?.length ?? 0) > 0) ? (
+        <Block tag="nav" aria-label={(landmarkLabel ?? label)}>
+          <Grid cols="1" className="grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5" data-testid="footer-groups">
+            {(groups ?? []).map((g) => (
+              <Stack key={g.id} gap="2" data-testid="group">
+                <Text size="sm" weight="semibold">
+                  {g.title}
+                </Text>
+                <List className="m-0 flex list-none flex-col gap-2 p-0">
+                  {(g.links ?? []).map((item) => (
+                    <ListItem key={item.id}>
+                      <MenuEntry href={item.href} className="text-sm text-muted-foreground">
+                        {item.name}
+                      </MenuEntry>
+                    </ListItem>
+                  ))}
+                </List>
+              </Stack>
+            ))}
+          </Grid>
+        </Block>
+      ) : null}
+    </>
   );
 }

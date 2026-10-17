@@ -3,7 +3,7 @@ import { and, at, call, cn, coalesce, cond, each, eq, gt, len, mul, not, money, 
 import type { OrganismSpec, ViewNode } from "../../ir";
 import { cardBase, fields, groupFields, spec, ts } from "../kit";
 import { frame, wide } from "../components/frames";
-import { empty, id, orEmpty, title, tone, tsOf, toneLite, denseLite, roomyLite } from "../props";
+import { empty, id, ifAny, orEmpty, title, tone, tsOf, toneLite, denseLite, roomyLite } from "../props";
 import { cartTable } from "../components/cart-table";
 import { numberField } from "../components/number-field";
 import { orderRows, statusTone } from "../components/orders";
@@ -49,7 +49,7 @@ const categoryNav = spec(`${O}category-nav`, "CategoryNav", "Navigation between 
           organism("SearchField", { value: coalesce(ref("tools.query"), ""), label: coalesce(ref("tools.search"), ""), placeholder: ref("tools.search") }),
           use("Select", { props: { Name: "sort", Size: "sm", AriaLabel: ref("tools.sort"), Class: "w-48" } }, use("SelectOption", { props: { Value: "sort", Label: ref("tools.sortValue"), Selected: true } })),
           use("Text", { props: { Size: "sm", Class: "text-muted-foreground" } }, text(ref("tools.shown"))))]),
-        use("List", { props: { Tag: "ul", Class: ref("listShape") }, attrs: { "data-testid": "items" } },
+        ifAny("categories", [use("List", { props: { Tag: "ul", Class: ref("listShape") }, attrs: { "data-testid": "items" } },
           each(ref("categories"), "c", ref("c.id"),
             use("ListItem", {},
               // a category is a menu entry: a link only where the app routes menu items
@@ -58,7 +58,7 @@ const categoryNav = spec(`${O}category-nav`, "CategoryNav", "Navigation between 
                   [use("Inline", { props: { Class: "flex size-10 items-center justify-center rounded bg-muted" } }, use("LucideIcon", { props: { Name: ref("c.icon"), Size: 20 } }))],
                   [use("LucideIcon", { props: { Name: ref("c.icon"), Size: 16 } })])]),
                 use("Inline", {}, text(ref("c.name"))),
-                when(eq(ref("count"), "show"), [use("Text", { props: { Size: "xs", Class: "text-muted-foreground" } }, text(str(ref("c.count"))))]))))))),
+                when(eq(ref("count"), "show"), [use("Text", { props: { Size: "xs", Class: "text-muted-foreground" } }, text(str(ref("c.count"))))])))))]))),
   ],
 });
 

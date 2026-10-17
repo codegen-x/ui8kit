@@ -61,35 +61,37 @@ export function SidebarNav({
           {brand}
         </Text>
       </Group>
-      <NavBlock label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", label, landmarkLabel)) : label)} class="flex-1">
-        <List
-          class={cn(
-            "m-0 flex list-none flex-col p-0",
-            (((density as string) === "compact") ? "gap-0" : "gap-2")
-          )}
-          data-testid="items"
-        >
-          <For each={links ?? []}>{(l) => (
-            <ListItem>
-              <MenuEntry
-                href={l.href}
-                class={cn(
-                  "flex items-center gap-4 rounded px-4 text-sm",
-                  "py-2",
-                  ((l.id === current) ? "bg-muted font-semibold" : "")
-                )}
-                current={(l.id === current)}
-                testid="item"
-              >
-                <LucideIcon name={l.icon} size={16} />
-                <Inline class={(((width as string) === "compact") ? "sr-only" : "")}>
-                  {l.name}
-                </Inline>
-              </MenuEntry>
-            </ListItem>
-          )}</For>
-        </List>
-      </NavBlock>
+      {((links?.length ?? 0) > 0) ? (
+        <NavBlock label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", label, landmarkLabel)) : label)} class="flex-1">
+          <List
+            class={cn(
+              "m-0 flex list-none flex-col p-0",
+              (((density as string) === "compact") ? "gap-0" : "gap-2")
+            )}
+            data-testid="items"
+          >
+            <For each={links ?? []}>{(l) => (
+              <ListItem>
+                <MenuEntry
+                  href={l.href}
+                  class={cn(
+                    "flex items-center gap-4 rounded px-4 text-sm",
+                    "py-2",
+                    ((l.id === current) ? "bg-muted font-semibold" : "")
+                  )}
+                  current={(l.id === current)}
+                  testid="item"
+                >
+                  <LucideIcon name={l.icon} size={16} />
+                  <Inline class={(((width as string) === "compact") ? "sr-only" : "")}>
+                    {l.name}
+                  </Inline>
+                </MenuEntry>
+              </ListItem>
+            )}</For>
+          </List>
+        </NavBlock>
+      ) : null}
       {((user as string) === "show") ? (
         <Group gap="4" align="center" class="border-t border-border pt-4" data-testid="user">
           <MediaFrame alt={userName} ratio="1/1" class="size-10 shrink-0 rounded-full" />

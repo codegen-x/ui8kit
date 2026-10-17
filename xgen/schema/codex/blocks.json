@@ -572,7 +572,7 @@
       "surface": "kit-block",
       "spec": "block.bottomnav",
       "source": "xgen/specs/blocks/bottomnav.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "tabs",
@@ -580,7 +580,13 @@
           "kind": "tab",
           "record": "NavLink",
           "map": "tab",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -597,7 +603,8 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "CartList",
@@ -816,7 +823,7 @@
       "surface": "kit-block",
       "spec": "block.categories",
       "source": "xgen/specs/blocks/categories.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "categories",
@@ -824,7 +831,15 @@
           "kind": "menu_item",
           "record": "Category",
           "map": "menuCategory",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value",
+            "metadata.count.value",
+            "slug"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -853,7 +868,8 @@
           ]
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "SupportChannels",
@@ -2855,7 +2871,7 @@
       "surface": "kit-block",
       "spec": "block.megamenu",
       "source": "xgen/specs/blocks/megamenu.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "links",
@@ -2863,7 +2879,14 @@
           "kind": "menu_item",
           "record": "NavLink",
           "map": "menuItem",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value",
+            "slug"
+          ],
+          "optional": []
         },
         {
           "prop": "groups",
@@ -2871,7 +2894,14 @@
           "kind": "menu_item",
           "record": "MegaGroup",
           "map": "menuGroup",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value",
+            "slug"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -2908,7 +2938,8 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "MetricRow",
@@ -2969,7 +3000,14 @@
           "kind": "menu_item",
           "record": "NavLink",
           "map": "menuItem",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value",
+            "slug"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -4400,7 +4438,7 @@
       "surface": "kit-block",
       "spec": "block.sidenav",
       "source": "xgen/specs/blocks/sidenav.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "links",
@@ -4408,7 +4446,14 @@
           "kind": "menu_item",
           "record": "NavLink",
           "map": "menuItem",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value",
+            "slug"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -4440,14 +4485,15 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "SitemapFooter",
       "surface": "kit-block",
       "spec": "block.sitemap",
       "source": "xgen/specs/blocks/sitemap.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "groups",
@@ -4455,7 +4501,14 @@
           "kind": "menu_item",
           "record": "MegaGroup",
           "map": "menuGroup",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value",
+            "slug"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -4506,7 +4559,8 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "SkeletonLayout",

@@ -3,6 +3,7 @@ import { cn, each, ref, text, use } from "../../build";
 import { spec, ts } from "../kit";
 import { landingWide } from "./frames";
 import { strong } from "../ux";
+import { ifAny } from "../props";
 import { layoutOf } from "../presets";
 import { navBlockOf } from "./landmarks";
 import { groupLinks } from "./nav";
@@ -14,12 +15,12 @@ export const footerColumns = spec("pattern.footer-columns", "FooterColumns", "Th
     { name: "label", type: "string", required: true, docs: "accessible name of the link groups" },
     { name: "groups", type: ts("MegaGroup[]"), required: true },
   ],
-  view: [
+  view: [ifAny("groups", [
     use("Block", { props: { Tag: "nav" }, attrs: { "aria-label": ref("label") } },
       use("Grid", { props: { Cols: "1", Class: "grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5" }, attrs: { "data-testid": "footer-groups" } },
         each(ref("groups"), "g", ref("g.id"), use("Stack", { props: { Gap: "2" }, attrs: { "data-testid": "group" } },
           strong(ref("g.title"), "sm"),
-          use("List", { props: { Class: "m-0 flex list-none flex-col gap-2 p-0" } }, groupLinks("g", "text-sm text-muted-foreground")))))),
+          use("List", { props: { Class: "m-0 flex list-none flex-col gap-2 p-0" } }, groupLinks("g", "text-sm text-muted-foreground"))))))]),
   ],
 });
 
@@ -46,8 +47,8 @@ export const footerCard = spec("pattern.footer-card", "FooterCard", "The card la
             use("Inline", { props: { Class: "flex size-8 items-center justify-center rounded bg-foreground text-background" } },
               use("LucideIcon", { props: { Name: "hexagon", Size: 16 } })),
             strong(ref("brand"), "base", "bold")),
-          navBlockOf(ref("label"), "min-w-0 flex-1", undefined,
+          ifAny("groups", [navBlockOf(ref("label"), "min-w-0 flex-1", undefined,
             use("Group", { props: { Gap: "0", Align: "start", Class: cn("flex w-full flex-nowrap justify-between", layoutOf("footer.groups")) }, attrs: { "data-testid": "footer-groups" } },
-              each(ref("groups"), "g", ref("g.id"), groupCol))))))];
+              each(ref("groups"), "g", ref("g.id"), groupCol)))]))))];
   })(),
 });

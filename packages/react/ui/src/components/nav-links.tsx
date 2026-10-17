@@ -18,16 +18,20 @@ export type NavLinksProps = {
 export function NavLinks({ links, current = "", side = "all" }: NavLinksProps) {
   const count = links?.length ?? 0;
   return (
-    <Group gap="4" align="center" className="flex-wrap">
-      {(links ?? []).map((l, i) => (
-        <Fragment key={l.id}>
-          {(((side as string) === "all") || (((i * 2) < count) === ((side as string) === "left"))) ? (
-            <MenuEntry href={l.href} className="text-sm" current={(l.id === current)} testid="nav-link">
-              {l.name}
-            </MenuEntry>
-          ) : null}
-        </Fragment>
-      ))}
-    </Group>
+    <>
+      {((links?.length ?? 0) > 0) ? (
+        <Group gap="4" align="center" className="flex-wrap">
+          {(links ?? []).map((l, i) => (
+            <Fragment key={l.id}>
+              {(((side as string) === "all") || (((i * 2) < count) === ((side as string) === "left"))) ? (
+                <MenuEntry href={l.href} className="text-sm" current={(l.id === current)} testid="nav-link">
+                  {l.name}
+                </MenuEntry>
+              ) : null}
+            </Fragment>
+          ))}
+        </Group>
+      ) : null}
+    </>
   );
 }

@@ -4,7 +4,7 @@ import { call, cn, coalesce, cond, each, eq, ne, ref, text, use, when, organism 
 import type { OrganismSpec, ViewNode } from "../../ir";
 import { groupFields, rec, requireFields, spec, ts } from "../kit";
 import { wide } from "../components/frames";
-import { tsOf, toneLite } from "../props";
+import { ifAny, tsOf, toneLite } from "../props";
 import { kids } from "../forms";
 import { emailRow } from "../forms";
 import { heading, muted, strong, surface } from "../ux";
@@ -89,10 +89,10 @@ const megaMenu = spec(`${O}mega-menu`, "MegaMenu", "A top bar whose first item o
             each(ref("links"), "l", ref("l.id"), link("l", "")))))),
       when(eq(ref("panel"), "open"), [use("Box", { props: { Class: "border-t border-border bg-card" }, attrs: { "data-testid": "mega-panel" } },
         use("Container", { props: { Class: cn(wide, "grid gap-8 py-6", cond(eq(ref("promo"), "card"), "md:grid-cols-[1fr_16rem]", "")) }, attrs: { "data-slot": "container" } },
-          use("Grid", { props: { Cols: cond(eq(ref("cols"), "2"), "1-2", "1-3"), Class: "gap-6" }, attrs: { "data-testid": "items" } },
+          ifAny("groups", [use("Grid", { props: { Cols: cond(eq(ref("cols"), "2"), "1-2", "1-3"), Class: "gap-6" }, attrs: { "data-testid": "items" } },
             each(ref("groups"), "g", ref("g.id"), use("Stack", { props: { Gap: "2" }, attrs: { "data-testid": "item" } },
               use("Group", { props: { Gap: "2", Align: "center" } }, use("LucideIcon", { props: { Name: ref("g.icon"), Size: 16 } }), strong(ref("g.title"), "sm")),
-              use("List", { props: { Class: "m-0 flex list-none flex-col gap-2 p-0" } }, groupLinks("g", "text-sm text-muted-foreground"))))),
+              use("List", { props: { Class: "m-0 flex list-none flex-col gap-2 p-0" } }, groupLinks("g", "text-sm text-muted-foreground")))))]),
           when(eq(ref("promo"), "card"), [use("Stack", { props: { Gap: "2", Class: surface("p-4") }, attrs: { "data-testid": "promo" } },
             organism("MediaFrame", { alt: coalesce(ref("promoTitle"), ""), ratio: "4/3" }), strong(ref("promoTitle")), muted(ref("promoText"), "xs"))])))]),
   ],
@@ -114,11 +114,11 @@ const sidebarNav = spec(`${O}sidebar-nav`, "SidebarNav", "A vertical navigation:
   view: [
     use("Block", { props: { Tag: "aside", Class: cn("flex min-h-96 flex-col gap-6 rounded bg-card p-4 inset-ring inset-ring-border", cond(eq(ref("width"), "compact"), "w-20 items-center", "w-64")) }, attrs: { "aria-label": ref("brand"), "data-testid": "sidebar", "data-width": ref("width") } },
       use("Group", { props: { Gap: "2", Align: "center" } }, use("LucideIcon", { props: { Name: "layers", Size: 24 } }), use("Text", { props: { Size: "base", Weight: "bold", Class: cond(eq(ref("width"), "compact"), "sr-only", "") } }, text(ref("brand")))),
-      navBlockOf(ref("label"), "flex-1", undefined,
+      ifAny("links", [navBlockOf(ref("label"), "flex-1", undefined,
         use("List", { props: { Class: cn("m-0 flex list-none flex-col p-0", cond(eq(ref("density"), "compact"), "gap-0", "gap-2")) }, attrs: { "data-testid": "items" } },
           each(ref("links"), "l", ref("l.id"), use("ListItem", {},
             menuEntry(ref("l.href"), { cls: cn("flex items-center gap-4 rounded px-4 text-sm", "py-2", cond(eq(ref("l.id"), ref("current")), "bg-muted font-semibold", "")), current: currentOf("l", ref("current")), testid: "item" },
-              use("LucideIcon", { props: { Name: ref("l.icon"), Size: 16 } }), use("Inline", { props: { Class: cond(eq(ref("width"), "compact"), "sr-only", "") } }, text(ref("l.name")))))))),
+              use("LucideIcon", { props: { Name: ref("l.icon"), Size: 16 } }), use("Inline", { props: { Class: cond(eq(ref("width"), "compact"), "sr-only", "") } }, text(ref("l.name"))))))))]),
       when(eq(ref("user"), "show"), [use("Group", { props: { Gap: "4", Align: "center", Class: "border-t border-border pt-4" }, attrs: { "data-testid": "user" } },
         organism("MediaFrame", { alt: ref("userName"), ratio: "1/1", className: "size-10 shrink-0 rounded-full" }),
         use("Stack", { props: { Gap: "0", Class: cond(eq(ref("width"), "compact"), "sr-only", "min-w-0") } }, strong(ref("userName"), "sm"), muted(ref("userEmail"), "xs")))])),
@@ -135,12 +135,12 @@ const bottomNav = spec(`${O}bottom-nav`, "BottomNav", "An app-style tab bar for 
     { name: "position", type: tsOf("static", "sticky"), default: "static" },
     { name: "tone", type: toneLite, default: "default" },
   ],
-  view: [
+  view: [ifAny("tabs", [
     use("Block", { props: { Tag: "nav", Class: cn("mx-auto w-full max-w-md border-t border-border", cond(eq(ref("tone"), "muted"), "bg-muted", "bg-background"), cond(eq(ref("position"), "sticky"), "sticky bottom-0 z-40", "")) }, attrs: { "aria-label": ref("label"), "data-testid": "bottom-nav", "data-position": ref("position") } },
       use("List", { props: { Class: "m-0 grid list-none grid-flow-col auto-cols-fr p-0" }, attrs: { "data-testid": "items" } },
         each(ref("tabs"), "tab", ref("tab.id"), use("ListItem", {},
           menuEntry(ref("tab.href"), { cls: cn("flex flex-col items-center gap-2 py-2 text-xs", cond(eq(ref("tab.id"), ref("current")), "font-semibold text-primary", "text-muted-foreground")), current: currentOf("tab", ref("current")), testid: "item" },
-            use("LucideIcon", { props: { Name: ref("tab.icon"), Size: 20 } }), use("Inline", { props: { Class: cond(eq(ref("labels"), "hide"), "sr-only", "") } }, text(ref("tab.name")))))))),
+            use("LucideIcon", { props: { Name: ref("tab.icon"), Size: 20 } }), use("Inline", { props: { Class: cond(eq(ref("labels"), "hide"), "sr-only", "") } }, text(ref("tab.name"))))))))]),
   ],
 });
 
@@ -174,7 +174,7 @@ const sitemapFooter = spec(`${O}sitemap-footer`, "SitemapFooter", "A footer with
             use("Box", { props: { Class: "min-w-0 flex-1" } }, organism("FooterColumns", { label: ref("label"), groups: ref("groups") })))],
           [use("Group", { props: { Gap: "6", Align: "center", Justify: "between", Class: "flex-wrap" } },
             strong(ref("brand"), "base", "bold"),
-            navBlockOf(ref("label"), undefined, undefined, use("Group", { props: { Gap: "4", Class: "flex-wrap" } }, each(ref("groups"), "g", ref("g.id"), menuEntry(ref("g.href"), { cls: "text-sm", testid: "group" }, text(ref("g.title"))))))) ]),
+            ifAny("groups", [navBlockOf(ref("label"), undefined, undefined, use("Group", { props: { Gap: "4", Class: "flex-wrap" } }, each(ref("groups"), "g", ref("g.id"), menuEntry(ref("g.href"), { cls: "text-sm", testid: "group" }, text(ref("g.title"))))))]))]),
         use("Group", { props: { Gap: "4", Align: "center", Justify: "between", Class: "flex-wrap border-t border-border pt-6" } },
           muted(ref("copyright")),
           when(eq(ref("status.mode"), "show"), [organism("Pill", { tone: "green", icon: "circle-check" }, kids(text(ref("status.label"))))]))));

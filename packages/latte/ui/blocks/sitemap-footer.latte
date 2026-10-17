@@ -67,18 +67,20 @@
             {=ui_text($v_brand)}
           {/capture}
           {=ui_include('ui/text/text.latte', ['p' => ['Size' => 'base', 'Weight' => 'bold'], 'children' => $c_12])|noescape}
-          {capture $c_15}
-            {capture $c_14}
-              {foreach ui_l($v_groups) as $v_g}
-                {capture $c_13}
-                  {=ui_text(ui_get($v_g, ['title']))}
-                {/capture}
-                {=ui_include('blocks/menu-entry.latte', ['p' => ['href' => ui_get($v_g, ['href']), 'className' => ui_cnv(['text-sm']), 'testid' => 'group'], 'children' => $c_13])|noescape}
-              {/foreach}
+          {if ui_t(ui_gt(ui_len($v_groups), 0))}
+            {capture $c_15}
+              {capture $c_14}
+                {foreach ui_l($v_groups) as $v_g}
+                  {capture $c_13}
+                    {=ui_text(ui_get($v_g, ['title']))}
+                  {/capture}
+                  {=ui_include('blocks/menu-entry.latte', ['p' => ['href' => ui_get($v_g, ['href']), 'className' => ui_cnv(['text-sm']), 'testid' => 'group'], 'children' => $c_13])|noescape}
+                {/foreach}
+              {/capture}
+              {=ui_include('ui/group/group.latte', ['p' => ['Gap' => '4', 'Class' => 'flex-wrap'], 'children' => $c_14])|noescape}
             {/capture}
-            {=ui_include('ui/group/group.latte', ['p' => ['Gap' => '4', 'Class' => 'flex-wrap'], 'children' => $c_14])|noescape}
-          {/capture}
-          {=ui_include('blocks/nav-block.latte', ['p' => ['label' => (ui_t($v_landmarkLabel) ? ui_uniq(ui_tpl('{0}, {1}', [$v_label, $v_landmarkLabel])) : $v_label)], 'children' => $c_15])|noescape}
+            {=ui_include('blocks/nav-block.latte', ['p' => ['label' => (ui_t($v_landmarkLabel) ? ui_uniq(ui_tpl('{0}, {1}', [$v_label, $v_landmarkLabel])) : $v_label)], 'children' => $c_15])|noescape}
+          {/if}
         {/capture}
         {=ui_include('ui/group/group.latte', ['p' => ['Gap' => '6', 'Align' => 'center', 'Justify' => 'between', 'Class' => 'flex-wrap'], 'children' => $c_16])|noescape}
       {/if}

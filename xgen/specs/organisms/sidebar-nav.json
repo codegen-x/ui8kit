@@ -160,172 +160,190 @@
           ]
         },
         {
-          "organism": "NavBlock",
-          "props": {
-            "label": {
-              "op": "cond",
-              "args": [
-                {
-                  "$": "landmarkLabel"
-                },
-                {
-                  "op": "uniq",
+          "when": {
+            "op": "gt",
+            "args": [
+              {
+                "op": "len",
+                "args": [
+                  {
+                    "$": "links"
+                  }
+                ]
+              },
+              0
+            ]
+          },
+          "then": [
+            {
+              "organism": "NavBlock",
+              "props": {
+                "label": {
+                  "op": "cond",
                   "args": [
                     {
-                      "op": "tpl",
+                      "$": "landmarkLabel"
+                    },
+                    {
+                      "op": "uniq",
                       "args": [
-                        "{0}, {1}",
                         {
-                          "$": "label"
-                        },
-                        {
-                          "$": "landmarkLabel"
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "$": "label"
-                }
-              ]
-            },
-            "className": "flex-1"
-          },
-          "slots": {
-            "children": {
-              "args": [],
-              "do": [
-                {
-                  "use": "List",
-                  "props": {
-                    "Class": {
-                      "op": "cn",
-                      "args": [
-                        "m-0 flex list-none flex-col p-0",
-                        {
-                          "op": "cond",
+                          "op": "tpl",
                           "args": [
+                            "{0}, {1}",
                             {
-                              "op": "eq",
-                              "args": [
-                                {
-                                  "$": "density"
-                                },
-                                "compact"
-                              ]
+                              "$": "label"
                             },
-                            "gap-0",
-                            "gap-2"
+                            {
+                              "$": "landmarkLabel"
+                            }
                           ]
                         }
                       ]
-                    }
-                  },
-                  "attrs": {
-                    "data-testid": "items"
-                  },
-                  "children": [
+                    },
                     {
-                      "each": {
-                        "$": "links"
-                      },
-                      "as": "l",
-                      "key": {
-                        "$": "l.id"
-                      },
-                      "do": [
-                        {
-                          "use": "ListItem",
-                          "children": [
+                      "$": "label"
+                    }
+                  ]
+                },
+                "className": "flex-1"
+              },
+              "slots": {
+                "children": {
+                  "args": [],
+                  "do": [
+                    {
+                      "use": "List",
+                      "props": {
+                        "Class": {
+                          "op": "cn",
+                          "args": [
+                            "m-0 flex list-none flex-col p-0",
                             {
-                              "organism": "MenuEntry",
-                              "props": {
-                                "href": {
-                                  "$": "l.href"
-                                },
-                                "className": {
-                                  "op": "cn",
-                                  "args": [
-                                    "flex items-center gap-4 rounded px-4 text-sm",
-                                    "py-2",
-                                    {
-                                      "op": "cond",
-                                      "args": [
-                                        {
-                                          "op": "eq",
-                                          "args": [
-                                            {
-                                              "$": "l.id"
-                                            },
-                                            {
-                                              "$": "current"
-                                            }
-                                          ]
-                                        },
-                                        "bg-muted font-semibold",
-                                        ""
-                                      ]
-                                    }
-                                  ]
-                                },
-                                "current": {
+                              "op": "cond",
+                              "args": [
+                                {
                                   "op": "eq",
                                   "args": [
                                     {
-                                      "$": "l.id"
+                                      "$": "density"
                                     },
-                                    {
-                                      "$": "current"
-                                    }
+                                    "compact"
                                   ]
                                 },
-                                "testid": "item"
-                              },
-                              "slots": {
-                                "children": {
-                                  "args": [],
-                                  "do": [
-                                    {
-                                      "use": "LucideIcon",
-                                      "props": {
-                                        "Name": {
-                                          "$": "l.icon"
-                                        },
-                                        "Size": 16
-                                      }
+                                "gap-0",
+                                "gap-2"
+                              ]
+                            }
+                          ]
+                        }
+                      },
+                      "attrs": {
+                        "data-testid": "items"
+                      },
+                      "children": [
+                        {
+                          "each": {
+                            "$": "links"
+                          },
+                          "as": "l",
+                          "key": {
+                            "$": "l.id"
+                          },
+                          "do": [
+                            {
+                              "use": "ListItem",
+                              "children": [
+                                {
+                                  "organism": "MenuEntry",
+                                  "props": {
+                                    "href": {
+                                      "$": "l.href"
                                     },
-                                    {
-                                      "use": "Inline",
-                                      "props": {
-                                        "Class": {
+                                    "className": {
+                                      "op": "cn",
+                                      "args": [
+                                        "flex items-center gap-4 rounded px-4 text-sm",
+                                        "py-2",
+                                        {
                                           "op": "cond",
                                           "args": [
                                             {
                                               "op": "eq",
                                               "args": [
                                                 {
-                                                  "$": "width"
+                                                  "$": "l.id"
                                                 },
-                                                "compact"
+                                                {
+                                                  "$": "current"
+                                                }
                                               ]
                                             },
-                                            "sr-only",
+                                            "bg-muted font-semibold",
                                             ""
                                           ]
                                         }
-                                      },
-                                      "children": [
+                                      ]
+                                    },
+                                    "current": {
+                                      "op": "eq",
+                                      "args": [
                                         {
-                                          "text": {
-                                            "$": "l.name"
+                                          "$": "l.id"
+                                        },
+                                        {
+                                          "$": "current"
+                                        }
+                                      ]
+                                    },
+                                    "testid": "item"
+                                  },
+                                  "slots": {
+                                    "children": {
+                                      "args": [],
+                                      "do": [
+                                        {
+                                          "use": "LucideIcon",
+                                          "props": {
+                                            "Name": {
+                                              "$": "l.icon"
+                                            },
+                                            "Size": 16
                                           }
+                                        },
+                                        {
+                                          "use": "Inline",
+                                          "props": {
+                                            "Class": {
+                                              "op": "cond",
+                                              "args": [
+                                                {
+                                                  "op": "eq",
+                                                  "args": [
+                                                    {
+                                                      "$": "width"
+                                                    },
+                                                    "compact"
+                                                  ]
+                                                },
+                                                "sr-only",
+                                                ""
+                                              ]
+                                            }
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "$": "l.name"
+                                              }
+                                            }
+                                          ]
                                         }
                                       ]
                                     }
-                                  ]
+                                  }
                                 }
-                              }
+                              ]
                             }
                           ]
                         }
@@ -333,9 +351,9 @@
                     }
                   ]
                 }
-              ]
+              }
             }
-          }
+          ]
         },
         {
           "when": {

@@ -33,37 +33,39 @@
       {%- endset -%}
       {{ include('ui/group/group.html.twig', {'p': {'Gap': '4', 'Align': 'center', 'Class': 'mb-4 flex-wrap', 'Attrs': ui_attrs(['data-testid', 'toolbar'])}, 'children': c_3}, with_context = false) }}
     {%- endif %}
-    {%- set c_9 -%}
-      {%- for v_c in ui_l(v_categories) %}
-        {%- set c_8 -%}
-          {%- set c_7 -%}
-            {%- if ui_t(ui_eq(v_icon, 'show')) %}
-              {%- if ui_t(v_tiles) %}
-                {%- set c_4 -%}
-                  {{ include('ui/lucide-icon/lucide-icon.html.twig', {'p': {'Name': ui_s(ui_get(v_c, ['icon'])), 'Size': 20}}, with_context = false) }}
-                {%- endset -%}
-                {{ include('ui/inline/inline.html.twig', {'p': {'Class': 'flex size-10 items-center justify-center rounded bg-muted'}, 'children': c_4}, with_context = false) }}
-              {%- else %}
-                {{ include('ui/lucide-icon/lucide-icon.html.twig', {'p': {'Name': ui_s(ui_get(v_c, ['icon'])), 'Size': 16}}, with_context = false) }}
+    {%- if ui_t(ui_gt(ui_len(v_categories), 0)) %}
+      {%- set c_9 -%}
+        {%- for v_c in ui_l(v_categories) %}
+          {%- set c_8 -%}
+            {%- set c_7 -%}
+              {%- if ui_t(ui_eq(v_icon, 'show')) %}
+                {%- if ui_t(v_tiles) %}
+                  {%- set c_4 -%}
+                    {{ include('ui/lucide-icon/lucide-icon.html.twig', {'p': {'Name': ui_s(ui_get(v_c, ['icon'])), 'Size': 20}}, with_context = false) }}
+                  {%- endset -%}
+                  {{ include('ui/inline/inline.html.twig', {'p': {'Class': 'flex size-10 items-center justify-center rounded bg-muted'}, 'children': c_4}, with_context = false) }}
+                {%- else %}
+                  {{ include('ui/lucide-icon/lucide-icon.html.twig', {'p': {'Name': ui_s(ui_get(v_c, ['icon'])), 'Size': 16}}, with_context = false) }}
+                {%- endif %}
               {%- endif %}
-            {%- endif %}
-            {%- set c_5 -%}
-              {{ ui_text(ui_get(v_c, ['name'])) }}
-            {%- endset -%}
-            {{ include('ui/inline/inline.html.twig', {'p': {}, 'children': c_5}, with_context = false) }}
-            {%- if ui_t(ui_eq(v_count, 'show')) %}
-              {%- set c_6 -%}
-                {{ ui_text(ui_str(ui_get(v_c, ['count']))) }}
+              {%- set c_5 -%}
+                {{ ui_text(ui_get(v_c, ['name'])) }}
               {%- endset -%}
-              {{ include('ui/text/text.html.twig', {'p': {'Size': 'xs', 'Class': 'text-muted-foreground'}, 'children': c_6}, with_context = false) }}
-            {%- endif %}
+              {{ include('ui/inline/inline.html.twig', {'p': {}, 'children': c_5}, with_context = false) }}
+              {%- if ui_t(ui_eq(v_count, 'show')) %}
+                {%- set c_6 -%}
+                  {{ ui_text(ui_str(ui_get(v_c, ['count']))) }}
+                {%- endset -%}
+                {{ include('ui/text/text.html.twig', {'p': {'Size': 'xs', 'Class': 'text-muted-foreground'}, 'children': c_6}, with_context = false) }}
+              {%- endif %}
+            {%- endset -%}
+            {{ include('blocks/menu-entry.html.twig', {'p': {'href': ui_get(v_c, ['href']), 'className': ui_cnv([ui_cnv(['text-sm', v_linkShape, (ui_t(ui_eq(ui_get(v_c, ['id']), v_current)) ? v_currentLook : v_otherLook)])]), 'current': ui_eq(ui_get(v_c, ['id']), v_current), 'testid': 'item', 'block': true}, 'children': c_7}, with_context = false) }}
           {%- endset -%}
-          {{ include('blocks/menu-entry.html.twig', {'p': {'href': ui_get(v_c, ['href']), 'className': ui_cnv([ui_cnv(['text-sm', v_linkShape, (ui_t(ui_eq(ui_get(v_c, ['id']), v_current)) ? v_currentLook : v_otherLook)])]), 'current': ui_eq(ui_get(v_c, ['id']), v_current), 'testid': 'item', 'block': true}, 'children': c_7}, with_context = false) }}
-        {%- endset -%}
-        {{ include('ui/list/list-item.html.twig', {'p': {}, 'children': c_8}, with_context = false) }}
-      {%- endfor %}
-    {%- endset -%}
-    {{ include('ui/list/list.html.twig', {'p': {'Tag': 'ul', 'Class': ui_s(v_listShape), 'Attrs': ui_attrs(['data-testid', 'items'])}, 'children': c_9}, with_context = false) }}
+          {{ include('ui/list/list-item.html.twig', {'p': {}, 'children': c_8}, with_context = false) }}
+        {%- endfor %}
+      {%- endset -%}
+      {{ include('ui/list/list.html.twig', {'p': {'Tag': 'ul', 'Class': ui_s(v_listShape), 'Attrs': ui_attrs(['data-testid', 'items'])}, 'children': c_9}, with_context = false) }}
+    {%- endif %}
   {%- endset -%}
   {{ include('ui/container/container.html.twig', {'p': {'Class': ui_s(ui_cnv(['mx-auto w-full max-w-6xl px-4', (ui_t(ui_eq(v_density, 'compact')) ? 'py-2' : 'py-4')])), 'Attrs': ui_attrs(['data-slot', 'container'])}, 'children': c_10}, with_context = false) }}
 {%- endset -%}

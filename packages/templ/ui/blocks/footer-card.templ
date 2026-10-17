@@ -41,18 +41,20 @@ templ FooterCard(p FooterCardProps) {
 						{ uiutils.Text(vBrand) }
 					}
 				}
-				@NavBlock(NavBlockProps{Label: uiutils.Cond(uiutils.T(vLandmarkLabel), uiutils.Uniq(uiutils.Tpl("{0}, {1}", vLabel, vLandmarkLabel)), vLabel), Class: uiutils.Cnv("min-w-0 flex-1")}) {
-					@group.Group(group.GroupProps{Gap: "0", Align: "start", Class: uiutils.S(uiutils.Cnv("flex w-full flex-nowrap justify-between", uiutils.Get(presetDefaults, "footer", "groups"))), Attrs: uiutils.Attrs("data-testid", "footer-groups")}) {
-						for _, vG := range uiutils.L(vGroups) {
-							@stack.Stack(stack.StackProps{Gap: "4", Attrs: uiutils.Attrs("data-testid", "group")}) {
-								@text.Text(text.TextProps{Size: "xs", Weight: "semibold", Class: "leading-5"}) {
-									{ uiutils.Text(uiutils.Get(vG, "title")) }
-								}
-								@list.List(list.ListProps{Class: "m-0 flex list-none flex-col gap-4 p-0"}) {
-									for _, vItem := range uiutils.L(uiutils.Get(vG, "links")) {
-										@list.ListItem(list.ListItemProps{}) {
-											@MenuEntry(MenuEntryProps{Href: uiutils.Get(vItem, "href"), Class: uiutils.Cnv("text-xs leading-5 text-muted-foreground")}) {
-												{ uiutils.Text(uiutils.Get(vItem, "name")) }
+				if uiutils.Gt(uiutils.Len(vGroups), float64(0)) {
+					@NavBlock(NavBlockProps{Label: uiutils.Cond(uiutils.T(vLandmarkLabel), uiutils.Uniq(uiutils.Tpl("{0}, {1}", vLabel, vLandmarkLabel)), vLabel), Class: uiutils.Cnv("min-w-0 flex-1")}) {
+						@group.Group(group.GroupProps{Gap: "0", Align: "start", Class: uiutils.S(uiutils.Cnv("flex w-full flex-nowrap justify-between", uiutils.Get(presetDefaults, "footer", "groups"))), Attrs: uiutils.Attrs("data-testid", "footer-groups")}) {
+							for _, vG := range uiutils.L(vGroups) {
+								@stack.Stack(stack.StackProps{Gap: "4", Attrs: uiutils.Attrs("data-testid", "group")}) {
+									@text.Text(text.TextProps{Size: "xs", Weight: "semibold", Class: "leading-5"}) {
+										{ uiutils.Text(uiutils.Get(vG, "title")) }
+									}
+									@list.List(list.ListProps{Class: "m-0 flex list-none flex-col gap-4 p-0"}) {
+										for _, vItem := range uiutils.L(uiutils.Get(vG, "links")) {
+											@list.ListItem(list.ListItemProps{}) {
+												@MenuEntry(MenuEntryProps{Href: uiutils.Get(vItem, "href"), Class: uiutils.Cnv("text-xs leading-5 text-muted-foreground")}) {
+													{ uiutils.Text(uiutils.Get(vItem, "name")) }
+												}
 											}
 										}
 									}

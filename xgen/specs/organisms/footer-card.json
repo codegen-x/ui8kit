@@ -150,136 +150,154 @@
                   ]
                 },
                 {
-                  "organism": "NavBlock",
-                  "props": {
-                    "label": {
-                      "op": "cond",
-                      "args": [
-                        {
-                          "$": "landmarkLabel"
-                        },
-                        {
-                          "op": "uniq",
+                  "when": {
+                    "op": "gt",
+                    "args": [
+                      {
+                        "op": "len",
+                        "args": [
+                          {
+                            "$": "groups"
+                          }
+                        ]
+                      },
+                      0
+                    ]
+                  },
+                  "then": [
+                    {
+                      "organism": "NavBlock",
+                      "props": {
+                        "label": {
+                          "op": "cond",
                           "args": [
                             {
-                              "op": "tpl",
+                              "$": "landmarkLabel"
+                            },
+                            {
+                              "op": "uniq",
                               "args": [
-                                "{0}, {1}",
                                 {
-                                  "$": "label"
-                                },
-                                {
-                                  "$": "landmarkLabel"
-                                }
-                              ]
-                            }
-                          ]
-                        },
-                        {
-                          "$": "label"
-                        }
-                      ]
-                    },
-                    "className": "min-w-0 flex-1"
-                  },
-                  "slots": {
-                    "children": {
-                      "args": [],
-                      "do": [
-                        {
-                          "use": "Group",
-                          "props": {
-                            "Gap": "0",
-                            "Align": "start",
-                            "Class": {
-                              "op": "cn",
-                              "args": [
-                                "flex w-full flex-nowrap justify-between",
-                                {
-                                  "op": "preset",
+                                  "op": "tpl",
                                   "args": [
-                                    "defaults",
-                                    "footer.groups"
+                                    "{0}, {1}",
+                                    {
+                                      "$": "label"
+                                    },
+                                    {
+                                      "$": "landmarkLabel"
+                                    }
                                   ]
                                 }
                               ]
-                            }
-                          },
-                          "attrs": {
-                            "data-testid": "footer-groups"
-                          },
-                          "children": [
+                            },
                             {
-                              "each": {
-                                "$": "groups"
-                              },
-                              "as": "g",
-                              "key": {
-                                "$": "g.id"
-                              },
-                              "do": [
-                                {
-                                  "use": "Stack",
-                                  "props": {
-                                    "Gap": "4"
-                                  },
-                                  "attrs": {
-                                    "data-testid": "group"
-                                  },
-                                  "children": [
+                              "$": "label"
+                            }
+                          ]
+                        },
+                        "className": "min-w-0 flex-1"
+                      },
+                      "slots": {
+                        "children": {
+                          "args": [],
+                          "do": [
+                            {
+                              "use": "Group",
+                              "props": {
+                                "Gap": "0",
+                                "Align": "start",
+                                "Class": {
+                                  "op": "cn",
+                                  "args": [
+                                    "flex w-full flex-nowrap justify-between",
                                     {
-                                      "use": "Text",
-                                      "props": {
-                                        "Size": "xs",
-                                        "Weight": "semibold",
-                                        "Class": "leading-5"
-                                      },
-                                      "children": [
-                                        {
-                                          "text": {
-                                            "$": "g.title"
-                                          }
-                                        }
+                                      "op": "preset",
+                                      "args": [
+                                        "defaults",
+                                        "footer.groups"
                                       ]
-                                    },
+                                    }
+                                  ]
+                                }
+                              },
+                              "attrs": {
+                                "data-testid": "footer-groups"
+                              },
+                              "children": [
+                                {
+                                  "each": {
+                                    "$": "groups"
+                                  },
+                                  "as": "g",
+                                  "key": {
+                                    "$": "g.id"
+                                  },
+                                  "do": [
                                     {
-                                      "use": "List",
+                                      "use": "Stack",
                                       "props": {
-                                        "Class": "m-0 flex list-none flex-col gap-4 p-0"
+                                        "Gap": "4"
+                                      },
+                                      "attrs": {
+                                        "data-testid": "group"
                                       },
                                       "children": [
                                         {
-                                          "each": {
-                                            "$": "g.links"
+                                          "use": "Text",
+                                          "props": {
+                                            "Size": "xs",
+                                            "Weight": "semibold",
+                                            "Class": "leading-5"
                                           },
-                                          "as": "item",
-                                          "key": {
-                                            "$": "item.id"
-                                          },
-                                          "do": [
+                                          "children": [
                                             {
-                                              "use": "ListItem",
-                                              "children": [
+                                              "text": {
+                                                "$": "g.title"
+                                              }
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "use": "List",
+                                          "props": {
+                                            "Class": "m-0 flex list-none flex-col gap-4 p-0"
+                                          },
+                                          "children": [
+                                            {
+                                              "each": {
+                                                "$": "g.links"
+                                              },
+                                              "as": "item",
+                                              "key": {
+                                                "$": "item.id"
+                                              },
+                                              "do": [
                                                 {
-                                                  "organism": "MenuEntry",
-                                                  "props": {
-                                                    "href": {
-                                                      "$": "item.href"
-                                                    },
-                                                    "className": "text-xs leading-5 text-muted-foreground"
-                                                  },
-                                                  "slots": {
-                                                    "children": {
-                                                      "args": [],
-                                                      "do": [
-                                                        {
-                                                          "text": {
-                                                            "$": "item.name"
-                                                          }
+                                                  "use": "ListItem",
+                                                  "children": [
+                                                    {
+                                                      "organism": "MenuEntry",
+                                                      "props": {
+                                                        "href": {
+                                                          "$": "item.href"
+                                                        },
+                                                        "className": "text-xs leading-5 text-muted-foreground"
+                                                      },
+                                                      "slots": {
+                                                        "children": {
+                                                          "args": [],
+                                                          "do": [
+                                                            {
+                                                              "text": {
+                                                                "$": "item.name"
+                                                              }
+                                                            }
+                                                          ]
                                                         }
-                                                      ]
+                                                      }
                                                     }
-                                                  }
+                                                  ]
                                                 }
                                               ]
                                             }
@@ -293,9 +311,9 @@
                             }
                           ]
                         }
-                      ]
+                      }
                     }
-                  }
+                  ]
                 }
               ]
             }

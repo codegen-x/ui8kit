@@ -92,7 +92,7 @@ const listShape = computed(() =>
           {{ tools?.shown }}
         </Text>
       </Group>
-      <List tag="ul" :class="listShape" data-testid="items">
+      <List v-if="((categories?.length ?? 0) > 0)" tag="ul" :class="listShape" data-testid="items">
         <ListItem v-for="c in categories" :key="c.id">
           <MenuEntry
             :href="c.href"

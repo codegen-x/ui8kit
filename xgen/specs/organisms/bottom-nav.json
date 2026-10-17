@@ -54,174 +54,192 @@
   "events": [],
   "view": [
     {
-      "use": "Block",
-      "props": {
-        "Tag": "nav",
-        "Class": {
-          "op": "cn",
-          "args": [
-            "mx-auto w-full max-w-md border-t border-border",
-            {
-              "op": "cond",
-              "args": [
-                {
-                  "op": "eq",
-                  "args": [
-                    {
-                      "$": "tone"
-                    },
-                    "muted"
-                  ]
-                },
-                "bg-muted",
-                "bg-background"
-              ]
-            },
-            {
-              "op": "cond",
-              "args": [
-                {
-                  "op": "eq",
-                  "args": [
-                    {
-                      "$": "position"
-                    },
-                    "sticky"
-                  ]
-                },
-                "sticky bottom-0 z-40",
-                ""
-              ]
-            }
-          ]
-        }
+      "when": {
+        "op": "gt",
+        "args": [
+          {
+            "op": "len",
+            "args": [
+              {
+                "$": "tabs"
+              }
+            ]
+          },
+          0
+        ]
       },
-      "attrs": {
-        "aria-label": {
-          "op": "coalesce",
-          "args": [
-            {
-              "$": "landmarkLabel"
-            },
-            {
-              "$": "label"
-            }
-          ]
-        },
-        "data-testid": "bottom-nav",
-        "data-position": {
-          "$": "position"
-        }
-      },
-      "children": [
+      "then": [
         {
-          "use": "List",
+          "use": "Block",
           "props": {
-            "Class": "m-0 grid list-none grid-flow-col auto-cols-fr p-0"
+            "Tag": "nav",
+            "Class": {
+              "op": "cn",
+              "args": [
+                "mx-auto w-full max-w-md border-t border-border",
+                {
+                  "op": "cond",
+                  "args": [
+                    {
+                      "op": "eq",
+                      "args": [
+                        {
+                          "$": "tone"
+                        },
+                        "muted"
+                      ]
+                    },
+                    "bg-muted",
+                    "bg-background"
+                  ]
+                },
+                {
+                  "op": "cond",
+                  "args": [
+                    {
+                      "op": "eq",
+                      "args": [
+                        {
+                          "$": "position"
+                        },
+                        "sticky"
+                      ]
+                    },
+                    "sticky bottom-0 z-40",
+                    ""
+                  ]
+                }
+              ]
+            }
           },
           "attrs": {
-            "data-testid": "items"
+            "aria-label": {
+              "op": "coalesce",
+              "args": [
+                {
+                  "$": "landmarkLabel"
+                },
+                {
+                  "$": "label"
+                }
+              ]
+            },
+            "data-testid": "bottom-nav",
+            "data-position": {
+              "$": "position"
+            }
           },
           "children": [
             {
-              "each": {
-                "$": "tabs"
+              "use": "List",
+              "props": {
+                "Class": "m-0 grid list-none grid-flow-col auto-cols-fr p-0"
               },
-              "as": "tab",
-              "key": {
-                "$": "tab.id"
+              "attrs": {
+                "data-testid": "items"
               },
-              "do": [
+              "children": [
                 {
-                  "use": "ListItem",
-                  "children": [
+                  "each": {
+                    "$": "tabs"
+                  },
+                  "as": "tab",
+                  "key": {
+                    "$": "tab.id"
+                  },
+                  "do": [
                     {
-                      "organism": "MenuEntry",
-                      "props": {
-                        "href": {
-                          "$": "tab.href"
-                        },
-                        "className": {
-                          "op": "cn",
-                          "args": [
-                            "flex flex-col items-center gap-2 py-2 text-xs",
-                            {
-                              "op": "cond",
+                      "use": "ListItem",
+                      "children": [
+                        {
+                          "organism": "MenuEntry",
+                          "props": {
+                            "href": {
+                              "$": "tab.href"
+                            },
+                            "className": {
+                              "op": "cn",
                               "args": [
+                                "flex flex-col items-center gap-2 py-2 text-xs",
                                 {
-                                  "op": "eq",
-                                  "args": [
-                                    {
-                                      "$": "tab.id"
-                                    },
-                                    {
-                                      "$": "current"
-                                    }
-                                  ]
-                                },
-                                "font-semibold text-primary",
-                                "text-muted-foreground"
-                              ]
-                            }
-                          ]
-                        },
-                        "current": {
-                          "op": "eq",
-                          "args": [
-                            {
-                              "$": "tab.id"
-                            },
-                            {
-                              "$": "current"
-                            }
-                          ]
-                        },
-                        "testid": "item"
-                      },
-                      "slots": {
-                        "children": {
-                          "args": [],
-                          "do": [
-                            {
-                              "use": "LucideIcon",
-                              "props": {
-                                "Name": {
-                                  "$": "tab.icon"
-                                },
-                                "Size": 20
-                              }
-                            },
-                            {
-                              "use": "Inline",
-                              "props": {
-                                "Class": {
                                   "op": "cond",
                                   "args": [
                                     {
                                       "op": "eq",
                                       "args": [
                                         {
-                                          "$": "labels"
+                                          "$": "tab.id"
                                         },
-                                        "hide"
+                                        {
+                                          "$": "current"
+                                        }
                                       ]
                                     },
-                                    "sr-only",
-                                    ""
+                                    "font-semibold text-primary",
+                                    "text-muted-foreground"
                                   ]
                                 }
-                              },
-                              "children": [
+                              ]
+                            },
+                            "current": {
+                              "op": "eq",
+                              "args": [
                                 {
-                                  "text": {
-                                    "$": "tab.name"
+                                  "$": "tab.id"
+                                },
+                                {
+                                  "$": "current"
+                                }
+                              ]
+                            },
+                            "testid": "item"
+                          },
+                          "slots": {
+                            "children": {
+                              "args": [],
+                              "do": [
+                                {
+                                  "use": "LucideIcon",
+                                  "props": {
+                                    "Name": {
+                                      "$": "tab.icon"
+                                    },
+                                    "Size": 20
                                   }
+                                },
+                                {
+                                  "use": "Inline",
+                                  "props": {
+                                    "Class": {
+                                      "op": "cond",
+                                      "args": [
+                                        {
+                                          "op": "eq",
+                                          "args": [
+                                            {
+                                              "$": "labels"
+                                            },
+                                            "hide"
+                                          ]
+                                        },
+                                        "sr-only",
+                                        ""
+                                      ]
+                                    }
+                                  },
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "tab.name"
+                                      }
+                                    }
+                                  ]
                                 }
                               ]
                             }
-                          ]
+                          }
                         }
-                      }
+                      ]
                     }
                   ]
                 }

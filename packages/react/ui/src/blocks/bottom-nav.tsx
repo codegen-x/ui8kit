@@ -34,37 +34,41 @@ export function BottomNav({
   landmarkLabel,
 }: BottomNavProps) {
   return (
-    <Block
-      tag="nav"
-      className={cn(
-        "mx-auto w-full max-w-md border-t border-border",
-        (((tone as string) === "muted") ? "bg-muted" : "bg-background"),
-        (((position as string) === "sticky") ? "sticky bottom-0 z-40" : "")
-      )}
-      aria-label={(landmarkLabel ?? label)}
-      data-testid="bottom-nav"
-      data-position={position}
-    >
-      <List className="m-0 grid list-none grid-flow-col auto-cols-fr p-0" data-testid="items">
-        {(tabs ?? []).map((tab) => (
-          <ListItem key={tab.id}>
-            <MenuEntry
-              href={tab.href}
-              className={cn(
-                "flex flex-col items-center gap-2 py-2 text-xs",
-                ((tab.id === current) ? "font-semibold text-primary" : "text-muted-foreground")
-              )}
-              current={(tab.id === current)}
-              testid="item"
-            >
-              <LucideIcon name={tab.icon} size={20} />
-              <Inline className={(((labels as string) === "hide") ? "sr-only" : "")}>
-                {tab.name}
-              </Inline>
-            </MenuEntry>
-          </ListItem>
-        ))}
-      </List>
-    </Block>
+    <>
+      {((tabs?.length ?? 0) > 0) ? (
+        <Block
+          tag="nav"
+          className={cn(
+            "mx-auto w-full max-w-md border-t border-border",
+            (((tone as string) === "muted") ? "bg-muted" : "bg-background"),
+            (((position as string) === "sticky") ? "sticky bottom-0 z-40" : "")
+          )}
+          aria-label={(landmarkLabel ?? label)}
+          data-testid="bottom-nav"
+          data-position={position}
+        >
+          <List className="m-0 grid list-none grid-flow-col auto-cols-fr p-0" data-testid="items">
+            {(tabs ?? []).map((tab) => (
+              <ListItem key={tab.id}>
+                <MenuEntry
+                  href={tab.href}
+                  className={cn(
+                    "flex flex-col items-center gap-2 py-2 text-xs",
+                    ((tab.id === current) ? "font-semibold text-primary" : "text-muted-foreground")
+                  )}
+                  current={(tab.id === current)}
+                  testid="item"
+                >
+                  <LucideIcon name={tab.icon} size={20} />
+                  <Inline className={(((labels as string) === "hide") ? "sr-only" : "")}>
+                    {tab.name}
+                  </Inline>
+                </MenuEntry>
+              </ListItem>
+            ))}
+          </List>
+        </Block>
+      ) : null}
+    </>
   );
 }

@@ -343,118 +343,136 @@
               },
               "children": [
                 {
-                  "use": "Grid",
-                  "props": {
-                    "Cols": {
-                      "op": "cond",
-                      "args": [
-                        {
-                          "op": "eq",
+                  "when": {
+                    "op": "gt",
+                    "args": [
+                      {
+                        "op": "len",
+                        "args": [
+                          {
+                            "$": "groups"
+                          }
+                        ]
+                      },
+                      0
+                    ]
+                  },
+                  "then": [
+                    {
+                      "use": "Grid",
+                      "props": {
+                        "Cols": {
+                          "op": "cond",
                           "args": [
                             {
-                              "$": "cols"
+                              "op": "eq",
+                              "args": [
+                                {
+                                  "$": "cols"
+                                },
+                                "2"
+                              ]
                             },
-                            "2"
+                            "1-2",
+                            "1-3"
                           ]
                         },
-                        "1-2",
-                        "1-3"
-                      ]
-                    },
-                    "Class": "gap-6"
-                  },
-                  "attrs": {
-                    "data-testid": "items"
-                  },
-                  "children": [
-                    {
-                      "each": {
-                        "$": "groups"
+                        "Class": "gap-6"
                       },
-                      "as": "g",
-                      "key": {
-                        "$": "g.id"
+                      "attrs": {
+                        "data-testid": "items"
                       },
-                      "do": [
+                      "children": [
                         {
-                          "use": "Stack",
-                          "props": {
-                            "Gap": "2"
+                          "each": {
+                            "$": "groups"
                           },
-                          "attrs": {
-                            "data-testid": "item"
+                          "as": "g",
+                          "key": {
+                            "$": "g.id"
                           },
-                          "children": [
+                          "do": [
                             {
-                              "use": "Group",
+                              "use": "Stack",
                               "props": {
-                                "Gap": "2",
-                                "Align": "center"
+                                "Gap": "2"
+                              },
+                              "attrs": {
+                                "data-testid": "item"
                               },
                               "children": [
                                 {
-                                  "use": "LucideIcon",
+                                  "use": "Group",
                                   "props": {
-                                    "Name": {
-                                      "$": "g.icon"
-                                    },
-                                    "Size": 16
-                                  }
-                                },
-                                {
-                                  "use": "Text",
-                                  "props": {
-                                    "Size": "sm",
-                                    "Weight": "semibold"
+                                    "Gap": "2",
+                                    "Align": "center"
                                   },
                                   "children": [
                                     {
-                                      "text": {
-                                        "$": "g.title"
+                                      "use": "LucideIcon",
+                                      "props": {
+                                        "Name": {
+                                          "$": "g.icon"
+                                        },
+                                        "Size": 16
                                       }
-                                    }
-                                  ]
-                                }
-                              ]
-                            },
-                            {
-                              "use": "List",
-                              "props": {
-                                "Class": "m-0 flex list-none flex-col gap-2 p-0"
-                              },
-                              "children": [
-                                {
-                                  "each": {
-                                    "$": "g.links"
-                                  },
-                                  "as": "item",
-                                  "key": {
-                                    "$": "item.id"
-                                  },
-                                  "do": [
+                                    },
                                     {
-                                      "use": "ListItem",
+                                      "use": "Text",
+                                      "props": {
+                                        "Size": "sm",
+                                        "Weight": "semibold"
+                                      },
                                       "children": [
                                         {
-                                          "organism": "MenuEntry",
-                                          "props": {
-                                            "href": {
-                                              "$": "item.href"
-                                            },
-                                            "className": "text-sm text-muted-foreground"
-                                          },
-                                          "slots": {
-                                            "children": {
-                                              "args": [],
-                                              "do": [
-                                                {
-                                                  "text": {
-                                                    "$": "item.name"
-                                                  }
-                                                }
-                                              ]
-                                            }
+                                          "text": {
+                                            "$": "g.title"
                                           }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "use": "List",
+                                  "props": {
+                                    "Class": "m-0 flex list-none flex-col gap-2 p-0"
+                                  },
+                                  "children": [
+                                    {
+                                      "each": {
+                                        "$": "g.links"
+                                      },
+                                      "as": "item",
+                                      "key": {
+                                        "$": "item.id"
+                                      },
+                                      "do": [
+                                        {
+                                          "use": "ListItem",
+                                          "children": [
+                                            {
+                                              "organism": "MenuEntry",
+                                              "props": {
+                                                "href": {
+                                                  "$": "item.href"
+                                                },
+                                                "className": "text-sm text-muted-foreground"
+                                              },
+                                              "slots": {
+                                                "children": {
+                                                  "args": [],
+                                                  "do": [
+                                                    {
+                                                      "text": {
+                                                        "$": "item.name"
+                                                      }
+                                                    }
+                                                  ]
+                                                }
+                                              }
+                                            }
+                                          ]
                                         }
                                       ]
                                     }

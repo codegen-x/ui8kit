@@ -3,7 +3,7 @@
 import { and, call, coalesce, cond, each, eachAt, eq, lt, mul, or, ref, slot, text, undef, use, when, organism, len } from "../../build";
 import type { Value, ViewNode } from "../../ir";
 import { fields, spec, ts } from "../kit";
-import { tsOf } from "../props";
+import { ifAny, tsOf } from "../props";
 import { kids } from "../forms";
 
 const P = "pattern.";
@@ -58,8 +58,8 @@ export const navLinks = spec(`${P}nav-links`, "NavLinks", "The links of a top ba
   view: (() => {
     // a link shows on every side "all", else when its half of the list is the side asked for
     const shown = or(eq(ref("side"), "all"), eq(lt(mul(ref("i"), 2), ref("count")), eq(ref("side"), "left")));
-    return [use("Group", { props: { Gap: "4", Align: "center", Class: "flex-wrap" } },
-      eachAt(ref("links"), "l", "i", ref("l.id"), when(shown, [link("l", ref("current"))])))];
+    return [ifAny("links", [use("Group", { props: { Gap: "4", Align: "center", Class: "flex-wrap" } },
+      eachAt(ref("links"), "l", "i", ref("l.id"), when(shown, [link("l", ref("current"))])))])];
   })(),
 });
 

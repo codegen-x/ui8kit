@@ -445,177 +445,195 @@
               ]
             },
             {
-              "use": "List",
-              "props": {
-                "Tag": "ul",
-                "Class": {
-                  "$": "listShape"
-                }
+              "when": {
+                "op": "gt",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "categories"
+                      }
+                    ]
+                  },
+                  0
+                ]
               },
-              "attrs": {
-                "data-testid": "items"
-              },
-              "children": [
+              "then": [
                 {
-                  "each": {
-                    "$": "categories"
+                  "use": "List",
+                  "props": {
+                    "Tag": "ul",
+                    "Class": {
+                      "$": "listShape"
+                    }
                   },
-                  "as": "c",
-                  "key": {
-                    "$": "c.id"
+                  "attrs": {
+                    "data-testid": "items"
                   },
-                  "do": [
+                  "children": [
                     {
-                      "use": "ListItem",
-                      "children": [
+                      "each": {
+                        "$": "categories"
+                      },
+                      "as": "c",
+                      "key": {
+                        "$": "c.id"
+                      },
+                      "do": [
                         {
-                          "organism": "MenuEntry",
-                          "props": {
-                            "href": {
-                              "$": "c.href"
-                            },
-                            "className": {
-                              "op": "cn",
-                              "args": [
-                                "text-sm",
-                                {
-                                  "$": "linkShape"
+                          "use": "ListItem",
+                          "children": [
+                            {
+                              "organism": "MenuEntry",
+                              "props": {
+                                "href": {
+                                  "$": "c.href"
                                 },
-                                {
-                                  "op": "cond",
+                                "className": {
+                                  "op": "cn",
                                   "args": [
+                                    "text-sm",
                                     {
-                                      "op": "eq",
+                                      "$": "linkShape"
+                                    },
+                                    {
+                                      "op": "cond",
                                       "args": [
                                         {
-                                          "$": "c.id"
+                                          "op": "eq",
+                                          "args": [
+                                            {
+                                              "$": "c.id"
+                                            },
+                                            {
+                                              "$": "current"
+                                            }
+                                          ]
                                         },
                                         {
-                                          "$": "current"
+                                          "$": "currentLook"
+                                        },
+                                        {
+                                          "$": "otherLook"
                                         }
                                       ]
-                                    },
-                                    {
-                                      "$": "currentLook"
-                                    },
-                                    {
-                                      "$": "otherLook"
                                     }
                                   ]
-                                }
-                              ]
-                            },
-                            "current": {
-                              "op": "eq",
-                              "args": [
-                                {
-                                  "$": "c.id"
                                 },
-                                {
-                                  "$": "current"
-                                }
-                              ]
-                            },
-                            "testid": "item",
-                            "block": true
-                          },
-                          "slots": {
-                            "children": {
-                              "args": [],
-                              "do": [
-                                {
-                                  "when": {
-                                    "op": "eq",
-                                    "args": [
-                                      {
-                                        "$": "icon"
-                                      },
-                                      "show"
-                                    ]
-                                  },
-                                  "then": [
+                                "current": {
+                                  "op": "eq",
+                                  "args": [
+                                    {
+                                      "$": "c.id"
+                                    },
+                                    {
+                                      "$": "current"
+                                    }
+                                  ]
+                                },
+                                "testid": "item",
+                                "block": true
+                              },
+                              "slots": {
+                                "children": {
+                                  "args": [],
+                                  "do": [
                                     {
                                       "when": {
-                                        "$": "tiles"
+                                        "op": "eq",
+                                        "args": [
+                                          {
+                                            "$": "icon"
+                                          },
+                                          "show"
+                                        ]
                                       },
                                       "then": [
                                         {
-                                          "use": "Inline",
-                                          "props": {
-                                            "Class": "flex size-10 items-center justify-center rounded bg-muted"
+                                          "when": {
+                                            "$": "tiles"
                                           },
-                                          "children": [
+                                          "then": [
+                                            {
+                                              "use": "Inline",
+                                              "props": {
+                                                "Class": "flex size-10 items-center justify-center rounded bg-muted"
+                                              },
+                                              "children": [
+                                                {
+                                                  "use": "LucideIcon",
+                                                  "props": {
+                                                    "Name": {
+                                                      "$": "c.icon"
+                                                    },
+                                                    "Size": 20
+                                                  }
+                                                }
+                                              ]
+                                            }
+                                          ],
+                                          "else": [
                                             {
                                               "use": "LucideIcon",
                                               "props": {
                                                 "Name": {
                                                   "$": "c.icon"
                                                 },
-                                                "Size": 20
+                                                "Size": 16
                                               }
                                             }
                                           ]
                                         }
-                                      ],
-                                      "else": [
-                                        {
-                                          "use": "LucideIcon",
-                                          "props": {
-                                            "Name": {
-                                              "$": "c.icon"
-                                            },
-                                            "Size": 16
-                                          }
-                                        }
                                       ]
-                                    }
-                                  ]
-                                },
-                                {
-                                  "use": "Inline",
-                                  "children": [
+                                    },
                                     {
-                                      "text": {
-                                        "$": "c.name"
-                                      }
-                                    }
-                                  ]
-                                },
-                                {
-                                  "when": {
-                                    "op": "eq",
-                                    "args": [
-                                      {
-                                        "$": "count"
-                                      },
-                                      "show"
-                                    ]
-                                  },
-                                  "then": [
-                                    {
-                                      "use": "Text",
-                                      "props": {
-                                        "Size": "xs",
-                                        "Class": "text-muted-foreground"
-                                      },
+                                      "use": "Inline",
                                       "children": [
                                         {
                                           "text": {
-                                            "op": "str",
-                                            "args": [
-                                              {
-                                                "$": "c.count"
-                                              }
-                                            ]
+                                            "$": "c.name"
                                           }
+                                        }
+                                      ]
+                                    },
+                                    {
+                                      "when": {
+                                        "op": "eq",
+                                        "args": [
+                                          {
+                                            "$": "count"
+                                          },
+                                          "show"
+                                        ]
+                                      },
+                                      "then": [
+                                        {
+                                          "use": "Text",
+                                          "props": {
+                                            "Size": "xs",
+                                            "Class": "text-muted-foreground"
+                                          },
+                                          "children": [
+                                            {
+                                              "text": {
+                                                "op": "str",
+                                                "args": [
+                                                  {
+                                                    "$": "c.count"
+                                                  }
+                                                ]
+                                              }
+                                            }
+                                          ]
                                         }
                                       ]
                                     }
                                   ]
                                 }
-                              ]
+                              }
                             }
-                          }
+                          ]
                         }
                       ]
                     }

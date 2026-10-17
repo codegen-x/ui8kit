@@ -20,33 +20,35 @@
         {{ ui_include('ui/text/text.html.j2', {'p': {'Size': 'base', 'Weight': 'bold'}, 'children': c_2}) }}
       {%- endset -%}
       {{ ui_include('ui/group/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Class': ui_s(ui_cnv(['h-8 shrink-0', ui_preset('blocks/presets/defaults.json', ['footer', 'brand'])])), 'Attrs': ui_attrs(['data-testid', 'footer-brand'])}, 'children': c_3}) }}
-      {%- set c_10 -%}
-        {%- set c_9 -%}
-          {%- for v_g in ui_l(v_groups) %}
-            {%- set c_8 -%}
-              {%- set c_4 -%}
-                {{ ui_text(ui_get(v_g, ['title'])) }}
-              {%- endset -%}
-              {{ ui_include('ui/text/text.html.j2', {'p': {'Size': 'xs', 'Weight': 'semibold', 'Class': 'leading-5'}, 'children': c_4}) }}
-              {%- set c_7 -%}
-                {%- for v_item in ui_l(ui_get(v_g, ['links'])) %}
-                  {%- set c_6 -%}
-                    {%- set c_5 -%}
-                      {{ ui_text(ui_get(v_item, ['name'])) }}
+      {%- if ui_t(ui_gt(ui_len(v_groups), 0)) %}
+        {%- set c_10 -%}
+          {%- set c_9 -%}
+            {%- for v_g in ui_l(v_groups) %}
+              {%- set c_8 -%}
+                {%- set c_4 -%}
+                  {{ ui_text(ui_get(v_g, ['title'])) }}
+                {%- endset -%}
+                {{ ui_include('ui/text/text.html.j2', {'p': {'Size': 'xs', 'Weight': 'semibold', 'Class': 'leading-5'}, 'children': c_4}) }}
+                {%- set c_7 -%}
+                  {%- for v_item in ui_l(ui_get(v_g, ['links'])) %}
+                    {%- set c_6 -%}
+                      {%- set c_5 -%}
+                        {{ ui_text(ui_get(v_item, ['name'])) }}
+                      {%- endset -%}
+                      {{ ui_include('blocks/menu-entry.html.j2', {'p': {'href': ui_get(v_item, ['href']), 'className': ui_cnv(['text-xs leading-5 text-muted-foreground'])}, 'children': c_5}) }}
                     {%- endset -%}
-                    {{ ui_include('blocks/menu-entry.html.j2', {'p': {'href': ui_get(v_item, ['href']), 'className': ui_cnv(['text-xs leading-5 text-muted-foreground'])}, 'children': c_5}) }}
-                  {%- endset -%}
-                  {{ ui_include('ui/list/list-item.html.j2', {'p': {}, 'children': c_6}) }}
-                {%- endfor %}
+                    {{ ui_include('ui/list/list-item.html.j2', {'p': {}, 'children': c_6}) }}
+                  {%- endfor %}
+                {%- endset -%}
+                {{ ui_include('ui/list/list.html.j2', {'p': {'Class': 'm-0 flex list-none flex-col gap-4 p-0'}, 'children': c_7}) }}
               {%- endset -%}
-              {{ ui_include('ui/list/list.html.j2', {'p': {'Class': 'm-0 flex list-none flex-col gap-4 p-0'}, 'children': c_7}) }}
-            {%- endset -%}
-            {{ ui_include('ui/stack/stack.html.j2', {'p': {'Gap': '4', 'Attrs': ui_attrs(['data-testid', 'group'])}, 'children': c_8}) }}
-          {%- endfor %}
+              {{ ui_include('ui/stack/stack.html.j2', {'p': {'Gap': '4', 'Attrs': ui_attrs(['data-testid', 'group'])}, 'children': c_8}) }}
+            {%- endfor %}
+          {%- endset -%}
+          {{ ui_include('ui/group/group.html.j2', {'p': {'Gap': '0', 'Align': 'start', 'Class': ui_s(ui_cnv(['flex w-full flex-nowrap justify-between', ui_preset('blocks/presets/defaults.json', ['footer', 'groups'])])), 'Attrs': ui_attrs(['data-testid', 'footer-groups'])}, 'children': c_9}) }}
         {%- endset -%}
-        {{ ui_include('ui/group/group.html.j2', {'p': {'Gap': '0', 'Align': 'start', 'Class': ui_s(ui_cnv(['flex w-full flex-nowrap justify-between', ui_preset('blocks/presets/defaults.json', ['footer', 'groups'])])), 'Attrs': ui_attrs(['data-testid', 'footer-groups'])}, 'children': c_9}) }}
-      {%- endset -%}
-      {{ ui_include('blocks/nav-block.html.j2', {'p': {'label': (ui_uniq(ui_tpl('{0}, {1}', [v_label, v_landmarkLabel])) if ui_t(v_landmarkLabel) else v_label), 'className': ui_cnv(['min-w-0 flex-1'])}, 'children': c_10}) }}
+        {{ ui_include('blocks/nav-block.html.j2', {'p': {'label': (ui_uniq(ui_tpl('{0}, {1}', [v_label, v_landmarkLabel])) if ui_t(v_landmarkLabel) else v_label), 'className': ui_cnv(['min-w-0 flex-1'])}, 'children': c_10}) }}
+      {%- endif %}
     {%- endset -%}
     {{ ui_include('ui/box/box.html.j2', {'p': {'Class': ui_s(ui_cnv(['flex w-full flex-row items-start overflow-hidden bg-muted p-10', ui_preset('blocks/presets/defaults.json', ['footer', 'card'])])), 'Attrs': ui_attrs(['data-testid', 'footer-card'])}, 'children': c_11}) }}
   {%- endset -%}

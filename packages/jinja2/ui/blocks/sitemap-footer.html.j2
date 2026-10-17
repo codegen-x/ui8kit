@@ -67,18 +67,20 @@
             {{ ui_text(v_brand) }}
           {%- endset -%}
           {{ ui_include('ui/text/text.html.j2', {'p': {'Size': 'base', 'Weight': 'bold'}, 'children': c_12}) }}
-          {%- set c_15 -%}
-            {%- set c_14 -%}
-              {%- for v_g in ui_l(v_groups) %}
-                {%- set c_13 -%}
-                  {{ ui_text(ui_get(v_g, ['title'])) }}
-                {%- endset -%}
-                {{ ui_include('blocks/menu-entry.html.j2', {'p': {'href': ui_get(v_g, ['href']), 'className': ui_cnv(['text-sm']), 'testid': 'group'}, 'children': c_13}) }}
-              {%- endfor %}
+          {%- if ui_t(ui_gt(ui_len(v_groups), 0)) %}
+            {%- set c_15 -%}
+              {%- set c_14 -%}
+                {%- for v_g in ui_l(v_groups) %}
+                  {%- set c_13 -%}
+                    {{ ui_text(ui_get(v_g, ['title'])) }}
+                  {%- endset -%}
+                  {{ ui_include('blocks/menu-entry.html.j2', {'p': {'href': ui_get(v_g, ['href']), 'className': ui_cnv(['text-sm']), 'testid': 'group'}, 'children': c_13}) }}
+                {%- endfor %}
+              {%- endset -%}
+              {{ ui_include('ui/group/group.html.j2', {'p': {'Gap': '4', 'Class': 'flex-wrap'}, 'children': c_14}) }}
             {%- endset -%}
-            {{ ui_include('ui/group/group.html.j2', {'p': {'Gap': '4', 'Class': 'flex-wrap'}, 'children': c_14}) }}
-          {%- endset -%}
-          {{ ui_include('blocks/nav-block.html.j2', {'p': {'label': (ui_uniq(ui_tpl('{0}, {1}', [v_label, v_landmarkLabel])) if ui_t(v_landmarkLabel) else v_label)}, 'children': c_15}) }}
+            {{ ui_include('blocks/nav-block.html.j2', {'p': {'label': (ui_uniq(ui_tpl('{0}, {1}', [v_label, v_landmarkLabel])) if ui_t(v_landmarkLabel) else v_label)}, 'children': c_15}) }}
+          {%- endif %}
         {%- endset -%}
         {{ ui_include('ui/group/group.html.j2', {'p': {'Gap': '6', 'Align': 'center', 'Justify': 'between', 'Class': 'flex-wrap'}, 'children': c_16}) }}
       {%- endif %}

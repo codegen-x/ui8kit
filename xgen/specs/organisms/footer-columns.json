@@ -29,104 +29,122 @@
   "events": [],
   "view": [
     {
-      "use": "Block",
-      "props": {
-        "Tag": "nav"
+      "when": {
+        "op": "gt",
+        "args": [
+          {
+            "op": "len",
+            "args": [
+              {
+                "$": "groups"
+              }
+            ]
+          },
+          0
+        ]
       },
-      "attrs": {
-        "aria-label": {
-          "op": "coalesce",
-          "args": [
-            {
-              "$": "landmarkLabel"
-            },
-            {
-              "$": "label"
-            }
-          ]
-        }
-      },
-      "children": [
+      "then": [
         {
-          "use": "Grid",
+          "use": "Block",
           "props": {
-            "Cols": "1",
-            "Class": "grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5"
+            "Tag": "nav"
           },
           "attrs": {
-            "data-testid": "footer-groups"
+            "aria-label": {
+              "op": "coalesce",
+              "args": [
+                {
+                  "$": "landmarkLabel"
+                },
+                {
+                  "$": "label"
+                }
+              ]
+            }
           },
           "children": [
             {
-              "each": {
-                "$": "groups"
+              "use": "Grid",
+              "props": {
+                "Cols": "1",
+                "Class": "grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-5"
               },
-              "as": "g",
-              "key": {
-                "$": "g.id"
+              "attrs": {
+                "data-testid": "footer-groups"
               },
-              "do": [
+              "children": [
                 {
-                  "use": "Stack",
-                  "props": {
-                    "Gap": "2"
+                  "each": {
+                    "$": "groups"
                   },
-                  "attrs": {
-                    "data-testid": "group"
+                  "as": "g",
+                  "key": {
+                    "$": "g.id"
                   },
-                  "children": [
+                  "do": [
                     {
-                      "use": "Text",
+                      "use": "Stack",
                       "props": {
-                        "Size": "sm",
-                        "Weight": "semibold"
+                        "Gap": "2"
+                      },
+                      "attrs": {
+                        "data-testid": "group"
                       },
                       "children": [
                         {
-                          "text": {
-                            "$": "g.title"
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "use": "List",
-                      "props": {
-                        "Class": "m-0 flex list-none flex-col gap-2 p-0"
-                      },
-                      "children": [
-                        {
-                          "each": {
-                            "$": "g.links"
+                          "use": "Text",
+                          "props": {
+                            "Size": "sm",
+                            "Weight": "semibold"
                           },
-                          "as": "item",
-                          "key": {
-                            "$": "item.id"
-                          },
-                          "do": [
+                          "children": [
                             {
-                              "use": "ListItem",
-                              "children": [
+                              "text": {
+                                "$": "g.title"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "use": "List",
+                          "props": {
+                            "Class": "m-0 flex list-none flex-col gap-2 p-0"
+                          },
+                          "children": [
+                            {
+                              "each": {
+                                "$": "g.links"
+                              },
+                              "as": "item",
+                              "key": {
+                                "$": "item.id"
+                              },
+                              "do": [
                                 {
-                                  "organism": "MenuEntry",
-                                  "props": {
-                                    "href": {
-                                      "$": "item.href"
-                                    },
-                                    "className": "text-sm text-muted-foreground"
-                                  },
-                                  "slots": {
-                                    "children": {
-                                      "args": [],
-                                      "do": [
-                                        {
-                                          "text": {
-                                            "$": "item.name"
-                                          }
+                                  "use": "ListItem",
+                                  "children": [
+                                    {
+                                      "organism": "MenuEntry",
+                                      "props": {
+                                        "href": {
+                                          "$": "item.href"
+                                        },
+                                        "className": "text-sm text-muted-foreground"
+                                      },
+                                      "slots": {
+                                        "children": {
+                                          "args": [],
+                                          "do": [
+                                            {
+                                              "text": {
+                                                "$": "item.name"
+                                              }
+                                            }
+                                          ]
                                         }
-                                      ]
+                                      }
                                     }
-                                  }
+                                  ]
                                 }
                               ]
                             }

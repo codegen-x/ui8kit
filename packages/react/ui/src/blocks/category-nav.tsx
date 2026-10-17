@@ -82,39 +82,41 @@ export function CategoryNav({
             </Text>
           </Group>
         ) : null}
-        <List tag="ul" className={listShape} data-testid="items">
-          {(categories ?? []).map((c) => (
-            <ListItem key={c.id}>
-              <MenuEntry
-                href={c.href}
-                className={cn("text-sm", linkShape, ((c.id === current) ? currentLook : otherLook))}
-                current={(c.id === current)}
-                testid="item"
-                block={true}
-              >
-                {((icon as string) === "show") ? (
-                  <>
-                    {tiles ? (
-                      <Inline className="flex size-10 items-center justify-center rounded bg-muted">
-                        <LucideIcon name={c.icon} size={20} />
-                      </Inline>
-                    ) : (
-                      <LucideIcon name={c.icon} size={16} />
-                    )}
-                  </>
-                ) : null}
-                <Inline>
-                  {c.name}
-                </Inline>
-                {((count as string) === "show") ? (
-                  <Text size="xs" className="text-muted-foreground">
-                    {(c.count == null ? undefined : String(c.count))}
-                  </Text>
-                ) : null}
-              </MenuEntry>
-            </ListItem>
-          ))}
-        </List>
+        {((categories?.length ?? 0) > 0) ? (
+          <List tag="ul" className={listShape} data-testid="items">
+            {(categories ?? []).map((c) => (
+              <ListItem key={c.id}>
+                <MenuEntry
+                  href={c.href}
+                  className={cn("text-sm", linkShape, ((c.id === current) ? currentLook : otherLook))}
+                  current={(c.id === current)}
+                  testid="item"
+                  block={true}
+                >
+                  {((icon as string) === "show") ? (
+                    <>
+                      {tiles ? (
+                        <Inline className="flex size-10 items-center justify-center rounded bg-muted">
+                          <LucideIcon name={c.icon} size={20} />
+                        </Inline>
+                      ) : (
+                        <LucideIcon name={c.icon} size={16} />
+                      )}
+                    </>
+                  ) : null}
+                  <Inline>
+                    {c.name}
+                  </Inline>
+                  {((count as string) === "show") ? (
+                    <Text size="xs" className="text-muted-foreground">
+                      {(c.count == null ? undefined : String(c.count))}
+                    </Text>
+                  ) : null}
+                </MenuEntry>
+              </ListItem>
+            ))}
+          </List>
+        ) : null}
       </Container>
     </Block>
   );

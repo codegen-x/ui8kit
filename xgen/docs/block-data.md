@@ -1,4 +1,4 @@
-# Block data vs the Codex v0.4 contract (inventory; step 2: the pilot blocks fixed; step 3: lookups, terms, author_id; step 4: five more blocks; step 5: blocks.json generated; step 6: menus)
+# Block data vs the Codex v0.4 contract (inventory; step 2: the pilot blocks fixed; step 3: lookups, terms, author_id; step 4: five more blocks; step 5: blocks.json generated; step 6: menus; steps 7-9: kit blocks in groups)
 
 Goal: every block, screen, template and data structure of the kit reads Codex v0.4 entries (`@ui8kit/contract` ^0.2.0;
 manifest `xgen/schema/codex/manifest.json`, 62 kinds) by the rules: money = integer minor units + `currency`; dates RFC 3339,
@@ -172,6 +172,18 @@ replace the string arrays `links`).
 - Magazine: no routes, so no links; the template stage has 0 `<a>` except the in-page table of contents of the docs template
   (was 158: brand, sitemap groups, side navs, categories, nav links).
 
+## 7a. Kit blocks in groups (steps 7-9)
+
+- Every fixture kind has a central map (`KIT_FIELDS` in fields.ts, part of `CODEX_FIELDS`); `codex:blocks` picks the map named
+  after the binding's kind when two maps are equal (feature/value/perk/... share one shape).
+- Empty state: a list block takes `empty` (text from `ui.empty.*`) and draws EmptyState when its list has no records
+  (`orEmpty` in authoring/props.ts). Blocks whose lists are secondary parts (AboutMe, AboutCompany, ProductInfo, Stepper,
+  StoreHero, the navigation blocks) use `emptyMode: omit`: `ifAny` leaves the empty part, and its landmark, out.
+- Blocks that read no collection (AuthCard, CtaBand, ErrorPage, PageIntro, ...) are done with their dictionary labels; nothing to be empty.
+- `done.py`-style bookkeeping: `required`/`optional` of a binding come from the fixtures (a field every entry has is required).
+- Data fixes: metrics are numbers (money in minor units + `currency`, `|number` formats it), projects carry an integer year and
+  the term of `project_category`, questions the term of `faq_category`.
+
 ## 8. Open questions (decided for now, review later)
 
 1. Docs template table of contents: in-page anchors (`#tp-docs-body-section-*`) stay links; they address the page itself, not an app route.
@@ -180,3 +192,10 @@ replace the string arrays `links`).
 4. CategoryNav keeps the chip classes `px-3 py-1.5` (a half step; inside a control, lint:px does not block it); to revisit with the control sizes.
 5. The magazine header shows the fixture menu labels (`navlinks`) instead of the deck's nav words; the deck words will go with #10.
 6. Menu items' `url` in the core Menu is `"/" + slug` (a neutral path); the real address is still the app's route.
+7. JobBoard stays todo: salaries are text ("$120k to $150k", "$60 an hour"); they need min/max minor units, currency and a period
+   word from the dictionary (a range formatter), so the block changes with them.
+8. TemplateGrid stays todo: it already has 12 props (the readability limit), so `empty` needs a grouped labels prop first; views/likes
+   are preformatted ("1.2K") and become numbers with compact formatting then.
+9. Table cells of ComparisonTable (`compare`, `rivals`: "Unlimited", "0.8 s"), delivery windows (`days.slots`), zone times and chapter
+   offsets ("0:00") stay plain text for now: they read as copy, not as figures the UI computes with.
+10. Milestone `date` is a year string ("2021"); kept as text until a `|year` formatter is needed.

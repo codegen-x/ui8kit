@@ -119,7 +119,10 @@ const {
         <Text size="base" weight="bold">
           {{ brand }}
         </Text>
-        <NavBlock :label="(landmarkLabel ? uniqLabel(tpl('{0}, {1}', label, landmarkLabel)) : label)">
+        <NavBlock
+          v-if="((groups?.length ?? 0) > 0)"
+          :label="(landmarkLabel ? uniqLabel(tpl('{0}, {1}', label, landmarkLabel)) : label)"
+        >
           <Group gap="4" class="flex-wrap">
             <MenuEntry v-for="g in groups" :key="g.id" :href="g.href" class="text-sm" testid="group">
               {{ g.title }}

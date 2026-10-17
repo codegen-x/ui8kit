@@ -106,7 +106,12 @@ const {
       )"
       data-slot="container"
     >
-      <Grid :cols="(((cols as string) === '2') ? '1-2' : '1-3')" class="gap-6" data-testid="items">
+      <Grid
+        v-if="((groups?.length ?? 0) > 0)"
+        :cols="(((cols as string) === '2') ? '1-2' : '1-3')"
+        class="gap-6"
+        data-testid="items"
+      >
         <Stack v-for="g in groups" :key="g.id" gap="2" data-testid="item">
           <Group gap="2" align="center">
             <LucideIcon :name="g.icon" :size="16" />

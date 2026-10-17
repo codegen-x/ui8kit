@@ -77,7 +77,8 @@ for (const b of done) for (const d of b.data ?? []) {
     const issues = validateCollectionV04({ entries: entries.map((data, i) => ({ file: `${d.collection}.json#${i}`, data })), terms: termFiles }, { manifest }) as { severity?: string }[];
     expect(issues.filter((i) => !i.severity)).toEqual([]);
     const rows = fromCodex<Record<string, unknown>>(entries, map!, lookups);
-    const requiredProps = Object.entries(map!).filter(([, p]) => (d.required ?? []).includes(p.split("|")[0]!)).map(([k]) => k);
+    // `slug|route` is undefined by design where the app gives no route (no link): not a missing field
+    const requiredProps = Object.entries(map!).filter(([, p]) => !p.endsWith("|route") && (d.required ?? []).includes(p.split("|")[0]!)).map(([k]) => k);
     for (const [i, r] of rows.entries()) for (const k of requiredProps) expect([entries[i]!.id, k, r[k] === undefined || r[k] === null]).toEqual([entries[i]!.id, k, false]);
   });
 }

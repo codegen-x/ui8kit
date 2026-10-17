@@ -88,11 +88,13 @@ templ SitemapFooter(p SitemapFooterProps) {
 						@text.Text(text.TextProps{Size: "base", Weight: "bold"}) {
 							{ uiutils.Text(vBrand) }
 						}
-						@NavBlock(NavBlockProps{Label: uiutils.Cond(uiutils.T(vLandmarkLabel), uiutils.Uniq(uiutils.Tpl("{0}, {1}", vLabel, vLandmarkLabel)), vLabel)}) {
-							@group.Group(group.GroupProps{Gap: "4", Class: "flex-wrap"}) {
-								for _, vG := range uiutils.L(vGroups) {
-									@MenuEntry(MenuEntryProps{Href: uiutils.Get(vG, "href"), Class: uiutils.Cnv("text-sm"), Testid: "group"}) {
-										{ uiutils.Text(uiutils.Get(vG, "title")) }
+						if uiutils.Gt(uiutils.Len(vGroups), float64(0)) {
+							@NavBlock(NavBlockProps{Label: uiutils.Cond(uiutils.T(vLandmarkLabel), uiutils.Uniq(uiutils.Tpl("{0}, {1}", vLabel, vLandmarkLabel)), vLabel)}) {
+								@group.Group(group.GroupProps{Gap: "4", Class: "flex-wrap"}) {
+									for _, vG := range uiutils.L(vGroups) {
+										@MenuEntry(MenuEntryProps{Href: uiutils.Get(vG, "href"), Class: uiutils.Cnv("text-sm"), Testid: "group"}) {
+											{ uiutils.Text(uiutils.Get(vG, "title")) }
+										}
 									}
 								}
 							}

@@ -44,34 +44,36 @@ export function FooterCard({ label, brand, groups, landmarkLabel }: FooterCardPr
               {brand}
             </Text>
           </Group>
-          <NavBlock
-            label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", label, landmarkLabel)) : label)}
-            className="min-w-0 flex-1"
-          >
-            <Group
-              gap="0"
-              align="start"
-              className={cn("flex w-full flex-nowrap justify-between", defaults.footer.groups)}
-              data-testid="footer-groups"
+          {((groups?.length ?? 0) > 0) ? (
+            <NavBlock
+              label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", label, landmarkLabel)) : label)}
+              className="min-w-0 flex-1"
             >
-              {(groups ?? []).map((g) => (
-                <Stack key={g.id} gap="4" data-testid="group">
-                  <Text size="xs" weight="semibold" className="leading-5">
-                    {g.title}
-                  </Text>
-                  <List className="m-0 flex list-none flex-col gap-4 p-0">
-                    {(g.links ?? []).map((item) => (
-                      <ListItem key={item.id}>
-                        <MenuEntry href={item.href} className="text-xs leading-5 text-muted-foreground">
-                          {item.name}
-                        </MenuEntry>
-                      </ListItem>
-                    ))}
-                  </List>
-                </Stack>
-              ))}
-            </Group>
-          </NavBlock>
+              <Group
+                gap="0"
+                align="start"
+                className={cn("flex w-full flex-nowrap justify-between", defaults.footer.groups)}
+                data-testid="footer-groups"
+              >
+                {(groups ?? []).map((g) => (
+                  <Stack key={g.id} gap="4" data-testid="group">
+                    <Text size="xs" weight="semibold" className="leading-5">
+                      {g.title}
+                    </Text>
+                    <List className="m-0 flex list-none flex-col gap-4 p-0">
+                      {(g.links ?? []).map((item) => (
+                        <ListItem key={item.id}>
+                          <MenuEntry href={item.href} className="text-xs leading-5 text-muted-foreground">
+                            {item.name}
+                          </MenuEntry>
+                        </ListItem>
+                      ))}
+                    </List>
+                  </Stack>
+                ))}
+              </Group>
+            </NavBlock>
+          ) : null}
         </Box>
       </Container>
     </Block>

@@ -98,27 +98,29 @@ export function MegaMenu({
             )}
             data-slot="container"
           >
-            <Grid cols={(((cols as string) === "2") ? "1-2" : "1-3")} className="gap-6" data-testid="items">
-              {(groups ?? []).map((g) => (
-                <Stack key={g.id} gap="2" data-testid="item">
-                  <Group gap="2" align="center">
-                    <LucideIcon name={g.icon} size={16} />
-                    <Text size="sm" weight="semibold">
-                      {g.title}
-                    </Text>
-                  </Group>
-                  <List className="m-0 flex list-none flex-col gap-2 p-0">
-                    {(g.links ?? []).map((item) => (
-                      <ListItem key={item.id}>
-                        <MenuEntry href={item.href} className="text-sm text-muted-foreground">
-                          {item.name}
-                        </MenuEntry>
-                      </ListItem>
-                    ))}
-                  </List>
-                </Stack>
-              ))}
-            </Grid>
+            {((groups?.length ?? 0) > 0) ? (
+              <Grid cols={(((cols as string) === "2") ? "1-2" : "1-3")} className="gap-6" data-testid="items">
+                {(groups ?? []).map((g) => (
+                  <Stack key={g.id} gap="2" data-testid="item">
+                    <Group gap="2" align="center">
+                      <LucideIcon name={g.icon} size={16} />
+                      <Text size="sm" weight="semibold">
+                        {g.title}
+                      </Text>
+                    </Group>
+                    <List className="m-0 flex list-none flex-col gap-2 p-0">
+                      {(g.links ?? []).map((item) => (
+                        <ListItem key={item.id}>
+                          <MenuEntry href={item.href} className="text-sm text-muted-foreground">
+                            {item.name}
+                          </MenuEntry>
+                        </ListItem>
+                      ))}
+                    </List>
+                  </Stack>
+                ))}
+              </Grid>
+            ) : null}
             {((promo as string) === "card") ? (
               <Stack gap="2" className="rounded bg-card inset-ring inset-ring-border p-4" data-testid="promo">
                 <MediaFrame alt={(promoTitle ?? "")} ratio="4/3" />

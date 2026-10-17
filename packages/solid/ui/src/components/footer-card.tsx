@@ -41,34 +41,36 @@ export function FooterCard({ label, brand, groups, landmarkLabel }: FooterCardPr
               {brand}
             </Text>
           </Group>
-          <NavBlock
-            label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", label, landmarkLabel)) : label)}
-            class="min-w-0 flex-1"
-          >
-            <Group
-              gap="0"
-              align="start"
-              class={cn("flex w-full flex-nowrap justify-between", defaults.footer.groups)}
-              data-testid="footer-groups"
+          {((groups?.length ?? 0) > 0) ? (
+            <NavBlock
+              label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", label, landmarkLabel)) : label)}
+              class="min-w-0 flex-1"
             >
-              <For each={groups ?? []}>{(g) => (
-                <Stack gap="4" data-testid="group">
-                  <Text size="xs" weight="semibold" class="leading-5">
-                    {g.title}
-                  </Text>
-                  <List class="m-0 flex list-none flex-col gap-4 p-0">
-                    <For each={g.links ?? []}>{(item) => (
-                      <ListItem>
-                        <MenuEntry href={item.href} class="text-xs leading-5 text-muted-foreground">
-                          {item.name}
-                        </MenuEntry>
-                      </ListItem>
-                    )}</For>
-                  </List>
-                </Stack>
-              )}</For>
-            </Group>
-          </NavBlock>
+              <Group
+                gap="0"
+                align="start"
+                class={cn("flex w-full flex-nowrap justify-between", defaults.footer.groups)}
+                data-testid="footer-groups"
+              >
+                <For each={groups ?? []}>{(g) => (
+                  <Stack gap="4" data-testid="group">
+                    <Text size="xs" weight="semibold" class="leading-5">
+                      {g.title}
+                    </Text>
+                    <List class="m-0 flex list-none flex-col gap-4 p-0">
+                      <For each={g.links ?? []}>{(item) => (
+                        <ListItem>
+                          <MenuEntry href={item.href} class="text-xs leading-5 text-muted-foreground">
+                            {item.name}
+                          </MenuEntry>
+                        </ListItem>
+                      )}</For>
+                    </List>
+                  </Stack>
+                )}</For>
+              </Group>
+            </NavBlock>
+          ) : null}
         </Box>
       </Container>
     </Block>

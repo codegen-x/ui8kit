@@ -18,16 +18,20 @@ export type NavLinksProps = {
 export function NavLinks({ links, current = "", side = "all" }: NavLinksProps) {
   const count = links?.length ?? 0;
   return (
-    <Group gap="4" align="center" class="flex-wrap">
-      <For each={links ?? []}>{(l, iOf) => { const i = iOf(); return (
-        <>
-          {(((side as string) === "all") || (((i * 2) < count) === ((side as string) === "left"))) ? (
-            <MenuEntry href={l.href} class="text-sm" current={(l.id === current)} testid="nav-link">
-              {l.name}
-            </MenuEntry>
-          ) : null}
-        </>
-      ); }}</For>
-    </Group>
+    <>
+      {((links?.length ?? 0) > 0) ? (
+        <Group gap="4" align="center" class="flex-wrap">
+          <For each={links ?? []}>{(l, iOf) => { const i = iOf(); return (
+            <>
+              {(((side as string) === "all") || (((i * 2) < count) === ((side as string) === "left"))) ? (
+                <MenuEntry href={l.href} class="text-sm" current={(l.id === current)} testid="nav-link">
+                  {l.name}
+                </MenuEntry>
+              ) : null}
+            </>
+          ); }}</For>
+        </Group>
+      ) : null}
+    </>
   );
 }

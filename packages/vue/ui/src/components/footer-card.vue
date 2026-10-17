@@ -46,7 +46,7 @@ const { label, brand, groups, landmarkLabel } = defineProps<FooterCardProps>();
             {{ brand }}
           </Text>
         </Group>
-        <NavBlock
+        <NavBlock v-if="((groups?.length ?? 0) > 0)"
           :label="(landmarkLabel ? uniqLabel(tpl('{0}, {1}', label, landmarkLabel)) : label)"
           class="min-w-0 flex-1"
         >

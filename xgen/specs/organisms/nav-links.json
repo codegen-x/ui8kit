@@ -44,106 +44,124 @@
   "events": [],
   "view": [
     {
-      "use": "Group",
-      "props": {
-        "Gap": "4",
-        "Align": "center",
-        "Class": "flex-wrap"
+      "when": {
+        "op": "gt",
+        "args": [
+          {
+            "op": "len",
+            "args": [
+              {
+                "$": "links"
+              }
+            ]
+          },
+          0
+        ]
       },
-      "children": [
+      "then": [
         {
-          "each": {
-            "$": "links"
+          "use": "Group",
+          "props": {
+            "Gap": "4",
+            "Align": "center",
+            "Class": "flex-wrap"
           },
-          "as": "l",
-          "key": {
-            "$": "l.id"
-          },
-          "do": [
+          "children": [
             {
-              "when": {
-                "op": "or",
-                "args": [
-                  {
-                    "op": "eq",
+              "each": {
+                "$": "links"
+              },
+              "as": "l",
+              "key": {
+                "$": "l.id"
+              },
+              "do": [
+                {
+                  "when": {
+                    "op": "or",
                     "args": [
-                      {
-                        "$": "side"
-                      },
-                      "all"
-                    ]
-                  },
-                  {
-                    "op": "eq",
-                    "args": [
-                      {
-                        "op": "lt",
-                        "args": [
-                          {
-                            "op": "mul",
-                            "args": [
-                              {
-                                "$": "i"
-                              },
-                              2
-                            ]
-                          },
-                          {
-                            "$": "count"
-                          }
-                        ]
-                      },
                       {
                         "op": "eq",
                         "args": [
                           {
                             "$": "side"
                           },
-                          "left"
+                          "all"
+                        ]
+                      },
+                      {
+                        "op": "eq",
+                        "args": [
+                          {
+                            "op": "lt",
+                            "args": [
+                              {
+                                "op": "mul",
+                                "args": [
+                                  {
+                                    "$": "i"
+                                  },
+                                  2
+                                ]
+                              },
+                              {
+                                "$": "count"
+                              }
+                            ]
+                          },
+                          {
+                            "op": "eq",
+                            "args": [
+                              {
+                                "$": "side"
+                              },
+                              "left"
+                            ]
+                          }
                         ]
                       }
                     ]
-                  }
-                ]
-              },
-              "then": [
-                {
-                  "organism": "MenuEntry",
-                  "props": {
-                    "href": {
-                      "$": "l.href"
-                    },
-                    "className": "text-sm",
-                    "current": {
-                      "op": "eq",
-                      "args": [
-                        {
-                          "$": "l.id"
-                        },
-                        {
-                          "$": "current"
-                        }
-                      ]
-                    },
-                    "testid": "nav-link"
                   },
-                  "slots": {
-                    "children": {
-                      "args": [],
-                      "do": [
-                        {
-                          "text": {
-                            "$": "l.name"
-                          }
+                  "then": [
+                    {
+                      "organism": "MenuEntry",
+                      "props": {
+                        "href": {
+                          "$": "l.href"
+                        },
+                        "className": "text-sm",
+                        "current": {
+                          "op": "eq",
+                          "args": [
+                            {
+                              "$": "l.id"
+                            },
+                            {
+                              "$": "current"
+                            }
+                          ]
+                        },
+                        "testid": "nav-link"
+                      },
+                      "slots": {
+                        "children": {
+                          "args": [],
+                          "do": [
+                            {
+                              "text": {
+                                "$": "l.name"
+                              }
+                            }
+                          ]
                         }
-                      ]
+                      }
                     }
-                  }
+                  ]
                 }
-              ]
+              ],
+              "index": "i"
             }
-          ],
-          "index": "i"
+          ]
         }
       ]
     }

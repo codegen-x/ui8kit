@@ -46,34 +46,36 @@
           {brand}
         </Text>
       </Group>
-      <NavBlock
-        label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", label, landmarkLabel)) : label)}
-        class="min-w-0 flex-1"
-      >
-        <Group
-          gap="0"
-          align="start"
-          class={cn("flex w-full flex-nowrap justify-between", defaults.footer.groups)}
-          data-testid="footer-groups"
+      {#if ((groups?.length ?? 0) > 0)}
+        <NavBlock
+          label={(landmarkLabel ? uniqLabel(tpl("{0}, {1}", label, landmarkLabel)) : label)}
+          class="min-w-0 flex-1"
         >
-          {#each groups as g (g.id)}
-            <Stack gap="4" data-testid="group">
-              <Text size="xs" weight="semibold" class="leading-5">
-                {g.title}
-              </Text>
-              <List class="m-0 flex list-none flex-col gap-4 p-0">
-                {#each g.links as item (item.id)}
-                  <ListItem>
-                    <MenuEntry href={item.href} class="text-xs leading-5 text-muted-foreground">
-                      {item.name}
-                    </MenuEntry>
-                  </ListItem>
-                {/each}
-              </List>
-            </Stack>
-          {/each}
-        </Group>
-      </NavBlock>
+          <Group
+            gap="0"
+            align="start"
+            class={cn("flex w-full flex-nowrap justify-between", defaults.footer.groups)}
+            data-testid="footer-groups"
+          >
+            {#each groups as g (g.id)}
+              <Stack gap="4" data-testid="group">
+                <Text size="xs" weight="semibold" class="leading-5">
+                  {g.title}
+                </Text>
+                <List class="m-0 flex list-none flex-col gap-4 p-0">
+                  {#each g.links as item (item.id)}
+                    <ListItem>
+                      <MenuEntry href={item.href} class="text-xs leading-5 text-muted-foreground">
+                        {item.name}
+                      </MenuEntry>
+                    </ListItem>
+                  {/each}
+                </List>
+              </Stack>
+            {/each}
+          </Group>
+        </NavBlock>
+      {/if}
     </Box>
   </Container>
 </Block>

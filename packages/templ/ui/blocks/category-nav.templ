@@ -58,25 +58,27 @@ templ CategoryNav(p CategoryNavProps) {
 					}
 				}
 			}
-			@list.List(list.ListProps{Tag: "ul", Class: uiutils.S(vListShape), Attrs: uiutils.Attrs("data-testid", "items")}) {
-				for _, vC := range uiutils.L(vCategories) {
-					@list.ListItem(list.ListItemProps{}) {
-						@MenuEntry(MenuEntryProps{Href: uiutils.Get(vC, "href"), Class: uiutils.Cnv(uiutils.Cnv("text-sm", vLinkShape, uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vC, "id"), vCurrent)), vCurrentLook, vOtherLook))), Current: uiutils.Eq(uiutils.Get(vC, "id"), vCurrent), Testid: "item", Block: true}) {
-							if uiutils.Eq(vIcon, "show") {
-								if uiutils.T(vTiles) {
-									@inline.Inline(inline.InlineProps{Class: "flex size-10 items-center justify-center rounded bg-muted"}) {
-										@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Get(vC, "icon")), Size: 20})
+			if uiutils.Gt(uiutils.Len(vCategories), float64(0)) {
+				@list.List(list.ListProps{Tag: "ul", Class: uiutils.S(vListShape), Attrs: uiutils.Attrs("data-testid", "items")}) {
+					for _, vC := range uiutils.L(vCategories) {
+						@list.ListItem(list.ListItemProps{}) {
+							@MenuEntry(MenuEntryProps{Href: uiutils.Get(vC, "href"), Class: uiutils.Cnv(uiutils.Cnv("text-sm", vLinkShape, uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vC, "id"), vCurrent)), vCurrentLook, vOtherLook))), Current: uiutils.Eq(uiutils.Get(vC, "id"), vCurrent), Testid: "item", Block: true}) {
+								if uiutils.Eq(vIcon, "show") {
+									if uiutils.T(vTiles) {
+										@inline.Inline(inline.InlineProps{Class: "flex size-10 items-center justify-center rounded bg-muted"}) {
+											@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Get(vC, "icon")), Size: 20})
+										}
+									} else {
+										@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Get(vC, "icon")), Size: 16})
 									}
-								} else {
-									@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: uiutils.S(uiutils.Get(vC, "icon")), Size: 16})
 								}
-							}
-							@inline.Inline(inline.InlineProps{}) {
-								{ uiutils.Text(uiutils.Get(vC, "name")) }
-							}
-							if uiutils.Eq(vCount, "show") {
-								@text.Text(text.TextProps{Size: "xs", Class: "text-muted-foreground"}) {
-									{ uiutils.Text(uiutils.Str(uiutils.Get(vC, "count"))) }
+								@inline.Inline(inline.InlineProps{}) {
+									{ uiutils.Text(uiutils.Get(vC, "name")) }
+								}
+								if uiutils.Eq(vCount, "show") {
+									@text.Text(text.TextProps{Size: "xs", Class: "text-muted-foreground"}) {
+										{ uiutils.Text(uiutils.Str(uiutils.Get(vC, "count"))) }
+									}
 								}
 							}
 						}
