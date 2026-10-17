@@ -19,14 +19,14 @@ Lookups: generated `@ui8kit/app-shared/runtime/codex` (`CODEX`: media, users, ta
 
 | Surface | Where | Data source | Kinds | Status |
 |---|---|---|---|---|
-| kit blocks (92) | `xgen/specs/blocks/*.json` (authoring `xgen/screens/src/authoring/blocks`, gallery) -> 8 runtimes | `data[].fields` per spec (product, post, plan: `CODEX_FIELDS` in `gallery/blocks-data.ts`), fixtures | 50+ kinds, see blocks.json | 3 done, 89 todo |
+| kit blocks (92) | `xgen/specs/blocks/*.json` (authoring `xgen/screens/src/authoring/blocks`, gallery) -> 8 runtimes | `data[].fields` per spec (product, post, plan: `CODEX_FIELDS` in `gallery/blocks-data.ts`), fixtures | 50+ kinds, see blocks.json | 92/92 done (steps 7-20) |
 | kit organisms/components (179) | `xgen/specs/organisms`, `authoring/components` | props from the blocks above | (via blocks) | todo (listed in step 2) |
-| presets | `authoring/presets`, `xgen/specs/presets` | style only | none | n/a |
-| xgen screens (15) | `xgen/specs/screens/*.json` -> `apps/host-*/xgen/screens/*` | `{ "$": "ui.*" }` dictionary refs + block data | via blocks | todo |
-| magazine templates (10 + header/footer) | `apps/magazine/src/templates/*.svelte`, Templates tab `#/style/<key>/templates` | `data.ts` (fromCodex over `@ui8kit/app-shared/data/*`) + the copy deck `c` | 25 collections | todo (3 pilot blocks use central maps) |
-| taste screens (146) | `packages/taste-screens/src/screens` (style detail preview; panorama excluded) | `Deck` from `@ui8kit/taste-data/content/copy.json`, not Codex | none | todo |
+| presets | `xgen/screens/src/authoring/presets`, `xgen/specs/presets`, `packages/taste-data/src/preset.ts`, magazine `#/presets` | style only (class strings, skin/font/radius keys) | none | outside the data contract, checked (step 25, see 7e) |
+| xgen screens (15) | `xgen/specs/screens/*.json` -> `apps/host-*/xgen/screens/*` | `{ "$": "ui.*" }` dictionary refs + block data | via blocks | 15/15 done (step 20) |
+| magazine templates (10 + header/footer) | `apps/magazine/src/templates/*.svelte`, Templates tab `#/style/<key>/templates` | `data.ts` (fromCodex over `@ui8kit/app-shared/data/*`) + the copy deck `c` | 25 collections | 10/10 + 2/2 done (step 16-17) |
+| taste screens (146) | `packages/taste-screens/src/screens` (style detail preview; panorama excluded) | `Deck` from `@ui8kit/taste-data/content/copy.json`, generated from the deck entries | deck, deck_* | 146/146 done (steps 21-24) |
 | fixtures (317 entries, 2 taxonomies / 10 terms) | `xgen/fixtures/*.json`, `xgen/fixtures/taxonomies/*.json` -> `packages/shared/app/src/data` | v0.4 entries, taxonomy bundles | 62 (`media`, `user`) | valid (0 errors; term refs checked) |
-| taste-data content | `copy.json`, `reference-*.json` | own shapes | none | todo: decide which become entries |
+| taste-data content | `copy.json` (generated, step 21), `reference-*.json` | deck entries / own shapes | deck_* | copy.json done; reference-* open (section 8) |
 | panorama, illustrations | `packages/panorama` | - | - | excluded |
 
 ## 2. The 15 magazine blocks
@@ -256,7 +256,21 @@ replace the string arrays `links`).
 - The old note "text from a copy deck, not Codex entries" is removed from the taste entries: the decks are Codex entries now.
 - blocks.test runs one set of binding tests per distinct binding (the 146 screens share a few deck bindings).
 
+## 7e. Presets (step 25)
+
+- A preset is style, not content: `xgen/specs/presets/defaults.json` (authoring `presets/default-preset.ts`) holds named
+  Tailwind class strings for block sizes; `packages/taste-data/src/preset.ts` builds `{ screen, skin, font, fonts, radius,
+  pattern, style }` from a style key. Neither carries text, a link, media or an entry, so nothing maps to Codex: they are
+  settings of the blocks and screens (the `settings` side of blocks.json), not data. No change.
+- The magazine page `#/presets` lists the saved styles: its words come from the magazine dictionary (content/ui.json), its
+  one link has a real href (`#/style/<key>`), its empty state is `ui.presets.empty`. It meets the rules as it is.
+
 ## 8. Open questions (decided for now, review later)
+
+- `packages/taste-data/content/reference-copy.v0.1.json` and `reference-catalog.v0.1.json` feed the separate research
+  renderer (`apps/magazine/src/reference`, the capture scripts in `packages/taste-data/scripts`), not the kit, the magazine
+  templates or the taste screens. They keep their own shapes for now; open: move the reference deck into the deck entries
+  (one more `deck` with a `purpose: reference` metadata) or mark the research renderer as an exception like panorama.
 
 1. Docs template table of contents: in-page anchors (`#tp-docs-body-section-*`) stay links; they address the page itself, not an app route.
 2. Gallery samples (`gallery/blocks-*.ts`) keep `"#/pricing"`-style hrefs as screen data the app hands over (not fixtures).
@@ -264,11 +278,11 @@ replace the string arrays `links`).
 4. CategoryNav keeps the chip classes `px-3 py-1.5` (a half step; inside a control, lint:px does not block it); to revisit with the control sizes.
 5. The magazine header shows the fixture menu labels (`navlinks`) instead of the deck's nav words; the deck words will go with #10.
 6. Menu items' `url` in the core Menu is `"/" + slug` (a neutral path); the real address is still the app's route.
-7. JobBoard stays todo: salaries are text ("$120k to $150k", "$60 an hour"); they need min/max minor units, currency and a period
+7. (resolved, step 20: JobBoard done, salary kept as text with an empty state) JobBoard stayed todo: salaries are text ("$120k to $150k", "$60 an hour"); they need min/max minor units, currency and a period
    word from the dictionary (a range formatter), so the block changes with them.
-8. TemplateGrid stays todo: it already has 12 props (the readability limit), so `empty` needs a grouped labels prop first; views/likes
+8. (resolved, step 20: TemplateGrid done, labels record + `empty`, views/likes numbers with `|compact`) TemplateGrid stayed todo: it already has 12 props (the readability limit), so `empty` needs a grouped labels prop first; views/likes
    are preformatted ("1.2K") and become numbers with compact formatting then.
 9. Table cells of ComparisonTable (`compare`, `rivals`: "Unlimited", "0.8 s"), delivery windows (`days.slots`), zone times and chapter
    offsets ("0:00") stay plain text for now: they read as copy, not as figures the UI computes with.
 10. Milestone `date` is a year string ("2021"); kept as text until a `|year` formatter is needed.
-- FaqSplit stays todo: an `empty` prop makes 13 props and the generated faq-split 154 lines; needs a split (FaqSplit by layout) or the text in its labels record.
+- (resolved, step 20: FaqSplit done with emptyMode omit, the whole section left out without items) FaqSplit stayed todo: an `empty` prop makes 13 props and the generated faq-split 154 lines; needs a split (FaqSplit by layout) or the text in its labels record.
