@@ -171,6 +171,15 @@ export const KIT_FIELDS = {
   milestone: { id: "id", date: m("date"), title: "title", text: m("text"), tag: m("tag") },
   skill: { id: "id", label: "title", level: m("level") },
   question: { id: "id", question: "title", answer: m("answer"), category: "terms|term:faq_category", icon: m("icon") },
+  // the copy decks of the taste screens (xgen/fixtures/deck*.json -> packages/taste-data/content/copy.json): kind `deck` and
+  // its parts, which name their deck (`deck`) and their place in it (`position`); figures and prices are poster copy, text
+  deck: { brand: "title", nav: m("nav"), eyebrow: m("eyebrow"), title: m("headline"), accent: m("accent"), lead: m("lead"), cta: m("cta"),
+    secondary: m("secondary"), input: m("input"), note: m("note"), tags: m("tags") },
+  deckStat: { value: m("value"), label: "title" },
+  deckItem: { title: "title", text: m("text") },
+  deckPlan: { name: "title", price: m("cost"), note: m("note"), perks: m("perks") },
+  deckQuote: { text: m("quote"), name: "title", role: m("role") },
+  deckFaq: { title: "title", text: m("answer") },
   // kind `plan` as a row of the plans screen (screen.plans: list and record, with the plan status)
   planRow: { id: "id", name: "title", tagline: m("tagline"), price: m("price"), currency: m("currency"), seats: m("seats"), storage: m("storage"),
     highlighted: m("highlighted"), features: m("features"), yearly: m("yearly"), status: m("plan_status") },

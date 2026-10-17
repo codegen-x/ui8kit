@@ -6,3 +6,4 @@ export * from "./screen-model";
 export * from "./app-common";
 export * from "./preset";
 export * from "./variant-table";
+export * from "./decks";

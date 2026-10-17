@@ -3,6 +3,7 @@ import { styleProblems } from "./style-zones";
 import { existsSync, readdirSync, readFileSync, statSync } from "node:fs";
 import { dirname, join, relative, resolve } from "node:path";
 import { organismsIn } from "@ui8kit/xgen-screens";
+import { DECK_COLLECTIONS } from "@ui8kit/xgen-runtime-core";
 import { versionProblem, xgenPaths } from "@ui8kit/xgen-schema";
 import { leavesOf } from "./dictionary";
 import type { Plan } from "@ui8kit/xgen-generator";
@@ -114,6 +115,8 @@ export function checkDead(plan: Plan): CheckResult {
   const root = plan.xgenRoot;
   // fixtures: a collection that no screen reads
   const read = new Set(plan.inputs.screens.flatMap((s) => (s.value.sources ?? []).map((x) => x.collection)).concat(plan.inputs.screens.map((s) => s.value.source?.collection ?? "")));
+  // the copy decks of the taste screens: read by the generated packages/taste-data/content/copy.json
+  for (const c of Object.values(DECK_COLLECTIONS)) read.add(c);
   // a collection of media or users is reached through the featured_media_id / author_id of the entries of a collection a screen reads
   const referenced = new Set(plan.inputs.collections.filter((c) => read.has(c.value.collection)).flatMap((c) => c.value.entries.flatMap((e) => {
     const r = e as { featured_media_id?: string; author_id?: string };

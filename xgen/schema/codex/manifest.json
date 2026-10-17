@@ -174,6 +174,314 @@
     },
     {
       "record": {
+        "id": "deck",
+        "label": "Deck",
+        "scope": "workspace",
+        "description": "fixtures: decks",
+        "fields": [
+          {
+            "id": "accent",
+            "label": "Accent",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "cta",
+            "label": "Cta",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "eyebrow",
+            "label": "Eyebrow",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "headline",
+            "label": "Headline",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "input",
+            "label": "Input",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "lead",
+            "label": "Lead",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "nav",
+            "label": "Nav",
+            "type": "collection",
+            "items": {
+              "id": "item",
+              "label": "Item",
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "id": "note",
+            "label": "Note",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "secondary",
+            "label": "Secondary",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "tags",
+            "label": "Tags",
+            "type": "collection",
+            "items": {
+              "id": "item",
+              "label": "Item",
+              "type": "string"
+            },
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "record": {
+        "id": "deck_faq",
+        "label": "Deck faq",
+        "scope": "workspace",
+        "description": "fixtures: deckfaq",
+        "fields": [
+          {
+            "id": "answer",
+            "label": "Answer",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "deck",
+            "label": "Deck",
+            "type": "relation",
+            "required": true
+          },
+          {
+            "id": "position",
+            "label": "Position",
+            "type": "number",
+            "rules": [
+              {
+                "name": "fastygo.codex/integer"
+              }
+            ],
+            "required": true
+          }
+        ],
+        "relations": [
+          {
+            "id": "deck",
+            "source": "deck_faq",
+            "target": "deck",
+            "cardinality": "one-to-one"
+          }
+        ]
+      }
+    },
+    {
+      "record": {
+        "id": "deck_item",
+        "label": "Deck item",
+        "scope": "workspace",
+        "description": "fixtures: deckitems",
+        "fields": [
+          {
+            "id": "deck",
+            "label": "Deck",
+            "type": "relation",
+            "required": true
+          },
+          {
+            "id": "position",
+            "label": "Position",
+            "type": "number",
+            "rules": [
+              {
+                "name": "fastygo.codex/integer"
+              }
+            ],
+            "required": true
+          },
+          {
+            "id": "text",
+            "label": "Text",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "relations": [
+          {
+            "id": "deck",
+            "source": "deck_item",
+            "target": "deck",
+            "cardinality": "one-to-one"
+          }
+        ]
+      }
+    },
+    {
+      "record": {
+        "id": "deck_plan",
+        "label": "Deck plan",
+        "scope": "workspace",
+        "description": "fixtures: deckplans",
+        "fields": [
+          {
+            "id": "cost",
+            "label": "Cost",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "deck",
+            "label": "Deck",
+            "type": "relation",
+            "required": true
+          },
+          {
+            "id": "note",
+            "label": "Note",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "perks",
+            "label": "Perks",
+            "type": "collection",
+            "items": {
+              "id": "item",
+              "label": "Item",
+              "type": "string"
+            },
+            "required": true
+          },
+          {
+            "id": "position",
+            "label": "Position",
+            "type": "number",
+            "rules": [
+              {
+                "name": "fastygo.codex/integer"
+              }
+            ],
+            "required": true
+          }
+        ],
+        "relations": [
+          {
+            "id": "deck",
+            "source": "deck_plan",
+            "target": "deck",
+            "cardinality": "one-to-one"
+          }
+        ]
+      }
+    },
+    {
+      "record": {
+        "id": "deck_quote",
+        "label": "Deck quote",
+        "scope": "workspace",
+        "description": "fixtures: deckquotes",
+        "fields": [
+          {
+            "id": "deck",
+            "label": "Deck",
+            "type": "relation",
+            "required": true
+          },
+          {
+            "id": "position",
+            "label": "Position",
+            "type": "number",
+            "rules": [
+              {
+                "name": "fastygo.codex/integer"
+              }
+            ],
+            "required": true
+          },
+          {
+            "id": "quote",
+            "label": "Quote",
+            "type": "string",
+            "required": true
+          },
+          {
+            "id": "role",
+            "label": "Role",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "relations": [
+          {
+            "id": "deck",
+            "source": "deck_quote",
+            "target": "deck",
+            "cardinality": "one-to-one"
+          }
+        ]
+      }
+    },
+    {
+      "record": {
+        "id": "deck_stat",
+        "label": "Deck stat",
+        "scope": "workspace",
+        "description": "fixtures: deckstats",
+        "fields": [
+          {
+            "id": "deck",
+            "label": "Deck",
+            "type": "relation",
+            "required": true
+          },
+          {
+            "id": "position",
+            "label": "Position",
+            "type": "number",
+            "rules": [
+              {
+                "name": "fastygo.codex/integer"
+              }
+            ],
+            "required": true
+          },
+          {
+            "id": "value",
+            "label": "Value",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "relations": [
+          {
+            "id": "deck",
+            "source": "deck_stat",
+            "target": "deck",
+            "cardinality": "one-to-one"
+          }
+        ]
+      }
+    },
+    {
+      "record": {
         "id": "department",
         "label": "Department",
         "scope": "workspace",

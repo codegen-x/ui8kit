@@ -1,6 +1,7 @@
-// The copy decks of the taste screens: neutral placeholder English, no brands, kept in content/copy.json (rule 06: text lives
-// in fixtures). A screen gets one deck as its `c` prop and picks what its composition needs.
-import decks from "../content/copy.json";
+// The copy decks of the taste screens: neutral placeholder English, no brands. The text lives in Codex entries
+// (xgen/fixtures/deck*.json, kinds deck and deck_*); xgen maps them through the central field maps into content/copy.json.
+// A screen gets one deck as its `c` prop and picks what its composition needs.
+import copy from "../content/copy.json";
 
 export type Stat = { value: string; label: string };
 export type Item = { title: string; text: string };
@@ -29,5 +30,5 @@ export type Deck = {
   faq?: Item[];
 };
 
-export const DECKS: Deck[] = decks as Deck[];
+export const DECKS: Deck[] = copy.decks as Deck[];
 export const deckAt = (i: number): Deck => DECKS[((i % DECKS.length) + DECKS.length) % DECKS.length]!;

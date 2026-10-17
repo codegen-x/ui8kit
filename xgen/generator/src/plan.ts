@@ -3,7 +3,7 @@ import { xgenPaths } from "@ui8kit/xgen-schema";
 import { basename, join, relative } from "node:path";
 import { createHash } from "node:crypto";
 import { loadSpecs, portableTo, UI_RUNTIMES, type LoadedBrick, type UiRuntime } from "@ui8kit/xgen-spec";
-import { BANNER, emitPreset, isEmptyRecipe, readAsset, recipeOwner, variantsName, type GeneratedFile, type PartRef } from "@ui8kit/xgen-runtime-core";
+import { BANNER, decksFile, emitPreset, isEmptyRecipe, readAsset, recipeOwner, variantsName, type GeneratedFile, type PartRef } from "@ui8kit/xgen-runtime-core";
 import { SvelteEmitter, appScaffold as svelteApp, emitOrganism as svelteOrganism, emitScreen as svelteScreen, emitChunks as svelteChunks } from "@ui8kit/xgen-runtime-svelte";
 import { ReactEmitter, appScaffold as reactApp, emitOrganism as reactOrganism, emitScreen as reactScreen, emitChunks as reactChunks } from "@ui8kit/xgen-runtime-react";
 import { SolidEmitter, appScaffold as solidApp, emitOrganism as solidOrganism, emitScreen as solidScreen, emitChunks as solidChunks } from "@ui8kit/xgen-runtime-solid";
@@ -254,6 +254,8 @@ export function planBuild(workspace: string, xgenRoot = join(workspace, "xgen"))
   const sharedFiles = sharedPackage(inputs.dictionary.value, collections, shared, inputs.taxonomies.map((t) => t.value)).map((f) => withSource(f, sharedSourceOf(f.path, screenFile)));
   if (hostTargets.length) targets.push({ dir: SHARED_DIR, kind: "package", runtime: "core", files: byPath(sharedFiles), handwritten: [], manifest: MANIFEST });
   targets.push(...hostTargets);
+  // the copy decks of the taste screens, from their Codex entries (xgen/fixtures/deck*.json); the rest of the folder is hand-kept
+  targets.push({ dir: "packages/taste-data/content", kind: "package", runtime: "core", files: [decksFile(inputs.collections.map((c) => c.value))], handwritten: [], manifest: MANIFEST, ignore: /^reference-/ });
   return { workspace, xgenRoot, targets, problems, inputs, bricks: specs.bricks, apps };
 }
 

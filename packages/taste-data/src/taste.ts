@@ -54,7 +54,7 @@ export type Taste = {
   radius: Radius;
   composition: Composition;
   recipe: Recipe;
-  /** index of the copy deck in content/copy.json */
+  /** index of the copy deck in content/copy.json (generated from xgen/fixtures/deck*.json) */
   deck: number;
 };
 

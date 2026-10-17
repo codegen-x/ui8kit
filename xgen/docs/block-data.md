@@ -232,6 +232,18 @@ replace the string arrays `links`).
 - The screens read a copy deck (`c`, packages/taste-data/content/copy.json) and kit-data adapters (stats, features, logos, topics,
   bars) built from it. Plan: the deck becomes Codex entries (a `deck` kind with metadata, stat/feature/plan/testimonial/faq
   entries), the adapters map them through CODEX_FIELDS; then each screen gets bindings and is set done.
+- Step 21: the decks are Codex entries in xgen/fixtures, next to the other collections (so codex:manifest and codex:validate
+  see them): `decks` (kind `deck`: title = brand, metadata nav, eyebrow, headline, accent, lead, cta, secondary, input, note,
+  tags) and the parts `deckstats`, `deckitems`, `deckplans`, `deckquotes`, `deckfaq` (kinds `deck_stat`, `deck_item`,
+  `deck_plan`, `deck_quote`, `deck_faq`), each with the relation `metadata.deck` and its place `metadata.position`. The
+  plan price is `cost` (not a money field: poster copy such as "$0" / "Custom" stays text); the deck title is `headline`
+  because `title` is the entry's own core field (the brand).
+- The field maps are CODEX_FIELDS.deck, deckStat, deckItem, deckPlan, deckQuote, deckFaq (xgen/runtimes/core/assets/app/fields.ts),
+  read by `buildDecks` (xgen/runtimes/core/src/decks.ts, through fromCodex). The generator writes
+  packages/taste-data/content/copy.json from them (target `packages/taste-data/content`, the hand-kept reference-*.json are
+  ignored); copy.ts reads `copy.decks`. taste-data has no new dependency (it reads generated JSON), the layering stays as it
+  is. The generated decks are equal to the old hand-kept file, deck by deck and key by key.
+- dead check: the deck collections count as read by that generated file (DECK_COLLECTIONS in audit.ts), not by a screen.
 
 ## 8. Open questions (decided for now, review later)
 
