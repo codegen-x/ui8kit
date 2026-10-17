@@ -70,14 +70,16 @@
       }
     },
     {
-      "name": "linkHref",
+      "name": "hasAction",
       "value": {
-        "op": "coalesce",
+        "op": "and",
         "args": [
           {
-            "$": "action.href"
+            "$": "action.label"
           },
-          "#/"
+          {
+            "$": "action.href"
+          }
         ]
       }
     }
@@ -133,7 +135,7 @@
             ]
           },
           {
-            "$": "action.label"
+            "$": "hasAction"
           }
         ]
       },
@@ -219,7 +221,7 @@
               "use": "Link",
               "props": {
                 "Href": {
-                  "$": "linkHref"
+                  "$": "action.href"
                 },
                 "Variant": "default",
                 "Class": {
@@ -268,7 +270,7 @@
             "op": "not",
             "args": [
               {
-                "$": "action.label"
+                "$": "hasAction"
               }
             ]
           }
@@ -359,7 +361,7 @@
             ]
           },
           {
-            "$": "action.label"
+            "$": "hasAction"
           }
         ]
       },
@@ -377,7 +379,7 @@
               "use": "Link",
               "props": {
                 "Href": {
-                  "$": "linkHref"
+                  "$": "action.href"
                 },
                 "Variant": "default",
                 "Class": {

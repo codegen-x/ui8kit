@@ -27,7 +27,7 @@ const count = computed(() => links?.length ?? 0);
   <Group gap="4" align="center" class="flex-wrap">
     <template v-for="(l, i) in links" :key="l.id">
       <Link v-if="(((side as string) === 'all') || (((i * 2) < count) === ((side as string) === 'left')))"
-        :href="(l.href ?? '#/')"
+        :href="l.href"
         variant="default"
         :aria-current="((l.id === current) ? 'page' : undefined)"
         class="text-sm"

@@ -23,7 +23,13 @@ import { ui } from "@ui8kit/app-shared/content";
 import { stats as statsEntries } from "@ui8kit/app-shared/data/stats";
 import { logos as logosEntries } from "@ui8kit/app-shared/data/logos";
 
-const STATS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
+const STATS_FIELDS = {
+  "id": "id",
+  "label": "title",
+  "value": "metadata.value.value|number",
+  "icon": "metadata.icon.value",
+  "hint": "metadata.hint.value",
+} as const;
 const LOGOS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
 
 const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS, CODEX);

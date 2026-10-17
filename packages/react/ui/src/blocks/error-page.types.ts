@@ -6,7 +6,8 @@ export type LinkActions = {
   mode?: "one" | "two";
   /** primary action label */
   cta: string;
-  href: string;
+  /** the address of the primary action; none: a button, not a link */
+  href?: string;
   secondary?: string;
   secondaryHref?: string;
 };

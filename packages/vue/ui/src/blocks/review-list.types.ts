@@ -12,4 +12,5 @@ export type Review = {
 
 export type ReviewLabels = {
   ratingLabel: string;
+  empty: string;
 };

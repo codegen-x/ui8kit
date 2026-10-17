@@ -12,7 +12,7 @@
 {var $v_skip = ($p['skip'] ?? null)}
 {var $v_navLabel = ($p['navLabel'] ?? null)}
 {var $v_landmarkLabel = ($p['landmarkLabel'] ?? null)}
-{capture $c_9}
+{capture $c_10}
   {if ui_t($v_skip)}
     {capture $c_1}
       {=ui_text($v_skip)}
@@ -23,32 +23,39 @@
     {=ui_text($v_brand)}
   {/capture}
   {=ui_include('ui/link/link.latte', ['p' => ['Href' => '#/', 'Variant' => 'default', 'Class' => ui_s(ui_cnv([ui_preset('blocks/presets/defaults.json', ['text', 'small']), 'font-medium leading-6 text-background'])), 'Attrs' => ui_attrs(['data-testid', 'brand'])], 'children' => $c_2])|noescape}
-  {capture $c_5}
-    {capture $c_4}
+  {capture $c_6}
+    {capture $c_5}
       {foreach ui_l($v_links) as $v_l}
-        {capture $c_3}
-          {=ui_text(ui_get($v_l, ['name']))}
-        {/capture}
-        {=ui_include('ui/link/link.latte', ['p' => ['Href' => ui_s(ui_coalesce([ui_get($v_l, ['href']), '#/'])), 'Variant' => 'default', 'AriaCurrent' => ui_s((ui_t(ui_eq(ui_get($v_l, ['id']), $v_current)) ? 'page' : null)), 'Class' => 'text-xs font-medium leading-5 text-background', 'Attrs' => ui_attrs(['data-testid', 'nav-link'])], 'children' => $c_3])|noescape}
+        {if ui_t(ui_get($v_l, ['href']))}
+          {capture $c_3}
+            {=ui_text(ui_get($v_l, ['name']))}
+          {/capture}
+          {=ui_include('ui/link/link.latte', ['p' => ['Href' => ui_s(ui_get($v_l, ['href'])), 'Variant' => 'default', 'AriaCurrent' => ui_s((ui_t(ui_eq(ui_get($v_l, ['id']), $v_current)) ? 'page' : null)), 'Class' => 'text-xs font-medium leading-5 text-background', 'Attrs' => ui_attrs(['data-testid', 'nav-link'])], 'children' => $c_3])|noescape}
+        {else}
+          {capture $c_4}
+            {=ui_text(ui_get($v_l, ['name']))}
+          {/capture}
+          {=ui_include('ui/inline/inline.latte', ['p' => ['Class' => 'text-xs font-medium leading-5 text-background', 'Attrs' => ui_attrs(['data-testid', 'nav-link'])], 'children' => $c_4])|noescape}
+        {/if}
       {/foreach}
     {/capture}
-    {=ui_include('ui/group/group.latte', ['p' => ['Gap' => '8', 'Align' => 'center', 'Class' => 'flex-wrap'], 'children' => $c_4])|noescape}
+    {=ui_include('ui/group/group.latte', ['p' => ['Gap' => '8', 'Align' => 'center', 'Class' => 'flex-wrap'], 'children' => $c_5])|noescape}
   {/capture}
-  {=ui_include('blocks/nav-block.latte', ['p' => ['label' => (ui_t($v_landmarkLabel) ? ui_uniq(ui_tpl('{0}, {1}', [$v_navLabel, $v_landmarkLabel])) : $v_navLabel), 'testid' => 'site-nav'], 'children' => $c_5])|noescape}
-  {capture $c_8}
+  {=ui_include('blocks/nav-block.latte', ['p' => ['label' => (ui_t($v_landmarkLabel) ? ui_uniq(ui_tpl('{0}, {1}', [$v_navLabel, $v_landmarkLabel])) : $v_navLabel), 'testid' => 'site-nav'], 'children' => $c_6])|noescape}
+  {capture $c_9}
     {if ui_t($v_login)}
-      {capture $c_6}
+      {capture $c_7}
         {=ui_text($v_login)}
       {/capture}
-      {=ui_include('ui/button/button.latte', ['p' => ['Href' => ui_s($v_loginHref), 'Variant' => 'ghost', 'Size' => 'sm', 'Class' => 'text-background hover:bg-background/10', 'Attrs' => ui_attrs(['data-testid', 'nav-login'])], 'children' => $c_6])|noescape}
+      {=ui_include('ui/button/button.latte', ['p' => ['Href' => ui_s($v_loginHref), 'Variant' => 'ghost', 'Size' => 'sm', 'Class' => 'text-background hover:bg-background/10', 'Attrs' => ui_attrs(['data-testid', 'nav-login'])], 'children' => $c_7])|noescape}
     {/if}
     {if ui_t($v_cta)}
-      {capture $c_7}
+      {capture $c_8}
         {=ui_text($v_cta)}
       {/capture}
-      {=ui_include('ui/button/button.latte', ['p' => ['Href' => ui_s(ui_coalesce([$v_href, '#/'])), 'Variant' => 'secondary', 'Size' => 'sm', 'Attrs' => ui_attrs(['data-testid', 'header-cta'])], 'children' => $c_7])|noescape}
+      {=ui_include('ui/button/button.latte', ['p' => ['Href' => ui_s($v_href), 'Variant' => 'secondary', 'Size' => 'sm', 'Attrs' => ui_attrs(['data-testid', 'header-cta'])], 'children' => $c_8])|noescape}
     {/if}
   {/capture}
-  {=ui_include('ui/group/group.latte', ['p' => ['Gap' => '2', 'Align' => 'center'], 'children' => $c_8])|noescape}
+  {=ui_include('ui/group/group.latte', ['p' => ['Gap' => '2', 'Align' => 'center'], 'children' => $c_9])|noescape}
 {/capture}
-{=ui_include('ui/block/block.latte', ['p' => ['Tag' => 'header', 'Class' => ui_s(ui_cnv(['flex w-full flex-wrap items-center justify-between pr-4', ui_preset('blocks/presets/defaults.json', ['hero', 'head'])])), 'Attrs' => ui_attrs(['data-testid', 'hero-head', 'aria-label', $v_landmarkLabel])], 'children' => $c_9])|noescape}
+{=ui_include('ui/block/block.latte', ['p' => ['Tag' => 'header', 'Class' => ui_s(ui_cnv(['flex w-full flex-wrap items-center justify-between pr-4', ui_preset('blocks/presets/defaults.json', ['hero', 'head'])])), 'Attrs' => ui_attrs(['data-testid', 'hero-head', 'aria-label', $v_landmarkLabel])], 'children' => $c_10])|noescape}

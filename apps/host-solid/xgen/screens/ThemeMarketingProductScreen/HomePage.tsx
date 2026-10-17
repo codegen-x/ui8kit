@@ -27,7 +27,13 @@ import { bento as bentoEntries } from "@ui8kit/app-shared/data/bento";
 
 const TERMINAL_FIELDS = {"id":"id","text":"title","kind":"metadata.line_kind.value"} as const;
 const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
-const STATS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
+const STATS_FIELDS = {
+  "id": "id",
+  "label": "title",
+  "value": "metadata.value.value|number",
+  "icon": "metadata.icon.value",
+  "hint": "metadata.hint.value",
+} as const;
 const BENTO_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","size":"metadata.size.value"} as const;
 
 const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS, CODEX);

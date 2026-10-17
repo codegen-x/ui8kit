@@ -6,9 +6,7 @@
  * (none, below), buy (full, compact), tone, density.
  */
 import { type ReactNode } from "react";
-import { Badge } from "../primitives/badge/badge";
 import { Button } from "../primitives/button/button";
-import { Grid } from "../primitives/grid/grid";
 import { Group } from "../primitives/group/group";
 import { Inline } from "../primitives/inline/inline";
 import { List } from "../primitives/list/list";
@@ -16,17 +14,19 @@ import { ListItem } from "../primitives/list/list-item";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
-import { MediaFrame } from "../components/media-frame";
+import { EmptyState } from "../components/empty-state";
 import { NumberField } from "../components/number-field";
+import { ProductGallery } from "../components/product-gallery";
+import { ProductPrice } from "../components/product-price";
 import { Rating } from "../components/rating";
 import { SectionFrame } from "../components/section-frame";
-import { at, fmtMoney, tpl } from "../utils";
+import { at, tpl } from "../utils";
 import type { ProductDetailLabels } from "./product-detail.types";
 import type { Product } from "./product-card.types";
 
 export type ProductDetailProps = {
   id: string;
-  product: Product;
+  product?: Product;
   labels: ProductDetailLabels;
   badges: Record<string, string>;
   level?: 1 | 2;
@@ -56,86 +56,87 @@ export function ProductDetail({
   onAdd,
 }: ProductDetailProps) {
   return (
-    <SectionFrame
-      id={id}
-      title={product.name}
-      lead={product.summary}
-      heading={{ level }}
-      layout={(((layout as string) === "split") ? "split" : "stack")}
-      media={{ show: true, side: mediaSide, align: "start" }}
-      tone={tone}
-      density={density}
-      landmarkLabel={landmarkLabel}
-      aside={(
-        <Stack gap="4" align="stretch" data-testid="gallery">
-          <MediaFrame alt={product.name} ratio="1/1" />
-          {((thumbs as string) === "below") ? (
-            <Grid cols="3" className="gap-4" data-testid="thumbs">
-              <MediaFrame alt={product.name} ratio="1/1" className="ring-2 ring-foreground" />
-              <MediaFrame alt={product.name} ratio="1/1" />
-              <MediaFrame alt={product.name} ratio="1/1" />
-            </Grid>
-          ) : null}
-        </Stack>
-      )}
-    >
-      <Stack gap="4" align="stretch" data-testid="buy-box">
-        <Group gap="4" align="center" className="flex-wrap">
-          <Text size="4xl" weight="bold">
-            {fmtMoney(product.price, product.currency)}
-          </Text>
-          {product.badge ? (
-            <Badge variant="default" size="default">
-              {at(badges, product.badge)}
-            </Badge>
-          ) : null}
-        </Group>
-        <Group gap="2">
-          <Rating value={product.rating} label={tpl(labels.ratingLabel, product.rating)} />
-          <Text size="sm" className="text-muted-foreground">
-            {tpl(labels.reviews, product.reviews)}
-          </Text>
-        </Group>
-        <Text
-          size="sm"
-          weight="medium"
-          className={(product.inStock ? "text-foreground" : "text-destructive")}
-          data-testid="stock"
+    <>
+      {!product ? (
+        <SectionFrame id={id} tone={tone} density={density} landmarkLabel={landmarkLabel}>
+          <EmptyState icon="package" title={labels.empty} />
+        </SectionFrame>
+      ) : (
+        <SectionFrame
+          id={id}
+          title={product?.name}
+          lead={product?.summary}
+          heading={{ level }}
+          layout={(((layout as string) === "split") ? "split" : "stack")}
+          media={{ show: true, side: mediaSide, align: "start" }}
+          tone={tone}
+          density={density}
+          landmarkLabel={landmarkLabel}
+          aside={(
+            <ProductGallery name={product?.name} image={product?.image} thumbs={thumbs} />
+          )}
         >
-          {(product.inStock ? labels.inStock : labels.soldOut)}
-        </Text>
-        <Group gap="4" className="flex-wrap">
-          {((buy as string) === "full") ? (
-            <NumberField
-              value="1"
-              name={tpl("{0}-qty", id)}
-              min="1"
-              label={labels.qty}
-              decrease={labels.decrease}
-              increase={labels.increase}
+          <Stack gap="4" align="stretch" data-testid="buy-box">
+            {product?.category ? (
+              <Text size="xs" className="uppercase tracking-wide text-muted-foreground" data-testid="category">
+                {product?.category}
+              </Text>
+            ) : null}
+            <ProductPrice
+              price={product?.price}
+              compareAt={product?.compareAt}
+              currency={product?.currency}
+              badge={(product?.badge ? at(badges, product?.badge) : "")}
+              was={labels.was}
             />
-          ) : null}
-          <Button disabled={!product.inStock} data-testid="add" onClick={() => onAdd?.(product.id)}>
-            {labels.add}
-          </Button>
-        </Group>
-        {((buy as string) === "full") ? (
-          <List tag="ul" className="flex flex-col gap-2 text-sm text-muted-foreground">
-            <ListItem className="flex items-center gap-2">
-              <LucideIcon name="truck" size={16} />
-              <Inline>
-                {labels.shipping}
-              </Inline>
-            </ListItem>
-            <ListItem className="flex items-center gap-2">
-              <LucideIcon name="shield-check" size={16} />
-              <Inline>
-                {labels.returns}
-              </Inline>
-            </ListItem>
-          </List>
-        ) : null}
-      </Stack>
-    </SectionFrame>
+            <Group gap="2">
+              <Rating value={product?.rating} label={tpl(labels.ratingLabel, product?.rating)} />
+              <Text size="sm" className="text-muted-foreground">
+                {tpl(labels.reviews, product?.reviews)}
+              </Text>
+            </Group>
+            <Text
+              size="sm"
+              weight="medium"
+              className={(product?.inStock ? "text-foreground" : "text-destructive")}
+              data-testid="stock"
+            >
+              {(product?.inStock ? labels.inStock : labels.soldOut)}
+            </Text>
+            <Group gap="4" className="flex-wrap">
+              {((buy as string) === "full") ? (
+                <NumberField
+                  value="1"
+                  name={tpl("{0}-qty", id)}
+                  min="1"
+                  label={labels.qty}
+                  decrease={labels.decrease}
+                  increase={labels.increase}
+                />
+              ) : null}
+              <Button disabled={!product?.inStock} data-testid="add" onClick={() => onAdd?.(product?.id)}>
+                {labels.add}
+              </Button>
+            </Group>
+            {((buy as string) === "full") ? (
+              <List tag="ul" className="flex flex-col gap-2 text-sm text-muted-foreground">
+                <ListItem className="flex items-center gap-2">
+                  <LucideIcon name="truck" size={16} />
+                  <Inline>
+                    {labels.shipping}
+                  </Inline>
+                </ListItem>
+                <ListItem className="flex items-center gap-2">
+                  <LucideIcon name="shield-check" size={16} />
+                  <Inline>
+                    {labels.returns}
+                  </Inline>
+                </ListItem>
+              </List>
+            ) : null}
+          </Stack>
+        </SectionFrame>
+      )}
+    </>
   );
 }

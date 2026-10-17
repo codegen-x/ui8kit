@@ -44,8 +44,8 @@ templ FeatureGrid(p FeatureGridProps) {
 				@title.Title(title.TitleProps{As: uiutils.HeadingLevel(uiutils.I(float64(2))), Size: "sm", Weight: "semibold", Class: "leading-7", Attrs: uiutils.Attrs("id", uiutils.Add(vId, "-title"))}) {
 					{ uiutils.Text(vTitle) }
 				}
-				if uiutils.T(uiutils.Get(vAction, "label")) {
-					@link.Link(link.LinkProps{Href: uiutils.S(uiutils.Coalesce(uiutils.Get(vAction, "href"), "#/")), Variant: "default", Class: uiutils.S(uiutils.Cnv(uiutils.Get(presetDefaults, "text", "tiny"), "shrink-0 font-medium leading-5")), Attrs: uiutils.Attrs("data-testid", "section-action")}) {
+				if uiutils.T(uiutils.And(uiutils.Get(vAction, "label"), uiutils.Get(vAction, "href"))) {
+					@link.Link(link.LinkProps{Href: uiutils.S(uiutils.Get(vAction, "href")), Variant: "default", Class: uiutils.S(uiutils.Cnv(uiutils.Get(presetDefaults, "text", "tiny"), "shrink-0 font-medium leading-5")), Attrs: uiutils.Attrs("data-testid", "section-action")}) {
 						{ uiutils.Text(uiutils.Get(vAction, "label")) }
 					}
 				}

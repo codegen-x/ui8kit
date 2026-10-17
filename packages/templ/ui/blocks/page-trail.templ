@@ -42,7 +42,9 @@ templ PageTrail(p PageTrailProps) {
 	{{ vTitleId := any(uiutils.Add(vId, "-title")) }}
 	@block.Block(block.BlockProps{Tag: "section", Class: uiutils.S(uiutils.Cnv("py-8", uiutils.Cond(uiutils.T(uiutils.Eq(vTone, "muted")), "bg-muted", ""))), Attrs: uiutils.Attrs("aria-labelledby", uiutils.Cond(uiutils.T(vLandmarkLabel), nil, vTitleId), "data-testid", "section", "data-tone", vTone, "data-aside", vAside, "aria-label", vLandmarkLabel)}) {
 		@container.Container(container.ContainerProps{Class: uiutils.S(uiutils.Cnv("mx-auto w-full max-w-6xl px-4", "flex flex-col gap-6")), Attrs: uiutils.Attrs("data-slot", "container")}) {
-			@PageCrumbs(PageCrumbsProps{Label: vLabel, Crumbs: vCrumbs, LandmarkLabel: vLandmarkLabel})
+			if uiutils.Gt(uiutils.Len(vCrumbs), float64(0)) {
+				@PageCrumbs(PageCrumbsProps{Label: vLabel, Crumbs: vCrumbs, LandmarkLabel: vLandmarkLabel})
+			}
 			@box.Box(box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vAside, "facts")), "grid grid-cols-1 items-center gap-8 lg:grid-cols-2", "flex flex-col gap-6 md:flex-row md:items-end md:justify-between"))}) {
 				@stack.Stack(stack.StackProps{Gap: "4", Align: "start", Class: "min-w-0"}) {
 					@SectionHeader(SectionHeaderProps{TitleId: vTitleId, Title: vTitle, Heading: map[string]any{"level": vLevel, "badge": vBadge}, Lead: vLead})

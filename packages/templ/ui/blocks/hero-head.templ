@@ -7,6 +7,7 @@ import (
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/block"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/button"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/group"
+	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/inline"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/link"
 	linkplain "github.com/codegen-x/ui8kit/packages/templ/ui/ui/link-plain"
 	uiutils "github.com/codegen-x/ui8kit/packages/templ/ui/utils"
@@ -50,8 +51,14 @@ templ HeroHead(p HeroHeadProps) {
 		@NavBlock(NavBlockProps{Label: uiutils.Cond(uiutils.T(vLandmarkLabel), uiutils.Uniq(uiutils.Tpl("{0}, {1}", vNavLabel, vLandmarkLabel)), vNavLabel), Testid: "site-nav"}) {
 			@group.Group(group.GroupProps{Gap: "8", Align: "center", Class: "flex-wrap"}) {
 				for _, vL := range uiutils.L(vLinks) {
-					@link.Link(link.LinkProps{Href: uiutils.S(uiutils.Coalesce(uiutils.Get(vL, "href"), "#/")), Variant: "default", AriaCurrent: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vL, "id"), vCurrent)), "page", nil)), Class: "text-xs font-medium leading-5 text-background", Attrs: uiutils.Attrs("data-testid", "nav-link")}) {
-						{ uiutils.Text(uiutils.Get(vL, "name")) }
+					if uiutils.T(uiutils.Get(vL, "href")) {
+						@link.Link(link.LinkProps{Href: uiutils.S(uiutils.Get(vL, "href")), Variant: "default", AriaCurrent: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vL, "id"), vCurrent)), "page", nil)), Class: "text-xs font-medium leading-5 text-background", Attrs: uiutils.Attrs("data-testid", "nav-link")}) {
+							{ uiutils.Text(uiutils.Get(vL, "name")) }
+						}
+					} else {
+						@inline.Inline(inline.InlineProps{Class: "text-xs font-medium leading-5 text-background", Attrs: uiutils.Attrs("data-testid", "nav-link")}) {
+							{ uiutils.Text(uiutils.Get(vL, "name")) }
+						}
 					}
 				}
 			}
@@ -63,7 +70,7 @@ templ HeroHead(p HeroHeadProps) {
 				}
 			}
 			if uiutils.T(vCta) {
-				@button.Button(button.ButtonProps{Href: uiutils.S(uiutils.Coalesce(vHref, "#/")), Variant: "secondary", Size: "sm", Attrs: uiutils.Attrs("data-testid", "header-cta")}) {
+				@button.Button(button.ButtonProps{Href: uiutils.S(vHref), Variant: "secondary", Size: "sm", Attrs: uiutils.Attrs("data-testid", "header-cta")}) {
 					{ uiutils.Text(vCta) }
 				}
 			}

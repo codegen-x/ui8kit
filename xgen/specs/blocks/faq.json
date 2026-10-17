@@ -91,6 +91,7 @@
     }
   ],
   "slots": [
+    "EmptyState",
     "SearchField",
     "SectionFrame",
     "Switcher",
@@ -106,7 +107,7 @@
         "id": "id",
         "question": "title",
         "answer": "metadata.answer.value",
-        "category": "metadata.category.value"
+        "category": "terms|term-slug:faq_category"
       }
     },
     {
@@ -129,6 +130,9 @@
       },
       "items": {
         "$": "faq"
+      },
+      "empty": {
+        "$": "ui.vibe.faq.empty"
       },
       "search": {
         "label": {

@@ -21,6 +21,7 @@ type FaqListProps struct {
 	Filter any `json:"filter"`
 	Layout any `json:"layout"`
 	Cols any `json:"cols"`
+	Empty any `json:"empty"`
 	Multiple any `json:"multiple"`
 	Tone any `json:"tone"`
 	Density any `json:"density"`
@@ -36,6 +37,7 @@ templ FaqList(p FaqListProps) {
 	{{ vFilter := p.Filter }}
 	{{ vLayout := uiutils.Def(p.Layout, "accordion") }}
 	{{ vCols := uiutils.Def(p.Cols, "1") }}
+	{{ vEmpty := uiutils.Def(p.Empty, "") }}
 	{{ vMultiple := uiutils.Def(p.Multiple, false) }}
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
@@ -54,6 +56,9 @@ templ FaqList(p FaqListProps) {
 					}
 				}
 			}
+		}
+		if uiutils.Eq(uiutils.Len(vShown), float64(0)) {
+			@EmptyState(EmptyStateProps{Icon: "circle-question-mark", Title: vEmpty})
 		}
 		if uiutils.Eq(vLayout, "chat") {
 			@stack.Stack(stack.StackProps{Gap: "4", Align: "stretch", Attrs: uiutils.Attrs("data-testid", "faq")}) {

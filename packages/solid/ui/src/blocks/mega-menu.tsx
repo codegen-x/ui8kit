@@ -79,7 +79,7 @@ export function MegaMenu({
               </ButtonPlain>
               <For each={links ?? []}>{(l) => (
                 <Link
-                  href={(l.href ?? "#/")}
+                  href={l.href}
                   variant="default"
                   aria-current={((l.id === "") ? "page" : undefined)}
                   class="text-sm"

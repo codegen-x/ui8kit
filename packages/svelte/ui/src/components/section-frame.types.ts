@@ -13,7 +13,7 @@ export type SectionHeading = {
 export type HeadLink = {
   /** text of the link (View all, Browse all); none: no link */
   label?: string;
-  /** href of the link */
+  /** href of the link; none: no link */
   href?: string;
 };
 

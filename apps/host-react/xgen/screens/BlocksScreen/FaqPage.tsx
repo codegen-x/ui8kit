@@ -23,7 +23,7 @@ import { ui } from "@ui8kit/app-shared/content";
 import { faq as faqEntries } from "@ui8kit/app-shared/data/faq";
 import { faqtabs as faqtabsEntries } from "@ui8kit/app-shared/data/faqtabs";
 
-const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
+const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"terms|term-slug:faq_category"} as const;
 const FAQTABS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
 
 const faq = fromCodex<Faq>(faqEntries, FAQ_FIELDS, CODEX);
@@ -74,6 +74,7 @@ export function FaqPage() {
                 id="faq-list"
                 title={ui.site.pricing.faqTitle}
                 items={faq}
+                empty={ui.vibe.faq.empty}
                 search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
                 filter={{ ...FAQ_FILTER, mode: "none" }}
                 layout="accordion"
@@ -101,6 +102,7 @@ export function FaqPage() {
                 id="faq-chat"
                 title={ui.site.pricing.faqTitle}
                 items={faq}
+                empty={ui.vibe.faq.empty}
                 search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
                 filter={{ ...FAQ_FILTER, mode: "none" }}
                 layout="chat"
@@ -128,6 +130,7 @@ export function FaqPage() {
                 id="faq-search"
                 title={ui.site.pricing.faqTitle}
                 items={faq}
+                empty={ui.vibe.faq.empty}
                 search={{ label: ui.vibe.faq.search, query: "", mode: "field" }}
                 filter={{ ...FAQ_FILTER, mode: "none" }}
                 layout="accordion"
@@ -155,6 +158,7 @@ export function FaqPage() {
                 id="faq-tabs"
                 title={ui.site.pricing.faqTitle}
                 items={faq}
+                empty={ui.vibe.faq.empty}
                 search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
                 filter={{ ...FAQ_FILTER, category: "billing", mode: "categories" }}
                 layout="accordion"
@@ -182,6 +186,7 @@ export function FaqPage() {
                 id="faq-twoColumns"
                 title={ui.site.pricing.faqTitle}
                 items={faq}
+                empty={ui.vibe.faq.empty}
                 search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
                 filter={{ ...FAQ_FILTER, mode: "none" }}
                 layout="accordion"
@@ -209,6 +214,7 @@ export function FaqPage() {
                 id="faq-muted"
                 title={ui.site.pricing.faqTitle}
                 items={faq}
+                empty={ui.vibe.faq.empty}
                 search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
                 filter={{ ...FAQ_FILTER, mode: "none" }}
                 layout="accordion"
@@ -236,6 +242,7 @@ export function FaqPage() {
                 id="faq-roomy"
                 title={ui.site.pricing.faqTitle}
                 items={faq}
+                empty={ui.vibe.faq.empty}
                 search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
                 filter={{ ...FAQ_FILTER, mode: "none" }}
                 layout="accordion"

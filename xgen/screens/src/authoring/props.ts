@@ -24,9 +24,9 @@ export const actions = (center: ReturnType<typeof eq>, group = ""): ViewNode => 
 /** the fields of an action set (record ActionSet of CtaActions): one or two links, or a form (an email field, or the prompt box of HeroPrompt) */
 export const actionSet = requireFields(groupFields(
   ["mode", tsOf("one", "two", "form"), "one or two links, or a form", "one"],
-  ["cta", "string", "primary action label"], ["href", "string"], ["secondary", "string"], ["secondaryHref", "string"],
+  ["cta", "string", "primary action label"], ["href", "string", "the address of the primary action; none: a button, not a link"], ["secondary", "string"], ["secondaryHref", "string"],
   ["emailLabel", "string", "label of the form field (the email field, or the prompt line of HeroPrompt)"],
-), "cta", "href");
+), "cta");
 /** an action set without the form: one or two links (record LinkActions of ErrorPage) */
 export const linkActions = actionSet
   .filter((f) => f.name !== "emailLabel")

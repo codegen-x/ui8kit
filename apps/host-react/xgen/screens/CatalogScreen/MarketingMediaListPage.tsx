@@ -31,7 +31,13 @@ import { categories as categoriesEntries } from "@ui8kit/app-shared/data/categor
 import { channels as channelsEntries } from "@ui8kit/app-shared/data/channels";
 import { reviews as reviewsEntries } from "@ui8kit/app-shared/data/reviews";
 
-const STATS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
+const STATS_FIELDS = {
+  "id": "id",
+  "label": "title",
+  "value": "metadata.value.value|number",
+  "icon": "metadata.icon.value",
+  "hint": "metadata.hint.value",
+} as const;
 const STEPS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 const POSTS_FIELDS = {
   "id": "id",

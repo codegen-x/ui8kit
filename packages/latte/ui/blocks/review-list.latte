@@ -13,6 +13,9 @@
 {var $v_density = ($p['density'] ?? 'default')}
 {var $v_landmarkLabel = ($p['landmarkLabel'] ?? null)}
 {capture $c_9}
+  {if ui_t(ui_eq(ui_len($v_reviews), 0))}
+    {=ui_include('blocks/empty-state.latte', ['p' => ['icon' => 'message-square-quote', 'title' => ui_get($v_labels, ['empty'])]])|noescape}
+  {/if}
   {capture $c_8}
     {foreach ui_l($v_reviews) as $v_r}
       {capture $c_7}

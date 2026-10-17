@@ -58,7 +58,7 @@ templ MegaMenu(p MegaMenuProps) {
 						@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "chevron-down", Size: 16})
 					}
 					for _, vL := range uiutils.L(vLinks) {
-						@link.Link(link.LinkProps{Href: uiutils.S(uiutils.Coalesce(uiutils.Get(vL, "href"), "#/")), Variant: "default", AriaCurrent: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vL, "id"), "")), "page", nil)), Class: "text-sm", Attrs: uiutils.Attrs("data-testid", "nav-link")}) {
+						@link.Link(link.LinkProps{Href: uiutils.S(uiutils.Get(vL, "href")), Variant: "default", AriaCurrent: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Get(vL, "id"), "")), "page", nil)), Class: "text-sm", Attrs: uiutils.Attrs("data-testid", "nav-link")}) {
 							{ uiutils.Text(uiutils.Get(vL, "name")) }
 						}
 					}

@@ -40,7 +40,7 @@
   } as const;
   const LOGOS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
   const COMPARE_FIELDS = {"id":"id","label":"title","a":"metadata.a.value","b":"metadata.b.value","c":"metadata.c.value"} as const;
-  const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
+  const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"terms|term-slug:faq_category"} as const;
   const FAQTABS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
 
   const tiers = fromCodex<Plan>(tiersEntries, TIERS_FIELDS, CODEX);
@@ -99,6 +99,7 @@
   id="home-faq"
   title={ui.site.pricing.faqTitle}
   items={faq}
+  empty={ui.vibe.faq.empty}
   search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
   filter={{ tabs: faqtabs, label: ui.vibe.faq.tabs, category: "", mode: "none" }}
   layout="accordion"

@@ -988,7 +988,8 @@ export const ui = {
       "title": "Best Companies Use Our Service"
     },
     "stats": {
-      "title": ""
+      "title": "",
+      "empty": "No figures to show yet"
     },
     "testimonials": {
       "title": "What customers say"
@@ -1210,13 +1211,16 @@ export const ui = {
       "shipping": "Free shipping over 75 dollars",
       "returns": "Thirty-day returns",
       "decrease": "Decrease quantity",
-      "increase": "Increase quantity"
+      "increase": "Increase quantity",
+      "was": "Was",
+      "empty": "No product to show"
     },
     "reviews": {
       "title": "What buyers say"
     },
     "reviewLabels": {
-      "ratingLabel": "{0} out of 5"
+      "ratingLabel": "{0} out of 5",
+      "empty": "No reviews yet"
     },
     "cart": {
       "title": "Your cart",
@@ -1729,7 +1733,8 @@ export const ui = {
     },
     "faq": {
       "tabs": "Question topics",
-      "search": "Search the questions"
+      "search": "Search the questions",
+      "empty": "No questions to show"
     },
     "cta": {
       "quote": "We shipped our site in a week.",

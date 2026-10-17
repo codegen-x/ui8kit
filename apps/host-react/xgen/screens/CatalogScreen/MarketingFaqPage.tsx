@@ -29,7 +29,7 @@ import { faqtabs as faqtabsEntries } from "@ui8kit/app-shared/data/faqtabs";
 import { questions as questionsEntries } from "@ui8kit/app-shared/data/questions";
 
 const CHANNELS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
-const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
+const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"terms|term-slug:faq_category"} as const;
 const FAQTABS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
 const QUESTIONS_FIELDS = {
   "id": "id",
@@ -109,6 +109,7 @@ export function MarketingFaqPage() {
                   id="faq-list"
                   title={ui.site.pricing.faqTitle}
                   items={faq}
+                  empty={ui.vibe.faq.empty}
                   search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
                   filter={{ ...FAQ_FILTER, mode: "none" }}
                   layout="accordion"
@@ -136,6 +137,7 @@ export function MarketingFaqPage() {
                   id="faq-chat"
                   title={ui.site.pricing.faqTitle}
                   items={faq}
+                  empty={ui.vibe.faq.empty}
                   search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
                   filter={{ ...FAQ_FILTER, mode: "none" }}
                   layout="chat"
@@ -163,6 +165,7 @@ export function MarketingFaqPage() {
                   id="faq-search"
                   title={ui.site.pricing.faqTitle}
                   items={faq}
+                  empty={ui.vibe.faq.empty}
                   search={{ label: ui.vibe.faq.search, query: "", mode: "field" }}
                   filter={{ ...FAQ_FILTER, mode: "none" }}
                   layout="accordion"
@@ -190,6 +193,7 @@ export function MarketingFaqPage() {
                   id="faq-tabs"
                   title={ui.site.pricing.faqTitle}
                   items={faq}
+                  empty={ui.vibe.faq.empty}
                   search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
                   filter={{ ...FAQ_FILTER, category: "billing", mode: "categories" }}
                   layout="accordion"
@@ -217,6 +221,7 @@ export function MarketingFaqPage() {
                   id="faq-twoColumns"
                   title={ui.site.pricing.faqTitle}
                   items={faq}
+                  empty={ui.vibe.faq.empty}
                   search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
                   filter={{ ...FAQ_FILTER, mode: "none" }}
                   layout="accordion"
@@ -244,6 +249,7 @@ export function MarketingFaqPage() {
                   id="faq-muted"
                   title={ui.site.pricing.faqTitle}
                   items={faq}
+                  empty={ui.vibe.faq.empty}
                   search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
                   filter={{ ...FAQ_FILTER, mode: "none" }}
                   layout="accordion"
@@ -271,6 +277,7 @@ export function MarketingFaqPage() {
                   id="faq-roomy"
                   title={ui.site.pricing.faqTitle}
                   items={faq}
+                  empty={ui.vibe.faq.empty}
                   search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
                   filter={{ ...FAQ_FILTER, mode: "none" }}
                   layout="accordion"

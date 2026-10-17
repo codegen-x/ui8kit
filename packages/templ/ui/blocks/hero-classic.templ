@@ -57,7 +57,7 @@ templ HeroClassic(p HeroClassicProps) {
 					}
 					@group.Group(group.GroupProps{Gap: "2", Align: "start", Class: "w-full flex-wrap"}) {
 						@input.Input(input.InputProps{Type: "text", Name: "prompt", Class: "min-w-0 flex-1", Placeholder: uiutils.S(uiutils.Get(vActions, "emailLabel")), Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-email", vId), "data-testid", "field")})
-						@button.Button(button.ButtonProps{Variant: "default", Size: "default", Href: uiutils.S(uiutils.Coalesce(uiutils.Get(vActions, "href"), "#/")), Attrs: uiutils.Attrs("data-testid", "submit")}) {
+						@button.Button(button.ButtonProps{Variant: "default", Size: "default", Href: uiutils.S(uiutils.Get(vActions, "href")), Attrs: uiutils.Attrs("data-testid", "submit")}) {
 							{ uiutils.Text(uiutils.Get(vActions, "cta")) }
 						}
 					}

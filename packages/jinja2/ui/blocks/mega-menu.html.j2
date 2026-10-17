@@ -30,7 +30,7 @@
           {%- set c_3 -%}
             {{ ui_text(ui_get(v_l, ['name'])) }}
           {%- endset -%}
-          {{ ui_include('ui/link/link.html.j2', {'p': {'Href': ui_s(ui_coalesce([ui_get(v_l, ['href']), '#/'])), 'Variant': 'default', 'AriaCurrent': ui_s(('page' if ui_t(ui_eq(ui_get(v_l, ['id']), '')) else none)), 'Class': 'text-sm', 'Attrs': ui_attrs(['data-testid', 'nav-link'])}, 'children': c_3}) }}
+          {{ ui_include('ui/link/link.html.j2', {'p': {'Href': ui_s(ui_get(v_l, ['href'])), 'Variant': 'default', 'AriaCurrent': ui_s(('page' if ui_t(ui_eq(ui_get(v_l, ['id']), '')) else none)), 'Class': 'text-sm', 'Attrs': ui_attrs(['data-testid', 'nav-link'])}, 'children': c_3}) }}
         {%- endfor %}
       {%- endset -%}
       {{ ui_include('ui/group/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Class': 'flex-wrap'}, 'children': c_4}) }}

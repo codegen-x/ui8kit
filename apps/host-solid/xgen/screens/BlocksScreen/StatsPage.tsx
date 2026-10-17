@@ -21,7 +21,13 @@ import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { stats as statsEntries } from "@ui8kit/app-shared/data/stats";
 
-const STATS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
+const STATS_FIELDS = {
+  "id": "id",
+  "label": "title",
+  "value": "metadata.value.value|number",
+  "icon": "metadata.icon.value",
+  "hint": "metadata.hint.value",
+} as const;
 
 const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS, CODEX);
 
@@ -63,6 +69,7 @@ export function StatsPage() {
                 id="stats-plain4"
                 title={ui.marketing.stats.title}
                 stats={stats}
+                empty={ui.marketing.stats.empty}
                 cols="4"
                 layout="row"
                 surface="none"
@@ -91,6 +98,7 @@ export function StatsPage() {
                 id="stats-panel"
                 title=""
                 stats={stats}
+                empty={ui.marketing.stats.empty}
                 cols="4"
                 layout="row"
                 surface="panel"
@@ -119,6 +127,7 @@ export function StatsPage() {
                 id="stats-stack"
                 title={ui.marketing.stats.title}
                 stats={stats}
+                empty={ui.marketing.stats.empty}
                 cols="4"
                 layout="stack"
                 surface="none"
@@ -147,6 +156,7 @@ export function StatsPage() {
                 id="stats-image"
                 title={ui.marketing.stats.title}
                 stats={stats}
+                empty={ui.marketing.stats.empty}
                 cols="4"
                 layout="row"
                 surface="image"
@@ -175,6 +185,7 @@ export function StatsPage() {
                 id="stats-cards"
                 title={ui.marketing.stats.title}
                 stats={[stats?.[0], stats?.[1], stats?.[2]]}
+                empty={ui.marketing.stats.empty}
                 cols="3"
                 layout="row"
                 surface="none"
@@ -203,6 +214,7 @@ export function StatsPage() {
                 id="stats-icons"
                 title={ui.marketing.stats.title}
                 stats={stats}
+                empty={ui.marketing.stats.empty}
                 cols="4"
                 layout="row"
                 surface="none"
@@ -231,6 +243,7 @@ export function StatsPage() {
                 id="stats-muted2"
                 title={ui.marketing.stats.title}
                 stats={stats}
+                empty={ui.marketing.stats.empty}
                 cols="2"
                 layout="row"
                 surface="none"
@@ -259,6 +272,7 @@ export function StatsPage() {
                 id="stats-cardsCompact"
                 title={ui.marketing.stats.title}
                 stats={stats}
+                empty={ui.marketing.stats.empty}
                 cols="4"
                 layout="row"
                 surface="none"

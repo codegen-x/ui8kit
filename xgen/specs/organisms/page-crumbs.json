@@ -3,7 +3,7 @@
   "specVersion": 1,
   "id": "pattern.page-crumbs",
   "name": "PageCrumbs",
-  "docs": "The breadcrumbs of an inner page: links to the parent pages separated by chevrons; the last entry is the current page and is not a link.",
+  "docs": "The breadcrumbs of an inner page: the parent pages (links where they have an href) separated by chevrons; the last entry is the current page and is not a link.",
   "records": {},
   "props": [
     {
@@ -102,20 +102,44 @@
                       },
                       "then": [
                         {
-                          "use": "Link",
-                          "props": {
-                            "Href": "#/",
-                            "Variant": "muted",
-                            "Size": "sm"
+                          "when": {
+                            "$": "c.href"
                           },
-                          "attrs": {
-                            "data-testid": "crumb"
-                          },
-                          "children": [
+                          "then": [
                             {
-                              "text": {
-                                "$": "c.name"
-                              }
+                              "use": "Link",
+                              "props": {
+                                "Href": {
+                                  "$": "c.href"
+                                },
+                                "Variant": "muted",
+                                "Size": "sm"
+                              },
+                              "attrs": {
+                                "data-testid": "crumb"
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "c.name"
+                                  }
+                                }
+                              ]
+                            }
+                          ],
+                          "else": [
+                            {
+                              "use": "Inline",
+                              "attrs": {
+                                "data-testid": "crumb"
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "c.name"
+                                  }
+                                }
+                              ]
                             }
                           ]
                         },

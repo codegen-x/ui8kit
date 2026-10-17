@@ -1,4 +1,4 @@
-# Block data vs the Codex v0.4 contract (inventory; step 2: the pilot blocks fixed; step 3: lookups, terms, author_id)
+# Block data vs the Codex v0.4 contract (inventory; step 2: the pilot blocks fixed; step 3: lookups, terms, author_id; step 4: five more blocks)
 
 Goal: every block, screen, template and data structure of the kit reads Codex v0.4 entries (`@ui8kit/contract` ^0.2.0;
 manifest `xgen/schema/codex/manifest.json`, 62 kinds) by the rules: money = integer minor units + `currency`; dates RFC 3339,
@@ -80,7 +80,7 @@ Templates also compose HeroClassic, HeroSplit, PostGrid, AppShell, SidebarNav, C
 | category | terms\|term:product_category | core `terms` -> taxonomy `product_category` | the term name ("Light"), by the entry's locale |
 | inStock | metadata.inStock.value | boolean | |
 | href (optional) | slug\|route | core | built from the slug by `opts.routes[kind]`; no route: no link |
-| image (optional) | featured_media_id\|media | core -> kind `media` (`metadata.file`) | the file of a *published* media entry (CODEX.media); the fixtures' media are drafts (no assets in the repo): placeholder |
+| image (optional) | featured_media_id\|media | core -> kind `media` (`metadata.file`) | the file of a *published* media entry (CODEX.media); in the fixtures a base64 data URI placeholder (no external or file URLs); a real app resolves its own through opts.media / its adapter |
 | labels | dictionary `commerce.productLabels` | | add, soldOut, reviews, ratingLabel, was, empty |
 
 **PostHeader** (`Post`, kind `post`, map `CODEX_FIELDS.post`): id, title, excerpt (core), category<-terms|term:category (term name),
@@ -102,11 +102,11 @@ the plans list screen keeps its own column). No plans: the empty state (`pricing
 | 4 | Product `category`, Post `category` (**fixed**: `terms`, taxonomies `product_category`, `category`), Faq `category`, Photo `tag`, Project `tags` | taxonomy as free text / raw keys printed | block: read `terms` (taxonomy + term entries with locale), show term name |
 | 5 | Post/Review `author` (**fixed**: `author_id` -> kind `user`, map `CODEX_FIELDS.review`) | a name string, not a reference | block: read `author_id` (kind user) display_name |
 | 6 | `fmtDate`, `fmtAgo` in core.ts (**fixed**: Intl by the entry's or the app's locale; en output unchanged, the compact en units "min", "h", "d" kept) | fixed en-US format and English "2 min ago", "Yesterday" | block/runtime: Intl by locale + dictionary words |
-| 7 | stats/metrics `value` ("12,400"), templates `views`/`likes` ("1.2K") | preformatted numbers as strings | manifest: number fields; block formats with Intl |
+| 7 | stats `value` (**fixed**: number + `metadata.unit`, `\|number` formats in the locale), metrics `value` ("$48,200"), templates `views`/`likes` ("1.2K"), dictionary `marketing.pageTrail.value` ("48") | preformatted numbers as strings | manifest: number fields; formatted with Intl |
 | 8 | Product `badge` / Plan `status` (**fixed**: optional; `status` not mapped for the pricing blocks) | record vs manifest | block: make the prop optional / drop `status` |
 | 9 | ProductGrid, PricingTiers, PostHeader (**fixed**: EmptyState, `labels.empty`), most other lists | no empty state | block: empty state with a dictionary label |
 | 10 | magazine templates / taste screens | text from the English copy deck `c` (not entries, not dictionary) | block props from dictionary; deck becomes entries or a dictionary per locale |
-| 11 | sitemap `links`, Plan `features` | string arrays in metadata, no locale per item | features ok as content of the entry; sitemap -> a `menu` (contract menu schema) |
+| 11 | sitemap `links`, footer groups, side navs, category nav, brand (hardcoded `"#/"` in the components), Plan `features` | string arrays / no href per item; menus are not `menu` records | features ok as content of the entry; menus -> the contract `menu` schema, a link only where it has an address |
 | 12 | Project `year` string, ProjectGrid `client` "Northwind" rebranded at runtime | types / data | manifest: integer year; block drops runtime rebrand when data is neutral |
 
 ## 5. Status per block
@@ -115,4 +115,11 @@ done: ProductGrid, PostHeader, PricingTiers. Step 2 fixed: empty states, links f
 optional badge, no status, dates by locale, `compare_at`; the xgen specs read `CODEX_FIELDS` (`gallery/blocks-data.ts`, `screens/plans-screen.ts`).
 Step 3: category from `terms`, author from `author_id` (kind `user`), lookups `CODEX` passed by the hosts and the magazine;
 PostCard renders its read link only with a route. Open: real media assets (none in the repo), routes once the apps have product/post pages.
+Step 4 done: ProductDetail (old price, featured media, category term; split into ProductPrice and ProductGallery), ReviewList
+(author_id, dates by locale, empty state), StatsBand (numeric `value` + `unit`, `|number` by locale, prop `empty`), PageTrail (crumbs = kind `page`
+chained by `parent_id`, `trail()` orders them, a crumb links only with a route; no crumbs: no nav), FaqList (category = slug of the
+`faq_category` term, tabs filter by it; prop `empty`). Fallback `"#/"` links removed from SectionHead, FeatureGrid cell head, HeroPrompt,
+HeroHead and NavBar links: no address, no link (a button stays a button). Media fixtures: published, base64 data URIs.
+The magazine is a showcase: no routes and no links by design; its templates pass no `href`. Left: the hardcoded `"#/"` of footer
+groups, side navs, the category nav, the brand and the in-page table of contents (#11).
 todo: everything else in blocks.json (kind listed from the spec).

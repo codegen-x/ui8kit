@@ -56,9 +56,9 @@
       <Title as={2} size="sm" weight="semibold" class="leading-7" id={(id + "-title")}>
         {title}
       </Title>
-      {#if action?.label}
+      {#if (action?.label && action?.href)}
         <Link
-          href={(action?.href ?? "#/")}
+          href={action?.href}
           variant="default"
           class={cn(defaults.text.tiny, "shrink-0 font-medium leading-5")}
           data-testid="section-action"

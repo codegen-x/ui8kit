@@ -134,6 +134,12 @@
       "default": "1"
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no question, or none matches the search or tab), from the dictionary"
+    },
+    {
       "name": "multiple",
       "type": "boolean",
       "default": false,
@@ -375,6 +381,33 @@
                           ]
                         }
                       ]
+                    }
+                  }
+                }
+              ]
+            },
+            {
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "shown"
+                      }
+                    ]
+                  },
+                  0
+                ]
+              },
+              "then": [
+                {
+                  "organism": "EmptyState",
+                  "props": {
+                    "icon": "circle-question-mark",
+                    "title": {
+                      "$": "empty"
                     }
                   }
                 }

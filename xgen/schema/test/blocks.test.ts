@@ -6,7 +6,7 @@ import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import Ajv2020 from "ajv/dist/2020.js";
 import { validateCollectionV04 } from "@ui8kit/contract/validate";
-import { fromCodex } from "../../runtimes/core/assets/app/core";
+import { fromCodex, trail } from "../../runtimes/core/assets/app/core";
 import { CODEX_FIELDS } from "../../runtimes/core/assets/app/fields";
 import { MANIFEST_PATH, loadFixtures, loadTaxonomies, type Field, type Manifest } from "../src/codex";
 
@@ -92,32 +92,62 @@ test("every label of a done block is a key of the dictionary (xgen/content/ui/en
   }
 });
 
-test("done blocks: an empty state with its text from the dictionary (labels key empty)", () => {
+test("done blocks: an empty state with its text from the dictionary (labels key or prop empty), or left out (emptyMode omit)", () => {
   for (const b of done) {
-    const x = b as unknown as { emptyState: boolean; labels: { keys: string[] }[] };
-    expect([b.id, x.emptyState, x.labels.some((l) => l.keys.includes("empty"))]).toEqual([b.id, true, true]);
+    // label: the text from the dictionary (a labels key `empty` or a prop `empty`); omit: the empty part is left out
+    const x = b as unknown as { emptyState: boolean; emptyMode?: "label" | "omit"; labels: { prop: string; keys: string[] }[] };
+    const labelled = x.labels.some((l) => l.keys.includes("empty") || l.prop === "empty");
+    expect([b.id, x.emptyState, x.emptyMode === "omit" || labelled]).toEqual([b.id, true, true]);
   }
 });
 
-test("media: every featured_media_id names an entry of kind media; the map turns a published one into its file, a draft into nothing", () => {
+test("media: every featured_media_id names a published media entry whose file is a base64 data URI; the map turns it into that file", () => {
   const media = ofKind("media");
   expect(media.length).toBeGreaterThan(0);
   const pictured = cols.flatMap((c) => c.entries).filter((e) => (e as { featured_media_id?: string }).featured_media_id);
   expect(pictured.length).toBeGreaterThan(0);
   for (const e of pictured) expect([e.id, media.some((m) => m.id === (e as { featured_media_id?: string }).featured_media_id)]).toEqual([e.id, true]);
+  // fixtures carry placeholders only: a base64 data URI, never an external or file URL; a real app resolves its own (opts.media)
+  for (const m of media) {
+    expect([m.id, (m as { status?: string }).status]).toEqual([m.id, "published"]);
+    expect([m.id, /^data:image\/[a-z+.-]+;base64,[A-Za-z0-9+/]+=*$/.test(m.metadata!.file!.value as string)]).toEqual([m.id, true]);
+  }
   const products = cols.find((c) => c.collection === "products")!.entries;
-  // the repository has no image assets: every media entry is a draft (no uploaded file), so every block keeps its placeholder
-  expect(media.every((m) => (m as { status?: string }).status === "draft")).toBe(true);
-  expect(fromCodex<{ image?: string }>(products, CODEX_FIELDS.product, lookups).every((r) => r.image === undefined)).toBe(true);
-  const published = media.map((m) => ({ ...m, status: "published" }));
-  const rows = fromCodex<{ id: string; image?: string; href?: string }>(products, CODEX_FIELDS.product, { media: published, routes: { product: "#/product/{slug}" } });
+  const rows = fromCodex<{ id: string; image?: string; href?: string }>(products, CODEX_FIELDS.product, lookups);
   for (const [i, r] of rows.entries()) {
     const id = (products[i] as { featured_media_id?: string }).featured_media_id;
     expect(r.image).toBe(id ? (media.find((m) => m.id === id)!.metadata!.file!.value as string) : undefined);
-    expect(r.href).toBe(`#/product/${(products[i] as unknown as { slug: string }).slug}`);
   }
-  // without routes (the magazine and the hosts have no product or post page): no link
+  // a draft media entry gives no file (the placeholder)
+  expect(fromCodex<{ image?: string }>(products, CODEX_FIELDS.product, { ...lookups, media: media.map((m) => ({ ...m, status: "draft" })) }).every((r) => r.image === undefined)).toBe(true);
+  // routes: a link only where the app routes the kind; the magazine has none by design (a showcase: no links at all)
   expect(fromCodex<{ href?: string }>(products, CODEX_FIELDS.product, lookups).every((r) => r.href === undefined)).toBe(true);
+  const routed = fromCodex<{ href?: string }>(products, CODEX_FIELDS.product, { ...lookups, routes: { product: "#/product/{slug}" } });
+  for (const [i, r] of routed.entries()) expect(r.href).toBe(`#/product/${(products[i] as unknown as { slug: string }).slug}`);
+});
+
+test("figures: every stat value is a number (unit in metadata.unit), formatted in the locale by the map", () => {
+  const stats = cols.find((c) => c.collection === "stats")!.entries;
+  for (const e of stats) expect([e.id, typeof e.metadata!.value!.value]).toEqual([e.id, "number"]);
+  const rows = fromCodex<{ id: string; value: string }>(stats, CODEX_FIELDS.stat, lookups);
+  expect(rows.map((r) => r.value)).toEqual(["12,400", "99.99%", "3,200", "0.8s"]);
+  expect(fromCodex<{ value: string }>(stats, CODEX_FIELDS.stat, { locale: "de" })[0]!.value).toBe("12.400");
+});
+
+test("breadcrumbs: the crumbs are pages chained by parent_id from the root, in that order; no route, no href", () => {
+  const crumbs = cols.find((c) => c.collection === "crumbs")!.entries as { id: string; kind: string; parent_id?: string }[];
+  expect(crumbs.every((e) => e.kind === "page")).toBe(true);
+  expect(crumbs[0]!.parent_id).toBeUndefined();
+  for (let i = 1; i < crumbs.length; i++) expect([crumbs[i]!.id, crumbs[i]!.parent_id]).toEqual([crumbs[i]!.id, crumbs[i - 1]!.id]);
+  expect(trail(crumbs).map((e) => e.id)).toEqual(crumbs.map((e) => e.id));
+  expect(fromCodex<{ href?: string }>(crumbs, CODEX_FIELDS.page, lookups).every((r) => r.href === undefined)).toBe(true);
+});
+
+test("faq: the category is the slug of the faq_category term, and every tab value is such a slug (or all)", () => {
+  const faq = cols.find((c) => c.collection === "faq")!.entries;
+  const slugs = taxonomies.find((t) => t.definition.id === "faq_category")!.terms.map((t) => t.slug);
+  for (const r of fromCodex<{ id: string; category?: string }>(faq, CODEX_FIELDS.faq, lookups)) expect([r.id, slugs.includes(r.category ?? "")]).toEqual([r.id, true]);
+  for (const t of cols.find((c) => c.collection === "faqtabs")!.entries) expect(["", ...slugs]).toContain(t.metadata!.value!.value as string);
 });
 
 test("terms and authors: every term ref names a term of a taxonomy assigned to the kind, every author_id a user; the maps print their names", () => {
@@ -154,6 +184,6 @@ test("old price: compare_at is integer minor units in the currency of the entry,
   }
 });
 
-test("at least the three pilot blocks are done", () => {
-  expect(done.map((b) => b.id).sort()).toEqual(expect.arrayContaining(["PostHeader", "PricingTiers", "ProductGrid"]));
+test("the pilot blocks and the step 4 blocks are done", () => {
+  expect(done.map((b) => b.id).sort()).toEqual(expect.arrayContaining(["FaqList", "PageTrail", "PostHeader", "PricingTiers", "ProductDetail", "ProductGrid", "ReviewList", "StatsBand"]));
 });

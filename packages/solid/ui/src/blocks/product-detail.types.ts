@@ -12,4 +12,6 @@ export type ProductDetailLabels = {
   ratingLabel: string;
   shipping: string;
   returns: string;
+  was: string;
+  empty: string;
 };

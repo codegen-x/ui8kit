@@ -1,6 +1,6 @@
 <!-- Documentation: a search header, a sidebar with the outline, breadcrumbs, an article with its own table of contents and a help aside. -->
 <script lang="ts">
-  import { Block, ArticleBody, Card, CardContent, CardHeader, CardTitle, Link, PageTrail, SidebarNav } from "@ui8kit/svelte-ui";
+  import { Block, ArticleBody, Card, CardContent, CardHeader, CardTitle, Inline, PageTrail, SidebarNav } from "@ui8kit/svelte-ui";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { dataFor } from "./registry-data";
   import Header from "./header.svelte";
@@ -26,7 +26,7 @@
       <CardHeader><CardTitle>{c.eyebrow}</CardTitle></CardHeader>
       <CardContent>
         <ul class="tp-list">
-          {#each d.helplinks as l (l.id)}<li><Link href="#">{l.name}</Link></li>{/each}
+          {#each d.helplinks as l (l.id)}<li><Inline>{l.name}</Inline></li>{/each}
         </ul>
       </CardContent>
     </Card>

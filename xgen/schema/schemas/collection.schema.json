@@ -46,6 +46,11 @@
             "minLength": 1,
             "description": "the id of the entry of kind user that wrote this one (Codex v0.4 core field)"
           },
+          "parent_id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "the id of the parent entry of the same kind (a page under a page: the breadcrumb chain; Codex v0.4 core field)"
+          },
           "featured_media_id": {
             "type": "string",
             "minLength": 1,

@@ -12,7 +12,7 @@
 
   export type ProductDetailProps = {
     id: string;
-    product: Product;
+    product?: Product;
     labels: ProductDetailLabels;
     badges: Record<string, string>;
     level?: 1 | 2;
@@ -28,9 +28,7 @@
 </script>
 
 <script lang="ts">
-  import Badge from "../primitives/badge/badge.svelte";
   import Button from "../primitives/button/button.svelte";
-  import Grid from "../primitives/grid/grid.svelte";
   import Group from "../primitives/group/group.svelte";
   import Inline from "../primitives/inline/inline.svelte";
   import List from "../primitives/list/list.svelte";
@@ -38,11 +36,13 @@
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
-  import MediaFrame from "../components/media-frame.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import NumberField from "../components/number-field.svelte";
+  import ProductGallery from "../components/product-gallery.svelte";
+  import ProductPrice from "../components/product-price.svelte";
   import Rating from "../components/rating.svelte";
   import SectionFrame from "../components/section-frame.svelte";
-  import { at, fmtMoney, tpl } from "../utils";
+  import { at, tpl } from "../utils";
 
   let {
     id,
@@ -61,84 +61,83 @@
   }: ProductDetailProps = $props();
 </script>
 
-<SectionFrame
-  id={id}
-  title={product.name}
-  lead={product.summary}
-  heading={{ level }}
-  layout={(((layout as string) === "split") ? "split" : "stack")}
-  media={{ show: true, side: mediaSide, align: "start" }}
-  tone={tone}
-  density={density}
-  landmarkLabel={landmarkLabel}
->
-  <Stack gap="4" align="stretch" data-testid="buy-box">
-    <Group gap="4" align="center" class="flex-wrap">
-      <Text size="4xl" weight="bold">
-        {fmtMoney(product.price, product.currency)}
-      </Text>
-      {#if product.badge}
-        <Badge variant="default" size="default">
-          {at(badges, product.badge)}
-        </Badge>
+{#if !product}
+  <SectionFrame id={id} tone={tone} density={density} landmarkLabel={landmarkLabel}>
+    <EmptyState icon="package" title={labels.empty} />
+  </SectionFrame>
+{:else}
+  <SectionFrame
+    id={id}
+    title={product?.name}
+    lead={product?.summary}
+    heading={{ level }}
+    layout={(((layout as string) === "split") ? "split" : "stack")}
+    media={{ show: true, side: mediaSide, align: "start" }}
+    tone={tone}
+    density={density}
+    landmarkLabel={landmarkLabel}
+  >
+    <Stack gap="4" align="stretch" data-testid="buy-box">
+      {#if product?.category}
+        <Text size="xs" class="uppercase tracking-wide text-muted-foreground" data-testid="category">
+          {product?.category}
+        </Text>
       {/if}
-    </Group>
-    <Group gap="2">
-      <Rating value={product.rating} label={tpl(labels.ratingLabel, product.rating)} />
-      <Text size="sm" class="text-muted-foreground">
-        {tpl(labels.reviews, product.reviews)}
+      <ProductPrice
+        price={product?.price}
+        compareAt={product?.compareAt}
+        currency={product?.currency}
+        badge={(product?.badge ? at(badges, product?.badge) : "")}
+        was={labels.was}
+      />
+      <Group gap="2">
+        <Rating value={product?.rating} label={tpl(labels.ratingLabel, product?.rating)} />
+        <Text size="sm" class="text-muted-foreground">
+          {tpl(labels.reviews, product?.reviews)}
+        </Text>
+      </Group>
+      <Text
+        size="sm"
+        weight="medium"
+        class={(product?.inStock ? "text-foreground" : "text-destructive")}
+        data-testid="stock"
+      >
+        {(product?.inStock ? labels.inStock : labels.soldOut)}
       </Text>
-    </Group>
-    <Text
-      size="sm"
-      weight="medium"
-      class={(product.inStock ? "text-foreground" : "text-destructive")}
-      data-testid="stock"
-    >
-      {(product.inStock ? labels.inStock : labels.soldOut)}
-    </Text>
-    <Group gap="4" class="flex-wrap">
+      <Group gap="4" class="flex-wrap">
+        {#if ((buy as string) === "full")}
+          <NumberField
+            value="1"
+            name={tpl("{0}-qty", id)}
+            min="1"
+            label={labels.qty}
+            decrease={labels.decrease}
+            increase={labels.increase}
+          />
+        {/if}
+        <Button disabled={!product?.inStock} data-testid="add" onclick={() => onadd?.(product?.id)}>
+          {labels.add}
+        </Button>
+      </Group>
       {#if ((buy as string) === "full")}
-        <NumberField
-          value="1"
-          name={tpl("{0}-qty", id)}
-          min="1"
-          label={labels.qty}
-          decrease={labels.decrease}
-          increase={labels.increase}
-        />
-      {/if}
-      <Button disabled={!product.inStock} data-testid="add" onclick={() => onadd?.(product.id)}>
-        {labels.add}
-      </Button>
-    </Group>
-    {#if ((buy as string) === "full")}
-      <List tag="ul" class="flex flex-col gap-2 text-sm text-muted-foreground">
-        <ListItem class="flex items-center gap-2">
-          <LucideIcon name="truck" size={16} />
-          <Inline>
-            {labels.shipping}
-          </Inline>
-        </ListItem>
-        <ListItem class="flex items-center gap-2">
-          <LucideIcon name="shield-check" size={16} />
-          <Inline>
-            {labels.returns}
-          </Inline>
-        </ListItem>
-      </List>
-    {/if}
-  </Stack>
-  {#snippet aside()}
-    <Stack gap="4" align="stretch" data-testid="gallery">
-      <MediaFrame alt={product.name} ratio="1/1" />
-      {#if ((thumbs as string) === "below")}
-        <Grid cols="3" class="gap-4" data-testid="thumbs">
-          <MediaFrame alt={product.name} ratio="1/1" class="ring-2 ring-foreground" />
-          <MediaFrame alt={product.name} ratio="1/1" />
-          <MediaFrame alt={product.name} ratio="1/1" />
-        </Grid>
+        <List tag="ul" class="flex flex-col gap-2 text-sm text-muted-foreground">
+          <ListItem class="flex items-center gap-2">
+            <LucideIcon name="truck" size={16} />
+            <Inline>
+              {labels.shipping}
+            </Inline>
+          </ListItem>
+          <ListItem class="flex items-center gap-2">
+            <LucideIcon name="shield-check" size={16} />
+            <Inline>
+              {labels.returns}
+            </Inline>
+          </ListItem>
+        </List>
       {/if}
     </Stack>
-  {/snippet}
-</SectionFrame>
+    {#snippet aside()}
+      <ProductGallery name={product?.name} image={product?.image} thumbs={thumbs} />
+    {/snippet}
+  </SectionFrame>
+{/if}

@@ -6,16 +6,16 @@ export const media = [
     "id": "media-lamp",
     "locale": "en",
     "kind": "media",
-    "status": "draft",
+    "status": "published",
     "visibility": "public",
     "slug": "arc-desk-lamp",
     "title": "Arc desk lamp",
     "metadata": {
       "file": {
-        "value": "media/arc-desk-lamp.webp"
+        "value": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDEyMDAiIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjEyMDAiPjxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjEyMDAiIGZpbGw9IiM4MDgwODAiIGZpbGwtb3BhY2l0eT0iMC4xNiIvPjxjaXJjbGUgY3g9Ijg2NCIgY3k9IjM2MCIgcj0iMTIwIiBmaWxsPSIjODA4MDgwIiBmaWxsLW9wYWNpdHk9IjAuMzIiLz48cGF0aCBkPSJNMCA4NjQgTDM2MCA1NDAgTDY2MCA4MTYgTDkwMCA2MjQgTDEyMDAgOTAwIFYxMjAwIEgwIFoiIGZpbGw9IiM4MDgwODAiIGZpbGwtb3BhY2l0eT0iMC4yOCIvPjxwYXRoIGQ9Ik0wIDEwMjAgTDQ4MCA3OTIgTDEyMDAgMTA4MCBWMTIwMCBIMCBaIiBmaWxsPSIjODA4MDgwIiBmaWxsLW9wYWNpdHk9IjAuMzYiLz48L3N2Zz4="
       },
       "mime": {
-        "value": "image/webp"
+        "value": "image/svg+xml"
       },
       "width": {
         "value": 1200
@@ -36,16 +36,16 @@ export const media = [
     "id": "media-phones",
     "locale": "en",
     "kind": "media",
-    "status": "draft",
+    "status": "published",
     "visibility": "public",
     "slug": "studio-headphones",
     "title": "Studio headphones",
     "metadata": {
       "file": {
-        "value": "media/studio-headphones.webp"
+        "value": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDEyMDAiIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjEyMDAiPjxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjEyMDAiIGZpbGw9IiM4MDgwODAiIGZpbGwtb3BhY2l0eT0iMC4xNiIvPjxjaXJjbGUgY3g9Ijg2NCIgY3k9IjM2MCIgcj0iMTIwIiBmaWxsPSIjODA4MDgwIiBmaWxsLW9wYWNpdHk9IjAuMzIiLz48cGF0aCBkPSJNMCA4NjQgTDM2MCA1NDAgTDY2MCA4MTYgTDkwMCA2MjQgTDEyMDAgOTAwIFYxMjAwIEgwIFoiIGZpbGw9IiM4MDgwODAiIGZpbGwtb3BhY2l0eT0iMC4yOCIvPjxwYXRoIGQ9Ik0wIDEwMjAgTDQ4MCA3OTIgTDEyMDAgMTA4MCBWMTIwMCBIMCBaIiBmaWxsPSIjODA4MDgwIiBmaWxsLW9wYWNpdHk9IjAuMzYiLz48L3N2Zz4="
       },
       "mime": {
-        "value": "image/webp"
+        "value": "image/svg+xml"
       },
       "width": {
         "value": 1200
@@ -66,16 +66,16 @@ export const media = [
     "id": "media-bag",
     "locale": "en",
     "kind": "media",
-    "status": "draft",
+    "status": "published",
     "visibility": "public",
     "slug": "field-backpack",
     "title": "Field backpack",
     "metadata": {
       "file": {
-        "value": "media/field-backpack.webp"
+        "value": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjAwIDEyMDAiIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjEyMDAiPjxyZWN0IHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjEyMDAiIGZpbGw9IiM4MDgwODAiIGZpbGwtb3BhY2l0eT0iMC4xNiIvPjxjaXJjbGUgY3g9Ijg2NCIgY3k9IjM2MCIgcj0iMTIwIiBmaWxsPSIjODA4MDgwIiBmaWxsLW9wYWNpdHk9IjAuMzIiLz48cGF0aCBkPSJNMCA4NjQgTDM2MCA1NDAgTDY2MCA4MTYgTDkwMCA2MjQgTDEyMDAgOTAwIFYxMjAwIEgwIFoiIGZpbGw9IiM4MDgwODAiIGZpbGwtb3BhY2l0eT0iMC4yOCIvPjxwYXRoIGQ9Ik0wIDEwMjAgTDQ4MCA3OTIgTDEyMDAgMTA4MCBWMTIwMCBIMCBaIiBmaWxsPSIjODA4MDgwIiBmaWxsLW9wYWNpdHk9IjAuMzYiLz48L3N2Zz4="
       },
       "mime": {
-        "value": "image/webp"
+        "value": "image/svg+xml"
       },
       "width": {
         "value": 1200
@@ -96,16 +96,16 @@ export const media = [
     "id": "media-static-first",
     "locale": "en",
     "kind": "media",
-    "status": "draft",
+    "status": "published",
     "visibility": "public",
     "slug": "static-first-cover",
     "title": "Static-first cover",
     "metadata": {
       "file": {
-        "value": "media/static-first-cover.webp"
+        "value": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyMTAwIDkwMCIgd2lkdGg9IjIxMDAiIGhlaWdodD0iOTAwIj48cmVjdCB3aWR0aD0iMjEwMCIgaGVpZ2h0PSI5MDAiIGZpbGw9IiM4MDgwODAiIGZpbGwtb3BhY2l0eT0iMC4xNiIvPjxjaXJjbGUgY3g9IjE1MTIiIGN5PSIyNzAiIHI9IjkwIiBmaWxsPSIjODA4MDgwIiBmaWxsLW9wYWNpdHk9IjAuMzIiLz48cGF0aCBkPSJNMCA2NDggTDYzMCA0MDUgTDExNTUgNjEyIEwxNTc1IDQ2OCBMMjEwMCA2NzUgVjkwMCBIMCBaIiBmaWxsPSIjODA4MDgwIiBmaWxsLW9wYWNpdHk9IjAuMjgiLz48cGF0aCBkPSJNMCA3NjUgTDg0MCA1OTQgTDIxMDAgODEwIFY5MDAgSDAgWiIgZmlsbD0iIzgwODA4MCIgZmlsbC1vcGFjaXR5PSIwLjM2Ii8+PC9zdmc+"
       },
       "mime": {
-        "value": "image/webp"
+        "value": "image/svg+xml"
       },
       "width": {
         "value": 2100

@@ -96,7 +96,7 @@ const { label, attachLabel, modelLabel, send, href } = defineProps<PromptCompose
         </Button>
       </Group>
       <Button
-        :href="(href ?? '#/')"
+        :href="href"
         variant="secondary"
         size="sm"
         layout="icon"

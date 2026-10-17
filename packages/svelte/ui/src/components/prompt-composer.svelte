@@ -101,7 +101,7 @@
       {/if}
     </Group>
     <Button
-      href={(href ?? "#/")}
+      href={href}
       variant="secondary"
       size="sm"
       layout="icon"

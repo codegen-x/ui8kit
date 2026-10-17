@@ -20,11 +20,11 @@
         {{ ui_text(v_title) }}
       {%- endset -%}
       {{ include('ui/title/title.html.twig', {'p': {'As': ui_i(2), 'Size': 'sm', 'Weight': 'semibold', 'Class': 'leading-7', 'Attrs': ui_attrs(['id', ui_add(v_id, '-title')])}, 'children': c_1}, with_context = false) }}
-      {%- if ui_t(ui_get(v_action, ['label'])) %}
+      {%- if ui_t(ui_and([ui_get(v_action, ['label']), ui_get(v_action, ['href'])])) %}
         {%- set c_2 -%}
           {{ ui_text(ui_get(v_action, ['label'])) }}
         {%- endset -%}
-        {{ include('ui/link/link.html.twig', {'p': {'Href': ui_s(ui_coalesce([ui_get(v_action, ['href']), '#/'])), 'Variant': 'default', 'Class': ui_s(ui_cnv([ui_preset('blocks/presets/defaults.json', ['text', 'tiny']), 'shrink-0 font-medium leading-5'])), 'Attrs': ui_attrs(['data-testid', 'section-action'])}, 'children': c_2}, with_context = false) }}
+        {{ include('ui/link/link.html.twig', {'p': {'Href': ui_s(ui_get(v_action, ['href'])), 'Variant': 'default', 'Class': ui_s(ui_cnv([ui_preset('blocks/presets/defaults.json', ['text', 'tiny']), 'shrink-0 font-medium leading-5'])), 'Attrs': ui_attrs(['data-testid', 'section-action'])}, 'children': c_2}, with_context = false) }}
       {%- endif %}
     {%- endset -%}
     {{ include('ui/group/group.html.twig', {'p': {'Gap': '4', 'Align': 'center', 'Justify': 'between', 'Class': 'w-full'}, 'children': c_3}, with_context = false) }}

@@ -8,6 +8,7 @@ import { For, type JSX } from "solid-js";
 import { Block } from "../primitives/block/block";
 import { Button } from "../primitives/button/button";
 import { Group } from "../primitives/group/group";
+import { Inline } from "../primitives/inline/inline";
 import { LinkPlain } from "../primitives/link-plain/link-plain";
 import { Link } from "../primitives/link/link";
 import { NavBlock } from "../components/nav-block";
@@ -71,15 +72,23 @@ export function HeroHead({
       >
         <Group gap="8" align="center" class="flex-wrap">
           <For each={links ?? []}>{(l) => (
-            <Link
-              href={(l.href ?? "#/")}
-              variant="default"
-              aria-current={((l.id === current) ? "page" : undefined)}
-              class="text-xs font-medium leading-5 text-background"
-              data-testid="nav-link"
-            >
-              {l.name}
-            </Link>
+            <>
+              {l.href ? (
+                <Link
+                  href={l.href}
+                  variant="default"
+                  aria-current={((l.id === current) ? "page" : undefined)}
+                  class="text-xs font-medium leading-5 text-background"
+                  data-testid="nav-link"
+                >
+                  {l.name}
+                </Link>
+              ) : (
+                <Inline class="text-xs font-medium leading-5 text-background" data-testid="nav-link">
+                  {l.name}
+                </Inline>
+              )}
+            </>
           )}</For>
         </Group>
       </NavBlock>
@@ -96,7 +105,7 @@ export function HeroHead({
           </Button>
         ) : null}
         {cta ? (
-          <Button href={(href ?? "#/")} variant="secondary" size="sm" data-testid="header-cta">
+          <Button href={href} variant="secondary" size="sm" data-testid="header-cta">
             {cta}
           </Button>
         ) : null}

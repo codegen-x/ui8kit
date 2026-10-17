@@ -13,6 +13,7 @@ import { Summary } from "../primitives/disclosure/summary";
 import { Grid } from "../primitives/grid/grid";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
+import { EmptyState } from "../components/empty-state";
 import { SearchField } from "../components/search-field";
 import { SectionFrame } from "../components/section-frame";
 import { Switcher } from "../components/switcher";
@@ -28,6 +29,7 @@ export type FaqListProps = {
   filter?: FaqFilter;
   layout?: "accordion" | "chat";
   cols?: "1" | "2";
+  empty?: string;
   multiple?: boolean;
   tone?: "default" | "muted";
   density?: "roomy" | "default" | "compact";
@@ -44,6 +46,7 @@ export function FaqList({
   filter,
   layout = "accordion",
   cols = "1",
+  empty = "",
   multiple = false,
   tone = "default",
   density = "default",
@@ -78,6 +81,9 @@ export function FaqList({
             </SwitcherItem>
           ))}
         </Switcher>
+      ) : null}
+      {((shown?.length ?? 0) === 0) ? (
+        <EmptyState icon="circle-question-mark" title={empty} />
       ) : null}
       {((layout as string) === "chat") ? (
         <Stack gap="4" align="stretch" data-testid="faq">

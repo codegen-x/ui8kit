@@ -8,6 +8,7 @@
 import { type ReactNode } from "react";
 import { Grid } from "../primitives/grid/grid";
 import { Backdrop } from "../components/backdrop";
+import { EmptyState } from "../components/empty-state";
 import { SectionFrame } from "../components/section-frame";
 import { StatFigure } from "../components/stat-figure";
 import { defaults } from "../presets/defaults";
@@ -18,6 +19,7 @@ export type StatsBandProps = {
   id: string;
   title?: string;
   stats: Stat[];
+  empty?: string;
   cols?: "2" | "3" | "4";
   layout?: "row" | "stack";
   surface?: "none" | "image" | "panel";
@@ -32,6 +34,7 @@ export function StatsBand({
   id,
   title = "",
   stats,
+  empty = "",
   cols = "4",
   layout = "row",
   surface = "none",
@@ -63,7 +66,9 @@ export function StatsBand({
       landmarkLabel={landmarkLabel}
     >
       <Backdrop kind={(((surface as string) === "image") ? "image" : "none")} alt={title} />
-      {((surface as string) === "panel") ? (
+      {((stats?.length ?? 0) === 0) ? (
+        <EmptyState icon="chart-column" title={empty} />
+      ) : ((surface as string) === "panel") ? (
         <Grid
           cols={
             (cols as string) === "2" ? "2"

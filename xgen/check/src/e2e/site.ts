@@ -1,9 +1,10 @@
 // The marketing site: header, routes, pricing, theme toggle.
 import type { Page } from "playwright-core";
 import type { E2eResult } from "./common";
+import { fmtMoney } from "../../../runtimes/core/assets/ts/format";
 
 /** the landing: two routes, landmarks, skip link, current link, fixtures on the page, FAQ disclosures, theme, no gradients; each check is one canary-style e2e step */
-export interface SiteData { dict: any; features: number; faq: number; tiers: Array<{ price: number; highlighted: boolean }> }
+export interface SiteData { dict: any; features: number; faq: number; tiers: Array<{ price: number; currency: string; highlighted: boolean }> }
 
 export async function siteScenario(page: Page, base: string, data: SiteData, shot: (label: string) => Promise<void>, snap: (label: string) => Promise<void>): Promise<E2eResult> {
   const failures: string[] = [];
@@ -58,7 +59,9 @@ export async function siteScenario(page: Page, base: string, data: SiteData, sho
   expect("only Pricing is current", JSON.stringify(await current()) === JSON.stringify([`${t.header.pricing}=page`]), await current());
   expect("one plan card per tier", (await count('[data-testid="tiers"] [data-highlighted]')) === data.tiers.length, await count('[data-testid="tiers"] [data-highlighted]'));
   const prices = await page.$$eval('[data-testid="tiers"] [data-highlighted] h2', (els) => els.map((e) => (e.textContent ?? "").trim()));
-  expect("prices come from the fixture", data.tiers.every((tier, i) => (tier.price === 0 ? prices[i] === "Free" : (prices[i] ?? "").includes(String(tier.price)))), prices);
+  // the expected display from the fixture through the formatter the blocks use: integer minor units + currency -> fmtMoney
+  const shown = data.tiers.map((tier) => (tier.price === 0 ? data.dict.pricing.free : fmtMoney(tier.price, tier.currency)));
+  expect("prices come from the fixture", JSON.stringify(prices) === JSON.stringify(shown), { prices, shown });
   const want = data.tiers.filter((x) => x.highlighted).length;
   expect("the highlighted tier is marked and has the badge", (await count('[data-testid="tiers"] [data-highlighted="true"]')) === want && (await page.getByText("Popular", { exact: true }).count()) === want);
   // 4. FAQ: native disclosures

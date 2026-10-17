@@ -1,6 +1,6 @@
 <!-- Two columns: the article in the main column, an aside with related reading and topics beside it. -->
 <script lang="ts">
-  import { Block, ArticleBody, Card, CardContent, CardHeader, CardTitle, Link, PostHeader } from "@ui8kit/svelte-ui";
+  import { Block, ArticleBody, Card, CardContent, CardHeader, CardTitle, Inline, PostHeader } from "@ui8kit/svelte-ui";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { dataFor } from "./registry-data";
   import Header from "./header.svelte";
@@ -23,7 +23,7 @@
       <CardHeader><CardTitle>{d.ui.vibe.posts.topics}</CardTitle></CardHeader>
       <CardContent>
         <ul class="tp-list">
-          {#each d.topics as t (t.id)}<li><Link href="#">{t.title}</Link></li>{/each}
+          {#each d.topics as t (t.id)}<li><Inline>{t.title}</Inline></li>{/each}
         </ul>
       </CardContent>
     </Card>
@@ -31,7 +31,7 @@
       <CardHeader><CardTitle>{d.ui.content.posts.title}</CardTitle></CardHeader>
       <CardContent>
         <ul class="tp-list">
-          {#each d.posts.slice(1, 5) as p (p.id)}<li><Link href="#">{p.title}</Link><span class="tp-meta">{p.author}, {p.date}</span></li>{/each}
+          {#each d.posts.slice(1, 5) as p (p.id)}<li><Inline>{p.title}</Inline><span class="tp-meta">{p.author}, {p.date}</span></li>{/each}
         </ul>
       </CardContent>
     </Card>

@@ -8,7 +8,8 @@ import { tsOf } from "../props";
 export const NavLink = fields(["id", "string"], ["name", "string"], ["icon", "string"], ["href", "string", true]);
 export const Group = fields(["id", "string"], ["title", "string"], ["icon", "string"], ["links", "string[]"]);
 
-export const link = (l: string, current: Value): ViewNode => use("Link", { props: { Href: coalesce(ref(`${l}.href`), "#/"), Variant: "default", AriaCurrent: cond(eq(ref(`${l}.id`), current), "page", undef()), Class: "text-sm" }, attrs: { "data-testid": "nav-link" } }, text(ref(`${l}.name`)));
+/** a menu entry: a link to its address; without one an anchor with no href (a placeholder, not a link; no "#/" stand-in) */
+export const link = (l: string, current: Value): ViewNode => use("Link", { props: { Href: ref(`${l}.href`), Variant: "default", AriaCurrent: cond(eq(ref(`${l}.id`), current), "page", undef()), Class: "text-sm" }, attrs: { "data-testid": "nav-link" } }, text(ref(`${l}.name`)));
 export const brandLink = (): ViewNode => use("Link", { props: { Href: "#/", Variant: "default", Class: "text-lg font-medium" }, attrs: { "data-testid": "brand" } }, text(ref("brand")));
 const P = "pattern.";
 /** the menu links of a bar: all of them, or the left or right half (the split layout puts the brand between) */

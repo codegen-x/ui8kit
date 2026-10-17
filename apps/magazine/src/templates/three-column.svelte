@@ -1,6 +1,6 @@
 <!-- Three columns: navigation on the left, the content in the middle, an aside with figures and activity on the right. -->
 <script lang="ts">
-  import { Block, ArticleBody, Card, CardContent, CardHeader, CardTitle, Link, PostHeader, SidebarNav } from "@ui8kit/svelte-ui";
+  import { Block, ArticleBody, Card, CardContent, CardHeader, CardTitle, Inline, PostHeader, SidebarNav } from "@ui8kit/svelte-ui";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { dataFor } from "./registry-data";
   import Header from "./header.svelte";
@@ -34,7 +34,7 @@
       <CardHeader><CardTitle>{d.ui.content.posts.title}</CardTitle></CardHeader>
       <CardContent>
         <ul class="tp-list">
-          {#each d.posts.slice(2, 5) as p (p.id)}<li><Link href="#">{p.title}</Link></li>{/each}
+          {#each d.posts.slice(2, 5) as p (p.id)}<li><Inline>{p.title}</Inline></li>{/each}
         </ul>
       </CardContent>
     </Card>

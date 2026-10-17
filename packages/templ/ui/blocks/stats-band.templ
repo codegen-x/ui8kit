@@ -13,6 +13,7 @@ type StatsBandProps struct {
 	Id any `json:"id"`
 	Title any `json:"title"`
 	Stats any `json:"stats"`
+	Empty any `json:"empty"`
 	Cols any `json:"cols"`
 	Layout any `json:"layout"`
 	Surface any `json:"surface"`
@@ -28,6 +29,7 @@ templ StatsBand(p StatsBandProps) {
 	{{ vId := p.Id }}
 	{{ vTitle := uiutils.Def(p.Title, "") }}
 	{{ vStats := p.Stats }}
+	{{ vEmpty := uiutils.Def(p.Empty, "") }}
 	{{ vCols := uiutils.Def(p.Cols, "4") }}
 	{{ vLayout := uiutils.Def(p.Layout, "row") }}
 	{{ vSurface := uiutils.Def(p.Surface, "none") }}
@@ -38,7 +40,9 @@ templ StatsBand(p StatsBandProps) {
 	{{ vLandmarkLabel := p.LandmarkLabel }}
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Tone: vTone, Density: vDensity, Align: vAlign, Measure: uiutils.Cond(uiutils.T(uiutils.Eq(vSurface, "panel")), "fill", uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "stack")), "xs", "default")), Class: uiutils.Cnv(uiutils.Cnv(uiutils.Cnv(uiutils.Cond(uiutils.T(uiutils.Eq(vSurface, "image")), "bg-transparent", ""), uiutils.Cond(uiutils.T(uiutils.Eq(vSurface, "panel")), "py-0", "")), uiutils.Cond(uiutils.T(uiutils.Eq(uiutils.Cond(uiutils.T(uiutils.Eq(vSurface, "image")), "image", "none"), "image")), "relative isolate overflow-hidden", ""))), LandmarkLabel: vLandmarkLabel}) {
 		@Backdrop(BackdropProps{Kind: uiutils.Cond(uiutils.T(uiutils.Eq(vSurface, "image")), "image", "none"), Alt: vTitle})
-		if uiutils.Eq(vSurface, "panel") {
+		if uiutils.Eq(uiutils.Len(vStats), float64(0)) {
+			@EmptyState(EmptyStateProps{Icon: "chart-column", Title: vEmpty})
+		} else if uiutils.Eq(vSurface, "panel") {
 			@grid.Grid(grid.GridProps{Cols: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "2")), "2", uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "3")), "2-3", uiutils.Cond(uiutils.T(uiutils.Eq(vCols, "4")), "2-4", "3-6")))), Class: uiutils.S(uiutils.Cnv("w-full items-center bg-muted px-6", uiutils.Get(presetDefaults, "stats", "panel"))), Attrs: uiutils.Attrs("data-testid", "items")}) {
 				for _, vStat := range uiutils.L(vStats) {
 					@StatFigure(StatFigureProps{Stat: vStat, Item: vItem, Align: vAlign})

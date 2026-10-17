@@ -28,7 +28,13 @@
   const TERMINAL_FIELDS = {"id":"id","text":"title","kind":"metadata.line_kind.value"} as const;
   const LOGOS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
   const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
-  const STATS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
+  const STATS_FIELDS = {
+    "id": "id",
+    "label": "title",
+    "value": "metadata.value.value|number",
+    "icon": "metadata.icon.value",
+    "hint": "metadata.hint.value",
+  } as const;
   const TESTIMONIALS_FIELDS = {
     "id": "id",
     "author": "title",

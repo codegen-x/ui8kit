@@ -137,6 +137,8 @@ export * from "./components/post-outline";
 export * from "./components/post-overlay-card";
 export * from "./components/post-stats";
 export * from "./components/post-tags";
+export * from "./components/product-gallery";
+export * from "./components/product-price";
 export * from "./components/project-tiles";
 export * from "./components/prompt-composer";
 export * from "./components/quote-card";

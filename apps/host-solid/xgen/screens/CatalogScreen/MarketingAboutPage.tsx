@@ -28,7 +28,13 @@ import { values as valuesEntries } from "@ui8kit/app-shared/data/values";
 import { profilefacts as profilefactsEntries } from "@ui8kit/app-shared/data/profilefacts";
 import { skills as skillsEntries } from "@ui8kit/app-shared/data/skills";
 
-const STATS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
+const STATS_FIELDS = {
+  "id": "id",
+  "label": "title",
+  "value": "metadata.value.value|number",
+  "icon": "metadata.icon.value",
+  "hint": "metadata.hint.value",
+} as const;
 const VALUES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 const PROFILEFACTS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value"} as const;
 const SKILLS_FIELDS = {"id":"id","label":"title","level":"metadata.level.value"} as const;

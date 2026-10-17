@@ -26,7 +26,7 @@ import { terminal as terminalEntries } from "@ui8kit/app-shared/data/terminal";
 import { testimonials as testimonialsEntries } from "@ui8kit/app-shared/data/testimonials";
 
 const RIVALS_FIELDS = {"id":"id","label":"title","a":"metadata.a.value","b":"metadata.b.value","c":"metadata.c.value"} as const;
-const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
+const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"terms|term-slug:faq_category"} as const;
 const FAQTABS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
 const TERMINAL_FIELDS = {"id":"id","text":"title","kind":"metadata.line_kind.value"} as const;
 const TESTIMONIALS_FIELDS = {
@@ -103,6 +103,7 @@ const testimonials = fromCodex<Quote>(testimonialsEntries, TESTIMONIALS_FIELDS, 
     id="compare-faq"
     :title="ui.site.pricing.faqTitle"
     :items="faq"
+    :empty="ui.vibe.faq.empty"
     :search="{ label: ui.vibe.faq.search, query: '', mode: 'field' }"
     :filter="{ tabs: faqtabs, label: ui.vibe.faq.tabs, category: '', mode: 'none' }"
     layout="accordion"

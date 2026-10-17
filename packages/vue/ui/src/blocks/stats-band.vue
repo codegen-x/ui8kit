@@ -12,6 +12,7 @@ export type StatsBandProps = {
   id: string;
   title?: string;
   stats: Stat[];
+  empty?: string;
   cols?: "2" | "3" | "4";
   layout?: "row" | "stack";
   surface?: "none" | "image" | "panel";
@@ -26,6 +27,7 @@ export type StatsBandProps = {
 <script setup lang="ts">
 import Grid from "../primitives/grid/grid.vue";
 import Backdrop from "../components/backdrop.vue";
+import EmptyState from "../components/empty-state.vue";
 import SectionFrame from "../components/section-frame.vue";
 import StatFigure from "../components/stat-figure.vue";
 import { defaults } from "../presets/defaults";
@@ -35,6 +37,7 @@ const {
   id,
   title = "",
   stats,
+  empty = "",
   cols = "4",
   layout = "row",
   surface = "none",
@@ -68,7 +71,8 @@ const {
     :landmarkLabel="landmarkLabel"
   >
     <Backdrop :kind="(((surface as string) === 'image') ? 'image' : 'none')" :alt="title" />
-    <Grid v-if="((surface as string) === 'panel')"
+    <EmptyState v-if="((stats?.length ?? 0) === 0)" icon="chart-column" :title="empty" />
+    <Grid v-else-if="((surface as string) === 'panel')"
       :cols="
         (cols as string) === '2' ? '2'
         : (cols as string) === '3' ? '2-3'

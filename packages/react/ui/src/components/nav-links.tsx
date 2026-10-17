@@ -23,7 +23,7 @@ export function NavLinks({ links, current = "", side = "all" }: NavLinksProps) {
         <Fragment key={l.id}>
           {(((side as string) === "all") || (((i * 2) < count) === ((side as string) === "left"))) ? (
             <Link
-              href={(l.href ?? "#/")}
+              href={l.href}
               variant="default"
               aria-current={((l.id === current) ? "page" : undefined)}
               className="text-sm"

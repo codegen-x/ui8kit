@@ -184,7 +184,7 @@
       "fields": {
         "id": "id",
         "label": "title",
-        "value": "metadata.value.value",
+        "value": "metadata.value.value|number",
         "icon": "metadata.icon.value",
         "hint": "metadata.hint.value"
       }

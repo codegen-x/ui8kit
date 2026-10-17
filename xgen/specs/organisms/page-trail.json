@@ -62,7 +62,7 @@
         "ts": "NavLink[]"
       },
       "required": true,
-      "docs": "the parent pages, then the current page"
+      "docs": "the trail of pages (a parent_id chain): the parent pages, then the current page; empty: no breadcrumbs"
     },
     {
       "name": "extras",
@@ -187,18 +187,36 @@
           },
           "children": [
             {
-              "organism": "PageCrumbs",
-              "props": {
-                "label": {
-                  "$": "label"
-                },
-                "crumbs": {
-                  "$": "crumbs"
-                },
-                "landmarkLabel": {
-                  "$": "landmarkLabel"
+              "when": {
+                "op": "gt",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "crumbs"
+                      }
+                    ]
+                  },
+                  0
+                ]
+              },
+              "then": [
+                {
+                  "organism": "PageCrumbs",
+                  "props": {
+                    "label": {
+                      "$": "label"
+                    },
+                    "crumbs": {
+                      "$": "crumbs"
+                    },
+                    "landmarkLabel": {
+                      "$": "landmarkLabel"
+                    }
+                  }
                 }
-              }
+              ]
             },
             {
               "use": "Box",

@@ -71,6 +71,7 @@
   ],
   "slots": [
     "ArticleBlock",
+    "EmptyState",
     "MediaFrame",
     "Rating",
     "SectionFrame"

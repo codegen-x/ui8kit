@@ -37,8 +37,14 @@ const PRODUCTS_FIELDS = {
   "href": "slug|route",
   "image": "featured_media_id|media",
 } as const;
-const CRUMBS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
-const STATS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
+const CRUMBS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","href":"slug|route"} as const;
+const STATS_FIELDS = {
+  "id": "id",
+  "label": "title",
+  "value": "metadata.value.value|number",
+  "icon": "metadata.icon.value",
+  "hint": "metadata.hint.value",
+} as const;
 
 const categories = fromCodex<Category>(categoriesEntries, CATEGORIES_FIELDS, CODEX);
 const products = fromCodex<Product>(productsEntries, PRODUCTS_FIELDS, CODEX);

@@ -50,7 +50,7 @@ const ctaBand = spec(`${O}cta-band`, "CtaBand", "A closing call to action: a hea
 });
 
 const ctaBanner = spec(`${O}cta-banner`, "CtaBanner", "A centered closing card: heading, one sentence and a pill button. Sizes from the default preset.", {
-  props: [id, title, { name: "text", type: "string", required: true }, { name: "cta", type: "string", required: true }, { name: "href", type: "string", required: true }, { name: "tone", type: tone, default: "muted" }],
+  props: [id, title, { name: "text", type: "string", required: true }, { name: "cta", type: "string", required: true }, { name: "href", type: "string", docs: "the address; none: a button, not a link" }, { name: "tone", type: tone, default: "muted" }],
   view: [use("Block", { props: { Tag: "section", Class: "w-full py-0" }, attrs: { "aria-labelledby": fid("title"), "data-testid": "section", "data-tone": ref("tone"), "data-density": "compact" } },
     use("Box", { props: { Class: cn("flex w-full flex-col items-center gap-10 bg-muted px-6 text-center", layoutOf("cta.panel")) }, attrs: { "data-testid": "cta-banner" } },
       use("Title", { props: { As: 2, Size: "3xl", Weight: "semibold", Class: cn(layoutOf("cta.title"), "leading-9") }, attrs: { id: fid("title") } }, text(ref("title"))),
@@ -106,6 +106,7 @@ const faqList = spec(`${O}faq-list`, "FaqList", "A section with a heading and th
     { name: "filter", type: rec("FaqFilter"), docs: "the category tabs and the chosen one" },
     { name: "layout", type: tsOf("accordion", "chat"), default: "accordion" },
     { name: "cols", type: tsOf("1", "2"), default: "1" },
+    { name: "empty", type: "string", default: "", docs: "the text of the empty state (no question, or none matches the search or tab), from the dictionary" },
     { name: "multiple", type: "boolean", default: false, docs: "true: several can be open at once; false: opening one closes the others (native details name)" },
     { name: "tone", type: tone, default: "default" },
     { name: "density", type: density, default: "default" },
@@ -124,6 +125,7 @@ const faqList = spec(`${O}faq-list`, "FaqList", "A section with a heading and th
       when(eq(ref("search.mode"), "field"), [organism("SearchField", { label: coalesce(ref("search.label"), ""), placeholder: ref("search.label"), value: coalesce(ref("search.query"), "") }, { on: { value: call("emit.query", ref("arg")) } })]),
       when(eq(ref("filter.mode"), "categories"), [organism("Switcher", { label: ref("filter.label") }, kids(
         each(ref("filter.tabs"), "tab", ref("tab.id"), organism("SwitcherItem", { active: eq(ref("tab.value"), ref("filter.category")) }, { on: { click: call("emit.category", ref("tab.value")) }, ...kids(text(ref("tab.title"))) }))))]),
+      when(eq(len(shown), 0), [organism("EmptyState", { icon: "circle-question-mark", title: ref("empty") })]),
       when(eq(ref("layout"), "chat"),
         [use("Stack", { props: { Gap: "4", Align: "stretch" }, attrs: { "data-testid": "faq" } },
           each(shown, "item", ref("item.id"),

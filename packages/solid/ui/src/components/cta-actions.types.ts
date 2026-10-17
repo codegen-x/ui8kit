@@ -6,7 +6,8 @@ export type ActionSet = {
   mode?: "one" | "two" | "form";
   /** primary action label */
   cta: string;
-  href: string;
+  /** the address of the primary action; none: a button, not a link */
+  href?: string;
   secondary?: string;
   secondaryHref?: string;
   /** label of the form field (the email field, or the prompt line of HeroPrompt) */

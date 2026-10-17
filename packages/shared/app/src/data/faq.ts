@@ -10,12 +10,15 @@ export const faq = [
     "visibility": "public",
     "slug": "trial",
     "title": "Is there a free plan?",
+    "terms": [
+      {
+        "taxonomy": "faq_category",
+        "term_id": "faq-category-billing"
+      }
+    ],
     "metadata": {
       "answer": {
         "value": "Yes. Solo is free and has no time limit."
-      },
-      "category": {
-        "value": "billing"
       }
     },
     "version": 1,
@@ -31,12 +34,15 @@ export const faq = [
     "visibility": "public",
     "slug": "switch",
     "title": "Can I change plans later?",
+    "terms": [
+      {
+        "taxonomy": "faq_category",
+        "term_id": "faq-category-account"
+      }
+    ],
     "metadata": {
       "answer": {
         "value": "You can move up or down at any time; the change applies to the next month."
-      },
-      "category": {
-        "value": "account"
       }
     },
     "version": 1,
@@ -52,12 +58,15 @@ export const faq = [
     "visibility": "public",
     "slug": "export",
     "title": "Can I export my data?",
+    "terms": [
+      {
+        "taxonomy": "faq_category",
+        "term_id": "faq-category-account"
+      }
+    ],
     "metadata": {
       "answer": {
         "value": "Every plan can export all content as files."
-      },
-      "category": {
-        "value": "account"
       }
     },
     "version": 1,
@@ -73,12 +82,15 @@ export const faq = [
     "visibility": "public",
     "slug": "support",
     "title": "How fast is support?",
+    "terms": [
+      {
+        "taxonomy": "faq_category",
+        "term_id": "faq-category-billing"
+      }
+    ],
     "metadata": {
       "answer": {
         "value": "Team answers within one working day, Scale within four hours."
-      },
-      "category": {
-        "value": "billing"
       }
     },
     "version": 1,

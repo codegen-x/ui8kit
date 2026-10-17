@@ -5,14 +5,16 @@ import { spec, ts } from "../kit";
 import { muted, strong, surface } from "../ux";
 import { tsOf } from "../props";
 
-export const pageCrumbs = spec("pattern.page-crumbs", "PageCrumbs", "The breadcrumbs of an inner page: links to the parent pages separated by chevrons; the last entry is the current page and is not a link.", {
+export const pageCrumbs = spec("pattern.page-crumbs", "PageCrumbs", "The breadcrumbs of an inner page: the parent pages (links where they have an href) separated by chevrons; the last entry is the current page and is not a link.", {
   typeImports: [{ from: "NavBar", names: ["NavLink"] }],
   props: [{ name: "label", type: "string", required: true, docs: "accessible name of the breadcrumbs" }, { name: "crumbs", type: ts("NavLink[]"), required: true }],
   derived: [{ name: "last", value: sub(len(ref("crumbs")), 1) }],
   view: [use("Block", { props: { Tag: "nav" }, attrs: { "aria-label": ref("label"), "data-testid": "crumbs" } },
     use("List", { props: { Class: "m-0 flex list-none flex-wrap items-center gap-2 p-0 text-sm text-muted-foreground" } },
       eachAt(ref("crumbs"), "c", "i", ref("c.id"), use("ListItem", { props: { Class: "flex items-center gap-2" } },
-        when(lt(ref("i"), ref("last")), [use("Link", { props: { Href: "#/", Variant: "muted", Size: "sm" }, attrs: { "data-testid": "crumb" } }, text(ref("c.name"))),
+        // a parent page: a link where the app routes pages (href from its slug), else its name; the chevron either way
+        when(lt(ref("i"), ref("last")), [when(ref("c.href"), [use("Link", { props: { Href: ref("c.href"), Variant: "muted", Size: "sm" }, attrs: { "data-testid": "crumb" } }, text(ref("c.name")))],
+          [use("Inline", { attrs: { "data-testid": "crumb" } }, text(ref("c.name")))]),
           use("LucideIcon", { props: { Name: "chevron-right", Size: 16 } })],
         [use("Inline", { props: { Class: "font-medium text-foreground" }, attrs: { "aria-current": "page" } }, text(ref("c.name")))])))))],
 });

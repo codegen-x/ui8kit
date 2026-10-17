@@ -7,7 +7,7 @@ export type CtaBannerProps = {
   title: string;
   text: string;
   cta: string;
-  href: string;
+  href?: string;
   tone?: "default" | "muted";
   landmarkLabel?: string;
 };

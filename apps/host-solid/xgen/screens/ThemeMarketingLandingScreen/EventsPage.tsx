@@ -22,7 +22,13 @@ import { stats as statsEntries } from "@ui8kit/app-shared/data/stats";
 import { testimonials as testimonialsEntries } from "@ui8kit/app-shared/data/testimonials";
 
 const TERMINAL_FIELDS = {"id":"id","text":"title","kind":"metadata.line_kind.value"} as const;
-const STATS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
+const STATS_FIELDS = {
+  "id": "id",
+  "label": "title",
+  "value": "metadata.value.value|number",
+  "icon": "metadata.icon.value",
+  "hint": "metadata.hint.value",
+} as const;
 const TESTIMONIALS_FIELDS = {
   "id": "id",
   "author": "title",
@@ -70,6 +76,7 @@ export function EventsPage() {
         id="events-stats"
         title={ui.marketing.stats.title}
         stats={[stats?.[0], stats?.[1], stats?.[2]]}
+        empty={ui.marketing.stats.empty}
         cols="3"
         layout="row"
         surface="none"

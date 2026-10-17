@@ -119,7 +119,7 @@ export function HeroClassic({
                   id={tpl("{0}-email", id)}
                   data-testid="field"
                 />
-                <Button variant="default" size="default" href={(actions?.href ?? "#/")} data-testid="submit">
+                <Button variant="default" size="default" href={actions?.href} data-testid="submit">
                   {actions?.cta}
                 </Button>
               </Group>

@@ -150,3 +150,18 @@ test("authors and terms: author_id prints the user's display name, terms|term:<t
   expect(readPath(e, "terms|term:brand", { terms })).toBeUndefined();
   expect(readPath(e, "terms|term:category")).toBeUndefined();
 });
+
+test("figures, term slugs and trails: |number formats by locale with the unit, |term-slug: gives the slug, trail() follows parent_id", async () => {
+  const { readPath, trail } = await import("../assets/app/core");
+  const stat = (value: unknown, unit?: string) => ({ id: "s", locale: "en", kind: "stat", metadata: { value: { value }, ...(unit ? { unit: { value: unit } } : {}) } });
+  expect(readPath(stat(12400), "metadata.value.value|number")).toBe("12,400");
+  expect(readPath(stat(99.99, "percent"), "metadata.value.value|number")).toBe("99.99%");
+  expect(readPath(stat(0.8, "second"), "metadata.value.value|number")).toBe("0.8s");
+  expect(readPath(stat(12400), "metadata.value.value|number", { locale: "de" })).toBe("12.400");
+  expect(readPath(stat("12,400"), "metadata.value.value|number")).toBeUndefined();
+  const terms = [{ id: "faq-category-billing", locale: "en", taxonomy_id: "faq_category", name: "Billing", slug: "billing" }];
+  expect(readPath({ id: "f", locale: "en", terms: [{ taxonomy: "faq_category", term_id: "faq-category-billing" }] }, "terms|term-slug:faq_category", { terms })).toBe("billing");
+  const pages = [{ id: "c", parent_id: "b" }, { id: "a" }, { id: "b", parent_id: "a" }, { id: "x", parent_id: "a" }];
+  expect(trail(pages, "c").map((p) => p.id)).toEqual(["a", "b", "c"]);
+  expect(trail(pages.slice(0, 3)).map((p) => p.id)).toEqual(["a", "b", "c"]);
+});

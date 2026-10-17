@@ -33,7 +33,7 @@ export function SectionHeader({
 }: SectionHeaderProps) {
   const level = heading?.level ?? 2;
   const scale = heading?.scale ?? "default";
-  const linkHref = action?.href ?? "#/";
+  const hasAction = action?.label && action?.href;
   return (
     <>
       {heading?.badge ? (
@@ -41,7 +41,7 @@ export function SectionHeader({
           {heading?.badge}
         </Badge>
       ) : null}
-      {(((title as string) !== "") && action?.label) ? (
+      {(((title as string) !== "") && hasAction) ? (
         <Group gap="4" align="center" justify="between" className="w-full flex-wrap">
           <Title
             as={level}
@@ -57,7 +57,7 @@ export function SectionHeader({
             {title}
           </Title>
           <Link
-            href={linkHref}
+            href={action?.href}
             variant="default"
             className={cn(defaults.text.tiny, "shrink-0 font-medium leading-5")}
             data-testid="section-action"
@@ -66,7 +66,7 @@ export function SectionHeader({
           </Link>
         </Group>
       ) : null}
-      {(((title as string) !== "") && !action?.label) ? (
+      {(((title as string) !== "") && !hasAction) ? (
         <Title
           as={level}
           size={((level === 1) ? "5xl" : "xl")}
@@ -81,10 +81,10 @@ export function SectionHeader({
           {title}
         </Title>
       ) : null}
-      {(((title as string) === "") && action?.label) ? (
+      {(((title as string) === "") && hasAction) ? (
         <Group gap="4" align="center" justify="end" className="w-full">
           <Link
-            href={linkHref}
+            href={action?.href}
             variant="default"
             className={cn(defaults.text.tiny, "shrink-0 font-medium leading-5")}
             data-testid="section-action"

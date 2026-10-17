@@ -28,6 +28,7 @@ import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
 import ArticleBlock from "../components/article-block.vue";
+import EmptyState from "../components/empty-state.vue";
 import MediaFrame from "../components/media-frame.vue";
 import Rating from "../components/rating.vue";
 import SectionFrame from "../components/section-frame.vue";
@@ -56,6 +57,7 @@ const {
     :measure="(((layout as string) === 'list') ? '2xl' : 'default')"
     :landmarkLabel="landmarkLabel"
   >
+    <EmptyState v-if="((reviews?.length ?? 0) === 0)" icon="message-square-quote" :title="labels.empty" />
     <Grid :cols="(((layout as string) === 'grid') ? '1-3' : '1')" class="gap-4" data-testid="items">
       <ArticleBlock v-for="r in reviews" :key="r.id"
         :class="cn(

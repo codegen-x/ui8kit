@@ -26,6 +26,7 @@
   import Block from "../primitives/block/block.svelte";
   import Button from "../primitives/button/button.svelte";
   import Group from "../primitives/group/group.svelte";
+  import Inline from "../primitives/inline/inline.svelte";
   import Link from "../primitives/link/link.svelte";
   import LinkPlain from "../primitives/link-plain/link-plain.svelte";
   import NavBlock from "../components/nav-block.svelte";
@@ -76,15 +77,21 @@
   >
     <Group gap="8" align="center" class="flex-wrap">
       {#each links as l (l.id)}
-        <Link
-          href={(l.href ?? "#/")}
-          variant="default"
-          aria-current={((l.id === current) ? "page" : undefined)}
-          class="text-xs font-medium leading-5 text-background"
-          data-testid="nav-link"
-        >
-          {l.name}
-        </Link>
+        {#if l.href}
+          <Link
+            href={l.href}
+            variant="default"
+            aria-current={((l.id === current) ? "page" : undefined)}
+            class="text-xs font-medium leading-5 text-background"
+            data-testid="nav-link"
+          >
+            {l.name}
+          </Link>
+        {:else}
+          <Inline class="text-xs font-medium leading-5 text-background" data-testid="nav-link">
+            {l.name}
+          </Inline>
+        {/if}
       {/each}
     </Group>
   </NavBlock>
@@ -101,7 +108,7 @@
       </Button>
     {/if}
     {#if cta}
-      <Button href={(href ?? "#/")} variant="secondary" size="sm" data-testid="header-cta">
+      <Button href={href} variant="secondary" size="sm" data-testid="header-cta">
         {cta}
       </Button>
     {/if}

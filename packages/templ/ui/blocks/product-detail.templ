@@ -4,9 +4,7 @@
 package blocks
 
 import (
-	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/badge"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/button"
-	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/grid"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/group"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/inline"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/list"
@@ -46,47 +44,49 @@ templ ProductDetail(p ProductDetailProps) {
 	{{ vTone := uiutils.Def(p.Tone, "default") }}
 	{{ vDensity := uiutils.Def(p.Density, "default") }}
 	{{ vLandmarkLabel := p.LandmarkLabel }}
-	@SectionFrame(SectionFrameProps{Id: vId, Title: uiutils.Get(vProduct, "name"), Lead: uiutils.Get(vProduct, "summary"), Heading: map[string]any{"level": vLevel}, Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "split", "stack"), Media: map[string]any{"show": true, "side": vMediaSide, "align": "start"}, Tone: vTone, Density: vDensity, LandmarkLabel: vLandmarkLabel, Aside: productDetailFill1(p, vProduct, vThumbs)}) {
-		@stack.Stack(stack.StackProps{Gap: "4", Align: "stretch", Attrs: uiutils.Attrs("data-testid", "buy-box")}) {
-			@group.Group(group.GroupProps{Gap: "4", Align: "center", Class: "flex-wrap"}) {
-				@text.Text(text.TextProps{Size: "4xl", Weight: "bold"}) {
-					{ uiutils.Text(uiutils.Money(uiutils.Get(vProduct, "price"), uiutils.Get(vProduct, "currency"))) }
-				}
-				if uiutils.T(uiutils.Get(vProduct, "badge")) {
-					@badge.Badge(badge.BadgeProps{Variant: "default", Size: "default"}) {
-						{ uiutils.Text(uiutils.At(vBadges, uiutils.Get(vProduct, "badge"))) }
+	if !uiutils.T(vProduct) {
+		@SectionFrame(SectionFrameProps{Id: vId, Tone: vTone, Density: vDensity, LandmarkLabel: vLandmarkLabel}) {
+			@EmptyState(EmptyStateProps{Icon: "package", Title: uiutils.Get(vLabels, "empty")})
+		}
+	} else {
+		@SectionFrame(SectionFrameProps{Id: vId, Title: uiutils.Get(vProduct, "name"), Lead: uiutils.Get(vProduct, "summary"), Heading: map[string]any{"level": vLevel}, Layout: uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "split", "stack"), Media: map[string]any{"show": true, "side": vMediaSide, "align": "start"}, Tone: vTone, Density: vDensity, LandmarkLabel: vLandmarkLabel, Aside: productDetailFill1(p, vProduct, vThumbs)}) {
+			@stack.Stack(stack.StackProps{Gap: "4", Align: "stretch", Attrs: uiutils.Attrs("data-testid", "buy-box")}) {
+				if uiutils.T(uiutils.Get(vProduct, "category")) {
+					@text.Text(text.TextProps{Size: "xs", Class: "uppercase tracking-wide text-muted-foreground", Attrs: uiutils.Attrs("data-testid", "category")}) {
+						{ uiutils.Text(uiutils.Get(vProduct, "category")) }
 					}
 				}
-			}
-			@group.Group(group.GroupProps{Gap: "2"}) {
-				@Rating(RatingProps{Value: uiutils.Get(vProduct, "rating"), Label: uiutils.Tpl(uiutils.Get(vLabels, "ratingLabel"), uiutils.Get(vProduct, "rating"))})
-				@text.Text(text.TextProps{Size: "sm", Class: "text-muted-foreground"}) {
-					{ uiutils.Text(uiutils.Tpl(uiutils.Get(vLabels, "reviews"), uiutils.Get(vProduct, "reviews"))) }
+				@ProductPrice(ProductPriceProps{Price: uiutils.Get(vProduct, "price"), CompareAt: uiutils.Get(vProduct, "compareAt"), Currency: uiutils.Get(vProduct, "currency"), Badge: uiutils.Cond(uiutils.T(uiutils.Get(vProduct, "badge")), uiutils.At(vBadges, uiutils.Get(vProduct, "badge")), ""), Was: uiutils.Get(vLabels, "was")})
+				@group.Group(group.GroupProps{Gap: "2"}) {
+					@Rating(RatingProps{Value: uiutils.Get(vProduct, "rating"), Label: uiutils.Tpl(uiutils.Get(vLabels, "ratingLabel"), uiutils.Get(vProduct, "rating"))})
+					@text.Text(text.TextProps{Size: "sm", Class: "text-muted-foreground"}) {
+						{ uiutils.Text(uiutils.Tpl(uiutils.Get(vLabels, "reviews"), uiutils.Get(vProduct, "reviews"))) }
+					}
 				}
-			}
-			@text.Text(text.TextProps{Size: "sm", Weight: "medium", Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Get(vProduct, "inStock")), "text-foreground", "text-destructive")), Attrs: uiutils.Attrs("data-testid", "stock")}) {
-				{ uiutils.Text(uiutils.Cond(uiutils.T(uiutils.Get(vProduct, "inStock")), uiutils.Get(vLabels, "inStock"), uiutils.Get(vLabels, "soldOut"))) }
-			}
-			@group.Group(group.GroupProps{Gap: "4", Class: "flex-wrap"}) {
+				@text.Text(text.TextProps{Size: "sm", Weight: "medium", Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Get(vProduct, "inStock")), "text-foreground", "text-destructive")), Attrs: uiutils.Attrs("data-testid", "stock")}) {
+					{ uiutils.Text(uiutils.Cond(uiutils.T(uiutils.Get(vProduct, "inStock")), uiutils.Get(vLabels, "inStock"), uiutils.Get(vLabels, "soldOut"))) }
+				}
+				@group.Group(group.GroupProps{Gap: "4", Class: "flex-wrap"}) {
+					if uiutils.Eq(vBuy, "full") {
+						@NumberField(NumberFieldProps{Value: "1", Name: uiutils.Tpl("{0}-qty", vId), Min: "1", Label: uiutils.Get(vLabels, "qty"), Decrease: uiutils.Get(vLabels, "decrease"), Increase: uiutils.Get(vLabels, "increase")})
+					}
+					@button.Button(button.ButtonProps{Disabled: uiutils.T(!uiutils.T(uiutils.Get(vProduct, "inStock"))), Attrs: uiutils.Attrs("data-testid", "add")}) {
+						{ uiutils.Text(uiutils.Get(vLabels, "add")) }
+					}
+				}
 				if uiutils.Eq(vBuy, "full") {
-					@NumberField(NumberFieldProps{Value: "1", Name: uiutils.Tpl("{0}-qty", vId), Min: "1", Label: uiutils.Get(vLabels, "qty"), Decrease: uiutils.Get(vLabels, "decrease"), Increase: uiutils.Get(vLabels, "increase")})
-				}
-				@button.Button(button.ButtonProps{Disabled: uiutils.T(!uiutils.T(uiutils.Get(vProduct, "inStock"))), Attrs: uiutils.Attrs("data-testid", "add")}) {
-					{ uiutils.Text(uiutils.Get(vLabels, "add")) }
-				}
-			}
-			if uiutils.Eq(vBuy, "full") {
-				@list.List(list.ListProps{Tag: "ul", Class: "flex flex-col gap-2 text-sm text-muted-foreground"}) {
-					@list.ListItem(list.ListItemProps{Class: "flex items-center gap-2"}) {
-						@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "truck", Size: 16})
-						@inline.Inline(inline.InlineProps{}) {
-							{ uiutils.Text(uiutils.Get(vLabels, "shipping")) }
+					@list.List(list.ListProps{Tag: "ul", Class: "flex flex-col gap-2 text-sm text-muted-foreground"}) {
+						@list.ListItem(list.ListItemProps{Class: "flex items-center gap-2"}) {
+							@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "truck", Size: 16})
+							@inline.Inline(inline.InlineProps{}) {
+								{ uiutils.Text(uiutils.Get(vLabels, "shipping")) }
+							}
 						}
-					}
-					@list.ListItem(list.ListItemProps{Class: "flex items-center gap-2"}) {
-						@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "shield-check", Size: 16})
-						@inline.Inline(inline.InlineProps{}) {
-							{ uiutils.Text(uiutils.Get(vLabels, "returns")) }
+						@list.ListItem(list.ListItemProps{Class: "flex items-center gap-2"}) {
+							@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "shield-check", Size: 16})
+							@inline.Inline(inline.InlineProps{}) {
+								{ uiutils.Text(uiutils.Get(vLabels, "returns")) }
+							}
 						}
 					}
 				}
@@ -96,14 +96,5 @@ templ ProductDetail(p ProductDetailProps) {
 }
 
 templ productDetailFill1(p ProductDetailProps, vProduct any, vThumbs any) {
-	@stack.Stack(stack.StackProps{Gap: "4", Align: "stretch", Attrs: uiutils.Attrs("data-testid", "gallery")}) {
-		@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vProduct, "name"), Ratio: "1/1"})
-		if uiutils.Eq(vThumbs, "below") {
-			@grid.Grid(grid.GridProps{Cols: "3", Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "thumbs")}) {
-				@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vProduct, "name"), Ratio: "1/1", Class: uiutils.Cnv("ring-2 ring-foreground")})
-				@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vProduct, "name"), Ratio: "1/1"})
-				@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vProduct, "name"), Ratio: "1/1"})
-			}
-		}
-	}
+	@ProductGallery(ProductGalleryProps{Name: uiutils.Get(vProduct, "name"), Image: uiutils.Get(vProduct, "image"), Thumbs: vThumbs})
 }

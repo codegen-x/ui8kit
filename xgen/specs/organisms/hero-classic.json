@@ -412,13 +412,7 @@
                                 "Variant": "default",
                                 "Size": "default",
                                 "Href": {
-                                  "op": "coalesce",
-                                  "args": [
-                                    {
-                                      "$": "actions.href"
-                                    },
-                                    "#/"
-                                  ]
+                                  "$": "actions.href"
                                 }
                               },
                               "attrs": {

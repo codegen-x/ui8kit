@@ -68,6 +68,16 @@ export function fmtAgo(iso: unknown, now: string | number = DEMO_NOW, style: Ago
   return d < 7 ? relative(d, "day", locale, style) : relative(w, "week", locale, style);
 }
 
+/** the units a figure may carry (`metadata.unit` of the entry), as Intl unit identifiers */
+const FIGURE_UNITS = ["percent", "second", "millisecond", "minute", "hour", "day", "kilobyte", "megabyte", "gigabyte"] as const;
+
+/** a number of an entry in the locale (Intl), with its unit: (12400) -> "12,400", (99.99, percent) -> "99.99%", (0.8, second) -> "0.8s" */
+export function fmtFigure(value: unknown, unit: unknown, locale: string = DEFAULT_LOCALE): string | undefined {
+  if (typeof value !== "number" || !Number.isFinite(value)) return undefined;
+  const known = typeof unit === "string" && (FIGURE_UNITS as readonly string[]).includes(unit);
+  return new Intl.NumberFormat(locale, known ? { style: "unit", unit: unit as string, unitDisplay: "narrow", maximumFractionDigits: 2 } : { maximumFractionDigits: 2 }).format(value);
+}
+
 export interface ReadOptions {
   now?: string | number;
   /** the locale of the app; without it a date is formatted in the `locale` of its entry (then DEFAULT_LOCALE) */
@@ -92,6 +102,8 @@ const byLocale = (records: readonly unknown[], locale: string): unknown => recor
  *   "metadata.date.value|date"  -> fmtDate      "metadata.time.value|ago" (or ago-days, ago-short) -> fmtAgo   (in the locale)
  *   "featured_media_id|media"   -> the file of that media entry      "slug|route" -> the address from the route of the entry's kind
  *   "author_id|author"          -> the display name of that user     "terms|term:category" -> the name of the entry's term of that taxonomy
+ *   "terms|term-slug:faq_category" -> the slug of that term (a filter key)
+ *   "metadata.value.value|number" -> the number in the locale, with the entry's `metadata.unit` (percent, second): 12400 -> "12,400"
  */
 export function readPath(source: unknown, path: string, opts: ReadOptions = {}): unknown {
   const [dotted, pipe] = path.split("|") as [string, string | undefined];
@@ -111,18 +123,29 @@ export function readPath(source: unknown, path: string, opts: ReadOptions = {}):
     const user = byLocale((opts.users ?? []).filter((u) => field(u, "id") === cur), locale);
     return field(field(field(user, "metadata"), "display_name"), "value") ?? field(user, "title");
   }
-  if (pipe.startsWith("term:")) {
-    const taxonomy = pipe.slice("term:".length);
+  if (pipe === "number") return fmtFigure(cur, field(field(field(source, "metadata"), "unit"), "value"), locale);
+  if (pipe.startsWith("term:") || pipe.startsWith("term-slug:")) {
+    const taxonomy = pipe.slice(pipe.indexOf(":") + 1);
     const ref = Array.isArray(cur) ? cur.find((r) => field(r, "taxonomy") === taxonomy) : undefined;
     if (ref === undefined) return undefined;
     const term = byLocale((opts.terms ?? []).filter((t) => field(t, "taxonomy_id") === taxonomy && field(t, "id") === field(ref, "term_id")), locale);
-    return field(term, "name");
+    return field(term, pipe.startsWith("term-slug:") ? "slug" : "name");
   }
   if (pipe === "route") {
     const kind = field(source, "kind"), route = typeof kind === "string" ? opts.routes?.[kind] : undefined;
     return route === undefined ? undefined : route.replace("{slug}", encodeURIComponent(String(cur)));
   }
   throw new Error(`readPath: unknown formatter "${pipe}" in "${path}"`);
+}
+
+/** the trail of pages from the root to `leaf` by their parent_id chain (breadcrumbs); without `leaf`, the one no other names as parent */
+export function trail<T>(entries: readonly T[], leaf?: string): T[] {
+  const byId = new Map(entries.map((e) => [field(e, "id"), e] as const));
+  const parents = new Set(entries.map((e) => field(e, "parent_id")));
+  let cur: T | undefined = leaf !== undefined ? byId.get(leaf) : entries.find((e) => !parents.has(field(e, "id")));
+  const out: T[] = [];
+  while (cur !== undefined && !out.includes(cur)) { out.unshift(cur); cur = byId.get(field(cur, "parent_id")); }
+  return out;
 }
 
 /** Codex entries -> flat records by the `fields` mapping of the screen ("title", "metadata.price.value", "metadata.date.value|date") */

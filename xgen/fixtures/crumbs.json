@@ -1,11 +1,11 @@
 {
   "collection": "crumbs",
-  "kind": "crumb",
+  "kind": "page",
   "entries": [
     {
-      "id": "crumb-home",
+      "id": "page-home",
       "locale": "en",
-      "kind": "crumb",
+      "kind": "page",
       "status": "published",
       "visibility": "public",
       "slug": "home",
@@ -21,13 +21,14 @@
       "published_at": "2026-03-03T10:00:00Z"
     },
     {
-      "id": "crumb-shop",
+      "id": "page-shop",
       "locale": "en",
-      "kind": "crumb",
+      "kind": "page",
       "status": "published",
       "visibility": "public",
       "slug": "shop",
       "title": "Shop",
+      "parent_id": "page-home",
       "metadata": {
         "icon": {
           "value": "store"
@@ -39,13 +40,14 @@
       "published_at": "2026-03-05T10:00:00Z"
     },
     {
-      "id": "crumb-catalog",
+      "id": "page-catalog",
       "locale": "en",
-      "kind": "crumb",
+      "kind": "page",
       "status": "published",
       "visibility": "public",
       "slug": "catalog",
       "title": "Catalog",
+      "parent_id": "page-shop",
       "metadata": {
         "icon": {
           "value": "layers"

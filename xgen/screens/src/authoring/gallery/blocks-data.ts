@@ -8,9 +8,9 @@ const m = (k: string) => `metadata.${k}.value`;
 
 export const features = src("features", "features", "feature", "Feature", { id: "id", title: "title", text: m("text"), icon: m("icon") });
 export const tiers = src("tiers", "tiers", "plan", "Plan", CODEX_FIELDS.plan);
-export const faq = src("faq", "faq", "faq", "Faq", { id: "id", question: "title", answer: m("answer"), category: m("category") });
+export const faq = src("faq", "faq", "faq", "Faq", CODEX_FIELDS.faq);
 export const logos = src("logos", "logos", "logo", "Logo", { id: "id", name: "title", icon: m("icon") });
-export const stats = src("stats", "stats", "stat", "Stat", { id: "id", label: "title", value: m("value"), icon: m("icon"), hint: m("hint") });
+export const stats = src("stats", "stats", "stat", "Stat", CODEX_FIELDS.stat);
 export const testimonials = src("testimonials", "testimonials", "testimonial", "Quote", { id: "id", author: "title", role: m("role"), company: m("company"), quote: m("quote"), rating: m("rating"), handle: m("handle"), time: `${m("time")}|ago-short`, mark: m("mark") });
 export const steps = src("steps", "steps", "step", "Step", { id: "id", title: "title", text: m("text"), icon: m("icon") });
 export const categories = src("categories", "categories", "category", "Category", { id: "id", name: "title", icon: m("icon"), count: m("count") });
@@ -48,7 +48,7 @@ export const terminal = src("terminal", "terminal", "line", "CodeLine", { id: "i
 export const wizard = src("wizard", "wizard", "step", "WizardStep", { id: "id", title: "title", text: m("text"), icon: m("icon"), fieldA: m("fieldA"), fieldB: m("fieldB") });
 export const lanes = src("lanes", "lanes", "lane", "Lane", { id: "id", key: "slug", title: "title" });
 export const cards = src("cards", "cards", "card", "BoardCard", { id: "id", lane: m("lane"), title: "title", tag: m("tag"), who: m("who") });
-export const faqtabs = tab("faqtabs", "tab", "FaqTab");
+export const faqtabs = src("faqtabs", "faqtabs", "tab", "FaqTab", CODEX_FIELDS.faqtab);
 export const topics = tab("topics", "topic", "PostTopic");
 export const article = src("article", "article", "section", "Section", { id: "id", title: "title", text: m("text"), quote: m("quote") });
 export const beforeafter = src("beforeafter", "beforeafter", "point", "Contrast", { id: "id", title: "title", before: m("before"), after: m("after") });
@@ -77,5 +77,6 @@ export const subnav = link("subnav", "subitem");
 export const helplinks = link("helplinks", "helplink");
 export const posttags = link("posttags", "posttag");
 export const outline = link("outline", "outlineitem");
-export const crumbs = link("crumbs", "crumb");
+// the breadcrumb trail: pages chained by parent_id, in the order root -> current page
+export const crumbs = src("crumbs", "crumbs", "page", "NavLink", CODEX_FIELDS.page);
 export const questions = src("questions", "questions", "question", "Question", { id: "id", question: "title", answer: m("answer"), category: m("category"), icon: m("icon") });

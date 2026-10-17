@@ -942,6 +942,12 @@ func component(name string, props []byte) (templ.Component, error) {
 			return nil, err
 		}
 		return blocks.ProductDetail(p), nil
+	case "ProductGallery":
+		var p blocks.ProductGalleryProps
+		if err := json.Unmarshal(props, &p); err != nil {
+			return nil, err
+		}
+		return blocks.ProductGallery(p), nil
 	case "ProductGrid":
 		var p blocks.ProductGridProps
 		if err := json.Unmarshal(props, &p); err != nil {
@@ -954,6 +960,12 @@ func component(name string, props []byte) (templ.Component, error) {
 			return nil, err
 		}
 		return blocks.ProductInfo(p), nil
+	case "ProductPrice":
+		var p blocks.ProductPriceProps
+		if err := json.Unmarshal(props, &p); err != nil {
+			return nil, err
+		}
+		return blocks.ProductPrice(p), nil
 	case "ProfileForm":
 		var p blocks.ProfileFormProps
 		if err := json.Unmarshal(props, &p); err != nil {

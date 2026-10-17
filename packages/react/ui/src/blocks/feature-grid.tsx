@@ -59,9 +59,9 @@ export function FeatureGrid({
             <Title as={2} size="sm" weight="semibold" className="leading-7" id={(id + "-title")}>
               {title}
             </Title>
-            {action?.label ? (
+            {(action?.label && action?.href) ? (
               <Link
-                href={(action?.href ?? "#/")}
+                href={action?.href}
                 variant="default"
                 className={cn(defaults.text.tiny, "shrink-0 font-medium leading-5")}
                 data-testid="section-action"

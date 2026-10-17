@@ -82,7 +82,7 @@ const {
             <LucideIcon name="chevron-down" :size="16" />
           </ButtonPlain>
           <Link v-for="l in links" :key="l.id"
-            :href="(l.href ?? '#/')"
+            :href="l.href"
             variant="default"
             :aria-current="((l.id === '') ? 'page' : undefined)"
             class="text-sm"

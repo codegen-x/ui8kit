@@ -1,7 +1,7 @@
 // The organisms of a small marketing site: header with skip link, footer, hero, feature grid, plan tiers, FAQ, call-to-action band.
 // Each one is drawn by SectionFrame / MediaFrame / ActionGroup and varies on axes (layout, columns, media side, density, tone, emphasis)
 // that are plain props: a block (authoring/gallery/blocks.ts) names the combinations. Every text comes in through props or labels.
-import { and, call, cn, coalesce, cond, eq, op, ref, text, undef, use, when, organism } from "../../build";
+import { and, call, cn, cond, eq, op, ref, text, undef, use, when, organism } from "../../build";
 import type { OrganismSpec } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { cols, density, id, title, tone, tsOf } from "../props";
@@ -77,7 +77,8 @@ const featureGrid = spec(`${O}feature-grid`, "FeatureGrid", "A section with a he
     // cell head: a small title and a view-all link
     const cellHead = use("Group", { props: { Gap: "4", Align: "center", Justify: "between", Class: "w-full" } },
       use("Title", { props: { As: 2, Size: "sm", Weight: "semibold", Class: "leading-7" }, attrs: { id: op("add", ref("id"), "-title") } }, text(ref("title"))),
-      when(ref("action.label"), [use("Link", { props: { Href: coalesce(ref("action.href"), "#/"), Variant: "default", Class: cn(layoutOf("text.tiny"), "shrink-0 font-medium leading-5") }, attrs: { "data-testid": "section-action" } }, text(ref("action.label")))]));
+      // the view-all link only with an address (no "#/" stand-in): no href, no link
+      when(and(ref("action.label"), ref("action.href")), [use("Link", { props: { Href: ref("action.href"), Variant: "default", Class: cn(layoutOf("text.tiny"), "shrink-0 font-medium leading-5") }, attrs: { "data-testid": "section-action" } }, text(ref("action.label")))]));
     return [when(eq(ref("item"), "cell"),
       [frame({ id: ref("id"), title: "", tone: ref("tone"), density: ref("density"), measure: "fill", className: "py-0" }, [cellHead, grid])],
       [frame({ id: ref("id"), title: ref("title"), action: ref("action"), tone: ref("tone"), density: ref("density") }, [

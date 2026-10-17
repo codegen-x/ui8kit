@@ -4,7 +4,7 @@ import type {
   Category, Event, Faq, Feature, MegaGroup, NavLink, Photo, Plan, Point, Post, PostTopic, Product, Project, Quote,
   Review, Section, Skill, Spec, Stat, Step,
 } from "@ui8kit/svelte-ui";
-import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { fromCodex, trail } from "@ui8kit/app-shared/runtime/core";
 import { CODEX_FIELDS } from "@ui8kit/app-shared/runtime/fields";
 import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui as kitUi } from "@ui8kit/app-shared/content";
@@ -76,9 +76,10 @@ export function makeData(brand: string) {
     helplinks: fromCodex<NavLink>(helplinks, f.nav),
     navlinks: fromCodex<NavLink>(navlinks, f.nav),
     outline: fromCodex<NavLink>(outline, f.nav),
-    crumbs: fromCodex<NavLink>(crumbs, f.nav),
+    // the breadcrumbs: the pages of the parent_id chain, root first (no page routes in the magazine: names, no links)
+    crumbs: fromCodex<NavLink>(trail(crumbs), CODEX_FIELDS.page, codex),
     metrics: fromCodex<Stat>(metrics, f.metrics),
-    stats: fromCodex<Stat>(stats, f.metrics),
+    stats: fromCodex<Stat>(stats, CODEX_FIELDS.stat, codex),
     series: fromCodex<Point>(series, { id: "id", label: "title", value: "metadata.value.value" }),
     activity: fromCodex<Event>(activity, { id: "id", title: "title", text: "metadata.text.value", time: "metadata.time.value|ago", tone: "metadata.tone.value" }),
     posts: fromCodex<Post>(posts, f.posts, codex),
@@ -97,7 +98,7 @@ export function makeData(brand: string) {
     steps: fromCodex<Step>(steps, { id: "id", title: "title", text: "metadata.text.value", icon: "metadata.icon.value" }),
     tiers: fromCodex<Plan>(tiers, f.plan, codex),
     testimonials: fromCodex<Quote>(testimonials, f.testimonials),
-    faq: fromCodex<Faq>(faq, { id: "id", question: "title", answer: "metadata.answer.value", category: "metadata.category.value" }),
+    faq: fromCodex<Faq>(faq, CODEX_FIELDS.faq, codex),
     sitemap: fromCodex<MegaGroup>(sitemap, { id: "id", title: "title", icon: "metadata.icon.value", links: "metadata.links.value" }),
   };
 }

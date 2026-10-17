@@ -15,7 +15,8 @@
           "prop": "stats",
           "collection": "stats",
           "kind": "stat",
-          "record": "Stat"
+          "record": "Stat",
+          "map": "stat"
         },
         {
           "prop": "values",
@@ -412,7 +413,8 @@
           "prop": "stats",
           "collection": "stats",
           "kind": "stat",
-          "record": "Stat"
+          "record": "Stat",
+          "map": "stat"
         },
         {
           "prop": "zones",
@@ -491,21 +493,67 @@
       "surface": "kit-block",
       "spec": "block.faq",
       "source": "xgen/specs/blocks/faq.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "faq",
           "collection": "faq",
           "kind": "faq",
-          "record": "Faq"
+          "record": "Faq",
+          "map": "faq",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.answer.value",
+            "terms"
+          ],
+          "optional": []
         },
         {
           "prop": "faqtabs",
           "collection": "faqtabs",
           "kind": "tab",
-          "record": "FaqTab"
+          "record": "FaqTab",
+          "map": "faqtab",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.value.value"
+          ],
+          "optional": []
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "layout",
+        "cols",
+        "multiple",
+        "tone",
+        "density"
+      ],
+      "labels": [
+        {
+          "prop": "empty",
+          "dictionary": "vibe.faq.empty",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "site.pricing.faqTitle",
+          "keys": []
+        },
+        {
+          "prop": "search",
+          "dictionary": "vibe.faq",
+          "keys": [
+            "search",
+            "tabs"
+          ]
+        }
+      ],
+      "emptyState": true
     },
     {
       "id": "FaqSplit",
@@ -587,7 +635,8 @@
           "prop": "stats",
           "collection": "stats",
           "kind": "stat",
-          "record": "Stat"
+          "record": "Stat",
+          "map": "stat"
         }
       ]
     },
@@ -631,7 +680,8 @@
           "prop": "stats",
           "collection": "stats",
           "kind": "stat",
-          "record": "Stat"
+          "record": "Stat",
+          "map": "stat"
         },
         {
           "prop": "features",
@@ -699,7 +749,8 @@
           "prop": "stats",
           "collection": "stats",
           "kind": "stat",
-          "record": "Stat"
+          "record": "Stat",
+          "map": "stat"
         },
         {
           "prop": "features",
@@ -819,7 +870,8 @@
           "prop": "stats",
           "collection": "stats",
           "kind": "stat",
-          "record": "Stat"
+          "record": "Stat",
+          "map": "stat"
         },
         {
           "prop": "steps",
@@ -968,21 +1020,67 @@
       "surface": "kit-block",
       "spec": "block.pagetrail",
       "source": "xgen/specs/blocks/pagetrail.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "crumbs",
           "collection": "crumbs",
-          "kind": "crumb",
-          "record": "NavLink"
+          "kind": "page",
+          "record": "NavLink",
+          "map": "page",
+          "list": true,
+          "required": [
+            "id",
+            "title"
+          ],
+          "optional": [
+            "slug",
+            "parent_id",
+            "metadata.icon.value"
+          ]
         },
         {
           "prop": "stats",
           "collection": "stats",
           "kind": "stat",
-          "record": "Stat"
+          "record": "Stat",
+          "map": "stat",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.value.value",
+            "metadata.icon.value",
+            "metadata.hint.value"
+          ],
+          "optional": [
+            "metadata.unit.value"
+          ]
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "aside",
+        "level",
+        "tone"
+      ],
+      "labels": [
+        {
+          "prop": "labels",
+          "dictionary": "marketing.pageTrail",
+          "keys": [
+            "title",
+            "lead",
+            "badge",
+            "label",
+            "value",
+            "caption",
+            "note"
+          ]
+        }
+      ],
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "PhotoGallery",
@@ -1208,15 +1306,73 @@
       "surface": "kit-block",
       "spec": "block.product",
       "source": "xgen/specs/blocks/product.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
-          "prop": "products",
+          "prop": "product",
           "collection": "products",
           "kind": "product",
-          "record": "Product"
+          "record": "Product",
+          "map": "product",
+          "list": false,
+          "required": [
+            "id",
+            "title",
+            "metadata.summary.value",
+            "metadata.price.value",
+            "metadata.currency.value",
+            "metadata.rating.value",
+            "metadata.reviews.value",
+            "terms",
+            "metadata.inStock.value"
+          ],
+          "optional": [
+            "metadata.badge.value",
+            "metadata.compare_at.value",
+            "slug",
+            "featured_media_id"
+          ]
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "level",
+        "layout",
+        "mediaSide",
+        "thumbs",
+        "buy",
+        "tone",
+        "density"
+      ],
+      "labels": [
+        {
+          "prop": "labels",
+          "dictionary": "commerce.detail",
+          "keys": [
+            "add",
+            "soldOut",
+            "inStock",
+            "qty",
+            "decrease",
+            "increase",
+            "reviews",
+            "ratingLabel",
+            "shipping",
+            "returns",
+            "was",
+            "empty"
+          ]
+        },
+        {
+          "prop": "badges",
+          "dictionary": "commerce.badges",
+          "keys": [
+            "new",
+            "sale"
+          ]
+        }
+      ],
+      "emptyState": true
     },
     {
       "id": "ProductInfo",
@@ -1353,7 +1509,8 @@
           "prop": "stats",
           "collection": "stats",
           "kind": "stat",
-          "record": "Stat"
+          "record": "Stat",
+          "map": "stat"
         }
       ]
     },
@@ -1374,7 +1531,8 @@
           "prop": "stats",
           "collection": "stats",
           "kind": "stat",
-          "record": "Stat"
+          "record": "Stat",
+          "map": "stat"
         },
         {
           "prop": "logos",
@@ -1389,16 +1547,51 @@
       "surface": "kit-block",
       "spec": "block.reviews",
       "source": "xgen/specs/blocks/reviews.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "reviews",
           "collection": "reviews",
           "kind": "review",
           "record": "Review",
-          "map": "review"
+          "map": "review",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "author_id",
+            "metadata.rating.value",
+            "metadata.text.value",
+            "metadata.date.value"
+          ],
+          "optional": []
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "title",
+        "layout",
+        "item",
+        "avatar",
+        "tone",
+        "density"
+      ],
+      "labels": [
+        {
+          "prop": "labels",
+          "dictionary": "commerce.reviewLabels",
+          "keys": [
+            "ratingLabel",
+            "empty"
+          ]
+        },
+        {
+          "prop": "title",
+          "dictionary": "commerce.reviews.title",
+          "keys": []
+        }
+      ],
+      "emptyState": true
     },
     {
       "id": "AppShell",
@@ -1504,15 +1697,50 @@
       "surface": "kit-block",
       "spec": "block.stats",
       "source": "xgen/specs/blocks/stats.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "stats",
           "collection": "stats",
           "kind": "stat",
-          "record": "Stat"
+          "record": "Stat",
+          "map": "stat",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.value.value",
+            "metadata.icon.value",
+            "metadata.hint.value"
+          ],
+          "optional": [
+            "metadata.unit.value"
+          ]
         }
-      ]
+      ],
+      "settings": [
+        "id",
+        "cols",
+        "layout",
+        "surface",
+        "item",
+        "align",
+        "tone",
+        "density"
+      ],
+      "labels": [
+        {
+          "prop": "empty",
+          "dictionary": "marketing.stats.empty",
+          "keys": []
+        },
+        {
+          "prop": "title",
+          "dictionary": "marketing.stats.title",
+          "keys": []
+        }
+      ],
+      "emptyState": true
     },
     {
       "id": "Stepper",

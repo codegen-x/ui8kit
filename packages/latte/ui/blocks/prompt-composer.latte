@@ -46,7 +46,7 @@
     {capture $c_8}
       {=ui_include('ui/lucide-icon/lucide-icon.latte', ['p' => ['Name' => 'arrow-up', 'Size' => 16]])|noescape}
     {/capture}
-    {=ui_include('ui/button/button.latte', ['p' => ['Href' => ui_s(ui_coalesce([$v_href, '#/'])), 'Variant' => 'secondary', 'Size' => 'sm', 'Layout' => 'icon', 'Attrs' => ui_attrs(['data-testid', 'submit', 'aria-label', ui_coalesce([$v_send, 'Send'])])], 'children' => $c_8])|noescape}
+    {=ui_include('ui/button/button.latte', ['p' => ['Href' => ui_s($v_href), 'Variant' => 'secondary', 'Size' => 'sm', 'Layout' => 'icon', 'Attrs' => ui_attrs(['data-testid', 'submit', 'aria-label', ui_coalesce([$v_send, 'Send'])])], 'children' => $c_8])|noescape}
   {/capture}
   {=ui_include('ui/group/group.latte', ['p' => ['Gap' => '2', 'Align' => 'center', 'Justify' => 'between', 'Class' => 'h-8 w-full', 'Attrs' => ui_attrs(['data-testid', 'composer-tools'])], 'children' => $c_9])|noescape}
 {/capture}

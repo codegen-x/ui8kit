@@ -18,6 +18,7 @@
     filter?: FaqFilter;
     layout?: "accordion" | "chat";
     cols?: "1" | "2";
+    empty?: string;
     multiple?: boolean;
     tone?: "default" | "muted";
     density?: "roomy" | "default" | "compact";
@@ -34,6 +35,7 @@
   import Stack from "../primitives/stack/stack.svelte";
   import Summary from "../primitives/disclosure/summary.svelte";
   import Text from "../primitives/text/text.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import SearchField from "../components/search-field.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import Switcher from "../components/switcher.svelte";
@@ -48,6 +50,7 @@
     filter,
     layout = "accordion",
     cols = "1",
+    empty = "",
     multiple = false,
     tone = "default",
     density = "default",
@@ -83,6 +86,9 @@
         </SwitcherItem>
       {/each}
     </Switcher>
+  {/if}
+  {#if ((shown?.length ?? 0) === 0)}
+    <EmptyState icon="circle-question-mark" title={empty} />
   {/if}
   {#if ((layout as string) === "chat")}
     <Stack gap="4" align="stretch" data-testid="faq">

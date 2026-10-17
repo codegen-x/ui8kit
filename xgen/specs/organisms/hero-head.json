@@ -194,49 +194,68 @@
                       },
                       "do": [
                         {
-                          "use": "Link",
-                          "props": {
-                            "Href": {
-                              "op": "coalesce",
-                              "args": [
-                                {
+                          "when": {
+                            "$": "l.href"
+                          },
+                          "then": [
+                            {
+                              "use": "Link",
+                              "props": {
+                                "Href": {
                                   "$": "l.href"
                                 },
-                                "#/"
-                              ]
-                            },
-                            "Variant": "default",
-                            "AriaCurrent": {
-                              "op": "cond",
-                              "args": [
-                                {
-                                  "op": "eq",
+                                "Variant": "default",
+                                "AriaCurrent": {
+                                  "op": "cond",
                                   "args": [
                                     {
-                                      "$": "l.id"
+                                      "op": "eq",
+                                      "args": [
+                                        {
+                                          "$": "l.id"
+                                        },
+                                        {
+                                          "$": "current"
+                                        }
+                                      ]
                                     },
+                                    "page",
                                     {
-                                      "$": "current"
+                                      "op": "undef",
+                                      "args": []
                                     }
                                   ]
                                 },
-                                "page",
+                                "Class": "text-xs font-medium leading-5 text-background"
+                              },
+                              "attrs": {
+                                "data-testid": "nav-link"
+                              },
+                              "children": [
                                 {
-                                  "op": "undef",
-                                  "args": []
+                                  "text": {
+                                    "$": "l.name"
+                                  }
                                 }
                               ]
-                            },
-                            "Class": "text-xs font-medium leading-5 text-background"
-                          },
-                          "attrs": {
-                            "data-testid": "nav-link"
-                          },
-                          "children": [
+                            }
+                          ],
+                          "else": [
                             {
-                              "text": {
-                                "$": "l.name"
-                              }
+                              "use": "Inline",
+                              "props": {
+                                "Class": "text-xs font-medium leading-5 text-background"
+                              },
+                              "attrs": {
+                                "data-testid": "nav-link"
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "l.name"
+                                  }
+                                }
+                              ]
                             }
                           ]
                         }
@@ -292,13 +311,7 @@
                   "use": "Button",
                   "props": {
                     "Href": {
-                      "op": "coalesce",
-                      "args": [
-                        {
-                          "$": "href"
-                        },
-                        "#/"
-                      ]
+                      "$": "href"
                     },
                     "Variant": "secondary",
                     "Size": "sm"

@@ -19,7 +19,7 @@ type PageCrumbsProps struct {
 	LandmarkLabel any `json:"landmarkLabel"`
 }
 
-// The breadcrumbs of an inner page: links to the parent pages separated by chevrons; the last entry is the current page and is not a link.
+// The breadcrumbs of an inner page: the parent pages (links where they have an href) separated by chevrons; the last entry is the current page and is not a link.
 templ PageCrumbs(p PageCrumbsProps) {
 	{{ vLabel := p.Label }}
 	{{ vCrumbs := p.Crumbs }}
@@ -30,8 +30,14 @@ templ PageCrumbs(p PageCrumbsProps) {
 			for vI, vC := range uiutils.L(vCrumbs) {
 				@list.ListItem(list.ListItemProps{Class: "flex items-center gap-2"}) {
 					if uiutils.Lt(float64(vI), vLast) {
-						@link.Link(link.LinkProps{Href: "#/", Variant: "muted", Size: "sm", Attrs: uiutils.Attrs("data-testid", "crumb")}) {
-							{ uiutils.Text(uiutils.Get(vC, "name")) }
+						if uiutils.T(uiutils.Get(vC, "href")) {
+							@link.Link(link.LinkProps{Href: uiutils.S(uiutils.Get(vC, "href")), Variant: "muted", Size: "sm", Attrs: uiutils.Attrs("data-testid", "crumb")}) {
+								{ uiutils.Text(uiutils.Get(vC, "name")) }
+							}
+						} else {
+							@inline.Inline(inline.InlineProps{Attrs: uiutils.Attrs("data-testid", "crumb")}) {
+								{ uiutils.Text(uiutils.Get(vC, "name")) }
+							}
 						}
 						@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "chevron-right", Size: 16})
 					} else {

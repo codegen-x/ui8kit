@@ -11,7 +11,7 @@ import type { Product } from "./product-card.types";
 
 export type ProductDetailProps = {
   id: string;
-  product: Product;
+  product?: Product;
   labels: ProductDetailLabels;
   badges: Record<string, string>;
   level?: 1 | 2;
@@ -26,9 +26,7 @@ export type ProductDetailProps = {
 </script>
 
 <script setup lang="ts">
-import Badge from "../primitives/badge/badge.vue";
 import Button from "../primitives/button/button.vue";
-import Grid from "../primitives/grid/grid.vue";
 import Group from "../primitives/group/group.vue";
 import Inline from "../primitives/inline/inline.vue";
 import List from "../primitives/list/list.vue";
@@ -36,11 +34,13 @@ import ListItem from "../primitives/list/list-item.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
-import MediaFrame from "../components/media-frame.vue";
+import EmptyState from "../components/empty-state.vue";
 import NumberField from "../components/number-field.vue";
+import ProductGallery from "../components/product-gallery.vue";
+import ProductPrice from "../components/product-price.vue";
 import Rating from "../components/rating.vue";
 import SectionFrame from "../components/section-frame.vue";
-import { at, fmtMoney, tpl } from "../utils";
+import { at, tpl } from "../utils";
 
 const {
   id,
@@ -60,10 +60,13 @@ const emit = defineEmits<{ add: [id: string] }>();
 </script>
 
 <template>
-  <SectionFrame
+  <SectionFrame v-if="!product" :id="id" :tone="tone" :density="density" :landmarkLabel="landmarkLabel">
+    <EmptyState icon="package" :title="labels.empty" />
+  </SectionFrame>
+  <SectionFrame v-else
     :id="id"
-    :title="product.name"
-    :lead="product.summary"
+    :title="product?.name"
+    :lead="product?.summary"
     :heading="{ level }"
     :layout="(((layout as string) === 'split') ? 'split' : 'stack')"
     :media="{ show: true, side: mediaSide, align: 'start' }"
@@ -72,27 +75,34 @@ const emit = defineEmits<{ add: [id: string] }>();
     :landmarkLabel="landmarkLabel"
   >
     <Stack gap="4" align="stretch" data-testid="buy-box">
-      <Group gap="4" align="center" class="flex-wrap">
-        <Text size="4xl" weight="bold">
-          {{ fmtMoney(product.price, product.currency) }}
-        </Text>
-        <Badge v-if="product.badge" variant="default" size="default">
-          {{ at(badges, product.badge) }}
-        </Badge>
-      </Group>
+      <Text
+        v-if="product?.category"
+        size="xs"
+        class="uppercase tracking-wide text-muted-foreground"
+        data-testid="category"
+      >
+        {{ product?.category }}
+      </Text>
+      <ProductPrice
+        :price="product?.price"
+        :compareAt="product?.compareAt"
+        :currency="product?.currency"
+        :badge="(product?.badge ? at(badges, product?.badge) : '')"
+        :was="labels.was"
+      />
       <Group gap="2">
-        <Rating :value="product.rating" :label="tpl(labels.ratingLabel, product.rating)" />
+        <Rating :value="product?.rating" :label="tpl(labels.ratingLabel, product?.rating)" />
         <Text size="sm" class="text-muted-foreground">
-          {{ tpl(labels.reviews, product.reviews) }}
+          {{ tpl(labels.reviews, product?.reviews) }}
         </Text>
       </Group>
       <Text
         size="sm"
         weight="medium"
-        :class="(product.inStock ? 'text-foreground' : 'text-destructive')"
+        :class="(product?.inStock ? 'text-foreground' : 'text-destructive')"
         data-testid="stock"
       >
-        {{ (product.inStock ? labels.inStock : labels.soldOut) }}
+        {{ (product?.inStock ? labels.inStock : labels.soldOut) }}
       </Text>
       <Group gap="4" class="flex-wrap">
         <NumberField v-if="((buy as string) === 'full')"
@@ -103,7 +113,7 @@ const emit = defineEmits<{ add: [id: string] }>();
           :decrease="labels.decrease"
           :increase="labels.increase"
         />
-        <Button :disabled="!product.inStock" data-testid="add" @click="() => emit('add', product.id)">
+        <Button :disabled="!product?.inStock" data-testid="add" @click="() => emit('add', product?.id)">
           {{ labels.add }}
         </Button>
       </Group>
@@ -123,14 +133,7 @@ const emit = defineEmits<{ add: [id: string] }>();
       </List>
     </Stack>
     <template #aside>
-      <Stack gap="4" align="stretch" data-testid="gallery">
-        <MediaFrame :alt="product.name" ratio="1/1" />
-        <Grid v-if="((thumbs as string) === 'below')" cols="3" class="gap-4" data-testid="thumbs">
-          <MediaFrame :alt="product.name" ratio="1/1" class="ring-2 ring-foreground" />
-          <MediaFrame :alt="product.name" ratio="1/1" />
-          <MediaFrame :alt="product.name" ratio="1/1" />
-        </Grid>
-      </Stack>
+      <ProductGallery :name="product?.name" :image="product?.image" :thumbs="thumbs" />
     </template>
   </SectionFrame>
 </template>

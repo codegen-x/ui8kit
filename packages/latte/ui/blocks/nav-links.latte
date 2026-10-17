@@ -13,7 +13,7 @@
       {capture $c_1}
         {=ui_text(ui_get($v_l, ['name']))}
       {/capture}
-      {=ui_include('ui/link/link.latte', ['p' => ['Href' => ui_s(ui_coalesce([ui_get($v_l, ['href']), '#/'])), 'Variant' => 'default', 'AriaCurrent' => ui_s((ui_t(ui_eq(ui_get($v_l, ['id']), $v_current)) ? 'page' : null)), 'Class' => 'text-sm', 'Attrs' => ui_attrs(['data-testid', 'nav-link'])], 'children' => $c_1])|noescape}
+      {=ui_include('ui/link/link.latte', ['p' => ['Href' => ui_s(ui_get($v_l, ['href'])), 'Variant' => 'default', 'AriaCurrent' => ui_s((ui_t(ui_eq(ui_get($v_l, ['id']), $v_current)) ? 'page' : null)), 'Class' => 'text-sm', 'Attrs' => ui_attrs(['data-testid', 'nav-link'])], 'children' => $c_1])|noescape}
     {/if}
   {/foreach}
 {/capture}

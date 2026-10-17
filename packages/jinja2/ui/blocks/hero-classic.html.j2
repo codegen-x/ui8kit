@@ -56,7 +56,7 @@
           {%- set c_2 -%}
             {{ ui_text(ui_get(v_actions, ['cta'])) }}
           {%- endset -%}
-          {{ ui_include('ui/button/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Href': ui_s(ui_coalesce([ui_get(v_actions, ['href']), '#/'])), 'Attrs': ui_attrs(['data-testid', 'submit'])}, 'children': c_2}) }}
+          {{ ui_include('ui/button/button.html.j2', {'p': {'Variant': 'default', 'Size': 'default', 'Href': ui_s(ui_get(v_actions, ['href'])), 'Attrs': ui_attrs(['data-testid', 'submit'])}, 'children': c_2}) }}
         {%- endset -%}
         {{ ui_include('ui/group/group.html.j2', {'p': {'Gap': '2', 'Align': 'start', 'Class': 'w-full flex-wrap'}, 'children': c_3}) }}
       {%- endset -%}

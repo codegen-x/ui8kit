@@ -74,7 +74,7 @@ export const heroClassic = spec(`${O}hero-classic`, "HeroClassic", "The top of a
       use("Label", { props: { HTMLFor: fid("email"), Class: "sr-only" } }, { text: ref("actions.emailLabel") }),
       use("Group", { props: { Gap: "2", Align: "start", Class: "w-full flex-wrap" } },
         use("Input", { props: { Type: "text", Name: "prompt", Class: "min-w-0 flex-1", Placeholder: ref("actions.emailLabel") }, attrs: { id: fid("email"), "data-testid": "field" } }),
-        use("Button", { props: { Variant: "default", Size: "default", Href: coalesce(ref("actions.href"), "#/") }, attrs: { "data-testid": "submit" } }, { text: ref("actions.cta") })));
+        use("Button", { props: { Variant: "default", Size: "default", Href: ref("actions.href") }, attrs: { "data-testid": "submit" } }, { text: ref("actions.cta") })));
     const body = [when(ref("actions.cta"), [when(eq(ref("actions.mode"), "form"), [prompt], [actions(eq(ref("layout"), "centered"), "actions")])]),
       when(ref("topics"), [organism("TopicChips", { topics: ref("topics") })])];
     const card = (ratio: string, lift = "") => use("Box", { props: { Class: cn("w-full", lift) } }, organism("MediaFrame", { alt: ref("title"), ratio }));

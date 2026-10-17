@@ -30,7 +30,7 @@
   let { titleId, title = "", heading, action, lead, center = false }: SectionHeaderProps = $props();
   const level = $derived(heading?.level ?? 2);
   const scale = $derived(heading?.scale ?? "default");
-  const linkHref = $derived(action?.href ?? "#/");
+  const hasAction = $derived(action?.label && action?.href);
 </script>
 
 {#if heading?.badge}
@@ -38,7 +38,7 @@
     {heading?.badge}
   </Badge>
 {/if}
-{#if (((title as string) !== "") && action?.label)}
+{#if (((title as string) !== "") && hasAction)}
   <Group gap="4" align="center" justify="between" class="w-full flex-wrap">
     <Title
       as={level}
@@ -54,7 +54,7 @@
       {title}
     </Title>
     <Link
-      href={linkHref}
+      href={action?.href}
       variant="default"
       class={cn(defaults.text.tiny, "shrink-0 font-medium leading-5")}
       data-testid="section-action"
@@ -63,7 +63,7 @@
     </Link>
   </Group>
 {/if}
-{#if (((title as string) !== "") && !action?.label)}
+{#if (((title as string) !== "") && !hasAction)}
   <Title
     as={level}
     size={((level === 1) ? "5xl" : "xl")}
@@ -78,10 +78,10 @@
     {title}
   </Title>
 {/if}
-{#if (((title as string) === "") && action?.label)}
+{#if (((title as string) === "") && hasAction)}
   <Group gap="4" align="center" justify="end" class="w-full">
     <Link
-      href={linkHref}
+      href={action?.href}
       variant="default"
       class={cn(defaults.text.tiny, "shrink-0 font-medium leading-5")}
       data-testid="section-action"

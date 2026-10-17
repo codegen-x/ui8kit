@@ -163,22 +163,6 @@
     },
     {
       "record": {
-        "id": "crumb",
-        "label": "Crumb",
-        "scope": "workspace",
-        "description": "fixtures: crumbs",
-        "fields": [
-          {
-            "id": "icon",
-            "label": "Icon",
-            "type": "string",
-            "required": true
-          }
-        ]
-      }
-    },
-    {
-      "record": {
         "id": "day",
         "label": "Day",
         "scope": "workspace",
@@ -302,15 +286,12 @@
             "label": "Answer",
             "type": "string",
             "required": true
-          },
-          {
-            "id": "category",
-            "label": "Category",
-            "type": "string",
-            "required": true
           }
         ]
-      }
+      },
+      "taxonomies": [
+        "faq_category"
+      ]
     },
     {
       "record": {
@@ -753,6 +734,22 @@
                 "name": "fastygo.codex/money"
               }
             ],
+            "required": true
+          }
+        ]
+      }
+    },
+    {
+      "record": {
+        "id": "page",
+        "label": "Page",
+        "scope": "workspace",
+        "description": "fixtures: crumbs",
+        "fields": [
+          {
+            "id": "icon",
+            "label": "Icon",
+            "type": "string",
             "required": true
           }
         ]
@@ -1343,9 +1340,14 @@
             "required": true
           },
           {
+            "id": "unit",
+            "label": "Unit",
+            "type": "string"
+          },
+          {
             "id": "value",
             "label": "Value",
-            "type": "string",
+            "type": "number",
             "required": true
           }
         ]

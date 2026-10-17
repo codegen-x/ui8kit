@@ -30,7 +30,7 @@ import { cn } from "../utils";
 const { titleId, title = "", heading, action, lead, center = false } = defineProps<SectionHeaderProps>();
 const level = computed(() => heading?.level ?? 2);
 const scale = computed(() => heading?.scale ?? "default");
-const linkHref = computed(() => action?.href ?? "#/");
+const hasAction = computed(() => action?.label && action?.href);
 </script>
 
 <template>
@@ -44,7 +44,7 @@ const linkHref = computed(() => action?.href ?? "#/");
     {{ heading?.badge }}
   </Badge>
   <Group
-    v-if="(((title as string) !== '') && action?.label)"
+    v-if="(((title as string) !== '') && hasAction)"
     gap="4"
     align="center"
     justify="between"
@@ -64,7 +64,7 @@ const linkHref = computed(() => action?.href ?? "#/");
       {{ title }}
     </Title>
     <Link
-      :href="linkHref"
+      :href="action?.href"
       variant="default"
       :class="cn(defaults.text.tiny, 'shrink-0 font-medium leading-5')"
       data-testid="section-action"
@@ -72,7 +72,7 @@ const linkHref = computed(() => action?.href ?? "#/");
       {{ action?.label }}
     </Link>
   </Group>
-  <Title v-if="(((title as string) !== '') && !action?.label)"
+  <Title v-if="(((title as string) !== '') && !hasAction)"
     :as="level"
     :size="((level === 1) ? '5xl' : 'xl')"
     weight="semibold"
@@ -85,15 +85,9 @@ const linkHref = computed(() => action?.href ?? "#/");
   >
     {{ title }}
   </Title>
-  <Group
-    v-if="(((title as string) === '') && action?.label)"
-    gap="4"
-    align="center"
-    justify="end"
-    class="w-full"
-  >
+  <Group v-if="(((title as string) === '') && hasAction)" gap="4" align="center" justify="end" class="w-full">
     <Link
-      :href="linkHref"
+      :href="action?.href"
       variant="default"
       :class="cn(defaults.text.tiny, 'shrink-0 font-medium leading-5')"
       data-testid="section-action"

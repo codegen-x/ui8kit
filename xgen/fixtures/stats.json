@@ -12,7 +12,7 @@
       "title": "Sites published",
       "metadata": {
         "value": {
-          "value": "12,400"
+          "value": 12400
         },
         "icon": {
           "value": "globe"
@@ -36,7 +36,10 @@
       "title": "Uptime",
       "metadata": {
         "value": {
-          "value": "99.99%"
+          "value": 99.99
+        },
+        "unit": {
+          "value": "percent"
         },
         "icon": {
           "value": "activity"
@@ -60,7 +63,7 @@
       "title": "Teams",
       "metadata": {
         "value": {
-          "value": "3,200"
+          "value": 3200
         },
         "icon": {
           "value": "users"
@@ -84,7 +87,10 @@
       "title": "Median load",
       "metadata": {
         "value": {
-          "value": "0.8 s"
+          "value": 0.8
+        },
+        "unit": {
+          "value": "second"
         },
         "icon": {
           "value": "zap"

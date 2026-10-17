@@ -38,8 +38,7 @@
         "name": "href",
         "type": "string",
         "optional": true,
-        "docs": "href of the link",
-        "default": "#/"
+        "docs": "href of the link; none: no link"
       }
     ],
     "SectionMedia": [

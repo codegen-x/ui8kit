@@ -62,8 +62,8 @@ const {
       <Title :as="2" size="sm" weight="semibold" class="leading-7" :id="(id + '-title')">
         {{ title }}
       </Title>
-      <Link v-if="action?.label"
-        :href="(action?.href ?? '#/')"
+      <Link v-if="(action?.label && action?.href)"
+        :href="action?.href"
         variant="default"
         :class="cn(defaults.text.tiny, 'shrink-0 font-medium leading-5')"
         data-testid="section-action"

@@ -47,6 +47,12 @@
       "required": true
     },
     {
+      "name": "empty",
+      "type": "string",
+      "default": "",
+      "docs": "the text of the empty state (no figures), from the dictionary"
+    },
+    {
       "name": "cols",
       "type": {
         "ts": "\"2\" | \"3\" | \"4\""
@@ -263,125 +269,43 @@
                 "op": "eq",
                 "args": [
                   {
-                    "$": "surface"
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "stats"
+                      }
+                    ]
                   },
-                  "panel"
+                  0
                 ]
               },
               "then": [
                 {
-                  "use": "Grid",
+                  "organism": "EmptyState",
                   "props": {
-                    "Cols": {
-                      "op": "cond",
-                      "args": [
-                        {
-                          "op": "eq",
-                          "args": [
-                            {
-                              "$": "cols"
-                            },
-                            "2"
-                          ]
-                        },
-                        "2",
-                        {
-                          "op": "cond",
-                          "args": [
-                            {
-                              "op": "eq",
-                              "args": [
-                                {
-                                  "$": "cols"
-                                },
-                                "3"
-                              ]
-                            },
-                            "2-3",
-                            {
-                              "op": "cond",
-                              "args": [
-                                {
-                                  "op": "eq",
-                                  "args": [
-                                    {
-                                      "$": "cols"
-                                    },
-                                    "4"
-                                  ]
-                                },
-                                "2-4",
-                                "3-6"
-                              ]
-                            }
-                          ]
-                        }
-                      ]
-                    },
-                    "Class": {
-                      "op": "cn",
-                      "args": [
-                        "w-full items-center bg-muted px-6",
-                        {
-                          "op": "preset",
-                          "args": [
-                            "defaults",
-                            "stats.panel"
-                          ]
-                        }
-                      ]
+                    "icon": "chart-column",
+                    "title": {
+                      "$": "empty"
                     }
-                  },
-                  "attrs": {
-                    "data-testid": "items"
-                  },
-                  "children": [
-                    {
-                      "each": {
-                        "$": "stats"
-                      },
-                      "as": "stat",
-                      "key": {
-                        "$": "stat.id"
-                      },
-                      "do": [
-                        {
-                          "organism": "StatFigure",
-                          "props": {
-                            "stat": {
-                              "$": "stat"
-                            },
-                            "item": {
-                              "$": "item"
-                            },
-                            "align": {
-                              "$": "align"
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  ]
+                  }
                 }
               ],
               "else": [
                 {
-                  "use": "Grid",
-                  "props": {
-                    "Cols": {
-                      "op": "cond",
-                      "args": [
-                        {
-                          "op": "eq",
-                          "args": [
-                            {
-                              "$": "layout"
-                            },
-                            "stack"
-                          ]
-                        },
-                        "1",
-                        {
+                  "when": {
+                    "op": "eq",
+                    "args": [
+                      {
+                        "$": "surface"
+                      },
+                      "panel"
+                    ]
+                  },
+                  "then": [
+                    {
+                      "use": "Grid",
+                      "props": {
+                        "Cols": {
                           "op": "cond",
                           "args": [
                             {
@@ -426,37 +350,148 @@
                               ]
                             }
                           ]
+                        },
+                        "Class": {
+                          "op": "cn",
+                          "args": [
+                            "w-full items-center bg-muted px-6",
+                            {
+                              "op": "preset",
+                              "args": [
+                                "defaults",
+                                "stats.panel"
+                              ]
+                            }
+                          ]
+                        }
+                      },
+                      "attrs": {
+                        "data-testid": "items"
+                      },
+                      "children": [
+                        {
+                          "each": {
+                            "$": "stats"
+                          },
+                          "as": "stat",
+                          "key": {
+                            "$": "stat.id"
+                          },
+                          "do": [
+                            {
+                              "organism": "StatFigure",
+                              "props": {
+                                "stat": {
+                                  "$": "stat"
+                                },
+                                "item": {
+                                  "$": "item"
+                                },
+                                "align": {
+                                  "$": "align"
+                                }
+                              }
+                            }
+                          ]
                         }
                       ]
-                    },
-                    "Class": "gap-6"
-                  },
-                  "attrs": {
-                    "data-testid": "items"
-                  },
-                  "children": [
+                    }
+                  ],
+                  "else": [
                     {
-                      "each": {
-                        "$": "stats"
-                      },
-                      "as": "stat",
-                      "key": {
-                        "$": "stat.id"
-                      },
-                      "do": [
-                        {
-                          "organism": "StatFigure",
-                          "props": {
-                            "stat": {
-                              "$": "stat"
+                      "use": "Grid",
+                      "props": {
+                        "Cols": {
+                          "op": "cond",
+                          "args": [
+                            {
+                              "op": "eq",
+                              "args": [
+                                {
+                                  "$": "layout"
+                                },
+                                "stack"
+                              ]
                             },
-                            "item": {
-                              "$": "item"
-                            },
-                            "align": {
-                              "$": "align"
+                            "1",
+                            {
+                              "op": "cond",
+                              "args": [
+                                {
+                                  "op": "eq",
+                                  "args": [
+                                    {
+                                      "$": "cols"
+                                    },
+                                    "2"
+                                  ]
+                                },
+                                "2",
+                                {
+                                  "op": "cond",
+                                  "args": [
+                                    {
+                                      "op": "eq",
+                                      "args": [
+                                        {
+                                          "$": "cols"
+                                        },
+                                        "3"
+                                      ]
+                                    },
+                                    "2-3",
+                                    {
+                                      "op": "cond",
+                                      "args": [
+                                        {
+                                          "op": "eq",
+                                          "args": [
+                                            {
+                                              "$": "cols"
+                                            },
+                                            "4"
+                                          ]
+                                        },
+                                        "2-4",
+                                        "3-6"
+                                      ]
+                                    }
+                                  ]
+                                }
+                              ]
                             }
-                          }
+                          ]
+                        },
+                        "Class": "gap-6"
+                      },
+                      "attrs": {
+                        "data-testid": "items"
+                      },
+                      "children": [
+                        {
+                          "each": {
+                            "$": "stats"
+                          },
+                          "as": "stat",
+                          "key": {
+                            "$": "stat.id"
+                          },
+                          "do": [
+                            {
+                              "organism": "StatFigure",
+                              "props": {
+                                "stat": {
+                                  "$": "stat"
+                                },
+                                "item": {
+                                  "$": "item"
+                                },
+                                "align": {
+                                  "$": "align"
+                                }
+                              }
+                            }
+                          ]
                         }
                       ]
                     }

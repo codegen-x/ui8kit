@@ -47,7 +47,13 @@ import { sitemap as sitemapEntries } from "@ui8kit/app-shared/data/sitemap";
 
 const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
 const TERMINAL_FIELDS = {"id":"id","text":"title","kind":"metadata.line_kind.value"} as const;
-const STATS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
+const STATS_FIELDS = {
+  "id": "id",
+  "label": "title",
+  "value": "metadata.value.value|number",
+  "icon": "metadata.icon.value",
+  "hint": "metadata.hint.value",
+} as const;
 const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 const TESTIMONIALS_FIELDS = {
   "id": "id",
@@ -73,7 +79,7 @@ const TIERS_FIELDS = {
   "yearly": "metadata.yearly.value",
 } as const;
 const LOGOS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
-const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
+const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"terms|term-slug:faq_category"} as const;
 const FAQTABS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
 const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"metadata.links.value"} as const;
 
@@ -182,6 +188,7 @@ export function PageSaasLandingPage() {
           id="saas-landing-stats"
           title={ui.marketing.stats.title}
           stats={stats}
+          empty={ui.marketing.stats.empty}
           cols="4"
           layout="row"
           surface="none"
@@ -222,6 +229,7 @@ export function PageSaasLandingPage() {
           id="saas-landing-faq"
           title={ui.site.pricing.faqTitle}
           items={faq}
+          empty={ui.vibe.faq.empty}
           search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
           filter={{ tabs: faqtabs, label: ui.vibe.faq.tabs, category: "", mode: "none" }}
           layout="accordion"

@@ -32,7 +32,7 @@ import { prompts as templateFiltersEntries } from "@ui8kit/app-shared/data/promp
 
 const TERMINAL_FIELDS = {"id":"id","text":"title","kind":"metadata.line_kind.value"} as const;
 const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
-const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
+const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"terms|term-slug:faq_category"} as const;
 const FAQTABS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
 const BENTO_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","size":"metadata.size.value"} as const;
 const TEMPLATES_FIELDS = {
@@ -120,6 +120,7 @@ const templateFilters = fromCodex<Filter>(templateFiltersEntries, TEMPLATEFILTER
     id="developers-faq"
     :title="ui.site.pricing.faqTitle"
     :items="faq"
+    :empty="ui.vibe.faq.empty"
     :search="{ label: ui.vibe.faq.search, query: '', mode: 'none' }"
     :filter="{ tabs: faqtabs, label: ui.vibe.faq.tabs, category: 'billing', mode: 'categories' }"
     layout="accordion"

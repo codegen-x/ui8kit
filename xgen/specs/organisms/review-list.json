@@ -35,6 +35,10 @@
       {
         "name": "ratingLabel",
         "type": "string"
+      },
+      {
+        "name": "empty",
+        "type": "string"
       }
     ]
   },
@@ -146,6 +150,33 @@
         "children": {
           "args": [],
           "do": [
+            {
+              "when": {
+                "op": "eq",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "reviews"
+                      }
+                    ]
+                  },
+                  0
+                ]
+              },
+              "then": [
+                {
+                  "organism": "EmptyState",
+                  "props": {
+                    "icon": "message-square-quote",
+                    "title": {
+                      "$": "labels.empty"
+                    }
+                  }
+                }
+              ]
+            },
             {
               "use": "Grid",
               "props": {

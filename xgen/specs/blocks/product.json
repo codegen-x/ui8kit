@@ -75,8 +75,10 @@
     }
   ],
   "slots": [
-    "MediaFrame",
+    "EmptyState",
     "NumberField",
+    "ProductGallery",
+    "ProductPrice",
     "Rating",
     "SectionFrame"
   ],

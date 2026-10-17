@@ -38,7 +38,13 @@ const TERMINAL_FIELDS = {"id":"id","text":"title","kind":"metadata.line_kind.val
 const LOGOS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
 const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 const STEPS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
-const STATS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
+const STATS_FIELDS = {
+  "id": "id",
+  "label": "title",
+  "value": "metadata.value.value|number",
+  "icon": "metadata.icon.value",
+  "hint": "metadata.hint.value",
+} as const;
 const TESTIMONIALS_FIELDS = {
   "id": "id",
   "author": "title",
@@ -50,7 +56,7 @@ const TESTIMONIALS_FIELDS = {
   "time": "metadata.time.value|ago-short",
   "mark": "metadata.mark.value",
 } as const;
-const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
+const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"terms|term-slug:faq_category"} as const;
 const FAQTABS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
 
 const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS, CODEX);
@@ -127,6 +133,7 @@ const faqtabs = fromCodex<FaqTab>(faqtabsEntries, FAQTABS_FIELDS, CODEX);
     id="home-stats"
     :title="ui.marketing.stats.title"
     :stats="stats"
+    :empty="ui.marketing.stats.empty"
     cols="4"
     layout="row"
     surface="none"
@@ -156,6 +163,7 @@ const faqtabs = fromCodex<FaqTab>(faqtabsEntries, FAQTABS_FIELDS, CODEX);
     id="home-faq"
     :title="ui.site.pricing.faqTitle"
     :items="faq"
+    :empty="ui.vibe.faq.empty"
     :search="{ label: ui.vibe.faq.search, query: '', mode: 'none' }"
     :filter="{ tabs: faqtabs, label: ui.vibe.faq.tabs, category: '', mode: 'none' }"
     layout="accordion"

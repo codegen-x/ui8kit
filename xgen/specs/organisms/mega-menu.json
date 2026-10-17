@@ -238,13 +238,7 @@
                               "use": "Link",
                               "props": {
                                 "Href": {
-                                  "op": "coalesce",
-                                  "args": [
-                                    {
-                                      "$": "l.href"
-                                    },
-                                    "#/"
-                                  ]
+                                  "$": "l.href"
                                 },
                                 "Variant": "default",
                                 "AriaCurrent": {

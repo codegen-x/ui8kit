@@ -1,6 +1,6 @@
 // More marketing organisms: logo cloud, stats band, testimonials, steps. Each is a SectionFrame with a collection laid out by axes.
 // logos.row strip geometry from the default preset.
-import { cn, cond, eachAt, each, eq, ne, or, add, op, ref, text, str, undef, use, when, organism } from "../../build";
+import { cn, cond, eachAt, each, eq, ne, or, add, op, ref, text, str, undef, use, when, organism, len } from "../../build";
 import type { OrganismSpec, ViewNode } from "../../ir";
 import { fields, groupFields, rec, requireFields, spec, ts } from "../kit";
 import { behind, frame } from "../components/frames";
@@ -50,6 +50,7 @@ const statsBand = spec(`${O}stats-band`, "StatsBand", "Key numbers in a row or g
     id,
     { name: "title", type: "string", default: "" },
     { name: "stats", type: ts("Stat[]"), required: true },
+    { name: "empty", type: "string", default: "", docs: "the text of the empty state (no figures), from the dictionary" },
     { name: "cols", type: tsOf("2", "3", "4"), default: "4" },
     { name: "layout", type: tsOf("row", "stack"), default: "row", docs: "stack: one narrow column of figures, for a sidebar" },
     { name: "surface", type: tsOf("none", "image", "panel"), default: "none", docs: "image: picture behind; panel: one rounded card" },
@@ -73,7 +74,7 @@ const statsBand = spec(`${O}stats-band`, "StatsBand", "Key numbers in a row or g
       ...common, align: ref("align"), measure: cond(eq(ref("surface"), "panel"), "fill", cond(eq(ref("layout"), "stack"), "xs", "default")),
       density: ref("density"),
       className: cn(cond(eq(ref("surface"), "image"), "bg-transparent", ""), cond(eq(ref("surface"), "panel"), "py-0", "")),
-    }, [when(eq(ref("surface"), "panel"), [panel], [grid])]);
+    }, [when(eq(len(ref("stats")), 0), [organism("EmptyState", { icon: "chart-column", title: ref("empty") })], [when(eq(ref("surface"), "panel"), [panel], [grid])])]);
     return [behind(cond(eq(ref("surface"), "image"), "image", "none"), ref("title"), main)];
   })(),
 });

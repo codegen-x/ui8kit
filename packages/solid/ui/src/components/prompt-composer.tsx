@@ -96,7 +96,7 @@ export function PromptComposer({ label, attachLabel, modelLabel, send, href }: P
           ) : null}
         </Group>
         <Button
-          href={(href ?? "#/")}
+          href={href}
           variant="secondary"
           size="sm"
           layout="icon"

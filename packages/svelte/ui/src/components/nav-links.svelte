@@ -27,7 +27,7 @@
   {#each links as l, i (l.id)}
     {#if (((side as string) === "all") || (((i * 2) < count) === ((side as string) === "left")))}
       <Link
-        href={(l.href ?? "#/")}
+        href={l.href}
         variant="default"
         aria-current={((l.id === current) ? "page" : undefined)}
         class="text-sm"

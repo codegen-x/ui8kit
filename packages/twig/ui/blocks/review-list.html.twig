@@ -13,6 +13,9 @@
 {%- set v_density = (p.density ?? 'default') -%}
 {%- set v_landmarkLabel = (p.landmarkLabel ?? null) -%}
 {%- set c_9 -%}
+  {%- if ui_t(ui_eq(ui_len(v_reviews), 0)) %}
+    {{ include('blocks/empty-state.html.twig', {'p': {'icon': 'message-square-quote', 'title': ui_get(v_labels, ['empty'])}}, with_context = false) }}
+  {%- endif %}
   {%- set c_8 -%}
     {%- for v_r in ui_l(v_reviews) %}
       {%- set c_7 -%}

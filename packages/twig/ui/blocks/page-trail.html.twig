@@ -16,7 +16,9 @@
 {%- set v_titleId = ui_add(v_id, '-title') -%}
 {%- set c_4 -%}
   {%- set c_3 -%}
-    {{ include('blocks/page-crumbs.html.twig', {'p': {'label': v_label, 'crumbs': v_crumbs, 'landmarkLabel': v_landmarkLabel}}, with_context = false) }}
+    {%- if ui_t(ui_gt(ui_len(v_crumbs), 0)) %}
+      {{ include('blocks/page-crumbs.html.twig', {'p': {'label': v_label, 'crumbs': v_crumbs, 'landmarkLabel': v_landmarkLabel}}, with_context = false) }}
+    {%- endif %}
     {%- set c_2 -%}
       {%- set c_1 -%}
         {{ include('blocks/section-header.html.twig', {'p': {'titleId': v_titleId, 'title': v_title, 'heading': {'level': v_level, 'badge': v_badge}, 'lead': v_lead}}, with_context = false) }}

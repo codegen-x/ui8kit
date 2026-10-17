@@ -29,7 +29,7 @@
     {
       "name": "href",
       "type": "string",
-      "required": true
+      "docs": "the address; none: a button, not a link"
     },
     {
       "name": "tone",

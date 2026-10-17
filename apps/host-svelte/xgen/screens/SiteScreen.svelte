@@ -46,7 +46,7 @@
     "features": "metadata.features.value",
     "yearly": "metadata.yearly.value",
   } as const;
-  const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
+  const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"terms|term-slug:faq_category"} as const;
   const FAQTABS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
 
   let { url }: { url: UrlPort } = $props();
@@ -161,6 +161,7 @@
       id="pricing-faq"
       title={ui.site.pricing.faqTitle}
       items={faq}
+      empty={ui.vibe.faq.empty}
       search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
       filter={{ tabs: faqtabs, label: ui.vibe.faq.tabs, category: "", mode: "none" }}
       layout="accordion"

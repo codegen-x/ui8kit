@@ -22,7 +22,8 @@
       {
         "name": "href",
         "type": "string",
-        "optional": false
+        "optional": true,
+        "docs": "the address of the primary action; none: a button, not a link"
       },
       {
         "name": "secondary",

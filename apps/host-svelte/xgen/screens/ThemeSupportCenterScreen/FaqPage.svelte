@@ -9,7 +9,7 @@
   import { faq as faqEntries } from "@ui8kit/app-shared/data/faq";
   import { faqtabs as faqtabsEntries } from "@ui8kit/app-shared/data/faqtabs";
 
-  const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
+  const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"terms|term-slug:faq_category"} as const;
   const FAQTABS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
 
   const faq = fromCodex<Faq>(faqEntries, FAQ_FIELDS, CODEX);
@@ -30,6 +30,7 @@
   id="faq-faq-1"
   title={ui.site.pricing.faqTitle}
   items={faq}
+  empty={ui.vibe.faq.empty}
   search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
   filter={{ tabs: faqtabs, label: ui.vibe.faq.tabs, category: "", mode: "none" }}
   layout="chat"
@@ -42,6 +43,7 @@
   id="faq-faq-2"
   title={ui.site.pricing.faqTitle}
   items={faq}
+  empty={ui.vibe.faq.empty}
   search={{ label: ui.vibe.faq.search, query: "", mode: "field" }}
   filter={{ tabs: faqtabs, label: ui.vibe.faq.tabs, category: "", mode: "none" }}
   layout="accordion"

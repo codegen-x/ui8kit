@@ -27,7 +27,13 @@ import { features as featuresEntries } from "@ui8kit/app-shared/data/features";
 import { testimonials as testimonialsEntries } from "@ui8kit/app-shared/data/testimonials";
 import { tiers as tiersEntries } from "@ui8kit/app-shared/data/tiers";
 
-const STATS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
+const STATS_FIELDS = {
+  "id": "id",
+  "label": "title",
+  "value": "metadata.value.value|number",
+  "icon": "metadata.icon.value",
+  "hint": "metadata.hint.value",
+} as const;
 const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 const TESTIMONIALS_FIELDS = {
   "id": "id",

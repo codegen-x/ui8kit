@@ -11,6 +11,7 @@ import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { Title } from "../primitives/title/title";
 import { ArticleBlock } from "../components/article-block";
+import { EmptyState } from "../components/empty-state";
 import { MediaFrame } from "../components/media-frame";
 import { Rating } from "../components/rating";
 import { SectionFrame } from "../components/section-frame";
@@ -51,6 +52,9 @@ export function ReviewList({
       measure={(((layout as string) === "list") ? "2xl" : "default")}
       landmarkLabel={landmarkLabel}
     >
+      {((reviews?.length ?? 0) === 0) ? (
+        <EmptyState icon="message-square-quote" title={labels.empty} />
+      ) : null}
       <Grid cols={(((layout as string) === "grid") ? "1-3" : "1")} className="gap-4" data-testid="items">
         {(reviews ?? []).map((r) => (
           <ArticleBlock key={r.id}

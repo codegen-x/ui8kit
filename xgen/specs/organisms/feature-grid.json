@@ -174,20 +174,22 @@
                     },
                     {
                       "when": {
-                        "$": "action.label"
+                        "op": "and",
+                        "args": [
+                          {
+                            "$": "action.label"
+                          },
+                          {
+                            "$": "action.href"
+                          }
+                        ]
                       },
                       "then": [
                         {
                           "use": "Link",
                           "props": {
                             "Href": {
-                              "op": "coalesce",
-                              "args": [
-                                {
-                                  "$": "action.href"
-                                },
-                                "#/"
-                              ]
+                              "$": "action.href"
                             },
                             "Variant": "default",
                             "Class": {

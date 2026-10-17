@@ -57,7 +57,7 @@ templ PromptComposer(p PromptComposerProps) {
 					}
 				}
 			}
-			@button.Button(button.ButtonProps{Href: uiutils.S(uiutils.Coalesce(vHref, "#/")), Variant: "secondary", Size: "sm", Layout: "icon", Attrs: uiutils.Attrs("data-testid", "submit", "aria-label", uiutils.Coalesce(vSend, "Send"))}) {
+			@button.Button(button.ButtonProps{Href: uiutils.S(vHref), Variant: "secondary", Size: "sm", Layout: "icon", Attrs: uiutils.Attrs("data-testid", "submit", "aria-label", uiutils.Coalesce(vSend, "Send"))}) {
 				@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "arrow-up", Size: 16})
 			}
 		}

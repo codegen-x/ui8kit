@@ -28,7 +28,13 @@
   import { jobs as jobsEntries } from "@ui8kit/app-shared/data/jobs";
   import { departments as departmentsEntries } from "@ui8kit/app-shared/data/departments";
 
-  const STATS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
+  const STATS_FIELDS = {
+    "id": "id",
+    "label": "title",
+    "value": "metadata.value.value|number",
+    "icon": "metadata.icon.value",
+    "hint": "metadata.hint.value",
+  } as const;
   const VALUES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
   const MILESTONES_FIELDS = {"id":"id","date":"metadata.date.value","title":"title","text":"metadata.text.value","tag":"metadata.tag.value"} as const;
   const MEMBERS_FIELDS = {

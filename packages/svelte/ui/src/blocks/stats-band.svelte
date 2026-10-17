@@ -13,6 +13,7 @@
     id: string;
     title?: string;
     stats: Stat[];
+    empty?: string;
     cols?: "2" | "3" | "4";
     layout?: "row" | "stack";
     surface?: "none" | "image" | "panel";
@@ -27,6 +28,7 @@
 <script lang="ts">
   import Grid from "../primitives/grid/grid.svelte";
   import Backdrop from "../components/backdrop.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import SectionFrame from "../components/section-frame.svelte";
   import StatFigure from "../components/stat-figure.svelte";
   import { defaults } from "../presets/defaults";
@@ -36,6 +38,7 @@
     id,
     title = "",
     stats,
+    empty = "",
     cols = "4",
     layout = "row",
     surface = "none",
@@ -68,7 +71,9 @@
   landmarkLabel={landmarkLabel}
 >
   <Backdrop kind={(((surface as string) === "image") ? "image" : "none")} alt={title} />
-  {#if ((surface as string) === "panel")}
+  {#if ((stats?.length ?? 0) === 0)}
+    <EmptyState icon="chart-column" title={empty} />
+  {:else if ((surface as string) === "panel")}
     <Grid
       cols={
         (cols as string) === "2" ? "2"

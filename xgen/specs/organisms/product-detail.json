@@ -45,6 +45,14 @@
       {
         "name": "returns",
         "type": "string"
+      },
+      {
+        "name": "was",
+        "type": "string"
+      },
+      {
+        "name": "empty",
+        "type": "string"
       }
     ]
   },
@@ -59,7 +67,7 @@
       "type": {
         "ts": "Product"
       },
-      "required": true
+      "docs": "the product; without one, the empty state (labels.empty)"
     },
     {
       "name": "labels",
@@ -145,120 +153,216 @@
   ],
   "view": [
     {
-      "organism": "SectionFrame",
-      "props": {
-        "id": {
-          "$": "id"
-        },
-        "title": {
-          "$": "product.name"
-        },
-        "lead": {
-          "$": "product.summary"
-        },
-        "heading": {
-          "level": {
-            "$": "level"
+      "when": {
+        "op": "not",
+        "args": [
+          {
+            "$": "product"
           }
-        },
-        "layout": {
-          "op": "cond",
-          "args": [
-            {
-              "op": "eq",
+        ]
+      },
+      "then": [
+        {
+          "organism": "SectionFrame",
+          "props": {
+            "id": {
+              "$": "id"
+            },
+            "tone": {
+              "$": "tone"
+            },
+            "density": {
+              "$": "density"
+            },
+            "landmarkLabel": {
+              "$": "landmarkLabel"
+            }
+          },
+          "slots": {
+            "children": {
+              "args": [],
+              "do": [
+                {
+                  "organism": "EmptyState",
+                  "props": {
+                    "icon": "package",
+                    "title": {
+                      "$": "labels.empty"
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ],
+      "else": [
+        {
+          "organism": "SectionFrame",
+          "props": {
+            "id": {
+              "$": "id"
+            },
+            "title": {
+              "$": "product.name"
+            },
+            "lead": {
+              "$": "product.summary"
+            },
+            "heading": {
+              "level": {
+                "$": "level"
+              }
+            },
+            "layout": {
+              "op": "cond",
               "args": [
                 {
-                  "$": "layout"
+                  "op": "eq",
+                  "args": [
+                    {
+                      "$": "layout"
+                    },
+                    "split"
+                  ]
                 },
-                "split"
+                "split",
+                "stack"
               ]
             },
-            "split",
-            "stack"
-          ]
-        },
-        "media": {
-          "show": true,
-          "side": {
-            "$": "mediaSide"
+            "media": {
+              "show": true,
+              "side": {
+                "$": "mediaSide"
+              },
+              "align": "start"
+            },
+            "tone": {
+              "$": "tone"
+            },
+            "density": {
+              "$": "density"
+            },
+            "landmarkLabel": {
+              "$": "landmarkLabel"
+            }
           },
-          "align": "start"
-        },
-        "tone": {
-          "$": "tone"
-        },
-        "density": {
-          "$": "density"
-        },
-        "landmarkLabel": {
-          "$": "landmarkLabel"
-        }
-      },
-      "slots": {
-        "children": {
-          "args": [],
-          "do": [
-            {
-              "use": "Stack",
-              "props": {
-                "Gap": "4",
-                "Align": "stretch"
-              },
-              "attrs": {
-                "data-testid": "buy-box"
-              },
-              "children": [
+          "slots": {
+            "children": {
+              "args": [],
+              "do": [
                 {
-                  "use": "Group",
+                  "use": "Stack",
                   "props": {
                     "Gap": "4",
-                    "Align": "center",
-                    "Class": "flex-wrap"
+                    "Align": "stretch"
+                  },
+                  "attrs": {
+                    "data-testid": "buy-box"
                   },
                   "children": [
                     {
-                      "use": "Text",
-                      "props": {
-                        "Size": "4xl",
-                        "Weight": "bold"
-                      },
-                      "children": [
-                        {
-                          "text": {
-                            "op": "money",
-                            "args": [
-                              {
-                                "$": "product.price"
-                              },
-                              {
-                                "$": "product.currency"
-                              }
-                            ]
-                          }
-                        }
-                      ]
-                    },
-                    {
                       "when": {
-                        "$": "product.badge"
+                        "$": "product.category"
                       },
                       "then": [
                         {
-                          "use": "Badge",
+                          "use": "Text",
                           "props": {
-                            "Variant": "default",
-                            "Size": "default"
+                            "Size": "xs",
+                            "Class": "uppercase tracking-wide text-muted-foreground"
+                          },
+                          "attrs": {
+                            "data-testid": "category"
                           },
                           "children": [
                             {
                               "text": {
-                                "op": "at",
+                                "$": "product.category"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "organism": "ProductPrice",
+                      "props": {
+                        "price": {
+                          "$": "product.price"
+                        },
+                        "compareAt": {
+                          "$": "product.compareAt"
+                        },
+                        "currency": {
+                          "$": "product.currency"
+                        },
+                        "badge": {
+                          "op": "cond",
+                          "args": [
+                            {
+                              "$": "product.badge"
+                            },
+                            {
+                              "op": "at",
+                              "args": [
+                                {
+                                  "$": "badges"
+                                },
+                                {
+                                  "$": "product.badge"
+                                }
+                              ]
+                            },
+                            ""
+                          ]
+                        },
+                        "was": {
+                          "$": "labels.was"
+                        }
+                      }
+                    },
+                    {
+                      "use": "Group",
+                      "props": {
+                        "Gap": "2"
+                      },
+                      "children": [
+                        {
+                          "organism": "Rating",
+                          "props": {
+                            "value": {
+                              "$": "product.rating"
+                            },
+                            "label": {
+                              "op": "tpl",
+                              "args": [
+                                {
+                                  "$": "labels.ratingLabel"
+                                },
+                                {
+                                  "$": "product.rating"
+                                }
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "use": "Text",
+                          "props": {
+                            "Size": "sm",
+                            "Class": "text-muted-foreground"
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "op": "tpl",
                                 "args": [
                                   {
-                                    "$": "badges"
+                                    "$": "labels.reviews"
                                   },
                                   {
-                                    "$": "product.badge"
+                                    "$": "product.reviews"
                                   }
                                 ]
                               }
@@ -266,103 +370,125 @@
                           ]
                         }
                       ]
-                    }
-                  ]
-                },
-                {
-                  "use": "Group",
-                  "props": {
-                    "Gap": "2"
-                  },
-                  "children": [
-                    {
-                      "organism": "Rating",
-                      "props": {
-                        "value": {
-                          "$": "product.rating"
-                        },
-                        "label": {
-                          "op": "tpl",
-                          "args": [
-                            {
-                              "$": "labels.ratingLabel"
-                            },
-                            {
-                              "$": "product.rating"
-                            }
-                          ]
-                        }
-                      }
                     },
                     {
                       "use": "Text",
                       "props": {
                         "Size": "sm",
-                        "Class": "text-muted-foreground"
+                        "Weight": "medium",
+                        "Class": {
+                          "op": "cond",
+                          "args": [
+                            {
+                              "$": "product.inStock"
+                            },
+                            "text-foreground",
+                            "text-destructive"
+                          ]
+                        }
+                      },
+                      "attrs": {
+                        "data-testid": "stock"
                       },
                       "children": [
                         {
                           "text": {
-                            "op": "tpl",
+                            "op": "cond",
                             "args": [
                               {
-                                "$": "labels.reviews"
+                                "$": "product.inStock"
                               },
                               {
-                                "$": "product.reviews"
+                                "$": "labels.inStock"
+                              },
+                              {
+                                "$": "labels.soldOut"
                               }
                             ]
                           }
                         }
                       ]
-                    }
-                  ]
-                },
-                {
-                  "use": "Text",
-                  "props": {
-                    "Size": "sm",
-                    "Weight": "medium",
-                    "Class": {
-                      "op": "cond",
-                      "args": [
-                        {
-                          "$": "product.inStock"
-                        },
-                        "text-foreground",
-                        "text-destructive"
-                      ]
-                    }
-                  },
-                  "attrs": {
-                    "data-testid": "stock"
-                  },
-                  "children": [
+                    },
                     {
-                      "text": {
-                        "op": "cond",
-                        "args": [
-                          {
-                            "$": "product.inStock"
+                      "use": "Group",
+                      "props": {
+                        "Gap": "4",
+                        "Class": "flex-wrap"
+                      },
+                      "children": [
+                        {
+                          "when": {
+                            "op": "eq",
+                            "args": [
+                              {
+                                "$": "buy"
+                              },
+                              "full"
+                            ]
                           },
-                          {
-                            "$": "labels.inStock"
+                          "then": [
+                            {
+                              "organism": "NumberField",
+                              "props": {
+                                "value": "1",
+                                "name": {
+                                  "op": "tpl",
+                                  "args": [
+                                    "{0}-qty",
+                                    {
+                                      "$": "id"
+                                    }
+                                  ]
+                                },
+                                "min": "1",
+                                "label": {
+                                  "$": "labels.qty"
+                                },
+                                "decrease": {
+                                  "$": "labels.decrease"
+                                },
+                                "increase": {
+                                  "$": "labels.increase"
+                                }
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "use": "Button",
+                          "props": {
+                            "Disabled": {
+                              "op": "not",
+                              "args": [
+                                {
+                                  "$": "product.inStock"
+                                }
+                              ]
+                            }
                           },
-                          {
-                            "$": "labels.soldOut"
-                          }
-                        ]
-                      }
-                    }
-                  ]
-                },
-                {
-                  "use": "Group",
-                  "props": {
-                    "Gap": "4",
-                    "Class": "flex-wrap"
-                  },
-                  "children": [
+                          "attrs": {
+                            "data-testid": "add"
+                          },
+                          "on": {
+                            "click": {
+                              "call": "emit.add",
+                              "args": [
+                                {
+                                  "$": "product.id"
+                                }
+                              ]
+                            }
+                          },
+                          "children": [
+                            {
+                              "text": {
+                                "$": "labels.add"
+                              }
+                            }
+                          ]
+                        }
+                      ]
+                    },
                     {
                       "when": {
                         "op": "eq",
@@ -375,130 +501,59 @@
                       },
                       "then": [
                         {
-                          "organism": "NumberField",
+                          "use": "List",
                           "props": {
-                            "value": "1",
-                            "name": {
-                              "op": "tpl",
-                              "args": [
-                                "{0}-qty",
-                                {
-                                  "$": "id"
-                                }
-                              ]
-                            },
-                            "min": "1",
-                            "label": {
-                              "$": "labels.qty"
-                            },
-                            "decrease": {
-                              "$": "labels.decrease"
-                            },
-                            "increase": {
-                              "$": "labels.increase"
-                            }
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "use": "Button",
-                      "props": {
-                        "Disabled": {
-                          "op": "not",
-                          "args": [
-                            {
-                              "$": "product.inStock"
-                            }
-                          ]
-                        }
-                      },
-                      "attrs": {
-                        "data-testid": "add"
-                      },
-                      "on": {
-                        "click": {
-                          "call": "emit.add",
-                          "args": [
-                            {
-                              "$": "product.id"
-                            }
-                          ]
-                        }
-                      },
-                      "children": [
-                        {
-                          "text": {
-                            "$": "labels.add"
-                          }
-                        }
-                      ]
-                    }
-                  ]
-                },
-                {
-                  "when": {
-                    "op": "eq",
-                    "args": [
-                      {
-                        "$": "buy"
-                      },
-                      "full"
-                    ]
-                  },
-                  "then": [
-                    {
-                      "use": "List",
-                      "props": {
-                        "Tag": "ul",
-                        "Class": "flex flex-col gap-2 text-sm text-muted-foreground"
-                      },
-                      "children": [
-                        {
-                          "use": "ListItem",
-                          "props": {
-                            "Class": "flex items-center gap-2"
+                            "Tag": "ul",
+                            "Class": "flex flex-col gap-2 text-sm text-muted-foreground"
                           },
                           "children": [
                             {
-                              "use": "LucideIcon",
+                              "use": "ListItem",
                               "props": {
-                                "Name": "truck",
-                                "Size": 16
-                              }
-                            },
-                            {
-                              "use": "Inline",
+                                "Class": "flex items-center gap-2"
+                              },
                               "children": [
                                 {
-                                  "text": {
-                                    "$": "labels.shipping"
+                                  "use": "LucideIcon",
+                                  "props": {
+                                    "Name": "truck",
+                                    "Size": 16
                                   }
+                                },
+                                {
+                                  "use": "Inline",
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "labels.shipping"
+                                      }
+                                    }
+                                  ]
                                 }
                               ]
-                            }
-                          ]
-                        },
-                        {
-                          "use": "ListItem",
-                          "props": {
-                            "Class": "flex items-center gap-2"
-                          },
-                          "children": [
-                            {
-                              "use": "LucideIcon",
-                              "props": {
-                                "Name": "shield-check",
-                                "Size": 16
-                              }
                             },
                             {
-                              "use": "Inline",
+                              "use": "ListItem",
+                              "props": {
+                                "Class": "flex items-center gap-2"
+                              },
                               "children": [
                                 {
-                                  "text": {
-                                    "$": "labels.returns"
+                                  "use": "LucideIcon",
+                                  "props": {
+                                    "Name": "shield-check",
+                                    "Size": 16
                                   }
+                                },
+                                {
+                                  "use": "Inline",
+                                  "children": [
+                                    {
+                                      "text": {
+                                        "$": "labels.returns"
+                                      }
+                                    }
+                                  ]
                                 }
                               ]
                             }
@@ -509,89 +564,29 @@
                   ]
                 }
               ]
-            }
-          ]
-        },
-        "aside": {
-          "args": [],
-          "do": [
-            {
-              "use": "Stack",
-              "props": {
-                "Gap": "4",
-                "Align": "stretch"
-              },
-              "attrs": {
-                "data-testid": "gallery"
-              },
-              "children": [
+            },
+            "aside": {
+              "args": [],
+              "do": [
                 {
-                  "organism": "MediaFrame",
+                  "organism": "ProductGallery",
                   "props": {
-                    "alt": {
+                    "name": {
                       "$": "product.name"
                     },
-                    "ratio": "1/1"
-                  }
-                },
-                {
-                  "when": {
-                    "op": "eq",
-                    "args": [
-                      {
-                        "$": "thumbs"
-                      },
-                      "below"
-                    ]
-                  },
-                  "then": [
-                    {
-                      "use": "Grid",
-                      "props": {
-                        "Cols": "3",
-                        "Class": "gap-4"
-                      },
-                      "attrs": {
-                        "data-testid": "thumbs"
-                      },
-                      "children": [
-                        {
-                          "organism": "MediaFrame",
-                          "props": {
-                            "alt": {
-                              "$": "product.name"
-                            },
-                            "ratio": "1/1",
-                            "className": "ring-2 ring-foreground"
-                          }
-                        },
-                        {
-                          "organism": "MediaFrame",
-                          "props": {
-                            "alt": {
-                              "$": "product.name"
-                            },
-                            "ratio": "1/1"
-                          }
-                        },
-                        {
-                          "organism": "MediaFrame",
-                          "props": {
-                            "alt": {
-                              "$": "product.name"
-                            },
-                            "ratio": "1/1"
-                          }
-                        }
-                      ]
+                    "image": {
+                      "$": "product.image"
+                    },
+                    "thumbs": {
+                      "$": "thumbs"
                     }
-                  ]
+                  }
                 }
               ]
             }
-          ]
+          }
         }
-      }
+      ]
     }
   ],
   "portable": {

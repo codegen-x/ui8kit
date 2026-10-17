@@ -27,10 +27,11 @@ export const heroHead = spec(`${P}hero-head`, "HeroHead", "The head row of a her
   ],
   view: (() => {
     const skipClass = "sr-only focus:not-sr-only focus:fixed focus:left-2 focus:top-2 focus:z-50 focus:rounded focus:bg-background focus:px-4 focus:py-2 focus:text-sm focus:text-foreground focus:inset-ring focus:inset-ring-border";
-    const link: ViewNode = use("Link", {
-      props: { Href: coalesce(ref("l.href"), "#/"), Variant: "default", AriaCurrent: cond(eq(ref("l.id"), ref("current")), "page", undef()), Class: `text-xs font-medium leading-5 ${onBand}` },
+    // a menu entry: a link where it has an address, else its name (no "#/" stand-in)
+    const link: ViewNode = when(ref("l.href"), [use("Link", {
+      props: { Href: ref("l.href"), Variant: "default", AriaCurrent: cond(eq(ref("l.id"), ref("current")), "page", undef()), Class: `text-xs font-medium leading-5 ${onBand}` },
       attrs: { "data-testid": "nav-link" },
-    }, text(ref("l.name")));
+    }, text(ref("l.name")))], [use("Inline", { props: { Class: `text-xs font-medium leading-5 ${onBand}` }, attrs: { "data-testid": "nav-link" } }, text(ref("l.name")))]);
     return [use("Block", { props: { Tag: "header", Class: cn("flex w-full flex-wrap items-center justify-between pr-4", layoutOf("hero.head")) }, attrs: { "data-testid": "hero-head" } },
       when(ref("skip"), [use("LinkPlain", { props: { Href: "#main-content", Class: skipClass }, attrs: { "data-testid": "skip-link" } }, text(ref("skip")))]),
       use("Link", { props: { Href: "#/", Variant: "default", Class: cn(layoutOf("text.small"), `font-medium leading-6 ${onBand}`) }, attrs: { "data-testid": "brand" } }, text(ref("brand"))),
@@ -38,7 +39,7 @@ export const heroHead = spec(`${P}hero-head`, "HeroHead", "The head row of a her
         use("Group", { props: { Gap: "8", Align: "center", Class: "flex-wrap" } }, each(ref("links"), "l", ref("l.id"), link))),
       use("Group", { props: { Gap: "2", Align: "center" } },
         when(ref("login"), [use("Button", { props: { Href: ref("loginHref"), Variant: "ghost", Size: "sm", Class: `${onBand} hover:bg-background/10` }, attrs: { "data-testid": "nav-login" } }, text(ref("login")))]),
-        when(ref("cta"), [use("Button", { props: { Href: coalesce(ref("href"), "#/"), Variant: "secondary", Size: "sm" }, attrs: { "data-testid": "header-cta" } }, text(ref("cta")))])))];
+        when(ref("cta"), [use("Button", { props: { Href: ref("href"), Variant: "secondary", Size: "sm" }, attrs: { "data-testid": "header-cta" } }, text(ref("cta")))])))];
   })(),
 });
 
@@ -99,7 +100,7 @@ export const promptComposer = spec(`${P}prompt-composer`, "PromptComposer", "A p
             use("LucideIcon", { props: { Name: "plus", Size: 16 } })),
           when(ref("modelLabel"), [use("Button", { props: { Href: "#/", Variant: "ghost", Size: "sm", Class: cn(`gap-2 ${band}`, layoutOf("hero.model")) }, attrs: { "data-testid": "composer-model" } },
             use("LucideIcon", { props: { Name: "sparkles", Size: 16 } }), text(ref("modelLabel")), use("LucideIcon", { props: { Name: "chevron-down", Size: 16 } }))])),
-        use("Button", { props: { Href: coalesce(ref("href"), "#/"), Variant: "secondary", Size: "sm", Layout: "icon" }, attrs: { "data-testid": "submit", "aria-label": coalesce(ref("send"), "Send") } },
+        use("Button", { props: { Href: ref("href"), Variant: "secondary", Size: "sm", Layout: "icon" }, attrs: { "data-testid": "submit", "aria-label": coalesce(ref("send"), "Send") } },
           use("LucideIcon", { props: { Name: "arrow-up", Size: 16 } }))))];
   })(),
 });

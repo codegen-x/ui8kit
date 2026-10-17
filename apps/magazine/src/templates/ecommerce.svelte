@@ -16,6 +16,6 @@
   <ProductDetail id="tp-shop-detail" product={d.products[0]!} labels={d.ui.commerce.detail} badges={d.ui.commerce.badges} layout="split" mediaSide="start" thumbs="below" buy="full" tone="default" density="default" />
   <ProductGrid id="tp-shop-products" title={d.ui.commerce.products.title} products={d.products} labels={d.ui.commerce.productLabels} badges={d.ui.commerce.badges} layout="grid" cols="1-4" ratio="1/1" rating="show" action="button" tone="muted" density="default" />
   <ReviewList id="tp-shop-reviews" title={d.ui.commerce.reviews.title} reviews={d.reviews} labels={d.ui.commerce.reviewLabels} layout="grid" item="card" avatar="none" tone="default" density="default" />
-  <CtaBand id="tp-shop-cta" title={c.accent} text={c.note} actions={{ mode: "one", cta: c.cta, href: "#" }} layout="row" tone="default" proof="none" density="default" />
+  <CtaBand id="tp-shop-cta" title={c.accent} text={c.note} actions={{ mode: "one", cta: c.cta }} layout="row" tone="default" proof="none" density="default" />
 </Block>
 <Footer {c} />

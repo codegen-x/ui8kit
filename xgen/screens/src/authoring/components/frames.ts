@@ -20,7 +20,7 @@ const sectionFrame = spec(`${P}section-frame`, "SectionFrame", "A page section: 
   frame: true,
   records: {
     SectionHeading: groupFields(["level", "1 | 2", "heading level", 2], ["scale", '"default" | "display"', "display: an oversized heading", "default"], ["badge", "string", "a short pill above the heading (e.g. New)"]),
-    HeadLink: groupFields(["label", "string", "text of the link (View all, Browse all); none: no link"], ["href", "string", "href of the link", "#/"]),
+    HeadLink: groupFields(["label", "string", "text of the link (View all, Browse all); none: no link"], ["href", "string", "href of the link; none: no link"]),
     SectionMedia: groupFields(["show", "boolean", "the `aside` slot is shown", false], ["side", '"end" | "start"', "side of the media in the split layout", "end"], ["align", '"center" | "start"', "split layout: the body and the media centred on each other, or both from the top", "center"]),
   },
   props: [
@@ -119,16 +119,17 @@ const sectionHeader = spec(`${P}section-header`, "SectionHeader", "The head of a
   derived: [
     { name: "level", value: coalesce(ref("heading.level"), 2) },
     { name: "scale", value: coalesce(ref("heading.scale"), "default") },
-    { name: "linkHref", value: coalesce(ref("action.href"), "#/") },
+    // the link opposite the heading only with a label and an address (no "#/" stand-in)
+    { name: "hasAction", value: and(ref("action.label"), ref("action.href")) },
   ],
   view: (() => {
     const heading = () => use("Title", { props: { As: ref("level"), Size: cond(eq(ref("level"), 1), "5xl", "xl"), Weight: "semibold", Class: cond(eq(ref("scale"), "display"), "text-6xl tracking-tight md:text-8xl", cond(eq(ref("level"), 1), "leading-tight", "leading-7")) }, attrs: { id: ref("titleId") } }, text(ref("title")));
-    const actionLink = () => use("Link", { props: { Href: ref("linkHref"), Variant: "default", Class: cn(layoutOf("text.tiny"), "shrink-0 font-medium leading-5") }, attrs: { "data-testid": "section-action" } }, text(ref("action.label")));
+    const actionLink = () => use("Link", { props: { Href: ref("action.href"), Variant: "default", Class: cn(layoutOf("text.tiny"), "shrink-0 font-medium leading-5") }, attrs: { "data-testid": "section-action" } }, text(ref("action.label")));
     return [
       when(ref("heading.badge"), [use("Badge", { props: { Variant: "outline", Size: "lg", Class: cond(ref("center"), "mx-auto w-fit", "w-fit") }, attrs: { "data-testid": "section-badge" } }, text(ref("heading.badge")))]),
-      when(and(ne(ref("title"), ""), ref("action.label")), [use("Group", { props: { Gap: "4", Align: "center", Justify: "between", Class: "w-full flex-wrap" } }, heading(), actionLink())]),
-      when(and(ne(ref("title"), ""), not(ref("action.label"))), [heading()]),
-      when(and(eq(ref("title"), ""), ref("action.label")), [use("Group", { props: { Gap: "4", Align: "center", Justify: "end", Class: "w-full" } }, actionLink())]),
+      when(and(ne(ref("title"), ""), ref("hasAction")), [use("Group", { props: { Gap: "4", Align: "center", Justify: "between", Class: "w-full flex-wrap" } }, heading(), actionLink())]),
+      when(and(ne(ref("title"), ""), not(ref("hasAction"))), [heading()]),
+      when(and(eq(ref("title"), ""), ref("hasAction")), [use("Group", { props: { Gap: "4", Align: "center", Justify: "end", Class: "w-full" } }, actionLink())]),
       when(ref("lead"), [use("Text", { props: { Size: "base", Class: cn("max-w-2xl text-muted-foreground", cond(ref("center"), "mx-auto", "")) } }, text(ref("lead")))]),
     ];
   })(),

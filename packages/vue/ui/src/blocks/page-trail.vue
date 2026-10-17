@@ -63,7 +63,12 @@ const titleId = computed(() => id + "-title");
     :aria-label="landmarkLabel"
   >
     <Container :class="cn('mx-auto w-full max-w-6xl px-4', 'flex flex-col gap-6')" data-slot="container">
-      <PageCrumbs :label="label" :crumbs="crumbs" :landmarkLabel="landmarkLabel" />
+      <PageCrumbs
+        v-if="((crumbs?.length ?? 0) > 0)"
+        :label="label"
+        :crumbs="crumbs"
+        :landmarkLabel="landmarkLabel"
+      />
       <Box
         :class="
           (aside as string) === 'facts' ? 'grid grid-cols-1 items-center gap-8 lg:grid-cols-2'

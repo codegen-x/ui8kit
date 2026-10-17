@@ -125,7 +125,7 @@ const faq = define({
   organism: "FaqList", axes: ["layout", "cols", "search.mode", "filter.mode", "tone", "density"], data: [d.faq, d.faqtabs],
   variants: [["list", "List"], ["chat", "Chat bubbles", { layout: "chat" }], ["search", "With a search field", { "search.mode": "field" }], ["tabs", "Category tabs", { "filter.mode": "categories" }, { filter: { category: "billing" } }], ["twoColumns", "Two columns", { cols: "2" }], ["muted", "Muted, compact", { tone: "muted", density: "compact" }], ["roomy", "Roomy", { density: "roomy" }]],
   sample: {
-    id: "faq", title: t("site.pricing.faqTitle"), items: ref("faq"),
+    id: "faq", title: t("site.pricing.faqTitle"), items: ref("faq"), empty: t("vibe.faq.empty"),
     search: { label: t("vibe.faq.search"), query: "" },
     filter: { tabs: ref("faqtabs"), label: t("vibe.faq.tabs"), category: "" },
   },
@@ -183,7 +183,7 @@ const stats = define({
     ["muted2", "Plain, two columns, muted", { cols: "2", tone: "muted", density: "roomy" }],
     ["cardsCompact", "Cards, four columns, compact", { item: "card", density: "compact" }],
   ],
-  sample: { id: "stats", title: t("marketing.stats.title"), stats: ref("stats") },
+  sample: { id: "stats", title: t("marketing.stats.title"), stats: ref("stats"), empty: t("marketing.stats.empty") },
 });
 
 const testimonials = define({

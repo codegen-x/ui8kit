@@ -17,7 +17,7 @@
     title={c.title}
     text={c.lead}
     badge={c.eyebrow}
-    actions={{ mode: "two", cta: c.cta, href: "#", secondary: c.secondary, secondaryHref: "#" }}
+    actions={{ mode: "two", cta: c.cta, secondary: c.secondary }}
     media={{ kind: "none" }}
     layout="centered"
     scale="default"
@@ -25,12 +25,12 @@
     density="roomy"
   />
   <FeatureGrid id="tp-classic-features" title={d.ui.site.home.featuresTitle} features={d.features} layout="grid" cols="1-3" item="card" tone="muted" density="default" />
-  <StatsBand id="tp-classic-stats" title={d.ui.marketing.stats.title} stats={d.stats.slice(0, 4)} cols="4" layout="row" surface="none" item="icon" align="start" tone="default" density="default" />
+  <StatsBand id="tp-classic-stats" title={d.ui.marketing.stats.title} stats={d.stats.slice(0, 4)} empty={d.ui.marketing.stats.empty} cols="4" layout="row" surface="none" item="icon" align="start" tone="default" density="default" />
   <CtaBand
     id="tp-classic-cta"
     title={c.accent}
     text={c.note}
-    actions={{ mode: "one", cta: c.cta, href: "#" }}
+    actions={{ mode: "one", cta: c.cta }}
     layout="band"
     tone="default"
     proof="none"

@@ -25,6 +25,7 @@ export type HeroHeadProps = {
 import Block from "../primitives/block/block.vue";
 import Button from "../primitives/button/button.vue";
 import Group from "../primitives/group/group.vue";
+import Inline from "../primitives/inline/inline.vue";
 import Link from "../primitives/link/link.vue";
 import LinkPlain from "../primitives/link-plain/link-plain.vue";
 import NavBlock from "../components/nav-block.vue";
@@ -73,15 +74,20 @@ const {
       testid="site-nav"
     >
       <Group gap="8" align="center" class="flex-wrap">
-        <Link v-for="l in links" :key="l.id"
-          :href="(l.href ?? '#/')"
-          variant="default"
-          :aria-current="((l.id === current) ? 'page' : undefined)"
-          class="text-xs font-medium leading-5 text-background"
-          data-testid="nav-link"
-        >
-          {{ l.name }}
-        </Link>
+        <template v-for="l in links" :key="l.id">
+          <Link v-if="l.href"
+            :href="l.href"
+            variant="default"
+            :aria-current="((l.id === current) ? 'page' : undefined)"
+            class="text-xs font-medium leading-5 text-background"
+            data-testid="nav-link"
+          >
+            {{ l.name }}
+          </Link>
+          <Inline v-else class="text-xs font-medium leading-5 text-background" data-testid="nav-link">
+            {{ l.name }}
+          </Inline>
+        </template>
       </Group>
     </NavBlock>
     <Group gap="2" align="center">
@@ -94,7 +100,7 @@ const {
       >
         {{ login }}
       </Button>
-      <Button v-if="cta" :href="(href ?? '#/')" variant="secondary" size="sm" data-testid="header-cta">
+      <Button v-if="cta" :href="href" variant="secondary" size="sm" data-testid="header-cta">
         {{ cta }}
       </Button>
     </Group>

@@ -29,6 +29,7 @@
   import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
   import ArticleBlock from "../components/article-block.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import Rating from "../components/rating.svelte";
   import SectionFrame from "../components/section-frame.svelte";
@@ -56,6 +57,9 @@
   measure={(((layout as string) === "list") ? "2xl" : "default")}
   landmarkLabel={landmarkLabel}
 >
+  {#if ((reviews?.length ?? 0) === 0)}
+    <EmptyState icon="message-square-quote" title={labels.empty} />
+  {/if}
   <Grid cols={(((layout as string) === "grid") ? "1-3" : "1")} class="gap-4" data-testid="items">
     {#each reviews as r (r.id)}
       <ArticleBlock

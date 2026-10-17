@@ -288,13 +288,7 @@
               "use": "Button",
               "props": {
                 "Href": {
-                  "op": "coalesce",
-                  "args": [
-                    {
-                      "$": "href"
-                    },
-                    "#/"
-                  ]
+                  "$": "href"
                 },
                 "Variant": "secondary",
                 "Size": "sm",

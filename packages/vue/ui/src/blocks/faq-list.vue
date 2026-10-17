@@ -17,6 +17,7 @@ export type FaqListProps = {
   filter?: FaqFilter;
   layout?: "accordion" | "chat";
   cols?: "1" | "2";
+  empty?: string;
   multiple?: boolean;
   tone?: "default" | "muted";
   density?: "roomy" | "default" | "compact";
@@ -32,6 +33,7 @@ import Grid from "../primitives/grid/grid.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Summary from "../primitives/disclosure/summary.vue";
 import Text from "../primitives/text/text.vue";
+import EmptyState from "../components/empty-state.vue";
 import SearchField from "../components/search-field.vue";
 import SectionFrame from "../components/section-frame.vue";
 import Switcher from "../components/switcher.vue";
@@ -46,6 +48,7 @@ const {
   filter,
   layout = "accordion",
   cols = "1",
+  empty = "",
   multiple = false,
   tone = "default",
   density = "default",
@@ -83,6 +86,7 @@ const shown = computed(() =>
         {{ tab.title }}
       </SwitcherItem>
     </Switcher>
+    <EmptyState v-if="((shown?.length ?? 0) === 0)" icon="circle-question-mark" :title="empty" />
     <Stack v-if="((layout as string) === 'chat')" gap="4" align="stretch" data-testid="faq">
       <Stack v-for="item in shown" :key="item.id" gap="2" align="stretch" data-testid="faq-item">
         <Box class="ml-auto max-w-xs sm:max-w-md rounded bg-primary px-4 py-4 text-primary-foreground">

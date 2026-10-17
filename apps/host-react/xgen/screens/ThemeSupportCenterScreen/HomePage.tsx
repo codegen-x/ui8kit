@@ -32,7 +32,13 @@ import { faq as faqEntries } from "@ui8kit/app-shared/data/faq";
 import { faqtabs as faqtabsEntries } from "@ui8kit/app-shared/data/faqtabs";
 
 const CHANNELS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
-const STATS_FIELDS = {"id":"id","label":"title","value":"metadata.value.value","icon":"metadata.icon.value","hint":"metadata.hint.value"} as const;
+const STATS_FIELDS = {
+  "id": "id",
+  "label": "title",
+  "value": "metadata.value.value|number",
+  "icon": "metadata.icon.value",
+  "hint": "metadata.hint.value",
+} as const;
 const STEPS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 const POSTS_FIELDS = {
   "id": "id",
@@ -55,7 +61,7 @@ const REVIEWS_FIELDS = {
   "text": "metadata.text.value",
   "date": "metadata.date.value|date",
 } as const;
-const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"metadata.category.value"} as const;
+const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"terms|term-slug:faq_category"} as const;
 const FAQTABS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
 
 const channels = fromCodex<Feature>(channelsEntries, CHANNELS_FIELDS, CODEX);
@@ -115,6 +121,7 @@ export function HomePage() {
         id="home-faq"
         title={ui.site.pricing.faqTitle}
         items={faq}
+        empty={ui.vibe.faq.empty}
         search={{ label: ui.vibe.faq.search, query: "", mode: "none" }}
         filter={{ tabs: faqtabs, label: ui.vibe.faq.tabs, category: "billing", mode: "categories" }}
         layout="accordion"

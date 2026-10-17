@@ -83,7 +83,7 @@
         </ButtonPlain>
         {#each links as l (l.id)}
           <Link
-            href={(l.href ?? "#/")}
+            href={l.href}
             variant="default"
             aria-current={((l.id === "") ? "page" : undefined)}
             class="text-sm"

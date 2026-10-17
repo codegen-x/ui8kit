@@ -8,6 +8,7 @@ import { cartTable } from "../components/cart-table";
 import { numberField } from "../components/number-field";
 import { orderRows, statusTone } from "../components/orders";
 import { articleBlockOf } from "../components/landmarks";
+import { productGallery, productPrice } from "../components/product-parts";
 
 const O = "organism.";
 const common = { id: ref("id"), title: ref("title"), tone: ref("tone"), density: ref("density") };
@@ -128,10 +129,10 @@ const productGrid = spec(`${O}product-grid`, "ProductGrid", "A section with a he
 
 const productDetail = spec(`${O}product-detail`, "ProductDetail", "A product page: a gallery (the main picture and optional thumbnails) beside the buy box (badge, rating, price, stock, quantity, add button, shipping and returns notes). Axes: layout (split, stacked), media side, thumbs (none, below), buy (full, compact), tone, density.", {
   typeImports: [{ from: "ProductCard", names: ["Product"] }],
-  records: { ProductDetailLabels: fields(["add", "string"], ["soldOut", "string"], ["inStock", "string"], ["qty", "string"], ["decrease", "string"], ["increase", "string"], ["reviews", "string"], ["ratingLabel", "string"], ["shipping", "string"], ["returns", "string"]) },
+  records: { ProductDetailLabels: fields(["add", "string"], ["soldOut", "string"], ["inStock", "string"], ["qty", "string"], ["decrease", "string"], ["increase", "string"], ["reviews", "string"], ["ratingLabel", "string"], ["shipping", "string"], ["returns", "string"], ["was", "string"], ["empty", "string"]) },
   props: [
     id,
-    { name: "product", type: ts("Product"), required: true },
+    { name: "product", type: ts("Product"), docs: "the product; without one, the empty state (labels.empty)" },
     { name: "labels", type: { record: "ProductDetailLabels" }, required: true },
     { name: "badges", type: ts("Record<string, string>"), required: true },
     { name: "level", type: ts("1 | 2"), default: 1 },
@@ -143,12 +144,12 @@ const productDetail = spec(`${O}product-detail`, "ProductDetail", "A product pag
     { name: "density", type: roomyLite, default: "default" },
   ],
   events: [{ name: "add", args: [{ name: "id", type: "string" }], docs: "the add button was pressed" }],
-  view: [frame(
+  view: [when(not(ref("product")), [frame({ id: ref("id"), title: "", tone: ref("tone"), density: ref("density") }, [organism("EmptyState", { icon: "package", title: ref("labels.empty") })])], [frame(
     { id: ref("id"), title: ref("product.name"), lead: ref("product.summary"), level: ref("level"), layout: cond(eq(ref("layout"), "split"), "split", "stack"), hasMedia: true, mediaSide: ref("mediaSide"), mediaAlign: "start", tone: ref("tone"), density: ref("density") },
     [use("Stack", { props: { Gap: "4", Align: "stretch" }, attrs: { "data-testid": "buy-box" } },
-      use("Group", { props: { Gap: "4", Align: "center", Class: "flex-wrap" } },
-        use("Text", { props: { Size: "4xl", Weight: "bold" } }, text(money(ref("product.price"), ref("product.currency")))),
-        when(ref("product.badge"), [use("Badge", { props: { Variant: "default", Size: "default" } }, text(at(ref("badges"), ref("product.badge"))))])),
+      // the category: the name of the product's term (taxonomy product_category)
+      when(ref("product.category"), [use("Text", { props: { Size: "xs", Class: "uppercase tracking-wide text-muted-foreground" }, attrs: { "data-testid": "category" } }, text(ref("product.category")))]),
+      organism("ProductPrice", { price: ref("product.price"), compareAt: ref("product.compareAt"), currency: ref("product.currency"), badge: cond(ref("product.badge"), at(ref("badges"), ref("product.badge")), ""), was: ref("labels.was") }),
       use("Group", { props: { Gap: "2" } },
         organism("Rating", { value: ref("product.rating"), label: tpl(ref("labels.ratingLabel"), ref("product.rating")), size: 16 }),
         use("Text", { props: { Size: "sm", Class: "text-muted-foreground" } }, text(tpl(ref("labels.reviews"), ref("product.reviews"))))),
@@ -160,16 +161,11 @@ const productDetail = spec(`${O}product-detail`, "ProductDetail", "A product pag
       when(eq(ref("buy"), "full"), [use("List", { props: { Tag: "ul", Class: "flex flex-col gap-2 text-sm text-muted-foreground" } },
         use("ListItem", { props: { Class: "flex items-center gap-2" } }, use("LucideIcon", { props: { Name: "truck", Size: 16 } }), use("Inline", {}, text(ref("labels.shipping")))),
         use("ListItem", { props: { Class: "flex items-center gap-2" } }, use("LucideIcon", { props: { Name: "shield-check", Size: 16 } }), use("Inline", {}, text(ref("labels.returns")))))]))],
-    [use("Stack", { props: { Gap: "4", Align: "stretch" }, attrs: { "data-testid": "gallery" } },
-      organism("MediaFrame", { alt: ref("product.name"), ratio: "1/1" }),
-      when(eq(ref("thumbs"), "below"), [use("Grid", { props: { Cols: "3", Class: "gap-4" }, attrs: { "data-testid": "thumbs" } },
-        organism("MediaFrame", { alt: ref("product.name"), ratio: "1/1", className: "ring-2 ring-foreground" }),
-        organism("MediaFrame", { alt: ref("product.name"), ratio: "1/1" }),
-        organism("MediaFrame", { alt: ref("product.name"), ratio: "1/1" }))]))])],
+    [organism("ProductGallery", { name: ref("product.name"), image: ref("product.image"), thumbs: ref("thumbs") })])])],
 });
 
 const reviewList = spec(`${O}review-list`, "ReviewList", "Customer reviews as cards or plain entries: rating, title, text, author and date. Axes: layout (list, grid), columns, item (card, plain), avatar (none, image), tone, density.", {
-  records: { Review: fields(["id", "string"], ["title", "string"], ["author", "string"], ["rating", "number"], ["text", "string"], ["date", "string"]), ReviewLabels: fields(["ratingLabel", "string"]) },
+  records: { Review: fields(["id", "string"], ["title", "string"], ["author", "string"], ["rating", "number"], ["text", "string"], ["date", "string"]), ReviewLabels: fields(["ratingLabel", "string"], ["empty", "string"]) },
   props: [
     id, title,
     { name: "reviews", type: ts("Review[]"), required: true },
@@ -181,6 +177,8 @@ const reviewList = spec(`${O}review-list`, "ReviewList", "Customer reviews as ca
     { name: "density", type: roomyLite, default: "default" },
   ],
   view: [frame({ ...common, measure: cond(eq(ref("layout"), "list"), "2xl", "default") }, [
+    // no reviews: the empty state (labels.empty)
+    when(eq(len(ref("reviews")), 0), [organism("EmptyState", { icon: "message-square-quote", title: ref("labels.empty") })]),
     use("Grid", { props: { Cols: cond(eq(ref("layout"), "grid"), "1-3", "1"), Class: "gap-4" }, attrs: { "data-testid": "items" } },
       each(ref("reviews"), "r", ref("r.id"),
         articleBlockOf(cn("flex h-full flex-col gap-4", cond(eq(ref("item"), "card"), "rounded bg-card p-6 inset-ring inset-ring-border", "border-b border-border pb-4")), "item",
@@ -279,4 +277,4 @@ const orderTable = spec(`${O}order-table`, "OrderTable", "The order history as a
   ])],
 });
 
-export const commerceOrganisms: OrganismSpec[] = [orderRows, categoryNav, productCard, productGrid, productDetail, reviewList, numberField, cartTable, cartList, orderSummary, orderTable];
+export const commerceOrganisms: OrganismSpec[] = [orderRows, categoryNav, productCard, productGrid, productDetail, productPrice, productGallery, reviewList, numberField, cartTable, cartList, orderSummary, orderTable];
