@@ -188,11 +188,34 @@ function template(file: string, src: BlockSources, kit: Set<string>, dict: Obj, 
     data, settings: [...new Set(settings)], labels, emptyState: false, uses, collections };
 }
 
+/** the deck parts of a taste screen: deck key -> collection, kind, record type and central map (xgen/runtimes/core/src/decks.ts) */
+const DECK_PARTS: Record<string, [string, string, string, string]> = {
+  stats: ["deckstats", "deck_stat", "DeckStat", "deckStat"], items: ["deckitems", "deck_item", "DeckItem", "deckItem"],
+  plans: ["deckplans", "deck_plan", "DeckPlan", "deckPlan"], quotes: ["deckquotes", "deck_quote", "DeckQuote", "deckQuote"], faq: ["deckfaq", "deck_faq", "DeckFaq", "deckFaq"],
+};
+/** the kit-data adapters (packages/taste-screens/src/kit-data.ts) and the deck key each reads */
+const ADAPTERS: Record<string, string> = { logos: "tags", topics: "tags", features: "items", stats: "stats" };
+/** a taste screen reads one copy deck (`c`): the deck entry's fields and its parts, in the screen and in the parts it draws;
+ *  the attributes it gives a part (TopBar layout, tone, ...) are settings. stats and items are on every deck (decks.ts); a
+ *  screen reads the other parts as `c.x ?? []`, so a deck without them leaves the part out (empty state: omit). */
 function tasteScreen(file: string, src: BlockSources, kit: Set<string>): BlockEntry {
   const text = readFileSync(file, "utf8");
   const imported = [...text.matchAll(/import \{([^}]*)\} from "@ui8kit\/svelte-ui"/g)].flatMap((m) => m[1]!.split(",").map((x) => x.trim()));
   const uses = imported.filter((n) => kit.has(n)).sort();
-  return { id: `taste.${file.split("/").pop()!.replace(/\.svelte$/, "")}`, surface: "taste-screen", source: rel(src, file), status: "todo", ...(uses.length ? { uses } : {}) };
+  const parts = [...text.matchAll(/import (\w+) from "\.\.\/parts\/([\w-]+)\.svelte"/g)].map((m) => ({ tag: m[1]!, text: readFileSync(join(file, "..", "..", "parts", `${m[2]}.svelte`), "utf8") }));
+  const all = [text, ...parts.map((x) => x.text)].join("\n");
+  const keys = new Set([...all.matchAll(/\bc\.([a-z]+)/g)].map((m) => m[1]!));
+  for (const m of all.matchAll(/\b(\w+)\(c\b/g)) if (ADAPTERS[m[1]!]) keys.add(ADAPTERS[m[1]!]!);
+  const deck = CODEX_FIELDS.deck as Record<string, string>;
+  const head = Object.keys(deck).filter((k) => keys.has(k)).map((k) => deck[k]!.split("|")[0]!);
+  const data: Binding[] = head.length ? [{ prop: "c", collection: "decks", kind: "deck", record: "Deck", map: "deck", list: false, required: [...new Set(head)], optional: [] }] : [];
+  for (const [k, [collection, kind, record, map]] of Object.entries(DECK_PARTS)) if (keys.has(k)) {
+    const paths = Object.values((CODEX_FIELDS as Record<string, Record<string, string>>)[map]!).map((v) => v.split("|")[0]!);
+    data.push({ prop: `c.${k}`, collection, kind, record, map, list: true, required: [...new Set(paths)], optional: [] });
+  }
+  const settings = [...new Set(parts.flatMap((x) => [...text.matchAll(new RegExp(`<${x.tag}\\b([^>]*)>`, "g"))].flatMap((m) => [...m[1]!.matchAll(/(\w+)=/g)].map((a) => `${x.tag}.${a[1]}`))))].sort();
+  return { id: `taste.${file.split("/").pop()!.replace(/\.svelte$/, "")}`, surface: "taste-screen", source: rel(src, file), status: "todo",
+    data, settings, labels: [], emptyState: false, uses, collections: data.map((d) => d.collection!) };
 }
 
 const ORDER: (keyof BlockEntry)[] = ["id", "surface", "spec", "source", "status", "data", "settings", "labels", "emptyState", "emptyMode", "uses", "collections", "note"];
@@ -228,12 +251,14 @@ export function buildBlocks(src = blockSources(), previous: BlocksDoc | undefine
   const kitBySpec = new Map(kitBlocks.map((b) => [b.spec!, b]));
   const screens = jsonFiles(paths.specs("screens")).map((f) => screen(f, src, dict, kitBySpec));
   for (const t of screens) t.emptyState = (t.uses ?? []).every((u) => emptyOk(kitBySpec.get(u)?.id ?? ""));
+  const tastes = svelte(src.taste).map((f) => tasteScreen(f, src, kit));
+  for (const t of tastes) t.emptyState = (t.uses ?? []).every(emptyOk);
   const fresh = [
     ...kitBlocks,
     ...screens,
     ...templates.filter((t) => t.surface === "magazine-template"),
     ...templates.filter((t) => t.surface === "magazine-part"),
-    ...svelte(src.taste).map((f) => tasteScreen(f, src, kit)),
+    ...tastes,
   ];
   // a block is the same block when its id is (a moved file keeps its id; its source follows)
   const old = new Map((previous?.blocks ?? []).map((b) => [b.id, b]));

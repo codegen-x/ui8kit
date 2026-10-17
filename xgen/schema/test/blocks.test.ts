@@ -58,7 +58,12 @@ const fieldOf = (kind: string, path: string): Field | string | undefined => {
   return manifest.resources.find((r) => r.record.id === kind)?.record.fields.find((f) => f.id === meta[1]);
 };
 
+// one set of tests per distinct binding: the 146 taste screens share a handful of deck bindings
+const seenBinding = new Set<string>();
 for (const b of done) for (const d of b.data ?? []) {
+  const bindingKey = JSON.stringify([b.spec ? b.id : "", d]);
+  if (seenBinding.has(bindingKey)) continue;
+  seenBinding.add(bindingKey);
   const map = (CODEX_FIELDS as Record<string, Record<string, string>>)[d.map ?? ""];
   const entries = cols.find((c) => c.collection === d.collection)?.entries ?? [];
 

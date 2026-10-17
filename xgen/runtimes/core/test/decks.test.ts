@@ -26,3 +26,13 @@ test("the decks file carries the banner and the decks", () => {
   expect(json["//"]).toBe(BANNER);
   expect(json.decks).toHaveLength(1);
 });
+
+test("the deck fixtures: every deck has stats and items (screens read them with no fallback), every part names a deck", async () => {
+  const { readFileSync } = await import("node:fs");
+  const { join } = await import("node:path");
+  const load = (c: string) => JSON.parse(readFileSync(join(import.meta.dir, "..", "..", "..", "fixtures", `${c}.json`), "utf8"));
+  const all = Object.values(DECK_COLLECTIONS).map(load);
+  const ids = new Set(all[0].entries.map((x: { id: string }) => x.id));
+  for (const c of all.slice(1)) for (const x of c.entries) expect([x.id, ids.has(x.metadata.deck.value)]).toEqual([x.id, true]);
+  for (const d of buildDecks(all)) expect([d.brand, (d.stats as unknown[]).length > 0, (d.items as unknown[]).length > 0]).toEqual([d.brand, true, true]);
+});

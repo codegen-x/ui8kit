@@ -244,6 +244,17 @@ replace the string arrays `links`).
   ignored); copy.ts reads `copy.decks`. taste-data has no new dependency (it reads generated JSON), the layering stays as it
   is. The generated decks are equal to the old hand-kept file, deck by deck and key by key.
 - dead check: the deck collections count as read by that generated file (DECK_COLLECTIONS in audit.ts), not by a screen.
+- Step 22-24: the taste screens in blocks.json (codex-blocks `tasteScreen`). data = the deck the screen reads (`c`), found from
+  the `c.x` it and its parts (TopBar, Avatars, Field) read and from the kit-data adapters (logos/topics -> tags, features ->
+  items): one binding `c` (kind deck, map deck, required = the deck fields read) plus one per part list (`c.stats` -> deckstats,
+  deckStat, ...). labels = [] (a taste screen has no dictionary text, the poster copy is deck data). settings = the attributes
+  given to a part (`TopBar.layout`, `TopBar.tone`, `Avatars.n`, ...). No taste screen composes a kit block (only bricks), so
+  `uses` is empty and no kit link can reach one.
+- Empty state: every deck has stats and items (tested in xgen/runtimes/core/test/decks.test.ts); plans, quotes and faq are
+  read as `c.x ?? []`, so a deck without them leaves the list out: t146 has emptyMode omit. The other screens' emptyState is
+  true (no list that can be empty).
+- The old note "text from a copy deck, not Codex entries" is removed from the taste entries: the decks are Codex entries now.
+- blocks.test runs one set of binding tests per distinct binding (the 146 screens share a few deck bindings).
 
 ## 8. Open questions (decided for now, review later)
 

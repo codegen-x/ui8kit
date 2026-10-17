@@ -11213,1023 +11213,6845 @@
       "id": "taste.t001-poster-mesh",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t001-poster-mesh.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t002-split-glass",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t002-split-glass.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats"
+      ]
     },
     {
       "id": "taste.t003-fullbleed-grain",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t003-fullbleed-grain.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t004-airy-dots",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t004-airy-dots.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t005-stats-flat",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t005-stats-flat.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats"
+      ]
     },
     {
       "id": "taste.t006-ribbon-rings",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t006-ribbon-rings.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value",
+            "metadata.note.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t007-editorial-duotone",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t007-editorial-duotone.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t008-frame-conic",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t008-frame-conic.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t009-prompt-mesh",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t009-prompt-mesh.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.input.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t010-dense-geometric",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t010-dense-geometric.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t011-split-stripes",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t011-split-stripes.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value",
+            "metadata.note.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t012-poster-flat",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t012-poster-flat.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t013-frame-glass",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t013-frame-glass.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats"
+      ]
     },
     {
       "id": "taste.t014-editorial-grain",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t014-editorial-grain.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.accent.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.note.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t015-airy-mesh",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t015-airy-mesh.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t016-stats-rings",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t016-stats-rings.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats"
+      ]
     },
     {
       "id": "taste.t017-ribbon-flat",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t017-ribbon-flat.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value",
+            "metadata.note.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t018-prompt-conic",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t018-prompt-conic.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.input.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.tone"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t019-dense-duotone",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t019-dense-duotone.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t020-fullbleed-stripes",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t020-fullbleed-stripes.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t021-split-dots",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t021-split-dots.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.input.value",
+            "metadata.note.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t022-poster-geometric",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t022-poster-geometric.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t023-fullbleed-mesh",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t023-fullbleed-mesh.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t024-airy-geometric",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t024-airy-geometric.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t025-stats-mesh",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t025-stats-mesh.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.accent.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats"
+      ]
     },
     {
       "id": "taste.t026-ribbon-glass",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t026-ribbon-glass.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t027-editorial-flat",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t027-editorial-flat.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t028-frame-dots",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t028-frame-dots.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.accent.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t029-prompt-grain",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t029-prompt-grain.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.input.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.tone"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats"
+      ]
     },
     {
       "id": "taste.t030-dense-stripes",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t030-dense-stripes.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t031-split-conic",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t031-split-conic.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t032-poster-duotone",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t032-poster-duotone.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t033-fullbleed-rings",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t033-fullbleed-rings.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t034-airy-stripes",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t034-airy-stripes.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.accent.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t035-stats-geometric",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t035-stats-geometric.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats"
+      ]
     },
     {
       "id": "taste.t036-ribbon-dots",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t036-ribbon-dots.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value",
+            "metadata.note.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t037-editorial-mesh",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t037-editorial-mesh.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t038-frame-flat",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t038-frame-flat.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t039-prompt-glass",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t039-prompt-glass.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.input.value",
+            "metadata.note.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t040-dense-mesh",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t040-dense-mesh.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t041-poster-rings",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t041-poster-rings.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.cta.value",
+            "metadata.secondary.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t042-split-grain",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t042-split-grain.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.accent.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.note.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t043-fullbleed-duotone",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t043-fullbleed-duotone.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t044-dense-conic",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t044-dense-conic.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t045-airy-glass",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t045-airy-glass.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.accent.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t046-stats-duotone",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t046-stats-duotone.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t047-ribbon-conic",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t047-ribbon-conic.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t048-editorial-rings",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t048-editorial-rings.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.accent.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t049-frame-grain",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t049-frame-grain.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.tone"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t050-prompt-dots",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t050-prompt-dots.svelte",
-      "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "status": "done",
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.input.value",
+            "metadata.note.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t051-poster-stripes",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t051-poster-stripes.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t052-split-rings",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t052-split-rings.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t053-fullbleed-geometric",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t053-fullbleed-geometric.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t054-dense-glass",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t054-dense-glass.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t055-airy-conic",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t055-airy-conic.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.accent.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t056-stats-grain",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t056-stats-grain.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats"
+      ]
     },
     {
       "id": "taste.t057-ribbon-duotone",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t057-ribbon-duotone.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t058-editorial-dots",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t058-editorial-dots.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t059-frame-rings",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t059-frame-rings.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats"
+      ]
     },
     {
       "id": "taste.t060-prompt-flat",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t060-prompt-flat.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.input.value",
+            "metadata.note.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t061-poster-grain",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t061-poster-grain.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.tone"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats"
+      ]
     },
     {
       "id": "taste.t062-split-duotone",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t062-split-duotone.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats"
+      ]
     },
     {
       "id": "taste.t063-fullbleed-conic",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t063-fullbleed-conic.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t064-dense-rings",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t064-dense-rings.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.cta.value",
+            "metadata.secondary.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t065-airy-duotone",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t065-airy-duotone.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.accent.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t066-stats-glass",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t066-stats-glass.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats"
+      ]
     },
     {
       "id": "taste.t067-ribbon-stripes",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t067-ribbon-stripes.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.note.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t068-editorial-glass",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t068-editorial-glass.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t069-frame-duotone",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t069-frame-duotone.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t070-prompt-geometric",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t070-prompt-geometric.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.input.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t071-poster-dots",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t071-poster-dots.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t072-split-geometric",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t072-split-geometric.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t073-fullbleed-flat",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t073-fullbleed-flat.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.tone"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t074-dense-grain",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t074-dense-grain.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t075-airy-rings",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t075-airy-rings.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.accent.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t076-stats-conic",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t076-stats-conic.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats"
+      ]
     },
     {
       "id": "taste.t077-ribbon-grain",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t077-ribbon-grain.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.note.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t078-editorial-conic",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t078-editorial-conic.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t079-frame-stripes",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t079-frame-stripes.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats"
+      ]
     },
     {
       "id": "taste.t080-prompt-rings",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t080-prompt-rings.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.cta.value",
+            "metadata.input.value",
+            "metadata.note.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t081-poster-conic",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t081-poster-conic.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.cta.value",
+            "metadata.secondary.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t082-split-flat",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t082-split-flat.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t083-fullbleed-glass",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t083-fullbleed-glass.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.accent.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t084-dense-dots",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t084-dense-dots.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.accent.value",
+            "metadata.cta.value",
+            "metadata.note.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t085-airy-grain",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t085-airy-grain.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t086-stats-stripes",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t086-stats-stripes.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats"
+      ]
     },
     {
       "id": "taste.t087-ribbon-geometric",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t087-ribbon-geometric.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value",
+            "metadata.note.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t088-editorial-stripes",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t088-editorial-stripes.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.accent.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.note.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t089-frame-mesh",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t089-frame-mesh.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t090-prompt-duotone",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t090-prompt-duotone.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value",
+            "metadata.input.value",
+            "metadata.note.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t091-poster-glass",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t091-poster-glass.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t092-split-mesh",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t092-split-mesh.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.input.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats"
+      ]
     },
     {
       "id": "taste.t093-fullbleed-dots",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t093-fullbleed-dots.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats"
+      ]
     },
     {
       "id": "taste.t094-dense-flat",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t094-dense-flat.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.accent.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t095-airy-flat",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t095-airy-flat.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.accent.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t096-stats-dots",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t096-stats-dots.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats"
+      ]
     },
     {
       "id": "taste.t097-ribbon-mesh",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t097-ribbon-mesh.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t098-editorial-geometric",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t098-editorial-geometric.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.accent.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t099-frame-geometric",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t099-frame-geometric.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t100-prompt-stripes",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t100-prompt-stripes.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.input.value",
+            "metadata.note.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t101-poster-mesh",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t101-poster-mesh.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t102-poster-grain",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t102-poster-grain.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t103-split-glass",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t103-split-glass.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t104-split-dots",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t104-split-dots.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.accent.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.note.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t105-fullbleed-duotone",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t105-fullbleed-duotone.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.tone"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t106-fullbleed-stripes",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t106-fullbleed-stripes.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t107-dense-geometric",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t107-dense-geometric.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.cta.value",
+            "metadata.secondary.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t108-dense-conic",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t108-dense-conic.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.cta.value",
+            "metadata.input.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t109-airy-rings",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t109-airy-rings.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t110-airy-dots",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t110-airy-dots.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.accent.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t111-stats-flat",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t111-stats-flat.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats"
+      ]
     },
     {
       "id": "taste.t112-stats-glass",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t112-stats-glass.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats"
+      ]
     },
     {
       "id": "taste.t113-ribbon-rings",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t113-ribbon-rings.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t114-ribbon-flat",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t114-ribbon-flat.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t115-editorial-duotone",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t115-editorial-duotone.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.accent.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t116-editorial-grain",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t116-editorial-grain.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.note.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t117-frame-conic",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t117-frame-conic.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.cta.value",
+            "metadata.secondary.value",
+            "metadata.note.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t118-frame-mesh",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t118-frame-mesh.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t119-prompt-geometric",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t119-prompt-geometric.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.cta.value",
+            "metadata.input.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t120-prompt-stripes",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t120-prompt-stripes.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.headline.value",
+            "metadata.accent.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value",
+            "metadata.input.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t121-frame-flat",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t121-frame-flat.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "Avatars.n",
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t122-dense-duotone",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t122-dense-duotone.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t123-ribbon-geometric",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t123-ribbon-geometric.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.input.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t124-split-mesh",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t124-split-mesh.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.accent.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value",
+            "metadata.input.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "Field.icon",
+        "Field.label",
+        "Field.value",
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t125-stats-geometric",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t125-stats-geometric.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t126-frame-rings",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t126-frame-rings.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.cta.value",
+            "metadata.secondary.value",
+            "metadata.input.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "Field.icon",
+        "Field.label",
+        "Field.value"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t127-split-rings",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t127-split-rings.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value",
+            "metadata.note.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "Avatars.n",
+        "Avatars.size",
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats"
+      ]
     },
     {
       "id": "taste.t128-poster-conic",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t128-poster-conic.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value",
+            "metadata.note.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t129-stats-dots",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t129-stats-dots.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.input.value",
+            "metadata.note.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t130-fullbleed-mesh",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t130-fullbleed-mesh.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.accent.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value",
+            "metadata.note.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "Avatars.n"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks"
+      ]
     },
     {
       "id": "taste.t131-ribbon-flat",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t131-ribbon-flat.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "metadata.headline.value",
+            "metadata.cta.value",
+            "metadata.input.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "Field.icon",
+        "Field.label",
+        "Field.value"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats"
+      ]
     },
     {
       "id": "taste.t132-editorial-grain",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t132-editorial-grain.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "metadata.eyebrow.value",
+            "metadata.lead.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t133-fullbleed-glass",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t133-fullbleed-glass.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.accent.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "Field.label",
+        "Field.tone",
+        "Field.value"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t134-editorial-duotone",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t134-editorial-duotone.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.accent.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t135-stats-grain",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t135-stats-grain.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.headline.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t136-poster-duotone",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t136-poster-duotone.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats"
+      ]
     },
     {
       "id": "taste.t137-dense-geometric",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t137-dense-geometric.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "metadata.eyebrow.value",
+            "metadata.accent.value",
+            "metadata.lead.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t138-ribbon-stripes",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t138-ribbon-stripes.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.cta.value",
+            "metadata.secondary.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "Avatars.n",
+        "Avatars.size",
+        "TopBar.action",
+        "TopBar.layout",
+        "TopBar.mark"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t139-fullbleed-duotone",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t139-fullbleed-duotone.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.accent.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.secondary.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t140-dense-flat",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t140-dense-flat.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "metadata.eyebrow.value",
+            "metadata.secondary.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t141-frame-duotone",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t141-frame-duotone.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.lead.value",
+            "metadata.cta.value",
+            "metadata.input.value",
+            "metadata.note.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t142-editorial-flat",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t142-editorial-flat.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.accent.value",
+            "metadata.lead.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t143-poster-stripes",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t143-poster-stripes.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.accent.value",
+            "metadata.cta.value",
+            "metadata.secondary.value",
+            "metadata.input.value",
+            "metadata.note.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "Avatars.n",
+        "Avatars.size"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t144-dense-conic",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t144-dense-conic.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.cta.value",
+            "metadata.secondary.value",
+            "metadata.input.value",
+            "metadata.note.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t145-ribbon-dots",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t145-ribbon-dots.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "title",
+            "metadata.nav.value",
+            "metadata.eyebrow.value",
+            "metadata.headline.value",
+            "metadata.accent.value",
+            "metadata.cta.value",
+            "metadata.secondary.value",
+            "metadata.tags.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.stats",
+          "collection": "deckstats",
+          "kind": "deck_stat",
+          "record": "DeckStat",
+          "map": "deckStat",
+          "list": true,
+          "required": [
+            "metadata.value.value",
+            "title"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.items",
+          "collection": "deckitems",
+          "kind": "deck_item",
+          "record": "DeckItem",
+          "map": "deckItem",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.text.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "Avatars.n",
+        "Avatars.size",
+        "TopBar.action",
+        "TopBar.layout"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckstats",
+        "deckitems"
+      ]
     },
     {
       "id": "taste.t146-dense-stripes",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t146-dense-stripes.svelte",
       "status": "todo",
-      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+      "data": [
+        {
+          "prop": "c",
+          "collection": "decks",
+          "kind": "deck",
+          "record": "Deck",
+          "map": "deck",
+          "list": false,
+          "required": [
+            "metadata.eyebrow.value",
+            "metadata.accent.value",
+            "metadata.lead.value",
+            "metadata.cta.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.plans",
+          "collection": "deckplans",
+          "kind": "deck_plan",
+          "record": "DeckPlan",
+          "map": "deckPlan",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.cost.value",
+            "metadata.note.value",
+            "metadata.perks.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.quotes",
+          "collection": "deckquotes",
+          "kind": "deck_quote",
+          "record": "DeckQuote",
+          "map": "deckQuote",
+          "list": true,
+          "required": [
+            "metadata.quote.value",
+            "title",
+            "metadata.role.value"
+          ],
+          "optional": []
+        },
+        {
+          "prop": "c.faq",
+          "collection": "deckfaq",
+          "kind": "deck_faq",
+          "record": "DeckFaq",
+          "map": "deckFaq",
+          "list": true,
+          "required": [
+            "title",
+            "metadata.answer.value"
+          ],
+          "optional": []
+        }
+      ],
+      "settings": [
+        "Avatars.n",
+        "Avatars.size"
+      ],
+      "labels": [],
+      "emptyState": true,
+      "emptyMode": "omit",
+      "uses": [],
+      "collections": [
+        "decks",
+        "deckplans",
+        "deckquotes",
+        "deckfaq"
+      ]
     }
   ]
 }
