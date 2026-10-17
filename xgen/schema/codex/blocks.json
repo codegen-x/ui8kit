@@ -13422,7 +13422,7 @@
       "id": "taste.t051-poster-stripes",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t051-poster-stripes.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -13457,7 +13457,7 @@
       "id": "taste.t052-split-rings",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t052-split-rings.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -13506,7 +13506,7 @@
       "id": "taste.t053-fullbleed-geometric",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t053-fullbleed-geometric.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -13541,7 +13541,7 @@
       "id": "taste.t054-dense-glass",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t054-dense-glass.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -13588,7 +13588,7 @@
       "id": "taste.t055-airy-conic",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t055-airy-conic.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -13623,7 +13623,7 @@
       "id": "taste.t056-stats-grain",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t056-stats-grain.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -13672,7 +13672,7 @@
       "id": "taste.t057-ribbon-duotone",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t057-ribbon-duotone.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -13706,7 +13706,7 @@
       "id": "taste.t058-editorial-dots",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t058-editorial-dots.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -13770,7 +13770,7 @@
       "id": "taste.t059-frame-rings",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t059-frame-rings.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -13820,7 +13820,7 @@
       "id": "taste.t060-prompt-flat",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t060-prompt-flat.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -13857,7 +13857,7 @@
       "id": "taste.t061-poster-grain",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t061-poster-grain.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -13906,7 +13906,7 @@
       "id": "taste.t062-split-duotone",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t062-split-duotone.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -13955,7 +13955,7 @@
       "id": "taste.t063-fullbleed-conic",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t063-fullbleed-conic.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -13989,7 +13989,7 @@
       "id": "taste.t064-dense-rings",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t064-dense-rings.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -14052,7 +14052,7 @@
       "id": "taste.t065-airy-duotone",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t065-airy-duotone.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -14087,7 +14087,7 @@
       "id": "taste.t066-stats-glass",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t066-stats-glass.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -14138,7 +14138,7 @@
       "id": "taste.t067-ribbon-stripes",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t067-ribbon-stripes.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -14175,7 +14175,7 @@
       "id": "taste.t068-editorial-glass",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t068-editorial-glass.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -14219,7 +14219,7 @@
       "id": "taste.t069-frame-duotone",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t069-frame-duotone.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -14254,7 +14254,7 @@
       "id": "taste.t070-prompt-geometric",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t070-prompt-geometric.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -14291,7 +14291,7 @@
       "id": "taste.t071-poster-dots",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t071-poster-dots.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -14327,7 +14327,7 @@
       "id": "taste.t072-split-geometric",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t072-split-geometric.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -14375,7 +14375,7 @@
       "id": "taste.t073-fullbleed-flat",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t073-fullbleed-flat.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -14410,7 +14410,7 @@
       "id": "taste.t074-dense-grain",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t074-dense-grain.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -14473,7 +14473,7 @@
       "id": "taste.t075-airy-rings",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t075-airy-rings.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -14508,7 +14508,7 @@
       "id": "taste.t076-stats-conic",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t076-stats-conic.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -14556,7 +14556,7 @@
       "id": "taste.t077-ribbon-grain",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t077-ribbon-grain.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -14591,7 +14591,7 @@
       "id": "taste.t078-editorial-conic",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t078-editorial-conic.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -14641,7 +14641,7 @@
       "id": "taste.t079-frame-stripes",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t079-frame-stripes.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -14690,7 +14690,7 @@
       "id": "taste.t080-prompt-rings",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t080-prompt-rings.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -14740,7 +14740,7 @@
       "id": "taste.t081-poster-conic",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t081-poster-conic.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -14776,7 +14776,7 @@
       "id": "taste.t082-split-flat",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t082-split-flat.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -14825,7 +14825,7 @@
       "id": "taste.t083-fullbleed-glass",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t083-fullbleed-glass.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -14860,7 +14860,7 @@
       "id": "taste.t084-dense-dots",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t084-dense-dots.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -14921,7 +14921,7 @@
       "id": "taste.t085-airy-grain",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t085-airy-grain.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -14956,7 +14956,7 @@
       "id": "taste.t086-stats-stripes",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t086-stats-stripes.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -15004,7 +15004,7 @@
       "id": "taste.t087-ribbon-geometric",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t087-ribbon-geometric.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -15041,7 +15041,7 @@
       "id": "taste.t088-editorial-stripes",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t088-editorial-stripes.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -15089,7 +15089,7 @@
       "id": "taste.t089-frame-mesh",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t089-frame-mesh.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -15151,7 +15151,7 @@
       "id": "taste.t090-prompt-duotone",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t090-prompt-duotone.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -15189,7 +15189,7 @@
       "id": "taste.t091-poster-glass",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t091-poster-glass.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -15223,7 +15223,7 @@
       "id": "taste.t092-split-mesh",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t092-split-mesh.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -15273,7 +15273,7 @@
       "id": "taste.t093-fullbleed-dots",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t093-fullbleed-dots.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -15321,7 +15321,7 @@
       "id": "taste.t094-dense-flat",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t094-dense-flat.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -15384,7 +15384,7 @@
       "id": "taste.t095-airy-flat",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t095-airy-flat.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -15419,7 +15419,7 @@
       "id": "taste.t096-stats-dots",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t096-stats-dots.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -15467,7 +15467,7 @@
       "id": "taste.t097-ribbon-mesh",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t097-ribbon-mesh.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -15515,7 +15515,7 @@
       "id": "taste.t098-editorial-geometric",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t098-editorial-geometric.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -15579,7 +15579,7 @@
       "id": "taste.t099-frame-geometric",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t099-frame-geometric.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
@@ -15614,7 +15614,7 @@
       "id": "taste.t100-prompt-stripes",
       "surface": "taste-screen",
       "source": "packages/taste-screens/src/screens/t100-prompt-stripes.svelte",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "c",
