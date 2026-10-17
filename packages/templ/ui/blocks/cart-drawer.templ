@@ -10,8 +10,6 @@ import (
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/container"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/group"
 	lucideicon "github.com/codegen-x/ui8kit/packages/templ/ui/ui/lucide-icon"
-	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/stack"
-	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/text"
 	"github.com/codegen-x/ui8kit/packages/templ/ui/ui/title"
 	uiutils "github.com/codegen-x/ui8kit/packages/templ/ui/utils"
 )
@@ -55,18 +53,9 @@ templ CartDrawer(p CartDrawerProps) {
 							@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "x", Size: 16})
 						}
 					}
-					if uiutils.Eq(vState, "empty") {
-						@stack.Stack(stack.StackProps{Gap: "4", Align: "center", Class: "flex-1 justify-center p-8 text-center", Attrs: uiutils.Attrs("data-testid", "empty")}) {
-							@lucideicon.LucideIcon(lucideicon.LucideIconProps{Name: "shopping-bag", Size: 32})
-							@text.Text(text.TextProps{Size: "base", Weight: "semibold"}) {
-								{ uiutils.Text(uiutils.Get(vDrawer, "empty")) }
-							}
-							@text.Text(text.TextProps{Size: "sm", Class: "text-muted-foreground"}) {
-								{ uiutils.Text(uiutils.Get(vDrawer, "emptyText")) }
-							}
-							@button.Button(button.ButtonProps{Variant: "outline", Size: "default"}) {
-								{ uiutils.Text(uiutils.Get(vDrawer, "browse")) }
-							}
+					if uiutils.T(uiutils.Or(uiutils.Eq(vState, "empty"), uiutils.Eq(uiutils.Len(vLines), float64(0)))) {
+						@box.Box(box.BoxProps{Class: "flex flex-1 flex-col justify-center p-4", Attrs: uiutils.Attrs("data-testid", "empty")}) {
+							@EmptyState(EmptyStateProps{Icon: "shopping-bag", Title: uiutils.Get(vDrawer, "empty"), Text: uiutils.Get(vDrawer, "emptyText"), Action: cartDrawerFill1(p, vDrawer)})
 						}
 					} else {
 						@DrawerLines(DrawerLinesProps{Field: uiutils.Tpl("{0}-qty", vId), Lines: vLines, Rows: vRows, Labels: vLabels, Drawer: vDrawer, Media: vMedia})
@@ -74,5 +63,11 @@ templ CartDrawer(p CartDrawerProps) {
 				}
 			}
 		}
+	}
+}
+
+templ cartDrawerFill1(p CartDrawerProps, vDrawer any) {
+	@button.Button(button.ButtonProps{Variant: "outline", Size: "default"}) {
+		{ uiutils.Text(uiutils.Get(vDrawer, "browse")) }
 	}
 }

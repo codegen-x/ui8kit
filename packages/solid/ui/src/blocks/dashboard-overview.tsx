@@ -47,20 +47,26 @@ export function DashboardOverview({
   return (
     <SectionFrame id={id} title={title} tone={tone} density={density} landmarkLabel={landmarkLabel}>
       <Stack gap="6" align="stretch">
-        <Grid cols={(((cols as string) === "2") ? "1-2" : "1-4")} class="gap-4" data-testid="items">
-          <For each={metrics ?? []}>{(m) => (
-            <Box data-testid="item">
-              <StatTile label={m.label} value={m.value} icon={m.icon} hint={m.hint} />
-            </Box>
-          )}</For>
-        </Grid>
+        {((metrics?.length ?? 0) > 0) ? (
+          <Grid cols={(((cols as string) === "2") ? "1-2" : "1-4")} class="gap-4" data-testid="items">
+            <For each={metrics ?? []}>{(m) => (
+              <Box data-testid="item">
+                <StatTile label={m.label} value={m.value} icon={m.icon} hint={m.hint} />
+              </Box>
+            )}</For>
+          </Grid>
+        ) : null}
         <Grid cols={(((layout as string) === "split") ? "1-2" : "1")} class="items-stretch gap-4" data-testid="panels">
-          <Panel title={chart.title} description={chart.text} id={tpl("{0}-chart", id)} class="h-full">
-            <BarChart bars={chart.series} label={chart.summary} height={144} />
-          </Panel>
-          <Panel title={activity.title} description={activity.text} id={tpl("{0}-feed", id)} class="h-full">
-            <Timeline items={activity.events} />
-          </Panel>
+          {((chart.series?.length ?? 0) > 0) ? (
+            <Panel title={chart.title} description={chart.text} id={tpl("{0}-chart", id)} class="h-full">
+              <BarChart bars={chart.series} label={chart.summary} height={144} />
+            </Panel>
+          ) : null}
+          {((activity.events?.length ?? 0) > 0) ? (
+            <Panel title={activity.title} description={activity.text} id={tpl("{0}-feed", id)} class="h-full">
+              <Timeline items={activity.events} />
+            </Panel>
+          ) : null}
         </Grid>
       </Stack>
     </SectionFrame>

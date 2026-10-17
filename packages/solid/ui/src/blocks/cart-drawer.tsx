@@ -12,10 +12,9 @@ import { Button } from "../primitives/button/button";
 import { Container } from "../primitives/container/container";
 import { Group } from "../primitives/group/group";
 import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
-import { Stack } from "../primitives/stack/stack";
-import { Text } from "../primitives/text/text";
 import { Title } from "../primitives/title/title";
 import { DrawerLines } from "../components/drawer-lines";
+import { EmptyState } from "../components/empty-state";
 import { tpl } from "../utils";
 import type { DrawerLabels } from "./cart-drawer.types";
 import type { CartLine, CartLabels } from "./cart-list.types";
@@ -65,19 +64,19 @@ export function CartDrawer({
                 <LucideIcon name="x" size={16} />
               </Button>
             </Group>
-            {((state as string) === "empty") ? (
-              <Stack gap="4" align="center" class="flex-1 justify-center p-8 text-center" data-testid="empty">
-                <LucideIcon name="shopping-bag" size={32} />
-                <Text size="base" weight="semibold">
-                  {drawer.empty}
-                </Text>
-                <Text size="sm" class="text-muted-foreground">
-                  {drawer.emptyText}
-                </Text>
-                <Button variant="outline" size="default">
-                  {drawer.browse}
-                </Button>
-              </Stack>
+            {(((state as string) === "empty") || ((lines?.length ?? 0) === 0)) ? (
+              <Box class="flex flex-1 flex-col justify-center p-4" data-testid="empty">
+                <EmptyState
+                  icon="shopping-bag"
+                  title={drawer.empty}
+                  text={drawer.emptyText}
+                  action={(
+                    <Button variant="outline" size="default">
+                      {drawer.browse}
+                    </Button>
+                  )}
+                />
+              </Box>
             ) : (
               <DrawerLines field={tpl("{0}-qty", id)} lines={lines} rows={rows} labels={labels} drawer={drawer} media={media} />
             )}

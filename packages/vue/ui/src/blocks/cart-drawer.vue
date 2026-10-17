@@ -29,10 +29,9 @@ import Button from "../primitives/button/button.vue";
 import Container from "../primitives/container/container.vue";
 import Group from "../primitives/group/group.vue";
 import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
-import Stack from "../primitives/stack/stack.vue";
-import Text from "../primitives/text/text.vue";
 import Title from "../primitives/title/title.vue";
 import DrawerLines from "../components/drawer-lines.vue";
+import EmptyState from "../components/empty-state.vue";
 import { tpl } from "../utils";
 
 const {
@@ -70,24 +69,19 @@ const {
               <LucideIcon name="x" :size="16" />
             </Button>
           </Group>
-          <Stack
-            v-if="((state as string) === 'empty')"
-            gap="4"
-            align="center"
-            class="flex-1 justify-center p-8 text-center"
+          <Box
+            v-if="(((state as string) === 'empty') || ((lines?.length ?? 0) === 0))"
+            class="flex flex-1 flex-col justify-center p-4"
             data-testid="empty"
           >
-            <LucideIcon name="shopping-bag" :size="32" />
-            <Text size="base" weight="semibold">
-              {{ drawer.empty }}
-            </Text>
-            <Text size="sm" class="text-muted-foreground">
-              {{ drawer.emptyText }}
-            </Text>
-            <Button variant="outline" size="default">
-              {{ drawer.browse }}
-            </Button>
-          </Stack>
+            <EmptyState icon="shopping-bag" :title="drawer.empty" :text="drawer.emptyText">
+              <template #action>
+                <Button variant="outline" size="default">
+                  {{ drawer.browse }}
+                </Button>
+              </template>
+            </EmptyState>
+          </Box>
           <DrawerLines v-else
             :field="tpl('{0}-qty', id)"
             :lines="lines"

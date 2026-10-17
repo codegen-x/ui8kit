@@ -375,80 +375,98 @@
                           }
                         },
                         {
-                          "organism": "Panel",
-                          "props": {
-                            "title": {
-                              "$": "activity.title"
-                            },
-                            "description": {
-                              "$": "activity.text"
-                            },
-                            "id": {
-                              "op": "tpl",
-                              "args": [
-                                "{0}-list",
-                                {
-                                  "$": "id"
-                                }
-                              ]
-                            }
+                          "when": {
+                            "op": "gt",
+                            "args": [
+                              {
+                                "op": "len",
+                                "args": [
+                                  {
+                                    "$": "activity.events"
+                                  }
+                                ]
+                              },
+                              0
+                            ]
                           },
-                          "slots": {
-                            "children": {
-                              "args": [],
-                              "do": [
-                                {
-                                  "use": "List",
-                                  "props": {
-                                    "Class": "m-0 flex list-none flex-col gap-4 p-0"
-                                  },
-                                  "attrs": {
-                                    "data-testid": "items"
-                                  },
-                                  "children": [
+                          "then": [
+                            {
+                              "organism": "Panel",
+                              "props": {
+                                "title": {
+                                  "$": "activity.title"
+                                },
+                                "description": {
+                                  "$": "activity.text"
+                                },
+                                "id": {
+                                  "op": "tpl",
+                                  "args": [
+                                    "{0}-list",
                                     {
-                                      "each": {
-                                        "$": "activity.events"
+                                      "$": "id"
+                                    }
+                                  ]
+                                }
+                              },
+                              "slots": {
+                                "children": {
+                                  "args": [],
+                                  "do": [
+                                    {
+                                      "use": "List",
+                                      "props": {
+                                        "Class": "m-0 flex list-none flex-col gap-4 p-0"
                                       },
-                                      "as": "e",
-                                      "key": {
-                                        "$": "e.id"
+                                      "attrs": {
+                                        "data-testid": "items"
                                       },
-                                      "do": [
+                                      "children": [
                                         {
-                                          "use": "ListItem",
-                                          "props": {
-                                            "Class": "flex flex-col gap-2"
+                                          "each": {
+                                            "$": "activity.events"
                                           },
-                                          "attrs": {
-                                            "data-testid": "item"
+                                          "as": "e",
+                                          "key": {
+                                            "$": "e.id"
                                           },
-                                          "children": [
+                                          "do": [
                                             {
-                                              "use": "Text",
+                                              "use": "ListItem",
                                               "props": {
-                                                "Size": "sm",
-                                                "Weight": "semibold"
+                                                "Class": "flex flex-col gap-2"
+                                              },
+                                              "attrs": {
+                                                "data-testid": "item"
                                               },
                                               "children": [
                                                 {
-                                                  "text": {
-                                                    "$": "e.title"
-                                                  }
-                                                }
-                                              ]
-                                            },
-                                            {
-                                              "use": "Text",
-                                              "props": {
-                                                "Size": "xs",
-                                                "Class": "text-muted-foreground"
-                                              },
-                                              "children": [
+                                                  "use": "Text",
+                                                  "props": {
+                                                    "Size": "sm",
+                                                    "Weight": "semibold"
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "text": {
+                                                        "$": "e.title"
+                                                      }
+                                                    }
+                                                  ]
+                                                },
                                                 {
-                                                  "text": {
-                                                    "$": "e.time"
-                                                  }
+                                                  "use": "Text",
+                                                  "props": {
+                                                    "Size": "xs",
+                                                    "Class": "text-muted-foreground"
+                                                  },
+                                                  "children": [
+                                                    {
+                                                      "text": {
+                                                        "$": "e.time"
+                                                      }
+                                                    }
+                                                  ]
                                                 }
                                               ]
                                             }
@@ -458,9 +476,9 @@
                                     }
                                   ]
                                 }
-                              ]
+                              }
                             }
-                          }
+                          ]
                         },
                         {
                           "organism": "AppMain",

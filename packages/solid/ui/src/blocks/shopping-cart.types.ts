@@ -4,4 +4,5 @@
 export type ShoppingCartLabels = {
   back: string;
   clear: string;
+  empty: string;
 };

@@ -18,6 +18,9 @@
 {%- set c_14 -%}
   {%- set c_13 -%}
     {%- set c_11 -%}
+      {%- if ui_t(ui_eq(ui_len(v_lines), 0)) %}
+        {{ ui_include('blocks/empty-state.html.j2', {'p': {'icon': 'shopping-cart', 'title': ui_get(v_actions, ['empty'])}}) }}
+      {%- endif %}
       {%- for v_line in ui_l(v_lines) %}
         {%- set c_7 -%}
           {{ ui_include('blocks/media-frame.html.j2', {'p': {'alt': ui_get(v_line, ['name']), 'ratio': '1/1', 'className': ui_cnv(['size-20 shrink-0'])}}) }}

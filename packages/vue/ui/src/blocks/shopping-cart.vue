@@ -36,6 +36,7 @@ import LucideIcon from "../primitives/lucide-icon/lucide-icon.vue";
 import Stack from "../primitives/stack/stack.vue";
 import Text from "../primitives/text/text.vue";
 import CartSummaryCard from "../components/cart-summary-card.vue";
+import EmptyState from "../components/empty-state.vue";
 import MediaFrame from "../components/media-frame.vue";
 import NumberField from "../components/number-field.vue";
 import SectionFrame from "../components/section-frame.vue";
@@ -72,6 +73,7 @@ const {
         :class="(((layout as string) === 'split') ? 'lg:col-span-2' : '')"
         data-testid="lines"
       >
+        <EmptyState v-if="((lines?.length ?? 0) === 0)" icon="shopping-cart" :title="actions.empty" />
         <Group v-for="line in lines" :key="line.id"
           gap="4"
           align="center"

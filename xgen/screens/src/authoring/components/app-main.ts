@@ -3,7 +3,7 @@
 import { cond, each, eq, ref, text, tpl, use, when, organism } from "../../build";
 import type { Value } from "../../ir";
 import { groupFields, requireFields, spec, ts } from "../kit";
-import { id, title, tsOf, denseLite } from "../props";
+import { id, ifAny, title, tsOf, denseLite } from "../props";
 import { kids } from "../forms";
 
 export const sharedTypes = [{ from: "MetricRow", names: ["Metric"] }, { from: "ChartPanel", names: ["Point"] }, { from: "ActivityFeed", names: ["Event"] }];
@@ -13,11 +13,12 @@ export const OverviewChart = required(["title", "string"], ["text", "string"], [
 /** the recent-activity panel of the first screen */
 export const OverviewActivity = required(["title", "string"], ["text", "string"], ["events", "Event[]"]);
 
-export const tiles = (cols: Value) => use("Grid", { props: { Cols: cols, Class: "gap-4" }, attrs: { "data-testid": "items" } },
-  each(ref("metrics"), "m", ref("m.id"), use("Box", { props: {}, attrs: { "data-testid": "item" } }, organism("StatTile", { label: ref("m.label"), value: ref("m.value"), icon: ref("m.icon"), hint: ref("m.hint") }))));
-export const chart = () => organism("Panel", { title: ref("chart.title"), description: ref("chart.text"), id: tpl("{0}-chart", ref("id")), className: "h-full" }, kids(
-  organism("BarChart", { bars: ref("chart.series"), label: ref("chart.summary"), height: 144 })));
-export const feed = () => organism("Panel", { title: ref("activity.title"), description: ref("activity.text"), id: tpl("{0}-feed", ref("id")), className: "h-full" }, kids(organism("Timeline", { items: ref("activity.events") })));
+// emptyMode omit (AppShell, DashboardOverview): no metrics, no tiles; no series or events, no panel
+export const tiles = (cols: Value) => ifAny("metrics", [use("Grid", { props: { Cols: cols, Class: "gap-4" }, attrs: { "data-testid": "items" } },
+  each(ref("metrics"), "m", ref("m.id"), use("Box", { props: {}, attrs: { "data-testid": "item" } }, organism("StatTile", { label: ref("m.label"), value: ref("m.value"), icon: ref("m.icon"), hint: ref("m.hint") }))))]);
+export const chart = () => ifAny("chart.series", [organism("Panel", { title: ref("chart.title"), description: ref("chart.text"), id: tpl("{0}-chart", ref("id")), className: "h-full" }, kids(
+  organism("BarChart", { bars: ref("chart.series"), label: ref("chart.summary"), height: 144 })))]);
+export const feed = () => ifAny("activity.events", [organism("Panel", { title: ref("activity.title"), description: ref("activity.text"), id: tpl("{0}-feed", ref("id")), className: "h-full" }, kids(organism("Timeline", { items: ref("activity.events") })))]);
 
 /** the main column of AppShell: the heading, the metric tiles and the chart, with the activity beside it when there is one */
 export const appMain = spec("pattern.app-main", "AppMain", "The main column of AppShell: the heading, the metric tiles, and the chart panel (beside the activity panel when `activity` is given).", {

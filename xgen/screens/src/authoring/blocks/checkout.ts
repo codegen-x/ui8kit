@@ -1,6 +1,6 @@
 // The checkout and the cart beyond the plain list: the long checkout form beside a sticky order summary, the cart page with a promo code
 // and a free-delivery bar, the cart drawer in its open state, and the product details (an accordion of texts beside a spec list).
-import { and, cond, each, eachAt, eq, money, mul, ref, str, text, tpl, use, when, organism } from "../../build";
+import { and, cond, each, eachAt, eq, len, or, money, mul, ref, str, text, tpl, use, when, organism } from "../../build";
 import type { OrganismSpec, ViewNode } from "../../ir";
 import { fields, spec, ts } from "../kit";
 import { frame } from "../components/frames";
@@ -49,7 +49,7 @@ const checkoutForm = spec(`${O}checkout-form`, "CheckoutForm", "A checkout on on
 
 const cartPage = spec(`${O}shopping-cart`, "ShoppingCart", "The cart as a page: the lines as cards (picture, name, variant, price, quantity, line total, remove) with the way back, beside the order summary with a promo code and the free-delivery bar. Static markup. Axes: layout (split: the summary beside the lines, stacked: below them), promo (show, hide), progress (show, hide), tone.", {
   typeImports: [{ from: "CartList", names: ["CartLine", "CartLabels"] }, { from: "OrderSummary", names: ["SummaryRow"] }, { from: "CartSummaryCard", names: ["Promo", "CartSummaryLabels"] }],
-  records: { ShoppingCartLabels: fields(["back", "string"], ["clear", "string"]) },
+  records: { ShoppingCartLabels: fields(["back", "string"], ["clear", "string"], ["empty", "string"]) },
   props: [
     id, title,
     { name: "lines", type: ts("CartLine[]"), required: true },
@@ -57,7 +57,7 @@ const cartPage = spec(`${O}shopping-cart`, "ShoppingCart", "The cart as a page: 
     { name: "promos", type: ts("Promo[]"), required: true },
     { name: "labels", type: ts("CartLabels"), required: true },
     { name: "totals", type: ts("CartSummaryLabels"), required: true, docs: "labels of the order summary" },
-    { name: "actions", type: { record: "ShoppingCartLabels" }, required: true, docs: "labels of the buttons under the lines" },
+    { name: "actions", type: { record: "ShoppingCartLabels" }, required: true, docs: "labels of the buttons under the lines, and the empty-cart title" },
     { name: "layout", type: tsOf("split", "stacked"), default: "split" },
     { name: "promo", type: tsOf("show", "hide"), default: "show" },
     { name: "progress", type: tsOf("show", "hide"), default: "show" },
@@ -66,6 +66,8 @@ const cartPage = spec(`${O}shopping-cart`, "ShoppingCart", "The cart as a page: 
   view: [frame({ id: ref("id"), title: ref("title"), tone: ref("tone"), density: "default" }, [
     use("Box", { props: { Class: cond(eq(ref("layout"), "split"), "grid grid-cols-1 items-start gap-8 lg:grid-cols-3", "grid grid-cols-1 gap-8") } },
       use("Stack", { props: { Gap: "4", Align: "stretch", Class: cond(eq(ref("layout"), "split"), "lg:col-span-2", "") }, attrs: { "data-testid": "lines" } },
+        // no lines: EmptyState (title from the labels record, the 12-prop limit leaves no room for an `empty` prop)
+        when(eq(len(ref("lines")), 0), [organism("EmptyState", { icon: "shopping-cart", title: ref("actions.empty") })]),
         each(ref("lines"), "line", ref("line.id"),
           use("Group", { props: { Gap: "4", Align: "center", Class: surface("flex-wrap p-4") }, attrs: { "data-testid": "item" } },
             organism("MediaFrame", { alt: ref("line.name"), ratio: "1/1", className: "size-20 shrink-0" }),
@@ -102,10 +104,11 @@ const cartDrawer = spec(`${O}cart-drawer`, "CartDrawer", "The cart drawer in its
           use("Group", { props: { Gap: "4", Align: "center", Justify: "between", Class: "border-b border-border p-4" } },
             use("Title", { props: { As: 2, Size: "lg", Weight: "semibold" } }, text(ref("drawer.title"))),
             use("Button", { props: { Variant: "ghost", Size: "sm", Layout: "icon", AriaLabel: ref("drawer.close") } }, use("LucideIcon", { props: { Name: "x", Size: 16 } }))),
-          when(eq(ref("state"), "empty"),
-            [use("Stack", { props: { Gap: "4", Align: "center", Class: "flex-1 justify-center p-8 text-center" }, attrs: { "data-testid": "empty" } },
-              use("LucideIcon", { props: { Name: "shopping-bag", Size: 32 } }), strong(ref("drawer.empty")), muted(ref("drawer.emptyText")),
-              use("Button", { props: { Variant: "outline", Size: "default" } }, text(ref("drawer.browse"))))],
+          // the empty state: the axis shows it, and so does a cart with no lines (EmptyState with the browse action)
+          when(or(eq(ref("state"), "empty"), eq(len(ref("lines")), 0)),
+            [use("Box", { props: { Class: "flex flex-1 flex-col justify-center p-4" }, attrs: { "data-testid": "empty" } },
+              organism("EmptyState", { icon: "shopping-bag", title: ref("drawer.empty"), text: ref("drawer.emptyText") }, { slots: { action: { args: [], do: [
+                use("Button", { props: { Variant: "outline", Size: "default" } }, text(ref("drawer.browse")))] } } }))],
             [organism("DrawerLines", { field: tpl("{0}-qty", ref("id")), lines: ref("lines"), rows: ref("rows"), labels: ref("labels"), drawer: ref("drawer"), media: ref("media") })]))))),
   ],
 });

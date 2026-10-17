@@ -48,6 +48,9 @@ templ ShoppingCart(p ShoppingCartProps) {
 	@SectionFrame(SectionFrameProps{Id: vId, Title: vTitle, Tone: vTone, LandmarkLabel: vLandmarkLabel}) {
 		@box.Box(box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "grid grid-cols-1 items-start gap-8 lg:grid-cols-3", "grid grid-cols-1 gap-8"))}) {
 			@stack.Stack(stack.StackProps{Gap: "4", Align: "stretch", Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "split")), "lg:col-span-2", "")), Attrs: uiutils.Attrs("data-testid", "lines")}) {
+				if uiutils.Eq(uiutils.Len(vLines), float64(0)) {
+					@EmptyState(EmptyStateProps{Icon: "shopping-cart", Title: uiutils.Get(vActions, "empty")})
+				}
 				for _, vLine := range uiutils.L(vLines) {
 					@group.Group(group.GroupProps{Gap: "4", Align: "center", Class: "rounded bg-card inset-ring inset-ring-border flex-wrap p-4", Attrs: uiutils.Attrs("data-testid", "item")}) {
 						@MediaFrame(MediaFrameProps{Alt: uiutils.Get(vLine, "name"), Ratio: "1/1", Class: uiutils.Cnv("size-20 shrink-0")})

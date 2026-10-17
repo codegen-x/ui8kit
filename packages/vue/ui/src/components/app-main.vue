@@ -53,20 +53,38 @@ const {
     <Title :as="2" size="2xl" weight="bold" :id="tpl('{0}-title', id)">
       {{ title }}
     </Title>
-    <Grid :cols="cols" class="gap-4" data-testid="items">
+    <Grid v-if="((metrics?.length ?? 0) > 0)" :cols="cols" class="gap-4" data-testid="items">
       <Box v-for="m in metrics" :key="m.id" data-testid="item">
         <StatTile :label="m.label" :value="m.value" :icon="m.icon" :hint="m.hint" />
       </Box>
     </Grid>
     <Grid v-if="activity" cols="1-2" class="items-stretch gap-4">
-      <Panel :title="chart.title" :description="chart.text" :id="tpl('{0}-chart', id)" class="h-full">
+      <Panel
+        v-if="((chart.series?.length ?? 0) > 0)"
+        :title="chart.title"
+        :description="chart.text"
+        :id="tpl('{0}-chart', id)"
+        class="h-full"
+      >
         <BarChart :bars="chart.series" :label="chart.summary" :height="144" />
       </Panel>
-      <Panel :title="activity?.title" :description="activity?.text" :id="tpl('{0}-feed', id)" class="h-full">
+      <Panel
+        v-if="((activity?.events?.length ?? 0) > 0)"
+        :title="activity?.title"
+        :description="activity?.text"
+        :id="tpl('{0}-feed', id)"
+        class="h-full"
+      >
         <Timeline :items="activity?.events" />
       </Panel>
     </Grid>
-    <Panel v-else :title="chart.title" :description="chart.text" :id="tpl('{0}-chart', id)" class="h-full">
+    <Panel
+      v-else-if="((chart.series?.length ?? 0) > 0)"
+      :title="chart.title"
+      :description="chart.text"
+      :id="tpl('{0}-chart', id)"
+      class="h-full"
+    >
       <BarChart :bars="chart.series" :label="chart.summary" :height="144" />
     </Panel>
   </Stack>

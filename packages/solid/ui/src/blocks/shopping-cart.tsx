@@ -13,6 +13,7 @@ import { LucideIcon } from "../primitives/lucide-icon/lucide-icon";
 import { Stack } from "../primitives/stack/stack";
 import { Text } from "../primitives/text/text";
 import { CartSummaryCard } from "../components/cart-summary-card";
+import { EmptyState } from "../components/empty-state";
 import { MediaFrame } from "../components/media-frame";
 import { NumberField } from "../components/number-field";
 import { SectionFrame } from "../components/section-frame";
@@ -67,6 +68,9 @@ export function ShoppingCart({
           class={(((layout as string) === "split") ? "lg:col-span-2" : "")}
           data-testid="lines"
         >
+          {((lines?.length ?? 0) === 0) ? (
+            <EmptyState icon="shopping-cart" title={actions.empty} />
+          ) : null}
           <For each={lines ?? []}>{(line) => (
             <Group
               gap="4"

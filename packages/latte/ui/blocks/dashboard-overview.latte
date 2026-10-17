@@ -14,24 +14,30 @@
 {var $v_landmarkLabel = ($p['landmarkLabel'] ?? null)}
 {capture $c_7}
   {capture $c_6}
-    {capture $c_2}
-      {foreach ui_l($v_metrics) as $v_m}
-        {capture $c_1}
-          {=ui_include('blocks/stat-tile.latte', ['p' => ['label' => ui_get($v_m, ['label']), 'value' => ui_get($v_m, ['value']), 'icon' => ui_get($v_m, ['icon']), 'hint' => ui_get($v_m, ['hint'])]])|noescape}
-        {/capture}
-        {=ui_include('ui/box/box.latte', ['p' => ['Attrs' => ui_attrs(['data-testid', 'item'])], 'children' => $c_1])|noescape}
-      {/foreach}
-    {/capture}
-    {=ui_include('ui/grid/grid.latte', ['p' => ['Cols' => ui_s((ui_t(ui_eq($v_cols, '2')) ? '1-2' : '1-4')), 'Class' => 'gap-4', 'Attrs' => ui_attrs(['data-testid', 'items'])], 'children' => $c_2])|noescape}
+    {if ui_t(ui_gt(ui_len($v_metrics), 0))}
+      {capture $c_2}
+        {foreach ui_l($v_metrics) as $v_m}
+          {capture $c_1}
+            {=ui_include('blocks/stat-tile.latte', ['p' => ['label' => ui_get($v_m, ['label']), 'value' => ui_get($v_m, ['value']), 'icon' => ui_get($v_m, ['icon']), 'hint' => ui_get($v_m, ['hint'])]])|noescape}
+          {/capture}
+          {=ui_include('ui/box/box.latte', ['p' => ['Attrs' => ui_attrs(['data-testid', 'item'])], 'children' => $c_1])|noescape}
+        {/foreach}
+      {/capture}
+      {=ui_include('ui/grid/grid.latte', ['p' => ['Cols' => ui_s((ui_t(ui_eq($v_cols, '2')) ? '1-2' : '1-4')), 'Class' => 'gap-4', 'Attrs' => ui_attrs(['data-testid', 'items'])], 'children' => $c_2])|noescape}
+    {/if}
     {capture $c_5}
-      {capture $c_3}
-        {=ui_include('blocks/bar-chart.latte', ['p' => ['bars' => ui_get($v_chart, ['series']), 'label' => ui_get($v_chart, ['summary']), 'height' => 144]])|noescape}
-      {/capture}
-      {=ui_include('blocks/panel.latte', ['p' => ['title' => ui_get($v_chart, ['title']), 'description' => ui_get($v_chart, ['text']), 'id' => ui_tpl('{0}-chart', [$v_id]), 'className' => ui_cnv(['h-full'])], 'children' => $c_3])|noescape}
-      {capture $c_4}
-        {=ui_include('blocks/timeline.latte', ['p' => ['items' => ui_get($v_activity, ['events'])]])|noescape}
-      {/capture}
-      {=ui_include('blocks/panel.latte', ['p' => ['title' => ui_get($v_activity, ['title']), 'description' => ui_get($v_activity, ['text']), 'id' => ui_tpl('{0}-feed', [$v_id]), 'className' => ui_cnv(['h-full'])], 'children' => $c_4])|noescape}
+      {if ui_t(ui_gt(ui_len(ui_get($v_chart, ['series'])), 0))}
+        {capture $c_3}
+          {=ui_include('blocks/bar-chart.latte', ['p' => ['bars' => ui_get($v_chart, ['series']), 'label' => ui_get($v_chart, ['summary']), 'height' => 144]])|noescape}
+        {/capture}
+        {=ui_include('blocks/panel.latte', ['p' => ['title' => ui_get($v_chart, ['title']), 'description' => ui_get($v_chart, ['text']), 'id' => ui_tpl('{0}-chart', [$v_id]), 'className' => ui_cnv(['h-full'])], 'children' => $c_3])|noescape}
+      {/if}
+      {if ui_t(ui_gt(ui_len(ui_get($v_activity, ['events'])), 0))}
+        {capture $c_4}
+          {=ui_include('blocks/timeline.latte', ['p' => ['items' => ui_get($v_activity, ['events'])]])|noescape}
+        {/capture}
+        {=ui_include('blocks/panel.latte', ['p' => ['title' => ui_get($v_activity, ['title']), 'description' => ui_get($v_activity, ['text']), 'id' => ui_tpl('{0}-feed', [$v_id]), 'className' => ui_cnv(['h-full'])], 'children' => $c_4])|noescape}
+      {/if}
     {/capture}
     {=ui_include('ui/grid/grid.latte', ['p' => ['Cols' => ui_s((ui_t(ui_eq($v_layout, 'split')) ? '1-2' : '1')), 'Class' => 'items-stretch gap-4', 'Attrs' => ui_attrs(['data-testid', 'panels'])], 'children' => $c_5])|noescape}
   {/capture}

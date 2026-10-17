@@ -674,7 +674,7 @@
       "surface": "kit-block",
       "spec": "block.cartdrawer",
       "source": "xgen/specs/blocks/cartdrawer.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "lines",
@@ -682,7 +682,16 @@
           "kind": "cartline",
           "record": "CartLine",
           "map": "cartline",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.variant.value",
+            "metadata.price.value",
+            "metadata.currency.value",
+            "metadata.qty.value"
+          ],
+          "optional": []
         },
         {
           "prop": "rows",
@@ -690,7 +699,15 @@
           "kind": "summaryrow",
           "record": "SummaryRow",
           "map": "summaryrow",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.amount.value",
+            "metadata.currency.value",
+            "metadata.strong.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -729,14 +746,14 @@
           ]
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "ShoppingCart",
       "surface": "kit-block",
       "spec": "block.cartpage",
       "source": "xgen/specs/blocks/cartpage.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "lines",
@@ -744,7 +761,16 @@
           "kind": "cartline",
           "record": "CartLine",
           "map": "cartline",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.variant.value",
+            "metadata.price.value",
+            "metadata.currency.value",
+            "metadata.qty.value"
+          ],
+          "optional": []
         },
         {
           "prop": "rows",
@@ -752,7 +778,15 @@
           "kind": "summaryrow",
           "record": "SummaryRow",
           "map": "summaryrow",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.amount.value",
+            "metadata.currency.value",
+            "metadata.strong.value"
+          ],
+          "optional": []
         },
         {
           "prop": "promos",
@@ -760,7 +794,12 @@
           "kind": "promo",
           "record": "Promo",
           "map": "promo",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -812,11 +851,12 @@
           "dictionary": "commerce.cartPage",
           "keys": [
             "back",
-            "clear"
+            "clear",
+            "empty"
           ]
         }
       ],
-      "emptyState": false
+      "emptyState": true
     },
     {
       "id": "CategoryNav",
@@ -3494,7 +3534,7 @@
       "surface": "kit-block",
       "spec": "block.overview",
       "source": "xgen/specs/blocks/overview.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "metrics",
@@ -3502,7 +3542,15 @@
           "kind": "metric",
           "record": "Stat",
           "map": "metric",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.value.value",
+            "metadata.icon.value",
+            "metadata.hint.value"
+          ],
+          "optional": []
         },
         {
           "prop": "chart.series",
@@ -3510,7 +3558,13 @@
           "kind": "point",
           "record": "Point",
           "map": "point",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.value.value"
+          ],
+          "optional": []
         },
         {
           "prop": "activity.events",
@@ -3518,7 +3572,15 @@
           "kind": "event",
           "record": "Event",
           "map": "event",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.time.value",
+            "metadata.tone.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -3561,7 +3623,8 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "PageIntro",
@@ -4758,7 +4821,7 @@
       "surface": "kit-block",
       "spec": "block.shell",
       "source": "xgen/specs/blocks/shell.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "nav.links",
@@ -4766,7 +4829,14 @@
           "kind": "menu_item",
           "record": "NavLink",
           "map": "menuItem",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.icon.value",
+            "slug"
+          ],
+          "optional": []
         },
         {
           "prop": "metrics",
@@ -4774,7 +4844,15 @@
           "kind": "metric",
           "record": "Stat",
           "map": "metric",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.value.value",
+            "metadata.icon.value",
+            "metadata.hint.value"
+          ],
+          "optional": []
         },
         {
           "prop": "chart.series",
@@ -4782,7 +4860,13 @@
           "kind": "point",
           "record": "Point",
           "map": "point",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.value.value"
+          ],
+          "optional": []
         },
         {
           "prop": "activity.events",
@@ -4790,7 +4874,15 @@
           "kind": "event",
           "record": "Event",
           "map": "event",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.time.value",
+            "metadata.tone.value"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -4861,7 +4953,8 @@
           "keys": []
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "SidebarNav",

@@ -45,23 +45,29 @@
   <Title as={2} size="2xl" weight="bold" id={tpl("{0}-title", id)}>
     {title}
   </Title>
-  <Grid cols={cols} class="gap-4" data-testid="items">
-    {#each metrics as m (m.id)}
-      <Box data-testid="item">
-        <StatTile label={m.label} value={m.value} icon={m.icon} hint={m.hint} />
-      </Box>
-    {/each}
-  </Grid>
+  {#if ((metrics?.length ?? 0) > 0)}
+    <Grid cols={cols} class="gap-4" data-testid="items">
+      {#each metrics as m (m.id)}
+        <Box data-testid="item">
+          <StatTile label={m.label} value={m.value} icon={m.icon} hint={m.hint} />
+        </Box>
+      {/each}
+    </Grid>
+  {/if}
   {#if activity}
     <Grid cols="1-2" class="items-stretch gap-4">
-      <Panel title={chart.title} description={chart.text} id={tpl("{0}-chart", id)} class="h-full">
-        <BarChart bars={chart.series} label={chart.summary} height={144} />
-      </Panel>
-      <Panel title={activity?.title} description={activity?.text} id={tpl("{0}-feed", id)} class="h-full">
-        <Timeline items={activity?.events} />
-      </Panel>
+      {#if ((chart.series?.length ?? 0) > 0)}
+        <Panel title={chart.title} description={chart.text} id={tpl("{0}-chart", id)} class="h-full">
+          <BarChart bars={chart.series} label={chart.summary} height={144} />
+        </Panel>
+      {/if}
+      {#if ((activity?.events?.length ?? 0) > 0)}
+        <Panel title={activity?.title} description={activity?.text} id={tpl("{0}-feed", id)} class="h-full">
+          <Timeline items={activity?.events} />
+        </Panel>
+      {/if}
     </Grid>
-  {:else}
+  {:else if ((chart.series?.length ?? 0) > 0)}
     <Panel title={chart.title} description={chart.text} id={tpl("{0}-chart", id)} class="h-full">
       <BarChart bars={chart.series} label={chart.summary} height={144} />
     </Panel>

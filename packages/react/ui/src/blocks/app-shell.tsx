@@ -106,20 +106,22 @@ export function AppShell({
                 density={density}
                 landmarkLabel={landmarkLabel}
               />
-              <Panel title={activity.title} description={activity.text} id={tpl("{0}-list", id)}>
-                <List className="m-0 flex list-none flex-col gap-4 p-0" data-testid="items">
-                  {(activity.events ?? []).map((e) => (
-                    <ListItem key={e.id} className="flex flex-col gap-2" data-testid="item">
-                      <Text size="sm" weight="semibold">
-                        {e.title}
-                      </Text>
-                      <Text size="xs" className="text-muted-foreground">
-                        {e.time}
-                      </Text>
-                    </ListItem>
-                  ))}
-                </List>
-              </Panel>
+              {((activity.events?.length ?? 0) > 0) ? (
+                <Panel title={activity.title} description={activity.text} id={tpl("{0}-list", id)}>
+                  <List className="m-0 flex list-none flex-col gap-4 p-0" data-testid="items">
+                    {(activity.events ?? []).map((e) => (
+                      <ListItem key={e.id} className="flex flex-col gap-2" data-testid="item">
+                        <Text size="sm" weight="semibold">
+                          {e.title}
+                        </Text>
+                        <Text size="xs" className="text-muted-foreground">
+                          {e.time}
+                        </Text>
+                      </ListItem>
+                    ))}
+                  </List>
+                </Panel>
+              ) : null}
               <AppMain id={id} title={title} metrics={metrics} chart={chart} density="compact" />
             </Grid>
           )}

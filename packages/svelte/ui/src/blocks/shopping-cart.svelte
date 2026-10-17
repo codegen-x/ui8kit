@@ -37,6 +37,7 @@
   import Stack from "../primitives/stack/stack.svelte";
   import Text from "../primitives/text/text.svelte";
   import CartSummaryCard from "../components/cart-summary-card.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import MediaFrame from "../components/media-frame.svelte";
   import NumberField from "../components/number-field.svelte";
   import SectionFrame from "../components/section-frame.svelte";
@@ -72,6 +73,9 @@
       class={(((layout as string) === "split") ? "lg:col-span-2" : "")}
       data-testid="lines"
     >
+      {#if ((lines?.length ?? 0) === 0)}
+        <EmptyState icon="shopping-cart" title={actions.empty} />
+      {/if}
       {#each lines as line (line.id)}
         <Group
           gap="4"

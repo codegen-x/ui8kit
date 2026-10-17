@@ -4,7 +4,7 @@ import { cn, cond, each, eq, len, ref, text, tpl, use, when, where, organism } f
 import type { OrganismSpec, Value } from "../../ir";
 import { fields, groupFields, rec, requireFields, spec, ts } from "../kit";
 import { frame, wide } from "../components/frames";
-import { empty, id, orEmpty, title, tsOf, toneLite, denseLite } from "../props";
+import { empty, id, ifAny, orEmpty, title, tsOf, toneLite, denseLite } from "../props";
 import { kids } from "../forms";
 import { muted, strong } from "../ux";
 import { sharedTypes, required, OverviewChart, OverviewActivity, tiles, chart, feed, appMain } from "../components/app-main";
@@ -53,8 +53,8 @@ const appShell = spec(`${O}app-shell`, "AppShell", "The frame of a signed-in app
     const side = (width: string) => organism("SidebarNav", { label: ref("nav.label"), brand: ref("nav.brand"), links: ref("nav.links"), current: ref("nav.current"), userName: ref("user.name"), userEmail: ref("user.email"), width, user: "show", density: ref("density") });
     const panes = use("Grid", { props: { Cols: "1-3", Class: "items-start gap-4" } },
       side("compact"),
-      organism("Panel", { title: ref("activity.title"), description: ref("activity.text"), id: tpl("{0}-list", ref("id")) }, kids(use("List", { props: { Class: "m-0 flex list-none flex-col gap-4 p-0" }, attrs: { "data-testid": "items" } },
-        each(ref("activity.events"), "e", ref("e.id"), use("ListItem", { props: { Class: "flex flex-col gap-2" }, attrs: { "data-testid": "item" } }, strong(ref("e.title"), "sm"), muted(ref("e.time"), "xs")))))),
+      ifAny("activity.events", [organism("Panel", { title: ref("activity.title"), description: ref("activity.text"), id: tpl("{0}-list", ref("id")) }, kids(use("List", { props: { Class: "m-0 flex list-none flex-col gap-4 p-0" }, attrs: { "data-testid": "items" } },
+        each(ref("activity.events"), "e", ref("e.id"), use("ListItem", { props: { Class: "flex flex-col gap-2" }, attrs: { "data-testid": "item" } }, strong(ref("e.title"), "sm"), muted(ref("e.time"), "xs"))))))]),
       // the panes have the activity list of their own, so the main column shows the chart alone (compact: Gap "4" = gap-4)
       main("1-2", { density: "compact" }));
     return [use("Block", { props: { Tag: "section", Class: "bg-background" }, attrs: { "aria-labelledby": tpl("{0}-title", ref("id")), "data-testid": "app-shell", "data-layout": ref("layout") } },

@@ -119,7 +119,12 @@ const {
           :density="density"
           :landmarkLabel="landmarkLabel"
         />
-        <Panel :title="activity.title" :description="activity.text" :id="tpl('{0}-list', id)">
+        <Panel
+          v-if="((activity.events?.length ?? 0) > 0)"
+          :title="activity.title"
+          :description="activity.text"
+          :id="tpl('{0}-list', id)"
+        >
           <List class="m-0 flex list-none flex-col gap-4 p-0" data-testid="items">
             <ListItem v-for="e in activity.events" :key="e.id" class="flex flex-col gap-2" data-testid="item">
               <Text size="sm" weight="semibold">

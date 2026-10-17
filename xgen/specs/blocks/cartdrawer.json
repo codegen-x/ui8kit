@@ -40,7 +40,8 @@
     }
   ],
   "slots": [
-    "DrawerLines"
+    "DrawerLines",
+    "EmptyState"
   ],
   "facts": [
     {

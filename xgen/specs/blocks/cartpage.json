@@ -53,6 +53,7 @@
   ],
   "slots": [
     "CartSummaryCard",
+    "EmptyState",
     "MediaFrame",
     "NumberField",
     "SectionFrame"

@@ -13,6 +13,10 @@
       {
         "name": "clear",
         "type": "string"
+      },
+      {
+        "name": "empty",
+        "type": "string"
       }
     ]
   },
@@ -69,7 +73,7 @@
         "record": "ShoppingCartLabels"
       },
       "required": true,
-      "docs": "labels of the buttons under the lines"
+      "docs": "labels of the buttons under the lines, and the empty-cart title"
     },
     {
       "name": "layout",
@@ -175,6 +179,33 @@
                     "data-testid": "lines"
                   },
                   "children": [
+                    {
+                      "when": {
+                        "op": "eq",
+                        "args": [
+                          {
+                            "op": "len",
+                            "args": [
+                              {
+                                "$": "lines"
+                              }
+                            ]
+                          },
+                          0
+                        ]
+                      },
+                      "then": [
+                        {
+                          "organism": "EmptyState",
+                          "props": {
+                            "icon": "shopping-cart",
+                            "title": {
+                              "$": "actions.empty"
+                            }
+                          }
+                        }
+                      ]
+                    },
                     {
                       "each": {
                         "$": "lines"

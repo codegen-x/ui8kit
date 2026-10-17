@@ -106,20 +106,22 @@ export function AppShell({
                 density={density}
                 landmarkLabel={landmarkLabel}
               />
-              <Panel title={activity.title} description={activity.text} id={tpl("{0}-list", id)}>
-                <List class="m-0 flex list-none flex-col gap-4 p-0" data-testid="items">
-                  <For each={activity.events ?? []}>{(e) => (
-                    <ListItem class="flex flex-col gap-2" data-testid="item">
-                      <Text size="sm" weight="semibold">
-                        {e.title}
-                      </Text>
-                      <Text size="xs" class="text-muted-foreground">
-                        {e.time}
-                      </Text>
-                    </ListItem>
-                  )}</For>
-                </List>
-              </Panel>
+              {((activity.events?.length ?? 0) > 0) ? (
+                <Panel title={activity.title} description={activity.text} id={tpl("{0}-list", id)}>
+                  <List class="m-0 flex list-none flex-col gap-4 p-0" data-testid="items">
+                    <For each={activity.events ?? []}>{(e) => (
+                      <ListItem class="flex flex-col gap-2" data-testid="item">
+                        <Text size="sm" weight="semibold">
+                          {e.title}
+                        </Text>
+                        <Text size="xs" class="text-muted-foreground">
+                          {e.time}
+                        </Text>
+                      </ListItem>
+                    )}</For>
+                  </List>
+                </Panel>
+              ) : null}
               <AppMain id={id} title={title} metrics={metrics} chart={chart} density="compact" />
             </Grid>
           )}

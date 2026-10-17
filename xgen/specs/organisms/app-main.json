@@ -109,49 +109,67 @@
           ]
         },
         {
-          "use": "Grid",
-          "props": {
-            "Cols": {
-              "$": "cols"
-            },
-            "Class": "gap-4"
+          "when": {
+            "op": "gt",
+            "args": [
+              {
+                "op": "len",
+                "args": [
+                  {
+                    "$": "metrics"
+                  }
+                ]
+              },
+              0
+            ]
           },
-          "attrs": {
-            "data-testid": "items"
-          },
-          "children": [
+          "then": [
             {
-              "each": {
-                "$": "metrics"
+              "use": "Grid",
+              "props": {
+                "Cols": {
+                  "$": "cols"
+                },
+                "Class": "gap-4"
               },
-              "as": "m",
-              "key": {
-                "$": "m.id"
+              "attrs": {
+                "data-testid": "items"
               },
-              "do": [
+              "children": [
                 {
-                  "use": "Box",
-                  "props": {},
-                  "attrs": {
-                    "data-testid": "item"
+                  "each": {
+                    "$": "metrics"
                   },
-                  "children": [
+                  "as": "m",
+                  "key": {
+                    "$": "m.id"
+                  },
+                  "do": [
                     {
-                      "organism": "StatTile",
-                      "props": {
-                        "label": {
-                          "$": "m.label"
-                        },
-                        "value": {
-                          "$": "m.value"
-                        },
-                        "icon": {
-                          "$": "m.icon"
-                        },
-                        "hint": {
-                          "$": "m.hint"
+                      "use": "Box",
+                      "props": {},
+                      "attrs": {
+                        "data-testid": "item"
+                      },
+                      "children": [
+                        {
+                          "organism": "StatTile",
+                          "props": {
+                            "label": {
+                              "$": "m.label"
+                            },
+                            "value": {
+                              "$": "m.value"
+                            },
+                            "icon": {
+                              "$": "m.icon"
+                            },
+                            "hint": {
+                              "$": "m.hint"
+                            }
+                          }
                         }
-                      }
+                      ]
                     }
                   ]
                 }
@@ -171,6 +189,138 @@
                 "Class": "items-stretch gap-4"
               },
               "children": [
+                {
+                  "when": {
+                    "op": "gt",
+                    "args": [
+                      {
+                        "op": "len",
+                        "args": [
+                          {
+                            "$": "chart.series"
+                          }
+                        ]
+                      },
+                      0
+                    ]
+                  },
+                  "then": [
+                    {
+                      "organism": "Panel",
+                      "props": {
+                        "title": {
+                          "$": "chart.title"
+                        },
+                        "description": {
+                          "$": "chart.text"
+                        },
+                        "id": {
+                          "op": "tpl",
+                          "args": [
+                            "{0}-chart",
+                            {
+                              "$": "id"
+                            }
+                          ]
+                        },
+                        "className": "h-full"
+                      },
+                      "slots": {
+                        "children": {
+                          "args": [],
+                          "do": [
+                            {
+                              "organism": "BarChart",
+                              "props": {
+                                "bars": {
+                                  "$": "chart.series"
+                                },
+                                "label": {
+                                  "$": "chart.summary"
+                                },
+                                "height": 144
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                },
+                {
+                  "when": {
+                    "op": "gt",
+                    "args": [
+                      {
+                        "op": "len",
+                        "args": [
+                          {
+                            "$": "activity.events"
+                          }
+                        ]
+                      },
+                      0
+                    ]
+                  },
+                  "then": [
+                    {
+                      "organism": "Panel",
+                      "props": {
+                        "title": {
+                          "$": "activity.title"
+                        },
+                        "description": {
+                          "$": "activity.text"
+                        },
+                        "id": {
+                          "op": "tpl",
+                          "args": [
+                            "{0}-feed",
+                            {
+                              "$": "id"
+                            }
+                          ]
+                        },
+                        "className": "h-full"
+                      },
+                      "slots": {
+                        "children": {
+                          "args": [],
+                          "do": [
+                            {
+                              "organism": "Timeline",
+                              "props": {
+                                "items": {
+                                  "$": "activity.events"
+                                }
+                              }
+                            }
+                          ]
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ],
+          "else": [
+            {
+              "when": {
+                "op": "gt",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "chart.series"
+                      }
+                    ]
+                  },
+                  0
+                ]
+              },
+              "then": [
                 {
                   "organism": "Panel",
                   "props": {
@@ -210,86 +360,8 @@
                       ]
                     }
                   }
-                },
-                {
-                  "organism": "Panel",
-                  "props": {
-                    "title": {
-                      "$": "activity.title"
-                    },
-                    "description": {
-                      "$": "activity.text"
-                    },
-                    "id": {
-                      "op": "tpl",
-                      "args": [
-                        "{0}-feed",
-                        {
-                          "$": "id"
-                        }
-                      ]
-                    },
-                    "className": "h-full"
-                  },
-                  "slots": {
-                    "children": {
-                      "args": [],
-                      "do": [
-                        {
-                          "organism": "Timeline",
-                          "props": {
-                            "items": {
-                              "$": "activity.events"
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  }
                 }
               ]
-            }
-          ],
-          "else": [
-            {
-              "organism": "Panel",
-              "props": {
-                "title": {
-                  "$": "chart.title"
-                },
-                "description": {
-                  "$": "chart.text"
-                },
-                "id": {
-                  "op": "tpl",
-                  "args": [
-                    "{0}-chart",
-                    {
-                      "$": "id"
-                    }
-                  ]
-                },
-                "className": "h-full"
-              },
-              "slots": {
-                "children": {
-                  "args": [],
-                  "do": [
-                    {
-                      "organism": "BarChart",
-                      "props": {
-                        "bars": {
-                          "$": "chart.series"
-                        },
-                        "label": {
-                          "$": "chart.summary"
-                        },
-                        "height": 144
-                      }
-                    }
-                  ]
-                }
-              }
             }
           ]
         }

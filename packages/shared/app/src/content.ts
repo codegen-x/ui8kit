@@ -1332,7 +1332,8 @@ export const ui = {
     "cartPage": {
       "title": "Your cart",
       "back": "Continue shopping",
-      "clear": "Clear the cart"
+      "clear": "Clear the cart",
+      "empty": "Your cart is empty"
     },
     "drawer": {
       "title": "Cart",

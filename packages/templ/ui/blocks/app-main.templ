@@ -35,23 +35,29 @@ templ AppMain(p AppMainProps) {
 		@title.Title(title.TitleProps{As: uiutils.HeadingLevel(uiutils.I(float64(2))), Size: "2xl", Weight: "bold", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-title", vId))}) {
 			{ uiutils.Text(vTitle) }
 		}
-		@grid.Grid(grid.GridProps{Cols: uiutils.S(vCols), Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "items")}) {
-			for _, vM := range uiutils.L(vMetrics) {
-				@box.Box(box.BoxProps{Attrs: uiutils.Attrs("data-testid", "item")}) {
-					@StatTile(StatTileProps{Label: uiutils.Get(vM, "label"), Value: uiutils.Get(vM, "value"), Icon: uiutils.Get(vM, "icon"), Hint: uiutils.Get(vM, "hint")})
+		if uiutils.Gt(uiutils.Len(vMetrics), float64(0)) {
+			@grid.Grid(grid.GridProps{Cols: uiutils.S(vCols), Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "items")}) {
+				for _, vM := range uiutils.L(vMetrics) {
+					@box.Box(box.BoxProps{Attrs: uiutils.Attrs("data-testid", "item")}) {
+						@StatTile(StatTileProps{Label: uiutils.Get(vM, "label"), Value: uiutils.Get(vM, "value"), Icon: uiutils.Get(vM, "icon"), Hint: uiutils.Get(vM, "hint")})
+					}
 				}
 			}
 		}
 		if uiutils.T(vActivity) {
 			@grid.Grid(grid.GridProps{Cols: "1-2", Class: "items-stretch gap-4"}) {
-				@Panel(PanelProps{Title: uiutils.Get(vChart, "title"), Description: uiutils.Get(vChart, "text"), Id: uiutils.Tpl("{0}-chart", vId), Class: uiutils.Cnv("h-full")}) {
-					@BarChart(BarChartProps{Bars: uiutils.Get(vChart, "series"), Label: uiutils.Get(vChart, "summary"), Height: float64(144)})
+				if uiutils.Gt(uiutils.Len(uiutils.Get(vChart, "series")), float64(0)) {
+					@Panel(PanelProps{Title: uiutils.Get(vChart, "title"), Description: uiutils.Get(vChart, "text"), Id: uiutils.Tpl("{0}-chart", vId), Class: uiutils.Cnv("h-full")}) {
+						@BarChart(BarChartProps{Bars: uiutils.Get(vChart, "series"), Label: uiutils.Get(vChart, "summary"), Height: float64(144)})
+					}
 				}
-				@Panel(PanelProps{Title: uiutils.Get(vActivity, "title"), Description: uiutils.Get(vActivity, "text"), Id: uiutils.Tpl("{0}-feed", vId), Class: uiutils.Cnv("h-full")}) {
-					@Timeline(TimelineProps{Items: uiutils.Get(vActivity, "events")})
+				if uiutils.Gt(uiutils.Len(uiutils.Get(vActivity, "events")), float64(0)) {
+					@Panel(PanelProps{Title: uiutils.Get(vActivity, "title"), Description: uiutils.Get(vActivity, "text"), Id: uiutils.Tpl("{0}-feed", vId), Class: uiutils.Cnv("h-full")}) {
+						@Timeline(TimelineProps{Items: uiutils.Get(vActivity, "events")})
+					}
 				}
 			}
-		} else {
+		} else if uiutils.Gt(uiutils.Len(uiutils.Get(vChart, "series")), float64(0)) {
 			@Panel(PanelProps{Title: uiutils.Get(vChart, "title"), Description: uiutils.Get(vChart, "text"), Id: uiutils.Tpl("{0}-chart", vId), Class: uiutils.Cnv("h-full")}) {
 				@BarChart(BarChartProps{Bars: uiutils.Get(vChart, "series"), Label: uiutils.Get(vChart, "summary"), Height: float64(144)})
 			}

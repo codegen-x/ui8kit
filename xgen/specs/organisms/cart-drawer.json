@@ -216,74 +216,75 @@
                     },
                     {
                       "when": {
-                        "op": "eq",
+                        "op": "or",
                         "args": [
                           {
-                            "$": "state"
+                            "op": "eq",
+                            "args": [
+                              {
+                                "$": "state"
+                              },
+                              "empty"
+                            ]
                           },
-                          "empty"
+                          {
+                            "op": "eq",
+                            "args": [
+                              {
+                                "op": "len",
+                                "args": [
+                                  {
+                                    "$": "lines"
+                                  }
+                                ]
+                              },
+                              0
+                            ]
+                          }
                         ]
                       },
                       "then": [
                         {
-                          "use": "Stack",
+                          "use": "Box",
                           "props": {
-                            "Gap": "4",
-                            "Align": "center",
-                            "Class": "flex-1 justify-center p-8 text-center"
+                            "Class": "flex flex-1 flex-col justify-center p-4"
                           },
                           "attrs": {
                             "data-testid": "empty"
                           },
                           "children": [
                             {
-                              "use": "LucideIcon",
+                              "organism": "EmptyState",
                               "props": {
-                                "Name": "shopping-bag",
-                                "Size": 32
+                                "icon": "shopping-bag",
+                                "title": {
+                                  "$": "drawer.empty"
+                                },
+                                "text": {
+                                  "$": "drawer.emptyText"
+                                }
+                              },
+                              "slots": {
+                                "action": {
+                                  "args": [],
+                                  "do": [
+                                    {
+                                      "use": "Button",
+                                      "props": {
+                                        "Variant": "outline",
+                                        "Size": "default"
+                                      },
+                                      "children": [
+                                        {
+                                          "text": {
+                                            "$": "drawer.browse"
+                                          }
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                }
                               }
-                            },
-                            {
-                              "use": "Text",
-                              "props": {
-                                "Size": "base",
-                                "Weight": "semibold"
-                              },
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "drawer.empty"
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "use": "Text",
-                              "props": {
-                                "Size": "sm",
-                                "Class": "text-muted-foreground"
-                              },
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "drawer.emptyText"
-                                  }
-                                }
-                              ]
-                            },
-                            {
-                              "use": "Button",
-                              "props": {
-                                "Variant": "outline",
-                                "Size": "default"
-                              },
-                              "children": [
-                                {
-                                  "text": {
-                                    "$": "drawer.browse"
-                                  }
-                                }
-                              ]
                             }
                           ]
                         }

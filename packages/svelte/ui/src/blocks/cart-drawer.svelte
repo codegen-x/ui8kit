@@ -30,10 +30,9 @@
   import Container from "../primitives/container/container.svelte";
   import Group from "../primitives/group/group.svelte";
   import LucideIcon from "../primitives/lucide-icon/lucide-icon.svelte";
-  import Stack from "../primitives/stack/stack.svelte";
-  import Text from "../primitives/text/text.svelte";
   import Title from "../primitives/title/title.svelte";
   import DrawerLines from "../components/drawer-lines.svelte";
+  import EmptyState from "../components/empty-state.svelte";
   import { tpl } from "../utils";
 
   let {
@@ -70,19 +69,16 @@
             <LucideIcon name="x" size={16} />
           </Button>
         </Group>
-        {#if ((state as string) === "empty")}
-          <Stack gap="4" align="center" class="flex-1 justify-center p-8 text-center" data-testid="empty">
-            <LucideIcon name="shopping-bag" size={32} />
-            <Text size="base" weight="semibold">
-              {drawer.empty}
-            </Text>
-            <Text size="sm" class="text-muted-foreground">
-              {drawer.emptyText}
-            </Text>
-            <Button variant="outline" size="default">
-              {drawer.browse}
-            </Button>
-          </Stack>
+        {#if (((state as string) === "empty") || ((lines?.length ?? 0) === 0))}
+          <Box class="flex flex-1 flex-col justify-center p-4" data-testid="empty">
+            <EmptyState icon="shopping-bag" title={drawer.empty} text={drawer.emptyText}>
+              {#snippet action()}
+                <Button variant="outline" size="default">
+                  {drawer.browse}
+                </Button>
+              {/snippet}
+            </EmptyState>
+          </Box>
         {:else}
           <DrawerLines field={tpl("{0}-qty", id)} lines={lines} rows={rows} labels={labels} drawer={drawer} media={media} />
         {/if}

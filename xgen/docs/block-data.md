@@ -172,7 +172,7 @@ replace the string arrays `links`).
 - Magazine: no routes, so no links; the template stage has 0 `<a>` except the in-page table of contents of the docs template
   (was 158: brand, sitemap groups, side navs, categories, nav links).
 
-## 7a. Kit blocks in groups (steps 7-13)
+## 7a. Kit blocks in groups (steps 7-14)
 
 - Every fixture kind has a central map (`KIT_FIELDS` in fields.ts, part of `CODEX_FIELDS`); `codex:blocks` picks the map named
   after the binding's kind when two maps are equal (feature/value/perk/... share one shape).
@@ -191,6 +191,9 @@ replace the string arrays `links`).
   leaves its nav landmark out without links; topics and terminal lines check the length, not only presence (an empty array is truthy in JS).
 - Step 13 (omit): FooterSplit (the guards sit in its parts, the block stays under 150 lines), DashboardShell (ShellTopbar/Sidebar/
   Footer leave a landmark out without links), SignupWizard (no steps: no wizard), PricingCard (one record; the empty list is PricingTable's job).
+- Step 14: CartDrawer draws EmptyState (with its browse action) for the empty axis and for a cart with no lines; ShoppingCart draws
+  EmptyState titled by `actions.empty` (a field of its own labels record: the block already has 12 props). DashboardOverview and AppShell
+  use omit: no metrics, no tiles; no series or events, no panel (app-main helpers).
 ## 8. Open questions (decided for now, review later)
 
 1. Docs template table of contents: in-page anchors (`#tp-docs-body-section-*`) stay links; they address the page itself, not an app route.

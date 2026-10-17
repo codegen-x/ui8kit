@@ -48,27 +48,33 @@ export function AppMain({
       <Title as={2} size="2xl" weight="bold" id={tpl("{0}-title", id)}>
         {title}
       </Title>
-      <Grid cols={cols} className="gap-4" data-testid="items">
-        {(metrics ?? []).map((m) => (
-          <Box key={m.id} data-testid="item">
-            <StatTile label={m.label} value={m.value} icon={m.icon} hint={m.hint} />
-          </Box>
-        ))}
-      </Grid>
+      {((metrics?.length ?? 0) > 0) ? (
+        <Grid cols={cols} className="gap-4" data-testid="items">
+          {(metrics ?? []).map((m) => (
+            <Box key={m.id} data-testid="item">
+              <StatTile label={m.label} value={m.value} icon={m.icon} hint={m.hint} />
+            </Box>
+          ))}
+        </Grid>
+      ) : null}
       {activity ? (
         <Grid cols="1-2" className="items-stretch gap-4">
-          <Panel title={chart.title} description={chart.text} id={tpl("{0}-chart", id)} className="h-full">
-            <BarChart bars={chart.series} label={chart.summary} height={144} />
-          </Panel>
-          <Panel title={activity?.title} description={activity?.text} id={tpl("{0}-feed", id)} className="h-full">
-            <Timeline items={activity?.events} />
-          </Panel>
+          {((chart.series?.length ?? 0) > 0) ? (
+            <Panel title={chart.title} description={chart.text} id={tpl("{0}-chart", id)} className="h-full">
+              <BarChart bars={chart.series} label={chart.summary} height={144} />
+            </Panel>
+          ) : null}
+          {((activity?.events?.length ?? 0) > 0) ? (
+            <Panel title={activity?.title} description={activity?.text} id={tpl("{0}-feed", id)} className="h-full">
+              <Timeline items={activity?.events} />
+            </Panel>
+          ) : null}
         </Grid>
-      ) : (
+      ) : ((chart.series?.length ?? 0) > 0) ? (
         <Panel title={chart.title} description={chart.text} id={tpl("{0}-chart", id)} className="h-full">
           <BarChart bars={chart.series} label={chart.summary} height={144} />
         </Panel>
-      )}
+      ) : null}
     </Stack>
   );
 }

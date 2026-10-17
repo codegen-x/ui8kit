@@ -18,6 +18,9 @@
 {capture $c_14}
   {capture $c_13}
     {capture $c_11}
+      {if ui_t(ui_eq(ui_len($v_lines), 0))}
+        {=ui_include('blocks/empty-state.latte', ['p' => ['icon' => 'shopping-cart', 'title' => ui_get($v_actions, ['empty'])]])|noescape}
+      {/if}
       {foreach ui_l($v_lines) as $v_line}
         {capture $c_7}
           {=ui_include('blocks/media-frame.latte', ['p' => ['alt' => ui_get($v_line, ['name']), 'ratio' => '1/1', 'className' => ui_cnv(['size-20 shrink-0'])]])|noescape}
