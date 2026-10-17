@@ -23,7 +23,7 @@
     {{ ui_include('ui/text/text.html.j2', {'p': {'Size': 'xs', 'Class': 'text-muted-foreground'}, 'children': c_2}) }}
   {%- endset -%}
   {{ ui_include('ui/group/group.html.j2', {'p': {'Gap': '4', 'Align': 'baseline', 'Justify': 'between'}, 'children': c_3}) }}
-  {%- if ui_t(ui_eq(v_items, 'show')) %}
+  {%- if ui_t(ui_and([ui_eq(v_items, 'show'), ui_gt(ui_len(v_lines), 0)])) %}
     {%- set c_9 -%}
       {%- for v_line in ui_l(v_lines) %}
         {%- set c_8 -%}
@@ -59,19 +59,21 @@
         {{ ui_include('ui/button/button.html.j2', {'p': {'Variant': 'outline', 'Size': 'default', 'Type': 'button'}, 'children': c_10}) }}
       {%- endset -%}
       {{ ui_include('ui/group/group.html.j2', {'p': {'Gap': '2', 'Align': 'center'}, 'children': c_11}) }}
-      {%- set c_14 -%}
-        {%- set c_12 -%}
-          {{ ui_text(ui_get(v_labels, ['codes'])) }}
-        {%- endset -%}
-        {{ ui_include('ui/text/text.html.j2', {'p': {'Size': 'xs', 'Class': 'text-muted-foreground'}, 'children': c_12}) }}
-        {%- for v_c in ui_l(v_promos) %}
-          {%- set c_13 -%}
-            {{ ui_text(ui_get(v_c, ['code'])) }}
+      {%- if ui_t(ui_gt(ui_len(v_promos), 0)) %}
+        {%- set c_14 -%}
+          {%- set c_12 -%}
+            {{ ui_text(ui_get(v_labels, ['codes'])) }}
           {%- endset -%}
-          {{ ui_include('ui/badge/badge.html.j2', {'p': {'Variant': 'outline', 'Size': 'sm', 'Attrs': ui_attrs(['data-testid', 'code'])}, 'children': c_13}) }}
-        {%- endfor %}
-      {%- endset -%}
-      {{ ui_include('ui/group/group.html.j2', {'p': {'Gap': '2', 'Align': 'center', 'Class': 'flex-wrap'}, 'children': c_14}) }}
+          {{ ui_include('ui/text/text.html.j2', {'p': {'Size': 'xs', 'Class': 'text-muted-foreground'}, 'children': c_12}) }}
+          {%- for v_c in ui_l(v_promos) %}
+            {%- set c_13 -%}
+              {{ ui_text(ui_get(v_c, ['code'])) }}
+            {%- endset -%}
+            {{ ui_include('ui/badge/badge.html.j2', {'p': {'Variant': 'outline', 'Size': 'sm', 'Attrs': ui_attrs(['data-testid', 'code'])}, 'children': c_13}) }}
+          {%- endfor %}
+        {%- endset -%}
+        {{ ui_include('ui/group/group.html.j2', {'p': {'Gap': '2', 'Align': 'center', 'Class': 'flex-wrap'}, 'children': c_14}) }}
+      {%- endif %}
     {%- endset -%}
     {{ ui_include('ui/stack/stack.html.j2', {'p': {'Gap': '2', 'Align': 'stretch', 'Attrs': ui_attrs(['data-testid', 'promo'])}, 'children': c_15}) }}
   {%- endif %}
@@ -85,22 +87,24 @@
     {%- endset -%}
     {{ ui_include('ui/stack/stack.html.j2', {'p': {'Gap': '2', 'Align': 'stretch', 'Class': 'rounded bg-muted p-4', 'Attrs': ui_attrs(['data-testid', 'progress'])}, 'children': c_17}) }}
   {%- endif %}
-  {%- set c_21 -%}
-    {%- for v_row in ui_l(v_rows) %}
-      {%- set c_20 -%}
-        {%- set c_18 -%}
-          {{ ui_text(ui_get(v_row, ['label'])) }}
+  {%- if ui_t(ui_gt(ui_len(v_rows), 0)) %}
+    {%- set c_21 -%}
+      {%- for v_row in ui_l(v_rows) %}
+        {%- set c_20 -%}
+          {%- set c_18 -%}
+            {{ ui_text(ui_get(v_row, ['label'])) }}
+          {%- endset -%}
+          {{ ui_include('ui/inline/inline.html.j2', {'p': {}, 'children': c_18}) }}
+          {%- set c_19 -%}
+            {{ ui_text(ui_money(ui_get(v_row, ['amount']), ui_get(v_row, ['currency']))) }}
+          {%- endset -%}
+          {{ ui_include('ui/inline/inline.html.j2', {'p': {}, 'children': c_19}) }}
         {%- endset -%}
-        {{ ui_include('ui/inline/inline.html.j2', {'p': {}, 'children': c_18}) }}
-        {%- set c_19 -%}
-          {{ ui_text(ui_money(ui_get(v_row, ['amount']), ui_get(v_row, ['currency']))) }}
-        {%- endset -%}
-        {{ ui_include('ui/inline/inline.html.j2', {'p': {}, 'children': c_19}) }}
-      {%- endset -%}
-      {{ ui_include('ui/list/list-item.html.j2', {'p': {'Class': ui_s(ui_cnv(['flex items-center justify-between gap-4', ('border-t border-border pt-4 text-base font-bold' if ui_t(ui_get(v_row, ['strong'])) else 'text-sm text-muted-foreground')])), 'Attrs': ui_attrs(['data-testid', 'row'])}, 'children': c_20}) }}
-    {%- endfor %}
-  {%- endset -%}
-  {{ ui_include('ui/list/list.html.j2', {'p': {'Tag': 'ul', 'Class': 'flex flex-col gap-2'}, 'children': c_21}) }}
+        {{ ui_include('ui/list/list-item.html.j2', {'p': {'Class': ui_s(ui_cnv(['flex items-center justify-between gap-4', ('border-t border-border pt-4 text-base font-bold' if ui_t(ui_get(v_row, ['strong'])) else 'text-sm text-muted-foreground')])), 'Attrs': ui_attrs(['data-testid', 'row'])}, 'children': c_20}) }}
+      {%- endfor %}
+    {%- endset -%}
+    {{ ui_include('ui/list/list.html.j2', {'p': {'Tag': 'ul', 'Class': 'flex flex-col gap-2'}, 'children': c_21}) }}
+  {%- endif %}
   {%- set c_22 -%}
     {{ ui_text(ui_get(v_labels, ['checkout'])) }}
   {%- endset -%}

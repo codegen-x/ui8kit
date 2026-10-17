@@ -104,10 +104,14 @@ export function CheckoutForm({
             </Field>
           </CheckoutStep>
           <CheckoutStep number="3" title={labels.slot} text={labels.slotText} layout={layout}>
-            <SlotGrid days={days} name={tpl("{0}-slot", id)} item="plain" />
+            {((days?.length ?? 0) > 0) ? (
+              <SlotGrid days={days} name={tpl("{0}-slot", id)} item="plain" />
+            ) : null}
           </CheckoutStep>
           <CheckoutStep number="4" title={labels.payment} text={labels.paymentText} layout={layout}>
-            <PaymentOptions payments={payments} name={tpl("{0}-payment", id)} checked="payment-card" />
+            {((payments?.length ?? 0) > 0) ? (
+              <PaymentOptions payments={payments} name={tpl("{0}-payment", id)} checked="payment-card" />
+            ) : null}
           </CheckoutStep>
           <CheckoutSubmit id={id} consent={labels.consent} submit={labels.submit} legal={labels.legal} />
         </Form>

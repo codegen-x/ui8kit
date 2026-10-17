@@ -703,22 +703,40 @@
                           "args": [],
                           "do": [
                             {
-                              "organism": "SlotGrid",
-                              "props": {
-                                "days": {
-                                  "$": "days"
-                                },
-                                "name": {
-                                  "op": "tpl",
-                                  "args": [
-                                    "{0}-slot",
-                                    {
-                                      "$": "id"
-                                    }
-                                  ]
-                                },
-                                "item": "plain"
-                              }
+                              "when": {
+                                "op": "gt",
+                                "args": [
+                                  {
+                                    "op": "len",
+                                    "args": [
+                                      {
+                                        "$": "days"
+                                      }
+                                    ]
+                                  },
+                                  0
+                                ]
+                              },
+                              "then": [
+                                {
+                                  "organism": "SlotGrid",
+                                  "props": {
+                                    "days": {
+                                      "$": "days"
+                                    },
+                                    "name": {
+                                      "op": "tpl",
+                                      "args": [
+                                        "{0}-slot",
+                                        {
+                                          "$": "id"
+                                        }
+                                      ]
+                                    },
+                                    "item": "plain"
+                                  }
+                                }
+                              ]
                             }
                           ]
                         }
@@ -743,22 +761,40 @@
                           "args": [],
                           "do": [
                             {
-                              "organism": "PaymentOptions",
-                              "props": {
-                                "payments": {
-                                  "$": "payments"
-                                },
-                                "name": {
-                                  "op": "tpl",
-                                  "args": [
-                                    "{0}-payment",
-                                    {
-                                      "$": "id"
-                                    }
-                                  ]
-                                },
-                                "checked": "payment-card"
-                              }
+                              "when": {
+                                "op": "gt",
+                                "args": [
+                                  {
+                                    "op": "len",
+                                    "args": [
+                                      {
+                                        "$": "payments"
+                                      }
+                                    ]
+                                  },
+                                  0
+                                ]
+                              },
+                              "then": [
+                                {
+                                  "organism": "PaymentOptions",
+                                  "props": {
+                                    "payments": {
+                                      "$": "payments"
+                                    },
+                                    "name": {
+                                      "op": "tpl",
+                                      "args": [
+                                        "{0}-payment",
+                                        {
+                                          "$": "id"
+                                        }
+                                      ]
+                                    },
+                                    "checked": "payment-card"
+                                  }
+                                }
+                              ]
                             }
                           ]
                         }

@@ -23,7 +23,7 @@
     {=ui_include('ui/text/text.latte', ['p' => ['Size' => 'xs', 'Class' => 'text-muted-foreground'], 'children' => $c_2])|noescape}
   {/capture}
   {=ui_include('ui/group/group.latte', ['p' => ['Gap' => '4', 'Align' => 'baseline', 'Justify' => 'between'], 'children' => $c_3])|noescape}
-  {if ui_t(ui_eq($v_items, 'show'))}
+  {if ui_t(ui_and([ui_eq($v_items, 'show'), ui_gt(ui_len($v_lines), 0)]))}
     {capture $c_9}
       {foreach ui_l($v_lines) as $v_line}
         {capture $c_8}
@@ -59,19 +59,21 @@
         {=ui_include('ui/button/button.latte', ['p' => ['Variant' => 'outline', 'Size' => 'default', 'Type' => 'button'], 'children' => $c_10])|noescape}
       {/capture}
       {=ui_include('ui/group/group.latte', ['p' => ['Gap' => '2', 'Align' => 'center'], 'children' => $c_11])|noescape}
-      {capture $c_14}
-        {capture $c_12}
-          {=ui_text(ui_get($v_labels, ['codes']))}
-        {/capture}
-        {=ui_include('ui/text/text.latte', ['p' => ['Size' => 'xs', 'Class' => 'text-muted-foreground'], 'children' => $c_12])|noescape}
-        {foreach ui_l($v_promos) as $v_c}
-          {capture $c_13}
-            {=ui_text(ui_get($v_c, ['code']))}
+      {if ui_t(ui_gt(ui_len($v_promos), 0))}
+        {capture $c_14}
+          {capture $c_12}
+            {=ui_text(ui_get($v_labels, ['codes']))}
           {/capture}
-          {=ui_include('ui/badge/badge.latte', ['p' => ['Variant' => 'outline', 'Size' => 'sm', 'Attrs' => ui_attrs(['data-testid', 'code'])], 'children' => $c_13])|noescape}
-        {/foreach}
-      {/capture}
-      {=ui_include('ui/group/group.latte', ['p' => ['Gap' => '2', 'Align' => 'center', 'Class' => 'flex-wrap'], 'children' => $c_14])|noescape}
+          {=ui_include('ui/text/text.latte', ['p' => ['Size' => 'xs', 'Class' => 'text-muted-foreground'], 'children' => $c_12])|noescape}
+          {foreach ui_l($v_promos) as $v_c}
+            {capture $c_13}
+              {=ui_text(ui_get($v_c, ['code']))}
+            {/capture}
+            {=ui_include('ui/badge/badge.latte', ['p' => ['Variant' => 'outline', 'Size' => 'sm', 'Attrs' => ui_attrs(['data-testid', 'code'])], 'children' => $c_13])|noescape}
+          {/foreach}
+        {/capture}
+        {=ui_include('ui/group/group.latte', ['p' => ['Gap' => '2', 'Align' => 'center', 'Class' => 'flex-wrap'], 'children' => $c_14])|noescape}
+      {/if}
     {/capture}
     {=ui_include('ui/stack/stack.latte', ['p' => ['Gap' => '2', 'Align' => 'stretch', 'Attrs' => ui_attrs(['data-testid', 'promo'])], 'children' => $c_15])|noescape}
   {/if}
@@ -85,22 +87,24 @@
     {/capture}
     {=ui_include('ui/stack/stack.latte', ['p' => ['Gap' => '2', 'Align' => 'stretch', 'Class' => 'rounded bg-muted p-4', 'Attrs' => ui_attrs(['data-testid', 'progress'])], 'children' => $c_17])|noescape}
   {/if}
-  {capture $c_21}
-    {foreach ui_l($v_rows) as $v_row}
-      {capture $c_20}
-        {capture $c_18}
-          {=ui_text(ui_get($v_row, ['label']))}
+  {if ui_t(ui_gt(ui_len($v_rows), 0))}
+    {capture $c_21}
+      {foreach ui_l($v_rows) as $v_row}
+        {capture $c_20}
+          {capture $c_18}
+            {=ui_text(ui_get($v_row, ['label']))}
+          {/capture}
+          {=ui_include('ui/inline/inline.latte', ['p' => [], 'children' => $c_18])|noescape}
+          {capture $c_19}
+            {=ui_text(ui_money(ui_get($v_row, ['amount']), ui_get($v_row, ['currency'])))}
+          {/capture}
+          {=ui_include('ui/inline/inline.latte', ['p' => [], 'children' => $c_19])|noescape}
         {/capture}
-        {=ui_include('ui/inline/inline.latte', ['p' => [], 'children' => $c_18])|noescape}
-        {capture $c_19}
-          {=ui_text(ui_money(ui_get($v_row, ['amount']), ui_get($v_row, ['currency'])))}
-        {/capture}
-        {=ui_include('ui/inline/inline.latte', ['p' => [], 'children' => $c_19])|noescape}
-      {/capture}
-      {=ui_include('ui/list/list-item.latte', ['p' => ['Class' => ui_s(ui_cnv(['flex items-center justify-between gap-4', (ui_t(ui_get($v_row, ['strong'])) ? 'border-t border-border pt-4 text-base font-bold' : 'text-sm text-muted-foreground')])), 'Attrs' => ui_attrs(['data-testid', 'row'])], 'children' => $c_20])|noescape}
-    {/foreach}
-  {/capture}
-  {=ui_include('ui/list/list.latte', ['p' => ['Tag' => 'ul', 'Class' => 'flex flex-col gap-2'], 'children' => $c_21])|noescape}
+        {=ui_include('ui/list/list-item.latte', ['p' => ['Class' => ui_s(ui_cnv(['flex items-center justify-between gap-4', (ui_t(ui_get($v_row, ['strong'])) ? 'border-t border-border pt-4 text-base font-bold' : 'text-sm text-muted-foreground')])), 'Attrs' => ui_attrs(['data-testid', 'row'])], 'children' => $c_20])|noescape}
+      {/foreach}
+    {/capture}
+    {=ui_include('ui/list/list.latte', ['p' => ['Tag' => 'ul', 'Class' => 'flex flex-col gap-2'], 'children' => $c_21])|noescape}
+  {/if}
   {capture $c_22}
     {=ui_text(ui_get($v_labels, ['checkout']))}
   {/capture}

@@ -1,9 +1,9 @@
 // The parts the checkout, the cart page and the slot picker share: a grid of delivery windows (radios), payment options (radio cards),
 // a numbered step of a form, and the order summary card with a promo code and a free-delivery progress bar.
-import { cn, cond, each, eq, len, money, mul, ref, slot, str, text, tpl, use, when, organism } from "../../build";
+import { and, cn, cond, each, eq, gt, len, money, mul, ref, slot, str, text, tpl, use, when, organism } from "../../build";
 import type { OrganismSpec } from "../../ir";
 import { fields, spec, ts } from "../kit";
-import { tsOf } from "../props";
+import { ifAny, tsOf } from "../props";
 import { muted, strong, surface } from "../ux";
 import { checkRow } from "../forms";
 
@@ -85,7 +85,8 @@ export const cartSummaryCard = spec(`${P}cart-summary-card`, "CartSummaryCard", 
     use("Group", { props: { Gap: "4", Align: "baseline", Justify: "between" } },
       use("Title", { props: { As: 2, Size: "lg", Weight: "semibold" } }, text(ref("labels.title"))),
       muted(tpl(ref("labels.items"), str(len(ref("lines")))), "xs")),
-    when(eq(ref("items"), "show"), [use("List", { props: { Tag: "ul", Class: "flex flex-col gap-4" }, attrs: { "data-testid": "summary-lines" } },
+    // emptyMode omit (CheckoutForm, ShoppingCart): an empty list leaves its part out
+    when(and(eq(ref("items"), "show"), gt(len(ref("lines")), 0)), [use("List", { props: { Tag: "ul", Class: "flex flex-col gap-4" }, attrs: { "data-testid": "summary-lines" } },
       each(ref("lines"), "line", ref("line.id"),
         use("ListItem", { props: { Class: "flex items-center gap-4 text-sm" } },
           organism("MediaFrame", { alt: ref("line.name"), ratio: "1/1", className: "size-12 shrink-0" }),
@@ -95,16 +96,16 @@ export const cartSummaryCard = spec(`${P}cart-summary-card`, "CartSummaryCard", 
       use("Group", { props: { Gap: "2", Align: "center" } },
         use("Input", { props: { Type: "text", Name: ref("field"), AriaLabel: ref("labels.promo"), Placeholder: ref("labels.promo"), Class: "min-w-0 flex-1" } }),
         use("Button", { props: { Variant: "outline", Size: "default", Type: "button" } }, text(ref("labels.apply")))),
-      use("Group", { props: { Gap: "2", Align: "center", Class: "flex-wrap" } },
+      ifAny("promos", [use("Group", { props: { Gap: "2", Align: "center", Class: "flex-wrap" } },
         muted(ref("labels.codes"), "xs"),
-        each(ref("promos"), "c", ref("c.id"), use("Badge", { props: { Variant: "outline", Size: "sm" }, attrs: { "data-testid": "code" } }, text(ref("c.code"))))))]),
+        each(ref("promos"), "c", ref("c.id"), use("Badge", { props: { Variant: "outline", Size: "sm" }, attrs: { "data-testid": "code" } }, text(ref("c.code")))))]))]),
     when(eq(ref("progress"), "show"), [use("Stack", { props: { Gap: "2", Align: "stretch", Class: "rounded bg-muted p-4" }, attrs: { "data-testid": "progress" } },
       use("Text", { props: { Size: "sm" } }, text(ref("labels.progress"))),
       use("Progress", { props: { Value: str(ref("value")), Max: "100" }, attrs: { "aria-label": ref("labels.progress") } }))]),
-    use("List", { props: { Tag: "ul", Class: "flex flex-col gap-2" } },
+    ifAny("rows", [use("List", { props: { Tag: "ul", Class: "flex flex-col gap-2" } },
       each(ref("rows"), "row", ref("row.id"),
         use("ListItem", { props: { Class: cn("flex items-center justify-between gap-4", cond(ref("row.strong"), "border-t border-border pt-4 text-base font-bold", "text-sm text-muted-foreground")) }, attrs: { "data-testid": "row" } },
-          use("Inline", {}, text(ref("row.label"))), use("Inline", {}, text(money(ref("row.amount"), ref("row.currency"))))))),
+          use("Inline", {}, text(ref("row.label"))), use("Inline", {}, text(money(ref("row.amount"), ref("row.currency")))))))]),
     use("Button", { props: { Variant: "default", Size: "lg", Class: "w-full" }, attrs: { "data-testid": "checkout" } }, text(ref("labels.checkout"))),
     muted(ref("labels.note"), "xs")),
   ],

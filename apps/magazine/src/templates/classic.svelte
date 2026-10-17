@@ -24,7 +24,7 @@
     tone="default"
     density="roomy"
   />
-  <FeatureGrid id="tp-classic-features" title={d.ui.site.home.featuresTitle} features={d.features} layout="grid" cols="1-3" item="card" tone="muted" density="default" />
+  <FeatureGrid id="tp-classic-features" title={d.ui.site.home.featuresTitle} features={d.features} empty={d.ui.empty.features} layout="grid" cols="1-3" item="card" tone="muted" density="default" />
   <StatsBand id="tp-classic-stats" title={d.ui.marketing.stats.title} stats={d.stats.slice(0, 4)} empty={d.ui.marketing.stats.empty} cols="4" layout="row" surface="none" item="icon" align="start" tone="default" density="default" />
   <CtaBand
     id="tp-classic-cta"

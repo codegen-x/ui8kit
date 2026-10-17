@@ -15,7 +15,7 @@
   <Block tag="main" id="tp-two-main" class="tp-col-main">
     <article aria-labelledby="tp-two-article-title">
       <PostHeader id="tp-two-article" post={d.posts[0]!} labels={d.ui.content.labels} layout="start" cover="show" meta="full" tone="default" />
-      <ArticleBody id="tp-two-body" title={d.ui.vibe.article.title} sections={d.article} tocTitle={d.ui.vibe.article.toc} layout="column" quotes="show" tone="default" />
+      <ArticleBody id="tp-two-body" title={d.ui.vibe.article.title} sections={d.article} empty={d.ui.empty.sections} tocTitle={d.ui.vibe.article.toc} layout="column" quotes="show" tone="default" />
     </article>
   </Block>
   <aside class="tp-col-aside" aria-label={d.ui.vibe.posts.topics}>

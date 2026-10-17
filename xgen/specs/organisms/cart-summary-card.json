@@ -187,12 +187,31 @@
         },
         {
           "when": {
-            "op": "eq",
+            "op": "and",
             "args": [
               {
-                "$": "items"
+                "op": "eq",
+                "args": [
+                  {
+                    "$": "items"
+                  },
+                  "show"
+                ]
               },
-              "show"
+              {
+                "op": "gt",
+                "args": [
+                  {
+                    "op": "len",
+                    "args": [
+                      {
+                        "$": "lines"
+                      }
+                    ]
+                  },
+                  0
+                ]
+              }
             ]
           },
           "then": [
@@ -384,50 +403,68 @@
                   ]
                 },
                 {
-                  "use": "Group",
-                  "props": {
-                    "Gap": "2",
-                    "Align": "center",
-                    "Class": "flex-wrap"
+                  "when": {
+                    "op": "gt",
+                    "args": [
+                      {
+                        "op": "len",
+                        "args": [
+                          {
+                            "$": "promos"
+                          }
+                        ]
+                      },
+                      0
+                    ]
                   },
-                  "children": [
+                  "then": [
                     {
-                      "use": "Text",
+                      "use": "Group",
                       "props": {
-                        "Size": "xs",
-                        "Class": "text-muted-foreground"
+                        "Gap": "2",
+                        "Align": "center",
+                        "Class": "flex-wrap"
                       },
                       "children": [
                         {
-                          "text": {
-                            "$": "labels.codes"
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "each": {
-                        "$": "promos"
-                      },
-                      "as": "c",
-                      "key": {
-                        "$": "c.id"
-                      },
-                      "do": [
-                        {
-                          "use": "Badge",
+                          "use": "Text",
                           "props": {
-                            "Variant": "outline",
-                            "Size": "sm"
-                          },
-                          "attrs": {
-                            "data-testid": "code"
+                            "Size": "xs",
+                            "Class": "text-muted-foreground"
                           },
                           "children": [
                             {
                               "text": {
-                                "$": "c.code"
+                                "$": "labels.codes"
                               }
+                            }
+                          ]
+                        },
+                        {
+                          "each": {
+                            "$": "promos"
+                          },
+                          "as": "c",
+                          "key": {
+                            "$": "c.id"
+                          },
+                          "do": [
+                            {
+                              "use": "Badge",
+                              "props": {
+                                "Variant": "outline",
+                                "Size": "sm"
+                              },
+                              "attrs": {
+                                "data-testid": "code"
+                              },
+                              "children": [
+                                {
+                                  "text": {
+                                    "$": "c.code"
+                                  }
+                                }
+                              ]
                             }
                           ]
                         }
@@ -498,70 +535,88 @@
           ]
         },
         {
-          "use": "List",
-          "props": {
-            "Tag": "ul",
-            "Class": "flex flex-col gap-2"
+          "when": {
+            "op": "gt",
+            "args": [
+              {
+                "op": "len",
+                "args": [
+                  {
+                    "$": "rows"
+                  }
+                ]
+              },
+              0
+            ]
           },
-          "children": [
+          "then": [
             {
-              "each": {
-                "$": "rows"
+              "use": "List",
+              "props": {
+                "Tag": "ul",
+                "Class": "flex flex-col gap-2"
               },
-              "as": "row",
-              "key": {
-                "$": "row.id"
-              },
-              "do": [
+              "children": [
                 {
-                  "use": "ListItem",
-                  "props": {
-                    "Class": {
-                      "op": "cn",
-                      "args": [
-                        "flex items-center justify-between gap-4",
-                        {
-                          "op": "cond",
+                  "each": {
+                    "$": "rows"
+                  },
+                  "as": "row",
+                  "key": {
+                    "$": "row.id"
+                  },
+                  "do": [
+                    {
+                      "use": "ListItem",
+                      "props": {
+                        "Class": {
+                          "op": "cn",
                           "args": [
+                            "flex items-center justify-between gap-4",
                             {
-                              "$": "row.strong"
-                            },
-                            "border-t border-border pt-4 text-base font-bold",
-                            "text-sm text-muted-foreground"
+                              "op": "cond",
+                              "args": [
+                                {
+                                  "$": "row.strong"
+                                },
+                                "border-t border-border pt-4 text-base font-bold",
+                                "text-sm text-muted-foreground"
+                              ]
+                            }
                           ]
                         }
-                      ]
-                    }
-                  },
-                  "attrs": {
-                    "data-testid": "row"
-                  },
-                  "children": [
-                    {
-                      "use": "Inline",
+                      },
+                      "attrs": {
+                        "data-testid": "row"
+                      },
                       "children": [
                         {
-                          "text": {
-                            "$": "row.label"
-                          }
-                        }
-                      ]
-                    },
-                    {
-                      "use": "Inline",
-                      "children": [
-                        {
-                          "text": {
-                            "op": "money",
-                            "args": [
-                              {
-                                "$": "row.amount"
-                              },
-                              {
-                                "$": "row.currency"
+                          "use": "Inline",
+                          "children": [
+                            {
+                              "text": {
+                                "$": "row.label"
                               }
-                            ]
-                          }
+                            }
+                          ]
+                        },
+                        {
+                          "use": "Inline",
+                          "children": [
+                            {
+                              "text": {
+                                "op": "money",
+                                "args": [
+                                  {
+                                    "$": "row.amount"
+                                  },
+                                  {
+                                    "$": "row.currency"
+                                  }
+                                ]
+                              }
+                            }
+                          ]
                         }
                       ]
                     }

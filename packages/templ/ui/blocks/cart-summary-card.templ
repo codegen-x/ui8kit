@@ -50,7 +50,7 @@ templ CartSummaryCard(p CartSummaryCardProps) {
 				{ uiutils.Text(uiutils.Tpl(uiutils.Get(vLabels, "items"), uiutils.Str(uiutils.Len(vLines)))) }
 			}
 		}
-		if uiutils.Eq(vItems, "show") {
+		if uiutils.T(uiutils.And(uiutils.Eq(vItems, "show"), uiutils.Gt(uiutils.Len(vLines), float64(0)))) {
 			@list.List(list.ListProps{Tag: "ul", Class: "flex flex-col gap-4", Attrs: uiutils.Attrs("data-testid", "summary-lines")}) {
 				for _, vLine := range uiutils.L(vLines) {
 					@list.ListItem(list.ListItemProps{Class: "flex items-center gap-4 text-sm"}) {
@@ -78,13 +78,15 @@ templ CartSummaryCard(p CartSummaryCardProps) {
 						{ uiutils.Text(uiutils.Get(vLabels, "apply")) }
 					}
 				}
-				@group.Group(group.GroupProps{Gap: "2", Align: "center", Class: "flex-wrap"}) {
-					@text.Text(text.TextProps{Size: "xs", Class: "text-muted-foreground"}) {
-						{ uiutils.Text(uiutils.Get(vLabels, "codes")) }
-					}
-					for _, vC := range uiutils.L(vPromos) {
-						@badge.Badge(badge.BadgeProps{Variant: "outline", Size: "sm", Attrs: uiutils.Attrs("data-testid", "code")}) {
-							{ uiutils.Text(uiutils.Get(vC, "code")) }
+				if uiutils.Gt(uiutils.Len(vPromos), float64(0)) {
+					@group.Group(group.GroupProps{Gap: "2", Align: "center", Class: "flex-wrap"}) {
+						@text.Text(text.TextProps{Size: "xs", Class: "text-muted-foreground"}) {
+							{ uiutils.Text(uiutils.Get(vLabels, "codes")) }
+						}
+						for _, vC := range uiutils.L(vPromos) {
+							@badge.Badge(badge.BadgeProps{Variant: "outline", Size: "sm", Attrs: uiutils.Attrs("data-testid", "code")}) {
+								{ uiutils.Text(uiutils.Get(vC, "code")) }
+							}
 						}
 					}
 				}
@@ -98,14 +100,16 @@ templ CartSummaryCard(p CartSummaryCardProps) {
 				@form.Progress(form.ProgressProps{Value: uiutils.S(uiutils.Str(vValue)), Max: "100", Attrs: uiutils.Attrs("aria-label", uiutils.Get(vLabels, "progress"))})
 			}
 		}
-		@list.List(list.ListProps{Tag: "ul", Class: "flex flex-col gap-2"}) {
-			for _, vRow := range uiutils.L(vRows) {
-				@list.ListItem(list.ListItemProps{Class: uiutils.S(uiutils.Cnv("flex items-center justify-between gap-4", uiutils.Cond(uiutils.T(uiutils.Get(vRow, "strong")), "border-t border-border pt-4 text-base font-bold", "text-sm text-muted-foreground"))), Attrs: uiutils.Attrs("data-testid", "row")}) {
-					@inline.Inline(inline.InlineProps{}) {
-						{ uiutils.Text(uiutils.Get(vRow, "label")) }
-					}
-					@inline.Inline(inline.InlineProps{}) {
-						{ uiutils.Text(uiutils.Money(uiutils.Get(vRow, "amount"), uiutils.Get(vRow, "currency"))) }
+		if uiutils.Gt(uiutils.Len(vRows), float64(0)) {
+			@list.List(list.ListProps{Tag: "ul", Class: "flex flex-col gap-2"}) {
+				for _, vRow := range uiutils.L(vRows) {
+					@list.ListItem(list.ListItemProps{Class: uiutils.S(uiutils.Cnv("flex items-center justify-between gap-4", uiutils.Cond(uiutils.T(uiutils.Get(vRow, "strong")), "border-t border-border pt-4 text-base font-bold", "text-sm text-muted-foreground"))), Attrs: uiutils.Attrs("data-testid", "row")}) {
+						@inline.Inline(inline.InlineProps{}) {
+							{ uiutils.Text(uiutils.Get(vRow, "label")) }
+						}
+						@inline.Inline(inline.InlineProps{}) {
+							{ uiutils.Text(uiutils.Money(uiutils.Get(vRow, "amount"), uiutils.Get(vRow, "currency"))) }
+						}
 					}
 				}
 			}

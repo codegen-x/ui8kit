@@ -1075,7 +1075,7 @@
       "surface": "kit-block",
       "spec": "block.checkout",
       "source": "xgen/specs/blocks/checkout.json",
-      "status": "todo",
+      "status": "done",
       "data": [
         {
           "prop": "days",
@@ -1083,7 +1083,15 @@
           "kind": "day",
           "record": "Day",
           "map": "day",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.note.value",
+            "metadata.slots.value",
+            "metadata.closed.value"
+          ],
+          "optional": []
         },
         {
           "prop": "payments",
@@ -1091,7 +1099,14 @@
           "kind": "payment",
           "record": "Payment",
           "map": "payment",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.text.value",
+            "metadata.icon.value"
+          ],
+          "optional": []
         },
         {
           "prop": "lines",
@@ -1099,7 +1114,16 @@
           "kind": "cartline",
           "record": "CartLine",
           "map": "cartline",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.variant.value",
+            "metadata.price.value",
+            "metadata.currency.value",
+            "metadata.qty.value"
+          ],
+          "optional": []
         },
         {
           "prop": "rows",
@@ -1107,7 +1131,15 @@
           "kind": "summaryrow",
           "record": "SummaryRow",
           "map": "summaryrow",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.amount.value",
+            "metadata.currency.value",
+            "metadata.strong.value"
+          ],
+          "optional": []
         },
         {
           "prop": "promos",
@@ -1115,7 +1147,12 @@
           "kind": "promo",
           "record": "Promo",
           "map": "promo",
-          "list": true
+          "list": true,
+          "required": [
+            "id",
+            "title"
+          ],
+          "optional": []
         }
       ],
       "settings": [
@@ -1172,7 +1209,8 @@
           ]
         }
       ],
-      "emptyState": false
+      "emptyState": true,
+      "emptyMode": "omit"
     },
     {
       "id": "ComparisonTable",

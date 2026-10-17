@@ -67,11 +67,15 @@
       {%- endset -%}
       {{ include('blocks/checkout-step.html.twig', {'p': {'number': '2', 'title': ui_get(v_labels, ['address']), 'text': ui_get(v_labels, ['addressText']), 'layout': v_layout}, 'children': c_13}, with_context = false) }}
       {%- set c_14 -%}
-        {{ include('blocks/slot-grid.html.twig', {'p': {'days': v_days, 'name': ui_tpl('{0}-slot', [v_id]), 'item': 'plain'}}, with_context = false) }}
+        {%- if ui_t(ui_gt(ui_len(v_days), 0)) %}
+          {{ include('blocks/slot-grid.html.twig', {'p': {'days': v_days, 'name': ui_tpl('{0}-slot', [v_id]), 'item': 'plain'}}, with_context = false) }}
+        {%- endif %}
       {%- endset -%}
       {{ include('blocks/checkout-step.html.twig', {'p': {'number': '3', 'title': ui_get(v_labels, ['slot']), 'text': ui_get(v_labels, ['slotText']), 'layout': v_layout}, 'children': c_14}, with_context = false) }}
       {%- set c_15 -%}
-        {{ include('blocks/payment-options.html.twig', {'p': {'payments': v_payments, 'name': ui_tpl('{0}-payment', [v_id]), 'checked': 'payment-card'}}, with_context = false) }}
+        {%- if ui_t(ui_gt(ui_len(v_payments), 0)) %}
+          {{ include('blocks/payment-options.html.twig', {'p': {'payments': v_payments, 'name': ui_tpl('{0}-payment', [v_id]), 'checked': 'payment-card'}}, with_context = false) }}
+        {%- endif %}
       {%- endset -%}
       {{ include('blocks/checkout-step.html.twig', {'p': {'number': '4', 'title': ui_get(v_labels, ['payment']), 'text': ui_get(v_labels, ['paymentText']), 'layout': v_layout}, 'children': c_15}, with_context = false) }}
       {{ include('blocks/checkout-submit.html.twig', {'p': {'id': v_id, 'consent': ui_get(v_labels, ['consent']), 'submit': ui_get(v_labels, ['submit']), 'legal': ui_get(v_labels, ['legal'])}}, with_context = false) }}

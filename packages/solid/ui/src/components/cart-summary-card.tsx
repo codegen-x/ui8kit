@@ -55,7 +55,7 @@ export function CartSummaryCard({
           {tpl(labels.items, ((lines?.length ?? 0) == null ? undefined : String((lines?.length ?? 0))))}
         </Text>
       </Group>
-      {((items as string) === "show") ? (
+      {(((items as string) === "show") && ((lines?.length ?? 0) > 0)) ? (
         <List tag="ul" class="flex flex-col gap-4" data-testid="summary-lines">
           <For each={lines ?? []}>{(line) => (
             <ListItem class="flex items-center gap-4 text-sm">
@@ -83,16 +83,18 @@ export function CartSummaryCard({
               {labels.apply}
             </Button>
           </Group>
-          <Group gap="2" align="center" class="flex-wrap">
-            <Text size="xs" class="text-muted-foreground">
-              {labels.codes}
-            </Text>
-            <For each={promos ?? []}>{(c) => (
-              <Badge variant="outline" size="sm" data-testid="code">
-                {c.code}
-              </Badge>
-            )}</For>
-          </Group>
+          {((promos?.length ?? 0) > 0) ? (
+            <Group gap="2" align="center" class="flex-wrap">
+              <Text size="xs" class="text-muted-foreground">
+                {labels.codes}
+              </Text>
+              <For each={promos ?? []}>{(c) => (
+                <Badge variant="outline" size="sm" data-testid="code">
+                  {c.code}
+                </Badge>
+              )}</For>
+            </Group>
+          ) : null}
         </Stack>
       ) : null}
       {((progress as string) === "show") ? (
@@ -103,27 +105,29 @@ export function CartSummaryCard({
           <Progress value={(value == null ? undefined : String(value))} max="100" aria-label={labels.progress} />
         </Stack>
       ) : null}
-      <List tag="ul" class="flex flex-col gap-2">
-        <For each={rows ?? []}>{(row) => (
-          <ListItem
-            class={cn(
-              "flex items-center justify-between gap-4",
-              (
-                row.strong ? "border-t border-border pt-4 text-base font-bold"
-                : "text-sm text-muted-foreground"
-              )
-            )}
-            data-testid="row"
-          >
-            <Inline>
-              {row.label}
-            </Inline>
-            <Inline>
-              {fmtMoney(row.amount, row.currency)}
-            </Inline>
-          </ListItem>
-        )}</For>
-      </List>
+      {((rows?.length ?? 0) > 0) ? (
+        <List tag="ul" class="flex flex-col gap-2">
+          <For each={rows ?? []}>{(row) => (
+            <ListItem
+              class={cn(
+                "flex items-center justify-between gap-4",
+                (
+                  row.strong ? "border-t border-border pt-4 text-base font-bold"
+                  : "text-sm text-muted-foreground"
+                )
+              )}
+              data-testid="row"
+            >
+              <Inline>
+                {row.label}
+              </Inline>
+              <Inline>
+                {fmtMoney(row.amount, row.currency)}
+              </Inline>
+            </ListItem>
+          )}</For>
+        </List>
+      ) : null}
       <Button variant="default" size="lg" class="w-full" data-testid="checkout">
         {labels.checkout}
       </Button>

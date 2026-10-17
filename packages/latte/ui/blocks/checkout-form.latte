@@ -67,11 +67,15 @@
       {/capture}
       {=ui_include('blocks/checkout-step.latte', ['p' => ['number' => '2', 'title' => ui_get($v_labels, ['address']), 'text' => ui_get($v_labels, ['addressText']), 'layout' => $v_layout], 'children' => $c_13])|noescape}
       {capture $c_14}
-        {=ui_include('blocks/slot-grid.latte', ['p' => ['days' => $v_days, 'name' => ui_tpl('{0}-slot', [$v_id]), 'item' => 'plain']])|noescape}
+        {if ui_t(ui_gt(ui_len($v_days), 0))}
+          {=ui_include('blocks/slot-grid.latte', ['p' => ['days' => $v_days, 'name' => ui_tpl('{0}-slot', [$v_id]), 'item' => 'plain']])|noescape}
+        {/if}
       {/capture}
       {=ui_include('blocks/checkout-step.latte', ['p' => ['number' => '3', 'title' => ui_get($v_labels, ['slot']), 'text' => ui_get($v_labels, ['slotText']), 'layout' => $v_layout], 'children' => $c_14])|noescape}
       {capture $c_15}
-        {=ui_include('blocks/payment-options.latte', ['p' => ['payments' => $v_payments, 'name' => ui_tpl('{0}-payment', [$v_id]), 'checked' => 'payment-card']])|noescape}
+        {if ui_t(ui_gt(ui_len($v_payments), 0))}
+          {=ui_include('blocks/payment-options.latte', ['p' => ['payments' => $v_payments, 'name' => ui_tpl('{0}-payment', [$v_id]), 'checked' => 'payment-card']])|noescape}
+        {/if}
       {/capture}
       {=ui_include('blocks/checkout-step.latte', ['p' => ['number' => '4', 'title' => ui_get($v_labels, ['payment']), 'text' => ui_get($v_labels, ['paymentText']), 'layout' => $v_layout], 'children' => $c_15])|noescape}
       {=ui_include('blocks/checkout-submit.latte', ['p' => ['id' => $v_id, 'consent' => ui_get($v_labels, ['consent']), 'submit' => ui_get($v_labels, ['submit']), 'legal' => ui_get($v_labels, ['legal'])]])|noescape}

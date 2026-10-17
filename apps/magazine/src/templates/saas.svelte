@@ -25,7 +25,7 @@
     tone="default"
   />
   <StatsBand id="tp-saas-stats" title={d.ui.marketing.stats.title} stats={d.stats.slice(0, 4)} empty={d.ui.marketing.stats.empty} cols="4" layout="row" surface="none" item="icon" align="start" tone="muted" density="default" />
-  <FeatureGrid id="tp-saas-features" title={d.ui.site.home.featuresTitle} features={d.features} layout="grid" cols="1-3" item="card" tone="default" density="default" />
+  <FeatureGrid id="tp-saas-features" title={d.ui.site.home.featuresTitle} features={d.features} empty={d.ui.empty.features} layout="grid" cols="1-3" item="card" tone="default" density="default" />
   <PricingTiers id="tp-saas-pricing" title={d.ui.site.pricing.tiersTitle} plans={d.tiers} labels={d.ui.pricing} billingLabels={d.ui.vibe.billing} layout="grid" cols="1-3" emphasis="auto" billing="monthly" tone="muted" density="default" />
   <FaqList id="tp-saas-faq" title={d.ui.site.pricing.faqTitle} items={d.faq.slice(0, 5)} empty={d.ui.vibe.faq.empty} search={{ mode: "none" }} filter={{ mode: "none" }} layout="accordion" cols="2" tone="default" density="default" />
   <CtaBand id="tp-saas-cta" title={c.accent} text={c.note} actions={{ mode: "two", cta: c.cta, secondary: c.secondary }} layout="band" tone="default" proof="none" density="default" />

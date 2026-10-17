@@ -24,7 +24,7 @@ const ofKind = (kind: string) => cols.flatMap((c) => c.entries).filter((e) => e.
 const lookups = { media: ofKind("media"), users: ofKind("user"), terms };
 
 interface Binding { prop: string; collection?: string; kind: string; record?: string; map?: string; list?: boolean; required?: string[]; optional?: string[] }
-interface Block { id: string; surface: string; spec?: string; source: string; status: "todo" | "done"; data?: Binding[] }
+interface Block { id: string; surface: string; spec?: string; source: string; status: "todo" | "done"; data?: Binding[]; uses?: string[] }
 const blocks = doc.blocks as Block[];
 const done = blocks.filter((b) => b.status === "done");
 
@@ -42,6 +42,14 @@ test("blocks.json lists every kit block, screen spec and magazine template once,
   for (const id of [...specIds("xgen/specs/blocks"), ...specIds("xgen/specs/screens")]) expect([id, listed.has(id)]).toEqual([id, true]);
   for (const f of readdirSync(join(root, "apps/magazine/src/templates")).filter((f) => f.endsWith(".svelte"))) expect(ids).toContain(`template.${f.replace(/\.svelte$/, "")}`);
   for (const b of blocks) expect([b.id, readFileSync(join(root, b.source)).length > 0]).toEqual([b.id, true]);
+});
+
+// a template, part or screen is done only when every kit block it composes is done (its data reaches it through those blocks)
+test("a done template, part or screen uses only done blocks", () => {
+  const status = new Map(blocks.map((b) => [b.id, b.status]));
+  const bySpec = new Map(blocks.filter((b) => b.spec).map((b) => [b.spec!, b.status]));
+  for (const b of done.filter((x) => x.surface !== "kit-block"))
+    for (const u of b.uses ?? []) expect([b.id, u, status.get(u) ?? bySpec.get(u) ?? "done"]).toEqual([b.id, u, "done"]);
 });
 
 const fieldOf = (kind: string, path: string): Field | string | undefined => {

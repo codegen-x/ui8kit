@@ -60,7 +60,12 @@ const {
         {{ tpl(labels.items, ((lines?.length ?? 0) == null ? undefined : String((lines?.length ?? 0)))) }}
       </Text>
     </Group>
-    <List v-if="((items as string) === 'show')" tag="ul" class="flex flex-col gap-4" data-testid="summary-lines">
+    <List
+      v-if="(((items as string) === 'show') && ((lines?.length ?? 0) > 0))"
+      tag="ul"
+      class="flex flex-col gap-4"
+      data-testid="summary-lines"
+    >
       <ListItem v-for="line in lines" :key="line.id" class="flex items-center gap-4 text-sm">
         <MediaFrame :alt="line.name" ratio="1/1" class="size-12 shrink-0" />
         <Stack gap="0" class="flex-1">
@@ -83,7 +88,7 @@ const {
           {{ labels.apply }}
         </Button>
       </Group>
-      <Group gap="2" align="center" class="flex-wrap">
+      <Group v-if="((promos?.length ?? 0) > 0)" gap="2" align="center" class="flex-wrap">
         <Text size="xs" class="text-muted-foreground">
           {{ labels.codes }}
         </Text>
@@ -104,7 +109,7 @@ const {
       </Text>
       <Progress :value="(value == null ? undefined : String(value))" max="100" :aria-label="labels.progress" />
     </Stack>
-    <List tag="ul" class="flex flex-col gap-2">
+    <List v-if="((rows?.length ?? 0) > 0)" tag="ul" class="flex flex-col gap-2">
       <ListItem v-for="row in rows" :key="row.id"
         :class="cn(
           'flex items-center justify-between gap-4',

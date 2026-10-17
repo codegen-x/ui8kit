@@ -25,8 +25,8 @@
     mediaSide="start"
     tone="default"
   />
-  <ProjectGrid id="tp-port-projects" title={d.ui.company.projects.title} lead={d.ui.company.projects.lead} projects={d.projects} labels={d.ui.company.projects} layout="bento" tone="default" density="default" />
-  <PhotoGallery id="tp-port-photos" title={d.ui.company.photos.title} lead={d.ui.company.photos.lead} photos={d.photos} labels={d.ui.company.photos} layout="masonry" captions="show" tone="muted" density="default" />
+  <ProjectGrid id="tp-port-projects" title={d.ui.company.projects.title} lead={d.ui.company.projects.lead} projects={d.projects} empty={d.ui.empty.projects} labels={d.ui.company.projects} layout="bento" tone="default" density="default" />
+  <PhotoGallery id="tp-port-photos" title={d.ui.company.photos.title} lead={d.ui.company.photos.lead} photos={d.photos} empty={d.ui.empty.photos} labels={d.ui.company.photos} layout="masonry" captions="show" tone="muted" density="default" />
   <CtaBand id="tp-port-cta" title={c.accent} text={c.note} actions={{ mode: "one", cta: c.cta }} layout="card" tone="default" proof="none" density="default" />
 </Block>
 <Footer {c} layout="row" />

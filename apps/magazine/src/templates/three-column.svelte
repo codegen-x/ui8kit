@@ -18,7 +18,7 @@
   <Block tag="main" id="tp-three-main" class="tp-col-main">
     <article>
       <PostHeader id="tp-three-article" post={d.posts[1]!} labels={d.ui.content.labels} layout="start" cover="hide" meta="short" tone="default" />
-      <ArticleBody id="tp-three-body" title={d.ui.vibe.article.title} sections={d.article.slice(0, 3)} tocTitle={d.ui.vibe.article.toc} layout="column" quotes="hide" tone="default" />
+      <ArticleBody id="tp-three-body" title={d.ui.vibe.article.title} sections={d.article.slice(0, 3)} empty={d.ui.empty.sections} tocTitle={d.ui.vibe.article.toc} layout="column" quotes="hide" tone="default" />
     </article>
   </Block>
   <aside class="tp-col-aside" aria-label={d.ui.dashboard.activity.title}>

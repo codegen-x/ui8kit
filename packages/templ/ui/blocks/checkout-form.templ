@@ -83,10 +83,14 @@ templ CheckoutForm(p CheckoutFormProps) {
 					}
 				}
 				@CheckoutStep(CheckoutStepProps{Number: "3", Title: uiutils.Get(vLabels, "slot"), Text: uiutils.Get(vLabels, "slotText"), Layout: vLayout}) {
-					@SlotGrid(SlotGridProps{Days: vDays, Name: uiutils.Tpl("{0}-slot", vId), Item: "plain"})
+					if uiutils.Gt(uiutils.Len(vDays), float64(0)) {
+						@SlotGrid(SlotGridProps{Days: vDays, Name: uiutils.Tpl("{0}-slot", vId), Item: "plain"})
+					}
 				}
 				@CheckoutStep(CheckoutStepProps{Number: "4", Title: uiutils.Get(vLabels, "payment"), Text: uiutils.Get(vLabels, "paymentText"), Layout: vLayout}) {
-					@PaymentOptions(PaymentOptionsProps{Payments: vPayments, Name: uiutils.Tpl("{0}-payment", vId), Checked: "payment-card"})
+					if uiutils.Gt(uiutils.Len(vPayments), float64(0)) {
+						@PaymentOptions(PaymentOptionsProps{Payments: vPayments, Name: uiutils.Tpl("{0}-payment", vId), Checked: "payment-card"})
+					}
 				}
 				@CheckoutSubmit(CheckoutSubmitProps{Id: vId, Consent: uiutils.Get(vLabels, "consent"), Submit: uiutils.Get(vLabels, "submit"), Legal: uiutils.Get(vLabels, "legal")})
 			}

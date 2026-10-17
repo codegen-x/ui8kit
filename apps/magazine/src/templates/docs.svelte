@@ -18,7 +18,7 @@
   <Block tag="main" id="tp-docs-main" class="tp-col-main">
     <PageTrail id="tp-docs-trail" title={c.title} lead={c.lead} badge={c.eyebrow} label={d.ui.marketing.pageTrail.label} crumbs={d.crumbs} extras={{ value: d.ui.marketing.pageTrail.value, caption: d.ui.marketing.pageTrail.caption, note: d.ui.marketing.pageTrail.note, icon: "book-open", facts: d.stats.slice(0, 3) }} aside="none" tone="default" />
     <article>
-      <ArticleBody id="tp-docs-body" title={d.ui.vibe.article.title} sections={d.article} tocTitle={d.ui.vibe.article.toc} layout="toc" quotes="show" tone="default" />
+      <ArticleBody id="tp-docs-body" title={d.ui.vibe.article.title} sections={d.article} empty={d.ui.empty.sections} tocTitle={d.ui.vibe.article.toc} layout="toc" quotes="show" tone="default" />
     </article>
   </Block>
   <aside class="tp-col-aside" aria-label={d.ui.vibe.sidebar.label}>
