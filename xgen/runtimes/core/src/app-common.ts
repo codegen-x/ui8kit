@@ -162,6 +162,7 @@ export function sharedPackage(dictionary: Dictionary, collections: CollectionFil
   const files: GeneratedFile[] = [
     { path: "src/content.ts", contents: withBanner(`// The content dictionary (xgen/content/ui/en.json): every text of every screen\nexport const ui = ${escapeCyrillic(JSON.stringify(dictionary, null, 2))} as const;\n`) },
     { path: "src/runtime/core.ts", contents: withBanner(readAsset("app", "core.ts")) },
+    { path: "src/runtime/fields.ts", contents: withBanner(readAsset("app", "fields.ts")) },
     { path: "src/runtime/theme.ts", contents: withBanner(readAsset("app", "theme.ts")) },
     { path: "src/runtime/inspect.ts", contents: withBanner(readAsset("app", "inspect.ts")) },
     { path: "src/runtime/visited.ts", contents: withBanner(readAsset("app", "visited.ts")) },
@@ -206,7 +207,7 @@ export function sharedPackage(dictionary: Dictionary, collections: CollectionFil
       `- \`data/<collection>\`: the fixtures the screens read`,
       `- \`nav/<Screen>\`: the menu of a screen (\`menu\` of its spec)`,
       `- \`screens\`: the registry of screens (key, id, skin) and the boot of a visit`,
-      `- \`runtime/core\`, \`runtime/theme\`: url state and light/dark, runtime neutral`,
+      `- \`runtime/core\`, \`runtime/theme\`: url state and light/dark, runtime neutral; \`runtime/fields\`: the Codex field maps by kind`,
       `- \`styles/skins.css\`: skins switched by \`data-skin\` on \`<html>\``,
       ``,
       `${screens.length} screens. A dictionary edit changes \`src/content.ts\` here and nothing in the hosts.`,

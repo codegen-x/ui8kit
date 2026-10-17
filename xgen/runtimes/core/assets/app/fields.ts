@@ -1,0 +1,50 @@
+// The central Codex field maps: one map per entry kind, from a v0.4 entry to the record a kit block reads
+// (`fromCodex(entries, CODEX_FIELDS.product)`). Every runtime and every hand-written app reads the same map, so a
+// block's data contract lives in one place (xgen/schema/codex/blocks.json lists which block reads which map).
+// Paths: top-level entry fields ("title", "excerpt") or "metadata.<field>.value" of a field declared for the kind in
+// xgen/schema/codex/manifest.json; a pipe names a formatter of readPath ("|date", "|ago").
+
+/** kind `product` -> Product (ProductGrid, ProductDetail, ProductCard) */
+export const productFields = {
+  id: "id",
+  name: "title",
+  summary: "metadata.summary.value",
+  price: "metadata.price.value",
+  currency: "metadata.currency.value",
+  rating: "metadata.rating.value",
+  reviews: "metadata.reviews.value",
+  badge: "metadata.badge.value",
+  category: "metadata.category.value",
+  inStock: "metadata.inStock.value",
+} as const;
+
+/** kind `post` -> Post (PostHeader, PostGrid, PostCard) */
+export const postFields = {
+  id: "id",
+  title: "title",
+  excerpt: "excerpt",
+  category: "metadata.category.value",
+  author: "metadata.author.value",
+  date: "metadata.date.value|date",
+  minutes: "metadata.minutes.value",
+  icon: "metadata.icon.value",
+} as const;
+
+/** kind `plan` -> Plan (PricingTiers, PricingCard) */
+export const planFields = {
+  id: "id",
+  name: "title",
+  tagline: "metadata.tagline.value",
+  price: "metadata.price.value",
+  currency: "metadata.currency.value",
+  seats: "metadata.seats.value",
+  storage: "metadata.storage.value",
+  highlighted: "metadata.highlighted.value",
+  status: "metadata.plan_status.value",
+  features: "metadata.features.value",
+  yearly: "metadata.yearly.value",
+} as const;
+
+/** the field maps by entry kind */
+export const CODEX_FIELDS = { product: productFields, post: postFields, plan: planFields } as const;
+export type CodexFieldKind = keyof typeof CODEX_FIELDS;

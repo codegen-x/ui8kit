@@ -5,6 +5,7 @@ import type {
   Review, Section, Skill, Spec, Stat, Step,
 } from "@ui8kit/svelte-ui";
 import { fromCodex } from "@ui8kit/app-shared/runtime/core";
+import { CODEX_FIELDS } from "@ui8kit/app-shared/runtime/fields";
 import { ui as kitUi } from "@ui8kit/app-shared/content";
 import { activity } from "@ui8kit/app-shared/data/activity";
 import { article } from "@ui8kit/app-shared/data/article";
@@ -37,12 +38,13 @@ import { details } from "@ui8kit/app-shared/data/details";
 
 export const ui = kitUi;
 
+// the maps of product, post and plan are the central ones (runtime/fields, source xgen/runtimes/core/assets/app/fields.ts)
 const f = {
+  posts: CODEX_FIELDS.post,
+  products: CODEX_FIELDS.product,
+  plan: CODEX_FIELDS.plan,
   nav: { id: "id", name: "title", icon: "metadata.icon.value" },
   metrics: { id: "id", label: "title", value: "metadata.value.value", icon: "metadata.icon.value", hint: "metadata.hint.value" },
-  posts: { id: "id", title: "title", excerpt: "excerpt", category: "metadata.category.value", author: "metadata.author.value", date: "metadata.date.value|date", minutes: "metadata.minutes.value", icon: "metadata.icon.value" },
-  products: { id: "id", name: "title", summary: "metadata.summary.value", price: "metadata.price.value", currency: "metadata.currency.value", rating: "metadata.rating.value", reviews: "metadata.reviews.value", badge: "metadata.badge.value", category: "metadata.category.value", inStock: "metadata.inStock.value" },
-  plan: { id: "id", name: "title", tagline: "metadata.tagline.value", price: "metadata.price.value", currency: "metadata.currency.value", seats: "metadata.seats.value", storage: "metadata.storage.value", highlighted: "metadata.highlighted.value", status: "metadata.plan_status.value", features: "metadata.features.value", yearly: "metadata.yearly.value" },
   projects: { id: "id", title: "title", category: "metadata.category.value", year: "metadata.year.value", summary: "metadata.summary.value", tags: "metadata.tags.value", featured: "metadata.featured.value", client: "metadata.client.value" },
   reviews: { id: "id", title: "title", author: "metadata.author.value", rating: "metadata.rating.value", text: "metadata.text.value", date: "metadata.date.value|date" },
   testimonials: { id: "id", author: "title", role: "metadata.role.value", company: "metadata.company.value", quote: "metadata.quote.value", rating: "metadata.rating.value", handle: "metadata.handle.value", time: "metadata.time.value|ago-short", mark: "metadata.mark.value" },

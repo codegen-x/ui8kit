@@ -1,0 +1,3325 @@
+{
+  "$schema": "./blocks.schema.json",
+  "version": "0.1.0",
+  "contract": "@ui8kit/contract v0.4 (codex manifest: ./manifest.json)",
+  "fieldMaps": "xgen/runtimes/core/assets/app/fields.ts",
+  "blocks": [
+    {
+      "id": "AboutCompany",
+      "surface": "kit-block",
+      "spec": "block.about",
+      "source": "xgen/specs/blocks/about.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "stats",
+          "collection": "stats",
+          "kind": "stat",
+          "record": "Stat"
+        },
+        {
+          "prop": "values",
+          "collection": "values",
+          "kind": "value",
+          "record": "Feature"
+        }
+      ]
+    },
+    {
+      "id": "AboutMe",
+      "surface": "kit-block",
+      "spec": "block.aboutme",
+      "source": "xgen/specs/blocks/aboutme.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "profilefacts",
+          "collection": "profilefacts",
+          "kind": "profilefact",
+          "record": "Spec"
+        },
+        {
+          "prop": "skills",
+          "collection": "skills",
+          "kind": "skill",
+          "record": "Skill"
+        }
+      ]
+    },
+    {
+      "id": "FeatureAccordion",
+      "surface": "kit-block",
+      "spec": "block.accordion",
+      "source": "xgen/specs/blocks/accordion.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "features",
+          "collection": "features",
+          "kind": "feature",
+          "record": "Feature"
+        }
+      ]
+    },
+    {
+      "id": "ActivityFeed",
+      "surface": "kit-block",
+      "spec": "block.activity",
+      "source": "xgen/specs/blocks/activity.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "activity",
+          "collection": "activity",
+          "kind": "event",
+          "record": "Event"
+        }
+      ]
+    },
+    {
+      "id": "AnnouncementBar",
+      "surface": "kit-block",
+      "spec": "block.announcement",
+      "source": "xgen/specs/blocks/announcement.json",
+      "status": "todo",
+      "data": []
+    },
+    {
+      "id": "ArticleBody",
+      "surface": "kit-block",
+      "spec": "block.article",
+      "source": "xgen/specs/blocks/article.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "article",
+          "collection": "article",
+          "kind": "section",
+          "record": "Section"
+        }
+      ]
+    },
+    {
+      "id": "AuthCard",
+      "surface": "kit-block",
+      "spec": "block.auth",
+      "source": "xgen/specs/blocks/auth.json",
+      "status": "todo",
+      "data": []
+    },
+    {
+      "id": "AuthLayout",
+      "surface": "kit-block",
+      "spec": "block.authpage",
+      "source": "xgen/specs/blocks/authpage.json",
+      "status": "todo",
+      "data": []
+    },
+    {
+      "id": "BeforeAfter",
+      "surface": "kit-block",
+      "spec": "block.beforeafter",
+      "source": "xgen/specs/blocks/beforeafter.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "beforeafter",
+          "collection": "beforeafter",
+          "kind": "point",
+          "record": "Contrast"
+        }
+      ]
+    },
+    {
+      "id": "BentoGrid",
+      "surface": "kit-block",
+      "spec": "block.bento",
+      "source": "xgen/specs/blocks/bento.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "bento",
+          "collection": "bento",
+          "kind": "tile",
+          "record": "Tile"
+        }
+      ]
+    },
+    {
+      "id": "BottomNav",
+      "surface": "kit-block",
+      "spec": "block.bottomnav",
+      "source": "xgen/specs/blocks/bottomnav.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "tabs",
+          "collection": "tabs",
+          "kind": "tab",
+          "record": "NavLink"
+        }
+      ]
+    },
+    {
+      "id": "CartList",
+      "surface": "kit-block",
+      "spec": "block.cart",
+      "source": "xgen/specs/blocks/cart.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "cart",
+          "collection": "cart",
+          "kind": "cartline",
+          "record": "CartLine"
+        }
+      ]
+    },
+    {
+      "id": "CartDrawer",
+      "surface": "kit-block",
+      "spec": "block.cartdrawer",
+      "source": "xgen/specs/blocks/cartdrawer.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "cart",
+          "collection": "cart",
+          "kind": "cartline",
+          "record": "CartLine"
+        },
+        {
+          "prop": "summary",
+          "collection": "summary",
+          "kind": "summaryrow",
+          "record": "SummaryRow"
+        }
+      ]
+    },
+    {
+      "id": "ShoppingCart",
+      "surface": "kit-block",
+      "spec": "block.cartpage",
+      "source": "xgen/specs/blocks/cartpage.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "cart",
+          "collection": "cart",
+          "kind": "cartline",
+          "record": "CartLine"
+        },
+        {
+          "prop": "summary",
+          "collection": "summary",
+          "kind": "summaryrow",
+          "record": "SummaryRow"
+        },
+        {
+          "prop": "promos",
+          "collection": "promos",
+          "kind": "promo",
+          "record": "Promo"
+        }
+      ]
+    },
+    {
+      "id": "CategoryNav",
+      "surface": "kit-block",
+      "spec": "block.categories",
+      "source": "xgen/specs/blocks/categories.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "categories",
+          "collection": "categories",
+          "kind": "category",
+          "record": "Category"
+        }
+      ]
+    },
+    {
+      "id": "SupportChannels",
+      "surface": "kit-block",
+      "spec": "block.channels",
+      "source": "xgen/specs/blocks/channels.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "channels",
+          "collection": "channels",
+          "kind": "channel",
+          "record": "Feature"
+        }
+      ]
+    },
+    {
+      "id": "ChartPanel",
+      "surface": "kit-block",
+      "spec": "block.chart",
+      "source": "xgen/specs/blocks/chart.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "series",
+          "collection": "series",
+          "kind": "point",
+          "record": "Point"
+        }
+      ]
+    },
+    {
+      "id": "Checklist",
+      "surface": "kit-block",
+      "spec": "block.checklist",
+      "source": "xgen/specs/blocks/checklist.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "checklist",
+          "collection": "checklist",
+          "kind": "task",
+          "record": "Task"
+        }
+      ]
+    },
+    {
+      "id": "CheckoutForm",
+      "surface": "kit-block",
+      "spec": "block.checkout",
+      "source": "xgen/specs/blocks/checkout.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "days",
+          "collection": "days",
+          "kind": "day",
+          "record": "Day"
+        },
+        {
+          "prop": "payments",
+          "collection": "payments",
+          "kind": "payment",
+          "record": "Payment"
+        },
+        {
+          "prop": "cart",
+          "collection": "cart",
+          "kind": "cartline",
+          "record": "CartLine"
+        },
+        {
+          "prop": "summary",
+          "collection": "summary",
+          "kind": "summaryrow",
+          "record": "SummaryRow"
+        },
+        {
+          "prop": "promos",
+          "collection": "promos",
+          "kind": "promo",
+          "record": "Promo"
+        }
+      ]
+    },
+    {
+      "id": "ComparisonTable",
+      "surface": "kit-block",
+      "spec": "block.compare",
+      "source": "xgen/specs/blocks/compare.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "compare",
+          "collection": "compare",
+          "kind": "row",
+          "record": "CompareRow"
+        },
+        {
+          "prop": "rivals",
+          "collection": "rivals",
+          "kind": "row",
+          "record": "CompareRow"
+        }
+      ]
+    },
+    {
+      "id": "ContactForm",
+      "surface": "kit-block",
+      "spec": "block.contact",
+      "source": "xgen/specs/blocks/contact.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "channels",
+          "collection": "channels",
+          "kind": "channel",
+          "record": "Feature"
+        }
+      ]
+    },
+    {
+      "id": "CookieBanner",
+      "surface": "kit-block",
+      "spec": "block.cookie",
+      "source": "xgen/specs/blocks/cookie.json",
+      "status": "todo",
+      "data": []
+    },
+    {
+      "id": "CreditPacks",
+      "surface": "kit-block",
+      "spec": "block.credits",
+      "source": "xgen/specs/blocks/credits.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "credits",
+          "collection": "credits",
+          "kind": "pack",
+          "record": "Pack"
+        }
+      ]
+    },
+    {
+      "id": "CtaBand",
+      "surface": "kit-block",
+      "spec": "block.cta",
+      "source": "xgen/specs/blocks/cta.json",
+      "status": "todo",
+      "data": []
+    },
+    {
+      "id": "CtaProof",
+      "surface": "kit-block",
+      "spec": "block.ctaproof",
+      "source": "xgen/specs/blocks/ctaproof.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "logos",
+          "collection": "logos",
+          "kind": "logo",
+          "record": "Logo"
+        },
+        {
+          "prop": "features",
+          "collection": "features",
+          "kind": "feature",
+          "record": "Feature"
+        },
+        {
+          "prop": "stats",
+          "collection": "stats",
+          "kind": "stat",
+          "record": "Stat"
+        },
+        {
+          "prop": "zones",
+          "collection": "zones",
+          "kind": "zone",
+          "record": "Zone"
+        }
+      ]
+    },
+    {
+      "id": "DashboardShell",
+      "surface": "kit-block",
+      "spec": "block.dashshell",
+      "source": "xgen/specs/blocks/dashshell.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "sidenav",
+          "collection": "sidenav",
+          "kind": "item",
+          "record": "NavLink"
+        },
+        {
+          "prop": "subnav",
+          "collection": "subnav",
+          "kind": "subitem",
+          "record": "NavLink"
+        },
+        {
+          "prop": "helplinks",
+          "collection": "helplinks",
+          "kind": "helplink",
+          "record": "NavLink"
+        }
+      ]
+    },
+    {
+      "id": "DeliveryInfo",
+      "surface": "kit-block",
+      "spec": "block.delivery",
+      "source": "xgen/specs/blocks/delivery.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "deliveryfacts",
+          "collection": "deliveryfacts",
+          "kind": "fact",
+          "record": "Feature"
+        },
+        {
+          "prop": "zones",
+          "collection": "zones",
+          "kind": "zone",
+          "record": "Zone"
+        }
+      ]
+    },
+    {
+      "id": "EmptyPanel",
+      "surface": "kit-block",
+      "spec": "block.empty",
+      "source": "xgen/specs/blocks/empty.json",
+      "status": "todo",
+      "data": []
+    },
+    {
+      "id": "ErrorPage",
+      "surface": "kit-block",
+      "spec": "block.errorpage",
+      "source": "xgen/specs/blocks/errorpage.json",
+      "status": "todo",
+      "data": []
+    },
+    {
+      "id": "FaqList",
+      "surface": "kit-block",
+      "spec": "block.faq",
+      "source": "xgen/specs/blocks/faq.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "faq",
+          "collection": "faq",
+          "kind": "faq",
+          "record": "Faq"
+        },
+        {
+          "prop": "faqtabs",
+          "collection": "faqtabs",
+          "kind": "tab",
+          "record": "FaqTab"
+        }
+      ]
+    },
+    {
+      "id": "FaqSplit",
+      "surface": "kit-block",
+      "spec": "block.faqsplit",
+      "source": "xgen/specs/blocks/faqsplit.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "questions",
+          "collection": "questions",
+          "kind": "question",
+          "record": "Question"
+        },
+        {
+          "prop": "channels",
+          "collection": "channels",
+          "kind": "channel",
+          "record": "Feature"
+        },
+        {
+          "prop": "faqtabs",
+          "collection": "faqtabs",
+          "kind": "tab",
+          "record": "FaqTab"
+        }
+      ]
+    },
+    {
+      "id": "FeatureGrid",
+      "surface": "kit-block",
+      "spec": "block.features",
+      "source": "xgen/specs/blocks/features.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "features",
+          "collection": "features",
+          "kind": "feature",
+          "record": "Feature"
+        }
+      ]
+    },
+    {
+      "id": "FeatureShowcase",
+      "surface": "kit-block",
+      "spec": "block.featureshowcase",
+      "source": "xgen/specs/blocks/featureshowcase.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "features",
+          "collection": "features",
+          "kind": "feature",
+          "record": "Feature"
+        },
+        {
+          "prop": "values",
+          "collection": "values",
+          "kind": "value",
+          "record": "Feature"
+        }
+      ]
+    },
+    {
+      "id": "FeatureSplit",
+      "surface": "kit-block",
+      "spec": "block.featuresplit",
+      "source": "xgen/specs/blocks/featuresplit.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "features",
+          "collection": "features",
+          "kind": "feature",
+          "record": "Feature"
+        },
+        {
+          "prop": "stats",
+          "collection": "stats",
+          "kind": "stat",
+          "record": "Stat"
+        }
+      ]
+    },
+    {
+      "id": "FeatureTabs",
+      "surface": "kit-block",
+      "spec": "block.featuretabs",
+      "source": "xgen/specs/blocks/featuretabs.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "features",
+          "collection": "features",
+          "kind": "feature",
+          "record": "Feature"
+        }
+      ]
+    },
+    {
+      "id": "SiteFooter",
+      "surface": "kit-block",
+      "spec": "block.footer",
+      "source": "xgen/specs/blocks/footer.json",
+      "status": "todo",
+      "data": []
+    },
+    {
+      "id": "FooterSplit",
+      "surface": "kit-block",
+      "spec": "block.footersplit",
+      "source": "xgen/specs/blocks/footersplit.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "sitemap",
+          "collection": "sitemap",
+          "kind": "group",
+          "record": "MegaGroup"
+        },
+        {
+          "prop": "stats",
+          "collection": "stats",
+          "kind": "stat",
+          "record": "Stat"
+        },
+        {
+          "prop": "features",
+          "collection": "features",
+          "kind": "feature",
+          "record": "Feature"
+        },
+        {
+          "prop": "contacts",
+          "collection": "contacts",
+          "kind": "contact",
+          "record": "Feature"
+        },
+        {
+          "prop": "community",
+          "collection": "community",
+          "kind": "channel",
+          "record": "Feature"
+        }
+      ]
+    },
+    {
+      "id": "SiteHeader",
+      "surface": "kit-block",
+      "spec": "block.header",
+      "source": "xgen/specs/blocks/header.json",
+      "status": "todo",
+      "data": []
+    },
+    {
+      "id": "HeroClassic",
+      "surface": "kit-block",
+      "spec": "block.hero",
+      "source": "xgen/specs/blocks/hero.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "terminal",
+          "collection": "terminal",
+          "kind": "line",
+          "record": "CodeLine"
+        },
+        {
+          "prop": "prompts",
+          "collection": "prompts",
+          "kind": "prompt",
+          "record": "Topic"
+        },
+        {
+          "prop": "navlinks",
+          "collection": "navlinks",
+          "kind": "link",
+          "record": "NavLink"
+        }
+      ]
+    },
+    {
+      "id": "HeroSplit",
+      "surface": "kit-block",
+      "spec": "block.herosplit",
+      "source": "xgen/specs/blocks/herosplit.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "stats",
+          "collection": "stats",
+          "kind": "stat",
+          "record": "Stat"
+        },
+        {
+          "prop": "features",
+          "collection": "features",
+          "kind": "feature",
+          "record": "Feature"
+        },
+        {
+          "prop": "testimonials",
+          "collection": "testimonials",
+          "kind": "testimonial",
+          "record": "Quote"
+        },
+        {
+          "prop": "tiers",
+          "collection": "tiers",
+          "kind": "plan",
+          "record": "Plan"
+        }
+      ]
+    },
+    {
+      "id": "IconWall",
+      "surface": "kit-block",
+      "spec": "block.iconwall",
+      "source": "xgen/specs/blocks/iconwall.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "features",
+          "collection": "features",
+          "kind": "feature",
+          "record": "Feature"
+        }
+      ]
+    },
+    {
+      "id": "JobBoard",
+      "surface": "kit-block",
+      "spec": "block.jobs",
+      "source": "xgen/specs/blocks/jobs.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "jobs",
+          "collection": "jobs",
+          "kind": "job",
+          "record": "Job"
+        },
+        {
+          "prop": "departments",
+          "collection": "departments",
+          "kind": "department",
+          "record": "Department"
+        }
+      ]
+    },
+    {
+      "id": "KanbanBoard",
+      "surface": "kit-block",
+      "spec": "block.kanban",
+      "source": "xgen/specs/blocks/kanban.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "lanes",
+          "collection": "lanes",
+          "kind": "lane",
+          "record": "Lane"
+        },
+        {
+          "prop": "cards",
+          "collection": "cards",
+          "kind": "card",
+          "record": "BoardCard"
+        }
+      ]
+    },
+    {
+      "id": "StoreLocations",
+      "surface": "kit-block",
+      "spec": "block.locations",
+      "source": "xgen/specs/blocks/locations.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "stores",
+          "collection": "stores",
+          "kind": "store",
+          "record": "Store"
+        }
+      ]
+    },
+    {
+      "id": "LogoCloud",
+      "surface": "kit-block",
+      "spec": "block.logos",
+      "source": "xgen/specs/blocks/logos.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "logos",
+          "collection": "logos",
+          "kind": "logo",
+          "record": "Logo"
+        }
+      ]
+    },
+    {
+      "id": "MediaList",
+      "surface": "kit-block",
+      "spec": "block.medialist",
+      "source": "xgen/specs/blocks/medialist.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "stats",
+          "collection": "stats",
+          "kind": "stat",
+          "record": "Stat"
+        },
+        {
+          "prop": "steps",
+          "collection": "steps",
+          "kind": "step",
+          "record": "Step"
+        },
+        {
+          "prop": "posts",
+          "collection": "posts",
+          "kind": "post",
+          "record": "Post"
+        },
+        {
+          "prop": "categories",
+          "collection": "categories",
+          "kind": "category",
+          "record": "Category"
+        },
+        {
+          "prop": "channels",
+          "collection": "channels",
+          "kind": "channel",
+          "record": "Feature"
+        },
+        {
+          "prop": "reviews",
+          "collection": "reviews",
+          "kind": "review",
+          "record": "Review"
+        }
+      ]
+    },
+    {
+      "id": "MegaMenu",
+      "surface": "kit-block",
+      "spec": "block.megamenu",
+      "source": "xgen/specs/blocks/megamenu.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "navlinks",
+          "collection": "navlinks",
+          "kind": "link",
+          "record": "NavLink"
+        },
+        {
+          "prop": "megagroups",
+          "collection": "megagroups",
+          "kind": "group",
+          "record": "MegaGroup"
+        }
+      ]
+    },
+    {
+      "id": "MetricRow",
+      "surface": "kit-block",
+      "spec": "block.metrics",
+      "source": "xgen/specs/blocks/metrics.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "metrics",
+          "collection": "metrics",
+          "kind": "metric",
+          "record": "Stat"
+        }
+      ]
+    },
+    {
+      "id": "NavBar",
+      "surface": "kit-block",
+      "spec": "block.navbar",
+      "source": "xgen/specs/blocks/navbar.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "navlinks",
+          "collection": "navlinks",
+          "kind": "link",
+          "record": "NavLink"
+        }
+      ]
+    },
+    {
+      "id": "NewsletterForm",
+      "surface": "kit-block",
+      "spec": "block.newsletter",
+      "source": "xgen/specs/blocks/newsletter.json",
+      "status": "todo",
+      "data": []
+    },
+    {
+      "id": "OrderTable",
+      "surface": "kit-block",
+      "spec": "block.orders",
+      "source": "xgen/specs/blocks/orders.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "orders",
+          "collection": "orders",
+          "kind": "order",
+          "record": "Order"
+        }
+      ]
+    },
+    {
+      "id": "DashboardOverview",
+      "surface": "kit-block",
+      "spec": "block.overview",
+      "source": "xgen/specs/blocks/overview.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "metrics",
+          "collection": "metrics",
+          "kind": "metric",
+          "record": "Stat"
+        },
+        {
+          "prop": "series",
+          "collection": "series",
+          "kind": "point",
+          "record": "Point"
+        },
+        {
+          "prop": "activity",
+          "collection": "activity",
+          "kind": "event",
+          "record": "Event"
+        }
+      ]
+    },
+    {
+      "id": "PageIntro",
+      "surface": "kit-block",
+      "spec": "block.pagehead",
+      "source": "xgen/specs/blocks/pagehead.json",
+      "status": "todo",
+      "data": []
+    },
+    {
+      "id": "PageTrail",
+      "surface": "kit-block",
+      "spec": "block.pagetrail",
+      "source": "xgen/specs/blocks/pagetrail.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "crumbs",
+          "collection": "crumbs",
+          "kind": "crumb",
+          "record": "NavLink"
+        },
+        {
+          "prop": "stats",
+          "collection": "stats",
+          "kind": "stat",
+          "record": "Stat"
+        }
+      ]
+    },
+    {
+      "id": "PhotoGallery",
+      "surface": "kit-block",
+      "spec": "block.photos",
+      "source": "xgen/specs/blocks/photos.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "photos",
+          "collection": "photos",
+          "kind": "photo",
+          "record": "Photo"
+        }
+      ]
+    },
+    {
+      "id": "PricingCard",
+      "surface": "kit-block",
+      "spec": "block.plan",
+      "source": "xgen/specs/blocks/plan.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "tiers",
+          "collection": "tiers",
+          "kind": "plan",
+          "record": "Plan"
+        }
+      ]
+    },
+    {
+      "id": "PostHeader",
+      "surface": "kit-block",
+      "spec": "block.postheader",
+      "source": "xgen/specs/blocks/postheader.json",
+      "status": "done",
+      "data": [
+        {
+          "prop": "post",
+          "collection": "posts",
+          "kind": "post",
+          "record": "Post",
+          "map": "post",
+          "list": false,
+          "required": [
+            "id",
+            "title",
+            "excerpt",
+            "metadata.author.value",
+            "metadata.date.value",
+            "metadata.category.value"
+          ],
+          "optional": [
+            "metadata.minutes.value",
+            "metadata.icon.value"
+          ]
+        }
+      ],
+      "settings": [
+        "id",
+        "level",
+        "layout",
+        "cover",
+        "meta",
+        "tone",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "labels",
+          "dictionary": "content.labels",
+          "keys": [
+            "minutes",
+            "by",
+            "read"
+          ]
+        }
+      ],
+      "emptyState": false
+    },
+    {
+      "id": "PostGrid",
+      "surface": "kit-block",
+      "spec": "block.posts",
+      "source": "xgen/specs/blocks/posts.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "posts",
+          "collection": "posts",
+          "kind": "post",
+          "record": "Post"
+        },
+        {
+          "prop": "topics",
+          "collection": "topics",
+          "kind": "topic",
+          "record": "PostTopic"
+        }
+      ]
+    },
+    {
+      "id": "PostShowcase",
+      "surface": "kit-block",
+      "spec": "block.postshowcase",
+      "source": "xgen/specs/blocks/postshowcase.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "posts",
+          "collection": "posts",
+          "kind": "post",
+          "record": "Post"
+        }
+      ]
+    },
+    {
+      "id": "PostSplit",
+      "surface": "kit-block",
+      "spec": "block.postsplit",
+      "source": "xgen/specs/blocks/postsplit.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "posts",
+          "collection": "posts",
+          "kind": "post",
+          "record": "Post"
+        },
+        {
+          "prop": "posttags",
+          "collection": "posttags",
+          "kind": "posttag",
+          "record": "NavLink"
+        },
+        {
+          "prop": "outline",
+          "collection": "outline",
+          "kind": "outlineitem",
+          "record": "NavLink"
+        }
+      ]
+    },
+    {
+      "id": "PricingTiers",
+      "surface": "kit-block",
+      "spec": "block.pricing",
+      "source": "xgen/specs/blocks/pricing.json",
+      "status": "done",
+      "data": [
+        {
+          "prop": "plans",
+          "collection": "tiers",
+          "kind": "plan",
+          "record": "Plan",
+          "map": "plan",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.tagline.value",
+            "metadata.price.value",
+            "metadata.currency.value",
+            "metadata.seats.value",
+            "metadata.storage.value",
+            "metadata.highlighted.value",
+            "metadata.features.value",
+            "metadata.yearly.value"
+          ],
+          "optional": [
+            "metadata.plan_status.value"
+          ]
+        }
+      ],
+      "settings": [
+        "id",
+        "title",
+        "layout",
+        "cols",
+        "emphasis",
+        "billing",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "labels",
+          "dictionary": "pricing",
+          "keys": [
+            "popular",
+            "perMonth",
+            "seats",
+            "storage",
+            "cta",
+            "free",
+            "perYear"
+          ]
+        },
+        {
+          "prop": "billingLabels",
+          "dictionary": "vibe.billing",
+          "keys": [
+            "label",
+            "monthly",
+            "annual",
+            "save"
+          ]
+        },
+        {
+          "prop": "title",
+          "dictionary": "site.pricing.tiersTitle",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
+      "id": "ProductDetail",
+      "surface": "kit-block",
+      "spec": "block.product",
+      "source": "xgen/specs/blocks/product.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "products",
+          "collection": "products",
+          "kind": "product",
+          "record": "Product"
+        }
+      ]
+    },
+    {
+      "id": "ProductInfo",
+      "surface": "kit-block",
+      "spec": "block.productinfo",
+      "source": "xgen/specs/blocks/productinfo.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "details",
+          "collection": "details",
+          "kind": "detail",
+          "record": "Detail"
+        },
+        {
+          "prop": "specs",
+          "collection": "specs",
+          "kind": "spec",
+          "record": "Spec"
+        }
+      ]
+    },
+    {
+      "id": "ProductGrid",
+      "surface": "kit-block",
+      "spec": "block.products",
+      "source": "xgen/specs/blocks/products.json",
+      "status": "done",
+      "data": [
+        {
+          "prop": "products",
+          "collection": "products",
+          "kind": "product",
+          "record": "Product",
+          "map": "product",
+          "list": true,
+          "required": [
+            "id",
+            "title",
+            "metadata.summary.value",
+            "metadata.price.value",
+            "metadata.currency.value",
+            "metadata.rating.value",
+            "metadata.reviews.value",
+            "metadata.category.value",
+            "metadata.inStock.value"
+          ],
+          "optional": [
+            "metadata.badge.value"
+          ]
+        }
+      ],
+      "settings": [
+        "id",
+        "title",
+        "layout",
+        "cols",
+        "ratio",
+        "rating",
+        "action",
+        "tone",
+        "density",
+        "landmarkLabel"
+      ],
+      "labels": [
+        {
+          "prop": "labels",
+          "dictionary": "commerce.productLabels",
+          "keys": [
+            "add",
+            "soldOut",
+            "reviews",
+            "ratingLabel"
+          ]
+        },
+        {
+          "prop": "badges",
+          "dictionary": "commerce.badges",
+          "keys": [
+            "new",
+            "sale"
+          ]
+        },
+        {
+          "prop": "title",
+          "dictionary": "commerce.products.title",
+          "keys": []
+        }
+      ],
+      "emptyState": false
+    },
+    {
+      "id": "ProfileForm",
+      "surface": "kit-block",
+      "spec": "block.profile",
+      "source": "xgen/specs/blocks/profile.json",
+      "status": "todo",
+      "data": []
+    },
+    {
+      "id": "ProjectGrid",
+      "surface": "kit-block",
+      "spec": "block.projects",
+      "source": "xgen/specs/blocks/projects.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "projects",
+          "collection": "projects",
+          "kind": "project",
+          "record": "Project"
+        }
+      ]
+    },
+    {
+      "id": "ProofBand",
+      "surface": "kit-block",
+      "spec": "block.proof",
+      "source": "xgen/specs/blocks/proof.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "logos",
+          "collection": "logos",
+          "kind": "logo",
+          "record": "Logo"
+        },
+        {
+          "prop": "stats",
+          "collection": "stats",
+          "kind": "stat",
+          "record": "Stat"
+        }
+      ]
+    },
+    {
+      "id": "QuoteSplit",
+      "surface": "kit-block",
+      "spec": "block.quotesplit",
+      "source": "xgen/specs/blocks/quotesplit.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "testimonials",
+          "collection": "testimonials",
+          "kind": "testimonial",
+          "record": "Quote"
+        },
+        {
+          "prop": "stats",
+          "collection": "stats",
+          "kind": "stat",
+          "record": "Stat"
+        },
+        {
+          "prop": "logos",
+          "collection": "logos",
+          "kind": "logo",
+          "record": "Logo"
+        }
+      ]
+    },
+    {
+      "id": "ReviewList",
+      "surface": "kit-block",
+      "spec": "block.reviews",
+      "source": "xgen/specs/blocks/reviews.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "reviews",
+          "collection": "reviews",
+          "kind": "review",
+          "record": "Review"
+        }
+      ]
+    },
+    {
+      "id": "AppShell",
+      "surface": "kit-block",
+      "spec": "block.shell",
+      "source": "xgen/specs/blocks/shell.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "sidenav",
+          "collection": "sidenav",
+          "kind": "item",
+          "record": "NavLink"
+        },
+        {
+          "prop": "metrics",
+          "collection": "metrics",
+          "kind": "metric",
+          "record": "Stat"
+        },
+        {
+          "prop": "series",
+          "collection": "series",
+          "kind": "point",
+          "record": "Point"
+        },
+        {
+          "prop": "activity",
+          "collection": "activity",
+          "kind": "event",
+          "record": "Event"
+        }
+      ]
+    },
+    {
+      "id": "SidebarNav",
+      "surface": "kit-block",
+      "spec": "block.sidenav",
+      "source": "xgen/specs/blocks/sidenav.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "sidenav",
+          "collection": "sidenav",
+          "kind": "item",
+          "record": "NavLink"
+        }
+      ]
+    },
+    {
+      "id": "SitemapFooter",
+      "surface": "kit-block",
+      "spec": "block.sitemap",
+      "source": "xgen/specs/blocks/sitemap.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "sitemap",
+          "collection": "sitemap",
+          "kind": "group",
+          "record": "MegaGroup"
+        }
+      ]
+    },
+    {
+      "id": "SkeletonLayout",
+      "surface": "kit-block",
+      "spec": "block.skeleton",
+      "source": "xgen/specs/blocks/skeleton.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "placeholders",
+          "collection": "placeholders",
+          "kind": "placeholder",
+          "record": "Line"
+        }
+      ]
+    },
+    {
+      "id": "SlotBoard",
+      "surface": "kit-block",
+      "spec": "block.slots",
+      "source": "xgen/specs/blocks/slots.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "days",
+          "collection": "days",
+          "kind": "day",
+          "record": "Day"
+        },
+        {
+          "prop": "zones",
+          "collection": "zones",
+          "kind": "zone",
+          "record": "Zone"
+        }
+      ]
+    },
+    {
+      "id": "StatsBand",
+      "surface": "kit-block",
+      "spec": "block.stats",
+      "source": "xgen/specs/blocks/stats.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "stats",
+          "collection": "stats",
+          "kind": "stat",
+          "record": "Stat"
+        }
+      ]
+    },
+    {
+      "id": "Stepper",
+      "surface": "kit-block",
+      "spec": "block.stepper",
+      "source": "xgen/specs/blocks/stepper.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "steps",
+          "collection": "steps",
+          "kind": "step",
+          "record": "Step"
+        }
+      ]
+    },
+    {
+      "id": "StepsList",
+      "surface": "kit-block",
+      "spec": "block.steps",
+      "source": "xgen/specs/blocks/steps.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "steps",
+          "collection": "steps",
+          "kind": "step",
+          "record": "Step"
+        }
+      ]
+    },
+    {
+      "id": "FeatureSticky",
+      "surface": "kit-block",
+      "spec": "block.sticky",
+      "source": "xgen/specs/blocks/sticky.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "features",
+          "collection": "features",
+          "kind": "feature",
+          "record": "Feature"
+        }
+      ]
+    },
+    {
+      "id": "StoreHero",
+      "surface": "kit-block",
+      "spec": "block.storehero",
+      "source": "xgen/specs/blocks/storehero.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "perks",
+          "collection": "perks",
+          "kind": "perk",
+          "record": "Feature"
+        }
+      ]
+    },
+    {
+      "id": "StoryTabs",
+      "surface": "kit-block",
+      "spec": "block.storytabs",
+      "source": "xgen/specs/blocks/storytabs.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "milestones",
+          "collection": "milestones",
+          "kind": "milestone",
+          "record": "Milestone"
+        }
+      ]
+    },
+    {
+      "id": "OrderSummary",
+      "surface": "kit-block",
+      "spec": "block.summary",
+      "source": "xgen/specs/blocks/summary.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "summary",
+          "collection": "summary",
+          "kind": "summaryrow",
+          "record": "SummaryRow"
+        }
+      ]
+    },
+    {
+      "id": "TeamGrid",
+      "surface": "kit-block",
+      "spec": "block.team",
+      "source": "xgen/specs/blocks/team.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "members",
+          "collection": "members",
+          "kind": "member",
+          "record": "Member"
+        }
+      ]
+    },
+    {
+      "id": "TemplateGrid",
+      "surface": "kit-block",
+      "spec": "block.templates",
+      "source": "xgen/specs/blocks/templates.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "templates",
+          "collection": "templates",
+          "kind": "template",
+          "record": "Template"
+        },
+        {
+          "prop": "templateFilters",
+          "collection": "prompts",
+          "kind": "prompt",
+          "record": "Filter"
+        }
+      ]
+    },
+    {
+      "id": "TestimonialGrid",
+      "surface": "kit-block",
+      "spec": "block.testimonials",
+      "source": "xgen/specs/blocks/testimonials.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "testimonials",
+          "collection": "testimonials",
+          "kind": "testimonial",
+          "record": "Quote"
+        }
+      ]
+    },
+    {
+      "id": "MilestoneTimeline",
+      "surface": "kit-block",
+      "spec": "block.timeline",
+      "source": "xgen/specs/blocks/timeline.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "milestones",
+          "collection": "milestones",
+          "kind": "milestone",
+          "record": "Milestone"
+        }
+      ]
+    },
+    {
+      "id": "TourCallout",
+      "surface": "kit-block",
+      "spec": "block.tour",
+      "source": "xgen/specs/blocks/tour.json",
+      "status": "todo",
+      "data": []
+    },
+    {
+      "id": "UsageCalculator",
+      "surface": "kit-block",
+      "spec": "block.usage",
+      "source": "xgen/specs/blocks/usage.json",
+      "status": "todo",
+      "data": []
+    },
+    {
+      "id": "UspStrip",
+      "surface": "kit-block",
+      "spec": "block.usp",
+      "source": "xgen/specs/blocks/usp.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "perks",
+          "collection": "perks",
+          "kind": "perk",
+          "record": "Feature"
+        }
+      ]
+    },
+    {
+      "id": "VideoModal",
+      "surface": "kit-block",
+      "spec": "block.videomodal",
+      "source": "xgen/specs/blocks/videomodal.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "chapters",
+          "collection": "chapters",
+          "kind": "chapter",
+          "record": "Chapter"
+        }
+      ]
+    },
+    {
+      "id": "VideoGrid",
+      "surface": "kit-block",
+      "spec": "block.videos",
+      "source": "xgen/specs/blocks/videos.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "testimonials",
+          "collection": "testimonials",
+          "kind": "testimonial",
+          "record": "Quote"
+        }
+      ]
+    },
+    {
+      "id": "SignupWizard",
+      "surface": "kit-block",
+      "spec": "block.wizard",
+      "source": "xgen/specs/blocks/wizard.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "wizard",
+          "collection": "wizard",
+          "kind": "step",
+          "record": "WizardStep"
+        }
+      ]
+    },
+    {
+      "id": "ZoneTable",
+      "surface": "kit-block",
+      "spec": "block.zones",
+      "source": "xgen/specs/blocks/zones.json",
+      "status": "todo",
+      "data": [
+        {
+          "prop": "zones",
+          "collection": "zones",
+          "kind": "zone",
+          "record": "Zone"
+        }
+      ]
+    },
+    {
+      "id": "template.blog",
+      "surface": "magazine-template",
+      "source": "apps/magazine/src/templates/blog.svelte",
+      "status": "todo",
+      "uses": [
+        "NewsletterForm",
+        "PageIntro",
+        "PostGrid"
+      ],
+      "collections": [
+        "posts",
+        "topics"
+      ]
+    },
+    {
+      "id": "template.classic",
+      "surface": "magazine-template",
+      "source": "apps/magazine/src/templates/classic.svelte",
+      "status": "todo",
+      "uses": [
+        "CtaBand",
+        "FeatureGrid",
+        "HeroClassic",
+        "StatsBand"
+      ],
+      "collections": [
+        "features",
+        "stats"
+      ]
+    },
+    {
+      "id": "template.dashboard",
+      "surface": "magazine-template",
+      "source": "apps/magazine/src/templates/dashboard.svelte",
+      "status": "todo",
+      "uses": [
+        "AppShell"
+      ],
+      "collections": [
+        "activity",
+        "metrics",
+        "series",
+        "sidenav"
+      ]
+    },
+    {
+      "id": "template.docs",
+      "surface": "magazine-template",
+      "source": "apps/magazine/src/templates/docs.svelte",
+      "status": "todo",
+      "uses": [
+        "ArticleBody",
+        "PageTrail",
+        "SidebarNav"
+      ],
+      "collections": [
+        "article",
+        "crumbs",
+        "helplinks",
+        "outline",
+        "stats"
+      ]
+    },
+    {
+      "id": "template.ecommerce",
+      "surface": "magazine-template",
+      "source": "apps/magazine/src/templates/ecommerce.svelte",
+      "status": "todo",
+      "uses": [
+        "CategoryNav",
+        "CtaBand",
+        "ProductDetail",
+        "ProductGrid",
+        "ReviewList"
+      ],
+      "collections": [
+        "categories",
+        "products",
+        "reviews"
+      ]
+    },
+    {
+      "id": "template.footer",
+      "surface": "magazine-part",
+      "source": "apps/magazine/src/templates/footer.svelte",
+      "status": "todo",
+      "uses": [
+        "SitemapFooter"
+      ],
+      "collections": [
+        "sitemap"
+      ]
+    },
+    {
+      "id": "template.header",
+      "surface": "magazine-part",
+      "source": "apps/magazine/src/templates/header.svelte",
+      "status": "todo",
+      "uses": [
+        "NavBar"
+      ],
+      "collections": []
+    },
+    {
+      "id": "template.portfolio",
+      "surface": "magazine-template",
+      "source": "apps/magazine/src/templates/portfolio.svelte",
+      "status": "todo",
+      "uses": [
+        "AboutMe",
+        "CtaBand",
+        "PhotoGallery",
+        "ProjectGrid"
+      ],
+      "collections": [
+        "facts",
+        "photos",
+        "projects",
+        "skills"
+      ]
+    },
+    {
+      "id": "template.saas",
+      "surface": "magazine-template",
+      "source": "apps/magazine/src/templates/saas.svelte",
+      "status": "todo",
+      "uses": [
+        "CtaBand",
+        "FaqList",
+        "FeatureGrid",
+        "HeroSplit",
+        "PricingTiers",
+        "StatsBand"
+      ],
+      "collections": [
+        "faq",
+        "features",
+        "stats",
+        "testimonials",
+        "tiers"
+      ]
+    },
+    {
+      "id": "template.sidebar",
+      "surface": "magazine-template",
+      "source": "apps/magazine/src/templates/sidebar.svelte",
+      "status": "todo",
+      "uses": [
+        "CategoryNav",
+        "FaqList",
+        "FeatureGrid",
+        "PageIntro"
+      ],
+      "collections": [
+        "categories",
+        "faq",
+        "features"
+      ]
+    },
+    {
+      "id": "template.three-column",
+      "surface": "magazine-template",
+      "source": "apps/magazine/src/templates/three-column.svelte",
+      "status": "todo",
+      "uses": [
+        "ArticleBody",
+        "PostHeader",
+        "SidebarNav"
+      ],
+      "collections": [
+        "activity",
+        "article",
+        "posts",
+        "sidenav"
+      ]
+    },
+    {
+      "id": "template.two-column",
+      "surface": "magazine-template",
+      "source": "apps/magazine/src/templates/two-column.svelte",
+      "status": "todo",
+      "uses": [
+        "ArticleBody",
+        "PostHeader"
+      ],
+      "collections": [
+        "article",
+        "posts",
+        "topics"
+      ]
+    },
+    {
+      "id": "screen.blocks",
+      "surface": "xgen-screen",
+      "source": "xgen/specs/screens/blocks.json",
+      "status": "todo",
+      "uses": []
+    },
+    {
+      "id": "screen.catalog",
+      "surface": "xgen-screen",
+      "source": "xgen/specs/screens/catalog.json",
+      "status": "todo",
+      "uses": [
+        "block.about",
+        "block.aboutme",
+        "block.accordion",
+        "block.activity",
+        "block.announcement",
+        "block.article",
+        "block.auth",
+        "block.authpage",
+        "block.beforeafter",
+        "block.bento",
+        "block.bottomnav",
+        "block.cart",
+        "block.cartdrawer",
+        "block.cartpage",
+        "block.categories",
+        "block.channels",
+        "block.chart",
+        "block.checklist",
+        "block.checkout",
+        "block.compare",
+        "block.contact",
+        "block.cookie",
+        "block.credits",
+        "block.cta",
+        "block.ctaproof",
+        "block.dashshell",
+        "block.delivery",
+        "block.empty",
+        "block.errorpage",
+        "block.faq",
+        "block.faqsplit",
+        "block.features",
+        "block.featureshowcase",
+        "block.featuresplit",
+        "block.featuretabs",
+        "block.footer",
+        "block.footersplit",
+        "block.header",
+        "block.hero",
+        "block.herosplit",
+        "block.iconwall",
+        "block.jobs",
+        "block.kanban",
+        "block.locations",
+        "block.logos",
+        "block.medialist",
+        "block.megamenu",
+        "block.metrics",
+        "block.navbar",
+        "block.newsletter",
+        "block.orders",
+        "block.overview",
+        "block.pagehead",
+        "block.pagetrail",
+        "block.photos",
+        "block.plan",
+        "block.postheader",
+        "block.posts",
+        "block.postshowcase",
+        "block.postsplit",
+        "block.pricing",
+        "block.product",
+        "block.productinfo",
+        "block.products",
+        "block.profile",
+        "block.projects",
+        "block.proof",
+        "block.quotesplit",
+        "block.reviews",
+        "block.shell",
+        "block.sidenav",
+        "block.sitemap",
+        "block.skeleton",
+        "block.slots",
+        "block.stats",
+        "block.stepper",
+        "block.steps",
+        "block.sticky",
+        "block.storehero",
+        "block.storytabs",
+        "block.summary",
+        "block.team",
+        "block.templates",
+        "block.testimonials",
+        "block.timeline",
+        "block.tour",
+        "block.usage",
+        "block.usp",
+        "block.videomodal",
+        "block.videos",
+        "block.wizard",
+        "block.zones"
+      ]
+    },
+    {
+      "id": "screen.plans",
+      "surface": "xgen-screen",
+      "source": "xgen/specs/screens/plans.json",
+      "status": "todo",
+      "uses": []
+    },
+    {
+      "id": "screen.site",
+      "surface": "xgen-screen",
+      "source": "xgen/specs/screens/site.json",
+      "status": "todo",
+      "uses": [
+        "block.cta",
+        "block.faq",
+        "block.features",
+        "block.footer",
+        "block.header",
+        "block.hero",
+        "block.pricing"
+      ]
+    },
+    {
+      "id": "screen.skins",
+      "surface": "xgen-screen",
+      "source": "xgen/specs/screens/skins.json",
+      "status": "todo",
+      "uses": []
+    },
+    {
+      "id": "screen.theme-account-portal",
+      "surface": "xgen-screen",
+      "source": "xgen/specs/screens/theme-account-portal.json",
+      "status": "todo",
+      "uses": [
+        "block.auth",
+        "block.authpage",
+        "block.navbar",
+        "block.pagehead",
+        "block.profile",
+        "block.sitemap",
+        "block.wizard"
+      ]
+    },
+    {
+      "id": "screen.theme-commerce-shop",
+      "surface": "xgen-screen",
+      "source": "xgen/specs/screens/theme-commerce-shop.json",
+      "status": "todo",
+      "uses": [
+        "block.cart",
+        "block.cartdrawer",
+        "block.cartpage",
+        "block.categories",
+        "block.checkout",
+        "block.cta",
+        "block.delivery",
+        "block.hero",
+        "block.locations",
+        "block.navbar",
+        "block.newsletter",
+        "block.orders",
+        "block.pagehead",
+        "block.pagetrail",
+        "block.product",
+        "block.productinfo",
+        "block.products",
+        "block.reviews",
+        "block.sitemap",
+        "block.slots",
+        "block.storehero",
+        "block.summary",
+        "block.usp",
+        "block.zones"
+      ]
+    },
+    {
+      "id": "screen.theme-content-blog",
+      "surface": "xgen-screen",
+      "source": "xgen/specs/screens/theme-content-blog.json",
+      "status": "todo",
+      "uses": [
+        "block.article",
+        "block.navbar",
+        "block.newsletter",
+        "block.pagehead",
+        "block.postheader",
+        "block.posts",
+        "block.postshowcase",
+        "block.postsplit",
+        "block.sitemap"
+      ]
+    },
+    {
+      "id": "screen.theme-dashboard-console",
+      "surface": "xgen-screen",
+      "source": "xgen/specs/screens/theme-dashboard-console.json",
+      "status": "todo",
+      "uses": [
+        "block.activity",
+        "block.bottomnav",
+        "block.chart",
+        "block.dashshell",
+        "block.empty",
+        "block.kanban",
+        "block.metrics",
+        "block.navbar",
+        "block.overview",
+        "block.pagehead",
+        "block.shell",
+        "block.sidenav",
+        "block.sitemap",
+        "block.skeleton"
+      ]
+    },
+    {
+      "id": "screen.theme-marketing-landing",
+      "surface": "xgen-screen",
+      "source": "xgen/specs/screens/theme-marketing-landing.json",
+      "status": "todo",
+      "uses": [
+        "block.about",
+        "block.aboutme",
+        "block.bento",
+        "block.cta",
+        "block.ctaproof",
+        "block.faq",
+        "block.faqsplit",
+        "block.features",
+        "block.hero",
+        "block.herosplit",
+        "block.iconwall",
+        "block.jobs",
+        "block.logos",
+        "block.navbar",
+        "block.pagehead",
+        "block.photos",
+        "block.projects",
+        "block.proof",
+        "block.quotesplit",
+        "block.sitemap",
+        "block.stats",
+        "block.steps",
+        "block.storytabs",
+        "block.team",
+        "block.templates",
+        "block.testimonials",
+        "block.timeline",
+        "block.videos"
+      ]
+    },
+    {
+      "id": "screen.theme-marketing-pricing",
+      "surface": "xgen-screen",
+      "source": "xgen/specs/screens/theme-marketing-pricing.json",
+      "status": "todo",
+      "uses": [
+        "block.compare",
+        "block.credits",
+        "block.cta",
+        "block.faq",
+        "block.hero",
+        "block.logos",
+        "block.navbar",
+        "block.pagehead",
+        "block.plan",
+        "block.pricing",
+        "block.sitemap",
+        "block.testimonials",
+        "block.usage"
+      ]
+    },
+    {
+      "id": "screen.theme-marketing-product",
+      "surface": "xgen-screen",
+      "source": "xgen/specs/screens/theme-marketing-product.json",
+      "status": "todo",
+      "uses": [
+        "block.accordion",
+        "block.beforeafter",
+        "block.bento",
+        "block.cta",
+        "block.features",
+        "block.featureshowcase",
+        "block.featuresplit",
+        "block.featuretabs",
+        "block.footer",
+        "block.header",
+        "block.hero",
+        "block.iconwall",
+        "block.megamenu",
+        "block.navbar",
+        "block.pagehead",
+        "block.sitemap",
+        "block.steps",
+        "block.sticky",
+        "block.videos"
+      ]
+    },
+    {
+      "id": "screen.theme-onboarding-flow",
+      "surface": "xgen-screen",
+      "source": "xgen/specs/screens/theme-onboarding-flow.json",
+      "status": "todo",
+      "uses": [
+        "block.checklist",
+        "block.empty",
+        "block.navbar",
+        "block.pagehead",
+        "block.sitemap",
+        "block.stepper",
+        "block.tour",
+        "block.videomodal"
+      ]
+    },
+    {
+      "id": "screen.theme-promo-campaign",
+      "surface": "xgen-screen",
+      "source": "xgen/specs/screens/theme-promo-campaign.json",
+      "status": "todo",
+      "uses": [
+        "block.announcement",
+        "block.cookie",
+        "block.cta",
+        "block.footersplit",
+        "block.hero",
+        "block.logos",
+        "block.navbar",
+        "block.newsletter",
+        "block.pagehead"
+      ]
+    },
+    {
+      "id": "screen.theme-support-center",
+      "surface": "xgen-screen",
+      "source": "xgen/specs/screens/theme-support-center.json",
+      "status": "todo",
+      "uses": [
+        "block.channels",
+        "block.contact",
+        "block.errorpage",
+        "block.faq",
+        "block.medialist",
+        "block.navbar",
+        "block.pagehead",
+        "block.sitemap"
+      ]
+    },
+    {
+      "id": "taste.t001-poster-mesh",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t001-poster-mesh.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t002-split-glass",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t002-split-glass.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t003-fullbleed-grain",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t003-fullbleed-grain.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t004-airy-dots",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t004-airy-dots.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t005-stats-flat",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t005-stats-flat.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t006-ribbon-rings",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t006-ribbon-rings.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t007-editorial-duotone",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t007-editorial-duotone.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t008-frame-conic",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t008-frame-conic.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t009-prompt-mesh",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t009-prompt-mesh.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t010-dense-geometric",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t010-dense-geometric.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t011-split-stripes",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t011-split-stripes.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t012-poster-flat",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t012-poster-flat.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t013-frame-glass",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t013-frame-glass.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t014-editorial-grain",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t014-editorial-grain.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t015-airy-mesh",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t015-airy-mesh.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t016-stats-rings",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t016-stats-rings.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t017-ribbon-flat",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t017-ribbon-flat.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t018-prompt-conic",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t018-prompt-conic.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t019-dense-duotone",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t019-dense-duotone.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t020-fullbleed-stripes",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t020-fullbleed-stripes.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t021-split-dots",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t021-split-dots.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t022-poster-geometric",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t022-poster-geometric.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t023-fullbleed-mesh",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t023-fullbleed-mesh.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t024-airy-geometric",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t024-airy-geometric.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t025-stats-mesh",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t025-stats-mesh.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t026-ribbon-glass",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t026-ribbon-glass.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t027-editorial-flat",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t027-editorial-flat.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t028-frame-dots",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t028-frame-dots.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t029-prompt-grain",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t029-prompt-grain.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t030-dense-stripes",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t030-dense-stripes.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t031-split-conic",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t031-split-conic.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t032-poster-duotone",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t032-poster-duotone.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t033-fullbleed-rings",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t033-fullbleed-rings.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t034-airy-stripes",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t034-airy-stripes.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t035-stats-geometric",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t035-stats-geometric.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t036-ribbon-dots",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t036-ribbon-dots.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t037-editorial-mesh",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t037-editorial-mesh.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t038-frame-flat",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t038-frame-flat.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t039-prompt-glass",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t039-prompt-glass.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t040-dense-mesh",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t040-dense-mesh.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t041-poster-rings",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t041-poster-rings.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t042-split-grain",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t042-split-grain.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t043-fullbleed-duotone",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t043-fullbleed-duotone.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t044-dense-conic",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t044-dense-conic.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t045-airy-glass",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t045-airy-glass.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t046-stats-duotone",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t046-stats-duotone.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t047-ribbon-conic",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t047-ribbon-conic.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t048-editorial-rings",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t048-editorial-rings.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t049-frame-grain",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t049-frame-grain.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t050-prompt-dots",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t050-prompt-dots.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t051-poster-stripes",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t051-poster-stripes.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t052-split-rings",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t052-split-rings.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t053-fullbleed-geometric",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t053-fullbleed-geometric.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t054-dense-glass",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t054-dense-glass.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t055-airy-conic",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t055-airy-conic.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t056-stats-grain",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t056-stats-grain.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t057-ribbon-duotone",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t057-ribbon-duotone.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t058-editorial-dots",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t058-editorial-dots.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t059-frame-rings",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t059-frame-rings.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t060-prompt-flat",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t060-prompt-flat.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t061-poster-grain",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t061-poster-grain.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t062-split-duotone",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t062-split-duotone.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t063-fullbleed-conic",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t063-fullbleed-conic.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t064-dense-rings",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t064-dense-rings.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t065-airy-duotone",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t065-airy-duotone.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t066-stats-glass",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t066-stats-glass.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t067-ribbon-stripes",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t067-ribbon-stripes.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t068-editorial-glass",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t068-editorial-glass.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t069-frame-duotone",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t069-frame-duotone.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t070-prompt-geometric",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t070-prompt-geometric.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t071-poster-dots",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t071-poster-dots.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t072-split-geometric",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t072-split-geometric.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t073-fullbleed-flat",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t073-fullbleed-flat.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t074-dense-grain",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t074-dense-grain.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t075-airy-rings",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t075-airy-rings.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t076-stats-conic",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t076-stats-conic.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t077-ribbon-grain",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t077-ribbon-grain.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t078-editorial-conic",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t078-editorial-conic.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t079-frame-stripes",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t079-frame-stripes.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t080-prompt-rings",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t080-prompt-rings.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t081-poster-conic",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t081-poster-conic.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t082-split-flat",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t082-split-flat.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t083-fullbleed-glass",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t083-fullbleed-glass.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t084-dense-dots",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t084-dense-dots.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t085-airy-grain",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t085-airy-grain.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t086-stats-stripes",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t086-stats-stripes.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t087-ribbon-geometric",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t087-ribbon-geometric.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t088-editorial-stripes",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t088-editorial-stripes.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t089-frame-mesh",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t089-frame-mesh.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t090-prompt-duotone",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t090-prompt-duotone.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t091-poster-glass",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t091-poster-glass.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t092-split-mesh",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t092-split-mesh.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t093-fullbleed-dots",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t093-fullbleed-dots.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t094-dense-flat",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t094-dense-flat.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t095-airy-flat",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t095-airy-flat.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t096-stats-dots",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t096-stats-dots.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t097-ribbon-mesh",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t097-ribbon-mesh.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t098-editorial-geometric",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t098-editorial-geometric.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t099-frame-geometric",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t099-frame-geometric.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t100-prompt-stripes",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t100-prompt-stripes.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t101-poster-mesh",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t101-poster-mesh.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t102-poster-grain",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t102-poster-grain.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t103-split-glass",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t103-split-glass.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t104-split-dots",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t104-split-dots.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t105-fullbleed-duotone",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t105-fullbleed-duotone.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t106-fullbleed-stripes",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t106-fullbleed-stripes.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t107-dense-geometric",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t107-dense-geometric.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t108-dense-conic",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t108-dense-conic.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t109-airy-rings",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t109-airy-rings.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t110-airy-dots",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t110-airy-dots.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t111-stats-flat",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t111-stats-flat.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t112-stats-glass",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t112-stats-glass.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t113-ribbon-rings",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t113-ribbon-rings.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t114-ribbon-flat",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t114-ribbon-flat.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t115-editorial-duotone",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t115-editorial-duotone.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t116-editorial-grain",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t116-editorial-grain.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t117-frame-conic",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t117-frame-conic.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t118-frame-mesh",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t118-frame-mesh.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t119-prompt-geometric",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t119-prompt-geometric.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t120-prompt-stripes",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t120-prompt-stripes.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t121-frame-flat",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t121-frame-flat.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t122-dense-duotone",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t122-dense-duotone.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t123-ribbon-geometric",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t123-ribbon-geometric.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t124-split-mesh",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t124-split-mesh.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t125-stats-geometric",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t125-stats-geometric.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t126-frame-rings",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t126-frame-rings.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t127-split-rings",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t127-split-rings.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t128-poster-conic",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t128-poster-conic.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t129-stats-dots",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t129-stats-dots.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t130-fullbleed-mesh",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t130-fullbleed-mesh.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t131-ribbon-flat",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t131-ribbon-flat.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t132-editorial-grain",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t132-editorial-grain.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t133-fullbleed-glass",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t133-fullbleed-glass.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t134-editorial-duotone",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t134-editorial-duotone.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t135-stats-grain",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t135-stats-grain.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t136-poster-duotone",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t136-poster-duotone.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t137-dense-geometric",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t137-dense-geometric.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t138-ribbon-stripes",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t138-ribbon-stripes.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t139-fullbleed-duotone",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t139-fullbleed-duotone.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t140-dense-flat",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t140-dense-flat.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t141-frame-duotone",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t141-frame-duotone.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t142-editorial-flat",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t142-editorial-flat.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t143-poster-stripes",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t143-poster-stripes.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t144-dense-conic",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t144-dense-conic.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t145-ribbon-dots",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t145-ribbon-dots.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    },
+    {
+      "id": "taste.t146-dense-stripes",
+      "surface": "taste-screen",
+      "source": "packages/taste-screens/src/screens/t146-dense-stripes.svelte",
+      "status": "todo",
+      "note": "text from a copy deck (@ui8kit/taste-data/copy Deck), not Codex entries"
+    }
+  ]
+}

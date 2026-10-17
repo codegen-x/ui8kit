@@ -3,7 +3,7 @@
   "target": "packages/shared/app",
   "files": {
     "package.json": "0a355e880ed1e3cf878f342eb972d288a7c3c20684844db37a183b6a0a40a3cb",
-    "README.md": "13665471d85bb3757caa34cd1fba1bb9dcd5a303f1e9b255b0f0d68d1dddc410",
+    "README.md": "510356ae00b064d15fa6135c9dd89b60148f41559f74757677d11a37db96f963",
     "src/content.ts": "5d337325ff3b68ec1aa265301cc852d0f751b2db4442bd0c18abd34666730631",
     "src/data/activity.ts": "e21d94980cc8dcdc8f9438f4524e175bca4666af639c7cf8494c8fb4964af20a",
     "src/data/article.ts": "2bb2aa1ad5ad729da8de505e0f64372fb2e5ba2d6d37d7387a4ffdccce8a108d",
@@ -84,6 +84,7 @@
     "src/nav/ThemePromoCampaignScreen.ts": "70d5a7fb1670e3aa2559fd130562994431436cd7fc763aec6065b8935cd2fbc5",
     "src/nav/ThemeSupportCenterScreen.ts": "01310ebbcfcadf71f46906d627ba6dc67b9762f55aa01190d380b49b27a236df",
     "src/runtime/core.ts": "7d5bcb93f958d829ff64a6576164bc5367b3dff68c39e3bffefb9ee79ee07a6e",
+    "src/runtime/fields.ts": "b28f9c930250bd1b7c34f59fe15e962f20d96305493561f1eee962acc6141e16",
     "src/runtime/inspect.ts": "81f3b5ee49bca61492565cc4bd0ec3fad464703b52d001d2530ed6d0a42ef9f9",
     "src/runtime/skin-fonts.ts": "5b7e3c8fa9c98740265c91f0c143800dcff74ec4893bb3ca0e867894867015e2",
     "src/runtime/skins.ts": "c4a3bb9190a0c9efa755719514c9405de1277baa4385943738256bb5db8fffaf",
