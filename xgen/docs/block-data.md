@@ -26,8 +26,9 @@ Lookups: generated `@ui8kit/app-shared/runtime/codex` (`CODEX`: media, users, ta
 | magazine templates (10 + header/footer) | `apps/magazine/src/templates/*.svelte`, Templates tab `#/style/<key>/templates` | `data.ts` (fromCodex over `@ui8kit/app-shared/data/*`) + the copy deck `c` | 25 collections | 10/10 + 2/2 done (step 16-17) |
 | taste screens (146) | `packages/taste-screens/src/screens` (style detail preview; panorama excluded) | `Deck` from `@ui8kit/taste-data/content/copy.json`, generated from the deck entries | deck, deck_* | 146/146 done (steps 21-24) |
 | fixtures (317 entries, 2 taxonomies / 10 terms) | `xgen/fixtures/*.json`, `xgen/fixtures/taxonomies/*.json` -> `packages/shared/app/src/data` | v0.4 entries, taxonomy bundles | 62 (`media`, `user`) | valid (0 errors; term refs checked) |
-| taste-data content | `copy.json` (generated, step 21), `reference-*.json` | deck entries / own shapes | deck_* | copy.json done; reference-* open (section 8) |
+| taste-data content | `copy.json` (generated, step 21), `reference-*.json` | deck entries / own shapes | deck_* | copy.json done; reference-* excluded (step 26) |
 | panorama, illustrations | `packages/panorama` | - | - | excluded |
+| reference renderer (research) | `apps/magazine/src/reference`, `packages/taste-data/content/reference-copy.v0.1.json`, `reference-catalog.v0.1.json`, `packages/taste-data/scripts/reference-*` | own shapes | - | excluded (user decision, step 26) |
 
 ## 2. The 15 magazine blocks
 
@@ -267,10 +268,9 @@ replace the string arrays `links`).
 
 ## 8. Open questions (decided for now, review later)
 
-- `packages/taste-data/content/reference-copy.v0.1.json` and `reference-catalog.v0.1.json` feed the separate research
-  renderer (`apps/magazine/src/reference`, the capture scripts in `packages/taste-data/scripts`), not the kit, the magazine
-  templates or the taste screens. They keep their own shapes for now; open: move the reference deck into the deck entries
-  (one more `deck` with a `purpose: reference` metadata) or mark the research renderer as an exception like panorama.
+- (resolved, step 26: an exception, user decision) The research renderer (`apps/magazine/src/reference`) with
+  `reference-copy.v0.1.json`, `reference-catalog.v0.1.json` and the capture scripts stays outside the contract, like panorama and
+  illustrations: own shapes, not Codex entries, not in blocks.json; the kit, magazine templates and taste screens never read them.
 
 1. Docs template table of contents: in-page anchors (`#tp-docs-body-section-*`) stay links; they address the page itself, not an app route.
 2. Gallery samples (`gallery/blocks-*.ts`) keep `"#/pricing"`-style hrefs as screen data the app hands over (not fixtures).
