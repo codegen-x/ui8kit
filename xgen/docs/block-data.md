@@ -275,7 +275,7 @@ replace the string arrays `links`).
 1. Docs template table of contents: in-page anchors (`#tp-docs-body-section-*`) stay links; they address the page itself, not an app route.
 2. Gallery samples (`gallery/blocks-*.ts`) keep `"#/pricing"`-style hrefs as screen data the app hands over (not fixtures).
 3. CTAs with no address source (FAQ arrow link, auth "forgot", composer buttons) became link-style buttons (`<button type="button">`).
-4. CategoryNav keeps the chip classes `px-3 py-1.5` (a half step; inside a control, lint:px does not block it); to revisit with the control sizes.
+4. (resolved, step 27: the chip is `h-8 px-3`, 32 px like Button sm, no half step) CategoryNav kept the chip classes `px-3 py-1.5` (a half step; inside a control, lint:px does not block it); to revisit with the control sizes.
 5. The magazine header shows the fixture menu labels (`navlinks`) instead of the deck's nav words; the deck words will go with #10.
 6. Menu items' `url` in the core Menu is `"/" + slug` (a neutral path); the real address is still the app's route.
 7. (resolved, step 20: JobBoard done, salary kept as text with an empty state) JobBoard stayed todo: salaries are text ("$120k to $150k", "$60 an hour"); they need min/max minor units, currency and a period

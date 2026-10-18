@@ -28,7 +28,7 @@
     "blocks/cart-list.html.twig": "5fc800b0ad6f1ebbd9482e8c1e77a0acdbae15c22ad936aa1da50e3dea5c7e82",
     "blocks/cart-summary-card.html.twig": "6074c1c48e79c2bde65c5088a8d70c1f93a1c0359799af0803204149a838204f",
     "blocks/cart-table.html.twig": "3c447e8d964a5fb44934a094a03f9296cb55d0ca62c66f95fc47132ba5e732bd",
-    "blocks/category-nav.html.twig": "5e55c70a0a44af5baa3039df8a32bac9563b3c380339c1302174b90c5f6f9267",
+    "blocks/category-nav.html.twig": "a322fe6d99322ac1466a4e0e2c459da58b25169f8d54756510b487bb3e670672",
     "blocks/chart-panel.html.twig": "3ef90240675fc96b85eae6c46ddc1f0bf694a70d8594006816cfe9e29ebc5075",
     "blocks/checklist.html.twig": "e5f9af6530beff76be6ed72c1cfea1fdf837b0767eec1facc7d36c0a7b0e6f23",
     "blocks/checkout-form.html.twig": "8932405f43aa2c016d0bd79cbcdcf4c78e1ad8ace78a999d3edccf088684db53",

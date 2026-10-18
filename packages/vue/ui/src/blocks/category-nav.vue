@@ -51,7 +51,7 @@ const {
 const chipLike = computed(() => ((layout as string) === "chips") || ((layout as string) === "toolbar"));
 const tiles = computed(() => (layout as string) === "tiles");
 const linkShape = computed(() =>
-  chipLike.value ? "inline-flex items-center gap-2 rounded px-3 py-1.5 inset-ring inset-ring-border"
+  chipLike.value ? "inline-flex h-8 items-center gap-2 rounded px-3 inset-ring inset-ring-border"
   : (layout as string) === "bar" ? "inline-flex items-center gap-2 -mb-px border-b px-1 py-2"
   : tiles.value ? "flex h-full flex-col items-start gap-4 rounded p-4 inset-ring inset-ring-border"
   : "inline-flex w-full items-center gap-2 rounded px-3 py-2"

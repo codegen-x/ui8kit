@@ -37,7 +37,7 @@ const categoryNav = spec(`${O}category-nav`, "CategoryNav", "Navigation between 
   derived: [
     { name: "chipLike", value: or(eq(ref("layout"), "chips"), eq(ref("layout"), "toolbar")) },
     { name: "tiles", value: eq(ref("layout"), "tiles") },
-    { name: "linkShape", value: cond(ref("chipLike"), "inline-flex items-center gap-2 rounded px-3 py-1.5 inset-ring inset-ring-border", cond(eq(ref("layout"), "bar"), "inline-flex items-center gap-2 -mb-px border-b px-1 py-2", cond(ref("tiles"), "flex h-full flex-col items-start gap-4 rounded p-4 inset-ring inset-ring-border", "inline-flex w-full items-center gap-2 rounded px-3 py-2"))) },
+    { name: "linkShape", value: cond(ref("chipLike"), "inline-flex h-8 items-center gap-2 rounded px-3 inset-ring inset-ring-border", cond(eq(ref("layout"), "bar"), "inline-flex items-center gap-2 -mb-px border-b px-1 py-2", cond(ref("tiles"), "flex h-full flex-col items-start gap-4 rounded p-4 inset-ring inset-ring-border", "inline-flex w-full items-center gap-2 rounded px-3 py-2"))) },
     { name: "currentLook", value: cond(ref("chipLike"), "bg-primary text-primary-foreground", cond(eq(ref("layout"), "bar"), "border-foreground font-semibold", cond(ref("tiles"), "inset-ring-foreground font-semibold", "bg-muted font-semibold"))) },
     { name: "otherLook", value: cond(eq(ref("layout"), "bar"), "border-transparent", "") },
     { name: "listShape", value: cond(eq(ref("layout"), "sidebar"), "flex flex-col gap-2", cond(eq(ref("layout"), "bar"), "flex flex-wrap gap-2 gap-x-4 border-b border-border", cond(ref("tiles"), "grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6", "flex flex-wrap gap-2"))) },

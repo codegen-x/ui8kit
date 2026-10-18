@@ -51,7 +51,7 @@
   const chipLike = $derived(((layout as string) === "chips") || ((layout as string) === "toolbar"));
   const tiles = $derived((layout as string) === "tiles");
   const linkShape = $derived(
-    chipLike ? "inline-flex items-center gap-2 rounded px-3 py-1.5 inset-ring inset-ring-border"
+    chipLike ? "inline-flex h-8 items-center gap-2 rounded px-3 inset-ring inset-ring-border"
     : (layout as string) === "bar" ? "inline-flex items-center gap-2 -mb-px border-b px-1 py-2"
     : tiles ? "flex h-full flex-col items-start gap-4 rounded p-4 inset-ring inset-ring-border"
     : "inline-flex w-full items-center gap-2 rounded px-3 py-2"

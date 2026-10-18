@@ -28,7 +28,7 @@
     "blocks/cart-list.html.j2": "5d34934a02c955abea031cd4a17f2e3da3c942f06a65ea0dd6d5abb89f26333b",
     "blocks/cart-summary-card.html.j2": "674311c5da2b1e11cd9a403aeddc3b8021dfbc0252e1b95dfb194686c88cf172",
     "blocks/cart-table.html.j2": "d4daa1ad9627cd71c91f93a3550387c70c9a05db5cb5e3eece9ffe3d047d59be",
-    "blocks/category-nav.html.j2": "cbca027d12fcda0400f4232998bc97b3bb2056ba9170431ab4142085454c6ee5",
+    "blocks/category-nav.html.j2": "916c6f772f2edfce67a08471ef9593a6fbc5fa83b63e9de0df94545ffbec25b5",
     "blocks/chart-panel.html.j2": "89116bcfdd48b65913773f0da9a48b33fe095df7e64035ac23df94ce9a9dde05",
     "blocks/checklist.html.j2": "0b70ba3fc636ed17b4b61331715348367b151d3dffd6304df0284bb54e4dbf0c",
     "blocks/checkout-form.html.j2": "8408df0d936202b5ce58f0a7bd5dd8b1a4826439e73e2a342f1cdd51f4c6fe4c",

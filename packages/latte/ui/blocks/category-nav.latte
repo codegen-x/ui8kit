@@ -13,7 +13,7 @@
 {var $v_landmarkLabel = ($p['landmarkLabel'] ?? null)}
 {var $v_chipLike = ui_or([ui_eq($v_layout, 'chips'), ui_eq($v_layout, 'toolbar')])}
 {var $v_tiles = ui_eq($v_layout, 'tiles')}
-{var $v_linkShape = (ui_t($v_chipLike) ? 'inline-flex items-center gap-2 rounded px-3 py-1.5 inset-ring inset-ring-border' : (ui_t(ui_eq($v_layout, 'bar')) ? 'inline-flex items-center gap-2 -mb-px border-b px-1 py-2' : (ui_t($v_tiles) ? 'flex h-full flex-col items-start gap-4 rounded p-4 inset-ring inset-ring-border' : 'inline-flex w-full items-center gap-2 rounded px-3 py-2')))}
+{var $v_linkShape = (ui_t($v_chipLike) ? 'inline-flex h-8 items-center gap-2 rounded px-3 inset-ring inset-ring-border' : (ui_t(ui_eq($v_layout, 'bar')) ? 'inline-flex items-center gap-2 -mb-px border-b px-1 py-2' : (ui_t($v_tiles) ? 'flex h-full flex-col items-start gap-4 rounded p-4 inset-ring inset-ring-border' : 'inline-flex w-full items-center gap-2 rounded px-3 py-2')))}
 {var $v_currentLook = (ui_t($v_chipLike) ? 'bg-primary text-primary-foreground' : (ui_t(ui_eq($v_layout, 'bar')) ? 'border-foreground font-semibold' : (ui_t($v_tiles) ? 'inset-ring-foreground font-semibold' : 'bg-muted font-semibold')))}
 {var $v_otherLook = (ui_t(ui_eq($v_layout, 'bar')) ? 'border-transparent' : '')}
 {var $v_listShape = (ui_t(ui_eq($v_layout, 'sidebar')) ? 'flex flex-col gap-2' : (ui_t(ui_eq($v_layout, 'bar')) ? 'flex flex-wrap gap-2 gap-x-4 border-b border-border' : (ui_t($v_tiles) ? 'grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6' : 'flex flex-wrap gap-2')))}

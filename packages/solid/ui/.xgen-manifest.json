@@ -27,7 +27,7 @@
     "src/blocks/cart-drawer.types.ts": "2b0a648c59d430f994286e02fa55f2ad5a7fb0eb7e26ef7a4a72c88849968826",
     "src/blocks/cart-list.tsx": "dc07ae0184552b05a2021c12ef873aa1db3926e643cc2cbe417050bea1826344",
     "src/blocks/cart-list.types.ts": "67dac0812500df9da16211d8d2527c3a8a0838910d1ef7d1db2f8bdd72349bb2",
-    "src/blocks/category-nav.tsx": "d505cdd4070c678bd60f9e4d30c88605591002a81bacb5475c32c9dec91bc010",
+    "src/blocks/category-nav.tsx": "746f979fe28dd41fac347a015689642f21da4606415baaa7de17e67aebd50583",
     "src/blocks/category-nav.types.ts": "88c758911dc968d2e05c42c2db256e8d44b6898f581b9d8b3ac5f3142e1b944a",
     "src/blocks/chart-panel.tsx": "f31df1166a7634faf7a023293963ff7535524feeb40356210985c5cd7a11e9cb",
     "src/blocks/chart-panel.types.ts": "3815109d2ab650e70c4faa038f64c3b31e4b6816266a97db707640acc1ab11dc",

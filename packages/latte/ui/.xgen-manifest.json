@@ -28,7 +28,7 @@
     "blocks/cart-list.latte": "8c6da4d2aec6562a0bbf908d5930b5e3e74347ddc1d2d275a038b65f19d1a5c1",
     "blocks/cart-summary-card.latte": "df643ac616ab3ec8865e6aeccdd25f3059718f0f1afbe6c60090d4cfed60fd7f",
     "blocks/cart-table.latte": "e210d06b0bd19222e415ac50bd5aaf85d74a703b391971332e8e023f365d0f66",
-    "blocks/category-nav.latte": "f28ca04ccc07074cb7826dadc8d8e4470897e6cfe7b7ce7b90f13283b834070e",
+    "blocks/category-nav.latte": "f277e4d841dd01533f55acf7a3d3b4dbbdaadfcc22db2a9c295ff5b845106bd1",
     "blocks/chart-panel.latte": "fc06ca4e93359967d21198d8c3622877236f73c6a2040f93975fc1a6ad738610",
     "blocks/checklist.latte": "afada7cdfea702bca2e9021cd3f4317adfcfd4b60327d1bdcff027991b77fa40",
     "blocks/checkout-form.latte": "7c8f0e39241ead9ff26ab846ffc82b58b924e8618aab2ecfed9771421ea5f7ad",

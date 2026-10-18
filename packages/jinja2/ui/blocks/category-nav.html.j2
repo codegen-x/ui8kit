@@ -13,7 +13,7 @@
 {%- set v_landmarkLabel = ui_def(p['landmarkLabel'], none) -%}
 {%- set v_chipLike = ui_or([ui_eq(v_layout, 'chips'), ui_eq(v_layout, 'toolbar')]) -%}
 {%- set v_tiles = ui_eq(v_layout, 'tiles') -%}
-{%- set v_linkShape = ('inline-flex items-center gap-2 rounded px-3 py-1.5 inset-ring inset-ring-border' if ui_t(v_chipLike) else ('inline-flex items-center gap-2 -mb-px border-b px-1 py-2' if ui_t(ui_eq(v_layout, 'bar')) else ('flex h-full flex-col items-start gap-4 rounded p-4 inset-ring inset-ring-border' if ui_t(v_tiles) else 'inline-flex w-full items-center gap-2 rounded px-3 py-2'))) -%}
+{%- set v_linkShape = ('inline-flex h-8 items-center gap-2 rounded px-3 inset-ring inset-ring-border' if ui_t(v_chipLike) else ('inline-flex items-center gap-2 -mb-px border-b px-1 py-2' if ui_t(ui_eq(v_layout, 'bar')) else ('flex h-full flex-col items-start gap-4 rounded p-4 inset-ring inset-ring-border' if ui_t(v_tiles) else 'inline-flex w-full items-center gap-2 rounded px-3 py-2'))) -%}
 {%- set v_currentLook = ('bg-primary text-primary-foreground' if ui_t(v_chipLike) else ('border-foreground font-semibold' if ui_t(ui_eq(v_layout, 'bar')) else ('inset-ring-foreground font-semibold' if ui_t(v_tiles) else 'bg-muted font-semibold'))) -%}
 {%- set v_otherLook = ('border-transparent' if ui_t(ui_eq(v_layout, 'bar')) else '') -%}
 {%- set v_listShape = ('flex flex-col gap-2' if ui_t(ui_eq(v_layout, 'sidebar')) else ('flex flex-wrap gap-2 gap-x-4 border-b border-border' if ui_t(ui_eq(v_layout, 'bar')) else ('grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-6' if ui_t(v_tiles) else 'flex flex-wrap gap-2'))) -%}
