@@ -23,6 +23,18 @@ apps/        host apps           host-svelte, host-react, host-vue, host-solid: 
 > file, a stale file, a file nobody generated, a missing header. Each generated directory has a `.xgen-manifest.json`
 > with the sha-256 of every file it holds.
 
+## Clone
+
+The bricks (`xgen/specs/ui`) and the Lucide registry (`xgen/specs/assets`) are symlinks into the `vendor/codegen` submodule (ui8kit/codegen, pinned):
+
+```
+git clone --recurse-submodules <url>
+git submodule update --init          # an existing clone
+```
+
+Windows: enable Developer Mode and `git config --global core.symlinks true` before cloning (or work in WSL).
+`bun run check` stops with a clear message when the submodule or the symlinks are missing.
+
 ## Commands
 
 ```
@@ -36,6 +48,7 @@ bun run test          # bun test of xgen/*
 bun run e2e           # every screen in every host (plans: sort, search, pager, record; site: landmarks, skip link, current link, fixtures, FAQ, theme, 404; themes; gallery), screenshots, DOM pair test (needs build:hosts first; XGEN_E2E_ONLY=<screen-key>,... to filter)
 bun run shot <screen> [--runtime svelte|react] [--width 1600] [--theme light|dark] [--route /] [--out file.png]   # one full-page screenshot from a host
 bun run check:all     # all of the above
+bun run verify        # check + codex:validate + typecheck + test
 bun run lint:px       # ui8px over the class sets of the specs (8 px grid, 4 px steps only in controls), hard gate: 0 blocking hits (.ui8px/gate.json)
 bun run visual -- --out <dir> [--against <dir>]   # pixel gate: every state of every host in light and dark, manifest of PNG hashes
 bun run audit:push    # before every push: nothing private, no images/fonts/.fig, no secrets
