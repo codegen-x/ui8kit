@@ -48,7 +48,7 @@
     "shot": "bun xgen/cli/src/cli.ts shot",
     "visual": "bun xgen/cli/src/cli.ts visual",
     "typecheck": "bun run typecheck:xgen && bun run --filter \"@ui8kit/svelte-ui\" --filter \"@ui8kit/react-ui\" --filter \"@ui8kit/vue-ui\" --filter \"@ui8kit/solid-ui\" --filter \"@ui8kit/app-shared\" --filter \"host-*\" --filter \"discovery\" --filter \"@ui8kit/panorama\" --filter \"@ui8kit/taste-data\" --filter \"@ui8kit/taste-screens\" --filter \"magazine\" --parallel check",
-    "test": "bun test xgen packages/taste-data/src",
+    "test": "bun test ./xgen ./packages/taste-data/src",
     "check:all": "bun run build && bun run check && bun run typecheck && bun run build:hosts && bun run test && bun run lint:px && bun run e2e",
     "typecheck:xgen": "tsc -p xgen/tsconfig.json",
     "lint:px": "node packages/tooling/bin/ui8px-gate.mjs"
