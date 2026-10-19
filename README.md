@@ -25,7 +25,7 @@ apps/        host apps           host-svelte, host-react, host-vue, host-solid: 
 
 ## Clone
 
-The bricks (`xgen/specs/ui`) and the Lucide registry (`xgen/specs/assets`) are symlinks into the `vendor/codegen` submodule (ui8kit/codegen, pinned):
+The bricks (`xgen/specs/ui`), the Lucide registry (`xgen/specs/assets`), the shared TS utilities (`xgen/runtimes/core/assets/ts`) and the base styles (`xgen/runtimes/core/assets/styles/{kit,theme}.css`) are symlinks into the `vendor/codegen` submodule (ui8kit/codegen, pinned):
 
 ```
 git clone --recurse-submodules <url>
