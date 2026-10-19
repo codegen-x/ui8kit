@@ -13,6 +13,9 @@ const missing = [
   ...["vendor/codegen/xgen/specs/ui", "xgen/specs/ui", "xgen/specs/assets", "xgen/runtimes/core/assets/ts"].filter((p) => !isDir(p)),
   ...[`${styles}/kit.css`, `${styles}/theme.css`].filter((p) => !isFile(p)),
 ];
+// skins and the app helpers are composition, owned by codegen-x: never a symlink into vendor/codegen
+const owned = [`${styles}/skins`, `${styles}/skins.css`, "xgen/runtimes/core/assets/app"].filter((p) => fs.lstatSync(path.join(repo, p), { throwIfNoEntry: false })?.isSymbolicLink());
+if (owned.length) { console.error(`vendor-guard: owned by codegen-x, must not be a symlink: ${owned.join(", ")}`); process.exit(1); }
 if (missing.length) {
   console.error(`vendor-guard: missing or not resolvable: ${missing.join(", ")}
   the bricks come from the ui8kit/codegen submodule through symlinks:

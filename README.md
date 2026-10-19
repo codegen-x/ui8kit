@@ -35,6 +35,14 @@ git submodule update --init          # an existing clone
 Windows: enable Developer Mode and `git config --global core.symlinks true` before cloning (or work in WSL).
 `bun run check` stops with a clear message when the submodule or the symlinks are missing.
 
+## Ownership
+
+| From `vendor/codegen` (symlinks, edit upstream in ui8kit/codegen) | Owned by codegen-x (own copies, never symlinked) |
+| --- | --- |
+| `xgen/specs/ui` (bricks), `xgen/specs/assets` (Lucide registry) | `xgen/runtimes/core/assets/styles/skins/`, `styles/skins.css` |
+| `xgen/runtimes/core/assets/ts` (cn, variants, tags, a11y, ...) | `xgen/runtimes/core/assets/app/` |
+| `xgen/runtimes/core/assets/styles/kit.css`, `theme.css` | every composition spec (`xgen/specs/{organisms,blocks,parts,patterns,presets,recipes,screens}`), screens, fixtures, content |
+
 ## Commands
 
 ```
