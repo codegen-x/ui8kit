@@ -218,7 +218,8 @@ export const CYRILLIC_ALLOW: readonly string[] = [];
 function trackedFiles(workspace: string): string[] {
   try {
     const out = execFileSync("git", ["ls-files", "-z"], { cwd: workspace, encoding: "utf8", stdio: ["ignore", "pipe", "ignore"] });
-    return out.split("\0").filter(Boolean).map((f) => join(workspace, f)).filter((f) => existsSync(f));
+    // the vendor/codegen submodule and the xgen/specs/{ui,assets} symlinks are listed too: only regular files are read
+    return out.split("\0").filter(Boolean).map((f) => join(workspace, f)).filter((f) => existsSync(f) && statSync(f).isFile());
   } catch {
     const skip = new Set(["node_modules", "dist", "shots", ".git", "bun.lock"]);
     return ["xgen", "packages", "apps", "plan", "docs", "README.md"].map((r) => join(workspace, r)).filter(existsSync).flatMap((r) => (statSync(r).isDirectory() ? files(r, skip) : [r]));
