@@ -1,0 +1,11 @@
+{
+  "$schema": "./font.schema.json",
+  "id": "merriweather",
+  "family": "Merriweather",
+  "provider": "google",
+  "google": "Merriweather:wght@400;500;600;700",
+  "attribution": {
+    "source": "Google Fonts",
+    "license": "OFL-1.1"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "./font.schema.json",
+  "id": "plus-jakarta-sans",
+  "family": "Plus Jakarta Sans",
+  "provider": "google",
+  "google": "Plus+Jakarta+Sans:wght@400;500;600;700",
+  "attribution": {
+    "source": "Google Fonts",
+    "license": "OFL-1.1"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "./font.schema.json",
+  "id": "poppins",
+  "family": "Poppins",
+  "provider": "google",
+  "google": "Poppins:wght@400;500;600;700",
+  "attribution": {
+    "source": "Google Fonts",
+    "license": "OFL-1.1"
+  }
+}

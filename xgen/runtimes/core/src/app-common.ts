@@ -88,7 +88,11 @@ const skinFiles = (): string[] => readdirSync(join(assetsDir, "styles", "skins")
 
 /** the Google fonts each skin loads when it is on, from skins/skins.json (the tweakcn import tool writes it; sky is ours) */
 function skinFontsFile(): GeneratedFile {
-  const skins = JSON.parse(readAsset("styles", "skins", "skins.json")) as Record<string, { fonts: string[] }>;
+  return skinFontsSource(JSON.parse(readAsset("styles", "skins", "skins.json")) as Record<string, { fonts: string[] }>);
+}
+
+/** skin-fonts.ts of a skins.json registry (also written by `bun run skins build`, xgen/skins/skins.ts) */
+export function skinFontsSource(skins: Record<string, { fonts: string[] }>): GeneratedFile {
   const rows = Object.entries(skins).filter(([, v]) => v.fonts.length).map(([k, v]) => `  ${JSON.stringify(k)}: ${JSON.stringify(v.fonts)},`);
   return {
     path: "src/runtime/skin-fonts.ts",

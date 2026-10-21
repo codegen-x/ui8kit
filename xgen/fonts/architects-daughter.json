@@ -1,0 +1,11 @@
+{
+  "$schema": "./font.schema.json",
+  "id": "architects-daughter",
+  "family": "Architects Daughter",
+  "provider": "google",
+  "google": "Architects+Daughter:wght@400",
+  "attribution": {
+    "source": "Google Fonts",
+    "license": "OFL-1.1"
+  }
+}

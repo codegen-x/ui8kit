@@ -1,0 +1,11 @@
+{
+  "$schema": "./font.schema.json",
+  "id": "outfit",
+  "family": "Outfit",
+  "provider": "google",
+  "google": "Outfit:wght@400;500;600;700",
+  "attribution": {
+    "source": "Google Fonts",
+    "license": "OFL-1.1"
+  }
+}

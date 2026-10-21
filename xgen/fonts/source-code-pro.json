@@ -1,0 +1,11 @@
+{
+  "$schema": "./font.schema.json",
+  "id": "source-code-pro",
+  "family": "Source Code Pro",
+  "provider": "google",
+  "google": "Source+Code+Pro:wght@400;500;600;700",
+  "attribution": {
+    "source": "Google Fonts",
+    "license": "OFL-1.1"
+  }
+}

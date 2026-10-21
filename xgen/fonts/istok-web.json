@@ -1,0 +1,11 @@
+{
+  "$schema": "./font.schema.json",
+  "id": "istok-web",
+  "family": "Istok Web",
+  "provider": "google",
+  "google": "Istok+Web:ital,wght@0,400;0,700;1,400;1,700",
+  "attribution": {
+    "source": "Google Fonts",
+    "license": "OFL-1.1"
+  }
+}
