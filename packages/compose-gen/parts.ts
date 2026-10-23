@@ -10,7 +10,8 @@ import type { Parts } from "./screens/src/validate-view";
 
 interface PrimProp { name: string; html: string; react: string; type: string; required: boolean; passthrough: boolean; enum?: string[]; docs?: string }
 interface PrimPart { name: string; acceptsClass: boolean; acceptsChildren: boolean; acceptsAttrs: boolean; props: PrimProp[] }
-type Def = { name: string; type: string; passthrough?: boolean; cva?: boolean; cvaKey?: string; required?: boolean; attr?: string; param?: string };
+type Def = { name: string; type: string; passthrough?: boolean; cva?: boolean; cvaKey?: string; required?: boolean; attr?: string; param?: string; wire?: string };
+// `wire`: the Go type of the field on the templ composition (the v3 primitive type; the organism value is converted to it)
 // `param`: the parameter name of the Twig / Latte composition (the camelCase name of the v3 primitive, the recipe key)
 // `attr`: the HTML attribute a native prop is (the server runtimes pass it with the free attributes; the JS ones as a prop)
 
@@ -43,12 +44,12 @@ export function partsFromKit(): Parts {
     if (m.recipe && !recipe) throw new Error(`parts: ${name}: recipe ${m.recipe} missing`);
     const props: Def[] = [];
     const add = (d: Def) => { if (!props.some((p) => p.name === d.name)) props.push(d); };
-    for (const k of recipe?.keys ?? []) add({ name: pascal(k), type: "string", cva: true, param: k, ...(pascal(k).toLowerCase() !== k ? { cvaKey: k } : {}) });
-    if (m.tagFrom) add({ name: m.tagFrom.prop, type: m.tagFrom.heading ? "int" : "string", param: m.tagFrom.prop.toLowerCase() });
+    for (const k of recipe?.keys ?? []) add({ name: pascal(k), type: "string", cva: true, param: k, wire: "string", ...(pascal(k).toLowerCase() !== k ? { cvaKey: k } : {}) });
+    if (m.tagFrom) add({ name: m.tagFrom.prop, type: m.tagFrom.heading ? "int" : "string", param: m.tagFrom.prop.toLowerCase(), wire: "string" });
     for (const p of prim.props) {
       if (p.name === "Tag" && (m.tag || m.tagFrom)) continue;
       if (m.fixed && Object.keys(m.fixed).some((f) => f.toLowerCase() === p.html)) continue;
-      add({ name: p.name, type: INT.has(`${name}.${p.name}`) ? "int" : p.type, passthrough: p.passthrough, param: p.react.includes("-") ? p.name[0]!.toLowerCase() + p.name.slice(1) : p.react });
+      add({ name: p.name, type: INT.has(`${name}.${p.name}`) ? "int" : p.type, passthrough: p.passthrough, wire: p.type, param: p.react.includes("-") ? p.name[0]!.toLowerCase() + p.name.slice(1) : p.react });
     }
     for (const [a, t] of Object.entries(m.attrs ?? {})) add({ name: pascal(a), type: t === "number" ? "int" : "string", passthrough: true, attr: a.toLowerCase() });
     for (const d of NATIVE[m.primitive] ?? []) add(d);

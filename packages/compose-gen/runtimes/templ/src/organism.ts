@@ -7,10 +7,21 @@ import type { PartDef } from "../../../spec/src/index";
 import { BANNER, pascalCase, type GeneratedFile, type PartRef } from "../../core/src/index";
 import { goPackageOf } from "./templ";
 
+/** the templ component a part renders as when the organisms call compositions (kit-compose) instead of v2 bricks */
+export interface ComposeTarget {
+  /** package alias, import path and component of the call */
+  pkg: string; path: string; fn: string;
+  /** the embedded primitive props of a composition (compose.BadgeProps{Size, text.TextProps{...}}); none: the props are flat */
+  embed?: { pkg: string; path: string; type: string };
+}
 export interface OrgDeps {
   parts: Record<string, PartRef>;
   organisms: Record<string, OrganismSpec>;
   goModule: string;
+  /** the organism helpers package (default: <goModule>/utils) */
+  utilsPath?: string;
+  /** compose mode: where a part goes; its props split into the composition fields (cva, As) and the primitive ones */
+  compose?: (part: string) => ComposeTarget;
 }
 
 const goIdent = (name: string): string => name.replace(/[^A-Za-z0-9_]/g, "_");
@@ -38,6 +49,8 @@ interface Ctx {
   /** names in scope -> Go code (locals, loop variables, slot arguments) */
   scope: Map<string, string>;
   imports: Set<string>;
+  /** compose mode: package alias -> import path */
+  paths: Map<string, string>;
   fills: string[];
   recipes: Set<string>;
   presets: Set<string>;
@@ -166,10 +179,45 @@ function withScope<T>(c: Ctx, names: Array<[string, string]>, f: () => T): T {
   try { return f(); } finally { c.scope = prev; }
 }
 
+/** a value for a field of a Go type (the zero-value rules of the structs) */
+function goValue(type: string, v: Value, c: Ctx): string {
+  const g = printGo(v, c);
+  switch (type) {
+    case "string": return typeof v === "string" ? g : typeof v === "number" ? lit(String(v)) : `uiutils.S(${g})`;
+    case "bool": return typeof v === "boolean" ? g : `uiutils.T(${g})`;
+    case "int": return typeof v === "number" ? String(Math.round(v)) : `uiutils.I(${g})`;
+    default: throw new Error(`${c.org.name}: type ${type} cannot take a value`);
+  }
+}
+
+function composeUse(n: Extract<ViewNode, { use: string }>, ref: PartRef, c: Ctx): string[] {
+  const t = c.deps.compose!(n.use);
+  type Def = { name: string; type: string; cva?: boolean; attr?: string; wire?: string };
+  const outer: string[] = [], inner: string[] = [], attrs: string[] = [];
+  for (const [k, v] of Object.entries(n.props ?? {})) {
+    if (k === "Class" && v === "") continue;
+    const d = (ref.part.props as unknown as Def[]).find((p) => p.name === k);
+    if (!d) throw new Error(`${c.org.name}: ${n.use} has no prop ${k}`);
+    if (d.attr) { attrs.push(`${lit(d.attr)}, ${printGo(v, c)}`); continue; }
+    const type = n.use === "LucideIcon" && k === "Size" ? "int" : d.wire ?? d.type;
+    (t.embed && (d.cva || k === "As") ? outer : inner).push(`${k}: ${goValue(type, v, c)}`);
+  }
+  for (const [k, v] of Object.entries(n.attrs ?? {})) attrs.push(`${lit(k)}, ${printGo(v, c)}`);
+  if (attrs.length) inner.push(`Attrs: uiutils.Attrs(${attrs.join(", ")})`);
+  c.paths.set(t.pkg, t.path);
+  let fields = inner;
+  if (t.embed) {
+    c.paths.set(t.embed.pkg, t.embed.path);
+    fields = [...outer, `${t.embed.type}: ${t.embed.pkg}.${t.embed.type}{${inner.join(", ")}}`];
+  }
+  return block(`@${t.pkg}.${t.fn}(${t.pkg}.${t.fn}Props{${fields.join(", ")}})`, walk(n.children ?? [], c));
+}
+
 function node(n: ViewNode, c: Ctx): string[] {
   if ("use" in n) {
     const ref = c.deps.parts[n.use];
     if (!ref) throw new Error(`${c.org.name}: unknown part ${n.use}`);
+    if (c.deps.compose) return composeUse(n, ref, c);
     const pkg = goPackageOf(ref.brick);
     c.imports.add(pkg);
     const fields: string[] = [];
@@ -261,7 +309,7 @@ function fill(sl: SlotFill, arity: number, c: Ctx): string {
 }
 
 export function emitTemplOrganism(org: OrganismSpec, deps: OrgDeps): { file: GeneratedFile; recipes: Set<string>; presets: Set<string> } {
-  const c: Ctx = { org, deps, scope: new Map(), imports: new Set(), fills: [], recipes: new Set(), presets: new Set(), inFill: false };
+  const c: Ctx = { org, deps, scope: new Map(), imports: new Set(), paths: new Map(), fills: [], recipes: new Set(), presets: new Set(), inFill: false };
   const used = refHeads([org.view, org.derived ?? []]);
   const top: string[] = [];
   for (const p of org.props) {
@@ -284,11 +332,13 @@ export function emitTemplOrganism(org: OrganismSpec, deps: OrgDeps): { file: Gen
   ];
   const consts = Object.entries(org.consts ?? {}).map(([name, table]) =>
     `var ${constVar(org, name)} = map[string]any{\n${Object.entries(table).map(([k, v]) => `\t${lit(k)}: ${lit(v)},`).join("\n")}\n}`);
-  const imports = [...c.imports].sort().map((pkg) => {
-    const brick = Object.values(deps.parts).find((r) => goPackageOf(r.brick) === pkg)!.brick;
-    const path = `${deps.goModule}/ui/${brick.dir}`;
-    return path.endsWith(`/${pkg}`) ? `\t"${path}"` : `\t${pkg} "${path}"`;
-  });
+  const imports = deps.compose
+    ? [...c.paths].sort(([a], [b]) => a.localeCompare(b)).map(([pkg, path]) => (path.endsWith(`/${pkg}`) ? `\t"${path}"` : `\t${pkg} "${path}"`))
+    : [...c.imports].sort().map((pkg) => {
+      const brick = Object.values(deps.parts).find((r) => goPackageOf(r.brick) === pkg)!.brick;
+      const path = `${deps.goModule}/ui/${brick.dir}`;
+      return path.endsWith(`/${pkg}`) ? `\t"${path}"` : `\t${pkg} "${path}"`;
+    });
   const docs = org.docs.split("\n").map((l) => `// ${l}`.trimEnd());
   const contents = [
     `// ${BANNER}`,
@@ -297,7 +347,7 @@ export function emitTemplOrganism(org: OrganismSpec, deps: OrgDeps): { file: Gen
     ``,
     `import (`,
     ...imports,
-    `\tuiutils "${deps.goModule}/utils"`,
+    `\tuiutils "${deps.utilsPath ?? `${deps.goModule}/utils`}"`,
     `)`,
     ``,
     `// ${org.name}Props are the props of ${org.name}; the values are the JSON shapes of the TypeScript props.`,

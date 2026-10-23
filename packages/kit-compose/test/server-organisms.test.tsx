@@ -5,12 +5,13 @@ import { test, expect, describe } from "bun:test";
 import { createElement, type ComponentType } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { execFileSync, spawnSync } from "node:child_process";
-import { existsSync, readFileSync } from "node:fs";
+import { cpSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
+import { tmpdir } from "node:os";
 import path from "node:path";
 import { parseFragment } from "parse5";
 import { blockCases, normalizeHtml, fileName } from "../../compose-gen";
 import { loadOrganisms } from "../src/organisms";
-import { serverOrganismFiles, SERVER_ORG_RT, type ServerOrgRuntime } from "../src/server-organisms";
+import { serverOrganismFiles, SERVER_ORG_RT, TEMPL_MODULE, type ServerOrgRuntime } from "../src/server-organisms";
 import { checkHtml } from "../../ui-gates/src/html.mjs";
 import { norm as tokens } from "./shared";
 import * as R from "../react/src/organisms";
@@ -48,6 +49,35 @@ const PY = process.env.PYTHON ?? (existsSync(VENV_PY) ? VENV_PY : "python3");
 const php = spawnSync("php", ["-v"], { stdio: "ignore" }).status === 0 && existsSync(path.join(SRV, "vendor/autoload.php")) ? null : "php or test/server/vendor missing (composer install -d packages/kit-compose/test/server)";
 const phpRender = (rt: string, ext: string) => json("php", [path.join(SRV, "render-organisms.php"), rt, path.join(KIT, `${rt}/src`), path.join(ROOT, `${rt}/src`)],
   cases.map((c) => ({ template: `blocks/${fileName(c.organism)}${ext}`, p: c.props })));
+const TEMPL = "v0.3.1070";
+/** a scratch copy (templ generate writes *_templ.go next to the sources): kit module + kit-compose module + a parity main over every organism */
+function templRender(): string[] {
+  const tmp = mkdtempSync(path.join(tmpdir(), "kit-compose-org-templ-"));
+  try {
+    cpSync(path.join(KIT, "templ/src/ui"), path.join(tmp, "kitmod/ui"), { recursive: true });
+    cpSync(path.join(KIT, "templ/src/utils"), path.join(tmp, "kitmod/utils"), { recursive: true });
+    for (const f of ["go.mod", "go.sum"]) cpSync(path.join(ROOT, "templ/kitmod", f), path.join(tmp, "kitmod", f));
+    for (const f of ["go.mod", "go.sum"]) cpSync(path.join(ROOT, "templ", f), path.join(tmp, f));
+    cpSync(path.join(ROOT, "templ/src"), path.join(tmp, "src"), { recursive: true });
+    const names = [...new Set(cases.map((c) => c.organism))].sort();
+    mkdirSync(path.join(tmp, "cmd"));
+    writeFileSync(path.join(tmp, "cmd/main.go"), [`package main`, ``, `import (`, `\t"bufio"`, `\t"context"`, `\t"encoding/json"`, `\t"fmt"`, `\t"os"`, `\t"strings"`, ``, `\t"github.com/a-h/templ"`, ``, `\t"${TEMPL_MODULE}/src/blocks"`, `)`, ``,
+      `type request struct {\n\tName  string          \`json:"name"\`\n\tProps json.RawMessage \`json:"props"\`\n}`, ``,
+      `func component(name string, props []byte) (templ.Component, error) {`, `\tswitch name {`,
+      ...names.flatMap((n) => [`\tcase ${JSON.stringify(n)}:`, `\t\tvar p blocks.${n}Props`, `\t\tif err := json.Unmarshal(props, &p); err != nil {`, `\t\t\treturn nil, err`, `\t\t}`, `\t\treturn blocks.${n}(p), nil`]),
+      `\t}`, `\treturn nil, fmt.Errorf("unknown organism %s", name)`, `}`, ``,
+      `func main() {`, `\tvar reqs []request`, `\tif err := json.NewDecoder(bufio.NewReader(os.Stdin)).Decode(&reqs); err != nil {`, `\t\tpanic(err)`, `\t}`,
+      `\tout := make([]string, len(reqs))`, `\tfor i, r := range reqs {`, `\t\tc, err := component(r.Name, r.Props)`, `\t\tif err != nil {`, `\t\t\tout[i] = "ERROR: " + err.Error()`, `\t\t\tcontinue`, `\t\t}`,
+      `\t\tvar b strings.Builder`, `\t\tif err := c.Render(context.Background(), &b); err != nil {`, `\t\t\tout[i] = "ERROR: " + err.Error()`, `\t\t\tcontinue`, `\t\t}`, `\t\tout[i] = b.String()`, `\t}`,
+      `\t_ = json.NewEncoder(os.Stdout).Encode(out)`, `}`, ``].join("\n"));
+    const env = { ...process.env, GOFLAGS: "-mod=mod" };
+    execFileSync("go", ["run", `github.com/a-h/templ/cmd/templ@${TEMPL}`, "generate", "-path", tmp], { cwd: tmp, env, stdio: ["ignore", "ignore", "inherit"] });
+    execFileSync("go", ["vet", "./..."], { cwd: tmp, env, stdio: ["ignore", "ignore", "inherit"] });
+    return JSON.parse(execFileSync("go", ["run", "./cmd"], { cwd: tmp, env, input: JSON.stringify(cases.map((c) => ({ name: c.organism, props: c.props }))), encoding: "utf8", maxBuffer: 256 << 20, stdio: ["pipe", "pipe", "inherit"] })) as string[];
+  } finally {
+    rmSync(tmp, { recursive: true, force: true });
+  }
+}
 const RUN: Record<ServerOrgRuntime, { missing: () => string | null; render: () => string[] }> = {
   jinja2: {
     missing: () => (ok(PY, ["-c", "import jinja2"]) ? null : `${PY} with Jinja2 not found`),
@@ -56,9 +86,10 @@ const RUN: Record<ServerOrgRuntime, { missing: () => string | null; render: () =
   },
   twig: { missing: () => php, render: () => phpRender("twig", ".html.twig") },
   latte: { missing: () => php, render: () => phpRender("latte", ".latte") },
+  templ: { missing: () => (ok("go", ["version"]) ? null : "go not found"), render: templRender },
 };
 
-for (const rt of SERVER_ORG_RT) {
+for (const rt of SERVER_ORG_RT.filter((r) => !process.env.ORG_RT || process.env.ORG_RT.split(",").includes(r))) {
   test(`${rt}: generated organisms are up to date`, () => {
     for (const [rel, body] of serverOrganismFiles(rt, loaded)) expect(readFileSync(path.join(ROOT, rel), "utf8"), rel).toBe(body);
   });
