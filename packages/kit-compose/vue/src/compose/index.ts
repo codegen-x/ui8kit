@@ -59,4 +59,8 @@ export { default as Disclosure } from "./Disclosure.vue";
 export { default as Summary } from "./Summary.vue";
 export { default as Meter } from "./Meter.vue";
 export { default as Progress } from "./Progress.vue";
+export { default as ThemeToggle } from "./ThemeToggle.vue";
+export { default as SheetTrigger } from "./SheetTrigger.vue";
+export { default as SheetClose } from "./SheetClose.vue";
+export { default as Breadcrumb } from "./Breadcrumb.vue";
 export { rc, RECIPES } from "./recipes";

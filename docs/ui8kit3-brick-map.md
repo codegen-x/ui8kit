@@ -72,7 +72,7 @@ Prop placement, checked against ui8kit/codegen v0.1.0: as there, `variant` / `si
 | Meter | Meter | — | meter | — |
 | Progress | Progress | — | progress | — |
 
-Not lowered yet (hand-written compositions to build): Breadcrumb (Box nav + list + Link + Text aria-current), ThemeToggle (Button + Icon, aria-pressed), SheetTrigger/SheetClose (Button + Icon controlling Dialog), Break (`<br>` has no primitive: allowlisted raw tag), DataList/DataOption/Output (no primitive: allowlisted), Picture/Source (v3 Image module).
+Hand-written (`src/manual.ts`, all 8 runtimes, in both parity suites): Breadcrumb (Box nav[aria-label] > ol > li, Link or Text span, aria-current=page; labels escaped), ThemeToggle (Button + Icon with Lucide sun/moon, aria-pressed), SheetTrigger/SheetClose (Button + Icon with Lucide menu/x, aria-expanded, aria-haspopup=dialog, aria-controls). Not lowered yet: Break (`<br>` has no primitive: allowlisted raw tag), DataList/DataOption/Output (no primitive: allowlisted), Picture/Source (v3 Image module).
 
 Recipe changes against xgen: `text-white` on destructive Button/Badge/IconBadge -> `text-primary-foreground` (colors only by tokens; there is no destructive-foreground token in theme.css yet: contrast to be reviewed).
 Runtimes built now: react, svelte, vue, solid (DOM parity of all four, html-validate + axe on every case, typecheck: tsc, vue-tsc, svelte-check; 8 + 4 with the controls exception) and the servers jinja2, twig, latte, templ (real engines: DOM = React on the same cases, `test/server.test.tsx`).

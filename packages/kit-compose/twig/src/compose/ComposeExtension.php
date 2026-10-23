@@ -14,6 +14,10 @@ final class ComposeExtension extends AbstractExtension
 {
     public function getFunctions(): array
     {
-        return [new TwigFunction('compose_props', [Compose::class, 'props'])];
+        return [
+            new TwigFunction('compose_props', [Compose::class, 'props']),
+            new TwigFunction('compose_rc', [Compose::class, 'rc']),
+            new TwigFunction('compose_join', [Compose::class, 'join']),
+        ];
     }
 }

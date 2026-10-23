@@ -59,4 +59,8 @@ export * from "./disclosure";
 export * from "./summary";
 export * from "./meter";
 export * from "./progress";
+export * from "./theme-toggle";
+export * from "./sheet-trigger";
+export * from "./sheet-close";
+export * from "./breadcrumb";
 export { rc, RECIPES } from "./recipes";

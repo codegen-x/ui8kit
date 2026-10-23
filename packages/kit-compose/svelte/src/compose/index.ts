@@ -59,4 +59,8 @@ export { default as Disclosure } from "./Disclosure.svelte";
 export { default as Summary } from "./Summary.svelte";
 export { default as Meter } from "./Meter.svelte";
 export { default as Progress } from "./Progress.svelte";
+export { default as ThemeToggle } from "./ThemeToggle.svelte";
+export { default as SheetTrigger } from "./SheetTrigger.svelte";
+export { default as SheetClose } from "./SheetClose.svelte";
+export { default as Breadcrumb } from "./Breadcrumb.svelte";
 export { rc, RECIPES } from "./recipes";

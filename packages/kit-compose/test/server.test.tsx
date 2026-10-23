@@ -12,7 +12,8 @@ import { BRICKS } from "../src/map";
 import { RECIPES } from "../src/recipes";
 import { pascal } from "../src/server";
 import * as R from "../react/src/compose";
-import { cases, isLeaf, names, norm } from "./shared";
+import { cases, isLeaf, names, norm, MANUAL_CASES } from "./shared";
+import { MANUAL } from "../src/manual";
 
 const ROOT = path.resolve(import.meta.dir, "..");
 const KIT = path.resolve(ROOT, "../kit");
@@ -25,17 +26,20 @@ const KNOWN_KIT_BUGS: Record<string, string> = {
   'Image {"variant":"logo"}': "server cn merge of registry 3.2.0 has no object-fit group (object-cover + object-contain both kept; React tailwind-merge keeps the last); fixed in ui8kit/codegen f72d2bd, registry 3.2.2 (unpublished)",
 };
 
-type Case = { name: string; c: Record<string, string>; leaf: boolean };
-const all: Case[] = names.flatMap((name) => cases(name).map((c) => ({ name, c, leaf: isLeaf(name) })));
+type Case = { name: string; c: Record<string, any>; leaf: boolean };
+// hand-written compositions render no children; their aria-label is a prop (ariaLabel / AriaLabel)
+const all: Case[] = [...names.flatMap((name) => cases(name).map((c) => ({ name, c, leaf: isLeaf(name) }))), ...MANUAL_CASES.map(({ name, props }) => ({ name, c: props, leaf: true }))];
 const react = all.map(({ name, c, leaf }) => norm(renderToStaticMarkup(createElement((R as Record<string, never>)[name], c as never, leaf ? undefined : "Content"))));
 
 /** case -> server props: className -> class, aria-* / data-* -> attrs, recipe keys + tag/as as composition props */
 function split({ name, c }: Case, P: (k: string) => string) {
-  const keys = BRICKS[name].recipe ? RECIPES[BRICKS[name].recipe!].keys : [];
+  const manual = MANUAL.includes(name);
+  const keys = manual ? ["variant", "size", "controls", "items"] : BRICKS[name].recipe ? RECIPES[BRICKS[name].recipe!].keys : [];
   const props: Record<string, unknown> = {}, attrs: Record<string, string> = {};
   for (const [k, v] of Object.entries(c)) {
     if (k === "className") props[P("class")] = v;
     else if (keys.includes(k) || k === "as" || k === "tag") props[P(k)] = v;
+    else if (manual && k === "aria-label") props[P("ariaLabel")] = v;
     else attrs[k] = v;
   }
   if (Object.keys(attrs).length) props[P("attrs")] = attrs;
@@ -51,7 +55,7 @@ function suite(rt: string, available: string | null, run: () => string[]) {
   describe(`${rt} = react`, () => {
     let html: string[] = [];
     test(`${rt}: render all ${all.length} cases`, () => { html = run(); expect(html.length).toBe(all.length); }, 600000);
-    for (const name of names) test(`${rt} = react: ${name}`, () => {
+    for (const name of [...names, ...MANUAL]) test(`${rt} = react: ${name}`, () => {
       all.forEach((k, i) => {
         if (k.name !== name) return;
         const id = `${name} ${JSON.stringify(k.c)}`, got = norm((html[i] ?? "").trim());
@@ -92,7 +96,7 @@ suite("templ", ok("go", ["version"]) ? null : "go not found", () => {
     cpSync(path.join(ROOT, "templ/src"), path.join(tmp, "src"), { recursive: true });
     const imports = new Map<string, string>();
     const lit = (k: Case) => {
-      const p = BRICKS[k.name].primitive;
+      const p = MANUAL.includes(k.name) ? (k.name === "Breadcrumb" ? "Box" : "Button") : BRICKS[k.name].primitive;
       const src = readFileSync(path.join(ROOT, `templ/src/compose/${kebab(k.name)}.templ`), "utf8");
       const dir = src.match(/ui\/(\w+)"/)![1];
       const pkg = readFileSync(path.join(KIT, `templ/src/ui/${dir}/${dir}.templ`), "utf8").match(/^package (\w+)/m)![1];
@@ -100,7 +104,8 @@ suite("templ", ok("go", ["version"]) ? null : "go not found", () => {
       const props = split(k, pascal);
       const outer: string[] = [], inner: string[] = [];
       for (const [f, v] of Object.entries(props)) {
-        if (f === "Attrs") inner.push(`Attrs: templ.Attributes{${Object.entries(v as Record<string, string>).map(([a, b]) => `${JSON.stringify(a)}: ${JSON.stringify(b)}`).join(", ")}}`);
+        if (f === "Items") outer.push(`Items: []compose.BreadcrumbItem{${(v as Record<string, unknown>[]).map((it) => `{${Object.entries(it).map(([a, b]) => `${pascal(a)}: ${JSON.stringify(b)}`).join(", ")}}`).join(", ")}}`);
+        else if (f === "Attrs") inner.push(`Attrs: templ.Attributes{${Object.entries(v as Record<string, string>).map(([a, b]) => `${JSON.stringify(a)}: ${JSON.stringify(b)}`).join(", ")}}`);
         else if (f === "Class" || (f === "Tag" && !BRICKS[k.name].tagFrom?.heading)) inner.push(`${f}: ${JSON.stringify(v)}`);
         else outer.push(`${f}: ${JSON.stringify(v)}`);
       }

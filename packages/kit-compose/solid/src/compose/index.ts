@@ -59,4 +59,8 @@ export * from "./disclosure.solid";
 export * from "./summary.solid";
 export * from "./meter.solid";
 export * from "./progress.solid";
+export * from "./theme-toggle.solid";
+export * from "./sheet-trigger.solid";
+export * from "./sheet-close.solid";
+export * from "./breadcrumb.solid";
 export { rc, RECIPES } from "./recipes";

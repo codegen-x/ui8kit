@@ -43,6 +43,12 @@ final class Compose
         return implode(' ', array_filter($out, static fn ($x) => $x !== ''));
     }
 
+    /** @param list<mixed> $parts */
+    public static function join(array $parts): string
+    {
+        return implode(' ', array_filter(array_map('strval', $parts), static fn ($x) => $x !== ''));
+    }
+
     public static function props(string $name, array $p): array
     {
         $s = self::data()['compositions'][$name];

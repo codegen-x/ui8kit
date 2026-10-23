@@ -88,7 +88,8 @@ export const BRICKS: Record<string, BrickMap> = {
 };
 
 /** Bricks with no single v3 primitive: hand-written compositions, not built yet (see docs/ui8kit3-brick-map.md). */
-export const COMPOSED = ["Breadcrumb", "ThemeToggle", "SheetTrigger", "SheetClose", "Break", "DataList", "DataOption", "Output", "Picture", "Source"] as const;
+/** hand-written in src/manual.ts: Breadcrumb, ThemeToggle, SheetTrigger, SheetClose */
+export const COMPOSED = ["Break", "DataList", "DataOption", "Output", "Picture", "Source"] as const;
 
 /** Owner policy 8 + 4: the 4px step (odd Tailwind steps 1, 3, 5, ...) is allowed only inside controls; everywhere else the 8px grid. */
 export const CONTROL_RECIPES = ["button", "button-plain", "badge", "iconbadge", "input", "range", "textarea", "select", "checkbox", "radio", "switch", "link-plain", "lucide-icon", "icon"] as const;

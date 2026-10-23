@@ -19,7 +19,8 @@ def _pascal(k: str) -> str:
 
 
 def _set(v: Any) -> bool:
-    return v is not None and v != ""
+    # None, "" and Jinja Undefined (p['Missing']) are unset
+    return v is not None and str(v) != ""
 
 
 def rc(rid: str, values: dict) -> str:
@@ -71,4 +72,6 @@ def environment(kit_root: str, **options: Any):
     env = kit_environment(kit_root, **options)
     env.loader = ChoiceLoader([FileSystemLoader(kit_root), FileSystemLoader(os.path.dirname(HERE))])
     env.globals["compose_props"] = compose_props
+    env.globals["compose_rc"] = rc
+    env.globals["compose_join"] = lambda parts: " ".join(str(x) for x in parts if x)
     return env

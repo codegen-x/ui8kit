@@ -31,7 +31,7 @@ export function spec(m: BrickMap) {
 }
 
 function composeJson(items: [string, BrickMap][]): string {
-  const used = [...new Set(items.map(([, m]) => m.recipe).filter(Boolean))].sort() as string[];
+  const used = [...new Set([...items.map(([, m]) => m.recipe), "themetoggle", "sheettrigger"].filter(Boolean))].sort() as string[];
   const recipes = Object.fromEntries(used.map((id) => {
     const { base, keys, defaults, byKey, compound } = RECIPES[id];
     return [id, { base, keys, defaults, byKey, compound: compound ?? [] }];
@@ -60,7 +60,8 @@ def _pascal(k: str) -> str:
 
 
 def _set(v: Any) -> bool:
-    return v is not None and v != ""
+    # None, "" and Jinja Undefined (p['Missing']) are unset
+    return v is not None and str(v) != ""
 
 
 def rc(rid: str, values: dict) -> str:
@@ -112,6 +113,8 @@ def environment(kit_root: str, **options: Any):
     env = kit_environment(kit_root, **options)
     env.loader = ChoiceLoader([FileSystemLoader(kit_root), FileSystemLoader(os.path.dirname(HERE))])
     env.globals["compose_props"] = compose_props
+    env.globals["compose_rc"] = rc
+    env.globals["compose_join"] = lambda parts: " ".join(str(x) for x in parts if x)
     return env
 `;
 
@@ -158,6 +161,12 @@ final class Compose
             }
         }
         return implode(' ', array_filter($out, static fn ($x) => $x !== ''));
+    }
+
+    /** @param list<mixed> $parts */
+    public static function join(array $parts): string
+    {
+        return implode(' ', array_filter(array_map('strval', $parts), static fn ($x) => $x !== ''));
     }
 
     public static function props(string $name, array $p): array
@@ -214,7 +223,11 @@ final class ComposeExtension extends AbstractExtension
 {
     public function getFunctions(): array
     {
-        return [new TwigFunction('compose_props', [Compose::class, 'props'])];
+        return [
+            new TwigFunction('compose_props', [Compose::class, 'props']),
+            new TwigFunction('compose_rc', [Compose::class, 'rc']),
+            new TwigFunction('compose_join', [Compose::class, 'join']),
+        ];
     }
 }
 `;

@@ -8,7 +8,7 @@ import { BRICKS, CONTROL_RECIPES } from "../src/map";
 import { RECIPES } from "../src/recipes";
 import * as R from "../react/src/compose";
 import { checkHtml } from "../../ui-gates/src/html.mjs";
-import { cases, names, norm } from "./shared";
+import { cases, names, norm, MANUAL_CASES } from "./shared";
 
 const rendered: { id: string; html: string }[] = [];
 
@@ -94,6 +94,27 @@ for (const name of names) {
     }
   });
 }
+
+test("parity react = svelte = vue = solid: hand-written compositions", async () => {
+  const { render } = await import("svelte/server");
+  const { createSSRApp, h } = await import("vue");
+  const { renderToString: vueSSR } = await import("@vue/server-renderer");
+  const { createComponent } = await import("solid-js");
+  const { renderToString: solidSSR } = await import("solid-js/web");
+  const L = await import("../solid/src/compose/index.ts");
+  for (const { name, props } of MANUAL_CASES) {
+    const { className, ...rest } = props as Record<string, unknown> & { className?: string };
+    const S = (await import(`../svelte/src/compose/${name}.svelte`)).default;
+    const V = (await import(`../vue/src/compose/${name}.vue`)).default;
+    const r = renderToStaticMarkup(createElement((R as Record<string, never>)[name], props as never));
+    const want = norm(r);
+    expect(norm(render(S, { props: { ...rest, class: className } }).body), `svelte ${name} ${JSON.stringify(props)}`).toBe(want);
+    expect(norm(await vueSSR(createSSRApp({ render: () => h(V, { ...rest, class: className }) }))), `vue ${name} ${JSON.stringify(props)}`).toBe(want);
+    expect(norm(solidSSR(() => createComponent((L as Record<string, never>)[name], { ...rest, class: className } as never))), `solid ${name} ${JSON.stringify(props)}`).toBe(want);
+    // SheetTrigger aria-controls needs its target in the document
+    rendered.push({ id: `${name} ${JSON.stringify(props)}`, html: props.controls ? `${r}<div id="${props.controls}">Menu</div>` : r });
+  }
+});
 
 test("recipes: colors only by tokens, 8 + 4 grid without half steps", () => {
   const all = Object.values(RECIPES).flatMap((r) => [r.base, ...Object.values(r.byKey).flatMap(Object.values), ...(r.compound ?? []).map((c) => c.class)]).join(" ").split(/\s+/);
