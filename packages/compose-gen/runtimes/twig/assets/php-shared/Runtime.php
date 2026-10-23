@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UI8Kit\{{RUNTIME}};
+namespace CodegenX\Organisms\{{RUNTIME}};
 
 /**
  * The helpers of the generated templates. Values are the JSON shapes of the TypeScript props (string, int/float,
@@ -718,7 +718,7 @@ final class Runtime
     /** the inner markup of a Lucide glyph: its nodes with attributes in name order (circle for an unknown name) */
     public function lucide(mixed $name): string
     {
-        $icons = $this->json('ui/lucide-icon/lucide-icons.json')['icons'];
+        $icons = $this->json('icons/lucide-icons.json')['icons'];
         $nodes = $icons[self::s($name)] ?? $icons['circle'];
         $out = '';
         foreach ($nodes as [$tag, $attrs]) {

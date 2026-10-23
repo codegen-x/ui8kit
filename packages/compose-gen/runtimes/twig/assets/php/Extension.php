@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UI8Kit\Twig;
+namespace CodegenX\Organisms\Twig;
 
 use Twig\Environment;
 use Twig\Extension\AbstractExtension;
@@ -10,10 +10,10 @@ use Twig\Loader\FilesystemLoader;
 use Twig\TwigFunction;
 
 /**
- * The ui_* functions of the generated templates. Register it on an Environment whose loader has the package folder
+ * The og_* functions (organism templates) of the generated templates. Register it on an Environment whose loader has the package folder
  * as a root (templates are included as ui/<brick>/<part>.html.twig and blocks/<organism>.html.twig).
  */
-final class Extension extends AbstractExtension
+final class OrganismExtension extends AbstractExtension
 {
     private Runtime $rt;
 
@@ -41,13 +41,13 @@ final class Extension extends AbstractExtension
         ];
         $fns = [];
         foreach ($static as $name) {
-            $fns[] = new TwigFunction('ui_' . $name, [Runtime::class, lcfirst(str_replace('_', '', ucwords($name, '_')))]);
+            $fns[] = new TwigFunction('og_' . $name, [Runtime::class, lcfirst(str_replace('_', '', ucwords($name, '_')))]);
         }
-        $fns[] = new TwigFunction('ui_attr_html', [Runtime::class, 'attrHtml'], ['is_safe' => ['html']]);
-        $fns[] = new TwigFunction('ui_compose', [$this->rt, 'compose']);
-        $fns[] = new TwigFunction('ui_recipe', [$this->rt, 'recipe']);
-        $fns[] = new TwigFunction('ui_preset', [$this->rt, 'preset']);
-        $fns[] = new TwigFunction('ui_lucide', [$this->rt, 'lucide'], ['is_safe' => ['html']]);
+        $fns[] = new TwigFunction('og_attr_html', [Runtime::class, 'attrHtml'], ['is_safe' => ['html']]);
+        $fns[] = new TwigFunction('og_compose', [$this->rt, 'compose']);
+        $fns[] = new TwigFunction('og_recipe', [$this->rt, 'recipe']);
+        $fns[] = new TwigFunction('og_preset', [$this->rt, 'preset']);
+        $fns[] = new TwigFunction('og_lucide', [$this->rt, 'lucide'], ['is_safe' => ['html']]);
         return $fns;
     }
 }

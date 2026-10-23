@@ -10,7 +10,8 @@ import type { Parts } from "./screens/src/validate-view";
 
 interface PrimProp { name: string; html: string; react: string; type: string; required: boolean; passthrough: boolean; enum?: string[]; docs?: string }
 interface PrimPart { name: string; acceptsClass: boolean; acceptsChildren: boolean; acceptsAttrs: boolean; props: PrimProp[] }
-type Def = { name: string; type: string; passthrough?: boolean; cva?: boolean; cvaKey?: string; required?: boolean; attr?: string };
+type Def = { name: string; type: string; passthrough?: boolean; cva?: boolean; cvaKey?: string; required?: boolean; attr?: string; param?: string };
+// `param`: the parameter name of the Twig / Latte composition (the camelCase name of the v3 primitive, the recipe key)
 // `attr`: the HTML attribute a native prop is (the server runtimes pass it with the free attributes; the JS ones as a prop)
 
 const PRIMS: Record<string, PrimPart> = Object.fromEntries(
@@ -26,7 +27,7 @@ const NATIVE: Record<string, Def[]> = {
   Input: [{ name: "Autocomplete", type: "string", passthrough: true, attr: "autocomplete" }, { name: "AriaLabel", type: "string", passthrough: true, attr: "aria-label" }],
   Select: [{ name: "AriaLabel", type: "string", passthrough: true, attr: "aria-label" }],
   SelectOption: [{ name: "Label", type: "string", passthrough: true, attr: "label" }],
-  Icon: [{ name: "Name", type: "string" }],
+  Icon: [{ name: "Name", type: "string", param: "name" }],
 };
 /** props whose value is a number in the organism specs (the v3 primitive takes the string form) */
 const INT = new Set(["Range.Min", "Range.Max", "Textarea.Rows", "LucideIcon.Size"]);
@@ -42,18 +43,18 @@ export function partsFromKit(): Parts {
     if (m.recipe && !recipe) throw new Error(`parts: ${name}: recipe ${m.recipe} missing`);
     const props: Def[] = [];
     const add = (d: Def) => { if (!props.some((p) => p.name === d.name)) props.push(d); };
-    for (const k of recipe?.keys ?? []) add({ name: pascal(k), type: "string", cva: true, ...(pascal(k).toLowerCase() !== k ? { cvaKey: k } : {}) });
-    if (m.tagFrom) add({ name: m.tagFrom.prop, type: m.tagFrom.heading ? "int" : "string" });
+    for (const k of recipe?.keys ?? []) add({ name: pascal(k), type: "string", cva: true, param: k, ...(pascal(k).toLowerCase() !== k ? { cvaKey: k } : {}) });
+    if (m.tagFrom) add({ name: m.tagFrom.prop, type: m.tagFrom.heading ? "int" : "string", param: m.tagFrom.prop.toLowerCase() });
     for (const p of prim.props) {
       if (p.name === "Tag" && (m.tag || m.tagFrom)) continue;
       if (m.fixed && Object.keys(m.fixed).some((f) => f.toLowerCase() === p.html)) continue;
-      add({ name: p.name, type: INT.has(`${name}.${p.name}`) ? "int" : p.type, passthrough: p.passthrough });
+      add({ name: p.name, type: INT.has(`${name}.${p.name}`) ? "int" : p.type, passthrough: p.passthrough, param: p.react.includes("-") ? p.name[0]!.toLowerCase() + p.name.slice(1) : p.react });
     }
     for (const [a, t] of Object.entries(m.attrs ?? {})) add({ name: pascal(a), type: t === "number" ? "int" : "string", passthrough: true, attr: a.toLowerCase() });
     for (const d of NATIVE[m.primitive] ?? []) add(d);
-    if (prim.acceptsClass) add({ name: "Class", type: "string" });
-    if (prim.acceptsChildren) add({ name: "Children", type: "children" });
-    if (prim.acceptsAttrs) add({ name: "Attrs", type: "attrs" });
+    if (prim.acceptsClass) add({ name: "Class", type: "string", param: "class" });
+    if (prim.acceptsChildren) add({ name: "Children", type: "children", param: "children" });
+    if (prim.acceptsAttrs) add({ name: "Attrs", type: "attrs", param: "attrs" });
     const recipes = recipe ? { [m.recipe!]: recipe } : {};
     const part = { name, props, recipeId: m.recipe };
     out[name] = { brick: { id: `compose.${name}`, dir: "compose", file: name, docs: "", parts: [part], recordTypes: [], recipes, recipeFiles: {} }, part } as never;

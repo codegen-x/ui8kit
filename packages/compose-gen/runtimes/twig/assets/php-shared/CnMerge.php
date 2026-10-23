@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace UI8Kit\{{RUNTIME}};
+namespace CodegenX\Organisms\{{RUNTIME}};
 
 /**
  * cn: clsx-joined class fragments with tailwind-merge conflict resolution (the last class of a group wins, and a

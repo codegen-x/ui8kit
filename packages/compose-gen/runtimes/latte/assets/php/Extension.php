@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace UI8Kit\Latte;
+namespace CodegenX\Organisms\Latte;
 
 use Latte\Engine;
 use Latte\Loaders\FileLoader;
 use Latte\Runtime\Html;
 
 /**
- * The ui_* functions of the generated templates. engine() makes a Latte Engine over the package folder (templates are
- * rendered as ui/<brick>/<part>.latte and blocks/<organism>.latte) with the functions registered. ui_include renders
+ * The og_* functions (organism templates) of the generated templates. engine() makes a Latte Engine over the package folder (templates are
+ * rendered as ui/<brick>/<part>.latte and blocks/<organism>.latte) with the functions registered. og_include renders
  * another template with only the given variables and returns its markup.
  */
-final class Extension extends \Latte\Extension
+final class OrganismExtension extends \Latte\Extension
 {
     private Runtime $rt;
 
@@ -43,14 +43,14 @@ final class Extension extends \Latte\Extension
         ];
         $fns = [];
         foreach ($static as $name) {
-            $fns['ui_' . $name] = [Runtime::class, lcfirst(str_replace('_', '', ucwords($name, '_')))];
+            $fns['og_' . $name] = [Runtime::class, lcfirst(str_replace('_', '', ucwords($name, '_')))];
         }
-        $fns['ui_attr_html'] = fn (mixed $a): Html => new Html(Runtime::attrHtml($a));
-        $fns['ui_compose'] = [$this->rt, 'compose'];
-        $fns['ui_recipe'] = [$this->rt, 'recipe'];
-        $fns['ui_preset'] = [$this->rt, 'preset'];
-        $fns['ui_lucide'] = fn (mixed $name): Html => new Html($this->rt->lucide($name));
-        $fns['ui_include'] = fn (string $template, array $vars = []): Html => new Html($this->engine->renderToString($template, $vars));
+        $fns['og_attr_html'] = fn (mixed $a): Html => new Html(Runtime::attrHtml($a));
+        $fns['og_compose'] = [$this->rt, 'compose'];
+        $fns['og_recipe'] = [$this->rt, 'recipe'];
+        $fns['og_preset'] = [$this->rt, 'preset'];
+        $fns['og_lucide'] = fn (mixed $name): Html => new Html($this->rt->lucide($name));
+        $fns['og_include'] = fn (string $template, array $vars = []): Html => new Html($this->engine->renderToString($template, $vars));
         return $fns;
     }
 }

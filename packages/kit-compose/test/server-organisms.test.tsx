@@ -45,12 +45,16 @@ const json = (cmd: string, args: string[], input: unknown) =>
 const SRV = path.join(ROOT, "test/server");
 const VENV_PY = path.join(SRV, ".venv/bin/python");
 const PY = process.env.PYTHON ?? (existsSync(VENV_PY) ? VENV_PY : "python3");
+const php = spawnSync("php", ["-v"], { stdio: "ignore" }).status === 0 && existsSync(path.join(SRV, "vendor/autoload.php")) ? null : "php or test/server/vendor missing (composer install -d packages/kit-compose/test/server)";
+const phpRender = (rt: string, ext: string) => json("php", [path.join(SRV, "render-organisms.php"), rt, path.join(KIT, `${rt}/src`), path.join(ROOT, `${rt}/src`)],
+  cases.map((c) => ({ template: `blocks/${fileName(c.organism)}${ext}`, p: c.props })));
 const RUN: Record<ServerOrgRuntime, { missing: () => string | null; render: () => string[] }> = {
   jinja2: {
     missing: () => (ok(PY, ["-c", "import jinja2"]) ? null : `${PY} with Jinja2 not found`),
     render: () => json(PY, [path.join(SRV, "render-organisms.py"), path.join(KIT, "jinja2/src"), path.join(ROOT, "jinja2/src")],
       cases.map((c) => ({ template: `blocks/${fileName(c.organism)}.html.j2`, p: c.props }))),
   },
+  twig: { missing: () => php, render: () => phpRender("twig", ".html.twig") },
 };
 
 for (const rt of SERVER_ORG_RT) {

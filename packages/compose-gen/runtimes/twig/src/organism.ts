@@ -19,7 +19,7 @@ export interface TwigOrgDeps {
   /** the template of a part (default: the v2 brick layout ui/<dir>/<part>) */
   partTemplate?: (ref: PartRef, d: Dialect) => string;
   /** how a part is called (default: include with `p` = the props by canonical name and `children`) */
-  callPart?: (template: string, props: Array<[string, string]>, children: string | null, d: Dialect) => string;
+  callPart?: (template: string, props: Array<[string, string]>, children: string | null, d: Dialect, ref: PartRef) => string;
 }
 
 const ident = (name: string): string => name.replace(/[^A-Za-z0-9_]/g, "_");
@@ -136,7 +136,7 @@ function withScope<T>(c: Ctx, names: Array<[string, string]>, f: () => T): T {
 const walk = (nodes: ViewNode[], c: Ctx): string[] => nodes.flatMap((n) => node(n, c));
 
 /** children rendered into a variable first, then the include */
-function call(template: string, props: Array<[string, string]>, children: string[], c: Ctx, dynamic = false, custom?: TwigOrgDeps["callPart"]): string[] {
+function call(template: string, props: Array<[string, string]>, children: string[], c: Ctx, dynamic = false, custom?: TwigOrgDeps["callPart"], ref?: PartRef): string[] {
   const d = c.d;
   if (custom) {
     const pre: string[] = [];
@@ -147,7 +147,7 @@ function call(template: string, props: Array<[string, string]>, children: string
       pre.push(open, ...pad(children), close);
       child = d.v(name);
     }
-    return [...pre, custom(template, props, child, d)];
+    return [...pre, custom(template, props, child, d, ref!)];
   }
   const vars: Array<[string, string]> = [["p", d.hash(props)]];
   const pre: string[] = [];
@@ -181,7 +181,7 @@ function node(n: ViewNode, c: Ctx): string[] {
       props.push([ap.name, `og_attrs(${d.list(attrs.flatMap(([k, v]) => [d.str(k), printValue(v, c)]))})`]);
     }
     const template = c.deps.partTemplate ? c.deps.partTemplate(ref, d) : partTemplate(ref.brick, ref.part, d);
-    return call(template, props, walk(n.children ?? [], c), c, false, c.deps.callPart);
+    return call(template, props, walk(n.children ?? [], c), c, false, c.deps.callPart, ref);
   }
   if ("text" in n) return [d.out(`og_text(${printValue(n.text, c)})`)];
   if ("when" in n) {
