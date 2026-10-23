@@ -34,7 +34,7 @@ test("generated organisms are up to date", () => {
 /**
  * Known gaps of the installed kit (UI8Kit 3.2.0), reported, not hidden: the v3 Text tag allowlist has no <del>, so the
  * compare-at price of ProductPrice / ProductCard (spec Tag "del") renders the Text fallback <p> (line-through class kept).
- * Fix upstream: del/ins in the Text tags of ui8kit/codegen, then a kit update.
+ * Fixed upstream (ui8kit/codegen 4f0eeef, registry 3.2.2 unpublished): stays here until the kit is reinstalled.
  */
 const KNOWN_KIT_GAPS: Record<string, RegExp> = { 'tag "del" is not an HTML5 Box/Text tag': /\/(product-card|product-price)\.(tsx|svelte|vue)$/ };
 
@@ -89,6 +89,9 @@ test(`parity react = svelte = vue = solid: every gallery block case`, async () =
       try { const html = norm(await f()); if (html !== want) problems.push(`${c.label} ${rt} differs:\n${firstDiff(want, html, rt)}`); }
       catch (e) { problems.push(`${c.label} ${rt}: ${(e as Error).message}`); }
     }
+    // rules: a Lucide glyph only inside the Icon primitive (span[data-slot=icon] > svg)
+    const svgs = raw.match(/<svg[\s>]/g)?.length ?? 0, framed = raw.match(/<span[^>]*data-slot="icon"[^>]*><svg[\s>]/g)?.length ?? 0;
+    if (svgs !== framed) problems.push(`${c.label}: ${svgs - framed} svg outside the Icon primitive`);
     rendered.push({ id: c.label, html: doc(c.label, raw) });
   }
   if (problems.length) console.error(`${problems.length} problems\n` + problems.slice(0, 40).join("\n"));

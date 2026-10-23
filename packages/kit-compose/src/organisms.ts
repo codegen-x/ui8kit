@@ -2,7 +2,7 @@
 // of Svelte, React, Vue and Solid, with the bricks resolved to the kit-compose compositions (../compose, same API as the former
 // bricks) instead of the legacy packages/<runtime>/ui primitives. Per runtime: <runtime>/src/{blocks,components} (the organisms
 // and their record types), presets/ (frame geometry read by the `preset` op), utils/ (the expression helpers: tpl, fmtMoney,
-// variants, ...), icons/ (LucideIcon by name + the glyph registry; svg is on the raw allowlist). bun src/organisms.ts [--check]
+// variants, ...), icons/ (LucideIcon by name inside the Icon primitive + the glyph registry; svg is on the raw allowlist). bun src/organisms.ts [--check]
 import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, rmSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -68,7 +68,8 @@ export function runtimeFiles(r: JsRuntime, loaded = loadOrganisms()): Map<string
   const walk = (rel: string): string[] => readdirSync(path.join(utils, rel), { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))
     .flatMap((e) => (e.isDirectory() ? walk(path.join(rel, e.name)) : [path.join(rel, e.name)]));
   for (const f of walk("")) out.set(`${r}/src/utils/${f}`, banner(f, readFileSync(path.join(utils, f), "utf8")));
-  const icon = readFileSync(path.join(XGEN, `runtimes/${r}/assets/${ICON_ASSET[r]}`), "utf8").replaceAll(`"../../utils"`, `"../utils"`);
+  // owned by kit-compose: the glyph inside the Icon primitive (the LucideIcon composition)
+  const icon = readFileSync(path.join(root, `src/assets/${r}/${ICON_ASSET[r]}`), "utf8");
   out.set(`${r}/src/icons/${ICON_ASSET[r]}`, banner(ICON_ASSET[r], icon));
   out.set(`${r}/src/icons/lucide-icons.ts`, lucideRegistry());
   out.set(`${r}/src/organisms.ts`, `// ${HEAD}\n${barrel.join("\n")}\n`);
