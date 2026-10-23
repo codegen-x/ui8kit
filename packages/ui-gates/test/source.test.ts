@@ -1,5 +1,5 @@
 import { expect, test } from "bun:test";
-import { checkSourceText } from "../src/source.mjs";
+import { PRIMITIVE_OF, RAW_ALLOWED, checkSourceText } from "../src/source.mjs";
 
 const rules = (src: string, file: string, allow?: string[]) => checkSourceText(src, file, { allow }).map((p: { rule: string; message: string }) => `${p.rule} ${p.message}`);
 
@@ -22,4 +22,11 @@ test("Box/Text tag only from the HTML5 allowlist (literal values)", () => {
   expect(rules(`const A = () => <Box tag="button" />;`, "a.tsx")).toEqual([`tag-allowlist tag "button" is not an HTML5 Box/Text tag`]);
   expect(rules(`@box.Box(box.BoxProps{Tag: "custom-el"})`, "a.templ")).toEqual([`tag-allowlist tag "custom-el" is not an HTML5 Box/Text tag`]);
   expect(rules(`{% include 'box.twig' with { tag: 'main' } %}`, "a.twig")).toEqual([]);
+});
+
+test("svg, br, datalist and output stay raw (allowlist, no primitive)", () => {
+  expect(RAW_ALLOWED).toEqual(["svg", "br", "datalist", "output"]);
+  for (const t of RAW_ALLOWED) expect(Object.keys(PRIMITIVE_OF)).not.toContain(t);
+  const src = `export const X = () => (<Text>a<br />b<svg viewBox="0 0 24 24"><path d="M0 0" /></svg><datalist id="d"></datalist><output>1</output></Text>);`;
+  expect(rules(src, "x.tsx")).toEqual([]);
 });

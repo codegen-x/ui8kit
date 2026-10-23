@@ -16,6 +16,16 @@ export const PRIMITIVE_OF = {
   option: "SelectOption", optgroup: "SelectOptGroup", img: "Image", picture: "Picture", source: "Source", dialog: "Dialog", details: "Disclosure",
   summary: "Summary", meter: "Meter", progress: "Progress", hr: "Separator",
 };
+/**
+ * Raw elements allowed on purpose: no UI8Kit 3 primitive, none planned (decision 2026-10-24). They carry no recipe or
+ * theme classes of their own, so a primitive would only wrap the tag.
+ *   svg (+ its children)  inline vector markup (Lucide icons); the Icon primitive frames it, the paths stay raw
+ *   br                    line break inside Text; no attributes, no styling
+ *   datalist              suggestions for an Input `list`; options are not rendered as UI
+ *   output                live result of a Form calculation; style it like Text via class
+ * The source gate only reports elements of PRIMITIVE_OF; these four are kept out of it (test pins that).
+ */
+export const RAW_ALLOWED = ["svg", "br", "datalist", "output"];
 export const BOX_TAGS = ["div", "section", "article", "aside", "header", "footer", "main", "nav", "figure", "search", "ul", "ol", "li", "dl", "dt", "dd", "fieldset", "table", "thead", "tbody", "tfoot", "tr", "th", "td", "caption", "colgroup", "col"];
 export const TEXT_TAGS = ["p", "span", "h1", "h2", "h3", "h4", "h5", "h6", "blockquote", "figcaption", "pre", "code", "small", "strong", "em", "time", "legend"];
 

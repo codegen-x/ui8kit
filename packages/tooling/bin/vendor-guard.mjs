@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 // Fails fast when the ui8kit/codegen submodule is missing: the bricks (xgen/specs/ui, xgen/specs/assets), the shared TS
-// utilities (xgen/runtimes/core/assets/ts) and the base styles (kit.css, theme.css) are symlinks into vendor/codegen.
+// utilities (xgen/runtimes/core/assets/ts) and kit.css are symlinks into vendor/codegen. theme.css is owned by codegen-x
+// (UI8Kit 3 codegen ships no theme; forked for --destructive-foreground).
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";

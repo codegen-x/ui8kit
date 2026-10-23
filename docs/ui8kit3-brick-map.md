@@ -87,3 +87,18 @@ Server compositions (one template per composition, no logic; props by one helper
 | templ | `templ/src/compose/<kebab>.templ`, `compose.StackProps{Gap: "4", BoxProps: box.BoxProps{...}}` | `compose.go` (`Rc`, `Join`, `Heading`) | `templ/go.mod` + `templ/kitmod` (go.mod of the installed kit, `ui/` `utils/` symlinks) |
 
 Props on the servers: recipe keys (`variant`, `size`, ...; PascalCase in Jinja2 `p` and templ), `tag` / `as`, `class`, `attrs` (aria-*, data-*), plus every prop of the primitive. Known kit bug seen through Image `variant=logo` (registry 3.2.0 server cn merge lacks object-fit): asserted in `KNOWN_KIT_BUGS`, fixed in registry 3.2.2 (unpublished).
+
+## Raw elements without a primitive (allowlist)
+
+`svg` (with its children), `br`, `datalist` and `output` have no UI8Kit 3 primitive and get none (decision 2026-10-24).
+They carry no recipe or theme classes of their own, so a primitive would only wrap the tag:
+
+| Element | Use | Why raw |
+| --- | --- | --- |
+| `svg` | inline vector markup (Lucide icons) | the Icon primitive frames it; paths stay raw |
+| `br` | line break inside Text | no attributes, no styling |
+| `datalist` | suggestions for an Input `list` | its options are not rendered as UI |
+| `output` | live result of a Form calculation | styled like Text via `class` |
+
+The list is `RAW_ALLOWED` in `packages/ui-gates/src/source.mjs`; the source gate never reports them, and
+`packages/ui-gates/test/source.test.ts` pins that none of them enters `PRIMITIVE_OF`.

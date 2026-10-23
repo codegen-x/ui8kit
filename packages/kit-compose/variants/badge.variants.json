@@ -19,7 +19,7 @@
       "default": "bg-primary text-primary-foreground inset-ring-primary",
       "secondary": "bg-muted text-foreground inset-ring-transparent",
       "outline": "bg-transparent text-foreground inset-ring-border",
-      "destructive": "bg-destructive text-primary-foreground inset-ring-transparent focus-visible:ring-destructive/20 dark:bg-destructive/60 dark:focus-visible:ring-destructive/40"
+      "destructive": "bg-destructive text-destructive-foreground inset-ring-transparent focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40"
     }
   },
   "compound": []

@@ -16,7 +16,7 @@
       "accent": "bg-accent text-accent-foreground",
       "secondary": "bg-secondary text-secondary-foreground",
       "outline": "text-foreground inset-ring inset-ring-border",
-      "destructive": "bg-destructive text-primary-foreground dark:bg-destructive/60"
+      "destructive": "bg-destructive text-destructive-foreground"
     },
     "size": {
       "xs": "size-6 text-xs",
