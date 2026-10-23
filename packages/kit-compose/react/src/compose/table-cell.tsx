@@ -8,5 +8,5 @@ export type TableCellProps = Omit<ComponentProps<typeof Prim>, "tag"> & { classN
 
 /** TableCell: Box <td> + recipe table-cell. */
 export function TableCell({ className, ...rest }: TableCellProps) {
-  return <Prim tag={"td" as never} className={cn(rc("table-cell", {  }), className)} {...(rest as object)} />;
+  return <Prim tag={"td" as never} className={cn(rc("table-cell", {  }), className)} {...rest} />;
 }

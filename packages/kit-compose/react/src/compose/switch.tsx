@@ -8,5 +8,5 @@ export type SwitchProps = Omit<ComponentProps<typeof Prim>, "tag" | "size"> & { 
 
 /** Switch: Switch + recipe switch. */
 export function Switch({ "size": v_size, className, ...rest }: SwitchProps) {
-  return <Prim className={cn(rc("switch", { "size": v_size }), className)} {...(rest as object)} />;
+  return <Prim className={cn(rc("switch", { "size": v_size }), className)} {...rest} />;
 }

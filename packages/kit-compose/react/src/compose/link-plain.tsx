@@ -8,5 +8,5 @@ export type LinkPlainProps = Omit<ComponentProps<typeof Prim>, "tag"> & { classN
 
 /** LinkPlain: Link + recipe link-plain. */
 export function LinkPlain({ className, ...rest }: LinkPlainProps) {
-  return <Prim className={cn(rc("link-plain", {  }), className)} {...(rest as object)} />;
+  return <Prim className={cn(rc("link-plain", {  }), className)} {...rest} />;
 }

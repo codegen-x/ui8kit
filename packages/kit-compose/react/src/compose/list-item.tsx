@@ -8,5 +8,5 @@ export type ListItemProps = Omit<ComponentProps<typeof Prim>, "tag"> & { classNa
 
 /** ListItem: Box <li>. */
 export function ListItem({ className, ...rest }: ListItemProps) {
-  return <Prim tag={"li" as never} className={cn(className)} {...(rest as object)} />;
+  return <Prim tag={"li" as never} className={cn(className)} {...rest} />;
 }

@@ -8,5 +8,5 @@ export type ImageProps = Omit<ComponentProps<typeof Prim>, "tag" | "aspect" | "f
 
 /** Image: Image + recipe image. */
 export function Image({ "aspect": v_aspect, "fit": v_fit, "position": v_position, "size": v_size, "variant": v_variant, className, ...rest }: ImageProps) {
-  return <Prim className={cn(rc("image", { "aspect": v_aspect, "fit": v_fit, "position": v_position, "size": v_size, "variant": v_variant }), className)} {...(rest as object)} />;
+  return <Prim className={cn(rc("image", { "aspect": v_aspect, "fit": v_fit, "position": v_position, "size": v_size, "variant": v_variant }), className)} {...rest} />;
 }

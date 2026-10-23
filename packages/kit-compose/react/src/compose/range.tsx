@@ -8,5 +8,5 @@ export type RangeProps = Omit<ComponentProps<typeof Prim>, "tag"> & { className?
 
 /** Range: Input + recipe range. */
 export function Range({ className, ...rest }: RangeProps) {
-  return <Prim className={cn(rc("range", {  }), className)} type="range" {...(rest as object)} />;
+  return <Prim className={cn(rc("range", {  }), className)} type="range" {...rest} />;
 }

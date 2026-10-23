@@ -8,5 +8,5 @@ export type BoxProps = Omit<ComponentProps<typeof Prim>, "tag"> & { tag?: string
 
 /** Box: Box + recipe box. */
 export function Box({ tag, className, ...rest }: BoxProps) {
-  return <Prim tag={(tag ?? "div") as never} className={cn(rc("box", {  }), className)} {...(rest as object)} />;
+  return <Prim tag={(tag ?? "div") as never} className={cn(rc("box", {  }), className)} {...rest} />;
 }

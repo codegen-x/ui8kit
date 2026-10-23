@@ -75,4 +75,4 @@ Prop placement, checked against ui8kit/codegen v0.1.0: as there, `variant` / `si
 Not lowered yet (hand-written compositions to build): Breadcrumb (Box nav + list + Link + Text aria-current), ThemeToggle (Button + Icon, aria-pressed), SheetTrigger/SheetClose (Button + Icon controlling Dialog), Break (`<br>` has no primitive: allowlisted raw tag), DataList/DataOption/Output (no primitive: allowlisted), Picture/Source (v3 Image module).
 
 Recipe changes against xgen: `text-white` on destructive Button/Badge/IconBadge -> `text-primary-foreground` (colors only by tokens; there is no destructive-foreground token in theme.css yet: contrast to be reviewed).
-Runtimes built now: react, svelte (DOM parity + html-validate + axe in `packages/kit-compose/test`). Next: vue, solid, templ, twig, latte, jinja2.
+Runtimes built now: react, svelte, vue, solid (DOM parity of all four, html-validate + axe on every case, typecheck: tsc, vue-tsc, svelte-check; 8 + 4 with the controls exception). Next: templ, twig, latte, jinja2 (recipes in Go/PHP/Python + real-engine parity), hand-written Breadcrumb, ThemeToggle, SheetTrigger.

@@ -8,5 +8,5 @@ export type ProgressProps = Omit<ComponentProps<typeof Prim>, "tag" | "size" | "
 
 /** Progress: Progress + recipe progress. */
 export function Progress({ "size": v_size, "variant": v_variant, className, ...rest }: ProgressProps) {
-  return <Prim className={cn(rc("progress", { "size": v_size, "variant": v_variant }), className)} {...(rest as object)} />;
+  return <Prim className={cn(rc("progress", { "size": v_size, "variant": v_variant }), className)} {...rest} />;
 }

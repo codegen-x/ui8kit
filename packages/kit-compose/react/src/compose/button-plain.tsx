@@ -8,5 +8,5 @@ export type ButtonPlainProps = Omit<ComponentProps<typeof Prim>, "tag"> & { clas
 
 /** ButtonPlain: Button + recipe button-plain. */
 export function ButtonPlain({ className, ...rest }: ButtonPlainProps) {
-  return <Prim className={cn(rc("button-plain", {  }), className)} {...(rest as object)} />;
+  return <Prim className={cn(rc("button-plain", {  }), className)} {...rest} />;
 }

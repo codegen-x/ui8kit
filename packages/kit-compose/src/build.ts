@@ -13,7 +13,7 @@ const VOID = new Set(["Input", "Checkbox", "Radio", "Switch", "Separator", "Imag
 const DIR: Record<string, string> = { Summary: "disclosure", SelectOption: "select", SelectOptGroup: "select" };
 const dirOf = (p: string) => DIR[p] ?? p.toLowerCase();
 const kebab = (s: string) => s.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
-const RT = ["react", "svelte"] as const;
+const RT = ["react", "svelte", "vue", "solid"] as const;
 
 const items = Object.entries(BRICKS).filter(([, m]) => m.recipe || m.extra || m.tag || m.tagFrom) as [string, BrickMap][];
 
@@ -67,7 +67,7 @@ export type ${name}Props = Omit<ComponentProps<typeof Prim>, ${["tag", ...keys].
 
 /** ${name}: ${p}${m.tag ? ` <${m.tag}>` : ""}${m.recipe ? ` + recipe ${m.recipe}` : ""}. */
 export function ${name}({ ${destr} }: ${name}Props) {
-  return <Prim${tag} className={${clsExpr(m, "className")}}${fixedAttrs(m).map(([k, v]) => ` ${k}=${JSON.stringify(v)}`).join("")} {...(rest as object)} />;
+  return <Prim${tag} className={${clsExpr(m, "className")}}${fixedAttrs(m).map(([k, v]) => ` ${k}=${JSON.stringify(v)}`).join("")} {...rest} />;
 }
 `;
 }
@@ -80,16 +80,75 @@ function svelte(name: string, m: BrickMap): string {
   return `<!-- ${HEAD} -->
 <!-- ${name}: ${p}${m.tag ? ` <${m.tag}>` : ""}${m.recipe ? ` + recipe ${m.recipe}` : ""}. -->
 <script lang="ts">
-  import type { Snippet } from "svelte";
+  import type { ComponentProps, Snippet } from "svelte";
   import Prim from "../../../../kit/svelte/src/ui/${dirOf(p)}/${p}.svelte";
   import { cn } from "../../../../kit/svelte/src/utils";
   import { rc } from "./recipes";
 
-  let { ${destr} }: { ${[...keys.map((k) => `${JSON.stringify(k)}?: string | number`), ...(tp ? [`${tp}?: string | number`] : []), "class?: string", "children?: Snippet", "[key: string]: unknown"].join("; ")} } = $props();
+  let { ${destr} }: ComponentProps<typeof Prim> & { ${[...keys.map((k) => `${JSON.stringify(k)}?: string | number`), ...(tp ? [`${tp}?: string | number`] : []), "class?: string", "children?: Snippet"].join("; ")} } = $props();
   const cls = $derived(${clsExpr(m, "className")});
 </script>
 
 ${VOID.has(p) ? `${open} />` : `${open}>{@render children?.()}</Prim>`}
+`;
+}
+
+function vue(name: string, m: BrickMap): string {
+  const p = m.primitive, tp = tagProp(m), keys = keysOf(m);
+  const req = m.required ?? [];
+  const propsT = [...keys.map((k) => `${JSON.stringify(k)}?: string | number`), ...(tp ? [`${tp}?: string | number`] : []), ...req.map((k) => `${k}: string`)].join("; ");
+  const ref = (k: string) => `props[${JSON.stringify(k)}]`;
+  const cls = `cn(${[m.recipe ? `rc("${m.recipe}", { ${keys.map((k) => `${JSON.stringify(k)}: ${ref(k)}`).join(", ")} })` : "", m.extra ? JSON.stringify(m.extra) : "", "attrs.class as string | undefined"].filter(Boolean).join(", ")})`;
+  const tag = m.tag || m.tagFrom ? ` :tag="tagValue as never"` : "";
+  const tagJs = m.tagFrom?.heading ? `(props.as && Number(props.as) >= 1 && Number(props.as) <= 6 ? \`h\${props.as}\` : "${m.tagFrom.fallback}")`
+    : m.tagFrom ? `(props.tag ?? "${m.tagFrom.fallback}")` : JSON.stringify(m.tag ?? "");
+  const open = `<Prim${tag}${req.map((k) => ` :${k}="props.${k}"`).join("")} :class="cls"${fixedAttrs(m).map(([k, v]) => ` ${k}=${JSON.stringify(v)}`).join("")} v-bind="rest"`;
+  return `<!-- ${HEAD} -->
+<!-- ${name}: ${p}${m.tag ? ` <${m.tag}>` : ""}${m.recipe ? ` + recipe ${m.recipe}` : ""}. -->
+<script setup lang="ts">
+import { computed, useAttrs } from "vue";
+import Prim from "../../../../kit/vue/src/ui/${dirOf(p)}/${p}.vue";
+import { cn } from "../../../../kit/vue/src/utils";
+import { rc } from "./recipes";
+
+defineOptions({ name: "${name}", inheritAttrs: false });
+const props = defineProps<{ ${propsT} }>();
+const attrs = useAttrs();
+const rest = computed(() => {
+  const { class: _class, ...r } = attrs;
+  return r;
+});
+const cls = computed(() => ${cls});
+const tagValue = computed(() => ${tagJs});
+</script>
+
+<template>
+  ${VOID.has(p) ? `${open} />` : `${open}><slot /></Prim>`}
+</template>
+`;
+}
+
+function solid(name: string, m: BrickMap): string {
+  const p = m.primitive, tp = tagProp(m), keys = keysOf(m);
+  const own = [...keys.map((k) => `${JSON.stringify(k)}?: string | number`), ...(tp ? [`${tp}?: ${tp === "as" ? "number | string" : "string"}`] : []), "class?: string", "className?: string"].join("; ");
+  const L = (k: string) => `local[${JSON.stringify(k)}]`;
+  const cls = `cn(${[m.recipe ? `rc("${m.recipe}", { ${keys.map((k) => `${JSON.stringify(k)}: ${L(k)}`).join(", ")} })` : "", m.extra ? JSON.stringify(m.extra) : "", "local.class ?? local.className"].filter(Boolean).join(", ")})`;
+  const tagJs = m.tagFrom?.heading ? `(local.as && Number(local.as) >= 1 && Number(local.as) <= 6 ? \`h\${local.as}\` : "${m.tagFrom.fallback}")`
+    : m.tagFrom ? `(local.tag ?? "${m.tagFrom.fallback}")` : JSON.stringify(m.tag ?? "");
+  const tag = m.tag || m.tagFrom ? ` tag={${tagJs} as never}` : "";
+  return `// ${HEAD}
+import { splitProps, type ComponentProps } from "solid-js";
+import { ${p} as Prim } from "../../../../kit/solid/src/ui/${dirOf(p)}/${dirOf(p)}.solid";
+import { cn } from "../../../../kit/solid/src/utils";
+import { rc } from "./recipes";
+
+export type ${name}Props = Omit<ComponentProps<typeof Prim>, ${["tag", "class", "className", ...keys].map((k) => JSON.stringify(k)).join(" | ")}> & { ${own} };
+
+/** ${name}: ${p}${m.tag ? ` <${m.tag}>` : ""}${m.recipe ? ` + recipe ${m.recipe}` : ""}. */
+export function ${name}(props: ${name}Props) {
+  const [local, rest] = splitProps(props, [${[...keys, ...(tp ? [tp] : []), "class", "className"].map((k) => JSON.stringify(k)).join(", ")}]);
+  return <Prim${tag} class={${cls}}${fixedAttrs(m).map(([k, v]) => ` ${k}=${JSON.stringify(v)}`).join("")} {...rest} />;
+}
 `;
 }
 
@@ -101,6 +160,8 @@ function plan(): Map<string, string> {
     const index: string[] = [`// ${HEAD}`];
     for (const [name, m] of items) {
       if (rt === "react") { files.set(`${dir}/${kebab(name)}.tsx`, react(name, m)); index.push(`export * from "./${kebab(name)}";`); }
+      else if (rt === "solid") { files.set(`${dir}/${kebab(name)}.solid.tsx`, solid(name, m)); index.push(`export * from "./${kebab(name)}.solid";`); }
+      else if (rt === "vue") { files.set(`${dir}/${name}.vue`, vue(name, m)); index.push(`export { default as ${name} } from "./${name}.vue";`); }
       else { files.set(`${dir}/${name}.svelte`, svelte(name, m)); index.push(`export { default as ${name} } from "./${name}.svelte";`); }
     }
     index.push(`export { rc, RECIPES } from "./recipes";`);

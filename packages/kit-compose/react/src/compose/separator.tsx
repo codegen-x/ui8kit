@@ -8,5 +8,5 @@ export type SeparatorProps = Omit<ComponentProps<typeof Prim>, "tag" | "orientat
 
 /** Separator: Separator + recipe separator. */
 export function Separator({ "orientation": v_orientation, "variant": v_variant, className, ...rest }: SeparatorProps) {
-  return <Prim className={cn(rc("separator", { "orientation": v_orientation, "variant": v_variant }), className)} {...(rest as object)} />;
+  return <Prim className={cn(rc("separator", { "orientation": v_orientation, "variant": v_variant }), className)} {...rest} />;
 }

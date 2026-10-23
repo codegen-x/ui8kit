@@ -8,5 +8,5 @@ export type LinkProps = Omit<ComponentProps<typeof Prim>, "tag" | "size" | "vari
 
 /** Link: Link + recipe link. */
 export function Link({ "size": v_size, "variant": v_variant, className, ...rest }: LinkProps) {
-  return <Prim className={cn(rc("link", { "size": v_size, "variant": v_variant }), className)} {...(rest as object)} />;
+  return <Prim className={cn(rc("link", { "size": v_size, "variant": v_variant }), className)} {...rest} />;
 }

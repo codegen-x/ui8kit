@@ -8,5 +8,5 @@ export type CardHeaderProps = Omit<ComponentProps<typeof Prim>, "tag"> & { class
 
 /** CardHeader: Box <div>. */
 export function CardHeader({ className, ...rest }: CardHeaderProps) {
-  return <Prim tag={"div" as never} className={cn("flex flex-col gap-2 p-6", className)} {...(rest as object)} />;
+  return <Prim tag={"div" as never} className={cn("flex flex-col gap-2 p-6", className)} {...rest} />;
 }

@@ -8,5 +8,5 @@ export type IconProps = Omit<ComponentProps<typeof Prim>, "tag" | "size" | "type
 
 /** Icon: Icon + recipe icon. */
 export function Icon({ "size": v_size, "type": v_type, className, ...rest }: IconProps) {
-  return <Prim className={cn(rc("icon", { "size": v_size, "type": v_type }), className)} {...(rest as object)} />;
+  return <Prim className={cn(rc("icon", { "size": v_size, "type": v_type }), className)} {...rest} />;
 }

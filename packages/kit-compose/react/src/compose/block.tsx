@@ -8,5 +8,5 @@ export type BlockProps = Omit<ComponentProps<typeof Prim>, "tag"> & { tag?: stri
 
 /** Block: Box + recipe block. */
 export function Block({ tag, className, ...rest }: BlockProps) {
-  return <Prim tag={(tag ?? "div") as never} className={cn(rc("block", {  }), className)} {...(rest as object)} />;
+  return <Prim tag={(tag ?? "div") as never} className={cn(rc("block", {  }), className)} {...rest} />;
 }

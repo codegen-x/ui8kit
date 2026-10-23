@@ -8,5 +8,5 @@ export type SelectProps = Omit<ComponentProps<typeof Prim>, "tag" | "size" | "va
 
 /** Select: Select + recipe select. */
 export function Select({ "size": v_size, "variant": v_variant, className, ...rest }: SelectProps) {
-  return <Prim className={cn(rc("select", { "size": v_size, "variant": v_variant }), className)} {...(rest as object)} />;
+  return <Prim className={cn(rc("select", { "size": v_size, "variant": v_variant }), className)} {...rest} />;
 }

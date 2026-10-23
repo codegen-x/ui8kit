@@ -8,5 +8,5 @@ export type TextareaProps = Omit<ComponentProps<typeof Prim>, "tag" | "size" | "
 
 /** Textarea: Textarea + recipe textarea. */
 export function Textarea({ "size": v_size, "variant": v_variant, className, ...rest }: TextareaProps) {
-  return <Prim className={cn(rc("textarea", { "size": v_size, "variant": v_variant }), className)} {...(rest as object)} />;
+  return <Prim className={cn(rc("textarea", { "size": v_size, "variant": v_variant }), className)} {...rest} />;
 }

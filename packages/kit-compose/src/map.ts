@@ -18,6 +18,8 @@ export type BrickMap = {
   fixed?: Record<string, string>;
   /** classes added after the recipe (composition the v3 primitive no longer ships) */
   extra?: string;
+  /** required props of the primitive that a Vue composition declares and forwards (Vue checks them on the component) */
+  required?: string[];
 };
 
 export const BRICKS: Record<string, BrickMap> = {
@@ -75,7 +77,7 @@ export const BRICKS: Record<string, BrickMap> = {
   Checkbox: { primitive: "Checkbox", recipe: "checkbox" },
   Radio: { primitive: "Radio", recipe: "radio" },
   Switch: { primitive: "Switch", recipe: "switch" },
-  Image: { primitive: "Image", recipe: "image" },
+  Image: { primitive: "Image", recipe: "image", required: ["alt"] },
   Separator: { primitive: "Separator", recipe: "separator" },
   Dialog: { primitive: "Dialog", recipe: "dialog" },
   Sheet: { primitive: "Dialog", recipe: "sheet" },
@@ -87,3 +89,6 @@ export const BRICKS: Record<string, BrickMap> = {
 
 /** Bricks with no single v3 primitive: hand-written compositions, not built yet (see docs/ui8kit3-brick-map.md). */
 export const COMPOSED = ["Breadcrumb", "ThemeToggle", "SheetTrigger", "SheetClose", "Break", "DataList", "DataOption", "Output", "Picture", "Source"] as const;
+
+/** Owner policy 8 + 4: the 4px step (odd Tailwind steps 1, 3, 5, ...) is allowed only inside controls; everywhere else the 8px grid. */
+export const CONTROL_RECIPES = ["button", "button-plain", "badge", "iconbadge", "input", "range", "textarea", "select", "checkbox", "radio", "switch", "link-plain", "lucide-icon", "icon"] as const;

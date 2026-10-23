@@ -8,5 +8,5 @@ export type TableHeadProps = Omit<ComponentProps<typeof Prim>, "tag"> & { classN
 
 /** TableHead: Box <thead>. */
 export function TableHead({ className, ...rest }: TableHeadProps) {
-  return <Prim tag={"thead" as never} className={cn(className)} {...(rest as object)} />;
+  return <Prim tag={"thead" as never} className={cn(className)} {...rest} />;
 }

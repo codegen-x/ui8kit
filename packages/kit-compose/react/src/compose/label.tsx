@@ -8,5 +8,5 @@ export type LabelProps = Omit<ComponentProps<typeof Prim>, "tag"> & { className?
 
 /** Label: Label + recipe label. */
 export function Label({ className, ...rest }: LabelProps) {
-  return <Prim className={cn(rc("label", {  }), className)} {...(rest as object)} />;
+  return <Prim className={cn(rc("label", {  }), className)} {...rest} />;
 }

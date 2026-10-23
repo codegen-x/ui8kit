@@ -8,5 +8,5 @@ export type CardDescriptionProps = Omit<ComponentProps<typeof Prim>, "tag"> & { 
 
 /** CardDescription: Text <p>. */
 export function CardDescription({ className, ...rest }: CardDescriptionProps) {
-  return <Prim tag={"p" as never} className={cn("text-sm text-muted-foreground", className)} {...(rest as object)} />;
+  return <Prim tag={"p" as never} className={cn("text-sm text-muted-foreground", className)} {...rest} />;
 }

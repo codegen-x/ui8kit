@@ -8,5 +8,5 @@ export type SkeletonProps = Omit<ComponentProps<typeof Prim>, "tag" | "shape"> &
 
 /** Skeleton: Box <div> + recipe skeleton. */
 export function Skeleton({ "shape": v_shape, className, ...rest }: SkeletonProps) {
-  return <Prim tag={"div" as never} className={cn(rc("skeleton", { "shape": v_shape }), className)} aria-hidden="true" {...(rest as object)} />;
+  return <Prim tag={"div" as never} className={cn(rc("skeleton", { "shape": v_shape }), className)} aria-hidden="true" {...rest} />;
 }

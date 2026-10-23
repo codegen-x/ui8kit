@@ -8,5 +8,5 @@ export type LucideIconProps = Omit<ComponentProps<typeof Prim>, "tag"> & { class
 
 /** LucideIcon: Icon + recipe lucide-icon. */
 export function LucideIcon({ className, ...rest }: LucideIconProps) {
-  return <Prim className={cn(rc("lucide-icon", {  }), className)} {...(rest as object)} />;
+  return <Prim className={cn(rc("lucide-icon", {  }), className)} {...rest} />;
 }

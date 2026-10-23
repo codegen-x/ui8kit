@@ -8,5 +8,5 @@ export type SummaryProps = Omit<ComponentProps<typeof Prim>, "tag" | "size" | "v
 
 /** Summary: Summary + recipe summary. */
 export function Summary({ "size": v_size, "variant": v_variant, className, ...rest }: SummaryProps) {
-  return <Prim className={cn(rc("summary", { "size": v_size, "variant": v_variant }), className)} {...(rest as object)} />;
+  return <Prim className={cn(rc("summary", { "size": v_size, "variant": v_variant }), className)} {...rest} />;
 }

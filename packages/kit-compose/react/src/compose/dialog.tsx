@@ -8,5 +8,5 @@ export type DialogProps = Omit<ComponentProps<typeof Prim>, "tag" | "size" | "va
 
 /** Dialog: Dialog + recipe dialog. */
 export function Dialog({ "size": v_size, "variant": v_variant, className, ...rest }: DialogProps) {
-  return <Prim className={cn(rc("dialog", { "size": v_size, "variant": v_variant }), className)} {...(rest as object)} />;
+  return <Prim className={cn(rc("dialog", { "size": v_size, "variant": v_variant }), className)} {...rest} />;
 }

@@ -8,5 +8,5 @@ export type StackProps = Omit<ComponentProps<typeof Prim>, "tag" | "gap" | "alig
 
 /** Stack: Box + recipe stack. */
 export function Stack({ "gap": v_gap, "align": v_align, "justify": v_justify, tag, className, ...rest }: StackProps) {
-  return <Prim tag={(tag ?? "div") as never} className={cn(rc("stack", { "gap": v_gap, "align": v_align, "justify": v_justify }), className)} {...(rest as object)} />;
+  return <Prim tag={(tag ?? "div") as never} className={cn(rc("stack", { "gap": v_gap, "align": v_align, "justify": v_justify }), className)} {...rest} />;
 }

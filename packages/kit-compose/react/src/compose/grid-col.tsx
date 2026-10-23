@@ -8,5 +8,5 @@ export type GridColProps = Omit<ComponentProps<typeof Prim>, "tag"> & { classNam
 
 /** GridCol: Box <div>. */
 export function GridCol({ className, ...rest }: GridColProps) {
-  return <Prim tag={"div" as never} className={cn(className)} {...(rest as object)} />;
+  return <Prim tag={"div" as never} className={cn(className)} {...rest} />;
 }

@@ -8,5 +8,5 @@ export type IconBadgeProps = Omit<ComponentProps<typeof Prim>, "tag" | "variant"
 
 /** IconBadge: Text <span> + recipe iconbadge. */
 export function IconBadge({ "variant": v_variant, "size": v_size, className, ...rest }: IconBadgeProps) {
-  return <Prim tag={"span" as never} className={cn(rc("iconbadge", { "variant": v_variant, "size": v_size }), className)} {...(rest as object)} />;
+  return <Prim tag={"span" as never} className={cn(rc("iconbadge", { "variant": v_variant, "size": v_size }), className)} {...rest} />;
 }

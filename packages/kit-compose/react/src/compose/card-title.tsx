@@ -8,5 +8,5 @@ export type CardTitleProps = Omit<ComponentProps<typeof Prim>, "tag"> & { classN
 
 /** CardTitle: Text <h3>. */
 export function CardTitle({ className, ...rest }: CardTitleProps) {
-  return <Prim tag={"h3" as never} className={cn("text-lg font-semibold text-foreground", className)} {...(rest as object)} />;
+  return <Prim tag={"h3" as never} className={cn("text-lg font-semibold text-foreground", className)} {...rest} />;
 }

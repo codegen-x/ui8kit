@@ -36,7 +36,8 @@ function markupOf(src, kind) {
 
 /** Opening tags of HTML elements in markup; for JSX only where an element can start (not `Array<string>`). */
 const OPEN = { jsx: /(?<=^|[\s(){}?:,=>&|[]|return)\s*<([a-z][a-z0-9-]*)(?=[\s/>])/gm, other: /<([a-z][a-z0-9-]*)(?=[\s/>])/g };
-const TAG_ATTR = /\b(?:tag|Tag)\s*(?:=\s*\{?\s*|:\s*)["']([^"'{}$]+)["']/g;
+// literal tag values only; Vue `:tag` / `v-bind:tag` and `{expr}` bindings are dynamic (checked on the rendered HTML)
+const TAG_ATTR = /(?<![:\w.-])(?:tag|Tag)\s*(?:=\s*\{?\s*|:\s*)["']([^"'{}$]+)["']/g;
 
 const lineOf = (s, i) => s.slice(0, i).split("\n").length;
 

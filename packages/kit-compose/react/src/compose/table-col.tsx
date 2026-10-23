@@ -8,5 +8,5 @@ export type TableColProps = Omit<ComponentProps<typeof Prim>, "tag"> & { classNa
 
 /** TableCol: Box <col>. */
 export function TableCol({ className, ...rest }: TableColProps) {
-  return <Prim tag={"col" as never} className={cn(className)} {...(rest as object)} />;
+  return <Prim tag={"col" as never} className={cn(className)} {...rest} />;
 }

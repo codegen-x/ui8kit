@@ -8,5 +8,5 @@ export type TableFootProps = Omit<ComponentProps<typeof Prim>, "tag"> & { classN
 
 /** TableFoot: Box <tfoot>. */
 export function TableFoot({ className, ...rest }: TableFootProps) {
-  return <Prim tag={"tfoot" as never} className={cn(className)} {...(rest as object)} />;
+  return <Prim tag={"tfoot" as never} className={cn(className)} {...rest} />;
 }

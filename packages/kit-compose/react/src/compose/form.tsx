@@ -8,5 +8,5 @@ export type FormProps = Omit<ComponentProps<typeof Prim>, "tag"> & { className?:
 
 /** Form: Form + recipe form. */
 export function Form({ className, ...rest }: FormProps) {
-  return <Prim className={cn(rc("form", {  }), className)} {...(rest as object)} />;
+  return <Prim className={cn(rc("form", {  }), className)} {...rest} />;
 }

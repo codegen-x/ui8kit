@@ -8,5 +8,5 @@ export type TextProps = Omit<ComponentProps<typeof Prim>, "tag" | "size" | "weig
 
 /** Text: Text + recipe text. */
 export function Text({ "size": v_size, "weight": v_weight, tag, className, ...rest }: TextProps) {
-  return <Prim tag={(tag ?? "p") as never} className={cn(rc("text", { "size": v_size, "weight": v_weight }), className)} {...(rest as object)} />;
+  return <Prim tag={(tag ?? "p") as never} className={cn(rc("text", { "size": v_size, "weight": v_weight }), className)} {...rest} />;
 }

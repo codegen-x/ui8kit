@@ -8,5 +8,5 @@ export type TableColGroupProps = Omit<ComponentProps<typeof Prim>, "tag"> & { cl
 
 /** TableColGroup: Box <colgroup>. */
 export function TableColGroup({ className, ...rest }: TableColGroupProps) {
-  return <Prim tag={"colgroup" as never} className={cn(className)} {...(rest as object)} />;
+  return <Prim tag={"colgroup" as never} className={cn(className)} {...rest} />;
 }

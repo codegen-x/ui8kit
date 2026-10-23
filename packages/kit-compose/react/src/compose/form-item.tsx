@@ -8,5 +8,5 @@ export type FormItemProps = Omit<ComponentProps<typeof Prim>, "tag"> & { classNa
 
 /** FormItem: Box <div> + recipe form-item. */
 export function FormItem({ className, ...rest }: FormItemProps) {
-  return <Prim tag={"div" as never} className={cn(rc("form-item", {  }), className)} {...(rest as object)} />;
+  return <Prim tag={"div" as never} className={cn(rc("form-item", {  }), className)} {...rest} />;
 }

@@ -8,5 +8,5 @@ export type SheetProps = Omit<ComponentProps<typeof Prim>, "tag" | "side"> & { "
 
 /** Sheet: Dialog + recipe sheet. */
 export function Sheet({ "side": v_side, className, ...rest }: SheetProps) {
-  return <Prim className={cn(rc("sheet", { "side": v_side }), className)} {...(rest as object)} />;
+  return <Prim className={cn(rc("sheet", { "side": v_side }), className)} {...rest} />;
 }

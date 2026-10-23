@@ -8,5 +8,5 @@ export type MeterProps = Omit<ComponentProps<typeof Prim>, "tag" | "size" | "var
 
 /** Meter: Meter + recipe meter. */
 export function Meter({ "size": v_size, "variant": v_variant, className, ...rest }: MeterProps) {
-  return <Prim className={cn(rc("meter", { "size": v_size, "variant": v_variant }), className)} {...(rest as object)} />;
+  return <Prim className={cn(rc("meter", { "size": v_size, "variant": v_variant }), className)} {...rest} />;
 }

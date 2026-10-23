@@ -8,5 +8,5 @@ export type GridProps = Omit<ComponentProps<typeof Prim>, "tag"> & { tag?: strin
 
 /** Grid: Box + recipe grid. */
 export function Grid({ tag, className, ...rest }: GridProps) {
-  return <Prim tag={(tag ?? "div") as never} className={cn(rc("grid", {  }), className)} {...(rest as object)} />;
+  return <Prim tag={(tag ?? "div") as never} className={cn(rc("grid", {  }), className)} {...rest} />;
 }

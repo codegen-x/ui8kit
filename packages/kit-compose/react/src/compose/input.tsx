@@ -8,5 +8,5 @@ export type InputProps = Omit<ComponentProps<typeof Prim>, "tag" | "size" | "var
 
 /** Input: Input + recipe input. */
 export function Input({ "size": v_size, "variant": v_variant, className, ...rest }: InputProps) {
-  return <Prim className={cn(rc("input", { "size": v_size, "variant": v_variant }), className)} {...(rest as object)} />;
+  return <Prim className={cn(rc("input", { "size": v_size, "variant": v_variant }), className)} {...rest} />;
 }

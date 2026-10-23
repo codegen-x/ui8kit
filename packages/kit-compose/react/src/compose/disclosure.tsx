@@ -8,5 +8,5 @@ export type DisclosureProps = Omit<ComponentProps<typeof Prim>, "tag" | "variant
 
 /** Disclosure: Disclosure + recipe disclosure. */
 export function Disclosure({ "variant": v_variant, className, ...rest }: DisclosureProps) {
-  return <Prim className={cn(rc("disclosure", { "variant": v_variant }), className)} {...(rest as object)} />;
+  return <Prim className={cn(rc("disclosure", { "variant": v_variant }), className)} {...rest} />;
 }

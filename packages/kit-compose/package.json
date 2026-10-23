@@ -18,6 +18,7 @@
   },
   "scripts": {
     "build": "bun src/build.ts",
-    "check": "bun src/build.ts --check"
+    "check": "bun src/build.ts --check",
+    "typecheck": "tsc -p tsconfig.react.json && tsc -p tsconfig.solid.json && vue-tsc --noEmit -p tsconfig.vue.json && svelte-check --tsconfig tsconfig.svelte.json --fail-on-warnings"
   }
 }

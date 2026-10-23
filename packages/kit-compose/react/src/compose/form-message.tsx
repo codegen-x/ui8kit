@@ -8,5 +8,5 @@ export type FormMessageProps = Omit<ComponentProps<typeof Prim>, "tag"> & { clas
 
 /** FormMessage: Text <p> + recipe form-message. */
 export function FormMessage({ className, ...rest }: FormMessageProps) {
-  return <Prim tag={"p" as never} className={cn(rc("form-message", {  }), className)} {...(rest as object)} />;
+  return <Prim tag={"p" as never} className={cn(rc("form-message", {  }), className)} {...rest} />;
 }

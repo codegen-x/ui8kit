@@ -4,7 +4,7 @@ import { plugin } from "bun";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { readFileSync } from "node:fs";
-import { BRICKS } from "../src/map";
+import { BRICKS, CONTROL_RECIPES } from "../src/map";
 import { RECIPES } from "../src/recipes";
 import * as R from "../react/src/compose";
 import { checkHtml } from "../../ui-gates/src/html.mjs";
@@ -14,18 +14,31 @@ const rendered: { id: string; html: string }[] = [];
 const NAMED = new Set(["Input", "Range", "Textarea", "Select", "Checkbox", "Radio", "Switch", "Meter", "Progress"]);
 
 plugin({
-  name: "svelte-ssr",
+  name: "compose-ssr",
   async setup(b) {
     const { compile } = await import("svelte/compiler");
+    const { parse, compileScript } = await import("@vue/compiler-sfc");
+    const { transformSync } = await import("@babel/core");
+    const solid = (await import("babel-preset-solid")).default;
+    const ts = (await import("@babel/preset-typescript")).default;
     b.onLoad({ filter: /\.svelte$/ }, ({ path }) => ({
       loader: "js",
       contents: compile(readFileSync(path, "utf8"), { generate: "server", filename: path }).js.code,
+    }));
+    b.onLoad({ filter: /\.vue$/ }, ({ path }) => {
+      const { descriptor } = parse(readFileSync(path, "utf8"), { filename: path });
+      return { loader: "ts", contents: compileScript(descriptor, { id: path, inlineTemplate: true }).content };
+    });
+    b.onLoad({ filter: /\.solid\.tsx$/ }, ({ path }) => ({
+      loader: "js",
+      contents: transformSync(readFileSync(path, "utf8"), { filename: path, babelrc: false, configFile: false,
+        presets: [[ts, { isTSX: true, allExtensions: true }], [solid, { generate: "ssr", hydratable: false }]] })!.code!,
     }));
   },
 });
 
 const norm = (html: string) =>
-  html.replace(/<!--[^]*?-->/g, "").replace(/<!>/g, "").replace(/ on(load|error)="this\.__e=event"/g, "").replace(/<([a-z0-9]+)((?:\s+[^\s=>]+(?:="[^"]*")?)*)\s*\/?>/g, (_, tag, attrs: string) => {
+  html.replace(/<!--[^]*?-->/g, "").replace(/ data-hk="[^"]*"/g, "").replace(/\s*\/>/g, ">").replace(/(<textarea\b[^>]*?) value=""/g, "$1").replace(/ data-v-[a-z0-9]+(="")?/g, "").replace(/<!>/g, "").replace(/ on(load|error)="this\.__e=event"/g, "").replace(/<([a-z0-9]+)((?:\s+[^\s=>]+(?:="[^"]*")?)*)\s*\/?>/g, (_, tag, attrs: string) => {
     const list = [...attrs.matchAll(/([^\s=>]+)(?:="([^"]*)")?/g)].map(([, k, v]) => `${k}="${k === "class" ? (v ?? "").replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&amp;/g, "&").split(/\s+/).filter(Boolean).join(" ") : (v ?? "").replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&amp;/g, "&")}"`).filter((a) => a !== `class=""`);
     return `<${tag}${list.sort().map((a) => " " + a).join("")}>`;
   });
@@ -62,26 +75,37 @@ function cases(name: string): Record<string, string>[] {
   return out;
 }
 
-test("every composition has a Svelte twin", () => {
-  for (const n of names) expect(readFileSync(new URL(`../svelte/src/compose/${n}.svelte`, import.meta.url), "utf8")).toContain(BRICKS[n].primitive);
+test("every composition exists in every runtime", () => {
+  for (const n of names) for (const f of [`svelte/src/compose/${n}.svelte`, `vue/src/compose/${n}.vue`]) expect(readFileSync(new URL(`../${f}`, import.meta.url), "utf8")).toContain(BRICKS[n].primitive);
 });
 
 for (const name of names) {
-  test(`parity react = svelte: ${name}`, async () => {
+  test(`parity react = svelte = vue = solid: ${name}`, async () => {
     const { render } = await import("svelte/server");
     const { createRawSnippet } = await import("svelte");
+    const { createSSRApp, h } = await import("vue");
+    const { renderToString: vueSSR } = await import("@vue/server-renderer");
+    const { createComponent } = await import("solid-js");
+    const { renderToString: solidSSR } = await import("solid-js/web");
     const S = (await import(`../svelte/src/compose/${name}.svelte`)).default;
+    const V = (await import(`../vue/src/compose/${name}.vue`)).default;
+    const L = (await import("../solid/src/compose/index.ts"))[name as never] as never;
     const leaf = VOID.has(BRICKS[name].primitive) || BRICKS[name].tag === "col";
     for (const c of cases(name)) {
       const { className, ...rest } = c;
       const r = renderToStaticMarkup(createElement((R as Record<string, never>)[name], { ...rest, className } as never, leaf ? undefined : "Content"));
-      const s = render(S, { props: { ...rest, class: className, ...(leaf ? {} : { children: createRawSnippet(() => ({ render: () => "<span>Content</span>" })) }) } }).body;
+      const sv = render(S, { props: { ...rest, class: className, ...(leaf ? {} : { children: createRawSnippet(() => ({ render: () => "<span>Content</span>" })) }) } }).body.replace("<span>Content</span>", "Content");
+      const vu = await vueSSR(createSSRApp({ render: () => h(V, { ...rest, class: className }, leaf ? undefined : { default: () => "Content" }) }));
+      const so = solidSSR(() => createComponent(L, { ...rest, class: className, ...(leaf ? {} : { children: "Content" }) } as never));
+      const want = norm(r);
+      expect(norm(sv), `svelte ${JSON.stringify(c)}`).toBe(want);
+      expect(norm(vu), `vue ${JSON.stringify(c)}`).toBe(want);
+      expect(norm(so), `solid ${JSON.stringify(c)}`).toBe(want);
       // the HTML gate renders the composition in a valid context (required children / attributes of the element)
       const ctx = CONTEXT[name];
       const node = createElement((R as Record<string, never>)[name], { ...rest, ...ctx?.props, className } as never, ...(ctx?.children?.() ?? (leaf ? [] : ["Content"])));
       const html = renderToStaticMarkup((ctx?.parent ? ctx.parent(node) : node) as never);
       rendered.push({ id: `${name} ${JSON.stringify(c)}`, html });
-      expect(norm(s).replace("<span>Content</span>", "Content")).toBe(norm(r));
     }
   });
 }
@@ -91,6 +115,18 @@ test("recipes: colors only by tokens, 8 + 4 grid without half steps", () => {
   const raw = all.filter((c) => /(^|:)(bg|text|border|ring|inset-ring|fill|stroke|from|to|via)-(white|black|(slate|gray|zinc|neutral|stone|red|orange|amber|yellow|lime|green|emerald|teal|cyan|sky|blue|indigo|violet|purple|fuchsia|pink|rose)-\d+)/.test(c) || /#[0-9a-f]{3,8}|rgb\(|hsl\(/i.test(c));
   expect(raw).toEqual([]);
   expect(all.filter((c) => /-\d+\.5(\b|$)/.test(c))).toEqual([]);
+});
+
+test("8 + 4: odd spacing steps (4px) only inside control recipes", () => {
+  const odd = /^([a-z0-9-]+:)*-?(p|px|py|pt|pb|pl|pr|ps|pe|m|mx|my|mt|mb|ml|mr|ms|me|gap|gap-x|gap-y|space-x|space-y|inset|top|bottom|left|right)-(1|3|5|7|9|11)$/;
+  const bad: string[] = [];
+  for (const [id, r] of Object.entries(RECIPES)) {
+    if ((CONTROL_RECIPES as readonly string[]).includes(id)) continue;
+    const cls = [r.base, ...Object.values(r.byKey).flatMap(Object.values), ...(r.compound ?? []).map((c) => c.class)].join(" ").split(/\s+/);
+    for (const c of cls) if (odd.test(c)) bad.push(`${id}: ${c}`);
+  }
+  for (const [n, m] of Object.entries(BRICKS)) for (const c of (m.extra ?? "").split(/\s+/)) if (odd.test(c)) bad.push(`${n} extra: ${c}`);
+  expect(bad).toEqual([]);
 });
 
 test("rendered HTML of every case: html-validate + axe-core", async () => {

@@ -8,5 +8,5 @@ export type FormDescriptionProps = Omit<ComponentProps<typeof Prim>, "tag"> & { 
 
 /** FormDescription: Text <p> + recipe form-description. */
 export function FormDescription({ className, ...rest }: FormDescriptionProps) {
-  return <Prim tag={"p" as never} className={cn(rc("form-description", {  }), className)} {...(rest as object)} />;
+  return <Prim tag={"p" as never} className={cn(rc("form-description", {  }), className)} {...rest} />;
 }

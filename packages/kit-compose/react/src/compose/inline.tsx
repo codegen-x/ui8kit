@@ -8,5 +8,5 @@ export type InlineProps = Omit<ComponentProps<typeof Prim>, "tag"> & { className
 
 /** Inline: Text <span> + recipe inline. */
 export function Inline({ className, ...rest }: InlineProps) {
-  return <Prim tag={"span" as never} className={cn(rc("inline", {  }), className)} {...(rest as object)} />;
+  return <Prim tag={"span" as never} className={cn(rc("inline", {  }), className)} {...rest} />;
 }

@@ -8,5 +8,5 @@ export type CardProps = Omit<ComponentProps<typeof Prim>, "tag" | "variant"> & {
 
 /** Card: Box <div> + recipe card. */
 export function Card({ "variant": v_variant, className, ...rest }: CardProps) {
-  return <Prim tag={"div" as never} className={cn(rc("card", { "variant": v_variant }), className)} {...(rest as object)} />;
+  return <Prim tag={"div" as never} className={cn(rc("card", { "variant": v_variant }), className)} {...rest} />;
 }

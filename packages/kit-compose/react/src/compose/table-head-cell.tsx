@@ -8,5 +8,5 @@ export type TableHeadCellProps = Omit<ComponentProps<typeof Prim>, "tag"> & { cl
 
 /** TableHeadCell: Box <th> + recipe table-head-cell. */
 export function TableHeadCell({ className, ...rest }: TableHeadCellProps) {
-  return <Prim tag={"th" as never} className={cn(rc("table-head-cell", {  }), className)} {...(rest as object)} />;
+  return <Prim tag={"th" as never} className={cn(rc("table-head-cell", {  }), className)} {...rest} />;
 }

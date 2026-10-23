@@ -8,5 +8,5 @@ export type ListProps = Omit<ComponentProps<typeof Prim>, "tag"> & { tag?: strin
 
 /** List: Box + recipe list. */
 export function List({ tag, className, ...rest }: ListProps) {
-  return <Prim tag={(tag ?? "ul") as never} className={cn(rc("list", {  }), className)} {...(rest as object)} />;
+  return <Prim tag={(tag ?? "ul") as never} className={cn(rc("list", {  }), className)} {...rest} />;
 }

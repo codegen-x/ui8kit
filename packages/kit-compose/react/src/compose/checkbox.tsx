@@ -8,5 +8,5 @@ export type CheckboxProps = Omit<ComponentProps<typeof Prim>, "tag" | "size" | "
 
 /** Checkbox: Checkbox + recipe checkbox. */
 export function Checkbox({ "size": v_size, "variant": v_variant, className, ...rest }: CheckboxProps) {
-  return <Prim className={cn(rc("checkbox", { "size": v_size, "variant": v_variant }), className)} {...(rest as object)} />;
+  return <Prim className={cn(rc("checkbox", { "size": v_size, "variant": v_variant }), className)} {...rest} />;
 }

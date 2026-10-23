@@ -8,5 +8,5 @@ export type BadgeProps = Omit<ComponentProps<typeof Prim>, "tag" | "size" | "var
 
 /** Badge: Text <span> + recipe badge. */
 export function Badge({ "size": v_size, "variant": v_variant, className, ...rest }: BadgeProps) {
-  return <Prim tag={"span" as never} className={cn(rc("badge", { "size": v_size, "variant": v_variant }), className)} {...(rest as object)} />;
+  return <Prim tag={"span" as never} className={cn(rc("badge", { "size": v_size, "variant": v_variant }), className)} {...rest} />;
 }

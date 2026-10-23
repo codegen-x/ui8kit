@@ -8,5 +8,5 @@ export type LegendProps = Omit<ComponentProps<typeof Prim>, "tag" | "size" | "va
 
 /** Legend: Text <legend> + recipe legend. */
 export function Legend({ "size": v_size, "variant": v_variant, className, ...rest }: LegendProps) {
-  return <Prim tag={"legend" as never} className={cn(rc("legend", { "size": v_size, "variant": v_variant }), className)} {...(rest as object)} />;
+  return <Prim tag={"legend" as never} className={cn(rc("legend", { "size": v_size, "variant": v_variant }), className)} {...rest} />;
 }

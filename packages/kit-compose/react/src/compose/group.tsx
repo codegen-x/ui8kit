@@ -8,5 +8,5 @@ export type GroupProps = Omit<ComponentProps<typeof Prim>, "tag" | "gap" | "alig
 
 /** Group: Box + recipe group. */
 export function Group({ "gap": v_gap, "align": v_align, "justify": v_justify, tag, className, ...rest }: GroupProps) {
-  return <Prim tag={(tag ?? "div") as never} className={cn(rc("group", { "gap": v_gap, "align": v_align, "justify": v_justify }), className)} {...(rest as object)} />;
+  return <Prim tag={(tag ?? "div") as never} className={cn(rc("group", { "gap": v_gap, "align": v_align, "justify": v_justify }), className)} {...rest} />;
 }

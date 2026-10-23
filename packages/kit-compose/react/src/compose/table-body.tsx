@@ -8,5 +8,5 @@ export type TableBodyProps = Omit<ComponentProps<typeof Prim>, "tag"> & { classN
 
 /** TableBody: Box <tbody>. */
 export function TableBody({ className, ...rest }: TableBodyProps) {
-  return <Prim tag={"tbody" as never} className={cn(className)} {...(rest as object)} />;
+  return <Prim tag={"tbody" as never} className={cn(className)} {...rest} />;
 }

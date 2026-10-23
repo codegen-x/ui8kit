@@ -8,5 +8,5 @@ export type RadioProps = Omit<ComponentProps<typeof Prim>, "tag" | "size" | "var
 
 /** Radio: Radio + recipe radio. */
 export function Radio({ "size": v_size, "variant": v_variant, className, ...rest }: RadioProps) {
-  return <Prim className={cn(rc("radio", { "size": v_size, "variant": v_variant }), className)} {...(rest as object)} />;
+  return <Prim className={cn(rc("radio", { "size": v_size, "variant": v_variant }), className)} {...rest} />;
 }

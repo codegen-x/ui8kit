@@ -8,5 +8,5 @@ export type TableCaptionProps = Omit<ComponentProps<typeof Prim>, "tag"> & { cla
 
 /** TableCaption: Box <caption>. */
 export function TableCaption({ className, ...rest }: TableCaptionProps) {
-  return <Prim tag={"caption" as never} className={cn(className)} {...(rest as object)} />;
+  return <Prim tag={"caption" as never} className={cn(className)} {...rest} />;
 }

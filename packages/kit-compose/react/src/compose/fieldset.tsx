@@ -8,5 +8,5 @@ export type FieldsetProps = Omit<ComponentProps<typeof Prim>, "tag" | "size" | "
 
 /** Fieldset: Box <fieldset> + recipe fieldset. */
 export function Fieldset({ "size": v_size, "variant": v_variant, className, ...rest }: FieldsetProps) {
-  return <Prim tag={"fieldset" as never} className={cn(rc("fieldset", { "size": v_size, "variant": v_variant }), className)} {...(rest as object)} />;
+  return <Prim tag={"fieldset" as never} className={cn(rc("fieldset", { "size": v_size, "variant": v_variant }), className)} {...rest} />;
 }
