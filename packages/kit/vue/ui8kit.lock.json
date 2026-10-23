@@ -1,0 +1,247 @@
+{
+  "lockVersion": 2,
+  "cli": "3.2.1",
+  "items": {
+    "npm:@ui8kit/registry|vue|box": {
+      "name": "box",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/vue",
+      "version": "3.2.0",
+      "runtime": "vue",
+      "files": {
+        "src/ui/box/Box.vue": "47ce12c8f15499ce1adf130983c9bf458348fe9e5061e88bdde7f1f2eac41609",
+        "src/ui/box/box.shared.ts": "59f52e34fbf633e2fb85f253ac81c93b0b5a62adf9e20d719c452dfa31048150"
+      }
+    },
+    "npm:@ui8kit/registry|vue|button": {
+      "name": "button",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/vue",
+      "version": "3.2.0",
+      "runtime": "vue",
+      "files": {
+        "src/ui/button/Button.vue": "be96c4ef72ab6512f46fe7368cb95ef8e1313c3f7bc6f49cd676beff844f4f56",
+        "src/ui/button/button.shared.ts": "c1666ca1a228d99bd84aecff67f6d5335ec4a0db6197c7fbb9aa9bf1e4973fbc"
+      }
+    },
+    "npm:@ui8kit/registry|vue|checkbox": {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/vue",
+      "version": "3.2.0",
+      "runtime": "vue",
+      "files": {
+        "src/ui/checkbox/Checkbox.vue": "c88e3e8fb50ee919ef8757ff862f6036f25332f2be47a31ef09c053c657938be",
+        "src/ui/checkbox/checkbox.shared.ts": "e68cd1fb0c6cd5bf1e6293440e0e995d6be7097602ae990b94231471013eeddc"
+      }
+    },
+    "npm:@ui8kit/registry|vue|dialog": {
+      "name": "dialog",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/vue",
+      "version": "3.2.0",
+      "runtime": "vue",
+      "files": {
+        "src/ui/dialog/Dialog.vue": "416a324e343ff14c01236de85d1c5bb45ac7b6d08f25dcadc04295c287f97b66",
+        "src/ui/dialog/dialog.shared.ts": "51414cef876fa635cb4add3c22dff978fb7f7e3eb6c86c8139caf63b10346888"
+      }
+    },
+    "npm:@ui8kit/registry|vue|disclosure": {
+      "name": "disclosure",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/vue",
+      "version": "3.2.0",
+      "runtime": "vue",
+      "files": {
+        "src/ui/disclosure/Disclosure.vue": "02dc49560bf65e555733745b1b2a25cef931765a9f2e7588d4fc5f4dec2664c3",
+        "src/ui/disclosure/Summary.vue": "30965a3393c2d2f0b209a2a693769cc2a198882646482034a013b788db312fb6",
+        "src/ui/disclosure/disclosure.shared.ts": "2aa7b3cc137998037b9cb3c5af1c18617b7d220519a56a99e6b4ebd9b720f106"
+      }
+    },
+    "npm:@ui8kit/registry|vue|form": {
+      "name": "form",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/vue",
+      "version": "3.2.0",
+      "runtime": "vue",
+      "files": {
+        "src/ui/form/Form.vue": "7b24a99adc7f9188e3e6a64d3f17c950fdcdff43b8a2c5b4fbbab8e5f8a5e309",
+        "src/ui/form/form.shared.ts": "d168c15d3a66a521580f5857dd0c8cfc3f43a9ff089a87cd1b4fdd143c9730b5"
+      }
+    },
+    "npm:@ui8kit/registry|vue|icon": {
+      "name": "icon",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/vue",
+      "version": "3.2.0",
+      "runtime": "vue",
+      "files": {
+        "src/ui/icon/Icon.vue": "f5a8c5fd5f43ec8812472f46c72273d39aba2bdeef1a70fc7114f59ff39a0ba0",
+        "src/ui/icon/icon.shared.ts": "5cc9c9474996f0d06ad2c277c24ab9a6d2ff4814a49f4024ce978947c098a11e",
+        "src/ui/icon/icon.variants.json": "3411086ff914c3d68ed81fa575f1ae22b6b5202198d505de4c1abf1509d8904a"
+      }
+    },
+    "npm:@ui8kit/registry|vue|image": {
+      "name": "image",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/vue",
+      "version": "3.2.0",
+      "runtime": "vue",
+      "files": {
+        "src/ui/image/Image.vue": "7ccfe7c52a8c8f0dbcc08165c329b6846332bb5e632222bf6c9f213da1b08b0b",
+        "src/ui/image/Picture.vue": "de43abf442a9127fc7102b3f85fb034e4cf54eea43b81273ada70962d45848a8",
+        "src/ui/image/Source.vue": "7bf75f7cad52539effcedb14b0ce44461aeeabffe52e2dff7f523bad19d429b6",
+        "src/ui/image/image.shared.ts": "a67db7814370b79a1164b83e74b99d9d04d7e532d31dc0fa457c190e840cd05a"
+      }
+    },
+    "npm:@ui8kit/registry|vue|input": {
+      "name": "input",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/vue",
+      "version": "3.2.0",
+      "runtime": "vue",
+      "files": {
+        "src/ui/input/Input.vue": "bd30b8ae3f66ef6f00d247706e163f98dff0fb7028b91e164f222c7b1d2a3ab2",
+        "src/ui/input/input.shared.ts": "70f35d175c8f36d35d5b3f5a2faaf866042154ddaaf9af1a8d821d34ca90147c"
+      }
+    },
+    "npm:@ui8kit/registry|vue|label": {
+      "name": "label",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/vue",
+      "version": "3.2.0",
+      "runtime": "vue",
+      "files": {
+        "src/ui/label/Label.vue": "e98516e7880c3020cb922c091c05499f238161aaa6dd4bfa1c1b195b45c55097",
+        "src/ui/label/label.shared.ts": "0bcf690a2be25bfa1736733431ffae5009f4878a8e6122abb8884fe0a923cdbd"
+      }
+    },
+    "npm:@ui8kit/registry|vue|link": {
+      "name": "link",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/vue",
+      "version": "3.2.0",
+      "runtime": "vue",
+      "files": {
+        "src/ui/link/Link.vue": "e60b3aed8cfa7a4d3cdcceb039864559aefe9afe182bcf6deb8309a3b344eba0",
+        "src/ui/link/link.shared.ts": "35ab6935736cc2e3871a1d3c76aa5fd092da590a373c94f3e0d0c0f3e0481039"
+      }
+    },
+    "npm:@ui8kit/registry|vue|meter": {
+      "name": "meter",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/vue",
+      "version": "3.2.0",
+      "runtime": "vue",
+      "files": {
+        "src/ui/meter/Meter.vue": "048a16fd50d6dbae29ded3e54360b4fb5e8cc1bb0f6fc620a5fc682c125fd3f1",
+        "src/ui/meter/meter.shared.ts": "f3be45a354c1af95345dde53ddf7974165dbe98efc7f31e7465fa4139578be91"
+      }
+    },
+    "npm:@ui8kit/registry|vue|progress": {
+      "name": "progress",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/vue",
+      "version": "3.2.0",
+      "runtime": "vue",
+      "files": {
+        "src/ui/progress/Progress.vue": "a4e8c4c84649a4d3c6c4288899a215a571897d2bd99a28aa8031e4a1fd25cc58",
+        "src/ui/progress/progress.shared.ts": "cabe85d6c85b64fb2aeaf15b068e8d796ff12a33a6ce7b505a50943abf2e7df4"
+      }
+    },
+    "npm:@ui8kit/registry|vue|radio": {
+      "name": "radio",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/vue",
+      "version": "3.2.0",
+      "runtime": "vue",
+      "files": {
+        "src/ui/radio/Radio.vue": "79434ecf08d1499a73ffaf1765b4b09fe0881ad7061ad915971d293b5f0193e1",
+        "src/ui/radio/radio.shared.ts": "90a7a83d2a61327f4f4a76ff7b63b5e5c81e2291d33a3ad0477ca275b9607746"
+      }
+    },
+    "npm:@ui8kit/registry|vue|rules": {
+      "name": "rules",
+      "type": "registry:rules",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/vue",
+      "version": "3.2.0",
+      "runtime": "vue",
+      "files": {
+        ".cursor/rules/ui8kit-primitives.mdc": "3b8b58eb6ffc18e0850f08e6ad16e71b58ec53cef3b0070435b0d9503495a44f"
+      }
+    },
+    "npm:@ui8kit/registry|vue|select": {
+      "name": "select",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/vue",
+      "version": "3.2.0",
+      "runtime": "vue",
+      "files": {
+        "src/ui/select/Select.vue": "08a84a7c9de3417f80538a7c707921132ca8b81d607c1399fc9e2b3854f6be3f",
+        "src/ui/select/SelectOptGroup.vue": "312f73dd38c69ce74a6f757182bc9971a5524e6bd8e68955fa50a461f4f130ad",
+        "src/ui/select/SelectOption.vue": "23e0d70dc51871de2ec521038f1169f988250ab3d10281d320c0039b3e38b580",
+        "src/ui/select/select.shared.ts": "fbfd77060f93463a61673bd34fb3d53edf78d5f8ead587253eb0fea8d2a19bba"
+      }
+    },
+    "npm:@ui8kit/registry|vue|separator": {
+      "name": "separator",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/vue",
+      "version": "3.2.0",
+      "runtime": "vue",
+      "files": {
+        "src/ui/separator/Separator.vue": "6f13ceb889422403c3af80e5c14ebaa63f4514010ea80d7de9a55fc36ef5d9ba",
+        "src/ui/separator/separator.shared.ts": "65711a64c434b5c90dfb6ad3924bde68436c1017d1af973dd4c11431d9cfc084"
+      }
+    },
+    "npm:@ui8kit/registry|vue|switch": {
+      "name": "switch",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/vue",
+      "version": "3.2.0",
+      "runtime": "vue",
+      "files": {
+        "src/ui/switch/Switch.vue": "2185c06b407ce0d84b48b140239b824679eac1c2c26f0fcde7740f9c5a333134",
+        "src/ui/switch/switch.shared.ts": "0e67fbba43cff2a46f1a929f0e7e5a10e2ec8e0a384bf730f5da8bd9f119d5b8"
+      }
+    },
+    "npm:@ui8kit/registry|vue|text": {
+      "name": "text",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/vue",
+      "version": "3.2.0",
+      "runtime": "vue",
+      "files": {
+        "src/ui/text/Text.vue": "f67a0df7aa0003392985dcd9ce2946bfcd3326330a73cde219a93a28bf0c1f14",
+        "src/ui/text/text.shared.ts": "d2c44f00ce9de5449c1f0fc9a40dacfb19cac763d461ed925ff92561300e3216"
+      }
+    },
+    "npm:@ui8kit/registry|vue|textarea": {
+      "name": "textarea",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/vue",
+      "version": "3.2.0",
+      "runtime": "vue",
+      "files": {
+        "src/ui/textarea/Textarea.vue": "b2b10d7b24b298443c7e44ece3a25887cf0d4712f904ff4cafd0e8bdd174425f",
+        "src/ui/textarea/textarea.shared.ts": "07e46370404a3406345328fdaf390666c4aa4fd31c1d9de0f64f62cd9ee20c43"
+      }
+    },
+    "npm:@ui8kit/registry|vue|utils": {
+      "name": "utils",
+      "type": "registry:utils",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/vue",
+      "version": "3.2.0",
+      "runtime": "vue",
+      "files": {
+        "src/utils/cn.ts": "71e49505248438b14660406596be49812819f912e0aeb0f3e2f46677e1d481d7",
+        "src/utils/env.ts": "fd1211a0349b8b86ecc3e0069c44701754c8697f029be1530951731dee8d96b2",
+        "src/utils/expr.ts": "b3c7c370dd9f83f6fadc2aa396347a6051d40ac0671506b27daf53af1c5e00f0",
+        "src/utils/index.ts": "098142c6140472cdb594686e1d23807c898c2218f24639a421a465b6924cfda5",
+        "src/utils/recipe-types.ts": "5f25c506bbcac1b32569023a00c27497eea9b6684cd96a98708233cad313191b",
+        "src/utils/tags.ts": "a978a913dbebfe73d64f9645f92664a72ead75bcebe24bba9e0b1cd9334e9661",
+        "src/utils/variants.ts": "f82accf10129f4f56d0b2e3d9d85d370b0a9066f3b802c3f7c31dc94576fb47a"
+      }
+    }
+  }
+}

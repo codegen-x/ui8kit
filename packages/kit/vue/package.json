@@ -1,0 +1,10 @@
+{
+  "name": "@codegen-x/kit-vue",
+  "private": true,
+  "version": "0.0.0",
+  "description": "UI8Kit 3 primitives for vue, installed by the ui8kit CLI from @ui8kit/registry 3.2.0. Do not edit: bun run kit:check (ui8kit check) fails on any change.",
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.7.0"
+  }
+}

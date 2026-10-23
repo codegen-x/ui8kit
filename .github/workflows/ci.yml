@@ -36,4 +36,5 @@ jobs:
         run: bun --version && go version && php --version && composer --version && python3 --version
       - run: bun install --frozen-lockfile
       - run: bun run check
+      - run: bun run codex:validate
       - run: bun run test

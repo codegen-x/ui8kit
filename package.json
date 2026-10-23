@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "description": "ui8kit 2.0 monorepo: xgen (the generation layer: specs, schemas, fixtures and the generator), generated packages for Svelte, React, Vue and Solid (and the server templates Go templ, Twig, Jinja2 and Latte), one shared app package, and one host app per runtime that serves every screen spec by name. Bun workspaces.",
+  "description": "ui8kit monorepo (UI8Kit 3 primitives in packages/kit via the ui8kit CLI): xgen (the generation layer: specs, schemas, fixtures and the generator), generated packages for Svelte, React, Vue and Solid (and the server templates Go templ, Twig, Jinja2 and Latte), one shared app package, and one host app per runtime that serves every screen spec by name. Bun workspaces.",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -30,12 +30,13 @@
     "packages/templ/*",
     "packages/twig/*",
     "packages/jinja2/*",
-    "packages/latte/*"
+    "packages/latte/*",
+    "packages/kit/*"
   ],
   "packageManager": "bun@1.4.2",
   "scripts": {
     "build": "bun xgen/cli/src/cli.ts build",
-    "check": "node packages/tooling/bin/vendor-guard.mjs && bun xgen/skins/skins.ts build --check && bun xgen/cli/src/cli.ts check",
+    "check": "node packages/tooling/bin/vendor-guard.mjs && node packages/tooling/bin/kit-check.mjs && bun xgen/skins/skins.ts build --check && bun xgen/cli/src/cli.ts check",
     "skins": "bun xgen/skins/skins.ts",
     "verify": "bun run check && bun run codex:validate && bun run typecheck && bun run test",
     "codex:manifest": "bun xgen/schema/src/codex.ts",
@@ -53,11 +54,13 @@
     "test": "bun test ./xgen ./packages/taste-data/src",
     "check:all": "bun run build && bun run check && bun run typecheck && bun run build:hosts && bun run test && bun run lint:px && bun run e2e",
     "typecheck:xgen": "tsc -p xgen/tsconfig.json",
-    "lint:px": "node packages/tooling/bin/ui8px-gate.mjs"
+    "lint:px": "node packages/tooling/bin/ui8px-gate.mjs",
+    "kit:check": "node packages/tooling/bin/kit-check.mjs"
   },
   "devDependencies": {
     "@types/bun": "^1.4.2",
     "html-validate": "^11.16.2",
-    "ui8px": "0.2.4"
+    "ui8px": "0.2.4",
+    "ui8kit": "3.2.1"
   }
 }

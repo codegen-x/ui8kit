@@ -1,0 +1,225 @@
+{
+  "lockVersion": 2,
+  "cli": "3.2.1",
+  "items": {
+    "npm:@ui8kit/registry|jinja2|box": {
+      "name": "box",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/jinja2",
+      "version": "3.2.0",
+      "runtime": "jinja2",
+      "files": {
+        "src/ui/box/box.html.j2": "1ae0c244e4d6a9bc960ed2cc8f9e4815a195629beed9d84afaf52c06939eefbe"
+      }
+    },
+    "npm:@ui8kit/registry|jinja2|button": {
+      "name": "button",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/jinja2",
+      "version": "3.2.0",
+      "runtime": "jinja2",
+      "files": {
+        "src/ui/button/button.html.j2": "2868ef69dc517a78b1acbfe1bf75fbf65afd787d70114b65155457008810f539"
+      }
+    },
+    "npm:@ui8kit/registry|jinja2|checkbox": {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/jinja2",
+      "version": "3.2.0",
+      "runtime": "jinja2",
+      "files": {
+        "src/ui/checkbox/checkbox.html.j2": "5ee95ded7de185f1c81b2b924be450eabb4a3763a1ca67433dc49bb13e2d18c1"
+      }
+    },
+    "npm:@ui8kit/registry|jinja2|dialog": {
+      "name": "dialog",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/jinja2",
+      "version": "3.2.0",
+      "runtime": "jinja2",
+      "files": {
+        "src/ui/dialog/dialog.html.j2": "3b532f5e75795411639ab72a0971005f20444beeeb58e5e2937277d0eaf851d7"
+      }
+    },
+    "npm:@ui8kit/registry|jinja2|disclosure": {
+      "name": "disclosure",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/jinja2",
+      "version": "3.2.0",
+      "runtime": "jinja2",
+      "files": {
+        "src/ui/disclosure/disclosure.html.j2": "b06b61d71e0276ed43103f0289eeba9c1695151eab413be1924a4d8ff0e455b7",
+        "src/ui/disclosure/summary.html.j2": "1ff32ac64cb8380f69d06965dd48f50255fe70f14ae7d0fada9d64d24317d494"
+      }
+    },
+    "npm:@ui8kit/registry|jinja2|form": {
+      "name": "form",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/jinja2",
+      "version": "3.2.0",
+      "runtime": "jinja2",
+      "files": {
+        "src/ui/form/form.html.j2": "baf7fb5a6f35d2f0800215561cd4533bfa46946622a261492a936f6d4b8a14a2"
+      }
+    },
+    "npm:@ui8kit/registry|jinja2|icon": {
+      "name": "icon",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/jinja2",
+      "version": "3.2.0",
+      "runtime": "jinja2",
+      "files": {
+        "src/ui/icon/icon.html.j2": "f4a7f498fc4052fd5d5b2df546165d5806a6203e94ee788bedeeb33e8c48315f",
+        "src/ui/icon/icon.variants.json": "3411086ff914c3d68ed81fa575f1ae22b6b5202198d505de4c1abf1509d8904a"
+      }
+    },
+    "npm:@ui8kit/registry|jinja2|image": {
+      "name": "image",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/jinja2",
+      "version": "3.2.0",
+      "runtime": "jinja2",
+      "files": {
+        "src/ui/image/image.html.j2": "2b2310d2bbe89097b2b15d40726ec5b499a1ab20e4afa3cb20193a63e18185d5",
+        "src/ui/image/picture.html.j2": "9e30e72ae145737c7952d8d81d6274070669b59be4470bd166342f8e38d5217d",
+        "src/ui/image/source.html.j2": "662b81f27a7edc108871a155864053b935ff54a7c6e00e5ac17f149559fa8684"
+      }
+    },
+    "npm:@ui8kit/registry|jinja2|input": {
+      "name": "input",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/jinja2",
+      "version": "3.2.0",
+      "runtime": "jinja2",
+      "files": {
+        "src/ui/input/input.html.j2": "d5206751c9b4884576dc9ad7e24d3bebebd28e14d4d84a28cc54103e72246022"
+      }
+    },
+    "npm:@ui8kit/registry|jinja2|label": {
+      "name": "label",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/jinja2",
+      "version": "3.2.0",
+      "runtime": "jinja2",
+      "files": {
+        "src/ui/label/label.html.j2": "dbd5ac82ee6aa36832dd3b145609cb436b405df6af7ab6fc7173c5eeb1081663"
+      }
+    },
+    "npm:@ui8kit/registry|jinja2|link": {
+      "name": "link",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/jinja2",
+      "version": "3.2.0",
+      "runtime": "jinja2",
+      "files": {
+        "src/ui/link/link.html.j2": "79cf701af399643bbb85a5d08c5122f9c89fd33a969b8ef9400c38d15c7b000c"
+      }
+    },
+    "npm:@ui8kit/registry|jinja2|meter": {
+      "name": "meter",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/jinja2",
+      "version": "3.2.0",
+      "runtime": "jinja2",
+      "files": {
+        "src/ui/meter/meter.html.j2": "051b5577f8d6026819c4f62c4ee68dfc6943aba4195b958462fc0cc4410ca692"
+      }
+    },
+    "npm:@ui8kit/registry|jinja2|progress": {
+      "name": "progress",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/jinja2",
+      "version": "3.2.0",
+      "runtime": "jinja2",
+      "files": {
+        "src/ui/progress/progress.html.j2": "7ff185c7b9ae9e27f980e7c6b4ba687d3db33f6390fb931dd63ac2b0fd8df41e"
+      }
+    },
+    "npm:@ui8kit/registry|jinja2|radio": {
+      "name": "radio",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/jinja2",
+      "version": "3.2.0",
+      "runtime": "jinja2",
+      "files": {
+        "src/ui/radio/radio.html.j2": "27c023e4ae14007b191b186c5e5d23159215f57e684abd16ed2d383ec982c3af"
+      }
+    },
+    "npm:@ui8kit/registry|jinja2|rules": {
+      "name": "rules",
+      "type": "registry:rules",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/jinja2",
+      "version": "3.2.0",
+      "runtime": "jinja2",
+      "files": {
+        ".cursor/rules/ui8kit-primitives.mdc": "1be2d73f1a14b18e9d8cc355836262da432c20bc304d1d4d5773d87451affe69"
+      }
+    },
+    "npm:@ui8kit/registry|jinja2|select": {
+      "name": "select",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/jinja2",
+      "version": "3.2.0",
+      "runtime": "jinja2",
+      "files": {
+        "src/ui/select/select-opt-group.html.j2": "59d6f0b9f01e820dba56beb30d1e6a1ba3cc23df873489dbda8ab4f3cce4a55b",
+        "src/ui/select/select-option.html.j2": "7d24cb2de4217f494bc5b64bcf894b6eee290146bae30c74ab776e776e7fb946",
+        "src/ui/select/select.html.j2": "99f541ca52427c9cf2b980f5e3acf51e23454996a564480c9cc0399b3385977a"
+      }
+    },
+    "npm:@ui8kit/registry|jinja2|separator": {
+      "name": "separator",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/jinja2",
+      "version": "3.2.0",
+      "runtime": "jinja2",
+      "files": {
+        "src/ui/separator/separator.html.j2": "af42f87d9f5ca076a9c81626bd8a75cfc7e63940c24240e45f0f27a3ba0385ab"
+      }
+    },
+    "npm:@ui8kit/registry|jinja2|switch": {
+      "name": "switch",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/jinja2",
+      "version": "3.2.0",
+      "runtime": "jinja2",
+      "files": {
+        "src/ui/switch/switch.html.j2": "71c4739ebc182dfd3dcc678e8572b45af9518ec0b40687656ae110ca916d3eed"
+      }
+    },
+    "npm:@ui8kit/registry|jinja2|text": {
+      "name": "text",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/jinja2",
+      "version": "3.2.0",
+      "runtime": "jinja2",
+      "files": {
+        "src/ui/text/text.html.j2": "966d9a74ad5562c7fbc012ab3a7d3d406f4841d2e3e9233b1278589795c8ff7d"
+      }
+    },
+    "npm:@ui8kit/registry|jinja2|textarea": {
+      "name": "textarea",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/jinja2",
+      "version": "3.2.0",
+      "runtime": "jinja2",
+      "files": {
+        "src/ui/textarea/textarea.html.j2": "12b473b792da9d49c2dd426fd417eee2635cf3dc4ae8ce409ad006ebf53daad3"
+      }
+    },
+    "npm:@ui8kit/registry|jinja2|utils": {
+      "name": "utils",
+      "type": "registry:utils",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/jinja2",
+      "version": "3.2.0",
+      "runtime": "jinja2",
+      "files": {
+        "src/ui8kit_jinja/__init__.py": "cc8b2d688c82c340ffcee59392cc7913921fe91c8827f513f6dc318b6b8e4d92",
+        "src/ui8kit_jinja/classes.py": "bd0376fc41ff0187cd67fe5a49427012e9f607fb56645b30536671d8ef388866",
+        "src/ui8kit_jinja/cn_merge.py": "13ce6832e1e6e3f96663adddc48c93d392ddaa186b654198e018b22718694dc3",
+        "src/ui8kit_jinja/runtime.py": "733d00879cabe8bbdc11ee3f555405c1939391e7711b10316e644605cfae1e40"
+      }
+    }
+  }
+}

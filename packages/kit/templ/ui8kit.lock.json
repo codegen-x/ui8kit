@@ -1,0 +1,222 @@
+{
+  "lockVersion": 2,
+  "cli": "3.2.1",
+  "items": {
+    "npm:@ui8kit/registry|templ|box": {
+      "name": "box",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/templ",
+      "version": "3.2.0",
+      "runtime": "templ",
+      "files": {
+        "src/ui/box/box.templ": "8989c79247a7cfab0412b6a46c91132322f01ce9cd2dba34b7c79a6974c530df"
+      }
+    },
+    "npm:@ui8kit/registry|templ|button": {
+      "name": "button",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/templ",
+      "version": "3.2.0",
+      "runtime": "templ",
+      "files": {
+        "src/ui/button/button.templ": "46132ff71fb73784760fb1a6fc824bd02af83d2cc78fcb525b7c6d90ba4d60a9"
+      }
+    },
+    "npm:@ui8kit/registry|templ|checkbox": {
+      "name": "checkbox",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/templ",
+      "version": "3.2.0",
+      "runtime": "templ",
+      "files": {
+        "src/ui/checkbox/checkbox.templ": "b26b5e712b650efa8d63cf077fcaa14f742d993106cc0e4536a24b71e69f3a65"
+      }
+    },
+    "npm:@ui8kit/registry|templ|dialog": {
+      "name": "dialog",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/templ",
+      "version": "3.2.0",
+      "runtime": "templ",
+      "files": {
+        "src/ui/dialog/dialog.templ": "70e8ffa8f9ea906e8e101dbcec9c3f2e33c1693efa2146c9175454bf408176b2"
+      }
+    },
+    "npm:@ui8kit/registry|templ|disclosure": {
+      "name": "disclosure",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/templ",
+      "version": "3.2.0",
+      "runtime": "templ",
+      "files": {
+        "src/ui/disclosure/disclosure.templ": "740564c164e6d55e13d3bfdfc11ae97d51a663af42a7c33b43474ab0401e9ee8"
+      }
+    },
+    "npm:@ui8kit/registry|templ|form": {
+      "name": "form",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/templ",
+      "version": "3.2.0",
+      "runtime": "templ",
+      "files": {
+        "src/ui/form/form.templ": "a6f6de0908a4863f6d12c421a41c4b4f7d8dc09bbf16d0ce5267c0000657c629"
+      }
+    },
+    "npm:@ui8kit/registry|templ|icon": {
+      "name": "icon",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/templ",
+      "version": "3.2.0",
+      "runtime": "templ",
+      "files": {
+        "src/ui/icon/icon.templ": "7c509aa5361821e0d9f22ad9a07e1e4ac81053701a97d6e600fcbee1c4b7a624",
+        "src/ui/icon/icon.variants.json": "3411086ff914c3d68ed81fa575f1ae22b6b5202198d505de4c1abf1509d8904a",
+        "src/ui/icon/icon_gen.go": "a93a1cb378160a49203f02b1dc534833d59611d19e12a6dde3158becea2395fb"
+      }
+    },
+    "npm:@ui8kit/registry|templ|image": {
+      "name": "image",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/templ",
+      "version": "3.2.0",
+      "runtime": "templ",
+      "files": {
+        "src/ui/image/image.templ": "b5f1006b4a44341136a6c37a8b65e9d116cfe3e95fbca4260720bd4cc7c6e998"
+      }
+    },
+    "npm:@ui8kit/registry|templ|input": {
+      "name": "input",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/templ",
+      "version": "3.2.0",
+      "runtime": "templ",
+      "files": {
+        "src/ui/input/input.templ": "9317b563941b8d8fc90ebf8cad127527deed78fb22ad35d9e474d2165ad6d2d6"
+      }
+    },
+    "npm:@ui8kit/registry|templ|label": {
+      "name": "label",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/templ",
+      "version": "3.2.0",
+      "runtime": "templ",
+      "files": {
+        "src/ui/label/label.templ": "61bc243bbb6d6f8244a8ceddfe3f54943ca4b0acf00abe82880dbc94a8ecf60e"
+      }
+    },
+    "npm:@ui8kit/registry|templ|link": {
+      "name": "link",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/templ",
+      "version": "3.2.0",
+      "runtime": "templ",
+      "files": {
+        "src/ui/link/link.templ": "af352c39f94b0880d26b9880eceb6dcfe22dd3ae86db1fddf4edcbe81ee521fa"
+      }
+    },
+    "npm:@ui8kit/registry|templ|meter": {
+      "name": "meter",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/templ",
+      "version": "3.2.0",
+      "runtime": "templ",
+      "files": {
+        "src/ui/meter/meter.templ": "22cf17a47a830634ea70ac0f330eba4ea5da511c56e7eefe40aafee692eb5ba2"
+      }
+    },
+    "npm:@ui8kit/registry|templ|progress": {
+      "name": "progress",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/templ",
+      "version": "3.2.0",
+      "runtime": "templ",
+      "files": {
+        "src/ui/progress/progress.templ": "1df877ffe079c88a025cca480d844efee73391fcec98ecb9afb42f8127459c79"
+      }
+    },
+    "npm:@ui8kit/registry|templ|radio": {
+      "name": "radio",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/templ",
+      "version": "3.2.0",
+      "runtime": "templ",
+      "files": {
+        "src/ui/radio/radio.templ": "bddf860818362252d68f1ef10287ad74c8cb5d7e33314753cde6067f8db02150"
+      }
+    },
+    "npm:@ui8kit/registry|templ|rules": {
+      "name": "rules",
+      "type": "registry:rules",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/templ",
+      "version": "3.2.0",
+      "runtime": "templ",
+      "files": {
+        ".cursor/rules/ui8kit-primitives.mdc": "19573812887a649378441aaed59de76b0f4d650f852f151c7eb8072df0d1c890"
+      }
+    },
+    "npm:@ui8kit/registry|templ|select": {
+      "name": "select",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/templ",
+      "version": "3.2.0",
+      "runtime": "templ",
+      "files": {
+        "src/ui/select/select.templ": "1a58e58b935e0ff93da599fb2c1765204d2cf270240586a8004d4694a8071b58"
+      }
+    },
+    "npm:@ui8kit/registry|templ|separator": {
+      "name": "separator",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/templ",
+      "version": "3.2.0",
+      "runtime": "templ",
+      "files": {
+        "src/ui/separator/separator.templ": "f7b3787ca592e6812fe49311cf79b4940e2d1c1887b09f3ed3afcc224ae13906"
+      }
+    },
+    "npm:@ui8kit/registry|templ|switch": {
+      "name": "switch",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/templ",
+      "version": "3.2.0",
+      "runtime": "templ",
+      "files": {
+        "src/ui/switch/switch.templ": "95bc4b85fd337777303a83f95135401d2c6ca2b5e597d9f54dd44f536268338a"
+      }
+    },
+    "npm:@ui8kit/registry|templ|text": {
+      "name": "text",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/templ",
+      "version": "3.2.0",
+      "runtime": "templ",
+      "files": {
+        "src/ui/text/text.templ": "db0ceaa530050aa50d127bdf4db2a1cf2a719075fe5f178ef8e9d2398819f169"
+      }
+    },
+    "npm:@ui8kit/registry|templ|textarea": {
+      "name": "textarea",
+      "type": "registry:ui",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/templ",
+      "version": "3.2.0",
+      "runtime": "templ",
+      "files": {
+        "src/ui/textarea/textarea.templ": "a889fca7bd73396aab7807ea922e760775d608115350f6669feed5c0425ca52f"
+      }
+    },
+    "npm:@ui8kit/registry|templ|utils": {
+      "name": "utils",
+      "type": "registry:utils",
+      "source": "https://unpkg.com/@ui8kit/registry@3/r/templ",
+      "version": "3.2.0",
+      "runtime": "templ",
+      "files": {
+        "src/utils/cn_merge.go": "a50d3b4eecba63f50ae91ccb380b49a669dec666712a3127dbf7b75a42e976e5",
+        "src/utils/expr.go": "4362abd14df130e43da4d38a370eea54aaf637d9b43245e4a6da42a22b1a250e",
+        "src/utils/tags.go": "58d014342d5f6cdf2e0b7d79495f6b904cd8c3cc85cec2967c9d60ffa5a4534f",
+        "src/utils/utils.go": "6c2daf0f55952802dbeed4a104d705aafea63665b4277361a673cf3dc77520f5",
+        "src/utils/variants_json.go": "0d0d1343368b25ff1a901b99c81e06908ade9babcf61fe17b6c685abfab251cd"
+      }
+    }
+  }
+}

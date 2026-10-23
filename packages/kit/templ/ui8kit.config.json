@@ -1,0 +1,22 @@
+{
+  "$schema": "https://cdn.jsdelivr.net/npm/@ui8kit/registry@3/schema/schema.json",
+  "contractVersion": "2.0.0",
+  "framework": "templ",
+  "runtime": "templ",
+  "typescript": false,
+  "globalCss": "src/index.css",
+  "dir": "src",
+  "aliases": {
+    "@": "./src",
+    "@/lib": "./src/lib",
+    "@/utils": "./src/utils",
+    "@/components": "./src/components",
+    "@/ui": "./src/ui",
+    "@/blocks": "./src/blocks",
+    "@/layouts": "./src/layouts",
+    "@/variants": "./src/variants",
+    "@/widgets": "./src/widgets"
+  },
+  "registry": "@ui8kit",
+  "importStyle": "alias"
+}
