@@ -1,12 +1,12 @@
-"""ui8kit templates for Jinja2: `environment(root)` gives an Environment over the package folder with the ui_* helpers.
-Templates are included as ui/<brick>/<part>.html.j2 and blocks/<organism>.html.j2, with `p` (props) and `children` (markup)."""
+"""The helpers of the codegen-x organism templates for Jinja2 (blocks/<organism>.html.j2, called with `p` and `children`):
+`register(env, root)` adds them as og_* globals to the kit + compose Environment."""
 
 from __future__ import annotations
 
 import functools
 from typing import Any
 
-from jinja2 import ChainableUndefined, Environment, FileSystemLoader, pass_environment
+from jinja2 import Environment, pass_environment
 from jinja2.runtime import Undefined
 from markupsafe import Markup
 
@@ -49,14 +49,14 @@ _PLAIN = [
 ]
 
 
-def environment(root: str, **options: Any) -> Environment:
-    """an Environment over the package folder with the helpers registered (autoescape on, chainable undefined)"""
+def register(env: Environment, root: str) -> Environment:
+    """registers the og_* helpers of the organism templates (blocks/*) on an Environment whose loader also finds the
+    compositions (compose/*) and the kit primitives (ui/*); root holds blocks/recipes, blocks/presets and icons/"""
     rt.set_root(root)
-    env = Environment(loader=FileSystemLoader(root), autoescape=True, undefined=ChainableUndefined, **options)
     for name in _PLAIN:
-        env.globals["ui_" + name] = _wrap(getattr(rt, _NAMES.get(name, name)))
-    env.globals["ui_attr_html"] = _wrap(rt.attr_html, safe=True)
-    env.globals["ui_lucide"] = _wrap(rt.lucide, safe=True)
-    env.globals["ui_include"] = _include
-    env.globals["ui_merge"] = _merge
+        env.globals["og_" + name] = _wrap(getattr(rt, _NAMES.get(name, name)))
+    env.globals["og_attr_html"] = _wrap(rt.attr_html, safe=True)
+    env.globals["og_lucide"] = _wrap(rt.lucide, safe=True)
+    env.globals["og_include"] = _include
+    env.globals["og_merge"] = _merge
     return env

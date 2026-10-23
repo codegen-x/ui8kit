@@ -1,6 +1,6 @@
 // Twig output of the organisms (blocks, components, parts, patterns): blocks/<name>.html.twig, called with `p` (the
 // props by their JSON names plus className and the slots) and `children` (markup). Values are the JSON shapes of the
-// TypeScript props, read with the ui_* helpers (JS truthiness, ===, String(), cn), like the Go templ output. A slot
+// TypeScript props, read with the og_* helpers (JS truthiness, ===, String(), cn), like the Go templ output. A slot
 // without arguments is passed rendered (markup); a slot with arguments is a template of its own, passed as a
 // descriptor {t: template, v: captured values} and called with the arguments as a0, a1... Events are left out.
 import type { OrganismSpec, SlotFill, Value, ViewNode } from "../../../screens/src/index";
@@ -16,6 +16,10 @@ export interface TwigOrgDeps {
   /** the recipe and preset files, relative to the package root */
   recipePath: (file: string) => string;
   presetPath: (name: string) => string;
+  /** the template of a part (default: the v2 brick layout ui/<dir>/<part>) */
+  partTemplate?: (ref: PartRef, d: Dialect) => string;
+  /** how a part is called (default: include with `p` = the props by canonical name and `children`) */
+  callPart?: (template: string, props: Array<[string, string]>, children: string | null, d: Dialect) => string;
 }
 
 const ident = (name: string): string => name.replace(/[^A-Za-z0-9_]/g, "_");
@@ -68,30 +72,30 @@ export function printValue(v: Value, c: Ctx): string {
     else if (head === "className") base = d.orNull(d.field(d.v("p"), "className"), "''");
     else if (c.org.consts?.[head!]) base = d.v(constVar(head!));
     else throw new Error(`${c.org.name}: unknown name ${head}`);
-    return rest.length ? `ui_get(${base}, ${d.list(rest.map(d.str))})` : base;
+    return rest.length ? `og_get(${base}, ${d.list(rest.map(d.str))})` : base;
   }
   if (isGroup(v)) {
     const hash = d.hash(Object.entries(v).filter(([k]) => k !== "...").map(([k, x]) => [k, printValue(x, c)]));
-    return "..." in v ? `ui_spread(${printValue(v["..."]!, c)}, ${hash})` : hash;
+    return "..." in v ? `og_spread(${printValue(v["..."]!, c)}, ${hash})` : hash;
   }
   if (!isOp(v)) throw new Error(`${c.org.name}: unknown value ${JSON.stringify(v)}`);
   const a = (i: number): string => printValue(v.args[i]!, c);
   const all = (): string => v.args.map((x) => printValue(x, c)).join(", ");
   if (v.op === "list") return d.list(v.args.map((x) => printValue(x, c)));
-  if (VARIADIC[v.op]) return `ui_${VARIADIC[v.op]}(${d.list(v.args.map((x) => printValue(x, c)))})`;
-  if (BINARY[v.op]) return `ui_${BINARY[v.op]}(${all()})`;
+  if (VARIADIC[v.op]) return `og_${VARIADIC[v.op]}(${d.list(v.args.map((x) => printValue(x, c)))})`;
+  if (BINARY[v.op]) return `og_${BINARY[v.op]}(${all()})`;
   switch (v.op) {
-    case "ne": return d.not(`ui_eq(${a(0)}, ${a(1)})`);
-    case "not": return d.not(`ui_t(${a(0)})`);
+    case "ne": return d.not(`og_eq(${a(0)}, ${a(1)})`);
+    case "not": return d.not(`og_t(${a(0)})`);
     case "undef": return d.nul;
-    case "cond": return d.ternary(`ui_t(${a(0)})`, a(1), a(2));
-    case "tpl": return `ui_tpl(${a(0)}, ${d.list(v.args.slice(1).map((x) => printValue(x, c)))})`;
-    case "sumBy": return `ui_sum_by(${a(0)}, ${d.str(String(v.args[1]))}, ${d.str(String(v.args[2]))})`;
-    case "firstOf": return `ui_first_of(${a(0)}, ${d.str(String(v.args[1]))})`;
-    case "maxBy": return `ui_max_by(${a(0)}, ${d.str(String(v.args[1]))})`;
+    case "cond": return d.ternary(`og_t(${a(0)})`, a(1), a(2));
+    case "tpl": return `og_tpl(${a(0)}, ${d.list(v.args.slice(1).map((x) => printValue(x, c)))})`;
+    case "sumBy": return `og_sum_by(${a(0)}, ${d.str(String(v.args[1]))}, ${d.str(String(v.args[2]))})`;
+    case "firstOf": return `og_first_of(${a(0)}, ${d.str(String(v.args[1]))})`;
+    case "maxBy": return `og_max_by(${a(0)}, ${d.str(String(v.args[1]))})`;
     case "preset": {
       c.presets.add(String(v.args[0]));
-      return `ui_preset(${d.str(c.deps.presetPath(String(v.args[0])))}, ${d.list(String(v.args[1]).split(".").map(d.str))})`;
+      return `og_preset(${d.str(c.deps.presetPath(String(v.args[0])))}, ${d.list(String(v.args[1]).split(".").map(d.str))})`;
     }
     case "recipe": {
       const [name, ...rest] = v.args;
@@ -100,25 +104,25 @@ export function printValue(v: Value, c: Ctx): string {
       c.recipes.add(file);
       const pairs: Array<[string, string]> = [];
       for (let i = 0; i + 1 < rest.length; i += 2) pairs.push([String(rest[i]), printValue(rest[i + 1]!, c)]);
-      return `ui_recipe(${d.str(c.deps.recipePath(file))}, ${d.hash(pairs)})`;
+      return `og_recipe(${d.str(c.deps.recipePath(file))}, ${d.hash(pairs)})`;
     }
   }
   throw new Error(`${c.org.name}: op ${v.op} has no Twig form`);
 }
 
-const test = (v: Value, c: Ctx): string => `ui_t(${printValue(v, c)})`;
+const test = (v: Value, c: Ctx): string => `og_t(${printValue(v, c)})`;
 
 /** a value for a typed prop of a brick (the zero value rules of the Go structs) */
 function brickProp(part: PartDef, name: string, v: Value, c: Ctx): string {
   const def = part.props.find((p) => p.name === name);
   if (!def) throw new Error(`${c.org.name}: ${part.name} has no prop ${name}`);
   const g = printValue(v, c);
-  if (def.goType === "uiutils.HeadingLevel") return `ui_i(${g})`;
+  if (def.goType === "uiutils.HeadingLevel") return `og_i(${g})`;
   switch (def.type) {
-    case "string": return typeof v === "string" ? g : `ui_s(${g})`;
-    case "bool": return typeof v === "boolean" ? g : `ui_t(${g})`;
-    case "int": return typeof v === "number" ? String(Math.round(v)) : `ui_i(${g})`;
-    case "items": return `ui_l(${g})`;
+    case "string": return typeof v === "string" ? g : `og_s(${g})`;
+    case "bool": return typeof v === "boolean" ? g : `og_t(${g})`;
+    case "int": return typeof v === "number" ? String(Math.round(v)) : `og_i(${g})`;
+    case "items": return `og_l(${g})`;
     default: throw new Error(`${c.org.name}: ${part.name}.${name} of type ${def.type} cannot take a value`);
   }
 }
@@ -132,8 +136,19 @@ function withScope<T>(c: Ctx, names: Array<[string, string]>, f: () => T): T {
 const walk = (nodes: ViewNode[], c: Ctx): string[] => nodes.flatMap((n) => node(n, c));
 
 /** children rendered into a variable first, then the include */
-function call(template: string, props: Array<[string, string]>, children: string[], c: Ctx, dynamic = false): string[] {
+function call(template: string, props: Array<[string, string]>, children: string[], c: Ctx, dynamic = false, custom?: TwigOrgDeps["callPart"]): string[] {
   const d = c.d;
+  if (custom) {
+    const pre: string[] = [];
+    let child: string | null = null;
+    if (children.length) {
+      const name = `c_${++c.n}`;
+      const [open, close] = d.capture(name);
+      pre.push(open, ...pad(children), close);
+      child = d.v(name);
+    }
+    return [...pre, custom(template, props, child, d)];
+  }
   const vars: Array<[string, string]> = [["p", d.hash(props)]];
   const pre: string[] = [];
   if (children.length) {
@@ -151,19 +166,24 @@ function node(n: ViewNode, c: Ctx): string[] {
     const ref = c.deps.parts[n.use];
     if (!ref) throw new Error(`${c.org.name}: unknown part ${n.use}`);
     const props: Array<[string, string]> = [];
+    const attrs: Array<[string, Value]> = [];
     for (const [k, v] of Object.entries(n.props ?? {})) {
       if (k === "Class" && v === "") continue;
-      props.push([k, brickProp(ref.part, k, v, c)]);
+      // a native attribute the primitive does not list goes with the free attributes, under its HTML name
+      const html = (ref.part.props.find((p) => p.name === k) as { attr?: string } | undefined)?.attr;
+      if (html) attrs.push([html, v]);
+      else props.push([k, brickProp(ref.part, k, v, c)]);
     }
-    const attrs = Object.entries(n.attrs ?? {});
+    attrs.push(...Object.entries(n.attrs ?? {}));
     if (attrs.length) {
       const ap = ref.part.props.find((p) => p.type === "attrs");
       if (!ap) throw new Error(`${c.org.name}: ${n.use} takes no free attributes`);
-      props.push([ap.name, `ui_attrs(${d.list(attrs.flatMap(([k, v]) => [d.str(k), printValue(v, c)]))})`]);
+      props.push([ap.name, `og_attrs(${d.list(attrs.flatMap(([k, v]) => [d.str(k), printValue(v, c)]))})`]);
     }
-    return call(partTemplate(ref.brick, ref.part, d), props, walk(n.children ?? [], c), c);
+    const template = c.deps.partTemplate ? c.deps.partTemplate(ref, d) : partTemplate(ref.brick, ref.part, d);
+    return call(template, props, walk(n.children ?? [], c), c, false, c.deps.callPart);
   }
-  if ("text" in n) return [d.out(`ui_text(${printValue(n.text, c)})`)];
+  if ("text" in n) return [d.out(`og_text(${printValue(n.text, c)})`)];
   if ("when" in n) {
     const out: string[] = [];
     let at: ViewNode | undefined = n;
@@ -181,7 +201,7 @@ function node(n: ViewNode, c: Ctx): string[] {
     const names: Array<[string, string]> = [[n.as, d.v(local(n.as))], ...(n.index ? [[n.index, d.v(local(n.index))] as [string, string]] : [])];
     const list = printValue(n.each, c);
     const body = withScope(c, names, () => walk(n.do, c));
-    return [d.forIn(local(n.as), `ui_l(${list})`), ...(n.index ? [`  ${d.set(local(n.index), d.loopIndex)}`] : []), ...pad(body), d.endfor];
+    return [d.forIn(local(n.as), `og_l(${list})`), ...(n.index ? [`  ${d.set(local(n.index), d.loopIndex)}`] : []), ...pad(body), d.endfor];
   }
   if ("slot" in n) {
     if (n.slot === "children") {
@@ -199,7 +219,7 @@ function node(n: ViewNode, c: Ctx): string[] {
     const other = c.deps.organisms[n.organism];
     if (!other) throw new Error(`${c.org.name}: unknown organism ${n.organism}`);
     const props: Array<[string, string]> = [];
-    for (const [k, v] of Object.entries(n.props ?? {})) props.push([k, k === "className" ? `ui_cnv(${d.list([printValue(v, c)])})` : printValue(v, c)]);
+    for (const [k, v] of Object.entries(n.props ?? {})) props.push([k, k === "className" ? `og_cnv(${d.list([printValue(v, c)])})` : printValue(v, c)]);
     let children: string[] = [];
     const pre: string[] = [];
     for (const [name, sl] of Object.entries(n.slots ?? {})) {

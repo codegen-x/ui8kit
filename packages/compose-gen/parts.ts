@@ -10,7 +10,8 @@ import type { Parts } from "./screens/src/validate-view";
 
 interface PrimProp { name: string; html: string; react: string; type: string; required: boolean; passthrough: boolean; enum?: string[]; docs?: string }
 interface PrimPart { name: string; acceptsClass: boolean; acceptsChildren: boolean; acceptsAttrs: boolean; props: PrimProp[] }
-type Def = { name: string; type: string; passthrough?: boolean; cva?: boolean; cvaKey?: string; required?: boolean };
+type Def = { name: string; type: string; passthrough?: boolean; cva?: boolean; cvaKey?: string; required?: boolean; attr?: string };
+// `attr`: the HTML attribute a native prop is (the server runtimes pass it with the free attributes; the JS ones as a prop)
 
 const PRIMS: Record<string, PrimPart> = Object.fromEntries(
   (JSON.parse(readFileSync(join(import.meta.dir, "specs/primitives.json"), "utf8")) as { primitives: Array<{ parts: PrimPart[] }> })
@@ -19,12 +20,12 @@ const PRIMS: Record<string, PrimPart> = Object.fromEntries(
 /** native attributes an organism sets on a composition that its v3 primitive does not list (forwarded as rest, plain HTML names):
  *  each is a typed prop of the organism view so the validator and the emitters name it */
 const NATIVE: Record<string, Def[]> = {
-  Box: [{ name: "ID", type: "string", passthrough: true }],
-  Text: [{ name: "ID", type: "string", passthrough: true }],
-  Button: [{ name: "Role", type: "string", passthrough: true }],
-  Input: [{ name: "Autocomplete", type: "string", passthrough: true }, { name: "AriaLabel", type: "string", passthrough: true }],
-  Select: [{ name: "AriaLabel", type: "string", passthrough: true }],
-  SelectOption: [{ name: "Label", type: "string", passthrough: true }],
+  Box: [{ name: "ID", type: "string", passthrough: true, attr: "id" }],
+  Text: [{ name: "ID", type: "string", passthrough: true, attr: "id" }],
+  Button: [{ name: "Role", type: "string", passthrough: true, attr: "role" }],
+  Input: [{ name: "Autocomplete", type: "string", passthrough: true, attr: "autocomplete" }, { name: "AriaLabel", type: "string", passthrough: true, attr: "aria-label" }],
+  Select: [{ name: "AriaLabel", type: "string", passthrough: true, attr: "aria-label" }],
+  SelectOption: [{ name: "Label", type: "string", passthrough: true, attr: "label" }],
   Icon: [{ name: "Name", type: "string" }],
 };
 /** props whose value is a number in the organism specs (the v3 primitive takes the string form) */
@@ -48,7 +49,7 @@ export function partsFromKit(): Parts {
       if (m.fixed && Object.keys(m.fixed).some((f) => f.toLowerCase() === p.html)) continue;
       add({ name: p.name, type: INT.has(`${name}.${p.name}`) ? "int" : p.type, passthrough: p.passthrough });
     }
-    for (const [a, t] of Object.entries(m.attrs ?? {})) add({ name: pascal(a), type: t === "number" ? "int" : "string", passthrough: true });
+    for (const [a, t] of Object.entries(m.attrs ?? {})) add({ name: pascal(a), type: t === "number" ? "int" : "string", passthrough: true, attr: a.toLowerCase() });
     for (const d of NATIVE[m.primitive] ?? []) add(d);
     if (prim.acceptsClass) add({ name: "Class", type: "string" });
     if (prim.acceptsChildren) add({ name: "Children", type: "children" });

@@ -1,6 +1,6 @@
 // The Jinja-family syntax the emitters print through. Twig is the only dialect today; Jinja2 differs in a handful of
 // forms (ternary order, `safe` for `raw`, `is not none`, include with a context dict), so a Jinja2 target is a second
-// Dialect object over the same brick and organism emitters, with a Python port of the ui_* helpers.
+// Dialect object over the same brick and organism emitters, with a Python port of the og_* helpers.
 
 export interface Dialect {
   name: "twig" | "jinja" | "latte";
@@ -54,10 +54,10 @@ export interface Dialect {
   merge(a: string, b: string): string;
 }
 
-/** the ui_* helpers that return markup (an attribute string, an SVG, a rendered template): printed unescaped wherever a
+/** the og_* helpers that return markup (an attribute string, an SVG, a rendered template): printed unescaped wherever a
  * dialect cannot mark them safe at registration (Latte escapes inside a tag even an Html value). The PHP extensions and the
  * Python environment register the same names as safe. */
-export const MARKUP_HELPERS = ["ui_attr_html", "ui_lucide", "ui_include"] as const;
+export const MARKUP_HELPERS = ["og_attr_html", "og_lucide", "og_include"] as const;
 /** attributes whose value is a URL: Latte checks those at render and would blank the data: URIs the specs pass on, which React prints as given */
 export const URL_ATTRS = ["href", "src", "action", "formaction", "poster", "cite", "data", "srcset"] as const;
 const isMarkup = (e: string): boolean => MARKUP_HELPERS.some((h) => e.startsWith(`${h}(`));
@@ -109,17 +109,17 @@ export const jinja: Dialect = {
   field: (base, key) => `${base}[${q(key)}]`,
   isNotNull: (e) => `${e} is not none`,
   hash: (entries) => `{${entries.map(([k, v]) => `${q(k)}: ${v}`).join(", ")}}`,
-  orNull: (a, b) => `ui_def(${a}, ${b})`,
+  orNull: (a, b) => `og_def(${a}, ${b})`,
   ternary: (c, a, b) => `(${a} if ${c} else ${b})`,
   raw: (e) => `{{ ${e}|safe }}`,
   comment: (text) => `{#- ${text.replace(/#}/g, "# }")} -#}`,
   elseif: (test) => `{%- elif ${test} %}`,
-  include: (template, vars) => `{{ ui_include(${q(template)}, ${vars}) }}`,
-  includeExpr: (template, vars) => `{{ ui_include(${template}, ${vars}) }}`,
-  merge: (a, b) => `ui_merge(${a}, ${b})`,
+  include: (template, vars) => `{{ og_include(${q(template)}, ${vars}) }}`,
+  includeExpr: (template, vars) => `{{ og_include(${template}, ${vars}) }}`,
+  merge: (a, b) => `og_merge(${a}, ${b})`,
 };
 
-/** Latte 3 (PHP expressions, `$` variables, `{tag}` syntax); includes go through ui_include, which renders a template to Html */
+/** Latte 3 (PHP expressions, `$` variables, `{tag}` syntax); includes go through og_include, which renders a template to Html */
 export const latte: Dialect = {
   name: "latte",
   ext: ".latte",
@@ -152,7 +152,7 @@ export const latte: Dialect = {
   forIn: (item, list) => `{foreach ${list} as $${item}}`,
   loopIndex: "$iterator->counter0",
   endfor: `{/foreach}`,
-  include: (template, vars) => `{=ui_include(${q(template)}, ${vars})|noescape}`,
-  includeExpr: (template, vars) => `{=ui_include(${template}, ${vars})|noescape}`,
+  include: (template, vars) => `{=og_include(${q(template)}, ${vars})|noescape}`,
+  includeExpr: (template, vars) => `{=og_include(${template}, ${vars})|noescape}`,
   merge: (a, b) => `array_merge(${a}, ${b})`,
 };
