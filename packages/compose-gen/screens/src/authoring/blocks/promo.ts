@@ -80,7 +80,7 @@ const newsletterForm = spec(`${O}newsletter-form`, "NewsletterForm", "An email s
   view: [frame(
     { id: ref("id"), title: ref("title"), lead: ref("text"), tone: ref("tone"), align: ref("align"), layout: cond(eq(ref("layout"), "split"), "split", "stack"), hasMedia: eq(ref("layout"), "split") },
     [use("Form", { props: { Method: "dialog", Class: cn("w-full max-w-md", cond(eq(ref("align"), "center"), "mx-auto", "")) }, attrs: { "data-testid": "newsletter-form" } },
-      use("Label", { props: { HTMLFor: fid("email"), Class: "sr-only" } }, text(ref("label"))),
+      use("Label", { props: { For: fid("email"), Class: "sr-only" } }, text(ref("label"))),
       use("Group", { props: { Gap: "2", Align: "start", Class: cn("w-full", cond(eq(ref("layout"), "stacked"), "flex-col items-stretch", "flex-wrap")) } },
         use("Input", { props: { Type: "email", Name: "email", Class: "min-w-0 flex-1" }, attrs: { id: fid("email"), "data-testid": "field" } }),
         use("Button", { props: { Variant: "default", Size: "default", Type: "submit" }, attrs: { "data-testid": "submit" } }, text(ref("submit")))),

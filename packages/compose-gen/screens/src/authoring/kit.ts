@@ -52,9 +52,9 @@ import { xgenPaths } from "../../../schema/src/index";
 import type { RecipeFile } from "../ir";
 
 const recipesDir = xgenPaths(join(import.meta.dir, "..", "..", "..")).specs("recipes");
-/** the base classes of the Card primitive (xgen/specs/ui/card.variants.json): a card item that is the root of a block file opens on
+/** the base classes of the Card composition (packages/kit-compose/variants/card.variants.json): a card item that is the root of a block file opens on
  *  `Block tag="article"` with these classes, so it looks the same and is a block (rule 01) */
-export const cardBase = (): string => (JSON.parse(readFileSync(join(recipesDir, "..", "ui", "card.variants.json"), "utf8")) as RecipeFile).base;
+export const cardBase = (): string => (JSON.parse(readFileSync(join(import.meta.dir, "..", "..", "..", "..", "kit-compose", "variants", "card.variants.json"), "utf8")) as RecipeFile).base;
 export const recipeFile = (file: string): RecipeFile => JSON.parse(readFileSync(join(recipesDir, `${file}.variants.json`), "utf8")) as RecipeFile;
 /** the values of one key of a recipe as a TypeScript union: `"24" | "32"` */
 export const union = (file: string, key: string): PropType => ({ ts: Object.keys(recipeFile(file).byKey[key] ?? {}).map((v) => JSON.stringify(v)).join(" | ") });

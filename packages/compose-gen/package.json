@@ -4,5 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "description": "The generator of the codegen-x compositions above the primitives: organism/block/screen specs, their loader and the per-runtime emitters (moved out of xgen/, see docs/ui8kit3-xgen-exit.md). Consumed by packages/kit-compose.",
-  "main": "./index.ts"
+  "main": "./index.ts",
+  "scripts": {
+    "check": "bun check.ts"
+  }
 }

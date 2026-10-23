@@ -6,7 +6,7 @@
 import { readFileSync, writeFileSync, mkdirSync, existsSync, readdirSync, rmSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { loadSpecs, portableTo, loadInputs, indexParts, tierDir, fileName, emitPreset, reactOrganism, svelteOrganism, vueOrganism, solidOrganism, ROOT, type OrganismSpec } from "../../compose-gen";
+import { portableTo, loadInputs, partsFromKit, validateOrganism, tierDir, fileName, emitPreset, reactOrganism, svelteOrganism, vueOrganism, solidOrganism, ROOT, type OrganismSpec } from "../../compose-gen";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const XGEN = ROOT; // packages/compose-gen: specs, content, emitters
@@ -24,11 +24,15 @@ function banner(file: string, src: string): string {
 }
 
 export function loadOrganisms() {
-  const specs = loadSpecs(XGEN);
   const inputs = loadInputs(XGEN);
-  if (specs.problems.length) throw new Error(`organisms: xgen specs: ${specs.problems.join("; ")}`);
-  const organisms = inputs.organisms.map((o) => o.value as OrganismSpec).filter((o) => JS_RUNTIMES.every((r) => portableTo(o.portable, r) === true));
-  return { specs, inputs, organisms };
+  const parts = partsFromKit();
+  const all = inputs.organisms.map((o) => o.value as OrganismSpec);
+  const byName = Object.fromEntries(all.map((o) => [o.name, o]));
+  const recipesIn = Object.fromEntries(inputs.recipes.map((x) => [x.name, x.value]));
+  const problems = all.flatMap((o) => validateOrganism(o, parts, byName, recipesIn as never, inputs.presets.map((p) => p.value) as never));
+  if (problems.length) throw new Error(`organisms: views against the kit-compose parts:\n${problems.join("\n")}`);
+  const organisms = all.filter((o) => JS_RUNTIMES.every((r) => portableTo(o.portable, r) === true));
+  return { parts, inputs, organisms };
 }
 
 function lucideRegistry(): string {
@@ -39,9 +43,8 @@ function lucideRegistry(): string {
 }
 
 export function runtimeFiles(r: JsRuntime, loaded = loadOrganisms()): Map<string, string> {
-  const { specs, inputs, organisms } = loaded;
+  const { parts, inputs, organisms } = loaded;
   const out = new Map<string, string>();
-  const parts = indexParts(specs.bricks);
   const recipes = Object.fromEntries(inputs.recipes.map((x) => [x.name, x.value]));
   const jsx = r === "react" || r === "solid";
   const partPath = (n: string) =>

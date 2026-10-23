@@ -63,7 +63,7 @@ const field = spec(`${P}field`, "Field", "A form field: label, control (children
   children: true,
   view: [
     use("Box", { props: { Class: cn("flex min-w-0 flex-col gap-2", ref("className")) } },
-      use("Label", { props: { Class: "text-xs font-bold text-foreground", HTMLFor: ref("htmlFor") } }, text(ref("label"))),
+      use("Label", { props: { Class: "text-xs font-bold text-foreground", For: ref("htmlFor") } }, text(ref("label"))),
       slot("children"),
       when(ref("error"),
         [use("Text", { props: { Class: "m-0 text-xs font-semibold text-destructive" }, attrs: { role: "alert" } }, text(ref("error")))],

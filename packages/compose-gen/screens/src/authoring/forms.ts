@@ -17,17 +17,17 @@ export const textField = (name: string, label: Value): ViewNode =>
 export const checkRow = (name: string, label: Value, extra: Value = ""): ViewNode =>
   use("Group", { props: { Gap: "2", Align: "center", Class: cn("w-fit", extra) } },
     use("Checkbox", { props: { Name: name }, attrs: { id: fid(name) } }),
-    use("Label", { props: { HTMLFor: fid(name), Class: "text-sm" } }, text(label)));
+    use("Label", { props: { For: fid(name), Class: "text-sm" } }, text(label)));
 /** a switch with its label */
 export const switchRow = (name: string, label: Value): ViewNode =>
   use("Group", { props: { Gap: "4", Align: "center", Justify: "between" } },
-    use("Label", { props: { HTMLFor: fid(name), Class: "text-sm" } }, text(label)),
+    use("Label", { props: { For: fid(name), Class: "text-sm" } }, text(label)),
     use("Switch", { props: { Name: name }, attrs: { id: fid(name) } }));
 
 /** an email field and a button on one row (or a column): the sign-up used by the hero, the call to action and the footer */
 export const emailRow = (label: Value, submit: Value, center: Value) =>
   use("Form", { props: { Method: "dialog", Class: cn("w-full max-w-md", cond(center, "mx-auto", "")) }, attrs: { "data-testid": "email-form" } },
-    use("Label", { props: { HTMLFor: fid("email"), Class: "sr-only" } }, text(label)),
+    use("Label", { props: { For: fid("email"), Class: "sr-only" } }, text(label)),
     use("Group", { props: { Gap: "2", Align: "start", Class: "w-full flex-wrap" } },
       use("Input", { props: { Type: "email", Name: "email", Class: "min-w-0 flex-1" }, attrs: { id: fid("email"), "data-testid": "field" } }),
       use("Button", { props: { Variant: "default", Size: "default", Type: "submit" }, attrs: { "data-testid": "submit" } }, text(submit))));

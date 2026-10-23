@@ -71,7 +71,7 @@ export const heroClassic = spec(`${O}hero-classic`, "HeroClassic", "The top of a
     const props = { id: ref("id"), title: ref("title"), lead: ref("text"), level: ref("level"), scale: ref("scale"), badge: ref("badge"),
       layout: cond(split, "split", "stack"), align: cond(split, "start", "center"), hasMedia: has, mediaSide: ref("mediaSide"), tone: ref("tone"), density: ref("density") };
     const prompt = use("Box", { props: { Class: cn("w-full max-w-xl", cond(eq(ref("layout"), "centered"), "mx-auto", "")) }, attrs: { "data-testid": "email-form" } },
-      use("Label", { props: { HTMLFor: fid("email"), Class: "sr-only" } }, { text: ref("actions.emailLabel") }),
+      use("Label", { props: { For: fid("email"), Class: "sr-only" } }, { text: ref("actions.emailLabel") }),
       use("Group", { props: { Gap: "2", Align: "start", Class: "w-full flex-wrap" } },
         use("Input", { props: { Type: "text", Name: "prompt", Class: "min-w-0 flex-1", Placeholder: ref("actions.emailLabel") }, attrs: { id: fid("email"), "data-testid": "field" } }),
         use("Button", { props: { Variant: "default", Size: "default", Href: ref("actions.href") }, attrs: { "data-testid": "submit" } }, { text: ref("actions.cta") })));

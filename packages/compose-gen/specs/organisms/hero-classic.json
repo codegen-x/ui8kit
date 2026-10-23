@@ -356,7 +356,7 @@
                         {
                           "use": "Label",
                           "props": {
-                            "HTMLFor": {
+                            "For": {
                               "op": "tpl",
                               "args": [
                                 "{0}-email",

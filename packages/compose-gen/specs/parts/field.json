@@ -50,7 +50,7 @@
           "use": "Label",
           "props": {
             "Class": "text-xs font-bold text-foreground",
-            "HTMLFor": {
+            "For": {
               "$": "htmlFor"
             }
           },
