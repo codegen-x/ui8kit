@@ -55,6 +55,7 @@ const RUN: Record<ServerOrgRuntime, { missing: () => string | null; render: () =
       cases.map((c) => ({ template: `blocks/${fileName(c.organism)}.html.j2`, p: c.props }))),
   },
   twig: { missing: () => php, render: () => phpRender("twig", ".html.twig") },
+  latte: { missing: () => php, render: () => phpRender("latte", ".latte") },
 };
 
 for (const rt of SERVER_ORG_RT) {
