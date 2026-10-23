@@ -31,12 +31,14 @@
     "packages/twig/*",
     "packages/jinja2/*",
     "packages/latte/*",
-    "packages/kit/*"
+    "packages/kit/*",
+    "packages/kit-compose",
+    "packages/ui-gates"
   ],
   "packageManager": "bun@1.4.2",
   "scripts": {
     "build": "bun xgen/cli/src/cli.ts build",
-    "check": "node packages/tooling/bin/vendor-guard.mjs && node packages/tooling/bin/kit-check.mjs && bun xgen/skins/skins.ts build --check && bun xgen/cli/src/cli.ts check",
+    "check": "node packages/tooling/bin/vendor-guard.mjs && node packages/tooling/bin/kit-check.mjs && bun run compose:check && bun run gates:source && bun xgen/skins/skins.ts build --check && bun xgen/cli/src/cli.ts check",
     "skins": "bun xgen/skins/skins.ts",
     "verify": "bun run check && bun run codex:validate && bun run typecheck && bun run test",
     "codex:manifest": "bun xgen/schema/src/codex.ts",
@@ -51,11 +53,14 @@
     "shot": "bun xgen/cli/src/cli.ts shot",
     "visual": "bun xgen/cli/src/cli.ts visual",
     "typecheck": "bun run typecheck:xgen && bun run --filter \"@ui8kit/svelte-ui\" --filter \"@ui8kit/react-ui\" --filter \"@ui8kit/vue-ui\" --filter \"@ui8kit/solid-ui\" --filter \"@ui8kit/app-shared\" --filter \"host-*\" --filter \"discovery\" --filter \"@ui8kit/panorama\" --filter \"@ui8kit/taste-data\" --filter \"@ui8kit/taste-screens\" --filter \"magazine\" --parallel check",
-    "test": "bun test ./xgen ./packages/taste-data/src",
+    "test": "bun test ./xgen ./packages/taste-data/src ./packages/kit-compose",
     "check:all": "bun run build && bun run check && bun run typecheck && bun run build:hosts && bun run test && bun run lint:px && bun run e2e",
     "typecheck:xgen": "tsc -p xgen/tsconfig.json",
     "lint:px": "node packages/tooling/bin/ui8px-gate.mjs",
-    "kit:check": "node packages/tooling/bin/kit-check.mjs"
+    "kit:check": "node packages/tooling/bin/kit-check.mjs",
+    "compose:build": "bun packages/kit-compose/src/build.ts",
+    "compose:check": "bun packages/kit-compose/src/build.ts --check",
+    "gates:source": "node packages/ui-gates/bin/ui-gates.mjs source packages/kit-compose/react packages/kit-compose/svelte"
   },
   "devDependencies": {
     "@types/bun": "^1.4.2",

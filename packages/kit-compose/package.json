@@ -1,0 +1,23 @@
+{
+  "name": "@codegen-x/kit-compose",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "description": "codegen-x compositions on UI8Kit 3 primitives (Stack, Group, Grid, Title, Card*, Badge, Table*, styled Button, ...): one description (src/map.ts + variants/*.json token-only recipes), a thin build script, output per runtime like packages/kit. Candidates for the shared @ui8kit registry.",
+  "main": "src/map.ts",
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.7.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "svelte": "^5.57.1"
+  },
+  "scripts": {
+    "build": "bun src/build.ts",
+    "check": "bun src/build.ts --check"
+  }
+}
