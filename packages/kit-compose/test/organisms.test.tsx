@@ -6,14 +6,12 @@ import { createElement, type ComponentType } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { readFileSync } from "node:fs";
 import { parseFragment } from "parse5";
-import { tierDir, fileName } from "@ui8kit/xgen-screens";
-import { blockCases } from "../../../xgen/check/src/templ/blocks";
+import { tierDir, fileName, blockCases, normalizeHtml } from "../../compose-gen";
 import { files, loadOrganisms, JS_RUNTIMES } from "../src/organisms";
 import { checkHtml } from "../../ui-gates/src/html.mjs";
 import { checkSourceText } from "../../ui-gates/src/source.mjs";
 import { installSsrPlugin } from "./ssr";
 import { norm as tokens } from "./shared";
-import { normalizeHtml } from "../../../xgen/check/src/templ/normalize";
 
 // the DOM tree contract of the xgen gates (attributes by name, class tokens sorted, text trimmed) after the SSR artifacts
 // Vue serializes style="height:1px;" where React writes style="height:1px": the same declarations
