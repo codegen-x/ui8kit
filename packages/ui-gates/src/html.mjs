@@ -10,6 +10,25 @@ const axeSource = readFileSync(createRequire(import.meta.url).resolve("axe-core/
 /** A fragment becomes a minimal valid document: lang, title, one <main> landmark. */
 export const wrap = (html) => (/^\s*<!doctype/i.test(html) ? html : `<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>case</title></head><body><main>${html}</main></body></html>`);
 
+const ALIAS = { classname: "class", htmlfor: "for", httpequiv: "http-equiv", acceptcharset: "accept-charset" };
+/**
+ * react-dom can print React spellings (camelCase names such as fetchPriority, className/htmlFor from a raw spread) that the
+ * browser treats case-insensitively but html-validate flags: attribute names of HTML elements are lowercased (React aliases
+ * mapped) before validation. SVG/MathML keep their case (viewBox, preserveAspectRatio are case-sensitive there).
+ */
+export function normalizeReactAttrs(html) {
+  let foreign = 0;
+  return html.replace(/<(\/?)([a-zA-Z][\w:-]*)((?:\s+[^\s=>\/]+(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^\s>]+))?)*)\s*(\/?)>/g, (m, close, tag, attrs, self) => {
+    const t = tag.toLowerCase();
+    if (close) { if ((t === "svg" || t === "math") && foreign > 0) foreign--; return m; }
+    const inForeign = foreign > 0 || t === "svg" || t === "math";
+    if ((t === "svg" || t === "math") && !self) foreign++;
+    if (inForeign) return m;
+    const fixed = attrs.replace(/(\s+)([^\s=>\/]+)/g, (a, sp, name) => `${sp}${ALIAS[name.toLowerCase()] ?? name.toLowerCase()}`);
+    return `<${tag}${fixed}${self ? " /" : ""}>`;
+  });
+}
+
 export const HTML_VALIDATE_CONFIG = {
   extends: ["html-validate:recommended"],
   rules: {
@@ -23,7 +42,7 @@ export const HTML_VALIDATE_CONFIG = {
 export async function checkHtml(cases, { config = HTML_VALIDATE_CONFIG, axeRules = {} } = {}) {
   const hv = new HtmlValidate(config), out = [];
   for (const c of cases) {
-    const doc = wrap(c.html);
+    const doc = wrap(normalizeReactAttrs(c.html));
     const report = await hv.validateString(doc);
     for (const r of report.results) for (const m of r.messages) out.push({ id: c.id, tool: "html-validate", rule: m.ruleId, message: m.message });
     const dom = new JSDOM(doc, { runScripts: "outside-only", virtualConsole: new VirtualConsole() });
