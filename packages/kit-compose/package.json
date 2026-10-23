@@ -19,6 +19,7 @@
   "scripts": {
     "build": "bun src/build.ts && bun src/organisms.ts",
     "check": "bun src/build.ts --check && bun src/organisms.ts --check",
-    "typecheck": "tsc -p tsconfig.react.json && tsc -p tsconfig.solid.json && vue-tsc --noEmit -p tsconfig.vue.json && svelte-check --tsconfig tsconfig.svelte.json --fail-on-warnings"
+    "typecheck": "tsc -p tsconfig.react.json && tsc -p tsconfig.solid.json && vue-tsc --noEmit -p tsconfig.vue.json && svelte-check --tsconfig tsconfig.svelte.json --fail-on-warnings",
+    "test": "for f in test/*.test.ts test/*.test.tsx; do bun test ./$f || exit 1; done"
   }
 }

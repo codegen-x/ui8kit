@@ -6,7 +6,7 @@
   import { cn } from "../../../../kit/svelte/src/utils";
   import { rc } from "./recipes";
 
-  let { "size": v_size, "weight": v_weight, as, class: className, children, ...rest }: ComponentProps<typeof Prim> & { "size"?: string | number; "weight"?: string | number; as?: string | number; class?: string; children?: Snippet } = $props();
+  let { "size": v_size, "weight": v_weight, as, class: className, children, ...rest }: Omit<ComponentProps<typeof Prim>, "tag"> & { "size"?: string | number; "weight"?: string | number; as?: string | number; class?: string; children?: Snippet } = $props();
   const cls = $derived(cn(rc("title", { "size": v_size, "weight": v_weight }), className));
 </script>
 

@@ -48,6 +48,8 @@ export { default as Input } from "./Input.vue";
 export { default as Range } from "./Range.vue";
 export { default as Textarea } from "./Textarea.vue";
 export { default as Select } from "./Select.vue";
+export { default as SelectOption } from "./SelectOption.vue";
+export { default as OptGroup } from "./OptGroup.vue";
 export { default as Checkbox } from "./Checkbox.vue";
 export { default as Radio } from "./Radio.vue";
 export { default as Switch } from "./Switch.vue";

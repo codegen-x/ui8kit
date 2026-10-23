@@ -12,3 +12,10 @@ test("the gate validates the normalized markup", async () => {
   const problems = await checkHtml([{ id: "img", html: '<img fetchPriority="high" alt="a" src="/a.png">' }]);
   expect(problems.filter((p) => p.tool === "html-validate").map((p) => p.rule)).toEqual([]);
 }, 60000);
+
+test("text-content: a button named by its <label for> passes, an unnamed one does not", async () => {
+  const named = await checkHtml([{ id: "a", html: `<label for="s">Updates</label><button type="button" role="switch" aria-checked="false" id="s"></button>` }]);
+  expect(named.filter((p) => p.rule === "text-content")).toEqual([]);
+  const bare = await checkHtml([{ id: "b", html: `<label for="x">Updates</label><button type="button" role="switch" aria-checked="false" id="s"></button>` }]);
+  expect(bare.some((p) => p.rule === "text-content")).toBe(true);
+});

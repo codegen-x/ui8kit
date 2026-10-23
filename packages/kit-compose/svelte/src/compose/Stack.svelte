@@ -6,7 +6,7 @@
   import { cn } from "../../../../kit/svelte/src/utils";
   import { rc } from "./recipes";
 
-  let { "gap": v_gap, "align": v_align, "justify": v_justify, tag, class: className, children, ...rest }: ComponentProps<typeof Prim> & { "gap"?: string | number; "align"?: string | number; "justify"?: string | number; tag?: string | number; class?: string; children?: Snippet } = $props();
+  let { "gap": v_gap, "align": v_align, "justify": v_justify, tag, class: className, children, ...rest }: Omit<ComponentProps<typeof Prim>, "tag"> & { "gap"?: string | number; "align"?: string | number; "justify"?: string | number; tag?: string | number; class?: string; children?: Snippet } = $props();
   const cls = $derived(cn(rc("stack", { "gap": v_gap, "align": v_align, "justify": v_justify }), className));
 </script>
 

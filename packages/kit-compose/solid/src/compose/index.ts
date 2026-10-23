@@ -48,6 +48,8 @@ export * from "./input.solid";
 export * from "./range.solid";
 export * from "./textarea.solid";
 export * from "./select.solid";
+export * from "./select-option.solid";
+export * from "./opt-group.solid";
 export * from "./checkbox.solid";
 export * from "./radio.solid";
 export * from "./switch.solid";

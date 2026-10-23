@@ -39,13 +39,27 @@ export const HTML_VALIDATE_CONFIG = {
   },
 };
 
+/**
+ * html-validate's text-content does not count a <label for> as the name of a <button> (a labelable element: HTML-AAM gives it
+ * the label as accessible name, e.g. the v3 Switch, button[role=switch], named by its field label). Only that case is let through.
+ */
+function labelledByLabel(document, selector) {
+  if (!selector) return false;
+  let el = null;
+  try { el = document.querySelector(selector); } catch { return false; }
+  return !!el && el.tagName === "BUTTON" && [...(el.labels ?? [])].some((l) => l.textContent.trim() !== "");
+}
+
 export async function checkHtml(cases, { config = HTML_VALIDATE_CONFIG, axeRules = {} } = {}) {
   const hv = new HtmlValidate(config), out = [];
   for (const c of cases) {
     const doc = wrap(normalizeReactAttrs(c.html));
     const report = await hv.validateString(doc);
-    for (const r of report.results) for (const m of r.messages) out.push({ id: c.id, tool: "html-validate", rule: m.ruleId, message: m.message });
     const dom = new JSDOM(doc, { runScripts: "outside-only", virtualConsole: new VirtualConsole() });
+    for (const r of report.results) for (const m of r.messages) {
+      if (m.ruleId === "text-content" && labelledByLabel(dom.window.document, m.selector)) continue;
+      out.push({ id: c.id, tool: "html-validate", rule: m.ruleId, message: m.message });
+    }
     dom.window.eval(axeSource);
     const res = await dom.window.axe.run(dom.window.document, { rules: { "color-contrast": { enabled: false }, ...axeRules }, resultTypes: ["violations"] });
     for (const v of res.violations) out.push({ id: c.id, tool: "axe", rule: v.id, message: `${v.help}: ${v.nodes.map((n) => n.html).join(" | ").slice(0, 300)}` });

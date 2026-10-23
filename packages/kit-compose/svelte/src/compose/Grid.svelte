@@ -6,8 +6,8 @@
   import { cn } from "../../../../kit/svelte/src/utils";
   import { rc } from "./recipes";
 
-  let { tag, class: className, children, ...rest }: ComponentProps<typeof Prim> & { tag?: string | number; class?: string; children?: Snippet } = $props();
-  const cls = $derived(cn(rc("grid", {  }), className));
+  let { "cols": v_cols, tag, class: className, children, ...rest }: Omit<ComponentProps<typeof Prim>, "tag"> & { "cols"?: string | number; tag?: string | number; class?: string; children?: Snippet } = $props();
+  const cls = $derived(cn(rc("grid", { "cols": v_cols }), className));
 </script>
 
 <Prim tag={(tag ?? "div") as never} class={cls} {...rest}>{@render children?.()}</Prim>

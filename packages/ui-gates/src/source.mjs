@@ -51,7 +51,7 @@ const TAG_ATTR = /(?<![:\w.-])(?:tag|Tag)\s*(?:=\s*\{?\s*|:\s*)["']([^"'{}$]+)["
 
 const lineOf = (s, i) => s.slice(0, i).split("\n").length;
 
-export function checkSourceText(src, file, { allow = [] } = {}) {
+export function checkSourceText(src, file, { allow = [], allowTags = [] } = {}) {
   const kind = EXT[path.extname(file)];
   if (!kind) return [];
   const m = markupOf(src, kind), out = [], allowed = new Set(allow);
@@ -61,7 +61,7 @@ export function checkSourceText(src, file, { allow = [] } = {}) {
   }
   for (const x of src.matchAll(TAG_ATTR)) {
     const v = x[1];
-    if (!BOX_TAGS.includes(v) && !TEXT_TAGS.includes(v)) out.push({ file, line: lineOf(src, x.index), rule: "tag-allowlist", message: `tag "${v}" is not an HTML5 Box/Text tag` });
+    if (!BOX_TAGS.includes(v) && !TEXT_TAGS.includes(v) && !allowTags.includes(v)) out.push({ file, line: lineOf(src, x.index), rule: "tag-allowlist", message: `tag "${v}" is not an HTML5 Box/Text tag` });
   }
   return out;
 }

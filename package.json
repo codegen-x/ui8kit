@@ -60,7 +60,7 @@
     "kit:check": "node packages/tooling/bin/kit-check.mjs",
     "compose:build": "bun packages/kit-compose/src/build.ts",
     "compose:check": "bun packages/kit-compose/src/build.ts --check && bun packages/kit-compose/src/organisms.ts --check",
-    "gates:source": "node packages/ui-gates/bin/ui-gates.mjs source packages/kit-compose/react packages/kit-compose/svelte packages/kit-compose/vue packages/kit-compose/solid packages/kit-compose/jinja2 packages/kit-compose/twig packages/kit-compose/latte packages/kit-compose/templ/src"
+    "gates:source": "node packages/ui-gates/bin/ui-gates.mjs source packages/kit-compose/react packages/kit-compose/svelte packages/kit-compose/vue packages/kit-compose/solid packages/kit-compose/jinja2 packages/kit-compose/twig packages/kit-compose/latte packages/kit-compose/templ/src --allow-tag del"
   },
   "devDependencies": {
     "@types/bun": "^1.4.2",

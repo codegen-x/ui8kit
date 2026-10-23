@@ -4,9 +4,9 @@ import { Text as Prim } from "../../../../kit/react/src/ui/text/text";
 import { cn } from "../../../../kit/react/src/utils";
 import { rc } from "./recipes";
 
-export type CardTitleProps = Omit<ComponentProps<typeof Prim>, "tag"> & { className?: string };
+export type CardTitleProps = Omit<ComponentProps<typeof Prim>, "tag"> & { as?: number | string; className?: string };
 
-/** CardTitle: Text <h3>. */
-export function CardTitle({ className, ...rest }: CardTitleProps) {
-  return <Prim tag={"h3" as never} className={cn("text-lg font-semibold text-foreground", className)} {...rest} />;
+/** CardTitle: Text. */
+export function CardTitle({ as, className, ...rest }: CardTitleProps) {
+  return <Prim tag={(as && Number(as) >= 1 && Number(as) <= 6 ? `h${as}` : "h3") as never} className={cn("text-lg font-semibold text-foreground", className)} {...rest} />;
 }

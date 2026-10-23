@@ -1,6 +1,6 @@
 // DOM parity of every composition between runtimes (React SSR vs Svelte SSR), and token/grid rules on the recipes.
 import { test, expect } from "bun:test";
-import { plugin } from "bun";
+import { installSsrPlugin } from "./ssr";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
 import { readFileSync } from "node:fs";
@@ -12,29 +12,7 @@ import { cases, names, norm, MANUAL_CASES } from "./shared";
 
 const rendered: { id: string; html: string }[] = [];
 
-plugin({
-  name: "compose-ssr",
-  async setup(b) {
-    const { compile } = await import("svelte/compiler");
-    const { parse, compileScript } = await import("@vue/compiler-sfc");
-    const { transformSync } = await import("@babel/core");
-    const solid = (await import("babel-preset-solid")).default;
-    const ts = (await import("@babel/preset-typescript")).default;
-    b.onLoad({ filter: /\.svelte$/ }, ({ path }) => ({
-      loader: "js",
-      contents: compile(readFileSync(path, "utf8"), { generate: "server", filename: path }).js.code,
-    }));
-    b.onLoad({ filter: /\.vue$/ }, ({ path }) => {
-      const { descriptor } = parse(readFileSync(path, "utf8"), { filename: path });
-      return { loader: "ts", contents: compileScript(descriptor, { id: path, inlineTemplate: true }).content };
-    });
-    b.onLoad({ filter: /\.solid\.tsx$/ }, ({ path }) => ({
-      loader: "js",
-      contents: transformSync(readFileSync(path, "utf8"), { filename: path, babelrc: false, configFile: false,
-        presets: [[ts, { isTSX: true, allExtensions: true }], [solid, { generate: "ssr", hydratable: false }]] })!.code!,
-    }));
-  },
-});
+installSsrPlugin();
 
 
 const VOID = new Set(["Input", "Checkbox", "Radio", "Switch", "Separator", "Image", "Textarea"]);  // Textarea: value, not children

@@ -102,3 +102,18 @@ They carry no recipe or theme classes of their own, so a primitive would only wr
 
 The list is `RAW_ALLOWED` in `packages/ui-gates/src/source.mjs`; the source gate never reports them, and
 `packages/ui-gates/test/source.test.ts` pins that none of them enters `PRIMITIVE_OF`.
+
+## Organisms on kit-compose (JS runtimes)
+
+`packages/kit-compose/src/organisms.ts` runs the xgen organism emitters of Svelte, React, Vue and Solid over every organism spec
+(`xgen/specs/{organisms,parts,patterns}`, 224 portable specs) with the bricks resolved to the kit-compose compositions
+(`../compose`, the API of the former bricks) instead of `packages/<runtime>/ui`. Output per runtime: `src/{blocks,components}`,
+`presets/`, `utils/` (expression helpers), `icons/` (LucideIcon by name + registry; `svg` is on the raw allowlist), `organisms.ts`.
+
+Gate (`test/organisms.test.tsx`): files up to date; every gallery block case of `xgen/specs/blocks` (the case table of the xgen
+template gates) renders the same DOM in React (reference), Svelte, Vue and Solid (SSR); html-validate + axe on every case;
+source gate on the organism sources. Composition changes it needed: Grid `cols` (recipe key), CardTitle `as`, typed td/th
+attributes (scope, colSpan, ...), bare SelectOption/OptGroup in the JS runtimes.
+
+Known kit gap: v3 Text has no `del` tag (ProductPrice, ProductCard compare-at price fall back to the Text default tag);
+`gates:source --allow-tag del` and `KNOWN_KIT_GAPS` in the test list it until the kit has it.

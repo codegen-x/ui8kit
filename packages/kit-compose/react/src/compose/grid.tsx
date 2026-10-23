@@ -4,9 +4,9 @@ import { Box as Prim } from "../../../../kit/react/src/ui/box/box";
 import { cn } from "../../../../kit/react/src/utils";
 import { rc } from "./recipes";
 
-export type GridProps = Omit<ComponentProps<typeof Prim>, "tag"> & { tag?: string; className?: string };
+export type GridProps = Omit<ComponentProps<typeof Prim>, "tag" | "cols"> & { "cols"?: string | number; tag?: string; className?: string };
 
 /** Grid: Box + recipe grid. */
-export function Grid({ tag, className, ...rest }: GridProps) {
-  return <Prim tag={(tag ?? "div") as never} className={cn(rc("grid", {  }), className)} {...rest} />;
+export function Grid({ "cols": v_cols, tag, className, ...rest }: GridProps) {
+  return <Prim tag={(tag ?? "div") as never} className={cn(rc("grid", { "cols": v_cols }), className)} {...rest} />;
 }

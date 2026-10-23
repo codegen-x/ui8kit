@@ -48,6 +48,8 @@ export * from "./input";
 export * from "./range";
 export * from "./textarea";
 export * from "./select";
+export * from "./select-option";
+export * from "./opt-group";
 export * from "./checkbox";
 export * from "./radio";
 export * from "./switch";

@@ -30,3 +30,9 @@ test("svg, br, datalist and output stay raw (allowlist, no primitive)", () => {
   const src = `export const X = () => (<Text>a<br />b<svg viewBox="0 0 24 24"><path d="M0 0" /></svg><datalist id="d"></datalist><output>1</output></Text>);`;
   expect(rules(src, "x.tsx")).toEqual([]);
 });
+
+test("allowTags lets a listed Box/Text tag value through, nothing else", () => {
+  const src = `export const X = () => (<Text tag="del">1</Text>);`;
+  expect(rules(src, "x.tsx")).toEqual(['tag-allowlist tag "del" is not an HTML5 Box/Text tag']);
+  expect(checkSourceText(src, "x.tsx", { allowTags: ["del"] })).toEqual([]);
+});

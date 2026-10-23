@@ -7,13 +7,13 @@ import { cn } from "../../../../kit/vue/src/utils";
 import { rc } from "./recipes";
 
 defineOptions({ name: "Grid", inheritAttrs: false });
-const props = defineProps<{ tag?: string | number }>();
+const props = defineProps<{ "cols"?: string | number; tag?: string | number }>();
 const attrs = useAttrs();
 const rest = computed(() => {
   const { class: _class, ...r } = attrs;
   return r;
 });
-const cls = computed(() => cn(rc("grid", {  }), attrs.class as string | undefined));
+const cls = computed(() => cn(rc("grid", { "cols": props["cols"] }), attrs.class as string | undefined));
 const tagValue = computed(() => (props.tag ?? "div"));
 </script>
 

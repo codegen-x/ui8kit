@@ -4,15 +4,17 @@ package compose
 
 import "github.com/ui8kit/codegen/generated/templ/ui/text"
 
-// CardTitleProps: CardTitle: Text <h3>.
+// CardTitleProps: CardTitle: Text.
 type CardTitleProps struct {
+	// As — heading level 1..6 (h1..h6), else h3
+	As string
 	text.TextProps
 }
 
 func cardTitleInner(p CardTitleProps) text.TextProps {
 	in := p.TextProps
 	in.Class = Join("text-lg font-semibold text-foreground", p.TextProps.Class)
-	in.Tag = "h3"
+	in.Tag = Heading(p.As, "h3")
 	return in
 }
 

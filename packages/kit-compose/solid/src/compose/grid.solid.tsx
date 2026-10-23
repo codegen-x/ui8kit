@@ -4,10 +4,10 @@ import { Box as Prim } from "../../../../kit/solid/src/ui/box/box.solid";
 import { cn } from "../../../../kit/solid/src/utils";
 import { rc } from "./recipes";
 
-export type GridProps = Omit<ComponentProps<typeof Prim>, "tag" | "class" | "className"> & { tag?: string; class?: string; className?: string };
+export type GridProps = Omit<ComponentProps<typeof Prim>, "tag" | "class" | "className" | "cols"> & { "cols"?: string | number; tag?: string; class?: string; className?: string };
 
 /** Grid: Box + recipe grid. */
 export function Grid(props: GridProps) {
-  const [local, rest] = splitProps(props, ["tag", "class", "className"]);
-  return <Prim tag={(local.tag ?? "div") as never} class={cn(rc("grid", {  }), local.class ?? local.className)} {...rest} />;
+  const [local, rest] = splitProps(props, ["cols", "tag", "class", "className"]);
+  return <Prim tag={(local.tag ?? "div") as never} class={cn(rc("grid", { "cols": local["cols"] }), local.class ?? local.className)} {...rest} />;
 }

@@ -20,6 +20,8 @@ export type BrickMap = {
   extra?: string;
   /** required props of the primitive that a Vue composition declares and forwards (Vue checks them on the component) */
   required?: string[];
+  /** native attributes of the fixed element the Box/Text primitive types do not list (td scope, colspan): typed on the composition, forwarded as rest */
+  attrs?: Record<string, "string" | "number">;
 };
 
 export const BRICKS: Record<string, BrickMap> = {
@@ -37,7 +39,7 @@ export const BRICKS: Record<string, BrickMap> = {
   Alert: { primitive: "Box", recipe: "alert", tag: "div", fixed: { role: "alert" } },
   Card: { primitive: "Box", recipe: "card", tag: "div" },
   CardHeader: { primitive: "Box", tag: "div", extra: "flex flex-col gap-2 p-6" },
-  CardTitle: { primitive: "Text", tag: "h3", extra: "text-lg font-semibold text-foreground" },
+  CardTitle: { primitive: "Text", tagFrom: { prop: "As", heading: true, fallback: "h3" }, extra: "text-lg font-semibold text-foreground" },
   CardDescription: { primitive: "Text", tag: "p", extra: "text-sm text-muted-foreground" },
   CardContent: { primitive: "Box", tag: "div", extra: "p-6 pt-0" },
   CardFooter: { primitive: "Box", tag: "div", extra: "flex items-center p-6 pt-0" },
@@ -47,8 +49,8 @@ export const BRICKS: Record<string, BrickMap> = {
   TableBody: { primitive: "Box", tag: "tbody" },
   TableFoot: { primitive: "Box", tag: "tfoot" },
   TableRow: { primitive: "Box", tag: "tr" },
-  TableHeadCell: { primitive: "Box", recipe: "table-head-cell", tag: "th" },
-  TableCell: { primitive: "Box", recipe: "table-cell", tag: "td" },
+  TableHeadCell: { primitive: "Box", recipe: "table-head-cell", tag: "th", attrs: { scope: "string", colSpan: "number", rowSpan: "number", headers: "string", abbr: "string" } },
+  TableCell: { primitive: "Box", recipe: "table-cell", tag: "td", attrs: { scope: "string", colSpan: "number", rowSpan: "number", headers: "string", abbr: "string" } },
   TableColGroup: { primitive: "Box", tag: "colgroup" },
   TableCol: { primitive: "Box", tag: "col" },
   Fieldset: { primitive: "Box", recipe: "fieldset", tag: "fieldset" },

@@ -6,7 +6,7 @@
   import { cn } from "../../../../kit/svelte/src/utils";
   import { rc } from "./recipes";
 
-  let { "shape": v_shape, class: className, children, ...rest }: ComponentProps<typeof Prim> & { "shape"?: string | number; class?: string; children?: Snippet } = $props();
+  let { "shape": v_shape, class: className, children, ...rest }: Omit<ComponentProps<typeof Prim>, "tag"> & { "shape"?: string | number; class?: string; children?: Snippet } = $props();
   const cls = $derived(cn(rc("skeleton", { "shape": v_shape }), className));
 </script>
 

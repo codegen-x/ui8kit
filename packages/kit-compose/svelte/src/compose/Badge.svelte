@@ -6,7 +6,7 @@
   import { cn } from "../../../../kit/svelte/src/utils";
   import { rc } from "./recipes";
 
-  let { "size": v_size, "variant": v_variant, class: className, children, ...rest }: ComponentProps<typeof Prim> & { "size"?: string | number; "variant"?: string | number; class?: string; children?: Snippet } = $props();
+  let { "size": v_size, "variant": v_variant, class: className, children, ...rest }: Omit<ComponentProps<typeof Prim>, "tag"> & { "size"?: string | number; "variant"?: string | number; class?: string; children?: Snippet } = $props();
   const cls = $derived(cn(rc("badge", { "size": v_size, "variant": v_variant }), className));
 </script>
 

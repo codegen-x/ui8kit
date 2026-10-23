@@ -6,7 +6,7 @@
   import { cn } from "../../../../kit/svelte/src/utils";
   import { rc } from "./recipes";
 
-  let { class: className, children, ...rest }: ComponentProps<typeof Prim> & { class?: string; children?: Snippet } = $props();
+  let { class: className, children, ...rest }: Omit<ComponentProps<typeof Prim>, "tag"> & { class?: string; children?: Snippet } = $props();
   const cls = $derived(cn(rc("form-item", {  }), className));
 </script>
 

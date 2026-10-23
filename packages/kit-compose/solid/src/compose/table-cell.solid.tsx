@@ -4,7 +4,7 @@ import { Box as Prim } from "../../../../kit/solid/src/ui/box/box.solid";
 import { cn } from "../../../../kit/solid/src/utils";
 import { rc } from "./recipes";
 
-export type TableCellProps = Omit<ComponentProps<typeof Prim>, "tag" | "class" | "className"> & { class?: string; className?: string };
+export type TableCellProps = Omit<ComponentProps<typeof Prim>, "tag" | "class" | "className"> & { scope?: string; colSpan?: number; rowSpan?: number; headers?: string; abbr?: string; class?: string; className?: string };
 
 /** TableCell: Box <td> + recipe table-cell. */
 export function TableCell(props: TableCellProps) {

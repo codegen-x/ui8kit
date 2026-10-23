@@ -6,12 +6,13 @@ import "github.com/ui8kit/codegen/generated/templ/ui/box"
 
 // GridProps: Grid: Box + recipe grid.
 type GridProps struct {
+	Cols string
 	box.BoxProps
 }
 
 func gridInner(p GridProps) box.BoxProps {
 	in := p.BoxProps
-	in.Class = Join(Rc("grid", map[string]string{}), p.BoxProps.Class)
+	in.Class = Join(Rc("grid", map[string]string{"cols": p.Cols}), p.BoxProps.Class)
 	in.Tag = Or(in.Tag, "div")
 	return in
 }

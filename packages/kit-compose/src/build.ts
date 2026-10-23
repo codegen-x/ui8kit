@@ -21,7 +21,10 @@ const KIT = path.resolve(root, "../kit");
 /** kitmod/ui, kitmod/utils -> the installed templ kit (go module root for the compositions) */
 const LINKS: [string, string][] = [["templ/kitmod/ui", "../../../kit/templ/src/ui"], ["templ/kitmod/utils", "../../../kit/templ/src/utils"]];
 
-const items = Object.entries(BRICKS).filter(([, m]) => m.recipe || m.extra || m.tag || m.tagFrom) as [string, BrickMap][];
+// every brick, also a bare one (SelectOption, OptGroup: the primitive, no classes) in the JS runtimes, where the organisms import
+// all bricks from ../compose; the server templates include the primitive itself (Option/OptGroup props there have no Class)
+const items = Object.entries(BRICKS) as [string, BrickMap][];
+const styled = items.filter(([, m]) => m.recipe || m.extra || m.tag || m.tagFrom);
 
 function recipesTs(): string {
   const used = [...new Set([...items.map(([, m]) => m.recipe), "themetoggle", "sheettrigger"].filter(Boolean))] as string[];
@@ -61,7 +64,8 @@ const fixedAttrs = (m: BrickMap) => Object.entries(m.fixed ?? {});
 function react(name: string, m: BrickMap): string {
   const p = m.primitive, tp = tagProp(m), keys = keysOf(m);
   const destr = [...keys.map((k) => `${JSON.stringify(k)}: ${safe(k)}`), ...(tp ? [tp] : []), "className", "...rest"].join(", ");
-  const own = [...keys.map((k) => `${JSON.stringify(k)}?: string | number`), ...(tp ? [`${tp}?: ${tp === "as" ? "number | string" : "string"}`] : [])].join("; ");
+  const own = [...keys.map((k) => `${JSON.stringify(k)}?: string | number`), ...(tp ? [`${tp}?: ${tp === "as" ? "number | string" : "string"}`] : []),
+    ...Object.entries(m.attrs ?? {}).map(([k, t]) => `${k}?: ${t}`)].join("; ");
   const tag = m.tag || m.tagFrom ? ` tag={${tagExpr(m, tp ?? "undefined")} as never}` : "";
   return `// ${HEAD}
 import type { ComponentProps } from "react";
@@ -78,6 +82,12 @@ export function ${name}({ ${destr} }: ${name}Props) {
 `;
 }
 
+/** the primitive props without the tag the composition retypes (string); Omit only when needed: it drops required props behind an index signature */
+const svelteBase = (m: BrickMap, _keys: string[]): string => {
+  const omit = m.tag || m.tagFrom ? ["tag"] : [];
+  return omit.length ? `Omit<ComponentProps<typeof Prim>, ${omit.map((k) => JSON.stringify(k)).join(" | ")}>` : "ComponentProps<typeof Prim>";
+};
+
 function svelte(name: string, m: BrickMap): string {
   const p = m.primitive, tp = tagProp(m), keys = keysOf(m);
   const destr = [...keys.map((k) => `${JSON.stringify(k)}: ${safe(k)}`), ...(tp ? [tp] : []), "class: className", "children", "...rest"].join(", ");
@@ -91,7 +101,7 @@ function svelte(name: string, m: BrickMap): string {
   import { cn } from "../../../../kit/svelte/src/utils";
   import { rc } from "./recipes";
 
-  let { ${destr} }: ComponentProps<typeof Prim> & { ${[...keys.map((k) => `${JSON.stringify(k)}?: string | number`), ...(tp ? [`${tp}?: string | number`] : []), "class?: string", "children?: Snippet"].join("; ")} } = $props();
+  let { ${destr} }: ${svelteBase(m, keys)} & { ${[...keys.map((k) => `${JSON.stringify(k)}?: string | number`), ...(tp ? [`${tp}?: string | number`] : []), ...Object.entries(m.attrs ?? {}).map(([k, t]) => `${k.toLowerCase()}?: ${t}`), "class?: string", "children?: Snippet"].join("; ")} } = $props();
   const cls = $derived(${clsExpr(m, "className")});
 </script>
 
@@ -136,7 +146,8 @@ const tagValue = computed(() => ${tagJs});
 
 function solid(name: string, m: BrickMap): string {
   const p = m.primitive, tp = tagProp(m), keys = keysOf(m);
-  const own = [...keys.map((k) => `${JSON.stringify(k)}?: string | number`), ...(tp ? [`${tp}?: ${tp === "as" ? "number | string" : "string"}`] : []), "class?: string", "className?: string"].join("; ");
+  const own = [...keys.map((k) => `${JSON.stringify(k)}?: string | number`), ...(tp ? [`${tp}?: ${tp === "as" ? "number | string" : "string"}`] : []),
+    ...Object.entries(m.attrs ?? {}).map(([k, t]) => `${k}?: ${t}`), "class?: string", "className?: string"].join("; ");
   const L = (k: string) => `local[${JSON.stringify(k)}]`;
   const cls = `cn(${[m.recipe ? `rc("${m.recipe}", { ${keys.map((k) => `${JSON.stringify(k)}: ${L(k)}`).join(", ")} })` : "", m.extra ? JSON.stringify(m.extra) : "", "local.class ?? local.className"].filter(Boolean).join(", ")})`;
   const tagJs = m.tagFrom?.heading ? `(local.as && Number(local.as) >= 1 && Number(local.as) <= 6 ? \`h\${local.as}\` : "${m.tagFrom.fallback}")`
@@ -160,7 +171,7 @@ export function ${name}(props: ${name}Props) {
 
 function plan(): Map<string, string> {
   const files = new Map<string, string>();
-  for (const [k, v] of serverFiles(items, KIT, HEAD)) files.set(k, v);
+  for (const [k, v] of serverFiles(styled, KIT, HEAD)) files.set(k, v);
   for (const [k, v] of manualFiles(HEAD)) files.set(k, v);
   for (const rt of JS_RT) {
     const dir = `${rt}/src/compose`;

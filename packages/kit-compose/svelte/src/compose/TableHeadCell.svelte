@@ -6,7 +6,7 @@
   import { cn } from "../../../../kit/svelte/src/utils";
   import { rc } from "./recipes";
 
-  let { class: className, children, ...rest }: ComponentProps<typeof Prim> & { class?: string; children?: Snippet } = $props();
+  let { class: className, children, ...rest }: Omit<ComponentProps<typeof Prim>, "tag"> & { scope?: string; colspan?: number; rowspan?: number; headers?: string; abbr?: string; class?: string; children?: Snippet } = $props();
   const cls = $derived(cn(rc("table-head-cell", {  }), className));
 </script>
 

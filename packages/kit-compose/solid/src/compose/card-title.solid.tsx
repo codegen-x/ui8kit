@@ -4,10 +4,10 @@ import { Text as Prim } from "../../../../kit/solid/src/ui/text/text.solid";
 import { cn } from "../../../../kit/solid/src/utils";
 import { rc } from "./recipes";
 
-export type CardTitleProps = Omit<ComponentProps<typeof Prim>, "tag" | "class" | "className"> & { class?: string; className?: string };
+export type CardTitleProps = Omit<ComponentProps<typeof Prim>, "tag" | "class" | "className"> & { as?: number | string; class?: string; className?: string };
 
-/** CardTitle: Text <h3>. */
+/** CardTitle: Text. */
 export function CardTitle(props: CardTitleProps) {
-  const [local, rest] = splitProps(props, ["class", "className"]);
-  return <Prim tag={"h3" as never} class={cn("text-lg font-semibold text-foreground", local.class ?? local.className)} {...rest} />;
+  const [local, rest] = splitProps(props, ["as", "class", "className"]);
+  return <Prim tag={(local.as && Number(local.as) >= 1 && Number(local.as) <= 6 ? `h${local.as}` : "h3") as never} class={cn("text-lg font-semibold text-foreground", local.class ?? local.className)} {...rest} />;
 }

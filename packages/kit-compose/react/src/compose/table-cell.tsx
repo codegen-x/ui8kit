@@ -4,7 +4,7 @@ import { Box as Prim } from "../../../../kit/react/src/ui/box/box";
 import { cn } from "../../../../kit/react/src/utils";
 import { rc } from "./recipes";
 
-export type TableCellProps = Omit<ComponentProps<typeof Prim>, "tag"> & { className?: string };
+export type TableCellProps = Omit<ComponentProps<typeof Prim>, "tag"> & { scope?: string; colSpan?: number; rowSpan?: number; headers?: string; abbr?: string; className?: string };
 
 /** TableCell: Box <td> + recipe table-cell. */
 export function TableCell({ className, ...rest }: TableCellProps) {
