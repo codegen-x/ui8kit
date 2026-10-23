@@ -31,3 +31,6 @@ discovery-inbox/
 
 # Reproducible local browser evidence; binary captures are not published
 plan/reference-catalog/captures/
+
+# python bytecode (jinja2 runtimes)
+__pycache__/

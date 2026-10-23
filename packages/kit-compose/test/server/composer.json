@@ -1,0 +1,11 @@
+{
+  "name": "codegen-x/kit-compose-server-parity",
+  "description": "Test-only: real Twig and Latte engines for the kit-compose server parity suite.",
+  "type": "project",
+  "license": "proprietary",
+  "require": {
+    "php": ">=8.1",
+    "twig/twig": "^3.0",
+    "latte/latte": "^3.0"
+  }
+}

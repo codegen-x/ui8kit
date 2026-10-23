@@ -8,10 +8,9 @@ import { BRICKS, CONTROL_RECIPES } from "../src/map";
 import { RECIPES } from "../src/recipes";
 import * as R from "../react/src/compose";
 import { checkHtml } from "../../ui-gates/src/html.mjs";
+import { cases, names, norm } from "./shared";
 
 const rendered: { id: string; html: string }[] = [];
-// controls need an accessible name in a fixture (axe: label); the composition does not invent one
-const NAMED = new Set(["Input", "Range", "Textarea", "Select", "Checkbox", "Radio", "Switch", "Meter", "Progress"]);
 
 plugin({
   name: "compose-ssr",
@@ -37,13 +36,7 @@ plugin({
   },
 });
 
-const norm = (html: string) =>
-  html.replace(/<!--[^]*?-->/g, "").replace(/ data-hk="[^"]*"/g, "").replace(/\s*\/>/g, ">").replace(/(<textarea\b[^>]*?) value=""/g, "$1").replace(/ data-v-[a-z0-9]+(="")?/g, "").replace(/<!>/g, "").replace(/ on(load|error)="this\.__e=event"/g, "").replace(/<([a-z0-9]+)((?:\s+[^\s=>]+(?:="[^"]*")?)*)\s*\/?>/g, (_, tag, attrs: string) => {
-    const list = [...attrs.matchAll(/([^\s=>]+)(?:="([^"]*)")?/g)].map(([, k, v]) => `${k}="${k === "class" ? (v ?? "").replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&amp;/g, "&").split(/\s+/).filter(Boolean).join(" ") : (v ?? "").replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&amp;/g, "&")}"`).filter((a) => a !== `class=""`);
-    return `<${tag}${list.sort().map((a) => " " + a).join("")}>`;
-  });
 
-const names = Object.entries(BRICKS).filter(([, m]) => m.recipe || m.extra || m.tag || m.tagFrom).map(([n]) => n);
 const VOID = new Set(["Input", "Checkbox", "Radio", "Switch", "Separator", "Image", "Textarea"]);  // Textarea: value, not children
 // Svelte SSR artifacts dropped by norm(): hydration markers <!--[-->/<!>, img onload/onerror="this.__e=event"
 
@@ -66,14 +59,6 @@ const CONTEXT: Record<string, { props?: object; children?: () => unknown[]; pare
   List: { children: () => [el("ListItem", null, "Item")] },
 };
 
-function cases(name: string): Record<string, string>[] {
-  const m = BRICKS[name];
-  const base: Record<string, string> = NAMED.has(name) ? { "aria-label": "Field" } : {};
-  const out: Record<string, string>[] = [{ ...base }, { ...base, className: "mt-4", "data-testid": "x" }];
-  if (m.recipe) for (const k of RECIPES[m.recipe].keys) for (const v of Object.keys(RECIPES[m.recipe].byKey[k] ?? {})) out.push({ ...base, [k]: v });
-  if (m.tagFrom?.heading) out.push({ as: "1" }, { as: "3" });
-  return out;
-}
 
 test("every composition exists in every runtime", () => {
   for (const n of names) for (const f of [`svelte/src/compose/${n}.svelte`, `vue/src/compose/${n}.vue`]) expect(readFileSync(new URL(`../${f}`, import.meta.url), "utf8")).toContain(BRICKS[n].primitive);

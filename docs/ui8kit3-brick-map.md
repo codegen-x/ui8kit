@@ -75,4 +75,15 @@ Prop placement, checked against ui8kit/codegen v0.1.0: as there, `variant` / `si
 Not lowered yet (hand-written compositions to build): Breadcrumb (Box nav + list + Link + Text aria-current), ThemeToggle (Button + Icon, aria-pressed), SheetTrigger/SheetClose (Button + Icon controlling Dialog), Break (`<br>` has no primitive: allowlisted raw tag), DataList/DataOption/Output (no primitive: allowlisted), Picture/Source (v3 Image module).
 
 Recipe changes against xgen: `text-white` on destructive Button/Badge/IconBadge -> `text-primary-foreground` (colors only by tokens; there is no destructive-foreground token in theme.css yet: contrast to be reviewed).
-Runtimes built now: react, svelte, vue, solid (DOM parity of all four, html-validate + axe on every case, typecheck: tsc, vue-tsc, svelte-check; 8 + 4 with the controls exception). Next: templ, twig, latte, jinja2 (recipes in Go/PHP/Python + real-engine parity), hand-written Breadcrumb, ThemeToggle, SheetTrigger.
+Runtimes built now: react, svelte, vue, solid (DOM parity of all four, html-validate + axe on every case, typecheck: tsc, vue-tsc, svelte-check; 8 + 4 with the controls exception) and the servers jinja2, twig, latte, templ (real engines: DOM = React on the same cases, `test/server.test.tsx`).
+
+Server compositions (one template per composition, no logic; props by one helper per language from `<runtime>/src/compose/compose.json`):
+
+| runtime | templates | helper | wiring |
+| --- | --- | --- | --- |
+| jinja2 | `jinja2/src/compose/<kebab>.html.j2`, `render(p={...}, children=Markup(...))` | `compose_env.py`: `environment(kit_root)` = the kit environment + `compose/` + `compose_props` | `sys.path`: the kit `src` and `jinja2/src/compose` |
+| twig | `twig/src/compose/<Name>.html.twig` | `ComposeExtension` (`compose_props`) | `FilesystemLoader([kit/twig/src, kit-compose/twig/src])` + the kit `TwigExtension` |
+| latte | `latte/src/compose/<Name>.latte` (typed `{parameters}` copied from the primitive) | `Compose::props` | one loader root with `ui/` (kit) and `compose/` side by side |
+| templ | `templ/src/compose/<kebab>.templ`, `compose.StackProps{Gap: "4", BoxProps: box.BoxProps{...}}` | `compose.go` (`Rc`, `Join`, `Heading`) | `templ/go.mod` + `templ/kitmod` (go.mod of the installed kit, `ui/` `utils/` symlinks) |
+
+Props on the servers: recipe keys (`variant`, `size`, ...; PascalCase in Jinja2 `p` and templ), `tag` / `as`, `class`, `attrs` (aria-*, data-*), plus every prop of the primitive. Known kit bug seen through Image `variant=logo` (registry 3.2.0 server cn merge lacks object-fit): asserted in `KNOWN_KIT_BUGS`, fixed in registry 3.2.2 (unpublished).
