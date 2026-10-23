@@ -52,6 +52,7 @@
   --tracking-wide: calc(var(--tracking-normal) + 0.025em);
   --tracking-wider: calc(var(--tracking-normal) + 0.05em);
   --tracking-widest: calc(var(--tracking-normal) + 0.1em);
+  --destructive-hover: hsl(357.3 64.7% 47.3%);
 }
 
 :is(.dark, [data-theme="dark"]) [data-skin="violet-bloom"],
@@ -96,6 +97,7 @@
   --shadow-lg: 0px 2px 3px 0px hsl(0 0% 0% / 0.16), 0px 4px 6px -1px hsl(0 0% 0% / 0.16);
   --shadow-xl: 0px 2px 3px 0px hsl(0 0% 0% / 0.16), 0px 8px 10px -1px hsl(0 0% 0% / 0.16);
   --shadow-2xl: 0px 2px 3px 0px hsl(0 0% 0% / 0.40);
+  --destructive-hover: hsl(358.2 55.3% 47.5%);
 }
 
 :root[data-skin="violet-bloom"] body { letter-spacing: var(--tracking-normal); }

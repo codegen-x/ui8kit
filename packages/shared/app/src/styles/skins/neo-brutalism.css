@@ -47,6 +47,7 @@
   --shadow-lg: 4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 4px 6px -1px hsl(0 0% 0% / 1.00);
   --shadow-xl: 4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 8px 10px -1px hsl(0 0% 0% / 1.00);
   --shadow-2xl: 4px 4px 0px 0px hsl(0 0% 0% / 2.50);
+  --destructive-hover: hsl(0 0% 6%);
 }
 
 :is(.dark, [data-theme="dark"]) [data-skin="neo-brutalism"],
@@ -91,6 +92,7 @@
   --shadow-lg: 4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 4px 6px -1px hsl(0 0% 0% / 1.00);
   --shadow-xl: 4px 4px 0px 0px hsl(0 0% 0% / 1.00), 4px 8px 10px -1px hsl(0 0% 0% / 1.00);
   --shadow-2xl: 4px 4px 0px 0px hsl(0 0% 0% / 2.50);
+  --destructive-hover: hsl(0 0% 94%);
 }
 
 [data-skin="neo-brutalism"] .shadow-xs { --tw-shadow: var(--shadow-xs); }

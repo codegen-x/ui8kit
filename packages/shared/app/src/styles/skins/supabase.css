@@ -53,6 +53,7 @@
   --tracking-wide: calc(var(--tracking-normal) + 0.025em);
   --tracking-wider: calc(var(--tracking-normal) + 0.05em);
   --tracking-widest: calc(var(--tracking-normal) + 0.1em);
+  --destructive-hover: hsl(9.9 82% 37.5%);
 }
 
 :is(.dark, [data-theme="dark"]) [data-skin="supabase"],
@@ -97,6 +98,7 @@
   --shadow-lg: 0px 1px 3px 0px hsl(0 0% 0% / 0.17), 0px 4px 6px -1px hsl(0 0% 0% / 0.17);
   --shadow-xl: 0px 1px 3px 0px hsl(0 0% 0% / 0.17), 0px 8px 10px -1px hsl(0 0% 0% / 0.17);
   --shadow-2xl: 0px 1px 3px 0px hsl(0 0% 0% / 0.43);
+  --destructive-hover: hsl(6.7 60% 14.6%);
 }
 
 :root[data-skin="supabase"] body { letter-spacing: var(--tracking-normal); }

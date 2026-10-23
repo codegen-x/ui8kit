@@ -75,7 +75,7 @@
           "outline": "bg-card text-foreground inset-ring-border",
           "ghost": "bg-transparent text-foreground inset-ring-transparent",
           "secondary": "bg-secondary text-secondary-foreground inset-ring-border",
-          "destructive": "bg-destructive text-destructive-foreground hover:bg-destructive/90 inset-ring-transparent focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40",
+          "destructive": "bg-destructive text-destructive-foreground hover:bg-destructive-hover inset-ring-transparent focus-visible:ring-destructive/20 dark:focus-visible:ring-destructive/40",
           "link": "text-foreground inset-ring-transparent underline-offset-4 hover:underline"
         },
         "size": {

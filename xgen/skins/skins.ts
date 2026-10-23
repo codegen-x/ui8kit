@@ -34,14 +34,30 @@ const block = (selector: string, tokens: Tokens, notes: Tokens = {}): string => 
   return `${selector} {\n${lines.map((l) => `  ${l.replace(/\n/g, "\n  ")}`).join("\n")}\n}\n`;
 };
 
+/** hsl(h s% l%) -> parts, or null */
+const hslParts = (v: string): [number, number, number] | null => {
+  const m = /^hsl\(([\d.]+)\s+([\d.]+)%\s+([\d.]+)%\)$/.exec(v.trim());
+  return m ? [Number(m[1]), Number(m[2]), Number(m[3])] : null;
+};
+const round = (n: number) => Math.round(n * 100) / 100;
+/** --destructive-hover: --destructive moved 6 lightness points away from its foreground (hover keeps AA; the test checks it) */
+export function destructiveHover(t: Tokens): Tokens {
+  const bg = hslParts(t["destructive"] ?? ""), fg = hslParts(t["destructive-foreground"] ?? "");
+  if (!bg || !fg) return t;
+  const away = fg[2] > bg[2] ? -6 : 6;
+  // at the black/white end there is no room to move away: step towards the foreground (contrast stays far above AA)
+  const l = bg[2] + away < 0 || bg[2] + away > 100 ? bg[2] - away : bg[2] + away;
+  return { ...t, "destructive-hover": `hsl(${round(bg[0])} ${round(bg[1])}% ${round(l)}%)` };
+}
+
 /** the CSS file of a skin */
 export function skinCss(s: Skin): string {
   const sel = s.scope === "root" ? `:root[data-skin="${s.id}"]` : `[data-skin="${s.id}"]`;
   const dark = s.scope === "root" ? `${sel}:is(.dark, [data-theme="dark"])` : `:is(.dark, [data-theme="dark"]) ${sel},\n${sel}:is(.dark, [data-theme="dark"])`;
   return [
     `/*${s.comment}*/`,
-    block(sel, s.light, s.notes?.light),
-    block(dark, s.dark, s.notes?.dark),
+    block(sel, destructiveHover(s.light), s.notes?.light),
+    block(dark, destructiveHover(s.dark), s.notes?.dark),
     ...(s.bodyTracking ? [`:root[data-skin="${s.id}"] body { letter-spacing: var(--tracking-normal); }`] : []),
     ["shadow-xs", "shadow-sm", "shadow", "shadow-md", "shadow-lg", "shadow-xl"].map((k) => `${sel} .${k} { --tw-shadow: var(--${k}); }`).join("\n"),
     "",

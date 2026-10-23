@@ -47,6 +47,7 @@
   --shadow-lg: 2px 2px 0px 0px hsl(20 18% 51% / 0.11), 2px 4px 6px -1px hsl(20 18% 51% / 0.11);
   --shadow-xl: 2px 2px 0px 0px hsl(20 18% 51% / 0.11), 2px 8px 10px -1px hsl(20 18% 51% / 0.11);
   --shadow-2xl: 2px 2px 0px 0px hsl(20 18% 51% / 0.28);
+  --destructive-hover: hsl(22.5 14.8% 4.6%);
 }
 
 :is(.dark, [data-theme="dark"]) [data-skin="mocha-mousse"],
@@ -91,6 +92,7 @@
   --shadow-lg: 2px 2px 0px 0px hsl(20 18% 30% / 0.11), 2px 4px 6px -1px hsl(20 18% 30% / 0.11);
   --shadow-xl: 2px 2px 0px 0px hsl(20 18% 30% / 0.11), 2px 8px 10px -1px hsl(20 18% 30% / 0.11);
   --shadow-2xl: 2px 2px 0px 0px hsl(20 18% 30% / 0.28);
+  --destructive-hover: hsl(0 68.7% 73.5%);
 }
 
 [data-skin="mocha-mousse"] .shadow-xs { --tw-shadow: var(--shadow-xs); }

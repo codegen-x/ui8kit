@@ -1,6 +1,6 @@
 /**
  * WCAG AA for the destructive fill: text-destructive-foreground on bg-destructive must reach 4.5:1 in the theme and every
- * skin, light and dark (theme.css + 17 skin files x 2 = 36 combinations). Skins inherit what they do not set from theme.css.
+ * skin, light and dark (theme.css + 17 skin files x 2 = 36 combinations), at rest and on hover (bg-destructive-hover). Skins inherit what they do not set from theme.css.
  */
 import { describe, expect, it } from "bun:test";
 import { readFileSync, readdirSync } from "node:fs";
@@ -47,6 +47,10 @@ describe("destructive contrast (AA 4.5)", () => {
         const v = { ...base[mode], ...own[mode] };
         expect(v["destructive-foreground"], "--destructive-foreground").toBeDefined();
         expect(ratio(v["destructive-foreground"]!, v["destructive"]!)).toBeGreaterThanOrEqual(4.5);
+        // hover:bg-destructive-hover
+        expect(v["destructive-hover"], "--destructive-hover").toBeDefined();
+        expect(ratio(v["destructive-foreground"]!, v["destructive-hover"]!), "hover").toBeGreaterThanOrEqual(4.5);
+        expect(ratio(v["destructive-hover"]!, v["destructive"]!), "hover is visible").toBeGreaterThan(1.05);
       });
     }
   }
@@ -58,7 +62,7 @@ describe("destructive recipes", () => {
       for (const m of readFileSync(join(import.meta.dir, "..", "variants", f), "utf8").matchAll(/"destructive":\s*"([^"]*)"/g)) {
         if (!m[1]!.includes("bg-destructive")) continue;
         expect(m[1]).toContain("text-destructive-foreground");
-        expect(m[1]).not.toMatch(/dark:bg-destructive\/|text-primary-foreground/);
+        expect(m[1]).not.toMatch(/dark:bg-destructive\/|text-primary-foreground|hover:bg-destructive\//);
       }
     });
   }
