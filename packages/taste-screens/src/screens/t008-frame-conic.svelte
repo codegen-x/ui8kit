@@ -1,6 +1,6 @@
 <!-- Frame: headline above a browser window whose page is a conic sunburst with a centred card. -->
 <script lang="ts">
-  import { Block, Box, Button, Card, Group, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Card, Group, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Conic from "../recipes/conic.svelte";

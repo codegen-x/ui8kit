@@ -1,6 +1,6 @@
 <!-- Recipe "geometric": a grid of primitive shapes (circle, quarter, half, triangle, square, diamond) in skin colours. -->
 <script lang="ts">
-  import { Block, Box, Grid } from "@ui8kit/svelte-ui";
+  import { Block, Box, Grid } from "@codegen-x/svelte-compose";
 
   let { v = 0, cols = 4, rows = 3, class: cls = "" }: { v?: number; cols?: number; rows?: number; class?: string } = $props();
 

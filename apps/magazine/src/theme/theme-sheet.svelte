@@ -2,7 +2,7 @@
      Theme panel on the right and, when opened from it, the wide Design system panel on its left. On narrow screens the wide panel
      replaces the narrow one (Back returns). State: lib/global-theme.svelte.ts. -->
 <script lang="ts">
-  import { Dialog, Group } from "@ui8kit/svelte-ui";
+  import { Dialog, Group } from "@codegen-x/svelte-compose";
   import { gtheme } from "../lib/global-theme.svelte";
   import DsPanel from "./ds-panel.svelte";
   import ThemePanel from "./theme-panel.svelte";

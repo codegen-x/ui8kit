@@ -1,6 +1,6 @@
 <!-- Estate story: a compact header, a picture at the start beside an uppercase heading and two paragraphs, then a quiet strip of figures. -->
 <script lang="ts">
-  import { Block, Button, Grid, Group, Separator, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Button, Grid, Group, Separator, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Duotone from "../recipes/duotone.svelte";

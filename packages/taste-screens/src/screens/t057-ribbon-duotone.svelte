@@ -1,6 +1,6 @@
 <!-- Ribbon over a picture: the headline at the top start, a wide duotone banner with a strip of icon slots along its foot. -->
 <script lang="ts">
-  import { Block, Box, Button, Group, LucideIcon, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Group, LucideIcon, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { MARKS } from "../kit-data";
   import TopBar from "../parts/top-bar.svelte";

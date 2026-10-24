@@ -2,7 +2,7 @@
      one radio group per element and token (native radios, the toggle buttons of the Filters sheet). Shared by the style page's
      Design system tab and the global Theme sheet (src/theme). -->
 <script lang="ts">
-  import { Stack, Title } from "@ui8kit/svelte-ui";
+  import { Stack, Title } from "@codegen-x/svelte-compose";
   import { RADII } from "@ui8kit/taste-data/taste";
   import ui from "../../content/ui.json";
   import { DENSITIES, DENSITY_ELEMENTS, ELEMENTS, SHADOW_ELEMENTS, SHADOWS, type Tokens } from "../lib/design";

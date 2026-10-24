@@ -5,7 +5,7 @@
   and the action only). `tone="inverse"` sets it on a dark or coloured field.
 -->
 <script lang="ts">
-  import { Block, Button, Box, Group, Inline } from "@ui8kit/svelte-ui";
+  import { Block, Button, Box, Group, Inline } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
 
   let { c, layout = "split", tone = "default", action = "default", mark = "square" }: {

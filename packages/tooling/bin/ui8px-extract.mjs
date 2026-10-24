@@ -46,7 +46,7 @@ function collect(node, p, acc) {
 }
 
 const esc = (s) => s.replace(/&/g, "&amp;").replace(/"/g, "&quot;");
-const specRoot = path.join(root, "xgen/specs");
+const specRoot = path.join(root, "packages/compose-gen/specs");
 let lists = 0;
 let files = 0;
 for (const dir of fs.readdirSync(specRoot, { withFileTypes: true })) {
@@ -59,7 +59,7 @@ for (const dir of fs.readdirSync(specRoot, { withFileTypes: true })) {
     const target = path.join(out, "specs", dir.name, file.replace(/\.json$/, ".html"));
     fs.mkdirSync(path.dirname(target), { recursive: true });
     const body = acc.map(([jp, cls]) => `<i data-src="${esc(jp)}" class="${esc(cls)}"></i>`).join("\n");
-    fs.writeFileSync(target, `<!-- source: xgen/specs/${dir.name}/${file} -->\n${body}\n`);
+    fs.writeFileSync(target, `<!-- source: packages/compose-gen/specs/${dir.name}/${file} -->\n${body}\n`);
     lists += acc.length;
     files++;
   }

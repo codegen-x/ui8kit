@@ -3,7 +3,7 @@
   a panorama card. A tool for authoring; the panorama never shows live DOM.
 -->
 <script lang="ts">
-  import { Block } from "@ui8kit/svelte-ui";
+  import { Block } from "@codegen-x/svelte-compose";
   import { deckAt } from "@ui8kit/taste-data/copy";
   import { cards } from "@ui8kit/panorama/grid";
   import { wall } from "@ui8kit/panorama/wall";

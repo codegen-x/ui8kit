@@ -1,6 +1,6 @@
 <!-- Airy: one small colour-wheel disc high in the middle, a short headline under it, a text link; nothing else. -->
 <script lang="ts">
-  import { Block, Box, Button, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Conic from "../recipes/conic.svelte";

@@ -1,6 +1,6 @@
 <!-- Editorial newspaper: a rule-framed masthead line, a headline across, then three text columns with a striped plate in one. -->
 <script lang="ts">
-  import { Block, Grid, Group, Inline, Separator, Stack, Text, Title, Button } from "@ui8kit/svelte-ui";
+  import { Block, Grid, Group, Inline, Separator, Stack, Text, Title, Button } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import Stripes from "../recipes/stripes.svelte";
 

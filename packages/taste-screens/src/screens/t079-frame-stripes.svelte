@@ -1,6 +1,6 @@
 <!-- Frame: a desktop monitor (window plus stand) whose screen shows rising stripe bars; copy at the start. -->
 <script lang="ts">
-  import { Block, Box, Button, Card, Grid, Group, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Card, Grid, Group, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Stripes from "../recipes/stripes.svelte";

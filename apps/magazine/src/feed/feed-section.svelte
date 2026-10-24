@@ -1,6 +1,6 @@
 <!-- One section of the feed: a heading, a note and a strip of cards, each with the line that says why it is here. -->
 <script lang="ts">
-  import { Block, Box, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Text, Title } from "@codegen-x/svelte-compose";
   import type { FeedCard } from "../lib/feed";
   import Card from "../parts/card.svelte";
   import { whyText } from "./labels";

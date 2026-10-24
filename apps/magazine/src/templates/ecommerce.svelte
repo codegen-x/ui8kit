@@ -1,6 +1,6 @@
 <!-- E-commerce: a search header, a category bar, one featured product page, the product grid, reviews and the footer. -->
 <script lang="ts">
-  import { Block, CategoryNav, CtaBand, ProductDetail, ProductGrid, ReviewList } from "@ui8kit/svelte-ui";
+  import { Block, CategoryNav, CtaBand, ProductDetail, ProductGrid, ReviewList } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { dataFor } from "./registry-data";
   import Header from "./header.svelte";

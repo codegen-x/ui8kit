@@ -1,6 +1,6 @@
 <!-- Documentation: a search header, a sidebar with the outline, breadcrumbs, an article with its own table of contents and a help aside. -->
 <script lang="ts">
-  import { Block, ArticleBody, Card, CardContent, CardHeader, CardTitle, Inline, PageTrail, SidebarNav } from "@ui8kit/svelte-ui";
+  import { Block, ArticleBody, Card, CardContent, CardHeader, CardTitle, Inline, PageTrail, SidebarNav } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { dataFor } from "./registry-data";
   import Header from "./header.svelte";

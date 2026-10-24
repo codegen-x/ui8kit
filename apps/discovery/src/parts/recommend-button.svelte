@@ -4,7 +4,7 @@
   nothing is sent to the preview server. The click also stores the picks (magazine:v1:picks + mirrors), so the hop survives a blocked URL.
 -->
 <script lang="ts">
-  import { Button, Inline } from "@ui8kit/svelte-ui";
+  import { Button, Inline } from "@codegen-x/svelte-compose";
   import ui from "../../content/ui.json";
   import { MIN_PICKS, magazineUrl } from "@ui8kit/taste-data/picks";
   import { writeStore } from "@ui8kit/taste-data/picks-store";

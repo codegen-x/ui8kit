@@ -4,7 +4,7 @@
 -->
 <script lang="ts">
   import type { Component } from "svelte";
-  import { Block } from "@ui8kit/svelte-ui";
+  import { Block } from "@codegen-x/svelte-compose";
   import { family } from "@ui8kit/taste-data/fonts";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import type { FontPair, Radius, SkinId } from "@ui8kit/taste-data/taste";

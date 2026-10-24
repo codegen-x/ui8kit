@@ -1,6 +1,6 @@
 <!-- Full-bleed: a duotone picture fills the start 60%; the huge headline crosses from the picture onto the plain side. -->
 <script lang="ts">
-  import { Block, Button, Group, Inline, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Button, Group, Inline, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Duotone from "../recipes/duotone.svelte";

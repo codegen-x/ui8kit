@@ -7,5 +7,11 @@
   "main": "./index.ts",
   "scripts": {
     "check": "bun check.ts"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1",
+    "@ui8kit/contract": "^0.2.0",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^3.7.0"
   }
 }

@@ -1,6 +1,6 @@
 <!-- Full-bleed stripes: stripes cover the screen; a solid band runs across the middle with the headline and the action. -->
 <script lang="ts">
-  import { Block, Button, Group, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Button, Group, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Stripes from "../recipes/stripes.svelte";

@@ -1,6 +1,6 @@
 <!-- Two columns: the article in the main column, an aside with related reading and topics beside it. -->
 <script lang="ts">
-  import { Block, ArticleBody, Card, CardContent, CardHeader, CardTitle, Inline, PostHeader } from "@ui8kit/svelte-ui";
+  import { Block, ArticleBody, Card, CardContent, CardHeader, CardTitle, Inline, PostHeader } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { dataFor } from "./registry-data";
   import Header from "./header.svelte";

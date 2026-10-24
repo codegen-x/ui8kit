@@ -1,6 +1,6 @@
 <!-- Shop dashboard: an icon rail at the start, a command bar on top, a yellow-tinted promo card beside a bar chart card, a row of four colourful product tiles and two stat cards at the end. -->
 <script lang="ts">
-  import { BarChart, Block, Box, Button, Card, Grid, Group, Input, LucideIcon, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { BarChart, Block, Box, Button, Card, Grid, Group, Input, LucideIcon, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { bars } from "../kit-data";
   import Conic from "../recipes/conic.svelte";

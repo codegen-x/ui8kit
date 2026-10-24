@@ -1,6 +1,6 @@
 <!-- Full-bleed type: a grain band across the width, then the headline set huge to both edges; lead and action under it. -->
 <script lang="ts">
-  import { Block, Button, Group, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Button, Group, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Grain from "../recipes/grain.svelte";

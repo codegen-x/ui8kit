@@ -1,6 +1,6 @@
 <!-- One group of the Filters sheet as a single native select (the kit Select): for long lists such as the font pairs. -->
 <script lang="ts">
-  import { Box, Label, Select, Text } from "@ui8kit/svelte-ui";
+  import { Box, Label, Select, Text } from "@codegen-x/svelte-compose";
 
   let { name, legend, options, value, onchange }: {
     name: string; legend: string; options: Array<{ value: string; label: string }>; value: string; onchange: (value: string) => void;

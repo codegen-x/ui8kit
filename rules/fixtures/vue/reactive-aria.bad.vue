@@ -1,6 +1,6 @@
 <!-- Self-test fixture of the rules group, detector reactive-aria (violating). -->
 <script setup lang="ts">
-import { Block, Box, Button, Inline, Input, Text, Title } from "@ui8kit/vue-ui";
+import { Block, Box, Button, Inline, Input, Text, Title } from "@codegen-x/vue-compose";
 import { ui } from "@ui8kit/app-shared/content";
 const props = defineProps<{ open?: boolean; ok?: boolean; level?: 1 | 2; tag?: string }>();
 const toggle = (): void => {};

@@ -1,6 +1,6 @@
 <!-- Frame: a tablet-shaped window on a grain field holding a small table built from the deck; headline above. -->
 <script lang="ts">
-  import { Badge, Block, Button, Card, Stack, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow, Text, Title } from "@ui8kit/svelte-ui";
+  import { Badge, Block, Button, Card, Stack, Table, TableBody, TableCell, TableHead, TableHeadCell, TableRow, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Grain from "../recipes/grain.svelte";

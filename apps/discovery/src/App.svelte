@@ -1,6 +1,6 @@
 <!-- The application frame: the panorama (or, on #/screen/<id>, one live taste screen) and the theme corner. -->
 <script lang="ts">
-  import { Box } from "@ui8kit/svelte-ui";
+  import { Box } from "@codegen-x/svelte-compose";
   import PanoramaView from "./parts/panorama-view.svelte";
   import ScreenPreview from "./parts/screen-preview.svelte";
   import ThemeCorner from "./parts/theme-corner.svelte";

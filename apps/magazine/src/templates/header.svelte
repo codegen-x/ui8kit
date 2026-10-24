@@ -1,7 +1,7 @@
 <!-- The page header of every template: the kit's NavBar (a <header> with its <nav>), the deck's wordmark and the main menu
      (Codex menu_item entries; the magazine routes nothing, so the brand and the items are text, not links). -->
 <script lang="ts">
-  import { NavBar } from "@ui8kit/svelte-ui";
+  import { NavBar } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { ui } from "./data";
   import { dataFor } from "./registry-data";

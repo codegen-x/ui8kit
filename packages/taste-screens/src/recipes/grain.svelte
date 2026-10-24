@@ -1,6 +1,6 @@
 <!-- Recipe "grain": a colour field (two or three skin colours) under monochrome film grain (an feTurbulence data URI). -->
 <script lang="ts">
-  import { Block, Box } from "@ui8kit/svelte-ui";
+  import { Block, Box } from "@codegen-x/svelte-compose";
 
   let { v = 0, class: cls = "" }: { v?: number; class?: string } = $props();
 

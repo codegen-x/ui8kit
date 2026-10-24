@@ -5,7 +5,7 @@ import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 
 const SHARED = join(import.meta.dir, "..", "assets", "php-shared");
-export const PHP_SHARED_SOURCE = "xgen/runtimes/twig/assets/php-shared";
+export const PHP_SHARED_SOURCE = "packages/compose-gen/runtimes/twig/assets/php-shared";
 
 /** the shared helpers as [file name, PHP source] in the namespace UI8Kit\<runtime> (`Twig`, `Latte`) */
 export function phpHelpers(runtime: string): Array<[string, string]> {

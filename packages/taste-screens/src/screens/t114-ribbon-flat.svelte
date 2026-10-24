@@ -1,6 +1,6 @@
 <!-- Ribbon of words: the headline above, then a tilted band of huge repeated tags with flat shapes between the words. -->
 <script lang="ts">
-  import { Block, Box, Button, Group, Inline, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Group, Inline, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Flat from "../recipes/flat.svelte";

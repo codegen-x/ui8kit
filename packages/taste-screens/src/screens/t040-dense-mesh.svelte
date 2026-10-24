@@ -1,6 +1,6 @@
 <!-- Dense masonry: three columns of mesh cards of different heights, the headline card in the middle column. -->
 <script lang="ts">
-  import { Block, Button, Card, Grid, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Button, Card, Grid, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Mesh from "../recipes/mesh.svelte";

@@ -1,6 +1,6 @@
 <!-- Fintech landing, lower: three price plans (the middle one dark), a frequently-asked-questions column with kit disclosures, and a row of testimonial strips. -->
 <script lang="ts">
-  import { Block, Box, Button, Card, Disclosure, Grid, Group, LucideIcon, Stack, Summary, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Card, Disclosure, Grid, Group, LucideIcon, Stack, Summary, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import Avatars from "../parts/avatars.svelte";
 

@@ -48,8 +48,8 @@
       "name": "layout",
       "files": [
         ".ui8px/extract/**",
-        "packages/*/ui/src/**",
-        "xgen/**",
+        "packages/kit-compose/**",
+        "packages/compose-gen/**",
         "apps/**"
       ],
       "spacing": "layout"

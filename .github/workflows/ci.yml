@@ -14,14 +14,12 @@ jobs:
       UI8KIT_REQUIRE_ALL_RUNTIMES: "1"
     steps:
       - uses: actions/checkout@v7
-        with:
-          submodules: true
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version: 1.4.2
       - uses: actions/setup-go@v7
         with:
-          go-version-file: packages/templ/ui/go.mod
+          go-version-file: packages/kit-compose/templ/go.mod
           cache: false
       - uses: shivammathur/setup-php@v2
         with:
@@ -35,6 +33,12 @@ jobs:
       - name: toolchains
         run: bun --version && go version && php --version && composer --version && python3 --version
       - run: bun install --frozen-lockfile
+      - name: server runtimes of the kit-compose tests (Twig + Latte via composer, Jinja2 in a venv)
+        run: |
+          composer install -d packages/kit-compose/test/server --no-interaction --no-progress
+          python3 -m venv packages/kit-compose/test/server/.venv
+          packages/kit-compose/test/server/.venv/bin/pip install -r packages/kit-compose/test/server/requirements.txt
       - run: bun run check
       - run: bun run codex:validate
+      - run: bun run typecheck
       - run: bun run test

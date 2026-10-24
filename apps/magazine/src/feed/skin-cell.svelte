@@ -1,6 +1,6 @@
 <!-- One card of the "same structure" section and the button that applies its skin (first in the tune's skins). -->
 <script lang="ts">
-  import { Button, Stack } from "@ui8kit/svelte-ui";
+  import { Button, Stack } from "@codegen-x/svelte-compose";
   import type { SkinId } from "@ui8kit/taste-data/taste";
   import ui from "../../content/ui.json";
   import type { FeedCard } from "../lib/feed";

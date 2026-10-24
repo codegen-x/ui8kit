@@ -1,6 +1,6 @@
 <!-- Editorial spread: a full-height rings page at the start; a pull quote, the headline and two columns on the end page. -->
 <script lang="ts">
-  import { Block, Button, Grid, Separator, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Button, Grid, Separator, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Rings from "../recipes/rings.svelte";

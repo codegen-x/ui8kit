@@ -1,6 +1,6 @@
 <script lang="ts">
   import { onMount, tick } from 'svelte';
-  import { Block } from '@ui8kit/svelte-ui';
+  import { Block } from '@codegen-x/svelte-compose';
   import TasteFrame from '@ui8kit/panorama/taste-frame.svelte';
   import { SCREENS } from '@ui8kit/taste-screens/screens';
   import { deckAt, type Deck } from '@ui8kit/taste-data/copy';

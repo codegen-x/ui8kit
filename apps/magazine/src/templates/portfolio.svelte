@@ -1,6 +1,6 @@
 <!-- Portfolio: a centred header, a short profile, the project grid, a photo gallery and a contact call to action. -->
 <script lang="ts">
-  import { Block, AboutMe, CtaBand, PhotoGallery, ProjectGrid } from "@ui8kit/svelte-ui";
+  import { Block, AboutMe, CtaBand, PhotoGallery, ProjectGrid } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { dataFor } from "./registry-data";
   import Header from "./header.svelte";

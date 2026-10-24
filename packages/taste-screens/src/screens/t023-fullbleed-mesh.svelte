@@ -1,6 +1,6 @@
 <!-- Full-bleed: a mesh field fills the screen; the headline is set huge at the bottom edge, nav and action float on top. -->
 <script lang="ts">
-  import { Block, Button, Group, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Button, Group, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Mesh from "../recipes/mesh.svelte";

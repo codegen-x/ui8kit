@@ -1,6 +1,6 @@
 <!-- Poster in a frame: a geometric border of shapes on all four sides, the headline and one action in the clear centre. -->
 <script lang="ts">
-  import { Block, Button, Grid, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Button, Grid, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Geometric from "../recipes/geometric.svelte";

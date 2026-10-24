@@ -1,6 +1,6 @@
 <!-- Stats: a left-aligned headline and lead, a flat-shapes panel at the end, four big figures in a ruled row below. -->
 <script lang="ts">
-  import { Block, Box, Button, Grid, Group, Separator, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Grid, Group, Separator, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Flat from "../recipes/flat.svelte";

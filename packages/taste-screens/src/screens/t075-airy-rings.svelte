@@ -1,6 +1,6 @@
 <!-- Airy: one thin ring drawn in the middle of the page, a short headline and a link inside it. -->
 <script lang="ts">
-  import { Block, Box, Button, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Rings from "../recipes/rings.svelte";

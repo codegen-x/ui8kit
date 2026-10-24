@@ -1,6 +1,6 @@
 <!-- Car shop story: a two-image row with a pager, a centred caption, then a three-step stepper beside a tall picture. -->
 <script lang="ts">
-  import { Block, Box, Button, Grid, Group, LucideIcon, Separator, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Grid, Group, LucideIcon, Separator, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import Grain from "../recipes/grain.svelte";
   import Mesh from "../recipes/mesh.svelte";

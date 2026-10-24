@@ -1,6 +1,6 @@
 <!-- One group of the Filters sheet: a group of toggle buttons: checkboxes (several values) or radios (one value), preselected from the draft. -->
 <script lang="ts">
-  import { Box, Checkbox, Label, Radio, Text } from "@ui8kit/svelte-ui";
+  import { Box, Checkbox, Label, Radio, Text } from "@codegen-x/svelte-compose";
   import ui from "../../content/ui.json";
 
   let { name, legend, options, selected, multiple, onchange }: {

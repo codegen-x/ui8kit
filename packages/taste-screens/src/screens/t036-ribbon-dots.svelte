@@ -1,6 +1,6 @@
 <!-- Ribbon as a column: the headline and actions on a dot field at the start, a vertical stack of icon slots at the end. -->
 <script lang="ts">
-  import { Block, Button, Grid, Group, IconBadge, LucideIcon, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Button, Grid, Group, IconBadge, LucideIcon, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { MARKS } from "../kit-data";
   import TopBar from "../parts/top-bar.svelte";

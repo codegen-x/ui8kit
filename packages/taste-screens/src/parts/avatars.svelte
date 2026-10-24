@@ -1,6 +1,6 @@
 <!-- A small overlapping stack of procedural avatars (flat discs in the skin's chart colours, no photos). -->
 <script lang="ts">
-  import { Box, Group } from "@ui8kit/svelte-ui";
+  import { Box, Group } from "@codegen-x/svelte-compose";
 
   let { n = 3, size = 32 }: { n?: number; size?: number } = $props();
   const TONES = ["--chart-1", "--chart-2", "--chart-3", "--chart-4", "--primary"];

@@ -8,6 +8,33 @@
   "sideEffects": [
     "*.css"
   ],
+  "ui8kit": {
+    "runtime": "solid",
+    "generated": true,
+    "kit": [
+      "src/compose",
+      "src/icons",
+      "src/presets",
+      "src/utils",
+      "src/styles"
+    ],
+    "composition": [
+      "src/blocks",
+      "src/components"
+    ],
+    "blockRoot": [
+      "src/blocks",
+      "src/components/faq-help.tsx",
+      "src/components/footer-card.tsx",
+      "src/components/hero-head.tsx",
+      "src/components/region.tsx",
+      "src/components/section-frame.tsx",
+      "src/components/shell-footer.tsx",
+      "src/components/shell-sidebar.tsx",
+      "src/components/shell-topbar.tsx",
+      "src/components/sidebar-panel.tsx"
+    ]
+  },
   "exports": {
     ".": {
       "types": "./src/index.ts",

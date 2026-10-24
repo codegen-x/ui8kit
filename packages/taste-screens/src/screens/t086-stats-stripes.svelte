@@ -1,6 +1,6 @@
 <!-- Stats in columns: three tall columns, each a giant figure standing on its own striped bar plate. -->
 <script lang="ts">
-  import { Block, Button, Grid, Group, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Button, Grid, Group, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Stripes from "../recipes/stripes.svelte";

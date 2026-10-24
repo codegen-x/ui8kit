@@ -1,6 +1,6 @@
 <!-- Airy: a small centred headline, one button, a dot field fading in from one corner; most of the screen is air. -->
 <script lang="ts">
-  import { Block, Button, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Button, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Dots from "../recipes/dots.svelte";

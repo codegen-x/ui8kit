@@ -1,5 +1,5 @@
 // Self-test fixture of the rules group, detector block-root, case nested (violating).
-import { Block, Stack, Text } from "@ui8kit/solid-ui";
+import { Block, Stack, Text } from "@codegen-x/solid-compose";
 import { ui } from "@ui8kit/app-shared/content";
 
 export function Fixture({ open = false, items = [] as string[] }) {

@@ -46,3 +46,4 @@ Organism helpers of the server runtimes are their own namespace (`og_*`; Python 
 Go `orgutils`), so they never shadow the `ui_*` / `ui8kit_*` helpers of the installed kit.
 Still on xgen (outside kit-compose / compose-gen): the skins generator (`xgen/skins`, writes the styles), the gallery/screen
 hosts and the legacy `xgen check`. App scaffolds stay in compose-gen until the hosts step decides what it keeps.
+| delete `xgen/`, `vendor/codegen`, `packages/<runtime>/ui` (8); survivors moved: skins -> `packages/skins`, rules gate -> `packages/tooling/rules`, codex scripts -> `packages/compose-gen/schema`, xgen docs -> `docs/xgen-legacy`; magazine / discovery / panorama / taste-screens on `@codegen-x/svelte-compose`; `xgen-exit-guard` over apps + packages | deletion step | verify (UI8KIT_REQUIRE_ALL_RUNTIMES=1), kit-compose suite per file, ui-gates, magazine tests, host + app builds |

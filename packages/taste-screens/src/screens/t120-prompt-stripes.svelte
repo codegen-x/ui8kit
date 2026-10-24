@@ -1,6 +1,6 @@
 <!-- Prompt as a thread: a striped rail at the start; a short message thread and a composer fill the rest of the screen. -->
 <script lang="ts">
-  import { Block, Box, Button, Card, Group, Input, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Card, Group, Input, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import Stripes from "../recipes/stripes.svelte";
 

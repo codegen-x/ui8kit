@@ -1,6 +1,6 @@
 <!-- Car shop catalogue: a ribbon of brand-style name tiles, a centred heading with a filter bar and a four by two product grid. -->
 <script lang="ts">
-  import { Block, Box, Button, Card, Grid, Group, LucideIcon, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Card, Grid, Group, LucideIcon, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import Field from "../parts/field.svelte";
   import Flat from "../recipes/flat.svelte";

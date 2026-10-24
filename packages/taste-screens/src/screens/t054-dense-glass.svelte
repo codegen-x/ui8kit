@@ -1,6 +1,6 @@
 <!-- Dense glass: a glow field under a 4×3 grid of frosted tiles; the headline spans the first two tiles. -->
 <script lang="ts">
-  import { Block, Box, Button, Grid, LucideIcon, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Grid, LucideIcon, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { GLYPHS, repeat } from "../kit-data";
   import TopBar from "../parts/top-bar.svelte";

@@ -28,7 +28,7 @@
   "dependencies": {
     "@ui8kit/app-shared": "workspace:*",
     "@ui8kit/panorama": "workspace:*",
-    "@ui8kit/svelte-ui": "workspace:*",
+    "@codegen-x/svelte-compose": "workspace:*",
     "@ui8kit/taste-data": "workspace:*",
     "svelte": "^5.57.0",
     "three": "^0.186.1"

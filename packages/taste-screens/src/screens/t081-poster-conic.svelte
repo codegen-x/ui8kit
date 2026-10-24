@@ -1,6 +1,6 @@
 <!-- Poster under a spotlight: a conic beam falls from the top centre onto a huge centred headline. -->
 <script lang="ts">
-  import { Block, Button, Group, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Button, Group, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Conic from "../recipes/conic.svelte";

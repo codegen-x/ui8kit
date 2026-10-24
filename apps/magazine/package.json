@@ -35,7 +35,7 @@
   "dependencies": {
     "@ui8kit/app-shared": "workspace:*",
     "@ui8kit/panorama": "workspace:*",
-    "@ui8kit/svelte-ui": "workspace:*",
+    "@codegen-x/svelte-compose": "workspace:*",
     "@ui8kit/taste-data": "workspace:*",
     "@ui8kit/taste-screens": "workspace:*",
     "svelte": "^5.57.0",
@@ -50,6 +50,8 @@
     "svelte-check": "^4.7.6",
     "tailwindcss": "^4.3.3",
     "typescript": "~6.0.2",
-    "vite": "^8.3.0"
+    "vite": "^8.3.0",
+    "playwright-core": "^1.63.0",
+    "html-validate": "^11.16.2"
   }
 }

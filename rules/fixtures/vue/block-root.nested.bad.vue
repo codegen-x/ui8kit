@@ -1,6 +1,6 @@
 <!-- Self-test fixture of the rules group, detector block-root, case nested (violating). -->
 <script setup lang="ts">
-import { Block, Stack, Text } from "@ui8kit/vue-ui";
+import { Block, Stack, Text } from "@codegen-x/vue-compose";
 import { ui } from "@ui8kit/app-shared/content";
 const props = defineProps<{ open?: boolean; items: string[] }>();
 void props;

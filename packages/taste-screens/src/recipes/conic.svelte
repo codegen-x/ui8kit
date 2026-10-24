@@ -1,6 +1,6 @@
 <!-- Recipe "conic": conic sweeps: a sunburst of rays, a colour wheel, or a soft spotlight. -->
 <script lang="ts">
-  import { Block, Box } from "@ui8kit/svelte-ui";
+  import { Block, Box } from "@codegen-x/svelte-compose";
 
   let { v = 0, class: cls = "" }: { v?: number; class?: string } = $props();
 

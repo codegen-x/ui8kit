@@ -8,5 +8,5 @@ import { spawnSync } from "node:child_process";
 import { APP, REPO } from "../src/app.mjs";
 
 const dir = path.relative(REPO, APP);
-const r = spawnSync("bun", [path.join(REPO, "xgen/check/tools/rules.ts"), "--gate", ...(dir ? [dir] : [])], { stdio: "inherit" });
+const r = spawnSync("bun", [path.join(REPO, "packages/tooling/rules/rules.ts"), "--gate", ...(dir ? [dir] : [])], { stdio: "inherit" });
 process.exit(r.status ?? 1);

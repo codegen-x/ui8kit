@@ -1,7 +1,7 @@
 <!-- The Filters sheet: a modal dialog on the side (the kit's Dialog, variant sheet). It opens on a copy of the current tune with
      every setting preselected; "Update feed" applies the copy, Cancel, Escape and Close drop it. -->
 <script lang="ts">
-  import { Box, Button, Dialog, Group, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Box, Button, Dialog, Group, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import { FONT_IDS, type FontId } from "@ui8kit/taste-data/font-ids";
   import { parseStyleKey, type StyleKey } from "@ui8kit/taste-data/picks";
   import { COMPOSITIONS, RADII, RECIPES, SKIN_IDS } from "@ui8kit/taste-data/taste";

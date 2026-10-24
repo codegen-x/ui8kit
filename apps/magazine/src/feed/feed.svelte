@@ -1,7 +1,7 @@
 <!-- The magazine home: the tuned feed. Taste bar, then sections in order (closest, same structure, opposite, unexpected pages),
      with marketplace inserts (templates, design system, series, video) between them. The tune lives in src/lib/tune.svelte.ts. -->
 <script lang="ts">
-  import { Block, Box, Button, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Text, Title } from "@codegen-x/svelte-compose";
   import { encodePicks, type StyleKey } from "@ui8kit/taste-data/picks";
   import ui from "../../content/ui.json";
   import { closest, insertAt, opposite, structure, unexpectedPages } from "../lib/feed";

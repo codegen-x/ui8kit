@@ -1,6 +1,6 @@
 <!-- Stats in shapes: the headline on top, a row of four big geometric tiles each carrying one figure in its corner. -->
 <script lang="ts">
-  import { Block, Box, Button, Grid, Group, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Grid, Group, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Geometric from "../recipes/geometric.svelte";

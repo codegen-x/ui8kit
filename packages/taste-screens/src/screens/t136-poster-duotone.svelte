@@ -1,6 +1,6 @@
 <!-- Travel hero: a duotone landscape with the headline at the start, a floating video chip at the end, and a ruled four-figure row under it. -->
 <script lang="ts">
-  import { Block, Box, Button, Card, Grid, Group, LucideIcon, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Card, Grid, Group, LucideIcon, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Duotone from "../recipes/duotone.svelte";

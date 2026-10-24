@@ -1,6 +1,6 @@
 <!-- Rental hero: headline and actions at the start over a mesh landscape, a floating search card at the end, a row of benefit cards overlapping the foot. -->
 <script lang="ts">
-  import { Block, Box, Button, Card, Grid, Group, LucideIcon, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Card, Grid, Group, LucideIcon, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import Field from "../parts/field.svelte";
   import TopBar from "../parts/top-bar.svelte";

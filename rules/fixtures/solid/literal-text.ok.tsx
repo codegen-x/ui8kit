@@ -1,5 +1,5 @@
 // Self-test fixture of the rules group, detector literal-text (clean).
-import { Block, Box, Button, Inline, Input, Text, Title } from "@ui8kit/solid-ui";
+import { Block, Box, Button, Inline, Input, Text, Title } from "@codegen-x/solid-compose";
 import { ui } from "@ui8kit/app-shared/content";
 
 export function Fixture({ open = false, ok = true, level = 2, toggle = () => {} }) {

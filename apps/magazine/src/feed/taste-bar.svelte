@@ -1,6 +1,6 @@
 <!-- The taste bar: the profile the feed is built from (derived from the picks, or tuned), the Filters button and Reset. -->
 <script lang="ts">
-  import { Block, Box, Button, Group, Text } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Group, Text } from "@codegen-x/svelte-compose";
   import ui from "../../content/ui.json";
   import { isDerived, type Tune } from "../lib/feed";
   import { resetTune, tuning } from "../lib/tune.svelte";

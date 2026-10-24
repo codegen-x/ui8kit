@@ -1,6 +1,6 @@
 <!-- Poster in a dial: a rings field centred behind the headline, a badge above, actions below, three notes at the foot. -->
 <script lang="ts">
-  import { Badge, Block, Button, Grid, Group, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Badge, Block, Button, Grid, Group, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Rings from "../recipes/rings.svelte";

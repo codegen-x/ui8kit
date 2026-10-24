@@ -1,6 +1,6 @@
 <!-- Airy: one small flat shape above a short headline, both low and left of centre; the rest of the page stays empty. -->
 <script lang="ts">
-  import { Block, Box, Button, Group, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Group, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Flat from "../recipes/flat.svelte";

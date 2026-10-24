@@ -1,6 +1,6 @@
 <!-- Store ribbon: a centred headline with a search field, a ribbon of category chips with icons, and a wide tile of shapes. -->
 <script lang="ts">
-  import { Block, Box, Button, Card, Grid, Group, Input, LucideIcon, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Card, Grid, Group, Input, LucideIcon, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Geometric from "../recipes/geometric.svelte";

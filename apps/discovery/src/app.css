@@ -1,5 +1,5 @@
 /* Discovery: the kit (Tailwind v4 + shadcn neutral tokens), the skins, and the app rules of frame.css (shared with the magazine). */
-@import "@ui8kit/svelte-ui/styles/index.css";
+@import "@codegen-x/svelte-compose/styles/index.css";
 @import "@ui8kit/app-shared/styles/skins.css";
 @import "@ui8kit/taste-screens/frame.css";
 /* the engine, the data and the screens live in packages/: keep scanning them so the generated CSS stays identical */

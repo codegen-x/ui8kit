@@ -1,6 +1,6 @@
 <!-- Ribbon of medallions: the headline at the start top, then a row of six ring medallions with names under each. -->
 <script lang="ts">
-  import { Block, Box, Button, Grid, Group, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Grid, Group, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { repeat } from "../kit-data";
   import TopBar from "../parts/top-bar.svelte";

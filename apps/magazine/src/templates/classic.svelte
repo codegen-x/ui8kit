@@ -1,6 +1,6 @@
 <!-- Classic website: header with navigation, a hero, the content sections, a closing call to action and the footer. -->
 <script lang="ts">
-  import { Block, CtaBand, FeatureGrid, HeroClassic, StatsBand } from "@ui8kit/svelte-ui";
+  import { Block, CtaBand, FeatureGrid, HeroClassic, StatsBand } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { dataFor } from "./registry-data";
   import Header from "./header.svelte";

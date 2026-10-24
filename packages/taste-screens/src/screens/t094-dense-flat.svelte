@@ -1,6 +1,6 @@
 <!-- Dense bento: a four by three grid mixing flat shape tiles, a headline tile, figure tiles and a call tile. -->
 <script lang="ts">
-  import { Block, Button, Card, Grid, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Button, Card, Grid, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Flat from "../recipes/flat.svelte";

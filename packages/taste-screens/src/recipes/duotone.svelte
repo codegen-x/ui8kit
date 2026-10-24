@@ -3,7 +3,7 @@
   (a gradient map: multiplied into a light tone, then lightened with a dark tone; both tones mixed from skin colours); odd variants paint a procedural landscape (sky, sun, two ridges) in the same two tones.
 -->
 <script lang="ts">
-  import { Block, Box, MediaFrame } from "@ui8kit/svelte-ui";
+  import { Block, Box, MediaFrame } from "@codegen-x/svelte-compose";
 
   let { v = 0, alt = "", class: cls = "" }: { v?: number; alt?: string; class?: string } = $props();
 

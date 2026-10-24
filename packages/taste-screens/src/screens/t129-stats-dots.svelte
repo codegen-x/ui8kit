@@ -1,6 +1,6 @@
 <!-- Food stats: copy and an order action at the start, a dotted field with a plate disc and a tag card at the end, a ruled four-figure row under both. -->
 <script lang="ts">
-  import { Block, Box, Button, Card, Grid, Group, Input, LucideIcon, Separator, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Card, Grid, Group, Input, LucideIcon, Separator, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Dots from "../recipes/dots.svelte";

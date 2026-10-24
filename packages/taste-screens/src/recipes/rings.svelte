@@ -1,6 +1,6 @@
 <!-- Recipe "rings": concentric rings and orbits (repeating radial gradients and outlined circles) with a planet or two. -->
 <script lang="ts">
-  import { Block, Box } from "@ui8kit/svelte-ui";
+  import { Block, Box } from "@codegen-x/svelte-compose";
 
   let { v = 0, class: cls = "" }: { v?: number; class?: string } = $props();
 

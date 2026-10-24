@@ -1,6 +1,6 @@
 <!-- Three columns: navigation on the left, the content in the middle, an aside with figures and activity on the right. -->
 <script lang="ts">
-  import { Block, ArticleBody, Card, CardContent, CardHeader, CardTitle, Inline, PostHeader, SidebarNav } from "@ui8kit/svelte-ui";
+  import { Block, ArticleBody, Card, CardContent, CardHeader, CardTitle, Inline, PostHeader, SidebarNav } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { dataFor } from "./registry-data";
   import Header from "./header.svelte";

@@ -6,7 +6,7 @@
 -->
 <script lang="ts">
   import { onMount } from "svelte";
-  import { Block } from "@ui8kit/svelte-ui";
+  import { Block } from "@codegen-x/svelte-compose";
   import ui from "../../content/ui.json";
   import { CURATED_ROWS } from "@ui8kit/taste-data/curated";
   import { skinBackgrounds } from "@ui8kit/panorama/colors";

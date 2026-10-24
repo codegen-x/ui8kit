@@ -1,6 +1,6 @@
 <!-- Rental sections: a numbered section label with a large centred heading, three highlight cards (the middle two filled with the primary colour), then a numbered fleet title with three fleet cards. -->
 <script lang="ts">
-  import { Block, Box, Button, Card, Grid, Group, LucideIcon, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Card, Grid, Group, LucideIcon, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import Flat from "../recipes/flat.svelte";
   import Mesh from "../recipes/mesh.svelte";

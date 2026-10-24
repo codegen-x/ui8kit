@@ -1,6 +1,6 @@
 <!-- Rental collage hero: huge headline and a pill action at the start, three overlapping image cards at the end (one with a caption), then a row of pill filter chips. -->
 <script lang="ts">
-  import { Block, Box, Button, Card, Group, Input, LucideIcon, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Card, Group, Input, LucideIcon, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import Avatars from "../parts/avatars.svelte";
   import Duotone from "../recipes/duotone.svelte";

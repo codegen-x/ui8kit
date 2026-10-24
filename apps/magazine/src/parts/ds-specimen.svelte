@@ -1,7 +1,7 @@
 <!-- The specimen of the Design system: colour tokens, type scale, radii, spacing, buttons, badges, card, alerts and inputs in one
      live frame whose skin, single font, radius and per-element tokens are CSS variables. Shared by the style page and the Theme sheet. -->
 <script lang="ts">
-  import { Alert, Badge, Box, Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Input, Label, Text, Title } from "@ui8kit/svelte-ui";
+  import { Alert, Badge, Box, Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Input, Label, Text, Title } from "@codegen-x/svelte-compose";
   import { family, type FontId } from "@ui8kit/taste-data/fonts";
   import { RADII } from "@ui8kit/taste-data/taste";
   import ui from "../../content/ui.json";

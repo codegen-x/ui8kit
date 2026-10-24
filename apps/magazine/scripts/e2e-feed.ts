@@ -6,7 +6,7 @@
 import { chromium, type Page } from "../../../node_modules/playwright-core/index.mjs";
 import { mkdirSync } from "node:fs";
 import { join, resolve } from "node:path";
-import { validateStates, type HtmlStates } from "../../../xgen/check/src/e2e/html";
+import { validateStates, type HtmlStates } from "./lib/html";
 
 const BASE = process.env.MAG_BASE ?? "http://localhost:5190";
 const SHOTS = process.env.SHOTS;

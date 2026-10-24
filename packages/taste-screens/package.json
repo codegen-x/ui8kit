@@ -24,7 +24,7 @@
     "./package.json": "./package.json"
   },
   "dependencies": {
-    "@ui8kit/svelte-ui": "workspace:*",
+    "@codegen-x/svelte-compose": "workspace:*",
     "@ui8kit/taste-data": "workspace:*",
     "svelte": "^5.57.0"
   },

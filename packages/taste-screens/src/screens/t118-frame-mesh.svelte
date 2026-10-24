@@ -1,6 +1,6 @@
 <!-- Frame: a laptop (screen and base) with a mesh wallpaper and one small window open; the headline sits above it. -->
 <script lang="ts">
-  import { Block, Box, Button, Card, Group, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Card, Group, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Mesh from "../recipes/mesh.svelte";

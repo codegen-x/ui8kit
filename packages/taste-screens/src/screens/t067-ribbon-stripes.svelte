@@ -1,6 +1,6 @@
 <!-- Ribbon: a diagonal stripes band at the top, the centred headline, the kit LogoRibbon in a ruled row at the foot. -->
 <script lang="ts">
-  import { Block, Button, Group, LogoRibbon, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Button, Group, LogoRibbon, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { logos } from "../kit-data";
   import TopBar from "../parts/top-bar.svelte";

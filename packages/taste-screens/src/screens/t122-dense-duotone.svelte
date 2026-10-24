@@ -1,6 +1,6 @@
 <!-- Store categories: a short headline row, then three tinted category tiles (each with its own plate and a pill action) and a benefit strip. -->
 <script lang="ts">
-  import { Block, Box, Button, Grid, Group, LucideIcon, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Grid, Group, LucideIcon, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Duotone from "../recipes/duotone.svelte";

@@ -1,6 +1,6 @@
 <!-- The magazine frame: a header (title, link to Discovery, the ball, theme), the sphere (one canvas, see parts/sphere.svelte) and the views of the hash. -->
 <script lang="ts">
-  import { Block, Button } from "@ui8kit/svelte-ui";
+  import { Block, Button } from "@codegen-x/svelte-compose";
   import { family, type FontId } from "@ui8kit/taste-data/fonts";
   import ui from "../content/ui.json";
   import { resetAll } from "./lib/collections.svelte";

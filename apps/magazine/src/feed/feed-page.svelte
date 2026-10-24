@@ -1,6 +1,6 @@
 <!-- One page of the catalogue below the top sections: unexpected combinations, then an insert from another category. -->
 <script lang="ts">
-  import { Box } from "@ui8kit/svelte-ui";
+  import { Box } from "@codegen-x/svelte-compose";
   import ui from "../../content/ui.json";
   import { unexpected, type Insert, type Tune } from "../lib/feed";
   import FeedInsert from "./feed-insert.svelte";

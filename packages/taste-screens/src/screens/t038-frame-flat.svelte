@@ -1,6 +1,6 @@
 <!-- Frame: a code window floating on a flat-shapes field at the end; command lines come from the deck. -->
 <script lang="ts">
-  import { Block, Box, Button, CodeWindow, Grid, Group, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, CodeWindow, Grid, Group, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Flat from "../recipes/flat.svelte";

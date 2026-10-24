@@ -1,6 +1,6 @@
 <!-- Frame, tilted: a large tablet frame turned slightly, showing a geometric gallery; the headline overlaps its corner. -->
 <script lang="ts">
-  import { Block, Box, Button, Card, Group, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Card, Group, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Geometric from "../recipes/geometric.svelte";

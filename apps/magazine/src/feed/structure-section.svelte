@@ -1,6 +1,6 @@
 <!-- "Same structure, different look": one layout in three skins; the button under a card applies its skin to the whole feed. -->
 <script lang="ts">
-  import { Block, Box, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Text, Title } from "@codegen-x/svelte-compose";
   import ui from "../../content/ui.json";
   import type { FeedCard } from "../lib/feed";
   import SkinCell from "./skin-cell.svelte";

@@ -1,6 +1,6 @@
 <!-- Dense board: three columns of task-like cards, each card with a geometric thumbnail, a title and badges. -->
 <script lang="ts">
-  import { Badge, Block, Box, Button, Card, Grid, Group, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Badge, Block, Box, Button, Card, Grid, Group, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Geometric from "../recipes/geometric.svelte";

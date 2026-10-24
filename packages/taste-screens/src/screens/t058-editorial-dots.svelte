@@ -1,6 +1,6 @@
 <!-- Editorial broadsheet: three columns under a centred nameplate; a dot plate heads the middle column. -->
 <script lang="ts">
-  import { Block, Grid, Separator, Stack, Text, Title, Button, Inline } from "@ui8kit/svelte-ui";
+  import { Block, Grid, Separator, Stack, Text, Title, Button, Inline } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Dots from "../recipes/dots.svelte";

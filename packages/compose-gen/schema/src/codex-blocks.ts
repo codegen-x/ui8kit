@@ -1,4 +1,4 @@
-// The block data manifest (xgen/schema/codex/blocks.json), generated from the sources: every kit block (xgen/specs/blocks,
+// The block data manifest (packages/compose-gen/schema/codex/blocks.json), generated from the sources: every kit block (xgen/specs/blocks,
 // its data bindings, settings, dictionary labels and empty state read from the spec, its organism and the dictionary),
 // every screen spec (the blocks it composes), every magazine template and part (the kit blocks it imports, the data it
 // reads) and every taste screen. By hand, kept from the existing file: `status` (todo/done), `required` / `optional` of a
@@ -27,7 +27,7 @@ export interface BlocksDoc { $schema: string; version: string; contract: string;
 /** where the sources are: the xgen folder, the magazine templates and the taste screens */
 export interface BlockSources { xgen: string; workspace: string; magazine: string; taste: string }
 export const blockSources = (xgen = XGEN): BlockSources => {
-  const workspace = join(xgen, "..");
+  const workspace = join(xgen, "..", "..");
   return { xgen, workspace, magazine: join(workspace, "apps", "magazine", "src", "templates"), taste: join(workspace, "packages", "taste-screens", "src", "screens") };
 };
 
@@ -169,7 +169,7 @@ function templateBinding(key: string, d: { record: string; collection: string; m
 function template(file: string, src: BlockSources, kit: Set<string>, dict: Obj, tdata: ReturnType<typeof templateData>): BlockEntry {
   const text = readFileSync(file, "utf8");
   const name = file.split("/").pop()!.replace(/\.svelte$/, "");
-  const imported = [...text.matchAll(/import \{([^}]*)\} from "@ui8kit\/svelte-ui"/g)].flatMap((m) => m[1]!.split(",").map((x) => x.trim())).filter(Boolean);
+  const imported = [...text.matchAll(/import \{([^}]*)\} from "@codegen-x\/svelte-compose"/g)].flatMap((m) => m[1]!.split(",").map((x) => x.trim())).filter(Boolean);
   // `d.x` (and `dataFor(..).x` in a part) reads a collection of the template data; `d.ui.*` the dictionary
   const keys = [...new Set([...text.matchAll(/(?:\bd|dataFor\([^)]*\))\.([A-Za-z]+)/g)].map((m) => m[1]!).filter((c) => c !== "ui"))].sort();
   const collections = [...new Set(keys.map((k) => tdata.get(k)?.collection ?? k))].sort();
@@ -200,7 +200,7 @@ const ADAPTERS: Record<string, string> = { logos: "tags", topics: "tags", featur
  *  screen reads the other parts as `c.x ?? []`, so a deck without them leaves the part out (empty state: omit). */
 function tasteScreen(file: string, src: BlockSources, kit: Set<string>): BlockEntry {
   const text = readFileSync(file, "utf8");
-  const imported = [...text.matchAll(/import \{([^}]*)\} from "@ui8kit\/svelte-ui"/g)].flatMap((m) => m[1]!.split(",").map((x) => x.trim()));
+  const imported = [...text.matchAll(/import \{([^}]*)\} from "@codegen-x\/svelte-compose"/g)].flatMap((m) => m[1]!.split(",").map((x) => x.trim()));
   const uses = imported.filter((n) => kit.has(n)).sort();
   const parts = [...text.matchAll(/import (\w+) from "\.\.\/parts\/([\w-]+)\.svelte"/g)].map((m) => ({ tag: m[1]!, text: readFileSync(join(file, "..", "..", "parts", `${m[2]}.svelte`), "utf8") }));
   const all = [text, ...parts.map((x) => x.text)].join("\n");
@@ -266,7 +266,7 @@ export function buildBlocks(src = blockSources(), previous: BlocksDoc | undefine
     $schema: "./blocks.schema.json",
     version: previous?.version ?? "0.1.0",
     contract: "@ui8kit/contract v0.4 (codex manifest: ./manifest.json)",
-    fieldMaps: "xgen/runtimes/core/assets/app/fields.ts",
+    fieldMaps: "packages/compose-gen/runtimes/core/assets/app/fields.ts",
     blocks: fresh.map((b) => keep(b, old.get(b.id))),
   };
 }
@@ -276,15 +276,20 @@ export const blocksText = (d: BlocksDoc): string => JSON.stringify(d, null, 2) +
 /** problems when the file on disk is not what the sources generate */
 export function blocksDrift(src = blockSources()): string[] {
   const now = existsSync(BLOCKS_PATH) ? readFileSync(BLOCKS_PATH, "utf8") : "";
-  if (!now) return ["xgen/schema/codex/blocks.json: missing (run: bun run codex:blocks)"];
+  if (!now) return ["packages/compose-gen/schema/codex/blocks.json: missing (run: bun run codex:blocks)"];
   const want = blocksText(buildBlocks(src, JSON.parse(now) as BlocksDoc));
   if (now === want) return [];
   const a = (JSON.parse(now) as BlocksDoc).blocks, b = (JSON.parse(want) as BlocksDoc).blocks;
   const ids = [...new Set([...a, ...b].map((x) => x.id))].filter((id) => !same(a.find((x) => x.id === id), b.find((x) => x.id === id)));
-  return [`xgen/schema/codex/blocks.json: behind the sources (${ids.slice(0, 8).join(", ")}${ids.length > 8 ? `, +${ids.length - 8}` : ""}); run: bun run codex:blocks`];
+  return [`packages/compose-gen/schema/codex/blocks.json: behind the sources (${ids.slice(0, 8).join(", ")}${ids.length > 8 ? `, +${ids.length - 8}` : ""}); run: bun run codex:blocks`];
 }
 
-if (import.meta.main) {
+if (import.meta.main && process.argv.includes("--check")) {
+  const drift = blocksDrift();
+  for (const d of drift) console.error(d);
+  if (drift.length) process.exit(1);
+  console.log("codex blocks: packages/compose-gen/schema/codex/blocks.json up to date");
+} else if (import.meta.main) {
   writeFileSync(BLOCKS_PATH, blocksText(buildBlocks()));
   console.log(`wrote ${BLOCKS_PATH}`);
 }

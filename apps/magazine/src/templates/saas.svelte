@@ -1,6 +1,6 @@
 <!-- SaaS landing: header with a call to action, a split hero, figures, features, pricing, questions, a closing band and the footer. -->
 <script lang="ts">
-  import { Block, CtaBand, FaqList, FeatureGrid, HeroSplit, PricingTiers, StatsBand } from "@ui8kit/svelte-ui";
+  import { Block, CtaBand, FaqList, FeatureGrid, HeroSplit, PricingTiers, StatsBand } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { dataFor } from "./registry-data";
   import Header from "./header.svelte";

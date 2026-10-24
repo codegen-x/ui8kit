@@ -1,7 +1,7 @@
 <!-- The wide panel of the Theme sheet: the rest of the Design system for the whole site, the per-element tokens and the specimen
      (the same components as the style page's Design system tab). On narrow screens it replaces the Theme panel; Back returns. -->
 <script lang="ts">
-  import { Box, Button, Group, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Box, Button, Group, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { FontId } from "@ui8kit/taste-data/fonts";
   import ui from "../../content/ui.json";
   import { setToken } from "../lib/design";

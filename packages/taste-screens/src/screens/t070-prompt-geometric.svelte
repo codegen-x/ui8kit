@@ -1,6 +1,6 @@
 <!-- Prompt: geometric columns frame both edges; in the clear middle the headline and a search field with an action. -->
 <script lang="ts">
-  import { Block, Button, Group, Input, Stack, Text, Title, TopicChips } from "@ui8kit/svelte-ui";
+  import { Block, Button, Group, Input, Stack, Text, Title, TopicChips } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { topics } from "../kit-data";
   import TopBar from "../parts/top-bar.svelte";

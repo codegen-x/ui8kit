@@ -1,6 +1,6 @@
 <!-- Stats panel: a glow field; one frosted card with the main figure at the start and a bar chart card at the end. -->
 <script lang="ts">
-  import { BarChart, Block, Box, Grid, Stack, Text, Title, Button } from "@ui8kit/svelte-ui";
+  import { BarChart, Block, Box, Grid, Stack, Text, Title, Button } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { bars } from "../kit-data";
   import TopBar from "../parts/top-bar.svelte";

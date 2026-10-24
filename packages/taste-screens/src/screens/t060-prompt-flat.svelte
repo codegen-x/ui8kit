@@ -1,6 +1,6 @@
 <!-- Prompt: flat shapes in a tall start panel; at the end the headline, a textarea composer and topic chips. -->
 <script lang="ts">
-  import { Block, Button, Card, Grid, Group, Stack, Text, Textarea, Title, TopicChips } from "@ui8kit/svelte-ui";
+  import { Block, Button, Card, Grid, Group, Stack, Text, Textarea, Title, TopicChips } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { topics } from "../kit-data";
   import TopBar from "../parts/top-bar.svelte";

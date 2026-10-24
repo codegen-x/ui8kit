@@ -1,6 +1,6 @@
 <!-- Frame: a glass-over-glow backdrop with a floating app window: sidebar, a bar chart and three figures. -->
 <script lang="ts">
-  import { BarChart, Block, Box, Button, Card, Grid, Group, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { BarChart, Block, Box, Button, Card, Grid, Group, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { bars } from "../kit-data";
   import TopBar from "../parts/top-bar.svelte";

@@ -1,6 +1,6 @@
 <!-- Full-bleed: the headline breaks over three huge lines; a stripes band runs behind the middle line edge to edge. -->
 <script lang="ts">
-  import { Block, Box, Button, Group, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Group, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Stripes from "../recipes/stripes.svelte";

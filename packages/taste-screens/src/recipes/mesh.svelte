@@ -1,6 +1,6 @@
 <!-- Recipe "mesh": mesh-blur blobs. Soft radial fields of the skin's chart and primary colours, plus blurred orbs. -->
 <script lang="ts">
-  import { Block, Box } from "@ui8kit/svelte-ui";
+  import { Block, Box } from "@codegen-x/svelte-compose";
 
   let { v = 0, class: cls = "" }: { v?: number; class?: string } = $props();
 

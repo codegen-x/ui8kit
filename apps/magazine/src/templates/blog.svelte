@@ -1,6 +1,6 @@
 <!-- Blog: header, an introduction, the magazine grid of posts, a newsletter form and the footer. -->
 <script lang="ts">
-  import { Block, NewsletterForm, PageIntro, PostGrid } from "@ui8kit/svelte-ui";
+  import { Block, NewsletterForm, PageIntro, PostGrid } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { dataFor } from "./registry-data";
   import Header from "./header.svelte";

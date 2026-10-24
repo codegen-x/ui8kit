@@ -1,6 +1,6 @@
 <!-- Split, media first: a rings plate at the start; at the end the headline and three feature cards stacked. -->
 <script lang="ts">
-  import { Block, Button, Card, Grid, LucideIcon, Group, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Button, Card, Grid, LucideIcon, Group, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { GLYPHS } from "../kit-data";
   import TopBar from "../parts/top-bar.svelte";

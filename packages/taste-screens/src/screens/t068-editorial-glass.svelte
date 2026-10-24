@@ -1,6 +1,6 @@
 <!-- Editorial cover: the wordmark set across the top as a masthead, a glass plate below, cover lines down the start side. -->
 <script lang="ts">
-  import { Block, Box, Button, Grid, Inline, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Grid, Inline, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import Glass from "../recipes/glass.svelte";
 

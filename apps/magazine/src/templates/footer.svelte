@@ -1,6 +1,6 @@
 <!-- The page footer of every template: the kit's SitemapFooter (a <footer> with grouped links). -->
 <script lang="ts">
-  import { SitemapFooter } from "@ui8kit/svelte-ui";
+  import { SitemapFooter } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { dataFor } from "./registry-data";
 

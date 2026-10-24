@@ -1,6 +1,6 @@
 <!-- A marketplace insert between feed sections: a banner for another category (templates, design system, series, video). -->
 <script lang="ts">
-  import { Block, Button, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Button, Text, Title } from "@codegen-x/svelte-compose";
   import ui from "../../content/ui.json";
   import type { Insert } from "../lib/feed";
 

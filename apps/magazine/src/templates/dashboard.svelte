@@ -1,6 +1,6 @@
 <!-- Dashboard: the kit's application shell (navigation rail, search, metrics, chart and activity) as one signed-in screen. -->
 <script lang="ts">
-  import { AppShell } from "@ui8kit/svelte-ui";
+  import { AppShell } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { dataFor } from "./registry-data";
 

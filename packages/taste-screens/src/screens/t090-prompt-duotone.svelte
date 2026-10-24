@@ -1,6 +1,6 @@
 <!-- Prompt as a note: a duotone picture card at the start; at the end a text area composer with two actions. -->
 <script lang="ts">
-  import { Block, Box, Button, Card, Grid, Group, Stack, Text, Textarea, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Card, Grid, Group, Stack, Text, Textarea, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Duotone from "../recipes/duotone.svelte";

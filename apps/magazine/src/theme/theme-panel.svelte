@@ -1,7 +1,7 @@
 <!-- The narrow panel of the Theme sheet: mode, skin, font, default radius (with Reset) and density for the whole site; the footer
      opens the wide Design system panel and resets the theme. -->
 <script lang="ts">
-  import { Box, Button, Group, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Box, Button, Group, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
   import { FONT_IDS } from "@ui8kit/taste-data/font-ids";
   import { RADII, SKIN_IDS } from "@ui8kit/taste-data/taste";

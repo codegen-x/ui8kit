@@ -1,6 +1,6 @@
 <!-- Ribbon: a split hero with a flat-shapes panel, then a full-width strip of eight icon slots on the muted band. -->
 <script lang="ts">
-  import { Block, Box, Button, Grid, Group, IconBadge, LucideIcon, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Grid, Group, IconBadge, LucideIcon, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { MARKS } from "../kit-data";
   import TopBar from "../parts/top-bar.svelte";

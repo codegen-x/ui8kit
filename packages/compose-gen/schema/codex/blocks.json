@@ -2,13 +2,13 @@
   "$schema": "./blocks.schema.json",
   "version": "0.1.0",
   "contract": "@ui8kit/contract v0.4 (codex manifest: ./manifest.json)",
-  "fieldMaps": "xgen/runtimes/core/assets/app/fields.ts",
+  "fieldMaps": "packages/compose-gen/runtimes/core/assets/app/fields.ts",
   "blocks": [
     {
       "id": "AboutCompany",
       "surface": "kit-block",
       "spec": "block.about",
-      "source": "xgen/specs/blocks/about.json",
+      "source": "packages/compose-gen/specs/blocks/about.json",
       "status": "done",
       "data": [
         {
@@ -69,7 +69,7 @@
       "id": "AboutMe",
       "surface": "kit-block",
       "spec": "block.aboutme",
-      "source": "xgen/specs/blocks/aboutme.json",
+      "source": "packages/compose-gen/specs/blocks/aboutme.json",
       "status": "done",
       "data": [
         {
@@ -150,7 +150,7 @@
       "id": "FeatureAccordion",
       "surface": "kit-block",
       "spec": "block.accordion",
-      "source": "xgen/specs/blocks/accordion.json",
+      "source": "packages/compose-gen/specs/blocks/accordion.json",
       "status": "done",
       "data": [
         {
@@ -196,7 +196,7 @@
       "id": "ActivityFeed",
       "surface": "kit-block",
       "spec": "block.activity",
-      "source": "xgen/specs/blocks/activity.json",
+      "source": "packages/compose-gen/specs/blocks/activity.json",
       "status": "done",
       "data": [
         {
@@ -246,7 +246,7 @@
       "id": "AnnouncementBar",
       "surface": "kit-block",
       "spec": "block.announcement",
-      "source": "xgen/specs/blocks/announcement.json",
+      "source": "packages/compose-gen/specs/blocks/announcement.json",
       "status": "done",
       "data": [],
       "settings": [
@@ -292,7 +292,7 @@
       "id": "ArticleBody",
       "surface": "kit-block",
       "spec": "block.article",
-      "source": "xgen/specs/blocks/article.json",
+      "source": "packages/compose-gen/specs/blocks/article.json",
       "status": "done",
       "data": [
         {
@@ -342,7 +342,7 @@
       "id": "AuthCard",
       "surface": "kit-block",
       "spec": "block.auth",
-      "source": "xgen/specs/blocks/auth.json",
+      "source": "packages/compose-gen/specs/blocks/auth.json",
       "status": "done",
       "data": [],
       "settings": [
@@ -402,7 +402,7 @@
       "id": "AuthLayout",
       "surface": "kit-block",
       "spec": "block.authpage",
-      "source": "xgen/specs/blocks/authpage.json",
+      "source": "packages/compose-gen/specs/blocks/authpage.json",
       "status": "done",
       "data": [],
       "settings": [
@@ -472,7 +472,7 @@
       "id": "BeforeAfter",
       "surface": "kit-block",
       "spec": "block.beforeafter",
-      "source": "xgen/specs/blocks/beforeafter.json",
+      "source": "packages/compose-gen/specs/blocks/beforeafter.json",
       "status": "done",
       "data": [
         {
@@ -525,7 +525,7 @@
       "id": "BentoGrid",
       "surface": "kit-block",
       "spec": "block.bento",
-      "source": "xgen/specs/blocks/bento.json",
+      "source": "packages/compose-gen/specs/blocks/bento.json",
       "status": "done",
       "data": [
         {
@@ -571,7 +571,7 @@
       "id": "BottomNav",
       "surface": "kit-block",
       "spec": "block.bottomnav",
-      "source": "xgen/specs/blocks/bottomnav.json",
+      "source": "packages/compose-gen/specs/blocks/bottomnav.json",
       "status": "done",
       "data": [
         {
@@ -610,7 +610,7 @@
       "id": "CartList",
       "surface": "kit-block",
       "spec": "block.cart",
-      "source": "xgen/specs/blocks/cart.json",
+      "source": "packages/compose-gen/specs/blocks/cart.json",
       "status": "done",
       "data": [
         {
@@ -673,7 +673,7 @@
       "id": "CartDrawer",
       "surface": "kit-block",
       "spec": "block.cartdrawer",
-      "source": "xgen/specs/blocks/cartdrawer.json",
+      "source": "packages/compose-gen/specs/blocks/cartdrawer.json",
       "status": "done",
       "data": [
         {
@@ -752,7 +752,7 @@
       "id": "ShoppingCart",
       "surface": "kit-block",
       "spec": "block.cartpage",
-      "source": "xgen/specs/blocks/cartpage.json",
+      "source": "packages/compose-gen/specs/blocks/cartpage.json",
       "status": "done",
       "data": [
         {
@@ -862,7 +862,7 @@
       "id": "CategoryNav",
       "surface": "kit-block",
       "spec": "block.categories",
-      "source": "xgen/specs/blocks/categories.json",
+      "source": "packages/compose-gen/specs/blocks/categories.json",
       "status": "done",
       "data": [
         {
@@ -915,7 +915,7 @@
       "id": "SupportChannels",
       "surface": "kit-block",
       "spec": "block.channels",
-      "source": "xgen/specs/blocks/channels.json",
+      "source": "packages/compose-gen/specs/blocks/channels.json",
       "status": "done",
       "data": [
         {
@@ -965,7 +965,7 @@
       "id": "ChartPanel",
       "surface": "kit-block",
       "spec": "block.chart",
-      "source": "xgen/specs/blocks/chart.json",
+      "source": "packages/compose-gen/specs/blocks/chart.json",
       "status": "done",
       "data": [
         {
@@ -1023,7 +1023,7 @@
       "id": "Checklist",
       "surface": "kit-block",
       "spec": "block.checklist",
-      "source": "xgen/specs/blocks/checklist.json",
+      "source": "packages/compose-gen/specs/blocks/checklist.json",
       "status": "done",
       "data": [
         {
@@ -1074,7 +1074,7 @@
       "id": "CheckoutForm",
       "surface": "kit-block",
       "spec": "block.checkout",
-      "source": "xgen/specs/blocks/checkout.json",
+      "source": "packages/compose-gen/specs/blocks/checkout.json",
       "status": "done",
       "data": [
         {
@@ -1216,7 +1216,7 @@
       "id": "ComparisonTable",
       "surface": "kit-block",
       "spec": "block.compare",
-      "source": "xgen/specs/blocks/compare.json",
+      "source": "packages/compose-gen/specs/blocks/compare.json",
       "status": "done",
       "data": [
         {
@@ -1290,7 +1290,7 @@
       "id": "ContactForm",
       "surface": "kit-block",
       "spec": "block.contact",
-      "source": "xgen/specs/blocks/contact.json",
+      "source": "packages/compose-gen/specs/blocks/contact.json",
       "status": "done",
       "data": [
         {
@@ -1350,7 +1350,7 @@
       "id": "CookieBanner",
       "surface": "kit-block",
       "spec": "block.cookie",
-      "source": "xgen/specs/blocks/cookie.json",
+      "source": "packages/compose-gen/specs/blocks/cookie.json",
       "status": "done",
       "data": [],
       "settings": [
@@ -1393,7 +1393,7 @@
       "id": "CreditPacks",
       "surface": "kit-block",
       "spec": "block.credits",
-      "source": "xgen/specs/blocks/credits.json",
+      "source": "packages/compose-gen/specs/blocks/credits.json",
       "status": "done",
       "data": [
         {
@@ -1454,7 +1454,7 @@
       "id": "CtaBand",
       "surface": "kit-block",
       "spec": "block.cta",
-      "source": "xgen/specs/blocks/cta.json",
+      "source": "packages/compose-gen/specs/blocks/cta.json",
       "status": "done",
       "data": [],
       "settings": [
@@ -1508,7 +1508,7 @@
       "id": "CtaProof",
       "surface": "kit-block",
       "spec": "block.ctaproof",
-      "source": "xgen/specs/blocks/ctaproof.json",
+      "source": "packages/compose-gen/specs/blocks/ctaproof.json",
       "status": "done",
       "data": [
         {
@@ -1625,7 +1625,7 @@
       "id": "DashboardShell",
       "surface": "kit-block",
       "spec": "block.dashshell",
-      "source": "xgen/specs/blocks/dashshell.json",
+      "source": "packages/compose-gen/specs/blocks/dashshell.json",
       "status": "done",
       "data": [
         {
@@ -1745,7 +1745,7 @@
       "id": "DeliveryInfo",
       "surface": "kit-block",
       "spec": "block.delivery",
-      "source": "xgen/specs/blocks/delivery.json",
+      "source": "packages/compose-gen/specs/blocks/delivery.json",
       "status": "done",
       "data": [
         {
@@ -1819,7 +1819,7 @@
       "id": "EmptyPanel",
       "surface": "kit-block",
       "spec": "block.empty",
-      "source": "xgen/specs/blocks/empty.json",
+      "source": "packages/compose-gen/specs/blocks/empty.json",
       "status": "done",
       "data": [],
       "settings": [
@@ -1855,7 +1855,7 @@
       "id": "ErrorPage",
       "surface": "kit-block",
       "spec": "block.errorpage",
-      "source": "xgen/specs/blocks/errorpage.json",
+      "source": "packages/compose-gen/specs/blocks/errorpage.json",
       "status": "done",
       "data": [],
       "settings": [
@@ -1899,7 +1899,7 @@
       "id": "FaqList",
       "surface": "kit-block",
       "spec": "block.faq",
-      "source": "xgen/specs/blocks/faq.json",
+      "source": "packages/compose-gen/specs/blocks/faq.json",
       "status": "done",
       "data": [
         {
@@ -1969,7 +1969,7 @@
       "id": "FaqSplit",
       "surface": "kit-block",
       "spec": "block.faqsplit",
-      "source": "xgen/specs/blocks/faqsplit.json",
+      "source": "packages/compose-gen/specs/blocks/faqsplit.json",
       "status": "done",
       "data": [
         {
@@ -2086,7 +2086,7 @@
       "id": "FeatureGrid",
       "surface": "kit-block",
       "spec": "block.features",
-      "source": "xgen/specs/blocks/features.json",
+      "source": "packages/compose-gen/specs/blocks/features.json",
       "status": "done",
       "data": [
         {
@@ -2138,7 +2138,7 @@
       "id": "FeatureShowcase",
       "surface": "kit-block",
       "spec": "block.featureshowcase",
-      "source": "xgen/specs/blocks/featureshowcase.json",
+      "source": "packages/compose-gen/specs/blocks/featureshowcase.json",
       "status": "done",
       "data": [
         {
@@ -2207,7 +2207,7 @@
       "id": "FeatureSplit",
       "surface": "kit-block",
       "spec": "block.featuresplit",
-      "source": "xgen/specs/blocks/featuresplit.json",
+      "source": "packages/compose-gen/specs/blocks/featuresplit.json",
       "status": "done",
       "data": [
         {
@@ -2284,7 +2284,7 @@
       "id": "FeatureTabs",
       "surface": "kit-block",
       "spec": "block.featuretabs",
-      "source": "xgen/specs/blocks/featuretabs.json",
+      "source": "packages/compose-gen/specs/blocks/featuretabs.json",
       "status": "done",
       "data": [
         {
@@ -2334,7 +2334,7 @@
       "id": "SiteFooter",
       "surface": "kit-block",
       "spec": "block.footer",
-      "source": "xgen/specs/blocks/footer.json",
+      "source": "packages/compose-gen/specs/blocks/footer.json",
       "status": "done",
       "data": [],
       "settings": [
@@ -2361,7 +2361,7 @@
       "id": "FooterSplit",
       "surface": "kit-block",
       "spec": "block.footersplit",
-      "source": "xgen/specs/blocks/footersplit.json",
+      "source": "packages/compose-gen/specs/blocks/footersplit.json",
       "status": "done",
       "data": [
         {
@@ -2497,7 +2497,7 @@
       "id": "SiteHeader",
       "surface": "kit-block",
       "spec": "block.header",
-      "source": "xgen/specs/blocks/header.json",
+      "source": "packages/compose-gen/specs/blocks/header.json",
       "status": "done",
       "data": [],
       "settings": [
@@ -2534,7 +2534,7 @@
       "id": "HeroClassic",
       "surface": "kit-block",
       "spec": "block.hero",
-      "source": "xgen/specs/blocks/hero.json",
+      "source": "packages/compose-gen/specs/blocks/hero.json",
       "status": "done",
       "data": [
         {
@@ -2674,7 +2674,7 @@
       "id": "HeroSplit",
       "surface": "kit-block",
       "spec": "block.herosplit",
-      "source": "xgen/specs/blocks/herosplit.json",
+      "source": "packages/compose-gen/specs/blocks/herosplit.json",
       "status": "done",
       "data": [
         {
@@ -2808,7 +2808,7 @@
       "id": "IconWall",
       "surface": "kit-block",
       "spec": "block.iconwall",
-      "source": "xgen/specs/blocks/iconwall.json",
+      "source": "packages/compose-gen/specs/blocks/iconwall.json",
       "status": "done",
       "data": [
         {
@@ -2853,7 +2853,7 @@
       "id": "JobBoard",
       "surface": "kit-block",
       "spec": "block.jobs",
-      "source": "xgen/specs/blocks/jobs.json",
+      "source": "packages/compose-gen/specs/blocks/jobs.json",
       "status": "done",
       "data": [
         {
@@ -2932,7 +2932,7 @@
       "id": "KanbanBoard",
       "surface": "kit-block",
       "spec": "block.kanban",
-      "source": "xgen/specs/blocks/kanban.json",
+      "source": "packages/compose-gen/specs/blocks/kanban.json",
       "status": "done",
       "data": [
         {
@@ -2997,7 +2997,7 @@
       "id": "StoreLocations",
       "surface": "kit-block",
       "spec": "block.locations",
-      "source": "xgen/specs/blocks/locations.json",
+      "source": "packages/compose-gen/specs/blocks/locations.json",
       "status": "done",
       "data": [
         {
@@ -3064,7 +3064,7 @@
       "id": "LogoCloud",
       "surface": "kit-block",
       "spec": "block.logos",
-      "source": "xgen/specs/blocks/logos.json",
+      "source": "packages/compose-gen/specs/blocks/logos.json",
       "status": "done",
       "data": [
         {
@@ -3109,7 +3109,7 @@
       "id": "MediaList",
       "surface": "kit-block",
       "spec": "block.medialist",
-      "source": "xgen/specs/blocks/medialist.json",
+      "source": "packages/compose-gen/specs/blocks/medialist.json",
       "status": "done",
       "data": [
         {
@@ -3285,7 +3285,7 @@
       "id": "MegaMenu",
       "surface": "kit-block",
       "spec": "block.megamenu",
-      "source": "xgen/specs/blocks/megamenu.json",
+      "source": "packages/compose-gen/specs/blocks/megamenu.json",
       "status": "done",
       "data": [
         {
@@ -3360,7 +3360,7 @@
       "id": "MetricRow",
       "surface": "kit-block",
       "spec": "block.metrics",
-      "source": "xgen/specs/blocks/metrics.json",
+      "source": "packages/compose-gen/specs/blocks/metrics.json",
       "status": "done",
       "data": [
         {
@@ -3406,7 +3406,7 @@
       "id": "NavBar",
       "surface": "kit-block",
       "spec": "block.navbar",
-      "source": "xgen/specs/blocks/navbar.json",
+      "source": "packages/compose-gen/specs/blocks/navbar.json",
       "status": "done",
       "data": [
         {
@@ -3473,7 +3473,7 @@
       "id": "NewsletterForm",
       "surface": "kit-block",
       "spec": "block.newsletter",
-      "source": "xgen/specs/blocks/newsletter.json",
+      "source": "packages/compose-gen/specs/blocks/newsletter.json",
       "status": "done",
       "data": [],
       "settings": [
@@ -3517,7 +3517,7 @@
       "id": "OrderTable",
       "surface": "kit-block",
       "spec": "block.orders",
-      "source": "xgen/specs/blocks/orders.json",
+      "source": "packages/compose-gen/specs/blocks/orders.json",
       "status": "done",
       "data": [
         {
@@ -3593,7 +3593,7 @@
       "id": "DashboardOverview",
       "surface": "kit-block",
       "spec": "block.overview",
-      "source": "xgen/specs/blocks/overview.json",
+      "source": "packages/compose-gen/specs/blocks/overview.json",
       "status": "done",
       "data": [
         {
@@ -3690,7 +3690,7 @@
       "id": "PageIntro",
       "surface": "kit-block",
       "spec": "block.pagehead",
-      "source": "xgen/specs/blocks/pagehead.json",
+      "source": "packages/compose-gen/specs/blocks/pagehead.json",
       "status": "done",
       "data": [],
       "settings": [
@@ -3725,7 +3725,7 @@
       "id": "PageTrail",
       "surface": "kit-block",
       "spec": "block.pagetrail",
-      "source": "xgen/specs/blocks/pagetrail.json",
+      "source": "packages/compose-gen/specs/blocks/pagetrail.json",
       "status": "done",
       "data": [
         {
@@ -3815,7 +3815,7 @@
       "id": "PhotoGallery",
       "surface": "kit-block",
       "spec": "block.photos",
-      "source": "xgen/specs/blocks/photos.json",
+      "source": "packages/compose-gen/specs/blocks/photos.json",
       "status": "done",
       "data": [
         {
@@ -3874,7 +3874,7 @@
       "id": "PricingCard",
       "surface": "kit-block",
       "spec": "block.plan",
-      "source": "xgen/specs/blocks/plan.json",
+      "source": "packages/compose-gen/specs/blocks/plan.json",
       "status": "done",
       "data": [
         {
@@ -3928,7 +3928,7 @@
       "id": "PostHeader",
       "surface": "kit-block",
       "spec": "block.postheader",
-      "source": "xgen/specs/blocks/postheader.json",
+      "source": "packages/compose-gen/specs/blocks/postheader.json",
       "status": "done",
       "data": [
         {
@@ -3981,7 +3981,7 @@
       "id": "PostGrid",
       "surface": "kit-block",
       "spec": "block.posts",
-      "source": "xgen/specs/blocks/posts.json",
+      "source": "packages/compose-gen/specs/blocks/posts.json",
       "status": "done",
       "data": [
         {
@@ -4066,7 +4066,7 @@
       "id": "PostShowcase",
       "surface": "kit-block",
       "spec": "block.postshowcase",
-      "source": "xgen/specs/blocks/postshowcase.json",
+      "source": "packages/compose-gen/specs/blocks/postshowcase.json",
       "status": "done",
       "data": [
         {
@@ -4143,7 +4143,7 @@
       "id": "PostSplit",
       "surface": "kit-block",
       "spec": "block.postsplit",
-      "source": "xgen/specs/blocks/postsplit.json",
+      "source": "packages/compose-gen/specs/blocks/postsplit.json",
       "status": "done",
       "data": [
         {
@@ -4251,7 +4251,7 @@
       "id": "PricingTiers",
       "surface": "kit-block",
       "spec": "block.pricing",
-      "source": "xgen/specs/blocks/pricing.json",
+      "source": "packages/compose-gen/specs/blocks/pricing.json",
       "status": "done",
       "data": [
         {
@@ -4331,7 +4331,7 @@
       "id": "ProductDetail",
       "surface": "kit-block",
       "spec": "block.product",
-      "source": "xgen/specs/blocks/product.json",
+      "source": "packages/compose-gen/specs/blocks/product.json",
       "status": "done",
       "data": [
         {
@@ -4405,7 +4405,7 @@
       "id": "ProductInfo",
       "surface": "kit-block",
       "spec": "block.productinfo",
-      "source": "xgen/specs/blocks/productinfo.json",
+      "source": "packages/compose-gen/specs/blocks/productinfo.json",
       "status": "done",
       "data": [
         {
@@ -4465,7 +4465,7 @@
       "id": "ProductGrid",
       "surface": "kit-block",
       "spec": "block.products",
-      "source": "xgen/specs/blocks/products.json",
+      "source": "packages/compose-gen/specs/blocks/products.json",
       "status": "done",
       "data": [
         {
@@ -4538,7 +4538,7 @@
       "id": "ProfileForm",
       "surface": "kit-block",
       "spec": "block.profile",
-      "source": "xgen/specs/blocks/profile.json",
+      "source": "packages/compose-gen/specs/blocks/profile.json",
       "status": "done",
       "data": [],
       "settings": [
@@ -4583,7 +4583,7 @@
       "id": "ProjectGrid",
       "surface": "kit-block",
       "spec": "block.projects",
-      "source": "xgen/specs/blocks/projects.json",
+      "source": "packages/compose-gen/specs/blocks/projects.json",
       "status": "done",
       "data": [
         {
@@ -4645,7 +4645,7 @@
       "id": "ProofBand",
       "surface": "kit-block",
       "spec": "block.proof",
-      "source": "xgen/specs/blocks/proof.json",
+      "source": "packages/compose-gen/specs/blocks/proof.json",
       "status": "done",
       "data": [
         {
@@ -4705,7 +4705,7 @@
       "id": "QuoteSplit",
       "surface": "kit-block",
       "spec": "block.quotesplit",
-      "source": "xgen/specs/blocks/quotesplit.json",
+      "source": "packages/compose-gen/specs/blocks/quotesplit.json",
       "status": "done",
       "data": [
         {
@@ -4829,7 +4829,7 @@
       "id": "ReviewList",
       "surface": "kit-block",
       "spec": "block.reviews",
-      "source": "xgen/specs/blocks/reviews.json",
+      "source": "packages/compose-gen/specs/blocks/reviews.json",
       "status": "done",
       "data": [
         {
@@ -4880,7 +4880,7 @@
       "id": "AppShell",
       "surface": "kit-block",
       "spec": "block.shell",
-      "source": "xgen/specs/blocks/shell.json",
+      "source": "packages/compose-gen/specs/blocks/shell.json",
       "status": "done",
       "data": [
         {
@@ -5020,7 +5020,7 @@
       "id": "SidebarNav",
       "surface": "kit-block",
       "spec": "block.sidenav",
-      "source": "xgen/specs/blocks/sidenav.json",
+      "source": "packages/compose-gen/specs/blocks/sidenav.json",
       "status": "done",
       "data": [
         {
@@ -5075,7 +5075,7 @@
       "id": "SitemapFooter",
       "surface": "kit-block",
       "spec": "block.sitemap",
-      "source": "xgen/specs/blocks/sitemap.json",
+      "source": "packages/compose-gen/specs/blocks/sitemap.json",
       "status": "done",
       "data": [
         {
@@ -5149,7 +5149,7 @@
       "id": "SkeletonLayout",
       "surface": "kit-block",
       "spec": "block.skeleton",
-      "source": "xgen/specs/blocks/skeleton.json",
+      "source": "packages/compose-gen/specs/blocks/skeleton.json",
       "status": "done",
       "data": [
         {
@@ -5190,7 +5190,7 @@
       "id": "SlotBoard",
       "surface": "kit-block",
       "spec": "block.slots",
-      "source": "xgen/specs/blocks/slots.json",
+      "source": "packages/compose-gen/specs/blocks/slots.json",
       "status": "done",
       "data": [
         {
@@ -5274,7 +5274,7 @@
       "id": "StatsBand",
       "surface": "kit-block",
       "spec": "block.stats",
-      "source": "xgen/specs/blocks/stats.json",
+      "source": "packages/compose-gen/specs/blocks/stats.json",
       "status": "done",
       "data": [
         {
@@ -5325,7 +5325,7 @@
       "id": "Stepper",
       "surface": "kit-block",
       "spec": "block.stepper",
-      "source": "xgen/specs/blocks/stepper.json",
+      "source": "packages/compose-gen/specs/blocks/stepper.json",
       "status": "done",
       "data": [
         {
@@ -5381,7 +5381,7 @@
       "id": "StepsList",
       "surface": "kit-block",
       "spec": "block.steps",
-      "source": "xgen/specs/blocks/steps.json",
+      "source": "packages/compose-gen/specs/blocks/steps.json",
       "status": "done",
       "data": [
         {
@@ -5427,7 +5427,7 @@
       "id": "FeatureSticky",
       "surface": "kit-block",
       "spec": "block.sticky",
-      "source": "xgen/specs/blocks/sticky.json",
+      "source": "packages/compose-gen/specs/blocks/sticky.json",
       "status": "done",
       "data": [
         {
@@ -5473,7 +5473,7 @@
       "id": "StoreHero",
       "surface": "kit-block",
       "spec": "block.storehero",
-      "source": "xgen/specs/blocks/storehero.json",
+      "source": "packages/compose-gen/specs/blocks/storehero.json",
       "status": "done",
       "data": [
         {
@@ -5543,7 +5543,7 @@
       "id": "StoryTabs",
       "surface": "kit-block",
       "spec": "block.storytabs",
-      "source": "xgen/specs/blocks/storytabs.json",
+      "source": "packages/compose-gen/specs/blocks/storytabs.json",
       "status": "done",
       "data": [
         {
@@ -5607,7 +5607,7 @@
       "id": "OrderSummary",
       "surface": "kit-block",
       "spec": "block.summary",
-      "source": "xgen/specs/blocks/summary.json",
+      "source": "packages/compose-gen/specs/blocks/summary.json",
       "status": "done",
       "data": [
         {
@@ -5662,7 +5662,7 @@
       "id": "TeamGrid",
       "surface": "kit-block",
       "spec": "block.team",
-      "source": "xgen/specs/blocks/team.json",
+      "source": "packages/compose-gen/specs/blocks/team.json",
       "status": "done",
       "data": [
         {
@@ -5726,7 +5726,7 @@
       "id": "TemplateGrid",
       "surface": "kit-block",
       "spec": "block.templates",
-      "source": "xgen/specs/blocks/templates.json",
+      "source": "packages/compose-gen/specs/blocks/templates.json",
       "status": "done",
       "data": [
         {
@@ -5797,7 +5797,7 @@
       "id": "TestimonialGrid",
       "surface": "kit-block",
       "spec": "block.testimonials",
-      "source": "xgen/specs/blocks/testimonials.json",
+      "source": "packages/compose-gen/specs/blocks/testimonials.json",
       "status": "done",
       "data": [
         {
@@ -5863,7 +5863,7 @@
       "id": "MilestoneTimeline",
       "surface": "kit-block",
       "spec": "block.timeline",
-      "source": "xgen/specs/blocks/timeline.json",
+      "source": "packages/compose-gen/specs/blocks/timeline.json",
       "status": "done",
       "data": [
         {
@@ -5913,7 +5913,7 @@
       "id": "TourCallout",
       "surface": "kit-block",
       "spec": "block.tour",
-      "source": "xgen/specs/blocks/tour.json",
+      "source": "packages/compose-gen/specs/blocks/tour.json",
       "status": "done",
       "data": [],
       "settings": [
@@ -5961,7 +5961,7 @@
       "id": "UsageCalculator",
       "surface": "kit-block",
       "spec": "block.usage",
-      "source": "xgen/specs/blocks/usage.json",
+      "source": "packages/compose-gen/specs/blocks/usage.json",
       "status": "done",
       "data": [],
       "settings": [
@@ -6016,7 +6016,7 @@
       "id": "UspStrip",
       "surface": "kit-block",
       "spec": "block.usp",
-      "source": "xgen/specs/blocks/usp.json",
+      "source": "packages/compose-gen/specs/blocks/usp.json",
       "status": "done",
       "data": [
         {
@@ -6060,7 +6060,7 @@
       "id": "VideoModal",
       "surface": "kit-block",
       "spec": "block.videomodal",
-      "source": "xgen/specs/blocks/videomodal.json",
+      "source": "packages/compose-gen/specs/blocks/videomodal.json",
       "status": "done",
       "data": [
         {
@@ -6119,7 +6119,7 @@
       "id": "VideoGrid",
       "surface": "kit-block",
       "spec": "block.videos",
-      "source": "xgen/specs/blocks/videos.json",
+      "source": "packages/compose-gen/specs/blocks/videos.json",
       "status": "done",
       "data": [
         {
@@ -6179,7 +6179,7 @@
       "id": "SignupWizard",
       "surface": "kit-block",
       "spec": "block.wizard",
-      "source": "xgen/specs/blocks/wizard.json",
+      "source": "packages/compose-gen/specs/blocks/wizard.json",
       "status": "done",
       "data": [
         {
@@ -6233,7 +6233,7 @@
       "id": "ZoneTable",
       "surface": "kit-block",
       "spec": "block.zones",
-      "source": "xgen/specs/blocks/zones.json",
+      "source": "packages/compose-gen/specs/blocks/zones.json",
       "status": "done",
       "data": [
         {
@@ -6300,7 +6300,7 @@
     {
       "id": "screen.blocks",
       "surface": "xgen-screen",
-      "source": "xgen/specs/screens/blocks.json",
+      "source": "packages/compose-gen/specs/screens/blocks.json",
       "status": "done",
       "data": [],
       "settings": [
@@ -6314,7 +6314,7 @@
     {
       "id": "screen.catalog",
       "surface": "xgen-screen",
-      "source": "xgen/specs/screens/catalog.json",
+      "source": "packages/compose-gen/specs/screens/catalog.json",
       "status": "done",
       "data": [
         {
@@ -7027,7 +7027,7 @@
     {
       "id": "screen.plans",
       "surface": "xgen-screen",
-      "source": "xgen/specs/screens/plans.json",
+      "source": "packages/compose-gen/specs/screens/plans.json",
       "status": "done",
       "data": [
         {
@@ -7165,7 +7165,7 @@
     {
       "id": "screen.site",
       "surface": "xgen-screen",
-      "source": "xgen/specs/screens/site.json",
+      "source": "packages/compose-gen/specs/screens/site.json",
       "status": "done",
       "data": [
         {
@@ -7278,7 +7278,7 @@
     {
       "id": "screen.skins",
       "surface": "xgen-screen",
-      "source": "xgen/specs/screens/skins.json",
+      "source": "packages/compose-gen/specs/screens/skins.json",
       "status": "done",
       "data": [],
       "settings": [
@@ -7292,7 +7292,7 @@
     {
       "id": "screen.theme-account-portal",
       "surface": "xgen-screen",
-      "source": "xgen/specs/screens/theme-account-portal.json",
+      "source": "packages/compose-gen/specs/screens/theme-account-portal.json",
       "status": "done",
       "data": [
         {
@@ -7575,7 +7575,7 @@
     {
       "id": "screen.theme-commerce-shop",
       "surface": "xgen-screen",
-      "source": "xgen/specs/screens/theme-commerce-shop.json",
+      "source": "packages/compose-gen/specs/screens/theme-commerce-shop.json",
       "status": "done",
       "data": [
         {
@@ -7934,7 +7934,7 @@
     {
       "id": "screen.theme-content-blog",
       "surface": "xgen-screen",
-      "source": "xgen/specs/screens/theme-content-blog.json",
+      "source": "packages/compose-gen/specs/screens/theme-content-blog.json",
       "status": "done",
       "data": [
         {
@@ -8111,7 +8111,7 @@
     {
       "id": "screen.theme-dashboard-console",
       "surface": "xgen-screen",
-      "source": "xgen/specs/screens/theme-dashboard-console.json",
+      "source": "packages/compose-gen/specs/screens/theme-dashboard-console.json",
       "status": "done",
       "data": [
         {
@@ -8373,7 +8373,7 @@
     {
       "id": "screen.theme-marketing-landing",
       "surface": "xgen-screen",
-      "source": "xgen/specs/screens/theme-marketing-landing.json",
+      "source": "packages/compose-gen/specs/screens/theme-marketing-landing.json",
       "status": "done",
       "data": [
         {
@@ -8779,7 +8779,7 @@
     {
       "id": "screen.theme-marketing-pricing",
       "surface": "xgen-screen",
-      "source": "xgen/specs/screens/theme-marketing-pricing.json",
+      "source": "packages/compose-gen/specs/screens/theme-marketing-pricing.json",
       "status": "done",
       "data": [
         {
@@ -9008,7 +9008,7 @@
     {
       "id": "screen.theme-marketing-product",
       "surface": "xgen-screen",
-      "source": "xgen/specs/screens/theme-marketing-product.json",
+      "source": "packages/compose-gen/specs/screens/theme-marketing-product.json",
       "status": "done",
       "data": [
         {
@@ -9235,7 +9235,7 @@
     {
       "id": "screen.theme-onboarding-flow",
       "surface": "xgen-screen",
-      "source": "xgen/specs/screens/theme-onboarding-flow.json",
+      "source": "packages/compose-gen/specs/screens/theme-onboarding-flow.json",
       "status": "done",
       "data": [
         {
@@ -9395,7 +9395,7 @@
     {
       "id": "screen.theme-promo-campaign",
       "surface": "xgen-screen",
-      "source": "xgen/specs/screens/theme-promo-campaign.json",
+      "source": "packages/compose-gen/specs/screens/theme-promo-campaign.json",
       "status": "done",
       "data": [
         {
@@ -9588,7 +9588,7 @@
     {
       "id": "screen.theme-support-center",
       "surface": "xgen-screen",
-      "source": "xgen/specs/screens/theme-support-center.json",
+      "source": "packages/compose-gen/specs/screens/theme-support-center.json",
       "status": "done",
       "data": [
         {

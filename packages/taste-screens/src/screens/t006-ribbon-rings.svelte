@@ -1,6 +1,6 @@
 <!-- Ribbon: a centred hero over a rings field, then the kit LogoRibbon of abstract icon slots across the bottom. -->
 <script lang="ts">
-  import { Block, Button, Group, LogoRibbon, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Button, Group, LogoRibbon, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { logos } from "../kit-data";
   import TopBar from "../parts/top-bar.svelte";

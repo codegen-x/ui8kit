@@ -1,6 +1,6 @@
 <!-- Recipe "stripes": repeating bands: diagonal stripes, vertical bars of rising height, or a fine line field. -->
 <script lang="ts">
-  import { Block, Box, Group } from "@ui8kit/svelte-ui";
+  import { Block, Box, Group } from "@codegen-x/svelte-compose";
 
   let { v = 0, class: cls = "" }: { v?: number; class?: string } = $props();
 

@@ -3,7 +3,7 @@
 import type {
   Category, Event, Faq, Feature, MegaGroup, NavLink, Photo, Plan, Point, Post, PostTopic, Product, Project, Quote,
   Review, Section, Skill, Spec, Stat, Step,
-} from "@ui8kit/svelte-ui";
+} from "@codegen-x/svelte-compose";
 import { fromCodex, trail } from "@ui8kit/app-shared/runtime/core";
 import { CODEX_FIELDS } from "@ui8kit/app-shared/runtime/fields";
 import { CODEX } from "@ui8kit/app-shared/runtime/codex";

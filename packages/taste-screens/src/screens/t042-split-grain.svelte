@@ -1,6 +1,6 @@
 <!-- Split: numbered steps under the headline at the start; a grain plate at the end with a quote card pinned to its corner. -->
 <script lang="ts">
-  import { Block, Box, Button, Card, Grid, Group, Inline, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Card, Grid, Group, Inline, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import TopBar from "../parts/top-bar.svelte";
   import Grain from "../recipes/grain.svelte";

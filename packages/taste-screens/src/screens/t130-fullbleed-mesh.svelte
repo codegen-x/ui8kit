@@ -1,6 +1,6 @@
 <!-- Car shop: a dark rounded full-bleed hero with a centred headline and a CTA pill, then an intro heading with avatars and a rule. -->
 <script lang="ts">
-  import { Block, Box, Button, Group, LucideIcon, Separator, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Group, LucideIcon, Separator, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import Avatars from "../parts/avatars.svelte";
   import Mesh from "../recipes/mesh.svelte";

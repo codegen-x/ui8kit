@@ -1,6 +1,6 @@
 <!-- Recipe "glass": frosted panels (backdrop blur, a hairline of light) floating over a glow of the primary colour. -->
 <script lang="ts">
-  import { Block, Box } from "@ui8kit/svelte-ui";
+  import { Block, Box } from "@codegen-x/svelte-compose";
 
   let { v = 0, class: cls = "" }: { v?: number; class?: string } = $props();
 

@@ -1,6 +1,6 @@
 <!-- Fashion catalogue: three tinted collection tiles with a round arrow, then a trending header with filter links and a row of five product tiles. -->
 <script lang="ts">
-  import { Block, Box, Button, Card, Grid, Group, LucideIcon, Stack, Text, Title } from "@ui8kit/svelte-ui";
+  import { Block, Box, Button, Card, Grid, Group, LucideIcon, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import Flat from "../recipes/flat.svelte";
   import Geometric from "../recipes/geometric.svelte";

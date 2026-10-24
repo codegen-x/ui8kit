@@ -1,6 +1,6 @@
 // Self-test fixture of the rules group, detector block-root, case siblings (violating): a Block beside a Show with another Block.
 import { Show } from "solid-js";
-import { Block, Text } from "@ui8kit/solid-ui";
+import { Block, Text } from "@codegen-x/solid-compose";
 import { ui } from "@ui8kit/app-shared/content";
 
 export function Fixture({ open = false }) {

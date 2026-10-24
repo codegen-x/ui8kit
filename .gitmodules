@@ -1,3 +1,0 @@
-[submodule "vendor/codegen"]
-	path = vendor/codegen
-	url = https://github.com/ui8kit/codegen.git

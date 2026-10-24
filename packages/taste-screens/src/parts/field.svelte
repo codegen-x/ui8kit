@@ -1,6 +1,6 @@
 <!-- A form-field look-alike for the search cards and bars of the screens: a small label over a value and an icon. -->
 <script lang="ts">
-  import { Box, LucideIcon, Stack, Text } from "@ui8kit/svelte-ui";
+  import { Box, LucideIcon, Stack, Text } from "@codegen-x/svelte-compose";
 
   let { label, value, icon = "chevron-down", tone = "light" }: { label: string; value: string; icon?: string; tone?: "light" | "glass" } = $props();
 </script>

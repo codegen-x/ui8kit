@@ -1,5 +1,5 @@
 {
-  "$schema": "../../xgen/schema/schemas/app.schema.json",
+  "$schema": "../../packages/compose-gen/schema/schemas/app.schema.json",
   "specVersion": 1,
   "name": "host-react",
   "runtime": "react",

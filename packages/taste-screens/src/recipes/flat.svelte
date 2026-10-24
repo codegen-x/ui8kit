@@ -1,6 +1,6 @@
 <!-- Recipe "flat": big flat bold shapes, no blur, no gradient: a disc, a half disc, a bar and an arch in skin colours. -->
 <script lang="ts">
-  import { Block, Box } from "@ui8kit/svelte-ui";
+  import { Block, Box } from "@codegen-x/svelte-compose";
 
   let { v = 0, class: cls = "" }: { v?: number; class?: string } = $props();
 

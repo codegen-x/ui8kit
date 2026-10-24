@@ -1,6 +1,6 @@
 <!-- Sidebar layout: a category sidebar beside a content area with an intro, a feature grid and the questions. -->
 <script lang="ts">
-  import { Block, CategoryNav, FaqList, FeatureGrid, PageIntro } from "@ui8kit/svelte-ui";
+  import { Block, CategoryNav, FaqList, FeatureGrid, PageIntro } from "@codegen-x/svelte-compose";
   import type { Deck } from "@ui8kit/taste-data/copy";
   import { dataFor } from "./registry-data";
   import Header from "./header.svelte";
