@@ -31,10 +31,12 @@ templ Label(p LabelProps) {
 		if LabelClasses(p) != "" {
 			class={ LabelClasses(p) }
 		}
-		if uiutils.IsSetStr(p.For) {
-			for={ p.For }
+		if !uiutils.HasAttr(p.Attrs, "for") {
+			if uiutils.IsSetStr(p.For) {
+				for={ p.For }
+			}
 		}
-		{ uiutils.SafeAttrs(p.Attrs)... }
+		{ uiutils.RestAttrs(p.Attrs, false, "for")... }
 	>
 		{ children... }
 	</label>

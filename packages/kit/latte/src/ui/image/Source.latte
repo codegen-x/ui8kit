@@ -8,9 +8,9 @@
   array $attrs = [],
 }
 <source n:attr="[
-  'srcset' => $srcSet,
-  'media' => $media,
-  'type' => $type,
-  'sizes' => $sizes,
-  ...\UI8Kit\Latte\Rt::safeAttrs($attrs),
+  'srcset' => \UI8Kit\Latte\Rt::orNull($srcSet),
+  'media' => \UI8Kit\Latte\Rt::orNull($media),
+  'type' => \UI8Kit\Latte\Rt::orNull($type),
+  'sizes' => \UI8Kit\Latte\Rt::orNull($sizes),
+  ...\UI8Kit\Latte\Rt::restAttrs($attrs, false, ['srcset', 'media', 'type', 'sizes']),
 ]">

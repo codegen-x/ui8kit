@@ -7,7 +7,7 @@
   string $children = '',
 }
 <optgroup n:attr="[
-  'label' => $label,
+  'label' => \UI8Kit\Latte\Rt::orNull($label),
   'disabled' => $disabled,
-  ...\UI8Kit\Latte\Rt::safeAttrs($attrs),
+  ...\UI8Kit\Latte\Rt::restAttrs($attrs, false, ['label']),
 ]">{$children|noescape}</optgroup>

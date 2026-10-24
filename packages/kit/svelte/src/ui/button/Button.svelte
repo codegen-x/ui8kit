@@ -29,7 +29,7 @@
     ...rawRest
   }: ButtonProps = $props();
 
-  const rest = $derived(safeRest(rawRest));
+  const rest = $derived(safeRest(rawRest, { blank: ["aria-label", "aria-pressed", "aria-expanded", "aria-controls"] }));
   const cls = $derived(buttonClasses({ className }));
 </script>
 

@@ -5,23 +5,23 @@
     children: TRUSTED HTML printed with |safe — never pass unescaped user input.
     Classes without rendering: button_classes(p) (no asChild in Jinja2). -#}
 {%- if ui_is_set_str(ui_def(p['Href'], '')) %}<a
-  {%- if ui_is_set_str(ui_safe_url(ui_def(p['Href'], ''))) %} href="{{ ui_safe_url(ui_def(p['Href'], '')) }}"{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'href') %}{%- if ui_is_set_str(ui_safe_url(ui_def(p['Href'], ''))) %} href="{{ ui_safe_url(ui_def(p['Href'], '')) }}"{%- endif %}{%- endif %}
   {%- with cls = button_classes(p) %}{%- if cls %} class="{{ cls }}"{%- endif %}{%- endwith %}
-  {%- if p['AriaLabel'] is defined and p['AriaLabel'] is not none %} aria-label="{{ p['AriaLabel'] }}"{%- endif %}
-  {%- if p['AriaPressed'] is defined and p['AriaPressed'] is not none %} aria-pressed="{{ p['AriaPressed'] }}"{%- endif %}
-  {%- if p['AriaExpanded'] is defined and p['AriaExpanded'] is not none %} aria-expanded="{{ p['AriaExpanded'] }}"{%- endif %}
-  {%- if p['AriaControls'] is defined and p['AriaControls'] is not none %} aria-controls="{{ p['AriaControls'] }}"{%- endif %}
-  {%- if ui_def(p['Disabled'], false) %} aria-disabled="{{ 'true' }}"{%- endif %}
-  {%- if ui_def(p['Disabled'], false) %} tabindex="{{ ui_s(-1) }}"{%- endif %}
-  {{ ui_attr_html(ui_def(p['Attrs'], {})) }}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'aria-label') %}{%- if ui_is_set_str(p['AriaLabel']) %} aria-label="{{ p['AriaLabel'] }}"{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'aria-pressed') %}{%- if ui_is_set_str(p['AriaPressed']) %} aria-pressed="{{ p['AriaPressed'] }}"{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'aria-expanded') %}{%- if ui_is_set_str(p['AriaExpanded']) %} aria-expanded="{{ p['AriaExpanded'] }}"{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'aria-controls') %}{%- if ui_is_set_str(p['AriaControls']) %} aria-controls="{{ p['AriaControls'] }}"{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'aria-disabled') %}{%- if ui_def(p['Disabled'], false) %} aria-disabled="{{ 'true' }}"{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'tabindex') %}{%- if ui_def(p['Disabled'], false) %} tabindex="{{ ui_s(-1) }}"{%- endif %}{%- endif %}
+  {{ ui_attr_html(ui_def(p['Attrs'], {}), false, ['aria-label', 'aria-pressed', 'aria-expanded', 'aria-controls']) }}
 >{{ children|default('', true)|safe }}</a>{%- else %}<button
-  type="{{ ui_map_or(ui_def(p['Type'], ''), {'submit': 'submit', 'reset': 'reset'}, 'button') }}"
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'type') %} type="{{ ui_map_or(ui_def(p['Type'], ''), {'submit': 'submit', 'reset': 'reset'}, 'button') }}"{%- endif %}
   {%- with cls = button_classes(p) %}{%- if cls %} class="{{ cls }}"{%- endif %}{%- endwith %}
-  {%- if ui_def(p['Disabled'], false) %} disabled{%- endif %}
-  {%- if p['Form'] is defined and p['Form'] is not none %} form="{{ p['Form'] }}"{%- endif %}
-  {%- if p['AriaLabel'] is defined and p['AriaLabel'] is not none %} aria-label="{{ p['AriaLabel'] }}"{%- endif %}
-  {%- if p['AriaPressed'] is defined and p['AriaPressed'] is not none %} aria-pressed="{{ p['AriaPressed'] }}"{%- endif %}
-  {%- if p['AriaExpanded'] is defined and p['AriaExpanded'] is not none %} aria-expanded="{{ p['AriaExpanded'] }}"{%- endif %}
-  {%- if p['AriaControls'] is defined and p['AriaControls'] is not none %} aria-controls="{{ p['AriaControls'] }}"{%- endif %}
-  {{ ui_attr_html(ui_def(p['Attrs'], {})) }}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'disabled') %}{%- if ui_def(p['Disabled'], false) %} disabled{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'form') %}{%- if ui_is_set_str(p['Form']) %} form="{{ p['Form'] }}"{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'aria-label') %}{%- if ui_is_set_str(p['AriaLabel']) %} aria-label="{{ p['AriaLabel'] }}"{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'aria-pressed') %}{%- if ui_is_set_str(p['AriaPressed']) %} aria-pressed="{{ p['AriaPressed'] }}"{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'aria-expanded') %}{%- if ui_is_set_str(p['AriaExpanded']) %} aria-expanded="{{ p['AriaExpanded'] }}"{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'aria-controls') %}{%- if ui_is_set_str(p['AriaControls']) %} aria-controls="{{ p['AriaControls'] }}"{%- endif %}{%- endif %}
+  {{ ui_attr_html(ui_def(p['Attrs'], {}), false, ['form', 'aria-label', 'aria-pressed', 'aria-expanded', 'aria-controls']) }}
 >{{ children|default('', true)|safe }}</button>{%- endif %}

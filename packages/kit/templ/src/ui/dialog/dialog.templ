@@ -35,20 +35,30 @@ templ Dialog(p DialogProps) {
 		if DialogClasses(p) != "" {
 			class={ DialogClasses(p) }
 		}
-		if uiutils.IsSetStr(p.ID) {
-			id={ p.ID }
+		if !uiutils.HasAttr(p.Attrs, "id") {
+			if uiutils.IsSetStr(p.ID) {
+				id={ p.ID }
+			}
 		}
-		open?={ p.Open }
-		if uiutils.IsSetStr(p.AriaLabelledBy) {
-			aria-labelledby={ p.AriaLabelledBy }
+		if !uiutils.HasAttr(p.Attrs, "open") {
+			open?={ p.Open }
 		}
-		if uiutils.IsSetStr(p.AriaDescribedBy) {
-			aria-describedby={ p.AriaDescribedBy }
+		if !uiutils.HasAttr(p.Attrs, "aria-labelledby") {
+			if uiutils.IsSetStr(p.AriaLabelledBy) {
+				aria-labelledby={ p.AriaLabelledBy }
+			}
 		}
-		if uiutils.IsSetStr(p.AriaLabel) {
-			aria-label={ p.AriaLabel }
+		if !uiutils.HasAttr(p.Attrs, "aria-describedby") {
+			if uiutils.IsSetStr(p.AriaDescribedBy) {
+				aria-describedby={ p.AriaDescribedBy }
+			}
 		}
-		{ uiutils.SafeAttrs(p.Attrs)... }
+		if !uiutils.HasAttr(p.Attrs, "aria-label") {
+			if uiutils.IsSetStr(p.AriaLabel) {
+				aria-label={ p.AriaLabel }
+			}
+		}
+		{ uiutils.RestAttrs(p.Attrs, false, "id", "aria-labelledby", "aria-describedby", "aria-label")... }
 	>
 		{ children... }
 	</dialog>

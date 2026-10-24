@@ -22,7 +22,7 @@
     ...rawRest
   }: LabelProps = $props();
 
-  const rest = $derived(safeRest(rawRest));
+  const rest = $derived(safeRest(rawRest, { blank: ["for", "htmlfor"] }));
   const cls = $derived(labelClasses({ className }));
 </script>
 

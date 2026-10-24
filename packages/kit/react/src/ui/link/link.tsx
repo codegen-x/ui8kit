@@ -22,7 +22,7 @@ export const Link = forwardRef<HTMLAnchorElement, LinkProps>(function Link(
   { target, rel, external, className, children, ...rawRest },
   ref
 ) {
-  const rest = safeRest(rawRest);
+  const rest = safeRest(rawRest, { blank: ["href", "download", "aria-current", "aria-label"] });
   const cls = linkClasses({ className });
   const targetValue = (isSetStr(target) ? target : (external ? "_blank" : ""));
   const relValue = (isSetStr(rel) ? rel : ((external || eqStr(targetValue, "_blank")) ? "noopener noreferrer" : ""));

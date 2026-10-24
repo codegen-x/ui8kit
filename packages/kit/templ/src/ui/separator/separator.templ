@@ -34,12 +34,16 @@ templ Separator(p SeparatorProps) {
 		if SeparatorClasses(p) != "" {
 			class={ SeparatorClasses(p) }
 		}
-		if p.Decorative {
-			role={ "none" }
+		if !uiutils.HasAttr(p.Attrs, "role") {
+			if p.Decorative {
+				role={ "none" }
+			}
 		}
-		if (!p.Decorative && (uiutils.OneOfOrLower(p.Orientation, "horizontal", "vertical") == "vertical")) {
-			aria-orientation={ "vertical" }
+		if !uiutils.HasAttr(p.Attrs, "aria-orientation") {
+			if (!p.Decorative && (uiutils.OneOfOrLower(p.Orientation, "horizontal", "vertical") == "vertical")) {
+				aria-orientation={ "vertical" }
+			}
 		}
-		{ uiutils.SafeAttrs(p.Attrs)... }
+		{ uiutils.RestAttrs(p.Attrs, false)... }
 	/>
 }

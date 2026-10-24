@@ -3,15 +3,15 @@
     Props (p): Class (string), ID (string), Name (string), Value (string), Checked (bool), Required (bool), Disabled (bool), AriaInvalid (string), AriaDescribedBy (string), Attrs (attrs).
     Classes without rendering: checkbox_classes(p) (no asChild in Jinja2). -#}
 <input
-  type="checkbox"
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'type') %} type="checkbox"{%- endif %}
   {%- with cls = checkbox_classes(p) %}{%- if cls %} class="{{ cls }}"{%- endif %}{%- endwith %}
-  {%- if p['ID'] is defined and p['ID'] is not none %} id="{{ p['ID'] }}"{%- endif %}
-  {%- if p['Name'] is defined and p['Name'] is not none %} name="{{ p['Name'] }}"{%- endif %}
-  {%- if p['Value'] is defined and p['Value'] is not none %} value="{{ p['Value'] }}"{%- endif %}
-  {%- if ui_def(p['Checked'], false) %} checked{%- endif %}
-  {%- if ui_def(p['Required'], false) %} required{%- endif %}
-  {%- if ui_def(p['Disabled'], false) %} disabled{%- endif %}
-  {%- if p['AriaInvalid'] is defined and p['AriaInvalid'] is not none %} aria-invalid="{{ p['AriaInvalid'] }}"{%- endif %}
-  {%- if p['AriaDescribedBy'] is defined and p['AriaDescribedBy'] is not none %} aria-describedby="{{ p['AriaDescribedBy'] }}"{%- endif %}
-  {{ ui_attr_html(ui_def(p['Attrs'], {})) }}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'id') %}{%- if ui_is_set_str(p['ID']) %} id="{{ p['ID'] }}"{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'name') %}{%- if ui_is_set_str(p['Name']) %} name="{{ p['Name'] }}"{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'value') %}{%- if p['Value'] is defined and p['Value'] is not none %} value="{{ p['Value'] }}"{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'checked') %}{%- if ui_def(p['Checked'], false) %} checked{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'required') %}{%- if ui_def(p['Required'], false) %} required{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'disabled') %}{%- if ui_def(p['Disabled'], false) %} disabled{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'aria-invalid') %}{%- if ui_is_set_str(p['AriaInvalid']) %} aria-invalid="{{ p['AriaInvalid'] }}"{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'aria-describedby') %}{%- if ui_is_set_str(p['AriaDescribedBy']) %} aria-describedby="{{ p['AriaDescribedBy'] }}"{%- endif %}{%- endif %}
+  {{ ui_attr_html(ui_def(p['Attrs'], {}), false, ['id', 'name', 'aria-invalid', 'aria-describedby']) }}
 >

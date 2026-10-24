@@ -47,38 +47,60 @@ templ Form(p FormProps) {
 		if FormClasses(p) != "" {
 			class={ FormClasses(p) }
 		}
-		if uiutils.IsSetStr(p.ID) {
-			id={ p.ID }
+		if !uiutils.HasAttr(p.Attrs, "id") {
+			if uiutils.IsSetStr(p.ID) {
+				id={ p.ID }
+			}
 		}
-		if uiutils.IsSetStr(p.Name) {
-			name={ p.Name }
+		if !uiutils.HasAttr(p.Attrs, "name") {
+			if uiutils.IsSetStr(p.Name) {
+				name={ p.Name }
+			}
 		}
-		if uiutils.IsSetStr(uiutils.SafeURL(p.Action)) {
-			action={ uiutils.SafeURL(p.Action) }
+		if !uiutils.HasAttr(p.Attrs, "action") {
+			if uiutils.IsSetStr(uiutils.SafeURL(p.Action)) {
+				action={ uiutils.SafeURL(p.Action) }
+			}
 		}
-		if uiutils.IsSetStr(uiutils.OneOfOrLower(p.Method, "", "get", "post", "dialog")) {
-			method={ uiutils.OneOfOrLower(p.Method, "", "get", "post", "dialog") }
+		if !uiutils.HasAttr(p.Attrs, "method") {
+			if uiutils.IsSetStr(uiutils.OneOfOrLower(p.Method, "", "get", "post", "dialog")) {
+				method={ uiutils.OneOfOrLower(p.Method, "", "get", "post", "dialog") }
+			}
 		}
-		if uiutils.IsSetStr(p.Enctype) {
-			enctype={ p.Enctype }
+		if !uiutils.HasAttr(p.Attrs, "enctype") {
+			if uiutils.IsSetStr(p.Enctype) {
+				enctype={ p.Enctype }
+			}
 		}
-		novalidate?={ p.NoValidate }
-		if uiutils.IsSetStr(p.Autocomplete) {
-			autocomplete={ p.Autocomplete }
+		if !uiutils.HasAttr(p.Attrs, "novalidate") {
+			novalidate?={ p.NoValidate }
 		}
-		if uiutils.IsSetStr(p.Target) {
-			target={ p.Target }
+		if !uiutils.HasAttr(p.Attrs, "autocomplete") {
+			if uiutils.IsSetStr(p.Autocomplete) {
+				autocomplete={ p.Autocomplete }
+			}
 		}
-		if uiutils.IsSetStr(p.AriaLabel) {
-			aria-label={ p.AriaLabel }
+		if !uiutils.HasAttr(p.Attrs, "target") {
+			if uiutils.IsSetStr(p.Target) {
+				target={ p.Target }
+			}
 		}
-		if uiutils.IsSetStr(p.AriaLabelledBy) {
-			aria-labelledby={ p.AriaLabelledBy }
+		if !uiutils.HasAttr(p.Attrs, "aria-label") {
+			if uiutils.IsSetStr(p.AriaLabel) {
+				aria-label={ p.AriaLabel }
+			}
 		}
-		if uiutils.IsSetStr(p.AriaDescribedBy) {
-			aria-describedby={ p.AriaDescribedBy }
+		if !uiutils.HasAttr(p.Attrs, "aria-labelledby") {
+			if uiutils.IsSetStr(p.AriaLabelledBy) {
+				aria-labelledby={ p.AriaLabelledBy }
+			}
 		}
-		{ uiutils.SafeAttrs(p.Attrs)... }
+		if !uiutils.HasAttr(p.Attrs, "aria-describedby") {
+			if uiutils.IsSetStr(p.AriaDescribedBy) {
+				aria-describedby={ p.AriaDescribedBy }
+			}
+		}
+		{ uiutils.RestAttrs(p.Attrs, false, "id", "name", "action", "enctype", "autocomplete", "target", "aria-label", "aria-labelledby", "aria-describedby")... }
 	>
 		{ children... }
 	</form>

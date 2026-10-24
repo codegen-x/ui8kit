@@ -34,30 +34,50 @@ func SwitchClasses(p SwitchProps) string {
 // Switch renders the Switch contract.
 templ Switch(p SwitchProps) {
 	<button
-		type="button"
-		role="switch"
-		aria-checked={ uiutils.BoolStr(p.Checked) }
-		data-state={ uiutils.BoolStr(p.Checked) }
+		if !uiutils.HasAttr(p.Attrs, "type") {
+			type="button"
+		}
+		if !uiutils.HasAttr(p.Attrs, "role") {
+			role="switch"
+		}
+		if !uiutils.HasAttr(p.Attrs, "aria-checked") {
+			aria-checked={ uiutils.BoolStr(p.Checked) }
+		}
+		if !uiutils.HasAttr(p.Attrs, "data-state") {
+			data-state={ uiutils.BoolStr(p.Checked) }
+		}
 		if SwitchClasses(p) != "" {
 			class={ SwitchClasses(p) }
 		}
-		disabled?={ p.Disabled }
-		if uiutils.IsSetStr(p.ID) {
-			id={ p.ID }
+		if !uiutils.HasAttr(p.Attrs, "disabled") {
+			disabled?={ p.Disabled }
 		}
-		if uiutils.IsSetStr(p.Name) {
-			name={ p.Name }
+		if !uiutils.HasAttr(p.Attrs, "id") {
+			if uiutils.IsSetStr(p.ID) {
+				id={ p.ID }
+			}
 		}
-		if p.Value != nil {
-			value={ *p.Value }
+		if !uiutils.HasAttr(p.Attrs, "name") {
+			if uiutils.IsSetStr(p.Name) {
+				name={ p.Name }
+			}
 		}
-		if uiutils.IsSetStr(p.AriaLabel) {
-			aria-label={ p.AriaLabel }
+		if !uiutils.HasAttr(p.Attrs, "value") {
+			if p.Value != nil {
+				value={ *p.Value }
+			}
 		}
-		if uiutils.IsSetStr(p.AriaLabelledBy) {
-			aria-labelledby={ p.AriaLabelledBy }
+		if !uiutils.HasAttr(p.Attrs, "aria-label") {
+			if uiutils.IsSetStr(p.AriaLabel) {
+				aria-label={ p.AriaLabel }
+			}
 		}
-		{ uiutils.SafeAttrs(p.Attrs)... }
+		if !uiutils.HasAttr(p.Attrs, "aria-labelledby") {
+			if uiutils.IsSetStr(p.AriaLabelledBy) {
+				aria-labelledby={ p.AriaLabelledBy }
+			}
+		}
+		{ uiutils.RestAttrs(p.Attrs, false, "id", "name", "aria-label", "aria-labelledby")... }
 	>
 		{ children... }
 	</button>

@@ -20,7 +20,7 @@ export const Label: Component<LabelProps> = (props) => {
   const [local, rest] = splitProps(props, ["class", "className", "children"]);
   const cls = () => labelClasses({ className: local.class ?? local.className });
   return (
-    <label {...(cls() ? { class: cls() } : {})} {...safeRest(rest)}>
+    <label {...(cls() ? { class: cls() } : {})} {...safeRest(rest, { blank: ["for", "htmlfor"] })}>
       {local.children}
     </label>
   );

@@ -22,6 +22,6 @@ export const Radio: Component<RadioProps> = (props) => {
   const [local, rest] = splitProps(props, ["checked", "required", "disabled", "class", "className"]);
   const cls = () => radioClasses({ className: local.class ?? local.className });
   return (
-    <input type="radio" {...(cls() ? { class: cls() } : {})} checked={local.checked || undefined} required={local.required || undefined} disabled={local.disabled || undefined} {...safeRest(rest)} />
+    <input type="radio" {...(cls() ? { class: cls() } : {})} checked={local.checked || undefined} required={local.required || undefined} disabled={local.disabled || undefined} {...safeRest(rest, { blank: ["id", "name", "aria-invalid", "aria-describedby"] })} />
   );
 };

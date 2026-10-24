@@ -20,7 +20,7 @@ export const Disclosure = forwardRef<HTMLDetailsElement, DisclosureProps>(functi
   { open, className, children, ...rawRest },
   ref
 ) {
-  const rest = safeRest(rawRest);
+  const rest = safeRest(rawRest, { blank: ["name"] });
   const cls = disclosureClasses({ className });
   return (
     <details ref={ref} className={cls || undefined} open={open} {...rest}>

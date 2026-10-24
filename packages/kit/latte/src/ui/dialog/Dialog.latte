@@ -12,10 +12,10 @@
 }
 <dialog n:attr="[
   'class' => \UI8Kit\Latte\Rt::orNull(\UI8Kit\Latte\Classes::dialogClasses(['class' => $class, 'id' => $id, 'open' => $open, 'ariaLabelledBy' => $ariaLabelledBy, 'ariaDescribedBy' => $ariaDescribedBy, 'ariaLabel' => $ariaLabel])),
-  'id' => $id,
+  'id' => \UI8Kit\Latte\Rt::orNull($id),
   'open' => $open,
-  'aria-labelledby' => $ariaLabelledBy,
-  'aria-describedby' => $ariaDescribedBy,
-  'aria-label' => $ariaLabel,
-  ...\UI8Kit\Latte\Rt::safeAttrs($attrs),
+  'aria-labelledby' => \UI8Kit\Latte\Rt::orNull($ariaLabelledBy),
+  'aria-describedby' => \UI8Kit\Latte\Rt::orNull($ariaDescribedBy),
+  'aria-label' => \UI8Kit\Latte\Rt::orNull($ariaLabel),
+  ...\UI8Kit\Latte\Rt::restAttrs($attrs, false, ['id', 'aria-labelledby', 'aria-describedby', 'aria-label']),
 ]">{$children|noescape}</dialog>

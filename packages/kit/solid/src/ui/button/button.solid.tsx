@@ -28,11 +28,11 @@ export const Button: Component<ButtonProps> = (props) => {
   return (
     <>
       {isSetStr(local.href) ? (
-        <a href={orUndef(safeUrl(local.href))} {...(cls() ? { class: cls() } : {})} aria-disabled={local.disabled ? "true" : undefined} tabIndex={local.disabled ? -1 : undefined} {...safeRest(rest)}>
+        <a href={orUndef(safeUrl(local.href))} {...(cls() ? { class: cls() } : {})} aria-disabled={local.disabled ? "true" : undefined} tabIndex={local.disabled ? -1 : undefined} {...safeRest(rest, { blank: ["aria-label", "aria-pressed", "aria-expanded", "aria-controls"] })}>
           {local.children}
         </a>
       ) : (
-        <button type={oneOfOr(local.type, "button", "submit", "reset")} {...(cls() ? { class: cls() } : {})} disabled={local.disabled || undefined} {...safeRest(rest)}>
+        <button type={oneOfOr(local.type, "button", "submit", "reset")} {...(cls() ? { class: cls() } : {})} disabled={local.disabled || undefined} {...safeRest(rest, { blank: ["aria-label", "aria-pressed", "aria-expanded", "aria-controls"] })}>
           {local.children}
         </button>
       )}

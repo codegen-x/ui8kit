@@ -20,7 +20,7 @@ export const Progress: Component<ProgressProps> = (props) => {
   const [local, rest] = splitProps(props, ["class", "className", "children"]);
   const cls = () => progressClasses({ className: local.class ?? local.className });
   return (
-    <progress {...(cls() ? { class: cls() } : {})} {...safeRest(rest)}>
+    <progress {...(cls() ? { class: cls() } : {})} {...safeRest(rest, { blank: ["max", "aria-label"] })}>
       {local.children}
     </progress>
   );

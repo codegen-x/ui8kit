@@ -21,7 +21,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Che
   { checked, required, disabled, className, ...rawRest },
   ref
 ) {
-  const rest = safeRest(rawRest);
+  const rest = safeRest(rawRest, { blank: ["id", "name", "aria-invalid", "aria-describedby"] });
   const cls = checkboxClasses({ className });
   return (
     <input ref={ref} type="checkbox" className={cls || undefined} checked={checked} required={required} disabled={disabled} {...rest} />

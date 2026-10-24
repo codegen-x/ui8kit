@@ -11,7 +11,7 @@ defineOptions({ name: "Source", inheritAttrs: false });
 const attrs = useAttrs();
 const restAttrs = computed(() => {
   const { class: _class, ...restEntries } = attrs;
-  return safeRest(restEntries);
+  return safeRest(restEntries, { blank: ["srcset", "media", "type", "sizes"] });
 });
 </script>
 

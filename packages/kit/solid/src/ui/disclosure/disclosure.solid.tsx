@@ -21,7 +21,7 @@ export const Disclosure: Component<DisclosureProps> = (props) => {
   const [local, rest] = splitProps(props, ["open", "class", "className", "children"]);
   const cls = () => disclosureClasses({ className: local.class ?? local.className });
   return (
-    <details {...(cls() ? { class: cls() } : {})} open={local.open || undefined} {...safeRest(rest)}>
+    <details {...(cls() ? { class: cls() } : {})} open={local.open || undefined} {...safeRest(rest, { blank: ["name"] })}>
       {local.children}
     </details>
   );

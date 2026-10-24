@@ -44,28 +44,40 @@ func linkRel(p LinkProps) string {
 // Link renders the Link contract.
 templ Link(p LinkProps) {
 	<a
-		if uiutils.IsSetStr(uiutils.SafeURL(p.Href)) {
-			href={ uiutils.SafeURL(p.Href) }
+		if !uiutils.HasAttr(p.Attrs, "href") {
+			if uiutils.IsSetStr(uiutils.SafeURL(p.Href)) {
+				href={ uiutils.SafeURL(p.Href) }
+			}
 		}
 		if LinkClasses(p) != "" {
 			class={ LinkClasses(p) }
 		}
-		if uiutils.IsSetStr(linkTarget(p)) {
-			target={ linkTarget(p) }
+		if !uiutils.HasAttr(p.Attrs, "target") {
+			if uiutils.IsSetStr(linkTarget(p)) {
+				target={ linkTarget(p) }
+			}
 		}
-		if uiutils.IsSetStr(linkRel(p)) {
-			rel={ linkRel(p) }
+		if !uiutils.HasAttr(p.Attrs, "rel") {
+			if uiutils.IsSetStr(linkRel(p)) {
+				rel={ linkRel(p) }
+			}
 		}
-		if uiutils.IsSetStr(p.Download) {
-			download={ p.Download }
+		if !uiutils.HasAttr(p.Attrs, "download") {
+			if uiutils.IsSetStr(p.Download) {
+				download={ p.Download }
+			}
 		}
-		if uiutils.IsSetStr(p.AriaCurrent) {
-			aria-current={ p.AriaCurrent }
+		if !uiutils.HasAttr(p.Attrs, "aria-current") {
+			if uiutils.IsSetStr(p.AriaCurrent) {
+				aria-current={ p.AriaCurrent }
+			}
 		}
-		if uiutils.IsSetStr(p.AriaLabel) {
-			aria-label={ p.AriaLabel }
+		if !uiutils.HasAttr(p.Attrs, "aria-label") {
+			if uiutils.IsSetStr(p.AriaLabel) {
+				aria-label={ p.AriaLabel }
+			}
 		}
-		{ uiutils.SafeAttrs(p.Attrs)... }
+		{ uiutils.RestAttrs(p.Attrs, false, "href", "download", "aria-current", "aria-label")... }
 	>
 		{ children... }
 	</a>

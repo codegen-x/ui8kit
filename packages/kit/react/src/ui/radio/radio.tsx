@@ -21,7 +21,7 @@ export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
   { checked, required, disabled, className, ...rawRest },
   ref
 ) {
-  const rest = safeRest(rawRest);
+  const rest = safeRest(rawRest, { blank: ["id", "name", "aria-invalid", "aria-describedby"] });
   const cls = radioClasses({ className });
   return (
     <input ref={ref} type="radio" className={cls || undefined} checked={checked} required={required} disabled={disabled} {...rest} />

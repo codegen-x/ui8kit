@@ -25,7 +25,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
   { value, multiple, required, disabled, options, className, children, ...rawRest },
   ref
 ) {
-  const rest = safeRest(rawRest);
+  const rest = safeRest(rawRest, { blank: ["id", "name", "aria-invalid", "aria-describedby"] });
   const cls = selectClasses({ className });
   return (
     <select ref={ref} className={cls || undefined} multiple={multiple} required={required} disabled={disabled} {...(value === undefined ? {} : { [rest.onChange ? "value" : "defaultValue"]: multiple ? [value] : value })} {...rest}>
@@ -76,7 +76,7 @@ export const SelectOptGroup = forwardRef<HTMLOptGroupElement, SelectOptGroupProp
   { disabled, className, children, ...rawRest },
   ref
 ) {
-  const rest = safeRest(rawRest);
+  const rest = safeRest(rawRest, { blank: ["label"] });
   return (
     <optgroup ref={ref} disabled={disabled} {...rest}>
       {children}

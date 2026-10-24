@@ -22,7 +22,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function 
   { value, required, disabled, readOnly, className, ...rawRest },
   ref
 ) {
-  const rest = safeRest(rawRest);
+  const rest = safeRest(rawRest, { blank: ["id", "name", "placeholder", "rows", "aria-invalid", "aria-describedby"] });
   const cls = textareaClasses({ className });
   return (
     <textarea ref={ref} className={cls || undefined} required={required} disabled={disabled} readOnly={readOnly} {...rest} defaultValue={(value) ?? ""} />

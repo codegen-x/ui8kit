@@ -19,7 +19,7 @@ export const Label = forwardRef<HTMLLabelElement, LabelProps>(function Label(
   { className, children, ...rawRest },
   ref
 ) {
-  const rest = safeRest(rawRest);
+  const rest = safeRest(rawRest, { blank: ["for", "htmlfor"] });
   const cls = labelClasses({ className });
   return (
     <label ref={ref} className={cls || undefined} {...rest}>

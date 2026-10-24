@@ -42,57 +42,85 @@ func ButtonClasses(p ButtonProps) string {
 templ Button(p ButtonProps) {
 	if uiutils.IsSetStr(p.Href) {
 		<a
-			if uiutils.IsSetStr(uiutils.SafeURL(p.Href)) {
-				href={ uiutils.SafeURL(p.Href) }
+			if !uiutils.HasAttr(p.Attrs, "href") {
+				if uiutils.IsSetStr(uiutils.SafeURL(p.Href)) {
+					href={ uiutils.SafeURL(p.Href) }
+				}
 			}
 			if ButtonClasses(p) != "" {
 				class={ ButtonClasses(p) }
 			}
-			if uiutils.IsSetStr(p.AriaLabel) {
-				aria-label={ p.AriaLabel }
+			if !uiutils.HasAttr(p.Attrs, "aria-label") {
+				if uiutils.IsSetStr(p.AriaLabel) {
+					aria-label={ p.AriaLabel }
+				}
 			}
-			if uiutils.IsSetStr(p.AriaPressed) {
-				aria-pressed={ p.AriaPressed }
+			if !uiutils.HasAttr(p.Attrs, "aria-pressed") {
+				if uiutils.IsSetStr(p.AriaPressed) {
+					aria-pressed={ p.AriaPressed }
+				}
 			}
-			if uiutils.IsSetStr(p.AriaExpanded) {
-				aria-expanded={ p.AriaExpanded }
+			if !uiutils.HasAttr(p.Attrs, "aria-expanded") {
+				if uiutils.IsSetStr(p.AriaExpanded) {
+					aria-expanded={ p.AriaExpanded }
+				}
 			}
-			if uiutils.IsSetStr(p.AriaControls) {
-				aria-controls={ p.AriaControls }
+			if !uiutils.HasAttr(p.Attrs, "aria-controls") {
+				if uiutils.IsSetStr(p.AriaControls) {
+					aria-controls={ p.AriaControls }
+				}
 			}
-			if p.Disabled {
-				aria-disabled={ "true" }
+			if !uiutils.HasAttr(p.Attrs, "aria-disabled") {
+				if p.Disabled {
+					aria-disabled={ "true" }
+				}
 			}
-			if p.Disabled {
-				tabindex={ strconv.Itoa(int(-1)) }
+			if !uiutils.HasAttr(p.Attrs, "tabindex") {
+				if p.Disabled {
+					tabindex={ strconv.Itoa(int(-1)) }
+				}
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			{ uiutils.RestAttrs(p.Attrs, false, "aria-label", "aria-pressed", "aria-expanded", "aria-controls")... }
 		>
 			{ children... }
 		</a>
 	} else {
 		<button
-			type={ uiutils.OneOfOr(p.Type, "button", "submit", "reset") }
+			if !uiutils.HasAttr(p.Attrs, "type") {
+				type={ uiutils.OneOfOr(p.Type, "button", "submit", "reset") }
+			}
 			if ButtonClasses(p) != "" {
 				class={ ButtonClasses(p) }
 			}
-			disabled?={ p.Disabled }
-			if uiutils.IsSetStr(p.Form) {
-				form={ p.Form }
+			if !uiutils.HasAttr(p.Attrs, "disabled") {
+				disabled?={ p.Disabled }
 			}
-			if uiutils.IsSetStr(p.AriaLabel) {
-				aria-label={ p.AriaLabel }
+			if !uiutils.HasAttr(p.Attrs, "form") {
+				if uiutils.IsSetStr(p.Form) {
+					form={ p.Form }
+				}
 			}
-			if uiutils.IsSetStr(p.AriaPressed) {
-				aria-pressed={ p.AriaPressed }
+			if !uiutils.HasAttr(p.Attrs, "aria-label") {
+				if uiutils.IsSetStr(p.AriaLabel) {
+					aria-label={ p.AriaLabel }
+				}
 			}
-			if uiutils.IsSetStr(p.AriaExpanded) {
-				aria-expanded={ p.AriaExpanded }
+			if !uiutils.HasAttr(p.Attrs, "aria-pressed") {
+				if uiutils.IsSetStr(p.AriaPressed) {
+					aria-pressed={ p.AriaPressed }
+				}
 			}
-			if uiutils.IsSetStr(p.AriaControls) {
-				aria-controls={ p.AriaControls }
+			if !uiutils.HasAttr(p.Attrs, "aria-expanded") {
+				if uiutils.IsSetStr(p.AriaExpanded) {
+					aria-expanded={ p.AriaExpanded }
+				}
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			if !uiutils.HasAttr(p.Attrs, "aria-controls") {
+				if uiutils.IsSetStr(p.AriaControls) {
+					aria-controls={ p.AriaControls }
+				}
+			}
+			{ uiutils.RestAttrs(p.Attrs, false, "form", "aria-label", "aria-pressed", "aria-expanded", "aria-controls")... }
 		>
 			{ children... }
 		</button>

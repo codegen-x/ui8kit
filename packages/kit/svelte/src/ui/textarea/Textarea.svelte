@@ -27,7 +27,7 @@
     ...rawRest
   }: TextareaProps = $props();
 
-  const rest = $derived(safeRest(rawRest));
+  const rest = $derived(safeRest(rawRest, { blank: ["id", "name", "placeholder", "rows", "aria-invalid", "aria-describedby"] }));
   const cls = $derived(textareaClasses({ className }));
 </script>
 

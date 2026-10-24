@@ -20,7 +20,7 @@ const attrs = useAttrs();
 const callerClass = computed(() => attrs.class as string | undefined);
 const restAttrs = computed(() => {
   const { class: _class, ...restEntries } = attrs;
-  return safeRest(restEntries);
+  return safeRest(restEntries, { blank: ["aria-label", "aria-pressed", "aria-expanded", "aria-controls"] });
 });
 const cls = computed(() => buttonClasses({ className: callerClass.value }));
 </script>

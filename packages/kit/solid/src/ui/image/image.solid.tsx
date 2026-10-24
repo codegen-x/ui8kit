@@ -21,7 +21,7 @@ export const Image: Component<ImageProps> = (props) => {
   const [local, rest] = splitProps(props, ["alt", "class", "className"]);
   const cls = () => imageClasses({ className: local.class ?? local.className });
   return (
-    <img alt={(local.alt) ?? ""} {...(cls() ? { class: cls() } : {})} {...safeRest(rest)} />
+    <img alt={(local.alt) ?? ""} {...(cls() ? { class: cls() } : {})} {...safeRest(rest, { img: true, blank: ["src", "srcset", "sizes", "width", "height", "loading", "decoding"] })} />
   );
 };
 
@@ -55,6 +55,6 @@ export type SourceProps = Omit<JSX.SourceHTMLAttributes<HTMLSourceElement>, "cla
 export const Source: Component<SourceProps> = (props) => {
   const [, rest] = splitProps(props, ["class", "className"]);
   return (
-    <source {...safeRest(rest)} />
+    <source {...safeRest(rest, { blank: ["srcset", "media", "type", "sizes"] })} />
   );
 };

@@ -18,6 +18,6 @@
     "@/widgets": "./src/widgets"
   },
   "registry": "@ui8kit",
-  "registryVersion": "3.2.2",
+  "registryVersion": "3.3.0",
   "importStyle": "alias"
 }

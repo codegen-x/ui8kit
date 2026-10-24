@@ -22,7 +22,7 @@ export const Form = forwardRef<HTMLFormElement, FormProps>(function Form(
   { method, noValidate, className, children, ...rawRest },
   ref
 ) {
-  const rest = safeRest(rawRest);
+  const rest = safeRest(rawRest, { blank: ["id", "name", "action", "enctype", "autocomplete", "target", "aria-label", "aria-labelledby", "aria-describedby"] });
   const cls = formClasses({ className });
   return (
     <form ref={ref} className={cls || undefined} method={orUndef(oneOfOrLower(method, "", "get", "post", "dialog"))} noValidate={noValidate} {...rest}>

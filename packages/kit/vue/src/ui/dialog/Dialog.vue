@@ -17,7 +17,7 @@ const attrs = useAttrs();
 const callerClass = computed(() => attrs.class as string | undefined);
 const restAttrs = computed(() => {
   const { class: _class, ...restEntries } = attrs;
-  return safeRest(restEntries);
+  return safeRest(restEntries, { blank: ["id", "aria-labelledby", "aria-describedby", "aria-label"] });
 });
 const cls = computed(() => dialogClasses({ className: callerClass.value }));
 </script>

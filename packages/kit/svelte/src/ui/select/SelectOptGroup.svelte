@@ -23,7 +23,7 @@
     ...rawRest
   }: SelectOptGroupProps = $props();
 
-  const rest = $derived(safeRest(rawRest));
+  const rest = $derived(safeRest(rawRest, { blank: ["label"] }));
 </script>
 
 <optgroup disabled={disabled || undefined} {...rest}>

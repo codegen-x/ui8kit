@@ -15,13 +15,13 @@
 <input n:attr="[
   'type' => 'radio',
   'class' => \UI8Kit\Latte\Rt::orNull(\UI8Kit\Latte\Classes::radioClasses(['class' => $class, 'id' => $id, 'name' => $name, 'value' => $value, 'checked' => $checked, 'required' => $required, 'disabled' => $disabled, 'ariaInvalid' => $ariaInvalid, 'ariaDescribedBy' => $ariaDescribedBy])),
-  'id' => $id,
-  'name' => $name,
+  'id' => \UI8Kit\Latte\Rt::orNull($id),
+  'name' => \UI8Kit\Latte\Rt::orNull($name),
   'value' => $value,
   'checked' => $checked,
   'required' => $required,
   'disabled' => $disabled,
-  'aria-invalid' => $ariaInvalid,
-  'aria-describedby' => $ariaDescribedBy,
-  ...\UI8Kit\Latte\Rt::safeAttrs($attrs),
+  'aria-invalid' => \UI8Kit\Latte\Rt::orNull($ariaInvalid),
+  'aria-describedby' => \UI8Kit\Latte\Rt::orNull($ariaDescribedBy),
+  ...\UI8Kit\Latte\Rt::restAttrs($attrs, false, ['id', 'name', 'aria-invalid', 'aria-describedby']),
 ]">

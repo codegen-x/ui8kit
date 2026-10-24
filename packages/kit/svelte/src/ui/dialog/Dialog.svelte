@@ -24,7 +24,7 @@
     ...rawRest
   }: DialogProps = $props();
 
-  const rest = $derived(safeRest(rawRest));
+  const rest = $derived(safeRest(rawRest, { blank: ["id", "aria-labelledby", "aria-describedby", "aria-label"] }));
   const cls = $derived(dialogClasses({ className }));
 </script>
 

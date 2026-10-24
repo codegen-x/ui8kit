@@ -26,7 +26,7 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonPr
   { type, href, disabled, className, children, asChild, ...rawRest },
   ref
 ) {
-  const rest = safeRest(rawRest);
+  const rest = safeRest(rawRest, { blank: ["aria-label", "aria-pressed", "aria-expanded", "aria-controls"] });
   const cls = buttonClasses({ className });
   if (asChild) {
     return (

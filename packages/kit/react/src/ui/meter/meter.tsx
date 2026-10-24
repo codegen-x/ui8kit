@@ -19,7 +19,7 @@ export const Meter = forwardRef<HTMLMeterElement, MeterProps>(function Meter(
   { className, children, ...rawRest },
   ref
 ) {
-  const rest = safeRest(rawRest);
+  const rest = safeRest(rawRest, { blank: ["min", "max", "low", "high", "optimum", "aria-label"] });
   const cls = meterClasses({ className });
   return (
     <meter ref={ref} className={cls || undefined} {...rest}>

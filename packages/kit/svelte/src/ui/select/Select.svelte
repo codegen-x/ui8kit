@@ -33,7 +33,7 @@
     ...rawRest
   }: SelectProps = $props();
 
-  const rest = $derived(safeRest(rawRest));
+  const rest = $derived(safeRest(rawRest, { blank: ["id", "name", "aria-invalid", "aria-describedby"] }));
   const cls = $derived(selectClasses({ className }));
 </script>
 

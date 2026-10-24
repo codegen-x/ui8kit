@@ -17,7 +17,7 @@ const attrs = useAttrs();
 const callerClass = computed(() => attrs.class as string | undefined);
 const restAttrs = computed(() => {
   const { class: _class, ...restEntries } = attrs;
-  return safeRest(restEntries);
+  return safeRest(restEntries, { img: true, blank: ["src", "srcset", "sizes", "width", "height", "loading", "decoding"] });
 });
 const cls = computed(() => imageClasses({ className: callerClass.value }));
 </script>

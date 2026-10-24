@@ -4,10 +4,10 @@
     children: TRUSTED HTML printed with |safe — never pass unescaped user input.
     Classes without rendering: icon_classes(p) (no asChild in Jinja2). -#}
 <span
-  data-slot="icon"
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'data-slot') %} data-slot="icon"{%- endif %}
   {%- with cls = icon_classes(p) %}{%- if cls %} class="{{ cls }}"{%- endif %}{%- endwith %}
-  {%- if (not ui_is_set_str(ui_def(p['Label'], ''))) %} aria-hidden="{{ 'true' }}"{%- endif %}
-  {%- if ui_is_set_str(ui_def(p['Label'], '')) %} role="{{ 'img' }}"{%- endif %}
-  {%- if ui_is_set_str(ui_def(p['Label'], '')) %} aria-label="{{ ui_def(p['Label'], '') }}"{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'aria-hidden') %}{%- if (not ui_is_set_str(ui_def(p['Label'], ''))) %} aria-hidden="{{ 'true' }}"{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'role') %}{%- if ui_is_set_str(ui_def(p['Label'], '')) %} role="{{ 'img' }}"{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'aria-label') %}{%- if ui_is_set_str(ui_def(p['Label'], '')) %} aria-label="{{ ui_def(p['Label'], '') }}"{%- endif %}{%- endif %}
   {{ ui_attr_html(ui_def(p['Attrs'], {})) }}
 >{{ children|default('', true)|safe }}</span>

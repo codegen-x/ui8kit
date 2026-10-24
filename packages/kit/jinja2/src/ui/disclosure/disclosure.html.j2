@@ -5,7 +5,7 @@
     Classes without rendering: disclosure_classes(p) (no asChild in Jinja2). -#}
 <details
   {%- with cls = disclosure_classes(p) %}{%- if cls %} class="{{ cls }}"{%- endif %}{%- endwith %}
-  {%- if ui_def(p['Open'], false) %} open{%- endif %}
-  {%- if p['Name'] is defined and p['Name'] is not none %} name="{{ p['Name'] }}"{%- endif %}
-  {{ ui_attr_html(ui_def(p['Attrs'], {})) }}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'open') %}{%- if ui_def(p['Open'], false) %} open{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'name') %}{%- if ui_is_set_str(p['Name']) %} name="{{ p['Name'] }}"{%- endif %}{%- endif %}
+  {{ ui_attr_html(ui_def(p['Attrs'], {}), false, ['name']) }}
 >{{ children|default('', true)|safe }}</details>

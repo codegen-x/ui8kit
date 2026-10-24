@@ -19,7 +19,7 @@ const attrs = useAttrs();
 const callerClass = computed(() => attrs.class as string | undefined);
 const restAttrs = computed(() => {
   const { class: _class, ...restEntries } = attrs;
-  return safeRest(restEntries);
+  return safeRest(restEntries, { blank: ["href", "download", "aria-current", "aria-label"] });
 });
 const cls = computed(() => linkClasses({ className: callerClass.value }));
 const targetValue = computed(() => (isSetStr(props.target) ? props.target : (props.external ? "_blank" : "")));

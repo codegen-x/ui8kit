@@ -27,7 +27,7 @@
     ...rawRest
   }: InputProps = $props();
 
-  const rest = $derived(safeRest(rawRest));
+  const rest = $derived(safeRest(rawRest, { blank: ["id", "name", "placeholder", "min", "max", "step", "aria-invalid", "aria-describedby"] }));
   const cls = $derived(inputClasses({ className }));
 </script>
 

@@ -32,11 +32,15 @@ templ Disclosure(p DisclosureProps) {
 		if DisclosureClasses(p) != "" {
 			class={ DisclosureClasses(p) }
 		}
-		open?={ p.Open }
-		if uiutils.IsSetStr(p.Name) {
-			name={ p.Name }
+		if !uiutils.HasAttr(p.Attrs, "open") {
+			open?={ p.Open }
 		}
-		{ uiutils.SafeAttrs(p.Attrs)... }
+		if !uiutils.HasAttr(p.Attrs, "name") {
+			if uiutils.IsSetStr(p.Name) {
+				name={ p.Name }
+			}
+		}
+		{ uiutils.RestAttrs(p.Attrs, false, "name")... }
 	>
 		{ children... }
 	</details>
@@ -61,7 +65,7 @@ templ Summary(p SummaryProps) {
 		if SummaryClasses(p) != "" {
 			class={ SummaryClasses(p) }
 		}
-		{ uiutils.SafeAttrs(p.Attrs)... }
+		{ uiutils.RestAttrs(p.Attrs, false)... }
 	>
 		{ children... }
 	</summary>

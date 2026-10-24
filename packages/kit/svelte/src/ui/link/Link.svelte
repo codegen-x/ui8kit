@@ -28,7 +28,7 @@
     ...rawRest
   }: LinkProps = $props();
 
-  const rest = $derived(safeRest(rawRest));
+  const rest = $derived(safeRest(rawRest, { blank: ["href", "download", "aria-current", "aria-label"] }));
   const cls = $derived(linkClasses({ className }));
   const targetValue = $derived((isSetStr(target) ? target : (external ? "_blank" : "")));
   const relValue = $derived((isSetStr(rel) ? rel : ((external || eqStr(targetValue, "_blank")) ? "noopener noreferrer" : "")));

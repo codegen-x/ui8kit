@@ -18,7 +18,7 @@
     ...rawRest
   }: SourceProps = $props();
 
-  const rest = $derived(safeRest(rawRest));
+  const rest = $derived(safeRest(rawRest, { blank: ["srcset", "media", "type", "sizes"] }));
 </script>
 
 <source {...rest} />

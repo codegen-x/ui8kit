@@ -19,7 +19,7 @@ export const Progress = forwardRef<HTMLProgressElement, ProgressProps>(function 
   { className, children, ...rawRest },
   ref
 ) {
-  const rest = safeRest(rawRest);
+  const rest = safeRest(rawRest, { blank: ["max", "aria-label"] });
   const cls = progressClasses({ className });
   return (
     <progress ref={ref} className={cls || undefined} {...rest}>

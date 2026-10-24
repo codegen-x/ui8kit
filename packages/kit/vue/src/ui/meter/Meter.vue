@@ -13,7 +13,7 @@ const attrs = useAttrs();
 const callerClass = computed(() => attrs.class as string | undefined);
 const restAttrs = computed(() => {
   const { class: _class, ...restEntries } = attrs;
-  return safeRest(restEntries);
+  return safeRest(restEntries, { blank: ["min", "max", "low", "high", "optimum", "aria-label"] });
 });
 const cls = computed(() => meterClasses({ className: callerClass.value }));
 </script>

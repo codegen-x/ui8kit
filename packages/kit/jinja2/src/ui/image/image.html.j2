@@ -3,14 +3,14 @@
     Props (p): Class (string), Src (string), Alt (string), SrcSet (string), Sizes (string), Width (string), Height (string), Loading (string), Decoding (string), Attrs (attrs).
     Classes without rendering: image_classes(p) (no asChild in Jinja2). -#}
 <img
-  {%- if p['Src'] is defined and p['Src'] is not none and (p['Src'] == '' or ui_safe_url(p['Src']) != '') %} src="{{ p['Src'] }}"{%- endif %}
-  alt="{{ ui_def(p['Alt'], '') }}"
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'src') %}{%- if ui_is_set_str(p['Src']) and ui_safe_url(p['Src'], true) != '' %} src="{{ p['Src'] }}"{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'alt') %} alt="{{ ui_def(p['Alt'], '') }}"{%- endif %}
   {%- with cls = image_classes(p) %}{%- if cls %} class="{{ cls }}"{%- endif %}{%- endwith %}
-  {%- if p['SrcSet'] is defined and p['SrcSet'] is not none %} srcset="{{ p['SrcSet'] }}"{%- endif %}
-  {%- if p['Sizes'] is defined and p['Sizes'] is not none %} sizes="{{ p['Sizes'] }}"{%- endif %}
-  {%- if p['Width'] is defined and p['Width'] is not none %} width="{{ p['Width'] }}"{%- endif %}
-  {%- if p['Height'] is defined and p['Height'] is not none %} height="{{ p['Height'] }}"{%- endif %}
-  {%- if p['Loading'] is defined and p['Loading'] is not none %} loading="{{ p['Loading'] }}"{%- endif %}
-  {%- if p['Decoding'] is defined and p['Decoding'] is not none %} decoding="{{ p['Decoding'] }}"{%- endif %}
-  {{ ui_attr_html(ui_def(p['Attrs'], {})) }}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'srcset') %}{%- if ui_is_set_str(p['SrcSet']) %} srcset="{{ p['SrcSet'] }}"{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'sizes') %}{%- if ui_is_set_str(p['Sizes']) %} sizes="{{ p['Sizes'] }}"{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'width') %}{%- if ui_is_set_str(p['Width']) %} width="{{ p['Width'] }}"{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'height') %}{%- if ui_is_set_str(p['Height']) %} height="{{ p['Height'] }}"{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'loading') %}{%- if ui_is_set_str(p['Loading']) %} loading="{{ p['Loading'] }}"{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'decoding') %}{%- if ui_is_set_str(p['Decoding']) %} decoding="{{ p['Decoding'] }}"{%- endif %}{%- endif %}
+  {{ ui_attr_html(ui_def(p['Attrs'], {}), true, ['src', 'srcset', 'sizes', 'width', 'height', 'loading', 'decoding']) }}
 >

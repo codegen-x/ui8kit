@@ -23,6 +23,6 @@ export const Input: Component<InputProps> = (props) => {
   const [local, rest] = splitProps(props, ["type", "required", "disabled", "readOnly", "class", "className"]);
   const cls = () => inputClasses({ className: local.class ?? local.className });
   return (
-    <input type={defaultIfEmpty(local.type, "text")} {...(cls() ? { class: cls() } : {})} required={local.required || undefined} disabled={local.disabled || undefined} readonly={local.readOnly || undefined} {...safeRest(rest)} />
+    <input type={defaultIfEmpty(local.type, "text")} {...(cls() ? { class: cls() } : {})} required={local.required || undefined} disabled={local.disabled || undefined} readonly={local.readOnly || undefined} {...safeRest(rest, { blank: ["id", "name", "placeholder", "min", "max", "step", "aria-invalid", "aria-describedby"] })} />
   );
 };

@@ -20,4 +20,4 @@
 {% set ariaLabel = ariaLabel ?? null %}
 {% set attrs = attrs|default([]) %}
 {% set children = children|default('') %}
-<meter{{ ui8kit_attrs({'class': ui8kit_or_null(ui8kit_classes('meterClasses', {'class': class, 'value': value, 'min': min, 'max': max, 'low': low, 'high': high, 'optimum': optimum, 'ariaLabel': ariaLabel})), 'value': value, 'min': min, 'max': max, 'low': low, 'high': high, 'optimum': optimum, 'aria-label': ariaLabel}, attrs) }}>{{ children|raw }}</meter>
+<meter{{ ui8kit_attrs({'class': ui8kit_or_null(ui8kit_classes('meterClasses', {'class': class, 'value': value, 'min': min, 'max': max, 'low': low, 'high': high, 'optimum': optimum, 'ariaLabel': ariaLabel})), 'value': value, 'min': ui8kit_or_null(min), 'max': ui8kit_or_null(max), 'low': ui8kit_or_null(low), 'high': ui8kit_or_null(high), 'optimum': ui8kit_or_null(optimum), 'aria-label': ui8kit_or_null(ariaLabel)}, attrs, false, ['min', 'max', 'low', 'high', 'optimum', 'aria-label']) }}>{{ children|raw }}</meter>

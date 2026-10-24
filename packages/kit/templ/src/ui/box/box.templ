@@ -35,7 +35,7 @@ templ Box(p BoxProps) {
 			if BoxClasses(p) != "" {
 				class={ BoxClasses(p) }
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			{ uiutils.RestAttrs(p.Attrs, false)... }
 		>
 			{ children... }
 		</section>
@@ -44,7 +44,7 @@ templ Box(p BoxProps) {
 			if BoxClasses(p) != "" {
 				class={ BoxClasses(p) }
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			{ uiutils.RestAttrs(p.Attrs, false)... }
 		>
 			{ children... }
 		</article>
@@ -53,7 +53,7 @@ templ Box(p BoxProps) {
 			if BoxClasses(p) != "" {
 				class={ BoxClasses(p) }
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			{ uiutils.RestAttrs(p.Attrs, false)... }
 		>
 			{ children... }
 		</aside>
@@ -62,7 +62,7 @@ templ Box(p BoxProps) {
 			if BoxClasses(p) != "" {
 				class={ BoxClasses(p) }
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			{ uiutils.RestAttrs(p.Attrs, false)... }
 		>
 			{ children... }
 		</header>
@@ -71,7 +71,7 @@ templ Box(p BoxProps) {
 			if BoxClasses(p) != "" {
 				class={ BoxClasses(p) }
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			{ uiutils.RestAttrs(p.Attrs, false)... }
 		>
 			{ children... }
 		</footer>
@@ -80,7 +80,7 @@ templ Box(p BoxProps) {
 			if BoxClasses(p) != "" {
 				class={ BoxClasses(p) }
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			{ uiutils.RestAttrs(p.Attrs, false)... }
 		>
 			{ children... }
 		</main>
@@ -89,7 +89,7 @@ templ Box(p BoxProps) {
 			if BoxClasses(p) != "" {
 				class={ BoxClasses(p) }
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			{ uiutils.RestAttrs(p.Attrs, false)... }
 		>
 			{ children... }
 		</nav>
@@ -98,7 +98,7 @@ templ Box(p BoxProps) {
 			if BoxClasses(p) != "" {
 				class={ BoxClasses(p) }
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			{ uiutils.RestAttrs(p.Attrs, false)... }
 		>
 			{ children... }
 		</figure>
@@ -107,7 +107,7 @@ templ Box(p BoxProps) {
 			if BoxClasses(p) != "" {
 				class={ BoxClasses(p) }
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			{ uiutils.RestAttrs(p.Attrs, false)... }
 		>
 			{ children... }
 		</search>
@@ -116,7 +116,7 @@ templ Box(p BoxProps) {
 			if BoxClasses(p) != "" {
 				class={ BoxClasses(p) }
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			{ uiutils.RestAttrs(p.Attrs, false)... }
 		>
 			{ children... }
 		</ul>
@@ -125,7 +125,7 @@ templ Box(p BoxProps) {
 			if BoxClasses(p) != "" {
 				class={ BoxClasses(p) }
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			{ uiutils.RestAttrs(p.Attrs, false)... }
 		>
 			{ children... }
 		</ol>
@@ -134,7 +134,7 @@ templ Box(p BoxProps) {
 			if BoxClasses(p) != "" {
 				class={ BoxClasses(p) }
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			{ uiutils.RestAttrs(p.Attrs, false)... }
 		>
 			{ children... }
 		</li>
@@ -143,7 +143,7 @@ templ Box(p BoxProps) {
 			if BoxClasses(p) != "" {
 				class={ BoxClasses(p) }
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			{ uiutils.RestAttrs(p.Attrs, false)... }
 		>
 			{ children... }
 		</dl>
@@ -152,7 +152,7 @@ templ Box(p BoxProps) {
 			if BoxClasses(p) != "" {
 				class={ BoxClasses(p) }
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			{ uiutils.RestAttrs(p.Attrs, false)... }
 		>
 			{ children... }
 		</dt>
@@ -161,7 +161,7 @@ templ Box(p BoxProps) {
 			if BoxClasses(p) != "" {
 				class={ BoxClasses(p) }
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			{ uiutils.RestAttrs(p.Attrs, false)... }
 		>
 			{ children... }
 		</dd>
@@ -170,7 +170,7 @@ templ Box(p BoxProps) {
 			if BoxClasses(p) != "" {
 				class={ BoxClasses(p) }
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			{ uiutils.RestAttrs(p.Attrs, false)... }
 		>
 			{ children... }
 		</fieldset>
@@ -179,7 +179,7 @@ templ Box(p BoxProps) {
 			if BoxClasses(p) != "" {
 				class={ BoxClasses(p) }
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			{ uiutils.RestAttrs(p.Attrs, false)... }
 		>
 			{ children... }
 		</table>
@@ -188,7 +188,7 @@ templ Box(p BoxProps) {
 			if BoxClasses(p) != "" {
 				class={ BoxClasses(p) }
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			{ uiutils.RestAttrs(p.Attrs, false)... }
 		>
 			{ children... }
 		</thead>
@@ -197,7 +197,7 @@ templ Box(p BoxProps) {
 			if BoxClasses(p) != "" {
 				class={ BoxClasses(p) }
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			{ uiutils.RestAttrs(p.Attrs, false)... }
 		>
 			{ children... }
 		</tbody>
@@ -206,7 +206,7 @@ templ Box(p BoxProps) {
 			if BoxClasses(p) != "" {
 				class={ BoxClasses(p) }
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			{ uiutils.RestAttrs(p.Attrs, false)... }
 		>
 			{ children... }
 		</tfoot>
@@ -215,7 +215,7 @@ templ Box(p BoxProps) {
 			if BoxClasses(p) != "" {
 				class={ BoxClasses(p) }
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			{ uiutils.RestAttrs(p.Attrs, false)... }
 		>
 			{ children... }
 		</tr>
@@ -224,7 +224,7 @@ templ Box(p BoxProps) {
 			if BoxClasses(p) != "" {
 				class={ BoxClasses(p) }
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			{ uiutils.RestAttrs(p.Attrs, false)... }
 		>
 			{ children... }
 		</th>
@@ -233,7 +233,7 @@ templ Box(p BoxProps) {
 			if BoxClasses(p) != "" {
 				class={ BoxClasses(p) }
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			{ uiutils.RestAttrs(p.Attrs, false)... }
 		>
 			{ children... }
 		</td>
@@ -242,7 +242,7 @@ templ Box(p BoxProps) {
 			if BoxClasses(p) != "" {
 				class={ BoxClasses(p) }
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			{ uiutils.RestAttrs(p.Attrs, false)... }
 		>
 			{ children... }
 		</caption>
@@ -251,7 +251,7 @@ templ Box(p BoxProps) {
 			if BoxClasses(p) != "" {
 				class={ BoxClasses(p) }
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			{ uiutils.RestAttrs(p.Attrs, false)... }
 		>
 			{ children... }
 		</colgroup>
@@ -260,7 +260,7 @@ templ Box(p BoxProps) {
 			if BoxClasses(p) != "" {
 				class={ BoxClasses(p) }
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			{ uiutils.RestAttrs(p.Attrs, false)... }
 		>
 			{ children... }
 		</col>
@@ -269,7 +269,7 @@ templ Box(p BoxProps) {
 			if BoxClasses(p) != "" {
 				class={ BoxClasses(p) }
 			}
-			{ uiutils.SafeAttrs(p.Attrs)... }
+			{ uiutils.RestAttrs(p.Attrs, false)... }
 		>
 			{ children... }
 		</div>

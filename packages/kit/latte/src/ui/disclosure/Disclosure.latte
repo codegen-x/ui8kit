@@ -10,6 +10,6 @@
 <details n:attr="[
   'class' => \UI8Kit\Latte\Rt::orNull(\UI8Kit\Latte\Classes::disclosureClasses(['class' => $class, 'open' => $open, 'name' => $name])),
   'open' => $open,
-  'name' => $name,
-  ...\UI8Kit\Latte\Rt::safeAttrs($attrs),
+  'name' => \UI8Kit\Latte\Rt::orNull($name),
+  ...\UI8Kit\Latte\Rt::restAttrs($attrs, false, ['name']),
 ]">{$children|noescape}</details>

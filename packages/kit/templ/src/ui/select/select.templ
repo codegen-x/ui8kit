@@ -47,22 +47,36 @@ templ Select(p SelectProps) {
 		if SelectClasses(p) != "" {
 			class={ SelectClasses(p) }
 		}
-		if uiutils.IsSetStr(p.ID) {
-			id={ p.ID }
+		if !uiutils.HasAttr(p.Attrs, "id") {
+			if uiutils.IsSetStr(p.ID) {
+				id={ p.ID }
+			}
 		}
-		if uiutils.IsSetStr(p.Name) {
-			name={ p.Name }
+		if !uiutils.HasAttr(p.Attrs, "name") {
+			if uiutils.IsSetStr(p.Name) {
+				name={ p.Name }
+			}
 		}
-		multiple?={ p.Multiple }
-		required?={ p.Required }
-		disabled?={ p.Disabled }
-		if uiutils.IsSetStr(p.AriaInvalid) {
-			aria-invalid={ p.AriaInvalid }
+		if !uiutils.HasAttr(p.Attrs, "multiple") {
+			multiple?={ p.Multiple }
 		}
-		if uiutils.IsSetStr(p.AriaDescribedBy) {
-			aria-describedby={ p.AriaDescribedBy }
+		if !uiutils.HasAttr(p.Attrs, "required") {
+			required?={ p.Required }
 		}
-		{ uiutils.SafeAttrs(p.Attrs)... }
+		if !uiutils.HasAttr(p.Attrs, "disabled") {
+			disabled?={ p.Disabled }
+		}
+		if !uiutils.HasAttr(p.Attrs, "aria-invalid") {
+			if uiutils.IsSetStr(p.AriaInvalid) {
+				aria-invalid={ p.AriaInvalid }
+			}
+		}
+		if !uiutils.HasAttr(p.Attrs, "aria-describedby") {
+			if uiutils.IsSetStr(p.AriaDescribedBy) {
+				aria-describedby={ p.AriaDescribedBy }
+			}
+		}
+		{ uiutils.RestAttrs(p.Attrs, false, "id", "name", "aria-invalid", "aria-describedby")... }
 	>
 		for _, item := range p.Options {
 			<option
@@ -88,12 +102,18 @@ type SelectOptionProps struct {
 // SelectOption renders the SelectOption contract.
 templ SelectOption(p SelectOptionProps) {
 	<option
-		if p.Value != nil {
-			value={ *p.Value }
+		if !uiutils.HasAttr(p.Attrs, "value") {
+			if p.Value != nil {
+				value={ *p.Value }
+			}
 		}
-		selected?={ p.Selected }
-		disabled?={ p.Disabled }
-		{ uiutils.SafeAttrs(p.Attrs)... }
+		if !uiutils.HasAttr(p.Attrs, "selected") {
+			selected?={ p.Selected }
+		}
+		if !uiutils.HasAttr(p.Attrs, "disabled") {
+			disabled?={ p.Disabled }
+		}
+		{ uiutils.RestAttrs(p.Attrs, false)... }
 	>
 		{ children... }
 	</option>
@@ -109,11 +129,15 @@ type SelectOptGroupProps struct {
 // SelectOptGroup renders the SelectOptGroup contract.
 templ SelectOptGroup(p SelectOptGroupProps) {
 	<optgroup
-		if uiutils.IsSetStr(p.Label) {
-			label={ p.Label }
+		if !uiutils.HasAttr(p.Attrs, "label") {
+			if uiutils.IsSetStr(p.Label) {
+				label={ p.Label }
+			}
 		}
-		disabled?={ p.Disabled }
-		{ uiutils.SafeAttrs(p.Attrs)... }
+		if !uiutils.HasAttr(p.Attrs, "disabled") {
+			disabled?={ p.Disabled }
+		}
+		{ uiutils.RestAttrs(p.Attrs, false, "label")... }
 	>
 		{ children... }
 	</optgroup>

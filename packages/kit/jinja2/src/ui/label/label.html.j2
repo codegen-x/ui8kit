@@ -5,6 +5,6 @@
     Classes without rendering: label_classes(p) (no asChild in Jinja2). -#}
 <label
   {%- with cls = label_classes(p) %}{%- if cls %} class="{{ cls }}"{%- endif %}{%- endwith %}
-  {%- if p['For'] is defined and p['For'] is not none %} for="{{ p['For'] }}"{%- endif %}
-  {{ ui_attr_html(ui_def(p['Attrs'], {})) }}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'for') %}{%- if ui_is_set_str(p['For']) %} for="{{ p['For'] }}"{%- endif %}{%- endif %}
+  {{ ui_attr_html(ui_def(p['Attrs'], {}), false, ['for']) }}
 >{{ children|default('', true)|safe }}</label>

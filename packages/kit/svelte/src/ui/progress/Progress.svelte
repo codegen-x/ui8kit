@@ -22,7 +22,7 @@
     ...rawRest
   }: ProgressProps = $props();
 
-  const rest = $derived(safeRest(rawRest));
+  const rest = $derived(safeRest(rawRest, { blank: ["max", "aria-label"] }));
   const cls = $derived(progressClasses({ className }));
 </script>
 

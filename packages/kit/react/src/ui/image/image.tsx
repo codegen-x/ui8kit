@@ -20,7 +20,7 @@ export const Image = forwardRef<HTMLImageElement, ImageProps>(function Image(
   { alt, className, ...rawRest },
   ref
 ) {
-  const rest = safeRest(rawRest);
+  const rest = safeRest(rawRest, { img: true, blank: ["src", "srcset", "sizes", "width", "height", "loading", "decoding"] });
   const cls = imageClasses({ className });
   return (
     <img ref={ref} alt={(alt) ?? ""} className={cls || undefined} {...rest} />
@@ -61,7 +61,7 @@ export const Source = forwardRef<HTMLSourceElement, SourceProps>(function Source
   { className, ...rawRest },
   ref
 ) {
-  const rest = safeRest(rawRest);
+  const rest = safeRest(rawRest, { blank: ["srcset", "media", "type", "sizes"] });
   return (
     <source ref={ref} {...rest} />
   );

@@ -26,7 +26,7 @@
     ...rawRest
   }: SwitchProps = $props();
 
-  const rest = $derived(safeRest(rawRest));
+  const rest = $derived(safeRest(rawRest, { blank: ["id", "name", "aria-label", "aria-labelledby"] }));
   const cls = $derived(switchClasses({ className }));
 </script>
 

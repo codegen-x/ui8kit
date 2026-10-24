@@ -20,7 +20,7 @@ export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(function Dialog
   { open, className, children, ...rawRest },
   ref
 ) {
-  const rest = safeRest(rawRest);
+  const rest = safeRest(rawRest, { blank: ["id", "aria-labelledby", "aria-describedby", "aria-label"] });
   const cls = dialogClasses({ className });
   return (
     <dialog ref={ref} className={cls || undefined} open={open} {...rest}>

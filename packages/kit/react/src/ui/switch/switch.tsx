@@ -22,7 +22,7 @@ export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(function Switch
   { checked, disabled, className, children, ...rawRest },
   ref
 ) {
-  const rest = safeRest(rawRest);
+  const rest = safeRest(rawRest, { blank: ["id", "name", "aria-label", "aria-labelledby"] });
   const cls = switchClasses({ className });
   return (
     <button ref={ref} type="button" role="switch" aria-checked={boolStr(checked)} data-state={boolStr(checked)} className={cls || undefined} disabled={disabled} {...rest}>

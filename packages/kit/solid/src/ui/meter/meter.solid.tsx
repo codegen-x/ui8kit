@@ -20,7 +20,7 @@ export const Meter: Component<MeterProps> = (props) => {
   const [local, rest] = splitProps(props, ["class", "className", "children"]);
   const cls = () => meterClasses({ className: local.class ?? local.className });
   return (
-    <meter {...(cls() ? { class: cls() } : {})} {...safeRest(rest)}>
+    <meter {...(cls() ? { class: cls() } : {})} {...safeRest(rest, { blank: ["min", "max", "low", "high", "optimum", "aria-label"] })}>
       {local.children}
     </meter>
   );

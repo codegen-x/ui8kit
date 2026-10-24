@@ -4,12 +4,12 @@
     children: TRUSTED HTML printed with |safe — never pass unescaped user input.
     Classes without rendering: link_classes(p) (no asChild in Jinja2). -#}
 <a
-  {%- if p['Href'] is defined and p['Href'] is not none and (p['Href'] == '' or ui_safe_url(p['Href']) != '') %} href="{{ p['Href'] }}"{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'href') %}{%- if ui_is_set_str(p['Href']) and ui_safe_url(p['Href']) != '' %} href="{{ p['Href'] }}"{%- endif %}{%- endif %}
   {%- with cls = link_classes(p) %}{%- if cls %} class="{{ cls }}"{%- endif %}{%- endwith %}
-  {%- if ui_is_set_str(((ui_def(p['Target'], '') if ui_is_set_str(ui_def(p['Target'], '')) else ('_blank' if ui_def(p['External'], false) else '')))) %} target="{{ ((ui_def(p['Target'], '') if ui_is_set_str(ui_def(p['Target'], '')) else ('_blank' if ui_def(p['External'], false) else ''))) }}"{%- endif %}
-  {%- if ui_is_set_str(((ui_def(p['Rel'], '') if ui_is_set_str(ui_def(p['Rel'], '')) else ('noopener noreferrer' if (ui_def(p['External'], false) or ui_eq(((ui_def(p['Target'], '') if ui_is_set_str(ui_def(p['Target'], '')) else ('_blank' if ui_def(p['External'], false) else ''))), '_blank')) else '')))) %} rel="{{ ((ui_def(p['Rel'], '') if ui_is_set_str(ui_def(p['Rel'], '')) else ('noopener noreferrer' if (ui_def(p['External'], false) or ui_eq(((ui_def(p['Target'], '') if ui_is_set_str(ui_def(p['Target'], '')) else ('_blank' if ui_def(p['External'], false) else ''))), '_blank')) else ''))) }}"{%- endif %}
-  {%- if p['Download'] is defined and p['Download'] is not none %} download="{{ p['Download'] }}"{%- endif %}
-  {%- if p['AriaCurrent'] is defined and p['AriaCurrent'] is not none %} aria-current="{{ p['AriaCurrent'] }}"{%- endif %}
-  {%- if p['AriaLabel'] is defined and p['AriaLabel'] is not none %} aria-label="{{ p['AriaLabel'] }}"{%- endif %}
-  {{ ui_attr_html(ui_def(p['Attrs'], {})) }}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'target') %}{%- if ui_is_set_str(((ui_def(p['Target'], '') if ui_is_set_str(ui_def(p['Target'], '')) else ('_blank' if ui_def(p['External'], false) else '')))) %} target="{{ ((ui_def(p['Target'], '') if ui_is_set_str(ui_def(p['Target'], '')) else ('_blank' if ui_def(p['External'], false) else ''))) }}"{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'rel') %}{%- if ui_is_set_str(((ui_def(p['Rel'], '') if ui_is_set_str(ui_def(p['Rel'], '')) else ('noopener noreferrer' if (ui_def(p['External'], false) or ui_eq(((ui_def(p['Target'], '') if ui_is_set_str(ui_def(p['Target'], '')) else ('_blank' if ui_def(p['External'], false) else ''))), '_blank')) else '')))) %} rel="{{ ((ui_def(p['Rel'], '') if ui_is_set_str(ui_def(p['Rel'], '')) else ('noopener noreferrer' if (ui_def(p['External'], false) or ui_eq(((ui_def(p['Target'], '') if ui_is_set_str(ui_def(p['Target'], '')) else ('_blank' if ui_def(p['External'], false) else ''))), '_blank')) else ''))) }}"{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'download') %}{%- if ui_is_set_str(p['Download']) %} download="{{ p['Download'] }}"{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'aria-current') %}{%- if ui_is_set_str(p['AriaCurrent']) %} aria-current="{{ p['AriaCurrent'] }}"{%- endif %}{%- endif %}
+  {%- if not ui_has_attr(ui_def(p['Attrs'], {}), 'aria-label') %}{%- if ui_is_set_str(p['AriaLabel']) %} aria-label="{{ p['AriaLabel'] }}"{%- endif %}{%- endif %}
+  {{ ui_attr_html(ui_def(p['Attrs'], {}), false, ['href', 'download', 'aria-current', 'aria-label']) }}
 >{{ children|default('', true)|safe }}</a>

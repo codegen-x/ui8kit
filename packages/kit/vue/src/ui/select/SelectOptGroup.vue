@@ -15,7 +15,7 @@ const props = defineProps<{
 const attrs = useAttrs();
 const restAttrs = computed(() => {
   const { class: _class, ...restEntries } = attrs;
-  return safeRest(restEntries);
+  return safeRest(restEntries, { blank: ["label"] });
 });
 </script>
 

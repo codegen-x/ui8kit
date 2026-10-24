@@ -23,6 +23,6 @@ export const Textarea: Component<TextareaProps> = (props) => {
   const [local, rest] = splitProps(props, ["value", "required", "disabled", "readOnly", "class", "className"]);
   const cls = () => textareaClasses({ className: local.class ?? local.className });
   return (
-    <textarea {...(cls() ? { class: cls() } : {})} required={local.required || undefined} disabled={local.disabled || undefined} readonly={local.readOnly || undefined} {...safeRest(rest)} ref={(el) => createEffect(() => { el.value = (local.value) ?? ""; })}>{(local.value) ?? ""}</textarea>
+    <textarea {...(cls() ? { class: cls() } : {})} required={local.required || undefined} disabled={local.disabled || undefined} readonly={local.readOnly || undefined} {...safeRest(rest, { blank: ["id", "name", "placeholder", "rows", "aria-invalid", "aria-describedby"] })} ref={(el) => createEffect(() => { el.value = (local.value) ?? ""; })}>{(local.value) ?? ""}</textarea>
   );
 };

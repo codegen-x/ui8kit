@@ -21,7 +21,7 @@
     ...rawRest
   }: ImageProps = $props();
 
-  const rest = $derived(safeRest(rawRest));
+  const rest = $derived(safeRest(rawRest, { img: true, blank: ["src", "srcset", "sizes", "width", "height", "loading", "decoding"] }));
   const cls = $derived(imageClasses({ className }));
 </script>
 

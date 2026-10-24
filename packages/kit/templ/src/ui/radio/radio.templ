@@ -34,28 +34,46 @@ func RadioClasses(p RadioProps) string {
 // Radio renders the Radio contract.
 templ Radio(p RadioProps) {
 	<input
-		type="radio"
+		if !uiutils.HasAttr(p.Attrs, "type") {
+			type="radio"
+		}
 		if RadioClasses(p) != "" {
 			class={ RadioClasses(p) }
 		}
-		if uiutils.IsSetStr(p.ID) {
-			id={ p.ID }
+		if !uiutils.HasAttr(p.Attrs, "id") {
+			if uiutils.IsSetStr(p.ID) {
+				id={ p.ID }
+			}
 		}
-		if uiutils.IsSetStr(p.Name) {
-			name={ p.Name }
+		if !uiutils.HasAttr(p.Attrs, "name") {
+			if uiutils.IsSetStr(p.Name) {
+				name={ p.Name }
+			}
 		}
-		if p.Value != nil {
-			value={ *p.Value }
+		if !uiutils.HasAttr(p.Attrs, "value") {
+			if p.Value != nil {
+				value={ *p.Value }
+			}
 		}
-		checked?={ p.Checked }
-		required?={ p.Required }
-		disabled?={ p.Disabled }
-		if uiutils.IsSetStr(p.AriaInvalid) {
-			aria-invalid={ p.AriaInvalid }
+		if !uiutils.HasAttr(p.Attrs, "checked") {
+			checked?={ p.Checked }
 		}
-		if uiutils.IsSetStr(p.AriaDescribedBy) {
-			aria-describedby={ p.AriaDescribedBy }
+		if !uiutils.HasAttr(p.Attrs, "required") {
+			required?={ p.Required }
 		}
-		{ uiutils.SafeAttrs(p.Attrs)... }
+		if !uiutils.HasAttr(p.Attrs, "disabled") {
+			disabled?={ p.Disabled }
+		}
+		if !uiutils.HasAttr(p.Attrs, "aria-invalid") {
+			if uiutils.IsSetStr(p.AriaInvalid) {
+				aria-invalid={ p.AriaInvalid }
+			}
+		}
+		if !uiutils.HasAttr(p.Attrs, "aria-describedby") {
+			if uiutils.IsSetStr(p.AriaDescribedBy) {
+				aria-describedby={ p.AriaDescribedBy }
+			}
+		}
+		{ uiutils.RestAttrs(p.Attrs, false, "id", "name", "aria-invalid", "aria-describedby")... }
 	/>
 }

@@ -23,7 +23,7 @@ export const Form: Component<FormProps> = (props) => {
   const [local, rest] = splitProps(props, ["method", "noValidate", "class", "className", "children"]);
   const cls = () => formClasses({ className: local.class ?? local.className });
   return (
-    <form {...(cls() ? { class: cls() } : {})} method={orUndef(oneOfOrLower(local.method, "", "get", "post", "dialog"))} novalidate={local.noValidate || undefined} {...safeRest(rest)}>
+    <form {...(cls() ? { class: cls() } : {})} method={orUndef(oneOfOrLower(local.method, "", "get", "post", "dialog"))} novalidate={local.noValidate || undefined} {...safeRest(rest, { blank: ["id", "name", "action", "enctype", "autocomplete", "target", "aria-label", "aria-labelledby", "aria-describedby"] })}>
       {local.children}
     </form>
   );

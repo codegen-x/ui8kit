@@ -36,28 +36,42 @@ templ Meter(p MeterProps) {
 		if MeterClasses(p) != "" {
 			class={ MeterClasses(p) }
 		}
-		if p.Value != nil {
-			value={ *p.Value }
+		if !uiutils.HasAttr(p.Attrs, "value") {
+			if p.Value != nil {
+				value={ *p.Value }
+			}
 		}
-		if uiutils.IsSetStr(p.Min) {
-			min={ p.Min }
+		if !uiutils.HasAttr(p.Attrs, "min") {
+			if uiutils.IsSetStr(p.Min) {
+				min={ p.Min }
+			}
 		}
-		if uiutils.IsSetStr(p.Max) {
-			max={ p.Max }
+		if !uiutils.HasAttr(p.Attrs, "max") {
+			if uiutils.IsSetStr(p.Max) {
+				max={ p.Max }
+			}
 		}
-		if uiutils.IsSetStr(p.Low) {
-			low={ p.Low }
+		if !uiutils.HasAttr(p.Attrs, "low") {
+			if uiutils.IsSetStr(p.Low) {
+				low={ p.Low }
+			}
 		}
-		if uiutils.IsSetStr(p.High) {
-			high={ p.High }
+		if !uiutils.HasAttr(p.Attrs, "high") {
+			if uiutils.IsSetStr(p.High) {
+				high={ p.High }
+			}
 		}
-		if uiutils.IsSetStr(p.Optimum) {
-			optimum={ p.Optimum }
+		if !uiutils.HasAttr(p.Attrs, "optimum") {
+			if uiutils.IsSetStr(p.Optimum) {
+				optimum={ p.Optimum }
+			}
 		}
-		if uiutils.IsSetStr(p.AriaLabel) {
-			aria-label={ p.AriaLabel }
+		if !uiutils.HasAttr(p.Attrs, "aria-label") {
+			if uiutils.IsSetStr(p.AriaLabel) {
+				aria-label={ p.AriaLabel }
+			}
 		}
-		{ uiutils.SafeAttrs(p.Attrs)... }
+		{ uiutils.RestAttrs(p.Attrs, false, "min", "max", "low", "high", "optimum", "aria-label")... }
 	>
 		{ children... }
 	</meter>

@@ -32,16 +32,22 @@ templ Progress(p ProgressProps) {
 		if ProgressClasses(p) != "" {
 			class={ ProgressClasses(p) }
 		}
-		if p.Value != nil {
-			value={ *p.Value }
+		if !uiutils.HasAttr(p.Attrs, "value") {
+			if p.Value != nil {
+				value={ *p.Value }
+			}
 		}
-		if uiutils.IsSetStr(p.Max) {
-			max={ p.Max }
+		if !uiutils.HasAttr(p.Attrs, "max") {
+			if uiutils.IsSetStr(p.Max) {
+				max={ p.Max }
+			}
 		}
-		if uiutils.IsSetStr(p.AriaLabel) {
-			aria-label={ p.AriaLabel }
+		if !uiutils.HasAttr(p.Attrs, "aria-label") {
+			if uiutils.IsSetStr(p.AriaLabel) {
+				aria-label={ p.AriaLabel }
+			}
 		}
-		{ uiutils.SafeAttrs(p.Attrs)... }
+		{ uiutils.RestAttrs(p.Attrs, false, "max", "aria-label")... }
 	>
 		{ children... }
 	</progress>

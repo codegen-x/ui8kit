@@ -20,7 +20,7 @@ const attrs = useAttrs();
 const callerClass = computed(() => attrs.class as string | undefined);
 const restAttrs = computed(() => {
   const { class: _class, ...restEntries } = attrs;
-  return safeRest(restEntries);
+  return safeRest(restEntries, { blank: ["id", "name", "placeholder", "min", "max", "step", "aria-invalid", "aria-describedby"] });
 });
 const cls = computed(() => inputClasses({ className: callerClass.value }));
 </script>

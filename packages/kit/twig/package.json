@@ -2,5 +2,5 @@
   "name": "@codegen-x/kit-twig",
   "private": true,
   "version": "0.0.0",
-  "description": "UI8Kit 3 primitives for twig, installed by the ui8kit CLI from @ui8kit/registry 3.2.2. Do not edit: bun run kit:check (ui8kit check) fails on any change."
+  "description": "UI8Kit 3 primitives for twig, installed by the ui8kit CLI from @ui8kit/registry 3.3.0. Do not edit: bun run kit:check (ui8kit check) fails on any change."
 }

@@ -22,7 +22,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   { type, required, disabled, readOnly, className, ...rawRest },
   ref
 ) {
-  const rest = safeRest(rawRest);
+  const rest = safeRest(rawRest, { blank: ["id", "name", "placeholder", "min", "max", "step", "aria-invalid", "aria-describedby"] });
   const cls = inputClasses({ className });
   return (
     <input ref={ref} type={defaultIfEmpty(type, "text")} className={cls || undefined} required={required} disabled={disabled} readOnly={readOnly} {...rest} />

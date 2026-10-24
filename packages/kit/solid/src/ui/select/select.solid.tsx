@@ -26,7 +26,7 @@ export const Select: Component<SelectProps> = (props) => {
   const [local, rest] = splitProps(props, ["value", "multiple", "required", "disabled", "options", "class", "className", "children"]);
   const cls = () => selectClasses({ className: local.class ?? local.className });
   return (
-    <select {...(cls() ? { class: cls() } : {})} multiple={local.multiple || undefined} required={local.required || undefined} disabled={local.disabled || undefined} ref={(el) => createEffect(() => syncValue(el, local.value))} {...safeRest(rest)}>
+    <select {...(cls() ? { class: cls() } : {})} multiple={local.multiple || undefined} required={local.required || undefined} disabled={local.disabled || undefined} ref={(el) => createEffect(() => syncValue(el, local.value))} {...safeRest(rest, { blank: ["id", "name", "aria-invalid", "aria-describedby"] })}>
       {(local.options ?? []).map((item) => (
         <option value={(item.value) ?? ""} selected={eqStr(item.value, local.value) || undefined} disabled={item.disabled || undefined}>
           {item.label}
@@ -70,7 +70,7 @@ export type SelectOptGroupProps = Omit<JSX.OptgroupHTMLAttributes<HTMLOptGroupEl
 export const SelectOptGroup: Component<SelectOptGroupProps> = (props) => {
   const [local, rest] = splitProps(props, ["disabled", "class", "className", "children"]);
   return (
-    <optgroup disabled={local.disabled || undefined} {...safeRest(rest)}>
+    <optgroup disabled={local.disabled || undefined} {...safeRest(rest, { blank: ["label"] })}>
       {local.children}
     </optgroup>
   );

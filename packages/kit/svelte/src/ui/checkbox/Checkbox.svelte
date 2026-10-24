@@ -25,7 +25,7 @@
     ...rawRest
   }: CheckboxProps = $props();
 
-  const rest = $derived(safeRest(rawRest));
+  const rest = $derived(safeRest(rawRest, { blank: ["id", "name", "aria-invalid", "aria-describedby"] }));
   const cls = $derived(checkboxClasses({ className }));
 </script>
 

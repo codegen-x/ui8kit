@@ -40,28 +40,46 @@ templ Textarea(p TextareaProps) {
 		if TextareaClasses(p) != "" {
 			class={ TextareaClasses(p) }
 		}
-		if uiutils.IsSetStr(p.ID) {
-			id={ p.ID }
+		if !uiutils.HasAttr(p.Attrs, "id") {
+			if uiutils.IsSetStr(p.ID) {
+				id={ p.ID }
+			}
 		}
-		if uiutils.IsSetStr(p.Name) {
-			name={ p.Name }
+		if !uiutils.HasAttr(p.Attrs, "name") {
+			if uiutils.IsSetStr(p.Name) {
+				name={ p.Name }
+			}
 		}
-		if uiutils.IsSetStr(p.Placeholder) {
-			placeholder={ p.Placeholder }
+		if !uiutils.HasAttr(p.Attrs, "placeholder") {
+			if uiutils.IsSetStr(p.Placeholder) {
+				placeholder={ p.Placeholder }
+			}
 		}
-		if uiutils.IsSetStr(p.Rows) {
-			rows={ p.Rows }
+		if !uiutils.HasAttr(p.Attrs, "rows") {
+			if uiutils.IsSetStr(p.Rows) {
+				rows={ p.Rows }
+			}
 		}
-		required?={ p.Required }
-		disabled?={ p.Disabled }
-		readonly?={ p.ReadOnly }
-		if uiutils.IsSetStr(p.AriaInvalid) {
-			aria-invalid={ p.AriaInvalid }
+		if !uiutils.HasAttr(p.Attrs, "required") {
+			required?={ p.Required }
 		}
-		if uiutils.IsSetStr(p.AriaDescribedBy) {
-			aria-describedby={ p.AriaDescribedBy }
+		if !uiutils.HasAttr(p.Attrs, "disabled") {
+			disabled?={ p.Disabled }
 		}
-		{ uiutils.SafeAttrs(p.Attrs)... }
+		if !uiutils.HasAttr(p.Attrs, "readonly") {
+			readonly?={ p.ReadOnly }
+		}
+		if !uiutils.HasAttr(p.Attrs, "aria-invalid") {
+			if uiutils.IsSetStr(p.AriaInvalid) {
+				aria-invalid={ p.AriaInvalid }
+			}
+		}
+		if !uiutils.HasAttr(p.Attrs, "aria-describedby") {
+			if uiutils.IsSetStr(p.AriaDescribedBy) {
+				aria-describedby={ p.AriaDescribedBy }
+			}
+		}
+		{ uiutils.RestAttrs(p.Attrs, false, "id", "name", "placeholder", "rows", "aria-invalid", "aria-describedby")... }
 	>
 		{ p.Value }
 	</textarea>

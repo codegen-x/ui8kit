@@ -13,7 +13,7 @@ const attrs = useAttrs();
 const callerClass = computed(() => attrs.class as string | undefined);
 const restAttrs = computed(() => {
   const { class: _class, ...restEntries } = attrs;
-  return safeRest(restEntries);
+  return safeRest(restEntries, { blank: ["for", "htmlfor"] });
 });
 const cls = computed(() => labelClasses({ className: callerClass.value }));
 </script>

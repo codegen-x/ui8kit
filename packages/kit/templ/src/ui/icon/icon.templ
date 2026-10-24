@@ -33,20 +33,28 @@ func IconClasses(p IconProps) string {
 // Icon renders the Icon contract.
 templ Icon(p IconProps) {
 	<span
-		data-slot="icon"
+		if !uiutils.HasAttr(p.Attrs, "data-slot") {
+			data-slot="icon"
+		}
 		if IconClasses(p) != "" {
 			class={ IconClasses(p) }
 		}
-		if !uiutils.IsSetStr(p.Label) {
-			aria-hidden={ "true" }
+		if !uiutils.HasAttr(p.Attrs, "aria-hidden") {
+			if !uiutils.IsSetStr(p.Label) {
+				aria-hidden={ "true" }
+			}
 		}
-		if uiutils.IsSetStr(p.Label) {
-			role={ "img" }
+		if !uiutils.HasAttr(p.Attrs, "role") {
+			if uiutils.IsSetStr(p.Label) {
+				role={ "img" }
+			}
 		}
-		if uiutils.IsSetStr(p.Label) {
-			aria-label={ p.Label }
+		if !uiutils.HasAttr(p.Attrs, "aria-label") {
+			if uiutils.IsSetStr(p.Label) {
+				aria-label={ p.Label }
+			}
 		}
-		{ uiutils.SafeAttrs(p.Attrs)... }
+		{ uiutils.RestAttrs(p.Attrs, false)... }
 	>
 		{ children... }
 	</span>

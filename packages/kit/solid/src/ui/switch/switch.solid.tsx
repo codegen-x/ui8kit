@@ -23,7 +23,7 @@ export const Switch: Component<SwitchProps> = (props) => {
   const [local, rest] = splitProps(props, ["checked", "disabled", "class", "className", "children"]);
   const cls = () => switchClasses({ className: local.class ?? local.className });
   return (
-    <button type="button" role="switch" aria-checked={boolStr(local.checked)} data-state={boolStr(local.checked)} {...(cls() ? { class: cls() } : {})} disabled={local.disabled || undefined} {...safeRest(rest)}>
+    <button type="button" role="switch" aria-checked={boolStr(local.checked)} data-state={boolStr(local.checked)} {...(cls() ? { class: cls() } : {})} disabled={local.disabled || undefined} {...safeRest(rest, { blank: ["id", "name", "aria-label", "aria-labelledby"] })}>
       {local.children}
     </button>
   );

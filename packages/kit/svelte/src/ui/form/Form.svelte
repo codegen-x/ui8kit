@@ -26,7 +26,7 @@
     ...rawRest
   }: FormProps = $props();
 
-  const rest = $derived(safeRest(rawRest));
+  const rest = $derived(safeRest(rawRest, { blank: ["id", "name", "action", "enctype", "autocomplete", "target", "aria-label", "aria-labelledby", "aria-describedby"] }));
   const cls = $derived(formClasses({ className }));
 </script>
 

@@ -40,40 +40,66 @@ func InputClasses(p InputProps) string {
 // Input renders the Input contract.
 templ Input(p InputProps) {
 	<input
-		type={ uiutils.DefaultIfEmpty(p.Type, "text") }
+		if !uiutils.HasAttr(p.Attrs, "type") {
+			type={ uiutils.DefaultIfEmpty(p.Type, "text") }
+		}
 		if InputClasses(p) != "" {
 			class={ InputClasses(p) }
 		}
-		if uiutils.IsSetStr(p.ID) {
-			id={ p.ID }
+		if !uiutils.HasAttr(p.Attrs, "id") {
+			if uiutils.IsSetStr(p.ID) {
+				id={ p.ID }
+			}
 		}
-		if uiutils.IsSetStr(p.Name) {
-			name={ p.Name }
+		if !uiutils.HasAttr(p.Attrs, "name") {
+			if uiutils.IsSetStr(p.Name) {
+				name={ p.Name }
+			}
 		}
-		if p.Value != nil {
-			value={ *p.Value }
+		if !uiutils.HasAttr(p.Attrs, "value") {
+			if p.Value != nil {
+				value={ *p.Value }
+			}
 		}
-		if uiutils.IsSetStr(p.Placeholder) {
-			placeholder={ p.Placeholder }
+		if !uiutils.HasAttr(p.Attrs, "placeholder") {
+			if uiutils.IsSetStr(p.Placeholder) {
+				placeholder={ p.Placeholder }
+			}
 		}
-		if uiutils.IsSetStr(p.Min) {
-			min={ p.Min }
+		if !uiutils.HasAttr(p.Attrs, "min") {
+			if uiutils.IsSetStr(p.Min) {
+				min={ p.Min }
+			}
 		}
-		if uiutils.IsSetStr(p.Max) {
-			max={ p.Max }
+		if !uiutils.HasAttr(p.Attrs, "max") {
+			if uiutils.IsSetStr(p.Max) {
+				max={ p.Max }
+			}
 		}
-		if uiutils.IsSetStr(p.Step) {
-			step={ p.Step }
+		if !uiutils.HasAttr(p.Attrs, "step") {
+			if uiutils.IsSetStr(p.Step) {
+				step={ p.Step }
+			}
 		}
-		required?={ p.Required }
-		disabled?={ p.Disabled }
-		readonly?={ p.ReadOnly }
-		if uiutils.IsSetStr(p.AriaInvalid) {
-			aria-invalid={ p.AriaInvalid }
+		if !uiutils.HasAttr(p.Attrs, "required") {
+			required?={ p.Required }
 		}
-		if uiutils.IsSetStr(p.AriaDescribedBy) {
-			aria-describedby={ p.AriaDescribedBy }
+		if !uiutils.HasAttr(p.Attrs, "disabled") {
+			disabled?={ p.Disabled }
 		}
-		{ uiutils.SafeAttrs(p.Attrs)... }
+		if !uiutils.HasAttr(p.Attrs, "readonly") {
+			readonly?={ p.ReadOnly }
+		}
+		if !uiutils.HasAttr(p.Attrs, "aria-invalid") {
+			if uiutils.IsSetStr(p.AriaInvalid) {
+				aria-invalid={ p.AriaInvalid }
+			}
+		}
+		if !uiutils.HasAttr(p.Attrs, "aria-describedby") {
+			if uiutils.IsSetStr(p.AriaDescribedBy) {
+				aria-describedby={ p.AriaDescribedBy }
+			}
+		}
+		{ uiutils.RestAttrs(p.Attrs, false, "id", "name", "placeholder", "min", "max", "step", "aria-invalid", "aria-describedby")... }
 	/>
 }

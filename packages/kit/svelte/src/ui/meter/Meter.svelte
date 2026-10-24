@@ -22,7 +22,7 @@
     ...rawRest
   }: MeterProps = $props();
 
-  const rest = $derived(safeRest(rawRest));
+  const rest = $derived(safeRest(rawRest, { blank: ["min", "max", "low", "high", "optimum", "aria-label"] }));
   const cls = $derived(meterClasses({ className }));
 </script>
 

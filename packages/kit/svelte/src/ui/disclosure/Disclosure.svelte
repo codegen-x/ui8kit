@@ -24,7 +24,7 @@
     ...rawRest
   }: DisclosureProps = $props();
 
-  const rest = $derived(safeRest(rawRest));
+  const rest = $derived(safeRest(rawRest, { blank: ["name"] }));
   const cls = $derived(disclosureClasses({ className }));
 </script>
 

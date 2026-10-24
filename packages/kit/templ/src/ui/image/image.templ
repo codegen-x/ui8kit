@@ -36,32 +36,48 @@ func ImageClasses(p ImageProps) string {
 // Image renders the Image contract.
 templ Image(p ImageProps) {
 	<img
-		if uiutils.IsSetStr(uiutils.SafeURL(p.Src)) {
-			src={ uiutils.SafeURL(p.Src) }
+		if !uiutils.HasAttr(p.Attrs, "src") {
+			if uiutils.IsSetStr(uiutils.SafeImgURL(p.Src)) {
+				src={ templ.SafeURL(uiutils.SafeImgURL(p.Src)) }
+			}
 		}
-		alt={ p.Alt }
+		if !uiutils.HasAttr(p.Attrs, "alt") {
+			alt={ p.Alt }
+		}
 		if ImageClasses(p) != "" {
 			class={ ImageClasses(p) }
 		}
-		if uiutils.IsSetStr(p.SrcSet) {
-			srcset={ p.SrcSet }
+		if !uiutils.HasAttr(p.Attrs, "srcset") {
+			if uiutils.IsSetStr(p.SrcSet) {
+				srcset={ p.SrcSet }
+			}
 		}
-		if uiutils.IsSetStr(p.Sizes) {
-			sizes={ p.Sizes }
+		if !uiutils.HasAttr(p.Attrs, "sizes") {
+			if uiutils.IsSetStr(p.Sizes) {
+				sizes={ p.Sizes }
+			}
 		}
-		if uiutils.IsSetStr(p.Width) {
-			width={ p.Width }
+		if !uiutils.HasAttr(p.Attrs, "width") {
+			if uiutils.IsSetStr(p.Width) {
+				width={ p.Width }
+			}
 		}
-		if uiutils.IsSetStr(p.Height) {
-			height={ p.Height }
+		if !uiutils.HasAttr(p.Attrs, "height") {
+			if uiutils.IsSetStr(p.Height) {
+				height={ p.Height }
+			}
 		}
-		if uiutils.IsSetStr(p.Loading) {
-			loading={ p.Loading }
+		if !uiutils.HasAttr(p.Attrs, "loading") {
+			if uiutils.IsSetStr(p.Loading) {
+				loading={ p.Loading }
+			}
 		}
-		if uiutils.IsSetStr(p.Decoding) {
-			decoding={ p.Decoding }
+		if !uiutils.HasAttr(p.Attrs, "decoding") {
+			if uiutils.IsSetStr(p.Decoding) {
+				decoding={ p.Decoding }
+			}
 		}
-		{ uiutils.SafeAttrs(p.Attrs)... }
+		{ uiutils.RestAttrs(p.Attrs, true, "src", "srcset", "sizes", "width", "height", "loading", "decoding")... }
 	/>
 }
 
@@ -84,7 +100,7 @@ templ Picture(p PictureProps) {
 		if PictureClasses(p) != "" {
 			class={ PictureClasses(p) }
 		}
-		{ uiutils.SafeAttrs(p.Attrs)... }
+		{ uiutils.RestAttrs(p.Attrs, false)... }
 	>
 		{ children... }
 	</picture>
@@ -102,18 +118,26 @@ type SourceProps struct {
 // Source renders the Source contract.
 templ Source(p SourceProps) {
 	<source
-		if uiutils.IsSetStr(p.SrcSet) {
-			srcset={ p.SrcSet }
+		if !uiutils.HasAttr(p.Attrs, "srcset") {
+			if uiutils.IsSetStr(p.SrcSet) {
+				srcset={ p.SrcSet }
+			}
 		}
-		if uiutils.IsSetStr(p.Media) {
-			media={ p.Media }
+		if !uiutils.HasAttr(p.Attrs, "media") {
+			if uiutils.IsSetStr(p.Media) {
+				media={ p.Media }
+			}
 		}
-		if uiutils.IsSetStr(p.Type) {
-			type={ p.Type }
+		if !uiutils.HasAttr(p.Attrs, "type") {
+			if uiutils.IsSetStr(p.Type) {
+				type={ p.Type }
+			}
 		}
-		if uiutils.IsSetStr(p.Sizes) {
-			sizes={ p.Sizes }
+		if !uiutils.HasAttr(p.Attrs, "sizes") {
+			if uiutils.IsSetStr(p.Sizes) {
+				sizes={ p.Sizes }
+			}
 		}
-		{ uiutils.SafeAttrs(p.Attrs)... }
+		{ uiutils.RestAttrs(p.Attrs, false, "srcset", "media", "type", "sizes")... }
 	/>
 }

@@ -21,7 +21,7 @@ export const Dialog: Component<DialogProps> = (props) => {
   const [local, rest] = splitProps(props, ["open", "class", "className", "children"]);
   const cls = () => dialogClasses({ className: local.class ?? local.className });
   return (
-    <dialog {...(cls() ? { class: cls() } : {})} open={local.open || undefined} {...safeRest(rest)}>
+    <dialog {...(cls() ? { class: cls() } : {})} open={local.open || undefined} {...safeRest(rest, { blank: ["id", "aria-labelledby", "aria-describedby", "aria-label"] })}>
       {local.children}
     </dialog>
   );

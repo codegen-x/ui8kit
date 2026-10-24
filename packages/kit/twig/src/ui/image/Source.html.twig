@@ -10,4 +10,4 @@
 {% set type = type ?? null %}
 {% set sizes = sizes ?? null %}
 {% set attrs = attrs|default([]) %}
-<source{{ ui8kit_attrs({'srcset': srcSet, 'media': media, 'type': type, 'sizes': sizes}, attrs) }}>
+<source{{ ui8kit_attrs({'srcset': ui8kit_or_null(srcSet), 'media': ui8kit_or_null(media), 'type': ui8kit_or_null(type), 'sizes': ui8kit_or_null(sizes)}, attrs, false, ['srcset', 'media', 'type', 'sizes']) }}>

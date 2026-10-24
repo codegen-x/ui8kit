@@ -22,6 +22,6 @@ export const Checkbox: Component<CheckboxProps> = (props) => {
   const [local, rest] = splitProps(props, ["checked", "required", "disabled", "class", "className"]);
   const cls = () => checkboxClasses({ className: local.class ?? local.className });
   return (
-    <input type="checkbox" {...(cls() ? { class: cls() } : {})} checked={local.checked || undefined} required={local.required || undefined} disabled={local.disabled || undefined} {...safeRest(rest)} />
+    <input type="checkbox" {...(cls() ? { class: cls() } : {})} checked={local.checked || undefined} required={local.required || undefined} disabled={local.disabled || undefined} {...safeRest(rest, { blank: ["id", "name", "aria-invalid", "aria-describedby"] })} />
   );
 };

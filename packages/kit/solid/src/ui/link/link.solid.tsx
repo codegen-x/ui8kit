@@ -25,7 +25,7 @@ export const Link: Component<LinkProps> = (props) => {
   const relValue = () => (isSetStr(local.rel) ? local.rel : ((local.external || eqStr(targetValue(), "_blank")) ? "noopener noreferrer" : ""));
   const cls = () => linkClasses({ className: local.class ?? local.className });
   return (
-    <a {...(cls() ? { class: cls() } : {})} target={orUndef(targetValue())} rel={orUndef(relValue())} {...safeRest(rest)}>
+    <a {...(cls() ? { class: cls() } : {})} target={orUndef(targetValue())} rel={orUndef(relValue())} {...safeRest(rest, { blank: ["href", "download", "aria-current", "aria-label"] })}>
       {local.children}
     </a>
   );
