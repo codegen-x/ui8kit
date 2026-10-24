@@ -13,7 +13,7 @@ const rest = computed(() => {
   const { class: _class, ...r } = attrs;
   return r;
 });
-const cls = computed(() => cn("text-lg font-semibold text-foreground", attrs.class as string | undefined));
+const cls = computed(() => cn("font-semibold leading-none", attrs.class as string | undefined));
 const tagValue = computed(() => (props.as && Number(props.as) >= 1 && Number(props.as) <= 6 ? `h${props.as}` : "h3"));
 </script>
 

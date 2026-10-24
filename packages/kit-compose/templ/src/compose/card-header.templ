@@ -11,7 +11,7 @@ type CardHeaderProps struct {
 
 func cardHeaderInner(p CardHeaderProps) box.BoxProps {
 	in := p.BoxProps
-	in.Class = Join("flex flex-col gap-2 p-6", p.BoxProps.Class)
+	in.Class = Join("grid auto-rows-min items-start gap-2", p.BoxProps.Class)
 	in.Tag = "div"
 	return in
 }

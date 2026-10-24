@@ -7,7 +7,7 @@
   import { rc } from "./recipes";
 
   let { class: className, children, ...rest }: Omit<ComponentProps<typeof Prim>, "tag"> & { class?: string; children?: Snippet } = $props();
-  const cls = $derived(cn("p-6 pt-0", className));
+  const cls = $derived(cn(className));
 </script>
 
 <Prim tag={"div" as never} class={cls} {...rest}>{@render children?.()}</Prim>

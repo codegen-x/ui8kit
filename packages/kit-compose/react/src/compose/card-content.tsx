@@ -8,5 +8,5 @@ export type CardContentProps = Omit<ComponentProps<typeof Prim>, "tag"> & { clas
 
 /** CardContent: Box <div>. */
 export function CardContent({ className, ...rest }: CardContentProps) {
-  return <Prim tag={"div" as never} className={cn("p-6 pt-0", className)} {...rest} />;
+  return <Prim tag={"div" as never} className={cn(className)} {...rest} />;
 }

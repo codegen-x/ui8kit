@@ -13,7 +13,7 @@ type CardTitleProps struct {
 
 func cardTitleInner(p CardTitleProps) text.TextProps {
 	in := p.TextProps
-	in.Class = Join("text-lg font-semibold text-foreground", p.TextProps.Class)
+	in.Class = Join("font-semibold leading-none", p.TextProps.Class)
 	in.Tag = Heading(p.As, "h3")
 	return in
 }

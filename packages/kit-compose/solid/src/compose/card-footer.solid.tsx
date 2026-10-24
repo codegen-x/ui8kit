@@ -9,5 +9,5 @@ export type CardFooterProps = Omit<ComponentProps<typeof Prim>, "tag" | "class" 
 /** CardFooter: Box <div>. */
 export function CardFooter(props: CardFooterProps) {
   const [local, rest] = splitProps(props, ["class", "className"]);
-  return <Prim tag={"div" as never} class={cn("flex items-center p-6 pt-0", local.class ?? local.className)} {...rest} />;
+  return <Prim tag={"div" as never} class={cn("flex items-center", local.class ?? local.className)} {...rest} />;
 }

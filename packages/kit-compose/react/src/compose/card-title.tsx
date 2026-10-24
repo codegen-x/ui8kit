@@ -8,5 +8,5 @@ export type CardTitleProps = Omit<ComponentProps<typeof Prim>, "tag"> & { as?: n
 
 /** CardTitle: Text. */
 export function CardTitle({ as, className, ...rest }: CardTitleProps) {
-  return <Prim tag={(as && Number(as) >= 1 && Number(as) <= 6 ? `h${as}` : "h3") as never} className={cn("text-lg font-semibold text-foreground", className)} {...rest} />;
+  return <Prim tag={(as && Number(as) >= 1 && Number(as) <= 6 ? `h${as}` : "h3") as never} className={cn("font-semibold leading-none", className)} {...rest} />;
 }

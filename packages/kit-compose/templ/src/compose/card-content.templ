@@ -11,7 +11,7 @@ type CardContentProps struct {
 
 func cardContentInner(p CardContentProps) box.BoxProps {
 	in := p.BoxProps
-	in.Class = Join("p-6 pt-0", p.BoxProps.Class)
+	in.Class = Join(p.BoxProps.Class)
 	in.Tag = "div"
 	return in
 }

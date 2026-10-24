@@ -7,7 +7,7 @@
   import { rc } from "./recipes";
 
   let { class: className, children, ...rest }: Omit<ComponentProps<typeof Prim>, "tag"> & { class?: string; children?: Snippet } = $props();
-  const cls = $derived(cn("flex flex-col gap-2 p-6", className));
+  const cls = $derived(cn("grid auto-rows-min items-start gap-2", className));
 </script>
 
 <Prim tag={"div" as never} class={cls} {...rest}>{@render children?.()}</Prim>

@@ -11,7 +11,7 @@ type CardFooterProps struct {
 
 func cardFooterInner(p CardFooterProps) box.BoxProps {
 	in := p.BoxProps
-	in.Class = Join("flex items-center p-6 pt-0", p.BoxProps.Class)
+	in.Class = Join("flex items-center", p.BoxProps.Class)
 	in.Tag = "div"
 	return in
 }

@@ -7,7 +7,7 @@
   import { rc } from "./recipes";
 
   let { as, class: className, children, ...rest }: Omit<ComponentProps<typeof Prim>, "tag"> & { as?: string | number; class?: string; children?: Snippet } = $props();
-  const cls = $derived(cn("text-lg font-semibold text-foreground", className));
+  const cls = $derived(cn("font-semibold leading-none", className));
 </script>
 
 <Prim tag={(as && Number(as) >= 1 && Number(as) <= 6 ? `h${as}` : "h3") as never} class={cls} {...rest}>{@render children?.()}</Prim>

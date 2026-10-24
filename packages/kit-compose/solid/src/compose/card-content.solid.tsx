@@ -9,5 +9,5 @@ export type CardContentProps = Omit<ComponentProps<typeof Prim>, "tag" | "class"
 /** CardContent: Box <div>. */
 export function CardContent(props: CardContentProps) {
   const [local, rest] = splitProps(props, ["class", "className"]);
-  return <Prim tag={"div" as never} class={cn("p-6 pt-0", local.class ?? local.className)} {...rest} />;
+  return <Prim tag={"div" as never} class={cn(local.class ?? local.className)} {...rest} />;
 }

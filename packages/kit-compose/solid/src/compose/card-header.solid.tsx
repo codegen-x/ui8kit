@@ -9,5 +9,5 @@ export type CardHeaderProps = Omit<ComponentProps<typeof Prim>, "tag" | "class" 
 /** CardHeader: Box <div>. */
 export function CardHeader(props: CardHeaderProps) {
   const [local, rest] = splitProps(props, ["class", "className"]);
-  return <Prim tag={"div" as never} class={cn("flex flex-col gap-2 p-6", local.class ?? local.className)} {...rest} />;
+  return <Prim tag={"div" as never} class={cn("grid auto-rows-min items-start gap-2", local.class ?? local.className)} {...rest} />;
 }

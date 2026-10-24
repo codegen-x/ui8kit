@@ -13,7 +13,7 @@ const rest = computed(() => {
   const { class: _class, ...r } = attrs;
   return r;
 });
-const cls = computed(() => cn("flex flex-col gap-2 p-6", attrs.class as string | undefined));
+const cls = computed(() => cn("grid auto-rows-min items-start gap-2", attrs.class as string | undefined));
 const tagValue = computed(() => "div");
 </script>
 

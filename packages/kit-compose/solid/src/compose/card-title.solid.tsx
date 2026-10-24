@@ -9,5 +9,5 @@ export type CardTitleProps = Omit<ComponentProps<typeof Prim>, "tag" | "class" |
 /** CardTitle: Text. */
 export function CardTitle(props: CardTitleProps) {
   const [local, rest] = splitProps(props, ["as", "class", "className"]);
-  return <Prim tag={(local.as && Number(local.as) >= 1 && Number(local.as) <= 6 ? `h${local.as}` : "h3") as never} class={cn("text-lg font-semibold text-foreground", local.class ?? local.className)} {...rest} />;
+  return <Prim tag={(local.as && Number(local.as) >= 1 && Number(local.as) <= 6 ? `h${local.as}` : "h3") as never} class={cn("font-semibold leading-none", local.class ?? local.className)} {...rest} />;
 }

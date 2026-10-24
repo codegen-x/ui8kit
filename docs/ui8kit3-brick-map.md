@@ -22,11 +22,11 @@ Prop placement, checked against ui8kit/codegen v0.1.0: as there, `variant` / `si
 | Skeleton | Box | `div` | skeleton | "aria-hidden": "true" |
 | Alert | Box | `div` | alert | role: "alert" |
 | Card | Box | `div` | card | — |
-| CardHeader | Box | `div` | — | `flex flex-col gap-2 p-6` |
-| CardTitle | Text | `h3` | — | `text-lg font-semibold text-foreground` |
+| CardHeader | Box | `div` | — | `grid auto-rows-min items-start gap-2` |
+| CardTitle | Text | `h3` | — | `font-semibold leading-none` |
 | CardDescription | Text | `p` | — | `text-sm text-muted-foreground` |
-| CardContent | Box | `div` | — | `p-6 pt-0` |
-| CardFooter | Box | `div` | — | `flex items-center p-6 pt-0` |
+| CardContent | Box | `div` | — | — (the Card recipe pads the card) |
+| CardFooter | Box | `div` | — | `flex items-center` |
 | Table | Box | `table` | table | — |
 | TableCaption | Box | `caption` | — | — |
 | TableHead | Box | `thead` | — | — |

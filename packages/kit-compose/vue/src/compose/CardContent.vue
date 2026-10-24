@@ -13,7 +13,7 @@ const rest = computed(() => {
   const { class: _class, ...r } = attrs;
   return r;
 });
-const cls = computed(() => cn("p-6 pt-0", attrs.class as string | undefined));
+const cls = computed(() => cn(attrs.class as string | undefined));
 const tagValue = computed(() => "div");
 </script>
 
