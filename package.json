@@ -28,7 +28,7 @@
   ],
   "packageManager": "bun@1.4.2",
   "scripts": {
-    "build": "bun packages/kit-compose/src/build.ts && bun packages/kit-compose/src/organisms.ts && bun packages/kit-compose/src/server-organisms.ts && bun packages/kit-compose/src/hosts.ts",
+    "build": "bun packages/compose-gen/check.ts --write --no-check && bun packages/kit-compose/src/build.ts && bun packages/kit-compose/src/organisms.ts && bun packages/kit-compose/src/server-organisms.ts && bun packages/kit-compose/src/hosts.ts",
     "check": "node packages/tooling/bin/xgen-exit-guard.mjs && node packages/tooling/bin/kit-check.mjs && bun run compose:check && bun run gates:source && bun packages/skins/skins.ts build --check && bun packages/compose-gen/schema/src/codex-blocks.ts --check && bun packages/tooling/rules/rules.ts --gate",
     "skins": "bun packages/skins/skins.ts",
     "verify": "bun run check && bun run codex:validate && bun run typecheck && bun run test",

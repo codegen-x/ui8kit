@@ -1,6 +1,6 @@
 ---
 description: Any file opens on at most one semantic Block (never nested, never in a loop); blocks and screens must; Box is never a wrapper
-globs: apps/discovery/src/App.svelte,apps/discovery/src/parts/**,apps/magazine/src/App.svelte,apps/magazine/src/reference/**,apps/magazine/src/parts/**,apps/magazine/src/templates/**,apps/host-*/xgen/App.*,apps/host-*/xgen/screens/**,packages/*/ui/src/blocks/**,packages/*/ui/src/components/**,packages/*/ui/blocks/**,packages/taste-screens/src/screens/**,packages/taste-screens/src/parts/**
+globs: apps/discovery/src/App.svelte,apps/discovery/src/parts/**,apps/magazine/src/App.svelte,apps/magazine/src/reference/**,apps/magazine/src/parts/**,apps/magazine/src/feed/**,apps/magazine/src/templates/**,apps/host-*/gen/App.*,apps/host-*/gen/screens/**,packages/kit-compose/*/src/blocks/**,packages/kit-compose/*/src/components/**,packages/taste-screens/src/screens/**,packages/taste-screens/src/parts/**
 alwaysApply: false
 ---
 
@@ -108,7 +108,7 @@ summary) use `Inline` or `Text` with an inline tag, never `Stack` or `Group`.
 - **Composites.** A composite opens on `Box` (role="group" through attrs for a panel) or
   on one `Block` with a semantic tag. A `nav`, `figure` or `article` nested inside a block
   root or repeated in a loop is the part `NavBlock` / `FigureBlock` / `ArticleBlock`
-  (`xgen/screens/src/authoring/components/landmarks.ts`): its own file, rooted on
+  (`packages/compose-gen/screens/src/authoring/components/landmarks.ts`): its own file, rooted on
   `Block`, so the parent file still holds one Block and none in a loop.
 - **Cards** that are whole blocks (pricing, product, post) open on `Block tag="article"`
   with the card classes (`cardBase()`) and `data-slot="card"`.

@@ -1,6 +1,6 @@
 ---
 description: Vue 3 (SFC) syntax appendix of rules 00, 01, 02, 03 and 06 for the composition zone
-globs: apps/host-vue/xgen/App.vue,apps/host-vue/xgen/screens/**/*.vue,packages/vue/ui/src/blocks/**/*.vue,packages/vue/ui/src/components/**/*.vue
+globs: apps/host-vue/gen/App.vue,apps/host-vue/gen/screens/**/*.vue,packages/kit-compose/vue/src/blocks/**/*.vue,packages/kit-compose/vue/src/components/**/*.vue
 alwaysApply: false
 ---
 
@@ -15,8 +15,8 @@ packages whose `ui8kit.runtime` is `vue` (see `rules/zones.json`).
 
 | Zone | Paths |
 | --- | --- |
-| Kit | `packages/vue/ui/src/primitives`, `src/utils`, `src/styles`; `apps/host-vue/xgen/runtime` |
-| Composition | `packages/vue/ui/src/blocks`, `src/components`; `apps/host-vue/xgen/screens` |
+| Kit | `packages/kit/vue` (UI8Kit 3 primitives); `packages/kit-compose/vue/src/compose`, `src/icons`, `src/presets`, `src/utils`, `src/styles`; `apps/host-vue/gen/runtime` |
+| Composition | `packages/kit-compose/vue/src/blocks`, `src/components`; `apps/host-vue/gen/screens` |
 
 ## Syntax
 

@@ -1,6 +1,6 @@
 ---
 description: No literal text in composition; words come from content (the ui dictionary) or props. English only, no Cyrillic in code
-globs: apps/discovery/src/App.svelte,apps/discovery/src/parts/**,apps/magazine/src/App.svelte,apps/magazine/src/reference/**,apps/magazine/src/parts/**,apps/magazine/src/templates/**,apps/host-*/xgen/App.*,apps/host-*/xgen/screens/**,packages/*/ui/src/blocks/**,packages/*/ui/src/components/**,packages/*/ui/blocks/**,packages/taste-screens/src/screens/**,packages/taste-screens/src/parts/**
+globs: apps/discovery/src/App.svelte,apps/discovery/src/parts/**,apps/magazine/src/App.svelte,apps/magazine/src/reference/**,apps/magazine/src/parts/**,apps/magazine/src/feed/**,apps/magazine/src/templates/**,apps/host-*/gen/App.*,apps/host-*/gen/screens/**,packages/kit-compose/*/src/blocks/**,packages/kit-compose/*/src/components/**,packages/taste-screens/src/screens/**,packages/taste-screens/src/parts/**
 alwaysApply: false
 ---
 
@@ -13,15 +13,15 @@ template reads content in each stack is in the runtime appendix.
 
 1. The default language is English. Demo data, fixtures and comments are English.
 2. Other languages are separate content files, never code. No Cyrillic in
-   code, comments or strings anywhere in `xgen`, `packages` and `apps`
-   (`xgen check`, group `text`).
+   code, comments or strings anywhere in `packages` and `apps`
+   (`compose-gen check`, group `text`).
 
 ## Where text lives
 
 | Text | Where |
 | --- | --- |
-| Interface text: titles, labels, buttons, menus, placeholders, empty states, screen-reader text | `xgen/content/ui/en.json`, generated into `@ui8kit/app-shared/content` as `ui`, read as `ui.group.key`; placeholders through `tpl()` |
-| Demo records | the Codex fixtures in `xgen/fixtures` |
+| Interface text: titles, labels, buttons, menus, placeholders, empty states, screen-reader text | `packages/compose-gen/content/ui/en.json`, generated into `@ui8kit/app-shared/content` as `ui`, read as `ui.group.key`; placeholders through `tpl()` |
+| Demo records | the Codex fixtures in `packages/compose-gen/fixtures` |
 | Dev diagnostics (`throw new Error`, `console.*`) | code, English, never shown to users |
 
 A block or a composite gets text through props filled by its parent, through

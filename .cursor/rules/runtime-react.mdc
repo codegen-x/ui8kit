@@ -1,6 +1,6 @@
 ---
 description: React 19 (TSX) syntax appendix of rules 00, 01, 02, 03 and 06 for the composition zone
-globs: apps/host-react/xgen/App.tsx,apps/host-react/xgen/screens/**/*.tsx,packages/react/ui/src/blocks/**/*.tsx,packages/react/ui/src/components/**/*.tsx
+globs: apps/host-react/gen/App.tsx,apps/host-react/gen/screens/**/*.tsx,packages/kit-compose/react/src/blocks/**/*.tsx,packages/kit-compose/react/src/components/**/*.tsx
 alwaysApply: false
 ---
 
@@ -15,8 +15,8 @@ packages whose `ui8kit.runtime` is `react` (see `rules/zones.json`).
 
 | Zone | Paths |
 | --- | --- |
-| Kit | `packages/react/ui/src/primitives`, `src/utils`, `src/styles`; `apps/host-react/xgen/runtime` |
-| Composition | `packages/react/ui/src/blocks`, `src/components`; `apps/host-react/xgen/screens` |
+| Kit | `packages/kit/react` (UI8Kit 3 primitives); `packages/kit-compose/react/src/compose`, `src/icons`, `src/presets`, `src/utils`, `src/styles`; `apps/host-react/gen/runtime` |
+| Composition | `packages/kit-compose/react/src/blocks`, `src/components`; `apps/host-react/gen/screens` |
 
 ## Syntax
 
