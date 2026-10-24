@@ -42,13 +42,14 @@
     "build:hosts": "bun run --cwd apps/host-svelte build && bun run --cwd apps/host-react build && bun run --cwd apps/host-vue build && bun run --cwd apps/host-solid build",
     "typecheck": "bun run --filter \"@ui8kit/app-shared\" --filter \"@codegen-x/*-compose\" --filter \"host-*\" --filter \"discovery\" --filter \"@ui8kit/panorama\" --filter \"@ui8kit/taste-data\" --filter \"@ui8kit/taste-screens\" --filter \"magazine\" --parallel check && bun run --cwd packages/kit-compose typecheck",
     "test": "bun test ./packages/taste-data/src ./packages/kit-compose ./packages/ui-gates ./packages/skins ./packages/tooling/rules ./packages/compose-gen",
-    "check:all": "bun run build && bun run check && bun run typecheck && bun run build:hosts && bun run test && bun run lint:px",
+    "check:all": "bun run build && bun run check && bun run typecheck && bun run build:hosts && bun run test && bun run lint:px && bun run e2e",
     "lint:px": "node packages/tooling/bin/ui8px-gate.mjs",
     "kit:check": "node packages/tooling/bin/kit-check.mjs",
     "compose:build": "bun packages/kit-compose/src/build.ts",
     "compose:check": "bun packages/compose-gen/check.ts && bun packages/kit-compose/src/build.ts --check && bun packages/kit-compose/src/organisms.ts --check && bun packages/kit-compose/src/server-organisms.ts --check && bun packages/kit-compose/src/hosts.ts --check",
     "compose:hosts": "bun packages/kit-compose/src/hosts.ts",
-    "gates:source": "node packages/ui-gates/bin/ui-gates.mjs source packages/kit-compose/react packages/kit-compose/svelte packages/kit-compose/vue packages/kit-compose/solid packages/kit-compose/jinja2 packages/kit-compose/twig packages/kit-compose/latte packages/kit-compose/templ/src --allow-tag del"
+    "gates:source": "node packages/ui-gates/bin/ui-gates.mjs source packages/kit-compose/react packages/kit-compose/svelte packages/kit-compose/vue packages/kit-compose/solid packages/kit-compose/jinja2 packages/kit-compose/twig packages/kit-compose/latte packages/kit-compose/templ/src --allow-tag del",
+    "e2e": "bun packages/compose-gen/e2e.ts"
   },
   "devDependencies": {
     "@types/bun": "^1.4.2",
