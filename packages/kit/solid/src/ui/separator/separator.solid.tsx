@@ -6,7 +6,7 @@
 
 import { splitProps, type JSX, type Component } from "solid-js";
 import { separatorClasses } from "./separator.shared";
-import { eqStr, oneOfOrLower } from "../../utils/expr";
+import { eqStr, oneOfOrLower, safeRest } from "../../utils/expr";
 
 /**
  * Separator renders a void hr; no children.
@@ -22,6 +22,6 @@ export const Separator: Component<SeparatorProps> = (props) => {
   const [local, rest] = splitProps(props, ["orientation", "decorative", "class", "className"]);
   const cls = () => separatorClasses({ className: local.class ?? local.className });
   return (
-    <hr class={cls() || undefined} role={local.decorative ? "none" : undefined} aria-orientation={(!(local.decorative) && eqStr(oneOfOrLower(local.orientation, "horizontal", "vertical"), "vertical")) ? "vertical" : undefined} {...rest} />
+    <hr {...(cls() ? { class: cls() } : {})} role={local.decorative ? "none" : undefined} aria-orientation={(!(local.decorative) && eqStr(oneOfOrLower(local.orientation, "horizontal", "vertical"), "vertical")) ? "vertical" : undefined} {...safeRest(rest)} />
   );
 };

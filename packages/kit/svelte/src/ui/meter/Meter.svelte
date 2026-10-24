@@ -14,13 +14,15 @@
 
 <script lang="ts">
   import { meterClasses } from "./meter.shared";
+  import { safeRest } from "../../utils/expr";
 
   let {
     class: className,
     children,
-    ...rest
+    ...rawRest
   }: MeterProps = $props();
 
+  const rest = $derived(safeRest(rawRest));
   const cls = $derived(meterClasses({ className }));
 </script>
 

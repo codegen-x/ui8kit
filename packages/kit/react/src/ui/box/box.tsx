@@ -7,6 +7,7 @@
 
 import { forwardRef, type ReactNode, type HTMLAttributes, type ElementType, type Ref } from "react";
 import { boxClasses } from "./box.shared";
+import { safeRest } from "../../utils/expr";
 import { resolveTag, TagGroup } from "../../utils/tags";
 import { Slot } from "../slot/slot";
 
@@ -21,9 +22,10 @@ export type BoxProps = Omit<HTMLAttributes<HTMLElement>, "className" | "children
 };
 
 export const Box = forwardRef<HTMLElement, BoxProps>(function Box(
-  { tag, className, children, asChild, ...rest },
+  { tag, className, children, asChild, ...rawRest },
   ref
 ) {
+  const rest = safeRest(rawRest);
   const cls = boxClasses({ className });
   const resolvedTagValue = resolveTag(tag, "div", TagGroup.Box);
   const Tag = resolvedTagValue as ElementType;

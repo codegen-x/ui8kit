@@ -52,7 +52,7 @@ templ SlotBoard(p SlotBoardProps) {
 					@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: "rounded bg-card inset-ring inset-ring-border p-6", Attrs: uiutils.Attrs("data-testid", "aside")}}) {
 						@Field(FieldProps{Label: uiutils.Get(vLabels, "zone"), HtmlFor: uiutils.Tpl("{0}-zone", vId)}) {
 							@compose.Select(compose.SelectProps{SelectProps: selectfield.SelectProps{Name: uiutils.S(uiutils.Tpl("{0}-zone", vId)), Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-zone", vId))}}) {
-								@selectfield.SelectOption(selectfield.SelectOptionProps{Value: uiutils.S(uiutils.Get(vZone, "id")), Selected: true, Attrs: uiutils.Attrs("label", uiutils.Get(vZone, "name"))})
+								@selectfield.SelectOption(selectfield.SelectOptionProps{Value: uiutils.SP(uiutils.Get(vZone, "id")), Selected: true, Attrs: uiutils.Attrs("label", uiutils.Get(vZone, "name"))})
 							}
 						}
 						@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: "flex flex-col gap-2"}}) {

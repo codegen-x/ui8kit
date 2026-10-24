@@ -6,6 +6,7 @@
 
 import { splitProps, type JSX, type Component } from "solid-js";
 import { imageClasses, pictureClasses } from "./image.shared";
+import { safeRest } from "../../utils/expr";
 
 /**
  * Image renders an img element; alt is always emitted.
@@ -20,7 +21,7 @@ export const Image: Component<ImageProps> = (props) => {
   const [local, rest] = splitProps(props, ["alt", "class", "className"]);
   const cls = () => imageClasses({ className: local.class ?? local.className });
   return (
-    <img alt={(local.alt) ?? ""} class={cls() || undefined} {...rest} />
+    <img alt={(local.alt) ?? ""} {...(cls() ? { class: cls() } : {})} {...safeRest(rest)} />
   );
 };
 
@@ -37,7 +38,7 @@ export const Picture: Component<PictureProps> = (props) => {
   const [local, rest] = splitProps(props, ["class", "className", "children"]);
   const cls = () => pictureClasses({ className: local.class ?? local.className });
   return (
-    <picture class={cls() || undefined} {...rest}>
+    <picture {...(cls() ? { class: cls() } : {})} {...safeRest(rest)}>
       {local.children}
     </picture>
   );
@@ -54,6 +55,6 @@ export type SourceProps = Omit<JSX.SourceHTMLAttributes<HTMLSourceElement>, "cla
 export const Source: Component<SourceProps> = (props) => {
   const [, rest] = splitProps(props, ["class", "className"]);
   return (
-    <source {...rest} />
+    <source {...safeRest(rest)} />
   );
 };

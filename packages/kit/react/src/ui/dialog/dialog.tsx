@@ -5,6 +5,7 @@
 
 import { forwardRef, type ReactNode, type DialogHTMLAttributes } from "react";
 import { dialogClasses } from "./dialog.shared";
+import { safeRest } from "../../utils/expr";
 
 /**
  * Dialog renders a native dialog element.
@@ -16,9 +17,10 @@ export type DialogProps = Omit<DialogHTMLAttributes<HTMLDialogElement>, "classNa
 };
 
 export const Dialog = forwardRef<HTMLDialogElement, DialogProps>(function Dialog(
-  { open, className, children, ...rest },
+  { open, className, children, ...rawRest },
   ref
 ) {
+  const rest = safeRest(rawRest);
   const cls = dialogClasses({ className });
   return (
     <dialog ref={ref} className={cls || undefined} open={open} {...rest}>

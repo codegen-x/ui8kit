@@ -5,6 +5,7 @@
 <script setup lang="ts">
 import { computed, useAttrs } from "vue";
 import { dialogClasses } from "./dialog.shared";
+import { safeRest } from "../../utils/expr";
 
 defineOptions({ name: "Dialog", inheritAttrs: false });
 
@@ -16,7 +17,7 @@ const attrs = useAttrs();
 const callerClass = computed(() => attrs.class as string | undefined);
 const restAttrs = computed(() => {
   const { class: _class, ...restEntries } = attrs;
-  return restEntries;
+  return safeRest(restEntries);
 });
 const cls = computed(() => dialogClasses({ className: callerClass.value }));
 </script>

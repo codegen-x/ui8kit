@@ -40,6 +40,6 @@ templ Separator(p SeparatorProps) {
 		if (!p.Decorative && (uiutils.OneOfOrLower(p.Orientation, "horizontal", "vertical") == "vertical")) {
 			aria-orientation={ "vertical" }
 		}
-		{ p.Attrs... }
+		{ uiutils.SafeAttrs(p.Attrs)... }
 	/>
 }

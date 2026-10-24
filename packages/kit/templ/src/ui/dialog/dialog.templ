@@ -48,7 +48,7 @@ templ Dialog(p DialogProps) {
 		if uiutils.IsSetStr(p.AriaLabel) {
 			aria-label={ p.AriaLabel }
 		}
-		{ p.Attrs... }
+		{ uiutils.SafeAttrs(p.Attrs)... }
 	>
 		{ children... }
 	</dialog>

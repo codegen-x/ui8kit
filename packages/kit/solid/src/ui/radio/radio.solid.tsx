@@ -5,6 +5,7 @@
 
 import { splitProps, type JSX, type Component } from "solid-js";
 import { radioClasses } from "./radio.shared";
+import { safeRest } from "../../utils/expr";
 
 /**
  * Radio renders input[type=radio].
@@ -21,6 +22,6 @@ export const Radio: Component<RadioProps> = (props) => {
   const [local, rest] = splitProps(props, ["checked", "required", "disabled", "class", "className"]);
   const cls = () => radioClasses({ className: local.class ?? local.className });
   return (
-    <input type="radio" class={cls() || undefined} checked={local.checked || undefined} required={local.required || undefined} disabled={local.disabled || undefined} {...rest} />
+    <input type="radio" {...(cls() ? { class: cls() } : {})} checked={local.checked || undefined} required={local.required || undefined} disabled={local.disabled || undefined} {...safeRest(rest)} />
   );
 };

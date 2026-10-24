@@ -29,18 +29,9 @@ test("generated organisms are up to date", () => {
   expect(loaded.organisms.length).toBeGreaterThanOrEqual(224);
 });
 
-/**
- * Known gaps of the installed kit (UI8Kit 3.2.0), reported, not hidden: the v3 Text tag allowlist has no <del>, so the
- * compare-at price of ProductPrice / ProductCard (spec Tag "del") renders the Text fallback <p> (line-through class kept).
- * Fixed upstream (ui8kit/codegen 4f0eeef, registry 3.2.2 unpublished): stays here until the kit is reinstalled.
- */
-const KNOWN_KIT_GAPS: Record<string, RegExp> = { 'tag "del" is not an HTML5 Box/Text tag': /\/(product-card|product-price)\.(tsx|svelte|vue)$/ };
-
 test("no raw HTML where a primitive exists in the organism sources", () => {
   const src = [...generated].filter(([f]) => /\/src\/(blocks|components)\/[^/]+\.(tsx|svelte|vue)$/.test(f)).flatMap(([f, body]) => checkSourceText(body, f));
-  const known = src.filter((p) => Object.entries(KNOWN_KIT_GAPS).some(([m, f]) => p.message.includes(m) && f.test(p.file)));
-  expect(src.filter((p) => !known.includes(p)).map((p) => `${p.file}:${p.line} ${p.rule} ${p.message}`)).toEqual([]);
-  expect(known.length).toBe(8); // 2 organisms x 4 runtimes: a fixed kit makes this fail, then drop the entry
+  expect(src.map((p) => `${p.file}:${p.line} ${p.rule} ${p.message}`)).toEqual([]);
 });
 
 const rendered: { id: string; html: string }[] = [];

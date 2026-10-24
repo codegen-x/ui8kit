@@ -34,7 +34,7 @@ templ NumberField(p NumberFieldProps) {
 		@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{Type: "button", AriaLabel: uiutils.S(vDecrease), Attrs: uiutils.Attrs("data-testid", "decrease")}}) {
 			@icons.LucideIcon(icons.LucideIconProps{Name: "minus", Size: 16})
 		}
-		@compose.Input(compose.InputProps{Size: "sm", InputProps: input.InputProps{Type: "number", Name: uiutils.S(vName), Value: uiutils.S(vValue), Min: uiutils.S(vMin), Class: "number-bare w-8 bg-transparent px-0 text-center inset-ring-0", Attrs: uiutils.Attrs("aria-label", vLabel)}})
+		@compose.Input(compose.InputProps{Size: "sm", InputProps: input.InputProps{Type: "number", Name: uiutils.S(vName), Value: uiutils.SP(vValue), Min: uiutils.S(vMin), Class: "number-bare w-8 bg-transparent px-0 text-center inset-ring-0", Attrs: uiutils.Attrs("aria-label", vLabel)}})
 		@compose.Button(compose.ButtonProps{Variant: "ghost", Size: "sm", Layout: "icon", ButtonProps: button.ButtonProps{Type: "button", AriaLabel: uiutils.S(vIncrease), Attrs: uiutils.Attrs("data-testid", "increase")}}) {
 			@icons.LucideIcon(icons.LucideIconProps{Name: "plus", Size: 16})
 		}

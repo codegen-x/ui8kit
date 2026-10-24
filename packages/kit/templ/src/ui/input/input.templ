@@ -18,7 +18,7 @@ type InputProps struct {
 	Type string
 	ID string
 	Name string
-	Value string
+	Value *string
 	Placeholder string
 	Min string
 	Max string
@@ -50,8 +50,8 @@ templ Input(p InputProps) {
 		if uiutils.IsSetStr(p.Name) {
 			name={ p.Name }
 		}
-		if uiutils.IsSetStr(p.Value) {
-			value={ p.Value }
+		if p.Value != nil {
+			value={ *p.Value }
 		}
 		if uiutils.IsSetStr(p.Placeholder) {
 			placeholder={ p.Placeholder }
@@ -74,6 +74,6 @@ templ Input(p InputProps) {
 		if uiutils.IsSetStr(p.AriaDescribedBy) {
 			aria-describedby={ p.AriaDescribedBy }
 		}
-		{ p.Attrs... }
+		{ uiutils.SafeAttrs(p.Attrs)... }
 	/>
 }

@@ -6,7 +6,7 @@
 
 import { forwardRef, type ReactNode, type ButtonHTMLAttributes } from "react";
 import { switchClasses } from "./switch.shared";
-import { boolStr } from "../../utils/expr";
+import { boolStr, safeRest } from "../../utils/expr";
 
 /**
  * Switch renders button[type=button][role=switch]; children render the thumb.
@@ -19,9 +19,10 @@ export type SwitchProps = Omit<ButtonHTMLAttributes<HTMLButtonElement>, "classNa
 };
 
 export const Switch = forwardRef<HTMLButtonElement, SwitchProps>(function Switch(
-  { checked, disabled, className, children, ...rest },
+  { checked, disabled, className, children, ...rawRest },
   ref
 ) {
+  const rest = safeRest(rawRest);
   const cls = switchClasses({ className });
   return (
     <button ref={ref} type="button" role="switch" aria-checked={boolStr(checked)} data-state={boolStr(checked)} className={cls || undefined} disabled={disabled} {...rest}>

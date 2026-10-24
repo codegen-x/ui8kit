@@ -5,16 +5,16 @@
     Classes without rendering: form_classes(p) (no asChild in Jinja2). -#}
 <form
   {%- with cls = form_classes(p) %}{%- if cls %} class="{{ cls }}"{%- endif %}{%- endwith %}
-  {%- if ui_is_set_str(ui_def(p['ID'], '')) %} id="{{ ui_def(p['ID'], '') }}"{%- endif %}
-  {%- if ui_is_set_str(ui_def(p['Name'], '')) %} name="{{ ui_def(p['Name'], '') }}"{%- endif %}
-  {%- if ui_is_set_str(ui_def(p['Action'], '')) %} action="{{ ui_def(p['Action'], '') }}"{%- endif %}
+  {%- if p['ID'] is defined and p['ID'] is not none %} id="{{ p['ID'] }}"{%- endif %}
+  {%- if p['Name'] is defined and p['Name'] is not none %} name="{{ p['Name'] }}"{%- endif %}
+  {%- if p['Action'] is defined and p['Action'] is not none and (p['Action'] == '' or ui_safe_url(p['Action']) != '') %} action="{{ p['Action'] }}"{%- endif %}
   {%- if ui_is_set_str(ui_map_or(ui_def(p['Method'], ''), {'get': 'get', 'post': 'post', 'dialog': 'dialog'}, '', true)) %} method="{{ ui_map_or(ui_def(p['Method'], ''), {'get': 'get', 'post': 'post', 'dialog': 'dialog'}, '', true) }}"{%- endif %}
-  {%- if ui_is_set_str(ui_def(p['Enctype'], '')) %} enctype="{{ ui_def(p['Enctype'], '') }}"{%- endif %}
+  {%- if p['Enctype'] is defined and p['Enctype'] is not none %} enctype="{{ p['Enctype'] }}"{%- endif %}
   {%- if ui_def(p['NoValidate'], false) %} novalidate{%- endif %}
-  {%- if ui_is_set_str(ui_def(p['Autocomplete'], '')) %} autocomplete="{{ ui_def(p['Autocomplete'], '') }}"{%- endif %}
-  {%- if ui_is_set_str(ui_def(p['Target'], '')) %} target="{{ ui_def(p['Target'], '') }}"{%- endif %}
-  {%- if ui_is_set_str(ui_def(p['AriaLabel'], '')) %} aria-label="{{ ui_def(p['AriaLabel'], '') }}"{%- endif %}
-  {%- if ui_is_set_str(ui_def(p['AriaLabelledBy'], '')) %} aria-labelledby="{{ ui_def(p['AriaLabelledBy'], '') }}"{%- endif %}
-  {%- if ui_is_set_str(ui_def(p['AriaDescribedBy'], '')) %} aria-describedby="{{ ui_def(p['AriaDescribedBy'], '') }}"{%- endif %}
+  {%- if p['Autocomplete'] is defined and p['Autocomplete'] is not none %} autocomplete="{{ p['Autocomplete'] }}"{%- endif %}
+  {%- if p['Target'] is defined and p['Target'] is not none %} target="{{ p['Target'] }}"{%- endif %}
+  {%- if p['AriaLabel'] is defined and p['AriaLabel'] is not none %} aria-label="{{ p['AriaLabel'] }}"{%- endif %}
+  {%- if p['AriaLabelledBy'] is defined and p['AriaLabelledBy'] is not none %} aria-labelledby="{{ p['AriaLabelledBy'] }}"{%- endif %}
+  {%- if p['AriaDescribedBy'] is defined and p['AriaDescribedBy'] is not none %} aria-describedby="{{ p['AriaDescribedBy'] }}"{%- endif %}
   {{ ui_attr_html(ui_def(p['Attrs'], {})) }}
 >{{ children|default('', true)|safe }}</form>

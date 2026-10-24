@@ -6,7 +6,7 @@
 
 import { forwardRef, type HTMLAttributes } from "react";
 import { separatorClasses } from "./separator.shared";
-import { eqStr, oneOfOrLower } from "../../utils/expr";
+import { eqStr, oneOfOrLower, safeRest } from "../../utils/expr";
 
 /**
  * Separator renders a void hr; no children.
@@ -18,9 +18,10 @@ export type SeparatorProps = Omit<HTMLAttributes<HTMLHRElement>, "className" | "
 };
 
 export const Separator = forwardRef<HTMLHRElement, SeparatorProps>(function Separator(
-  { orientation, decorative, className, ...rest },
+  { orientation, decorative, className, ...rawRest },
   ref
 ) {
+  const rest = safeRest(rawRest);
   const cls = separatorClasses({ className });
   return (
     <hr ref={ref} className={cls || undefined} role={decorative ? "none" : undefined} aria-orientation={(!(decorative) && eqStr(oneOfOrLower(orientation, "horizontal", "vertical"), "vertical")) ? "vertical" : undefined} {...rest} />

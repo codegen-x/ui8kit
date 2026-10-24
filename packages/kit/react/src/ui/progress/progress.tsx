@@ -5,6 +5,7 @@
 
 import { forwardRef, type ReactNode, type ProgressHTMLAttributes } from "react";
 import { progressClasses } from "./progress.shared";
+import { safeRest } from "../../utils/expr";
 
 /**
  * Progress renders a native progress element; children are the fallback text.
@@ -15,9 +16,10 @@ export type ProgressProps = Omit<ProgressHTMLAttributes<HTMLProgressElement>, "c
 };
 
 export const Progress = forwardRef<HTMLProgressElement, ProgressProps>(function Progress(
-  { className, children, ...rest },
+  { className, children, ...rawRest },
   ref
 ) {
+  const rest = safeRest(rawRest);
   const cls = progressClasses({ className });
   return (
     <progress ref={ref} className={cls || undefined} {...rest}>

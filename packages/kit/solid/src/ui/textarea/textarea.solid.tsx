@@ -3,8 +3,9 @@
  * Textarea is a multi-line native text field.
  */
 
-import { splitProps, type JSX, type Component } from "solid-js";
+import { createEffect, splitProps, type JSX, type Component } from "solid-js";
 import { textareaClasses } from "./textarea.shared";
+import { safeRest } from "../../utils/expr";
 
 /**
  * Textarea renders a native textarea; Value is the initial content.
@@ -22,6 +23,6 @@ export const Textarea: Component<TextareaProps> = (props) => {
   const [local, rest] = splitProps(props, ["value", "required", "disabled", "readOnly", "class", "className"]);
   const cls = () => textareaClasses({ className: local.class ?? local.className });
   return (
-    <textarea class={cls() || undefined} required={local.required || undefined} disabled={local.disabled || undefined} readonly={local.readOnly || undefined} {...rest} value={(local.value) ?? ""} />
+    <textarea {...(cls() ? { class: cls() } : {})} required={local.required || undefined} disabled={local.disabled || undefined} readonly={local.readOnly || undefined} {...safeRest(rest)} ref={(el) => createEffect(() => { el.value = (local.value) ?? ""; })}>{(local.value) ?? ""}</textarea>
   );
 };

@@ -5,6 +5,7 @@
 
 import { forwardRef, type ReactNode, type MeterHTMLAttributes } from "react";
 import { meterClasses } from "./meter.shared";
+import { safeRest } from "../../utils/expr";
 
 /**
  * Meter renders a native meter; children are the fallback text.
@@ -15,9 +16,10 @@ export type MeterProps = Omit<MeterHTMLAttributes<HTMLMeterElement>, "className"
 };
 
 export const Meter = forwardRef<HTMLMeterElement, MeterProps>(function Meter(
-  { className, children, ...rest },
+  { className, children, ...rawRest },
   ref
 ) {
+  const rest = safeRest(rawRest);
   const cls = meterClasses({ className });
   return (
     <meter ref={ref} className={cls || undefined} {...rest}>

@@ -3,13 +3,13 @@
 {parameters
   string $class = '',
   bool $open = false,
-  string $name = '',
+  ?string $name = null,
   array $attrs = [],
   string $children = '',
 }
 <details n:attr="[
   'class' => \UI8Kit\Latte\Rt::orNull(\UI8Kit\Latte\Classes::disclosureClasses(['class' => $class, 'open' => $open, 'name' => $name])),
   'open' => $open,
-  'name' => \UI8Kit\Latte\Rt::orNull($name),
-  ...$attrs,
+  'name' => $name,
+  ...\UI8Kit\Latte\Rt::safeAttrs($attrs),
 ]">{$children|noescape}</details>

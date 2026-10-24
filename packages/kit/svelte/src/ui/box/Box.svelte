@@ -15,15 +15,17 @@
 
 <script lang="ts">
   import { boxClasses } from "./box.shared";
+  import { safeRest } from "../../utils/expr";
   import { resolveTag, TagGroup } from "../../utils/tags";
 
   let {
     tag,
     class: className,
     children,
-    ...rest
+    ...rawRest
   }: BoxProps = $props();
 
+  const rest = $derived(safeRest(rawRest));
   const cls = $derived(boxClasses({ className }));
   const resolvedTagValue = $derived(resolveTag(tag, "div", TagGroup.Box));
 </script>

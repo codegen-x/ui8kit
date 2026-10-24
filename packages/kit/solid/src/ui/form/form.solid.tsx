@@ -6,7 +6,7 @@
 
 import { splitProps, type JSX, type Component } from "solid-js";
 import { formClasses } from "./form.shared";
-import { oneOfOrLower, orUndef } from "../../utils/expr";
+import { oneOfOrLower, orUndef, safeRest } from "../../utils/expr";
 
 /**
  * Form renders a native form element; method is whitelisted (get|post|dialog).
@@ -23,7 +23,7 @@ export const Form: Component<FormProps> = (props) => {
   const [local, rest] = splitProps(props, ["method", "noValidate", "class", "className", "children"]);
   const cls = () => formClasses({ className: local.class ?? local.className });
   return (
-    <form class={cls() || undefined} method={orUndef(oneOfOrLower(local.method, "", "get", "post", "dialog"))} novalidate={local.noValidate || undefined} {...rest}>
+    <form {...(cls() ? { class: cls() } : {})} method={orUndef(oneOfOrLower(local.method, "", "get", "post", "dialog"))} novalidate={local.noValidate || undefined} {...safeRest(rest)}>
       {local.children}
     </form>
   );

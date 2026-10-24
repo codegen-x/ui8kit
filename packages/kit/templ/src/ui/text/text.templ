@@ -34,7 +34,7 @@ templ Text(p TextProps) {
 			if TextClasses(p) != "" {
 				class={ TextClasses(p) }
 			}
-			{ p.Attrs... }
+			{ uiutils.SafeAttrs(p.Attrs)... }
 		>
 			{ children... }
 		</span>
@@ -43,7 +43,7 @@ templ Text(p TextProps) {
 			if TextClasses(p) != "" {
 				class={ TextClasses(p) }
 			}
-			{ p.Attrs... }
+			{ uiutils.SafeAttrs(p.Attrs)... }
 		>
 			{ children... }
 		</h1>
@@ -52,7 +52,7 @@ templ Text(p TextProps) {
 			if TextClasses(p) != "" {
 				class={ TextClasses(p) }
 			}
-			{ p.Attrs... }
+			{ uiutils.SafeAttrs(p.Attrs)... }
 		>
 			{ children... }
 		</h2>
@@ -61,7 +61,7 @@ templ Text(p TextProps) {
 			if TextClasses(p) != "" {
 				class={ TextClasses(p) }
 			}
-			{ p.Attrs... }
+			{ uiutils.SafeAttrs(p.Attrs)... }
 		>
 			{ children... }
 		</h3>
@@ -70,7 +70,7 @@ templ Text(p TextProps) {
 			if TextClasses(p) != "" {
 				class={ TextClasses(p) }
 			}
-			{ p.Attrs... }
+			{ uiutils.SafeAttrs(p.Attrs)... }
 		>
 			{ children... }
 		</h4>
@@ -79,7 +79,7 @@ templ Text(p TextProps) {
 			if TextClasses(p) != "" {
 				class={ TextClasses(p) }
 			}
-			{ p.Attrs... }
+			{ uiutils.SafeAttrs(p.Attrs)... }
 		>
 			{ children... }
 		</h5>
@@ -88,7 +88,7 @@ templ Text(p TextProps) {
 			if TextClasses(p) != "" {
 				class={ TextClasses(p) }
 			}
-			{ p.Attrs... }
+			{ uiutils.SafeAttrs(p.Attrs)... }
 		>
 			{ children... }
 		</h6>
@@ -97,7 +97,7 @@ templ Text(p TextProps) {
 			if TextClasses(p) != "" {
 				class={ TextClasses(p) }
 			}
-			{ p.Attrs... }
+			{ uiutils.SafeAttrs(p.Attrs)... }
 		>
 			{ children... }
 		</blockquote>
@@ -106,7 +106,7 @@ templ Text(p TextProps) {
 			if TextClasses(p) != "" {
 				class={ TextClasses(p) }
 			}
-			{ p.Attrs... }
+			{ uiutils.SafeAttrs(p.Attrs)... }
 		>
 			{ children... }
 		</figcaption>
@@ -115,7 +115,7 @@ templ Text(p TextProps) {
 			if TextClasses(p) != "" {
 				class={ TextClasses(p) }
 			}
-			{ p.Attrs... }
+			{ uiutils.SafeAttrs(p.Attrs)... }
 		>
 			{ children... }
 		</pre>
@@ -124,7 +124,7 @@ templ Text(p TextProps) {
 			if TextClasses(p) != "" {
 				class={ TextClasses(p) }
 			}
-			{ p.Attrs... }
+			{ uiutils.SafeAttrs(p.Attrs)... }
 		>
 			{ children... }
 		</code>
@@ -133,7 +133,7 @@ templ Text(p TextProps) {
 			if TextClasses(p) != "" {
 				class={ TextClasses(p) }
 			}
-			{ p.Attrs... }
+			{ uiutils.SafeAttrs(p.Attrs)... }
 		>
 			{ children... }
 		</small>
@@ -142,7 +142,7 @@ templ Text(p TextProps) {
 			if TextClasses(p) != "" {
 				class={ TextClasses(p) }
 			}
-			{ p.Attrs... }
+			{ uiutils.SafeAttrs(p.Attrs)... }
 		>
 			{ children... }
 		</strong>
@@ -151,7 +151,7 @@ templ Text(p TextProps) {
 			if TextClasses(p) != "" {
 				class={ TextClasses(p) }
 			}
-			{ p.Attrs... }
+			{ uiutils.SafeAttrs(p.Attrs)... }
 		>
 			{ children... }
 		</em>
@@ -160,7 +160,7 @@ templ Text(p TextProps) {
 			if TextClasses(p) != "" {
 				class={ TextClasses(p) }
 			}
-			{ p.Attrs... }
+			{ uiutils.SafeAttrs(p.Attrs)... }
 		>
 			{ children... }
 		</time>
@@ -169,16 +169,34 @@ templ Text(p TextProps) {
 			if TextClasses(p) != "" {
 				class={ TextClasses(p) }
 			}
-			{ p.Attrs... }
+			{ uiutils.SafeAttrs(p.Attrs)... }
 		>
 			{ children... }
 		</legend>
+	case "del":
+		<del
+			if TextClasses(p) != "" {
+				class={ TextClasses(p) }
+			}
+			{ uiutils.SafeAttrs(p.Attrs)... }
+		>
+			{ children... }
+		</del>
+	case "ins":
+		<ins
+			if TextClasses(p) != "" {
+				class={ TextClasses(p) }
+			}
+			{ uiutils.SafeAttrs(p.Attrs)... }
+		>
+			{ children... }
+		</ins>
 	default:
 		<p
 			if TextClasses(p) != "" {
 				class={ TextClasses(p) }
 			}
-			{ p.Attrs... }
+			{ uiutils.SafeAttrs(p.Attrs)... }
 		>
 			{ children... }
 		</p>

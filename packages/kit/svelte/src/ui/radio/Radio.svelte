@@ -15,15 +15,17 @@
 
 <script lang="ts">
   import { radioClasses } from "./radio.shared";
+  import { safeRest } from "../../utils/expr";
 
   let {
     checked,
     required,
     disabled,
     class: className,
-    ...rest
+    ...rawRest
   }: RadioProps = $props();
 
+  const rest = $derived(safeRest(rawRest));
   const cls = $derived(radioClasses({ className }));
 </script>
 

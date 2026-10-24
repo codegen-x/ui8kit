@@ -36,8 +36,8 @@ func ImageClasses(p ImageProps) string {
 // Image renders the Image contract.
 templ Image(p ImageProps) {
 	<img
-		if uiutils.IsSetStr(p.Src) {
-			src={ p.Src }
+		if uiutils.IsSetStr(uiutils.SafeURL(p.Src)) {
+			src={ uiutils.SafeURL(p.Src) }
 		}
 		alt={ p.Alt }
 		if ImageClasses(p) != "" {
@@ -61,7 +61,7 @@ templ Image(p ImageProps) {
 		if uiutils.IsSetStr(p.Decoding) {
 			decoding={ p.Decoding }
 		}
-		{ p.Attrs... }
+		{ uiutils.SafeAttrs(p.Attrs)... }
 	/>
 }
 
@@ -84,7 +84,7 @@ templ Picture(p PictureProps) {
 		if PictureClasses(p) != "" {
 			class={ PictureClasses(p) }
 		}
-		{ p.Attrs... }
+		{ uiutils.SafeAttrs(p.Attrs)... }
 	>
 		{ children... }
 	</picture>
@@ -114,6 +114,6 @@ templ Source(p SourceProps) {
 		if uiutils.IsSetStr(p.Sizes) {
 			sizes={ p.Sizes }
 		}
-		{ p.Attrs... }
+		{ uiutils.SafeAttrs(p.Attrs)... }
 	/>
 }

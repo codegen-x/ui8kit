@@ -10,11 +10,10 @@ export const VOID = new Set(["Input", "Checkbox", "Radio", "Switch", "Separator"
 export const isLeaf = (name: string) => VOID.has(BRICKS[name].primitive) || BRICKS[name].tag === "col";
 
 // Runtime artifacts dropped: Svelte hydration markers <!--[-->/<!>, img onload/onerror="this.__e=event"; Solid data-hk; Vue data-v-.
-// textarea value="": the installed kit is registry 3.2.0 (Solid printed it; fixed in codegen 3.2.0 / registry 3.2.2) — drop this rule after kit:install 3.2.2.
 export const norm = (html: string) =>
   // ">" in text needs no escape (Svelte prints it raw, React as &gt;): same DOM; "<" and "&" stay strict
-  html.replace(/&gt;/g, ">").replace(/<!--[^]*?-->/g, "").replace(/ data-hk="[^"]*"/g, "").replace(/\s*\/>/g, ">").replace(/(<textarea\b[^>]*?) value=""/g, "$1").replace(/ data-v-[a-z0-9]+(="")?/g, "").replace(/<!>/g, "").replace(/ on(load|error)="this\.__e=event"/g, "").replace(/<([a-z0-9]+)((?:\s+[^\s=>]+(?:="[^"]*")?)*)\s*\/?>/g, (_, tag, attrs: string) => {
-    const list = [...attrs.matchAll(/([^\s=>]+)(?:="([^"]*)")?/g)].map(([, k, v]) => `${k}="${k === "class" ? (v ?? "").replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&amp;/g, "&").split(/\s+/).filter(Boolean).join(" ") : (v ?? "").replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&amp;/g, "&")}"`).filter((a) => a !== `class=""`);
+  html.replace(/&gt;/g, ">").replace(/<!--[^]*?-->/g, "").replace(/ data-hk="[^"]*"/g, "").replace(/\s*\/>/g, ">").replace(/ data-v-[a-z0-9]+(="")?/g, "").replace(/<!>/g, "").replace(/ on(load|error)="this\.__e=event"/g, "").replace(/<([a-z0-9]+)((?:\s+[^\s=>]+(?:="[^"]*")?)*)\s*\/?>/g, (_, tag, attrs: string) => {
+    const list = [...attrs.matchAll(/([^\s=>]+)(?:="([^"]*)")?/g)].map(([, k, v]) => `${k}="${k === "class" ? (v ?? "").replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&amp;/g, "&").split(/\s+/).filter(Boolean).join(" ") : (v ?? "").replace(/&gt;/g, ">").replace(/&lt;/g, "<").replace(/&amp;/g, "&")}"`);
     return `<${tag}${list.sort().map((a) => " " + a).join("")}>`;
   });
 

@@ -5,6 +5,7 @@
 
 import { splitProps, type JSX, type Component } from "solid-js";
 import { progressClasses } from "./progress.shared";
+import { safeRest } from "../../utils/expr";
 
 /**
  * Progress renders a native progress element; children are the fallback text.
@@ -19,7 +20,7 @@ export const Progress: Component<ProgressProps> = (props) => {
   const [local, rest] = splitProps(props, ["class", "className", "children"]);
   const cls = () => progressClasses({ className: local.class ?? local.className });
   return (
-    <progress class={cls() || undefined} {...rest}>
+    <progress {...(cls() ? { class: cls() } : {})} {...safeRest(rest)}>
       {local.children}
     </progress>
   );

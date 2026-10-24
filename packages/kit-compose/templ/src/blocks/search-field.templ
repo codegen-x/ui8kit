@@ -26,6 +26,6 @@ templ SearchField(p SearchFieldProps) {
 	{{ vLabel := p.Label }}
 	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("relative min-w-44 flex-1", p.Class)), Attrs: uiutils.Attrs("role", "search")}}) {
 		@icons.LucideIcon(icons.LucideIconProps{Name: "search", Size: 16, Class: "pointer-events-none absolute top-2 left-3 text-muted-foreground"})
-		@compose.Input(compose.InputProps{Size: "sm", InputProps: input.InputProps{Type: "search", Placeholder: uiutils.S(vPlaceholder), Class: "pr-3 pl-10", Value: uiutils.S(vValue), Attrs: uiutils.Attrs("aria-label", vLabel)}})
+		@compose.Input(compose.InputProps{Size: "sm", InputProps: input.InputProps{Type: "search", Placeholder: uiutils.S(vPlaceholder), Class: "pr-3 pl-10", Value: uiutils.SP(vValue), Attrs: uiutils.Attrs("aria-label", vLabel)}})
 	}
 }

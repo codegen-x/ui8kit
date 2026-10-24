@@ -61,7 +61,7 @@ templ Textarea(p TextareaProps) {
 		if uiutils.IsSetStr(p.AriaDescribedBy) {
 			aria-describedby={ p.AriaDescribedBy }
 		}
-		{ p.Attrs... }
+		{ uiutils.SafeAttrs(p.Attrs)... }
 	>
 		{ p.Value }
 	</textarea>

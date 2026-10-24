@@ -5,6 +5,7 @@
 
 import { splitProps, type JSX, type Component } from "solid-js";
 import { labelClasses } from "./label.shared";
+import { safeRest } from "../../utils/expr";
 
 /**
  * Label renders a native label element.
@@ -19,7 +20,7 @@ export const Label: Component<LabelProps> = (props) => {
   const [local, rest] = splitProps(props, ["class", "className", "children"]);
   const cls = () => labelClasses({ className: local.class ?? local.className });
   return (
-    <label class={cls() || undefined} {...rest}>
+    <label {...(cls() ? { class: cls() } : {})} {...safeRest(rest)}>
       {local.children}
     </label>
   );

@@ -5,12 +5,12 @@
     Classes without rendering: meter_classes(p) (no asChild in Jinja2). -#}
 <meter
   {%- with cls = meter_classes(p) %}{%- if cls %} class="{{ cls }}"{%- endif %}{%- endwith %}
-  {%- if ui_is_set_str(ui_def(p['Value'], '')) %} value="{{ ui_def(p['Value'], '') }}"{%- endif %}
-  {%- if ui_is_set_str(ui_def(p['Min'], '')) %} min="{{ ui_def(p['Min'], '') }}"{%- endif %}
-  {%- if ui_is_set_str(ui_def(p['Max'], '')) %} max="{{ ui_def(p['Max'], '') }}"{%- endif %}
-  {%- if ui_is_set_str(ui_def(p['Low'], '')) %} low="{{ ui_def(p['Low'], '') }}"{%- endif %}
-  {%- if ui_is_set_str(ui_def(p['High'], '')) %} high="{{ ui_def(p['High'], '') }}"{%- endif %}
-  {%- if ui_is_set_str(ui_def(p['Optimum'], '')) %} optimum="{{ ui_def(p['Optimum'], '') }}"{%- endif %}
-  {%- if ui_is_set_str(ui_def(p['AriaLabel'], '')) %} aria-label="{{ ui_def(p['AriaLabel'], '') }}"{%- endif %}
+  {%- if p['Value'] is defined and p['Value'] is not none %} value="{{ p['Value'] }}"{%- endif %}
+  {%- if p['Min'] is defined and p['Min'] is not none %} min="{{ p['Min'] }}"{%- endif %}
+  {%- if p['Max'] is defined and p['Max'] is not none %} max="{{ p['Max'] }}"{%- endif %}
+  {%- if p['Low'] is defined and p['Low'] is not none %} low="{{ p['Low'] }}"{%- endif %}
+  {%- if p['High'] is defined and p['High'] is not none %} high="{{ p['High'] }}"{%- endif %}
+  {%- if p['Optimum'] is defined and p['Optimum'] is not none %} optimum="{{ p['Optimum'] }}"{%- endif %}
+  {%- if p['AriaLabel'] is defined and p['AriaLabel'] is not none %} aria-label="{{ p['AriaLabel'] }}"{%- endif %}
   {{ ui_attr_html(ui_def(p['Attrs'], {})) }}
 >{{ children|default('', true)|safe }}</meter>

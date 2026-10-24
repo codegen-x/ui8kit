@@ -5,7 +5,7 @@
 
 import { splitProps, type JSX, type Component } from "solid-js";
 import { linkClasses } from "./link.shared";
-import { eqStr, isSetStr, orUndef } from "../../utils/expr";
+import { eqStr, isSetStr, orUndef, safeRest } from "../../utils/expr";
 
 /**
  * Link renders an anchor; External opens a new tab with rel=noopener noreferrer.
@@ -25,7 +25,7 @@ export const Link: Component<LinkProps> = (props) => {
   const relValue = () => (isSetStr(local.rel) ? local.rel : ((local.external || eqStr(targetValue(), "_blank")) ? "noopener noreferrer" : ""));
   const cls = () => linkClasses({ className: local.class ?? local.className });
   return (
-    <a class={cls() || undefined} target={orUndef(targetValue())} rel={orUndef(relValue())} {...rest}>
+    <a {...(cls() ? { class: cls() } : {})} target={orUndef(targetValue())} rel={orUndef(relValue())} {...safeRest(rest)}>
       {local.children}
     </a>
   );

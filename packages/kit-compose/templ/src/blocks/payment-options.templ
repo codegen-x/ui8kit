@@ -28,7 +28,7 @@ templ PaymentOptions(p PaymentOptionsProps) {
 	@compose.Grid(compose.GridProps{Cols: "1-2", BoxProps: box.BoxProps{Class: "gap-4", Attrs: uiutils.Attrs("data-testid", "payments")}}) {
 		for _, vP := range uiutils.L(vPayments) {
 			@compose.Label(compose.LabelProps{LabelProps: label.LabelProps{Class: "flex items-center gap-4 rounded p-4 inset-ring inset-ring-border has-checked:inset-ring-foreground", Attrs: uiutils.Attrs("data-testid", "payment")}}) {
-				@compose.Radio(compose.RadioProps{RadioProps: radio.RadioProps{Name: uiutils.S(vName), Value: uiutils.S(uiutils.Get(vP, "id")), Checked: uiutils.T(uiutils.Eq(uiutils.Get(vP, "id"), vChecked))}})
+				@compose.Radio(compose.RadioProps{RadioProps: radio.RadioProps{Name: uiutils.S(vName), Value: uiutils.SP(uiutils.Get(vP, "id")), Checked: uiutils.T(uiutils.Eq(uiutils.Get(vP, "id"), vChecked))}})
 				@icons.LucideIcon(icons.LucideIconProps{Name: uiutils.S(uiutils.Get(vP, "icon")), Size: 20, Class: "shrink-0"})
 				@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "flex flex-col items-start justify-start gap-0"}}) {
 					@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "text-sm font-semibold"}}) {

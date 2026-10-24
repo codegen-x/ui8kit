@@ -5,6 +5,7 @@
 
 import { forwardRef, type InputHTMLAttributes } from "react";
 import { radioClasses } from "./radio.shared";
+import { safeRest } from "../../utils/expr";
 
 /**
  * Radio renders input[type=radio].
@@ -17,9 +18,10 @@ export type RadioProps = Omit<InputHTMLAttributes<HTMLInputElement>, "className"
 };
 
 export const Radio = forwardRef<HTMLInputElement, RadioProps>(function Radio(
-  { checked, required, disabled, className, ...rest },
+  { checked, required, disabled, className, ...rawRest },
   ref
 ) {
+  const rest = safeRest(rawRest);
   const cls = radioClasses({ className });
   return (
     <input ref={ref} type="radio" className={cls || undefined} checked={checked} required={required} disabled={disabled} {...rest} />

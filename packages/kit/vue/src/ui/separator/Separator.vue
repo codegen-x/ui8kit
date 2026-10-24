@@ -5,7 +5,7 @@
 <script setup lang="ts">
 import { computed, useAttrs } from "vue";
 import { separatorClasses } from "./separator.shared";
-import { eqStr, oneOfOrLower } from "../../utils/expr";
+import { eqStr, oneOfOrLower, safeRest } from "../../utils/expr";
 
 defineOptions({ name: "Separator", inheritAttrs: false });
 
@@ -18,7 +18,7 @@ const attrs = useAttrs();
 const callerClass = computed(() => attrs.class as string | undefined);
 const restAttrs = computed(() => {
   const { class: _class, ...restEntries } = attrs;
-  return restEntries;
+  return safeRest(restEntries);
 });
 const cls = computed(() => separatorClasses({ className: callerClass.value }));
 </script>

@@ -21,10 +21,6 @@ const REQUIRED = process.env.UI8KIT_REQUIRE_ALL_RUNTIMES === "1";
 const kebab = (s: string) => s.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
 const ok = (cmd: string, args: string[]) => spawnSync(cmd, args, { stdio: "ignore" }).status === 0;
 const TEMPL = "v0.3.1070";
-/** Bugs of the installed kit (registry 3.2.0) seen through a composition; each is fixed upstream and listed in the migration report. */
-const KNOWN_KIT_BUGS: Record<string, string> = {
-  'Image {"variant":"logo"}': "server cn merge of registry 3.2.0 has no object-fit group (object-cover + object-contain both kept; React tailwind-merge keeps the last); fixed in ui8kit/codegen f72d2bd, registry 3.2.2 (unpublished)",
-};
 
 type Case = { name: string; c: Record<string, any>; leaf: boolean };
 // hand-written compositions render no children; their aria-label is a prop (ariaLabel / AriaLabel)
@@ -59,9 +55,7 @@ function suite(rt: string, available: string | null, run: () => string[]) {
       all.forEach((k, i) => {
         if (k.name !== name) return;
         const id = `${name} ${JSON.stringify(k.c)}`, got = norm((html[i] ?? "").trim());
-        // a known bug of the installed kit is asserted as still present, so the test turns red the day the kit is fixed
-        if (KNOWN_KIT_BUGS[id]) expect(got, `${rt} ${id}: ${KNOWN_KIT_BUGS[id]} — remove it from KNOWN_KIT_BUGS`).not.toBe(react[i]);
-        else expect(got, `${rt} ${id}`).toBe(react[i]);
+        expect(got, `${rt} ${id}`).toBe(react[i]);
       });
     });
   });

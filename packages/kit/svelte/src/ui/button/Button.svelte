@@ -18,7 +18,7 @@
 
 <script lang="ts">
   import { buttonClasses } from "./button.shared";
-  import { isSetStr, oneOfOr, orUndef } from "../../utils/expr";
+  import { isSetStr, oneOfOr, orUndef, safeRest, safeUrl } from "../../utils/expr";
 
   let {
     type,
@@ -26,14 +26,15 @@
     disabled,
     class: className,
     children,
-    ...rest
+    ...rawRest
   }: ButtonProps = $props();
 
+  const rest = $derived(safeRest(rawRest));
   const cls = $derived(buttonClasses({ className }));
 </script>
 
 {#if isSetStr(href)}
-  <a href={orUndef(href)} {...(cls ? { class: cls } : {})} aria-disabled={disabled ? "true" : undefined} tabindex={disabled ? -1 : undefined} {...rest}>
+  <a href={orUndef(safeUrl(href))} {...(cls ? { class: cls } : {})} aria-disabled={disabled ? "true" : undefined} tabindex={disabled ? -1 : undefined} {...rest}>
     {@render children?.()}
   </a>
 {:else}

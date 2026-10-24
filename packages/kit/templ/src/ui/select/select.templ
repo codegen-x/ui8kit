@@ -62,7 +62,7 @@ templ Select(p SelectProps) {
 		if uiutils.IsSetStr(p.AriaDescribedBy) {
 			aria-describedby={ p.AriaDescribedBy }
 		}
-		{ p.Attrs... }
+		{ uiutils.SafeAttrs(p.Attrs)... }
 	>
 		for _, item := range p.Options {
 			<option
@@ -79,7 +79,7 @@ templ Select(p SelectProps) {
 
 // SelectOptionProps configures SelectOption.
 type SelectOptionProps struct {
-	Value string
+	Value *string
 	Selected bool
 	Disabled bool
 	Attrs templ.Attributes
@@ -88,12 +88,12 @@ type SelectOptionProps struct {
 // SelectOption renders the SelectOption contract.
 templ SelectOption(p SelectOptionProps) {
 	<option
-		if uiutils.IsSetStr(p.Value) {
-			value={ p.Value }
+		if p.Value != nil {
+			value={ *p.Value }
 		}
 		selected?={ p.Selected }
 		disabled?={ p.Disabled }
-		{ p.Attrs... }
+		{ uiutils.SafeAttrs(p.Attrs)... }
 	>
 		{ children... }
 	</option>
@@ -113,7 +113,7 @@ templ SelectOptGroup(p SelectOptGroupProps) {
 			label={ p.Label }
 		}
 		disabled?={ p.Disabled }
-		{ p.Attrs... }
+		{ uiutils.SafeAttrs(p.Attrs)... }
 	>
 		{ children... }
 	</optgroup>

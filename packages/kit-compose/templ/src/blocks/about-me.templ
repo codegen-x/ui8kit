@@ -71,7 +71,7 @@ templ AboutMe(p AboutMeProps) {
 								{ uiutils.Text(uiutils.Tpl(uiutils.Get(vLabels, "level"), uiutils.Get(vS, "level"))) }
 							}
 						}
-						@compose.Progress(compose.ProgressProps{ProgressProps: progress.ProgressProps{Value: uiutils.S(uiutils.Str(uiutils.Get(vS, "level"))), Max: "100", Attrs: uiutils.Attrs("aria-label", uiutils.Get(vS, "label"))}})
+						@compose.Progress(compose.ProgressProps{ProgressProps: progress.ProgressProps{Value: uiutils.SP(uiutils.Str(uiutils.Get(vS, "level"))), Max: "100", Attrs: uiutils.Attrs("aria-label", uiutils.Get(vS, "label"))}})
 					}
 				}
 			}

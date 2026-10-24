@@ -52,7 +52,7 @@ templ UsageCalculator(p UsageCalculatorProps) {
 					{ uiutils.Text(uiutils.Get(vSlider, "label")) }
 				}
 			}
-			@compose.Range(compose.RangeProps{InputProps: input.InputProps{Min: uiutils.S(uiutils.Get(vSlider, "min")), Max: uiutils.S(uiutils.Get(vSlider, "max")), Value: uiutils.S(vUsage), Attrs: uiutils.Attrs("aria-label", uiutils.Get(vSlider, "label"), "data-testid", "slider")}})
+			@compose.Range(compose.RangeProps{InputProps: input.InputProps{Min: uiutils.S(uiutils.Get(vSlider, "min")), Max: uiutils.S(uiutils.Get(vSlider, "max")), Value: uiutils.SP(vUsage), Attrs: uiutils.Attrs("aria-label", uiutils.Get(vSlider, "label"), "data-testid", "slider")}})
 			if uiutils.Eq(vEnds, "show") {
 				@compose.Group(compose.GroupProps{Justify: "between", BoxProps: box.BoxProps{Attrs: uiutils.Attrs("data-testid", "ends")}}) {
 					@compose.Text(compose.TextProps{Size: "xs", TextProps: text.TextProps{Class: "text-muted-foreground"}}) {

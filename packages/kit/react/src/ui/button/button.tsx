@@ -6,7 +6,7 @@
 
 import { forwardRef, type ReactNode, type AnchorHTMLAttributes, type ButtonHTMLAttributes, type Ref } from "react";
 import { buttonClasses } from "./button.shared";
-import { isSetStr, oneOfOr, orUndef } from "../../utils/expr";
+import { isSetStr, oneOfOr, orUndef, safeRest, safeUrl } from "../../utils/expr";
 import { Slot } from "../slot/slot";
 
 /**
@@ -23,9 +23,10 @@ export type ButtonProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement> & ButtonH
 };
 
 export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonProps>(function Button(
-  { type, href, disabled, className, children, asChild, ...rest },
+  { type, href, disabled, className, children, asChild, ...rawRest },
   ref
 ) {
+  const rest = safeRest(rawRest);
   const cls = buttonClasses({ className });
   if (asChild) {
     return (
@@ -36,7 +37,7 @@ export const Button = forwardRef<HTMLAnchorElement | HTMLButtonElement, ButtonPr
   }
   return (
     isSetStr(href) ? (
-      <a ref={ref as Ref<HTMLAnchorElement>} href={orUndef(href)} className={cls || undefined} aria-disabled={disabled ? "true" : undefined} tabIndex={disabled ? -1 : undefined} {...rest}>
+      <a ref={ref as Ref<HTMLAnchorElement>} href={orUndef(safeUrl(href))} className={cls || undefined} aria-disabled={disabled ? "true" : undefined} tabIndex={disabled ? -1 : undefined} {...rest}>
         {children}
       </a>
     ) : (

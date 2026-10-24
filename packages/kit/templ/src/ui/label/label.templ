@@ -34,7 +34,7 @@ templ Label(p LabelProps) {
 		if uiutils.IsSetStr(p.For) {
 			for={ p.For }
 		}
-		{ p.Attrs... }
+		{ uiutils.SafeAttrs(p.Attrs)... }
 	>
 		{ children... }
 	</label>

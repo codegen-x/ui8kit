@@ -6,7 +6,7 @@
 
 import { forwardRef, type ReactNode, type HTMLAttributes } from "react";
 import { iconClasses, type IconSize } from "./icon.shared";
-import { isSetStr } from "../../utils/expr";
+import { isSetStr, safeRest } from "../../utils/expr";
 
 /**
  * Icon renders span[data-slot=icon]; Label switches to role=img + aria-label.
@@ -19,9 +19,10 @@ export type IconProps = Omit<HTMLAttributes<HTMLSpanElement>, "className" | "chi
 };
 
 export const Icon = forwardRef<HTMLSpanElement, IconProps>(function Icon(
-  { size, label, className, children, ...rest },
+  { size, label, className, children, ...rawRest },
   ref
 ) {
+  const rest = safeRest(rawRest);
   const cls = iconClasses({ size, className });
   return (
     <span ref={ref} data-slot="icon" className={cls || undefined} aria-hidden={!(isSetStr(label)) ? "true" : undefined} role={isSetStr(label) ? "img" : undefined} aria-label={isSetStr(label) ? label : undefined} {...rest}>

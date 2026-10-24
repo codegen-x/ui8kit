@@ -58,7 +58,7 @@ templ DrawerLines(p DrawerLinesProps) {
 			@compose.Text(compose.TextProps{Size: "sm", TextProps: text.TextProps{}}) {
 				{ uiutils.Text(uiutils.Get(vDrawer, "progress")) }
 			}
-			@compose.Progress(compose.ProgressProps{ProgressProps: progress.ProgressProps{Value: "96", Max: "100", Attrs: uiutils.Attrs("aria-label", uiutils.Get(vDrawer, "progress"))}})
+			@compose.Progress(compose.ProgressProps{ProgressProps: progress.ProgressProps{Value: uiutils.SP("96"), Max: "100", Attrs: uiutils.Attrs("aria-label", uiutils.Get(vDrawer, "progress"))}})
 		}
 		@compose.List(compose.ListProps{BoxProps: box.BoxProps{Tag: "ul", Class: "flex flex-col gap-2"}}) {
 			for vI, vRow := range uiutils.L(vRows) {

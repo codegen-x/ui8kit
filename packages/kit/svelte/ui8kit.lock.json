@@ -5,78 +5,78 @@
     "npm:@ui8kit/registry|svelte|box": {
       "name": "box",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/svelte",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/svelte",
+      "version": "3.2.2",
       "runtime": "svelte",
       "files": {
-        "src/ui/box/Box.svelte": "8c106bcb009233ea10bba656250edbe25e784c4883a6549d414917a4fea861ff",
+        "src/ui/box/Box.svelte": "666dc197d86a46a28d0202823faf04010a333379cf748c684fb129b9eb216974",
         "src/ui/box/box.shared.ts": "59f52e34fbf633e2fb85f253ac81c93b0b5a62adf9e20d719c452dfa31048150"
       }
     },
     "npm:@ui8kit/registry|svelte|button": {
       "name": "button",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/svelte",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/svelte",
+      "version": "3.2.2",
       "runtime": "svelte",
       "files": {
-        "src/ui/button/Button.svelte": "f475e0b1b9a8ef41d44adf8be0b4f734fc6e4002be25af04635b3e85478d8230",
+        "src/ui/button/Button.svelte": "6fedc961f7432af5d7b901cadf0f6bfd264ca8dcabfd4c3a75dfadd35286f769",
         "src/ui/button/button.shared.ts": "c1666ca1a228d99bd84aecff67f6d5335ec4a0db6197c7fbb9aa9bf1e4973fbc"
       }
     },
     "npm:@ui8kit/registry|svelte|checkbox": {
       "name": "checkbox",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/svelte",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/svelte",
+      "version": "3.2.2",
       "runtime": "svelte",
       "files": {
-        "src/ui/checkbox/Checkbox.svelte": "e18e20c968eaea22c537da2089e16f042ffa6d2c3da119918d264086d63d3074",
+        "src/ui/checkbox/Checkbox.svelte": "f0fac833ab6f057b6bf7c405ac284e2b10720501b7882ccce092ba9066cc8508",
         "src/ui/checkbox/checkbox.shared.ts": "e68cd1fb0c6cd5bf1e6293440e0e995d6be7097602ae990b94231471013eeddc"
       }
     },
     "npm:@ui8kit/registry|svelte|dialog": {
       "name": "dialog",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/svelte",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/svelte",
+      "version": "3.2.2",
       "runtime": "svelte",
       "files": {
-        "src/ui/dialog/Dialog.svelte": "5014aed838ae20eef5ef0d42fbe686e56d8948306a53735c86fc5fc7479edb76",
+        "src/ui/dialog/Dialog.svelte": "2e70bb8c50b3a38ea66897c45b8cec3de04cc9c489d114fdaee3678f18aca37d",
         "src/ui/dialog/dialog.shared.ts": "51414cef876fa635cb4add3c22dff978fb7f7e3eb6c86c8139caf63b10346888"
       }
     },
     "npm:@ui8kit/registry|svelte|disclosure": {
       "name": "disclosure",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/svelte",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/svelte",
+      "version": "3.2.2",
       "runtime": "svelte",
       "files": {
-        "src/ui/disclosure/Disclosure.svelte": "327980baf7e44cca4aaccb7cabc41f9d7a67db3e6cc3e2d7e451cc072d452919",
-        "src/ui/disclosure/Summary.svelte": "ed31735282df3d9c2712d841b00efeaae607508b371d6fe6aca67f6c259bed01",
+        "src/ui/disclosure/Disclosure.svelte": "7cf3625375ca04aefcd083756ddd897e69434aec72759338bb11c6a0b4fb57de",
+        "src/ui/disclosure/Summary.svelte": "ec720164b1a8d3fb357d6a63268e856f6ecd976eaf87d82d8a0a5620f6c7b6f1",
         "src/ui/disclosure/disclosure.shared.ts": "2aa7b3cc137998037b9cb3c5af1c18617b7d220519a56a99e6b4ebd9b720f106"
       }
     },
     "npm:@ui8kit/registry|svelte|form": {
       "name": "form",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/svelte",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/svelte",
+      "version": "3.2.2",
       "runtime": "svelte",
       "files": {
-        "src/ui/form/Form.svelte": "abf25383947484387bac9e294ddfc20c172c8792bfb16e19706dbbfd3d87c16e",
+        "src/ui/form/Form.svelte": "49bca29fe8de2994235f8294b5d0ff93422290d6048bbc2e9efe0ced47b04ace",
         "src/ui/form/form.shared.ts": "d168c15d3a66a521580f5857dd0c8cfc3f43a9ff089a87cd1b4fdd143c9730b5"
       }
     },
     "npm:@ui8kit/registry|svelte|icon": {
       "name": "icon",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/svelte",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/svelte",
+      "version": "3.2.2",
       "runtime": "svelte",
       "files": {
-        "src/ui/icon/Icon.svelte": "ca93caa034b44cbbc75910b7b9014f49fb63c0fe9751693134dfb3dab9c12261",
+        "src/ui/icon/Icon.svelte": "78d4c5caa2fcf8975d28387f5a786ae08f04fa50c0486728fcf163ca9756fa01",
         "src/ui/icon/icon.shared.ts": "5cc9c9474996f0d06ad2c277c24ab9a6d2ff4814a49f4024ce978947c098a11e",
         "src/ui/icon/icon.variants.json": "3411086ff914c3d68ed81fa575f1ae22b6b5202198d505de4c1abf1509d8904a"
       }
@@ -84,162 +84,162 @@
     "npm:@ui8kit/registry|svelte|image": {
       "name": "image",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/svelte",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/svelte",
+      "version": "3.2.2",
       "runtime": "svelte",
       "files": {
-        "src/ui/image/Image.svelte": "f00d3aa646963a8509a83d5112aa656ae2523e33ed3abb750783fc6b99c7870c",
-        "src/ui/image/Picture.svelte": "a0ac0b045d652f07e6d5bafad724ae9e3a830ebc8221f3b56b53a93e87eba2c7",
-        "src/ui/image/Source.svelte": "8d4b4edc68c72ddbe56abeb1ee9ab883c2c69bbbbe267ce987e87e00d19e4422",
+        "src/ui/image/Image.svelte": "8feec025cee624feb6df222846ff4a3380ec8341c9c3563ffdaadec823253efe",
+        "src/ui/image/Picture.svelte": "bd82f6e1d1b034c4ef087a2f7d969ffeb26b0b395b72ea0d187c5cb52baa5099",
+        "src/ui/image/Source.svelte": "20f6532a85dd60771f5db98aad57c9cb0e00528fe1e50ad45cf0ea1e69d9c0be",
         "src/ui/image/image.shared.ts": "a67db7814370b79a1164b83e74b99d9d04d7e532d31dc0fa457c190e840cd05a"
       }
     },
     "npm:@ui8kit/registry|svelte|input": {
       "name": "input",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/svelte",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/svelte",
+      "version": "3.2.2",
       "runtime": "svelte",
       "files": {
-        "src/ui/input/Input.svelte": "37803096f231be6f4e3bac8b84d69e01acbd2c95e9b7db691e712534e0b9889c",
+        "src/ui/input/Input.svelte": "5093b5ff349b4667da28c4ac361ac6ed91c118aac90144d6870ee5f4633846dd",
         "src/ui/input/input.shared.ts": "70f35d175c8f36d35d5b3f5a2faaf866042154ddaaf9af1a8d821d34ca90147c"
       }
     },
     "npm:@ui8kit/registry|svelte|label": {
       "name": "label",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/svelte",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/svelte",
+      "version": "3.2.2",
       "runtime": "svelte",
       "files": {
-        "src/ui/label/Label.svelte": "4fd96e501e6d38d6f167be10e59b65f6ee604cbf628a7d2ac4234e7fb4798bda",
+        "src/ui/label/Label.svelte": "03ff7d1ad8dcf1664e4319b90d5336fad72d6bc2e2453ee6ae93d78a8dc7dd16",
         "src/ui/label/label.shared.ts": "0bcf690a2be25bfa1736733431ffae5009f4878a8e6122abb8884fe0a923cdbd"
       }
     },
     "npm:@ui8kit/registry|svelte|link": {
       "name": "link",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/svelte",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/svelte",
+      "version": "3.2.2",
       "runtime": "svelte",
       "files": {
-        "src/ui/link/Link.svelte": "7e4d66fd8bf7948b91293f44be896a2e7afe29ee4e935aa9abf793d3220ec283",
+        "src/ui/link/Link.svelte": "c284b8b46b0483541e00ca9ec2881377d59f6af25843be661beb270c0fbbcae3",
         "src/ui/link/link.shared.ts": "35ab6935736cc2e3871a1d3c76aa5fd092da590a373c94f3e0d0c0f3e0481039"
       }
     },
     "npm:@ui8kit/registry|svelte|meter": {
       "name": "meter",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/svelte",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/svelte",
+      "version": "3.2.2",
       "runtime": "svelte",
       "files": {
-        "src/ui/meter/Meter.svelte": "c28b3aead1426641a20fea07112fec53ff72712d021cadaef250b71cf2f8f742",
+        "src/ui/meter/Meter.svelte": "052f19f18b370bbbfa5752af425cada7bfebae5eac4f820652a2bb7c25a2912c",
         "src/ui/meter/meter.shared.ts": "f3be45a354c1af95345dde53ddf7974165dbe98efc7f31e7465fa4139578be91"
       }
     },
     "npm:@ui8kit/registry|svelte|progress": {
       "name": "progress",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/svelte",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/svelte",
+      "version": "3.2.2",
       "runtime": "svelte",
       "files": {
-        "src/ui/progress/Progress.svelte": "0a8fae1ff70932c9172cb7593b5d2a34b3d781c24e0280f694645d899a70f178",
+        "src/ui/progress/Progress.svelte": "db20084c84e73c086e689b98abbe505b4f8947568a254180d402d747aeafb21e",
         "src/ui/progress/progress.shared.ts": "cabe85d6c85b64fb2aeaf15b068e8d796ff12a33a6ce7b505a50943abf2e7df4"
       }
     },
     "npm:@ui8kit/registry|svelte|radio": {
       "name": "radio",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/svelte",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/svelte",
+      "version": "3.2.2",
       "runtime": "svelte",
       "files": {
-        "src/ui/radio/Radio.svelte": "cc202f5326beea4de26fc2b4ff15dcfc6f1d8f710dfc6b0d174c56234aea2ff6",
+        "src/ui/radio/Radio.svelte": "54d0986d961a4925cb3081354adc33b5c560fbf3e753b39ff2ef1f6e0360005b",
         "src/ui/radio/radio.shared.ts": "90a7a83d2a61327f4f4a76ff7b63b5e5c81e2291d33a3ad0477ca275b9607746"
       }
     },
     "npm:@ui8kit/registry|svelte|rules": {
       "name": "rules",
       "type": "registry:rules",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/svelte",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/svelte",
+      "version": "3.2.2",
       "runtime": "svelte",
       "files": {
-        ".cursor/rules/ui8kit-primitives.mdc": "13a34b7333d8c13153567d4ada85e73ef4f6d11bad7799cad631bb3b52c581d9"
+        ".cursor/rules/ui8kit-primitives.mdc": "15bcdbb8e74994c63266996befd09f1a8484398304b04bce3302d8ea26217932"
       }
     },
     "npm:@ui8kit/registry|svelte|select": {
       "name": "select",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/svelte",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/svelte",
+      "version": "3.2.2",
       "runtime": "svelte",
       "files": {
-        "src/ui/select/Select.svelte": "f59347fb5cdbfe3cfc94f9d3fab4f94daefbdd73a3f1d58fbc70e9cf13df4f90",
-        "src/ui/select/SelectOptGroup.svelte": "2c3c393cc3a6f0d550d3ac4f68be8604a21e79a10e019f138e8ba7913aef234b",
-        "src/ui/select/SelectOption.svelte": "290967f75286aa0f25ed0425a08659dbecf13e65b67d244cde635966b628c575",
+        "src/ui/select/Select.svelte": "10ba27f65072556ca04488419eefc077ecb5230266b0cc33442e702f36e1a845",
+        "src/ui/select/SelectOptGroup.svelte": "905563a3439d4135512bb4b3971d47329758a3de4d572695b5aa7a38ae8dc9b5",
+        "src/ui/select/SelectOption.svelte": "c1da8f5e8dabb1a6de86f11f8b7d0ff3bc48912d8009887c5d99d2fbcf70b35a",
         "src/ui/select/select.shared.ts": "fbfd77060f93463a61673bd34fb3d53edf78d5f8ead587253eb0fea8d2a19bba"
       }
     },
     "npm:@ui8kit/registry|svelte|separator": {
       "name": "separator",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/svelte",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/svelte",
+      "version": "3.2.2",
       "runtime": "svelte",
       "files": {
-        "src/ui/separator/Separator.svelte": "8ed7ca95cc8b0cea9d02a44a17d372c6f204e932c980ecf22749c9459ac9fe88",
+        "src/ui/separator/Separator.svelte": "6cbf2df4ec5e6813b5b75eb2e135a9906e6bc7047555b9e9747c5537febf627d",
         "src/ui/separator/separator.shared.ts": "65711a64c434b5c90dfb6ad3924bde68436c1017d1af973dd4c11431d9cfc084"
       }
     },
     "npm:@ui8kit/registry|svelte|switch": {
       "name": "switch",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/svelte",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/svelte",
+      "version": "3.2.2",
       "runtime": "svelte",
       "files": {
-        "src/ui/switch/Switch.svelte": "654e301253e56b3d8261e8483fd5cddfe5e405d4f29a7fc2f2259ff8f846a3c8",
+        "src/ui/switch/Switch.svelte": "15f7af75d2805c81f46bdc90050aed13d5b54e68a06de5625f472730e1f6674c",
         "src/ui/switch/switch.shared.ts": "0e67fbba43cff2a46f1a929f0e7e5a10e2ec8e0a384bf730f5da8bd9f119d5b8"
       }
     },
     "npm:@ui8kit/registry|svelte|text": {
       "name": "text",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/svelte",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/svelte",
+      "version": "3.2.2",
       "runtime": "svelte",
       "files": {
-        "src/ui/text/Text.svelte": "4c34a3920c96e3a658006b8c352c6b25b3743069b5767370278222964bbaf78a",
-        "src/ui/text/text.shared.ts": "d2c44f00ce9de5449c1f0fc9a40dacfb19cac763d461ed925ff92561300e3216"
+        "src/ui/text/Text.svelte": "3abd12ff80b1a615a7e3da9214605978f0fa71365af0ae4e2a5514cf53dc3b9b",
+        "src/ui/text/text.shared.ts": "988fc436da762b618fdc6c17acc7f3537b63d14461eb5d614f4d242ef25672db"
       }
     },
     "npm:@ui8kit/registry|svelte|textarea": {
       "name": "textarea",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/svelte",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/svelte",
+      "version": "3.2.2",
       "runtime": "svelte",
       "files": {
-        "src/ui/textarea/Textarea.svelte": "d52f5045d23270983d9aea50906fe8153f1fdfe61e7d4fa81391ab9100aecac7",
+        "src/ui/textarea/Textarea.svelte": "9ee0b0240273005b4989b87d2fb5ffcf697fbd9538d1af063f469fae8848e140",
         "src/ui/textarea/textarea.shared.ts": "07e46370404a3406345328fdaf390666c4aa4fd31c1d9de0f64f62cd9ee20c43"
       }
     },
     "npm:@ui8kit/registry|svelte|utils": {
       "name": "utils",
       "type": "registry:utils",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/svelte",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/svelte",
+      "version": "3.2.2",
       "runtime": "svelte",
       "files": {
         "src/utils/cn.ts": "71e49505248438b14660406596be49812819f912e0aeb0f3e2f46677e1d481d7",
-        "src/utils/env.ts": "fd1211a0349b8b86ecc3e0069c44701754c8697f029be1530951731dee8d96b2",
-        "src/utils/expr.ts": "b3c7c370dd9f83f6fadc2aa396347a6051d40ac0671506b27daf53af1c5e00f0",
+        "src/utils/env.ts": "bc01c432801f7c9722b3756b4155c437c66061917362c7b259fcd12cc72a4478",
+        "src/utils/expr.ts": "cd29d60e9e616b15dd407c5fe76907c2c570795c818650c8d01ddc46d02a7651",
         "src/utils/index.ts": "098142c6140472cdb594686e1d23807c898c2218f24639a421a465b6924cfda5",
         "src/utils/recipe-types.ts": "5f25c506bbcac1b32569023a00c27497eea9b6684cd96a98708233cad313191b",
-        "src/utils/tags.ts": "a978a913dbebfe73d64f9645f92664a72ead75bcebe24bba9e0b1cd9334e9661",
+        "src/utils/tags.ts": "2aaa71b1175f3509c323bb84c4a57e10a08fc4fcd79c143e6bf7872768d75548",
         "src/utils/variants.ts": "f82accf10129f4f56d0b2e3d9d85d370b0a9066f3b802c3f7c31dc94576fb47a"
       }
     }

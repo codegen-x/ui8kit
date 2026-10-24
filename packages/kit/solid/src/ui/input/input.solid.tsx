@@ -5,7 +5,7 @@
 
 import { splitProps, type JSX, type Component } from "solid-js";
 import { inputClasses } from "./input.shared";
-import { defaultIfEmpty } from "../../utils/expr";
+import { defaultIfEmpty, safeRest } from "../../utils/expr";
 
 /**
  * Input renders a native input element (default type text).
@@ -23,6 +23,6 @@ export const Input: Component<InputProps> = (props) => {
   const [local, rest] = splitProps(props, ["type", "required", "disabled", "readOnly", "class", "className"]);
   const cls = () => inputClasses({ className: local.class ?? local.className });
   return (
-    <input type={defaultIfEmpty(local.type, "text")} class={cls() || undefined} required={local.required || undefined} disabled={local.disabled || undefined} readonly={local.readOnly || undefined} {...rest} />
+    <input type={defaultIfEmpty(local.type, "text")} {...(cls() ? { class: cls() } : {})} required={local.required || undefined} disabled={local.disabled || undefined} readonly={local.readOnly || undefined} {...safeRest(rest)} />
   );
 };

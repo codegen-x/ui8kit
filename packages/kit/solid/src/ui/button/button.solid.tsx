@@ -6,7 +6,7 @@
 
 import { splitProps, type JSX, type Component } from "solid-js";
 import { buttonClasses } from "./button.shared";
-import { isSetStr, oneOfOr, orUndef } from "../../utils/expr";
+import { isSetStr, oneOfOr, orUndef, safeRest, safeUrl } from "../../utils/expr";
 
 /**
  * Button renders a button element, or an anchor when Href is set.
@@ -28,11 +28,11 @@ export const Button: Component<ButtonProps> = (props) => {
   return (
     <>
       {isSetStr(local.href) ? (
-        <a href={orUndef(local.href)} class={cls() || undefined} aria-disabled={local.disabled ? "true" : undefined} tabIndex={local.disabled ? -1 : undefined} {...rest}>
+        <a href={orUndef(safeUrl(local.href))} {...(cls() ? { class: cls() } : {})} aria-disabled={local.disabled ? "true" : undefined} tabIndex={local.disabled ? -1 : undefined} {...safeRest(rest)}>
           {local.children}
         </a>
       ) : (
-        <button type={oneOfOr(local.type, "button", "submit", "reset")} class={cls() || undefined} disabled={local.disabled || undefined} {...rest}>
+        <button type={oneOfOr(local.type, "button", "submit", "reset")} {...(cls() ? { class: cls() } : {})} disabled={local.disabled || undefined} {...safeRest(rest)}>
           {local.children}
         </button>
       )}

@@ -17,16 +17,17 @@
 
 <script lang="ts">
   import { iconClasses } from "./icon.shared";
-  import { isSetStr } from "../../utils/expr";
+  import { isSetStr, safeRest } from "../../utils/expr";
 
   let {
     size,
     label,
     class: className,
     children,
-    ...rest
+    ...rawRest
   }: IconProps = $props();
 
+  const rest = $derived(safeRest(rawRest));
   const cls = $derived(iconClasses({ size, className }));
 </script>
 

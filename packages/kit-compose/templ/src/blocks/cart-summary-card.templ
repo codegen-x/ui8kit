@@ -93,7 +93,7 @@ templ CartSummaryCard(p CartSummaryCardProps) {
 				@compose.Text(compose.TextProps{Size: "sm", TextProps: text.TextProps{}}) {
 					{ uiutils.Text(uiutils.Get(vLabels, "progress")) }
 				}
-				@compose.Progress(compose.ProgressProps{ProgressProps: progress.ProgressProps{Value: uiutils.S(uiutils.Str(vValue)), Max: "100", Attrs: uiutils.Attrs("aria-label", uiutils.Get(vLabels, "progress"))}})
+				@compose.Progress(compose.ProgressProps{ProgressProps: progress.ProgressProps{Value: uiutils.SP(uiutils.Str(vValue)), Max: "100", Attrs: uiutils.Attrs("aria-label", uiutils.Get(vLabels, "progress"))}})
 			}
 		}
 		if uiutils.Gt(uiutils.Len(vRows), float64(0)) {

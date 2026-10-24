@@ -5,6 +5,7 @@
 
 import { splitProps, type JSX, type Component } from "solid-js";
 import { dialogClasses } from "./dialog.shared";
+import { safeRest } from "../../utils/expr";
 
 /**
  * Dialog renders a native dialog element.
@@ -20,7 +21,7 @@ export const Dialog: Component<DialogProps> = (props) => {
   const [local, rest] = splitProps(props, ["open", "class", "className", "children"]);
   const cls = () => dialogClasses({ className: local.class ?? local.className });
   return (
-    <dialog class={cls() || undefined} open={local.open || undefined} {...rest}>
+    <dialog {...(cls() ? { class: cls() } : {})} open={local.open || undefined} {...safeRest(rest)}>
       {local.children}
     </dialog>
   );

@@ -5,7 +5,7 @@
 <script setup lang="ts">
 import { computed, useAttrs } from "vue";
 import { selectClasses, type SelectOptionItem } from "./select.shared";
-import { eqStr } from "../../utils/expr";
+import { eqStr, safeRest } from "../../utils/expr";
 
 defineOptions({ name: "Select", inheritAttrs: false });
 
@@ -21,7 +21,7 @@ const attrs = useAttrs();
 const callerClass = computed(() => attrs.class as string | undefined);
 const restAttrs = computed(() => {
   const { class: _class, ...restEntries } = attrs;
-  return restEntries;
+  return safeRest(restEntries);
 });
 const cls = computed(() => selectClasses({ className: callerClass.value }));
 </script>

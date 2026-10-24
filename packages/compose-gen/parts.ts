@@ -2,7 +2,7 @@
 // every composition of ../kit-compose/src/map.ts is its v3 primitive (specs/primitives.json, copied from @ui8kit/codegen 3.2.0)
 // plus the cva keys of its recipe (../kit-compose/variants), the prop that picks its tag, and the native attributes it forwards.
 // Replaces the v2 brick specs (packages/compose-gen/specs/ui) — exit step 2 of docs/ui8kit3-xgen-exit.md.
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { BRICKS } from "../kit-compose/src/map";
 import { RECIPES } from "../kit-compose/src/recipes";
@@ -18,6 +18,14 @@ type Def = { name: string; type: string; passthrough?: boolean; cva?: boolean; c
 const PRIMS: Record<string, PrimPart> = Object.fromEntries(
   (JSON.parse(readFileSync(join(import.meta.dir, "specs/primitives.json"), "utf8")) as { primitives: Array<{ parts: PrimPart[] }> })
     .primitives.flatMap((p) => p.parts).map((p) => [p.name, p]));
+
+/** fields of the installed templ kit typed `*string` (nullable passthrough Value since registry 3.2.2: nil = unset,
+ *  new("") = value=""): "Part.Field", read from packages/kit/templ so the wire type follows the kit. The templ emitter passes
+ *  the value through uiutils.SP (null stays nil, as React omits the attribute) */
+const KIT_TEMPL = join(import.meta.dir, "../kit/templ/src/ui");
+const PTR: Set<string> = new Set(readdirSync(KIT_TEMPL, { recursive: true, encoding: "utf8" }).filter((f) => f.endsWith(".templ")).flatMap((f) =>
+  [...readFileSync(join(KIT_TEMPL, f), "utf8").matchAll(/^type (\w+)Props struct \{\n([^]*?)^\}/gm)].flatMap(([, part, body]) =>
+    [...body!.matchAll(/^\t(\w+) \*string$/gm)].map(([, field]) => `${part}.${field}`))));
 
 /** native attributes an organism sets on a composition that its v3 primitive does not list (forwarded as rest, plain HTML names):
  *  each is a typed prop of the organism view so the validator and the emitters name it */
@@ -49,7 +57,7 @@ export function partsFromKit(): Parts {
     for (const p of prim.props) {
       if (p.name === "Tag" && (m.tag || m.tagFrom)) continue;
       if (m.fixed && Object.keys(m.fixed).some((f) => f.toLowerCase() === p.html)) continue;
-      add({ name: p.name, type: INT.has(`${name}.${p.name}`) ? "int" : p.type, passthrough: p.passthrough, wire: p.type, param: p.react.includes("-") ? p.name[0]!.toLowerCase() + p.name.slice(1) : p.react });
+      add({ name: p.name, type: INT.has(`${name}.${p.name}`) ? "int" : p.type, passthrough: p.passthrough, wire: PTR.has(`${m.primitive}.${p.name}`) ? "*string" : p.type, param: p.react.includes("-") ? p.name[0]!.toLowerCase() + p.name.slice(1) : p.react });
     }
     for (const [a, t] of Object.entries(m.attrs ?? {})) add({ name: pascal(a), type: t === "number" ? "int" : "string", passthrough: true, attr: a.toLowerCase() });
     for (const d of NATIVE[m.primitive] ?? []) add(d);

@@ -5,6 +5,7 @@
 
 import { splitProps, type JSX, type Component } from "solid-js";
 import { disclosureClasses, summaryClasses } from "./disclosure.shared";
+import { safeRest } from "../../utils/expr";
 
 /**
  * Disclosure renders a native details element.
@@ -20,7 +21,7 @@ export const Disclosure: Component<DisclosureProps> = (props) => {
   const [local, rest] = splitProps(props, ["open", "class", "className", "children"]);
   const cls = () => disclosureClasses({ className: local.class ?? local.className });
   return (
-    <details class={cls() || undefined} open={local.open || undefined} {...rest}>
+    <details {...(cls() ? { class: cls() } : {})} open={local.open || undefined} {...safeRest(rest)}>
       {local.children}
     </details>
   );
@@ -39,7 +40,7 @@ export const Summary: Component<SummaryProps> = (props) => {
   const [local, rest] = splitProps(props, ["class", "className", "children"]);
   const cls = () => summaryClasses({ className: local.class ?? local.className });
   return (
-    <summary class={cls() || undefined} {...rest}>
+    <summary {...(cls() ? { class: cls() } : {})} {...safeRest(rest)}>
       {local.children}
     </summary>
   );

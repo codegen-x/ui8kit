@@ -15,13 +15,17 @@
 </script>
 
 <script lang="ts">
+  import { safeRest } from "../../utils/expr";
+
   let {
     selected,
     disabled,
     class: className,
     children,
-    ...rest
+    ...rawRest
   }: SelectOptionProps = $props();
+
+  const rest = $derived(safeRest(rawRest));
 </script>
 
 <option selected={selected || undefined} disabled={disabled || undefined} {...rest}>

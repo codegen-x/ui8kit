@@ -46,7 +46,7 @@ templ Icon(p IconProps) {
 		if uiutils.IsSetStr(p.Label) {
 			aria-label={ p.Label }
 		}
-		{ p.Attrs... }
+		{ uiutils.SafeAttrs(p.Attrs)... }
 	>
 		{ children... }
 	</span>

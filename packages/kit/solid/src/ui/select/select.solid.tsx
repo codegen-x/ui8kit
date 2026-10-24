@@ -6,7 +6,7 @@
 
 import { createEffect, splitProps, type JSX, type Component } from "solid-js";
 import { selectClasses, type SelectOptionItem } from "./select.shared";
-import { eqStr, syncValue } from "../../utils/expr";
+import { eqStr, safeRest, syncValue } from "../../utils/expr";
 
 /**
  * Select renders option children from Options, then manual children.
@@ -26,7 +26,7 @@ export const Select: Component<SelectProps> = (props) => {
   const [local, rest] = splitProps(props, ["value", "multiple", "required", "disabled", "options", "class", "className", "children"]);
   const cls = () => selectClasses({ className: local.class ?? local.className });
   return (
-    <select class={cls() || undefined} multiple={local.multiple || undefined} required={local.required || undefined} disabled={local.disabled || undefined} ref={(el) => createEffect(() => syncValue(el, local.value))} {...rest}>
+    <select {...(cls() ? { class: cls() } : {})} multiple={local.multiple || undefined} required={local.required || undefined} disabled={local.disabled || undefined} ref={(el) => createEffect(() => syncValue(el, local.value))} {...safeRest(rest)}>
       {(local.options ?? []).map((item) => (
         <option value={(item.value) ?? ""} selected={eqStr(item.value, local.value) || undefined} disabled={item.disabled || undefined}>
           {item.label}
@@ -51,7 +51,7 @@ export type SelectOptionProps = Omit<JSX.OptionHTMLAttributes<HTMLOptionElement>
 export const SelectOption: Component<SelectOptionProps> = (props) => {
   const [local, rest] = splitProps(props, ["selected", "disabled", "class", "className", "children"]);
   return (
-    <option selected={local.selected || undefined} disabled={local.disabled || undefined} {...rest}>
+    <option selected={local.selected || undefined} disabled={local.disabled || undefined} {...safeRest(rest)}>
       {local.children}
     </option>
   );
@@ -70,7 +70,7 @@ export type SelectOptGroupProps = Omit<JSX.OptgroupHTMLAttributes<HTMLOptGroupEl
 export const SelectOptGroup: Component<SelectOptGroupProps> = (props) => {
   const [local, rest] = splitProps(props, ["disabled", "class", "className", "children"]);
   return (
-    <optgroup disabled={local.disabled || undefined} {...rest}>
+    <optgroup disabled={local.disabled || undefined} {...safeRest(rest)}>
       {local.children}
     </optgroup>
   );

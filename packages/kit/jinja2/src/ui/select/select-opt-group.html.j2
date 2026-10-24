@@ -4,7 +4,7 @@
     children: TRUSTED HTML printed with |safe — never pass unescaped user input.
 -#}
 <optgroup
-  {%- if ui_is_set_str(ui_def(p['Label'], '')) %} label="{{ ui_def(p['Label'], '') }}"{%- endif %}
+  {%- if p['Label'] is defined and p['Label'] is not none %} label="{{ p['Label'] }}"{%- endif %}
   {%- if ui_def(p['Disabled'], false) %} disabled{%- endif %}
   {{ ui_attr_html(ui_def(p['Attrs'], {})) }}
 >{{ children|default('', true)|safe }}</optgroup>

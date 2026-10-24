@@ -5,6 +5,7 @@
 
 import { forwardRef, type InputHTMLAttributes } from "react";
 import { checkboxClasses } from "./checkbox.shared";
+import { safeRest } from "../../utils/expr";
 
 /**
  * Checkbox renders input[type=checkbox].
@@ -17,9 +18,10 @@ export type CheckboxProps = Omit<InputHTMLAttributes<HTMLInputElement>, "classNa
 };
 
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(function Checkbox(
-  { checked, required, disabled, className, ...rest },
+  { checked, required, disabled, className, ...rawRest },
   ref
 ) {
+  const rest = safeRest(rawRest);
   const cls = checkboxClasses({ className });
   return (
     <input ref={ref} type="checkbox" className={cls || undefined} checked={checked} required={required} disabled={disabled} {...rest} />

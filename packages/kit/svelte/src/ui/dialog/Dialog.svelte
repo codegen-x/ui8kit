@@ -15,14 +15,16 @@
 
 <script lang="ts">
   import { dialogClasses } from "./dialog.shared";
+  import { safeRest } from "../../utils/expr";
 
   let {
     open,
     class: className,
     children,
-    ...rest
+    ...rawRest
   }: DialogProps = $props();
 
+  const rest = $derived(safeRest(rawRest));
   const cls = $derived(dialogClasses({ className }));
 </script>
 

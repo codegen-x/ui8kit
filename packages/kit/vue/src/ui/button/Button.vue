@@ -6,7 +6,7 @@
 <script setup lang="ts">
 import { computed, useAttrs } from "vue";
 import { buttonClasses } from "./button.shared";
-import { isSetStr, oneOfOr, orUndef } from "../../utils/expr";
+import { isSetStr, oneOfOr, orUndef, safeRest, safeUrl } from "../../utils/expr";
 
 defineOptions({ name: "Button", inheritAttrs: false });
 
@@ -20,13 +20,13 @@ const attrs = useAttrs();
 const callerClass = computed(() => attrs.class as string | undefined);
 const restAttrs = computed(() => {
   const { class: _class, ...restEntries } = attrs;
-  return restEntries;
+  return safeRest(restEntries);
 });
 const cls = computed(() => buttonClasses({ className: callerClass.value }));
 </script>
 
 <template>
-  <a v-if="isSetStr(props.href)" :href="orUndef(props.href)" :class="cls || undefined" :aria-disabled="props.disabled ? 'true' : undefined" :tabindex="props.disabled ? -1 : undefined" v-bind="restAttrs">
+  <a v-if="isSetStr(props.href)" :href="orUndef(safeUrl(props.href))" :class="cls || undefined" :aria-disabled="props.disabled ? 'true' : undefined" :tabindex="props.disabled ? -1 : undefined" v-bind="restAttrs">
     <slot />
   </a>
   <button v-else :type="oneOfOr(props.type, 'button', 'submit', 'reset')" :class="cls || undefined" :disabled="props.disabled || undefined" v-bind="restAttrs">

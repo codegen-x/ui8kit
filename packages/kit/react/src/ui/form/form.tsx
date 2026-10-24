@@ -6,7 +6,7 @@
 
 import { forwardRef, type ReactNode, type FormHTMLAttributes } from "react";
 import { formClasses } from "./form.shared";
-import { oneOfOrLower, orUndef } from "../../utils/expr";
+import { oneOfOrLower, orUndef, safeRest } from "../../utils/expr";
 
 /**
  * Form renders a native form element; method is whitelisted (get|post|dialog).
@@ -19,9 +19,10 @@ export type FormProps = Omit<FormHTMLAttributes<HTMLFormElement>, "className" | 
 };
 
 export const Form = forwardRef<HTMLFormElement, FormProps>(function Form(
-  { method, noValidate, className, children, ...rest },
+  { method, noValidate, className, children, ...rawRest },
   ref
 ) {
+  const rest = safeRest(rawRest);
   const cls = formClasses({ className });
   return (
     <form ref={ref} className={cls || undefined} method={orUndef(oneOfOrLower(method, "", "get", "post", "dialog"))} noValidate={noValidate} {...rest}>

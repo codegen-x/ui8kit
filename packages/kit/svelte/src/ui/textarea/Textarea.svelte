@@ -16,6 +16,7 @@
 
 <script lang="ts">
   import { textareaClasses } from "./textarea.shared";
+  import { safeRest } from "../../utils/expr";
 
   let {
     value,
@@ -23,9 +24,10 @@
     disabled,
     readOnly,
     class: className,
-    ...rest
+    ...rawRest
   }: TextareaProps = $props();
 
+  const rest = $derived(safeRest(rawRest));
   const cls = $derived(textareaClasses({ className }));
 </script>
 

@@ -5,6 +5,7 @@
 <script setup lang="ts">
 import { computed, useAttrs } from "vue";
 import { imageClasses } from "./image.shared";
+import { safeRest } from "../../utils/expr";
 
 defineOptions({ name: "Image", inheritAttrs: false });
 
@@ -16,7 +17,7 @@ const attrs = useAttrs();
 const callerClass = computed(() => attrs.class as string | undefined);
 const restAttrs = computed(() => {
   const { class: _class, ...restEntries } = attrs;
-  return restEntries;
+  return safeRest(restEntries);
 });
 const cls = computed(() => imageClasses({ className: callerClass.value }));
 </script>

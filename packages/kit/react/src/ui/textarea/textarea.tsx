@@ -5,6 +5,7 @@
 
 import { forwardRef, type TextareaHTMLAttributes } from "react";
 import { textareaClasses } from "./textarea.shared";
+import { safeRest } from "../../utils/expr";
 
 /**
  * Textarea renders a native textarea; Value is the initial content.
@@ -18,9 +19,10 @@ export type TextareaProps = Omit<TextareaHTMLAttributes<HTMLTextAreaElement>, "c
 };
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function Textarea(
-  { value, required, disabled, readOnly, className, ...rest },
+  { value, required, disabled, readOnly, className, ...rawRest },
   ref
 ) {
+  const rest = safeRest(rawRest);
   const cls = textareaClasses({ className });
   return (
     <textarea ref={ref} className={cls || undefined} required={required} disabled={disabled} readOnly={readOnly} {...rest} defaultValue={(value) ?? ""} />

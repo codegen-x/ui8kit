@@ -6,6 +6,7 @@
 
 import { forwardRef, type ReactNode, type OptgroupHTMLAttributes, type OptionHTMLAttributes, type SelectHTMLAttributes } from "react";
 import { selectClasses, type SelectOptionItem } from "./select.shared";
+import { safeRest } from "../../utils/expr";
 
 /**
  * Select renders option children from Options, then manual children.
@@ -21,9 +22,10 @@ export type SelectProps = Omit<SelectHTMLAttributes<HTMLSelectElement>, "classNa
 };
 
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select(
-  { value, multiple, required, disabled, options, className, children, ...rest },
+  { value, multiple, required, disabled, options, className, children, ...rawRest },
   ref
 ) {
+  const rest = safeRest(rawRest);
   const cls = selectClasses({ className });
   return (
     <select ref={ref} className={cls || undefined} multiple={multiple} required={required} disabled={disabled} {...(value === undefined ? {} : { [rest.onChange ? "value" : "defaultValue"]: multiple ? [value] : value })} {...rest}>
@@ -49,9 +51,10 @@ export type SelectOptionProps = Omit<OptionHTMLAttributes<HTMLOptionElement>, "c
 };
 
 export const SelectOption = forwardRef<HTMLOptionElement, SelectOptionProps>(function SelectOption(
-  { selected, disabled, className, children, ...rest },
+  { selected, disabled, className, children, ...rawRest },
   ref
 ) {
+  const rest = safeRest(rawRest);
   return (
     <option ref={ref} selected={selected} disabled={disabled} {...rest}>
       {children}
@@ -70,9 +73,10 @@ export type SelectOptGroupProps = Omit<OptgroupHTMLAttributes<HTMLOptGroupElemen
 };
 
 export const SelectOptGroup = forwardRef<HTMLOptGroupElement, SelectOptGroupProps>(function SelectOptGroup(
-  { disabled, className, children, ...rest },
+  { disabled, className, children, ...rawRest },
   ref
 ) {
+  const rest = safeRest(rawRest);
   return (
     <optgroup ref={ref} disabled={disabled} {...rest}>
       {children}

@@ -5,6 +5,7 @@
 
 import { splitProps, type JSX, type Component } from "solid-js";
 import { checkboxClasses } from "./checkbox.shared";
+import { safeRest } from "../../utils/expr";
 
 /**
  * Checkbox renders input[type=checkbox].
@@ -21,6 +22,6 @@ export const Checkbox: Component<CheckboxProps> = (props) => {
   const [local, rest] = splitProps(props, ["checked", "required", "disabled", "class", "className"]);
   const cls = () => checkboxClasses({ className: local.class ?? local.className });
   return (
-    <input type="checkbox" class={cls() || undefined} checked={local.checked || undefined} required={local.required || undefined} disabled={local.disabled || undefined} {...rest} />
+    <input type="checkbox" {...(cls() ? { class: cls() } : {})} checked={local.checked || undefined} required={local.required || undefined} disabled={local.disabled || undefined} {...safeRest(rest)} />
   );
 };

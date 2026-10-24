@@ -36,7 +36,7 @@ templ Disclosure(p DisclosureProps) {
 		if uiutils.IsSetStr(p.Name) {
 			name={ p.Name }
 		}
-		{ p.Attrs... }
+		{ uiutils.SafeAttrs(p.Attrs)... }
 	>
 		{ children... }
 	</details>
@@ -61,7 +61,7 @@ templ Summary(p SummaryProps) {
 		if SummaryClasses(p) != "" {
 			class={ SummaryClasses(p) }
 		}
-		{ p.Attrs... }
+		{ uiutils.SafeAttrs(p.Attrs)... }
 	>
 		{ children... }
 	</summary>

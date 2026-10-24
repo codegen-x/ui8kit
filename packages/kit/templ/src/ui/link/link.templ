@@ -44,8 +44,8 @@ func linkRel(p LinkProps) string {
 // Link renders the Link contract.
 templ Link(p LinkProps) {
 	<a
-		if uiutils.IsSetStr(p.Href) {
-			href={ p.Href }
+		if uiutils.IsSetStr(uiutils.SafeURL(p.Href)) {
+			href={ uiutils.SafeURL(p.Href) }
 		}
 		if LinkClasses(p) != "" {
 			class={ LinkClasses(p) }
@@ -65,7 +65,7 @@ templ Link(p LinkProps) {
 		if uiutils.IsSetStr(p.AriaLabel) {
 			aria-label={ p.AriaLabel }
 		}
-		{ p.Attrs... }
+		{ uiutils.SafeAttrs(p.Attrs)... }
 	>
 		{ children... }
 	</a>

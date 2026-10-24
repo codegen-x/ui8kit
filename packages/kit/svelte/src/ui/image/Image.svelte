@@ -13,13 +13,15 @@
 
 <script lang="ts">
   import { imageClasses } from "./image.shared";
+  import { safeRest } from "../../utils/expr";
 
   let {
     alt,
     class: className,
-    ...rest
+    ...rawRest
   }: ImageProps = $props();
 
+  const rest = $derived(safeRest(rawRest));
   const cls = $derived(imageClasses({ className }));
 </script>
 

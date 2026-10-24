@@ -16,16 +16,17 @@
 
 <script lang="ts">
   import { formClasses } from "./form.shared";
-  import { oneOfOrLower, orUndef } from "../../utils/expr";
+  import { oneOfOrLower, orUndef, safeRest } from "../../utils/expr";
 
   let {
     method,
     novalidate: noValidate,
     class: className,
     children,
-    ...rest
+    ...rawRest
   }: FormProps = $props();
 
+  const rest = $derived(safeRest(rawRest));
   const cls = $derived(formClasses({ className }));
 </script>
 

@@ -2,7 +2,7 @@
   "name": "@codegen-x/kit-react",
   "private": true,
   "version": "0.0.0",
-  "description": "UI8Kit 3 primitives for react, installed by the ui8kit CLI from @ui8kit/registry 3.2.0. Do not edit: bun run kit:check (ui8kit check) fails on any change.",
+  "description": "UI8Kit 3 primitives for react, installed by the ui8kit CLI from @ui8kit/registry 3.2.2. Do not edit: bun run kit:check (ui8kit check) fails on any change.",
   "dependencies": {
     "clsx": "^2.1.1",
     "tailwind-merge": "^3.7.0"

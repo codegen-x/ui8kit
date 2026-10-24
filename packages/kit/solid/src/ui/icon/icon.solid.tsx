@@ -6,7 +6,7 @@
 
 import { splitProps, type JSX, type Component } from "solid-js";
 import { iconClasses, type IconSize } from "./icon.shared";
-import { isSetStr } from "../../utils/expr";
+import { isSetStr, safeRest } from "../../utils/expr";
 
 /**
  * Icon renders span[data-slot=icon]; Label switches to role=img + aria-label.
@@ -23,7 +23,7 @@ export const Icon: Component<IconProps> = (props) => {
   const [local, rest] = splitProps(props, ["size", "label", "class", "className", "children"]);
   const cls = () => iconClasses({ size: local.size, className: local.class ?? local.className });
   return (
-    <span data-slot="icon" class={cls() || undefined} aria-hidden={!(isSetStr(local.label)) ? "true" : undefined} role={isSetStr(local.label) ? "img" : undefined} aria-label={isSetStr(local.label) ? local.label : undefined} {...rest}>
+    <span data-slot="icon" {...(cls() ? { class: cls() } : {})} aria-hidden={!(isSetStr(local.label)) ? "true" : undefined} role={isSetStr(local.label) ? "img" : undefined} aria-label={isSetStr(local.label) ? local.label : undefined} {...safeRest(rest)}>
       {local.children}
     </span>
   );

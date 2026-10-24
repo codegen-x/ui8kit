@@ -47,7 +47,7 @@ templ SignupWizard(p SignupWizardProps) {
 				{ uiutils.Text(uiutils.Tpl(uiutils.Get(vLabels, "stepOf"), vCurrent, uiutils.Len(vSteps))) }
 			}
 			if uiutils.Eq(vProgress, "bar") {
-				@compose.Progress(compose.ProgressProps{ProgressProps: progress.ProgressProps{Value: uiutils.S(uiutils.Str(vCurrent)), Max: uiutils.S(uiutils.Str(uiutils.Len(vSteps))), Attrs: uiutils.Attrs("aria-label", uiutils.Get(vLabels, "steps"))}})
+				@compose.Progress(compose.ProgressProps{ProgressProps: progress.ProgressProps{Value: uiutils.SP(uiutils.Str(vCurrent)), Max: uiutils.S(uiutils.Str(uiutils.Len(vSteps))), Attrs: uiutils.Attrs("aria-label", uiutils.Get(vLabels, "steps"))}})
 			}
 			if uiutils.Eq(vProgress, "list") {
 				@compose.List(compose.ListProps{BoxProps: box.BoxProps{Class: "m-0 flex list-none flex-col gap-2 p-0", Attrs: uiutils.Attrs("aria-label", uiutils.Get(vLabels, "steps"), "data-testid", "step-list")}}) {

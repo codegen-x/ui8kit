@@ -14,13 +14,15 @@
 
 <script lang="ts">
   import { progressClasses } from "./progress.shared";
+  import { safeRest } from "../../utils/expr";
 
   let {
     class: className,
     children,
-    ...rest
+    ...rawRest
   }: ProgressProps = $props();
 
+  const rest = $derived(safeRest(rawRest));
   const cls = $derived(progressClasses({ className }));
 </script>
 

@@ -200,7 +200,7 @@ function composeUse(n: Extract<ViewNode, { use: string }>, ref: PartRef, c: Ctx)
     if (!d) throw new Error(`${c.org.name}: ${n.use} has no prop ${k}`);
     if (d.attr) { attrs.push(`${lit(d.attr)}, ${printGo(v, c)}`); continue; }
     const type = n.use === "LucideIcon" && k === "Size" ? "int" : d.wire ?? d.type;
-    (t.embed && (d.cva || k === "As") ? outer : inner).push(`${k}: ${goValue(type, v, c)}`);
+    (t.embed && (d.cva || k === "As") ? outer : inner).push(`${k}: ${type === "*string" ? `uiutils.SP(${printGo(v, c)})` : goValue(type, v, c)}`);
   }
   for (const [k, v] of Object.entries(n.attrs ?? {})) attrs.push(`${lit(k)}, ${printGo(v, c)}`);
   if (attrs.length) inner.push(`Attrs: uiutils.Attrs(${attrs.join(", ")})`);

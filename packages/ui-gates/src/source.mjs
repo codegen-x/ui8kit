@@ -27,7 +27,7 @@ export const PRIMITIVE_OF = {
  */
 export const RAW_ALLOWED = ["svg", "br", "datalist", "output"];
 export const BOX_TAGS = ["div", "section", "article", "aside", "header", "footer", "main", "nav", "figure", "search", "ul", "ol", "li", "dl", "dt", "dd", "fieldset", "table", "thead", "tbody", "tfoot", "tr", "th", "td", "caption", "colgroup", "col"];
-export const TEXT_TAGS = ["p", "span", "h1", "h2", "h3", "h4", "h5", "h6", "blockquote", "figcaption", "pre", "code", "small", "strong", "em", "time", "legend"];
+export const TEXT_TAGS = ["p", "span", "h1", "h2", "h3", "h4", "h5", "h6", "blockquote", "figcaption", "pre", "code", "small", "strong", "em", "time", "legend", "del", "ins"];
 
 const EXT = { ".tsx": "jsx", ".jsx": "jsx", ".svelte": "svelte", ".vue": "vue", ".templ": "templ", ".twig": "twig", ".latte": "latte", ".j2": "jinja", ".jinja": "jinja", ".jinja2": "jinja", ".html": "html" };
 

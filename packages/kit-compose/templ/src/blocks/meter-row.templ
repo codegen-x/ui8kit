@@ -40,7 +40,7 @@ templ MeterRow(p MeterRowProps) {
 						{ uiutils.Text(vCaption) }
 					}
 				}
-				@compose.Progress(compose.ProgressProps{ProgressProps: progress.ProgressProps{Value: uiutils.S(uiutils.Str(vValue)), Max: "100", Attrs: uiutils.Attrs("aria-label", vLabel)}})
+				@compose.Progress(compose.ProgressProps{ProgressProps: progress.ProgressProps{Value: uiutils.SP(uiutils.Str(vValue)), Max: "100", Attrs: uiutils.Attrs("aria-label", vLabel)}})
 				if uiutils.T(vHint) {
 					@compose.Text(compose.TextProps{TextProps: text.TextProps{Class: "m-0 text-xs font-medium text-muted-foreground"}}) {
 						{ uiutils.Text(vHint) }
@@ -57,7 +57,7 @@ templ MeterRow(p MeterRowProps) {
 						{ uiutils.Text(vCaption) }
 					}
 				}
-				@compose.Progress(compose.ProgressProps{ProgressProps: progress.ProgressProps{Value: uiutils.S(uiutils.Str(vValue)), Max: "100", Attrs: uiutils.Attrs("aria-label", vLabel)}})
+				@compose.Progress(compose.ProgressProps{ProgressProps: progress.ProgressProps{Value: uiutils.SP(uiutils.Str(vValue)), Max: "100", Attrs: uiutils.Attrs("aria-label", vLabel)}})
 				if uiutils.T(vHint) {
 					@compose.Text(compose.TextProps{TextProps: text.TextProps{Class: "m-0 text-xs font-medium text-muted-foreground"}}) {
 						{ uiutils.Text(vHint) }

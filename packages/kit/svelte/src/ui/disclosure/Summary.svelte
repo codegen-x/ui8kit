@@ -14,13 +14,15 @@
 
 <script lang="ts">
   import { summaryClasses } from "./disclosure.shared";
+  import { safeRest } from "../../utils/expr";
 
   let {
     class: className,
     children,
-    ...rest
+    ...rawRest
   }: SummaryProps = $props();
 
+  const rest = $derived(safeRest(rawRest));
   const cls = $derived(summaryClasses({ className }));
 </script>
 

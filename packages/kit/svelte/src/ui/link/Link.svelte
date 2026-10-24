@@ -17,7 +17,7 @@
 
 <script lang="ts">
   import { linkClasses } from "./link.shared";
-  import { eqStr, isSetStr, orUndef } from "../../utils/expr";
+  import { eqStr, isSetStr, orUndef, safeRest } from "../../utils/expr";
 
   let {
     target,
@@ -25,9 +25,10 @@
     external,
     class: className,
     children,
-    ...rest
+    ...rawRest
   }: LinkProps = $props();
 
+  const rest = $derived(safeRest(rawRest));
   const cls = $derived(linkClasses({ className }));
   const targetValue = $derived((isSetStr(target) ? target : (external ? "_blank" : "")));
   const relValue = $derived((isSetStr(rel) ? rel : ((external || eqStr(targetValue, "_blank")) ? "noopener noreferrer" : "")));

@@ -15,14 +15,16 @@
 
 <script lang="ts">
   import { disclosureClasses } from "./disclosure.shared";
+  import { safeRest } from "../../utils/expr";
 
   let {
     open,
     class: className,
     children,
-    ...rest
+    ...rawRest
   }: DisclosureProps = $props();
 
+  const rest = $derived(safeRest(rawRest));
   const cls = $derived(disclosureClasses({ className }));
 </script>
 

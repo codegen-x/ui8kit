@@ -5,6 +5,7 @@
 
 import { forwardRef, type ReactNode, type LabelHTMLAttributes } from "react";
 import { labelClasses } from "./label.shared";
+import { safeRest } from "../../utils/expr";
 
 /**
  * Label renders a native label element.
@@ -15,9 +16,10 @@ export type LabelProps = Omit<LabelHTMLAttributes<HTMLLabelElement>, "className"
 };
 
 export const Label = forwardRef<HTMLLabelElement, LabelProps>(function Label(
-  { className, children, ...rest },
+  { className, children, ...rawRest },
   ref
 ) {
+  const rest = safeRest(rawRest);
   const cls = labelClasses({ className });
   return (
     <label ref={ref} className={cls || undefined} {...rest}>

@@ -20,7 +20,7 @@
 
 <script lang="ts">
   import { selectClasses } from "./select.shared";
-  import { eqStr, syncValue } from "../../utils/expr";
+  import { eqStr, safeRest, syncValue } from "../../utils/expr";
 
   let {
     value,
@@ -30,9 +30,10 @@
     options,
     class: className,
     children,
-    ...rest
+    ...rawRest
   }: SelectProps = $props();
 
+  const rest = $derived(safeRest(rawRest));
   const cls = $derived(selectClasses({ className }));
 </script>
 

@@ -6,6 +6,7 @@
 
 import { forwardRef, type ReactNode, type HTMLAttributes, type ImgHTMLAttributes, type SourceHTMLAttributes } from "react";
 import { imageClasses, pictureClasses } from "./image.shared";
+import { safeRest } from "../../utils/expr";
 
 /**
  * Image renders an img element; alt is always emitted.
@@ -16,9 +17,10 @@ export type ImageProps = Omit<ImgHTMLAttributes<HTMLImageElement>, "className" |
 };
 
 export const Image = forwardRef<HTMLImageElement, ImageProps>(function Image(
-  { alt, className, ...rest },
+  { alt, className, ...rawRest },
   ref
 ) {
+  const rest = safeRest(rawRest);
   const cls = imageClasses({ className });
   return (
     <img ref={ref} alt={(alt) ?? ""} className={cls || undefined} {...rest} />
@@ -35,9 +37,10 @@ export type PictureProps = Omit<HTMLAttributes<HTMLElement>, "className" | "chil
 };
 
 export const Picture = forwardRef<HTMLElement, PictureProps>(function Picture(
-  { className, children, ...rest },
+  { className, children, ...rawRest },
   ref
 ) {
+  const rest = safeRest(rawRest);
   const cls = pictureClasses({ className });
   return (
     <picture ref={ref} className={cls || undefined} {...rest}>
@@ -55,9 +58,10 @@ export type SourceProps = Omit<SourceHTMLAttributes<HTMLSourceElement>, "classNa
 };
 
 export const Source = forwardRef<HTMLSourceElement, SourceProps>(function Source(
-  { className, ...rest },
+  { className, ...rawRest },
   ref
 ) {
+  const rest = safeRest(rawRest);
   return (
     <source ref={ref} {...rest} />
   );

@@ -296,6 +296,15 @@ func Str(v any) any {
 	return S(v)
 }
 
+// SP is the nullable string of v for a *string field: nil stays nil (unset), anything else is S(v).
+func SP(v any) *string {
+	if v == nil {
+		return nil
+	}
+	s := S(v)
+	return &s
+}
+
 // Has is `x != null`.
 func Has(v any) bool { return v != nil }
 

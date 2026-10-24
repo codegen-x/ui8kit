@@ -19,7 +19,7 @@ type SwitchProps struct {
 	Disabled bool
 	ID string
 	Name string
-	Value string
+	Value *string
 	AriaLabel string
 	AriaLabelledBy string
 	Attrs templ.Attributes
@@ -48,8 +48,8 @@ templ Switch(p SwitchProps) {
 		if uiutils.IsSetStr(p.Name) {
 			name={ p.Name }
 		}
-		if uiutils.IsSetStr(p.Value) {
-			value={ p.Value }
+		if p.Value != nil {
+			value={ *p.Value }
 		}
 		if uiutils.IsSetStr(p.AriaLabel) {
 			aria-label={ p.AriaLabel }
@@ -57,7 +57,7 @@ templ Switch(p SwitchProps) {
 		if uiutils.IsSetStr(p.AriaLabelledBy) {
 			aria-labelledby={ p.AriaLabelledBy }
 		}
-		{ p.Attrs... }
+		{ uiutils.SafeAttrs(p.Attrs)... }
 	>
 		{ children... }
 	</button>

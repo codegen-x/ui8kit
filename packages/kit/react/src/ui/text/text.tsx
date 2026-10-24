@@ -6,6 +6,7 @@
 
 import { forwardRef, type ReactNode, type HTMLAttributes, type ElementType, type Ref } from "react";
 import { textClasses } from "./text.shared";
+import { safeRest } from "../../utils/expr";
 import { resolveTag, TagGroup } from "../../utils/tags";
 import { Slot } from "../slot/slot";
 
@@ -13,16 +14,17 @@ import { Slot } from "../slot/slot";
  * Text renders the requested text element (default p).
  */
 export type TextProps = Omit<HTMLAttributes<HTMLElement>, "className" | "children" | "tag"> & {
-  tag?: "p" | "span" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote" | "figcaption" | "pre" | "code" | "small" | "strong" | "em" | "time" | "legend";
+  tag?: "p" | "span" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote" | "figcaption" | "pre" | "code" | "small" | "strong" | "em" | "time" | "legend" | "del" | "ins";
   className?: string;
   children?: ReactNode;
   asChild?: boolean;
 };
 
 export const Text = forwardRef<HTMLElement, TextProps>(function Text(
-  { tag, className, children, asChild, ...rest },
+  { tag, className, children, asChild, ...rawRest },
   ref
 ) {
+  const rest = safeRest(rawRest);
   const cls = textClasses({ className });
   const resolvedTagValue = resolveTag(tag, "p", TagGroup.Text);
   const Tag = resolvedTagValue as ElementType;

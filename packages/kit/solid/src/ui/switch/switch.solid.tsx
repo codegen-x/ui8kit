@@ -6,7 +6,7 @@
 
 import { splitProps, type JSX, type Component } from "solid-js";
 import { switchClasses } from "./switch.shared";
-import { boolStr } from "../../utils/expr";
+import { boolStr, safeRest } from "../../utils/expr";
 
 /**
  * Switch renders button[type=button][role=switch]; children render the thumb.
@@ -23,7 +23,7 @@ export const Switch: Component<SwitchProps> = (props) => {
   const [local, rest] = splitProps(props, ["checked", "disabled", "class", "className", "children"]);
   const cls = () => switchClasses({ className: local.class ?? local.className });
   return (
-    <button type="button" role="switch" aria-checked={boolStr(local.checked)} data-state={boolStr(local.checked)} class={cls() || undefined} disabled={local.disabled || undefined} {...rest}>
+    <button type="button" role="switch" aria-checked={boolStr(local.checked)} data-state={boolStr(local.checked)} {...(cls() ? { class: cls() } : {})} disabled={local.disabled || undefined} {...safeRest(rest)}>
       {local.children}
     </button>
   );

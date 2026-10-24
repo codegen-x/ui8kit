@@ -34,15 +34,15 @@ templ RangeField(p RangeFieldProps) {
 	{{ vMax := p.Max }}
 	@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cnv("flex flex-col gap-2", p.Class)), Attrs: uiutils.Attrs("data-slot", "range-field")}}) {
 		if uiutils.T(uiutils.And(uiutils.Eq(vType, "number"), uiutils.Has(vMin), uiutils.Has(vMax), uiutils.Lt(vMin, vMax))) {
-			@compose.Range(compose.RangeProps{InputProps: input.InputProps{Min: uiutils.S(vMin), Max: uiutils.S(vMax), Value: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vFrom, "")), uiutils.Str(vMin), vFrom)), Attrs: uiutils.Attrs("aria-label", vFromLabel, "data-testid", "range-from")}})
-			@compose.Range(compose.RangeProps{InputProps: input.InputProps{Min: uiutils.S(vMin), Max: uiutils.S(vMax), Value: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vTo, "")), uiutils.Str(vMax), vTo)), Attrs: uiutils.Attrs("aria-label", vToLabel, "data-testid", "range-to")}})
+			@compose.Range(compose.RangeProps{InputProps: input.InputProps{Min: uiutils.S(vMin), Max: uiutils.S(vMax), Value: uiutils.SP(uiutils.Cond(uiutils.T(uiutils.Eq(vFrom, "")), uiutils.Str(vMin), vFrom)), Attrs: uiutils.Attrs("aria-label", vFromLabel, "data-testid", "range-from")}})
+			@compose.Range(compose.RangeProps{InputProps: input.InputProps{Min: uiutils.S(vMin), Max: uiutils.S(vMax), Value: uiutils.SP(uiutils.Cond(uiutils.T(uiutils.Eq(vTo, "")), uiutils.Str(vMax), vTo)), Attrs: uiutils.Attrs("aria-label", vToLabel, "data-testid", "range-to")}})
 		}
 		@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "flex items-center gap-2"}}) {
-			@compose.Input(compose.InputProps{Size: "sm", InputProps: input.InputProps{Type: uiutils.S(vType), Value: uiutils.S(vFrom), Min: uiutils.S(uiutils.Str(vMin)), Max: uiutils.S(uiutils.Str(vMax)), Attrs: uiutils.Attrs("aria-label", vFromLabel)}})
+			@compose.Input(compose.InputProps{Size: "sm", InputProps: input.InputProps{Type: uiutils.S(vType), Value: uiutils.SP(vFrom), Min: uiutils.S(uiutils.Str(vMin)), Max: uiutils.S(uiutils.Str(vMax)), Attrs: uiutils.Attrs("aria-label", vFromLabel)}})
 			@compose.Inline(compose.InlineProps{TextProps: text.TextProps{Class: "text-muted-foreground"}}) {
 				{ uiutils.Text("–") }
 			}
-			@compose.Input(compose.InputProps{Size: "sm", InputProps: input.InputProps{Type: uiutils.S(vType), Value: uiutils.S(vTo), Min: uiutils.S(uiutils.Str(vMin)), Max: uiutils.S(uiutils.Str(vMax)), Attrs: uiutils.Attrs("aria-label", vToLabel)}})
+			@compose.Input(compose.InputProps{Size: "sm", InputProps: input.InputProps{Type: uiutils.S(vType), Value: uiutils.SP(vTo), Min: uiutils.S(uiutils.Str(vMin)), Max: uiutils.S(uiutils.Str(vMax)), Attrs: uiutils.Attrs("aria-label", vToLabel)}})
 		}
 	}
 }

@@ -8,6 +8,7 @@
 import { splitProps, type JSX, type Component } from "solid-js";
 import { Dynamic } from "solid-js/web";
 import { boxClasses } from "./box.shared";
+import { safeRest } from "../../utils/expr";
 import { resolveTag, TagGroup } from "../../utils/tags";
 
 /**
@@ -25,7 +26,7 @@ export const Box: Component<BoxProps> = (props) => {
   const resolvedTagValue = () => resolveTag(local.tag, "div", TagGroup.Box);
   const cls = () => boxClasses({ className: local.class ?? local.className });
   return (
-    <Dynamic component={resolvedTagValue()} class={cls() || undefined} {...rest}>
+    <Dynamic component={resolvedTagValue()} {...(cls() ? { class: cls() } : {})} {...safeRest(rest)}>
       {local.children}
     </Dynamic>
   );

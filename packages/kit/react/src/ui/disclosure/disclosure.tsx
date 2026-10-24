@@ -5,6 +5,7 @@
 
 import { forwardRef, type ReactNode, type DetailsHTMLAttributes, type HTMLAttributes } from "react";
 import { disclosureClasses, summaryClasses } from "./disclosure.shared";
+import { safeRest } from "../../utils/expr";
 
 /**
  * Disclosure renders a native details element.
@@ -16,9 +17,10 @@ export type DisclosureProps = Omit<DetailsHTMLAttributes<HTMLDetailsElement>, "c
 };
 
 export const Disclosure = forwardRef<HTMLDetailsElement, DisclosureProps>(function Disclosure(
-  { open, className, children, ...rest },
+  { open, className, children, ...rawRest },
   ref
 ) {
+  const rest = safeRest(rawRest);
   const cls = disclosureClasses({ className });
   return (
     <details ref={ref} className={cls || undefined} open={open} {...rest}>
@@ -37,9 +39,10 @@ export type SummaryProps = Omit<HTMLAttributes<HTMLElement>, "className" | "chil
 };
 
 export const Summary = forwardRef<HTMLElement, SummaryProps>(function Summary(
-  { className, children, ...rest },
+  { className, children, ...rawRest },
   ref
 ) {
+  const rest = safeRest(rawRest);
   const cls = summaryClasses({ className });
   return (
     <summary ref={ref} className={cls || undefined} {...rest}>

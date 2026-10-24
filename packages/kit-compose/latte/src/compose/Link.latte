@@ -2,13 +2,13 @@
 {* Link: Link + recipe link. *}
 {parameters
   string $class = '',
-  string $href = '',
+  ?string $href = null,
   string $target = '',
   string $rel = '',
   bool $external = false,
-  string $download = '',
-  string $ariaCurrent = '',
-  string $ariaLabel = '',
+  ?string $download = null,
+  ?string $ariaCurrent = null,
+  ?string $ariaLabel = null,
   array $attrs = [],
   string $children = '',
   $size = null,

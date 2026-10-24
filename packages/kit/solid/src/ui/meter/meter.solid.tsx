@@ -5,6 +5,7 @@
 
 import { splitProps, type JSX, type Component } from "solid-js";
 import { meterClasses } from "./meter.shared";
+import { safeRest } from "../../utils/expr";
 
 /**
  * Meter renders a native meter; children are the fallback text.
@@ -19,7 +20,7 @@ export const Meter: Component<MeterProps> = (props) => {
   const [local, rest] = splitProps(props, ["class", "className", "children"]);
   const cls = () => meterClasses({ className: local.class ?? local.className });
   return (
-    <meter class={cls() || undefined} {...rest}>
+    <meter {...(cls() ? { class: cls() } : {})} {...safeRest(rest)}>
       {local.children}
     </meter>
   );

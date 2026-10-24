@@ -5,19 +5,20 @@
 <script setup lang="ts">
 import { computed, useAttrs } from "vue";
 import { textClasses } from "./text.shared";
+import { safeRest } from "../../utils/expr";
 import { resolveTag, TagGroup } from "../../utils/tags";
 
 defineOptions({ name: "Text", inheritAttrs: false });
 
 const props = defineProps<{
-  tag?: "p" | "span" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote" | "figcaption" | "pre" | "code" | "small" | "strong" | "em" | "time" | "legend";
+  tag?: "p" | "span" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote" | "figcaption" | "pre" | "code" | "small" | "strong" | "em" | "time" | "legend" | "del" | "ins";
 }>();
 
 const attrs = useAttrs();
 const callerClass = computed(() => attrs.class as string | undefined);
 const restAttrs = computed(() => {
   const { class: _class, ...restEntries } = attrs;
-  return restEntries;
+  return safeRest(restEntries);
 });
 const cls = computed(() => textClasses({ className: callerClass.value }));
 const resolvedTagValue = computed(() => resolveTag(props.tag, "p", TagGroup.Text));

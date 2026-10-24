@@ -132,7 +132,7 @@ ${ctrl ? "{%- if p['Controls'] %}{%- set _ = a.update({'aria-controls': p['Contr
 }
 {var $a = ['data-ui8kit' => '${b.ui}', ${phpArr(b.fixed)}${Object.keys(b.fixed).length ? ", " : ""}'aria-label' => $ariaLabel !== '' ? $ariaLabel : '${b.label}', ...(${ctrl} && $controls !== '' ? ['aria-controls' => $controls] : []), ...$attrs]}
 {capture $icons}${icons((c, s) => `{include '../ui/icon/Icon.latte', size: '', label: '', class: '${c}', attrs: [], children: '${s}'}`)}{/capture}
-{include '../ui/button/Button.latte', type: 'button', ariaLabel: '', ariaControls: '', class: \\CodegenX\\Compose\\Latte\\Compose::join([\\CodegenX\\Compose\\Latte\\Compose::rc('${b.recipe}', ['variant' => $variant, 'size' => $size]), $class]), attrs: $a, children: (string) $icons}`]];
+{include '../ui/button/Button.latte', type: 'button', ariaLabel: null, ariaControls: null, class: \\CodegenX\\Compose\\Latte\\Compose::join([\\CodegenX\\Compose\\Latte\\Compose::rc('${b.recipe}', ['variant' => $variant, 'size' => $size]), $class]), attrs: $a, children: (string) $icons}`]];
     case "templ": {
       const lo = name[0].toLowerCase() + name.slice(1);
       return [[`templ/src/compose/${kebab(name)}.templ`, `// ${HEAD}
@@ -290,7 +290,7 @@ export function Breadcrumb(props: BreadcrumbProps) {
   string $class = '',
   array $attrs = [],
 }
-{capture $lis}{foreach $items as $it}{var $c = '${BC.item} ' . (($it['current'] ?? false) ? '${BC.current}' : (($it['disabled'] ?? false) ? '${BC.disabled}' : '${BC.link}'))}{var $a = ($it['current'] ?? false) ? ['aria-current' => 'page'] : []}{capture $inner}{if ($it['href'] ?? '') !== '' && !($it['disabled'] ?? false)}{include '../ui/link/Link.latte', href: $it['href'], class: $c, ariaLabel: '', attrs: $a, children: htmlspecialchars((string) ($it['label'] ?? ''), ENT_QUOTES)}{else}{include '../ui/text/Text.latte', tag: 'span', class: $c, attrs: $a, children: htmlspecialchars((string) ($it['label'] ?? ''), ENT_QUOTES)}{/if}{/capture}{include '../ui/box/Box.latte', tag: 'li', class: '${BC.li}', attrs: [], children: (string) $inner}{/foreach}{/capture}
+{capture $lis}{foreach $items as $it}{var $c = '${BC.item} ' . (($it['current'] ?? false) ? '${BC.current}' : (($it['disabled'] ?? false) ? '${BC.disabled}' : '${BC.link}'))}{var $a = ($it['current'] ?? false) ? ['aria-current' => 'page'] : []}{capture $inner}{if ($it['href'] ?? '') !== '' && !($it['disabled'] ?? false)}{include '../ui/link/Link.latte', href: $it['href'], class: $c, ariaLabel: null, attrs: $a, children: htmlspecialchars((string) ($it['label'] ?? ''), ENT_QUOTES)}{else}{include '../ui/text/Text.latte', tag: 'span', class: $c, attrs: $a, children: htmlspecialchars((string) ($it['label'] ?? ''), ENT_QUOTES)}{/if}{/capture}{include '../ui/box/Box.latte', tag: 'li', class: '${BC.li}', attrs: [], children: (string) $inner}{/foreach}{/capture}
 {capture $ol}{include '../ui/box/Box.latte', tag: 'ol', class: '${BC.ol}', attrs: [], children: (string) $lis}{/capture}
 {include '../ui/box/Box.latte', tag: 'nav', class: \\CodegenX\\Compose\\Latte\\Compose::join(['${BC.nav}', $class]), attrs: ['aria-label' => $ariaLabel !== '' ? $ariaLabel : 'Breadcrumb', ...$attrs], children: (string) $ol}`]];
     case "templ": return [["templ/src/compose/breadcrumb.templ", `// ${HEAD}

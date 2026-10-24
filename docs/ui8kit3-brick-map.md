@@ -86,7 +86,7 @@ Server compositions (one template per composition, no logic; props by one helper
 | latte | `latte/src/compose/<Name>.latte` (typed `{parameters}` copied from the primitive) | `Compose::props` | one loader root with `ui/` (kit) and `compose/` side by side |
 | templ | `templ/src/compose/<kebab>.templ`, `compose.StackProps{Gap: "4", BoxProps: box.BoxProps{...}}` | `compose.go` (`Rc`, `Join`, `Heading`) | `templ/go.mod` + `templ/kitmod` (go.mod of the installed kit, `ui/` `utils/` symlinks) |
 
-Props on the servers: recipe keys (`variant`, `size`, ...; PascalCase in Jinja2 `p` and templ), `tag` / `as`, `class`, `attrs` (aria-*, data-*), plus every prop of the primitive. Known kit bug seen through Image `variant=logo` (registry 3.2.0 server cn merge lacks object-fit): asserted in `KNOWN_KIT_BUGS`, fixed in registry 3.2.2 (unpublished).
+Props on the servers: recipe keys (`variant`, `size`, ...; PascalCase in Jinja2 `p` and templ), `tag` / `as`, `class`, `attrs` (aria-*, data-*), plus every prop of the primitive. The server cn merge of the kit (registry 3.2.2) knows the object-fit / object-position / aspect groups, so Image `variant=logo` matches React (the former `KNOWN_KIT_BUGS` entry is gone).
 
 ## Raw elements without a primitive (allowlist)
 
@@ -115,5 +115,5 @@ template gates) renders the same DOM in React (reference), Svelte, Vue and Solid
 source gate on the organism sources. Composition changes it needed: Grid `cols` (recipe key), CardTitle `as`, typed td/th
 attributes (scope, colSpan, ...), bare SelectOption/OptGroup in the JS runtimes.
 
-Known kit gap (fixed in ui8kit/codegen 4f0eeef, pending a kit reinstall): v3 Text 3.2.0 has no `del` tag (ProductPrice, ProductCard compare-at price fall back to the Text default tag);
-`gates:source --allow-tag del` and `KNOWN_KIT_GAPS` in the test list it until the kit has it.
+Text `del` / `ins` are in the v3 Text allowlist since registry 3.2.2 (ProductPrice, ProductCard compare-at price render `<del>`);
+`TEXT_TAGS` of `packages/ui-gates/src/source.mjs` lists them, so `gates:source` needs no `--allow-tag del` and the test has no `KNOWN_KIT_GAPS`.

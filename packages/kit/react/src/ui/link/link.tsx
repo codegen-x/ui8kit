@@ -5,7 +5,7 @@
 
 import { forwardRef, type ReactNode, type AnchorHTMLAttributes } from "react";
 import { linkClasses } from "./link.shared";
-import { eqStr, isSetStr, orUndef } from "../../utils/expr";
+import { eqStr, isSetStr, orUndef, safeRest } from "../../utils/expr";
 
 /**
  * Link renders an anchor; External opens a new tab with rel=noopener noreferrer.
@@ -19,9 +19,10 @@ export type LinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "className
 };
 
 export const Link = forwardRef<HTMLAnchorElement, LinkProps>(function Link(
-  { target, rel, external, className, children, ...rest },
+  { target, rel, external, className, children, ...rawRest },
   ref
 ) {
+  const rest = safeRest(rawRest);
   const cls = linkClasses({ className });
   const targetValue = (isSetStr(target) ? target : (external ? "_blank" : ""));
   const relValue = (isSetStr(rel) ? rel : ((external || eqStr(targetValue, "_blank")) ? "noopener noreferrer" : ""));

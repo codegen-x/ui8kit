@@ -5,195 +5,195 @@
     "npm:@ui8kit/registry|react|box": {
       "name": "box",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/react",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/react",
+      "version": "3.2.2",
       "runtime": "react",
       "files": {
         "src/ui/box/box.shared.ts": "59f52e34fbf633e2fb85f253ac81c93b0b5a62adf9e20d719c452dfa31048150",
-        "src/ui/box/box.tsx": "d65bb1db6e87f7e05c34fc1583b02140f3d94289b6328f9d56a48f19f6ea5b3f"
+        "src/ui/box/box.tsx": "d3a66460a88ac4ea36dca5fe00e1176142801b0aba8bba28af7c8ba4dc1b621a"
       }
     },
     "npm:@ui8kit/registry|react|button": {
       "name": "button",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/react",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/react",
+      "version": "3.2.2",
       "runtime": "react",
       "files": {
         "src/ui/button/button.shared.ts": "c1666ca1a228d99bd84aecff67f6d5335ec4a0db6197c7fbb9aa9bf1e4973fbc",
-        "src/ui/button/button.tsx": "11c9ae3b92e9d0c317ee420fc39fa198fa963074406232d62e2e0f741b53f9d2"
+        "src/ui/button/button.tsx": "76699a4c49d96bc213e60b572b356d33c7fd2b6d523e0a952c876b99eb282922"
       }
     },
     "npm:@ui8kit/registry|react|checkbox": {
       "name": "checkbox",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/react",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/react",
+      "version": "3.2.2",
       "runtime": "react",
       "files": {
         "src/ui/checkbox/checkbox.shared.ts": "e68cd1fb0c6cd5bf1e6293440e0e995d6be7097602ae990b94231471013eeddc",
-        "src/ui/checkbox/checkbox.tsx": "30f19c32e1973e165b1a98a0db50c61b7cadde31d90932a92139a13318399591"
+        "src/ui/checkbox/checkbox.tsx": "f37dc1f53c95d7887ccc48cc27437256ca8d080b589943a34a11893ab5c29848"
       }
     },
     "npm:@ui8kit/registry|react|dialog": {
       "name": "dialog",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/react",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/react",
+      "version": "3.2.2",
       "runtime": "react",
       "files": {
         "src/ui/dialog/dialog.shared.ts": "51414cef876fa635cb4add3c22dff978fb7f7e3eb6c86c8139caf63b10346888",
-        "src/ui/dialog/dialog.tsx": "60cdc7ec8648a6ace9af2900c7060d35277cdd1199b82170f1025736d7a7e2a4"
+        "src/ui/dialog/dialog.tsx": "f8d46d8a45da702e16c5a5f63d4d27e9e2731f63b964d4a60957e824d70c8abd"
       }
     },
     "npm:@ui8kit/registry|react|disclosure": {
       "name": "disclosure",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/react",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/react",
+      "version": "3.2.2",
       "runtime": "react",
       "files": {
         "src/ui/disclosure/disclosure.shared.ts": "2aa7b3cc137998037b9cb3c5af1c18617b7d220519a56a99e6b4ebd9b720f106",
-        "src/ui/disclosure/disclosure.tsx": "3d866b878fb82982d4eddbedb7ebb30530e2277e4e0b34f7cac51a70b66fad8c"
+        "src/ui/disclosure/disclosure.tsx": "809b5396c559b58f5aa023805ac9a5b0b199ca5f9f95419104d4460db426e4a4"
       }
     },
     "npm:@ui8kit/registry|react|form": {
       "name": "form",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/react",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/react",
+      "version": "3.2.2",
       "runtime": "react",
       "files": {
         "src/ui/form/form.shared.ts": "d168c15d3a66a521580f5857dd0c8cfc3f43a9ff089a87cd1b4fdd143c9730b5",
-        "src/ui/form/form.tsx": "868f4e830c7a03381f054108613e33cdf479c649d9e4bbe6d51343e06d62f1c6"
+        "src/ui/form/form.tsx": "27984b4fed5e08648da23d14584c6fbcbeafc18d3a41ea44e421e402f7df95fa"
       }
     },
     "npm:@ui8kit/registry|react|icon": {
       "name": "icon",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/react",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/react",
+      "version": "3.2.2",
       "runtime": "react",
       "files": {
         "src/ui/icon/icon.shared.ts": "5cc9c9474996f0d06ad2c277c24ab9a6d2ff4814a49f4024ce978947c098a11e",
-        "src/ui/icon/icon.tsx": "746fce81432df59ddd6f5a27858a38d79bbbb0e042f00437351f1aaf93430bb6",
+        "src/ui/icon/icon.tsx": "a02592e225953d5aa73b26b48440c4f2b28ee7e3bb2a05e80c7818ae32ffa1c7",
         "src/ui/icon/icon.variants.json": "3411086ff914c3d68ed81fa575f1ae22b6b5202198d505de4c1abf1509d8904a"
       }
     },
     "npm:@ui8kit/registry|react|image": {
       "name": "image",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/react",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/react",
+      "version": "3.2.2",
       "runtime": "react",
       "files": {
         "src/ui/image/image.shared.ts": "a67db7814370b79a1164b83e74b99d9d04d7e532d31dc0fa457c190e840cd05a",
-        "src/ui/image/image.tsx": "0662904a93f267274a25554dc45d69cf3be02fb146674e468fed67afd60d538b"
+        "src/ui/image/image.tsx": "08015fafde0a661c5c5569b5cccb0627de22fbf92da45c95f0f9c0fddd63e3b8"
       }
     },
     "npm:@ui8kit/registry|react|input": {
       "name": "input",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/react",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/react",
+      "version": "3.2.2",
       "runtime": "react",
       "files": {
         "src/ui/input/input.shared.ts": "70f35d175c8f36d35d5b3f5a2faaf866042154ddaaf9af1a8d821d34ca90147c",
-        "src/ui/input/input.tsx": "aa70c646f70a28d775b34bb5f156e04ecd2f6fbfd0662f281102ab4be1c23861"
+        "src/ui/input/input.tsx": "dd80884772d524af2244656cf31efa0ddb2479bd8ffb23a7a7700c99e1285731"
       }
     },
     "npm:@ui8kit/registry|react|label": {
       "name": "label",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/react",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/react",
+      "version": "3.2.2",
       "runtime": "react",
       "files": {
         "src/ui/label/label.shared.ts": "0bcf690a2be25bfa1736733431ffae5009f4878a8e6122abb8884fe0a923cdbd",
-        "src/ui/label/label.tsx": "87870549e06d1d6637c8d6fbfe7eb46817c4d7d4efb218dd16f5920ba936a868"
+        "src/ui/label/label.tsx": "7b50de3c9d86660864fc9b1c1c58bacf8ef0a000e8bdb139165b9e0c7460643c"
       }
     },
     "npm:@ui8kit/registry|react|link": {
       "name": "link",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/react",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/react",
+      "version": "3.2.2",
       "runtime": "react",
       "files": {
         "src/ui/link/link.shared.ts": "35ab6935736cc2e3871a1d3c76aa5fd092da590a373c94f3e0d0c0f3e0481039",
-        "src/ui/link/link.tsx": "e1abd59d1106e3549e3ad5966a67a3327793582cad8019e82e4d8c1f2831e71c"
+        "src/ui/link/link.tsx": "d893ababf5d58b14ced83f632590e4661b5979f4de5cc04aa965694198287e06"
       }
     },
     "npm:@ui8kit/registry|react|meter": {
       "name": "meter",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/react",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/react",
+      "version": "3.2.2",
       "runtime": "react",
       "files": {
         "src/ui/meter/meter.shared.ts": "f3be45a354c1af95345dde53ddf7974165dbe98efc7f31e7465fa4139578be91",
-        "src/ui/meter/meter.tsx": "4741e12d9308c413f35470a0c35749a18fbc0dc6d487f030549a73a7bb8eb546"
+        "src/ui/meter/meter.tsx": "56ff057c643d886cb920da45bd4abe5d7c5b36abdbf1d938cf0bcb46e80dd3d5"
       }
     },
     "npm:@ui8kit/registry|react|progress": {
       "name": "progress",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/react",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/react",
+      "version": "3.2.2",
       "runtime": "react",
       "files": {
         "src/ui/progress/progress.shared.ts": "cabe85d6c85b64fb2aeaf15b068e8d796ff12a33a6ce7b505a50943abf2e7df4",
-        "src/ui/progress/progress.tsx": "8e610f7ae869dcc551281ca20394cdb143d4823630705ff5bea444accedd0f22"
+        "src/ui/progress/progress.tsx": "30d2c6907a8eb054b9abe743861128df1ac736b4bf1d1bd613b24ec205eaf50d"
       }
     },
     "npm:@ui8kit/registry|react|radio": {
       "name": "radio",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/react",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/react",
+      "version": "3.2.2",
       "runtime": "react",
       "files": {
         "src/ui/radio/radio.shared.ts": "90a7a83d2a61327f4f4a76ff7b63b5e5c81e2291d33a3ad0477ca275b9607746",
-        "src/ui/radio/radio.tsx": "eba1bc054fad8fb9d291194b617f32596057d4ec3dc8147e51f0491ad94980f4"
+        "src/ui/radio/radio.tsx": "38b902c87c9b92f7e83727cd09cf71afdf33ccf4aec28308e31d445e8aefa9a2"
       }
     },
     "npm:@ui8kit/registry|react|rules": {
       "name": "rules",
       "type": "registry:rules",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/react",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/react",
+      "version": "3.2.2",
       "runtime": "react",
       "files": {
-        ".cursor/rules/ui8kit-primitives.mdc": "15025c61f82bb3178e7de6b18d687ca6ac6ce1379417c45a87ff87d1df998562"
+        ".cursor/rules/ui8kit-primitives.mdc": "baed551953cfd2614150e3fa52ea79274a323d45a13bde121344c5a4b30f7d00"
       }
     },
     "npm:@ui8kit/registry|react|select": {
       "name": "select",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/react",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/react",
+      "version": "3.2.2",
       "runtime": "react",
       "files": {
         "src/ui/select/select.shared.ts": "fbfd77060f93463a61673bd34fb3d53edf78d5f8ead587253eb0fea8d2a19bba",
-        "src/ui/select/select.tsx": "bac577eefbf405d3c0ebedf7d1119c6f45e951d015fbc236d4e351bc3958a748"
+        "src/ui/select/select.tsx": "fff38bf99bc6704415a9ecf1b5b291937b8b9d368f30441ce11ddebb1b7ba42f"
       }
     },
     "npm:@ui8kit/registry|react|separator": {
       "name": "separator",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/react",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/react",
+      "version": "3.2.2",
       "runtime": "react",
       "files": {
         "src/ui/separator/separator.shared.ts": "65711a64c434b5c90dfb6ad3924bde68436c1017d1af973dd4c11431d9cfc084",
-        "src/ui/separator/separator.tsx": "6b3f352627e84758abd608f09449a20b157df607b70947aedf7125c68d3d8fbc"
+        "src/ui/separator/separator.tsx": "07596790227c0ef30a1de01a2b841a34910b8507e8e383eb04c92f910b980bd3"
       }
     },
     "npm:@ui8kit/registry|react|slot": {
       "name": "slot",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/react",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/react",
+      "version": "3.2.2",
       "runtime": "react",
       "files": {
         "src/ui/slot/slot.tsx": "11fdcc61a0fdd93a61384e44b909faa7c0d665fbbf663db6e785a6620047f771"
@@ -202,49 +202,49 @@
     "npm:@ui8kit/registry|react|switch": {
       "name": "switch",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/react",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/react",
+      "version": "3.2.2",
       "runtime": "react",
       "files": {
         "src/ui/switch/switch.shared.ts": "0e67fbba43cff2a46f1a929f0e7e5a10e2ec8e0a384bf730f5da8bd9f119d5b8",
-        "src/ui/switch/switch.tsx": "0932c583cf638958fbd4a837e8bf4850ccc20e78589223413c9b9ee4dde5638d"
+        "src/ui/switch/switch.tsx": "3745baf9df36e9835f132e4d9c75e229013d9215c279be2cf6c57c0f7b5fdf10"
       }
     },
     "npm:@ui8kit/registry|react|text": {
       "name": "text",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/react",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/react",
+      "version": "3.2.2",
       "runtime": "react",
       "files": {
-        "src/ui/text/text.shared.ts": "d2c44f00ce9de5449c1f0fc9a40dacfb19cac763d461ed925ff92561300e3216",
-        "src/ui/text/text.tsx": "54f0ca414c7113c64208e32d4045834223adfda8aca1a2fe2fa7a7684cef632c"
+        "src/ui/text/text.shared.ts": "988fc436da762b618fdc6c17acc7f3537b63d14461eb5d614f4d242ef25672db",
+        "src/ui/text/text.tsx": "ee70e6a0b0f434fbe2bc06572cf55e6c685b6cfc7aaeeb6b5996e5b65dfe3ecc"
       }
     },
     "npm:@ui8kit/registry|react|textarea": {
       "name": "textarea",
       "type": "registry:ui",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/react",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/react",
+      "version": "3.2.2",
       "runtime": "react",
       "files": {
         "src/ui/textarea/textarea.shared.ts": "07e46370404a3406345328fdaf390666c4aa4fd31c1d9de0f64f62cd9ee20c43",
-        "src/ui/textarea/textarea.tsx": "186612c9673eaf82ce8c1fe5114a39d9adbb55b6c8f757968880c1499c1982e5"
+        "src/ui/textarea/textarea.tsx": "85c872ad5488b98154b19b4df437ff80aa7ad8cf3296db823e13384e54457db9"
       }
     },
     "npm:@ui8kit/registry|react|utils": {
       "name": "utils",
       "type": "registry:utils",
-      "source": "https://unpkg.com/@ui8kit/registry@3/r/react",
-      "version": "3.2.0",
+      "source": "https://unpkg.com/@ui8kit/registry@3.2.2/r/react",
+      "version": "3.2.2",
       "runtime": "react",
       "files": {
         "src/utils/cn.ts": "71e49505248438b14660406596be49812819f912e0aeb0f3e2f46677e1d481d7",
-        "src/utils/env.ts": "fd1211a0349b8b86ecc3e0069c44701754c8697f029be1530951731dee8d96b2",
-        "src/utils/expr.ts": "b3c7c370dd9f83f6fadc2aa396347a6051d40ac0671506b27daf53af1c5e00f0",
+        "src/utils/env.ts": "bc01c432801f7c9722b3756b4155c437c66061917362c7b259fcd12cc72a4478",
+        "src/utils/expr.ts": "cd29d60e9e616b15dd407c5fe76907c2c570795c818650c8d01ddc46d02a7651",
         "src/utils/index.ts": "098142c6140472cdb594686e1d23807c898c2218f24639a421a465b6924cfda5",
         "src/utils/recipe-types.ts": "5f25c506bbcac1b32569023a00c27497eea9b6684cd96a98708233cad313191b",
-        "src/utils/tags.ts": "a978a913dbebfe73d64f9645f92664a72ead75bcebe24bba9e0b1cd9334e9661",
+        "src/utils/tags.ts": "2aaa71b1175f3509c323bb84c4a57e10a08fc4fcd79c143e6bf7872768d75548",
         "src/utils/variants.ts": "f82accf10129f4f56d0b2e3d9d85d370b0a9066f3b802c3f7c31dc94576fb47a"
       }
     }

@@ -4,7 +4,7 @@
     children: TRUSTED HTML printed with |safe — never pass unescaped user input.
 -#}
 <option
-  {%- if ui_is_set_str(ui_def(p['Value'], '')) %} value="{{ ui_def(p['Value'], '') }}"{%- endif %}
+  {%- if p['Value'] is defined and p['Value'] is not none %} value="{{ p['Value'] }}"{%- endif %}
   {%- if ui_def(p['Selected'], false) %} selected{%- endif %}
   {%- if ui_def(p['Disabled'], false) %} disabled{%- endif %}
   {{ ui_attr_html(ui_def(p['Attrs'], {})) }}

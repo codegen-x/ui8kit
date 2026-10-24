@@ -7,13 +7,14 @@
 import { splitProps, type JSX, type Component } from "solid-js";
 import { Dynamic } from "solid-js/web";
 import { textClasses } from "./text.shared";
+import { safeRest } from "../../utils/expr";
 import { resolveTag, TagGroup } from "../../utils/tags";
 
 /**
  * Text renders the requested text element (default p).
  */
 export type TextProps = Omit<JSX.HTMLAttributes<HTMLElement>, "class" | "className" | "children" | "tag"> & {
-  tag?: "p" | "span" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote" | "figcaption" | "pre" | "code" | "small" | "strong" | "em" | "time" | "legend";
+  tag?: "p" | "span" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote" | "figcaption" | "pre" | "code" | "small" | "strong" | "em" | "time" | "legend" | "del" | "ins";
   class?: string;
   className?: string;
   children?: JSX.Element;
@@ -24,7 +25,7 @@ export const Text: Component<TextProps> = (props) => {
   const resolvedTagValue = () => resolveTag(local.tag, "p", TagGroup.Text);
   const cls = () => textClasses({ className: local.class ?? local.className });
   return (
-    <Dynamic component={resolvedTagValue()} class={cls() || undefined} {...rest}>
+    <Dynamic component={resolvedTagValue()} {...(cls() ? { class: cls() } : {})} {...safeRest(rest)}>
       {local.children}
     </Dynamic>
   );

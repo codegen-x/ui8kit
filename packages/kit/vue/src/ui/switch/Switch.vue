@@ -5,7 +5,7 @@
 <script setup lang="ts">
 import { computed, useAttrs } from "vue";
 import { switchClasses } from "./switch.shared";
-import { boolStr } from "../../utils/expr";
+import { boolStr, safeRest } from "../../utils/expr";
 
 defineOptions({ name: "Switch", inheritAttrs: false });
 
@@ -18,7 +18,7 @@ const attrs = useAttrs();
 const callerClass = computed(() => attrs.class as string | undefined);
 const restAttrs = computed(() => {
   const { class: _class, ...restEntries } = attrs;
-  return restEntries;
+  return safeRest(restEntries);
 });
 const cls = computed(() => switchClasses({ className: callerClass.value }));
 </script>

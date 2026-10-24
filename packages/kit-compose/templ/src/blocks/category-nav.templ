@@ -48,7 +48,7 @@ templ CategoryNav(p CategoryNavProps) {
 				@compose.Group(compose.GroupProps{Gap: "4", Align: "center", BoxProps: box.BoxProps{Class: "mb-4 flex-wrap", Attrs: uiutils.Attrs("data-testid", "toolbar")}}) {
 					@SearchField(SearchFieldProps{Value: uiutils.Coalesce(uiutils.Get(vTools, "query"), ""), Label: uiutils.Coalesce(uiutils.Get(vTools, "search"), ""), Placeholder: uiutils.Get(vTools, "search")})
 					@compose.Select(compose.SelectProps{Size: "sm", SelectProps: selectfield.SelectProps{Name: "sort", Class: "w-48", Attrs: uiutils.Attrs("aria-label", uiutils.Get(vTools, "sort"))}}) {
-						@selectfield.SelectOption(selectfield.SelectOptionProps{Value: "sort", Selected: true, Attrs: uiutils.Attrs("label", uiutils.Get(vTools, "sortValue"))})
+						@selectfield.SelectOption(selectfield.SelectOptionProps{Value: uiutils.SP("sort"), Selected: true, Attrs: uiutils.Attrs("label", uiutils.Get(vTools, "sortValue"))})
 					}
 					@compose.Text(compose.TextProps{Size: "sm", TextProps: text.TextProps{Class: "text-muted-foreground"}}) {
 						{ uiutils.Text(uiutils.Get(vTools, "shown")) }

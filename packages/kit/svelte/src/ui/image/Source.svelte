@@ -11,10 +11,14 @@
 </script>
 
 <script lang="ts">
+  import { safeRest } from "../../utils/expr";
+
   let {
     class: className,
-    ...rest
+    ...rawRest
   }: SourceProps = $props();
+
+  const rest = $derived(safeRest(rawRest));
 </script>
 
 <source {...rest} />

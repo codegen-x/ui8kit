@@ -47,7 +47,7 @@ templ Checklist(p ChecklistProps) {
 		} else {
 			@compose.Stack(compose.StackProps{Gap: "4", Align: "stretch", BoxProps: box.BoxProps{Class: uiutils.S(uiutils.Cond(uiutils.T(uiutils.Eq(vLayout, "card")), "rounded bg-card p-6 inset-ring inset-ring-border", "")), Attrs: uiutils.Attrs("data-testid", "checklist")}}) {
 				if uiutils.Eq(vProgress, "bar") {
-					@compose.Progress(compose.ProgressProps{ProgressProps: progress.ProgressProps{Value: uiutils.S(uiutils.Str(uiutils.Round(uiutils.Div(uiutils.Mul(uiutils.Count(vTasks, "done"), float64(100)), uiutils.Len(vTasks))))), Max: "100", Attrs: uiutils.Attrs("aria-label", uiutils.Tpl(vProgressLabel, uiutils.Count(vTasks, "done"), uiutils.Len(vTasks)))}})
+					@compose.Progress(compose.ProgressProps{ProgressProps: progress.ProgressProps{Value: uiutils.SP(uiutils.Str(uiutils.Round(uiutils.Div(uiutils.Mul(uiutils.Count(vTasks, "done"), float64(100)), uiutils.Len(vTasks))))), Max: "100", Attrs: uiutils.Attrs("aria-label", uiutils.Tpl(vProgressLabel, uiutils.Count(vTasks, "done"), uiutils.Len(vTasks)))}})
 				}
 				if uiutils.Eq(vProgress, "text") {
 					@compose.Text(compose.TextProps{Size: "sm", TextProps: text.TextProps{Class: "text-muted-foreground", Attrs: uiutils.Attrs("data-testid", "progress-text")}}) {

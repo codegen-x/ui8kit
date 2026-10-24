@@ -38,7 +38,7 @@ templ SlotGrid(p SlotGridProps) {
 				@compose.Box(compose.BoxProps{BoxProps: box.BoxProps{Class: "grid grid-cols-2 gap-2 sm:grid-cols-3"}}) {
 					for _, vS := range uiutils.L(uiutils.Get(vD, "slots")) {
 						@compose.Label(compose.LabelProps{LabelProps: label.LabelProps{Class: "flex items-center gap-2 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted has-checked:inset-ring-foreground"}}) {
-							@compose.Radio(compose.RadioProps{RadioProps: radio.RadioProps{Name: uiutils.S(vName), Value: uiutils.S(uiutils.Tpl("{0} {1}", uiutils.Get(vD, "id"), vS))}})
+							@compose.Radio(compose.RadioProps{RadioProps: radio.RadioProps{Name: uiutils.S(vName), Value: uiutils.SP(uiutils.Tpl("{0} {1}", uiutils.Get(vD, "id"), vS))}})
 							@compose.Inline(compose.InlineProps{TextProps: text.TextProps{}}) {
 								{ uiutils.Text(vS) }
 							}
@@ -46,7 +46,7 @@ templ SlotGrid(p SlotGridProps) {
 					}
 					for _, vS := range uiutils.L(uiutils.Get(vD, "closed")) {
 						@compose.Label(compose.LabelProps{LabelProps: label.LabelProps{Class: uiutils.S(uiutils.Cnv("flex items-center gap-2 rounded px-4 py-2 text-sm inset-ring inset-ring-border has-checked:bg-muted has-checked:inset-ring-foreground", "text-muted-foreground line-through"))}}) {
-							@compose.Radio(compose.RadioProps{RadioProps: radio.RadioProps{Name: uiutils.S(vName), Value: uiutils.S(uiutils.Tpl("{0} {1}", uiutils.Get(vD, "id"), vS)), Disabled: true}})
+							@compose.Radio(compose.RadioProps{RadioProps: radio.RadioProps{Name: uiutils.S(vName), Value: uiutils.SP(uiutils.Tpl("{0} {1}", uiutils.Get(vD, "id"), vS)), Disabled: true}})
 							@compose.Inline(compose.InlineProps{TextProps: text.TextProps{}}) {
 								{ uiutils.Text(vS) }
 							}

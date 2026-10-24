@@ -16,7 +16,7 @@
 
 <script lang="ts">
   import { inputClasses } from "./input.shared";
-  import { defaultIfEmpty } from "../../utils/expr";
+  import { defaultIfEmpty, safeRest } from "../../utils/expr";
 
   let {
     type,
@@ -24,9 +24,10 @@
     disabled,
     readOnly,
     class: className,
-    ...rest
+    ...rawRest
   }: InputProps = $props();
 
+  const rest = $derived(safeRest(rawRest));
   const cls = $derived(inputClasses({ className }));
 </script>
 

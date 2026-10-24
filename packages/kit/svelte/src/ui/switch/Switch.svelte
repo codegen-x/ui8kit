@@ -16,16 +16,17 @@
 
 <script lang="ts">
   import { switchClasses } from "./switch.shared";
-  import { boolStr } from "../../utils/expr";
+  import { boolStr, safeRest } from "../../utils/expr";
 
   let {
     checked,
     disabled,
     class: className,
     children,
-    ...rest
+    ...rawRest
   }: SwitchProps = $props();
 
+  const rest = $derived(safeRest(rawRest));
   const cls = $derived(switchClasses({ className }));
 </script>
 

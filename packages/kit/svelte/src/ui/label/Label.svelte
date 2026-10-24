@@ -14,13 +14,15 @@
 
 <script lang="ts">
   import { labelClasses } from "./label.shared";
+  import { safeRest } from "../../utils/expr";
 
   let {
     class: className,
     children,
-    ...rest
+    ...rawRest
   }: LabelProps = $props();
 
+  const rest = $derived(safeRest(rawRest));
   const cls = $derived(labelClasses({ className }));
 </script>
 

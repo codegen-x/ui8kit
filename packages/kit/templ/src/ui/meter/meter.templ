@@ -14,7 +14,7 @@ import (
 type MeterProps struct {
 	// Class — token class names supplied by the consumer
 	Class string
-	Value string
+	Value *string
 	Min string
 	Max string
 	Low string
@@ -36,8 +36,8 @@ templ Meter(p MeterProps) {
 		if MeterClasses(p) != "" {
 			class={ MeterClasses(p) }
 		}
-		if uiutils.IsSetStr(p.Value) {
-			value={ p.Value }
+		if p.Value != nil {
+			value={ *p.Value }
 		}
 		if uiutils.IsSetStr(p.Min) {
 			min={ p.Min }
@@ -57,7 +57,7 @@ templ Meter(p MeterProps) {
 		if uiutils.IsSetStr(p.AriaLabel) {
 			aria-label={ p.AriaLabel }
 		}
-		{ p.Attrs... }
+		{ uiutils.SafeAttrs(p.Attrs)... }
 	>
 		{ children... }
 	</meter>

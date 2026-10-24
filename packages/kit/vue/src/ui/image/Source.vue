@@ -4,13 +4,14 @@
 -->
 <script setup lang="ts">
 import { computed, useAttrs } from "vue";
+import { safeRest } from "../../utils/expr";
 
 defineOptions({ name: "Source", inheritAttrs: false });
 
 const attrs = useAttrs();
 const restAttrs = computed(() => {
   const { class: _class, ...restEntries } = attrs;
-  return restEntries;
+  return safeRest(restEntries);
 });
 </script>
 

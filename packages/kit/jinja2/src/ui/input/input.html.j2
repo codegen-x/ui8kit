@@ -5,17 +5,17 @@
 <input
   type="{{ ui_default_if_empty(ui_def(p['Type'], ''), 'text') }}"
   {%- with cls = input_classes(p) %}{%- if cls %} class="{{ cls }}"{%- endif %}{%- endwith %}
-  {%- if ui_is_set_str(ui_def(p['ID'], '')) %} id="{{ ui_def(p['ID'], '') }}"{%- endif %}
-  {%- if ui_is_set_str(ui_def(p['Name'], '')) %} name="{{ ui_def(p['Name'], '') }}"{%- endif %}
-  {%- if ui_is_set_str(ui_def(p['Value'], '')) %} value="{{ ui_def(p['Value'], '') }}"{%- endif %}
-  {%- if ui_is_set_str(ui_def(p['Placeholder'], '')) %} placeholder="{{ ui_def(p['Placeholder'], '') }}"{%- endif %}
-  {%- if ui_is_set_str(ui_def(p['Min'], '')) %} min="{{ ui_def(p['Min'], '') }}"{%- endif %}
-  {%- if ui_is_set_str(ui_def(p['Max'], '')) %} max="{{ ui_def(p['Max'], '') }}"{%- endif %}
-  {%- if ui_is_set_str(ui_def(p['Step'], '')) %} step="{{ ui_def(p['Step'], '') }}"{%- endif %}
+  {%- if p['ID'] is defined and p['ID'] is not none %} id="{{ p['ID'] }}"{%- endif %}
+  {%- if p['Name'] is defined and p['Name'] is not none %} name="{{ p['Name'] }}"{%- endif %}
+  {%- if p['Value'] is defined and p['Value'] is not none %} value="{{ p['Value'] }}"{%- endif %}
+  {%- if p['Placeholder'] is defined and p['Placeholder'] is not none %} placeholder="{{ p['Placeholder'] }}"{%- endif %}
+  {%- if p['Min'] is defined and p['Min'] is not none %} min="{{ p['Min'] }}"{%- endif %}
+  {%- if p['Max'] is defined and p['Max'] is not none %} max="{{ p['Max'] }}"{%- endif %}
+  {%- if p['Step'] is defined and p['Step'] is not none %} step="{{ p['Step'] }}"{%- endif %}
   {%- if ui_def(p['Required'], false) %} required{%- endif %}
   {%- if ui_def(p['Disabled'], false) %} disabled{%- endif %}
   {%- if ui_def(p['ReadOnly'], false) %} readonly{%- endif %}
-  {%- if ui_is_set_str(ui_def(p['AriaInvalid'], '')) %} aria-invalid="{{ ui_def(p['AriaInvalid'], '') }}"{%- endif %}
-  {%- if ui_is_set_str(ui_def(p['AriaDescribedBy'], '')) %} aria-describedby="{{ ui_def(p['AriaDescribedBy'], '') }}"{%- endif %}
+  {%- if p['AriaInvalid'] is defined and p['AriaInvalid'] is not none %} aria-invalid="{{ p['AriaInvalid'] }}"{%- endif %}
+  {%- if p['AriaDescribedBy'] is defined and p['AriaDescribedBy'] is not none %} aria-describedby="{{ p['AriaDescribedBy'] }}"{%- endif %}
   {{ ui_attr_html(ui_def(p['Attrs'], {})) }}
 >

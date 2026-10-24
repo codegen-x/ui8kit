@@ -53,8 +53,8 @@ templ Form(p FormProps) {
 		if uiutils.IsSetStr(p.Name) {
 			name={ p.Name }
 		}
-		if uiutils.IsSetStr(p.Action) {
-			action={ p.Action }
+		if uiutils.IsSetStr(uiutils.SafeURL(p.Action)) {
+			action={ uiutils.SafeURL(p.Action) }
 		}
 		if uiutils.IsSetStr(uiutils.OneOfOrLower(p.Method, "", "get", "post", "dialog")) {
 			method={ uiutils.OneOfOrLower(p.Method, "", "get", "post", "dialog") }
@@ -78,7 +78,7 @@ templ Form(p FormProps) {
 		if uiutils.IsSetStr(p.AriaDescribedBy) {
 			aria-describedby={ p.AriaDescribedBy }
 		}
-		{ p.Attrs... }
+		{ uiutils.SafeAttrs(p.Attrs)... }
 	>
 		{ children... }
 	</form>

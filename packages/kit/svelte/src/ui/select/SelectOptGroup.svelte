@@ -14,12 +14,16 @@
 </script>
 
 <script lang="ts">
+  import { safeRest } from "../../utils/expr";
+
   let {
     disabled,
     class: className,
     children,
-    ...rest
+    ...rawRest
   }: SelectOptGroupProps = $props();
+
+  const rest = $derived(safeRest(rawRest));
 </script>
 
 <optgroup disabled={disabled || undefined} {...rest}>

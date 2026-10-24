@@ -14,7 +14,7 @@ import (
 type ProgressProps struct {
 	// Class — token class names supplied by the consumer
 	Class string
-	Value string
+	Value *string
 	Max string
 	AriaLabel string
 	Attrs templ.Attributes
@@ -32,8 +32,8 @@ templ Progress(p ProgressProps) {
 		if ProgressClasses(p) != "" {
 			class={ ProgressClasses(p) }
 		}
-		if uiutils.IsSetStr(p.Value) {
-			value={ p.Value }
+		if p.Value != nil {
+			value={ *p.Value }
 		}
 		if uiutils.IsSetStr(p.Max) {
 			max={ p.Max }
@@ -41,7 +41,7 @@ templ Progress(p ProgressProps) {
 		if uiutils.IsSetStr(p.AriaLabel) {
 			aria-label={ p.AriaLabel }
 		}
-		{ p.Attrs... }
+		{ uiutils.SafeAttrs(p.Attrs)... }
 	>
 		{ children... }
 	</progress>

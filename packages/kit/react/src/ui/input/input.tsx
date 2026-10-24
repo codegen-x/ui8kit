@@ -5,7 +5,7 @@
 
 import { forwardRef, type InputHTMLAttributes } from "react";
 import { inputClasses } from "./input.shared";
-import { defaultIfEmpty } from "../../utils/expr";
+import { defaultIfEmpty, safeRest } from "../../utils/expr";
 
 /**
  * Input renders a native input element (default type text).
@@ -19,9 +19,10 @@ export type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, "className"
 };
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
-  { type, required, disabled, readOnly, className, ...rest },
+  { type, required, disabled, readOnly, className, ...rawRest },
   ref
 ) {
+  const rest = safeRest(rawRest);
   const cls = inputClasses({ className });
   return (
     <input ref={ref} type={defaultIfEmpty(type, "text")} className={cls || undefined} required={required} disabled={disabled} readOnly={readOnly} {...rest} />

@@ -29,7 +29,7 @@ func IsAllowedTag(tag string, group TagGroup) bool {
 	case TagGroupBox:
 		return oneOf(t, "div", "section", "article", "aside", "header", "footer", "main", "nav", "figure", "search", "ul", "ol", "li", "dl", "dt", "dd", "fieldset", "table", "thead", "tbody", "tfoot", "tr", "th", "td", "caption", "colgroup", "col")
 	case TagGroupText:
-		return oneOf(t, "p", "span", "h1", "h2", "h3", "h4", "h5", "h6", "blockquote", "figcaption", "pre", "code", "small", "strong", "em", "time", "legend")
+		return oneOf(t, "p", "span", "h1", "h2", "h3", "h4", "h5", "h6", "blockquote", "figcaption", "pre", "code", "small", "strong", "em", "time", "legend", "del", "ins")
 	}
 	return false
 }

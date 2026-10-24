@@ -7,7 +7,7 @@ Bun monorepo (bun 1.4.2). Read README.md first, then docs/specs-guide.md.
 Primitives come from the public UI8Kit 3 toolchain, installed by the CLI, never copied by hand:
 
 - generator and API docs of the primitives: [ui8kit/codegen](https://github.com/ui8kit/codegen) (`docs/primitives`, `docs/runtimes`)
-- registry: [@ui8kit/registry](https://www.npmjs.com/package/@ui8kit/registry) 3.2.0 ([ui8kit/registry](https://github.com/ui8kit/registry))
+- registry: [@ui8kit/registry](https://www.npmjs.com/package/@ui8kit/registry) 3.2.2 ([ui8kit/registry](https://github.com/ui8kit/registry))
 - CLI: [ui8kit](https://www.npmjs.com/package/ui8kit) 3.2.1 ([ui8kit/cli](https://github.com/ui8kit/cli)), a root devDependency
 - data contract: [@ui8kit/contract](https://www.npmjs.com/package/@ui8kit/contract) 0.2.0 ([ui8kit/contract](https://github.com/ui8kit/contract)), used by `codex:validate`
 

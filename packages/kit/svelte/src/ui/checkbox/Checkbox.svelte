@@ -15,15 +15,17 @@
 
 <script lang="ts">
   import { checkboxClasses } from "./checkbox.shared";
+  import { safeRest } from "../../utils/expr";
 
   let {
     checked,
     required,
     disabled,
     class: className,
-    ...rest
+    ...rawRest
   }: CheckboxProps = $props();
 
+  const rest = $derived(safeRest(rawRest));
   const cls = $derived(checkboxClasses({ className }));
 </script>
 

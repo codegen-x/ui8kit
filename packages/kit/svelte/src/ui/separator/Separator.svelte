@@ -14,15 +14,16 @@
 
 <script lang="ts">
   import { separatorClasses } from "./separator.shared";
-  import { eqStr, oneOfOrLower } from "../../utils/expr";
+  import { eqStr, oneOfOrLower, safeRest } from "../../utils/expr";
 
   let {
     orientation,
     decorative,
     class: className,
-    ...rest
+    ...rawRest
   }: SeparatorProps = $props();
 
+  const rest = $derived(safeRest(rawRest));
   const cls = $derived(separatorClasses({ className }));
 </script>
 
