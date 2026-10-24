@@ -6,7 +6,7 @@ import { describe, expect, it } from "bun:test";
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
 
-const STYLES = join(import.meta.dir, "..", "..", "..", "xgen", "runtimes", "core", "assets", "styles");
+const STYLES = join(import.meta.dir, "..", "..", "compose-gen", "runtimes", "core", "assets", "styles");
 
 type Vars = Record<string, string>;
 function blocks(css: string): { light: Vars; dark: Vars } {

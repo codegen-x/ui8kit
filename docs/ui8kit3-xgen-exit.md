@@ -31,3 +31,18 @@ Not taken: xgen app scaffolds, hosts, drift/manifest, rules audit, legacy packag
 4. Drop what no step uses (app scaffolds, v2 brick emitters), then blocks, screens, hosts on compose-gen.
 5. A check that fails on any import of `xgen/` or `@ui8kit/xgen-*` from `packages/kit-compose` and `packages/compose-gen`;
    only then the deletion step.
+
+## Status (branch ui8kit3)
+
+| Step | Commit | Gate |
+|---|---|---|
+| copy into `packages/compose-gen`, kit-compose switched | 655a18ea | JS organisms byte-identical (224 x 4) |
+| PartRef from kit-compose (`compose-gen/parts.ts`: map.ts + recipes + v3 `specs/primitives.json`), `specs/ui` dropped | 55d104ff | byte-identical; every organism view validated against it; authored specs drift check (`compose-gen/check.ts`) |
+| batch 2: Jinja2 / Twig / Latte / templ organisms (`kit-compose/src/server-organisms.ts`) | 79bc252e, c076e339, 557d132e, 5b21adcd | real engines = React on 474 block cases each, html-validate + axe |
+| drop the v2-only pieces (server parity harnesses, v2 LucideIcon assets, go-harness, jinja2/latte re-export stubs); banners name compose-gen | this step | all checks + kit-compose suite green |
+| `packages/tooling/bin/xgen-exit-guard.mjs` (in `bun run check`): no import / require / path into xgen from kit-compose or compose-gen; the styles copy mirrors `xgen/runtimes/core/assets/styles` until the deletion | this step | guard green, probe file with 3 kinds of reference fails it |
+
+Organism helpers of the server runtimes are their own namespace (`og_*`; Python `compose_organisms`, PHP `CodegenX\Organisms\*`,
+Go `orgutils`), so they never shadow the `ui_*` / `ui8kit_*` helpers of the installed kit.
+Still on xgen (outside kit-compose / compose-gen): the skins generator (`xgen/skins`, writes the styles), the gallery/screen
+hosts and the legacy `xgen check`. App scaffolds stay in compose-gen until the hosts step decides what it keeps.

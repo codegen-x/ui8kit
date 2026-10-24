@@ -38,7 +38,7 @@
   "packageManager": "bun@1.4.2",
   "scripts": {
     "build": "bun xgen/cli/src/cli.ts build",
-    "check": "node packages/tooling/bin/vendor-guard.mjs && node packages/tooling/bin/kit-check.mjs && bun run compose:check && bun run gates:source && bun xgen/skins/skins.ts build --check && bun xgen/cli/src/cli.ts check",
+    "check": "node packages/tooling/bin/vendor-guard.mjs && node packages/tooling/bin/xgen-exit-guard.mjs && node packages/tooling/bin/kit-check.mjs && bun run compose:check && bun run gates:source && bun xgen/skins/skins.ts build --check && bun xgen/cli/src/cli.ts check",
     "skins": "bun xgen/skins/skins.ts",
     "verify": "bun run check && bun run codex:validate && bun run typecheck && bun run test",
     "codex:manifest": "bun xgen/schema/src/codex.ts",
