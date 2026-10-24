@@ -51,16 +51,16 @@
                 {capture $c_8}
                   {=og_text(og_get($v_labels, ['updates']))}
                 {/capture}
-                {=og_include('compose/Label.latte', ['htmlFor' => og_s(og_tpl('{0}-updates', [$v_id])), 'class' => 'text-sm', 'children' => (string) $c_8])|noescape}
-                {=og_include('compose/Switch.latte', ['name' => 'updates', 'attrs' => og_attrs(['id', og_tpl('{0}-updates', [$v_id])])])|noescape}
+                {=og_include('compose/Label.latte', ['htmlFor' => og_s(og_tpl('{0}-updates', [$v_id])), 'class' => 'text-sm', 'attrs' => og_attrs(['id', og_tpl('{0}-updates-label', [$v_id])]), 'children' => (string) $c_8])|noescape}
+                {=og_include('compose/Switch.latte', ['name' => 'updates', 'attrs' => og_attrs(['id', og_tpl('{0}-updates', [$v_id]), 'aria-labelledby', og_tpl('{0}-updates-label', [$v_id])])])|noescape}
               {/capture}
               {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'justify' => 'between', 'children' => (string) $c_9])|noescape}
               {capture $c_11}
                 {capture $c_10}
                   {=og_text(og_get($v_labels, ['alerts']))}
                 {/capture}
-                {=og_include('compose/Label.latte', ['htmlFor' => og_s(og_tpl('{0}-alerts', [$v_id])), 'class' => 'text-sm', 'children' => (string) $c_10])|noescape}
-                {=og_include('compose/Switch.latte', ['name' => 'alerts', 'attrs' => og_attrs(['id', og_tpl('{0}-alerts', [$v_id])])])|noescape}
+                {=og_include('compose/Label.latte', ['htmlFor' => og_s(og_tpl('{0}-alerts', [$v_id])), 'class' => 'text-sm', 'attrs' => og_attrs(['id', og_tpl('{0}-alerts-label', [$v_id])]), 'children' => (string) $c_10])|noescape}
+                {=og_include('compose/Switch.latte', ['name' => 'alerts', 'attrs' => og_attrs(['id', og_tpl('{0}-alerts', [$v_id]), 'aria-labelledby', og_tpl('{0}-alerts-label', [$v_id])])])|noescape}
               {/capture}
               {=og_include('compose/Group.latte', ['gap' => '4', 'align' => 'center', 'justify' => 'between', 'children' => (string) $c_11])|noescape}
             {/capture}

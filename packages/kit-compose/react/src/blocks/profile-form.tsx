@@ -76,16 +76,16 @@ export function ProfileForm({
                     {labels.prefs}
                   </Title>
                   <Group gap="4" align="center" justify="between">
-                    <Label htmlFor={tpl("{0}-updates", id)} className="text-sm">
+                    <Label htmlFor={tpl("{0}-updates", id)} className="text-sm" id={tpl("{0}-updates-label", id)}>
                       {labels.updates}
                     </Label>
-                    <Switch name="updates" id={tpl("{0}-updates", id)} />
+                    <Switch name="updates" id={tpl("{0}-updates", id)} aria-labelledby={tpl("{0}-updates-label", id)} />
                   </Group>
                   <Group gap="4" align="center" justify="between">
-                    <Label htmlFor={tpl("{0}-alerts", id)} className="text-sm">
+                    <Label htmlFor={tpl("{0}-alerts", id)} className="text-sm" id={tpl("{0}-alerts-label", id)}>
                       {labels.alerts}
                     </Label>
-                    <Switch name="alerts" id={tpl("{0}-alerts", id)} />
+                    <Switch name="alerts" id={tpl("{0}-alerts", id)} aria-labelledby={tpl("{0}-alerts-label", id)} />
                   </Group>
                 </Stack>
               ) : null}

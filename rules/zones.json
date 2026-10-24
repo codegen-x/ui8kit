@@ -23,15 +23,15 @@
       "runtime": "react",
       "generated": true,
       "kit": [
-        "xgen/runtime"
+        "gen/runtime"
       ],
       "composition": [
-        "xgen/App.tsx",
-        "xgen/screens"
+        "gen/App.tsx",
+        "gen/screens"
       ],
       "blockRoot": [
-        "xgen/App.tsx",
-        "xgen/screens"
+        "gen/App.tsx",
+        "gen/screens"
       ]
     },
     {
@@ -40,15 +40,15 @@
       "runtime": "solid",
       "generated": true,
       "kit": [
-        "xgen/runtime"
+        "gen/runtime"
       ],
       "composition": [
-        "xgen/App.tsx",
-        "xgen/screens"
+        "gen/App.tsx",
+        "gen/screens"
       ],
       "blockRoot": [
-        "xgen/App.tsx",
-        "xgen/screens"
+        "gen/App.tsx",
+        "gen/screens"
       ]
     },
     {
@@ -57,15 +57,15 @@
       "runtime": "svelte",
       "generated": true,
       "kit": [
-        "xgen/runtime"
+        "gen/runtime"
       ],
       "composition": [
-        "xgen/App.svelte",
-        "xgen/screens"
+        "gen/App.svelte",
+        "gen/screens"
       ],
       "blockRoot": [
-        "xgen/App.svelte",
-        "xgen/screens"
+        "gen/App.svelte",
+        "gen/screens"
       ]
     },
     {
@@ -74,15 +74,15 @@
       "runtime": "vue",
       "generated": true,
       "kit": [
-        "xgen/runtime"
+        "gen/runtime"
       ],
       "composition": [
-        "xgen/App.vue",
-        "xgen/screens"
+        "gen/App.vue",
+        "gen/screens"
       ],
       "blockRoot": [
-        "xgen/App.vue",
-        "xgen/screens"
+        "gen/App.vue",
+        "gen/screens"
       ]
     },
     {

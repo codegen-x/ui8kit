@@ -15,6 +15,9 @@ export const pascal = (k: string) => k.charAt(0).toUpperCase() + k.slice(1);
 /** fixed values the React composition passes as a primitive prop (not an attribute) */
 const FIXED_PROPS: Record<string, string[]> = { Input: ["type"] };
 
+/** the trail element as html (appended after the children) */
+export const trailHtml = (m: BrickMap): string => !m.trail ? "" : `<${m.trail.tag}${Object.entries(m.trail.attrs).map(([k, v]) => ` ${k}="${v}"`).join("")}></${m.trail.tag}>`;
+
 export function spec(m: BrickMap) {
   const fixed = Object.entries(m.fixed ?? {});
   const asProp = FIXED_PROPS[m.primitive] ?? [];
@@ -27,6 +30,7 @@ export function spec(m: BrickMap) {
     tagFrom: m.tagFrom ? { heading: !!m.tagFrom.heading, fallback: m.tagFrom.fallback } : null,
     fixedProps: Object.fromEntries(fixed.filter(([k]) => asProp.includes(k))),
     fixedAttrs: Object.fromEntries(fixed.filter(([k]) => !asProp.includes(k))),
+    ...(m.trail ? { trail: trailHtml(m) } : {}),
   };
 }
 
@@ -106,6 +110,13 @@ def compose_props(name: str, p: Any) -> dict:
     return q
 
 
+def compose_trail(name: str, children: Any = None):
+    from markupsafe import Markup
+
+    t = DATA["compositions"][name].get("trail", "")
+    return Markup(children if children is not None and str(children) != "" else "") + Markup(t)
+
+
 def environment(kit_root: str, **options: Any):
     """kit_root: the installed kit (packages/kit/jinja2/src); its ui8kit_jinja must be importable."""
     from ui8kit_jinja import environment as kit_environment
@@ -113,6 +124,7 @@ def environment(kit_root: str, **options: Any):
     env = kit_environment(kit_root, **options)
     env.loader = ChoiceLoader([FileSystemLoader(kit_root), FileSystemLoader(os.path.dirname(HERE))])
     env.globals["compose_props"] = compose_props
+    env.globals["compose_trail"] = compose_trail
     env.globals["compose_rc"] = rc
     env.globals["compose_join"] = lambda parts: " ".join(str(x) for x in parts if x)
     return env
@@ -201,6 +213,9 @@ final class Compose
         }
         if ($s['fixedAttrs'] !== []) {
             $q['attrs'] = array_merge($s['fixedAttrs'], (array) ($q['attrs'] ?? []));
+        }
+        if (isset($s['trail'])) {
+            $q['children'] = (string) ($q['children'] ?? '') . $s['trail'];
         }
         return $q;
     }
@@ -365,7 +380,7 @@ export function serverFiles(items: [string, BrickMap][], kit: string, HEAD: stri
     const what = `${name}: ${p}${m.tag ? ` <${m.tag}>` : ""}${m.recipe ? ` + recipe ${m.recipe}` : ""}`;
     files.set(`jinja2/src/compose/${kebab(name)}.html.j2`,
       `{#- ${HEAD}\n    ${what}. Props (p): ${[...s.keys.map(pascal), ...(s.tagFrom ? [s.tagFrom.heading ? "As" : "Tag"] : []), "Class", "Attrs"].join(", ")} + the props of ${p}. -#}\n` +
-      `{%- with p = compose_props('${name}', p) %}{% include '${j2}' %}{% endwith %}`);
+      (m.trail ? `{%- with p = compose_props('${name}', p), children = compose_trail('${name}', children) %}{% include '${j2}' %}{% endwith %}` : `{%- with p = compose_props('${name}', p) %}{% include '${j2}' %}{% endwith %}`));
     files.set(`twig/src/compose/${name}.html.twig`,
       `{# ${HEAD} #}\n{# ${what}. Params: ${[...s.keys, ...(s.tagFrom ? [s.tagFrom.heading ? "as" : "tag"] : []), "class", "attrs"].join(", ")} + the params of ${p}. #}\n` +
       `{% include '${tw}' with compose_props('${name}', _context) only %}`);
@@ -392,7 +407,7 @@ export function serverFiles(items: [string, BrickMap][], kit: string, HEAD: stri
 
 package compose
 
-import "github.com/ui8kit/codegen/generated/templ/ui/${dirOf(p)}"
+${m.trail ? `import (\n\t"github.com/ui8kit/codegen/generated/templ/ui/${dirOf(p)}"\n\t"github.com/ui8kit/codegen/generated/templ/ui/text"\n)` : `import "github.com/ui8kit/codegen/generated/templ/ui/${dirOf(p)}"`}
 
 // ${name}Props: ${what}.
 type ${name}Props struct {
@@ -407,7 +422,7 @@ ${set.join("\n")}
 
 // ${name} renders ${p} with the composition classes.
 templ ${name}(p ${name}Props) {
-${leaf ? `\t@${pkg}.${p}(${name[0].toLowerCase() + name.slice(1)}Inner(p))` : `\t@${pkg}.${p}(${name[0].toLowerCase() + name.slice(1)}Inner(p)) {\n\t\t{ children... }\n\t}`}
+${leaf ? `\t@${pkg}.${p}(${name[0].toLowerCase() + name.slice(1)}Inner(p))` : `\t@${pkg}.${p}(${name[0].toLowerCase() + name.slice(1)}Inner(p)) {\n\t\t{ children... }${m.trail ? `@text.Text(text.TextProps{Tag: "${m.trail.tag}", Class: ${JSON.stringify(m.trail.attrs.class ?? "")}, Attrs: templ.Attributes{${Object.entries(m.trail.attrs).filter(([k]) => k !== "class").map(([k, v]) => `${JSON.stringify(k)}: ${JSON.stringify(v)}`).join(", ")}}})` : ""}\n\t}`}
 }
 `);
   }

@@ -51,16 +51,16 @@
                 {%- set c_8 -%}
                   {{ og_text(og_get(v_labels, ['updates'])) }}
                 {%- endset -%}
-                {{ include('compose/Label.html.twig', {'htmlFor': og_s(og_tpl('{0}-updates', [v_id])), 'class': 'text-sm', 'children': c_8}, with_context = false) }}
-                {{ include('compose/Switch.html.twig', {'name': 'updates', 'attrs': og_attrs(['id', og_tpl('{0}-updates', [v_id])])}, with_context = false) }}
+                {{ include('compose/Label.html.twig', {'htmlFor': og_s(og_tpl('{0}-updates', [v_id])), 'class': 'text-sm', 'attrs': og_attrs(['id', og_tpl('{0}-updates-label', [v_id])]), 'children': c_8}, with_context = false) }}
+                {{ include('compose/Switch.html.twig', {'name': 'updates', 'attrs': og_attrs(['id', og_tpl('{0}-updates', [v_id]), 'aria-labelledby', og_tpl('{0}-updates-label', [v_id])])}, with_context = false) }}
               {%- endset -%}
               {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'justify': 'between', 'children': c_9}, with_context = false) }}
               {%- set c_11 -%}
                 {%- set c_10 -%}
                   {{ og_text(og_get(v_labels, ['alerts'])) }}
                 {%- endset -%}
-                {{ include('compose/Label.html.twig', {'htmlFor': og_s(og_tpl('{0}-alerts', [v_id])), 'class': 'text-sm', 'children': c_10}, with_context = false) }}
-                {{ include('compose/Switch.html.twig', {'name': 'alerts', 'attrs': og_attrs(['id', og_tpl('{0}-alerts', [v_id])])}, with_context = false) }}
+                {{ include('compose/Label.html.twig', {'htmlFor': og_s(og_tpl('{0}-alerts', [v_id])), 'class': 'text-sm', 'attrs': og_attrs(['id', og_tpl('{0}-alerts-label', [v_id])]), 'children': c_10}, with_context = false) }}
+                {{ include('compose/Switch.html.twig', {'name': 'alerts', 'attrs': og_attrs(['id', og_tpl('{0}-alerts', [v_id]), 'aria-labelledby', og_tpl('{0}-alerts-label', [v_id])])}, with_context = false) }}
               {%- endset -%}
               {{ include('compose/Group.html.twig', {'gap': '4', 'align': 'center', 'justify': 'between', 'children': c_11}, with_context = false) }}
             {%- endset -%}

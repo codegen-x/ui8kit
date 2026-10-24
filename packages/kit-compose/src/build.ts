@@ -59,25 +59,29 @@ const tagProp = (m: BrickMap) => (m.tagFrom ? (m.tagFrom.heading ? "as" : "tag")
 const clsExpr = (m: BrickMap, user: string) =>
   `cn(${[m.recipe ? `rc("${m.recipe}", { ${keysOf(m).map((k) => `${JSON.stringify(k)}: ${safe(k)}`).join(", ")} })` : "", m.extra ? JSON.stringify(m.extra) : "", user].filter(Boolean).join(", ")})`;
 const safe = (k: string) => `v_${k.replace(/[^a-z0-9]/gi, "_")}`;
+/** the trail element, rendered by the kit Text primitive (the gates allow no raw html): jsx (className) or class */
+const trailOf = (m: BrickMap, jsx: string | null): string => !m.trail ? "" : `<Text tag="${m.trail.tag}"${Object.entries(m.trail.attrs).map(([k, v]) => ` ${k === "class" && jsx ? jsx : k}=${JSON.stringify(v)}`).join("")} />`;
+const trailImport = (m: BrickMap, rt: string): string => !m.trail ? "" : rt === "react" ? `import { Text } from "../../../../kit/react/src/ui/text/text";\n`
+  : rt === "solid" ? `import { Text } from "../../../../kit/solid/src/ui/text/text.solid";\n` : `${rt === "svelte" ? "  " : ""}import Text from "../../../../kit/${rt}/src/ui/text/Text.${rt}";\n`;
 const fixedAttrs = (m: BrickMap) => Object.entries(m.fixed ?? {});
 
 function react(name: string, m: BrickMap): string {
   const p = m.primitive, tp = tagProp(m), keys = keysOf(m);
-  const destr = [...keys.map((k) => `${JSON.stringify(k)}: ${safe(k)}`), ...(tp ? [tp] : []), "className", "...rest"].join(", ");
+  const destr = [...keys.map((k) => `${JSON.stringify(k)}: ${safe(k)}`), ...(tp ? [tp] : []), "className", ...(m.trail ? ["children"] : []), "...rest"].join(", ");
   const own = [...keys.map((k) => `${JSON.stringify(k)}?: string | number`), ...(tp ? [`${tp}?: ${tp === "as" ? "number | string" : "string"}`] : []),
     ...Object.entries(m.attrs ?? {}).map(([k, t]) => `${k}?: ${t}`)].join("; ");
   const tag = m.tag || m.tagFrom ? ` tag={${tagExpr(m, tp ?? "undefined")} as never}` : "";
   return `// ${HEAD}
 import type { ComponentProps } from "react";
 import { ${p} as Prim } from "../../../../kit/react/src/ui/${dirOf(p)}/${dirOf(p)}";
-import { cn } from "../../../../kit/react/src/utils";
+${trailImport(m, "react")}import { cn } from "../../../../kit/react/src/utils";
 import { rc } from "./recipes";
 
 export type ${name}Props = Omit<ComponentProps<typeof Prim>, ${["tag", ...keys].map((k) => JSON.stringify(k)).join(" | ")}> & { ${own}${own ? "; " : ""}className?: string };
 
 /** ${name}: ${p}${m.tag ? ` <${m.tag}>` : ""}${m.recipe ? ` + recipe ${m.recipe}` : ""}. */
 export function ${name}({ ${destr} }: ${name}Props) {
-  return <Prim${tag} className={${clsExpr(m, "className")}}${fixedAttrs(m).map(([k, v]) => ` ${k}=${JSON.stringify(v)}`).join("")} {...rest} />;
+  return <Prim${tag} className={${clsExpr(m, "className")}}${fixedAttrs(m).map(([k, v]) => ` ${k}=${JSON.stringify(v)}`).join("")} {...rest}${m.trail ? `>{children}${trailOf(m, "className")}</Prim>` : " />"};
 }
 `;
 }
@@ -98,14 +102,14 @@ function svelte(name: string, m: BrickMap): string {
 <script lang="ts">
   import type { ComponentProps, Snippet } from "svelte";
   import Prim from "../../../../kit/svelte/src/ui/${dirOf(p)}/${p}.svelte";
-  import { cn } from "../../../../kit/svelte/src/utils";
+${trailImport(m, "svelte")}  import { cn } from "../../../../kit/svelte/src/utils";
   import { rc } from "./recipes";
 
   let { ${destr} }: ${svelteBase(m, keys)} & { ${[...keys.map((k) => `${JSON.stringify(k)}?: string | number`), ...(tp ? [`${tp}?: string | number`] : []), ...Object.entries(m.attrs ?? {}).map(([k, t]) => `${k.toLowerCase()}?: ${t}`), "class?: string", "children?: Snippet"].join("; ")} } = $props();
   const cls = $derived(${clsExpr(m, "className")});
 </script>
 
-${VOID.has(p) ? `${open} />` : `${open}>{@render children?.()}</Prim>`}
+${VOID.has(p) ? `${open} />` : `${open}>{@render children?.()}${trailOf(m, null)}</Prim>`}
 `;
 }
 
@@ -124,7 +128,7 @@ function vue(name: string, m: BrickMap): string {
 <script setup lang="ts">
 import { computed, useAttrs } from "vue";
 import Prim from "../../../../kit/vue/src/ui/${dirOf(p)}/${p}.vue";
-import { cn } from "../../../../kit/vue/src/utils";
+${trailImport(m, "vue")}import { cn } from "../../../../kit/vue/src/utils";
 import { rc } from "./recipes";
 
 defineOptions({ name: "${name}", inheritAttrs: false });
@@ -139,7 +143,7 @@ const tagValue = computed(() => ${tagJs});
 </script>
 
 <template>
-  ${VOID.has(p) ? `${open} />` : `${open}><slot /></Prim>`}
+  ${VOID.has(p) ? `${open} />` : `${open}><slot />${trailOf(m, null)}</Prim>`}
 </template>
 `;
 }
@@ -156,15 +160,15 @@ function solid(name: string, m: BrickMap): string {
   return `// ${HEAD}
 import { splitProps, type ComponentProps } from "solid-js";
 import { ${p} as Prim } from "../../../../kit/solid/src/ui/${dirOf(p)}/${dirOf(p)}.solid";
-import { cn } from "../../../../kit/solid/src/utils";
+${trailImport(m, "solid")}import { cn } from "../../../../kit/solid/src/utils";
 import { rc } from "./recipes";
 
 export type ${name}Props = Omit<ComponentProps<typeof Prim>, ${["tag", "class", "className", ...keys].map((k) => JSON.stringify(k)).join(" | ")}> & { ${own} };
 
 /** ${name}: ${p}${m.tag ? ` <${m.tag}>` : ""}${m.recipe ? ` + recipe ${m.recipe}` : ""}. */
 export function ${name}(props: ${name}Props) {
-  const [local, rest] = splitProps(props, [${[...keys, ...(tp ? [tp] : []), "class", "className"].map((k) => JSON.stringify(k)).join(", ")}]);
-  return <Prim${tag} class={${cls}}${fixedAttrs(m).map(([k, v]) => ` ${k}=${JSON.stringify(v)}`).join("")} {...rest} />;
+  const [local, rest] = splitProps(props, [${[...keys, ...(tp ? [tp] : []), "class", "className", ...(m.trail ? ["children"] : [])].map((k) => JSON.stringify(k)).join(", ")}]);
+  return <Prim${tag} class={${cls}}${fixedAttrs(m).map(([k, v]) => ` ${k}=${JSON.stringify(v)}`).join("")} {...rest}${m.trail ? `>{local.children}${trailOf(m, null)}</Prim>` : " />"};
 }
 `;
 }

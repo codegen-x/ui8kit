@@ -1,4 +1,4 @@
-// The copy decks of the taste screens, built from their Codex entries (xgen/fixtures/deck*.json) through the central field maps
+// The copy decks of the taste screens, built from their Codex entries (packages/compose-gen/fixtures/deck*.json) through the central field maps
 // (CODEX_FIELDS.deck, deckStat, ...): the generator writes them to packages/taste-data/content/copy.json, the file taste-data
 // reads. A part names its deck (metadata.deck) and its place in it (metadata.position).
 import { fromCodex } from "../assets/app/core";
@@ -33,5 +33,5 @@ export function buildDecks(collections: readonly Collection[]): Record<string, u
 /** packages/taste-data/content/copy.json */
 export const decksFile = (collections: readonly Collection[]): GeneratedFile => ({
   path: "copy.json",
-  contents: JSON.stringify({ "//": BANNER, source: "xgen/fixtures/deck*.json (change the entries there, then bun run build)", decks: buildDecks(collections) }, null, 2) + "\n",
+  contents: JSON.stringify({ "//": BANNER, source: "packages/compose-gen/fixtures/deck*.json (change the entries there, then bun run compose:hosts)", decks: buildDecks(collections) }, null, 2) + "\n",
 });

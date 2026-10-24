@@ -2,7 +2,10 @@
 
 package compose
 
-import "github.com/ui8kit/codegen/generated/templ/ui/disclosure"
+import (
+	"github.com/ui8kit/codegen/generated/templ/ui/disclosure"
+	"github.com/ui8kit/codegen/generated/templ/ui/text"
+)
 
 // SummaryProps: Summary: Summary + recipe summary.
 type SummaryProps struct {
@@ -20,6 +23,6 @@ func summaryInner(p SummaryProps) disclosure.SummaryProps {
 // Summary renders Summary with the composition classes.
 templ Summary(p SummaryProps) {
 	@disclosure.Summary(summaryInner(p)) {
-		{ children... }
+		{ children... }@text.Text(text.TextProps{Tag: "span", Class: "size-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-180", Attrs: templ.Attributes{"aria-hidden": "true", "data-slot": "summary-indicator"}})
 	}
 }

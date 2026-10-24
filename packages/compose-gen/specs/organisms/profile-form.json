@@ -488,6 +488,17 @@
                                             },
                                             "Class": "text-sm"
                                           },
+                                          "attrs": {
+                                            "id": {
+                                              "op": "tpl",
+                                              "args": [
+                                                "{0}-updates-label",
+                                                {
+                                                  "$": "id"
+                                                }
+                                              ]
+                                            }
+                                          },
                                           "children": [
                                             {
                                               "text": {
@@ -506,6 +517,15 @@
                                               "op": "tpl",
                                               "args": [
                                                 "{0}-updates",
+                                                {
+                                                  "$": "id"
+                                                }
+                                              ]
+                                            },
+                                            "aria-labelledby": {
+                                              "op": "tpl",
+                                              "args": [
+                                                "{0}-updates-label",
                                                 {
                                                   "$": "id"
                                                 }
@@ -537,6 +557,17 @@
                                             },
                                             "Class": "text-sm"
                                           },
+                                          "attrs": {
+                                            "id": {
+                                              "op": "tpl",
+                                              "args": [
+                                                "{0}-alerts-label",
+                                                {
+                                                  "$": "id"
+                                                }
+                                              ]
+                                            }
+                                          },
                                           "children": [
                                             {
                                               "text": {
@@ -555,6 +586,15 @@
                                               "op": "tpl",
                                               "args": [
                                                 "{0}-alerts",
+                                                {
+                                                  "$": "id"
+                                                }
+                                              ]
+                                            },
+                                            "aria-labelledby": {
+                                              "op": "tpl",
+                                              "args": [
+                                                "{0}-alerts-label",
                                                 {
                                                   "$": "id"
                                                 }

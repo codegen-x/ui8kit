@@ -22,7 +22,12 @@ export type BrickMap = {
   required?: string[];
   /** native attributes of the fixed element the Box/Text primitive types do not list (td scope, colspan): typed on the composition, forwarded as rest */
   attrs?: Record<string, "string" | "number">;
+  /** an empty element rendered after the children (composition the v3 primitive no longer ships: the Summary open/close indicator) */
+  trail?: { tag: string; attrs: Record<string, string> };
 };
+
+/** the open/close indicator of a disclosure summary, as in UI8Kit 2: a Lucide chevron through CSS, turned over by group-open */
+export const SUMMARY_INDICATOR = { tag: "span", attrs: { class: "size-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-180", "aria-hidden": "true", "data-slot": "summary-indicator" } };
 
 export const BRICKS: Record<string, BrickMap> = {
   Box: { primitive: "Box", recipe: "box", tagFrom: { prop: "Tag", fallback: "div" } },
@@ -84,7 +89,7 @@ export const BRICKS: Record<string, BrickMap> = {
   Dialog: { primitive: "Dialog", recipe: "dialog" },
   Sheet: { primitive: "Dialog", recipe: "sheet" },
   Disclosure: { primitive: "Disclosure", recipe: "disclosure" },
-  Summary: { primitive: "Summary", recipe: "summary" },
+  Summary: { primitive: "Summary", recipe: "summary", trail: SUMMARY_INDICATOR },
   Meter: { primitive: "Meter", recipe: "meter" },
   Progress: { primitive: "Progress", recipe: "progress" },
 };

@@ -82,6 +82,9 @@ final class Compose
         if ($s['fixedAttrs'] !== []) {
             $q['attrs'] = array_merge($s['fixedAttrs'], (array) ($q['attrs'] ?? []));
         }
+        if (isset($s['trail'])) {
+            $q['children'] = (string) ($q['children'] ?? '') . $s['trail'];
+        }
         return $q;
     }
 }

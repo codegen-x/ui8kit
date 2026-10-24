@@ -21,8 +21,9 @@ export const checkRow = (name: string, label: Value, extra: Value = ""): ViewNod
 /** a switch with its label */
 export const switchRow = (name: string, label: Value): ViewNode =>
   use("Group", { props: { Gap: "4", Align: "center", Justify: "between" } },
-    use("Label", { props: { For: fid(name), Class: "text-sm" } }, text(label)),
-    use("Switch", { props: { Name: name }, attrs: { id: fid(name) } }));
+    // the switch is a button[role=switch] in UI8Kit 3: the label names it through aria-labelledby (label[for] alone gives a button no accessible text)
+    use("Label", { props: { For: fid(name), Class: "text-sm" }, attrs: { id: fid(`${name}-label`) } }, text(label)),
+    use("Switch", { props: { Name: name }, attrs: { id: fid(name), "aria-labelledby": fid(`${name}-label`) } }));
 
 /** an email field and a button on one row (or a column): the sign-up used by the hero, the call to action and the footer */
 export const emailRow = (label: Value, submit: Value, center: Value) =>

@@ -65,6 +65,13 @@ def compose_props(name: str, p: Any) -> dict:
     return q
 
 
+def compose_trail(name: str, children: Any = None):
+    from markupsafe import Markup
+
+    t = DATA["compositions"][name].get("trail", "")
+    return Markup(children if children is not None and str(children) != "" else "") + Markup(t)
+
+
 def environment(kit_root: str, **options: Any):
     """kit_root: the installed kit (packages/kit/jinja2/src); its ui8kit_jinja must be importable."""
     from ui8kit_jinja import environment as kit_environment
@@ -72,6 +79,7 @@ def environment(kit_root: str, **options: Any):
     env = kit_environment(kit_root, **options)
     env.loader = ChoiceLoader([FileSystemLoader(kit_root), FileSystemLoader(os.path.dirname(HERE))])
     env.globals["compose_props"] = compose_props
+    env.globals["compose_trail"] = compose_trail
     env.globals["compose_rc"] = rc
     env.globals["compose_join"] = lambda parts: " ".join(str(x) for x in parts if x)
     return env

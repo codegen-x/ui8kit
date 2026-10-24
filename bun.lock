@@ -38,8 +38,8 @@
       "name": "host-react",
       "version": "0.0.0",
       "dependencies": {
+        "@codegen-x/react-compose": "workspace:*",
         "@ui8kit/app-shared": "workspace:*",
-        "@ui8kit/react-ui": "workspace:*",
         "react": "^19.2.0",
         "react-dom": "^19.2.0",
       },
@@ -57,8 +57,8 @@
       "name": "host-solid",
       "version": "0.0.0",
       "dependencies": {
+        "@codegen-x/solid-compose": "workspace:*",
         "@ui8kit/app-shared": "workspace:*",
-        "@ui8kit/solid-ui": "workspace:*",
         "solid-js": "^1.9.0",
       },
       "devDependencies": {
@@ -73,8 +73,8 @@
       "name": "host-svelte",
       "version": "0.0.0",
       "dependencies": {
+        "@codegen-x/svelte-compose": "workspace:*",
         "@ui8kit/app-shared": "workspace:*",
-        "@ui8kit/svelte-ui": "workspace:*",
         "svelte": "^5.57.0",
       },
       "devDependencies": {
@@ -91,8 +91,8 @@
       "name": "host-vue",
       "version": "0.0.0",
       "dependencies": {
+        "@codegen-x/vue-compose": "workspace:*",
         "@ui8kit/app-shared": "workspace:*",
-        "@ui8kit/vue-ui": "workspace:*",
         "vue": "^3.5.43",
       },
       "devDependencies": {
@@ -145,6 +145,54 @@
         "react": "^19.2.0",
         "react-dom": "^19.2.0",
         "svelte": "^5.57.1",
+      },
+    },
+    "packages/kit-compose/react": {
+      "name": "@codegen-x/react-compose",
+      "version": "0.0.0",
+      "dependencies": {
+        "clsx": "^2.1.1",
+        "tailwind-merge": "^3.7.0",
+      },
+      "peerDependencies": {
+        "react": "^19.2.0",
+        "tailwindcss": "^4.3.3",
+      },
+    },
+    "packages/kit-compose/solid": {
+      "name": "@codegen-x/solid-compose",
+      "version": "0.0.0",
+      "dependencies": {
+        "clsx": "^2.1.1",
+        "tailwind-merge": "^3.7.0",
+      },
+      "peerDependencies": {
+        "solid-js": "^1.9.0",
+        "tailwindcss": "^4.3.3",
+      },
+    },
+    "packages/kit-compose/svelte": {
+      "name": "@codegen-x/svelte-compose",
+      "version": "0.0.0",
+      "dependencies": {
+        "clsx": "^2.1.1",
+        "tailwind-merge": "^3.7.0",
+      },
+      "peerDependencies": {
+        "svelte": "^5.57.0",
+        "tailwindcss": "^4.3.3",
+      },
+    },
+    "packages/kit-compose/vue": {
+      "name": "@codegen-x/vue-compose",
+      "version": "0.0.0",
+      "dependencies": {
+        "clsx": "^2.1.1",
+        "tailwind-merge": "^3.7.0",
+      },
+      "peerDependencies": {
+        "tailwindcss": "^4.3.3",
+        "vue": "^3.5.43",
       },
     },
     "packages/kit/jinja2": {
@@ -600,7 +648,15 @@
 
     "@codegen-x/kit-vue": ["@codegen-x/kit-vue@workspace:packages/kit/vue"],
 
+    "@codegen-x/react-compose": ["@codegen-x/react-compose@workspace:packages/kit-compose/react"],
+
+    "@codegen-x/solid-compose": ["@codegen-x/solid-compose@workspace:packages/kit-compose/solid"],
+
+    "@codegen-x/svelte-compose": ["@codegen-x/svelte-compose@workspace:packages/kit-compose/svelte"],
+
     "@codegen-x/ui-gates": ["@codegen-x/ui-gates@workspace:packages/ui-gates"],
+
+    "@codegen-x/vue-compose": ["@codegen-x/vue-compose@workspace:packages/kit-compose/vue"],
 
     "@csstools/color-helpers": ["@csstools/color-helpers@5.1.0", "", {}, "sha512-S11EXWJyy0Mz5SYvRmY8nJYTFFd1LCNV+7cXyAgQtOOuzb4EsgfqDufL+9esx72/eLhsRdGZwaldu/h+E4t4BA=="],
 

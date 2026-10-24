@@ -1,3 +1,5 @@
+// the hosts, the shared package and the decks moved to packages/kit-compose/src/hosts.ts; these tests keep covering the legacy xgen path until xgen is deleted
+process.env["XGEN_LEGACY_HOSTS"] = "1";
 import { expect, test } from "bun:test";
 import { join } from "node:path";
 import { drift, planBuild } from "../src/index";
@@ -22,7 +24,9 @@ test("the files of a target are listed in the order of their paths, none twice",
 });
 
 test("what is on disk is what the plan generates", () => {
-  expect(drift(planBuild(repo))).toEqual([]);
+  // the real repo: its hosts, shared package and decks are checked by packages/kit-compose/src/hosts.ts --check
+  delete process.env["XGEN_LEGACY_HOSTS"];
+  try { expect(drift(planBuild(repo))).toEqual([]); } finally { process.env["XGEN_LEGACY_HOSTS"] = "1"; }
 });
 
 test("the README names the package, the runtime and the counts", () => {

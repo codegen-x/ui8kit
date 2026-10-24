@@ -1,3 +1,5 @@
+// the hosts, the shared package and the decks moved to packages/kit-compose/src/hosts.ts; these tests keep covering the legacy xgen path until xgen is deleted
+process.env["XGEN_LEGACY_HOSTS"] = "1";
 import { afterAll, expect, test } from "bun:test";
 import { cpSync, mkdtempSync, readFileSync, rmSync, writeFileSync, mkdirSync } from "node:fs";
 import { tmpdir } from "node:os";

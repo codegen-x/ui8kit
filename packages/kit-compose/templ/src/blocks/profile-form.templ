@@ -70,16 +70,16 @@ templ ProfileForm(p ProfileFormProps) {
 									{ uiutils.Text(uiutils.Get(vLabels, "prefs")) }
 								}
 								@compose.Group(compose.GroupProps{Gap: "4", Align: "center", Justify: "between", BoxProps: box.BoxProps{}}) {
-									@compose.Label(compose.LabelProps{LabelProps: label.LabelProps{For: uiutils.S(uiutils.Tpl("{0}-updates", vId)), Class: "text-sm"}}) {
+									@compose.Label(compose.LabelProps{LabelProps: label.LabelProps{For: uiutils.S(uiutils.Tpl("{0}-updates", vId)), Class: "text-sm", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-updates-label", vId))}}) {
 										{ uiutils.Text(uiutils.Get(vLabels, "updates")) }
 									}
-									@compose.Switch(compose.SwitchProps{SwitchProps: formswitch.SwitchProps{Name: "updates", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-updates", vId))}})
+									@compose.Switch(compose.SwitchProps{SwitchProps: formswitch.SwitchProps{Name: "updates", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-updates", vId), "aria-labelledby", uiutils.Tpl("{0}-updates-label", vId))}})
 								}
 								@compose.Group(compose.GroupProps{Gap: "4", Align: "center", Justify: "between", BoxProps: box.BoxProps{}}) {
-									@compose.Label(compose.LabelProps{LabelProps: label.LabelProps{For: uiutils.S(uiutils.Tpl("{0}-alerts", vId)), Class: "text-sm"}}) {
+									@compose.Label(compose.LabelProps{LabelProps: label.LabelProps{For: uiutils.S(uiutils.Tpl("{0}-alerts", vId)), Class: "text-sm", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-alerts-label", vId))}}) {
 										{ uiutils.Text(uiutils.Get(vLabels, "alerts")) }
 									}
-									@compose.Switch(compose.SwitchProps{SwitchProps: formswitch.SwitchProps{Name: "alerts", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-alerts", vId))}})
+									@compose.Switch(compose.SwitchProps{SwitchProps: formswitch.SwitchProps{Name: "alerts", Attrs: uiutils.Attrs("id", uiutils.Tpl("{0}-alerts", vId), "aria-labelledby", uiutils.Tpl("{0}-alerts-label", vId))}})
 								}
 							}
 						}

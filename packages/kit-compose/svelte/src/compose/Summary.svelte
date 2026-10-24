@@ -3,6 +3,7 @@
 <script lang="ts">
   import type { ComponentProps, Snippet } from "svelte";
   import Prim from "../../../../kit/svelte/src/ui/disclosure/Summary.svelte";
+  import Text from "../../../../kit/svelte/src/ui/text/Text.svelte";
   import { cn } from "../../../../kit/svelte/src/utils";
   import { rc } from "./recipes";
 
@@ -10,4 +11,4 @@
   const cls = $derived(cn(rc("summary", { "size": v_size, "variant": v_variant }), className));
 </script>
 
-<Prim class={cls} {...rest}>{@render children?.()}</Prim>
+<Prim class={cls} {...rest}>{@render children?.()}<Text tag="span" class="size-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-180" aria-hidden="true" data-slot="summary-indicator" /></Prim>

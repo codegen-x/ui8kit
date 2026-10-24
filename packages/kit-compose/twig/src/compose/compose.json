@@ -1643,7 +1643,8 @@
       "tag": null,
       "tagFrom": null,
       "fixedProps": {},
-      "fixedAttrs": {}
+      "fixedAttrs": {},
+      "trail": "<span class=\"size-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-180\" aria-hidden=\"true\" data-slot=\"summary-indicator\"></span>"
     },
     "Meter": {
       "primitive": "Meter",

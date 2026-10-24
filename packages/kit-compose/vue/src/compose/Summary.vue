@@ -3,6 +3,7 @@
 <script setup lang="ts">
 import { computed, useAttrs } from "vue";
 import Prim from "../../../../kit/vue/src/ui/disclosure/Summary.vue";
+import Text from "../../../../kit/vue/src/ui/text/Text.vue";
 import { cn } from "../../../../kit/vue/src/utils";
 import { rc } from "./recipes";
 
@@ -18,5 +19,5 @@ const tagValue = computed(() => "");
 </script>
 
 <template>
-  <Prim :class="cls" v-bind="rest"><slot /></Prim>
+  <Prim :class="cls" v-bind="rest"><slot /><Text tag="span" class="size-4 shrink-0 text-muted-foreground transition-transform group-open:rotate-180" aria-hidden="true" data-slot="summary-indicator" /></Prim>
 </template>

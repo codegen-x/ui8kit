@@ -51,16 +51,16 @@
                 {%- set c_8 -%}
                   {{ og_text(og_get(v_labels, ['updates'])) }}
                 {%- endset -%}
-                {{ og_include('compose/label.html.j2', {'p': {'For': og_s(og_tpl('{0}-updates', [v_id])), 'Class': 'text-sm'}, 'children': c_8}) }}
-                {{ og_include('compose/switch.html.j2', {'p': {'Name': 'updates', 'Attrs': og_attrs(['id', og_tpl('{0}-updates', [v_id])])}}) }}
+                {{ og_include('compose/label.html.j2', {'p': {'For': og_s(og_tpl('{0}-updates', [v_id])), 'Class': 'text-sm', 'Attrs': og_attrs(['id', og_tpl('{0}-updates-label', [v_id])])}, 'children': c_8}) }}
+                {{ og_include('compose/switch.html.j2', {'p': {'Name': 'updates', 'Attrs': og_attrs(['id', og_tpl('{0}-updates', [v_id]), 'aria-labelledby', og_tpl('{0}-updates-label', [v_id])])}}) }}
               {%- endset -%}
               {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Justify': 'between'}, 'children': c_9}) }}
               {%- set c_11 -%}
                 {%- set c_10 -%}
                   {{ og_text(og_get(v_labels, ['alerts'])) }}
                 {%- endset -%}
-                {{ og_include('compose/label.html.j2', {'p': {'For': og_s(og_tpl('{0}-alerts', [v_id])), 'Class': 'text-sm'}, 'children': c_10}) }}
-                {{ og_include('compose/switch.html.j2', {'p': {'Name': 'alerts', 'Attrs': og_attrs(['id', og_tpl('{0}-alerts', [v_id])])}}) }}
+                {{ og_include('compose/label.html.j2', {'p': {'For': og_s(og_tpl('{0}-alerts', [v_id])), 'Class': 'text-sm', 'Attrs': og_attrs(['id', og_tpl('{0}-alerts-label', [v_id])])}, 'children': c_10}) }}
+                {{ og_include('compose/switch.html.j2', {'p': {'Name': 'alerts', 'Attrs': og_attrs(['id', og_tpl('{0}-alerts', [v_id]), 'aria-labelledby', og_tpl('{0}-alerts-label', [v_id])])}}) }}
               {%- endset -%}
               {{ og_include('compose/group.html.j2', {'p': {'Gap': '4', 'Align': 'center', 'Justify': 'between'}, 'children': c_11}) }}
             {%- endset -%}

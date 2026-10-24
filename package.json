@@ -33,6 +33,10 @@
     "packages/latte/*",
     "packages/kit/*",
     "packages/kit-compose",
+    "packages/kit-compose/react",
+    "packages/kit-compose/svelte",
+    "packages/kit-compose/vue",
+    "packages/kit-compose/solid",
     "packages/ui-gates"
   ],
   "packageManager": "bun@1.4.2",
@@ -52,14 +56,15 @@
     "e2e": "bun xgen/cli/src/cli.ts e2e",
     "shot": "bun xgen/cli/src/cli.ts shot",
     "visual": "bun xgen/cli/src/cli.ts visual",
-    "typecheck": "bun run typecheck:xgen && bun run --filter \"@ui8kit/svelte-ui\" --filter \"@ui8kit/react-ui\" --filter \"@ui8kit/vue-ui\" --filter \"@ui8kit/solid-ui\" --filter \"@ui8kit/app-shared\" --filter \"host-*\" --filter \"discovery\" --filter \"@ui8kit/panorama\" --filter \"@ui8kit/taste-data\" --filter \"@ui8kit/taste-screens\" --filter \"magazine\" --parallel check && bun run --cwd packages/kit-compose typecheck",
+    "typecheck": "bun run typecheck:xgen && bun run --filter \"@ui8kit/svelte-ui\" --filter \"@ui8kit/react-ui\" --filter \"@ui8kit/vue-ui\" --filter \"@ui8kit/solid-ui\" --filter \"@ui8kit/app-shared\" --filter \"@codegen-x/*-compose\" --filter \"host-*\" --filter \"discovery\" --filter \"@ui8kit/panorama\" --filter \"@ui8kit/taste-data\" --filter \"@ui8kit/taste-screens\" --filter \"magazine\" --parallel check && bun run --cwd packages/kit-compose typecheck",
     "test": "bun test ./xgen ./packages/taste-data/src ./packages/kit-compose ./packages/ui-gates",
     "check:all": "bun run build && bun run check && bun run typecheck && bun run build:hosts && bun run test && bun run lint:px && bun run e2e",
     "typecheck:xgen": "tsc -p xgen/tsconfig.json",
     "lint:px": "node packages/tooling/bin/ui8px-gate.mjs",
     "kit:check": "node packages/tooling/bin/kit-check.mjs",
     "compose:build": "bun packages/kit-compose/src/build.ts",
-    "compose:check": "bun packages/compose-gen/check.ts && bun packages/kit-compose/src/build.ts --check && bun packages/kit-compose/src/organisms.ts --check && bun packages/kit-compose/src/server-organisms.ts --check",
+    "compose:check": "bun packages/compose-gen/check.ts && bun packages/kit-compose/src/build.ts --check && bun packages/kit-compose/src/organisms.ts --check && bun packages/kit-compose/src/server-organisms.ts --check && bun packages/kit-compose/src/hosts.ts --check",
+    "compose:hosts": "bun packages/kit-compose/src/hosts.ts",
     "gates:source": "node packages/ui-gates/bin/ui-gates.mjs source packages/kit-compose/react packages/kit-compose/svelte packages/kit-compose/vue packages/kit-compose/solid packages/kit-compose/jinja2 packages/kit-compose/twig packages/kit-compose/latte packages/kit-compose/templ/src --allow-tag del"
   },
   "devDependencies": {
