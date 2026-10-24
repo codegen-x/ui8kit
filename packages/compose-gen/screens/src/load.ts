@@ -76,11 +76,13 @@ export function loadApp(file: string): { app: AppSpec; problems: string[] } {
   return { app, problems: validate("app", app).map((e) => `${file}: ${e}`) };
 }
 
-/** every app of the workspace: apps/<name>/xgen.app.json */
+/** the file that makes apps/<name> a host app */
+export const APP_FILE = "xgen.app.json";
+/** every app of the workspace: apps/<name>/${APP_FILE} */
 export function findApps(workspace: string): string[] {
   const dir = join(workspace, "apps");
   if (!existsSync(dir)) return [];
-  return readdirSync(dir).filter((d) => existsSync(join(dir, d, "xgen.app.json"))).sort().map((d) => join(dir, d));
+  return readdirSync(dir).filter((d) => existsSync(join(dir, d, APP_FILE))).sort().map((d) => join(dir, d));
 }
 
 export const kebab = (name: string): string => name.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();

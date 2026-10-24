@@ -1,6 +1,6 @@
 // The registry of the 92 layouts of the reference catalog (15 categories): each is mapped to a block and variant of ours, or to a motion contract
 // (a pattern with a port contract and a static variant). Only the composition and the layout are recorded, never their words or markup.
-// xgen/docs/vibeui-coverage.md is written from this table (screens/tools/author-coverage.ts) and `xgen check` compares the two.
+// packages/compose-gen/docs/vibeui-coverage.md is written from this table (`bun packages/compose-gen/check.ts --write`) and the `registry` group of compose-gen check compares the two.
 
 /** a reference: `block.variant`, or `pattern.<name>` for a contract */
 export interface CoverageRow { category: string; layout: string; refs: string[] }
@@ -149,7 +149,7 @@ export function coverageProblems(blocks: BlockSpec[], patternNames: ReadonlySet<
   return out;
 }
 
-/** the text of xgen/docs/vibeui-coverage.md */
+/** the text of packages/compose-gen/docs/vibeui-coverage.md */
 export function coverageMarkdown(blocks: BlockSpec[]): string {
   const org = (r: CoverageRow): string => { const k = r.refs.find((x) => !isContract(x))!.split(".")[0]; return blocks.find((b) => b.id === `block.${k}`)?.organism ?? "?"; };
   const kinds = vibeCoverage.map(kindOf);
@@ -157,7 +157,7 @@ export function coverageMarkdown(blocks: BlockSpec[]): string {
   const lines: string[] = [
     "# Coverage of the reference catalog",
     "",
-    "<!-- Written by screens/tools/author-coverage.ts from xgen/screens/src/authoring/gallery/coverage.ts. `xgen check` compares this file with the registry; do not edit it by hand. -->",
+    "<!-- Written by `bun packages/compose-gen/check.ts --write` from packages/compose-gen/screens/src/authoring/gallery/coverage.ts. The registry group of compose-gen check compares this file with the registry; do not edit it by hand. -->",
     "",
     `The reference catalog holds ${vibeCoverage.length} layouts in ${CATEGORIES.length} categories. Each one is mapped to a block and a variant of ours (a variant is a row of data: axes and case copy), or to a block plus a contract for the motion that a port must supply. Only the composition and the layout are recorded here: no words and no markup of the source are copied. The source of truth is our own primitives, patterns and organisms with their specs.`,
     "",

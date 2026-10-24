@@ -1,5 +1,5 @@
 // Versions of the spec files. Every JSON spec carries `specVersion`; the schemas describe the current one. When a shape changes, raise SPEC_VERSION,
-// add the step from the old version to MIGRATIONS and describe it in xgen/docs/migrations.md; `xgen check` names every file that is not on the current version.
+// add the step from the old version to MIGRATIONS and describe it in packages/compose-gen/docs/migrations.md; compose-gen check (group versions) names every file that is not on the current version.
 
 export const SPEC_VERSION = 1;
 
@@ -11,8 +11,8 @@ export function versionProblem(spec: { specVersion?: unknown }): string | undefi
   const v = spec.specVersion;
   if (typeof v !== "number") return "has no specVersion";
   if (v === SPEC_VERSION) return undefined;
-  if (v > SPEC_VERSION) return `specVersion ${v} is newer than this xgen understands (${SPEC_VERSION}); update xgen`;
-  return `specVersion ${v} is old (current ${SPEC_VERSION}); migrate it with migrate() from @ui8kit/xgen-schema, see xgen/docs/migrations.md`;
+  if (v > SPEC_VERSION) return `specVersion ${v} is newer than this compose-gen understands (${SPEC_VERSION}); update compose-gen`;
+  return `specVersion ${v} is old (current ${SPEC_VERSION}); migrate it with migrate() from packages/compose-gen/schema, see packages/compose-gen/docs/migrations.md`;
 }
 
 /** a spec brought to the current version, step by step */

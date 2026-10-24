@@ -1,15 +1,23 @@
-// compose-gen self-check: the specs stored in specs/{organisms,parts,patterns,blocks,presets,screens} are the output of the
-// builder (screens/src/authoring). `bun check.ts` fails on a drift, `bun check.ts --write` rewrites them.
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+// compose-gen check: the stored specs equal the builder (screens/src/authoring), and the groups ported from the former `xgen check`
+// (schema, registry, themes, routes, dictionary, text, dead, duplicates, readability, structure, versions) hold.
+//   bun packages/compose-gen/check.ts            run every group, exit 1 on a problem
+//   bun packages/compose-gen/check.ts --write    rewrite the stored specs and docs/vibeui-coverage.md from the builder first
+import { writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { authoredDirs, stringify } from "./screens/src/authored";
+import { coverageMarkdown } from "./screens/src/index";
+import { checkAuthored, GROUPS, loadCtx, COVERAGE_DOC, type CheckResult } from "./check/src/groups/index";
 
-const bad: string[] = [];
-let n = 0;
-for (const [dir, list] of authoredDirs()) for (const spec of list) {
-  const file = join(import.meta.dir, "specs", dir, `${spec.id.split(".")[1]}.json`), body = stringify(spec);
-  n++;
-  if (!existsSync(file) || readFileSync(file, "utf8") !== body) { bad.push(`${dir}/${spec.id}`); if (process.argv.includes("--write")) writeFileSync(file, body); }
+const write = process.argv.includes("--write");
+if (write) checkAuthored(loadCtx(), true, writeFileSync);
+const ctx = loadCtx();
+if (write) writeFileSync(join(ctx.root, COVERAGE_DOC), coverageMarkdown(ctx.inputs.blocks.map((b) => b.value)));
+const results: CheckResult[] = [checkAuthored(ctx), ...GROUPS.map((g) => g(ctx))];
+let bad = 0;
+for (const r of results) {
+  console.log(`${r.problems.length ? "FAIL" : "ok  "}  compose-gen ${r.name.padEnd(11)} ${r.what}`);
+  for (const p of r.problems.slice(0, 25)) console.log(`        ${p}`);
+  if (r.problems.length > 25) console.log(`        ... and ${r.problems.length - 25} more`);
+  bad += r.problems.length;
 }
-if (bad.length && !process.argv.includes("--write")) { console.error(`compose-gen: ${bad.length} stored specs differ from the builder:\n${bad.join("\n")}`); process.exit(1); }
-console.log(`compose-gen: ${n} authored specs ${bad.length ? `rewritten (${bad.length})` : "up to date"}`);
+console.log(bad ? `compose-gen check: ${bad} problem(s)` : `compose-gen check: ok (${results.length} groups)`);
+process.exit(bad ? 1 : 0);

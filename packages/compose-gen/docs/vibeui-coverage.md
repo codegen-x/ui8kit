@@ -1,6 +1,6 @@
 # Coverage of the reference catalog
 
-<!-- Written by screens/tools/author-coverage.ts from xgen/screens/src/authoring/gallery/coverage.ts. `xgen check` compares this file with the registry; do not edit it by hand. -->
+<!-- Written by `bun packages/compose-gen/check.ts --write` from packages/compose-gen/screens/src/authoring/gallery/coverage.ts. The registry group of compose-gen check compares this file with the registry; do not edit it by hand. -->
 
 The reference catalog holds 92 layouts in 15 categories. Each one is mapped to a block and a variant of ours (a variant is a row of data: axes and case copy), or to a block plus a contract for the motion that a port must supply. Only the composition and the layout are recorded here: no words and no markup of the source are copied. The source of truth is our own primitives, patterns and organisms with their specs.
 
