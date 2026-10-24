@@ -1,6 +1,6 @@
 // The block catalog: each block is an organism of the site plus the axes it varies on, named variants (a variant is a row of data: axis -> value,
 // and for case copy a few props), the collections it reads and the props a page gets for free. No markup: the organism draws it.
-// Stored as JSON in xgen/specs/blocks. The composed screens (the site, the gallery) use blocks by name and variant.
+// Stored as JSON in packages/compose-gen/specs/blocks. The composed screens (the site, the gallery) use blocks by name and variant.
 // The names, the notes and the variant labels are written to the dictionary by screens/tools/author-block-texts.ts.
 import { list, nth, ref, undef } from "../../build";
 import type { BlockSpec, ComposedSpec } from "../../ir";

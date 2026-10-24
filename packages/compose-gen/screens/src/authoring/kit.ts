@@ -45,13 +45,13 @@ export const groupFields = (...f: Array<[name: string, type: string | PropType, 
 export const requireFields = (f: RecordField[], ...names: string[]): RecordField[] => f.map((x) => (names.includes(x.name) ? { ...x, optional: false } : x));
 export const fields = (...f: Array<[string, RecordField["type"], boolean?]>): RecordField[] => f.map(([name, type, optional]) => ({ name, type, ...(optional ? { optional: true } : {}) }));
 
-// ---- recipes: the recipes of xgen/specs/recipes, read while authoring
+// ---- recipes: the recipes of packages/compose-gen/specs/recipes, read while authoring
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
-import { xgenPaths } from "../../../schema/src/index";
+import { composeGenPaths } from "../../../schema/src/index";
 import type { RecipeFile } from "../ir";
 
-const recipesDir = xgenPaths(join(import.meta.dir, "..", "..", "..")).specs("recipes");
+const recipesDir = composeGenPaths(join(import.meta.dir, "..", "..", "..")).specs("recipes");
 /** the base classes of the Card composition (packages/kit-compose/variants/card.variants.json): a card item that is the root of a block file opens on
  *  `Block tag="article"` with these classes, so it looks the same and is a block (rule 01) */
 export const cardBase = (): string => (JSON.parse(readFileSync(join(import.meta.dir, "..", "..", "..", "..", "kit-compose", "variants", "card.variants.json"), "utf8")) as RecipeFile).base;

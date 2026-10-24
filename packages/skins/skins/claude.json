@@ -10,7 +10,7 @@
     "notice": "packages/compose-gen/runtimes/core/assets/styles/skins/NOTICE.md"
   },
   "fonts": [],
-  "comment": " Skin \"claude\" (Claude): the tweakcn preset \"claude\" (Apache-2.0, see NOTICE.md), written by xgen/runtimes/core/tools/tweakcn-skins.ts.\n   On when data-skin=\"claude\" is on <html> (the page) or on any element (a tile of /skins/). Values as tweakcn exports them;\n   the spacing scale stays the kit's 0.25rem. Fonts: system. ",
+  "comment": " Skin \"claude\" (Claude): the tweakcn preset \"claude\" (Apache-2.0, see NOTICE.md), written by packages/skins/tools/tweakcn-skins.ts.\n   On when data-skin=\"claude\" is on <html> (the page) or on any element (a tile of /skins/). Values as tweakcn exports them;\n   the spacing scale stays the kit's 0.25rem. Fonts: system. ",
   "scope": "any",
   "bodyTracking": false,
   "light": {

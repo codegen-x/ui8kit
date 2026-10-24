@@ -1,5 +1,5 @@
 // Contract metadata derived from the render tree and the recipes: slots, a11y, data attributes, tokens.
-// The importer writes it into the spec; `xgen check` derives it again and fails when the spec drifted from its own render tree.
+// The importer writes it into the spec; `compose-gen check` derives it again and fails when the spec drifted from its own render tree.
 import type { Node, PartDef, TagSpec, AttrSpec } from "./domain/model";
 import { walkNodes } from "./domain/model";
 import type { VariantRecipe } from "./domain/recipe";

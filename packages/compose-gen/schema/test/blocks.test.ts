@@ -1,5 +1,5 @@
 // The block data manifest (codex/blocks.json): it covers every kit block, screen and template, and each block marked
-// done reads only fields its kind declares, through the central field map (xgen/runtimes/core/assets/app/fields.ts),
+// done reads only fields its kind declares, through the central field map (packages/compose-gen/runtimes/core/assets/app/fields.ts),
 // from fixtures that pass the @ui8kit/contract v0.4 validator, with no required prop left undefined.
 import { expect, test } from "bun:test";
 import { readdirSync, readFileSync } from "node:fs";
@@ -72,7 +72,7 @@ for (const b of done) for (const d of b.data ?? []) {
     for (const p of [...(d.required ?? []), ...(d.optional ?? [])]) expect([p, fieldOf(d.kind, p) !== undefined]).toEqual([p, true]);
   });
 
-  test(`${b.id}.${d.prop}: the central map "${d.map}" covers the required fields and equals the map of the xgen spec`, () => {
+  test(`${b.id}.${d.prop}: the central map "${d.map}" covers the required fields and equals the map of the compose-gen spec`, () => {
     expect(map).toBeDefined();
     const paths = Object.values(map!).map((p) => p.split("|")[0]);
     for (const p of d.required ?? []) expect([p, paths.includes(p)]).toEqual([p, true]);
@@ -98,7 +98,7 @@ for (const b of done) for (const d of b.data ?? []) {
   });
 }
 
-test("every label of a done block is a key of the dictionary (xgen/content/ui/en.json), not a field of an entry", () => {
+test("every label of a done block is a key of the dictionary (packages/compose-gen/content/ui/en.json), not a field of an entry", () => {
   const dict = JSON.parse(readFileSync(join(root, "packages/compose-gen/content/ui/en.json"), "utf8"));
   const at = (path: string): unknown => path.split(".").reduce<unknown>((c, k) => (c && typeof c === "object" ? (c as Record<string, unknown>)[k] : undefined), dict);
   for (const b of done) for (const l of (b as unknown as { labels: { dictionary: string; keys: string[] }[] }).labels) {

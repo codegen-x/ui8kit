@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://xgen.dev/schemas/organism.schema.json",
-  "title": "xgen organism",
+  "$id": "https://ui8kit.dev/compose-gen/schemas/organism.schema.json",
+  "title": "compose-gen organism",
   "type": "object",
   "$defs": {
     "value": {

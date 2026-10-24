@@ -1,5 +1,5 @@
 // The copy decks of the taste screens: neutral placeholder English, no brands. The text lives in Codex entries
-// (xgen/fixtures/deck*.json, kinds deck and deck_*); xgen maps them through the central field maps into content/copy.json.
+// (packages/compose-gen/fixtures/deck*.json, kinds deck and deck_*); compose-gen maps them through the central field maps into content/copy.json.
 // A screen gets one deck as its `c` prop and picks what its composition needs.
 import copy from "../content/copy.json";
 

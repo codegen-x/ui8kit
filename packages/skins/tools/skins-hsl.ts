@@ -1,5 +1,5 @@
 // One-off converter: rewrites every colour of the skin CSS files (hex, rgb(), oklch()) as hsl() and applies FIXES.
-// Run from the workspace root: bun xgen/runtimes/core/tools/skins-hsl.ts [file.css ...]   (default: skins/*.css and theme.css)
+// Run from the workspace root: bun packages/skins/tools/skins-hsl.ts [file.css ...]   (default: skins/*.css and theme.css)
 import { readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { FIXES, toHslCss } from "./skin-colors";

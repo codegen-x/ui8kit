@@ -3,11 +3,21 @@
 // those cards, adds a check, and shows "Viewed N of M" with a Reset button.
 const SCREENS = ["blocks", "catalog"];
 const screen = (): string => location.pathname.split("/").filter(Boolean)[0] ?? "";
-const KEY_OF = (s: string): string => `xgen-preview:visited-${s}`;
+const KEY_OF = (s: string): string => `codegen-x-preview:visited-${s}`;
+/** the key before the rename (xgen-preview:...): read once and moved to KEY_OF */
+const LEGACY_KEY_OF = (s: string): string => `xgen-preview:visited-${s}`;
+/** the stored list of a screen, moving a list stored under the legacy key to the new one */
+function stored(s: string): string | null {
+  const now = localStorage.getItem(KEY_OF(s));
+  if (now !== null) return now;
+  const old = localStorage.getItem(LEGACY_KEY_OF(s));
+  if (old !== null) { localStorage.setItem(KEY_OF(s), old); localStorage.removeItem(LEGACY_KEY_OF(s)); }
+  return old;
+}
 const MARK = "data-visited-ui";
 const CHECK = '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>';
 
-const read = (): Set<string> => { try { return new Set(JSON.parse(localStorage.getItem(KEY_OF(screen())) ?? "[]") as string[]); } catch { return new Set(); } };
+const read = (): Set<string> => { try { return new Set(JSON.parse(stored(screen()) ?? "[]") as string[]); } catch { return new Set(); } };
 const write = (s: Set<string>) => localStorage.setItem(KEY_OF(screen()), JSON.stringify([...s].sort()));
 /** the id a card stands for: the block of a gallery card, the route of a catalog card */
 const idOf = (a: HTMLElement): string => a.dataset.block ?? a.dataset.visit ?? "";

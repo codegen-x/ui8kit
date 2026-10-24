@@ -12,98 +12,98 @@
       "name": "Modern Minimal",
       "version": "1.0.0",
       "file": "modern-minimal.json",
-      "sha256": "ecbf4a129f7e2d27e7cf325ea98a7523a4c487652ed02617364911db25fca5d8"
+      "sha256": "c8564142408c9d8a7cfc5e6e6a2bed9c053d8e8562116e34e982eb37a47d5ce4"
     },
     {
       "id": "violet-bloom",
       "name": "Violet Bloom",
       "version": "1.0.0",
       "file": "violet-bloom.json",
-      "sha256": "620e249043f3aa7579b9b23568a7d005ff6198f942cfe1df21b908cf029c7a56"
+      "sha256": "20a03a43816f5b82cdfd529069cb5e2afd8db5fbb77293fa95c368e5e782bc01"
     },
     {
       "id": "t3-chat",
       "name": "T3 Chat",
       "version": "1.0.0",
       "file": "t3-chat.json",
-      "sha256": "32f67037757111ef67c838bf0df5e5dcb145086d622f4d7b56d2e34a36cef8e0"
+      "sha256": "f21580277eba26657d24bc972a2d8af4c6b2acb3ba982c6e66e5ab51c019ae3a"
     },
     {
       "id": "bubblegum",
       "name": "Bubblegum",
       "version": "1.0.0",
       "file": "bubblegum.json",
-      "sha256": "bc50a956c1ba638fa1d5682a47d598aff45d276f4a64c10d12fb95785c7c7f47"
+      "sha256": "1cc9ed02d9269f98da679766c239213a5da8b68d3066fdf4c020851cd873cbf3"
     },
     {
       "id": "doom-64",
       "name": "Doom 64",
       "version": "1.0.0",
       "file": "doom-64.json",
-      "sha256": "009eca192df3ade1fde167350a4c881b7796e23c52533bfa5541e6ba0d986997"
+      "sha256": "7358da47c6b65735d9955ef0ec18112b1abc419018ed11cecf66c22eed81f379"
     },
     {
       "id": "amber-minimal",
       "name": "Amber Minimal",
       "version": "1.0.0",
       "file": "amber-minimal.json",
-      "sha256": "688091744a247d1aefea8416ef28218bda871467a076c6e3fbafcc8b6ef10124"
+      "sha256": "914c3250ca00a41eb8ed06f34eecf315e5722b989733de1ca1e3527c0e2210fd"
     },
     {
       "id": "supabase",
       "name": "Supabase",
       "version": "1.0.0",
       "file": "supabase.json",
-      "sha256": "91f5911ffe9de19593576e2f3ed91279f93f29d23ab02a6435cd54dcd73f599e"
+      "sha256": "8625fbc22e2f8ad4e36d6faf0cbcb224048e54ef1d00b9c892da94a5d50b1816"
     },
     {
       "id": "kodama-grove",
       "name": "Kodama Grove",
       "version": "1.0.0",
       "file": "kodama-grove.json",
-      "sha256": "fab3bcbcd6c82c58e5671d23f9a5b1bf3d4b20008986b6e7a2c4b667acc154ec"
+      "sha256": "493c7e9636c9f907fe8887302302ad66eac086bf2bc48109603a0dd1de182417"
     },
     {
       "id": "perpetuity",
       "name": "Perpetuity",
       "version": "1.0.0",
       "file": "perpetuity.json",
-      "sha256": "09d225499ef3880defa9c8d3294282266518191d1a5b729fd419144c7e92fb97"
+      "sha256": "a7912230dfae46498e5a9281eb7913ce5671002f858fa52a22d346a047af3070"
     },
     {
       "id": "cosmic-night",
       "name": "Cosmic Night",
       "version": "1.0.0",
       "file": "cosmic-night.json",
-      "sha256": "b14a1c6e37663c66cf015d5ed0ce63cfc16285a355ed450a5c45ba34b5c8794b"
+      "sha256": "dcc67180bd9efa5d7c0048cc4bb56063b4ffa822fd26b4514da9427a0eb6e138"
     },
     {
       "id": "claude",
       "name": "Claude",
       "version": "1.0.0",
       "file": "claude.json",
-      "sha256": "29f29fcd7a6c98705ed538ace4a076daf56e1fc64fd79c4a3cf31ae35064d297"
+      "sha256": "2c275cfd6fae8ef522074d3ccd3a2ab7112dcf2867959c268064b9b54a11a06b"
     },
     {
       "id": "mocha-mousse",
       "name": "Mocha Mousse",
       "version": "1.0.0",
       "file": "mocha-mousse.json",
-      "sha256": "13360dd76fcd5849a9428823ec4d67c33084ca4f3370d1a486326180bfa6523a"
+      "sha256": "2ea728e21096ba8db0db1828fa68661f9f1494180e3a7eb3345fe92a2efab8c9"
     },
     {
       "id": "neo-brutalism",
       "name": "Neo Brutalism",
       "version": "1.0.0",
       "file": "neo-brutalism.json",
-      "sha256": "d5aa76afdf39a1e5b79bf78bb170198cc302643d32e50b4afc2a928c5b9ae03e"
+      "sha256": "cba97b8f9970271a5297f2d024cc6a3f8465aec55f6ed594ced2770409995deb"
     },
     {
       "id": "notebook",
       "name": "Notebook",
       "version": "1.0.0",
       "file": "notebook.json",
-      "sha256": "ab986692b3833294822220252c3d6d759a770354c56e5f489146821de7db7f3b"
+      "sha256": "df7d7fe30efb034e38514c325cfcc2061c8436adc0900dfe7d77ae6b89b79710"
     }
   ]
 }

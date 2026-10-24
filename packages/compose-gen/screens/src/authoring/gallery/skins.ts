@@ -1,5 +1,5 @@
 // The Skins screen (/skins/): tiles that change the look of the whole preview (see compose-skins.ts for the markup).
-// Row 1: the default theme and 14 tweakcn skins (CSS in xgen/runtimes/core/assets/styles/skins; sources in skins/NOTICE.md).
+// Row 1: the default theme and 14 tweakcn skins (CSS in packages/compose-gen/runtimes/core/assets/styles/skins; sources in skins/NOTICE.md).
 // Row 2: ten Google fonts whose subsets hold both latin and cyrillic (checked against the Google Fonts css2 API).
 // Row 3: five corner radii. The names and notes go to the dictionary under `skins` (screens/tools/author-block-texts.ts writes them).
 import type { ComposedSpec, SkinsBoard } from "../../ir";
@@ -28,7 +28,7 @@ export const skinsBoardSpec: SkinsBoard = {
 };
 
 /** the dictionary part of the Skins screen (ui.skins). The specimen shows Cyrillic letters; it is written as \u escapes so that the
- *  sources stay free of Cyrillic text (xgen check, group text) */
+ *  sources stay free of Cyrillic text (compose-gen check, group text) */
 export const skinsTexts = {
   title: "Skins",
   intro: "Change the look of the whole preview: pick a skin, then a font or a corner radius on top of it. The choice applies to every screen and stays after a reload.",

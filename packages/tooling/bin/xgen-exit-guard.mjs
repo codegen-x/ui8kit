@@ -15,7 +15,7 @@ const EXT = /\.(ts|tsx|mts|js|mjs|cjs|svelte|vue|py|php|go|templ|j2|twig|latte|j
 const RUNTIMES = "svelte|react|vue|solid|templ|twig|jinja2|latte";
 const RULES = [
   [/(?:from|import)\s*\(?\s*["'][^"']*(?:^|\/|["'])xgen\//, "import from xgen/"],
-  [/["']@ui8kit\/xgen-(?!tooling)[-\w]*["'/]/, "import of an @ui8kit/xgen-* package"],
+  [/["']@ui8kit\/xgen-[-\w]*["'/]/, "import of an @ui8kit/xgen-* package"],
   [new RegExp(`["']@ui8kit\\/(?:${RUNTIMES})-ui["'/]`), "import of a removed xgen brick package (@ui8kit/<runtime>-ui)"],
   [/require\(\s*["'][^"']*\bxgen\//, "require of xgen/"],
   [/(?:join|resolve)\([^)]*["']xgen["']/, "path into the xgen folder"],

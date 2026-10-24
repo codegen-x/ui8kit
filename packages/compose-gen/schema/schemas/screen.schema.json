@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://xgen.dev/schemas/screen.schema.json",
-  "title": "xgen screen",
+  "$id": "https://ui8kit.dev/compose-gen/schemas/screen.schema.json",
+  "title": "compose-gen screen",
   "type": "object",
   "$defs": {
     "value": {

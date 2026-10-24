@@ -1,11 +1,11 @@
 {
   "$schema": "../../packages/compose-gen/schema/schemas/app.schema.json",
   "specVersion": 1,
-  "name": "host-solid",
-  "runtime": "solid",
+  "name": "host-vue",
+  "runtime": "vue",
   "screens": ["*"],
-  "title": "xgen screens (Solid)",
-  "port": 5183,
+  "title": "compose-gen screens (Vue)",
+  "port": 5182,
   "locale": "en",
   "theme": "light"
 }

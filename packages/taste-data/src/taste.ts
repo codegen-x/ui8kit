@@ -2,7 +2,7 @@
 // Ids only (lowercase tokens): names and families live in CSS and fixtures, so this file is plain data for a future ranking index.
 import type { FontId } from "./fonts";
 
-/** the skins of the kit (xgen/runtimes/core/assets/styles/skins): sky + the 14 tweakcn presets */
+/** the skins of the kit (packages/compose-gen/runtimes/core/assets/styles/skins): sky + the 14 tweakcn presets */
 export const SKIN_IDS = [
   "sky", "modern-minimal", "violet-bloom", "t3-chat", "bubblegum", "doom-64", "amber-minimal", "supabase",
   "kodama-grove", "perpetuity", "cosmic-night", "claude", "mocha-mousse", "neo-brutalism", "notebook",
@@ -54,7 +54,7 @@ export type Taste = {
   radius: Radius;
   composition: Composition;
   recipe: Recipe;
-  /** index of the copy deck in content/copy.json (generated from xgen/fixtures/deck*.json) */
+  /** index of the copy deck in content/copy.json (generated from packages/compose-gen/fixtures/deck*.json) */
   deck: number;
 };
 

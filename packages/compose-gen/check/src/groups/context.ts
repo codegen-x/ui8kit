@@ -1,5 +1,5 @@
 // What every group of compose-gen check reads: the loaded inputs (specs, fixtures, dictionary), the host apps and the paths.
-// The successor of the `Plan` of the former `xgen check`: no bricks (the primitives are UI8Kit 3, installed by the CLI) and no
+// The successor of the `Plan` of the former `compose-gen check`: no bricks (the primitives are UI8Kit 3, installed by the CLI) and no
 // in-memory build: the generated organisms and screens are read from disk (`bun run compose:check` keeps them equal to the build).
 import { existsSync, readdirSync, statSync } from "node:fs";
 import { join, resolve } from "node:path";

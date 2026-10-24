@@ -1,4 +1,4 @@
-// The `text` group of compose-gen check (ported from `xgen check`): no Cyrillic in any tracked file (sources, generated code,
+// The `text` group of compose-gen check (ported from `compose-gen check`): no Cyrillic in any tracked file (sources, generated code,
 // content, docs, plans) outside CYRILLIC_ALLOW; every content key a screen reads exists; status words of badge columns exist.
 import { execFileSync } from "node:child_process";
 import { existsSync, readFileSync, statSync } from "node:fs";

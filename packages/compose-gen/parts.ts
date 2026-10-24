@@ -1,7 +1,7 @@
 // The prop tables the organism emitters and the view validator name props by (PartRef), derived from the kit-compose description:
 // every composition of ../kit-compose/src/map.ts is its v3 primitive (specs/primitives.json, copied from @ui8kit/codegen 3.2.0)
 // plus the cva keys of its recipe (../kit-compose/variants), the prop that picks its tag, and the native attributes it forwards.
-// Replaces the v2 brick specs (xgen/specs/ui) — exit step 2 of docs/ui8kit3-xgen-exit.md.
+// Replaces the v2 brick specs (packages/compose-gen/specs/ui) — exit step 2 of docs/ui8kit3-xgen-exit.md.
 import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { BRICKS } from "../kit-compose/src/map";

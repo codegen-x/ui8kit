@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 // Prints the zones catalog assembled from the "ui8kit" field of every workspace package.json.
-//   xgen-zones            print it
-//   xgen-zones --write    write rules/zones.json (xgen check, group rules, fails when the copy is stale)
+//   codegen-x-zones       print it
+//   codegen-x-zones --write  write rules/zones.json (the rules gate of bun run check, fails when the copy is stale)
 import fs from "node:fs";
 import path from "node:path";
 import { REPO } from "../src/app.mjs";

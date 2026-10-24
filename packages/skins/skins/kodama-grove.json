@@ -12,7 +12,7 @@
   "fonts": [
     "merriweather"
   ],
-  "comment": " Skin \"kodama-grove\" (Kodama Grove): the tweakcn preset \"kodama-grove\" (Apache-2.0, see NOTICE.md), written by xgen/runtimes/core/tools/tweakcn-skins.ts.\n   On when data-skin=\"kodama-grove\" is on <html> (the page) or on any element (a tile of /skins/). Values as tweakcn exports them;\n   the spacing scale stays the kit's 0.25rem. Fonts: Merriweather (Google Fonts, loaded when the skin is on). ",
+  "comment": " Skin \"kodama-grove\" (Kodama Grove): the tweakcn preset \"kodama-grove\" (Apache-2.0, see NOTICE.md), written by packages/skins/tools/tweakcn-skins.ts.\n   On when data-skin=\"kodama-grove\" is on <html> (the page) or on any element (a tile of /skins/). Values as tweakcn exports them;\n   the spacing scale stays the kit's 0.25rem. Fonts: Merriweather (Google Fonts, loaded when the skin is on). ",
   "scope": "any",
   "bodyTracking": false,
   "light": {

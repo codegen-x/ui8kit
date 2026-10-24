@@ -38,6 +38,6 @@ test("status, required / optional, note and emptyMode are kept; source, bindings
 
 test("every surface is generated: 92 kit blocks, 15 screens, 10 templates + 2 parts, the taste screens", () => {
   const count = (s: string) => doc.blocks.filter((b) => b.surface === s).length;
-  expect([count("kit-block"), count("xgen-screen"), count("magazine-template"), count("magazine-part")]).toEqual([92, 15, 10, 2]);
+  expect([count("kit-block"), count("compose-gen-screen"), count("magazine-template"), count("magazine-part")]).toEqual([92, 15, 10, 2]);
   expect(count("taste-screen")).toBeGreaterThan(100);
 });

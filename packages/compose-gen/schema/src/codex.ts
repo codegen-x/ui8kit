@@ -1,10 +1,10 @@
-// The Codex v0.4 manifest of the kit's fixtures (xgen/fixtures): one resource per entry kind, its metadata fields
+// The Codex v0.4 manifest of the kit's fixtures (packages/compose-gen/fixtures): one resource per entry kind, its metadata fields
 // inferred from the fixtures. Money fields hold integer minor units (rule fastygo.codex/money) next to a `currency`
 // field; dates are RFC 3339 (type datetime); ids of entries of one other kind become relations.
-// `bun xgen/schema/src/codex.ts` writes xgen/schema/codex/manifest.json; a test keeps the file equal to the fixtures.
+// `bun packages/compose-gen/schema/src/codex.ts` writes packages/compose-gen/schema/codex/manifest.json; a test keeps the file equal to the fixtures.
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
-import { xgenPaths } from "./paths";
+import { composeGenPaths } from "./paths";
 
 export const MONEY_FIELDS = ["price", "compare_at", "yearly", "total", "amount", "freeFrom", "minOrder"] as const;
 export const MANIFEST_PATH = join(import.meta.dir, "..", "codex", "manifest.json");
@@ -18,12 +18,12 @@ export interface Manifest { name: string; version: string; resources: { record: 
 
 export interface Term { id: string; locale: string; taxonomy_id: string; name: string; slug: string }
 export interface TaxonomyBundle { definition: { id: string; locale: string; label: string; mode: string; assigned_to_kinds: string[] }; terms: Term[] }
-/** the taxonomy bundles of xgen/fixtures/taxonomies (the terms that entries name in `terms`) */
-export function loadTaxonomies(dir = xgenPaths(join(import.meta.dir, "..", "..")).taxonomies): TaxonomyBundle[] {
+/** the taxonomy bundles of packages/compose-gen/fixtures/taxonomies (the terms that entries name in `terms`) */
+export function loadTaxonomies(dir = composeGenPaths(join(import.meta.dir, "..", "..")).taxonomies): TaxonomyBundle[] {
   return existsSync(dir) ? readdirSync(dir).filter((f) => f.endsWith(".json")).sort().map((f) => JSON.parse(readFileSync(join(dir, f), "utf8")) as TaxonomyBundle) : [];
 }
 
-export function loadFixtures(dir = xgenPaths(join(import.meta.dir, "..", "..")).fixtures): Collection[] {
+export function loadFixtures(dir = composeGenPaths(join(import.meta.dir, "..", "..")).fixtures): Collection[] {
   return readdirSync(dir).filter((f) => f.endsWith(".json")).sort().map((f) => JSON.parse(readFileSync(join(dir, f), "utf8")) as Collection);
 }
 

@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://ui8kit.dev/xgen/codex/blocks.schema.json",
+  "$id": "https://ui8kit.dev/compose-gen/codex/blocks.schema.json",
   "title": "Block data manifest",
-  "description": "Which Codex v0.4 entry kinds every block, screen and template reads, by which field map, with which entry fields, settings and dictionary labels. Kinds and metadata fields are those of manifest.json; status done = checked by xgen/schema/test/blocks.test.ts.",
+  "description": "Which Codex v0.4 entry kinds every block, screen and template reads, by which field map, with which entry fields, settings and dictionary labels. Kinds and metadata fields are those of manifest.json; status done = checked by packages/compose-gen/schema/test/blocks.test.ts.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -53,7 +53,7 @@
         },
         "collection": {
           "type": "string",
-          "description": "the fixture collection (xgen/fixtures/<collection>.json)"
+          "description": "the fixture collection (packages/compose-gen/fixtures/<collection>.json)"
         },
         "kind": {
           "type": "string",
@@ -101,7 +101,7 @@
         },
         "dictionary": {
           "type": "string",
-          "description": "dotted path in the dictionary of the locale (xgen/content/ui/<locale>.json)"
+          "description": "dotted path in the dictionary of the locale (packages/compose-gen/content/ui/<locale>.json)"
         },
         "keys": {
           "type": "array",
@@ -130,7 +130,7 @@
             "kit-block",
             "kit-organism",
             "kit-component",
-            "xgen-screen",
+            "compose-gen-screen",
             "magazine-template",
             "magazine-part",
             "taste-screen"
@@ -138,7 +138,7 @@
         },
         "spec": {
           "type": "string",
-          "description": "the xgen spec id"
+          "description": "the compose-gen spec id"
         },
         "source": {
           "type": "string",

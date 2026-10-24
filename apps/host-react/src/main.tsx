@@ -6,7 +6,7 @@ import { bootScreen, screenKeyOf } from "@ui8kit/app-shared/screens";
 import { App } from "../gen/App";
 
 const screen = screenKeyOf(location);
-const title = "xgen screens (React)";
+const title = "compose-gen screens (React)";
 bootScreen(screen, "light", title);
 createRoot(document.getElementById("app")!).render(
   <StrictMode>

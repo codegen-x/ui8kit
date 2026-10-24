@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://xgen.dev/schemas/block.schema.json",
-  "title": "xgen block: an organism, its axes, named variants and the data it reads (no markup)",
+  "$id": "https://ui8kit.dev/compose-gen/schemas/block.schema.json",
+  "title": "compose-gen block: an organism, its axes, named variants and the data it reads (no markup)",
   "type": "object",
   "$defs": {
     "value": {

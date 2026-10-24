@@ -6,11 +6,11 @@ The specs written with the builder (`../build.ts`), one folder per tier of the g
 |---|---|---|
 | `components/` | parts and patterns: small pieces a block is built from | `packages/*/ui/src/components/` |
 | `blocks/` | organisms: the page sections (`organisms.ts` lists them all) | `packages/*/ui/src/blocks/` |
-| `gallery/` | the block gallery: one sample per variant, the coverage registry | `apps/*/xgen/screens/BlocksScreen*` |
-| `screens/` | composed screens: the theme apps, the plans page | `apps/*/xgen/screens/` |
+| `gallery/` | the block gallery: one sample per variant, the coverage registry | `apps/host-*/gen/screens/` (the blocks screen) |
+| `screens/` | composed screens: the theme apps, the plans page | `apps/host-*/gen/screens/` |
 | `presets/` | named class sets (block geometry of the default preset) | `packages/*/ui/src/presets/` |
 
-Primitives are not written here: they are JSON specs in `xgen/specs/ui/`.
+Primitives are not written here: they are JSON specs in `packages/compose-gen/specs/ui/`.
 The files at the root are shared helpers: `kit.ts` (spec, fields, ts), `ux.ts` (class helpers),
 `forms.ts` and `placeholders.ts`.
 

@@ -1,4 +1,4 @@
-// The numbers and patterns the audit rules of `xgen check` stand on. One place, so a rule can be read and changed without searching the code.
+// The numbers and patterns the audit rules of `bun run check` stand on. One place, so a rule can be read and changed without searching the code.
 
 /** the longest source file of a package, in lines; a longer file is split by concern */
 export const MAX_FILE_LINES = 350;

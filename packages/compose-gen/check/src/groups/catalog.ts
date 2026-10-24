@@ -1,10 +1,10 @@
-// The catalog groups of compose-gen check (ported from `xgen check`): registry (the 92 layouts of the reference catalog),
+// The catalog groups of compose-gen check (ported from `compose-gen check`): registry (the 92 layouts of the reference catalog),
 // themes (every block is used by a theme screen), routes (screen menus and the hosts that serve them) and versions.
 import { existsSync, readFileSync } from "node:fs";
 import { join, relative } from "node:path";
 import { blockKey, CONTRACT_PATTERNS, coverageMarkdown, coverageProblems, themeApps, themeTexts, type AppSpec, type ScreenSpec } from "../../../screens/src/index";
 import { portableTo } from "../../../spec/src/index";
-import { versionProblem, xgenPaths } from "../../../schema/src/index";
+import { versionProblem, composeGenPaths } from "../../../schema/src/index";
 import { result, type Ctx, type CheckResult } from "./context";
 
 export const COVERAGE_DOC = "docs/vibeui-coverage.md";
@@ -82,6 +82,6 @@ export function checkVersions(ctx: Ctx): CheckResult {
     ...ctx.inputs.organisms, ...ctx.inputs.screens, ...ctx.inputs.blocks, ...ctx.apps.map((a) => ({ file: a.file, value: a.app as { specVersion?: unknown } })),
   ];
   for (const s of specs) { const why = versionProblem(s.value); if (why) problems.push(`${relative(ctx.workspace, s.file)}: ${why}`); }
-  if (!existsSync(join(xgenPaths(ctx.root).docs, "migrations.md"))) problems.push("packages/compose-gen/docs/migrations.md: missing; it holds the log of the versions");
+  if (!existsSync(join(composeGenPaths(ctx.root).docs, "migrations.md"))) problems.push("packages/compose-gen/docs/migrations.md: missing; it holds the log of the versions");
   return result("versions", `every spec (${specs.length}) is on the current specVersion, and the migrations are documented`, problems);
 }

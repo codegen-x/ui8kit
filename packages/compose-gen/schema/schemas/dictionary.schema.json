@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://xgen.dev/schemas/dictionary.schema.json",
-  "title": "xgen content dictionary",
+  "$id": "https://ui8kit.dev/compose-gen/schemas/dictionary.schema.json",
+  "title": "compose-gen content dictionary",
   "type": "object",
   "$defs": {
     "d": {

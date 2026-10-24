@@ -1,4 +1,4 @@
-// The collections the blocks read: the fixtures in xgen/fixtures, with the field each prop takes (path inside the Codex entry).
+// The collections the blocks read: the fixtures in packages/compose-gen/fixtures, with the field each prop takes (path inside the Codex entry).
 import type { Source } from "./block-kit";
 // the central field maps (shared with every runtime as @ui8kit/app-shared/runtime/fields): product, post and plan read through them
 import { CODEX_FIELDS } from "../../../../runtimes/core/assets/app/fields";

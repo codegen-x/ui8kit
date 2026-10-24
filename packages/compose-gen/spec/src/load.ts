@@ -1,7 +1,7 @@
-// Loads the brick specs of an xgen root (xgen/specs/ui/*.json), checks them against the JSON Schemas and normalizes them into the typed model.
+// Loads the brick specs of a compose-gen root (packages/compose-gen/specs/ui/*.json), checks them against the JSON Schemas and normalizes them into the typed model.
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { validate, xgenPaths } from "../../schema/src/index";
+import { validate, composeGenPaths } from "../../schema/src/index";
 import type { BrickDef } from "./domain/model";
 import type { VariantRecipe } from "./domain/recipe";
 import type { SpecFile } from "./spec-file";
@@ -11,9 +11,9 @@ export interface LoadedSpecs { root: string; bricks: LoadedBrick[]; problems: st
 
 const readJson = (p: string): unknown => JSON.parse(readFileSync(p, "utf8"));
 
-/** `root` is the xgen folder (the one that holds specs/, fixtures/ and content/) */
+/** `root` is packages/compose-gen (the one that holds specs/, fixtures/ and content/) */
 export function loadSpecs(root: string): LoadedSpecs {
-  const dir = xgenPaths(root).specs("ui");
+  const dir = composeGenPaths(root).specs("ui");
   const problems: string[] = [];
   const bricks: LoadedBrick[] = [];
   for (const name of readdirSync(dir).filter((f) => f.endsWith(".json") && !f.endsWith(".variants.json")).sort()) {

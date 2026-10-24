@@ -7,7 +7,7 @@ import { existsSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { ROOT as GEN, portableTo, tierDir, fileName, type OrganismSpec } from "../../compose-gen";
-import { findApps, loadApp, sourcesOf, type AppSpec, type ScreenSpec } from "../../compose-gen/screens/src/index";
+import { APP_FILE, findApps, loadApp, sourcesOf, type AppSpec, type ScreenSpec } from "../../compose-gen/screens/src/index";
 import { BANNER, HOST_GEN, SHARED, SHARED_DIR, decksFile, jsonFile, sharedPackage, type GeneratedFile } from "../../compose-gen/runtimes/core/src/index";
 import * as react from "../../compose-gen/runtimes/react/src/index";
 import * as svelte from "../../compose-gen/runtimes/svelte/src/index";
@@ -79,7 +79,7 @@ export function hostTargets(): { targets: HostTarget[]; problems: string[] } {
   const targets: HostTarget[] = JS_RUNTIMES.map((r) => ({ dir: `packages/kit-compose/${r}`, files: composePackage(r, Object.values(orgs)), owned: [] }));
   const hosted = new Map<string, ScreenSpec>();
   for (const dir of findApps(WS)) {
-    const { app, problems: p } = loadApp(path.join(dir, "xgen.app.json"));
+    const { app, problems: p } = loadApp(path.join(dir, APP_FILE));
     problems.push(...p);
     const r = app.runtime as JsRuntime;
     if (!JS_RUNTIMES.includes(r)) { problems.push(`${dir}: runtime ${app.runtime} has no host`); continue; }

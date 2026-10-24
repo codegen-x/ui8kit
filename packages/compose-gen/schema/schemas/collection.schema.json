@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://xgen.dev/schemas/collection.schema.json",
-  "title": "xgen fixture: a Codex v0.4 collection (entries: https://schema.buildy.tw/entry.schema.json)",
+  "$id": "https://ui8kit.dev/compose-gen/schemas/collection.schema.json",
+  "title": "compose-gen fixture: a Codex v0.4 collection (entries: https://schema.buildy.tw/entry.schema.json)",
   "type": "object",
   "properties": {
     "collection": {

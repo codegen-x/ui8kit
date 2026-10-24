@@ -5,6 +5,6 @@ import { bootScreen, screenKeyOf } from "@ui8kit/app-shared/screens";
 import App from "../gen/App.vue";
 
 const screen = screenKeyOf(location);
-const title = "xgen screens (Vue)";
+const title = "compose-gen screens (Vue)";
 bootScreen(screen, "light", title);
 createApp(App, { screen, title }).mount("#app");

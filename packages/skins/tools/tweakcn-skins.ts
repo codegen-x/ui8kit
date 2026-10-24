@@ -1,13 +1,13 @@
 // Imports skins from the tweakcn presets (github.com/jnsahaj/tweakcn, Apache-2.0; see assets/styles/skins/NOTICE.md).
-// For each preset in PICK it writes the skin as data, xgen/skins/<slug>.json (schema: xgen/skins/skin.schema.json: the light and
+// For each preset in PICK it writes the skin as data, packages/skins/skins/<slug>.json (schema: packages/skins/skins/skin.schema.json: the light and
 // dark tokens, the font, the radius, the shadows and the tracking, as tweakcn exports them), the Google fonts it loads as
-// xgen/fonts/<id>.json (only when new) and its entry in xgen/skins/index.json. It writes no CSS: `bun run skins build` turns the
+// packages/skins/fonts/<id>.json (only when new) and its entry in packages/skins/skins/index.json. It writes no CSS: `bun run skins build` turns the
 // data into assets/styles/skins/<slug>.css, skins/skins.json and the shared skin-fonts.ts. styles/skins.css (the @import list)
 // is hand-written: add a new skin's import there yourself.
 // The values are tweakcn's; only the selectors are ours: data-skin on <html> (the whole page) or on any element (a tile of /skins/).
 // Run from the workspace root, then build:
-//   bun xgen/runtimes/core/tools/tweakcn-skins.ts && bun run skins build        (needs the network: GitHub and Google Fonts)
-// Offline (or to test): --presets <theme-presets.ts>  --weights <json: family -> weights or null>  --out <dir instead of xgen/>
+//   bun packages/skins/tools/tweakcn-skins.ts && bun run skins build        (needs the network: GitHub and Google Fonts)
+// Offline (or to test): --presets <theme-presets.ts>  --weights <json: family -> weights or null>  --out <dir instead of packages/skins/>
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
@@ -17,7 +17,7 @@ import { FIXES, toHslCss } from "./skin-colors";
 /** the tweakcn commit the presets are read from */
 const COMMIT = "a3b47b37cba97dd637de517aab52c45ec0f83456";
 const PRESETS_URL = `https://raw.githubusercontent.com/jnsahaj/tweakcn/${COMMIT}/utils/theme-presets.ts`;
-const XGEN = join(import.meta.dir, "..");
+const SKINS_ROOT = join(import.meta.dir, "..");
 
 /** the presets we take, in the order of the Skins screen: 14 that look different from each other */
 export const PICK = [
@@ -141,7 +141,7 @@ export async function googleWeights(family: string): Promise<number[] | null> {
   return [...new Set([...(await res.text()).matchAll(/font-weight: (\d+)/g)].map((m) => Number(m[1])))].sort();
 }
 
-// ---- one skin as data (xgen/skins/<slug>.json) ----
+// ---- one skin as data (packages/skins/skins/<slug>.json) ----
 
 type Weights = (family: string) => Promise<number[] | null>;
 
@@ -149,12 +149,12 @@ type Weights = (family: string) => Promise<number[] | null>;
 const colorOf = (slug: string, theme: "light" | "dark", token: string, value: string): string =>
   toHslCss(FIXES[slug]?.[theme]?.[token] ?? value, FIXES[slug]?.[theme]?.[token] ? 0.25 : 0.5);
 
-/** the id of a Google font in xgen/fonts: "Plus+Jakarta+Sans:wght@..." is plus-jakarta-sans */
+/** the id of a Google font in packages/skins/fonts: "Plus+Jakarta+Sans:wght@..." is plus-jakarta-sans */
 export const fontIdOf = (spec: string): string => spec.split(":")[0]!.replace(/\+/g, "-").toLowerCase();
 
 export interface SkinData { skin: Record<string, unknown>; fonts: string[] }
 
-/** a preset as the skin JSON of xgen/skins (key order is the CSS order) and the Google font specs it loads */
+/** a preset as the skin JSON of packages/skins/skins (key order is the CSS order) and the Google font specs it loads */
 export async function skinData(slug: string, p: Preset, weightsOf: Weights = googleWeights): Promise<SkinData> {
   const { light, dark } = merged(p);
   const fonts: string[] = [];
@@ -188,7 +188,7 @@ export async function skinData(slug: string, p: Preset, weightsOf: Weights = goo
   };
   // the header comment of the CSS file, kept as the files have always had it
   const comment = [
-    ` Skin "${slug}" (${p.label}): the tweakcn preset "${slug}" (Apache-2.0, see NOTICE.md), written by xgen/runtimes/core/tools/tweakcn-skins.ts.`,
+    ` Skin "${slug}" (${p.label}): the tweakcn preset "${slug}" (Apache-2.0, see NOTICE.md), written by packages/skins/tools/tweakcn-skins.ts.`,
     `   On when data-skin="${slug}" is on <html> (the page) or on any element (a tile of /skins/). Values as tweakcn exports them;`,
     `   the spacing scale stays the kit's 0.25rem. Fonts: ${fonts.length ? fonts.map((f) => f.split(":")[0]!.replace(/\+/g, " ")).join(", ") + " (Google Fonts, loaded when the skin is on)" : "system"}. `,
   ].join("\n");
@@ -204,7 +204,7 @@ const json = (v: unknown): string => JSON.stringify(v, null, 2) + "\n";
 const flag = (name: string): string | undefined => { const i = process.argv.indexOf(name); return i > 0 ? process.argv[i + 1] : undefined; };
 
 async function main(): Promise<void> {
-  const presetsFile = flag("--presets"), weightsFile = flag("--weights"), out = flag("--out") ?? XGEN;
+  const presetsFile = flag("--presets"), weightsFile = flag("--weights"), out = flag("--out") ?? SKINS_ROOT;
   // the presets file is TypeScript with one type import: drop the types, then import it
   const source = presetsFile ? readFileSync(presetsFile, "utf8") : await (await fetch(PRESETS_URL)).text();
   const dir = mkdtempSync(join(tmpdir(), "tweakcn-"));
@@ -215,7 +215,7 @@ async function main(): Promise<void> {
   const weightsOf: Weights = cached ? async (f) => { if (!(f in cached)) throw new Error(`tweakcn-skins: --weights has no ${f}`); return cached[f]!; } : googleWeights;
   const skinsDir = join(out, "skins"), fontsDir = join(out, "fonts");
   mkdirSync(skinsDir, { recursive: true }); mkdirSync(fontsDir, { recursive: true });
-  const indexFile = join(XGEN, "skins", "index.json");
+  const indexFile = join(SKINS_ROOT, "skins", "index.json");
   const index = JSON.parse(readFileSync(indexFile, "utf8")) as { skins: Array<{ id: string; name: string; version: string; file: string; sha256: string }> };
   for (const slug of PICK) {
     const p = defaultPresets[slug];
@@ -225,7 +225,7 @@ async function main(): Promise<void> {
     writeFileSync(join(skinsDir, `${slug}.json`), text);
     for (const spec of fonts) {
       const id = fontIdOf(spec), f = join(fontsDir, `${id}.json`);
-      if (existsSync(f) || existsSync(join(XGEN, "fonts", `${id}.json`))) continue;
+      if (existsSync(f) || existsSync(join(SKINS_ROOT, "fonts", `${id}.json`))) continue;
       writeFileSync(f, json({ $schema: "./font.schema.json", id, family: spec.split(":")[0]!.replace(/\+/g, " "), provider: "google", google: spec, attribution: { source: "Google Fonts", license: "OFL-1.1" } }));
     }
     const entry = { id: slug, name: p.label, version: "1.0.0", file: `${slug}.json`, sha256: createHash("sha256").update(text).digest("hex") };

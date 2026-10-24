@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://xgen.dev/schemas/variants.schema.json",
-  "title": "xgen variants.json (CVA-style recipe)",
+  "$id": "https://ui8kit.dev/compose-gen/schemas/variants.schema.json",
+  "title": "compose-gen variants.json (CVA-style recipe)",
   "type": "object",
   "properties": {
     "$schema": {

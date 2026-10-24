@@ -118,7 +118,7 @@ export function writeStyleBaselines(repo: string): string[] {
   return STYLE_PACKAGES.map((p) => {
     const { counts } = scanPackage(repo, p);
     const totals = Object.fromEntries(STYLE_GROUPS.map((g) => [g, Object.values(counts[g]).reduce((a, b) => a + b, 0)]));
-    const doc = { $comment: "Recorded style violations (groups corners, shadows, hardcode, spacing of xgen check) of hand-written code, per group and file. New ones fail; regenerate with: bun run rules:baseline", package: p.dir, totals, counts };
+    const doc = { $comment: "Recorded style violations (groups corners, shadows, hardcode, spacing of bun run check) of hand-written code, per group and file. New ones fail; regenerate with: bun run rules:baseline", package: p.dir, totals, counts };
     writeFileSync(baselinePath(repo, p.name), JSON.stringify(doc, null, 2) + "\n");
     return `${relative(repo, baselinePath(repo, p.name))}: ${STYLE_GROUPS.map((g) => `${g} ${totals[g]}`).join(", ")}`;
   });

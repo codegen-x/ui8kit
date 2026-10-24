@@ -1,4 +1,4 @@
-// Shared by the check scripts of @ui8kit/xgen-tooling. A script runs with the working directory set to one workspace: an app (apps/<name>),
+// Shared by the check scripts of @codegen-x/tooling. A script runs with the working directory set to one workspace: an app (apps/<name>),
 // a package (packages/<name>) or the repository root itself (only the root scripts/ folder is checked there).
 //   APP      absolute path of the workspace being checked (process.cwd(), or APP_ROOT when set)
 //   REPO     absolute path of the repository root (the folder with the workspaces package.json)
@@ -18,7 +18,7 @@ export const REPO = (() => {
   }
 })();
 const parts = path.relative(REPO, APP).split(path.sep);
-export const KIND = APP === REPO ? "root" : parts[0] === "packages" ? "packages" : parts[0] === "apps" ? "apps" : "xgen";
+export const KIND = APP === REPO ? "root" : parts[0] === "packages" ? "packages" : parts[0] === "apps" ? "apps" : "other";
 // packages/svelte/ui -> svelte-ui
 export const APP_NAME = parts.slice(1).join("-") || parts[0];
 const zones = (() => { try { return JSON.parse(fs.readFileSync(path.join(APP, "package.json"), "utf8")).ui8kit ?? null; } catch { return null; } })();

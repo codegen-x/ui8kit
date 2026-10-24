@@ -39,7 +39,7 @@ import { details } from "@ui8kit/app-shared/data/details";
 
 export const ui = kitUi;
 
-// every map is a central one (runtime/fields, source xgen/runtimes/core/assets/app/fields.ts): one data contract per kind
+// every map is a central one (runtime/fields, source packages/compose-gen/runtimes/core/assets/app/fields.ts): one data contract per kind
 const F = CODEX_FIELDS;
 
 /** replaces the fixtures' one fictional company name with the deck's wordmark, deeply, without touching the source */

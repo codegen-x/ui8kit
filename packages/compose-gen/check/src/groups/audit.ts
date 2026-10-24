@@ -1,4 +1,4 @@
-// The `structure`, `dead` and `duplicates` groups of compose-gen check (ported from `xgen check`): classes of problems an audit
+// The `structure`, `dead` and `duplicates` groups of compose-gen check (ported from `compose-gen check`): classes of problems an audit
 // found, kept out by a rule so they do not come back.
 import { existsSync, readFileSync, statSync } from "node:fs";
 import { dirname, join, relative, resolve } from "node:path";

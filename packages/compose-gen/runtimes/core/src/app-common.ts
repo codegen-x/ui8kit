@@ -91,7 +91,7 @@ function skinFontsFile(): GeneratedFile {
   return skinFontsSource(JSON.parse(readAsset("styles", "skins", "skins.json")) as Record<string, { fonts: string[] }>);
 }
 
-/** skin-fonts.ts of a skins.json registry (also written by `bun run skins build`, xgen/skins/skins.ts) */
+/** skin-fonts.ts of a skins.json registry (also written by `bun run skins build`, packages/skins/skins.ts) */
 export function skinFontsSource(skins: Record<string, { fonts: string[] }>): GeneratedFile {
   const rows = Object.entries(skins).filter(([, v]) => v.fonts.length).map(([k, v]) => `  ${JSON.stringify(k)}: ${JSON.stringify(v.fonts)},`);
   return {
@@ -158,7 +158,7 @@ function registryFile(screens: ScreenSpec[]): GeneratedFile {
 }
 
 /** Cyrillic letters as \u escapes: the one Cyrillic text of the dictionary is a specimen of letters (the font tiles of /skins/),
- *  and the sources and the generated code stay free of Cyrillic text (xgen check, group text) */
+ *  and the sources and the generated code stay free of Cyrillic text (compose-gen check, group text) */
 const escapeCyrillic = (s: string): string => s.replace(/[\u0400-\u04FF]/g, (c) => `\\u${c.charCodeAt(0).toString(16).padStart(4, "0")}`);
 
 /** the shared package: one copy of what every host reads, whatever its runtime */

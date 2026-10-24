@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://xgen.dev/schemas/composed.schema.json",
-  "title": "xgen composed screen: a page that is a list of block uses",
+  "$id": "https://ui8kit.dev/compose-gen/schemas/composed.schema.json",
+  "title": "compose-gen composed screen: a page that is a list of block uses",
   "type": "object",
   "$defs": {
     "value": {

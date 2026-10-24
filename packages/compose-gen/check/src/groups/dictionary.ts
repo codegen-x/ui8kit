@@ -1,4 +1,4 @@
-// The `dictionary` group of compose-gen check (ported from `xgen check`): the keys the screens read equal the keys of
+// The `dictionary` group of compose-gen check (ported from `compose-gen check`): the keys the screens read equal the keys of
 // packages/compose-gen/content/ui/en.json, exactly. A key is read when a view shows it (`ui.a.b` in a screen, a block use or an
 // organism), when a screen menu names it (menu[].titleKey), or when a subtree is handed to an organism prop and the organism reads
 // that leaf. Only a dynamic index (`at(labels, status)`) reads a whole subtree; such subtrees are listed so that the rule stays visible.

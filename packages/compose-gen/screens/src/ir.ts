@@ -26,7 +26,7 @@ export type ViewNode =
   | { each: Value; as: string; key: Value; do: ViewNode[]; /** name of the loop index, readable inside the body */ index?: string }
   /** renders a slot the component receives (render prop with arguments) */
   | { slot: string; args?: Value[] }
-  /** an organism of xgen/specs/organisms; `slots` fill its render-prop slots */
+  /** an organism of packages/compose-gen/specs/organisms; `slots` fill its render-prop slots */
   | { organism: string; props?: Record<string, Value>; on?: Record<string, Handler>; slots?: Record<string, SlotFill> }
   /** where the routed area of a screen goes */
   | { outlet: true }
@@ -86,7 +86,7 @@ export interface OrganismSpec {
   className?: boolean;
   /** the default slot: `children` in both runtimes */
   children?: boolean;
-  /** recipes (CVA-style, xgen/specs/recipes/<file>.variants.json) the view reads with the `recipe` op: local name -> file name without the extension */
+  /** recipes (CVA-style, packages/compose-gen/specs/recipes/<file>.variants.json) the view reads with the `recipe` op: local name -> file name without the extension */
   recipes?: Record<string, string>;
   /** examples: a set of prop values the component is shown with; every value of every recipe key is in one */
   examples?: Array<{ id: string; props: Record<string, string | number | boolean> }>;
@@ -105,7 +105,7 @@ export interface OrganismSpec {
    * part or pattern never opens on Block
    */
   frame?: true;
-  /** `vue` defaults to the Svelte flag (portableTo in xgen-spec) */
+  /** `vue` defaults to the Svelte flag (portableTo in compose-gen/spec) */
   portable: { svelte: true | { portable: false; reason: string }; react: true | { portable: false; reason: string }; vue?: true | { portable: false; reason: string } };
 }
 
@@ -185,7 +185,7 @@ export interface AppSpec {
   locale: "en";
   /** the theme a screen opens in */
   theme: "light" | "dark" | "system";
-  /** extra paths the build must not overwrite (besides xgen.app.json): hand work in src/ when the host needs it */
+  /** extra paths the build must not overwrite (besides compose-gen.app.json): hand work in src/ when the host needs it */
   hand?: string[];
 }
 

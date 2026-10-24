@@ -1,13 +1,13 @@
 {
-  "name": "@ui8kit/xgen-tooling",
+  "name": "@codegen-x/tooling",
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "description": "Gates of the workspace: rules 01, 02, 03 and 06 plus the style groups (rules/, moved out of xgen check; bin xgen-rules), the zones catalog (xgen-zones), pre-push audit (xgen-audit).",
+  "description": "Gates of the workspace: rules 01, 02, 03 and 06 plus the style groups (rules/, moved out of the former xgen check; bin codegen-x-rules), the zones catalog (codegen-x-zones), pre-push audit (codegen-x-audit).",
   "bin": {
-    "xgen-rules": "./bin/rules.mjs",
-    "xgen-audit": "./bin/audit.sh",
-    "xgen-zones": "./bin/zones.mjs"
+    "codegen-x-rules": "./bin/rules.mjs",
+    "codegen-x-audit": "./bin/audit.sh",
+    "codegen-x-zones": "./bin/zones.mjs"
   },
   "exports": {
     "./app": "./src/app.mjs",

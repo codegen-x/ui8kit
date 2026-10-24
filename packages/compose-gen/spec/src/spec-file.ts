@@ -1,9 +1,9 @@
-// The JSON form of a brick spec (xgen/specs/ui/<name>.json): the typed render model plus the runtime-independent contract
+// The JSON form of a brick spec (packages/compose-gen/specs/ui/<name>.json): the typed render model plus the runtime-independent contract
 // (slots, events, a11y, data attributes, tokens, examples, portability). Variants live next to it in <name>.variants.json.
 import type { PartDef } from "./domain/model";
 
 export type PortableFlag = true | { portable: false; reason: string };
-/** the runtimes xgen emits ui packages and hosts for */
+/** the runtimes compose-gen emits ui packages and hosts for */
 export const UI_RUNTIMES = ["svelte", "react", "vue", "solid"] as const;
 export type UiRuntime = (typeof UI_RUNTIMES)[number];
 /** the portability of a spec to a runtime. Vue shares the template model of Svelte (blocks, slots, attributes): a spec

@@ -1,8 +1,8 @@
-// Loads the hand-written inputs of an xgen root and validates them against the JSON Schemas:
-//   specs/organisms|parts|patterns/*.json, specs/presets/*.json, specs/screens/*.json, fixtures/*.json, content/ui/en.json and apps/<app>/xgen.app.json.
+// Loads the hand-written inputs of a compose-gen root (packages/compose-gen) and validates them against the JSON Schemas:
+//   specs/organisms|parts|patterns/*.json, specs/presets/*.json, specs/screens/*.json, fixtures/*.json, content/ui/en.json and apps/<app>/compose-gen.app.json.
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { validate, xgenPaths } from "../../schema/src/index";
+import { validate, composeGenPaths } from "../../schema/src/index";
 import { expandComposed } from "./compose";
 import type { AppSpec, BlockSpec, CollectionFile, TaxonomyFile, ComposedSpec, Dictionary, OrganismSpec, PresetSpec, RecipeFile, ScreenSpec } from "./ir";
 
@@ -39,16 +39,16 @@ function loadDir<T>(dir: string, kind: "organism" | "screen" | "collection" | "v
   return out;
 }
 
-/** `root` is the xgen folder */
+/** `root` is packages/compose-gen */
 export function loadInputs(root: string): Inputs {
   const problems: string[] = [];
-  const dictFile = xgenPaths(root).dictionary;
+  const dictFile = composeGenPaths(root).dictionary;
   const dictionary = { file: dictFile, value: readJson<Dictionary>(dictFile) };
   for (const e of validate("dictionary", dictionary.value)) problems.push(`content/ui/en.json: ${e}`);
-  const organisms = ["organisms", "parts", "patterns"].flatMap((d) => loadDir<OrganismSpec>(xgenPaths(root).specs(d), "organism", problems));
-  const blocks = loadDir<BlockSpec>(xgenPaths(root).specs("blocks"), "block", problems);
+  const organisms = ["organisms", "parts", "patterns"].flatMap((d) => loadDir<OrganismSpec>(composeGenPaths(root).specs(d), "organism", problems));
+  const blocks = loadDir<BlockSpec>(composeGenPaths(root).specs("blocks"), "block", problems);
   const byName = Object.fromEntries(organisms.map((o) => [o.value.name, o.value]));
-  const screens = loadDir<ScreenSpec | ComposedSpec>(xgenPaths(root).specs("screens"), "screen", problems).map((l) => {
+  const screens = loadDir<ScreenSpec | ComposedSpec>(composeGenPaths(root).specs("screens"), "screen", problems).map((l) => {
     if ((l.value as ComposedSpec).kind !== "composed") return l as Loaded<ScreenSpec>;
     const composed = l.value as ComposedSpec;
     const r = expandComposed(composed, blocks.map((b) => b.value), byName);
@@ -59,12 +59,12 @@ export function loadInputs(root: string): Inputs {
     root,
     organisms,
     blocks,
-    recipes: loadDir<RecipeFile>(xgenPaths(root).specs("recipes"), "variants", problems).map((r) => ({ ...r, name: r.file.split("/").pop()!.replace(/\.variants\.json$/, "") })),
-    presets: loadDir<PresetSpec>(xgenPaths(root).specs("presets"), "preset", problems),
+    recipes: loadDir<RecipeFile>(composeGenPaths(root).specs("recipes"), "variants", problems).map((r) => ({ ...r, name: r.file.split("/").pop()!.replace(/\.variants\.json$/, "") })),
+    presets: loadDir<PresetSpec>(composeGenPaths(root).specs("presets"), "preset", problems),
     screens,
-    collections: loadDir<CollectionFile>(xgenPaths(root).fixtures, "collection", problems),
-    taxonomies: existsSync(xgenPaths(root).taxonomies)
-      ? readdirSync(xgenPaths(root).taxonomies).filter((f) => f.endsWith(".json")).sort().map((f) => ({ file: join(xgenPaths(root).taxonomies, f), value: readJson<TaxonomyFile>(join(xgenPaths(root).taxonomies, f)) }))
+    collections: loadDir<CollectionFile>(composeGenPaths(root).fixtures, "collection", problems),
+    taxonomies: existsSync(composeGenPaths(root).taxonomies)
+      ? readdirSync(composeGenPaths(root).taxonomies).filter((f) => f.endsWith(".json")).sort().map((f) => ({ file: join(composeGenPaths(root).taxonomies, f), value: readJson<TaxonomyFile>(join(composeGenPaths(root).taxonomies, f)) }))
       : [],
     dictionary,
     problems,
@@ -77,7 +77,7 @@ export function loadApp(file: string): { app: AppSpec; problems: string[] } {
 }
 
 /** the file that makes apps/<name> a host app */
-export const APP_FILE = "xgen.app.json";
+export const APP_FILE = "compose-gen.app.json";
 /** every app of the workspace: apps/<name>/${APP_FILE} */
 export function findApps(workspace: string): string[] {
   const dir = join(workspace, "apps");

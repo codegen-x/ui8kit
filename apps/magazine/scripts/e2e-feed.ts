@@ -1,7 +1,7 @@
 // Headless flow check of the tuned feed against a running server (default http://localhost:5190, Basic Auth from PREVIEW_USER /
 // PREVIEW_PASS): the taste bar and the sections render, the Filters sheet opens preselected, "Update feed" rerenders the feed and
 // writes the tune into the address, a shared address restores it, Reset clears it, a skin of "same structure" applies; every state
-// passes html-validate (rules/html-validate.json, as the xgen e2e). SHOTS=<dir> saves desktop and mobile screenshots, light and dark.
+// passes html-validate (rules/html-validate.json, as the compose-gen e2e). SHOTS=<dir> saves desktop and mobile screenshots, light and dark.
 //   bun scripts/e2e-feed.ts
 import { chromium, type Page } from "../../../node_modules/playwright-core/index.mjs";
 import { mkdirSync } from "node:fs";
@@ -113,7 +113,7 @@ try {
     for (const theme of ["light", "dark"] as const) {
       if (theme === "dark" && !SHEET_SHOTS) continue;
       const c = await browser.newContext({ httpCredentials: { username: process.env.PREVIEW_USER ?? "admin", password: process.env.PREVIEW_PASS ?? "admin" }, viewport: { width: w, height: h }, deviceScaleFactor: w < 500 ? 2 : 1 });
-      await c.addInitScript((t) => localStorage.setItem("xgen-theme", t), theme);
+      await c.addInitScript((t) => localStorage.setItem("codegen-x-theme", t), theme);
       const x = await open("", c);
       await x.locator("[data-testid=taste-filters]").click();
       await x.waitForSelector("dialog[open][data-testid=filter-sheet]");
@@ -147,7 +147,7 @@ try {
     for (const [name, w, h] of [["desktop", 1440, 900], ["mobile", 390, 844]] as const) {
       for (const theme of ["light", "dark"] as const) {
         const c = await browser.newContext({ httpCredentials: { username: process.env.PREVIEW_USER ?? "admin", password: process.env.PREVIEW_PASS ?? "admin" }, viewport: { width: w, height: h }, colorScheme: theme, deviceScaleFactor: name === "mobile" ? 2 : 1 });
-        await c.addInitScript((t) => localStorage.setItem("xgen-theme", t), theme); // the app's saved theme (packages/shared/app runtime/theme)
+        await c.addInitScript((t) => localStorage.setItem("codegen-x-theme", t), theme); // the app's saved theme (packages/shared/app runtime/theme)
         const x = await open("", c);
         await x.waitForTimeout(4000);
         await x.screenshot({ path: join(SHOTS, `feed-${name}-${theme}.png`) });

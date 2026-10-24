@@ -1,5 +1,5 @@
-// Builder of view structures from primitives. The organisms and screens of xgen/specs are written with these functions
-// (src/authoring) and stored as JSON; `xgen check` fails when the stored JSON differs from what the builder returns.
+// Builder of view structures from primitives. The organisms and screens of packages/compose-gen/specs are written with these functions
+// (src/authoring) and stored as JSON; `compose-gen check` fails when the stored JSON differs from what the builder returns.
 import type { Handler, SlotFill, Value, ViewNode } from "./ir";
 
 export const ref = (path: string): Value => ({ $: path });

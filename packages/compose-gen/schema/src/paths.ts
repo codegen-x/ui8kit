@@ -1,7 +1,7 @@
-// Where things live inside the xgen folder. One place, so no package spells a path of another's data on its own.
+// Where things live inside packages/compose-gen. One place, so no package spells a path of another's data on its own.
 import { join } from "node:path";
 
-export interface XgenPaths {
+export interface ComposeGenPaths {
   root: string;
   /** specs/<kind>: ui, organisms, parts, patterns, blocks, screens, recipes */
   specs: (kind: string) => string;
@@ -14,7 +14,7 @@ export interface XgenPaths {
   docs: string;
 }
 
-export const xgenPaths = (root: string): XgenPaths => ({
+export const composeGenPaths = (root: string): ComposeGenPaths => ({
   root,
   specs: (kind) => join(root, "specs", kind),
   fixtures: join(root, "fixtures"),

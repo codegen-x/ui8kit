@@ -6299,7 +6299,7 @@
     },
     {
       "id": "screen.blocks",
-      "surface": "xgen-screen",
+      "surface": "compose-gen-screen",
       "source": "packages/compose-gen/specs/screens/blocks.json",
       "status": "done",
       "data": [],
@@ -6313,7 +6313,7 @@
     },
     {
       "id": "screen.catalog",
-      "surface": "xgen-screen",
+      "surface": "compose-gen-screen",
       "source": "packages/compose-gen/specs/screens/catalog.json",
       "status": "done",
       "data": [
@@ -7026,7 +7026,7 @@
     },
     {
       "id": "screen.plans",
-      "surface": "xgen-screen",
+      "surface": "compose-gen-screen",
       "source": "packages/compose-gen/specs/screens/plans.json",
       "status": "done",
       "data": [
@@ -7164,7 +7164,7 @@
     },
     {
       "id": "screen.site",
-      "surface": "xgen-screen",
+      "surface": "compose-gen-screen",
       "source": "packages/compose-gen/specs/screens/site.json",
       "status": "done",
       "data": [
@@ -7277,7 +7277,7 @@
     },
     {
       "id": "screen.skins",
-      "surface": "xgen-screen",
+      "surface": "compose-gen-screen",
       "source": "packages/compose-gen/specs/screens/skins.json",
       "status": "done",
       "data": [],
@@ -7291,7 +7291,7 @@
     },
     {
       "id": "screen.theme-account-portal",
-      "surface": "xgen-screen",
+      "surface": "compose-gen-screen",
       "source": "packages/compose-gen/specs/screens/theme-account-portal.json",
       "status": "done",
       "data": [
@@ -7574,7 +7574,7 @@
     },
     {
       "id": "screen.theme-commerce-shop",
-      "surface": "xgen-screen",
+      "surface": "compose-gen-screen",
       "source": "packages/compose-gen/specs/screens/theme-commerce-shop.json",
       "status": "done",
       "data": [
@@ -7933,7 +7933,7 @@
     },
     {
       "id": "screen.theme-content-blog",
-      "surface": "xgen-screen",
+      "surface": "compose-gen-screen",
       "source": "packages/compose-gen/specs/screens/theme-content-blog.json",
       "status": "done",
       "data": [
@@ -8110,7 +8110,7 @@
     },
     {
       "id": "screen.theme-dashboard-console",
-      "surface": "xgen-screen",
+      "surface": "compose-gen-screen",
       "source": "packages/compose-gen/specs/screens/theme-dashboard-console.json",
       "status": "done",
       "data": [
@@ -8372,7 +8372,7 @@
     },
     {
       "id": "screen.theme-marketing-landing",
-      "surface": "xgen-screen",
+      "surface": "compose-gen-screen",
       "source": "packages/compose-gen/specs/screens/theme-marketing-landing.json",
       "status": "done",
       "data": [
@@ -8778,7 +8778,7 @@
     },
     {
       "id": "screen.theme-marketing-pricing",
-      "surface": "xgen-screen",
+      "surface": "compose-gen-screen",
       "source": "packages/compose-gen/specs/screens/theme-marketing-pricing.json",
       "status": "done",
       "data": [
@@ -9007,7 +9007,7 @@
     },
     {
       "id": "screen.theme-marketing-product",
-      "surface": "xgen-screen",
+      "surface": "compose-gen-screen",
       "source": "packages/compose-gen/specs/screens/theme-marketing-product.json",
       "status": "done",
       "data": [
@@ -9234,7 +9234,7 @@
     },
     {
       "id": "screen.theme-onboarding-flow",
-      "surface": "xgen-screen",
+      "surface": "compose-gen-screen",
       "source": "packages/compose-gen/specs/screens/theme-onboarding-flow.json",
       "status": "done",
       "data": [
@@ -9394,7 +9394,7 @@
     },
     {
       "id": "screen.theme-promo-campaign",
-      "surface": "xgen-screen",
+      "surface": "compose-gen-screen",
       "source": "packages/compose-gen/specs/screens/theme-promo-campaign.json",
       "status": "done",
       "data": [
@@ -9587,7 +9587,7 @@
     },
     {
       "id": "screen.theme-support-center",
-      "surface": "xgen-screen",
+      "surface": "compose-gen-screen",
       "source": "packages/compose-gen/specs/screens/theme-support-center.json",
       "status": "done",
       "data": [

@@ -1,4 +1,4 @@
-// The `readability` group of compose-gen check (ported from `xgen check`): generated organisms and host screens stay short enough
+// The `readability` group of compose-gen check (ported from `compose-gen check`): generated organisms and host screens stay short enough
 // to read in one sitting. Read from disk (kept equal to the build by `bun run compose:check`): packages/kit-compose/<runtime>/src/
 // {blocks,components} and apps/host-<runtime>/gen/screens. READABILITY_ALLOW is a ratchet: a file may not get worse, and once it
 // gets better its entry must be lowered (or removed).

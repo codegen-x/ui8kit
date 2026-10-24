@@ -5,7 +5,7 @@ import { MANIFEST_PATH, MONEY_FIELDS, buildManifest, loadFixtures, manifestText 
 const cols = loadFixtures();
 const RFC3339 = /^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[+-]\d{2}:\d{2})$/;
 
-test("the Codex manifest is generated from the fixtures (bun xgen/schema/src/codex.ts)", () => {
+test("the Codex manifest is generated from the fixtures (bun packages/compose-gen/schema/src/codex.ts)", () => {
   expect(readFileSync(MANIFEST_PATH, "utf8")).toBe(manifestText(buildManifest(cols)));
 });
 

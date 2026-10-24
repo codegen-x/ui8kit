@@ -1,4 +1,4 @@
-// compose-gen check: the stored specs equal the builder (screens/src/authoring), and the groups ported from the former `xgen check`
+// compose-gen check: the stored specs equal the builder (screens/src/authoring), and the groups ported from the former `compose-gen check`
 // (schema, registry, themes, routes, dictionary, text, dead, duplicates, readability, structure, versions) hold.
 //   bun packages/compose-gen/check.ts            run every group, exit 1 on a problem
 //   bun packages/compose-gen/check.ts --write    rewrite the stored specs and docs/vibeui-coverage.md from the builder first

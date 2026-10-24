@@ -1,6 +1,6 @@
 // The `rules` group (moved out of xgen check):
 //   bun packages/tooling/rules/rules.ts                 count the findings per package (baselines ignored); --list prints every finding
-//   bun packages/tooling/rules/rules.ts --gate [dir]    the gate of `xgen check` for every package, or for one (apps/discovery); exit 1 on a new finding
+//   bun packages/tooling/rules/rules.ts --gate [dir]    the gate of `bun run check` for every package, or for one (apps/discovery); exit 1 on a new finding
 //   bun packages/tooling/rules/rules.ts --write         write rules/zones.json and rules/baselines/<package>.json (root script: bun run rules:baseline)
 import { join } from "node:path";
 import { STYLE_GROUPS, styleProblems, writeStyleBaselines } from "./src/style-zones";

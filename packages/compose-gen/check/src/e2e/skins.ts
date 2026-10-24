@@ -90,7 +90,7 @@ export async function skinsScenario(page: Page, base: string, data: SkinsData, s
   await page.getByTestId("reset-skins").click();
   expect("the skin reset gives the build skin back", (await skin()) === "default", await skin());
   expect("and the look of the start", (await rootVar("--font-sans")) === own.font && (await rootVar("--radius")) === own.radius);
-  const stored = await page.evaluate(() => ["xgen-skin", "xgen-font", "xgen-radius"].map((k) => localStorage.getItem(k)));
+  const stored = await page.evaluate(() => ["codegen-x-skin", "codegen-x-font", "codegen-x-radius"].map((k) => localStorage.getItem(k)));
   expect("nothing is stored after the resets", stored.every((v) => v === null), stored);
 
   // 6. at 390 px the page does not scroll sideways

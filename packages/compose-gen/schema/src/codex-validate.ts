@@ -1,5 +1,5 @@
 // Validates every fixture entry with the @ui8kit/contract v0.4 validator (npm package @ui8kit/contract, a devDependency of
-// xgen/schema) against xgen/schema/codex/manifest.json, and the manifest itself against
+// packages/compose-gen/schema) against packages/compose-gen/schema/codex/manifest.json, and the manifest itself against
 // https://schema.buildy.tw/manifest.schema.json (shipped by the package as @ui8kit/contract/schemas/manifest.schema.json).
 //   bun run codex:validate
 import { readFileSync } from "node:fs";
@@ -22,7 +22,7 @@ const badBundles: string[] = [];
 for (const b of bundles) if (!validBundle(b as unknown)) badBundles.push(`${b.definition.id}: ${JSON.stringify(validBundle.errors)}`);
 const terms = bundles.flatMap((b) => b.terms.map((data, i) => ({ file: `taxonomies/${b.definition.id}.json#${i}`, data })));
 // the core Menu records (one per location and locale) built from the menu_item entries: label = title, url = "/" + slug, the
-// entry as the target, nesting by parent_id and order (xgen/docs/block-data.md, menus)
+// entry as the target, nesting by parent_id and order (docs/xgen-legacy/block-data.md, menus)
 type Item = { id: string; locale: string; title: string; slug: string; parent_id?: string; order?: number; metadata?: { location?: { value?: string } } };
 const items = loadFixtures().flatMap((c) => c.entries as unknown as Item[]).filter((e) => (e as { kind?: string }).kind === "menu_item");
 const menuMap = new Map<string, { id: string; location: string; locale: string; items: object[] }>();

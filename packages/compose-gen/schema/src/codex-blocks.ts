@@ -1,17 +1,17 @@
-// The block data manifest (packages/compose-gen/schema/codex/blocks.json), generated from the sources: every kit block (xgen/specs/blocks,
+// The block data manifest (packages/compose-gen/schema/codex/blocks.json), generated from the sources: every kit block (packages/compose-gen/specs/blocks,
 // its data bindings, settings, dictionary labels and empty state read from the spec, its organism and the dictionary),
 // every screen spec (the blocks it composes), every magazine template and part (the kit blocks it imports, the data it
 // reads) and every taste screen. By hand, kept from the existing file: `status` (todo/done), `required` / `optional` of a
 // binding, `note` and `emptyMode`. A new block starts as todo; a moved source is followed.
 //   bun run codex:blocks            writes the file
-//   xgen check (group codex)        fails when the file is behind the sources (drift)
+//   compose-gen check (group codex)  fails when the file is behind the sources (drift)
 import { existsSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, relative } from "node:path";
 import { CODEX_FIELDS } from "../../runtimes/core/assets/app/fields";
-import { xgenPaths } from "./paths";
+import { composeGenPaths } from "./paths";
 
 export const BLOCKS_PATH = join(import.meta.dir, "..", "codex", "blocks.json");
-const XGEN = join(import.meta.dir, "..", "..");
+const COMPOSE_GEN = join(import.meta.dir, "..", "..");
 
 type Json = null | boolean | number | string | Json[] | { [k: string]: Json };
 type Obj = { [k: string]: Json };
@@ -24,11 +24,11 @@ export interface BlockEntry {
 }
 export interface BlocksDoc { $schema: string; version: string; contract: string; fieldMaps: string; blocks: BlockEntry[] }
 
-/** where the sources are: the xgen folder, the magazine templates and the taste screens */
-export interface BlockSources { xgen: string; workspace: string; magazine: string; taste: string }
-export const blockSources = (xgen = XGEN): BlockSources => {
-  const workspace = join(xgen, "..", "..");
-  return { xgen, workspace, magazine: join(workspace, "apps", "magazine", "src", "templates"), taste: join(workspace, "packages", "taste-screens", "src", "screens") };
+/** where the sources are: packages/compose-gen, the magazine templates and the taste screens */
+export interface BlockSources { composeGen: string; workspace: string; magazine: string; taste: string }
+export const blockSources = (composeGen = COMPOSE_GEN): BlockSources => {
+  const workspace = join(composeGen, "..", "..");
+  return { composeGen, workspace, magazine: join(workspace, "apps", "magazine", "src", "templates"), taste: join(workspace, "packages", "taste-screens", "src", "screens") };
 };
 
 const readJson = (f: string): Obj => JSON.parse(readFileSync(f, "utf8")) as Obj;
@@ -52,7 +52,7 @@ function refsOf(v: Json | undefined, path: string, one = false, acc: { path: str
 function organisms(src: BlockSources) {
   const byName = new Map<string, Obj>();
   const records = new Map<string, string[]>();
-  for (const dir of ["organisms", "parts", "patterns"]) for (const f of jsonFiles(xgenPaths(src.xgen).specs(dir))) {
+  for (const dir of ["organisms", "parts", "patterns"]) for (const f of jsonFiles(composeGenPaths(src.composeGen).specs(dir))) {
     const o = readJson(f);
     byName.set(o.name as string, o);
     for (const [k, fs] of Object.entries((o.records ?? {}) as Record<string, { name: string }[]>)) records.set(k, fs.map((x) => x.name));
@@ -142,7 +142,7 @@ function screen(file: string, src: BlockSources, dict: Obj, kitBySpec: Map<strin
     if (!data.some((x) => x.collection === d.collection && x.map === d.map)) data.push({ ...d, prop: `${kitBySpec.get(u)!.id}.${d.prop}` });
   // the route table, the URL state and the frame switches are settings of the app, not Codex data
   const settings = ["routes", "state", "nav", "menu", "frame", "chunks", "requireH1", "nameLandmarks"].filter((k) => s[k] !== undefined);
-  return { id: s.id as string, surface: "xgen-screen", source: rel(src, file), status: "todo", data, settings, labels, emptyState: false, uses: [...uses].sort(),
+  return { id: s.id as string, surface: "compose-gen-screen", source: rel(src, file), status: "todo", data, settings, labels, emptyState: false, uses: [...uses].sort(),
     ...(collections.length ? { collections: [...new Set(collections)].sort() } : {}) };
 }
 
@@ -157,7 +157,7 @@ function templateData(src: BlockSources): Map<string, { record: string; collecti
 }
 /** a binding of a template: the kind from the fixtures, required = the map's fields every entry has */
 function templateBinding(key: string, d: { record: string; collection: string; map: string }, src: BlockSources): Binding {
-  const file = join(xgenPaths(src.xgen).fixtures, `${d.collection}.json`);
+  const file = join(composeGenPaths(src.composeGen).fixtures, `${d.collection}.json`);
   const entries = (existsSync(file) ? ((readJson(file).entries ?? []) as Obj[]) : []);
   const map = (CODEX_FIELDS as Record<string, Record<string, string>>)[d.map] ?? {};
   const paths = [...new Set(Object.values(map).map((v) => v.split("|")[0]!))];
@@ -188,7 +188,7 @@ function template(file: string, src: BlockSources, kit: Set<string>, dict: Obj, 
     data, settings: [...new Set(settings)], labels, emptyState: false, uses, collections };
 }
 
-/** the deck parts of a taste screen: deck key -> collection, kind, record type and central map (xgen/runtimes/core/src/decks.ts) */
+/** the deck parts of a taste screen: deck key -> collection, kind, record type and central map (packages/compose-gen/runtimes/core/src/decks.ts) */
 const DECK_PARTS: Record<string, [string, string, string, string]> = {
   stats: ["deckstats", "deck_stat", "DeckStat", "deckStat"], items: ["deckitems", "deck_item", "DeckItem", "deckItem"],
   plans: ["deckplans", "deck_plan", "DeckPlan", "deckPlan"], quotes: ["deckquotes", "deck_quote", "DeckQuote", "deckQuote"], faq: ["deckfaq", "deck_faq", "DeckFaq", "deckFaq"],
@@ -234,7 +234,7 @@ function keep(b: BlockEntry, old: BlockEntry | undefined): BlockEntry {
 }
 
 export function buildBlocks(src = blockSources(), previous: BlocksDoc | undefined = existsSync(BLOCKS_PATH) ? (JSON.parse(readFileSync(BLOCKS_PATH, "utf8")) as BlocksDoc) : undefined): BlocksDoc {
-  const paths = xgenPaths(src.xgen);
+  const paths = composeGenPaths(src.composeGen);
   const orgs = organisms(src);
   const dict = readJson(paths.dictionary);
   const kitFiles = jsonFiles(paths.specs("blocks"));

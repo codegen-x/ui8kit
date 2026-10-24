@@ -5,6 +5,6 @@ import { bootScreen, screenKeyOf } from "@ui8kit/app-shared/screens";
 import { App } from "../gen/App";
 
 const screen = screenKeyOf(location);
-const title = "xgen screens (Solid)";
+const title = "compose-gen screens (Solid)";
 bootScreen(screen, "light", title);
 render(() => <App screen={screen} title={title} />, document.getElementById("app")!);

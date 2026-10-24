@@ -1,6 +1,6 @@
 // The global theme of the magazine (the Theme sheet, src/theme): one skin, font, default radius and per-element tokens for the whole
 // site, from one place, on top of the defaults. Saved on this device (`magazine:v1:theme`); the light/dark mode is the app's own
-// (`xgen-theme`, @ui8kit/app-shared runtime/theme).
+// (`codegen-x-theme`, @ui8kit/app-shared runtime/theme).
 //
 // Precedence, from strongest:
 //   1. a card's own design: every feed card and the style page show a style (screen + skin + font + radius, and on the style page its

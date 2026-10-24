@@ -1,4 +1,4 @@
-// JSON Schemas of xgen and a validator over them. Kinds: spec, variants, organism, screen, app, collection, dictionary, preset.
+// JSON Schemas of compose-gen and a validator over them. Kinds: spec, variants, organism, screen, app, collection, dictionary, preset.
 import Ajv2020 from "ajv/dist/2020.js";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";

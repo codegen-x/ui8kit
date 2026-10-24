@@ -106,11 +106,11 @@ The list is `RAW_ALLOWED` in `packages/ui-gates/src/source.mjs`; the source gate
 ## Organisms on kit-compose (JS runtimes)
 
 `packages/kit-compose/src/organisms.ts` runs the xgen organism emitters of Svelte, React, Vue and Solid over every organism spec
-(`xgen/specs/{organisms,parts,patterns}`, 224 portable specs) with the bricks resolved to the kit-compose compositions
+(`packages/compose-gen/specs/{organisms,parts,patterns}`, 224 portable specs) with the bricks resolved to the kit-compose compositions
 (`../compose`, the API of the former bricks) instead of `packages/<runtime>/ui`. Output per runtime: `src/{blocks,components}`,
 `presets/`, `utils/` (expression helpers), `icons/` (LucideIcon by name: the glyph `svg` inside the Icon primitive, the kit-compose LucideIcon frame; source `src/assets/<runtime>/`), `organisms.ts`.
 
-Gate (`test/organisms.test.tsx`): files up to date; every gallery block case of `xgen/specs/blocks` (the case table of the xgen
+Gate (`test/organisms.test.tsx`): files up to date; every gallery block case of `packages/compose-gen/specs/blocks` (the case table of the xgen
 template gates) renders the same DOM in React (reference), Svelte, Vue and Solid (SSR); html-validate + axe on every case;
 source gate on the organism sources. Composition changes it needed: Grid `cols` (recipe key), CardTitle `as`, typed td/th
 attributes (scope, colSpan, ...), bare SelectOption/OptGroup in the JS runtimes.

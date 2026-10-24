@@ -1,4 +1,4 @@
-// `xgen check`, group `rules`: rules 01, 02, 03 and 06 (.cursor/rules) on the composition zone of every package that declares zones.
+// `bun run check`, group `rules`: rules 01, 02, 03 and 06 (.cursor/rules) on the composition zone of every package that declares zones.
 // Zones come from the "ui8kit" field of each package.json (zones.ts); the kit zone is never scanned. An adapter per runtime turns a file
 // into the common tree (ir.ts) and the shared detectors (detectors.ts) report on it. Existing violations are counted per file in
 // rules/baselines/<package>.json: more fails, fewer asks for `bun run rules:baseline`. rules/fixtures/<runtime> proves every detector.
@@ -105,7 +105,7 @@ export function writeBaselines(repo: string): string[] {
   writeFileSync(join(repo, ZONES_FILE), zonesText(repo));
   return scanRepo(repo).map((rep) => {
     const counts = countsOf(rep);
-    const doc = { $comment: "Recorded violations of the rules group (xgen check) in the composition zone, per detector and file. New ones fail; regenerate with: bun run rules:baseline", package: rep.zone.dir, totals: Object.fromEntries(DETECTORS.map((d) => [d, total(counts[d]!)])), counts };
+    const doc = { $comment: "Recorded violations of the rules group (bun run check) in the composition zone, per detector and file. New ones fail; regenerate with: bun run rules:baseline", package: rep.zone.dir, totals: Object.fromEntries(DETECTORS.map((d) => [d, total(counts[d]!)])), counts };
     writeFileSync(join(repo, baselineFile(rep.zone)), JSON.stringify(doc, null, 2) + "\n");
     return `${baselineFile(rep.zone)}: ${DETECTORS.map((d) => `${d} ${doc.totals[d]}`).join(", ")}`;
   });

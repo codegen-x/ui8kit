@@ -1,4 +1,4 @@
-/* Skin "t3-chat" (T3 Chat): the tweakcn preset "t3-chat" (Apache-2.0, see NOTICE.md), written by xgen/runtimes/core/tools/tweakcn-skins.ts.
+/* Skin "t3-chat" (T3 Chat): the tweakcn preset "t3-chat" (Apache-2.0, see NOTICE.md), written by packages/skins/tools/tweakcn-skins.ts.
    On when data-skin="t3-chat" is on <html> (the page) or on any element (a tile of /skins/). Values as tweakcn exports them;
    the spacing scale stays the kit's 0.25rem. Fonts: system. */
 [data-skin="t3-chat"] {

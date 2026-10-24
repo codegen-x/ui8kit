@@ -3,7 +3,7 @@
 //   kit          primitives and utils: raw host markup is allowed, the composition rules never scan it
 //   composition  blocks, composite components, app screens: rules 01, 02, 03 and 06 apply
 //   blockRoot    the part of the composition whose files must open on Block (blocks and screens)
-//   generated    true when xgen writes the files: never hand-edit them, fix the spec or the generator
+//   generated    true when compose-gen writes the files: never hand-edit them, fix the spec or the generator
 // readZones(repo) assembles the catalog live; rules/zones.json is the committed copy (`bun packages/tooling/bin/zones.mjs --write`).
 import fs from "node:fs";
 import path from "node:path";

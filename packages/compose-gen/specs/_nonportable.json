@@ -1,5 +1,5 @@
 {
-  "$comment": "What does not carry over between Svelte, React and Vue, and the explicit contract that replaces it. `xgen check` fails when a marker shows up in generated code of its runtime.",
+  "$comment": "What does not carry over between Svelte, React and Vue, and the explicit contract that replaces it. `compose-gen check` fails when a marker shows up in generated code of its runtime.",
   "features": [
     {
       "id": "svelte.context",
@@ -28,7 +28,7 @@
       "markers": [
         "{@attach"
       ],
-      "replacement": "Not used. Behaviour lives in portable TypeScript (xgen/runtimes/core/assets/app) and in event props."
+      "replacement": "Not used. Behaviour lives in portable TypeScript (packages/compose-gen/runtimes/core/assets/app) and in event props."
     },
     {
       "id": "react.context",

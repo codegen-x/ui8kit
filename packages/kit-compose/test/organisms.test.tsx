@@ -1,4 +1,4 @@
-// Organisms on kit-compose (src/organisms.ts): generated files up to date; every gallery block case (xgen/specs/blocks, the
+// Organisms on kit-compose (src/organisms.ts): generated files up to date; every gallery block case (packages/compose-gen/specs/blocks, the
 // case table of the xgen template gates) rendered by React (the reference), Svelte, Vue and Solid on the server with the same
 // DOM; html-validate + axe on the React output; no raw HTML in the generated organism sources.
 import { test, expect } from "bun:test";

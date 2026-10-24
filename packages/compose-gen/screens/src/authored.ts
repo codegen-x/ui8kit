@@ -1,6 +1,6 @@
-// The organisms and screens that are written with the builder (src/authoring) and stored as JSON in xgen/specs.
-// `xgen check` compares the stored JSON with this output; edit the builder, then run `xgen build`.
-import { xgenPaths } from "../../schema/src/index";
+// The organisms and screens that are written with the builder (src/authoring) and stored as JSON in packages/compose-gen/specs.
+// `compose-gen check` compares the stored JSON with this output; edit the builder, then run `bun run build`.
+import { composeGenPaths } from "../../schema/src/index";
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { plansScreen } from "./authoring/screens/plans-screen";
@@ -31,9 +31,9 @@ export const stringify = (v: unknown): string => JSON.stringify(v, null, 2) + "\
 export function writeSpecs(root: string): string[] {
   const written: string[] = [];
   for (const [dir, list] of authoredDirs()) {
-    mkdirSync(xgenPaths(root).specs(dir), { recursive: true });
+    mkdirSync(composeGenPaths(root).specs(dir), { recursive: true });
     for (const spec of list) {
-      const file = join(xgenPaths(root).specs(dir), `${spec.id.split(".")[1]}.json`);
+      const file = join(composeGenPaths(root).specs(dir), `${spec.id.split(".")[1]}.json`);
       writeFileSync(file, stringify(spec));
       written.push(file);
     }

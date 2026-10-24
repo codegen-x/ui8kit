@@ -1,4 +1,4 @@
-// compose-gen check: the groups ported from the former `xgen check`. Each returns a list of problems; a group passes when it is empty.
+// compose-gen check: the groups ported from the former `compose-gen check`. Each returns a list of problems; a group passes when it is empty.
 import { authoredDirs, stringify } from "../../../screens/src/authored";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";

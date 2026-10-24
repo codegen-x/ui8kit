@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://xgen.dev/schemas/spec.schema.json",
-  "title": "xgen brick spec",
+  "$id": "https://ui8kit.dev/compose-gen/schemas/spec.schema.json",
+  "title": "compose-gen brick spec",
   "type": "object",
   "properties": {
     "$schema": {

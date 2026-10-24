@@ -8,7 +8,7 @@ export const terminal = [
     "status": "published",
     "visibility": "public",
     "slug": "l1",
-    "title": "bun add @ui8kit/xgen",
+    "title": "bun install",
     "metadata": {
       "line_kind": {
         "value": "command"
@@ -26,7 +26,7 @@ export const terminal = [
     "status": "published",
     "visibility": "public",
     "slug": "l2",
-    "title": "xgen build",
+    "title": "bun run build",
     "metadata": {
       "line_kind": {
         "value": "command"
@@ -62,7 +62,7 @@ export const terminal = [
     "status": "published",
     "visibility": "public",
     "slug": "l4",
-    "title": "xgen check",
+    "title": "bun run check",
     "metadata": {
       "line_kind": {
         "value": "command"

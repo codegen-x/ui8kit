@@ -4,7 +4,7 @@
   "name": "host-react",
   "runtime": "react",
   "screens": ["*"],
-  "title": "xgen screens (React)",
+  "title": "compose-gen screens (React)",
   "port": 5181,
   "locale": "en",
   "theme": "light"

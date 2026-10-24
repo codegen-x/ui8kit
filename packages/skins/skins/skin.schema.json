@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://github.com/codegen-x/ui8kit/packages/skins/skins/skin.schema.json",
   "title": "ui8kit skin",
-  "description": "One skin: the shadcn tokens of the light and dark themes under data-skin=\"<id>\". `bun run skins build` writes xgen/runtimes/core/assets/styles/skins/<id>.css from it. Values are stored verbatim (never recomputed).",
+  "description": "One skin: the shadcn tokens of the light and dark themes under data-skin=\"<id>\". `bun run skins build` writes packages/compose-gen/runtimes/core/assets/styles/skins/<id>.css from it. Values are stored verbatim (never recomputed).",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -65,7 +65,7 @@
         "type": "string",
         "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
       },
-      "description": "ids of xgen/fonts/<id>.json, the Google fonts loaded while the skin is on"
+      "description": "ids of packages/skins/fonts/<id>.json, the Google fonts loaded while the skin is on"
     },
     "comment": {
       "type": "string",

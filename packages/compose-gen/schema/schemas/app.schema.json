@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://xgen.dev/schemas/app.schema.json",
-  "title": "xgen app",
+  "$id": "https://ui8kit.dev/compose-gen/schemas/app.schema.json",
+  "title": "compose-gen app",
   "description": "The one hand-written file of a host app: it serves screens by name (/<screen>/#/<route>); everything else in it is generated.",
   "type": "object",
   "properties": {

@@ -5,6 +5,6 @@ import { bootScreen, screenKeyOf } from "@ui8kit/app-shared/screens";
 import App from "../gen/App.svelte";
 
 const screen = screenKeyOf(location);
-const title = "xgen screens (Svelte)";
+const title = "compose-gen screens (Svelte)";
 bootScreen(screen, "light", title);
 mount(App, { target: document.getElementById("app")!, props: { screen, title } });
