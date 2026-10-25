@@ -9,5 +9,5 @@ export type ButtonProps = Omit<ComponentProps<typeof Prim>, "tag" | "class" | "c
 /** Button: Button + recipe button. */
 export function Button(props: ButtonProps) {
   const [local, rest] = splitProps(props, ["variant", "size", "layout", "class", "className"]);
-  return <Prim class={cn(rc("button", { "variant": local["variant"], "size": local["size"], "layout": local["layout"] }), local.class ?? local.className)} {...rest} />;
+  return <Prim class={cn(rc("button", { "variant": local["variant"], "size": local["size"], "layout": local["layout"] }), local.class ?? local.className)} data-slot="button" {...rest} />;
 }

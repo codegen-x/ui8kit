@@ -10,4 +10,4 @@
   const cls = $derived(cn(rc("card", { "variant": v_variant }), className));
 </script>
 
-<Prim tag={"div" as never} class={cls} {...rest}>{@render children?.()}</Prim>
+<Prim tag={"div" as never} class={cls} data-slot="card" {...rest}>{@render children?.()}</Prim>

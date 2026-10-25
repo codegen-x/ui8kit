@@ -15,6 +15,7 @@ func badgeInner(p BadgeProps) text.TextProps {
 	in := p.TextProps
 	in.Class = Join(Rc("badge", map[string]string{"size": p.Size, "variant": p.Variant}), p.TextProps.Class)
 	in.Tag = "span"
+	in.Attrs = WithAttrs(in.Attrs, map[string]string{"data-slot": "badge"})
 	return in
 }
 

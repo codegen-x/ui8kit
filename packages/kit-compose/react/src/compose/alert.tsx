@@ -8,5 +8,5 @@ export type AlertProps = Omit<ComponentProps<typeof Prim>, "tag" | "variant"> & 
 
 /** Alert: Box <div> + recipe alert. */
 export function Alert({ "variant": v_variant, className, ...rest }: AlertProps) {
-  return <Prim tag={"div" as never} className={cn(rc("alert", { "variant": v_variant }), className)} role="alert" {...rest} />;
+  return <Prim tag={"div" as never} className={cn(rc("alert", { "variant": v_variant }), className)} role="alert" data-slot="alert" {...rest} />;
 }

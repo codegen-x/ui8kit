@@ -10,4 +10,4 @@
   const cls = $derived(cn(rc("badge", { "size": v_size, "variant": v_variant }), className));
 </script>
 
-<Prim tag={"span" as never} class={cls} {...rest}>{@render children?.()}</Prim>
+<Prim tag={"span" as never} class={cls} data-slot="badge" {...rest}>{@render children?.()}</Prim>

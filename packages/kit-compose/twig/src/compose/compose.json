@@ -1105,7 +1105,8 @@
       "tagFrom": null,
       "fixedProps": {},
       "fixedAttrs": {
-        "role": "alert"
+        "role": "alert",
+        "data-slot": "alert"
       }
     },
     "Card": {
@@ -1118,7 +1119,9 @@
       "tag": "div",
       "tagFrom": null,
       "fixedProps": {},
-      "fixedAttrs": {}
+      "fixedAttrs": {
+        "data-slot": "card"
+      }
     },
     "CardHeader": {
       "primitive": "Box",
@@ -1372,7 +1375,9 @@
       "tag": "span",
       "tagFrom": null,
       "fixedProps": {},
-      "fixedAttrs": {}
+      "fixedAttrs": {
+        "data-slot": "badge"
+      }
     },
     "IconBadge": {
       "primitive": "Text",
@@ -1422,7 +1427,9 @@
       "tag": null,
       "tagFrom": null,
       "fixedProps": {},
-      "fixedAttrs": {}
+      "fixedAttrs": {
+        "data-slot": "button"
+      }
     },
     "ButtonPlain": {
       "primitive": "Button",

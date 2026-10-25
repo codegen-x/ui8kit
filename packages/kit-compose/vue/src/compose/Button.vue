@@ -18,5 +18,5 @@ const tagValue = computed(() => "");
 </script>
 
 <template>
-  <Prim :class="cls" v-bind="rest"><slot /></Prim>
+  <Prim :class="cls" data-slot="button" v-bind="rest"><slot /></Prim>
 </template>

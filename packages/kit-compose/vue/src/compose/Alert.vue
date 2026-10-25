@@ -18,5 +18,5 @@ const tagValue = computed(() => "div");
 </script>
 
 <template>
-  <Prim :tag="tagValue as never" :class="cls" role="alert" v-bind="rest"><slot /></Prim>
+  <Prim :tag="tagValue as never" :class="cls" role="alert" data-slot="alert" v-bind="rest"><slot /></Prim>
 </template>

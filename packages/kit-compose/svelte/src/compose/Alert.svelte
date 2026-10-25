@@ -10,4 +10,4 @@
   const cls = $derived(cn(rc("alert", { "variant": v_variant }), className));
 </script>
 
-<Prim tag={"div" as never} class={cls} role="alert" {...rest}>{@render children?.()}</Prim>
+<Prim tag={"div" as never} class={cls} role="alert" data-slot="alert" {...rest}>{@render children?.()}</Prim>

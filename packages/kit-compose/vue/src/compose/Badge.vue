@@ -18,5 +18,5 @@ const tagValue = computed(() => "span");
 </script>
 
 <template>
-  <Prim :tag="tagValue as never" :class="cls" v-bind="rest"><slot /></Prim>
+  <Prim :tag="tagValue as never" :class="cls" data-slot="badge" v-bind="rest"><slot /></Prim>
 </template>

@@ -10,4 +10,4 @@
   const cls = $derived(cn(rc("button", { "variant": v_variant, "size": v_size, "layout": v_layout }), className));
 </script>
 
-<Prim class={cls} {...rest}>{@render children?.()}</Prim>
+<Prim class={cls} data-slot="button" {...rest}>{@render children?.()}</Prim>

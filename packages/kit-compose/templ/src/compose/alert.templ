@@ -14,7 +14,7 @@ func alertInner(p AlertProps) box.BoxProps {
 	in := p.BoxProps
 	in.Class = Join(Rc("alert", map[string]string{"variant": p.Variant}), p.BoxProps.Class)
 	in.Tag = "div"
-	in.Attrs = WithAttrs(in.Attrs, map[string]string{"role": "alert"})
+	in.Attrs = WithAttrs(in.Attrs, map[string]string{"role": "alert", "data-slot": "alert"})
 	return in
 }
 

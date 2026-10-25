@@ -9,5 +9,5 @@ export type BadgeProps = Omit<ComponentProps<typeof Prim>, "tag" | "class" | "cl
 /** Badge: Text <span> + recipe badge. */
 export function Badge(props: BadgeProps) {
   const [local, rest] = splitProps(props, ["size", "variant", "class", "className"]);
-  return <Prim tag={"span" as never} class={cn(rc("badge", { "size": local["size"], "variant": local["variant"] }), local.class ?? local.className)} {...rest} />;
+  return <Prim tag={"span" as never} class={cn(rc("badge", { "size": local["size"], "variant": local["variant"] }), local.class ?? local.className)} data-slot="badge" {...rest} />;
 }

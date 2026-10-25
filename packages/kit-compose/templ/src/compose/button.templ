@@ -15,6 +15,7 @@ type ButtonProps struct {
 func buttonInner(p ButtonProps) button.ButtonProps {
 	in := p.ButtonProps
 	in.Class = Join(Rc("button", map[string]string{"variant": p.Variant, "size": p.Size, "layout": p.Layout}), p.ButtonProps.Class)
+	in.Attrs = WithAttrs(in.Attrs, map[string]string{"data-slot": "button"})
 	return in
 }
 

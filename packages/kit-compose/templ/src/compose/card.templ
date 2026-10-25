@@ -14,6 +14,7 @@ func cardInner(p CardProps) box.BoxProps {
 	in := p.BoxProps
 	in.Class = Join(Rc("card", map[string]string{"variant": p.Variant}), p.BoxProps.Class)
 	in.Tag = "div"
+	in.Attrs = WithAttrs(in.Attrs, map[string]string{"data-slot": "card"})
 	return in
 }
 

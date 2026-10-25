@@ -9,5 +9,5 @@ export type AlertProps = Omit<ComponentProps<typeof Prim>, "tag" | "class" | "cl
 /** Alert: Box <div> + recipe alert. */
 export function Alert(props: AlertProps) {
   const [local, rest] = splitProps(props, ["variant", "class", "className"]);
-  return <Prim tag={"div" as never} class={cn(rc("alert", { "variant": local["variant"] }), local.class ?? local.className)} role="alert" {...rest} />;
+  return <Prim tag={"div" as never} class={cn(rc("alert", { "variant": local["variant"] }), local.class ?? local.className)} role="alert" data-slot="alert" {...rest} />;
 }

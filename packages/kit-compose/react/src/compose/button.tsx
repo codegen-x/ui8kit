@@ -8,5 +8,5 @@ export type ButtonProps = Omit<ComponentProps<typeof Prim>, "tag" | "variant" | 
 
 /** Button: Button + recipe button. */
 export function Button({ "variant": v_variant, "size": v_size, "layout": v_layout, className, ...rest }: ButtonProps) {
-  return <Prim className={cn(rc("button", { "variant": v_variant, "size": v_size, "layout": v_layout }), className)} {...rest} />;
+  return <Prim className={cn(rc("button", { "variant": v_variant, "size": v_size, "layout": v_layout }), className)} data-slot="button" {...rest} />;
 }
