@@ -2,7 +2,7 @@
 // A page is a lead block (the one with the h1), a list of blocks `block.variant`, and the words of its head. The head texts
 // are written to the dictionary under `pages.<app>.<page>` by screens/tools/author-theme-texts.ts; nothing else is written by hand.
 import { ref } from "../../build";
-import type { BlockUse, ComposedSpec } from "../../ir";
+import { PORTABLE_SCREEN, type BlockUse, type ComposedSpec } from "../../ir";
 import { t } from "../gallery/block-kit";
 
 /** [title, text, call to action] */
@@ -198,5 +198,5 @@ export const themeComposed: ComposedSpec[] = themeApps.map((app) => ({
   nameLandmarks: true,
   nav: true,
   menu: themeRoutes(app),
-  portable: { svelte: true, react: true },
+  portable: PORTABLE_SCREEN,
 }));

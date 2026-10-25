@@ -2,7 +2,7 @@
 // Row 1: the default theme and 14 tweakcn skins (CSS in packages/compose-gen/runtimes/core/assets/styles/skins; sources in skins/NOTICE.md).
 // Row 2: ten Google fonts whose subsets hold both latin and cyrillic (checked against the Google Fonts css2 API).
 // Row 3: five corner radii. The names and notes go to the dictionary under `skins` (screens/tools/author-block-texts.ts writes them).
-import type { ComposedSpec, SkinsBoard } from "../../ir";
+import { PORTABLE_SCREEN, type ComposedSpec, type SkinsBoard } from "../../ir";
 import { dictKey } from "../../compose-kit";
 
 /** the skin tiles: data-skin value and name; "default" (the shadcn neutral theme) comes first */
@@ -57,7 +57,7 @@ export const skinsTexts = {
   },
 };
 
-const portable = { svelte: true, react: true } as const;
+const portable = PORTABLE_SCREEN;
 
 /** the Skins screen: built from the board above; nothing is written by hand */
 export const skinsComposed: ComposedSpec = {

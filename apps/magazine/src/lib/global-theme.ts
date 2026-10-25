@@ -15,7 +15,7 @@
 // The two layers are stored apart (the feed tune in the address, the global theme here): changing one never rewrites the other.
 import { FONT_IDS } from "@ui8kit/taste-data/font-ids";
 import { RADII, SKIN_IDS } from "@ui8kit/taste-data/taste";
-import { cleanTokens, DENSITIES, DENSITY_ELEMENTS, ELEMENTS, setToken, SHADOW_ELEMENTS, SHADOWS, tokenAttrs, tokenStyle, type Density, type Tokens } from "./design";
+import { cleanTokens, DENSITIES, DENSITY_ELEMENTS, DENSITY_VARS, ELEMENT_SLOT, ELEMENTS, setToken, SHADOW_ELEMENTS, SHADOWS, tokenAttrs, tokenStyle, type Density, type Tokens } from "./design";
 
 export const STORE_THEME = "magazine:v1:theme";
 export type GlobalTheme = { skin: string | null; font: string | null; radius: number | null; tokens: Tokens };
@@ -85,6 +85,9 @@ export type Field = {
   unset: FieldValue | null;
   /** where the value lives: the app's light/dark key, the theme object, or its tokens map */
   store: "mode" | "theme" | "tokens";
+  /** a per-element token: the data-slot kit.css matches (the composition that carries it) and the CSS variables it ends in (description only) */
+  slot?: string;
+  css?: readonly string[];
 };
 
 export const FIELDS: readonly Field[] = [
@@ -92,9 +95,9 @@ export const FIELDS: readonly Field[] = [
   { id: "skin", group: "site", values: SKIN_IDS, nullable: true, unset: null, store: "theme" },
   { id: "font", group: "site", values: FONT_IDS, nullable: true, unset: null, store: "theme" },
   { id: "radius", group: "site", values: RADII, nullable: true, unset: null, store: "theme" },
-  ...ELEMENTS.map((e): Field => ({ id: "radius-" + e, group: "radius", element: e, values: RADII, nullable: true, unset: null, store: "tokens" })),
-  ...DENSITY_ELEMENTS.map((e): Field => ({ id: "density-" + e, group: "density", element: e, values: DENSITIES, nullable: false, unset: "default", store: "tokens" })),
-  ...SHADOW_ELEMENTS.map((e): Field => ({ id: "shadow-" + e, group: "shadow", element: e, values: SHADOWS, nullable: true, unset: null, store: "tokens" })),
+  ...ELEMENTS.map((e): Field => ({ id: "radius-" + e, group: "radius", element: e, values: RADII, nullable: true, unset: null, store: "tokens", slot: ELEMENT_SLOT[e], css: ["--radius-" + e] })),
+  ...DENSITY_ELEMENTS.map((e): Field => ({ id: "density-" + e, group: "density", element: e, values: DENSITIES, nullable: false, unset: "default", store: "tokens", slot: ELEMENT_SLOT[e], css: DENSITY_VARS[e] })),
+  ...SHADOW_ELEMENTS.map((e): Field => ({ id: "shadow-" + e, group: "shadow", element: e, values: SHADOWS, nullable: true, unset: null, store: "tokens", slot: ELEMENT_SLOT[e], css: ["--shadow-" + e] })),
 ];
 export const FIELD_IDS: readonly string[] = FIELDS.map((f) => f.id);
 export const fieldOf = (id: string): Field | undefined => FIELDS.find((f) => f.id === id);

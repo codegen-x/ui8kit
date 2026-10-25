@@ -13,6 +13,13 @@ export const SHADOW_ELEMENTS = ["card", "alert", "media"] as const;
 export const DENSITY_ELEMENTS = ["badge", "button", "card", "alert"] as const;
 export const DENSITIES = ["compact", "default", "comfortable"] as const;
 export const SHADOWS = ["none", "sm", "md"] as const;
+/**
+ * where kit.css (UI8KIT-2.0 §11) reads each element's tokens: the data-slot of the composition that carries them (Badge, Button, Card,
+ * Alert: `fixed["data-slot"]` in packages/kit-compose/src/map.ts; media: pattern.media-frame) and the CSS variables a radius, shadow
+ * or density token ends in (a density token is the attribute `data-density-<element>`, which sets these variables).
+ */
+export const ELEMENT_SLOT = { badge: "badge", button: "button", card: "card", alert: "alert", media: "media-frame" } as const satisfies Record<(typeof ELEMENTS)[number], string>;
+export const DENSITY_VARS = { badge: ["--pad-badge", "--h-badge"], button: ["--pad-button", "--h-button"], card: ["--pad-card"], alert: ["--pad-alert", "--min-alert"] } as const satisfies Record<(typeof DENSITY_ELEMENTS)[number], readonly string[]>;
 export type Density = (typeof DENSITIES)[number];
 export type Shadow = (typeof SHADOWS)[number];
 /** `radius-card`: 16, `density-button`: "comfortable", `shadow-card`: "sm" (only changed keys; absent = the style's own) */

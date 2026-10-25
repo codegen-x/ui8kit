@@ -160,7 +160,13 @@
   ],
   "portable": {
     "svelte": true,
-    "react": true
+    "react": true,
+    "vue": true,
+    "solid": true,
+    "jinja2": true,
+    "twig": true,
+    "latte": true,
+    "templ": true
   },
   "examples": [
     {

@@ -59,7 +59,8 @@
     "shadow-md": "0px 4px 10px 0px hsl(240 30% 25% / 0.12), 0px 2px 4px -1px hsl(240 30% 25% / 0.12)",
     "shadow-lg": "0px 4px 10px 0px hsl(240 30% 25% / 0.12), 0px 4px 6px -1px hsl(240 30% 25% / 0.12)",
     "shadow-xl": "0px 4px 10px 0px hsl(240 30% 25% / 0.12), 0px 8px 10px -1px hsl(240 30% 25% / 0.12)",
-    "shadow-2xl": "0px 4px 10px 0px hsl(240 30% 25% / 0.30)"
+    "shadow-2xl": "0px 4px 10px 0px hsl(240 30% 25% / 0.30)",
+    "destructive-hover": "hsl(347.1 70.5% 46.2%)"
   },
   "dark": {
     "background": "hsl(240 27% 8%)",
@@ -101,6 +102,7 @@
     "shadow-md": "0px 4px 10px 0px hsl(240 30% 25% / 0.12), 0px 2px 4px -1px hsl(240 30% 25% / 0.12)",
     "shadow-lg": "0px 4px 10px 0px hsl(240 30% 25% / 0.12), 0px 4px 6px -1px hsl(240 30% 25% / 0.12)",
     "shadow-xl": "0px 4px 10px 0px hsl(240 30% 25% / 0.12), 0px 8px 10px -1px hsl(240 30% 25% / 0.12)",
-    "shadow-2xl": "0px 4px 10px 0px hsl(240 30% 25% / 0.30)"
+    "shadow-2xl": "0px 4px 10px 0px hsl(240 30% 25% / 0.30)",
+    "destructive-hover": "hsl(347.1 70.5% 46.2%)"
   }
 }

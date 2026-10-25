@@ -13,6 +13,7 @@ import { existsSync, mkdirSync, mkdtempSync, readFileSync, writeFileSync } from 
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { FIXES, toHslCss } from "./skin-colors";
+import { destructiveHover } from "../skins";
 
 /** the tweakcn commit the presets are read from */
 const COMMIT = "a3b47b37cba97dd637de517aab52c45ec0f83456";
@@ -192,10 +193,11 @@ export async function skinData(slug: string, p: Preset, weightsOf: Weights = goo
     `   On when data-skin="${slug}" is on <html> (the page) or on any element (a tile of /skins/). Values as tweakcn exports them;`,
     `   the spacing scale stays the kit's 0.25rem. Fonts: ${fonts.length ? fonts.map((f) => f.split(":")[0]!.replace(/\+/g, " ")).join(", ") + " (Google Fonts, loaded when the skin is on)" : "system"}. `,
   ].join("\n");
+  // --destructive-hover is stored too, last (the CSS order), by the formula of skins.ts
   const skin = {
     $schema: "./skin.schema.json", id: slug, name: p.label, version: "1.0.0",
     attribution: { source: `tweakcn ${COMMIT.slice(0, 7)}`, license: "Apache-2.0", upstream: "https://github.com/jnsahaj/tweakcn", notice: "packages/compose-gen/runtimes/core/assets/styles/skins/NOTICE.md" },
-    fonts: fonts.map(fontIdOf), comment, scope: "any", bodyTracking: tracking, light: lightTokens, dark: darkTokens,
+    fonts: fonts.map(fontIdOf), comment, scope: "any", bodyTracking: tracking, light: destructiveHover(lightTokens), dark: destructiveHover(darkTokens),
   };
   return { skin, fonts };
 }

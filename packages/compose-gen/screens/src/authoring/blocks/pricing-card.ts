@@ -1,6 +1,6 @@
 // The PricingCard organism, built from primitives: Card, Title, Badge, Text, List, Button.
 import { and, call, cn, cond, eq, each, ref, slot, text, tpl, use, when, op } from "../../build";
-import type { OrganismSpec } from "../../ir";
+import { PORTABLE_ORGANISM, type OrganismSpec } from "../../ir";
 import { cardBase } from "../kit";
 
 export const pricingCard: OrganismSpec = {
@@ -57,5 +57,5 @@ export const pricingCard: OrganismSpec = {
         use("Button", { props: { Variant: cond(ref("stand"), "default", "outline"), Size: "default" }, on: { click: call("emit.select", ref("plan.id")) }, attrs: { "data-testid": "plan-select" } }, text(ref("labels.cta"))),
         slot("footer", ref("plan")))),
   ],
-  portable: { svelte: true, react: true },
+  portable: PORTABLE_ORGANISM,
 };

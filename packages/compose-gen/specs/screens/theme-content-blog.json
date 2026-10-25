@@ -245,6 +245,8 @@
   ],
   "portable": {
     "svelte": true,
-    "react": true
+    "react": true,
+    "vue": true,
+    "solid": true
   }
 }

@@ -2,7 +2,7 @@
 // Built from primitives; the table is assembled from the column list so the markup and the sorting config cannot disagree.
 import { call, coalesce, cond, each, eq, op, outlet, ref, sortHeader, text, tpl, use, when, not } from "../../build";
 import { CODEX_FIELDS } from "../../../../runtimes/core/assets/app/fields";
-import type { ColumnSpec, ScreenSpec, ViewNode } from "../../ir";
+import { PORTABLE_SCREEN, type ColumnSpec, type ScreenSpec, type ViewNode } from "../../ir";
 import { wide } from "../components/frames";
 
 const columns: ColumnSpec[] = [
@@ -80,5 +80,5 @@ export const plansScreen: ScreenSpec = {
         outlet()))),
   ],
   areas: { list, record },
-  portable: { svelte: true, react: true },
+  portable: PORTABLE_SCREEN,
 };

@@ -105,9 +105,26 @@ export interface OrganismSpec {
    * part or pattern never opens on Block
    */
   frame?: true;
-  /** `vue` defaults to the Svelte flag (portableTo in compose-gen/spec) */
-  portable: { svelte: true | { portable: false; reason: string }; react: true | { portable: false; reason: string }; vue?: true | { portable: false; reason: string } };
+  /**
+   * per runtime: true where a file is generated for it, or { portable: false, reason } (a contract). A runtime the spec does not
+   * name follows portableTo in compose-gen/spec (vue: the Svelte flag, solid: the React flag). Authored specs write PORTABLE_ORGANISM
+   * or PORTABLE_SCREEN; packages/kit-compose/test/portable.test.ts keeps it equal to the generated files.
+   */
+  portable: Portable;
 }
+
+type PortableFlagIr = true | { portable: false; reason: string };
+/** the portability of a spec: svelte and react always named, the other runtimes optional */
+export type Portable = { svelte: PortableFlagIr; react: PortableFlagIr } & Partial<Record<"vue" | "solid" | "jinja2" | "twig" | "latte" | "templ", PortableFlagIr>>;
+/** the runtimes kit-compose generates every portable organism, part and pattern for (packages/kit-compose/<rt>/src/{blocks,components}) */
+export const ORGANISM_RUNTIMES = ["svelte", "react", "vue", "solid", "jinja2", "twig", "latte", "templ"] as const;
+/** the runtimes with a host app that serves the screens (apps/host-<rt>/gen/screens) */
+export const SCREEN_RUNTIMES = ["svelte", "react", "vue", "solid"] as const;
+const allPortable = <T extends readonly string[]>(rts: T) => Object.fromEntries(rts.map((r) => [r, true])) as { svelte: true; react: true } & Record<T[number], true>;
+/** `portable` of an authored organism, part or pattern: true for every runtime it is generated for */
+export const PORTABLE_ORGANISM = allPortable(ORGANISM_RUNTIMES);
+/** `portable` of an authored screen: true for every runtime whose host serves it */
+export const PORTABLE_SCREEN = allPortable(SCREEN_RUNTIMES);
 
 /** a value of a preset: a class string, a number (a glyph size), a list of class strings, or a group of those */
 export type PresetValue = string | number | string[] | PresetGroup;

@@ -40,14 +40,20 @@ const hslParts = (v: string): [number, number, number] | null => {
   return m ? [Number(m[1]), Number(m[2]), Number(m[3])] : null;
 };
 const round = (n: number) => Math.round(n * 100) / 100;
-/** --destructive-hover: --destructive moved 6 lightness points away from its foreground (hover keeps AA; the test checks it) */
-export function destructiveHover(t: Tokens): Tokens {
+/** --destructive-hover by its formula: --destructive moved 6 lightness points away from its foreground (hover keeps AA; the test checks it), or null */
+export function destructiveHoverOf(t: Tokens): string | null {
   const bg = hslParts(t["destructive"] ?? ""), fg = hslParts(t["destructive-foreground"] ?? "");
-  if (!bg || !fg) return t;
+  if (!bg || !fg) return null;
   const away = fg[2] > bg[2] ? -6 : 6;
   // at the black/white end there is no room to move away: step towards the foreground (contrast stays far above AA)
   const l = bg[2] + away < 0 || bg[2] + away > 100 ? bg[2] - away : bg[2] + away;
-  return { ...t, "destructive-hover": `hsl(${round(bg[0])} ${round(bg[1])}% ${round(l)}%)` };
+  return `hsl(${round(bg[0])} ${round(bg[1])}% ${round(l)}%)`;
+}
+/** the tokens with --destructive-hover: the stored value (the skin JSON keeps it, last), else the formula */
+export function destructiveHover(t: Tokens): Tokens {
+  if (t["destructive-hover"] !== undefined) return t;
+  const v = destructiveHoverOf(t);
+  return v === null ? t : { ...t, "destructive-hover": v };
 }
 
 /** the CSS file of a skin */
@@ -98,6 +104,8 @@ export function build(check: boolean): { written: string[]; stale: string[]; err
     if (check && e.sha256 !== sha256(text)) errors.push(`index.json: ${e.id}: sha256 is stale (run bun run skins build)`);
     for (const id of s.fonts) if (!font(id)) errors.push(`packages/skins/skins/${e.file}: no font ${id} in packages/skins/fonts`);
     for (const theme of ["light", "dark"] as const) {
+      const hover = s[theme]["destructive-hover"], formula = destructiveHoverOf(s[theme]);
+      if (hover !== undefined && hover !== formula) errors.push(`packages/skins/skins/${e.file}: ${theme} destructive-hover ${hover} differs from the formula (${formula ?? "no hsl destructive/foreground"})`);
       const r = s[theme].radius;
       if (r === undefined) continue;
       const v = px(r);

@@ -157,6 +157,10 @@
         "destructive-foreground": {
           "$ref": "#/$defs/color"
         },
+        "destructive-hover": {
+          "$ref": "#/$defs/color",
+          "description": "hover:bg-destructive-hover: --destructive moved 6 lightness points away from --destructive-foreground (skins.ts destructiveHover; `bun run skins build` fails when the stored value differs from it). Kept last in the object: the CSS prints it after the other tokens."
+        },
         "border": {
           "$ref": "#/$defs/color"
         },

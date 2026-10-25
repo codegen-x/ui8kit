@@ -5,105 +5,105 @@
       "name": "Sky",
       "version": "1.0.0",
       "file": "sky.json",
-      "sha256": "d54938fd1d5543f8cfcdff93ab8acf745bd2997c59f7e84293eeac85001042af"
+      "sha256": "1e15a924b21f69c1a6481cbdf6f3507dca19d2a8a0a13d5102b45166640018ae"
     },
     {
       "id": "modern-minimal",
       "name": "Modern Minimal",
       "version": "1.0.0",
       "file": "modern-minimal.json",
-      "sha256": "c8564142408c9d8a7cfc5e6e6a2bed9c053d8e8562116e34e982eb37a47d5ce4"
+      "sha256": "7ee858489292504160b01c5463f91056bba74305b37a88557c1a8dfb61c85033"
     },
     {
       "id": "violet-bloom",
       "name": "Violet Bloom",
       "version": "1.0.0",
       "file": "violet-bloom.json",
-      "sha256": "20a03a43816f5b82cdfd529069cb5e2afd8db5fbb77293fa95c368e5e782bc01"
+      "sha256": "432e251d02ac048907b9c7ea8b3e4fdbd8c16af29037c4757a1cbb5de6039af5"
     },
     {
       "id": "t3-chat",
       "name": "T3 Chat",
       "version": "1.0.0",
       "file": "t3-chat.json",
-      "sha256": "f21580277eba26657d24bc972a2d8af4c6b2acb3ba982c6e66e5ab51c019ae3a"
+      "sha256": "955962485a688718597aa76dd3a5a1f0d6ea70e08171a8b809bdd81caa7f3571"
     },
     {
       "id": "bubblegum",
       "name": "Bubblegum",
       "version": "1.0.0",
       "file": "bubblegum.json",
-      "sha256": "1cc9ed02d9269f98da679766c239213a5da8b68d3066fdf4c020851cd873cbf3"
+      "sha256": "8d29f9e3a45a11bfe4c2313ac981a685809f7b55350048883a1871c49e01824a"
     },
     {
       "id": "doom-64",
       "name": "Doom 64",
       "version": "1.0.0",
       "file": "doom-64.json",
-      "sha256": "7358da47c6b65735d9955ef0ec18112b1abc419018ed11cecf66c22eed81f379"
+      "sha256": "9551fb57982fe7bb977c1acdaa7ac9250bced2306b328ba411ba50b3ae6d5b43"
     },
     {
       "id": "amber-minimal",
       "name": "Amber Minimal",
       "version": "1.0.0",
       "file": "amber-minimal.json",
-      "sha256": "914c3250ca00a41eb8ed06f34eecf315e5722b989733de1ca1e3527c0e2210fd"
+      "sha256": "f0502f0f60b7a3683df78f84447ab0752698edaf063e9341cee8e790a4883411"
     },
     {
       "id": "supabase",
       "name": "Supabase",
       "version": "1.0.0",
       "file": "supabase.json",
-      "sha256": "8625fbc22e2f8ad4e36d6faf0cbcb224048e54ef1d00b9c892da94a5d50b1816"
+      "sha256": "5ffd8002dce653c71ae531be5e27c31c1edc1b0f0d051421065e460105803ef0"
     },
     {
       "id": "kodama-grove",
       "name": "Kodama Grove",
       "version": "1.0.0",
       "file": "kodama-grove.json",
-      "sha256": "493c7e9636c9f907fe8887302302ad66eac086bf2bc48109603a0dd1de182417"
+      "sha256": "c844d676acddf67b6cb2d59753ef087eeb09a05e2addcab82e1653cceec5fa0e"
     },
     {
       "id": "perpetuity",
       "name": "Perpetuity",
       "version": "1.0.0",
       "file": "perpetuity.json",
-      "sha256": "a7912230dfae46498e5a9281eb7913ce5671002f858fa52a22d346a047af3070"
+      "sha256": "b394b084a762f7de0cfcd4da99a51c7f0cc73d278ef4bc6e97944587f52dc330"
     },
     {
       "id": "cosmic-night",
       "name": "Cosmic Night",
       "version": "1.0.0",
       "file": "cosmic-night.json",
-      "sha256": "dcc67180bd9efa5d7c0048cc4bb56063b4ffa822fd26b4514da9427a0eb6e138"
+      "sha256": "e04a009ce708db9d0d4b0906a32a7b1a47f2d5107146e9e46cc1d1537efd479b"
     },
     {
       "id": "claude",
       "name": "Claude",
       "version": "1.0.0",
       "file": "claude.json",
-      "sha256": "2c275cfd6fae8ef522074d3ccd3a2ab7112dcf2867959c268064b9b54a11a06b"
+      "sha256": "d27d905820c48bf6af8fc6bfe2420235d25ab4bc98f8658cdf538af7aa91e640"
     },
     {
       "id": "mocha-mousse",
       "name": "Mocha Mousse",
       "version": "1.0.0",
       "file": "mocha-mousse.json",
-      "sha256": "2ea728e21096ba8db0db1828fa68661f9f1494180e3a7eb3345fe92a2efab8c9"
+      "sha256": "7f8b7a493baf67a4e882985963c1064baeffb0ae7bd16bdebcb85101b7f483af"
     },
     {
       "id": "neo-brutalism",
       "name": "Neo Brutalism",
       "version": "1.0.0",
       "file": "neo-brutalism.json",
-      "sha256": "cba97b8f9970271a5297f2d024cc6a3f8465aec55f6ed594ced2770409995deb"
+      "sha256": "c13a496df78eb3f7e0b50295bfd479f28d8443671a7fc424966483f939110f10"
     },
     {
       "id": "notebook",
       "name": "Notebook",
       "version": "1.0.0",
       "file": "notebook.json",
-      "sha256": "df7d7fe30efb034e38514c325cfcc2061c8436adc0900dfe7d77ae6b89b79710"
+      "sha256": "b01130a64320537f2def9b570081adb54f7987bc3226610e5fd6703b9654e4ad"
     }
   ]
 }

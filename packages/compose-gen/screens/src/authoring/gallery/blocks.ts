@@ -3,7 +3,7 @@
 // Stored as JSON in packages/compose-gen/specs/blocks. The composed screens (the site, the gallery) use blocks by name and variant.
 // The names, the notes and the variant labels are written to the dictionary by screens/tools/author-block-texts.ts.
 import { list, nth, ref, undef } from "../../build";
-import type { BlockSpec, ComposedSpec } from "../../ir";
+import { PORTABLE_SCREEN, type BlockSpec, type ComposedSpec } from "../../ir";
 import { define } from "./blocks-define";
 import { t } from "./block-kit";
 import type { BlockTexts } from "./block-kit";
@@ -224,7 +224,7 @@ const all = [...marketingBlocks, ...commerceBlocks, ...shopBlocks, ...moreBlocks
 export const blocks: BlockSpec[] = all.map((x) => x.block);
 export const blockTexts: Record<string, BlockTexts> = Object.fromEntries(all.map((x) => [x.block.id.slice("block.".length), x.texts]));
 
-const portable = { svelte: true, react: true } as const;
+const portable = PORTABLE_SCREEN;
 
 /** the addresses of the routes of the site screen (its own: "" and "pricing") */
 const SITE_ROUTES = { home: "#/", pricing: "#/pricing" };

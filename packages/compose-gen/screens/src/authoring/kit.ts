@@ -1,5 +1,5 @@
 // Shared helpers of the authoring files for parts and patterns.
-import type { OrganismSpec, PropType, RecordField } from "../ir";
+import { PORTABLE_ORGANISM, type OrganismSpec, type PropType, type RecordField } from "../ir";
 
 export const SCHEMA = "../../schema/schemas/organism.schema.json";
 
@@ -27,7 +27,7 @@ export const spec = (id: string, name: string, docs: string, def: Def): Organism
   slots: [],
   events: [],
   view: [],
-  portable: { svelte: true, react: true },
+  portable: PORTABLE_ORGANISM,
   ...Object.fromEntries(Object.entries(def).filter(([k]) => !["className", "children", "consts", "derived", "recipes"].includes(k))),
 } as OrganismSpec);
 

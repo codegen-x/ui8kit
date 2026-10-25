@@ -3,7 +3,7 @@
 // every variant sits in at least one, so the catalog is the whole kit. The names and notes go to the dictionary under `catalog`
 // (screens/tools/author-block-texts.ts writes them).
 
-import type { BlockUse, CatalogTree, ComposedSpec } from "../../ir";
+import { PORTABLE_SCREEN, type BlockUse, type CatalogTree, type ComposedSpec } from "../../ir";
 import { dictKey } from "../../compose-kit";
 import { t } from "./block-kit";
 
@@ -163,7 +163,7 @@ export const catalogTexts = {
   pages: Object.fromEntries(PAGES.map((p) => [dictKey(p.id), { title: p.title, text: p.text }])),
 };
 
-const portable = { svelte: true, react: true } as const;
+const portable = PORTABLE_SCREEN;
 
 /** the catalog screen: built from the tree above and the blocks; nothing is written by hand */
 export const catalogComposed: ComposedSpec = {

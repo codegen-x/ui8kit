@@ -1,4 +1,5 @@
 import { describe, expect, test } from "bun:test";
+import { readFileSync } from "node:fs";
 import { cleanTheme, densityOf, isDefault, NO_THEME, readTheme, rootAttrs, rootStyle, setDensity, STORE_THEME, writeTheme } from "./global-theme";
 
 const mem = () => { const m = new Map<string, string>(); return { getItem: (k: string) => m.get(k) ?? null, setItem: (k: string, v: string) => void m.set(k, v), removeItem: (k: string) => void m.delete(k), m }; };
@@ -115,5 +116,25 @@ describe("theme coverage parity", () => {
     expect([...Object.keys(p).filter((k) => !["format", "version", "tokens"].includes(k)), ...Object.keys(tp)].sort()).toEqual([...FIELD_IDS].sort());
     for (const f of FIELDS) for (const v of f.values) expect((f.store === "tokens" ? tp[f.id]! : p[f.id]!).enum).toContain(v);
     expect(Object.keys(toConfig({ mode: "dark", theme: NO_THEME })).filter((k) => k !== "tokens" && k !== "format" && k !== "version").sort()).toEqual(Object.keys(p).filter((k) => !["format", "version", "tokens"].includes(k)).sort());
+  });
+});
+
+describe("per-element tokens: field -> data-slot -> kit.css", () => {
+  const root = new URL("../../../../", import.meta.url).pathname;
+  const read = (p: string): string => readFileSync(root + p, "utf8");
+  const kit = read("packages/kit-compose/svelte/src/styles/kit.css");
+  const map = read("packages/kit-compose/src/map.ts");
+  const media = read("packages/compose-gen/specs/patterns/media-frame.json");
+  const esc = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  test("every token field names the data-slot and the CSS variables kit.css reads, and a composition carries that data-slot", () => {
+    for (const f of FIELDS.filter((f) => f.store === "tokens")) {
+      expect(f.slot, f.id).toBeDefined();
+      expect(f.css?.length, f.id).toBeGreaterThan(0);
+      const sel = `[data-slot="${f.slot}"]`;
+      for (const v of f.css!) expect(kit, `${f.id}: ${sel} reads ${v}`).toMatch(new RegExp(`${esc(sel)}[^{]*\\{[^}]*var\\(${esc(v)},`));
+      if (f.group === "density") for (const d of ["compact", "comfortable"]) for (const v of f.css!) expect(kit, `${f.id}=${d} sets ${v}`).toMatch(new RegExp(`\\[data-${f.id}="${d}"\\] \\{[^}]*${esc(v)}:`));
+      if (f.slot === "media-frame") expect(media).toContain(`"data-slot": "media-frame"`);
+      else expect(map, `${f.id}: a composition with data-slot ${f.slot}`).toContain(`"data-slot": "${f.slot}" }`);
+    }
   });
 });

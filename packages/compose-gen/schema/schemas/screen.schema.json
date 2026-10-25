@@ -569,6 +569,126 @@
               "additionalProperties": false
             }
           ]
+        },
+        "solid": {
+          "oneOf": [
+            {
+              "const": true
+            },
+            {
+              "type": "object",
+              "properties": {
+                "portable": {
+                  "const": false
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 8
+                }
+              },
+              "required": [
+                "portable",
+                "reason"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "jinja2": {
+          "oneOf": [
+            {
+              "const": true
+            },
+            {
+              "type": "object",
+              "properties": {
+                "portable": {
+                  "const": false
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 8
+                }
+              },
+              "required": [
+                "portable",
+                "reason"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "twig": {
+          "oneOf": [
+            {
+              "const": true
+            },
+            {
+              "type": "object",
+              "properties": {
+                "portable": {
+                  "const": false
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 8
+                }
+              },
+              "required": [
+                "portable",
+                "reason"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "latte": {
+          "oneOf": [
+            {
+              "const": true
+            },
+            {
+              "type": "object",
+              "properties": {
+                "portable": {
+                  "const": false
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 8
+                }
+              },
+              "required": [
+                "portable",
+                "reason"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "templ": {
+          "oneOf": [
+            {
+              "const": true
+            },
+            {
+              "type": "object",
+              "properties": {
+                "portable": {
+                  "const": false
+                },
+                "reason": {
+                  "type": "string",
+                  "minLength": 8
+                }
+              },
+              "required": [
+                "portable",
+                "reason"
+              ],
+              "additionalProperties": false
+            }
+          ]
         }
       },
       "required": [

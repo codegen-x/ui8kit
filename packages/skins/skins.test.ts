@@ -63,3 +63,16 @@ test("skin colours are hsl() (old browsers) and the contrast fixes hold", async 
   expect(contrast(c(FIXES["modern-minimal"]!.light.primary!), c("#ffffff"))).toBeGreaterThanOrEqual(4.5);
   expect(contrast(c(FIXES["kodama-grove"]!.light["muted-foreground"]!), c("#ffffff"))).toBeGreaterThan(3);
 });
+
+test("every skin JSON stores --destructive-hover (light and dark), last, equal to the formula", async () => {
+  const { destructiveHoverOf } = await import("./skins");
+  const sdir = join(import.meta.dir, "skins");
+  const index = JSON.parse(readFileSync(join(sdir, "index.json"), "utf8")) as { skins: Array<{ file: string }> };
+  for (const { file } of index.skins) {
+    const s = JSON.parse(readFileSync(join(sdir, file), "utf8")) as { light: Record<string, string>; dark: Record<string, string> };
+    for (const theme of ["light", "dark"] as const) {
+      expect(s[theme]["destructive-hover"], `${file} ${theme}`).toBe(destructiveHoverOf(s[theme])!);
+      expect(Object.keys(s[theme]).at(-1), `${file} ${theme}`).toBe("destructive-hover");
+    }
+  }
+});
