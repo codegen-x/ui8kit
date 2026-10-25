@@ -3,9 +3,11 @@
   import { Box, Checkbox, Label, Radio, Text } from "@codegen-x/svelte-compose";
   import ui from "../../content/ui.json";
 
-  let { name, legend, options, selected, multiple, onchange }: {
+  let { name, legend, options, selected, multiple, onchange, field }: {
     name: string; legend: string; options: Array<{ value: string; label: string }>; selected: string[]; multiple: boolean;
     onchange: (values: string[]) => void;
+    /** the theme field it edits (lib/global-theme.ts FIELDS), as data-field */
+    field?: string;
   } = $props();
 
   function toggle(v: string, on: boolean): void {
@@ -15,7 +17,7 @@
 </script>
 
 <!-- the kit Box has no fieldset: a group (checkboxes) or radiogroup (radios) named by its heading -->
-<Box class="mg-fieldset" role={multiple ? "group" : "radiogroup"} aria-labelledby={"mg-filter-" + name + "-label"} data-testid="filter-group" data-name={name}>
+<Box class="mg-fieldset" role={multiple ? "group" : "radiogroup"} aria-labelledby={"mg-filter-" + name + "-label"} data-testid="filter-group" data-name={name} data-field={field}>
   <Text tag="span" weight="semibold" class="mg-flegend" id={"mg-filter-" + name + "-label"}>{legend}{#if multiple}<Text tag="span" class="mg-gcount">{ui.feed.sheet.selected.replace("{n}", String(selected.length))}</Text>{/if}</Text>
   <Box class="mg-options">
     {#each options as o (o.value)}

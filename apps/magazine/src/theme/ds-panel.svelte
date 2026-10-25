@@ -1,14 +1,15 @@
-<!-- The wide panel of the Theme sheet: the rest of the Design system for the whole site, the per-element tokens and the specimen
-     (the same components as the style page's Design system tab). On narrow screens it replaces the Theme panel; Back returns. -->
+<!-- The wide panel of the Theme sheet: the Design system of the whole site: every field of the theme (theme-fields.svelte, view
+     "design": the same fields as the narrow panel, as radio groups), export/import and the specimen (the same specimen as the style
+     page's Design system tab). On narrow screens it replaces the Theme panel; Back returns. -->
 <script lang="ts">
   import { Box, Button, Group, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import type { FontId } from "@ui8kit/taste-data/fonts";
   import ui from "../../content/ui.json";
-  import { setToken } from "../lib/design";
   import { gtheme, setTheme } from "../lib/global-theme.svelte";
   import { skinTokens } from "../lib/tokens";
-  import DsElementTokens from "../parts/ds-element-tokens.svelte";
   import DsSpecimen from "../parts/ds-specimen.svelte";
+  import ThemeFields from "./theme-fields.svelte";
+  import ThemeIo from "./theme-io.svelte";
 
   const T = ui.theme;
   const t = $derived(gtheme.value);
@@ -31,7 +32,8 @@
     <Text class="mg-note">{T.dsNote}</Text>
   </Box>
   <Stack gap="0" class="mg-sheet-body" data-testid="ds-body">
-    <DsElementTokens idp="gt" {radius} tokenValues={t.tokens} ontoken={(k, v) => setTheme({ tokens: setToken(t.tokens, k, v) })} />
+    <ThemeFields idp="gt" view="design" />
+    <ThemeIo idp="gt" />
     <DsSpecimen idp="gt" {skin} {font} {radius} tokens={swatches} tokenValues={t.tokens} />
   </Stack>
   <Group gap="2" class="mg-sheet-foot">

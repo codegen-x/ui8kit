@@ -29,3 +29,91 @@ describe("global theme", () => {
     expect(rootStyle(NO_THEME, String)).toBe("");
   });
 });
+
+// ---- coverage parity: one model, every field in both views, in export/import, applied to the site ----
+import { RADII, SKIN_IDS } from "@ui8kit/taste-data/taste";
+import { FONT_IDS } from "@ui8kit/taste-data/font-ids";
+import { presetOf } from "@ui8kit/taste-data/preset";
+import ui from "../../content/ui.json";
+import { cleanTokens, DENSITY_ELEMENTS, ELEMENTS, SHADOW_ELEMENTS } from "./design";
+import { FIELD_IDS, FIELDS, fieldValue, fromConfig, setThemeField, THEME_SCHEMA, toConfig, viewFields, type GlobalTheme } from "./global-theme";
+
+/** every key the model can hold: the mode, the theme's own fields, every token key cleanTokens keeps */
+const MODEL_KEYS = ["mode", ...Object.keys(NO_THEME).filter((k) => k !== "tokens"),
+  ...ELEMENTS.map((e) => "radius-" + e), ...DENSITY_ELEMENTS.map((e) => "density-" + e), ...SHADOW_ELEMENTS.map((e) => "shadow-" + e)];
+/** a theme with every field set to a non-default value (the i-th allowed value, wrapping) */
+const full = (i: number): { mode: "light" | "dark"; theme: GlobalTheme } => {
+  let theme: GlobalTheme = NO_THEME;
+  for (const f of FIELDS) if (f.store !== "mode") { const vs = f.values.filter((v) => v !== f.unset); theme = setThemeField(theme, f.id, vs[i % vs.length]!); }
+  return { mode: i % 2 ? "dark" : "light", theme };
+};
+
+describe("theme coverage parity", () => {
+  test("the schema has exactly the fields of the model", () => {
+    expect([...FIELD_IDS].sort()).toEqual([...MODEL_KEYS].sort());
+    for (const k of MODEL_KEYS.filter((k) => k.includes("-"))) expect(Object.keys(cleanTokens({ [k]: FIELDS.find((f) => f.id === k)!.values.find((v) => v !== "default") }))).toEqual([k]);
+    expect(FIELDS.find((f) => f.id === "skin")!.values).toEqual(SKIN_IDS);
+    expect(FIELDS.find((f) => f.id === "font")!.values).toEqual(FONT_IDS);
+    expect(FIELDS.find((f) => f.id === "radius")!.values).toEqual(RADII);
+  });
+  test("both views (Theme panel and Design system panel) render every field, with a label for each", () => {
+    for (const view of ["sheet", "design"] as const) {
+      const v = viewFields(view);
+      expect(v.map((r) => r.field.id)).toEqual([...FIELD_IDS]);
+      for (const r of v) {
+        expect(["radio", "select"]).toContain(r.control);
+        const label = r.field.group === "site" ? (ui.theme as Record<string, unknown>)[r.field.id] : (ui.design.elements as Record<string, string>)[r.field.element!];
+        expect(typeof label).toBe("string");
+      }
+    }
+  });
+  test("every value of every field survives set -> export -> JSON -> import", () => {
+    for (const f of FIELDS) for (const v of f.values) {
+      const s = f.store === "mode" ? { mode: v as "light" | "dark", theme: NO_THEME } : { mode: "light" as const, theme: setThemeField(NO_THEME, f.id, v) };
+      expect(fieldValue(s, f.id)).toBe(v);
+      const r = fromConfig(JSON.stringify(toConfig(s)));
+      if (!r.ok) throw new Error(r.error);
+      expect(r.dropped).toEqual([]);
+      expect(fieldValue({ mode: r.mode ?? "light", theme: r.theme }, f.id)).toBe(v);
+    }
+  });
+  test("a full theme round trips whole; every field is in the export", () => {
+    for (let i = 0; i < 5; i++) {
+      const s = full(i);
+      const cfg = toConfig(s);
+      const r = fromConfig(JSON.parse(JSON.stringify(cfg)));
+      if (!r.ok) throw new Error(r.error);
+      expect({ mode: r.mode, theme: r.theme }).toEqual({ mode: s.mode, theme: cleanTheme(s.theme) });
+      for (const id of FIELD_IDS) expect(fieldValue({ mode: cfg.mode, theme: { skin: cfg.skin, font: cfg.font, radius: cfg.radius, tokens: cfg.tokens } }, id)).toBe(fieldValue(s, id));
+    }
+  });
+  test("every field reaches the site root (CSS variable, data attribute or the mode)", () => {
+    for (const f of FIELDS.filter((f) => f.store !== "mode")) {
+      const v = f.values.find((x) => x !== f.unset)!;
+      const t = setThemeField(NO_THEME, f.id, v);
+      expect(rootStyle(t, String) + JSON.stringify(rootAttrs(t))).not.toBe(rootStyle(NO_THEME, String) + JSON.stringify(rootAttrs(NO_THEME)));
+    }
+  });
+  test("import: older shapes and a style preset; bad input is refused or dropped", () => {
+    const stored = { v: 1, theme: { skin: "claude", font: "inter", radius: 4, tokens: { "radius-card": 16 } } };
+    const r1 = fromConfig(stored);
+    expect(r1.ok && r1.theme).toEqual(stored.theme);
+    const preset = { ...presetOf("t071-poster-dots|bubblegum|montserrat+open-sans|0")!, tokens: { "shadow-card": "sm" } };
+    const r2 = fromConfig(JSON.stringify(preset));
+    expect(r2.ok && r2.theme).toEqual({ skin: "bubblegum", font: "open-sans", radius: 0, tokens: { "shadow-card": "sm" } });
+    expect(fromConfig("{nope").ok).toBe(false);
+    expect(fromConfig([1]).ok).toBe(false);
+    expect(fromConfig({ format: "other" }).ok).toBe(false);
+    expect(fromConfig({ format: "magazine-theme", version: 3 }).ok).toBe(false);
+    const r3 = fromConfig({ format: "magazine-theme", version: 2, mode: "dim", skin: "nope", radius: 4, tokens: { "radius-card": 5, "density-card": "default", x: 1 } });
+    expect(r3.ok && r3.dropped.sort()).toEqual(["mode", "radius-card", "skin", "x"]);
+    expect(r3.ok && r3.theme).toEqual({ skin: null, font: null, radius: 4, tokens: {} });
+  });
+  test("the JSON Schema names every field and its values", () => {
+    const p = THEME_SCHEMA.properties as Record<string, { enum?: unknown[] }>;
+    const tp = (THEME_SCHEMA.properties.tokens as { properties: Record<string, { enum: unknown[] }> }).properties;
+    expect([...Object.keys(p).filter((k) => !["format", "version", "tokens"].includes(k)), ...Object.keys(tp)].sort()).toEqual([...FIELD_IDS].sort());
+    for (const f of FIELDS) for (const v of f.values) expect((f.store === "tokens" ? tp[f.id]! : p[f.id]!).enum).toContain(v);
+    expect(Object.keys(toConfig({ mode: "dark", theme: NO_THEME })).filter((k) => k !== "tokens" && k !== "format" && k !== "version").sort()).toEqual(Object.keys(p).filter((k) => !["format", "version", "tokens"].includes(k)).sort());
+  });
+});

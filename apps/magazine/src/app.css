@@ -9,6 +9,7 @@
 @source not "../index.html";
 @source not "../content";
 @source not "../README.md";
+@source not "../scripts";
 @source "../../../packages/panorama/src";
 @source "../../../packages/taste-data";
 @source "../../../packages/taste-screens/src";

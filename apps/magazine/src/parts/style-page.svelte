@@ -25,19 +25,18 @@
   import { TEMPLATES, type TemplateId } from "../templates/registry";
   import TemplateStage from "./template-stage.svelte";
   import { theme } from "../lib/theme.svelte";
-  import { effective, setToken, tokenAttrs, tokenStyle, withTokens, type Tokens } from "../lib/design";
+  import { effective, setToken, tokenAttrs, tokenStyle, withTokens } from "../lib/design";
+  import { gtheme, resetTheme, setTheme } from "../lib/global-theme.svelte";
   import Card from "./card.svelte";
   import Heart from "./heart.svelte";
 
   let { key, tab = "overview" }: { key: StyleKey; tab?: StyleTab } = $props();
   let tplId = $state<TemplateId>("classic");
-  // the playground: a skin and a font chosen on the Design system tab. They are page state, not part of the key (the key is the style's
-  // identity and changes only on "Save as collection item"); the preview, the templates and the specimen read the effective values.
-  let ovSkin = $state<SkinId | null>(null);
-  let ovFont = $state<FontId | null>(null);
-  let ovRadius = $state<number | null>(null);
-  // per-element radius, density and shadow (kit CSS variables on a wrapper); only the keys that differ from the style's own
-  let ovTokens = $state<Tokens>({});
+  // the overrides of the Design system tab are the global theme itself (lib/global-theme.svelte.ts): the tab, the Theme sheet and the
+  // site share one model, so a change on either side shows on both and is kept on this device. They are not part of the key (the key
+  // is the style's identity and changes only on "Save as collection item"); the preview, the templates and the specimen read the
+  // effective values (the theme's fields where it sets them, else the style's own).
+  const ov = $derived(gtheme.value);
   let saved = $state(false);
   // the key a "Save as collection item" just opened: its page shows the Saved message (the key change below clears the other flags)
   let savedFor: string | null = null;
@@ -58,9 +57,9 @@
   const pattern = $derived(parts ? COMPOSITION_OF[parts.screen] : undefined);
   const series = $derived(seriesOf(key));
   const related = $derived(relatedOf(key));
-  const eff = $derived(parts ? effective(parts, { skin: ovSkin, font: ovFont, radius: ovRadius, tokens: ovTokens }) : null);
+  const eff = $derived(parts ? effective(parts, ov) : null);
   const skin = $derived((eff?.skin ?? "sky") as SkinId);
-  const font = $derived((ovFont ?? parts?.fonts.body ?? "inter") as FontId);
+  const font = $derived((ov.font ?? parts?.fonts.body ?? "inter") as FontId);
   const fonts = $derived((eff?.fonts ?? { display: "inter", body: "inter" }) as FontPair);
   const radius = $derived(eff?.radius ?? 0);
   const tokens_ = $derived(eff?.tokens ?? {});
@@ -86,7 +85,7 @@
   $effect(() => { if (parts) tokens = { light: skinTokens(skin, false), dark: skinTokens(skin, true) }; });
   // `route` is a new object on every hash change (a tab switch too): a derived string only notifies when the key itself changes
   const sameKey = $derived(key);
-  $effect(() => { void sameKey; window.scrollTo(0, 0); copied = ""; ovSkin = null; ovFont = null; ovRadius = null; ovTokens = {}; saved = savedFor === sameKey; savedFor = null; });
+  $effect(() => { void sameKey; window.scrollTo(0, 0); copied = ""; saved = savedFor === sameKey; savedFor = null; });
 
   async function copy(): Promise<void> {
     try {
@@ -100,7 +99,8 @@
       ta.remove();
     }
   }
-  function reset(): void { ovSkin = null; ovFont = null; ovRadius = null; ovTokens = {}; saved = false; copied = ""; }
+  /** back to the style's own values: the theme's overrides are cleared (the Theme sheet follows) */
+  function reset(): void { resetTheme(); saved = false; copied = ""; }
   /** the changed style becomes a collection item under its own key; only now does the identity change */
   function save(): void {
     if (!parts) return;
@@ -150,7 +150,7 @@
       </section>
     {:else if tab === "design"}
       <DesignSystem {skin} {font} {radius} own={{ skin: parts.skin, font: parts.fonts.body, radius: parts.radius }} {changed} {tokens} tokenValues={tokens_} {json} {saved} {copied}
-        onskin={(v) => { ovSkin = v; saved = false; copied = ""; }} onfont={(v) => { ovFont = v; saved = false; copied = ""; }} onradius={(v) => { ovRadius = v; saved = false; copied = ""; }} ontoken={(k, v) => { ovTokens = setToken(ovTokens, k, v); saved = false; copied = ""; }} onreset={reset} onsave={save} oncopy={copy} />
+        onskin={(v) => { setTheme({ skin: v }); saved = false; copied = ""; }} onfont={(v) => { setTheme({ font: v }); saved = false; copied = ""; }} onradius={(v) => { setTheme({ radius: v }); saved = false; copied = ""; }} ontoken={(k, v) => { setTheme({ tokens: setToken(ov.tokens, k, v) }); saved = false; copied = ""; }} onreset={reset} onsave={save} oncopy={copy} />
     {:else}
     <section class="mg-sec" aria-label={ui.style.preview}>
       <div class="mg-big" bind:this={box} data-testid="style-preview" data-skin={skin} style:height={`${width * 0.75}px`}>

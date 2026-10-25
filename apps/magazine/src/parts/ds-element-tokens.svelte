@@ -21,14 +21,14 @@
 <Stack gap="0" class="ds-tokens" data-testid={idp + "-element-tokens"}>
   <Title as={3} class="mg-h3">{ui.design.elementRadius}</Title>
   {#each ELEMENTS as e (e)}
-    <FilterGroup name={`${idp}-er-${e}`} legend={label(e)} multiple={false} options={radiusOptions(e)} selected={now("radius-" + e, OWN)} onchange={(v) => ontoken("radius-" + e, v[0] === OWN ? null : Number(v[0]))} />
+    <FilterGroup field={"radius-" + e} name={`${idp}-er-${e}`} legend={label(e)} multiple={false} options={radiusOptions(e)} selected={now("radius-" + e, OWN)} onchange={(v) => ontoken("radius-" + e, v[0] === OWN ? null : Number(v[0]))} />
   {/each}
   <Title as={3} class="mg-h3">{ui.design.elementDensity}</Title>
   {#each DENSITY_ELEMENTS as e (e)}
-    <FilterGroup name={`${idp}-ed-${e}`} legend={label(e)} multiple={false} options={densityOptions} selected={now("density-" + e, "default")} onchange={(v) => ontoken("density-" + e, v[0]!)} />
+    <FilterGroup field={"density-" + e} name={`${idp}-ed-${e}`} legend={label(e)} multiple={false} options={densityOptions} selected={now("density-" + e, "default")} onchange={(v) => ontoken("density-" + e, v[0]!)} />
   {/each}
   <Title as={3} class="mg-h3">{ui.design.elementShadow}</Title>
   {#each SHADOW_ELEMENTS as e (e)}
-    <FilterGroup name={`${idp}-es-${e}`} legend={label(e)} multiple={false} options={shadowOptions} selected={now("shadow-" + e, OWN)} onchange={(v) => ontoken("shadow-" + e, v[0] === OWN ? null : v[0]!)} />
+    <FilterGroup field={"shadow-" + e} name={`${idp}-es-${e}`} legend={label(e)} multiple={false} options={shadowOptions} selected={now("shadow-" + e, OWN)} onchange={(v) => ontoken("shadow-" + e, v[0] === OWN ? null : v[0]!)} />
   {/each}
 </Stack>

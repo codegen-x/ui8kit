@@ -2,6 +2,8 @@
   Design system tab: a playground for one predefined design. The specimen (tokens, type scale, radii, spacing, buttons, badges, cards,
   alerts, inputs) is one live frame whose skin, single font and radius are CSS variables, so the SKIN and FONT controls re-skin it, the
   style preview and the templates at once with no rebuild. The style's identity key stays as it is until "Save as collection item".
+  Every control edits the global theme (lib/global-theme.svelte.ts, the same model as the Theme sheet): mode, skin, font, radius and
+  the per-element tokens, with the same export/import (theme/theme-io.svelte).
 -->
 <script lang="ts">
   import { family, FONT_IDS, type FontId } from "@ui8kit/taste-data/fonts";
@@ -10,6 +12,9 @@
   import type { Tokens } from "../lib/design";
   import DsElementTokens from "./ds-element-tokens.svelte";
   import DsSpecimen from "./ds-specimen.svelte";
+  import FilterGroup from "../feed/filter-group.svelte";
+  import { currentMode, setMode } from "../lib/global-theme.svelte";
+  import ThemeIo from "../theme/theme-io.svelte";
   import type { Token } from "../lib/tokens";
 
   type Props = {
@@ -41,8 +46,10 @@
     <h2 class="mg-h2" id="ds-controls">{ui.design.controls}</h2>
     <p class="mg-note">{ui.design.note}</p>
 
+    <FilterGroup name="ds-mode" field="mode" legend={ui.theme.mode} multiple={false} options={[{ value: "light", label: ui.theme.light }, { value: "dark", label: ui.theme.dark }]} selected={[currentMode()]} onchange={(v) => setMode(v[0] === "dark" ? "dark" : "light")} />
+
     <h3 class="mg-h3" id="ds-skin-label">{ui.design.skin}: <span data-testid="ds-skin-now">{skin}</span></h3>
-    <div class="mg-choices" role="radiogroup" aria-labelledby="ds-skin-label" data-testid="ds-skins">
+    <div class="mg-choices" role="radiogroup" aria-labelledby="ds-skin-label" data-testid="ds-skins" data-field="skin">
       {#each SKIN_IDS as s (s)}
         <button class="mg-choice" type="button" role="radio" aria-checked={skin === s} onclick={() => onskin(s)} data-testid={"ds-skin-" + s} data-skin-choice={s}>
           <span class="mg-choice-dot" data-skin={s} aria-hidden="true"></span>{s}{#if s === own.skin}<span class="mg-choice-own"> · {ui.design.own}</span>{/if}
@@ -51,7 +58,7 @@
     </div>
 
     <h3 class="mg-h3" id="ds-font-label">{ui.design.font}: <span data-testid="ds-font-now">{font}</span></h3>
-    <div class="mg-choices" role="radiogroup" aria-labelledby="ds-font-label" data-testid="ds-fonts">
+    <div class="mg-choices" role="radiogroup" aria-labelledby="ds-font-label" data-testid="ds-fonts" data-field="font">
       {#each FONT_IDS as f (f)}
         <button class="mg-choice" type="button" role="radio" aria-checked={font === f} onclick={() => onfont(f)} style:font-family={`${family(f)}, sans-serif`} data-testid={"ds-font-" + f}>
           {f}{#if f === own.font}<span class="mg-choice-own"> · {ui.design.own}</span>{/if}
@@ -60,7 +67,7 @@
     </div>
 
     <h3 class="mg-h3" id="ds-radius-label">{ui.design.radius}: <span data-testid="ds-radius-now">{radius}px</span></h3>
-    <div class="mg-choices" role="radiogroup" aria-labelledby="ds-radius-label" data-testid="ds-radii">
+    <div class="mg-choices" role="radiogroup" aria-labelledby="ds-radius-label" data-testid="ds-radii" data-field="radius">
       {#each RADII as r (r)}
         <button class="mg-choice mg-tile" type="button" role="radio" aria-checked={radius === r} onclick={() => onradius(r)} data-testid={"ds-radius-" + r} data-default={r === own.radius ? "1" : "0"} aria-label={`${r}px${r === own.radius ? ", " + ui.design.own : ""}`}>
           <span class="mg-tile-box" style:border-radius={`${r}px`} aria-hidden="true"></span>
@@ -78,6 +85,7 @@
       <span class="mg-note" role="status" data-testid="ds-status">{saved ? ui.design.saved : copied === "ok" ? ui.style.copied : copied === "fail" ? ui.style.copyFailed : changed ? ui.design.changed : ui.design.unchanged}</span>
     </p>
     <pre class="mg-pre" data-testid="ds-json">{json}</pre>
+    <ThemeIo idp="ds" />
   </section>
 
   <section class="mg-sec" aria-labelledby="ds-specimen">

@@ -251,6 +251,13 @@ dialog.mg-tsheet { width: fit-content; max-width: 100vw; }
 .mg-tpanel .mg-sheet-head, .mg-tpanel .mg-sheet-body, .mg-tpanel .mg-sheet-foot { padding-left: 16px; padding-right: 16px; }
 .mg-back { display: none; }
 .mg-treset { padding: 0 0 16px; }
+/* the fields of the theme (theme/theme-fields.svelte) and its export/import (theme/theme-io.svelte), in both panels and the style page */
+.mg-tfields > *, .mg-tio > * { width: 100%; box-sizing: border-box; }
+.mg-tfields > .mg-h3 { margin: 24px 0 0; }
+.mg-tio { padding: 16px 0; border-top: 1px solid var(--border); }
+.mg-tio .mg-h3, .mg-tio .mg-note { margin: 0; }
+.mg-tio-text { min-height: 128px; font-family: var(--font-mono, monospace); font-size: 12px; line-height: 16px; }
+.mg-tio [data-slot=button] { gap: 8px; }
 .mg-tpanel-wide .ds-rows, .mg-tpanel-wide .ds-box { margin-bottom: 16px; }
 @media (max-width: 640px) {
   dialog.mg-tsheet { width: 100vw; }

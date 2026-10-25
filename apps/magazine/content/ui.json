@@ -138,12 +138,12 @@
   },
   "design": {
     "controls": "Playground",
-    "note": "Pick a skin, a font, a radius, and for each element (badge, button, card, alert, media) its own radius, density and shadow: the specimen, the style preview and the templates change at once, from CSS variables only. Nothing is saved until you say so.",
+    "note": "Pick a mode, a skin, a font, a radius, and for each element (badge, button, card, alert, media) its own radius, density and shadow: the specimen, the style preview and the templates change at once, from CSS variables only. These are the site's Theme settings: the Theme sheet shows the same values and they are kept on this device.",
     "skin": "Skin",
     "font": "Font (one font for the whole design)",
     "own": "this style",
     "radius": "Radius (corner size, --radius)",
-    "reset": "Reset to this style",
+    "reset": "Reset to this style (clears the Theme)",
     "save": "Save as collection item",
     "copy": "Copy preset",
     "changed": "Changed from the style's own values.",
@@ -370,7 +370,7 @@
   "theme": {
     "button": "Theme",
     "title": "Theme",
-    "note": "One skin, font, radius and density for the whole site. Feed cards and style pages keep their own design on top of it.",
+    "note": "One skin, font, radius and density for the whole site. Feed cards keep their own design; a style page shows its style with these settings on top, and its Design system tab edits the same settings.",
     "mode": "Mode",
     "light": "Light",
     "dark": "Dark",
@@ -386,7 +386,21 @@
     "close": "Close",
     "back": "Back",
     "dsTitle": "Design system",
-    "dsNote": "Radius, density and shadow per element, for the whole site. The specimen shows the result.",
-    "dsReset": "Reset tokens"
+    "dsNote": "Every setting of the theme for the whole site, the same as the Theme panel: mode, skin, font, radius, and radius, density and shadow per element. The specimen shows the result.",
+    "dsReset": "Reset tokens",
+    "densityAll": "All elements",
+    "io": {
+      "title": "Export / import",
+      "note": "The whole theme as one JSON config (format magazine-theme, version 2): every setting. Import replaces the theme; a style preset imports too.",
+      "label": "Theme config (JSON)",
+      "placeholder": "Paste a theme config or a style preset",
+      "export": "Copy config",
+      "import": "Import",
+      "copied": "Copied, and shown below",
+      "copyFailed": "Shown below (the clipboard is blocked)",
+      "imported": "Imported",
+      "partial": "Imported; dropped unknown values",
+      "invalid": "Not a theme config"
+    }
   }
 }

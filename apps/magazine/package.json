@@ -30,7 +30,8 @@
     "test": "bun test src",
     "css-parity": "bash scripts/css-parity.sh",
     "e2e:persist": "bun scripts/e2e-persist.mjs",
-    "e2e:feed": "bun scripts/e2e-feed.ts"
+    "e2e:feed": "bun scripts/e2e-feed.ts",
+    "e2e:theme": "bun scripts/e2e-theme-sync.mjs"
   },
   "dependencies": {
     "@ui8kit/app-shared": "workspace:*",
