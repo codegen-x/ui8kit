@@ -141,7 +141,7 @@ export const KIT_FIELDS = {
   point: { id: "id", label: "title", value: m("value") },
   metric: { id: "id", label: "title", value: `${m("value")}|number`, icon: m("icon"), hint: m("hint") },
   task: { id: "id", title: "title", text: m("text"), done: m("done") },
-  prompt: { id: "id", name: "title", icon: m("icon") },
+  prompt: { id: "id", name: "title", icon: m("icon"), href: "slug|route" },
   promptFilter: { id: "id", title: "title", value: m("value"), icon: m("icon") },
   template: { id: "id", title: "title", views: `${m("views")}|compact`, likes: `${m("likes")}|compact`, topic: m("topic") },
   tab: { id: "id", name: "title", icon: m("icon"), href: "slug|route" },

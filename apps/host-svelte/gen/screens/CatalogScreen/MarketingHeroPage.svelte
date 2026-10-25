@@ -27,7 +27,7 @@
 
   const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","href":"slug|route"} as const;
   const TERMINAL_FIELDS = {"id":"id","text":"title","kind":"metadata.line_kind.value"} as const;
-  const PROMPTS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
+  const PROMPTS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","href":"slug|route"} as const;
 
   const navlinks = fromCodex<NavLink>(navlinksEntries, NAVLINKS_FIELDS, CODEX);
   const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS, CODEX);

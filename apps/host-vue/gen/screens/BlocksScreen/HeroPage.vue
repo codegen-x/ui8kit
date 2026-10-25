@@ -26,7 +26,7 @@ import { prompts as promptsEntries } from "@ui8kit/app-shared/data/prompts";
 import { navlinks as navlinksEntries } from "@ui8kit/app-shared/data/navlinks";
 
 const TERMINAL_FIELDS = {"id":"id","text":"title","kind":"metadata.line_kind.value"} as const;
-const PROMPTS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
+const PROMPTS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","href":"slug|route"} as const;
 const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","href":"slug|route"} as const;
 
 const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS, CODEX);
