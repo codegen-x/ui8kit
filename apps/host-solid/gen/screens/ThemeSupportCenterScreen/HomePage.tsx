@@ -30,7 +30,7 @@ import { reviews as reviewsEntries } from "@ui8kit/app-shared/data/reviews";
 import { faq as faqEntries } from "@ui8kit/app-shared/data/faq";
 import { faqtabs as faqtabsEntries } from "@ui8kit/app-shared/data/faqtabs";
 
-const CHANNELS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+const CHANNELS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","href":"slug|route"} as const;
 const STATS_FIELDS = {
   "id": "id",
   "label": "title",

@@ -30,7 +30,7 @@
   import { prompts as templateFiltersEntries } from "@ui8kit/app-shared/data/prompts";
 
   const TERMINAL_FIELDS = {"id":"id","text":"title","kind":"metadata.line_kind.value"} as const;
-  const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+  const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","href":"slug|route"} as const;
   const FAQ_FIELDS = {"id":"id","question":"title","answer":"metadata.answer.value","category":"terms|term-slug:faq_category"} as const;
   const FAQTABS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
   const BENTO_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","size":"metadata.size.value"} as const;

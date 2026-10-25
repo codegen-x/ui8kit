@@ -45,7 +45,7 @@
     "time": "metadata.time.value|ago",
     "tone": "metadata.tone.value",
   } as const;
-  const TABS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
+  const TABS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","href":"slug|route"} as const;
 
   const sidenav = fromCodex<NavLink>(sidenavEntries, SIDENAV_FIELDS, CODEX);
   const metrics = fromCodex<Stat>(metricsEntries, METRICS_FIELDS, CODEX);

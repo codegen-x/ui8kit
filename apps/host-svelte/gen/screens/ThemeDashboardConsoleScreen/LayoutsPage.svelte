@@ -40,7 +40,7 @@
     "tone": "metadata.tone.value",
   } as const;
   const SIDENAV_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","href":"slug|route"} as const;
-  const TABS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
+  const TABS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","href":"slug|route"} as const;
 
   const metrics = fromCodex<Stat>(metricsEntries, METRICS_FIELDS, CODEX);
   const series = fromCodex<Point>(seriesEntries, SERIES_FIELDS, CODEX);

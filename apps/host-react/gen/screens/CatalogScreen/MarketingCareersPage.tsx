@@ -30,6 +30,7 @@ const JOBS_FIELDS = {
   "type": "metadata.type.value",
   "salary": "metadata.salary.value",
   "posted": "metadata.posted.value|ago-days",
+  "href": "slug|route",
 } as const;
 const DEPARTMENTS_FIELDS = {"id":"id","name":"title"} as const;
 

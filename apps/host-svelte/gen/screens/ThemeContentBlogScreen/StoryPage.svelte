@@ -31,7 +31,7 @@
     "image": "featured_media_id|media",
   } as const;
   const ARTICLE_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","quote":"metadata.quote.value"} as const;
-  const POSTTAGS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
+  const POSTTAGS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","href":"slug|route"} as const;
   const OUTLINE_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","href":"slug|route"} as const;
 
   const posts = fromCodex<Post>(postsEntries, POSTS_FIELDS, CODEX);

@@ -53,7 +53,7 @@ const STATS_FIELDS = {
   "icon": "metadata.icon.value",
   "hint": "metadata.hint.value",
 } as const;
-const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","href":"slug|route"} as const;
 const TESTIMONIALS_FIELDS = {
   "id": "id",
   "author": "title",

@@ -41,9 +41,9 @@ const STATS_FIELDS = {
   "icon": "metadata.icon.value",
   "hint": "metadata.hint.value",
 } as const;
-const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
-const CONTACTS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
-const COMMUNITY_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","href":"slug|route"} as const;
+const CONTACTS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","href":"slug|route"} as const;
+const COMMUNITY_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","href":"slug|route"} as const;
 
 const sitemap = fromCodex<MegaGroup>(sitemapEntries, SITEMAP_FIELDS, CODEX);
 const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS, CODEX);

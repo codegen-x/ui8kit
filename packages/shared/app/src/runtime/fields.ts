@@ -129,8 +129,10 @@ export const menuCategoryFields = {
 const m = (k: string) => `metadata.${k}.value` as const;
 /** id + title + text + icon: features, values, perks, delivery facts, payments, support channels, contacts (Feature) */
 const card = { id: "id", title: "title", text: m("text"), icon: m("icon") } as const;
+/** the same card as a Feature record, with the address from the slug (`href` only where the app routes the kind, else no link) */
+const linkedCard = { ...card, href: "slug|route" } as const;
 export const KIT_FIELDS = {
-  feature: card, value: card, perk: card, fact: card, payment: card, channel: card, contact: card, step: card,
+  feature: linkedCard, value: linkedCard, perk: linkedCard, fact: linkedCard, payment: card, channel: linkedCard, contact: linkedCard, step: card,
   logo: { id: "id", name: "title", icon: m("icon") },
   testimonial: { id: "id", author: "title", role: m("role"), company: m("company"), quote: m("quote"), rating: m("rating"), handle: m("handle"), time: `${m("time")}|ago-short`, mark: m("mark") },
   cartline: { id: "id", name: "title", variant: m("variant"), price: m("price"), currency: m("currency"), qty: m("qty") },
@@ -143,8 +145,8 @@ export const KIT_FIELDS = {
   prompt: { id: "id", name: "title", icon: m("icon") },
   promptFilter: { id: "id", title: "title", value: m("value"), icon: m("icon") },
   template: { id: "id", title: "title", views: `${m("views")}|compact`, likes: `${m("likes")}|compact`, topic: m("topic") },
-  tab: { id: "id", name: "title", icon: m("icon") },
-  posttag: { id: "id", name: "title", icon: m("icon") },
+  tab: { id: "id", name: "title", icon: m("icon"), href: "slug|route" },
+  posttag: { id: "id", name: "title", icon: m("icon"), href: "slug|route" },
   row: { id: "id", label: "title", a: m("a"), b: m("b"), c: m("c") },
   pack: { id: "id", name: "title", credits: m("credits"), price: m("price"), currency: m("currency"), badge: m("badge") },
   tile: { id: "id", title: "title", text: m("text"), icon: m("icon"), size: m("size") },
@@ -166,12 +168,12 @@ export const KIT_FIELDS = {
   promo: { id: "id", code: "title" },
   member: { id: "id", name: "title", role: m("role"), dept: m("dept"), location: m("location"), bio: m("bio"), skills: m("skills") },
   photo: { id: "id", title: "title", tag: m("tag"), size: m("size") },
-  project: { id: "id", title: "title", category: "terms|term:project_category", year: m("year"), summary: m("summary"), tags: m("tags"), featured: m("featured"), client: m("client") },
-  job: { id: "id", title: "title", dept: m("dept"), location: m("location"), type: m("type"), salary: m("salary"), posted: `${m("posted")}|ago-days` },
+  project: { id: "id", title: "title", category: "terms|term:project_category", year: m("year"), summary: m("summary"), tags: m("tags"), featured: m("featured"), client: m("client"), href: "slug|route" },
+  job: { id: "id", title: "title", dept: m("dept"), location: m("location"), type: m("type"), salary: m("salary"), posted: `${m("posted")}|ago-days`, href: "slug|route" },
   department: { id: "id", name: "title" },
   milestone: { id: "id", date: m("date"), title: "title", text: m("text"), tag: m("tag") },
   skill: { id: "id", label: "title", level: m("level") },
-  question: { id: "id", question: "title", answer: m("answer"), category: "terms|term:faq_category", icon: m("icon") },
+  question: { id: "id", question: "title", answer: m("answer"), category: "terms|term:faq_category", icon: m("icon"), href: "slug|route" },
   // the copy decks of the taste screens (packages/compose-gen/fixtures/deck*.json -> packages/taste-data/content/copy.json): kind `deck` and
   // its parts, which name their deck (`deck`) and their place in it (`position`); figures and prices are poster copy, text
   deck: { brand: "title", nav: m("nav"), eyebrow: m("eyebrow"), title: m("headline"), accent: m("accent"), lead: m("lead"), cta: m("cta"),

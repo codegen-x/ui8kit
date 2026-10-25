@@ -41,7 +41,7 @@
     "currency": "metadata.currency.value",
   } as const;
   const DAYS_FIELDS = {"id":"id","title":"title","note":"metadata.note.value","slots":"metadata.slots.value","closed":"metadata.closed.value"} as const;
-  const DELIVERYFACTS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+  const DELIVERYFACTS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","href":"slug|route"} as const;
   const STORES_FIELDS = {
     "id": "id",
     "name": "title",

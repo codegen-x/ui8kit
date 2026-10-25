@@ -48,7 +48,7 @@
     "icon": "metadata.icon.value",
     "hint": "metadata.hint.value",
   } as const;
-  const VALUES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+  const VALUES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","href":"slug|route"} as const;
   const MEMBERS_FIELDS = {
     "id": "id",
     "name": "title",
@@ -66,6 +66,7 @@
     "type": "metadata.type.value",
     "salary": "metadata.salary.value",
     "posted": "metadata.posted.value|ago-days",
+    "href": "slug|route",
   } as const;
   const DEPARTMENTS_FIELDS = {"id":"id","name":"title"} as const;
   const PHOTOS_FIELDS = {"id":"id","title":"title","tag":"metadata.tag.value","size":"metadata.size.value"} as const;

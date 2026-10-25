@@ -20,7 +20,7 @@ import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { features as featuresEntries } from "@ui8kit/app-shared/data/features";
 
-const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","href":"slug|route"} as const;
 
 const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS, CODEX);
 

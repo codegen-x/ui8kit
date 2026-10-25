@@ -25,7 +25,7 @@ import { stats as statsEntries } from "@ui8kit/app-shared/data/stats";
 import { bento as bentoEntries } from "@ui8kit/app-shared/data/bento";
 
 const TERMINAL_FIELDS = {"id":"id","text":"title","kind":"metadata.line_kind.value"} as const;
-const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","href":"slug|route"} as const;
 const STATS_FIELDS = {
   "id": "id",
   "label": "title",

@@ -32,7 +32,7 @@
   import { zones as zonesEntries } from "@ui8kit/app-shared/data/zones";
 
   const LOGOS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
-  const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+  const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","href":"slug|route"} as const;
   const STATS_FIELDS = {
     "id": "id",
     "label": "title",
@@ -70,8 +70,9 @@
     "answer": "metadata.answer.value",
     "category": "terms|term:faq_category",
     "icon": "metadata.icon.value",
+    "href": "slug|route",
   } as const;
-  const CHANNELS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+  const CHANNELS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","href":"slug|route"} as const;
   const ZONES_FIELDS = {
     "id": "id",
     "name": "title",

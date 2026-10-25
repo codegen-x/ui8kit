@@ -72,7 +72,8 @@
       "fields": {
         "id": "id",
         "name": "title",
-        "icon": "metadata.icon.value"
+        "icon": "metadata.icon.value",
+        "href": "slug|route"
       }
     }
   ],

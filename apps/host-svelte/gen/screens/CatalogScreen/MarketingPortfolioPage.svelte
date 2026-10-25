@@ -29,6 +29,7 @@
     "tags": "metadata.tags.value",
     "featured": "metadata.featured.value",
     "client": "metadata.client.value",
+    "href": "slug|route",
   } as const;
 
   const projects = fromCodex<Project>(projectsEntries, PROJECTS_FIELDS, CODEX);

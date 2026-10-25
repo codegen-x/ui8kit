@@ -25,7 +25,7 @@
   import { perks as perksEntries } from "@ui8kit/app-shared/data/perks";
 
   const TERMINAL_FIELDS = {"id":"id","text":"title","kind":"metadata.line_kind.value"} as const;
-  const PERKS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+  const PERKS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","href":"slug|route"} as const;
 
   const terminal = fromCodex<CodeLine>(terminalEntries, TERMINAL_FIELDS, CODEX);
   const perks = fromCodex<Feature>(perksEntries, PERKS_FIELDS, CODEX);

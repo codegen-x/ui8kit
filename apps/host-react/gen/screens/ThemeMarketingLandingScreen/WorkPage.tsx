@@ -31,6 +31,7 @@ const PROJECTS_FIELDS = {
   "tags": "metadata.tags.value",
   "featured": "metadata.featured.value",
   "client": "metadata.client.value",
+  "href": "slug|route",
 } as const;
 const PHOTOS_FIELDS = {"id":"id","title":"title","tag":"metadata.tag.value","size":"metadata.size.value"} as const;
 

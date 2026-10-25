@@ -20,7 +20,7 @@ import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { channels as channelsEntries } from "@ui8kit/app-shared/data/channels";
 
-const CHANNELS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+const CHANNELS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","href":"slug|route"} as const;
 
 const channels = fromCodex<Feature>(channelsEntries, CHANNELS_FIELDS, CODEX);
 </script>

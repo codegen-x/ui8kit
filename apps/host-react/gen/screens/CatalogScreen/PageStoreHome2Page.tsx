@@ -46,7 +46,7 @@ const ZONES_FIELDS = {
   "currency": "metadata.currency.value",
 } as const;
 const SITEMAP_FIELDS = {"id":"id","title":"title","icon":"metadata.icon.value","links":"id|menu","href":"slug|route"} as const;
-const PERKS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+const PERKS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","href":"slug|route"} as const;
 const PRODUCTS_FIELDS = {
   "id": "id",
   "name": "title",
@@ -62,7 +62,7 @@ const PRODUCTS_FIELDS = {
   "href": "slug|route",
   "image": "featured_media_id|media",
 } as const;
-const DELIVERYFACTS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+const DELIVERYFACTS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","href":"slug|route"} as const;
 const STORES_FIELDS = {
   "id": "id",
   "name": "title",

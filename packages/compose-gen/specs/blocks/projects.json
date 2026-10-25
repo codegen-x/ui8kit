@@ -113,7 +113,8 @@
         "summary": "metadata.summary.value",
         "tags": "metadata.tags.value",
         "featured": "metadata.featured.value",
-        "client": "metadata.client.value"
+        "client": "metadata.client.value",
+        "href": "slug|route"
       }
     }
   ],

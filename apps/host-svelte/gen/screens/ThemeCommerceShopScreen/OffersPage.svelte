@@ -36,7 +36,7 @@
     "href": "slug|route",
     "image": "featured_media_id|media",
   } as const;
-  const PERKS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+  const PERKS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","href":"slug|route"} as const;
   const CART_FIELDS = {
     "id": "id",
     "name": "title",

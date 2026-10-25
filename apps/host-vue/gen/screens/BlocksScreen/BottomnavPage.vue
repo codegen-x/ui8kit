@@ -20,7 +20,7 @@ import { CODEX } from "@ui8kit/app-shared/runtime/codex";
 import { ui } from "@ui8kit/app-shared/content";
 import { tabs as tabsEntries } from "@ui8kit/app-shared/data/tabs";
 
-const TABS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value"} as const;
+const TABS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","href":"slug|route"} as const;
 
 const tabs = fromCodex<NavLink>(tabsEntries, TABS_FIELDS, CODEX);
 </script>

@@ -82,7 +82,8 @@
         "id": "id",
         "title": "title",
         "text": "metadata.text.value",
-        "icon": "metadata.icon.value"
+        "icon": "metadata.icon.value",
+        "href": "slug|route"
       }
     }
   ],

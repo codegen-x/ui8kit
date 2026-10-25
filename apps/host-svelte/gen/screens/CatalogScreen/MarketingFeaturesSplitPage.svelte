@@ -29,7 +29,7 @@
     "icon": "metadata.icon.value",
     "hint": "metadata.hint.value",
   } as const;
-  const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+  const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","href":"slug|route"} as const;
 
   const stats = fromCodex<Stat>(statsEntries, STATS_FIELDS, CODEX);
   const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS, CODEX);

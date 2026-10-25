@@ -25,7 +25,7 @@
   import { features as featuresEntries } from "@ui8kit/app-shared/data/features";
   import { bento as bentoEntries } from "@ui8kit/app-shared/data/bento";
 
-  const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+  const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","href":"slug|route"} as const;
   const BENTO_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","size":"metadata.size.value"} as const;
 
   const features = fromCodex<Feature>(featuresEntries, FEATURES_FIELDS, CODEX);

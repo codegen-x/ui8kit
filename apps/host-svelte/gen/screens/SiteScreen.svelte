@@ -32,7 +32,7 @@
 
   const ROUTES = [{"path":"","area":"home"},{"path":"pricing","area":"pricing"}] as const;
   const TERMINAL_FIELDS = {"id":"id","text":"title","kind":"metadata.line_kind.value"} as const;
-  const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+  const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","href":"slug|route"} as const;
   const TIERS_FIELDS = {
     "id": "id",
     "name": "title",

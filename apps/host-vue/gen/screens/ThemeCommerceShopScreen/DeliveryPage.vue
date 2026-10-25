@@ -23,7 +23,7 @@ import { zones as zonesEntries } from "@ui8kit/app-shared/data/zones";
 import { stores as storesEntries } from "@ui8kit/app-shared/data/stores";
 
 const DAYS_FIELDS = {"id":"id","title":"title","note":"metadata.note.value","slots":"metadata.slots.value","closed":"metadata.closed.value"} as const;
-const DELIVERYFACTS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+const DELIVERYFACTS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","href":"slug|route"} as const;
 const ZONES_FIELDS = {
   "id": "id",
   "name": "title",

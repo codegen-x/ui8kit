@@ -127,7 +127,8 @@
         "location": "metadata.location.value",
         "type": "metadata.type.value",
         "salary": "metadata.salary.value",
-        "posted": "metadata.posted.value|ago-days"
+        "posted": "metadata.posted.value|ago-days",
+        "href": "slug|route"
       }
     },
     {

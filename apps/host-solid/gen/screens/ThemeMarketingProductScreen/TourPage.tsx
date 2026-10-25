@@ -28,7 +28,7 @@ import { testimonials as testimonialsEntries } from "@ui8kit/app-shared/data/tes
 import { megagroups as megagroupsEntries } from "@ui8kit/app-shared/data/megagroups";
 
 const NAVLINKS_FIELDS = {"id":"id","name":"title","icon":"metadata.icon.value","href":"slug|route"} as const;
-const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+const FEATURES_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","href":"slug|route"} as const;
 const BEFOREAFTER_FIELDS = {"id":"id","title":"title","before":"metadata.before.value","after":"metadata.after.value"} as const;
 const STEPS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
 const TESTIMONIALS_FIELDS = {

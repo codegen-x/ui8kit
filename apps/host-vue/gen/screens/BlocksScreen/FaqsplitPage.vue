@@ -24,7 +24,7 @@ import { channels as channelsEntries } from "@ui8kit/app-shared/data/channels";
 import { faqtabs as faqtabsEntries } from "@ui8kit/app-shared/data/faqtabs";
 import { questions as questionsEntries } from "@ui8kit/app-shared/data/questions";
 
-const CHANNELS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value"} as const;
+const CHANNELS_FIELDS = {"id":"id","title":"title","text":"metadata.text.value","icon":"metadata.icon.value","href":"slug|route"} as const;
 const FAQTABS_FIELDS = {"id":"id","title":"title","value":"metadata.value.value"} as const;
 const QUESTIONS_FIELDS = {
   "id": "id",
@@ -32,6 +32,7 @@ const QUESTIONS_FIELDS = {
   "answer": "metadata.answer.value",
   "category": "terms|term:faq_category",
   "icon": "metadata.icon.value",
+  "href": "slug|route",
 } as const;
 
 const channels = fromCodex<Feature>(channelsEntries, CHANNELS_FIELDS, CODEX);
