@@ -52,7 +52,7 @@ the engine's outcome into the view models of the layouts (tested in `view.test.t
 - **Live previews**: a card renders the real block variant (or the composed screen page) from `content/previews.v0.json` through
   `@ui8kit/layouts/preview` (organisms of `@codegen-x/svelte-compose` by name, props merged as compose-gen does, Codex data through
   `@ui8kit/app-shared`), drawn at desktop width (the window, when narrower) and scaled into a 16:10 frame.
-- **Theme**: the Magazine's model (`apps/magazine/src/lib/global-theme.ts`, imported as is, stored under `stock:v1:theme`): mode, skin,
+- **Theme**: the global theme model `@ui8kit/theme-model/global-theme` (shared with the Magazine; stored under `stock:v1:theme`): mode, skin,
   font, radius, density, applied to the document root, so every preview follows it.
 - **Languages**: en, fr, de, es, ru (`content/i18n/<locale>.json` and `locales.json`, data); the switch is in the header and is kept on
   this device. Ids and URL parameters stay English; block titles are the kit dictionary's (English).

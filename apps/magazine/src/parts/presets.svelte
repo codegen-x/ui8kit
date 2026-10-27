@@ -3,7 +3,7 @@
   import ui from "../../content/ui.json";
   import { cliLine, presetOf } from "@ui8kit/taste-data/preset";
   import { allStyles, savedTokens } from "../lib/collections.svelte";
-  import { withTokens } from "../lib/design";
+  import { withTokens } from "@ui8kit/theme-model/design";
 
   const items = $derived(allStyles().flatMap((k) => { const p = presetOf(k); return p ? [withTokens(p, savedTokens(k))] : []; }));
   let copied = $state("");

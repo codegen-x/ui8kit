@@ -25,7 +25,7 @@
   import { TEMPLATES, type TemplateId } from "../templates/registry";
   import TemplateStage from "./template-stage.svelte";
   import { theme } from "../lib/theme.svelte";
-  import { effective, setToken, tokenAttrs, tokenStyle, withTokens } from "../lib/design";
+  import { effective, setToken, tokenAttrs, tokenStyle, withTokens } from "@ui8kit/theme-model/design";
   import { gtheme, resetTheme, setTheme } from "../lib/global-theme.svelte";
   import Card from "./card.svelte";
   import Heart from "./heart.svelte";

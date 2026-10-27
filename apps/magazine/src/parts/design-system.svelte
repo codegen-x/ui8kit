@@ -9,7 +9,7 @@
   import { family, FONT_IDS, type FontId } from "@ui8kit/taste-data/fonts";
   import { SKIN_IDS, RADII, type SkinId } from "@ui8kit/taste-data/taste";
   import ui from "../../content/ui.json";
-  import type { Tokens } from "../lib/design";
+  import type { Tokens } from "@ui8kit/theme-model/design";
   import DsElementTokens from "./ds-element-tokens.svelte";
   import DsSpecimen from "./ds-specimen.svelte";
   import FilterGroup from "../feed/filter-group.svelte";

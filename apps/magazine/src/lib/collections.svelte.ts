@@ -2,7 +2,7 @@
 // The default collection `recommended` ("Recommended") always exists and is where a heart puts a style. Packs and Presets are
 // read-only views over these collections. Reset clears everything the magazine keeps (and Discovery's picks it merges from).
 import { decodePicks, type StyleKey } from "@ui8kit/taste-data/picks";
-import { cleanTokens, type Tokens } from "./design";
+import { cleanTokens, type Tokens } from "@ui8kit/theme-model/design";
 import { clearStore } from "@ui8kit/taste-data/picks-store";
 
 export const COLLECTIONS_KEY = "magazine:v1:collections";

@@ -24,8 +24,9 @@
       "types": "./src/index.ts",
       "default": "./src/index.ts"
     },
-    "./preview/recipe": "./src/preview/recipe.ts",
     "./preview/load": "./src/preview/load.ts",
+    "./preview/nav": "./src/preview/nav.ts",
+    "./preview/recipe": "./src/preview/recipe.ts",
     "./stock/text": "./src/stock/text.ts",
     "./styles/*": "./src/styles/*",
     "./package.json": "./package.json"
@@ -36,6 +37,7 @@
   },
   "dependencies": {
     "@codegen-x/svelte-compose": "workspace:*",
+    "@ui8kit/app-shared": "workspace:*",
     "@ui8kit/facet-search": "workspace:*"
   },
   "peerDependencies": {

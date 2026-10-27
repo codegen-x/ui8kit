@@ -13,7 +13,7 @@
   import Feed from "./feed/feed.svelte";
   import FilterSheet from "./feed/filter-sheet.svelte";
   import { startTune, tuning } from "./lib/tune.svelte";
-  import { rootAttrs, rootStyle } from "./lib/global-theme";
+  import { rootAttrs, rootStyle } from "@ui8kit/theme-model/global-theme";
   import { gtheme } from "./lib/global-theme.svelte";
   import ThemeSheet from "./theme/theme-sheet.svelte";
   import Sphere from "./parts/sphere.svelte";
@@ -32,7 +32,7 @@
 
 <svelte:window onhashchange={() => (hash = location.hash)} />
 
-<!-- the global theme (lib/global-theme.ts) sits on the root: skin, radius, font and tokens for the whole site; styles override it -->
+<!-- the global theme (@ui8kit/theme-model/global-theme) sits on the root: skin, radius, font and tokens for the whole site; styles override it -->
 <Block class="mg-root" style={rootStyle(gtheme.value, (f) => family(f as FontId))} {...rootAttrs(gtheme.value)} data-testid="magazine-root">
   <header class="mg-header" data-phase={mag.phase}>
     <a class="mg-title" href="#/">{ui.title}</a>

@@ -7,7 +7,7 @@
   import { onMount } from "svelte";
   import { family, type FontId } from "@ui8kit/taste-data/fonts";
   import type { Deck } from "@ui8kit/taste-data/copy";
-  import { tokenAttrs, tokenStyle, type Tokens } from "../lib/design";
+  import { tokenAttrs, tokenStyle, type Tokens } from "@ui8kit/theme-model/design";
   import type { TemplateDef } from "../templates/registry";
 
   let { template, c, skin, font, radius, tokens = {}, label }: { template: TemplateDef; c: Deck; skin: string; font: FontId; radius: number; tokens?: Tokens; label: string } = $props();

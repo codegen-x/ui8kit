@@ -6,7 +6,7 @@
   let { name, legend, options, selected, multiple, onchange, field }: {
     name: string; legend: string; options: Array<{ value: string; label: string }>; selected: string[]; multiple: boolean;
     onchange: (values: string[]) => void;
-    /** the theme field it edits (lib/global-theme.ts FIELDS), as data-field */
+    /** the theme field it edits (@ui8kit/theme-model/global-theme FIELDS), as data-field */
     field?: string;
   } = $props();
 

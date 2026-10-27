@@ -3,7 +3,7 @@
 <script lang="ts">
   import { Box, Button, Group, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import ui from "../../content/ui.json";
-  import { isDefault } from "../lib/global-theme";
+  import { isDefault } from "@ui8kit/theme-model/global-theme";
   import { gtheme, resetTheme, setTheme } from "../lib/global-theme.svelte";
   import ThemeFields from "./theme-fields.svelte";
   import ThemeIo from "./theme-io.svelte";

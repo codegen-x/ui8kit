@@ -1,6 +1,6 @@
 // Headless check that the theme is one model with synchronised views, against a running server (default http://localhost:5190):
 // A. the style page's Design system tab -> the Theme sheet (both panels) and the site root; B. the Theme sheet -> the tab and the site;
-// coverage: every field of the model (lib/global-theme.ts FIELDS) has a control in the Theme panel, its Design system panel and the
+// coverage: every field of the model (@ui8kit/theme-model/global-theme FIELDS) has a control in the Theme panel, its Design system panel and the
 // tab; C. an imported config shows in all three views, survives a reload, and every export equals it. `bun scripts/e2e-theme-sync.mjs`
 // (SHOTS=<dir> TAG=<name> also saves screenshots)
 import { chromium } from "../../../node_modules/playwright-core/index.mjs";

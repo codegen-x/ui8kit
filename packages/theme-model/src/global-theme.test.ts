@@ -1,6 +1,6 @@
 import { describe, expect, test } from "bun:test";
 import { readFileSync } from "node:fs";
-import { cleanTheme, densityOf, isDefault, NO_THEME, readTheme, rootAttrs, rootStyle, setDensity, STORE_THEME, writeTheme } from "./global-theme";
+import { cleanTheme, densityOf, isDefault, NO_THEME, readTheme, rootAttrs, rootStyle, setDensity, writeTheme } from "./global-theme";
 
 const mem = () => { const m = new Map<string, string>(); return { getItem: (k: string) => m.get(k) ?? null, setItem: (k: string, v: string) => void m.set(k, v), removeItem: (k: string) => void m.delete(k), m }; };
 
@@ -12,10 +12,14 @@ describe("global theme", () => {
   test("round trip through storage; the default is not stored", () => {
     const s = mem();
     const t = { skin: "claude", font: "manrope", radius: 12, tokens: { "shadow-card": "sm" } };
-    writeTheme(t, s);
-    expect(readTheme(s)).toEqual(t);
-    writeTheme(NO_THEME, s);
-    expect(s.m.has(STORE_THEME)).toBe(false);
+    writeTheme("magazine:v1:theme", t, s);
+    expect(readTheme("magazine:v1:theme", s)).toEqual(t);
+    expect(readTheme("stock:v1:theme", s)).toEqual(NO_THEME);
+    writeTheme("stock:v1:theme", { ...t, skin: "sky" }, s);
+    expect(readTheme("magazine:v1:theme", s)).toEqual(t);
+    writeTheme("magazine:v1:theme", NO_THEME, s);
+    expect(s.m.has("magazine:v1:theme")).toBe(false);
+    expect([...s.m.keys()]).toEqual(["stock:v1:theme"]);
   });
   test("one density for all elements", () => {
     const t = setDensity({}, "compact");
@@ -35,7 +39,6 @@ describe("global theme", () => {
 import { RADII, SKIN_IDS } from "@ui8kit/taste-data/taste";
 import { FONT_IDS } from "@ui8kit/taste-data/font-ids";
 import { presetOf } from "@ui8kit/taste-data/preset";
-import ui from "../../content/ui.json";
 import { cleanTokens, DENSITY_ELEMENTS, ELEMENTS, SHADOW_ELEMENTS } from "./design";
 import { FIELD_IDS, FIELDS, fieldValue, fromConfig, setThemeField, THEME_SCHEMA, toConfig, viewFields, type GlobalTheme } from "./global-theme";
 
@@ -57,15 +60,11 @@ describe("theme coverage parity", () => {
     expect(FIELDS.find((f) => f.id === "font")!.values).toEqual(FONT_IDS);
     expect(FIELDS.find((f) => f.id === "radius")!.values).toEqual(RADII);
   });
-  test("both views (Theme panel and Design system panel) render every field, with a label for each", () => {
+  test("both views (Theme panel and Design system panel) render every field", () => {
     for (const view of ["sheet", "design"] as const) {
       const v = viewFields(view);
       expect(v.map((r) => r.field.id)).toEqual([...FIELD_IDS]);
-      for (const r of v) {
-        expect(["radio", "select"]).toContain(r.control);
-        const label = r.field.group === "site" ? (ui.theme as Record<string, unknown>)[r.field.id] : (ui.design.elements as Record<string, string>)[r.field.element!];
-        expect(typeof label).toBe("string");
-      }
+      for (const r of v) expect(["radio", "select"]).toContain(r.control);
     }
   });
   test("every value of every field survives set -> export -> JSON -> import", () => {
@@ -120,7 +119,7 @@ describe("theme coverage parity", () => {
 });
 
 describe("per-element tokens: field -> data-slot -> kit.css", () => {
-  const root = new URL("../../../../", import.meta.url).pathname;
+  const root = new URL("../../../", import.meta.url).pathname;
   const read = (p: string): string => readFileSync(root + p, "utf8");
   const kit = read("packages/kit-compose/svelte/src/styles/kit.css");
   const map = read("packages/kit-compose/src/map.ts");

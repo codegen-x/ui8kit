@@ -1,29 +1,23 @@
-// The Theme of Stock: the Magazine's global theme model (apps/magazine/src/lib/global-theme.ts: skin, font, radius, per-element
-// tokens, the light/dark mode of @ui8kit/app-shared), read as it is and kept under Stock's own key. Applied to the document root, so
+// The Theme of Stock: the global theme model the Magazine uses too (@ui8kit/theme-model/global-theme: skin, font, radius,
+// per-element tokens, the light/dark mode of @ui8kit/app-shared), kept under Stock's own key. Applied to the document root, so
 // every live preview (and the storefront around it) follows it.
 import { applyTheme, initTheme } from "@ui8kit/app-shared/runtime/theme";
 import { family, type FontId } from "@ui8kit/taste-data/fonts";
 import { FONT_IDS } from "@ui8kit/taste-data/font-ids";
 import { RADII, SKIN_IDS } from "@ui8kit/taste-data/taste";
 import type { StockText, ThemeField } from "@ui8kit/layouts/stock/text";
-import { densityOf, DENSITIES, NO_THEME, readTheme, rootAttrs, rootStyle, setDensity, setThemeField, writeTheme, type GlobalTheme } from "../../../magazine/src/lib/global-theme";
+import { densityOf, DENSITIES, NO_THEME, readTheme, rootAttrs, rootStyle, setDensity, setThemeField, writeTheme, type GlobalTheme } from "@ui8kit/theme-model/global-theme";
 
 const KEY = "stock:v1:theme";
-const MAGAZINE_KEY = "magazine:v1:theme";
-/** the Magazine's storage functions, pointed at Stock's key */
-const store = {
-  getItem: (k: string) => (k === MAGAZINE_KEY ? safe(() => localStorage.getItem(KEY)) : null),
-  setItem: (k: string, v: string) => { if (k === MAGAZINE_KEY) safe(() => localStorage.setItem(KEY, v)); },
-  removeItem: (k: string) => { if (k === MAGAZINE_KEY) safe(() => localStorage.removeItem(KEY)); },
-};
-function safe<T>(f: () => T): T | null { try { return f(); } catch { return null; } }
+/** localStorage, or null where it is blocked */
+const store = ((): Storage | null => { try { return localStorage; } catch { return null; } })();
 
 export type Mode = "light" | "dark";
 export type ThemeState = { mode: Mode; theme: GlobalTheme };
 
 export function loadTheme(): ThemeState {
   initTheme("dark");
-  return { mode: document.documentElement.dataset.theme === "light" ? "light" : "dark", theme: readTheme(store) };
+  return { mode: document.documentElement.dataset.theme === "light" ? "light" : "dark", theme: readTheme(KEY, store) };
 }
 
 let applied: string[] = [];
@@ -41,7 +35,7 @@ export function applyState(s: ThemeState): void {
     const at = decl.indexOf(":");
     root.style.setProperty(decl.slice(0, at), decl.slice(at + 1));
   }
-  writeTheme(s.theme, store);
+  writeTheme(KEY, s.theme, store);
 }
 
 export function setField(s: ThemeState, id: string, value: string): ThemeState {

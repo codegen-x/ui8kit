@@ -1,12 +1,12 @@
-<!-- Every field of the global theme (lib/global-theme.ts FIELDS) as one control: mode, skin, font, default radius, and radius,
+<!-- Every field of the global theme (@ui8kit/theme-model/global-theme FIELDS) as one control: mode, skin, font, default radius, and radius,
      density and shadow per element. Both panels of the Theme sheet render it (view "sheet": compact selects; view "design": radio
      groups), so both cover every field; values come from the controller (lib/global-theme.svelte.ts) and go back through it. -->
 <script lang="ts">
   import type { Snippet } from "svelte";
   import { Stack, Title } from "@codegen-x/svelte-compose";
   import ui from "../../content/ui.json";
-  import { DENSITIES, densityOf, fieldValue, setDensity, viewFields, type Field, type FieldGroup, type ThemeView } from "../lib/global-theme";
-  import type { Density } from "../lib/design";
+  import { DENSITIES, densityOf, fieldValue, setDensity, viewFields, type Field, type FieldGroup, type ThemeView } from "@ui8kit/theme-model/global-theme";
+  import type { Density } from "@ui8kit/theme-model/design";
   import { currentMode, gtheme, setField, setTheme } from "../lib/global-theme.svelte";
   import FilterGroup from "../feed/filter-group.svelte";
   import FilterSelect from "../feed/filter-select.svelte";

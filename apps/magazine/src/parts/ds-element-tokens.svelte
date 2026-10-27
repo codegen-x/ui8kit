@@ -1,11 +1,11 @@
-<!-- The per-element tokens of the Design system: radius, density and shadow of badge, button, card, alert and media (lib/design.ts),
+<!-- The per-element tokens of the Design system: radius, density and shadow of badge, button, card, alert and media (@ui8kit/theme-model/design),
      one radio group per element and token (native radios, the toggle buttons of the Filters sheet). Shared by the style page's
      Design system tab and the global Theme sheet (src/theme). -->
 <script lang="ts">
   import { Stack, Title } from "@codegen-x/svelte-compose";
   import { RADII } from "@ui8kit/taste-data/taste";
   import ui from "../../content/ui.json";
-  import { DENSITIES, DENSITY_ELEMENTS, ELEMENTS, SHADOW_ELEMENTS, SHADOWS, type Tokens } from "../lib/design";
+  import { DENSITIES, DENSITY_ELEMENTS, ELEMENTS, SHADOW_ELEMENTS, SHADOWS, type Tokens } from "@ui8kit/theme-model/design";
   import FilterGroup from "../feed/filter-group.svelte";
 
   let { radius, tokenValues, ontoken, idp = "ds" }: { radius: number; tokenValues: Tokens; ontoken: (key: string, value: number | string | null) => void; /** name prefix: unique per use on a page */ idp?: string } = $props();

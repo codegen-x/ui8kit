@@ -38,6 +38,7 @@
     "@ui8kit/panorama": "workspace:*",
     "@codegen-x/svelte-compose": "workspace:*",
     "@ui8kit/taste-data": "workspace:*",
+    "@ui8kit/theme-model": "workspace:*",
     "@ui8kit/taste-screens": "workspace:*",
     "svelte": "^5.57.0",
     "three": "^0.186.1"

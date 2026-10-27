@@ -4,7 +4,7 @@
 
   let { name, legend, options, value, onchange, field }: {
     name: string; legend: string; options: Array<{ value: string; label: string }>; value: string; onchange: (value: string) => void;
-    /** the theme field it edits (lib/global-theme.ts FIELDS), as data-field */
+    /** the theme field it edits (@ui8kit/theme-model/global-theme FIELDS), as data-field */
     field?: string;
   } = $props();
 </script>

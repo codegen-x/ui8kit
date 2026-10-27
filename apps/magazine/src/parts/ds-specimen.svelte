@@ -5,7 +5,7 @@
   import { family, type FontId } from "@ui8kit/taste-data/fonts";
   import { RADII } from "@ui8kit/taste-data/taste";
   import ui from "../../content/ui.json";
-  import { tokenAttrs, tokenStyle, type Tokens } from "../lib/design";
+  import { tokenAttrs, tokenStyle, type Tokens } from "@ui8kit/theme-model/design";
   import type { Token } from "../lib/tokens";
 
   let { skin, font, radius, tokens, tokenValues, idp = "ds" }: { skin: string; font: FontId; radius: number; tokens: { light: Token[]; dark: Token[] }; tokenValues: Tokens; /** id prefix: unique per use on a page */ idp?: string } = $props();

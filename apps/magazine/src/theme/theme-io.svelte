@@ -1,4 +1,4 @@
-<!-- Export and import of the whole global theme: one JSON config with every field (lib/global-theme.ts toConfig / fromConfig, format
+<!-- Export and import of the whole global theme: one JSON config with every field (@ui8kit/theme-model/global-theme toConfig / fromConfig, format
      magazine-theme v2; a style preset from "Copy preset" imports too). Used by both panels of the Theme sheet and the style page's
      Design system tab: the same config everywhere. -->
 <script lang="ts">

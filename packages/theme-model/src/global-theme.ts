@@ -1,6 +1,7 @@
-// The global theme of the magazine: the one model of the site's design (Model). One skin, font, default radius and per-element tokens
-// for the whole site, from one place, on top of the defaults. Saved on this device (`magazine:v1:theme`); the light/dark mode is the
-// app's own (`codegen-x-theme`, @ui8kit/app-shared runtime/theme) and is part of the model's fields and of the exported config.
+// The global theme: the one model of a site's design (Model), shared by the apps (moved from apps/magazine/src/lib; the Magazine
+// and Stock read it by package name). One skin, font, default radius and per-element tokens for the whole site, from one place, on
+// top of the defaults. Saved on this device under the app's own key (readTheme/writeTheme take it: the Magazine `magazine:v1:theme`,
+// Stock `stock:v1:theme`); the light/dark mode is the app's own (`codegen-x-theme`, @ui8kit/app-shared runtime/theme) and is part of the model's fields and of the exported config.
 // FIELDS below is the schema of every setting: the controller (global-theme.svelte.ts) writes them, and every view (the Theme sheet,
 // its Design system panel, the style page's Design system tab) renders them; export/import (toConfig/fromConfig, format
 // `magazine-theme` v2, THEME_SCHEMA) carries all of them.
@@ -17,7 +18,6 @@ import { FONT_IDS } from "@ui8kit/taste-data/font-ids";
 import { RADII, SKIN_IDS } from "@ui8kit/taste-data/taste";
 import { cleanTokens, DENSITIES, DENSITY_ELEMENTS, DENSITY_VARS, ELEMENT_SLOT, ELEMENTS, setToken, SHADOW_ELEMENTS, SHADOWS, tokenAttrs, tokenStyle, type Density, type Tokens } from "./design";
 
-export const STORE_THEME = "magazine:v1:theme";
 export type GlobalTheme = { skin: string | null; font: string | null; radius: number | null; tokens: Tokens };
 export const NO_THEME: GlobalTheme = { skin: null, font: null, radius: null, tokens: {} };
 
@@ -35,11 +35,13 @@ export const isDefault = (t: GlobalTheme): boolean => t.skin === null && t.font 
 /** localStorage, or null where there is none or it is blocked (reading the property itself throws then) */
 const local = (): Storage | null => { try { return typeof localStorage === "undefined" ? null : localStorage; } catch { return null; } };
 
-export function readTheme(store: Pick<Storage, "getItem"> | null = local()): GlobalTheme {
-  try { const raw = store?.getItem(STORE_THEME); return raw ? cleanTheme((JSON.parse(raw) as { theme?: unknown }).theme) : NO_THEME; } catch { return NO_THEME; }
+/** the theme saved under `key` (the app's own storage key) */
+export function readTheme(key: string, store: Pick<Storage, "getItem"> | null = local()): GlobalTheme {
+  try { const raw = store?.getItem(key); return raw ? cleanTheme((JSON.parse(raw) as { theme?: unknown }).theme) : NO_THEME; } catch { return NO_THEME; }
 }
-export function writeTheme(t: GlobalTheme, store: Pick<Storage, "setItem" | "removeItem"> | null = local()): void {
-  try { if (isDefault(t)) store?.removeItem(STORE_THEME); else store?.setItem(STORE_THEME, JSON.stringify({ v: 1, theme: cleanTheme(t) })); } catch { /* storage blocked: this visit only */ }
+/** save the theme under `key`; the default theme is not stored (the key is removed) */
+export function writeTheme(key: string, t: GlobalTheme, store: Pick<Storage, "setItem" | "removeItem"> | null = local()): void {
+  try { if (isDefault(t)) store?.removeItem(key); else store?.setItem(key, JSON.stringify({ v: 1, theme: cleanTheme(t) })); } catch { /* storage blocked: this visit only */ }
 }
 
 /** one density for every element that has one ("default" clears them) */
