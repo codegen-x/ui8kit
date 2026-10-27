@@ -18,7 +18,7 @@ const states: HtmlStates = new Map();
 // a card that has no snapshot yet shows its screen live (inert, aria-hidden, CSS-scaled): those screens are validated by their own
 // e2e, and a screen inside the card's link is not markup of the feed, so the live previews are left out here
 const keep = async (p: Page, name: string) => {
-  const h = "<!DOCTYPE html>\n" + (await p.evaluate(() => { const d = document.documentElement.cloneNode(true) as HTMLElement; d.querySelectorAll(".mg-live").forEach((e) => e.remove()); return d.outerHTML; })); states.set(h, [...(states.get(h) ?? []), name]); };
+  const h = "<!DOCTYPE html>\n" + (await p.evaluate(() => { const d = document.documentElement.cloneNode(true) as HTMLElement; d.querySelectorAll(".mg-live, [data-testid=card-live]").forEach((e) => e.remove()); return d.outerHTML; })); states.set(h, [...(states.get(h) ?? []), name]); };
 
 const browser = await chromium.launch({ executablePath: "/usr/bin/google-chrome", headless: true, args: ["--no-sandbox", "--use-gl=swiftshader", "--enable-unsafe-swiftshader"] });
 const ctx = await browser.newContext({ httpCredentials: { username: process.env.PREVIEW_USER ?? "admin", password: process.env.PREVIEW_PASS ?? "admin" }, viewport: { width: 1440, height: 900 } });
@@ -82,7 +82,7 @@ try {
   const edges = await q.evaluate(() => { const w = document.querySelector("[data-testid=ds-panel]")!.getBoundingClientRect(), n = document.querySelector("[data-testid=theme-panel]")!.getBoundingClientRect(); return { w: w.right, n: n.left, wv: w.width > 400 && w.left >= 0, nv: n.right <= innerWidth + 1 }; });
   ok(Math.abs(edges.w - edges.n) < 1 && edges.wv && edges.nv, "theme: the wide Design system panel is flush left of the narrow one");
   await q.locator("[data-name=gt-er-card] input[value='16']").check();
-  const vars = await q.evaluate(() => ({ root: getComputedStyle(document.querySelector("[data-testid=magazine-root]")!).getPropertyValue("--radius-card").trim(), shot: getComputedStyle(document.querySelector(".mg-shot")!).getPropertyValue("--radius-card").trim() }));
+  const vars = await q.evaluate(() => ({ root: getComputedStyle(document.querySelector("[data-testid=magazine-root]")!).getPropertyValue("--radius-card").trim(), shot: getComputedStyle(document.querySelector("[data-own-design]")!).getPropertyValue("--radius-card").trim() }));
   ok(vars.root === "16px" && vars.shot === "", `theme: a global token stops at the card boundary (root ${vars.root}, card ${vars.shot || "unset"})`);
   await keep(q, "theme-both");
   await q.locator("[data-testid=theme-close]").click();

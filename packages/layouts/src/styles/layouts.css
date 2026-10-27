@@ -8,3 +8,16 @@
   scale: var(--preview-scale, 0.25);
   pointer-events: none;
 }
+
+/* The live screen of a Magazine taste card (src/magazine/taste-card.svelte): a 1440 × 1080 taste screen at its own size, scaled to
+   the frame's width (--shot-scale, set by src/magazine/shot.ts). */
+.ui8-taste-stage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 1440px;
+  height: 1080px;
+  transform-origin: 0 0;
+  scale: var(--shot-scale, 0.1667);
+  pointer-events: none;
+}

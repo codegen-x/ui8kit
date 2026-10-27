@@ -15,6 +15,6 @@
 </script>
 
 <Stack gap="2" class="mg-skin-cell">
-  <Card {card} caption={card.skin} />
+  <Card {card} caption={card.skin} fill />
   <Button variant={current ? "secondary" : "outline"} size="sm" disabled={current} onclick={apply} data-testid="apply-skin" data-skin={card.skin}>{current ? ui.feed.applied : ui.feed.applySkin}</Button>
 </Stack>

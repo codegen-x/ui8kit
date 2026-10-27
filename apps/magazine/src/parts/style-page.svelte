@@ -167,7 +167,7 @@
       <p class="mg-note">{ui.style.seriesNote}</p>
       <div class="mg-grid">
         {#each series as item (item.key)}
-          <Card card={item} caption={famLabel(item.family)} />
+          <Card card={item} caption={famLabel(item.family)} fill />
         {/each}
       </div>
     </section>
@@ -186,7 +186,7 @@
       <h2 class="mg-h2">{ui.style.related}</h2>
       <div class="mg-grid">
         {#each related as c (c.key)}
-          <Card card={c} />
+          <Card card={c} fill />
         {/each}
       </div>
     </section>

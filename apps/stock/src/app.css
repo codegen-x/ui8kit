@@ -4,4 +4,5 @@
 @import "@ui8kit/app-shared/styles/skins.css";
 @import "@ui8kit/layouts/styles/layouts.css";
 @source "../src";
-@source "../../../packages/layouts/src";
+@source "../../../packages/layouts/src/stock";
+@source "../../../packages/layouts/src/preview";

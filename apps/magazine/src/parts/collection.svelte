@@ -22,7 +22,7 @@
     {:else}
       <div class="mg-grid">
         {#each cards as s (s.key)}
-          <Card card={s} />
+          <Card card={s} fill />
         {/each}
       </div>
     {/if}

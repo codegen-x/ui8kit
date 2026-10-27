@@ -35,6 +35,7 @@
   },
   "dependencies": {
     "@ui8kit/app-shared": "workspace:*",
+    "@ui8kit/layouts": "workspace:*",
     "@ui8kit/panorama": "workspace:*",
     "@codegen-x/svelte-compose": "workspace:*",
     "@ui8kit/taste-data": "workspace:*",

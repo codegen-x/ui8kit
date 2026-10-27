@@ -1,10 +1,12 @@
 <!--
-  One card of the feed: a 1440×1080 taste screen at 200×150 and up (the card grows with its row, 4:3). Snapshot first: a cached snapshot is an <img>; a style the cache does
+  One card of the feed: a 1440×1080 taste screen at 200×150 and up (the card grows with its row, 4:3; the shell is
+  @ui8kit/layouts/magazine/taste-card, this file is its data: the snapshot cache, the live budget, the heart). Snapshot first: a cached snapshot is an <img>; a style the cache does
   not have yet is shown live (the real screen, CSS-scaled, only while the card is on screen and within the live budget) while the
   snapshot is rasterised in the background, then the <img> replaces it. Off screen, a card is just its skin's background.
 -->
 <script lang="ts">
   import { onMount } from "svelte";
+  import TasteCard from "@ui8kit/layouts/magazine/taste-card.svelte";
   import { deckAt } from "@ui8kit/taste-data/copy";
   import { encodePicks } from "@ui8kit/taste-data/picks";
   import type { Style } from "@ui8kit/taste-data/recommend";
@@ -17,23 +19,18 @@
   import Heart from "./heart.svelte";
   import { theme } from "../lib/theme.svelte";
 
-  let { card, caption = "", why = "", compact = false, dark: forceDark }: { card: Style; caption?: string; why?: string; compact?: boolean; /** preview theme; the page theme when omitted */ dark?: boolean } = $props();
+  let { card, caption = "", why = "", compact = false, fill = false, dark: forceDark }: { card: Style; caption?: string; why?: string; compact?: boolean; /** in a grid cell (or a skin cell): the card takes the cell's width */ fill?: boolean; /** preview theme; the page theme when omitted */ dark?: boolean } = $props();
 
-  let host: HTMLElement;
   let visible = $state(false);
   let url = $state("");
   let live = $state(false);
-  let scale = $state(240 / 1440);
   const taste = $derived(TASTES.find((t) => t.id === card.screen)!);
+  const fonts = $derived(card.fonts.display === card.fonts.body ? card.fonts.display : card.fonts.display + " + " + card.fonts.body);
+  const text = $derived(caption || `${card.skin} · ${fonts} · r${card.radius}`);
+  const label = $derived(`${card.screen}, ${card.skin}, ${card.fonts.display} ${card.fonts.body}, radius ${card.radius}`);
 
-  onMount(() => {
-    const io = new IntersectionObserver((es) => { visible = es.some((e) => e.isIntersecting); }, { rootMargin: "400px 0px" });
-    io.observe(host);
-    // the card grows with its row (200 px up to 360 px): the live screen is scaled to the width the card has
-    const ro = new ResizeObserver(() => { const w = host.clientWidth; if (w) scale = w / 1440; });
-    ro.observe(host);
-    return () => { io.disconnect(); ro.disconnect(); if (url) URL.revokeObjectURL(url); if (live) liveSlots.release(); };
-  });
+  // the frame reports when it is near the screen (taste-card, shot.ts); unmounted, the snapshot URL and the live slot are given back
+  onMount(() => () => { if (url) URL.revokeObjectURL(url); if (live) liveSlots.release(); });
 
   // on screen (and again when the theme flips): the snapshot from the cache, else live now and a snapshot made in the background
   $effect(() => {
@@ -59,19 +56,7 @@
   }
 </script>
 
-<div class="mg-cell" class:mg-cell-mini={compact}>
-<a class="mg-card" href={"#/style/" + encodePicks([card.key])} data-testid="card" data-key={card.key} data-live={live ? "1" : "0"} data-shot={url ? "1" : "0"} aria-label={`${card.screen}, ${card.skin}, ${card.fonts.display} ${card.fonts.body}, radius ${card.radius}`}>
-  <span class="mg-shot" bind:this={host} data-skin={card.skin}>
-    {#if url}
-      <img src={url} alt="" draggable="false" />
-    {:else if live}
-      <span class="mg-live" style:transform={`scale(${scale})`} inert aria-hidden="true"><TasteFrame screen={SCREENS[card.screen]!} deck={deckAt(taste.deck)} skin={card.skin as SkinId} fonts={card.fonts as FontPair} radius={card.radius as Radius} /></span>
-    {/if}
-  </span>
-  {#if !compact}
-    <span class="mg-caption">{caption || `${card.skin} · ${card.fonts.display === card.fonts.body ? card.fonts.display : card.fonts.display + " + " + card.fonts.body} · r${card.radius}`}</span>
-    {#if why}<span class="mg-why" data-testid="why">{why}</span>{/if}
-  {/if}
-</a>
-{#if !compact}<Heart on={hearted(card.key)} onclick={() => toggleHeart(card.key)} />{/if}
-</div>
+<TasteCard href={"#/style/" + encodePicks([card.key])} {label} styleKey={card.key} skin={card.skin} fit={compact ? "mini" : fill ? "fill" : "strip"} caption={text} {why} shot={url} {live} onvisible={(v) => (visible = v)}>
+  {#snippet stage()}<TasteFrame screen={SCREENS[card.screen]!} deck={deckAt(taste.deck)} skin={card.skin as SkinId} fonts={card.fonts as FontPair} radius={card.radius as Radius} />{/snippet}
+  {#snippet heart()}<Heart on={hearted(card.key)} onclick={() => toggleHeart(card.key)} />{/snippet}
+</TasteCard>

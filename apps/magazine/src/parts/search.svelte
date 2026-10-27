@@ -175,9 +175,9 @@
       </div>
     {:else}
       <!-- svelte-ignore a11y_click_events_have_key_events, a11y_no_static_element_interactions -->
-      <div class="mg-grid" data-testid="search-grid" onclickcapture={(e) => { if ((e.target as HTMLElement).closest("a.mg-card")) save(true); }}>
+      <div class="mg-grid" data-testid="search-grid" onclickcapture={(e) => { if ((e.target as HTMLElement).closest("[data-testid=card]")) save(true); }}>
         {#each visible as card (card.key)}
-          <Card {card} {dark} />
+          <Card {card} {dark} fill />
         {/each}
       </div>
       {#if visible.length < out.results.length}

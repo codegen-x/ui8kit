@@ -241,7 +241,8 @@
       "kit": [],
       "composition": [
         "src/stock",
-        "src/preview"
+        "src/preview",
+        "src/magazine"
       ],
       "blockRoot": [
         "src/stock/stock-header.svelte",

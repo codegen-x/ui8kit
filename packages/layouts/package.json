@@ -3,13 +3,14 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "description": "Layouts (ADR-0001, the second layer between the prototypes and the apps): the structure of the apps on the UI8Kit primitives and kit-compose compositions, texts and data through props, checked like the prototypes (rules detectors and the four style groups, 8+4 spacing included, zero baseline). Svelte 5 for now. src/stock: the Stock storefront (header, type bar, quick filters, facet column, applied chips, sort, card grid, asset card, preview frame, pagination, theme sheet); src/preview: the live render of a block variant or a screen page from its recipe. Source only: the consumer's Vite compiles it.",
+  "description": "Layouts (ADR-0001, the second layer between the prototypes and the apps): the structure of the apps on the UI8Kit primitives and kit-compose compositions, texts and data through props, checked like the prototypes (rules detectors and the four style groups, 8+4 spacing included, zero baseline). Svelte 5 for now. src/stock: the Stock storefront (header, type bar, quick filters, facet column, applied chips, sort, card grid, asset card, preview frame, pagination, theme sheet); src/magazine: the Magazine's structure as it moves out of apps/magazine (taste card, heart, card strip); src/preview: the live render of a block variant or a screen page from its recipe. Source only: the consumer's Vite compiles it.",
   "ui8kit": {
     "runtime": "svelte",
     "kit": [],
     "composition": [
       "src/stock",
-      "src/preview"
+      "src/preview",
+      "src/magazine"
     ],
     "blockRoot": [
       "src/stock/stock-header.svelte",
@@ -24,6 +25,7 @@
       "types": "./src/index.ts",
       "default": "./src/index.ts"
     },
+    "./magazine/*": "./src/magazine/*",
     "./preview/load": "./src/preview/load.ts",
     "./preview/nav": "./src/preview/nav.ts",
     "./preview/recipe": "./src/preview/recipe.ts",
