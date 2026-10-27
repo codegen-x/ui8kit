@@ -1,5 +1,6 @@
 <!-- The shell of an asset card: the preview frame (the live render comes in as a snippet), the title, what it is, and the way to
-     every variant of its spec. -->
+     every variant of its spec. The card's edge is a real border (border-border), not the kit Card's inset ring: an inset ring is a
+     box-shadow painted under the children, so the flush, opaque preview frame would cover it everywhere but the text part. -->
 <script lang="ts">
   import type { Snippet } from "svelte";
   import { Badge, Button, Card, Group, Stack, Text, Title } from "@codegen-x/svelte-compose";
@@ -9,7 +10,7 @@
   let { t, card, preview, onvariants }: { t: StockText; card: CardView; preview: Snippet; onvariants: (spec: string) => void } = $props();
 </script>
 
-<Card class="h-full gap-0 overflow-hidden p-0" data-testid="asset-card" data-asset={card.key}>
+<Card class="h-full gap-0 overflow-hidden border border-border p-0 inset-ring-0" data-testid="asset-card" data-asset={card.key}>
   {#if card.preview}
     <PreviewFrame id={"pv-" + card.key.replace(/[^a-z0-9]+/gi, "-")}>{@render preview()}</PreviewFrame>
   {:else}
