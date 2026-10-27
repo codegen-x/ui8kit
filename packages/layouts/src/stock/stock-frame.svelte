@@ -7,7 +7,7 @@
   let { header, bar, aside, main, overlay }: { header: Snippet; bar: Snippet; aside: Snippet; main: Snippet; overlay?: Snippet } = $props();
 </script>
 
-<Box class="min-h-screen bg-background text-foreground" data-testid="stock-frame">
+<Box class="min-h-screen bg-background text-foreground" data-stock-chrome data-testid="stock-frame">
   {@render header()}
   {@render bar()}
   <Box class="mx-auto grid w-full max-w-screen-2xl grid-cols-1 items-start gap-8 px-4 pb-16 lg:grid-cols-12">

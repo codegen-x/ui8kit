@@ -1,0 +1,42 @@
+/* @ui8kit/layouts/stock: the type scale of the Stock chrome, 85% of the kit's (Tailwind's --text-* theme variables, which every
+   text-* utility and every kit recipe reads). Scoped to the storefront frame (data-stock-chrome on src/stock/stock-frame.svelte), so
+   the root font size, and with it every rem of spacing (the 8 + 4 grid), stays as it is. The live previews get the kit scale back
+   (they follow the Theme, not the chrome). Line heights are ratios of the size and scale with it. Only Stock imports this file. */
+:root {
+  --stock-type: 0.85;
+  --ui8-text-xs: var(--text-xs);
+  --ui8-text-sm: var(--text-sm);
+  --ui8-text-base: var(--text-base);
+  --ui8-text-lg: var(--text-lg);
+  --ui8-text-xl: var(--text-xl);
+  --ui8-text-2xl: var(--text-2xl);
+  --ui8-text-3xl: var(--text-3xl);
+  --ui8-text-4xl: var(--text-4xl);
+  --ui8-text-5xl: var(--text-5xl);
+}
+
+[data-stock-chrome] {
+  --text-xs: calc(var(--ui8-text-xs) * var(--stock-type));
+  --text-sm: calc(var(--ui8-text-sm) * var(--stock-type));
+  --text-base: calc(var(--ui8-text-base) * var(--stock-type));
+  --text-lg: calc(var(--ui8-text-lg) * var(--stock-type));
+  --text-xl: calc(var(--ui8-text-xl) * var(--stock-type));
+  --text-2xl: calc(var(--ui8-text-2xl) * var(--stock-type));
+  --text-3xl: calc(var(--ui8-text-3xl) * var(--stock-type));
+  --text-4xl: calc(var(--ui8-text-4xl) * var(--stock-type));
+  --text-5xl: calc(var(--ui8-text-5xl) * var(--stock-type));
+  font-size: var(--text-base);
+}
+
+[data-stock-chrome] .ui8-preview-stage {
+  --text-xs: var(--ui8-text-xs);
+  --text-sm: var(--ui8-text-sm);
+  --text-base: var(--ui8-text-base);
+  --text-lg: var(--ui8-text-lg);
+  --text-xl: var(--ui8-text-xl);
+  --text-2xl: var(--ui8-text-2xl);
+  --text-3xl: var(--ui8-text-3xl);
+  --text-4xl: var(--ui8-text-4xl);
+  --text-5xl: var(--ui8-text-5xl);
+  font-size: var(--ui8-text-base);
+}

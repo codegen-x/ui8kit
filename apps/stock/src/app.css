@@ -3,6 +3,7 @@
 @import "@codegen-x/svelte-compose/styles/index.css";
 @import "@ui8kit/app-shared/styles/skins.css";
 @import "@ui8kit/layouts/styles/layouts.css";
+@import "@ui8kit/layouts/styles/stock.css";
 @source "../src";
 @source "../../../packages/layouts/src/stock";
 @source "../../../packages/layouts/src/preview";
