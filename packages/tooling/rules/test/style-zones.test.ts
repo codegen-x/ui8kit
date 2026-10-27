@@ -1,7 +1,7 @@
 // The style rules on hand-written code (magazine): class text and CSS only, and the committed style baselines hold.
 import { describe, expect, test } from "bun:test";
 import { join } from "node:path";
-import { styleFindings, styleProblems, STYLE_GROUPS } from "../src/style-zones";
+import { styleFindings, styleProblems, STYLE_GROUPS, STYLE_PACKAGES } from "../src/style-zones";
 
 const repo = join(import.meta.dir, "..", "..", "..", "..");
 
@@ -25,6 +25,11 @@ describe("style rules on hand-written code", () => {
     expect(r.corners).toEqual(["rounded-md"]);
     expect(r.shadows).toEqual([]);
     expect(r.spacing).toEqual(["p-1"]);
+  });
+  test("groups per package (ADR-0001): the Magazine keeps all four, a new app drops spacing", () => {
+    const groups = Object.fromEntries(STYLE_PACKAGES.map((p) => [p.name, [...p.groups]]));
+    expect(groups["magazine"]).toEqual([...STYLE_GROUPS]);
+    expect(groups["stock"]).toEqual(["corners", "shadows", "hardcode"]);
   });
   test("magazine matches their baselines", () => {
     for (const g of STYLE_GROUPS) expect(styleProblems(repo, g)).toEqual([]);

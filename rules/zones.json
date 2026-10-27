@@ -111,12 +111,9 @@
       "dir": "apps/stock",
       "runtime": "svelte",
       "generated": false,
-      "kit": [
-        "src/lib"
-      ],
+      "kit": [],
       "composition": [
-        "src/App.svelte",
-        "src/parts"
+        "src"
       ],
       "blockRoot": [
         "src/App.svelte"

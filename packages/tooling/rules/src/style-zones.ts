@@ -1,5 +1,7 @@
-// The style rules of the corners, shadows, hardcode and spacing groups, applied to hand-written app code outside the specs:
-// apps/magazine/src. Only style text is read: the markup and <style> of .svelte files, .css files, and the string literals of
+// The style rules of the corners, shadows, hardcode and spacing groups, applied to hand-written code outside the specs: the apps
+// (apps/magazine/src, apps/stock/src) and the layouts. Each package names the groups it is checked by (ADR-0001): layouts get all
+// four (8+4 spacing included); an app is brand taste, so a new app gets corners, shadows and hardcode but not spacing. The Magazine
+// keeps the four groups it was recorded with (its baseline is unchanged). Only style text is read: the markup and <style> of .svelte files, .css files, and the string literals of
 // .ts files (class strings). Three.js / canvas engine code (packages/panorama) is outside every rule zone (rule 00) and never scanned.
 // Existing violations are recorded per file in rules/style-baselines/<package>.json: more fails, fewer asks for
 // `bun run rules:baseline`, so the list only shrinks.
@@ -10,11 +12,12 @@ import { cornerClasses, HARDCODE, shadowClasses } from "./audit-rules";
 
 export const STYLE_GROUPS = ["corners", "shadows", "hardcode", "spacing"] as const;
 export type StyleGroup = (typeof STYLE_GROUPS)[number];
-/** the hand-written packages under the style rules: name (the baseline file), package dir, scanned dir */
-export const STYLE_PACKAGES = [
-  { name: "magazine", dir: "apps/magazine", src: "src" },
-  { name: "stock", dir: "apps/stock", src: "src" },
-] as const;
+const APP_GROUPS: readonly StyleGroup[] = ["corners", "shadows", "hardcode"];
+/** the hand-written packages under the style rules: name (the baseline file), package dir, scanned dir, the groups that apply */
+export const STYLE_PACKAGES: readonly { name: string; dir: string; src: string; groups: readonly StyleGroup[] }[] = [
+  { name: "magazine", dir: "apps/magazine", src: "src", groups: STYLE_GROUPS },
+  { name: "stock", dir: "apps/stock", src: "src", groups: APP_GROUPS },
+];
 const BASELINE_DIR = join("rules", "style-baselines");
 
 const walk = (dir: string): string[] => (existsSync(dir) ? readdirSync(dir).flatMap((n) => (statSync(join(dir, n)).isDirectory() ? walk(join(dir, n)) : [join(dir, n)])) : []);
@@ -90,7 +93,7 @@ function scanPackage(repo: string, p: (typeof STYLE_PACKAGES)[number]): { counts
   for (const f of walk(join(base, p.src)).filter(scanned).sort()) {
     const rel = relative(base, f);
     const r = styleFindings(f, readFileSync(f, "utf8"));
-    for (const g of STYLE_GROUPS) if (r[g].length) { counts[g][rel] = r[g].length; found[g][rel] = r[g]; }
+    for (const g of p.groups) if (r[g].length) { counts[g][rel] = r[g].length; found[g][rel] = r[g]; }
   }
   return { counts, found };
 }
