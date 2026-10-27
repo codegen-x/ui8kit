@@ -679,7 +679,7 @@ export const RECIPES: Record<string, R> = {
     "compound": []
   },
   "sheet": {
-    "base": "fixed inset-0 z-50 flex",
+    "base": "fixed inset-0 z-50 open:flex",
     "keys": [
       "side"
     ],
