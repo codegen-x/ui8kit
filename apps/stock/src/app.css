@@ -11,5 +11,6 @@
 @import "@ui8kit/layouts/styles/theme.css";
 @import "@ui8kit/layouts/styles/detail.css";
 @source "../src";
+@source "../index.html";
 @source "../../../packages/layouts/src/stock";
 @source "../../../packages/layouts/src/preview";

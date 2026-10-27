@@ -14,6 +14,26 @@
     </script>
   </head>
   <body>
+    <!-- the boot shell: painted with the stylesheet, before the script runs (the storefront and the detail page are rendered by the
+         app); src/main.ts removes it once the app is mounted. Decorative: hidden from assistive tech. -->
+    <div id="boot" class="min-h-screen bg-background text-foreground" data-stock-chrome aria-hidden="true">
+      <div class="sticky top-0 z-20 bg-background inset-ring inset-ring-border">
+        <div class="mx-auto flex w-full max-w-screen-2xl flex-wrap items-center gap-4 px-4 py-2 md:flex-nowrap">
+          <span class="shrink-0 text-lg font-bold text-foreground">Stock</span>
+          <span class="order-last h-10 min-w-0 flex-1 basis-full rounded inset-ring inset-ring-input md:order-none md:basis-0"></span>
+          <span class="ml-auto h-8 w-64 shrink-0 rounded bg-muted max-md:w-32"></span>
+        </div>
+      </div>
+      <div class="mx-auto grid w-full max-w-screen-2xl grid-cols-1 gap-4 px-4 pt-4 sm:grid-cols-2 xl:grid-cols-3">
+        <span class="aspect-16/10 rounded bg-muted"></span>
+        <span class="aspect-16/10 rounded bg-muted max-sm:hidden"></span>
+        <span class="aspect-16/10 rounded bg-muted max-xl:hidden"></span>
+      </div>
+    </div>
+    <script>
+      // the frame document of the detail page draws only its preview: no shell
+      if (location.hash.indexOf("#/frame/") === 0) document.getElementById("boot").remove();
+    </script>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
