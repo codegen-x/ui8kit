@@ -43,3 +43,10 @@
   transform-origin: 0 0;
   scale: var(--device-scale, 1);
 }
+
+/* A part of the live render the detail page points at (src/preview/device.ts sets data-ui8-highlight in the frame document, whose
+   stylesheet is this one): an outline in the primary token (4 px at the device's own size), drawn inside so the page does not move. */
+[data-ui8-highlight] {
+  outline: 4px solid var(--color-primary);
+  outline-offset: -4px;
+}

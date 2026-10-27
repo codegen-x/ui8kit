@@ -71,24 +71,62 @@
       "light": "Claro",
       "dark": "Oscuro",
       "frame": "Vista previa en vivo de {title}",
-      "loading": "Cargando la vista previa"
+      "loading": "Cargando la vista previa",
+      "full": "Pantalla completa",
+      "fullTitle": "{title}: pantalla completa",
+      "close": "Cerrar"
     },
-    "passport": {
-      "title": "Pasaporte",
-      "blocks": "Bloques de esta página",
+    "summary": {
+      "facts": "Lo esencial",
+      "type": "Tipo",
+      "pattern": "Patrón de composición",
+      "runtimes": "Entornos",
+      "blocks": "Bloques",
       "variants": "Variantes",
+      "tags": "Etiquetas",
+      "findSimilar": "Buscar similares en el catálogo",
+      "actions": "Acciones"
+    },
+    "concepts": {
+      "title": "Conceptos y entidades",
+      "lead": "De qué está hecha la página y cómo sirve al visitante.",
+      "blocks": "Construida con los bloques",
+      "blocksNote": "Señala un bloque para resaltarlo en la vista previa.",
+      "locate": "Mostrar {name} en la vista previa",
+      "variants": "Variantes de este bloque",
       "usedBy": "Páginas de pantalla que usan este bloque",
       "unused": "Ninguna página de pantalla usa este bloque.",
       "current": "esta",
+      "map": "Mapa de la página",
+      "mapNote": "Los bloques de arriba abajo, cada uno dibujado según su composición.",
+      "pattern": "Patrón de composición",
+      "patternNone": "Aquí aún no hay un patrón de composición etiquetado.",
+      "facets": "Conceptos",
+      "future": "Sin etiquetar todavía",
+      "futureNote": "El catálogo aún no tiene etiquetas para estos conceptos; se muestran vacíos a propósito.",
+      "futureItems": [
+        "Tarea del visitante",
+        "Barrera",
+        "Técnica"
+      ]
+    },
+    "passport": {
+      "title": "Ficha",
       "facets": "Etiquetas",
       "readonly": "Solo lectura: las etiquetas se asignan en el gabinete.",
       "noLabel": "sin etiqueta",
       "any": "cualquiera",
-      "draft": "borrador"
+      "draft": "borrador",
+      "access": "Código y datos",
+      "accessText": "El código fuente en ocho entornos y el conjunto de datos de este recurso están disponibles según el rol. Esta página pública muestra la vista previa en vivo y las etiquetas."
     },
-    "similar": {
-      "title": "Similares",
-      "none": "Aún no hay nada similar."
+    "related": {
+      "pattern": "Mismo patrón de composición",
+      "blocks": "Construidas con los mismos bloques",
+      "usedBy": "Páginas de pantalla con este bloque",
+      "similar": "Similares",
+      "none": "Nada todavía.",
+      "patternNone": "Este recurso aún no tiene etiqueta de patrón de composición."
     },
     "missing": {
       "title": "No encontrado",

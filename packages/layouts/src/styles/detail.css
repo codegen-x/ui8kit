@@ -4,25 +4,75 @@
 @layer utilities {
   .ui8-detail-frame { @apply min-h-screen bg-background text-foreground; }
   .ui8-detail { @apply mx-auto w-full max-w-screen-2xl px-4 pt-8 pb-16; }
+  .ui8-detail-split { @apply grid scroll-mt-20 grid-cols-1 items-start gap-8 lg:grid-cols-10; }
+  .ui8-detail-back { @apply self-start; }
+  .ui8-detail-body { @apply mt-6; }
+  .ui8-detail-related { @apply mt-6; }
+  .ui8-detail-preview { @apply relative min-w-0 lg:col-span-7; }
+  .ui8-detail-stage { @apply relative flex aspect-16/10 w-full items-center justify-center overflow-hidden rounded bg-muted inset-ring inset-ring-border; }
+  .ui8-detail-full { @apply absolute right-4 bottom-4 gap-2; }
+  .ui8-summary { @apply min-w-0 lg:col-span-3; }
   .ui8-detail-head { @apply flex-wrap; }
   .ui8-detail-title { @apply min-w-0 wrap-anywhere; }
   .ui8-detail-subtitle { @apply text-muted-foreground; }
-  .ui8-detail-preview-bar { @apply flex-wrap; }
-  .ui8-detail-preview-controls { @apply flex-wrap; }
+  .ui8-summary-heading { @apply text-muted-foreground; }
+  .ui8-summary-facts { @apply grid grid-cols-3 items-baseline gap-x-4 gap-y-2 text-sm; }
+  .ui8-summary-term { @apply text-muted-foreground; }
+  .ui8-summary-value { @apply col-span-2 min-w-0 font-medium; }
+  .ui8-summary-badges { @apply flex-wrap; }
+  .ui8-summary-muted { @apply text-muted-foreground; }
+  .ui8-summary-none { @apply text-muted-foreground italic; }
+  .ui8-summary-tags { @apply flex flex-wrap gap-2; }
+  .ui8-tag { @apply h-8 rounded bg-muted px-4 inset-ring inset-ring-transparent transition-colors hover:inset-ring-border focus-visible:ring-2 focus-visible:ring-ring data-[draft=1]:bg-transparent data-[draft=1]:inset-ring-border; }
+  .ui8-summary-actions { @apply border-t border-border pt-6; }
+  .ui8-summary-action { @apply w-full gap-2; }
+  .ui8-summary-link { @apply self-center; }
+  .ui8-full { @apply m-0 h-dvh max-h-dvh w-screen max-w-screen overflow-hidden p-0; }
+  .ui8-full-bar { @apply flex-wrap border-b border-border px-4 py-2; }
+  .ui8-full-title { @apply min-w-0 truncate; }
+  .ui8-full-controls { @apply flex-wrap; }
+  .ui8-full-room { @apply relative flex min-h-0 flex-1 items-center justify-center overflow-hidden bg-muted; }
   .ui8-detail-segments { @apply gap-2; }
   .ui8-detail-legend { @apply sr-only; }
   .ui8-detail-segment { @apply relative inline-flex h-8 cursor-pointer items-center gap-2 rounded px-4 text-sm font-medium inset-ring inset-ring-border has-checked:bg-primary has-checked:text-primary-foreground has-checked:inset-ring-primary has-focus-visible:ring-2 has-focus-visible:ring-ring; }
   .ui8-detail-segment-input { @apply pointer-events-none absolute opacity-0; }
   .ui8-detail-segment-text { @apply max-md:sr-only; }
-  .ui8-detail-stage { @apply overflow-hidden rounded bg-muted py-4 inset-ring inset-ring-border; }
-  .ui8-passport-grid { @apply gap-8; }
-  .ui8-passport-links { @apply flex flex-col gap-2; }
-  .ui8-passport-link { @apply flex flex-wrap items-baseline gap-2; }
+  .ui8-concepts { @apply min-w-0 lg:col-span-7; }
+  .ui8-concept-head { @apply flex-wrap; }
+  .ui8-concept-muted { @apply text-muted-foreground; }
+  .ui8-concept-parts { @apply grid grid-cols-1 gap-2 md:grid-cols-2; }
+  .ui8-concept-part { @apply flex items-start gap-4 rounded p-2 transition-colors hover:bg-muted data-[point=1]:bg-muted; }
+  .ui8-concept-thumb { @apply w-40 shrink-0 overflow-hidden rounded inset-ring inset-ring-border; }
+  .ui8-concept-text { @apply min-w-0 flex-1; }
+  .ui8-concept-locate { @apply px-2; }
+  .ui8-concept-patterns { @apply flex flex-col gap-4; }
+  .ui8-concept-pattern { @apply flex flex-col gap-2; }
+  .ui8-concept-facets { @apply grid grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-3; }
+  .ui8-concept-facet { @apply flex items-center gap-2 text-sm font-medium; }
+  .ui8-concept-values { @apply min-w-0 sm:col-span-2; }
+  .ui8-map { @apply flex flex-col gap-2; }
+  .ui8-map-row { @apply flex items-center gap-4 rounded px-2 py-2 transition-colors data-[point=1]:bg-muted; }
+  .ui8-map-schema { @apply grid h-12 w-36 shrink-0 grid-cols-6 grid-rows-2 gap-2 rounded bg-background p-2 inset-ring inset-ring-border; }
+  .ui8-map-cell { @apply row-span-2 rounded bg-muted-foreground/40; }
+  .ui8-map-center { @apply col-span-4 col-start-2; }
+  .ui8-map-half { @apply col-span-3; }
+  .ui8-map-wide { @apply col-span-4; }
+  .ui8-map-narrow { @apply col-span-2; }
+  .ui8-map-third { @apply col-span-2; }
+  .ui8-map-axis { @apply col-span-2 col-start-3; }
+  .ui8-map-tall { @apply row-span-2; }
+  .ui8-map-short { @apply row-span-1; }
+  .ui8-map-late { @apply col-start-4 row-start-2; }
+  .ui8-map-empty { @apply col-span-6 border border-dashed border-border bg-transparent; }
+  .ui8-map-name { @apply min-w-0 flex-1 truncate font-medium; }
+  .ui8-map-label { @apply shrink-0 text-muted-foreground; }
+  .ui8-passport { @apply min-w-0 lg:col-span-3; }
   .ui8-passport-muted { @apply text-muted-foreground; }
-  .ui8-passport-facets { @apply grid grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-3; }
+  .ui8-passport-facets { @apply grid grid-cols-1 gap-2; }
   .ui8-passport-facet { @apply flex items-center gap-2 text-sm font-medium; }
-  .ui8-passport-values { @apply min-w-0 sm:col-span-2; }
+  .ui8-passport-values { @apply mb-2 min-w-0; }
   .ui8-passport-none { @apply text-sm text-muted-foreground italic; }
   .ui8-passport-badges { @apply flex-wrap; }
-  .ui8-similar-row { @apply grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4; }
+  .ui8-passport-access { @apply flex flex-col gap-2 rounded bg-muted p-4; }
+  .ui8-related-row { @apply grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4; }
 }

@@ -3,7 +3,8 @@ import { describe, expect, test } from "bun:test";
 import type { Recipes } from "@ui8kit/layouts/preview/recipe";
 import indexJson from "../../content/assets.v0.json";
 import recipesJson from "../../content/previews.v0.json";
-import { detailView, pageUses, passportFacets, similar, usedBy, useId } from "./detail";
+import termsJson from "../../content/terms/pattern.v0.json";
+import { detailView, pageMap, pageUses, passportFacets, sameBlocks, samePattern, similar, similarFilters, usedBy, useId, type Definitions } from "./detail";
 import type { Index } from "./model";
 import { assetHash, frameHash, parseRoute } from "./route";
 
@@ -24,6 +25,13 @@ describe("routes", () => {
   });
   test("every asset id round-trips through its hash", () => {
     for (const a of index.assets) expect(parseRoute(assetHash(a.id))).toEqual({ kind: "asset", id: a.id });
+  });
+  test("the full-screen preview is in the URL: view=full and a device (desktop by default, an unknown one is desktop)", () => {
+    expect(assetHash("screen.site/home", { device: "desktop" })).toBe("#/asset/screen.site/home?view=full");
+    expect(assetHash("screen.site/home", { device: "phone" })).toBe("#/asset/screen.site/home?view=full&device=phone");
+    for (const d of ["desktop", "tablet", "phone"] as const) expect(parseRoute(assetHash("block.about/split", { device: d }))).toEqual({ kind: "asset", id: "block.about/split", full: { device: d } });
+    expect(parseRoute("#/asset/block.about/split?view=full&device=watch")).toEqual({ kind: "asset", id: "block.about/split", full: { device: "desktop" } });
+    expect(parseRoute("#/asset/block.about/split?device=phone")).toEqual({ kind: "asset", id: "block.about/split" });
   });
 });
 
@@ -75,5 +83,57 @@ describe("detail", () => {
     const hero = get("block.hero/centered");
     const first = similar(index, hero)[0]!;
     expect(first.labels.layout?.some((l) => hero.labels.layout?.includes(l))).toBe(true);
+  });
+  test("key facts: the runtimes every asset renders in (the shared facet), the count of blocks or variants", () => {
+    const v = detailView(index, recipes, get("screen.site/home"), "en");
+    expect(v.runtimes.map((r) => r.id)).toEqual(["svelte", "react", "vue", "solid", "templ", "twig", "jinja2", "latte"]);
+    expect(v.parts.length).toBe(5);
+    expect(detailView(index, recipes, get("block.about/split"), "en").parts.length).toBe(index.assets.filter((x) => x.group === "block.about").length);
+  });
+  test("tags link into the catalog filtered by the value; only labels the asset carries", () => {
+    const a = get("screen.site/home");
+    const v = detailView(index, recipes, a, "en");
+    expect(v.tags.length).toBeGreaterThan(0);
+    for (const tag of v.tags) {
+      const [f, val] = tag.key.split(":");
+      expect(a.labels[f!]).toContain(val!);
+      expect(parseRoute(tag.href).kind).toBe("search");
+      expect(tag.href).toContain(`${f}=${val}`);
+    }
+  });
+  test("page map: one row per block of the page, in page order, with its first composition or none", () => {
+    const a = get("screen.site/home");
+    const rows = pageMap(index, recipes, a, "en");
+    expect(rows.map((r) => r.title)).toEqual(detailView(index, recipes, a, "en").parts.map((p) => p.title));
+    for (const r of rows) if (r.composition) expect(r.compositionLabel.length).toBeGreaterThan(0); else expect(r.compositionLabel).toBe("");
+    expect(pageMap(index, recipes, get("block.about/split"), "en").length).toBe(1);
+  });
+  test("pattern definitions: in the current language only, null where none is written (no fallback)", () => {
+    const defs: Definitions = Object.fromEntries(termsJson.terms.map((x) => [x.id, x.definition as Definitions[string]]));
+    const en = detailView(index, recipes, get("screen.site/home"), "en", defs);
+    expect(en.patterns.length).toBeGreaterThan(0);
+    expect(en.patterns.every((p) => typeof p.definition === "string")).toBe(true);
+    const ru = detailView(index, recipes, get("screen.site/home"), "ru", defs);
+    expect(ru.patterns.every((p) => p.definition === null)).toBe(true);
+    expect(detailView(index, recipes, get("block.about/split"), "en", defs).patterns).toEqual([]);
+  });
+  test("related rows: the same pattern, the same blocks (or the pages of the block), no group twice", () => {
+    const a = get("screen.site/home");
+    const seen = new Set([a.group]);
+    const pat = samePattern(index, a, 4, seen);
+    const blocks = sameBlocks(index, recipes, a, 4, seen);
+    expect(pat.length).toBeGreaterThan(0);
+    for (const x of pat) expect((x.labels.pattern ?? []).some((v) => (a.labels.pattern ?? []).includes(v))).toBe(true);
+    expect(blocks.every((x) => x.type === "screen")).toBe(true);
+    const all = [...pat, ...blocks].map((x) => x.group);
+    expect(new Set(all).size).toBe(all.length);
+    expect(all).not.toContain(a.group);
+    expect(samePattern(index, get("block.about/split"))).toEqual([]);
+    const hero = get("block.hero/centered");
+    expect(sameBlocks(index, recipes, hero).map((x) => x.id).every((id) => usedBy(index, recipes, hero).some((u) => u.key === id))).toBe(true);
+  });
+  test("find similar: the type and the patterns, else the compositions", () => {
+    expect(similarFilters(get("screen.site/home"))).toEqual({ type: ["screen"], pattern: get("screen.site/home").labels.pattern! });
+    expect(similarFilters(get("block.about/split"))).toEqual({ type: ["block"], composition: ["two-column"] });
   });
 });

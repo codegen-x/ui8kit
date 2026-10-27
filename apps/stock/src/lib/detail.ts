@@ -1,8 +1,9 @@
 // The detail page of an asset as the layouts show it (pure, tested in detail.test.ts): the passport (a screen page's blocks and
 // variants; a block variant's sibling variants and the screen pages that use the block), every facet that applies to the asset's
 // type with its labels (or an explicit "no label": no fallback), and the similar assets.
-import { textIn, type Locale } from "@ui8kit/facet-search/model";
-import type { DetailView, PassportFacet, PassportLink } from "@ui8kit/layouts/stock/text";
+import { emptySearch, searchHash } from "@ui8kit/facet-search";
+import { textIn, type Locale, type Text } from "@ui8kit/facet-search/model";
+import type { DetailView, MapRow, Option, PassportFacet, PassportLink, PatternView, TagView } from "@ui8kit/layouts/stock/text";
 import type { BlockUse, Recipes } from "@ui8kit/layouts/preview/recipe";
 import type { Asset, Index } from "./model";
 import { assetHash } from "./route";
@@ -21,7 +22,7 @@ export function pageUses(recipes: Recipes, screen: string, area: string): BlockU
   return s ? [...s.before, ...(s.areas[area] ?? []), ...s.after] : [];
 }
 
-const link = (a: Asset, current = false): PassportLink => ({ key: a.id, title: a.title, subtitle: a.subtitle, href: assetHash(a.id), ...(current ? { current: true } : {}) });
+const link = (a: Asset, current = false): PassportLink => ({ key: a.id, asset: a.id, title: a.title, subtitle: a.subtitle, href: assetHash(a.id), ...(current ? { current: true } : {}) });
 
 /** the passport of a screen page: one link per block use (a block used twice is listed twice: the page has it twice) */
 export function pageBlocks(index: Index, recipes: Recipes, a: Asset): PassportLink[] {
@@ -75,13 +76,98 @@ export function similar(index: Index, a: Asset, n = 4): Asset[] {
   return out;
 }
 
-export function detailView(index: Index, recipes: Recipes, a: Asset, locale: Locale): DetailView {
+/** the definitions of the composition patterns (content/terms/pattern.v0.json): id -> text per language */
+export type Definitions = Record<string, Partial<Text>>;
+/** the facets that are concepts of the page (what the blocks do for the visitor and how they are arranged) */
+export const CONCEPTS = ["role", "job", "composition", "density"] as const;
+/** the facets whose labels are links into the catalog (the tags of the asset) */
+const TAGS = ["job", "section", "industry", "composition", "media", "character", "density"] as const;
+
+const vocabOf = (index: Index) => ({ facets: index.facets, sorts: index.sorts });
+/** the storefront with these filters */
+export const catalogHash = (index: Index, filters: Record<string, string[]>): string => searchHash({ ...emptySearch(), filters }, vocabOf(index));
+
+/** what every asset renders in (the shared runtime facet), in the vocabulary order */
+export function runtimes(index: Index, locale: Locale): Option[] {
+  return (index.shared ?? []).find((f) => f.facet === "runtime")?.values.map((v) => ({ id: v.id, label: textIn(v.label, locale) })) ?? [];
+}
+
+/** the labels of the asset as links into the catalog, facet by facet (a value of a draft facet or a draft value is marked) */
+export function tags(index: Index, a: Asset, locale: Locale): TagView[] {
+  return TAGS.flatMap((id) => {
+    const f = index.facets.find((x) => x.id === id);
+    if (!f || (f.types && !f.types.includes(a.type))) return [];
+    return (a.labels[id] ?? []).flatMap((v) => {
+      const val = f.values.find((x) => x.id === v);
+      return val ? [{ key: `${id}:${v}`, label: textIn(val.label, locale), href: catalogHash(index, { [id]: [v] }), draft: a.weak.includes(id) || val.draft === true }] : [];
+    });
+  });
+}
+
+/** the page map: the blocks of a screen page top to bottom (a block variant: itself), each with its first composition label */
+export function pageMap(index: Index, recipes: Recipes, a: Asset, locale: Locale): MapRow[] {
+  const comp = index.facets.find((f) => f.id === "composition");
+  const row = (b: Asset, key: string): MapRow => {
+    const c = (b.labels["composition"] ?? []).find((v) => v !== "*") ?? "";
+    const v = comp?.values.find((x) => x.id === c);
+    return { key, title: b.title, subtitle: b.subtitle, composition: v ? c : "", compositionLabel: v ? textIn(v.label, locale) : "" };
+  };
+  if (a.preview?.kind !== "screen") return [row(a, a.id)];
+  const byId = new Map(index.assets.map((x) => [x.id, x]));
+  return pageBlocks(index, recipes, a).flatMap((l) => { const b = byId.get(l.asset); return b ? [row(b, l.key)] : []; });
+}
+
+/** the composition patterns of the asset with their definitions in this language only (none written in it: null, no fallback) */
+export function patterns(f: PassportFacet | null, defs: Definitions, locale: Locale): PatternView[] {
+  return (f?.values ?? []).map((v) => ({ id: v.id, label: v.label, definition: defs[v.id]?.[locale] ?? null, draft: v.draft || f!.draft }));
+}
+
+/** the catalog with the asset's arrangement: its type and its composition patterns (none: its compositions) */
+export function similarFilters(a: Asset): Record<string, string[]> {
+  const pick = (id: string) => (a.labels[id] ?? []).filter((v) => v !== "*");
+  const pat = pick("pattern");
+  return { type: [a.type], ...(pat.length ? { pattern: pat } : pick("composition").length ? { composition: pick("composition") } : {}) };
+}
+
+const SKIPPED = (a: Asset, seen: Set<string>) => (x: Asset) => x.type === a.type && x.group !== a.group && !seen.has(x.group);
+const firstPerGroup = (list: Asset[], n: number, seen: Set<string>): Asset[] => {
+  const out: Asset[] = [];
+  for (const x of list) { if (out.length >= n) break; if (seen.has(x.group)) continue; seen.add(x.group); out.push(x); }
+  return out;
+};
+
+/** assets of the same type that share a composition pattern with this one (most shared first, then catalog order); `seen` are groups already shown */
+export function samePattern(index: Index, a: Asset, n = 4, seen = new Set<string>([a.group])): Asset[] {
+  const mine = new Set((a.labels["pattern"] ?? []).filter((v) => v !== "*"));
+  if (!mine.size) return [];
+  const scored = index.assets.filter(SKIPPED(a, seen)).map((x) => ({ x, s: (x.labels["pattern"] ?? []).filter((v) => mine.has(v)).length }))
+    .filter((e) => e.s > 0).sort((p, q) => q.s - p.s || p.x.order - q.x.order).map((e) => e.x);
+  return firstPerGroup(scored, n, seen);
+}
+
+/** screen pages built from the same blocks as this page (most shared blocks first); for a block variant: the pages that use its block */
+export function sameBlocks(index: Index, recipes: Recipes, a: Asset, n = 4, seen = new Set<string>([a.group])): Asset[] {
+  const p = a.preview;
+  if (!p) return [];
+  const blocksOf = (x: Asset): Set<string> => (x.preview?.kind === "screen" ? new Set(pageUses(recipes, x.preview.screen, x.preview.area).map((u) => u.block)) : new Set());
+  const mine = p.kind === "screen" ? blocksOf(a) : new Set([p.block]);
+  const scored = index.assets.filter((x) => x.preview?.kind === "screen" && x.group !== a.group && !seen.has(x.group))
+    .map((x) => { const b = blocksOf(x); return { x, s: [...mine].filter((m) => b.has(m)).length }; })
+    .filter((e) => e.s > 0).sort((p, q) => q.s - p.s || p.x.order - q.x.order).map((e) => e.x);
+  return firstPerGroup(scored, n, seen);
+}
+
+export function detailView(index: Index, recipes: Recipes, a: Asset, locale: Locale, defs: Definitions = {}): DetailView {
   const type = index.facets.find((f) => f.id === TYPE)?.values.find((v) => v.id === a.type);
   const screen = a.preview?.kind === "screen";
+  const facets = passportFacets(index, a, locale);
+  const pattern = facets.find((f) => f.id === "pattern") ?? null;
   return {
     key: a.id, type: a.type, title: a.title, subtitle: a.subtitle, kind: type ? textIn(type.label, locale) : a.type,
     parts: screen ? pageBlocks(index, recipes, a) : blockVariants(index, a),
     usedBy: screen ? [] : usedBy(index, recipes, a),
-    facets: passportFacets(index, a, locale),
+    facets, runtimes: runtimes(index, locale), pattern, patterns: patterns(pattern, defs, locale),
+    concepts: CONCEPTS.flatMap((id) => facets.filter((f) => f.id === id)),
+    tags: tags(index, a, locale), map: pageMap(index, recipes, a, locale), similarHref: catalogHash(index, similarFilters(a)),
   };
 }

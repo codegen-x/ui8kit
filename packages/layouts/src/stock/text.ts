@@ -39,17 +39,39 @@ export type CardView = { key: string; title: string; subtitle: string; kind: str
 
 export type DetailText = {
   back: string;
-  preview: { title: string; width: string; widths: Record<"desktop" | "tablet" | "phone", string>; mode: string; light: string; dark: string; frame: string; loading: string };
-  passport: { title: string; blocks: string; variants: string; usedBy: string; unused: string; current: string; facets: string; readonly: string; noLabel: string; any: string; draft: string };
-  similar: { title: string; none: string };
+  preview: {
+    title: string; width: string; widths: Record<"desktop" | "tablet" | "phone", string>; mode: string; light: string; dark: string; frame: string; loading: string;
+    /** the button that opens the full-screen preview, the dialog's name ({title}) and its close button */
+    full: string; fullTitle: string; close: string;
+  };
+  summary: { facts: string; type: string; pattern: string; runtimes: string; blocks: string; variants: string; tags: string; findSimilar: string; actions: string };
+  concepts: {
+    title: string; lead: string; blocks: string; blocksNote: string; locate: string; variants: string; usedBy: string; unused: string; current: string;
+    map: string; mapNote: string; pattern: string; patternNone: string; facets: string; future: string; futureNote: string; futureItems: string[];
+  };
+  passport: { title: string; facets: string; readonly: string; noLabel: string; any: string; draft: string; access: string; accessText: string };
+  related: { pattern: string; blocks: string; usedBy: string; similar: string; none: string; patternNone: string };
   missing: { title: string; text: string };
 };
-/** a link of the passport: another asset (a block of the page, a variant, a screen page that uses the block) */
-export type PassportLink = { key: string; title: string; subtitle: string; href: string; current?: boolean };
+/** a link of the passport: another asset (a block of the page, a variant, a screen page that uses the block); `asset` is its id */
+export type PassportLink = { key: string; asset: string; title: string; subtitle: string; href: string; current?: boolean };
 /** a facet of the asset with its labels; no values and not `any` is "no label" (never a fallback value) */
 export type PassportFacet = { id: string; label: string; values: { id: string; label: string; draft: boolean }[]; any: boolean; draft: boolean };
-/** the detail page of an asset: `parts` are the blocks of a screen page or the variants of a block, `usedBy` the screen pages of a block */
-export type DetailView = { key: string; type: string; title: string; subtitle: string; kind: string; parts: PassportLink[]; usedBy: PassportLink[]; facets: PassportFacet[] };
+/** a label of the asset as a way into the catalog: the storefront filtered by this value */
+export type TagView = { key: string; label: string; href: string; draft: boolean };
+/** a composition pattern of the asset with its definition in the current language (null: none written in it) */
+export type PatternView = { id: string; label: string; definition: string | null; draft: boolean };
+/** one row of the page map: a block of the page (a block variant: itself) top to bottom, with its first composition ("" none) */
+export type MapRow = { key: string; title: string; subtitle: string; composition: string; compositionLabel: string };
+/** a row of related assets: its heading, the cards, what to say when there are none */
+export type RelatedView = { id: string; title: string; cards: CardView[]; none: string };
+/** the detail page of an asset: `parts` are the blocks of a screen page or the variants of a block, `usedBy` the screen pages of a
+ *  block, `facets` every label, `runtimes` what every asset renders in, `pattern` the composition-pattern facet (null: not of this
+ *  type), `tags` the labels as links into the catalog, `map` the page map, `similarHref` the catalog with the asset's arrangement */
+export type DetailView = {
+  key: string; type: string; title: string; subtitle: string; kind: string; parts: PassportLink[]; usedBy: PassportLink[]; facets: PassportFacet[];
+  runtimes: Option[]; pattern: PassportFacet | null; patterns: PatternView[]; concepts: PassportFacet[]; tags: TagView[]; map: MapRow[]; similarHref: string;
+};
 /** a width of the device frame */
 export type DeviceView = { id: "desktop" | "tablet" | "phone"; width: number; height: number };
 export type Option = { id: string; label: string };

@@ -30,7 +30,7 @@
 {#if first.kind === "frame"}
   <Frame id={first.id} />
 {:else if route.kind === "asset"}
-  {#key route.id}<Detail id={route.id} />{/key}
+  {#key route.id}<Detail id={route.id} full={route.full} />{/key}
 {:else if route.kind === "search"}
   <Storefront query={route.query} />
 {/if}

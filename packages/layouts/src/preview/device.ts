@@ -12,10 +12,22 @@ export const DEVICES: readonly DeviceView[] = [
   { id: "phone", width: 390, height: 844 },
 ];
 
-export type DeviceFrame = { size: (d: DeviceView) => void; name: (title: string) => void; destroy: () => void };
+/** `highlight(i)` outlines the i-th part of the live render (its i-th top-level element) and scrolls the frame to it; null clears */
+export type DeviceFrame = { size: (d: DeviceView) => void; name: (title: string) => void; highlight: (part: number | null) => void; destroy: () => void };
+/** "width": the frame takes the width on offer and its own proportions; "contain": it fits the parent's box both ways */
+export type DeviceFit = "width" | "contain";
 
-/** the frame document in `host` (its parent sets the width on offer), at `src` (a URL of the same app), named `title` */
-export function mountDevice(host: HTMLElement, src: string, title: string, device: DeviceView): DeviceFrame {
+/** the element of a part in the frame document: the i-th child of the frame's root, when the render has one root per part */
+function partElement(doc: Document | null, part: number, parts: number): HTMLElement | null {
+  const root = doc?.querySelector<HTMLElement>("[data-testid=frame]");
+  // the frame's elements belong to its own window: no instanceof against this one
+  const kids = root ? ([...root.children] as HTMLElement[]) : [];
+  return kids.length === parts ? kids[part] ?? null : null;
+}
+
+/** the frame document in `host` (its parent sets the room on offer), at `src` (a URL of the same app), named `title`; `parts`
+ *  is the number of parts the render has (for the highlight) */
+export function mountDevice(host: HTMLElement, src: string, title: string, device: DeviceView, fit: DeviceFit = "width", parts = 0): DeviceFrame {
   const screen = host.ownerDocument.createElement("iframe");
   screen.className = "ui8-device-screen";
   screen.title = title;
@@ -23,18 +35,35 @@ export function mountDevice(host: HTMLElement, src: string, title: string, devic
   screen.setAttribute("data-testid", "device-screen");
   host.append(screen);
   let cur = device;
-  const fit = (): void => {
-    const room = host.parentElement?.clientWidth ?? cur.width;
+  const resize = (): void => {
+    const box = host.parentElement;
+    const w = box?.clientWidth ?? cur.width;
+    const h = fit === "contain" && box ? box.clientHeight : Infinity;
     host.style.setProperty("--device-width", cur.width + "px");
     host.style.setProperty("--device-height", cur.height + "px");
-    host.style.setProperty("--device-scale", String(Math.min(1, room / cur.width)));
+    host.style.setProperty("--device-scale", String(Math.min(1, w / cur.width, h / cur.height)));
   };
-  fit();
-  const ro = new ResizeObserver(fit);
+  resize();
+  const ro = new ResizeObserver(resize);
   ro.observe(host.parentElement ?? host);
+  let mark: HTMLElement | null = null;
+  const highlight = (part: number | null): void => {
+    let doc: Document | null = null;
+    try { doc = screen.contentDocument; } catch { return; } // another origin: no highlight
+    mark?.removeAttribute("data-ui8-highlight");
+    mark = null;
+    if (part === null || !doc) return;
+    const el = partElement(doc, part, parts);
+    if (!el) return;
+    el.setAttribute("data-ui8-highlight", "");
+    mark = el;
+    const top = el.getBoundingClientRect().top + (doc.defaultView?.scrollY ?? 0);
+    doc.defaultView?.scrollTo({ top: Math.max(0, top - 16), behavior: "smooth" });
+  };
   return {
-    size: (d) => { cur = d; fit(); },
+    size: (d) => { cur = d; resize(); },
     name: (t) => { screen.title = t; },
+    highlight,
     destroy: () => { ro.disconnect(); screen.remove(); },
   };
 }

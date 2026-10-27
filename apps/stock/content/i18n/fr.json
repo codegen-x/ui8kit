@@ -71,24 +71,62 @@
       "light": "Clair",
       "dark": "Sombre",
       "frame": "Aperçu en direct de {title}",
-      "loading": "Chargement de l’aperçu"
+      "loading": "Chargement de l’aperçu",
+      "full": "Plein écran",
+      "fullTitle": "{title} : plein écran",
+      "close": "Fermer"
     },
-    "passport": {
-      "title": "Passeport",
-      "blocks": "Blocs de cette page",
+    "summary": {
+      "facts": "L’essentiel",
+      "type": "Type",
+      "pattern": "Motif de composition",
+      "runtimes": "Environnements",
+      "blocks": "Blocs",
       "variants": "Variantes",
+      "tags": "Étiquettes",
+      "findSimilar": "Trouver des semblables dans le catalogue",
+      "actions": "Actions"
+    },
+    "concepts": {
+      "title": "Concepts et entités",
+      "lead": "De quoi la page est faite et comment elle sert le visiteur.",
+      "blocks": "Construite à partir des blocs",
+      "blocksNote": "Survolez un bloc pour le mettre en évidence dans l’aperçu.",
+      "locate": "Montrer {name} dans l’aperçu",
+      "variants": "Variantes de ce bloc",
       "usedBy": "Pages d’écran qui utilisent ce bloc",
       "unused": "Aucune page d’écran n’utilise ce bloc.",
       "current": "celle-ci",
+      "map": "Plan de la page",
+      "mapNote": "Les blocs de haut en bas, chacun dessiné selon sa composition.",
+      "pattern": "Motif de composition",
+      "patternNone": "Aucun motif de composition n’est encore étiqueté ici.",
+      "facets": "Concepts",
+      "future": "Pas encore étiqueté",
+      "futureNote": "Le catalogue n’a pas encore d’étiquettes pour ces concepts ; ils sont volontairement vides.",
+      "futureItems": [
+        "Tâche du visiteur",
+        "Obstacle",
+        "Technique"
+      ]
+    },
+    "passport": {
+      "title": "Passeport",
       "facets": "Libellés",
       "readonly": "Lecture seule : les libellés se définissent dans le cabinet.",
       "noLabel": "sans libellé",
       "any": "toutes",
-      "draft": "brouillon"
+      "draft": "brouillon",
+      "access": "Code et données",
+      "accessText": "Le code source dans huit environnements et le jeu de données de cette ressource sont accessibles selon le rôle. Cette page publique montre l’aperçu en direct et les étiquettes."
     },
-    "similar": {
-      "title": "Similaires",
-      "none": "Rien de similaire pour l’instant."
+    "related": {
+      "pattern": "Même motif de composition",
+      "blocks": "Construites avec les mêmes blocs",
+      "usedBy": "Pages d’écran avec ce bloc",
+      "similar": "Semblables",
+      "none": "Rien pour l’instant.",
+      "patternNone": "Cette ressource n’a pas encore d’étiquette de motif de composition."
     },
     "missing": {
       "title": "Introuvable",

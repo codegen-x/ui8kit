@@ -71,24 +71,62 @@
       "light": "Light",
       "dark": "Dark",
       "frame": "Live preview of {title}",
-      "loading": "Loading the preview"
+      "loading": "Loading the preview",
+      "full": "Full screen",
+      "fullTitle": "{title}: full screen",
+      "close": "Close"
     },
-    "passport": {
-      "title": "Passport",
-      "blocks": "Blocks of this page",
+    "summary": {
+      "facts": "Key facts",
+      "type": "Type",
+      "pattern": "Composition pattern",
+      "runtimes": "Runtimes",
+      "blocks": "Blocks",
       "variants": "Variants",
+      "tags": "Tags",
+      "findSimilar": "Find similar in the catalog",
+      "actions": "Actions"
+    },
+    "concepts": {
+      "title": "Concepts and entities",
+      "lead": "What the page is made of and how it works for the visitor.",
+      "blocks": "Built from blocks",
+      "blocksNote": "Point at a block to light it up in the preview.",
+      "locate": "Show {name} in the preview",
+      "variants": "Variants of this block",
       "usedBy": "Screen pages that use this block",
       "unused": "No screen page uses this block.",
       "current": "this one",
+      "map": "Page map",
+      "mapNote": "The blocks top to bottom, each drawn by its composition.",
+      "pattern": "Composition pattern",
+      "patternNone": "No composition pattern is labelled here yet.",
+      "facets": "Concepts",
+      "future": "Not labelled yet",
+      "futureNote": "The catalog has no labels for these concepts yet; they are shown empty on purpose.",
+      "futureItems": [
+        "Visitor task",
+        "Barrier",
+        "Technique"
+      ]
+    },
+    "passport": {
+      "title": "Passport",
       "facets": "Labels",
       "readonly": "Read-only: labels are set in the cabinet.",
       "noLabel": "no label",
       "any": "any",
-      "draft": "draft"
+      "draft": "draft",
+      "access": "Code and data",
+      "accessText": "The source in eight runtimes and the dataset of this asset are available by role. This public page shows the live preview and the labels."
     },
-    "similar": {
-      "title": "Similar",
-      "none": "Nothing similar yet."
+    "related": {
+      "pattern": "Same composition pattern",
+      "blocks": "Built from the same blocks",
+      "usedBy": "Screen pages with this block",
+      "similar": "Similar",
+      "none": "Nothing here yet.",
+      "patternNone": "This asset has no composition pattern label yet."
     },
     "missing": {
       "title": "Not found",

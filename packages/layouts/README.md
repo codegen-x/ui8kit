@@ -8,11 +8,15 @@ Vite compiles it).
   language, Theme), `filter-bar` (type tabs + quick filters), `facet-column` (one fieldset per facet, draft badge), `results`
   (count with `aria-live`, applied chips with reset, sort, `card-grid`, `asset-card`, `pagination`, `empty-state`); its Theme sheet is the shared one of `src/theme`.
   `text.ts`: the text shape (`StockText`) and the view types; every string comes in through props.
-  `src/stock/detail`: the detail page of an asset (`detail-frame`, `detail-main`: the way back, the name, `device-preview` (width and
-  mode as radio segments, the device frame), `passport` (blocks or variants, screen pages, read-only labels with an explicit
-  "no label"), `similar-row` (the storefront's card through a snippet)); named `ui8-*` classes in `src/styles/detail.css`.
+  `src/stock/detail`: the detail page of an asset, two columns of about 70/30 as on the stock sites (`detail-frame`, `detail-main`):
+  a head (`preview-panel`: the live preview of fixed 16:10 proportions, the device frame scaled as a whole; `summary`: the name and
+  type, key facts, tags as links into the catalog, actions), a body in the same widths (`concepts`: the blocks of a page with
+  thumbnails that outline their part in the preview, or the variants and pages of a block, the `page-map` schematic, the
+  composition pattern, the concept facets and the concepts not labelled yet; `passport`: every label read-only with an explicit
+  "no label", and the note that code and data are by role), `related-row` (the storefront's card through a snippet), and
+  `fullscreen` (a modal dialog with the device width and the mode as radio segments); named `ui8-*` classes in `src/styles/detail.css`.
 - `src/preview/device.ts`: the device frame of the detail page (an iframe of the app's frame route at 1280, 768 or 390 px, scaled to
-  the room; created in code like a canvas host mounts its engine, since the kit has no primitive for an embedded document).
+  the width or into the box on offer, with the outline of one part of the render; created in code like a canvas host mounts its engine, since the kit has no primitive for an embedded document).
 - `src/preview`: the live render of a block variant or a composed screen page from its recipe (`recipe.ts`, pure, tested),
   `load.ts` (the data of one preview from the sources the app hands in), `preview-frame` (16:10, the 1280 px stage scaled by a CSS
   variable, mounted when near the viewport) and `live-preview` (the organisms by name); `nav.ts`: the screen menus of

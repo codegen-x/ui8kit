@@ -71,24 +71,62 @@
       "light": "Hell",
       "dark": "Dunkel",
       "frame": "Live-Vorschau von {title}",
-      "loading": "Vorschau wird geladen"
+      "loading": "Vorschau wird geladen",
+      "full": "Vollbild",
+      "fullTitle": "{title}: Vollbild",
+      "close": "Schließen"
     },
-    "passport": {
-      "title": "Steckbrief",
-      "blocks": "Blöcke dieser Seite",
+    "summary": {
+      "facts": "Das Wichtigste",
+      "type": "Typ",
+      "pattern": "Kompositionsmuster",
+      "runtimes": "Laufzeiten",
+      "blocks": "Blöcke",
       "variants": "Varianten",
+      "tags": "Schlagwörter",
+      "findSimilar": "Ähnliches im Katalog finden",
+      "actions": "Aktionen"
+    },
+    "concepts": {
+      "title": "Konzepte und Entitäten",
+      "lead": "Woraus die Seite besteht und wie sie für Besucher arbeitet.",
+      "blocks": "Aus diesen Blöcken gebaut",
+      "blocksNote": "Zeigen Sie auf einen Block, um ihn in der Vorschau hervorzuheben.",
+      "locate": "{name} in der Vorschau zeigen",
+      "variants": "Varianten dieses Blocks",
       "usedBy": "Bildschirmseiten mit diesem Block",
       "unused": "Keine Bildschirmseite verwendet diesen Block.",
       "current": "diese",
+      "map": "Seitenplan",
+      "mapNote": "Die Blöcke von oben nach unten, jeder nach seiner Komposition gezeichnet.",
+      "pattern": "Kompositionsmuster",
+      "patternNone": "Hier ist noch kein Kompositionsmuster gekennzeichnet.",
+      "facets": "Konzepte",
+      "future": "Noch nicht gekennzeichnet",
+      "futureNote": "Der Katalog hat für diese Konzepte noch keine Kennzeichnungen; sie bleiben bewusst leer.",
+      "futureItems": [
+        "Aufgabe des Besuchers",
+        "Hürde",
+        "Technik"
+      ]
+    },
+    "passport": {
+      "title": "Steckbrief",
       "facets": "Labels",
       "readonly": "Nur lesen: Labels werden im Cabinet gesetzt.",
       "noLabel": "kein Label",
       "any": "alle",
-      "draft": "Entwurf"
+      "draft": "Entwurf",
+      "access": "Code und Daten",
+      "accessText": "Der Quelltext in acht Laufzeiten und der Datensatz dieses Assets sind je nach Rolle verfügbar. Diese öffentliche Seite zeigt die Live-Vorschau und die Kennzeichnungen."
     },
-    "similar": {
-      "title": "Ähnlich",
-      "none": "Noch nichts Ähnliches."
+    "related": {
+      "pattern": "Gleiches Kompositionsmuster",
+      "blocks": "Aus denselben Blöcken gebaut",
+      "usedBy": "Bildschirmseiten mit diesem Block",
+      "similar": "Ähnlich",
+      "none": "Noch nichts.",
+      "patternNone": "Dieses Asset hat noch keine Kennzeichnung des Kompositionsmusters."
     },
     "missing": {
       "title": "Nicht gefunden",
