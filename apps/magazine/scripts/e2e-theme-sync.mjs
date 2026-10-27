@@ -33,7 +33,7 @@ const dsTab = (p) => p.evaluate(() => ({
 }));
 const sheet = (p) => p.evaluate(() => {
   const q = (s) => document.querySelector(s);
-  return { skin: q("#mg-filter-theme-skin")?.value ?? null, font: q("#mg-filter-theme-font")?.value ?? null, radius: q("input[name=theme-radius]:checked")?.value ?? null,
+  return { skin: q("#filter-theme-skin")?.value ?? null, font: q("#filter-theme-font")?.value ?? null, radius: q("input[name=theme-radius]:checked")?.value ?? null,
     density: q("input[name=theme-density]:checked")?.value ?? null, mode: q("input[name=theme-mode]:checked")?.value ?? null,
     rButton: q("[data-testid=ds-panel] input[name$='er-button']:checked")?.value ?? null, densCard: q("[data-testid=ds-panel] input[name$='ed-card']:checked")?.value ?? null };
 });
@@ -95,7 +95,7 @@ const report = {};
   const p = await newPage();
   await go(p, DS);
   await openSheet(p, true);
-  await p.selectOption("#mg-filter-theme-skin", "claude"); await p.selectOption("#mg-filter-theme-font", "inter");
+  await p.selectOption("#filter-theme-skin", "claude"); await p.selectOption("#filter-theme-font", "inter");
   await radio(p, "theme-radius", "16");
   await radio(p, "gt-er-button", "4"); await radio(p, "gt-ed-card", "comfortable");
   report.B1 = { sheet: await sheet(p), site: await site(p) };

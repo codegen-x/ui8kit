@@ -120,14 +120,14 @@ try {
       const g = await x.evaluate(() => {
         const r = (s: string) => document.querySelector(s)!.getBoundingClientRect();
         const body = document.querySelector("[data-testid=filter-body]")!;
-        return { sheet: r("dialog[open]"), head: r(".mg-sheet-head"), foot: r(".mg-sheet-foot"), scrolls: body.scrollHeight > body.clientHeight, oy: getComputedStyle(body).overflowY, vh: innerHeight };
+        return { sheet: r("dialog[open]"), head: r("[data-testid=filter-head]"), foot: r("[data-testid=filter-foot]"), scrolls: body.scrollHeight > body.clientHeight, oy: getComputedStyle(body).overflowY, vh: innerHeight };
       });
       const tag = `${w}x${h} ${theme}`;
       ok(Math.abs(g.sheet.height - g.vh) < 2 && g.head.top >= 0 && g.foot.bottom <= g.vh + 1 && g.foot.top < g.vh, `${tag}: sheet full height, head and foot in view`);
       ok(g.oy === "auto" && g.scrolls, `${tag}: body scrolls`);
       const last = x.locator("[data-name=media] input").last();
       await last.focus();
-      const seen = await last.evaluate((el) => { const b = el.getBoundingClientRect(), f = document.querySelector(".mg-sheet-foot")!.getBoundingClientRect(); return b.top >= 0 && b.bottom <= f.top + 1; });
+      const seen = await last.evaluate((el) => { const b = el.getBoundingClientRect(), f = document.querySelector("[data-testid=filter-foot]")!.getBoundingClientRect(); return b.top >= 0 && b.bottom <= f.top + 1; });
       ok(seen, `${tag}: a focused option scrolls into view above the foot`);
       if (SHEET_SHOTS) {
         const name = `sheet-${w}x${h}-${theme}`;

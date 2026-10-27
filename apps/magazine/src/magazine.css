@@ -192,18 +192,6 @@ dialog.mg-sheet:not([open]) { display: none; }
 .mg-sheet-body { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 0 24px; scroll-padding: 24px 0; }
 .mg-sheet-foot { flex: none; padding: 16px 24px; border-top: 1px solid var(--border); background: var(--background); }
 .mg-grow { flex: 1; }
-.mg-fieldset { width: 100%; box-sizing: border-box; border: 0; margin: 0; padding: 16px 0; min-width: 0; }
-.mg-fieldset + .mg-fieldset { border-top: 1px solid var(--border); }
-.mg-flegend { display: flex; width: 100%; align-items: baseline; justify-content: space-between; gap: 8px; padding: 0; margin-bottom: 8px; font-size: 14px; color: var(--foreground); }
-.mg-gcount { font-size: 12px; font-weight: 400; color: var(--muted-foreground); }
-.mg-options { display: flex; flex-wrap: wrap; gap: 8px; }
-/* a toggle button: the native checkbox or radio stays (semantics, keyboard), visually hidden; the label is the button */
-.mg-option { position: relative; display: inline-flex; align-items: center; height: 32px; padding: 0 8px; border: 1px solid transparent; border-radius: var(--radius); color: var(--muted-foreground); font-size: 14px; cursor: pointer; }
-.mg-option input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
-.mg-option:hover { background: var(--muted); color: var(--foreground); }
-.mg-option:has(input:checked) { border-color: var(--primary); background: var(--primary); color: var(--primary-foreground); }
-.mg-option:has(input:focus-visible) { outline: 2px solid var(--ring); outline-offset: 2px; }
-.mg-select { width: 100%; }
 dialog.mg-sheet { font-size: 14px; }
 dialog.mg-sheet .mg-h2 { font-size: 16px; }
 
