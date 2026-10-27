@@ -12,7 +12,7 @@
     <List tag="ul" class="flex flex-wrap items-center gap-2" aria-label={t.chips.label}>
       {#each chips as c (c.key)}
         <ListItem>
-          <Button variant="secondary" size="sm" aria-label={fmt(t.chips.remove, { filter: c.label })} onclick={() => onremove(c.key)} data-testid="chip">
+          <Button variant="secondary" size="sm" class="gap-2" aria-label={fmt(t.chips.remove, { filter: c.label })} onclick={() => onremove(c.key)} data-testid="chip">
             <Text tag="span">{c.label}</Text><LucideIcon name="x" size={16} />
           </Button>
         </ListItem>

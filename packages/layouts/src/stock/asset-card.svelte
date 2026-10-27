@@ -1,5 +1,5 @@
-<!-- The shell of an asset card: the preview frame (the live render comes in as a snippet), the title, what it is, a draft badge when
-     its labels come from hand-made tables, and the way to every variant of its spec. -->
+<!-- The shell of an asset card: the preview frame (the live render comes in as a snippet), the title, what it is, and the way to
+     every variant of its spec. -->
 <script lang="ts">
   import type { Snippet } from "svelte";
   import { Badge, Button, Card, Group, Stack, Text, Title } from "@codegen-x/svelte-compose";
@@ -21,10 +21,9 @@
       <Badge size="sm" variant="secondary">{card.kind}</Badge>
     </Group>
     <Text tag="p" size="sm" class="truncate text-muted-foreground">{card.subtitle}</Text>
-    <Group gap="2" align="center" justify="between">
-      {#if card.draft}<Badge size="sm" variant="outline" data-testid="card-draft">{t.card.draft}</Badge>{/if}
+    <Group gap="2" align="center" justify="end" class="min-h-8">
       {#if card.variants > 1}
-        <Button variant="link" size="sm" class="ml-auto px-0" onclick={() => onvariants(card.spec)} data-testid="card-variants">{fmt(t.card.variants, { n: card.variants })}</Button>
+        <Button variant="link" size="sm" class="px-0" onclick={() => onvariants(card.spec)} data-testid="card-variants">{fmt(t.card.variants, { n: card.variants })}</Button>
       {/if}
     </Group>
   </Stack>

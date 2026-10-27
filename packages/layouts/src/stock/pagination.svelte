@@ -12,7 +12,7 @@
 {#if pages > 1}
   <Box tag="nav" aria-label={t.pagination.label} class="flex flex-wrap items-center justify-center gap-2 pt-8" data-testid="pagination">
     {#if page > 1}
-      <Button variant="outline" size="sm" href={href(page - 1)} rel="prev" data-testid="page-prev"><LucideIcon name="chevron-left" size={16} /><Text tag="span">{t.pagination.prev}</Text></Button>
+      <Button variant="outline" size="sm" href={href(page - 1)} rel="prev" class="gap-2" data-testid="page-prev"><LucideIcon name="chevron-left" size={16} /><Text tag="span">{t.pagination.prev}</Text></Button>
     {/if}
     {#each window_ as n, i (i)}
       {#if n === null}
@@ -24,7 +24,7 @@
       {/if}
     {/each}
     {#if page < pages}
-      <Button variant="outline" size="sm" href={href(page + 1)} rel="next" data-testid="page-next"><Text tag="span">{t.pagination.next}</Text><LucideIcon name="chevron-right" size={16} /></Button>
+      <Button variant="outline" size="sm" href={href(page + 1)} rel="next" class="gap-2" data-testid="page-next"><Text tag="span">{t.pagination.next}</Text><LucideIcon name="chevron-right" size={16} /></Button>
     {/if}
   </Box>
 {/if}

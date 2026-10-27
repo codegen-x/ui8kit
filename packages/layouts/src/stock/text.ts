@@ -9,8 +9,8 @@ export type StockText = {
   results: { region: string; title: string; count: string; sort: string; empty: string; relax: string; variantsOf: string; showAll: string };
   chips: { label: string; query: string; spec: string; remove: string; reset: string };
   pagination: { label: string; prev: string; next: string; page: string };
-  card: { draft: string; variants: string; loading: string; failed: string; none: string };
-  theme: { title: string; note: string; close: string; reset: string; mode: string; light: string; dark: string; skin: string; font: string; radius: string; density: string; unset: string };
+  card: { variants: string; loading: string; failed: string; none: string };
+  theme: { title: string; note: string; close: string; reset: string; mode: string; light: string; dark: string; skin: string; font: string; radius: string; density: string; unset: string; compact: string; standard: string; comfortable: string };
 };
 
 /** "{n} results" + { n: 12 } -> "12 results"; an unknown placeholder stays as it is */
@@ -30,7 +30,7 @@ export type ChipView = { key: string; label: string };
 /** a way out of an empty result: drop this filter and get `count` */
 export type RelaxView = { key: string; label: string; count: number };
 /** what a card shows besides its preview */
-export type CardView = { key: string; title: string; subtitle: string; kind: string; draft: boolean; variants: number; spec: string; preview: boolean };
+export type CardView = { key: string; title: string; subtitle: string; kind: string; variants: number; spec: string; preview: boolean };
 export type Option = { id: string; label: string };
 /** one setting of the theme sheet: radios for a few values, a select for many ("" is "not set") */
 export type ThemeField = { id: string; label: string; control: "radio" | "select"; options: Option[]; value: string };
