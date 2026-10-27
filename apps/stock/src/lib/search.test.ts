@@ -1,8 +1,8 @@
 import { describe, expect, test } from "bun:test";
 import indexJson from "../../content/assets.v0.json";
 import type { Asset, Index } from "./model";
-import { emptySearch, parseSearch, searchHash, setFacet, stringifySearch, toggleValue, type SearchState } from "./query";
-import { prepare, queryTokens, relaxations, search } from "./search";
+// the engine of @ui8kit/facet-search on the real Stock index (the package tests it on a synthetic one)
+import { emptySearch, parseSearch, prepare, queryTokens, relaxations, search, searchHash, setFacet, stringifySearch, toggleValue, type SearchState } from "@ui8kit/facet-search";
 
 const INDEX = indexJson as unknown as Index;
 const E = prepare(INDEX);
@@ -101,7 +101,7 @@ describe("text and sorts", () => {
 describe("canonical URL", () => {
   test("round trip without loss, canonical order", () => {
     const s = parseSearch("#/search?sort=name&density=dense,airy&q=dark%20hero&job=pricing,hero,nope&bogus=1&variants=all&spec=block.hero", vocab);
-    expect(s).toEqual({ q: "dark hero", filters: { job: ["hero", "pricing"], density: ["airy", "dense"] }, spec: "block.hero", variants: "all", sort: "name" });
+    expect(s).toEqual({ q: "dark hero", filters: { job: ["hero", "pricing"], density: ["airy", "dense"] }, spec: "block.hero", variants: "all", sort: "name", page: 1 });
     const q = stringifySearch(s, vocab);
     expect(q).toBe("q=dark%20hero&job=hero,pricing&density=airy,dense&spec=block.hero&variants=all&sort=name");
     expect(parseSearch(q, vocab)).toEqual(s);

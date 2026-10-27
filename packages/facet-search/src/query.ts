@@ -1,4 +1,4 @@
-// The search state of Stock and its URL form: `#/search?q=…&<facet>=a,b&…&spec=block.hero&variants=all&sort=name`.
+// The search state and its URL form (Stock: `#/search?q=…&<facet>=a,b&…&spec=block.hero&variants=all&sort=name&page=2`).
 // Modelled on @ui8kit/taste-data/search (query.ts): parseSearch is forgiving (unknown facets and values are dropped, repeated keys and
 // comma lists both work, order never matters) and stringifySearch is canonical (facets in vocabulary order, values in vocabulary
 // order), so equal searches give equal URLs. The facets come from the vocabulary (data), never from code.
@@ -15,14 +15,17 @@ export type SearchState = {
   variants: Variants;
   /** null: the default for the situation (relevance with a query, else the catalog order) */
   sort: string | null;
+  /** the page of the results, 1-based (pages, not an endless scroll) */
+  page: number;
 };
 
-export const emptySearch = (): SearchState => ({ q: "", filters: {}, spec: "", variants: "one", sort: null });
+export const emptySearch = (): SearchState => ({ q: "", filters: {}, spec: "", variants: "one", sort: null, page: 1 });
 
 /** the vocabulary the URL is read against: the facets (their ids and values) and the sorts */
 export type QueryVocab = { facets: Pick<Facet, "id" | "values">[]; sorts: Pick<SortDef, "id">[] };
 
-const RESERVED = new Set(["q", "spec", "variants", "sort"]);
+const RESERVED = new Set(["q", "spec", "variants", "sort", "page"]);
+const MAX_PAGE = 9999;
 const SPEC_RE = /^[a-z]+\.[a-z0-9-]+$/;
 const list = (p: URLSearchParams, k: string): string[] => p.getAll(k).flatMap((v) => v.split(",")).map((v) => v.trim()).filter(Boolean);
 
@@ -43,6 +46,8 @@ export function parseSearch(input: string, vocab: QueryVocab): SearchState {
   s.variants = p.get("variants") === "all" ? "all" : "one";
   const sort = p.get("sort");
   s.sort = vocab.sorts.some((x) => x.id === sort) ? sort : null;
+  const page = Number(p.get("page"));
+  s.page = Number.isInteger(page) && page > 1 ? Math.min(page, MAX_PAGE) : 1;
   return s;
 }
 
@@ -59,26 +64,27 @@ export function stringifySearch(s: SearchState, vocab: QueryVocab): string {
   if (s.spec) add("spec", s.spec);
   if (s.variants === "all") add("variants", "all");
   if (s.sort) add("sort", s.sort);
+  if (s.page > 1) add("page", String(s.page));
   return parts.join("&");
 }
 
 /** the hash of a search */
 export const searchHash = (s: SearchState, vocab: QueryVocab): string => { const q = stringifySearch(s, vocab); return "#/search" + (q ? "?" + q : ""); };
 
-/** a copy with one value toggled in a facet (the facet disappears when its last value goes) */
+/** a copy with one value toggled in a facet (the facet disappears when its last value goes); a new selection starts at page 1 */
 export function toggleValue(s: SearchState, facet: string, value: string): SearchState {
   const cur = s.filters[facet] ?? [];
   const next = cur.includes(value) ? cur.filter((v) => v !== value) : [...cur, value];
   const filters = { ...s.filters };
   if (next.length) filters[facet] = next; else delete filters[facet];
-  return { ...s, filters };
+  return { ...s, filters, page: 1 };
 }
 
-/** a copy with one facet set to exactly these values (none: the facet is cleared) */
+/** a copy with one facet set to exactly these values (none: the facet is cleared); back to page 1 */
 export function setFacet(s: SearchState, facet: string, values: string[]): SearchState {
   const filters = { ...s.filters };
   if (values.length) filters[facet] = [...values]; else delete filters[facet];
-  return { ...s, filters };
+  return { ...s, filters, page: 1 };
 }
 
 /** how many things narrow the search (the query and the spec count as one each) */

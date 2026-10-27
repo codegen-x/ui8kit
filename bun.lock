@@ -136,6 +136,7 @@
       "dependencies": {
         "@codegen-x/svelte-compose": "workspace:*",
         "@ui8kit/app-shared": "workspace:*",
+        "@ui8kit/facet-search": "workspace:*",
         "@ui8kit/panorama": "workspace:*",
         "@ui8kit/taste-data": "workspace:*",
         "svelte": "^5.57.0",
@@ -159,6 +160,14 @@
         "ajv": "^8.17.1",
         "clsx": "^2.1.1",
         "tailwind-merge": "^3.7.0",
+      },
+    },
+    "packages/facet-search": {
+      "name": "@ui8kit/facet-search",
+      "version": "0.0.0",
+      "devDependencies": {
+        "@types/bun": "^1.4.2",
+        "typescript": "~6.0.2",
       },
     },
     "packages/kit-compose": {
@@ -619,6 +628,8 @@
     "@ui8kit/app-shared": ["@ui8kit/app-shared@workspace:packages/shared/app"],
 
     "@ui8kit/contract": ["@ui8kit/contract@0.2.0", "", {}, "sha512-Ba+YQPjwSmgFNh3nUYSyt3+Ap/fYUK6IQCXEj33WoDbeT6j0ejmq1ln8wGLHVe5dgBcRhI5/QDPprjgOYkYeXg=="],
+
+    "@ui8kit/facet-search": ["@ui8kit/facet-search@workspace:packages/facet-search"],
 
     "@ui8kit/panorama": ["@ui8kit/panorama@workspace:packages/panorama"],
 
