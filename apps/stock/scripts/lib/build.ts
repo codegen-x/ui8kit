@@ -1,0 +1,291 @@
+// The index builder of Stock: reads the specs of the repository and the facet vocabulary (content/facets.v0.json) and returns
+// the assets (content/assets.v0.json), the preview recipes (content/previews.v0.json) and the loaders of the Codex collections the
+// previews read (src/lib/collections.gen.ts). Pure apart from reading files; the same inputs give byte-equal outputs (and digest).
+//   sources: packages/compose-gen/specs/blocks (blocks, axes, variants, samples), packages/compose-gen/schema/codex/blocks.json
+//   (data/kind/record -> slots), packages/compose-gen/specs/organisms (sections, runtimes), packages/compose-gen/specs/screens
+//   (composed screens: one asset per page), packages/skins/skins (skins)
+import { createHash } from "node:crypto";
+import { readdirSync, readFileSync } from "node:fs";
+import { join } from "node:path";
+import { ui as dict } from "@ui8kit/app-shared/content";
+import { colourWords } from "@ui8kit/taste-data/search";
+import type { Asset, BlockRecipe, BlockUse, Clause, Facet, FacetValue, Index, Preview, Previews, Rule, ScreenRecipe, SpecValue, Vocabulary } from "../../src/lib/model";
+
+export const ROOT = join(import.meta.dir, "..", "..", "..", "..");
+const APP = join(ROOT, "apps", "stock");
+const SPECS = join(ROOT, "packages", "compose-gen", "specs");
+const readJson = <T>(p: string): T => JSON.parse(readFileSync(p, "utf8")) as T;
+const jsonFiles = (dir: string): string[] => readdirSync(dir).filter((f) => f.endsWith(".json") && !f.startsWith("_")).sort();
+
+/** the topics of the catalog in the order of the block gallery (packages/compose-gen/screens/src/compose-kit.ts THEMES) */
+export const THEMES = ["marketing", "commerce", "promo", "content", "account", "dashboard", "onboarding", "support"] as const;
+
+type BlockSpec = {
+  id: string; name: string; docs: string; theme: string; group: string; organism: string; fit?: "section" | "card";
+  alt?: { axis: string; values: string[]; organism: string };
+  axes: Record<string, string[]>; defaults: Record<string, string>;
+  variants: { id: string; set: Record<string, string>; props?: Record<string, SpecValue> }[];
+  slots: string[]; data?: { as: string; collection: string; fields: Record<string, string> }[];
+  sample: { props: Record<string, SpecValue> };
+};
+type OrganismSpec = { id: string; name: string; docs: string; props: { name: string }[]; portable: Record<string, boolean> };
+type CodexBlock = { spec?: string; surface: string; data?: { record: string; required?: string[]; optional?: string[] }[]; labels?: { prop: string }[] };
+type ScreenSpec = { id: string; name: string; kind?: string; frame?: { before?: unknown[]; after?: unknown[] }; areas?: Record<string, unknown[]> };
+type SkinSpec = { id: string; name: string; fonts: string[]; light: Record<string, string> };
+
+/** what a rule can look at: one variant of a block, a skin, a page of a screen */
+type Ctx = {
+  block?: string; group?: string; theme?: string; axes: Record<string, string>; slots: string[]; records: string[]; fields: string[];
+  labels: string[]; skin?: string; colours: string[]; screen?: string; area?: string; facets: Record<string, string[]>;
+};
+
+const has = (list: string[] | undefined, v: string | undefined): boolean => !!list && v !== undefined && list.includes(v);
+const hasAny = (list: string[] | undefined, vs: string[]): boolean => !!list && vs.some((v) => list.includes(v));
+
+/** a clause matches when any of its keys matches the context */
+export function matches(c: Clause, x: Ctx): boolean {
+  if (has(c.block, x.block) || has(c.group, x.group) || has(c.theme, x.theme) || has(c.skin, x.skin) || has(c.screen, x.screen) || has(c.area, x.area)) return true;
+  if (hasAny(c.slot, x.slots) || hasAny(c.record, x.records) || hasAny(c.field, x.fields) || hasAny(c.label, x.labels) || hasAny(c.colour, x.colours)) return true;
+  for (const [axis, vals] of Object.entries(c.axis ?? {})) if (has(vals, x.axes[axis])) return true;
+  for (const [f, vals] of Object.entries(c.facet ?? {})) if (hasAny(vals, x.facets[f] ?? [])) return true;
+  return false;
+}
+const ruleHits = (r: Rule, x: Ctx): boolean => matches(r.any, x) && !(r.not && matches(r.not, x));
+
+/** the rule-derived values of a facet for one context: matched values in vocabulary order, else the fallback */
+export function deriveRules(f: Facet, x: Ctx): string[] {
+  const out = f.values.filter((v) => (v.rules ?? []).some((r) => ruleHits(r, x))).map((v) => v.id);
+  return out.length ? out : f.fallback ? [f.fallback] : [];
+}
+
+const humanize = (s: string): string => {
+  const t = s.replace(/([a-z0-9])([A-Z])/g, "$1 $2").replace(/[-_.]+/g, " ").trim().toLowerCase();
+  return t.charAt(0).toUpperCase() + t.slice(1);
+};
+const words = (...parts: (string | undefined)[]): string[] => [...new Set(parts.filter(Boolean).flatMap((p) => {
+  const s = p!.replace(/([a-z0-9])([A-Z])/g, "$1 $2").toLowerCase();
+  return [s.replace(/\s+/g, ""), ...s.split(/[^\p{L}\p{N}]+/u)];
+}).filter((w) => w.length > 0))];
+const getAt = (o: unknown, path: string): unknown => path.split(".").reduce<unknown>((a, k) => (a && typeof a === "object" ? (a as Record<string, unknown>)[k] : undefined), o);
+const str = (v: unknown, fallback: string): string => (typeof v === "string" && v ? v : fallback);
+
+/** the radius of a skin (CSS length of its light --radius) on the 0/4/8/12/16 scale: the nearest step (ties up) */
+export function radiusStep(css: string | undefined): string {
+  const m = /^(-?\d*\.?\d+)(px|rem)?$/.exec((css ?? "").trim());
+  if (!m) return "8";
+  const px = Number(m[1]) * (m[2] === "rem" ? 16 : 1);
+  const steps = [0, 4, 8, 12, 16];
+  return String(steps.reduce((a, b) => (Math.abs(b - px) <= Math.abs(a - px) ? b : a))); // a tie goes to the larger step
+}
+
+export type Built = { index: Index; previews: Previews; collections: string };
+
+export function loadVocabulary(): Vocabulary { return readJson<Vocabulary>(join(APP, "content", "facets.v0.json")); }
+
+export function build(vocab: Vocabulary = loadVocabulary()): Built {
+  const blocks = jsonFiles(join(SPECS, "blocks")).map((f) => readJson<BlockSpec>(join(SPECS, "blocks", f)));
+  const organisms = jsonFiles(join(SPECS, "organisms")).map((f) => readJson<OrganismSpec>(join(SPECS, "organisms", f)));
+  const orgByName = new Map(organisms.map((o) => [o.name, o]));
+  const codex = readJson<{ blocks: CodexBlock[] }>(join(ROOT, "packages", "compose-gen", "schema", "codex", "blocks.json")).blocks;
+  const codexBySpec = new Map(codex.filter((c) => c.surface === "kit-block" && c.spec).map((c) => [c.spec!, c]));
+  const screens = jsonFiles(join(SPECS, "screens")).map((f) => readJson<ScreenSpec>(join(SPECS, "screens", f)));
+  const skinDir = join(ROOT, "packages", "skins", "skins");
+  const skins = readJson<{ skins: { id: string; file: string }[] }>(join(skinDir, "index.json")).skins.map((s) => readJson<SkinSpec>(join(skinDir, s.file)));
+
+  // the vocabulary with its generated values (the skins, the values of an axis)
+  const facets: Facet[] = vocab.facets.map((f) => {
+    if (f.valuesFrom === "skins") return { ...f, values: skins.map((s) => ({ id: s.id, label: { en: s.name }, synonyms: { en: words(s.id, s.name) } })) };
+    if (f.valuesFrom?.startsWith("axis:")) {
+      const axis = f.valuesFrom.slice(5);
+      const vals = [...new Set(blocks.flatMap((b) => b.axes[axis] ?? []))].sort();
+      return { ...f, values: vals.map((v) => ({ id: v, label: { en: humanize(v) } })) };
+    }
+    return f;
+  }).sort((a, b) => a.order - b.order);
+  const byId = new Map(facets.map((f) => [f.id, f]));
+  const applies = (f: Facet, type: string): boolean => !f.types || f.types.includes(type);
+
+  /** the labels of one context for one asset type, facet by facet in vocabulary order (later rules can read earlier facets) */
+  function labelsOf(type: string, x: Ctx, runtimes: string[], extra: Record<string, string[]> = {}): Record<string, string[]> {
+    const out: Record<string, string[]> = {};
+    for (const f of facets) {
+      if (f.derive === "markup" || !applies(f, type)) continue;
+      let vals: string[] = [];
+      if (f.derive === "type") vals = [type];
+      else if (f.wildcard?.includes(type)) vals = ["*"];
+      else if (extra[f.id]) vals = extra[f.id]!;
+      else if (f.derive === "rules") vals = deriveRules(f, x);
+      else if (f.derive === "runtime") vals = runtimes;
+      else if (f.derive.startsWith("axis:")) vals = x.axes[f.derive.slice(5)] !== undefined ? [x.axes[f.derive.slice(5)]!] : [];
+      out[f.id] = vals;
+      x.facets[f.id] = vals;
+    }
+    return out;
+  }
+  /** merge label sets (a section or a page carries every value of the variants or blocks it is made of) */
+  function union(sets: Record<string, string[]>[]): Record<string, string[]> {
+    const out: Record<string, string[]> = {};
+    for (const f of facets) {
+      const vals = new Set(sets.flatMap((s) => s[f.id] ?? []));
+      if (!sets.some((s) => f.id in s)) continue;
+      out[f.id] = vals.has("*") ? ["*"] : f.values.map((v) => v.id).filter((v) => vals.has(v));
+    }
+    return out;
+  }
+  /** finish an asset: type label, labelling state, weak and missing facets, the haystack */
+  function finish(a: Omit<Asset, "weak" | "missing" | "fields" | "order"> & { words: { w: number; words: string[] }[] }, order: number): Asset {
+    const labels: Record<string, string[]> = { ...a.labels, type: [a.type] };
+    // what still needs labelling: a shared, filtering facet of the type with no value (a typed facet without a value does not apply,
+    // a draft facet with no labels at all for the type is unlabelled by design and marked as a draft instead)
+    const missing = facets.filter((f) => applies(f, a.type) && f.scope === "shared" && f.derive !== "markup" && f.mode !== "soft" && f.id !== "type"
+      && !(labels[f.id]?.length) && !(f.draft && !labelledDraft.has(`${a.type}:${f.id}`))).map((f) => f.id);
+    const weak = facets.filter((f) => f.draft && (labels[f.id]?.length ?? 0) > 0 && labels[f.id]![0] !== "*").map((f) => f.id);
+    labels["markup"] = [missing.length ? "needs" : "auto"];
+    const ordered: Record<string, string[]> = {};
+    for (const f of facets) if (labels[f.id]) ordered[f.id] = labels[f.id]!;
+    // the words of the labels (value names and synonyms) are added by the engine when it loads the index (src/lib/search.ts)
+    const fields = a.words.filter((f) => f.words.length);
+    const { words: _w, ...rest } = a;
+    return { ...rest, order, labels: ordered, weak, missing, fields };
+  }
+
+  const runtimesOf = (names: string[]): string[] => {
+    const all = byId.get("runtime")!.values.map((v) => v.id);
+    return all.filter((r) => names.every((n) => orgByName.get(n)?.portable?.[r] === true));
+  };
+  const blockCtx = (b: BlockSpec, set: Record<string, string>): Ctx => {
+    const c = codexBySpec.get(b.id);
+    return {
+      block: b.id.slice(6), group: b.group, theme: b.theme, axes: { ...b.defaults, ...set }, slots: b.slots,
+      records: (c?.data ?? []).map((d) => d.record), fields: (c?.data ?? []).flatMap((d) => [...(d.required ?? []), ...(d.optional ?? [])]),
+      labels: (c?.labels ?? []).map((l) => l.prop), colours: [], facets: {},
+    };
+  };
+  const drawnBy = (b: BlockSpec, v: BlockSpec["variants"][number]): string =>
+    b.alt && (v.set[b.alt.axis] ?? b.defaults[b.alt.axis]) === b.alt.values[1] ? b.alt.organism : b.organism;
+  const names = dict.blocks.names as Record<string, string>;
+  const variantNames = dict.blocks.variants as Record<string, Record<string, string>>;
+  const themeTitles = dict.blocks.themes as Record<string, { title: string }>;
+
+  type Raw = Parameters<typeof finish>[0];
+  const raws: Raw[] = [];
+  const labelledDraft = new Set<string>();
+  const recipes: Previews["blocks"] = {};
+  const sorted = [...blocks].sort((a, b) => THEMES.indexOf(a.theme as (typeof THEMES)[number]) - THEMES.indexOf(b.theme as (typeof THEMES)[number]) || a.id.localeCompare(b.id));
+  /** every variant's labels, for the sections drawn by them and the pages made of them */
+  const variantLabels = new Map<string, Record<string, string[]>>();
+  const firstPreviewOf = new Map<string, Preview>();
+  const variantsOfOrganism = new Map<string, Record<string, string[]>[]>();
+
+  for (const b of sorted) {
+    const key = b.id.slice(6);
+    const orgNames = [b.organism, ...(b.alt ? [b.alt.organism] : [])];
+    recipes[key] = {
+      organism: b.organism, ...(b.alt ? { alt: b.alt } : {}), ...(b.fit ? { fit: b.fit } : {}), defaults: b.defaults, sample: b.sample.props,
+      variants: b.variants.map((v) => ({ id: v.id, set: v.set, ...(v.props ? { props: v.props } : {}) })),
+      data: (b.data ?? []).map((d) => ({ as: d.as, collection: d.collection, fields: d.fields })),
+      orgProps: Object.fromEntries(orgNames.map((n) => [n, (orgByName.get(n)?.props ?? []).map((p) => p.name)])),
+    };
+    for (const v of b.variants) {
+      const org = drawnBy(b, v);
+      const labels = labelsOf("block", blockCtx(b, v.set), runtimesOf([org]));
+      variantLabels.set(`${key}/${v.id}`, labels);
+      const preview: Preview = { kind: "block", block: key, variant: v.id };
+      if (!firstPreviewOf.has(org)) firstPreviewOf.set(org, preview);
+      (variantsOfOrganism.get(org) ?? variantsOfOrganism.set(org, []).get(org)!).push(labelsOf("section", blockCtx(b, v.set), runtimesOf([org])));
+      const title = str(names[key], humanize(key));
+      const vname = str(variantNames[key]?.[v.id], humanize(v.id));
+      raws.push({
+        id: `block.${key}/${v.id}`, type: "block", group: `block.${key}`, title, subtitle: vname, spec: b.id, variant: v.id, labels, preview,
+        words: [{ w: 6, words: words(title, key) }, { w: 4, words: words(vname, v.id) }, { w: 3, words: words(b.group, b.theme, str(themeTitles[b.theme]?.title, ""), org) }, { w: 1, words: words(b.docs) }],
+      });
+    }
+  }
+
+  // sections: the organisms of the composition layer (tier organism), labelled by the block variants that draw them
+  for (const o of [...organisms].filter((o) => o.id.startsWith("organism.")).sort((a, b) => a.name.localeCompare(b.name))) {
+    const sets = variantsOfOrganism.get(o.name) ?? [];
+    const labels = sets.length ? union(sets) : labelsOf("section", { axes: {}, slots: [], records: [], fields: [], labels: [], colours: [], facets: {} }, runtimesOf([o.name]));
+    const title = humanize(o.name);
+    raws.push({
+      id: `section.${o.id.slice(9)}`, type: "section", group: `section.${o.id.slice(9)}`, title, subtitle: o.name, spec: o.id, labels,
+      preview: firstPreviewOf.get(o.name) ?? null,
+      words: [{ w: 6, words: words(title, o.name) }, { w: 1, words: words(o.docs) }],
+    });
+  }
+
+  // screens: one asset per page (area) of a composed screen, labelled by its blocks
+  const screenRecipes: Record<string, ScreenRecipe> = {};
+  const isUse = (u: unknown): u is BlockUse => !!u && typeof u === "object" && typeof (u as BlockUse).block === "string";
+  for (const s of screens.filter((s) => s.kind === "composed" && s.areas && Object.keys(s.areas).length)) {
+    const key = s.id.slice(7);
+    const uses = Object.fromEntries(Object.entries(s.areas!).map(([area, list]) => [area, list.filter(isUse)]));
+    screenRecipes[key] = { name: s.name, before: (s.frame?.before ?? []).filter(isUse), after: (s.frame?.after ?? []).filter(isUse), areas: uses };
+    const screenTitle = humanize(s.name.replace(/Screen$/, "").replace(/^Theme/, ""));
+    for (const [area, list] of Object.entries(uses)) {
+      if (!list.length) continue;
+      const parts = list.map((u) => {
+        const b = blocks.find((x) => x.id === `block.${u.block}`);
+        const vid = u.variant ?? b?.variants[0]?.id ?? "";
+        return variantLabels.get(`${u.block}/${vid}`) ?? {};
+      });
+      const merged = union(parts.map((p) => Object.fromEntries(Object.entries(p).filter(([f]) => applies(byId.get(f)!, "screen")))));
+      const ctx: Ctx = { axes: {}, slots: [], records: [], fields: [], labels: [], colours: [], facets: { ...merged }, screen: key, area };
+      // page-level rules (industry by screen and area) add to what the blocks carry
+      const own = labelsOf("screen", ctx, runtimesOf(list.map((u) => recipes[u.block]?.organism ?? "")));
+      const labels = union([merged, Object.fromEntries(Object.entries(own).filter(([f]) => byId.get(f)!.derive === "rules" && (byId.get(f)!.mode === "soft" || !merged[f]?.length))), { runtime: own["runtime"] ?? [], skin: ["*"], radius: ["*"] }]);
+      const pageName = humanize(area);
+      raws.push({
+        id: `screen.${key}/${area}`, type: "screen", group: `screen.${key}/${area}`, title: screenTitle, subtitle: pageName, spec: s.id, variant: area, labels,
+        preview: { kind: "screen", screen: key, area },
+        words: [{ w: 6, words: words(screenTitle, key) }, { w: 4, words: words(pageName, area) }, { w: 2, words: list.map((u) => u.block) }],
+      });
+    }
+  }
+
+  // skins: the theme presets of packages/skins, previewed on the landing page of the marketing screen
+  for (const sk of skins) {
+    const ctx: Ctx = { axes: {}, slots: [], records: [], fields: [], labels: [], colours: colourWords(sk.id), skin: sk.id, facets: {} };
+    const labels = labelsOf("skin", ctx, [], { skin: [sk.id], radius: [radiusStep(sk.light["radius"])] });
+    raws.push({
+      id: `skin.${sk.id}`, type: "skin", group: `skin.${sk.id}`, title: sk.name, subtitle: sk.fonts.join(" + "), spec: `skin.${sk.id}`, labels,
+      preview: screenRecipes["theme-marketing-landing"] ? { kind: "screen", screen: "theme-marketing-landing", area: "home", skin: sk.id } : null,
+      words: [{ w: 6, words: words(sk.name, sk.id) }, { w: 4, words: [...colourWords(sk.id), ...sk.fonts] }],
+    });
+  }
+
+  for (const r of raws) for (const f of facets) if (f.draft && (r.labels[f.id]?.length ?? 0) > 0 && r.labels[f.id]![0] !== "*") labelledDraft.add(`${r.type}:${f.id}`);
+  const all: Asset[] = raws.map((r, i) => finish(r, i));
+  const counts: Record<string, number> = {};
+  for (const a of all) counts[a.type] = (counts[a.type] ?? 0) + 1;
+  counts["blockSpecs"] = blocks.length;
+  const body = { version: vocab.version, counts, facets, quick: vocab.quick, sorts: vocab.sorts, assets: all };
+  const digest = "sha256:" + createHash("sha256").update(JSON.stringify(body)).digest("hex");
+  const index: Index = { version: body.version, digest, counts, facets, quick: body.quick, sorts: body.sorts, assets: all };
+  const previews: Previews = { version: vocab.version, blocks: recipes, screens: screenRecipes };
+
+  // the Codex collections the previews read, as lazy imports of @ui8kit/app-shared/data/<collection>
+  const used = [...new Set(Object.values(recipes).flatMap((r) => r.data.map((d) => d.collection)))].sort();
+  const dataDir = join(ROOT, "packages", "shared", "app", "src", "data");
+  const lines = used.map((c) => {
+    const name = /export const (\w+)/.exec(readFileSync(join(dataDir, `${c}.ts`), "utf8"))?.[1];
+    if (!name) throw new Error(`build-index: no export in @ui8kit/app-shared/data/${c}`);
+    return `  ${JSON.stringify(c)}: () => import("@ui8kit/app-shared/data/${c}").then((m) => m.${name} as readonly unknown[]),`;
+  });
+  const collections = `// Code generated by apps/stock/scripts/build-index.ts. DO NOT EDIT.\n// The Codex collections the block previews read (data[].collection of the block specs), loaded on demand.\nexport const COLLECTIONS: Record<string, () => Promise<readonly unknown[]>> = {\n${lines.join("\n")}\n};\n`;
+  return { index, previews, collections };
+}
+
+export const OUTPUTS = {
+  index: join(APP, "content", "assets.v0.json"),
+  previews: join(APP, "content", "previews.v0.json"),
+  collections: join(APP, "src", "lib", "collections.gen.ts"),
+} as const;
+
+/** the files of a build, as written to disk */
+export function serialise(b: Built): Record<keyof typeof OUTPUTS, string> {
+  return { index: JSON.stringify(b.index) + "\n", previews: JSON.stringify(b.previews, null, 1) + "\n", collections: b.collections };
+}
+
+/** the values of a facet that are in the vocabulary (for validation): every id, plus "*" for wildcard types */
+export const valueIds = (f: Facet): Set<string> => new Set(f.values.map((v: FacetValue) => v.id));

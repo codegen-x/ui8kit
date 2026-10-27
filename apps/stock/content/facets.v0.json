@@ -1,0 +1,2844 @@
+{
+  "$comment": "The facet vocabulary of Stock (data, not code): every facet the storefront shows, in order, with its values, synonyms and the rules that derive auto and draft (weak) labels from the specs. scripts/build-index.ts reads it; components render any facet listed here. draft: true marks facets whose labels are weak (not reviewed by a person). Rules: a value is given when any clause of `any` matches and no clause of `not` does; `fallback` is the value when no rule matched.",
+  "version": "0",
+  "locales": [
+    "en"
+  ],
+  "facets": [
+    {
+      "id": "type",
+      "label": {
+        "en": "Asset type"
+      },
+      "ui": "tabs",
+      "scope": "shared",
+      "source": "auto",
+      "derive": "type",
+      "values": [
+        {
+          "id": "block",
+          "label": {
+            "en": "Blocks"
+          },
+          "synonyms": {
+            "en": [
+              "block",
+              "blocks",
+              "component"
+            ]
+          }
+        },
+        {
+          "id": "section",
+          "label": {
+            "en": "Sections"
+          },
+          "synonyms": {
+            "en": [
+              "section",
+              "sections",
+              "organism",
+              "organisms"
+            ]
+          }
+        },
+        {
+          "id": "screen",
+          "label": {
+            "en": "Screens"
+          },
+          "synonyms": {
+            "en": [
+              "screen",
+              "screens",
+              "page",
+              "pages",
+              "template",
+              "templates"
+            ]
+          }
+        },
+        {
+          "id": "skin",
+          "label": {
+            "en": "Skins"
+          },
+          "synonyms": {
+            "en": [
+              "skin",
+              "skins",
+              "theme",
+              "themes",
+              "palette"
+            ]
+          }
+        },
+        {
+          "id": "illustration",
+          "label": {
+            "en": "Illustrations"
+          },
+          "synonyms": {
+            "en": [
+              "illustration"
+            ]
+          },
+          "soon": true
+        },
+        {
+          "id": "video",
+          "label": {
+            "en": "Video"
+          },
+          "synonyms": {
+            "en": [
+              "video"
+            ]
+          },
+          "soon": true
+        },
+        {
+          "id": "background",
+          "label": {
+            "en": "Backgrounds"
+          },
+          "synonyms": {
+            "en": [
+              "background"
+            ]
+          },
+          "soon": true
+        },
+        {
+          "id": "font",
+          "label": {
+            "en": "Fonts"
+          },
+          "synonyms": {
+            "en": [
+              "font",
+              "typeface"
+            ]
+          },
+          "soon": true
+        },
+        {
+          "id": "poster",
+          "label": {
+            "en": "Social posters"
+          },
+          "synonyms": {
+            "en": [
+              "poster",
+              "social"
+            ]
+          },
+          "soon": true
+        }
+      ],
+      "order": 0
+    },
+    {
+      "id": "job",
+      "label": {
+        "en": "Block job"
+      },
+      "ui": "checkbox",
+      "open": true,
+      "visible": 8,
+      "scope": "shared",
+      "types": [
+        "block",
+        "section",
+        "screen"
+      ],
+      "source": "auto",
+      "derive": "rules",
+      "values": [
+        {
+          "id": "hero",
+          "label": {
+            "en": "Opening / hero"
+          },
+          "synonyms": {
+            "en": [
+              "hero",
+              "opening",
+              "header",
+              "banner",
+              "intro"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "group": [
+                  "hero"
+                ],
+                "block": [
+                  "storehero"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "features",
+          "label": {
+            "en": "Features"
+          },
+          "synonyms": {
+            "en": [
+              "features",
+              "benefits",
+              "advantages"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "group": [
+                  "features"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "pricing",
+          "label": {
+            "en": "Pricing"
+          },
+          "synonyms": {
+            "en": [
+              "pricing",
+              "price",
+              "plans",
+              "tariff"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "block": [
+                  "pricing",
+                  "plan",
+                  "credits",
+                  "usage"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "testimonials",
+          "label": {
+            "en": "Testimonials"
+          },
+          "synonyms": {
+            "en": [
+              "testimonials",
+              "reviews",
+              "quotes"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "block": [
+                  "testimonials",
+                  "quotesplit",
+                  "reviews"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "cta",
+          "label": {
+            "en": "Call to action"
+          },
+          "synonyms": {
+            "en": [
+              "cta",
+              "action",
+              "signup"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "group": [
+                  "cta"
+                ],
+                "block": [
+                  "announcement"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "faq",
+          "label": {
+            "en": "FAQ / objections"
+          },
+          "synonyms": {
+            "en": [
+              "faq",
+              "questions",
+              "objections"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "group": [
+                  "faq"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "proof",
+          "label": {
+            "en": "Social proof"
+          },
+          "synonyms": {
+            "en": [
+              "proof",
+              "trust",
+              "press"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "block": [
+                  "proof",
+                  "ctaproof",
+                  "medialist",
+                  "videos",
+                  "team"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "navigation",
+          "label": {
+            "en": "Navigation"
+          },
+          "synonyms": {
+            "en": [
+              "navigation",
+              "nav",
+              "menu",
+              "breadcrumbs"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "block": [
+                  "navbar",
+                  "header",
+                  "megamenu",
+                  "sidenav",
+                  "bottomnav",
+                  "pagehead",
+                  "pagetrail",
+                  "errorpage",
+                  "cookie"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "value",
+          "label": {
+            "en": "Value proposition"
+          },
+          "synonyms": {
+            "en": [
+              "value",
+              "usp",
+              "why"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "block": [
+                  "usp",
+                  "iconwall",
+                  "featureshowcase",
+                  "beforeafter",
+                  "about",
+                  "aboutme"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "how",
+          "label": {
+            "en": "How it works"
+          },
+          "synonyms": {
+            "en": [
+              "steps",
+              "process",
+              "how"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "group": [
+                  "how-it-works"
+                ],
+                "block": [
+                  "tour",
+                  "videomodal"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "logos",
+          "label": {
+            "en": "Logos"
+          },
+          "synonyms": {
+            "en": [
+              "logos",
+              "clients",
+              "partners"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "block": [
+                  "logos"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "numbers",
+          "label": {
+            "en": "Numbers"
+          },
+          "synonyms": {
+            "en": [
+              "stats",
+              "numbers",
+              "metrics",
+              "figures"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "block": [
+                  "stats",
+                  "metrics"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "comparison",
+          "label": {
+            "en": "Comparison"
+          },
+          "synonyms": {
+            "en": [
+              "compare",
+              "comparison",
+              "versus"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "block": [
+                  "compare"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "lead",
+          "label": {
+            "en": "Lead form"
+          },
+          "synonyms": {
+            "en": [
+              "form",
+              "lead",
+              "newsletter",
+              "subscribe",
+              "email"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "block": [
+                  "newsletter"
+                ],
+                "axis": {
+                  "actions.mode": [
+                    "form"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "contacts",
+          "label": {
+            "en": "Contacts"
+          },
+          "synonyms": {
+            "en": [
+              "contact",
+              "contacts",
+              "support",
+              "channels"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "group": [
+                  "contact"
+                ],
+                "block": [
+                  "locations"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "catalog",
+          "label": {
+            "en": "Catalog"
+          },
+          "synonyms": {
+            "en": [
+              "catalog",
+              "categories",
+              "products",
+              "gallery"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "group": [
+                  "catalog",
+                  "gallery"
+                ],
+                "block": [
+                  "photos",
+                  "projects",
+                  "jobs"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "product",
+          "label": {
+            "en": "Product card"
+          },
+          "synonyms": {
+            "en": [
+              "product",
+              "item"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "group": [
+                  "product"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "checkout",
+          "label": {
+            "en": "Cart / checkout"
+          },
+          "synonyms": {
+            "en": [
+              "cart",
+              "checkout",
+              "basket",
+              "orders"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "group": [
+                  "checkout"
+                ],
+                "block": [
+                  "orders"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "delivery",
+          "label": {
+            "en": "Delivery"
+          },
+          "synonyms": {
+            "en": [
+              "delivery",
+              "shipping",
+              "pickup"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "group": [
+                  "delivery"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "blog",
+          "label": {
+            "en": "Blog feed"
+          },
+          "synonyms": {
+            "en": [
+              "blog",
+              "posts",
+              "news",
+              "feed"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "block": [
+                  "posts",
+                  "postshowcase",
+                  "postsplit"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "article",
+          "label": {
+            "en": "Article"
+          },
+          "synonyms": {
+            "en": [
+              "article",
+              "post",
+              "story",
+              "timeline"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "block": [
+                  "article",
+                  "postheader"
+                ],
+                "group": [
+                  "story"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "footer",
+          "label": {
+            "en": "Footer"
+          },
+          "synonyms": {
+            "en": [
+              "footer",
+              "sitemap"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "block": [
+                  "footer",
+                  "footersplit",
+                  "sitemap"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "auth",
+          "label": {
+            "en": "Sign in"
+          },
+          "synonyms": {
+            "en": [
+              "auth",
+              "login",
+              "signin",
+              "signup",
+              "account"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "group": [
+                  "auth"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "dashboard",
+          "label": {
+            "en": "Dashboard widget"
+          },
+          "synonyms": {
+            "en": [
+              "dashboard",
+              "widget",
+              "admin",
+              "app"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "group": [
+                  "widgets",
+                  "layout",
+                  "states",
+                  "settings",
+                  "setup"
+                ],
+                "block": [
+                  "sidenav",
+                  "bottomnav"
+                ],
+                "theme": [
+                  "dashboard"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "order": 1
+    },
+    {
+      "id": "role",
+      "label": {
+        "en": "Role on the page"
+      },
+      "ui": "chips",
+      "open": true,
+      "visible": 8,
+      "scope": "shared",
+      "types": [
+        "block",
+        "section",
+        "screen"
+      ],
+      "source": "weak",
+      "draft": true,
+      "draftNote": {
+        "en": "Draft labels: derived from the block job, not reviewed by a person"
+      },
+      "derive": "rules",
+      "values": [
+        {
+          "id": "opening",
+          "label": {
+            "en": "Opening"
+          },
+          "synonyms": {
+            "en": [
+              "opening",
+              "first"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "facet": {
+                  "job": [
+                    "hero"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "value",
+          "label": {
+            "en": "Value"
+          },
+          "synonyms": {
+            "en": [
+              "value"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "facet": {
+                  "job": [
+                    "value",
+                    "features",
+                    "how",
+                    "product"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "proof",
+          "label": {
+            "en": "Proof"
+          },
+          "synonyms": {
+            "en": [
+              "proof"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "facet": {
+                  "job": [
+                    "proof",
+                    "testimonials",
+                    "logos",
+                    "numbers"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "offer",
+          "label": {
+            "en": "Offer"
+          },
+          "synonyms": {
+            "en": [
+              "offer"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "facet": {
+                  "job": [
+                    "pricing",
+                    "comparison",
+                    "catalog"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "objections",
+          "label": {
+            "en": "Objections"
+          },
+          "synonyms": {
+            "en": [
+              "objections"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "facet": {
+                  "job": [
+                    "faq"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "final-cta",
+          "label": {
+            "en": "Final call to action"
+          },
+          "synonyms": {
+            "en": [
+              "final"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "facet": {
+                  "job": [
+                    "cta",
+                    "lead"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "service",
+          "label": {
+            "en": "Service"
+          },
+          "synonyms": {
+            "en": [
+              "service",
+              "utility"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "facet": {
+                  "job": [
+                    "navigation",
+                    "footer",
+                    "auth",
+                    "dashboard",
+                    "delivery",
+                    "checkout",
+                    "contacts",
+                    "blog",
+                    "article"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "order": 2
+    },
+    {
+      "id": "composition",
+      "label": {
+        "en": "Composition"
+      },
+      "ui": "tiles",
+      "open": true,
+      "visible": 8,
+      "scope": "shared",
+      "types": [
+        "block",
+        "section",
+        "screen"
+      ],
+      "source": "auto",
+      "derive": "rules",
+      "values": [
+        {
+          "id": "central",
+          "label": {
+            "en": "Central focus"
+          },
+          "synonyms": {
+            "en": [
+              "centered",
+              "center",
+              "central",
+              "focus"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "axis": {
+                  "layout": [
+                    "centered",
+                    "center",
+                    "single",
+                    "minimal",
+                    "banner",
+                    "band",
+                    "full",
+                    "intro",
+                    "head",
+                    "plain",
+                    "card"
+                  ],
+                  "align": [
+                    "center"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "two-column",
+          "label": {
+            "en": "Two columns"
+          },
+          "synonyms": {
+            "en": [
+              "split",
+              "two",
+              "columns",
+              "side"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "axis": {
+                  "layout": [
+                    "split",
+                    "beside",
+                    "aside",
+                    "sidebar",
+                    "media",
+                    "panes",
+                    "toc",
+                    "contact",
+                    "chat"
+                  ],
+                  "mediaSide": [
+                    "start",
+                    "end"
+                  ],
+                  "media.side": [
+                    "start"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "editorial",
+          "label": {
+            "en": "Editorial"
+          },
+          "synonyms": {
+            "en": [
+              "editorial",
+              "magazine",
+              "featured"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "axis": {
+                  "layout": [
+                    "magazine",
+                    "featured",
+                    "masonry",
+                    "mosaic",
+                    "overlay",
+                    "outline",
+                    "carousel"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "bento",
+          "label": {
+            "en": "Bento"
+          },
+          "synonyms": {
+            "en": [
+              "bento",
+              "tiles"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "axis": {
+                  "layout": [
+                    "bento"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "diagonal",
+          "label": {
+            "en": "Diagonal"
+          },
+          "synonyms": {
+            "en": [
+              "diagonal",
+              "alternate",
+              "zigzag"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "axis": {
+                  "mediaSide": [
+                    "alternate"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "axial",
+          "label": {
+            "en": "Axial"
+          },
+          "synonyms": {
+            "en": [
+              "axial",
+              "stack",
+              "vertical",
+              "list"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "axis": {
+                  "layout": [
+                    "stacked",
+                    "stack",
+                    "column",
+                    "list",
+                    "rows",
+                    "timeline",
+                    "vertical",
+                    "numbered",
+                    "accordion",
+                    "steps",
+                    "years",
+                    "rail"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "grid",
+          "label": {
+            "en": "Card grid"
+          },
+          "synonyms": {
+            "en": [
+              "grid",
+              "cards"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "axis": {
+                  "layout": [
+                    "grid",
+                    "cards",
+                    "tiles",
+                    "even",
+                    "row",
+                    "chips",
+                    "logos",
+                    "table",
+                    "directory",
+                    "columns",
+                    "figures",
+                    "stats",
+                    "metrics",
+                    "points",
+                    "links",
+                    "strip"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "order": 3
+    },
+    {
+      "id": "character",
+      "label": {
+        "en": "Character"
+      },
+      "ui": "tiles",
+      "open": true,
+      "visible": 8,
+      "scope": "shared",
+      "source": "weak",
+      "draft": true,
+      "draftNote": {
+        "en": "Draft labels: derived from tone, scale and skin, not reviewed by a person"
+      },
+      "derive": "rules",
+      "fallback": "restrained",
+      "values": [
+        {
+          "id": "restrained",
+          "label": {
+            "en": "Restrained"
+          },
+          "synonyms": {
+            "en": [
+              "calm",
+              "restrained",
+              "minimal",
+              "quiet"
+            ]
+          }
+        },
+        {
+          "id": "expressive",
+          "label": {
+            "en": "Expressive"
+          },
+          "synonyms": {
+            "en": [
+              "bold",
+              "expressive",
+              "loud"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "axis": {
+                  "tone": [
+                    "inverse"
+                  ],
+                  "scale": [
+                    "display"
+                  ],
+                  "media.kind": [
+                    "backdrop",
+                    "cluster"
+                  ],
+                  "layout": [
+                    "bento",
+                    "overlay",
+                    "mosaic"
+                  ]
+                },
+                "skin": [
+                  "bubblegum",
+                  "violet-bloom",
+                  "cosmic-night"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "technical",
+          "label": {
+            "en": "Technical"
+          },
+          "synonyms": {
+            "en": [
+              "technical",
+              "tech",
+              "developer",
+              "code"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "theme": [
+                  "dashboard"
+                ],
+                "axis": {
+                  "media.kind": [
+                    "code"
+                  ]
+                },
+                "block": [
+                  "chart",
+                  "kanban",
+                  "metrics",
+                  "usage"
+                ],
+                "skin": [
+                  "perpetuity",
+                  "doom-64",
+                  "supabase",
+                  "t3-chat"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "playful",
+          "label": {
+            "en": "Playful"
+          },
+          "synonyms": {
+            "en": [
+              "playful",
+              "fun"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "skin": [
+                  "bubblegum",
+                  "notebook",
+                  "neo-brutalism"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "order": 4
+    },
+    {
+      "id": "density",
+      "label": {
+        "en": "Density"
+      },
+      "ui": "tiles",
+      "open": true,
+      "visible": 8,
+      "scope": "shared",
+      "types": [
+        "block",
+        "section",
+        "screen"
+      ],
+      "source": "auto",
+      "derive": "rules",
+      "fallback": "moderate",
+      "values": [
+        {
+          "id": "airy",
+          "label": {
+            "en": "Airy"
+          },
+          "synonyms": {
+            "en": [
+              "airy",
+              "spacious",
+              "roomy",
+              "whitespace"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "axis": {
+                  "density": [
+                    "roomy"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "moderate",
+          "label": {
+            "en": "Moderate"
+          },
+          "synonyms": {
+            "en": [
+              "moderate",
+              "balanced"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "axis": {
+                  "density": [
+                    "default"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "dense",
+          "label": {
+            "en": "Dense"
+          },
+          "synonyms": {
+            "en": [
+              "dense",
+              "compact",
+              "packed"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "axis": {
+                  "density": [
+                    "compact"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "order": 5
+    },
+    {
+      "id": "skin",
+      "label": {
+        "en": "Skin and palette"
+      },
+      "ui": "swatches",
+      "scope": "shared",
+      "source": "auto",
+      "derive": "skin",
+      "wildcard": [
+        "block",
+        "section",
+        "screen"
+      ],
+      "valuesFrom": "skins",
+      "values": [],
+      "order": 6
+    },
+    {
+      "id": "radius",
+      "label": {
+        "en": "Corner radius"
+      },
+      "ui": "segments",
+      "scope": "shared",
+      "types": [
+        "block",
+        "section",
+        "screen",
+        "skin"
+      ],
+      "source": "auto",
+      "derive": "radius",
+      "wildcard": [
+        "block",
+        "section",
+        "screen"
+      ],
+      "values": [
+        {
+          "id": "0",
+          "label": {
+            "en": "0"
+          }
+        },
+        {
+          "id": "4",
+          "label": {
+            "en": "4"
+          }
+        },
+        {
+          "id": "8",
+          "label": {
+            "en": "8"
+          }
+        },
+        {
+          "id": "12",
+          "label": {
+            "en": "12"
+          }
+        },
+        {
+          "id": "16",
+          "label": {
+            "en": "16"
+          }
+        }
+      ],
+      "order": 7
+    },
+    {
+      "id": "media",
+      "label": {
+        "en": "Media"
+      },
+      "ui": "checkbox",
+      "scope": "shared",
+      "types": [
+        "block",
+        "section",
+        "screen"
+      ],
+      "source": "auto",
+      "derive": "rules",
+      "fallback": "none",
+      "values": [
+        {
+          "id": "none",
+          "label": {
+            "en": "No media"
+          },
+          "synonyms": {
+            "en": [
+              "text",
+              "plain"
+            ]
+          }
+        },
+        {
+          "id": "icons",
+          "label": {
+            "en": "Icons"
+          },
+          "synonyms": {
+            "en": [
+              "icons",
+              "icon"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "field": [
+                  "metadata.icon.value"
+                ],
+                "axis": {
+                  "marker": [
+                    "icon"
+                  ],
+                  "visual": [
+                    "icon"
+                  ],
+                  "item.mark": [
+                    "icon"
+                  ],
+                  "logoStyle": [
+                    "icon"
+                  ]
+                }
+              },
+              "not": {
+                "axis": {
+                  "icon": [
+                    "hide"
+                  ],
+                  "icons": [
+                    "hide"
+                  ],
+                  "visual": [
+                    "image"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "image",
+          "label": {
+            "en": "Single image"
+          },
+          "synonyms": {
+            "en": [
+              "image",
+              "photo",
+              "picture",
+              "screenshot"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "axis": {
+                  "media": [
+                    "image",
+                    "picture",
+                    "card"
+                  ],
+                  "media.kind": [
+                    "image",
+                    "backdrop"
+                  ],
+                  "visual": [
+                    "image"
+                  ],
+                  "surface": [
+                    "image"
+                  ],
+                  "cover": [
+                    "show",
+                    "wide",
+                    "square"
+                  ],
+                  "avatar": [
+                    "image"
+                  ],
+                  "item.avatar": [
+                    "image"
+                  ],
+                  "caption": [
+                    "below",
+                    "overlay"
+                  ],
+                  "over": [
+                    "media"
+                  ]
+                },
+                "block": [
+                  "product",
+                  "productinfo"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "gallery",
+          "label": {
+            "en": "Gallery"
+          },
+          "synonyms": {
+            "en": [
+              "gallery",
+              "photos",
+              "images"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "block": [
+                  "photos",
+                  "projects",
+                  "templates"
+                ],
+                "axis": {
+                  "layout": [
+                    "masonry",
+                    "mosaic",
+                    "carousel"
+                  ],
+                  "media": [
+                    "grid"
+                  ],
+                  "thumbs": [
+                    "below"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "video",
+          "label": {
+            "en": "Video"
+          },
+          "synonyms": {
+            "en": [
+              "video",
+              "movie"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "block": [
+                  "videos",
+                  "videomodal"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "order": 8
+    },
+    {
+      "id": "mood",
+      "label": {
+        "en": "Mood"
+      },
+      "ui": "chips",
+      "scope": "shared",
+      "types": [
+        "skin",
+        "block",
+        "section",
+        "screen"
+      ],
+      "source": "weak",
+      "draft": true,
+      "draftNote": {
+        "en": "Draft labels: only skins carry a mood (from their colour words); blocks are not labelled yet"
+      },
+      "derive": "rules",
+      "values": [
+        {
+          "id": "warm",
+          "label": {
+            "en": "Warm"
+          },
+          "synonyms": {
+            "en": [
+              "warm"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "colour": [
+                  "warm"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "cold",
+          "label": {
+            "en": "Cold"
+          },
+          "synonyms": {
+            "en": [
+              "cold",
+              "cool"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "colour": [
+                  "cool"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "premium",
+          "label": {
+            "en": "Premium"
+          },
+          "synonyms": {
+            "en": [
+              "premium",
+              "luxury"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "colour": [
+                  "dark",
+                  "deep"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "friendly",
+          "label": {
+            "en": "Friendly"
+          },
+          "synonyms": {
+            "en": [
+              "friendly",
+              "soft"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "colour": [
+                  "light",
+                  "pale"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "strict",
+          "label": {
+            "en": "Strict"
+          },
+          "synonyms": {
+            "en": [
+              "strict",
+              "neutral",
+              "serious"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "colour": [
+                  "neutral",
+                  "grey"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "festive",
+          "label": {
+            "en": "Festive"
+          },
+          "synonyms": {
+            "en": [
+              "festive",
+              "party"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "colour": [
+                  "pink",
+                  "magenta"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "order": 9
+    },
+    {
+      "id": "industry",
+      "label": {
+        "en": "Industry"
+      },
+      "ui": "checkbox",
+      "mode": "soft",
+      "scope": "shared",
+      "source": "weak",
+      "draft": true,
+      "draftNote": {
+        "en": "Draft labels: a ranking hint from the catalog topic, never a hard filter"
+      },
+      "derive": "rules",
+      "values": [
+        {
+          "id": "food",
+          "label": {
+            "en": "Food and restaurants"
+          },
+          "synonyms": {
+            "en": [
+              "food",
+              "restaurant",
+              "cafe",
+              "menu",
+              "barbecue"
+            ]
+          }
+        },
+        {
+          "id": "saas",
+          "label": {
+            "en": "SaaS"
+          },
+          "synonyms": {
+            "en": [
+              "saas",
+              "software",
+              "startup"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "theme": [
+                  "dashboard",
+                  "account",
+                  "onboarding"
+                ],
+                "group": [
+                  "pricing"
+                ],
+                "screen": [
+                  "theme-marketing-product",
+                  "theme-marketing-pricing"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "ecommerce",
+          "label": {
+            "en": "E-commerce"
+          },
+          "synonyms": {
+            "en": [
+              "shop",
+              "store",
+              "ecommerce",
+              "commerce"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "theme": [
+                  "commerce"
+                ],
+                "screen": [
+                  "theme-commerce-shop"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "education",
+          "label": {
+            "en": "Education"
+          },
+          "synonyms": {
+            "en": [
+              "education",
+              "course",
+              "school",
+              "learning"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "block": [
+                  "tour",
+                  "checklist",
+                  "stepper"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "medicine",
+          "label": {
+            "en": "Medicine"
+          },
+          "synonyms": {
+            "en": [
+              "medicine",
+              "health",
+              "clinic"
+            ]
+          }
+        },
+        {
+          "id": "realestate",
+          "label": {
+            "en": "Real estate"
+          },
+          "synonyms": {
+            "en": [
+              "realestate",
+              "property",
+              "housing"
+            ]
+          }
+        },
+        {
+          "id": "finance",
+          "label": {
+            "en": "Finance"
+          },
+          "synonyms": {
+            "en": [
+              "finance",
+              "bank",
+              "money",
+              "billing"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "block": [
+                  "usage",
+                  "credits"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "portfolio",
+          "label": {
+            "en": "Portfolio"
+          },
+          "synonyms": {
+            "en": [
+              "portfolio",
+              "work",
+              "studio",
+              "designer"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "block": [
+                  "projects",
+                  "photos",
+                  "aboutme"
+                ],
+                "area": [
+                  "work",
+                  "studio"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "events",
+          "label": {
+            "en": "Events"
+          },
+          "synonyms": {
+            "en": [
+              "events",
+              "conference",
+              "meetup"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "area": [
+                  "events"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "order": 10
+    },
+    {
+      "id": "section",
+      "label": {
+        "en": "Catalog section"
+      },
+      "ui": "checkbox",
+      "scope": "shared",
+      "types": [
+        "block",
+        "section",
+        "screen"
+      ],
+      "source": "auto",
+      "derive": "rules",
+      "values": [
+        {
+          "id": "marketing",
+          "label": {
+            "en": "Marketing"
+          },
+          "synonyms": {
+            "en": [
+              "marketing"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "theme": [
+                  "marketing"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "commerce",
+          "label": {
+            "en": "Commerce"
+          },
+          "synonyms": {
+            "en": [
+              "commerce"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "theme": [
+                  "commerce"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "dashboard",
+          "label": {
+            "en": "Dashboard"
+          },
+          "synonyms": {
+            "en": [
+              "dashboard"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "theme": [
+                  "dashboard"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "content",
+          "label": {
+            "en": "Content"
+          },
+          "synonyms": {
+            "en": [
+              "content"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "theme": [
+                  "content"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "account",
+          "label": {
+            "en": "Account"
+          },
+          "synonyms": {
+            "en": [
+              "account"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "theme": [
+                  "account"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "onboarding",
+          "label": {
+            "en": "Onboarding"
+          },
+          "synonyms": {
+            "en": [
+              "onboarding"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "theme": [
+                  "onboarding"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "support",
+          "label": {
+            "en": "Support"
+          },
+          "synonyms": {
+            "en": [
+              "support"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "theme": [
+                  "support"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "promo",
+          "label": {
+            "en": "Promo"
+          },
+          "synonyms": {
+            "en": [
+              "promo"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "theme": [
+                  "promo"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "order": 11
+    },
+    {
+      "id": "runtime",
+      "label": {
+        "en": "Runtime"
+      },
+      "ui": "checkbox",
+      "scope": "shared",
+      "types": [
+        "block",
+        "section",
+        "screen"
+      ],
+      "source": "auto",
+      "derive": "runtime",
+      "wildcard": [
+        "skin"
+      ],
+      "values": [
+        {
+          "id": "svelte",
+          "label": {
+            "en": "Svelte"
+          }
+        },
+        {
+          "id": "react",
+          "label": {
+            "en": "React"
+          }
+        },
+        {
+          "id": "vue",
+          "label": {
+            "en": "Vue"
+          }
+        },
+        {
+          "id": "solid",
+          "label": {
+            "en": "Solid"
+          }
+        },
+        {
+          "id": "templ",
+          "label": {
+            "en": "templ"
+          }
+        },
+        {
+          "id": "twig",
+          "label": {
+            "en": "Twig"
+          }
+        },
+        {
+          "id": "jinja2",
+          "label": {
+            "en": "Jinja2"
+          }
+        },
+        {
+          "id": "latte",
+          "label": {
+            "en": "Latte"
+          }
+        }
+      ],
+      "order": 12
+    },
+    {
+      "id": "slots",
+      "label": {
+        "en": "Contains slots"
+      },
+      "ui": "checkbox",
+      "scope": "typed",
+      "types": [
+        "block",
+        "section"
+      ],
+      "source": "auto",
+      "derive": "rules",
+      "values": [
+        {
+          "id": "price",
+          "label": {
+            "en": "Price"
+          },
+          "synonyms": {
+            "en": [
+              "price",
+              "cost"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "field": [
+                  "metadata.price.value",
+                  "metadata.amount.value",
+                  "metadata.total.value",
+                  "metadata.compare_at.value",
+                  "metadata.salary.value"
+                ],
+                "label": [
+                  "price.currency",
+                  "price.label"
+                ],
+                "slot": [
+                  "ProductPrice"
+                ],
+                "record": [
+                  "Plan",
+                  "Product",
+                  "CartLine"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "image",
+          "label": {
+            "en": "Image"
+          },
+          "synonyms": {
+            "en": [
+              "image",
+              "photo"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "field": [
+                  "featured_media_id"
+                ],
+                "slot": [
+                  "MediaFrame",
+                  "ProductGallery",
+                  "FigureBlock",
+                  "OfferMedia",
+                  "OverMedia",
+                  "Backdrop"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "date",
+          "label": {
+            "en": "Date"
+          },
+          "synonyms": {
+            "en": [
+              "date",
+              "time",
+              "calendar"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "field": [
+                  "metadata.date.value",
+                  "metadata.posted.value",
+                  "metadata.time.value",
+                  "metadata.year.value"
+                ],
+                "record": [
+                  "Event",
+                  "Day",
+                  "Milestone"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "form",
+          "label": {
+            "en": "Form"
+          },
+          "synonyms": {
+            "en": [
+              "form",
+              "input",
+              "field"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "slot": [
+                  "Field",
+                  "AuthForm",
+                  "NumberField",
+                  "SearchField",
+                  "CheckoutStep",
+                  "PromptComposer",
+                  "FooterSignupCard"
+                ],
+                "label": [
+                  "actions.emailLabel",
+                  "signup.submit",
+                  "submit"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "rating",
+          "label": {
+            "en": "Rating"
+          },
+          "synonyms": {
+            "en": [
+              "rating",
+              "stars"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "field": [
+                  "metadata.rating.value"
+                ],
+                "slot": [
+                  "Rating",
+                  "QuoteRatingPanel"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "avatar",
+          "label": {
+            "en": "Avatar"
+          },
+          "synonyms": {
+            "en": [
+              "avatar",
+              "person",
+              "author"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "field": [
+                  "author_id"
+                ],
+                "slot": [
+                  "PostAuthor",
+                  "MemberRow"
+                ],
+                "record": [
+                  "Member",
+                  "Quote"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "map",
+          "label": {
+            "en": "Map"
+          },
+          "synonyms": {
+            "en": [
+              "map",
+              "location"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "record": [
+                  "Store",
+                  "Zone"
+                ],
+                "block": [
+                  "locations",
+                  "zones"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "table",
+          "label": {
+            "en": "Table"
+          },
+          "synonyms": {
+            "en": [
+              "table",
+              "rows"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "slot": [
+                  "CartTable",
+                  "OrderRows"
+                ],
+                "record": [
+                  "CompareRow",
+                  "SummaryRow",
+                  "Order"
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "id": "chart",
+          "label": {
+            "en": "Chart"
+          },
+          "synonyms": {
+            "en": [
+              "chart",
+              "graph"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "slot": [
+                  "BarChart",
+                  "MeterRow"
+                ],
+                "block": [
+                  "chart",
+                  "metrics"
+                ]
+              }
+            }
+          ]
+        }
+      ],
+      "order": 13
+    },
+    {
+      "id": "layout",
+      "label": {
+        "en": "Block layout"
+      },
+      "ui": "checkbox",
+      "scope": "typed",
+      "types": [
+        "block"
+      ],
+      "source": "auto",
+      "derive": "axis:layout",
+      "valuesFrom": "axis:layout",
+      "values": [],
+      "order": 14
+    },
+    {
+      "id": "tone",
+      "label": {
+        "en": "Tone"
+      },
+      "ui": "segments",
+      "scope": "typed",
+      "types": [
+        "block",
+        "section"
+      ],
+      "source": "auto",
+      "derive": "rules",
+      "values": [
+        {
+          "id": "default",
+          "label": {
+            "en": "Default"
+          },
+          "synonyms": {
+            "en": [
+              "default",
+              "light"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "axis": {
+                  "tone": [
+                    "default"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "muted",
+          "label": {
+            "en": "Muted"
+          },
+          "synonyms": {
+            "en": [
+              "muted",
+              "grey"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "axis": {
+                  "tone": [
+                    "muted"
+                  ]
+                }
+              }
+            }
+          ]
+        },
+        {
+          "id": "inverse",
+          "label": {
+            "en": "Inverse"
+          },
+          "synonyms": {
+            "en": [
+              "inverse",
+              "dark",
+              "accent"
+            ]
+          },
+          "rules": [
+            {
+              "any": {
+                "axis": {
+                  "tone": [
+                    "inverse"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "order": 15
+    },
+    {
+      "id": "markup",
+      "label": {
+        "en": "Labelling state"
+      },
+      "ui": "toggle",
+      "scope": "shared",
+      "source": "system",
+      "derive": "markup",
+      "values": [
+        {
+          "id": "human",
+          "label": {
+            "en": "Reviewed by a person"
+          },
+          "synonyms": {
+            "en": [
+              "reviewed",
+              "human"
+            ]
+          }
+        },
+        {
+          "id": "auto",
+          "label": {
+            "en": "Automatic only"
+          },
+          "synonyms": {
+            "en": [
+              "auto",
+              "automatic"
+            ]
+          }
+        },
+        {
+          "id": "disputed",
+          "label": {
+            "en": "Disputed"
+          },
+          "synonyms": {
+            "en": [
+              "disputed"
+            ]
+          }
+        },
+        {
+          "id": "needs",
+          "label": {
+            "en": "Needs labelling"
+          },
+          "synonyms": {
+            "en": [
+              "draft",
+              "unlabelled",
+              "needs"
+            ]
+          }
+        }
+      ],
+      "order": 16
+    }
+  ],
+  "quick": [
+    {
+      "facet": "job",
+      "value": "hero"
+    },
+    {
+      "facet": "job",
+      "value": "pricing"
+    },
+    {
+      "facet": "job",
+      "value": "testimonials"
+    },
+    {
+      "facet": "tone",
+      "value": "inverse",
+      "label": {
+        "en": "Dark"
+      }
+    },
+    {
+      "facet": "density",
+      "value": "airy"
+    },
+    {
+      "facet": "composition",
+      "value": "bento"
+    },
+    {
+      "facet": "slots",
+      "value": "form",
+      "label": {
+        "en": "With a form"
+      }
+    },
+    {
+      "facet": "media",
+      "value": "image"
+    }
+  ],
+  "sorts": [
+    {
+      "id": "relevance",
+      "label": {
+        "en": "Relevance"
+      }
+    },
+    {
+      "id": "catalog",
+      "label": {
+        "en": "Catalog order"
+      }
+    },
+    {
+      "id": "name",
+      "label": {
+        "en": "Name"
+      }
+    },
+    {
+      "id": "unlabelled",
+      "label": {
+        "en": "Needs labelling first"
+      }
+    }
+  ]
+}
