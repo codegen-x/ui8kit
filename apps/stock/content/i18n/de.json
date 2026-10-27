@@ -57,6 +57,44 @@
     "failed": "Die Vorschau konnte nicht geladen werden",
     "none": "Keine Vorschau"
   },
+  "detail": {
+    "back": "Zurück zum Katalog",
+    "preview": {
+      "title": "Vorschau",
+      "width": "Bildschirmbreite",
+      "widths": {
+        "desktop": "Desktop, 1280 px",
+        "tablet": "Tablet, 768 px",
+        "phone": "Telefon, 390 px"
+      },
+      "mode": "Modus",
+      "light": "Hell",
+      "dark": "Dunkel",
+      "frame": "Live-Vorschau von {title}",
+      "loading": "Vorschau wird geladen"
+    },
+    "passport": {
+      "title": "Steckbrief",
+      "blocks": "Blöcke dieser Seite",
+      "variants": "Varianten",
+      "usedBy": "Bildschirmseiten mit diesem Block",
+      "unused": "Keine Bildschirmseite verwendet diesen Block.",
+      "current": "diese",
+      "facets": "Labels",
+      "readonly": "Nur lesen: Labels werden im Cabinet gesetzt.",
+      "noLabel": "kein Label",
+      "any": "alle",
+      "draft": "Entwurf"
+    },
+    "similar": {
+      "title": "Ähnlich",
+      "none": "Noch nichts Ähnliches."
+    },
+    "missing": {
+      "title": "Nicht gefunden",
+      "text": "Es gibt keinen Block und keinen Bildschirm {id}."
+    }
+  },
   "sheet": {
     "theme": {
       "title": "Theme",

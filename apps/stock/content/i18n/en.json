@@ -57,6 +57,44 @@
     "failed": "The preview failed to load",
     "none": "No preview"
   },
+  "detail": {
+    "back": "Back to the catalog",
+    "preview": {
+      "title": "Preview",
+      "width": "Screen width",
+      "widths": {
+        "desktop": "Desktop, 1280 px",
+        "tablet": "Tablet, 768 px",
+        "phone": "Phone, 390 px"
+      },
+      "mode": "Mode",
+      "light": "Light",
+      "dark": "Dark",
+      "frame": "Live preview of {title}",
+      "loading": "Loading the preview"
+    },
+    "passport": {
+      "title": "Passport",
+      "blocks": "Blocks of this page",
+      "variants": "Variants",
+      "usedBy": "Screen pages that use this block",
+      "unused": "No screen page uses this block.",
+      "current": "this one",
+      "facets": "Labels",
+      "readonly": "Read-only: labels are set in the cabinet.",
+      "noLabel": "no label",
+      "any": "any",
+      "draft": "draft"
+    },
+    "similar": {
+      "title": "Similar",
+      "none": "Nothing similar yet."
+    },
+    "missing": {
+      "title": "Not found",
+      "text": "There is no block or screen {id}."
+    }
+  },
   "sheet": {
     "theme": {
       "title": "Theme",

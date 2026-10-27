@@ -3,6 +3,7 @@ import { activeCount, type Outcome, type Relaxation, type SearchState } from "@u
 import { textIn, type Locale } from "@ui8kit/facet-search/model";
 import { fmt, type CardView, type ChipView, type FacetView, type QuickView, type RelaxView, type StockText, type TypeView } from "@ui8kit/layouts/stock/text";
 import type { Asset, Index } from "./model";
+import { assetHash } from "./route";
 
 export const TYPE = "type";
 
@@ -79,5 +80,5 @@ export const selectedCount = (s: SearchState): number => activeCount(s) - (s.fil
 
 export function cardView(index: Index, a: Asset, variants: number, locale: Locale): CardView {
   const type = index.facets.find((f) => f.id === TYPE)?.values.find((v) => v.id === a.type);
-  return { key: a.id, title: a.title, subtitle: a.subtitle, kind: type ? textIn(type.label, locale) : a.type, variants, spec: a.spec, preview: a.preview !== null };
+  return { key: a.id, title: a.title, subtitle: a.subtitle, kind: type ? textIn(type.label, locale) : a.type, variants, spec: a.spec, preview: a.preview !== null, href: assetHash(a.id) };
 }

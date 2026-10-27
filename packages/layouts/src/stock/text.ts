@@ -12,6 +12,8 @@ export type StockText = {
   chips: { label: string; query: string; spec: string; remove: string; reset: string };
   pagination: { label: string; prev: string; next: string; page: string };
   card: { variants: string; loading: string; failed: string; none: string };
+  /** the detail page of an asset (layouts/src/stock/detail) */
+  detail: DetailText;
   /** the shared Theme sheet (@ui8kit/layouts/theme): its Theme panel, the Design system panel and its specimen */
   sheet: ThemeSheetText;
 };
@@ -32,6 +34,22 @@ export type QuickView = { facet: string; value: string; label: string; count: nu
 export type ChipView = { key: string; label: string };
 /** a way out of an empty result: drop this filter and get `count` */
 export type RelaxView = { key: string; label: string; count: number };
-/** what a card shows besides its preview */
-export type CardView = { key: string; title: string; subtitle: string; kind: string; variants: number; spec: string; preview: boolean };
+/** what a card shows besides its preview; `href` opens its detail page */
+export type CardView = { key: string; title: string; subtitle: string; kind: string; variants: number; spec: string; preview: boolean; href: string };
+
+export type DetailText = {
+  back: string;
+  preview: { title: string; width: string; widths: Record<"desktop" | "tablet" | "phone", string>; mode: string; light: string; dark: string; frame: string; loading: string };
+  passport: { title: string; blocks: string; variants: string; usedBy: string; unused: string; current: string; facets: string; readonly: string; noLabel: string; any: string; draft: string };
+  similar: { title: string; none: string };
+  missing: { title: string; text: string };
+};
+/** a link of the passport: another asset (a block of the page, a variant, a screen page that uses the block) */
+export type PassportLink = { key: string; title: string; subtitle: string; href: string; current?: boolean };
+/** a facet of the asset with its labels; no values and not `any` is "no label" (never a fallback value) */
+export type PassportFacet = { id: string; label: string; values: { id: string; label: string; draft: boolean }[]; any: boolean; draft: boolean };
+/** the detail page of an asset: `parts` are the blocks of a screen page or the variants of a block, `usedBy` the screen pages of a block */
+export type DetailView = { key: string; type: string; title: string; subtitle: string; kind: string; parts: PassportLink[]; usedBy: PassportLink[]; facets: PassportFacet[] };
+/** a width of the device frame */
+export type DeviceView = { id: "desktop" | "tablet" | "phone"; width: number; height: number };
 export type Option = { id: string; label: string };

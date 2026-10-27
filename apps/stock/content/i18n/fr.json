@@ -57,6 +57,44 @@
     "failed": "L’aperçu n’a pas pu être chargé",
     "none": "Pas d’aperçu"
   },
+  "detail": {
+    "back": "Retour au catalogue",
+    "preview": {
+      "title": "Aperçu",
+      "width": "Largeur d’écran",
+      "widths": {
+        "desktop": "Bureau, 1280 px",
+        "tablet": "Tablette, 768 px",
+        "phone": "Téléphone, 390 px"
+      },
+      "mode": "Mode",
+      "light": "Clair",
+      "dark": "Sombre",
+      "frame": "Aperçu en direct de {title}",
+      "loading": "Chargement de l’aperçu"
+    },
+    "passport": {
+      "title": "Passeport",
+      "blocks": "Blocs de cette page",
+      "variants": "Variantes",
+      "usedBy": "Pages d’écran qui utilisent ce bloc",
+      "unused": "Aucune page d’écran n’utilise ce bloc.",
+      "current": "celle-ci",
+      "facets": "Libellés",
+      "readonly": "Lecture seule : les libellés se définissent dans le cabinet.",
+      "noLabel": "sans libellé",
+      "any": "toutes",
+      "draft": "brouillon"
+    },
+    "similar": {
+      "title": "Similaires",
+      "none": "Rien de similaire pour l’instant."
+    },
+    "missing": {
+      "title": "Introuvable",
+      "text": "Aucun bloc ni écran {id}."
+    }
+  },
   "sheet": {
     "theme": {
       "title": "Thème",
