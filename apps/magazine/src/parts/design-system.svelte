@@ -3,7 +3,7 @@
   alerts, inputs) is one live frame whose skin, single font and radius are CSS variables, so the SKIN and FONT controls re-skin it, the
   style preview and the templates at once with no rebuild. The style's identity key stays as it is until "Save as collection item".
   Every control edits the global theme (lib/global-theme.svelte.ts, the same model as the Theme sheet): mode, skin, font, radius and
-  the per-element tokens, with the same export/import (theme/theme-io.svelte).
+  the per-element tokens, with the same export/import (@ui8kit/layouts/theme/theme-io.svelte).
 -->
 <script lang="ts">
   import { family, FONT_IDS, type FontId } from "@ui8kit/taste-data/fonts";
@@ -11,11 +11,11 @@
   import ui from "../../content/ui.json";
   import type { Tokens } from "@ui8kit/theme-model/design";
   import DsElementTokens from "./ds-element-tokens.svelte";
-  import DsSpecimen from "./ds-specimen.svelte";
+  import DsSpecimen from "@ui8kit/layouts/theme/ds-specimen.svelte";
   import FilterGroup from "../feed/filter-group.svelte";
-  import { currentMode, setMode } from "../lib/global-theme.svelte";
-  import ThemeIo from "../theme/theme-io.svelte";
-  import type { Token } from "../lib/tokens";
+  import { currentMode, setMode, themeCtl } from "../lib/global-theme.svelte";
+  import ThemeIo from "@ui8kit/layouts/theme/theme-io.svelte";
+  import type { Token } from "@ui8kit/theme-model/tokens";
 
   type Props = {
     skin: SkinId;
@@ -85,11 +85,11 @@
       <span class="mg-note" role="status" data-testid="ds-status">{saved ? ui.design.saved : copied === "ok" ? ui.style.copied : copied === "fail" ? ui.style.copyFailed : changed ? ui.design.changed : ui.design.unchanged}</span>
     </p>
     <pre class="mg-pre" data-testid="ds-json">{json}</pre>
-    <ThemeIo idp="ds" />
+    <ThemeIo ctl={themeCtl} text={ui.theme.io} idp="ds" />
   </section>
 
   <section class="mg-sec" aria-labelledby="ds-specimen">
     <h2 class="mg-h2" id="ds-specimen">{ui.design.specimen}</h2>
-    <DsSpecimen {skin} {font} {radius} {tokens} {tokenValues} />
+    <DsSpecimen text={ui.design} modes={ui.style} {skin} {font} {radius} {tokens} {tokenValues} />
   </section>
 </div>

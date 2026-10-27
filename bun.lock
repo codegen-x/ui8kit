@@ -292,6 +292,8 @@
         "@codegen-x/svelte-compose": "workspace:*",
         "@ui8kit/app-shared": "workspace:*",
         "@ui8kit/facet-search": "workspace:*",
+        "@ui8kit/taste-data": "workspace:*",
+        "@ui8kit/theme-model": "workspace:*",
       },
       "devDependencies": {
         "@tsconfig/svelte": "^5.0.8",
@@ -299,6 +301,7 @@
         "svelte": "^5.57.0",
         "svelte-check": "^4.7.6",
         "typescript": "~6.0.2",
+        "vite": "^8.3.0",
       },
       "peerDependencies": {
         "svelte": "^5.57.0",
@@ -382,6 +385,7 @@
       "name": "@ui8kit/theme-model",
       "version": "0.0.0",
       "dependencies": {
+        "@ui8kit/panorama": "workspace:*",
         "@ui8kit/taste-data": "workspace:*",
       },
       "devDependencies": {

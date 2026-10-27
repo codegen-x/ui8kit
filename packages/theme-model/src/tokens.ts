@@ -1,6 +1,7 @@
 // The skin's colour tokens as HSL, read from the real CSS: a hidden probe carries data-skin (and the dark class for the dark twin),
 // the computed colour of each variable goes through the canvas (any CSS colour → RGB) and then to HSL. The values are what a skin
-// writes into a project: `--primary: 262 83% 58%`.
+// writes into a project: `--primary: 262 83% 58%`. Moved from apps/magazine/src/lib: the Design system panel of the shared Theme sheet
+// (@ui8kit/layouts/theme) shows them in the Magazine and in Stock.
 import { rgb } from "@ui8kit/panorama/colors";
 
 export const TOKEN_NAMES = ["background", "foreground", "card", "primary", "primary-foreground", "secondary", "accent", "muted", "border", "ring"] as const;

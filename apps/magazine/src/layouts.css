@@ -1,7 +1,10 @@
-/* The utilities of the Magazine's layouts (@ui8kit/layouts/magazine) and their one rule (layouts.css), injected like magazine.css as
+/* The utilities of the Magazine's layouts (@ui8kit/layouts/magazine, and the shared Theme sheet of @ui8kit/layouts/theme) and their one rule (layouts.css), injected like magazine.css as
    a <style data-snapshot-skip> (main.ts): the document CSS (app.css) stays Discovery's byte for byte, so the snapshot cache keys
    stay shared (bun run css-parity). Theme tokens by reference only: nothing of the kit's theme or base is emitted twice. */
 @reference "@codegen-x/svelte-compose/styles/theme.css";
 @import "tailwindcss/utilities" layer(utilities) source(none);
 @source "../../../packages/layouts/src/magazine";
+@source "../../../packages/layouts/src/theme";
+/* the theme sheet names the field group `shadow` in its script: not a utility of the Magazine's markup */
+@source not inline("shadow");
 @import "@ui8kit/layouts/styles/layouts.css";

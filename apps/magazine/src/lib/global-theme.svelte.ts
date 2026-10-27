@@ -3,6 +3,7 @@
 // through these functions, so they always show the same values. Also the Theme sheet's open state (narrow panel) and whether its
 // wide Design system panel is shown. `window.__magazineTheme` is the same controller for scripts and future external configs.
 import { toggleTheme } from "@ui8kit/app-shared/runtime/theme";
+import type { ThemeController } from "@ui8kit/theme-model/controller";
 import { FIELDS, fromConfig, NO_THEME, readTheme, setThemeField, THEME_SCHEMA, toConfig, writeTheme, type FieldValue, type GlobalTheme, type ImportResult, type Mode, type ThemeConfig } from "@ui8kit/theme-model/global-theme";
 import { theme } from "./theme.svelte";
 
@@ -38,6 +39,17 @@ export function importConfig(input: unknown): ImportResult {
   if (r.ok) { setTheme(r.theme); if (r.mode) setMode(r.mode); }
   return r;
 }
+
+/** the controller as the shared Theme sheet (@ui8kit/layouts/theme) reads it */
+export const themeCtl: ThemeController = {
+  get value() { return gtheme.value; },
+  get mode() { return currentMode(); },
+  get open() { return gtheme.open; },
+  set open(v: boolean) { gtheme.open = v; },
+  get wide() { return gtheme.wide; },
+  set wide(v: boolean) { gtheme.wide = v; },
+  setTheme, setField, reset: resetTheme, exportConfig, importConfig,
+};
 
 if (typeof window !== "undefined") {
   (window as unknown as { __magazineTheme: unknown }).__magazineTheme = { schema: THEME_SCHEMA, fields: FIELDS, get: exportConfig, set: importConfig, setField, reset: resetTheme };

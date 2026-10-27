@@ -25,7 +25,7 @@ Sections, in order: Closest to your picks (cards in the visitor's skin, font and
 
 ## Theme (global layer)
 
-The header's **Theme** button (every page) opens a narrow side sheet (`src/theme`): light/dark mode, skin, font, default radius (0/4/8/12/16, Reset) and one density for all elements. **Design system** in its footer docks a wide panel flush on its left with the per-element radius, density and shadow and the specimen (the same `parts/ds-element-tokens.svelte` and `parts/ds-specimen.svelte` as the style page's Design system tab). Below 640 px the wide panel replaces the narrow one; Back returns. Saved on this device (`magazine:v1:theme`, logic and tests in `@ui8kit/theme-model/global-theme`); the mode stays the app's `xgen-theme`.
+The header's **Theme** button (every page) opens a narrow side sheet (the shared sheet of `@ui8kit/layouts/theme`, wired in `src/theme/theme-sheet.svelte`): light/dark mode, skin, font, default radius (0/4/8/12/16, Reset) and one density for all elements. **Design system** in its footer docks a wide panel flush on its left with the per-element radius, density and shadow and the specimen (the same `parts/ds-element-tokens.svelte` and `parts/ds-specimen.svelte` as the style page's Design system tab). Below 640 px the wide panel replaces the narrow one; Back returns. Saved on this device (`magazine:v1:theme`, logic and tests in `@ui8kit/theme-model/global-theme`); the mode stays the app's `xgen-theme`.
 
 Precedence, strongest first:
 

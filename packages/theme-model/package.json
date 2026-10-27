@@ -3,10 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "description": "The global theme model of the apps (ADR-0001, apps layer: the brand theme an app assembles): one skin, font, default radius and per-element tokens (radius, density, shadow) for a whole site, the field schema both theme views render, export/import of the config (format `magazine-theme` v2, THEME_SCHEMA), the root style and attributes, and storage under the app's own key (the Magazine `magazine:v1:theme`, Stock `stock:v1:theme`). Moved from apps/magazine/src/lib (global-theme.ts, design.ts). Plain TypeScript, no UI, no build step.",
+  "description": "The global theme model of the apps (ADR-0001, apps layer: the brand theme an app assembles): one skin, font, default radius and per-element tokens (radius, density, shadow) for a whole site, the field schema both theme views render, export/import of the config (format `magazine-theme` v2, THEME_SCHEMA), the root style and attributes, and storage under the app's own key (the Magazine `magazine:v1:theme`, Stock `stock:v1:theme`). Moved from apps/magazine/src/lib (global-theme.ts, design.ts, tokens.ts: a skin's colour tokens probed from the CSS); controller.ts: the ThemeController contract the shared Theme sheet (@ui8kit/layouts/theme) reads. Plain TypeScript, no UI, no build step.",
   "exports": {
     "./global-theme": "./src/global-theme.ts",
     "./design": "./src/design.ts",
+    "./tokens": "./src/tokens.ts",
+    "./controller": "./src/controller.ts",
     "./package.json": "./package.json"
   },
   "scripts": {
@@ -14,6 +16,7 @@
     "test": "bun test src"
   },
   "dependencies": {
+    "@ui8kit/panorama": "workspace:*",
     "@ui8kit/taste-data": "workspace:*"
   },
   "devDependencies": {

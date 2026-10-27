@@ -1,5 +1,7 @@
 // The texts of the Stock layouts: every visible or announced string comes in through props (rule 06); the app holds the
 // dictionary as data (one file per locale) and hands the current one down. `fmt` fills {name} placeholders.
+import type { ThemeSheetText } from "../theme/text";
+
 export type StockText = {
   brand: string;
   search: { label: string; placeholder: string; submit: string };
@@ -10,7 +12,8 @@ export type StockText = {
   chips: { label: string; query: string; spec: string; remove: string; reset: string };
   pagination: { label: string; prev: string; next: string; page: string };
   card: { variants: string; loading: string; failed: string; none: string };
-  theme: { title: string; note: string; close: string; reset: string; mode: string; light: string; dark: string; skin: string; font: string; radius: string; density: string; unset: string; compact: string; standard: string; comfortable: string };
+  /** the shared Theme sheet (@ui8kit/layouts/theme): its Theme panel, the Design system panel and its specimen */
+  sheet: ThemeSheetText;
 };
 
 /** "{n} results" + { n: 12 } -> "12 results"; an unknown placeholder stays as it is */
@@ -32,5 +35,3 @@ export type RelaxView = { key: string; label: string; count: number };
 /** what a card shows besides its preview */
 export type CardView = { key: string; title: string; subtitle: string; kind: string; variants: number; spec: string; preview: boolean };
 export type Option = { id: string; label: string };
-/** one setting of the theme sheet: radios for a few values, a select for many ("" is "not set") */
-export type ThemeField = { id: string; label: string; control: "radio" | "select"; options: Option[]; value: string };

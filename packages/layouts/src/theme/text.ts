@@ -1,0 +1,25 @@
+// The texts of the shared Theme sheet (theme-sheet.svelte and its panels), as data from the app: the Magazine passes its
+// content/ui.json (theme, design, style), Stock its content/i18n/<locale>.json. Only the keys the sheet reads.
+export type ThemeIoText = {
+  title: string; note: string; label: string; placeholder: string; export: string; import: string;
+  copied: string; copyFailed: string; imported: string; partial: string; invalid: string;
+};
+export type ThemePanelText = {
+  title: string; note: string; mode: string; light: string; dark: string; skin: string; font: string; default: string; radius: string;
+  resetRadius: string; densityAll: string; designSystem: string; hideDesignSystem: string; resetAll: string; close: string; back: string;
+  dsTitle: string; dsNote: string; dsReset: string; io: ThemeIoText;
+};
+export type DesignText = {
+  tokens: string; type: string; sample: string; radii: string; current: string; spacing: string; buttons: string; badges: string;
+  primary: string; secondary: string; outline: string; ghost: string; destructive: string; small: string; large: string; disabled: string;
+  cardTitle: string; cardText: string; alertInfo: string; alertOk: string; alertWarn: string; alertError: string; inputs: string;
+  fieldName: string; fieldMail: string; fieldOff: string; placeholder: string; mailPlaceholder: string;
+  elementRadius: string; elementDensity: string; elementShadow: string; follow: string; pill: string;
+  elements: Record<string, string>; positions: Record<string, string>;
+};
+export type ThemeSheetText = {
+  theme: ThemePanelText;
+  design: DesignText;
+  /** the names of the two modes over the specimen's swatches */
+  style: { light: string; dark: string };
+};

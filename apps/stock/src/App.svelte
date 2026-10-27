@@ -8,10 +8,13 @@
   import { LOCALE_OPTIONS, TEXTS, isLocale, readLocale, writeLocale } from "./lib/i18n";
   import type { Asset, Index } from "./lib/model";
   import { loadPreview } from "./lib/preview";
-  import { applyState, loadTheme, resetTheme, setField, themeFields, type ThemeState } from "./lib/theme";
+  import { applyState } from "./lib/theme";
+  import { stock, themeCtl } from "./lib/theme-ctl.svelte";
   import { TYPE, cardView, chipViews, facetViews, quickViews, relaxViews, removeKey, resetFilters, selectedCount, typeViews } from "./lib/view";
 
   const PER_PAGE = 24;
+  // what the storefront shows where the theme sets nothing: the kit's own skin (no data-skin), Inter, the kit radius (10 px)
+  const FALLBACK = { skin: "", font: "inter", radius: 10 } as const;
   const index = indexJson as unknown as Index;
   const engine = prepare(index);
   const vocab = { facets: index.facets, sorts: index.sorts };
@@ -20,8 +23,6 @@
   const fromHash = (): SearchState => parseSearch(location.hash.replace(/^#\/search\??/, "").replace(/^#.*/, ""), vocab);
   let s = $state<SearchState>(fromHash());
   let locale = $state(readLocale());
-  let theme = $state<ThemeState>(loadTheme());
-  let sheet = $state(false);
 
   $effect(() => {
     const sync = (): void => { s = fromHash(); };
@@ -29,7 +30,7 @@
     return () => window.removeEventListener("hashchange", sync);
   });
   $effect(() => { document.documentElement.lang = locale; writeLocale(locale); });
-  $effect(() => { applyState(theme); });
+  $effect(() => { applyState(stock.state); });
 
   const t = $derived(TEXTS[locale]);
   const out = $derived(search(engine, s));
@@ -55,7 +56,7 @@
 <StockFrame>
   {#snippet header()}
     <StockHeader {t} q={s.q} {locale} locales={LOCALE_OPTIONS} compare={0}
-      onsearch={(q) => go({ ...s, q, page: 1 })} onlocale={(id) => { if (isLocale(id)) locale = id; }} ontheme={() => (sheet = true)} />
+      onsearch={(q) => go({ ...s, q, page: 1 })} onlocale={(id) => { if (isLocale(id)) locale = id; }} ontheme={() => (themeCtl.open = true)} />
   {/snippet}
   {#snippet bar()}
     <FilterBar {t} types={typeViews(index, out, locale, t)} type={s.filters[TYPE]?.[0] ?? ""} quick={quickViews(index, s, out, locale)} {ontype} onquick={toggle} />
@@ -85,6 +86,6 @@
     </Results>
   {/snippet}
   {#snippet overlay()}
-    <ThemeSheet {t} open={sheet} fields={themeFields(theme, t)} onchange={(id, v) => (theme = setField(theme, id, v))} onreset={() => (theme = resetTheme(theme))} onclose={() => (sheet = false)} />
+    <ThemeSheet ctl={themeCtl} text={t.sheet} id="stock-theme" titleId="stock-theme-title" fallback={FALLBACK} dismissible />
   {/snippet}
 </StockFrame>

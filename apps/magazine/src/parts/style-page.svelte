@@ -20,7 +20,7 @@
   import ui from "../../content/ui.json";
   import { hearted, saveStyle, toggleHeart } from "../lib/collections.svelte";
   import DesignSystem from "./design-system.svelte";
-  import { skinTokens } from "../lib/tokens";
+  import { skinTokens } from "@ui8kit/theme-model/tokens";
   import type { StyleTab } from "../lib/state.svelte";
   import { TEMPLATES, type TemplateId } from "../templates/registry";
   import TemplateStage from "./template-stage.svelte";

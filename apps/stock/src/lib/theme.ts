@@ -3,10 +3,7 @@
 // every live preview (and the storefront around it) follows it.
 import { applyTheme, initTheme } from "@ui8kit/app-shared/runtime/theme";
 import { family, type FontId } from "@ui8kit/taste-data/fonts";
-import { FONT_IDS } from "@ui8kit/taste-data/font-ids";
-import { RADII, SKIN_IDS } from "@ui8kit/taste-data/taste";
-import type { StockText, ThemeField } from "@ui8kit/layouts/stock/text";
-import { densityOf, DENSITIES, NO_THEME, readTheme, rootAttrs, rootStyle, setDensity, setThemeField, writeTheme, type GlobalTheme } from "@ui8kit/theme-model/global-theme";
+import { fromConfig, NO_THEME, readTheme, rootAttrs, rootStyle, setThemeField, toConfig, writeTheme, type FieldValue, type GlobalTheme, type ImportResult, type ThemeConfig } from "@ui8kit/theme-model/global-theme";
 
 const KEY = "stock:v1:theme";
 /** localStorage, or null where it is blocked */
@@ -38,23 +35,16 @@ export function applyState(s: ThemeState): void {
   writeTheme(KEY, s.theme, store);
 }
 
-export function setField(s: ThemeState, id: string, value: string): ThemeState {
-  if (id === "mode") return { ...s, mode: value === "light" ? "light" : "dark" };
-  if (id === "density") return { ...s, theme: { ...s.theme, tokens: setDensity(s.theme.tokens, (DENSITIES as readonly string[]).includes(value) ? (value as (typeof DENSITIES)[number]) : "default") } };
-  const v = value === "" ? null : id === "radius" ? Number(value) : value;
+/** the theme with one field (global-theme FIELDS) set by its id; null clears it; "mode" is the app's light/dark mode */
+export function setField(s: ThemeState, id: string, v: FieldValue | null): ThemeState {
+  if (id === "mode") return v === "light" || v === "dark" ? { ...s, mode: v } : s;
   return { ...s, theme: setThemeField(s.theme, id, v) };
 }
+/** back to the defaults (the mode stays: it is the visitor's choice) */
 export const resetTheme = (s: ThemeState): ThemeState => ({ ...s, theme: NO_THEME });
-
-/** the fields of the sheet in the current language (skin and font names are names, not translated) */
-export function themeFields(s: ThemeState, t: StockText): ThemeField[] {
-  const unset = { id: "", label: t.theme.unset };
-  const dens: Record<string, string> = { compact: t.theme.compact, default: t.theme.standard, comfortable: t.theme.comfortable };
-  return [
-    { id: "mode", label: t.theme.mode, control: "radio", value: s.mode, options: [{ id: "light", label: t.theme.light }, { id: "dark", label: t.theme.dark }] },
-    { id: "skin", label: t.theme.skin, control: "select", value: s.theme.skin ?? "", options: [unset, ...SKIN_IDS.map((id) => ({ id, label: id }))] },
-    { id: "font", label: t.theme.font, control: "select", value: s.theme.font ?? "", options: [unset, ...FONT_IDS.map((id) => ({ id, label: id }))] },
-    { id: "radius", label: t.theme.radius, control: "radio", value: s.theme.radius === null ? "" : String(s.theme.radius), options: [unset, ...RADII.map((r) => ({ id: String(r), label: String(r) }))] },
-    { id: "density", label: t.theme.density, control: "radio", value: densityOf(s.theme.tokens) ?? "default", options: DENSITIES.map((d) => ({ id: d, label: dens[d] ?? d })) },
-  ];
+/** the config of the whole state, and a state from a config (the mode only when the config names one) */
+export const exportConfig = (s: ThemeState): ThemeConfig => toConfig(s);
+export function importConfig(s: ThemeState, input: unknown): { state: ThemeState; result: ImportResult } {
+  const result = fromConfig(input);
+  return { state: result.ok ? { mode: result.mode ?? s.mode, theme: result.theme } : s, result };
 }
