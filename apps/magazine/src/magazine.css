@@ -17,9 +17,6 @@
 .mg-tokens { display: grid; grid-template-columns: max-content 1fr; gap: 4px 16px; font-size: 14px; }
 .mg-tokens dt { color: var(--muted-foreground); }
 .mg-tokens dd { margin: 0; }
-.mg-row { margin: 0 0 32px; }
-.mg-row .mg-h2 { margin: 0 0 8px; }
-.mg-strip { display: flex; gap: 16px; overflow-x: auto; padding-bottom: 8px; scrollbar-width: thin; }
 .mg-live { position: absolute; left: 0; top: 0; width: 1440px; height: 1080px; transform-origin: 0 0; pointer-events: none; }
 .mg-stage { z-index: 12; background: var(--background); will-change: transform; transform-origin: 50% 50%; }
 .mg-stage[data-phase="ball"], .mg-stage[data-phase="flying"], .mg-stage[data-phase="expanding"] { cursor: default; }
@@ -188,10 +185,8 @@
 .mg-taste-item dt { color: var(--muted-foreground); font-size: 12px; }
 .mg-taste-item dd { margin: 0; overflow-wrap: anywhere; }
 .mg-eyebrow { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted-foreground); }
-.mg-row .mg-note { margin: 0 0 16px; }
-.mg-strip-3 .mg-skin-cell { flex: 1 0 240px; max-width: 480px; }
-/* the apply button wears its card's skin (colours) but the corner of the chrome */
-.mg-skin-cell > [data-skin] { --radius: var(--mg-frame-radius); }
+/* the apply button wears its card's skin (colours) but the corner of the chrome (data-chrome-corner of @ui8kit/layouts/magazine/skin-cell) */
+[data-chrome-corner] { --radius: var(--mg-frame-radius); }
 .mg-insert { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; margin: 0 0 32px; padding: 24px; border-radius: var(--radius); background: var(--muted); color: var(--foreground); }
 .mg-insert .mg-h2, .mg-insert .mg-note { margin: 0; }
 .mg-more { display: flex; justify-content: center; padding: 16px 0 32px; }
@@ -221,7 +216,6 @@ dialog.mg-sheet { font-size: 14px; }
 dialog.mg-sheet .mg-h2 { font-size: 16px; }
 @media (max-width: 640px) {
   .mg-taste-list { grid-template-columns: 1fr 1fr; }
-  .mg-strip-3 .mg-skin-cell { flex-basis: 240px; }
 }
 
 /* ---- the global Theme sheet (src/theme): two panels flush side by side in one dialog; narrow screens show one at a time ---- */

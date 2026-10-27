@@ -1,6 +1,7 @@
-<!-- One card of the "same structure" section and the button that applies its skin (first in the tune's skins). -->
+<!-- One card of the "same structure" section and the button that applies its skin (first in the tune's skins); the cell is
+     @ui8kit/layouts/magazine/skin-cell. -->
 <script lang="ts">
-  import { Button, Stack } from "@codegen-x/svelte-compose";
+  import SkinCell from "@ui8kit/layouts/magazine/skin-cell.svelte";
   import type { SkinId } from "@ui8kit/taste-data/taste";
   import ui from "../../content/ui.json";
   import type { FeedCard } from "../lib/feed";
@@ -14,7 +15,6 @@
   }
 </script>
 
-<Stack gap="2" class="mg-skin-cell">
+<SkinCell skin={card.skin} {current} applyLabel={ui.feed.applySkin} appliedLabel={ui.feed.applied} onapply={apply}>
   <Card {card} caption={card.skin} fill />
-  <Button variant={current ? "secondary" : "outline"} size="sm" disabled={current} onclick={apply} data-testid="apply-skin" data-skin={card.skin}>{current ? ui.feed.applied : ui.feed.applySkin}</Button>
-</Stack>
+</SkinCell>
