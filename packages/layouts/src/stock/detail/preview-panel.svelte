@@ -1,5 +1,6 @@
 <!-- The live preview of the detail page: a stage of fixed proportions (16:10, the height follows the width only) holding the device
-     frame at desktop width, scaled as a whole (src/preview/device.ts), and the button that opens the full-screen preview. `point`
+     frame at desktop width, scaled as a whole (src/preview/device.ts), and the button that opens the full-screen preview (under the
+     stage below lg, so it never covers the small preview; over its corner from lg up). `point`
      is the part of the page the concepts column points at (outlined in the frame). -->
 <script lang="ts">
   import { Block, Box, Button, LucideIcon, Text } from "@codegen-x/svelte-compose";
