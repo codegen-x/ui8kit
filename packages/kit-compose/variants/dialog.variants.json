@@ -1,6 +1,6 @@
 {
   "id": "ui.dialog",
-  "base": "m-auto flex flex-col bg-background text-foreground inset-ring inset-ring-border shadow-lg backdrop:bg-foreground/20 rounded",
+  "base": "m-auto open:flex open:flex-col bg-background text-foreground inset-ring inset-ring-border shadow-lg backdrop:bg-foreground/20 rounded",
   "keys": [
     "size",
     "variant"

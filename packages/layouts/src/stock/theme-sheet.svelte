@@ -15,9 +15,16 @@
     if (open && !d.open) d.showModal();
     if (!open && d.open) d.close();
   });
+  // a click on the backdrop (outside the sheet's box) closes it, like Esc and the close button
+  function onbackdrop(e: MouseEvent) {
+    const d = e.currentTarget as HTMLDialogElement;
+    if (e.target !== d) return;
+    const r = d.getBoundingClientRect();
+    if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) onclose();
+  }
 </script>
 
-<Dialog id={ID} variant="sheet" size="lg" class="mr-0 max-w-full" aria-labelledby="stock-theme-title" onclose={onclose} data-testid="theme-sheet">
+<Dialog id={ID} variant="sheet" size="lg" class="mr-0 max-w-full" aria-labelledby="stock-theme-title" onclose={onclose} onclick={onbackdrop} data-testid="theme-sheet">
   <Stack gap="6" align="stretch" class="p-6">
     <Group gap="4" align="center" justify="between">
       <Title as={2} size="lg" id="stock-theme-title">{t.theme.title}</Title>
