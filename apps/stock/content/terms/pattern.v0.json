@@ -21,7 +21,11 @@
         "ru": "Z-паттерн"
       },
       "definition": {
-        "en": "The eye runs top-start to top-end, diagonally down, then along the bottom: text and media alternate across a split, the action at the end."
+        "en": "The eye runs top-start to top-end, diagonally down, then along the bottom: text and media alternate across a split, the action at the end.",
+        "fr": "Le regard va du début du haut à la fin du haut, descend en diagonale, puis longe le bas : texte et média alternent de part et d’autre d’un partage, l’action à la fin.",
+        "de": "Der Blick läuft oben vom Anfang zum Ende, diagonal nach unten, dann am unteren Rand entlang: Text und Medien wechseln sich über eine Teilung ab, die Aktion am Ende.",
+        "es": "La mirada va del inicio al final de la parte superior, baja en diagonal y luego recorre la parte inferior: texto y medios se alternan a ambos lados de una división, la acción al final.",
+        "ru": "Взгляд идёт по верху от начала к концу, по диагонали вниз, затем вдоль низа: текст и медиа чередуются по обе стороны деления, действие в конце."
       },
       "status": "draft",
       "provenance": {
@@ -39,7 +43,11 @@
         "ru": "F-паттерн"
       },
       "definition": {
-        "en": "The eye scans the top line, a shorter second line, then down the start edge: a reading column or a list of rows."
+        "en": "The eye scans the top line, a shorter second line, then down the start edge: a reading column or a list of rows.",
+        "fr": "Le regard parcourt la ligne du haut, une deuxième ligne plus courte, puis descend le long du bord de début : une colonne de lecture ou une liste de rangées.",
+        "de": "Der Blick überfliegt die oberste Zeile, eine kürzere zweite Zeile, dann den Anfangsrand hinab: eine Lesespalte oder eine Liste von Zeilen.",
+        "es": "La mirada recorre la línea superior, una segunda línea más corta y luego baja por el borde de inicio: una columna de lectura o una lista de filas.",
+        "ru": "Взгляд пробегает верхнюю строку, более короткую вторую, затем идёт вниз вдоль начального края: колонка для чтения или список строк."
       },
       "status": "draft",
       "provenance": {
@@ -57,7 +65,11 @@
         "ru": "Модульная сетка"
       },
       "definition": {
-        "en": "The section is one grid of equal modules in three or more columns."
+        "en": "The section is one grid of equal modules in three or more columns.",
+        "fr": "La section est une seule grille de modules égaux sur trois colonnes ou plus.",
+        "de": "Der Abschnitt ist ein einziges Raster gleicher Module in drei oder mehr Spalten.",
+        "es": "La sección es una sola retícula de módulos iguales en tres o más columnas.",
+        "ru": "Секция — одна сетка из равных модулей в три колонки и больше."
       },
       "status": "computed",
       "provenance": {
@@ -76,7 +88,11 @@
         "ru": "Золотой канон (Ван де Грааф)"
       },
       "definition": {
-        "en": "The page canon of Van de Graaf: one text block in a 2:3 page with margins 1:1:2:3 (inner, top, outer, bottom), a reading measure centred above the middle."
+        "en": "The page canon of Van de Graaf: one text block in a 2:3 page with margins 1:1:2:3 (inner, top, outer, bottom), a reading measure centred above the middle.",
+        "fr": "Le canon de page de Van de Graaf : un seul bloc de texte dans une page 2:3 aux marges 1:1:2:3 (intérieure, haut, extérieure, bas), une mesure de lecture centrée au-dessus du milieu.",
+        "de": "Der Seitenkanon von Van de Graaf: ein Textblock auf einer 2:3-Seite mit Rändern 1:1:2:3 (innen, oben, außen, unten), ein Lesemaß zentriert über der Mitte.",
+        "es": "El canon de página de Van de Graaf: un solo bloque de texto en una página 2:3 con márgenes 1:1:2:3 (interior, superior, exterior, inferior), una medida de lectura centrada por encima del medio.",
+        "ru": "Канон страницы Ван де Граафа: один текстовый блок на странице 2:3 с полями 1:1:2:3 (внутреннее, верхнее, внешнее, нижнее), ширина строки по центру выше середины."
       },
       "status": "draft",
       "provenance": {
@@ -94,7 +110,11 @@
         "ru": "Правило третей"
       },
       "definition": {
-        "en": "Main masses sit on a 1/3 : 2/3 split or on thirds lines."
+        "en": "Main masses sit on a 1/3 : 2/3 split or on thirds lines.",
+        "fr": "Les masses principales reposent sur un partage 1/3 : 2/3 ou sur les lignes des tiers.",
+        "de": "Die Hauptmassen liegen auf einer Teilung 1/3 : 2/3 oder auf den Drittellinien.",
+        "es": "Las masas principales se sitúan en una división 1/3 : 2/3 o sobre las líneas de los tercios.",
+        "ru": "Главные массы стоят на делении 1/3 : 2/3 или на линиях третей."
       },
       "status": "draft",
       "provenance": {
@@ -113,7 +133,11 @@
         "ru": "Диагональ"
       },
       "definition": {
-        "en": "The weight runs along a diagonal: tilted bands, a staircase of cards."
+        "en": "The weight runs along a diagonal: tilted bands, a staircase of cards.",
+        "fr": "Le poids suit une diagonale : bandes inclinées, escalier de cartes.",
+        "de": "Das Gewicht verläuft entlang einer Diagonale: geneigte Bänder, eine Treppe aus Karten.",
+        "es": "El peso sigue una diagonal: bandas inclinadas, una escalera de tarjetas.",
+        "ru": "Вес идёт по диагонали: наклонные полосы, лесенка из карточек."
       },
       "status": "draft",
       "provenance": {
@@ -132,7 +156,11 @@
         "ru": "Фокусная масса"
       },
       "definition": {
-        "en": "One dominant mass (card, headline, figure) in open space, usually near the centre."
+        "en": "One dominant mass (card, headline, figure) in open space, usually near the centre.",
+        "fr": "Une masse dominante (carte, titre, figure) dans un espace ouvert, généralement près du centre.",
+        "de": "Eine dominante Masse (Karte, Überschrift, Abbildung) im freien Raum, meist nahe der Mitte.",
+        "es": "Una masa dominante (tarjeta, titular, figura) en un espacio abierto, normalmente cerca del centro.",
+        "ru": "Одна доминирующая масса (карточка, заголовок, фигура) в свободном пространстве, обычно ближе к центру."
       },
       "status": "draft",
       "provenance": {
@@ -151,7 +179,11 @@
         "ru": "L-композиция"
       },
       "definition": {
-        "en": "Heavy elements along two edges forming an L: a side or top band plus a bottom or start band."
+        "en": "Heavy elements along two edges forming an L: a side or top band plus a bottom or start band.",
+        "fr": "Des éléments lourds le long de deux bords forment un L : une bande latérale ou haute plus une bande basse ou de début.",
+        "de": "Schwere Elemente entlang zweier Ränder bilden ein L: ein seitliches oder oberes Band plus ein unteres oder Anfangsband.",
+        "es": "Elementos pesados a lo largo de dos bordes forman una L: una banda lateral o superior más una banda inferior o de inicio.",
+        "ru": "Тяжёлые элементы вдоль двух краёв образуют L: боковая или верхняя полоса плюс нижняя или начальная."
       },
       "status": "draft",
       "provenance": {
@@ -170,7 +202,11 @@
         "ru": "Радиальная"
       },
       "definition": {
-        "en": "Elements radiate from a point: sunburst, rays, concentric rings."
+        "en": "Elements radiate from a point: sunburst, rays, concentric rings.",
+        "fr": "Les éléments rayonnent depuis un point : soleil, rayons, anneaux concentriques.",
+        "de": "Die Elemente strahlen von einem Punkt aus: Strahlenkranz, Strahlen, konzentrische Ringe.",
+        "es": "Los elementos irradian desde un punto: resplandor, rayos, anillos concéntricos.",
+        "ru": "Элементы расходятся из точки: солнечные лучи, лучи, концентрические кольца."
       },
       "status": "draft",
       "provenance": {
@@ -189,7 +225,11 @@
         "ru": "Круговая"
       },
       "definition": {
-        "en": "A circle holds or frames the content, or circles are the main motif."
+        "en": "A circle holds or frames the content, or circles are the main motif.",
+        "fr": "Un cercle contient ou encadre le contenu, ou les cercles sont le motif principal.",
+        "de": "Ein Kreis hält oder rahmt den Inhalt, oder Kreise sind das Hauptmotiv.",
+        "es": "Un círculo contiene o enmarca el contenido, o los círculos son el motivo principal.",
+        "ru": "Круг вмещает или обрамляет содержимое, либо круги — главный мотив."
       },
       "status": "draft",
       "provenance": {
@@ -208,7 +248,11 @@
         "ru": "Крест"
       },
       "definition": {
-        "en": "Content on the vertical and horizontal axes around a centre."
+        "en": "Content on the vertical and horizontal axes around a centre.",
+        "fr": "Le contenu sur les axes vertical et horizontal autour d’un centre.",
+        "de": "Inhalt auf der senkrechten und der waagerechten Achse um eine Mitte.",
+        "es": "Contenido en los ejes vertical y horizontal alrededor de un centro.",
+        "ru": "Содержимое на вертикальной и горизонтальной осях вокруг центра."
       },
       "status": "draft",
       "provenance": {
@@ -227,7 +271,11 @@
         "ru": "V-композиция"
       },
       "definition": {
-        "en": "Two arms converging on a point."
+        "en": "Two arms converging on a point.",
+        "fr": "Deux branches convergent vers un point.",
+        "de": "Zwei Arme laufen auf einen Punkt zu.",
+        "es": "Dos brazos que convergen en un punto.",
+        "ru": "Два плеча, сходящиеся в точку."
       },
       "status": "draft",
       "provenance": {
@@ -246,7 +294,11 @@
         "ru": "Пирамида"
       },
       "definition": {
-        "en": "A narrow apex over a wide base: a short headline over a wider row of cards or tiles."
+        "en": "A narrow apex over a wide base: a short headline over a wider row of cards or tiles.",
+        "fr": "Un sommet étroit sur une base large : un titre court au-dessus d’une rangée plus large de cartes ou de tuiles.",
+        "de": "Eine schmale Spitze über einer breiten Basis: eine kurze Überschrift über einer breiteren Reihe von Karten oder Kacheln.",
+        "es": "Un vértice estrecho sobre una base ancha: un titular corto sobre una fila más ancha de tarjetas o mosaicos.",
+        "ru": "Узкая вершина над широким основанием: короткий заголовок над более широким рядом карточек или плиток."
       },
       "status": "draft",
       "provenance": {

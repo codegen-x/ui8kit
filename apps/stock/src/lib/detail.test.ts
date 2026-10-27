@@ -114,7 +114,10 @@ describe("detail", () => {
     expect(en.patterns.length).toBeGreaterThan(0);
     expect(en.patterns.every((p) => typeof p.definition === "string")).toBe(true);
     const ru = detailView(index, recipes, get("screen.site/home"), "ru", defs);
-    expect(ru.patterns.every((p) => p.definition === null)).toBe(true);
+    expect(ru.patterns.every((p) => typeof p.definition === "string" && p.definition !== defs[p.id]!.en)).toBe(true);
+    // a language with no definition written gets null, never the English one
+    const onlyEn: Definitions = Object.fromEntries(Object.entries(defs).map(([k, v]) => [k, { en: v.en }]));
+    expect(detailView(index, recipes, get("screen.site/home"), "ru", onlyEn).patterns.every((p) => p.definition === null)).toBe(true);
     expect(detailView(index, recipes, get("block.about/split"), "en", defs).patterns).toEqual([]);
   });
   test("related rows: the same pattern, the same blocks (or the pages of the block), no group twice", () => {
