@@ -3,7 +3,12 @@
   "search": {
     "label": "Search the catalog",
     "placeholder": "Search blocks and screens",
-    "submit": "Search"
+    "submit": "Search",
+    "suggest": "Suggestions",
+    "searchFor": "Search “{q}”",
+    "count": "{n}",
+    "asset": "Open",
+    "hint": "Use the up and down arrows to choose, Enter to apply"
   },
   "header": {
     "actions": "Tools",
@@ -26,7 +31,9 @@
     "draft": "draft",
     "soft": "Ranks the results, does not filter",
     "more": "Show {n} more",
-    "less": "Show fewer"
+    "less": "Show fewer",
+    "hide": "Hide filters",
+    "show": "Show filters"
   },
   "results": {
     "region": "Results",
@@ -36,7 +43,15 @@
     "empty": "Nothing matches these filters.",
     "relax": "Remove {filter}: {n}",
     "variantsOf": "Variants of {spec}",
-    "showAll": "All variants"
+    "showAll": "All variants",
+    "refine": "Narrow down",
+    "tips": [
+      "Check the spelling or try a shorter word",
+      "Remove a filter or two",
+      "Search by what a section does: pricing, testimonials, call to action"
+    ],
+    "clear": "Clear all filters",
+    "browse": "Popular in the catalog"
   },
   "chips": {
     "label": "Applied filters",

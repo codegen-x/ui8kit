@@ -3,18 +3,19 @@
 <script lang="ts">
   import { Block, Button, Group, Label, LucideIcon, Select, SelectOption, Text, Title } from "@codegen-x/svelte-compose";
   import SearchField from "./search-field.svelte";
-  import { fmt, type Option, type StockText } from "./text";
+  import { fmt, type Option, type StockText, type SuggestView } from "./text";
 
-  let { t, q, locale, locales, compare, onsearch, onlocale, ontheme }: {
+  let { t, q, locale, locales, compare, onsearch, onlocale, ontheme, suggest, onpick }: {
     t: StockText; q: string; locale: string; locales: Option[]; compare: number;
     onsearch: (q: string) => void; onlocale: (id: string) => void; ontheme: () => void;
+    suggest?: (draft: string) => SuggestView[]; onpick?: (s: SuggestView) => void;
   } = $props();
 </script>
 
 <Block tag="header" class="sticky top-0 z-20 bg-background inset-ring inset-ring-border" data-testid="stock-header">
   <Group gap="4" align="center" class="mx-auto w-full max-w-screen-2xl flex-wrap px-4 py-2 md:flex-nowrap">
     <Title as={1} size="lg" weight="bold" class="shrink-0" data-testid="brand">{t.brand}</Title>
-    <SearchField {t} {q} {onsearch} />
+    <SearchField {t} {q} {onsearch} {suggest} {onpick} />
     <Group gap="2" align="center" class="ml-auto shrink-0" role="group" aria-label={t.header.actions}>
       <Button variant="ghost" size="sm" class="gap-2" disabled title={t.header.soon} data-testid="collections"><LucideIcon name="heart" size={16} /><Text tag="span" class="hidden md:inline">{t.header.collections}</Text></Button>
       <Button variant="ghost" size="sm" class="gap-2" disabled title={t.header.soon} aria-label={fmt(t.header.compare, { n: compare })} data-testid="compare"><LucideIcon name="git-compare" size={16} /><Text tag="span" class="hidden md:inline">{fmt(t.header.compare, { n: compare })}</Text></Button>

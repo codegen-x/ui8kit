@@ -4,9 +4,12 @@ The second layer of [ADR-0001](../../.project/adr/0001-three-layers-prototypes-l
 the prototypes (the kit, its blocks and organisms) and the apps (data, routes, brand theme). Svelte 5, source only (the consumer's
 Vite compiles it).
 
-- `src/stock`: the Stock storefront. `stock-frame` (a plain wrapper, not a Block), `stock-header` (brand, search, Collections, Compare,
-  language, Theme), `filter-bar` (type tabs + quick filters), `facet-column` (one fieldset per facet, draft badge), `results`
-  (count with `aria-live`, applied chips with reset, sort, `card-grid`, `asset-card`, `pagination`, `empty-state`); its Theme sheet is the shared one of `src/theme`.
+- `src/stock`: the Stock storefront. `stock-frame` (a plain wrapper, not a Block), `stock-header` (brand, `search-field` with its
+  suggestions: the text with its count, the facet values and the assets it names, a list of buttons reached with Down; Collections,
+  Compare, language, Theme), `filter-bar` (type tabs + quick filters), `facet-column` (one fieldset per facet, draft badge; can be
+  hidden from lg up), `results` (count with `aria-live`, the hide/show filters button, applied chips with reset, sort, `refine-row`
+  (values that narrow the current results, with counts), `card-grid`, `asset-card` (with the arrangement under the title),
+  `pagination`, `empty-state` (the filters to drop, tips, clear all, popular values)); its Theme sheet is the shared one of `src/theme`.
   `text.ts`: the text shape (`StockText`) and the view types; every string comes in through props.
   `src/stock/detail`: the detail page of an asset, two columns of about 70/30 as on the stock sites (`detail-frame`, `detail-main`):
   a head (`preview-panel`: the live preview of fixed 16:10 proportions, the device frame scaled as a whole; `summary`: the name and

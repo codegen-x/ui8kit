@@ -4,14 +4,14 @@
   import { AssetCard, FacetColumn, FilterBar, LivePreview, Results, StockFrame, StockHeader, Text, ThemeSheet } from "./lib/parts";
   import { paginate, parseSearch, prepare, relaxations, search, searchHash, setFacet, toggleValue, type SearchState } from "@ui8kit/facet-search";
   import { textIn } from "@ui8kit/facet-search/model";
-  import type { CardView } from "@ui8kit/layouts/stock/text";
+  import type { CardView, SuggestView } from "@ui8kit/layouts/stock/text";
   import indexJson from "../content/assets.v0.json";
   import { LOCALE_OPTIONS, TEXTS, isLocale } from "./lib/i18n";
   import { visit } from "./lib/locale.svelte";
   import type { Asset, Index } from "./lib/model";
   import { loadPreview } from "./lib/preview";
   import { themeCtl } from "./lib/theme-ctl.svelte";
-  import { TYPE, cardView, chipViews, facetViews, quickViews, relaxViews, removeKey, resetFilters, selectedCount, typeViews } from "./lib/view";
+  import { TYPE, cardView, chipViews, facetViews, popularViews, quickViews, refineViews, relaxViews, removeKey, resetFilters, selectedCount, suggestViews, typeViews } from "./lib/view";
 
   const PER_PAGE = 24;
   // what the storefront shows where the theme sets nothing: the kit's own skin (no data-skin), Inter, the kit radius (10 px)
@@ -32,6 +32,24 @@
   const cards = $derived(pg.items.map((a) => cardView(index, a, s.variants === "all" ? 1 : (out.variantsOf.get(a.group) ?? 1), locale)));
   const relax = $derived(out.results.length === 0 ? relaxViews(index, relaxations(engine, s), locale, t) : []);
   const sorts = $derived(index.sorts.map((x) => ({ id: x.id, label: textIn(x.label, locale) })));
+  const refine = $derived(refineViews(index, s, out, locale));
+  const popular = $derived(out.results.length === 0 ? popularViews(index, search(engine, resetFilters(s)), locale) : []);
+  // the suggestions count what a filter gives instead of the typed words: the current state without its text
+  const bare = $derived(search(engine, { ...s, q: "", page: 1 }).counts);
+  const suggest = (draft: string): SuggestView[] => suggestViews(index, draft, s, bare, (q) => search(engine, { ...s, q, page: 1 }).results.length, locale);
+  function onpick(x: SuggestView): void {
+    if (x.kind === "filter") go({ ...toggleValue(s, x.facet, x.value), q: "" });
+    else if (x.kind === "asset") location.hash = x.href;
+  }
+
+  // the facet column from lg up: shown unless hidden on this device
+  const FILTERS_KEY = "stock:v1:filters";
+  let filters = $state(readFilters());
+  function readFilters(): boolean { try { return localStorage.getItem(FILTERS_KEY) !== "hidden"; } catch { return true; } }
+  function onfilters(): void {
+    filters = !filters;
+    try { localStorage.setItem(FILTERS_KEY, filters ? "shown" : "hidden"); } catch { /* storage blocked: this visit only */ }
+  }
 
   function go(next: SearchState): void {
     const flip = next.page !== s.page;
@@ -49,17 +67,18 @@
 <StockFrame>
   {#snippet header()}
     <StockHeader {t} q={s.q} {locale} locales={LOCALE_OPTIONS} compare={0}
-      onsearch={(q) => go({ ...s, q, page: 1 })} onlocale={(id) => { if (isLocale(id)) visit.locale = id; }} ontheme={() => (themeCtl.open = true)} />
+      onsearch={(q) => go({ ...s, q, page: 1 })} onlocale={(id) => { if (isLocale(id)) visit.locale = id; }} ontheme={() => (themeCtl.open = true)} {suggest} {onpick} />
   {/snippet}
   {#snippet bar()}
     <FilterBar {t} types={typeViews(index, out, locale, t)} type={s.filters[TYPE]?.[0] ?? ""} quick={quickViews(index, s, out, locale)} {ontype} onquick={toggle} />
   {/snippet}
   {#snippet aside()}
-    <FacetColumn {t} groups={facetViews(index, s, out, locale)} selected={selectedCount(s)} ontoggle={toggle} />
+    <FacetColumn {t} groups={facetViews(index, s, out, locale)} selected={selectedCount(s)} ontoggle={toggle} collapsed={!filters} />
   {/snippet}
   {#snippet main()}
     <Results {t} total={out.results.length} chips={chipViews(index, s, locale, t)} {sorts} sort={out.sort} {cards} {relax} page={pg.page} pages={pg.pages} {href}
-      onremove={(key) => go(removeKey(s, key))} onreset={() => go(resetFilters(s))} onsort={(id) => go({ ...s, sort: id, page: 1 })}>
+      onremove={(key) => go(removeKey(s, key))} onreset={() => go(resetFilters(s))} onsort={(id) => go({ ...s, sort: id, page: 1 })}
+      {refine} {popular} ontoggle={toggle} onpopular={(f, v) => go(toggleValue(resetFilters(s), f, v))} {filters} {onfilters}>
       {#snippet card(c: CardView)}
         <AssetCard {t} card={c} {onvariants}>
           {#snippet preview()}

@@ -4,11 +4,18 @@ import type { ThemeSheetText } from "../theme/text";
 
 export type StockText = {
   brand: string;
-  search: { label: string; placeholder: string; submit: string };
+  /** `suggest`: the listbox of suggestions; `searchFor` the free-text row ({q}); `count` a row's result count ({n}); `asset` the
+   *  group of asset rows; `hint` how to use the list (announced) */
+  search: { label: string; placeholder: string; submit: string; suggest: string; searchFor: string; count: string; asset: string; hint: string };
   header: { actions: string; collections: string; compare: string; theme: string; locale: string; soon: string };
   filters: { region: string; types: string; all: string; quick: string };
-  facets: { region: string; title: string; toggle: string; draft: string; soft: string; more: string; less: string };
-  results: { region: string; title: string; count: string; sort: string; empty: string; relax: string; variantsOf: string; showAll: string };
+  facets: { region: string; title: string; toggle: string; draft: string; soft: string; more: string; less: string; hide: string; show: string };
+  /** `refine`: the row of narrowing suggestions; `tips` what to try when nothing matches; `clear` every filter off; `browse` the
+   *  row of popular values under an empty result */
+  results: {
+    region: string; title: string; count: string; sort: string; empty: string; relax: string; variantsOf: string; showAll: string;
+    refine: string; tips: string[]; clear: string; browse: string;
+  };
   chips: { label: string; query: string; spec: string; remove: string; reset: string };
   pagination: { label: string; prev: string; next: string; page: string };
   card: { variants: string; loading: string; failed: string; none: string };
@@ -35,7 +42,14 @@ export type ChipView = { key: string; label: string };
 /** a way out of an empty result: drop this filter and get `count` */
 export type RelaxView = { key: string; label: string; count: number };
 /** what a card shows besides its preview; `href` opens its detail page */
-export type CardView = { key: string; title: string; subtitle: string; kind: string; variants: number; spec: string; preview: boolean; href: string };
+export type CardView = { key: string; title: string; subtitle: string; kind: string; variants: number; spec: string; preview: boolean; href: string; meta?: string[] };
+/** a row of the search suggestions: the free text as typed, a facet value to apply as a filter, or an asset to open */
+export type SuggestView =
+  | { key: string; kind: "query"; label: string; count: number }
+  | { key: string; kind: "filter"; label: string; group: string; count: number; facet: string; value: string }
+  | { key: string; kind: "asset"; label: string; group: string; href: string };
+/** a value that narrows the current results (a related search): `count` of the current results carry it */
+export type RefineView = { facet: string; value: string; label: string; group: string; count: number };
 
 export type DetailText = {
   back: string;

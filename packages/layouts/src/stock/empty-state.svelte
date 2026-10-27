@@ -1,9 +1,14 @@
-<!-- Nothing matched: say so, and offer the filters whose removal brings results back (with how many). -->
+<!-- Nothing matched: say so, offer the filters whose removal brings results back (with how many), what to try, a way to clear every
+     filter, and the most carried values of the catalog as a way back in. -->
 <script lang="ts">
-  import { Button, Group, Stack, Text } from "@codegen-x/svelte-compose";
-  import { fmt, type RelaxView, type StockText } from "./text";
+  import { Button, Group, List, ListItem, Stack, Text } from "@codegen-x/svelte-compose";
+  import RefineRow from "./refine-row.svelte";
+  import { fmt, type RefineView, type RelaxView, type StockText } from "./text";
 
-  let { t, relax, onremove }: { t: StockText; relax: RelaxView[]; onremove: (key: string) => void } = $props();
+  let { t, relax, onremove, popular = [], ontoggle, onclear }: {
+    t: StockText; relax: RelaxView[]; onremove: (key: string) => void;
+    popular?: RefineView[]; ontoggle?: (facet: string, value: string) => void; onclear?: () => void;
+  } = $props();
 </script>
 
 <Stack gap="4" align="start" class="py-16" data-testid="results-empty">
@@ -15,4 +20,9 @@
       {/each}
     </Group>
   {/if}
+  <List tag="ul" class="list-disc space-y-2 pl-6 text-sm text-muted-foreground" data-testid="results-tips">
+    {#each t.results.tips as tip (tip)}<ListItem>{tip}</ListItem>{/each}
+  </List>
+  {#if onclear}<Button variant="secondary" size="sm" onclick={onclear} data-testid="results-clear">{t.results.clear}</Button>{/if}
+  {#if ontoggle}<RefineRow label={t.results.browse} items={popular} {ontoggle} testid="popular" />{/if}
 </Stack>

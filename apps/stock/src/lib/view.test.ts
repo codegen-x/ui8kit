@@ -8,7 +8,7 @@ import recipesJson from "../../content/previews.v0.json";
 import en from "../../content/i18n/en.json";
 import { TEXTS } from "./i18n";
 import type { Index } from "./model";
-import { chipViews, facetViews, quickViews, relaxViews, removeKey, resetFilters, selectedCount, typeViews, TYPE } from "./view";
+import { cardView, chipViews, facetViews, popularViews, quickViews, refineViews, relaxViews, removeKey, resetFilters, selectedCount, suggestViews, typeViews, TYPE } from "./view";
 
 const index = indexJson as unknown as Index;
 const engine = prepare(index);
@@ -88,4 +88,48 @@ describe("stock view", () => {
     }
     expect(n).toBe(index.assets.length);
   });
+
+  test("suggestions: the text with its count, the facet values it names with real counts, the assets it names", () => {
+    const s = at({});
+    const bare = search(engine, s).counts;
+    const total = (q: string): number => search(engine, at({ q })).results.length;
+    expect(suggestViews(index, "  ", s, bare, total, "en")).toEqual([]);
+    const got = suggestViews(index, "pric", s, bare, total, "en");
+    expect(got[0]).toEqual({ key: "q", kind: "query", label: "pric", count: total("pric") });
+    const f = got.find((x) => x.kind === "filter" && x.facet === "job" && x.value === "pricing");
+    expect(f && f.kind === "filter" && f.count).toBe(bare.job!.get("pricing")!);
+    expect(got.some((x) => x.kind === "asset" && /pric/i.test(x.label))).toBe(true);
+    for (const x of got) if (x.kind === "filter") expect(x.count).toBeGreaterThan(0);
+    // an applied value is not suggested again
+    const on = at({ filters: { job: ["pricing"] } });
+    expect(suggestViews(index, "pric", on, search(engine, on).counts, total, "en").some((x) => x.key === "f:job:pricing")).toBe(false);
+    // the current language: Russian labels match
+    const ru = index.facets.find((x) => x.id === "job")!.values.find((v) => v.id === "pricing")!.label.ru;
+    if (ru) expect(suggestViews(index, ru.slice(0, 4), s, bare, total, "ru").some((x) => x.key === "f:job:pricing")).toBe(true);
+  });
+
+  test("refinements narrow: each keeps some but not all results, at most two per facet, none applied", () => {
+    const s = at({ filters: { [TYPE]: ["block"] } });
+    const out = search(engine, s);
+    const rows = refineViews(index, s, out, "en");
+    expect(rows.length).toBeGreaterThan(0);
+    expect(rows.length).toBeLessThanOrEqual(8);
+    for (const r of rows) {
+      expect(r.count).toBeGreaterThan(0);
+      expect(r.count).toBeLessThan(out.results.length);
+      expect(search(engine, { ...s, filters: { ...s.filters, [r.facet]: [r.value] } }).results.length).toBe(r.count);
+    }
+    const per = new Map<string, number>();
+    for (const r of rows) per.set(r.facet, (per.get(r.facet) ?? 0) + 1);
+    for (const n of per.values()) expect(n).toBeLessThanOrEqual(2);
+    const on = at({ filters: { job: ["pricing"] } });
+    expect(refineViews(index, on, search(engine, on), "en").some((r) => r.facet === "job")).toBe(false);
+    expect(popularViews(index, search(engine, at({})), "en").length).toBeGreaterThan(0);
+  });
+
+  test("a card names its arrangement from its own labels", () => {
+    const a = index.assets.find((x) => x.id === "block.about/split")!;
+    expect(cardView(index, a, 1, "en").meta).toEqual(["Two columns", "Icons"]);
+  });
 });
+

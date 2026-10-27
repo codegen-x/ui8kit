@@ -10,7 +10,7 @@
   let { t, card, preview, onvariants }: { t: StockText; card: CardView; preview: Snippet; onvariants: (spec: string) => void } = $props();
 </script>
 
-<Card class="h-full gap-0 overflow-hidden border border-border p-0 inset-ring-0" data-testid="asset-card" data-asset={card.key}>
+<Card class="group h-full gap-0 overflow-hidden border border-border p-0 inset-ring-0 transition-colors hover:border-primary focus-within:border-primary" data-testid="asset-card" data-asset={card.key}>
   {#if card.preview}
     <PreviewFrame id={"pv-" + card.key.replace(/[^a-z0-9]+/gi, "-")}>{@render preview()}</PreviewFrame>
   {:else}
@@ -22,9 +22,12 @@
       <Badge size="sm" variant="secondary">{card.kind}</Badge>
     </Group>
     <Text tag="p" size="sm" class="truncate text-muted-foreground">{card.subtitle}</Text>
-    <Group gap="2" align="center" justify="end" class="min-h-8">
+    <Group gap="2" align="center" justify="between" class="min-h-8">
+      {#if card.meta?.length}
+        <Text tag="p" size="sm" class="min-w-0 truncate text-xs text-muted-foreground opacity-80 group-hover:opacity-100" data-testid="card-meta">{card.meta.join(" · ")}</Text>
+      {:else}<Text tag="span" class="sr-only"></Text>{/if}
       {#if card.variants > 1}
-        <Button variant="link" size="sm" class="px-0" onclick={() => onvariants(card.spec)} data-testid="card-variants">{fmt(t.card.variants, { n: card.variants })}</Button>
+        <Button variant="link" size="sm" class="shrink-0 px-0" onclick={() => onvariants(card.spec)} data-testid="card-variants">{fmt(t.card.variants, { n: card.variants })}</Button>
       {/if}
     </Group>
   </Stack>

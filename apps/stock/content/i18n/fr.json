@@ -3,7 +3,12 @@
   "search": {
     "label": "Rechercher dans le catalogue",
     "placeholder": "Rechercher des blocs et des écrans",
-    "submit": "Rechercher"
+    "submit": "Rechercher",
+    "suggest": "Suggestions",
+    "searchFor": "Rechercher « {q} »",
+    "count": "{n}",
+    "asset": "Ouvrir",
+    "hint": "Choisissez avec les flèches haut et bas, appliquez avec Entrée"
   },
   "header": {
     "actions": "Outils",
@@ -26,7 +31,9 @@
     "draft": "brouillon",
     "soft": "Classe les résultats, ne filtre pas",
     "more": "Afficher {n} de plus",
-    "less": "Afficher moins"
+    "less": "Afficher moins",
+    "hide": "Masquer les filtres",
+    "show": "Afficher les filtres"
   },
   "results": {
     "region": "Résultats",
@@ -36,7 +43,15 @@
     "empty": "Aucun résultat pour ces filtres.",
     "relax": "Retirer {filter} : {n}",
     "variantsOf": "Variantes de {spec}",
-    "showAll": "Toutes les variantes"
+    "showAll": "Toutes les variantes",
+    "refine": "Affiner",
+    "tips": [
+      "Vérifiez l’orthographe ou essayez un mot plus court",
+      "Retirez un ou deux filtres",
+      "Cherchez selon le rôle d’une section : tarifs, témoignages, appel à l’action"
+    ],
+    "clear": "Effacer tous les filtres",
+    "browse": "Populaire dans le catalogue"
   },
   "chips": {
     "label": "Filtres appliqués",

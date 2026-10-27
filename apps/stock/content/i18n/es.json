@@ -3,7 +3,12 @@
   "search": {
     "label": "Buscar en el catálogo",
     "placeholder": "Buscar bloques y pantallas",
-    "submit": "Buscar"
+    "submit": "Buscar",
+    "suggest": "Sugerencias",
+    "searchFor": "Buscar «{q}»",
+    "count": "{n}",
+    "asset": "Abrir",
+    "hint": "Elige con las flechas arriba y abajo, aplica con Intro"
   },
   "header": {
     "actions": "Herramientas",
@@ -26,7 +31,9 @@
     "draft": "borrador",
     "soft": "Ordena los resultados, no filtra",
     "more": "Mostrar {n} más",
-    "less": "Mostrar menos"
+    "less": "Mostrar menos",
+    "hide": "Ocultar filtros",
+    "show": "Mostrar filtros"
   },
   "results": {
     "region": "Resultados",
@@ -36,7 +43,15 @@
     "empty": "Nada coincide con estos filtros.",
     "relax": "Quitar {filter}: {n}",
     "variantsOf": "Variantes de {spec}",
-    "showAll": "Todas las variantes"
+    "showAll": "Todas las variantes",
+    "refine": "Afinar",
+    "tips": [
+      "Revisa la ortografía o prueba una palabra más corta",
+      "Quita uno o dos filtros",
+      "Busca por lo que hace una sección: precios, testimonios, llamada a la acción"
+    ],
+    "clear": "Quitar todos los filtros",
+    "browse": "Popular en el catálogo"
   },
   "chips": {
     "label": "Filtros aplicados",

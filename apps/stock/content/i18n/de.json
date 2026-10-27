@@ -3,7 +3,12 @@
   "search": {
     "label": "Katalog durchsuchen",
     "placeholder": "Blöcke und Screens suchen",
-    "submit": "Suchen"
+    "submit": "Suchen",
+    "suggest": "Vorschläge",
+    "searchFor": "„{q}“ suchen",
+    "count": "{n}",
+    "asset": "Öffnen",
+    "hint": "Mit den Pfeiltasten auswählen, mit Enter übernehmen"
   },
   "header": {
     "actions": "Werkzeuge",
@@ -26,7 +31,9 @@
     "draft": "Entwurf",
     "soft": "Sortiert die Ergebnisse, filtert nicht",
     "more": "{n} weitere anzeigen",
-    "less": "Weniger anzeigen"
+    "less": "Weniger anzeigen",
+    "hide": "Filter ausblenden",
+    "show": "Filter einblenden"
   },
   "results": {
     "region": "Ergebnisse",
@@ -36,7 +43,15 @@
     "empty": "Nichts passt zu diesen Filtern.",
     "relax": "{filter} entfernen: {n}",
     "variantsOf": "Varianten von {spec}",
-    "showAll": "Alle Varianten"
+    "showAll": "Alle Varianten",
+    "refine": "Eingrenzen",
+    "tips": [
+      "Prüfen Sie die Schreibweise oder versuchen Sie ein kürzeres Wort",
+      "Entfernen Sie einen oder zwei Filter",
+      "Suchen Sie nach der Aufgabe eines Abschnitts: Preise, Referenzen, Handlungsaufruf"
+    ],
+    "clear": "Alle Filter entfernen",
+    "browse": "Beliebt im Katalog"
   },
   "chips": {
     "label": "Aktive Filter",
