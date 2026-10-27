@@ -5,7 +5,8 @@ import { svelte } from "@sveltejs/vite-plugin-svelte";
 import { defineConfig } from "vite";
 
 export default defineConfig({
-  base: "/stock/",
+  // STOCK_BASE overrides the public path (Vercel serves Stock at the domain root: STOCK_BASE=/).
+  base: process.env.STOCK_BASE ?? "/stock/",
   plugins: [tailwindcss(), svelte()],
   server: { host: "127.0.0.1", port: 5187, strictPort: true },
   preview: { host: "127.0.0.1", port: 5188, strictPort: true },
