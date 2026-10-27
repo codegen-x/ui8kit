@@ -1,7 +1,8 @@
 # stock
 
 A hand-written app (not generated): a stock-site storefront over the repository's kit blocks (every variant) and the composed screens made of them.
-Svelte 5 + Vite + Tailwind 4, hash router, base `/stock/`.
+Svelte 5 + Vite + Tailwind 4, hash router (`src/lib/route.ts`), base `/stock/` (`STOCK_BASE=/` on Vercel: the routes are hashes, so
+both work).
 
     bun run dev          # http://127.0.0.1:5187/stock/
     bun run build        # vite build to dist/ (preview: bun run preview, port 5188)
@@ -57,4 +58,25 @@ the engine's outcome into the view models of the layouts (tested in `view.test.t
 - **Languages**: en, fr, de, es, ru (`content/i18n/<locale>.json` and `locales.json`, data); the switch is in the header and is kept on
   this device. Ids and URL parameters stay English; block titles are the kit dictionary's (English).
 
-Steps of the plan: S0 the frame; S1 the index; S2 the search engine; S3 the storefront on `@ui8kit/layouts`.
+## Detail page (S4, public)
+
+`#/asset/<asset id>` (`block.hero/centered`, `screen.site/home`); every card title on the storefront links to it.
+`src/Detail.svelte` assembles `@ui8kit/layouts/stock/detail` (named `ui8-*` classes, `styles/detail.css`) with `src/lib/detail.ts`
+(pure, tested in `detail.test.ts`):
+
+- **Preview**: the live render in a device frame, switchable between 1280, 768 and 390 px (the widest that fits the window first)
+  and between light and dark (the Theme's mode: the shared Theme sheet works here too). The frame is a document of its own
+  (`#/frame/<id>`, the bare render, loaded in an iframe by `@ui8kit/layouts/preview/device`), so the kit's breakpoints see the
+  device's width; it reads the Theme the page keeps on this device and follows it (storage events), never writes it.
+- **Passport**: a screen page's blocks and their variants, in page order (from the preview recipes); a block variant's sibling
+  variants and the screen pages that use the block. Then every facet of the asset's type with its labels, read-only (labelling is
+  the cabinet's): a draft badge on weak labels, `any` for a wildcard, an explicit "no label" where nothing applies (no fallback).
+- **Similar**: four cards of the same type, one per block or screen, ranked by the facet values they share (a block's layout
+  counts 10), then by catalog order: deterministic.
+
+Not in the public version: the per-runtime code and the Dataset (members with a role; implemented separately later). The build
+holds neither: `scripts/public-build.test.ts` builds Stock as Vercel does and fails on any source of the 8 runtimes (sampled lines of
+their generated blocks, generator headers, template syntax), on files other than the page, scripts, styles and fonts, and on
+`?raw`/`?url` or other-runtime imports in the app and the layouts. Stock is a static app: whatever its build holds is public.
+
+Steps of the plan: S0 the frame; S1 the index; S2 the search engine; S3 the storefront on `@ui8kit/layouts`; S4 the public detail page.

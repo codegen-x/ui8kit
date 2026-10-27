@@ -18,10 +18,11 @@ export function loadTheme(): ThemeState {
 }
 
 let applied: string[] = [];
-/** the theme on <html>: data-skin and the density attributes, --radius and the font variables (CSSOM) */
-export function applyState(s: ThemeState): void {
+/** the theme on <html>: data-skin and the density attributes, --radius and the font variables (CSSOM); `keep` stores it (the frame
+ *  document of the detail page only reads: the page that holds the Theme sheet writes) */
+export function applyState(s: ThemeState, keep = true): void {
   const root = document.documentElement;
-  try { localStorage.setItem("codegen-x-theme", s.mode); } catch { /* storage blocked */ }
+  if (keep) try { localStorage.setItem("codegen-x-theme", s.mode); } catch { /* storage blocked */ }
   applyTheme(s.mode);
   for (const a of applied) root.removeAttribute(a);
   const attrs = rootAttrs(s.theme);
@@ -32,7 +33,7 @@ export function applyState(s: ThemeState): void {
     const at = decl.indexOf(":");
     root.style.setProperty(decl.slice(0, at), decl.slice(at + 1));
   }
-  writeTheme(KEY, s.theme, store);
+  if (keep) writeTheme(KEY, s.theme, store);
 }
 
 /** the theme with one field (global-theme FIELDS) set by its id; null clears it; "mode" is the app's light/dark mode */

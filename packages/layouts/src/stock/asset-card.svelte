@@ -1,9 +1,9 @@
-<!-- The shell of an asset card: the preview frame (the live render comes in as a snippet), the title, what it is, and the way to
-     every variant of its spec. The card's edge is a real border (border-border), not the kit Card's inset ring: an inset ring is a
+<!-- The shell of an asset card: the preview frame (the live render comes in as a snippet), the title (a link to the detail page),
+     what it is, and the way to every variant of its spec. The card's edge is a real border (border-border), not the kit Card's inset ring: an inset ring is a
      box-shadow painted under the children, so the flush, opaque preview frame would cover it everywhere but the text part. -->
 <script lang="ts">
   import type { Snippet } from "svelte";
-  import { Badge, Button, Card, Group, Stack, Text, Title } from "@codegen-x/svelte-compose";
+  import { Badge, Button, Card, Group, Link, Stack, Text, Title } from "@codegen-x/svelte-compose";
   import PreviewFrame from "../preview/preview-frame.svelte";
   import { fmt, type CardView, type StockText } from "./text";
 
@@ -18,7 +18,7 @@
   {/if}
   <Stack gap="2" align="stretch" class="p-4">
     <Group gap="2" align="center" justify="between">
-      <Title as={3} size="sm" class="min-w-0 truncate">{card.title}</Title>
+      <Title as={3} size="sm" class="min-w-0 truncate"><Link href={card.href} size="sm" class="block truncate" data-testid="card-open">{card.title}</Link></Title>
       <Badge size="sm" variant="secondary">{card.kind}</Badge>
     </Group>
     <Text tag="p" size="sm" class="truncate text-muted-foreground">{card.subtitle}</Text>
