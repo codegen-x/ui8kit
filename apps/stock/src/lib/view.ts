@@ -20,7 +20,7 @@ export function facetViews(index: Index, s: SearchState, out: Outcome, locale: L
   return index.facets.filter((f) => f.id !== TYPE && (!type || !f.types || f.types.includes(type))).map((f) => ({
     id: f.id, label: textIn(f.label, locale), ui: f.ui, open: f.open === true, visible: f.visible ?? 6, draft: f.draft === true,
     note: f.draftNote ? textIn(f.draftNote, locale) : "", soft: f.mode === "soft",
-    values: f.values.map((v) => ({ id: v.id, label: textIn(v.label, locale), count: out.counts[f.id]?.get(v.id) ?? 0, checked: (s.filters[f.id] ?? []).includes(v.id) })),
+    values: f.values.map((v) => ({ id: v.id, label: textIn(v.label, locale), count: out.counts[f.id]?.get(v.id) ?? 0, checked: (s.filters[f.id] ?? []).includes(v.id), ...(v.draft ? { draft: true } : {}) })),
   }));
 }
 

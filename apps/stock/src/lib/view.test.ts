@@ -48,6 +48,11 @@ describe("stock view", () => {
     expect(ids).not.toContain("slots");
     expect(ids).not.toContain("layout");
     expect(ids).toContain("job");
+    const pattern = all.find((f) => f.id === "pattern")!;
+    expect(pattern.draft).toBe(false);
+    expect(pattern.values.find((v) => v.id === "modular-grid")!.draft).toBeUndefined();
+    expect(pattern.values.find((v) => v.id === "z-pattern")!.draft).toBe(true);
+    expect(pattern.label).toBe(index.facets.find((f) => f.id === "pattern")!.label.ru!);
   });
 
   test("chips, removal and reset; the type tab is not a chip and survives reset", () => {

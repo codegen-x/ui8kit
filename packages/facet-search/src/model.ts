@@ -33,6 +33,8 @@ export type FacetValue = {
   rules?: Rule[];
   /** a type that has no assets yet (the type bar shows it, disabled) */
   soon?: boolean;
+  /** the value's labels are drafts (a hand-written table) while the facet's other values are computed: the storefront marks it */
+  draft?: boolean;
 };
 
 export type FacetUi = "tabs" | "checkbox" | "chips" | "tiles" | "swatches" | "segments" | "toggle";

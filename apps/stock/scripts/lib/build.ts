@@ -10,6 +10,7 @@ import { createHash } from "node:crypto";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { ui as dict } from "@ui8kit/app-shared/content";
+import { isModular, rootGrid, variantProps, type PatternMap, type TermFile } from "./pattern";
 import type { Asset, BlockRecipe, BlockUse, Clause, Facet, FacetValue, Index, Preview, Previews, Rule, ScreenRecipe, SpecValue, Vocabulary } from "../../src/lib/model";
 
 export const ROOT = join(import.meta.dir, "..", "..", "..", "..");
@@ -29,7 +30,7 @@ type BlockSpec = {
   slots: string[]; data?: { as: string; collection: string; fields: Record<string, string> }[];
   sample: { props: Record<string, SpecValue> };
 };
-type OrganismSpec = { id: string; name: string; docs: string; props: { name: string }[]; portable: Record<string, boolean>; view?: unknown };
+type OrganismSpec = { id: string; name: string; docs: string; props: { name: string; default?: unknown }[]; portable: Record<string, boolean>; view?: unknown };
 type CodexBlock = { spec?: string; surface: string; data?: { record: string; required?: string[]; optional?: string[] }[]; labels?: { prop: string }[] };
 type ScreenSpec = { id: string; name: string; kind?: string; frame?: { before?: unknown[]; after?: unknown[] }; areas?: Record<string, unknown[]> };
 
@@ -37,6 +38,8 @@ type ScreenSpec = { id: string; name: string; kind?: string; frame?: { before?: 
 type Ctx = {
   block?: string; group?: string; theme?: string; axes: Record<string, string>; slots: string[]; records: string[]; fields: string[];
   labels: string[]; skin?: string; colours: string[]; screen?: string; area?: string; facets: Record<string, string[]>;
+  /** the composition patterns of a block variant: computed (modular-grid) and the draft table (pattern.ts) */
+  patterns?: string[];
 };
 
 const has = (list: string[] | undefined, v: string | undefined): boolean => !!list && v !== undefined && list.includes(v);
@@ -71,6 +74,9 @@ const str = (v: unknown, fallback: string): string => (typeof v === "string" && 
 export type Built = { index: Index; previews: Previews; collections: string };
 
 export function loadVocabulary(): Vocabulary { return readJson<Vocabulary>(join(APP, "content", "facets.v0.json")); }
+/** a term file of content/terms (brain-term/v1) and the draft table of the pattern facet */
+export const loadTerms = (scheme: string): TermFile => readJson<TermFile>(join(APP, "content", "terms", `${scheme}.v0.json`));
+export const loadPatternMap = (): PatternMap => readJson<PatternMap>(join(APP, "content", "pattern-map.v0.json"));
 
 export function build(vocab: Vocabulary = loadVocabulary()): Built {
   const blocks = jsonFiles(join(SPECS, "blocks")).map((f) => readJson<BlockSpec>(join(SPECS, "blocks", f)));
@@ -86,6 +92,10 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
       const axis = f.valuesFrom.slice(5);
       const vals = [...new Set(blocks.flatMap((b) => b.axes[axis] ?? []))].sort();
       return { ...f, values: vals.map((v) => ({ id: v, label: { en: humanize(v) } })) };
+    }
+    if (f.valuesFrom?.startsWith("terms:")) {
+      const t = loadTerms(f.valuesFrom.slice(6));
+      return { ...f, values: t.terms.map((x) => ({ id: x.id, label: x.label as FacetValue["label"], ...(x.status === "draft" ? { draft: true } : {}) })) };
     }
     return f;
   }).sort((a, b) => a.order - b.order);
@@ -104,6 +114,7 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
       else if (f.wildcard?.includes(type)) vals = ["*"];
       else if (extra[f.id]) vals = extra[f.id]!;
       else if (f.derive === "rules") vals = deriveRules(f, x);
+      else if (f.derive === "pattern") vals = f.values.map((v) => v.id).filter((v) => x.patterns?.includes(v));
       else if (f.derive === "runtime") vals = runtimes;
       else if (f.derive.startsWith("axis:")) vals = x.axes[f.derive.slice(5)] !== undefined ? [x.axes[f.derive.slice(5)]!] : [];
       out[f.id] = vals;
@@ -128,7 +139,8 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
     // a draft facet with no labels at all for the type is unlabelled by design and marked as a draft instead)
     const missing = facets.filter((f) => applies(f, a.type) && f.scope === "shared" && f.derive !== "markup" && f.mode !== "soft" && f.id !== "type"
       && !(labels[f.id]?.length) && !(f.draft && !labelledDraft.has(`${a.type}:${f.id}`))).map((f) => f.id);
-    const weak = facets.filter((f) => f.draft && (labels[f.id]?.length ?? 0) > 0 && labels[f.id]![0] !== "*").map((f) => f.id);
+    const weak = facets.filter((f) => (labels[f.id]?.length ?? 0) > 0 && labels[f.id]![0] !== "*"
+      && (f.draft || labels[f.id]!.some((v) => f.values.find((x) => x.id === v)?.draft))).map((f) => f.id);
     labels["markup"] = [missing.length ? "needs" : "auto"];
     const ordered: Record<string, string[]> = {};
     for (const f of facets) if (labels[f.id]) ordered[f.id] = labels[f.id]!;
@@ -163,6 +175,7 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
   const sorted = [...blocks].sort((a, b) => THEMES.indexOf(a.theme as (typeof THEMES)[number]) - THEMES.indexOf(b.theme as (typeof THEMES)[number]) || a.id.localeCompare(b.id));
   /** every variant's labels, for the pages made of them */
   const variantLabels = new Map<string, Record<string, string[]>>();
+  const patternMap = loadPatternMap();
 
   for (const b of sorted) {
     const key = b.id.slice(6);
@@ -175,7 +188,10 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
     };
     for (const v of b.variants) {
       const org = drawnBy(b, v);
-      const labels = labelsOf("block", blockCtx(b, v.set), runtimesOf([org]));
+      const o = orgByName.get(org);
+      const computed = o && isModular(rootGrid(o.view, variantProps(o.props, b.sample.props, (b.data ?? []).map((d) => d.as), { ...b.defaults, ...v.set }, v.props), orgByName)) ? ["modular-grid"] : [];
+      const ctx = { ...blockCtx(b, v.set), patterns: [...computed, ...(patternMap.labels[key] ?? []), ...(patternMap.labels[`${key}/${v.id}`] ?? [])] };
+      const labels = labelsOf("block", ctx, runtimesOf([org]));
       variantLabels.set(`${key}/${v.id}`, labels);
       const preview: Preview = { kind: "block", block: key, variant: v.id };
       const title = str(names[key], humanize(key));

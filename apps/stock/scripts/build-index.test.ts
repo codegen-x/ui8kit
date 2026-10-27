@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import { readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { build, deriveRules, loadVocabulary, matches, OUTPUTS, ROOT, serialise } from "./lib/build";
+import { build, deriveRules, loadPatternMap, loadTerms, loadVocabulary, matches, OUTPUTS, ROOT, serialise } from "./lib/build";
 
 const vocab = loadVocabulary();
 const built = build(vocab);
@@ -110,10 +110,10 @@ describe("labels", () => {
     expect(hero.weak).toContain("job");
     expect(hero.weak).not.toContain("section");
   });
-  test("at least 12 filter groups besides the type bar, 5 of them open", () => {
+  test("at least 12 filter groups besides the type bar, 6 of them open", () => {
     const groups = index.facets.filter((f) => f.ui !== "tabs");
     expect(groups.length).toBeGreaterThanOrEqual(12);
-    expect(groups.filter((f) => f.open).map((f) => f.id)).toEqual(["job", "role", "composition", "character", "density"]);
+    expect(groups.filter((f) => f.open).map((f) => f.id)).toEqual(["job", "role", "composition", "character", "density", "pattern"]);
   });
   test("every block and screen has a preview recipe", () => {
     for (const a of index.assets) {
@@ -139,5 +139,50 @@ describe("rules", () => {
       values: [{ id: "a", label: { en: "a" }, rules: [{ any: { block: ["hero"] }, not: { group: ["hero"] } }] }, { id: "b", label: { en: "b" }, rules: [{ any: { axis: { tone: ["muted"] } } }] }, { id: "z", label: { en: "z" } }] };
     expect(deriveRules(f, ctx)).toEqual(["b"]);
     expect(deriveRules(f, { ...ctx, axes: {} })).toEqual([]);
+  });
+});
+
+describe("composition pattern (facet pattern)", () => {
+  const terms = loadTerms("pattern");
+  const map = loadPatternMap();
+  const GRAPH = ["rule-of-thirds", "diagonal", "focal-mass", "l-arrangement", "radial", "circular", "cross", "v-arrangement", "pyramid"];
+  const of = (id: string): string[] => index.assets.find((a) => a.id === id)!.labels["pattern"] ?? [];
+  test("one vocabulary file (brain-term/v1): the 9 graph patterns and z, f, modular grid, golden canon; five languages; one computed", () => {
+    expect(terms.format).toBe("brain-term/v1");
+    expect(terms.terms.map((t) => t.id).sort()).toEqual([...GRAPH, "z-pattern", "f-pattern", "modular-grid", "golden-canon"].sort());
+    for (const t of terms.terms) expect(Object.keys(t.label).sort()).toEqual(["de", "en", "es", "fr", "ru"]);
+    expect(terms.terms.filter((t) => t.status === "computed").map((t) => t.id)).toEqual(["modular-grid"]);
+    for (const id of GRAPH) expect(terms.terms.find((t) => t.id === id)!.provenance.ref).toBe(`pattern:${id}`);
+  });
+  test("the draft table names real blocks and variants and only draft values (modular-grid is never written by hand)", () => {
+    const draft = new Set(terms.terms.filter((t) => t.status === "draft").map((t) => t.id));
+    for (const [key, vals] of Object.entries(map.labels)) {
+      const [block, variant] = key.split("/");
+      const spec = blockSpecs.find((b) => b.id === `block.${block}`);
+      expect(spec).toBeDefined();
+      if (variant) expect(spec!.variants.some((v) => v.id === variant)).toBe(true);
+      for (const v of vals) expect(draft.has(v)).toBe(true);
+    }
+  });
+  test("modular-grid is computed: a root grid of one repeated module, no span, three or more equal columns", () => {
+    expect(of("block.features/grid")).toContain("modular-grid");
+    expect(of("block.features/tiles4")).toContain("modular-grid");
+    expect(of("block.features/grid2")).not.toContain("modular-grid"); // two columns
+    expect(of("block.features/rows")).not.toContain("modular-grid"); // no grid
+    expect(of("block.bento/even")).not.toContain("modular-grid"); // the module carries spans
+    expect(of("block.storehero/overlay")).not.toContain("modular-grid"); // the grid stands beside a picture: not the root
+    expect(of("block.pricing/grid")).not.toContain("modular-grid"); // Cols = fitCols(cols, len(plans)): not proved
+  });
+  test("no evidence, no label; draft values mark the asset weak; empty values hidden", () => {
+    expect(of("block.stepper/horizontal")).toEqual([]);
+    const z = index.assets.find((a) => a.id === "block.hero/split")!;
+    expect(z.labels["pattern"]).toEqual(["z-pattern"]);
+    expect(z.weak).toContain("pattern");
+    expect(index.assets.find((a) => a.id === "block.features/grid")!.weak).not.toContain("pattern");
+    const f = index.facets.find((x) => x.id === "pattern")!;
+    expect(f.values.find((v) => v.id === "modular-grid")!.draft).toBeUndefined();
+    expect(f.values.find((v) => v.id === "z-pattern")!.draft).toBe(true);
+    for (const v of f.values) expect(index.assets.some((a) => a.labels["pattern"]?.includes(v.id))).toBe(true);
+    expect(index.hidden!.values.filter((v) => v.facet === "pattern").map((v) => v.value).sort()).toEqual(["circular", "cross", "diagonal", "radial", "v-arrangement"]);
   });
 });

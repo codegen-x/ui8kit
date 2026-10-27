@@ -19,13 +19,14 @@
       {#if g.draft}<Badge size="sm" variant="outline" title={g.note} data-testid="draft-badge">{t.facets.draft}</Badge>{/if}
     </Group>
   </Summary>
-  <Fieldset class="pb-4">
+  <Fieldset class="min-w-0 pb-4">
     <Legend class="sr-only">{g.label}</Legend>
     <Stack gap="2" align="stretch">
       {#each shown as v (v.id)}
         <Label class={"flex cursor-pointer items-center gap-2 text-sm" + (v.count === 0 && !v.checked ? " text-muted-foreground" : "")}>
           <Checkbox size="sm" name={g.id} value={v.id} checked={v.checked} onchange={() => ontoggle(g.id, v.id)} />
           <Text tag="span" class="min-w-0 flex-1 truncate">{v.label}</Text>
+          {#if v.draft}<Badge size="sm" variant="outline" title={g.note} data-testid="value-draft">{t.facets.draft}</Badge>{/if}
           <Text tag="span" class="tabular-nums text-muted-foreground">{v.count}</Text>
         </Label>
       {/each}

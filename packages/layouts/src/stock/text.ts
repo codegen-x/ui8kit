@@ -17,8 +17,8 @@ export type StockText = {
 export const fmt = (template: string, vars: Record<string, string | number>): string =>
   template.replace(/\{(\w+)\}/g, (m, k: string) => (k in vars ? String(vars[k]) : m));
 
-/** a value of a facet as the layouts show it: label, count, selected; `dim`: no result would remain (shown, not hidden) */
-export type ValueView = { id: string; label: string; count: number; checked: boolean };
+/** a value of a facet as the layouts show it: label, count, selected, a draft label (hand-written) beside computed ones */
+export type ValueView = { id: string; label: string; count: number; checked: boolean; draft?: boolean };
 /** one facet group of the column */
 export type FacetView = { id: string; label: string; ui: string; open: boolean; visible: number; draft: boolean; note: string; soft: boolean; values: ValueView[] };
 /** a tab of the type bar ("" is every type) */

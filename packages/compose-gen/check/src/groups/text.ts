@@ -9,7 +9,10 @@ import { result, walk, type Ctx, type CheckResult } from "./context";
 const CYRILLIC = /[\u0400-\u04FF]/;
 /** genuine locale resources that may hold Cyrillic (repo-relative paths); everything else is English-only. Stock's vocabulary and its
  *  index carry the facet labels in en/fr/de/es/ru (the owner's decision of 2026-10-27, ADR-0001). */
-export const CYRILLIC_ALLOW: readonly string[] = ["apps/stock/content/facets.v0.json", "apps/stock/content/assets.v0.json", "apps/stock/content/i18n/ru.json", "apps/stock/content/i18n/locales.json"];
+export const CYRILLIC_ALLOW: readonly string[] = [
+  "apps/stock/content/facets.v0.json", "apps/stock/content/assets.v0.json", "apps/stock/content/i18n/ru.json", "apps/stock/content/i18n/locales.json",
+  "apps/stock/content/terms/pattern.v0.json",
+];
 
 /** every tracked file (git ls-files); outside a git checkout, the source roots on disk */
 export function trackedFiles(workspace: string): string[] {

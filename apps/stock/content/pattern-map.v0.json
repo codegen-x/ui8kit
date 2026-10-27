@@ -1,0 +1,203 @@
+{
+  "version": "0",
+  "note": "Hand-written draft labels of the composition-pattern facet (status draft in content/terms/pattern.v0.json): a key is a block (every variant) or block/variant; a block with no key and no computed value has no label. Judged from the block docs and the variant shapes, not reviewed by a person. modular-grid is never written here: it is computed (scripts/lib/pattern.ts).",
+  "labels": {
+    "activity/list": [
+      "f-pattern"
+    ],
+    "activity/timeline": [
+      "f-pattern"
+    ],
+    "article/column": [
+      "f-pattern",
+      "golden-canon"
+    ],
+    "article/muted": [
+      "f-pattern"
+    ],
+    "article/plain": [
+      "f-pattern",
+      "golden-canon"
+    ],
+    "article/toc": [
+      "f-pattern"
+    ],
+    "auth": [
+      "focal-mass"
+    ],
+    "authpage/centered": [
+      "focal-mass"
+    ],
+    "authpage/minimal": [
+      "focal-mass"
+    ],
+    "cartpage/split": [
+      "rule-of-thirds"
+    ],
+    "checkout/cards": [
+      "rule-of-thirds"
+    ],
+    "checkout/numbered": [
+      "rule-of-thirds"
+    ],
+    "cta/banner": [
+      "focal-mass"
+    ],
+    "cta/card": [
+      "focal-mass"
+    ],
+    "cta/quote": [
+      "focal-mass"
+    ],
+    "cta/split": [
+      "z-pattern"
+    ],
+    "ctaproof/centerFeatures": [
+      "pyramid"
+    ],
+    "ctaproof/centerLogos": [
+      "pyramid"
+    ],
+    "ctaproof/centerStats": [
+      "pyramid"
+    ],
+    "ctaproof/splitRows": [
+      "z-pattern"
+    ],
+    "ctaproof/splitStats": [
+      "z-pattern"
+    ],
+    "ctaproof/splitStatsStart": [
+      "z-pattern"
+    ],
+    "ctaproof/splitZones": [
+      "z-pattern"
+    ],
+    "dashshell/classic": [
+      "l-arrangement"
+    ],
+    "dashshell/collapsed": [
+      "l-arrangement"
+    ],
+    "dashshell/collapsedEnd": [
+      "l-arrangement"
+    ],
+    "dashshell/end": [
+      "l-arrangement"
+    ],
+    "dashshell/inset": [
+      "l-arrangement"
+    ],
+    "dashshell/rail": [
+      "l-arrangement"
+    ],
+    "dashshell/railEnd": [
+      "l-arrangement"
+    ],
+    "dashshell/railFooter": [
+      "l-arrangement"
+    ],
+    "dashshell/twoLevel": [
+      "l-arrangement"
+    ],
+    "dashshell/twoLevelFull": [
+      "l-arrangement"
+    ],
+    "empty": [
+      "focal-mass"
+    ],
+    "errorpage/centered": [
+      "focal-mass"
+    ],
+    "errorpage/noCode": [
+      "focal-mass"
+    ],
+    "errorpage/split": [
+      "z-pattern"
+    ],
+    "faq/list": [
+      "f-pattern"
+    ],
+    "faq/muted": [
+      "f-pattern"
+    ],
+    "faq/roomy": [
+      "f-pattern"
+    ],
+    "features/rows": [
+      "f-pattern"
+    ],
+    "features/rowsAlternate": [
+      "z-pattern"
+    ],
+    "features/rowsStart": [
+      "f-pattern"
+    ],
+    "hero/backdrop": [
+      "focal-mass"
+    ],
+    "hero/centered": [
+      "focal-mass"
+    ],
+    "hero/display": [
+      "focal-mass"
+    ],
+    "hero/form": [
+      "focal-mass"
+    ],
+    "hero/prompt": [
+      "focal-mass"
+    ],
+    "hero/saas": [
+      "z-pattern"
+    ],
+    "hero/screenshot": [
+      "pyramid"
+    ],
+    "hero/split": [
+      "z-pattern"
+    ],
+    "hero/splitStart": [
+      "z-pattern"
+    ],
+    "hero/twoActions": [
+      "focal-mass"
+    ],
+    "herosplit": [
+      "z-pattern"
+    ],
+    "newsletter/stacked": [
+      "focal-mass"
+    ],
+    "photos/featured": [
+      "focal-mass"
+    ],
+    "posts/list": [
+      "f-pattern"
+    ],
+    "product/split": [
+      "z-pattern"
+    ],
+    "product/splitEnd": [
+      "z-pattern"
+    ],
+    "reviews/list": [
+      "f-pattern"
+    ],
+    "shell/sidebar": [
+      "l-arrangement"
+    ],
+    "testimonials/featured": [
+      "focal-mass"
+    ],
+    "testimonials/single": [
+      "focal-mass"
+    ],
+    "usage/card": [
+      "focal-mass"
+    ],
+    "videomodal": [
+      "focal-mass"
+    ]
+  }
+}

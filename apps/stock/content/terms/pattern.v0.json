@@ -1,0 +1,259 @@
+{
+  "format": "brain-term/v1",
+  "scheme": "pattern",
+  "version": "0",
+  "$comment": "The composition patterns of Stock (facet `pattern`), one file for brain to take as brain-term/v1. Ids English; labels en/fr/de/es/ru. status computed: derived from the spec by the rule below (apps/stock/scripts/lib/pattern.ts); status draft: labelled from the hand-written table content/pattern-map.v0.json. The xpattern nodes of the graph (UI component patterns) are not composition patterns and are not used.",
+  "label": {
+    "en": "Composition pattern",
+    "fr": "Motif de composition",
+    "de": "Kompositionsmuster",
+    "es": "Patrón de composición",
+    "ru": "Паттерн композиции"
+  },
+  "terms": [
+    {
+      "id": "z-pattern",
+      "label": {
+        "en": "Z-pattern",
+        "fr": "Lecture en Z",
+        "de": "Z-Muster",
+        "es": "Patrón en Z",
+        "ru": "Z-паттерн"
+      },
+      "definition": {
+        "en": "The eye runs top-start to top-end, diagonally down, then along the bottom: text and media alternate across a split, the action at the end."
+      },
+      "status": "draft",
+      "provenance": {
+        "kind": "owner",
+        "ref": "2026-10-27"
+      }
+    },
+    {
+      "id": "f-pattern",
+      "label": {
+        "en": "F-pattern",
+        "fr": "Lecture en F",
+        "de": "F-Muster",
+        "es": "Patrón en F",
+        "ru": "F-паттерн"
+      },
+      "definition": {
+        "en": "The eye scans the top line, a shorter second line, then down the start edge: a reading column or a list of rows."
+      },
+      "status": "draft",
+      "provenance": {
+        "kind": "owner",
+        "ref": "2026-10-27"
+      }
+    },
+    {
+      "id": "modular-grid",
+      "label": {
+        "en": "Modular grid",
+        "fr": "Grille modulaire",
+        "de": "Modulares Raster",
+        "es": "Retícula modular",
+        "ru": "Модульная сетка"
+      },
+      "definition": {
+        "en": "The section is one grid of equal modules in three or more columns."
+      },
+      "status": "computed",
+      "provenance": {
+        "kind": "owner",
+        "ref": "2026-10-27"
+      },
+      "rule": "the first top-level Grid the block variant renders (evaluated with its props, nested organisms and slots followed, only decided branches, nothing inside an each) is the root: beside it only the head of a section (Title, Text, Group, Link, Button, Badge, Separator, Inline, text); its children are exactly one each; the module has no span; its Cols evaluate to a kit Grid value whose widest step has 3 or more equal columns"
+    },
+    {
+      "id": "golden-canon",
+      "label": {
+        "en": "Golden canon (Van de Graaf)",
+        "fr": "Canon de Van de Graaf",
+        "de": "Goldener Kanon (Van de Graaf)",
+        "es": "Canon de Van de Graaf",
+        "ru": "Золотой канон (Ван де Грааф)"
+      },
+      "definition": {
+        "en": "The page canon of Van de Graaf: one text block in a 2:3 page with margins 1:1:2:3 (inner, top, outer, bottom), a reading measure centred above the middle."
+      },
+      "status": "draft",
+      "provenance": {
+        "kind": "owner",
+        "ref": "2026-10-27"
+      }
+    },
+    {
+      "id": "rule-of-thirds",
+      "label": {
+        "en": "Rule of thirds",
+        "fr": "Règle des tiers",
+        "de": "Drittelregel",
+        "es": "Regla de los tercios",
+        "ru": "Правило третей"
+      },
+      "definition": {
+        "en": "Main masses sit on a 1/3 : 2/3 split or on thirds lines."
+      },
+      "status": "draft",
+      "provenance": {
+        "kind": "graph",
+        "ref": "pattern:rule-of-thirds",
+        "source": "packages/taste-data/src/compositions.ts"
+      }
+    },
+    {
+      "id": "diagonal",
+      "label": {
+        "en": "Diagonal",
+        "fr": "Diagonale",
+        "de": "Diagonale",
+        "es": "Diagonal",
+        "ru": "Диагональ"
+      },
+      "definition": {
+        "en": "The weight runs along a diagonal: tilted bands, a staircase of cards."
+      },
+      "status": "draft",
+      "provenance": {
+        "kind": "graph",
+        "ref": "pattern:diagonal",
+        "source": "packages/taste-data/src/compositions.ts"
+      }
+    },
+    {
+      "id": "focal-mass",
+      "label": {
+        "en": "Focal mass",
+        "fr": "Masse focale",
+        "de": "Fokale Masse",
+        "es": "Masa focal",
+        "ru": "Фокусная масса"
+      },
+      "definition": {
+        "en": "One dominant mass (card, headline, figure) in open space, usually near the centre."
+      },
+      "status": "draft",
+      "provenance": {
+        "kind": "graph",
+        "ref": "pattern:focal-mass",
+        "source": "packages/taste-data/src/compositions.ts"
+      }
+    },
+    {
+      "id": "l-arrangement",
+      "label": {
+        "en": "L-arrangement",
+        "fr": "Disposition en L",
+        "de": "L-Anordnung",
+        "es": "Disposición en L",
+        "ru": "L-композиция"
+      },
+      "definition": {
+        "en": "Heavy elements along two edges forming an L: a side or top band plus a bottom or start band."
+      },
+      "status": "draft",
+      "provenance": {
+        "kind": "graph",
+        "ref": "pattern:l-arrangement",
+        "source": "packages/taste-data/src/compositions.ts"
+      }
+    },
+    {
+      "id": "radial",
+      "label": {
+        "en": "Radial",
+        "fr": "Radiale",
+        "de": "Radial",
+        "es": "Radial",
+        "ru": "Радиальная"
+      },
+      "definition": {
+        "en": "Elements radiate from a point: sunburst, rays, concentric rings."
+      },
+      "status": "draft",
+      "provenance": {
+        "kind": "graph",
+        "ref": "pattern:radial",
+        "source": "packages/taste-data/src/compositions.ts"
+      }
+    },
+    {
+      "id": "circular",
+      "label": {
+        "en": "Circular",
+        "fr": "Circulaire",
+        "de": "Kreisförmig",
+        "es": "Circular",
+        "ru": "Круговая"
+      },
+      "definition": {
+        "en": "A circle holds or frames the content, or circles are the main motif."
+      },
+      "status": "draft",
+      "provenance": {
+        "kind": "graph",
+        "ref": "pattern:circular",
+        "source": "packages/taste-data/src/compositions.ts"
+      }
+    },
+    {
+      "id": "cross",
+      "label": {
+        "en": "Cross",
+        "fr": "Croix",
+        "de": "Kreuz",
+        "es": "Cruz",
+        "ru": "Крест"
+      },
+      "definition": {
+        "en": "Content on the vertical and horizontal axes around a centre."
+      },
+      "status": "draft",
+      "provenance": {
+        "kind": "graph",
+        "ref": "pattern:cross",
+        "source": "packages/taste-data/src/compositions.ts"
+      }
+    },
+    {
+      "id": "v-arrangement",
+      "label": {
+        "en": "V-arrangement",
+        "fr": "Disposition en V",
+        "de": "V-Anordnung",
+        "es": "Disposición en V",
+        "ru": "V-композиция"
+      },
+      "definition": {
+        "en": "Two arms converging on a point."
+      },
+      "status": "draft",
+      "provenance": {
+        "kind": "graph",
+        "ref": "pattern:v-arrangement",
+        "source": "packages/taste-data/src/compositions.ts"
+      }
+    },
+    {
+      "id": "pyramid",
+      "label": {
+        "en": "Pyramid",
+        "fr": "Pyramide",
+        "de": "Pyramide",
+        "es": "Pirámide",
+        "ru": "Пирамида"
+      },
+      "definition": {
+        "en": "A narrow apex over a wide base: a short headline over a wider row of cards or tiles."
+      },
+      "status": "draft",
+      "provenance": {
+        "kind": "graph",
+        "ref": "pattern:pyramid",
+        "source": "packages/taste-data/src/compositions.ts"
+      }
+    }
+  ]
+}

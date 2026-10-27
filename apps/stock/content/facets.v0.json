@@ -1590,6 +1590,36 @@
       "order": 5
     },
     {
+      "id": "pattern",
+      "label": {
+        "en": "Composition pattern",
+        "fr": "Motif de composition",
+        "de": "Kompositionsmuster",
+        "es": "Patrón de composición",
+        "ru": "Паттерн композиции"
+      },
+      "ui": "checkbox",
+      "order": 6,
+      "open": true,
+      "visible": 8,
+      "scope": "shared",
+      "types": [
+        "block",
+        "screen"
+      ],
+      "source": "weak",
+      "draftNote": {
+        "en": "Draft values come from a hand-written table; Modular grid is computed from the spec.",
+        "fr": "Les valeurs brouillon viennent d’une table écrite à la main ; la grille modulaire est calculée depuis la spec.",
+        "de": "Entwurfswerte stammen aus einer handgeschriebenen Tabelle; das modulare Raster wird aus der Spezifikation berechnet.",
+        "es": "Los valores borrador vienen de una tabla escrita a mano; la retícula modular se calcula a partir de la spec.",
+        "ru": "Черновые значения взяты из ручной таблицы; модульная сетка вычисляется из спеки."
+      },
+      "derive": "pattern",
+      "valuesFrom": "terms:pattern",
+      "values": []
+    },
+    {
       "id": "media",
       "label": {
         "en": "Media",
