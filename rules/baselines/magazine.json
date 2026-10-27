@@ -5,7 +5,7 @@
     "block-root": 0,
     "raw-html": 0,
     "dynamic-tag": 0,
-    "raw-native-tag": 217,
+    "raw-native-tag": 193,
     "reactive-aria": 10,
     "literal-text": 4
   },
@@ -15,10 +15,7 @@
     "dynamic-tag": {},
     "raw-native-tag": {
       "src/App.svelte": 16,
-      "src/parts/collection-header.svelte": 12,
-      "src/parts/collection.svelte": 8,
       "src/parts/design-system.svelte": 30,
-      "src/parts/home.svelte": 4,
       "src/parts/packs.svelte": 13,
       "src/parts/presets.svelte": 11,
       "src/parts/search.svelte": 49,

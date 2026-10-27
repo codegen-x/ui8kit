@@ -1,5 +1,9 @@
-<!-- Home: the recommendation rows for the picks (packages/taste-data/src/recommend), computed in the browser. -->
+<!-- Home: the recommendation rows for the picks (packages/taste-data/src/recommend), computed in the browser; the page and the
+     collection links are @ui8kit/layouts/magazine/page and link-strip. -->
 <script lang="ts">
+  import { Title } from "@codegen-x/svelte-compose";
+  import LinkStrip from "@ui8kit/layouts/magazine/link-strip.svelte";
+  import Page from "@ui8kit/layouts/magazine/page.svelte";
   import ui from "../../content/ui.json";
   import type { StyleKey } from "@ui8kit/taste-data/picks";
   import { recommend } from "@ui8kit/taste-data/recommend";
@@ -9,17 +13,14 @@
 
   let { picks }: { picks: StyleKey[] } = $props();
   const rows = $derived(recommend(picks));
+  const links = $derived(lib.collections.map((c) => ({ id: c.id, href: "#/collection/" + c.id, label: `${c.title} (${c.styles.length})` })));
 </script>
 
-<main id="main-content" class="mg-main" data-testid="magazine-home">
-  <nav class="mg-strip-links" aria-label={ui.collections.heading} data-testid="collections-strip">
-    {#each lib.collections as c (c.id)}
-      <a class="mg-link" href={"#/collection/" + c.id} data-testid="collection-link">{c.title} ({c.styles.length})</a>
-    {/each}
-  </nav>
-  <h1 class="mg-h1">{ui.home.heading}</h1>
+<Page data-testid="magazine-home">
+  <LinkStrip label={ui.collections.heading} {links} data-testid="collections-strip" />
+  <Title as={1} weight="bold" class="mb-4 text-2xl leading-normal wrap-anywhere">{ui.home.heading}</Title>
   <CollectionHeader {picks} />
   {#each rows as row, i (i)}
     <Row {row} />
   {/each}
-</main>
+</Page>

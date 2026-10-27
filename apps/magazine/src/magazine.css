@@ -59,7 +59,6 @@
 .mg-list .mg-name { font-weight: 600; }
 .mg-chips { display: flex; flex-wrap: wrap; gap: 4px 8px; margin: 0; }
 .mg-chips span { font-size: 12px; color: var(--muted-foreground); }
-.mg-strip-links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 0 0 24px; }
 /* Templates tab: the live 1440 page, scaled; its own layout rules (kit blocks bring their own). 8px rules, 4px only inside controls. */
 .mg-tabs { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 24px; border-bottom: 1px solid var(--border); }
 .mg-tab { font: inherit; font-size: 14px; padding: 8px 16px; border: 0; border-bottom: 2px solid transparent; margin-bottom: -1px; background: transparent; color: var(--muted-foreground); cursor: pointer; }
@@ -121,18 +120,6 @@
 /* Destructive samples: the kit paints white (or the destructive colour) on the destructive colour, which fails AA on some skins. The specimen keeps the signal in the ring and puts the text on the card colour, which every skin already measures. */
 .ds-frame .ds-danger { background: var(--card) !important; color: var(--foreground) !important; box-shadow: inset 0 0 0 2px var(--destructive) !important; }
 /* Home: the collection header, the picks strip, the why line and its legend */
-.mg-collection { margin: 0 0 32px; }
-.mg-collection-title { font-size: 20px; margin: 0 0 8px; }
-.mg-picks { display: flex; gap: 8px; overflow-x: auto; padding: 0 0 8px; margin: 0 0 16px; scrollbar-width: thin; }
-.mg-pick { flex: 1 0 96px; min-width: 96px; max-width: 144px; }
-.mg-legend { font-size: 14px; }
-.mg-legend summary { cursor: pointer; font-weight: 600; margin: 0 0 8px; }
-.mg-legend summary:focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
-.mg-legend-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(256px, 1fr)); gap: 8px 24px; margin: 0; }
-.mg-legend-list div { display: flex; flex-direction: column; gap: 4px; }
-.mg-legend-list dt { font-weight: 600; }
-.mg-legend-list dt::first-letter { text-transform: uppercase; }
-.mg-legend-list dd { margin: 0; color: var(--muted-foreground); font-size: 12px; line-height: 16px; }
 /* Search (#/search) */
 .mg-sbar { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; margin: 16px 0; }
 .mg-field { display: flex; flex-direction: column; gap: 4px; }

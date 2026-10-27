@@ -5,7 +5,7 @@
     "corners": 5,
     "shadows": 2,
     "hardcode": 0,
-    "spacing": 22
+    "spacing": 21
   },
   "counts": {
     "corners": {
@@ -16,7 +16,7 @@
     },
     "hardcode": {},
     "spacing": {
-      "src/magazine.css": 22
+      "src/magazine.css": 21
     }
   }
 }
