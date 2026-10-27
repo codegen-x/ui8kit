@@ -281,6 +281,24 @@
         "tailwind-merge": "^3.7.0",
       },
     },
+    "packages/layouts": {
+      "name": "@ui8kit/layouts",
+      "version": "0.0.0",
+      "dependencies": {
+        "@codegen-x/svelte-compose": "workspace:*",
+        "@ui8kit/facet-search": "workspace:*",
+      },
+      "devDependencies": {
+        "@tsconfig/svelte": "^5.0.8",
+        "@types/bun": "^1.4.2",
+        "svelte": "^5.57.0",
+        "svelte-check": "^4.7.6",
+        "typescript": "~6.0.2",
+      },
+      "peerDependencies": {
+        "svelte": "^5.57.0",
+      },
+    },
     "packages/panorama": {
       "name": "@ui8kit/panorama",
       "version": "0.0.0",
@@ -630,6 +648,8 @@
     "@ui8kit/contract": ["@ui8kit/contract@0.2.0", "", {}, "sha512-Ba+YQPjwSmgFNh3nUYSyt3+Ap/fYUK6IQCXEj33WoDbeT6j0ejmq1ln8wGLHVe5dgBcRhI5/QDPprjgOYkYeXg=="],
 
     "@ui8kit/facet-search": ["@ui8kit/facet-search@workspace:packages/facet-search"],
+
+    "@ui8kit/layouts": ["@ui8kit/layouts@workspace:packages/layouts"],
 
     "@ui8kit/panorama": ["@ui8kit/panorama@workspace:packages/panorama"],
 

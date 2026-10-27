@@ -30,6 +30,7 @@ describe("style rules on hand-written code", () => {
     const groups = Object.fromEntries(STYLE_PACKAGES.map((p) => [p.name, [...p.groups]]));
     expect(groups["magazine"]).toEqual([...STYLE_GROUPS]);
     expect(groups["stock"]).toEqual(["corners", "shadows", "hardcode"]);
+    expect(groups["layouts"]).toEqual(["corners", "shadows", "hardcode", "spacing"]);
   });
   test("magazine matches their baselines", () => {
     for (const g of STYLE_GROUPS) expect(styleProblems(repo, g)).toEqual([]);

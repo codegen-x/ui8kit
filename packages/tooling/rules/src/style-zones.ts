@@ -17,6 +17,7 @@ const APP_GROUPS: readonly StyleGroup[] = ["corners", "shadows", "hardcode"];
 export const STYLE_PACKAGES: readonly { name: string; dir: string; src: string; groups: readonly StyleGroup[] }[] = [
   { name: "magazine", dir: "apps/magazine", src: "src", groups: STYLE_GROUPS },
   { name: "stock", dir: "apps/stock", src: "src", groups: APP_GROUPS },
+  { name: "layouts", dir: "packages/layouts", src: "src", groups: STYLE_GROUPS },
 ];
 const BASELINE_DIR = join("rules", "style-baselines");
 

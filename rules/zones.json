@@ -236,6 +236,23 @@
       ]
     },
     {
+      "name": "@ui8kit/layouts",
+      "dir": "packages/layouts",
+      "runtime": "svelte",
+      "generated": false,
+      "kit": [],
+      "composition": [
+        "src/stock",
+        "src/preview"
+      ],
+      "blockRoot": [
+        "src/stock/stock-header.svelte",
+        "src/stock/filter-bar.svelte",
+        "src/stock/facet-column.svelte",
+        "src/stock/results.svelte"
+      ]
+    },
+    {
       "name": "@ui8kit/taste-screens",
       "dir": "packages/taste-screens",
       "runtime": "svelte",

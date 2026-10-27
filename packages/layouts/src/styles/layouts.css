@@ -1,0 +1,10 @@
+/* @ui8kit/layouts: the one rule Tailwind has no class for. The live preview of a card draws the block at a desktop width and
+   scales it into the 16:10 frame; the frame sets --preview-scale (its width / the stage width) from a ResizeObserver
+   (src/preview/scale.ts). Colours, corners and spacing stay Tailwind token utilities in the markup. The app imports this file and
+   lets Tailwind scan the package: @source "<path to>/packages/layouts/src". */
+.ui8-preview-stage {
+  width: 1280px;
+  transform-origin: 0 0;
+  scale: var(--preview-scale, 0.25);
+  pointer-events: none;
+}

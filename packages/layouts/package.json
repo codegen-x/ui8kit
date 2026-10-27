@@ -1,0 +1,51 @@
+{
+  "name": "@ui8kit/layouts",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Layouts (ADR-0001, the second layer between the prototypes and the apps): the structure of the apps on the UI8Kit primitives and kit-compose compositions, texts and data through props, checked like the prototypes (rules detectors and the four style groups, 8+4 spacing included, zero baseline). Svelte 5 for now. src/stock: the Stock storefront (header, type bar, quick filters, facet column, applied chips, sort, card grid, asset card, preview frame, pagination, theme sheet); src/preview: the live render of a block variant or a screen page from its recipe. Source only: the consumer's Vite compiles it.",
+  "ui8kit": {
+    "runtime": "svelte",
+    "kit": [],
+    "composition": [
+      "src/stock",
+      "src/preview"
+    ],
+    "blockRoot": [
+      "src/stock/stock-header.svelte",
+      "src/stock/filter-bar.svelte",
+      "src/stock/facet-column.svelte",
+      "src/stock/results.svelte"
+    ]
+  },
+  "exports": {
+    ".": {
+      "svelte": "./src/index.ts",
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./preview/recipe": "./src/preview/recipe.ts",
+    "./preview/load": "./src/preview/load.ts",
+    "./stock/text": "./src/stock/text.ts",
+    "./styles/*": "./src/styles/*",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "check": "svelte-check --tsconfig ./tsconfig.json",
+    "test": "bun test src"
+  },
+  "dependencies": {
+    "@codegen-x/svelte-compose": "workspace:*",
+    "@ui8kit/facet-search": "workspace:*"
+  },
+  "peerDependencies": {
+    "svelte": "^5.57.0"
+  },
+  "devDependencies": {
+    "@tsconfig/svelte": "^5.0.8",
+    "@types/bun": "^1.4.2",
+    "svelte": "^5.57.0",
+    "svelte-check": "^4.7.6",
+    "typescript": "~6.0.2"
+  }
+}
