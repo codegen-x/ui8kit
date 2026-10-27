@@ -1,7 +1,7 @@
 // The style rules of the corners, shadows, hardcode and spacing groups, applied to hand-written code outside the specs: the apps
 // (apps/magazine/src, apps/stock/src) and the layouts. Each package names the groups it is checked by (ADR-0001): layouts get all
 // four (8+4 spacing included); an app is brand taste, so a new app gets corners, shadows and hardcode but not spacing. The Magazine
-// keeps the four groups it was recorded with (its baseline is unchanged). Only style text is read: the markup and <style> of .svelte files, .css files, and the string literals of
+// keeps the four groups it was recorded with (its baseline is unchanged). Only style text is read: the markup and <style> of .svelte files, .css files (declarations and @apply lists), and the string literals of
 // .ts files (class strings). Three.js / canvas engine code (packages/panorama) is outside every rule zone (rule 00) and never scanned.
 // Existing violations are recorded per file in rules/style-baselines/<package>.json: more fails, fewer asks for
 // `bun run rules:baseline`, so the list only shrinks.
@@ -41,8 +41,15 @@ function classFindings(t: string): Record<StyleGroup, string[]> {
   };
 }
 
-/** what each group finds in CSS (declarations only) */
-function cssFindings(t: string): Record<StyleGroup, string[]> {
+/** what each group finds in CSS: the declarations, and the utility lists of `@apply` read like class lists (the named classes of
+ *  packages/layouts/src/styles are composed from utilities, so they keep every rule a class list in the markup has) */
+function cssFindings(css: string): Record<StyleGroup, string[]> {
+  const applied = [...css.matchAll(/@apply\s+([^;{}]+);/g)].map((m) => m[1]!).join("\n");
+  const t = css.replace(/@apply\s+[^;{}]+;/g, "");
+  return merge(declFindings(t), applied ? classFindings(applied) : none());
+}
+
+function declFindings(t: string): Record<StyleGroup, string[]> {
   const decl = (prop: RegExp): Array<[string, string]> => [...t.matchAll(/([\w-]+)\s*:\s*([^;{}]+)/g)].filter((m) => prop.test(m[1]!)).map((m) => [m[1]!, m[2]!.trim()]);
   const px = (v: string): number[] => [...v.matchAll(/(-?\d+(?:\.\d+)?)px/g)].map((m) => Math.abs(Number(m[1])));
   return {

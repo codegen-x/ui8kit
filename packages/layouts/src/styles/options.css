@@ -1,0 +1,11 @@
+/* @ui8kit/layouts: the named classes of the two option controls (src/magazine/option-group, option-select), the groups of the
+   Magazine's Filters sheet and of the shared Theme sheet in both apps. See magazine.css for the convention. */
+@layer utilities {
+  .ui8-option-group { @apply w-full min-w-0 py-4 [[data-filter-group]+&]:border-t [[data-filter-group]+&]:border-border; }
+  .ui8-option-legend { @apply mb-2 flex w-full items-baseline justify-between gap-2 text-sm text-foreground; }
+  .ui8-option-count { @apply text-xs font-normal text-muted-foreground; }
+  .ui8-option-list { @apply flex flex-wrap gap-2; }
+  .ui8-option { @apply relative inline-flex h-8 cursor-pointer items-center rounded border border-transparent px-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground has-checked:border-primary has-checked:bg-primary has-checked:text-primary-foreground has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-ring; }
+  .ui8-option-input { @apply absolute inset-0 m-0 size-full cursor-pointer opacity-0; }
+  .ui8-option-select { @apply w-full; }
+}

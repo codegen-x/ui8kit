@@ -1,0 +1,44 @@
+/* @ui8kit/layouts/theme: the named classes of the shared Theme sheet (src/theme) of the Magazine and Stock. See magazine.css for
+   the convention. */
+@layer utilities {
+  .ui8-theme-sheet { @apply my-0 mr-0 ml-auto h-dvh max-h-dvh w-fit max-w-screen overflow-hidden p-0 text-sm leading-normal max-sm:w-screen; }
+  .ui8-theme-sheet-panels { @apply h-full [flex-wrap:nowrap]; }
+  .ui8-theme-panel { @apply h-full min-h-0 w-80 flex-none bg-background *:w-full max-sm:w-screen max-sm:in-data-[wide=1]:hidden; }
+  .ui8-theme-head { @apply flex-none border-b border-border bg-background p-4; }
+  .ui8-theme-note { @apply mt-2 text-sm leading-normal text-muted-foreground; }
+  .ui8-theme-body { @apply min-h-0 flex-auto scroll-py-6 overflow-y-auto overscroll-contain px-4 *:w-full; }
+  .ui8-theme-panel-radius { @apply pb-4; }
+  .ui8-theme-foot { @apply flex-none border-t border-border bg-background p-4; }
+  .ui8-theme-panel-ds { @apply flex-1; }
+  .ui8-ds-panel { @apply h-full min-h-0 w-180 min-w-0 shrink border-r border-border bg-background *:w-full max-sm:w-screen max-sm:max-w-none max-sm:border-r-0; }
+  .ui8-ds-panel-back { @apply sm:hidden; }
+  .ui8-ds-panel-specimen { @apply mb-4; }
+  .ui8-theme-fields { @apply *:w-full; }
+  .ui8-theme-fields-heading { @apply mt-6 leading-normal; }
+  .ui8-theme-io { @apply border-t border-border py-4 *:w-full; }
+  .ui8-theme-io-title { @apply leading-normal; }
+  .ui8-theme-io-note { @apply text-sm leading-normal text-muted-foreground; }
+  .ui8-theme-io-text { @apply min-h-32 font-mono; }
+  .ui8-theme-io-action { @apply gap-2; }
+  .ui8-ds-specimen-frame { @apply flex flex-col gap-8 bg-background p-8 font-sans text-foreground [&_:is(h1,h2,h3,h4,h5,h6)]:font-[family-name:var(--taste-heading,var(--font-sans))]; }
+  .ui8-ds-specimen-section { @apply flex flex-col gap-4; }
+  .ui8-ds-specimen-swatches { @apply flex flex-wrap items-center gap-x-4 gap-y-2; }
+  .ui8-ds-specimen-token { @apply inline-flex items-center gap-2 text-xs leading-normal; }
+  .ui8-ds-specimen-chip { @apply inline-block h-6 w-6 border border-border; }
+  .ui8-ds-specimen-value { @apply text-xs leading-normal text-muted-foreground; }
+  .ui8-ds-specimen-type { @apply grid grid-cols-[10rem_minmax(0,1fr)] items-baseline gap-4; }
+  .ui8-ds-specimen-two { @apply grid grid-cols-2 items-start gap-8; }
+  .ui8-ds-specimen-tile { @apply inline-flex flex-col gap-2; }
+  .ui8-ds-specimen-spacing { @apply flex-wrap; }
+  .ui8-ds-specimen-bar { @apply inline-block h-4 bg-(--primary); }
+  .ui8-ds-specimen-stack { @apply flex flex-col gap-2; }
+  .ui8-ds-specimen-form { @apply grid grid-cols-[repeat(3,minmax(0,1fr))] gap-4; }
+  .ui8-ds-specimen { @apply w-full max-w-300 overflow-hidden rounded border border-border; }
+  .ui8-ds-specimen-h { @apply m-0 leading-6; }
+  .ui8-ds-specimen-label { @apply text-xs leading-4 text-muted-foreground; }
+  .ui8-ds-specimen-mode { @apply w-12 text-xs leading-4 text-muted-foreground; }
+  .ui8-ds-specimen-row { @apply flex flex-wrap items-center gap-4; }
+  .ui8-ds-specimen-danger { @apply bg-card! text-foreground! inset-ring-2! inset-ring-destructive!; }
+  .ui8-ds-specimen-radius { @apply inline-block h-12 w-16 border border-border bg-muted; }
+  .ui8-ds-specimen-radius-on { @apply inline-block h-12 w-16 border border-(--primary) bg-(--primary); }
+}

@@ -13,26 +13,26 @@
   const t = $derived(ctl.value);
 </script>
 
-<Stack gap="0" class="h-full min-h-0 w-80 flex-none bg-background *:w-full max-sm:w-screen max-sm:in-data-[wide=1]:hidden" data-testid="theme-panel">
-  <Box class="flex-none border-b border-border bg-background p-4">
+<Stack gap="0" class="ui8-theme-panel" data-testid="theme-panel">
+  <Box class="ui8-theme-head">
     <Group gap="2" justify="between" align="center">
       <Title as={2} size="base" id={titleId}>{T.title}</Title>
       <Button variant="ghost" size="sm" onclick={() => (ctl.open = false)} data-testid="theme-close">{T.close}</Button>
     </Group>
-    <Text class="mt-2 text-sm leading-normal text-muted-foreground">{T.note}</Text>
+    <Text class="ui8-theme-note">{T.note}</Text>
   </Box>
-  <Stack gap="0" class="min-h-0 flex-auto scroll-py-6 overflow-y-auto overscroll-contain px-4 *:w-full" data-testid="theme-body">
+  <Stack gap="0" class="ui8-theme-body" data-testid="theme-body">
     <ThemeFields {ctl} {text} idp="theme" view="sheet">
       {#snippet afterSite()}
-        <Box class="pb-4">
+        <Box class="ui8-theme-panel-radius">
           <Button variant="outline" size="sm" disabled={t.radius === null} onclick={() => ctl.setTheme({ radius: null })} data-testid="theme-radius-reset">{T.resetRadius}</Button>
         </Box>
       {/snippet}
     </ThemeFields>
     <ThemeIo {ctl} text={T.io} idp="theme" />
   </Stack>
-  <Group gap="2" class="flex-none border-t border-border bg-background p-4">
+  <Group gap="2" class="ui8-theme-foot">
     <Button variant="outline" disabled={isDefault(t)} onclick={() => ctl.reset()} data-testid="theme-reset">{T.resetAll}</Button>
-    <Button class="flex-1" variant={ctl.wide ? "secondary" : "default"} onclick={() => (ctl.wide = !ctl.wide)} data-testid="theme-ds">{ctl.wide ? T.hideDesignSystem : T.designSystem}</Button>
+    <Button class="ui8-theme-panel-ds" variant={ctl.wide ? "secondary" : "default"} onclick={() => (ctl.wide = !ctl.wide)} data-testid="theme-ds">{ctl.wide ? T.hideDesignSystem : T.designSystem}</Button>
   </Group>
 </Stack>

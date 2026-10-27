@@ -2,8 +2,9 @@
      line for an empty one. -->
 <script lang="ts">
   import type { Snippet } from "svelte";
-  import { Box, LinkPlain, Text, Title } from "@codegen-x/svelte-compose";
+  import { Box, LinkPlain, Text } from "@codegen-x/svelte-compose";
   import Page from "./page.svelte";
+  import PageTitle from "./page-title.svelte";
 
   let { id, backLabel, backHref, title, found, count, empty, children }: {
     id: string; backLabel: string; backHref: string; title: string; /** the collection exists */ found: boolean;
@@ -12,16 +13,16 @@
 </script>
 
 <Page data-testid="magazine-collection" data-id={id}>
-  <Text class="mb-2"><LinkPlain href={backHref} class="text-sm leading-normal text-foreground underline-offset-4 hover:underline">{backLabel}</LinkPlain></Text>
+  <Text class="ui8-collection-view-back"><LinkPlain href={backHref} class="ui8-text-link">{backLabel}</LinkPlain></Text>
   {#if !found}
-    <Title as={1} weight="bold" class="mb-4 text-2xl leading-normal wrap-anywhere">{title}</Title>
+    <PageTitle text={title} />
   {:else}
-    <Title as={1} weight="bold" class="mb-4 text-2xl leading-normal wrap-anywhere" data-testid="collection-title">{title}</Title>
-    <Text class="text-sm leading-normal text-muted-foreground" data-testid="collection-count">{count}</Text>
+    <PageTitle text={title} data-testid="collection-title" />
+    <Text class="ui8-collection-view-note" data-testid="collection-count">{count}</Text>
     {#if empty}
-      <Text class="text-sm leading-normal text-muted-foreground" data-testid="collection-empty">{empty}</Text>
+      <Text class="ui8-collection-view-note" data-testid="collection-empty">{empty}</Text>
     {:else if children}
-      <Box class="grid grid-cols-[repeat(auto-fill,minmax(160px,1fr))] gap-4 md:grid-cols-[repeat(auto-fill,minmax(200px,1fr))]">{@render children()}</Box>
+      <Box class="ui8-collection-view-grid">{@render children()}</Box>
     {/if}
   {/if}
 </Page>

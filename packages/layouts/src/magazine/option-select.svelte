@@ -9,7 +9,7 @@
   const id = $derived("filter-" + name);
 </script>
 
-<Box class="w-full min-w-0 py-4 [[data-filter-group]+&]:border-t [[data-filter-group]+&]:border-border" data-filter-group data-testid="filter-group" data-name={name} data-field={field}>
-  <Label for={id} class="mb-2 flex w-full items-baseline justify-between gap-2 text-sm text-foreground"><Text tag="span" weight="semibold">{legend}</Text></Label>
-  <Select {id} {name} size="sm" class="w-full" {options} {value} onchange={(e: Event) => onchange((e.currentTarget as HTMLSelectElement).value)} data-testid={"filter-select-" + name} />
+<Box class="ui8-option-group" data-filter-group data-testid="filter-group" data-name={name} data-field={field}>
+  <Label for={id} class="ui8-option-legend"><Text tag="span" weight="semibold">{legend}</Text></Label>
+  <Select {id} {name} size="sm" class="ui8-option-select" {options} {value} onchange={(e: Event) => onchange((e.currentTarget as HTMLSelectElement).value)} data-testid={"filter-select-" + name} />
 </Box>

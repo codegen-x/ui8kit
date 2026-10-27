@@ -5,8 +5,8 @@
   let { label, links, ...rest }: { label: string; links: Array<{ id: string; href: string; label: string }>; [key: `data-${string}`]: string | number | undefined } = $props();
 </script>
 
-<Box tag="nav" class="mb-6 flex flex-wrap gap-x-4 gap-y-2" aria-label={label} {...rest}>
+<Box tag="nav" class="ui8-link-strip" aria-label={label} {...rest}>
   {#each links as l (l.id)}
-    <LinkPlain href={l.href} class="text-sm leading-normal text-foreground underline-offset-4 hover:underline" data-testid="collection-link">{l.label}</LinkPlain>
+    <LinkPlain href={l.href} class="ui8-text-link" data-testid="collection-link">{l.label}</LinkPlain>
   {/each}
 </Box>

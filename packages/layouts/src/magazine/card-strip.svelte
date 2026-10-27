@@ -7,8 +7,8 @@
   let { title, note = "", label, children, ...rest }: { title: string; note?: string; label?: string; children: Snippet; [key: `data-${string}`]: string | number | undefined } = $props();
 </script>
 
-<Block tag="section" class="mb-8" aria-label={label} {...rest}>
-  <Title as={2} size="base" class="mb-2">{title}</Title>
-  {#if note}<Text class="mb-4 text-sm text-muted-foreground">{note}</Text>{/if}
-  <Box class="flex gap-4 overflow-x-auto pb-2 [scrollbar-width:thin]">{@render children()}</Box>
+<Block tag="section" class="ui8-card-strip" aria-label={label} {...rest}>
+  <Title as={2} size="base" class="ui8-card-strip-title">{title}</Title>
+  {#if note}<Text class="ui8-card-strip-note">{note}</Text>{/if}
+  <Box class="ui8-card-strip-row">{@render children()}</Box>
 </Block>

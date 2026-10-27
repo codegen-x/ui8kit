@@ -38,9 +38,9 @@
   }
 </script>
 
-<Dialog {id} variant="sheet" size="lg" class="my-0 mr-0 ml-auto h-dvh max-h-dvh w-fit max-w-screen overflow-hidden p-0 text-sm leading-normal max-sm:w-screen" aria-labelledby={titleId} {onclose} {onclick} data-testid="theme-sheet">
+<Dialog {id} variant="sheet" size="lg" class="ui8-theme-sheet" aria-labelledby={titleId} {onclose} {onclick} data-testid="theme-sheet">
   {#if ctl.open}
-    <Group gap="0" align="stretch" class="h-full [flex-wrap:nowrap]" data-wide={ctl.wide ? "1" : "0"}>
+    <Group gap="0" align="stretch" class="ui8-theme-sheet-panels" data-wide={ctl.wide ? "1" : "0"}>
       {#if ctl.wide}<DsPanel {ctl} {text} {fallback} />{/if}
       <ThemePanel {ctl} {text} {titleId} />
     </Group>

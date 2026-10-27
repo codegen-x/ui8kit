@@ -25,22 +25,22 @@
   $effect(() => { swatches = { light: skinTokens(skin, false), dark: skinTokens(skin, true) }; });
 </script>
 
-<Stack gap="0" class="h-full min-h-0 w-180 min-w-0 shrink border-r border-border bg-background *:w-full max-sm:w-screen max-sm:max-w-none max-sm:border-r-0" data-testid="ds-panel">
-  <Box class="flex-none border-b border-border bg-background p-4">
+<Stack gap="0" class="ui8-ds-panel" data-testid="ds-panel">
+  <Box class="ui8-theme-head">
     <Group gap="2" justify="between" align="center">
       <Group gap="2" align="center">
-        <Button variant="ghost" size="sm" class="sm:hidden" onclick={() => (ctl.wide = false)} data-testid="ds-back">{T.back}</Button>
+        <Button variant="ghost" size="sm" class="ui8-ds-panel-back" onclick={() => (ctl.wide = false)} data-testid="ds-back">{T.back}</Button>
         <Title as={2} size="base">{T.dsTitle}</Title>
       </Group>
     </Group>
-    <Text class="mt-2 text-sm leading-normal text-muted-foreground">{T.dsNote}</Text>
+    <Text class="ui8-theme-note">{T.dsNote}</Text>
   </Box>
-  <Stack gap="0" class="min-h-0 flex-auto scroll-py-6 overflow-y-auto overscroll-contain px-4 *:w-full" data-testid="ds-body">
+  <Stack gap="0" class="ui8-theme-body" data-testid="ds-body">
     <ThemeFields {ctl} {text} idp="gt" view="design" />
     <ThemeIo {ctl} text={T.io} idp="gt" />
-    <DsSpecimen text={text.design} modes={text.style} idp="gt" {skin} {font} {radius} tokens={swatches} tokenValues={t.tokens} class="mb-4" />
+    <DsSpecimen text={text.design} modes={text.style} idp="gt" {skin} {font} {radius} tokens={swatches} tokenValues={t.tokens} class="ui8-ds-panel-specimen" />
   </Stack>
-  <Group gap="2" class="flex-none border-t border-border bg-background p-4">
+  <Group gap="2" class="ui8-theme-foot">
     <Button variant="outline" disabled={Object.keys(t.tokens).length === 0} onclick={() => ctl.setTheme({ tokens: {} })} data-testid="ds-tokens-reset">{T.dsReset}</Button>
   </Group>
 </Stack>

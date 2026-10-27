@@ -20,6 +20,13 @@ describe("style rules on hand-written code", () => {
     expect(r.hardcode).toEqual(["linear-gradient(", "box-shadow: #000"]);
     expect(r.spacing).toEqual(["gap: 12px"]);
   });
+  test("css @apply: the utility list is read like a class list, the rest as declarations", () => {
+    const r = styleFindings("a.css", `@layer utilities { .ui8-a { @apply flex rounded-lg p-3 md:px-5 bg-red-500 shadow-md; } .ui8-b { @apply rounded gap-x-6 md:px-6; padding: 12px; } }`);
+    expect(r.corners).toEqual(["rounded-lg"]);
+    expect(r.shadows).toEqual(["shadow-md"]);
+    expect(r.hardcode).toEqual(["bg-red-500"]);
+    expect(r.spacing).toEqual(["padding: 12px", "p-3", "px-5"]);
+  });
   test("ts: class strings only, never shader code or numbers", () => {
     const r = styleFindings("a.ts", "const k = 'shadow'; const n = 13; const glsl = `uniform float shadow;\\nfloat r = 3.0;`; el.className = 'rounded-md p-1';");
     expect(r.corners).toEqual(["rounded-md"]);

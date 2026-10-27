@@ -1,0 +1,58 @@
+/* @ui8kit/layouts/magazine: the named classes of the Magazine's layouts (src/magazine). Every class list of that markup lives here as
+   one class per element, composed from Tailwind token utilities with @apply; the markup carries only these names (and the `group`
+   marker), so the app compiles each utility once, here, and no utility of the layouts is emitted a second time next to the app's
+   own stylesheet (where load order, not Tailwind's sort, used to decide a clash). Same tokens, the same 8 + 4 grid (the style
+   groups of `bun run check` read these @apply lists like class lists). Order: after the app's utilities (@layer utilities), so a
+   layout class overrides the kit recipe base of its primitive, as tailwind-merge did. */
+@layer utilities {
+  .ui8-page { @apply mx-auto max-w-440 px-4 pt-20 pb-8 md:px-6 md:pb-12; }
+  .ui8-card-strip { @apply mb-8; }
+  .ui8-card-strip-title { @apply mb-2; }
+  .ui8-card-strip-note { @apply mb-4 text-sm text-muted-foreground; }
+  .ui8-card-strip-row { @apply flex gap-4 overflow-x-auto pb-2 [scrollbar-width:thin]; }
+  .ui8-collection-header { @apply mb-8; }
+  .ui8-collection-header-title { @apply mt-6 mb-2 text-xl leading-normal; }
+  .ui8-collection-header-note { @apply text-sm leading-normal text-muted-foreground; }
+  .ui8-collection-header-picks { @apply mb-4 flex gap-2 overflow-x-auto pb-2 [scrollbar-width:thin]; }
+  .ui8-collection-header-pick { @apply max-w-36 min-w-24 shrink-0 grow basis-24; }
+  .ui8-collection-header-legend { @apply text-sm leading-normal; }
+  .ui8-collection-header-legend-title { @apply mb-2 justify-start py-0 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring; }
+  .ui8-collection-header-legend-list { @apply m-0 grid grid-cols-[repeat(auto-fill,minmax(256px,1fr))] gap-x-6 gap-y-2; }
+  .ui8-collection-header-legend-item { @apply flex flex-col gap-2; }
+  .ui8-collection-header-legend-term { @apply font-semibold first-letter:uppercase; }
+  .ui8-collection-header-legend-meaning { @apply m-0 text-xs leading-4 text-muted-foreground; }
+  .ui8-collection-view-back { @apply mb-2; }
+  .ui8-text-link { @apply text-sm leading-normal text-foreground underline-offset-4 hover:underline; }
+  .ui8-page-title { @apply mb-4 text-2xl leading-normal wrap-anywhere; }
+  .ui8-collection-view-note { @apply text-sm leading-normal text-muted-foreground; }
+  .ui8-collection-view-grid { @apply grid grid-cols-[repeat(auto-fill,minmax(160px,1fr))] gap-4 md:grid-cols-[repeat(auto-fill,minmax(200px,1fr))]; }
+  .ui8-link-strip { @apply mb-6 flex flex-wrap gap-x-4 gap-y-2; }
+  .ui8-feed-insert { @apply mb-8 flex flex-col items-start gap-2 rounded bg-muted p-6 text-foreground; }
+  .ui8-eyebrow { @apply text-xs font-semibold tracking-wider text-muted-foreground uppercase; }
+  .ui8-feed-insert-body { @apply text-sm text-muted-foreground; }
+  .ui8-skin-cell { @apply max-w-120 shrink-0 grow basis-60; }
+  .ui8-taste-bar { @apply mt-4 mb-8 rounded border border-border bg-card p-4 text-card-foreground; }
+  .ui8-taste-bar-head { @apply mb-2 flex-wrap; }
+  .ui8-taste-bar-spacer { @apply flex-1; }
+  .ui8-taste-bar-list { @apply m-0 grid grid-cols-2 gap-x-6 gap-y-2 text-sm sm:grid-cols-[repeat(auto-fill,minmax(200px,1fr))]; }
+  .ui8-taste-bar-value { @apply m-0 wrap-anywhere; }
+  .ui8-filter-sheet { @apply my-0 mr-0 ml-auto h-dvh max-h-dvh w-full max-w-120 overflow-hidden p-0 text-sm not-open:hidden open:flex open:flex-col; }
+  .ui8-filter-sheet-head { @apply flex-none border-b border-border bg-background px-6 py-4; }
+  .ui8-filter-sheet-note { @apply mt-2 text-sm text-muted-foreground; }
+  .ui8-filter-sheet-body { @apply min-h-0 flex-auto scroll-py-6 overflow-y-auto overscroll-contain px-6; }
+  .ui8-filter-sheet-foot { @apply flex-none border-t border-border bg-background px-6 py-4; }
+  .ui8-filter-sheet-apply { @apply flex-1; }
+  .ui8-taste-card-link { @apply flex w-full flex-col gap-2 text-inherit no-underline; }
+  .ui8-taste-card-frame { @apply relative block aspect-4/3 w-full overflow-hidden rounded border border-border group-hover:outline-2 group-hover:outline-offset-2 group-hover:outline-ring group-focus-visible:outline-2 group-focus-visible:outline-offset-2 group-focus-visible:outline-ring; }
+  .ui8-taste-card-skin { @apply absolute inset-0 block bg-background; }
+  .ui8-taste-card-shot { @apply size-full object-cover; }
+  .ui8-taste-card-caption { @apply block min-h-4 truncate text-xs text-muted-foreground; }
+  .ui8-taste-card-why { @apply block truncate text-xs leading-4 text-foreground; }
+  .ui8-taste-card-strip { @apply relative min-w-50 max-w-90 shrink-0 grow basis-50; }
+  .ui8-taste-card-fill { @apply relative w-full min-w-0; }
+  .ui8-taste-card-mini { @apply relative w-full min-w-0 flex-none; }
+  .ui8-heart { @apply inline-flex cursor-pointer items-center justify-center rounded border border-border bg-background text-foreground opacity-90 hover:opacity-100 has-checked:border-primary has-checked:text-primary has-checked:opacity-100 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-ring absolute top-2 right-2 z-10 size-8; }
+  .ui8-heart-big { @apply inline-flex cursor-pointer items-center justify-center rounded border border-border bg-background text-foreground opacity-90 hover:opacity-100 has-checked:border-primary has-checked:text-primary has-checked:opacity-100 has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-ring relative size-10; }
+  .ui8-heart-input { @apply pointer-events-none absolute opacity-0; }
+  .ui8-heart-icon-on { @apply fill-current; }
+}

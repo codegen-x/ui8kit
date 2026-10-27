@@ -1,13 +1,13 @@
 /* Stock: the kit (Tailwind v4 + shadcn neutral tokens), the skins, the layouts. The previews are real blocks of
-   @codegen-x/svelte-compose, whose sources the kit entry already scans; the layouts are scanned here (the
-   shared Theme sheet of layouts/src/theme draws its groups with the two option controls of layouts/src/magazine). */
+   @codegen-x/svelte-compose, whose sources the kit entry already scans; the Stock layouts (layouts/src/stock, src/preview) are
+   scanned here; the shared Theme sheet (layouts/src/theme) and its two option controls (layouts/src/magazine/option-*) carry named
+   classes, composed with @apply in their stylesheets (theme.css, options.css), so they are imported, not scanned. */
 @import "@codegen-x/svelte-compose/styles/index.css";
 @import "@ui8kit/app-shared/styles/skins.css";
 @import "@ui8kit/layouts/styles/layouts.css";
 @import "@ui8kit/layouts/styles/stock.css";
+@import "@ui8kit/layouts/styles/options.css";
+@import "@ui8kit/layouts/styles/theme.css";
 @source "../src";
 @source "../../../packages/layouts/src/stock";
 @source "../../../packages/layouts/src/preview";
-@source "../../../packages/layouts/src/theme";
-@source "../../../packages/layouts/src/magazine/option-group.svelte";
-@source "../../../packages/layouts/src/magazine/option-select.svelte";

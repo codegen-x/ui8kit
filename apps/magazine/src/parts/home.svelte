@@ -1,9 +1,9 @@
 <!-- Home: the recommendation rows for the picks (packages/taste-data/src/recommend), computed in the browser; the page and the
      collection links are @ui8kit/layouts/magazine/page and link-strip. -->
 <script lang="ts">
-  import { Title } from "@codegen-x/svelte-compose";
   import LinkStrip from "@ui8kit/layouts/magazine/link-strip.svelte";
   import Page from "@ui8kit/layouts/magazine/page.svelte";
+  import PageTitle from "@ui8kit/layouts/magazine/page-title.svelte";
   import ui from "../../content/ui.json";
   import type { StyleKey } from "@ui8kit/taste-data/picks";
   import { recommend } from "@ui8kit/taste-data/recommend";
@@ -18,7 +18,7 @@
 
 <Page data-testid="magazine-home">
   <LinkStrip label={ui.collections.heading} {links} data-testid="collections-strip" />
-  <Title as={1} weight="bold" class="mb-4 text-2xl leading-normal wrap-anywhere">{ui.home.heading}</Title>
+  <PageTitle text={ui.home.heading} />
   <CollectionHeader {picks} />
   {#each rows as row, i (i)}
     <Row {row} />

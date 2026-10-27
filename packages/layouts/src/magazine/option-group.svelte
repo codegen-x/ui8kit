@@ -17,15 +17,15 @@
   }
 </script>
 
-<Box class="w-full min-w-0 py-4 [[data-filter-group]+&]:border-t [[data-filter-group]+&]:border-border" role={multiple ? "group" : "radiogroup"} aria-labelledby={labelId} data-filter-group data-testid="filter-group" data-name={name} data-field={field}>
-  <Text tag="span" weight="semibold" class="mb-2 flex w-full items-baseline justify-between gap-2 text-sm text-foreground" id={labelId}>{legend}{#if multiple}<Text tag="span" class="text-xs font-normal text-muted-foreground">{count}</Text>{/if}</Text>
-  <Box class="flex flex-wrap gap-2">
+<Box class="ui8-option-group" role={multiple ? "group" : "radiogroup"} aria-labelledby={labelId} data-filter-group data-testid="filter-group" data-name={name} data-field={field}>
+  <Text tag="span" weight="semibold" class="ui8-option-legend" id={labelId}>{legend}{#if multiple}<Text tag="span" class="ui8-option-count">{count}</Text>{/if}</Text>
+  <Box class="ui8-option-list">
     {#each options as o (o.value)}
-      <Label class="relative inline-flex h-8 cursor-pointer items-center rounded border border-transparent px-2 text-sm text-muted-foreground hover:bg-muted hover:text-foreground has-checked:border-primary has-checked:bg-primary has-checked:text-primary-foreground has-focus-visible:outline-2 has-focus-visible:outline-offset-2 has-focus-visible:outline-ring">
+      <Label class="ui8-option">
         {#if multiple}
-          <Checkbox class="absolute inset-0 m-0 size-full cursor-pointer opacity-0" name={name + "[]"} value={o.value} checked={selected.includes(o.value)} onchange={(e: Event) => toggle(o.value, (e.currentTarget as HTMLInputElement).checked)} />
+          <Checkbox class="ui8-option-input" name={name + "[]"} value={o.value} checked={selected.includes(o.value)} onchange={(e: Event) => toggle(o.value, (e.currentTarget as HTMLInputElement).checked)} />
         {:else}
-          <Radio class="absolute inset-0 m-0 size-full cursor-pointer opacity-0" {name} value={o.value} checked={selected.includes(o.value)} onchange={() => toggle(o.value, true)} />
+          <Radio class="ui8-option-input" {name} value={o.value} checked={selected.includes(o.value)} onchange={() => toggle(o.value, true)} />
         {/if}
         <Text tag="span">{o.label}</Text>
       </Label>

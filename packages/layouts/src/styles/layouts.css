@@ -1,7 +1,9 @@
-/* @ui8kit/layouts: the one rule Tailwind has no class for. The live preview of a card draws the block at a desktop width and
+/* @ui8kit/layouts: the stage rules Tailwind has no class for. The live preview of a card draws the block at a desktop width and
    scales it into the 16:10 frame; the frame sets --preview-scale (its width / the stage width) from a ResizeObserver
-   (src/preview/scale.ts). Colours, corners and spacing stay Tailwind token utilities in the markup. The app imports this file and
-   lets Tailwind scan the package: @source "<path to>/packages/layouts/src". */
+   (src/preview/scale.ts). In src/stock and src/preview colours, corners and spacing stay Tailwind token utilities in the markup
+   (the app lets Tailwind scan them: @source "<path to>/packages/layouts/src/stock", ".../src/preview"); src/magazine and src/theme
+   carry named classes composed from the same token utilities with @apply, in magazine.css, options.css and theme.css next to
+   this file (the app imports them; styles.test.ts). */
 .ui8-preview-stage {
   width: var(--preview-width, 1280px);
   transform-origin: 0 0;

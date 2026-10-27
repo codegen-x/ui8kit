@@ -8,19 +8,19 @@
   } = $props();
 </script>
 
-<Block tag="section" class="mt-4 mb-8 rounded border border-border bg-card p-4 text-card-foreground" aria-label={title} data-testid="taste-bar" data-tuned={tuned ? "1" : "0"}>
-  <Group gap="2" class="mb-2 flex-wrap">
+<Block tag="section" class="ui8-taste-bar" aria-label={title} data-testid="taste-bar" data-tuned={tuned ? "1" : "0"}>
+  <Group gap="2" class="ui8-taste-bar-head">
     <Text tag="span" weight="semibold">{title}</Text>
-    {#if tuned}<Text tag="span" class="text-xs font-semibold tracking-wider text-muted-foreground uppercase">{tunedLabel}</Text>{/if}
-    <Box class="flex-1" />
+    {#if tuned}<Text tag="span" class="ui8-eyebrow">{tunedLabel}</Text>{/if}
+    <Box class="ui8-taste-bar-spacer" />
     <Button size="sm" onclick={onfilters} data-testid="taste-filters">{filtersLabel}</Button>
     <Button size="sm" variant="outline" disabled={!tuned} onclick={onreset} data-testid="taste-reset">{resetLabel}</Button>
   </Group>
-  <Box tag="dl" class="m-0 grid grid-cols-2 gap-x-6 gap-y-2 text-sm sm:grid-cols-[repeat(auto-fill,minmax(200px,1fr))]">
+  <Box tag="dl" class="ui8-taste-bar-list">
     {#each items as item (item.id)}
       <Box>
         <Box tag="dt">{item.label}</Box>
-        <Box tag="dd" class="m-0 wrap-anywhere">{item.value}</Box>
+        <Box tag="dd" class="ui8-taste-bar-value">{item.value}</Box>
       </Box>
     {/each}
   </Box>

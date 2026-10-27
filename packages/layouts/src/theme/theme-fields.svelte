@@ -33,10 +33,10 @@
   const starts = (i: number) => rows[i]!.field.group !== "site" && rows[i]!.field.group !== rows[i - 1]?.field.group;
 </script>
 
-<Stack gap="0" class="*:w-full" data-testid={idp + "-fields"} data-view={view}>
+<Stack gap="0" class="ui8-theme-fields" data-testid={idp + "-fields"} data-view={view}>
   {#each rows as r, i (r.field.id)}
     {#if starts(i)}
-      <Title as={3} size="sm" class="mt-6 leading-normal">{heading(r.field.group)}</Title>
+      <Title as={3} size="sm" class="ui8-theme-fields-heading">{heading(r.field.group)}</Title>
       {#if r.field.group === "density"}
         <OptionGroup name={idp + "-density"} field="density-all" legend={T.densityAll} multiple={false} options={DENSITIES.map((d) => ({ value: d, label: pos(d) }))} selected={density ? [density] : []} onchange={(v) => ctl.setTheme({ tokens: setDensity(t.tokens, v[0] as Density) })} />
       {/if}

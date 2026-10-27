@@ -6,4 +6,4 @@
   let { children, ...rest }: { children: Snippet; [key: `data-${string}`]: string | number | undefined } = $props();
 </script>
 
-<Block tag="main" id="main-content" class="mx-auto max-w-440 px-4 pt-20 pb-8 md:px-6 md:pb-12" {...rest}>{@render children()}</Block>
+<Block tag="main" id="main-content" class="ui8-page" {...rest}>{@render children()}</Block>

@@ -11,7 +11,7 @@
   } = $props();
 </script>
 
-<Stack gap="2" class="max-w-120 shrink-0 grow basis-60">
+<Stack gap="2" class="ui8-skin-cell">
   {@render children()}
   <Button variant={current ? "secondary" : "outline"} size="sm" disabled={current} onclick={onapply} data-testid="apply-skin" data-skin={skin} data-chrome-corner>{current ? appliedLabel : applyLabel}</Button>
 </Stack>

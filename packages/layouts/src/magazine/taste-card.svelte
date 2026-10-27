@@ -19,7 +19,7 @@
   } = $props();
 
   const id = "taste-shot-" + ++next;
-  const cell = $derived(fit === "strip" ? "relative min-w-50 max-w-90 shrink-0 grow basis-50" : fit === "fill" ? "relative w-full min-w-0" : "relative w-full min-w-0 flex-none");
+  const cell = $derived(fit === "strip" ? "ui8-taste-card-strip" : fit === "fill" ? "ui8-taste-card-fill" : "ui8-taste-card-mini");
   $effect(() => {
     const el = document.getElementById(id);
     if (!el) return;
@@ -28,19 +28,19 @@
 </script>
 
 <Box class={cell}>
-  <LinkPlain {href} class="group flex w-full flex-col gap-2 text-inherit no-underline" aria-label={label} data-testid="card" data-key={styleKey} data-live={live ? "1" : "0"} data-shot={shot ? "1" : "0"}>
-    <Box tag="span" {id} class="relative block aspect-4/3 w-full overflow-hidden rounded border border-border group-hover:outline-2 group-hover:outline-offset-2 group-hover:outline-ring group-focus-visible:outline-2 group-focus-visible:outline-offset-2 group-focus-visible:outline-ring" data-own-design>
-      <Box tag="span" class="absolute inset-0 block bg-background" data-skin={skin}>
+  <LinkPlain {href} class="group ui8-taste-card-link" aria-label={label} data-testid="card" data-key={styleKey} data-live={live ? "1" : "0"} data-shot={shot ? "1" : "0"}>
+    <Box tag="span" {id} class="ui8-taste-card-frame" data-own-design>
+      <Box tag="span" class="ui8-taste-card-skin" data-skin={skin}>
         {#if shot}
-          <Image src={shot} alt="" draggable="false" class="size-full object-cover" />
+          <Image src={shot} alt="" draggable="false" class="ui8-taste-card-shot" />
         {:else if live && stage}
           <Box tag="span" class="ui8-taste-stage" inert aria-hidden="true" data-testid="card-live">{@render stage()}</Box>
         {/if}
       </Box>
     </Box>
     {#if fit !== "mini"}
-      <Text tag="span" class="block min-h-4 truncate text-xs text-muted-foreground">{caption}</Text>
-      {#if why}<Text tag="span" class="block truncate text-xs leading-4 text-foreground" data-testid="why">{why}</Text>{/if}
+      <Text tag="span" class="ui8-taste-card-caption">{caption}</Text>
+      {#if why}<Text tag="span" class="ui8-taste-card-why" data-testid="why">{why}</Text>{/if}
     {/if}
   </LinkPlain>
   {#if fit !== "mini" && heart}{@render heart()}{/if}

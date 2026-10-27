@@ -23,14 +23,14 @@
   }
 </script>
 
-<Stack gap="2" class="border-t border-border py-4 *:w-full" data-testid={idp + "-io"}>
-  <Title as={3} size="sm" class="leading-normal">{text.title}</Title>
-  <Text class="text-sm leading-normal text-muted-foreground">{text.note}</Text>
+<Stack gap="2" class="ui8-theme-io" data-testid={idp + "-io"}>
+  <Title as={3} size="sm" class="ui8-theme-io-title">{text.title}</Title>
+  <Text class="ui8-theme-io-note">{text.note}</Text>
   <Label for={idp + "-io-text"}><Text tag="span" weight="semibold">{text.label}</Text></Label>
-  <Textarea id={idp + "-io-text"} rows={8} class="min-h-32 font-mono text-xs leading-4" {value} placeholder={text.placeholder} oninput={(e: Event) => (value = (e.currentTarget as HTMLTextAreaElement).value)} data-testid={idp + "-io-text"} />
+  <Textarea id={idp + "-io-text"} rows={8} class="ui8-theme-io-text" {value} placeholder={text.placeholder} oninput={(e: Event) => (value = (e.currentTarget as HTMLTextAreaElement).value)} data-testid={idp + "-io-text"} />
   <Group gap="2">
-    <Button variant="outline" size="sm" class="gap-2" onclick={copy} data-testid={idp + "-export"}><LucideIcon name="copy" size={16} />{text.export}</Button>
-    <Button size="sm" class="gap-2" disabled={!value.trim()} onclick={load} data-testid={idp + "-import"}><LucideIcon name="upload" size={16} />{text.import}</Button>
+    <Button variant="outline" size="sm" class="ui8-theme-io-action" onclick={copy} data-testid={idp + "-export"}><LucideIcon name="copy" size={16} />{text.export}</Button>
+    <Button size="sm" class="ui8-theme-io-action" disabled={!value.trim()} onclick={load} data-testid={idp + "-import"}><LucideIcon name="upload" size={16} />{text.import}</Button>
   </Group>
-  <Text class="text-sm leading-normal text-muted-foreground" role="status" data-testid={idp + "-io-status"}>{message}</Text>
+  <Text class="ui8-theme-io-note" role="status" data-testid={idp + "-io-status"}>{message}</Text>
 </Stack>

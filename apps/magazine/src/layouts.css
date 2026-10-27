@@ -1,10 +1,11 @@
-/* The utilities of the Magazine's layouts (@ui8kit/layouts/magazine, and the shared Theme sheet of @ui8kit/layouts/theme) and their one rule (layouts.css), injected like magazine.css as
-   a <style data-snapshot-skip> (main.ts): the document CSS (app.css) stays Discovery's byte for byte, so the snapshot cache keys
-   stay shared (bun run css-parity). Theme tokens by reference only: nothing of the kit's theme or base is emitted twice. */
+/* The styles of the Magazine's layouts (@ui8kit/layouts/magazine and the shared Theme sheet of @ui8kit/layouts/theme), injected like
+   magazine.css as a <style data-snapshot-skip> (main.ts): the document CSS (app.css) stays Discovery's byte for byte, so the snapshot
+   cache keys stay shared (bun run css-parity). The layouts carry named classes composed from token utilities with @apply
+   (packages/layouts/src/styles), so this sheet emits no bare utility: each utility the page uses exists once, in app.css or inside
+   one named class, and no load order decides between two copies (packages/layouts/src/styles/styles.test.ts). Theme tokens by
+   reference only: nothing of the kit's theme or base is emitted twice. */
 @reference "@codegen-x/svelte-compose/styles/theme.css";
-@import "tailwindcss/utilities" layer(utilities) source(none);
-@source "../../../packages/layouts/src/magazine";
-@source "../../../packages/layouts/src/theme";
-/* the theme sheet names the field group `shadow` in its script: not a utility of the Magazine's markup */
-@source not inline("shadow");
 @import "@ui8kit/layouts/styles/layouts.css";
+@import "@ui8kit/layouts/styles/magazine.css";
+@import "@ui8kit/layouts/styles/options.css";
+@import "@ui8kit/layouts/styles/theme.css";
