@@ -33,7 +33,9 @@
     "more": "Mostrar {n} más",
     "less": "Mostrar menos",
     "hide": "Ocultar filtros",
-    "show": "Mostrar filtros"
+    "show": "Mostrar filtros",
+    "find": "Buscar en {facet}",
+    "nomatch": "Ningún valor coincide con «{q}»"
   },
   "results": {
     "region": "Resultados",

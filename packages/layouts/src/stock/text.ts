@@ -9,7 +9,8 @@ export type StockText = {
   search: { label: string; placeholder: string; submit: string; suggest: string; searchFor: string; count: string; asset: string; hint: string };
   header: { actions: string; collections: string; compare: string; theme: string; locale: string; soon: string };
   filters: { region: string; types: string; all: string; quick: string };
-  facets: { region: string; title: string; toggle: string; draft: string; soft: string; more: string; less: string; hide: string; show: string };
+  /** `find`: the field of a large facet ({facet}); `nomatch` none of its values matches ({q}) */
+  facets: { region: string; title: string; toggle: string; draft: string; soft: string; more: string; less: string; hide: string; show: string; find: string; nomatch: string };
   /** `refine`: the row of narrowing suggestions; `tips` what to try when nothing matches; `clear` every filter off; `browse` the
    *  row of popular values under an empty result */
   results: {
