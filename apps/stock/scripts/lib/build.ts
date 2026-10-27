@@ -249,12 +249,16 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
 
   // hide the facets that do not discriminate: no asset carries a label, or every asset the facet applies to carries the same labels
   const hidden: NonNullable<Index["hidden"]> = { facets: [], values: [] };
+  const shared: NonNullable<Index["shared"]> = [];
   facets = all.filter((f) => {
     if (f.derive === "type" || f.derive === "markup") return true;
     const of = raws.filter((r) => applies(f, r.type));
     const sets = new Set(of.map((r) => JSON.stringify(r.labels[f.id] ?? [])));
     const reason = !of.some((r) => (r.labels[f.id]?.length ?? 0) > 0) ? "empty" : sets.size === 1 ? "uniform" : null;
     if (reason) hidden.facets.push({ facet: f.id, reason });
+    // a uniform facet still says something true of every asset (all of them render in the same runtimes): kept as a shared fact
+    const same = of[0]?.labels[f.id] ?? [];
+    if (reason === "uniform" && same.length) shared.push({ facet: f.id, label: f.label, values: f.values.filter((v) => same.includes(v.id)).map((v) => ({ id: v.id, label: v.label })) });
     return !reason;
   });
   for (const r of raws) for (const h of hidden.facets) delete r.labels[h.facet];
@@ -273,9 +277,9 @@ export function build(vocab: Vocabulary = loadVocabulary()): Built {
   const counts: Record<string, number> = {};
   for (const a of assets) counts[a.type] = (counts[a.type] ?? 0) + 1;
   counts["blockSpecs"] = blocks.length;
-  const body = { version: vocab.version, counts, facets: shown, hidden, quick, sorts: vocab.sorts, assets };
+  const body = { version: vocab.version, counts, facets: shown, hidden, shared, quick, sorts: vocab.sorts, assets };
   const digest = "sha256:" + createHash("sha256").update(JSON.stringify(body)).digest("hex");
-  const index: Index = { version: body.version, digest, counts, facets: shown, hidden, quick, sorts: body.sorts, assets };
+  const index: Index = { version: body.version, digest, counts, facets: shown, hidden, shared, quick, sorts: body.sorts, assets };
   const previews: Previews = { version: vocab.version, blocks: recipes, screens: screenRecipes };
 
   // the Codex collections the previews read, as lazy imports of @ui8kit/app-shared/data/<collection>
