@@ -24,4 +24,14 @@ role, character, mood, industry. Industry is a soft facet: it ranks, never filte
 skin and at any radius). Each asset lists its `weak` facets and the `missing` ones (what still needs labelling); the labelling state facet
 (`markup`) is derived from them.
 
-Steps of the plan: S0 the frame (header with the search, empty results); S1 the index.
+## Search (S2)
+
+`src/lib/search.ts`: `prepare(index)` once, then `search(engine, state)`, a pure function (the browser now, a server or an MCP tool
+later) modelled on `@ui8kit/taste-data/search`: OR within a facet, AND across facets, disjunctive counts (a facet's counts ignore its
+own selection), word-prefix text search with field weights (titles, block, group, slots, and the names and synonyms of the labels),
+sorts (catalog, relevance, name, unlabelled first) and `relaxations()` for a zero result (which filter to drop and what it gives).
+Variants of one block collapse into one card unless `variants=all`; the counts then count cards. `src/lib/query.ts` is the state
+and its canonical URL (`#/search?q=…&job=hero,pricing&density=airy&spec=…&variants=all&sort=name`, facets and values in vocabulary
+order, unknown keys and values dropped).
+
+Steps of the plan: S0 the frame (header with the search, empty results); S1 the index; S2 the search engine.
