@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="en" class="dark" data-theme="dark" style="color-scheme: dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="data:," />
+    <title>Stock</title>
+    <script>
+      // no-flash theme: the saved choice of the kit theme toggle (codegen-x-theme; the pre-rename xgen-theme as a fallback), else dark
+      try {
+        var t = localStorage.getItem("codegen-x-theme") || localStorage.getItem("xgen-theme");
+        if (t === "light") { var r = document.documentElement; r.classList.remove("dark"); r.dataset.theme = "light"; r.style.colorScheme = "light"; }
+      } catch (e) {}
+    </script>
+  </head>
+  <body>
+    <div id="app"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

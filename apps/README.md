@@ -10,12 +10,13 @@ generated part of each is `gen/`, checked by `bun run check`):
 | `host-vue` | Vue 3 | 5182 | `http://127.0.0.1:5182/<screen>/#/<route>` |
 | `host-solid` | Solid | 5183 | `http://127.0.0.1:5183/<screen>/#/<route>` |
 
-Two hand-written apps sit next to them (not generated, not drift-checked; neither has an `compose-gen.app.json`), both on `@codegen-x/svelte-compose`:
+Three hand-written apps sit next to them (not generated, not drift-checked; none has an `compose-gen.app.json`), all on `@codegen-x/svelte-compose`:
 
 | app | runtime | port | what |
 |---|---|---|---|
 | `discovery` | Svelte 5 + Three.js | 5183 (dev), 5184 (preview) | a panorama of taste screens on a sphere: `bun run dev` in `apps/discovery`; `#/screen/<id>` shows one screen live |
 | `magazine` | Svelte 5 + Three.js | 5185 (dev), 5186 (preview) | the journal of a visitor's taste, served at `/magazine/` on the same origin as `/discovery/`: recommendation rows for the 10 styles picked in Discovery (`?cards=recommend`), the rotating sphere when opened without picks. Flow checks: `bun run e2e:feed`, `bun run e2e:persist` against a running server (`MAG_BASE`). See `plan/MAGAZINE.md` |
+| `stock` | Svelte 5 | 5187 (dev), 5188 (preview) | a stock-site storefront over the blocks, sections, screens and skins, served at `/stock/`: search, type bar, facet column with counts, a grid of real previews. See `apps/stock/README.md` |
 
 Note: `host-solid` and the Discovery dev server both default to port 5183; run one of them at a time.
 

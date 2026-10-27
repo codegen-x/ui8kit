@@ -1,0 +1,16 @@
+{
+  "$comment": "Recorded style violations (groups corners, shadows, hardcode, spacing of bun run check) of hand-written code, per group and file. New ones fail; regenerate with: bun run rules:baseline",
+  "package": "apps/stock",
+  "totals": {
+    "corners": 0,
+    "shadows": 0,
+    "hardcode": 0,
+    "spacing": 0
+  },
+  "counts": {
+    "corners": {},
+    "shadows": {},
+    "hardcode": {},
+    "spacing": {}
+  }
+}

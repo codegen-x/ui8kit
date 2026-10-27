@@ -13,6 +13,7 @@ export type StyleGroup = (typeof STYLE_GROUPS)[number];
 /** the hand-written packages under the style rules: name (the baseline file), package dir, scanned dir */
 export const STYLE_PACKAGES = [
   { name: "magazine", dir: "apps/magazine", src: "src" },
+  { name: "stock", dir: "apps/stock", src: "src" },
 ] as const;
 const BASELINE_DIR = join("rules", "style-baselines");
 

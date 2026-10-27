@@ -1,0 +1,15 @@
+{
+  "brand": "Stock",
+  "search": {
+    "label": "Search the catalog",
+    "placeholder": "Search blocks, sections, screens and skins",
+    "submit": "Search"
+  },
+  "theme": {
+    "toggle": "Dark mode"
+  },
+  "results": {
+    "empty": "Nothing to show yet: the catalog index is built in the next step.",
+    "region": "Results"
+  }
+}

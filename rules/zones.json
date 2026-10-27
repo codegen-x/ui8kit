@@ -107,6 +107,22 @@
       ]
     },
     {
+      "name": "stock",
+      "dir": "apps/stock",
+      "runtime": "svelte",
+      "generated": false,
+      "kit": [
+        "src/lib"
+      ],
+      "composition": [
+        "src/App.svelte",
+        "src/parts"
+      ],
+      "blockRoot": [
+        "src/App.svelte"
+      ]
+    },
+    {
       "name": "@codegen-x/react-compose",
       "dir": "packages/kit-compose/react",
       "runtime": "react",
