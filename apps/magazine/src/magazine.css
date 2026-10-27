@@ -14,9 +14,6 @@
 .mg-h1 { font-size: 24px; font-weight: 700; margin: 0 0 16px; overflow-wrap: anywhere; }
 .mg-h2 { font-size: 16px; font-weight: 600; margin: 24px 0 8px; }
 .mg-note { color: var(--muted-foreground); font-size: 14px; }
-.mg-tokens { display: grid; grid-template-columns: max-content 1fr; gap: 4px 16px; font-size: 14px; }
-.mg-tokens dt { color: var(--muted-foreground); }
-.mg-tokens dd { margin: 0; }
 .mg-live { position: absolute; left: 0; top: 0; width: 1440px; height: 1080px; transform-origin: 0 0; pointer-events: none; }
 .mg-stage { z-index: 12; background: var(--background); will-change: transform; transform-origin: 50% 50%; }
 .mg-stage[data-phase="ball"], .mg-stage[data-phase="flying"], .mg-stage[data-phase="expanding"] { cursor: default; }
@@ -41,14 +38,7 @@
 .mg-big { position: relative; width: 100%; max-width: 1200px; overflow: hidden; border-radius: var(--radius); border: 1px solid var(--border); background: var(--background); box-sizing: border-box; }
 .mg-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 16px; }
 .mg-pattern { margin: 0 0 4px; font-size: 16px; }
-.mg-swatches { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin: 0 0 8px; }
-.mg-swatch-mode { width: 48px; font-size: 12px; color: var(--muted-foreground); }
-.mg-swatch { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; }
-.mg-chip { width: 20px; height: 20px; border-radius: 4px; border: 1px solid var(--border); display: inline-block; }
-.mg-swatch code, .mg-radius code, .mg-note code { font-size: 12px; }
-.mg-specimen { margin: 0 0 8px; font-size: 20px; display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
-.mg-radius { display: flex; align-items: center; gap: 12px; margin: 0; }
-.mg-radius-box { width: 56px; height: 40px; border: 2px solid var(--foreground); border-right: 0; border-bottom: 0; display: inline-block; box-sizing: border-box; }
+.mg-note code { font-size: 12px; }
 .mg-pre { background: var(--card); color: var(--card-foreground); border: 1px solid var(--border); border-radius: var(--radius); padding: 12px 16px; font-size: 12px; overflow: auto; max-width: 720px; }
 .mg-header { background: var(--background); border-bottom: 1px solid var(--border); }
 .mg-header[data-phase="empty"], .mg-header[data-phase="search"], .mg-header[data-phase="expanding"] { background: transparent; border-bottom-color: transparent; }
@@ -95,31 +85,7 @@
 .mg-choice-own { opacity: 0.85; font-size: 12px; }
 .mg-choice-dot { width: 16px; height: 16px; border-radius: 50%; display: inline-block; background: var(--primary); border: 1px solid var(--border); }
 .mg-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; margin: 0 0 16px; }
-.ds-box { width: 100%; max-width: 1200px; border-radius: var(--radius); border: 1px solid var(--border); overflow: hidden; box-sizing: border-box; }
-.ds-frame { font-family: var(--font-sans); background: var(--background); color: var(--foreground); padding: 32px; display: flex; flex-direction: column; gap: 32px; }
-.ds-frame :is(h1, h2, h3, h4, h5, h6) { font-family: var(--taste-heading, var(--font-sans)); }
-.ds-block { display: flex; flex-direction: column; gap: 16px; }
-.ds-two { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px; align-items: start; }
-.ds-h { margin: 0; font-size: 16px; line-height: 24px; font-weight: 600; }
-.ds-label { font-size: 12px; line-height: 16px; color: var(--muted-foreground); }
-.ds-swatches { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
-.ds-swatches .ds-label { width: 48px; }
-.ds-swatch { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; }
-.ds-swatch code { font-size: 12px; color: var(--muted-foreground); }
-.ds-chip { width: 24px; height: 24px; border-radius: 4px; border: 1px solid var(--border); display: inline-block; }
-.ds-type { display: grid; grid-template-columns: 160px minmax(0, 1fr); gap: 16px; align-items: baseline; }
-.ds-row { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; }
-.ds-radius, .ds-space { display: inline-flex; flex-direction: column; gap: 8px; }
-.ds-radius-box { width: 64px; height: 48px; background: var(--muted); border: 1px solid var(--border); display: inline-block; box-sizing: border-box; }
-.ds-radius-box.ds-on { background: var(--primary); border-color: var(--primary); }
-.ds-bars { align-items: flex-end; }
-.ds-bar { height: 16px; background: var(--primary); display: inline-block; }
-.ds-stack { display: flex; flex-direction: column; gap: 8px; }
-.ds-form { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-.ds-field { display: flex; flex-direction: column; gap: 8px; }
-/* Destructive samples: the kit paints white (or the destructive colour) on the destructive colour, which fails AA on some skins. The specimen keeps the signal in the ring and puts the text on the card colour, which every skin already measures. */
-.ds-frame .ds-danger { background: var(--card) !important; color: var(--foreground) !important; box-shadow: inset 0 0 0 2px var(--destructive) !important; }
-/* Home: the collection header, the picks strip, the why line and its legend */
+.ds-radius { display: inline-flex; flex-direction: column; gap: 8px; }
 /* Search (#/search) */
 .mg-sbar { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; margin: 16px 0; }
 .mg-field { display: flex; flex-direction: column; gap: 4px; }
@@ -161,51 +127,14 @@
 .mg-tile { flex-direction: column; align-items: center; gap: 8px; padding: 12px 16px; min-width: 96px; }
 .mg-tile-box { width: 48px; height: 32px; box-sizing: border-box; border: 2px solid currentColor; border-right: 0; border-bottom: 0; display: inline-block; }
 .mg-tile[data-default="1"] { border-style: dashed; border-width: 2px; }
-.ds-rows { display: flex; flex-direction: column; gap: 8px; margin: 0 0 16px; }
-.ds-ctl { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
-.ds-ctl-name { width: 64px; font-size: 14px; font-weight: 600; }
 
 /* ---- the tuned feed (src/feed): taste bar, sections, inserts, the Filters sheet ---- */
 /* the apply button wears its card's skin (colours) but the corner of the chrome (data-chrome-corner of @ui8kit/layouts/magazine/skin-cell) */
 [data-chrome-corner] { --radius: var(--mg-frame-radius); }
 .mg-more { display: flex; justify-content: center; padding: 16px 0 32px; }
-dialog.mg-sheet { margin: 0 0 0 auto; height: 100dvh; max-height: 100dvh; width: min(480px, 100vw); max-width: 100vw; padding: 0; overflow: hidden; }
-dialog.mg-sheet[open] { display: flex; flex-direction: column; }
-/* the kit Dialog carries `flex`, which would keep a closed dialog on screen */
-dialog.mg-sheet:not([open]) { display: none; }
-.mg-sheet-head { flex: none; padding: 16px 24px; border-bottom: 1px solid var(--border); background: var(--background); }
-.mg-sheet-head .mg-h2, .mg-sheet-head .mg-note { margin: 0; }
-.mg-sheet-head .mg-note { margin-top: 8px; }
-.mg-sheet-body { flex: 1 1 auto; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 0 24px; scroll-padding: 24px 0; }
-.mg-sheet-foot { flex: none; padding: 16px 24px; border-top: 1px solid var(--border); background: var(--background); }
-.mg-grow { flex: 1; }
-dialog.mg-sheet { font-size: 14px; }
-dialog.mg-sheet .mg-h2 { font-size: 16px; }
 
 /* ---- the global Theme sheet (src/theme): two panels flush side by side in one dialog; narrow screens show one at a time ---- */
-dialog.mg-tsheet { width: fit-content; max-width: 100vw; }
-.mg-tpanel > *, .mg-tpanel .mg-sheet-body > *, .ds-tokens > * { width: 100%; box-sizing: border-box; }
-.mg-tpanels { height: 100%; flex-wrap: nowrap; }
-.mg-tpanel { height: 100%; min-height: 0; background: var(--background); }
-.mg-tpanel-narrow { width: 320px; flex: none; }
-.mg-tpanel-wide { width: min(720px, calc(100vw - 320px)); flex: none; border-right: 1px solid var(--border); }
-.mg-tpanel .mg-sheet-head, .mg-tpanel .mg-sheet-body, .mg-tpanel .mg-sheet-foot { padding-left: 16px; padding-right: 16px; }
-.mg-back { display: none; }
-.mg-treset { padding: 0 0 16px; }
-/* the fields of the theme (theme/theme-fields.svelte) and its export/import (theme/theme-io.svelte), in both panels and the style page */
-.mg-tfields > *, .mg-tio > * { width: 100%; box-sizing: border-box; }
-.mg-tfields > .mg-h3 { margin: 24px 0 0; }
-.mg-tio { padding: 16px 0; border-top: 1px solid var(--border); }
-.mg-tio .mg-h3, .mg-tio .mg-note { margin: 0; }
-.mg-tio-text { min-height: 128px; font-family: var(--font-mono, monospace); font-size: 12px; line-height: 16px; }
-.mg-tio [data-slot=button] { gap: 8px; }
-.mg-tpanel-wide .ds-rows, .mg-tpanel-wide .ds-box { margin-bottom: 16px; }
-@media (max-width: 640px) {
-  dialog.mg-tsheet { width: 100vw; }
-  .mg-tpanel-narrow, .mg-tpanel-wide { width: 100vw; border-right: 0; }
-  .mg-tpanels[data-wide="1"] .mg-tpanel-narrow { display: none; }
-  .mg-back { display: inline-flex; }
-}
+.ds-tokens > * { width: 100%; box-sizing: border-box; }
 
 /* ---- layer boundary: a style (feed card: data-own-design of @ui8kit/layouts/magazine/taste-card, style page) shows its own design; the global per-element tokens stop here ---- */
 [data-own-design], .mg-own {

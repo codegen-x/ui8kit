@@ -2,21 +2,21 @@
   "$comment": "Recorded style violations (groups corners, shadows, hardcode, spacing of bun run check) of hand-written code, per group and file. New ones fail; regenerate with: bun run rules:baseline",
   "package": "apps/magazine",
   "totals": {
-    "corners": 5,
+    "corners": 3,
     "shadows": 2,
     "hardcode": 0,
-    "spacing": 21
+    "spacing": 18
   },
   "counts": {
     "corners": {
-      "src/magazine.css": 5
+      "src/magazine.css": 3
     },
     "shadows": {
       "src/magazine.css": 2
     },
     "hardcode": {},
     "spacing": {
-      "src/magazine.css": 21
+      "src/magazine.css": 18
     }
   }
 }
