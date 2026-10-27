@@ -17,7 +17,11 @@
       "src/stock/stock-header.svelte",
       "src/stock/filter-bar.svelte",
       "src/stock/facet-column.svelte",
-      "src/stock/results.svelte"
+      "src/stock/results.svelte",
+      "src/stock/detail/detail-main.svelte",
+      "src/stock/detail/device-preview.svelte",
+      "src/stock/detail/passport.svelte",
+      "src/stock/detail/similar-row.svelte"
     ]
   },
   "exports": {
@@ -27,6 +31,7 @@
       "default": "./src/index.ts"
     },
     "./magazine/*": "./src/magazine/*",
+    "./preview/device": "./src/preview/device.ts",
     "./preview/load": "./src/preview/load.ts",
     "./preview/nav": "./src/preview/nav.ts",
     "./preview/recipe": "./src/preview/recipe.ts",

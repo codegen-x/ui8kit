@@ -23,3 +23,23 @@
   scale: var(--shot-scale, 0.1667);
   pointer-events: none;
 }
+
+/* The device frame of the Stock detail page (src/preview/device.ts): the frame document at the device's own size, scaled to the room
+   the page offers; the host takes the scaled size, so the page flows around it. */
+.ui8-device {
+  position: relative;
+  overflow: hidden;
+  margin-inline: auto;
+  width: calc(var(--device-width, 1280px) * var(--device-scale, 1));
+  height: calc(var(--device-height, 800px) * var(--device-scale, 1));
+}
+.ui8-device-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: var(--device-width, 1280px);
+  height: var(--device-height, 800px);
+  border: 0;
+  transform-origin: 0 0;
+  scale: var(--device-scale, 1);
+}

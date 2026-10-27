@@ -1,0 +1,28 @@
+/* @ui8kit/layouts/detail: the named classes of the Stock detail page (src/stock/detail). See magazine.css for the convention: one
+   class per element, an @apply list of token utilities, the markup carries only these names; the device frame itself is plain CSS
+   in layouts.css (.ui8-device, .ui8-device-screen). */
+@layer utilities {
+  .ui8-detail-frame { @apply min-h-screen bg-background text-foreground; }
+  .ui8-detail { @apply mx-auto w-full max-w-screen-2xl px-4 pt-8 pb-16; }
+  .ui8-detail-head { @apply flex-wrap; }
+  .ui8-detail-title { @apply min-w-0 wrap-anywhere; }
+  .ui8-detail-subtitle { @apply text-muted-foreground; }
+  .ui8-detail-preview-bar { @apply flex-wrap; }
+  .ui8-detail-preview-controls { @apply flex-wrap; }
+  .ui8-detail-segments { @apply gap-2; }
+  .ui8-detail-legend { @apply sr-only; }
+  .ui8-detail-segment { @apply relative inline-flex h-8 cursor-pointer items-center gap-2 rounded px-4 text-sm font-medium inset-ring inset-ring-border has-checked:bg-primary has-checked:text-primary-foreground has-checked:inset-ring-primary has-focus-visible:ring-2 has-focus-visible:ring-ring; }
+  .ui8-detail-segment-input { @apply pointer-events-none absolute opacity-0; }
+  .ui8-detail-segment-text { @apply max-md:sr-only; }
+  .ui8-detail-stage { @apply overflow-hidden rounded bg-muted py-4 inset-ring inset-ring-border; }
+  .ui8-passport-grid { @apply gap-8; }
+  .ui8-passport-links { @apply flex flex-col gap-2; }
+  .ui8-passport-link { @apply flex flex-wrap items-baseline gap-2; }
+  .ui8-passport-muted { @apply text-muted-foreground; }
+  .ui8-passport-facets { @apply grid grid-cols-1 gap-x-4 gap-y-2 sm:grid-cols-3; }
+  .ui8-passport-facet { @apply flex items-center gap-2 text-sm font-medium; }
+  .ui8-passport-values { @apply min-w-0 sm:col-span-2; }
+  .ui8-passport-none { @apply text-sm text-muted-foreground italic; }
+  .ui8-passport-badges { @apply flex-wrap; }
+  .ui8-similar-row { @apply grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4; }
+}

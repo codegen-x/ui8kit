@@ -242,13 +242,18 @@
       "composition": [
         "src/stock",
         "src/preview",
-        "src/magazine"
+        "src/magazine",
+        "src/theme"
       ],
       "blockRoot": [
         "src/stock/stock-header.svelte",
         "src/stock/filter-bar.svelte",
         "src/stock/facet-column.svelte",
-        "src/stock/results.svelte"
+        "src/stock/results.svelte",
+        "src/stock/detail/detail-main.svelte",
+        "src/stock/detail/device-preview.svelte",
+        "src/stock/detail/passport.svelte",
+        "src/stock/detail/similar-row.svelte"
       ]
     },
     {

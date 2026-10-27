@@ -8,6 +8,11 @@ Vite compiles it).
   language, Theme), `filter-bar` (type tabs + quick filters), `facet-column` (one fieldset per facet, draft badge), `results`
   (count with `aria-live`, applied chips with reset, sort, `card-grid`, `asset-card`, `pagination`, `empty-state`); its Theme sheet is the shared one of `src/theme`.
   `text.ts`: the text shape (`StockText`) and the view types; every string comes in through props.
+  `src/stock/detail`: the detail page of an asset (`detail-frame`, `detail-main`: the way back, the name, `device-preview` (width and
+  mode as radio segments, the device frame), `passport` (blocks or variants, screen pages, read-only labels with an explicit
+  "no label"), `similar-row` (the storefront's card through a snippet)); named `ui8-*` classes in `src/styles/detail.css`.
+- `src/preview/device.ts`: the device frame of the detail page (an iframe of the app's frame route at 1280, 768 or 390 px, scaled to
+  the room; created in code like a canvas host mounts its engine, since the kit has no primitive for an embedded document).
 - `src/preview`: the live render of a block variant or a composed screen page from its recipe (`recipe.ts`, pure, tested),
   `load.ts` (the data of one preview from the sources the app hands in), `preview-frame` (16:10, the 1280 px stage scaled by a CSS
   variable, mounted when near the viewport) and `live-preview` (the organisms by name); `nav.ts`: the screen menus of
@@ -24,7 +29,7 @@ Vite compiles it).
   its mode), the texts as `ThemeSheetText` (`text.ts`).
 - `src/styles/layouts.css`: the stage classes (`.ui8-preview-stage`, `.ui8-taste-stage`); import it next to the kit styles and add `@source` for
   `src/stock` and `src/preview` (their markup carries Tailwind token utilities).
-- `src/styles/magazine.css`, `options.css`, `theme.css`: the named classes of `src/magazine` and `src/theme` (`.ui8-*`, one per
+- `src/styles/magazine.css`, `options.css`, `theme.css`, `detail.css`: the named classes of `src/magazine`, `src/theme` and `src/stock/detail` (`.ui8-*`, one per
   element, each an `@apply` list of token utilities in `@layer utilities`). That markup carries only these names and the `group`
   marker, so a consumer that injects the layouts' styles after its own stylesheet (the Magazine) emits no utility twice: load
   order no longer decides between two copies of a class (it drew the live templates of the style page in their mobile layout at

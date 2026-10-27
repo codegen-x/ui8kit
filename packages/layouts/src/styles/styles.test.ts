@@ -1,5 +1,5 @@
-// The named classes of the layouts the Magazine loads (src/magazine, src/theme): the markup carries names only, each name has its
-// one rule (an @apply list of token utilities, src/styles/{magazine,options,theme}.css), and the Magazine's layouts sheet emits no
+// The named classes of the layouts that carry them (src/magazine, src/theme, src/stock/detail): the markup carries names only, each name has its
+// one rule (an @apply list of token utilities, src/styles/{magazine,options,theme,detail}.css), and the Magazine's layouts sheet emits no
 // bare utility. A utility emitted there a second time, after the app's own stylesheet, would win by load order over the app's
 // responsive variants (3af67250 .. the @apply move: the live templates of the style page drew their mobile layout at 1280 px).
 import { describe, expect, test } from "bun:test";
@@ -12,12 +12,15 @@ import { RECIPES } from "../../../kit-compose/src/recipes";
 
 const SRC = join(import.meta.dir, "..");
 const REPO = join(SRC, "..", "..", "..");
-const DIRS = ["magazine", "theme"];
-const SHEETS = ["magazine", "options", "theme"];
+const DIRS = ["magazine", "theme", "stock/detail"];
+const SHEETS = ["magazine", "options", "theme", "detail"];
+/** the sheets the Magazine injects (it renders no detail page) */
+const MAGAZINE_SHEETS = ["magazine", "options", "theme"];
 /** class names that only mark an element for a variant of another (group-hover:, peer-checked:) and emit no CSS */
 const MARKERS = new Set(["group", "peer"]);
 
 const files = DIRS.flatMap((d) => readdirSync(join(SRC, d)).filter((f) => f.endsWith(".svelte")).map((f) => join(d, f)));
+const sheetOf = new Map<string, string>();
 const read = (rel: string): string => readFileSync(join(SRC, rel), "utf8");
 
 /** the class tokens of a Svelte file: class="..." values, the string literals of class={...}, and the string constants it names */
@@ -41,9 +44,10 @@ const rules = new Map<string, string>();
 for (const s of SHEETS) for (const [, name, list] of readFileSync(join(SRC, "styles", s + ".css"), "utf8").matchAll(/\.(ui8-[a-z0-9-]+)\s*\{\s*@apply\s+([^;]+);\s*\}/g)) {
   expect(rules.has(name!), `${name} defined twice`).toBe(false);
   rules.set(name!, list!.trim());
+  sheetOf.set(name!, s);
 }
 
-describe("layouts: named classes (src/magazine, src/theme)", () => {
+describe("layouts: named classes (src/magazine, src/theme, src/stock/detail)", () => {
   test("the markup carries named classes only (ui8-*, and the group marker)", () => {
     const bare = files.flatMap((f) => classTokens(read(f)).filter((c) => !c.startsWith("ui8-") && !MARKERS.has(c)).map((c) => `${f}: ${c}`));
     expect(bare).toEqual([]);
@@ -51,7 +55,7 @@ describe("layouts: named classes (src/magazine, src/theme)", () => {
 
   test("every name in the markup has its rule, and every rule is used", () => {
     const used = new Set(files.flatMap((f) => classTokens(read(f)).filter((c) => c.startsWith("ui8-"))));
-    const stages = new Set(["ui8-taste-stage", "ui8-preview-stage"]); // layouts.css: plain CSS, no utility for them
+    const stages = new Set(["ui8-taste-stage", "ui8-preview-stage", "ui8-device", "ui8-device-screen"]); // layouts.css: plain CSS, no utility for them
     expect([...used].filter((n) => !rules.has(n) && !stages.has(n)).sort()).toEqual([]);
     expect([...rules.keys()].filter((n) => !used.has(n)).sort()).toEqual([]);
   });
@@ -62,14 +66,14 @@ describe("layouts: named classes (src/magazine, src/theme)", () => {
     const css = compiler.build([]).replace(/\/\*[\s\S]*?\*\//g, "");
     const classes = new Set([...css.matchAll(/\.(-?[_a-zA-Z][\w\\:/[\]-]*)/g)].map((m) => m[1]!));
     expect([...classes].filter((c) => !c.startsWith("ui8-") && !MARKERS.has(c)).sort()).toEqual([]);
-    for (const n of rules.keys()) expect(css, n).toContain("." + n);
+    for (const n of rules.keys()) if (MAGAZINE_SHEETS.includes(sheetOf.get(n)!)) expect(css, n).toContain("." + n);
   });
 
   test("both apps import the sheets of the layouts they render", () => {
     const magazine = readFileSync(join(REPO, "apps", "magazine", "src", "layouts.css"), "utf8");
     const stock = readFileSync(join(REPO, "apps", "stock", "src", "app.css"), "utf8");
-    for (const s of SHEETS) expect(magazine).toContain(`@import "@ui8kit/layouts/styles/${s}.css"`);
-    for (const s of ["options", "theme"]) expect(stock).toContain(`@import "@ui8kit/layouts/styles/${s}.css"`);
+    for (const s of MAGAZINE_SHEETS) expect(magazine).toContain(`@import "@ui8kit/layouts/styles/${s}.css"`);
+    for (const s of ["options", "theme", "detail"]) expect(stock).toContain(`@import "@ui8kit/layouts/styles/${s}.css"`);
   });
 
   // A named class sits after the app's utilities, so it wins over the recipe base of its primitive (as tailwind-merge let the class
