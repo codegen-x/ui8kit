@@ -36,4 +36,21 @@ pure function: OR within a facet, AND across facets, disjunctive counts, word-pr
 sorts, `relaxations()` for a zero result, `paginate()`; the canonical URL `#/search?q=…&job=hero,pricing&density=airy&spec=…&variants=all&sort=name&page=2`.
 `src/lib/search.test.ts` runs it on the real index.
 
+## Storefront (S3)
+
+The app only assembles (ADR-0001, layer 3): the structure is `@ui8kit/layouts` (`packages/layouts/src/stock`: frame, header, type
+tabs, quick filters, facet column, applied chips, sort, card grid, asset card, preview frame, pagination, Theme sheet), the engine is
+`@ui8kit/facet-search`, and `src/App.svelte` wires them to the index, the route, the language and the Theme. `src/lib/view.ts` turns
+the engine's outcome into the view models of the layouts (tested in `view.test.ts`).
+
+- **Pages, not an endless feed**: 24 cards per page, `page=` in the URL; each card is keyed, so a page change unmounts every card and
+  its live render. Inside a page a preview mounts when its frame comes near the viewport.
+- **Live previews**: a card renders the real block variant (or the composed screen page) from `content/previews.v0.json` through
+  `@ui8kit/layouts/preview` (organisms of `@codegen-x/svelte-compose` by name, props merged as compose-gen does, Codex data through
+  `@ui8kit/app-shared`), drawn at desktop width (the window, when narrower) and scaled into a 16:10 frame.
+- **Theme**: the Magazine's model (`apps/magazine/src/lib/global-theme.ts`, imported as is, stored under `stock:v1:theme`): mode, skin,
+  font, radius, density, applied to the document root, so every preview follows it.
+- **Languages**: en, fr, de, es, ru (`content/i18n/<locale>.json` and `locales.json`, data); the switch is in the header and is kept on
+  this device. Ids and URL parameters stay English; block titles are the kit dictionary's (English).
+
 Steps of the plan: S0 the frame; S1 the index; S2 the search engine; S3 the storefront on `@ui8kit/layouts`.

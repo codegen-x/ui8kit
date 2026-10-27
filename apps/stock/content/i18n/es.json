@@ -1,0 +1,77 @@
+{
+  "brand": "Stock",
+  "search": {
+    "label": "Buscar en el catálogo",
+    "placeholder": "Buscar bloques y pantallas",
+    "submit": "Buscar"
+  },
+  "header": {
+    "actions": "Herramientas",
+    "collections": "Colecciones",
+    "compare": "Comparar ({n})",
+    "theme": "Tema",
+    "locale": "Idioma",
+    "soon": "Llega en un paso posterior"
+  },
+  "filters": {
+    "region": "Filtros",
+    "types": "Tipo de recurso",
+    "all": "Todos",
+    "quick": "Filtros rápidos"
+  },
+  "facets": {
+    "region": "Facetas",
+    "title": "Filtros",
+    "toggle": "{n} seleccionados",
+    "draft": "borrador",
+    "soft": "Ordena los resultados, no filtra",
+    "more": "Mostrar {n} más",
+    "less": "Mostrar menos"
+  },
+  "results": {
+    "region": "Resultados",
+    "title": "Resultados",
+    "count": "Resultados: {n}",
+    "sort": "Ordenar",
+    "empty": "Nada coincide con estos filtros.",
+    "relax": "Quitar {filter}: {n}",
+    "variantsOf": "Variantes de {spec}",
+    "showAll": "Todas las variantes"
+  },
+  "chips": {
+    "label": "Filtros aplicados",
+    "query": "Búsqueda: {q}",
+    "spec": "Variantes de {spec}",
+    "remove": "Quitar el filtro {filter}",
+    "reset": "Restablecer"
+  },
+  "pagination": {
+    "label": "Páginas",
+    "prev": "Anterior",
+    "next": "Siguiente",
+    "page": "Página {n}"
+  },
+  "card": {
+    "variants": "{n} variantes",
+    "loading": "Cargando la vista previa",
+    "failed": "No se pudo cargar la vista previa",
+    "none": "Sin vista previa"
+  },
+  "theme": {
+    "title": "Tema",
+    "note": "Las vistas previas siguen estos ajustes: skin, fuente, radio, densidad y modo.",
+    "close": "Cerrar",
+    "reset": "Restablecer valores",
+    "mode": "Modo",
+    "light": "Claro",
+    "dark": "Oscuro",
+    "skin": "Skin",
+    "font": "Fuente",
+    "radius": "Radio de esquinas",
+    "density": "Densidad",
+    "unset": "Predeterminado",
+    "compact": "Compacta",
+    "standard": "Predeterminada",
+    "comfortable": "Amplia"
+  }
+}

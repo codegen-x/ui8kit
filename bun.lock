@@ -137,6 +137,7 @@
         "@codegen-x/svelte-compose": "workspace:*",
         "@ui8kit/app-shared": "workspace:*",
         "@ui8kit/facet-search": "workspace:*",
+        "@ui8kit/layouts": "workspace:*",
         "@ui8kit/panorama": "workspace:*",
         "@ui8kit/taste-data": "workspace:*",
         "svelte": "^5.57.0",

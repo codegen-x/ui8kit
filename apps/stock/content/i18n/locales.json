@@ -1,0 +1,25 @@
+{
+  "default": "en",
+  "locales": [
+    {
+      "id": "en",
+      "label": "English"
+    },
+    {
+      "id": "fr",
+      "label": "Français"
+    },
+    {
+      "id": "de",
+      "label": "Deutsch"
+    },
+    {
+      "id": "es",
+      "label": "Español"
+    },
+    {
+      "id": "ru",
+      "label": "Русский"
+    }
+  ]
+}

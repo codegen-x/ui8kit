@@ -115,9 +115,7 @@
       "composition": [
         "src"
       ],
-      "blockRoot": [
-        "src/App.svelte"
-      ]
+      "blockRoot": []
     },
     {
       "name": "@codegen-x/react-compose",

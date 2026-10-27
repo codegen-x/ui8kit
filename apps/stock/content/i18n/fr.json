@@ -1,0 +1,77 @@
+{
+  "brand": "Stock",
+  "search": {
+    "label": "Rechercher dans le catalogue",
+    "placeholder": "Rechercher des blocs et des écrans",
+    "submit": "Rechercher"
+  },
+  "header": {
+    "actions": "Outils",
+    "collections": "Collections",
+    "compare": "Comparer ({n})",
+    "theme": "Thème",
+    "locale": "Langue",
+    "soon": "Arrive dans une prochaine étape"
+  },
+  "filters": {
+    "region": "Filtres",
+    "types": "Type d’asset",
+    "all": "Tous",
+    "quick": "Filtres rapides"
+  },
+  "facets": {
+    "region": "Facettes",
+    "title": "Filtres",
+    "toggle": "{n} sélectionnés",
+    "draft": "brouillon",
+    "soft": "Classe les résultats, ne filtre pas",
+    "more": "Afficher {n} de plus",
+    "less": "Afficher moins"
+  },
+  "results": {
+    "region": "Résultats",
+    "title": "Résultats",
+    "count": "Résultats : {n}",
+    "sort": "Trier",
+    "empty": "Aucun résultat pour ces filtres.",
+    "relax": "Retirer {filter} : {n}",
+    "variantsOf": "Variantes de {spec}",
+    "showAll": "Toutes les variantes"
+  },
+  "chips": {
+    "label": "Filtres appliqués",
+    "query": "Recherche : {q}",
+    "spec": "Variantes de {spec}",
+    "remove": "Retirer le filtre {filter}",
+    "reset": "Réinitialiser"
+  },
+  "pagination": {
+    "label": "Pages",
+    "prev": "Précédent",
+    "next": "Suivant",
+    "page": "Page {n}"
+  },
+  "card": {
+    "variants": "{n} variantes",
+    "loading": "Chargement de l’aperçu",
+    "failed": "L’aperçu n’a pas pu être chargé",
+    "none": "Pas d’aperçu"
+  },
+  "theme": {
+    "title": "Thème",
+    "note": "Les aperçus suivent ces réglages : skin, police, arrondi, densité et mode.",
+    "close": "Fermer",
+    "reset": "Valeurs par défaut",
+    "mode": "Mode",
+    "light": "Clair",
+    "dark": "Sombre",
+    "skin": "Skin",
+    "font": "Police",
+    "radius": "Arrondi des coins",
+    "density": "Densité",
+    "unset": "Par défaut",
+    "compact": "Compacte",
+    "standard": "Par défaut",
+    "comfortable": "Aérée"
+  }
+}

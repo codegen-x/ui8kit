@@ -1,0 +1,77 @@
+{
+  "brand": "Stock",
+  "search": {
+    "label": "Katalog durchsuchen",
+    "placeholder": "Blöcke und Screens suchen",
+    "submit": "Suchen"
+  },
+  "header": {
+    "actions": "Werkzeuge",
+    "collections": "Sammlungen",
+    "compare": "Vergleichen ({n})",
+    "theme": "Theme",
+    "locale": "Sprache",
+    "soon": "Kommt in einem späteren Schritt"
+  },
+  "filters": {
+    "region": "Filter",
+    "types": "Asset-Typ",
+    "all": "Alle",
+    "quick": "Schnellfilter"
+  },
+  "facets": {
+    "region": "Facetten",
+    "title": "Filter",
+    "toggle": "{n} ausgewählt",
+    "draft": "Entwurf",
+    "soft": "Sortiert die Ergebnisse, filtert nicht",
+    "more": "{n} weitere anzeigen",
+    "less": "Weniger anzeigen"
+  },
+  "results": {
+    "region": "Ergebnisse",
+    "title": "Ergebnisse",
+    "count": "Ergebnisse: {n}",
+    "sort": "Sortieren",
+    "empty": "Nichts passt zu diesen Filtern.",
+    "relax": "{filter} entfernen: {n}",
+    "variantsOf": "Varianten von {spec}",
+    "showAll": "Alle Varianten"
+  },
+  "chips": {
+    "label": "Aktive Filter",
+    "query": "Suche: {q}",
+    "spec": "Varianten von {spec}",
+    "remove": "Filter {filter} entfernen",
+    "reset": "Zurücksetzen"
+  },
+  "pagination": {
+    "label": "Seiten",
+    "prev": "Zurück",
+    "next": "Weiter",
+    "page": "Seite {n}"
+  },
+  "card": {
+    "variants": "{n} Varianten",
+    "loading": "Vorschau wird geladen",
+    "failed": "Die Vorschau konnte nicht geladen werden",
+    "none": "Keine Vorschau"
+  },
+  "theme": {
+    "title": "Theme",
+    "note": "Die Vorschauen folgen diesen Einstellungen: Skin, Schrift, Radius, Dichte und Modus.",
+    "close": "Schließen",
+    "reset": "Auf Standard zurücksetzen",
+    "mode": "Modus",
+    "light": "Hell",
+    "dark": "Dunkel",
+    "skin": "Skin",
+    "font": "Schrift",
+    "radius": "Eckenradius",
+    "density": "Dichte",
+    "unset": "Standard",
+    "compact": "Kompakt",
+    "standard": "Standard",
+    "comfortable": "Großzügig"
+  }
+}

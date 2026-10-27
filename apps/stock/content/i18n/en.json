@@ -1,0 +1,77 @@
+{
+  "brand": "Stock",
+  "search": {
+    "label": "Search the catalog",
+    "placeholder": "Search blocks and screens",
+    "submit": "Search"
+  },
+  "header": {
+    "actions": "Tools",
+    "collections": "Collections",
+    "compare": "Compare ({n})",
+    "theme": "Theme",
+    "locale": "Language",
+    "soon": "Coming in a later step"
+  },
+  "filters": {
+    "region": "Filters",
+    "types": "Asset type",
+    "all": "All",
+    "quick": "Quick filters"
+  },
+  "facets": {
+    "region": "Facets",
+    "title": "Filters",
+    "toggle": "{n} selected",
+    "draft": "draft",
+    "soft": "Ranks the results, does not filter",
+    "more": "Show {n} more",
+    "less": "Show fewer"
+  },
+  "results": {
+    "region": "Results",
+    "title": "Results",
+    "count": "Results: {n}",
+    "sort": "Sort",
+    "empty": "Nothing matches these filters.",
+    "relax": "Remove {filter}: {n}",
+    "variantsOf": "Variants of {spec}",
+    "showAll": "All variants"
+  },
+  "chips": {
+    "label": "Applied filters",
+    "query": "Search: {q}",
+    "spec": "Variants of {spec}",
+    "remove": "Remove filter {filter}",
+    "reset": "Reset"
+  },
+  "pagination": {
+    "label": "Pages",
+    "prev": "Previous",
+    "next": "Next",
+    "page": "Page {n}"
+  },
+  "card": {
+    "variants": "{n} variants",
+    "loading": "Loading the preview",
+    "failed": "The preview failed to load",
+    "none": "No preview"
+  },
+  "theme": {
+    "title": "Theme",
+    "note": "The previews follow these settings: skin, font, radius, density and mode.",
+    "close": "Close",
+    "reset": "Reset to defaults",
+    "mode": "Mode",
+    "light": "Light",
+    "dark": "Dark",
+    "skin": "Skin",
+    "font": "Font",
+    "radius": "Corner radius",
+    "density": "Density",
+    "unset": "Default",
+    "compact": "Compact",
+    "standard": "Default",
+    "comfortable": "Comfortable"
+  }
+}

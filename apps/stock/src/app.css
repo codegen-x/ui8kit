@@ -1,5 +1,7 @@
-/* Stock: the kit (Tailwind v4 + shadcn neutral tokens) and the skins. The previews are real blocks of @codegen-x/svelte-compose, whose
-   sources the kit entry already scans; the app's own markup uses token utilities only (colours by token, 8 px steps). */
+/* Stock: the kit (Tailwind v4 + shadcn neutral tokens), the skins, the layouts. The previews are real blocks of
+   @codegen-x/svelte-compose, whose sources the kit entry already scans; the layouts are scanned here. */
 @import "@codegen-x/svelte-compose/styles/index.css";
 @import "@ui8kit/app-shared/styles/skins.css";
+@import "@ui8kit/layouts/styles/layouts.css";
 @source "../src";
+@source "../../../packages/layouts/src";
